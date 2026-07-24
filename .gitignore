@@ -1,0 +1,18 @@
+node_modules/
+dist/
+coverage/
+
+# PDF sorgenti: NON versionati in git (peso). Registro hash in sources/sources.json.
+raw-sources/**/*.pdf
+
+# Output dell'estrazione (rigenerabile dagli script)
+extracted/
+
+# Report generati
+review/diffs/
+review/queue/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+*.log
