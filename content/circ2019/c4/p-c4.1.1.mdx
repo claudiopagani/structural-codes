@@ -1,0 +1,130 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.1
+slug: circ2019-c4-s4-1-p-c4-1-1
+kind: paragraph
+numbering: "C4.1.1"
+title: "VALUTAZIONE DELLA SICUREZZA E METODI DI ANALISI"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1", note: "Commento al §4.1.1 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE: registrare URL ufficiale della Gazzetta o del CS.LL.PP.]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — Consiglio Superiore dei Lavori Pubblici"
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [85, 86, 87, 88]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas:
+  - "circ2019:c4/s4.1/eq-c4.1.1"
+tables: []
+figures:
+  - "circ2019:c4/s4.1/fig-c4.1.1"
+  - "circ2019:c4/s4.1/fig-c4.1.2"
+  - "circ2019:c4/s4.1/fig-c4.1.3"
+  - "circ2019:c4/s4.1/fig-c4.1.4"
+  - "circ2019:c4/s4.1/fig-c4.1.5"
+  - "circ2019:c4/s4.1/fig-c4.1.6"
+refsOut:
+  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§ 4.1.1.1 delle NTC" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash:
+  sourceText: "[DA_VERIFICARE]"
+  normalized: "[DA_VERIFICARE]"
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Pedici e apici nella formula [C4.1.1] e nei simboli M_Rd, δ, M_Ed richiedono verifica su fonte originale. Alcuni caratteri Unicode nel testo (ᠹ, 䖓, 㐐) sono artefatti dell'estrazione PDF."
+  - marker: "FIGURA_MANCANTE"
+    note: "Figure C4.1.1–C4.1.6 citate nel testo ma non disponibili come immagini nei materiali. Le didascalie sono state registrate."
+  - marker: "DA_VERIFICARE"
+    note: "Il simbolo greco δ (rapporto di ridistribuzione) e il pedice 'd' in M_Ed vanno verificati sulla fonte originale."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.1 VALUTAZIONE DELLA SICUREZZA E METODI DI ANALISI
+
+C4.1.1.1 ANALISI ELASTICA LINEARE
+
+Nel seguito si forniscono alcune precisazioni integrative in riferimento all'analisi elastica lineare con ridistribuzione dei momenti prevista al § 4.1.1.1 delle NTC.
+
+Cautelativamente, le NTC proibiscono la ridistribuzione dei momenti nei pilastri e nei nodi consentendola nelle travi continue (sia appartenenti che non appartenenti a telai), nelle solette e nei telai, alle condizioni seguenti:
+- gli effetti del 2° ordine siano trascurabili;
+- le sollecitazioni di flessione siano prevalenti;
+- i rapporti tra le luci di campate contigue siano compresi nell'intervallo 0,5-2,0.
+
+Nel seguito, per semplicità, si farà riferimento alle sole travi, restando inteso che le relative considerazioni sono immediatamente estendibili alle solette.
+
+La ridistribuzione dei momenti flettenti deve garantire l'equilibrio sia globale sia locale della struttura, ma prefigura possibili plasticizzazioni nelle zone di estremità delle travi; occorre dunque accompagnare la ridistribuzione con una verifica di duttilità. Tale verifica, peraltro, può essere omessa se si rispettano le limitazioni sull'entità delle ridistribuzioni fornite dalle NTC e meglio precisate nel seguito.
+
+La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione M_Ed ed il momento prima della ridistribuzione M_Ed soddisfi quanto riportato all'interno del testo normativo.
+
+Il limite δ ≥ 0,70 ha lo scopo di evitare che un eccesso di ridistribuzione possa indurre plasticizzazione allo Stato Limite di Esercizio nelle sezioni in cui si riduce il momento resistente.
+
+Ai fini della ridistribuzione dei momenti negli elementi, in ciascun nodo, l'aliquota dei momenti da ridistribuire, ΔM, non può eccedere il 30% del minore tra i due momenti d'estremità concorrenti al nodo, nel caso di momenti di verso opposto. Nel caso di momenti equiversi, il rapporto δ va riferito al momento che viene ridotto in valore assoluto.
+
+La ridistribuzione dei momenti permette una progettazione strutturale più economica ed efficiente, riducendo i momenti massimi di progetto, e compensando questa diminuzione con l'aumento dei momenti di progetto nelle zone meno sollecitate. Ciò consente di:
+- progettare travi aventi resistenza massima a flessione minore di quella richiesta dall'analisi elastica, grazie ad una più uniforme distribuzione delle resistenze lungo il loro sviluppo;
+- utilizzare meglio la resistenza minima a flessione delle sezioni, dovuta al rispetto delle limitazioni costruttive imposte dalle NTC, quando essa ecceda significativamente le sollecitazioni agenti derivanti dall'analisi elastica.
+
+Il diagramma dei momenti flettenti deve risultare staticamente ammissibile, cioè deve essere equilibrato e soddisfare in ogni sezione la condizione:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.1" number="C4.1.1" latex="M_{Ed} \leq M_{Rd}" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+dove M_Ed è il valore di progetto del momento dopo la ridistribuzione e M_Rd è il momento resistente di progetto.
+
+C4.1.1.1.1 Ridistribuzione nelle travi continue
+
+Nel caso di una trave continua (Figura C4.1.1), i momenti M_1 e M_2 delle sezioni più sollecitate (in corrispondenza degli appoggi) possono venire ridotti ai valori M_1^r e M_2^r, nel rispetto dei limiti M_1^r ≥ δ·M_1 e M_2^r ≥ δ·M_2. Il diagramma del momento flettente sortito dall'analisi elastica lineare della trave continua in esame, rappresentato dalla curva a tratto continuo, va di conseguenza traslato, nel rispetto dell'equilibrio con il carico p applicato, come indicato dalla curva a tratteggio.
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.1" alt="[PROPOSTA: Diagramma di una trave continua con carico uniformemente distribuito p. Curva a tratto continuo: momento elastico M(x). Curva a tratteggio: momento ridistribuito M^r(x) con riduzioni M_1^r = δ·M_1 e M_2^r = δ·M_2 in corrispondenza degli appoggi.]" caption="Figura C4.1.1 - Ridistribuzione dei momenti per travi continue" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.1.1.2 Ridistribuzione nelle travi continue dei telai
+
+Nei telai i momenti trasmessi dai pilastri ai nodi, non essendo ammessa per tali elementi la ridistribuzione, sono quelli desunti dall'analisi elastica. Poiché tali momenti debbono essere in equilibrio con quelli trasmessi allo stesso nodo dalle travi, la ridistribuzione si effettua applicando, all'estremità delle travi convergenti nel nodo, momenti flettenti di segno opposto ed uguale intensità, lasciando immutato il regime di sollecitazione nei pilastri.
+
+Operativamente, si possono evidenziare due possibili situazioni a seconda che i momenti trasmessi al nodo dalle travi in esso convergenti (momenti d'estremità) abbiano verso discorde (Figura C4.1.2) o concorde (Figura C4.1.3).
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.2" alt="[PROPOSTA: Schema statico di un nodo trave-pilastro con due travi convergenti. I momenti d'estremità M_A e M_B hanno verso discorde (uno orario, l'altro antiorario).]" caption="Figura C4.1.2 - Diagramma delle sollecitazioni e schema dei momenti trasmessi al nodo con momenti d'estremità discordi" />
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.3" alt="[PROPOSTA: Schema statico di un nodo trave-pilastro con due travi convergenti. I momenti d'estremità M_A e M_B hanno verso concorde (entrambi orari o entrambi antiorari).]" caption="Figura C4.1.3 - Diagramma delle sollecitazioni e schema dei momenti trasmessi al nodo con momenti d'estremità concordi" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Il soddisfacimento dell'equilibrio impone che, nel caso in cui i momenti d'estremità delle travi abbiano verso discorde, essi siano entrambi ridotti di ΔM (Figura C4.1.4) e che, in caso contrario, il momento d'estremità della trave di sinistra sia ridotto di ΔM e quello della trave destra sia aumentato della stessa quantità ΔM (Figura C4.1.5).
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.4" alt="[PROPOSTA: Diagramma di ridistribuzione per momenti discordi. Entrambi i momenti d'estremità vengono ridotti della quantità ΔM.]" caption="Figura C4.1.4 - Momenti d'estremità di verso opposto: ridistribuzione del momento nelle travi" />
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.5" alt="[PROPOSTA: Diagramma di ridistribuzione per momenti concordi. Il momento sinistro è ridotto di ΔM, quello destro è aumentato di ΔM.]" caption="Figura C4.1.5 - Momenti d'estremità di verso concorde: ridistribuzione dei momenti nelle travi" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+I diagrammi dei momenti ottenuti a seguito della ridistribuzione, per le due diverse situazioni prefigurate, sono rappresentati in Figura C4.1.6.
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.6" alt="[PROPOSTA: Due diagrammi sovrapposti dei momenti flettenti sulle travi dopo la ridistribuzione: (a) caso momenti discordi con riduzione simmetrica, (b) caso momenti concordi con riduzione asimmetrica.]" caption="Figura C4.1.6 - Diagrammi dei momenti a seguito della ridistribuzione dei momenti nelle travi" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Come già detto, il diagramma dei momenti flettenti su ciascuna trave, ottenuto per effetto della ridistribuzione, deve essere staticamente ammissibile.
+</OfficialText>
+
+<CircularCommentary for="ntc2018:c4/s4.1" confirmation="suggested" linkKind="direct" />
+
+<ReviewWarning markers={["FORMULA_NON_LEGGIBILE", "FIGURA_MANCANTE", "DA_VERIFICARE"]} />

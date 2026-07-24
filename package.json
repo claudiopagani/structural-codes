@@ -1,45 +1,45 @@
 {
-  "name": "@strutture-js/normativa",
-  "version": "0.1.0",
-  "description": "Corpus documentale strutturato e versionato per NTC 2018 (D.M. 17-01-2018) e Circolare 21-01-2019 n. 7, con riferimenti tracciati al codice di strutture-js.",
-  "license": "LGPL-2.1-or-later",
-  "type": "module",
-  "sideEffects": false,
-  "engines": {
-    "node": ">=22.6.0"
-  },
-  "exports": {
-    ".": "./src/index.ts",
-    "./schema": "./src/schema/index.ts",
-    "./lib": "./src/lib/index.ts",
-    "./code-map": "./src/code-map/index.ts"
-  },
-  "files": [
-    "src",
-    "content",
-    "assets",
-    "mappings",
-    "sources",
-    "README.md",
-    "LICENSE"
-  ],
-  "scripts": {
-    "test": "node --experimental-strip-types --test \"tests/*.test.ts\"",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
-    "lint": "eslint src scripts tests",
-    "validate:schema": "node --experimental-strip-types scripts/validate-schema.ts",
-    "validate:ids": "node --experimental-strip-types scripts/validate-ids.ts",
-    "validate:all": "npm run validate:schema && npm run validate:ids",
-    "acquire:source": "node --experimental-strip-types scripts/acquire-source.ts",
-    "extract:source": "node --experimental-strip-types scripts/extract-source.ts",
-    "check": "npm run validate:all && npm test"
-  },
-  "dependencies": {
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.0",
-    "pdfjs-dist": "^4.10.38",
-    "typescript": "^5.7.0"
-  }
+    "name": "@strutture-js/normativa",
+    "version": "0.1.0",
+    "description": "Corpus documentale strutturato e versionato per NTC 2018 (D.M. 17-01-2018) e Circolare 21-01-2019 n. 7, con riferimenti tracciati al codice di strutture-js.",
+    "license": "LGPL-2.1-or-later",
+    "type": "module",
+    "sideEffects": false,
+    "engines": {
+        "node": ">=22.6.0"
+    },
+    "exports": {
+        ".": "./src/index.ts",
+        "./schema": "./src/schema/index.ts",
+        "./lib": "./src/lib/index.ts",
+        "./code-map": "./src/code-map/index.ts"
+    },
+    "files": [
+        "src",
+        "content",
+        "assets",
+        "mappings",
+        "sources",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "test": "node --experimental-strip-types --test \"tests/*.test.ts\"",
+        "typecheck": "tsc --noEmit -p tsconfig.json",
+        "lint": "eslint src scripts tests",
+        "validate:schema": "node --experimental-strip-types scripts/validate-schema.ts",
+        "validate:ids": "node --experimental-strip-types scripts/validate-ids.ts",
+        "validate:all": "npm run validate:schema && npm run validate:ids",
+        "acquire:source": "node --experimental-strip-types scripts/acquire-source.ts",
+        "extract:source": "node --experimental-strip-types scripts/extract-source.ts",
+        "check": "npm run validate:all && npm test"
+    },
+    "dependencies": {
+        "zod": "^3.24.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.0",
+        "pdfjs-dist": "^4.10.38",
+        "typescript": "^5.7.0"
+    }
 }
