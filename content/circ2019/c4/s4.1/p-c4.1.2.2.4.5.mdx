@@ -1,0 +1,93 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.2.2.4.5
+slug: circ2019-c4-s4-1-p-c4-1-2-2-4-5
+kind: paragraph
+numbering: "C4.1.2.2.4.5"
+title: "Verifica dello stato limite di fessurazione"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1", note: "Commento al §4.1.2.2.4.5 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [91, 92, 93]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas:
+  - "circ2019:c4/s4.1/eq-c4.1.5"
+  - "circ2019:c4/s4.1/eq-c4.1.6"
+  - "circ2019:c4/s4.1/eq-c4.1.7"
+  - "circ2019:c4/s4.1/eq-c4.1.8"
+  - "circ2019:c4/s4.1/eq-c4.1.9"
+tables:
+  - "circ2019:c4/s4.1/tab-c4.1.ii"
+  - "circ2019:c4/s4.1/tab-c4.1.iii"
+figures:
+  - "circ2019:c4/s4.1/fig-c4.1.10"
+  - "circ2019:c4/s4.1/fig-c4.1.11"
+refsOut: []
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [C4.1.5]-[C4.1.9] con simboli greci e pedici da verificare su scansione."
+  - marker: "FIGURA_MANCANTE"
+    note: "Figure C4.1.10, C4.1.11 non disponibili. Tabelle C4.1.II, C4.1.III da verificare."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.2.2.4.5 Verifica dello stato limite di fessurazione
+
+L'ampiezza caratteristica di verifica delle fessure wk può essere calcolata con:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.5" number="C4.1.5" latex="w_k = \varepsilon_{sm} \cdot \Delta_{sm}" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+dove εsm è la deformazione unitaria media delle barre d'armatura e Δsm è la distanza media tra le fessure.
+
+εsm può essere calcolata con:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.6" number="C4.1.6" latex="\varepsilon_{sm} = \frac{\sigma_s}{E_s}\left[1 - k_t\left(\frac{f_{ctm}}{\sigma_s} \cdot \frac{1}{\rho_{eff}}\right)^2\right] \geq 0.6\frac{\sigma_s}{E_s}" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+dove σs è la tensione nell'armatura tesa nella sezione fessurata, αe = Es/Ecm, ρeff = As/Ac,eff, kt = 0,6 per carichi brevi e 0,4 per carichi lunghi.
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.10" alt="[PROPOSTA: Casi tipici di area tesa efficace per trave inflessa, soletta in trazione, trave in trazione.]" caption="Figura C4.1.10 - Area tesa efficace. Casi tipici" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Per armatura con spaziatura ≤ 5(c + φ/2), la distanza media tra le fessure è:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.7" number="C4.1.7" latex="\Delta_{sm} = \frac{k_3 c + k_1 k_2 k_4 \frac{\phi}{\rho_{eff}}}{1.7}" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+con k1 = 0,8 (barre aderenza migliorata) o 1,6 (lisce), k2 = 0,5 (flessione) o 1,0 (trazione semplice), k3 = 3,4, k4 = 0,425. Per diametri diversi si usa il diametro equivalente φeq [C4.1.8]. Per spaziatura > 5(c + φ/2), nella parte rimanente: Δsm = 1,7(h - x) [C4.1.9].
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.11" alt="[PROPOSTA: Ampiezza fessure w in funzione della posizione rispetto alle barre, con zona efficace 5(c+φ/2).]" caption="Figura C4.1.11 - Ampiezza delle fessure w in funzione della posizione rispetto alle barre" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+La verifica indiretta può riferirsi ai limiti di tensione nell'acciaio definiti nelle Tabelle C4.1.II (diametri massimi) e C4.1.III (spaziatura massima).
+</OfficialText>
+
+<NormativeTable id="circ2019:c4/s4.1/tab-c4.1.ii" />
+<NormativeTable id="circ2019:c4/s4.1/tab-c4.1.iii" />

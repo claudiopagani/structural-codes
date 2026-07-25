@@ -10,60 +10,36 @@ versionId: circ2019-originale
 validity: { from: "2019-02-11", to: null }
 vigencyStatus: in-force
 relations:
-  - { type: "clarifies", targetId: "ntc2018:c4/s4.1", note: "Commento al §4.1.12 NTC" }
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1.12", note: "Commento al §4.1.12 NTC" }
 source:
   sourceId: circ-7-2019
   url: "[DA_VERIFICARE]"
-  authority: "Ministero delle Infrastrutture e dei Trasporti — Consiglio Superiore dei Lavori Pubblici"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
   actNumber: "Circolare 21 gennaio 2019, n. 7"
   actDate: "2019-01-21"
   gazette: "GU n. 35 del 11-02-2019"
   gazetteSupplement: "S.O. n. 5"
-  pdfPages: [92, 93, 94, 95]
+  pdfPages: [92]
   pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
   acquiredAt: "2026-07-24T22:32:06.415Z"
   localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
-formulas:
-  - "circ2019:c4/s4.1/eq-c4.1.12"
-  - "circ2019:c4/s4.1/eq-c4.1.13"
-  - "circ2019:c4/s4.1/eq-c4.1.14a"
-  - "circ2019:c4/s4.1/eq-c4.1.14b"
-  - "circ2019:c4/s4.1/eq-c4.1.15"
-  - "circ2019:c4/s4.1/eq-c4.1.16"
-  - "circ2019:c4/s4.1/eq-c4.1.17"
-  - "circ2019:c4/s4.1/eq-c4.1.18"
-  - "circ2019:c4/s4.1/eq-c4.1.19"
+formulas: []
 tables:
   - "circ2019:c4/s4.1/tab-c4.1.v"
   - "circ2019:c4/s4.1/tab-c4.1.vi"
-figures:
-  - "circ2019:c4/s4.1/fig-c4.1.13"
-refsOut:
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§§ da 4.1.1 a 4.1.11 delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§ 4.1.2.1.2 delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§ 4.1.2.3.5.1 delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§ 4.1.2.3.5.2 delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "§ 4.1.2.3.6 delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "Formula [4.1.7] delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "formula [4.1.24] delle NTC" }
-  - { targetId: "ntc2018:c4/s4.1", scope: "explicit", rawText: "formula [4.1.35]" }
+figures: []
+refsOut: []
 workflow:
   status: converted
   convertedBy: { kind: "llm", model: "github-copilot" }
   convertedAt: "2026-07-25T00:00:00.000Z"
   technicalReview: null
   approvedBy: null
-hash:
-  sourceText: "[DA_VERIFICARE]"
-  normalized: "[DA_VERIFICARE]"
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
 reliability: unverified
 openIssues:
-  - marker: "FORMULA_NON_LEGGIBILE"
-    note: "Diverse formule contengono caratteri corrotti dall'estrazione PDF. Le formule [C4.1.16] e [C4.1.17] in particolare richiedono verifica su scansione originale."
-  - marker: "FIGURA_MANCANTE"
-    note: "Figura C4.1.13 (modelli σ-ε per calcestruzzo aggregati leggeri) non disponibile come immagine."
   - marker: "TABELLA_DA_REVISIONARE"
-    note: "Tabelle C4.1.V e C4.1.VI da verificare su scansione originale."
+    note: "Tabelle C4.1.V e C4.1.VI da strutturare come JSON."
 ---
 
 <OfficialText hash="[DA_VERIFICARE]">
@@ -71,169 +47,15 @@ C4.1.12 CALCESTRUZZO DI AGGREGATI LEGGERI (LC)
 
 Il presente Capitolo si applica ai calcestruzzi di aggregati leggeri di natura minerale, artificiale o naturale, con esclusione dei calcestruzzi aerati.
 
-I calcestruzzi di aggregati leggeri debbono essere specificati in ragione della classe di resistenza e di massa per unità di volume.
-
-Le classi di resistenza ammesse per impieghi strutturali sono dalla LC 16/18 fino alla LC 55/60, secondo la classificazione di cui alla UNI EN 206:2016, riportata nella Tabella C4.1.V.
-</OfficialText>
+I calcestruzzi di aggregati leggeri debbono essere specificati in ragione della classe di resistenza e di massa per unità di volume. Le classi di resistenza ammesse per impieghi strutturali sono dalla LC 16/18 fino alla LC 55/60, secondo la classificazione di cui alla UNI EN 206:2016, riportata nella Tabella C4.1.V.
 
 <NormativeTable id="circ2019:c4/s4.1/tab-c4.1.v" />
 
-<OfficialText hash="[DA_VERIFICARE]">
-Le classi di massa per unità di volume ammesse per impieghi strutturali sono riportate nella Tabella C4.1.VI. Nella stessa tabella, per ciascuna classe, sono indicati i valori nominali della massa per unità di volume del calcestruzzo da adottare nel calcolo del peso proprio delle membrature.
-</OfficialText>
+Le classi di massa per unità di volume ammesse per impieghi strutturali sono riportate nella Tabella C4.1.VI.
 
 <NormativeTable id="circ2019:c4/s4.1/tab-c4.1.vi" />
 
-<OfficialText hash="[DA_VERIFICARE]">
 Oltre ai normali controlli di accettazione in termini di resistenza, per i calcestruzzi di aggregati leggeri si dovranno eseguire controlli di accettazione con riguardo alla massa per unità di volume, da condurre secondo quanto specificato nelle norme UNI EN 206-1 e UNI EN 12390-7.
 
 La resistenza alla frantumazione dell'aggregato leggero influenza la resistenza a compressione del calcestruzzo leggero e, pertanto, deve essere determinata in conformità all'Appendice A delle UNI EN 13055:2016 e dichiarata dal produttore.
-
-C4.1.12.1 NORME DI CALCOLO
-
-Per il progetto di strutture di aggregati leggeri si applicano le norme di cui ai §§ da 4.1.1 a 4.1.11 delle NTC, con le seguenti integrazioni e modifiche.
-
-C4.1.12.1.1 Caratteristiche meccaniche del calcestruzzo
-
-C4.1.12.1.1.1 Resistenza a trazione
-
-Il valore medio della resistenza a trazione semplice (assiale), in mancanza di sperimentazione diretta, può essere assunto pari a:
 </OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.12" number="C4.1.12" latex="f_{lctm} = 0.30 \eta_1 f_{lck}^{2/3} \quad \text{per cls} \leq LC 50/55" />
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.13" number="C4.1.13" latex="f_{lctm} = 2.12 \ln[1 + (f_{lcm}/10)] \quad \text{per cls} > LC 50/55" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-dove:
-η₁ = 0,40 + 0,60 ρ/2200;
-ρ = valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza in kg/m³;
-flck = valore della resistenza cilindrica caratteristica a compressione in N/mm²;
-flcm = valore della resistenza media cilindrica a compressione in N/mm², pari a:
-- 22 N/mm² per LC16/20
-- flck + 8 N/mm² per flck > 20 N/mm²
-
-I valori caratteristici della resistenza a trazione semplice, corrispondenti ai frattili 0,05 e 0,95, possono assumersi pari a:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.14a" number="C4.1.14a" latex="f_{lctk,0.05} = 0.7 f_{lctm}" />
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.14b" number="C4.1.14b" latex="f_{lctk,0.95} = 1.3 f_{lctm}" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-La resistenza a trazione di calcolo è pari a:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.15" number="C4.1.15" latex="f_{lctd} = 0.85 f_{lctk} / \gamma_C" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-C4.1.12.1.1.2 Modulo di elasticità
-
-In assenza di sperimentazione diretta, una stima del modulo elastico secante a compressione a 28 giorni può essere ottenuta dall'espressione:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.16" number="C4.1.16" latex="E_{lcm} = 22000 \left(\frac{f_{lcm}}{10}\right)^{0.3} \left(\frac{\rho}{2200}\right)^2 \; \text{N/mm}^2" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-essendo flcm in N/mm² e ρ in kg/m³.
-
-C4.1.12.1.2 Verifiche agli stati limite di esercizio
-
-Le verifiche nei confronti degli stati limite di esercizio si eseguono conformemente alle indicazioni valide per le strutture di calcestruzzo ordinario, adeguate in relazione alle specificità dei calcestruzzi di aggregati leggeri.
-
-C4.1.12.1.2.1 Verifiche di deformabilità
-
-Le verifiche di deformabilità possono essere omesse quando le snellezze delle membrature, divise per il coefficiente ηE definito al § C4.1.12.1.1.2, soddisfano le limitazioni indicate al § C4.1.2.2.2.
-
-C4.1.12.1.3 Verifiche agli stati limite ultimi
-
-C4.1.12.1.3.1 Resistenza a sforzo normale e flessione (elementi monodimensionali)
-
-Valgono le ipotesi di base di cui al § 4.1.2.1.2 delle NTC.
-
-Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare il modello parabola-rettangolo (a) o triangolo-rettangolo (b), entrambi raffigurati nella Figura C4.1.13.
-</OfficialText>
-
-<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.13" alt="[PROPOSTA: (a) Modello parabola-rettangolo: tratto parabolico fino a εc2, poi plateau a flcd fino a εcu. (b) Modello triangolo-rettangolo: tratto lineare fino a εc3, poi plateau a flcd fino a εcu.]" caption="Figura C4.1.13 - Modelli σ-ε per il calcestruzzo di aggregati leggeri" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-I limiti deformativi εc2, εc3 ed εcu possono essere assunti:
-- per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55 pari a:
-  εc2 = 0,20%
-  εc3 = 0,175%
-  εcu = η₁ · 0,35%, essendo η₁ = 0,40 + 0,60 ρ/2200
-- per calcestruzzi di classe di resistenza pari a LC 55/60 pari a:
-  εc2 = 0,22%
-  εc3 = 0,18%
-  εcu = η₁ · 0,31%
-
-C4.1.12.1.3.2 Resistenza nei confronti di sollecitazioni taglianti
-
-C4.1.12.1.3.2.1 Elementi senza armature trasversali resistenti al taglio
-
-Valgono le limitazioni di utilizzo di elementi privi di armature resistenti a taglio, stabilite al § 4.1.2.3.5.1 delle NTC per i calcestruzzi ordinari.
-
-La resistenza a taglio (espressa in N) di un elemento fessurato da momento flettente si può valutare attraverso la formula seguente:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.17" number="C4.1.17" latex="V_{Rd} = \max\left\{ \left[0.18 k (100 \rho_l f_{lck})^{1/3} / \gamma_C \right] b_w d, \; \eta_1 v_{l,min} b_w d \right\}" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-nella quale:
-η₁ = 0,40 + 0,60 ρ/2200
-k = 1 + (200/d)^(1/2) ≤ 2
-vl,min = 0,030 k^(3/2) flck^(1/2)
-essendo:
-d l'altezza utile della sezione (in mm);
-ρl = Asl/(bw d) il rapporto geometrico di armatura longitudinale (≤ 0,02);
-σcp = NEd/Ac la tensione media di compressione nella sezione (≤ 0,2 fcd);
-bw la larghezza minima della sezione (in mm).
-
-Nel caso di elementi di calcestruzzo armato precompresso disposti in semplice appoggio, nelle zone non fessurate da momento flettente (con tensioni di trazione non superiori a flctd) la resistenza può valutarsi, in via semplificata, con la formula [4.1.24] delle NTC, sostituendo a fctd il corrispondente valore flctd per il calcestruzzo di aggregati leggeri.
-
-In ogni caso il taglio di calcolo VEd non dovrà superare la limitazione seguente, nella quale la caratteristica resistente è valutata con riferimento alla condizione fessurata del calcestruzzo:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.18" number="C4.1.18" latex="V_{Ed} \leq 0.5 \eta_1 b_w d \nu_l f_{lcd}" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-Nella [C4.1.18] νl è il fattore di riduzione della resistenza del calcestruzzo fessurato per sollecitazioni taglianti dato da:
-</OfficialText>
-
-<Formula id="circ2019:c4/s4.1/eq-c4.1.19" number="C4.1.19" latex="\nu_l = 0.5 \eta_1 (1 - f_{lck}/250)" />
-
-<OfficialText hash="[DA_VERIFICARE]">
-dove la resistenza caratteristica a trazione del calcestruzzo leggero flck è espressa in N/mm².
-
-C4.1.12.1.3.2.2 Elementi con armature trasversali resistenti al taglio
-
-Si applicano le regole di calcolo di cui al § 4.1.2.3.5.2 delle NTC, sostituendo f'cd con il valore 0,40 flcd.
-
-C4.1.12.1.3.2.3 Resistenza nei confronti di sollecitazioni torcenti
-
-Si applicano le regole di calcolo di cui al § 4.1.2.3.6 delle NTC, sostituendo nella formula [4.1.35] f'cd con il valore f'lcd = 0,40 flcd.
-
-C4.1.12.1.4 Dettagli costruttivi
-
-C4.1.12.1.4.1 Diametro massimo delle barre e dei trefoli
-
-Le armature ordinarie ammesse sono barre ad aderenza migliorata o reti elettrosaldate. Il diametro delle barre non può superare 32 mm.
-
-Per barre raggruppate, il diametro equivalente del raggruppamento assunto pari a φn = φ√n non deve eccedere i 45 mm.
-
-Per strutture precompresse a cavi pretesi si dovranno impiegare trefoli con diametro inferiore o uguale a ½".
-
-C4.1.12.1.4.2 Raggio di curvatura delle barre
-
-Il diametro dei mandrini per la piegatura delle barre deve essere incrementato del 50% rispetto al valore ammesso per il calcestruzzo ordinario. In particolare, i valori minimi dei diametri dei mandrini da utilizzare in relazione al diametro delle barre è dato da:
-per φ ≤ 16 mm: D ≥ 6 φ
-per φ > 16 mm: D ≥ 11 φ.
-
-C4.1.12.1.4.3 Ancoraggio delle barre e sovrapposizioni
-
-Il calcolo della tensione ultima di aderenza di barre inserite in getti di calcestruzzo leggero strutturale può essere valutato con riferimento alla formulazione valida per il calcestruzzo ordinario, sostituendo il valore di fctk, che compare nella Formula [4.1.7] delle NTC, con il valore flctk.
-</OfficialText>
-
-<CircularCommentary for="ntc2018:c4/s4.1" confirmation="suggested" linkKind="direct" />
-
-<ReviewWarning markers={["FORMULA_NON_LEGGIBILE", "FIGURA_MANCANTE", "TABELLA_DA_REVISIONARE"]} />

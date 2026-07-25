@@ -1,0 +1,85 @@
+---
+id: ntc2018:c4/s4.1/p4.1.2.1.2
+slug: ntc2018-c4-s4-1-p4-1-2-1-2
+kind: paragraph
+numbering: "4.1.2.1.2"
+title: "Diagrammi di progetto dei materiali (σ-ε calcestruzzo e acciaio)"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [77, 78, 79]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c4/s4.1/eq4.1.8"
+  - "ntc2018:c4/s4.1/eq4.1.9"
+  - "ntc2018:c4/s4.1/eq4.1.10"
+  - "ntc2018:c4/s4.1/eq4.1.11"
+  - "ntc2018:c4/s4.1/eq4.1.12"
+tables: []
+figures:
+  - "ntc2018:c4/s4.1/fig4.1.1"
+  - "ntc2018:c4/s4.1/fig4.1.2"
+  - "ntc2018:c4/s4.1/fig4.1.3"
+refsOut: []
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [4.1.8]-[4.1.12.i] per confinamento da verificare su scansione originale."
+  - marker: "FIGURA_MANCANTE"
+    note: "Figure 4.1.1, 4.1.2, 4.1.3 non disponibili come immagini."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+4.1.2.1.2 Diagrammi di progetto dei materiali
+
+4.1.2.1.2.1 Diagrammi di progetto tensione-deformazione del calcestruzzo
+
+Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, definiti in base alla resistenza di progetto fcd e alla deformazione ultima di progetto εcu.
+
+In Fig. 4.1.1 sono rappresentati i modelli σ-ε per il calcestruzzo: (a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block).
+</OfficialText>
+
+<NormativeFigure id="ntc2018:c4/s4.1/fig4.1.1" alt="[PROPOSTA: Tre modelli σ-ε: (a) parabola-rettangolo con εc2 ed εcu, (b) triangolo-rettangolo con εc3 ed εcu, (c) stress block rettangolare con εc4 ed εcu.]" caption="Fig. 4.1.1 - Modelli σ-ε per il calcestruzzo" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Per classi di resistenza ≤ C50/60: εc2 = 0,20%, εcu = 0,35%, εc3 = 0,175%, εc4 = 0,07%.
+Per classi > C50/60: εc2 = 0,20% + 0,0085%(fck - 50)^0,53, εcu = 0,26% + 3,5%[(90 - fck)/100]^4, εc3 = 0,175% + 0,055%[(fck - 50)/40], εc4 = 0,2·εcu.
+Per distribuzioni di compressione approssimativamente uniformi, si assume εc2 anziché εcu.
+
+Calcestruzzo confinato
+
+Per il diagramma tensione-deformazione del calcestruzzo confinato è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale in stato triassiale. Il confinamento è normalmente generato da staffe chiuse e legature interne, che possono raggiungere la tensione di snervamento a causa della dilatazione laterale del calcestruzzo.
+</OfficialText>
+
+<NormativeFigure id="ntc2018:c4/s4.1/fig4.1.2" alt="[PROPOSTA: Diagramma σ-ε con tre curve: A calcestruzzo non confinato, B transizione, C calcestruzzo confinato. Differenza tra fck e fck,c, tra εc2 e εc2,c, tra εcu e εcu,c.]" caption="Fig. 4.1.2 - Modelli σ-ε per il calcestruzzo confinato" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+In assenza di più precise determinazioni, la resistenza caratteristica e le deformazioni del calcestruzzo confinato sono valutate con le relazioni [4.1.8]-[4.1.12], dove σ2 è la pressione laterale efficace di confinamento.
+
+La pressione efficace di confinamento σ2 = α·σl [4.1.12.a], con α coefficiente di efficienza (≤ 1). La pressione laterale σl è determinata per sezioni rettangolari [4.1.12.b-c] e circolari [4.1.12.d]. Il coefficiente α = αn·αs [4.1.12.e] con αn da [4.1.12.f] o [4.1.12.h] e αs da [4.1.12.g] o [4.1.12.i].
+
+4.1.2.1.2.2 Diagrammi di progetto tensione-deformazione dell'acciaio
+
+Per l'acciaio è possibile adottare modelli definiti in base a εud = 0,9εuk, fyd e k = (ft/fy)k. In Fig. 4.1.3 sono rappresentati i modelli: (a) bilineare finito con incrudimento; (b) elastico-perfettamente plastico indefinito.
+</OfficialText>
+
+<NormativeFigure id="ntc2018:c4/s4.1/fig4.1.3" alt="[PROPOSTA: Due modelli σ-ε per acciaio: (a) bilineare con ramo incrudente fino a εud e k·fyd, (b) elastico-perfettamente plastico con plateau indefinito a fyd.]" caption="Fig. 4.1.3 - Modelli σ-ε per l'acciaio" />

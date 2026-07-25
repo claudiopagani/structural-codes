@@ -1,0 +1,72 @@
+---
+id: ntc2018:c4/s4.1/p4.1.11.1
+slug: ntc2018-c4-s4-1-p4-1-11-1
+kind: paragraph
+numbering: "4.1.11.1"
+title: "Valutazione della sicurezza – Norme di calcolo"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [90, 91]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c4/s4.1/eq4.1.50"
+tables: []
+figures: []
+refsOut:
+  - targetId: "ntc2018:c4/s4.1/p4.1.2.3.4.1"
+    scope: internal
+    rawText: "ipotesi tratte dal § 4.1.2.3.4.1"
+  - targetId: "ntc2018:c4/s4.1/p4.1.2.1.2.1"
+    scope: internal
+    rawText: "modello (c) di § 4.1.2.1.2.1"
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formula [4.1.50] e formule per taglio da verificare su scansione originale."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+4.1.11.1 Valutazione della sicurezza – Norme di calcolo
+
+Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una sezione rettangolare di lati a e b soggetta ad una forza normale NEd con una eccentricità e nella direzione del lato a la verifica di resistenza allo SLU, con il modello (c) di § 4.1.2.1.2.1, si pone con
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.50" number="[4.1.50]" latex="N_{Ed} \leq N_{Rd} = f_{cd} \cdot b \cdot x" />
+
+con x = a − 2e.
+
+La verifica di resistenza della stessa sezione rettangolare di lati a e b soggetta anche ad uno sforzo di taglio VEd nella direzione del lato a si pone con
+VEd ≤ VRd = fcvd · b · x / 1,5
+
+con
+fcvd = √(f²ct1d + σc · fct1d) per σc ≤ σc,lim
+fcvd = √(f²ct1d + σc · fct1d − τ²/4) per σc > σc,lim
+
+dove
+σc = NEd / (b · x)
+τ = σc − σc,lim
+σc,lim = fcd − 2 √(f²ct1d + fcd · fct1d)
+
+dove
+fct1d = 0,85 fctd
+è la resistenza a trazione di progetto per calcestruzzo non armato o debolmente armato.
+</OfficialText>

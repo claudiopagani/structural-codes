@@ -1,0 +1,78 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.12.1
+slug: circ2019-c4-s4-1-p-c4-1-12-1
+kind: paragraph
+numbering: "C4.1.12.1"
+title: "Norme di calcolo per calcestruzzo di aggregati leggeri (LC)"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1", note: "Commento al §4.1.12.1 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [96, 97, 98, 99]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas:
+  - "circ2019:c4/s4.1/eq-c4.1.12"
+  - "circ2019:c4/s4.1/eq-c4.1.13"
+  - "circ2019:c4/s4.1/eq-c4.1.14a"
+  - "circ2019:c4/s4.1/eq-c4.1.14b"
+  - "circ2019:c4/s4.1/eq-c4.1.15"
+  - "circ2019:c4/s4.1/eq-c4.1.16"
+  - "circ2019:c4/s4.1/eq-c4.1.17"
+  - "circ2019:c4/s4.1/eq-c4.1.18"
+  - "circ2019:c4/s4.1/eq-c4.1.19"
+tables:
+  - "circ2019:c4/s4.1/tab-c4.1.v"
+  - "circ2019:c4/s4.1/tab-c4.1.vi"
+figures:
+  - "circ2019:c4/s4.1/fig-c4.1.13"
+refsOut:
+  - { targetId: "ntc2018:c4/s4.1/p4.1", scope: "explicit", rawText: "§§ 4.1.1-4.1.11 NTC" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [C4.1.12]-[C4.1.19] per calcestruzzo LC da verificare su scansione originale."
+  - marker: "FIGURA_MANCANTE"
+    note: "Figura C4.1.13 (modelli σ-ε LC) non disponibile."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.12 CALCESTRUZZO DI AGGREGATI LEGGERI (LC)
+
+Il presente Capitolo si applica ai calcestruzzi di aggregati leggeri di natura minerale, artificiale o naturale, con esclusione dei calcestruzzi aerati. Classi di resistenza ammesse: da LC 16/18 fino a LC 55/60 (Tabella C4.1.V). Classi di massa volumica: D1,5-D2,0 (Tabella C4.1.VI).
+
+C4.1.12.1 NORME DI CALCOLO
+
+Per il progetto si applicano le norme di cui ai §§ 4.1.1-4.1.11 NTC con le seguenti integrazioni.
+
+C4.1.12.1.1.1 Resistenza a trazione: flctm = 0,30 η₁ flck^(2/3) per cls ≤ LC 50/55 [C4.1.12]; flctm = 2,12 ln[1+(flcm/10)] per cls > LC 50/55 [C4.1.13], con η₁ = 0,40 + 0,60 ρ/2200. Frattili: flctk,0.05 = 0,7 flctm [C4.1.14a], flctk,0.95 = 1,3 flctm [C4.1.14b]. Resistenza di calcolo: flctd = 0,85 flctk / γC [C4.1.15].
+
+C4.1.12.1.1.2 Modulo di elasticità: Elcm = 22000 (flcm/10)^0,3 (ρ/2200)² N/mm² [C4.1.16].
+
+C4.1.12.1.2 Verifiche SLE: come calcestruzzo ordinario con adattamenti. Deformabilità omessa se snellezze/ηE soddisfano limiti C4.1.2.2.2.
+
+C4.1.12.1.3.1 Resistenza a sforzo normale e flessione: modelli parabola-rettangolo (a) o triangolo-rettangolo (b) (Figura C4.1.13). Limiti εc2, εc3, εcu funzione della classe LC.
+
+C4.1.12.1.3.2 Taglio: VRd = max{[0,18 k (100ρl flck)^(1/3)/γC] bw d, η₁ vl,min bw d} [C4.1.17], con vl,min = 0,030 k^(3/2) flck^(1/2). Limitazione VEd ≤ 0,5 η₁ bw d νl flcd [C4.1.18], νl = 0,5 η₁ (1 - flck/250) [C4.1.19]. Per elementi con staffe: si applica §4.1.2.3.5.2 NTC con f'cd = 0,40 flcd. Torsione: §4.1.2.3.6 NTC con f'lcd = 0,40 flcd.
+
+C4.1.12.1.4 Dettagli: φmax = 32 mm, φeq raggruppamento ≤ 45 mm, trefoli ≤ ½". Mandrini: D ≥ 6φ (φ≤16), D ≥ 11φ (φ>16). Ancoraggio: formula [4.1.7] NTC con flctk al posto di fctk.
+</OfficialText>

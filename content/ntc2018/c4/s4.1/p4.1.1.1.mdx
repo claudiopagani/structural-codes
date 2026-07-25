@@ -1,0 +1,74 @@
+---
+id: ntc2018:c4/s4.1/p4.1.1.1
+slug: ntc2018-c4-s4-1-p4-1-1-1
+kind: paragraph
+numbering: "4.1.1.1"
+title: "Analisi elastica lineare"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [71]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c4/s4.1/eq4.1.1"
+  - "ntc2018:c4/s4.1/eq4.1.2"
+tables: []
+figures:
+  - "ntc2018:c4/s4.1/fig4.1.4"
+refsOut:
+  - targetId: "ntc2018:c4/s4.1/p4.1.2.1.2.1"
+    scope: internal
+    rawText: "εcu è definita in § 4.1.2.1.2.1"
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [4.1.1]-[4.1.2] da verificare su scansione originale; δ, εcu da confermare."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+4.1.1.1 Analisi elastica lineare
+
+L'analisi elastica lineare può essere usata per valutare gli effetti delle azioni sia per gli stati limite di esercizio sia per gli stati limite ultimi.
+
+Per la determinazione degli effetti delle azioni, le analisi saranno effettuate assumendo:
+– sezioni interamente reagenti con rigidezze valutate riferendosi al solo calcestruzzo;
+– relazioni tensione deformazione lineari;
+– valori medi del modulo d'elasticità.
+
+Per la determinazione degli effetti delle deformazioni termiche, degli eventuali cedimenti e del ritiro, le analisi saranno effettuate assumendo:
+– per gli stati limite ultimi, rigidezze ridotte valutate ipotizzando che le sezioni siano fessurate (in assenza di valutazioni più precise la rigidezza delle sezioni fessurate potrà essere assunta pari alla metà della rigidezza delle sezioni interamente reagenti);
+– per gli stati limite di esercizio, rigidezze intermedie tra quelle delle sezioni interamente reagenti e quelle delle sezioni fessurate.
+
+Per le sole verifiche agli stati limite ultimi, i risultati dell'analisi elastica possono essere modificati con una ridistribuzione dei momenti, nel rispetto dell'equilibrio e delle capacità di rotazione plastica delle sezioni dove si localizza la ridistribuzione. In particolare la ridistribuzione non è ammessa per i pilastri e per i nodi dei telai, è consentita per le travi continue, le travi di telai in cui possono essere trascurati gli effetti del secondo ordine e le solette, a condizione che le sollecitazioni di flessione siano prevalenti ed i rapporti tra le luci di campate contigue siano compresi nell'intervallo 0,5-2,0.
+
+Per le travi e le solette che soddisfano le condizioni dette, la ridistribuzione dei momenti flettenti può effettuarsi senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione risulti 1 ≥ δ ≥ 0,70.
+
+I valori di δ si ricavano dalle espressioni:
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.1" number="[4.1.1]" latex="\delta \geq 0,44 + 1,25 \cdot (0,6 + 0,0014/\varepsilon_{cu}) \cdot x/d \quad \text{per } f_{ck} \leq 50 \text{ MPa}" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.2" number="[4.1.2]" latex="\delta \geq 0,54 + 1,25 \cdot (0,6 + 0,0014/\varepsilon_{cu}) \cdot x/d \quad \text{per } f_{ck} > 50 \text{ MPa}" />
+
+dove x è l'altezza della zona compressa dopo la ridistribuzione, d è l'altezza utile della sezione (Fig. 4.1.4) ed εcu è definita in § 4.1.2.1.2.1.
+
+Per le travi continue, le travi di telai in cui possono essere trascurati gli effetti del secondo ordine e le solette, il rapporto x/d nelle sezioni critiche non deve comunque superare il valore 0,45 per fck ≤ 50 MPa e 0,35 per fck > 50 MPa.
+</OfficialText>

@@ -1,0 +1,151 @@
+---
+id: ntc2018:c4/s4.1/p4.1.2.1.2.1
+slug: ntc2018-c4-s4-1-p4-1-2-1-2-1
+kind: paragraph
+numbering: "4.1.2.1.2.1"
+title: "Diagrammi di progetto tensione-deformazione del calcestruzzo"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [73, 74, 75]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c4/s4.1/eq4.1.8"
+  - "ntc2018:c4/s4.1/eq4.1.9"
+  - "ntc2018:c4/s4.1/eq4.1.10"
+  - "ntc2018:c4/s4.1/eq4.1.11"
+  - "ntc2018:c4/s4.1/eq4.1.12"
+  - "ntc2018:c4/s4.1/eq4.1.12.a"
+  - "ntc2018:c4/s4.1/eq4.1.12.b"
+  - "ntc2018:c4/s4.1/eq4.1.12.c"
+  - "ntc2018:c4/s4.1/eq4.1.12.d"
+  - "ntc2018:c4/s4.1/eq4.1.12.e"
+  - "ntc2018:c4/s4.1/eq4.1.12.f"
+  - "ntc2018:c4/s4.1/eq4.1.12.g"
+  - "ntc2018:c4/s4.1/eq4.1.12.h"
+  - "ntc2018:c4/s4.1/eq4.1.12.i"
+tables: []
+figures:
+  - "ntc2018:c4/s4.1/fig4.1.1"
+  - "ntc2018:c4/s4.1/fig4.1.2"
+refsOut: []
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [4.1.8]-[4.1.12.i] da verificare su scansione originale; simboli greci e pedici da confermare."
+  - marker: "FIGURA_MANCANTE"
+    note: "Fig. 4.1.1 (modelli σ-ε calcestruzzo) e Fig. 4.1.2 (modelli σ-ε cls confinato) da estrarre dal PDF."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+4.1.2.1.2.1 Diagrammi di progetto tensione-deformazione del calcestruzzo
+
+Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, definiti in base alla resistenza di progetto fcd e alla deformazione ultima di progetto εcu.
+
+<NormativeFigure id="ntc2018:c4/s4.1/fig4.1.1" alt="Modelli σ-ε per il calcestruzzo" caption="Fig. 4.1.1 – Modelli σ-ε per il calcestruzzo: (a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block)" />
+
+In particolare, per le classi di resistenza pari o inferiore a C50/60 si può porre:
+εc2 = 0,20%  εcu = 0,35%
+εc3 = 0,175%  εc4 = 0,07%
+
+Per le classi di resistenza superiore a C50/60 si può porre:
+εc2 = 0,20% + 0,0085%(fck − 50)^0,53
+εcu = 0,26% + 3,5% [(90 − fck)/100]^4
+εc3 = 0,175% + 0,055% [(fck − 50)/40]
+εc4 = 0,2 · εcu
+
+purché si adottino opportune limitazioni quando si usa il modello (c).
+
+Per sezioni o parti di sezioni soggette a distribuzioni di tensione di compressione approssimativamente uniformi, si assume per la deformazione ultima di progetto il valore εc2 anziché εcu.
+
+**Calcestruzzo confinato**
+
+Per il diagramma tensione-deformazione del calcestruzzo confinato è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale in stato triassiale. Questi modelli possono essere adottati nel calcolo sia della resistenza ultima sia della duttilità delle sezioni e devono essere applicati alle sole zone confinate della sezione.
+
+Il confinamento del calcestruzzo è normalmente generato da staffe chiuse e legature interne, che possono raggiungere la tensione di snervamento a causa della dilatazione laterale del calcestruzzo stesso a cui tendono ad opporsi. Il confinamento consente al calcestruzzo di raggiungere tensioni e deformazioni più elevate di quelle proprie del calcestruzzo non confinato. Le altre caratteristiche meccaniche si possono considerare inalterate.
+
+<NormativeFigure id="ntc2018:c4/s4.1/fig4.1.2" alt="Modelli σ-ε per il calcestruzzo confinato" caption="Fig. 4.1.2 – Modelli σ-ε per il calcestruzzo confinato" />
+
+In assenza di più precise determinazioni basate su modelli analitici di comprovata validità, è possibile utilizzare la relazione tensione-deformazione rappresentata in Fig. 4.1.2 (dove le deformazioni di compressione sono assunte positive), in cui la resistenza caratteristica e le deformazioni del calcestruzzo confinato sono valutate secondo le relazioni seguenti:
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.8" number="[4.1.8]" latex="f_{ck,c} = f_{ck} \cdot (1,0 + 5,0 \cdot \sigma_2/f_{ck}) \quad \text{per } \sigma_2 \leq 0,05 f_{ck}" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.9" number="[4.1.9]" latex="f_{ck,c} = f_{ck} \cdot (1,125 + 2,5 \cdot \sigma_2/f_{ck}) \quad \text{per } \sigma_2 > 0,05 f_{ck}" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.10" number="[4.1.10]" latex="\varepsilon_{c2,c} = \varepsilon_{c2} \cdot (f_{ck,c}/f_{ck})^2" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.11" number="[4.1.11]" latex="\varepsilon_{cu2,c} = \varepsilon_{cu} + 0,2 \cdot \sigma_2/f_{ck}" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12" number="[4.1.12]" latex="f_{cd,c} = \alpha_{cc} \cdot f_{ck,c} / \gamma_c" />
+
+essendo σ2 la pressione laterale efficace di confinamento allo SLV mentre εc2 ed εcu sono valutate in accordo al § 4.1.2.1.2.1.
+
+La pressione efficace di confinamento σ2 può essere determinata attraverso la relazione seguente:
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.a" number="[4.1.12.a]" latex="\sigma_2 = \alpha \cdot \sigma_l" />
+
+dove α è un coefficiente di efficienza (≤ 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il volume Vc dell'elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e σl è la pressione di confinamento esercitata dalle armature trasversali.
+
+La pressione laterale può essere valutata, per ogni direzione principale della sezione, direttamente da considerazioni di equilibrio sul nucleo confinato, in corrispondenza della tensione di snervamento dell'armatura trasversale, come di seguito indicato.
+
+**a) Per sezioni rettangolari**
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.b" number="[4.1.12.b]" latex="\sigma_{l,x} = \frac{A_{st,x} \cdot f_{yk,st}}{b_y \cdot s}; \quad \sigma_{l,y} = \frac{A_{st,y} \cdot f_{yk,st}}{b_x \cdot s}" />
+
+dove Ast,x e Ast,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali x e y, bx e by sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell'acciaio delle staffe.
+
+La pressione laterale equivalente σl può essere determinata attraverso la relazione:
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.c" number="[4.1.12.c]" latex="\sigma_l = \sqrt{\sigma_{l,x} \cdot \sigma_{l,y}}" />
+
+**b) Per sezioni circolari**
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.d" number="[4.1.12.d]" latex="\sigma_l = \frac{2 \cdot A_{st} \cdot f_{yk,st}}{D_0 \cdot s}" />
+
+dove: Ast è l'area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).
+
+Il coefficiente di efficienza α può essere valutato come prodotto di un termine relativo alla disposizione delle armature trasversali nel piano della sezione e di un termine relativo al passo delle staffe, attraverso la relazione:
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.e" number="[4.1.12.e]" latex="\alpha = \alpha_n \cdot \alpha_s" />
+
+con:
+
+**a) per sezioni rettangolari**
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.f" number="[4.1.12.f]" latex="\alpha_n = 1 - \sum_{i=1}^{n} b_i^2 / (6 \cdot b_x \cdot b_y)" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.g" number="[4.1.12.g]" latex="\alpha_s = (1 - s/2b_x) \cdot (1 - s/2b_y)" />
+
+dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive contenute.
+
+**b) per sezioni circolari**
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.h" number="[4.1.12.h]" latex="\alpha_n = 1" />
+
+<Formula id="ntc2018:c4/s4.1/eq4.1.12.i" number="[4.1.12.i]" latex="\alpha_s = (1 - s/2D_0)^\beta" />
+
+dove: β = 2 per staffe circolari singole, β = 1 per staffa a spirale.
+
+Nella valutazione della capacità della sezione il contributo del copriferro non deve essere considerato nelle zone esterne al nucleo confinato in cui la deformazione massima supera la deformazione ultima del calcestruzzo non confinato.
+
+Nel caso di utilizzo di rinforzi appositamente progettati per il confinamento degli elementi è possibile considerare i modelli di comportamento riportati in riferimenti tecnici di comprovata validità.
+</OfficialText>

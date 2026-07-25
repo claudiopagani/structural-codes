@@ -1,0 +1,91 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.2.1.2.1
+slug: circ2019-c4-s4-1-p-c4-1-2-1-2-1
+kind: paragraph
+numbering: "C4.1.2.1.2.1"
+title: "Diagrammi di progetto tensione-deformazione del calcestruzzo"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1", note: "Commento al §4.1.2.1.2 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [88, 89, 90]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas: []
+tables: []
+figures:
+  - "circ2019:c4/s4.1/fig-c4.1.7"
+  - "circ2019:c4/s4.1/fig-c4.1.8"
+  - "circ2019:c4/s4.1/fig-c4.1.9"
+refsOut:
+  - { targetId: "ntc2018:c7/s7.4", scope: "explicit", rawText: "§ 7.4.6" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FIGURA_MANCANTE"
+    note: "Figure C4.1.7, C4.1.8, C4.1.9 non disponibili come immagini."
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formula σ-ε confinato da Figura C4.1.9 degradata da estrazione PDF."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.2.1.2.1 Diagrammi di progetto tensione-deformazione del calcestruzzo
+
+La principale novità rispetto alle NTC precedenti è costituita dai diagrammi di progetto tensione-deformazione per il calcestruzzo confinato.
+
+Il confinamento del calcestruzzo, che si consegue utilizzando staffe chiuse, legature interne e dettagli costruttivi in accordo con quanto illustrato nel § 7.4.6, ha lo scopo di incrementare la resistenza ultima e la duttilità delle sezioni, per quanto di competenza del calcestruzzo.
+
+Per il diagramma tensione-deformazione del calcestruzzo confinato, la norma consente l'utilizzo di modelli analitici di comprovata validità, che siano rappresentativi del reale comportamento del materiale in stato di tensione triassiale. In assenza di specifiche valutazioni le NTC, in linea con l'UNI EN 1998-2, forniscono un diagramma tensione-deformazione per il calcestruzzo confinato del tipo parabola-rettangolo. Tale legame descrive il comportamento del calcestruzzo confinato in condizioni di assial-simmetria, esprimendo la pressione laterale di confinamento attraverso l'unico parametro σl. Per la sezione circolare tale parametro può essere ricavato in base a considerazioni di equilibrio su una porzione compresa in un passo staffe, come in Figura C4.1.7a.
+
+Per la sezione rettangolare, in maniera analoga, si determinano le pressioni di confinamento lungo le due direzioni principali della sezione, come illustrato in Figura C4.1.7b.
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.7" alt="[PROPOSTA: (a) Sezione circolare: schema per calcolo pressione laterale di confinamento. (b) Sezione rettangolare: pressioni σlx e σly lungo le due direzioni.]" caption="Figura C4.1.7 - Pressione laterale di confinamento: (a) sezioni circolari, (b) sezioni rettangolari" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Nel caso di sezione rettangolare, σl è dato dalla radice quadrata di σlx·σly (Eq. 4.1.12c) e rappresenta la pressione laterale equivalente.
+
+La pressione efficace di confinamento σe si ottiene a partire dalla pressione laterale di confinamento, per mezzo di un coefficiente riduttivo espresso dal rapporto tra il volume di calcestruzzo effettivamente confinato e il volume di calcestruzzo racchiuso dalle staffe, come indicato in Figura C4.1.8.
+</OfficialText>
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.8" alt="[PROPOSTA: Schema in sezione e pianta di colonna con staffe che illustra il rapporto area confinata / area racchiusa.]" caption="Figura C4.1.8 - Rapporto tra il volume di calcestruzzo effettivamente confinato e il volume di calcestruzzo racchiuso dalle staffe" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Nell'utilizzo del legame tensione-deformazione del calcestruzzo confinato proposto dalle NTC, le resistenze dei materiali sono quelle caratteristiche, a meno di specifiche indicazioni riportate in altri Capitoli delle NTC o della circolare.
+
+In alternativa al legame parabola-rettangolo, in particolare per le verifiche di duttilità nelle quali assume più importanza la descrizione del tratto post-picco del legame, è possibile utilizzare il legame riportato nell'Annex E delle UNI EN 1998-2. Tale legame è rappresentato in Figura C4.1.9.
+
+Nella Figura C4.1.9, il pedice "0" dopo la virgola indica il calcestruzzo non confinato, mentre il pedice "c" indica il calcestruzzo confinato.
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.9a" number="omesso" latex="[FORMULA_NON_LEGGIBILE]" />
+
+<NormativeFigure id="circ2019:c4/s4.1/fig-c4.1.9" alt="[PROPOSTA: Diagramma σ-ε calcestruzzo confinato con ramo di softening. Due curve: calcestruzzo confinato (fc,c, εc2,c, εcu,c) e non confinato (fc,0, εc2,0, εcu,0).]" caption="Figura C4.1.9 - Legame tensione-deformazione del calcestruzzo confinato con ramo 'softening'" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Nelle relazioni riportate in Figura C4.1.9, la pressione laterale efficace è determinata attraverso le espressioni [4.1.12.a ÷ 4.1.12.i], utilizzando resistenze coerenti con quelle utilizzate nelle verifiche.
+
+Quando il calcestruzzo è confinato, oltre che da armature trasversali, anche attraverso interventi esterni alla sezione, per descriverne il comportamento possono essere utilizzati modelli di comprovata validità. Sia nelle verifiche di resistenza sia in quelle di duttilità, il legame tensione-deformazione per il calcestruzzo confinato deve essere utilizzato solo per le zone confinate; pertanto, nelle analisi devono essere utilizzati legami diversi per il nucleo confinato e per le zone esterne alle staffe (copriferro). Un unico legame può invece essere utilizzato nel caso di confinamento esterno alla sezione.
+</OfficialText>
+
+<CircularCommentary for="ntc2018:c4/s4.1/p4.1" confirmation="suggested" linkKind="direct" />
+
+<ReviewWarning markers={["FIGURA_MANCANTE", "FORMULA_NON_LEGGIBILE"]} />

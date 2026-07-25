@@ -1,0 +1,81 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.2.2.2
+slug: circ2019-c4-s4-1-p-c4-1-2-2-2
+kind: paragraph
+numbering: "C4.1.2.2.2"
+title: "Stato limite di deformazione"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1", note: "Commento al §4.1.2.2.2 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [90, 91]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas:
+  - "circ2019:c4/s4.1/eq-c4.1.2"
+  - "circ2019:c4/s4.1/eq-c4.1.3"
+  - "circ2019:c4/s4.1/eq-c4.1.4"
+tables:
+  - "circ2019:c4/s4.1/tab-c4.1.i"
+figures: []
+refsOut: []
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [C4.1.2]-[C4.1.4] con simboli greci degradati da estrazione PDF."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.2.2.2 Stato limite di deformazione
+
+Il calcolo della deformazione flessionale di solai e travi si effettua, in genere, mediante integrazione delle curvature, tenendo conto della viscosità del calcestruzzo e, se del caso, degli effetti del ritiro. Si considera lo stato non fessurato per tutte le parti della struttura per le quali, nelle condizioni di carico considerate, le tensioni di trazione nel calcestruzzo non superano la sua resistenza media fctm a trazione. Per le altre parti si fa riferimento allo stato fessurato, potendosi considerare l'effetto irrigidente del calcestruzzo teso fra le fessure.
+
+Detto pf il valore assunto dal parametro di deformazione nella membratura interamente fessurata e p il valore nella membratura interamente reagente, il valore di calcolo p* è dato da:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.2" number="C4.1.2" latex="p^* = \zeta p_f + (1 - \zeta) p" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+in cui:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.3" number="C4.1.3" latex="\zeta = 1 - \beta \left(\frac{M_{cr}}{M}\right)^2" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+dove β = Mcr/M (rapporto momento di fessurazione / momento effettivo) o β = Ncr/N (rapporto forza normale di fessurazione / forza normale effettiva), e il coefficiente β assume il valore 1 per carico di breve durata, o 0,50 per carichi permanenti o cicli ripetuti.
+
+Per la salvaguardia dell'aspetto e della funzionalità, le frecce a lungo termine sotto condizione quasi permanente non dovrebbero superare 1/250 della luce. Per l'integrità delle pareti divisorie, il limite è 1/500 della luce.
+
+Per travi e solai con luci ≤ 10 m è possibile omettere la verifica se il rapporto l/h rispetta:
+</OfficialText>
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.4" number="C4.1.4" latex="\frac{l}{h} \leq K \left[11 + \frac{0.015 f_{ck}}{\rho + \rho'}\right] \frac{500 A_{s,eff}}{f_{yk} A_{s,calc}}" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+dove fck e fyk in MPa, ρ e ρ' rapporti armatura tesa/compressa, K coefficiente correttivo dipendente dallo schema strutturale. I valori di K e le snellezze l/h limite sono in Tabella C4.1.I.
+</OfficialText>
+
+<NormativeTable id="circ2019:c4/s4.1/tab-c4.1.i" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Per sezioni a T con larghezza ala ≥ 3 volte spessore anima, i valori vanno ridotti del 20%. Per travi e piastre nervate caricate da tramezzi, i valori vanno moltiplicati per 7/l. Per piastre non nervate con luce > 8,5 m, moltiplicare per 8,5/l. Nel caso di elementi di c.a.p. si può applicare la tabella moltiplicando K per 1,2.
+</OfficialText>

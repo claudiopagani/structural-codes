@@ -1,0 +1,74 @@
+---
+id: circ2019:c4/s4.1/p-c4.1.1.1
+slug: circ2019-c4-s4-1-p-c4-1-1-1
+kind: paragraph
+numbering: "C4.1.1.1"
+title: "ANALISI ELASTICA LINEARE"
+documentId: circ-7-2019-01-21
+editionId: gu-so5-2019-02-11
+versionId: circ2019-originale
+validity: { from: "2019-02-11", to: null }
+vigencyStatus: in-force
+relations:
+  - { type: "clarifies", targetId: "ntc2018:c4/s4.1/p4.1.1.1", note: "Commento al §4.1.1.1 NTC" }
+source:
+  sourceId: circ-7-2019
+  url: "[DA_VERIFICARE]"
+  authority: "Ministero delle Infrastrutture e dei Trasporti — CS.LL.PP."
+  actNumber: "Circolare 21 gennaio 2019, n. 7"
+  actDate: "2019-01-21"
+  gazette: "GU n. 35 del 11-02-2019"
+  gazetteSupplement: "S.O. n. 5"
+  pdfPages: [81, 82]
+  pdfSha256: "f7c3b8d1f443aadb6b3e020b6b6c19813683492ecaadd2c15bf6bf1939aaed7c"
+  acquiredAt: "2026-07-24T22:32:06.415Z"
+  localFile: "raw-sources/circ2019/circolare-7-2019.pdf"
+formulas:
+  - "circ2019:c4/s4.1/eq-c4.1.1"
+tables: []
+figures: []
+refsOut:
+  - { targetId: "ntc2018:c4/s4.1/p4.1.1.1", scope: "explicit", rawText: "§ 4.1.1.1 delle NTC" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash:
+  sourceText: "[DA_VERIFICARE]"
+  normalized: "[DA_VERIFICARE]"
+reliability: unverified
+openIssues: []
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+C4.1.1.1 ANALISI ELASTICA LINEARE
+
+Nel seguito si forniscono alcune precisazioni integrative in riferimento all'analisi elastica lineare con ridistribuzione dei momenti prevista al § 4.1.1.1 delle NTC.
+
+Cautelativamente, le NTC proibiscono la ridistribuzione dei momenti nei pilastri e nei nodi consentendola nelle travi continue (sia appartenenti che non appartenenti a telai), nelle solette e nei telai, alle condizioni seguenti:
+– gli effetti del 2° ordine siano trascurabili;
+– le sollecitazioni di flessione siano prevalenti;
+– i rapporti tra le luci di campate contigue siano compresi nell'intervallo 0,5-2,0.
+
+Nel seguito, per semplicità, si farà riferimento alle sole travi, restando inteso che le relative considerazioni sono immediatamente estendibili alle solette.
+
+La ridistribuzione dei momenti flettenti deve garantire l'equilibrio sia globale sia locale della struttura, ma prefigura possibili plasticizzazioni nelle zone di estremità delle travi; occorre dunque accompagnare la ridistribuzione con una verifica di duttilità. Tale verifica, peraltro, può essere omessa se si rispettano le limitazioni sull'entità delle ridistribuzioni fornite dalle NTC e meglio precisate nel seguito.
+
+La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione soddisfi quanto riportato all'interno del testo normativo.
+
+Il limite δ ≥ 0,70 ha lo scopo di evitare che un eccesso di ridistribuzione possa indurre plasticizzazione allo Stato Limite di Esercizio nelle sezioni in cui si riduce il momento resistente.
+
+Ai fini della ridistribuzione dei momenti negli elementi, in ciascun nodo, l'aliquota dei momenti da ridistribuire, ΔM, non può eccedere il 30% del minore tra i due momenti d'estremità concorrenti al nodo, nel caso di momenti di verso opposto. Nel caso di momenti equiversi, il rapporto δ va riferito al momento che viene ridotto in valore assoluto.
+
+La ridistribuzione dei momenti permette una progettazione strutturale più economica ed efficiente, riducendo i momenti massimi di progetto, e compensando questa diminuzione con l'aumento dei momenti di progetto nelle zone meno sollecitate. Ciò consente di:
+– progettare travi aventi resistenza massima a flessione minore di quella richiesta dall'analisi elastica, grazie ad una più uniforme distribuzione delle resistenze lungo il loro sviluppo;
+– utilizzare meglio la resistenza minima a flessione delle sezioni, dovuta al rispetto delle limitazioni costruttive imposte dalle NTC, quando essa ecceda significativamente le sollecitazioni agenti derivanti dall'analisi elastica.
+
+Il diagramma dei momenti flettenti deve risultare staticamente ammissibile, cioè deve essere equilibrato e soddisfare in ogni sezione la condizione:
+
+<Formula id="circ2019:c4/s4.1/eq-c4.1.1" number="C4.1.1" latex="M_{Ed} \leq M_{Rd}" />
+
+dove MEd è il valore di progetto del momento dopo la ridistribuzione e MRd è il momento resistente di progetto.
+</OfficialText>
