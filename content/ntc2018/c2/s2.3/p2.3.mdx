@@ -1,0 +1,75 @@
+---
+id: ntc2018:c2/s2.3/p2.3
+slug: ntc2018-c2-s2-3-p2-3
+kind: paragraph
+numbering: "2.3"
+title: "VALUTAZIONE DELLA SICUREZZA"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+relations: []
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [40]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c2/s2.3/eq2.2.1"
+  - "ntc2018:c2/s2.3/eq2.2.2"
+tables: []
+figures: []
+refsOut:
+  - { targetId: "ntc2018:c12", scope: "explicit", rawText: "Capitolo 12" }
+  - { targetId: "ntc2018:c11", scope: "explicit", rawText: "Capitolo 11" }
+  - { targetId: "ntc2018:c6/s6.2", scope: "explicit", rawText: "§ 6.2.2" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "DA_VERIFICARE"
+    note: "Refuso nella fonte: '22.3.' con doppia cifra (PDF p. 40). Simboli greci γM, γF, ψ0 da verificare su scansione."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+22.3. VALUTAZIONE DELLA SICUREZZA
+
+Nel seguito sono riportati i criteri del metodo semiprobabilistico agli stati limite basato sull'impiego dei coefficienti parziali, applicabili nella generalità dei casi; tale metodo è detto di primo livello. Per opere di particolare importanza si possono adottare metodi di livello superiore, tratti da documentazione tecnica di comprovata validità di cui al Capitolo 12.
+
+Nel metodo agli stati limite, la sicurezza strutturale nei confronti degli stati limite ultimi deve essere verificata confrontando la capacità di progetto Rd, in termini di resistenza, duttilità e/o spostamento della struttura o della membratura strutturale, funzione delle caratteristiche meccaniche dei materiali che la compongono (Xd) e dei valori nominali delle grandezze geometriche interessate (ad), con il corrispondente valore di progetto della domanda Ed, funzione dei valori di progetto delle azioni (Fd) e dei valori nominali delle grandezze geometriche della struttura interessate.
+
+La verifica della sicurezza nei riguardi degli stati limite ultimi (SLU) è espressa dall'equazione formale:
+</OfficialText>
+
+<Formula id="ntc2018:c2/s2.3/eq2.2.1" number="2.2.1" latex="R_d \geq E_d" />
+
+<OfficialText hash="[DA_VERIFICARE]">
+Il valore di progetto della resistenza di un dato materiale Xd è, a sua volta, funzione del valore caratteristico della resistenza, definito come frattile 5% della distribuzione statistica della grandezza, attraverso l'espressione: Xd = Xk/γM, essendo γM il fattore parziale associato alla resistenza del materiale.
+
+Il valore di progetto di ciascuna delle azioni agenti sulla struttura Fd è ottenuto dal suo valore caratteristico Fk, inteso come frattile 95% della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l'espressione: Fd = γF·Fk essendo γF il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un valore di combinazione ψ0Fk, ove ψ0 ≤ 1 è un opportuno coefficiente di combinazione, che tiene conto della ridotta probabilità che più azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico.
+
+Per grandezze caratterizzate da distribuzioni con coefficienti di variazione minori di 0,10, oppure per grandezze che non riguardino univocamente resistenze o azioni, si possono considerare i valori nominali, coincidenti con i valori medi.
+
+I valori caratteristici dei parametri fisico-meccanici dei materiali sono definiti nel Capitolo 11. Per la sicurezza delle opere e dei sistemi geotecnici, i valori caratteristici dei parametri fisico-meccanici dei terreni sono definiti nel § 6.2.2.
+
+La capacità di garantire le prestazioni previste per le condizioni di esercizio (SLE) deve essere verificata confrontando il valore limite di progetto associato a ciascun aspetto di funzionalità esaminato (Cd), con il corrispondente valore di progetto dell'effetto delle azioni (Ed), attraverso la seguente espressione formale:
+</OfficialText>
+
+<Formula id="ntc2018:c2/s2.3/eq2.2.2" number="2.2.2" latex="C_d \geq E_d" />
+
+<CircularCommentary for="ntc2018:c2/s2.3" confirmation="suggested" linkKind="direct" />
+
+<ReviewWarning markers={["DA_VERIFICARE"]} />
