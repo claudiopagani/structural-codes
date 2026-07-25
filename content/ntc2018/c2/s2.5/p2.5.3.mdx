@@ -1,0 +1,89 @@
+---
+id: ntc2018:c2/s2.5/p2.5.3
+slug: ntc2018-c2-s2-5-3
+kind: paragraph
+numbering: "2.5.3"
+title: "COMBINAZIONI DELLE AZIONI"
+documentId: dm-ntc-2018-01-17
+editionId: gu-so8-2018-02-20
+versionId: ntc2018-originale
+validity: { from: "2018-02-22", to: null }
+vigencyStatus: in-force
+source:
+  sourceId: gu-so8-2018-ntc
+  url: "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf"
+  authority: "Gazzetta Ufficiale della Repubblica Italiana"
+  actNumber: "D.M. 17 gennaio 2018"
+  actDate: "2018-01-17"
+  gazette: "GU n. 42 del 20-02-2018"
+  gazetteSupplement: "S.O. n. 8"
+  pdfPages: [39]
+  pdfSha256: "dda1e397d56d71aa0f5bc457c3ba9b77064a468699dfc37bd056ac6c47105a46"
+  acquiredAt: "2026-07-24T22:32:05.733Z"
+  localFile: "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
+formulas:
+  - "ntc2018:c2/s2.5/eq2.5.1"
+  - "ntc2018:c2/s2.5/eq2.5.2"
+  - "ntc2018:c2/s2.5/eq2.5.3"
+  - "ntc2018:c2/s2.5/eq2.5.4"
+  - "ntc2018:c2/s2.5/eq2.5.5"
+  - "ntc2018:c2/s2.5/eq2.5.6"
+  - "ntc2018:c2/s2.5/eq2.5.7"
+tables: []
+figures: []
+refsOut:
+  - { targetId: "ntc2018:c2/s2.6/p2.6.1", scope: "internal", rawText: "§ 2.6.1" }
+workflow:
+  status: converted
+  convertedBy: { kind: "llm", model: "github-copilot" }
+  convertedAt: "2026-07-25T00:00:00.000Z"
+  technicalReview: null
+  approvedBy: null
+hash: { sourceText: "[DA_VERIFICARE]", normalized: "[DA_VERIFICARE]" }
+reliability: unverified
+openIssues:
+  - marker: "FORMULA_NON_LEGGIBILE"
+    note: "Formule [2.5.1]-[2.5.7] da verificare su scansione originale."
+---
+
+<OfficialText hash="[DA_VERIFICARE]">
+2.5.3. COMBINAZIONI DELLE AZIONI
+
+Ai fini delle verifiche degli stati limite, si definiscono le seguenti combinazioni delle azioni.
+
+– Combinazione fondamentale, generalmente impiegata per gli stati limite ultimi (SLU):
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.1" number="[2.5.1]" latex="\gamma_{G1} \cdot G_1 + \gamma_{G2} \cdot G_2 + \gamma_P \cdot P + \gamma_{Q1} \cdot Q_{k1} + \gamma_{Q2} \cdot \psi_{02} \cdot Q_{k2} + \gamma_{Q3} \cdot \psi_{03} \cdot Q_{k3} + \ldots" />
+
+– Combinazione caratteristica, cosiddetta rara, generalmente impiegata per gli stati limite di esercizio (SLE) irreversibili:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.2" number="[2.5.2]" latex="G_1 + G_2 + P + Q_{k1} + \psi_{02} \cdot Q_{k2} + \psi_{03} \cdot Q_{k3} + \ldots" />
+
+– Combinazione frequente, generalmente impiegata per gli stati limite di esercizio (SLE) reversibili:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.3" number="[2.5.3]" latex="G_1 + G_2 + P + \psi_{11} \cdot Q_{k1} + \psi_{22} \cdot Q_{k2} + \psi_{23} \cdot Q_{k3} + \ldots" />
+
+– Combinazione quasi permanente (SLE), generalmente impiegata per gli effetti a lungo termine:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.4" number="[2.5.4]" latex="G_1 + G_2 + P + \psi_{21} \cdot Q_{k1} + \psi_{22} \cdot Q_{k2} + \psi_{23} \cdot Q_{k3} + \ldots" />
+
+– Combinazione sismica, impiegata per gli stati limite ultimi e di esercizio connessi all'azione sismica E:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.5" number="[2.5.5]" latex="E + G_1 + G_2 + P + \psi_{21} \cdot Q_{k1} + \psi_{22} \cdot Q_{k2} + \ldots" />
+
+– Combinazione eccezionale, impiegata per gli stati limite ultimi connessi alle azioni eccezionali A:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.6" number="[2.5.6]" latex="G_1 + G_2 + P + A_d + \psi_{21} \cdot Q_{k1} + \psi_{22} \cdot Q_{k2} + \ldots" />
+
+Gli effetti dell'azione sismica saranno valutati tenendo conto delle masse associate ai seguenti carichi gravitazionali:
+
+<Formula id="ntc2018:c2/s2.5/eq2.5.7" number="[2.5.7]" latex="G_1 + G_2 + \sum_j \psi_{2j} \cdot Q_{kj}" />
+
+Nelle combinazioni si intende che vengano omessi i carichi Qkj che danno un contributo favorevole ai fini delle verifiche e, se del caso, i carichi G2.
+
+Altre combinazioni sono da considerare in funzione di specifici aspetti (p. es. fatica, ecc.).
+
+Nelle formule sopra riportate il simbolo "+" vuol dire "combinato con".
+
+I valori dei coefficienti ψ0j, ψ1j e ψ2j sono dati nella Tab. 2.5.I oppure nella Tab. 5.1.VI per i ponti stradali e nella Tab. 5.2.VII per i ponti ferroviari. I valori dei coefficienti parziali di sicurezza γGi e γQj sono dati nel § 2.6.1.
+</OfficialText>
