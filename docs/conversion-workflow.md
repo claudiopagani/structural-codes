@@ -1,5 +1,9 @@
 # Workflow di conversione
 
+> **Workflow legacy sospeso.** Non usarlo per conversioni massive prima della
+> definizione della pipeline v2 e del completamento del pilota previsto dalla
+> roadmap di rifondazione.
+
 Pipeline a stati. Ogni unità normativa attraversa questi stati; i gate umani
 sono obbligatori e distinti dal lavoro dell'LLM.
 

@@ -1,0 +1,968 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:structural-codes:schema:canonical-unit:v2",
+    "title": "Structural Codes — Canonical unit record v2",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "$schema",
+        "schemaVersion",
+        "recordType",
+        "id",
+        "workId",
+        "expressionId",
+        "legacyAliases",
+        "kind",
+        "numbering",
+        "title",
+        "titleBlockId",
+        "hierarchy",
+        "validity",
+        "blocks",
+        "citations",
+        "relations",
+        "assets",
+        "workflow"
+    ],
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "const": "urn:structural-codes:schema:canonical-unit:v2"
+        },
+        "schemaVersion": {
+            "type": "string",
+            "const": "2.0.0-alpha.1"
+        },
+        "recordType": {
+            "type": "string",
+            "const": "canonical-unit"
+        },
+        "id": {
+            "$ref": "#/$defs/unitId"
+        },
+        "workId": {
+            "$ref": "#/$defs/workId"
+        },
+        "expressionId": {
+            "$ref": "#/$defs/expressionId"
+        },
+        "legacyAliases": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            },
+            "uniqueItems": true
+        },
+        "kind": {
+            "type": "string",
+            "enum": [
+                "document",
+                "decree-article",
+                "chapter",
+                "section",
+                "paragraph",
+                "subparagraph",
+                "annex"
+            ]
+        },
+        "numbering": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "official",
+                "sortKey"
+            ],
+            "properties": {
+                "official": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "sortKey": {
+                    "type": "string",
+                    "pattern": "^[0-9]{3}(\\.[0-9]{3})*$"
+                }
+            }
+        },
+        "title": {
+            "type": "string",
+            "minLength": 1
+        },
+        "titleBlockId": {
+            "$ref": "#/$defs/blockId"
+        },
+        "hierarchy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "parentId",
+                "ancestorIds",
+                "position"
+            ],
+            "properties": {
+                "parentId": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/unitId"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "ancestorIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/unitId"
+                    },
+                    "uniqueItems": true
+                },
+                "position": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "validity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "from",
+                "to",
+                "status",
+                "asOf"
+            ],
+            "properties": {
+                "from": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "to": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "in-force",
+                        "amended",
+                        "suspended",
+                        "superseded",
+                        "repealed",
+                        "unknown"
+                    ]
+                },
+                "asOf": {
+                    "$ref": "#/$defs/date"
+                }
+            }
+        },
+        "blocks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/$defs/block"
+            }
+        },
+        "citations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/citation"
+            }
+        },
+        "relations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/relation"
+            }
+        },
+        "assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "formulaIds",
+                "tableIds",
+                "figureIds"
+            ],
+            "properties": {
+                "formulaIds": {
+                    "$ref": "#/$defs/assetIdArray"
+                },
+                "tableIds": {
+                    "$ref": "#/$defs/assetIdArray"
+                },
+                "figureIds": {
+                    "$ref": "#/$defs/assetIdArray"
+                }
+            }
+        },
+        "workflow": {
+            "$ref": "#/$defs/workflow"
+        },
+        "integrity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "canonicalization",
+                "sha256"
+            ],
+            "properties": {
+                "canonicalization": {
+                    "type": "string",
+                    "const": "rfc8785-jcs"
+                },
+                "sha256": {
+                    "$ref": "#/$defs/sha256"
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "type": "object",
+                "properties": {
+                    "workflow": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "published",
+                                    "superseded"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "status"
+                        ]
+                    }
+                }
+            },
+            "then": {
+                "type": "object",
+                "required": [
+                    "integrity"
+                ],
+                "properties": {
+                    "integrity": {}
+                }
+            }
+        }
+    ],
+    "$defs": {
+        "date": {
+            "type": "string",
+            "format": "date"
+        },
+        "dateTime": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+        },
+        "workId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9:.-]+$"
+        },
+        "expressionId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9:.-]+$"
+        },
+        "unitId": {
+            "type": "string",
+            "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*$"
+        },
+        "blockId": {
+            "type": "string",
+            "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*#block-[a-z0-9][a-z0-9-]*$"
+        },
+        "assetId": {
+            "type": "string",
+            "pattern": "^urn:structural-codes:it:asset:(formula|table|figure):[a-z0-9][a-z0-9:._-]*$"
+        },
+        "assetIdArray": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/assetId"
+            },
+            "uniqueItems": true
+        },
+        "region": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "coordinateSystem",
+                        "x",
+                        "y",
+                        "width",
+                        "height"
+                    ],
+                    "properties": {
+                        "coordinateSystem": {
+                            "type": "string",
+                            "const": "pdf-points-top-left"
+                        },
+                        "x": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "y": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "width": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                        },
+                        "height": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "extraction": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "method",
+                "tool",
+                "toolVersion"
+            ],
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "pdf-text",
+                        "ocr",
+                        "manual-transcription"
+                    ]
+                },
+                "tool": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "toolVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "transformation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "operation",
+                "ruleVersion",
+                "note"
+            ],
+            "properties": {
+                "operation": {
+                    "type": "string",
+                    "enum": [
+                        "unicode-nfc",
+                        "normalize-line-endings",
+                        "join-line-wrap",
+                        "remove-discretionary-hyphen",
+                        "remove-control-character",
+                        "normalize-whitespace",
+                        "manual-correction"
+                    ]
+                },
+                "ruleVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "note": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "sourceId",
+                "pdfPage",
+                "printedPage",
+                "region",
+                "extraction",
+                "transformations",
+                "rawSha256",
+                "normalizedSha256"
+            ],
+            "properties": {
+                "sourceId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "pdfPage": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "printedPage": {
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "region": {
+                    "$ref": "#/$defs/region"
+                },
+                "extraction": {
+                    "$ref": "#/$defs/extraction"
+                },
+                "transformations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/transformation"
+                    }
+                },
+                "rawSha256": {
+                    "$ref": "#/$defs/sha256"
+                },
+                "normalizedSha256": {
+                    "$ref": "#/$defs/sha256"
+                }
+            }
+        },
+        "textPayload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "raw",
+                "normalized",
+                "normalizationVersion"
+            ],
+            "properties": {
+                "raw": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "normalized": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "normalizationVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "officialTextBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "blockId",
+                "kind",
+                "origin",
+                "text",
+                "evidence"
+            ],
+            "properties": {
+                "blockId": {
+                    "$ref": "#/$defs/blockId"
+                },
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "heading",
+                        "paragraph",
+                        "list-item",
+                        "footnote"
+                    ]
+                },
+                "origin": {
+                    "type": "string",
+                    "const": "official"
+                },
+                "text": {
+                    "$ref": "#/$defs/textPayload"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/evidence"
+                }
+            }
+        },
+        "officialAssetBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "blockId",
+                "kind",
+                "origin",
+                "assetId",
+                "evidence"
+            ],
+            "properties": {
+                "blockId": {
+                    "$ref": "#/$defs/blockId"
+                },
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "formula-ref",
+                        "table-ref",
+                        "figure-ref"
+                    ]
+                },
+                "origin": {
+                    "type": "string",
+                    "const": "official"
+                },
+                "assetId": {
+                    "$ref": "#/$defs/assetId"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/evidence"
+                }
+            }
+        },
+        "editorialBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "blockId",
+                "kind",
+                "origin",
+                "text",
+                "authorship"
+            ],
+            "properties": {
+                "blockId": {
+                    "$ref": "#/$defs/blockId"
+                },
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "editorial-note",
+                        "summary"
+                    ]
+                },
+                "origin": {
+                    "type": "string",
+                    "const": "editorial"
+                },
+                "text": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "authorship": {
+                    "$ref": "#/$defs/actor"
+                }
+            }
+        },
+        "block": {
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/officialTextBlock"
+                },
+                {
+                    "$ref": "#/$defs/officialAssetBlock"
+                },
+                {
+                    "$ref": "#/$defs/editorialBlock"
+                }
+            ]
+        },
+        "citation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "citationId",
+                "sourceBlockId",
+                "span",
+                "rawText",
+                "target",
+                "resolution"
+            ],
+            "properties": {
+                "citationId": {
+                    "type": "string",
+                    "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*#citation-[0-9]{3}$"
+                },
+                "sourceBlockId": {
+                    "$ref": "#/$defs/blockId"
+                },
+                "span": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "start",
+                        "end"
+                    ],
+                    "properties": {
+                        "start": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "end": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                },
+                "rawText": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "target": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "kind",
+                                "unitId"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "const": "internal-unit"
+                                },
+                                "unitId": {
+                                    "$ref": "#/$defs/unitId"
+                                }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "kind",
+                                "uri",
+                                "label"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "const": "external"
+                                },
+                                "uri": {
+                                    "type": "string",
+                                    "format": "uri"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "minLength": 1
+                                }
+                            }
+                        }
+                    ]
+                },
+                "resolution": {
+                    "type": "string",
+                    "enum": [
+                        "resolved",
+                        "ambiguous",
+                        "external"
+                    ]
+                }
+            }
+        },
+        "relationReview": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "status",
+                "reviewedBy",
+                "reviewedAt"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "proposed",
+                        "confirmed",
+                        "rejected"
+                    ]
+                },
+                "reviewedBy": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/actor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "reviewedAt": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/dateTime"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "confirmed",
+                                    "rejected"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "status"
+                        ]
+                    },
+                    "then": {
+                        "type": "object",
+                        "required": [
+                            "reviewedBy",
+                            "reviewedAt"
+                        ],
+                        "properties": {
+                            "reviewedBy": {
+                                "$ref": "#/$defs/actor"
+                            },
+                            "reviewedAt": {
+                                "$ref": "#/$defs/dateTime"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "relation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "relationId",
+                "type",
+                "targetUnitId",
+                "basis",
+                "evidenceBlockIds",
+                "rationale",
+                "review"
+            ],
+            "properties": {
+                "relationId": {
+                    "type": "string",
+                    "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*#relation-[0-9]{3}$"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "clarifies",
+                        "amends",
+                        "replaces",
+                        "supersedes",
+                        "related"
+                    ]
+                },
+                "targetUnitId": {
+                    "$ref": "#/$defs/unitId"
+                },
+                "basis": {
+                    "type": "string",
+                    "enum": [
+                        "textual",
+                        "editorial"
+                    ]
+                },
+                "evidenceBlockIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/blockId"
+                    },
+                    "uniqueItems": true
+                },
+                "rationale": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "review": {
+                    "$ref": "#/$defs/relationReview"
+                }
+            }
+        },
+        "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "actorId",
+                "kind"
+            ],
+            "properties": {
+                "actorId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "human",
+                        "automated-agent",
+                        "script"
+                    ]
+                },
+                "toolVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "review": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "reviewId",
+                "type",
+                "reviewer",
+                "reviewedAt",
+                "result",
+                "note"
+            ],
+            "properties": {
+                "reviewId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "source",
+                        "technical",
+                        "normative",
+                        "editorial"
+                    ]
+                },
+                "reviewer": {
+                    "$ref": "#/$defs/actor"
+                },
+                "reviewedAt": {
+                    "$ref": "#/$defs/dateTime"
+                },
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "accepted",
+                        "changes-requested",
+                        "rejected"
+                    ]
+                },
+                "note": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "issue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "issueId",
+                "type",
+                "severity",
+                "note"
+            ],
+            "properties": {
+                "issueId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "missing-region",
+                        "ambiguous-source",
+                        "normalization-review",
+                        "asset-review",
+                        "relation-review",
+                        "other"
+                    ]
+                },
+                "severity": {
+                    "type": "string",
+                    "enum": [
+                        "blocking",
+                        "warning"
+                    ]
+                },
+                "note": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "workflow": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "status",
+                "createdBy",
+                "createdAt",
+                "reviews",
+                "openIssues"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "draft",
+                        "extracted",
+                        "source-checked",
+                        "double-reviewed",
+                        "published",
+                        "superseded"
+                    ]
+                },
+                "createdBy": {
+                    "$ref": "#/$defs/actor"
+                },
+                "createdAt": {
+                    "$ref": "#/$defs/dateTime"
+                },
+                "reviews": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/review"
+                    }
+                },
+                "openIssues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/issue"
+                    }
+                }
+            }
+        }
+    }
+}

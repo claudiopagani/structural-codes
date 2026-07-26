@@ -1,5 +1,9 @@
 # Architettura del sistema documentale
 
+> **Documento storico del modello legacy.** Non descrive l'architettura
+> canonica futura e non autorizza la pubblicazione dei contenuti correnti.
+> Vedere `docs/roadmap-rifondazione-corpus.md` e ADR 0001.
+
 Sintesi operativa delle decisioni (registro completo nella progettazione del
 2026-07-24, conservata nella conversazione di origine e in `strutture-js/docs/
 normativa/piano-sistema-documentale.md`).

@@ -72,6 +72,13 @@ workflow:
     assert.equal(wf.approvedBy, null);
 });
 
+test("parseSimpleYaml rifiuta il finto YAML separato da punti e virgola", () => {
+    assert.throws(
+        () => parseSimpleYaml("formulas: []; tables: []; figures: []"),
+        /Frontmatter YAML non valido/u,
+    );
+});
+
 test("extractOfficialText prende solo il contenuto verbatim", () => {
     const text = extractOfficialText(splitFrontmatter(SAMPLE).body);
     assert.equal(text, "Testo ufficiale verbatim.");

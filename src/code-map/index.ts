@@ -4,8 +4,8 @@ import { unitIdSchema } from "../schema/unit.schema.ts";
 /**
  * Code-map: fonte machine-readable del collegamento normativa <-> codice.
  * Vive QUI (non nei moduli di calcolo) per evitare dipendenze circolari e
- * impatto sul bundle di strutture-js. I test verificano che gli export
- * dichiarati esistano davvero nel package strutture-js.
+ * impatto sul bundle di structural-checks-ts. I test verificano che gli
+ * export dichiarati esistano davvero nel package collegato.
  */
 export const codeMapEntrySchema = z.object({
     key: z.string().min(1),

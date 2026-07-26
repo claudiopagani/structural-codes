@@ -9,7 +9,7 @@
  *   node --experimental-strip-types scripts/acquire-source.ts --source <sourceId>
  * Le fonti note sono dichiarate in KNOWN_SOURCES qui sotto.
  */
-import { readFile, writeFile, stat } from "node:fs/promises";
+import { writeFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 import { sha256OfFile } from "../src/lib/hash.ts";
 import { sourceRegistrySchema, type SourceRegistry } from "../src/schema/source.schema.ts";
@@ -49,8 +49,19 @@ const KNOWN_SOURCES: KnownSource[] = [
         actDate: "2019-01-21",
         gazette: "GU n. 35 del 11-02-2019",
         gazetteSupplement: "S.O. n. 5",
-        url: "[DA_VERIFICARE: registrare URL ufficiale della Gazzetta o del CS.LL.PP.]",
+        url: "https://www.gazzettaufficiale.it/eli/gu/2019/02/11/35/so/5/sg/pdf",
         localFile: "raw-sources/circ2019/circolare-7-2019.pdf",
+    },
+    {
+        sourceId: "gu-sg69-2023-dm-ntc-amendment",
+        authority: "Gazzetta Ufficiale della Repubblica Italiana",
+        title:
+            "D.M. 9 marzo 2023 — Modifiche ed integrazioni al decreto 17 gennaio 2018, recante «Aggiornamento delle norme tecniche per le costruzioni»",
+        actNumber: "D.M. 9 marzo 2023",
+        actDate: "2023-03-09",
+        gazette: "GU n. 69 del 22-03-2023",
+        url: "https://www.gazzettaufficiale.it/eli/gu/2023/03/22/69/sg/pdf",
+        localFile: "raw-sources/dm2023/gu-69-2023-03-22.pdf",
     },
 ];
 

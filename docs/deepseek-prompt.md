@@ -1,5 +1,9 @@
 # PROMPT OPERATIVO PER DEEPSEEK — CONVERSIONE DI UNITÀ NORMATIVE
 
+> **NON UTILIZZARE per nuove conversioni.** Questo prompt appartiene alla
+> pipeline legacy e non soddisfa i requisiti di evidence, schema canonico e
+> review definiti dalla roadmap di rifondazione.
+
 > Istruzioni d'uso: incolla questo intero prompt in DeepSeek, poi fornisci di
 > volta in volta (a) le pagine di testo grezzo da
 > `extracted/<sourceId>/full-text.txt` (o `pages/page-XXXX.txt`), (b) i crop

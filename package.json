@@ -1,7 +1,8 @@
 {
-    "name": "@strutture-js/normativa",
+    "name": "structural-codes",
     "version": "0.1.0",
-    "description": "Corpus documentale strutturato e versionato per NTC 2018 (D.M. 17-01-2018) e Circolare 21-01-2019 n. 7, con riferimenti tracciati al codice di strutture-js.",
+    "description": "Corpus strutturato, versionato e verificabile delle NTC 2018 e della Circolare 7/2019, predisposto per collegamenti a structural-checks-ts.",
+    "private": true,
     "license": "LGPL-2.1-or-later",
     "type": "module",
     "sideEffects": false,
@@ -16,12 +17,13 @@
     },
     "files": [
         "src",
-        "content",
-        "assets",
-        "mappings",
-        "sources",
+        "schemas",
+        "corpus",
+        "sources/registry",
+        "integration",
         "README.md",
-        "LICENSE"
+        "LICENSE",
+        "NOTICE"
     ],
     "scripts": {
         "test": "node --experimental-strip-types --test \"tests/*.test.ts\"",
@@ -29,17 +31,47 @@
         "lint": "eslint src scripts tests",
         "validate:schema": "node --experimental-strip-types scripts/validate-schema.ts",
         "validate:ids": "node --experimental-strip-types scripts/validate-ids.ts",
-        "validate:all": "npm run validate:schema && npm run validate:ids",
+        "validate:sources:v2": "node --experimental-strip-types scripts/verify-source-registry-v2.ts",
+        "validate:corpus:v2": "node --experimental-strip-types scripts/validate-corpus-v2.ts",
+        "validate:integration": "node --experimental-strip-types scripts/validate-integration-manifest.ts",
+        "verify:integration:local": "node --experimental-strip-types scripts/validate-integration-manifest.ts --provider ../strutture-js",
+        "verify:sources:online": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --online",
+        "validate:v2": "npm run validate:sources:v2 && npm run validate:corpus:v2 && npm run validate:integration",
+        "validate:all": "npm run validate:sources:v2 && npm run validate:corpus:v2 && npm run validate:schema && npm run validate:ids",
+        "baseline": "node --experimental-strip-types scripts/report-baseline.ts",
+        "baseline:check": "node --experimental-strip-types scripts/report-baseline.ts --check",
+        "release:guard": "node --experimental-strip-types scripts/guard-release.ts",
+        "acquire:v2": "node --experimental-strip-types scripts/acquire-source-v2.ts",
+        "extract:evidence": "node --experimental-strip-types scripts/extract-evidence.ts",
+        "render:evidence": "node --experimental-strip-types scripts/render-evidence.ts",
+        "verify:evidence": "node --experimental-strip-types scripts/verify-evidence.ts",
+        "normalize:text": "node --experimental-strip-types scripts/normalize-text.ts",
+        "review:diff": "node --experimental-strip-types scripts/generate-review-diff.ts",
+        "workflow:check": "node --experimental-strip-types scripts/check-workflow-transition.ts",
+        "pilot:inventory": "node --experimental-strip-types scripts/build-pilot-inventory.ts",
+        "pilot:visual-audit": "node --experimental-strip-types scripts/build-pilot-visual-audit.ts",
         "acquire:source": "node --experimental-strip-types scripts/acquire-source.ts",
         "extract:source": "node --experimental-strip-types scripts/extract-source.ts",
-        "check": "npm run validate:all && npm test"
+        "check": "npm run baseline:check && npm run validate:all && npm test",
+        "check:v2": "npm run baseline:check && npm run validate:v2 && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
+        "prepack": "npm run release:guard"
     },
     "dependencies": {
+        "yaml": "^2.9.0",
         "zod": "^3.24.1"
     },
     "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@napi-rs/canvas": "^1.0.2",
         "@types/node": "^22.10.0",
+        "ajv": "^8.20.0",
+        "ajv-formats": "^3.0.1",
+        "canonicalize": "^3.0.0",
+        "diff": "^8.0.4",
+        "eslint": "^10.8.0",
+        "globals": "^17.7.0",
         "pdfjs-dist": "^4.10.38",
-        "typescript": "^5.7.0"
+        "typescript": "^5.7.0",
+        "typescript-eslint": "^8.65.0"
     }
 }

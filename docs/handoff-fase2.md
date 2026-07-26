@@ -1,5 +1,9 @@
 # Handoff — Fase 2 (pilota vento, NTC §3.3 + Circ. C3.3)
 
+> **Handoff superato e sospeso.** Le istruzioni seguenti sono conservate come
+> traccia storica; il nuovo pilota §3.3/C3.3 deve seguire la roadmap di
+> rifondazione e non questa procedura.
+
 Stato al **2026-07-25**: Fase 0 e Fase 1 completate. Questo documento contiene
 tutto il necessario per avviare la conversione con DeepSeek.
 

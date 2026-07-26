@@ -1,0 +1,151 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:structural-codes:schema:integration-manifest:v1",
+    "title": "Structural Codes — Provider integration manifest v1",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "$schema",
+        "manifestVersion",
+        "consumer",
+        "provider",
+        "expectedExports",
+        "mappings"
+    ],
+    "properties": {
+        "$schema": {
+            "const": "urn:structural-codes:schema:integration-manifest:v1"
+        },
+        "manifestVersion": {
+            "const": 1
+        },
+        "consumer": {
+            "const": "structural-codes"
+        },
+        "provider": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "currentName",
+                "plannedName",
+                "repository",
+                "packageVersion",
+                "gitCommit",
+                "observedWorktree",
+                "entrypoint",
+                "normativeModule",
+                "normativeModuleGitBlobSha1"
+            ],
+            "properties": {
+                "currentName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "plannedName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "repository": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "packageVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "gitCommit": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{40}$"
+                },
+                "observedWorktree": {
+                    "enum": [
+                        "clean",
+                        "dirty"
+                    ]
+                },
+                "entrypoint": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "normativeModule": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "normativeModuleGitBlobSha1": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{40}$"
+                }
+            }
+        },
+        "expectedExports": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "mappings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "mappingId",
+                    "exportName",
+                    "status",
+                    "coverage",
+                    "unitIds",
+                    "assetIds",
+                    "rationale"
+                ],
+                "properties": {
+                    "mappingId": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9][a-z0-9.-]+$"
+                    },
+                    "exportName": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "status": {
+                        "enum": [
+                            "proposed",
+                            "confirmed",
+                            "rejected"
+                        ]
+                    },
+                    "coverage": {
+                        "enum": [
+                            "full",
+                            "partial",
+                            "reference-only"
+                        ]
+                    },
+                    "unitIds": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "string",
+                            "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*$"
+                        }
+                    },
+                    "assetIds": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                            "type": "string",
+                            "pattern": "^urn:structural-codes:it:asset:(formula|table|figure):[a-z0-9][a-z0-9:._-]*$"
+                        }
+                    },
+                    "rationale": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        }
+    }
+}
