@@ -1,0 +1,148 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.1.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c4/s4.1/p-c4.1.6.1.3"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C4.1.6",
+    "sortKey": "004.001.006"
+  },
+  "title": "DETTAGLI COSTRUTTIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.1.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.1"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.1.6\u0002 DETTAGLI COSTRUTTIVI",
+        "normalized": "C4.1.6 DETTAGLI COSTRUTTIVI",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 94,
+        "printedPage": "90",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.921,
+          "y": 335.276,
+          "width": 129.08,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "33012a3a91a51afae3c0e826aadfb40e8d7ff9f650b080cc361b6210a864293d",
+        "normalizedSha256": "f503dee9bb73c53cefb3cbe3b810ff420605e165c44c01d2dbad0fe512683658"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.1.6#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.1.6",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.1.6#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-1-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-1-6-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c4-1-6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

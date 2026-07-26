@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.6.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c3/s3.6/p3.6.2"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "3.6.2",
+    "sortKey": "003.006.002"
+  },
+  "title": "ESPLOSIONI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.6.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.6"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "33.6.2. ESPLOSIONI",
+        "normalized": "3.6.2 ESPLOSIONI",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70.709,
+          "y": 94.036,
+          "width": 91.332,
+          "height": 7.904
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "91c3c58e279271a0c5a466d0ff8c941d61661c3f7037462199a7f9a78414e266",
+        "normalizedSha256": "82ac2c3d3c787c10c0e4e793ad25af1c9668ff8c185de9a91424aed267d93ed6"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3-6-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.2.3.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c3/s3.2/p3.2.3.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "3.2.3.2",
+    "sortKey": "003.002.003.002"
+  },
+  "title": "SPETTRO DI RISPOSTA ELASTICO IN ACCELERAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.2.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.2",
+      "urn:structural-codes:it:unit:ntc2018:3.2.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "3.2.3.2 S PETTRO DI RISPOSTA ELASTICO IN ACCELERAZIONE",
+        "normalized": "3.2.3.2 SPETTRO DI RISPOSTA ELASTICO IN ACCELERAZIONE",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 51,
+        "printedPage": "47",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77.896,
+          "y": 562.694,
+          "width": 214.368,
+          "height": 7.669
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8ae83a952ff3ec44474b32539b27a9cc4637bea36b7ad03b6e6fad8b13a73033",
+        "normalizedSha256": "c60e3a7d165f2a8e7a1929d406b3af939600fe30142b31c6265b5369d2158388"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Lo spettro di risposta elastico in accelerazione è espresso da una forma spettrale (spettro normalizzato) riferita ad uno smorza-\nmento convenzionale del 5%, moltiplicata per il valore della accelerazione orizzontale massima ag su sito di riferimento rigido\norizzontale. Sia la forma spettrale che il valore di ag variano al variare della probabilità di superamento nel periodo di riferimento\nP VR (vedi § 2.4 e § 3.2.1).",
+        "normalized": "Lo spettro di risposta elastico in accelerazione è espresso da una forma spettrale (spettro normalizzato) riferita ad uno smorzamento convenzionale del 5%, moltiplicata per il valore della accelerazione orizzontale massima ag su sito di riferimento rigido orizzontale. Sia la forma spettrale che il valore di ag variano al variare della probabilità di superamento nel periodo di riferimento PVR (vedi § 2.4 e § 3.2.1).",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Lo spettro di risposta elastico in accelerazione è espresso da una forma spettrale (spettro normalizzato) riferita ad uno smorzamento convenzionale del 5%, moltiplicata per il valore della accelerazione orizzontale massima "
+          },
+          {
+            "kind": "math",
+            "value": "ag",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": " su sito di riferimento rigido orizzontale. Sia la forma spettrale che il valore di "
+          },
+          {
+            "kind": "math",
+            "value": "ag",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": " variano al variare della probabilità di superamento nel periodo di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "PVR",
+            "latex": "P_{VR}"
+          },
+          {
+            "kind": "text",
+            "value": " (vedi § 2.4 e § 3.2.1)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 51,
+        "printedPage": "47",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77.884,
+          "y": 574.808,
+          "width": 439.576,
+          "height": 76.561
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ad943418f8d3ff87134a57fe0470db3d35db81b67b5aa70fa35a7beaf0157d26",
+        "normalizedSha256": "286c35d553f28699738d0fd3c883c43bb6cb5dbc9bf15a43f6d3db77ad0be985"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli spettri così definiti possono essere utilizzati per strutture con periodo fondamentale minore o uguale a 4,0 s. Per strutture con\nperiodi fondamentali superiori lo spettro deve essere definito da apposite analisi oppure l’azione sismica deve essere descritta\nmediante storie temporali del moto del terreno.",
+        "normalized": "Gli spettri così definiti possono essere utilizzati per strutture con periodo fondamentale minore o uguale a 4,0 s. Per strutture con periodi fondamentali superiori lo spettro deve essere definito da apposite analisi oppure l’azione sismica deve essere descritta mediante storie temporali del moto del terreno.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 51,
+        "printedPage": "47",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77.884,
+          "y": 574.808,
+          "width": 439.576,
+          "height": 76.561
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "591cd0c1804ef6cdf387076f5e84404491bcb286dbb247bd5e471b510999b0f2",
+        "normalizedSha256": "c2dd01c4749e76065830981a8bbad0ee6b55afcaccd00ca04c5e8d7a0e4a7b7f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3-2-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

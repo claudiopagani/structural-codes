@@ -1,0 +1,142 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [],
+  "kind": "chapter",
+  "numbering": {
+    "official": "C4",
+    "sortKey": "004"
+  },
+  "title": "COSTRUZIONI CIVILI E INDUSTRIALI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4#block-heading",
+  "hierarchy": {
+    "parentId": null,
+    "ancestorIds": [],
+    "position": 4
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CCAPITOLO C4.\nCOSTRUZIONI CIVILI E INDUSTRIALI",
+        "normalized": "C4 COSTRUZIONI CIVILI E INDUSTRIALI",
+        "normalizationVersion": "core-concrete-migration-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 84,
+        "printedPage": "80",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 312.581,
+          "width": 281.675,
+          "height": 44.019
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-concrete-migration-0.1.0",
+            "note": "Titolo del capitolo rilevato sulla pagina separatrice ufficiale."
+          }
+        ],
+        "rawSha256": "c4270e5c79c411ba8fd2820c67d6f1749be759d6ea366a4509d405422e6d4d16",
+        "normalizedSha256": "5d184447cb91d77a21defb64b846c5d37585f5afb375ba008a9b67de1fc19909"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4#block-page-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel Capitolo 4 le NTC definiscono, per i diversi materiali considerati, le caratteristiche richieste, i metodi di analisi per le\nrispettive strutture, le verifiche, sia locali che globali, che occorre effettuare per accertare il rispetto dei diversi stati limite fissati,\nle indicazioni sui particolari costruttivi e sulle modalità esecutive, le specifiche relative alla resistenza al fuoco e alle azioni\neccezionali.\nLe prescrizioni aggiuntive legate alla presenza di azioni sismiche sono specificate nel Capitolo 7.",
+        "normalized": "Nel Capitolo 4 le NTC definiscono, per i diversi materiali considerati, le caratteristiche richieste, i metodi di analisi per le\nrispettive strutture, le verifiche, sia locali che globali, che occorre effettuare per accertare il rispetto dei diversi stati limite fissati,\nle indicazioni sui particolari costruttivi e sulle modalità esecutive, le specifiche relative alla resistenza al fuoco e alle azioni\neccezionali.\nLe prescrizioni aggiuntive legate alla presenza di azioni sismiche sono specificate nel Capitolo 7.",
+        "normalizationVersion": "none"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 97.485,
+          "width": 447.46,
+          "height": 52.557
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "3abaeb02531dd923e3aa7140068dcabf074b43380d450218ae980f85b5dae988",
+        "normalizedSha256": "3abaeb02531dd923e3aa7140068dcabf074b43380d450218ae980f85b5dae988"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

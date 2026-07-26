@@ -1,0 +1,379 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c4/s4.1/p-c4.1.2.3.4.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.1.2.3.4.2",
+    "sortKey": "004.001.002.003.004.002"
+  },
+  "title": "Verifiche di resistenza e duttilità",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.1",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2.3",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.1.2.3.4.2 Verifiche di resistenza e duttilità",
+        "normalized": "C4.1.2.3.4.2 Verifiche di resistenza e duttilità",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 577.11,
+          "width": 163.203,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "08d5723b304fc1060bd0f672f768470b25a6bd69968d9cac1dd5f656aa10fd84",
+        "normalizedSha256": "08d5723b304fc1060bd0f672f768470b25a6bd69968d9cac1dd5f656aa10fd84"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Con riferimento alla verifica di resistenza dei pilastri di c.a. soggetti a sola compressione assiale, la prescrizione circa l’eccentricità\nminima dell’azione assiale da tenere in conto può essere implicitamente soddisfatta valutando NRd con la formula\nN \nRd = 0,8 A \nc f \ncd + A \ns,tot f \nyd [C4.1.11]",
+        "normalized": "Con riferimento alla verifica di resistenza dei pilastri di c.a. soggetti a sola compressione assiale, la prescrizione circa l’eccentricità minima dell’azione assiale da tenere in conto può essere implicitamente soddisfatta valutando NRd con la formula:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Con riferimento alla verifica di resistenza dei pilastri di c.a. soggetti a sola compressione assiale, la prescrizione circa l’eccentricità minima dell’azione assiale da tenere in conto può essere implicitamente soddisfatta valutando "
+          },
+          {
+            "kind": "math",
+            "value": "NRd",
+            "latex": "N_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " con la formula:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 592.719,
+          "width": 447.411,
+          "height": 93.048
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a39dfc3ebc21c885bf3d21155fb32505a04846f962d00dadbf44d6a69e5707ac",
+        "normalizedSha256": "1f893e97172fe3de0045c56cf826f2a0d66fb0b2b65f6ca947786c4daa110d14"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-editorial-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.1.11",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 592.719,
+          "width": 447.411,
+          "height": 93.048
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula ritrascritta in LaTeX, verificata sulla fonte ufficiale e collocata nella posizione originaria."
+          }
+        ],
+        "rawSha256": "8af6c4cc5035f62ef3e60b9766956d4f51274c3a70d2d47987808766ca1f1fb2",
+        "normalizedSha256": "8af6c4cc5035f62ef3e60b9766956d4f51274c3a70d2d47987808766ca1f1fb2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "con Ac area del calcestruzzo e As,tot area totale d’armatura.",
+        "normalized": "con Ac area del calcestruzzo e As,tot area totale d’armatura.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "con "
+          },
+          {
+            "kind": "math",
+            "value": "Ac",
+            "latex": "A_c"
+          },
+          {
+            "kind": "text",
+            "value": " area del calcestruzzo e "
+          },
+          {
+            "kind": "math",
+            "value": "As,tot",
+            "latex": "A_{s,tot}"
+          },
+          {
+            "kind": "text",
+            "value": " area totale d’armatura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 592.719,
+          "width": 447.411,
+          "height": 93.048
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "fa26205c451fd03a5d229609049868537c756af0b5494cc918897e4715743872",
+        "normalizedSha256": "fa26205c451fd03a5d229609049868537c756af0b5494cc918897e4715743872"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Rispetto alle precedenti NTC è fornita una migliore e più esplicita articolazione delle verifiche di duttilità. Tali verifiche sono\nespressamente richieste al Capitolo 7 della norma per la progettazione in presenza di azioni sismiche; pertanto la norma fornisce\nla definizione di duttilità di curvatura, indicando le modalità pratiche per il calcolo della corrispondente capacità a livello di\nsezione. La Figura C4.1.12 esplicita e riassume quanto riportato dalla norma.",
+        "normalized": "Rispetto alle precedenti NTC è fornita una migliore e più esplicita articolazione delle verifiche di duttilità. Tali verifiche sono espressamente richieste al Capitolo 7 della norma per la progettazione in presenza di azioni sismiche; pertanto la norma fornisce la definizione di duttilità di curvatura, indicando le modalità pratiche per il calcolo della corrispondente capacità a livello di sezione. La Figura C4.1.12 esplicita e riassume quanto riportato dalla norma.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 592.719,
+          "width": 447.411,
+          "height": 93.048
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3b25fded8dd64d9cb798390456016ad35bf9e9f33383284cd184a85be49ac141",
+        "normalizedSha256": "898e4805001551ed522f7a127ca3aed4ebf3f9d048297d5526839f8776bfd96c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-editorial-005",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c4.1.12",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 94,
+        "printedPage": "90",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 183.388,
+          "y": 192.288,
+          "width": 228.508,
+          "height": 6.972
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ritaglio ad alta risoluzione ricavato dalla figura e dalla didascalia nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "c4eea942faa5b12426c98fd1c843ed139e2a3f54a915bc8cd5e3174979e274bf",
+        "normalizedSha256": "c4eea942faa5b12426c98fd1c843ed139e2a3f54a915bc8cd5e3174979e274bf"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c4.1.11"
+    ],
+    "tableIds": [],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c4.1.12"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-1-2-3-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-3-4-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-3-4-2-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

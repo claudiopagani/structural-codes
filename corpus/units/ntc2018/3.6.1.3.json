@@ -1,0 +1,181 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.6.1.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c3/s3.6/p3.6.1.3"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "3.6.1.3",
+    "sortKey": "003.006.001.003"
+  },
+  "title": "CLASSI DI RESISTENZA AL FUOCO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.6.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.6",
+      "urn:structural-codes:it:unit:ntc2018:3.6.1"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "3.6.1.3 CLASSI DI RESISTENZA AL FUOCO",
+        "normalized": "3.6.1.3 CLASSI DI RESISTENZA AL FUOCO",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83.583,
+          "y": 585.33,
+          "width": 149.97,
+          "height": 7.474
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "3d71505893bb774153aa43893dff390bc195564b1c704b20c7536b8ddda22ed9",
+        "normalizedSha256": "3d71505893bb774153aa43893dff390bc195564b1c704b20c7536b8ddda22ed9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le classi di resistenza al fuoco sono: 15, 20, 30, 45, 60, 90, 120, 180, 240 e 360; esse esprimono il tempo, in minuti primi, durante il\nquale la resistenza al fuoco deve essere garantita.",
+        "normalized": "Le classi di resistenza al fuoco sono: 15, 20, 30, 45, 60, 90, 120, 180, 240 e 360; esse esprimono il tempo, in minuti primi, durante il quale la resistenza al fuoco deve essere garantita.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83.584,
+          "y": 597.128,
+          "width": 428.034,
+          "height": 30.071
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7fd38c5ca4ce184344ba4b6d2a5ba7e019bb015e0713a12e451cbf521e6b3f4e",
+        "normalizedSha256": "d45b24a6f7fd3cec35480c2bfafc6eed450b52c18207707c9560bc9c1d3d192f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.3#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le classi di resistenza al fuoco sono riferite all’incendio convenzionale rappresentato dalle curve di incendio nominali.",
+        "normalized": "Le classi di resistenza al fuoco sono riferite all’incendio convenzionale rappresentato dalle curve di incendio nominali.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83.584,
+          "y": 597.128,
+          "width": 428.034,
+          "height": 30.071
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e0f47fe03d89266bdaac9a271bcd50693f68fea24d36ee41321d3cb9c78a69c4",
+        "normalizedSha256": "e0f47fe03d89266bdaac9a271bcd50693f68fea24d36ee41321d3cb9c78a69c4"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3-6-1-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

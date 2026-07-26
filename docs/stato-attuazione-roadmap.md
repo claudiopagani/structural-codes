@@ -10,11 +10,13 @@ corpus normativo sia già verificato.
 |---|---|---|---|
 | 0 — Quarantena e baseline | completata | `corpus-status.json`, baseline, release guard | nessuno sul perimetro tecnico |
 | 1 — Fonti e perimetro | completata | registro v2, tre PDF byte-identical, D.M. 2023, policy LGPL | nessuno |
-| 2 — Contratto dati | completata per il pilota | schema alpha, ADR, fixture NTC/Circolare | stabilizzazione dopo il pilota |
-| 3 — Evidence | completata per il pilota | acquisizione, coordinate, render, hash e regressioni | estensione delle fixture oltre il pilota |
+| 2 — Contratto dati | applicato al primo lotto | schema alpha, ADR, fixture e 333 unità NTC/Circolare | stabilizzazione prima della pubblicazione |
+| 3 — Evidence | estesa al primo lotto | acquisizione e 130 pagine con coordinate, render, hash e regressioni | estensione ai capitoli successivi |
 | 4 — Normalizzazione e review | strumenti pronti | normalizzatore, diff, gate di stato, checklist, registro privato dei reviewer | due atti di review umana reali |
-| 5 — Pilota §3.3/C3.3 | in corso | evidence completa, 45/45 heading coperti, audit visuale di 27 pagine, inventario asset | trascrizione, regioni dei singoli asset, relazioni e review |
-| 6–10 | non avviate | — | dipendono dall'approvazione del pilota |
+| 5 — Pilota §3.3/C3.3 | estrazione completata | evidence completa, heading coperti, anchor visuali, unità canoniche e inventario asset | segmentazione asset e review |
+| 6 — Migrazione controllata | avviata | generatore riproducibile, alias legacy e report di migrazione | review del lotto e pensionamento progressivo del legacy |
+| 7–8 — Ricostruzione NTC/Circolare | primo lotto estratto | capitoli 1, 2, 3 e 4.1: 333 unità, 700 blocchi e 89 relazioni proposte | asset, review e capitoli restanti |
+| 9–10 — Asset e grafo | avviate come inventario | 122 unità con candidati asset; relazioni omologhe proposte | segmentazione/verifica asset e conferma relazioni |
 | 11 — Integrazione software | avviata | manifest v1, 12 export verificati, 7 mapping proposti | conferma mapping su corpus canonico e revisione pulita del provider |
 | 12–14 | non avviate | — | dipendono dalle fasi precedenti |
 
@@ -42,6 +44,33 @@ Il dettaglio riproducibile è in
 `reports/pilot/section-3.3.inventory.md`. L'audit dei render è in
 `reports/pilot/section-3.3.visual-audit.json`.
 
+## Primo lotto canonico
+
+Il generatore `scripts/build-canonical-core.ts` ha migrato nel modello v2,
+usando il legacy soltanto per numerazioni e alias:
+
+- NTC 2018, capitoli 1, 2, 3 e § 4.1: 194 unità e 398 blocchi;
+- Circolare 7/2019, C1, C2, C3 e C4.1: 139 unità e 302 blocchi;
+- 89 relazioni Circolare → NTC sono proposte e non ancora confermate;
+- 12 heading con glyph corrotti nel layer testuale della Circolare sono stati
+  individuati sul render e registrati con correzione tracciata.
+
+Tutte le 333 unità restano in stato `extracted`. Il report riproducibile è in
+`reports/migration/core-concrete-corpus.md`.
+
+## Valutazione del capitolo 7
+
+Il capitolo 7 non è incluso nel primo lotto. Nelle NTC il capitolo occupa le
+pagine PDF 211–293 e dispone di un layer testuale utilizzabile. Nella Circolare,
+invece, C7 occupa le pagine PDF 197–252 (pagine stampate 193–248): il render
+contiene il testo, ma l'estrazione restituisce quasi soltanto intestazioni e
+piè di pagina. C8 riprende regolarmente a pagina PDF 253.
+
+Estendere a C7 la pipeline corrente produrrebbe quindi unità apparentemente
+valide ma prive del corpo ufficiale. Il lotto è rinviato a una pipeline OCR
+tracciata, con confronto visuale e review rafforzata; non viene importato dal
+legacy per colmare il layer mancante.
+
 ## Difetto di determinismo intercettato
 
 La regressione ha mostrato che i nomi font interni assegnati da PDF.js
@@ -54,8 +83,9 @@ dentro l'intero range del pilota.
 ## Condizione di pubblicazione
 
 Il repository è destinato alla pubblicazione pubblica immediata con licenza
-`LGPL-2.1-or-later`. Il legacy resta `quarantined-unverified`: nessun record in
-`corpus/` è stato creato e nessuna fixture è stata promossa a `published`.
+`LGPL-2.1-or-later`. Il legacy resta `quarantined-unverified`; i record in
+`corpus/` sono separati dal legacy ma ancora `extracted`, e nessuna unità è
+stata promossa a `published`.
 Il `release:guard` deve continuare a fallire finché tutti i gate del corpus
 canonico non sono soddisfatti.
 

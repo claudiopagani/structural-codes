@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.2.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c3/s3.2/p3.2.4"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "3.2.4",
+    "sortKey": "003.002.004"
+  },
+  "title": "EFFETTI DELLA VARIABILITÀ SPAZIALE DEL MOTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.2.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.2"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "33.2.4. EFFETTI DELLA VARIABILITÀ SPAZIALE DEL MOTO",
+        "normalized": "3.2.4 EFFETTI DELLA VARIABILITÀ SPAZIALE DEL MOTO",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 184.774,
+          "width": 216.354,
+          "height": 7.81
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7f6df27612ed994a36e768fd972993a3a8f57f2fb2ec16ff1b60f786bd449176",
+        "normalizedSha256": "91a907aebbd5d492d7953665f6491ff83176c4c628fe780266f6c0cf4bed2325"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3-2-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

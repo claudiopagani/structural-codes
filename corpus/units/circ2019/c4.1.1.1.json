@@ -1,0 +1,1282 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.1.1.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c4/s4.1/p-c4.1.1.1"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.1.1.1",
+    "sortKey": "004.001.001.001"
+  },
+  "title": "ANALISI ELASTICA LINEARE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.1.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.1",
+      "urn:structural-codes:it:unit:circ2019:c4.1.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.1.1.1 ANALISI ELASTICA LINEARE",
+        "normalized": "C4.1.1.1 ANALISI ELASTICA LINEARE",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 455.572,
+          "width": 138.824,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c4432bdd9294fd16962a7190a304e9dcf80c6b0cbe15a54ec0dbb175cf9334c5",
+        "normalizedSha256": "c4432bdd9294fd16962a7190a304e9dcf80c6b0cbe15a54ec0dbb175cf9334c5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel seguito si forniscono alcune precisazioni integrative in riferimento all’analisi elastica lineare con ridistribuzione dei momenti\nprevista al § 4.1.1.1 delle NTC.",
+        "normalized": "Nel seguito si forniscono alcune precisazioni integrative in riferimento all’analisi elastica lineare con ridistribuzione dei momenti prevista al § 4.1.1.1 delle NTC.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "29cc6f44a82abf6db36e44981cfc2f172dd0ceedcbdb4a61ff21de57cb5d1ab8",
+        "normalizedSha256": "460f52dc26f694747b9d21d5fd38f26f510033314c037af5b8883f9ade074f66"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Cautelativamente, le NTC proibiscono la ridistribuzione dei momenti nei pilastri e nei nodi consentendola nelle travi continue",
+        "normalized": "Cautelativamente, le NTC proibiscono la ridistribuzione dei momenti nei pilastri e nei nodi, consentendola nelle travi continue (sia appartenenti che non appartenenti a telai), nelle solette e nei telai, alle condizioni seguenti:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "411a81f9b1f4fd8023e66b84acf8fd8ca56540041084063b39f563a625379499",
+        "normalizedSha256": "157a754ff8b202197a4faf1bd8267f7dec0ce8f3dd518bc30539ef246c009e0a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "(sia appartenenti che non appartenenti a telai), nelle solette e nei telai, alle condizioni seguenti:\u0003\u0002 gli effetti del 2° ordine siano trascurabili;",
+        "normalized": "gli effetti del 2° ordine siano trascurabili;",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "24d1ff4c5e1608429fa61c3288e11665fe52a859d90043cab8b14c0ad31d3e8e",
+        "normalizedSha256": "3091311b9c196808c6e784254f0dbd9b831c8cad68cf70bfbefb1328d17600c1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0003\u0002 le sollecitazioni di flessione siano prevalenti;",
+        "normalized": "le sollecitazioni di flessione siano prevalenti;",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "44df7e1c9959dfd7f6cbff33487edd2b4615bb4c9d4b5d95929194810638eeea",
+        "normalizedSha256": "f414d4ced59445de255372e2ab579bbdb669f22833a918a09f07bea933adbb10"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0003\u0002 i rapporti tra le luci di campate contigue siano compresi nell’intervallo 0,5-2,0.",
+        "normalized": "i rapporti tra le luci di campate contigue siano compresi nell’intervallo 0,5-2,0.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d5cfa4a0edbae87b9f0bcd5b120d48d9dba2b1b119dee9f3d7cef45759443af1",
+        "normalizedSha256": "64d8ef2c328d56cad3fb82d3d376e7cd4d05da6bf34ecdcabfb24f74da931331"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel seguito, per semplicità, si farà riferimento alle sole travi, restando inteso che le relative considerazioni sono immediatamente\nestendibili alle solette.",
+        "normalized": "Nel seguito, per semplicità, si farà riferimento alle sole travi, restando inteso che le relative considerazioni sono immediatamente estendibili alle solette.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1768e748e3c7442a8a3adac6bec20fae0f651de393f6273b873f7cf8365eec39",
+        "normalizedSha256": "b492cfbdbab3a8901afb91f89439907777686e703b120aae4a9e6fcde9a7deed"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La ridistribuzione dei momenti flettenti deve garantire l’equilibrio sia globale sia locale della struttura, ma prefigura possibili\nplasticizzazioni nelle zone di estremità delle travi; occorre dunque accompagnare la ridistribuzione con una verifica di duttilità.",
+        "normalized": "La ridistribuzione dei momenti flettenti deve garantire l’equilibrio sia globale sia locale della struttura, ma prefigura possibili plasticizzazioni nelle zone di estremità delle travi; occorre dunque accompagnare la ridistribuzione con una verifica di duttilità.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0aa8eacee72ba9e686177b4398085e32243e26b04d41dd4a2cab563677228fce",
+        "normalizedSha256": "abf815474455eed4a4d3252dfbba138fba2fe7dbca7243e6bc877a1336d22281"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Tale verifica, peraltro, può essere omessa se si rispettano le limitazioni sull’entità delle ridistribuzioni fornite dalle NTC e meglio\nprecisate nel seguito.",
+        "normalized": "Tale verifica, peraltro, può essere omessa se si rispettano le limitazioni sull’entità delle ridistribuzioni fornite dalle NTC e meglio precisate nel seguito.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "eec165e08585abb77daf8433a0cbaf23745c4e7c21a551a782d7b921e2b47a7a",
+        "normalizedSha256": "260749bc54c3ac116d766c8db729a84c02ee5a226bb0757dddca18cddc33e83e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché",
+        "normalized": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione M̄i,j = Mi,j ± ΔMi,j e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "δ",
+            "latex": "\\delta"
+          },
+          {
+            "kind": "text",
+            "value": " tra il momento dopo la ridistribuzione "
+          },
+          {
+            "kind": "math",
+            "value": "M̄i,j = Mi,j ± ΔMi,j",
+            "latex": "\\overline{M}_{i,j}=M_{i,j}\\pm\\Delta M_{i,j}"
+          },
+          {
+            "kind": "text",
+            "value": " e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "72c9f667017fa37be00680396e9bb83d841ab1dc81f5a1484abcf73c29c9693c",
+        "normalizedSha256": "b2c7e09b9dd5e36d3915be58a2ec35d9dc7dc7bae3a34b852a368aeb753628f2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il limite /\u0019 0,70 ha lo scopo di evitare che un eccesso di ridistribuzione possa indurre plasticizzazione allo Stato Limite di",
+        "normalized": "Il limite δ ≥ 0,70 ha lo scopo di evitare che un eccesso di ridistribuzione possa indurre plasticizzazione allo Stato Limite di Esercizio nelle sezioni in cui si riduce il momento resistente.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il limite "
+          },
+          {
+            "kind": "math",
+            "value": "δ ≥ 0,70",
+            "latex": "\\delta\\ge0{,}70"
+          },
+          {
+            "kind": "text",
+            "value": " ha lo scopo di evitare che un eccesso di ridistribuzione possa indurre plasticizzazione allo Stato Limite di Esercizio nelle sezioni in cui si riduce il momento resistente."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 85,
+        "printedPage": "81",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 468.677,
+          "width": 447.468,
+          "height": 223.944
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cbaa8914e1118774187c7734928e672f7ae8938d6fa68ed8150ae3cd61789bab",
+        "normalizedSha256": "263d9f57be3eaa5b51d55824004b83c9a1816d291ceb00f2ef28dff38357aee0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-011",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ai fini della ridistribuzione dei momenti negli elementi, in ciascun nodo, l’aliquota dei momenti da ridistribuire, 0M, non può",
+        "normalized": "Ai fini della ridistribuzione dei momenti negli elementi, in ciascun nodo, l’aliquota dei momenti da ridistribuire, ΔM, non può eccedere il 30% del minore tra i due momenti d’estremità concorrenti al nodo, nel caso di momenti di verso opposto. Nel caso di momenti equiversi, il rapporto δ va riferito al momento che viene ridotto in valore assoluto.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della ridistribuzione dei momenti negli elementi, in ciascun nodo, l’aliquota dei momenti da ridistribuire, "
+          },
+          {
+            "kind": "math",
+            "value": "ΔM",
+            "latex": "\\Delta M"
+          },
+          {
+            "kind": "text",
+            "value": ", non può eccedere il 30% del minore tra i due momenti d’estremità concorrenti al nodo, nel caso di momenti di verso opposto. Nel caso di momenti equiversi, il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "δ",
+            "latex": "\\delta"
+          },
+          {
+            "kind": "text",
+            "value": " va riferito al momento che viene ridotto in valore assoluto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7adf08942ba821b3761e31dd4325b3caaaf47552084c95a9b6b1dada4459992b",
+        "normalizedSha256": "e31aa54136cd601832b8f3bf8ac2fe7914ee1638b903a099fa9324093b86a91e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La ridistribuzione dei momenti permette una progettazione strutturale più economica ed efficiente, riducendo i momenti\nmassimi di progetto, e compensando questa diminuzione con l’aumento dei momenti di progetto nelle zone meno sollecitate.",
+        "normalized": "La ridistribuzione dei momenti permette una progettazione strutturale più economica ed efficiente, riducendo i momenti massimi di progetto, e compensando questa diminuzione con l’aumento dei momenti di progetto nelle zone meno sollecitate.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "380f54f2c945a28c5e5378d4f4b732dfca6e977942ad5f3b3d4dd3f974ca8071",
+        "normalizedSha256": "58aab998eb4050634420e92b2004b8b3cf204c8c3bcbb58cc9eb00daa0ac4ccd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ciò consente di:\u0003\u0002 progettare travi aventi resistenza massima a flessione minore di quella richiesta dall’analisi elastica, grazie ad una più",
+        "normalized": "Ciò consente di:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8ec940a67f1b56a9838d8c10a25cc3737162b685b6a2920d5662dff24f61c791",
+        "normalizedSha256": "46d8391b929b7149bc93b2a4c74e9f255846b072955c54ff2bc27c634f970285"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-014",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "uniforme distribuzione delle resistenze lungo il loro sviluppo;",
+        "normalized": "progettare travi aventi resistenza massima a flessione minore di quella richiesta dall’analisi elastica, grazie ad una più uniforme distribuzione delle resistenze lungo il loro sviluppo;",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5a307f9a1c8b9213da48c55d7c472fd0f615ec6400db53bbb97cfcaf011057e5",
+        "normalizedSha256": "d92c9a92efd87094d7a655f88b54ef68ddd93a87a0976567f853bf490c5bd54a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-015",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0003\u0002 utilizzare meglio la resistenza minima a flessione delle sezioni, dovuta al rispetto delle limitazioni costruttive imposte",
+        "normalized": "utilizzare meglio la resistenza minima a flessione delle sezioni, dovuta al rispetto delle limitazioni costruttive imposte dalle NTC, quando essa ecceda significativamente le sollecitazioni agenti derivanti dall’analisi elastica.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bf4de5dda6dff1c9667171f12592400a66387b52e3e9d278b1d4f91890e5b18a",
+        "normalizedSha256": "a8b5c9e0064b6b282fe65262b08ec32ad8c6d6a62f5879aa12d3aaf86e77a3b5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-016",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il diagramma dei momenti flettenti deve risultare staticamente ammissibile, cioè deve essere equilibrato e soddisfare in ogni\nsezione la condizione: +, \u0003,\n* *\u001d [C4.1.1]",
+        "normalized": "Il diagramma dei momenti flettenti deve risultare staticamente ammissibile, cioè deve essere equilibrato e soddisfare in ogni sezione la condizione:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7d699a3bb3939214e92679d0aa3ce2de68e8b77300c02a9f4d7ed6290b1d7f55",
+        "normalizedSha256": "9b2e603a39dddd3150afecd93c22e703c7c0cac5456a31f8acdff0f8566c6f83"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-017",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.1.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula ritrascritta in LaTeX, verificata sulla fonte ufficiale e collocata nella posizione originaria."
+          }
+        ],
+        "rawSha256": "453985eb766f695a2b44217b4e7eccde5a7272a98efe74efa1d47d8fd9ba1abb",
+        "normalizedSha256": "83bc6b4ec06a20ca29852194b9b3af59685f93a9437a877b640fd31dd38b3032"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-editorial-018",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove +,",
+        "normalized": "dove M̄Ed è il valore di progetto del momento dopo la ridistribuzione e M̄Rd è il momento resistente di progetto.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "M̄Ed",
+            "latex": "\\overline{M}_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore di progetto del momento dopo la ridistribuzione e "
+          },
+          {
+            "kind": "math",
+            "value": "M̄Rd",
+            "latex": "\\overline{M}_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento resistente di progetto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.173,
+          "width": 447.528,
+          "height": 165.667
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0e78f707ab94c32deae49e8cb443dccf07d793d5cacfe6ea101bd55a37f5f16a",
+        "normalizedSha256": "738eafb0312e8d39836c955f5d2b870efc368951e2435aadd5635d055face781"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.1.1.1",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.1.1.1#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c4.1.1"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-1-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-1-1-1-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c4-1-1-1-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c4-1-1-1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

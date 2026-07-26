@@ -175,7 +175,11 @@ async function fingerprint(files: FoundFile[]): Promise<string> {
     for (const file of files) {
         hash.update(file.relativePath, "utf8");
         hash.update("\0");
-        hash.update(await readFile(file.absolutePath));
+        const normalizedText = (await readFile(file.absolutePath, "utf8")).replace(
+            /\r\n?/gu,
+            "\n",
+        );
+        hash.update(normalizedText, "utf8");
         hash.update("\0");
     }
     return hash.digest("hex");
@@ -467,6 +471,7 @@ export async function buildLegacyBaseline(repoRoot: string): Promise<Record<stri
         scope: "legacy",
         status: "quarantined-unverified",
         deterministic: true,
+        fingerprintNormalization: "text-lf-v1",
         sourceTreeFingerprintSha256: await fingerprint(fingerprintFiles),
         inventory: {
             content: {

@@ -1,0 +1,90 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [],
+  "kind": "chapter",
+  "numbering": {
+    "official": "4",
+    "sortKey": "004"
+  },
+  "title": "COSTRUZIONI CIVILI E INDUSTRIALI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4#block-heading",
+  "hierarchy": {
+    "parentId": null,
+    "ancestorIds": [],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CAPITOLO 4.\nCOSTRUZIONI CIVILI E INDUSTRIALI",
+        "normalized": "4 COSTRUZIONI CIVILI E INDUSTRIALI",
+        "normalizationVersion": "core-concrete-migration-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 73,
+        "printedPage": "69",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 84.399,
+          "y": 237.543,
+          "width": 284.792,
+          "height": 46.797
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-concrete-migration-0.1.0",
+            "note": "Titolo del capitolo rilevato sulla pagina separatrice ufficiale."
+          }
+        ],
+        "rawSha256": "fd13964f47368f73c73417929dfc2dd414d6e05efbdf659b812335fdd835deee",
+        "normalizedSha256": "34d98a3109ac35e667dba7f03cccafc5742a0aeca6bc6dddb579fb689c87d274"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

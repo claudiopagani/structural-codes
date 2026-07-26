@@ -1,0 +1,150 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:2.5.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c2/s2.5/p2.5.1"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "2.5.1",
+    "sortKey": "002.005.001"
+  },
+  "title": "CLASSIFICAZIONE DELLE AZIONI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:2.5.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:2.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:2",
+      "urn:structural-codes:it:unit:ntc2018:2.5"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "2.5.1. CLASSIFICAZIONE DELLE AZIONI",
+        "normalized": "2.5.1 CLASSIFICAZIONE DELLE AZIONI",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 41,
+        "printedPage": "37",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.908,
+          "y": 484.289,
+          "width": 157.368,
+          "height": 7.762
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d47ca08379c536591d476a3b4a3e57051cb65609b9c91e63e59b3e9480a2cf49",
+        "normalizedSha256": "afe4986bec4ec8468c9da5d760ea6b5da5bcedbbae47eb57a3ea55c9084ad0cb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si definisce azione ogni causa o insieme di cause capace di indurre stati limite in una struttura.",
+        "normalized": "Si definisce azione ogni causa o insieme di cause capace di indurre stati limite in una struttura.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 41,
+        "printedPage": "37",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.908,
+          "y": 496.709,
+          "width": 324.476,
+          "height": 7.762
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "dd4492b9f3dd19ea2d1bff2ef7629c21f9cc8e8e606c722ed8eb37b38bd3b6e5",
+        "normalizedSha256": "dd4492b9f3dd19ea2d1bff2ef7629c21f9cc8e8e606c722ed8eb37b38bd3b6e5"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-2-5-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

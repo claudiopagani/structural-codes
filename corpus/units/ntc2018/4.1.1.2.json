@@ -1,0 +1,273 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.1.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c4/s4.1/p4.1.1.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.1.1.2",
+    "sortKey": "004.001.001.002"
+  },
+  "title": "ANALISI PLASTICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.1.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.1.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.1.1.2 A NALISI PLASTICA",
+        "normalized": "4.1.1.2 ANALISI PLASTICA",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.95,
+          "y": 570.669,
+          "width": 105.373,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "649563b9ca4e6348079d86bb6b4aaa1034cf1015bd460d55c880a23e396a1e83",
+        "normalizedSha256": "9a16bbdc2f92cf954476864e4810cd33e8c9653590c46d92f42e5653c87812fd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’analisi plastica può essere usata per valutare gli effetti di azioni statiche e per i soli stati limite ultimi.",
+        "normalized": "L’analisi plastica può essere usata per valutare gli effetti di azioni statiche e per i soli stati limite ultimi.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 582.428,
+          "width": 428.604,
+          "height": 62.903
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5667f9d5625abf60afd8aa188c63da1045419cacdf16cef37bd5551241002751",
+        "normalizedSha256": "5667f9d5625abf60afd8aa188c63da1045419cacdf16cef37bd5551241002751"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.1.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Al materiale si può attribuire un diagramma tensioni-deformazioni rigido-plastico verificando che la duttilità delle sezioni dove\nsi localizzano le plasticizzazioni sia sufficiente a garantire la formazione del meccanismo previsto.",
+        "normalized": "Al materiale si può attribuire un diagramma tensioni-deformazioni rigido-plastico verificando che la duttilità delle sezioni dove si localizzano le plasticizzazioni sia sufficiente a garantire la formazione del meccanismo previsto.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 582.428,
+          "width": 428.604,
+          "height": 62.903
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b154525bdf48ff083d632510c7e75511f5b976ed41eb802bd1a51d6cca68a7b5",
+        "normalizedSha256": "0b4c84fe025bb25e9a06a1448d9bbaad3655b9b70f1ab2afe24d3fde06f42ddb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.1.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nell’analisi si trascurano gli effetti di precedenti applicazioni del carico e si assume un incremento monotono dell’intensità delle\nazioni e la costanza del rapporto tra le loro intensità così da pervenire ad un unico moltiplicatore di collasso. L’analisi può essere\ndel primo o del secondo ordine.",
+        "normalized": "Nell’analisi si trascurano gli effetti di precedenti applicazioni del carico e si assume un incremento monotono dell’intensità delle azioni e la costanza del rapporto tra le loro intensità così da pervenire ad un unico moltiplicatore di collasso. L’analisi può essere del primo o del secondo ordine.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 582.428,
+          "width": 428.604,
+          "height": 62.903
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b0b209d8eba47378144630e2ebd6b541e2520296be3b59ad9e83743891af4191",
+        "normalizedSha256": "e93a9e96f467ee6a5784275f577180593a16eff085b20183453fb6ae19b64951"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-1-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

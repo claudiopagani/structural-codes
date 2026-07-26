@@ -1,0 +1,2499 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c4/s4.1/p4.1.2.1.2.1"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.1.2.1.2.1",
+    "sortKey": "004.001.002.001.002.001"
+  },
+  "title": "Diagrammi di progetto tensione-deformazione del calcestruzzo",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.1.2.1.2.1 Diagrammi di progetto tensione-deformazione del calcestruzzo",
+        "normalized": "4.1.2.1.2.1 Diagrammi di progetto tensione-deformazione del calcestruzzo",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.962,
+          "y": 350.094,
+          "width": 257.08,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "514f65475e03f972372ace8d97f2795759e59e2e11f7edd1dcd45d2942384849",
+        "normalizedSha256": "514f65475e03f972372ace8d97f2795759e59e2e11f7edd1dcd45d2942384849"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare opportuni modelli rappresentativi del reale com-\nportamento del materiale, definiti in base alla resistenza di progetto fcd e alla deformazione ultima di progetto Ήcu .",
+        "normalized": "Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, definiti in base alla resistenza di progetto fcd e alla deformazione ultima di progetto εcu.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per il diagramma tensione-deformazione del calcestruzzo è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, definiti in base alla resistenza di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "fcd",
+            "latex": "f_{cd}"
+          },
+          {
+            "kind": "text",
+            "value": " e alla deformazione ultima di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "εcu",
+            "latex": "\\varepsilon_{cu}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e1c4e39f0a36b054ed8ff97a5f76f49a9c22c9078af375ffab4679e361b00a03",
+        "normalizedSha256": "038cee15198d9dae04c5c5c3cdf334948f76e1f1774b1dab101aed6ce13f5373"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-002",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:ntc2018:4.1.1",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 80,
+          "y": 380,
+          "width": 350,
+          "height": 103
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Ritaglio ottenuto dalla pagina ufficiale e controllato visivamente."
+          }
+        ],
+        "rawSha256": "60d7f23e7a357393adea01cb47c3f92a819d6493b4c1d45f72a28d240c7d6499",
+        "normalizedSha256": "82380617d56c757395ba51118270b9bb1369182df5c5d57fb54a75227e1d0f6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In Fig. 4.1.1 sono rappresentati i modelli Η-Ή per il calcestruzzo:",
+        "normalized": "In Fig. 4.1.1 sono rappresentati i modelli σ-ε per il calcestruzzo:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In Fig. 4.1.1 sono rappresentati i modelli "
+          },
+          {
+            "kind": "math",
+            "value": "σ",
+            "latex": "\\sigma"
+          },
+          {
+            "kind": "text",
+            "value": "-"
+          },
+          {
+            "kind": "math",
+            "value": "ε",
+            "latex": "\\varepsilon"
+          },
+          {
+            "kind": "text",
+            "value": " per il calcestruzzo:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d96efb542e7fdd098544706abc78a2650bbe0478982317edfe9bd912629bf3c4",
+        "normalizedSha256": "4c992fdb29b66c7a08a5bd604564b73beb795fc6628322f366a282bf26f591d5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "(a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block).",
+        "normalized": "(a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block).",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "(a) parabola-rettangolo; (b) triangolo-rettangolo; ("
+          },
+          {
+            "kind": "math",
+            "value": "c",
+            "latex": "c"
+          },
+          {
+            "kind": "text",
+            "value": ") rettangolo (stress block)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b7beb2d6bfa5fcce55e978e6e9cfa361d2a6e812a88474375b33ccd9e51dec41",
+        "normalizedSha256": "b7beb2d6bfa5fcce55e978e6e9cfa361d2a6e812a88474375b33ccd9e51dec41"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In particolare, per le classi di resistenza pari o inferiore a C50/60 si può porre:",
+        "normalized": "In particolare, per le classi di resistenza pari o inferiore a C50/60 si può porre:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In particolare, per le classi di resistenza pari o inferiore a C50"
+          },
+          {
+            "kind": "math",
+            "value": "/",
+            "latex": "/"
+          },
+          {
+            "kind": "text",
+            "value": "60 si può porre:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "68431295e67bdf40eacb65380a1b827322b6473200de0fc193036281cf401cae",
+        "normalizedSha256": "68431295e67bdf40eacb65380a1b827322b6473200de0fc193036281cf401cae"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-006",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.1.2.1:material-parameters-up-to-c50-60",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "60d7f23e7a357393adea01cb47c3f92a819d6493b4c1d45f72a28d240c7d6499",
+        "normalizedSha256": "82380617d56c757395ba51118270b9bb1369182df5c5d57fb54a75227e1d0f6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le classi di resistenza superiore a C50/60 si può porre:",
+        "normalized": "Per le classi di resistenza superiore a C50/60 si può porre:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le classi di resistenza superiore a C50"
+          },
+          {
+            "kind": "math",
+            "value": "/",
+            "latex": "/"
+          },
+          {
+            "kind": "text",
+            "value": "60 si può porre:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "2864aa81f409d2b2b2f323177ced5885d86f118480168885ab2888c7446e8d72",
+        "normalizedSha256": "2864aa81f409d2b2b2f323177ced5885d86f118480168885ab2888c7446e8d72"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-008",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.1.2.1:material-parameters-over-c50-60",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "60d7f23e7a357393adea01cb47c3f92a819d6493b4c1d45f72a28d240c7d6499",
+        "normalizedSha256": "82380617d56c757395ba51118270b9bb1369182df5c5d57fb54a75227e1d0f6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "purché si adottino opportune limitazioni quando si usa il modello (c).",
+        "normalized": "purché si adottino opportune limitazioni quando si usa il modello (c).",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "purché si adottino opportune limitazioni quando si usa il modello ("
+          },
+          {
+            "kind": "math",
+            "value": "c",
+            "latex": "c"
+          },
+          {
+            "kind": "text",
+            "value": ")."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "cae273f2ca2d18f971b6653eed8c3fe423d1e0c618df0af709bed63d7399c488",
+        "normalizedSha256": "cae273f2ca2d18f971b6653eed8c3fe423d1e0c618df0af709bed63d7399c488"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per sezioni o parti di sezioni soggette a distribuzioni di tensione di compressione approssimativamente uniformi, si assume per\nla deformazione ultima di progetto il valore Ήc2 anziché Ήcu.",
+        "normalized": "Per sezioni o parti di sezioni soggette a distribuzioni di tensione di compressione approssimativamente uniformi, si assume per la deformazione ultima di progetto il valore εc2 anziché εcu.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per sezioni o parti di sezioni soggette a distribuzioni di tensione di compressione approssimativamente uniformi, si assume per la deformazione ultima di progetto il valore "
+          },
+          {
+            "kind": "math",
+            "value": "εc2",
+            "latex": "\\varepsilon_{c2}"
+          },
+          {
+            "kind": "text",
+            "value": " anziché "
+          },
+          {
+            "kind": "math",
+            "value": "εcu",
+            "latex": "\\varepsilon_{cu}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ba78521fb55599090d9ccfad0ec30b54431f242cd098de1b04cd9d8acbe3e30a",
+        "normalizedSha256": "ee810257a9e85bd86c5e9c585deb6dd1d872c4ac91ef04f7d00595d86f96f41e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-011",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Calcestruzzo confinato",
+        "normalized": "Calcestruzzo confinato",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "2e922ed3fc27e3d67aca3e9228661c280e0fe6bb1f0e64c55433fdcf0cc2949c",
+        "normalizedSha256": "2e922ed3fc27e3d67aca3e9228661c280e0fe6bb1f0e64c55433fdcf0cc2949c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per il diagramma tensione-deformazione del calcestruzzo confinato è possibile adottare opportuni modelli rappresentativi del\nreale comportamento del materiale in stato triassiale. Questi modelli possono essere adottati nel calcolo sia della resistenza ultima\nsia della duttilità delle sezioni e devono essere applicati alle sole zone confinate della sezione.",
+        "normalized": "Per il diagramma tensione-deformazione del calcestruzzo confinato è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale in stato triassiale. Questi modelli possono essere adottati nel calcolo sia della resistenza ultima sia della duttilità delle sezioni e devono essere applicati alle sole zone confinate della sezione.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d1542bd0ab4f6568bfb3bc666dfe0738666f9bde24b89dbfcf90225ae30f997e",
+        "normalizedSha256": "8cd6cdc4f0e43af61ec4a66b68fc3f912350b2557ef48bd2b3a26725554fc2f4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il confinamento del calcestruzzo è normalmente generato da staffe chiuse e legature interne, che possono raggiungere la tensione\ndi snervamento a causa della dilatazione laterale del calcestruzzo stesso a cui tendono ad opporsi. Il confinamento consente al\ncalcestruzzo di raggiungere tensioni e deformazioni più elevate di quelle proprie del calcestruzzo non confinato. Le altre caratte-\nristiche meccaniche si possono considerare inalterate.",
+        "normalized": "Il confinamento del calcestruzzo è normalmente generato da staffe chiuse e legature interne, che possono raggiungere la tensione di snervamento a causa della dilatazione laterale del calcestruzzo stesso a cui tendono ad opporsi. Il confinamento consente al calcestruzzo di raggiungere tensioni e deformazioni più elevate di quelle proprie del calcestruzzo non confinato. Le altre caratteristiche meccaniche si possono considerare inalterate.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.261,
+          "width": 428.674,
+          "height": 356.599
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0b959669a89500099240ec7d284afb0215f43e5ed1190aac686e2249c761ed31",
+        "normalizedSha256": "5ef3430901e931f4f69d74691e7bf6878593b4ecb7ea4221f730f545b49282a7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In assenza di più precise determinazioni basate su modelli analitici di comprovata validità, è possibile utilizzare la relazione ten-\nsione-deformazione rappresentata in Fig. 4.1.2 (dove le deformazioni di compressione sono assunte positive), in cui la resistenza\ncaratteristica e le deformazioni del calcestruzzo confinato sono valutate secondo le relazioni seguenti:ck,c ck 2 ck",
+        "normalized": "In assenza di più precise determinazioni basate su modelli analitici di comprovata validità, è possibile utilizzare la relazione tensione-deformazione rappresentata in Fig. 4.1.2 (dove le deformazioni di compressione sono assunte positive), in cui la resistenza caratteristica e le deformazioni del calcestruzzo confinato sono valutate secondo le relazioni seguenti:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "eef8c1f3a9b477ee0d90fe2d306553c0b85e7af7c0864facc18c83c28a11e1b2",
+        "normalizedSha256": "579a4dfebdb98d1b1a122c0d72e985116613b87593c57377d3a699fee47d5230"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-015",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.8",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-016",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.9",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-017",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.10",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-018",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.11",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-019",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-020",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "essendo V2 la pressione laterale efficace di confinamento allo SLV mentre Hc2 ed Hcu sono valutate in accordo al § 4.1.2.1.2.1.",
+        "normalized": "essendo σ₂ la pressione laterale efficace di confinamento allo SLV mentre εc2 ed εcu sono valutate in accordo al § 4.1.2.1.2.1.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo σ₂ la pressione laterale efficace di confinamento allo SLV mentre "
+          },
+          {
+            "kind": "math",
+            "value": "εc2",
+            "latex": "\\varepsilon_{c2}"
+          },
+          {
+            "kind": "text",
+            "value": " ed "
+          },
+          {
+            "kind": "math",
+            "value": "εcu",
+            "latex": "\\varepsilon_{cu}"
+          },
+          {
+            "kind": "text",
+            "value": " sono valutate in accordo al § 4.1.2.1.2.1."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "54822400d3c9a6d3f3d95921ae71732a135547ea774ececcdb4fbb88bfde9b2c",
+        "normalizedSha256": "8feebcdeebb5cf381eb7ac5726298ddbecb5053c4be6ec08f803687b2d8cc53e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-021",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:ntc2018:4.1.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 135,
+          "y": 237,
+          "width": 350,
+          "height": 125
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Ritaglio ottenuto dalla pagina ufficiale e controllato visivamente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-022",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La pressione efficace di confinamento V2 può essere determinata attraverso la relazione seguente:",
+        "normalized": "La pressione efficace di confinamento σ₂ può essere determinata attraverso la relazione seguente:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cf459e44aad91110f94df3d2ba3508f41ad301cbfaa7d426ca1b34c869b3b0a2",
+        "normalizedSha256": "57836743b2fe91f53686d3fadb9f5327efea77a91aa43cb32d64480e283a5eac"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-023",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.a",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-024",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove D è un coefficiente di efficienza (d 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il\nvolume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e Vl è la\npressione di confinamento esercitata dalle armature trasversali.",
+        "normalized": "dove α è un coefficiente di efficienza (≤ 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il volume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e σₗ è la pressione di confinamento esercitata dalle armature trasversali.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": " è un coefficiente di efficienza ("
+          },
+          {
+            "kind": "math",
+            "value": "≤",
+            "latex": "\\le"
+          },
+          {
+            "kind": "text",
+            "value": " 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il volume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e σₗ è la pressione di confinamento esercitata dalle armature trasversali."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "547350b675360823fcabbfe2539c5acea05733717c06056f2d4b3f4dd1651dad",
+        "normalizedSha256": "c75eba0490535fd5dd041c433d0f0766a8c58e557551dccc51f1be6d44a9ea6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-025",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La pressione laterale può essere valutata, per ogni direzione principale della sezione, direttamente da considerazioni di equilibrio\nsul nucleo confinato, in corrispondenza della tensione di snervamento dell’armatura trasversale, come di seguito indicato.",
+        "normalized": "La pressione laterale può essere valutata, per ogni direzione principale della sezione, direttamente da considerazioni di equilibrio sul nucleo confinato, in corrispondenza della tensione di snervamento dell’armatura trasversale, come di seguito indicato.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9b527317ef01a251e04a3eb6c8d6de7bc6d92504bf071a24b2a32cb7d72af67a",
+        "normalizedSha256": "8345ad6d920209ad61287963e2b0116d22557a68ce78c91180e44bb7c3b31ed5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-026",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) Per sezioni rettangolari",
+        "normalized": "a) Per sezioni rettangolari",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7df52caf76aba8348fcb976b12e49d935ef341a7331b1c06d7f6f259e4bc5536",
+        "normalizedSha256": "7df52caf76aba8348fcb976b12e49d935ef341a7331b1c06d7f6f259e4bc5536"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-027",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le due direzioni principali della sezione x e y valgono, rispettivamente, le relazioni:",
+        "normalized": "Per le due direzioni principali della sezione x e y valgono, rispettivamente, le relazioni:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le due direzioni principali della sezione "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e y valgono, rispettivamente, le relazioni:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f12f1b3307452da93174de01174b483e3f0f20592ae9f38cc05c8493ea055590",
+        "normalizedSha256": "f12f1b3307452da93174de01174b483e3f0f20592ae9f38cc05c8493ea055590"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-028",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.b",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-029",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove A st,x e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle\ndirezioni principali x e y, bx e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea\nmedia delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell’acciaio delle staffe.",
+        "normalized": "dove A st,x e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali x e y, bx e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell’acciaio delle staffe.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove A st,"
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e y, "
+          },
+          {
+            "kind": "math",
+            "value": "bx",
+            "latex": "b_x"
+          },
+          {
+            "kind": "text",
+            "value": " e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, "
+          },
+          {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": ",st è la tensione caratteristica dell’acciaio delle staffe."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d7e0e5fc8ce2fd67ffa791638dc9324f0e7ca4c1f960520606812ab2f6caf7b8",
+        "normalizedSha256": "73064913ec8547d971d60e0e2ecdc2705829be2fa654b02d8a817af7f216acd9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-030",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La pressione laterale equivalente Vl può essere determinata attraverso la relazione:ylxll ,, V",
+        "normalized": "La pressione laterale equivalente σₗ può essere determinata attraverso la relazione:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e9a1cb9e383d12aa2ad94d11ef9d9def1b388d3d08e0d15c9ae88ccfd39cd2f4",
+        "normalizedSha256": "793aa7c1384038183172df2422dc9e3292fe18e720effba42b0e1bfb180fa1cb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-031",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.c",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-032",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) Per sezioni circolari sD",
+        "normalized": "b) Per sezioni circolari",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b8173ad71f2e69cd17d93a1d9c1ed6552c94998d9d52d0becd8d813d8d0d6b7e",
+        "normalizedSha256": "a6f2d0e6bbbca27e00700e855042d8ad8fde6efdfc6d480a443d0a2425f01d82"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-033",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.d",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-034",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove: A st è l’area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).",
+        "normalized": "dove: A st è l’area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: A st è l’area della sezione della staffa, "
+          },
+          {
+            "kind": "math",
+            "value": "D0",
+            "latex": "D_0"
+          },
+          {
+            "kind": "text",
+            "value": " è il diametro del nucleo confinato (con riferimento alla linea media delle staffe)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "0d179541faa4cdb10efbaafe2a0d16dbeb9f282a74686ee2db11475f8e93bcd3",
+        "normalizedSha256": "0d179541faa4cdb10efbaafe2a0d16dbeb9f282a74686ee2db11475f8e93bcd3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-035",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il coefficiente di efficienza D può essere valutato come prodotto di un termine relativo alla disposizione delle armature trasversali\nnel piano della sezione e di un termine relativo al passo delle staffe, attraverso la relazione:n s",
+        "normalized": "Il coefficiente di efficienza α può essere valutato come prodotto di un termine relativo alla disposizione delle armature trasversali nel piano della sezione e di un termine relativo al passo delle staffe, attraverso la relazione:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente di efficienza "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": " può essere valutato come prodotto di un termine relativo alla disposizione delle armature trasversali nel piano della sezione e di un termine relativo al passo delle staffe, attraverso la relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b1964ca0b66df2f25afe7868d3645659a0feb70a15518a52d171748c255e8263",
+        "normalizedSha256": "7f984ba5af876181be17dc528d1fce73f7dfcbbf25284527a64979a827087e9c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-036",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.e",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-037",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "con:",
+        "normalized": "con:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f45ba2ff941a315e979adb5dd8ad3a187cdfbe65e023ed7a44f4af5b100200e8",
+        "normalizedSha256": "f45ba2ff941a315e979adb5dd8ad3a187cdfbe65e023ed7a44f4af5b100200e8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-038",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) per sezioni rettangolari ¦ \u0010 n\nyx\n2\nin bb6/b1Į [4.1.12.f]",
+        "normalized": "a) per sezioni rettangolari",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d3a00452f5c6e988e2a967c8408b031bc1a7d94d1a9a5298a20efc370af9fa32",
+        "normalizedSha256": "faa2ea9b0d8d65269e90111c30f08e245dcb16678079bdb37bdc4defe0547ea4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-039",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.f",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-040",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.g",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.936,
+          "y": 98.934,
+          "width": 428.707,
+          "height": 619.759
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bf06080887b9c3281a92bfaa5703cf2f6b34a133a981ef113990719faf784bb3",
+        "normalizedSha256": "f3952c26543c62662f0ad212489ed54771d3cf016137429200da2cc7894810e4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-041",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive\ncontenute.",
+        "normalized": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive contenute.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "06fe1b76fc73991ba65c955d9bf8dad07d5297d5b502f62f42ad1c6e1aff108d",
+        "normalizedSha256": "fbad37dddae0a819b86d6700aaa7be1f3c0296574f5f5f62d61fd456344d56a8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-042",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) per sezioni circolari 1Įn [4.1.12.h]",
+        "normalized": "b) per sezioni circolari",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "24c2b661dca88f1717c40d9406d65d0fca39048e6b789a24929a84ec411369ab",
+        "normalizedSha256": "912db94d4ef356ef1e33963ae19881fb92cab9e7fad893496e4abc12fec04724"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-043",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.h",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "d09b49db899fd4321ebc678ac3209efab92324cd0a3196a8f9ff656e6ce95c24",
+        "normalizedSha256": "2f995044d3f47c7337f2b67d91da3e030b30d050dd4c1d17dc7ece96e2a64d83"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-044",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.i",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "d09b49db899fd4321ebc678ac3209efab92324cd0a3196a8f9ff656e6ce95c24",
+        "normalizedSha256": "2f995044d3f47c7337f2b67d91da3e030b30d050dd4c1d17dc7ece96e2a64d83"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-045",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove: E = 2 per staffe circolari singole, E = 1 per staffa a spirale.",
+        "normalized": "dove: β = 2 per staffe circolari singole, β = 1 per staffa a spirale.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "β",
+            "latex": "\\beta"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 2 per staffe circolari singole, "
+          },
+          {
+            "kind": "math",
+            "value": "β",
+            "latex": "\\beta"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 1 per staffa a spirale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c2a61fe7351871bf68d505f055dd8ad987003fd0329f613dce16b3844ad20098",
+        "normalizedSha256": "9f90ee1c57db068c6efd7e9cc9de998f5cd717951da49620f3fe56baf3bc1054"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-046",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella valutazione della capacità della sezione il contributo del copriferro non deve essere considerato nelle zone esterne al nucleo\nconfinato in cui la deformazione massima supera la deformazione ultima del calcestruzzo non confinato.",
+        "normalized": "Nella valutazione della capacità della sezione il contributo del copriferro non deve essere considerato nelle zone esterne al nucleo confinato in cui la deformazione massima supera la deformazione ultima del calcestruzzo non confinato.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a3782a8058fe9af83d60d9ae286d063567e9be2e5648258b6ebb1e9e946706e5",
+        "normalizedSha256": "f85470c0ddbdc7911cf8831ada64eb99d87e46fd539ec4344a09efb713c4d0c5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1#block-editorial-047",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di utilizzo di rinforzi appositamente progettati per il confinamento degli elementi è possibile considerare i modelli di\ncomportamento riportati in riferimenti tecnici di comprovata validità.",
+        "normalized": "Nel caso di utilizzo di rinforzi appositamente progettati per il confinamento degli elementi è possibile considerare i modelli di comportamento riportati in riferimenti tecnici di comprovata validità.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 98.934,
+          "width": 428.57,
+          "height": 138.307
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1dd58617a887b19d2ec6f1a54bec5c855dc618dbd5bd9203d5681c3c4478c892",
+        "normalizedSha256": "88033b9de8aa1f2fb8a2270c16847f49e55fc1ffbd1da6f94cdb003faf2620f0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.1.2.1:material-parameters-up-to-c50-60",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.1.2.1:material-parameters-over-c50-60",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.8",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.9",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.10",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.a",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.b",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.c",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.d",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.e",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.f",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.g",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.h",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.12.i"
+    ],
+    "tableIds": [],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:ntc2018:4.1.1",
+      "urn:structural-codes:it:asset:figure:ntc2018:4.1.2"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-1-2-1-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-4-1-2-1-2-1-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono separate, trascritte e collocate nel punto normativo originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      },
+      {
+        "issueId": "ntc2018-4-1-2-1-2-1-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      }
+    ]
+  }
+}

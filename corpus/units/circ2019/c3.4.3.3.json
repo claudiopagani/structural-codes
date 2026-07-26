@@ -1,0 +1,446 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.4.3.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c3/s3.4/p-c3.4.3.3"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C3.4.3.3",
+    "sortKey": "003.004.003.003"
+  },
+  "title": "COPERTURA A DUE FALDE (OPIÙ)",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.4",
+      "urn:structural-codes:it:unit:circ2019:c3.4.3"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.4.3.3\u0002 COPERTURA A DUE FALDE ( O PIÙ )",
+        "normalized": "C3.4.3.3 COPERTURA A DUE FALDE (OPIÙ)",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.375,
+          "width": 156.717,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d3109d855b9d9eb2ca5e9a5ed8f22cee4ea790dd4237bd27f6960824f47126e6",
+        "normalizedSha256": "662d3336a23b20ad20ad6de7bb994536f4a75f1eca27bd3c61a30ed20a566d42"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si devono considerare, in alternativa, le due condizioni Caso (i) ed Caso (ii) riportate nella Figura C3.4.3.\u000f((\u0002\nμ1(\u000f\u000f1)\u0002 \u000f))\u0002 \u000f((\u0002 \u000f))\u0002\nμ1(\u000f\u000f1)\u0002μ1(\u000f\u000f1)\u0002 μ1(\u000f\u000f2)\u0002\nμ1(\u000f\u000f2)\u0002μ1(\u000f\u000f2)\u0002 μ2(\u000f\u000f)\u0002 \u000f = (\u000f\u000f ( \n**\u0005\n\u000f )) \n\u0011+)\nCaso (i)\nCaso (ii)",
+        "normalized": "Si devono considerare, in alternativa, le due condizioni Caso (i) ed Caso (ii) riportate nella Figura C3.4.3.(( μ1(1))) (()) μ1(1)μ1(1) μ1(2) μ1(2)μ1(2) μ2() = (( ** )) +) Caso (i) Caso (ii)",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si devono considerare, in alternativa, le due condizioni Caso (i) ed Caso (ii) riportate nella Figura C3.4.3.(( "
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(1))) (()) "
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(1)"
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(1) "
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(2) "
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(2)"
+          },
+          {
+            "kind": "math",
+            "value": "μ1",
+            "latex": "\\mu_{1}"
+          },
+          {
+            "kind": "text",
+            "value": "(2) "
+          },
+          {
+            "kind": "math",
+            "value": "μ2",
+            "latex": "\\mu_{2}"
+          },
+          {
+            "kind": "text",
+            "value": "() "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " (( ** )) +) Caso (i) Caso (ii)"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 109.761,
+          "width": 447.607,
+          "height": 271.191
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4f1f767a202b092e53917b4382d213c11a559eac022d20d4868597f420e2fdd6",
+        "normalizedSha256": "d0272c2a19f73d95a5dc8dfd83ddef25392254c84583a8c0781fd17294c08f58"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-editorial-002",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0010 \u0011\u0012\u0013 \u0005\u0014\u0015\u0016\u0007\u0016\u0015 - Coefficiente di forma per il carico neve – Coperture a più falde\nQualora una o entrambe le falde convergenti in un compluvio abbiano una inclinazione superiore a 60°, si dovrà prestare\nparticolare attenzione alla scelta dei coefficienti di forma da utilizzare. In particolare si dovrà tenere presente che l’intensità degli\naccumuli che si vengono a formare nelle zone di compluvio è funzione dell’azione di redistribuzione della neve operata dal vento\ne della altezza del compluvio.",
+        "normalized": "Coefficiente di forma per il carico neve – Coperture a più falde Qualora una o entrambe le falde convergenti in un compluvio abbiano una inclinazione superiore a 60°, si dovrà prestare particolare attenzione alla scelta dei coefficienti di forma da utilizzare. In particolare si dovrà tenere presente che l’intensità degli accumuli che si vengono a formare nelle zone di compluvio è funzione dell’azione di redistribuzione della neve operata dal vento e della altezza del compluvio.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Coefficiente di forma per il carico neve – Coperture a più falde Qualora una o entrambe le falde convergenti in un compluvio abbiano una inclinazione superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "60°",
+            "latex": "60^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ", si dovrà prestare particolare attenzione alla scelta dei coefficienti di forma da utilizzare. In particolare si dovrà tenere presente che l’intensità degli accumuli che si vengono a formare nelle zone di compluvio è funzione dell’azione di redistribuzione della neve operata dal vento e della altezza del compluvio."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 109.761,
+          "width": 447.607,
+          "height": 271.191
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "59e23f06eb748da7ab9061dfc7c4a90a106b625da609856ab11b30bc9aa8aaf5",
+        "normalizedSha256": "b00d6ea073fc601a9bcd853e8a1160d729e0e52037caa1292999591a78d8da64"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’effetto degli accumuli in presenza di irregolarità del piano di copertura, quali ad esempio coperture con elementi prefabbricati,\ndovrà essere considerato solo per compluvi nei quali la larghezza delle campate (tratto sotteso dalle due falde adiacenti di\ninclinazione \u000f( \n\u0005e\u0005\n\u000f)) sia superiore a 3,5 m e per angoli di inclinazione delle falde superiori o uguali a 30°. Per campate di\ndimensione e/o di inclinazione inferiore si può assumere, in via semplificativa, che la corrugazione della copertura sia ininfluente\nper la formazione di accumuli nelle zone di compluvio.",
+        "normalized": "L’effetto degli accumuli in presenza di irregolarità del piano di copertura, quali ad esempio coperture con elementi prefabbricati, dovrà essere considerato solo per compluvi nei quali la larghezza delle campate (tratto sotteso dalle due falde adiacenti di inclinazione ( e )) sia superiore a 3,5 m e per angoli di inclinazione delle falde superiori o uguali a 30°. Per campate di dimensione e/o di inclinazione inferiore si può assumere, in via semplificativa, che la corrugazione della copertura sia ininfluente per la formazione di accumuli nelle zone di compluvio.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’effetto degli accumuli in presenza di irregolarità del piano di copertura, quali ad esempio coperture con elementi prefabbricati, dovrà essere considerato solo per compluvi nei quali la larghezza delle campate (tratto sotteso dalle due falde adiacenti di inclinazione ( e )) sia superiore a 3,5 m e per angoli di inclinazione delle falde superiori o uguali a "
+          },
+          {
+            "kind": "math",
+            "value": "30°",
+            "latex": "30^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ". Per campate di dimensione e/o di inclinazione inferiore si può assumere, in via semplificativa, che la corrugazione della copertura sia ininfluente per la formazione di accumuli nelle zone di compluvio."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 78,
+        "printedPage": "74",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 109.761,
+          "width": 447.607,
+          "height": 271.191
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "30836961c43b4ff5036b1a57d34570028cd7301c120e64fa9fb2bdae03e19c9e",
+        "normalizedSha256": "265ae8c14242dcbfaac40b04739fb1a92b13262dd9ed78a21a5556137e99ac69"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:3.4.3.3",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c3.4.3.3#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3-4-3-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c3-4-3-3-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c3-4-3-3-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c3-4-3-3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

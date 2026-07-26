@@ -1,0 +1,184 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.3.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c3/s3.3/p-c3.3.6"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C3.3.6",
+    "sortKey": "003.003.006"
+  },
+  "title": "PRESSIONE CINETICA DI RIFERIMENTO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.3"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.3.6\u0002 PRESSIONE CINETICA DI RIFERIMENTO",
+        "normalized": "C3.3.6 PRESSIONE CINETICA DI RIFERIMENTO",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.917,
+          "y": 406.132,
+          "width": 180.05,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5318a6fa0f489d6a7ed0f0c0bd3afeebde2b53c91e95da4eaa9b92ef7db04d28",
+        "normalizedSha256": "a2be75ca6661104a87754c010ea7279796f4a2fa0d1ba3cfe0cd7730fa220782"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.6#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le espressioni 3.3.4 delle NTC 2008 e [3.3.6] delle NTC 2018, sono sostanzialmente equivalenti.",
+        "normalized": "Le espressioni 3.3.4 delle NTC 2008 e [3.3.6] delle NTC 2018, sono sostanzialmente equivalenti.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.909,
+          "y": 418.618,
+          "width": 325.802,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "8116e245d4b532c805677c22be4f567a5b659c59ac0e85993bd85d3688e06ba3",
+        "normalizedSha256": "8116e245d4b532c805677c22be4f567a5b659c59ac0e85993bd85d3688e06ba3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c3.3.6#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:3.3.6",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c3.3.6#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3-3-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c3-3-6-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c3-3-6-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c3-3-6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c3/s3.3/p-c3.3.8.1.6"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C3.3.8.1.6",
+    "sortKey": "003.003.008.001.006"
+  },
+  "title": "Coperture a falde multiple",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.3",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8.1"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.3.8.1.6 Coperture a falde multiple",
+        "normalized": "C3.3.8.1.6 Coperture a falde multiple",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 65,
+        "printedPage": "61",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.911,
+          "y": 678.156,
+          "width": 156.156,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "49891732d131302d14dee46707a7d9103d5cc5e794ef32f63e6df8245ee1de7d",
+        "normalizedSha256": "49891732d131302d14dee46707a7d9103d5cc5e794ef32f63e6df8245ee1de7d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’altezza di riferimento ᡸ〲",
+        "normalized": "L’altezza di riferimento z̄e per le coperture a falde multiple, ossia le coperture composte da successioni contigue di coperture a semplice o a doppia falda, è pari all’altezza massima h della copertura stessa. In generale, i coefficienti di pressione per le coperture a falde multiple sono gli stessi forniti nei precedenti paragrafi per le coperture corrispondenti a semplice e a doppia falda.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’altezza di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄e",
+            "latex": "\\bar z_e"
+          },
+          {
+            "kind": "text",
+            "value": " per le coperture a falde multiple, ossia le coperture composte da successioni contigue di coperture a semplice o a doppia falda, è pari all’altezza massima "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " della copertura stessa. In generale, i coefficienti di pressione per le coperture a falde multiple sono gli stessi forniti nei precedenti paragrafi per le coperture corrispondenti a semplice e a doppia falda."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 65,
+        "printedPage": "61",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.911,
+          "y": 690.542,
+          "width": 447.524,
+          "height": 18.318
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "150989182d41de0339649bd17286d683bd0091e90481227d6aeaf444e04e273c",
+        "normalizedSha256": "f30801aa3662885b624cb5b638e48f075703e9230a54929eeb487b96190cf685"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-002",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.3.18",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ritaglio ad alta risoluzione ricavato dalla figura e dalla didascalia nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "c7e3f6543473140af56d9e9dd27b930933f2061116fb4ee688cb7ff13e75c844",
+        "normalizedSha256": "c7e3f6543473140af56d9e9dd27b930933f2061116fb4ee688cb7ff13e75c844"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Limitatamente al caso di vento perpendicolare alla direzione del colmo, e per i soli tipi costruttivi illustrati in Figura C3.3.18, i",
+        "normalized": "Limitatamente al caso di vento perpendicolare alla direzione del colmo, e per i soli tipi costruttivi illustrati in Figura C3.3.18, i coefficienti di pressione sopra definiti possono essere moltiplicati per i fattori riduttivi indicati nella stessa figura. In particolare:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8c93e5e4566fc5926b97e38a23736f9e10b9135f11033890b6015e1b7876269b",
+        "normalizedSha256": "a73585996baf53fc039e775e6e4cbd4022e447867365a1176bf9ce229075257d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "coefficienti di pressione sopra definiti possono essere moltiplicati per i fattori riduttivi indicati nella stessa figura. In particolare:- nel caso riportato nella Figura C3.3.18 (a), si applicano ad ogni tratto della copertura i coefficienti di pressione definiti nel",
+        "normalized": "nel caso riportato nella Figura C3.3.18 (a), si applicano ad ogni tratto della copertura i coefficienti di pressione definiti nel paragrafo coperture a falda singola, con inclinazione negativa. Tali coefficienti sono moltiplicati per il fattore riduttivo 0,8 nel secondo tratto, e per il fattore riduttivo 0,6 nei tratti successivi;",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8d0e5b153076ffc82eea9ebb86a33e4d09615254079d17242d894b09d7e957a8",
+        "normalizedSha256": "d1713afba0dbf1d0e1f16f62842aea9b1ea4272403d2f398ebf985e69409a2da"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- nel caso riportato nella Figura C3.3.18 (b), si applicano ad ogni tratto della copertura i coefficienti di pressione definiti nel",
+        "normalized": "nel caso riportato nella Figura C3.3.18 (b), si applicano ad ogni tratto della copertura i coefficienti di pressione definiti nel paragrafo coperture a falda singola, con inclinazione positiva. Nel caso in cui tali coefficienti siano positivi (cpe > 0), nel secondo tratto e in quelli successivi si assume cpe = −0,4. Nel caso in cui tali coefficienti siano negativi (cpe < 0), essi sono moltiplicati per il fattore riduttivo 0,8 nel secondo tratto, e per il fattore riduttivo 0,6 nei tratti successivi;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nel caso riportato nella Figura C3.3.18 (b), si applicano ad ogni tratto della copertura i coefficienti di pressione definiti nel paragrafo coperture a falda singola, con inclinazione positiva. Nel caso in cui tali coefficienti siano positivi ("
+          },
+          {
+            "kind": "math",
+            "value": "cpe > 0",
+            "latex": "c_{pe}>0"
+          },
+          {
+            "kind": "text",
+            "value": "), nel secondo tratto e in quelli successivi si assume "
+          },
+          {
+            "kind": "math",
+            "value": "cpe = −0,4",
+            "latex": "c_{pe}=-0{,}4"
+          },
+          {
+            "kind": "text",
+            "value": ". Nel caso in cui tali coefficienti siano negativi ("
+          },
+          {
+            "kind": "math",
+            "value": "cpe < 0",
+            "latex": "c_{pe}<0"
+          },
+          {
+            "kind": "text",
+            "value": "), essi sono moltiplicati per il fattore riduttivo 0,8 nel secondo tratto, e per il fattore riduttivo 0,6 nei tratti successivi;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1791c0100e0fe0022122de6ca91df1761f296bc9966ed18807dc92bc932a5f13",
+        "normalizedSha256": "b3d1cb998edf24114fd45734da520df6d5055f5c7363606e2d40c001957a414a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- nel caso riportato in Figura C3.3.18 (c), si applicano al primo tratto della copertura (prima falda sopravento) i coefficienti",
+        "normalized": "nel caso riportato in Figura C3.3.18 (c), si applicano al primo tratto della copertura (prima falda sopravento) i coefficienti di pressione definiti nel paragrafo coperture a falda singola con inclinazione positiva. Ai tratti successivi della copertura si applicano i coefficienti di pressione riportati nel paragrafo coperture a falda doppia con inclinazione negativa; tali coefficienti sono moltiplicati per il fattore riduttivo 0,6 a partire dal terzo tratto della copertura;",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a07ca43ee636514266363046b1922ae51e9a9ab13cffa3a7713c5c5b0ad29138",
+        "normalizedSha256": "0b89ea76eed0a98d0fafd4084a9a1302d8e53cd0276cca15d5b1861c749b1871"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.6#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- nel caso riportato in Figura C3.3.18 (d), si applicano ad ogni tratto della copertura i coefficienti di pressione riportati nel",
+        "normalized": "nel caso riportato in Figura C3.3.18 (d), si applicano ad ogni tratto della copertura i coefficienti di pressione riportati nel paragrafo coperture a falda doppia con inclinazione negativa. Tali coefficienti sono moltiplicati per il fattore riduttivo 0,8 nel secondo tratto, e per il fattore riduttivo 0,6 nei tratti successivi.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.485,
+          "width": 447.56,
+          "height": 536.146
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "94be2f1c183c3acb23faa89c6397f2084687fd0e6c6f77487800fc342a426b19",
+        "normalizedSha256": "f722bf6a31fa14b4660c8ebf2496c78fd9e1732e848d697170d497a8c1979083"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.3.18"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3-3-8-1-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c3-3-8-1-6-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      }
+    ]
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c3/s3.3/p-c3.3.8.6.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C3.3.8.6.2",
+    "sortKey": "003.003.008.006.002"
+  },
+  "title": "Travi multiple",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.3",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8.6"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.3.8.6.2 Travi multiple",
+        "normalized": "C3.3.8.6.2 Travi multiple",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.912,
+          "y": 214.352,
+          "width": 100.991,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7195fd206d6849775c53f76be8c35a0260165c1dab758b34a7725e7b16d53446",
+        "normalizedSha256": "7195fd206d6849775c53f76be8c35a0260165c1dab758b34a7725e7b16d53446"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di più travi disposte parallelamente a distanza d non maggiore del doppio dell’altezza h, il valore della pressione\nsull’elemento successivo sarà pari a quello sull’elemento precedente moltiplicando per un coefficiente di riduzione dato da:Figura C3.3.28 – Travi parallele",
+        "normalized": "Nel caso di più travi disposte parallelamente a distanza d non maggiore del doppio dell’altezza h, il valore della pressione sull’elemento successivo sarà pari a quello sull’elemento precedente moltiplicando per un coefficiente di riduzione dato da:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di più travi disposte parallelamente a distanza "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": " non maggiore del doppio dell’altezza "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": ", il valore della pressione sull’elemento successivo sarà pari a quello sull’elemento precedente moltiplicando per un coefficiente di riduzione dato da:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 226.739,
+          "width": 447.449,
+          "height": 226.844
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fe8f78d709f938a3b9038d94dc41ec7bbe550e94d4eaea8ee88237f32eda82d6",
+        "normalizedSha256": "0e4766a343ff9b6fed3ab8acd594d004d797ebdff86273cedb07d9f2e38435f0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-editorial-002",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.3.28",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 226.739,
+          "width": 447.449,
+          "height": 226.844
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-figure-placeholder",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Segnaposto collocato in corrispondenza della didascalia ufficiale; il ritaglio della figura deve ancora essere inserito."
+          }
+        ],
+        "rawSha256": "bde2bc1e8b8a5daa58b4a0d2d797d3f901a12ec645671965399728970fd44f28",
+        "normalizedSha256": "b714e18d87fa7723dbd36347241a34b0ed1c79950ef95c5fce356551c3c1a7ec"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per d/h \u001e 5 gli elementi vengono considerati come isolati.",
+        "normalized": "Per d/h 5 gli elementi vengono considerati come isolati.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "/"
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " 5 gli elementi vengono considerati come isolati."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 226.739,
+          "width": 447.449,
+          "height": 226.844
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "68388f30de6a78912dfb65ca519fb51338c53f3b62a93bfe16b0fd4e5c2f491a",
+        "normalizedSha256": "bca885607d73b18a7455dc3e40eb047c217a90c5feb95eda861316bf053a099d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per 2 < d/h < 5 si procede all’interpolazione lineare.",
+        "normalized": "Per 2 < d/h < 5 si procede all’interpolazione lineare.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per 2 "
+          },
+          {
+            "kind": "math",
+            "value": "<",
+            "latex": "<"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "/"
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "<",
+            "latex": "<"
+          },
+          {
+            "kind": "text",
+            "value": " 5 si procede all’interpolazione lineare."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 226.739,
+          "width": 447.449,
+          "height": 226.844
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "0bf390229e4c3c1fb230b0a5e3df43fa64ff9d450e77235c9ae0991c8b842ae4",
+        "normalizedSha256": "0bf390229e4c3c1fb230b0a5e3df43fa64ff9d450e77235c9ae0991c8b842ae4"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.3.28"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3-3-8-6-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c3-3-8-6-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c3-3-8-6-2-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      }
+    ]
+  }
+}

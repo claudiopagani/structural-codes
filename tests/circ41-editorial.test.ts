@@ -1,0 +1,122 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFile, readdir } from "node:fs/promises";
+import test from "node:test";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const repoRoot = fileURLToPath(new URL("../", import.meta.url));
+
+async function json(relativePath: string): Promise<any> {
+    return JSON.parse(await readFile(join(repoRoot, relativePath), "utf8"));
+}
+
+test("C4.1 usa tutti i ritagli ufficiali, senza segnaposto", async () => {
+    const manifest = await json(
+        "corpus/assets/circ2019/core-figure-placeholders.json",
+    );
+    const figures = manifest.figures.filter(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber.startsWith("C4.1."),
+    );
+
+    assert.equal(figures.length, 13);
+    for (const figure of figures) {
+        assert.doesNotMatch(figure.imagePath, /placeholder/u);
+        const image = await readFile(
+            join(repoRoot, "corpus", "assets", figure.imagePath),
+        );
+        assert.equal(
+            createHash("sha256").update(image).digest("hex"),
+            figure.sha256,
+            figure.officialNumber,
+        );
+    }
+});
+
+test("C4.1 contiene le formule verificate e i gruppi non numerati", async () => {
+    const manifest = await json("corpus/assets/circ2019/core-editorial.json");
+    const formulas = manifest.formulas.filter(
+        ({ unitId }: { unitId: string }) => unitId.includes(":circ2019:c4.1"),
+    );
+    const byNumber = new Map<string | null, string>(
+        formulas.map(
+            (formula: { officialNumber: string | null; latex: string }) => [
+                formula.officialNumber,
+                formula.latex,
+            ],
+        ),
+    );
+
+    assert.equal(formulas.length, 26);
+    assert.equal(byNumber.get("C4.1.3"), "\\zeta=1-c\\beta^2");
+    assert.equal(
+        byNumber.get("C4.1.5 e 4.1.14"),
+        "w_k=1{,}7\\,\\varepsilon_{sm}\\,\\Delta_{sm}",
+    );
+    assert.equal(byNumber.get("C4.1.10"), "\\Delta_{sm}=0{,}75(h-x)");
+    assert.match(byNumber.get("C4.1.16") ?? "", /^E_\{lcm\}=22000/u);
+    assert.match(byNumber.get("C4.1.17") ?? "", /0\{,\}15/u);
+    assert.equal(
+        formulas.filter(
+            ({ officialNumber }: { officialNumber: string | null }) =>
+                officialNumber === null,
+        ).length,
+        6,
+    );
+});
+
+test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
+    const manifest = await json("corpus/assets/circ2019/core-tables.json");
+    const tables = manifest.tables.filter(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber.startsWith("C4.1."),
+    );
+
+    assert.deepEqual(
+        tables.map(({ officialNumber }: { officialNumber: string }) =>
+            officialNumber,
+        ),
+        ["C4.1.I", "C4.1.II", "C4.1.III", "C4.1.IV", "C4.1.V", "C4.1.VI"],
+    );
+    const tableV = tables.find(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber === "C4.1.V",
+    );
+    assert.equal(tableV.columnCount, 3);
+    assert.equal(tableV.rows.length, 9);
+    const tableVI = tables.find(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber === "C4.1.VI",
+    );
+    assert.equal(tableVI.columnCount, 7);
+    assert.equal(tableVI.rows.length, 3);
+});
+
+test("ogni asset C4.1 compare una sola volta nel flusso editoriale", async () => {
+    const directory = join(repoRoot, "corpus", "units", "circ2019");
+    const files = (await readdir(directory)).filter(
+        (name) => name.startsWith("c4.1") && name.endsWith(".json"),
+    );
+    const counts = new Map<string, number>();
+
+    for (const file of files) {
+        const unit = await json(join("corpus", "units", "circ2019", file));
+        for (const block of unit.blocks) {
+            if (!block.assetId) continue;
+            counts.set(block.assetId, (counts.get(block.assetId) ?? 0) + 1);
+        }
+    }
+
+    const grouped = {
+        figure: [...counts].filter(([id]) => id.includes(":asset:figure:")),
+        formula: [...counts].filter(([id]) => id.includes(":asset:formula:")),
+        table: [...counts].filter(([id]) => id.includes(":asset:table:")),
+    };
+    assert.equal(grouped.figure.length, 13);
+    assert.equal(grouped.formula.length, 26);
+    assert.equal(grouped.table.length, 6);
+    for (const [assetId, count] of counts) {
+        assert.equal(count, 1, assetId);
+    }
+});

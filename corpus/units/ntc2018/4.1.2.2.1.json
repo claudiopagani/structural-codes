@@ -1,0 +1,426 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c4/s4.1/p4.1.2.2.1"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.1.2.2.1",
+    "sortKey": "004.001.002.002.001"
+  },
+  "title": "Generalità",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.1.2.2.1 Generalità",
+        "normalized": "4.1.2.2.1 Generalità",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.955,
+          "y": 465.612,
+          "width": 83.21,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "1761c0fb204b81b810c592e08439ea91466826c93656a644117bb08e6e6028b9",
+        "normalizedSha256": "1761c0fb204b81b810c592e08439ea91466826c93656a644117bb08e6e6028b9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si deve verificare il rispetto dei seguenti stati limite:",
+        "normalized": "Si deve verificare il rispetto dei seguenti stati limite:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "191ba37626ef3519587b9d3676c7b3b7784c319612d54b9e9f80ac92e9cd1fe0",
+        "normalizedSha256": "191ba37626ef3519587b9d3676c7b3b7784c319612d54b9e9f80ac92e9cd1fe0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-002",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ deformazione,",
+        "normalized": "deformazione,",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "be063407922e7cd952f2b21d9f20e6cabbe89dfaff9b4523deaa59485aac58ee",
+        "normalizedSha256": "86105568c50f0b3849fbf4a388617ef4761a55b53d0f27e3c552ae246bcca0d8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ vibrazione,",
+        "normalized": "vibrazione,",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e330ccb50205e7dae676ad8d4a4da4a08390f023c5d0922b62a22d7003579e1e",
+        "normalizedSha256": "3b4e992260e742a965cb3aca0c3f3ea0d4cab8869c14efea008c972e945aa42a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ fessurazione,",
+        "normalized": "fessurazione,",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "71679c43a4b101dc28139693e6e187b97e51d97864fb7e03f6b686248f58e684",
+        "normalizedSha256": "06ce78ff4b3eba76a168fedb27557ef3bd25003dba61cc12c3c32377d9bbd578"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ tensioni di esercizio,",
+        "normalized": "tensioni di esercizio,",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b2bcbe44b62495491b6954d50d5e190829348abede5ecf1e162dde0f14e840de",
+        "normalizedSha256": "1c2547ff8ee81cb62600121c348388004b46b2deb41c18e02fe2c82cdda53720"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.1#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ fatica per quanto riguarda eventuali danni che possano compromettere la durabilità, per la quale sono definite regole specifi-\nche nei punti seguenti.",
+        "normalized": "fatica per quanto riguarda eventuali danni che possano compromettere la durabilità, per la quale sono definite regole specifiche nei punti seguenti.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 79,
+        "printedPage": "75",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 477.372,
+          "width": 428.686,
+          "height": 80.485
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "768e999731e884bbd0a62455e226e58ba39417e80268cefe7f5cd2771e1b0543",
+        "normalizedSha256": "10b5677874ad00a740aa90ff84d06bd46f6c7e311ffc2b230e25610ed92767ad"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-1-2-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

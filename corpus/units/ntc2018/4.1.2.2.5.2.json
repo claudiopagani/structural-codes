@@ -1,0 +1,208 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c4/s4.1/p4.1.2.2.5.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.1.2.2.5.2",
+    "sortKey": "004.001.002.002.005.002"
+  },
+  "title": "Tensione massima dell’acciaio in condizioni di esercizio",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.1.2.2.5.2 Tensione massima dell’acciaio in condizioni di esercizio",
+        "normalized": "4.1.2.2.5.2 Tensione massima dell’acciaio in condizioni di esercizio",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 81,
+        "printedPage": "77",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.958,
+          "y": 349.39,
+          "width": 234.154,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c84d0dd14ea684a2515259d7b3ed6cd30ca1ce829dca3f8818c024a5e3cf1959",
+        "normalizedSha256": "c84d0dd14ea684a2515259d7b3ed6cd30ca1ce829dca3f8818c024a5e3cf1959"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La tensione massima, Ηs,max , per effetto delle azioni dovute alla combinazione caratteristica deve rispettare la limitazione seguen-",
+        "normalized": "La tensione massima, σs,max, per effetto delle azioni dovute alla combinazione caratteristica deve rispettare la limitazione seguente:",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La tensione massima, "
+          },
+          {
+            "kind": "math",
+            "value": "σs,max",
+            "latex": "\\sigma_{s,max}"
+          },
+          {
+            "kind": "text",
+            "value": ", per effetto delle azioni dovute alla combinazione caratteristica deve rispettare la limitazione seguente:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 81,
+        "printedPage": "77",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 359.494,
+          "width": 428.519,
+          "height": 32.696
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5c67d3b7264d4a81ac45741fe16c825779a78ab85f0f0eee95677d7475a18078",
+        "normalizedSha256": "d881c5948ce7aaa5db6b7ee99fe4c271f9d71acb0decc589360c2935c99c3164"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5.2#block-editorial-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.17",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 81,
+        "printedPage": "77",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.953,
+          "y": 359.494,
+          "width": 428.519,
+          "height": 32.696
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc41-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "0d2cc93b5db9a7ef7d3f50ec284497dcb6805bf735242b24846e0a40ca902fc8",
+        "normalizedSha256": "d881c5948ce7aaa5db6b7ee99fe4c271f9d71acb0decc589360c2935c99c3164"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.17"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-1-2-2-5-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-4-1-2-2-5-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono separate, trascritte e collocate nel punto normativo originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      }
+    ]
+  }
+}

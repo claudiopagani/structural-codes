@@ -1,0 +1,854 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c2.4.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c2/s2.4/p-c2.4.3"
+  ],
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C2.4.3",
+    "sortKey": "002.004.003"
+  },
+  "title": "PERIODO DI RIFERIMENTO PER L’AZIONE SISMICA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c2.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c2",
+      "urn:structural-codes:it:unit:circ2019:c2.4"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C2.4.3\u0002 PERIODO DI RIFERIMENTO PER L’AZIONE SISMICA",
+        "normalized": "C2.4.3 PERIODO DI RIFERIMENTO PER L’AZIONE SISMICA",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 230.284,
+          "width": 200.721,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "43730cf6154c3447a4d7d654a2a08cd4614736a31280a6ab4e53b121af1a303f",
+        "normalizedSha256": "5a063df0547e880083e322b92d565da186a620e4ab4240e2df63600e36bd5563"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il periodo di riferimento V R di una costruzione, valutato moltiplicando la vita nominale VN (espressa in anni) per il coefficiente",
+        "normalized": "Il periodo di riferimento VR di una costruzione, valutato moltiplicando la vita nominale VN (espressa in anni) per il coefficiente d’uso della costruzione CU (VR = VN · CU), riveste notevole importanza, in quanto, assumendo che la legge di ricorrenza dell’azione sismica sia un processo poissoniano, è utilizzato per valutare, fissata la probabilità di superamento PVR corrispondente allo stato limite considerato (Tabella 3.2.I della NTC), il periodo di ritorno TR dell’azione sismica cui fare riferimento per la verifica.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il periodo di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "VR",
+            "latex": "V_R"
+          },
+          {
+            "kind": "text",
+            "value": " di una costruzione, valutato moltiplicando la vita nominale "
+          },
+          {
+            "kind": "math",
+            "value": "VN",
+            "latex": "V_N"
+          },
+          {
+            "kind": "text",
+            "value": " (espressa in anni) per il coefficiente d’uso della costruzione "
+          },
+          {
+            "kind": "math",
+            "value": "CU",
+            "latex": "C_U"
+          },
+          {
+            "kind": "text",
+            "value": " ("
+          },
+          {
+            "kind": "math",
+            "value": "VR = VN · CU",
+            "latex": "V_R = V_N \\cdot C_U"
+          },
+          {
+            "kind": "text",
+            "value": "), riveste notevole importanza, in quanto, assumendo che la legge di ricorrenza dell’azione sismica sia un processo poissoniano, è utilizzato per valutare, fissata la probabilità di superamento "
+          },
+          {
+            "kind": "math",
+            "value": "PVR",
+            "latex": "P_{VR}"
+          },
+          {
+            "kind": "text",
+            "value": " corrispondente allo stato limite considerato (Tabella 3.2.I della NTC), il periodo di ritorno "
+          },
+          {
+            "kind": "math",
+            "value": "TR",
+            "latex": "T_R"
+          },
+          {
+            "kind": "text",
+            "value": " dell’azione sismica cui fare riferimento per la verifica."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bae452cfcf8b56efa98a8f0356dc0ec89f1ece045805eef9f6bdd3924157c9c5",
+        "normalizedSha256": "bc4807354f873bb266b1c222aef99b488139f4208876eb1a44151a4fb8f642ba"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In particolare la tabella mostra i valori di VR corrispondenti ai valori di V ",
+        "normalized": "In particolare la tabella mostra i valori di VR corrispondenti ai valori di VN che individuano le frontiere tra i tre tipi di costruzione considerati (tipo 1, tipo 2, tipo 3); valori di VN intermedi tra detti valori di frontiera (e dunque valori di VR intermedi tra quelli mostrati in tabella) sono consentiti ed i corrispondenti valori dei parametri necessari a definire l’azione sismica sono ricavati utilizzando le formule d’interpolazione fornite nell’Allegato A alle NTC.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In particolare la tabella mostra i valori di "
+          },
+          {
+            "kind": "math",
+            "value": "VR",
+            "latex": "V_R"
+          },
+          {
+            "kind": "text",
+            "value": " corrispondenti ai valori di "
+          },
+          {
+            "kind": "math",
+            "value": "VN",
+            "latex": "V_N"
+          },
+          {
+            "kind": "text",
+            "value": " che individuano le frontiere tra i tre tipi di costruzione considerati (tipo 1, tipo 2, tipo 3); valori di "
+          },
+          {
+            "kind": "math",
+            "value": "VN",
+            "latex": "V_N"
+          },
+          {
+            "kind": "text",
+            "value": " intermedi tra detti valori di frontiera (e dunque valori di "
+          },
+          {
+            "kind": "math",
+            "value": "VR",
+            "latex": "V_R"
+          },
+          {
+            "kind": "text",
+            "value": " intermedi tra quelli mostrati in tabella) sono consentiti ed i corrispondenti valori dei parametri necessari a definire l’azione sismica sono ricavati utilizzando le formule d’interpolazione fornite nell’Allegato A alle NTC."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "49940ba73684ec7c9eb3054d6e5415197838ab26bb83c846f709fb25e5f01bbf",
+        "normalizedSha256": "7e94b7c0927a5d226dce4f4ee3c0a1c757c871a38a6b7684a8dfe4e78e28f4af"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-003",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c2.4.i",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-table-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Tabella ritrascritta e verificata riga per riga sulla fonte ufficiale."
+          }
+        ],
+        "rawSha256": "464f883e5a5d3a89ea465b55b63407633a3a4de0875973b7a1dbbb7a86d20ad1",
+        "normalizedSha256": "54f2da44422bb096d0bfebba03bef58e34f9395af96a23acacbb0cd7792d7a85"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le costruzioni a servizio di attività a rischio di incidente rilevante si adotteranno valori di C ",
+        "normalized": "Per le costruzioni a servizio di attività a rischio di incidente rilevante si adotteranno valori di CU anche superiori a 2, in relazione alle conseguenze sull’ambiente e sulla pubblica incolumità determinate dal raggiungimento degli stati limite.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le costruzioni a servizio di attività a rischio di incidente rilevante si adotteranno valori di "
+          },
+          {
+            "kind": "math",
+            "value": "CU",
+            "latex": "C_U"
+          },
+          {
+            "kind": "text",
+            "value": " anche superiori a 2, in relazione alle conseguenze sull’ambiente e sulla pubblica incolumità determinate dal raggiungimento degli stati limite."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3f46898aaaebec7b8971bf521cc0a930f63c6ede2e1cd80d90ecc25f08385d5b",
+        "normalizedSha256": "5347a63861052403ced4a49aafd410f36530259ef3feb0ead6716935731d491b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per i fini delle Norme Tecniche delle Costruzioni, le attività a rischio di incidente rilevante sono quelle effettuate in stabilimenti\nnei quali le sostanze pericolose sono presenti in quantità pari o superiori alle quantità elencate nella colonna 2 della parte 1 o\nnella colonna 2 della parte 2 dell'allegato 1 al decreto Legislativo 26 giugno 2015, n.105.",
+        "normalized": "Per i fini delle Norme Tecniche delle Costruzioni, le attività a rischio di incidente rilevante sono quelle effettuate in stabilimenti nei quali le sostanze pericolose sono presenti in quantità pari o superiori alle quantità elencate nella colonna 2 della parte 1 o nella colonna 2 della parte 2 dell'allegato 1 al decreto Legislativo 26 giugno 2015, n.105.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0fb1efd985b680e363163d3edf53379a40f5c3a54144d4bd5b9eef419568d990",
+        "normalizedSha256": "e57304a973705a92602244b6bd9fb072c6fb530a04aa651a180c028187bc1ef1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le strutture il cui collasso può dar luogo ad incidente rilevante si adotteranno i seguenti valori di coefficienti d’uso:",
+        "normalized": "Per le strutture il cui collasso può dar luogo ad incidente rilevante si adotteranno i seguenti valori di coefficienti d’uso:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5fe24a69eea1b117789284c599c04d871dd338b1a26582a1633c8045afd16789",
+        "normalizedSha256": "5fe24a69eea1b117789284c599c04d871dd338b1a26582a1633c8045afd16789"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "!\u0002 Cu > 2 per attività a rischio di incidente rilevante per i quali risultano essere presenti scenari incidentali con impatto",
+        "normalized": "CU > 2 per attività a rischio di incidente rilevante per i quali risultano essere presenti scenari incidentali con impatto all’esterno dell’attività stessa (sezione L dell’allegato 5 al D. Lgs 105/2015) con categorie di effetti di inizio letalità ed elevata letalità. I valori di soglia da prendere in considerazione per tali categorie di effetti sono quelli indicati nella tabella 2 del punto 6.2 del decreto del Ministro dei Lavori Pubblici 9 maggio 2001. In attesa di più specifiche successive indicazioni normative è possibile assumere cautelativamente CU = 2,5.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "CU > 2",
+            "latex": "C_U > 2"
+          },
+          {
+            "kind": "text",
+            "value": " per attività a rischio di incidente rilevante per i quali risultano essere presenti scenari incidentali con impatto all’esterno dell’attività stessa (sezione L dell’allegato 5 al D. Lgs 105/2015) con categorie di effetti di inizio letalità ed elevata letalità. I valori di soglia da prendere in considerazione per tali categorie di effetti sono quelli indicati nella tabella 2 del punto 6.2 del decreto del Ministro dei Lavori Pubblici 9 maggio 2001. In attesa di più specifiche successive indicazioni normative è possibile assumere cautelativamente "
+          },
+          {
+            "kind": "math",
+            "value": "CU = 2,5",
+            "latex": "C_U = 2{,}5"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "31b890093542625ccd2f5768de59d4490cf3678ce527af8aadfdc0b71d6aa7ae",
+        "normalizedSha256": "2745c5132977a899f3fb05638441fa9216ea94f4fea99a33cb282fa9a8af23f0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-008",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "!\u0002 Cu = 2 per tutti gli altri casi;",
+        "normalized": "CU = 2 per tutti gli altri casi;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "CU = 2",
+            "latex": "C_U = 2"
+          },
+          {
+            "kind": "text",
+            "value": " per tutti gli altri casi;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9ff5ce8a2df8f688d20c609b081a1f8740ea45787f226ef80d9845049c272c45",
+        "normalizedSha256": "ad15f1fd06675878c782d900067abd7e6a372a9ad2f7731e9cf6860dae4c96e8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Tale valore si intende riferito ad attività, che per il loro elevato contenuto tecnologico sono soggette ad aggiornamento e\nrinnovamento costruttivo tale da determinare una vita nominale delle strutture, tipicamente non maggiore di 50 anni.",
+        "normalized": "Tale valore si intende riferito ad attività, che per il loro elevato contenuto tecnologico sono soggette ad aggiornamento e rinnovamento costruttivo tale da determinare una vita nominale delle strutture, tipicamente non maggiore di 50 anni.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d873766a7fab203e6231ca39c60157ad903133b96516a6f11132652841a61bf5",
+        "normalizedSha256": "97b295b44fdd60ec7f79de5faea86825c8fae71816599507cc859c2f36c540eb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c2.4.3#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le strutture il cui collasso non può dar luogo ad incidente rilevante, ancorché eventualmente presenti all’interno di\nstabilimenti a rischio di incidente rilevante, si adottano le classi d’uso definite al §2.4.2 delle NTC e C2.4.2,",
+        "normalized": "Per le strutture il cui collasso non può dar luogo ad incidente rilevante, ancorché eventualmente presenti all’interno di stabilimenti a rischio di incidente rilevante, si adottano le classi d’uso definite al §2.4.2 delle NTC e C2.4.2,",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.898,
+          "y": 242.855,
+          "width": 447.522,
+          "height": 413.87
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "552cef3fae32f7aabb7e9e1c576d49c0d117259270612dc1ec4f36d8cf0996ee",
+        "normalizedSha256": "90d7d2ce4b0dac9b436a1993340738b1d8dfeb0427057317d3387e2f38adfb83"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c2.4.3#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:2.4.3",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c2.4.3#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c2.4.i"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c2-4-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c2-4-3-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c2-4-3-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c2-4-3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

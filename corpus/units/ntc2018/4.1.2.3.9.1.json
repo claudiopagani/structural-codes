@@ -1,0 +1,234 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c4/s4.1/p4.1.2.3.9.1"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.1.2.3.9.1",
+    "sortKey": "004.001.002.003.009.001"
+  },
+  "title": "Pilastri cerchiati",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.3",
+      "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.1.2.3.9.1 Pilastri cerchiati",
+        "normalized": "4.1.2.3.9.1 Pilastri cerchiati",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 677.523,
+          "width": 103.806,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "d71151baa3229af8cce86581ea1a369e0e8c120e97d15333817ad84ec4b4b1c7",
+        "normalizedSha256": "d71151baa3229af8cce86581ea1a369e0e8c120e97d15333817ad84ec4b4b1c7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spi-\nrale di passo non maggiore di 1/5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola som-\nmando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo\ndi calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una\narmatura fittizia longitudinale di peso eguale alla spirale.",
+        "normalized": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spirale di passo non maggiore di 1/5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola sommando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo di calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una armatura fittizia longitudinale di peso eguale alla spirale.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spirale di passo non maggiore di 1"
+          },
+          {
+            "kind": "math",
+            "value": "/",
+            "latex": "/"
+          },
+          {
+            "kind": "text",
+            "value": "5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola sommando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo di calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una armatura fittizia longitudinale di peso eguale alla spirale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 687.686,
+          "width": 428.638,
+          "height": 27.623
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "join-page-break",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Ricomposta una continuazione testuale attraversata da un cambio pagina; il cambio pagina non genera un capoverso."
+          }
+        ],
+        "rawSha256": "873b4926d5585fcb1f292278b2af005deb3bc1f4243780a40d6fad39b2eb0040",
+        "normalizedSha256": "30dbbf1ce59debca3ac4164a591e3d5373a90432e9e1f8db2173decb6d481a6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.1#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il contributo dell’armatura fittizia non deve risultare superiore a quello dell’armatura longitudinale, mentre la resistenza globale\ncosì valutata non deve superare il doppio di quella del nucleo di calcestruzzo non confinato.",
+        "normalized": "Il contributo dell’armatura fittizia non deve risultare superiore a quello dell’armatura longitudinale, mentre la resistenza globale così valutata non deve superare il doppio di quella del nucleo di calcestruzzo non confinato.",
+        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 87,
+        "printedPage": "83",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 98.928,
+          "width": 428.623,
+          "height": 40.229
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "dc3ba5fd90a347dee05792ecc278cf269b5502439ce8370f4fdad25e07e2ca81",
+        "normalizedSha256": "793643deeae3e07cb1b83d6464d0182ae3a1b7051a9c1b78c6b57b6700cb3570"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-1-2-3-9-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

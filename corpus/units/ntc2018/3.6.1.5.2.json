@@ -1,0 +1,152 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "legacyAliases": [
+    "ntc2018:c3/s3.6/p3.6.1.5.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "3.6.1.5.2",
+    "sortKey": "003.006.001.005.002"
+  },
+  "title": "Analisi dell’evoluzione della temperatura",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.6",
+      "urn:structural-codes:it:unit:ntc2018:3.6.1",
+      "urn:structural-codes:it:unit:ntc2018:3.6.1.5"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "3.6.1.5.2 Analisi dell’evoluzione della temperatura",
+        "normalized": "3.6.1.5.2 Analisi dell’evoluzione della temperatura",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81.133,
+          "y": 397.66,
+          "width": 191.453,
+          "height": 7.566
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "10ed78782e8c1a59f2c95e98f7bc8a101a1fc52ab35a26db56e228343dedff3e",
+        "normalizedSha256": "10ed78782e8c1a59f2c95e98f7bc8a101a1fc52ab35a26db56e228343dedff3e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il campo termico all’interno dei componenti della struttura viene valutato risolvendo il corrispondente problema di propagazione\ndel calore, tenendo conto del trasferimento di calore per irraggiamento e convezione dai gas di combustione alla superficie esterna\ndegli elementi e considerando l’eventuale presenza di materiali protettivi.",
+        "normalized": "Il campo termico all’interno dei componenti della struttura viene valutato risolvendo il corrispondente problema di propagazione del calore, tenendo conto del trasferimento di calore per irraggiamento e convezione dai gas di combustione alla superficie esterna degli elementi e considerando l’eventuale presenza di materiali protettivi.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81.133,
+          "y": 409.56,
+          "width": 433.787,
+          "height": 27.993
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6c5157236b4466758b7f21cbd2b836dc243e9d84ee7d6a3e91ce9e43eaf7c030",
+        "normalizedSha256": "d86abfcc9910f7e16eec14031af5e18040d87b25f98ce4b46a035b1e9678c9e9"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3-6-1-5-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

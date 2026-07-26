@@ -1,0 +1,251 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "core-editorial",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.2.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.2.1",
+      "officialNumber": "C3.2.1",
+      "pdfPage": 48,
+      "latex": "T_R=-\\frac{V_R}{\\ln(1-P_{VR})}=-\\frac{C_UV_N}{\\ln(1-P_{VR})}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.2.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.2.1",
+      "officialNumber": "C3.2.2",
+      "pdfPage": 49,
+      "latex": "R=\\frac{T_{R,b}}{T_{R,a}}=\\frac{-V_N/\\ln(1-P_{VR}/C_U)}{-C_UV_N/\\ln(1-P_{VR})}=\\frac{\\ln(1-P_{VR})}{C_U\\ln(1-P_{VR}/C_U)}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.2.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.2.1",
+      "officialNumber": "C3.2.3",
+      "pdfPage": 49,
+      "latex": "R=1=\\frac{\\ln(1-P^*_{VR})}{C_U\\ln(1-P_{VR}/C_U)}\\Rightarrow\\ln(1-P^*_{VR})=C_U\\ln(1-P_{VR}/C_U)\\Rightarrow P^*_{VR}=1-\\left(1-\\frac{P_{VR}}{C_U}\\right)^{C_U}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.2.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.2.2",
+      "officialNumber": "C3.2.4",
+      "pdfPage": 51,
+      "latex": "V_{S,eq}=\\frac{H}{\\displaystyle\\sum_{j=1}^{N}\\frac{h_j}{V_{S,j}}}=\\frac{\\displaystyle\\sum_{j=1}^{N}h_j}{\\displaystyle\\sum_{j=1}^{N}\\frac{h_j}{V_{S,j}}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.2.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.2.3.6",
+      "officialNumber": "C3.2.5",
+      "pdfPage": 54,
+      "latex": "\\rho_{X,Y}=\\frac{\\displaystyle\\int_{t_1}^{t_2}X(t)Y(t)\\,dt}{\\sqrt{\\displaystyle\\int_{t_1}^{t_2}X^2(t)\\,dt\\;\\displaystyle\\int_{t_1}^{t_2}Y^2(t)\\,dt}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.3.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.3.2",
+      "officialNumber": "C3.3.1",
+      "pdfPage": 54,
+      "latex": "v_b(T_R)=\\alpha_Rv_b"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.3.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.3.2",
+      "officialNumber": "C3.3.2",
+      "pdfPage": 54,
+      "latex": "\\alpha_R=0{,}75\\sqrt{1-0{,}2\\ln\\left[-\\ln\\left(1-\\frac{1}{T_R}\\right)\\right]}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c3.3.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c3.3.8",
+      "officialNumber": "C3.3.3",
+      "pdfPage": 55,
+      "latex": "c_{pe,A}=c_{pe,1}-\\left(c_{pe,1}-c_{pe,10}\\right)\\log_{10}(A)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.1.1",
+      "officialNumber": "C4.1.1",
+      "pdfPage": 86,
+      "latex": "\\overline{M}_{Ed}\\le\\overline{M}_{Rd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2",
+      "officialNumber": "C4.1.2",
+      "pdfPage": 90,
+      "latex": "p^*=\\zeta p_f+(1-\\zeta)p"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2",
+      "officialNumber": "C4.1.3",
+      "pdfPage": 90,
+      "latex": "\\zeta=1-c\\beta^2"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2",
+      "officialNumber": "C4.1.4",
+      "pdfPage": 90,
+      "latex": "\\frac{l}{h}\\le K\\left[11+\\frac{0{,}015f_{ck}}{\\rho+\\rho'}\\right]\\left[\\frac{500A_{s,eff}}{f_{yk}A_{s,calc}}\\right]"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.5 e 4.1.14",
+      "pdfPage": 91,
+      "latex": "w_k=1{,}7\\,\\varepsilon_{sm}\\,\\Delta_{sm}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.6",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.6",
+      "pdfPage": 91,
+      "latex": "\\varepsilon_{sm}=\\frac{\\sigma_s-k_t\\dfrac{f_{ctm}}{\\rho_{eff}}\\left(1+\\alpha_e\\rho_{eff}\\right)}{E_s}\\ge0{,}6\\frac{\\sigma_s}{E_s}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.7",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.7",
+      "pdfPage": 92,
+      "latex": "\\Delta_{sm}=\\frac{k_3c+k_1k_2k_4\\dfrac{\\phi}{\\rho_{eff}}}{1{,}7}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.8",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.8",
+      "pdfPage": 92,
+      "latex": "\\phi_{eq}=\\frac{n_1\\phi_1^2+n_2\\phi_2^2}{n_1\\phi_1+n_2\\phi_2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.9",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.9",
+      "pdfPage": 92,
+      "latex": "k_2=\\frac{\\varepsilon_1+\\varepsilon_2}{2\\varepsilon_1}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.10",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5",
+      "officialNumber": "C4.1.10",
+      "pdfPage": 92,
+      "latex": "\\Delta_{sm}=0{,}75(h-x)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.11",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2",
+      "officialNumber": "C4.1.11",
+      "pdfPage": 93,
+      "latex": "N_{Rd}=0{,}8A_cf_{cd}+A_{s,tot}f_{yd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.12",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": "C4.1.12",
+      "pdfPage": 97,
+      "latex": "f_{lctm}=0{,}30\\,f_{lck}^{2/3}\\eta_1\\quad\\text{per calcestruzzo di classe }\\le LC\\,50/55"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.13",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": "C4.1.13",
+      "pdfPage": 97,
+      "latex": "f_{lctm}=2{,}12\\ln\\left[1+\\left(f_{lcm}/10\\right)\\right]\\eta_1\\quad\\text{per calcestruzzo di classe }>LC\\,50/55"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.12.eta1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": null,
+      "pdfPage": 97,
+      "latex": "\\eta_1=0{,}40+0{,}60\\frac{\\rho}{2200}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.12.flcm",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": null,
+      "pdfPage": 97,
+      "latex": "f_{lcm}=\\begin{cases}22\\,\\mathrm{N/mm^2}&\\text{per }LC\\,16/20\\\\f_{lck}+8\\,\\mathrm{N/mm^2}&\\text{per }f_{lck}>20\\,\\mathrm{N/mm^2}\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.14.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": "C4.1.14.a",
+      "pdfPage": 97,
+      "latex": "f_{lctk,0{,}05}=0{,}7f_{lctm}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.14.b",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": "C4.1.14.b",
+      "pdfPage": 97,
+      "latex": "f_{lctk,0{,}95}=1{,}3f_{lctm}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.15",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1",
+      "officialNumber": "C4.1.15",
+      "pdfPage": 97,
+      "latex": "f_{lctd}=0{,}85\\frac{f_{lctk}}{\\gamma_C}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.16",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.2",
+      "officialNumber": "C4.1.16",
+      "pdfPage": 97,
+      "latex": "E_{lcm}=22000\\left[\\frac{f_{lcm}}{10}\\right]^{0{,}3}\\eta_E\\quad\\mathrm{N/mm^2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.16.etae",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.2",
+      "officialNumber": null,
+      "pdfPage": 97,
+      "latex": "\\eta_E=\\left(\\frac{\\rho}{2200}\\right)^2"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.13.strains.le50",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1",
+      "officialNumber": null,
+      "pdfPage": 98,
+      "latex": "\\begin{aligned}\\varepsilon_{c2}&=0{,}20\\%\\\\\\varepsilon_{c3}&=0{,}175\\%\\\\\\varepsilon_{cu}&=\\eta_1\\,0{,}35\\%,\\qquad \\eta_1=0{,}40+0{,}60\\frac{\\rho}{2200}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.13.strains.55",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1",
+      "officialNumber": null,
+      "pdfPage": 98,
+      "latex": "\\begin{aligned}\\varepsilon_{c2}&=0{,}22\\%\\\\\\varepsilon_{c3}&=0{,}18\\%\\\\\\varepsilon_{cu}&=\\eta_1\\,0{,}31\\%\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.17",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1",
+      "officialNumber": "C4.1.17",
+      "pdfPage": 98,
+      "latex": "V_{lRd,c}=\\left[\\frac{0{,}15\\,\\eta_1k\\left(100\\rho_lf_{lck}\\right)^{1/3}}{\\gamma_C}+0{,}15\\sigma_{cp}\\right]b_wd\\ge\\left(\\nu_{l,min}+0{,}15\\sigma_{cp}\\right)b_wd"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.17.parameters",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1",
+      "officialNumber": null,
+      "pdfPage": 98,
+      "latex": "\\begin{aligned}\\eta_1&=0{,}40+0{,}60\\frac{\\rho}{2200}\\\\k&=1+\\left(\\frac{200}{d}\\right)^{1/2}\\le2\\\\\\nu_{l,min}&=0{,}030\\,k^{3/2}f_{lck}^{1/2}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.18",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1",
+      "officialNumber": "C4.1.18",
+      "pdfPage": 98,
+      "latex": "V_{Ed}\\le0{,}5\\eta_1b_wd\\nu_1f_{lcd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.1.19",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1",
+      "officialNumber": "C4.1.19",
+      "pdfPage": 98,
+      "latex": "\\nu_1=0{,}5\\eta_1\\left(1-\\frac{f_{lck}}{250}\\right)"
+    }
+  ],
+  "tables": [],
+  "figures": []
+}

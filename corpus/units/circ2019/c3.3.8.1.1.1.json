@@ -1,0 +1,642 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c3/s3.3/p-c3.3.8.1.1.1"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C3.3.8.1.1.1",
+    "sortKey": "003.003.008.001.001.001"
+  },
+  "title": "Altezza di riferimento per la faccia sopravento",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.3",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8.1",
+      "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.3.8.1.1.1 Altezza di riferimento per la faccia sopravento",
+        "normalized": "C3.3.8.1.1.1 Altezza di riferimento per la faccia sopravento",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 178.965,
+          "width": 211.407,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "703b4c0f93a605eebc29d4931fcf07dd6294fcb5becb19c4ce24355141203eb7",
+        "normalizedSha256": "703b4c0f93a605eebc29d4931fcf07dd6294fcb5becb19c4ce24355141203eb7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La distribuzione altimetrica della pressione sulle pareti della costruzione è, in generale, diversa dal profilo della pressione",
+        "normalized": "La distribuzione altimetrica della pressione sulle pareti della costruzione è, in generale, diversa dal profilo della pressione cinetica di picco del vento indisturbato, come si ricava attraverso il coefficiente di esposizione (§ 3.3.7 delle NTC). In conseguenza di ciò, è opportuno calcolare la pressione cinetica di picco in corrispondenza di un punto posto ad una quota detta di riferimento (z̄e), tale da consentire la stima, generalmente a favore di sicurezza, della risultante delle pressioni agenti sulle pareti verticali dell’edificio.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La distribuzione altimetrica della pressione sulle pareti della costruzione è, in generale, diversa dal profilo della pressione cinetica di picco del vento indisturbato, come si ricava attraverso il coefficiente di esposizione (§ 3.3.7 delle NTC). In conseguenza di ciò, è opportuno calcolare la pressione cinetica di picco in corrispondenza di un punto posto ad una quota detta di riferimento ("
+          },
+          {
+            "kind": "math",
+            "value": "z̄e",
+            "latex": "\\bar z_e"
+          },
+          {
+            "kind": "text",
+            "value": "), tale da consentire la stima, generalmente a favore di sicurezza, della risultante delle pressioni agenti sulle pareti verticali dell’edificio."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a9bf5d29614ef96e8595eb472a47aebdb87046f724eab8fd51d0ecdf4cdd827f",
+        "normalizedSha256": "4812df86f4bf49246028d2091052b501e5f742e605a9ed70f8314c4228801f84"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "$\u0006\u0003\b\u0005 \u0010\b\u0006 \u0010\u0012\u0010\u0015\u0010\b\u0013 \u000e\u000e\u0010 \b\u0004\u000e\u000e\u0010 \b\u0015\u0004\u000f\b \u0007\u0006\u0017\u0017 \b\u0016\u0010\u000f\u0004\u0003\u0006\b\u0004\b+\u0005+ \u0006\b \u0006 \b \u0010\u0016\u0006\u000f\u000e\u0010\u0004\u000f\u0006\b\u0010\u000f\b\u0002\u0010 \u000f\u0007 \b\u0004\u0003\u0007\u0004\u0005\u0004\u000f \u0006\b \b\u0012 +\u000e\u000e\u0004\b \u0006 \b\u0011\u0006\u000f\u0007\u0004\b\u001dx\b\"\b\u0013\u001c, l’altezza",
+        "normalized": "Per gli edifici bassi, ossia con altezza minore o uguale della dimensione in pianta ortogonale al flusso del vento (h ≤ b), l’altezza di riferimento è costante e pari alla quota di sommità dell’edificio (z̄e = h); la pressione del vento è pertanto uniforme.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli edifici bassi, ossia con altezza minore o uguale della dimensione in pianta ortogonale al flusso del vento ("
+          },
+          {
+            "kind": "math",
+            "value": "h ≤ b",
+            "latex": "h\\le b"
+          },
+          {
+            "kind": "text",
+            "value": "), l’altezza di riferimento è costante e pari alla quota di sommità dell’edificio ("
+          },
+          {
+            "kind": "math",
+            "value": "z̄e = h",
+            "latex": "\\bar z_e=h"
+          },
+          {
+            "kind": "text",
+            "value": "); la pressione del vento è pertanto uniforme."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5f732c0cc71491bf4db629691492f6c3d019be32bacaba49853df6d729eaf323",
+        "normalizedSha256": "9ba6b4849608c1884d144e93033df6768679286ac2703f8abeeea983f560b6a3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per gli edifici alti, ossia con altezza compresa fra la dimensione in pianta ortogonale al flusso del vento e 5 volte la profondità",
+        "normalized": "Per gli edifici alti, ossia con altezza compresa fra la dimensione in pianta ortogonale al flusso del vento e 5 volte la profondità dell’edificio (b < h ≤ 5·d), si definiscono due zone distinte. Nella prima parte dell’edificio, sino alla quota z = b, l’altezza di riferimento è costante e pari a z̄e = b; la pressione del vento è pertanto uniforme. Nella parte superiore dell’edificio, per z compreso fra b e h, la quota di riferimento z̄e può essere scelta seguendo uno dei due seguenti criteri (Figura C3.3.4):",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli edifici alti, ossia con altezza compresa fra la dimensione in pianta ortogonale al flusso del vento e 5 volte la profondità dell’edificio ("
+          },
+          {
+            "kind": "math",
+            "value": "b < h ≤ 5·d",
+            "latex": "b<h\\le5d"
+          },
+          {
+            "kind": "text",
+            "value": "), si definiscono due zone distinte. Nella prima parte dell’edificio, sino alla quota "
+          },
+          {
+            "kind": "math",
+            "value": "z = b",
+            "latex": "z=b"
+          },
+          {
+            "kind": "text",
+            "value": ", l’altezza di riferimento è costante e pari a "
+          },
+          {
+            "kind": "math",
+            "value": "z̄e = b",
+            "latex": "\\bar z_e=b"
+          },
+          {
+            "kind": "text",
+            "value": "; la pressione del vento è pertanto uniforme. Nella parte superiore dell’edificio, per z compreso fra b e "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": ", la quota di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄e",
+            "latex": "\\bar z_e"
+          },
+          {
+            "kind": "text",
+            "value": " può essere scelta seguendo uno dei due seguenti criteri (Figura C3.3.4):"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bfa53889cdc548c9614968c03447951ea8c200d8c602f4c54a8ba0fb60c8fd30",
+        "normalizedSha256": "53700a941aa059a62f009bc15cc764fa81dd70e1d810b48e4888677c676afe9d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "1.\u0002 L’altezza di riferimento è costante e pari alla sommità dell’edificio (ᡸ〲",
+        "normalized": "1. L’altezza di riferimento è costante e pari alla sommità dell’edificio (z̄e = h); la pressione del vento è pertanto uniforme fra le quote z = b e z = h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "1. L’altezza di riferimento è costante e pari alla sommità dell’edificio ("
+          },
+          {
+            "kind": "math",
+            "value": "z̄e = h",
+            "latex": "\\bar z_e=h"
+          },
+          {
+            "kind": "text",
+            "value": "); la pressione del vento è pertanto uniforme fra le quote "
+          },
+          {
+            "kind": "math",
+            "value": "z = b",
+            "latex": "z=b"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "z = h",
+            "latex": "z=h"
+          },
+          {
+            "kind": "text",
+            "value": ". In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ceef2287a11105b81b9d3b0a8e7ed3a4fbb31784f823d52a787cb0765d48044f",
+        "normalizedSha256": "ac9f175b5303a893b330d73a2287489ad8a08d1ef0a9d431e061eee692e5580c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "2.\u0002 L’edificio è suddiviso in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di riferimento costante",
+        "normalized": "2. L’edificio è suddiviso in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di riferimento costante pari alla sommità del tronco; se l’altezza di ciascun tronco coincide con l’interpiano dell’edificio, ed ogni singolo tronco risulta centrato sulla posizione degli elementi orizzontali (solai), è lecito ammettere che l’altezza di riferimento sia pari alla quota del solaio relativo; in entrambi i casi la pressione del vento è uniforme su ogni tronco. In questo modo il calcolo delle forze è più oneroso, ma i valori che si ottengono sono più aderenti alla realtà e non maggiori di quelli che si ottengono applicando la procedura di cui al punto precedente.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "014fa06fc8c21d4d3eef76ea36eeb51b4deb44f9fcc10fa8b0a317da87c2b34f",
+        "normalizedSha256": "5b59d2cd6e7a56629e067821343eae86d95e6ba6b9dc59ffba699036b3ccb4fe"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-006",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.3.4",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ritaglio ad alta risoluzione ricavato dalla figura e dalla didascalia nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "da18b1bd0b092519d4023795a1188bf2d05c0ae0617eaf1171d75b34159f0a1c",
+        "normalizedSha256": "8985a9b00ab983f6fc3494f87a770965625f25116329089ddf273a5ddcb7a19c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.1.1.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Particolare attenzione va posta nel caso di edifici particolarmente snelli, il cui rapporto h/d sia maggiore di 5, per i quali potrà",
+        "normalized": "Particolare attenzione va posta nel caso di edifici particolarmente snelli, il cui rapporto h/d sia maggiore di 5, per i quali potrà farsi utile riferimento a studi specifici di settore.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Particolare attenzione va posta nel caso di edifici particolarmente snelli, il cui rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "h/d",
+            "latex": "\\frac{h}{d}"
+          },
+          {
+            "kind": "text",
+            "value": " sia maggiore di 5, per i quali potrà farsi utile riferimento a studi specifici di settore."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 57,
+        "printedPage": "53",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.897,
+          "y": 191.241,
+          "width": 447.579,
+          "height": 418.238
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0644261b0e44a8bbe22ccee425ba351ec5faeddca00bfa4ba306267781bc2da9",
+        "normalizedSha256": "07d2bcc9d5f7a74445ff3257ec97daf354eb3690f4fb9c0b7b99ba9299280fd3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.3.4"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3-3-8-1-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c3-3-8-1-1-1-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c3-3-8-1-1-1-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      }
+    ]
+  }
+}

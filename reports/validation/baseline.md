@@ -2,16 +2,16 @@
 
 > Stato: **quarantined-unverified**  
 > Report deterministico: rigenerare con `npm run baseline`  
-> Fingerprint: `f40b7b42df55176cf563af4aee8fb99abd110fa295538e78ef488d213732d98d`
+> Fingerprint: `e92cc0b439ee8c4597a630a230d9ad249d2f383fa4a161b97f6416fd68eb2f20`
 
 Questa fotografia non certifica il corpus. Registra in modo riproducibile il
 legacy e i fallimenti noti, così ogni cambiamento diventa esplicito.
 
 ## Ambiente
 
-- Node.js: `v22.18.0`
+- Node.js: `v24.11.0`
 - Piattaforma: `win32-x64`
-- Package manager: `npm/11.18.0 node/v22.18.0 win32 x64 workspaces/false`
+- Package manager: `npm/11.6.1 node/v24.11.0 win32 x64 workspaces/false`
 
 ## Inventario
 
@@ -60,7 +60,7 @@ implica che tutti gli elementi siano corretti o realmente presenti nella fonte.
 |---|---|---:|---|
 | `validate:schema` | FAIL | 1 | files: 340, errors: 120, warnings: 22 |
 | `validate:ids` | FAIL | 1 | units: 225, errors: 2, warnings: 301 |
-| `test` | PASS | 0 | tests: 45, passed: 45, failed: 0 |
+| `test` | PASS | 0 | tests: 49, passed: 49, failed: 0 |
 | `typecheck` | PASS | 0 | — |
 | `lint` | PASS | 0 | — |
 

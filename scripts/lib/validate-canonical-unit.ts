@@ -16,6 +16,11 @@ interface CanonicalBlock {
     text?: {
         raw: string;
         normalized: string;
+        inline?: Array<{
+            kind: "text" | "math";
+            value: string;
+            latex?: string;
+        }>;
     } | string;
     assetId?: string;
     evidence?: Evidence;
@@ -168,6 +173,15 @@ export function validateCanonicalUnitSemantics(
             }
             if (sha256OfText(block.text.normalized) !== block.evidence.normalizedSha256) {
                 errors.push(`${block.blockId}: normalizedSha256 non corrisponde al testo`);
+            }
+            if (
+                block.text.inline !== undefined &&
+                block.text.inline.map(({ value }) => value).join("") !==
+                    block.text.normalized
+            ) {
+                errors.push(
+                    `${block.blockId}: i segmenti inline non ricompongono il testo normalizzato`,
+                );
             }
         }
     }

@@ -1,0 +1,408 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c4/s4.1/p-c4.1.2.2.5"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.1.2.2.5",
+    "sortKey": "004.001.002.002.005"
+  },
+  "title": "Stato Limite di limitazione delle tensioni",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.1",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2.2"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.1.2.2.5 Stato Limite di limitazione delle tensioni",
+        "normalized": "C4.1.2.2.5 Stato Limite di limitazione delle tensioni",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 411.545,
+          "width": 195.431,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "9d4b0ccdd6217fb6ade03e16047d6381f0c060d967a0372d754f439fb362e707",
+        "normalizedSha256": "9d4b0ccdd6217fb6ade03e16047d6381f0c060d967a0372d754f439fb362e707"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La verifica delle tensioni in esercizio si può effettuare nelle usuali ipotesi di comportamento lineare dei materiali, trascurando la\nresistenza a trazione del calcestruzzo teso.",
+        "normalized": "La verifica delle tensioni in esercizio si può effettuare nelle usuali ipotesi di comportamento lineare dei materiali, trascurando la resistenza a trazione del calcestruzzo teso.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 427.366,
+          "width": 447.476,
+          "height": 103.237
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8465f6ac61e36de5412dc1173e5d35f8c53f1d35a0f1bcbad11c95d074bbaba8",
+        "normalizedSha256": "2143de5bf678de9128b1fb7a08da84fd1c2e56f97df084cd57ba1dba6d686e00"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nei calcoli per azioni di breve durata può assumersi il valore del modulo di elasticità del calcestruzzo E c dato dalla [11.2.5] delle\nNTC, ed un modulo di elasticità dell’acciaio E s pari a 210.000 N/mm2. Tale valore può essere opportunamente ridotto nel caso di\nfili, trecce e trefoli da calcestruzzo armato precompresso.",
+        "normalized": "Nei calcoli per azioni di breve durata può assumersi il valore del modulo di elasticità del calcestruzzo Ec dato dalla [11.2.5] delle NTC, ed un modulo di elasticità dell’acciaio Es pari a 210.000 N/mm2. Tale valore può essere opportunamente ridotto nel caso di fili, trecce e trefoli da calcestruzzo armato precompresso.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei calcoli per azioni di breve durata può assumersi il valore del modulo di elasticità del calcestruzzo Ec dato dalla [11.2.5] delle NTC, ed un modulo di elasticità dell’acciaio "
+          },
+          {
+            "kind": "math",
+            "value": "Es",
+            "latex": "E_s"
+          },
+          {
+            "kind": "text",
+            "value": " pari a 210.000 "
+          },
+          {
+            "kind": "math",
+            "value": "N/mm2",
+            "latex": "\\mathrm{N/mm^2}"
+          },
+          {
+            "kind": "text",
+            "value": ". Tale valore può essere opportunamente ridotto nel caso di fili, trecce e trefoli da calcestruzzo armato precompresso."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 427.366,
+          "width": 447.476,
+          "height": 103.237
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "55503ff0ca535d2e34cd90edd35e91ea659831b777e8ca089c37bf5736932f85",
+        "normalizedSha256": "ac71338fe2683402f9ce99e002880d25688abe3a89027f27cc21bb42178b927e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di azioni di lunga durata, gli effetti della viscosità del calcestruzzo si possono tenere in conto riducendo opportunamente il\nmodulo di elasticità Ec mediante l’introduzione del coefficiente di viscosità 4\u0005definito nel § 11.2.10.7 delle NTC.",
+        "normalized": "Nel caso di azioni di lunga durata, gli effetti della viscosità del calcestruzzo si possono tenere in conto riducendo opportunamente il modulo di elasticità Ec mediante l’introduzione del coefficiente di viscosità 4definito nel § 11.2.10.7 delle NTC.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 427.366,
+          "width": 447.476,
+          "height": 103.237
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "27c03a0fac4ce692c87ec8f871b1a7a9908ec6ecf0fc59eb9e629d8e47d950d4",
+        "normalizedSha256": "1805e8f3839ef507b464281fab1d2270b1c7448ed46dee2988ce937819048e22"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di\nomogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n = 15.\u0002",
+        "normalized": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di omogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n = 15.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di omogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 15."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 427.366,
+          "width": 447.476,
+          "height": 103.237
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "88bb0c55193751678267a2b8ad7e67f2f26cbbd4206e5e81dc02acb3bb34a98f",
+        "normalizedSha256": "47720978297d3b84813b10bcc5b4960e6a1302807f7533bbf53cd18d7bdecfa3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.5",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.1.2.2.5#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-1-2-2-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-5-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-5-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-5-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

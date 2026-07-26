@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:structural-codes:schema:asset-manifest:v2",
+  "title": "Structural Codes canonical asset manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordType",
+    "document",
+    "section",
+    "sourceId",
+    "status",
+    "formulas",
+    "tables",
+    "figures"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "urn:structural-codes:schema:asset-manifest:v2"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "2.0.0-alpha.1"
+    },
+    "recordType": {
+      "type": "string",
+      "const": "asset-manifest"
+    },
+    "document": {
+      "type": "string",
+      "enum": [
+        "ntc2018",
+        "circ2019"
+      ]
+    },
+    "section": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "transcribed-unreviewed",
+        "source-checked"
+      ]
+    },
+    "formulas": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/formula"
+      }
+    },
+    "tables": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/table"
+      }
+    },
+    "figures": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/figure"
+      }
+    }
+  },
+  "$defs": {
+    "assetId": {
+      "type": "string",
+      "pattern": "^urn:structural-codes:it:asset:(formula|table|figure):[a-z0-9][a-z0-9:._-]*$"
+    },
+    "unitId": {
+      "type": "string",
+      "pattern": "^urn:structural-codes:it:unit:[a-z0-9][a-z0-9:._-]*$"
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinateSystem",
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "coordinateSystem": {
+          "type": "string",
+          "const": "pdf-points-top-left"
+        },
+        "x": {
+          "type": "number",
+          "minimum": 0
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0
+        },
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "assetCore": {
+      "type": "object",
+      "required": [
+        "id",
+        "unitId",
+        "officialNumber",
+        "pdfPage"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/assetId"
+        },
+        "unitId": {
+          "$ref": "#/$defs/unitId"
+        },
+        "officialNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pdfPage": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "formula": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/assetCore"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "unitId",
+            "officialNumber",
+            "pdfPage",
+            "latex"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^urn:structural-codes:it:asset:formula:[a-z0-9][a-z0-9:._-]*$"
+            },
+            "unitId": {
+              "$ref": "#/$defs/unitId"
+            },
+            "officialNumber": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pdfPage": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "latex": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "tableCell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "latex": {
+          "type": "string",
+          "minLength": 1
+        },
+        "colSpan": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "rowSpan": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      }
+    },
+    "tableRow": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/tableCell"
+      }
+    },
+    "table": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/assetCore"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "unitId",
+            "officialNumber",
+            "pdfPage",
+            "caption",
+            "columnCount",
+            "headers",
+            "rows",
+            "notes"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^urn:structural-codes:it:asset:table:[a-z0-9][a-z0-9:._-]*$"
+            },
+            "unitId": {
+              "$ref": "#/$defs/unitId"
+            },
+            "officialNumber": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pdfPage": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "caption": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "columnCount": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "headers": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/$defs/tableRow"
+              }
+            },
+            "rows": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/tableRow"
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "figure": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/assetCore"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "unitId",
+            "officialNumber",
+            "pdfPage",
+            "caption",
+            "alt",
+            "imagePath",
+            "region",
+            "sha256"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^urn:structural-codes:it:asset:figure:[a-z0-9][a-z0-9:._-]*$"
+            },
+            "unitId": {
+              "$ref": "#/$defs/unitId"
+            },
+            "officialNumber": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pdfPage": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "caption": {
+              "type": "string",
+              "minLength": 1
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "imagePath": {
+              "type": "string",
+              "pattern": "^figures/(ntc2018|circ2019)/[a-z0-9._-]+\\.png$"
+            },
+            "region": {
+              "$ref": "#/$defs/region"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

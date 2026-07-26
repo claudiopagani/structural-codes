@@ -32,7 +32,11 @@ rifondazione segue la
 [`roadmap di rifondazione del corpus`](docs/roadmap-rifondazione-corpus.md).
 La Fase 0 ha messo in sicurezza il legacy; la Fase 1 registra e verifica le
 fonti ufficiali; la Fase 2 ha introdotto il contratto JSON canonico in stato
-alpha. Non è ancora disponibile una release normativa affidabile.
+alpha. Il primo lotto canonico copre i capitoli 1, 2, 3 e 4.1 delle NTC 2018
+e le corrispondenti parti della Circolare 7/2019: 333 unità e 700 blocchi
+ricavati dall'evidence ufficiale. Le unità sono ancora `extracted`, con asset
+e review umane bloccanti; non costituiscono quindi una release normativa
+affidabile.
 
 ```bash
 npm run baseline          # rigenera reports/validation/baseline.json
@@ -44,6 +48,9 @@ npm run verify:sources:online
 npm run verify:evidence
 npm run pilot:inventory
 npm run pilot:visual-audit
+npm run corpus:core:build
+npm run viewer:dev          # apre il visualizzatore web locale
+npm run viewer:test         # sincronizza il corpus, compila e verifica il sito
 npm run verify:integration:local
 npm run check:v2            # gate verde della nuova architettura
 ```
@@ -109,7 +116,8 @@ mappings/   mapping legacy non confermati
 sources/    registro fonti ufficiali (sources.json, append-only)
 schemas/    contratto JSON Schema del corpus canonico v2
 fixtures/   esempi contrattuali validi e non validi
-corpus/     future unità JSON canoniche (oggi vuoto)
+corpus/     unità JSON canoniche estratte, non ancora pubblicabili
+viewer/     visualizzatore web del corpus, evidence e piano di chiusura
 raw-sources/  PDF originali (NON versionati in git)
 extracted/  testo grezzo estratto (rigenerabile, non versionato)
 evidence/   item, coordinate, render e manifest v2 (non versionati)

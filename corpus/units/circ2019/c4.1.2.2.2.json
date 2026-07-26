@@ -1,0 +1,1451 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "legacyAliases": [
+    "circ2019:c4/s4.1/p-c4.1.2.2.2"
+  ],
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.1.2.2.2",
+    "sortKey": "004.001.002.002.002"
+  },
+  "title": "Stato limite di deformazione",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.1",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2",
+      "urn:structural-codes:it:unit:circ2019:c4.1.2.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.1.2.2.2 Stato limite di deformazione",
+        "normalized": "C4.1.2.2.2 Stato limite di deformazione",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 146.489,
+          "width": 151.256,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "cd26980d5ca443d08e435cfce6e67ab2a2b669ddc1ecae15d60eb9a812d6d1b4",
+        "normalizedSha256": "cd26980d5ca443d08e435cfce6e67ab2a2b669ddc1ecae15d60eb9a812d6d1b4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il calcolo della deformazione flessionale di solai e travi si effettua, in genere, mediante integrazione delle curvature, tenendo\nconto della viscosità del calcestruzzo e, se del caso, degli effetti del ritiro. Si considera lo stato non fessurato (sezione interamente\nreagente) per tutte le parti della struttura per le quali, nelle condizioni di carico considerate, le tensioni di trazione nel calcestruzzo\nnon superano la sua resistenza media fctm a trazione. Per le altre parti si fa riferimento allo stato fessurato, potendosi considerare\nl’effetto irrigidente del calcestruzzo teso fra le fessure.",
+        "normalized": "Il calcolo della deformazione flessionale di solai e travi si effettua, in genere, mediante integrazione delle curvature, tenendo conto della viscosità del calcestruzzo e, se del caso, degli effetti del ritiro. Si considera lo stato non fessurato (sezione interamente reagente) per tutte le parti della struttura per le quali, nelle condizioni di carico considerate, le tensioni di trazione nel calcestruzzo non superano la sua resistenza media fctm a trazione. Per le altre parti si fa riferimento allo stato fessurato, potendosi considerare l’effetto irrigidente del calcestruzzo teso fra le fessure.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il calcolo della deformazione flessionale di solai e travi si effettua, in genere, mediante integrazione delle curvature, tenendo conto della viscosità del calcestruzzo e, se del caso, degli effetti del ritiro. Si considera lo stato non fessurato (sezione interamente reagente) per tutte le parti della struttura per le quali, nelle condizioni di carico considerate, le tensioni di trazione nel calcestruzzo non superano la sua resistenza media "
+          },
+          {
+            "kind": "math",
+            "value": "fctm",
+            "latex": "f_{ctm}"
+          },
+          {
+            "kind": "text",
+            "value": " a trazione. Per le altre parti si fa riferimento allo stato fessurato, potendosi considerare l’effetto irrigidente del calcestruzzo teso fra le fessure."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3f4511c6d846a90ceadf0adea078b0c41a08024f6cfeb51d2f4b345c44e35fd5",
+        "normalizedSha256": "7d004f6661fa7a4f0a8a1be4ab30596ace77e4110473e62cff09c896d9be08a7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Al riguardo, detto p f il valore assunto dal parametro di deformazione nella membratura interamente fessurata e p il valore\nassunto da detto parametro nella membratura interamente reagente, il valore di calcolo p* del parametro è dato daᡨ ᒙ = •ᡨ〳 + (1 ㎘ •)ᡨ [C4.1.2]",
+        "normalized": "Detto pf il valore assunto dal parametro nella membratura interamente fessurata e p quello nella membratura interamente reagente, il valore di calcolo p* è dato da:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Detto "
+          },
+          {
+            "kind": "math",
+            "value": "pf",
+            "latex": "p_f"
+          },
+          {
+            "kind": "text",
+            "value": " il valore assunto dal parametro nella membratura interamente fessurata e "
+          },
+          {
+            "kind": "math",
+            "value": "p",
+            "latex": "p"
+          },
+          {
+            "kind": "text",
+            "value": " quello nella membratura interamente reagente, il valore di calcolo "
+          },
+          {
+            "kind": "math",
+            "value": "p*",
+            "latex": "p^*"
+          },
+          {
+            "kind": "text",
+            "value": " è dato da:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9ac1dce8392ff73cb089e6a355b7b9fc9efc6effe9d9764ebdf239071719f0cc",
+        "normalizedSha256": "40d7c2a9d24ecf14eba59fd7904676ecb52a53ba2d1f1e0ee06f002721dc3886"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-003",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.1.2",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula ritrascritta in LaTeX, verificata sulla fonte ufficiale e collocata nella posizione originaria."
+          }
+        ],
+        "rawSha256": "dadf0d927138ff4f030070b7561997a747778d76d1bdd0c4356b8a0b353432e3",
+        "normalizedSha256": "bf4b2033ea91a29f92d72103ba3b513c6b5e957a5e1820e9f6732fef30395ef8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "in cui • = 1 ㎘ ᡕ‐ ⡰ [C4.1.3]",
+        "normalized": "in cui:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "01b34525e3cb6e8f2b1a3d754fb3281eea1dee91a751ec0a49ede53c0c6a695c",
+        "normalizedSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-005",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.1.3",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula ritrascritta in LaTeX, verificata sulla fonte ufficiale e collocata nella posizione originaria."
+          }
+        ],
+        "rawSha256": "dadf0d927138ff4f030070b7561997a747778d76d1bdd0c4356b8a0b353432e3",
+        "normalizedSha256": "bf4b2033ea91a29f92d72103ba3b513c6b5e957a5e1820e9f6732fef30395ef8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella [C4.1.3] si assume -",
+        "normalized": "Nella [C4.1.3] si assume β = Mf/M (rapporto tra il momento di fessurazione Mf e il momento flettente effettivo) o β = Nf/N (rapporto tra la forza normale di fessurazione Nf e la forza normale effettiva), a seconda che la membratura sia soggetta a flessione o a trazione; il coefficiente c assume il valore 1 per un singolo carico di breve durata e 0,50 per carichi permanenti o cicli di carico ripetuti.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nella [C4.1.3] si assume "
+          },
+          {
+            "kind": "math",
+            "value": "β = Mf/M",
+            "latex": "\\beta=\\frac{M_f}{M}"
+          },
+          {
+            "kind": "text",
+            "value": " (rapporto tra il momento di fessurazione "
+          },
+          {
+            "kind": "math",
+            "value": "Mf",
+            "latex": "M_f"
+          },
+          {
+            "kind": "text",
+            "value": " e il momento flettente effettivo) o "
+          },
+          {
+            "kind": "math",
+            "value": "β = Nf/N",
+            "latex": "\\beta=\\frac{N_f}{N}"
+          },
+          {
+            "kind": "text",
+            "value": " (rapporto tra la forza normale di fessurazione "
+          },
+          {
+            "kind": "math",
+            "value": "Nf",
+            "latex": "N_f"
+          },
+          {
+            "kind": "text",
+            "value": " e la forza normale effettiva), a seconda che la membratura sia soggetta a flessione o a trazione; il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "c",
+            "latex": "c"
+          },
+          {
+            "kind": "text",
+            "value": " assume il valore 1 per un singolo carico di breve durata e 0,50 per carichi permanenti o cicli di carico ripetuti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3cc520b6b0999d5dcc9ec86cd3e5da011ff680859026b52d5bef579b40b31433",
+        "normalizedSha256": "3e0c818c016d3055ca9b68278e91a02409e0874720f30ec81450b29fa6feb441"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per quanto riguarda la salvaguardia dell’aspetto e della funzionalità dell’opera, le frecce a lungo termine di travi e solai, calcolate\nsotto la condizione quasi permanente dei carichi, non dovrebbero superare il limite di 1/250 della luce.",
+        "normalized": "Per quanto riguarda la salvaguardia dell’aspetto e della funzionalità dell’opera, le frecce a lungo termine di travi e solai, calcolate sotto la condizione quasi permanente dei carichi, non dovrebbero superare il limite di 1/250 della luce.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "17da8d316ea281aa2de2ae32e43d9f3e0e1e61aa8800e9ee5f28215cb793fb27",
+        "normalizedSha256": "fc353ebee5637a392ce350f5ea02654776c77f671f02382e4e89263d8e76bf1f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In relazione all’integrità delle pareti portate divisorie e di tamponamento, le frecce di travi e solai, sotto la condizione quasi\npermanente dei carichi, non dovrebbero superare il limite di 1/500 della luce. In tale verifica la freccia totale calcolata può essere\ndepurata della parte presente prima dell’esecuzione delle pareti. Detto valore si riferisce al caso di pareti divisorie in muratura.",
+        "normalized": "In relazione all’integrità delle pareti portate divisorie e di tamponamento, le frecce di travi e solai, sotto la condizione quasi permanente dei carichi, non dovrebbero superare il limite di 1/500 della luce. In tale verifica la freccia totale calcolata può essere depurata della parte presente prima dell’esecuzione delle pareti. Detto valore si riferisce al caso di pareti divisorie in muratura.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1c84196c2be3c1c74624f2f3b680b8d5078a9575491451c5e1d8de7f5bfcbc29",
+        "normalizedSha256": "6345ef008daeb53eb426c062a2356f1399433b2a967ff1215cb25ed2f30c71f9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per altri tipi di pareti si dovranno valutare specificatamente i limiti di inflessione ammissibili.",
+        "normalized": "Per altri tipi di pareti si dovranno valutare specificatamente i limiti di inflessione ammissibili.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "3fad920b991fa3b4a5db614436421a62303a6b24e5b6903c226482c534ee8fc6",
+        "normalizedSha256": "3fad920b991fa3b4a5db614436421a62303a6b24e5b6903c226482c534ee8fc6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per travi e solai con luci non superiori a 10 m è possibile omettere la verifica delle inflessioni come sopra riportata, ritenendola\nimplicitamente soddisfatta, se il rapporto l/h tra luce e altezza rispetta la limitazioneᡤ\nᡠ 㐉 ᠷ 㐨11 + 0.015 ᡘ〰〸\n‥ + ‥ 䖓 㐲 䚀500 ᠧう,〲〳〳\nᡘげ〸 ᠧ う,〰〨〹〰\n䚁 [C4.1.4]",
+        "normalized": "Per travi e solai con luci non superiori a 10 m è possibile omettere la verifica delle inflessioni se il rapporto l/h rispetta la limitazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per travi e solai con luci non superiori a 10 m è possibile omettere la verifica delle inflessioni se il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "l/h",
+            "latex": "\\frac{l}{h}"
+          },
+          {
+            "kind": "text",
+            "value": " rispetta la limitazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "21795605beddbdbeb685566e66135c62540369d6a7d0cb45139fb6bb0f5df97e",
+        "normalizedSha256": "45ae68c341f1c58e53644e3cdb4025e7d7b5d87e47394477b910c0f4cf06a5a8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.1.4",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula ritrascritta in LaTeX, verificata sulla fonte ufficiale e collocata nella posizione originaria."
+          }
+        ],
+        "rawSha256": "dadf0d927138ff4f030070b7561997a747778d76d1bdd0c4356b8a0b353432e3",
+        "normalizedSha256": "bf4b2033ea91a29f92d72103ba3b513c6b5e957a5e1820e9f6732fef30395ef8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove f cke f yk sono espressi in MPa, \u0012 e \u0012’ sono i rapporti tra armatura tesa e compressa, rispettivamente, As,eff ed As,calc sono,",
+        "normalized": "dove fck e fyk sono espressi in MPa; ρ e ρ’ sono i rapporti tra armatura tesa e compressa, rispettivamente; As,eff e As,calc sono l’armatura tesa effettivamente presente nella sezione più sollecitata e l’armatura di progetto nella stessa sezione; K è un coefficiente correttivo dipendente dallo schema strutturale.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " sono espressi in MPa; "
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "ρ’",
+            "latex": "\\rho'"
+          },
+          {
+            "kind": "text",
+            "value": " sono i rapporti tra armatura tesa e compressa, rispettivamente; "
+          },
+          {
+            "kind": "math",
+            "value": "As,eff",
+            "latex": "A_{s,eff}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "As,calc",
+            "latex": "A_{s,calc}"
+          },
+          {
+            "kind": "text",
+            "value": " sono l’armatura tesa effettivamente presente nella sezione più sollecitata e l’armatura di progetto nella stessa sezione; K è un coefficiente correttivo dipendente dallo schema strutturale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cf6d6132d9aab183e99b5574f4ac55268efb6aba9feab1089e76610dc5cb0b6e",
+        "normalizedSha256": "5449ca732cc0238afa386e3bdb5e9558946c2e4c14547ae10ea0d2a3497cd09e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per sezioni a T aventi larghezza dell’ala almeno tre volte maggiore dello spessore dell’anima, i valori dati dalla [C4.1.4] devono\nessere ridotti del 20%.",
+        "normalized": "Per sezioni a T aventi larghezza dell’ala almeno tre volte maggiore dello spessore dell’anima, i valori dati dalla [C4.1.4] devono essere ridotti del 20%.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d113360ec5ec8b71f10764a673783940a2111611dadc793826b36e51aa2fbbcc",
+        "normalizedSha256": "fd98960f6152f7d802f0591b7a7f6b0cdb957b5e6eb3942156a02060ff14cb0c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per travi e piastre nervate caricate da tramezzi che possano subire danni a causa di inflessioni eccessive, i valori dati dalla [C4.1.4]\ndevono essere moltiplicati per il rapporto 7/l essendo l la luce di progetto in m.",
+        "normalized": "Per travi e piastre nervate caricate da tramezzi che possano subire danni a causa di inflessioni eccessive, i valori dati dalla [C4.1.4] devono essere moltiplicati per il rapporto 7/l essendo l la luce di progetto in m.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per travi e piastre nervate caricate da tramezzi che possano subire danni a causa di inflessioni eccessive, i valori dati dalla [C4.1.4] devono essere moltiplicati per il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "7/l",
+            "latex": "\\frac{7}{l}"
+          },
+          {
+            "kind": "text",
+            "value": " essendo l la luce di progetto in m."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a03ee31b80b83d63fb225498c6837a589c9a468828c0773f6a37a23becfae1c6",
+        "normalizedSha256": "f256a49002a4d6a82d4c332172989bdb95aaec85fc0222ea31682c8a81c39ff4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-015",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per piastre non nervate la cui luce maggiore l ecceda 8,5 m, caricate da tramezzi che possano subire danni a causa di inflessioni\neccessive, i valori dati dalla [C4.1.4] devono essere moltiplicati per il rapporto 8,5/l, con l in m.",
+        "normalized": "Per piastre non nervate la cui luce maggiore l ecceda 8,5 m, caricate da tramezzi che possano subire danni a causa di inflessioni eccessive, i valori dati dalla [C4.1.4] devono essere moltiplicati per il rapporto 8,5/l, con l in m.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per piastre non nervate la cui luce maggiore l ecceda 8,5 m, caricate da tramezzi che possano subire danni a causa di inflessioni eccessive, i valori dati dalla [C4.1.4] devono essere moltiplicati per il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "8,5/l",
+            "latex": "\\frac{8{,}5}{l}"
+          },
+          {
+            "kind": "text",
+            "value": ", con l in m."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7376cf508a6fe90d3eee6a838439096e63c59da51ef03f1b25d8021a1c239191",
+        "normalizedSha256": "4cd2aed195a40ea2c19363b01759ff87b31e99119d6a64adb6680275f9d23902"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-016",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I valori da attribuire a K nel caso di calcestruzzo molto sollecitato (\u0012=1,5%) o poco sollecitato (\u0012=0,5%) sono riportati in Tabella",
+        "normalized": "I valori di K per calcestruzzo molto sollecitato (ρ = 1,5%) o poco sollecitato (ρ = 0,5%) sono riportati nella Tabella C4.1.I, insieme ai valori limite di l/h calcolati assumendo fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I valori di K per calcestruzzo molto sollecitato ("
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 1,5%) o poco sollecitato ("
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 0,5%) sono riportati nella Tabella C4.1.I, insieme ai valori limite di "
+          },
+          {
+            "kind": "math",
+            "value": "l/h",
+            "latex": "\\frac{l}{h}"
+          },
+          {
+            "kind": "text",
+            "value": " calcolati assumendo "
+          },
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 30 MPa e [500 "
+          },
+          {
+            "kind": "math",
+            "value": "As,eff",
+            "latex": "A_{s,eff}"
+          },
+          {
+            "kind": "text",
+            "value": "/("
+          },
+          {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "As,calc",
+            "latex": "A_{s,calc}"
+          },
+          {
+            "kind": "text",
+            "value": ")] "
+          },
+          {
+            "kind": "math",
+            "value": "=",
+            "latex": "="
+          },
+          {
+            "kind": "text",
+            "value": " 1."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "531398a825f31f9e3268f11ef482d27ccc341a356893ae38dea8bc7a6266bec2",
+        "normalizedSha256": "54681af34389ae3b0fd827dac4fb6e02529bc131a4c537ebaf08411ec4cc9a5a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-017",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.1.i",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 90,
+        "printedPage": "86",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 162.2,
+          "width": 447.617,
+          "height": 559.665
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-table-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Tabella ritrascritta e verificata riga per riga sulla fonte ufficiale."
+          }
+        ],
+        "rawSha256": "dadf0d927138ff4f030070b7561997a747778d76d1bdd0c4356b8a0b353432e3",
+        "normalizedSha256": "bf4b2033ea91a29f92d72103ba3b513c6b5e957a5e1820e9f6732fef30395ef8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-018",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore.",
+        "normalized": "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.588,
+          "width": 364.143,
+          "height": 143.294
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ba3c8ce5ebfaec6e7672aa0d9469fb3881a730b306da3e3bd9cd46df05527717",
+        "normalizedSha256": "ba3c8ce5ebfaec6e7672aa0d9469fb3881a730b306da3e3bd9cd46df05527717"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-019",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza\nha dimostrato che, comunque, tali limiti sono soddisfacenti.",
+        "normalized": "I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza ha dimostrato che, comunque, tali limiti sono soddisfacenti.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.588,
+          "width": 364.143,
+          "height": 143.294
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b9f6d40d9daf4955c79545fa6d5ac83015df7207292f63f2b1d47bb197e8ed7d",
+        "normalizedSha256": "94a553a095a5ee18f73dbb9d71895d3f8674c88b14365498dedc029744fe9239"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-editorial-020",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di elementi di c.a.p. si può applicare la tabella C4.1.I moltiplicando il valore di K per 1,2.",
+        "normalized": "Nel caso di elementi di c.a.p. si può applicare la tabella C4.1.I moltiplicando il valore di K per 1,2.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 97.588,
+          "width": 364.143,
+          "height": 143.294
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "665a9bc116e63e3ae53377e96114420e67ae16718e6a97d68d97dfabb67d2e03",
+        "normalizedSha256": "665a9bc116e63e3ae53377e96114420e67ae16718e6a97d68d97dfabb67d2e03"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.2.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c4.1.2",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.1.3",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.1.4"
+    ],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c4.1.i"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "migration:core-concrete:v1",
+      "kind": "script",
+      "toolVersion": "core-concrete-migration-0.1.0"
+    },
+    "createdAt": "2026-07-26T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-1-2-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-2-extraction-anomalies",
+        "type": "other",
+        "severity": "warning",
+        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+      },
+      {
+        "issueId": "circ2019-c4-1-2-2-2-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

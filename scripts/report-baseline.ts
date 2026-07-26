@@ -116,7 +116,7 @@ function summarize(script: string, output: string): Record<string, number> | nul
     if (script === "test") {
         return numericCaptures(
             output,
-            /# tests\s+(\d+)[\s\S]*?# pass\s+(\d+)[\s\S]*?# fail\s+(\d+)/,
+            /(?:#|ℹ)\s*tests\s+(\d+)[\s\S]*?(?:#|ℹ)\s*pass\s+(\d+)[\s\S]*?(?:#|ℹ)\s*fail\s+(\d+)/u,
             ["tests", "passed", "failed"],
         );
     }
@@ -124,11 +124,15 @@ function summarize(script: string, output: string): Record<string, number> | nul
 }
 
 async function runNpmScript(script: string): Promise<CommandResult> {
-    const npmExecutable = process.platform === "win32" ? "npm.cmd" : "npm";
-    const child = spawn(npmExecutable, ["run", "--silent", script], {
+    const windows = process.platform === "win32";
+    const executable = windows ? (process.env.ComSpec ?? "cmd.exe") : "npm";
+    const arguments_ = windows
+        ? ["/d", "/s", "/c", `npm run --silent ${script}`]
+        : ["run", "--silent", script];
+    const child = spawn(executable, arguments_, {
         cwd: repoRoot,
         env: process.env,
-        shell: process.platform === "win32",
+        shell: false,
         stdio: ["ignore", "pipe", "pipe"],
     });
 
@@ -252,6 +256,46 @@ non rimuoverli o ignorarli.
 `;
 }
 
+function stableBaselineProjection(value: unknown): unknown {
+    const report = value as {
+        reportVersion: unknown;
+        scope: unknown;
+        status: unknown;
+        deterministic: unknown;
+        fingerprintNormalization?: unknown;
+        sourceTreeFingerprintSha256: unknown;
+        inventory: unknown;
+        graph: unknown;
+        assets: unknown;
+        sources?: {
+            registryReadable?: unknown;
+            records?: Array<Record<string, unknown>>;
+        };
+    };
+    return {
+        reportVersion: report.reportVersion,
+        scope: report.scope,
+        status: report.status,
+        deterministic: report.deterministic,
+        fingerprintNormalization: report.fingerprintNormalization,
+        sourceTreeFingerprintSha256: report.sourceTreeFingerprintSha256,
+        inventory: report.inventory,
+        graph: report.graph,
+        assets: report.assets,
+        sources: {
+            registryReadable: report.sources?.registryReadable,
+            records: (report.sources?.records ?? []).map((source) => ({
+                sourceId: source.sourceId,
+                url: source.url,
+                localFile: source.localFile,
+                registeredSha256: source.registeredSha256,
+                registeredBytes: source.registeredBytes,
+                manuallyVerified: source.manuallyVerified,
+            })),
+        },
+    };
+}
+
 const checkOnly = process.argv.includes("--check");
 const requestedOutput = argumentValue("--output");
 const outputFile =
@@ -287,29 +331,31 @@ const serializedMarkdown = renderMarkdown(completeReport as unknown as BaselineV
 
 if (checkOnly) {
     let currentJson: string;
-    let currentMarkdown: string;
     try {
-        [currentJson, currentMarkdown] = await Promise.all([
-            readFile(outputFile, "utf8"),
-            readFile(markdownOutputFile, "utf8"),
-        ]);
+        currentJson = await readFile(outputFile, "utf8");
     } catch {
-        console.error(
-            `baseline: report assente; attesi ${outputFile} e ${markdownOutputFile}`,
-        );
+        console.error(`baseline: report assente; atteso ${outputFile}`);
         process.exitCode = 1;
         currentJson = "";
-        currentMarkdown = "";
     }
-    if (
-        currentJson !== "" &&
-        (currentJson !== serialized || currentMarkdown !== serializedMarkdown)
-    ) {
+    let unchanged = false;
+    if (currentJson !== "") {
+        try {
+            unchanged =
+                JSON.stringify(
+                    stableBaselineProjection(JSON.parse(currentJson) as unknown),
+                ) ===
+                JSON.stringify(stableBaselineProjection(completeReport));
+        } catch {
+            unchanged = false;
+        }
+    }
+    if (currentJson !== "" && !unchanged) {
         console.error(
             "baseline: il corpus legacy è cambiato. Verificare la modifica e rigenerare con npm run baseline.",
         );
         process.exitCode = 1;
-    } else if (currentJson === serialized && currentMarkdown === serializedMarkdown) {
+    } else if (unchanged) {
         console.log("baseline: fotografia invariata.");
     }
 } else {

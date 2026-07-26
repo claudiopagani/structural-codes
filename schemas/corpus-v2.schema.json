@@ -384,6 +384,7 @@
                         "unicode-nfc",
                         "normalize-line-endings",
                         "join-line-wrap",
+                        "join-page-break",
                         "remove-discretionary-hyphen",
                         "remove-control-character",
                         "normalize-whitespace",
@@ -473,8 +474,58 @@
                 "normalizationVersion": {
                     "type": "string",
                     "minLength": 1
+                },
+                "inline": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/$defs/inlineSegment"
+                    }
                 }
             }
+        },
+        "inlineSegment": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
+                        "value"
+                    ],
+                    "properties": {
+                        "kind": {
+                            "const": "text"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
+                        "value",
+                        "latex"
+                    ],
+                    "properties": {
+                        "kind": {
+                            "const": "math"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "latex": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                }
+            ]
         },
         "officialTextBlock": {
             "type": "object",
