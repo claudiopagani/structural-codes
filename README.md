@@ -27,26 +27,72 @@ finché non superano le review umane previste.
 - offrire un viewer web di sola lettura per il controllo editoriale;
 - costruire un processo aperto al contributo e alla revisione della community.
 
-## Avvio rapido
+## Avvio locale
 
-Richiede Node.js 22.13 o successivo.
+La toolchain supportata è Node.js 22.23.1, registrata in `.nvmrc`,
+`.node-version`, `package.json` e `viewer/package.json`. Non è richiesta né
+vincolata una versione specifica di npm: è sufficiente quella inclusa nella
+distribuzione ufficiale di Node.js oppure una versione più recente compatibile
+con lockfile v3.
+
+Dopo il clone, installare separatamente e in modo deterministico i due
+progetti npm:
 
 ```bash
 npm ci
-npm --prefix viewer ci
+npm run viewer:install
+```
+
+La root contiene gli strumenti del corpus, mentre `viewer/` è un'applicazione
+npm indipendente con il proprio lockfile. Non è un workspace: i comandi
+`viewer:*` eseguiti dalla root usano `npm --prefix viewer` e non modificano il
+lockfile principale.
+
+Per sincronizzare automaticamente il corpus e avviare il server di sviluppo:
+
+```bash
 npm run viewer:dev
 ```
 
-Il comando sincronizza il corpus nel viewer e avvia il sito locale. I dati e
-le figure sotto `viewer/public/` sono output rigenerabili e non vanno
-modificati direttamente.
+Build e avvio della build di produzione:
+
+```bash
+npm run build
+npm run viewer:start
+```
+
+`viewer:dev` e `build` eseguono `viewer:sync:corpus` prima di Vinext. I dati e
+le figure sotto `viewer/public/` sono derivati ignorati da Git e non vanno
+modificati direttamente. Non sono richieste variabili d'ambiente per l'avvio
+locale.
+
+L'installazione del viewer disabilita inizialmente tutti gli install script,
+controlla nel lockfile nomi e versioni rispetto ad `allowScripts` in
+`viewer/package.json`, quindi esegue `npm rebuild` soltanto per i pacchetti
+approvati. La stessa lista è riconosciuta direttamente come `allowScripts`
+dalle versioni di npm che supportano tale policy; lo script locale la applica
+anche con versioni precedenti. Un nuovo install script o una versione diversa
+fa fallire `npm run viewer:install` prima dell'autorizzazione.
 
 Verifiche complete:
 
 ```bash
 npm run check
-npm run viewer:test
+npm run viewer:check
 ```
+
+`npm run check` verifica anche hash e numero di pagine dei PDF ufficiali
+locali. La CI, dove `raw-sources/` è intenzionalmente assente, usa
+`npm run check:ci`: valida integralmente registro e manifest ma non finge di
+verificare file non distribuiti.
+
+Per aggiornare le dipendenze, modificare il `package.json` del solo progetto
+interessato con la toolchain dichiarata, eseguire `npm install` nella root
+oppure `npm --prefix viewer install`, rieseguire audit, test e build, quindi
+commettere insieme manifest e relativo lockfile. Per rigenerare un lockfile
+senza installare pacchetti usare `npm install --package-lock-only` nella root
+oppure `npm --prefix viewer install --package-lock-only`; non rigenerare
+entrambi se è cambiato un solo progetto.
 
 ## Dove lavorare
 

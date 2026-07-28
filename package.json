@@ -7,7 +7,14 @@
     "type": "module",
     "sideEffects": false,
     "engines": {
-        "node": ">=22.6.0"
+        "node": "22.23.1"
+    },
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": "22.23.1",
+            "onFail": "error"
+        }
     },
     "exports": {
         ".": "./src/index.ts",
@@ -29,11 +36,13 @@
         "typecheck": "tsc --noEmit -p tsconfig.json",
         "lint": "eslint src scripts tests",
         "validate:sources": "node --experimental-strip-types scripts/verify-source-registry-v2.ts",
+        "validate:sources:registry": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --registry-only",
         "validate:corpus": "node --experimental-strip-types scripts/validate-corpus-v2.ts",
         "validate:integration": "node --experimental-strip-types scripts/validate-integration-manifest.ts",
         "verify:integration:local": "node --experimental-strip-types scripts/validate-integration-manifest.ts --provider ../strutture-js",
         "verify:sources:online": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --online",
         "validate": "npm run validate:sources && npm run validate:corpus && npm run validate:integration",
+        "validate:ci": "npm run validate:sources:registry && npm run validate:corpus && npm run validate:integration",
         "acquire:source": "node --experimental-strip-types scripts/acquire-source-v2.ts",
         "extract:evidence": "node --experimental-strip-types scripts/extract-evidence.ts",
         "render:evidence": "node --experimental-strip-types scripts/render-evidence.ts",
@@ -50,10 +59,15 @@
         "corpus:circ3:step2:tables": "node --experimental-strip-types scripts/build-circ3-step2-tables.ts",
         "corpus:circ41:figures": "python scripts/extract-circ41-figures.py",
         "corpus:circ41:tables": "node --experimental-strip-types scripts/build-circ41-tables.ts",
+        "build": "npm run viewer:build",
+        "viewer:install": "node scripts/install-viewer-dependencies.mjs",
         "viewer:dev": "npm --prefix viewer run dev",
         "viewer:build": "npm --prefix viewer run build",
+        "viewer:start": "npm --prefix viewer run start",
+        "viewer:check": "npm --prefix viewer run check",
         "viewer:test": "npm --prefix viewer test",
-        "check": "npm run validate && npm run verify:evidence && npm run typecheck && npm run lint && npm test"
+        "check": "npm run validate && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
+        "check:ci": "npm run validate:ci && npm run verify:evidence && npm run typecheck && npm run lint && npm test"
     },
     "dependencies": {
         "zod": "^3.24.1"

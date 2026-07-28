@@ -19,6 +19,7 @@ const manifestFile = join(
     "verification-2026-07-26.json",
 );
 const online = process.argv.includes("--online");
+const registryOnly = process.argv.includes("--registry-only");
 let errors = 0;
 
 function reportError(message: string): void {
@@ -69,7 +70,9 @@ async function remoteDigest(url: string): Promise<{ bytes: number; sha256: strin
 }
 
 console.log(
-    `validate-sources-v2: verifica registro, manifest e file locali${online ? " + fonti remote" : ""}...`,
+    `validate-sources-v2: verifica registro e manifest${
+        registryOnly ? "" : " + file locali"
+    }${online ? " + fonti remote" : ""}...`,
 );
 
 let registry: SourceRegistryV2;
@@ -121,31 +124,33 @@ for (const manifestation of manifestations) {
         }
     }
 
-    try {
-        const [metadata, localSha256, pages] = await Promise.all([
-            stat(absolutePath),
-            sha256OfFile(absolutePath),
-            pdfPageCount(absolutePath),
-        ]);
-        if (metadata.size !== manifestation.bytes) {
+    if (!registryOnly) {
+        try {
+            const [metadata, localSha256, pages] = await Promise.all([
+                stat(absolutePath),
+                sha256OfFile(absolutePath),
+                pdfPageCount(absolutePath),
+            ]);
+            if (metadata.size !== manifestation.bytes) {
+                reportError(
+                    `${manifestation.sourceId}: ${metadata.size} byte locali, attesi ${manifestation.bytes}`,
+                );
+            }
+            if (localSha256 !== manifestation.sha256) {
+                reportError(`${manifestation.sourceId}: SHA-256 locale diverso dal registro`);
+            }
+            if (pages !== manifestation.pageCount) {
+                reportError(
+                    `${manifestation.sourceId}: ${pages} pagine locali, attese ${manifestation.pageCount}`,
+                );
+            }
+        } catch (error) {
             reportError(
-                `${manifestation.sourceId}: ${metadata.size} byte locali, attesi ${manifestation.bytes}`,
+                `${manifestation.sourceId}: file locale non verificabile: ${
+                    error instanceof Error ? error.message : String(error)
+                }`,
             );
         }
-        if (localSha256 !== manifestation.sha256) {
-            reportError(`${manifestation.sourceId}: SHA-256 locale diverso dal registro`);
-        }
-        if (pages !== manifestation.pageCount) {
-            reportError(
-                `${manifestation.sourceId}: ${pages} pagine locali, attese ${manifestation.pageCount}`,
-            );
-        }
-    } catch (error) {
-        reportError(
-            `${manifestation.sourceId}: file locale non verificabile: ${
-                error instanceof Error ? error.message : String(error)
-            }`,
-        );
     }
 
     if (online) {
