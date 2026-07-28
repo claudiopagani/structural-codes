@@ -166,6 +166,131 @@ un'interfaccia editoriale nel browser.
 9. Lasciare la revisione come non approvata finché non sono state completate le
    review umane previste.
 
+## Protocollo operativo obbligatorio
+
+Le regole precedenti descrivono il risultato editoriale atteso. Questo
+protocollo stabilisce come un agente deve organizzare ogni passata. Non è
+facoltativo, anche quando la richiesta sembra semplice o ripetitiva.
+
+### 1. Contratto dello step
+
+Prima di modificare file, dichiarare:
+
+- documento e capitolo o sottocapitolo;
+- intervallo di pagine PDF contigue;
+- unità JSON coinvolte;
+- formule, tabelle e figure attese;
+- file canonici e generatori che potranno cambiare.
+
+Una passata deve coprire al massimo 10 pagine PDF contigue. Se contiene molte
+formule, tabelle, figure o anomalie di estrazione, ridurla ulteriormente. Una
+richiesta più ampia deve essere divisa in step autonomi e verificabili.
+
+Prima della modifica eseguire `git status --short` e
+`git diff --name-only`. Annotare i cambi già presenti e non includerli
+automaticamente nel proprio perimetro.
+
+### 2. Inventario prima della trascrizione
+
+Ispezionare tutte le pagine dello step e produrre un inventario ordinato di:
+
+- numerazione, titolo e gerarchia delle unità;
+- capoversi reali e continuazioni fra pagine;
+- elenchi e relativi livelli;
+- sottotitoli non numerati;
+- formule inline e in display;
+- tabelle, comprese continuazioni multipagina;
+- figure e didascalie;
+- glifi dubbi, testo illeggibile e possibili refusi della fonte.
+
+Non iniziare una correzione massiva basandosi soltanto sul testo estratto.
+L'inventario deve derivare anche dal render delle pagine.
+
+### 3. Esempi strutturali di riferimento
+
+Prima di creare nuovi blocchi, consultare:
+
+- `schemas/corpus-v2.schema.json` per la struttura delle unità;
+- `schemas/corpus-assets-v2.schema.json` per la struttura degli asset;
+- `corpus/units/ntc2018/4.1.2.1.2.1.json` come esempio di ordine fra prosa,
+  figura e due gruppi distinti di formule;
+- `corpus/units/circ2019/c4.1.2.2.4.5.json` come esempio di compresenza di
+  heading, formule, tabelle e figure;
+- i manifest sotto `corpus/assets/` richiamati dagli `assetId`.
+
+Questi file sono esempi del formato e dell'ordinamento, non autorità sul
+contenuto. Possono essere ancora `extracted`, avere issue aperte o attendere
+review umana. Non copiarne testo, LaTeX, coordinate o decisioni editoriali in
+un'altra unità: verificare sempre il PDF dello step.
+
+### 4. Sequenza eseguibile
+
+Per ogni step:
+
+1. verificare il registro con `npm run validate:sources`;
+2. se l'evidence manca, eseguire
+   `npm run extract:evidence -- --source <sourceId> --pages <inizio-fine>`;
+3. renderizzare ogni pagina con
+   `npm run render:evidence -- --source <sourceId> --page <n> --scale 2`;
+4. per glifi, formule, tabelle e figure ambigui produrre anche un ritaglio a
+   scala maggiore con `--region x,y,w,h --scale 3`;
+5. modificare soltanto i record e i generatori dichiarati nel contratto;
+6. aggiornare evidence, trasformazioni e hash insieme al contenuto;
+7. generare, quando utile, il diff editoriale con
+   `npm run review:diff -- --unit <record.json>`;
+8. eseguire il test mirato, quindi `npm run check` e
+   `npm run viewer:test`;
+9. avviare `npm run viewer:dev` e confrontare tutte le unità modificate con
+   tutte le pagine del relativo step;
+10. controllare nuovamente `git diff --name-only` e
+    `git diff --check`.
+
+Il controllo visuale deve coprire l'intera pagina e non soltanto gli asset:
+serve a verificare capoversi, ordine, omissioni e continuità fra cambi pagina.
+
+### 5. Limiti alle modifiche automatiche
+
+- Non eseguire sostituzioni globali sull'intero corpus per correggere newline,
+  trattini, simboli o matematica.
+- Non rigenerare capitoli estranei allo step.
+- Non modificare unità fuori dall'elenco dichiarato senza interrompere il
+  lavoro e ampliare esplicitamente il perimetro.
+- Una regex può individuare candidati, ma non può decidere da sola una
+  correzione editoriale.
+- Non promuovere lo stato di workflow e non chiudere issue bloccanti in base
+  alla sola revisione del modello.
+- Non usare il superamento dello schema, di KaTeX o dei test come prova di
+  fedeltà normativa.
+
+### 6. Condizioni di arresto
+
+Interrompere la trascrizione e registrare un'issue bloccante quando:
+
+- il PDF ufficiale non è disponibile o il suo hash non coincide;
+- un simbolo, valore, indice, esponente o limite non è leggibile;
+- non è possibile determinare con sicurezza il confine di un capoverso,
+  elenco, formula, tabella o figura;
+- la struttura richiesta non è rappresentabile dallo schema corrente;
+- una tabella o figura non può essere verificata integralmente;
+- i test falliscono per una causa che può alterare il contenuto;
+- il diff coinvolge file fuori perimetro senza una ragione dimostrata.
+
+Un agente può completare lo step lasciando elementi esplicitamente bloccati,
+ma non può sostituire l'incertezza con una ricostruzione plausibile.
+
+### 7. Resoconto obbligatorio
+
+Alla fine di ogni step comunicare:
+
+- pagine e unità effettivamente lavorate;
+- file modificati e asset creati o aggiornati;
+- anomalie corrette;
+- ambiguità e issue rimaste aperte;
+- test eseguiti e relativo esito;
+- conferma del confronto PDF→JSON→viewer;
+- unità fuori perimetro eventualmente cambiate, che normalmente devono essere
+  zero.
+
 ## Comandi di verifica
 
 ```bash
