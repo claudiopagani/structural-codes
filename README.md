@@ -29,11 +29,11 @@ finché non superano le review umane previste.
 
 ## Avvio locale
 
-La toolchain supportata è Node.js 22.23.1, registrata in `.nvmrc`,
-`.node-version`, `package.json` e `viewer/package.json`. Non è richiesta né
-vincolata una versione specifica di npm: è sufficiente quella inclusa nella
-distribuzione ufficiale di Node.js oppure una versione più recente compatibile
-con lockfile v3.
+La repository non impone una versione specifica di Node.js o npm. È
+consigliata una release Node.js LTS recente; la CI verifica le linee 22 e 24.
+Gli eventuali requisiti minimi tecnici restano dichiarati dalle singole
+dipendenze. È sufficiente la versione npm inclusa in Node.js oppure una
+versione più recente compatibile con lockfile v3.
 
 Dopo il clone, installare separatamente e in modo deterministico i due
 progetti npm:

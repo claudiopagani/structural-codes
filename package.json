@@ -6,16 +6,6 @@
     "license": "LGPL-2.1-or-later",
     "type": "module",
     "sideEffects": false,
-    "engines": {
-        "node": "22.23.1"
-    },
-    "devEngines": {
-        "runtime": {
-            "name": "node",
-            "version": "22.23.1",
-            "onFail": "error"
-        }
-    },
     "exports": {
         ".": "./src/index.ts",
         "./schema": "./src/schema/index.ts",
