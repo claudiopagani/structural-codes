@@ -3,12 +3,6 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const REPO_ROOT = fileURLToPath(new URL("../../", import.meta.url));
-export const CONTENT_DIR = join(REPO_ROOT, "content");
-export const ASSETS_DIR = join(REPO_ROOT, "assets");
-export const MAPPINGS_DIR = join(REPO_ROOT, "mappings");
-export const SOURCES_FILE = join(REPO_ROOT, "sources", "sources.json");
-export const RAW_SOURCES_DIR = join(REPO_ROOT, "raw-sources");
-export const EXTRACTED_DIR = join(REPO_ROOT, "extracted");
 
 export interface FoundFile {
     absolutePath: string;

@@ -11,7 +11,6 @@
         "id",
         "workId",
         "expressionId",
-        "legacyAliases",
         "kind",
         "numbering",
         "title",
@@ -31,7 +30,7 @@
         },
         "schemaVersion": {
             "type": "string",
-            "const": "2.0.0-alpha.1"
+            "const": "2.0.0-alpha.2"
         },
         "recordType": {
             "type": "string",
@@ -45,14 +44,6 @@
         },
         "expressionId": {
             "$ref": "#/$defs/expressionId"
-        },
-        "legacyAliases": {
-            "type": "array",
-            "items": {
-                "type": "string",
-                "minLength": 1
-            },
-            "uniqueItems": true
         },
         "kind": {
             "type": "string",

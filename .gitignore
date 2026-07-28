@@ -1,6 +1,8 @@
 node_modules/
 dist/
 coverage/
+__pycache__/
+*.py[cod]
 
 # PDF sorgenti: NON versionati in git (peso). Registro hash in sources/sources.json.
 raw-sources/**/*.pdf
@@ -16,6 +18,10 @@ review/diffs/
 review/queue/
 review/normalized/
 tmp/
+
+# Derivati del corpus copiati nel viewer da `npm run sync:corpus`.
+viewer/public/data/corpus.json
+viewer/public/assets/figures/
 
 # Identità e qualifiche dei revisori: audit locale, mai versionato.
 .audit-private/

@@ -7,6 +7,8 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 
+// Fixtures editoriali eterogenee: ogni test restringe poi la forma usata.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function json(relativePath: string): Promise<any> {
     return JSON.parse(await readFile(join(repoRoot, relativePath), "utf8"));
 }

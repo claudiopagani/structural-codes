@@ -28,6 +28,6 @@ ufficiale dal materiale editoriale.
 
 ## Conseguenze
 
-La prima versione del pilot usa esclusivamente le manifestazioni ufficiali.
-Eventuali sostituzioni future saranno alternative esplicite e
-cross-verificabili, non correzioni silenziose.
+Il corpus usa come asset primari esclusivamente le manifestazioni ufficiali.
+Eventuali alternative future saranno esplicite e cross-verificabili, non
+correzioni silenziose.

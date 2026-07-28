@@ -1,6 +1,6 @@
 # Normalizzazione e review
 
-Stato: policy del pilota, Fase 4.
+Stato: policy editoriale corrente.
 
 ## Regola fondamentale
 

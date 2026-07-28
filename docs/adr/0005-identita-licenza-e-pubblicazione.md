@@ -16,21 +16,16 @@
 - Non sono pubblicati elenchi di autori o crediti individuali.
 - Le identità dei revisori sono conservate esclusivamente nell'audit interno;
   i record pubblici usano identificatori pseudonimi.
-- La visibilità pubblica del repository non promuove automaticamente il
-  legacy o le bozze a corpus canonico.
-- Il pilot comprende integralmente NTC §3.3 e Circolare C3.3, inclusi testo,
-  formule, tabelle e figure.
+- La visibilità pubblica del repository non promuove automaticamente le bozze
+  a contenuto normativo approvato.
 
 ## Proprietario GitHub
 
-Il proprietario desiderato è denominato `ocfem`. Prima della creazione del
-repository deve essere verificato che l'organizzazione appartenga al
-proprietario del progetto: il namespace GitHub `OCFEM` risulta già occupato da
-un'organizzazione esterna e l'account autenticato non vi appartiene.
+Il repository pubblico è
+`https://github.com/claudiopagani/strutture-normative`.
 
 ## Conseguenze
 
-Il repository può essere reso pubblico in stato di lavoro, purché il
-disclaimer, la quarantena del legacy e i gate macchina restino visibili. Le
-unità canoniche possono essere marcate `published` soltanto dopo evidence,
-review e integrità.
+Il repository può restare pubblico in stato di lavoro purché disclaimer e gate
+macchina restino visibili. Le unità canoniche possono essere marcate
+`published` soltanto dopo evidence, review e integrità.

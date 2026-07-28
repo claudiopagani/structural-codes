@@ -1,15 +1,13 @@
 # ADR 0002 — JSON canonico e output derivati
 
-- Stato: accettata per il pilota
+- Stato: accettata
 - Data: 2026-07-26
 - Ambito: Fase 2
 
 ## Contesto
 
-Il corpus legacy usa file MDX sia come dato sia come presentazione. Questa
-sovrapposizione rende fragile il parsing, nasconde differenze tra testo
-ufficiale e apparato editoriale e non consente di dimostrare quale
-trasformazione abbia prodotto un output.
+Dato canonico e presentazione devono restare separati per rendere verificabili
+le trasformazioni e impedire che un errore del renderer modifichi la norma.
 
 ## Decisione
 
@@ -39,17 +37,16 @@ nessuno dei due campi.
 - non sono accettate correzioni manuali negli output;
 - i generatori devono essere deterministici e registrare la versione del
   contratto;
-- il legacy MDX resta una sorgente di migrazione, non una fonte normativa.
 
 ## Evoluzione
 
-La versione `2.0.0-alpha.1` è vincolante per il pilota ma non è ancora
-stabile. Ogni modifica richiede fixture aggiornate, nota di migrazione e una
+La versione `2.0.0-alpha.2` non è ancora stabile. Ogni modifica richiede
+fixture aggiornate, nota di compatibilità e una
 nuova versione:
 
 - patch: chiarimento compatibile o vincolo che non cambia i record validi;
 - minor: campo o vocabolario aggiunto in modo compatibile;
 - major: modifica incompatibile o mutamento semantico.
 
-La promozione da `alpha` richiede il completamento del pilota previsto dalla
-Fase 5.
+La promozione da `alpha` richiede schema consolidato e review del perimetro
+destinato alla prima release.

@@ -1,0 +1,52 @@
+name: Correzione normativa
+description: Segnala una differenza tra corpus e fonte ufficiale.
+title: "[Norma] "
+labels:
+  - editorial
+body:
+  - type: dropdown
+    id: document
+    attributes:
+      label: Documento
+      options:
+        - NTC 2018
+        - Circolare 7/2019
+    validations:
+      required: true
+  - type: input
+    id: unit
+    attributes:
+      label: Paragrafo o unità
+      placeholder: "es. C3.3.8.3"
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Pagina PDF
+      description: Indica anche la pagina stampata se diversa.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Differenza rilevata
+      description: Descrivi testo, formula, tabella, figura o posizione errata.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Riporta fonte, regione o passaggi per verificare senza allegare il PDF.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Conferme
+      options:
+        - label: Ho confrontato direttamente il PDF ufficiale registrato.
+          required: true
+        - label: Non ho ricostruito parti mancanti per plausibilità.
+          required: true

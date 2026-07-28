@@ -12,12 +12,7 @@ import { fileURLToPath } from "node:url";
 const viewerRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repositoryRoot = resolve(viewerRoot, "..");
 const corpusRoot = join(repositoryRoot, "corpus", "units");
-const reportFile = join(
-  repositoryRoot,
-  "reports",
-  "migration",
-  "core-concrete-corpus.json",
-);
+const corpusManifestFile = join(repositoryRoot, "corpus", "manifest.json");
 const outputFile = join(viewerRoot, "public", "data", "corpus.json");
 const assetManifestDirectory = join(repositoryRoot, "corpus", "assets");
 
@@ -60,7 +55,6 @@ async function loadUnits(document) {
         document,
         workId: unit.workId,
         expressionId: unit.expressionId,
-        legacyAliases: unit.legacyAliases,
         kind: unit.kind,
         numbering: unit.numbering,
         title: unit.title,
@@ -83,7 +77,7 @@ async function loadUnits(document) {
   );
 }
 
-const report = await json(reportFile);
+const corpusManifest = await json(corpusManifestFile);
 const assetManifestFiles = (
   await readdir(assetManifestDirectory, { recursive: true })
 ).filter((file) => file.endsWith(".json"));
@@ -112,36 +106,47 @@ const units = (
     });
   });
 
-const payload = {
+const reviewedStatuses = new Set([
+  "source-checked",
+  "double-reviewed",
+  "published",
+  "superseded",
+]);
+const payloadWithoutFingerprint = {
   formatVersion: 1,
-  generatedAt: report.asOf,
-  fingerprintSha256: report.fingerprintSha256,
-  status: report.status,
-  disclaimer: report.disclaimer,
+  generatedAt: corpusManifest.asOf,
+  status: corpusManifest.status,
+  disclaimer: corpusManifest.disclaimer,
   stats: {
-    units: report.totals.canonicalUnits,
+    units: units.length,
     blocks: units.reduce(
       (total, unit) =>
         total + unit.blocks.filter((block) => block.text !== undefined).length,
       0,
     ),
-    proposedRelations: report.totals.proposedRelations,
-    sourceReviewCompleted: 0,
-    assetCandidateUnits: report.documents.reduce(
-      (total, document) => total + document.unitsWithAssetCandidates,
+    proposedRelations: units.reduce(
+      (total, unit) => total + unit.relations.length,
       0,
     ),
+    reviewedUnits: units.filter((unit) =>
+      reviewedStatuses.has(unit.workflow.status),
+    ).length,
+    assetUnits: units.filter(
+      (unit) =>
+        unit.assets.formulaIds.length > 0 ||
+        unit.assets.tableIds.length > 0 ||
+        unit.assets.figureIds.length > 0,
+    ).length,
   },
   documents: Object.fromEntries(
     documents.map((document) => {
-      const reportDocument = report.documents.find(
-        (candidate) => candidate.document === document,
-      );
+      const manifestDocument = corpusManifest.documents[document];
       return [
         document,
         {
           ...documentMetadata[document],
-          units: reportDocument.canonicalUnits,
+          sourceId: manifestDocument.sourceId,
+          units: units.filter((unit) => unit.document === document).length,
           blocks: units
             .filter((unit) => unit.document === document)
             .reduce(
@@ -150,7 +155,7 @@ const payload = {
                 unit.blocks.filter((block) => block.text !== undefined).length,
               0,
             ),
-          pages: reportDocument.pages,
+          pages: manifestDocument.pages,
         },
       ];
     }),
@@ -170,6 +175,13 @@ const payload = {
   units,
 };
 
+const fingerprintSha256 = createHash("sha256")
+  .update(JSON.stringify(payloadWithoutFingerprint))
+  .digest("hex");
+const payload = {
+  ...payloadWithoutFingerprint,
+  fingerprintSha256,
+};
 const serialized = JSON.stringify(payload);
 const digest = createHash("sha256").update(serialized).digest("hex");
 await mkdir(dirname(outputFile), { recursive: true });

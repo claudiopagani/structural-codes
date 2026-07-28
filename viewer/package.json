@@ -7,6 +7,7 @@
   },
   "scripts": {
     "sync:corpus": "node scripts/sync-corpus.mjs",
+    "predev": "npm run sync:corpus",
     "dev": "vinext dev",
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",

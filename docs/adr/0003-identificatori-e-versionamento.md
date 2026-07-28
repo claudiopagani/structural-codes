@@ -1,6 +1,6 @@
-# ADR 0003 — Identificatori, alias e versionamento
+# ADR 0003 — Identificatori e versionamento
 
-- Stato: accettata per il pilota
+- Stato: accettata
 - Data: 2026-07-26
 - Ambito: Fase 2
 
@@ -41,20 +41,6 @@ Il numero ufficiale è conservato separatamente in `numbering.official`; il
 campo `numbering.sortKey` serve solo all'ordinamento. Né titoli né percorsi
 di file fanno parte dell'identità.
 
-## Alias e deprecazione
-
-Gli ID legacy sono registrati in `legacyAliases`. Un alias:
-
-- deve risolvere verso un solo ID canonico;
-- non può essere riutilizzato;
-- resta risolvibile dopo la migrazione;
-- non trasferisce al nuovo record l'affidabilità del contenuto legacy.
-
-Se la granularità cambia, il vecchio ID diventa alias dell'unità
-semanticamente equivalente. Se non esiste equivalenza univoca, si pubblica
-una risoluzione esplicita `split`, `merged` o `retired`; non si sceglie un
-target arbitrario.
-
 ## Versionamento temporale
 
 La validità del contenuto è distinta dalla versione dello schema:
@@ -71,5 +57,5 @@ la traccia verificata.
 
 ## Vincoli
 
-I validator devono rifiutare duplicati, target inesistenti e collisioni tra
-alias. I consumer non devono costruire ID concatenando stringhe non validate.
+I validator devono rifiutare duplicati e target inesistenti. I consumer non
+devono costruire ID concatenando stringhe non validate.

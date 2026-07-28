@@ -1,14 +1,17 @@
 # Corpus canonico
 
-Questa directory contiene esclusivamente record JSON conformi allo schema v2.
-Gli MDX legacy in `content/` non sono una fonte per il testo dei record.
+Questa directory è l'unica fonte editoriale del progetto.
 
-Il primo lotto in `units/` copre:
+- `manifest.json` descrive perimetro e stato del corpus;
+- `units/` contiene un record JSON per unità normativa;
+- `assets/` contiene manifest, formule, tabelle e ritagli ufficiali.
 
-- NTC 2018: capitoli 1, 2, 3 e il § 4.1, con i contenitori gerarchici necessari;
-- Circolare 7/2019: C1, C2, C3 e C4.1, con i contenitori gerarchici necessari.
+Il perimetro corrente copre:
 
-Le unità iniziali sono in stato `extracted`: testo, pagina, regione e hash
-derivano dall'evidence ufficiale, ma gli asset e le review umane sono ancora
-gate bloccanti. Il report è in
-`reports/migration/core-concrete-corpus.md`.
+- NTC 2018: capitoli 1, 2, 3 e § 4.1;
+- Circolare 7/2019: C1, C2, C3 e C4.1.
+
+Le unità sono ancora in stato `extracted`: testo, pagina, regione e hash
+derivano dall'evidence ufficiale, ma le review umane restano bloccanti.
+
+Il payload del viewer è un derivato e viene rigenerato da questi file.

@@ -7,4 +7,3 @@
  */
 export * from "./lib/index.ts";
 export * from "./schema/index.ts";
-export * from "./code-map/index.ts";

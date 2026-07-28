@@ -1,89 +1,86 @@
 {
-    "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-    "schemaVersion": "2.0.0-alpha.1",
-    "recordType": "canonical-unit",
-    "id": "urn:structural-codes:it:unit:ntc2018:3.3.7",
-    "workId": "it-mit:dm:2018-01-17:ntc2018",
-    "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
-    "legacyAliases": [
-        "ntc2018:c3/s3.3/p3.3.7"
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:3.3.7",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "3.3.7",
+    "sortKey": "003.003.007"
+  },
+  "title": "Coefficiente di esposizione",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.3.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:3.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:3",
+      "urn:structural-codes:it:unit:ntc2018:3.3"
     ],
-    "kind": "paragraph",
-    "numbering": {
-        "official": "3.3.7",
-        "sortKey": "003.003.007"
-    },
-    "title": "Coefficiente di esposizione",
-    "titleBlockId": "urn:structural-codes:it:unit:ntc2018:3.3.7#block-heading",
-    "hierarchy": {
-        "parentId": "urn:structural-codes:it:unit:ntc2018:3.3",
-        "ancestorIds": [
-            "urn:structural-codes:it:unit:ntc2018:3",
-            "urn:structural-codes:it:unit:ntc2018:3.3"
-        ],
-        "position": 7
-    },
-    "validity": {
-        "from": "2018-03-22",
-        "to": null,
-        "status": "in-force",
-        "asOf": "2026-07-26"
-    },
-    "blocks": [
-        {
-            "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.7#block-heading",
-            "kind": "heading",
-            "origin": "official",
-            "text": {
-                "raw": "3.3.7. COEFFICIENTE DI ESPOSIZIONE",
-                "normalized": "3.3.7. COEFFICIENTE DI ESPOSIZIONE",
-                "normalizationVersion": "none"
-            },
-            "evidence": {
-                "sourceId": "gu-so8-2018-ntc",
-                "pdfPage": 58,
-                "printedPage": "54",
-                "region": {
-                    "coordinateSystem": "pdf-points-top-left",
-                    "x": 72.745,
-                    "y": 418.441,
-                    "width": 156.311,
-                    "height": 7.859
-                },
-                "extraction": {
-                    "method": "pdf-text",
-                    "tool": "pdfjs-dist",
-                    "toolVersion": "4.10.38"
-                },
-                "transformations": [],
-                "rawSha256": "5479eed97688be3cdb7b61be280d3bf017e683816925725d3b62963c77966a90",
-                "normalizedSha256": "5479eed97688be3cdb7b61be280d3bf017e683816925725d3b62963c77966a90"
-            }
-        }
-    ],
-    "citations": [],
-    "relations": [],
-    "assets": {
-        "formulaIds": [],
-        "tableIds": [],
-        "figureIds": []
-    },
-    "workflow": {
-        "status": "draft",
-        "createdBy": {
-            "actorId": "codex",
-            "kind": "automated-agent",
-            "toolVersion": "gpt-5"
+    "position": 7
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "3.3.7. COEFFICIENTE DI ESPOSIZIONE",
+        "normalized": "3.3.7. COEFFICIENTE DI ESPOSIZIONE",
+        "normalizationVersion": "none"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 58,
+        "printedPage": "54",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 72.745,
+          "y": 418.441,
+          "width": 156.311,
+          "height": 7.859
         },
-        "createdAt": "2026-07-25T22:38:36.962Z",
-        "reviews": [],
-        "openIssues": [
-            {
-                "issueId": "ntc2018-3.3.7-fixture-partial",
-                "type": "other",
-                "severity": "blocking",
-                "note": "Fixture contrattuale: contiene solo l'intestazione, non l'intero paragrafo."
-            }
-        ]
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5479eed97688be3cdb7b61be280d3bf017e683816925725d3b62963c77966a90",
+        "normalizedSha256": "5479eed97688be3cdb7b61be280d3bf017e683816925725d3b62963c77966a90"
+      }
     }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "draft",
+    "createdBy": {
+      "actorId": "codex",
+      "kind": "automated-agent",
+      "toolVersion": "gpt-5"
+    },
+    "createdAt": "2026-07-25T22:38:36.962Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-3.3.7-fixture-partial",
+        "type": "other",
+        "severity": "blocking",
+        "note": "Fixture contrattuale: contiene solo l'intestazione, non l'intero paragrafo."
+      }
+    ]
+  }
 }

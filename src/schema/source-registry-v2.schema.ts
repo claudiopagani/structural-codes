@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { isoDateSchema, isoDateTimeSchema } from "./unit.schema.ts";
+import { isoDateSchema, isoDateTimeSchema } from "./primitives.ts";
 
 const sha256StrictSchema = z.string().regex(/^[a-f0-9]{64}$/, "SHA-256 esadecimale richiesto");
 const officialGazzettaUrlSchema = z

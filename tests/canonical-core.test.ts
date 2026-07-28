@@ -26,25 +26,11 @@ interface CanonicalUnit {
     };
 }
 
-interface MigrationReport {
-    status: string;
-    documents: Array<{
-        document: string;
-        canonicalUnits: number;
-        canonicalBlocks: number;
-    }>;
-    totals: {
-        canonicalUnits: number;
-        canonicalBlocks: number;
-        proposedRelations: number;
-    };
-}
-
 const corpusDirectory = fileURLToPath(
     new URL("../corpus/units/", import.meta.url),
 );
-const reportFile = fileURLToPath(
-    new URL("../reports/migration/core-concrete-corpus.json", import.meta.url),
+const manifestFile = fileURLToPath(
+    new URL("../corpus/manifest.json", import.meta.url),
 );
 const ntc41AssetFile = fileURLToPath(
     new URL("../corpus/assets/ntc2018/4.1.json", import.meta.url),
@@ -75,41 +61,31 @@ async function loadUnits(): Promise<CanonicalUnit[]> {
     );
 }
 
-test("il lotto calcestruzzo coincide con il report di migrazione", async () => {
-    const report = JSON.parse(
-        await readFile(reportFile, "utf8"),
-    ) as MigrationReport;
+test("il manifest descrive l'intero corpus canonico", async () => {
+    const manifest = JSON.parse(await readFile(manifestFile, "utf8")) as {
+        status: string;
+        documents: Record<string, unknown>;
+    };
     const units = await loadUnits();
-    const blockCount = units.reduce(
-        (total, unit) =>
-            total + unit.blocks.filter((block) => block.text !== undefined).length,
-        0,
-    );
 
-    assert.equal(report.status, "canonical-extracted-not-reviewed");
-    assert.deepEqual(report.totals, {
-        canonicalUnits: 333,
-        canonicalBlocks: 700,
-        proposedRelations: 89,
-    });
-    assert.deepEqual(
-        report.documents.map(({ document, canonicalUnits }) => ({
-            document,
-            canonicalUnits,
-        })),
-        [
-            { document: "ntc2018", canonicalUnits: 194 },
-            { document: "circ2019", canonicalUnits: 139 },
-        ],
-    );
-    assert.equal(units.length, report.totals.canonicalUnits);
-    assert.ok(
-        blockCount > report.totals.canonicalBlocks,
-        "la segmentazione editoriale logica deve conservare e affinare i 700 blocchi di estrazione",
+    assert.equal(manifest.status, "canonical-extracted-not-reviewed");
+    assert.deepEqual(Object.keys(manifest.documents).sort(), [
+        "circ2019",
+        "ntc2018",
+    ]);
+    assert.equal(units.length, 333);
+    assert.equal(
+        units.reduce(
+            (total, unit) =>
+                total +
+                unit.blocks.filter((block) => block.text !== undefined).length,
+            0,
+        ),
+        1880,
     );
 });
 
-test("tutte le unità restano estratte e bloccate dalla review della fonte", async () => {
+test("tutte le unità restano estratte e bloccate dalla review", async () => {
     const units = await loadUnits();
 
     for (const unit of units) {
@@ -126,7 +102,7 @@ test("tutte le unità restano estratte e bloccate dalla review della fonte", asy
     }
 });
 
-test("il corpus canonico non contiene placeholder del legacy", async () => {
+test("il corpus canonico non contiene placeholder editoriali", async () => {
     const units = await loadUnits();
     const forbidden = /\[(?:DA_VERIFICARE|FORMULA_NON_LEGGIBILE|TABELLA_DA_REVISIONARE|FIGURA_MANCANTE|RIFERIMENTO_AMBIGUO)\]/u;
 
@@ -162,7 +138,7 @@ test("gli anchor visuali conservano il raw corrotto e tracciano la correzione", 
     );
 });
 
-test("il profilo editoriale NTC 4.1 ricompone il testo e risolve gli asset", async () => {
+test("NTC 4.1 conserva il testo ricomposto e risolve gli asset", async () => {
     const units = (await loadUnits()).filter(
         (unit) =>
             unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:4.1.") ||

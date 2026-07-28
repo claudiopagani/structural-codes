@@ -57,8 +57,6 @@ SHA-256. Le coordinate sono le stesse dell'evidence estratta.
 e le fixture minime necessarie alla regressione sono versionati. Nessun testo
 estratto entra automaticamente in `corpus/`.
 
-Il frontmatter del corpus legacy è ora letto da un parser YAML standard in
-modalità stretta. Le righe separate da `;` prodotte nella conversione
-precedente non sono YAML valido e vengono segnalate, non reinterpretate per
-euristica. Il body MDX legacy resta in quarantena e non appartiene alla
-pipeline canonica JSON.
+Il materiale estratto non entra automaticamente nel corpus. Ogni selezione,
+normalizzazione e segmentazione deve lasciare evidence e trasformazioni
+verificabili nel record canonico.

@@ -41,8 +41,8 @@ editoriale resta sempre il record in `corpus/units/`.
 Dalla radice del repository:
 
 ```bash
-npm run validate:corpus:v2
-npm run check:v2
+npm run validate:corpus
+npm run check
 npm run viewer:test
 ```
 
@@ -57,9 +57,5 @@ Se si modifica un record mentre il server è già aperto, rieseguire
 `npm --prefix viewer run sync:corpus` e ricaricare la pagina. Sul sito
 pubblicato occorre invece una nuova build e un nuovo deploy.
 
-## Avvertenza sulla migrazione
-
-`npm run corpus:core:build` ricostruisce il lotto canonico dalle sorgenti di
-migrazione. Dopo l'inizio delle correzioni manuali non deve più essere eseguito
-sugli stessi record: può sovrascrivere il lavoro editoriale. Va usato solo in
-una migrazione esplicita e controllata.
+I record in `corpus/units/` sono la fonte editoriale: non esiste un secondo
+albero da sincronizzare o promuovere.

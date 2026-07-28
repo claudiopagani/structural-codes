@@ -1,6 +1,6 @@
 # ADR 0004 — Evidence, relazioni e review
 
-- Stato: accettata per il pilota
+- Stato: accettata
 - Data: 2026-07-26
 - Ambito: Fase 2
 
@@ -20,9 +20,9 @@ livello `source-checked`. L'assenza di evidence rende il record non conforme
 anche nello stato `draft`.
 
 Per il testo, gli hash sono calcolati sui byte UTF-8 esatti di `raw` e
-`normalized`. Per formule, tabelle e figure la Fase 3 definirà il manifest
-dell'asset e il payload preciso soggetto a hash; fino ad allora tali blocchi
-non possono essere promossi a `source-checked`.
+`normalized`. Formule, tabelle e figure sono descritte dai manifest conformi a
+`schemas/corpus-assets-v2.schema.json`; i ritagli ufficiali registrano anche
+lo SHA-256 del file.
 
 ## Citazioni e relazioni
 

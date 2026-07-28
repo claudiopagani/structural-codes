@@ -1,117 +1,114 @@
 {
-    "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-    "schemaVersion": "2.0.0-alpha.1",
-    "recordType": "canonical-unit",
-    "id": "urn:structural-codes:it:unit:circ2019:c3.3.7",
-    "workId": "it-mit:circ:2019-01-21:7-csllpp",
-    "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
-    "legacyAliases": [
-        "circ2019:c3/sC3.3/pC3.3.7"
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c3.3.7",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C3.3.7",
+    "sortKey": "003.003.007"
+  },
+  "title": "Coefficiente di esposizione",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c3.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c3",
+      "urn:structural-codes:it:unit:circ2019:c3.3"
     ],
-    "kind": "paragraph",
-    "numbering": {
-        "official": "C3.3.7",
-        "sortKey": "003.003.007"
-    },
-    "title": "Coefficiente di esposizione",
-    "titleBlockId": "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading",
-    "hierarchy": {
-        "parentId": "urn:structural-codes:it:unit:circ2019:c3.3",
-        "ancestorIds": [
-            "urn:structural-codes:it:unit:circ2019:c3",
-            "urn:structural-codes:it:unit:circ2019:c3.3"
-        ],
-        "position": 7
-    },
-    "validity": {
-        "from": null,
-        "to": null,
-        "status": "unknown",
-        "asOf": "2026-07-26"
-    },
-    "blocks": [
-        {
-            "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading",
-            "kind": "heading",
-            "origin": "official",
-            "text": {
-                "raw": "C3.3.7\u0002 COEFFICIENTE DI ESPOSIZIONE",
-                "normalized": "C3.3.7 COEFFICIENTE DI ESPOSIZIONE",
-                "normalizationVersion": "pilot-0.1"
-            },
-            "evidence": {
-                "sourceId": "circ-7-2019",
-                "pdfPage": 55,
-                "printedPage": "51",
-                "region": {
-                    "coordinateSystem": "pdf-points-top-left",
-                    "x": 73.901,
-                    "y": 440.886,
-                    "width": 154.926,
-                    "height": 7.805
-                },
-                "extraction": {
-                    "method": "pdf-text",
-                    "tool": "pdfjs-dist",
-                    "toolVersion": "4.10.38"
-                },
-                "transformations": [
-                    {
-                        "operation": "remove-control-character",
-                        "ruleVersion": "pilot-0.1",
-                        "note": "Rimosso U+0002 prodotto dall'estrazione PDF tra numerazione e titolo."
-                    }
-                ],
-                "rawSha256": "dbb583832f9cfcd021d9b0e693d02ebf0831ccc636fdff2d3b555648c79979e4",
-                "normalizedSha256": "337fb5bfa8620f462271f3470d800b4f6f6cdcdb8f8ba569b11b96c0efe8192e"
-            }
-        }
-    ],
-    "citations": [],
-    "relations": [
-        {
-            "relationId": "urn:structural-codes:it:unit:circ2019:c3.3.7#relation-001",
-            "type": "clarifies",
-            "targetUnitId": "urn:structural-codes:it:unit:ntc2018:3.3.7",
-            "basis": "editorial",
-            "evidenceBlockIds": [
-                "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading"
-            ],
-            "rationale": "Corrispondenza proposta per numerazione e titolo omologhi; richiede conferma umana sul testo completo.",
-            "review": {
-                "status": "proposed",
-                "reviewedBy": null,
-                "reviewedAt": null
-            }
-        }
-    ],
-    "assets": {
-        "formulaIds": [],
-        "tableIds": [],
-        "figureIds": []
-    },
-    "workflow": {
-        "status": "draft",
-        "createdBy": {
-            "actorId": "codex",
-            "kind": "automated-agent",
-            "toolVersion": "gpt-5"
+    "position": 7
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-26"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C3.3.7\u0002 COEFFICIENTE DI ESPOSIZIONE",
+        "normalized": "C3.3.7 COEFFICIENTE DI ESPOSIZIONE",
+        "normalizationVersion": "normalization-0.1"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 440.886,
+          "width": 154.926,
+          "height": 7.805
         },
-        "createdAt": "2026-07-26T00:00:00Z",
-        "reviews": [],
-        "openIssues": [
-            {
-                "issueId": "circ2019-c3.3.7-fixture-partial",
-                "type": "other",
-                "severity": "blocking",
-                "note": "Fixture contrattuale parziale: non contiene l'intero paragrafo."
-            },
-            {
-                "issueId": "circ2019-c3.3.7-relation",
-                "type": "relation-review",
-                "severity": "blocking",
-                "note": "Il collegamento alla NTC resta proposto finché non è revisionato da una persona."
-            }
-        ]
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "normalization-0.1",
+            "note": "Rimosso U+0002 prodotto dall'estrazione PDF tra numerazione e titolo."
+          }
+        ],
+        "rawSha256": "dbb583832f9cfcd021d9b0e693d02ebf0831ccc636fdff2d3b555648c79979e4",
+        "normalizedSha256": "337fb5bfa8620f462271f3470d800b4f6f6cdcdb8f8ba569b11b96c0efe8192e"
+      }
     }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c3.3.7#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:3.3.7",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c3.3.7#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta per numerazione e titolo omologhi; richiede conferma umana sul testo completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "draft",
+    "createdBy": {
+      "actorId": "codex",
+      "kind": "automated-agent",
+      "toolVersion": "gpt-5"
+    },
+    "createdAt": "2026-07-26T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c3.3.7-fixture-partial",
+        "type": "other",
+        "severity": "blocking",
+        "note": "Fixture contrattuale parziale: non contiene l'intero paragrafo."
+      },
+      {
+        "issueId": "circ2019-c3.3.7-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento alla NTC resta proposto finché non è revisionato da una persona."
+      }
+    ]
+  }
 }

@@ -144,8 +144,8 @@ export interface CorpusData {
     units: number;
     blocks: number;
     proposedRelations: number;
-    sourceReviewCompleted: number;
-    assetCandidateUnits: number;
+    reviewedUnits: number;
+    assetUnits: number;
   };
   documents: Record<
     DocumentId,
@@ -913,27 +913,30 @@ function Roadmap({
             trasformare un corpus plausibile in una falsa fonte normativa.
           </p>
         </div>
-        <div className="completion-ring" aria-label="Avanzamento strutturale 46%">
-          <strong>46%</strong>
-          <span>struttura editoriale</span>
+        <div
+          className="completion-ring"
+          aria-label={`${data?.stats.reviewedUnits ?? 0} unità approvate`}
+        >
+          <strong>{data?.stats.reviewedUnits ?? 0}</strong>
+          <span>unità approvate</span>
         </div>
       </section>
 
       <section className="metric-strip">
         <div>
-          <strong>{data?.stats.units ?? "333"}</strong>
+          <strong>{data?.stats.units ?? "—"}</strong>
           <span>unità estratte</span>
         </div>
         <div>
-          <strong>{data?.stats.blocks ?? "700"}</strong>
+          <strong>{data?.stats.blocks ?? "—"}</strong>
           <span>blocchi con evidence</span>
         </div>
         <div>
-          <strong>{data?.stats.assetCandidateUnits ?? "122"}</strong>
+          <strong>{data?.stats.assetUnits ?? "—"}</strong>
           <span>unità con asset</span>
         </div>
         <div>
-          <strong>{data?.stats.proposedRelations ?? "89"}</strong>
+          <strong>{data?.stats.proposedRelations ?? "—"}</strong>
           <span>relazioni proposte</span>
         </div>
       </section>

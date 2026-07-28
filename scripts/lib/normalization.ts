@@ -1,6 +1,6 @@
 import { sha256OfText } from "../../src/lib/hash.ts";
 
-export const NORMALIZATION_RULE_VERSION = "pilot-0.1";
+export const NORMALIZATION_RULE_VERSION = "normalization-0.1";
 
 export const NORMALIZATION_OPERATIONS = [
     "unicode-nfc",

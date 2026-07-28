@@ -6,12 +6,10 @@ export default tseslint.config(
     {
         ignores: [
             "node_modules/**",
-            "content/**",
             "raw-sources/**",
             "extracted/**",
             "evidence/**",
             "review/**",
-            "reports/**",
         ],
     },
     eslint.configs.recommended,
