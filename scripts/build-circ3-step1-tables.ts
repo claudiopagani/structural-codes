@@ -26,9 +26,9 @@ const tables = [
     {
         id: "urn:structural-codes:it:asset:table:circ2019:c3.2.i",
         unitId: "urn:structural-codes:it:unit:circ2019:c3.2.1",
-        officialNumber: "C3.2.I",
+        officialNumber: "C.3.2.I",
         pdfPage: 48,
-        caption: "Tabella C3.2.I – Valori di TR espressi in funzione di VR",
+        caption: "Tabella C.3.2.I – Valori di TR espressi in funzione di VR",
         columnCount: 3,
         headers: [
             [
@@ -69,9 +69,9 @@ const tables = [
     {
         id: "urn:structural-codes:it:asset:table:circ2019:c3.2.ii",
         unitId: "urn:structural-codes:it:unit:circ2019:c3.2.1",
-        officialNumber: "C3.2.II",
+        officialNumber: "C.3.2.II",
         pdfPage: 49,
-        caption: "Tabella C3.2.II – Valori di P*VR e TR al variare di CU",
+        caption: "Tabella C.3.2.II – Valori di P*VR e TR al variare di CU",
         columnCount: 8,
         headers: [
             [
@@ -236,10 +236,9 @@ const tables = [
 ];
 
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-const reviewed = new Set(tables.map(({ officialNumber }) => officialNumber));
+const reviewed = new Set(tables.map(({ id }) => id));
 manifest.tables = manifest.tables.filter(
-    (candidate: { officialNumber?: string }) =>
-        !candidate.officialNumber || !reviewed.has(candidate.officialNumber),
+    (candidate: { id: string }) => !reviewed.has(candidate.id),
 );
 manifest.tables.push(...tables);
 

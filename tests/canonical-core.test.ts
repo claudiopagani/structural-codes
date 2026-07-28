@@ -73,7 +73,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
         "circ2019",
         "ntc2018",
     ]);
-    assert.equal(units.length, 333);
+    assert.equal(units.length, 401);
     assert.equal(
         units.reduce(
             (total, unit) =>
@@ -81,7 +81,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        1880,
+        2333,
     );
 });
 
@@ -118,7 +118,7 @@ test("il corpus canonico non contiene placeholder editoriali", async () => {
 test("gli anchor visuali conservano il raw corrotto e tracciano la correzione", async () => {
     const units = await loadUnits();
     const unit = units.find(
-        ({ numbering }) => numbering.official === "C3.4.3.3.1",
+        ({ numbering }) => numbering.official === "C3.4.2",
     );
 
     assert.ok(unit);
@@ -127,7 +127,7 @@ test("gli anchor visuali conservano il raw corrotto e tracciano la correzione", 
     assert.ok(heading.text);
     assert.equal(
         heading.text.normalized,
-        "C3.4.3.3.1 Copertura cilindrica",
+        "C3.4.2 VALORE DI RIFERIMENTO DEL CARICO DELLA NEVE AL SUOLO",
     );
     assert.notEqual(heading.text.raw, heading.text.normalized);
     assert.equal(

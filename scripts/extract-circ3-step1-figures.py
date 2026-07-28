@@ -102,7 +102,7 @@ FIGURES = {
         "unit": "c3.3.8.1.1.1",
         "page": 57,
         "bbox": (160, 414, 438, 590),
-        "caption": "Figura C3.3.4 – Quote di riferimento negli edifici bassi ed alti",
+        "caption": "Figure C3.3.4 – Quote di riferimento negli edifici bassi ed alti",
     },
 }
 

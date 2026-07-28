@@ -49,6 +49,37 @@ test("C3 step 2 usa ventuno ritagli ufficiali integri", async () => {
             figure.officialNumber,
         );
     }
+
+    const figure7 = figures.find(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber === "C3.3.7",
+    );
+    const figure8 = figures.find(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber === "C3.3.8",
+    );
+    assert.deepEqual(figure7?.region, {
+        coordinateSystem: "pdf-points-top-left",
+        x: 168,
+        y: 328,
+        width: 259,
+        height: 67,
+    });
+    assert.equal(
+        figure7?.caption,
+        "Figura C3.3.7 – Schema di riferimento per coperture a semplice falda",
+    );
+    assert.deepEqual(figure8?.region, {
+        coordinateSystem: "pdf-points-top-left",
+        x: 181,
+        y: 427,
+        width: 244,
+        height: 142,
+    });
+    assert.equal(
+        figure8?.caption,
+        "Figura C3.3.8 – Coperture a semplice falda: valori del coefficiente cpe; vento perpendicolare alla direzione del colmo",
+    );
 });
 
 test("C3 step 2 ricostruisce le quindici tabelle ufficiali", async () => {
@@ -82,6 +113,11 @@ test("C3 step 2 ricostruisce le quindici tabelle ufficiali", async () => {
     assert.equal(tables[1].rows.length, 10);
     assert.equal(tables[11].rows[5][0].text, "+0,5");
     assert.match(tables[13].rows[0][2].latex, /\|\\alpha\|/u);
+    assert.equal(
+        tables[13].rows[1][3].latex,
+        "c_F=-0{,}5+0{,}1\\alpha/10",
+    );
+    assert.equal(tables[3].rows[4][0].latex, "45^\\circ<\\alpha");
     assert.deepEqual(
         tables[14].rows.map(
             (row: Array<{ text: string }>) => row.map(({ text }) => text),
@@ -148,6 +184,24 @@ test("C3 step 2 conserva capoversi ed elenchi logici", async () => {
             unitId,
         );
     }
+});
+
+test("C3.3.8.1.3 conserva il raw completo dei capoversi", async () => {
+    const unit = await json("corpus/units/circ2019/c3.3.8.1.3.json");
+    const paragraphs = unit.blocks.filter(
+        ({ kind }: { kind: string }) => kind === "paragraph",
+    );
+
+    assert.match(paragraphs[0].text.raw, /elemento strutturale considerato\.$/u);
+    assert.match(paragraphs[1].text.raw, /Tabella C3\.3\.VI\.$/u);
+    assert.match(paragraphs[2].text.raw, /minimo fra b e 2h\.$/u);
+    assert.equal(
+        unit.workflow.openIssues.some(
+            ({ issueId }: { issueId: string }) =>
+                issueId === "circ2019-c3-3-8-1-3-evidence-page-span",
+        ),
+        false,
+    );
 });
 
 test("C3 step 2 rende in LaTeX grandezze, angoli e formule inline", async () => {

@@ -83,6 +83,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "5d18cd9a3d8644176c709794cd53bbd8469f9733bb416a8b5c750a43f9608eff",
@@ -144,6 +149,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "2c7c57bb599c58625de2703cb74ba675602f14a08bbe2be19b1f37fda8a37f10",
@@ -152,28 +162,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.8#block-editorial-002",
-      "kind": "paragraph",
+      "kind": "table-ref",
       "origin": "official",
-      "text": {
-        "raw": "Tabella C3.3.XIX - Valori del coefficiente d’attritoSuperficie Coefficiente d’attrito c \nf\nLiscia (acciaio, cemento a faccia liscia..) 0,01\nScabra (cemento a faccia scabra, catrame..) 0,02\nMolto scabra (ondulata, costolata, piegata..) 0,04",
-        "normalized": "Tabella C3.3.XIX - Valori del coefficiente d’attritoSuperficie Coefficiente d’attrito c f Liscia (acciaio, cemento a faccia liscia..) 0,01 Scabra (cemento a faccia scabra, catrame..) 0,02 Molto scabra (ondulata, costolata, piegata..) 0,04",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Tabella C3.3.XIX - Valori del coefficiente d’attritoSuperficie Coefficiente d’attrito "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " f Liscia (acciaio, cemento a faccia liscia..) 0,01 Scabra (cemento a faccia scabra, catrame..) 0,02 Molto scabra (ondulata, costolata, piegata..) 0,04"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c3.3.xix",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 74,
@@ -186,44 +177,19 @@
           "height": 88.347
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Tabella strutturata confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
           }
         ],
         "rawSha256": "fcf71aff985a94b4da02e6412acdc79e0a954ad816e98b3df3cb257f3a45e8a6",
-        "normalizedSha256": "57b04b394e9678652c7469a610af95d84be132b2b56fe39e2bd7f497694938c7"
+        "normalizedSha256": "30994ecffd1dcd3256bccf7398d2b805f59855a307938ab8ba084e45e0964ccc"
       }
     }
   ],
@@ -231,7 +197,9 @@
   "relations": [],
   "assets": {
     "formulaIds": [],
-    "tableIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c3.3.xix"
+    ],
     "figureIds": []
   },
   "workflow": {

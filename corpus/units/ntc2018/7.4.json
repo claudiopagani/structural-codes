@@ -1,0 +1,90 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "7.4",
+    "sortKey": "007.004"
+  },
+  "title": "COSTRUZIONI DI CALCESTRUZZO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "77.4. COSTRUZIONI DI CALCESTRUZZO",
+        "normalized": "7.4 COSTRUZIONI DI CALCESTRUZZO",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 227,
+        "printedPage": "223",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "993060c61e07f3973dd89f7a8af565a1fef2270c59af82b8c7a1706155193b21",
+        "normalizedSha256": "e83e211b5d1f5b9bf74eea1849f1754f266e760a78c9ef7d0901906b440c313b"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step1",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

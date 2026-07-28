@@ -24,7 +24,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-07-26"
+    "asOf": "2026-07-28"
   },
   "blocks": [
     {
@@ -34,7 +34,7 @@
       "text": {
         "raw": "C3.4.2\u0002 VALORE DI RIFERIMENTO DEL CARICO DELLA NEVE AL SUOLO",
         "normalized": "C3.4.2 VALORE DI RIFERIMENTO DEL CARICO DELLA NEVE AL SUOLO",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -42,10 +42,10 @@
         "printedPage": "72",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
+          "x": 73.904,
           "y": 187.191,
-          "width": 257.403,
-          "height": 7.805
+          "width": 447.453,
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
@@ -55,32 +55,27 @@
         "transformations": [
           {
             "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimossi esclusivamente i caratteri di controllo privi di resa visuale."
           },
           {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimosse le andate a capo tipografiche, conservando capoversi ed elenchi come blocchi distinti."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Ripristinati glifi, simboli e notazione matematica dopo confronto diretto con il render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -93,9 +88,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel passaggio dalle precedenti alle attuali NTC si conserva la suddivisione del territorio nazionale in tre zone (viene anche\nconfermata la suddivisione della zona I in due sottozone: alpina e mediterranea) che conservano immutato sia i valori al suolo,\nsia l’incremento degli stessi con l’altitudine. Vengono però spostate 5 provincie dalla zona III alla zona II ed introdotte 3\nprovincie di nuova creazione (1 in zona I e 2 in zona II). Rispetto alle precedenti NTC nelle attuali vengono anche introdotti i\nperiodi di ritorno da adottare per le fasi transitorie di durata compresa fra 1 e 3 mesi ovvero fra 3 mesi ed 1 anno.",
+        "raw": "Nel passaggio dalle precedenti alle attuali NTC si conserva la suddivisione del territorio nazionale in tre zone (viene anche confermata la suddivisione della zona I in due sottozone: alpina e mediterranea) che conservano immutato sia i valori al suolo, sia l’incremento degli stessi con l’altitudine. Vengono però spostate 5 provincie dalla zona III alla zona II ed introdotte 3 provincie di nuova creazione (1 in zona I e 2 in zona II). Rispetto alle precedenti NTC nelle attuali vengono anche introdotti i periodi di ritorno da adottare per le fasi transitorie di durata compresa fra 1 e 3 mesi ovvero fra 3 mesi ed 1 anno.",
         "normalized": "Nel passaggio dalle precedenti alle attuali NTC si conserva la suddivisione del territorio nazionale in tre zone (viene anche confermata la suddivisione della zona I in due sottozone: alpina e mediterranea) che conservano immutato sia i valori al suolo, sia l’incremento degli stessi con l’altitudine. Vengono però spostate 5 provincie dalla zona III alla zona II ed introdotte 3 provincie di nuova creazione (1 in zona I e 2 in zona II). Rispetto alle precedenti NTC nelle attuali vengono anche introdotti i periodi di ritorno da adottare per le fasi transitorie di durata compresa fra 1 e 3 mesi ovvero fra 3 mesi ed 1 anno.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -104,48 +99,17 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.904,
-          "y": 199.678,
+          "y": 187.191,
           "width": 447.453,
-          "height": 420.309
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "7e08554945857928b4bf9c655576f30c9a4898bbad70bef485c939e8e7bb931c",
+        "transformations": [],
+        "rawSha256": "fe65cf9541661468c48d50e61521ac733320d467feb3ab127965a864ee6b1512",
         "normalizedSha256": "fe65cf9541661468c48d50e61521ac733320d467feb3ab127965a864ee6b1512"
       }
     },
@@ -155,8 +119,32 @@
       "origin": "official",
       "text": {
         "raw": "Si può stimare un diverso valore di riferimento ᡩう㊉ \ncorrispondente a Tn anni di periodo di ritorno impiegando l’espressione C.3.4.1.",
-        "normalized": "Si può stimare un diverso valore di riferimento ᡩう㊉ corrispondente a Tn anni di periodo di ritorno impiegando l’espressione C.3.4.1.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Si può stimare un diverso valore di riferimento qsn corrispondente a Tn anni di periodo di ritorno impiegando l’espressione C.3.4.1.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si può stimare un diverso valore di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "qsn",
+            "latex": "q_{sn}"
+          },
+          {
+            "kind": "text",
+            "value": " corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "Tn",
+            "latex": "T_n"
+          },
+          {
+            "kind": "text",
+            "value": " anni di periodo di ritorno impiegando l’espressione C.3.4.1."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -165,9 +153,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.904,
-          "y": 199.678,
+          "y": 187.191,
           "width": 447.453,
-          "height": 420.309
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
@@ -177,37 +165,32 @@
         "transformations": [
           {
             "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimossi esclusivamente i caratteri di controllo privi di resa visuale."
           },
           {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimosse le andate a capo tipografiche, conservando capoversi ed elenchi come blocchi distinti."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Ripristinati glifi, simboli e notazione matematica dopo confronto diretto con il render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "06d1376228ceb559a665377aea4c4a32b73a723917a3231882ab788cc0dd12e4",
-        "normalizedSha256": "0fc6b64d7d60bd08ee4b29d4d38f695c81880d65eb8bdd92564ba5487e1f4ea3"
+        "normalizedSha256": "db10a4082d76d5410801ae85a14ca39c706ccfcd8a67c33eb6e9abedf2219c47"
       }
     },
     {
@@ -215,22 +198,31 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "In esse il coefficiente v di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici\nstudi adeguati e documentati, pari a & = 0,6. \"C3.4.1#\ndoveᡩう㊆ è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni);\nᡩう㊉ è il carico della neve al suolo riferito ad un periodo di ritorno di n anni;\nP n è la probabilità annuale di superamento (approssimativamente equivalente a 1/ n, dove n è il corrispondente periodo di\nritorno espresso in anni;\n&\u0005è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata.",
-        "normalized": "In esse il coefficiente v di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici studi adeguati e documentati, pari a & = 0,6. \"C3.4.1# doveᡩう㊆ è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni); ᡩう㊉ è il carico della neve al suolo riferito ad un periodo di ritorno di n anni; P n è la probabilità annuale di superamento (approssimativamente equivalente a 1/ n, dove n è il corrispondente periodo di ritorno espresso in anni; &è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "In esse il coefficiente v di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici\nstudi adeguati e documentati, pari a & = 0,6.",
+        "normalized": "In esse il coefficiente v di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici studi adeguati e documentati, pari a v = 0,6.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In esse il coefficiente v di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici studi adeguati e documentati, pari a & "
+            "value": "In esse il coefficiente "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "v",
+            "latex": "v"
           },
           {
             "kind": "text",
-            "value": " 0,6. \"C3.4.1# doveᡩう㊆ è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni); ᡩう㊉ è il carico della neve al suolo riferito ad un periodo di ritorno di n anni; P n è la probabilità annuale di superamento (approssimativamente equivalente a 1/ n, dove n è il corrispondente periodo di ritorno espresso in anni; &è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata."
+            "value": " di variazione della serie dei massimi annuali del carico della neve potrà essere assunto, salvo specifici studi adeguati e documentati, pari a "
+          },
+          {
+            "kind": "math",
+            "value": "v = 0,6",
+            "latex": "v = 0{,}6"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -241,9 +233,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.904,
-          "y": 199.678,
+          "y": 187.191,
           "width": 447.453,
-          "height": 420.309
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
@@ -253,60 +245,113 @@
         "transformations": [
           {
             "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimossi esclusivamente i caratteri di controllo privi di resa visuale."
           },
           {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimosse le andate a capo tipografiche, conservando capoversi ed elenchi come blocchi distinti."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Ripristinati glifi, simboli e notazione matematica dopo confronto diretto con il render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "0d4df8c6eacb0405cceac1b6daf2af2c701e4c9f2c16b5d88fb2f4cae10053ac",
-        "normalizedSha256": "406d4344111b8255a0ba38247718f7afb9c4a0fc592aa34de5a6526f850d4cf0"
+        "rawSha256": "d8577f12ad10569d75d4abcb18c6aa4dffebf3a0a229992e12b47592c706c97c",
+        "normalizedSha256": "b04333e5268fdf876a02ef92baf77befb84488c223d16227ab951e7dde28e33d"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.4.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
+          }
+        ],
+        "rawSha256": "7fccffa8dab29364c71a6a8fd43e9e3f1fd6b7f8a56cdaa8fc4aaeb07aaee422",
+        "normalizedSha256": "dada902da546fdf975e6b6c7a75c52b01caed9f32a809ef72785d4c3f0fc74a2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "In riferimento alla figura \u0014\u0015\u0016\u0007\u0016\u000en <\b\u0010 \b\u0002\u0006\u0003\u0010\u0004 \u0004\b \u0010\b\u0003\u0010\u0007\u0004\u0003\u000f\u0004\b\u0010\u000f\b \u000f\u000f\u0010 \b R è il rapporto い㊔㊉\nい う㊆.",
-        "normalized": "In riferimento alla figura n < R è il rapporto い㊔㊉ い う㊆.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "dove",
+        "normalized": "dove",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "ᡩう㊆ è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni);",
+        "normalized": "qsk è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni);",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "In riferimento alla figura n "
-          },
-          {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "qsk",
+            "latex": "q_{sk}"
           },
           {
             "kind": "text",
-            "value": " R è il rapporto い㊔㊉ い う㊆."
+            "value": " è il valore caratteristico del carico della neve al suolo (con un periodo di ritorno di 50 anni);"
           }
         ]
       },
@@ -317,9 +362,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.904,
-          "y": 199.678,
+          "y": 187.191,
           "width": 447.453,
-          "height": 420.309
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
@@ -328,48 +373,43 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Il glifo corrotto del layer PDF è stato ricostruito come q_sk dopo confronto con il render ufficiale."
           }
         ],
-        "rawSha256": "b848442d9b721e8dee516c634badb93597059002d721b37cc2fbd46a44d4070a",
-        "normalizedSha256": "a1b6578452602fbbb5dad8e26d3c6a0c6c820374a2bba33c4281f3369782c707"
+        "rawSha256": "41e48c54022fcd8dccb65869d598ce6b5bf36b2ea0ce36708037f3c38c655b23",
+        "normalizedSha256": "8e1eddd9ab0451a6805d045184cbe38ffc237b09919fbb81198d461900043cdc"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-005",
-      "kind": "list-item",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-007",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "\u0010 \u0011\u0012\u0013 \u0005\u0014\u0015\u0016\u0007\u0016\u000e – Adattamento del carico della neve al suolo al variare del periodo di ritorno (coefficiente di variazione & \u001f !&H\u0017",
-        "normalized": "Adattamento del carico della neve al suolo al variare del periodo di ritorno (coefficiente di variazione &!&H",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "ᡩう㊉ è il carico della neve al suolo riferito ad un periodo di ritorno di n anni;",
+        "normalized": "qsn è il carico della neve al suolo riferito ad un periodo di ritorno di n anni;",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "qsn",
+            "latex": "q_{sn}"
+          },
+          {
+            "kind": "text",
+            "value": " è il carico della neve al suolo riferito ad un periodo di ritorno di "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " anni;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -378,9 +418,131 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.904,
-          "y": 199.678,
+          "y": 187.191,
           "width": 447.453,
-          "height": 420.309
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Il glifo corrotto del layer PDF è stato ricostruito come q_sn dopo confronto con il render ufficiale."
+          }
+        ],
+        "rawSha256": "b43365171283f7b54a14e884c52e5d3f872cf3648918a26efee6f132f3e03613",
+        "normalizedSha256": "4c434856c9f740fd5846ad1fa90cac0fe28a0e2931bf349cedb60e8b7bc4eaf8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "P n è la probabilità annuale di superamento (approssimativamente equivalente a 1/ n, dove n è il corrispondente periodo di\nritorno espresso in anni;",
+        "normalized": "Pn è la probabilità annuale di superamento (approssimativamente equivalente a 1/n, dove n è il corrispondente periodo di ritorno espresso in anni;",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Pn",
+            "latex": "P_n"
+          },
+          {
+            "kind": "text",
+            "value": " è la probabilità annuale di superamento (approssimativamente equivalente a "
+          },
+          {
+            "kind": "math",
+            "value": "1/n",
+            "latex": "1/n"
+          },
+          {
+            "kind": "text",
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il corrispondente periodo di ritorno espresso in anni;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimossa l’andata a capo tipografica senza creare un nuovo capoverso."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Ricostruiti P_n e 1/n secondo la notazione leggibile nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Uniformati gli spazi attorno agli indici e all’operatore di divisione."
+          }
+        ],
+        "rawSha256": "20595861f88e4b9cf2b32df76860f3bb828944455c7aeb7f7e45071b40988bb7",
+        "normalizedSha256": "06512094005410b3cec94bb103a178f29d05cdc1bb4ee6e1b7414cf3a6f1c0f8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "&\u0005è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata.",
+        "normalized": "v è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "v",
+            "latex": "v"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di variazione della serie dei massimi annuali del carico della neve, stimato per la regione considerata."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
         },
         "extraction": {
           "method": "pdf-text",
@@ -390,37 +552,138 @@
         "transformations": [
           {
             "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimosso il carattere di controllo privo di resa visuale."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Il glifo & del layer PDF è stato ricostruito come v dopo confronto con il render ufficiale."
+          }
+        ],
+        "rawSha256": "e5f713c3436231f25419351ad80af6d75647fa8d34c32bd3e30e05609cfdbfa1",
+        "normalizedSha256": "d967ffcf19e65ceb00d2887d38906a70a940b159247d51f60269b2dfdab26ea1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In riferimento alla figura \u0014\u0015\u0016\u0007\u0016\u000en <\b\u0010 \b\u0002\u0006\u0003\u0010\u0004 \u0004\b \u0010\b\u0003\u0010\u0007\u0004\u0003\u000f\u0004\b\u0010\u000f\b \u000f\u000f\u0010 \b R è il rapporto い㊔㊉\nい う㊆ \n.",
+        "normalized": "In riferimento alla figura C3.4.1 n è il periodo di ritorno in anni, αR è il rapporto qsn/qsk.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In riferimento alla figura C3.4.1 "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo di ritorno in anni, "
+          },
+          {
+            "kind": "math",
+            "value": "αR",
+            "latex": "\\alpha_R"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "qsn/qsk",
+            "latex": "\\frac{q_{sn}}{q_{sk}}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimossi esclusivamente i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Rimosse le andate a capo tipografiche, conservando capoversi ed elenchi come blocchi distinti."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Ripristinati glifi, simboli e notazione matematica dopo confronto diretto con il render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "9d25773cf2a93664eb818455999d4393c5d756d3e69b99e85d82efac7ff36881",
-        "normalizedSha256": "0d6304484d1c9d398e21b365a5e19b41abad58c17d2a624134c56cc0796dde92"
+        "rawSha256": "efa96936d483990cef15784c0a8b4b8379bb9d07ca5b84c08f599d639cb82eaf",
+        "normalizedSha256": "397bce1672f67db4733f8480503067d3c3389f83e67519ae82c80e4101e8e3d3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.2#block-editorial-011",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.4.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 76,
+        "printedPage": "72",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.904,
+          "y": 187.191,
+          "width": 447.453,
+          "height": 527.914
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
+          }
+        ],
+        "rawSha256": "df482b1c9fd409df7c61e8692bfc2716010e177cc61b593af466faa3e65abb6b",
+        "normalizedSha256": "84ca06457802bc6217162ae4b00c5797d646a2613f21126a9d7932d0abcf4e86"
       }
     }
   ],
@@ -443,9 +706,13 @@
     }
   ],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.4.1"
+    ],
     "tableIds": [],
-    "figureIds": []
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.4.1"
+    ]
   },
   "workflow": {
     "status": "extracted",
@@ -461,19 +728,19 @@
         "issueId": "circ2019-c3-4-2-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "note": "Trascrizione confrontata con il render ufficiale; attende la revisione umana prevista dal workflow."
       },
       {
-        "issueId": "circ2019-c3-4-2-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+        "issueId": "circ2019-c3-4-2-asset-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono collocate nel flusso ma richiedono review umana puntuale del relativo manifest canonico."
       },
       {
-        "issueId": "circ2019-c3-4-2-relation",
+        "issueId": "circ2019-c3-4-2-relation-review",
         "type": "relation-review",
         "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+        "note": "La relazione proposta con la numerazione NTC omologa richiede conferma umana."
       }
     ]
   }

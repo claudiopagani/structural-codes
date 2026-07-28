@@ -43,13 +43,13 @@ FIGURES = {
     "C3.3.7": {
         "unit": "c3.3.8.1.3",
         "page": 59,
-        "bbox": (168, 328, 427, 402),
+        "bbox": (168, 328, 427, 395),
         "caption": "Figura C3.3.7 – Schema di riferimento per coperture a semplice falda",
     },
     "C3.3.8": {
         "unit": "c3.3.8.1.3",
         "page": 59,
-        "bbox": (185, 427, 420, 569),
+        "bbox": (181, 427, 425, 569),
         "caption": (
             "Figura C3.3.8 – Coperture a semplice falda: valori del "
             "coefficiente cpe; vento perpendicolare alla direzione del colmo"

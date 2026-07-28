@@ -83,6 +83,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "b850a5cf99830be1232b1df389ff38e1ab3bf8758e00bcd5925556b29e3c7741",
@@ -144,6 +149,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "ca4a59ed1635e363c0eb5ce241bc36a273ff74a3248e0aab5f334420e1ad296a",
@@ -205,6 +215,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "9152e4e0247bd4800245fe0bb5ceab17fafccb290b2f11723c2ce290852d0bca",
@@ -226,12 +241,12 @@
           },
           {
             "kind": "math",
-            "value": "h",
-            "latex": "h"
+            "value": "h/b",
+            "latex": "\\frac{h}{b}"
           },
           {
             "kind": "text",
-            "value": "/b, essendo "
+            "value": ", essendo "
           },
           {
             "kind": "math",
@@ -240,7 +255,25 @@
           },
           {
             "kind": "text",
-            "value": " l’altezza della costruzione e b il suo diametro. Inoltre dipendono dal numero di Reynolds Re e dalla scabrezza "
+            "value": " l’altezza della costruzione e "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " il suo diametro. Inoltre dipendono dal numero di Reynolds "
+          },
+          {
+            "kind": "math",
+            "value": "Re",
+            "latex": "\\mathit{Re}"
+          },
+          {
+            "kind": "text",
+            "value": " e dalla scabrezza "
           },
           {
             "kind": "math",
@@ -253,12 +286,21 @@
           },
           {
             "kind": "math",
-            "value": "h",
-            "latex": "h"
+            "value": "h/b",
+            "latex": "\\frac{h}{b}"
           },
           {
             "kind": "text",
-            "value": "/b sia maggiore di 5, si faccia riferimento alle indicazioni riportate in documenti di comprovata validità."
+            "value": " sia maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "5",
+            "latex": "5"
+          },
+          {
+            "kind": "text",
+            "value": ", si faccia riferimento alle indicazioni riportate in documenti di comprovata validità."
           }
         ]
       },
@@ -308,6 +350,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "548aeb2df3b958737acc224c1eb202fcd43ec32390b5e2a741d182d2a1e12558",
@@ -369,6 +416,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "a47860044e199dc11c02b20b76b3e4890bc525164a0c885f0a4bd879d415ab4c",
@@ -381,39 +433,30 @@
       "origin": "official",
       "text": {
         "raw": "Per le costruz\u0010\u0004\u000f\u0010\b\u0013 \u000e\u000e\u0006 \b\u0004\u000e\u000e\u0010 \b\u0015\u0004\u000f\b \u0007\u0006\u0017\u0017 \b\u0016\u0010\u000f\u0004\u0003\u0006\b\u0004\b+\u0005+ \u0006\b \u0006 \b \u0010 \u0016\u0006\u0007\u0003\u0004\b\u0010\u000f\b\u0002\u0010 \u000f\u0007 \b\u001dx\b\"\b\u0013\u001c \b \u0007\u0006\u0017\u0017 \b \u0010\b\u0003\u0010\u0012\u0006\u0003\u0010\u0016\u0006\u000f\u0007\u0004\b<\b\u0015\u0004\u000e\u0007 \u000f\u0007\u0006\b\u0006\b\u0002 \u0003\u0010\b\nalla quota di sommità della costruzione (ᡸ〲\n㍥ = ᡠ); la pressione del vento è pertanto uniforme in altezza.",
-        "normalized": "Per le costruz ++ x\" < alla quota di sommità della costruzione (ᡸ〲 ㍥ = ᡠ); la pressione del vento è pertanto uniforme in altezza.",
+        "normalized": "Per le costruzioni basse, ossia con altezza minore o uguale del diametro in pianta (h ≤ b), l’altezza di riferimento è costante e pari alla quota di sommità della costruzione (z̄e = h); la pressione del vento è pertanto uniforme in altezza.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le costruz ++ "
+            "value": "Per le costruzioni basse, ossia con altezza minore o uguale del diametro in pianta ("
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "h ≤ b",
+            "latex": "h\\le b"
           },
           {
             "kind": "text",
-            "value": "\" "
+            "value": "), l’altezza di riferimento è costante e pari alla quota di sommità della costruzione ("
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "z̄e = h",
+            "latex": "\\bar z_e=h"
           },
           {
             "kind": "text",
-            "value": " alla quota di sommità della costruzione (ᡸ〲 ㍥ "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " ᡠ); la pressione del vento è pertanto uniforme in altezza."
+            "value": "); la pressione del vento è pertanto uniforme in altezza."
           }
         ]
       },
@@ -463,10 +506,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "76bf976d850242ee5ae8de0ba732cd6f5c8c18d3261b01f9c4d5b412075d83ed",
-        "normalizedSha256": "e5ea2ab746ce762796b12c8fd4fcbb404b46de4bbe8c80824eb709a0d13ae6c0"
+        "normalizedSha256": "b4dcea1d16f69c08a7a5290a9195c200f9ad883be9ce12fab28508c43d054b20"
       }
     },
     {
@@ -474,22 +522,94 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per le costruzioni alte, ossia \u0015\u0004\u000f\b \u0007\u0006\u0017\u0017 \b\u0015\u0004\u0016\u0002\u0003\u0006\u000e \b\u0012\u0003 \b\u0010 \b \u0010 \u0016\u0006\u0007\u0003\u0004\b \u0006 \b\u0002\u0010 \u000f\u0007 \b\u0006\b\u001a\b\u0011\u0004 \u0007\u0006\b \u0007\u0006\u0017\u0017 \b \u0006 \b\u0015\u0004\u000e\u0007\u0003+\u0017\u0010\u0004\u000f\u0006\b\u001d\u0013\b}\bx\b\"\b\u001a\u0013\u001c \b\u000e\u0010\b\ndefiniscono due zone distinte:- nella prima parte della costruzione, sino alla quota z = b, l’altezza di riferimento è costante e pari a ᡸ〲\n㍥ = ᡔ; la pressione del\nvento è pertanto uniforme in altezza;",
-        "normalized": "Per le costruzioni alte, ossia +}x\" definiscono due zone distinte:- nella prima parte della costruzione, sino alla quota z = b, l’altezza di riferimento è costante e pari a ᡸ〲 ㍥ = ᡔ; la pressione del vento è pertanto uniforme in altezza;",
+        "raw": "Per le costruzioni alte, ossia \u0015\u0004\u000f\b \u0007\u0006\u0017\u0017 \b\u0015\u0004\u0016\u0002\u0003\u0006\u000e \b\u0012\u0003 \b\u0010 \b \u0010 \u0016\u0006\u0007\u0003\u0004\b \u0006 \b\u0002\u0010 \u000f\u0007 \b\u0006\b\u001a\b\u0011\u0004 \u0007\u0006\b \u0007\u0006\u0017\u0017 \b \u0006 \b\u0015\u0004\u000e\u0007\u0003+\u0017\u0010\u0004\u000f\u0006\b\u001d\u0013\b}\bx\b\"\b\u001a\u0013\u001c \b\u000e\u0010\b\ndefiniscono due zone distinte:",
+        "normalized": "Per le costruzioni alte, ossia con altezza compresa fra il diametro della pianta e 5 volte l’altezza della costruzione (b < h ≤ 5·b), si definiscono due zone distinte:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le costruzioni alte, ossia +}"
+            "value": "Per le costruzioni alte, ossia con altezza compresa fra il diametro della pianta e 5 volte l’altezza della costruzione ("
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "b < h ≤ 5·b",
+            "latex": "b<h\\le5b"
           },
           {
             "kind": "text",
-            "value": "\" definiscono due zone distinte:- nella prima parte della costruzione, sino alla quota "
+            "value": "), si definiscono due zone distinte:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 97.485,
+          "width": 449.376,
+          "height": 489.412
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "2e0abbbede1046b8bf30db9021c384cdaf4301bd661e43a659e5bb3755905f42",
+        "normalizedSha256": "a0ab154fec1865ef28d29321e38cbf040dfac9cad055447905a637acb80eeef6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- nella prima parte della costruzione, sino alla quota z = b, l’altezza di riferimento è costante e pari a ᡸ〲\n㍥ = ᡔ; la pressione del\nvento è pertanto uniforme in altezza;",
+        "normalized": "nella prima parte della costruzione, sino alla quota z = b, l’altezza di riferimento è costante e pari a z̄e = b; la pressione del vento è pertanto uniforme in altezza;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nella prima parte della costruzione, sino alla quota "
           },
           {
             "kind": "math",
@@ -498,16 +618,16 @@
           },
           {
             "kind": "text",
-            "value": ", l’altezza di riferimento è costante e pari a ᡸ〲 ㍥ "
+            "value": ", l’altezza di riferimento è costante e pari a "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "z̄e = b",
+            "latex": "\\bar z_e=b"
           },
           {
             "kind": "text",
-            "value": " ᡔ; la pressione del vento è pertanto uniforme in altezza;"
+            "value": "; la pressione del vento è pertanto uniforme in altezza;"
           }
         ]
       },
@@ -557,24 +677,47 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "e2a0342582764f16c698d1907d2bba7902052e98ddea3e7c59ba86b34e1e7688",
-        "normalizedSha256": "accf5133bbccdd9cfe0f2693dbd37b188461c0cd793f8fbad7a942d154d81519"
+        "rawSha256": "3a0fa20f40497dc6042c05de0d4db69d73fb245c9a007578471c396c321b2cca",
+        "normalizedSha256": "99f6f35635cac04e7be8603678d36d56bb75950a357c7801136f1375a9ca02e0"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-008",
       "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- nella parte superiore della costruzione, per z compreso fra b e h, la quota di riferimento ᡸ〲\n㍥ può essere scelta seguendo uno\ndei due seguenti criteri:",
-        "normalized": "nella parte superiore della costruzione, per z compreso fra b e h, la quota di riferimento ᡸ〲 ㍥ può essere scelta seguendo uno dei due seguenti criteri:",
+        "normalized": "nella parte superiore della costruzione, per z compreso fra b e h, la quota di riferimento z̄e può essere scelta seguendo uno dei due seguenti criteri:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "nella parte superiore della costruzione, per z compreso fra b e "
+            "value": "nella parte superiore della costruzione, per "
+          },
+          {
+            "kind": "math",
+            "value": "z",
+            "latex": "z"
+          },
+          {
+            "kind": "text",
+            "value": " compreso fra "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -583,7 +726,16 @@
           },
           {
             "kind": "text",
-            "value": ", la quota di riferimento ᡸ〲 ㍥ può essere scelta seguendo uno dei due seguenti criteri:"
+            "value": ", la quota di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄e",
+            "latex": "\\bar z_e"
+          },
+          {
+            "kind": "text",
+            "value": " può essere scelta seguendo uno dei due seguenti criteri:"
           }
         ]
       },
@@ -633,104 +785,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "2637c9c2267ae2ecdb70f48ba838d93c36a8dcdab1f6f60c32f40305981f15f2",
-        "normalizedSha256": "b9ecc944090ba233cd11fa89a2683f1e26a33df67e329885789103c6f2ac8b56"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-008",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "1.\u0002 l’altezza di riferimento è costante e pari alla sommità della costruzione (z⤕\n㍥ = h); la pressione del vento è pertanto\nuniforme fra le quote z=b e z=h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale\nche ne risulta è generalmente maggiore di quella reale;",
-        "normalized": "1. l’altezza di riferimento è costante e pari alla sommità della costruzione (z⤕ ㍥ = h); la pressione del vento è pertanto uniforme fra le quote z=b e z=h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "1. l’altezza di riferimento è costante e pari alla sommità della costruzione (z⤕ ㍥ "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " h); la pressione del vento è pertanto uniforme fra le quote z"
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": "b e z"
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": "h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale;"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 71,
-        "printedPage": "67",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73.902,
-          "y": 97.485,
-          "width": 449.376,
-          "height": 489.412
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "090329609fc220dc19f4a79e4702a6fdc729cfbb16f1d70bdaf13fc87078f6d2",
-        "normalizedSha256": "ff66b40bad58872d90c9a8217b97f192ccd36a488a45f9c4509fb9023f49987a"
+        "normalizedSha256": "23b72d5cbd9f7e53e6cb09caa49df48f8b74dee9b86a07416a225ab6ee16a137"
       }
     },
     {
@@ -738,9 +801,42 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "2.\u0002 la costruzione viene suddivisa in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di\nriferimento costante pari alla sommità del tronco; la pressione del vento su ogni tronco è pertanto uniforme in altezza.",
-        "normalized": "2. la costruzione viene suddivisa in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di riferimento costante pari alla sommità del tronco; la pressione del vento su ogni tronco è pertanto uniforme in altezza.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "1.\u0002 l’altezza di riferimento è costante e pari alla sommità della costruzione (z⤕\n㍥ = h); la pressione del vento è pertanto\nuniforme fra le quote z=b e z=h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale\nche ne risulta è generalmente maggiore di quella reale;",
+        "normalized": "1. l’altezza di riferimento è costante e pari alla sommità della costruzione (z̄e = h); la pressione del vento è pertanto uniforme fra le quote z=b e z=h. In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "1. l’altezza di riferimento è costante e pari alla sommità della costruzione ("
+          },
+          {
+            "kind": "math",
+            "value": "z̄e = h",
+            "latex": "\\bar z_e=h"
+          },
+          {
+            "kind": "text",
+            "value": "); la pressione del vento è pertanto uniforme fra le quote "
+          },
+          {
+            "kind": "math",
+            "value": "z=b",
+            "latex": "z=b"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "z=h",
+            "latex": "z=h"
+          },
+          {
+            "kind": "text",
+            "value": ". In questo modo il calcolo delle forze aerodinamiche è semplificato, ma la forza totale che ne risulta è generalmente maggiore di quella reale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -788,19 +884,24 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "be589d4ca055a37390369bf57ba9da7a59ba56c22db29d629b9d7456413744c6",
-        "normalizedSha256": "ebad34a22833b93ff855e25561855f097f1facf25c77da95b342e25ffcb7255d"
+        "rawSha256": "090329609fc220dc19f4a79e4702a6fdc729cfbb16f1d70bdaf13fc87078f6d2",
+        "normalizedSha256": "b8377e591410935c810511ce9f0743ddb659672debe025f53b5c9fa67ac60fc9"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-010",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "In questo modo il calcolo delle forze è più oneroso, ma i valori che si ottengono sono più aderenti alla realtà e non\nmaggiori di quelli che si ottengono applicando la procedura di cui al punto precedente.",
-        "normalized": "In questo modo il calcolo delle forze è più oneroso, ma i valori che si ottengono sono più aderenti alla realtà e non maggiori di quelli che si ottengono applicando la procedura di cui al punto precedente.",
+        "raw": "2.\u0002 la costruzione viene suddivisa in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di\nriferimento costante pari alla sommità del tronco; la pressione del vento su ogni tronco è pertanto uniforme in altezza.\nIn questo modo il calcolo delle forze è più oneroso, ma i valori che si ottengono sono più aderenti alla realtà e non\nmaggiori di quelli che si ottengono applicando la procedura di cui al punto precedente.",
+        "normalized": "2. la costruzione viene suddivisa in tronchi di altezza arbitraria, a ciascuno dei quali corrisponde un’altezza di riferimento costante pari alla sommità del tronco; la pressione del vento su ogni tronco è pertanto uniforme in altezza. In questo modo il calcolo delle forze è più oneroso, ma i valori che si ottengono sono più aderenti alla realtà e non maggiori di quelli che si ottengono applicando la procedura di cui al punto precedente.",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -849,10 +950,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "12297191b8effe2cbb8e9fa807312f8031d2e56bad1bcb595fc19fd75532f052",
-        "normalizedSha256": "ef355d501be2d9b9f97ff29a5baa29aadfc1e8d8796081dc17f9283763307d5f"
+        "rawSha256": "5020ca5542f30c314c64f8a24f03c668eb02b9419b18343aeb30a5b93926cf90",
+        "normalizedSha256": "5692c596d8864380b426354c319e5405e92c1d0e77719f7607e914f4317638b7"
       }
     },
     {
@@ -861,7 +967,7 @@
       "origin": "official",
       "text": {
         "raw": "I coefficienti di pressione esterna c pe sono forniti dalla relazione:",
-        "normalized": "I coefficienti di pressione esterna c pe sono forniti dalla relazione:",
+        "normalized": "I coefficienti di pressione esterna cpe sono forniti dalla relazione:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
@@ -870,12 +976,12 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "cpe",
+            "latex": "c_{pe}"
           },
           {
             "kind": "text",
-            "value": " pe sono forniti dalla relazione:"
+            "value": " sono forniti dalla relazione:"
           }
         ]
       },
@@ -895,20 +1001,22 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
         "rawSha256": "1a062ac31c4e9ecad0ee98c3a59585ddfebfa51000690af0777b8236ed90432b",
-        "normalizedSha256": "1a062ac31c4e9ecad0ee98c3a59585ddfebfa51000690af0777b8236ed90432b"
+        "normalizedSha256": "db7a6e9943e771c537c371b58b2b7b337523baa3227a4b4ae907949694a15fff"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-012",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "[C3.3.4]\ndove:",
-        "normalized": "[C3.3.4] dove:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.4",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 71,
@@ -921,44 +1029,19 @@
           "height": 489.412
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
           }
         ],
         "rawSha256": "dbf96fcd344dc5e639103afbf093e3ebe3b451dffa96e5a8beef295bcb2142c3",
-        "normalizedSha256": "796c5fe7c0aee770ab4efbb02c1e55015d3df00d9fa9f2650436d23412d86fb5"
+        "normalizedSha256": "fc0147eb525526bccd51f6b7d357cc90bc6894bf14fda12ac9389bdea9a02cc8"
       }
     },
     {
@@ -966,8 +1049,8 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "cpeo è il coefficiente di pressione esterna per un cilindro circolare di lunghezza teoricamente infinita;\n  è un coefficiente che tiene conto della lunghezza finita del cilindro (effetti di bordo).",
-        "normalized": "cpeo è il coefficiente di pressione esterna per un cilindro circolare di lunghezza teoricamente infinita; è un coefficiente che tiene conto della lunghezza finita del cilindro (effetti di bordo).",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -1018,8 +1101,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "3f00e488dff1ca27d9162671fd2e803bf7469638830678bdca9f5d74307dc7f4",
-        "normalizedSha256": "b5cbaecf2c3470abd1417f47bbda2d9ed42324ab77b386bdcea319239e94baca"
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
     },
     {
@@ -1027,9 +1110,20 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Il coefficiente di pressione esterna cpeo è fornito dalla relazione:",
-        "normalized": "Il coefficiente di pressione esterna cpeo è fornito dalla relazione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "cpeo è il coefficiente di pressione esterna per un cilindro circolare di lunghezza teoricamente infinita;",
+        "normalized": "cpe0 è il coefficiente di pressione esterna per un cilindro circolare di lunghezza teoricamente infinita;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "cpe0",
+            "latex": "c_{pe0}"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di pressione esterna per un cilindro circolare di lunghezza teoricamente infinita;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1047,9 +1141,45 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "9ad424b36fdebdf16892db6116256b128342820b87c23a1b0d07b6fd40293b67",
-        "normalizedSha256": "9ad424b36fdebdf16892db6116256b128342820b87c23a1b0d07b6fd40293b67"
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "58321313842680b5817de0e04870d9fb0d394b39fdc96d15f326eca992bb33fb",
+        "normalizedSha256": "7bb66c28fc8dea91aec4376902cb76fb7c42091e73514fc23eda84072f6287ba"
       }
     },
     {
@@ -1057,31 +1187,18 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "[C3.3.5]\n\u0004\u0011\u0006\b p è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri cpm, cpb \b m \u0006\bb hanno il significato illustrato nella\nstessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di\nReynolds Re \u0011 +\u0007 \u0007\u0010\b \u0007\u0007\u0003\u0010\u0013+\u0006\u000f \u0004\b \b +\u000f\u0005x\u0006\u0017\u0017 \b \u0010\b\u0003\u0010\u0012\u0006\u0003\u0010\u0016\u0006\u000f\u0007\u0004\b\u0010 \b\u0011 \u0004\u0003\u0006\b \u0006 \b \u0010 \u0016\u0006\u0007\u0003\u0004\b\u0013 \b\u0006\b \u000e\u000e+\u0016\u0006\u000f \u0004\by\u0013\b\"\b\u001b \u001a\u001f\u001b -3.",
-        "normalized": "[C3.3.5] p è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri cpm, cpb m b hanno il significato illustrato nella stessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di Reynolds Re + + +x + y\" -3.",
+        "raw": "  è un coefficiente che tiene conto della lunghezza finita del cilindro (effetti di bordo).",
+        "normalized": "ψλα è un coefficiente che tiene conto della lunghezza finita del cilindro (effetti di bordo).",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "[C3.3.5] "
-          },
-          {
             "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "ψλα",
+            "latex": "\\psi_{\\lambda\\alpha}"
           },
           {
             "kind": "text",
-            "value": " è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri cpm, cpb m b hanno il significato illustrato nella stessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di Reynolds Re + + +"
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": " + y\" -3."
+            "value": " è un coefficiente che tiene conto della lunghezza finita del cilindro (effetti di bordo)."
           }
         ]
       },
@@ -1131,10 +1248,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "5473ce3071d7594d827480ab3d34f77de07647b2f37f7783f96489a2147990f4",
-        "normalizedSha256": "cd88fe7e40fbce81b860f621acc6aba7737dbbe46865598590141456c7491a1f"
+        "rawSha256": "e7a8e3d6d804445ac8b9314b4cfbe3ac0fd37cad472d3a8a253a8fce1972e7bb",
+        "normalizedSha256": "9b83af2e463afe3025e858bf47b2aeb15b0c38be07574e2f7d52acf6613b05f9"
       }
     },
     {
@@ -1142,9 +1264,24 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": " \b\u0015\u0004\u0006\u0012\u0012\u0010\u0015\u0010\u0006\u000f\u0007\u0006\b  è fornito dalla relazione:",
-        "normalized": "è fornito dalla relazione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Il coefficiente di pressione esterna cpeo è fornito dalla relazione:",
+        "normalized": "Il coefficiente di pressione esterna cpe0 è fornito dalla relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente di pressione esterna "
+          },
+          {
+            "kind": "math",
+            "value": "cpe0",
+            "latex": "c_{pe0}"
+          },
+          {
+            "kind": "text",
+            "value": " è fornito dalla relazione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1164,88 +1301,131 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "7554298946d9a425bf6e394a436a0ea4715797072c40d52cf4ed2aa6a290498a",
-        "normalizedSha256": "512f10f20e3145d671ec0e93fd779e6a6dd14664decd70101c08e7ae5a51eca1"
+        "rawSha256": "9ad424b36fdebdf16892db6116256b128342820b87c23a1b0d07b6fd40293b67",
+        "normalizedSha256": "952013d29e678abb7d630277def7522303476e7dcd35d627c96001dbbd1a6c95"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-017",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.5",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 97.485,
+          "width": 449.376,
+          "height": 489.412
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "5473ce3071d7594d827480ab3d34f77de07647b2f37f7783f96489a2147990f4",
+        "normalizedSha256": "a3ee6d7be7017f33daa45cdad677ee8f785fbb129b29ac4da6ad75939fe1f148"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "[C3.3.6]\n\u0004\u0011\u0006\b p <\b\u0006\u000e\u0002\u0003\u0006\u000e\u000e\u0004\b\u0010\u000f\b\u0005\u0003 \u0010\b\u001d\u001c\b <\b+\u000f\b\u0015\u0004\u0006\u0012\u0012\u0010\u0015\u0010\u0006\u000f\u0007\u0006\b \u0010\b\u000e\u000f\u0006 \u0006\u0017\u0017 X\b$\u0006\u0003\b \u0006\b\u0015\u0004\u000e\u0007\u0003+\u0017\u0010\u0004\u000f\u0010\b\u0007\u0003 \u0007\u0007 \u0007\u0006\b\u000f\u0006 \b\u0002\u0003\u0006\u000e\u0006\u000f\u0007\u0006\b\u0002 \u0003 \u0005\u0003 \u0012\u0004\b\u001dxy \b\"\b\u001a\u001c \b\u0002+\b\n\u0002\u0004\u0003\u000e\u0010\b = 2/3.",
-        "normalized": "[C3.3.6] p < <+ X$ + xy \" + = 2/3.",
+        "raw": "\u0004\u0011\u0006\b p è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri cpm, cpb \b m \u0006\bb hanno il significato illustrato nella\nstessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di\nReynolds Re \u0011 +\u0007 \u0007\u0010\b \u0007\u0007\u0003\u0010\u0013+\u0006\u000f \u0004\b \b +\u000f\u0005x\u0006\u0017\u0017 \b \u0010\b\u0003\u0010\u0012\u0006\u0003\u0010\u0016\u0006\u000f\u0007\u0004\b\u0010 \b\u0011 \u0004\u0003\u0006\b \u0006 \b \u0010 \u0016\u0006\u0007\u0003\u0004\b\u0013 \b\u0006\b \u000e\u000e+\u0016\u0006\u000f \u0004\by\u0013\b\"\b\u001b \u001a\u001f\u001b -3.",
+        "normalized": "dove αp è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri cpm, cpb, αm e αb hanno il significato illustrato nella stessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di Reynolds Re valutati attribuendo alla lunghezza di riferimento il valore del diametro b, e assumendo k/b ≤ 0,5·10⁻³.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "[C3.3.6] "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "αp",
+            "latex": "\\alpha_p"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " è l’angolo indicato in Figura C3.3.26, espresso in gradi (°); i parametri "
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "cpm",
+            "latex": "c_{pm}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": ", "
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "cpb",
+            "latex": "c_{pb}"
           },
           {
             "kind": "text",
-            "value": "+ X$ + xy \" + "
+            "value": ", "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "αm",
+            "latex": "\\alpha_m"
           },
           {
             "kind": "text",
-            "value": " 2/3."
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "αb",
+            "latex": "\\alpha_b"
+          },
+          {
+            "kind": "text",
+            "value": " hanno il significato illustrato nella stessa Figura C3.3.26. La Tabella C3.3.XVIII riporta alcuni valori indicativi di tali parametri, corrispondenti a diversi numeri di Reynolds "
+          },
+          {
+            "kind": "math",
+            "value": "Re",
+            "latex": "\\mathit{Re}"
+          },
+          {
+            "kind": "text",
+            "value": " valutati attribuendo alla lunghezza di riferimento il valore del diametro "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": ", e assumendo "
+          },
+          {
+            "kind": "math",
+            "value": "k/b ≤ 0,5·10⁻³",
+            "latex": "\\frac{k}{b}\\le0{,}5\\cdot10^{-3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1295,14 +1475,240 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "c746b19fd4e6b1fde8fcb6e904ceb0e3ce83355fda6908d3e313be6624451fbb",
-        "normalizedSha256": "2cfbe092e8c1a27099bc8191bbd323c5230d3e4cb953e6dda726ae17dbbe5940"
+        "rawSha256": "10e7f42b5eb5f3a2b68a6f1af0696f0889b537047b2da962524edbb71d9e3fb7",
+        "normalizedSha256": "890716e0059c1c49bd0d0bf493259a9f00a899cdbd773b865c04a2500a1853ba"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-018",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-019",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": " \b\u0015\u0004\u0006\u0012\u0012\u0010\u0015\u0010\u0006\u000f\u0007\u0006\b  è fornito dalla relazione:",
+        "normalized": "Il coefficiente ψλα è fornito dalla relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "ψλα",
+            "latex": "\\psi_{\\lambda\\alpha}"
+          },
+          {
+            "kind": "text",
+            "value": " è fornito dalla relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 97.485,
+          "width": 449.376,
+          "height": 489.412
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "7554298946d9a425bf6e394a436a0ea4715797072c40d52cf4ed2aa6a290498a",
+        "normalizedSha256": "fe4efdd30caa9bbbad56f7fe6909812bef262e8334b1315235d4f843798c1ab2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-020",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.6",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 97.485,
+          "width": 449.376,
+          "height": 489.412
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "c746b19fd4e6b1fde8fcb6e904ceb0e3ce83355fda6908d3e313be6624451fbb",
+        "normalizedSha256": "91daa94781fe42cfd9a88f46c084a42473cbb6730137ea120058fe01b8ae0526"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-021",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "\u0004\u0011\u0006\b p <\b\u0006\u000e\u0002\u0003\u0006\u000e\u000e\u0004\b\u0010\u000f\b\u0005\u0003 \u0010\b\u001d\u001c\b <\b+\u000f\b\u0015\u0004\u0006\u0012\u0012\u0010\u0015\u0010\u0006\u000f\u0007\u0006\b \u0010\b\u000e\u000f\u0006 \u0006\u0017\u0017 X\b$\u0006\u0003\b \u0006\b\u0015\u0004\u000e\u0007\u0003+\u0017\u0010\u0004\u000f\u0010\b\u0007\u0003 \u0007\u0007 \u0007\u0006\b\u000f\u0006 \b\u0002\u0003\u0006\u000e\u0006\u000f\u0007\u0006\b\u0002 \u0003 \u0005\u0003 \u0012\u0004\b\u001dxy \b\"\b\u001a\u001c \b\u0002+\b\n\u0002\u0004\u0003\u000e\u0010\b = 2/3.",
+        "normalized": "dove αp è espresso in gradi (°); ψλ è un coefficiente di snellezza. Per le costruzioni trattate nel presente paragrafo (h/d ≤ 5), può porsi ψλ = 2/3.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "αp",
+            "latex": "\\alpha_p"
+          },
+          {
+            "kind": "text",
+            "value": " è espresso in gradi (°); "
+          },
+          {
+            "kind": "math",
+            "value": "ψλ",
+            "latex": "\\psi_\\lambda"
+          },
+          {
+            "kind": "text",
+            "value": " è un coefficiente di snellezza. Per le costruzioni trattate nel presente paragrafo ("
+          },
+          {
+            "kind": "math",
+            "value": "h/d ≤ 5",
+            "latex": "\\frac{h}{d}\\le5"
+          },
+          {
+            "kind": "text",
+            "value": "), può porsi "
+          },
+          {
+            "kind": "math",
+            "value": "ψλ = 2/3",
+            "latex": "\\psi_\\lambda=\\frac{2}{3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 97.485,
+          "width": 449.376,
+          "height": 489.412
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "243290a54206958d4d5753884ba087fd5a43d2db2af8e6b39aa81be549807123",
+        "normalizedSha256": "73af9b9b3375de3157ffedac4452cee55f32adc26ceb83ab1ffc1fb4fe16329a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-022",
       "kind": "figure-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.3.26",
@@ -1319,54 +1725,25 @@
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-figure-placeholder",
+          "tool": "poppler-pdf-crop",
           "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Segnaposto collocato in corrispondenza della didascalia ufficiale; il ritaglio della figura deve ancora essere inserito."
+            "note": "Ritaglio ufficiale confrontato con il render e collocato nella posizione editoriale originaria."
           }
         ],
-        "rawSha256": "e491cf83c494ff2847f6631ad28d54082c0572d2dd5134964dba090673f4cd96",
-        "normalizedSha256": "d462b2a8164f0c5c1fe18d1bd3096f02da5333f6a29dccb687326544419945ab"
+        "rawSha256": "f9e29c51b56f095ac3282c76f89de1c9726e998acc3a90cc3acdfb99a1fd58e1",
+        "normalizedSha256": "f9e29c51b56f095ac3282c76f89de1c9726e998acc3a90cc3acdfb99a1fd58e1"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-019",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.3#block-editorial-023",
+      "kind": "table-ref",
       "origin": "official",
-      "text": {
-        "raw": "Tabella C3.3.XVIII - Valori indicativi dei parametri cpm , cpb +\b\u000f\bm \b\u000f\b b \u0011 \u0006\b<=>\b?\b!+@D\"! -3",
-        "normalized": "Tabella C3.3.XVIII - Valori indicativi dei parametri cpm, cpb +m b <=>?!+@D\"! -3",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Tabella C3.3.XVIII - Valori indicativi dei parametri cpm, cpb +m b "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "?!+@D\"! -3"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c3.3.xviii",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 72,
@@ -1379,52 +1756,33 @@
           "height": 34.752
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Tabella strutturata confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
           }
         ],
         "rawSha256": "7312f330f3de095c639e15b84b3167262b6168117f52cec1e885131d616306a9",
-        "normalizedSha256": "7ac6b254396d7337a884c213599515194d535e55f8f3c1a2912c591d6831093a"
+        "normalizedSha256": "127818195bf263c8d5c5dd5d16b628412f0a5953794c56eee20de4651a2deedd"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
-    "tableIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.4",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.5",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.6"
+    ],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c3.3.xviii"
+    ],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:circ2019:c3.3.26"
     ]

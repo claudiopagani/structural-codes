@@ -1,0 +1,780 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4.3.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.4.3.2",
+    "sortKey": "007.004.003.002"
+  },
+  "title": "FATTORI DI COMPORTAMENTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.4",
+      "urn:structural-codes:it:unit:ntc2018:7.4.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.4.3.2 F ATTORI DI COMPORTAMENTO",
+        "normalized": "7.4.3.2 FATTORI DI COMPORTAMENTO",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a622ddbcefaeed7308d0961428581c56b0cf42b3f7836b435856dd1cb6a158e4",
+        "normalizedSha256": "fb3010003583f1c21ebdde13e26f289881f1821d9c4e7e5cc8063f6f612c655c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il fattore di comportamento q da utilizzare per ciascuna direzione dell’azione sismica orizzontale è calcolato come riportato nel §\n7.3.1 e nella tabella 7.3.II.",
+        "normalized": "Il fattore di comportamento q da utilizzare per ciascuna direzione dell’azione sismica orizzontale è calcolato come riportato nel § 7.3.1 e nella tabella 7.3.II.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il fattore di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": " da utilizzare per ciascuna direzione dell’azione sismica orizzontale è calcolato come riportato nel § 7.3.1 e nella tabella 7.3.II."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f0a98504730ac4b16a192327e4ae8807a8b305a5a56a4868f47324e21fb61ef4",
+        "normalizedSha256": "68eaa1e33dfadedeb2112ccaac725771c9f49959ba840a85643c7f48938320e2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ai fini della determinazione del fattore di comportamento q, una struttura si considera a pareti accoppiate se è verificata la\ncondizione che il momento totale alla base, prodotto dalle azioni orizzontali, è equilibrato, per almeno il 20%, dalla coppia\nprodotta dagli sforzi verticali indotti nelle pareti dall’azione sismica.",
+        "normalized": "Ai fini della determinazione del fattore di comportamento q, una struttura si considera a pareti accoppiate se è verificata la condizione che il momento totale alla base, prodotto dalle azioni orizzontali, è equilibrato, per almeno il 20%, dalla coppia prodotta dagli sforzi verticali indotti nelle pareti dall’azione sismica.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della determinazione del fattore di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": ", una struttura si considera a pareti accoppiate se è verificata la condizione che il momento totale alla base, prodotto dalle azioni orizzontali, è e"
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": "uilibrato, per almeno il 20%, dalla coppia prodotta dagli sforzi verticali indotti nelle pareti dall’azione sismica."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "66cd698156e9873c2e055b1673cdbd34e00484adef9362ce43ecaee3e0ead2d7",
+        "normalizedSha256": "08f7f772a614774e42e9fa7d21a3cdea926745ed8c94c241e84b17b4fd0b01d9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le strutture a pareti possono essere progettate sia in CD”A” sia in CD”B”, mentre le strutture a pareti estese debolmente armate\nsolo in CD “B”.",
+        "normalized": "Le strutture a pareti possono essere progettate sia in CD “A” sia in CD “B”, mentre le strutture a pareti estese debolmente armate solo in CD “B”.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "490051300589ec581b2279e687aa63cdc1313f5cd6dd3c61e28f0aae2c47dd75",
+        "normalizedSha256": "b3655398f5015afb98fa14d43663d789551bbb5c6f605d200e74c552c5e6dd5a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le strutture aventi i telai resistenti all’azione sismica realizzati, anche in una sola delle direzioni principali, con travi a spessore\ndevono essere progettate in CD ”B” salvo che tali travi non si possano considerare elementi strutturali “secondari”.",
+        "normalized": "Le strutture aventi i telai resistenti all’azione sismica realizzati, anche in una sola delle direzioni principali, con travi a spessore devono essere progettate in CD “B” salvo che tali travi non si possano considerare elementi strutturali “secondari”.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2c392576c86f2b338353fc7c432bd334bc87b755eda1a813e85e51bd6bf73f49",
+        "normalizedSha256": "2fd8c00c2733ed47917db23a425b458ac011bdc9765b3ce6986958bccb099b80"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per strutture regolari in pianta, possono essere adottati i seguenti valori di ΅u/΅1:",
+        "normalized": "Per strutture regolari in pianta, possono essere adottati i seguenti valori di αᵤ/α₁:",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per strutture regolari in pianta, possono essere adottati i seguenti valori di "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁",
+            "latex": "\\alpha_u/\\alpha_1"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "099ed73e3a9b7d41f2784d74b652c185e5bc33dd95f1388ee9b8239defa83c51",
+        "normalizedSha256": "a6b258eb9cc646f7afa4f8b581c452a7ad1c017ec077ebd5fbc16a5c8812a60b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) Strutture a telaio o miste equivalenti a telai",
+        "normalized": "a) Strutture a telaio o miste equivalenti a telai",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "d340254819bfb9ccb1cb41df155f09eb936a96f011c63de3fd41d95e36ea0291",
+        "normalizedSha256": "d340254819bfb9ccb1cb41df155f09eb936a96f011c63de3fd41d95e36ea0291"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- strutture a telaio di un piano ΅u/΅1 = 1,1",
+        "normalized": "- strutture a telaio di un piano αᵤ/α₁ = 1,1",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- strutture a telaio di un piano "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,1",
+            "latex": "\\alpha_u/\\alpha_1=1{,}1"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8c602b5cf198b75b96a58f7885a7adcad0b77908d0e8b8b938edbe75ac9ed99c",
+        "normalizedSha256": "145c0215d043ae98b600160b5ffdaadc3bb601f388ea20e3f19025be8b49c475"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-008",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- strutture a telaio con più piani ed una sola campata ΅u/΅1 = 1,2",
+        "normalized": "- strutture a telaio con più piani ed una sola campata αᵤ/α₁ = 1,2",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- strutture a telaio con più piani ed una sola campata "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,2",
+            "latex": "\\alpha_u/\\alpha_1=1{,}2"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7e375bb0acb2c349c1cbe906158e91951b2e2b63a5184db7686fb170dc18a7d4",
+        "normalizedSha256": "504ed2d97b7c1fceee205aacbd0a5df80137964d6e7065f1e96b6be2e6ea06d9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-009",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- strutture a telaio con più piani e più campate ΅u/΅1 = 1,3",
+        "normalized": "- strutture a telaio con più piani e più campate αᵤ/α₁ = 1,3",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- strutture a telaio con più piani e più campate "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,3",
+            "latex": "\\alpha_u/\\alpha_1=1{,}3"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9a3fea4880078e7ae100f891cce231c6487e5e49d5dba189ca26e78b3f563b02",
+        "normalizedSha256": "5a9541fb66ba7132ae133a364e2a6f589917f20942aa17b7951301834a433bc7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-010",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) Strutture a pareti o miste equivalenti a pareti",
+        "normalized": "b) Strutture a pareti o miste equivalenti a pareti",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "9657dac97d74a0b0f8fa7d10ff2f12f176d0e383ce1e65173b179325200a767e",
+        "normalizedSha256": "9657dac97d74a0b0f8fa7d10ff2f12f176d0e383ce1e65173b179325200a767e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-011",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- strutture con solo due pareti non accoppiate per direzione orizzontale ΅u/΅1 = 1,0",
+        "normalized": "- strutture con solo due pareti non accoppiate per direzione orizzontale αᵤ/α₁ = 1,0",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- strutture con solo due pareti non accoppiate per direzione orizzontale "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,0",
+            "latex": "\\alpha_u/\\alpha_1=1{,}0"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "eb41eec63016f3b76673b5b0a8ca87e051412d1b036d18f3d1447846f0976a86",
+        "normalizedSha256": "cd0ec015bcfcf7b04ea2afa8eb6896aac0ad1b573b1dca07e12a7efb2203d875"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-012",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- altre strutture a pareti non accoppiate ΅u/΅1 = 1,1",
+        "normalized": "- altre strutture a pareti non accoppiate αᵤ/α₁ = 1,1",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- altre strutture a pareti non accoppiate "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,1",
+            "latex": "\\alpha_u/\\alpha_1=1{,}1"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "80b733518a6aa2921a60e5707e8601e448fddbce749a201ae59d01e39bbd55b9",
+        "normalizedSha256": "6b0ebc0a17f939938759f9ff659d6bfea11b8d43bb9654ba356ef3d896a0c7f6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-013",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- strutture a pareti accoppiate o miste equivalenti a pareti ΅u/΅1 = 1,2",
+        "normalized": "- strutture a pareti accoppiate o miste equivalenti a pareti αᵤ/α₁ = 1,2",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- strutture a pareti accoppiate o miste equivalenti a pareti "
+          },
+          {
+            "kind": "math",
+            "value": "αᵤ/α₁ = 1,2",
+            "latex": "\\alpha_u/\\alpha_1=1{,}2"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c6494a1e40c4d0d3fadbfb94a5d33e759432aed6b33ab455d8484edbd5e28967",
+        "normalizedSha256": "3ec41626ccfc3bc617c5e2f52126d95471d56b1bf4503dded02364cde0f3f09c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.2#block-editorial-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per tipologie strutturali diverse da quelle sopra definite, ove s’intenda adottare un valore q > 1,5 il valore adottato deve essere\nadeguatamente giustificato dal progettista mediante l’impiego di analisi non lineari.",
+        "normalized": "Per tipologie strutturali diverse da quelle sopra definite, ove s’intenda adottare un valore q > 1,5 il valore adottato deve essere adeguatamente giustificato dal progettista mediante l’impiego di analisi non lineari.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per tipologie strutturali diverse da quelle sopra definite, ove s’intenda adottare un valore "
+          },
+          {
+            "kind": "math",
+            "value": "q > 1,5",
+            "latex": "q>1{,}5"
+          },
+          {
+            "kind": "text",
+            "value": " il valore adottato deve essere adeguatamente giustificato dal progettista mediante l’impiego di analisi non lineari."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2cec263a8694ef04bdd10d16188aca5d99572e25d0a47b94230fdd7e1ab112d2",
+        "normalizedSha256": "0f7a1a123a04a7d22ef464a263d7ac36cd2145fac9995e13cbed617eb0c27d76"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step1",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.4.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C7.4.6",
+    "sortKey": "007.004.006"
+  },
+  "title": "DETTAGLI COSTRUTTIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.4.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.4"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.4.6 DETTAGLI COSTRUTTIVI",
+        "normalized": "C7.4.6 DETTAGLI COSTRUTTIVI",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 221,
+        "printedPage": "217",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "ce9ac94008b543aeea23672b50d05aba3c7cd1a3666869d9920946fc2d14b89a",
+        "normalizedSha256": "ce9ac94008b543aeea23672b50d05aba3c7cd1a3666869d9920946fc2d14b89a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.4.6#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.4.6",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.4.6#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ74",
+      "kind": "script",
+      "toolVersion": "circ74-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-07-28T15:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-4-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-4-6-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale della pagina contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-4-6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.4.2.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.4.2.1",
+    "sortKey": "007.004.002.001"
+  },
+  "title": "CONGLOMERATO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.4.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.4.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.4",
+      "urn:structural-codes:it:unit:circ2019:c7.4.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.4.2.1 CONGLOMERATO",
+        "normalized": "C7.4.2.1 CONGLOMERATO",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 215,
+        "printedPage": "211",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "72f45bcf5f661dafdee22ec753fb741d628f9fc4e7c2f4707e8eac1998fd6d34",
+        "normalizedSha256": "72f45bcf5f661dafdee22ec753fb741d628f9fc4e7c2f4707e8eac1998fd6d34"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.2.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si consente l’impiego di calcestruzzi con aggregati leggeri purché di sufficiente resistenza.",
+        "normalized": "Si consente l’impiego di calcestruzzi con aggregati leggeri purché di sufficiente resistenza.",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 215,
+        "printedPage": "211",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "a96420cfd650ba22919cbf5b752c2c1bf99642065c80bcfe4d503e9178923903",
+        "normalizedSha256": "a96420cfd650ba22919cbf5b752c2c1bf99642065c80bcfe4d503e9178923903"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.4.2.1#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.4.2.1",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.4.2.1#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ74",
+      "kind": "script",
+      "toolVersion": "circ74-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-07-28T15:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-4-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-4-2-1-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale della pagina contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-4-2-1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

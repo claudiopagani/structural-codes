@@ -1,0 +1,649 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4.3.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.4.3.1",
+    "sortKey": "007.004.003.001"
+  },
+  "title": "TIPOLOGIE STRUTTURALI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.4",
+      "urn:structural-codes:it:unit:ntc2018:7.4.3"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.4.3.1 TIPOLOGIE STRUTTURALI",
+        "normalized": "7.4.3.1 TIPOLOGIE STRUTTURALI",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7c98e278b890476834c711e2e50b435bc3f9a7c0fd1dc7e8e5c9539b389d5a9e",
+        "normalizedSha256": "7c98e278b890476834c711e2e50b435bc3f9a7c0fd1dc7e8e5c9539b389d5a9e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le strutture sismo-resistenti in calcestruzzo armato previste dalle presenti norme possono essere classificate nelle seguenti\ntipologie:",
+        "normalized": "Le strutture sismo-resistenti in calcestruzzo armato previste dalle presenti norme possono essere classificate nelle seguenti tipologie:",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "54740f28b8ddfaaa0b60a875479c6a266e967252d3fb1f6c1ed9a68242952359",
+        "normalizedSha256": "e25ecbbdf4454bbbdc71f79b7c9ad31935f9d30b587a708c14d25fea26581cab"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-002",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture a telaio, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a telai spaziali,\naventi resistenza a taglio alla base ǃ 65% della resistenza a taglio totale;",
+        "normalized": "strutture a telaio, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a telai spaziali, aventi resistenza a taglio alla base ≥ 65% della resistenza a taglio totale;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "strutture a telaio, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a telai spaziali, aventi resistenza a taglio alla base "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 65%",
+            "latex": "\\ge 65\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della resistenza a taglio totale;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "df00aa5f834f87796ab921bd99f6c609492edd440e3fe2f7e52436c979f476d4",
+        "normalizedSha256": "cd51ea7fe721250b85d20473f548979d7ff26f729cd85436b791aa72ec966372"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture a pareti, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a pareti (v. §\n7.4.4.5), aventi resistenza a taglio alla base ǃ 65% della resistenza a taglio totale; le pareti, a seconda della forma in pianta, si\ndefiniscono semplici o composte (v. § 7.4.4.5), a seconda della assenza o presenza di opportune “travi di accoppiamento”\nduttili distribuite in modo regolare lungo l’altezza, si definiscono singole o accoppiate;",
+        "normalized": "strutture a pareti, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a pareti (v. § 7.4.4.5), aventi resistenza a taglio alla base ≥ 65% della resistenza a taglio totale; le pareti, a seconda della forma in pianta, si definiscono semplici o composte (v. § 7.4.4.5), a seconda della assenza o presenza di opportune “travi di accoppiamento” duttili distribuite in modo regolare lungo l’altezza, si definiscono singole o accoppiate;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "strutture a pareti, nelle quali la resistenza alle azioni sia verticali che orizzontali è affidata principalmente a pareti (v. § 7.4.4.5), aventi resistenza a taglio alla base "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 65%",
+            "latex": "\\ge 65\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della resistenza a taglio totale; le pareti, a seconda della forma in pianta, si definiscono semplici o composte (v. § 7.4.4.5), a seconda della assenza o presenza di opportune “travi di accoppiamento” duttili distribuite in modo regolare lungo l’altezza, si definiscono singole o accoppiate;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c61e3b82693da07da6ec296bfcef912c25397d24330c3d6bdbba3a37794ba45c",
+        "normalizedSha256": "0ffb83e32211d77ea5f2936b81b2ac864570e79df07a6275d9cdc20d27c6c8a4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture miste telaio-pareti, nelle quali la resistenza alle azioni verticali è affidata prevalentemente ai telai, la resistenza alle\nazioni orizzontali è affidata in parte ai telai ed in parte alle pareti, singole o accoppiate; se più del 50% dell’azione\norizzontale è assorbita dai telai si parla di strutture miste equivalenti a telai, altrimenti si parla di strutture miste\nequivalenti a pareti;",
+        "normalized": "strutture miste telaio-pareti, nelle quali la resistenza alle azioni verticali è affidata prevalentemente ai telai, la resistenza alle azioni orizzontali è affidata in parte ai telai ed in parte alle pareti, singole o accoppiate; se più del 50% dell’azione orizzontale è assorbita dai telai si parla di strutture miste equivalenti a telai, altrimenti si parla di strutture miste equivalenti a pareti;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c343be58669bd39e14c3e25622c6c42369eb04b0377ba1c487307f4866faf5f8",
+        "normalizedSha256": "f1294f97ea10a497de6b67bb9719661ede90442256130f4555f91a0d198b6064"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture a pendolo inverso, nelle quali almeno il 50% della massa è nel terzo superiore dell’altezza della costruzione e nelle\nquali la dissipazione d’energia avviene alla base di un singolo elemento strutturale;",
+        "normalized": "strutture a pendolo inverso, nelle quali almeno il 50% della massa è nel terzo superiore dell’altezza della costruzione e nelle quali la dissipazione d’energia avviene alla base di un singolo elemento strutturale;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a84ec4db0d2c06003004e94f01f3ef44ff445dbc9a050ca1e93d9206a029f9b9",
+        "normalizedSha256": "a79a7b8cc0a3dd611efaa036dc3a11f4f9a9c6760b7d8a0651e51ed5b3ff59d8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture a pendolo inverso intelaiate monopiano, nelle quali almeno il 50% della massa è nel terzo superiore dell’altezza\ndella costruzione, in cui i pilastri sono incastrati in sommità alle travi lungo entrambe le direzioni principali dell’edificio. In\nogni caso, per questo tipo di strutture, la forza assiale non può eccedere il 30% della resistenza a compressione della sola\nsezione di calcestruzzo;",
+        "normalized": "strutture a pendolo inverso intelaiate monopiano, nelle quali almeno il 50% della massa è nel terzo superiore dell’altezza della costruzione, in cui i pilastri sono incastrati in sommità alle travi lungo entrambe le direzioni principali dell’edificio. In ogni caso, per questo tipo di strutture, la forza assiale non può eccedere il 30% della resistenza a compressione della sola sezione di calcestruzzo;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "002127c07bc5fbb7efc5befbf051ef6489c2ee2de4be78eb53cc6c2a16f5e72a",
+        "normalizedSha256": "eaa7a66704c7c0b303b901b34991b209d9e3102eed9edf56bc1e0897355170a3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ strutture deformabili torsionalmente, composte da telai e/o pareti, la cui rigidezza torsionale non soddisfa ad ogni piano la\ncondizione r2 /ls 2 ǃ 1, nella quale:",
+        "normalized": "strutture deformabili torsionalmente, composte da telai e/o pareti, la cui rigidezza torsionale non soddisfa ad ogni piano la condizione r²/lₛ² ≥ 1, nella quale:",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "strutture deformabili torsionalmente, composte da telai e/o pareti, la cui rigidezza torsionale non soddisfa ad ogni piano la condizione "
+          },
+          {
+            "kind": "math",
+            "value": "r²/lₛ² ≥ 1",
+            "latex": "\\frac{r^2}{l_s^2}\\ge 1"
+          },
+          {
+            "kind": "text",
+            "value": ", nella quale:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "35f03ba32fad128176f37859181905da0a5a21b56511bd23d40911dc47b55d52",
+        "normalizedSha256": "a030d9d9faebfde1b5241fe1224d6f058f370225f199b40f329bc20172392bad"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "r2 = raggio torsionale al quadrato è, per ciascun piano, il rapporto tra la rigidezza torsionale rispetto al centro di rigidezza\nlaterale e la maggiore tra le rigidezze laterali, tenendo conto dei soli elementi strutturali primari, per strutture a telaio o a\npareti (purché snelle e a deformazione prevalentemente flessionale), r2 può essere valutato, per ogni piano, riferendosi ai\nmomenti d’inerzia flessionali delle sezioni degli elementi verticali primari.",
+        "normalized": "r² = raggio torsionale al quadrato è, per ciascun piano, il rapporto tra la rigidezza torsionale rispetto al centro di rigidezza laterale e la maggiore tra le rigidezze laterali, tenendo conto dei soli elementi strutturali primari; per strutture a telaio o a pareti (purché snelle e a deformazione prevalentemente flessionale), r² può essere valutato, per ogni piano, riferendosi ai momenti d’inerzia flessionali delle sezioni degli elementi verticali primari.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "r²",
+            "latex": "r^2"
+          },
+          {
+            "kind": "text",
+            "value": " = raggio torsionale al quadrato è, per ciascun piano, il rapporto tra la rigidezza torsionale rispetto al centro di rigidezza laterale e la maggiore tra le rigidezze laterali, tenendo conto dei soli elementi strutturali primari; per strutture a telaio o a pareti (purché snelle e a deformazione prevalentemente flessionale), "
+          },
+          {
+            "kind": "math",
+            "value": "r²",
+            "latex": "r^2"
+          },
+          {
+            "kind": "text",
+            "value": " può essere valutato, per ogni piano, riferendosi ai momenti d’inerzia flessionali delle sezioni degli elementi verticali primari."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "23c2860f5538cf500d92bea0d16b497f46d0676dc043c3d2901dab4c1c88450d",
+        "normalizedSha256": "e485bd3a5bb9a910ee27a99fddd1e4d1a8b7eaad8487279bf7c1ab6271cac916"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "l s2 = per ogni piano, è il rapporto fra il momento d’inerzia polare della massa del piano rispetto ad un asse verticale\npassante per il centro di massa del piano e la massa stessa del piano; nel caso di piano a pianta rettangolare ls2 = (L 2 + B 2 )/12,\nessendo L e B le dimensioni in pianta del piano.",
+        "normalized": "lₛ² = per ogni piano, è il rapporto fra il momento d’inerzia polare della massa del piano rispetto ad un asse verticale passante per il centro di massa del piano e la massa stessa del piano; nel caso di piano a pianta rettangolare lₛ² = (L² + B²)/12, essendo L e B le dimensioni in pianta del piano.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "lₛ²",
+            "latex": "l_s^2"
+          },
+          {
+            "kind": "text",
+            "value": " = per ogni piano, è il rapporto fra il momento d’inerzia polare della massa del piano rispetto ad un asse verticale passante per il centro di massa del piano e la massa stessa del piano; nel caso di piano a pianta rettangolare "
+          },
+          {
+            "kind": "math",
+            "value": "lₛ² = (L² + B²)/12",
+            "latex": "l_s^2=\\frac{L^2+B^2}{12}"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "B",
+            "latex": "B"
+          },
+          {
+            "kind": "text",
+            "value": " le dimensioni in pianta del piano."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6d4565573687d4917731af2b018640b0f4b2d2b8846b037f73fb7fdeb7027322",
+        "normalizedSha256": "edd5731078eb038152f253355c1f9ac6b5d562ef9ddc490f5d543e084618d5f9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.3.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Una struttura a pareti, nei termini sopra definiti, è da considerarsi come struttura a pareti estese debolmente armate se le pareti\nsono caratterizzate da un’estensione a buona parte del perimetro della pianta strutturale e sono dotate di idonei provvedimenti\nper garantire la continuità strutturale così da produrre un efficace comportamento scatolare. Inoltre, nella direzione orizzontale\nd’interesse, la struttura deve avere un periodo fondamentale, in condizioni non fessurate e calcolato nell’ipotesi di assenza di\nrotazioni alla base, non superiore a TC.",
+        "normalized": "Una struttura a pareti, nei termini sopra definiti, è da considerarsi come struttura a pareti estese debolmente armate se le pareti sono caratterizzate da un’estensione a buona parte del perimetro della pianta strutturale e sono dotate di idonei provvedimenti per garantire la continuità strutturale così da produrre un efficace comportamento scatolare. Inoltre, nella direzione orizzontale d’interesse, la struttura deve avere un periodo fondamentale, in condizioni non fessurate e calcolato nell’ipotesi di assenza di rotazioni alla base, non superiore a T_C.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Una struttura a pareti, nei termini sopra definiti, è da considerarsi come struttura a pareti estese debolmente armate se le pareti sono caratterizzate da un’estensione a buona parte del perimetro della pianta strutturale e sono dotate di idonei provvedimenti per garantire la continuità strutturale così da produrre un efficace comportamento scatolare. Inoltre, nella direzione orizzontale d’interesse, la struttura deve avere un periodo fondamentale, in condizioni non fessurate e calcolato nell’ipotesi di assenza di rotazioni alla base, non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "T_C",
+            "latex": "T_C"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 228,
+        "printedPage": "224",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b60e4e0af82d4588f233b3a809d746e8c765ee05b2008b28c13dba723d0cda46",
+        "normalizedSha256": "674349f04e63f4d4654fa780b0577740f1de0d001e536310020ad27b694c862a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step1",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-3-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

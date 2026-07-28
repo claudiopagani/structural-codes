@@ -94,9 +94,20 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "S la superficie delimitata dal contorno della trave;\nSp la superficie della parte piena della trave;!",
-        "normalized": "S la superficie delimitata dal contorno della trave; Sp la superficie della parte piena della trave;!",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "S la superficie delimitata dal contorno della trave;",
+        "normalized": "S la superficie delimitata dal contorno della trave;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "S",
+            "latex": "S"
+          },
+          {
+            "kind": "text",
+            "value": " la superficie delimitata dal contorno della trave;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -151,112 +162,27 @@
             "note": "Unita una continuazione testuale attraversata da un cambio pagina."
           }
         ],
-        "rawSha256": "bb27a48de7125949ab0eaeea5be501fb98380a575885c4b0117fcee37124a2dc",
-        "normalizedSha256": "89f112b4b016fd71ef5ad96ccc3338bef69df592b0418b913403a4e4f1ddd40b"
+        "rawSha256": "0e0e682b3bce96b5a43d9786da11cd075d3d7b48cf819e0051a20c72e8b7f414",
+        "normalizedSha256": "0e0e682b3bce96b5a43d9786da11cd075d3d7b48cf819e0051a20c72e8b7f414"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.1#block-editorial-003",
-      "kind": "list-item",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "! \n\"\u0004\u001c [C3.3.7]\nla pressione totale si considera agente solo su Sp e si valuta utilizzando i seguenti valori del coefficiente c \np:\ncp = 2 - \u001c\n# \u001c per 0 \u001d\u0005\u001c\u0005< 0,3\ncp = 1,6 per 0,3 \u001d\u0005\u001c\u0005\u001d 0,8 [C3.3.8]\ncp = 2,4 - \u001c per 0,8 <\u001c\u0005\u001d 1",
-        "normalized": "\" [C3.3.7] la pressione totale si considera agente solo su Sp e si valuta utilizzando i seguenti valori del coefficiente c p: cp = 2 - # per 0 < 0,3 cp = 1,6 per 0,3 0,8 [C3.3.8] cp = 2,4 - per 0,8 < 1",
+        "raw": "Sp la superficie della parte piena della trave;!",
+        "normalized": "Sp la superficie della parte piena della trave;",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "\" [C3.3.7] la pressione totale si considera agente solo su Sp e si valuta utilizzando i seguenti valori del coefficiente "
-          },
-          {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "Sp",
+            "latex": "S_p"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
-          },
-          {
-            "kind": "text",
-            "value": ": "
-          },
-          {
-            "kind": "math",
-            "value": "cp",
-            "latex": "c_p"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 2 - # per 0 "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " 0,3 "
-          },
-          {
-            "kind": "math",
-            "value": "cp",
-            "latex": "c_p"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,6 per 0,3 0,8 [C3.3.8] "
-          },
-          {
-            "kind": "math",
-            "value": "cp",
-            "latex": "c_p"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 2,4 - per 0,8 "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " 1"
+            "value": " la superficie della parte piena della trave;"
           }
         ]
       },
@@ -306,17 +232,184 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "join-page-break",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unita una continuazione testuale attraversata da un cambio pagina."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "07e05d15db1dfe93387254da003544e2eaae64f7647ff9f06e6b11daa45c5e35",
-        "normalizedSha256": "c23ba82c85ebacc6eeac89e49b65643da0e3db612726eeff818729c292e1d779"
+        "rawSha256": "f8eedaf29ee60b55484155d5736055517520392c1bbbf7c268b80ff77ab832c6",
+        "normalizedSha256": "6c00efbe26a060603740ca5210acea04a5f8bff18944eb7392dc74122e45aa77"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.1#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.7",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.375,
+          "width": 365.033,
+          "height": 104.585
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "76cd3a86d44d070e04478cd1e429782d40daebf0151448829061fbac910bd8a7",
+        "normalizedSha256": "6aca6fb00ed33ab2bbdb66f0a010d53e6a392edf21da222f0b7cd53c96aadba2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.1#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "la pressione totale si considera agente solo su Sp e si valuta utilizzando i seguenti valori del coefficiente c \np:\n",
+        "normalized": "la pressione totale si considera agente solo su Sp e si valuta utilizzando i seguenti valori del coefficiente cp:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "la pressione totale si considera agente solo su "
+          },
+          {
+            "kind": "math",
+            "value": "Sp",
+            "latex": "S_p"
+          },
+          {
+            "kind": "text",
+            "value": " e si valuta utilizzando i seguenti valori del coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "cp",
+            "latex": "c_p"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.375,
+          "width": 365.033,
+          "height": 104.585
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "6d0ee6add54e3c2a4457360efc569e11996a9e8d86fe790b1624e538054dc029",
+        "normalizedSha256": "b813aa436027a3c6cc46579cb7d5435b92ecc2b1ea4da69ec42b02a4bc00b31f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.6.1#block-editorial-006",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.8",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 97.375,
+          "width": 365.033,
+          "height": 104.585
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "5bb061b2fba86ff6a9b7b6853a0de8a8d9735138518fd328ecb3b6eaebf1a546",
+        "normalizedSha256": "8c48a8492a136974e94b44153e54c976d873ae7ca52e5650c15508332f153f45"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.7",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.8"
+    ],
     "tableIds": [],
     "figureIds": []
   },

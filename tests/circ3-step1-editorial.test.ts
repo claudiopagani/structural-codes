@@ -52,7 +52,9 @@ test("C3 step 1 contiene le otto formule verificate", async () => {
     const manifest = await json("corpus/assets/circ2019/core-editorial.json");
     const formulas = manifest.formulas.filter(
         ({ officialNumber }: { officialNumber: string }) =>
-            /^C3\.(?:2\.[1-5]|3\.[1-3])$/u.test(officialNumber),
+            /^(?:C\.3\.2\.[1-3]|C3\.(?:2\.[45]|3\.[1-3]))$/u.test(
+                officialNumber,
+            ),
     );
     const byNumber = new Map<string, string>(
         formulas.map(
@@ -63,10 +65,10 @@ test("C3 step 1 contiene le otto formule verificate", async () => {
 
     assert.equal(formulas.length, 8);
     assert.equal(
-        byNumber.get("C3.2.1"),
+        byNumber.get("C.3.2.1"),
         "T_R=-\\frac{V_R}{\\ln(1-P_{VR})}=-\\frac{C_UV_N}{\\ln(1-P_{VR})}",
     );
-    assert.match(byNumber.get("C3.2.3") ?? "", /P\^\*_\{VR\}/u);
+    assert.match(byNumber.get("C.3.2.3") ?? "", /P\^\*_\{VR\}/u);
     assert.match(byNumber.get("C3.2.4") ?? "", /\\sum_\{j=1\}\^\{N\}/u);
     assert.match(byNumber.get("C3.2.5") ?? "", /\\rho_\{X,Y\}/u);
     assert.equal(
@@ -77,7 +79,7 @@ test("C3 step 1 contiene le otto formule verificate", async () => {
 
 test("C3 step 1 ricostruisce le quattro tabelle e le celle estese", async () => {
     const manifest = await json("corpus/assets/circ2019/core-tables.json");
-    const numbers = ["C3.2.I", "C3.2.II", "C3.3.I", "C3.3.II"];
+    const numbers = ["C.3.2.I", "C.3.2.II", "C3.3.I", "C3.3.II"];
     const tables = numbers.map((number) =>
         manifest.tables.find(
             ({ officialNumber }: { officialNumber: string }) =>

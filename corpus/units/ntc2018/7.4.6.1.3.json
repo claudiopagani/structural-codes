@@ -1,0 +1,142 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.4.6.1.3",
+    "sortKey": "007.004.006.001.003"
+  },
+  "title": "Nodi trave-pilastro",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.4",
+      "urn:structural-codes:it:unit:ntc2018:7.4.6",
+      "urn:structural-codes:it:unit:ntc2018:7.4.6.1"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.4.6.1.3 Nodi trave-pilastro",
+        "normalized": "7.4.6.1.3 Nodi trave-pilastro",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 240,
+        "printedPage": "236",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "1a5408b7ad1af7ba8a1b1c8f90237c5faab7ed1e91d1b2e9616cf91e5b684122",
+        "normalizedSha256": "1a5408b7ad1af7ba8a1b1c8f90237c5faab7ed1e91d1b2e9616cf91e5b684122"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Sono da evitare, per quanto possibile, eccentricità tra l’asse della trave e l’asse del pilastro concorrenti in un nodo. Qualora tale\neccentricità superi 1/4 della larghezza del pilastro, la trasmissione degli sforzi deve essere assicurata da armature adeguatamente\ndimensionate allo scopo.",
+        "normalized": "Sono da evitare, per quanto possibile, eccentricità tra l’asse della trave e l’asse del pilastro concorrenti in un nodo. Qualora tale eccentricità superi 1/4 della larghezza del pilastro, la trasmissione degli sforzi deve essere assicurata da armature adeguatamente dimensionate allo scopo.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Sono da evitare, per "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": "uanto possibile, eccentricità tra l’asse della trave e l’asse del pilastro concorrenti in un nodo. Qualora tale eccentricità superi 1/4 della larghezza del pilastro, la trasmissione degli sforzi deve essere assicurata da armature adeguatamente dimensionate allo scopo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 240,
+        "printedPage": "236",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "27f94315363a6daf41284f3068543ec172f9472ee954ca1dabfa08aafee71208",
+        "normalizedSha256": "9dfdbe53a191a9580ee0bce8a9cecfa06a26b6dc8a7dd03a47593101ceae98df"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step3",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T14:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-6-1-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

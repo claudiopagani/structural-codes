@@ -25,7 +25,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-07-26"
+    "asOf": "2026-07-28"
   },
   "blocks": [
     {
@@ -33,70 +33,9 @@
       "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "C3.4.3.2\u0002 COPERTURA AD UNA FALDA",
+        "raw": "C3.4.3.2 COPERTURA AD UNA FALDA",
         "normalized": "C3.4.3.2 COPERTURA AD UNA FALDA",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 77,
-        "printedPage": "73",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 510.405,
-          "width": 139.674,
-          "height": 7.805
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "19e765890a9a300cf0986a2273cb3418865a9c17e71e9c1a7ed4e2848a2dd0c8",
-        "normalizedSha256": "abb723cc01f1a499c63c9fe0a1efc9ebe7eee9fe960f4e7f43c599361b72bfcd"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-001",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Nel caso di edifici con copertura piana la riduzione del manto sulla copertura, operata dal vento, risulta via via meno efficace al\ncrescere delle dimensioni in pianta dell’edificio.",
-        "normalized": "Nel caso di edifici con copertura piana la riduzione del manto sulla copertura, operata dal vento, risulta via via meno efficace al crescere delle dimensioni in pianta dell’edificio.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -105,48 +44,47 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 522.791,
-          "width": 447.362,
-          "height": 186.275
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "6951431b8bfc1ad74ea54dde827ca743f0aaaecdda22621934489cbb7b009eb5",
+        "transformations": [],
+        "rawSha256": "abb723cc01f1a499c63c9fe0a1efc9ebe7eee9fe960f4e7f43c599361b72bfcd",
+        "normalizedSha256": "abb723cc01f1a499c63c9fe0a1efc9ebe7eee9fe960f4e7f43c599361b72bfcd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di edifici con copertura piana la riduzione del manto sulla copertura, operata dal vento, risulta via via meno efficace al crescere delle dimensioni in pianta dell’edificio.",
+        "normalized": "Nel caso di edifici con copertura piana la riduzione del manto sulla copertura, operata dal vento, risulta via via meno efficace al crescere delle dimensioni in pianta dell’edificio.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "3aea327642e7c34358dc02977a214ce7cc5613b0e13d12b0f4c2bbf43a36ec1b",
         "normalizedSha256": "3aea327642e7c34358dc02977a214ce7cc5613b0e13d12b0f4c2bbf43a36ec1b"
       }
     },
@@ -155,9 +93,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Si raccomanda di tenere conto di questi effetti per coperture estese, attraverso un opportuno incremento del coefficiente μ1 \n, di cui\nalla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità.",
-        "normalized": "Si raccomanda di tenere conto di questi effetti per coperture estese, attraverso un opportuno incremento del coefficiente μ1 , di cui alla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Si raccomanda di tenere conto di questi effetti per coperture estese, attraverso un opportuno incremento del coefficiente μ1, di cui alla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità.",
+        "normalized": "Si raccomanda di tenere conto di questi effetti per coperture estese, attraverso un opportuno incremento del coefficiente μ1, di cui alla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
         "inline": [
           {
             "kind": "text",
@@ -166,11 +104,11 @@
           {
             "kind": "math",
             "value": "μ1",
-            "latex": "\\mu_{1}"
+            "latex": "\\mu_1"
           },
           {
             "kind": "text",
-            "value": " , di cui alla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità."
+            "value": ", di cui alla tabella 3.4.II, secondo formulazioni contenute in documenti di comprovata validità."
           }
         ]
       },
@@ -181,49 +119,18 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 522.791,
-          "width": 447.362,
-          "height": 186.275
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "47b08c75da208686900ec54f78022147c3feb0bc8e00575aa5dd8f872e6695f5",
-        "normalizedSha256": "b866a741ac883799306c7796d0b832978dea296a46ff10b2b8e4c6258880c7a6"
+        "transformations": [],
+        "rawSha256": "c5cd5155a3718a122e011501feb3b9ef9388649ea6cb6055f96336b4e9901f4e",
+        "normalizedSha256": "c5cd5155a3718a122e011501feb3b9ef9388649ea6cb6055f96336b4e9901f4e"
       }
     },
     {
@@ -231,36 +138,212 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta Lc\nᠸ 〰 = 2ᡉ ㎘ 〤 ㄘ\n〓 \"C3.4.2#\nin cui:\u0002 W in m, è la minore delle dimensioni in pianta della copertura;\n\u0002 L in m, è la maggiore delle dimensioni in pianta della copertura,\nsi considerano “estese” le coperture aventi Lc \n> 50 m ed il coefficiente μ 1 potrà essere assunto pari a:",
-        "normalized": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta Lc ᠸ 〰 = 2ᡉ ㎘ 〤 ㄘ 〓 \"C3.4.2# in cui: W in m, è la minore delle dimensioni in pianta della copertura; L in m, è la maggiore delle dimensioni in pianta della copertura, si considerano “estese” le coperture aventi Lc > 50 m ed il coefficiente μ1 potrà essere assunto pari a:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta Lc",
+        "normalized": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta Lc",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta Lc ᠸ 〰 "
+            "value": "In assenza di indicazioni più specifiche, definita la dimensione equivalente in pianta "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "Lc",
+            "latex": "L_c"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f1bdc9668ea204ed5d7e75217899d47d6002896e386f2145f25d81b556fb81cc",
+        "normalizedSha256": "f1bdc9668ea204ed5d7e75217899d47d6002896e386f2145f25d81b556fb81cc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.4.2",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
+          }
+        ],
+        "rawSha256": "b66e6824142d91b0b0ba1a8f670221dc36e6456270dee1e61144a745b9034a6f",
+        "normalizedSha256": "80a35dc75b489b739ac423a07c2142af3fbf3ae6dd72782f48c47a53a6384937"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "in cui:",
+        "normalized": "in cui:",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d",
+        "normalizedSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "W in m, è la minore delle dimensioni in pianta della copertura;",
+        "normalized": "W in m, è la minore delle dimensioni in pianta della copertura;",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "W",
+            "latex": "W"
           },
           {
             "kind": "text",
-            "value": " 2ᡉ ㎘ 〤 ㄘ 〓 \"C3.4.2# in cui: W in m, è la minore delle dimensioni in pianta della copertura; L in m, è la maggiore delle dimensioni in pianta della copertura, si considerano “estese” le coperture aventi Lc "
+            "value": " in m, è la minore delle dimensioni in pianta della copertura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7c75414d53559de92f4b7ba879ebf21ad3583c1ee4739212dff3392fd68c5f0e",
+        "normalizedSha256": "7c75414d53559de92f4b7ba879ebf21ad3583c1ee4739212dff3392fd68c5f0e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "L in m, è la maggiore delle dimensioni in pianta della copertura,",
+        "normalized": "L in m, è la maggiore delle dimensioni in pianta della copertura,",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " in m, è la maggiore delle dimensioni in pianta della copertura,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c505ed9d1c0e093fbf10c5bb2e3a3ac98beae4ae18a16e75a56a8f7bb74ad10f",
+        "normalizedSha256": "c505ed9d1c0e093fbf10c5bb2e3a3ac98beae4ae18a16e75a56a8f7bb74ad10f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "si considerano “estese” le coperture aventi Lc > 50 m ed il coefficiente μ1 potrà essere assunto pari a:",
+        "normalized": "si considerano “estese” le coperture aventi Lc > 50 m ed il coefficiente μ1 potrà essere assunto pari a:",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "si considerano “estese” le coperture aventi "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "Lc > 50 m",
+            "latex": "L_c > 50\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " 50 m ed il coefficiente "
+            "value": " ed il coefficiente "
           },
           {
             "kind": "math",
             "value": "μ1",
-            "latex": "\\mu_{1}"
+            "latex": "\\mu_1"
           },
           {
             "kind": "text",
@@ -275,92 +358,60 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 522.791,
-          "width": 447.362,
-          "height": 186.275
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "ab3dd9890e8e4fd42a2a754569833f4c3363cc7701942d85b53804084d1b86fd",
-        "normalizedSha256": "048f67a1bec0c390b8a61d6a6ee8deb558c09715e1aa2ae8137e5d342c23f916"
+        "transformations": [],
+        "rawSha256": "d9990beb2593dfd0e8e90209c674bc8ea0304ab54fd974bdd52a8c2370625f29",
+        "normalizedSha256": "d9990beb2593dfd0e8e90209c674bc8ea0304ab54fd974bdd52a8c2370625f29"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-004",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-009",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.4.3",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
+          }
+        ],
+        "rawSha256": "6b3a78d43fe58e92d21d3e4e7f89e65c2b630052e4056cf4828cedc7eb504db0",
+        "normalizedSha256": "376a3a9a6672a8ebe163844f83859019f3aa244ac19b622d03ae33be1bbca8b8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-010",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "†⡩ = 0,8 ᠩ〲,〇 \"C3.4.3#\nin cui: ᠩ〲,〇 = 㐠 1,0 perᠸ 〰 < 50ᡥ\n1,25 ㎘ 0,25 ᡗ ⡹(〓 ㉸ ⡹⡳⡨぀)/⡰⡨⡨぀ \"C3.4.4#",
-        "normalized": "†⡩ = 0,8 ᠩ〲,〇 \"C3.4.3# in cui: ᠩ〲,〇 = 㐠 1,0 perᠸ 〰 < 50ᡥ 1,25 ㎘ 0,25 ᡗ ⡹(〓 ㉸ ⡹⡳⡨぀)/⡰⡨⡨぀ \"C3.4.4#",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "†⡩ "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,8 ᠩ〲,〇 \"C3.4.3# in cui: ᠩ〲,〇 "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 㐠 1,0 perᠸ 〰 "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " 50ᡥ 1,25 ㎘ 0,25 ᡗ ⡹(〓 ㉸ ⡹⡳⡨぀)/⡰⡨⡨぀ \"C3.4.4#"
-          }
-        ]
+        "raw": "in cui:",
+        "normalized": "in cui:",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -369,49 +420,50 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 522.791,
-          "width": 447.362,
-          "height": 186.275
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
+        "transformations": [],
+        "rawSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d",
+        "normalizedSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.2#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.4.4",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 77,
+        "printedPage": "73",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
+        },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
           }
         ],
-        "rawSha256": "bf4a3f7c7d505604fb4ff8bea1dfc82fe7f3855bd1f30c18411f401bff175272",
-        "normalizedSha256": "6d38e6ec2e7c26c860093d577e205172c3830756fba8d472438a022a992950b3"
+        "rawSha256": "d9a7fc3b0a5c5b088d75ac72d7647415527ff064790ee25a766f7d36a2550b76",
+        "normalizedSha256": "f0004fccf50945fb231cd76505f3b08abd262ad0158650bc9470aa504e7ac132"
       }
     }
   ],
@@ -434,7 +486,11 @@
     }
   ],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.4.2",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.4.3",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.4.4"
+    ],
     "tableIds": [],
     "figureIds": []
   },
@@ -452,25 +508,19 @@
         "issueId": "circ2019-c3-4-3-2-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "note": "Trascrizione confrontata con il render ufficiale; attende la revisione umana prevista dal workflow."
       },
       {
-        "issueId": "circ2019-c3-4-3-2-assets",
+        "issueId": "circ2019-c3-4-3-2-asset-review",
         "type": "asset-review",
         "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+        "note": "Formule, tabelle e figure sono collocate nel flusso ma richiedono review umana puntuale del relativo manifest canonico."
       },
       {
-        "issueId": "circ2019-c3-4-3-2-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
-      },
-      {
-        "issueId": "circ2019-c3-4-3-2-relation",
+        "issueId": "circ2019-c3-4-3-2-relation-review",
         "type": "relation-review",
         "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+        "note": "La relazione proposta con la numerazione NTC omologa richiede conferma umana."
       }
     ]
   }

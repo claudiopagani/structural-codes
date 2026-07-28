@@ -1,0 +1,134 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.4.4.1.2",
+    "sortKey": "007.004.004.001.002"
+  },
+  "title": "Verifiche di duttilità (DUT)",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.4.4.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.4",
+      "urn:structural-codes:it:unit:circ2019:c7.4.4",
+      "urn:structural-codes:it:unit:circ2019:c7.4.4.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.4.4.1.2 Verifiche di duttilità (DUT)",
+        "normalized": "C7.4.4.1.2 Verifiche di duttilità (DUT)",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 216,
+        "printedPage": "212",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "77912dc1906ec972f6d9ca2dd206defe187ce9eb2e9048b01c9d79a3d819e83c",
+        "normalizedSha256": "77912dc1906ec972f6d9ca2dd206defe187ce9eb2e9048b01c9d79a3d819e83c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le verifiche di duttilità devono essere eseguite secondo quanto specificato al Capitolo 4 delle NTC.",
+        "normalized": "Le verifiche di duttilità devono essere eseguite secondo quanto specificato al Capitolo 4 delle NTC.",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 216,
+        "printedPage": "212",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "68dd5c222d1f6e3279534f0439f41751efc0d8d9108566f820609ee3c3f12169",
+        "normalizedSha256": "68dd5c222d1f6e3279534f0439f41751efc0d8d9108566f820609ee3c3f12169"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.4.4.1.2#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ74",
+      "kind": "script",
+      "toolVersion": "circ74-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-07-28T15:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-4-4-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-4-4-1-2-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale della pagina contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-4-4-1-2-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

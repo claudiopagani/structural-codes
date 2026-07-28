@@ -1,0 +1,277 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.4.6.1.1",
+    "sortKey": "007.004.006.001.001"
+  },
+  "title": "Travi",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.4",
+      "urn:structural-codes:it:unit:ntc2018:7.4.6",
+      "urn:structural-codes:it:unit:ntc2018:7.4.6.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.4.6.1.1 Travi",
+        "normalized": "7.4.6.1.1 Travi",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "6306782f21843e4ce029b0b9779abd62962a1f50cdd7f0fa601b81bd57e12372",
+        "normalizedSha256": "6306782f21843e4ce029b0b9779abd62962a1f50cdd7f0fa601b81bd57e12372"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La larghezza b della trave deve essere ǃ 20 cm e, per le travi “a spessore di solaio”, deve essere non maggiore della larghezza del\npilastro, aumentata da ogni lato di metà dell’altezza della sezione trasversale della trave stessa, risultando comunque non\nmaggiore di due volte bc, essendo bc la larghezza del pilastro misurata ortogonalmente all’asse della trave.",
+        "normalized": "La larghezza b della trave deve essere ≥ 20 cm e, per le travi “a spessore di solaio”, deve essere non maggiore della larghezza del pilastro, aumentata da ogni lato di metà dell’altezza della sezione trasversale della trave stessa, risultando comunque non maggiore di due volte b_c, essendo b_c la larghezza del pilastro misurata ortogonalmente all’asse della trave.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La larghezza b della trave deve essere ≥ 20 cm e, per le travi “a spessore di solaio”, deve essere non maggiore della larghezza del pilastro, aumentata da ogni lato di metà dell’altezza della sezione trasversale della trave stessa, risultando comun"
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": "ue non maggiore di due volte b_c, essendo b_c la larghezza del pilastro misurata ortogonalmente all’asse della trave."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2fef3ffa293bb1be002c6cba06906bc94d766db4542a15bf96d7e82240acf2e7",
+        "normalizedSha256": "ff52ad8a563245088fe125320eb91f63bc164684e69cae2dc72cbd87dd71f082"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il rapporto b/h tra larghezza e altezza della trave deve essere ǃ 0,25.",
+        "normalized": "Il rapporto b/h tra larghezza e altezza della trave deve essere ≥ 0,25.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3699c665154e132263c3b32457a2b07b37ee9df3fb06911e26e4ee683e33b0f9",
+        "normalizedSha256": "074cbfd1197fd25ecadd10b007d9117098ccf7e832bb2e57547a54f2de3aa4ab"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Non deve esserci eccentricità tra l’asse delle travi che sostengono pilastri in falso e l’asse dei pilastri che le sostengono. Le travi\ndevono avere almeno due supporti, costituiti da pilastri o pareti.",
+        "normalized": "Non deve esserci eccentricità tra l’asse delle travi che sostengono pilastri in falso e l’asse dei pilastri che le sostengono. Le travi devono avere almeno due supporti, costituiti da pilastri o pareti.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e04be60c5b7e417fecdde7b3cf927d990c37a927e7d70632b923a107049bd6c3",
+        "normalizedSha256": "82177eb5d6a0f590ddee5820ff88d1f7da1bcc97e03593fa0aa98f3d278e7173"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le zone dissipative si estendono, per CD”A” e CD”B”, per una lunghezza pari rispettivamente a 1,5 e 1,0 volte l’altezza della\nsezione della trave, misurata a partire dalla faccia del nodo trave-pilastro o da entrambi i lati a partire dalla sezione di prima\nplasticizzazione. Per travi che sostengono un pilastro in falso, si assume una lunghezza pari a 2 volte l’altezza della sezione\nmisurata da entrambe le facce del pilastro. Le pareti non possono appoggiarsi in falso su travi o solette.",
+        "normalized": "Le zone dissipative si estendono, per CD “A” e CD “B”, per una lunghezza pari rispettivamente a 1,5 e 1,0 volte l’altezza della sezione della trave, misurata a partire dalla faccia del nodo trave-pilastro o da entrambi i lati a partire dalla sezione di prima plasticizzazione. Per travi che sostengono un pilastro in falso, si assume una lunghezza pari a 2 volte l’altezza della sezione misurata da entrambe le facce del pilastro. Le pareti non possono appoggiarsi in falso su travi o solette.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "889a29b979f4e31d64e7b39da263aa573157141f9b37c828e03f1fe37949ae53",
+        "normalizedSha256": "0f07f1c3e6f65f9dad682cf46064f97d6315d5d25d054861b451101ce83727ba"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step3",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T14:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-6-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

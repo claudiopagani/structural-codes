@@ -82,6 +82,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "3d3602f9e2e460a462357f4fa97c355868470acb8ea28b671d0331336155b513",
@@ -94,8 +99,23 @@
       "origin": "official",
       "text": {
         "raw": "Per strutture o elementi strutturali snelli di forma cilindrica, quali ciminiere, torri per l’illuminazione, elementi di travi reticolari,\nponti ed edifici alti, si deve tener conto dell’effetto dinamico dovuto al distacco alternato dei vortici da un lato e dall’altro del\ncorpo investito dal vento. Esso produce una forza di tipo armonico ortogonale alla direzione del vento e all’asse del corpo\ncilindrico, la cui frequenza fs è data dalla formula di Strouhal:$",
-        "normalized": "Per strutture o elementi strutturali snelli di forma cilindrica, quali ciminiere, torri per l’illuminazione, elementi di travi reticolari, ponti ed edifici alti, si deve tener conto dell’effetto dinamico dovuto al distacco alternato dei vortici da un lato e dall’altro del corpo investito dal vento. Esso produce una forza di tipo armonico ortogonale alla direzione del vento e all’asse del corpo cilindrico, la cui frequenza fs è data dalla formula di Strouhal:$",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Per strutture o elementi strutturali snelli di forma cilindrica, quali ciminiere, torri per l’illuminazione, elementi di travi reticolari, ponti ed edifici alti, si deve tener conto dell’effetto dinamico dovuto al distacco alternato dei vortici da un lato e dall’altro del corpo investito dal vento. Esso produce una forza di tipo armonico ortogonale alla direzione del vento e all’asse del corpo cilindrico, la cui frequenza fs è data dalla formula di Strouhal:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per strutture o elementi strutturali snelli di forma cilindrica, quali ciminiere, torri per l’illuminazione, elementi di travi reticolari, ponti ed edifici alti, si deve tener conto dell’effetto dinamico dovuto al distacco alternato dei vortici da un lato e dall’altro del corpo investito dal vento. Esso produce una forza di tipo armonico ortogonale alla direzione del vento e all’asse del corpo cilindrico, la cui frequenza "
+          },
+          {
+            "kind": "math",
+            "value": "fs",
+            "latex": "f_s"
+          },
+          {
+            "kind": "text",
+            "value": " è data dalla formula di Strouhal:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -143,19 +163,56 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "2819f248031f48a9229cf133e2cde89c981f0b52c4b6fda1697948da7bd74501",
-        "normalizedSha256": "746dc60b371dba3e9f6b6f64283c1252023e582e9463ed919296e887f829828a"
+        "normalizedSha256": "6d1889be8d686a7eefcd89c2f49a09855c6b8ee0d161c195bd31eda7da04561b"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-002",
-      "kind": "list-item",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.9",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "fe2e2a597b25ab1e4551d49bc0fd945d52ac696bfc07c69b82956cca7a5d1e5b",
+        "normalizedSha256": "8841a7d6f698febd19c9b829de5afddc882e5e5670e889d0a039641370d6543b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-003",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "!\u0018 %\n&\n\u0004 \"C3.3.9#\ndove:\nb è la dimensione di riferimento della sezione trasversale del corpo;\nvm è la velocità media del vento;",
-        "normalized": "% & \"C3.3.9# dove: b è la dimensione di riferimento della sezione trasversale del corpo; vm è la velocità media del vento;",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -206,12 +263,156 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "fe2e2a597b25ab1e4551d49bc0fd945d52ac696bfc07c69b82956cca7a5d1e5b",
-        "normalizedSha256": "67139b098286e0b5c3d1eb8de44a66e7f0fc203c6f46c48e7bba9d65855bc763"
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-003",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "b è la dimensione di riferimento della sezione trasversale del corpo;",
+        "normalized": "b è la dimensione di riferimento della sezione trasversale del corpo;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " è la dimensione di riferimento della sezione trasversale del corpo;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2ac2dc8e75c230c3861895c745864848cae104d65c8df8908c3edc9c67efc6be",
+        "normalizedSha256": "2ac2dc8e75c230c3861895c745864848cae104d65c8df8908c3edc9c67efc6be"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "vm è la velocità media del vento;",
+        "normalized": "vm è la velocità media del vento;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "vm",
+            "latex": "v_m"
+          },
+          {
+            "kind": "text",
+            "value": " è la velocità media del vento;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "702a5f7240831325733bd31c5082e31d9545d3e73611f7a9e452213cd15b1a06",
+        "normalizedSha256": "702a5f7240831325733bd31c5082e31d9545d3e73611f7a9e452213cd15b1a06"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -220,26 +421,49 @@
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "St",
+            "latex": "St"
+          },
+          {
             "kind": "text",
-            "value": "St è il numero di Strouhal, funzione della forma della sezione, del suo orientamento rispetto alla direzione del vento e del numero di Reynolds. Il suo valore può essere ricavato da dati suffragati da opportuna documentazione o da prove sperimentali in galleria del vento. A titolo indicativo, St "
+            "value": " è il numero di Strouhal, funzione della forma della sezione, del suo orientamento rispetto alla direzione del vento e del numero di Reynolds. Il suo valore può essere ricavato da dati suffragati da opportuna documentazione o da prove sperimentali in galleria del vento. A titolo indicativo, "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "St = 0,2",
+            "latex": "St=0{,}2"
           },
           {
             "kind": "text",
-            "value": " 0,2 per le sezioni circolari (dove b è il diametro), St "
+            "value": " per le sezioni circolari (dove "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "b",
+            "latex": "b"
           },
           {
             "kind": "text",
-            "value": " 0,1 per le sezioni quadrate (dove b è il lato)."
+            "value": " è il diametro), "
+          },
+          {
+            "kind": "math",
+            "value": "St = 0,1",
+            "latex": "St=0{,}1"
+          },
+          {
+            "kind": "text",
+            "value": " per le sezioni quadrate (dove "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " è il lato)."
           }
         ]
       },
@@ -289,6 +513,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "3baf5bd5f0856b87a76ba344ec069f7f1750e89469b8d7830947ca63827e64b0",
@@ -296,35 +525,62 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-004",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "La velocità critica di distacco dei vortici per l’i-esimo modo di vibrazione della struttura perpendicolare alla direzione del vento,\nvcr,i, è la velocità media del vento v m che determina una condizione di risonanza ns = n k ad una generica quota z della struttura.",
-        "normalized": "La velocità critica di distacco dei vortici per l’i-esimo modo di vibrazione della struttura perpendicolare alla direzione del vento, vcr,i, è la velocità media del vento v m che determina una condizione di risonanza ns = n k ad una generica quota z della struttura.",
+        "normalized": "La velocità critica di distacco dei vortici per l’i-esimo modo di vibrazione della struttura perpendicolare alla direzione del vento, vcr,i, è la velocità media del vento vm che determina una condizione di risonanza ns = nk ad una generica quota z della struttura.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La velocità critica di distacco dei vortici per l’i-esimo modo di vibrazione della struttura perpendicolare alla direzione del vento, vcr,i, è la velocità media del vento v m che determina una condizione di risonanza ns "
+            "value": "La velocità critica di distacco dei vortici per l’"
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "i",
+            "latex": "i"
           },
           {
             "kind": "text",
-            "value": " n "
+            "value": "-esimo modo di vibrazione della struttura perpendicolare alla direzione del vento, "
           },
           {
             "kind": "math",
-            "value": "k",
-            "latex": "k"
+            "value": "vcr,i",
+            "latex": "v_{cr,i}"
           },
           {
             "kind": "text",
-            "value": " ad una generica quota z della struttura."
+            "value": ", è la velocità media del vento "
+          },
+          {
+            "kind": "math",
+            "value": "vm",
+            "latex": "v_m"
+          },
+          {
+            "kind": "text",
+            "value": " che determina una condizione di risonanza "
+          },
+          {
+            "kind": "math",
+            "value": "ns = nk",
+            "latex": "n_s=n_k"
+          },
+          {
+            "kind": "text",
+            "value": " ad una generica quota "
+          },
+          {
+            "kind": "math",
+            "value": "z",
+            "latex": "z"
+          },
+          {
+            "kind": "text",
+            "value": " della struttura."
           }
         ]
       },
@@ -374,19 +630,24 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "1b19bda1256b41751a3d52f98906e1b7ae4229156c6bbec4603aeb03454cbdc9",
-        "normalizedSha256": "75a8486a8f913df53512abe0b135539f4dda4c413547e69c4627263f4bd034ed"
+        "normalizedSha256": "b16bb9a5a6f7e8bec91f8bdeecc4ceed82384b282e6eb12e1d2cb1f3653c0082"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Dalla \"C3.3.9# risulta: '\n\u0015(\u0011'\n&\n% !\u0018\u0006",
-        "normalized": "Dalla \"C3.3.9# risulta: ' (' & %!",
+        "normalized": "Dalla [C3.3.9] risulta:",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -435,24 +696,168 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "cc8c0ec57ee76450274b742bd0bb36233f3a0a1481bfbfd9ce375a0d5351b704",
-        "normalizedSha256": "2d3a90dc0240bacd43f2901de01ada0467188cb01277784808257e4c228d0530"
+        "normalizedSha256": "d8144e77f572b326732aeed304b4e3b38bf28bda710b8f364712222f442744b6"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-006",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-009",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.10",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "b71bfd1ad1dd39a70b19fde4c4e568dc9cc413f9534751726bf0f25b4794112a",
+        "normalizedSha256": "cae6908d02878d1f0bc87ccc6ad3f0c3fc996b053a9b7adc54e43e3ea07eabbd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-010",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "\u0004 \"C3.3.10#\nSi raccomanda di valutare gli effetti del distacco dei vortici, facendo ricorso a dati suffragati da opportuna documentazione o\ntramite metodi analitici, numerici e/o sperimentali adeguatamente comprovati, per tutte le velocità critiche che soddisfano la\nrelazione: \u0015(\u0011' $\u0011\n% %$ \"C3.3.11#\ndove vm,l è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno TR pari a\n10 volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento v r.",
-        "normalized": "\"C3.3.10# Si raccomanda di valutare gli effetti del distacco dei vortici, facendo ricorso a dati suffragati da opportuna documentazione o tramite metodi analitici, numerici e/o sperimentali adeguatamente comprovati, per tutte le velocità critiche che soddisfano la relazione: (' $ % %$ \"C3.3.11# dove vm,l è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno TR pari a 10 volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento v r.",
+        "raw": "Si raccomanda di valutare gli effetti del distacco dei vortici, facendo ricorso a dati suffragati da opportuna documentazione o\ntramite metodi analitici, numerici e/o sperimentali adeguatamente comprovati, per tutte le velocità critiche che soddisfano la\nrelazione:",
+        "normalized": "Si raccomanda di valutare gli effetti del distacco dei vortici, facendo ricorso a dati suffragati da opportuna documentazione o tramite metodi analitici, numerici e/o sperimentali adeguatamente comprovati, per tutte le velocità critiche che soddisfano la relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "4d11a9f0d8a088cf9abeaf35812bffd54646948ccb811ae76462cb232ce31664",
+        "normalizedSha256": "706ca9a89b076cc354159331d4f79439b1c89a9a11b94e610449b343563e3c02"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.11",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "49935af8b2bb47862979b4a03d63992748e7675fb84146c5640abf080c4c5f3e",
+        "normalizedSha256": "417294a23596709485c63635f214077ea9aa5ecd8fb9edeafecf06b3d2713055"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove vm,l è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno TR pari a\n10 volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento v r.",
+        "normalized": "dove vm,l è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno TR pari a 10 volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento vr.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "\"C3.3.10# Si raccomanda di valutare gli effetti del distacco dei vortici, facendo ricorso a dati suffragati da opportuna documentazione o tramite metodi analitici, numerici e/o sperimentali adeguatamente comprovati, per tutte le velocità critiche che soddisfano la relazione: (' $ % %$ \"C3.3.11# dove vm,l è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno "
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "vm,l",
+            "latex": "v_{m,l}"
+          },
+          {
+            "kind": "text",
+            "value": " è la velocità media del vento, valutata alla quota alla quale si attua la velocità critica, per un periodo di ritorno "
           },
           {
             "kind": "math",
@@ -461,7 +866,25 @@
           },
           {
             "kind": "text",
-            "value": " pari a 10 volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento v r."
+            "value": " pari a "
+          },
+          {
+            "kind": "math",
+            "value": "10",
+            "latex": "10"
+          },
+          {
+            "kind": "text",
+            "value": " volte il periodo di ritorno di progetto indicato al §3.3.2 per valutare la velocità di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "vr",
+            "latex": "v_r"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -511,14 +934,19 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "900beb2d93b34dad045fb313eae477e68729f646ab7ca189c2384f7fda050f72",
-        "normalizedSha256": "42b2c17b4117bf9107b284b41e6731cccd576f64a5719a8740ac9a1d8731db2d"
+        "rawSha256": "7397a8e537e114e4a4cd7f9b897f76bb643828baaeb48756678eb235b23fc66a",
+        "normalizedSha256": "962c859f628b5db317e388acc43c9bba4c49b6458a9e60f48b0ebc437f60702d"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -572,6 +1000,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "3a67278fc7ad13e0542a7b47f53e7ddf9208d80fa477d0e24339d9f532910dee",
@@ -579,14 +1012,10 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-008",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-014",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "# $",
-        "normalized": "# $",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.12",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 75,
@@ -599,22 +1028,28 @@
           "height": 467.251
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
-        "transformations": [],
-        "rawSha256": "10059e5595aeb1ee8b56ddab68a82c93e07f4f64bb06c295803bd8c8aa137078",
-        "normalizedSha256": "10059e5595aeb1ee8b56ddab68a82c93e07f4f64bb06c295803bd8c8aa137078"
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
+          }
+        ],
+        "rawSha256": "f15ea48376700cb21aa093ae6644cb6f66bc4ee08fe39b6e3c280de4c27db279",
+        "normalizedSha256": "00e8406b9a78fd73fa90fd498fb7e8c6531726221eb5f2f9f9dbdb873f742dcd"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-009",
-      "kind": "list-item",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-015",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "!\u0015 &\n% \u0006 \u0006 \u000e\n\u0004 \u0012 \u0006 \"C3.3.12#\ndove:\nm è la massa del corpo per unità di lunghezza;\n\u000e è il coefficiente di smorzamento strutturale;\n\u0012 è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m3.",
-        "normalized": "& % \"C3.3.12# dove: m è la massa del corpo per unità di lunghezza; è il coefficiente di smorzamento strutturale; è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m3.",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -665,31 +1100,27 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "d050122d12a27a4d79c20e402dc974e2cacd9f694a14efd38b0a8b03903bee94",
-        "normalizedSha256": "6ea924fff01606f49b80b54cf469beab101420153fd36cb1f2fa0b1fb4a0a8b5"
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-010",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-016",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "In termini generali può dirsi che:- se Sc > 30, il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente\nopportune verifiche;",
-        "normalized": "In termini generali può dirsi che:- se Sc > 30, il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente opportune verifiche;",
+        "raw": "m è la massa del corpo per unità di lunghezza;",
+        "normalized": "m è la massa del corpo per unità di lunghezza;",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "In termini generali può dirsi che:- se Sc "
-          },
-          {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "m",
+            "latex": "m"
           },
           {
             "kind": "text",
-            "value": " 30, il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente opportune verifiche;"
+            "value": " è la massa del corpo per unità di lunghezza;"
           }
         ]
       },
@@ -741,12 +1172,317 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "393cc1f62970c522da16c4ba9b2c3d47a3bf9edeb7fa7b19d81a57dad0b66e63",
-        "normalizedSha256": "f1996ef1bb51901999defd837434b54c4da2e32922107087e17bcf4416503fef"
+        "rawSha256": "2307e47251c1b68deea4f60bc970a4b5054cf9fc6817c36c4ca0201c597f7a47",
+        "normalizedSha256": "2307e47251c1b68deea4f60bc970a4b5054cf9fc6817c36c4ca0201c597f7a47"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-011",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-017",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "\u000e è il coefficiente di smorzamento strutturale;",
+        "normalized": "ξ è il coefficiente di smorzamento strutturale;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di smorzamento strutturale;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "5d6a7060b5a746d0b25231ab30bc480de83b329c762bb30f2c2bec6f5fdf8923",
+        "normalizedSha256": "7c8e56a6f932b7e9ccedd68a8b7c066fc70f1089782d1948d5ef786570d77e9d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-018",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "\u0012 è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m3.",
+        "normalized": "ρ è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " è la densità dell’aria assunta convenzionalmente costante e pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,25 kg/m³",
+            "latex": "1{,}25\\,\\mathrm{kg/m^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "edd2edc8f9ad884cbf020a78072c612c1fa37083ec3574f363d01d22653228da",
+        "normalizedSha256": "bfe1ceb028594c495014625cbe889d8611a6ee6abd23f20ee4c49eb5a5a82191"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-019",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In termini generali può dirsi che:",
+        "normalized": "In termini generali può dirsi che:",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b074b25ae716717158177a77e6a7f0077c7ef2718af75e05d83189c551de54dd",
+        "normalizedSha256": "b074b25ae716717158177a77e6a7f0077c7ef2718af75e05d83189c551de54dd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-020",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- se Sc > 30, il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente\nopportune verifiche;",
+        "normalized": "se Sc > 30, il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente opportune verifiche;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "se "
+          },
+          {
+            "kind": "math",
+            "value": "Sc > 30",
+            "latex": "Sc>30"
+          },
+          {
+            "kind": "text",
+            "value": ", il distacco dei vortici non è in generale particolarmente gravoso; tuttavia, si suggerisce di effettuare ugualmente opportune verifiche;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 75,
+        "printedPage": "71",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.901,
+          "y": 220.488,
+          "width": 447.494,
+          "height": 467.251
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "7706143c0b4e4db119428fa8ee76b20f6154f3884fa1fc13292ced2c9fc04a17",
+        "normalizedSha256": "d43491b5fb20aadb860367a262b0f340c8e28052d6cef38c5f6c9abc5a09dad2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-021",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -756,25 +1492,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "se 5 "
+            "value": "se "
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "5 < Sc < 30",
+            "latex": "5<Sc<30"
           },
           {
             "kind": "text",
-            "value": " Sc "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " 30, il distacco dei vortici va analizzato nei riguardi delle verifiche agli SLU e della fatica indotta dalla ripetizione dei cicli di oscillazione;"
+            "value": ", il distacco dei vortici va analizzato nei riguardi delle verifiche agli SLU e della fatica indotta dalla ripetizione dei cicli di oscillazione;"
           }
         ]
       },
@@ -824,6 +1551,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "a38370cccb482ef4220b7d41857f9a0a896b25bd1046b578e0a12591c2183cc5",
@@ -831,7 +1563,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-012",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.11#block-editorial-022",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -841,16 +1573,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "se Sc "
+            "value": "se "
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "Sc < 5",
+            "latex": "Sc<5"
           },
           {
             "kind": "text",
-            "value": " 5, le vibrazioni indotte dal distacco dei vortici possono essere di grande ampiezza e notevolmente pericolose; si raccomanda pertanto massima cautela."
+            "value": ", le vibrazioni indotte dal distacco dei vortici possono essere di grande ampiezza e notevolmente pericolose; si raccomanda pertanto massima cautela."
           }
         ]
       },
@@ -900,6 +1632,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "a9816ce48b541823aa25a75d63a66197760dd3540ab2954a699b485d92146092",
@@ -910,7 +1647,12 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.9",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.10",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.11",
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.12"
+    ],
     "tableIds": [],
     "figureIds": []
   },

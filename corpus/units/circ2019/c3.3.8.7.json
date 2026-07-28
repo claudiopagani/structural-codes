@@ -83,6 +83,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "def419e396e2a7f2b86cfcaddcc14ec350e6926f5f59748ccfad16fffd527260",
@@ -95,7 +100,7 @@
       "origin": "official",
       "text": {
         "raw": "Per torri e pali a traliccio a sezione rettangolare o quadrata e vento diretto normalmente ad una delle pareti, salvo più accurate\nvalutazioni, i c p sono da valutare nel modo seguente:",
-        "normalized": "Per torri e pali a traliccio a sezione rettangolare o quadrata e vento diretto normalmente ad una delle pareti, salvo più accurate valutazioni, i c p sono da valutare nel modo seguente:",
+        "normalized": "Per torri e pali a traliccio a sezione rettangolare o quadrata e vento diretto normalmente ad una delle pareti, salvo più accurate valutazioni, i cp sono da valutare nel modo seguente:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
@@ -104,17 +109,8 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "cp",
+            "latex": "c_p"
           },
           {
             "kind": "text",
@@ -168,45 +164,22 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "de7fc59f8530f15e569887179ecdde79cd67cb24a149c3460d2f78ca5b9e2e6a",
-        "normalizedSha256": "8c7bbdceb016160991338c534b3c56fab06b42ae0db2959e3f81b3cc4b7f7a9c"
+        "normalizedSha256": "c90d0b36fbdcb4f8560866a1c3f96d41c428882e787bedb4d6a3c7d1254a2da9"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.7#block-editorial-002",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "\u001b\u0011 #\n\u001b\u0011\u001a \u0002 \u0002p\nper torri con elementi tubolari a sezione circolare\nc per torri con elementi aventi sezione di forma diversa dalla circolare",
-        "normalized": "# p per torri con elementi tubolari a sezione circolare c per torri con elementi aventi sezione di forma diversa dalla circolare",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "# "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
-          },
-          {
-            "kind": "text",
-            "value": " per torri con elementi tubolari a sezione circolare "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " per torri con elementi aventi sezione di forma diversa dalla circolare"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.3.8.7.unnumbered-1",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 74,
@@ -219,49 +192,24 @@
           "height": 117.39
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Formula confrontata con il render ufficiale e collocata nella posizione editoriale originaria."
           }
         ],
         "rawSha256": "98f2e4ec51abcfbe8df184e2bc90b4a83fa5725794c8fe19f9524e5f70839616",
-        "normalizedSha256": "b242d8f337bb0cc49edac32d2a100a66729805858a4c836ab83b735a05f4d3ca"
+        "normalizedSha256": "0f153ebff4ef185235227828315184cb030b73ce60a526162462e15f3925d93c"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.7#block-editorial-003",
-      "kind": "list-item",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "!\nL’azione di insieme esercitata dal vento spirante normalmente ad una delle pareti va valutata con riferimento alla superficie della\nparte piena di una sola faccia.",
@@ -314,6 +262,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "967439cb30fdff3c7d6ada33fc6953633780ba6dcbe9afcb35d50eb42147f17a",
@@ -327,7 +280,22 @@
       "text": {
         "raw": "Per vento spirante secondo la bisettrice dell’angolo formato da due pareti, l’azione d’insieme è pari a 1,15 volte quella sopra\ndefinita.",
         "normalized": "Per vento spirante secondo la bisettrice dell’angolo formato da due pareti, l’azione d’insieme è pari a 1,15 volte quella sopra definita.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per vento spirante secondo la bisettrice dell’angolo formato da due pareti, l’azione d’insieme è pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,15",
+            "latex": "1{,}15"
+          },
+          {
+            "kind": "text",
+            "value": " volte quella sopra definita."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -375,6 +343,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "16d967de574b2b7f0cc827b7b9ffc94a6d85b5cb5dee16158227bae057e6dff1",
@@ -388,7 +361,22 @@
       "text": {
         "raw": "Salvo documentazione specifica, i medesimi coefficienti si adottano cautelativamente anche per torri a sezione triangolare, per le\nquali non è da applicare il coefficiente 1,15 suddetto.",
         "normalized": "Salvo documentazione specifica, i medesimi coefficienti si adottano cautelativamente anche per torri a sezione triangolare, per le quali non è da applicare il coefficiente 1,15 suddetto.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Salvo documentazione specifica, i medesimi coefficienti si adottano cautelativamente anche per torri a sezione triangolare, per le quali non è da applicare il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "1,15",
+            "latex": "1{,}15"
+          },
+          {
+            "kind": "text",
+            "value": " suddetto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -436,6 +424,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "eee5ae25422390d36de83f852f718f4bcbc7299d377c6fe58848958ba4a10235",
@@ -446,7 +439,9 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.3.8.7.unnumbered-1"
+    ],
     "tableIds": [],
     "figureIds": []
   },

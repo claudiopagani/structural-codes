@@ -83,6 +83,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "6f8b0b158c955e5e7780aa9c76d210a57b40d115415dcaa0eb71ad19d6c403ea",
@@ -144,6 +149,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "4da89fb76fa7d04696e15c800be5925cc800cb47e8e25564139699103fb33d57",
@@ -152,11 +162,11 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-002",
-      "kind": "paragraph",
+      "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "Caso 1\nSe per almeno due facce dell’edificio l’area totale delle aperture presenti su ciascuna faccia supera il 30% della superficie\ntotale della faccia stessa si applicano le prescrizioni riportate nel § C3.3.8.2 (tettoie).",
-        "normalized": "Caso 1 Se per almeno due facce dell’edificio l’area totale delle aperture presenti su ciascuna faccia supera il 30% della superficie totale della faccia stessa si applicano le prescrizioni riportate nel § C3.3.8.2 (tettoie).",
+        "raw": "Caso 1",
+        "normalized": "Caso 1",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -207,8 +217,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "e42394768bd73b14cff35a257a1c141275e9a45e795f8118a636fa57fd702419",
-        "normalizedSha256": "84c708ccea3f6afd3cbe2ba4d66176955da031647fd58836bd1fb97abfd4ec04"
+        "rawSha256": "ac803ccb377c6aede229d3cfebf807dab45eeebc088adb720863662dc968cefe",
+        "normalizedSha256": "ac803ccb377c6aede229d3cfebf807dab45eeebc088adb720863662dc968cefe"
       }
     },
     {
@@ -216,59 +226,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Caso 2\nSe l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il\ndoppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a\n0,75·cpe; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti\nsulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a 0,90·c pe.",
-        "normalized": "Caso 2 Se l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il doppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a 0,75·cpe; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a 0,90·c pe.",
+        "raw": "Se per almeno due facce dell’edificio l’area totale delle aperture presenti su ciascuna faccia supera il 30% della superficie\ntotale della faccia stessa si applicano le prescrizioni riportate nel § C3.3.8.2 (tettoie).",
+        "normalized": "Se per almeno due facce dell’edificio l’area totale delle aperture presenti su ciascuna faccia supera il 30% della superficie totale della faccia stessa si applicano le prescrizioni riportate nel § C3.3.8.2 (tettoie).",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Caso 2 Se l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il doppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna "
+            "value": "Se per almeno due facce dell’edificio l’area totale delle aperture presenti su ciascuna faccia supera il "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "30%",
+            "latex": "30\\%"
           },
           {
             "kind": "text",
-            "value": " pi è pari a 0,75"
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "math",
-            "value": "cpe",
-            "latex": "c_{pe}"
-          },
-          {
-            "kind": "text",
-            "value": "; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " pi è pari a 0,90"
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " pe."
+            "value": " della superficie totale della faccia stessa si applicano le prescrizioni riportate nel § C3.3.8.2 (tettoie)."
           }
         ]
       },
@@ -318,19 +291,24 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "9be43aa168dd69272673332391f14acabd4dcc640b237dd9b34bb512af8a5561",
-        "normalizedSha256": "d8ab91aa50f8c62c866d752159d9ea11bf7f97d35c35f8371fe0df3a9c9ae92a"
+        "rawSha256": "cb238dc236648bcf63050d74971ed30d0ad7ab75f252b6ba41b17330156286e3",
+        "normalizedSha256": "4ef51ea5c60ec6fde2d42b0c9187a076ed01c8f21ebde8c12ea63ac849f8e29e"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "L’altezza di riferimento zi\n㍥ è pari all’altezza di riferimento z e\n㍥ relativa alla superficie dominante.",
-        "normalized": "L’altezza di riferimento zi ㍥ è pari all’altezza di riferimento z e ㍥ relativa alla superficie dominante.",
+        "raw": "Caso 2",
+        "normalized": "Caso 2",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -381,8 +359,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "4a3555c3319caf2b747e40a2dfad38404e1d206c3b1eb39c41d0b1988d5ac3d1",
-        "normalizedSha256": "c1921c3fee563912dabde1d89bcb033cbaa591036aae4fa772802bfae73f9609"
+        "rawSha256": "1f9883e7c877636d7a67e2d4e7ac3d3ae73954512dd60d81361f3d69aaff4c1a",
+        "normalizedSha256": "1f9883e7c877636d7a67e2d4e7ac3d3ae73954512dd60d81361f3d69aaff4c1a"
       }
     },
     {
@@ -390,49 +368,49 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Caso 3\nSe l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in\nassenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono\nassumere i valori c pi = +0,2 e c pi\b\u001b ? \b\u0015\u0004\u000f\u000e\u0010 \u0006\u0003 \u000f \u0004\b\u0010 \b\u0015 \u000e\u0004\b\u0015x\u0006\b \u0010\b\u0011\u0004 \u0007 \b\u0010\u000f\b\u0011\u0004 \u0007 \b\u0015\u0004\u000f +\u0015\u0006\b \b\u000e\u0010\u0007+ \u0017\u0010\u0004\u000f\u0006\b\u0016 \u0005\u0005\u0010\u0004\u0003\u0016\u0006\u000f\u0007\u0006\b\u0005\u0003 \u0011\u0004\u000e X\nL’altezza di riferimento zi\n㍥ è pari all’altezza massima dell’edificio.",
-        "normalized": "Caso 3 Se l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in assenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono assumere i valori c pi = +0,2 e c pi? x + + X L’altezza di riferimento zi ㍥ è pari all’altezza massima dell’edificio.",
+        "raw": "Se l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il\ndoppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a\n0,75·cpe; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti\nsulle rimanenti superfici, il coefficiente di pressione interna c pi è pari a 0,90·c pe.",
+        "normalized": "Se l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il doppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna cpi è pari a 0,75·cpe; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna cpi è pari a 0,90·cpe.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Caso 3 Se l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in assenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono assumere i valori "
+            "value": "Se l’edificio non rientra nel caso precedente, ma presenta una superficie dotata di un’area totale di aperture pari ad almeno il doppio della somma delle aree delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "cpi",
+            "latex": "c_{pi}"
           },
           {
             "kind": "text",
-            "value": " pi "
+            "value": " è pari a "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "0,75·cpe",
+            "latex": "0{,}75\\,c_{pe}"
           },
           {
             "kind": "text",
-            "value": " +0,2 e "
+            "value": "; se invece l’area delle aperture presenti su detta superficie è pari ad almeno il triplo dell’area delle aperture presenti sulle rimanenti superfici, il coefficiente di pressione interna "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "cpi",
+            "latex": "c_{pi}"
           },
           {
             "kind": "text",
-            "value": " pi? "
+            "value": " è pari a "
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "0,90·cpe",
+            "latex": "0{,}90\\,c_{pe}"
           },
           {
             "kind": "text",
-            "value": " + + X L’altezza di riferimento zi ㍥ è pari all’altezza massima dell’edificio."
+            "value": "."
           }
         ]
       },
@@ -482,10 +460,337 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
-        "rawSha256": "5ffef4b055f0ad13692230b3d92eeac4fd364fe3adc6d4d292bff3a099624fca",
-        "normalizedSha256": "015b7a62703f2e09a9c22a187e3e4f9fb3724a65e9bedf0a9caeb4264c49bf1e"
+        "rawSha256": "e376803e21dc845ac057b29bbc261eb9ad4e747a82229f40d7ace0cbee3951b3",
+        "normalizedSha256": "b972d868ee9562f78278e9b836db49f32552d4cd1a740e9ca28a338e5e21a589"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’altezza di riferimento zi\n㍥ è pari all’altezza di riferimento z e\n㍥ relativa alla superficie dominante.",
+        "normalized": "L’altezza di riferimento z̄i è pari all’altezza di riferimento z̄e relativa alla superficie dominante.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’altezza di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄i",
+            "latex": "\\bar z_i"
+          },
+          {
+            "kind": "text",
+            "value": " è pari all’altezza di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄e",
+            "latex": "\\bar z_e"
+          },
+          {
+            "kind": "text",
+            "value": " relativa alla superficie dominante."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 73,
+        "printedPage": "69",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 450.881,
+          "width": 447.578,
+          "height": 188.15
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "4a3555c3319caf2b747e40a2dfad38404e1d206c3b1eb39c41d0b1988d5ac3d1",
+        "normalizedSha256": "b6f8e243e38a59ee52eb492dce34becec6bc0b647de3201603479d0af8fa64e7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-007",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Caso 3",
+        "normalized": "Caso 3",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 73,
+        "printedPage": "69",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 450.881,
+          "width": 447.578,
+          "height": 188.15
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "975bde990fae513146f2ba26240fa611f054a75223f8f2b5b66ebdaf349845bd",
+        "normalizedSha256": "975bde990fae513146f2ba26240fa611f054a75223f8f2b5b66ebdaf349845bd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Se l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in\nassenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono\nassumere i valori c pi = +0,2 e c pi\b\u001b ? \b\u0015\u0004\u000f\u000e\u0010 \u0006\u0003 \u000f \u0004\b\u0010 \b\u0015 \u000e\u0004\b\u0015x\u0006\b \u0010\b\u0011\u0004 \u0007 \b\u0010\u000f\b\u0011\u0004 \u0007 \b\u0015\u0004\u000f +\u0015\u0006\b \b\u000e\u0010\u0007+ \u0017\u0010\u0004\u000f\u0006\b\u0016 \u0005\u0005\u0010\u0004\u0003\u0016\u0006\u000f\u0007\u0006\b\u0005\u0003 \u0011\u0004\u000e X",
+        "normalized": "Se l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in assenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono assumere i valori cpi = +0,2 e cpi = −0,3, considerando il caso che di volta in volta conduce alla situazione maggiormente gravosa.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Se l’edificio non rientra in nessuno dei casi precedenti, ma è dotato di porosità distribuita in maniera circa uniforme, in assenza di determinazioni più dettagliate, per le quali si farà riferimento a documenti di comprovata validità, si possono assumere i valori "
+          },
+          {
+            "kind": "math",
+            "value": "cpi = +0,2",
+            "latex": "c_{pi}=+0{,}2"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "cpi = −0,3",
+            "latex": "c_{pi}=-0{,}3"
+          },
+          {
+            "kind": "text",
+            "value": ", considerando il caso che di volta in volta conduce alla situazione maggiormente gravosa."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 73,
+        "printedPage": "69",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 450.881,
+          "width": 447.578,
+          "height": 188.15
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "2a9911ff4ba08f2b7d15510576b7f19a381e9ee622235ccb0387d7238ab621b1",
+        "normalizedSha256": "6554204f8d82d15c9c742338a58d199be5ef9ce8630c6f95d98d206df0ce3e1f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.5#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’altezza di riferimento zi\n㍥ è pari all’altezza massima dell’edificio.",
+        "normalized": "L’altezza di riferimento z̄i è pari all’altezza massima dell’edificio.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’altezza di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "z̄i",
+            "latex": "\\bar z_i"
+          },
+          {
+            "kind": "text",
+            "value": " è pari all’altezza massima dell’edificio."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 73,
+        "printedPage": "69",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 450.881,
+          "width": 447.578,
+          "height": 188.15
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          }
+        ],
+        "rawSha256": "fd4de14633da7d3bd573f198e3bd8f1c70329a08f56ee4c7b9c194ff04961578",
+        "normalizedSha256": "b66be3e1a2fb2386b31becf13b5a43744c569d1d43a008d77e1a27b1979d5eea"
       }
     }
   ],

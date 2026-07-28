@@ -1,0 +1,139 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "7.4-step1",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
+      "officialNumber": "7.4.1",
+      "pdfPage": 230,
+      "latex": "V_{R1}=\\left(2-\\left|\\frac{V_{Ed,min}}{V_{Ed,max}}\\right|\\right)\\,f_{ctd}\\,b_w\\,d"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
+      "officialNumber": "7.4.2",
+      "pdfPage": 230,
+      "latex": "V_{Ed,max}\\le\\frac{A_s\\,f_{yd}}{\\sqrt{2}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.2",
+      "officialNumber": "7.4.3",
+      "pdfPage": 230,
+      "latex": "\\mu_\\phi=\\begin{cases}1{,}2\\left(2q_0-1\\right)&\\text{per }T_1\\ge T_C\\\\1{,}2\\left[1+2\\left(q_0-1\\right)\\dfrac{T_C}{T_1}\\right]&\\text{per }T_1<T_C\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
+      "officialNumber": "7.4.4",
+      "pdfPage": 230,
+      "latex": "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\sum M_{b,Rd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
+      "officialNumber": "7.4.5",
+      "pdfPage": 231,
+      "latex": "V_{Ed}=\\frac{\\gamma_{Rd}}{l_p}\\left(M_{i,d}^{s}+M_{i,d}^{i}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.5:mi-d",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
+      "officialNumber": null,
+      "pdfPage": 231,
+      "latex": "M_{i,d}=M_{c,Rd}\\cdot\\min\\left(1,\\frac{\\sum M_{b,Rd}}{\\sum M_{c,Rd}}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.6",
+      "pdfPage": 232,
+      "latex": "V_{jbd}=\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}-V_C\\qquad\\text{per nodi interni}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.7",
+      "pdfPage": 232,
+      "latex": "V_{jbd}=\\gamma_{Rd}A_{s1}f_{yd}-V_C\\qquad\\text{per nodi esterni}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.8",
+      "pdfPage": 232,
+      "latex": "V_{jbd}\\le\\eta\\,f_{cd}\\,b_j\\,h_{jc}\\sqrt{1-\\frac{\\nu_d}{\\eta}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.9",
+      "pdfPage": 232,
+      "latex": "\\eta=\\alpha_j\\left(1-\\frac{f_{ck}}{250}\\right)\\qquad\\text{con }f_{ck}\\text{ espresso in MPa}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.10",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.10",
+      "pdfPage": 232,
+      "latex": "\\frac{A_{sh}f_{ywd}}{b_jh_{jw}}\\ge\\frac{\\left[V_{jbd}/\\left(b_jh_{jc}\\right)\\right]^2}{f_{ctd}+\\nu_df_{cd}}-f_{ctd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.11",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.11",
+      "pdfPage": 232,
+      "latex": "A_{sh}f_{ywd}\\ge\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi interni}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.12",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
+      "officialNumber": "7.4.12",
+      "pdfPage": 232,
+      "latex": "A_{sh}f_{ywd}\\ge\\gamma_{Rd}A_{s2}f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi esterni}"
+    }
+  ],
+  "tables": [],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.4.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
+      "officialNumber": "7.4.1",
+      "pdfPage": 229,
+      "caption": "Fig. 7.4.1 – Larghezza collaborante delle travi",
+      "alt": "Schemi della larghezza collaborante delle travi per pilastri esterni e interni, con e senza travi trasversali.",
+      "imagePath": "figures/ntc2018/fig7.4.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 185,
+        "y": 392,
+        "width": 250,
+        "height": 148
+      },
+      "sha256": "4ff38394b444172696187400d736aa6c2b2565969f423e22e3424060fd1154d4"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.4.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
+      "officialNumber": "7.4.2",
+      "pdfPage": 231,
+      "caption": "Fig. 7.4.2 – Progettazione in capacità dei pilastri",
+      "alt": "Schemi dei momenti resistenti concordi e discordi nei pilastri e nelle travi concorrenti in un nodo.",
+      "imagePath": "figures/ntc2018/fig7.4.2.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 185,
+        "y": 88,
+        "width": 265,
+        "height": 156
+      },
+      "sha256": "8f60aad8667dbba81b2c48b43f525b035a0a7ebcb12465acd2611e52a8e5c045"
+    }
+  ]
+}

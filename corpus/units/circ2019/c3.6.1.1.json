@@ -94,9 +94,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Si chiariscono di seguito le seguenti definizioni:- la capacità di compartimentazione è riferibile ai requisiti REI nonché ad ulteriori requisiti aggiuntivi attribuibili agli\nelementi delimitanti un compartimento antincendio ai fini della mitigazione del rischio di incendio. Utili indicazioni in\nmerito sono riportate nel D.M. 16 febbraio 2007, nel D.M. 3 agosto 2015 e nella UNI EN 13501-2;",
-        "normalized": "Si chiariscono di seguito le seguenti definizioni:- la capacità di compartimentazione è riferibile ai requisiti REI nonché ad ulteriori requisiti aggiuntivi attribuibili agli elementi delimitanti un compartimento antincendio ai fini della mitigazione del rischio di incendio. Utili indicazioni in merito sono riportate nel D.M. 16 febbraio 2007, nel D.M. 3 agosto 2015 e nella UNI EN 13501-2;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Si chiariscono di seguito le seguenti definizioni:-",
+        "normalized": "Si chiariscono di seguito le seguenti definizioni:",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -116,38 +116,69 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "867df96c9e0a024dda54c40c5844862d866e130b850b15b2aacab5349048f18a",
-        "normalizedSha256": "952bd88afb4c9c3176afb7c3da471be1318372adb4e43fe89db3ab27a8333953"
+        "rawSha256": "28131fb33cb6608d532143de0e105e80f7a72c28a336c278994fd1e2dbf5b9b2",
+        "normalizedSha256": "3fddd97dea0bf74d6ef0229d7fc0040ecbdf113218efec8008fbe99b17e10757"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.6.1.1#block-editorial-001a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": " la capacità di compartimentazione è riferibile ai requisiti REI nonché ad ulteriori requisiti aggiuntivi attribuibili agli\nelementi delimitanti un compartimento antincendio ai fini della mitigazione del rischio di incendio. Utili indicazioni in\nmerito sono riportate nel D.M. 16 febbraio 2007, nel D.M. 3 agosto 2015 e nella UNI EN 13501-2;",
+        "normalized": "la capacità di compartimentazione è riferibile ai requisiti REI nonché ad ulteriori requisiti aggiuntivi attribuibili agli elementi delimitanti un compartimento antincendio ai fini della mitigazione del rischio di incendio. Utili indicazioni in merito sono riportate nel D.M. 16 febbraio 2007, nel D.M. 3 agosto 2015 e nella UNI EN 13501-2;",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 81,
+        "printedPage": "77",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 602.403,
+          "width": 447.587,
+          "height": 118.324
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6b62d801885d510114d7e84a2a54d8c14080ae17730e54f04492292fce81d1fb",
+        "normalizedSha256": "a595f290e7d8915f891842ed6b4bfcf4fc9162c0d4d40e7633f7ffcbe1b5146b"
       }
     },
     {

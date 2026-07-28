@@ -95,9 +95,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Secondo l’incendio convenzionale di progetto adottato, si precisa che l’andamento delle temperature è valutato con riferimento a\nuna delle due seguenti condizioni:- curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione\npari alla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento;",
-        "normalized": "Secondo l’incendio convenzionale di progetto adottato, si precisa che l’andamento delle temperature è valutato con riferimento a una delle due seguenti condizioni:- curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione pari alla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Secondo l’incendio convenzionale di progetto adottato, si precisa che l’andamento delle temperature è valutato con riferimento a\nuna delle due seguenti condizioni:-",
+        "normalized": "Secondo l’incendio convenzionale di progetto adottato, si precisa che l’andamento delle temperature è valutato con riferimento a una delle due seguenti condizioni:",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -117,38 +117,69 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "758bdd207190eef0405b5c19021daccb22958f359d91019c9a0dec2241051544",
-        "normalizedSha256": "b73b7bef7dd0efa8df6c48e29b5ed7363d9b87370398444ba9c402b9fb689197"
+        "rawSha256": "9634ec1957aa812da3f38de7032ade021aa94a28f5da8144bb4808f85ba2a8e8",
+        "normalizedSha256": "da0761bb9a0ec4bce6634abbea39882a387cd73d43564a07171d7a6e3e267b1a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.6.1.5.1#block-editorial-001a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": " curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione\npari alla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento;",
+        "normalized": "curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione pari alla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento;",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.912,
+          "y": 582.727,
+          "width": 447.514,
+          "height": 120.936
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9b503e7f45cff2994a7df62b7f01c7506ee8a13410ba716d62a53aa1cd47a1cf",
+        "normalizedSha256": "e0e343a75d66b3ce61156c7ff90b699318a57700c58e952759b3981bc7beb171"
       }
     },
     {

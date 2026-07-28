@@ -94,9 +94,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Con riferimento al § 3.6.1.2 delle NTC, le disposizioni del Ministero dell’interno richiamate al punto precedente, sono contenute\nnei seguenti decreti:- D.M. 9 marzo 2007: Prestazioni di resistenza al fuoco delle costruzioni nelle attività soggette al controllo del corpo\nnazionale dei Vigili del Fuoco;",
-        "normalized": "Con riferimento al § 3.6.1.2 delle NTC, le disposizioni del Ministero dell’interno richiamate al punto precedente, sono contenute nei seguenti decreti:- D.M. 9 marzo 2007: Prestazioni di resistenza al fuoco delle costruzioni nelle attività soggette al controllo del corpo nazionale dei Vigili del Fuoco;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Con riferimento al § 3.6.1.2 delle NTC, le disposizioni del Ministero dell’interno richiamate al punto precedente, sono contenute\nnei seguenti decreti:-",
+        "normalized": "Con riferimento al § 3.6.1.2 delle NTC, le disposizioni del Ministero dell’interno richiamate al punto precedente, sono contenute nei seguenti decreti:",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -116,38 +116,69 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "9e39ff6c87ff019304edc994a7c6833a5ac2a1281289b849aaae42f479cc76fc",
-        "normalizedSha256": "25fe89242079d8f18af5f80960748f5a9964be279ebec983e4cefff7e86ef473"
+        "rawSha256": "931c7b085e2dcc56dee4cb294408807acfd6677a1bf5f0db366ff9acacc95fd9",
+        "normalizedSha256": "ea8380e411cfc3a4a1532b6113518b9ddeee3a17af04940a570f6d764a1051d7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.6.1.2#block-editorial-001a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": " D.M. 9 marzo 2007: Prestazioni di resistenza al fuoco delle costruzioni nelle attività soggette al controllo del corpo\nnazionale dei Vigili del Fuoco;",
+        "normalized": "D.M. 9 marzo 2007: Prestazioni di resistenza al fuoco delle costruzioni nelle attività soggette al controllo del corpo nazionale dei Vigili del Fuoco;",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.91,
+          "y": 172.831,
+          "width": 447.495,
+          "height": 234.067
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3948d9346606bc7187d4f1b75ada9a4d8b8293bc4e19d0c0f6c406dd1abdd32f",
+        "normalizedSha256": "5dfa22322436f9d5e33e20cec4b6b6e76bb4f19604f42dd8b7a65fceab8c8139"
       }
     },
     {

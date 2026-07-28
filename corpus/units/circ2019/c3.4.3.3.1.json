@@ -26,7 +26,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-07-26"
+    "asOf": "2026-07-28"
   },
   "blocks": [
     {
@@ -34,9 +34,9 @@
       "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "\u0014\u0015\u0016\u0007\u0016\u0015\u0016\u0015\u0016\u000e Copertura cilindrica",
+        "raw": "C3.4.3.3.1 Copertura cilindrica",
         "normalized": "C3.4.3.3.1 Copertura cilindrica",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -45,48 +45,17 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 393.963,
-          "width": 120.871,
-          "height": 7.805
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "e9c5467afd870869312958ff7e83fc5ac260ae8bad9cbd4b1b57b1d835675a73",
+        "transformations": [],
+        "rawSha256": "9284f819184b56ade4609126a92652d1d07ab8633dd3fb3e5d584603e2c4025b",
         "normalizedSha256": "9284f819184b56ade4609126a92652d1d07ab8633dd3fb3e5d584603e2c4025b"
       }
     },
@@ -97,7 +66,7 @@
       "text": {
         "raw": "Si assume che la neve non sia impedita di scivolare.",
         "normalized": "Si assume che la neve non sia impedita di scivolare.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -105,10 +74,10 @@
         "printedPage": "74",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 406.35,
-          "width": 388.296,
-          "height": 242.359
+          "x": 73.91,
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
           "method": "pdf-text",
@@ -127,7 +96,7 @@
       "text": {
         "raw": "Si devono considerare in alternativa le due condizioni denominate Caso (i) e Caso (ii), riportate in Figura C.3.4.4.",
         "normalized": "Si devono considerare in alternativa le due condizioni denominate Caso (i) e Caso (ii), riportate in Figura C.3.4.4.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -135,10 +104,10 @@
         "printedPage": "74",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 406.35,
-          "width": 388.296,
-          "height": 242.359
+          "x": 73.91,
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
           "method": "pdf-text",
@@ -161,25 +130,25 @@
         "printedPage": "74",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 406.35,
-          "width": 388.296,
-          "height": 242.359
+          "x": 73.91,
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-figure-placeholder",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Segnaposto collocato in corrispondenza della didascalia ufficiale; il ritaglio della figura deve ancora essere inserito."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
           }
         ],
-        "rawSha256": "e34cbc795a134bb3ba1f82d366a72a7ae8d3eda3b909e025075c5c066b8808c4",
-        "normalizedSha256": "c63f752427c3c50888b5598004107ebaf4804149d28636ae5715c1285ba9ad0b"
+        "rawSha256": "c820211994bc6bfe10af3f795cadbd916609567c8c39427b5b6ffde59daa9a17",
+        "normalizedSha256": "2fa8de9f7f5a83c16796f3e56384b7d76ab9ea7f623f4c075e9de4d146fc71e1"
       }
     },
     {
@@ -187,33 +156,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "I valori dei coefficienti di forma sono dati dalle espressioni seguenti:- per,> 60', -3 = 0",
-        "normalized": "I valori dei coefficienti di forma sono dati dalle espressioni seguenti:- per,> 60', -3 = 0",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "I valori dei coefficienti di forma sono dati dalle espressioni seguenti:- per,"
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 60', -3 "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0"
-          }
-        ]
+        "raw": "I valori dei coefficienti di forma sono dati dalle espressioni seguenti:",
+        "normalized": "I valori dei coefficienti di forma sono dati dalle espressioni seguenti:",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -221,10 +166,10 @@
         "printedPage": "74",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 406.35,
-          "width": 388.296,
-          "height": 242.359
+          "x": 73.91,
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
           "method": "pdf-text",
@@ -232,100 +177,49 @@
           "toolVersion": "4.10.38"
         },
         "transformations": [],
-        "rawSha256": "77acb147dd99ff47f94e241994074a8ead93c3b89c09be34e7e0e0980bd2cc48",
-        "normalizedSha256": "77acb147dd99ff47f94e241994074a8ead93c3b89c09be34e7e0e0980bd2cc48"
+        "rawSha256": "06a0ae5793acbe5e57c3d977dea24c42359e3f2085317f11f7a6c999472e09aa",
+        "normalizedSha256": "06a0ae5793acbe5e57c3d977dea24c42359e3f2085317f11f7a6c999472e09aa"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.3.1#block-editorial-005",
-      "kind": "list-item",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "- per,\u001d 60', -3 = 0,2 + 10 h/b, con -3\u001d 2,0.",
-        "normalized": "per, 60', -3 = 0,2 + 10 h/b, con -3 2,0.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "per, 60', -3 "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,2 + 10 "
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": "/b, con -3 2,0."
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c3.4.3.3.1.unnumbered-1",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 78,
         "printedPage": "74",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.913,
-          "y": 406.35,
-          "width": 388.296,
-          "height": 242.359
+          "x": 73.91,
+          "y": 97.375,
+          "width": 447.6070000000001,
+          "height": 620.643
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
           }
         ],
-        "rawSha256": "9307194e0b3776e15baea90b6cd9729a488f8ea4db5267c25ea05a3a5ab03a5a",
-        "normalizedSha256": "8896accc5ed6429c444051d9db2533e2328c4b13997c055fcc90db33bc409ed8"
+        "rawSha256": "ec20e0d66dc63939d5e57ecfac9e43a7d622ba721f0b090ff25ef20cf229372b",
+        "normalizedSha256": "6d8154ee24f7e0f1197750bd5709f60f9c40c4beebc38396c784e6c00762836e"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c3.4.3.3.1.unnumbered-1"
+    ],
     "tableIds": [],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:circ2019:c3.4.4"
@@ -345,19 +239,13 @@
         "issueId": "circ2019-c3-4-3-3-1-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "note": "Trascrizione confrontata con il render ufficiale; attende la revisione umana prevista dal workflow."
       },
       {
-        "issueId": "circ2019-c3-4-3-3-1-assets",
+        "issueId": "circ2019-c3-4-3-3-1-asset-review",
         "type": "asset-review",
         "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
-      },
-      {
-        "issueId": "circ2019-c3-4-3-3-1-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+        "note": "Formule, tabelle e figure sono collocate nel flusso ma richiedono review umana puntuale del relativo manifest canonico."
       }
     ]
   }

@@ -268,7 +268,7 @@ const tables = [
                 ),
             ],
             [
-                math("45° ≤ α", "45^\\circ\\le\\alpha"),
+                math("45° < α", "45^\\circ<\\alpha"),
                 math(
                     "cpe,B = −0,9 + (α−45)/75",
                     "c_{pe,B}=-0{,}9+\\frac{\\alpha-45}{75}",
@@ -688,8 +688,8 @@ const tables = [
                 math("φ = 0", "\\phi=0", { rowSpan: 2 }),
                 math("α ≤ 0°", "\\alpha\\le0^\\circ"),
                 math(
-                    "cF = −0,5 + 0,7·α/10",
-                    "c_F=-0{,}5+0{,}7\\alpha/10",
+                    "cF = −0,5 + 0,1·α/10",
+                    "c_F=-0{,}5+0{,}1\\alpha/10",
                 ),
             ],
             [

@@ -1,0 +1,240 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.4.4.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.4.4.5",
+    "sortKey": "007.004.004.005"
+  },
+  "title": "PARETI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.4.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.4",
+      "urn:structural-codes:it:unit:ntc2018:7.4.4"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.4.4.5 P ARETI",
+        "normalized": "7.4.4.5 PARETI",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 232,
+        "printedPage": "228",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "54264789c583a75315a99ef2f0b425b4f35c065085086715eec5174126997e89",
+        "normalizedSha256": "e9d1933e353efcfc09296ec7a9a3e5cf6ee7af1e3b2d8a4e20845587cca031c7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.5#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si definisce parete un elemento strutturale di supporto per altri elementi che abbia una sezione trasversale rettangolare o ad essa\nassimilabile, anche per tratti, caratterizzata in ciascun tratto da un rapporto tra dimensione massima l w e dimensione minima bw\nin pianta lw \n/b w > 4 (v. fig. 7.4.3). Le pareti possono avere sezione orizzontale composta da uno (parete semplice) o più (parete\ncomposta) segmenti rettangolari. Pareti semplici possono avere appendici con l w \n/bw ǂ 4. Si raccomanda che pareti composte da\npiù segmenti rettangolari collegati o che si intersecano (sezioni a L, T, U o simili) siano considerate unità intere, che consistono di\nuna o più anime parallele, o approssimativamente parallele, alla direzione della forza di taglio sismica agente e di una o più\nflange normali o approssimativamente normali ad essa. Le pareti si definiscono snelle se il rapporto hw \n/l w > 2, tozze in caso\ncontrario, essendo hw l’altezza totale della parete (v. fig. 7.4.3) misurata a partire dalla sua base",
+        "normalized": "Si definisce parete un elemento strutturale di supporto per altri elementi che abbia una sezione trasversale rettangolare o ad essa assimilabile, anche per tratti, caratterizzata in ciascun tratto da un rapporto tra dimensione massima l_w e dimensione minima b_w in pianta l_w/b_w > 4 (v. fig. 7.4.3). Le pareti possono avere sezione orizzontale composta da uno (parete semplice) o più (parete composta) segmenti rettangolari. Pareti semplici possono avere appendici con l_w/b_w ≤ 4. Si raccomanda che pareti composte da più segmenti rettangolari collegati o che si intersecano (sezioni a L, T, U o simili) siano considerate unità intere, che consistono di una o più anime parallele, o approssimativamente parallele, alla direzione della forza di taglio sismica agente e di una o più flange normali o approssimativamente normali ad essa. Le pareti si definiscono snelle se il rapporto h_w/l_w > 2, tozze in caso contrario, essendo h_w l’altezza totale della parete (v. fig. 7.4.3) misurata a partire dalla sua base.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si definisce parete un elemento strutturale di supporto per altri elementi che abbia una sezione trasversale rettangolare o ad essa assimilabile, anche per tratti, caratterizzata in ciascun tratto da un rapporto tra dimensione massima "
+          },
+          {
+            "kind": "math",
+            "value": "l_w",
+            "latex": "l_w"
+          },
+          {
+            "kind": "text",
+            "value": " e dimensione minima "
+          },
+          {
+            "kind": "math",
+            "value": "b_w",
+            "latex": "b_w"
+          },
+          {
+            "kind": "text",
+            "value": " in pianta "
+          },
+          {
+            "kind": "math",
+            "value": "l_w",
+            "latex": "l_w"
+          },
+          {
+            "kind": "text",
+            "value": "/"
+          },
+          {
+            "kind": "math",
+            "value": "b_w",
+            "latex": "b_w"
+          },
+          {
+            "kind": "text",
+            "value": " > 4 (v. fig. 7.4.3). Le pareti possono avere sezione orizzontale composta da uno (parete semplice) o più (parete composta) segmenti rettangolari. Pareti semplici possono avere appendici con "
+          },
+          {
+            "kind": "math",
+            "value": "l_w",
+            "latex": "l_w"
+          },
+          {
+            "kind": "text",
+            "value": "/"
+          },
+          {
+            "kind": "math",
+            "value": "b_w",
+            "latex": "b_w"
+          },
+          {
+            "kind": "text",
+            "value": " ≤ 4. Si raccomanda che pareti composte da più segmenti rettangolari collegati o che si intersecano (sezioni a L, T, U o simili) siano considerate unità intere, che consistono di una o più anime parallele, o approssimativamente parallele, alla direzione della forza di taglio sismica agente e di una o più flange normali o approssimativamente normali ad essa. Le pareti si definiscono snelle se il rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "h_w",
+            "latex": "h_w"
+          },
+          {
+            "kind": "text",
+            "value": "/"
+          },
+          {
+            "kind": "math",
+            "value": "l_w",
+            "latex": "l_w"
+          },
+          {
+            "kind": "text",
+            "value": " > 2, tozze in caso contrario, essendo "
+          },
+          {
+            "kind": "math",
+            "value": "h_w",
+            "latex": "h_w"
+          },
+          {
+            "kind": "text",
+            "value": " l’altezza totale della parete (v. fig. 7.4.3) misurata a partire dalla sua base."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 232,
+        "printedPage": "228",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d1e1336853cd57a25970cfecf8ed6932308738d343f71e261fa3c737070618d0",
+        "normalizedSha256": "3847ed79b3999e9a6c56f0f4371e818e9b89427e5b62bf0badbb7d7b68651130"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc74:step2",
+      "kind": "script",
+      "toolVersion": "ntc74-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-07-28T13:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-4-4-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-4-4-5-multipage-evidence",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il primo capoverso continua dalla pagina PDF 232 alla 233; il testo è unito correttamente, ma lo schema evidence corrente registra una sola pagina per blocco."
+      }
+    ]
+  }
+}

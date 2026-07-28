@@ -37,24 +37,24 @@ test("renderizza il visualizzatore normativo", async () => {
   assert.match(html, /Corpus normativo verificabile/);
   assert.match(html, /Piano di chiusura/);
   assert.match(html, /Estratto · non pubblicabile/);
-  assert.doesNotMatch(
-    html,
-    /Revisione|Accetta il blocco|Richiede correzione/,
-  );
+  assert.doesNotMatch(html, /Revisione|Accetta il blocco|Richiede correzione/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
 test("il payload pubblico coincide con il lotto canonico", async () => {
   const corpus = JSON.parse(
-    await readFile(new URL("../public/data/corpus.json", import.meta.url), "utf8"),
+    await readFile(
+      new URL("../public/data/corpus.json", import.meta.url),
+      "utf8",
+    ),
   );
 
-  assert.equal(corpus.stats.units, 333);
-  assert.equal(corpus.stats.blocks, 1880);
-  assert.equal(corpus.stats.proposedRelations, 89);
-  assert.equal(corpus.stats.assetUnits, 95);
+  assert.equal(corpus.stats.units, 401);
+  assert.equal(corpus.stats.blocks, 2333);
+  assert.equal(corpus.stats.proposedRelations, 115);
+  assert.equal(corpus.stats.assetUnits, 123);
   assert.equal(corpus.stats.reviewedUnits, 0);
-  assert.equal(corpus.units.length, 333);
+  assert.equal(corpus.units.length, 401);
   assert.equal(
     corpus.documents.ntc2018.localSourcePath,
     "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf",
@@ -67,13 +67,12 @@ test("il payload pubblico coincide con il lotto canonico", async () => {
     corpus.units.every((unit) => unit.workflow.status === "extracted"),
     true,
   );
-  assert.equal(Object.keys(corpus.assets.formulas).length, 130);
-  assert.equal(Object.keys(corpus.assets.tables).length, 48);
-  assert.equal(Object.keys(corpus.assets.figures).length, 60);
+  assert.equal(Object.keys(corpus.assets.formulas).length, 190);
+  assert.equal(Object.keys(corpus.assets.tables).length, 51);
+  assert.equal(Object.keys(corpus.assets.figures).length, 79);
 
   const section = corpus.units.find(
-    (unit) =>
-      unit.id === "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1",
+    (unit) => unit.id === "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1",
   );
   assert.ok(section);
   assert.equal(

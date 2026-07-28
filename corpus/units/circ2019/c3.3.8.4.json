@@ -83,6 +83,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "0257620aa56b3c9c5d56438c059a27194f8d306ca6364fe61192887f05768363",
@@ -95,26 +100,21 @@
       "origin": "official",
       "text": {
         "raw": "Per coperture a cupola sferica, l’altezza di riferimento è pari a ze\n㍥ =h+f/2. Sulla superficie della copertura si applica una\ndistribuzione di pressione variabile lungo la direzione del vento incidente, mantenendo i valori dei coefficienti di pressione\ncostanti lungo gli archi di cerchio ottenuti dall’intersezione della superficie sferica con i piani ortogonali alla direzione del vento.",
-        "normalized": "Per coperture a cupola sferica, l’altezza di riferimento è pari a ze ㍥ =h+f/2. Sulla superficie della copertura si applica una distribuzione di pressione variabile lungo la direzione del vento incidente, mantenendo i valori dei coefficienti di pressione costanti lungo gli archi di cerchio ottenuti dall’intersezione della superficie sferica con i piani ortogonali alla direzione del vento.",
+        "normalized": "Per coperture a cupola sferica, l’altezza di riferimento è pari a z̄e = h + f/2. Sulla superficie della copertura si applica una distribuzione di pressione variabile lungo la direzione del vento incidente, mantenendo i valori dei coefficienti di pressione costanti lungo gli archi di cerchio ottenuti dall’intersezione della superficie sferica con i piani ortogonali alla direzione del vento.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per coperture a cupola sferica, l’altezza di riferimento è pari a ze ㍥ "
+            "value": "Per coperture a cupola sferica, l’altezza di riferimento è pari a "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
+            "value": "z̄e = h + f/2",
+            "latex": "\\bar z_e=h+\\frac{f}{2}"
           },
           {
             "kind": "text",
-            "value": "+f/2. Sulla superficie della copertura si applica una distribuzione di pressione variabile lungo la direzione del vento incidente, mantenendo i valori dei coefficienti di pressione costanti lungo gli archi di cerchio ottenuti dall’intersezione della superficie sferica con i piani ortogonali alla direzione del vento."
+            "value": ". Sulla superficie della copertura si applica una distribuzione di pressione variabile lungo la direzione del vento incidente, mantenendo i valori dei coefficienti di pressione costanti lungo gli archi di cerchio ottenuti dall’intersezione della superficie sferica con i piani ortogonali alla direzione del vento."
           }
         ]
       },
@@ -164,10 +164,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "f04089dcee1fbca0164313fe8c9f634371a72ac7a1ddd3260d8f80532afad960",
-        "normalizedSha256": "2687fa6a647a7681f672e3f72f62b4541c700e8215da6a5a063e0f98ec787724"
+        "normalizedSha256": "b46b609d4f1feed8d9b1c984136abe5fd63c769a45296b35154dc1f0134fa774"
       }
     },
     {
@@ -176,7 +181,7 @@
       "origin": "official",
       "text": {
         "raw": "I valori dei coefficienti di pressione sono riportati nella Figura C3.3.27 e sono indicati con cpe,A, cpe,B e cpe,C \n; essi sono riferiti,\nrispettivamente, al bordo sopravento (zona A), alla zona centrale della copertura (zona B) e al bordo sottovento (zona C); per la\nvalutazione del valore del coefficiente di pressione lungo lo sviluppo della copertura si può utilizzare un’interpolazione lineare\ntra i tre valori indicati. Per valori intermedi del rapporto h/d rispetto a quelli riportati nella Figura C3.3.27 si può adottare\nun’interpolazione lineare.",
-        "normalized": "I valori dei coefficienti di pressione sono riportati nella Figura C3.3.27 e sono indicati con cpe,A, cpe,B e cpe,C ; essi sono riferiti, rispettivamente, al bordo sopravento (zona A), alla zona centrale della copertura (zona B) e al bordo sottovento (zona C); per la valutazione del valore del coefficiente di pressione lungo lo sviluppo della copertura si può utilizzare un’interpolazione lineare tra i tre valori indicati. Per valori intermedi del rapporto h/d rispetto a quelli riportati nella Figura C3.3.27 si può adottare un’interpolazione lineare.",
+        "normalized": "I valori dei coefficienti di pressione sono riportati nella Figura C3.3.27 e sono indicati con cpe,A, cpe,B e cpe,C; essi sono riferiti, rispettivamente, al bordo sopravento (zona A), alla zona centrale della copertura (zona B) e al bordo sottovento (zona C); per la valutazione del valore del coefficiente di pressione lungo lo sviluppo della copertura si può utilizzare un’interpolazione lineare tra i tre valori indicati. Per valori intermedi del rapporto h/d rispetto a quelli riportati nella Figura C3.3.27 si può adottare un’interpolazione lineare.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
@@ -208,7 +213,7 @@
           },
           {
             "kind": "text",
-            "value": " ; essi sono riferiti, rispettivamente, al bordo sopravento (zona A), alla zona centrale della copertura (zona B) e al bordo sottovento (zona C); per la valutazione del valore del coefficiente di pressione lungo lo sviluppo della copertura si può utilizzare un’interpolazione lineare tra i tre valori indicati. Per valori intermedi del rapporto "
+            "value": "; essi sono riferiti, rispettivamente, al bordo sopravento (zona A), alla zona centrale della copertura (zona B) e al bordo sottovento (zona C); per la valutazione del valore del coefficiente di pressione lungo lo sviluppo della copertura si può utilizzare un’interpolazione lineare tra i tre valori indicati. Per valori intermedi del rapporto "
           },
           {
             "kind": "math",
@@ -267,21 +272,22 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
           }
         ],
         "rawSha256": "d5e742de026a87784cf4451cd3476bf3194157e773e5c7d7d67adefd644924ce",
-        "normalizedSha256": "a461629be7fafed48294732aacb3f5b46624bfb22f809703e9e65dd5508cc927"
+        "normalizedSha256": "3eaf91c1aeb44bd78defe55db4acc8e2b06ac2ae1e6a480a91729d101263cf28"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8.4#block-editorial-003",
-      "kind": "list-item",
+      "kind": "figure-ref",
       "origin": "official",
-      "text": {
-        "raw": "\u0010 \u0011\u0012\u0013 \u0005\u0014\u0015\u0016\u0015\u0016\u0006\b - Schema di riferimento per cupole sferiche",
-        "normalized": "Schema di riferimento per cupole sferiche",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.3.27",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 73,
@@ -294,44 +300,19 @@
           "height": 6.972
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "poppler-pdf-crop",
+          "toolVersion": "core-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Ritaglio ufficiale confrontato con il render e collocato nella posizione editoriale originaria."
           }
         ],
         "rawSha256": "35ad2c38cbd06ae4e653c9cd5d7b1ca71b0d0358c7f106d1f6a61769e2938d10",
-        "normalizedSha256": "5fff814911d3015f09cdcfd030414efadb14cd68743884f0426b029442ebd70a"
+        "normalizedSha256": "aa852ab66800fe75317eaa37801748439534fae249101b62842baed8a0b403f9"
       }
     }
   ],
@@ -340,7 +321,9 @@
   "assets": {
     "formulaIds": [],
     "tableIds": [],
-    "figureIds": []
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.3.27"
+    ]
   },
   "workflow": {
     "status": "extracted",

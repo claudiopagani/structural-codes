@@ -25,7 +25,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-07-26"
+    "asOf": "2026-07-28"
   },
   "blocks": [
     {
@@ -33,9 +33,9 @@
       "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "C3.4.3.1\u0002 GENERALITÀ",
+        "raw": "C3.4.3.1 GENERALITÀ",
         "normalized": "C3.4.3.1 GENERALITÀ",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ34-editorial-profile-0.4.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -43,49 +43,18 @@
         "printedPage": "73",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.929,
-          "y": 234.03,
-          "width": 91.78,
-          "height": 7.805
+          "x": 73.91,
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "7a456e3d6aa0883533e0d201f7922d6f9759690404bb61397171358a93ba92a8",
+        "transformations": [],
+        "rawSha256": "f89b8cb3623fd37435c1a655a634ca70ce9b4acb5d575ef98402c9fc65fb53b1",
         "normalizedSha256": "f89b8cb3623fd37435c1a655a634ca70ce9b4acb5d575ef98402c9fc65fb53b1"
       }
     },
@@ -94,81 +63,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare\ndell’angolo \u000f di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella\nTabella C3.4.I. 2.0\u0002\n1.0\u0002 0° 15° 30° 45° 60°\u0002\nμ 0.8\u0002\n1.6\u0002 μ1\u0002\nμ2\u0002",
-        "normalized": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare dell’angolo di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella Tabella C3.4.I. 2.0 1.0 0° 15° 30° 45° 60° μ0.8 1.6 μ1 μ2",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare dell’angolo α di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella Tabella C3.4.I.",
+        "normalized": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare dell’angolo α di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella Tabella C3.4.I.",
+        "normalizationVersion": "circ34-editorial-profile-0.4.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare dell’angolo di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella Tabella C3.4.I. 2.0 1.0 "
+            "value": "La figura C3.4.2 illustra i valori dei coefficienti di forma per le tipologie di copertura ad una, a due o a più falde, al variare dell’angolo "
           },
           {
             "kind": "math",
-            "value": "0°",
-            "latex": "0^\\circ"
+            "value": "α",
+            "latex": "\\alpha"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "15°",
-            "latex": "15^\\circ"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "30°",
-            "latex": "30^\\circ"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "45°",
-            "latex": "45^\\circ"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "60°",
-            "latex": "60^\\circ"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "μ0",
-            "latex": "\\mu_{0}"
-          },
-          {
-            "kind": "text",
-            "value": ".8 1.6 "
-          },
-          {
-            "kind": "math",
-            "value": "μ1",
-            "latex": "\\mu_{1}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "μ2",
-            "latex": "\\mu_{2}"
+            "value": " di inclinazione della falda sull’orizzontale, espresso in gradi sessagesimali. Gli stessi valori sono riportati nella Tabella C3.4.I."
           }
         ]
       },
@@ -179,60 +89,25 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 246.401,
-          "width": 447.425,
-          "height": 247.979
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "7ee5a8cf53a6bc902ec7efe2c956d132bdaf943ec1dc3f18ba25d61605817c41",
-        "normalizedSha256": "bf74e0025b60b1d6df0e65d97840e03eca1678f560d41c013d1d0221b73a0c0c"
+        "transformations": [],
+        "rawSha256": "95936ad9c6ccd370cd693afd6013bc23c6c9038a544d80d5686553ac4abe4010",
+        "normalizedSha256": "95936ad9c6ccd370cd693afd6013bc23c6c9038a544d80d5686553ac4abe4010"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.1#block-editorial-002",
-      "kind": "list-item",
+      "kind": "figure-ref",
       "origin": "official",
-      "text": {
-        "raw": "\u0010 \u0011\u0012\u0013 \u0005\u0014\u0015\u0016\u0007\u0016\u0006 - Coefficienti di forma per il carico neve",
-        "normalized": "Coefficienti di forma per il carico neve",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c3.4.2",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 77,
@@ -240,98 +115,31 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 246.401,
-          "width": 447.425,
-          "height": 247.979
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
           }
         ],
-        "rawSha256": "50cabac47de468eb806ba028cf9d24ecabc42841a3f1fdf330a44fc2422255ac",
-        "normalizedSha256": "dac7fe3d9e48eee6867ba8e964fcc90db280d433b6730521c63391657de6b7ca"
+        "rawSha256": "1e921ee1ebc70534ebe693477ed06ea0703610abe7c39b2eae0e78a2347904cd",
+        "normalizedSha256": "a34b67566b908c99702153b2b248eab735f6568267856363f6af9d918710893b"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.3.1#block-editorial-003",
-      "kind": "list-item",
+      "kind": "table-ref",
       "origin": "official",
-      "text": {
-        "raw": "\u0019 \u001a\u0017\u001b\u001b \u0005\u0014\u0015\u0016\u0007\u0016\u001c - Coefficienti di forma per il carico neve\nAngolo di\ninclinazione della\nfalda \u000f\u0005 0'\u001d\n\u000f\u001d 30' 30'<\u000f< 60' \u000f\u001e 60'\nμ 1 0,8 0,8(60 - \u000f)/30 0,0\nμ 2 0,8 + 0,8 \u000f/30 1,6 --",
-        "normalized": "Coefficienti di forma per il carico neve Angolo di inclinazione della falda 0' 30' 30'<< 60' 60' μ1 0,8 0,8(60 -)/30 0,0 μ2 0,8 + 0,8 /30 1,6 --",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Coefficienti di forma per il carico neve Angolo di inclinazione della falda 0' 30' 30'"
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " 60' 60' "
-          },
-          {
-            "kind": "math",
-            "value": "μ1",
-            "latex": "\\mu_{1}"
-          },
-          {
-            "kind": "text",
-            "value": " 0,8 0,8(60 -)/30 0,0 "
-          },
-          {
-            "kind": "math",
-            "value": "μ2",
-            "latex": "\\mu_{2}"
-          },
-          {
-            "kind": "text",
-            "value": " 0,8 + 0,8 /30 1,6 --"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c3.4.i",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 77,
@@ -339,49 +147,24 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 73.91,
-          "y": 246.401,
-          "width": 447.425,
-          "height": 247.979
+          "y": 97.485,
+          "width": 447.568,
+          "height": 611.581
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-pdf-visual-review",
+          "toolVersion": "circ34-editorial-profile-0.4.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ34-editorial-profile-0.4.0",
+            "note": "Asset verificato sul render ufficiale e collocato nel punto corrispondente del flusso editoriale; resta soggetto a review umana."
           }
         ],
-        "rawSha256": "d2e85ae820a3ac11bbd5ed57a06cc9fe9ec93f777054c46a3933bb8becc21504",
-        "normalizedSha256": "1ab51d2a12198aef938dd73381aa5a1640dd346be2ac20f5699595db577c6c26"
+        "rawSha256": "1c8c8e00001e4e8e368941df52e60fefcf56e154a9bdede2036a4fa8c7a21aec",
+        "normalizedSha256": "4efca70805d97dd10261f76a4a9dd2ea5305f265f96340f11e69bac91a094750"
       }
     }
   ],
@@ -405,8 +188,12 @@
   ],
   "assets": {
     "formulaIds": [],
-    "tableIds": [],
-    "figureIds": []
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c3.4.i"
+    ],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c3.4.2"
+    ]
   },
   "workflow": {
     "status": "extracted",
@@ -422,25 +209,19 @@
         "issueId": "circ2019-c3-4-3-1-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "note": "Trascrizione confrontata con il render ufficiale; attende la revisione umana prevista dal workflow."
       },
       {
-        "issueId": "circ2019-c3-4-3-1-assets",
+        "issueId": "circ2019-c3-4-3-1-asset-review",
         "type": "asset-review",
         "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+        "note": "Formule, tabelle e figure sono collocate nel flusso ma richiedono review umana puntuale del relativo manifest canonico."
       },
       {
-        "issueId": "circ2019-c3-4-3-1-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
-      },
-      {
-        "issueId": "circ2019-c3-4-3-1-relation",
+        "issueId": "circ2019-c3-4-3-1-relation-review",
         "type": "relation-review",
         "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
+        "note": "La relazione proposta con la numerazione NTC omologa richiede conferma umana."
       }
     ]
   }

@@ -1,0 +1,134 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.4.4.4.1",
+    "sortKey": "007.004.004.004.001"
+  },
+  "title": "Verifiche di resistenza (RES)",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.4.4.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.4",
+      "urn:structural-codes:it:unit:circ2019:c7.4.4",
+      "urn:structural-codes:it:unit:circ2019:c7.4.4.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-07-28"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.4.4.4.1 Verifiche di resistenza (RES)",
+        "normalized": "C7.4.4.4.1 Verifiche di resistenza (RES)",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "3163f9e3f1b9c7973fcaca37ea63c1840c8a8ce8635659141439ac773119ffb9",
+        "normalizedSha256": "3163f9e3f1b9c7973fcaca37ea63c1840c8a8ce8635659141439ac773119ffb9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Qualora la verifica indichi deformazioni sensibili dell’orizzontamento nel suo piano, non si può assumere l’ipotesi di diaframma rigido nell’analisi della struttura.",
+        "normalized": "Qualora la verifica indichi deformazioni sensibili dell’orizzontamento nel suo piano, non si può assumere l’ipotesi di diaframma rigido nell’analisi della struttura.",
+        "normalizationVersion": "circ74-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ74-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "8b5940b53806c52e5f993ce33c71679bce6414b360d1d9729bd200084028e1bb",
+        "normalizedSha256": "8b5940b53806c52e5f993ce33c71679bce6414b360d1d9729bd200084028e1bb"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.4.1",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ74",
+      "kind": "script",
+      "toolVersion": "circ74-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-07-28T15:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-4-4-4-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-4-4-4-1-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale della pagina contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-4-4-4-1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

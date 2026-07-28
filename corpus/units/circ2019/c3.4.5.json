@@ -123,22 +123,31 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al\nsuolo è superiore a 1,5 kN/m2, e caratterizzate da trasmittanza superiore a 1 W/m2K°\nPer edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto 0°C (edifici frigoriferi, impianti per il pattinaggio\nsu ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a 1,2, indipendentemente dal valore del carico\nneve al suolo.",
-        "normalized": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al suolo è superiore a 1,5 kN/m2, e caratterizzate da trasmittanza superiore a 1 W/m2K° Per edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto 0°C (edifici frigoriferi, impianti per il pattinaggio su ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a 1,2, indipendentemente dal valore del carico neve al suolo.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al\nsuolo è superiore a 1,5 kN/m2, e caratterizzate da trasmittanza superiore a 1 W/m2K°",
+        "normalized": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al suolo è superiore a 1,5 kN/m2, e caratterizzate da trasmittanza superiore a 1 W/m2K°.",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al suolo è superiore a 1,5 kN/m2, e caratterizzate da trasmittanza superiore a 1 W/m2K° Per edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto "
+            "value": "Laddove adeguatamente motivato può applicarsi solamente per coperture ricadenti in località nelle quali il carico della neve al suolo è superiore a "
           },
           {
             "kind": "math",
-            "value": "0°",
-            "latex": "0^\\circ"
+            "value": "1,5 kN/m2",
+            "latex": "1{,}5\\,\\mathrm{kN/m^2}"
           },
           {
             "kind": "text",
-            "value": "C (edifici frigoriferi, impianti per il pattinaggio su ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a 1,2, indipendentemente dal valore del carico neve al suolo."
+            "value": ", e caratterizzate da trasmittanza superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1 W/m2K°",
+            "latex": "1\\,\\mathrm{W/(m^2 K^\\circ)}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -160,38 +169,93 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "db2a19f4871b8e9c8315ffe95e6f55b8823bd0c07798af380a50f074cca85219",
-        "normalizedSha256": "0d4f7d26ecaa32eea06c7191bdb371b963b3a317f7ec40c61a8a0e44a322b565"
+        "rawSha256": "a1487d989e34412a0ee8203389dfdfc80c857acfafe74c73cd7ce718ca5356c8",
+        "normalizedSha256": "f8a022edc579645f34c728a7a8d26611b613a1f9559815961d64bc9f3ed9aa42"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.4.5#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto 0°C (edifici frigoriferi, impianti per il pattinaggio\nsu ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a 1,2, indipendentemente dal valore del carico\nneve al suolo.",
+        "normalized": "Per edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto 0°C (edifici frigoriferi, impianti per il pattinaggio su ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a 1,2, indipendentemente dal valore del carico neve al suolo.",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per edifici nei quali la temperatura interna è mantenuta intenzionalmente sotto "
+          },
+          {
+            "kind": "math",
+            "value": "0°C",
+            "latex": "0\\,{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " (edifici frigoriferi, impianti per il pattinaggio su ghiaccio ecc.) si raccomanda di assumere il valore del coefficiente termico pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,2",
+            "latex": "1{,}2"
+          },
+          {
+            "kind": "text",
+            "value": ", indipendentemente dal valore del carico neve al suolo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 81,
+        "printedPage": "77",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 108.824,
+          "width": 447.481,
+          "height": 65.564
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposti esclusivamente i ritorni a capo tipografici del PDF."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a73377f86f0ce5a7a7dfb8c014356d3abe8414bed01b970abe1f07bc61baedc9",
+        "normalizedSha256": "b671dc865fdc52870cc1bb7ad98e70dedcb9523691590d8a81e51ca074fc2d1a"
       }
     }
   ],
