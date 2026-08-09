@@ -1,0 +1,230 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:5.1.4.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "5.1.4.2",
+    "sortKey": "005.001.004.002"
+  },
+  "title": "STATI LIMITE DI ESERCIZIO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:5.1.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:5",
+      "urn:structural-codes:it:unit:ntc2018:5.1",
+      "urn:structural-codes:it:unit:ntc2018:5.1.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "5.1.4.2 S TATI L IMITE DI E SERCIZIO",
+        "normalized": "5.1.4.2 STATI LIMITE DI ESERCIZIO",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 162,
+        "printedPage": "158",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "375f713a17e9bf1e8089caa04eb12dee46097d4e2755d1e23fcd10bea349c2de",
+        "normalizedSha256": "4848753604d90e70ca6e38f3c70b86f8ff9497e5fcb00522ac6670530d5e9365"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per gli Stati Limite di Esercizio si dovrà verificare che sia: Ed ǂ Cd , dove Cd è un valore nominale o una funzione di certe proprie-\ntà materiali legate agli effetti progettuali delle azioni considerate, E d è il valore di progetto dell’effetto dell’azione determinato\nsulla base delle combinazioni di carico.",
+        "normalized": "Per gli Stati Limite di Esercizio si dovrà verificare che sia: Ed ≤ Cd, dove Cd è un valore nominale o una funzione di certe proprietà materiali legate agli effetti progettuali delle azioni considerate, Ed è il valore di progetto dell’effetto dell’azione determinato sulla base delle combinazioni di carico.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli Stati Limite di Esercizio si dovrà verificare che sia: "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " ≤ "
+          },
+          {
+            "kind": "math",
+            "value": "Cd",
+            "latex": "C_d"
+          },
+          {
+            "kind": "text",
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "Cd",
+            "latex": "C_d"
+          },
+          {
+            "kind": "text",
+            "value": " è un valore "
+          },
+          {
+            "kind": "math",
+            "value": "no",
+            "latex": "n_0"
+          },
+          {
+            "kind": "text",
+            "value": "minale o una funzione di certe proprietà materiali legate agli effetti progettuali delle azioni considerate, "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore di progetto dell’effetto dell’azione determinato sulla base delle combinazioni di carico."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 162,
+        "printedPage": "158",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0a13176d7cee8e0abeffb61e137b41b5baf5e34d950900808983e57b12a7f631",
+        "normalizedSha256": "1ce7de5db031a41770b6e3b094fd73c375cb7e5d750fdbda9e4c19833cc751e3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc5-step2",
+      "kind": "automated-agent",
+      "toolVersion": "ntc5-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-5-1-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.3.2.10",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.3.2.10",
+    "sortKey": "011.003.002.010"
+  },
+  "title": "PROCEDURE DI CONTROLLO PER ACCIAI DA CALCESTRUZZO ARMATO NORMALE – BARRE E ROTOLI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.3",
+      "urn:structural-codes:it:unit:ntc2018:11.3.2"
+    ],
+    "position": 10
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.3.2.10 P ROCEDURE DI CONTROLLO PER ACCIAI DA CALCESTRUZZO ARMATO NORMALE – BARRE E ROTOLI",
+        "normalized": "11.3.2.10 PROCEDURE DI CONTROLLO PER ACCIAI DA CALCESTRUZZO ARMATO NORMALE – BARRE E ROTOLI",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 326,
+        "printedPage": "322",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "83c72d0312be73ecfe7b6792f9ad117542d73dc123944aaddd21e47b1c684e08",
+        "normalizedSha256": "7c414e213ae83494f8b0a9aea48cd23c756ba0feeb0971f67d679dd5623d5cb0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-3-2-10-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

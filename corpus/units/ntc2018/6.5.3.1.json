@@ -1,0 +1,137 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.5.3.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "6.5.3.1",
+    "sortKey": "006.005.003.001"
+  },
+  "title": "VERIFICHE DI SICUREZZA (SLU)",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.5.3.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.5.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.5",
+      "urn:structural-codes:it:unit:ntc2018:6.5.3"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.5.3.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.5.3.1 V ERIFICHE DI SICUREZZA ( SLU)",
+        "normalized": "6.5.3.1 VERIFICHE DI SICUREZZA ( SLU)",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 200,
+        "printedPage": "196",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "178724b595ada41bf0c6ab08c33f2201f71c787d11e077c6a1365700ff0478bb",
+        "normalizedSha256": "2904fe2bed377faf5789edf0c9cfb601a4fc660fe6a447987f70e761131cbe65"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.5.3.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nelle verifiche di sicurezza devono essere presi in considerazione tutti i meccanismi di stato limite ultimo, sia a breve sia a lungo\ntermine. Gli stati limite ultimi delle opere di sostegno si riferiscono allo sviluppo di meccanismi di collasso determinati dalla mo-\nbilitazione della resistenza del terreno, e al raggiungimento della resistenza degli elementi strutturali che compongono le opere\nstesse.",
+        "normalized": "Nelle verifiche di sicurezza devono essere presi in considerazione tutti i meccanismi di stato limite ultimo, sia a breve sia a lungo termine. Gli stati limite ultimi delle opere di sostegno si riferiscono allo sviluppo di meccanismi di collasso determinati dalla mobilitazione della resistenza del terreno, e al raggiungimento della resistenza degli elementi strutturali che compongono le opere stesse.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 200,
+        "printedPage": "196",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9374e61cd79de1838ac5796527ce089e3c9b20148e43431f550bb9e465e57ca0",
+        "normalizedSha256": "abaf0b70ffa221e4d5f4f84cbbf1e1b092ab61de3e9a813ad8e9395825658a95"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-5-3-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.3.4.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.3.4.4",
+    "sortKey": "011.003.004.004"
+  },
+  "title": "ACCIAIO PER STRUTTURE SALDATE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.3.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.3",
+      "urn:structural-codes:it:unit:ntc2018:11.3.4"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.3.4.4 A CCIAIO PER STRUTTURE SALDATE",
+        "normalized": "11.3.4.4 ACCIAIO PER STRUTTURE SALDATE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "276e932743a258d612163ac74f73bbe0f64a8e022446bfa128f8f20ff88fc6a2",
+        "normalizedSha256": "1a2b71f31a2271fdbb18d25c8e7e8bd441e5105711b5bebb6390114cf172ddaf"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.4#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli acciai per strutture saldate, oltre a soddisfare le condizioni indicate al § 11.3.4.1, devono avere composizione chimica confor-\nme a quanto riportato nelle norme europee armonizzate applicabili, di cui al punto 11.3.4.1.",
+        "normalized": "Gli acciai per strutture saldate, oltre a soddisfare le condizioni indicate al § 11.3.4.1, devono avere composizione chimica conforme a quanto riportato nelle norme europee armonizzate applicabili, di cui al punto 11.3.4.1.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "30ba0c0a8c17706dd8f00b601f85ca9aa53cb76023927a1c1529d4774300ff72",
+        "normalizedSha256": "4e27c480854b359bdb160d167b9a7df6b9375287678e139e0fca470737dfe2ce"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-3-4-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

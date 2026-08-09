@@ -182,6 +182,34 @@ for (let pageNumber = from; pageNumber <= to; pageNumber += 1) {
 }
 await document.destroy();
 
+const previousManifestFile = join(outDir, "manifest.json");
+let previousPages: Array<(typeof manifestPages)[number]> = [];
+try {
+    const previousManifest = JSON.parse(
+        await readFile(previousManifestFile, "utf8"),
+    ) as {
+        sourceId?: string;
+        sourceSha256?: string;
+        pages?: Array<(typeof manifestPages)[number]>;
+    };
+    if (
+        previousManifest.sourceId === sourceId &&
+        previousManifest.sourceSha256 === localHash &&
+        Array.isArray(previousManifest.pages)
+    ) {
+        previousPages = previousManifest.pages;
+    }
+} catch {
+    // Nessuna evidence precedente: il manifest viene creato dal lotto corrente.
+}
+
+const pagesByPdfPage = new Map<number, (typeof manifestPages)[number]>();
+for (const page of previousPages) pagesByPdfPage.set(page.pdfPage, page);
+for (const page of manifestPages) pagesByPdfPage.set(page.pdfPage, page);
+const mergedPages = [...pagesByPdfPage.values()].sort(
+    (left, right) => left.pdfPage - right.pdfPage,
+);
+
 const manifestWithoutHash = {
     evidenceManifestVersion: 1,
     pipelineVersion: EVIDENCE_PIPELINE_VERSION,
@@ -194,7 +222,7 @@ const manifestWithoutHash = {
         toolVersion: pdfjs.version,
         requestedPages: { from, to },
     },
-    pages: manifestPages,
+    pages: mergedPages,
 };
 const manifest = {
     ...manifestWithoutHash,

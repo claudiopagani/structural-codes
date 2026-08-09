@@ -1,0 +1,126 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.11.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "6.11.1.2",
+    "sortKey": "006.011.001.002"
+  },
+  "title": "CARATTERIZZAZIONE DEL SITO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.11.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.11.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.11",
+      "urn:structural-codes:it:unit:ntc2018:6.11.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.11.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.11.1.2 CARATTERIZZAZIONE DEL SITO",
+        "normalized": "6.11.1.2 CARATTERIZZAZIONE DEL SITO",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 208,
+        "printedPage": "204",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "8446c0e453b2e26d5d10793bdc503b357f4461dbe088734429dea006b2724ed2",
+        "normalizedSha256": "8446c0e453b2e26d5d10793bdc503b357f4461dbe088734429dea006b2724ed2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.11.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La caratterizzazione geologica e geotecnica deve essere finalizzata alla identificazione della natura dei terreni e degli ammassi\nrocciosi presenti nell’area e dello schema di circolazione idrica del sottosuolo, nonché alla valutazione di tutte le grandezze fisico-\nmeccaniche che contribuiscono alla scelta della localizzazione dell’opera (comprensiva delle aree di deposito, di servizio e di\nquelle di rispetto), alla sua progettazione e al suo esercizio. È in particolare necessario il preventivo accertamento della presenza\ndi falde acquifere, di zone di protezione naturale, del rischio sismico e di inondazione, del rischio di frane o di valanghe e di fe-\nnomeni di subsidenza.",
+        "normalized": "La caratterizzazione geologica e geotecnica deve essere finalizzata alla identificazione della natura dei terreni e degli ammassi rocciosi presenti nell’area e dello schema di circolazione idrica del sottosuolo, nonché alla valutazione di tutte le grandezze fisicomeccaniche che contribuiscono alla scelta della localizzazione dell’opera (comprensiva delle aree di deposito, di servizio e di quelle di rispetto), alla sua progettazione e al suo esercizio. È in particolare necessario il preventivo accertamento della presenza di falde acquifere, di zone di protezione naturale, del rischio sismico e di inondazione, del rischio di frane o di valanghe e di fenomeni di subsidenza.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 208,
+        "printedPage": "204",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f0dc09fc1a599c4a63638e1f33c287bec2d8c2bb5c7d69cf90fc61489e134e73",
+        "normalizedSha256": "fa6d8acde7a1352b01fb0a9027373b64dc3e1dbf3380651b4575cf8a417a32f8"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step3",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-11-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

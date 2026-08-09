@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.5.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C7.5.3",
+    "sortKey": "007.005.003"
+  },
+  "title": "REGOLE DI PROGETTO GENERALI PER ELEMENTI STRUTTURALI DISSIPATIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.5.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.5"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.5.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.5.3 REGOLE DI PROGETTO GENERALI PER ELEMENTI STRUTTURALI DISSIPATIVI",
+        "normalized": "C7.5.3 REGOLE DI PROGETTO GENERALI PER ELEMENTI STRUTTURALI DISSIPATIVI",
+        "normalizationVersion": "circ75-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 222,
+        "printedPage": "218",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ75-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "6affbfc37c7fcc082007e434fde8b5f8d5548537f740121b90f579edb9aa7bbb",
+        "normalizedSha256": "6affbfc37c7fcc082007e434fde8b5f8d5548537f740121b90f579edb9aa7bbb"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.5.3#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.5.3",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.5.3#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ75-step1",
+      "kind": "script",
+      "toolVersion": "circ75-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-5-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-5-3-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-5-3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

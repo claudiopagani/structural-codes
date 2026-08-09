@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.8.4.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.8.4.4",
+    "sortKey": "011.008.004.004"
+  },
+  "title": "SOSPENSIONI E REVOCHE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.8.4.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.8.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.8",
+      "urn:structural-codes:it:unit:ntc2018:11.8.4"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.8.4.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.8.4.4 S OSPENSIONI E REVOCHE",
+        "normalized": "11.8.4.4 SOSPENSIONI E REVOCHE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 357,
+        "printedPage": "353",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "08ede7657acc3590178dc1462823571b8a3b400ffbe425aa5c5b1b0dfd798621",
+        "normalizedSha256": "5294e44b14064515b31175bff4508d62d703b02f5ba096d35b05b83a8203cea5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.8.4.4#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "È prevista la sospensione o, nei casi più gravi o di recidiva, la revoca degli attestati di qualificazione dello stabilimento e/o della\nproduzione in serie dichiarata o controllata, ove il Servizio Tecnico Centrale accerti, in qualsiasi momento, difformità tra i docu-\nmenti depositati e la produzione effettiva, oppure la mancata ottemperanza alle prescrizioni contenute nella vigente normativa\ntecnica. I provvedimenti di sospensione e di revoca vengono adottati dal Servizio Tecnico Centrale.",
+        "normalized": "È prevista la sospensione o, nei casi più gravi o di recidiva, la revoca degli attestati di qualificazione dello stabilimento e/o della produzione in serie dichiarata o controllata, ove il Servizio Tecnico Centrale accerti, in qualsiasi momento, difformità tra i documenti depositati e la produzione effettiva, oppure la mancata ottemperanza alle prescrizioni contenute nella vigente normativa tecnica. I provvedimenti di sospensione e di revoca vengono adottati dal Servizio Tecnico Centrale.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 357,
+        "printedPage": "353",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "f769d2bdb1fb000db8d762091d70e930a2ff2383b4821864e87424fc5863ae9b",
+        "normalizedSha256": "e0dbd69af044a1b73b280fc09213620800224f0135f51337a91e211862573757"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-8-4-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

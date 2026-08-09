@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.4.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.4.2",
+    "sortKey": "011.004.002"
+  },
+  "title": "GIUNTI DI DILATAZIONE STRADALE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.4.2. GIUNTI DI DILATAZIONE STRADALE",
+        "normalized": "11.4.2 GIUNTI DI DILATAZIONE STRADALE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 348,
+        "printedPage": "344",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "19c8524fe684cae5ae3cac823550a765c959635f704ca8a2a2ab378df78cdf3e",
+        "normalizedSha256": "23050e9af6c10babe960ef973967ed1670cb1642f6936931554262f05bc1fc94"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.4.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la qualificazione dei giunti di dilatazione si applica quanto specificato al punto C) del § 11.1, sulla base della Linea guida di\nbenestare tecnico europeo ETAG 032, la quale vale anche per le modalità di esecuzione delle prove di accettazione.",
+        "normalized": "Per la qualificazione dei giunti di dilatazione si applica quanto specificato al punto C) del § 11.1, sulla base della Linea guida di benestare tecnico europeo ETAG 032, la quale vale anche per le modalità di esecuzione delle prove di accettazione.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 348,
+        "printedPage": "344",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "79400fb68eec9c13872a2fc2aa407000067fc8a9d8c3e666f156850b65c72448",
+        "normalizedSha256": "d17ddf635aed5f792f4160d30c6b8ceba5ae8f0b74e8e1e62c95427b41f86de3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

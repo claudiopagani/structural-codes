@@ -1,0 +1,94 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2h",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.77",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.77",
+      "pdfPage": 121,
+      "latex": "\\sigma_{\\mathrm{cr,p}}=k_{\\sigma,\\mathrm{p}}\\,\\frac{\\pi^2 E}{12(1-\\nu^2)}\\left(\\frac{t}{b}\\right)^2"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.78.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.78.a",
+      "pdfPage": 121,
+      "latex": "k_{\\sigma,\\mathrm{p}}=\\frac{2\\left[(1+\\alpha_1^2)^2+\\gamma-1\\right]}{\\alpha_1^2(\\psi+1)(1+\\delta)}\\quad\\text{se }\\alpha_1\\le\\sqrt[4]{\\gamma}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.78.b",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.78.b",
+      "pdfPage": 121,
+      "latex": "k_{\\sigma,\\mathrm{p}}=\\frac{4(1+\\sqrt{\\gamma})}{(\\psi+1)(1+\\delta)}\\quad\\text{se }\\alpha_1>\\sqrt[4]{\\gamma}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.79",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.79",
+      "pdfPage": 121,
+      "latex": "\\gamma=\\frac{12(1-\\nu^2)I_{\\mathrm{sl}}}{b\\,t^3}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.80",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.80",
+      "pdfPage": 121,
+      "latex": "\\delta=\\frac{\\sum A_{\\mathrm{sl}}}{b\\,t}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.81.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.81.a",
+      "pdfPage": 121,
+      "latex": "\\sigma_{\\mathrm{cr,sl}}=\\frac{1{,}05\\,E}{A_{\\mathrm{sl,1}}}\\sqrt{\\frac{I_{\\mathrm{sl,1}}\\,t^3\\,b}{b_1b_2}}\\quad\\text{se }a\\ge a_c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.81.b",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.81.b",
+      "pdfPage": 121,
+      "latex": "\\sigma_{\\mathrm{cr,sl}}=\\frac{\\pi^2 E I_{\\mathrm{sl,1}}}{A_{\\mathrm{sl,1}}a^2}+\\frac{E b a^2 t^3}{4\\pi^2(1-\\nu^2)A_{\\mathrm{sl,1}}b_1^2b_2^2}\\quad\\text{se }a<a_c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.82",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.82",
+      "pdfPage": 121,
+      "latex": "a_c=4{,}33\\sqrt[4]{\\frac{I_{\\mathrm{sl,1}}b_1^2b_2^2}{t^3b}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.83",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.83",
+      "pdfPage": 122,
+      "latex": "\\sigma_{\\mathrm{cr,p}}=\\min\\left(\\sigma_{\\mathrm{cr,pI}},\\sigma_{\\mathrm{cr,pII}},\\sigma_{\\mathrm{cr,pIII}}\\right)"
+    }
+  ],
+  "tables": [],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.17",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.6",
+      "officialNumber": "C4.2.17",
+      "pdfPage": 122,
+      "caption": "Figura C4.2.17 - Lastra irrigidita con due irrigiditori nella parte compressa",
+      "alt": "Lastra irrigidita con due irrigiditori nella parte compressa nei tre casi limite",
+      "imagePath": "figures/circ2019/figc4.2.17.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 95,
+        "y": 80,
+        "width": 410,
+        "height": 125
+      },
+      "sha256": "08da290c7f23f9441bd82a36e44e533db4f05eda4368af5604cbbdf1ae6f82a5"
+    }
+  ]
+}

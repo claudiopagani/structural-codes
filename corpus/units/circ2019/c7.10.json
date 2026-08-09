@@ -1,0 +1,109 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.10",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C7.10",
+    "sortKey": "007.010"
+  },
+  "title": "COSTRUZIONI CON ISOLAMENTO E/O DISSIPAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.10#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7"
+    ],
+    "position": 10
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.10#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.10 COSTRUZIONI CON ISOLAMENTO E/O DISSIPAZIONE",
+        "normalized": "C7.10 COSTRUZIONI CON ISOLAMENTO E/O DISSIPAZIONE",
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 235,
+        "printedPage": "231",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "be0b7c64abc6ab110f603f864855cc9335dd9387632e80afafdbfe4a6180ac84",
+        "normalizedSha256": "be0b7c64abc6ab110f603f864855cc9335dd9387632e80afafdbfe4a6180ac84"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.10#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le tecniche di isolamento sismico e di dissipazione di energia consentono di ridurre la risposta sismica delle costruzioni, utilizzando appositi dispositivi collocati all’interno della struttura o colleganti strutture contigue.",
+        "normalized": "Le tecniche di isolamento sismico e di dissipazione di energia consentono di ridurre la risposta sismica delle costruzioni, utilizzando appositi dispositivi collocati all’interno della struttura o colleganti strutture contigue.",
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 235,
+        "printedPage": "231",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "f504df25541e6861f65ff21d5e33400ec098c77433459d01437b0ec10aef8383",
+        "normalizedSha256": "f504df25541e6861f65ff21d5e33400ec098c77433459d01437b0ec10aef8383"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ710-step1",
+      "kind": "script",
+      "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-10-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-10-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

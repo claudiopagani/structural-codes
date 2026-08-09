@@ -1,0 +1,87 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.11.5.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.11.5.3",
+    "sortKey": "007.011.005.003"
+  },
+  "title": "VERIFICHE ALLO STATO LIMITE ULTIMO (SLV) E ALLO STATO LIMITE DI ESERCIZIO (SLD)",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.11.5.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.11.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.11",
+      "urn:structural-codes:it:unit:circ2019:c7.11.5"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.11.5.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.11.5.3 VERIFICHE ALLO STATO LIMITE ULTIMO (SLV) E ALLO STATO LIMITE DI ESERCIZIO (SLD)",
+        "normalized": "C7.11.5.3 VERIFICHE ALLO STATO LIMITE ULTIMO (SLV) E ALLO STATO LIMITE DI ESERCIZIO (SLD)",
+        "normalizationVersion": "circ711-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 250,
+        "printedPage": "246",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "d8c41df673bff1bb310c0cfa5d3c87041545954bf44bc086c2ae016a3a2bbee3",
+        "normalizedSha256": "d8c41df673bff1bb310c0cfa5d3c87041545954bf44bc086c2ae016a3a2bbee3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ711-step1",
+      "kind": "script",
+      "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-11-5-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-11-5-3-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

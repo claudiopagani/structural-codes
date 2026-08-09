@@ -1,0 +1,154 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:5.2.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "5.2.1.2",
+    "sortKey": "005.002.001.002"
+  },
+  "title": "COMPATIBILITÀ IDRAULICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.2.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:5.2.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:5",
+      "urn:structural-codes:it:unit:ntc2018:5.2",
+      "urn:structural-codes:it:unit:ntc2018:5.2.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "5.2.1.2. COMPATIBILITÀ IDRAULICA",
+        "normalized": "5.2.1.2 COMPATIBILITÀ IDRAULICA",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 168,
+        "printedPage": "164",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2b8d748799d54ec2f05def084da80a17ecd45d9475a53cfe88db5b57ce8e6501",
+        "normalizedSha256": "51d4781cb865c68cdcec445dd3e4ff49bb05b45ef42ec8d2e3041bd77dac8b31"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si rimanda integralmente al paragrafo 5.1.2.3.",
+        "normalized": "Si rimanda integralmente al paragrafo 5.1.2.3.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si rimanda integralmente al paragrafo 5.1.2.3."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 168,
+        "printedPage": "164",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b07cb95a3e67c236670d7a21d011c57de47b0e9f1ccff7928914e87026aa71b5",
+        "normalizedSha256": "b07cb95a3e67c236670d7a21d011c57de47b0e9f1ccff7928914e87026aa71b5"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc5-step2",
+      "kind": "automated-agent",
+      "toolVersion": "ntc5-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-5-2-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

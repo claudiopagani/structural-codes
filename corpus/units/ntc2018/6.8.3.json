@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.8.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "6.8.3",
+    "sortKey": "006.008.003"
+  },
+  "title": "VERIFICHE DI ESERCIZIO (SLE)",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.8.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.8"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.8.3. VERIFICHE DI ESERCIZIO (SLE)",
+        "normalized": "6.8.3 VERIFICHE DI ESERCIZIO (SLE)",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1ff27b2b2528fada51f6f5944af2c315cf3e0c090f24ca7471960a00d295d913",
+        "normalizedSha256": "942225d7d4fa6a026a766c61fd41d4449cc163dc6f7788eb666546bf510c7bf6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nelle condizioni di esercizio, devono essere valutati gli spostamenti del manufatto e del terreno circostante, dovuti alla deforma-\nzione dei terreni di fondazione e dell’opera, per verificarne la compatibilità con la funzionalità dell'opera e con la sicurezza e fun-\nzionalità dei manufatti adiacenti.",
+        "normalized": "Nelle condizioni di esercizio, devono essere valutati gli spostamenti del manufatto e del terreno circostante, dovuti alla deformazione dei terreni di fondazione e dell’opera, per verificarne la compatibilità con la funzionalità dell'opera e con la sicurezza e funzionalità dei manufatti adiacenti.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "56c54d7a303b0aa182d4764bbcfc6e5e7f955d8ffea5e58e1f854de1055ae051",
+        "normalizedSha256": "1c8effe9a658154778467b8d2c94a2efe5917c2349c723ffa2939d02e7ba7619"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-8-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

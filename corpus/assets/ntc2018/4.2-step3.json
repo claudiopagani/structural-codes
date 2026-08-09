@@ -1,0 +1,535 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "4.2-step3",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.0",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.1",
+      "officialNumber": "4.2.0",
+      "pdfPage": 97,
+      "latex": "C_{\\varphi}=\\frac{\\varphi_r}{\\varphi_y}\\ge1"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.4",
+      "officialNumber": "4.2.1",
+      "pdfPage": 100,
+      "latex": "\\begin{aligned}\\alpha_{cr}&=\\frac{F_{cr}}{F_{Ed}}\\ge10&&\\text{per l’analisi elastica}\\\\\\alpha_{cr}&=\\frac{F_{cr}}{F_{Ed}}\\ge15&&\\text{per l’analisi plastica}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.5",
+      "officialNumber": "4.2.2",
+      "pdfPage": 100,
+      "latex": "H_{Ed}\\ge0{,}15\\cdot Q_{Ed}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.iii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.1",
+      "officialNumber": "4.2.III",
+      "pdfPage": 98,
+      "caption": "Massimi rapporti larghezza spessore per parti compresse",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "Parte soggetta a flessione",
+            "colSpan": 2
+          },
+          {
+            "text": "Parte soggetta a compressione",
+            "colSpan": 2
+          },
+          {
+            "text": "Parte soggetta a flessione e a compressione",
+            "colSpan": 2
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Distribuzione delle tensioni nelle parti (compressione positiva)",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
+            "text": "1"
+          },
+          {
+            "text": "c/t ≤ 72ε",
+            "latex": "c/t\\le72\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 33ε",
+            "latex": "c/t\\le33\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "quando α > 0,5: c/t ≤ 396ε/(13α−1); quando α ≤ 0,5: c/t ≤ 36ε/α",
+            "latex": "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "2"
+          },
+          {
+            "text": "c/t ≤ 83ε",
+            "latex": "c/t\\le83\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 38ε",
+            "latex": "c/t\\le38\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "quando α > 0,5: c/t ≤ 456ε/(13α−1); quando α ≤ 0,5: c/t ≤ 41,5ε/α",
+            "latex": "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Distribuzione delle tensioni nelle parti (compressione positiva)",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "c/t ≤ 124ε",
+            "latex": "c/t\\le124\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 42ε",
+            "latex": "c/t\\le42\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ); quando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)",
+            "latex": "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "ε = √(235/fyk)",
+            "latex": "\\varepsilon=\\sqrt{235/f_{yk}}"
+          },
+          {
+            "text": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "text": "235"
+          },
+          {
+            "text": "275"
+          },
+          {
+            "text": "355"
+          },
+          {
+            "text": "420"
+          },
+          {
+            "text": "460"
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "ε",
+            "latex": "\\varepsilon"
+          },
+          {
+            "text": "1,00"
+          },
+          {
+            "text": "0,92"
+          },
+          {
+            "text": "0,81"
+          },
+          {
+            "text": "0,75"
+          },
+          {
+            "text": "0,71"
+          }
+        ]
+      ],
+      "notes": [
+        "La fonte contiene schemi grafici delle distribuzioni tensionali e delle sezioni; le celle testuali e matematiche ne conservano le etichette e i limiti numerici, con revisione visuale obbligatoria.",
+        "*) ψ ≤ −1 si applica se la tensione di compressione σ ≤ fyk o la deformazione a trazione εy > fyk/E."
+      ]
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.iv",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.1",
+      "officialNumber": "4.2.IV",
+      "pdfPage": 99,
+      "caption": "Massimi rapporti larghezza spessore per parti compresse",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "Piattabande esterne soggette a compressione",
+            "colSpan": 2
+          },
+          {
+            "text": "Piattabande esterne soggette a flessione e a compressione",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "",
+            "colSpan": 2
+          },
+          {
+            "text": "Con estremità in compressione",
+            "colSpan": 2
+          },
+          {
+            "text": "Con estremità in trazione",
+            "colSpan": 2
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Distribuzione delle tensioni nelle parti (compressione positiva)",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
+            "text": "1"
+          },
+          {
+            "text": "c/t ≤ 9ε",
+            "latex": "c/t\\le9\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 9ε/α",
+            "latex": "c/t\\le9\\varepsilon/\\alpha",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 9ε/(α√α)",
+            "latex": "c/t\\le\\frac{9\\varepsilon}{\\alpha\\sqrt{\\alpha}}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "2"
+          },
+          {
+            "text": "c/t ≤ 10ε",
+            "latex": "c/t\\le10\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 10ε/α",
+            "latex": "c/t\\le10\\varepsilon/\\alpha",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 10ε/(α√α)",
+            "latex": "c/t\\le\\frac{10\\varepsilon}{\\alpha\\sqrt{\\alpha}}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Distribuzione delle tensioni nelle parti (compressione positiva)",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "c/t ≤ 14ε",
+            "latex": "c/t\\le14\\varepsilon",
+            "colSpan": 2
+          },
+          {
+            "text": "c/t ≤ 21ε√ke — Per ke vedere EN 1993-1-5",
+            "latex": "c/t\\le21\\varepsilon\\sqrt{k_e}\\quad\\text{Per }k_e\\text{ vedere EN 1993-1-5}",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "ε = √(235/fyk)",
+            "latex": "\\varepsilon=\\sqrt{235/f_{yk}}"
+          },
+          {
+            "text": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "text": "235"
+          },
+          {
+            "text": "275"
+          },
+          {
+            "text": "355"
+          },
+          {
+            "text": "420"
+          },
+          {
+            "text": "460"
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "ε",
+            "latex": "\\varepsilon"
+          },
+          {
+            "text": "1,00"
+          },
+          {
+            "text": "0,92"
+          },
+          {
+            "text": "0,81"
+          },
+          {
+            "text": "0,75"
+          },
+          {
+            "text": "0,71"
+          }
+        ]
+      ],
+      "notes": [
+        "La fonte contiene schemi grafici delle sezioni e delle distribuzioni tensionali; revisione visuale obbligatoria."
+      ]
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.v",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.1",
+      "officialNumber": "4.2.V",
+      "pdfPage": 99,
+      "caption": "Massimi rapporti larghezza spessore per parti compresse",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "Sezione in compressione"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Riferirsi anche alle piattabande esterne (v. Tab. 4.2.IV). Non si applica agli angoli in contatto continuo con altri componenti.",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Distribuzione delle tensioni sulla sezione (compressione positiva)",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "h/t ≤ 15ε; (b+h)/(2t) ≤ 11,5ε",
+            "latex": "h/t\\le15\\varepsilon;\\quad\\frac{b+h}{2t}\\le11{,}5\\varepsilon"
+          }
+        ],
+        [
+          {
+            "text": "Sezioni Tubolari",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "Sezione inflessa e/o compressa"
+          }
+        ],
+        [
+          {
+            "text": "1"
+          },
+          {
+            "text": "d/t ≤ 50ε²",
+            "latex": "d/t\\le50\\varepsilon^2"
+          }
+        ],
+        [
+          {
+            "text": "2"
+          },
+          {
+            "text": "d/t ≤ 70ε²",
+            "latex": "d/t\\le70\\varepsilon^2"
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "d/t ≤ 90ε² (Per d/t > 90ε² vedere EN 1993-1-6)",
+            "latex": "d/t\\le90\\varepsilon^2\\quad(\\text{Per }d/t>90\\varepsilon^2\\text{ vedere EN 1993-1-6})"
+          }
+        ],
+        [
+          {
+            "text": "ε = √(235/fyk)",
+            "latex": "\\varepsilon=\\sqrt{235/f_{yk}}"
+          },
+          {
+            "text": "fyk | 235 | 275 | 355 | 420 | 460",
+            "latex": "f_{yk}\\quad235\\quad275\\quad355\\quad420\\quad460"
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "ε | 1,00 | 0,92 | 0,81 | 0,75 | 0,71; ε² | 1,00 | 0,85 | 0,66 | 0,56 | 0,51",
+            "latex": "\\varepsilon\\quad1{,}00\\quad0{,}92\\quad0{,}81\\quad0{,}75\\quad0{,}71;\\quad\\varepsilon^2\\quad1{,}00\\quad0{,}85\\quad0{,}66\\quad0{,}56\\quad0{,}51"
+          }
+        ]
+      ],
+      "notes": [
+        "La fonte contiene schemi grafici per angolari e sezioni tubolari; revisione visuale obbligatoria."
+      ]
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.vi",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.3.3",
+      "officialNumber": "4.2.VI",
+      "pdfPage": 100,
+      "caption": "Metodi di analisi globali e relativi metodi di calcolo delle capacità e classi di sezioni ammesse",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Metodo di analisi globale"
+          },
+          {
+            "text": "Metodo di calcolo della capacità resistente della sezione"
+          },
+          {
+            "text": "Tipo di sezione"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "(E)"
+          },
+          {
+            "text": "(E)"
+          },
+          {
+            "text": "tutte (*)"
+          }
+        ],
+        [
+          {
+            "text": "(E)"
+          },
+          {
+            "text": "(P)"
+          },
+          {
+            "text": "classi 1 e 2"
+          }
+        ],
+        [
+          {
+            "text": "(E)"
+          },
+          {
+            "text": "(EP)"
+          },
+          {
+            "text": "tutte (*)"
+          }
+        ],
+        [
+          {
+            "text": "(P)"
+          },
+          {
+            "text": "(P)"
+          },
+          {
+            "text": "classe 1"
+          }
+        ],
+        [
+          {
+            "text": "(EP)"
+          },
+          {
+            "text": "(EP)"
+          },
+          {
+            "text": "tutte (*)"
+          }
+        ]
+      ],
+      "notes": [
+        "(*) per le sezioni di classe 4 la capacità resistente può essere calcolata con riferimento alla sezione efficace."
+      ]
+    }
+  ],
+  "figures": []
+}

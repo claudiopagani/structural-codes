@@ -1,0 +1,137 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.8.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.8.3",
+    "sortKey": "008.008.003"
+  },
+  "title": "LIVELLO DI CONOSCENZA E FATTORE DI CONFIDENZA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.8.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.8"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8.8.3 LIVELLO DI CONOSCENZA E FATTORE DI CONFIDENZA",
+        "normalized": "C8.8.3 LIVELLO DI CONOSCENZA E FATTORE DI CONFIDENZA",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e842a7a56fb712794feae3a67059788ca69cd04f03df437f42901487eb5f216d",
+        "normalizedSha256": "e842a7a56fb712794feae3a67059788ca69cd04f03df437f42901487eb5f216d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.3#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Occorre disporre dei valori di tutte le grandezze geometriche e meccaniche che consentono una verifica del tipo indicato al §\nC8.8.5.",
+        "normalized": "Occorre disporre dei valori di tutte le grandezze geometriche e meccaniche che consentono una verifica del tipo indicato al § C8.8.5.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall'impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall'estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8a312f23d5a6d8e69d44f8629f549d1f420cc55e218d5b1e5eaf17dc59643b55",
+        "normalizedSha256": "5d8ee1bea916dee559fdc07d856d1ea3a5d4b02902feb2cfa0ef55af229543b9"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step3b",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.8.3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.8.3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

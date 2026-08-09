@@ -1,0 +1,104 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.3.6.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.3.6.4",
+    "sortKey": "004.003.006.004"
+  },
+  "title": "VERIFICHE DELLA LAMIERA GRECATA NELLA FASE DI GETTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.3.6.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.3.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.3",
+      "urn:structural-codes:it:unit:ntc2018:4.3.6"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.6.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.3.6.4   V   ERIFICHE DELLA LAMIERA GRECATA NELLA FASE DI GETTO 4.3.6.4.1   Verifica di resistenza",
+        "normalized": "4.3.6.4 VERIFICHE DELLA LAMIERA GRECATA NELLA FASE DI GETTO",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.3.6.4 VERIFICHE DELLA LAMIERA GRECATA NELLA FASE DI GETTO"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 135,
+        "printedPage": "131",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 305,
+          "width": 430,
+          "height": 25
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a503577abb98cc0f663fabd9ee24b85b649899853c184e9d00f4c56e42c6f1c3",
+        "normalizedSha256": "745d54fa09850cc072cd1db4dcb736fa04410cec352b2e0fb15a2a9a1205d85c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc43-step4",
+      "kind": "automated-agent",
+      "toolVersion": "ntc43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-3-6-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

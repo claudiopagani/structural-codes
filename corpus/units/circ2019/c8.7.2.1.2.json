@@ -1,0 +1,155 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.7.2.1.2",
+    "sortKey": "008.007.002.001.002"
+  },
+  "title": "Stati Limite di esercizio",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.7.2.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.7",
+      "urn:structural-codes:it:unit:circ2019:c8.7.2",
+      "urn:structural-codes:it:unit:circ2019:c8.7.2.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8.7.2.1.2 Stati Limite di esercizio",
+        "normalized": "C8.7.2.1.2 Stati Limite di esercizio",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b155b389305d017337d3506f15d2e4f0b57d60d37ecfacc2004f499b301fd58d",
+        "normalizedSha256": "b155b389305d017337d3506f15d2e4f0b57d60d37ecfacc2004f499b301fd58d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In mancanza di più specifiche valutazioni, per d rp si può far riferimento ai valori limite di spostamento di interpiano riportati in §\n7.3.6.1 validi per gli edifici nuovi.",
+        "normalized": "In mancanza di più specifiche valutazioni, per d rp si può far riferimento ai valori limite di spostamento di interpiano riportati in § 7.3.6.1 validi per gli edifici nuovi.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "81b08bde5d3d3b0c74178ad1fc6d3fbaac58e7d45a1768d5e7de7495ee553f35",
+        "normalizedSha256": "1dae7ffcfaa827e43188a6116793c20add2427fd0eff242c6ba83aa2fa60cdef"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:8.7.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c8.7.2.1.2#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step2a",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.7.2.1.2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.7.2.1.2-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

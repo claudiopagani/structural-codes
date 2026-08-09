@@ -1,0 +1,85 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.8",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "11.8",
+    "sortKey": "011.008"
+  },
+  "title": "COMPONENTI PREFABBRICATI IN C.A. E C.A.P",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.8#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11"
+    ],
+    "position": 8
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.8#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.8. COMPONENTI PREFABBRICATI IN C.A. E C.A.P.",
+        "normalized": "11.8 COMPONENTI PREFABBRICATI IN C.A. E C.A.P",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 355,
+        "printedPage": "351",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "94fd26b5db366203caf7b8534002307321fd968fd9c38253544203bcdaf8ae65",
+        "normalizedSha256": "fe525c61fd936a58cf5c0c8f9d753b710f04ab8c4077abfab425cb5e31f10700"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-8-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

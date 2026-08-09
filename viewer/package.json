@@ -13,13 +13,14 @@
     "dev": "npm run sync:corpus && vinext dev",
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "check": "npm run lint && npm test"
   },
   "dependencies": {
     "katex": "^0.16.22",
     "next": "16.2.12",
+    "pdfjs-dist": "5.7.284",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "structural-codes": "file:.."

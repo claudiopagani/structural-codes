@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.5.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "6.5.3",
+    "sortKey": "006.005.003"
+  },
+  "title": "VERIFICHE AGLI STATI LIMITE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.5.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.5"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.5.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "66.5.3 VERIFICHE AGLI STATI LIMITE",
+        "normalized": "6.5.3 VERIFICHE AGLI STATI LIMITE",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 200,
+        "printedPage": "196",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c29d864326c2694d60548473fd762e57f06f0933483c539319ff928d480364c2",
+        "normalizedSha256": "158a75edbb4d170397f16aad3a4485db381dcd15b3cf7d1a740c395572ae0c8c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.5.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le verifiche eseguite mediante analisi di interazione terreno-struttura o con metodi semplificati devono sempre rispettare le con-\ndizioni di equilibrio e congruenza e la compatibilità con i criteri di resistenza del terreno. È necessario inoltre portare in conto la\ndipendenza della spinta dei terreni dallo spostamento dell’opera.",
+        "normalized": "Le verifiche eseguite mediante analisi di interazione terreno-struttura o con metodi semplificati devono sempre rispettare le condizioni di equilibrio e congruenza e la compatibilità con i criteri di resistenza del terreno. È necessario inoltre portare in conto la dipendenza della spinta dei terreni dallo spostamento dell’opera.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 200,
+        "printedPage": "196",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cfba15d2f795cca30e8dd04fdee6d476a888fbaaee8a30b927506bd05c542a4c",
+        "normalizedSha256": "046786ad01d08865db41d616336b9726be007812d215741b5aef08b10a8b1a33"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-5-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

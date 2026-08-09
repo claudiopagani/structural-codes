@@ -1,0 +1,92 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.4.8",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.4.8",
+    "sortKey": "004.004.008"
+  },
+  "title": "STATI LIMITE ULTIMI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.4.8#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.4"
+    ],
+    "position": 8
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.4.8#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.4.8 STATI LIMITE ULTIMI",
+        "normalized": "4.4.8 STATI LIMITE ULTIMI",
+        "normalizationVersion": "ntc44-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.4.8 STATI LIMITE ULTIMI"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 139,
+        "printedPage": "135",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 72,
+          "y": 80,
+          "width": 450,
+          "height": 700
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdftotext",
+          "toolVersion": "24.08.0"
+        },
+        "transformations": [],
+        "rawSha256": "16c1fa29fe524b0a4e579a1248458787c3c6afc95e4b402565f13383423c53cf",
+        "normalizedSha256": "16c1fa29fe524b0a4e579a1248458787c3c6afc95e4b402565f13383423c53cf"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc44-step1",
+      "kind": "automated-agent",
+      "toolVersion": "ntc44-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-4-8-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

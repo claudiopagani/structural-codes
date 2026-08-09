@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.10.3.2.1",
+    "sortKey": "011.010.003.002.001"
+  },
+  "title": "Determinazione sperimentale della resistenza a taglio",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.10",
+      "urn:structural-codes:it:unit:ntc2018:11.10.3",
+      "urn:structural-codes:it:unit:ntc2018:11.10.3.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.10.3.2.1 Determinazione sperimentale della resistenza a taglio",
+        "normalized": "11.10.3.2.1 Determinazione sperimentale della resistenza a taglio",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "97a89d4b2ee663618598f2681be7ffab4f86dbcb27ccfcef0715dff1f9776866",
+        "normalizedSha256": "97a89d4b2ee663618598f2681be7ffab4f86dbcb27ccfcef0715dff1f9776866"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La resistenza caratteristica sperimentale a taglio si determina su n campioni (n ǃ6), seguendo sia, per la confezione che per la pro-\nva, le modalità indicate nella norma UNI EN 1052-3:2007 e, per quanto applicabile, UNI EN 1052-4:2001. In alternativa, la resi-\nstenza caratteristica a taglio può essere valutata con prove di compressione diagonale su n campioni di muratura (n ǃ6) seguen-\ndo, sia per la confezione che per la prova, le modalità indicate in normative di comprovata validità.",
+        "normalized": "La resistenza caratteristica sperimentale a taglio si determina su n campioni (n ǃ6), seguendo sia, per la confezione che per la prova, le modalità indicate nella norma UNI EN 1052-3:2007 e, per quanto applicabile, UNI EN 1052-4:2001. In alternativa, la resistenza caratteristica a taglio può essere valutata con prove di compressione diagonale su n campioni di muratura (n ǃ6) seguendo, sia per la confezione che per la prova, le modalità indicate in normative di comprovata validità.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "6da5f9681bb10417e32853f80d3fafeb6a753b5f4cd089466f3a64af771690c8",
+        "normalizedSha256": "09f7dc5e879b13dc8058491e5d63e1a3be2042d9a9f534ee9d6a2ad36fc3f4d4"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-10-3-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -15,6 +15,15 @@ const corpusRoot = join(repositoryRoot, "corpus", "units");
 const corpusManifestFile = join(repositoryRoot, "corpus", "manifest.json");
 const outputFile = join(viewerRoot, "public", "data", "corpus.json");
 const assetManifestDirectory = join(repositoryRoot, "corpus", "assets");
+const pdfWorkerFile = fileURLToPath(
+  import.meta.resolve("pdfjs-dist/build/pdf.worker.min.mjs"),
+);
+const pdfWorkerOutput = join(
+  viewerRoot,
+  "public",
+  "vendor",
+  "pdf.worker.min.mjs",
+);
 
 const documentMetadata = {
   ntc2018: {
@@ -186,6 +195,8 @@ const serialized = JSON.stringify(payload);
 const digest = createHash("sha256").update(serialized).digest("hex");
 await mkdir(dirname(outputFile), { recursive: true });
 await writeFile(outputFile, `${serialized}\n`, "utf8");
+await mkdir(dirname(pdfWorkerOutput), { recursive: true });
+await copyFile(pdfWorkerFile, pdfWorkerOutput);
 for (const figure of assetManifest.figures) {
   const source = join(repositoryRoot, "corpus", "assets", figure.imagePath);
   const destination = join(viewerRoot, "public", "assets", figure.imagePath);

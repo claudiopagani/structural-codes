@@ -1,0 +1,105 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.3.4.3.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.3.4.3.1",
+    "sortKey": "004.003.004.003.001"
+  },
+  "title": "CONNESSIONI A TAGLIO CON PIOLI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.3.4.3.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.3.4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.3",
+      "urn:structural-codes:it:unit:circ2019:c4.3.4",
+      "urn:structural-codes:it:unit:circ2019:c4.3.4.3"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.3.4.3.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.3.4.3.1   Connessioni a taglio con pioli",
+        "normalized": "C4.3.4.3.1 CONNESSIONI A TAGLIO CON PIOLI",
+        "normalizationVersion": "circ43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.3.4.3.1 CONNESSIONI A TAGLIO CON PIOLI"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 150,
+        "printedPage": "146",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 94,
+          "width": 460,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ43-editorial-profile-0.1.0",
+            "note": "Ricostruiti gli spazi e uniti i ritorni a capo tipografici dopo confronto con il render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e notazione confrontati con il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "f6ebff6e0d46228efe860c8dab9a14f87bd85815f71a74643da2460dd78f8867",
+        "normalizedSha256": "0317405b78e6ba53c2857ed653256a3b65d0ce33018233cf2e87a580a6ab605c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ43-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-C4-3-4-3-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.8.5.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.8.5.3",
+    "sortKey": "008.008.005.003"
+  },
+  "title": "ANALISI NON LINEARE STATICA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.8.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.8",
+      "urn:structural-codes:it:unit:circ2019:c8.8.5"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8.8.5.3 ANALISI NON LINEARE STATICA",
+        "normalized": "C8.8.5.3 ANALISI NON LINEARE STATICA",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fee7e6aeef1a7b8159650529a2614f8074b421b1af5a746e1f964758282c9406",
+        "normalizedSha256": "fee7e6aeef1a7b8159650529a2614f8074b421b1af5a746e1f964758282c9406"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il metodo, nella sua versione più semplice, consiste nell'applicazione alla struttura di un sistema di forze statiche di intensità\ncrescente fino al raggiungimento della capacità massima in termini di resistenza o di deformabilità. La struttura viene ridotta ad\nun sistema bilineare equivalente ad un grado di libertà. La domanda di spostamento al periodo dell’oscillatore equivalente T si\nottiene mediante spettro di risposta inelastico. In assenza di più accurate determinazioni quest’ultimo può essere approssimato\ncon le seguenti espressioni:",
+        "normalized": "Il metodo, nella sua versione più semplice, consiste nell'applicazione alla struttura di un sistema di forze statiche di intensità crescente fino al raggiungimento della capacità massima in termini di resistenza o di deformabilità. La struttura viene ridotta ad un sistema bilineare equivalente ad un grado di libertà. La domanda di spostamento al periodo dell’oscillatore equivalente T si ottiene mediante spettro di risposta inelastico. In assenza di più accurate determinazioni quest’ultimo può essere approssimato con le seguenti espressioni:",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall'impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall'estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4e7755fc4c115dd7e8f30b240a70783337163720f6fb5326bc7786df3f979818",
+        "normalizedSha256": "c65c13f6e4c0bce822f97e44ef70b6dd81ffbcb505c04cbaa8e4461734e74613"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1ed5236bb6aad7beaba891fe1b88b8c83c65e7cd6003c2ff398471a9de425abe",
+        "normalizedSha256": "1ed5236bb6aad7beaba891fe1b88b8c83c65e7cd6003c2ff398471a9de425abe"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.q",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1143da2bc54c495c4be31d3868785d39ffdfd56df5668f0645d8f14d47647952",
+        "normalizedSha256": "96174ca2ca7437415044d4306cdd2b3a9c35fd5078bb2a9b89a2bc4ee925f622"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "ᡥ = _ ᡥ 〶 〶 e F y la massa e la resistenza dell’oscillatore equivalente.",
+        "normalized": "con m = ∑ mᵢ Φᵢ e Fᵧ la massa e la resistenza dell’oscillatore equivalente.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "con "
+          },
+          {
+            "kind": "math",
+            "value": "m = ∑ mᵢ Φᵢ",
+            "latex": "m=\\sum m_i\\Phi_i"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Fᵧ",
+            "latex": "F_y"
+          },
+          {
+            "kind": "text",
+            "value": " la massa e la resistenza dell’oscillatore equivalente."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2ffc9a69cf8c652b8db6029e44cecfea18ea7976d7882b26997525fa19534c72",
+        "normalizedSha256": "5310dd6d43216b6bfdd3f2ce1c47c90754a976fe580f6ed34262699140a44ef5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La verifica consiste nel controllare che la configurazione della struttura corrispondente alla domanda in spostamento del sistema\nequivalente produca domande di duttilità compatibili con le rispettive capacità e forze di taglio minori delle rispettive resistenze.",
+        "normalized": "La verifica consiste nel controllare che la configurazione della struttura corrispondente alla domanda in spostamento del sistema equivalente produca domande di duttilità compatibili con le rispettive capacità e forze di taglio minori delle rispettive resistenze.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall'impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall'estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6bdc4fb195eb72e1b2cf32b536c5eb8c11c5a8b7a81995bff6116579cf116f95",
+        "normalizedSha256": "44515ae8d4cecb91a018c69907ce19f42cdd1fcab2e1cda75aa72306716491a7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si distinguono due casi:",
+        "normalized": "Si distinguono due casi:",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a43ced604db3f21d98b1f887e959629939530bd886c5040ea7bda9185e9f29a6",
+        "normalizedSha256": "a43ced604db3f21d98b1f887e959629939530bd886c5040ea7bda9185e9f29a6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-008",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) Ponti a travi semplicemente appoggiate. I ponti costituiti da impalcati semplicemente appoggiati sulle pile sono modellabili in\nogni caso come sistemi ad un grado di libertà. In direzione trasversale ciascuna pila costituisce un oscillatore semplice la\ncui massa m è data dalla somma della massa efficace della pila e della massa dell'impalcato ad essa afferente. In direzione\nlongitudinale si distingue il caso in cui le travate siano in qualche modo vincolate ad avere uno spostamento rigido, da\nquello in cui ciascun sistema pila-impalcato è indipendente da quelli contigui (su ogni testa-pila un impalcato è vincolato\ncon appoggi fissi e l'altro con appoggi scorrevoli). Nel primo caso l'intero ponte è assimilabile ad un oscillatore semplice di\nmassa m pari alla somma della massa totale dell'impalcato e delle masse efficaci delle pile, e di rigidezza pari alla somma\ndella rigidezza delle pile in direzione longitudinale. Nel secondo caso ciascuna pila è assimilabile ad un oscillatore\nsemplice come indicato per l'analisi nella direzione trasversale.",
+        "normalized": "a) Ponti a travi semplicemente appoggiate. I ponti costituiti da impalcati semplicemente appoggiati sulle pile sono modellabili in ogni caso come sistemi ad un grado di libertà. In direzione trasversale ciascuna pila costituisce un oscillatore semplice la cui massa m è data dalla somma della massa efficace della pila e della massa dell'impalcato ad essa afferente. In direzione longitudinale si distingue il caso in cui le travate siano in qualche modo vincolate ad avere uno spostamento rigido, da quello in cui ciascun sistema pila-impalcato è indipendente da quelli contigui (su ogni testa-pila un impalcato è vincolato con appoggi fissi e l'altro con appoggi scorrevoli). Nel primo caso l'intero ponte è assimilabile ad un oscillatore semplice di massa m pari alla somma della massa totale dell'impalcato e delle masse efficaci delle pile, e di rigidezza pari alla somma della rigidezza delle pile in direzione longitudinale. Nel secondo caso ciascuna pila è assimilabile ad un oscillatore semplice come indicato per l'analisi nella direzione trasversale.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall'impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall'estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "35ea4bbfe04c805439bd6c4d142c6b8408f37c52998afc090457c5d92f17e77d",
+        "normalizedSha256": "2dd9ab8f143750b593e2ce96b52d268c17ccee320d0bf067e21e85e309ebd113"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3#block-009",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) Ponti con impalcato continuo. La versione più semplice del metodo è applicabile per ponti per i quali la massa corrispondente\nal primo modo di vibrazione è non inferiore all’80% della massa totale. Quando questa condizione non è soddisfatta\noccorre considerare più modi fino al raggiungimento di una massa modale pari all’80%. Una possibilità è quella di\neseguire ripetutamente il procedimento sopra indicato con riferimento a una singola distribuzione di forze, con le\ndistribuzioni derivanti da ciascuno dei modi considerati e ricavando per ciascun caso la corrispondente risposta in termini\ndi distorsione degli elementi duttili. La risposta complessiva per tali elementi si ottiene quindi con la regola SRSS oppure\nCQC. Le sollecitazioni agenti negli elementi/meccanismi fragili si ottengono infine mediante condizioni di equilibrio. Per\nquanto riguarda il punto di controllo da adottare per ciascuna distribuzione di forze, l’esperienza ha mostrato che la scelta\npiù opportuna consiste nell’assumere come punto il nodo avente la massima ampiezza modale.",
+        "normalized": "b) Ponti con impalcato continuo. La versione più semplice del metodo è applicabile per ponti per i quali la massa corrispondente al primo modo di vibrazione è non inferiore all’80% della massa totale. Quando questa condizione non è soddisfatta occorre considerare più modi fino al raggiungimento di una massa modale pari all’80%. Una possibilità è quella di eseguire ripetutamente il procedimento sopra indicato con riferimento a una singola distribuzione di forze, con le distribuzioni derivanti da ciascuno dei modi considerati e ricavando per ciascun caso la corrispondente risposta in termini di distorsione degli elementi duttili. La risposta complessiva per tali elementi si ottiene quindi con la regola SRSS oppure CQC. Le sollecitazioni agenti negli elementi/meccanismi fragili si ottengono infine mediante condizioni di equilibrio. Per quanto riguarda il punto di controllo da adottare per ciascuna distribuzione di forze, l’esperienza ha mostrato che la scelta più opportuna consiste nell’assumere come punto il nodo avente la massima ampiezza modale.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 301,
+        "printedPage": "297",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall'impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall'estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3c4cd5030adfd7ee1706b09ca0e700e7c9280cc860cd5c7a696fdabd804c5179",
+        "normalizedSha256": "4ac6f0987dbc5cdd35fe8cdf725cab8a98daef67d0af82b7dad53051d08dff28"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.1",
+      "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.q"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step3c",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.8.5.3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.8.5.3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      },
+      {
+        "issueId": "circ2019-c8.8.5.3-formula-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Le formule devono essere sottoposte a verifica umana, glifo per glifo, sul render ufficiale."
+      }
+    ]
+  }
+}

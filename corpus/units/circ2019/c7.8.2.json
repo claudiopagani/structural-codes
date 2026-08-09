@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.8.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C7.8.2",
+    "sortKey": "007.008.002"
+  },
+  "title": "COSTRUZIONI DI MURATURA ORDINARIA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.8.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.8"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.8.2 COSTRUZIONI DI MURATURA ORDINARIA",
+        "normalized": "C7.8.2 COSTRUZIONI DI MURATURA ORDINARIA",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 233,
+        "printedPage": "229",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "bcd0c801bfdcfdfd8e79345803052dbcb0da242fb25399e26fdf4f3a21ca90f3",
+        "normalizedSha256": "bcd0c801bfdcfdfd8e79345803052dbcb0da242fb25399e26fdf4f3a21ca90f3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ78-79-step1",
+      "kind": "script",
+      "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-8-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-8-2-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

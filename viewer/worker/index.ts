@@ -2,9 +2,18 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 
+const sourcePdfs = {
+  ntc2018:
+    "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf",
+  circ2019:
+    "https://www.gazzettaufficiale.it/eli/gu/2019/02/11/35/so/5/sg/pdf",
+} as const;
+
 interface Env {
-  ASSETS: Fetcher;
-  DB: D1Database;
+  ASSETS: {
+    fetch(request: Request): Promise<Response>;
+  };
+  DB: unknown;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -28,6 +37,37 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+
+    if (url.pathname === "/api/source-pdf") {
+      const document = url.searchParams.get("document");
+      if (document !== "ntc2018" && document !== "circ2019") {
+        return new Response("Documento non valido", { status: 400 });
+      }
+
+      const headers = new Headers();
+      const range = request.headers.get("range");
+      if (range) headers.set("range", range);
+      const upstream = await fetch(sourcePdfs[document], { headers });
+      const responseHeaders = new Headers({
+        "content-type": "application/pdf",
+        "content-disposition": `inline; filename="${document}.pdf"`,
+        "cache-control": "public, max-age=86400",
+      });
+      for (const name of [
+        "accept-ranges",
+        "content-length",
+        "content-range",
+        "etag",
+        "last-modified",
+      ]) {
+        const value = upstream.headers.get(name);
+        if (value) responseHeaders.set(name, value);
+      }
+      return new Response(upstream.body, {
+        status: upstream.status,
+        headers: responseHeaders,
+      });
+    }
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];

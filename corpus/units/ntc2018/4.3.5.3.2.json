@@ -1,0 +1,385 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.3.5.3.2",
+    "sortKey": "004.003.005.003.002"
+  },
+  "title": "Resistenza e taglio della sezione",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.3",
+      "urn:structural-codes:it:unit:ntc2018:4.3.5",
+      "urn:structural-codes:it:unit:ntc2018:4.3.5.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.3.5.3.2   Resistenza e taglio della sezione La sollecitazione di taglio di progetto V agente sulla sezione deve essere distribuita tra la porzione in acciaio e la porzione in",
+        "normalized": "4.3.5.3.2 Resistenza e taglio della sezione",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.3.5.3.2 Resistenza e taglio della sezione"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 130,
+        "printedPage": "126",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 612,
+          "width": 430,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0d715600e5255098b9d1d4534451b06ad77a21c5d39e22cd344f7b6af1e95a0e",
+        "normalizedSha256": "3bb460c61767d407bb66b3f2f134ca32c6de00259814caf14c35a0c142b3522d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-p-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La sollecitazione di taglio di progetto V Ed   agente sulla sezione deve essere distribuita tra la porzione in acciaio e la porzione in calcestruzzo in modo da risultare minore o uguale della resistenza di ognuna delle due parti della sezione. In assenza di analisi più accurate il taglio può essere suddiviso utilizzando la seguente formula:",
+        "normalized": "La sollecitazione di taglio di progetto V_Ed agente sulla sezione deve essere distribuita tra la porzione in acciaio e la porzione in calcestruzzo in modo da risultare minore o uguale della resistenza di ognuna delle due parti della sezione. In assenza di analisi più accurate il taglio può essere suddiviso utilizzando la seguente formula:",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La sollecitazione di taglio di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "V_Ed",
+            "latex": "V_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " agente sulla sezione deve essere distribuita tra la porzione in acciaio e la porzione in calcestruzzo in modo da risultare minore o uguale della resistenza di ognuna delle due parti della sezione. In assenza di analisi più accurate il taglio può essere suddiviso utilizzando la seguente formula:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 130,
+        "printedPage": "126",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 625,
+          "width": 430,
+          "height": 30
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole spezzate dal trattino tipografico a fine riga dopo confronto con il render."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3cf38b6168e061db38585931c2513e35c1906dc6f0f2c38fdff8f8089bf18fdc",
+        "normalizedSha256": "13228fa2ae786f415827f081e7c0fde4b476e41b75bc1d4292d6dcdae62507e3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-formula-001",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.3.28",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 130,
+        "printedPage": "126",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 140,
+          "y": 657,
+          "width": 300,
+          "height": 45
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc43-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "84c8661752a338c33c3698aa453dc80dc69a24197d0e07823ab54678bf7e2366",
+        "normalizedSha256": "84c8661752a338c33c3698aa453dc80dc69a24197d0e07823ab54678bf7e2366"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-p-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove M   pl,Rd   è il momento resistente di progetto della sezione composta mentre M pl,a,Rd   è il momento resistente di progetto della sola sezione in acciaio. In generale la sollecitazione di taglio di progetto sulla parte in acciaio, V a ,   Ed , non deve eccedere il 50% del ta- glio resistente di progetto della sola sezione in acciaio, V a,Rd   (§ 4.2.4.1.2), per poterne così trascurare l’influenza sulla determina- zione della curva di interazione N-M. In caso contrario è possibile tenerne in conto dell’interazione in base alle indicazioni del § 4.2.4.1.2.",
+        "normalized": "dove M_pl,Rd è il momento resistente di progetto della sezione composta mentre M_pl,a,Rd è il momento resistente di progetto della sola sezione in acciaio. In generale la sollecitazione di taglio di progetto sulla parte in acciaio, V_a,Ed, non deve eccedere il 50% del taglio resistente di progetto della sola sezione in acciaio, V_a,Rd (§ 4.2.4.1.2), per poterne così trascurare l’influenza sulla determinazione della curva di interazione N-M. In caso contrario è possibile tenerne in conto dell’interazione in base alle indicazioni del § 4.2.4.1.2.",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "M_pl,Rd",
+            "latex": "M_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento resistente di progetto della sezione composta mentre "
+          },
+          {
+            "kind": "math",
+            "value": "M_pl,a,Rd",
+            "latex": "M_{pl,a,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento resistente di progetto della sola sezione in acciaio. In generale la sollecitazione di taglio di progetto sulla parte in acciaio, "
+          },
+          {
+            "kind": "math",
+            "value": "V_a,Ed",
+            "latex": "V_{a,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": ", non deve eccedere il 50% del taglio resistente di progetto della sola sezione in acciaio, "
+          },
+          {
+            "kind": "math",
+            "value": "V_a,Rd",
+            "latex": "V_{a,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " (§ 4.2.4.1.2), per poterne così trascurare l’influenza sulla determinazione della curva di interazione N-M. In caso contrario è possibile tenerne in conto dell’interazione in base alle indicazioni del § 4.2.4.1.2."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 131,
+        "printedPage": "127",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 95,
+          "width": 430,
+          "height": 65
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole spezzate dal trattino tipografico a fine riga dopo confronto con il render."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ce0e4d1b9029e872b2ec1cf08407aa948e4a38649ff6b441ad40209ac723793f",
+        "normalizedSha256": "30d4cf24e4e72cb2dd0920a459541a5482dcece1edaea9017d31a51f19c4276e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2#block-p-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per semplicità è possibile procedere assegnando tutta l’azione di taglio V Ed   alla sola parte in acciaio.",
+        "normalized": "Per semplicità è possibile procedere assegnando tutta l’azione di taglio V_Ed alla sola parte in acciaio.",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per semplicità è possibile procedere assegnando tutta l’azione di taglio "
+          },
+          {
+            "kind": "math",
+            "value": "V_Ed",
+            "latex": "V_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " alla sola parte in acciaio."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 131,
+        "printedPage": "127",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 176,
+          "width": 430,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "dfacaf1d4b0aa0d834a6306a07b9c1f69e1c4624784d7daafdd1d1ac7cb958dd",
+        "normalizedSha256": "b936e40334f4bfa2d11ac0dc4f16c314f03d0997b7fe5be3f8e704204d673a4f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:4.3.28"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc43-step3",
+      "kind": "automated-agent",
+      "toolVersion": "ntc43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-3-5-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-4-3-5-3-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono state separate e collocate; resta obbligatoria la revisione umana puntuale sulla fonte ufficiale."
+      }
+    ]
+  }
+}

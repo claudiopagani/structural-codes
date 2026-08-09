@@ -1,0 +1,135 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.7",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "6.7",
+    "sortKey": "006.007"
+  },
+  "title": "OPERE IN SOTTERRANEO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6"
+    ],
+    "position": 7
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.7. OPERE IN SOTTERRANEO",
+        "normalized": "6.7 OPERE IN SOTTERRANEO",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 204,
+        "printedPage": "200",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5e17baf11c33fa2ef259362504d1925a96f5e0bf03f2cacbf9b34dba3cc30bc0",
+        "normalizedSha256": "0288a2d31be47157f4303344b0a3dc681cdd0cee3838c575a50e27b5475c770e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.7#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le presenti norme definiscono le procedure tecniche per il progetto e la costruzione delle opere in sotterraneo quali le gallerie, le\ncaverne ed i pozzi, che sono costruiti totalmente nel sottosuolo mediante operazioni coordinate di asportazione del terreno e/o\ndella roccia in posto e l’esecuzione di eventuali interventi necessari alla stabilizzazione della cavità a breve e a lungo termine,\nnonché del rivestimento finale.",
+        "normalized": "Le presenti norme definiscono le procedure tecniche per il progetto e la costruzione delle opere in sotterraneo quali le gallerie, le caverne ed i pozzi, che sono costruiti totalmente nel sottosuolo mediante operazioni coordinate di asportazione del terreno e/o della roccia in posto e l’esecuzione di eventuali interventi necessari alla stabilizzazione della cavità a breve e a lungo termine, nonché del rivestimento finale.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 204,
+        "printedPage": "200",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3eb1a3ab5517bcf820cbc5c8a34f3a69dc1e3055487e10addcf77d01f176977b",
+        "normalizedSha256": "26eb8aa260ac4dd0271007317f2616342768985bc413a72bc92bd0bc1e19fdf0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

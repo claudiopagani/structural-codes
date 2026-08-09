@@ -1,0 +1,133 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.4.8.1.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.4.8.1.1",
+    "sortKey": "004.004.008.001.001"
+  },
+  "title": "Trazione parallela alla fibratura",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.4",
+      "urn:structural-codes:it:unit:circ2019:c4.4.8",
+      "urn:structural-codes:it:unit:circ2019:c4.4.8.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.4.8.1.1 Trazione parallela alla fibratura",
+        "normalized": "C4.4.8.1.1 Trazione parallela alla fibratura",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ44-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+          }
+        ],
+        "rawSha256": "eaba878131ebf5cef1341118c53d8fe4aa6c548a956612feaaafffe27033843e",
+        "normalizedSha256": "eaba878131ebf5cef1341118c53d8fe4aa6c548a956612feaaafffe27033843e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di giunzioni di elementi lignei mediante coprigiunti è possibile computare in maniera semplificata l’azione flettente nel\ncoprigiunto indotta dall’eccentricità della trazione parallela alla fibratura, riducendo al 60% la resistenza a trazione nel medesimo\ncoprigiunto. È possibile trascurare queste azioni di flessione qualora si prevedano idonei dispositivi di contenimento atti a\nprevenire eventuali aperture del giunto, che generalmente non si considerano partecipanti alla trasmissione dell'azione di\ntrazione nel coprigiunto salvo valutazioni più accurate (si veda il § C4.4.9).",
+        "normalized": "Nel caso di giunzioni di elementi lignei mediante coprigiunti è possibile computare in maniera semplificata l’azione flettente nel coprigiunto indotta dall’eccentricità della trazione parallela alla fibratura, riducendo al 60% la resistenza a trazione nel medesimo coprigiunto. È possibile trascurare queste azioni di flessione qualora si prevedano idonei dispositivi di contenimento atti a prevenire eventuali aperture del giunto, che generalmente non si considerano partecipanti alla trasmissione dell'azione di trazione nel coprigiunto salvo valutazioni più accurate (si veda il § C4.4.9).",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale dal layer testuale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, sillabazioni, glifi e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          }
+        ],
+        "rawSha256": "c11f993a4f01dd7b99654adee16fda26e40e7504f400cbcbb89aa2cdd7215673",
+        "normalizedSha256": "7cc74b12068b470c2e2dd04330c9e8f9b511ee627106de36676498d274acc65e"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ44-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ44-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-4-8-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

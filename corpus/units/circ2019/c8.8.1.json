@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.8.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.8.1",
+    "sortKey": "008.008.001"
+  },
+  "title": "AZIONE SISMICA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.8.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.8"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8.8.1 AZIONE SISMICA",
+        "normalized": "C8.8.1 AZIONE SISMICA",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "df3e280b7b9488a6fdc91cf2b29642c5e49d7bcf7166c1168b1aed37a1d3ecd6",
+        "normalizedSha256": "df3e280b7b9488a6fdc91cf2b29642c5e49d7bcf7166c1168b1aed37a1d3ecd6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si fa riferimento a quanto previsto nel § 3 delle NTC.",
+        "normalized": "Si fa riferimento a quanto previsto nel § 3 delle NTC.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 300,
+        "printedPage": "296",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8919beed275c07da53be333ab2f6b9a0fbb92079e4e6e8fe482bbff3e7b40bd2",
+        "normalizedSha256": "8919beed275c07da53be333ab2f6b9a0fbb92079e4e6e8fe482bbff3e7b40bd2"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step3b",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.8.1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.8.1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,461 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.2.10.7",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.2.10.7",
+    "sortKey": "011.002.010.007"
+  },
+  "title": "VISCOSITÀ",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.2.10",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.2",
+      "urn:structural-codes:it:unit:ntc2018:11.2.10"
+    ],
+    "position": 7
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.2.10.7 V ISCOSITÀ",
+        "normalized": "11.2.10.7 VISCOSITÀ",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "c1a25d6d42c0f3bb65105140fd551cbbd219d8d276e1f8b5fb5f7daeeea16838",
+        "normalizedSha256": "527f439b2c5161c025ab94464dd8499115459ba164995ebf87712816f9600d64"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo t0 = j di messa in carico, non è superiore a 0,45\nf ckj, il coefficiente di viscosità Κ (ǈ, t 0 \n), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1-\n1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove h0 è la dimensione fittizia definita in § 11.2.10.6:",
+        "normalized": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo t0 = j di messa in carico, non è superiore a 0,45 f ckj, il coefficiente di viscosità Κ (ǈ, t 0 ), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1- 1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove h0 è la dimensione fittizia definita in § 11.2.10.6:",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo "
+          },
+          {
+            "kind": "math",
+            "value": "t0",
+            "latex": "t_0"
+          },
+          {
+            "kind": "text",
+            "value": " = j di messa in carico, non è superiore a 0,45 f ckj, il coefficiente di viscosità Κ (ǈ, t 0 ), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1- 1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " è la dimensione fittizia definita in § 11.2.10.6:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "ecf156cb68de5a9ba3c01322ba7d55b58a817a61985e1715a276d5570a6308fc",
+        "normalizedSha256": "c383712603840d7bef29ac7c9025d001eafb47469414e41dd377d2d2dc9f80e6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-002",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.2.vi",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Asset collocato nella posizione del blocco evidence dopo confronto visivo con il render ufficiale."
+          }
+        ],
+        "rawSha256": "9122385298e5086ff7c8227b03f491f1ee490a0ab5a3965a390a2681b84640c4",
+        "normalizedSha256": "a9c2f1764b10e25df5eff260fcea243e800f23534c960f2c45d68d9d7e29cc6e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm\n3 giorni 3,5 3,2 3,0 2,8\n7 giorni 2,9 2,7 2,5 2,3\n15 giorni 2,6 2,4 2,2 2,1\n30 giorni 2,3 2,1 1,9 1,8\nǃ 60 giorni 2,0 1,8 1,7 1,6",
+        "normalized": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 3,5 3,2 3,0 2,8 7 giorni 2,9 2,7 2,5 2,3 15 giorni 2,6 2,4 2,2 2,1 30 giorni 2,3 2,1 1,9 1,8 ǃ 60 giorni 2,0 1,8 1,7 1,6",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "t 0 "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " ǂ 75 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " = 150 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " = 300 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " ǃ 600 mm 3 giorni 3,5 3,2 3,0 2,8 7 giorni 2,9 2,7 2,5 2,3 15 giorni 2,6 2,4 2,2 2,1 30 giorni 2,3 2,1 1,9 1,8 ǃ 60 giorni 2,0 1,8 1,7 1,6"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "496beada40fcc3235275874ccc12113103d579d875318db1092917842ed34dc9",
+        "normalizedSha256": "ab3877c83ab97f5a381840716fd03acec49d1060abb2a79e541bfb5b7f2e85ab"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-004",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.2.vii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Asset collocato nella posizione del blocco evidence dopo confronto visivo con il render ufficiale."
+          }
+        ],
+        "rawSha256": "a3d12b8b36492870872b4cd3b170f23221c399d25d3291945e421f3414cee935",
+        "normalizedSha256": "d6d7016951b04398179cc474cbb70e4a7d77ee2db74bf489d70cca9ca9227b86"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm\n3 giorni 4,5 4,0 3,6 3,3\n7 giorni 3,7 3,3 3,0 2,8\n15 giorni 3,3 3,0 2,7 2,5\n30 giorni 2,9 2,6 2,3 2,2\nǃ 60 giorni 2,5 2,3 2,1 1,9",
+        "normalized": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 4,5 4,0 3,6 3,3 7 giorni 3,7 3,3 3,0 2,8 15 giorni 3,3 3,0 2,7 2,5 30 giorni 2,9 2,6 2,3 2,2 ǃ 60 giorni 2,5 2,3 2,1 1,9",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "t 0 "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " ǂ 75 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " = 150 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " = 300 mm "
+          },
+          {
+            "kind": "math",
+            "value": "h0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " ǃ 600 mm 3 giorni 4,5 4,0 3,6 3,3 7 giorni 3,7 3,3 3,0 2,8 15 giorni 3,3 3,0 2,7 2,5 30 giorni 2,9 2,6 2,3 2,2 ǃ 60 giorni 2,5 2,3 2,1 1,9"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "d35357a3ab636a922447e0e44fcd37ed64eb09181faa95632622ed4737b2adc7",
+        "normalizedSha256": "0184d1da3bc73862318d1017427d0a75492295acca9843f51073fa4cf5820472"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per valori intermedi è ammessa una interpolazione lineare.",
+        "normalized": "Per valori intermedi è ammessa una interpolazione lineare.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 319,
+        "printedPage": "315",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "62d77f97fa5fc7b565a1fb5ccdce36844bd5cac88722e072c2122237efc1fbda",
+        "normalizedSha256": "62d77f97fa5fc7b565a1fb5ccdce36844bd5cac88722e072c2122237efc1fbda"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui sia richiesta una valutazione in tempi diversi da t = ǈ del coeĜciente di viscosità questo potrà essere valutato se-\ncondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12.",
+        "normalized": "Nel caso in cui sia richiesta una valutazione in tempi diversi da t = ǈ del coeĜciente di viscosità questo potrà essere valutato secondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 319,
+        "printedPage": "315",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "b293c5170a3bba763cdbad33884d5f11aac5d021b3f7a0a5f89f9239eb7e50f6",
+        "normalizedSha256": "8e768da875d294fd529a9e56cbb0a406dbd560e88b7d2249bd76b35b1728238b"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:11.2.vi",
+      "urn:structural-codes:it:asset:table:ntc2018:11.2.vii"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-2-10-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "11-2-10-7-table-11-2-vi-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Tabella acquisita dall’evidence; la trascrizione strutturata deve ancora essere verificata cella per cella sul render ufficiale."
+      },
+      {
+        "issueId": "11-2-10-7-table-11-2-vii-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Tabella acquisita dall’evidence; la trascrizione strutturata deve ancora essere verificata cella per cella sul render ufficiale."
+      }
+    ]
+  }
+}

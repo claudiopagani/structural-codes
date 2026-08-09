@@ -1,0 +1,178 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.5.10",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.5.10",
+    "sortKey": "004.005.010"
+  },
+  "title": "VERIFICHE PER SITUAZIONI ECCEZIONALI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.5.10#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.5"
+    ],
+    "position": 10
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.5.10#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.5.10. VERIFICHE PER SITUAZIONI ECCEZIONALI",
+        "normalized": "4.5.10 VERIFICHE PER SITUAZIONI ECCEZIONALI",
+        "normalizationVersion": "ntc45-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.5.10 VERIFICHE PER SITUAZIONI ECCEZIONALI"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 151,
+        "printedPage": "147",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 494,
+          "width": 428.6,
+          "height": 348
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Ripristinati caratteri accentati, apostrofi tipografici e glifi matematici confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bf7e82f5ba2da8a1eb1020b4079a9e4fb569f793672f1a26a2b23a6eec820548",
+        "normalizedSha256": "db646135ff54a2b9aef144bbdc20464f257346ad56da4f3d03472f39e947d213"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.5.10#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per situazioni progettuali eccezionali, il progetto dovrÃ  dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali Î³_M dei materiali possono essere assunti pari a Â½ di quelli delle situazioni ordinarie (vedi Tab. 4.5.II).",
+        "normalized": "Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali γ_M dei materiali possono essere assunti pari a ½ di quelli delle situazioni ordinarie (vedi Tab. 4.5.II).",
+        "normalizationVersion": "ntc45-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali "
+          },
+          {
+            "kind": "math",
+            "value": "γ_M",
+            "latex": "\\gamma_M"
+          },
+          {
+            "kind": "text",
+            "value": " dei materiali possono essere assunti pari a "
+          },
+          {
+            "kind": "math",
+            "value": "½",
+            "latex": "1/2"
+          },
+          {
+            "kind": "text",
+            "value": " di quelli delle situazioni ordinarie (vedi Tab. 4.5.II)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 151,
+        "printedPage": "147",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 507,
+          "width": 428.6,
+          "height": 335
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Ripristinati caratteri accentati, apostrofi tipografici e glifi matematici confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "61f97d81465a9a6e74aa300b8e08a0caa40ea674cdfeea6b40cd3f889ab0c134",
+        "normalizedSha256": "7411aced840317d2c4da829b6f2699393f3505fd5c84d606347c65b15e6c274c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc45",
+      "kind": "automated-agent",
+      "toolVersion": "ntc45-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-5-10-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

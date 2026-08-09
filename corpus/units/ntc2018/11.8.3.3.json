@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.8.3.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.8.3.3",
+    "sortKey": "011.008.003.003"
+  },
+  "title": "PROVE INIZIALI DI TIPO PER ELEMENTI IN SERIE CONTROLLATA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.8.3.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.8.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.8",
+      "urn:structural-codes:it:unit:ntc2018:11.8.3"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.8.3.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.8.3.3 P ROVE INIZIALI DI TIPO PER ELEMENTI IN SERIE CONTROLLATA",
+        "normalized": "11.8.3.3 PROVE INIZIALI DI TIPO PER ELEMENTI IN SERIE CONTROLLATA",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 356,
+        "printedPage": "352",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "233c462ed272e3fd5321d0cde6992600165470cfba52bc4efaf0a73b55d4e981",
+        "normalizedSha256": "1b379ecad44e90fd416af333871e924ccaf8f2e286bbc535e3923e41f64b876a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.8.3.3#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La produzione in serie controllata di componenti strutturali deve essere preceduta da verifiche sperimentali su prototipi eseguite\nda un laboratorio di cui all’art. 59 del DPR n. 380/2001, appositamente incaricato dal fabbricante.",
+        "normalized": "La produzione in serie controllata di componenti strutturali deve essere preceduta da verifiche sperimentali su prototipi eseguite da un laboratorio di cui all’art. 59 del DPR n. 380/2001, appositamente incaricato dal fabbricante.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 356,
+        "printedPage": "352",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "d7e8df5885f461f7852f5313995e93f8247d6c3cfcad14c8d9737f8b3e120b96",
+        "normalizedSha256": "3ebcdd4d755dc67091d318d3c5019f6009ee94005357d261a581b5a7c151718a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-8-3-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

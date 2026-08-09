@@ -1,0 +1,548 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.6.4.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.6.4.2",
+    "sortKey": "007.006.004.002"
+  },
+  "title": "VERIFICHE DI RESISTENZA (RES)",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.6.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.6",
+      "urn:structural-codes:it:unit:ntc2018:7.6.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.6.4.2 V ERIFICHE DI RESISTENZA (RES)",
+        "normalized": "7.6.4.2 VERIFICHE DI RESISTENZA (RES)",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "530bc70ffe71a5ce7589976ba7978e4d7453921988a7042e58fbc3a4803245b0",
+        "normalizedSha256": "f153401ca177b487d9c13bf8c7aa5966072c4964a5d87b1fd7a138331b93645f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore (Epl,Rd) e del\nlimite superiore (EU.Rd) della capacità.",
+        "normalized": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore (Epl,Rd) e del limite superiore (EU.Rd) della capacità.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore ("
+          },
+          {
+            "kind": "math",
+            "value": "Epl,Rd",
+            "latex": "E_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ") e del limite superiore (EU.Rd) della capacità."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e73e53f1d9a8c07a55bde600fa1c90391340e0e31f49423a2f10b4a211b82eeb",
+        "normalizedSha256": "ed8e1a56ccda786e43cc40377fb3c2c4a047343cb79c569438c4b1e531c49573"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il limite inferiore della capacità delle zone dissipative, E \npl,Rd, deve essere confrontato con la domanda ottenuta dalla combinazione\nsismica delle azioni ESd, per cui deve risultare ESd < E \npl.Rd.\nIl limite superiore della capacità delle zone dissipative (EU,Rd) deve essere utilizzato nella verifica della capacità delle altre\ncomponenti strutturali coinvolte nello sviluppo dei meccanismi di collasso prescelti. Tale valore deve essere assunto\nanalogamente a quanto previsto nelle strutture in acciaio pari a EU,Rd = 1,1 ·ov E \npl,Rd, con ·ov definito nel § 7.5.1.",
+        "normalized": "Il limite inferiore della capacità delle zone dissipative, Epl,Rd, deve essere confrontato con la domanda ottenuta dalla combinazione sismica delle azioni ESd, per cui deve risultare ESd < Epl,Rd. Il limite superiore della capacità delle zone dissipative (EU,Rd) deve essere utilizzato nella verifica della capacità delle altre componenti strutturali coinvolte nello sviluppo dei meccanismi di collasso prescelti. Tale valore deve essere assunto analogamente a quanto previsto nelle strutture in acciaio pari a EU,Rd = 1,1 γ_ov Epl,Rd, con γ_ov definito nel § 7.5.1.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il limite inferiore della capacità delle zone dissipative, "
+          },
+          {
+            "kind": "math",
+            "value": "Epl,Rd",
+            "latex": "E_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", deve essere confrontato con la domanda ottenuta dalla combinazione sismica delle azioni "
+          },
+          {
+            "kind": "math",
+            "value": "ESd",
+            "latex": "E_{Sd}"
+          },
+          {
+            "kind": "text",
+            "value": ", per cui deve risultare "
+          },
+          {
+            "kind": "math",
+            "value": "ESd",
+            "latex": "E_{Sd}"
+          },
+          {
+            "kind": "text",
+            "value": " < "
+          },
+          {
+            "kind": "math",
+            "value": "Epl,Rd",
+            "latex": "E_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ". Il limite superiore della capacità delle zone dissipative ("
+          },
+          {
+            "kind": "math",
+            "value": "EU,Rd",
+            "latex": "E_{U,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ") deve essere utilizzato nella verifica della capacità delle altre componenti strutturali coinvolte nello sviluppo dei meccanismi di collasso prescelti. Tale valore deve essere assunto analogamente a quanto previsto nelle strutture in acciaio pari a "
+          },
+          {
+            "kind": "math",
+            "value": "EU,Rd",
+            "latex": "E_{U,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " = 1,1 "
+          },
+          {
+            "kind": "math",
+            "value": "γ_ov",
+            "latex": "\\gamma_{ov}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "Epl,Rd",
+            "latex": "E_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", con "
+          },
+          {
+            "kind": "math",
+            "value": "γ_ov",
+            "latex": "\\gamma_{ov}"
+          },
+          {
+            "kind": "text",
+            "value": " definito nel § 7.5.1."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fd8cd516f865ca9724d9c68ad458e41410a7b6b2f6f6e2e1535327da181a734d",
+        "normalizedSha256": "7efe045b13560d2953820deaa593b492a2c0a8cef20e841770729f292bfdbe1c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In particolare per il progetto dei collegamenti adiacenti le zone dissipative deve risultare:",
+        "normalized": "In particolare per il progetto dei collegamenti adiacenti le zone dissipative deve risultare:",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "dbd7d592fad5471d9cbc378b6d94d4b7bb7e3de8b5213bc558ab249fd9e3afcd",
+        "normalizedSha256": "dbd7d592fad5471d9cbc378b6d94d4b7bb7e3de8b5213bc558ab249fd9e3afcd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.6.1",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc76-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "d5ff0957ed76608a3280c2d53a6cd63de2659ed8dfab9a2e1c9223fdd16d42ea",
+        "normalizedSha256": "d5ff0957ed76608a3280c2d53a6cd63de2659ed8dfab9a2e1c9223fdd16d42ea"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove:\nRj,d è la capacità del collegamento;\nRU,Rd è il limite superiore della capacità della membratura collegata, valutata come indicato nel presente paragrafo.",
+        "normalized": "dove Rj,d è la capacità del collegamento; RU,Rd è il limite superiore della capacità della membratura collegata, valutata come indicato nel presente paragrafo.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Rj,d",
+            "latex": "R_{j,d}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità del collegamento; "
+          },
+          {
+            "kind": "math",
+            "value": "RU,Rd",
+            "latex": "R_{U,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il limite superiore della capacità della membratura collegata, valutata come indicato nel presente paragrafo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "254865517939713345e9699059c8c6e140a54605d34c4f67810a457156bd3199",
+        "normalizedSha256": "7a125536f2b0dfa5c1a58c6e23b94b4ecea51c75676451b0a181714198c54dab"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nei nodi trave-colonna adiacenti le zone dissipative di telai con colonne costituite da profili rivestiti completamente o\nparzialmente di calcestruzzo, la capacità a taglio del pannello d’anima della colonna può essere calcolata come la somma dei\ncontributi del calcestruzzo e del pannello in acciaio. In particolare, se l’altezza della sezione della trave non differisce da quella\ndel pilastro di più del 40%, la capacità a taglio si ottiene sommando i due contributi forniti, rispettivamente, dall’acciaio e dal\ncalcestruzzo: ",
+        "normalized": "Nei nodi trave-colonna adiacenti le zone dissipative di telai con colonne costituite da profili rivestiti completamente o parzialmente di calcestruzzo, la capacità a taglio del pannello d’anima della colonna può essere calcolata come la somma dei contributi del calcestruzzo e del pannello in acciaio. In particolare, se l’altezza della sezione della trave non differisce da quella del pilastro di più del 40%, la capacità a taglio si ottiene sommando i due contributi forniti, rispettivamente, dall’acciaio e dal calcestruzzo:",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "878f814c496e34602bb5d75dfdda2f3ca6f5eb2f894916c76aa968d8c645fb88",
+        "normalizedSha256": "9828ea0b3adce9e92061bb11539b4e1bcc67a47400057e5ef5ed82cad26f715c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-007",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.6.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc76-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "6731017a5b60ec4a72e45640b384781969d79a4abfe33d887d3930af9b5a3877",
+        "normalizedSha256": "6731017a5b60ec4a72e45640b384781969d79a4abfe33d887d3930af9b5a3877"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.4.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove Vwp,s,Rd è la capacità del pannello d’anima in acciaio calcolato secondo i metodi indicati nel § 4.2, Vwp,c,Rd è la capacità a taglio\nfornito dal calcestruzzo che deve essere determinato utilizzando appropriati modelli tirante-puntone tipici delle strutture in\ncalcestruzzo. La domanda a taglio, Vwp,Sd, con cui confrontare la capacità Vwp,Rd, è calcolata considerando il raggiungimento della\ncapacità a flessione nelle sezioni delle travi convergenti nel nodo trave-colonna secondo lo schema e le modalità previste in fase\ndi progetto.",
+        "normalized": "dove Vwp,s,Rd è la capacità del pannello d’anima in acciaio calcolato secondo i metodi indicati nel § 4.2, Vwp,c,Rd è la capacità a taglio fornita dal calcestruzzo che deve essere determinata utilizzando appropriati modelli tirante-puntone tipici delle strutture in calcestruzzo. La domanda a taglio, Vwp,Sd, con cui confrontare la capacità Vwp,Rd, è calcolata considerando il raggiungimento della capacità a flessione nelle sezioni delle travi convergenti nel nodo trave-colonna secondo lo schema e le modalità previste in fase di progetto.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Vwp,s,Rd",
+            "latex": "V_{wp,s,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità del pannello d’anima in acciaio calcolato secondo i metodi indicati nel § 4.2, "
+          },
+          {
+            "kind": "math",
+            "value": "Vwp,c,Rd",
+            "latex": "V_{wp,c,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità a taglio fornita dal calcestruzzo che deve essere determinata utilizzando appropriati modelli tirante-puntone tipici delle strutture in calcestruzzo. La domanda a taglio, "
+          },
+          {
+            "kind": "math",
+            "value": "Vwp,Sd",
+            "latex": "V_{wp,Sd}"
+          },
+          {
+            "kind": "text",
+            "value": ", con cui confrontare la capacità "
+          },
+          {
+            "kind": "math",
+            "value": "Vwp,Rd",
+            "latex": "V_{wp,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", è calcolata considerando il raggiungimento della capacità a flessione nelle sezioni delle travi convergenti nel nodo trave-colonna secondo lo schema e le modalità previste in fase di progetto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "246181e35a2e9b5752d32e9aab4c569539bf0f8bbdd61f6eef120ae27d0259e7",
+        "normalizedSha256": "e26ee0e9ee2cb6e01b0b9dd1416a49864ccfc4e044aed383e856c884a8e9bff0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.6.1",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.6.2"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc76:step1",
+      "kind": "script",
+      "toolVersion": "ntc76-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-6-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-6-4-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
+      }
+    ]
+  }
+}

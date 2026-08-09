@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.10.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.10.2",
+    "sortKey": "011.010.002"
+  },
+  "title": "MALTE PER MURATURA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.10.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.10",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.10"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.10.2 MALTE PER MURATURA",
+        "normalized": "C11.10.2 MALTE PER MURATURA",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "00c161f5af2404f1792c294e0f98869b3afeb15b424482d9c6fb8f686cf9ad72",
+        "normalizedSha256": "00c161f5af2404f1792c294e0f98869b3afeb15b424482d9c6fb8f686cf9ad72"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La norma fornisce le definizioni generali valide per tutte le malte, quindi al §11.10.2.1, §11.10.2.2, §11.10.2.3 dà informazioni\nspecifiche, rispettivamente, per le malte a prestazione garantita, per le malte a composizione prescritta e per le malte prodotte in\ncantiere. La norma inoltre ribadisce che le malte per muratura dei primi due tipi devono essere conformi alla pertinente norma\neuropea armonizzata e, nel caso della malta a prestazione garantita, recare la Marcatura CE.",
+        "normalized": "La norma fornisce le definizioni generali valide per tutte le malte, quindi al §11.10.2.1, §11.10.2.2, §11.10.2.3 dà informazioni specifiche, rispettivamente, per le malte a prestazione garantita, per le malte a composizione prescritta e per le malte prodotte in cantiere. La norma inoltre ribadisce che le malte per muratura dei primi due tipi devono essere conformi alla pertinente norma europea armonizzata e, nel caso della malta a prestazione garantita, recare la Marcatura CE.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "4d8ee8dd1ec35912014bdd19281d378d286670ea7fbfd72d2192240457ad0c55",
+        "normalizedSha256": "68a1073320675969bb991f1fd5cd63de32e99d1bbe298dcc7c1a6df12cad6b40"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-10-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

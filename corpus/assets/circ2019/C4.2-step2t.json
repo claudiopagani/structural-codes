@@ -1,0 +1,114 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2t",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.102",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.2",
+      "officialNumber": "C4.2.102",
+      "pdfPage": 135,
+      "latex": "0{,}2\\le\\frac{c}{b}\\le0{,}6\\qquad0{,}1\\le\\frac{d}{b}\\le0{,}3"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.103",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.3",
+      "officialNumber": "C4.2.103",
+      "pdfPage": 136,
+      "latex": "u=2\\,\\frac{\\sigma_a^2\\,b_s^4}{E^2\\,t^2\\,z}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.xix",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.2",
+      "officialNumber": "C4.2.XIX",
+      "pdfPage": 135,
+      "caption": "Valori limite dei rapporti larghezza-spessore di profili formati a freddo",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Elemento della sezione trasversale"
+          },
+          {
+            "text": "Valore massimo"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Piatti piani e ali aperte, con o senza irrigidimento di bordo."
+          },
+          {
+            "text": "b/t<50",
+            "latex": "b/t<50"
+          }
+        ],
+        [
+          {
+            "text": "Piatti piani con irrigidimento di bordo di altezza c."
+          },
+          {
+            "text": "b/t≤60\nc/t<50",
+            "latex": "\\begin{gathered}b/t\\le60\\\\c/t<50\\end{gathered}"
+          }
+        ],
+        [
+          {
+            "text": "Piatti piani con irrigidimenti di bordo di altezza c e distanza d."
+          },
+          {
+            "text": "b/t≤90\nc/t≤60\nd/t<50",
+            "latex": "\\begin{gathered}b/t\\le90\\\\c/t\\le60\\\\d/t<50\\end{gathered}"
+          }
+        ],
+        [
+          {
+            "text": "Sezioni a U o elementi con due irrigidimenti di bordo."
+          },
+          {
+            "text": "b/t≤500",
+            "latex": "b/t\\le500"
+          }
+        ],
+        [
+          {
+            "text": "Elementi inclinati di angolo φ e altezza h."
+          },
+          {
+            "text": "45°≤φ≤90°\nh/t≤500 sin φ",
+            "latex": "\\begin{gathered}45^\\circ\\le\\phi\\le90^\\circ\\\\h/t\\le500\\sin\\phi\\end{gathered}"
+          }
+        ]
+      ],
+      "notes": [
+        "Le figure interne della colonna «Elemento della sezione trasversale» sono rappresentate mediante descrizioni strutturate."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.25",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.3",
+      "officialNumber": "C4.2.25",
+      "pdfPage": 136,
+      "caption": "Figura C4.2.25 – Incurvamento delle piattabande",
+      "alt": "Incurvamento delle piattabande",
+      "imagePath": "figures/circ2019/figc4.2.25.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 170,
+        "y": 225,
+        "width": 270,
+        "height": 75
+      },
+      "sha256": "6b41dac2769a5e671c56bfec375f0110c8ade41d7334a5dfaa96a74543185c83"
+    }
+  ]
+}

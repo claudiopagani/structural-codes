@@ -1,0 +1,128 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c10.2.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C10.2.2",
+    "sortKey": "010.002.002"
+  },
+  "title": "VALUTAZIONE INDIPENDENTE DEL CALCOLO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c10.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c10.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c10",
+      "urn:structural-codes:it:unit:circ2019:c10.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c10.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C10.2.2 VALUTAZIONE INDIPENDENTE DEL CALCOLO",
+        "normalized": "C10.2.2 VALUTAZIONE INDIPENDENTE DEL CALCOLO",
+        "normalizationVersion": "circ-c10-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 313,
+        "printedPage": "309",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 96.225,
+          "width": 178.768,
+          "height": 7.805
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ-c10-editorial-profile-0.1.0",
+            "note": "Ricostruito l'ordine numero-titolo dalla composizione tipografica."
+          }
+        ],
+        "rawSha256": "f677f8ff2940624725f6863cb0da8e4610a07e995fd803e14aecf995e58dfefd",
+        "normalizedSha256": "f677f8ff2940624725f6863cb0da8e4610a07e995fd803e14aecf995e58dfefd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c10.2.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di opere di particolare importanza, ritenute tali dal Committente, il progettista delle strutture deve effettuare un\ncontrollo incrociato sui risultati delle calcolazioni; può essere utile, in taluni casi, il confronto con i risultati ottenuti dalla\nripetizione dei calcoli da parte di un soggetto qualificato, prescelto dal Committente, diverso dal progettista originario delle\nstrutture; la ripetizione del calcolo deve essere eseguita generalmente mediante l’impiego di programmi automatici diversi da\nquelli impiegati originariamente.",
+        "normalized": "Nel caso di opere di particolare importanza, ritenute tali dal Committente, il progettista delle strutture deve effettuare un controllo incrociato sui risultati delle calcolazioni; può essere utile, in taluni casi, il confronto con i risultati ottenuti dalla ripetizione dei calcoli da parte di un soggetto qualificato, prescelto dal Committente, diverso dal progettista originario delle strutture; la ripetizione del calcolo deve essere eseguita generalmente mediante l’impiego di programmi automatici diversi da quelli impiegati originariamente.",
+        "normalizationVersion": "circ-c10-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 313,
+        "printedPage": "309",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.908,
+          "y": 111.421,
+          "width": 447.504,
+          "height": 49.857
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ-c10-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "5708f06d66863dc520e6796bad9fec595aec321b06d485d4de57f8918c91e369",
+        "normalizedSha256": "973972b086732a79c51d893506dc3ef096ae7426599f7349b1f664e87be6203f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ10:step1",
+      "kind": "script",
+      "toolVersion": "circ-c10-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c10-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

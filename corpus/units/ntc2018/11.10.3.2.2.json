@@ -1,0 +1,385 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.10.3.2.2",
+    "sortKey": "011.010.003.002.002"
+  },
+  "title": "Stima della resistenza a taglio",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.10",
+      "urn:structural-codes:it:unit:ntc2018:11.10.3",
+      "urn:structural-codes:it:unit:ntc2018:11.10.3.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.10.3.2.2 Stima della resistenza a taglio",
+        "normalized": "11.10.3.2.2 Stima della resistenza a taglio",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e30a4204014818271e20ae1739a24ccaf34dbd9fdbe377773b3cba14a721544d",
+        "normalizedSha256": "e30a4204014818271e20ae1739a24ccaf34dbd9fdbe377773b3cba14a721544d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In sede di progetto, per le murature formate da elementi artificiali oppure in pietra naturale squadrata, il valore di fvk0 , in alterna-\ntiva alla determinazione sperimentale, può essere dedotto dalla Tab. 11.10.VIII. Per valori non contemplati in tabella è ammessa\nl’interpolazione lineare; in nessun caso sono ammesse estrapolazioni. Per caratteristiche dei materiali (resistenza della malta o\nresistenza dei blocchi) diverse da quelle contemplate in tabella, è necessario ricorrere alla determinazione sperimentale.",
+        "normalized": "In sede di progetto, per le murature formate da elementi artificiali oppure in pietra naturale squadrata, il valore di fvk0 , in alternativa alla determinazione sperimentale, può essere dedotto dalla Tab. 11.10.VIII. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni. Per caratteristiche dei materiali (resistenza della malta o resistenza dei blocchi) diverse da quelle contemplate in tabella, è necessario ricorrere alla determinazione sperimentale.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In sede di progetto, per le murature formate da elementi artificiali oppure in pietra naturale squadrata, il valore di "
+          },
+          {
+            "kind": "math",
+            "value": "fvk",
+            "latex": "f_{vk}"
+          },
+          {
+            "kind": "text",
+            "value": "0 , in alternativa alla determinazione sperimentale, può essere dedotto dalla Tab. 11.10.VIII. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni. Per caratteristiche dei materiali (resistenza della malta o resistenza dei blocchi) diverse da quelle contemplate in tabella, è necessario ricorrere alla determinazione sperimentale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "ebba4e57c1173ef65174ac1622c3d327551e562c8ece583b7d55e72dd94749fa",
+        "normalizedSha256": "4c7d5c48c5ce06a61da4dc21428f609b562b31587d731d33e58f12768d6649b6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-002",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.10.viii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Asset collocato nella posizione del blocco evidence dopo confronto visivo con il render ufficiale."
+          }
+        ],
+        "rawSha256": "b1bfe4fd068a6a7c74f2c492468de80541865c259cb999751164c3008d534e24",
+        "normalizedSha256": "b1bfe4fd068a6a7c74f2c492468de80541865c259cb999751164c3008d534e24"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Elementi per muratura f vk0 (N/mm2 )\nMalta ordinaria di classe\ndi resistenza data\nMalta per strati sottili\n(giunto orizzontale ǃ\n0,5 mm e ǂ 3 mm)\nMalta alleggerita",
+        "normalized": "Elementi per muratura f vk0 (N/mm2 ) Malta ordinaria di classe di resistenza data Malta per strati sottili (giunto orizzontale ǃ 0,5 mm e ǂ 3 mm) Malta alleggerita",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "0301677f49734f61421f37dd4f82aa0b7c54d1d41bb21375b38725bbfde79b67",
+        "normalizedSha256": "d141d935f2514b1065c092126007e3d042c796dff7a39c2205098348c3585025"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Laterizio M10 - M20 0,30",
+        "normalized": "Laterizio M10 - M20 0,30",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "975625868e0551c7a3ee10feb1101775ebc2ea808ea048d99115a88ac4df2386",
+        "normalizedSha256": "975625868e0551c7a3ee10feb1101775ebc2ea808ea048d99115a88ac4df2386"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "0,30 * 0,15M2,5 - M9 0,20\nM1 - M2 0,10\nSilicato di calcio M10 - M20 0,20",
+        "normalized": "0,30 * 0,15M2,5 - M9 0,20 M1 - M2 0,10 Silicato di calcio M10 - M20 0,20",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "3247ddd368a8058d192146aedfbb6b7f94b4157997aec8b4966728d3ea6aa4cd",
+        "normalizedSha256": "f6ae21185c993c9b449fa0c242561e2a13d295bb0837960e2e4bfb014d7e74df"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "0,20 ** 0,15M2,5 - M9 0,15\nM1 - M2 0,10\nCalcestruzzo vibrocompresso\nCalcestruzzo areato autoclavato\nPietra artificiale e pietra naturale a\nmassello\nM10 - M20\nM2,5 - M9\nM1 - M2\n0,20\n0,15\n0,10\n0,20 ** 0,15",
+        "normalized": "0,20 ** 0,15M2,5 - M9 0,15 M1 - M2 0,10 Calcestruzzo vibrocompresso Calcestruzzo areato autoclavato Pietra artificiale e pietra naturale a massello M10 - M20 M2,5 - M9 M1 - M2 0,20 0,15 0,10 0,20 ** 0,15",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "41ecb46858bfd84a921f87824a5b232610b660c5910f9dd3eafa922490b10fed",
+        "normalizedSha256": "420fc480f92c894c9261edbdcefedeb8bff65f75491a0c36428b2aba273fdf04"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "* valore valido per malte di classe M10 o superiore e resistenza dei blocchi f bkǃ 5.0 N/mm2\n** valore valido per malte di classe M5 o superiore e resistenza dei blocchi f bkǃ 3.0 N/mm2",
+        "normalized": "* valore valido per malte di classe M10 o superiore e resistenza dei blocchi f bkǃ 5.0 N/mm2 ** valore valido per malte di classe M5 o superiore e resistenza dei blocchi f bkǃ 3.0 N/mm2",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 368,
+        "printedPage": "364",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "9e5bab905ce51d726967eec5191dd34a2ef39fe7f6ff0cd0da32edcfb40746e5",
+        "normalizedSha256": "5f8295fa201f61d8705e6717ab497b8ed77a710a9a4c1d8c42b8fecfd5896094"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2#block-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I valori in tabella possono essere direttamente utilizzati nel caso di giunti orizzontali e verticali riempiti di malta. Nel caso di\ngiunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in\ncontatto l’una con l’altra, i valori della tabella vanno dimezzati. Per la stima della resistenza a taglio della muratura con letto di\nmalta interrotto, nella quale gli elementi di muratura sono disposti su due o più strisce uguali di malta ordinaria riempiti, i valori\ndi fvk0 relativi al letto pieno vanno opportunamente ridotti secondo quanto indicato nella norma UNI EN 1996-1-1 integrata dalla\nrelativa Appendice Nazionale.",
+        "normalized": "I valori in tabella possono essere direttamente utilizzati nel caso di giunti orizzontali e verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una con l’altra, i valori della tabella vanno dimezzati. Per la stima della resistenza a taglio della muratura con letto di malta interrotto, nella quale gli elementi di muratura sono disposti su due o più strisce uguali di malta ordinaria riempiti, i valori di fvk0 relativi al letto pieno vanno opportunamente ridotti secondo quanto indicato nella norma UNI EN 1996-1-1 integrata dalla relativa Appendice Nazionale.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I valori in tabella possono essere direttamente utilizzati nel caso di giunti orizzontali e verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una con l’altra, i valori della tabella vanno dimezzati. Per la stima della resistenza a taglio della muratura con letto di malta interrotto, nella quale gli elementi di muratura sono disposti su due o più strisce uguali di malta ordinaria riempiti, i valori di "
+          },
+          {
+            "kind": "math",
+            "value": "fvk",
+            "latex": "f_{vk}"
+          },
+          {
+            "kind": "text",
+            "value": "0 relativi al letto pieno vanno opportunamente ridotti secondo quanto indicato nella norma UNI EN 1996-1-1 integrata dalla relativa Appendice Nazionale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 369,
+        "printedPage": "365",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "47655ebaaf64db4e7004ceb96235dc3a19c46125c814a198baa10a599e018660",
+        "normalizedSha256": "a8c040d7083bf3a92f910cd0113951eb18a50831a6f521f1245184d88736e8ba"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:11.10.viii"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-10-3-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "11-10-3-2-2-table-11-10-viii-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Tabella acquisita dall’evidence; la trascrizione strutturata deve ancora essere verificata cella per cella sul render ufficiale."
+      }
+    ]
+  }
+}

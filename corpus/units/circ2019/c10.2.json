@@ -1,0 +1,91 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c10.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C10.2",
+    "sortKey": "010.002"
+  },
+  "title": "ANALISI E VERIFICHE SVOLTE CON L’AUSILIO DI CODICI DI CALCOLO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c10.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c10",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c10"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c10.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C10.2ANALISI E VERIFICHE SVOLTE CON L’AUSILIO DI CODICI DI CALCOLO",
+        "normalized": "C10.2 ANALISI E VERIFICHE SVOLTE CON L’AUSILIO DI CODICI DI CALCOLO",
+        "normalizationVersion": "circ-c10-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 312,
+        "printedPage": "308",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.913,
+          "y": 221.934,
+          "width": 358.389,
+          "height": 10.406
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ-c10-editorial-profile-0.1.0",
+            "note": "Ricostruito l'ordine numero-titolo dalla composizione tipografica."
+          }
+        ],
+        "rawSha256": "7c4e8d5d672d85c4dc6f2831f6758d2deed4447aacc94895700afbe0c4d881aa",
+        "normalizedSha256": "55121813e49a4c108e746f1f23d807e121f6cc482a509fa1814464e4d94948c9"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ10:step1",
+      "kind": "script",
+      "toolVersion": "circ-c10-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c10-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

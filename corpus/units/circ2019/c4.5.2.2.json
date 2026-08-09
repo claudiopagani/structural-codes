@@ -1,0 +1,109 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.5.2.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.5.2.2",
+    "sortKey": "004.005.002.002"
+  },
+  "title": "ELEMENTI RESISTENTI DI MURATURA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.5.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.5.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.5",
+      "urn:structural-codes:it:unit:circ2019:c4.5.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.5.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.5.2.2 ELEMENTI RESISTENTI DI MURATURA",
+        "normalized": "C4.5.2.2 ELEMENTI RESISTENTI DI MURATURA",
+        "normalizationVersion": "circ45-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.5.2.2 ELEMENTI RESISTENTI DI MURATURA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 164,
+        "printedPage": "160",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ45-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "0a28db6dc40e3684270a6d7082218a39c6698419c44ffc3c5714953d719ffa07",
+        "normalizedSha256": "0a28db6dc40e3684270a6d7082218a39c6698419c44ffc3c5714953d719ffa07"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c4.5.2.2#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:4.5.2.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c4.5.2.2#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; non implica ancora equivalenza semantica completa.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ45-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ45-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-5-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "circ2019-c4-5-2-2-relation-review",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento proposto con l’unità omologa NTC 2018 richiede conferma umana sul contenuto completo."
+      }
+    ]
+  }
+}

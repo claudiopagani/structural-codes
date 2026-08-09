@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c5.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C5.1",
+    "sortKey": "005.001"
+  },
+  "title": "PONTI STRADALI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c5.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c5"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c5.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CC5.1 PONTI STRADALI",
+        "normalized": "C5.1 PONTI STRADALI",
+        "normalizationVersion": "circ5-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 168,
+        "printedPage": "164",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ5-manual-render-transcription-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ5-manual-render-transcription-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale dal layer testuale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ5-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, sillabazioni, simboli e formule verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ5-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "494361a2039ea26baa50a7cd082fdd8d98667825af824202887769ff5dbe8288",
+        "normalizedSha256": "b97e3f92de9fce77ab77b91e1394fb7f97b68ea66f5a144648e207d96c4bf3d7"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c5.1#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:5.1",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c5.1#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ5",
+      "kind": "script",
+      "toolVersion": "circ5-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c5-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "circ2019-c5-1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c6.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C6.3",
+    "sortKey": "006.003"
+  },
+  "title": "STABILITÀ DEI PENDII NATURALI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c6.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c6"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CC6.3 STABILITÀ DEI PENDII NATURALI",
+        "normalized": "C6.3 STABILITÀ DEI PENDII NATURALI",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 183,
+        "printedPage": "179",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, sillabazioni e segni di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "8156f80b8b8197420fcf452251d6194a5661cbcb8ee70f7fde5bee7b74b252a3",
+        "normalizedSha256": "916db835f572320302dd7ae6fb321a6f70486e636017bf10d0dd99678a91e650"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c6.3#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:6.3",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c6.3#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ6:step1",
+      "kind": "script",
+      "toolVersion": "circ6-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c6-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "circ2019-c6-3-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

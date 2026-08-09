@@ -1,0 +1,135 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "6.3",
+    "sortKey": "006.003"
+  },
+  "title": "STABILITÀ DEI PENDII NATURALI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.3. STABILITÀ DEI PENDII NATURALI",
+        "normalized": "6.3 STABILITÀ DEI PENDII NATURALI",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 192,
+        "printedPage": "188",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "435c3d598c3d2f9938b15ae02f05eddc8492050a16b0ef6cff97cc29a35483ec",
+        "normalizedSha256": "7811c0f97111c83bc7135cf07f8f3d20ba6a1d37d5f5fe17dee8017636adcc36"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le presenti norme si applicano allo studio delle condizioni di stabilità dei pendii naturali, anche in presenza di azioni sismiche (§\n7.11.3.5) e al progetto, alla esecuzione e al controllo degli interventi di stabilizzazione.",
+        "normalized": "Le presenti norme si applicano allo studio delle condizioni di stabilità dei pendii naturali, anche in presenza di azioni sismiche (§ 7.11.3.5) e al progetto, alla esecuzione e al controllo degli interventi di stabilizzazione.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 192,
+        "printedPage": "188",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e9fc706f12a928d0bf76a63c4acf296e494c957cfe5428bac5276e178c978803",
+        "normalizedSha256": "ffaaa7e784e7a257795c9bb261e0e1c041e39d52c9fe1da90131e4ea07c3fa1c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step1",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

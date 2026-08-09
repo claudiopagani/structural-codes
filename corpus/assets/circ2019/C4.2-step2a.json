@@ -1,0 +1,241 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2a",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.21",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1",
+      "officialNumber": "C4.2.21",
+      "pdfPage": 106,
+      "latex": "e_0=\\frac{L}{500}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.22",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.1",
+      "officialNumber": "C4.2.22",
+      "pdfPage": 106,
+      "latex": "N_{C,Ed}=0{,}5\\,N_{Ed}+\\frac{M_{Ed}\\,h_0\\,A_C}{2\\,J_{eff}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.23",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.1",
+      "officialNumber": "C4.2.23",
+      "pdfPage": 106,
+      "latex": "M_{Ed}=\\frac{N_{Ed}\\,e_0+M^I_{Ed}}{1-N_{Ed}/N_{cr}-N_{Ed}/S_V}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.24",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.2",
+      "officialNumber": "C4.2.24",
+      "pdfPage": 107,
+      "latex": "V_{Ed}=\\pi\\,\\frac{M_{Ed}}{L}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.25",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.3",
+      "officialNumber": "C4.2.25",
+      "pdfPage": 107,
+      "latex": "\\frac{N_{c,Ed}}{N_{b,Rd}}\\le1{,}0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.26",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.3",
+      "officialNumber": "C4.2.26",
+      "pdfPage": 107,
+      "latex": "J_{eff}=0{,}5\\,h_0^2\\,A_C"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.27",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.4",
+      "officialNumber": "C4.2.27",
+      "pdfPage": 108,
+      "latex": "J_{eff}=0{,}5\\,h_0^2\\,A_C+2\\,\\mu\\,J_C"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.28",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.4",
+      "officialNumber": "C4.2.28",
+      "pdfPage": 108,
+      "latex": "\\lambda=\\frac{L}{i_0}=L\\sqrt{\\frac{2\\,A_C}{0{,}5\\,h_0^2\\,A_C+2\\,J_C}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.29",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.5",
+      "officialNumber": "C4.2.29",
+      "pdfPage": 108,
+      "latex": "i_y=\\frac{i_0}{1{,}15}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.ii",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.3",
+      "officialNumber": "C4.2.II",
+      "pdfPage": 107,
+      "caption": "Rigidezza a taglio equivalenti di aste tralicciate o calastrellate",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Schema dell’asta composta (v. fig. C4.2.7)"
+          },
+          {
+            "text": "(1)"
+          },
+          {
+            "text": "(2)"
+          },
+          {
+            "text": "(3)"
+          },
+          {
+            "text": "(4)"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "SV – rigidezza a taglio",
+            "latex": "S_V\\text{ – rigidezza a taglio}"
+          },
+          {
+            "text": "n · EA · Ad · h₀²/d³",
+            "latex": "n\\,E_A\\,A_d\\,h_0^2/d^3"
+          },
+          {
+            "text": "n · EA · Ad · h₀²/(2 · d³)",
+            "latex": "n\\,E_A\\,A_d\\,h_0^2/(2\\,d^3)"
+          },
+          {
+            "text": "n · EA · Ad · h₀²/[d³ · (1 + Ad · h₀³/(AV · d³))]",
+            "latex": "\\frac{n\\,E_A\\,A_d\\,h_0^2}{d^3\\left(1+A_d\\,h_0^3/(A_V\\,d^3)\\right)}"
+          },
+          {
+            "text": "24 · E · JC/[a² · (1 + 2 · JC · h₀/(n · JV · a))] ≤ 2π² · E · JC/a²",
+            "latex": "\\frac{24\\,E\\,J_C}{a^2\\left(1+2\\,J_C\\,h_0/(n\\,J_V\\,a)\\right)}\\le\\frac{2\\pi^2\\,E\\,J_C}{a^2}"
+          }
+        ]
+      ],
+      "notes": [
+        "Ad area dei diagonali, AV area dei calastrelli, JV momento di inerzia del calastrello, AC area di un corrente, n numero di piani di tralicciatura o calastrellatura."
+      ]
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.iii",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.5",
+      "officialNumber": "C4.2.III",
+      "pdfPage": 109,
+      "caption": "Disposizione delle imbottiture di connessione tra i profili",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Tipo di asta composta (Figura C4.2.10)"
+          },
+          {
+            "text": "Spaziatura massima tra i collegamenti(*)"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Tipo (1), (2), (3) o (4) collegati con imbottiture bullonate o saldate"
+          },
+          {
+            "text": "15 imin",
+            "latex": "15\\,i_{min}"
+          }
+        ],
+        [
+          {
+            "text": "Tipi (5) o (6) collegati con coppie di calastrelli"
+          },
+          {
+            "text": "70 imin",
+            "latex": "70\\,i_{min}"
+          }
+        ]
+      ],
+      "notes": [
+        "(*) La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio di inerzia minimo del singolo profilo costituente l’asta."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.7",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1",
+      "officialNumber": "C4.2.7",
+      "pdfPage": 106,
+      "caption": "Figura C4.2.7-Aste composte costituite da due correnti uguali",
+      "alt": "Schema di due correnti uguali collegati da elementi di parete",
+      "imagePath": "figures/circ2019/figc4.2.7.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 150,
+        "y": 310,
+        "width": 300,
+        "height": 145
+      },
+      "sha256": "ab2cec690a08509af4e5f0d89d0d209487c9f815d654190531e4a2d9158b9d60"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.8",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.3",
+      "officialNumber": "C4.2.8",
+      "pdfPage": 107,
+      "caption": "Figura C4.2.8-Lunghezza di libera inflessione dei correnti di aste tralicciate",
+      "alt": "Schema della lunghezza di libera inflessione dei correnti di aste tralicciate",
+      "imagePath": "figures/circ2019/figc4.2.8.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 125,
+        "y": 355,
+        "width": 350,
+        "height": 235
+      },
+      "sha256": "4acc970209f0c9e6c7679bca5456f9d83226500dcb2f717c909fb7b4a83976c1"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.9",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.4",
+      "officialNumber": "C4.2.9",
+      "pdfPage": 108,
+      "caption": "Figura C4.2.9-Schema di calcolo semplificato per un’asta calastrellata",
+      "alt": "Schema di calcolo semplificato per un’asta calastrellata",
+      "imagePath": "figures/circ2019/figc4.2.9.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 175,
+        "y": 155,
+        "width": 250,
+        "height": 145
+      },
+      "sha256": "9bfa7c6fc7fbc8cddd0704185958642e779c699c610052bfe1f724467f786789"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.10",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.5",
+      "officialNumber": "C4.2.10",
+      "pdfPage": 108,
+      "caption": "Figura C4.2.10-Tipologie di aste composte costituite da elementi ravvicinati",
+      "alt": "Tipologie di aste composte costituite da elementi ravvicinati",
+      "imagePath": "figures/circ2019/figc4.2.10.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 100,
+        "y": 580,
+        "width": 400,
+        "height": 150
+      },
+      "sha256": "28e3eec224d45869e393722ca580ce016fa11e8e5cd52e629270531264a6c29b"
+    }
+  ]
+}

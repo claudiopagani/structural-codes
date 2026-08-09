@@ -1,0 +1,153 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c6.7.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C6.7.6",
+    "sortKey": "006.007.006"
+  },
+  "title": "CONTROLLO E MONITORAGGIO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c6.7.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c6.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c6",
+      "urn:structural-codes:it:unit:circ2019:c6.7"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.7.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C6.7.6\u0002 CONTROLLO E MONITORAGGIO",
+        "normalized": "C6.7.6 CONTROLLO E MONITORAGGIO",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 194,
+        "printedPage": "190",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "5b4e0e70099baf44d92d00b243f9067d83aa4290a17fed250301b1c05bab89ee",
+        "normalizedSha256": "e7a2f3351ec8228185ff746236c4273014d44122f0abfb19522610a420d2c140"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.7.6#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il programma dei controlli previsti in progetto indicherà la strumentazione da impiegare, nonché l’ubicazione degli strumenti e\nla sequenza delle misure.",
+        "normalized": "Il programma dei controlli previsti in progetto indicherà la strumentazione da impiegare, nonché l’ubicazione degli strumenti e la sequenza delle misure.",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 194,
+        "printedPage": "190",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "70c5d8e069acb32d0b2c6cee35e424507cf7ad23feac6ef75f380ce4a08f95a6",
+        "normalizedSha256": "6ae556266add5718068f3c2307cadc96618a7226bcd1f1125a3d67e03b9af59d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c6.7.6#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:6.7.6",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c6.7.6#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ6:step2",
+      "kind": "script",
+      "toolVersion": "circ6-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c6-7-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "circ2019-c6-7-6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

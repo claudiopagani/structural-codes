@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.7.10",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.7.10",
+    "sortKey": "011.007.010"
+  },
+  "title": "PROCEDURE DI IDENTIFICAZIONE, QUALIFICAZIONE E ACCETTAZIONE – CENTRI DI LAVORAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.7.10#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.7"
+    ],
+    "position": 10
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.10#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.7.10 PROCEDURE DI IDENTIFICAZIONE, QUALIFICAZIONE E ACCETTAZIONE – CENTRI DI LAVORAZIONE",
+        "normalized": "11.7.10 PROCEDURE DI IDENTIFICAZIONE, QUALIFICAZIONE E ACCETTAZIONE – CENTRI DI LAVORAZIONE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 352,
+        "printedPage": "348",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f47e27ee7938a6dee103283963902ad39938a587c91969555e0d9b524afd1fdf",
+        "normalizedSha256": "f47e27ee7938a6dee103283963902ad39938a587c91969555e0d9b524afd1fdf"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.10#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le caratteristiche e le prestazioni dei materiali devono essere garantite dai fabbricanti, dai centri di lavorazione, dai fornitori in-\ntermedi, per ciascuna fornitura, secondo le disposizioni che seguono.",
+        "normalized": "Le caratteristiche e le prestazioni dei materiali devono essere garantite dai fabbricanti, dai centri di lavorazione, dai fornitori intermedi, per ciascuna fornitura, secondo le disposizioni che seguono.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 352,
+        "printedPage": "348",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "b2c2478b20c2e1a812fd58870e512378022c72359d3a104230d5358c2ae9def2",
+        "normalizedSha256": "28ae6a882004628bf5035c4905211d51204e88558030cf0367b4a36c3ae5afb4"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-7-10-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

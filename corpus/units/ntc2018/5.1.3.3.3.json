@@ -1,0 +1,722 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "5.1.3.3.3",
+    "sortKey": "005.001.003.003.003"
+  },
+  "title": "Schemi di Carico",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:5",
+      "urn:structural-codes:it:unit:ntc2018:5.1",
+      "urn:structural-codes:it:unit:ntc2018:5.1.3",
+      "urn:structural-codes:it:unit:ntc2018:5.1.3.3"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "5.1.3.3.3. Schemi di Carico",
+        "normalized": "5.1.3.3.3 Schemi di Carico",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "35b02ef2c911dea2d63f7dbceea2424026268c9dbea2e3f678f864796e4d29e6",
+        "normalizedSha256": "82ed721a5f1e4a9b9c7b263f0ad73b44f758b7d76a13c6a814c7a0b382792ce5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le azioni variabili del traffico, comprensive degli effetti dinamici, sono definite dai seguenti Schemi di Carico:",
+        "normalized": "Le azioni variabili del traffico, comprensive degli effetti dinamici, sono definite dai seguenti Schemi di Carico:",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le azioni variabili del traffico, comprensive degli effetti dinamici, sono definite dai seguenti Schemi di Carico:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "37af3a7c213e89226280ecb2f689e6987f7b608b977a4950d959ccfe17a3e38e",
+        "normalizedSha256": "37af3a7c213e89226280ecb2f689e6987f7b608b977a4950d959ccfe17a3e38e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schema di Carico 1: è costituito da carichi concentrati su due assi in tandem, applicati su impronte di pneumatico di forma\nquadrata e lato 0,40 m, e da carichi uniformemente distribuiti come mostrato in Fig. 5.1.2. Questo\nschema è da assumere a riferimento sia per le verifiche globali, sia per le verifiche locali, considerando\nun solo carico tandem per corsia, disposto in asse alla corsia stessa. Il carico tandem, se presente, va\nconsiderato per intero.",
+        "normalized": "Schema di Carico 1: è costituito da carichi concentrati su due assi in tandem, applicati su impronte di pneumatico di forma quadrata e lato 0,40 m, e da carichi uniformemente distribuiti come mostrato in Fig. 5.1.2. Questo schema è da assumere a riferimento sia per le verifiche globali, sia per le verifiche locali, considerando un solo carico tandem per corsia, disposto in asse alla corsia stessa. Il carico tandem, se presente, va considerato per intero.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schema di Carico 1: è costituito da carichi concentrati su due assi in tandem, applicati su impronte di pneumatico di forma quadrata e lato 0,40 m, e da carichi uniformemente distribuiti come mostrato in Fig. 5.1.2. Questo schema è da assumere a riferimento sia per le verifiche globali, sia per le verifiche locali, considerando un solo carico tandem per corsia, disposto in asse alla corsia stessa. Il carico tandem, se presente, va considerato per intero."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0be0f61f914536a1459124bf530ea15b7c925e59a6f3440617430c2c58208e51",
+        "normalizedSha256": "9d0c1201cec9150d60da10893bf3ffc4c62cf69cc4cf1b0ed89e78302231dc40"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schema di Carico 2: è costituito da un singolo asse applicato su specifiche impronte di pneumatico di forma rettangolare,\ndi larghezza 0,60 m ed altezza 0,35 m, come mostrato in Fig. 5.1.2. Questo schema va considerato auto-\nnomamente con asse longitudinale nella posizione più gravosa ed è da assumere a riferimento solo per\nverifiche locali. Qualora sia più gravoso si considererà il peso di una singola ruota di 200 kN.",
+        "normalized": "Schema di Carico 2: è costituito da un singolo asse applicato su specifiche impronte di pneumatico di forma rettangolare, di larghezza 0,60 m ed altezza 0,35 m, come mostrato in Fig. 5.1.2. Questo schema va considerato autonomamente con asse longitudinale nella posizione più gravosa ed è da assumere a riferimento solo per verifiche locali. Qualora sia più gravoso si considererà il peso di una singola ruota di 200 kN.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schema di Carico 2: è costituito da un singolo asse applicato su specifiche impronte di pneumatico di forma rettangolare, di larghezza 0,60 m ed altezza 0,35 m, come mostrato in Fig. 5.1.2. Questo schema va considerato autonomamente con asse longitudinale nella posizione più gravosa ed è da assumere a riferimento solo per verifiche locali. Qualora sia più gravoso si considererà il peso di una singola ruota di 200 kN."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "86ce13e74a18f6bfbbd8c4182fca40cb223dab795fde40ee91b4b5116939919b",
+        "normalizedSha256": "d08e2678c2d042dc0809d7ed6e4f317fe923bfaf446bbbdf0919e8cd4ffa8501"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schema di Carico 3: è costituito da un carico isolato da 150 kN con impronta quadrata di lato 0,40 m. Si utilizza per verifi-\nche locali su marciapiedi non protetti da sicurvia.",
+        "normalized": "Schema di Carico 3: è costituito da un carico isolato da 150 kN con impronta quadrata di lato 0,40 m. Si utilizza per verifiche locali su marciapiedi non protetti da sicurvia.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schema di Carico 3: è costituito da un carico isolato da 150 kN con impronta quadrata di lato 0,40 m. Si utilizza per verifiche locali su marciapiedi non protetti da sicurvia."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5b90ca9d539e04dc2f3e8f156103782ca69a74de7daa7b00c19ab6001d98069d",
+        "normalizedSha256": "04488500e67050773e974c9321d9155ffb83ed468314d592e6cd4a0b8f6e6760"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schema di Carico 4: è costituito da un carico isolato da 10 kN con impronta quadrata di lato 0,10 m. Si utilizza per verifiche\nlocali su marciapiedi protetti da sicurvia e sulle passerelle pedonali.",
+        "normalized": "Schema di Carico 4: è costituito da un carico isolato da 10 kN con impronta quadrata di lato 0,10 m. Si utilizza per verifiche locali su marciapiedi protetti da sicurvia e sulle passerelle pedonali.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schema di Carico 4: è costituito da un carico isolato da 10 kN con impronta quadrata di lato 0,10 m. Si utilizza per verifiche locali su marciapiedi protetti da sicurvia e sulle passerelle pedonali."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a8ed88cf2bc57d7752fe0e98e2a53a8aae7399ca8777df314a5cc2c427bc958a",
+        "normalizedSha256": "f23e779561dfd591eb51dc7957f4d102636f97652df97ac3475a8dccbd665898"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schema di Carico 5: costituito dalla folla compatta, agente con intensità nominale, comprensiva degli effetti dinamici, di 5,0\nkN/m². Il valore di combinazione è invece di 2,5 kN/m². Il carico folla deve essere applicato su tutte le\nzone significative della superficie di influenza, inclusa l’area dello spartitraffico centrale, ove rilevante.",
+        "normalized": "Schema di Carico 5: costituito dalla folla compatta, agente con intensità nominale, comprensiva degli effetti dinamici, di 5,0 kN/m². Il valore di combinazione è invece di 2,5 kN/m². Il carico folla deve essere applicato su tutte le zone significative della superficie di influenza, inclusa l’area dello spartitraffico centrale, ove rilevante.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schema di Carico 5: costituito dalla folla compatta, agente con intensità nominale, comprensiva degli effetti dinamici, di 5,0 kN/m². Il valore di combinazione è invece di 2,5 kN/m². Il carico folla deve essere applicato su tutte le zone significative della superficie di influenza, inclusa l’area dello spartitraffico centrale, ove rilevante."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "87c1d0e8c546301bae93ac1e06eb4f8f8ba0b582b77b7f80978478ac586a557e",
+        "normalizedSha256": "700d52926d76edb5453646559e8daaf227f33bf89b56843b94cc563cdc4e2cb2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Schemi di Carico 6.a, b, c: In assenza di studi specifici ed in alternativa al modello di carico principale, generalmente cautelativo,\nper opere di luce maggiore di 300 m, ai fini della statica complessiva del ponte, si può far riferimento\nai seguenti carichi qL,a, qL,b e qL,c",
+        "normalized": "Schemi di Carico 6.a, b, c: In assenza di studi specifici ed in alternativa al modello di carico principale, generalmente cautelativo, per opere di luce maggiore di 300 m, ai fini della statica complessiva del ponte, si può far riferimento ai seguenti carichi qL,a, qL,b e qL,c",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Schemi di Carico 6.a, b, c: In assenza di studi specifici ed in alternativa al modello di carico principale, generalmente cautelativo, per opere di luce maggiore di 300 m, ai fini della statica complessiva del ponte, si può far riferimento ai seguenti carichi "
+          },
+          {
+            "kind": "math",
+            "value": "qL,a",
+            "latex": "q_{L,a}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "qL,b",
+            "latex": "q_{L,b}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "qL,c",
+            "latex": "q_{L,c}"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "df7cf4ab761f8ac75eff20eb063e7016781aa30cc1ec361f47723a48c8224c84",
+        "normalizedSha256": "0d3b5ec9ae3bd1a2e45064ace13bc02439da13f7d0a3878b0817dc4526918502"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-008",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.1.1",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "2d18af26752f30f6d23319e9531519f5e873749da88e6d77f9f47c4917696b37",
+        "normalizedSha256": "2d18af26752f30f6d23319e9531519f5e873749da88e6d77f9f47c4917696b37"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-009",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.1.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "c9e5495e0ab4c57ef6937d169549d924760e0ee6f6bdeea58c2c22bbe1428cbb",
+        "normalizedSha256": "c9e5495e0ab4c57ef6937d169549d924760e0ee6f6bdeea58c2c22bbe1428cbb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-010",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.1.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "9a33a357054923fbc73726b2f1610b0f04842459ff4cee2d38eb2cfb598efcec",
+        "normalizedSha256": "9a33a357054923fbc73726b2f1610b0f04842459ff4cee2d38eb2cfb598efcec"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3#block-editorial-011",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "essendo L la lunghezza della zona caricata in m.",
+        "normalized": "essendo L la lunghezza della zona caricata in m.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo L la lunghezza della zona caricata in m."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 670
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ace9492772f1a00da8a2f53a8e601e6d53506e504e799469513fe6f18be8bd8d",
+        "normalizedSha256": "ace9492772f1a00da8a2f53a8e601e6d53506e504e799469513fe6f18be8bd8d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:5.1.1",
+      "urn:structural-codes:it:asset:formula:ntc2018:5.1.2",
+      "urn:structural-codes:it:asset:formula:ntc2018:5.1.3"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc5-step1",
+      "kind": "automated-agent",
+      "toolVersion": "ntc5-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-5-1-3-3-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-5-1-3-3-3-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      }
+    ]
+  }
+}

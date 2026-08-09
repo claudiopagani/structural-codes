@@ -1,0 +1,187 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2e",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.62",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.62",
+      "pdfPage": 117,
+      "latex": "b_{\\mathrm{eff}}=\\beta\\,b_0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.63",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.63",
+      "pdfPage": 117,
+      "latex": "\\alpha_0=\\sqrt{1+\\frac{A_{sl}}{b_0t}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.64",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.64",
+      "pdfPage": 118,
+      "latex": "\\begin{aligned}&\\text{(a)}\\quad\\beta>0{,}20\\quad\\begin{cases}\\sigma_2=1{,}25(\\beta-0{,}20)\\,\\sigma_1\\\\\\sigma(y)=\\sigma_2+(\\sigma_1-\\sigma_2)\\left(1-\\frac{y}{b_0}\\right)^4\\end{cases}\\ ;\\quad\\text{(b)}\\quad\\beta\\le0{,}20\\quad\\begin{cases}\\sigma_2=0\\\\\\sigma(y)=\\sigma_1\\left(1-\\frac{y}{b_1}\\right)^4\\end{cases}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.65",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.65",
+      "pdfPage": 118,
+      "latex": "A_{\\mathrm{eff}}=\\beta^\\kappa\\,A_{c,\\mathrm{eff}}\\ge\\beta\\,A_{c,\\mathrm{eff}}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.x",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.X",
+      "pdfPage": 117,
+      "caption": "Fattori riduttivi β per la larghezza collaborante",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "κ = α_0·b_0/L_e",
+            "latex": "\\kappa=\\frac{\\alpha_0\\,b_0}{L_e}"
+          },
+          {
+            "text": "Sezioni da verificare"
+          },
+          {
+            "text": "Valori di β"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "κ ≤ 0,02",
+            "latex": "\\kappa\\le0{,}02"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "β = 1,0",
+            "latex": "\\beta=1{,}0"
+          }
+        ],
+        [
+          {
+            "text": "0,02 < κ ≤ 0,70",
+            "latex": "0{,}02<\\kappa\\le0{,}70",
+            "rowSpan": 2
+          },
+          {
+            "text": "Zone a momento positivo"
+          },
+          {
+            "text": "β = β_1 = 1/(1 + 6,4·κ²)",
+            "latex": "\\beta=\\beta_1=\\frac{1}{1+6{,}4\\,\\kappa^2}"
+          }
+        ],
+        [
+          {
+            "text": "Zone a momento negativo"
+          },
+          {
+            "text": "β = β_2 = 1/[1 + 6,0(κ − 1/(2500·κ)) + 1,6·κ²]",
+            "latex": "\\beta=\\beta_2=\\frac{1}{1+6{,}0\\left(\\kappa-\\frac{1}{2500\\,\\kappa}\\right)+1{,}6\\,\\kappa^2}"
+          }
+        ],
+        [
+          {
+            "text": "κ > 0,70",
+            "latex": "\\kappa>0{,}70",
+            "rowSpan": 2
+          },
+          {
+            "text": "Zone a momento positivo"
+          },
+          {
+            "text": "β = β_1 = 1/(5,9·κ)",
+            "latex": "\\beta=\\beta_1=\\frac{1}{5{,}9\\,\\kappa}"
+          }
+        ],
+        [
+          {
+            "text": "Zone a momento negativo"
+          },
+          {
+            "text": "β = β_1 = 1/(8,6·κ)",
+            "latex": "\\beta=\\beta_1=\\frac{1}{8{,}6\\,\\kappa}"
+          }
+        ],
+        [
+          {
+            "text": "κ qualsiasi",
+            "latex": "\\kappa\\text{ qualsiasi}"
+          },
+          {
+            "text": "Appoggi di estremità"
+          },
+          {
+            "text": "β = (0,55 + 0,025/κ)β_1 ≤ β_1",
+            "latex": "\\beta=\\left(0{,}55+\\frac{0{,}025}{\\kappa}\\right)\\beta_1\\le\\beta_1"
+          }
+        ],
+        [
+          {
+            "text": "κ qualsiasi",
+            "latex": "\\kappa\\text{ qualsiasi}"
+          },
+          {
+            "text": "Sbalzi"
+          },
+          {
+            "text": "β = β_2 sugli appoggi, β_0 = 1,0 all’estremità",
+            "latex": "\\beta=\\beta_2\\text{ sugli appoggi, }\\beta_0=1{,}0\\text{ all’estremità}"
+          }
+        ]
+      ],
+      "notes": []
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.13",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.13",
+      "pdfPage": 117,
+      "caption": "Figura C4.2.13 – Luci equivalenti L_e e coefficienti riduttivi β per travi continue",
+      "alt": "Schema di travi continue con luci equivalenti L_e e coefficienti riduttivi β",
+      "imagePath": "figures/circ2019/figc4.2.13.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 95,
+        "y": 490,
+        "width": 400,
+        "height": 240
+      },
+      "sha256": "bbba14528a3cfb9e559c33fa197d9e7edfa00c8b2fc1396adf6a45a164bb8aa2"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.14",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.3",
+      "officialNumber": "C4.2.14",
+      "pdfPage": 118,
+      "caption": "Figura C4.2.14 – Distribuzione delle tensioni normali dovute al trascinamento da taglio",
+      "alt": "Distribuzione delle tensioni normali nella piattabanda dovuta al trascinamento da taglio nei casi a e b",
+      "imagePath": "figures/circ2019/figc4.2.14.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 105,
+        "y": 75,
+        "width": 390,
+        "height": 175
+      },
+      "sha256": "15d0492ac989c93d9b3ed5da626c687ce30ef12800e40716757a6c4a8c16cec0"
+    }
+  ]
+}

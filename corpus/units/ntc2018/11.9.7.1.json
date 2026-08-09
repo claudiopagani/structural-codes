@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.9.7.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.9.7.1",
+    "sortKey": "011.009.007.001"
+  },
+  "title": "PROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.9.7.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.9.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.9",
+      "urn:structural-codes:it:unit:ntc2018:11.9.7"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.7.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.9.7.1 P ROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+        "normalized": "11.9.7.1 PROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 363,
+        "printedPage": "359",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "26bfae904eb2365f18e8219078552b4f4ea7a75e912266281dee8432ccd8f42b",
+        "normalizedSha256": "6ef0d5ab42a7287f66ce8f3c8a870af367fb7b36692d58b135e7e78d5ebc211a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.7.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le prove di accettazione devono essere effettuate su almeno il 20% dei dispositivi, e comunque non meno di 4 e non più del nu-\nmero di dispositivi da mettere in opera.",
+        "normalized": "Le prove di accettazione devono essere effettuate su almeno il 20% dei dispositivi, e comunque non meno di 4 e non più del numero di dispositivi da mettere in opera.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 363,
+        "printedPage": "359",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "73b3b80363edf26dcff289420edb8d98c66eed66907353aca56fd6ac91167341",
+        "normalizedSha256": "4c20f18c3bed100f9a1b8513efb8fb735f29f672b23431278173364de6ba4247"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-9-7-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

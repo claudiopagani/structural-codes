@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.6.6.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.6.6.3",
+    "sortKey": "007.006.006.003"
+  },
+  "title": "COLLEGAMENTI TRAVE-COLONNA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.6.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.6",
+      "urn:structural-codes:it:unit:ntc2018:7.6.6"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.6.6.3 COLLEGAMENTI TRAVE - COLONNA",
+        "normalized": "7.6.6.3 COLLEGAMENTI TRAVE-COLONNA",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f78ceff6ff160f62685ac657da87aab8f9009e9743ee747231261cfadd2d3201",
+        "normalizedSha256": "ed31d7efea629191dadc24cff5e4d179d17960c906a07aba909c30620b3988d1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.3#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I collegamenti trave-colonna devono essere progettati secondo le indicazioni contenute al § 7.5.4.3.",
+        "normalized": "I collegamenti trave-colonna devono essere progettati secondo le indicazioni contenute al § 7.5.4.3.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "632f12fef5ba9743ad37cb0cd3f5514c09d24e1f5bc5bd7518fb061d94cf25f0",
+        "normalizedSha256": "632f12fef5ba9743ad37cb0cd3f5514c09d24e1f5bc5bd7518fb061d94cf25f0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc76:step1",
+      "kind": "script",
+      "toolVersion": "ntc76-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-6-6-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

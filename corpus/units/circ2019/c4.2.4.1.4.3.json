@@ -1,0 +1,1430 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.2.4.1.4.3",
+    "sortKey": "004.002.004.001.004.003"
+  },
+  "title": "Curve S-N",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4.2",
+      "urn:structural-codes:it:unit:circ2019:c4.2.4",
+      "urn:structural-codes:it:unit:circ2019:c4.2.4.1",
+      "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.2.4.1.4.3. Curve S-N",
+        "normalized": "C4.2.4.1.4.3. Curve S-N",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.2.4.1.4.3. Curve S-N"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 260,
+          "width": 450,
+          "height": 25
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0ecd2cdf9dad0bf49c5d8718d991ac35485756ac52964e7e45659e4e37a1dd44",
+        "normalizedSha256": "0ecd2cdf9dad0bf49c5d8718d991ac35485756ac52964e7e45659e4e37a1dd44"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La resistenza a fatica di un dettaglio è individuata nel piano bilogaritmico log(Δσ)-log(N) o log(Δτ)-log(N), essendo N il numero di cicli a rottura, mediante una curva caratteristica, detta curva S-N. Detta curva, è individuata mediante la classe di resistenza a fatica Δσ_C o Δτ_C, che rappresenta la resistenza a fatica del dettaglio, espressa in MPa, per N=2·10^6 cicli.",
+        "normalized": "La resistenza a fatica di un dettaglio è individuata nel piano bilogaritmico log(Δσ)-log(N) o log(Δτ)-log(N), essendo N il numero di cicli a rottura, mediante una curva caratteristica, detta curva S-N. Detta curva, è individuata mediante la classe di resistenza a fatica Δσ_C o Δτ_C, che rappresenta la resistenza a fatica del dettaglio, espressa in MPa, per N=2·10^6 cicli.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La resistenza a fatica di un dettaglio è individuata nel piano bilogaritmico "
+          },
+          {
+            "kind": "math",
+            "value": "log(Δσ)-log(N)",
+            "latex": "\\log(\\Delta\\sigma)-\\log(N)"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "log(Δτ)-log(N)",
+            "latex": "\\log(\\Delta\\tau)-\\log(N)"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "N",
+            "latex": "N"
+          },
+          {
+            "kind": "text",
+            "value": " il numero di cicli a rottura, mediante una curva caratteristica, detta curva S-N. Detta curva, è individuata mediante la classe di resistenza a fatica "
+          },
+          {
+            "kind": "math",
+            "value": "Δσ_C",
+            "latex": "\\Delta\\sigma_C"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "Δτ_C",
+            "latex": "\\Delta\\tau_C"
+          },
+          {
+            "kind": "text",
+            "value": ", che rappresenta la resistenza a fatica del dettaglio, espressa in MPa, per "
+          },
+          {
+            "kind": "math",
+            "value": "N=2·10^6",
+            "latex": "N=2\\cdot10^6"
+          },
+          {
+            "kind": "text",
+            "value": " cicli."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 280,
+          "width": 450,
+          "height": 80
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b9c3776962676fe9da8532a11ece2893da51c5f7a7b5a5b2fde1f234e3d683fc",
+        "normalizedSha256": "b9c3776962676fe9da8532a11ece2893da51c5f7a7b5a5b2fde1f234e3d683fc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le curve S-N per tensioni normali sono caratterizzate, oltre che dalla classe Δσ_C, dal limite di fatica ad ampiezza costante Δσ_D, corrispondente a N=5·10^6 cicli e dal limite per i calcoli di fatica, Δσ_L, che corrisponde all’intersezione del secondo ramo della curva con la verticale per N=10^8 cicli.",
+        "normalized": "Le curve S-N per tensioni normali sono caratterizzate, oltre che dalla classe Δσ_C, dal limite di fatica ad ampiezza costante Δσ_D, corrispondente a N=5·10^6 cicli e dal limite per i calcoli di fatica, Δσ_L, che corrisponde all’intersezione del secondo ramo della curva con la verticale per N=10^8 cicli.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le curve S-N per tensioni normali sono caratterizzate, oltre che dalla classe "
+          },
+          {
+            "kind": "math",
+            "value": "Δσ_C",
+            "latex": "\\Delta\\sigma_C"
+          },
+          {
+            "kind": "text",
+            "value": ", dal limite di fatica ad ampiezza costante "
+          },
+          {
+            "kind": "math",
+            "value": "Δσ_D",
+            "latex": "\\Delta\\sigma_D"
+          },
+          {
+            "kind": "text",
+            "value": ", corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "N=5·10^6",
+            "latex": "N=5\\cdot10^6"
+          },
+          {
+            "kind": "text",
+            "value": " cicli e dal limite per i calcoli di fatica, "
+          },
+          {
+            "kind": "math",
+            "value": "Δσ_L",
+            "latex": "\\Delta\\sigma_L"
+          },
+          {
+            "kind": "text",
+            "value": ", che corrisponde all’intersezione del secondo ramo della curva con la verticale per "
+          },
+          {
+            "kind": "math",
+            "value": "N=10^8",
+            "latex": "N=10^8"
+          },
+          {
+            "kind": "text",
+            "value": " cicli."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 330,
+          "width": 450,
+          "height": 45
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "27b3595653b8840bdffe654051ca764c5a6eebebd31c2ee6a498c0c7d1e74cf9",
+        "normalizedSha256": "27b3595653b8840bdffe654051ca764c5a6eebebd31c2ee6a498c0c7d1e74cf9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’equazione della curva S-N è",
+        "normalized": "L’equazione della curva S-N è",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’equazione della curva S-N è"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 375,
+          "width": 450,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2eda68ddbf43dbb6eb15c3809e2512863f7c8e3b713513c5062f1ebda8d72a2a",
+        "normalizedSha256": "2eda68ddbf43dbb6eb15c3809e2512863f7c8e3b713513c5062f1ebda8d72a2a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-formula-94",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.2.94",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 365,
+          "width": 325,
+          "height": 130
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6f1844bbdfefd30523ed5923543392d4b9249aa6471615dfb717af58f3e350c0",
+        "normalizedSha256": "6f1844bbdfefd30523ed5923543392d4b9249aa6471615dfb717af58f3e350c0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove m=3, cosicché risulta",
+        "normalized": "dove m=3, cosicché risulta",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "m=3",
+            "latex": "m=3"
+          },
+          {
+            "kind": "text",
+            "value": ", cosicché risulta"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 500,
+          "width": 450,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "204dd0d4b8c07b3d9669b3c8bcf9ad12313acfe242dd5a469e7373ef3deb539e",
+        "normalizedSha256": "204dd0d4b8c07b3d9669b3c8bcf9ad12313acfe242dd5a469e7373ef3deb539e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-formula-95",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.2.95",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 465,
+          "width": 325,
+          "height": 45
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b4f6453fd15e37318dcb2d65c35f0f3b9e3d6d0e2318b896fb40f9cc0b949d2b",
+        "normalizedSha256": "b4f6453fd15e37318dcb2d65c35f0f3b9e3d6d0e2318b896fb40f9cc0b949d2b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le curve S-N per tensioni normali sono rappresentate in Figura C4.2.21.",
+        "normalized": "Le curve S-N per tensioni normali sono rappresentate in Figura C4.2.21.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le curve S-N per tensioni normali sono rappresentate in Figura C4.2.21."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 515,
+          "width": 450,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "35deb4a5e95c663b9f9f948ff75900212a7a5733dde405271f47ac8d9efcc8da",
+        "normalizedSha256": "35deb4a5e95c663b9f9f948ff75900212a7a5733dde405271f47ac8d9efcc8da"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-figure-21",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c4.2.21",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 125,
+        "printedPage": "121",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 135,
+          "y": 510,
+          "width": 330,
+          "height": 225
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "62265dc9ea90c06dd53f6de2a673eb0f9b74971c2bca76fa6476432ee3764325",
+        "normalizedSha256": "62265dc9ea90c06dd53f6de2a673eb0f9b74971c2bca76fa6476432ee3764325"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p6",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le classi di resistenza a fatica per tensioni normali relative a i dettagli più comuni sono riportate nella Tabelle C4.2.XII.a, C4.2.XII.d, C4.2.XIII, C4.2.XIV, C4.2.XV e C4.2.XVI.a, mentre in Tabella C4.2.XVII sono riportate le classi dei dettagli tipici dei carriponte. Nelle tabelle le classi relative ad alcuni dettagli sono contrassegnate con un asterisco: per questi dettagli è possibile adottare una classificazione superiore di una classe, se si assume come resistenza a fatica ad ampiezza costante quella corrispondente a 10^7 cicli (vedi Figura C4.2.22).",
+        "normalized": "Le classi di resistenza a fatica per tensioni normali relative a i dettagli più comuni sono riportate nella Tabelle C4.2.XII.a, C4.2.XII.d, C4.2.XIII, C4.2.XIV, C4.2.XV e C4.2.XVI.a, mentre in Tabella C4.2.XVII sono riportate le classi dei dettagli tipici dei carriponte. Nelle tabelle le classi relative ad alcuni dettagli sono contrassegnate con un asterisco: per questi dettagli è possibile adottare una classificazione superiore di una classe, se si assume come resistenza a fatica ad ampiezza costante quella corrispondente a 10^7 cicli (vedi Figura C4.2.22).",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le classi di resistenza a fatica per tensioni normali relative a i dettagli più comuni sono riportate nella Tabelle C4.2.XII.a, C4.2.XII.d, C4.2.XIII, C4.2.XIV, C4.2.XV e C4.2.XVI.a, mentre in Tabella C4.2.XVII sono riportate le classi dei dettagli tipici dei carriponte. Nelle tabelle le classi relative ad alcuni dettagli sono contrassegnate con un asterisco: per questi dettagli è possibile adottare una classificazione superiore di una classe, se si assume come resistenza a fatica ad ampiezza costante quella corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "10^7",
+            "latex": "10^7"
+          },
+          {
+            "kind": "text",
+            "value": " cicli (vedi Figura C4.2.22)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 75,
+          "width": 450,
+          "height": 70
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0e121476bdf8f6e75257a446310f15499bfc5f25b5313a36e024aa174f9cfa37",
+        "normalizedSha256": "0e121476bdf8f6e75257a446310f15499bfc5f25b5313a36e024aa174f9cfa37"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-figure-22",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c4.2.22",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 155,
+          "width": 310,
+          "height": 160
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6e3cd2226614771d605e4ea2a9ae8de12a92972b65d8a2a7e8fb446b85089747",
+        "normalizedSha256": "6e3cd2226614771d605e4ea2a9ae8de12a92972b65d8a2a7e8fb446b85089747"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p7",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le curve S-N per tensioni tangenziali sono rappresentate in Figura C4.2.23.",
+        "normalized": "Le curve S-N per tensioni tangenziali sono rappresentate in Figura C4.2.23.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le curve S-N per tensioni tangenziali sono rappresentate in Figura C4.2.23."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 315,
+          "width": 450,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d75ece9e17aa5d23b21bb804d3dc6cb351a60838b0c73ddbc5d81ff24bc01db0",
+        "normalizedSha256": "d75ece9e17aa5d23b21bb804d3dc6cb351a60838b0c73ddbc5d81ff24bc01db0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p8",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le curve S-N per tensioni tangenziali sono caratterizzate, oltre che dalla classe Δτ_C, dal limite per i calcoli di fatica, Δτ_L, corrispondente a N=10^8 cicli. L’equazione della curva S-N è",
+        "normalized": "Le curve S-N per tensioni tangenziali sono caratterizzate, oltre che dalla classe Δτ_C, dal limite per i calcoli di fatica, Δτ_L, corrispondente a N=10^8 cicli. L’equazione della curva S-N è",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le curve S-N per tensioni tangenziali sono caratterizzate, oltre che dalla classe "
+          },
+          {
+            "kind": "math",
+            "value": "Δτ_C",
+            "latex": "\\Delta\\tau_C"
+          },
+          {
+            "kind": "text",
+            "value": ", dal limite per i calcoli di fatica, "
+          },
+          {
+            "kind": "math",
+            "value": "Δτ_L",
+            "latex": "\\Delta\\tau_L"
+          },
+          {
+            "kind": "text",
+            "value": ", corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "N=10^8",
+            "latex": "N=10^8"
+          },
+          {
+            "kind": "text",
+            "value": " cicli. L’equazione della curva S-N è"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 335,
+          "width": 450,
+          "height": 35
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "929c66d44c521e6b1081a38e062d2f0af4be9384edc7ffc01d818eb6ba396dae",
+        "normalizedSha256": "929c66d44c521e6b1081a38e062d2f0af4be9384edc7ffc01d818eb6ba396dae"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-formula-96",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.2.96",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 345,
+          "width": 325,
+          "height": 95
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "69e6904b036d0a77c505d469b168c862a508eb347d829b9111ab8234a2f9c638",
+        "normalizedSha256": "69e6904b036d0a77c505d469b168c862a508eb347d829b9111ab8234a2f9c638"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p9",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove m=5, cosicché risulta",
+        "normalized": "dove m=5, cosicché risulta",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "m=5",
+            "latex": "m=5"
+          },
+          {
+            "kind": "text",
+            "value": ", cosicché risulta"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 430,
+          "width": 450,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b44c8da0901af451f10e9cfdc431903fc6e682474e9e1e2fe7555ec422b0a882",
+        "normalizedSha256": "b44c8da0901af451f10e9cfdc431903fc6e682474e9e1e2fe7555ec422b0a882"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-formula-97",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.2.97",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 430,
+          "width": 325,
+          "height": 40
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f4be6d1dafd13d73c01937dccce43757316b4af00e3691bd840ef3c902ee15df",
+        "normalizedSha256": "f4be6d1dafd13d73c01937dccce43757316b4af00e3691bd840ef3c902ee15df"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p10",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le classi di resistenza a fatica per tensioni tangenziali relative ai dettagli più comuni sono riportate nella Tabelle C4.2.XII.b, C4.2.XII.c e C4.2.XVI.b.",
+        "normalized": "Le classi di resistenza a fatica per tensioni tangenziali relative ai dettagli più comuni sono riportate nella Tabelle C4.2.XII.b, C4.2.XII.c e C4.2.XVI.b.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le classi di resistenza a fatica per tensioni tangenziali relative ai dettagli più comuni sono riportate nella Tabelle C4.2.XII.b, C4.2.XII.c e C4.2.XVI.b."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 450,
+          "width": 450,
+          "height": 30
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e327d60b3220db3b681cf065b6adfd94aaf577a1a6fbb4b6c72dfb8bd47ea587",
+        "normalizedSha256": "e327d60b3220db3b681cf065b6adfd94aaf577a1a6fbb4b6c72dfb8bd47ea587"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-figure-23",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c4.2.23",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 170,
+          "y": 470,
+          "width": 300,
+          "height": 205
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9ab497db9a5064ea0a165fdcda14658d096a39430089edab61f4d5ea8846925b",
+        "normalizedSha256": "9ab497db9a5064ea0a165fdcda14658d096a39430089edab61f4d5ea8846925b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-p11",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la resistenza dei dettagli costruttivi tipici degli impalcati a piastra ortotropa, si può far riferimento al documento UNI EN 1993-1-9.",
+        "normalized": "Per la resistenza dei dettagli costruttivi tipici degli impalcati a piastra ortotropa, si può far riferimento al documento UNI EN 1993-1-9.",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per la resistenza dei dettagli costruttivi tipici degli impalcati a piastra ortotropa, si può far riferimento al documento UNI EN 1993-1-9."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 126,
+        "printedPage": "122",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 690,
+          "width": 450,
+          "height": 25
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a6cf4cf789ececb727ae447090e3a4fc3bf316a56af3daea1d2fd4646556c911",
+        "normalizedSha256": "a6cf4cf789ececb727ae447090e3a4fc3bf316a56af3daea1d2fd4646556c911"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xii-a",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.a",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 127,
+        "printedPage": "123",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 100,
+          "width": 455,
+          "height": 190
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f8ec17c314f9d6bb291d737599fc079dfa4d40672eadbcefa4d1840e0884c615",
+        "normalizedSha256": "f8ec17c314f9d6bb291d737599fc079dfa4d40672eadbcefa4d1840e0884c615"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xii-b",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.b",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 127,
+        "printedPage": "123",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 300,
+          "width": 455,
+          "height": 75
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d439cb34d21bc48576af18f484cf6f486cac6e05b0325b4921136a9b3b510a33",
+        "normalizedSha256": "d439cb34d21bc48576af18f484cf6f486cac6e05b0325b4921136a9b3b510a33"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xii-c",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.c",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 127,
+        "printedPage": "123",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 375,
+          "width": 455,
+          "height": 95
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "81a9113273a3a3c1a4d7efc27efd331e7e1e2cbfae8b781af5ebcd584b8da5c6",
+        "normalizedSha256": "81a9113273a3a3c1a4d7efc27efd331e7e1e2cbfae8b781af5ebcd584b8da5c6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xii-d",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.d",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 127,
+        "printedPage": "123",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 470,
+          "width": 455,
+          "height": 240
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a275284e092d8a229dea7f564515211c619b3fcbf2b9ce43c9f6b59061375058",
+        "normalizedSha256": "a275284e092d8a229dea7f564515211c619b3fcbf2b9ce43c9f6b59061375058"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xiii",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xiii",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 128,
+        "printedPage": "124",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 300,
+          "width": 455,
+          "height": 400
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "316802333add42cda9564b49b467e4b25b9921968c63e6933fd5e30cceba7ba7",
+        "normalizedSha256": "316802333add42cda9564b49b467e4b25b9921968c63e6933fd5e30cceba7ba7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xiv",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xiv",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 129,
+        "printedPage": "125",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 205,
+          "width": 455,
+          "height": 500
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e3d57945fb09c0138197756a71cd972063f32bf10d369faf3bdebcd23a0f4e29",
+        "normalizedSha256": "e3d57945fb09c0138197756a71cd972063f32bf10d369faf3bdebcd23a0f4e29"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xv",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xv",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 130,
+        "printedPage": "126",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 520,
+          "width": 455,
+          "height": 275
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d7b7d5ebf288f55a480f20a73002395e147eb70e13d5e76766cf200042d22a94",
+        "normalizedSha256": "d7b7d5ebf288f55a480f20a73002395e147eb70e13d5e76766cf200042d22a94"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xvi-a",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xvi.a",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 131,
+        "printedPage": "127",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 300,
+          "width": 455,
+          "height": 400
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f317121f426267a679ff713cb8d841e7bef85265801a27dee0904471059ba4d8",
+        "normalizedSha256": "f317121f426267a679ff713cb8d841e7bef85265801a27dee0904471059ba4d8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xvi-b",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xvi.b",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 132,
+        "printedPage": "128",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 520,
+          "width": 455,
+          "height": 145
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c30bef752852f7dfa492679abdbd6f85cd793baad92e9b668b26228179b7c723",
+        "normalizedSha256": "c30bef752852f7dfa492679abdbd6f85cd793baad92e9b668b26228179b7c723"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.4.3#block-table-xvii",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:circ2019:c4.2.xvii",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 132,
+        "printedPage": "128",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 650,
+          "width": 455,
+          "height": 140
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule e le figure restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c64a40f442e5900b99602df82e9f8ab9bca464cbb0b6de3feae10fa886f318a7",
+        "normalizedSha256": "c64a40f442e5900b99602df82e9f8ab9bca464cbb0b6de3feae10fa886f318a7"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.94",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.95",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.96",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.97"
+    ],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.a",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.b",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.c",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xii.d",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xiii",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xiv",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xv",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xvi.a",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xvi.b",
+      "urn:structural-codes:it:asset:table:circ2019:c4.2.xvii"
+    ],
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c4.2.21",
+      "urn:structural-codes:it:asset:figure:circ2019:c4.2.22",
+      "urn:structural-codes:it:asset:figure:circ2019:c4.2.23"
+    ]
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ42-step2o",
+      "kind": "automated-agent",
+      "toolVersion": "circ42-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-C4-2-4-1-4-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte."
+      },
+      {
+        "issueId": "circ2019-C4-2-4-1-4-3-assets-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Le Tabelle C4.2.XII.a–d e C4.2.XIII–XVII, le figure C4.2.21–C4.2.23 e i gruppi di formule C4.2.94–C4.2.97 richiedono revisione umana indipendente."
+      }
+    ]
+  }
+}

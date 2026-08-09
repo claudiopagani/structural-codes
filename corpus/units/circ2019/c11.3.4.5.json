@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.3.4.5",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.3.4.5",
+    "sortKey": "011.003.004.005"
+  },
+  "title": "PROCESSO DI SALDATURA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.3.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.3.4.5 P ROCESSO DI SALDATURA",
+        "normalized": "C11.3.4.5 PROCESSO DI SALDATURA",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "647d349af166c5188380b3201616754b906403f2a1304650f7bcc2c28bd9d800",
+        "normalizedSha256": "58b7c01cf7807abae40a7ce64afce63aa7f625aeabf86428ab2fb554807f1d1b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.5#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il “Costruttore”, citato nel presente paragrafo delle NTC, è la figura, prevista nel D.P.R. 380/01, che esegue l’opera, coincide quindi\ncon l’impresa che in cantiere, sotto la responsabilità e la vigilanza del Direttore dei lavori, procede all’assemblaggio della varie\ncomponenti metalliche, realizzando ad esempio l’intero scheletro strutturale di una costruzione, ovvero una parte di esso.",
+        "normalized": "Il “Costruttore”, citato nel presente paragrafo delle NTC, è la figura, prevista nel D.P.R. 380/01, che esegue l’opera, coincide quindi con l’impresa che in cantiere, sotto la responsabilità e la vigilanza del Direttore dei lavori, procede all’assemblaggio della varie componenti metalliche, realizzando ad esempio l’intero scheletro strutturale di una costruzione, ovvero una parte di esso.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "01665fa9f7b033800666189bbf7618fdaf595b6f8d9f14023d92a613ed30da92",
+        "normalizedSha256": "2db8d6fc2c0dc6c7b0d518e9a068e7551bcbe8690bc2e87e57ac09cfd14d839d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-3-4-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

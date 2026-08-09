@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.3.2.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.3.2.2",
+    "sortKey": "011.003.002.002"
+  },
+  "title": "ACCIAIO PER CALCESTRUZZO ARMATO B450A",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.3.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.3.2.2 ACCIAIO PER CALCESTRUZZO ARMATO B450A",
+        "normalized": "C11.3.2.2 ACCIAIO PER CALCESTRUZZO ARMATO B450A",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 327,
+        "printedPage": "323",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "146ba010f820985b4f33fd96c2a4003b90055ec3f22d2e69b5a2f86673eae089",
+        "normalizedSha256": "146ba010f820985b4f33fd96c2a4003b90055ec3f22d2e69b5a2f86673eae089"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.2.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Valgono le indicazioni di cui al § 11.3.2.1 delle NTC, fatti salvi i diversi valori richiesti in termini di duttilità, allungamento e\nlavorabilità.",
+        "normalized": "Valgono le indicazioni di cui al § 11.3.2.1 delle NTC, fatti salvi i diversi valori richiesti in termini di duttilità, allungamento e lavorabilità.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 327,
+        "printedPage": "323",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "4ff99aa873440665904912a40bb9cef425ae2fdaa0d3fa7001f7bb58b86bef07",
+        "normalizedSha256": "78fa220e33e59c69342241320c23825241cdf31c718f23c83e52b3dfcc270a2f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-3-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

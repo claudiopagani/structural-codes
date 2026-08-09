@@ -1,0 +1,109 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.11",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C7.11",
+    "sortKey": "007.011"
+  },
+  "title": "OPERE E SISTEMI GEOTECNICI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.11#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7"
+    ],
+    "position": 11
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.11#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.11 OPERE E SISTEMI GEOTECNICI",
+        "normalized": "C7.11 OPERE E SISTEMI GEOTECNICI",
+        "normalizationVersion": "circ711-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 244,
+        "printedPage": "240",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "65b7b344cfacbc70e0882976e50daf4722176a312424636d8a2c7a923faa4c14",
+        "normalizedSha256": "65b7b344cfacbc70e0882976e50daf4722176a312424636d8a2c7a923faa4c14"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.11#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La progettazione delle opere e dei sistemi geotecnici in presenza di azioni sismiche si esegue rispettando, in modo integrato, le prescrizioni contenute nel Capitolo 6 delle NTC relative alle azioni statiche e quelle specifiche fornite nel presente §7.11 per le azioni sismiche.",
+        "normalized": "La progettazione delle opere e dei sistemi geotecnici in presenza di azioni sismiche si esegue rispettando, in modo integrato, le prescrizioni contenute nel Capitolo 6 delle NTC relative alle azioni statiche e quelle specifiche fornite nel presente §7.11 per le azioni sismiche.",
+        "normalizationVersion": "circ711-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 244,
+        "printedPage": "240",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "5eebe37aec165d425c830e31fc6491a6115732627c523e2067d964c3612f1d38",
+        "normalizedSha256": "5eebe37aec165d425c830e31fc6491a6115732627c523e2067d964c3612f1d38"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ711-step1",
+      "kind": "script",
+      "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-11-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-11-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

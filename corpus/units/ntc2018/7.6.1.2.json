@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.6.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.6.1.2",
+    "sortKey": "007.006.001.002"
+  },
+  "title": "ACCIAIO PER C.A.",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.6.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.6.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.6",
+      "urn:structural-codes:it:unit:ntc2018:7.6.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.6.1.2 A CCIAIO PER C.A.",
+        "normalized": "7.6.1.2 ACCIAIO PER C.A.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8a878b66025bd050b621bd4b73d1e26c95f40e90c8c55e3289c67db18a124e93",
+        "normalizedSha256": "717c2a8237c1f5759c752a05cb6ceaeab50a9e193014e87ea2b01be9204abdc7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’acciaio per c.a. deve essere del tipo B450C, di cui al § 11.3.2.1 delle presenti norme; l’uso dell’acciaio B450A è consentito nei casi\nprevisti nel § 7.4.2.2.",
+        "normalized": "L’acciaio per c.a. deve essere del tipo B450C, di cui al § 11.3.2.1 delle presenti norme; l’uso dell’acciaio B450A è consentito nei casi previsti nel § 7.4.2.2.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e7fab9510cb38f4392ae57984c586a3c09c34d9d860f06f1f753e3ac7fc33aa5",
+        "normalizedSha256": "57b03e9665f572076f7a013010b34c91fabb5f0040c86b02ab9ec40c69bf13cb"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc76:step1",
+      "kind": "script",
+      "toolVersion": "ntc76-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-6-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

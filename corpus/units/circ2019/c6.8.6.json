@@ -1,0 +1,153 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c6.8.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C6.8.6",
+    "sortKey": "006.008.006"
+  },
+  "title": "FRONTI DI SCAVO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c6.8.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c6.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c6",
+      "urn:structural-codes:it:unit:circ2019:c6.8"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.8.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C6.8.6\u0002 FRONTI DI SCAVO",
+        "normalized": "C6.8.6 FRONTI DI SCAVO",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "d3cdb7c89fe5e349696b637f8e21bbb43f176797094f0abe4a3d27db35e396ac",
+        "normalizedSha256": "5d1d974254011b4912eb17a12ddfb0fa6fbbcd6aeec739e3ec300c38799bdbee"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.8.6#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I fronti di scavo indicati nella norma cui si riferiscono le presenti istruzioni attengono ad esempio a scavi di fondazioni, trincee\nstradali o ferroviarie, canali, ecc.",
+        "normalized": "I fronti di scavo indicati nella norma cui si riferiscono le presenti istruzioni attengono ad esempio a scavi di fondazioni, trincee stradali o ferroviarie, canali, ecc.",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "13a6321fc14566b82fda98b7ff595298016685c9d91a091beabf0bd39cd821d7",
+        "normalizedSha256": "df41310ac5c138cde4a910007fc3a27d8423f2dadbceada22bf692b543de31ea"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c6.8.6#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:6.8.6",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c6.8.6#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ6:step2",
+      "kind": "script",
+      "toolVersion": "circ6-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c6-8-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "circ2019-c6-8-6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

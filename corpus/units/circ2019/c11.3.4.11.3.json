@@ -1,0 +1,117 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.3",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.3.4.11.3",
+    "sortKey": "011.003.004.011.003"
+  },
+  "title": "Controlli di accettazione in cantiere",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.4",
+      "urn:structural-codes:it:unit:circ2019:c11.3.4.11"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.3.4.11.3 Controlli di accettazione in cantiere",
+        "normalized": "C11.3.4.11.3 Controlli di accettazione in cantiere",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 332,
+        "printedPage": "328",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7cd7800025ba084d62f3ffac874c5b22b2030bd4ddcdc815533f87b97cf39917",
+        "normalizedSha256": "7cd7800025ba084d62f3ffac874c5b22b2030bd4ddcdc815533f87b97cf39917"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.3#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In merito ai criteri di valutazione dei risultati dei controlli di accettazione, che la norma prevede siano adeguatamente stabiliti dal\nDirettore dei lavori, può farsi riferimento ai valori minimi garantiti dal produttore, indicati nelle pertinenti norme europee\narmonizzate di riferimento, ove disponibili.",
+        "normalized": "In merito ai criteri di valutazione dei risultati dei controlli di accettazione, che la norma prevede siano adeguatamente stabiliti dal Direttore dei lavori, può farsi riferimento ai valori minimi garantiti dal produttore, indicati nelle pertinenti norme europee armonizzate di riferimento, ove disponibili.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 332,
+        "printedPage": "328",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "61700fff1af9342249773efdc8c75327c0302c3448ae54bb6b463deabb234496",
+        "normalizedSha256": "403e22627cbe8337bc03f68925a3c46822a568b0791c70b0c7ed59401e14cd2d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-3-4-11-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

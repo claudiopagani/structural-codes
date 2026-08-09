@@ -1,0 +1,273 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.5.4.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.5.4.3",
+    "sortKey": "007.005.004.003"
+  },
+  "title": "COLLEGAMENTI TRAVE-COLONNA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.5.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.5",
+      "urn:structural-codes:it:unit:ntc2018:7.5.4"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.5.4.3 COLLEGAMENTI TRAVE - COLONNA",
+        "normalized": "7.5.4.3 COLLEGAMENTI TRAVE-COLONNA",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 248,
+        "printedPage": "244",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1fe3efb607ebc2d2e782c56bbb3338277b061d9de65a448d5971899073879b29",
+        "normalizedSha256": "922382ebb14bf500e6efb2f67dfd4a0858ce172a290e2c2b1616a8cf3533c170"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-editorial-001",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Verifiche di resistenza (RES)",
+        "normalized": "Verifiche di resistenza (RES)",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 248,
+        "printedPage": "244",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "492c8b9a2c795f5baf8884adbb95004058f1fb47da611f0492dd81e20301f480",
+        "normalizedSha256": "492c8b9a2c795f5baf8884adbb95004058f1fb47da611f0492dd81e20301f480"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I collegamenti trave-colonna devono essere progettati in modo da consentire la formazione delle zone dissipative alle estremità\ndelle travi secondo le indicazioni di cui al § 7.5.3.1. In particolare, la capacità a flessione del collegamento trave-colonna, M \nj,Rd,\ndeve soddisfare la seguente relazione",
+        "normalized": "I collegamenti trave-colonna devono essere progettati in modo da consentire la formazione delle zone dissipative alle estremità delle travi secondo le indicazioni di cui al § 7.5.3.1. In particolare, la capacità a flessione del collegamento trave-colonna, M_{j,Rd}, deve soddisfare la seguente relazione",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I collegamenti trave-colonna devono essere progettati in modo da consentire la formazione delle zone dissipative alle estremità delle travi secondo le indicazioni di cui al § 7.5.3.1. In particolare, la capacità a flessione del collegamento trave-colonna, "
+          },
+          {
+            "kind": "math",
+            "value": "M_{j,Rd}",
+            "latex": "M_{j,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", deve soddisfare la seguente relazione"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 248,
+        "printedPage": "244",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6220dc62d93a58b36e4294b67e69159c0c27644f94c5840992677133176e05c5",
+        "normalizedSha256": "28390775d45f161a4d72bb58eb9f2beafc9d53968172c87c174939cc67a9e910"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-editorial-003",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.5.12",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 248,
+        "printedPage": "244",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc75-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "98ed5c188f8ca963510848124920af82325c76cd6abc18f38d12834c6d3c6f0b",
+        "normalizedSha256": "98ed5c188f8ca963510848124920af82325c76cd6abc18f38d12834c6d3c6f0b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.4.3#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove M \nb,pl,Rd è la capacità a flessione della trave collegata e ·ov è il coefficiente di sovraresistenza.",
+        "normalized": "dove M_{b,pl,Rd} è la capacità a flessione della trave collegata e γ_ov è il coefficiente di sovraresistenza.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "M_{b,pl,Rd}",
+            "latex": "M_{b,pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità a flessione della trave collegata e "
+          },
+          {
+            "kind": "math",
+            "value": "γ_ov",
+            "latex": "\\gamma_{ov}"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di sovraresistenza."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 248,
+        "printedPage": "244",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8fcd808cdb414ffd1d82d13597b2748751308afe66700c7803b21ba224e14198",
+        "normalizedSha256": "719e38bf78f78773c904f2670e2db47b236a3915fbde8ed65c280238550e1968"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.5.12"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc75:step1",
+      "kind": "script",
+      "toolVersion": "ntc75-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-5-4-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-5-4-3-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabella e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
+      }
+    ]
+  }
+}

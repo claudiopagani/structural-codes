@@ -1,0 +1,103 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.3.4",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "4.3.4",
+    "sortKey": "004.003.004"
+  },
+  "title": "TRAVI CON SOLETTA COLLABORANTE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.3.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.3"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.3.4.   TRAVI CON SOLETTA COLLABORANTE",
+        "normalized": "4.3.4 TRAVI CON SOLETTA COLLABORANTE",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.3.4 TRAVI CON SOLETTA COLLABORANTE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 123,
+        "printedPage": "119",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 611,
+          "width": 430,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "54bb1b78508a210afb867873d0b3b1ad6806af49eae05b99e8fcc0ff5367349c",
+        "normalizedSha256": "922ffa77c6fc25ba07eeb0250298769445dca6f94207f324a73763415d8d8e29"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc43-step2",
+      "kind": "automated-agent",
+      "toolVersion": "ntc43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-3-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

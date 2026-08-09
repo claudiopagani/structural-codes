@@ -1,0 +1,135 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.9",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "6.9",
+    "sortKey": "006.009"
+  },
+  "title": "MIGLIORAMENTO E RINFORZO DEI TERRENI E DEGLI AMMASSI ROCCIOSI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.9#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6"
+    ],
+    "position": 9
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.9#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "66.9. MIGLIORAMENTO E RINFORZO DEI TERRENI E DEGLI AMMASSI ROCCIOSI",
+        "normalized": "6.9. MIGLIORAMENTO E RINFORZO DEI TERRENI E DEGLI AMMASSI ROCCIOSI",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 207,
+        "printedPage": "203",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0706ee0f3a29bcfe465caa4f147be40ddf6a965d77425e62007ffac9d39a4c90",
+        "normalizedSha256": "89319a368225036622f32605e9e6954c57a0320753817cbe4f623d23a625ab3e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.9#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le presenti norme riguardano la progettazione, la costruzione e il controllo degli interventi di miglioramento e rinforzo dei terre-\nni e degli ammassi rocciosi, realizzati per diverse finalità applicative.",
+        "normalized": "Le presenti norme riguardano la progettazione, la costruzione e il controllo degli interventi di miglioramento e rinforzo dei terreni e degli ammassi rocciosi, realizzati per diverse finalità applicative.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 207,
+        "printedPage": "203",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0e138b37c0ccdedd1e6b1e6802a5d3c1c5ce49ea041343c18211a9dc8b9253d9",
+        "normalizedSha256": "e4e57e40b205411095ed6a8a198f4b72d5458baba7225931a5cfd6f5d605ae78"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step3",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-9-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

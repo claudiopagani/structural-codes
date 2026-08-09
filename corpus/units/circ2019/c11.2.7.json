@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.2.7",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.2.7",
+    "sortKey": "011.002.007"
+  },
+  "title": "PROVE COMPLEMENTARI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.2.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.2"
+    ],
+    "position": 7
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.2.7 PROVE COMPLEMENTARI",
+        "normalized": "C11.2.7 PROVE COMPLEMENTARI",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 323,
+        "printedPage": "319",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "38c40937fd1cbf911b99793618138f9f5ca247a6fb21680ce1bcd9c854a377da",
+        "normalizedSha256": "38c40937fd1cbf911b99793618138f9f5ca247a6fb21680ce1bcd9c854a377da"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.7#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si precisa che i controlli complementari, come i controlli in corso d’opera sul calcestruzzo fresco, devono essere eseguiti dai\nlaboratori di cui all’art. 59 del D.P.R. n. 380/2001.",
+        "normalized": "Si precisa che i controlli complementari, come i controlli in corso d’opera sul calcestruzzo fresco, devono essere eseguiti dai laboratori di cui all’art. 59 del D.P.R. n. 380/2001.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 323,
+        "printedPage": "319",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "09bec0b5939af82734aa33cc1ce10038e37bc8551bf1c2e583fd95afd87cac58",
+        "normalizedSha256": "187b0f86700360e8a9fcac04e413cdcfbf6fee0713b7c6c88e6517746c8fb610"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-2-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

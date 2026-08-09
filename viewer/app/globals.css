@@ -594,10 +594,27 @@ summary:focus-visible {
   overflow-x: auto;
 }
 
+.formula-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .formula-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
   padding: 7px 0 12px;
   color: #18241c;
   font-size: 1.08rem;
+}
+
+.formula-number {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: #39443d;
+  font-family: var(--serif);
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .formula-asset figcaption,
@@ -612,25 +629,10 @@ summary:focus-visible {
   font-size: 11px;
 }
 
-.formula-asset figcaption em,
-.table-asset figcaption em,
-.figure-asset figcaption em {
-  color: var(--rust);
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .table-asset figcaption {
   display: block;
   margin-bottom: 12px;
   color: #27342b;
-}
-
-.table-asset figcaption em {
-  float: right;
 }
 
 .table-asset table {
@@ -1796,12 +1798,6 @@ summary:focus-visible {
     gap: 4px;
   }
 
-  .table-asset figcaption em {
-    display: block;
-    float: none;
-    margin-top: 5px;
-  }
-
   .roadmap-view {
     padding: 38px 18px 60px;
   }
@@ -1899,5 +1895,456 @@ summary:focus-visible {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* Viewer di consultazione comparata. È una superficie separata dal viewer
+   analitico: occupa l'intero viewport e non introduce una barra globale. */
+.comparison-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  min-width: 1120px;
+  grid-template-columns: minmax(330px, 29fr) minmax(400px, 35fr) minmax(420px, 36fr);
+  overflow: hidden;
+  color: #202721;
+  background: #d9d8d2;
+}
+
+.comparison-index,
+.comparison-text-pane,
+.comparison-pdf-pane {
+  min-width: 0;
+  height: 100vh;
+  border-right: 1px solid #c7c6bf;
+}
+
+.comparison-index {
+  display: grid;
+  grid-template-rows: 35px minmax(0, 1fr);
+  overflow: hidden;
+  background: #ecebe6;
+}
+
+.comparison-document-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr 34px;
+  gap: 1px;
+  padding: 4px;
+  background: #d7d6d0;
+  border-bottom: 1px solid #c7c6bf;
+}
+
+.comparison-document-switch button,
+.comparison-document-switch a {
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  padding: 0 8px;
+  color: #5b615c;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comparison-document-switch button.active {
+  color: #fff;
+  background: var(--green-deep);
+}
+
+.comparison-document-switch a {
+  color: var(--green-deep);
+  font-size: 13px;
+  background: rgb(255 255 255 / 55%);
+}
+
+.comparison-index-grid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.comparison-index-cell {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  grid-template-rows: 27px minmax(0, 1fr);
+  border-right: 1px solid #cdccc5;
+  border-bottom: 1px solid #cdccc5;
+}
+
+.comparison-index-cell:nth-child(2) {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.comparison-index-cell:nth-child(3) {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.comparison-index-cell:nth-child(4) {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.comparison-index-cell > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  color: #707570;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: #e1e0da;
+  border-bottom: 1px solid #cfcec8;
+}
+
+.comparison-index-cell > header b {
+  color: #969993;
+  font-family: var(--mono);
+  font-size: 8px;
+}
+
+.comparison-index-list {
+  min-height: 0;
+  padding: 3px;
+  overflow: auto;
+  scrollbar-color: #b5b7b2 transparent;
+  scrollbar-width: thin;
+}
+
+.comparison-index-list button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 6px;
+  padding: 5px 6px;
+  color: #414741;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comparison-index-list button:hover {
+  background: rgb(255 255 255 / 62%);
+}
+
+.comparison-index-list button.in-path {
+  color: #244735;
+  background: #dfe5dd;
+}
+
+.comparison-index-list button.active {
+  color: #fff;
+  background: var(--green);
+}
+
+.comparison-index-list strong {
+  overflow: hidden;
+  max-width: 54px;
+  font-family: var(--mono);
+  font-size: 8px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comparison-index-list span {
+  display: -webkit-box;
+  overflow: hidden;
+  font-family: var(--serif);
+  font-size: 9px;
+  line-height: 1.28;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.comparison-text-pane {
+  position: relative;
+  overflow: auto;
+  background: #f8f7f2;
+  scrollbar-color: #aaa9a2 transparent;
+  scrollbar-width: thin;
+  scroll-behavior: auto;
+}
+
+.comparison-text-flow {
+  width: min(100%, 760px);
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 22px 25px 55vh;
+}
+
+.comparison-unit {
+  scroll-margin-top: 12px;
+}
+
+.comparison-unit h2 {
+  display: block;
+  margin: 4px 0 1px;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.48;
+}
+
+.comparison-unit h2 span {
+  margin-right: 5px;
+  color: #9a4426;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.comparison-unit-depth-0 h2 {
+  display: block;
+  margin: 16px 0 6px;
+  color: var(--green-deep);
+  font-size: 15px;
+  letter-spacing: 0.015em;
+}
+
+.comparison-unit:first-child h2 {
+  margin-top: 0;
+}
+
+.comparison-unit-blocks {
+  display: block;
+}
+
+.comparison-block {
+  display: contents;
+}
+
+.comparison-block p {
+  display: inline;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 11.5px;
+  line-height: 1.48;
+}
+
+.comparison-block p::after {
+  content: " ";
+}
+
+.comparison-block-heading,
+.comparison-block-list-item,
+.comparison-block-formula-ref,
+.comparison-block-table-ref,
+.comparison-block-figure-ref {
+  display: block;
+}
+
+.comparison-block-heading p {
+  display: block;
+  margin: 5px 0 1px;
+  font-weight: 750;
+}
+
+.comparison-block-list-item {
+  padding-left: 10px;
+}
+
+.comparison-text-pane .inline-math {
+  font-size: 0.96em;
+}
+
+.comparison-text-pane .formula-asset,
+.comparison-text-pane .table-asset,
+.comparison-text-pane .figure-asset {
+  margin: 7px 0 9px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #ddd9cf;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+.comparison-text-pane .formula-scroll {
+  padding: 3px;
+  font-size: 0.78rem;
+}
+
+.comparison-text-pane .formula-asset figcaption,
+.comparison-text-pane .table-asset figcaption,
+.comparison-text-pane .figure-asset figcaption {
+  margin-top: 5px;
+  font-size: 7px;
+}
+
+.comparison-text-pane .table-scroll {
+  margin-top: 6px;
+}
+
+.comparison-text-pane table {
+  font-size: 8px;
+}
+
+.comparison-text-pane th,
+.comparison-text-pane td {
+  padding: 3px 4px;
+}
+
+.comparison-text-pane .figure-asset img {
+  max-height: 430px;
+  object-fit: contain;
+}
+
+.comparison-end-note {
+  margin-top: 32px;
+  padding-top: 12px;
+  color: #858881;
+  font-family: var(--serif);
+  font-size: 10px;
+  font-style: italic;
+  border-top: 1px solid #ddd9cf;
+}
+
+.comparison-pdf-pane {
+  position: relative;
+  overflow: auto;
+  background: #505250;
+  border-right: 0;
+  scrollbar-color: #8e918e #3e403e;
+  scrollbar-width: thin;
+  scroll-behavior: auto;
+}
+
+.comparison-pdf-status {
+  position: sticky;
+  z-index: 4;
+  top: 8px;
+  left: 50%;
+  display: flex;
+  width: max-content;
+  max-width: calc(100% - 28px);
+  align-items: center;
+  gap: 9px;
+  margin: 8px auto -33px;
+  padding: 6px 8px;
+  color: #eef0ec;
+  font-size: 8px;
+  background: rgb(26 31 27 / 88%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 28%);
+  backdrop-filter: blur(8px);
+}
+
+.comparison-pdf-status strong {
+  font-family: var(--serif);
+  font-size: 10px;
+}
+
+.comparison-pdf-status span {
+  color: #c4cbc5;
+  font-family: var(--mono);
+}
+
+.comparison-pdf-status a {
+  color: #f0d9a0;
+  text-decoration: none;
+}
+
+.comparison-pdf-pages {
+  display: grid;
+  gap: 12px;
+  padding: 46px 14px 55vh;
+}
+
+.comparison-pdf-page {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.707 / 1;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 9px rgb(0 0 0 / 38%);
+}
+
+.comparison-pdf-page > span {
+  position: absolute;
+  z-index: 2;
+  top: 5px;
+  right: 6px;
+  padding: 2px 4px;
+  color: #727772;
+  font-family: var(--mono);
+  font-size: 7px;
+  background: rgb(255 255 255 / 78%);
+  border-radius: 2px;
+}
+
+.comparison-pdf-page canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  background: #fff;
+}
+
+.comparison-loading,
+.comparison-pdf-error,
+.comparison-fatal {
+  display: grid;
+  min-height: 100%;
+  place-content: center;
+  gap: 10px;
+  padding: 28px;
+  color: #666d67;
+  text-align: center;
+}
+
+.comparison-loading > span {
+  width: 24px;
+  height: 24px;
+  justify-self: center;
+  border: 2px solid #b8bdb8;
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: comparison-spin 0.8s linear infinite;
+}
+
+.comparison-loading strong,
+.comparison-pdf-error strong {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.comparison-pdf-pane .comparison-loading,
+.comparison-pdf-error {
+  color: #e7e9e5;
+}
+
+.comparison-pdf-error span,
+.comparison-fatal span {
+  max-width: 300px;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+@keyframes comparison-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1120px) {
+  .comparison-shell {
+    right: auto;
+    width: 1120px;
   }
 }

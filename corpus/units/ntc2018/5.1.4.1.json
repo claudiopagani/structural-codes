@@ -1,0 +1,221 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:5.1.4.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "5.1.4.1",
+    "sortKey": "005.001.004.001"
+  },
+  "title": "VERIFICHE AGLI STATI LIMITE ULTIMI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:5.1.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:5",
+      "urn:structural-codes:it:unit:ntc2018:5.1",
+      "urn:structural-codes:it:unit:ntc2018:5.1.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "5.1.4.1 V ERIFICHE AGLI S TATI LIMITE U LTIMI",
+        "normalized": "5.1.4.1 VERIFICHE AGLI STATI LIMITE ULTIMI",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 162,
+        "printedPage": "158",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6c59b646494e5c999f5c7aac1275ca17d6332aad5d0285bd63cabd22d5fe2873",
+        "normalizedSha256": "0c6685d6755ccdae7e4cd779434d12d5791e99632081539fb3d1d1f8451bdb9a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.1.4.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si deve verificare che sia: Ed ǂ Rd, dove Ed è il valore di progetto degli effetti delle azioni ed Rd è la corrispondente resistenza di\nprogetto.",
+        "normalized": "Si deve verificare che sia: Ed ≤ Rd, dove Ed è il valore di progetto degli effetti delle azioni ed Rd è la corrispondente resistenza di progetto.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si deve verificare che sia: "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " ≤ "
+          },
+          {
+            "kind": "math",
+            "value": "Rd",
+            "latex": "R_d"
+          },
+          {
+            "kind": "text",
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore di progetto degli effetti delle azioni ed "
+          },
+          {
+            "kind": "math",
+            "value": "Rd",
+            "latex": "R_d"
+          },
+          {
+            "kind": "text",
+            "value": " è la corrispondente resistenza di progetto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 162,
+        "printedPage": "158",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1a88b0f0906b3696eec2c2d89704eb1d365ab6e4061e304a69b823a7189e1419",
+        "normalizedSha256": "14842f64bd1f8ca1eac79a807c1d76d79685f6f64201f5c68fcbc51cafb1332e"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc5-step2",
+      "kind": "automated-agent",
+      "toolVersion": "ntc5-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-5-1-4-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.7.8",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.7.8",
+    "sortKey": "011.007.008"
+  },
+  "title": "ELEMENTI MECCANICI DI COLLEGAMENTO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.7.8#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.7"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.7.8#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.7.8 ELEMENTI MECCANICI DI COLLEGAMENTO",
+        "normalized": "C11.7.8 ELEMENTI MECCANICI DI COLLEGAMENTO",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 333,
+        "printedPage": "329",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "8f2133bd148251633d4980b069e7943bc030115ca4d69efba46fdcdd604b5bc2",
+        "normalizedSha256": "8f2133bd148251633d4980b069e7943bc030115ca4d69efba46fdcdd604b5bc2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.7.8#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In presenza di azioni sismiche e con particolare riferimento al § 7.7.5.2. delle NTC, il fabbricante, al fine di garantire le prestazioni\npreviste nei confronti del comportamento a carici ciclici degli elementi meccanici di collegamento di cui al par. 11.7.10.2, dovrà\nfare riferimento ai criteri e alle modalità di prova pertinenti indicati nella UNI EN 14592 o nelle altre specifiche tecniche\napplicabili.",
+        "normalized": "In presenza di azioni sismiche e con particolare riferimento al § 7.7.5.2. delle NTC, il fabbricante, al fine di garantire le prestazioni previste nei confronti del comportamento a carici ciclici degli elementi meccanici di collegamento di cui al par. 11.7.10.2, dovrà fare riferimento ai criteri e alle modalità di prova pertinenti indicati nella UNI EN 14592 o nelle altre specifiche tecniche applicabili.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 333,
+        "printedPage": "329",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "e24ddf984bfe2f1483ee361639731f4591b679f2990e1e0f8e8d00dd2e76328d",
+        "normalizedSha256": "a448926c3f103fc65ba3991260c6687c2283ca6f31af9ab0db1e5d83b46b72de"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-7-8-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

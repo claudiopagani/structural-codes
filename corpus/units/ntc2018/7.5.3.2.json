@@ -1,0 +1,663 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.5.3.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.5.3.2",
+    "sortKey": "007.005.003.002"
+  },
+  "title": "VERIFICHE DI DUTTILITÀ (DUT)",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.5.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.5",
+      "urn:structural-codes:it:unit:ntc2018:7.5.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.5.3.2 V ERIFICHE DI DUTTILITA ’ (DUT)",
+        "normalized": "7.5.3.2 VERIFICHE DI DUTTILITÀ (DUT)",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cf6d5e3e211327868b02ee79dd32a2b2e7f7871a7a427c5b11815864e64bb232",
+        "normalizedSha256": "dc1c92f8a9c1b6f6dc999d3a1800faf4c82ba65ac938d64be7262360e4631667"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In ogni zona o elemento dissipativo si deve garantire una capacità in duttilità superiore alla corrispondente domanda in duttilità.\nLa verifica deve essere effettuata adottando le misure di deformazione adeguate ai meccanismi duttili previsti per le diverse\ntipologie strutturali.",
+        "normalized": "In ogni zona o elemento dissipativo si deve garantire una capacità in duttilità superiore alla corrispondente domanda in duttilità. La verifica deve essere effettuata adottando le misure di deformazione adeguate ai meccanismi duttili previsti per le diverse tipologie strutturali.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0311b68784e8577426d05634b2f6452ae27bd0e0b8101ad50ef246c755ab8ada",
+        "normalizedSha256": "d9b27b201c7f3014fe9df607fdae4d6f6c48bd28a1622c9fb38a78f830da591e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le tipologie indicate in § 7.5.2.1, si possono utilizzare le seguenti misure di deformazione locale T:",
+        "normalized": "Per le tipologie indicate in § 7.5.2.1, si possono utilizzare le seguenti misure di deformazione locale θ:",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le tipologie indicate in § 7.5.2.1, si possono utilizzare le seguenti misure di deformazione locale "
+          },
+          {
+            "kind": "math",
+            "value": "θ",
+            "latex": "\\theta"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3f45a2cc7d908089d3cfcb7315446c05f9eb35df668f133e703ba32c704c9e98",
+        "normalizedSha256": "b1a7dccacb5abeeb1bb039eeb2e6b7c1e82eecd1477ea866dead6b413f0131c5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ elementi inflessi o presso inflessi di strutture intelaiate: rotazione alla corda;",
+        "normalized": "ȭ elementi inflessi o presso inflessi di strutture intelaiate: rotazione alla corda;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b0c52fe1408d8cca96530ce7dd8ce8c9ca7226b1186b9b3f2ebf85dd3ccf2236",
+        "normalizedSha256": "b0c52fe1408d8cca96530ce7dd8ce8c9ca7226b1186b9b3f2ebf85dd3ccf2236"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ elementi prevalentemente tesi e compressi di strutture controventate: allungamento complessivo della diagonale;",
+        "normalized": "ȭ elementi prevalentemente tesi e compressi di strutture controventate: allungamento complessivo della diagonale;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ce4850a0e6c623f171c6ef6f1158ec747bb80ab87219b9cbde3de572392fa1d5",
+        "normalizedSha256": "ce4850a0e6c623f171c6ef6f1158ec747bb80ab87219b9cbde3de572392fa1d5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ elementi sottoposti a taglio e flessione di strutture con controventi eccentrici (elementi di collegamento): rotazione rigida tra\nl’elemento di connessione e l’elemento contiguo.",
+        "normalized": "ȭ elementi sottoposti a taglio e flessione di strutture con controventi eccentrici (elementi di collegamento): rotazione rigida tra l’elemento di connessione e l’elemento contiguo.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7de8ea043d94204ffcdf37c5657c2191aa37fecfdcbebf328312ac1d9321bdca",
+        "normalizedSha256": "f0ba846e0919b8fd78da181ea92c6d433b2bcd5a20668cb5267f824c58ddf0e7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-006",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.5.3.2:mu-local",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc75-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "5009756fe7ce0d504172a99722b3c1bdc9b419d0643251baa86f55eb20e034b3",
+        "normalizedSha256": "5009756fe7ce0d504172a99722b3c1bdc9b419d0643251baa86f55eb20e034b3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La domanda in duttilità locale è definita dal rapporto tra il valore di deformazione Tu misurato mediante analisi non lineare e il\nvalore di deformazione Ty al limite elastico. Nel caso di analisi strutturale lineare con fattore di comportamento, la domanda di\ndeformazione può essere dedotta dal campo di spostamenti ultimi ottenuti come in § 7.3.3.3.",
+        "normalized": "La domanda in duttilità locale è definita dal rapporto tra il valore di deformazione θ_u misurato mediante analisi non lineare e il valore di deformazione θ_y al limite elastico. Nel caso di analisi strutturale lineare con fattore di comportamento, la domanda di deformazione può essere dedotta dal campo di spostamenti ultimi ottenuti come in § 7.3.3.3.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La domanda in duttilità locale è definita dal rapporto tra il valore di deformazione "
+          },
+          {
+            "kind": "math",
+            "value": "θ_u",
+            "latex": "\\theta_u"
+          },
+          {
+            "kind": "text",
+            "value": " misurato mediante analisi non lineare e il valore di deformazione "
+          },
+          {
+            "kind": "math",
+            "value": "θ_y",
+            "latex": "\\theta_y"
+          },
+          {
+            "kind": "text",
+            "value": " al limite elastico. Nel caso di analisi strutturale lineare con fattore di comportamento, la domanda di deformazione può essere dedotta dal campo di spostamenti ultimi ottenuti come in § 7.3.3.3."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "129457a5fb9937246df1ab4bb0e1b23aa9644f1e056a932d87d4c8b8ac20b5c6",
+        "normalizedSha256": "8ab5a845dcf3ea4582412d4f6adf056e07d7618d6e23decce4ceca560d30780a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La capacità in duttilità locale è data dal rapporto tra la misura di deformazione al collasso Tu, valutata in corrispondenza della\nriduzione del 15% della massima resistenza dell’elemento, e la deformazione Ty corrispondente al raggiungimento della prima\nplasticizzazione.",
+        "normalized": "La capacità in duttilità locale è data dal rapporto tra la misura di deformazione al collasso θ_u, valutata in corrispondenza della riduzione del 15% della massima resistenza dell’elemento, e la deformazione θ_y corrispondente al raggiungimento della prima plasticizzazione.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La capacità in duttilità locale è data dal rapporto tra la misura di deformazione al collasso "
+          },
+          {
+            "kind": "math",
+            "value": "θ_u",
+            "latex": "\\theta_u"
+          },
+          {
+            "kind": "text",
+            "value": ", valutata in corrispondenza della riduzione del 15% della massima resistenza dell’elemento, e la deformazione "
+          },
+          {
+            "kind": "math",
+            "value": "θ_y",
+            "latex": "\\theta_y"
+          },
+          {
+            "kind": "text",
+            "value": " corrispondente al raggiungimento della prima plasticizzazione."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ad817bcc9a76b48744b23db6d9021bac9e7178955688ab57e95f34be4b8a7373",
+        "normalizedSha256": "3f8d99d34ca9d25b4722432afde28444a8ce7594ab0f2c9c96c618e76027a8e3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La capacità in duttilità locale, quando non sia determinata mediante sperimentazione diretta, deve essere valutata utilizzando\nmetodi di calcolo che descrivano in modo adeguato il comportamento in campo non-lineare, inclusi i fenomeni di instabilità\ndell’equilibrio, e tengano conto dei fenomeni di degrado connessi al comportamento ciclico.",
+        "normalized": "La capacità in duttilità locale, quando non sia determinata mediante sperimentazione diretta, deve essere valutata utilizzando metodi di calcolo che descrivano in modo adeguato il comportamento in campo non-lineare, inclusi i fenomeni di instabilità dell’equilibrio, e tengano conto dei fenomeni di degrado connessi al comportamento ciclico.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "270dae7faf4e112750eaa8633d42b33c109fbb2522f10db2c78749b7f930cdbe",
+        "normalizedSha256": "73a0690500249f49913e850de28c575e67a3656b59dc952630774a97bf25d2c8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La verifica di duttilità si ritiene comunque soddisfatta qualora siano rispettate, in funzione della classe di duttilità e del valore di\nbase del fattore di comportamento q0 utilizzato in fase di progetto, le prescrizioni relative alle classi di sezioni trasversali per le\nzone/elementi dissipativi riportate in Tab. 7.5.I nonché le prescrizioni specifiche di cui ai successivi paragrafi relativi a ciascuna\ntipologia strutturale e sia soddisfatta, per le sezioni delle colonne primarie delle strutture a telaio in cui si prevede la formazione\ndi zone dissipative, la relazione: ",
+        "normalized": "La verifica di duttilità si ritiene comunque soddisfatta qualora siano rispettate, in funzione della classe di duttilità e del valore di base del fattore di comportamento q_0 utilizzato in fase di progetto, le prescrizioni relative alle classi di sezioni trasversali per le zone/elementi dissipativi riportate in Tab. 7.5.I nonché le prescrizioni specifiche di cui ai successivi paragrafi relativi a ciascuna tipologia strutturale e sia soddisfatta, per le sezioni delle colonne primarie delle strutture a telaio in cui si prevede la formazione di zone dissipative, la relazione:",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La verifica di duttilità si ritiene comunque soddisfatta qualora siano rispettate, in funzione della classe di duttilità e del valore di base del fattore di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q_0",
+            "latex": "q_0"
+          },
+          {
+            "kind": "text",
+            "value": " utilizzato in fase di progetto, le prescrizioni relative alle classi di sezioni trasversali per le zone/elementi dissipativi riportate in Tab. 7.5.I nonché le prescrizioni specifiche di cui ai successivi paragrafi relativi a ciascuna tipologia strutturale e sia soddisfatta, per le sezioni delle colonne primarie delle strutture a telaio in cui si prevede la formazione di zone dissipative, la relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6bccf45607f435d59b9908a79359e656d7e7310d411b0028b77c1687d26d9e3d",
+        "normalizedSha256": "2ef4d8d2a65b7a6e9014b4dc634f8ae08e15940785ea456539c5e54768e0e748"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.5.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc75-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "a48c19ffd1ecf6d79cf0f13cfda7434e4105593fec22eaa33b92a10d613d6f30",
+        "normalizedSha256": "a48c19ffd1ecf6d79cf0f13cfda7434e4105593fec22eaa33b92a10d613d6f30"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove N \nEd è il valore della domanda a sforzo normale e Npl,Rd è il valore della capacità a sforzo normale determinata secondo\ncriteri di cui al § 4.2.4.1.2.",
+        "normalized": "dove N_{Ed} è il valore della domanda a sforzo normale e N_{pl,Rd} è il valore della capacità a sforzo normale determinata secondo criteri di cui al § 4.2.4.1.2.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "N_{Ed}",
+            "latex": "N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore della domanda a sforzo normale e "
+          },
+          {
+            "kind": "math",
+            "value": "N_{pl,Rd}",
+            "latex": "N_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore della capacità a sforzo normale determinata secondo criteri di cui al § 4.2.4.1.2."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d8879ded2cf31f54d1fc4e24a7a59e6fc91a7150ac451fde902aeb09eddb98ef",
+        "normalizedSha256": "864ceb74f9cf67c0084e7334905c5a200f1b8d8beb805492f5298d70290d96bb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.5.3.2#block-editorial-013",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:7.5.i",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 246,
+        "printedPage": "242",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc75-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "e64b74a3c91a1a9278751b146ba36976a0683597aa52c63973f6b391eaef754a",
+        "normalizedSha256": "e64b74a3c91a1a9278751b146ba36976a0683597aa52c63973f6b391eaef754a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.5.3.2:mu-local",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.5.3"
+    ],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:7.5.i"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc75:step1",
+      "kind": "script",
+      "toolVersion": "ntc75-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-5-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-5-3-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabella e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
+      }
+    ]
+  }
+}

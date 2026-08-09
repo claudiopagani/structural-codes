@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.4",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.8.2.2.4",
+    "sortKey": "007.008.002.002.004"
+  },
+  "title": "Travi in Muratura",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.8",
+      "urn:structural-codes:it:unit:circ2019:c7.8.2",
+      "urn:structural-codes:it:unit:circ2019:c7.8.2.2"
+    ],
+    "position": 4
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.8.2.2.4 Travi in Muratura",
+        "normalized": "C7.8.2.2.4 Travi in Muratura",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 233,
+        "printedPage": "229",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "55c4acadbf132112eb9ead37a4636795f68f56fad5c409bc105a026bd5ecd920",
+        "normalizedSha256": "55c4acadbf132112eb9ead37a4636795f68f56fad5c409bc105a026bd5ecd920"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.4#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella equazione [7.8.5] il simbolo f_bd è da intendersi f_hd.",
+        "normalized": "Nella equazione [7.8.5] il simbolo f_bd è da intendersi f_hd.",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nella equazione [7.8.5] il simbolo "
+          },
+          {
+            "kind": "math",
+            "value": "f_bd",
+            "latex": "f_{bd}"
+          },
+          {
+            "kind": "text",
+            "value": " è da intendersi "
+          },
+          {
+            "kind": "math",
+            "value": "f_hd",
+            "latex": "f_{hd}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 233,
+        "printedPage": "229",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "7c0ddfb2cb7ea0403d85a0c89ca0f377df758e6c71bd3bdecc87d4cf1e63804a",
+        "normalizedSha256": "7c0ddfb2cb7ea0403d85a0c89ca0f377df758e6c71bd3bdecc87d4cf1e63804a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ78-79-step1",
+      "kind": "script",
+      "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-8-2-2-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-8-2-2-4-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

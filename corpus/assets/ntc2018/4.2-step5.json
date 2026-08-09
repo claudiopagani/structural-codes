@@ -1,0 +1,858 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "4.2-step5",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.61",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.61",
+      "pdfPage": 113,
+      "latex": "M=k\\,d\\,F_{p,C}=k\\,d\\,0{,}7\\,A_{res}\\,f_{tbk}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.62",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.62",
+      "pdfPage": 114,
+      "latex": "F_{p,Cd}=\\frac{0{,}7\\,A_{res}\\,f_{tbk}}{\\gamma_{M7}}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.xiv",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8",
+      "officialNumber": "4.2.XIV",
+      "pdfPage": 112,
+      "caption": "Coefficienti di sicurezza per la verifica delle unioni",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Resistenza"
+          },
+          {
+            "text": "Fattore parziale"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Resistenza dei bulloni"
+          },
+          {
+            "text": "γM2 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza dei chiodi"
+          },
+          {
+            "text": "γM2 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza delle connessioni a perno"
+          },
+          {
+            "text": "γM2 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza delle saldature a parziale penetrazione e a cordone d’angolo"
+          },
+          {
+            "text": "γM2 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza dei piatti a contatto"
+          },
+          {
+            "text": "γM2 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza a scorrimento: per SLU"
+          },
+          {
+            "text": "γM3 = 1,25"
+          }
+        ],
+        [
+          {
+            "text": "per SLE"
+          },
+          {
+            "text": "γM3 = 1,10"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza delle connessioni a perno allo stato limite di esercizio"
+          },
+          {
+            "text": "γM6,ser = 1,0"
+          }
+        ],
+        [
+          {
+            "text": "Precarico di bullone ad alta resistenza con serraggio controllato"
+          },
+          {
+            "text": "γM7 = 1,0"
+          }
+        ],
+        [
+          {
+            "text": "Precarico di bullone ad alta resistenza con serraggio non controllato"
+          },
+          {
+            "text": "γM7 = 1,10"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.xv",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.XV",
+      "pdfPage": 113,
+      "caption": "Classi funzionali per i bulloni",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "Requisito"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "K0"
+          },
+          {
+            "text": "Nessun requisito sul fattore k"
+          }
+        ],
+        [
+          {
+            "text": "K1"
+          },
+          {
+            "text": "Campo di variabilità del fattore ki del singolo elemento tra minimo e massimo dichiarati sulla confezione"
+          }
+        ],
+        [
+          {
+            "text": "K2"
+          },
+          {
+            "text": "Valore medio km del fattore e suo coefficiente di variazione Vk dichiarati sulla confezione"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.xvi",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.XVI",
+      "pdfPage": 113,
+      "caption": "Coppie di serraggio per i bulloni 8.8",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Vite"
+          },
+          {
+            "text": "k=0,10"
+          },
+          {
+            "text": "k=0,12"
+          },
+          {
+            "text": "k=0,14"
+          },
+          {
+            "text": "k=0,16"
+          },
+          {
+            "text": "Fp,C [kN]"
+          },
+          {
+            "text": "Ares [mm²]"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "M12"
+          },
+          {
+            "text": "56,6"
+          },
+          {
+            "text": "68,0"
+          },
+          {
+            "text": "79,3"
+          },
+          {
+            "text": "90,6"
+          },
+          {
+            "text": "47,2"
+          },
+          {
+            "text": "84,3"
+          }
+        ],
+        [
+          {
+            "text": "M14"
+          },
+          {
+            "text": "90,2"
+          },
+          {
+            "text": "108"
+          },
+          {
+            "text": "126"
+          },
+          {
+            "text": "144"
+          },
+          {
+            "text": "64,4"
+          },
+          {
+            "text": "115"
+          }
+        ],
+        [
+          {
+            "text": "M16"
+          },
+          {
+            "text": "141"
+          },
+          {
+            "text": "169"
+          },
+          {
+            "text": "197"
+          },
+          {
+            "text": "225"
+          },
+          {
+            "text": "87,9"
+          },
+          {
+            "text": "157"
+          }
+        ],
+        [
+          {
+            "text": "M18"
+          },
+          {
+            "text": "194"
+          },
+          {
+            "text": "232"
+          },
+          {
+            "text": "271"
+          },
+          {
+            "text": "310"
+          },
+          {
+            "text": "108"
+          },
+          {
+            "text": "192"
+          }
+        ],
+        [
+          {
+            "text": "M20"
+          },
+          {
+            "text": "274"
+          },
+          {
+            "text": "329"
+          },
+          {
+            "text": "384"
+          },
+          {
+            "text": "439"
+          },
+          {
+            "text": "137"
+          },
+          {
+            "text": "245"
+          }
+        ],
+        [
+          {
+            "text": "M22"
+          },
+          {
+            "text": "373"
+          },
+          {
+            "text": "448"
+          },
+          {
+            "text": "523"
+          },
+          {
+            "text": "597"
+          },
+          {
+            "text": "170"
+          },
+          {
+            "text": "303"
+          }
+        ],
+        [
+          {
+            "text": "M24"
+          },
+          {
+            "text": "474"
+          },
+          {
+            "text": "569"
+          },
+          {
+            "text": "664"
+          },
+          {
+            "text": "759"
+          },
+          {
+            "text": "198"
+          },
+          {
+            "text": "353"
+          }
+        ],
+        [
+          {
+            "text": "M27"
+          },
+          {
+            "text": "694"
+          },
+          {
+            "text": "833"
+          },
+          {
+            "text": "972"
+          },
+          {
+            "text": "1110"
+          },
+          {
+            "text": "257"
+          },
+          {
+            "text": "459"
+          }
+        ],
+        [
+          {
+            "text": "M30"
+          },
+          {
+            "text": "942"
+          },
+          {
+            "text": "1131"
+          },
+          {
+            "text": "1319"
+          },
+          {
+            "text": "1508"
+          },
+          {
+            "text": "314"
+          },
+          {
+            "text": "561"
+          }
+        ],
+        [
+          {
+            "text": "M36"
+          },
+          {
+            "text": "1647"
+          },
+          {
+            "text": "1976"
+          },
+          {
+            "text": "2306"
+          },
+          {
+            "text": "2635"
+          },
+          {
+            "text": "457"
+          },
+          {
+            "text": "817"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.xvii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.XVII",
+      "pdfPage": 113,
+      "caption": "Coppie di serraggio per bulloni 10.9",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Vite"
+          },
+          {
+            "text": "k=0,10"
+          },
+          {
+            "text": "k=0,12"
+          },
+          {
+            "text": "k=0,14"
+          },
+          {
+            "text": "k=0,16"
+          },
+          {
+            "text": "Fp,C [kN]"
+          },
+          {
+            "text": "Ares [mm²]"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "M12"
+          },
+          {
+            "text": "70,8"
+          },
+          {
+            "text": "85,0"
+          },
+          {
+            "text": "99,1"
+          },
+          {
+            "text": "113"
+          },
+          {
+            "text": "59,0"
+          },
+          {
+            "text": "84,3"
+          }
+        ],
+        [
+          {
+            "text": "M14"
+          },
+          {
+            "text": "113"
+          },
+          {
+            "text": "135"
+          },
+          {
+            "text": "158"
+          },
+          {
+            "text": "180"
+          },
+          {
+            "text": "80,5"
+          },
+          {
+            "text": "115"
+          }
+        ],
+        [
+          {
+            "text": "M16"
+          },
+          {
+            "text": "176"
+          },
+          {
+            "text": "211"
+          },
+          {
+            "text": "246"
+          },
+          {
+            "text": "281"
+          },
+          {
+            "text": "110"
+          },
+          {
+            "text": "157"
+          }
+        ],
+        [
+          {
+            "text": "M18"
+          },
+          {
+            "text": "242"
+          },
+          {
+            "text": "290"
+          },
+          {
+            "text": "339"
+          },
+          {
+            "text": "387"
+          },
+          {
+            "text": "134"
+          },
+          {
+            "text": "192"
+          }
+        ],
+        [
+          {
+            "text": "M20"
+          },
+          {
+            "text": "343"
+          },
+          {
+            "text": "412"
+          },
+          {
+            "text": "480"
+          },
+          {
+            "text": "549"
+          },
+          {
+            "text": "172"
+          },
+          {
+            "text": "245"
+          }
+        ],
+        [
+          {
+            "text": "M22"
+          },
+          {
+            "text": "467"
+          },
+          {
+            "text": "560"
+          },
+          {
+            "text": "653"
+          },
+          {
+            "text": "747"
+          },
+          {
+            "text": "212"
+          },
+          {
+            "text": "303"
+          }
+        ],
+        [
+          {
+            "text": "M24"
+          },
+          {
+            "text": "593"
+          },
+          {
+            "text": "712"
+          },
+          {
+            "text": "830"
+          },
+          {
+            "text": "949"
+          },
+          {
+            "text": "247"
+          },
+          {
+            "text": "353"
+          }
+        ],
+        [
+          {
+            "text": "M27"
+          },
+          {
+            "text": "868"
+          },
+          {
+            "text": "1041"
+          },
+          {
+            "text": "1215"
+          },
+          {
+            "text": "1388"
+          },
+          {
+            "text": "321"
+          },
+          {
+            "text": "459"
+          }
+        ],
+        [
+          {
+            "text": "M30"
+          },
+          {
+            "text": "1178"
+          },
+          {
+            "text": "1414"
+          },
+          {
+            "text": "1649"
+          },
+          {
+            "text": "1885"
+          },
+          {
+            "text": "393"
+          },
+          {
+            "text": "561"
+          }
+        ],
+        [
+          {
+            "text": "M36"
+          },
+          {
+            "text": "2059"
+          },
+          {
+            "text": "2471"
+          },
+          {
+            "text": "2882"
+          },
+          {
+            "text": "3294"
+          },
+          {
+            "text": "572"
+          },
+          {
+            "text": "817"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.2.xviii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.XVIII",
+      "pdfPage": 114,
+      "caption": "Posizione dei fori per unioni bullonate e chiodate",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Distanze e interassi (Fig. 4.2.5)"
+          },
+          {
+            "text": "Minimo"
+          },
+          {
+            "text": "Unioni esposte a fenomeni corrosivi o ambientali"
+          },
+          {
+            "text": "Unioni non esposte a fenomeni corrosivi o ambientali"
+          },
+          {
+            "text": "Unioni di elementi in acciaio resistente alla corrosione (UNI EN10025-5)"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "e1"
+          },
+          {
+            "text": "1,2 d0"
+          },
+          {
+            "text": "4t+40 mm"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "max(8t;12 mm)"
+          }
+        ],
+        [
+          {
+            "text": "e2"
+          },
+          {
+            "text": "1,2 d0"
+          },
+          {
+            "text": "4t+40 mm"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "max(8t;125 mm)"
+          }
+        ],
+        [
+          {
+            "text": "p1"
+          },
+          {
+            "text": "2,2 d0"
+          },
+          {
+            "text": "min(14t;200 mm)"
+          },
+          {
+            "text": "min(14t;200 mm)"
+          },
+          {
+            "text": "min(14t;175 mm)"
+          }
+        ],
+        [
+          {
+            "text": "p1,0"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "min(14t;200 mm)"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "–"
+          }
+        ],
+        [
+          {
+            "text": "p1,i"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "min(28t;400 mm)"
+          },
+          {
+            "text": "–"
+          },
+          {
+            "text": "–"
+          }
+        ],
+        [
+          {
+            "text": "p2"
+          },
+          {
+            "text": "2,4 d0"
+          },
+          {
+            "text": "min(14t;200 mm)"
+          },
+          {
+            "text": "min(14t;200 mm)"
+          },
+          {
+            "text": "min(14t;175 mm)"
+          }
+        ]
+      ],
+      "notes": [
+        "La tabella fa riferimento agli schemi di unione della Fig. 4.2.5."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.2.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
+      "officialNumber": "4.2.5",
+      "pdfPage": 114,
+      "caption": "Fig. 4.2.5 - Disposizione dei fori per la realizzazione di unioni bullonate o chiodate",
+      "alt": "Schemi di disposizione dei fori e relative distanze e interassi per unioni bullonate o chiodate.",
+      "imagePath": "figures/ntc2018/fig4.2.5.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 75,
+        "y": 535,
+        "width": 450,
+        "height": 145
+      },
+      "sha256": "ad181b9eae35719a950ed534c6a651efa1beb0c9808c3fcc55ffc9f1ec6409d2"
+    }
+  ]
+}

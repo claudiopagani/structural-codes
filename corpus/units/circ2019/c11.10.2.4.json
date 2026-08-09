@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.10.2.4",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.10.2.4",
+    "sortKey": "011.010.002.004"
+  },
+  "title": "PROVE DI ACCETTAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.10.2.4#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.10.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.10",
+      "urn:structural-codes:it:unit:circ2019:c11.10.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.2.4#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.10.2.4 PROVE DI ACCETTAZIONE",
+        "normalized": "C11.10.2.4 PROVE DI ACCETTAZIONE",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7eb03415bb8e48a52d1f8148b4c9e1433333a85bce2cfd10f562ad35addac315",
+        "normalizedSha256": "7eb03415bb8e48a52d1f8148b4c9e1433333a85bce2cfd10f562ad35addac315"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.2.4#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La norma ha introdotto l’obbligatorietà delle prove di accettazione in cantiere anche per le malte. Il controllo di accettazione va\neseguito su miscele omogenee, su un numero minimo di provini che varia secondo il tipo di malta (a prestazione garantita, a\ncomposizione prescritta, o prodotta in cantiere, in accordo con i §11.10.2.1, §11.10.2.2, §11.10.2.3).La procedura di controllo di\naccettazione in cantiere prevede che il valore medio delle resistenze a compressione, valutato secondo la metodologia di prova\nindicata nella corrispondente norma europea armonizzata, sia maggiore o uguale del valore di progetto.",
+        "normalized": "La norma ha introdotto l’obbligatorietà delle prove di accettazione in cantiere anche per le malte. Il controllo di accettazione va eseguito su miscele omogenee, su un numero minimo di provini che varia secondo il tipo di malta (a prestazione garantita, a composizione prescritta, o prodotta in cantiere, in accordo con i §11.10.2.1, §11.10.2.2, §11.10.2.3).La procedura di controllo di accettazione in cantiere prevede che il valore medio delle resistenze a compressione, valutato secondo la metodologia di prova indicata nella corrispondente norma europea armonizzata, sia maggiore o uguale del valore di progetto.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 341,
+        "printedPage": "337",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "0664d0230ba2b9fe6d0827983cf0de26b32c7a7e7d07b91fbc59ce31cf240f4d",
+        "normalizedSha256": "63658f4708f323afe2170693c8a775e654aadac5116e323838f2b7f5b34e0d22"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-10-2-4-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

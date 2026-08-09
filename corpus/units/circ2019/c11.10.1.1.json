@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.10.1.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.10.1.1",
+    "sortKey": "011.010.001.001"
+  },
+  "title": "PROVE DI ACCETTAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.10.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.10",
+      "urn:structural-codes:it:unit:circ2019:c11.10.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.10.1.1 P ROVE DI ACCETTAZIONE",
+        "normalized": "C11.10.1.1 PROVE DI ACCETTAZIONE",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 340,
+        "printedPage": "336",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "512b496ef6fec6dd1960e1bd48c6a757ff6d7f675c6c2774134c3bdd58f44d90",
+        "normalizedSha256": "3155391e5c5892b86778bbd3eb695458d46efca7b1df9ffd5113bb1156f3379d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il paragrafo ribadisce che gli elementi per muratura portante, indipendentemente dalla Marcatura CE, ovvero da altre\nqualificazioni nazionali, devono essere accettati dal Direttore dei lavori, secondo quanto previsto nelle NTC.",
+        "normalized": "Il paragrafo ribadisce che gli elementi per muratura portante, indipendentemente dalla Marcatura CE, ovvero da altre qualificazioni nazionali, devono essere accettati dal Direttore dei lavori, secondo quanto previsto nelle NTC.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 340,
+        "printedPage": "336",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "81e6a2a08a836f59f9aead6d3000ef67a698d581f2da93193a0606cdeb3d31e5",
+        "normalizedSha256": "c4bffa6a0a6109295eb744101eeaaaf16947850a0b7f39d926b45b540a4d1c27"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-10-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

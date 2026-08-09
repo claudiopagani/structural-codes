@@ -1,0 +1,215 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "4.3-step2",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.3",
+      "officialNumber": "4.3.6",
+      "pdfPage": 123,
+      "latex": "f_d=\\frac{f_k}{\\gamma_M}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.1",
+      "officialNumber": "4.3.7",
+      "pdfPage": 125,
+      "latex": "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\left(1.0-0.04L_e\\right)\\right];0.4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.1",
+      "officialNumber": "4.3.8",
+      "pdfPage": 125,
+      "latex": "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\left(0.75-0.03L_e\\right)\\right];0.4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.9",
+      "pdfPage": 125,
+      "latex": "P_{Rd,a}=0.8f_{tk}\\left(\\pi d^2/4\\right)/\\gamma_V"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.10",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.10",
+      "pdfPage": 125,
+      "latex": "P_{Rd,c}=0.29\\alpha d^2\\left(f_{ck}E_{cm}\\right)^{0.5}/\\gamma_V"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.11.a",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.11 a",
+      "pdfPage": 125,
+      "latex": "\\alpha=0.2\\left(h_{sc}/d+1\\right)\\quad\\text{per }3\\le h_{sc}/d\\le4"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.11.b",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.11 b",
+      "pdfPage": 125,
+      "latex": "\\alpha=1.0\\quad\\text{per }h_{sc}/d>4"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.13",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.13",
+      "pdfPage": 126,
+      "latex": "k_l=0.6\\,b_0\\left(h_{sc}-h_p\\right)/h_p^2\\le1.0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.14",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.14",
+      "pdfPage": 126,
+      "latex": "k_t=0.7\\,b_0\\left(h_{sc}-h_p\\right)/h_p^2/\\sqrt{n_r}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.3.ii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.II",
+      "pdfPage": 126,
+      "caption": "Limiti superiori del coefficiente k_t",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "Numero di pioli per greca"
+          },
+          {
+            "text": "Spessore della lamiera"
+          },
+          {
+            "text": "Connettori con φ≤20mm e saldati attraverso la lamiera",
+            "latex": "\\text{Connettori con }\\varphi\\le20\\,\\mathrm{mm}\\text{ e saldati attraverso la lamiera}"
+          },
+          {
+            "text": "Lamiera con fori e pioli saldati sul profilo – diametro pioli 19 o 22 mm"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Nr=1",
+            "rowSpan": 2
+          },
+          {
+            "text": "≤1,0",
+            "latex": "\\le1.0"
+          },
+          {
+            "text": "0,85"
+          },
+          {
+            "text": "0,75"
+          }
+        ],
+        [
+          {
+            "text": ">1,0",
+            "latex": ">1.0"
+          },
+          {
+            "text": "1,00"
+          },
+          {
+            "text": "0,75"
+          }
+        ],
+        [
+          {
+            "text": "Nr=2",
+            "rowSpan": 2
+          },
+          {
+            "text": "≤1,0",
+            "latex": "\\le1.0"
+          },
+          {
+            "text": "0,70"
+          },
+          {
+            "text": "0,60"
+          }
+        ],
+        [
+          {
+            "text": ">1,0",
+            "latex": ">1.0"
+          },
+          {
+            "text": "0,80"
+          },
+          {
+            "text": "0,60"
+          }
+        ]
+      ],
+      "notes": [
+        "Tabella trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.1",
+      "officialNumber": "4.3.3",
+      "pdfPage": 124,
+      "caption": "Tipologie di sezione composte per travi",
+      "alt": "Tipologie grafiche di sezioni composte per travi.",
+      "imagePath": "figures/ntc2018/fig4.3.3.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 75,
+        "y": 80,
+        "width": 450,
+        "height": 90
+      },
+      "sha256": "39e33b3f28c9eb3fa9303ba25e36b37156d3868606f0fd50601c2b3a38aefce8"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.4.a",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.4(a)",
+      "pdfPage": 126,
+      "caption": "Disposizione della lamiera grecata rispetto al profilo in acciaio",
+      "alt": "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione a.",
+      "imagePath": "figures/ntc2018/fig4.3.4a.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 135,
+        "width": 440,
+        "height": 64
+      },
+      "sha256": "04b4f7aee69cd04c4649c298bf43e8235323aeda2f1d35db144604af239c1b20"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.4.b",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.1.2",
+      "officialNumber": "4.3.4(b)",
+      "pdfPage": 126,
+      "caption": "Disposizione della lamiera grecata rispetto al profilo in acciaio",
+      "alt": "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione b.",
+      "imagePath": "figures/ntc2018/fig4.3.4b.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 369,
+        "width": 440,
+        "height": 75
+      },
+      "sha256": "43e0f76e00b98eafd7dd4acc473f9242b4f001b674a87cf2d3e46b8c6990ea1f"
+    }
+  ]
+}

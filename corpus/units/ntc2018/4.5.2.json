@@ -1,0 +1,103 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.5.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.5.2",
+    "sortKey": "004.005.002"
+  },
+  "title": "MATERIALI E CARATTERISTICHE TIPOLOGICHE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.5.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.5"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.5.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.5.2. MATERIALI E CARATTERISTICHE TIPOLOGICHE",
+        "normalized": "4.5.2 MATERIALI E CARATTERISTICHE TIPOLOGICHE",
+        "normalizationVersion": "ntc45-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.5.2 MATERIALI E CARATTERISTICHE TIPOLOGICHE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 145,
+        "printedPage": "141",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 612,
+          "width": 428.6,
+          "height": 230
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Ripristinati caratteri accentati, apostrofi tipografici e glifi matematici confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc45-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bf6793fae5b3524ae1463deacba2589e3776b6a77ba91c8ae1045e76e58d6569",
+        "normalizedSha256": "531b6b49b83e7488ed628b04a6f1e31cb057b1d884ab42e1450a96a102140ff8"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc45",
+      "kind": "automated-agent",
+      "toolVersion": "ntc45-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-5-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

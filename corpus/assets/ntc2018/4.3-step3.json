@@ -1,0 +1,380 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "4.3-step3",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.15",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.15",
+      "pdfPage": 128,
+      "latex": "\\delta=\\frac{A_a\\,f_{yk}}{\\gamma_A}\\cdot\\frac{1}{N_{pl,Rd}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.16",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.16",
+      "pdfPage": 128,
+      "latex": "(EJ)_{\\mathrm{eff}}=E_aJ_a+E_sJ_s+k_eE_{c,\\mathrm{eff}}J_c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.17",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.17",
+      "pdfPage": 128,
+      "latex": "E_{c,\\mathrm{eff}}=E_{cm}\\frac{1}{1+(N_{G,Ed}/N_{Ed})\\varphi}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.18",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.18",
+      "pdfPage": 128,
+      "latex": "\\bar{\\lambda}=\\sqrt{\\frac{N_{pl,Rk}}{N_{cr}}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.19",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.19",
+      "pdfPage": 128,
+      "latex": "N_{pl,Rk}=A_af_{yk}+0.85A_cf_{ck}+A_sf_{sk}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.20",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
+      "officialNumber": "4.3.20",
+      "pdfPage": 128,
+      "latex": "(EJ)_{\\mathrm{eff,II}}=k_0(E_aJ_a+E_sJ_s+k_{e,II}E_{cm}J_c)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.21",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.21",
+      "pdfPage": 129,
+      "latex": "N_{pl,Rd}=\\frac{A_af_{yk}}{\\gamma_A}+\\frac{A_c\\,0.85f_{ck}}{\\gamma_C}+\\frac{A_sf_{sk}}{\\gamma_S}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.22",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.22",
+      "pdfPage": 129,
+      "latex": "N_{pl,Rd}=\\eta_a\\frac{A_af_{yk}}{\\gamma_A}+\\frac{A_cf_{ck}}{\\gamma_C}\\left(1+\\eta_c\\frac{t}{d}\\frac{f_{yk}}{f_{ck}}\\right)+\\frac{A_sf_{sk}}{\\gamma_S}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.23",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.23",
+      "pdfPage": 129,
+      "latex": "\\eta_a=\\begin{cases}0.25(3+2\\bar{\\lambda})\\le1.0& e=0\\\\0.25(3+2\\bar{\\lambda})+10(0.25-0.5\\bar{\\lambda})\\frac{e}{d}&0<e/d\\le0.1\\\\1.0&e>0.1\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.24",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.24",
+      "pdfPage": 129,
+      "latex": "\\eta_c=\\begin{cases}(4.9-18.5\\bar{\\lambda}+17\\bar{\\lambda}^2)\\ge0&e=0\\\\(4.9-18.5\\bar{\\lambda}+17\\bar{\\lambda}^2)\\left(1-10\\frac{e}{d}\\right)&0<e/d\\le0.1\\\\0&e>0.1\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.25",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.25",
+      "pdfPage": 130,
+      "latex": "N_{pm,Rd}=0.85\\frac{f_{ck}}{\\gamma_C}A_c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.26",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.26",
+      "pdfPage": 130,
+      "latex": "M_{pl,Rd}(N_{Ed})=\\mu_d\\,M_{pl,Rd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.27",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.27",
+      "pdfPage": 130,
+      "latex": "\\begin{aligned}\\frac{M_{y,Ed}}{\\mu_{dy}M_{pl,y,Rd}}&\\le\\alpha_{M,y} & \\frac{M_{z,Ed}}{\\mu_{dz}M_{pl,z,Rd}}&\\le\\alpha_{M,z}\\\\\\frac{M_{y,Ed}}{\\mu_{dy}M_{pl,y,Rd}}+\\frac{M_{z,Ed}}{\\mu_{dz}M_{pl,z,Rd}}&\\le1.0\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.28",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2",
+      "officialNumber": "4.3.28",
+      "pdfPage": 130,
+      "latex": "V_{a,Ed}=V_{Ed}\\frac{M_{pl,a,Rd}}{M_{pl,Rd}}\\qquad V_{c,Ed}=V_{Ed}-V_{a,Ed}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.29",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
+      "officialNumber": "4.3.29",
+      "pdfPage": 131,
+      "latex": "N_{b,Rd}=\\chi\\,N_{pl,Rd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.30",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
+      "officialNumber": "4.3.30",
+      "pdfPage": 131,
+      "latex": "\\chi=\\frac{1}{\\Phi+\\sqrt{\\Phi^2-\\bar{\\lambda}^2}}\\le1.0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.30-phi",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
+      "officialNumber": null,
+      "pdfPage": 131,
+      "latex": "\\Phi=0.5\\left[1+\\alpha(\\bar{\\lambda}-0.2)+\\bar{\\lambda}^2\\right]"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.31",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
+      "officialNumber": "4.3.31",
+      "pdfPage": 131,
+      "latex": "\\frac{d}{t}\\le90\\frac{235}{f_y}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.32",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
+      "officialNumber": "4.3.32",
+      "pdfPage": 131,
+      "latex": "\\frac{d}{t}\\le52\\sqrt{\\frac{235}{f_y}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.33",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
+      "officialNumber": "4.3.33",
+      "pdfPage": 132,
+      "latex": "\\frac{b}{t_f}\\le44\\sqrt{\\frac{235}{f_y}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.34",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
+      "officialNumber": "4.3.34",
+      "pdfPage": 132,
+      "latex": "c\\ge\\max\\left\\{40\\,\\mathrm{mm};\\frac{b}{6}\\right\\}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.3.iii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
+      "officialNumber": "4.3.III",
+      "pdfPage": 131,
+      "caption": "Curve di instabilità e fattori di imperfezione",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "Tipo sezione"
+          },
+          {
+            "text": "Inflessione intorno all’asse"
+          },
+          {
+            "text": "Curva di stabilità"
+          },
+          {
+            "text": "Imperfezione"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "(a)",
+            "rowSpan": 2
+          },
+          {
+            "text": "y-y"
+          },
+          {
+            "text": "b"
+          },
+          {
+            "text": "L/200"
+          }
+        ],
+        [
+          {
+            "text": "z-z"
+          },
+          {
+            "text": "c"
+          },
+          {
+            "text": "L/150"
+          }
+        ],
+        [
+          {
+            "text": "(b)",
+            "rowSpan": 2
+          },
+          {
+            "text": "y-y"
+          },
+          {
+            "text": "b"
+          },
+          {
+            "text": "L/200"
+          }
+        ],
+        [
+          {
+            "text": "z-z"
+          },
+          {
+            "text": "c"
+          },
+          {
+            "text": "L/150"
+          }
+        ],
+        [
+          {
+            "text": "(c)",
+            "rowSpan": 3
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "a (ρ_s<3%)",
+            "latex": "a\\;(\\rho_s<3\\%)"
+          },
+          {
+            "text": "L/300"
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "b (3%<ρ_s<6%)",
+            "latex": "b\\;(3\\%<\\rho_s<6\\%)"
+          },
+          {
+            "text": "L/200"
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "ρ_s=A_s/A_c (A_s area armature, A_c area calcestruzzo)",
+            "latex": "\\rho_s=A_s/A_c"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Curva di stabilità"
+          },
+          {
+            "text": "a"
+          },
+          {
+            "text": "b"
+          },
+          {
+            "text": "C"
+          }
+        ],
+        [
+          {
+            "text": "Fattore di imperfezione α",
+            "latex": "\\text{Fattore di imperfezione }\\alpha"
+          },
+          {
+            "text": "0,21"
+          },
+          {
+            "text": "0,34"
+          },
+          {
+            "text": "0,49"
+          }
+        ]
+      ],
+      "notes": [
+        "La prima colonna contiene gli schemi grafici delle sezioni (a), (b) e (c), non rappresentabili come immagini nelle celle con lo schema corrente; le etichette e tutti i valori tabellari sono trascritti, ma la verifica visuale cella per cella resta bloccante."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.4.3.5",
+      "officialNumber": "4.3.5",
+      "pdfPage": 127,
+      "caption": "Tipiche superfici di collasso a taglio nelle piattabande di calcestruzzo",
+      "alt": "Tre schemi delle superfici critiche di collasso a taglio nelle piattabande di calcestruzzo.",
+      "imagePath": "figures/ntc2018/fig4.3.5.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 195,
+        "width": 380,
+        "height": 100
+      },
+      "sha256": "239bdf1ce6652c2009d3b8b95d551d76f87453629988947029b0568384b877d6"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.1",
+      "officialNumber": "4.3.6",
+      "pdfPage": 127,
+      "caption": "Tipi di sezioni per colonne composte, trattate nel presente paragrafo",
+      "alt": "Quattro tipologie di sezioni per colonne composte, indicate con a, b, c e d.",
+      "imagePath": "figures/ntc2018/fig4.3.6.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 575,
+        "width": 440,
+        "height": 100
+      },
+      "sha256": "372b567201a1a3640597fbc8d06e56c2297a0ccdfacb06e26153f53bd5f6850a"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.7",
+      "pdfPage": 129,
+      "caption": "Sezione tipo di colonna composta circolare riempita di calcestruzzo in cui è possibile considerare il confinamento del calcestruzzo",
+      "alt": "Sezione circolare cava riempita di calcestruzzo con armatura e confinamento.",
+      "imagePath": "figures/ntc2018/fig4.3.7.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 460,
+        "width": 440,
+        "height": 83
+      },
+      "sha256": "d80fc371d252c1ac57e46cc28268bbd06de9107005fb6d8e15d3a84586098ef9"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
+      "officialNumber": "4.3.8",
+      "pdfPage": 130,
+      "caption": "Metodo semplificato per la valutazione del dominio di interazione N-M per le colonne composte",
+      "alt": "Dominio di interazione N-M con punti A, B, C e D e diagrammi delle sezioni composte.",
+      "imagePath": "figures/ntc2018/fig4.3.8.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82,
+        "y": 88,
+        "width": 440,
+        "height": 200
+      },
+      "sha256": "32be92ff64f8b40ee77dc9175c09c133ceeb4d7db3c4bbcc6abaaf1454b1c920"
+    }
+  ]
+}

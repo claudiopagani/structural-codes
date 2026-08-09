@@ -1,0 +1,111 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.10.4.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.10.4.2",
+    "sortKey": "007.010.004.002"
+  },
+  "title": "CONTROLLO DI MOVIMENTI INDESIDERATI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.10.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.10.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.10",
+      "urn:structural-codes:it:unit:circ2019:c7.10.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.10.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.10.4.2 CONTROLLO DI MOVIMENTI INDESIDERATI",
+        "normalized": "C7.10.4.2 CONTROLLO DI MOVIMENTI INDESIDERATI",
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "067616096a40f006610c51e172bacce6a0a901c5df7f50629f29817f7eab92c8",
+        "normalizedSha256": "067616096a40f006610c51e172bacce6a0a901c5df7f50629f29817f7eab92c8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.10.4.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli effetti torsionali d’insieme del sistema strutturale, ossia di rotazione intorno ad un asse verticale, determinano spostamenti diversi nei dispositivi e, nel caso di forti non linearità, differenze di comportamento che possono ulteriormente accentuare la torsione. Occorre pertanto evitare o limitare quanto più possibile le eccentricità massa-rigidezza, cosa peraltro facilmente ottenibile attraverso una corretta progettazione degli isolatori e dei dispositivi ausiliari, e incrementare la rigidezza e/o resistenza torsionale del sistema d’isolamento.",
+        "normalized": "Gli effetti torsionali d’insieme del sistema strutturale, ossia di rotazione intorno ad un asse verticale, determinano spostamenti diversi nei dispositivi e, nel caso di forti non linearità, differenze di comportamento che possono ulteriormente accentuare la torsione. Occorre pertanto evitare o limitare quanto più possibile le eccentricità massa-rigidezza, cosa peraltro facilmente ottenibile attraverso una corretta progettazione degli isolatori e dei dispositivi ausiliari, e incrementare la rigidezza e/o resistenza torsionale del sistema d’isolamento.",
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 239,
+        "printedPage": "235",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "6256b22ac3b13ad87bf4fb2003dbfb319f6c72828d2af5164d91711aba146f5a",
+        "normalizedSha256": "6256b22ac3b13ad87bf4fb2003dbfb319f6c72828d2af5164d91711aba146f5a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ710-step1",
+      "kind": "script",
+      "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-10-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-10-4-2-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

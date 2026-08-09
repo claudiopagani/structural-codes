@@ -1,0 +1,114 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.6",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "6.6",
+    "sortKey": "006.006"
+  },
+  "title": "TIRANTI DI ANCORAGGIO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "66.6. TIRANTI DI ANCORAGGIO",
+        "normalized": "6.6 TIRANTI DI ANCORAGGIO",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 201,
+        "printedPage": "197",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "046861b7f002afc1906b3b2b0ce84ad34eaf53b322821907c8f40d3b6f15ba1e",
+        "normalizedSha256": "08512cc9f33a0231a292de0dac81b10f34b74f4942e8c16c2c02b36e720f628d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.6#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I tiranti di ancoraggio sono elementi strutturali opportunamente collegati al terreno, in grado di sostenere forze di trazione.",
+        "normalized": "I tiranti di ancoraggio sono elementi strutturali opportunamente collegati al terreno, in grado di sostenere forze di trazione.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 201,
+        "printedPage": "197",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "3f518f338ce0ad11b9aa78bae690849654e8d495fa5e54a86e64552923401460",
+        "normalizedSha256": "3f518f338ce0ad11b9aa78bae690849654e8d495fa5e54a86e64552923401460"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

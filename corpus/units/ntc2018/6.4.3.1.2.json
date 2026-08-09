@@ -1,0 +1,293 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "6.4.3.1.2",
+    "sortKey": "006.004.003.001.002"
+  },
+  "title": "Resistenze di pali soggetti a carichi trasversali",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.4",
+      "urn:structural-codes:it:unit:ntc2018:6.4.3",
+      "urn:structural-codes:it:unit:ntc2018:6.4.3.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.4.3.1.2 Resistenze di pali soggetti a carichi trasversali",
+        "normalized": "6.4.3.1.2 Resistenze di pali soggetti a carichi trasversali",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 197,
+        "printedPage": "193",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "64b6b4ed0e8eab1476e74a8cb699a17a255c6fca1d49da41515685bc37abf4b8",
+        "normalizedSha256": "64b6b4ed0e8eab1476e74a8cb699a17a255c6fca1d49da41515685bc37abf4b8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la determinazione del valore di progetto Rtr,d della resistenza di pali soggetti a carichi trasversali valgono le indicazioni del §\n6.4.3.1.1, applicando il coefficiente parziale ·T della Tab. 6.4.VI.",
+        "normalized": "Per la determinazione del valore di progetto Rtr,d della resistenza di pali soggetti a carichi trasversali valgono le indicazioni del § 6.4.3.1.1, applicando il coefficiente parziale γT della Tab. 6.4.VI.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per la determinazione del valore di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "Rtr,d",
+            "latex": "R_{tr,d}"
+          },
+          {
+            "kind": "text",
+            "value": " della resistenza di pali soggetti a carichi trasversali valgono le indicazioni del § 6.4.3.1.1, applicando il coefficiente parziale "
+          },
+          {
+            "kind": "math",
+            "value": "γT",
+            "latex": "\\gamma_T"
+          },
+          {
+            "kind": "text",
+            "value": " della Tab. 6.4.VI."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 197,
+        "printedPage": "193",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b486bf5d7c314b849fbfe29a3f6f1fb894b9c2f5290e2760e37126282c806e43",
+        "normalizedSha256": "3c2e4cd543fe64fd0a82c84ba4a6775a0fa4d6daadb235819831cffa43a0be72"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-editorial-002",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.4.vi",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 197,
+        "printedPage": "193",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "fc50b6c0442dd12d344921155ea2c26c275c34f31718c1c0a76cee8957ef7b27",
+        "normalizedSha256": "fc50b6c0442dd12d344921155ea2c26c275c34f31718c1c0a76cee8957ef7b27"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui la resistenza caratteristica Rtr,k sia valutata a partire dalla resistenza Rtr,m misurata nel corso di una o più prove di cari-\nco statico su pali pilota, è necessario che la prova sia eseguita riproducendo la retta di azione delle azioni di progetto.",
+        "normalized": "Nel caso in cui la resistenza caratteristica Rtr,k sia valutata a partire dalla resistenza Rtr,m misurata nel corso di una o più prove di carico statico su pali pilota, è necessario che la prova sia eseguita riproducendo la retta di azione delle azioni di progetto.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui la resistenza caratteristica "
+          },
+          {
+            "kind": "math",
+            "value": "Rtr,k",
+            "latex": "R_{tr,k}"
+          },
+          {
+            "kind": "text",
+            "value": " sia valutata a partire dalla resistenza "
+          },
+          {
+            "kind": "math",
+            "value": "Rtr,m",
+            "latex": "R_{tr,m}"
+          },
+          {
+            "kind": "text",
+            "value": " misurata nel corso di una o più prove di carico statico su pali pilota, è necessario che la prova sia eseguita riproducendo la retta di azione delle azioni di progetto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 197,
+        "printedPage": "193",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "64ed122be9f013273b04e839bf94e2fedafe5dcfefd97eb2326a10debc00f600",
+        "normalizedSha256": "62c442c1c727cdc03f1d3ce281cb4b6fe8a19804a44150493fc17d59be7fe065"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui la resistenza caratteristica sia valutata con metodi di calcolo analitici, i coefficienti riportati nella Tab. 6.4.IV devono\nessere scelti assumendo come verticali indagate solo quelle che consentano una completa identificazione del modello geotecnico di\nsottosuolo nell’ambito delle profondità interessate dal meccanismo di rottura.",
+        "normalized": "Nel caso in cui la resistenza caratteristica sia valutata con metodi di calcolo analitici, i coefficienti riportati nella Tab. 6.4.IV devono essere scelti assumendo come verticali indagate solo quelle che consentano una completa identificazione del modello geotecnico di sottosuolo nell’ambito delle profondità interessate dal meccanismo di rottura.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 197,
+        "printedPage": "193",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "30697546bba7ba2e064604bffe50ee48baacf3f25d46c181b675e7cd6ab1d847",
+        "normalizedSha256": "6350486f298aa9cab18fd98e27c6fcb05ddbb4d8badd7bbaa39b8d9dae56dc51"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:6.4.vi"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-4-3-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "ntc2018-6-4-3-1-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule e tabelle sono separate e collocate nel flusso originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      }
+    ]
+  }
+}

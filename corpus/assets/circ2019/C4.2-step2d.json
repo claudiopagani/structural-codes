@@ -1,0 +1,327 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2d",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.57",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.57",
+      "pdfPage": 115,
+      "latex": "\\begin{aligned}\\rho&=1{,}0 &&\\text{se }\\lambda_p\\le0{,}673\\\\\\rho&=\\frac{\\lambda_p-0{,}055(3+\\psi)}{\\lambda_p^2}\\ge\\frac{1}{\\lambda_p} &&\\text{se }\\lambda_p>0{,}673\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.58",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.58",
+      "pdfPage": 115,
+      "latex": "\\begin{aligned}\\rho&=1{,}0 &&\\text{se }\\lambda_p\\le0{,}748\\\\\\rho&=\\frac{\\lambda_p-0{,}188}{\\lambda_p^2}\\le1{,}0 &&\\text{se }\\lambda_p>0{,}748\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.59",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.59",
+      "pdfPage": 115,
+      "latex": "\\lambda_p=\\sqrt{\\frac{f_y}{\\sigma_{cr}}}=\\frac{\\bar{b}}{28{,}4\\,t\\,\\varepsilon\\sqrt{k_\\sigma}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.60",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.60",
+      "pdfPage": 116,
+      "latex": "\\frac{N_{Ed}}{\\dfrac{f_yA_{eff}}{\\gamma_{M0}}}+\\frac{M_{Ed}+(N_{Ed}\\,e_N)}{\\dfrac{f_yW_{eff}}{\\gamma_{M0}}}\\le1{,}0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.61",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.61",
+      "pdfPage": 116,
+      "latex": "\\frac{N_{Ed}}{\\dfrac{f_yA_{eff}}{\\gamma_{M0}}}+\\frac{M_{y,Ed}+(N_{Ed}\\,e_{y,N})}{\\dfrac{f_yW_{y,eff}}{\\gamma_{M0}}}+\\frac{M_{z,Ed}+(N_{Ed}\\,e_{z,N})}{\\dfrac{f_yW_{z,eff}}{\\gamma_{M0}}}\\le1{,}0"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.viii",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.VIII",
+      "pdfPage": 115,
+      "caption": "Larghezza efficace di pannelli compressi con entrambi i bordi longitudinali irrigiditi",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Distribuzione delle tensioni",
+            "colSpan": 3
+          },
+          {
+            "text": "Larghezza efficace del pannello",
+            "colSpan": 4
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Diagramma: σ₁ = σ₂; pannello uniformemente compresso, con b̄, b_e1 e b_e2",
+            "latex": "\\text{Diagramma: }\\sigma_1=\\sigma_2;\\quad\\bar b,\\ b_{e1},\\ b_{e2}",
+            "colSpan": 3
+          },
+          {
+            "text": "ψ = σ₂/σ₁ = 1; b_eff = ρ·b̄; b_e1 = 0,5·b_eff; b_e2 = 0,5·b_eff",
+            "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}=1\\\\b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=0{,}5\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}5\\,b_{\\mathrm{eff}}\\end{gathered}",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "Diagramma: distribuzione lineare decrescente da σ₁ a σ₂, con 1 > ψ = σ₂/σ₁ > 0",
+            "latex": "\\text{Diagramma: distribuzione lineare; }1>\\psi=\\frac{\\sigma_2}{\\sigma_1}>0",
+            "colSpan": 3
+          },
+          {
+            "text": "b_eff = ρ·b̄; b_e1 = 2/(5−ψ)·b_eff; b_e2 = b_eff − b_e1",
+            "latex": "\\begin{gathered}b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=\\frac{2}{5-\\psi}b_{\\mathrm{eff}}\\quad b_{e2}=b_{\\mathrm{eff}}-b_{e1}\\end{gathered}",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "Diagramma: distribuzione lineare da σ₁ compressiva a σ₂ con ψ < 0; b_c e b_t",
+            "latex": "\\text{Diagramma: }\\sigma_1\\text{ compressiva, }\\sigma_2\\text{ con }\\psi<0;\\quad b_c,b_t",
+            "colSpan": 3
+          },
+          {
+            "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b̄/(1−ψ); b_e1 = 0,4·b_eff; b_e2 = 0,6·b_eff",
+            "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,\\frac{\\bar b}{1-\\psi}\\\\b_{e1}=0{,}4\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}6\\,b_{\\mathrm{eff}}\\end{gathered}",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "ψ = σ₂/σ₁",
+            "latex": "\\psi=\\sigma_2/\\sigma_1"
+          },
+          {
+            "text": "1,00",
+            "latex": "1{,}00"
+          },
+          {
+            "text": "1 > ψ > 0",
+            "latex": "1>\\psi>0"
+          },
+          {
+            "text": "0",
+            "latex": "0"
+          },
+          {
+            "text": "0 > ψ > −1",
+            "latex": "0>\\psi>-1"
+          },
+          {
+            "text": "−1",
+            "latex": "-1"
+          },
+          {
+            "text": "−1 > ψ > −3",
+            "latex": "-1>\\psi>-3"
+          }
+        ],
+        [
+          {
+            "text": "fattore k_σ",
+            "latex": "\\text{fattore }k_\\sigma"
+          },
+          {
+            "text": "4,00",
+            "latex": "4{,}00"
+          },
+          {
+            "text": "8,2/(1,05 + ψ)",
+            "latex": "\\frac{8{,}2}{1{,}05+\\psi}"
+          },
+          {
+            "text": "7,81",
+            "latex": "7{,}81"
+          },
+          {
+            "text": "7,81 − 6,29ψ + 9,78ψ²",
+            "latex": "7{,}81-6{,}29\\psi+9{,}78\\psi^2"
+          },
+          {
+            "text": "23,9",
+            "latex": "23{,}9"
+          },
+          {
+            "text": "5,98(1 − ψ)²",
+            "latex": "5{,}98(1-\\psi)^2"
+          }
+        ]
+      ],
+      "notes": [
+        "I diagrammi delle distribuzioni delle tensioni sono rappresentati come descrizioni strutturate delle figure interne alla tabella."
+      ]
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.ix",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.4.2",
+      "officialNumber": "C4.2.IX",
+      "pdfPage": 116,
+      "caption": "Larghezza efficace di pannelli compressi con un solo bordo longitudinale irrigidito",
+      "columnCount": 6,
+      "headers": [
+        [
+          {
+            "text": "Distribuzione delle tensioni",
+            "colSpan": 3
+          },
+          {
+            "text": "Larghezza efficace del pannello",
+            "colSpan": 3
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Diagramma: bordo longitudinale irrigidito a sinistra; σ₁, σ₂, c e b_eff",
+            "latex": "\\text{Diagramma: bordo irrigidito a sinistra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}",
+            "colSpan": 3
+          },
+          {
+            "text": "1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c",
+            "latex": "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Diagramma: bordo longitudinale irrigidito a sinistra; distribuzione con ψ < 0, b_c e b_t",
+            "latex": "\\text{Diagramma: bordo irrigidito a sinistra; }\\psi<0,\\quad b_c,b_t",
+            "colSpan": 3
+          },
+          {
+            "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)",
+            "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "ψ = σ₂/σ₁",
+            "latex": "\\psi=\\sigma_2/\\sigma_1"
+          },
+          {
+            "text": "1,00",
+            "latex": "1{,}00"
+          },
+          {
+            "text": "1 > ψ > 0",
+            "latex": "1>\\psi>0"
+          },
+          {
+            "text": "0",
+            "latex": "0"
+          },
+          {
+            "text": "0 > ψ > −1",
+            "latex": "0>\\psi>-1"
+          },
+          {
+            "text": "−1",
+            "latex": "-1"
+          }
+        ],
+        [
+          {
+            "text": "fattore k_σ",
+            "latex": "\\text{fattore }k_\\sigma"
+          },
+          {
+            "text": "0,43",
+            "latex": "0{,}43"
+          },
+          {
+            "text": "0,578/(0,34 + ψ)",
+            "latex": "\\frac{0{,}578}{0{,}34+\\psi}"
+          },
+          {
+            "text": "1,70",
+            "latex": "1{,}70"
+          },
+          {
+            "text": "1,7 − 5ψ + 17,1ψ²",
+            "latex": "1{,}7-5\\psi+17{,}1\\psi^2"
+          },
+          {
+            "text": "23,8",
+            "latex": "23{,}8"
+          }
+        ],
+        [
+          {
+            "text": "Distribuzione delle tensioni",
+            "colSpan": 3
+          },
+          {
+            "text": "Larghezza efficace del pannello",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Diagramma: bordo longitudinale irrigidito a destra; σ₁, σ₂, c e b_eff",
+            "latex": "\\text{Diagramma: bordo irrigidito a destra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}",
+            "colSpan": 3
+          },
+          {
+            "text": "1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c",
+            "latex": "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Diagramma: bordo longitudinale irrigidito a destra; distribuzione con ψ < 0, b_c e b_t",
+            "latex": "\\text{Diagramma: bordo irrigidito a destra; }\\psi<0,\\quad b_c,b_t",
+            "colSpan": 3
+          },
+          {
+            "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)",
+            "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "ψ = σ₂/σ₁",
+            "latex": "\\psi=\\sigma_2/\\sigma_1"
+          },
+          {
+            "text": "1 ≥ ψ ≥ −3",
+            "latex": "1\\ge\\psi\\ge-3",
+            "colSpan": 5
+          }
+        ],
+        [
+          {
+            "text": "fattore k_σ",
+            "latex": "\\text{fattore }k_\\sigma"
+          },
+          {
+            "text": "0,57 − 0,21ψ + 0,07ψ²",
+            "latex": "0{,}57-0{,}21\\psi+0{,}07\\psi^2",
+            "colSpan": 5
+          }
+        ]
+      ],
+      "notes": [
+        "I diagrammi delle distribuzioni delle tensioni sono rappresentati come descrizioni strutturate delle figure interne alla tabella."
+      ]
+    }
+  ],
+  "figures": []
+}

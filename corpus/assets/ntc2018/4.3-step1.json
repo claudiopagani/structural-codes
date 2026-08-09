@@ -1,0 +1,164 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "4.3-step1",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.1.a",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.1",
+      "officialNumber": "4.3.1.a",
+      "pdfPage": 120,
+      "latex": "A_s\\ge\\rho_s A_c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.1.b",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.1",
+      "officialNumber": "4.3.1.b",
+      "pdfPage": 120,
+      "latex": "\\rho_s=\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}\\sqrt{\\frac{1}{1+\\frac{h_c}{2z_0}}}+0.3\\le\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.3",
+      "officialNumber": "4.3.2",
+      "pdfPage": 121,
+      "latex": "b_{\\mathrm{eff}}=b_0+b_{e1}+b_{e2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.3",
+      "officialNumber": "4.3.3",
+      "pdfPage": 122,
+      "latex": "b_{\\mathrm{eff}}=b_0+\\beta_1b_{e-1}+\\beta_2b_{e-2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.3-beta",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.3",
+      "officialNumber": null,
+      "pdfPage": 122,
+      "latex": "\\beta_i=\\left(0.55+0.025\\frac{L_e}{b_{\\mathrm{eff},i}}\\right)\\le1.0"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.4",
+      "officialNumber": "4.3.4",
+      "pdfPage": 122,
+      "latex": "\\alpha_{\\mathrm{cr}}\\ge10"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.5",
+      "officialNumber": "4.3.5",
+      "pdfPage": 122,
+      "latex": "\\bar{\\lambda}\\le0.5\\sqrt{\\frac{N_{\\mathrm{pl,Rk}}}{N_{\\mathrm{Ed}}}}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:4.3.i",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.2.1",
+      "officialNumber": "4.3.I",
+      "pdfPage": 121,
+      "caption": "Limiti della ridistribuzione del momento negativo sugli appoggi",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Classe della sezione"
+          },
+          {
+            "text": "1"
+          },
+          {
+            "text": "2"
+          },
+          {
+            "text": "3"
+          },
+          {
+            "text": "4"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "“Analisi non-fessurata”"
+          },
+          {
+            "text": "40"
+          },
+          {
+            "text": "30"
+          },
+          {
+            "text": "20"
+          },
+          {
+            "text": "10"
+          }
+        ],
+        [
+          {
+            "text": "“Analisi fessurata”"
+          },
+          {
+            "text": "25"
+          },
+          {
+            "text": "15"
+          },
+          {
+            "text": "10"
+          },
+          {
+            "text": "0"
+          }
+        ]
+      ],
+      "notes": [
+        "Tabella trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.3",
+      "officialNumber": "4.3.1",
+      "pdfPage": 121,
+      "caption": "Definizione della larghezza efficace b_eff e delle aliquote b_ei",
+      "alt": "Schema della larghezza efficace della soletta collaborante e delle aliquote laterali.",
+      "imagePath": "figures/ntc2018/fig4.3.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82.954,
+        "y": 600,
+        "width": 260,
+        "height": 120
+      },
+      "sha256": "ee758d186e9995630db6c7dc4733a9ac504200b62f1d143ae355156d658ed8b5"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:4.3.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.2.3",
+      "officialNumber": "4.3.2",
+      "pdfPage": 122,
+      "caption": "Larghezza efficace, b_eff, e luci equivalenti, L_e, per le travi continue",
+      "alt": "Schema delle luci equivalenti e della larghezza efficace per travi continue.",
+      "imagePath": "figures/ntc2018/fig4.3.2.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 82.954,
+        "y": 200,
+        "width": 440,
+        "height": 166
+      },
+      "sha256": "48d22f31355be9d46101aa25a7614a41713baba59fef4e5f19d0c7d21ae88442"
+    }
+  ]
+}

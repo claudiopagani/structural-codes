@@ -10,6 +10,7 @@ import {
 import type { CSSProperties } from "react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import { visibleTableNotes } from "./tableNotes.mjs";
 
 export type DocumentId = "ntc2018" | "circ2019";
 type ViewId = "corpus" | "roadmap";
@@ -397,6 +398,12 @@ export function CorpusViewer() {
           >
             Piano di chiusura
           </button>
+          <button
+            type="button"
+            onClick={() => window.location.assign("/consultazione")}
+          >
+            Lettura comparata
+          </button>
         </nav>
 
         <div className="status-cluster">
@@ -763,7 +770,7 @@ function MathCell({ cell }: { cell: TableCell }) {
   );
 }
 
-function BlockContent({
+export function BlockContent({
   block,
   data,
   showRaw,
@@ -803,24 +810,27 @@ function BlockContent({
   if (formula) {
     return (
       <figure className="formula-asset">
-        <div
-          className="formula-scroll"
-          dangerouslySetInnerHTML={latexMarkup(formula.latex, true)}
-        />
-        <figcaption>
-          <span>
-            {formula.officialNumber
-              ? `[${formula.officialNumber}]`
-              : "Formula non numerata"}
-          </span>
-          <em>trascrizione da verificare</em>
-        </figcaption>
+        <div className="formula-row">
+          <div
+            className="formula-scroll"
+            dangerouslySetInnerHTML={latexMarkup(formula.latex, true)}
+          />
+          {formula.officialNumber && (
+            <span className="formula-number">[{formula.officialNumber}]</span>
+          )}
+        </div>
+        {!formula.officialNumber && (
+          <figcaption>
+            <span>Formula non numerata</span>
+          </figcaption>
+        )}
       </figure>
     );
   }
 
   const table = data.assets.tables[block.assetId];
   if (table) {
+    const notes = visibleTableNotes(table.notes);
     return (
       <figure className="table-asset">
         <figcaption>
@@ -830,7 +840,6 @@ function BlockContent({
               : "Tabella non numerata"}
           </strong>
           {table.caption && <span> — {table.caption}</span>}
-          <em>trascrizione da verificare</em>
         </figcaption>
         <div className="table-scroll">
           <table>
@@ -866,9 +875,9 @@ function BlockContent({
             </tbody>
           </table>
         </div>
-        {table.notes.length > 0 && (
+        {notes.length > 0 && (
           <ul className="table-notes">
-            {table.notes.map((note) => (
+            {notes.map((note) => (
               <li key={note}>{note}</li>
             ))}
           </ul>
@@ -884,7 +893,6 @@ function BlockContent({
         <img src={`/assets/${figure.imagePath}`} alt={figure.alt} />
         <figcaption>
           <span>{figure.caption}</span>
-          <em>ritaglio della fonte ufficiale</em>
         </figcaption>
       </figure>
     );

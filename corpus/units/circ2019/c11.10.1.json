@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.10.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.10.1",
+    "sortKey": "011.010.001"
+  },
+  "title": "ELEMENTI PER MURATURA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.10.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.10",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.10"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.10.1 ELEMENTI PER MURATURA",
+        "normalized": "C11.10.1 ELEMENTI PER MURATURA",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 340,
+        "printedPage": "336",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b7889414c9a90fa4517b9bcf617c5984732fb8b1c1911b597b41c8167f445999",
+        "normalizedSha256": "b7889414c9a90fa4517b9bcf617c5984732fb8b1c1911b597b41c8167f445999"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "È opportuno rammentare che la definizione delle categorie degli elementi per muratura è più precisamente descritta nelle norme\narmonizzate della serie UNI EN 771. La norma ribadisce che gli elementi per muratura portante devono essere conformi alla\npertinente norma europea armonizzata e recare la Marcatura CE.",
+        "normalized": "È opportuno rammentare che la definizione delle categorie degli elementi per muratura è più precisamente descritta nelle norme armonizzate della serie UNI EN 771. La norma ribadisce che gli elementi per muratura portante devono essere conformi alla pertinente norma europea armonizzata e recare la Marcatura CE.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 340,
+        "printedPage": "336",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "66c821a11e574be94867d84566f7946af17f63c4dae390b90ec9173edc1c28f6",
+        "normalizedSha256": "784df2dbb088c56bcedae3be313e12f104c205117720f6c6c7fd9dd61cd2d1ac"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-10-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

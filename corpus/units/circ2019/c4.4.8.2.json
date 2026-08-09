@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.4.8.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.4.8.2",
+    "sortKey": "004.004.008.002"
+  },
+  "title": "VERIFICHE DI STABILITÀ",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.4.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.4",
+      "urn:structural-codes:it:unit:circ2019:c4.4.8"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CC4.4.8.2 VERIFICHE DI STABILITÀ",
+        "normalized": "C4.4.8.2 VERIFICHE DI STABILITÀ",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 158,
+        "printedPage": "154",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ44-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+          }
+        ],
+        "rawSha256": "1c0c31890a82982ca55bc1cb21790ae928dd80d4466492376e5ad6b7331762c8",
+        "normalizedSha256": "d3b21a0af7732c3d8b8b80ba3d446cd8a92a74dece9252bf5d1df4865da62b46"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Considerata la complessità del fenomeno dell'instabilità connessa alle peculiarità del materiale ligneo (anisotropia, difettosità,\nigroscopicità, comportamento reologico, etc.) ed alle difficoltà di schematizzazione, le verifiche possono essere svolte in modo\nconvenzionale utilizzando formulazioni semplificate, che possono essere reperite in normative di comprovata validità.",
+        "normalized": "Considerata la complessità del fenomeno dell'instabilità connessa alle peculiarità del materiale ligneo (anisotropia, difettosità, igroscopicità, comportamento reologico, etc.) ed alle difficoltà di schematizzazione, le verifiche possono essere svolte in modo convenzionale utilizzando formulazioni semplificate, che possono essere reperite in normative di comprovata validità.",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 158,
+        "printedPage": "154",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale dal layer testuale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, sillabazioni, glifi e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          }
+        ],
+        "rawSha256": "bca402c83d9be7cd3b4947d7e17bf5d0c3f81f9a68f137e00ef1591e6bfc1a7f",
+        "normalizedSha256": "9cd74eed4341ea739fc66486f6b2928d143f3177973286c6538f1276d3dd9b2e"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ44-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ44-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-4-8-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

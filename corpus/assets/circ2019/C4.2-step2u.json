@@ -1,0 +1,196 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C4.2-step2u",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.104",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.104",
+      "pdfPage": 136,
+      "latex": "g_r=r_m\\left[\\tan\\left(\\frac{\\Phi}{2}\\right)-\\sin\\left(\\frac{\\Phi}{2}\\right)\\right]"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.105",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.105",
+      "pdfPage": 138,
+      "latex": "\\sigma_{cr,s}=2\\,\\frac{\\sqrt{k\\,E\\,I_s}}{A_s}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.106",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.106",
+      "pdfPage": 138,
+      "latex": "\\lambda_d=\\sqrt{\\frac{f_{yk}}{\\sigma_{cr,s}}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.107",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.107",
+      "pdfPage": 138,
+      "latex": "\\sigma_{d,Rd}=\\chi_d(\\lambda_d)\\,f_{yk}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.108",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.108",
+      "pdfPage": 138,
+      "latex": "\\begin{aligned}\\chi_d&=1&&\\text{per }\\lambda_d<0{,}65\\\\\\chi_d&=1{,}47-0{,}723\\,\\lambda_d&&\\text{per }0{,}65\\le\\lambda_d\\le1{,}38\\\\\\chi_d&=\\frac{0{,}66}{\\lambda_d}&&\\text{per }\\lambda_d>1{,}38\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.109",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.109",
+      "pdfPage": 138,
+      "latex": "\\sigma_{com,Ed,i}=\\chi_d\\,\\frac{f_{yk}}{\\gamma_{M0}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.110",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.110",
+      "pdfPage": 138,
+      "latex": "\\sigma_{d,Rd}=\\chi_d(\\lambda'_d)\\,f_{yk}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.111",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.111",
+      "pdfPage": 138,
+      "latex": "A_{s,rid}=\\frac{\\chi_d\\,f_{yk}\\,A_s}{\\gamma_{M0}\\,\\sigma_{com,Ed}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.112",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.112",
+      "pdfPage": 139,
+      "latex": "t_{rid}=t\\,\\frac{A_{s,rid}}{A_s}"
+    }
+  ],
+  "tables": [],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.26",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.26",
+      "pdfPage": 136,
+      "caption": "Figura C4.2.26 – Determinazione del punto X per la valutazione della larghezza di elementi piani",
+      "alt": "Determinazione del punto X per la valutazione della larghezza di elementi piani",
+      "imagePath": "figures/circ2019/figc4.2.26.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 170,
+        "y": 450,
+        "width": 270,
+        "height": 80
+      },
+      "sha256": "6cd0a782c0334a4c0c678b662efcc5ea91a29c1dfbbbe9929360edb4884b3d89"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.27",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.27",
+      "pdfPage": 136,
+      "caption": "Figura C4.2.27 – Esempi di determinazione della larghezza b_p",
+      "alt": "Esempi di determinazione della larghezza b_p",
+      "imagePath": "figures/circ2019/figc4.2.27.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 70,
+        "y": 570,
+        "width": 455,
+        "height": 170
+      },
+      "sha256": "e8212b0a06bcfa3ac5d0c53209b50f503637211a84fb89aa32d1e8695498f23a"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.28",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.28",
+      "pdfPage": 137,
+      "caption": "Figura C4.2.28 – Modelli statici per diverse tipologie di elementi piani",
+      "alt": "Modelli statici per diverse tipologie di elementi piani",
+      "imagePath": "figures/circ2019/figc4.2.28.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 130,
+        "y": 150,
+        "width": 330,
+        "height": 215
+      },
+      "sha256": "f70a6a56d4c9c08d5e783cfbca59f8e895c0558d6e61e78a01e2e61d047d91e7"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.29",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.29",
+      "pdfPage": 137,
+      "caption": "Figura C4.2.29 – Elementi piani delimitati da un’anima e da un irrigidimento di bordo",
+      "alt": "Elementi piani delimitati da un’anima e da un irrigidimento di bordo",
+      "imagePath": "figures/circ2019/figc4.2.29.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 180,
+        "y": 480,
+        "width": 260,
+        "height": 95
+      },
+      "sha256": "ba87a0abdbff13c051ee9878ef483e6ea25b059bbc71356e0e88a5359ba0c32e"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.30",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.30",
+      "pdfPage": 137,
+      "caption": "Figura C4.2.30 – Elementi piani delimitati da due anime con irrigidimenti intermedi",
+      "alt": "Elementi piani delimitati da due anime con irrigidimenti intermedi",
+      "imagePath": "figures/circ2019/figc4.2.30.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 180,
+        "y": 590,
+        "width": 260,
+        "height": 55
+      },
+      "sha256": "bf0aee4b223d6c5170800d173fffd96bea9da305a3dd15cbdc01e3322cd7c42a"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.31",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.31",
+      "pdfPage": 138,
+      "caption": "Figura C4.2.31 – Schematizzazione degli irrigidimenti",
+      "alt": "Schematizzazione degli irrigidimenti",
+      "imagePath": "figures/circ2019/figc4.2.31.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 170,
+        "y": 75,
+        "width": 270,
+        "height": 85
+      },
+      "sha256": "510ea05861bf754d650a873c5377d7b3fc183b74841057da004c9181c6e3ae7c"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c4.2.32",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.4",
+      "officialNumber": "C4.2.32",
+      "pdfPage": 138,
+      "caption": "Figura C4.2.32 – Schemi di calcolo per la determinazione della costante elastica",
+      "alt": "Schemi di calcolo per la determinazione della costante elastica",
+      "imagePath": "figures/circ2019/figc4.2.32.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 170,
+        "y": 175,
+        "width": 270,
+        "height": 90
+      },
+      "sha256": "da5bde680342230b7aab9afbd27033b4a031c6c79a19866e4a0020b1dcee69f0"
+    }
+  ]
+}

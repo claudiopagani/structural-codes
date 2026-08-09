@@ -1,0 +1,55 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C8.8-step1",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3",
+      "officialNumber": "C8.8.5.1",
+      "pdfPage": 301,
+      "latex": "\\begin{cases} S_{Di}(T)=S_{De}(T) & T\\ge T_C \\\\ S_{Di}(T)=\\dfrac{S_{De}(T)}{q}\\left[1+(q-1)\\dfrac{T_C}{T}\\right] & T<T_C \\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.q",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.3",
+      "officialNumber": null,
+      "pdfPage": 301,
+      "latex": "q=\\dfrac{mS_e(T)}{F_y}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.4",
+      "officialNumber": "C8.8.5.2",
+      "pdfPage": 301,
+      "latex": "\\theta_y(N)=\\phi_y(N)\\dfrac{L_s}{3}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.4",
+      "officialNumber": "C8.8.5.3",
+      "pdfPage": 301,
+      "latex": "\\theta_u(N)=\\theta_y(N)+[\\phi_u(N)-\\phi_y(N)]L_p\\left(1-\\dfrac{0.5L_p}{L_s}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.4",
+      "officialNumber": "C8.8.5.4",
+      "pdfPage": 302,
+      "latex": "\\theta_{SLC}=\\dfrac{1}{\\gamma_{el}}\\theta_u(N)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.8.5.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.8.5.5",
+      "officialNumber": "C8.8.5.5",
+      "pdfPage": 302,
+      "latex": "V_u=V_c+V_N+V_s\\quad V_c=0.8A_ck\\sqrt{f_c}\\quad V_N=N\\dfrac{h-x}{2L_s}\\quad V_s=\\dfrac{A_{sw}}{s}f_yz"
+    }
+  ],
+  "tables": [],
+  "figures": []
+}

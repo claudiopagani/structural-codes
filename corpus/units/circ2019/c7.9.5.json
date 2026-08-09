@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.9.5",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C7.9.5",
+    "sortKey": "007.009.005"
+  },
+  "title": "DIMENSIONAMENTO E VERIFICA DEGLI ELEMENTI STRUTTURALI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.9.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.9",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.9"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.9.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.9.5 DIMENSIONAMENTO E VERIFICA DEGLI ELEMENTI STRUTTURALI",
+        "normalized": "C7.9.5 DIMENSIONAMENTO E VERIFICA DEGLI ELEMENTI STRUTTURALI",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 234,
+        "printedPage": "230",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "891c3585f6da58d038a6808f76056c675695a830b748de37cff2a51ceff63e72",
+        "normalizedSha256": "891c3585f6da58d038a6808f76056c675695a830b748de37cff2a51ceff63e72"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.9.5#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per garantire alle pile da ponte un comportamento dissipativo, nel dimensionamento e nella verifica degli elementi strutturali si adotta la progettazione in capacità. A differenza degli elementi strutturali di tutte le altre tipologie strutturali, per le quali i fattori di sovraresistenza sono tutti riassunti nella Tabella 7.2.I, la norma fornisce un’espressione specifica per le strutture in elevazione dei ponti. Per individuare la domanda calcolata, in base a considerazioni di equilibrio, a partire dalla capacità a flessione delle zone dissipative e dai carichi permanenti, si utilizza, solo per i ponti, il pedice “prc”.",
+        "normalized": "Per garantire alle pile da ponte un comportamento dissipativo, nel dimensionamento e nella verifica degli elementi strutturali si adotta la progettazione in capacità. A differenza degli elementi strutturali di tutte le altre tipologie strutturali, per le quali i fattori di sovraresistenza sono tutti riassunti nella Tabella 7.2.I, la norma fornisce un’espressione specifica per le strutture in elevazione dei ponti. Per individuare la domanda calcolata, in base a considerazioni di equilibrio, a partire dalla capacità a flessione delle zone dissipative e dai carichi permanenti, si utilizza, solo per i ponti, il pedice “prc”.",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 234,
+        "printedPage": "230",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "5ed67d2a2590b8c82481bb5b767a32025cf57c99b57859a913072fcf70bdcd80",
+        "normalizedSha256": "5ed67d2a2590b8c82481bb5b767a32025cf57c99b57859a913072fcf70bdcd80"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ78-79-step1",
+      "kind": "script",
+      "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-9-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-9-5-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

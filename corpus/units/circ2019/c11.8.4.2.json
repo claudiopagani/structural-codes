@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.8.4.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.8.4.2",
+    "sortKey": "011.008.004.002"
+  },
+  "title": "QUALIFICAZIONE DELLA PRODUZIONE IN SERIE DICHIARATA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.8.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.8.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.8",
+      "urn:structural-codes:it:unit:circ2019:c11.8.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.8.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.8.4.2 QUALIFICAZIONE DELLA PRODUZIONE IN SERIE DICHIARATA",
+        "normalized": "C11.8.4.2 QUALIFICAZIONE DELLA PRODUZIONE IN SERIE DICHIARATA",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 336,
+        "printedPage": "332",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b8a1d354b23277b3ede04019a02811552048e688aed6cd426fb6a89218a8fd27",
+        "normalizedSha256": "b8a1d354b23277b3ede04019a02811552048e688aed6cd426fb6a89218a8fd27"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.8.4.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per quanto riguarda le procedure di rinnovo degli attestati di qualificazione, l’istanza va trasmessa almeno sessanta giorni prima\ndella scadenza del periodo di validità dell’Attestato, corredata di tutta la documentazione prevista per l’avvio della procedura di\nqualificazione, secondo l’elenco aggiornato reso disponibile dal Servizio, compresi gli elaborati relativi all’attività svolta, di cui al\n§ 11.8.4.2, nonché della ricevuta di avvenuto pagamento delle tariffe previste per il rilascio dell’attestato. Per quanto riguarda la\ndocumentazione rimasta invariata, si deve comunque produrre una dichiarazione che ne attesti la permanenza della validità, con\nrelativo elenco esplicativo.",
+        "normalized": "Per quanto riguarda le procedure di rinnovo degli attestati di qualificazione, l’istanza va trasmessa almeno sessanta giorni prima della scadenza del periodo di validità dell’Attestato, corredata di tutta la documentazione prevista per l’avvio della procedura di qualificazione, secondo l’elenco aggiornato reso disponibile dal Servizio, compresi gli elaborati relativi all’attività svolta, di cui al § 11.8.4.2, nonché della ricevuta di avvenuto pagamento delle tariffe previste per il rilascio dell’attestato. Per quanto riguarda la documentazione rimasta invariata, si deve comunque produrre una dichiarazione che ne attesti la permanenza della validità, con relativo elenco esplicativo.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 336,
+        "printedPage": "332",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "b1235a5a0ef2ced7a64fd319645668b16a2d4b3eaaa3906660cc982026827def",
+        "normalizedSha256": "3917db8c242d388f1421d8f71716f5cd352c1a740794d4025f0452d7c644af89"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-8-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

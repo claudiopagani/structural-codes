@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.7.7.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.7.7.2",
+    "sortKey": "011.007.007.002"
+  },
+  "title": "ADESIVI PER GIUNTI REALIZZATI IN CANTIERE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.7.7.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.7.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.7",
+      "urn:structural-codes:it:unit:ntc2018:11.7.7"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.7.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.7.7.2 A DESIVI PER GIUNTI REALIZZATI IN CANTIERE",
+        "normalized": "11.7.7.2 ADESIVI PER GIUNTI REALIZZATI IN CANTIERE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "0730e669705b11e02369e99490adeaa52c365bddbc8cc0dfe059a9c362d48642",
+        "normalizedSha256": "5fc66e19c3ba088fd9dfab02c493b147e01344d323c2d889ffe306ec735c283a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.7.2#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli adesivi utilizzati in cantiere (per i quali non sono rispettate le prescrizioni di cui alla norma UNI EN 301:2013) devono essere\nsottoposti a prove in conformità ad idoneo protocollo di prova, per dimostrare che la resistenza a taglio del giunto non sia minore\ndi quella del legno, nelle medesime condizioni previste nel protocollo di prova.",
+        "normalized": "Gli adesivi utilizzati in cantiere (per i quali non sono rispettate le prescrizioni di cui alla norma UNI EN 301:2013) devono essere sottoposti a prove in conformità ad idoneo protocollo di prova, per dimostrare che la resistenza a taglio del giunto non sia minore di quella del legno, nelle medesime condizioni previste nel protocollo di prova.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "523abd6710dc5f3d618c11c7b7f4d12f8152d2a9cc32864248afeee528570369",
+        "normalizedSha256": "155ea276c64e9dbd82ac78590fc566af983051628884f06a46d9152c239f2b71"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-7-7-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

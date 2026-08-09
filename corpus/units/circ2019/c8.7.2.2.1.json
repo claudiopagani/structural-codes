@@ -1,0 +1,535 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.7.2.2.1",
+    "sortKey": "008.007.002.002.001"
+  },
+  "title": "Analisi statica lineare",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.7",
+      "urn:structural-codes:it:unit:circ2019:c8.7.2",
+      "urn:structural-codes:it:unit:circ2019:c8.7.2.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8.7.2.2.1 Analisi statica lineare",
+        "normalized": "C8.7.2.2.1 Analisi statica lineare",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "36564474c5214cca3e1223ba5dbf37cc5dcb8cc88c67e496f28372e085cb52f0",
+        "normalizedSha256": "36564474c5214cca3e1223ba5dbf37cc5dcb8cc88c67e496f28372e085cb52f0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’analisi statica lineare può essere effettuata ove siano soddisfatte le condizioni di cui al § 7.3.3.2 delle NTC, con le seguenti\nindicazioni aggiuntive:",
+        "normalized": "L’analisi statica lineare può essere effettuata ove siano soddisfatte le condizioni di cui al § 7.3.3.2 delle NTC, con le seguenti indicazioni aggiuntive:",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": "’analisi statica lineare può essere effettuata ove siano soddisfatte le condizioni di cui al § 7.3.3.2 delle "
+          },
+          {
+            "kind": "math",
+            "value": "NTC",
+            "latex": "\\mathrm{NTC}"
+          },
+          {
+            "kind": "text",
+            "value": ", con le seguenti indicazioni aggiuntive:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3bc709fd925b53532db8a39799099ec24a4c3c869c69a9275d7ca89eab402368",
+        "normalizedSha256": "1863d7acd9c7f42736577f171511cee58a69a1ffe1fbd336abb65b5a70f973f2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-002",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– considerando tutti gli elementi primari della struttura ed indicato, per l’i-esimo di tali elementi, con il\nrapporto tra il momento flettente fornito dall’analisi della struttura soggetta alla combinazione di carico sismica e il\ncorrispondente momento resistente (valutato in presenza dello sforzo normale relativo alle condizioni di carico\ngravitazionali), il coefficiente di variazione di tutti i ‥〶 㐐 1 non deve superare il valore di 0,5;",
+        "normalized": "– considerando tutti gli elementi primari della struttura ed indicato, per l’i-esimo di tali elementi, con il rapporto tra il momento flettente fornito dall’analisi della struttura soggetta alla combinazione di carico sismica e il corrispondente momento resistente (valutato in presenza dello sforzo normale relativo alle condizioni di carico gravitazionali), il coefficiente di variazione di tutti i ‥〶 㐐 1 non deve superare il valore di 0,5;",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "57924f42e222c11940e82b4f0e0279f50752c719175d76160dabec8783910d85",
+        "normalizedSha256": "46e8d7eb328ee14e3a2cc16c219c41d88c579c7d69d37cf5eb40e543148fdc39"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– la capacità degli elementi/meccanismi fragili è maggiore della corrispondente domanda , quest’ultima calcolata\nsulla base della capacità degli elementi duttili adiacenti, se il degli elementi/meccanismi fragili è maggiore di 1,\noppure sulla base dei risultati dell’analisi, se il degli elementi/meccanismi fragili è minore di 1.",
+        "normalized": "– la capacità degli elementi/meccanismi fragili è maggiore della corrispondente domanda , quest’ultima calcolata sulla base della capacità degli elementi duttili adiacenti, se il degli elementi/meccanismi fragili è maggiore di 1, oppure sulla base dei risultati dell’analisi, se il degli elementi/meccanismi fragili è minore di 1.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "aac4a25470c8605c8d0978df65f66dcc74b3a118af28eacccf10aa7d0fecb9ba",
+        "normalizedSha256": "ebd2df8f1cea44654fd36fc1b049da275cc00c7871804e52d1b55eb818a9ba6e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-004",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Analisi statica lineare con spettro elastico",
+        "normalized": "Analisi statica lineare con spettro elastico",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cb6f3791516b74e12d86d693ef5a78140fd2912a27b98825015d041a4f966460",
+        "normalizedSha256": "cb6f3791516b74e12d86d693ef5a78140fd2912a27b98825015d041a4f966460"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di analisi lineare con spettro elastico, lo spettro di risposta da impiegare è quello elastico di cui al § 3.2.3 delle NTC\neseguendo l’analisi e la verifica secondo quanto previsto nel § 7 per le costruzioni non dissipative.",
+        "normalized": "Nel caso di analisi lineare con spettro elastico, lo spettro di risposta da impiegare è quello elastico di cui al § 3.2.3 delle NTC eseguendo l’analisi e la verifica secondo quanto previsto nel § 7 per le costruzioni non dissipative.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di analisi lineare con spettro elastico, lo spettro di risposta da impiegare è quello elastico di cui al § 3.2.3 delle "
+          },
+          {
+            "kind": "math",
+            "value": "NTC",
+            "latex": "\\mathrm{NTC}"
+          },
+          {
+            "kind": "text",
+            "value": " eseguendo l’analisi e la verifica secondo quanto previsto nel § 7 per le costruzioni non dissipative."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1bb418c5028629554f15108be383cba5d5612b70a2ab0300ea1d4455f662601c",
+        "normalizedSha256": "5b271ed06ac4af80b5090bcd62c34203e194b4b241f30da743afb9ad49a89d13"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-006",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Analisi statica lineare con fattore di comportamento q",
+        "normalized": "Analisi statica lineare con fattore di comportamento q",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "598427c7e8656d4e6a86406e34bbe2cb62d24e990b13b5ac5cb89d52cc31f43a",
+        "normalizedSha256": "598427c7e8656d4e6a86406e34bbe2cb62d24e990b13b5ac5cb89d52cc31f43a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "È possibile utilizzare lo spettro di progetto, definito in § 3.2.3 delle NTC, assumendo il valore del fattore di comportamento q nel\ncampo fra 1,5 e 3,0 sulla base della regolarità della costruzione in esame nonché delle sollecitazioni delle membrature dovute ai\ncarichi verticali. Valori superiori a quelli indicati devono essere adeguatamente giustificati tenendo debito conto della duttilità\ndisponibile a livello locale e globale. Nel caso in cui il sistema strutturale resistente all’azione orizzontale sia integralmente\ncostituito da elementi strutturali di nuova costruzione, si possono adottare i valori dei fattori di comportamento validi per le\nnuove costruzioni; in tal caso occorre verificare la compatibilità degli spostamenti con le strutture esistenti.",
+        "normalized": "È possibile utilizzare lo spettro di progetto, definito in § 3.2.3 delle NTC, assumendo il valore del fattore di comportamento q nel campo fra 1,5 e 3,0 sulla base della regolarità della costruzione in esame nonché delle sollecitazioni delle membrature dovute ai carichi verticali. Valori superiori a quelli indicati devono essere adeguatamente giustificati tenendo debito conto della duttilità disponibile a livello locale e globale. Nel caso in cui il sistema strutturale resistente all’azione orizzontale sia integralmente costituito da elementi strutturali di nuova costruzione, si possono adottare i valori dei fattori di comportamento validi per le nuove costruzioni; in tal caso occorre verificare la compatibilità degli spostamenti con le strutture esistenti.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "È possibile utilizzare lo spettro di progetto, definito in § 3.2.3 delle "
+          },
+          {
+            "kind": "math",
+            "value": "NTC",
+            "latex": "\\mathrm{NTC}"
+          },
+          {
+            "kind": "text",
+            "value": ", assumendo il valore del fattore di comportamento q nel campo fra 1,5 e 3,0 sulla base della regolarità della costruzione in esame nonché delle sollecitazioni delle membrature dovute ai carichi verticali. Valori superiori a quelli indicati devono essere adeguatamente giustificati tenendo debito conto della duttilità disponibile a livello locale e globale. Nel caso in cui il sistema strutturale resistente all’azione orizzontale sia integralmente costituito da elementi strutturali di nuova costruzione, si possono adottare i valori dei fattori di comportamento validi per le nuove costruzioni; in tal caso occorre verificare la compatibilità degli spostamenti con le strutture esistenti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0a7293c729e7cefbefb2fa8317a3818e8085100b86ee6a16d03e91881197d989",
+        "normalizedSha256": "3c872a21303cc1d8b3c0ebe50fdc6bbd7e41fe712ce2802e7c4e2144674af55b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le verifiche devono essere eseguite in termini di resistenza, controllando che, per ciascun elemento strutturale, la domanda in\ntermini di sollecitazioni sia inferiore o uguale alla corrispondente capacità.",
+        "normalized": "Le verifiche devono essere eseguite in termini di resistenza, controllando che, per ciascun elemento strutturale, la domanda in termini di sollecitazioni sia inferiore o uguale alla corrispondente capacità.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "86796da6b344cd6e08753ebca737870ac8e8741875d0fa1508bc59373a782d78",
+        "normalizedSha256": "0aa21ecca7815e8454a7fc97fc4f03504662b1f8515d6cfa0fadb97d68b5a4ce"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La domanda sugli elementi strutturali si ottiene dall’analisi con spettro di risposta elastico ridotto, rispettivamente, per gli\nelementi/meccanismi “duttili” del fattore di comportamento attribuito alla struttura, per gli elementi/meccanismi \"fragili\" del\nfattore di comportamento q = 1,5. Per questi ultimi la domanda non può superare quella trasmessa dagli elementi/meccanismi\nduttili ad essi alternativi, valutata come indicato al punto b) del §C8.7.2.2.",
+        "normalized": "La domanda sugli elementi strutturali si ottiene dall’analisi con spettro di risposta elastico ridotto, rispettivamente, per gli elementi/meccanismi “duttili” del fattore di comportamento attribuito alla struttura, per gli elementi/meccanismi \"fragili\" del fattore di comportamento q = 1,5. Per questi ultimi la domanda non può superare quella trasmessa dagli elementi/meccanismi duttili ad essi alternativi, valutata come indicato al punto b) del §C8.7.2.2.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 284,
+        "printedPage": "280",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "152d218f21afa45ba97a381e7bc618303a8e0bb5e91c4388f7e152a77af15285",
+        "normalizedSha256": "76ce9bcde6df5be10e484419d2b56a61df033d62e29cd2beba27f5ddc80bd72d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:8.7.2",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c8.7.2.2.1#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step2a",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.7.2.2.1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.7.2.2.1-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.3.8",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "4.3.8",
+    "sortKey": "004.003.008"
+  },
+  "title": "VERIFICHE PER SITUAZIONI ECCEZIONALI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.3.8#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.3"
+    ],
+    "position": 8
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.8#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.3.8.   VERIFICHE PER SITUAZIONI ECCEZIONALI Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari",
+        "normalized": "4.3.8 VERIFICHE PER SITUAZIONI ECCEZIONALI",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.3.8 VERIFICHE PER SITUAZIONI ECCEZIONALI"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 136,
+        "printedPage": "132",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 165,
+          "width": 440,
+          "height": 25
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0bd6ba45cb162041c541ac2d2259951ce593d7d75e830a55a86175cad4e1421d",
+        "normalizedSha256": "ac36eb356888d1a7d4a708ae1b72aefcb11a0f2901c92e13a2a297c4e8ef4d52"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.8#block-p-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali   · M   dei materiali possono essere assunti pari ai valori precisati per il calcestruzzo nel § 4.1.4 e per l’acciaio nel § 4.2.6.",
+        "normalized": "Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali γ_M dei materiali possono essere assunti pari ai valori precisati per il calcestruzzo nel § 4.1.4 e per l’acciaio nel § 4.2.6.",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per situazioni progettuali eccezionali, il progetto dovrà dimostrare la robustezza della costruzione mediante procedure di scenari di danno per i quali i fattori parziali "
+          },
+          {
+            "kind": "math",
+            "value": "γ_M",
+            "latex": "\\gamma_M"
+          },
+          {
+            "kind": "text",
+            "value": " dei materiali possono essere assunti pari ai valori precisati per il calcestruzzo nel § 4.1.4 e per l’acciaio nel § 4.2.6."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 136,
+        "printedPage": "132",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 178,
+          "width": 440,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cc6812b4eced27692667d478253d1c24357d6e9ec016c8534e75a528b13505c9",
+        "normalizedSha256": "6164d46ca9548f00bce51bba43d82b09bec21e7c886582c76fd771e33c6f8b9c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc43-step4",
+      "kind": "automated-agent",
+      "toolVersion": "ntc43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-3-8-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

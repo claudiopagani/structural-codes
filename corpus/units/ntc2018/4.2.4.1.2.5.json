@@ -1,0 +1,373 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.2.4.1.2.5",
+    "sortKey": "004.002.004.001.002.005"
+  },
+  "title": "Torsione",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.2",
+      "urn:structural-codes:it:unit:ntc2018:4.2.4",
+      "urn:structural-codes:it:unit:ntc2018:4.2.4.1",
+      "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.2.4.1.2.5 Torsione",
+        "normalized": "4.2.4.1.2.5 Torsione",
+        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.2.4.1.2.5 Torsione"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 198,
+          "width": 75,
+          "height": 7.476
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2dc30ddd5164251c1ca294a00d3046dd1ca1666045badff76c091ae5483b6216",
+        "normalizedSha256": "2dc30ddd5164251c1ca294a00d3046dd1ca1666045badff76c091ae5483b6216"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per gli elementi soggetti a torsione, quando possano essere trascurate le distorsioni della sezione, la sollecitazione torcente di progetto, TEd, deve soddisfare la relazione",
+        "normalized": "Per gli elementi soggetti a torsione, quando possano essere trascurate le distorsioni della sezione, la sollecitazione torcente di progetto, TEd, deve soddisfare la relazione",
+        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli elementi soggetti a torsione, quando possano essere trascurate le distorsioni della sezione, la sollecitazione torcente di progetto, "
+          },
+          {
+            "kind": "math",
+            "value": "TEd",
+            "latex": "T_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": ", deve soddisfare la relazione"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 210,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole spezzate dal trattino tipografico a fine riga."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a60b9d21ce67fb9c8a8a80f8208e4a9520eb3838550d12bef658920ac61f3d06",
+        "normalizedSha256": "a60b9d21ce67fb9c8a8a80f8208e4a9520eb3838550d12bef658920ac61f3d06"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-formula-4-2-28",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.2.28",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 180,
+          "y": 252,
+          "width": 220,
+          "height": 25
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e70a9369dcb16b0a048ce287002d6c7e673522587a44a9917c85465b15ceb673",
+        "normalizedSha256": "e70a9369dcb16b0a048ce287002d6c7e673522587a44a9917c85465b15ceb673"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "essendo TRd la resistenza torsionale di progetto della sezione trasversale. La torsione agente TEd può essere considerata come la somma di due contributi",
+        "normalized": "essendo TRd la resistenza torsionale di progetto della sezione trasversale. La torsione agente TEd può essere considerata come la somma di due contributi",
+        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "TRd",
+            "latex": "T_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " la resistenza torsionale di progetto della sezione trasversale. La torsione agente "
+          },
+          {
+            "kind": "math",
+            "value": "TEd",
+            "latex": "T_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " può essere considerata come la somma di due contributi"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 286,
+          "width": 428.6,
+          "height": 27.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "615e14b2cbaf94003c376061941b0c9cdb02ee25760fdc18f610c2bdda74c700",
+        "normalizedSha256": "615e14b2cbaf94003c376061941b0c9cdb02ee25760fdc18f610c2bdda74c700"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-formula-4-2-29",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.2.29",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 180,
+          "y": 320,
+          "width": 220,
+          "height": 25
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b494ddf69dbed809f3d591ee50cdfdefb110c7383841887ecbdccec9bae081bd",
+        "normalizedSha256": "b494ddf69dbed809f3d591ee50cdfdefb110c7383841887ecbdccec9bae081bd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.5#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove Tt,Ed è la torsione uniforme e Tw,Ed è la torsione per ingobbamento impedito.",
+        "normalized": "dove Tt,Ed è la torsione uniforme e Tw,Ed è la torsione per ingobbamento impedito.",
+        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Tt,Ed",
+            "latex": "T_{t,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è la torsione uniforme e "
+          },
+          {
+            "kind": "math",
+            "value": "Tw,Ed",
+            "latex": "T_{w,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è la torsione per ingobbamento impedito."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 354,
+          "width": 428.6,
+          "height": 7.482
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b188420d606e6befce177eaf6ffee1e0859eef495e8685b709a9571967d2a1c5",
+        "normalizedSha256": "b188420d606e6befce177eaf6ffee1e0859eef495e8685b709a9571967d2a1c5"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:4.2.28",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.2.29"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc42-step4a",
+      "kind": "automated-agent",
+      "toolVersion": "ntc42-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-2-4-1-2-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

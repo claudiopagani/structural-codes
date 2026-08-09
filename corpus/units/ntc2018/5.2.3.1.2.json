@@ -1,0 +1,401 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "5.2.3.1.2",
+    "sortKey": "005.002.003.001.002"
+  },
+  "title": "NUMERO DI TRENI CONTEMPORANEI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:5",
+      "urn:structural-codes:it:unit:ntc2018:5.2",
+      "urn:structural-codes:it:unit:ntc2018:5.2.3",
+      "urn:structural-codes:it:unit:ntc2018:5.2.3.1"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "5.2.3.1.2. NUMERO DI TRENI CONTEMPORANEI",
+        "normalized": "5.2.3.1.2 NUMERO DI TRENI CONTEMPORANEI",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "84cb3795d81900803852a9c0e410fe95d9021df14072e869d4fd1778d2b0cdc8",
+        "normalizedSha256": "692e41249d0d5feca522b07bf80bbc38a364777ebb3a87af6ea2cc2ea2d8a32d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella progettazione dei ponti andrà considerata l’eventuale contemporaneità di più treni, secondo quanto previsto nella Tab. 5.2.III considerando, in genere, sia il traffico normale che il traffico pesante.",
+        "normalized": "Nella progettazione dei ponti andrà considerata l’eventuale contemporaneità di più treni, secondo quanto previsto nella Tab. 5.2.III considerando, in genere, sia il traffico normale che il traffico pesante.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nella progettazione dei ponti andrà considerata l’eventuale contemporaneità di più treni, secondo quanto previsto nella Tab. 5.2.III considerando, in genere, sia il traffico normale che il traffico pesante."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "2ed36b46f8b360118553d6056a980db68833726136571966dd78e6a0634f2433",
+        "normalizedSha256": "2ed36b46f8b360118553d6056a980db68833726136571966dd78e6a0634f2433"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-002",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:5.2.iii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "a842bc08d1248a8fd29e74e672d49c3a102cbb887b530ae64619ed02b284b840",
+        "normalizedSha256": "a842bc08d1248a8fd29e74e672d49c3a102cbb887b530ae64619ed02b284b840"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per strutture con 3 o più binari dovranno considerarsi due distinte condizioni: la prima che prevede caricati solo due binari (pri-\nmo e secondo) considerando gli effetti più gravosi tra il caso “a” ed il traffico pesante; la seconda che prevede tutti i binari carica-\nti con l’entità del carico corrispondente a quello fissato nel caso “b”.",
+        "normalized": "Per strutture con 3 o più binari dovranno considerarsi due distinte condizioni: la prima che prevede caricati solo due binari (primo e secondo) considerando gli effetti più gravosi tra il caso “a” ed il traffico pesante; la seconda che prevede tutti i binari caricati con l’entità del carico corrispondente a quello fissato nel caso “b”.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per strutture con 3 o più binari dovranno considerarsi due distinte condizioni: la prima che prevede caricati solo due binari (primo e secondo) considerando gli effetti più gravosi tra il caso “a” ed il traffico pesante; la seconda che prevede tutti i binari caricati con l’entità del carico corrispondente a quello fissato nel caso “b”."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "50025faa511b04f42f89226bb29a4b44dd10ecf47bc8495dec405d690ddd4714",
+        "normalizedSha256": "023c4da3fbb14dd219d260ff49e1c2e960c9fdef5977d73eb240571b443ac18d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Come “primo” binario si intende quello su cui disporre il treno più pesante per avere i massimi effetti sulla struttura. Per “secondo” binario si intende quello su cui viene disposto il secondo treno per avere, congiuntamente con il primo, i massimi effetti sulla struttura; pertanto, il “primo” e il “secondo” binario possono anche non essere contigui nel caso di ponti con 3 o più binari.",
+        "normalized": "Come “primo” binario si intende quello su cui disporre il treno più pesante per avere i massimi effetti sulla struttura. Per “secondo” binario si intende quello su cui viene disposto il secondo treno per avere, congiuntamente con il primo, i massimi effetti sulla struttura; pertanto, il “primo” e il “secondo” binario possono anche non essere contigui nel caso di ponti con 3 o più binari.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Come “primo” binario si intende quello su cui disporre il treno più pesante per avere i massimi effetti sulla struttura. Per “secondo” binario si intende quello su cui viene disposto il secondo treno per avere, congiuntamente con il primo, i massimi effetti sulla struttura; pertanto, il “primo” e il “secondo” binario possono anche non essere contigui nel caso di ponti con 3 o più binari."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "05c258d3df1f2a156b0fad54e6bf7830a4742bf8686fbaa3c6d26d15cce311a6",
+        "normalizedSha256": "05c258d3df1f2a156b0fad54e6bf7830a4742bf8686fbaa3c6d26d15cce311a6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Qualora la presenza del secondo treno o, eventualmente, dei successivi, riduca l’effetto in esame, essi non vanno considerati presenti.",
+        "normalized": "Qualora la presenza del secondo treno o, eventualmente, dei successivi, riduca l’effetto in esame, essi non vanno considerati presenti.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora la presenza del secondo treno o, eventualmente, dei successivi, riduca l’effetto in esame, essi non vanno considerati presenti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ab091d233f9448b93c37aae6a9d6939ee48ee9838c154bb92eca21e1cc900658",
+        "normalizedSha256": "ab091d233f9448b93c37aae6a9d6939ee48ee9838c154bb92eca21e1cc900658"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.1.2#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Tutti gli effetti delle azioni dovranno determinarsi con i carichi e le forze disposti nelle posizioni più sfavorevoli. Azioni che pro-\nducano effetti favorevoli saranno trascurate (ad eccezione dei casi in cui si considerino i treni di carico SW i quali debbono consi-\nderarsi applicati per l’intera estensione del carico).",
+        "normalized": "Tutti gli effetti delle azioni dovranno determinarsi con i carichi e le forze disposti nelle posizioni più sfavorevoli. Azioni che producano effetti favorevoli saranno trascurate (ad eccezione dei casi in cui si considerino i treni di carico SW i quali debbono considerarsi applicati per l’intera estensione del carico).",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tutti gli effetti delle azioni dovranno determinarsi con i carichi e le forze disposti nelle posizioni più sfavorevoli. Azioni che producano effetti favorevoli saranno trascurate (ad eccezione dei casi in cui si considerino i treni di carico SW i quali debbono considerarsi applicati per l’intera estensione del carico)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 181,
+        "printedPage": "177",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "79d4422462c4fbc843852f6f6a57bfedd1a75713165eadc517727342486632c9",
+        "normalizedSha256": "d8852c185329576b974e1100428cb1090f13949bb1f583c1060b0b8e27b1a4eb"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:5.2.iii"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc5-step3",
+      "kind": "automated-agent",
+      "toolVersion": "ntc5-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-5-2-3-1-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-5-2-3-1-2-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      }
+    ]
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.6.7",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C7.6.7",
+    "sortKey": "007.006.007"
+  },
+  "title": "REGOLE SPECIFICHE PER STRUTTURE CON CONTROVENTI CONCENTRICI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.6.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.6"
+    ],
+    "position": 7
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.6.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.6.7 REGOLE SPECIFICHE PER STRUTTURE CON CONTROVENTI CONCENTRICI",
+        "normalized": "C7.6.7 REGOLE SPECIFICHE PER STRUTTURE CON CONTROVENTI CONCENTRICI",
+        "normalizationVersion": "circ76-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ76-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "605326efdd227054491f664a1295577c4e8fe0be803550bf4dcba8a661a78ce7",
+        "normalizedSha256": "605326efdd227054491f664a1295577c4e8fe0be803550bf4dcba8a661a78ce7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.6.7#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I controventi dovrebbero essere realizzati utilizzando unicamente elementi in acciaio, seguendo in tal modo tutte le indicazioni progettuali fornite in § 7.5.5 delle NTC ed in § C7.5.5.",
+        "normalized": "I controventi dovrebbero essere realizzati utilizzando unicamente elementi in acciaio, seguendo in tal modo tutte le indicazioni progettuali fornite in § 7.5.5 delle NTC ed in § C7.5.5.",
+        "normalizationVersion": "circ76-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 229,
+        "printedPage": "225",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ76-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "52140017a741ff7c37653f77a1b57c6a3ab662a28b155696056e99a5786ead5b",
+        "normalizedSha256": "52140017a741ff7c37653f77a1b57c6a3ab662a28b155696056e99a5786ead5b"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [
+    {
+      "relationId": "urn:structural-codes:it:unit:circ2019:c7.6.7#relation-001",
+      "type": "clarifies",
+      "targetUnitId": "urn:structural-codes:it:unit:ntc2018:7.6.7",
+      "basis": "editorial",
+      "evidenceBlockIds": [
+        "urn:structural-codes:it:unit:circ2019:c7.6.7#block-heading"
+      ],
+      "rationale": "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
+      "review": {
+        "status": "proposed",
+        "reviewedBy": null,
+        "reviewedAt": null
+      }
+    }
+  ],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ76-step1",
+      "kind": "script",
+      "toolVersion": "circ76-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-6-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-6-7-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      },
+      {
+        "issueId": "circ2019-c7-6-7-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

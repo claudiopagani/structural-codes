@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.10.2.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.10.2.3",
+    "sortKey": "011.010.002.003"
+  },
+  "title": "MALTE PRODOTTE IN CANTIERE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.10.2.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.10.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.10",
+      "urn:structural-codes:it:unit:ntc2018:11.10.2"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.2.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.10.2.3 M ALTE PRODOTTE IN CANTIERE",
+        "normalized": "11.10.2.3 MALTE PRODOTTE IN CANTIERE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 367,
+        "printedPage": "363",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "4579730564f7d6674d925d2fc462f1f79f90606fec0eec1bc01e86b820cdb819",
+        "normalizedSha256": "0389a6665ec56c0b3e64bcc01a501c8cbb5422b50ec60a6a4be7f233c964ee56"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.2.3#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di malte prodotte in cantiere, le miscele andranno calibrate in funzione delle specifiche di progetto. Le malte devono ga-\nrantire prestazioni adeguate al loro impiego in termini di durabilità e di prestazioni meccaniche.",
+        "normalized": "Nel caso di malte prodotte in cantiere, le miscele andranno calibrate in funzione delle specifiche di progetto. Le malte devono garantire prestazioni adeguate al loro impiego in termini di durabilità e di prestazioni meccaniche.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 367,
+        "printedPage": "363",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "7144b7fe16da31773ff8e46c652b9a1e879e3df4c7ec88508347058c288e388f",
+        "normalizedSha256": "3cc6035c06597295435ef4c4b416e24c0baea4c0eab44bbd5236e572db70f652"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-10-2-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.4.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C4.4.6",
+    "sortKey": "004.004.006"
+  },
+  "title": "RESISTENZA DI PROGETTO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.4.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.4"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.4.6\u0002 RESISTENZA DI PROGETTO",
+        "normalized": "C4.4.6 RESISTENZA DI PROGETTO",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ44-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+          }
+        ],
+        "rawSha256": "8096c2036e76b45ca08c9a9957f07702a0b7138bdfdb18e9347cc46eee1684ba",
+        "normalizedSha256": "4062716b6007e6252b2ede72299e6235724b6147049f22d3bc993b718859ab8d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.6#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella Tab. 4.4.III delle NTC sono forniti i valori del coefficiente parziale di sicurezza relativo al materiale. I valori appartenenti\nalla colonna A possono essere sempre adottati; i valori riportati nella colonna B possono essere adottati purché i materiali\nutilizzati siano prodotti secondo un sistema di qualità e quindi siano certificati secondo la lettera A) o C) (ETA) di cui al § 11.1\ndelle NTC.",
+        "normalized": "Nella Tab. 4.4.III delle NTC sono forniti i valori del coefficiente parziale di sicurezza relativo al materiale. I valori appartenenti alla colonna A possono essere sempre adottati; i valori riportati nella colonna B possono essere adottati purché i materiali utilizzati siano prodotti secondo un sistema di qualità e quindi siano certificati secondo la lettera A) o C) (ETA) di cui al § 11.1 delle NTC.",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 156,
+        "printedPage": "152",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale dal layer testuale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, sillabazioni, glifi e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          }
+        ],
+        "rawSha256": "ee923f60429fcf29559c5fda40d30977d29db62b4b3a399a21f42de491b1c727",
+        "normalizedSha256": "b7872122162e0e5ea37bd675dfdee616e96c5074f9e27ceb358e0c650b803c0d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ44-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ44-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-4-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

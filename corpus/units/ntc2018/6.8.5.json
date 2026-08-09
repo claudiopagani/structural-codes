@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.8.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "6.8.5",
+    "sortKey": "006.008.005"
+  },
+  "title": "CONTROLLI E MONITORAGGIO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.8.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.8"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.8.5. CONTROLLI E MONITORAGGIO",
+        "normalized": "6.8.5 CONTROLLI E MONITORAGGIO",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3dc18bcff17bbaabedf120aa0b4aa995adad0f5a8189c8ccd5f90e75560b1fb3",
+        "normalizedSha256": "5736cada172634beb64954817969dad92deaf8079d31ceec25543b632d9236f5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.5#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Durante la costruzione devono essere eseguite prove di controllo secondo un programma di prove commisurato alla tipologia ed\nimportanza del manufatto, in modo da assicurare un congruo numero di misure significative. Con il monitoraggio si deve accer-\ntare che i valori delle grandezze misurate, quali ad esempio spostamenti e pressioni interstiziali, siano compatibili con i requisiti\ndi sicurezza e funzionalità del manufatto e di quelli delle costruzioni contigue.",
+        "normalized": "Durante la costruzione devono essere eseguite prove di controllo secondo un programma di prove commisurato alla tipologia ed importanza del manufatto, in modo da assicurare un congruo numero di misure significative. Con il monitoraggio si deve accertare che i valori delle grandezze misurate, quali ad esempio spostamenti e pressioni interstiziali, siano compatibili con i requisiti di sicurezza e funzionalità del manufatto e di quelli delle costruzioni contigue.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d31ef40782feb8628dede3781a907ed5ed46bcdd2445df7e4f5f16f833f30f8f",
+        "normalizedSha256": "d0de98cb0f22c22a270a5307ded933598ff41dd3f16807df30afa82c54bf1947"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-8-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

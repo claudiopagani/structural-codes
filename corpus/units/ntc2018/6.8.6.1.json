@@ -1,0 +1,150 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.8.6.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "6.8.6.1",
+    "sortKey": "006.008.006.001"
+  },
+  "title": "INDAGINI GEOTECNICHE E CARATTERIZZAZIONE GEOTECNICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.8.6.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.8.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.8",
+      "urn:structural-codes:it:unit:ntc2018:6.8.6"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.6.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.8.6.1 INDAGINI GEOTECNICHE E CARATTERIZZAZIONE GEOTECNICA",
+        "normalized": "6.8.6.1 INDAGINI GEOTECNICHE E CARATTERIZZAZIONE GEOTECNICA",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "6.8.6.1 INDAGINI "
+          },
+          {
+            "kind": "math",
+            "value": "GEO",
+            "latex": "\\mathrm{GEO}"
+          },
+          {
+            "kind": "text",
+            "value": "TECNICHE E CARATTERIZZAZIONE "
+          },
+          {
+            "kind": "math",
+            "value": "GEO",
+            "latex": "\\mathrm{GEO}"
+          },
+          {
+            "kind": "text",
+            "value": "TECNICA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "42ea93cab39252d827ccbfd69ec2c4559bb8bad1b14384409e23367e1d9bc625",
+        "normalizedSha256": "42ea93cab39252d827ccbfd69ec2c4559bb8bad1b14384409e23367e1d9bc625"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.8.6.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ferme restando le prescrizioni di carattere generale di cui al § 6.2.2, le indagini geotecniche devono inoltre tener conto della pro-\nfondità, dell’ampiezza, della destinazione e del carattere permanente o provvisorio dello scavo.",
+        "normalized": "Ferme restando le prescrizioni di carattere generale di cui al § 6.2.2, le indagini geotecniche devono inoltre tener conto della profondità, dell’ampiezza, della destinazione e del carattere permanente o provvisorio dello scavo.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 206,
+        "printedPage": "202",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "821f35d1ac6463967f352c56058ffd8670955092e8dd961a4b144f1021d41533",
+        "normalizedSha256": "2e0451ce9c9b0782d57619c971a58d7e73722998883356bb47863462ee9ba822"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step2",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-8-6-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

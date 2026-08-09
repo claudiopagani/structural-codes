@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.3.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.3.2",
+    "sortKey": "004.003.002"
+  },
+  "title": "ANALISI STRUTTURALE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.3.2 \u0002   ANALISI STRUTTURALE",
+        "normalized": "C4.3.2 ANALISI STRUTTURALE",
+        "normalizationVersion": "circ43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.3.2 ANALISI STRUTTURALE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 147,
+        "printedPage": "143",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 391,
+          "width": 250,
+          "height": 16
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ43-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale dal layer testuale estratto."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ43-editorial-profile-0.1.0",
+            "note": "Ricostruiti gli spazi e uniti i ritorni a capo tipografici dopo confronto con il render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e notazione confrontati con il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "b6b58d797c39aa6f968700e9dffa0d690b329422d868965c211d5d6e12ccef97",
+        "normalizedSha256": "8dc85812101f45d028f3973f2e9b110baa17fe46b96b21ca5bc5812780756182"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ43-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-C4-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

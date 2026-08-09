@@ -1,0 +1,111 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.9.5.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.9.5.1",
+    "sortKey": "011.009.005.001"
+  },
+  "title": "PROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.9.5.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.9.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.9",
+      "urn:structural-codes:it:unit:ntc2018:11.9.5"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.9.5.1 P ROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+        "normalized": "11.9.5.1 PROVE DI ACCETTAZIONE SUI DISPOSITIVI",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 362,
+        "printedPage": "358",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "d9c285a605049e718dcd427e4bbe2946c6f3ac65a2b7aa4353fffe1288435f74",
+        "normalizedSha256": "81a1cef8188eb7eb6b8c530c8d65fb46331499c7b14e5696ca0e33c41f1b8ee0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si applica quanto previsto al § 11.9.4.1 per i dispositivi lineari.",
+        "normalized": "Si applica quanto previsto al § 11.9.4.1 per i dispositivi lineari.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 362,
+        "printedPage": "358",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "903a9709f179fcdf9d03f17e155e96050728d251ac6187e966be64a62acfc7d9",
+        "normalizedSha256": "903a9709f179fcdf9d03f17e155e96050728d251ac6187e966be64a62acfc7d9"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-9-5-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

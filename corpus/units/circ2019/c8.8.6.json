@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8.8.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "C8.8.6",
+    "sortKey": "008.008.006"
+  },
+  "title": "FONDAZIONI E SPALLE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8.8.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c8.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c8",
+      "urn:structural-codes:it:unit:circ2019:c8.8"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CC8.8.6 FONDAZIONI E SPALLE",
+        "normalized": "C8.8.6 FONDAZIONI E SPALLE",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 302,
+        "printedPage": "298",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ricostruiti i glifi matematici e il testo verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0d92fa799f04174179cffce3b010e44736ba98d0f4891bfc22c3cfb6565a7dfa",
+        "normalizedSha256": "1a746f90e903cbb7e13c91d02fe3ee6046fb195aa09624c409a17d61c47be2ba"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.6#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per quanto riguarda la verifica delle fondazioni e delle spalle valgono le indicazioni di cui al §7 delle NTC.",
+        "normalized": "Per quanto riguarda la verifica delle fondazioni e delle spalle valgono le indicazioni di cui al §7 delle NTC.",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 302,
+        "printedPage": "298",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "81078ab9779a8d6f3e11d2ccc5e7f9acd333ce7d8aecfa7ec5a5ce78b0bddea0",
+        "normalizedSha256": "81078ab9779a8d6f3e11d2ccc5e7f9acd333ce7d8aecfa7ec5a5ce78b0bddea0"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ87:step3c",
+      "kind": "script",
+      "toolVersion": "circ8-editorial-profile-0.2.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8.8.6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c8.8.6-relation",
+        "type": "relation-review",
+        "severity": "blocking",
+        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
+      }
+    ]
+  }
+}

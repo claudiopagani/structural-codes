@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.6.2.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.6.2.2",
+    "sortKey": "007.006.002.002"
+  },
+  "title": "FATTORI DI COMPORTAMENTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.6.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.6.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.6",
+      "urn:structural-codes:it:unit:ntc2018:7.6.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.6.2.2 F ATTORI DI COMPORTAMENTO",
+        "normalized": "7.6.2.2 FATTORI DI COMPORTAMENTO",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "77afbf06d75e6ab4eeaaddb414b8cd6dfdd9d21a7b2de72c9eeca966ec3eb526",
+        "normalizedSha256": "1a03089629b2835185527b0e98426e7fa43dac0c1fbcf67615863ecbd1bc35bd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.2.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si applicano le prescrizioni di cui al § 7.5.2 e, per quanto riguarda il valore massimo del valore di base q0 del fattore di\ncomportamento, si applica la tabella 7.3.II, a condizione che siano rispettate le prescrizioni e le regole esposte nel presente\ncapitolo.",
+        "normalized": "Si applicano le prescrizioni di cui al § 7.5.2 e, per quanto riguarda il valore massimo del valore di base q0 del fattore di comportamento, si applica la tabella 7.3.II, a condizione che siano rispettate le prescrizioni e le regole esposte nel presente capitolo.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 252,
+        "printedPage": "248",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "93ca5e58a5c945e6257c089a178bdc14cefa0ecdc40c07ab6fdd101bd6303b18",
+        "normalizedSha256": "8c3b191d6cdad828aa63404fdb9549777f0c81e5c26a269720787391dd0dc2be"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc76:step1",
+      "kind": "script",
+      "toolVersion": "ntc76-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-6-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

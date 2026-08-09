@@ -1,0 +1,111 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.2.9.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.2.9.5",
+    "sortKey": "011.002.009.005"
+  },
+  "title": "ACQUA DI IMPASTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.2.9.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.2.9",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.2",
+      "urn:structural-codes:it:unit:ntc2018:11.2.9"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.9.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.2.9.5 A CQUA DI IMPASTO",
+        "normalized": "11.2.9.5 ACQUA DI IMPASTO",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 316,
+        "printedPage": "312",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "94e90ef83c27c3aaac3158401f58b142b12ad15c463f646626ef59ca79dc9cae",
+        "normalizedSha256": "fbbf3bcd196b4756320f45cbf32362f7070b47418fed1ac19c207f720a748e9e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.9.5#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’acqua di impasto, ivi compresa l’acqua di riciclo, deve essere conforme alla norma UNI EN 1008: 2003.",
+        "normalized": "L’acqua di impasto, ivi compresa l’acqua di riciclo, deve essere conforme alla norma UNI EN 1008: 2003.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 316,
+        "printedPage": "312",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "eec74dc55e723519754528f8715a25e26cb0fcff3adaf2b73125ecc7ae16b95a",
+        "normalizedSha256": "eec74dc55e723519754528f8715a25e26cb0fcff3adaf2b73125ecc7ae16b95a"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-2-9-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

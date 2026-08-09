@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.7.7",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.7.7",
+    "sortKey": "011.007.007"
+  },
+  "title": "ADESIVI",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.7.7#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.7"
+    ],
+    "position": 7
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.7.7 ADESIVI",
+        "normalized": "11.7.7 ADESIVI",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f90c436bb333ae385e61f0ac3a839fe684da3cbd5449613040140c7fa0871bc5",
+        "normalizedSha256": "f90c436bb333ae385e61f0ac3a839fe684da3cbd5449613040140c7fa0871bc5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.7#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli adesivi per usi strutturali devono produrre unioni aventi resistenza e durabilità tali che l’integrità dell’incollaggio sia conser-\nvata, nella classe di servizio assegnata, durante tutta la vita prevista della struttura.",
+        "normalized": "Gli adesivi per usi strutturali devono produrre unioni aventi resistenza e durabilità tali che l’integrità dell’incollaggio sia conservata, nella classe di servizio assegnata, durante tutta la vita prevista della struttura.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "854dc50e5ae2bd06f7f640a0d625fd603ea91b045968f5d2c110ff11989e4564",
+        "normalizedSha256": "57932deb510d447528a4767022087707d6c882948361147610ce06ded9e41f2c"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-7-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

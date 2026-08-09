@@ -1,0 +1,864 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "6.4.3.1.1",
+    "sortKey": "006.004.003.001.001"
+  },
+  "title": "Resistenze di pali soggetti a carichi assiali",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:6",
+      "urn:structural-codes:it:unit:ntc2018:6.4",
+      "urn:structural-codes:it:unit:ntc2018:6.4.3",
+      "urn:structural-codes:it:unit:ntc2018:6.4.3.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "6.4.3.1.1 Resistenze di pali soggetti a carichi assiali",
+        "normalized": "6.4.3.1.1 Resistenze di pali soggetti a carichi assiali",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "71a6b4222c3071236db39f265e7664315b6b4e9294e0a8416cf830c3175c2c00",
+        "normalizedSha256": "71a6b4222c3071236db39f265e7664315b6b4e9294e0a8416cf830c3175c2c00"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il valore di progetto Rd della resistenza si ottiene a partire dal valore caratteristico Rk applicando i coefficienti parziali ·R della\nTab. 6.4.II.",
+        "normalized": "Il valore di progetto Rd della resistenza si ottiene a partire dal valore caratteristico Rk applicando i coefficienti parziali γR della Tab. 6.4.II.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il valore di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "Rd",
+            "latex": "R_d"
+          },
+          {
+            "kind": "text",
+            "value": " della resistenza si ottiene a partire dal valore caratteristico "
+          },
+          {
+            "kind": "math",
+            "value": "Rk",
+            "latex": "R_k"
+          },
+          {
+            "kind": "text",
+            "value": " applicando i coefficienti parziali "
+          },
+          {
+            "kind": "math",
+            "value": "γR",
+            "latex": "\\gamma_R"
+          },
+          {
+            "kind": "text",
+            "value": " della Tab. 6.4.II."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6b987adca7005a4bb55aeca016d76506b4235a164255238002fcf1c599399f6a",
+        "normalizedSha256": "31e031902a6dea63f81acdc3a244d90eed8775d2f8c67c9602e6b9324fff8e89"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-002",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.4.ii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "890f80d63a4258f540e834b0972a1ceda8100125c56a66968ca45f0aa317ef30",
+        "normalizedSha256": "890f80d63a4258f540e834b0972a1ceda8100125c56a66968ca45f0aa317ef30"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La resistenza caratteristica Rk del palo singolo può essere dedotta da:",
+        "normalized": "La resistenza caratteristica Rk del palo singolo può essere dedotta da:",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La resistenza caratteristica "
+          },
+          {
+            "kind": "math",
+            "value": "Rk",
+            "latex": "R_k"
+          },
+          {
+            "kind": "text",
+            "value": " del palo singolo può essere dedotta da:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "40dba6ea7e055bc13edd321bd97691dfd79ad76ac32ac3d91f6c8515754910bb",
+        "normalizedSha256": "40dba6ea7e055bc13edd321bd97691dfd79ad76ac32ac3d91f6c8515754910bb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-004",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) risultati di prove di carico statico di progetto su pali pilota (§ 6.4.3.7.1);",
+        "normalized": "a) risultati di prove di carico statico di progetto su pali pilota (§ 6.4.3.7.1);",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f08dfe88e77170898326dfa53bbd9a8655dc0fa507302e03c652b41ca843d16f",
+        "normalizedSha256": "f08dfe88e77170898326dfa53bbd9a8655dc0fa507302e03c652b41ca843d16f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) metodi di calcolo analitici, dove Rk è calcolata a partire dai valori caratteristici dei parametri geotecnici, oppure con l’impiego\ndi relazioni empiriche che utilizzino direttamente i risultati di prove in sito (prove penetrometriche, pressiometriche, ecc.);",
+        "normalized": "b) metodi di calcolo analitici, dove Rk è calcolata a partire dai valori caratteristici dei parametri geotecnici, oppure con l’impiego di relazioni empiriche che utilizzino direttamente i risultati di prove in sito (prove penetrometriche, pressiometriche, ecc.);",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) metodi di calcolo analitici, dove "
+          },
+          {
+            "kind": "math",
+            "value": "Rk",
+            "latex": "R_k"
+          },
+          {
+            "kind": "text",
+            "value": " è calcolata a partire dai valori caratteristici dei parametri geotecnici, oppure con l’impiego di relazioni empiriche che utilizzino direttamente i risultati di prove in sito (prove penetrometriche, pressiometriche, ecc.);"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 195,
+        "printedPage": "191",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "49408eacca4059a9b2c655aa2abcb4a6c2e25b1ba6091cf3b5e78687e70aa617",
+        "normalizedSha256": "33c8bc40b6f26ad5042cc6ca77531260dc1ec4db42026c4a14c496c53a6c2375"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "c) risultati di prove dinamiche di progetto, ad alto livello di deformazione, eseguite su pali pilota (§ 6.4.3.7.1).",
+        "normalized": "c) risultati di prove dinamiche di progetto, ad alto livello di deformazione, eseguite su pali pilota (§ 6.4.3.7.1).",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) risultati di prove dinamiche di progetto, "
+          },
+          {
+            "kind": "math",
+            "value": "ad",
+            "latex": "a_d"
+          },
+          {
+            "kind": "text",
+            "value": " alto livello di deformazione, eseguite su pali pilota (§ 6.4.3.7.1)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "48c8ad5fea937a1434e113a2f87182852eb5eb5da2fbba02d1477e184bbdce4a",
+        "normalizedSha256": "48c8ad5fea937a1434e113a2f87182852eb5eb5da2fbba02d1477e184bbdce4a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In dettaglio:",
+        "normalized": "In dettaglio:",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "94bf903165c673ac76288206041344f64f2588ca6f81c65055655fedd8f05611",
+        "normalizedSha256": "94bf903165c673ac76288206041344f64f2588ca6f81c65055655fedd8f05611"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "(a) Se il valore caratteristico della resistenza a compressione del palo, Rc,k, o a trazione, Rt,k, è dedotto dai corrispondenti valori\nRc,m o Rt,m, ottenuti elaborando i risultati di una o più prove di carico di progetto, il valore caratteristico della resistenza a\ncompressione e a trazione è pari al minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze\nmisurate i fattori di correlazione Β riportati nella Tab. 6.4.III, in funzione del numero n di prove di carico su pali pilota:",
+        "normalized": "(a) Se il valore caratteristico della resistenza a compressione del palo, Rc,k, o a trazione, Rt,k, è dedotto dai corrispondenti valori Rc,m o Rt,m, ottenuti elaborando i risultati di una o più prove di carico di progetto, il valore caratteristico della resistenza a compressione e a trazione è pari al minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze misurate i fattori di correlazione ξ riportati nella Tab. 6.4.III, in funzione del numero n di prove di carico su pali pilota:",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "(a) Se il valore caratteristico della resistenza a compressione del palo, "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,k",
+            "latex": "R_{c,k}"
+          },
+          {
+            "kind": "text",
+            "value": ", o a trazione, "
+          },
+          {
+            "kind": "math",
+            "value": "Rt,k",
+            "latex": "R_{t,k}"
+          },
+          {
+            "kind": "text",
+            "value": ", è dedotto dai corrispondenti valori "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,m",
+            "latex": "R_{c,m}"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "Rt,m",
+            "latex": "R_{t,m}"
+          },
+          {
+            "kind": "text",
+            "value": ", ottenuti elaborando i risultati di una o più prove di carico di progetto, il valore caratteristico della resistenza a compressione e a trazione è pari al minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze misurate i fattori di correlazione ξ riportati nella Tab. 6.4.III, in funzione del numero n di prove di carico su pali pilota:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "65f1c98206066aedd0f46ce7e83537acdad44890f316217ef710640704789e0c",
+        "normalizedSha256": "bd0593e633da4f0b37d805c41379816fa45b52256988b8cea00113d96146ee42"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-009",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.4.1",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "f021b7df5acce6345f7b1741bcef52d98754259a527e9d61f3e2fd754acacc89",
+        "normalizedSha256": "f021b7df5acce6345f7b1741bcef52d98754259a527e9d61f3e2fd754acacc89"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-010",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.4.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "5d4eb85191fa2f68cb03a4dd42e74a5b15cf5a29b7b604e47bee5b44689f0026",
+        "normalizedSha256": "5d4eb85191fa2f68cb03a4dd42e74a5b15cf5a29b7b604e47bee5b44689f0026"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-011",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.4.iii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "0ead8f2eb4bfd818d860889d68bd910d8ef361522e53c1ab7a2b3b10700d7070",
+        "normalizedSha256": "0ead8f2eb4bfd818d860889d68bd910d8ef361522e53c1ab7a2b3b10700d7070"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "(b) Con riferimento alle procedure analitiche che prevedano l’utilizzo dei parametri geotecnici o dei risultati di prove in sito, il valo-\nre caratteristico della resistenza Rc,k (o Rt,k) è dato dal minore dei valori ottenuti applicando al valore medio e al valore minimo\ndelle resistenze calcolate Rc,cal (Rt,cal) i fattori di correlazione Β riportati nella Tab. 6.4.IV, in funzione del numero n di verticali di\nindagine: ",
+        "normalized": "(b) Con riferimento alle procedure analitiche che prevedano l’utilizzo dei parametri geotecnici o dei risultati di prove in sito, il valore caratteristico della resistenza Rc,k (o Rt,k) è dato dal minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze calcolate Rc,cal (Rt,cal) i fattori di correlazione ξ riportati nella Tab. 6.4.IV, in funzione del numero n di verticali di indagine:",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "(b) Con riferimento alle procedure analitiche che prevedano l’utilizzo dei parametri geotecnici o dei risultati di prove in sito, il valore caratteristico della resistenza "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,k",
+            "latex": "R_{c,k}"
+          },
+          {
+            "kind": "text",
+            "value": " (o "
+          },
+          {
+            "kind": "math",
+            "value": "Rt,k",
+            "latex": "R_{t,k}"
+          },
+          {
+            "kind": "text",
+            "value": ") è dato dal minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze calcolate "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,cal",
+            "latex": "R_{c,cal}"
+          },
+          {
+            "kind": "text",
+            "value": " ("
+          },
+          {
+            "kind": "math",
+            "value": "Rt,cal",
+            "latex": "R_{t,cal}"
+          },
+          {
+            "kind": "text",
+            "value": ") i fattori di correlazione ξ riportati nella Tab. 6.4.IV, in funzione del numero n di verticali di indagine:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "af3292f691d57fa226c4691884dd32875ea5562b84cc1b0093940d2dcd1d32df",
+        "normalizedSha256": "8cc5f452a4f3ed04a046acb19b7c512aa990d752fc918cb2b91e75a2db6dbbed"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-013",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.4.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "42ce46a7d6087b21c6085d0577a928fc7aec14484dac39e839cdafadf18a5b7a",
+        "normalizedSha256": "42ce46a7d6087b21c6085d0577a928fc7aec14484dac39e839cdafadf18a5b7a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-014",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.4.4",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "ff41360e0d4a9cdd28703c952ca7dab69ee529b15d1d3db9164fe306bc67d509",
+        "normalizedSha256": "ff41360e0d4a9cdd28703c952ca7dab69ee529b15d1d3db9164fe306bc67d509"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-015",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.4.iv",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "209eb78030e418905f9494e1295d602659312b1d75dee27c4fbbf9aec8932440",
+        "normalizedSha256": "209eb78030e418905f9494e1295d602659312b1d75dee27c4fbbf9aec8932440"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-016",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Fatta salva la necessità di almeno una verticale di indagine per ciascun sistema di fondazione, nell'ambito dello stesso sistema di\nfondazione, ai fini del conteggio delle verticali di indagine per la scelta dei coefficienti Β in Tab. 6.4.IV si devono prendere solo le\nverticali lungo le quali la singola indagine (sondaggio con prelievo di campioni indisturbati, prove penetrometriche, ecc.) sia stata\nspinta ad una profondità superiore alla lunghezza dei pali, in grado di consentire una completa identificazione del modello geo-\ntecnico di sottosuolo.",
+        "normalized": "Fatta salva la necessità di almeno una verticale di indagine per ciascun sistema di fondazione, nell'ambito dello stesso sistema di fondazione, ai fini del conteggio delle verticali di indagine per la scelta dei coefficienti ξ in Tab. 6.4.IV si devono prendere solo le verticali lungo le quali la singola indagine (sondaggio con prelievo di campioni indisturbati, prove penetrometriche, ecc.) sia stata spinta ad una profondità superiore alla lunghezza dei pali, in grado di consentire una completa identificazione del modello geotecnico di sottosuolo.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Fatta salva la necessità di almeno una verticale di indagine per ciascun sistema di fondazione, nell'ambito dello stesso sistema di fondazione, ai fini del conteggio delle verticali di indagine per la scelta dei coefficienti ξ in Tab. 6.4.IV si devono prendere solo le verticali lungo le quali la singola indagine (sondaggio con prelievo di campioni indisturbati, prove penetrometriche, ecc.) sia stata spinta "
+          },
+          {
+            "kind": "math",
+            "value": "ad",
+            "latex": "a_d"
+          },
+          {
+            "kind": "text",
+            "value": " una profondità superiore alla lunghezza dei pali, in gr"
+          },
+          {
+            "kind": "math",
+            "value": "ad",
+            "latex": "a_d"
+          },
+          {
+            "kind": "text",
+            "value": "o di consentire una completa identificazione del modello geotecnico di sottosuolo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "de74a40caf673845db142be3dd87112f60a50201e33918e0f181ff67b99da0ed",
+        "normalizedSha256": "c92364b9e08a06f63de2751597c89ff613da575776e965c3637b78d2d6db5455"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-017",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "(c) Se il valore caratteristico della resistenza Rc,k è dedotto dal valore Rc,m ottenuto elaborando i risultati di una o più prove di-\nnamiche di progetto ad alto livello di deformazione, il valore caratteristico della resistenza a compressione è pari al minore\ndei valori ottenuti applicando al valore medio e al valore minimo delle resistenze misurate i fattori di correlazione Β riportati\nnella Tab. 6.4.V, in funzione del numero n di prove dinamiche eseguite su pali pilota:",
+        "normalized": "(c) Se il valore caratteristico della resistenza Rc,k è dedotto dal valore Rc,m ottenuto elaborando i risultati di una o più prove dinamiche di progetto ad alto livello di deformazione, il valore caratteristico della resistenza a compressione è pari al minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze misurate i fattori di correlazione ξ riportati nella Tab. 6.4.V, in funzione del numero n di prove dinamiche eseguite su pali pilota:",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "(c) Se il valore caratteristico della resistenza "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,k",
+            "latex": "R_{c,k}"
+          },
+          {
+            "kind": "text",
+            "value": " è dedotto dal valore "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,m",
+            "latex": "R_{c,m}"
+          },
+          {
+            "kind": "text",
+            "value": " ottenuto elaborando i risultati di una o più prove dinamiche di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "ad",
+            "latex": "a_d"
+          },
+          {
+            "kind": "text",
+            "value": " alto livello di deformazione, il valore caratteristico della resistenza a compressione è pari al minore dei valori ottenuti applicando al valore medio e al valore minimo delle resistenze misurate i fattori di correlazione ξ riportati nella Tab. 6.4.V, in funzione del numero n di prove dinamiche eseguite su pali pilota:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d5618a8ddbcad6e1a2a793ed8a51b8f2ef1261c8a2a76fa022a423dd94b02477",
+        "normalizedSha256": "f10c4efad2652caf31a05fc362359f6805217fe43f831df8a17d2f8a5aba0bc6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-018",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.4.5",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "6f5ab39aa923d82cc597037c4901d2c939211aef2c1d778343396ddc6f105562",
+        "normalizedSha256": "6f5ab39aa923d82cc597037c4901d2c939211aef2c1d778343396ddc6f105562"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1#block-editorial-019",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.4.v",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc6-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "9eb5dd876cb1a5128982f3fa9e5e078420ffc0a086f30bd791000c2a0af5bac9",
+        "normalizedSha256": "9eb5dd876cb1a5128982f3fa9e5e078420ffc0a086f30bd791000c2a0af5bac9"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:6.4.1",
+      "urn:structural-codes:it:asset:formula:ntc2018:6.4.2",
+      "urn:structural-codes:it:asset:formula:ntc2018:6.4.3",
+      "urn:structural-codes:it:asset:formula:ntc2018:6.4.4",
+      "urn:structural-codes:it:asset:formula:ntc2018:6.4.5"
+    ],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:6.4.ii",
+      "urn:structural-codes:it:asset:table:ntc2018:6.4.iii",
+      "urn:structural-codes:it:asset:table:ntc2018:6.4.iv",
+      "urn:structural-codes:it:asset:table:ntc2018:6.4.v"
+    ],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc6:step1",
+      "kind": "script",
+      "toolVersion": "ntc6-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-6-4-3-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "ntc2018-6-4-3-1-1-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule e tabelle sono separate e collocate nel flusso originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+      }
+    ]
+  }
+}

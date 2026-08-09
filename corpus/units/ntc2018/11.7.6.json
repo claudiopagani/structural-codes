@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:11.7.6",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "11.7.6",
+    "sortKey": "011.007.006"
+  },
+  "title": "ALTRI PRODOTTI DERIVATI DAL LEGNO PER USO STRUTTURALE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:11.7.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:11.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:11",
+      "urn:structural-codes:it:unit:ntc2018:11.7"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "11.7.6 ALTRI PRODOTTI DERIVATI DAL LEGNO PER USO STRUTTURALE",
+        "normalized": "11.7.6 ALTRI PRODOTTI DERIVATI DAL LEGNO PER USO STRUTTURALE",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "0196beb26a064b8ca912d8f1fc5ca8f67ab9821d4bde79b9df1a084b8968ffe7",
+        "normalizedSha256": "0196beb26a064b8ca912d8f1fc5ca8f67ab9821d4bde79b9df1a084b8968ffe7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.7.6#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per gli altri prodotti derivati dal legno per uso strutturale per i quali non è applicabile una norma europea armonizzata di cui al\npunto A del § 11.1 o non è applicabile quanto specificato al punto B del medesimo § 11.1, si applica quanto riportato ai punti C\ndel paragrafo 11.1 della presente norma.",
+        "normalized": "Per gli altri prodotti derivati dal legno per uso strutturale per i quali non è applicabile una norma europea armonizzata di cui al punto A del § 11.1 o non è applicabile quanto specificato al punto B del medesimo § 11.1, si applica quanto riportato ai punti C del paragrafo 11.1 della presente norma.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 351,
+        "printedPage": "347",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "2aa60b8c76c37ae8261e9a1b3db2a031e51180dd547cab45eff8eb9dfa1fff43",
+        "normalizedSha256": "d6a5dda61f61b04f856084efe4c6975d57d49f6ee53cc3b44aad8abb23346e0f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc11:step1",
+      "kind": "script",
+      "toolVersion": "ntc11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-11-11-7-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

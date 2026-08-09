@@ -1,0 +1,330 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.6.6.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.6.6.1",
+    "sortKey": "007.006.006.001"
+  },
+  "title": "ANALISI STRUTTURALE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.6.6",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.6",
+      "urn:structural-codes:it:unit:ntc2018:7.6.6"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.6.6.1 A NALISI STRUTTURALE",
+        "normalized": "7.6.6.1 ANALISI STRUTTURALE",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5a04ecbba9c0468a019aced6068340285ec67145ca314f23e41b9c66a9beb9a3",
+        "normalizedSha256": "ccfc14e5ffbab3a40412531c7c359fba9765aac7d659ef46e91b1af50902f1e2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nelle travi composte è possibile assumere un momento d’inerzia equivalente costante lungo l’intera trave, I \neq, dato dalla\nrelazione: ",
+        "normalized": "Nelle travi composte è possibile assumere un momento d’inerzia equivalente costante lungo l’intera trave, Ieq, dato dalla relazione:",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nelle travi composte è possibile assumere un momento d’inerzia equivalente costante lungo l’intera trave, "
+          },
+          {
+            "kind": "math",
+            "value": "Ieq",
+            "latex": "I_{eq}"
+          },
+          {
+            "kind": "text",
+            "value": ", dato dalla relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fa10fe26c2030e7f255cc15afd169b3fea9a1d9e70f5e3a80938bdfefcad3214",
+        "normalizedSha256": "559d1597d0c14d0e906bc283261946f2170bfca73c0b9e105d990f3b3feccf87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-editorial-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.6.6",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc76-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "4ab5679c533e914ebaf751cfa4d58924b4548a043d0ef31a795e74a5059a4580",
+        "normalizedSha256": "4ab5679c533e914ebaf751cfa4d58924b4548a043d0ef31a795e74a5059a4580"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La rigidezza flessionale delle colonne composte può essere assunta pari a:",
+        "normalized": "La rigidezza flessionale delle colonne composte può essere assunta pari a:",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ecdcb86467f863deffa14f9b5ca4e21d8eb12c66f0c109d866fbc4b28edc8e80",
+        "normalizedSha256": "ecdcb86467f863deffa14f9b5ca4e21d8eb12c66f0c109d866fbc4b28edc8e80"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.6.7",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-manual-asset-transcription",
+          "toolVersion": "ntc76-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "fddde729f9580fd440da6d1894270b0003b52bb1f359882e2948eeeae763d2d0",
+        "normalizedSha256": "fddde729f9580fd440da6d1894270b0003b52bb1f359882e2948eeeae763d2d0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.6.6.1#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "nella quale E e Ecm sono i moduli di elasticità dell’acciaio e del calcestruzzo; Ia, I \nc e I \ns sono i momenti di inerzia della sezione in\nacciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione r dipende dal tipo di sezione trasversale; in\nassenza di più accurate determinazioni, può essere assunto pari a 0.5.",
+        "normalized": "nella quale E e Ecm sono i moduli di elasticità dell’acciaio e del calcestruzzo; Ia, Ic e Is sono i momenti di inerzia della sezione in acciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione r dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a 0,5.",
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nella quale "
+          },
+          {
+            "kind": "math",
+            "value": "E",
+            "latex": "E"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Ecm",
+            "latex": "E_{cm}"
+          },
+          {
+            "kind": "text",
+            "value": " sono i moduli di elasticità dell’acciaio e del calcestruzzo; "
+          },
+          {
+            "kind": "math",
+            "value": "Ia",
+            "latex": "I_a"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Ic",
+            "latex": "I_c"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Is",
+            "latex": "I_s"
+          },
+          {
+            "kind": "text",
+            "value": " sono i momenti di inerzia della sezione in acciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione "
+          },
+          {
+            "kind": "math",
+            "value": "r",
+            "latex": "r"
+          },
+          {
+            "kind": "text",
+            "value": " dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a 0,5."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 257,
+        "printedPage": "253",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a254064d853a1fffcfdee6e2d76ff018865d7e71cc3d3ba5b13fe707d6874975",
+        "normalizedSha256": "2679dbecb1dca0108527fc6a00098b944e0cf4e5a5c73fb36dd288056f5a79a6"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.6.6",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.6.7"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc76:step1",
+      "kind": "script",
+      "toolVersion": "ntc76-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-6-6-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-6-6-1-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
+      }
+    ]
+  }
+}

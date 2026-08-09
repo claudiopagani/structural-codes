@@ -1,0 +1,117 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.3.3.5.6",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.3.3.5.6",
+    "sortKey": "011.003.003.005.006"
+  },
+  "title": "Prodotti zincati",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.3.3.5.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.3.3.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.3.5"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.3.5.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.3.3.5.6 Prodotti zincati",
+        "normalized": "C11.3.3.5.6 Prodotti zincati",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7633be9f7050c2795133ad513723ac789dfde56a24473dbfd59f5f1a2647ae20",
+        "normalizedSha256": "7633be9f7050c2795133ad513723ac789dfde56a24473dbfd59f5f1a2647ae20"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.3.5.6#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la zincatura, se effettuata in “sub-fornitura” in autonomi stabilimenti, va garantito un adeguato livello di integrazione dei\nControlli di Produzione in Fabbrica tra produttore degli elementi base e zincatore. A questo scopo il produttore garantisce la\nqualifica del sub-fornitore della zincatura, secondo idonee procedure.",
+        "normalized": "Per la zincatura, se effettuata in “sub-fornitura” in autonomi stabilimenti, va garantito un adeguato livello di integrazione dei Controlli di Produzione in Fabbrica tra produttore degli elementi base e zincatore. A questo scopo il produttore garantisce la qualifica del sub-fornitore della zincatura, secondo idonee procedure.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "936f539c11456a9891362d3a8f4e1fa81a6098dc03af30fb9bbbbd61141487c6",
+        "normalizedSha256": "ac6a7abd93ac3cec51ee4d99713d877ebb700246dea4f95db37fe7c88aeb1904"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-3-3-5-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

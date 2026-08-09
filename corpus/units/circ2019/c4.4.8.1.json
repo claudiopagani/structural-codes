@@ -1,0 +1,87 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.4.8.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.4.8.1",
+    "sortKey": "004.004.008.001"
+  },
+  "title": "VERIFICHE DI RESISTENZA",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.4.8",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4",
+      "urn:structural-codes:it:unit:circ2019:c4.4",
+      "urn:structural-codes:it:unit:circ2019:c4.4.8"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.4.8.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.4.8.1 VERIFICHE DI RESISTENZA",
+        "normalized": "C4.4.8.1 VERIFICHE DI RESISTENZA",
+        "normalizationVersion": "circ44-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 157,
+        "printedPage": "153",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ44-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ44-editorial-profile-0.1.0",
+            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+          }
+        ],
+        "rawSha256": "4972e5697a71c5e58b0ed0ec20bf7f7ddb40d64815cd1b20fe9afd1c8892c95e",
+        "normalizedSha256": "4972e5697a71c5e58b0ed0ec20bf7f7ddb40d64815cd1b20fe9afd1c8892c95e"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ44-step1",
+      "kind": "automated-agent",
+      "toolVersion": "circ44-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c4-4-8-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c6.12.2.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C6.12.2.1",
+    "sortKey": "006.012.002.001"
+  },
+  "title": "EMUNGIMENTO DA FALDE IDRICHE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c6.12.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c6.12.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c6",
+      "urn:structural-codes:it:unit:circ2019:c6.12",
+      "urn:structural-codes:it:unit:circ2019:c6.12.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.12.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C6.12.2.1 EMUNGIMENTO DA FALDE IDRICHE",
+        "normalized": "C6.12.2.1 EMUNGIMENTO DA FALDE IDRICHE",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "25afe1c22a4c47fc666c8c4d05b00229f971cb695ed709477a696ad0bddbf35f",
+        "normalizedSha256": "25afe1c22a4c47fc666c8c4d05b00229f971cb695ed709477a696ad0bddbf35f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c6.12.2.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il modello fisico assunto a base della progettazione delle opere e degli interventi deve essere ottenuto da specifici studi\nidrogeologici e geotecnici.",
+        "normalized": "Il modello fisico assunto a base della progettazione delle opere e degli interventi deve essere ottenuto da specifici studi idrogeologici e geotecnici.",
+        "normalizationVersion": "circ6-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 196,
+        "printedPage": "192",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Ripristinati accenti, glifi matematici, sillabazioni e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "circ6-manual-render-transcription-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          }
+        ],
+        "rawSha256": "1231f82a20a484109e87fb4b5cb974b8164e41002d08bdd3cb42f6a0dc2c01b5",
+        "normalizedSha256": "82b275fad226634ae8dbc396c1bf44781c5340da7745c5a83fdd9b15bcb6a1a2"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ6:step2",
+      "kind": "script",
+      "toolVersion": "circ6-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c6-12-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

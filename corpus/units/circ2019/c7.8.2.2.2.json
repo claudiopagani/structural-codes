@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.2",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.8.2.2.2",
+    "sortKey": "007.008.002.002.002"
+  },
+  "title": "Taglio",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.8",
+      "urn:structural-codes:it:unit:circ2019:c7.8.2",
+      "urn:structural-codes:it:unit:circ2019:c7.8.2.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.8.2.2.2 Taglio",
+        "normalized": "C7.8.2.2.2 Taglio",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 233,
+        "printedPage": "229",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "cbe96495a69254c6d36d293ac02eb21173a55d1f27e7c39ff2fcf0c3f9462365",
+        "normalizedSha256": "cbe96495a69254c6d36d293ac02eb21173a55d1f27e7c39ff2fcf0c3f9462365"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.2.2.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In questo §, il simbolo f_y è da intendersi f_v, inoltre il richiamo al § 11.3.3 è da intendersi al § 11.10.3.3.",
+        "normalized": "In questo §, il simbolo f_y è da intendersi f_v, inoltre il richiamo al § 11.3.3 è da intendersi al § 11.10.3.3.",
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In questo §, il simbolo "
+          },
+          {
+            "kind": "math",
+            "value": "f_y",
+            "latex": "f_y"
+          },
+          {
+            "kind": "text",
+            "value": " è da intendersi "
+          },
+          {
+            "kind": "math",
+            "value": "f_v",
+            "latex": "f_v"
+          },
+          {
+            "kind": "text",
+            "value": ", inoltre il richiamo al § 11.3.3 è da intendersi al § 11.10.3.3."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 233,
+        "printedPage": "229",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "8d23888b713b919c8075c247ae9887853cd98fae36741543b0b30547aedf6f58",
+        "normalizedSha256": "8d23888b713b919c8075c247ae9887853cd98fae36741543b0b30547aedf6f58"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ78-79-step1",
+      "kind": "script",
+      "toolVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-8-2-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "circ2019-c7-8-2-2-2-missing-text-layer",
+        "type": "missing-region",
+        "severity": "blocking",
+        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
+      }
+    ]
+  }
+}

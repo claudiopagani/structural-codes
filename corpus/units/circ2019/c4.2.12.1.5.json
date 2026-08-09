@@ -1,0 +1,104 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.5",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C4.2.12.1.5",
+    "sortKey": "004.002.012.001.005"
+  },
+  "title": "Verifiche di resistenza",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c4.2",
+      "urn:structural-codes:it:unit:circ2019:c4.2.12",
+      "urn:structural-codes:it:unit:circ2019:c4.2.12.1"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.12.1.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C4.2.12.1.5. Verifiche di resistenza",
+        "normalized": "C4.2.12.1.5. Verifiche di resistenza",
+        "normalizationVersion": "circ42-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.2.12.1.5. Verifiche di resistenza"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 139,
+        "printedPage": "135",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 95,
+          "width": 450,
+          "height": 25
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; le formule restano blocchi distinti."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "58bbc9bc69c048ce0352ce8a491c9f2ffb33485358aea234aa1819ea522fba34",
+        "normalizedSha256": "58bbc9bc69c048ce0352ce8a491c9f2ffb33485358aea234aa1819ea522fba34"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ42-step2v",
+      "kind": "automated-agent",
+      "toolVersion": "circ42-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-C4-2-12-1-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Unità parent trascritta dall’evidence ufficiale; le verifiche figlie contengono il testo e le formule del sottoparagrafo."
+      }
+    ]
+  }
+}

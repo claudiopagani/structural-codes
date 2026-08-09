@@ -1,0 +1,199 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "4.3.4.2.1.1",
+    "sortKey": "004.003.004.002.001.001"
+  },
+  "title": "Metodo elastico",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:4",
+      "urn:structural-codes:it:unit:ntc2018:4.3",
+      "urn:structural-codes:it:unit:ntc2018:4.3.4",
+      "urn:structural-codes:it:unit:ntc2018:4.3.4.2",
+      "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "4.3.4.2.1.1   Metodo elastico Il momento resistente elastico è calcolato sulla base di una distribuzione elastica delle tensioni nella sezione. Si deve trascurare il",
+        "normalized": "4.3.4.2.1.1 Metodo elastico",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "4.3.4.2.1.1 Metodo elastico"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 124,
+        "printedPage": "120",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 307,
+          "width": 430,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "009818f3dd5ec83e1787961141acbc571693d0720be44fecd8dc44cfe25fa592",
+        "normalizedSha256": "7b88e5310406eb324620f09d91463e9635f83f4feb5fdc5c5ba93e2d28762f94"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.4.2.1.1#block-p-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il momento resistente elastico è calcolato sulla base di una distribuzione elastica delle tensioni nella sezione. Si deve trascurare il contributo del calcestruzzo teso. Il momento resistente elastico, M el , è calcolato limitando le deformazioni al limite elastico della resistenza dei materiali: f cd   per il calcestruzzo, f yd   per l’acciaio strutturale e f sd   per le barre d’armatura.",
+        "normalized": "Il momento resistente elastico è calcolato sulla base di una distribuzione elastica delle tensioni nella sezione. Si deve trascurare il contributo del calcestruzzo teso. Il momento resistente elastico, M_el, è calcolato limitando le deformazioni al limite elastico della resistenza dei materiali: f_cd per il calcestruzzo, f_yd per l’acciaio strutturale e f_sd per le barre d’armatura.",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il momento resistente elastico è calcolato sulla base di una distribuzione elastica delle tensioni nella sezione. Si deve trascurare il contributo del calcestruzzo teso. Il momento resistente elastico, "
+          },
+          {
+            "kind": "math",
+            "value": "M_el",
+            "latex": "M_{el}"
+          },
+          {
+            "kind": "text",
+            "value": ", è calcolato limitando le deformazioni al limite elastico della resistenza dei materiali: "
+          },
+          {
+            "kind": "math",
+            "value": "f_cd",
+            "latex": "f_{cd}"
+          },
+          {
+            "kind": "text",
+            "value": " per il calcestruzzo, "
+          },
+          {
+            "kind": "math",
+            "value": "f_yd",
+            "latex": "f_{yd}"
+          },
+          {
+            "kind": "text",
+            "value": " per l’acciaio strutturale e "
+          },
+          {
+            "kind": "math",
+            "value": "f_sd",
+            "latex": "f_{sd}"
+          },
+          {
+            "kind": "text",
+            "value": " per le barre d’armatura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 124,
+        "printedPage": "120",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 320,
+          "width": 430,
+          "height": 30
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4aca4e7ec204cb70ca6414541da517a8f959d01ab2daf3d3f2882d577cd8a549",
+        "normalizedSha256": "79f01c5635e18ae5605d2c44ed3190b8c506c4be25be84dae8bbc476b16fcf2f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:ntc43-step2",
+      "kind": "automated-agent",
+      "toolVersion": "ntc43-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-4-3-4-2-1-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

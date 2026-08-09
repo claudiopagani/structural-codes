@@ -1,0 +1,99 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:10",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "chapter",
+  "numbering": {
+    "official": "10",
+    "sortKey": "010"
+  },
+  "title": "REDAZIONE DEI PROGETTI STRUTTURALI ESECUTIVI E DELLE RELAZIONI DI CALCOLO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:10#block-heading",
+  "hierarchy": {
+    "parentId": null,
+    "ancestorIds": [],
+    "position": 10
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:10#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CAPITOLO 10.\nREDAZIONE DEI PROGETTI STRUTTURALI ESECUTIVI E\nDELLE RELAZIONI DI CALCOLO",
+        "normalized": "10 REDAZIONE DEI PROGETTI STRUTTURALI ESECUTIVI E DELLE RELAZIONI DI CALCOLO",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 305,
+        "printedPage": "301",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75.411,
+          "y": 287.57,
+          "width": 442.392,
+          "height": 70.05
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc10-editorial-profile-0.1.0",
+            "note": "Rimosso il marcatore editoriale CAPITOLO e ricomposto il titolo su una riga logica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc10-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "82f08459955ef4e19df7faaaa1463b62112eb7fe53bd7ec0123f0577c93968a9",
+        "normalizedSha256": "1a046cf43d7c2cc378209af17ccaadaeb019a8ad689ab8e43b4f666f896261f7"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc10:step1",
+      "kind": "script",
+      "toolVersion": "ntc10-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T12:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-10-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,388 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C8.5-step2",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.5.4.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.1",
+      "officialNumber": "C8.5.4.1",
+      "pdfPage": 266,
+      "latex": "\\mu'=\\frac{1}{2}\\left(X_{min}+X_{max}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.5.4.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.1",
+      "officialNumber": "C8.5.4.2",
+      "pdfPage": 266,
+      "latex": "\\sigma'=\\frac{1}{2}\\left(X_{max}-X_{min}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c8.5.4.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.1",
+      "officialNumber": "C8.5.4.3",
+      "pdfPage": 266,
+      "latex": "\\mu''=\\frac{n\\bar{X}+\\kappa\\mu'}{n+\\kappa}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c8.5.iii",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.1",
+      "officialNumber": "C8.5.III",
+      "pdfPage": 266,
+      "caption": "Tabella C.8.5.III –Valori del coefficiente κ suggeriti per l’aggiornamento del valore medio dei parametri meccanici, secondo l’equazione [C8.5.4.3], con riferimento ai più diffusi metodi di indagine diretta sulle proprietà meccaniche della muratura.",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Metodo di prova"
+          },
+          {
+            "text": "Parametro"
+          },
+          {
+            "text": "κ",
+            "latex": "\\kappa"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Prova di compressione diretta (su una porzione di parete muraria)",
+            "rowSpan": 2
+          },
+          {
+            "text": "E",
+            "latex": "E"
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "f",
+            "latex": "f"
+          },
+          {
+            "text": "1"
+          }
+        ],
+        [
+          {
+            "text": "Martinetto piatto doppio",
+            "rowSpan": 2
+          },
+          {
+            "text": "E",
+            "latex": "E"
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "f (*)",
+            "latex": "f"
+          },
+          {
+            "text": "2 (*)"
+          }
+        ],
+        [
+          {
+            "text": "Prova di compressione e taglio (su un pannello isolato nella parete muraria) – prova tipo Sheppard",
+            "rowSpan": 2
+          },
+          {
+            "text": "G",
+            "latex": "G"
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "τ₀ - fᵥ₀",
+            "latex": "\\tau_0-f_{v0}"
+          },
+          {
+            "text": "1"
+          }
+        ],
+        [
+          {
+            "text": "Prova di compressione diagonale",
+            "rowSpan": 2
+          },
+          {
+            "text": "G",
+            "latex": "G"
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "τ₀",
+            "latex": "\\tau_0"
+          },
+          {
+            "text": "1"
+          }
+        ],
+        [
+          {
+            "text": "Prova di taglio diretto sul giunto"
+          },
+          {
+            "text": "fᵥ₀",
+            "latex": "f_{v0}"
+          },
+          {
+            "text": "2"
+          }
+        ],
+        [
+          {
+            "text": "Prove in laboratorio sui costituenti (**)"
+          },
+          {
+            "text": "f_b, f_m, f_g",
+            "latex": "f_b, f_m, f_g"
+          },
+          {
+            "text": "2"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c8.5.iv",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.2",
+      "officialNumber": "C8.5.IV",
+      "pdfPage": 267,
+      "caption": "Tabella C8.5.IV – Livelli di conoscenza in funzione dell’informazione disponibile e conseguenti metodi di analisi ammessi e valori dei fattori di confidenza, per edifici in calcestruzzo armato o in acciaio.",
+      "columnCount": 6,
+      "headers": [
+        [
+          {
+            "text": "Livello di conoscenza"
+          },
+          {
+            "text": "Geometrie (carpenterie)"
+          },
+          {
+            "text": "Dettagli strutturali"
+          },
+          {
+            "text": "Proprietà dei materiali"
+          },
+          {
+            "text": "Metodi di analisi"
+          },
+          {
+            "text": "FC (*)"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "LC1"
+          },
+          {
+            "text": "Da disegni di carpenteria originali con rilievo visivo a campione; in alternativa rilievo completo ex-novo",
+            "rowSpan": 3
+          },
+          {
+            "text": "Progetto simulato in accordo alle norme dell’epoca e indagini limitate in situ"
+          },
+          {
+            "text": "Valori usuali per la pratica costruttiva dell’epoca e prove limitate in situ"
+          },
+          {
+            "text": "Analisi lineare statica o dinamica"
+          },
+          {
+            "text": "1,35"
+          }
+        ],
+        [
+          {
+            "text": "LC2"
+          },
+          {
+            "text": "Elaborati progettuali incompleti con indagini limitate in situ; in alternativa indagini estese in situ"
+          },
+          {
+            "text": "Dalle specifiche originali di progetto o dai certificati di prova originali, con prove limitate in situ; in alternativa da prove estese in situ"
+          },
+          {
+            "text": "Tutti"
+          },
+          {
+            "text": "1,20"
+          }
+        ],
+        [
+          {
+            "text": "LC3"
+          },
+          {
+            "text": "Elaborati progettuali completi con indagini limitate in situ; in alternativa indagini esaustive in situ"
+          },
+          {
+            "text": "Dai certificati di prova originali o dalle specifiche originali di progetto, con prove estese in situ; in alternativa da prove esaustive in situ"
+          },
+          {
+            "text": "Tutti"
+          },
+          {
+            "text": "1,00"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c8.5.v",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.2",
+      "officialNumber": "C8.5.V",
+      "pdfPage": 268,
+      "caption": "Tabella C8.5.V – Definizione orientativa dei livelli di rilievo e prova per edifici di c.a.",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Livello di Indagini e Prove",
+            "rowSpan": 2
+          },
+          {
+            "text": "Rilievo (dei dettagli costruttivi)(a)"
+          },
+          {
+            "text": "Prove (sui materiali)(b)(c)(d)"
+          }
+        ],
+        [
+          {
+            "text": "Per ogni elemento “primario” (trave, pilastro)",
+            "colSpan": 2
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "limitato"
+          },
+          {
+            "text": "La quantità e disposizione dell’armatura è verificata per almeno il 15% degli elementi"
+          },
+          {
+            "text": "1 provino di cls. per 300 m² di piano dell’edificio, 1 campione di armatura per piano dell’edificio"
+          }
+        ],
+        [
+          {
+            "text": "esteso"
+          },
+          {
+            "text": "La quantità e disposizione dell’armatura è verificata per almeno il 35% degli elementi"
+          },
+          {
+            "text": "2 provini di cls. per 300 m² di piano dell’edificio, 2 campioni di armatura per piano dell’edificio"
+          }
+        ],
+        [
+          {
+            "text": "esaustivo"
+          },
+          {
+            "text": "La quantità e disposizione dell’armatura è verificata per almeno il 50% degli elementi"
+          },
+          {
+            "text": "3 provini di cls. per 300 m² di piano dell’edificio, 3 campioni di armatura per piano dell’edificio"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c8.5.vi",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c8.5.4.2",
+      "officialNumber": "C8.5.VI",
+      "pdfPage": 268,
+      "caption": "Tabella C8.5.VI – Definizione orientativa dei livelli di rilievo e prova per edifici di acciaio.",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Livello di Indagini e Prove",
+            "rowSpan": 2
+          },
+          {
+            "text": "Rilievo (dei collegamenti)(a)"
+          },
+          {
+            "text": "Prove (sui materiali) (b)(c)(d)"
+          }
+        ],
+        [
+          {
+            "text": "Per ogni elemento “primario” (trave, pilastro…)",
+            "colSpan": 2
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "limitato"
+          },
+          {
+            "text": "Le caratteristiche dei collegamenti sono verificate per almeno il 15% degli elementi"
+          },
+          {
+            "text": "1 provino di acciaio per piano dell’edificio, 1 campione di bullone o chiodo per piano dell’edificio"
+          }
+        ],
+        [
+          {
+            "text": "esteso"
+          },
+          {
+            "text": "Le caratteristiche dei collegamenti sono verificate per almeno il 35% degli elementi"
+          },
+          {
+            "text": "2 provini di acciaio per piano dell’edificio, 2 campioni di bullone o chiodo per piano dell’edificio"
+          }
+        ],
+        [
+          {
+            "text": "esaustivo"
+          },
+          {
+            "text": "Le caratteristiche dei collegamenti sono verificate per almeno il 50% degli elementi"
+          },
+          {
+            "text": "3 provini di acciaio per piano dell’edificio, 3 campioni di bullone o chiodo per piano dell’edificio"
+          }
+        ]
+      ],
+      "notes": []
+    }
+  ],
+  "figures": []
+}

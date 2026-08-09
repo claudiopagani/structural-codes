@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.7.2.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.7.2.1",
+    "sortKey": "011.007.002.001"
+  },
+  "title": "LEGNO MASSICCIO CON SEZIONE RETTANGOLARE",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.7.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.7.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.7",
+      "urn:structural-codes:it:unit:circ2019:c11.7.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.7.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.7.2.1 LEGNO MASSICCIO CON SEZIONE RETTANGOLARE",
+        "normalized": "C11.7.2.1 LEGNO MASSICCIO CON SEZIONE RETTANGOLARE",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 333,
+        "printedPage": "329",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "77b9136cc625b4435989a6786014fc30ee45038b7b1e4aa91ab2cb31bc75e463",
+        "normalizedSha256": "77b9136cc625b4435989a6786014fc30ee45038b7b1e4aa91ab2cb31bc75e463"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.7.2.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I prodotti in legno massiccio a sezione rettangolare devono essere oggetto di una classificazione secondo la resistenza, al fine di\nassegnare ad ogni singolo segato una classe di resistenza, usualmente coerente con quanto proposto dalla UNI EN 338.",
+        "normalized": "I prodotti in legno massiccio a sezione rettangolare devono essere oggetto di una classificazione secondo la resistenza, al fine di assegnare ad ogni singolo segato una classe di resistenza, usualmente coerente con quanto proposto dalla UNI EN 338.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 333,
+        "printedPage": "329",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "484eb81d7f8a98b0270e709d08ca85fb936b4152f6145c76faf0a971a00e0303",
+        "normalizedSha256": "185581374aa7fb43cd2dafb9db7a488b578d9edc561f338d6d1db32e3a04b990"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-7-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c11.3.4.1",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C11.3.4.1",
+    "sortKey": "011.003.004.001"
+  },
+  "title": "GENERALITÀ",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c11.3.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c11",
+      "urn:structural-codes:it:unit:circ2019:c11.3",
+      "urn:structural-codes:it:unit:circ2019:c11.3.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-09"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C11.3.4.1 GENERALITA’",
+        "normalized": "C11.3.4.1 GENERALITÀ",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "429b0204448862c5ae4fb0e32b353008c9fe813c4c782be4cb06ccb4c19dadc8",
+        "normalizedSha256": "39211fb87e96b9cc14ad20e2f6a0e173ffab52a6d926793ab4f8bc7835cefcd7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.1#block-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la zincatura, se effettuata in sub-affidamento in autonomi stabilimenti, va garantito un adeguato livello di integrazione dei\nControlli di Produzione in Fabbrica tra produttore degli elementi base e zincatore. A questo scopo il produttore garantisce la\nqualifica del sub-affidatario della zincatura, secondo idonee procedure.",
+        "normalized": "Per la zincatura, se effettuata in sub-affidamento in autonomi stabilimenti, va garantito un adeguato livello di integrazione dei Controlli di Produzione in Fabbrica tra produttore degli elementi base e zincatore. A questo scopo il produttore garantisce la qualifica del sub-affidatario della zincatura, secondo idonee procedure.",
+        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 330,
+        "printedPage": "326",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          }
+        ],
+        "rawSha256": "bcccba42ff491b4e0cfcb8e591562339cd2ada06a3eb5f99261644f3d27d0e05",
+        "normalizedSha256": "5e32b54431e8ce9617577416729d808a7550ba3b96c96fdaaca3e9b86d5dbcd1"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:circ11:step1",
+      "kind": "script",
+      "toolVersion": "circ11-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-09T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c11-3-4-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      }
+    ]
+  }
+}
