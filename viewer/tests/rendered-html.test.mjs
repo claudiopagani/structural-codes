@@ -49,12 +49,12 @@ test("il payload pubblico coincide con il lotto canonico", async () => {
     ),
   );
 
-  assert.equal(corpus.stats.units, 401);
-  assert.equal(corpus.stats.blocks, 2333);
+  assert.equal(corpus.stats.units, 414);
+  assert.equal(corpus.stats.blocks, 2462);
   assert.equal(corpus.stats.proposedRelations, 115);
   assert.equal(corpus.stats.assetUnits, 123);
   assert.equal(corpus.stats.reviewedUnits, 0);
-  assert.equal(corpus.units.length, 401);
+  assert.equal(corpus.units.length, 414);
   assert.equal(
     corpus.documents.ntc2018.localSourcePath,
     "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf",

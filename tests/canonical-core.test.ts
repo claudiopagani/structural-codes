@@ -73,7 +73,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
         "circ2019",
         "ntc2018",
     ]);
-    assert.equal(units.length, 401);
+    assert.equal(units.length, 414);
     assert.equal(
         units.reduce(
             (total, unit) =>
@@ -81,7 +81,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        2333,
+        2462,
     );
 });
 
