@@ -1,0 +1,102 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.7.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "7.7.5",
+    "sortKey": "007.007.005"
+  },
+  "title": "DISPOSIZIONI COSTRUTTIVE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.7.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.7"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.7.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "77.7.5. DISPOSIZIONI COSTRUTTIVE",
+        "normalized": "7.7.5 DISPOSIZIONI COSTRUTTIVE",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.7.5 DISPOSIZIONI COSTRUTTIVE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 260,
+        "printedPage": "256",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b9c3fbe4eb059abac0a1f614cd71be29218d06ddb564854b1b5377bd7315f424",
+        "normalizedSha256": "cfda7a213d01c75ec9bbc1ce24bcebe287b827c38e91fe3cc4ed810e9679f709"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-7-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

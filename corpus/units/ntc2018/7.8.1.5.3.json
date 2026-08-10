@@ -1,0 +1,140 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.3",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.8.1.5.3",
+    "sortKey": "007.008.001.005.003"
+  },
+  "title": "Analisi dinamica modale",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.3#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.8",
+      "urn:structural-codes:it:unit:ntc2018:7.8.1",
+      "urn:structural-codes:it:unit:ntc2018:7.8.1.5"
+    ],
+    "position": 3
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.3#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.8.1.5.3 Analisi dinamica modale",
+        "normalized": "7.8.1.5.3 Analisi dinamica modale",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.8.1.5.3 Analisi dinamica modale"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 263,
+        "printedPage": "259",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "2cb3571fe0d264c9e051c524fba96297c4c072160bfbc4e168a763be7dae1780",
+        "normalizedSha256": "2cb3571fe0d264c9e051c524fba96297c4c072160bfbc4e168a763be7dae1780"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.3#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "È applicabile in tutti i casi, con le limitazioni di cui al § 7.3.3.1. Quanto specificato per modellazione e possibilità di\nridistribuzione nel caso di analisi statica lineare si applica anche in questo caso.",
+        "normalized": "È applicabile in tutti i casi, con le limitazioni di cui al § 7.3.3.1. Quanto specificato per modellazione e possibilità di ridistribuzione nel caso di analisi statica lineare si applica anche in questo caso.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "È applicabile in tutti i casi, con le limitazioni di cui al § 7.3.3.1. Quanto specificato per modellazione e possibilità di ridistribuzione nel caso di analisi statica lineare si applica anche in questo caso."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 263,
+        "printedPage": "259",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "91fb797ecad43bcfb86f594ea703d6959fc49e39047d73edaeb1ef7e18ca905e",
+        "normalizedSha256": "1012294b055e7649572b51dc22f9a85f72f837ced80e0346f3fa0e96ecf2a12d"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-8-1-5-3-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

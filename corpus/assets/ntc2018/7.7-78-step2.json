@@ -1,0 +1,1086 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "7.7-78-step2",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.2.1-7.11.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.2.1",
+      "officialNumber": "7.11.6",
+      "pdfPage": 289,
+      "latex": "k_h=\\beta_m\\frac{a_{max}}{g}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.2.1-7.11.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.2.1",
+      "officialNumber": "7.11.7",
+      "pdfPage": 289,
+      "latex": "k_v=\\pm0{,}5\\,k_h"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.2.1-7.11.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.2.1",
+      "officialNumber": "7.11.8",
+      "pdfPage": 289,
+      "latex": "a_{max}=S\\,a_g=(S_S\\,S_T)\\,a_g"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.3.1-7.11.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.3.1",
+      "officialNumber": "7.11.9",
+      "pdfPage": 290,
+      "latex": "a_h=k_h\\,g=\\alpha\\,\\beta\\,a_{max}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.3.1-7.11.10",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.3.1",
+      "officialNumber": "7.11.10",
+      "pdfPage": 290,
+      "latex": "a_{max}=S\\,a_g=(S_S\\,S_T)\\,a_g"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.3.1-7.11.11",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.3.1",
+      "officialNumber": "7.11.11",
+      "pdfPage": 291,
+      "latex": "u_s\\le0{,}005\\,H"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.6.4-7.11.12",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4",
+      "officialNumber": "7.11.12",
+      "pdfPage": 292,
+      "latex": "L_e=L_s\\left(1+1{,}5\\frac{a_{max}}{g}\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.10.5.3.1-7.10.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
+      "officialNumber": "7.10.1",
+      "pdfPage": 280,
+      "latex": "F=M\\,S_e(T_{is},\\xi_{esi})"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.10.5.3.1-7.10.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
+      "officialNumber": "7.10.2",
+      "pdfPage": 280,
+      "latex": "d_{dc}=\\frac{M\\,S_e(T_{is},\\xi_{esi})}{K_{esi,min}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.10.5.3.1-7.10.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
+      "officialNumber": "7.10.3",
+      "pdfPage": 280,
+      "latex": "f_j=m_j\\,S_e(T_{is},\\xi_{esi})"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.10.5.3.1-7.10.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
+      "officialNumber": "7.10.4",
+      "pdfPage": 280,
+      "latex": "\\delta_{xi}=1+\\frac{e_{tot,y}}{r_y^2}y_i,\\quad \\delta_{yi}=1+\\frac{e_{tot,x}}{r_x^2}x_i"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.10.5.3.1-7.10.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
+      "officialNumber": "7.10.5",
+      "pdfPage": 280,
+      "latex": "r_x^2=\\frac{\\sum(x_i^2\\,K_{yi}+y_i^2\\,K_{xi})}{\\sum K_{yi}},\\quad r_y^2=\\frac{\\sum(x_i^2\\,K_{yi}+y_i^2\\,K_{xi})}{\\sum K_{xi}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.2-7.11.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.2",
+      "officialNumber": "7.11.1",
+      "pdfPage": 283,
+      "latex": "\\tau_f=c' +(\\sigma'_n-\\Delta u)\\tan(\\phi')"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.2-7.11.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.2",
+      "officialNumber": "7.11.2",
+      "pdfPage": 283,
+      "latex": "\\tau_f=c_{u,c}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.3.5.2-7.11.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.3.5.2",
+      "officialNumber": "7.11.3",
+      "pdfPage": 285,
+      "latex": "k_h=\\beta_s\\frac{a_{max}}{g}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.3.5.2-7.11.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.3.5.2",
+      "officialNumber": "7.11.4",
+      "pdfPage": 285,
+      "latex": "k_v=\\pm0{,}5\\,k_h"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.11.3.5.2-7.11.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.3.5.2",
+      "officialNumber": "7.11.5",
+      "pdfPage": 285,
+      "latex": "a_{max}=S\\,a_g=(S_S\\,S_T)\\,a_g"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.2.1-7.9.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.2.1",
+      "officialNumber": "7.9.1",
+      "pdfPage": 270,
+      "latex": "q_0(\\nu_k)=q_0-\\left[\\frac{\\nu_k}{0{,}3}-1\\right](q_0-1)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.2.1-7.9.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.2.1",
+      "officialNumber": "7.9.2",
+      "pdfPage": 270,
+      "latex": "K_R=\\frac{2}{\\tilde r}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4-7.9.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.4",
+      "officialNumber": "7.9.3",
+      "pdfPage": 271,
+      "latex": "\\Delta M=d_{Ed}\\,N_{Ed}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1",
+      "officialNumber": "7.9.4",
+      "pdfPage": 271,
+      "latex": "T_1=2\\pi\\sqrt{\\frac{M}{K}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1",
+      "officialNumber": "7.9.5",
+      "pdfPage": 271,
+      "latex": "F_i=\\frac{4\\pi^2}{T_1^2}\\frac{S_d(T_1)}{g^2}\\,d_i\\,G_i"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1",
+      "officialNumber": "7.9.6",
+      "pdfPage": 272,
+      "latex": "T_1=2\\pi\\sqrt{\\frac{\\sum_iG_i\\,d_i^2}{g\\sum_iG_i\\,d_i}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5-7.9.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5",
+      "officialNumber": "7.9.7",
+      "pdfPage": 272,
+      "latex": "\\gamma_{Rd}=0{,}7+0{,}2q\\ge1"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.1.1-7.9.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.1.1",
+      "officialNumber": "7.9.8",
+      "pdfPage": 272,
+      "latex": "M_{Ed}\\le M_{Rd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.1.1-7.9.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.1.1",
+      "officialNumber": "7.9.9",
+      "pdfPage": 272,
+      "latex": "M_{prc}\\le M_{yd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.1.1-7.9.10a",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.1.1",
+      "officialNumber": "7.9.10a",
+      "pdfPage": 273,
+      "latex": "V_{Ed}=\\gamma_{Bd}\\,V_{prc}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.1.1-7.9.10b",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.1.1",
+      "officialNumber": "7.9.10b",
+      "pdfPage": 273,
+      "latex": "V_{prc}=\\frac{M_{s,prc}+M_{i,prc}}{l_p}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.1.1-7.9.11",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.1.1",
+      "officialNumber": "7.9.11",
+      "pdfPage": 273,
+      "latex": "1{,}00\\le\\gamma_{Bd}=2{,}25-q\\left(\\frac{V_E}{V_{prc}}-1\\right)\\le1{,}25"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.5.2.1-7.9.12",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.5.2.1",
+      "officialNumber": "7.9.12",
+      "pdfPage": 273,
+      "latex": "V_{Ed,i}=V_{E,i}\\,\\frac{\\gamma_{Rd}M_{Rd,i}}{M_{E,i}}\\le V_{E,i}\\,q"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.15",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.15",
+      "pdfPage": 275,
+      "latex": "\\omega_{wd,r}\\ge\\max\\{\\omega_{w,req};\\;0{,}67\\,\\omega_{w,min}\\}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.16",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.16",
+      "pdfPage": 275,
+      "latex": "\\omega_{w,req}=\\frac{A_c}{A_{cc}}\\,\\lambda\\,\\nu_k+0{,}13\\,\\frac{f_{yd}}{f_{cd}}(\\rho_L-0{,}01)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.17",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.17",
+      "pdfPage": 275,
+      "latex": "\\omega_{wd,c}\\ge\\max\\{1{,}4\\,\\omega_{w,req};\\;\\omega_{w,min}\\}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.18",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.18",
+      "pdfPage": 275,
+      "latex": "\\omega_{wd,r}=\\frac{A_{sw}}{s\\,b}\\,\\frac{f_{yd}}{f_{cd}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.19",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.19",
+      "pdfPage": 276,
+      "latex": "\\omega_{wd,c}=\\frac{4A_{sp}}{D_{sp}\\,s}\\,\\frac{f_{yd}}{f_{cd}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.20",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.20",
+      "pdfPage": 276,
+      "latex": "S_L\\le\\min\\{6d_{bL};\\;1{,}5b^*\\}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.1-7.9.21",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.1",
+      "officialNumber": "7.9.21",
+      "pdfPage": 276,
+      "latex": "S_L\\le\\min\\{\\frac{1}{3}b^*;\\;200\\,\\mathrm{mm}\\}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.2-7.9.22",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.2",
+      "officialNumber": "7.9.22",
+      "pdfPage": 276,
+      "latex": "S_L\\le6d_{bL}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.9.6.1.2-7.9.23",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.2",
+      "officialNumber": "7.9.23",
+      "pdfPage": 276,
+      "latex": "\\frac{A_T}{S_T}\\ge\\sum A_s\\,\\frac{f_{yk,s}}{1{,}6f_{yk,t}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.2.2.2-7.8.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.2",
+      "officialNumber": "7.8.3",
+      "pdfPage": 266,
+      "latex": "V_t=l'\\,t\\,f_{vd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.2.2.4-7.8.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.4",
+      "officialNumber": "7.8.4",
+      "pdfPage": 266,
+      "latex": "V_t=h\\,t\\,f_{vd0}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.2.2.4-7.8.5",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.4",
+      "officialNumber": "7.8.5",
+      "pdfPage": 266,
+      "latex": "M_u=H_p\\,\\frac{h}{2}\\left[1-\\frac{H_p}{0{,}85\\,f_{bd}\\,h\\,t}\\right]"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.2.2.4-7.8.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.4",
+      "officialNumber": "7.8.6",
+      "pdfPage": 266,
+      "latex": "V_p=\\frac{2M_{fu}}{l}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2",
+      "officialNumber": "7.8.7",
+      "pdfPage": 267,
+      "latex": "V_t=V_{t,M}+V_{t,S}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2",
+      "officialNumber": "7.8.8",
+      "pdfPage": 267,
+      "latex": "V_{t,M}=d\\,t\\,f_{vd}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2",
+      "officialNumber": "7.8.9",
+      "pdfPage": 267,
+      "latex": "V_{t,S}=\\frac{0{,}6\\,d\\,A_{sw}\\,f_{vd}}{s}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.10",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2",
+      "officialNumber": "7.8.10",
+      "pdfPage": 267,
+      "latex": "V_{t,c}=0{,}3\\,f_d\\,t\\,d"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.1.5.2-7.8.0",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.2",
+      "officialNumber": "7.8.0",
+      "pdfPage": 263,
+      "latex": "|\\Delta V|\\le\\max\\{0{,}25|V|,\\;0{,}1|V_{piano}|\\}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.1.5.2-sa",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.2",
+      "officialNumber": null,
+      "pdfPage": 263,
+      "latex": "S_a=\\alpha\\,S\\left[1{,}5\\left(1+\\frac{Z}{H}\\right)-0{,}5\\right]\\ge\\alpha\\,S"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.1.9-7.8.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.1.9",
+      "officialNumber": "7.8.1",
+      "pdfPage": 265,
+      "latex": "\\sigma=\\frac{N}{A}\\le0{,}25\\frac{f_k}{\\gamma_M}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.8.2.2.1-7.8.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1",
+      "officialNumber": "7.8.2",
+      "pdfPage": 265,
+      "latex": "M_u=\\left(l^2\\,t\\,\\frac{\\sigma_0}{2}\\right)\\left(1-\\frac{\\sigma_0}{0{,}85f_d}\\right)"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.11.ii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.5.3.1",
+      "officialNumber": "7.11.II",
+      "pdfPage": 288,
+      "caption": "Coefficienti parziali γ_R per le verifiche degli stati limite (SLV) delle fondazioni superficiali con azioni sismiche",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Verifica"
+          },
+          {
+            "text": "Coefficiente parziale γ_R",
+            "latex": "\\gamma_R"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Carico limite"
+          },
+          {
+            "text": "2,3"
+          }
+        ],
+        [
+          {
+            "text": "Scorrimento"
+          },
+          {
+            "text": "1,1"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza sulle superfici laterali"
+          },
+          {
+            "text": "1,3"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.11.iii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.2.2",
+      "officialNumber": "7.11.III",
+      "pdfPage": 290,
+      "caption": "Coefficienti parziali γ_R per le verifiche degli stati limite (SLV) dei muri di sostegno",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Verifica"
+          },
+          {
+            "text": "Coefficiente parziale γ_R",
+            "latex": "\\gamma_R"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Carico limite"
+          },
+          {
+            "text": "1,2"
+          }
+        ],
+        [
+          {
+            "text": "Scorrimento"
+          },
+          {
+            "text": "1,0"
+          }
+        ],
+        [
+          {
+            "text": "Ribaltamento"
+          },
+          {
+            "text": "1,0"
+          }
+        ],
+        [
+          {
+            "text": "Resistenza del terreno a valle"
+          },
+          {
+            "text": "1,2"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.11.i",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.3.5.2",
+      "officialNumber": "7.11.I",
+      "pdfPage": 286,
+      "caption": "Coefficienti di riduzione dell’accelerazione massima attesa al sito",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Categoria di sottosuolo",
+            "rowSpan": 2
+          },
+          {
+            "text": "A"
+          },
+          {
+            "text": "B, C, D, E"
+          }
+        ],
+        [
+          {
+            "text": "β_s",
+            "latex": "\\beta_s"
+          },
+          {
+            "text": "β_s",
+            "latex": "\\beta_s"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "0,2 < a_g (g) ≤ 0,4",
+            "latex": "0{,}2<a_g(g)\\le0{,}4"
+          },
+          {
+            "text": "0,30"
+          },
+          {
+            "text": "0,28"
+          }
+        ],
+        [
+          {
+            "text": "0,1 < a_g (g) ≤ 0,2",
+            "latex": "0{,}1<a_g(g)\\le0{,}2"
+          },
+          {
+            "text": "0,27"
+          },
+          {
+            "text": "0,24"
+          }
+        ],
+        [
+          {
+            "text": "a_g (g) ≤ 0,1",
+            "latex": "a_g(g)\\le0{,}1"
+          },
+          {
+            "text": "0,20"
+          },
+          {
+            "text": "0,20"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.8.i",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.1.4",
+      "officialNumber": "7.8.I",
+      "pdfPage": 262,
+      "caption": "Requisiti geometrici delle pareti resistenti al sisma",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "Tipologie costruttive",
+            "rowSpan": 1
+          },
+          {
+            "text": "t_{min}",
+            "latex": "t_{\\min}"
+          },
+          {
+            "text": "(λ=h_0/t)_{max}",
+            "latex": "(\\lambda=h_0/t)_{\\max}"
+          },
+          {
+            "text": "(l/h’)_{min}",
+            "latex": "(l/h')_{\\min}"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Muratura ordinaria, realizzata con elementi in pietra squadrata"
+          },
+          {
+            "text": "300 mm"
+          },
+          {
+            "text": "10"
+          },
+          {
+            "text": "0,5"
+          }
+        ],
+        [
+          {
+            "text": "Muratura ordinaria, realizzata con elementi artificiali"
+          },
+          {
+            "text": "240 mm"
+          },
+          {
+            "text": "12"
+          },
+          {
+            "text": "0,4"
+          }
+        ],
+        [
+          {
+            "text": "Muratura armata, realizzata con elementi artificiali"
+          },
+          {
+            "text": "240 mm"
+          },
+          {
+            "text": "15"
+          },
+          {
+            "text": "Qualsiasi"
+          }
+        ],
+        [
+          {
+            "text": "Muratura confinata"
+          },
+          {
+            "text": "240 mm"
+          },
+          {
+            "text": "15"
+          },
+          {
+            "text": "0,3"
+          }
+        ],
+        [
+          {
+            "text": "Muratura ordinaria, realizzata con elementi in pietra squadrata, in siti caratterizzati, allo SLV, da a_{gS} ≤ 0,15g",
+            "latex": "a_{gS}\\le0{,}15g"
+          },
+          {
+            "text": "240 mm"
+          },
+          {
+            "text": "12"
+          },
+          {
+            "text": "0,3"
+          }
+        ],
+        [
+          {
+            "text": "Muratura realizzata con elementi artificiali semipieni, in siti caratterizzati, allo SLV, da a_{gS} ≤ 0,075 g",
+            "latex": "a_{gS}\\le0{,}075g"
+          },
+          {
+            "text": "200 mm"
+          },
+          {
+            "text": "20"
+          },
+          {
+            "text": "0,3"
+          }
+        ],
+        [
+          {
+            "text": "Muratura realizzata con elementi artificiali pieni, in siti caratterizzati, allo SLV, da a_{gS} ≤ 0,075 g",
+            "latex": "a_{gS}\\le0{,}075g"
+          },
+          {
+            "text": "150 mm"
+          },
+          {
+            "text": "20"
+          },
+          {
+            "text": "0,3"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.8.ii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.8.1.9",
+      "officialNumber": "7.8.II",
+      "pdfPage": 265,
+      "caption": "Area pareti resistenti in ciascuna direzione ortogonale per costruzioni semplici",
+      "columnCount": 12,
+      "headers": [
+        [
+          {
+            "text": "Accelerazione di picco del terreno a_{gS}(¹)",
+            "latex": "a_{gS}^{(1)}",
+            "colSpan": 2
+          },
+          {
+            "text": "≤0,07g"
+          },
+          {
+            "text": "≤0,10g"
+          },
+          {
+            "text": "≤0,15g"
+          },
+          {
+            "text": "≤0,20g"
+          },
+          {
+            "text": "≤0,25g"
+          },
+          {
+            "text": "≤0,30g"
+          },
+          {
+            "text": "≤0,35g"
+          },
+          {
+            "text": "≤0,40g"
+          },
+          {
+            "text": "≤0,45g"
+          },
+          {
+            "text": "≤0,50g"
+          }
+        ],
+        [
+          {
+            "text": "Tipo di struttura"
+          },
+          {
+            "text": "Numero piani"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Muratura ordinaria",
+            "rowSpan": 3
+          },
+          {
+            "text": "1"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,5%"
+          }
+        ],
+        [
+          {
+            "text": "2"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "7,0%"
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "7,0%"
+          },
+          {
+            "text": "7,0%"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Muratura armata",
+            "rowSpan": 4
+          },
+          {
+            "text": "1"
+          },
+          {
+            "text": "2,5%"
+          },
+          {
+            "text": "3,0%"
+          },
+          {
+            "text": "3,0%"
+          },
+          {
+            "text": "3,0%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "4,5%"
+          }
+        ],
+        [
+          {
+            "text": "2"
+          },
+          {
+            "text": "3,0%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "5,0%"
+          }
+        ],
+        [
+          {
+            "text": "3"
+          },
+          {
+            "text": "3,5%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,0%"
+          }
+        ],
+        [
+          {
+            "text": "4"
+          },
+          {
+            "text": "4,0%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "4,5%"
+          },
+          {
+            "text": "5,0%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "5,5%"
+          },
+          {
+            "text": "6,0%"
+          },
+          {
+            "text": "6,5%"
+          },
+          {
+            "text": "6,5%"
+          }
+        ]
+      ],
+      "notes": [
+        "(¹) S_T si applica solo nel caso di strutture di Classe d’uso III e IV (v. § 2.4.2)"
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.9.3-fig7.9.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.9.3",
+      "officialNumber": "7.9.1",
+      "pdfPage": 270,
+      "caption": "Fig. 7.9.1 – Ponte obliquo",
+      "alt": "Schema di ponte obliquo con lunghezza L, larghezza B e angolo φ.",
+      "imagePath": "figures/ntc2018/fig7.9.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 245,
+        "y": 630,
+        "width": 190,
+        "height": 110
+      },
+      "sha256": "0fb5b71ba18555f941b134bbd4bb5db2534dd683c01e920516d3073780ea9185"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.11.3.4.2-fig7.11.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.3.4.2",
+      "officialNumber": "7.11.1",
+      "pdfPage": 284,
+      "caption": "Fig. 7.11.1 – Fusi granulometrici di terreni suscettibili di liquefazione",
+      "alt": "Fusi granulometrici di terreni suscettibili di liquefazione.",
+      "imagePath": "figures/ntc2018/fig7.11.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 150,
+        "y": 440,
+        "width": 300,
+        "height": 290
+      },
+      "sha256": "2942290e3be003936575e650da1d4d3e31fa97dba2307426c5ae3fe516734a75"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.11.6.3.2-fig7.11.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.3.1",
+      "officialNumber": "7.11.2",
+      "pdfPage": 291,
+      "caption": "Fig. 7.11.2 – Diagramma per la valutazione del coefficiente di deformabilità α",
+      "alt": "Diagramma per la valutazione del coefficiente di deformabilità α.",
+      "imagePath": "figures/ntc2018/fig7.11.2.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 180,
+        "y": 325,
+        "width": 250,
+        "height": 190
+      },
+      "sha256": "3abc7dcd9944fd739b0c1f9ae96f10e5bc14e5ac4c264f97eb600209e99eb622"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:ntc2018:7.11.6.3.2-fig7.11.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.11.6.3.1",
+      "officialNumber": "7.11.3",
+      "pdfPage": 291,
+      "caption": "Fig. 7.11.3 – Diagramma per la valutazione del coefficiente di spostamento β",
+      "alt": "Diagramma per la valutazione del coefficiente di spostamento β.",
+      "imagePath": "figures/ntc2018/fig7.11.3.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 180,
+        "y": 518,
+        "width": 250,
+        "height": 217
+      },
+      "sha256": "de038750e9528e1a645d751fbc7dfbe417889381c08dc4c6c64d704e7e8e376c"
+    }
+  ]
+}

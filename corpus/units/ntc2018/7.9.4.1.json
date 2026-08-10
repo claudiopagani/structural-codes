@@ -1,0 +1,793 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.9.4.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.9.4.1",
+    "sortKey": "007.009.004.001"
+  },
+  "title": "ANALISI STATICA LINEARE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.9.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.9",
+      "urn:structural-codes:it:unit:ntc2018:7.9.4"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.9.4.1 ANALISI STATICA LINEARE",
+        "normalized": "7.9.4.1 ANALISI STATICA LINEARE",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.9.4.1 ANALISI STATICA LINEARE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "38b01893969a485f61ddf7bd7e986bcdc038f47659e4f1ab2b02dd3d2cf4321e",
+        "normalizedSha256": "38b01893969a485f61ddf7bd7e986bcdc038f47659e4f1ab2b02dd3d2cf4321e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I requisiti necessari per applicare l’analisi statica lineare possono ritenersi soddisfatti nei casi seguenti:",
+        "normalized": "I requisiti necessari per applicare l’analisi statica lineare possono ritenersi soddisfatti nei casi seguenti:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I requisiti necessari per applicare l’analisi statica lineare possono ritenersi soddisfatti nei casi seguenti:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "742c073ca9d3b0873d6aeb244aee8e9a1734e20dcc1dd1849be41b3c51b2a79d",
+        "normalizedSha256": "742c073ca9d3b0873d6aeb244aee8e9a1734e20dcc1dd1849be41b3c51b2a79d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) per entrambe le direzioni longitudinale e trasversale, in ponti a travate semplicemente appoggiate e purché la massa efficace\ndi ciascuna pila non sia superiore ad 1/5 della massa di impalcato da essa portata;",
+        "normalized": "a) per entrambe le direzioni longitudinale e trasversale, in ponti a travate semplicemente appoggiate e purché la massa efficace di ciascuna pila non sia superiore ad 1/5 della massa di impalcato da essa portata;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) per entrambe le direzioni longitudinale e trasversale, in ponti a travate semplicemente appoggiate e purché la massa efficace di ciascuna pila non sia superiore ad 1/5 della massa di impalcato da essa portata;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7f5ed3bc0b1d53f851b49002e1c1372abb0234ace3a2fcbe475e8ae2f6300691",
+        "normalizedSha256": "fd32ba015276de4eaf27a09de2a161f5598e46a2fa5ac204b2b89831eedcd7a8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) nella direzione longitudinale, per ponti rettilinei a travata continua e purché la massa efficace complessiva delle pile facenti\nparte del sistema resistente al sisma non sia superiore ad 1/5 della massa dell’impalcato;",
+        "normalized": "b) nella direzione longitudinale, per ponti rettilinei a travata continua e purché la massa efficace complessiva delle pile facenti parte del sistema resistente al sisma non sia superiore ad 1/5 della massa dell’impalcato;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) nella direzione longitudinale, per ponti rettilinei a travata continua e purché la massa efficace complessiva delle pile facenti parte del sistema resistente al sisma non sia superiore ad 1/5 della massa dell’impalcato;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "83caafe113a023e72e5d9c58453757d8c49f00f5dae7ec9b260d3783ff6ca36d",
+        "normalizedSha256": "5fef83e29492d48b8cdd9d536abe7d9e0f7f2c2cee462ce64e52f67e77b316d5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-c",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "c) nella direzione trasversale, per ponti che soddisfino la condizione b) e siano simmetrici rispetto alla mezzeria longitudinale, o\nabbiano un’eccentricità non superiore al 5% della lunghezza del ponte. L’eccentricità è la distanza tra baricentro delle masse e\ncentro delle rigidezze delle pile facenti parte del sistema resistente al sisma nella direzione trasversale.",
+        "normalized": "c) nella direzione trasversale, per ponti che soddisfino la condizione b) e siano simmetrici rispetto alla mezzeria longitudinale, o abbiano un’eccentricità non superiore al 5% della lunghezza del ponte. L’eccentricità è la distanza tra baricentro delle masse e centro delle rigidezze delle pile facenti parte del sistema resistente al sisma nella direzione trasversale.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) nella direzione trasversale, per ponti che soddisfino la condizione b) e siano simmetrici rispetto alla mezzeria longitudinale, o abbiano un’eccentricità non superiore al 5% della lunghezza del ponte. L’eccentricità è la distanza tra baricentro delle masse e centro delle rigidezze delle pile facenti parte del sistema resistente al sisma nella direzione trasversale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "03a2ae1649c182a51a6289279e7c2df0648df8ba2ae1da9fa3ca6835b6a3660f",
+        "normalizedSha256": "f94163a8f1f6b573a4aac913322956cad4ea0152b5752334b8d577a9a3ea8dbf"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per pile a sezione costante la massa efficace può essere assunta pari alla massa del terzo superiore della pila più la massa del\npulvino.",
+        "normalized": "Per pile a sezione costante la massa efficace può essere assunta pari alla massa del terzo superiore della pila più la massa del pulvino.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per pile a sezione costante la massa efficace può essere assunta pari alla massa del terzo superiore della pila più la massa del pulvino."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "223236d1ae9c0bd3ec678e5c9f0db56e6bf10e7b6472ecad071e86acfff17f40",
+        "normalizedSha256": "08d4c8ce9b2ab5cadc4e173c5392afb7ad882ce2a7969600bcbad5431852ab61"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nei casi (a) e (b) la massa M, da considerare concentrata in corrispondenza dell’impalcato ed in base alla quale valutare la forza F\nequivalente all’azione sismica, vale rispettivamente:",
+        "normalized": "Nei casi (a) e (b) la massa M, da considerare concentrata in corrispondenza dell’impalcato ed in base alla quale valutare la forza F equivalente all’azione sismica, vale rispettivamente:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei casi (a) e (b) la massa M, da considerare concentrata in corrispondenza dell’impalcato ed in base alla quale valutare la forza F equivalente all’azione sismica, vale rispettivamente:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8b02e5343b3017f925ad3796c1e5992ccdadbc9d3a7af1796f2f0aacaee2d3f1",
+        "normalizedSha256": "005d81b5582cb1fb50cc3c338e8fa74cee3cb8e8d3df39b9099593ae5e3cc40d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-d",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ la massa di impalcato afferente alla pila, più la massa della metà del terzo superiore della pila più la massa del pulvino., nel\ncaso a);",
+        "normalized": "ȭ la massa di impalcato afferente alla pila, più la massa della metà del terzo superiore della pila più la massa del pulvino., nel caso a);",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "ȭ la massa di impalcato afferente alla pila, più la massa della metà del terzo superiore della pila più la massa del pulvino., nel caso a);"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2942a71e133d75e30e39232afbde2894c6aef43270a5ba9a0b363377772bfe37",
+        "normalizedSha256": "d8391890f419e98deea81284b5634c426c372e5c2d5e7379876df235617d56a6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-e",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ l’intera massa dell’impalcato, più la massa del terzo superiore di tutte le pile più la massa di tutti i pulvini, nel caso b).",
+        "normalized": "ȭ l’intera massa dell’impalcato, più la massa del terzo superiore di tutte le pile più la massa di tutti i pulvini, nel caso b).",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "ȭ l’intera massa dell’impalcato, più la massa del terzo superiore di tutte le pile più la massa di tutti i pulvini, nel caso b)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "73aa6c5665c05d05fa94f2a7ea806037c6622c3cbdba8d973e13839d272304f2",
+        "normalizedSha256": "73aa6c5665c05d05fa94f2a7ea806037c6622c3cbdba8d973e13839d272304f2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il periodo fondamentale T1 in corrispondenza del quale valutare la risposta spettrale in accelerazione Sd(T \n1 \n) è dato in entrambi i\ncasi dall’espressione: ",
+        "normalized": "Il periodo fondamentale T1 in corrispondenza del quale valutare la risposta spettrale in accelerazione Sd(T 1 ) è dato in entrambi i casi dall’espressione:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il periodo fondamentale T1 in corrispondenza del quale valutare la risposta spettrale in accelerazione Sd(T 1 ) è dato in entrambi i casi dall’espressione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5eb58bbe4bd1f3b0d77a6e99546c8559207f792b310e9e1567d0cad477fa0e24",
+        "normalizedSha256": "a79f610991a40d20aa6df0d0a4722d11f4b1328da26fe4332cd0b2419e9a56bc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-formula-7-9-4-1-7-9-4",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.4",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "abff0326f20f8e067fb6f926d3ea6eaa845ded7c2c94c9cf757c6191e8f3a1ef",
+        "normalizedSha256": "abff0326f20f8e067fb6f926d3ea6eaa845ded7c2c94c9cf757c6191e8f3a1ef"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "nella quale K è la rigidezza laterale del modello considerato, ossia della singola pila nel caso a), complessiva delle pile nel caso b).",
+        "normalized": "nella quale K è la rigidezza laterale del modello considerato, ossia della singola pila nel caso a), complessiva delle pile nel caso b).",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nella quale "
+          },
+          {
+            "kind": "math",
+            "value": "K",
+            "latex": "K"
+          },
+          {
+            "kind": "text",
+            "value": " è la rigidezza laterale del modello considerato, ossia della singola pila nel caso a), complessiva delle pile nel caso b)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ee0f93d4f6d96763d8afa61491ff579edde7823798d39324ca0cef1e7945deff",
+        "normalizedSha256": "ee0f93d4f6d96763d8afa61491ff579edde7823798d39324ca0cef1e7945deff"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p6",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso c) il sistema di forze orizzontali equivalenti all’azione sismica da applicare ai nodi del modello è dato dalla espressione:",
+        "normalized": "Nel caso c) il sistema di forze orizzontali equivalenti all’azione sismica da applicare ai nodi del modello è dato dalla espressione:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso c) il sistema di forze orizzontali equivalenti all’azione sismica da applicare ai nodi del modello è dato dalla espressione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "27cafc85ed8957baaf8ed064d911ecd7cb42b1c3137907ad36aefb4c6e68ea1d",
+        "normalizedSha256": "27cafc85ed8957baaf8ed064d911ecd7cb42b1c3137907ad36aefb4c6e68ea1d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-formula-7-9-4-1-7-9-5",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.5",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "80e0ace6f27eef8d2c92cecdfcd5cfb5da211b9df1a019d56705c779f7475004",
+        "normalizedSha256": "80e0ace6f27eef8d2c92cecdfcd5cfb5da211b9df1a019d56705c779f7475004"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p7",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "nella quale: T1 è il periodo proprio fondamentale del ponte nella direzione trasversale; g è l’accelerazione di gravità; di è lo\nspostamento del grado di libertà i quando la struttura è soggetta ad un sistema di forze statiche trasversali f \ni = Gi \n, Gi è il peso\ndella massa concentrata nel grado di libertà i.",
+        "normalized": "nella quale: T_1 è il periodo proprio fondamentale del ponte nella direzione trasversale; g è l’accelerazione di gravità; d_i è lo spostamento del grado di libertà i quando la struttura è soggetta ad un sistema di forze statiche trasversali f_i = G_i; G_i è il peso della massa concentrata nel grado di libertà i.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nella quale: "
+          },
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo proprio fondamentale del ponte nella direzione trasversale; "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": " è l’accelerazione di "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": "ravità; "
+          },
+          {
+            "kind": "math",
+            "value": "d_i",
+            "latex": "d_i"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spostamento del "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": "rado di libertà i quando la struttura è so"
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": "etta ad un sistema di forze statiche trasversali "
+          },
+          {
+            "kind": "math",
+            "value": "f_i = G_i",
+            "latex": "f_i=G_i"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "G_i",
+            "latex": "G_i"
+          },
+          {
+            "kind": "text",
+            "value": " è il peso della massa concentrata nel "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": "rado di libertà i."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 271,
+        "printedPage": "267",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "29ed534adceb65882f8535e2cf2683984a55aa35bcceceb2d7575d79792f311b",
+        "normalizedSha256": "c80286f84c913966080447291b560cd763b5f5ffb753468fcd5e9eb3e80e1088"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-p8",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il periodo T1 del ponte in direzione trasversale può essere valutato con l’espressione approssimata:",
+        "normalized": "Il periodo T1 del ponte in direzione trasversale può essere valutato con l’espressione approssimata:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il periodo T1 del ponte in direzione trasversale può essere valutato con l’espressione approssimata:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 272,
+        "printedPage": "268",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c553ad54e178440f509786dd1c4740404b5fa30a21fd03eb20767f95c0de51b2",
+        "normalizedSha256": "c553ad54e178440f509786dd1c4740404b5fa30a21fd03eb20767f95c0de51b2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.4.1#block-formula-7-9-4-1-7-9-6",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.6",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 272,
+        "printedPage": "268",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "c58eca7310efb15aa98ebb7347eccf702ffc35bd87ca25b21bf7eedf7aefc4cc",
+        "normalizedSha256": "c58eca7310efb15aa98ebb7347eccf702ffc35bd87ca25b21bf7eedf7aefc4cc"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.4",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.5",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.9.4.1-7.9.6"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-9-4-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

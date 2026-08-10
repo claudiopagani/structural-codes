@@ -1,0 +1,1100 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.2.6",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.2.6",
+    "sortKey": "007.002.006"
+  },
+  "title": "CRITERI DI MODELLAZIONE DELLA STRUTTURA E DELL’AZIONE SISMICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.2"
+    ],
+    "position": 6
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "77.2.6. CRITERI DI MODELLAZIONE DELLA STRUTTURA E DELL’AZIONE SISMICA",
+        "normalized": "7.2.6 CRITERI DI MODELLAZIONE DELLA STRUTTURA E DELL’AZIONE SISMICA",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.2.6 CRITERI DI MODELLAZIONE DELLA STRUTTURA E DELL’AZIONE SISMICA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 344.45,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "684ff8f4bdbeee3ff00fc8c7b716b4093897f76b87da553b6822399c9b71511c",
+        "normalizedSha256": "4c2f5b6f163484461685c22d328141ce356ae2a2d8d76c4c23b60b7da1efbd8b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-heading-struttura",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "M ODELLAZIONE DELLA STRUTTURA",
+        "normalized": "MODELLAZIONE DELLA STRUTTURA",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "MODELLAZIONE DELLA STRUTTURA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 354.8,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b2bff496e1d536781a25e16428255138441a546a1e53582b512ae42083e51c59",
+        "normalizedSha256": "ea2e94cfe94a482b473f3c0bee46fce0581184aa4530b90cb7f433d6ca0fa323"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il modello della struttura deve essere tridimensionale e rappresentare in modo adeguato le effettive distribuzioni spaziali di massa,\nrigidezza e resistenza, con particolare attenzione alle situazioni nelle quali componenti orizzontali dell’azione sismica possono\nprodurre forze d’inerzia verticali (travi di grande luce, sbalzi significativi, ecc.).",
+        "normalized": "Il modello della struttura deve essere tridimensionale e rappresentare in modo adeguato le effettive distribuzioni spaziali di massa, rigidezza e resistenza, con particolare attenzione alle situazioni nelle quali componenti orizzontali dell’azione sismica possono produrre forze d’inerzia verticali (travi di grande luce, sbalzi significativi, ecc.).",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il modello della struttura deve essere tridimensionale e rappresentare in modo adeguato le effettive distribuzioni spaziali di massa, rigidezza e resistenza, con particolare attenzione alle situazioni nelle quali componenti orizzontali dell’azione sismica possono produrre forze d’inerzia verticali (travi di grande luce, sbalzi significativi, ecc.)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 365.15,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5f499c62d02fee41c18f3e5b15a7279148176ed050c8d6360524e90ae1a863c8",
+        "normalizedSha256": "2d5862d6eca66c97a857e7db9c4a5860a38a7d98526522aebd55b8d683ff77fc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Qualora si adotti un modello di comportamento non dissipativo , oppure un modello dissipativo che utilizza il coefficiente di\ncomportamento q, si impiegheranno per i materiali leggi costitutive elastiche .",
+        "normalized": "Qualora si adotti un modello di comportamento non dissipativo, oppure un modello dissipativo che utilizza il coefficiente di comportamento q, si impiegheranno per i materiali leggi costitutive elastiche.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora si adotti un modello di comportamento non dissipativo, oppure un modello dissipativo che utilizza il coefficiente di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": ", si impiegheranno per i materiali leggi costitutive elastiche."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 396.2,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9253d8483457ff80ca8f3424ea9ee822561c294e5cebd44e5c47a9c7c404811f",
+        "normalizedSha256": "5953953e3a83afd6344bec99d17ddc18aceb75dfc2e9869ef7cea610bf687cd2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Qualora si adotti un modello di comportamento dissipativo tenendo esplicitamente conto della capacità dissipativa, il legame\ncostitutivo utilizzato per modellare la non linearità di materiale dovrà essere giustificato, anche in relazione alla corretta\nrappresentazione dell’energia dissipata nei cicli di isteresi.",
+        "normalized": "Qualora si adotti un modello di comportamento dissipativo tenendo esplicitamente conto della capacità dissipativa, il legame costitutivo utilizzato per modellare la non linearità di materiale dovrà essere giustificato, anche in relazione alla corretta rappresentazione dell’energia dissipata nei cicli di isteresi.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora si adotti un modello di comportamento dissipativo tenendo esplicitamente conto della capacità dissipativa, il legame costitutivo utilizzato per modellare la non linearità di materiale dovrà essere giustificato, anche in relazione alla corretta rappresentazione dell’energia dissipata nei cicli di isteresi."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 416.9,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fcf04fa06cbdd119cc2cfd0b6cf7cf1107a6e03e8e031ac01dd8ac01eae41f46",
+        "normalizedSha256": "3daa49adc4912954c66111328ca63c960630d7ecf041d6ba4f5aad04e50746e5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Delle non linearità geometriche, se significative, si terrà conto per ambedue i comportamenti.",
+        "normalized": "Delle non linearità geometriche, se significative, si terrà conto per ambedue i comportamenti.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Delle non linearità geometriche, se significative, si terrà conto per ambedue i comportamenti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 447.95,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "2e3d791338de1627ce2ecdb4b858a80e117bcacea6f13dc8e55e44dcb936b10c",
+        "normalizedSha256": "2e3d791338de1627ce2ecdb4b858a80e117bcacea6f13dc8e55e44dcb936b10c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel rappresentare la rigidezza degli elementi strutturali si deve tener conto della fessurazione. In caso non siano effettuate analisi\nspecifiche, la rigidezza flessionale e a taglio di elementi in muratura, calcestruzzo armato, acciaio-calcestruzzo, può essere ridotta\nsino al 50% della rigidezza dei corrispondenti elementi non fessurati, tenendo debitamente conto dello stato limite considerato e\ndell’influenza della sollecitazione assiale permanente.",
+        "normalized": "Nel rappresentare la rigidezza degli elementi strutturali si deve tener conto della fessurazione. In caso non siano effettuate analisi specifiche, la rigidezza flessionale e a taglio di elementi in muratura, calcestruzzo armato, acciaio-calcestruzzo, può essere ridotta sino al 50% della rigidezza dei corrispondenti elementi non fessurati, tenendo debitamente conto dello stato limite considerato e dell’influenza della sollecitazione assiale permanente.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel rappresentare la rigidezza degli elementi strutturali si deve tener conto della fessurazione. In caso non siano effettuate analisi specifiche, la rigidezza flessionale e a taglio di elementi in muratura, calcestruzzo armato, acciaio-calcestruzzo, può essere ridotta sino al 50% della rigidezza dei corrispondenti elementi non fessurati, tenendo debitamente conto dello stato limite considerato e dell’influenza della sollecitazione assiale permanente."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 458.3,
+          "width": 428.6,
+          "height": 41.4
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f5347c62d474469d28a0fb8619dc8d7be9f485f669c6ff467f0081db79bdeb21",
+        "normalizedSha256": "907f70f945f44077550543970aa4320770d308e287986f5194920386c3b79156"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p6",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "A meno di specifiche valutazioni e purché le aperture presenti non ne riducano significativamente la rigidezza, gli\norizzontamenti piani possono essere considerati infinitamente rigidi nel loro piano medio a condizione che siano realizzati in\ncalcestruzzo armato, oppure in latero-cemento con soletta in calcestruzzo armato di almeno 40 mm di spessore, o in struttura\nmista con soletta in calcestruzzo armato di almeno 50 mm di spessore collegata agli elementi strutturali in acciaio o in legno da\nconnettori a taglio opportunamente dimensionati.",
+        "normalized": "A meno di specifiche valutazioni e purché le aperture presenti non ne riducano significativamente la rigidezza, gli orizzontamenti piani possono essere considerati infinitamente rigidi nel loro piano medio a condizione che siano realizzati in calcestruzzo armato, oppure in latero-cemento con soletta in calcestruzzo armato di almeno 40 mm di spessore, o in struttura mista con soletta in calcestruzzo armato di almeno 50 mm di spessore collegata agli elementi strutturali in acciaio o in legno da connettori a taglio opportunamente dimensionati.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "A meno di specifiche valutazioni e purché le aperture presenti non ne riducano significativamente la rigidezza, gli orizzontamenti piani possono essere considerati infinitamente rigidi nel loro piano medio a condizione che siano realizzati in calcestruzzo armato, oppure in latero-cemento con soletta in calcestruzzo armato di almeno 40 mm di spessore, o in struttura mista con soletta in calcestruzzo armato di almeno 50 mm di spessore collegata agli elementi strutturali in acciaio o in legno da connettori a taglio opportunamente dimensionati."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 499.7,
+          "width": 428.6,
+          "height": 51.75
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "061603a996dfaf90f0c8e50715856895c60708b42a5b1c78a55d244dad25c3d7",
+        "normalizedSha256": "3f2fe375bb09b24bc710d6a28bbcfcd6ea872f424aae0294217e745693a755c9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p7",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nella definizione del modello, gli elementi non strutturali non appositamente progettati come collaboranti (quali tamponature e\ntramezzi) possono essere rappresentati unicamente in termini di massa; il loro contributo al comportamento del sistema strutturale\nin termini di rigidezza e resistenza sarà considerato solo qualora abbia effetti negativi ai fini della sicurezza.",
+        "normalized": "Nella definizione del modello, gli elementi non strutturali non appositamente progettati come collaboranti (quali tamponature e tramezzi) possono essere rappresentati unicamente in termini di massa; il loro contributo al comportamento del sistema strutturale in termini di rigidezza e resistenza sarà considerato solo qualora abbia effetti negativi ai fini della sicurezza.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nella definizione del modello, gli elementi non strutturali non appositamente progettati come collaboranti (quali tamponature e tramezzi) possono essere rappresentati unicamente in termini di massa; il loro contributo al comportamento del sistema strutturale in termini di rigidezza e resistenza sarà considerato solo qualora abbia effetti negativi ai fini della sicurezza."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 551.45,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a0f5f04f052f1aea5bd187c659ee428801d1b49928566b29e62f63a1a7fcfdc7",
+        "normalizedSha256": "7c868c4b712a63c568d6d4bd737d21309d651368937a0779ca1db51e44fc1625"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-heading-azione",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "MODELLAZIONE DELL ’AZIONE SISMICA",
+        "normalized": "MODELLAZIONE DELL’AZIONE SISMICA",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "MODELLAZIONE DELL’AZIONE SISMICA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 582.5,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3a8d0a4858524f75cb1fcdd9e7da65bc3bb620c7bc60edd59b109633f3fe0e95",
+        "normalizedSha256": "d467fecfcaf6f3cffc8d2287ffcac82b069d31b0915c8db2d4af01a9e242690a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p8",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le azioni conseguenti al moto sismico possono essere modellate sia attraverso forze statiche equivalenti o spettri di risposta, sia\nattraverso storie temporali del moto del terreno, opportunamente selezionate.",
+        "normalized": "Le azioni conseguenti al moto sismico possono essere modellate sia attraverso forze statiche equivalenti o spettri di risposta, sia attraverso storie temporali del moto del terreno, opportunamente selezionate.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le azioni conseguenti al moto sismico possono essere modellate sia attraverso forze statiche equivalenti o spettri di risposta, sia attraverso storie temporali del moto del terreno, opportunamente selezionate."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 592.85,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9c022a9d99e77aa7eeee68961be2ab4f6d92a6f9dc804e54dbbff8c3d19ebb29",
+        "normalizedSha256": "c2392f36390b4f9e3b2c7971a67a2862b8f0c204c41d709932b8b44f59422da3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p9",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La domanda sismica può essere valutata considerando gli effetti di interazione terreno-struttura di tipo sia inerziale sia\ncinematico, nonché definendo l’input sismico di progetto tramite analisi di risposta sismica locale. Per le relative procedure\ndovranno essere utilizzati metodi e modelli di comprovata validità.",
+        "normalized": "La domanda sismica può essere valutata considerando gli effetti di interazione terreno-struttura di tipo sia inerziale sia cinematico, nonché definendo l’input sismico di progetto tramite analisi di risposta sismica locale. Per le relative procedure dovranno essere utilizzati metodi e modelli di comprovata validità.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La domanda sismica può essere valutata considerando gli effetti di interazione terreno-struttura di tipo sia inerziale sia cinematico, nonché definendo l’input sismico di progetto tramite analisi di risposta sismica locale. Per le relative procedure dovranno essere utilizzati metodi e modelli di comprovata validità."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 218,
+        "printedPage": "214",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 613.55,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ad00af0e5d55939c3ffdac07d80d50715b10be2837c9cf1b86964738b05af690",
+        "normalizedSha256": "1f48e2ebc7d3287420099101891db9f6df8032e154e7209eeb9448a6fd60bffc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p10",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Non è ammesso l’uso di storie temporali del moto del suolo artificiali o con componenti artificiali per le analisi di risposta sismica\nlocale e per analisi di interazione terreno struttura che prevedano legami costitutivi isteretici per la modellazione del sottosuolo,\ncoerentemente con le indicazioni del § 3.2.3.6.",
+        "normalized": "Non è ammesso l’uso di storie temporali del moto del suolo artificiali o con componenti artificiali per le analisi di risposta sismica locale e per analisi di interazione terreno struttura che prevedano legami costitutivi isteretici per la modellazione del sottosuolo, coerentemente con le indicazioni del § 3.2.3.6.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Non è ammesso l’uso di storie temporali del moto del suolo artificiali o con componenti artificiali per le analisi di risposta sismica locale e per analisi di interazione terreno struttura che prevedano legami costitutivi isteretici per la modellazione del sottosuolo, coerentemente con le indicazioni del § 3.2.3.6."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 96.05,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4460cc64f118c7c5f42ef152f97cb4c1ae63ebee490cf7e1da4d5c17bbb6cead",
+        "normalizedSha256": "4b42f7afd919596316ba306d671eccbd02449636641c4beee5fe823a01d703f2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p11",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In quanto alla domanda sismica ed alla risposta strutturale valgono le seguenti limitazioni:",
+        "normalized": "In quanto alla domanda sismica ed alla risposta strutturale valgono le seguenti limitazioni:",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In quanto alla domanda sismica ed alla risposta strutturale valgono le seguenti limitazioni:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 127.1,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "08484345d7cbc74d41c59a8c3815e4f1a82ad495889e5c2c65903c226b9b2e30",
+        "normalizedSha256": "08484345d7cbc74d41c59a8c3815e4f1a82ad495889e5c2c65903c226b9b2e30"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-li-a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) I valori dello spettro di risposta elastico in accelerazione delle componenti dell’azione sismica di progetto, valutato\nassumendo il 5 % di smorzamento ed ottenuto tramite analisi di risposta sismica locale e/o di interazione terreno\nstruttura, devono essere almeno pari al 70 % di quelli del corrispondente spettro di risposta elastico in accelerazione per\nsottosuolo di tipo A, come definito al § 3.2.3.2.",
+        "normalized": "a) I valori dello spettro di risposta elastico in accelerazione delle componenti dell’azione sismica di progetto, valutato assumendo il 5 % di smorzamento ed ottenuto tramite analisi di risposta sismica locale e/o di interazione terreno struttura, devono essere almeno pari al 70 % di quelli del corrispondente spettro di risposta elastico in accelerazione per sottosuolo di tipo A, come definito al § 3.2.3.2.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) I valori dello spettro di risposta elastico in accelerazione delle componenti dell’azione sismica di progetto, valutato assumendo il 5 % di smorzamento ed ottenuto tramite analisi di risposta sismica locale e/o di interazione terreno struttura, devono essere almeno pari al 70 % di quelli del corrispondente spettro di risposta elastico in accelerazione per sottosuolo di tipo A, come definito al § 3.2.3.2."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 137.45,
+          "width": 428.6,
+          "height": 41.4
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "799ecac758ecb24c604c13a14e431672327aad3b0c0143390c232d7dc6d70f18",
+        "normalizedSha256": "5da5cb2539acb14dab854584e7064b495f19c595e81629dee20f6517906803f6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-li-b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) Ove si effettuino analisi di interazione terreno-struttura, la risultante globale di taglio e sforzo normale trasmessa\nall’estradosso della fondazione della costruzione deve essere almeno pari al 70 % di quella ottenuta da identico modello\nstrutturale con vincoli fissi all’estradosso della fondazione e con input sismico corrispondente allo spettro di risposta per\nsottosuolo tipo A, come definito al § 3.2.3.2.",
+        "normalized": "b) Ove si effettuino analisi di interazione terreno-struttura, la risultante globale di taglio e sforzo normale trasmessa all’estradosso della fondazione della costruzione deve essere almeno pari al 70 % di quella ottenuta da identico modello strutturale con vincoli fissi all’estradosso della fondazione e con input sismico corrispondente allo spettro di risposta per sottosuolo tipo A, come definito al § 3.2.3.2.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) Ove si effettuino analisi di interazione terreno-struttura, la risultante globale di taglio e sforzo normale trasmessa all’estradosso della fondazione della costruzione deve essere almeno pari al 70 % di quella ottenuta da identico modello strutturale con vincoli fissi all’estradosso della fondazione e con input sismico corrispondente allo spettro di risposta per sottosuolo tipo A, come definito al § 3.2.3.2."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 178.85,
+          "width": 428.6,
+          "height": 41.4
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d5d1f358b37a8be16c0a8e58d4e17d34225580ec2d07e1f66ef92bb4050065d5",
+        "normalizedSha256": "1ac2ed5ef57c98b290e33199e15ad3a8e99b7619c00a9b39ce828ef0c2c6b2bb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p12",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "E' possibile considerare la deformabilità del complesso fondazione-terreno e la sua capacità dissipativa, utilizzando ad esempio\nvincoli viscoelastici caratterizzati da un'opportuna impedenza dinamica. In tal caso, è necessario tener conto della dipendenza\ndelle caratteristiche di rigidezza e smorzamento dal livello deformativo nel terreno.",
+        "normalized": "E' possibile considerare la deformabilità del complesso fondazione-terreno e la sua capacità dissipativa, utilizzando ad esempio vincoli viscoelastici caratterizzati da un'opportuna impedenza dinamica. In tal caso, è necessario tener conto della dipendenza delle caratteristiche di rigidezza e smorzamento dal livello deformativo nel terreno.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "E' possibile considerare la deformabilità del complesso fondazione-terreno e la sua capacità dissipativa, utilizzando ad esempio vincoli viscoelastici caratterizzati da un'opportuna impedenza dinamica. In tal caso, è necessario tener conto della dipendenza delle caratteristiche di rigidezza e smorzamento dal livello deformativo nel terreno."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 220.25,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "423df080d63d4a5f1ecafa5ec6a3ae7457c49959a9b25d01ccc8e6d063f121fa",
+        "normalizedSha256": "a029cbf9f150660bdc87ffc478a923d1d4289e4c38113e083971593731060dc4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p13",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le fondazioni miste, come specificato al § 6.4.3, l’interazione fra terreno, pali e struttura di collegamento deve essere studiata\ncon appropriate modellazioni, allo scopo di pervenire alla determinazione dell’aliquota dell’azione di progetto trasferita al\nterreno direttamente dalla struttura di collegamento e dell’aliquota trasmessa ai pali.",
+        "normalized": "Per le fondazioni miste, come specificato al § 6.4.3, l’interazione fra terreno, pali e struttura di collegamento deve essere studiata con appropriate modellazioni, allo scopo di pervenire alla determinazione dell’aliquota dell’azione di progetto trasferita al terreno direttamente dalla struttura di collegamento e dell’aliquota trasmessa ai pali.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le fondazioni miste, come specificato al § 6.4.3, l’interazione fra terreno, pali e struttura di collegamento deve essere studiata con appropriate modellazioni, allo scopo di pervenire alla determinazione dell’aliquota dell’azione di progetto trasferita al terreno direttamente dalla struttura di collegamento e dell’aliquota trasmessa ai pali."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 251.29999999999998,
+          "width": 428.6,
+          "height": 31.049999999999997
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1c19ac829199ebfa8bb7abd4aad061a8a08c4345df2b6aca8bbc474fcfc54852",
+        "normalizedSha256": "5935444327c7aafaf9ca34e865a383194d6eb273c79f73eeb5aaabd414a5ac80"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2.6#block-p14",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per tenere conto della variabilità spaziale del moto sismico, nonché di eventuali incertezze, deve essere attribuita al centro di\nmassa un’eccentricità accidentale rispetto alla sua posizione quale deriva dal calcolo. Per i soli edifici e in assenza di più accurate\ndeterminazioni, l’eccentricità accidentale in ogni direzione non può essere considerata inferiore a 0,05 volte la dimensione media\ndell’edificio misurata perpendicolarmente alla direzione di applicazione dell’azione sismica. Detta eccentricità è assunta costante,\nper entità e direzione, su tutti gli orizzontamenti.",
+        "normalized": "Per tenere conto della variabilità spaziale del moto sismico, nonché di eventuali incertezze, deve essere attribuita al centro di massa un’eccentricità accidentale rispetto alla sua posizione quale deriva dal calcolo. Per i soli edifici e in assenza di più accurate determinazioni, l’eccentricità accidentale in ogni direzione non può essere considerata inferiore a 0,05 volte la dimensione media dell’edificio misurata perpendicolarmente alla direzione di applicazione dell’azione sismica. Detta eccentricità è assunta costante, per entità e direzione, su tutti gli orizzontamenti.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per tenere conto della variabilità spaziale del moto sismico, nonché di eventuali incertezze, deve essere attribuita al centro di massa un’eccentricità accidentale rispetto alla sua posizione quale deriva dal calcolo. Per i soli edifici e in assenza di più accurate determinazioni, l’eccentricità accidentale in ogni direzione non può essere considerata inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,05",
+            "latex": "0{,}05"
+          },
+          {
+            "kind": "text",
+            "value": " volte la dimensione media dell’edificio misurata perpendicolarmente alla direzione di applicazione dell’azione sismica. Detta eccentricità è assunta costante, per entità e direzione, su tutti gli orizzontamenti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 219,
+        "printedPage": "215",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 282.35,
+          "width": 428.6,
+          "height": 51.75
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fd4d97fe3c33d7f7cff1b2d695b0a234f60bd8d3495e86c71a338a64019edf5c",
+        "normalizedSha256": "d837af26fdb38b08357ecfbc601d8b343d5f0d834803e084b4a028078d00c6ab"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc7:step1",
+      "kind": "script",
+      "toolVersion": "ntc7-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-2-6-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

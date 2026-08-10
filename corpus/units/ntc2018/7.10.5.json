@@ -1,0 +1,102 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.10.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "7.10.5",
+    "sortKey": "007.010.005"
+  },
+  "title": "MODELLAZIONE E ANALISI STRUTTURALE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.10.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.10",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.10"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.10.5. MODELLAZIONE E ANALISI STRUTTURALE",
+        "normalized": "7.10.5 MODELLAZIONE E ANALISI STRUTTURALE",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.10.5 MODELLAZIONE E ANALISI STRUTTURALE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 278,
+        "printedPage": "274",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "76ec38a1a8ef46eb4e1cb803f19374581104aaeaf0b2473aefeb230de622f39c",
+        "normalizedSha256": "736b66229a2837c850fdb711cc8c5eea886b6459c6d6f9cfc60b4785dd0af817"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-10-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

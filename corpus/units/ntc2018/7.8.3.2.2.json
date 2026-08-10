@@ -1,0 +1,967 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.8.3.2.2",
+    "sortKey": "007.008.003.002.002"
+  },
+  "title": "Taglio",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.8",
+      "urn:structural-codes:it:unit:ntc2018:7.8.3",
+      "urn:structural-codes:it:unit:ntc2018:7.8.3.2"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.8.3.2.2 Taglio",
+        "normalized": "7.8.3.2.2 Taglio",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.8.3.2.2 Taglio"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "b926184727f7058116d6bf654ecec92c15c0168c2456db6d59c66d7f7c495a1f",
+        "normalizedSha256": "b926184727f7058116d6bf654ecec92c15c0168c2456db6d59c66d7f7c495a1f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La resistenza a taglio (Vt \n) è calcolata come somma dei contributi della muratura (Vt,M \n) e dell’armatura (Vt,S \n), secondo le relazioni\nseguenti: ",
+        "normalized": "La resistenza a taglio (V_t) è calcolata come somma dei contributi della muratura (V_{t,M}) e dell’armatura (V_{t,S}), secondo le relazioni seguenti:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La resistenza a taglio ("
+          },
+          {
+            "kind": "math",
+            "value": "V_t",
+            "latex": "V_t"
+          },
+          {
+            "kind": "text",
+            "value": ") è calcolata come somma dei contributi della muratura ("
+          },
+          {
+            "kind": "math",
+            "value": "V_{t,M}",
+            "latex": "V_{t,M}"
+          },
+          {
+            "kind": "text",
+            "value": ") e dell’armatura ("
+          },
+          {
+            "kind": "math",
+            "value": "V_{t,S}",
+            "latex": "V_{t,S}"
+          },
+          {
+            "kind": "text",
+            "value": "), secondo le relazioni seguenti:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3aaa2175389a399a6097cbb553ec7e5be278bc495ec26e7dd4c1091c65176512",
+        "normalizedSha256": "56b06add81eb1b4157897b99ba86ca174d5937fbc0cd9d8806eec5cd3e307c6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-formula-7-8-3-2-2-7-8-7",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.7",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "4d074ae5b450efb40db24aa310e36a4461f992fc56a3338705ee28b506f30ae2",
+        "normalizedSha256": "4d074ae5b450efb40db24aa310e36a4461f992fc56a3338705ee28b506f30ae2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-formula-7-8-3-2-2-7-8-8",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.8",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "c52091cc2c7e5cf6a4a6eee5bf7faa0a2a1645464da635abe51a8f49ac15c8ec",
+        "normalizedSha256": "c52091cc2c7e5cf6a4a6eee5bf7faa0a2a1645464da635abe51a8f49ac15c8ec"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "d è la distanza tra il lembo compresso e il baricentro dell’armatura tesa;",
+        "normalized": "d è la distanza tra il lembo compresso e il baricentro dell’armatura tesa;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": " è la "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "istanza tra il lembo compresso e il baricentro "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "ell’armatura tesa;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c7c66417110483f66ee266acefa57ede8aaf49b61a2db61d5ed3162d0edf5f56",
+        "normalizedSha256": "c7c66417110483f66ee266acefa57ede8aaf49b61a2db61d5ed3162d0edf5f56"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t è lo spessore della parete;",
+        "normalized": "t è lo spessore della parete;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore della pare"
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": "e;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "17d535897a0dc3d0f899c95c3b30849ef67349402df3d0a3a1cfc4ec2c6a2695",
+        "normalizedSha256": "17d535897a0dc3d0f899c95c3b30849ef67349402df3d0a3a1cfc4ec2c6a2695"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "f yd = f yk / ·M è definito al § 4.5.6.1 calcolando la tensione normale media (indicata con Ηn nel paragrafo citato) sulla sezione lorda\ndi larghezza d (Ηn = P/dt). ",
+        "normalized": "f_{yd} = f_{yk} / γ_M è definito al § 4.5.6.1 calcolando la tensione normale media (indicata con σ_n nel paragrafo citato) sulla sezione lorda di larghezza d (σ_n = P/dt).",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "f_{yd} = f_{yk} / γ_M",
+            "latex": "f_{yd}=\\frac{f_{yk}}{\\gamma_M}"
+          },
+          {
+            "kind": "text",
+            "value": " è definito al § 4.5.6.1 calcolando la tensione normale media (indicata con "
+          },
+          {
+            "kind": "math",
+            "value": "σ_n",
+            "latex": "\\sigma_n"
+          },
+          {
+            "kind": "text",
+            "value": " nel paragrafo citato) sulla sezione lorda di larghezza d ("
+          },
+          {
+            "kind": "math",
+            "value": "σ_n = P/dt",
+            "latex": "\\sigma_n=\\frac{P}{d\\,t}"
+          },
+          {
+            "kind": "text",
+            "value": ")."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "07d4fa8f561da3f9040734dfccad0689144d5e1fa0238adbae7938c914c4c61c",
+        "normalizedSha256": "d441bc495ddd9462ee9ffc1fc3f24302dc963fe9171468f487dfa0e48ba69403"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-formula-7-8-3-2-2-7-8-9",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.9",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "f36f4aa94b05d9490f4b6d3d597f4ed11d9e43eb2358cf32341f570cf873f112",
+        "normalizedSha256": "f36f4aa94b05d9490f4b6d3d597f4ed11d9e43eb2358cf32341f570cf873f112"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p7",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p8",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "d è la distanza tra il lembo compresso e il baricentro dell’armatura tesa;",
+        "normalized": "d è la distanza tra il lembo compresso e il baricentro dell’armatura tesa;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": " è la "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "istanza tra il lembo compresso e il baricentro "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "ell’armatura tesa;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "c7c66417110483f66ee266acefa57ede8aaf49b61a2db61d5ed3162d0edf5f56",
+        "normalizedSha256": "c7c66417110483f66ee266acefa57ede8aaf49b61a2db61d5ed3162d0edf5f56"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p9",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "A SW è l’area dell’armatura a taglio disposta in direzione parallela alla forza di taglio, con passo s misurato ortogonalmente alla\ndirezione della forza di taglio;",
+        "normalized": "A_{sw} è l’area dell’armatura a taglio disposta in direzione parallela alla forza di taglio, con passo s misurato ortogonalmente alla direzione della forza di taglio;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "A_{sw}",
+            "latex": "A_{sw}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area dell’armatura a taglio di"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "po"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "ta in direzione parallela alla forza di taglio, con pa"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "o "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " mi"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "urato ortogonalmente alla direzione della forza di taglio;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7e50243a3b49eaf5f3fb5a948b61ee4b724f8ebe9bdb54f759fce984f45d89a7",
+        "normalizedSha256": "33949425d033e8cbdd3d2a2682841b3a810be9a90d1085d9db05f6b49aafd5da"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p10",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "fyd è la tensione di snervamento di progetto dell’acciaio;",
+        "normalized": "f_{yd} è la tensione di snervamento di progetto dell’acciaio;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "f_{yd}",
+            "latex": "f_{yd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione di snervamento di progetto dell’acciaio;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7533d2d080dde8726871df881755d8b7b2bf81ee0dbbd76b94da6456930045b4",
+        "normalizedSha256": "92d0d3e8f6dee5d98a83e2876e83def13ad77760fdb61d5d9e793ec4fbfebdfb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p11",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "s è la distanza tra i livelli di armatura.",
+        "normalized": "s è la distanza tra i livelli di armatura.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " è la di"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "tanza tra i livelli di armatura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "4c7916ba0fa2514feba92597b0be9e430e3105f1313e79ba757a5b19b9bb3093",
+        "normalizedSha256": "4c7916ba0fa2514feba92597b0be9e430e3105f1313e79ba757a5b19b9bb3093"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p12",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Deve essere altresì verificato che il taglio agente non superi il seguente valore:",
+        "normalized": "Deve essere altresì verificato che il taglio agente non superi il seguente valore:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Deve essere altresì verificato che il taglio agente non superi il seguente valore:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5e588dd861fb0b77fe5229bba21d4b28ca846b21014d93aa935fe5602c27aa96",
+        "normalizedSha256": "5e588dd861fb0b77fe5229bba21d4b28ca846b21014d93aa935fe5602c27aa96"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-formula-7-8-3-2-2-7-8-10",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.10",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "896555c011ea271c6a937328929b0dedf197f3f40dd12f9f0e3d57aa6e12556a",
+        "normalizedSha256": "896555c011ea271c6a937328929b0dedf197f3f40dd12f9f0e3d57aa6e12556a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p13",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p14",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t è lo spessore della parete",
+        "normalized": "t è lo spessore della parete",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore della pare"
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": "e"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ec058c522eaa9380e64e3632e5569cb93d837352a801d0c94b904438d4d3d22b",
+        "normalizedSha256": "ec058c522eaa9380e64e3632e5569cb93d837352a801d0c94b904438d4d3d22b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p15",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "f d è la resistenza a compressione di progetto della muratura.",
+        "normalized": "f_d è la resistenza a compressione di progetto della muratura.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "f_d",
+            "latex": "f_d"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza a compressione di progetto della muratura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "739bd5c9e340bc201739ea81144de30ba2f271a01d329a0a7eea416cb544c6cf",
+        "normalizedSha256": "b5c12c322d3d4d9f61dd655621fa8df2480d5b073f949050e1520844d0481dbd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.2#block-p16",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo\npuò essere assunto pari allo 0,8% dell’altezza del pannello.",
+        "normalized": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo può essere assunto pari allo 0,8% dell’altezza del pannello.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo può essere assunto pari allo 0,8% dell’altezza del pannello."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2200a2342a9dd97daf546eaf11c9a2b62451e8979de1c914b8c6c3f268ee5283",
+        "normalizedSha256": "5f18474693714bd9276ce9f1c9f6f0c71fd4ab801775ef08240a12a2d38056d8"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.7",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.8",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.9",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.8.3.2.2-7.8.10"
+    ],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-8-3-2-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

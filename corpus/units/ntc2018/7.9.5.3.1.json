@@ -1,0 +1,200 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.9.5.3.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.9.5.3.1",
+    "sortKey": "007.009.005.003.001"
+  },
+  "title": "Apparecchi d’appoggio o di vincolo fissi",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.9.5.3.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.9.5.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.9",
+      "urn:structural-codes:it:unit:ntc2018:7.9.5",
+      "urn:structural-codes:it:unit:ntc2018:7.9.5.3"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.5.3.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.9.5.3.1 Apparecchi d’appoggio o di vincolo fissi",
+        "normalized": "7.9.5.3.1 Apparecchi d’appoggio o di vincolo fissi",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.9.5.3.1 Apparecchi d’appoggio o di vincolo fissi"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 273,
+        "printedPage": "269",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "3d5b987026972888fd5e6cf02cc9c94fb957525085486909c203836d09302d9a",
+        "normalizedSha256": "3d5b987026972888fd5e6cf02cc9c94fb957525085486909c203836d09302d9a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.5.3.1#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono\nquindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone\ndissipative alla base della pila, un momento flettente pari a: ·RdȉM \nRd , dove MRd è il momento resistente della zona o delle zone\ndissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica.",
+        "normalized": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono quindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone dissipative alla base della pila, un momento flettente pari a γ_Rd M_Rd, dove M_Rd è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono quindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone dissipative alla base della pila, un momento flettente pari a "
+          },
+          {
+            "kind": "math",
+            "value": "γ_Rd M_Rd",
+            "latex": "\\gamma_{Rd}M_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", dove M_Rd è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 273,
+        "printedPage": "269",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1fa540c760b35e8f616dcea29c27b40b2f19547ba9667de275e9b69ca7e87cb3",
+        "normalizedSha256": "9a24d05373c5f60804af940a2d6299171b24256914aa1f8f90d4e95d717ef2a4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.5.3.1#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le forze determinate come sopra possono essere superiori a quelle che si ottengono dall’analisi ponendo q = 1; in tal caso, per il\nprogetto degli apparecchi è consentito adottare queste ultime.",
+        "normalized": "Le forze determinate come sopra possono essere superiori a quelle che si ottengono dall’analisi ponendo q = 1; in tal caso, per il progetto degli apparecchi è consentito adottare queste ultime.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le forze determinate come sopra possono essere superiori a quelle che si ottengono dall’analisi ponendo q = 1; in tal caso, per il progetto degli apparecchi è consentito adottare queste ultime."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 274,
+        "printedPage": "270",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b1527ed9edadf78cbc4787bbce12928fe828b10364fb8410f89f023f61544e1c",
+        "normalizedSha256": "08814925debc5e80fc4f8d498b1eef955663eb155b7992e5c03067fad5b0e6ae"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-9-5-3-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

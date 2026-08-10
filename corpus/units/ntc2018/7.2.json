@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "paragraph",
+  "numbering": {
+    "official": "7.2",
+    "sortKey": "007.002"
+  },
+  "title": "CRITERI GENERALI DI PROGETTAZIONE E MODELLAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.2. CRITERI GENERALI DI PROGETTAZIONE E MODELLAZIONE",
+        "normalized": "7.2 CRITERI GENERALI DI PROGETTAZIONE E MODELLAZIONE",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.2 CRITERI GENERALI DI PROGETTAZIONE E MODELLAZIONE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 458.3,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d52eb622074a218bcccbea190594c7a1d6120ad128017d8e8c23a0a137fb25f9",
+        "normalizedSha256": "adf1116ad63938e78490b2f5c16a8055c70518838f006ee0b7391f7562d976a3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc7:step1",
+      "kind": "script",
+      "toolVersion": "ntc7-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

@@ -1,0 +1,799 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.3.4.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.3.4.2",
+    "sortKey": "007.003.004.002"
+  },
+  "title": "ANALISI NON LINEARE STATICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.3.4",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.3",
+      "urn:structural-codes:it:unit:ntc2018:7.3.4"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.3.4.2 A NALISI NON LINEARE STATICA",
+        "normalized": "7.3.4.2 ANALISI NON LINEARE STATICA",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.3.4.2 ANALISI NON LINEARE STATICA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 323.75,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bda8000f9a2f9d4fb461d302df8d1d4da0895a93c6a1c5760650fce211ce1bb6",
+        "normalizedSha256": "d8a6f3226c383a5bfc8de6fd5ae31bde98d5725c81a7bc17f559289ff2297f55"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’analisi non lineare statica richiede che al sistema strutturale reale sia associato un sistema strutturale equivalente non lineare.",
+        "normalized": "L’analisi non lineare statica richiede che al sistema strutturale reale sia associato un sistema strutturale equivalente non lineare.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’analisi non lineare statica richiede che al sistema strutturale reale sia associato un sistema strutturale equivalente non lineare."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 334.09999999999997,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "51a6954957ef17b3b8557fab05c3c55f919898d3999b41616217d16c36b5821a",
+        "normalizedSha256": "51a6954957ef17b3b8557fab05c3c55f919898d3999b41616217d16c36b5821a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui il sistema equivalente sia ad un grado di libertà, a detto sistema strutturale equivalente si applicano i carichi\ngravitazionali e, per la direzione considerata dell’azione sismica, in corrispondenza degli orizzontamenti della costruzione, forze\norizzontali proporzionali alle forza d’inerzia aventi risultante (taglio alla base) Fb \n. Tali forze sono scalate in modo da far crescere\nmonotonamente, sia in direzione positiva che negativa e fino al raggiungimento delle condizioni di collasso locale o globale, lo\nspostamento orizzontale d \nc di un punto di controllo coincidente con il centro di massa dell’ultimo livello della costruzione (sono\nesclusi eventuali torrini). Vanno considerati anche punti di controllo alternativi, come le estremità della pianta dell’ultimo livello,\nquando sia significativo l’accoppiamento di traslazioni e rotazioni.",
+        "normalized": "Nel caso in cui il sistema equivalente sia ad un grado di libertà, a detto sistema strutturale equivalente si applicano i carichi gravitazionali e, per la direzione considerata dell’azione sismica, in corrispondenza degli orizzontamenti della costruzione, forze orizzontali proporzionali alle forza d’inerzia aventi risultante (taglio alla base) F_b. Tali forze sono scalate in modo da far crescere monotonamente, sia in direzione positiva che negativa e fino al raggiungimento delle condizioni di collasso locale o globale, lo spostamento orizzontale d_c di un punto di controllo coincidente con il centro di massa dell’ultimo livello della costruzione (sono esclusi eventuali torrini). Vanno considerati anche punti di controllo alternativi, come le estremità della pianta dell’ultimo livello, quando sia significativo l’accoppiamento di traslazioni e rotazioni.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui il sistema equivalente sia ad un grado di libertà, a detto sistema strutturale equivalente si applicano i carichi gravitazionali e, per la direzione considerata dell’azione sismica, in corrispondenza degli orizzontamenti della costruzione, forze orizzontali proporzionali alle forza d’inerzia aventi risultante (taglio alla base) "
+          },
+          {
+            "kind": "math",
+            "value": "F_b",
+            "latex": "F_b"
+          },
+          {
+            "kind": "text",
+            "value": ". Tali forze sono scalate in modo da far crescere monotonamente, sia in direzione positiva che negativa e fino al raggiungimento delle condizioni di collasso locale o globale, lo spostamento orizzontale "
+          },
+          {
+            "kind": "math",
+            "value": "d_c",
+            "latex": "d_c"
+          },
+          {
+            "kind": "text",
+            "value": " di un punto di controllo coincidente con il centro di massa dell’ultimo livello della costruzione (sono esclusi eventuali torrini). Vanno considerati anche punti di controllo alternativi, come le estremità della pianta dell’ultimo livello, quando sia significativo l’accoppiamento di traslazioni e rotazioni."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 344.45,
+          "width": 428.6,
+          "height": 93.14999999999999
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "55514fa137c667afc859453d3f3b1cff8c150a547ab1a4b60ac9a1607beb4a9c",
+        "normalizedSha256": "c64a8d97494bb3c6af2f1514d89c77c36447f80e8df370cd6a9658a3dbd429f3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il diagramma F \nb – dc rappresenta la curva di capacità della struttura.",
+        "normalized": "Il diagramma F_b – d_c rappresenta la curva di capacità della struttura.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il diagramma "
+          },
+          {
+            "kind": "math",
+            "value": "F_b – d_c",
+            "latex": "F_b-d_c"
+          },
+          {
+            "kind": "text",
+            "value": " rappresenta la curva di capacità della struttura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 437.59999999999997,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9b0d629567e1b32556d1dc7f6014e58254e978ad67dd323b998d7cce8129ca9c",
+        "normalizedSha256": "f1b748490d6e7b3b67ad0f23531a31c2dd6176cb08e4ad542e02aa7b36725689"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si devono considerare almeno due distribuzioni di forze d’inerzia, ricadenti l’una nelle distribuzioni principali (Gruppo 1) e\nl’altra nelle distribuzioni secondarie (Gruppo 2) appresso illustrate.",
+        "normalized": "Si devono considerare almeno due distribuzioni di forze d’inerzia, ricadenti l’una nelle distribuzioni principali (Gruppo 1) e l’altra nelle distribuzioni secondarie (Gruppo 2) appresso illustrate.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si devono considerare almeno due distribuzioni di forze d’inerzia, ricadenti l’una nelle distribuzioni principali (Gruppo 1) e l’altra nelle distribuzioni secondarie (Gruppo 2) appresso illustrate."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 458.3,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e7e98c123145bdea03673657f80b00673ee6476cdda48afdbaf8729829ffc250",
+        "normalizedSha256": "ccf186daffbd0c4d773d99ba7bdf9d4f9167ddecbc56bd72328280f5df54e226"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-heading-group1",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Gruppo 1 - Distribuzioni principali:",
+        "normalized": "Gruppo 1 - Distribuzioni principali:",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gruppo 1 - Distribuzioni principali:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 479,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "0fe2c4037f2e27e8492b2b73a42ec92b1a7f08832be660bc26e4bdaedb057786",
+        "normalizedSha256": "0fe2c4037f2e27e8492b2b73a42ec92b1a7f08832be660bc26e4bdaedb057786"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li1",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- se il modo di vibrare fondamentale nella direzione considerata ha una partecipazione di massa non inferiore al 75% si applica\nuna delle due distribuzioni seguenti:",
+        "normalized": "- se il modo di vibrare fondamentale nella direzione considerata ha una partecipazione di massa non inferiore al 75% si applica una delle due distribuzioni seguenti:",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- se il modo di vibrare fondamentale nella direzione considerata ha una partecipazione di massa non inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "75%",
+            "latex": "75\\%"
+          },
+          {
+            "kind": "text",
+            "value": " si applica una delle due distribuzioni seguenti:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 489.34999999999997,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2d1f8062d9cd093eca3cafcdb32db39bb9dc9458a1873157d434ebbef6978b3a",
+        "normalizedSha256": "07c16da669d1e440380142f9a3224b0bf5e28999537232e410d85340a71d2b2b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li1a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "distribuzione proporzionale alle forze statiche di cui al § 7.3.3.2, utilizzando come seconda distribuzione la a) del\nGruppo 2,",
+        "normalized": "distribuzione proporzionale alle forze statiche di cui al § 7.3.3.2, utilizzando come seconda distribuzione la a) del Gruppo 2,",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "distribuzione proporzionale alle forze statiche di cui al § 7.3.3.2, utilizzando come seconda distribuzione la a) del Gruppo 2,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 510.05,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e3ed5db932add111678886b033c385e79b0dc645e021df9811d6c998f8e35e5a",
+        "normalizedSha256": "4ade8bfd78d3244de53ecbcf7d538c4f0ee7581d10aa2aae799804c2d0f1d3d6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li1b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "distribuzione corrispondente a un andamento di accelerazioni proporzionale alla forma del modo fondamentale di\nvibrare nella direzione considerata;",
+        "normalized": "distribuzione corrispondente a un andamento di accelerazioni proporzionale alla forma del modo fondamentale di vibrare nella direzione considerata;",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "distribuzione corrispondente a un andamento di accelerazioni proporzionale alla forma del modo fondamentale di vibrare nella direzione considerata;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 530.75,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4ef98e69fa5e98aa40e3bb49c8cd4f4bc5a797100549f3c9b55cc5eee4d5c3db",
+        "normalizedSha256": "5c42058e01706a22573f9f06da40cac1b2f8e8dbd00e7fa4b10c3b155ada4484"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "- in tutti i casi può essere utilizzata la distribuzione corrispondente all’andamento delle forze di piano agenti su ciascun\norizzontamento calcolate in un’analisi dinamica lineare, includendo nella direzione considerata un numero di modi con\npartecipazione di massa complessiva non inferiore allo 85%. L’utilizzo di questa distribuzione è obbligatorio se il periodo\nfondamentale della struttura è superiore a 1,3 TC .",
+        "normalized": "- in tutti i casi può essere utilizzata la distribuzione corrispondente all’andamento delle forze di piano agenti su ciascun orizzontamento calcolate in un’analisi dinamica lineare, includendo nella direzione considerata un numero di modi con partecipazione di massa complessiva non inferiore allo 85%. L’utilizzo di questa distribuzione è obbligatorio se il periodo fondamentale della struttura è superiore a 1,3 T_C.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- in tutti i casi può essere utilizzata la distribuzione corrispondente all’andamento delle forze di piano agenti su ciascun orizzontamento calcolate in un’analisi dinamica lineare, includendo nella direzione considerata un numero di modi con partecipazione di massa complessiva non inferiore allo "
+          },
+          {
+            "kind": "math",
+            "value": "85%",
+            "latex": "85\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". L’utilizzo di questa distribuzione è obbligatorio se il periodo fondamentale della struttura è superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1,3 T_C",
+            "latex": "1{,}3T_C"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 551.45,
+          "width": 428.6,
+          "height": 41.4
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "767e505ffb5ce06977d540a80e20efcf6feec0cb40e825116ed3e2bafd0ce22a",
+        "normalizedSha256": "84ec06c6a86e93a392edbc3204d02315e7bb98713e65fc8bd334eae89ec7b181"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-heading-group2",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Gruppo 2 - Distribuzioni secondarie:",
+        "normalized": "Gruppo 2 - Distribuzioni secondarie:",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gruppo 2 - Distribuzioni secondarie:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 592.85,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "329add17996913b7ef37da1f56d1b33d2214b0b3299ce42997b80d1edb045b3f",
+        "normalizedSha256": "329add17996913b7ef37da1f56d1b33d2214b0b3299ce42997b80d1edb045b3f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li2a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) distribuzione di forze, desunta da un andamento uniforme di accelerazioni lungo l’altezza della costruzione;",
+        "normalized": "a) distribuzione di forze, desunta da un andamento uniforme di accelerazioni lungo l’altezza della costruzione;",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) distribuzione di forze, desunta da un andamento uniforme di accelerazioni lungo l’altezza della costruzione;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 603.1999999999999,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "0ae66a630d5c4f650e5f906a4d38b60c091cd5326adedfe1ca50d327759d8963",
+        "normalizedSha256": "0ae66a630d5c4f650e5f906a4d38b60c091cd5326adedfe1ca50d327759d8963"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li2b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) distribuzione adattiva, che cambia al crescere dello spostamento del punto di controllo in funzione della plasticizzazione della\nstruttura;",
+        "normalized": "b) distribuzione adattiva, che cambia al crescere dello spostamento del punto di controllo in funzione della plasticizzazione della struttura;",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) distribuzione adattiva, che cambia al crescere dello spostamento del punto di controllo in funzione della plasticizzazione della struttura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 613.55,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8bf9def7ac49f143c5aae71ddf0a803771a23c79d68570cbd2b0b75bc616df36",
+        "normalizedSha256": "c7887101ee0bec4fe0e143ea5955c712da0bc2c3eeda82033dade04da404792e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.4.2#block-li2c",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "c) distribuzione multimodale, considerando almeno sei modi significativi.",
+        "normalized": "c) distribuzione multimodale, considerando almeno sei modi significativi.",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) distribuzione multimodale, considerando almeno sei modi significativi."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 224,
+        "printedPage": "220",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 634.25,
+          "width": 428.6,
+          "height": 10.35
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [],
+        "rawSha256": "1e1b6de4dc4aa91f98e80fc6855ae3fc4b4969deb9246b66679fa995fa0ba22f",
+        "normalizedSha256": "1e1b6de4dc4aa91f98e80fc6855ae3fc4b4969deb9246b66679fa995fa0ba22f"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc7:step3",
+      "kind": "script",
+      "toolVersion": "ntc7-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-3-4-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.8.3.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.8.3.1",
+    "sortKey": "007.008.003.001"
+  },
+  "title": "CRITERI DI PROGETTO",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.8.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.8",
+      "urn:structural-codes:it:unit:ntc2018:7.8.3"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.8.3.1 CRITERI DI PROGETTO",
+        "normalized": "7.8.3.1 CRITERI DI PROGETTO",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.8.3.1 CRITERI DI PROGETTO"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "4f66d8bb51fbe9e72ca4045de74180e4f9606c0579e0a2a192d65f767c4eab10",
+        "normalizedSha256": "4f66d8bb51fbe9e72ca4045de74180e4f9606c0579e0a2a192d65f767c4eab10"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.1#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’insieme strutturale risultante deve essere in grado di reagire alle azioni esterne orizzontali con un comportamento di tipo\nglobale, al quale contribuisce soltanto la resistenza delle pareti nel loro piano.",
+        "normalized": "L’insieme strutturale risultante deve essere in grado di reagire alle azioni esterne orizzontali con un comportamento di tipo globale, al quale contribuisce soltanto la resistenza delle pareti nel loro piano.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’insieme strutturale risultante deve essere in grado di reagire alle azioni esterne orizzontali con un comportamento di tipo globale, al quale contribuisce soltanto la resistenza delle pareti nel loro piano."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a8c52a160ea8bafe3373558b3083b0cd8f8e4e0913aa522ec8e65117d045b62f",
+        "normalizedSha256": "ef6ecb8ce8c306540cc43c10a904e6aa74debb34f2ebfacb0ca99a42c54788a3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-8-3-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

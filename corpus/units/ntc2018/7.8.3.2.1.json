@@ -1,0 +1,218 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.1",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.8.3.2.1",
+    "sortKey": "007.008.003.002.001"
+  },
+  "title": "Pressoflessione nel piano",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.1#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.8",
+      "urn:structural-codes:it:unit:ntc2018:7.8.3",
+      "urn:structural-codes:it:unit:ntc2018:7.8.3.2"
+    ],
+    "position": 1
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.1#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.8.3.2.1 Pressoflessione nel piano",
+        "normalized": "7.8.3.2.1 Pressoflessione nel piano",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.8.3.2.1 Pressoflessione nel piano"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "40a12570efcf750fa5248e0165e66a7f8a5e44aaf805eccf2d373e7f5b7ad419",
+        "normalizedSha256": "40a12570efcf750fa5248e0165e66a7f8a5e44aaf805eccf2d373e7f5b7ad419"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.1#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la verifica di sezioni pressoinflesse può essere assunto un diagramma delle compressioni rettangolare, con profondità pari a\n0,8 la profondità dell’asse neutro e tensione pari a 0,85 f d. Le deformazioni massime da considerare sono pari a Ήm = 0,0035 per la\nmuratura compressa e Ήs = 0,01 per l’acciaio teso.",
+        "normalized": "Per la verifica di sezioni pressoinflesse può essere assunto un diagramma delle compressioni rettangolare, con profondità pari a 0,8 la profondità dell’asse neutro e tensione pari a 0,85 f_d. Le deformazioni massime da considerare sono pari a ε_m = 0,0035 per la muratura compressa e ε_s = 0,01 per l’acciaio teso.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per la verifica di sezioni pressoinflesse può essere assunto un diagramma delle compressioni rettangolare, con profondità pari a 0,8 la profondità dell’asse neutro e tensione pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,85 f_d",
+            "latex": "0{,}85f_d"
+          },
+          {
+            "kind": "text",
+            "value": ". Le deformazioni massime da considerare sono pari a "
+          },
+          {
+            "kind": "math",
+            "value": "ε_m = 0,0035",
+            "latex": "\\varepsilon_m=0{,}0035"
+          },
+          {
+            "kind": "text",
+            "value": " per la muratura compressa e "
+          },
+          {
+            "kind": "math",
+            "value": "ε_s = 0,01",
+            "latex": "\\varepsilon_s=0{,}01"
+          },
+          {
+            "kind": "text",
+            "value": " per l’acciaio teso."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2b59bc0c14d23853d1748cb2baa2541682a54c33a7cb4b26d1566526fd647245",
+        "normalizedSha256": "a0eb3b96b6dae44ea14c99e0caf60f3aa67424737f14ef8be6f9de496bfa504c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.3.2.1#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo\npuò essere assunto pari all’1,6% dell’altezza del pannello.",
+        "normalized": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo può essere assunto pari all’1,6% dell’altezza del pannello.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In caso di analisi statica non lineare si adottano come valori di progetto le resistenze medie dei materiali e lo spostamento ultimo può essere assunto pari all’1,6% dell’altezza del pannello."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 267,
+        "printedPage": "263",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0a5969d21559cda26fa6b29b52db279d0a4ad914aba0dc2e0f376d2cf849b73c",
+        "normalizedSha256": "327e3e4af4b2890e8fd8a3f206e9db4145edfc6c01dcc6d3df8c9ab9c199b1b3"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-8-3-2-1-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

@@ -67,6 +67,7 @@ function evidence(rs: Range[], normalized: string) {
 function unitId(official: string): string { return `urn:structural-codes:it:unit:circ2019:${official.toLowerCase()}`; }
 function assetId(official: string): string { return `urn:structural-codes:it:asset:table:circ2019:${official.toLowerCase()}`; }
 function relation(official: string, headingBlockId: string) {
+  if (official.startsWith("C8.8")) return [];
   const parts = official.slice(1).toLowerCase().split(".");
   while (parts.length && !existsSync(join(ROOT, "corpus", "units", "ntc2018", `${parts.join(".")}.json`))) parts.pop();
   if (!parts.length) return [];
@@ -101,6 +102,7 @@ function makeUnit(official: string, title: string, parent: string, ancestors: st
       { issueId: `circ2019-${official.toLowerCase()}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente." },
       { issueId: `circ2019-${official.toLowerCase()}-relation`, type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." },
       ...(tableIds.length ? [{ issueId: `circ2019-${official.toLowerCase()}-table-review`, type: "asset-review", severity: "blocking", note: "Le tabelle devono essere sottoposte a verifica umana, cella per cella, sul render ufficiale." }] : []),
+      ...(official === "C8.7.6.3" ? [{ issueId: "circ2019-c8-7-6-3-page-299", type: "ambiguous-source", severity: "blocking", note: "La Tabella C8.7.6.3.II prosegue nel render ufficiale alla pagina PDF 299; il confronto umano deve verificare anche la continuazione multipagina e il relativo ordine nel flusso." }] : []),
     ] },
   };
   writeFileSync(join(UNITS, `${official.toLowerCase()}.json`), JSON.stringify(record, null, 2) + "\n", "utf8");

@@ -1,0 +1,95 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c8",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "section",
+  "numbering": {
+    "official": "C8",
+    "sortKey": "008"
+  },
+  "title": "COSTRUZIONI ESISTENTI",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c8#block-heading",
+  "hierarchy": {
+    "parentId": null,
+    "ancestorIds": [],
+    "position": 8
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C8 COSTRUZIONI ESISTENTI",
+        "normalized": "C8 COSTRUZIONI ESISTENTI",
+        "normalizationVersion": "circ8-root-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C8 COSTRUZIONI ESISTENTI"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 253,
+        "printedPage": "249",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-root-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-root-editorial-profile-0.1.0",
+            "note": "Titolo del capitolo trascritto direttamente dal render ufficiale rasterizzato; il layer testuale della pagina non contiene il titolo."
+          }
+        ],
+        "rawSha256": "0d917b69f6038c8f58df33c6f5cac81f005eeaa956305ac90358db44dc211b85",
+        "normalizedSha256": "0d917b69f6038c8f58df33c6f5cac81f005eeaa956305ac90358db44dc211b85"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ8:root",
+      "kind": "automated-agent",
+      "toolVersion": "circ8-root-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c8-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Titolo confrontato con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+      }
+    ]
+  }
+}

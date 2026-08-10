@@ -43,6 +43,7 @@ function evidence(rs: Range[], normalized: string) {
 function unitId(official: string): string { return `urn:structural-codes:it:unit:circ2019:${official.toLowerCase()}`; }
 function formulaId(official: string): string { return `urn:structural-codes:it:asset:formula:circ2019:${official.toLowerCase()}`; }
 function relation(official: string, headingBlockId: string) {
+  if (official.startsWith("C8.8")) return [];
   const parts = official.slice(1).toLowerCase().split(".");
   while (parts.length && !existsSync(join(ROOT, "corpus", "units", "ntc2018", `${parts.join(".")}.json`))) parts.pop();
   if (!parts.length) return [];

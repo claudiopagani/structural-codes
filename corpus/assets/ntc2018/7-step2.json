@@ -1,0 +1,472 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "ntc2018",
+  "section": "7-step2",
+  "sourceId": "gu-so8-2018-ntc",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.1-7.3.1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
+      "officialNumber": "7.3.1",
+      "pdfPage": 220,
+      "latex": "q_{\\lim}=q_0\\cdot K_R"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.1-kw",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
+      "officialNumber": null,
+      "pdfPage": 221,
+      "latex": "k_w=\\begin{cases}1{,}00 & \\text{per strutture a telaio e miste equivalenti a telai}\\\\0{,}5\\le(1+\\alpha_0)/3\\le1 & \\text{per strutture a pareti, miste equivalenti a pareti, torsionalmente deformabili}\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.1-7.3.2",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
+      "officialNumber": "7.3.2",
+      "pdfPage": 221,
+      "latex": "1\\le q_{ND}=\\frac{2}{3}q_{\\mathrm{CD\"B\"}}\\le1{,}5"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.1-7.3.3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
+      "officialNumber": "7.3.3",
+      "pdfPage": 221,
+      "latex": "\\theta=\\frac{P\\cdot d_{ER}}{V\\cdot h}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.1-7.3.4",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.1",
+      "officialNumber": "7.3.4",
+      "pdfPage": 222,
+      "latex": "E=\\sqrt{\\sum_i\\sum_j\\rho_{ij}\\cdot E_i\\cdot E_j}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.1-7.3.5a",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.1",
+      "officialNumber": "7.3.5a",
+      "pdfPage": 223,
+      "latex": "\\rho_{ij}=\\frac{8\\sqrt{\\xi_i\\cdot\\xi_j}\\cdot(\\beta_{ij}\\cdot\\xi_i+\\xi_j)\\cdot\\beta_{ij}^{3/2}}{(1-\\beta_{ij}^2)^2+4\\cdot\\xi_i\\cdot\\xi_j\\cdot\\beta_{ij}(1+\\beta_{ij}^2)+4\\cdot(\\xi_i^2+\\xi_j^2)\\cdot\\beta_{ij}^2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.1-7.3.5b",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.1",
+      "officialNumber": "7.3.5b",
+      "pdfPage": 223,
+      "latex": "\\rho_{ij}=\\frac{8\\xi^2\\beta_{ij}^{3/2}}{(1+\\beta_{ij})\\left[(1-\\beta_{ij})^2+4\\xi^2\\beta_{ij}\\right]}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.2-7.3.6",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.2",
+      "officialNumber": "7.3.6",
+      "pdfPage": 223,
+      "latex": "T_1=2\\sqrt{d}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.2-7.3.7",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.2",
+      "officialNumber": "7.3.7",
+      "pdfPage": 223,
+      "latex": "F_i=F_h\\cdot z_i\\cdot\\frac{W_i}{\\sum_j z_j W_j}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.3-7.3.8",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.3",
+      "officialNumber": "7.3.8",
+      "pdfPage": 223,
+      "latex": "d_E=\\pm\\mu_d\\cdot d_{Ee}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.3-7.3.9",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.3",
+      "officialNumber": "7.3.9",
+      "pdfPage": 223,
+      "latex": "\\mu_d=\\begin{cases}q & \\text{se }T_1\\ge T_C\\\\1+(q-1)\\frac{T_C}{T_1} & \\text{se }T_1<T_C\\end{cases}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:ntc2018:7.3.ii",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
+      "officialNumber": "7.3.II",
+      "pdfPage": 220,
+      "caption": "Valori massimi del valore di base q_0 del fattore di comportamento allo SLV per diverse tecniche costruttive ed in funzione della tipologia strutturale e della classe di duttilità CD",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "q_0",
+            "latex": "q_0",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Tipologia strutturale"
+          },
+          {
+            "text": "CD “A”"
+          },
+          {
+            "text": "CD “B”"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Costruzioni di calcestruzzo (§ 7.4.3.2)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Strutture a telaio, a pareti accoppiate, miste (v. § 7.4.3.1)"
+          },
+          {
+            "text": "4,5 α_u/α_1",
+            "latex": "4{,}5\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "3,0 α_u/α_1",
+            "latex": "3{,}0\\,\\alpha_u/\\alpha_1"
+          }
+        ],
+        [
+          {
+            "text": "Strutture a pareti non accoppiate (v. § 7.4.3.1)"
+          },
+          {
+            "text": "4,0 α_u/α_1",
+            "latex": "4{,}0\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "3,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture deformabili torsionalmente (v. § 7.4.3.1)"
+          },
+          {
+            "text": "3,0"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture a pendolo inverso (v. § 7.4.3.1)"
+          },
+          {
+            "text": "2,0"
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "Strutture a pendolo inverso intelaiate monopiano (v. § 7.4.3.1)"
+          },
+          {
+            "text": "3,5"
+          },
+          {
+            "text": "2,5"
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni con struttura prefabbricata (§ 7.4.5.1)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Strutture a pannelli"
+          },
+          {
+            "text": "4,0 α_u/α_1",
+            "latex": "4{,}0\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "3,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture monolitiche a cella"
+          },
+          {
+            "text": "3,0"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture con pilastri incastrati e orizzontamenti incernierati"
+          },
+          {
+            "text": "3,5"
+          },
+          {
+            "text": "2,5"
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni d’acciaio (§ 7.5.2.2) e composte di acciaio-calcestruzzo (§ 7.6.2.2)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Strutture intelaiate\nStrutture con controventi eccentrici"
+          },
+          {
+            "text": "5,0 α_u/α_1",
+            "latex": "5{,}0\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "4,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture con controventi concentrici a diagonale tesa attiva"
+          },
+          {
+            "text": "4,0"
+          },
+          {
+            "text": "4,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture con controventi concentrici a V"
+          },
+          {
+            "text": "2,5"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture a mensola o a pendolo inverso"
+          },
+          {
+            "text": "2,0 α_u/α_1",
+            "latex": "2{,}0\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture intelaiate con controventi concentrici"
+          },
+          {
+            "text": "4,0 α_u/α_1",
+            "latex": "4{,}0\\,\\alpha_u/\\alpha_1"
+          },
+          {
+            "text": "4,0"
+          }
+        ],
+        [
+          {
+            "text": "Strutture intelaiate con tamponature in murature"
+          },
+          {
+            "text": "2,0"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di legno (§ 7.7.3)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Pannelli di parete a telaio leggero chiodati con diaframmi incollati, collegati mediante chiodi, viti e bulloni\nStrutture reticolari iperstatiche con giunti chiodati"
+          },
+          {
+            "text": "3,0"
+          },
+          {
+            "text": "2,0"
+          }
+        ],
+        [
+          {
+            "text": "Portali iperstatici con mezzi di unione a gambo cilindrico"
+          },
+          {
+            "text": "4,0"
+          },
+          {
+            "text": "2,5"
+          }
+        ],
+        [
+          {
+            "text": "Pannelli di parete a telaio leggero chiodati con diaframmi chiodati, collegati mediante chiodi, viti e bulloni."
+          },
+          {
+            "text": "5,0"
+          },
+          {
+            "text": "3,0"
+          }
+        ],
+        [
+          {
+            "text": "Pannelli di tavole incollate a strati incrociati, collegati mediante chiodi, viti, bulloni\nStrutture reticolari con collegamenti a mezzo di chiodi, viti, bulloni o spinotti"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "2,5"
+          }
+        ],
+        [
+          {
+            "text": "Strutture cosiddette miste, con intelaiatura (sismo-resistente) in legno e tamponature non portanti"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Strutture isostatiche in genere, compresi portali isostatici con mezzi di unione a gambo cilindrico, e altre tipologie strutturali"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "1,5"
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura (§ 7.8.1.3)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura ordinaria"
+          },
+          {
+            "text": "1,75 α_u/α_1",
+            "latex": "1{,}75\\,\\alpha_u/\\alpha_1",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura armata"
+          },
+          {
+            "text": "2,5 α_u/α_1",
+            "latex": "2{,}5\\,\\alpha_u/\\alpha_1",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura armata con progettazione in capacità"
+          },
+          {
+            "text": "3,0 α_u/α_1",
+            "latex": "3{,}0\\,\\alpha_u/\\alpha_1",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura confinata"
+          },
+          {
+            "text": "2,0 α_u/α_1",
+            "latex": "2{,}0\\,\\alpha_u/\\alpha_1",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Costruzioni di muratura confinata con progettazione in capacità"
+          },
+          {
+            "text": "3,0 α_u/α_1",
+            "latex": "3{,}0\\,\\alpha_u/\\alpha_1",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Ponti (§ 7.9.2.1)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Pile in calcestruzzo armato\n    Pile verticali inflesse\n    Elementi di sostegno inclinati inflessi"
+          },
+          {
+            "text": "3,5 λ\n2,1 λ",
+            "latex": "3{,}5\\,\\lambda\\\\2{,}1\\,\\lambda"
+          },
+          {
+            "text": "1,5\n1,2"
+          }
+        ],
+        [
+          {
+            "text": "Pile in acciaio:\n    Pile verticali inflesse\n    Elementi di sostegno inclinati inflessi\n    Pile con controventi concentrici\n    Pile con controventi eccentrici"
+          },
+          {
+            "text": "3,5\n2,0\n2,5\n3,5"
+          },
+          {
+            "text": "1,5\n1,2\n1,5\n-"
+          }
+        ],
+        [
+          {
+            "text": "Spalle\n    In genere\n    Se si muovono col terreno"
+          },
+          {
+            "text": "1,5\n1,0"
+          },
+          {
+            "text": "1,5\n1,0"
+          }
+        ]
+      ],
+      "notes": []
+    }
+  ],
+  "figures": []
+}

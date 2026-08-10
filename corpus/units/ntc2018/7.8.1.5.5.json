@@ -1,0 +1,140 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.5",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.8.1.5.5",
+    "sortKey": "007.008.001.005.005"
+  },
+  "title": "Analisi dinamica non lineare",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.8",
+      "urn:structural-codes:it:unit:ntc2018:7.8.1",
+      "urn:structural-codes:it:unit:ntc2018:7.8.1.5"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.8.1.5.5 Analisi dinamica non lineare",
+        "normalized": "7.8.1.5.5 Analisi dinamica non lineare",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.8.1.5.5 Analisi dinamica non lineare"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 264,
+        "printedPage": "260",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          }
+        ],
+        "rawSha256": "f282bb652b7a9f701686ca5d4b1fab4a1ecfd23c5b2e51352a2072e7e7bfa6a6",
+        "normalizedSha256": "f282bb652b7a9f701686ca5d4b1fab4a1ecfd23c5b2e51352a2072e7e7bfa6a6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.1.5.5#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si applica integralmente il § 7.3.4.1 facendo uso di modelli meccanici non lineari di comprovata e documentata efficacia nel\nriprodurre il comportamento dinamico e ciclico della muratura.",
+        "normalized": "Si applica integralmente il § 7.3.4.1 facendo uso di modelli meccanici non lineari di comprovata e documentata efficacia nel riprodurre il comportamento dinamico e ciclico della muratura.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si applica integralmente il § 7.3.4.1 facendo uso di modelli meccanici non lineari di comprovata e documentata efficacia nel riprodurre il comportamento dinamico e ciclico della muratura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 264,
+        "printedPage": "260",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "607d3623f1b1ae0a0be1c555dbb7cb3daa81f951190406c6ee872433f2a1f3b3",
+        "normalizedSha256": "31403ea4ca943c7d993451fee992280da775f8d685d8e07b4431d7fcfa2be7fc"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-8-1-5-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

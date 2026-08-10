@@ -1,0 +1,104 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:circ2019:c7.3.5",
+  "workId": "it-mit:circ:2019-01-21:7-csllpp",
+  "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "C7.3.5",
+    "sortKey": "007.003.005"
+  },
+  "title": "RISPOSTA ALLE DIVERSE COMPONENTI DELL’AZIONE SISMICA ED ALLA VARIABILITÀ SPAZIALE DEL MOTO",
+  "titleBlockId": "urn:structural-codes:it:unit:circ2019:c7.3.5#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:circ2019:c7.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:circ2019:c7",
+      "urn:structural-codes:it:unit:circ2019:c7.3"
+    ],
+    "position": 5
+  },
+  "validity": {
+    "from": null,
+    "to": null,
+    "status": "unknown",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.5#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "C7.3.5 RISPOSTA ALLE DIVERSE COMPONENTI DELL’AZIONE SISMICA ED ALLA VARIABILITÀ SPAZIALE DEL MOTO",
+        "normalized": "C7.3.5 RISPOSTA ALLE DIVERSE COMPONENTI DELL’AZIONE SISMICA ED ALLA VARIABILITÀ SPAZIALE DEL MOTO",
+        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C7.3.5 RISPOSTA ALLE DIVERSE COMPONENTI DELL’AZIONE SISMICA ED ALLA VARIABILITÀ SPAZIALE DEL MOTO"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
+            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
+          }
+        ],
+        "rawSha256": "e4f88333dcc7628a2c19e970456c0dd6e630df170b866ae9e3b0bc9675fd2d44",
+        "normalizedSha256": "e4f88333dcc7628a2c19e970456c0dd6e630df170b866ae9e3b0bc9675fd2d44"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "codex:circ7:step0",
+      "kind": "automated-agent",
+      "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "circ2019-c7-3-5-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Le intestazioni sono state confrontate con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+      },
+      {
+        "issueId": "circ2019-c7-3-5-raster-blocker",
+        "type": "ambiguous-source",
+        "severity": "blocking",
+        "note": "Le pp. 212–213 della Circolare sono scansioni prive di un layer testuale utilizzabile: l’evidence locale è in evidence/circ-7-2019/pages e nei render alla stessa directory. Sono state registrate solo le intestazioni leggibili; la prosa delle pagine 212–213 resta da trascrivere. La trascrizione completa richiede verifica umana diretta sul PDF ufficiale prima della pubblicazione."
+      }
+    ]
+  }
+}

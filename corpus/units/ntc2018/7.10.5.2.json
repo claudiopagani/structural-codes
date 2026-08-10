@@ -1,0 +1,570 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.10.5.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.10.5.2",
+    "sortKey": "007.010.005.002"
+  },
+  "title": "MODELLAZIONE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.10.5",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.10",
+      "urn:structural-codes:it:unit:ntc2018:7.10.5"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.10.5.2 M ODELLAZIONE",
+        "normalized": "7.10.5.2 MODELLAZIONE",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.10.5.2 MODELLAZIONE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ff2b47dec01fdc1e5d0a7e2c13eb1f338aa74a28c2b9d8fc7e5d79583037e082",
+        "normalizedSha256": "2e61623ee6b9738ca8a7d188d6a83e1430acd3dc485da45a96c3d1fbeae3c800"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La sovrastruttura e la sottostruttura devono essere modellate come sistemi a comportamento elastico lineare aventi rigidezza\ncorrispondente al comportamento strutturale non dissipativo. Il sistema di isolamento può essere modellato, in relazione alle sue\ncaratteristiche meccaniche, come avente comportamento visco-elastico lineare oppure con legame costitutivo non lineare. La\ndeformabilità verticale degli isolatori dovrà essere messa in conto quando il rapporto tra la rigidezza verticale del sistema di\nisolamento KV e la rigidezza equivalente orizzontale Kesi è inferiore a 800.",
+        "normalized": "La sovrastruttura e la sottostruttura devono essere modellate come sistemi a comportamento elastico lineare aventi rigidezza corrispondente al comportamento strutturale non dissipativo. Il sistema di isolamento può essere modellato, in relazione alle sue caratteristiche meccaniche, come avente comportamento visco-elastico lineare oppure con legame costitutivo non lineare. La deformabilità verticale degli isolatori dovrà essere messa in conto quando il rapporto tra la rigidezza verticale del sistema di isolamento K_V e la rigidezza equivalente orizzontale K_esi è inferiore a 800.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La sovrastruttura e la sottostruttura devono essere modellate come sistemi a comportamento elastico lineare aventi rigidezza corrispondente al comportamento strutturale non dissipativo. Il sistema di isolamento può essere modellato, in relazione alle sue caratteristiche meccaniche, come avente comportamento visco-elastico lineare oppure con legame costitutivo non lineare. La deformabilità verticale degli isolatori dovrà essere messa in conto quando il rapporto tra la rigidezza verticale del sistema di isolamento "
+          },
+          {
+            "kind": "math",
+            "value": "K_V",
+            "latex": "K_V"
+          },
+          {
+            "kind": "text",
+            "value": " e la rigidezza equivalente orizzontale "
+          },
+          {
+            "kind": "math",
+            "value": "K_esi",
+            "latex": "K_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": " è inferiore a 800."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "64b11918dfa091418baefbdc31d7afa37a51963f5ef2f7a4b8d286ee7c5873e4",
+        "normalizedSha256": "4a2a5fdf05cdc679e0792fe77755e3c8b7b2a6d93d2f53bcea809615de99a848"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo\nstato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di\nisolamento, Kesi \n, è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento\ndeve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi \n, valutato con\nriferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi\nconsiderati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo\ndeve essere quello della sovrastruttura nella condizione di base fissa.",
+        "normalized": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, Kesi , è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi , valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, Kesi , è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi , valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f206d79aab6dbebb6f724600a347772612f0aaaef971ddb521748185e300c9ac",
+        "normalizedSha256": "811023f2f11a4f502cb4f5c0ab50a23b0a7e9d972e4c0ebe8f3e0565f4c055ef"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Quando la rigidezza e/o lo smorzamento equivalenti del sistema di isolamento dipendono significativamente dallo spostamento\ndi progetto, deve applicarsi una procedura iterativa fino a che la differenza tra il valore assunto e quello calcolato non sia\ninferiore al 5%.",
+        "normalized": "Quando la rigidezza e/o lo smorzamento equivalenti del sistema di isolamento dipendono significativamente dallo spostamento di progetto, deve applicarsi una procedura iterativa fino a che la differenza tra il valore assunto e quello calcolato non sia inferiore al 5%.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Quando la rigidezza e/o lo smorzamento equivalenti del sistema di isolamento dipendono significativamente dallo spostamento di progetto, deve applicarsi una procedura iterativa fino a che la differenza tra il valore assunto e quello calcolato non sia inferiore al 5%."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "cb1a98671cb8ffa0c9e6c2bd959c103cf0cfa15db0331e378f59817ccad4f3ee",
+        "normalizedSha256": "3ea92376204478c268ea50a497bda9faa3e11fe32b4901f561ca6433f061db1c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il comportamento del sistema di isolamento può essere modellato come lineare equivalente se sono soddisfatte tutte le seguenti\ncondizioni:",
+        "normalized": "Il comportamento del sistema di isolamento può essere modellato come lineare equivalente se sono soddisfatte tutte le seguenti condizioni:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il comportamento del sistema di isolamento può essere modellato come lineare equivalente se sono soddisfatte tutte le seguenti condizioni:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "41383f995915c3e84166589755ffce98011608427fc90d477ec73633fbe6aa57",
+        "normalizedSha256": "145b5488681155d5714a3d68114a7601637eea365ccc275a2948d5ccc617677f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "a) la rigidezza equivalente del sistema d’isolamento è almeno pari al 50% della rigidezza secante per cicli con spostamento pari\nal 20% dello spostamento di riferimento;",
+        "normalized": "a) la rigidezza equivalente del sistema d’isolamento è almeno pari al 50% della rigidezza secante per cicli con spostamento pari al 20% dello spostamento di riferimento;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) la rigidezza equivalente del sistema d’isolamento è almeno pari al 50% della rigidezza secante per cicli con spostamento pari al 20% dello spostamento di riferimento;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0ef3743266e5bbbc33366fe13f4a772502a83c212cebcdc5c405d2325372e220",
+        "normalizedSha256": "289777ca591468e70ad5ee28ab61af9a687852df95d4f416b99f5decff711aae"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b) lo smorzamento lineare equivalente del sistema di isolamento, come definito in precedenza, è inferiore al 30%;",
+        "normalized": "b) lo smorzamento lineare equivalente del sistema di isolamento, come definito in precedenza, è inferiore al 30%;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) lo smorzamento lineare equivalente del sistema di isolamento, come definito in precedenza, è inferiore al 30%;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "9a5c7c1278054fb484e721e4a22fe21dfa261578fdf0253fceb67bbd8d692055",
+        "normalizedSha256": "9a5c7c1278054fb484e721e4a22fe21dfa261578fdf0253fceb67bbd8d692055"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-c",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "c) le caratteristiche forza-spostamento del sistema d’isolamento non variano di più del 10% per effetto di variazioni della\nvelocità di deformazione in un campo del ±30% intorno al valore di progetto, e dell’azione verticale sui dispositivi, nel campo\ndi variabilità di progetto;",
+        "normalized": "c) le caratteristiche forza-spostamento del sistema d’isolamento non variano di più del 10% per effetto di variazioni della velocità di deformazione in un campo del ±30% intorno al valore di progetto, e dell’azione verticale sui dispositivi, nel campo di variabilità di progetto;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) le caratteristiche forza-spostamento del sistema d’isolamento non variano di più del 10% per effetto di variazioni della velocità di deformazione in un campo del ±30% intorno al valore di progetto, e dell’azione verticale sui dispositivi, nel campo di variabilità di progetto;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d81a02b24a3357dca6a19fa0d54bb391c33402f324cb5381ad31115f8dbbfe4c",
+        "normalizedSha256": "64400aba020a37de917691494c68d630dd7d69e9ec2fa46025f805d500964a6c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-d",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d \ndc, essendo d \ndc lo spostamento del centro di\nrigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura.",
+        "normalized": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d dc, essendo d dc lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d dc, essendo d dc lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f9eecbe455c80dfcf549bffaac80148737e444ab0330308a047058f157d6b126",
+        "normalizedSha256": "4d7c004de4949b438745e7d1814d15dbd497c1623d4e9150ea9e6b3e4d0a4624"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui si adotti un modello non lineare, il legame costitutivo dei singoli dispositivi del sistema d’isolamento deve\nriprodurre adeguatamente il loro comportamento nel campo di deformazioni e velocità che si verificano durante l’azione sismica,\nanche in relazione alla corretta rappresentazione dell’energia dissipata nei cicli di isteresi.",
+        "normalized": "Nel caso in cui si adotti un modello non lineare, il legame costitutivo dei singoli dispositivi del sistema d’isolamento deve riprodurre adeguatamente il loro comportamento nel campo di deformazioni e velocità che si verificano durante l’azione sismica, anche in relazione alla corretta rappresentazione dell’energia dissipata nei cicli di isteresi.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui si adotti un modello non lineare, il legame costitutivo dei singoli dispositivi del sistema d’isolamento deve riprodurre adeguatamente il loro comportamento nel campo di deformazioni e velocità che si verificano durante l’azione sismica, anche in relazione alla corretta rappresentazione dell’energia dissipata nei cicli di isteresi."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ae80a749d18b6960669f07c48abd48436010e3a601251ff009fbdffa0deeb772",
+        "normalizedSha256": "3b22fcad60907e60c86a64645263eec5e4b87a58453de28ed0bc45e892e386ca"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.2#block-p6",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Se ritenuta rilevante ai fini della risposta sismica della struttura isolata, è opportuno tenere in conto l’eventuale interazione\nterreno-struttura come indicato al § 7.9.3.1.",
+        "normalized": "Se ritenuta rilevante ai fini della risposta sismica della struttura isolata, è opportuno tenere in conto l’eventuale interazione terreno-struttura come indicato al § 7.9.3.1.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Se ritenuta rilevante ai fini della risposta sismica della struttura isolata, è opportuno tenere in conto l’eventuale interazione terreno-struttura come indicato al § 7.9.3.1."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "3f3e27a2585d665da22c4d3293b4e3c89b306ea7e79c3f64e8dfe436e277f569",
+        "normalizedSha256": "769e6283e7ccf9e4411f839981648845275a2158353cf44b6642c197b68a2693"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-10-5-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7.11.3.2",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "subparagraph",
+  "numbering": {
+    "official": "7.11.3.2",
+    "sortKey": "007.011.003.002"
+  },
+  "title": "FATTORI DI AMPLIFICAZIONE STRATIGRAFICA",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.11.3.2#block-heading",
+  "hierarchy": {
+    "parentId": "urn:structural-codes:it:unit:ntc2018:7.11.3",
+    "ancestorIds": [
+      "urn:structural-codes:it:unit:ntc2018:7",
+      "urn:structural-codes:it:unit:ntc2018:7.11",
+      "urn:structural-codes:it:unit:ntc2018:7.11.3"
+    ],
+    "position": 2
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.3.2#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "7.11.3.2 F ATTORI DI AMPLIFICAZIONE STRATIGRAFICA",
+        "normalized": "7.11.3.2 FATTORI DI AMPLIFICAZIONE STRATIGRAFICA",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.11.3.2 FATTORI DI AMPLIFICAZIONE STRATIGRAFICA"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "579722349200969ea5387ed357735f9ac0a49439089b0ef03ee65d7fed968b2a",
+        "normalizedSha256": "6687e6901fa0174b4ed6e0cc59b4fed03698b442c9074733bab92c821bcb5735"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.3.2#block-p1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici\nriconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione\nmassima (amax \n) attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di amax può essere ricavato dalla relazione\namax = SSȉag dove ag è l’accelerazione massima su sito di riferimento rigido ed SS è il coefficiente di amplificazione stratigrafica.",
+        "normalized": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici riconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione massima a_max attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di a_max può essere ricavato dalla relazione a_max = S_S a_g dove a_g è l’accelerazione massima su sito di riferimento rigido ed S_S è il coefficiente di amplificazione stratigrafica.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici riconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione massima "
+          },
+          {
+            "kind": "math",
+            "value": "a_max",
+            "latex": "a_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di "
+          },
+          {
+            "kind": "math",
+            "value": "a_max",
+            "latex": "a_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " può essere ricavato dalla relazione "
+          },
+          {
+            "kind": "math",
+            "value": "a_max = S_S a_g",
+            "latex": "a_{max}=S_Sa_g"
+          },
+          {
+            "kind": "text",
+            "value": " dove a_g è l’accelerazione massima su sito di riferimento rigido ed S_S è il coefficiente di amplificazione stratigrafica."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "38cccd8272c7498e591a0c4f4c9f0910d7fcd899e872091ca842222897fe4855",
+        "normalizedSha256": "d208da107c33448db254b968a49b5fbd3b345e46a12ada46467a09eff484f8eb"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc77-78:step2",
+      "kind": "script",
+      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-11-3-2-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      }
+    ]
+  }
+}

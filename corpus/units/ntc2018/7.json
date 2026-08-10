@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:structural-codes:schema:canonical-unit:v2",
+  "schemaVersion": "2.0.0-alpha.2",
+  "recordType": "canonical-unit",
+  "id": "urn:structural-codes:it:unit:ntc2018:7",
+  "workId": "it-mit:dm:2018-01-17:ntc2018",
+  "expressionId": "it-mit:dm:2018-01-17:ntc2018:original-it",
+  "kind": "chapter",
+  "numbering": {
+    "official": "7",
+    "sortKey": "007"
+  },
+  "title": "PROGETTAZIONE PER AZIONI SISMICHE",
+  "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7#block-heading",
+  "hierarchy": {
+    "parentId": null,
+    "ancestorIds": [],
+    "position": 7
+  },
+  "validity": {
+    "from": "2018-03-22",
+    "to": null,
+    "status": "in-force",
+    "asOf": "2026-08-10"
+  },
+  "blocks": [
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7#block-heading",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "CCAPITOLO 7.\nPROGETTAZIONE PER AZIONI SISMICHE",
+        "normalized": "7 PROGETTAZIONE PER AZIONI SISMICHE",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7 PROGETTAZIONE PER AZIONI SISMICHE"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 96.05,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "72a38f552e85ce54d71c9b2e37118aee5c5780e4f802a347a35eb99f35d420e9",
+        "normalizedSha256": "e3c8eed9a405b33efbed65d9bdffdde36663a3478708d1bbb90a906cf6e8f754"
+      }
+    }
+  ],
+  "citations": [],
+  "relations": [],
+  "assets": {
+    "formulaIds": [],
+    "tableIds": [],
+    "figureIds": []
+  },
+  "workflow": {
+    "status": "extracted",
+    "createdBy": {
+      "actorId": "generator:ntc7:step1",
+      "kind": "script",
+      "toolVersion": "ntc7-editorial-profile-0.1.0"
+    },
+    "createdAt": "2026-08-10T00:00:00Z",
+    "reviews": [],
+    "openIssues": [
+      {
+        "issueId": "ntc2018-7-source-review",
+        "type": "normalization-review",
+        "severity": "blocking",
+        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      }
+    ]
+  }
+}
