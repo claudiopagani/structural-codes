@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": true,
+    "outDir": "./package-dist",
+    "rootDir": "./shared",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "incremental": false
+  },
+  "include": ["shared/**/*.ts", "shared/**/*.tsx"],
+  "exclude": ["node_modules"]
+}

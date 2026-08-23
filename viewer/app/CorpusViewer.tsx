@@ -1,12 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import katex from "katex";
-import "katex/dist/katex.min.css";
-import { visibleTableNotes } from "./tableNotes.mjs";
+import { BlockContent } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -15,7 +12,6 @@ import {
   loadRelations,
   loadSearchIndex,
   type AssetBundle,
-  type CorpusBlock,
   type CorpusChunk,
   type CorpusManifest,
   type CorpusUnit,
@@ -23,7 +19,6 @@ import {
   type DocumentIndex,
   type RelationEdge,
   type SearchIndex,
-  type TableCell,
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
@@ -140,8 +135,8 @@ export function CorpusViewer() {
   useEffect(() => {
     if (!manifest) return;
     let cancelled = false;
-    const document = documentForMode(mode);
-    loadDocumentIndex(manifest, document)
+    const documentId = documentForMode(mode);
+    loadDocumentIndex(manifest, documentId)
       .then((loaded) => {
         if (cancelled) return;
         setIndex(loaded);
@@ -150,7 +145,7 @@ export function CorpusViewer() {
         );
         const initial =
           requested ??
-          loaded.units.find((unit) => unit.numbering.official === (document === "ntc2018" ? "4.1" : "C4.1")) ??
+          loaded.units.find((unit) => unit.numbering.official === (documentId === "ntc2018" ? "4.1" : "C4.1")) ??
           loaded.units[0];
         if (initial) {
           requestedIdRef.current = initial.id;
@@ -500,47 +495,6 @@ function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUn
       ))}
     </div>
   );
-}
-
-function latexMarkup(latex: string, displayMode: boolean) {
-  return { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
-}
-
-function MathCell({ cell }: { cell: TableCell }) {
-  if (!cell.latex) return cell.text;
-  return <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />;
-}
-
-export function BlockContent({ block, assets, showRaw }: { block: CorpusBlock; assets: AssetBundle | null; showRaw: boolean }) {
-  if (block.text) {
-    if (showRaw || !block.text.inline) return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
-    return <p>{block.text.inline.map((segment, index) => segment.kind === "math" ? (
-      <span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />
-    ) : <span key={`text-${index}`}>{segment.value}</span>)}</p>;
-  }
-  if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
-  const formula = assets.formulas[block.assetId];
-  if (formula) return (
-    <figure className="formula-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div>{!formula.officialNumber && <figcaption><span>Formula non numerata</span></figcaption>}</figure>
-  );
-  const table = assets.tables[block.assetId];
-  if (table) {
-    const notes = visibleTableNotes(table.notes);
-    return (
-      <figure className="table-asset">
-        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}` : "Tabella non numerata"}</strong>{table.caption && <span> — {table.caption}</span>}</figcaption>
-        <div className="table-scroll"><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
-        {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
-      </figure>
-    );
-  }
-  const figure = assets.figures[block.assetId];
-  if (figure) {
-    const width = Math.max(1, Math.round(figure.region?.width ?? 800));
-    const height = Math.max(1, Math.round(figure.region?.height ?? 600));
-    return <figure className="figure-asset"><Image unoptimized loading="lazy" src={`/assets/${figure.imagePath}`} alt={figure.alt} width={width} height={height} sizes="(max-width: 760px) 92vw, 760px" /><figcaption><span>{figure.caption}</span></figcaption></figure>;
-  }
-  return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
 
 function Roadmap({ manifest, onOpenSection }: { manifest: CorpusManifest | null; onOpenSection: () => void }) {

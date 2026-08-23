@@ -1,7 +1,36 @@
 {
   "name": "structural-codes-viewer",
   "version": "0.1.0-alpha.1",
-  "private": true,
+  "description": "Reference React UI and deterministic artifact client for the structural-codes corpus.",
+  "license": "LGPL-2.1-or-later",
+  "homepage": "https://github.com/claudiopagani/structural-codes#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudiopagani/structural-codes.git",
+    "directory": "viewer"
+  },
+  "files": ["package-dist", "README.md", "LICENSE", "NOTICE"],
+  "main": "./package-dist/NormativeViewer.js",
+  "types": "./package-dist/NormativeViewer.d.ts",
+  "bin": {
+    "structural-codes-viewer": "./package-dist/generate-artifacts.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./package-dist/NormativeViewer.d.ts",
+      "import": "./package-dist/NormativeViewer.js",
+      "default": "./package-dist/NormativeViewer.js"
+    },
+    "./styles.css": "./package-dist/styles.css",
+    "./generate-artifacts": "./package-dist/generate-artifacts.mjs",
+    "./corpus-data": {
+      "types": "./package-dist/corpusData.d.ts",
+      "import": "./package-dist/corpusData.js",
+      "default": "./package-dist/corpusData.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {"access": "public"},
   "allowScripts": {
     "esbuild@0.28.1": true,
     "unrs-resolver@1.11.1": true,
@@ -9,22 +38,31 @@
   },
   "scripts": {
     "sync:corpus": "node scripts/sync-corpus.mjs",
+    "build:library": "node scripts/build-library.mjs",
+    "pack:verify": "npm run build:library && npm pack --dry-run",
+    "test:consumer": "node scripts/test-consumer.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "dev": "npm run sync:corpus && vinext dev",
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --max-warnings 0",
+    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/package-boundary.test.mjs",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern package-dist --ignore-pattern .next --max-warnings 0",
     "check": "npm run lint && npm test"
   },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "dependencies": {
-    "katex": "^0.16.22",
+    "@fontsource/tinos": "^5.3.0",
+    "katex": "^0.16.22"
+  },
+  "devDependencies": {
+    "structural-codes": "file:..",
     "next": "16.3.2",
     "pdfjs-dist": "6.2.108",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "structural-codes": "file:.."
-  },
-  "devDependencies": {
     "@cloudflare/vite-plugin": "1.53.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",

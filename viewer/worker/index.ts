@@ -51,18 +51,18 @@ const worker = {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/source-pdf") {
-      const document = url.searchParams.get("document");
-      if (document !== "ntc2018" && document !== "circ2019") {
+      const documentId = url.searchParams.get("document");
+      if (documentId !== "ntc2018" && documentId !== "circ2019") {
         return new Response("Documento non valido", { status: 400 });
       }
 
       const headers = new Headers();
       const range = request.headers.get("range");
       if (range) headers.set("range", range);
-      const upstream = await fetch(officialPdfUrl(document), { headers });
+      const upstream = await fetch(officialPdfUrl(documentId), { headers });
       const responseHeaders = new Headers({
         "content-type": "application/pdf",
-        "content-disposition": `inline; filename="${document}.pdf"`,
+        "content-disposition": `inline; filename="${documentId}.pdf"`,
         "cache-control": "public, max-age=86400",
         "x-content-type-options": "nosniff",
       });
