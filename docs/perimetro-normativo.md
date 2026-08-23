@@ -1,6 +1,6 @@
 # Perimetro normativo e temporale
 
-> Stato: verifica preliminare delle fonti, aggiornata al 26 luglio 2026  
+> Stato: verifica preliminare delle fonti, aggiornata al 23 agosto 2026
 > Natura: documento editoriale del progetto, non parere legale
 
 ## Atti inclusi
@@ -103,6 +103,18 @@ Prima di ogni release occorre:
 - registrare l'esito anche quando non emergono nuovi atti;
 - non modificare retroattivamente una release: creare una nuova espressione o
   una nuova release del corpus.
+
+### Verifica di errata corrige
+
+La verifica del 23 agosto 2026 sulle pagine ufficiali degli atti, sul registro
+Gazzetta e sui riferimenti MIT/CSLLPP non ha individuato un avviso autonomo di
+errata corrige per il D.M. 17 gennaio 2018 o per la Circolare 21 gennaio 2019,
+n. 7. Nel registro non è quindi stata aggiunta una fonte di rettifica e il
+corpus non applica correzioni non documentate.
+
+Il D.M. 9 marzo 2023 (`23A01847`) è invece una modifica normativa diretta
+dell’art. 2 del D.M. 17 gennaio 2018, già registrata come work distinto; non è
+stato trattato come errata corrige editoriale.
 
 ## Riuso e attribuzione
 

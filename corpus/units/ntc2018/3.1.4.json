@@ -287,9 +287,20 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- carichi orizzontali lineari Hk\nI valori nominali e/o caratteristici di qk, Qk ed H k sono riportati nella Tab. 3.1.II. Tali valori sono comprensivi degli effetti dinamici\nordinari, purché non vi sia rischio di rilevanti amplificazioni dinamiche della risposta delle strutture.",
-        "normalized": "carichi orizzontali lineari Hk I valori nominali e/o caratteristici di qk, Qk ed Hk sono riportati nella Tab. 3.1.II. Tali valori sono comprensivi degli effetti dinamici ordinari, purché non vi sia rischio di rilevanti amplificazioni dinamiche della risposta delle strutture.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "- carichi orizzontali lineari Hk",
+        "normalized": "carichi orizzontali lineari Hk",
+        "normalizationVersion": "ntc2018-3.1.4-table-flow-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "carichi orizzontali lineari "
+          },
+          {
+            "kind": "math",
+            "value": "Hk",
+            "latex": "H_k"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -305,7 +316,7 @@
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "toolVersion": "ntc2018-3.1.4-table-flow-0.1.0"
         },
         "transformations": [
           {
@@ -337,10 +348,114 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc2018-3.1.4-table-flow-0.1.0",
+            "note": "Separata la terza voce dell’elenco dal capoverso successivo, come mostrato nello stacco tipografico della pagina PDF 47."
           }
         ],
-        "rawSha256": "9e6f96cf6427c91f47cf0d8f3ab8c1a48d5b1eabdf04cd74b1ac1118e0c4c1b0",
-        "normalizedSha256": "f367e23122bf1c448dad187358c8b92cc241cc2c5ab1061806cdf139ea7cec1f"
+        "rawSha256": "773e56f800a41440c0b216a41acc96f08eb4ae614796190cffeaa0d971f6dddc",
+        "normalizedSha256": "3c4bfa15ab5738660b46465ebc2676b62fabb09a0b7739e66922a8ab896b1203"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.1.4#block-editorial-004-paragraph",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I valori nominali e/o caratteristici di qk, Qk ed H k sono riportati nella Tab. 3.1.II. Tali valori sono comprensivi degli effetti dinamici\nordinari, purché non vi sia rischio di rilevanti amplificazioni dinamiche della risposta delle strutture.",
+        "normalized": "I valori nominali e/o caratteristici di qk, Qk ed Hk sono riportati nella Tab. 3.1.II. Tali valori sono comprensivi degli effetti dinamici ordinari, purché non vi sia rischio di rilevanti amplificazioni dinamiche della risposta delle strutture.",
+        "normalizationVersion": "ntc2018-3.1.4-table-flow-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I valori nominali e/o caratteristici di "
+          },
+          {
+            "kind": "math",
+            "value": "qk",
+            "latex": "q_k"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Qk",
+            "latex": "Q_k"
+          },
+          {
+            "kind": "text",
+            "value": " ed "
+          },
+          {
+            "kind": "math",
+            "value": "Hk",
+            "latex": "H_k"
+          },
+          {
+            "kind": "text",
+            "value": " sono riportati nella Tab. 3.1.II. Tali valori sono comprensivi degli effetti dinamici ordinari, purché non vi sia rischio di rilevanti amplificazioni dinamiche della risposta delle strutture."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 47,
+        "printedPage": "43",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81.378,
+          "y": 344.308,
+          "width": 434.669,
+          "height": 378.695
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "ntc2018-3.1.4-table-flow-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc2018-3.1.4-table-flow-0.1.0",
+            "note": "Separata la terza voce dell’elenco dal capoverso successivo, come mostrato nello stacco tipografico della pagina PDF 47."
+          }
+        ],
+        "rawSha256": "3e6d4325409c8d9cbf91b9cad94eeb122d42c5c8b691aedc2f13eaa03e2ba78f",
+        "normalizedSha256": "91b2b27c12308869f45004e48d559634687b4987ea8b8bae356cb146720ca529"
       }
     },
     {
@@ -373,321 +488,6 @@
         ],
         "rawSha256": "99a461d2df864f7b43dbb3609da009b0be3585157bb672ab2210a6ee02c12ef8",
         "normalizedSha256": "99a461d2df864f7b43dbb3609da009b0be3585157bb672ab2210a6ee02c12ef8"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.1.4#block-editorial-006",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "B Uffici\nCat. B1 Uffici non aperti al pubblico 2,00 2,00 1,00\nCat. B2 Uffici aperti al pubblico 3,00 2,00 1,00\nScale comuni, balconi e ballatoi 4,00 4,00 2,00\nC Ambienti suscettibili di affollamento\nCat. C1 Aree con tavoli, quali scuole, caffè, ristoran-\nti, sale per banchetti, lettura e ricevimento 3,00 3,00 1,00\nCat. C2 Aree con posti a sedere fissi, quali chiese,\nteatri, cinema, sale per conferenze e attesa, aule\nuniversitarie e aule magne\n4,00 4,00 2,00\nCat. C3 Ambienti privi di ostacoli al movimento\ndelle persone, quali musei, sale per esposizioni,\naree d’accesso a uffici, ad alberghi e ospedali, ad\natri di stazioni ferroviarie\n5,00 5,00 3,00\nCat. C4. Aree con possibile svolgimento di attività\nfisiche, quali sale da ballo, palestre, palcoscenici. 5,00 5,00 3,00\nCat. C5. Aree suscettibili di grandi affollamenti,\nquali edifici per eventi pubblici, sale da concerto,\npalazzetti per lo sport e relative tribune, gradinate e\npiattaforme ferroviarie.",
-        "normalized": "B Uffici Cat. B1 Uffici non aperti al pubblico 2,00 2,00 1,00 Cat. B2 Uffici aperti al pubblico 3,00 2,00 1,00 Scale comuni, balconi e ballatoi 4,00 4,00 2,00 C Ambienti suscettibili di affollamento Cat. C1 Aree con tavoli, quali scuole, caffè, ristoranti, sale per banchetti, lettura e ricevimento 3,00 3,00 1,00 Cat. C2 Aree con posti a sedere fissi, quali chiese, teatri, cinema, sale per conferenze e attesa, aule universitarie e aule magne 4,00 4,00 2,00 Cat. C3 Ambienti privi di ostacoli al movimento delle persone, quali musei, sale per esposizioni, aree d’accesso a uffici, ad alberghi e ospedali, ad atri di stazioni ferroviarie 5,00 5,00 3,00 Cat. C4. Aree con possibile svolgimento di attività fisiche, quali sale da ballo, palestre, palcoscenici. 5,00 5,00 3,00 Cat. C5. Aree suscettibili di grandi affollamenti, quali edifici per eventi pubblici, sale da concerto, palazzetti per lo sport e relative tribune, gradinate e piattaforme ferroviarie.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 47,
-        "printedPage": "43",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.378,
-          "y": 344.308,
-          "width": 434.669,
-          "height": 378.695
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "b79f413e77b42328f6c9c469f82aed889411af22a0a138c34f3e536a815e3133",
-        "normalizedSha256": "ea5b98bcc9ac34730cdf18c6c8cb5a1e6219d42ea9572afaff6995efb80537ca"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.1.4#block-editorial-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "5,00 5,00 3,00\nScale comuni, balconi e ballatoi\nSecondo categoria d’uso servita, con le\nseguenti limitazioni\nǃ 4,00 ǃ 4,00 ǃ 2,00\nCat. Ambienti qk\n[kN/m2 ] Qk\n[kN] Hk\n[kN/m]\nD Ambienti ad uso commerciale\nCat. D1 Negozi 4,00 4,00 2,00\nCat. D2 Centri commerciali, mercati, grandi magaz-\nzini 5,00 5,00 2,00\nScale comuni, balconi e ballatoi Secondo categoria d’uso servita\nE Aree per immagazzinamento e uso commerciale\ned uso industriale\nCat. E1 Aree per accumulo di merci e relative aree\nd’accesso, quali biblioteche, archivi, magazzini,\ndepositi, laboratori manifatturieri ǃ 6,00 7,00 1,00*\nCat. E2 Ambienti ad uso industriale da valutarsi caso per caso\nF-G Rimesse e aree per traffico di veicoli (esclusi i\nponti)\nCat. F Rimesse, aree per traffico, parcheggio e sosta\ndi veicoli leggeri (peso a pieno carico fino a 30 kN) 2,50 2 x 10,00 1,00**\nCat. G Aree per traffico e parcheggio di veicoli me-\ndi (peso a pieno carico compreso fra 30 kN e 160\nkN), quali rampe d’accesso, zone di carico e scarico\nmerci.",
-        "normalized": "5,00 5,00 3,00 Scale comuni, balconi e ballatoi Secondo categoria d’uso servita, con le seguenti limitazioni ≥ 4,00 ≥ 4,00 ≥ 2,00 Cat. Ambienti qk [kN/m2 ] Qk [kN] Hk [kN/m] D Ambienti ad uso commerciale Cat. D1 Negozi 4,00 4,00 2,00 Cat. D2 Centri commerciali, mercati, grandi magazzini 5,00 5,00 2,00 Scale comuni, balconi e ballatoi Secondo categoria d’uso servita E Aree per immagazzinamento e uso commerciale ed uso industriale Cat. E1 Aree per accumulo di merci e relative aree d’accesso, quali biblioteche, archivi, magazzini, depositi, laboratori manifatturieri ≥ 6,00 7,00 1,00* Cat. E2 Ambienti ad uso industriale da valutarsi caso per caso F-G Rimesse e aree per traffico di veicoli (esclusi i ponti) Cat. F Rimesse, aree per traffico, parcheggio e sosta di veicoli leggeri (peso a pieno carico fino a 30 kN) 2,50 2 x 10,00 1,00** Cat. G Aree per traffico e parcheggio di veicoli medi (peso a pieno carico compreso fra 30 kN e 160 kN), quali rampe d’accesso, zone di carico e scarico merci.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "5,00 5,00 3,00 Scale comuni, balconi e ballatoi Secondo categoria d’uso servita, con le seguenti limitazioni "
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 4,00 "
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 4,00 "
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 2,00 Cat. Ambienti qk [kN/m2 ] Qk [kN] Hk [kN/m] D Ambienti ad uso commerciale Cat. D1 Negozi 4,00 4,00 2,00 Cat. D2 Centri commerciali, mercati, grandi magazzini 5,00 5,00 2,00 Scale comuni, balconi e ballatoi Secondo categoria d’uso servita E Aree per immagazzinamento e uso commerciale ed uso industriale Cat. E1 Aree per accumulo di merci e relative aree d’accesso, quali biblioteche, archivi, magazzini, depositi, laboratori manifatturieri "
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 6,00 7,00 1,00* Cat. E2 Ambienti ad uso industriale da valutarsi caso per caso F-G Rimesse e aree per traffico di veicoli (esclusi i ponti) Cat. F Rimesse, aree per traffico, parcheggio e sosta di veicoli leggeri (peso a pieno carico fino a 30 kN) 2,50 2 "
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": " 10,00 1,00** Cat. G Aree per traffico e parcheggio di veicoli medi (peso a pieno carico compreso fra 30 kN e 160 kN), quali rampe d’accesso, zone di carico e scarico merci."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 47,
-        "printedPage": "43",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.378,
-          "y": 344.308,
-          "width": 434.669,
-          "height": 378.695
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
-            "operation": "join-page-break",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unita una continuazione testuale attraversata da un cambio pagina."
-          }
-        ],
-        "rawSha256": "d890fde9c96eec486a06ac6d4c0424a6c3a7780aa06a670840f1ded88ee6750e",
-        "normalizedSha256": "6d238a1921c0575322042e363ab684def997416fdea85ab6ba27935c9575f3e9"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.1.4#block-editorial-008",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "da valutarsi caso per caso e comunque\nnon minori di\n5,00 2 x 50,00 1,00**\nH-I-K Coperture\nCat. H Coperture accessibili per sola manutenzione\ne riparazione 0,50 1,20 1,00\nCat. I Coperture praticabili di ambienti di categoria\nd’uso compresa fra A e D secondo categorie di appartenenza\nCat. K Coperture per usi speciali, quali impianti,\neliporti. da valutarsi caso per caso\n* non comprende le azioni orizzontali eventualmente esercitate dai materiali immagazzinati.",
-        "normalized": "da valutarsi caso per caso e comunque non minori di 5,00 2 x 50,00 1,00** H-I-K Coperture Cat. H Coperture accessibili per sola manutenzione e riparazione 0,50 1,20 1,00 Cat. I Coperture praticabili di ambienti di categoria d’uso compresa fra A e D secondo categorie di appartenenza Cat. K Coperture per usi speciali, quali impianti, eliporti. da valutarsi caso per caso * non comprende le azioni orizzontali eventualmente esercitate dai materiali immagazzinati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "da valutarsi caso per caso e comunque non minori di 5,00 2 "
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": " 50,00 1,00** H-I-K Coperture Cat. H Coperture accessibili per sola manutenzione e riparazione 0,50 1,20 1,00 Cat. I Coperture praticabili di ambienti di categoria d’uso compresa fra A e D secondo categorie di appartenenza Cat. K Coperture per usi speciali, quali impianti, eliporti. da valutarsi caso per caso * non comprende le azioni orizzontali eventualmente esercitate dai materiali immagazzinati."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 48,
-        "printedPage": "44",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 76.166,
-          "y": 97.563,
-          "width": 443.002,
-          "height": 329.379
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "368c5218191a4c0cee00cc60595e40b6b59e3a7ccb32d3e1afb78c98597d3425",
-        "normalizedSha256": "115ece1c77fb196c6d37d1304bc78115705a14bd1fed20c7a8d8f84c808070d7"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.1.4#block-editorial-009",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "** per i soli parapetti o partizioni nelle zone pedonali. Le azioni sulle barriere esercitate dagli automezzi dovranno essere\nvalutate caso per caso.",
-        "normalized": "** per i soli parapetti o partizioni nelle zone pedonali. Le azioni sulle barriere esercitate dagli automezzi dovranno essere valutate caso per caso.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 48,
-        "printedPage": "44",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 76.166,
-          "y": 97.563,
-          "width": 443.002,
-          "height": 329.379
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "5ad3ec0bbf134e919daad71b15295e6ce029f6cffc5451ce1b74b932ac588098",
-        "normalizedSha256": "d7c08b3cd47f517d6d50b77c6a5f5032ec8ae5c791071015d48d506c4b41b66f"
       }
     },
     {

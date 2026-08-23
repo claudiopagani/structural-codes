@@ -8,7 +8,7 @@ export const root = fileURLToPath(new URL("../", import.meta.url));
 export const sourceId = "gu-so8-2018-ntc";
 export const profile = "ntc74-editorial-profile-0.1.0";
 const pages = new Map<number, string[]>();
-for (let page = 232; page <= 242; page += 1) {
+for (let page = 232; page <= 243; page += 1) {
     const path = join(
         root,
         "evidence",
@@ -157,6 +157,7 @@ type B = {
     norm?: string;
     asset?: string;
     region?: any;
+    inline?: any[];
 };
 type U = { number: string; title: string; heading: B; blocks: B[]; crossPage?: boolean };
 export const aid = (kind: "formula" | "figure", suffix: string): string =>
@@ -342,7 +343,7 @@ for (const unit of units) {
         if (block.asset) {
             return { blockId: `${id}#${blockId}`, kind: block.kind, origin: "official", assetId: block.asset, evidence: ev(block.page, source, source, block.region ?? null) };
         }
-        const segments = inline(norm);
+        const segments = block.inline ?? inline(norm);
         return { blockId: `${id}#${blockId}`, kind: block.kind, origin: "official", text: { raw: source, normalized: norm, normalizationVersion: profile, ...(segments ? { inline: segments } : {}) }, evidence: ev(block.page, source, norm) };
     });
     const parts = unit.number.split(".");
@@ -380,6 +381,12 @@ const figures = [
     ["7.4.5", "7.4.4.5.1", 235, "Fig. 7.4.5 – Diagramma di inviluppo delle forze di taglio nelle pareti di strutture miste", [165, 85, 440, 282]],
     ["7.4.6", "7.4.4.5.2", 236, "Fig. 7.4.6 – Elementi di bordo di una parete, diagramma delle corrispondenti curvature, schema esemplificativo delle armature di confinamento", [160, 400, 435, 590]],
 ] as const;
+const figureHashes: Record<string, string> = {
+    "7.4.3": "22f65adc9060b7489aaee49e2d567373dec1dcf3f64b4926dadc3369fa617ffa",
+    "7.4.4": "7956a110be1bd5a40d5d8ee0411f254845cd1ca7915b5f261c1b50f9a894165f",
+    "7.4.5": "2f2a9a9470e73026727c73d62de6da6539780fb815b4a7b802f9da3f4b69bf4e",
+    "7.4.6": "104e3fe2d1088e57c0646f794151f9c00e1c01434cb4b7395e82a86188f3a67a",
+};
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest",
     document: "ntc2018", section: "7.4-step2", sourceId, status: "transcribed-unreviewed",
@@ -389,7 +396,7 @@ const manifest = {
         id: aid("figure", number), unitId: unitId(unit), officialNumber: number, pdfPage: page, caption, alt: caption,
         imagePath: `figures/ntc2018/fig${number}.png`,
         region: { coordinateSystem: "pdf-points-top-left", x: box[0], y: box[1], width: box[2] - box[0], height: box[3] - box[1] },
-        sha256: "0".repeat(64),
+        sha256: figureHashes[number],
     })),
 };
 await writeFile(join(root, "corpus", "assets", "ntc2018", "7.4-step2.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");

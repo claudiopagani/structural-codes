@@ -1,0 +1,590 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C7.3",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.1",
+      "officialNumber": "C7.3.1",
+      "pdfPage": 207,
+      "latex": "q'=q_{ND}\\frac{S_{e,SLV}(T_1)}{S_{e,SLD}(T_1)}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.3.2",
+      "officialNumber": "C7.3.2",
+      "pdfPage": 208,
+      "latex": "T_1=C_1H^{3/4}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.3",
+      "pdfPage": 209,
+      "latex": "F^*=F_b/\\Gamma"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.4",
+      "pdfPage": 209,
+      "latex": "d^*=d_c/\\Gamma"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.5",
+      "pdfPage": 209,
+      "latex": "\\Gamma=\\frac{\\boldsymbol{\\phi}^{T}\\mathbf{M}\\boldsymbol{\\tau}}{\\boldsymbol{\\phi}^{T}\\mathbf{M}\\boldsymbol{\\phi}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.6",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.6",
+      "pdfPage": 210,
+      "latex": "T^*=2\\pi\\sqrt{\\frac{m^*}{k^*}}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.7",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.7",
+      "pdfPage": 210,
+      "latex": "d^*_{max}=d^*_{e,max}=S_{De}(T^*)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.8",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.8",
+      "pdfPage": 210,
+      "latex": "d^*_{max}=\\frac{d^*_{e,max}}{q^*}\\left[1+(q^*-1)\\frac{T_C}{T^*}\\right]\\ge d^*_{e,max}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.9",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.9",
+      "pdfPage": 211,
+      "latex": "d_{max}^{*(0)}=d_e"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.3.10",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.10",
+      "pdfPage": 211,
+      "latex": "\\xi_{eq}^{(1)}=k\\frac{63.7\\left(F_y^{*(0)}d_{max}^{*(0)}-F_{max}^{*(0)}d_y^{*(0)}\\right)}{F_{max}^{*(0)}d_{max}^{*(0)}}+5"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c7.3.i",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.6",
+      "officialNumber": "C7.3.I",
+      "pdfPage": 213,
+      "caption": "Tabella C7.3.I – Stati Limite di elementi strutturali primari, elementi non strutturali e impianti: descrizione delle prestazioni e corrispondenti verifiche",
+      "columnCount": 13,
+      "headers": [
+        [
+          {
+            "text": "STATI LIMITE",
+            "colSpan": 2
+          },
+          {
+            "text": "Descrizione della prestazione",
+            "colSpan": 2
+          },
+          {
+            "text": "ST",
+            "colSpan": 3
+          },
+          {
+            "text": "NS"
+          },
+          {
+            "text": "IM",
+            "colSpan": 2
+          },
+          {
+            "text": "Classe d’uso",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "RIG"
+          },
+          {
+            "text": "RES"
+          },
+          {
+            "text": "DUT (SPO)"
+          },
+          {
+            "text": "STA"
+          },
+          {
+            "text": "FUN"
+          },
+          {
+            "text": "STA"
+          },
+          {
+            "text": "I"
+          },
+          {
+            "text": "II"
+          },
+          {
+            "text": "III / IV"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "SLE",
+            "rowSpan": 4
+          },
+          {
+            "text": "SLO",
+            "rowSpan": 2
+          },
+          {
+            "text": "NS\nST"
+          },
+          {
+            "text": "Limitazione del danno degli elementi non strutturali, o delle pareti per le costruzioni di muratura"
+          },
+          {
+            "text": "§ 7.3.6.1"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "IM"
+          },
+          {
+            "text": "Funzionamento degli impianti"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.6.3"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "SLD",
+            "rowSpan": 2
+          },
+          {
+            "text": "ST"
+          },
+          {
+            "text": "Controllo del danno degli elementi strutturali"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.1"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "NS\nST"
+          },
+          {
+            "text": "Controllo del danno degli elementi non strutturali, o delle pareti per le costruzioni di muratura"
+          },
+          {
+            "text": "§ 7.3.6.1"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "SLU",
+            "rowSpan": 5
+          },
+          {
+            "text": "SLV",
+            "rowSpan": 3
+          },
+          {
+            "text": "ST"
+          },
+          {
+            "text": "Livello di danno degli elementi strutturali coerente con il fattore di comportamento adottato, assenza di rotture fragili e meccanismi locali/globali instabili"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.6.1"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "NS"
+          },
+          {
+            "text": "Assenza di crolli degli elementi non strutturali pericolosi per l’incolumità, pur in presenza di danni diffusi"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.6.3"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "IM"
+          },
+          {
+            "text": "Capacità ultima degli impianti e dei collegamenti"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.6.3"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "SLC",
+            "rowSpan": 2
+          },
+          {
+            "text": "ST"
+          },
+          {
+            "text": "Margine di sicurezza sufficiente per azioni verticali ed esiguo per azioni orizzontali"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.3.6.1\n(DUT)"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          }
+        ],
+        [
+          {
+            "text": "ST"
+          },
+          {
+            "text": "Capacità di spostamento dei dispositivi nelle costruzioni con isolamento sismico"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "§ 7.10.6.2.2\n(SPO)"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "X"
+          },
+          {
+            "text": "X"
+          }
+        ]
+      ],
+      "notes": [
+        "La tabella continua a pagina PDF 214; le righe SLC sono state verificate sul render ufficiale di quella pagina."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.3.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.1",
+      "pdfPage": 209,
+      "caption": "Figura C7.3.1 – Sistema e diagramma bilineare equivalente",
+      "alt": "Figura C7.3.1 – Sistema e diagramma bilineare equivalente",
+      "imagePath": "figures/circ2019/figc7.3.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 75,
+        "y": 435,
+        "width": 400,
+        "height": 170
+      },
+      "sha256": "1bc02dbd73cdfb5a9c385423b144810e4f09ce022b8058af2d07818987d67bdf"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.3.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.2",
+      "pdfPage": 210,
+      "caption": "Figure C7.3.2a–b – Spostamento di riferimento per T ≥ T_C e T < T_C",
+      "alt": "Figure C7.3.2a–b – Spostamento di riferimento per T ≥ T_C e T < T_C",
+      "imagePath": "figures/circ2019/figc7.3.2.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 75,
+        "y": 490,
+        "width": 450,
+        "height": 160
+      },
+      "sha256": "c2e63683eccbde7edc55b6e99a6f3402b0209fe743e4f0d4873f0d8839eb5012"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.3.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.3",
+      "pdfPage": 211,
+      "caption": "Figura C7.3.3 – Bilinearizzazione equivalente",
+      "alt": "Figura C7.3.3 – Bilinearizzazione equivalente",
+      "imagePath": "figures/circ2019/figc7.3.3.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 175,
+        "y": 205,
+        "width": 245,
+        "height": 180
+      },
+      "sha256": "81252f088b46144263940d303a3bf07487f8c2fe81709fcd3013c46809fd63bd"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.3.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.4",
+      "pdfPage": 212,
+      "caption": "Figura C7.3.4 – Individuazione del Punto di prestazione",
+      "alt": "Figura C7.3.4 – Individuazione del Punto di prestazione",
+      "imagePath": "figures/circ2019/figc7.3.4.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 190,
+        "y": 75,
+        "width": 250,
+        "height": 195
+      },
+      "sha256": "4b2ec766a3707a80f4f95efa0965a6f9c050fec6cdf61372d8000afbfaab3aff"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.3.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2",
+      "officialNumber": "C7.3.5",
+      "pdfPage": 212,
+      "caption": "Figura C7.3.5 – Diagramma di flusso per la procedura iterativa di ricerca del punto di prestazione",
+      "alt": "Figura C7.3.5 – Diagramma di flusso per la procedura iterativa di ricerca del punto di prestazione",
+      "imagePath": "figures/circ2019/figc7.3.5.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 75,
+        "y": 300,
+        "width": 450,
+        "height": 270
+      },
+      "sha256": "caec1eb4fb9e5bc6d816a76df7f6a9e6f95b2631ea6d115d4146901c895902a0"
+    }
+  ]
+}

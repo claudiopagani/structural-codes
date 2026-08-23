@@ -12,9 +12,11 @@ costruzioni. Il primo perimetro comprende le NTC 2018 e la Circolare 7/2019.
 
 ## Stato
 
-La passata editoriale avanzata copre i capitoli 1, 2, 3 e 4.1 delle NTC 2018
-e C1, C2, C4.1 della Circolare. Il capitolo C3 è in lavorazione per step: i
-primi due sono stati riletti, mentre l'ultimo deve ancora essere completato.
+La passata editoriale avanzata copre i capitoli 1, 2, 3 e 4.1 delle NTC 2018,
+la sezione NTC 7.4.6.2.5, i capitoli NTC 10–12 e le sezioni C1, C2, C4.1 e
+C7.2–C7.3.6.2 della Circolare. Gli altri record presenti nel corpus restano
+`extracted` e richiedono la review umana prevista dal processo; la presenza di
+un record non equivale quindi a una trascrizione approvata.
 
 Le unità canoniche sono esclusivamente in `corpus/` e restano `extracted`
 finché non superano le review umane previste.

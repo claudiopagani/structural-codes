@@ -1,0 +1,334 @@
+{
+  "$schema": "urn:structural-codes:schema:asset-manifest:v2",
+  "schemaVersion": "2.0.0-alpha.1",
+  "recordType": "asset-manifest",
+  "document": "circ2019",
+  "section": "C7.2",
+  "sourceId": "circ-7-2019",
+  "status": "transcribed-unreviewed",
+  "formulas": [
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.1",
+      "pdfPage": 202,
+      "latex": "S_{ij}=\\varphi_{ij}\\Gamma_i S_i(T_i)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.2",
+      "pdfPage": 202,
+      "latex": "\\Gamma_i=\\frac{\\boldsymbol{\\varphi}_i^{T}\\mathbf{M}\\boldsymbol{\\tau}}{\\boldsymbol{\\varphi}_i^{T}\\mathbf{M}\\boldsymbol{\\varphi}_i}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.3",
+      "pdfPage": 203,
+      "latex": "S_{a,ij}=S_{ij}R\\left(\\frac{T_a}{T_i};\\xi_a\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.4",
+      "pdfPage": 203,
+      "latex": "R=\\left[\\left(2\\xi_a\\frac{T_a}{T_i}\\right)^2+\\left(1-\\left(\\frac{T_a}{T_i}\\right)^2\\right)^2\\right]^{-\\beta}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.5",
+      "pdfPage": 203,
+      "latex": "S_{eZ}(T,\\xi,z)=\\sqrt{\\sum_k\\left(S_{eZ,k}(T,\\xi,z)\\right)^2}\\;\\left(\\ge S_e(T,\\xi)\\text{ per }T>T_1\\right)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.6",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.6",
+      "pdfPage": 204,
+      "latex": "S_{eZ,k}(T,\\xi,z)=\\begin{cases}\\dfrac{1.1\\xi_k^{-0.5}\\eta(\\xi)a_{Z,k}(z)}{1+\\left[1.1\\xi_k^{-0.5}\\eta(\\xi)-1\\right]\\left(1-\\dfrac{T}{aT_k}\\right)^{1.6}}&\\text{per }T<aT_k\\\\1.1\\xi_k^{-0.5}\\eta(\\xi)a_{Z,k}(z)&\\text{per }aT_k\\le T<bT_k\\\\\\dfrac{1.1\\xi_k^{-0.5}\\eta(\\xi)a_{Z,k}(z)}{1+\\left[1.1\\xi_k^{-0.5}\\eta(\\xi)-1\\right]\\left(\\dfrac{T}{bT_k}-1\\right)^{1.2}}&\\text{per }T\\ge bT_k\\end{cases}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.7",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.7",
+      "pdfPage": 204,
+      "latex": "a_{Z,k}(z)=S_e(T_k,\\xi_k)|\\gamma_k\\psi_k(z)|\\sqrt{1+0.0004\\xi_k^2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.8",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.8",
+      "pdfPage": 204,
+      "latex": "a_Z(z)=\\sqrt{\\sum_k\\left(a_{Z,k}(z)\\right)^2}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.9",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.9",
+      "pdfPage": 204,
+      "latex": "S_{eZ,k}(T_k,\\xi_k,z)=1.1\\xi_k^{-0.5}\\eta(\\xi)a_{Z,k}(z)"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.10",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.10",
+      "pdfPage": 204,
+      "latex": "\\gamma_1=\\frac{3n}{2n+1}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c7.2.11",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.11",
+      "pdfPage": 205,
+      "latex": "S_a(T_a)=\\begin{cases}\\alpha S\\left(1+\\dfrac{z}{H}\\right)\\left[\\dfrac{a_p}{1+(a_p-1)\\left(1-\\dfrac{T_a}{aT_1}\\right)^2}\\right]\\ge\\alpha S&\\text{per }T_a<aT_1\\\\\\alpha S\\left(1+\\dfrac{z}{H}\\right)a_p&\\text{per }aT_1\\le T_a<bT_1\\\\\\alpha S\\left(1+\\dfrac{z}{H}\\right)\\left[\\dfrac{a_p}{1+(a_p-1)\\left(1-\\dfrac{T_a}{bT_1}\\right)^2}\\right]\\ge\\alpha S&\\text{per }T_a\\ge bT_1\\end{cases}"
+    }
+  ],
+  "tables": [
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c7.2.i",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.I",
+      "pdfPage": 203,
+      "caption": "Tabella C7.2.I – Valori di q_a per elementi non strutturali",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "Elemento non strutturale"
+          },
+          {
+            "text": "q_a",
+            "latex": "q_a"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "Parapetti o decorazioni aggettanti"
+          },
+          {
+            "text": "1,0",
+            "rowSpan": 3,
+            "latex": "1{,}0"
+          }
+        ],
+        [
+          {
+            "text": "Insegne e pannelli pubblicitari"
+          }
+        ],
+        [
+          {
+            "text": "Comignoli antenne e serbatoi su supporti funzionanti come mensole senza controventi per più di metà della loro altezza"
+          }
+        ],
+        [
+          {
+            "text": "Pareti interne ed esterne"
+          },
+          {
+            "text": "2,0",
+            "rowSpan": 5,
+            "latex": "2{,}0"
+          }
+        ],
+        [
+          {
+            "text": "Tramezzatura e facciate"
+          }
+        ],
+        [
+          {
+            "text": "Comignoli, antenne e serbatoi su supporti funzionanti come mensole non controventate per meno di metà della loro altezza o connesse alla struttura in corrispondenza o al di sopra del loro centro di massa"
+          }
+        ],
+        [
+          {
+            "text": "Elementi di ancoraggio per armadi e librerie permanenti direttamente poggianti sul pavimento"
+          }
+        ],
+        [
+          {
+            "text": "Elementi di ancoraggio per controsoffitti e corpi illuminanti"
+          }
+        ]
+      ],
+      "notes": []
+    },
+    {
+      "id": "urn:structural-codes:it:asset:table:circ2019:c7.2.ii",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.II",
+      "pdfPage": 205,
+      "caption": "Tabella C7.2.II – Parametri a, b, a_p in accordo con il periodo di vibrazione della costruzione T_1",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "text": "a",
+            "latex": "a"
+          },
+          {
+            "text": "b",
+            "latex": "b"
+          },
+          {
+            "text": "a_p",
+            "latex": "a_p"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "T_1 < 0,5 s",
+            "latex": "T_1<0{,}5\\,\\mathrm{s}"
+          },
+          {
+            "text": "0,8",
+            "latex": "0{,}8"
+          },
+          {
+            "text": "1,4",
+            "latex": "1{,}4"
+          },
+          {
+            "text": "5,0",
+            "latex": "5{,}0"
+          }
+        ],
+        [
+          {
+            "text": "0,5 s ≤ T_1 ≤ 1,0 s",
+            "latex": "0{,}5\\,\\mathrm{s}\\le T_1\\le1{,}0\\,\\mathrm{s}"
+          },
+          {
+            "text": "0,3",
+            "latex": "0{,}3"
+          },
+          {
+            "text": "1,2",
+            "latex": "1{,}2"
+          },
+          {
+            "text": "4,0",
+            "latex": "4{,}0"
+          }
+        ],
+        [
+          {
+            "text": "T_1 > 1,0 s",
+            "latex": "T_1>1{,}0\\,\\mathrm{s}"
+          },
+          {
+            "text": "0,3",
+            "latex": "0{,}3"
+          },
+          {
+            "text": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "text": "2,5",
+            "latex": "2{,}5"
+          }
+        ]
+      ],
+      "notes": []
+    }
+  ],
+  "figures": [
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.2.1",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.1",
+      "officialNumber": "C7.2.1",
+      "pdfPage": 199,
+      "caption": "Figura C7.2.1 – Condizioni di regolarità in pianta",
+      "alt": "Figura C7.2.1 – Condizioni di regolarità in pianta",
+      "imagePath": "figures/circ2019/figc7.2.1.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 74,
+        "y": 373,
+        "width": 188,
+        "height": 178
+      },
+      "sha256": "5e7dba1f6cab45586e291c97edadd1cc7997e957ac2647f94b4ab02d20e3340f"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.2.2",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.1",
+      "officialNumber": "C7.2.2",
+      "pdfPage": 199,
+      "caption": "Figura C7.2.2 – Condizioni di regolarità in elevazione",
+      "alt": "Figura C7.2.2 – Condizioni di regolarità in elevazione",
+      "imagePath": "figures/circ2019/figc7.2.2.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 262,
+        "y": 373,
+        "width": 260,
+        "height": 178
+      },
+      "sha256": "d0b1be15f3a6b5a86cdcb024d152e51fb93245b02ca65ab5bc9400cead8bac6f"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.2.3",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.3",
+      "pdfPage": 205,
+      "caption": "Figura C7.2.3 – Spettri di risposta di piano per gli elementi non strutturali",
+      "alt": "Figura C7.2.3 – Spettri di risposta di piano per gli elementi non strutturali",
+      "imagePath": "figures/circ2019/figc7.2.3.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 190,
+        "y": 435,
+        "width": 220,
+        "height": 150
+      },
+      "sha256": "d76ab5c240ca360fb6456024e690024f7232f64b225e9981844f31ce266c217a"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.2.4",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.3",
+      "officialNumber": "C7.2.4",
+      "pdfPage": 206,
+      "caption": "Figura C7.2.4 – Accelerazione massima, normalizzata rispetto ad αS, per i seguenti valori di T₁: (a) T₁ = 0,3 s, (b) T₁ = 0,6 s, (c) T₁ = 0,9 s, (d) T₁ = 1,2 s",
+      "alt": "Figura C7.2.4 – Accelerazione massima, normalizzata rispetto ad αS, per i seguenti valori di T₁: (a) T₁ = 0,3 s, (b) T₁ = 0,6 s, (c) T₁ = 0,9 s, (d) T₁ = 1,2 s",
+      "imagePath": "figures/circ2019/figc7.2.4.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 74,
+        "y": 100,
+        "width": 450,
+        "height": 240
+      },
+      "sha256": "44860307957317b0fd9bfecca8cd3daf8c9f7f7d17d228b7560ef37a8ea033dc"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:figure:circ2019:c7.2.5",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c7.2.6",
+      "officialNumber": "C7.2.5",
+      "pdfPage": 207,
+      "caption": "Figura C7.2.5 – Dipendenza di α_f dal carico assiale N e dal fattore di comportamento q",
+      "alt": "Figura C7.2.5 – Dipendenza di α_f dal carico assiale N e dal fattore di comportamento q",
+      "imagePath": "figures/circ2019/figc7.2.5.png",
+      "region": {
+        "coordinateSystem": "pdf-points-top-left",
+        "x": 117,
+        "y": 178,
+        "width": 360,
+        "height": 175
+      },
+      "sha256": "c5ccde50d4c0afad0fcce1777830905bb6c77a59df57ae120cb53b96da0a1346"
+    }
+  ]
+}

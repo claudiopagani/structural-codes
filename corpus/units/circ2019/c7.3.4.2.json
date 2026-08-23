@@ -25,7 +25,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-08-10"
+    "asOf": "2026-08-23"
   },
   "blocks": [
     {
@@ -35,11 +35,77 @@
       "text": {
         "raw": "C7.3.4.2 ANALISI NON LINEARE STATICA",
         "normalized": "C7.3.4.2 ANALISI NON LINEARE STATICA",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "f27d87dcd5c924705aa8a4de0545053109d7ea0eb98990f338ce443a2ebfc973",
+        "normalizedSha256": "f27d87dcd5c924705aa8a4de0545053109d7ea0eb98990f338ce443a2ebfc973"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’analisi non lineare statica consente di determinare la curva di capacità della struttura, espressa dalla relazione F_b-d_c, in cui F_b è il taglio alla base e d_c lo spostamento di un punto di controllo, che per gli edifici è in genere rappresentato dal centro di massa dell’ultimo orizzontamento. Per ogni stato limite considerato, il confronto tra la curva di capacità e la domanda di spostamento consente di determinare il livello di prestazione raggiunto. A tal fine, abitualmente, si associa al sistema strutturale reale un sistema strutturale equivalente a un grado di libertà.",
+        "normalized": "L’analisi non lineare statica consente di determinare la curva di capacità della struttura, espressa dalla relazione F_b-d_c, in cui F_b è il taglio alla base e d_c lo spostamento di un punto di controllo, che per gli edifici è in genere rappresentato dal centro di massa dell’ultimo orizzontamento. Per ogni stato limite considerato, il confronto tra la curva di capacità e la domanda di spostamento consente di determinare il livello di prestazione raggiunto. A tal fine, abitualmente, si associa al sistema strutturale reale un sistema strutturale equivalente a un grado di libertà.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "C7.3.4.2 ANALISI NON LINEARE STATICA"
+            "value": "L’analisi non lineare statica consente di determinare la curva di capacità della struttura, espressa dalla relazione "
+          },
+          {
+            "kind": "math",
+            "value": "F_b",
+            "latex": "F_b"
+          },
+          {
+            "kind": "text",
+            "value": "-"
+          },
+          {
+            "kind": "math",
+            "value": "d_c",
+            "latex": "d_c"
+          },
+          {
+            "kind": "text",
+            "value": ", in cui "
+          },
+          {
+            "kind": "math",
+            "value": "F_b",
+            "latex": "F_b"
+          },
+          {
+            "kind": "text",
+            "value": " è il taglio alla base e "
+          },
+          {
+            "kind": "math",
+            "value": "d_c",
+            "latex": "d_c"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento di un punto di controllo, che per gli edifici è in genere rappresentato dal centro di massa dell’ultimo orizzontamento. Per ogni stato limite considerato, il confronto tra la curva di capacità e la domanda di spostamento consente di determinare il livello di prestazione raggiunto. A tal fine, abitualmente, si associa al sistema strutturale reale un sistema strutturale equivalente a un grado di libertà."
           }
         ]
       },
@@ -57,33 +123,398 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
-        "rawSha256": "f27d87dcd5c924705aa8a4de0545053109d7ea0eb98990f338ce443a2ebfc973",
-        "normalizedSha256": "f27d87dcd5c924705aa8a4de0545053109d7ea0eb98990f338ce443a2ebfc973"
+        "transformations": [],
+        "rawSha256": "1718a0a8452dd072f2f85d33f0abefacbdb99e8c1736db7f6f12ab0605114f31",
+        "normalizedSha256": "1718a0a8452dd072f2f85d33f0abefacbdb99e8c1736db7f6f12ab0605114f31"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-heading-2",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-002",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.3.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75,
+          "y": 435,
+          "width": 400,
+          "height": 170
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "f157f07b04057ed519c84af470474325293068827a0546e8acf67b9473c913b3",
+        "normalizedSha256": "f157f07b04057ed519c84af470474325293068827a0546e8acf67b9473c913b3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La forza F* e lo spostamento d* del sistema equivalente sono legati alle corrispondenti grandezze F_b e d_c del sistema reale dalle relazioni:",
+        "normalized": "La forza F* e lo spostamento d* del sistema equivalente sono legati alle corrispondenti grandezze F_b e d_c del sistema reale dalle relazioni:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La forza F* e lo spostamento d* del sistema equivalente sono legati alle corrispondenti grandezze "
+          },
+          {
+            "kind": "math",
+            "value": "F_b",
+            "latex": "F_b"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "d_c",
+            "latex": "d_c"
+          },
+          {
+            "kind": "text",
+            "value": " del sistema reale dalle relazioni:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "a02a870d4badecfb2d35eb50c42e8205a550fb12f7ac08becbe4cb7962f9ca22",
+        "normalizedSha256": "a02a870d4badecfb2d35eb50c42e8205a550fb12f7ac08becbe4cb7962f9ca22"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.3",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "a74eaf6cbb107f827a58cf997bda8fa32a5b8e4a5009c9936b1cbcf6e2446bef",
+        "normalizedSha256": "a74eaf6cbb107f827a58cf997bda8fa32a5b8e4a5009c9936b1cbcf6e2446bef"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-005",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.4",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "59bba0895f6ffdbf68b2853f452a4507b5b03eabab29ef5b08863333d4995799",
+        "normalizedSha256": "59bba0895f6ffdbf68b2853f452a4507b5b03eabab29ef5b08863333d4995799"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove Γ è il “fattore di partecipazione modale” definito dalla relazione:",
+        "normalized": "dove Γ è il “fattore di partecipazione modale” definito dalla relazione:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Γ",
+            "latex": "\\Gamma"
+          },
+          {
+            "kind": "text",
+            "value": " è il “fattore di partecipazione modale” definito dalla relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "6f9c1a95456ed4e8b149991386e77df9d4e145a6c7798e1872e12c9050991df8",
+        "normalizedSha256": "6f9c1a95456ed4e8b149991386e77df9d4e145a6c7798e1872e12c9050991df8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-007",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.5",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 209,
+        "printedPage": "205",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "98ac979d0b6ac586ac894be298027f38e17bda6573c6ee06ee0a57258a821925",
+        "normalizedSha256": "98ac979d0b6ac586ac894be298027f38e17bda6573c6ee06ee0a57258a821925"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il vettore τ è il vettore di trascinamento corrispondente alla direzione del sisma considerata; il vettore φ è il modo di vibrare fondamentale del sistema reale normalizzato ponendo d_c = 1; la matrice M è la matrice di massa del sistema reale.",
+        "normalized": "Il vettore τ è il vettore di trascinamento corrispondente alla direzione del sisma considerata; il vettore φ è il modo di vibrare fondamentale del sistema reale normalizzato ponendo d_c = 1; la matrice M è la matrice di massa del sistema reale.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il vettore τ è il vettore di trascinamento corrispondente alla direzione del sisma considerata; il vettore "
+          },
+          {
+            "kind": "math",
+            "value": "φ",
+            "latex": "\\phi"
+          },
+          {
+            "kind": "text",
+            "value": " è il modo di vibrare fondamentale del sistema reale normalizzato ponendo "
+          },
+          {
+            "kind": "math",
+            "value": "d_c",
+            "latex": "d_c"
+          },
+          {
+            "kind": "text",
+            "value": " = 1; la matrice M è la matrice di massa del sistema reale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "dfab3f6516dd528a25cf87a9790800f1f01377fb3640e11a77fbd932190fe5f1",
+        "normalizedSha256": "dfab3f6516dd528a25cf87a9790800f1f01377fb3640e11a77fbd932190fe5f1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ai fini operativi, per poter determinare in forma chiusa l’energia dissipata dal sistema e, quindi, lo smorzamento equivalente, alla curva di capacità del sistema equivalente è utile sostituire una curva bilineare. Le tecniche di bilinearizzazione si basano usualmente su principi di equivalenza energetica, imponendo che le aree sottese dalla curva bilineare e dalla curva F*-d* siano uguali.",
+        "normalized": "Ai fini operativi, per poter determinare in forma chiusa l’energia dissipata dal sistema e, quindi, lo smorzamento equivalente, alla curva di capacità del sistema equivalente è utile sostituire una curva bilineare. Le tecniche di bilinearizzazione si basano usualmente su principi di equivalenza energetica, imponendo che le aree sottese dalla curva bilineare e dalla curva F*-d* siano uguali.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "3d328a2dc9410e44c7950d6c3c156c24bd155a9ff170c7a79d436aba8a1200ef",
+        "normalizedSha256": "3d328a2dc9410e44c7950d6c3c156c24bd155a9ff170c7a79d436aba8a1200ef"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la valutazione del punto di prestazione (PP) della struttura è possibile seguire uno dei seguenti metodi:",
+        "normalized": "Per la valutazione del punto di prestazione (PP) della struttura è possibile seguire uno dei seguenti metodi:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "50552b00b74a63402a82e3cae7d81df2ea5d8e2e3c3c84d8322a1d14de392b1d",
+        "normalizedSha256": "50552b00b74a63402a82e3cae7d81df2ea5d8e2e3c3c84d8322a1d14de392b1d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-011",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "Metodo A, basato sull’individuazione della domanda anelastica attraverso il principio di uguali spostamenti o uguale energia.",
+        "normalized": "Metodo A, basato sull’individuazione della domanda anelastica attraverso il principio di uguali spostamenti o uguale energia.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "bbe0a91934cc0a65b77554b96ec9772e2875cf314f91636c9cfde398ca6ac734",
+        "normalizedSha256": "bbe0a91934cc0a65b77554b96ec9772e2875cf314f91636c9cfde398ca6ac734"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-012",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "Metodo B, basato sulla costruzione di uno spettro di capacità.",
+        "normalized": "Metodo B, basato sulla costruzione di uno spettro di capacità.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "293b33d5f2b59cc3501d2b7ccb974dd485e1a0d9033bf40104c38dfea7360857",
+        "normalizedSha256": "293b33d5f2b59cc3501d2b7ccb974dd485e1a0d9033bf40104c38dfea7360857"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-013",
       "kind": "heading",
       "origin": "official",
       "text": {
         "raw": "Metodo A",
         "normalized": "Metodo A",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Metodo A"
-          }
-        ]
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -99,31 +530,43 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
         "rawSha256": "0d9d533320a0f5c21bc5896ce1e83112d61d38e465f9f981ce9f2aaa02d1c4a8",
         "normalizedSha256": "0d9d533320a0f5c21bc5896ce1e83112d61d38e465f9f981ce9f2aaa02d1c4a8"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-heading-3",
-      "kind": "heading",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-014",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Metodo B",
-        "normalized": "Metodo B",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
+        "raw": "Alla curva di capacità del sistema equivalente si sostituisce una curva bilineare avente un primo tratto elastico ed un secondo tratto perfettamente plastico (si veda Figura C7.3.1). Detta F_bu la resistenza massima del sistema strutturale reale ed F*_{bu} = F_{bu}/Γ la resistenza massima del sistema equivalente, il tratto elastico si individua imponendone il passaggio per il punto 0,6F*_{bu} della curva di capacità del sistema equivalente, la forza di plasticizzazione F*_y si individua imponendo l’uguaglianza delle aree sottese dalla curva bilineare e dalla curva di capacità per lo spostamento massimo d*_u corrispondente ad una riduzione di resistenza ≤0,15F*_{bu}.",
+        "normalized": "Alla curva di capacità del sistema equivalente si sostituisce una curva bilineare avente un primo tratto elastico ed un secondo tratto perfettamente plastico (si veda Figura C7.3.1). Detta F_bu la resistenza massima del sistema strutturale reale ed F*_{bu} = F_{bu}/Γ la resistenza massima del sistema equivalente, il tratto elastico si individua imponendone il passaggio per il punto 0,6F*_{bu} della curva di capacità del sistema equivalente, la forza di plasticizzazione F*_y si individua imponendo l’uguaglianza delle aree sottese dalla curva bilineare e dalla curva di capacità per lo spostamento massimo d*_u corrispondente ad una riduzione di resistenza ≤0,15F*_{bu}.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Metodo B"
+            "value": "Alla curva di capacità del sistema equivalente si sostituisce una curva bilineare avente un primo tratto elastico ed un secondo tratto perfettamente plastico (si veda Figura C7.3.1). Detta "
+          },
+          {
+            "kind": "math",
+            "value": "F_b",
+            "latex": "F_b"
+          },
+          {
+            "kind": "text",
+            "value": "u la resistenza massima del sistema strutturale reale ed F*_{bu} = F_{bu}/"
+          },
+          {
+            "kind": "math",
+            "value": "Γ",
+            "latex": "\\Gamma"
+          },
+          {
+            "kind": "text",
+            "value": " la resistenza massima del sistema equivalente, il tratto elastico si individua imponendone il passaggio per il punto 0,6F*_{bu} della curva di capacità del sistema equivalente, la forza di plasticizzazione F*_y si individua imponendo l’uguaglianza delle aree sottese dalla curva bilineare e dalla curva di capacità per lo spostamento massimo d*_u corrispondente ad una riduzione di resistenza ≤0,15F*_{bu}."
           }
         ]
       },
@@ -141,48 +584,1080 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
+        "transformations": [],
+        "rawSha256": "e36f4aec7580806488a534b1b00e9fcd3bb3e81d1f3fcdd4f42934deec6878dd",
+        "normalizedSha256": "e36f4aec7580806488a534b1b00e9fcd3bb3e81d1f3fcdd4f42934deec6878dd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-015",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il periodo elastico del sistema bilineare è dato dall’espressione:",
+        "normalized": "Il periodo elastico del sistema bilineare è dato dall’espressione:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "fb4aa81dbc63755fd00a82bff2697ce45434911d8afe2de0a10d701f6873ee88",
+        "normalizedSha256": "fb4aa81dbc63755fd00a82bff2697ce45434911d8afe2de0a10d701f6873ee88"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-016",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.6",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "30bed5034289d6509e5f95654ec3912544b5f47b7fd4e1186adbaebea6f6cc4a",
+        "normalizedSha256": "30bed5034289d6509e5f95654ec3912544b5f47b7fd4e1186adbaebea6f6cc4a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-017",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove m* = φ Mτ e k* è la rigidezza del tratto elastico della bilineare.",
+        "normalized": "dove m* = φ Mτ e k* è la rigidezza del tratto elastico della bilineare.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
           {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
+            "kind": "text",
+            "value": "dove m* = "
+          },
+          {
+            "kind": "math",
+            "value": "φ",
+            "latex": "\\phi"
+          },
+          {
+            "kind": "text",
+            "value": " Mτ e k* è la rigidezza del tratto elastico della bilineare."
           }
-        ],
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "12a49ef55f4d77bba26b881d1103af9b576efe78b8c7ea7bdf8b77e2b722b8c7",
+        "normalizedSha256": "12a49ef55f4d77bba26b881d1103af9b576efe78b8c7ea7bdf8b77e2b722b8c7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-018",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui T* ≥ T_C la domanda in spostamento per il sistema anelastico è assunta uguale a quella di un sistema elastico di pari periodo (v. § 3.2.3.2.3 delle NTC e Figura C7.3.2a):",
+        "normalized": "Nel caso in cui T* ≥ T_C la domanda in spostamento per il sistema anelastico è assunta uguale a quella di un sistema elastico di pari periodo (v. § 3.2.3.2.3 delle NTC e Figura C7.3.2a):",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui T* ≥ "
+          },
+          {
+            "kind": "math",
+            "value": "T_C",
+            "latex": "T_C"
+          },
+          {
+            "kind": "text",
+            "value": " la domanda in spostamento per il sistema anelastico è assunta uguale a quella di un sistema elastico di pari periodo (v. "
+          },
+          {
+            "kind": "math",
+            "value": "§ 3.2.3.2.3",
+            "latex": "\\S 3.2.3.2.3"
+          },
+          {
+            "kind": "text",
+            "value": " delle NTC e Figura C7.3.2a):"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "697a41623335b68a46c832f000a89a984403748fececcc90aed39c46f6448862",
+        "normalizedSha256": "697a41623335b68a46c832f000a89a984403748fececcc90aed39c46f6448862"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-019",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.7",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "1153b112a11a706effcf46aec8c01811144cd788b050c6a99ecd30b63ac3b53e",
+        "normalizedSha256": "1153b112a11a706effcf46aec8c01811144cd788b050c6a99ecd30b63ac3b53e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-020",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui T* < T_C la domanda in spostamento per il sistema anelastico è maggiore di quella di un sistema elastico di pari periodo (v. Figura C7.3.2b) e si ottiene da quest’ultima mediante l’espressione:",
+        "normalized": "Nel caso in cui T* < T_C la domanda in spostamento per il sistema anelastico è maggiore di quella di un sistema elastico di pari periodo (v. Figura C7.3.2b) e si ottiene da quest’ultima mediante l’espressione:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui T* < "
+          },
+          {
+            "kind": "math",
+            "value": "T_C",
+            "latex": "T_C"
+          },
+          {
+            "kind": "text",
+            "value": " la domanda in spostamento per il sistema anelastico è maggiore di quella di un sistema elastico di pari periodo (v. Figura C7.3.2b) e si ottiene da quest’ultima mediante l’espressione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "c25dce70b5b26cdfe93ca0ef4accb6da95c4f485e0ea38d1fc7de55615c0143f",
+        "normalizedSha256": "c25dce70b5b26cdfe93ca0ef4accb6da95c4f485e0ea38d1fc7de55615c0143f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-021",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.8",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "cd1a2a9ff4f723b5d7341adccf30d3f2606c85b4e88e99bf4de6e007054a0e50",
+        "normalizedSha256": "cd1a2a9ff4f723b5d7341adccf30d3f2606c85b4e88e99bf4de6e007054a0e50"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-022",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove q* = S_e(T*)m*/F*_y è il rapporto tra la forza di risposta elastica e la forza di snervamento del sistema equivalente.",
+        "normalized": "dove q* = S_e(T*)m*/F*_y è il rapporto tra la forza di risposta elastica e la forza di snervamento del sistema equivalente.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "41f2893cee6ad3fb650ba3d9283c51f4629ce9f6a0519041d8ead64e9bd6073b",
+        "normalizedSha256": "41f2893cee6ad3fb650ba3d9283c51f4629ce9f6a0519041d8ead64e9bd6073b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-023",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Se risulta q* ≤ 1 allora si ha d*_{max} = d*_{e,max}.",
+        "normalized": "Se risulta q* ≤ 1 allora si ha d*_{max} = d*_{e,max}.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "cac903eb5ae34cf1d2e020a9051a57fd5bdee5ad05feb3c14ddb73aa40f377ef",
+        "normalizedSha256": "cac903eb5ae34cf1d2e020a9051a57fd5bdee5ad05feb3c14ddb73aa40f377ef"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-024",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.3.2",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75,
+          "y": 490,
+          "width": 450,
+          "height": 160
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "d46c5135af51bc081f11d7ddcf210a3858c00ca0a18710eac1c5c7ba30bdd6af",
+        "normalizedSha256": "d46c5135af51bc081f11d7ddcf210a3858c00ca0a18710eac1c5c7ba30bdd6af"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-025",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Metodo B",
+        "normalized": "Metodo B",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
         "rawSha256": "de357f46d2b1f779fb3ea8ef0150e8eab6fa6892f14176b8c0db577c60cc9fcb",
         "normalizedSha256": "de357f46d2b1f779fb3ea8ef0150e8eab6fa6892f14176b8c0db577c60cc9fcb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-026",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In questo metodo il punto di prestazione e lo spostamento atteso per un dato livello di azione sono valutati attraverso un processo iterativo.",
+        "normalized": "In questo metodo il punto di prestazione e lo spostamento atteso per un dato livello di azione sono valutati attraverso un processo iterativo.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "695dfdeeeed4b05782ee7fbe24b8fa51fddee4d30a1ea432e00233d83569d398",
+        "normalizedSha256": "695dfdeeeed4b05782ee7fbe24b8fa51fddee4d30a1ea432e00233d83569d398"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-027",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si converte lo spettro di domanda nel relativo spettro sul piano ADRS, in cui le accelerazioni spettrali S_e sono rappresentate in funzione degli spostamenti spettrali S_{De}, ottenuti attraverso l’espressione [3.2.10] delle NTC.",
+        "normalized": "Si converte lo spettro di domanda nel relativo spettro sul piano ADRS, in cui le accelerazioni spettrali S_e sono rappresentate in funzione degli spostamenti spettrali S_{De}, ottenuti attraverso l’espressione [3.2.10] delle NTC.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 210,
+        "printedPage": "206",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "9e2e611231cc98287c3aba1cfc0de3de59304fc988ffd8a4bca9babb142de17d",
+        "normalizedSha256": "9e2e611231cc98287c3aba1cfc0de3de59304fc988ffd8a4bca9babb142de17d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-028",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si effettua una prima stima del punto di prestazione ipotizzando, generalmente, che lo spostamento d*_{max} sia pari a quello di una struttura elastica avente la stessa rigidezza iniziale della struttura analizzata:",
+        "normalized": "Si effettua una prima stima del punto di prestazione ipotizzando, generalmente, che lo spostamento d*_{max} sia pari a quello di una struttura elastica avente la stessa rigidezza iniziale della struttura analizzata:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "1b95fb7b2681b72475296a8de285ca5db17270296b97cf814afefa05824f4165",
+        "normalizedSha256": "1b95fb7b2681b72475296a8de285ca5db17270296b97cf814afefa05824f4165"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-029",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.9",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "114706f249fd536a03dcb53da76d7700ce68ef51c1187e87aa51d03d48bfe211",
+        "normalizedSha256": "114706f249fd536a03dcb53da76d7700ce68ef51c1187e87aa51d03d48bfe211"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-030",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Stimato il punto di prestazione (F*_{max},d*_{max}) sulla curva di capacità del sistema equivalente F*-d*, ad essa si sostituisce una curva bilineare equivalente, in termini energetici, ottenuta adottando un primo tratto con pendenza pari alla rigidezza iniziale della struttura ed identificando la forza F*_y e la pendenza del tratto F*_y-d*_{max} imponendo l’uguaglianza dell’area sottesa dalle due curve, come mostrato in Figura C7.3.3. Per rappresentare la curva bilineare F*-d* sul piano ADRS, occorre dividere le forze per m*.",
+        "normalized": "Stimato il punto di prestazione (F*_{max},d*_{max}) sulla curva di capacità del sistema equivalente F*-d*, ad essa si sostituisce una curva bilineare equivalente, in termini energetici, ottenuta adottando un primo tratto con pendenza pari alla rigidezza iniziale della struttura ed identificando la forza F*_y e la pendenza del tratto F*_y-d*_{max} imponendo l’uguaglianza dell’area sottesa dalle due curve, come mostrato in Figura C7.3.3. Per rappresentare la curva bilineare F*-d* sul piano ADRS, occorre dividere le forze per m*.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "c0fed699d953a487277fadd61b82ef03184e49027b4c87feb84a663e04ec536f",
+        "normalizedSha256": "c0fed699d953a487277fadd61b82ef03184e49027b4c87feb84a663e04ec536f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-031",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.3.3",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 175,
+          "y": 205,
+          "width": 245,
+          "height": 180
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "0349d79667e82a1ed132d22be73e82d6ba933cf8372594f261ad77793a507ec7",
+        "normalizedSha256": "0349d79667e82a1ed132d22be73e82d6ba933cf8372594f261ad77793a507ec7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-032",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "A partire dalla curva bilinearizzata così definita, si calcola lo smorzamento viscoso equivalente associato, espresso in percentuale, attraverso la [C7.3.10]:",
+        "normalized": "A partire dalla curva bilinearizzata così definita, si calcola lo smorzamento viscoso equivalente associato, espresso in percentuale, attraverso la [C7.3.10]:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "19e8befa04f992ca447db1e29dcc0f2b61ea6674c6820b25837cbcb074aa4ad6",
+        "normalizedSha256": "19e8befa04f992ca447db1e29dcc0f2b61ea6674c6820b25837cbcb074aa4ad6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-033",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c7.3.10",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "277a245b5b0bef0c87a09aae5298947920011ea41e34a2fe8fb50ce253032644",
+        "normalizedSha256": "277a245b5b0bef0c87a09aae5298947920011ea41e34a2fe8fb50ce253032644"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-034",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove il coefficiente k tiene conto delle capacità dissipative della struttura ed in particolare delle caratteristiche del ciclo di isteresi.",
+        "normalized": "dove il coefficiente k tiene conto delle capacità dissipative della struttura ed in particolare delle caratteristiche del ciclo di isteresi.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "61803f1d3e2e9a22f3ce7871cf6e574241cec4d6d71de64a590a5b2f08ae3b4b",
+        "normalizedSha256": "61803f1d3e2e9a22f3ce7871cf6e574241cec4d6d71de64a590a5b2f08ae3b4b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-035",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Indicativamente, si possono assumere i seguenti valori, a seconda della differente tipologia strutturale:",
+        "normalized": "Indicativamente, si possono assumere i seguenti valori, a seconda della differente tipologia strutturale:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "a965cfb2b491d3c65a81bbadee12e9b8549a5f65a45ad8943fa4d8f39c166d41",
+        "normalizedSha256": "a965cfb2b491d3c65a81bbadee12e9b8549a5f65a45ad8943fa4d8f39c166d41"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-036",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "strutture a elevata capacità dissipativa (caratterizzate da cicli di isteresi stabili e ragionevolmente ampi): k = 1;",
+        "normalized": "strutture a elevata capacità dissipativa (caratterizzate da cicli di isteresi stabili e ragionevolmente ampi): k = 1;",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "801c70cd2c452704159e44ab97944c848c7b1f141e330c8b5c3eb9ee7ac86437",
+        "normalizedSha256": "801c70cd2c452704159e44ab97944c848c7b1f141e330c8b5c3eb9ee7ac86437"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-037",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "strutture a moderata capacità dissipativa (caratterizzate da cicli di isteresi con moderata riduzione dell’area): k = 0,66;",
+        "normalized": "strutture a moderata capacità dissipativa (caratterizzate da cicli di isteresi con moderata riduzione dell’area): k = 0,66;",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "5a870d461e0dc9b3164ef459c2896d9cca8e8256e0e3ed37940d72b0f21775e3",
+        "normalizedSha256": "5a870d461e0dc9b3164ef459c2896d9cca8e8256e0e3ed37940d72b0f21775e3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-038",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "strutture a bassa capacità dissipativa (caratterizzate da cicli di isteresi con pinching elevato e da una sostanziale riduzione dell’area): k = 0,33;",
+        "normalized": "strutture a bassa capacità dissipativa (caratterizzate da cicli di isteresi con pinching elevato e da una sostanziale riduzione dell’area): k = 0,33;",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "b341db5ab56ac057588edf0f05541227597064f32feafd65ea89aa29d47bd696",
+        "normalizedSha256": "b341db5ab56ac057588edf0f05541227597064f32feafd65ea89aa29d47bd696"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-039",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "strutture dotate di appositi dispositivi di dissipazione: va valutata l’energia dissipata complessivamente, attribuendo alla struttura e al sistema di dissipazione il valore di k corrispondente all’effettiva capacità di dissipazione.",
+        "normalized": "strutture dotate di appositi dispositivi di dissipazione: va valutata l’energia dissipata complessivamente, attribuendo alla struttura e al sistema di dissipazione il valore di k corrispondente all’effettiva capacità di dissipazione.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "12dde701cdf810b960c301afca571463c469c88ffba108e640467be271cde705",
+        "normalizedSha256": "12dde701cdf810b960c301afca571463c469c88ffba108e640467be271cde705"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-040",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Grazie al coefficiente ξ_eq così calcolato si abbatte, utilizzando l’espressione [3.2.4] delle NTC, lo spettro di domanda.",
+        "normalized": "Grazie al coefficiente ξ_eq così calcolato si abbatte, utilizzando l’espressione [3.2.4] delle NTC, lo spettro di domanda.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Grazie al coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": "_eq così calcolato si abbatte, utilizzando l’espressione [3.2.4] delle NTC, lo spettro di domanda."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "44f4bd0d18e300ef0d1ceb251e08a9bf5bb8ff7ed79e5c348ac46d40c40c67a4",
+        "normalizedSha256": "44f4bd0d18e300ef0d1ceb251e08a9bf5bb8ff7ed79e5c348ac46d40c40c67a4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-041",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’intersezione, sul piano ADRS, fra lo spettro di domanda abbattuto e la curva di capacità del sistema equivalente fornisce il nuovo punto di prestazione, come mostrato in Figura C7.3.4; se esso è caratterizzato da uno spostamento d*_{max}^{(1)} ragionevolmente prossimo a quello stimato in partenza d*_{max}^{(0)}, la procedura iterativa ha termine e si ha la soluzione.",
+        "normalized": "L’intersezione, sul piano ADRS, fra lo spettro di domanda abbattuto e la curva di capacità del sistema equivalente fornisce il nuovo punto di prestazione, come mostrato in Figura C7.3.4; se esso è caratterizzato da uno spostamento d*_{max}^{(1)} ragionevolmente prossimo a quello stimato in partenza d*_{max}^{(0)}, la procedura iterativa ha termine e si ha la soluzione.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 211,
+        "printedPage": "207",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "26d0a648252296b8369b8cbbb5bceec134db8519d82c44554ab2089f3e62ecfa",
+        "normalizedSha256": "26d0a648252296b8369b8cbbb5bceec134db8519d82c44554ab2089f3e62ecfa"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-042",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.3.4",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 190,
+          "y": 75,
+          "width": 250,
+          "height": 195
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "8b109c2c78dd22987b12b8b33f4a63d6986f5b359c3792411b5cd11a120cdc26",
+        "normalizedSha256": "8b109c2c78dd22987b12b8b33f4a63d6986f5b359c3792411b5cd11a120cdc26"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-043",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La procedura, iterativa, è ripetuta fino a convergenza della soluzione, entro la tolleranza stabilita, secondo lo schema di Figura C7.3.5.",
+        "normalized": "La procedura, iterativa, è ripetuta fino a convergenza della soluzione, entro la tolleranza stabilita, secondo lo schema di Figura C7.3.5.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "3083d35971240a2677b0d35f526425b2fd6a99b59b67f302f57886e24f52b43f",
+        "normalizedSha256": "3083d35971240a2677b0d35f526425b2fd6a99b59b67f302f57886e24f52b43f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-044",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.3.5",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75,
+          "y": 300,
+          "width": 450,
+          "height": 270
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "295cf19ef177d0f218abc34df331b8d505c62924fc1aac347133b38c640b3a82",
+        "normalizedSha256": "295cf19ef177d0f218abc34df331b8d505c62924fc1aac347133b38c640b3a82"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-045",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Una volta trovata la domanda in spostamento, d*_{max}, per lo stato limite in esame si verifica la compatibilità degli spostamenti, per gli elementi/meccanismi duttili, e delle resistenze, per gli elementi/meccanismi fragili.",
+        "normalized": "Una volta trovata la domanda in spostamento, d*_{max}, per lo stato limite in esame si verifica la compatibilità degli spostamenti, per gli elementi/meccanismi duttili, e delle resistenze, per gli elementi/meccanismi fragili.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "b0e6af2f97a29e8a4a28f604694cd4ce6144e70c33669be34bd281d7fad71286",
+        "normalizedSha256": "b0e6af2f97a29e8a4a28f604694cd4ce6144e70c33669be34bd281d7fad71286"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-046",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’analisi non lineare statica, condotta nei modi previsti dalle NTC, può sottostimare significativamente le deformazioni sui lati più rigidi e resistenti di strutture flessibili torsionalmente, cioè strutture in cui il modo di vibrare torsionale abbia un periodo superiore ad almeno uno dei modi di vibrare principali traslazionali. Per tener conto di questo effetto, tra le distribuzioni secondarie delle forze occorre scegliere la distribuzione adattiva.",
+        "normalized": "L’analisi non lineare statica, condotta nei modi previsti dalle NTC, può sottostimare significativamente le deformazioni sui lati più rigidi e resistenti di strutture flessibili torsionalmente, cioè strutture in cui il modo di vibrare torsionale abbia un periodo superiore ad almeno uno dei modi di vibrare principali traslazionali. Per tener conto di questo effetto, tra le distribuzioni secondarie delle forze occorre scegliere la distribuzione adattiva.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "ec01938c0661d0414929be65f44bbabd3740a1759804762f9e1e827bfd3746f8",
+        "normalizedSha256": "ec01938c0661d0414929be65f44bbabd3740a1759804762f9e1e827bfd3746f8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.3.4.2#block-editorial-047",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per ciascuna direzione, devono essere eseguite due analisi distinte, applicando l’azione sismica in entrambi i possibili versi e considerando gli effetti più sfavorevoli derivanti da ciascuna delle due analisi.",
+        "normalized": "Per ciascuna direzione, devono essere eseguite due analisi distinte, applicando l’azione sismica in entrambi i possibili versi e considerando gli effetti più sfavorevoli derivanti da ciascuna delle due analisi.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 212,
+        "printedPage": "208",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "dca47ec0c4eb167333a93be1e22f36f2849febde3bff4a4b81c6542f1460b23a",
+        "normalizedSha256": "dca47ec0c4eb167333a93be1e22f36f2849febde3bff4a4b81c6542f1460b23a"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.3",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.4",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.5",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.6",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.7",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.8",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.9",
+      "urn:structural-codes:it:asset:formula:circ2019:c7.3.10"
+    ],
     "tableIds": [],
-    "figureIds": []
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c7.3.1",
+      "urn:structural-codes:it:asset:figure:circ2019:c7.3.2",
+      "urn:structural-codes:it:asset:figure:circ2019:c7.3.3",
+      "urn:structural-codes:it:asset:figure:circ2019:c7.3.4",
+      "urn:structural-codes:it:asset:figure:circ2019:c7.3.5"
+    ]
   },
   "workflow": {
     "status": "extracted",
     "createdBy": {
-      "actorId": "codex:circ7:step0",
-      "kind": "automated-agent",
-      "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+      "actorId": "generator:circ7:step2",
+      "kind": "script",
+      "toolVersion": "circ7-manual-render-transcription-0.2.0"
     },
-    "createdAt": "2026-08-10T00:00:00Z",
+    "createdAt": "2026-08-23T00:00:00Z",
     "reviews": [],
     "openIssues": [
       {
         "issueId": "circ2019-c7-3-4-2-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Le intestazioni sono state confrontate con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+        "note": "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente."
       },
       {
-        "issueId": "circ2019-c7-3-4-2-raster-blocker",
-        "type": "ambiguous-source",
+        "issueId": "circ2019-c7-3-4-2-missing-text-layer",
+        "type": "missing-region",
         "severity": "blocking",
-        "note": "Le pp. 209–212 della Circolare sono scansioni prive di un layer testuale utilizzabile: l’evidence locale è in evidence/circ-7-2019/pages e nei render alla stessa directory. Sono state registrate solo le intestazioni leggibili; la prosa, le formule [C7.3.3]–[C7.3.10], le liste e le Figure C7.3.1–C7.3.5 delle pagine 209–212 restano da trascrivere; [FIGURA_MANCANTE] per gli asset non ancora registrati. La trascrizione completa richiede verifica umana diretta sul PDF ufficiale prima della pubblicazione."
+        "note": "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF."
       }
     ]
   }

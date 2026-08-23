@@ -5,7 +5,7 @@
   "id": "urn:structural-codes:it:unit:circ2019:c7.3",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
   "expressionId": "it-mit:circ:2019-01-21:7-csllpp:original-it",
-  "kind": "subparagraph",
+  "kind": "paragraph",
   "numbering": {
     "official": "C7.3",
     "sortKey": "007.003"
@@ -23,7 +23,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-08-10"
+    "asOf": "2026-08-23"
   },
   "blocks": [
     {
@@ -33,13 +33,7 @@
       "text": {
         "raw": "C7.3 METODI DI ANALISI E CRITERI DI VERIFICA",
         "normalized": "C7.3 METODI DI ANALISI E CRITERI DI VERIFICA",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "C7.3 METODI DI ANALISI E CRITERI DI VERIFICA"
-          }
-        ]
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,15 +49,9 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
         "rawSha256": "8a013dde6ef6db50e3c9aa60f11a03d39df1827d8a7eb832009ed31db093681c",
         "normalizedSha256": "8a013dde6ef6db50e3c9aa60f11a03d39df1827d8a7eb832009ed31db093681c"
       }
@@ -79,24 +67,24 @@
   "workflow": {
     "status": "extracted",
     "createdBy": {
-      "actorId": "codex:circ7:step0",
-      "kind": "automated-agent",
-      "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+      "actorId": "generator:circ7:step2",
+      "kind": "script",
+      "toolVersion": "circ7-manual-render-transcription-0.2.0"
     },
-    "createdAt": "2026-08-10T00:00:00Z",
+    "createdAt": "2026-08-23T00:00:00Z",
     "reviews": [],
     "openIssues": [
       {
         "issueId": "circ2019-c7-3-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Le intestazioni sono state confrontate con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+        "note": "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente."
       },
       {
-        "issueId": "circ2019-c7-3-raster-blocker",
-        "type": "ambiguous-source",
+        "issueId": "circ2019-c7-3-missing-text-layer",
+        "type": "missing-region",
         "severity": "blocking",
-        "note": "Le p. 207 della Circolare sono scansioni prive di un layer testuale utilizzabile: l’evidence locale è in evidence/circ-7-2019/pages e nei render alla stessa directory. Sono state registrate solo le intestazioni leggibili; la prosa di raccordo della pagina 207 resta da trascrivere. La trascrizione completa richiede verifica umana diretta sul PDF ufficiale prima della pubblicazione."
+        "note": "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF."
       }
     ]
   }

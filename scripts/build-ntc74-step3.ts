@@ -20,6 +20,7 @@ type Block = {
     to?: number;
     norm?: string;
     asset?: string;
+    inline?: any[];
 };
 type Unit = {
     number: string;
@@ -440,6 +441,82 @@ const units: Unit[] = [
             { kind: "paragraph", page: 242, from: 67, to: 68 },
         ],
     },
+    {
+        number: "7.4.6.2.5",
+        title: "Travi di accoppiamento",
+        heading: {
+            kind: "heading",
+            page: 243,
+            from: 32,
+            norm: "7.4.6.2.5 Travi di accoppiamento",
+        },
+        blocks: [
+            {
+                kind: "paragraph",
+                page: 243,
+                from: 33,
+                to: 34,
+                norm:
+                    "Nel caso di armatura ad X, ciascuno dei due fasci di armatura deve essere racchiuso da armatura a spirale o da staffe di contenimento con passo non superiore a 100 mm.",
+                inline: [
+                    {
+                        kind: "text",
+                        value:
+                            "Nel caso di armatura ad X, ciascuno dei due fasci di armatura deve essere racchiuso da armatura a spirale o da staffe di contenimento con passo non superiore a ",
+                    },
+                    { kind: "math", value: "100 mm", latex: "100\\,\\mathrm{mm}" },
+                    { kind: "text", value: "." },
+                ],
+            },
+            {
+                kind: "paragraph",
+                page: 243,
+                from: 35,
+                to: 37,
+                norm:
+                    "In questo caso, in aggiunta all’armatura diagonale deve essere disposta nella trave armatura di diametro almeno 10 mm distribuita a passo 10 cm in direzione sia longitudinale che trasversale ed armatura corrente di 2 barre da 16 mm ai bordi superiore ed inferiore.",
+                inline: [
+                    {
+                        kind: "text",
+                        value:
+                            "In questo caso, in aggiunta all’armatura diagonale deve essere disposta nella trave armatura di diametro almeno ",
+                    },
+                    { kind: "math", value: "10 mm", latex: "10\\,\\mathrm{mm}" },
+                    {
+                        kind: "text",
+                        value: " distribuita a passo ",
+                    },
+                    { kind: "math", value: "10 cm", latex: "10\\,\\mathrm{cm}" },
+                    {
+                        kind: "text",
+                        value:
+                            " in direzione sia longitudinale che trasversale ed armatura corrente di ",
+                    },
+                    { kind: "math", value: "2", latex: "2" },
+                    { kind: "text", value: " barre da " },
+                    { kind: "math", value: "16 mm", latex: "16\\,\\mathrm{mm}" },
+                    { kind: "text", value: " ai bordi superiore ed inferiore." },
+                ],
+            },
+            {
+                kind: "paragraph",
+                page: 243,
+                from: 38,
+                to: 39,
+                norm:
+                    "Gli ancoraggi delle armature nelle pareti devono essere del 50% più lunghi di quanto previsto per il dimensionamento in condizioni non sismiche.",
+                inline: [
+                    { kind: "text", value: "Gli ancoraggi delle armature nelle pareti devono essere del " },
+                    { kind: "math", value: "50%", latex: "50\\%" },
+                    {
+                        kind: "text",
+                        value:
+                            " più lunghi di quanto previsto per il dimensionamento in condizioni non sismiche.",
+                    },
+                ],
+            },
+        ],
+    },
 ];
 
 const formulas: Record<string, [string, string | null, number, string]> = {
@@ -475,7 +552,7 @@ for (const unit of units) {
                 evidence: ev(block.page, source, source),
             };
         }
-        const segments = inline(norm);
+        const segments = block.inline ?? inline(norm);
         return {
             blockId: `${id}#${blockId}`,
             kind: block.kind,

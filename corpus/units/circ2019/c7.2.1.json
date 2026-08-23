@@ -24,7 +24,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-08-10"
+    "asOf": "2026-08-23"
   },
   "blocks": [
     {
@@ -34,13 +34,7 @@
       "text": {
         "raw": "C7.2.1 CARATTERISTICHE GENERALI DELLE COSTRUZIONI",
         "normalized": "C7.2.1 CARATTERISTICHE GENERALI DELLE COSTRUZIONI",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "C7.2.1 CARATTERISTICHE GENERALI DELLE COSTRUZIONI"
-          }
-        ]
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -56,33 +50,21 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
         "rawSha256": "9ce15b708ad6ad0ed1dbea2847229fb3898f63020264066d90ab68c0cc059df0",
         "normalizedSha256": "9ce15b708ad6ad0ed1dbea2847229fb3898f63020264066d90ab68c0cc059df0"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-heading-2",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-001",
       "kind": "heading",
       "origin": "official",
       "text": {
         "raw": "Regolarità",
         "normalized": "Regolarità",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Regolarità"
-          }
-        ]
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -98,31 +80,94 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
         "rawSha256": "31f8b986a03ba27a423f600a2b035f2c1e5880d4ae94731d95dee5af27fd2f9c",
         "normalizedSha256": "31f8b986a03ba27a423f600a2b035f2c1e5880d4ae94731d95dee5af27fd2f9c"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-heading-3",
-      "kind": "heading",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-002",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Distanza tra costruzioni contigue",
-        "normalized": "Distanza tra costruzioni contigue",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
+        "raw": "La regolarità strutturale è finalizzata a favorire, anche in campo inelastico, un comportamento della costruzione e delle sue membrature il più possibile uniforme e tale da evitare concentrazioni di sforzi.",
+        "normalized": "La regolarità strutturale è finalizzata a favorire, anche in campo inelastico, un comportamento della costruzione e delle sue membrature il più possibile uniforme e tale da evitare concentrazioni di sforzi.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "514064451d21da77b64a7ce7393463b4078b74fcc7916f4adfb5513d40db1674",
+        "normalizedSha256": "514064451d21da77b64a7ce7393463b4078b74fcc7916f4adfb5513d40db1674"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In generale, un edificio può dirsi regolare in pianta e in altezza quando il suo comportamento dinamico sia governato principalmente da modi di vibrare traslazionali lungo le sue direzioni principali e quando tali modi siano caratterizzati da spostamenti crescenti, all’incirca linearmente, con l’altezza.",
+        "normalized": "In generale, un edificio può dirsi regolare in pianta e in altezza quando il suo comportamento dinamico sia governato principalmente da modi di vibrare traslazionali lungo le sue direzioni principali e quando tali modi siano caratterizzati da spostamenti crescenti, all’incirca linearmente, con l’altezza.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "1e4630e3fcdba53113e91f812590372f89203b48d2fc075d1b49b802bf590945",
+        "normalizedSha256": "1e4630e3fcdba53113e91f812590372f89203b48d2fc075d1b49b802bf590945"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Con riferimento al § 7.2.1 delle NTC le condizioni a) e b) di regolarità in pianta sono sintetizzate nella figura C7.2.1, la condizione g) di regolarità in elevazione è sintetizzata nella figura C7.2.2 e riferita al caso in cui, in una stessa direzione, siano presenti restringimenti in elevazione ad entrambe le estremità; in tal caso il limite del 10% della dimensione corrispondente all’orizzontamento immediatamente sottostante è da intendersi per ciascuno dei due rientri, mentre il limite del 30% della dimensione corrispondente al primo orizzontamento è da intendersi per la somma dei due.",
+        "normalized": "Con riferimento al § 7.2.1 delle NTC le condizioni a) e b) di regolarità in pianta sono sintetizzate nella figura C7.2.1, la condizione g) di regolarità in elevazione è sintetizzata nella figura C7.2.2 e riferita al caso in cui, in una stessa direzione, siano presenti restringimenti in elevazione ad entrambe le estremità; in tal caso il limite del 10% della dimensione corrispondente all’orizzontamento immediatamente sottostante è da intendersi per ciascuno dei due rientri, mentre il limite del 30% della dimensione corrispondente al primo orizzontamento è da intendersi per la somma dei due.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Distanza tra costruzioni contigue"
+            "value": "Con riferimento al "
+          },
+          {
+            "kind": "math",
+            "value": "§ 7.2.1",
+            "latex": "\\S 7.2.1"
+          },
+          {
+            "kind": "text",
+            "value": " delle NTC le condizioni a) e b) di regolarità in pianta sono sintetizzate nella figura C7.2.1, la condizione g) di regolarità in elevazione è sintetizzata nella figura C7.2.2 e riferita al caso in cui, in una stessa direzione, siano presenti restringimenti in elevazione ad entrambe le estremità; in tal caso il limite del 10% della dimensione corrispondente all’orizzontamento immediatamente sottostante è da intendersi per ciascuno dei due rientri, mentre il limite del 30% della dimensione corrispondente al primo orizzontamento è da intendersi per la somma dei due."
           }
         ]
       },
@@ -140,17 +185,213 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
+        "rawSha256": "7b86afe7a008b8630f829c6dc55c78eb3c93bac602b22f13d5304364a9007074",
+        "normalizedSha256": "7b86afe7a008b8630f829c6dc55c78eb3c93bac602b22f13d5304364a9007074"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-005",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.2.1",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74,
+          "y": 373,
+          "width": 188,
+          "height": 178
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "1d083801d21e399ef3f73a39b68aa6eb4331fae2bace41aa17e220df954431ca",
+        "normalizedSha256": "1d083801d21e399ef3f73a39b68aa6eb4331fae2bace41aa17e220df954431ca"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-006",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:circ2019:c7.2.2",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 262,
+          "y": 373,
+          "width": 260,
+          "height": 178
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "d2db2bfe3908e2af3db4e456750036910804183fc9fe074a73a0854947f0a233",
+        "normalizedSha256": "d2db2bfe3908e2af3db4e456750036910804183fc9fe074a73a0854947f0a233"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso in cui in un edificio, immediatamente al di sopra della fondazione, sia presente un basamento, di uno o più piani, con caratteristiche tali da poter essere considerato alla stregua di una struttura scatolare rigida, le NTC specificano che, per valutare la regolarità in altezza, si può far riferimento alla sola parte della struttura che si sviluppa al di sopra del basamento. Tale indicazione tende a escludere la fondazione scatolare rigida dall’individuazione del comportamento strutturale, a condizione che ad essa venga assicurato un comportamento non dissipativo, indipendentemente dallo stato limite considerato².",
+        "normalized": "Nel caso in cui in un edificio, immediatamente al di sopra della fondazione, sia presente un basamento, di uno o più piani, con caratteristiche tali da poter essere considerato alla stregua di una struttura scatolare rigida, le NTC specificano che, per valutare la regolarità in altezza, si può far riferimento alla sola parte della struttura che si sviluppa al di sopra del basamento. Tale indicazione tende a escludere la fondazione scatolare rigida dall’individuazione del comportamento strutturale, a condizione che ad essa venga assicurato un comportamento non dissipativo, indipendentemente dallo stato limite considerato².",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "078912289fd3a04821b5af95cbe937eb649087e918b2e818d3abdec559e1fd27",
+        "normalizedSha256": "078912289fd3a04821b5af95cbe937eb649087e918b2e818d3abdec559e1fd27"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-008",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Distanza tra costruzioni contigue",
+        "normalized": "Distanza tra costruzioni contigue",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
         "rawSha256": "dec8d8c817ac411fe9112067ee98d1006f4298be647a38b38eab9269486be018",
         "normalizedSha256": "dec8d8c817ac411fe9112067ee98d1006f4298be647a38b38eab9269486be018"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Tra costruzioni contigue la norma impone la verifica degli spostamenti massimi per evitare fenomeni di martellamento; tale verifica deve essere eseguita attraverso un calcolo diretto degli spostamenti assicurando, in ogni caso, che la distanza tra le costruzioni non risulti inferiore al valore minimo stabilito dalla norma.",
+        "normalized": "Tra costruzioni contigue la norma impone la verifica degli spostamenti massimi per evitare fenomeni di martellamento; tale verifica deve essere eseguita attraverso un calcolo diretto degli spostamenti assicurando, in ogni caso, che la distanza tra le costruzioni non risulti inferiore al valore minimo stabilito dalla norma.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "8a8ff2cd175d481fb00fe73a94b6fea8703c09198e274b37a6749ba2d23c18f9",
+        "normalizedSha256": "8a8ff2cd175d481fb00fe73a94b6fea8703c09198e274b37a6749ba2d23c18f9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "L’eventualità in cui non si possano eseguire calcoli specifici va riferita al solo caso di progettazione di nuova costruzione in adiacenza a costruzioni esistenti.",
+        "normalized": "L’eventualità in cui non si possano eseguire calcoli specifici va riferita al solo caso di progettazione di nuova costruzione in adiacenza a costruzioni esistenti.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 200,
+        "printedPage": "196",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "85c53dc35681e9f683a0b4e662667fc756c2a5d538ef63581bb9aa223440816c",
+        "normalizedSha256": "85c53dc35681e9f683a0b4e662667fc756c2a5d538ef63581bb9aa223440816c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.1#block-editorial-011",
+      "kind": "footnote",
+      "origin": "official",
+      "text": {
+        "raw": "Questo requisito è essenziale perché le eventuali plasticizzazioni nella fondazione scatolare altererebbero i rapporti di rigidezza con la sovrastruttura, con la conseguenza di non poter assicurare il soddisfacimento dei criteri di regolarità in elevazione posti a base della progettazione.",
+        "normalized": "Questo requisito è essenziale perché le eventuali plasticizzazioni nella fondazione scatolare altererebbero i rapporti di rigidezza con la sovrastruttura, con la conseguenza di non poter assicurare il soddisfacimento dei criteri di regolarità in elevazione posti a base della progettazione.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 199,
+        "printedPage": "195",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "ed052da86742b8f0764b4f1e4cff6f466e8761290ea7e573bdf96262774df6d1",
+        "normalizedSha256": "ed052da86742b8f0764b4f1e4cff6f466e8761290ea7e573bdf96262774df6d1"
       }
     }
   ],
@@ -159,29 +400,32 @@
   "assets": {
     "formulaIds": [],
     "tableIds": [],
-    "figureIds": []
+    "figureIds": [
+      "urn:structural-codes:it:asset:figure:circ2019:c7.2.1",
+      "urn:structural-codes:it:asset:figure:circ2019:c7.2.2"
+    ]
   },
   "workflow": {
     "status": "extracted",
     "createdBy": {
-      "actorId": "codex:circ7:step0",
-      "kind": "automated-agent",
-      "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+      "actorId": "generator:circ7:step1",
+      "kind": "script",
+      "toolVersion": "circ7-manual-render-transcription-0.2.0"
     },
-    "createdAt": "2026-08-10T00:00:00Z",
+    "createdAt": "2026-08-23T00:00:00Z",
     "reviews": [],
     "openIssues": [
       {
         "issueId": "circ2019-c7-2-1-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Le intestazioni sono state confrontate con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+        "note": "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente."
       },
       {
-        "issueId": "circ2019-c7-2-1-raster-blocker",
-        "type": "ambiguous-source",
+        "issueId": "circ2019-c7-2-1-missing-text-layer",
+        "type": "missing-region",
         "severity": "blocking",
-        "note": "Le p. 199 della Circolare sono scansioni prive di un layer testuale utilizzabile: l’evidence locale è in evidence/circ-7-2019/pages e nei render alla stessa directory. Sono state registrate solo le intestazioni leggibili; la prosa, le Figure C7.2.1–C7.2.2 e le loro relazioni matematiche restano da trascrivere; [FIGURA_MANCANTE] per gli asset non ancora registrati. La trascrizione completa richiede verifica umana diretta sul PDF ufficiale prima della pubblicazione."
+        "note": "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF."
       }
     ]
   }

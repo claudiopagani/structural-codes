@@ -21,7 +21,7 @@
     "from": null,
     "to": null,
     "status": "unknown",
-    "asOf": "2026-08-10"
+    "asOf": "2026-08-23"
   },
   "blocks": [
     {
@@ -31,13 +31,7 @@
       "text": {
         "raw": "C7 PROGETTAZIONE PER AZIONI SISMICHE",
         "normalized": "C7 PROGETTAZIONE PER AZIONI SISMICHE",
-        "normalizationVersion": "circ7-raster-blocked-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "C7 PROGETTAZIONE PER AZIONI SISMICHE"
-          }
-        ]
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -53,17 +47,296 @@
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
-          "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ7-raster-blocked-profile-0.1.0",
-            "note": "Intestazione trascritta direttamente dal render ufficiale rasterizzato; il layer testuale della pagina contiene soltanto il piè di pagina."
-          }
-        ],
+        "transformations": [],
         "rawSha256": "8302a8455beeb465091c823ee59e932eec267e4fb6ba681e0335655802681f5d",
         "normalizedSha256": "8302a8455beeb465091c823ee59e932eec267e4fb6ba681e0335655802681f5d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il Capitolo 7 delle NTC illustra, per ciascuna delle tipologie costruttive considerate nei Capitoli 4, 5 e 6, i provvedimenti specifici da adottare, in presenza di azioni sismiche, finalizzandoli alla progettazione e costruzione delle nuove opere (per le opere esistenti si rimanda ai Capitoli 8 delle NTC e C8).",
+        "normalized": "Il Capitolo 7 delle NTC illustra, per ciascuna delle tipologie costruttive considerate nei Capitoli 4, 5 e 6, i provvedimenti specifici da adottare, in presenza di azioni sismiche, finalizzandoli alla progettazione e costruzione delle nuove opere (per le opere esistenti si rimanda ai Capitoli 8 delle NTC e C8).",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "7a56589e4a9117dbfe566160440d64b0e47da802afbdc02b8d390102d087d499",
+        "normalizedSha256": "7a56589e4a9117dbfe566160440d64b0e47da802afbdc02b8d390102d087d499"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le indicazioni relative ai modelli di calcolo, alle sollecitazioni e alle resistenze degli elementi strutturali sono additive e non sostitutive di quelle riportate nei Capitoli 4 e 5 delle NTC. Si deve inoltre fare riferimento al Capitolo 2 delle NTC, per le azioni e le loro combinazioni, e al Capitolo 3 delle NTC, per le modalità di rappresentazione dell’azione sismica e la definizione della sua entità in relazione ai diversi stati limite da considerare. Particolare attenzione richiedono, infine, le indicazioni geotecniche specificamente antisismiche (§ 7.11 delle NTC), al solito, additive e non sostitutive di quelle già riportate nel Capitolo 6 delle NTC.",
+        "normalized": "Le indicazioni relative ai modelli di calcolo, alle sollecitazioni e alle resistenze degli elementi strutturali sono additive e non sostitutive di quelle riportate nei Capitoli 4 e 5 delle NTC. Si deve inoltre fare riferimento al Capitolo 2 delle NTC, per le azioni e le loro combinazioni, e al Capitolo 3 delle NTC, per le modalità di rappresentazione dell’azione sismica e la definizione della sua entità in relazione ai diversi stati limite da considerare. Particolare attenzione richiedono, infine, le indicazioni geotecniche specificamente antisismiche (§ 7.11 delle NTC), al solito, additive e non sostitutive di quelle già riportate nel Capitolo 6 delle NTC.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le indicazioni relative ai modelli di calcolo, alle sollecitazioni e alle resistenze degli elementi strutturali sono additive e non sostitutive di quelle riportate nei Capitoli 4 e 5 delle NTC. Si deve inoltre fare riferimento al Capitolo 2 delle NTC, per le azioni e le loro combinazioni, e al Capitolo 3 delle NTC, per le modalità di rappresentazione dell’azione sismica e la definizione della sua entità in relazione ai diversi stati limite da considerare. Particolare attenzione richiedono, infine, le indicazioni geotecniche specificamente antisismiche ("
+          },
+          {
+            "kind": "math",
+            "value": "§ 7.11",
+            "latex": "\\S 7.11"
+          },
+          {
+            "kind": "text",
+            "value": " delle NTC), al solito, additive e non sostitutive di quelle già riportate nel Capitolo 6 delle NTC."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "755ba4ee3de8ac1576e33b0517132247c69b3a0c799984042c597193e57118d1",
+        "normalizedSha256": "755ba4ee3de8ac1576e33b0517132247c69b3a0c799984042c597193e57118d1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ampio spazio è stato riservato, sia nelle NTC sia nel presente documento, alle costruzioni e ai ponti con isolamento e dissipazione di energia (§ 7.10 delle NTC e C7.10); tale attenzione è giustificata dalla indiscutibile efficacia che tali tecniche hanno manifestato nel garantire i livelli prestazionali richiesti alle costruzioni antisismiche, particolarmente quando si vogliano perseguire strategie progettuali atte a minimizzare i danni, sia alle componenti strutturali, sia alle componenti non strutturali e agli impianti.",
+        "normalized": "Ampio spazio è stato riservato, sia nelle NTC sia nel presente documento, alle costruzioni e ai ponti con isolamento e dissipazione di energia (§ 7.10 delle NTC e C7.10); tale attenzione è giustificata dalla indiscutibile efficacia che tali tecniche hanno manifestato nel garantire i livelli prestazionali richiesti alle costruzioni antisismiche, particolarmente quando si vogliano perseguire strategie progettuali atte a minimizzare i danni, sia alle componenti strutturali, sia alle componenti non strutturali e agli impianti.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ampio spazio è stato riservato, sia nelle NTC sia nel presente documento, alle costruzioni e ai ponti con isolamento e dissipazione di energia ("
+          },
+          {
+            "kind": "math",
+            "value": "§ 7.1",
+            "latex": "\\S 7.1"
+          },
+          {
+            "kind": "text",
+            "value": "0 delle NTC e C7.10); tale attenzione è giustificata dalla indiscutibile efficacia che tali tecniche hanno manifestato nel garantire i livelli prestazionali richiesti alle costruzioni antisismiche, particolarmente quando si vogliano perseguire strategie progettuali atte a minimizzare i danni, sia alle componenti strutturali, sia alle componenti non strutturali e agli impianti."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "377115759b4262793aabe0843fa6e4f7b4b83924d233aa7ca79b512dfedf8828",
+        "normalizedSha256": "377115759b4262793aabe0843fa6e4f7b4b83924d233aa7ca79b512dfedf8828"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "La norma fa sistematico riferimento alla UNI EN 1998, risultando in sostanziale accordo con essa. Con tale finalità, particolare attenzione è stata dedicata a raccogliere, in una trattazione sintetica iniziale valida per tutte le tipologie costruttive, i requisiti comuni nei confronti degli stati limite (§ 7.1 delle NTC), i criteri generali di progettazione e modellazione (§ 7.2 delle NTC), i metodi di analisi e i criteri di verifica (§ 7.3 delle NTC). I paragrafi successivi (dal 7.4 al 7.11 delle NTC) sono poi dedicati alle diverse tipologie costruttive e a problemi specifici.",
+        "normalized": "La norma fa sistematico riferimento alla UNI EN 1998, risultando in sostanziale accordo con essa. Con tale finalità, particolare attenzione è stata dedicata a raccogliere, in una trattazione sintetica iniziale valida per tutte le tipologie costruttive, i requisiti comuni nei confronti degli stati limite (§ 7.1 delle NTC), i criteri generali di progettazione e modellazione (§ 7.2 delle NTC), i metodi di analisi e i criteri di verifica (§ 7.3 delle NTC). I paragrafi successivi (dal 7.4 al 7.11 delle NTC) sono poi dedicati alle diverse tipologie costruttive e a problemi specifici.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La norma fa sistematico riferimento alla UNI EN 1998, risultando in sostanziale accordo con essa. Con tale finalità, particolare attenzione è stata dedicata a raccogliere, in una trattazione sintetica iniziale valida per tutte le tipologie costruttive, i requisiti comuni nei confronti degli stati limite ("
+          },
+          {
+            "kind": "math",
+            "value": "§ 7.1",
+            "latex": "\\S 7.1"
+          },
+          {
+            "kind": "text",
+            "value": " delle NTC), i criteri generali di progettazione e modellazione (§ 7.2 delle NTC), i metodi di analisi e i criteri di verifica (§ 7.3 delle NTC). I paragrafi successivi (dal 7.4 al 7.11 delle NTC) sono poi dedicati alle diverse tipologie costruttive e a problemi specifici."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "566bcff722625206809463d700b3b2d46583e47f1d058196b13124f88a081c53",
+        "normalizedSha256": "566bcff722625206809463d700b3b2d46583e47f1d058196b13124f88a081c53"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le novità del Capitolo 7 delle NTC rispetto alla precedente versione sono più di carattere organizzativo che di carattere concettuale e verranno esaurientemente illustrate nei successivi paragrafi; tra le poche novità di carattere concettuale le principali sono:",
+        "normalized": "Le novità del Capitolo 7 delle NTC rispetto alla precedente versione sono più di carattere organizzativo che di carattere concettuale e verranno esaurientemente illustrate nei successivi paragrafi; tra le poche novità di carattere concettuale le principali sono:",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "235c25466122f4fa1d9f56af343e56e0119abce77ccf90cec583e6f93165dfc4",
+        "normalizedSha256": "235c25466122f4fa1d9f56af343e56e0119abce77ccf90cec583e6f93165dfc4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-006",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "la scomparsa di qualunque riferimento alla zonazione sismica, sostituita dalla indicazione dei livelli di accelerazione agS, attesa allo SLV;",
+        "normalized": "la scomparsa di qualunque riferimento alla zonazione sismica, sostituita dalla indicazione dei livelli di accelerazione agS, attesa allo SLV;",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "3fc3f00d560615bc3947b47b660534b9cd9d729af2e586f742d956bdce0e0f7c",
+        "normalizedSha256": "3fc3f00d560615bc3947b47b660534b9cd9d729af2e586f742d956bdce0e0f7c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "la chiara distinzione tra progettazione in capacità (approccio concettuale con cui si persegue la duttilità) e gerarchia delle resistenze (strumento operativo impiegato per conseguirla);",
+        "normalized": "la chiara distinzione tra progettazione in capacità (approccio concettuale con cui si persegue la duttilità) e gerarchia delle resistenze (strumento operativo impiegato per conseguirla);",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "e8221a259c55021cea0f8bab2463316fc8fcb002e26b09d06c4ba610b2fd5f9a",
+        "normalizedSha256": "e8221a259c55021cea0f8bab2463316fc8fcb002e26b09d06c4ba610b2fd5f9a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7#block-editorial-008",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "la sistematica adozione di tavole sinottiche di riepilogo dei diversi coefficienti, finalizzata a facilitare i confronti sistematici tra le diverse tipologie e i diversi stati limite.",
+        "normalized": "la sistematica adozione di tavole sinottiche di riepilogo dei diversi coefficienti, finalizzata a facilitare i confronti sistematici tra le diverse tipologie e i diversi stati limite.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 198,
+        "printedPage": "194",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [],
+        "rawSha256": "38363171a92f5f83d0f172dffeff8710e0b87b5f368aa59a4708aadb629364c9",
+        "normalizedSha256": "38363171a92f5f83d0f172dffeff8710e0b87b5f368aa59a4708aadb629364c9"
       }
     }
   ],
@@ -77,24 +350,24 @@
   "workflow": {
     "status": "extracted",
     "createdBy": {
-      "actorId": "codex:circ7:step0",
-      "kind": "automated-agent",
-      "toolVersion": "circ7-raster-blocked-profile-0.1.0"
+      "actorId": "generator:circ7:step1",
+      "kind": "script",
+      "toolVersion": "circ7-manual-render-transcription-0.2.0"
     },
-    "createdAt": "2026-08-10T00:00:00Z",
+    "createdAt": "2026-08-23T00:00:00Z",
     "reviews": [],
     "openIssues": [
       {
         "issueId": "circ2019-c7-source-review",
         "type": "normalization-review",
         "severity": "blocking",
-        "note": "Le intestazioni sono state confrontate con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione."
+        "note": "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente."
       },
       {
-        "issueId": "circ2019-c7-raster-blocker",
-        "type": "ambiguous-source",
+        "issueId": "circ2019-c7-missing-text-layer",
+        "type": "missing-region",
         "severity": "blocking",
-        "note": "Le p. 197 della Circolare sono scansioni prive di un layer testuale utilizzabile: l’evidence locale è in evidence/circ-7-2019/pages e nei render alla stessa directory. Sono state registrate solo le intestazioni leggibili; la prosa introduttiva della pagina 197 resta da trascrivere. La trascrizione completa richiede verifica umana diretta sul PDF ufficiale prima della pubblicazione."
+        "note": "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF."
       }
     ]
   }

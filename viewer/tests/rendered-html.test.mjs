@@ -49,12 +49,12 @@ test("il payload pubblico coincide con il lotto canonico", async () => {
     ),
   );
 
-    assert.equal(corpus.stats.units, 1741);
-    assert.equal(corpus.stats.blocks, 10682);
+    assert.equal(corpus.stats.units, 1745);
+    assert.equal(corpus.stats.blocks, 10883);
   assert.equal(corpus.stats.proposedRelations, 302);
-    assert.equal(corpus.stats.assetUnits, 415);
+    assert.equal(corpus.stats.assetUnits, 422);
   assert.equal(corpus.stats.reviewedUnits, 0);
-    assert.equal(corpus.units.length, 1741);
+    assert.equal(corpus.units.length, 1745);
   assert.equal(
     corpus.documents.ntc2018.localSourcePath,
     "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf",
@@ -67,9 +67,9 @@ test("il payload pubblico coincide con il lotto canonico", async () => {
     corpus.units.every((unit) => unit.workflow.status === "extracted"),
     true,
   );
-  assert.equal(Object.keys(corpus.assets.formulas).length, 823);
-  assert.equal(Object.keys(corpus.assets.tables).length, 208);
-  assert.equal(Object.keys(corpus.assets.figures).length, 195);
+  assert.equal(Object.keys(corpus.assets.formulas).length, 844);
+  assert.equal(Object.keys(corpus.assets.tables).length, 211);
+  assert.equal(Object.keys(corpus.assets.figures).length, 205);
 
   const section = corpus.units.find(
     (unit) => unit.id === "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1",
