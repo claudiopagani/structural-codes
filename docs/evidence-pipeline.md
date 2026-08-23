@@ -9,8 +9,8 @@ Il registro `sources/registry/sources.v2.json` contiene URL, byte attesi,
 SHA-256 e numero di pagine. La modalità predefinita è offline:
 
 ```bash
-npm run acquire:v2 -- --source gu-so8-2018-ntc
-npm run acquire:v2 -- --source gu-so8-2018-ntc --download
+npm run acquire:source -- --source gu-so8-2018-ntc
+npm run acquire:source -- --source gu-so8-2018-ntc --download
 ```
 
 Se il file locale esiste, viene sempre verificato e non viene sovrascritto.

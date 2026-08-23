@@ -1,142 +1,210 @@
 # Structural Codes
 
-Corpus open source, strutturato e verificabile delle norme tecniche per le
-costruzioni. Il primo perimetro comprende le NTC 2018 e la Circolare 7/2019.
-
-[Apri il visualizzatore web](https://strutture-normative-viewer.claudiopagani19.chatgpt.site/)
+Corpus open source, machine-readable e verificabile della normativa strutturale
+italiana. Il perimetro iniziale comprende NTC 2018, Circolare 7/2019, unità
+canoniche, formule, tabelle, figure, relazioni, provenance, workflow editoriale
+e strumenti di validazione.
 
 > [!WARNING]
-> Questo progetto non è una pubblicazione ufficiale dello Stato e il corpus non
-> è ancora una release normativa approvata. Per usi giuridici o professionali
-> verificare sempre il testo sugli atti ufficiali vigenti.
+> Structural Codes non è una fonte normativa ufficiale e il corpus non è
+> completamente validato. La pubblicazione del package su npm significa che un
+> artefatto versionato è disponibile alla community; non significa che ogni
+> trascrizione o relazione sia stata approvata. Per usi professionali o
+> giuridicamente rilevanti verificare sempre gli atti indicati nel
+> [source registry](sources/registry/sources.v2.json).
 
-## Stato
+## Stato della prerelease
 
-La passata editoriale avanzata copre i capitoli 1, 2, 3 e 4.1 delle NTC 2018,
-la sezione NTC 7.4.6.2.5, i capitoli NTC 10–12 e le sezioni C1, C2, C4.1 e
-C7.2–C7.3.6.2 della Circolare. Gli altri record presenti nel corpus restano
-`extracted` e richiedono la review umana prevista dal processo; la presenza di
-un record non equivale quindi a una trascrizione approvata.
+La prima versione pubblica è `0.1.0-alpha.1`. Tutte le 1.745 unità canoniche
+sono attualmente nello stato `extracted`; nessuna viene promossa dalla release.
+I 302 collegamenti Circolare → NTC presenti nel corpus sono relazioni esplicite
+ma ancora `proposed`. Le possibili corrispondenze ricavate dalla sola
+numerazione restano diagnostica separata e non sono usate come fonte canonica.
 
-Le unità canoniche sono esclusivamente in `corpus/` e restano `extracted`
-finché non superano le review umane previste.
+Una prerelease alpha consente di ispezionare, integrare e correggere il corpus
+mentre schema e API possono ancora cambiare. Non va interpretata come
+dichiarazione di conformità normativa.
 
-## Obiettivi
+## Installazione
 
-- riprodurre testo, formule, tabelle e figure con fedeltà alla fonte;
-- mantenere provenienza fino a pagina, regione e hash;
-- collegare in modo verificabile NTC, Circolare e implementazioni software;
-- offrire un viewer web di sola lettura per il controllo editoriale;
-- costruire un processo aperto al contributo e alla revisione della community.
+```bash
+npm install structural-codes@alpha
+```
 
-## Avvio locale
+Il runtime richiede Node.js `^22.13.0 || >=24.0.0`. L'entry point principale è
+ESM e non ha effetti collaterali. Gli helper puri funzionano anche nel browser;
+le utility che usano `node:crypto` sono isolate in `structural-codes/lib`.
 
-La repository non impone una versione specifica di Node.js o npm. È
-consigliata una release Node.js LTS recente; la CI verifica le linee 22 e 24.
-Gli eventuali requisiti minimi tecnici restano dichiarati dalle singole
-dipendenze. È sufficiente la versione npm inclusa in Node.js oppure una
-versione più recente compatibile con lockfile v3.
+## API pubblica minima
 
-Dopo il clone, installare separatamente e in modo deterministico i due
-progetti npm:
+```ts
+import {
+  CANONICAL_UNIT_SCHEMA_VERSION,
+  createUnitIndex,
+  documentIdFromUnitId,
+  findIncomingRelations,
+  sourceRegistryV2Schema,
+} from "structural-codes";
+
+import { sha256OfFile, sha256OfText } from "structural-codes/lib";
+import { sourceRegistryV2Schema as registrySchema } from "structural-codes/schema";
+```
+
+Il corpus JSON resta importabile senza attraversare `src/` o altri percorsi
+interni:
+
+```ts
+import corpusManifest from "structural-codes/corpus/manifest.json" with {
+  type: "json",
+};
+import ntc41 from "structural-codes/corpus/units/ntc2018/4.1.json" with {
+  type: "json",
+};
+import registry from "structural-codes/sources/registry" with { type: "json" };
+```
+
+Sono export pubblici intenzionali:
+
+- `structural-codes` — tipi, schema registry e helper puri per unità/relazioni;
+- `structural-codes/corpus` — helper e tipi del corpus;
+- `structural-codes/schema` — contratti Zod riusabili;
+- `structural-codes/lib` — canonicalizzazione e hash Node-only;
+- `structural-codes/corpus/**`, `schemas/**`, `sources/registry` e
+  `integration/structural-checks-ts` — dati machine-readable documentati.
+
+Il viewer, gli script editoriali, i test, i PDF e l'evidence locale non fanno
+parte del package runtime.
+
+## Struttura del corpus
+
+```text
+corpus/manifest.json       perimetro e stato complessivo
+corpus/units/              record JSON canonici NTC e Circolare
+corpus/assets/             manifest di formule, tabelle e figure
+corpus/assets/figures/     crop raster verificabili delle fonti
+schemas/                   JSON Schema di unità, asset e integrazioni
+sources/registry/          fonti istituzionali, byte, pagine e SHA-256
+integration/               metadati verso implementazioni software
+scripts/                   acquisizione, evidence, builder e validazione
+viewer/                    consumer web separato e in sola lettura
+```
+
+L'ordine di `blocks` riproduce il flusso della fonte. Ogni blocco testuale
+conserva testo raw selezionato, testo normalizzato, pagina/regione, hash e
+trasformazioni. Formule, tabelle e figure sono asset canonici richiamati da ID.
+Il source registry identifica il PDF editoriale autorevole; i PDF originali
+non sono redistribuiti.
+
+## Workflow machine-readable
+
+Lo stato è registrato per unità in `workflow.status`:
+
+- `draft`: record di lavoro non ancora acquisito come estrazione canonica;
+- `extracted`: struttura ed evidence presenti, ma confronto umano integrale non
+  completato;
+- `source-checked`: confronto richiesto con la fonte ufficiale completato e
+  registrato; non implica la seconda review;
+- `double-reviewed`: secondo controllo indipendente previsto dal workflow
+  completato;
+- `published`: unità inclusa nel perimetro editoriale dichiarato del corpus;
+- `superseded`: unità conservata per tracciabilità ma sostituita da una versione
+  successiva.
+
+`extracted` non significa validato. `source-checked` non significa
+`double-reviewed`. Il package npm può essere pubblicato mentre le unità restano
+in review.
+
+## Provenance ed evidence
+
+Il registro contiene URL istituzionale, dimensione, numero di pagine e hash del
+PDF. I record canonici collegano ogni contenuto a source ID, pagina, regione,
+metodo di estrazione, trasformazioni e hash raw/normalized. `raw-sources/` ed
+`evidence/` sono materiali locali ignorati da Git: devono essere acquisiti e
+verificati prima della review, non allegati a issue o pull request.
+
+```bash
+npm run acquire:source -- --source gu-so8-2018-ntc --download
+npm run extract:evidence -- --source gu-so8-2018-ntc --pages 74-75
+npm run render:evidence -- --source gu-so8-2018-ntc --page 74 --scale 2
+npm run review:diff -- --unit corpus/units/ntc2018/4.1.json
+```
+
+## Viewer per la community review
+
+Il viewer offre tre modalità: NTC 2018, Circolare 7/2019 e NTC 2018 +
+Circolare. La vista combinata usa soltanto le relazioni esplicite del corpus,
+supporta 0..n unità della Circolare e marca i collegamenti non revisionati.
+
+Gli artefatti web sono statici e rigenerabili: un manifest iniziale piccolo,
+indici per documento, 153 chunk per sezione significativa, relazioni esplicite
+e un indice di ricerca caricato soltanto quando serve. PDF.js e il PDF ufficiale
+vengono caricati solo su richiesta nella lettura comparata. Un'app OCFEM che non
+entra nel viewer non deve scaricare alcun corpus normativo.
 
 ```bash
 npm ci
 npm run viewer:install
-```
-
-La root contiene gli strumenti del corpus, mentre `viewer/` è un'applicazione
-npm indipendente con il proprio lockfile. Non è un workspace: i comandi
-`viewer:*` eseguiti dalla root usano `npm --prefix viewer` e non modificano il
-lockfile principale.
-
-Per sincronizzare automaticamente il corpus e avviare il server di sviluppo:
-
-```bash
 npm run viewer:dev
 ```
 
-Build e avvio della build di produzione:
+Le correzioni si fanno nel corpus o nei generatori, mai sotto
+`viewer/public/`, che contiene esclusivamente derivati ignorati da Git.
 
-```bash
-npm run build
-npm run viewer:start
-```
+## Structural Codes, Structural Checks e OCFEM
 
-`viewer:dev` e `build` eseguono `viewer:sync:corpus` prima di Vinext. I dati e
-le figure sotto `viewer/public/` sono derivati ignorati da Git e non vanno
-modificati direttamente. Non sono richieste variabili d'ambiente per l'avvio
-locale.
+- `structural-codes` contiene normativa strutturata, riferimenti, provenance,
+  relazioni e workflow di review;
+- `structural-checks-ts` contiene algoritmi, calcoli e verifiche strutturali;
+- OCFEM può consumare versioni pubblicate dei due progetti, ma non è la source
+  of truth e nessuno dei due package dipende dal prodotto OCFEM.
 
-L'installazione del viewer disabilita inizialmente tutti gli install script,
-controlla nel lockfile nomi e versioni rispetto ad `allowScripts` in
-`viewer/package.json`, quindi esegue `npm rebuild` soltanto per i pacchetti
-approvati. La stessa lista è riconosciuta direttamente come `allowScripts`
-dalle versioni di npm che supportano tale policy; lo script locale la applica
-anche con versioni precedenti. Un nuovo install script o una versione diversa
-fa fallire `npm run viewer:install` prima dell'autorizzazione.
+Il manifest d'integrazione registra nome e versione del provider, commit,
+export e hash. Una futura build OCFEM può quindi registrare versione del
+package, versione schema, fingerprint del corpus e fingerprint degli artefatti
+generati senza copiare manualmente i dati.
 
-Verifiche complete:
+## Contribuire
+
+Per segnalare una differenza normativa usa il template dedicato indicando
+documento, unità, pagina e passaggi di verifica. Per una relazione Circolare ↔
+NTC errata o mancante usa il template relazione. Una pull request editoriale
+deve essere circoscritta, confrontata con il PDF registrato, mantenere
+provenance e hash, aggiungere una regressione e lasciare esplicite le
+ambiguità.
+
+Leggi [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md), la
+[pipeline evidence](docs/evidence-pipeline.md) e le regole di
+[normalizzazione e review](docs/normalizzazione-e-review.md).
+
+## Verifica e release
 
 ```bash
 npm run check
 npm run viewer:check
+npm run release:verify
 ```
 
-`npm run check` verifica anche hash e numero di pagine dei PDF ufficiali
-locali. La CI, dove `raw-sources/` è intenzionalmente assente, usa
-`npm run check:ci`: valida integralmente registro e manifest ma non finge di
-verificare file non distribuiti.
+`release:verify` esegue validazioni di fonti, schema, corpus, evidence e
+integrazione, typecheck, lint, test, audit runtime, test viewer, dry-run del
+pack, ispezione del tarball reale, installazione in un consumer temporaneo e
+import runtime/TypeScript delle API pubbliche. Nessun comando pubblica
+automaticamente.
 
-Per aggiornare le dipendenze, modificare il `package.json` del solo progetto
-interessato con la toolchain dichiarata, eseguire `npm install` nella root
-oppure `npm --prefix viewer install`, rieseguire audit, test e build, quindi
-commettere insieme manifest e relativo lockfile. Per rigenerare un lockfile
-senza installare pacchetti usare `npm install --package-lock-only` nella root
-oppure `npm --prefix viewer install --package-lock-only`; non rigenerare
-entrambi se è cambiato un solo progetto.
+La procedura completa è documentata in [docs/release.md](docs/release.md).
 
-## Dove lavorare
+La strategia SemVer è:
 
-```text
-corpus/units/       unità JSON canoniche NTC e Circolare
-corpus/assets/      manifest di formule, tabelle e figure
-scripts/            estrazione, builder e profili editoriali
-tests/              regressioni strutturali ed editoriali
-viewer/             visualizzatore web di sola lettura
-sources/registry/   registro verificabile delle fonti
-schemas/            contratti JSON del corpus
-fixtures/           evidence e record minimi per i test
-docs/               architettura, evidence, review e roadmap
-```
+- `alpha`: corpus incompleto o non interamente revisionato; schema/API mobili;
+- `beta`: struttura e API sufficientemente stabili, review ancora in corso;
+- stable: perimetro dichiarato e adeguatamente revisionato.
 
-I PDF ufficiali sono attesi in `raw-sources/`, ma non sono versionati. Anche
-`evidence/`, `review/`, `tmp/` e `.audit-private/` restano locali.
+Una stable npm resta una dichiarazione di stabilità del package, non una
+certificazione legale automatica.
 
-## Contribuire
-
-Prima di modificare testo normativo, formule, tabelle o figure, leggere:
-
-- [AGENTS.md](AGENTS.md), contratto editoriale operativo valido anche per gli
-  agenti LLM;
-- [CONTRIBUTING.md](CONTRIBUTING.md), procedura per issue e pull request;
-- [pipeline evidence](docs/evidence-pipeline.md);
-- [normalizzazione e review](docs/normalizzazione-e-review.md).
-
-Le correzioni devono essere circoscritte, verificabili sul PDF e coperte da un
-test di regressione. Dati incerti non vanno ricostruiti per plausibilità.
-
-## Architettura e policy
-
-- [Perimetro normativo](docs/perimetro-normativo.md)
-- [ADR: JSON canonico e output derivati](docs/adr/0002-json-canonico-e-output-derivati.md)
-- [ADR: evidence, relazioni e review](docs/adr/0004-evidence-relazioni-e-review.md)
-- [ADR: identità, licenza e pubblicazione](docs/adr/0005-identita-licenza-e-pubblicazione.md)
-- [ADR: figure ufficiali e derivati](docs/adr/0006-figure-ufficiali-e-derivati.md)
-
-## Licenza
+## Licenza e fonti ufficiali
 
 Software, schemi, indici e apparati editoriali sono distribuiti con licenza
-LGPL-2.1-or-later. I testi normativi riprodotti sono atti ufficiali dello
-Stato italiano e mantengono l'indicazione della fonte. Vedere [LICENSE](LICENSE)
-e [NOTICE](NOTICE).
+LGPL-2.1-or-later. I testi normativi riprodotti sono atti ufficiali dello Stato
+italiano e mantengono l'indicazione della fonte. Vedere [LICENSE](LICENSE),
+[NOTICE](NOTICE), [source registry](sources/registry/sources.v2.json) e il
+[perimetro normativo](docs/perimetro-normativo.md).

@@ -35,10 +35,11 @@ test("espone il viewer di consultazione separato", async () => {
   const html = await response.text();
   assert.match(html, /Consultazione comparata/);
   assert.match(html, /comparison-shell/);
-  assert.match(html, /Solo NTC/);
-  assert.match(html, /Solo Circolare/);
+  assert.match(html, /NTC 2018 \+ Circolare/);
+  assert.match(html, /Circolare 7\/2019/);
   assert.match(html, /Testo trascritto continuo/);
   assert.match(html, /PDF ufficiale/);
+  assert.match(html, /Apri PDF ufficiale/);
   assert.doesNotMatch(html, /class="topbar"/);
 });
 
@@ -66,6 +67,8 @@ test("non ripete il titolo canonico nei blocchi dell'unità", async () => {
     source,
     /\.filter\(\(block\) => !isRepeatedUnitTitle\(unit, block\)\)/,
   );
+  assert.doesNotMatch(source, /fetch\("\/data\/corpus\.json"\)/);
+  assert.match(source, /if \(!manifest \|\| !pdfRequested\) return;/);
 });
 
 test("manda il testo a capo dopo il titolo senza aggiungere pallini agli elenchi", async () => {

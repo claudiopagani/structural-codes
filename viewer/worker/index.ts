@@ -1,13 +1,25 @@
-/** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import corpusManifest from "structural-codes/corpus/manifest.json" with { type: "json" };
+import sourceRegistry from "structural-codes/sources/registry" with { type: "json" };
 
-const sourcePdfs = {
-  ntc2018:
-    "https://www.gazzettaufficiale.it/eli/gu/2018/02/20/42/so/8/sg/pdf",
-  circ2019:
-    "https://www.gazzettaufficiale.it/eli/gu/2019/02/11/35/so/5/sg/pdf",
-} as const;
+type DocumentId = keyof typeof corpusManifest.documents;
+
+const sourceUrlById = new Map(
+  sourceRegistry.works.flatMap((work) =>
+    work.manifestations.map((manifestation) => [
+      manifestation.sourceId,
+      manifestation.officialUrl,
+    ] as const),
+  ),
+);
+
+function officialPdfUrl(document: DocumentId) {
+  const sourceId = corpusManifest.documents[document].sourceId;
+  const sourceUrl = sourceUrlById.get(sourceId);
+  if (!sourceUrl) throw new Error(`Source registry privo di ${sourceId}`);
+  return sourceUrl;
+}
 
 interface Env {
   ASSETS: {
@@ -47,11 +59,12 @@ const worker = {
       const headers = new Headers();
       const range = request.headers.get("range");
       if (range) headers.set("range", range);
-      const upstream = await fetch(sourcePdfs[document], { headers });
+      const upstream = await fetch(officialPdfUrl(document), { headers });
       const responseHeaders = new Headers({
         "content-type": "application/pdf",
         "content-disposition": `inline; filename="${document}.pdf"`,
         "cache-control": "public, max-age=86400",
+        "x-content-type-options": "nosniff",
       });
       for (const name of [
         "accept-ranges",

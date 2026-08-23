@@ -1,0 +1,48 @@
+name: Relazione NTC/Circolare
+description: Segnala un collegamento esplicito errato, mancante o ambiguo.
+title: "[Relazione] "
+labels:
+  - editorial
+  - relations
+body:
+  - type: input
+    id: circ_unit
+    attributes:
+      label: Unità Circolare
+      placeholder: "es. C4.1.2.2"
+    validations:
+      required: true
+  - type: input
+    id: ntc_unit
+    attributes:
+      label: Unità NTC
+      placeholder: "es. 4.1.2.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Tipo di problema
+      options:
+        - Relazione esplicita mancante
+        - Target errato
+        - Relazione ambigua o 1→n incompleta
+        - Tipo, rationale o stato review errato
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence e motivazione
+      description: Indica pagine, blocchi e testo che supportano o smentiscono il collegamento.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Conferme
+      options:
+        - label: Ho verificato il contenuto delle due unità sulle fonti ufficiali registrate.
+          required: true
+        - label: La proposta non deriva soltanto dalla somiglianza della numerazione.
+          required: true

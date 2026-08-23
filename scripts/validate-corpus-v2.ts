@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { ErrorObject, ValidateFunction } from "ajv";
 import type { FormatsPlugin } from "ajv-formats";
@@ -241,6 +241,7 @@ function validateTableRows(
 }
 
 const manifestAssetIds = new Set<string>();
+const manifestFigurePaths = new Set<string>();
 const registeredSourceIds = new Set(
     registry.works.flatMap((work) =>
         work.manifestations.map((manifestation) => manifestation.sourceId),
@@ -275,6 +276,7 @@ for (const record of validAssetRecords) {
         validateTableRows(`${table.id} corpo`, table.rows, table.columnCount);
     }
     for (const figure of record.value.figures) {
+        manifestFigurePaths.add(figure.imagePath);
         const imageFile = join(repoRoot, "corpus", "assets", figure.imagePath);
         const digest = createHash("sha256")
             .update(await readFile(imageFile))
@@ -283,6 +285,16 @@ for (const record of validAssetRecords) {
             errors += 1;
             console.error(`  ERRORE ${figure.id}: sha256 del ritaglio non corrisponde`);
         }
+    }
+}
+
+const figureDirectory = join(repoRoot, "corpus", "assets", "figures");
+for (const file of await walkFiles(figureDirectory, ".png")) {
+    const imagePath = relative(join(repoRoot, "corpus", "assets"), file.absolutePath)
+        .replaceAll("\\", "/");
+    if (!manifestFigurePaths.has(imagePath)) {
+        errors += 1;
+        console.error(`  ERRORE ritaglio figura senza manifest: ${imagePath}`);
     }
 }
 

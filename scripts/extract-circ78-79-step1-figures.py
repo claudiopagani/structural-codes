@@ -6,14 +6,13 @@ import json
 import subprocess
 from pathlib import Path
 
+from lib.poppler import resolve_pdftoppm
+
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "raw-sources" / "circ2019" / "circolare-7-2019.pdf"
 MANIFEST = ROOT / "corpus" / "assets" / "circ2019" / "7.8-7.9.json"
 OUT = ROOT / "corpus" / "assets" / "figures" / "circ2019"
-PDFTOPPM = Path(
-    r"C:\Users\pagan\.cache\codex-runtimes\codex-primary-runtime"
-    r"\dependencies\native\poppler\Library\bin\pdftoppm.exe"
-)
+PDFTOPPM = resolve_pdftoppm()
 RESOLUTION = 300
 SCALE = RESOLUTION / 72
 

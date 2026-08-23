@@ -1,18 +1,59 @@
 {
     "name": "structural-codes",
-    "version": "0.1.0",
+    "version": "0.1.0-alpha.1",
     "description": "Corpus strutturato, versionato e verificabile delle NTC 2018 e della Circolare 7/2019, predisposto per collegamenti a structural-checks-ts.",
-    "private": true,
     "license": "LGPL-2.1-or-later",
+    "homepage": "https://github.com/claudiopagani/structural-codes#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/claudiopagani/structural-codes.git"
+    },
+    "bugs": {
+        "url": "https://github.com/claudiopagani/structural-codes/issues"
+    },
+    "keywords": [
+        "structural-engineering",
+        "civil-engineering",
+        "building-codes",
+        "ntc2018",
+        "italian-regulations",
+        "machine-readable-law"
+    ],
     "type": "module",
     "sideEffects": false,
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
-        ".": "./src/index.ts",
-        "./schema": "./src/schema/index.ts",
-        "./lib": "./src/lib/index.ts"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./corpus": {
+            "types": "./dist/corpus/index.d.ts",
+            "import": "./dist/corpus/index.js",
+            "default": "./dist/corpus/index.js"
+        },
+        "./schema": {
+            "types": "./dist/schema/index.d.ts",
+            "import": "./dist/schema/index.js",
+            "default": "./dist/schema/index.js"
+        },
+        "./lib": {
+            "types": "./dist/lib/index.d.ts",
+            "import": "./dist/lib/index.js",
+            "default": "./dist/lib/index.js"
+        },
+        "./corpus/manifest.json": "./corpus/manifest.json",
+        "./corpus/units/*": "./corpus/units/*",
+        "./corpus/assets/*": "./corpus/assets/*",
+        "./schemas/*": "./schemas/*",
+        "./sources/registry": "./sources/registry/sources.v2.json",
+        "./integration/structural-checks-ts": "./integration/structural-checks-ts/manifest.json",
+        "./package.json": "./package.json"
     },
     "files": [
-        "src",
+        "dist",
         "schemas",
         "corpus",
         "sources/registry",
@@ -21,15 +62,21 @@
         "LICENSE",
         "NOTICE"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "engines": {
+        "node": "^22.13.0 || >=24.0.0"
+    },
     "scripts": {
         "test": "node --experimental-strip-types --test \"tests/*.test.ts\"",
         "typecheck": "tsc --noEmit -p tsconfig.json",
-        "lint": "eslint src scripts tests",
+        "lint": "eslint src scripts tests --max-warnings 0",
         "validate:sources": "node --experimental-strip-types scripts/verify-source-registry-v2.ts",
         "validate:sources:registry": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --registry-only",
         "validate:corpus": "node --experimental-strip-types scripts/validate-corpus-v2.ts",
         "validate:integration": "node --experimental-strip-types scripts/validate-integration-manifest.ts",
-        "verify:integration:local": "node --experimental-strip-types scripts/validate-integration-manifest.ts --provider ../strutture-js",
+        "verify:integration:local": "node --experimental-strip-types scripts/validate-integration-manifest.ts --provider ../structural-checks-ts",
         "verify:sources:online": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --online",
         "validate": "npm run validate:sources && npm run validate:corpus && npm run validate:integration",
         "validate:ci": "npm run validate:sources:registry && npm run validate:corpus && npm run validate:integration",
@@ -37,6 +84,7 @@
         "extract:evidence": "node --experimental-strip-types scripts/extract-evidence.ts",
         "render:evidence": "node --experimental-strip-types scripts/render-evidence.ts",
         "verify:evidence": "node --experimental-strip-types scripts/verify-evidence.ts",
+        "verify:evidence:release": "node --experimental-strip-types scripts/verify-evidence.ts --require-local --require-samples",
         "normalize:text": "node --experimental-strip-types scripts/normalize-text.ts",
         "review:diff": "node --experimental-strip-types scripts/generate-review-diff.ts",
         "workflow:check": "node --experimental-strip-types scripts/check-workflow-transition.ts",
@@ -133,15 +181,21 @@
     "corpus:circ87:step3b": "node --experimental-strip-types scripts/build-circ87-step3b.ts",
     "corpus:circ43:figures": "python scripts/extract-circ43-figures.py",
     "corpus:circ43": "node --experimental-strip-types scripts/build-circ43-step1.ts",
-        "build": "npm run viewer:build",
+        "build": "npm run build:package",
+        "build:package": "node scripts/build-package.mjs",
         "viewer:install": "node scripts/install-viewer-dependencies.mjs",
         "viewer:dev": "npm --prefix viewer run dev",
         "viewer:build": "npm --prefix viewer run build",
         "viewer:start": "npm --prefix viewer run start",
         "viewer:check": "npm --prefix viewer run check",
         "viewer:test": "npm --prefix viewer test",
+        "audit:production": "npm audit --omit=dev",
+        "viewer:audit:production": "npm --prefix viewer audit --omit=dev",
         "check": "npm run validate && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
-        "check:ci": "npm run validate:ci && npm run verify:evidence && npm run typecheck && npm run lint && npm test"
+        "check:ci": "npm run validate:ci && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
+        "release:verify:package": "npm run build:package && node scripts/verify-release.mjs",
+        "release:verify": "npm run check && npm run verify:evidence:release && npm run audit:production && npm run viewer:check && npm run viewer:audit:production && npm run release:verify:package",
+        "prepack": "npm run build:package"
     },
     "dependencies": {
         "zod": "^3.24.1"

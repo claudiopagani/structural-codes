@@ -1,12 +1,11 @@
 {
   "name": "structural-codes-viewer",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "private": true,
   "allowScripts": {
     "esbuild@0.28.1": true,
-    "sharp@0.34.5": true,
     "unrs-resolver@1.11.1": true,
-    "workerd@1.20260722.1": true
+    "workerd@1.20260820.1": true
   },
   "scripts": {
     "sync:corpus": "node scripts/sync-corpus.mjs",
@@ -14,33 +13,33 @@
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --max-warnings 0",
     "check": "npm run lint && npm test"
   },
   "dependencies": {
     "katex": "^0.16.22",
-    "next": "16.2.12",
-    "pdfjs-dist": "5.7.284",
+    "next": "16.3.2",
+    "pdfjs-dist": "6.2.108",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "structural-codes": "file:.."
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.47.0",
+    "@cloudflare/vite-plugin": "1.53.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
+    "@vitejs/plugin-rsc": "0.5.34",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.12",
+    "eslint-config-next": "16.3.2",
     "react-server-dom-webpack": "19.2.8",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
-    "vinext": "0.0.50",
+    "vinext": "1.0.0-beta.8",
     "vite": "8.1.5",
-    "wrangler": "4.114.0"
+    "wrangler": "4.125.0"
   },
   "type": "module"
 }

@@ -1,177 +1,59 @@
 "use client";
 
-import {
-  useDeferredValue,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { visibleTableNotes } from "./tableNotes.mjs";
+import {
+  documentForMode,
+  loadChunk,
+  loadDocumentIndex,
+  loadManifest,
+  loadRelations,
+  loadSearchIndex,
+  type AssetBundle,
+  type CorpusBlock,
+  type CorpusChunk,
+  type CorpusManifest,
+  type CorpusUnit,
+  type DocumentId,
+  type DocumentIndex,
+  type RelationEdge,
+  type SearchIndex,
+  type TableCell,
+  type UnitSummary,
+  type ViewerMode,
+} from "./corpusData";
 
-export type DocumentId = "ntc2018" | "circ2019";
+export type {
+  AssetBundle,
+  CorpusBlock,
+  CorpusChunk,
+  CorpusManifest,
+  CorpusUnit,
+  DocumentId,
+  RelationEdge,
+  UnitSummary,
+  ViewerMode,
+} from "./corpusData";
+
 type ViewId = "corpus" | "roadmap";
 
-export interface Evidence {
-  sourceId: string;
-  pdfPage: number;
-  printedPage: string | null;
-  region: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  };
-  transformations?: Array<{
-    operation: string;
-    note: string;
-  }>;
-  rawSha256: string;
-  normalizedSha256: string;
-}
-
-export interface CorpusBlock {
-  blockId: string;
-  kind: string;
-  origin: string;
-  text?: {
-    raw: string;
-    normalized: string;
-    normalizationVersion: string;
-    inline?: Array<
-      | {
-          kind: "text";
-          value: string;
-        }
-      | {
-          kind: "math";
-          value: string;
-          latex: string;
-        }
-    >;
-  };
-  assetId?: string;
-  evidence?: Evidence;
-}
-
-interface FormulaAsset {
-  id: string;
-  officialNumber: string | null;
-  pdfPage: number;
-  latex: string;
-}
-
-interface TableCell {
-  text: string;
-  latex?: string;
-  colSpan?: number;
-  rowSpan?: number;
-}
-
-interface TableAsset {
-  id: string;
-  officialNumber: string | null;
-  pdfPage: number;
-  caption: string | null;
-  headers: TableCell[][];
-  rows: TableCell[][];
-  notes: string[];
-}
-
-interface FigureAsset {
-  id: string;
-  officialNumber: string;
-  pdfPage: number;
-  caption: string;
-  alt: string;
-  imagePath: string;
-}
-
-interface OpenIssue {
-  issueId: string;
-  type: string;
-  severity: "blocking" | "warning" | "info";
-  note: string;
-}
-
-interface Relation {
-  relationId: string;
-  type: string;
-  targetUnitId: string;
-  basis: string;
-  rationale: string;
-  review: {
-    status: string;
-  };
-}
-
-export interface CorpusUnit {
-  id: string;
-  document: DocumentId;
-  kind: string;
-  numbering: {
-    official: string;
-    sortKey: string;
-  };
-  title: string;
-  hierarchy: {
-    parentId: string | null;
-    ancestorIds: string[];
-    position: number;
-  };
-  validity: {
-    from: string | null;
-    to: string | null;
-    status: string;
-    asOf: string;
-  };
-  blocks: CorpusBlock[];
-  relations: Relation[];
-  workflow: {
-    status: string;
-    openIssues: OpenIssue[];
-  };
-}
-
-export interface CorpusData {
-  generatedAt: string;
-  fingerprintSha256: string;
-  status: string;
-  disclaimer: string;
-  stats: {
-    units: number;
-    blocks: number;
-    proposedRelations: number;
-    reviewedUnits: number;
-    assetUnits: number;
-  };
-  documents: Record<
-    DocumentId,
-    {
-      shortLabel: string;
-      label: string;
-      sourceUrl: string;
-      publicationUrl: string;
-      localSourcePath: string;
-      units: number;
-      blocks: number;
-      pages: { from: number; to: number };
-    }
-  >;
-  assets: {
-    status: string;
-    formulas: Record<string, FormulaAsset>;
-    tables: Record<string, TableAsset>;
-    figures: Record<string, FigureAsset>;
-  };
-  units: CorpusUnit[];
-}
+const modeOptions: Array<{ id: ViewerMode; label: string }> = [
+  { id: "ntc", label: "NTC 2018" },
+  { id: "circ", label: "Circolare 7/2019" },
+  { id: "combined", label: "NTC 2018 + Circolare" },
+];
 
 const labels = {
   extracted: "Estratto",
+  "source-checked": "Controllato sulla fonte",
+  "double-reviewed": "Doppia revisione",
+  published: "Pubblicato nel corpus",
+  superseded: "Superato",
   chapter: "Capitolo",
   section: "Sezione",
   subsection: "Sottosezione",
@@ -184,65 +66,18 @@ const labels = {
   "figure-ref": "Figura",
   "normalization-review": "Verifica fonte",
   "asset-review": "Asset",
+  blocking: "bloccante",
+  warning: "warning",
+  info: "informativa",
+  clarifies: "chiarisce",
   other: "Estrazione",
 } as const;
-
-const closureStages = [
-  {
-    index: "01",
-    title: "Confermare il testo",
-    metric: "0 / 333",
-    description:
-      "Confronto integrale di ogni blocco con il render ufficiale, con firma della review di fonte.",
-    state: "prossimo",
-  },
-  {
-    index: "02",
-    title: "Separare gli asset",
-    metric: "0 / 122",
-    description:
-      "Formule, tabelle e figure diventano entità autonome con regione, trascrizione e hash.",
-    state: "aperto",
-  },
-  {
-    index: "03",
-    title: "Validare i collegamenti",
-    metric: "0 / 89",
-    description:
-      "Le relazioni Circolare → NTC passano da proposta editoriale a collegamento revisionato.",
-    state: "aperto",
-  },
-  {
-    index: "04",
-    title: "Seconda revisione",
-    metric: "0 / 333",
-    description:
-      "Una review normativa indipendente verifica struttura, significato tecnico e completezza.",
-    state: "bloccato",
-  },
-  {
-    index: "05",
-    title: "Recuperare C7",
-    metric: "56 pagine",
-    description:
-      "OCR tracciato della Circolare C7, confronto visuale rafforzato e allineamento con NTC 7.",
-    state: "pipeline dedicata",
-  },
-  {
-    index: "06",
-    title: "Pubblicare il lotto",
-    metric: "release 0.1",
-    description:
-      "Solo unità senza issue bloccanti, con doppia review e gate di rilascio verde.",
-    state: "bloccato",
-  },
-] as const;
 
 function displayLabel(value: string) {
   return labels[value as keyof typeof labels] ?? value;
 }
 
-function unitDepth(unit: CorpusUnit) {
+function unitDepth(unit: UnitSummary) {
   return Math.min(unit.hierarchy.ancestorIds.length, 4);
 }
 
@@ -250,63 +85,155 @@ function idSuffix(id: string) {
   return id.split(":").at(-1) ?? id;
 }
 
-function searchHaystack(unit: CorpusUnit) {
-  return [
-    unit.numbering.official,
-    unit.title,
-    ...unit.blocks.map((block) => block.text?.normalized ?? ""),
-  ]
-    .join(" ")
-    .toLocaleLowerCase("it");
+function normalizedQuery(value: string) {
+  return value.normalize("NFKC").trim().toLocaleLowerCase("it");
+}
+
+function updateDeepLink(mode: ViewerMode, unitId: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("mode", mode);
+  url.searchParams.set("unit", unitId);
+  url.searchParams.delete("document");
+  window.history.replaceState(null, "", url);
+}
+
+interface RelatedUnit {
+  unit: CorpusUnit;
+  chunk: CorpusChunk;
+  edge: RelationEdge;
 }
 
 export function CorpusViewer() {
-  const [data, setData] = useState<CorpusData | null>(null);
+  const router = useRouter();
+  const [manifest, setManifest] = useState<CorpusManifest | null>(null);
+  const [index, setIndex] = useState<DocumentIndex | null>(null);
+  const [chunk, setChunk] = useState<CorpusChunk | null>(null);
+  const [related, setRelated] = useState<RelatedUnit[]>([]);
+  const [searchIndex, setSearchIndex] = useState<SearchIndex | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [view, setView] = useState<ViewId>("corpus");
-  const [activeDocument, setActiveDocument] =
-    useState<DocumentId>("ntc2018");
+  const [mode, setMode] = useState<ViewerMode>("ntc");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [issueOnly, setIssueOnly] = useState(false);
   const [showRaw, setShowRaw] = useState(false);
-  const [mobilePanel, setMobilePanel] = useState<"index" | "article" | "evidence">(
-    "article",
-  );
+  const [mobilePanel, setMobilePanel] = useState<"index" | "article" | "evidence">("article");
   const searchRef = useRef<HTMLInputElement>(null);
-  const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("it"));
+  const requestedIdRef = useRef<string | null>(null);
+  const deferredQuery = useDeferredValue(normalizedQuery(query));
 
   useEffect(() => {
-    fetch("/data/corpus.json")
-      .then((response) => {
-        if (!response.ok) throw new Error("Corpus non disponibile");
-        return response.json() as Promise<CorpusData>;
-      })
-      .then((corpus) => {
-        setData(corpus);
-        const requested = new URL(window.location.href).searchParams.get("unit");
-        const initial =
-          corpus.units.find((unit) => unit.id === requested) ??
-          corpus.units.find(
-            (unit) =>
-              unit.document === "ntc2018" &&
-              unit.numbering.official === "4.1",
-          ) ??
-          corpus.units[0];
-        if (initial) {
-          setSelectedId(initial.id);
-          setActiveDocument(initial.document);
+    loadManifest()
+      .then((loaded) => {
+        const url = new URL(window.location.href);
+        const requestedMode = url.searchParams.get("mode");
+        if (modeOptions.some((option) => option.id === requestedMode)) {
+          setMode(requestedMode as ViewerMode);
         }
+        requestedIdRef.current = url.searchParams.get("unit");
+        setSelectedId(requestedIdRef.current);
+        setManifest(loaded);
       })
       .catch(() => setLoadError(true));
   }, []);
 
   useEffect(() => {
+    if (!manifest) return;
+    let cancelled = false;
+    const document = documentForMode(mode);
+    loadDocumentIndex(manifest, document)
+      .then((loaded) => {
+        if (cancelled) return;
+        setIndex(loaded);
+        const requested = loaded.units.find(
+          (unit) => unit.id === requestedIdRef.current,
+        );
+        const initial =
+          requested ??
+          loaded.units.find((unit) => unit.numbering.official === (document === "ntc2018" ? "4.1" : "C4.1")) ??
+          loaded.units[0];
+        if (initial) {
+          requestedIdRef.current = initial.id;
+          setSelectedId(initial.id);
+          updateDeepLink(mode, initial.id);
+        }
+      })
+      .catch(() => setLoadError(true));
+    return () => {
+      cancelled = true;
+    };
+  }, [manifest, mode]);
+
+  const selectedSummary =
+    index?.units.find((unit) => unit.id === selectedId) ?? null;
+
+  const selectedChunkPath = selectedSummary?.chunkPath ?? null;
+
+  useEffect(() => {
+    if (!selectedChunkPath) return;
+    let cancelled = false;
+    loadChunk(selectedChunkPath)
+      .then((loaded) => {
+        if (!cancelled) setChunk(loaded);
+      })
+      .catch(() => setLoadError(true));
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedChunkPath]);
+
+  const selectedUnit =
+    chunk?.units.find((unit) => unit.id === selectedId) ?? null;
+
+  const selectedUnitId = selectedUnit?.id ?? null;
+
+  useEffect(() => {
+    if (!manifest || mode !== "combined" || !selectedUnitId) return;
+    let cancelled = false;
+    loadRelations(manifest)
+      .then(async ({ relations }) => {
+        const incoming = relations.filter(
+          (relation) => relation.targetUnitId === selectedUnitId,
+        );
+        const chunks = new Map(
+          await Promise.all(
+            [...new Set(incoming.map((relation) => relation.sourceChunkPath))].map(
+              async (path) => [path, await loadChunk(path)] as const,
+            ),
+          ),
+        );
+        const resolved = incoming
+          .map((edge) => {
+            const sourceChunk = chunks.get(edge.sourceChunkPath);
+            const unit = sourceChunk?.units.find(
+              (candidate) => candidate.id === edge.sourceUnitId,
+            );
+            return sourceChunk && unit ? { edge, unit, chunk: sourceChunk } : null;
+          })
+          .filter((entry): entry is RelatedUnit => entry !== null)
+          .sort((left, right) =>
+            left.unit.numbering.sortKey.localeCompare(
+              right.unit.numbering.sortKey,
+              "it",
+              { numeric: true },
+            ),
+          );
+        if (!cancelled) setRelated(resolved);
+      })
+      .catch(() => setLoadError(true));
+    return () => {
+      cancelled = true;
+    };
+  }, [manifest, mode, selectedUnitId]);
+
+  useEffect(() => {
+    if (!manifest || deferredQuery.length < 2 || searchIndex) return;
+    loadSearchIndex(manifest).then(setSearchIndex).catch(() => setLoadError(true));
+  }, [deferredQuery, manifest, searchIndex]);
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === "/" &&
-        document.activeElement?.tagName.toLowerCase() !== "input"
-      ) {
+      if (event.key === "/" && document.activeElement?.tagName.toLowerCase() !== "input") {
         event.preventDefault();
         searchRef.current?.focus();
       }
@@ -315,44 +242,64 @@ export function CorpusViewer() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
+  const matchingSearchIds = useMemo(() => {
+    if (!searchIndex || !deferredQuery) return null;
+    return new Set(
+      searchIndex.units
+        .filter((unit) =>
+          `${unit.numbering} ${unit.title} ${unit.text}`
+            .normalize("NFKC")
+            .toLocaleLowerCase("it")
+            .includes(deferredQuery),
+        )
+        .map((unit) => unit.id),
+    );
+  }, [deferredQuery, searchIndex]);
+
   const units = useMemo(() => {
-    if (!data) return [];
-    return data.units.filter((unit) => {
-      if (unit.document !== activeDocument) return false;
-      if (issueOnly && unit.workflow.openIssues.length === 0) return false;
+    if (!index) return [];
+    return index.units.filter((unit) => {
+      if (issueOnly && unit.openIssueCount === 0) return false;
       if (!deferredQuery) return true;
-      return searchHaystack(unit).includes(deferredQuery);
+      if (matchingSearchIds) return matchingSearchIds.has(unit.id);
+      return `${unit.numbering.official} ${unit.title}`
+        .normalize("NFKC")
+        .toLocaleLowerCase("it")
+        .includes(deferredQuery);
     });
-  }, [activeDocument, data, deferredQuery, issueOnly]);
+  }, [deferredQuery, index, issueOnly, matchingSearchIds]);
 
-  const selectedUnit =
-    data?.units.find((unit) => unit.id === selectedId) ?? units[0] ?? null;
-  const selectedDocument = selectedUnit
-    ? data?.documents[selectedUnit.document]
-    : null;
-
-  function selectUnit(unit: CorpusUnit) {
+  function selectUnit(unit: UnitSummary) {
+    requestedIdRef.current = unit.id;
     setSelectedId(unit.id);
-    setActiveDocument(unit.document);
+    setRelated([]);
     setMobilePanel("article");
-    const url = new URL(window.location.href);
-    url.searchParams.set("unit", unit.id);
-    window.history.replaceState(null, "", url);
+    updateDeepLink(mode, unit.id);
   }
 
-  function changeDocument(document: DocumentId) {
-    setActiveDocument(document);
-    const firstUnit = data?.units.find((unit) => unit.document === document);
-    if (firstUnit) selectUnit(firstUnit);
+  function changeMode(nextMode: ViewerMode) {
+    setMode(nextMode);
+    setIndex(null);
+    setChunk(null);
+    setRelated([]);
+    setQuery("");
+    const currentDocument = selectedSummary?.document;
+    if (
+      (nextMode === "circ" && currentDocument !== "circ2019") ||
+      (nextMode !== "circ" && currentDocument !== "ntc2018")
+    ) {
+      requestedIdRef.current = null;
+      setSelectedId(null);
+    }
   }
 
   function openSection41() {
-    const section = data?.units.find(
-      (unit) =>
-        unit.document === "ntc2018" && unit.numbering.official === "4.1",
+    setView("corpus");
+    setMode("ntc");
+    const section = index?.units.find(
+      (unit) => unit.document === "ntc2018" && unit.numbering.official === "4.1",
     );
     if (section) selectUnit(section);
-    setView("corpus");
   }
 
   if (loadError) {
@@ -360,387 +307,155 @@ export function CorpusViewer() {
       <main className="fatal-state">
         <span className="eyebrow">Structural Codes</span>
         <h1>Il corpus non è stato caricato.</h1>
-        <p>Rigenera i dati del visualizzatore e ricarica la pagina.</p>
+        <p>Rigenera gli artefatti del visualizzatore e ricarica la pagina.</p>
       </main>
     );
   }
 
+  const selectedDocument = selectedUnit
+    ? manifest?.documents[selectedUnit.document]
+    : null;
+
   return (
     <main className="app-shell">
       <header className="topbar">
-        <button
-          className="brand"
-          type="button"
-          onClick={() => setView("corpus")}
-          aria-label="Apri il corpus"
-        >
-          <span className="brand-mark" aria-hidden="true">
-            SC
-          </span>
-          <span>
-            <strong>Structural Codes</strong>
-            <small>Corpus normativo verificabile</small>
-          </span>
+        <button className="brand" type="button" onClick={() => setView("corpus")} aria-label="Apri il corpus">
+          <span className="brand-mark" aria-hidden="true">SC</span>
+          <span><strong>Structural Codes</strong><small>Corpus normativo verificabile</small></span>
         </button>
-
         <nav className="view-switcher" aria-label="Sezioni principali">
-          <button
-            type="button"
-            className={view === "corpus" ? "active" : ""}
-            onClick={() => setView("corpus")}
-          >
-            Corpus
-          </button>
-          <button
-            type="button"
-            className={view === "roadmap" ? "active" : ""}
-            onClick={() => setView("roadmap")}
-          >
-            Piano di chiusura
-          </button>
-          <button
-            type="button"
-            onClick={() => window.location.assign("/consultazione")}
-          >
-            Lettura comparata
-          </button>
+          <button type="button" className={view === "corpus" ? "active" : ""} onClick={() => setView("corpus")}>Corpus</button>
+          <button type="button" className={view === "roadmap" ? "active" : ""} onClick={() => setView("roadmap")}>Piano di chiusura</button>
+          <button type="button" onClick={() => router.push(`/consultazione?mode=${mode}${selectedId ? `&unit=${encodeURIComponent(selectedId)}` : ""}`)}>Lettura comparata</button>
         </nav>
-
-        <div className="status-cluster">
-          <span className="status-dot" aria-hidden="true" />
-          <span>Estratto · non pubblicabile</span>
-        </div>
+        <div className="status-cluster"><span className="status-dot" aria-hidden="true" /><span>Prerelease alpha · corpus non validato</span></div>
       </header>
 
       {view === "roadmap" ? (
-        <Roadmap data={data} onOpenSection={openSection41} />
+        <Roadmap manifest={manifest} onOpenSection={openSection41} />
       ) : (
         <>
+          <section className="release-disclaimer" role="note">
+            <strong>Trascrizione strutturata in review.</strong> La pubblicazione npm non equivale a validazione normativa. Verifica sempre la fonte ufficiale.
+          </section>
           <section className="corpus-toolbar">
-            <div className="document-tabs" aria-label="Documento">
-              {(["ntc2018", "circ2019"] as const).map((document) => (
-                <button
-                  type="button"
-                  key={document}
-                  className={activeDocument === document ? "active" : ""}
-                  onClick={() => changeDocument(document)}
-                >
-                  {data?.documents[document].shortLabel ?? displayLabel(document)}
-                  <span>{data?.documents[document].units ?? "—"}</span>
+            <div className="document-tabs viewer-mode-tabs" aria-label="Modalità di consultazione">
+              {modeOptions.map((option) => (
+                <button type="button" key={option.id} className={mode === option.id ? "active" : ""} onClick={() => changeMode(option.id)} aria-pressed={mode === option.id}>
+                  {option.label}
+                  <span>{option.id === "circ" ? manifest?.documents.circ2019.units ?? "—" : manifest?.documents.ntc2018.units ?? "—"}</span>
                 </button>
               ))}
             </div>
             <label className="search-field">
               <span aria-hidden="true">⌕</span>
-              <input
-                ref={searchRef}
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Cerca numero, titolo o testo…"
-                aria-label="Cerca nel corpus"
-              />
+              <input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cerca numero, titolo o testo…" aria-label="Cerca nel corpus" />
               <kbd>/</kbd>
             </label>
-            <label className="issue-filter">
-              <input
-                type="checkbox"
-                checked={issueOnly}
-                onChange={(event) => setIssueOnly(event.target.checked)}
-              />
-              <span>Con issue</span>
-            </label>
+            <label className="issue-filter"><input type="checkbox" checked={issueOnly} onChange={(event) => setIssueOnly(event.target.checked)} /><span>Con issue</span></label>
           </section>
 
-          <nav
-            className="mobile-tabs"
-            aria-label="Pannelli del visualizzatore"
-          >
+          <nav className="mobile-tabs" aria-label="Pannelli del visualizzatore">
             {(["index", "article", "evidence"] as const).map((panel) => (
-              <button
-                key={panel}
-                type="button"
-                className={mobilePanel === panel ? "active" : ""}
-                onClick={() => setMobilePanel(panel)}
-              >
-                {panel === "index"
-                  ? "Indice"
-                  : panel === "article"
-                    ? "Testo"
-                    : "Evidence"}
+              <button key={panel} type="button" className={mobilePanel === panel ? "active" : ""} onClick={() => setMobilePanel(panel)}>
+                {panel === "index" ? "Indice" : panel === "article" ? "Testo" : "Evidence"}
               </button>
             ))}
           </nav>
 
           <div className="viewer-grid">
-            <aside
-              className={`unit-index mobile-${mobilePanel === "index" ? "show" : "hide"}`}
-            >
-              <div className="panel-heading">
-                <span>Indice canonico</span>
-                <strong>{units.length}</strong>
-              </div>
+            <aside className={`unit-index mobile-${mobilePanel === "index" ? "show" : "hide"}`}>
+              <div className="panel-heading"><span>Indice canonico</span><strong>{units.length}</strong></div>
               <div className="unit-list">
-                {!data ? (
-                  <LoadingRows />
-                ) : units.length === 0 ? (
-                  <div className="empty-state">
-                    Nessuna unità corrisponde ai filtri.
-                  </div>
-                ) : (
-                  units.map((unit) => {
-                    const blocking = unit.workflow.openIssues.filter(
-                      (issue) => issue.severity === "blocking",
-                    ).length;
-                    return (
-                      <button
-                        type="button"
-                        className={`unit-row ${selectedUnit?.id === unit.id ? "active" : ""}`}
-                        key={unit.id}
-                        style={
-                          {
-                            "--depth": unitDepth(unit),
-                          } as CSSProperties
-                        }
-                        onClick={() => selectUnit(unit)}
-                        aria-current={
-                          selectedUnit?.id === unit.id ? "page" : undefined
-                        }
-                      >
-                        <span className="unit-number">
-                          {unit.numbering.official}
-                        </span>
-                        <span className="unit-title">{unit.title}</span>
-                        {blocking > 0 && (
-                          <span
-                            className="issue-count"
-                            title={`${blocking} issue bloccanti`}
-                          >
-                            {blocking}
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })
-                )}
+                {!index ? <LoadingRows /> : units.length === 0 ? <div className="empty-state">Nessuna unità corrisponde ai filtri.</div> : units.map((unit) => (
+                  <button type="button" className={`unit-row ${selectedId === unit.id ? "active" : ""}`} key={unit.id} style={{ "--depth": unitDepth(unit) } as CSSProperties} onClick={() => selectUnit(unit)} aria-current={selectedId === unit.id ? "page" : undefined}>
+                    <span className="unit-number">{unit.numbering.official}</span>
+                    <span className="unit-title">{unit.title}</span>
+                    {unit.blockingIssueCount > 0 && <span className="issue-count" title={`${unit.blockingIssueCount} issue bloccanti`}>{unit.blockingIssueCount}</span>}
+                  </button>
+                ))}
               </div>
             </aside>
 
-            <article
-              className={`article-pane mobile-${mobilePanel === "article" ? "show" : "hide"}`}
-            >
-              {selectedUnit ? (
+            <article className={`article-pane mobile-${mobilePanel === "article" ? "show" : "hide"}`}>
+              {selectedUnit && chunk ? (
                 <>
-                  <header className="article-header">
-                    <div className="article-kicker">
-                      <span>{selectedDocument?.shortLabel}</span>
-                      <i aria-hidden="true">/</i>
-                      <span>{displayLabel(selectedUnit.kind)}</span>
+                  <UnitHeader unit={selectedUnit} documentLabel={selectedDocument?.shortLabel ?? ""} showRaw={showRaw} onToggleRaw={() => setShowRaw((current) => !current)} />
+                  <UnitBlocks unit={selectedUnit} assets={chunk.assets} showRaw={showRaw} />
+                  {mode === "combined" && (
+                    <div className="combined-circular-flow" aria-label="Contenuti correlati della Circolare 7/2019">
+                      {related.map(({ unit, chunk: relatedChunk, edge }) => (
+                        <section className="combined-circular-unit" data-provenance="Circolare 7/2019" key={`${edge.relationId}-${unit.id}`}>
+                          <header>
+                            <span>Circolare 7/2019 — {unit.numbering.official}</span>
+                            <h2>{unit.title}</h2>
+                            {edge.review.status !== "confirmed" && <small className="relation-review-state">Collegamento editoriale da revisionare</small>}
+                          </header>
+                          <UnitBlocks unit={unit} assets={relatedChunk.assets} showRaw={showRaw} compact />
+                          <footer>Provenienza: Circolare 7/2019 · relazione esplicita {displayLabel(edge.type)} · stato {edge.review.status}</footer>
+                        </section>
+                      ))}
+                      {related.length === 0 && <p className="combined-empty">Nessuna relazione esplicita Circolare → NTC è registrata per questa unità. I suggerimenti basati sulla numerazione non vengono mostrati come collegamenti canonici.</p>}
                     </div>
-                    <div className="article-title-row">
-                      <span className="article-number">
-                        {selectedUnit.numbering.official}
-                      </span>
-                      <h1>{selectedUnit.title}</h1>
-                    </div>
-                    <div className="article-meta">
-                      <span className="state-pill">
-                        {displayLabel(selectedUnit.workflow.status)}
-                      </span>
-                      <span>
-                        {selectedUnit.blocks.length}{" "}
-                        {selectedUnit.blocks.length === 1 ? "blocco" : "blocchi"}
-                      </span>
-                      <span>
-                        aggiornato al {selectedUnit.validity.asOf}
-                      </span>
-                      <button
-                        type="button"
-                        className="text-button"
-                        onClick={() => setShowRaw((current) => !current)}
-                      >
-                        {showRaw ? "Mostra normalizzato" : "Mostra raw"}
-                      </button>
-                    </div>
-                  </header>
-
-                  <div className="normative-copy">
-                    {selectedUnit.blocks.map((block, index) => (
-                      <section
-                        className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${block.assetId ? "asset-block" : ""}`}
-                        key={block.blockId}
-                      >
-                        <div className="block-gutter">
-                          <span>{String(index + 1).padStart(2, "0")}</span>
-                          {block.evidence && (
-                            <span title="Pagina PDF">
-                              p.{block.evidence.pdfPage}
-                            </span>
-                          )}
-                        </div>
-                        <div>
-                          <span className="block-kind">
-                            {displayLabel(block.kind)}
-                          </span>
-                          <BlockContent
-                            block={block}
-                            data={data}
-                            showRaw={showRaw}
-                          />
-                          {block.evidence?.transformations &&
-                            block.evidence.transformations.length > 0 && (
-                              <details className="transformations">
-                                <summary>
-                                  {block.evidence.transformations.length}{" "}
-                                  trasformazioni tracciate
-                                </summary>
-                                <ul>
-                                  {block.evidence.transformations.map(
-                                    (transformation, transformationIndex) => (
-                                      <li
-                                        key={`${transformation.operation}-${transformationIndex}`}
-                                      >
-                                        <strong>
-                                          {transformation.operation}
-                                        </strong>
-                                        {transformation.note}
-                                      </li>
-                                    ),
-                                  )}
-                                </ul>
-                              </details>
-                            )}
-                        </div>
-                      </section>
-                    ))}
-                  </div>
+                  )}
                 </>
               ) : (
-                <div className="article-loading">
-                  <span className="eyebrow">Caricamento</span>
-                  <h1>Preparazione del testo normativo…</h1>
-                </div>
+                <div className="article-loading"><span className="eyebrow">Caricamento del chunk</span><h1>Preparazione del testo normativo…</h1></div>
               )}
             </article>
 
-            <aside
-              className={`evidence-pane mobile-${mobilePanel === "evidence" ? "show" : "hide"}`}
-            >
-              {selectedUnit && selectedDocument ? (
+            <aside className={`evidence-pane mobile-${mobilePanel === "evidence" ? "show" : "hide"}`}>
+              {selectedUnit && selectedDocument && manifest ? (
                 <>
                   <section className="rail-section">
-                    <div className="panel-heading">
-                      <span>Tracciabilità</span>
-                      <span className="verified-chip">fonte ufficiale</span>
-                    </div>
+                    <div className="panel-heading"><span>Tracciabilità</span><span className="verified-chip">fonte ufficiale</span></div>
                     <dl className="trace-list">
-                      <div>
-                        <dt>Documento</dt>
-                        <dd>{selectedDocument.shortLabel}</dd>
-                      </div>
-                      <div>
-                        <dt>Unit ID</dt>
-                        <dd title={selectedUnit.id}>
-                          {idSuffix(selectedUnit.id)}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>Pagine PDF</dt>
-                        <dd>
-                          {[
-                            ...new Set(
-                              selectedUnit.blocks
-                                .map((block) => block.evidence?.pdfPage)
-                                .filter(Boolean),
-                            ),
-                          ].join(", ") || "—"}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>Stato</dt>
-                        <dd>{displayLabel(selectedUnit.workflow.status)}</dd>
-                      </div>
+                      <div><dt>Documento</dt><dd>{selectedDocument.shortLabel}</dd></div>
+                      <div><dt>Unit ID</dt><dd title={selectedUnit.id}>{idSuffix(selectedUnit.id)}</dd></div>
+                      <div><dt>Pagine PDF</dt><dd>{[...new Set(selectedUnit.blocks.flatMap((block) => block.evidence?.pdfPage ? [block.evidence.pdfPage] : []))].join(", ") || "—"}</dd></div>
+                      <div><dt>Workflow</dt><dd>{displayLabel(selectedUnit.workflow.status)}</dd></div>
                     </dl>
                     <div className="source-actions">
-                      <a
-                        href={selectedDocument.publicationUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Scheda Gazzetta ↗
-                      </a>
-                      <a
-                        href={selectedDocument.sourceUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        PDF ufficiale ↗
-                      </a>
+                      <a href={selectedDocument.publicationUrl} target="_blank" rel="noreferrer">Scheda Gazzetta ↗</a>
+                      <a href={selectedDocument.sourceUrl} target="_blank" rel="noreferrer">PDF ufficiale ↗</a>
                     </div>
                   </section>
-
                   <section className="rail-section">
-                    <div className="panel-heading">
-                      <span>Issue aperte</span>
-                      <strong>{selectedUnit.workflow.openIssues.length}</strong>
-                    </div>
+                    <div className="panel-heading"><span>Issue aperte</span><strong>{selectedUnit.workflow.openIssues.length}</strong></div>
                     <div className="issue-list">
                       {selectedUnit.workflow.openIssues.map((issue) => (
-                        <div
-                          className={`issue-card severity-${issue.severity}`}
-                          key={issue.issueId}
-                        >
-                          <span>
-                            {displayLabel(issue.type)} ·{" "}
-                            {displayLabel(issue.severity)}
-                          </span>
-                          <p>{issue.note}</p>
-                        </div>
+                        <div className={`issue-card severity-${issue.severity}`} key={issue.issueId}><span>{displayLabel(issue.type)} · {displayLabel(issue.severity)}</span><p>{issue.note}</p></div>
                       ))}
+                      {selectedUnit.workflow.openIssues.length === 0 && <p className="rail-empty">Nessuna issue registrata; ciò non equivale a review completata.</p>}
                     </div>
                   </section>
-
                   {selectedUnit.relations.length > 0 && (
                     <section className="rail-section">
-                      <div className="panel-heading">
-                        <span>Relazioni</span>
-                        <strong>{selectedUnit.relations.length}</strong>
-                      </div>
+                      <div className="panel-heading"><span>Relazioni esplicite</span><strong>{selectedUnit.relations.length}</strong></div>
                       <div className="relation-list">
                         {selectedUnit.relations.map((relation) => (
-                          <button
-                            type="button"
-                            key={relation.relationId}
-                            onClick={() => {
-                              const target = data?.units.find(
-                                (unit) => unit.id === relation.targetUnitId,
-                              );
-                              if (target) selectUnit(target);
-                            }}
-                          >
-                            <span>
-                              {displayLabel(relation.type)} ·{" "}
-                              {relation.review.status}
-                            </span>
-                            <strong>{idSuffix(relation.targetUnitId)}</strong>
-                            <p>{relation.rationale}</p>
+                          <button type="button" key={relation.relationId} onClick={() => {
+                            const targetDocument: DocumentId = relation.targetUnitId.includes(":circ2019:") ? "circ2019" : "ntc2018";
+                            requestedIdRef.current = relation.targetUnitId;
+                            setMode(targetDocument === "circ2019" ? "circ" : "ntc");
+                            setSelectedId(relation.targetUnitId);
+                            updateDeepLink(targetDocument === "circ2019" ? "circ" : "ntc", relation.targetUnitId);
+                          }}>
+                            <span>{displayLabel(relation.type)} · {relation.review.status}</span><strong>{idSuffix(relation.targetUnitId)}</strong><p>{relation.rationale}</p>
                           </button>
                         ))}
                       </div>
                     </section>
                   )}
-
                   <section className="rail-section hash-section">
-                    <div className="panel-heading">
-                      <span>Integrità</span>
-                    </div>
-                    <p>Fingerprint del lotto</p>
-                    <code>{data?.fingerprintSha256}</code>
+                    <div className="panel-heading"><span>Integrità artefatto</span></div>
+                    <p>structural-codes {manifest.structuralCodesVersion} · schema {manifest.schemaVersion}</p>
+                    <code>{manifest.generatedArtifactFingerprintSha256}</code>
+                    <p>Fingerprint corpus canonico</p>
+                    <code>{manifest.corpusFingerprintSha256}</code>
                   </section>
                 </>
-              ) : (
-                <LoadingRows />
-              )}
+              ) : <LoadingRows />}
             </aside>
           </div>
         </>
@@ -749,260 +464,103 @@ export function CorpusViewer() {
   );
 }
 
+function UnitHeader({ unit, documentLabel, showRaw, onToggleRaw }: { unit: CorpusUnit; documentLabel: string; showRaw: boolean; onToggleRaw: () => void }) {
+  return (
+    <header className="article-header">
+      <div className="article-kicker"><span>{documentLabel}</span><i aria-hidden="true">/</i><span>{displayLabel(unit.kind)}</span></div>
+      <div className="article-title-row"><span className="article-number">{unit.numbering.official}</span><h1>{unit.title}</h1></div>
+      <div className="article-meta">
+        <span className="state-pill">{displayLabel(unit.workflow.status)}</span>
+        <span>{unit.blocks.length} {unit.blocks.length === 1 ? "blocco" : "blocchi"}</span>
+        <span>aggiornato al {unit.validity.asOf}</span>
+        <button type="button" className="text-button" onClick={onToggleRaw}>{showRaw ? "Mostra normalizzato" : "Mostra raw"}</button>
+      </div>
+    </header>
+  );
+}
+
+function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUnit; assets: AssetBundle; showRaw: boolean; compact?: boolean }) {
+  return (
+    <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
+      {unit.blocks.map((block, index) => (
+        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+          <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
+          <div>
+            <span className="block-kind">{displayLabel(block.kind)}</span>
+            <BlockContent block={block} assets={assets} showRaw={showRaw} />
+            {block.evidence?.transformations && block.evidence.transformations.length > 0 && (
+              <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>
+                {block.evidence.transformations.map((transformation, transformationIndex) => (
+                  <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>
+                ))}
+              </ul></details>
+            )}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function latexMarkup(latex: string, displayMode: boolean) {
-  return {
-    __html: katex.renderToString(latex, {
-      displayMode,
-      throwOnError: false,
-      strict: "warn",
-      output: "html",
-    }),
-  };
+  return { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
 }
 
 function MathCell({ cell }: { cell: TableCell }) {
   if (!cell.latex) return cell.text;
-  return (
-    <span
-      className="table-math"
-      dangerouslySetInnerHTML={latexMarkup(cell.latex, false)}
-    />
-  );
+  return <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />;
 }
 
-export function BlockContent({
-  block,
-  data,
-  showRaw,
-}: {
-  block: CorpusBlock;
-  data: CorpusData | null;
-  showRaw: boolean;
-}) {
+export function BlockContent({ block, assets, showRaw }: { block: CorpusBlock; assets: AssetBundle | null; showRaw: boolean }) {
   if (block.text) {
-    if (showRaw || !block.text.inline) {
-      return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
-    }
-    return (
-      <p>
-        {block.text.inline.map((segment, index) =>
-          segment.kind === "math" ? (
-            <span
-              className="inline-math"
-              // The canonical normalized value remains available in the title.
-              title={segment.value}
-              key={`${segment.value}-${index}`}
-              dangerouslySetInnerHTML={latexMarkup(segment.latex, false)}
-            />
-          ) : (
-            <span key={`text-${index}`}>{segment.value}</span>
-          ),
-        )}
-      </p>
-    );
+    if (showRaw || !block.text.inline) return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
+    return <p>{block.text.inline.map((segment, index) => segment.kind === "math" ? (
+      <span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />
+    ) : <span key={`text-${index}`}>{segment.value}</span>)}</p>;
   }
-
-  if (!block.assetId || !data) {
-    return <p className="asset-missing">Asset non disponibile.</p>;
-  }
-
-  const formula = data.assets.formulas[block.assetId];
-  if (formula) {
-    return (
-      <figure className="formula-asset">
-        <div className="formula-row">
-          <div
-            className="formula-scroll"
-            dangerouslySetInnerHTML={latexMarkup(formula.latex, true)}
-          />
-          {formula.officialNumber && (
-            <span className="formula-number">[{formula.officialNumber}]</span>
-          )}
-        </div>
-        {!formula.officialNumber && (
-          <figcaption>
-            <span>Formula non numerata</span>
-          </figcaption>
-        )}
-      </figure>
-    );
-  }
-
-  const table = data.assets.tables[block.assetId];
+  if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
+  const formula = assets.formulas[block.assetId];
+  if (formula) return (
+    <figure className="formula-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div>{!formula.officialNumber && <figcaption><span>Formula non numerata</span></figcaption>}</figure>
+  );
+  const table = assets.tables[block.assetId];
   if (table) {
     const notes = visibleTableNotes(table.notes);
     return (
       <figure className="table-asset">
-        <figcaption>
-          <strong>
-            {table.officialNumber
-              ? `Tab. ${table.officialNumber}`
-              : "Tabella non numerata"}
-          </strong>
-          {table.caption && <span> — {table.caption}</span>}
-        </figcaption>
-        <div className="table-scroll">
-          <table>
-            <thead>
-              {table.headers.map((row, rowIndex) => (
-                <tr key={`head-${rowIndex}`}>
-                  {row.map((cell, cellIndex) => (
-                    <th
-                      colSpan={cell.colSpan}
-                      rowSpan={cell.rowSpan}
-                      key={`head-${rowIndex}-${cellIndex}`}
-                    >
-                      <MathCell cell={cell} />
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.rows.map((row, rowIndex) => (
-                <tr key={`body-${rowIndex}`}>
-                  {row.map((cell, cellIndex) => (
-                    <td
-                      colSpan={cell.colSpan}
-                      rowSpan={cell.rowSpan}
-                      key={`body-${rowIndex}-${cellIndex}`}
-                    >
-                      <MathCell cell={cell} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {notes.length > 0 && (
-          <ul className="table-notes">
-            {notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        )}
+        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}` : "Tabella non numerata"}</strong>{table.caption && <span> — {table.caption}</span>}</figcaption>
+        <div className="table-scroll"><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
+        {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>
     );
   }
-
-  const figure = data.assets.figures[block.assetId];
+  const figure = assets.figures[block.assetId];
   if (figure) {
-    return (
-      <figure className="figure-asset">
-        <img src={`/assets/${figure.imagePath}`} alt={figure.alt} />
-        <figcaption>
-          <span>{figure.caption}</span>
-        </figcaption>
-      </figure>
-    );
+    const width = Math.max(1, Math.round(figure.region?.width ?? 800));
+    const height = Math.max(1, Math.round(figure.region?.height ?? 600));
+    return <figure className="figure-asset"><Image unoptimized loading="lazy" src={`/assets/${figure.imagePath}`} alt={figure.alt} width={width} height={height} sizes="(max-width: 760px) 92vw, 760px" /><figcaption><span>{figure.caption}</span></figcaption></figure>;
   }
-
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
 
-function Roadmap({
-  data,
-  onOpenSection,
-}: {
-  data: CorpusData | null;
-  onOpenSection: () => void;
-}) {
+function Roadmap({ manifest, onOpenSection }: { manifest: CorpusManifest | null; onOpenSection: () => void }) {
+  const stats = manifest?.stats;
   return (
     <div className="roadmap-view">
-      <section className="roadmap-hero">
-        <div>
-          <span className="eyebrow">Dall’estrazione alla pubblicazione</span>
-          <h1>La struttura c’è. Ora va resa autorevole.</h1>
-          <p>
-            Il lotto prioritario è completo come estrazione canonica, ma la
-            conclusione editoriale richiede review umane, asset verificati e
-            relazioni confermate. Questa è la sequenza che impedisce di
-            trasformare un corpus plausibile in una falsa fonte normativa.
-          </p>
-        </div>
-        <div
-          className="completion-ring"
-          aria-label={`${data?.stats.reviewedUnits ?? 0} unità approvate`}
-        >
-          <strong>{data?.stats.reviewedUnits ?? 0}</strong>
-          <span>unità approvate</span>
-        </div>
-      </section>
-
-      <section className="metric-strip">
-        <div>
-          <strong>{data?.stats.units ?? "—"}</strong>
-          <span>unità estratte</span>
-        </div>
-        <div>
-          <strong>{data?.stats.blocks ?? "—"}</strong>
-          <span>blocchi con evidence</span>
-        </div>
-        <div>
-          <strong>{data?.stats.assetUnits ?? "—"}</strong>
-          <span>unità con asset</span>
-        </div>
-        <div>
-          <strong>{data?.stats.proposedRelations ?? "—"}</strong>
-          <span>relazioni proposte</span>
-        </div>
-      </section>
-
-      <section className="roadmap-content">
-        <div>
-          <div className="section-title">
-            <span>Sequenza operativa</span>
-            <p>Ogni passaggio sblocca il successivo.</p>
-          </div>
-          <div className="stage-list">
-            {closureStages.map((stage) => (
-              <article className="stage-card" key={stage.index}>
-                <span className="stage-index">{stage.index}</span>
-                <div>
-                  <div className="stage-title">
-                    <h2>{stage.title}</h2>
-                    <span>{stage.state}</span>
-                  </div>
-                  <p>{stage.description}</p>
-                </div>
-                <strong>{stage.metric}</strong>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <aside className="definition-card">
-          <span className="eyebrow">Definition of done</span>
-          <h2>Quando possiamo dire “concluso”</h2>
-          <ul>
-            <li>333 unità source-checked sul render ufficiale.</li>
-            <li>Formule, tabelle e figure senza placeholder o ambiguità.</li>
-            <li>Relazioni Circolare–NTC confermate da review.</li>
-            <li>Due atti di revisione umana per ogni unità pubblicata.</li>
-            <li>Capitolo 7 acquisito con OCR tracciato e controllato.</li>
-            <li>Release guard verde e snapshot immutabile.</li>
-          </ul>
-          <button type="button" onClick={onOpenSection}>
-            Apri il § 4.1
-            <span aria-hidden="true">→</span>
-          </button>
-          <small>
-            Priorità consigliata: § 4.1 NTC e C4.1, poi capitoli 1–3, infine
-            capitolo 7.
-          </small>
-        </aside>
-      </section>
+      <section className="roadmap-hero"><div><span className="eyebrow">Dall’estrazione alla validazione progressiva</span><h1>Il package è distribuibile. Il corpus resta in review.</h1><p>La prerelease rende dati, schema e provenance ispezionabili senza attribuire al corpus uno stato editoriale che non ha. Ogni avanzamento resta registrato per unità.</p></div><div className="completion-ring" aria-label={`${stats?.reviewedUnits ?? 0} unità revisionate`}><strong>{stats?.reviewedUnits ?? 0}</strong><span>unità revisionate</span></div></section>
+      <section className="metric-strip"><div><strong>{stats?.units ?? "—"}</strong><span>unità estratte</span></div><div><strong>{stats?.blocks ?? "—"}</strong><span>blocchi con provenance</span></div><div><strong>{stats?.assetUnits ?? "—"}</strong><span>unità con asset</span></div><div><strong>{stats?.proposedRelations ?? "—"}</strong><span>relazioni proposte</span></div></section>
+      <section className="roadmap-content"><div><div className="section-title"><span>Workflow machine-readable</span><p>Gli stati non sono scorciatoie legali.</p></div><div className="stage-list">
+        {[
+          ["01", "Estratto", `${stats?.units ?? 0} unità`, "Trascrizione strutturata con evidence; non ancora verificata integralmente sulla fonte."],
+          ["02", "Source-checked", `${stats?.reviewedUnits ?? 0} completate`, "Confronto umano del record con il render ufficiale e issue risolte o dichiarate."],
+          ["03", "Double-reviewed", "review indipendente", "Secondo atto di revisione qualificata, distinto dal controllo iniziale."],
+          ["04", "Published / superseded", "stato editoriale", "Ingresso nel perimetro dichiarato o conservazione storica della versione superata."],
+        ].map(([number, title, metric, description]) => <article className="stage-card" key={number}><span className="stage-index">{number}</span><div><div className="stage-title"><h2>{title}</h2><span>progressivo</span></div><p>{description}</p></div><strong>{metric}</strong></article>)}
+      </div></div><aside className="definition-card"><span className="eyebrow">Community review</span><h2>Cosa rende accettabile una correzione</h2><ul><li>Confronto puntuale con la fonte ufficiale registrata.</li><li>Evidence, trasformazioni e hash aggiornati insieme.</li><li>Asset verificati nella posizione editoriale corretta.</li><li>Relazioni Circolare–NTC esplicite e revisionabili.</li><li>Test editoriali e release gate verdi.</li></ul><button type="button" onClick={onOpenSection}>Apri il § 4.1 <span aria-hidden="true">→</span></button><small>La release npm e la validazione del corpus restano concetti separati.</small></aside></section>
     </div>
   );
 }
 
 function LoadingRows() {
-  return (
-    <div className="loading-rows" aria-label="Caricamento">
-      {Array.from({ length: 8 }, (_, index) => (
-        <span key={index} />
-      ))}
-    </div>
-  );
+  return <div className="loading-rows" aria-label="Caricamento">{Array.from({ length: 8 }, (_, index) => <span key={index} />)}</div>;
 }

@@ -1,9 +1,9 @@
 /**
  * API pubblica di Structural Codes.
  *
- * Nota di architettura: questo package NON viene mai importato da
- * structural-checks-ts. È il corpus documentale a puntare al codice, mai il
- * contrario: niente dipendenze circolari e nessun impatto sul bundle.
+ * L'entry point principale è compatibile con Node e browser: espone contratti
+ * di schema e helper puri per unità/relazioni. Le funzioni basate su filesystem
+ * e crypto di Node sono intenzionalmente isolate nel subpath `./lib`.
  */
-export * from "./lib/index.ts";
+export * from "./corpus/index.ts";
 export * from "./schema/index.ts";

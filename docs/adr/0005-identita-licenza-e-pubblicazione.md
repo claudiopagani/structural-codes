@@ -7,8 +7,8 @@
 ## Decisioni
 
 - Il nome definitivo del repository è `structural-codes`.
-- Il progetto è autonomo e collegato a `structural-checks-ts`, nome futuro
-  dell'attuale `strutture-js`.
+- Il progetto è autonomo e collegato a `structural-checks-ts`, libreria distinta
+  per algoritmi, calcoli e verifiche strutturali.
 - Il repository è open source e deve essere pubblico anche durante lo
   sviluppo.
 - Software, schemi, indici e apparato editoriale sono distribuiti con licenza
@@ -22,7 +22,7 @@
 ## Proprietario GitHub
 
 Il repository pubblico è
-`https://github.com/claudiopagani/strutture-normative`.
+`https://github.com/claudiopagani/structural-codes`.
 
 ## Conseguenze
 

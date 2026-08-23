@@ -5,11 +5,13 @@ import json
 import subprocess
 from pathlib import Path
 
+from lib.poppler import resolve_pdftoppm
+
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf"
 MANIFEST = ROOT / "corpus/assets/ntc2018/7.4-step2.json"
 OUT = ROOT / "corpus/assets/figures/ntc2018"
-PDFTOPPM = Path(r"C:\Users\pagan\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin\pdftoppm.exe")
+PDFTOPPM = resolve_pdftoppm()
 SCALE = 300 / 72
 
 def main() -> None:

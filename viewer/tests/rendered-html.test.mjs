@@ -7,96 +7,102 @@ async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
-
   return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
   );
 }
 
-test("renderizza il visualizzatore normativo", async () => {
+async function dataJson(path) {
+  return JSON.parse(
+    await readFile(new URL(`../public${path}`, import.meta.url), "utf8"),
+  );
+}
+
+test("renderizza le tre modalità e distingue release da validazione", async () => {
   const response = await render();
   assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/iu);
   const html = await response.text();
-  assert.match(
-    html,
-    /<title>Structural Codes — Corpus normativo verificabile<\/title>/i,
-  );
-  assert.match(html, /Corpus normativo verificabile/);
+  assert.match(html, /<title>Structural Codes — Corpus normativo verificabile<\/title>/iu);
+  assert.match(html, /NTC 2018 \+ Circolare/);
+  assert.match(html, /Circolare 7\/2019/);
+  assert.match(html, /Prerelease alpha · corpus non validato/);
+  assert.match(html, /pubblicazione npm non equivale a validazione normativa/iu);
   assert.match(html, /Piano di chiusura/);
-  assert.match(html, /Estratto · non pubblicabile/);
-  assert.doesNotMatch(html, /Revisione|Accetta il blocco|Richiede correzione/);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
+  assert.doesNotMatch(html, /Accetta il blocco|Richiede correzione/);
 });
 
-test("il payload pubblico coincide con il lotto canonico", async () => {
-  const corpus = JSON.parse(
-    await readFile(
-      new URL("../public/data/corpus.json", import.meta.url),
-      "utf8",
+test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", async () => {
+  const manifest = await dataJson("/data/codes/manifest.json");
+  assert.equal(manifest.formatVersion, 2);
+  assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
+  assert.equal(manifest.schemaVersion, "2.0.0-alpha.2");
+  assert.equal(manifest.stats.units, 1745);
+  assert.equal(manifest.stats.blocks, 10883);
+  assert.equal(manifest.stats.explicitRelations, 302);
+  assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
+  assert.equal(manifest.stats.reviewedUnits, 0);
+  assert.equal(manifest.stats.assetUnits, 422);
+  assert.equal(manifest.stats.formulas, 844);
+  assert.equal(manifest.stats.tables, 211);
+  assert.equal(manifest.stats.figures, 205);
+  assert.ok(Buffer.byteLength(JSON.stringify(manifest)) < 75_000);
+
+  const indexes = await Promise.all([
+    dataJson(manifest.documents.ntc2018.indexPath),
+    dataJson(manifest.documents.circ2019.indexPath),
+  ]);
+  assert.deepEqual(indexes.map(({ units }) => units.length), [1055, 690]);
+  const summaries = indexes.flatMap(({ units }) => units);
+  const chunkPaths = [...new Set(summaries.map(({ chunkPath }) => chunkPath))];
+  assert.equal(chunkPaths.length, manifest.stats.chunks);
+
+  const chunks = new Map(
+    await Promise.all(
+      chunkPaths.map(async (path) => {
+        const bytes = await readFile(new URL(`../public${path}`, import.meta.url));
+        assert.ok(bytes.length <= 1_500_000, `${path} supera la soglia di chunk`);
+        return [path, JSON.parse(bytes.toString("utf8"))];
+      }),
     ),
   );
-
-    assert.equal(corpus.stats.units, 1745);
-    assert.equal(corpus.stats.blocks, 10883);
-  assert.equal(corpus.stats.proposedRelations, 302);
-    assert.equal(corpus.stats.assetUnits, 422);
-  assert.equal(corpus.stats.reviewedUnits, 0);
-    assert.equal(corpus.units.length, 1745);
-  assert.equal(
-    corpus.documents.ntc2018.localSourcePath,
-    "raw-sources/ntc2018/gu-42-so8-2018-02-20.pdf",
-  );
-  assert.equal(
-    corpus.documents.circ2019.localSourcePath,
-    "raw-sources/circ2019/circolare-7-2019.pdf",
-  );
-  assert.equal(
-    corpus.units.every((unit) => unit.workflow.status === "extracted"),
-    true,
-  );
-  assert.equal(Object.keys(corpus.assets.formulas).length, 844);
-  assert.equal(Object.keys(corpus.assets.tables).length, 211);
-  assert.equal(Object.keys(corpus.assets.figures).length, 205);
-
-  const section = corpus.units.find(
-    (unit) => unit.id === "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1",
-  );
-  assert.ok(section);
-  assert.equal(
-    section.blocks.some((block) => block.kind === "formula-ref"),
-    true,
-  );
-  assert.equal(
-    section.blocks.some((block) => block.kind === "figure-ref"),
-    true,
-  );
-  assert.equal(
-    section.blocks.filter((block) =>
-      block.assetId?.includes("material-parameters-"),
-    ).length,
-    2,
-  );
-
-  for (const figure of Object.values(corpus.assets.figures)) {
-    const image = await readFile(
-      new URL(`../public/assets/${figure.imagePath}`, import.meta.url),
-    );
-    assert.equal(
-      createHash("sha256").update(image).digest("hex"),
-      figure.sha256,
-    );
+  for (const summary of summaries) {
+    const chunk = chunks.get(summary.chunkPath);
+    assert.ok(chunk?.units.some((unit) => unit.id === summary.id));
   }
+  const units = [...chunks.values()].flatMap(({ units }) => units);
+  assert.equal(units.length, 1745);
+  assert.equal(units.every((unit) => unit.workflow.status === "extracted"), true);
+
+  const assets = { formulas: new Map(), tables: new Map(), figures: new Map() };
+  for (const chunk of chunks.values()) {
+    for (const kind of Object.keys(assets)) {
+      for (const asset of Object.values(chunk.assets[kind])) assets[kind].set(asset.id, asset);
+    }
+  }
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(assets).map(([kind, values]) => [kind, values.size])),
+    { formulas: 844, tables: 211, figures: 205 },
+  );
+
+  const relations = await dataJson(manifest.relationsPath);
+  assert.equal(relations.sourceOfTruth, "explicit-corpus-relations");
+  assert.equal(relations.inferredRelationsIncluded, false);
+  assert.equal(relations.relations.length, 302);
+  assert.equal(relations.relations.every(({ review }) => review.status === "proposed"), true);
+  const unitIds = new Set(units.map(({ id }) => id));
+  assert.equal(relations.relations.every(({ sourceUnitId, targetUnitId }) => unitIds.has(sourceUnitId) && unitIds.has(targetUnitId)), true);
+
+  const diagnostics = await dataJson(manifest.relationDiagnosticsPath);
+  assert.equal(diagnostics.suggestions.length, 233);
+  assert.equal(diagnostics.suggestions.every(({ status }) => status === "diagnostic-only-not-canonical"), true);
+
+  for (const figure of assets.figures.values()) {
+    const image = await readFile(new URL(`../public/assets/${figure.imagePath}`, import.meta.url));
+    assert.equal(createHash("sha256").update(image).digest("hex"), figure.sha256);
+  }
+
+  await assert.rejects(readFile(new URL("../public/data/corpus.json", import.meta.url)));
 });

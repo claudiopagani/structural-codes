@@ -5,14 +5,13 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
+from lib.poppler import resolve_pdftoppm
+
 
 REPO = Path(__file__).resolve().parents[1]
 PDF = REPO / "raw-sources" / "circ2019" / "circolare-7-2019.pdf"
 OUTPUT = REPO / "corpus" / "assets" / "figures" / "circ2019" / "figc4.4.1.png"
-PDFTOPPM = Path(
-    r"C:\Users\pagan\.cache\codex-runtimes\codex-primary-runtime"
-    r"\dependencies\native\poppler\Library\bin\pdftoppm.exe"
-)
+PDFTOPPM = resolve_pdftoppm()
 
 # Coordinate PDF points, top-left. Include the complete drawing and caption,
 # excluding the page header and surrounding prose.

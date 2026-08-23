@@ -19,8 +19,8 @@ L'evidence estratta è in:
 - `evidence/gu-so8-2018-ntc/`;
 - `evidence/circ-7-2019/`.
 
-Il payload `viewer/public/data/corpus.json` è un derivato rigenerabile. La fonte
-editoriale resta sempre il record in `corpus/units/`.
+Gli indici e i chunk sotto `viewer/public/data/codes/` sono derivati
+rigenerabili. La fonte editoriale resta sempre il record in `corpus/units/`.
 
 ## Procedura per ogni blocco
 
@@ -29,10 +29,12 @@ editoriale resta sempre il record in `corpus/units/`.
 3. Usare `blocks[].evidence.pdfPage` per raggiungere la pagina del PDF.
 4. Confrontare `blocks[].text.normalized` con la fonte ufficiale; consultare
    `blocks[].text.raw` per capire l'origine di glyph o spaziature sospette.
-5. Correggere soltanto il testo normalizzato. Il testo raw documenta
-   l'estrazione e non va riscritto.
-6. Tracciare la correzione in `blocks[].evidence.transformations` e rigenerare
-   `normalizedSha256` con gli strumenti del repository.
+5. Non ripulire il testo raw per estetica. Se è errata la selezione di evidence,
+   motivare la sostituzione e aggiornare insieme raw, normalized, evidence,
+   trasformazioni e hash; altrimenti modificare soltanto normalized.
+6. Tracciare ogni differenza non banale in
+   `blocks[].evidence.transformations` e rigenerare `rawSha256` e
+   `normalizedSha256` pertinenti con gli strumenti del repository.
 7. Aggiornare lo stato e le issue di workflow solo quando il controllo richiesto
    è realmente concluso.
 

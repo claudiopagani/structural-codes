@@ -15,8 +15,9 @@ mai dati mancanti per plausibilità.
 4. `corpus/assets/<documento>/` contiene manifest, tabelle, formule e figure
    canoniche; i PNG ufficiali sono sotto `corpus/assets/figures/`.
 5. `corpus/manifest.json` descrive perimetro e stato editoriale del corpus.
-6. `viewer/public/data/corpus.json` e `viewer/public/assets/figures/` sono
-   derivati rigenerabili. Non modificarli né versionarli.
+6. `viewer/public/data/codes/`, `viewer/public/assets/figures/` e
+   `viewer/public/vendor/` sono derivati rigenerabili. Non modificarli né
+   versionarli.
 
 Il viewer è uno strumento di lettura e controllo visivo. Le correzioni si fanno
 direttamente nel codice o negli script di generazione, non attraverso

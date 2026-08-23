@@ -35,6 +35,8 @@ interface EvidencePage {
 
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const evidenceDir = join(repoRoot, "evidence");
+const requireLocalEvidence = process.argv.includes("--require-local");
+const requireFixtureSamples = process.argv.includes("--require-samples");
 const registry = sourceRegistryV2Schema.parse(
     JSON.parse(
         await readFile(
@@ -78,6 +80,7 @@ let errors = 0;
 let manifestsChecked = 0;
 let pagesChecked = 0;
 let samplesChecked = 0;
+const checkedSampleKeys = new Set<string>();
 const manifestFiles = (await walkFiles(evidenceDir, ".json")).filter(
     (file) =>
         basename(file.absolutePath) === "manifest.json" &&
@@ -159,6 +162,7 @@ for (const file of manifestFiles) {
         const sample = samples.get(`${manifest.sourceId}:${expected.pdfPage}`);
         if (sample !== undefined) {
             samplesChecked += 1;
+            checkedSampleKeys.add(`${manifest.sourceId}:${expected.pdfPage}`);
             if (
                 page.pipelineVersion !== sampleFixture.pipelineVersion ||
                 page.printedPage !== sample.printedPage ||
@@ -169,6 +173,17 @@ for (const file of manifestFiles) {
                     `${manifest.sourceId} pagina ${expected.pdfPage}: regressione rispetto alla fixture ufficiale`,
                 );
             }
+        }
+    }
+}
+
+if (requireLocalEvidence && manifestsChecked === 0) {
+    report("nessun manifest evidence locale disponibile per il gate di release");
+}
+if (requireFixtureSamples) {
+    for (const key of samples.keys()) {
+        if (!checkedSampleKeys.has(key)) {
+            report(`fixture ufficiale non coperta dall'evidence locale: ${key}`);
         }
     }
 }

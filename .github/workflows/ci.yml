@@ -26,4 +26,19 @@ jobs:
       - run: npm ci
       - run: npm run viewer:install
       - run: npm run check:ci
+      - run: npm run audit:production
       - run: npm run viewer:check
+      - run: npm run viewer:audit:production
+
+  package:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run release:verify:package

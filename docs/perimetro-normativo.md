@@ -33,8 +33,8 @@ come riferimenti esterni.
 - pubblicazione: 20 febbraio 2018;
 - entrata in vigore delle norme tecniche: **22 marzo 2018**.
 
-L'art. 3 stabilisce trenta giorni dopo la pubblicazione. La data
-La data `2018-02-22` è errata e non deve comparire nei record canonici.
+L'art. 3 stabilisce trenta giorni dopo la pubblicazione. La data `2018-02-22`
+è errata e non deve comparire nei record canonici.
 Il corpo del decreto e l'allegato tecnico devono restare componenti
 distinguibili dello stesso work.
 
