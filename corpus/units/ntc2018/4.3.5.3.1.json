@@ -421,6 +421,117 @@
       }
     },
     {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1#block-editorial-001",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove t è lo spessore del tubo di acciaio e d è il diametro esterno della colonna. Tale formula è valida nel caso in cui   0,5 O d   e l’eccentricità massima del carico,   Ed   Ed e   M   N   , sia minore di 0,1. I coefficienti   a K   ed   c K   sono dati dalle seguenti espressioni",
+        "normalized": "dove t è lo spessore del tubo di acciaio e d è il diametro esterno della colonna. Tale formula è valida nel caso in cui λ̄ ≤ 0,5 e l’eccentricità massima del carico, e = M_Ed/N_Ed, sia minore di 0,1. I coefficienti η_a ed η_c sono dati dalle seguenti espressioni",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore del tubo di acciaio e "
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": " è il diametro esterno della colonna. Tale formula è valida nel caso in cui "
+          },
+          {
+            "kind": "math",
+            "value": "λ̄ ≤ 0,5",
+            "latex": "\\bar{\\lambda}\\le0{,}5"
+          },
+          {
+            "kind": "text",
+            "value": " e l’eccentricità massima del carico, "
+          },
+          {
+            "kind": "math",
+            "value": "e = M_Ed/N_Ed",
+            "latex": "e=M_{Ed}/N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": ", sia minore di 0,1. I coefficienti "
+          },
+          {
+            "kind": "math",
+            "value": "η_a",
+            "latex": "\\eta_a"
+          },
+          {
+            "kind": "text",
+            "value": " ed "
+          },
+          {
+            "kind": "math",
+            "value": "η_c",
+            "latex": "\\eta_c"
+          },
+          {
+            "kind": "text",
+            "value": " sono dati dalle seguenti espressioni"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 129,
+        "printedPage": "125",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 312,
+          "width": 430,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8e8ffbb997bf64a6287d1c35cc0a9ce5558d5b8f705728bd8b036d7271240bb4",
+        "normalizedSha256": "d0972f321f93142098ec0cec56e9b3fc7086a8facb3682d98555f8a0275ba124"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1#block-formula-003",
       "kind": "formula-ref",
       "origin": "official",

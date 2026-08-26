@@ -35,12 +35,14 @@ test("i tarball rispettano il boundary core/viewer", async () => {
 });
 
 test("il core React-free non è una dipendenza inversa del package viewer", async () => {
-  const [rootPackage, generator, viewerSource] = await Promise.all([
+  const [rootPackage, generator, viewerSource, viewerStyles] = await Promise.all([
     readFile(join(repositoryRoot, "package.json"), "utf8").then(JSON.parse),
     readFile(join(viewerRoot, "shared", "generate-artifacts.mjs"), "utf8"),
     readFile(join(viewerRoot, "shared", "NormativeViewer.tsx"), "utf8"),
+    readFile(join(viewerRoot, "package-dist", "styles.css"), "utf8"),
   ]);
   assert.equal(rootPackage.dependencies["structural-codes-viewer"], undefined);
   assert.doesNotMatch(generator, /\.\.\/strutture-normative|\.\.\/structural-codes/iu);
   assert.doesNotMatch(viewerSource, /pdfjs-dist|source-pdf|vinext|cloudflare/iu);
+  assert.match(viewerStyles, /^@import "katex\/dist\/katex\.min\.css";/u);
 });

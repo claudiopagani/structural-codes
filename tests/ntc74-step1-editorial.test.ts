@@ -55,11 +55,11 @@ test("NTC 7.4 step 1 trascrive le formule [7.4.1]-[7.4.12]", async () => {
     }
     assert.equal(
         byNumber.get("7.4.4"),
-        "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\sum M_{b,Rd}",
+        "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\cdot\\sum M_{b,Rd}",
     );
     assert.equal(
         byNumber.get("7.4.8"),
-        "V_{jbd}\\le\\eta\\,f_{cd}\\,b_j\\,h_{jc}\\sqrt{1-\\frac{\\nu_d}{\\eta}}",
+        "V_{jbd}\\le\\eta\\cdot f_{cd}\\cdot b_j\\cdot h_{jc}\\cdot\\sqrt{1-\\frac{\\nu_d}{\\eta}}",
     );
     assert.equal(
         manifest.formulas.filter(

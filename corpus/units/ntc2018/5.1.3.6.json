@@ -35,7 +35,18 @@
       "text": {
         "raw": "5.1.3.6 A ZIONI VARIABILI DA TRAFFICO. A ZIONE CENTRIFUGA: q\n4",
         "normalized": "5.1.3.6 AZIONI VARIABILI DA TRAFFICO. AZIONE CENTRIFUGA: q4",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "5.1.3.6 AZIONI VARIABILI DA TRAFFICO. AZIONE CENTRIFUGA: "
+          },
+          {
+            "kind": "math",
+            "value": "q4",
+            "latex": "q_{4}"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -100,21 +111,21 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nei ponti con asse curvo di raggio R (in metri) l’azione centrifuga corrispondente ad ogni colonna di carico si valuta convenzionalmente come indicato in Tab. 5.1.III, essendo "
+            "value": "Nei ponti con asse curvo di raggio "
           },
           {
             "kind": "math",
-            "value": "Qv",
-            "latex": "Q_v"
+            "value": "R",
+            "latex": "R"
           },
           {
             "kind": "text",
-            "value": " = Σi 2"
+            "value": " (in metri) l’azione centrifuga corrispondente ad ogni colonna di carico si valuta convenzionalmente come indicato in Tab. 5.1.III, essendo "
           },
           {
             "kind": "math",
-            "value": "Qik",
-            "latex": "Q_{ik}"
+            "value": "Qv = Σi 2Qik",
+            "latex": "Q_v=\\sum_i2Q_{ik}"
           },
           {
             "kind": "text",

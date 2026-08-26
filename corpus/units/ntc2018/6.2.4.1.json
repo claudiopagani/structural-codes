@@ -393,8 +393,8 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Effetto delle azioni e resistenza di progetto sono espresse nelle [6.2.2a] e [6.2.3] rispettivamente in funzione delle azioni di\nprogetto ·F \nF k \n, dei parametri geotecnici di progetto X k \n/·M e dei parametri geometrici di progetto a d \n. Il coefficiente parziale di\nsicurezza ·R opera direttamente sulla resistenza del sistema. L’effetto delle azioni di progetto può anche essere valutato diret-\ntamente con i valori caratteristici delle azioni come indicato dalla [6.2.2b] con ·E = ·F .\nIn accordo a quanto stabilito al §2.6.1, la verifica della condizione [6.2.1] deve essere effettuata impiegando diverse combinazioni\ndi gruppi di coefficienti parziali, rispettivamente definiti per le azioni (A1 e A2), per i parametri geotecnici (M1 e M2) e per le re-\nsistenze (R1, R2 e R3).\nI diversi gruppi di coefficienti di sicurezza parziali sono scelti nell’ambito di due approcci progettuali distinti e alternativi.\nNel primo approccio progettuale (Approccio 1) le verifiche si eseguono con due diverse combinazioni di gruppi di coefficienti\nognuna delle quali può essere critica per differenti aspetti dello stesso progetto.\nNel secondo approccio progettuale (Approccio 2) le verifiche si eseguono con un’unica combinazione di gruppi di coefficienti.\nPer le verifiche nei confronti di stati limite ultimi non espressamente trattati nei successivi paragrafi, da 6.3 a 6.11, si utilizza\nl’Approccio 1 con le due combinazioni (A1+M1+R1) e (A2+M2+R2). I fattori parziali per il gruppo R1 sono sempre unitari; quelli\ndel gruppo R2 possono essere maggiori o uguali all'unità e, in assenza di indicazioni specifiche per lo stato limite ultimo conside-\nrato, devono essere scelti dal progettista in relazione alle incertezze connesse con i procedimenti adottati.",
-        "normalized": "Effetto delle azioni e resistenza di progetto sono espresse nelle [6.2.2a] e [6.2.3] rispettivamente in funzione delle azioni di progetto γF Fk, dei parametri geotecnici di progetto Xk /γM e dei parametri geometrici di progetto ad. Il coefficiente parziale di sicurezza γR opera direttamente sulla resistenza del sistema. L’effetto delle azioni di progetto può anche essere valutato direttamente con i valori caratteristici delle azioni come indicato dalla [6.2.2b] con γE = γF. In accordo a quanto stabilito al §2.6.1, la verifica della condizione [6.2.1] deve essere effettuata impiegando diverse combinazioni di gruppi di coefficienti parziali, rispettivamente definiti per le azioni (A1 e A2), per i parametri geotecnici (M1 e M2) e per le resistenze (R1, R2 e R3). I diversi gruppi di coefficienti di sicurezza parziali sono scelti nell’ambito di due approcci progettuali distinti e alternativi. Nel primo approccio progettuale (Approccio 1) le verifiche si eseguono con due diverse combinazioni di gruppi di coefficienti ognuna delle quali può essere critica per differenti aspetti dello stesso progetto. Nel secondo approccio progettuale (Approccio 2) le verifiche si eseguono con un’unica combinazione di gruppi di coefficienti. Per le verifiche nei confronti di stati limite ultimi non espressamente trattati nei successivi paragrafi, da 6.3 a 6.11, si utilizza l’Approccio 1 con le due combinazioni (A1+M1+R1) e (A2+M2+R2). I fattori parziali per il gruppo R1 sono sempre unitari; quelli del gruppo R2 possono essere maggiori o uguali all'unità e, in assenza di indicazioni specifiche per lo stato limite ultimo considerato, devono essere scelti dal progettista in relazione alle incertezze connesse con i procedimenti adottati.",
+        "raw": "Effetto delle azioni e resistenza di progetto sono espresse nelle [6.2.2a] e [6.2.3] rispettivamente in funzione delle azioni di\nprogetto ·F \nF k \n, dei parametri geotecnici di progetto X k \n/·M e dei parametri geometrici di progetto a d \n. Il coefficiente parziale di\nsicurezza ·R opera direttamente sulla resistenza del sistema. L’effetto delle azioni di progetto può anche essere valutato diret-\ntamente con i valori caratteristici delle azioni come indicato dalla [6.2.2b] con ·E = ·F .",
+        "normalized": "Effetto delle azioni e resistenza di progetto sono espresse nelle [6.2.2a] e [6.2.3] rispettivamente in funzione delle azioni di progetto γF Fk, dei parametri geotecnici di progetto Xk /γM e dei parametri geometrici di progetto ad. Il coefficiente parziale di sicurezza γR opera direttamente sulla resistenza del sistema. L’effetto delle azioni di progetto può anche essere valutato direttamente con i valori caratteristici delle azioni come indicato dalla [6.2.2b] con γE = γF.",
         "normalizationVersion": "ntc6-editorial-profile-0.1.0",
         "inline": [
           {
@@ -403,17 +403,8 @@
           },
           {
             "kind": "math",
-            "value": "γF",
-            "latex": "\\gamma_F"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "Fk",
-            "latex": "F_k"
+            "value": "γF Fk",
+            "latex": "\\gamma_F F_k"
           },
           {
             "kind": "text",
@@ -421,17 +412,8 @@
           },
           {
             "kind": "math",
-            "value": "Xk",
-            "latex": "X_k"
-          },
-          {
-            "kind": "text",
-            "value": " /"
-          },
-          {
-            "kind": "math",
-            "value": "γM",
-            "latex": "\\gamma_M"
+            "value": "Xk /γM",
+            "latex": "\\frac{X_k}{\\gamma_M}"
           },
           {
             "kind": "text",
@@ -457,30 +439,12 @@
           },
           {
             "kind": "math",
-            "value": "γE",
-            "latex": "\\gamma_E"
+            "value": "γE = γF",
+            "latex": "\\gamma_E=\\gamma_F"
           },
           {
             "kind": "text",
-            "value": " = "
-          },
-          {
-            "kind": "math",
-            "value": "γF",
-            "latex": "\\gamma_F"
-          },
-          {
-            "kind": "text",
-            "value": ". In accordo a quanto stabilito al §2.6.1, la verifica della condizione [6.2.1] deve essere effettuata impiegando diverse combinazioni di gruppi di coefficienti parziali, rispettivamente definiti per le azioni (A1 e A2), per i parametri geotecnici (M1 e M2) e per le resistenze (R1, R2 e R3). I diversi gruppi di coefficienti di sicurezza parziali sono scelti nell’ambito di due approcci progettuali distinti e alternativi. Nel primo approccio progettuale (Approccio 1) le verifiche si eseguono con due diverse combinazioni di gruppi di coefficienti ognuna delle quali può essere critica per differenti aspetti dello stesso progetto. Nel secondo approccio progettuale (Approccio 2) le verifiche si eseguono con un’unica combinazione di gruppi di coefficienti. Per le verifiche nei confronti di stati limite ultimi non espressamente trattati nei successivi paragrafi, da 6.3 a 6.11, si utilizza l’Approccio 1 con le due combinazioni (A1+M1+R1) e (A2+M2+R2). I fattori parziali per il gruppo R1 sono sempre unitari; quelli del gruppo R2 possono essere maggiori o uguali all'unità e, in assenza di indicazioni specifiche per lo stato limite ultimo considerato, devono essere scelti dal progettista in relazione alle incertezze connesse con i procedimenti "
-          },
-          {
-            "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
-          },
-          {
-            "kind": "text",
-            "value": "ottati."
+            "value": "."
           }
         ]
       },
@@ -516,8 +480,191 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ec78f8baab20b01474c44f84734563df794424f1d8eb4c8357abdf0230c44ee7",
-        "normalizedSha256": "3b189e5b3fcfd23c2646403a4be6335ccbf445db4f74f2c17fc78d07a711d6b1"
+        "rawSha256": "713ffbb132caf426394b52e86e99e08cde69814f8af2c8d418744442b706074b",
+        "normalizedSha256": "e1cdae5ae0a57d87891200f61560b93c8851e2e64887150fa1f77954ad17d313"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In accordo a quanto stabilito al §2.6.1, la verifica della condizione [6.2.1] deve essere effettuata impiegando diverse combinazioni\ndi gruppi di coefficienti parziali, rispettivamente definiti per le azioni (A1 e A2), per i parametri geotecnici (M1 e M2) e per le re-\nsistenze (R1, R2 e R3).",
+        "normalized": "In accordo a quanto stabilito al §2.6.1, la verifica della condizione [6.2.1] deve essere effettuata impiegando diverse combinazioni di gruppi di coefficienti parziali, rispettivamente definiti per le azioni (A1 e A2), per i parametri geotecnici (M1 e M2) e per le resistenze (R1, R2 e R3).",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 190,
+        "printedPage": "186",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "eed8071772593068a89d2d5593e4fa1b5a601265341bf48c05ad25b4dcf1d349",
+        "normalizedSha256": "b8e031d5ec977c139d83068c82a3d1e159f2ddd62023cf68862c4cccead09c31"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I diversi gruppi di coefficienti di sicurezza parziali sono scelti nell’ambito di due approcci progettuali distinti e alternativi.",
+        "normalized": "I diversi gruppi di coefficienti di sicurezza parziali sono scelti nell’ambito di due approcci progettuali distinti e alternativi.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 190,
+        "printedPage": "186",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "922a8544ab90fb92cc4fa5af41d0da3414210a183ca86528fa85338ba4f7a659",
+        "normalizedSha256": "922a8544ab90fb92cc4fa5af41d0da3414210a183ca86528fa85338ba4f7a659"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1#block-editorial-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel primo approccio progettuale (Approccio 1) le verifiche si eseguono con due diverse combinazioni di gruppi di coefficienti\nognuna delle quali può essere critica per differenti aspetti dello stesso progetto.",
+        "normalized": "Nel primo approccio progettuale (Approccio 1) le verifiche si eseguono con due diverse combinazioni di gruppi di coefficienti ognuna delle quali può essere critica per differenti aspetti dello stesso progetto.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 190,
+        "printedPage": "186",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0e4a63484650c1aa5a74e3498acdf69c579720641806bf4b357047287b23b94c",
+        "normalizedSha256": "85f07fca1dfdd3ed31a36e9bc1c609da4d89e0fcf965b1023db676ee216e0982"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1#block-editorial-015",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel secondo approccio progettuale (Approccio 2) le verifiche si eseguono con un’unica combinazione di gruppi di coefficienti.",
+        "normalized": "Nel secondo approccio progettuale (Approccio 2) le verifiche si eseguono con un’unica combinazione di gruppi di coefficienti.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 190,
+        "printedPage": "186",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "50d441b089e881cff204bcd8b9382fc6ec9531d4ae57d37812cb397f2133a859",
+        "normalizedSha256": "50d441b089e881cff204bcd8b9382fc6ec9531d4ae57d37812cb397f2133a859"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1#block-editorial-016",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le verifiche nei confronti di stati limite ultimi non espressamente trattati nei successivi paragrafi, da 6.3 a 6.11, si utilizza\nl’Approccio 1 con le due combinazioni (A1+M1+R1) e (A2+M2+R2). I fattori parziali per il gruppo R1 sono sempre unitari; quelli\ndel gruppo R2 possono essere maggiori o uguali all'unità e, in assenza di indicazioni specifiche per lo stato limite ultimo conside-\nrato, devono essere scelti dal progettista in relazione alle incertezze connesse con i procedimenti adottati.",
+        "normalized": "Per le verifiche nei confronti di stati limite ultimi non espressamente trattati nei successivi paragrafi, da 6.3 a 6.11, si utilizza l’Approccio 1 con le due combinazioni (A1+M1+R1) e (A2+M2+R2). I fattori parziali per il gruppo R1 sono sempre unitari; quelli del gruppo R2 possono essere maggiori o uguali all'unità e, in assenza di indicazioni specifiche per lo stato limite ultimo considerato, devono essere scelti dal progettista in relazione alle incertezze connesse con i procedimenti adottati.",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 190,
+        "printedPage": "186",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli matematici e marcatori di elenco verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "81a3fef2d6f609fd4698c85e17075ff2bef83b2b1526d5ed45ca4dc5966f4292",
+        "normalizedSha256": "2e3edad12f8f72b66d531c2b1f6ab5841c3de889a3bbb2b8241ed4b696577cd0"
       }
     }
   ],

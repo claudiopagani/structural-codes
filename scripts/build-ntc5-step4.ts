@@ -18,7 +18,37 @@ type Inline = { kind: "text"; value: string } | { kind: "math"; value: string; l
 type Block = { kind: "heading" | "paragraph" | "list-item" | "formula-ref" | "table-ref" | "figure-ref"; page: number; text?: string; raw?: string; assetId?: string; inline?: Inline[] };
 type UnitDef = { number: string; title: string; blocks: Block[] };
 function inlineMath(text: string): Inline[] {
-    const patterns: Array<[RegExp, string]> = [[/γG1/g, "\\gamma_{G1}"], [/γG2/g, "\\gamma_{G2}"], [/γB/g, "\\gamma_B"], [/γQ/g, "\\gamma_Q"], [/γQi/g, "\\gamma_{Qi}"], [/γP/g, "\\gamma_P"], [/γCed/g, "\\gamma_{Ced}"], [/Ψ0/g, "\\Psi_0"], [/Ψ1/g, "\\Psi_1"], [/Ψ2/g, "\\Psi_2"], [/qA1d/g, "q_{A1d}"], [/qA2d/g, "q_{A2d}"], [/δh/g, "\\delta_h"], [/LΦ/g, "L_{\\Phi}"], [/\bV\b/g, "V"], [/\bR\b/g, "R"]];
+    const patterns: Array<[RegExp, string]> = [
+        [/γQi\s*=\s*1,00/g, "\\gamma_{Qi}=1{,}00"],
+        [/γQ\s*=\s*1,00/g, "\\gamma_Q=1{,}00"],
+        [/120 < V ≤ 200 km\/h/g, "120<V\\le 200\\ \\mathrm{km/h}"],
+        [/V ≤ 120 km\/h/g, "V\\le 120\\ \\mathrm{km/h}"],
+        [/V > 200 km\/h/g, "V>200\\ \\mathrm{km/h}"],
+        [/t ≤ 4,5 mm\/3m/g, "t\\le 4{,}5\\ \\mathrm{mm}/3\\mathrm{m}"],
+        [/t ≤ 3,0 mm\/3m/g, "t\\le 3{,}0\\ \\mathrm{mm}/3\\mathrm{m}"],
+        [/t ≤ 1,5 mm\/3m/g, "t\\le 1{,}5\\ \\mathrm{mm}/3\\mathrm{m}"],
+        [/t ≤ 1,2 mm\/3m/g, "t\\le 1{,}2\\ \\mathrm{mm}/3\\mathrm{m}"],
+        [/3,5 m\/s²/g, "3{,}5\\ \\mathrm{m/s^2}"],
+        [/0 a 20 Hz/g, "0\\text{ a }20\\ \\mathrm{Hz}"],
+        [/1,5 kN\/m²/g, "1{,}5\\ \\mathrm{kN/m^2}"],
+        [/6 mm\/3 m/g, "6\\ \\mathrm{mm}/3\\ \\mathrm{m}"],
+        [/γG1/g, "\\gamma_{G1}"],
+        [/γG2/g, "\\gamma_{G2}"],
+        [/γQi/g, "\\gamma_{Qi}"],
+        [/γCed/g, "\\gamma_{Ced}"],
+        [/γB/g, "\\gamma_B"],
+        [/γQ/g, "\\gamma_Q"],
+        [/γP/g, "\\gamma_P"],
+        [/Ψ0/g, "\\Psi_0"],
+        [/Ψ1/g, "\\Psi_1"],
+        [/Ψ2/g, "\\Psi_2"],
+        [/qA1d/g, "q_{A1d}"],
+        [/qA2d/g, "q_{A2d}"],
+        [/δh/g, "\\delta_h"],
+        [/LΦ/g, "L_{\\Phi}"],
+        [/Ψ/g, "\\Psi"],
+        [/γ/g, "\\gamma"],
+    ];
     const matches: Array<{ start: number; end: number; value: string; latex: string }> = [];
     for (const [pattern, latex] of patterns) { pattern.lastIndex = 0; let match: RegExpExecArray | null; while ((match = pattern.exec(text)) !== null) { const start = match.index; const end = start + match[0].length; if (!matches.some((item) => start < item.end && end > item.start)) matches.push({ start, end, value: match[0], latex }); } }
     matches.sort((a, b) => a.start - b.start); const result: Inline[] = []; let cursor = 0;
@@ -34,10 +64,11 @@ const U = (number: string, title: string, page: number, blocks: Block[] = []): U
 
 const units: UnitDef[] = [
     U("5.2.3.1.3", "SIMULTANEITÀ DELLE AZIONI DA TRAFFICO - VALORI CARATTERISTICI DELLE AZIONI COMBINATE IN GRUPPI DI CARICHI", 181, [
-        p(181, "Gli effetti dei carichi verticali dovuti alla presenza dei convogli vanno sempre combinati con le altre azioni derivanti dal traffico ferroviario, adottando i coefficienti indicati in Tab. 5.2.IV."), ref("table-ref", 182, "5.2.iv"),
+        p(181, "Gli effetti dei carichi verticali dovuti alla presenza dei convogli vanno sempre combinati con le altre azioni derivanti dal traffico ferroviario, adottando i coefficienti indicati in Tab. 5.2.IV."),
         p(181, "Il carico verticale, nel caso di ponti con più binari, è quello che si ottiene con i treni specificati nella Tab. 5.2.III."),
         p(181, "Nella valutazione degli effetti di interazione, alle azioni conseguenti all’applicazione dei carichi da traffico ferroviario si adotteranno gli stessi coefficienti parziali dei carichi che li generano."),
         p(181, "I valori fra parentesi indicati nella Tab. 5.2.IV vanno assunti quando l’azione risulta favorevole nei riguardi della verifica che si sta svolgendo."),
+        ref("table-ref", 182, "5.2.iv"),
         p(182, "Il gruppo 4 è da considerarsi esclusivamente per le verifiche a fessurazione. I valori indicati fra parentesi si assumeranno pari a: (0,6) per impalcati con 2 binari caricati e (0,4) per impalcati con tre o più binari caricati.", "Il gruppo 4 è da considerarsi esclusivamente per le verifiche a fessurazione. I valori indicati fra parentesi si assumeranno pari a:\n(0,6) per impalcati con 2 binari caricati e (0,4) per impalcati con tre o più binari caricati."),
     ]),
     U("5.2.3.1.4", "VALORI RARI E FREQUENTI DELLE AZIONI DA TRAFFICO FERROVIARIO", 182, [p(182, "Le azioni derivanti da ciascuno dei gruppi di carico definiti nella Tab. 5.2.IV sono da intendersi come un’unica azione caratteristica da utilizzarsi nella definizione dei valori rari e frequenti.", "Le azioni derivanti da ciascuno dei gruppi di carico definiti nella Tab. 5.2.IV sono da intendersi come un’unica azione caratteristi-\nca da utilizzarsi nella definizione dei valori rari e frequenti.")]),
@@ -45,18 +76,19 @@ const units: UnitDef[] = [
     U("5.2.3.1.6", "AZIONI DA TRAFFICO FERROVIARIO IN SITUAZIONI TRANSITORIE", 182, [p(182, "Nelle verifiche di progetto per situazioni transitorie dovute alla manutenzione dei binari o del ponte, i valori caratteristici delle azioni da traffico, caso per caso, sono da concordarsi con l’autorità ferroviaria.")]),
     U("5.2.3.2", "VERIFICHE AGLI SLU E SLE", 182, [],),
     U("5.2.3.2.1", "REQUISITI CONCERNENTI GLI SLU", 182, [
-        p(182, "Per le verifiche agli stati limite ultimi si adottano i valori dei coefficienti parziali γ in Tab. 5.2.V e i coefficienti di combinazione Ψ in Tab. 5.2.VI.", "Per le verifiche agli stati limite ultimi si adottano i valori dei coefficienti parziali J in Tab. 5.2.V e i coefficienti di combinazione <\nin Tab. 5.2.VI."), ref("table-ref", 182, "5.2.v"), ref("table-ref", 183, "5.2.vi"),
+        p(182, "Per le verifiche agli stati limite ultimi si adottano i valori dei coefficienti parziali γ in Tab. 5.2.V e i coefficienti di combinazione Ψ in Tab. 5.2.VI.", "Per le verifiche agli stati limite ultimi si adottano i valori dei coefficienti parziali J in Tab. 5.2.V e i coefficienti di combinazione <\nin Tab. 5.2.VI."), ref("table-ref", 182, "5.2.v"),
         p(183, "Nella Tab. 5.2.V il significato dei simboli è il seguente:"),
         p(183, "γG1 coefficiente parziale del peso proprio della struttura, del terreno e dell’acqua, quando pertinente;"),
         p(183, "γG2 coefficiente parziale dei pesi propri degli elementi non strutturali;"), p(183, "γB coefficiente parziale del peso proprio del ballast;"),
         p(183, "γQ coefficiente parziale delle azioni variabili da traffico;"), p(183, "γQi coefficiente parziale delle azioni variabili;"), p(183, "γP coefficiente parziale delle azioni di precompressione"),
         p(183, "γCed coefficiente parziale delle azioni di ritiro, viscosità e cedimenti non imposti appositamente."),
-        p(183, "Nella Tab. 5.2.VI il significato dei coefficienti di combinazione Ψ è riportato nella tabella stessa."),
+        ref("table-ref", 183, "5.2.vi"),
     ]),
     U("5.2.3.2.2", "REQUISITI CONCERNENTI GLI SLE", 183, [
         p(183, "L’assetto di una struttura, da valutarsi in base alle combinazioni di carico previste dalla presente norma, deve risultare compatibile con la geometria della struttura stessa in relazione alle esigenze dei convogli ferroviari."),
-        p(183, "Per le verifiche agli stati limite d’esercizio si adottano i valori dei coefficienti parziali in Tab. 5.2.VI."), ref("table-ref", 183, "5.2.vii"),
+        p(183, "Per le verifiche agli stati limite d’esercizio si adottano i valori dei coefficienti parziali in Tab. 5.2.VI."),
         p(183, "Ove necessario in luogo dei gruppi delle azioni da traffico ferroviario definiti in Tab. 5.2.IV possono considerarsi le singole azioni con i coefficienti di combinazione indicati in Tab. 5.2.VII."),
+        ref("table-ref", 183, "5.2.vii"),
         p(184, "Per la valutazione degli effetti dell’interazione si usano gli stessi coefficienti Ψ adottati per le azioni che provocano dette interazioni e cioè: temperatura, carichi verticali da traffico ferroviario, frenatura."),
         p(184, "In ogni caso le azioni aerodinamiche devono essere cumulate con l’azione del vento. L’azione risultante dovrà essere maggiore di un valore minimo, funzione della velocità della linea e comunque di 1,5 kN/m² sia nella verifica agli SLE (combinazione caratteristica) sia nella verifica agli SLU con γQ=1,00 e γQi=1,00.", "In ogni caso le azioni aerodinamiche devono essere cumulate con l’azione del vento. L’azione risultante dovrà essere maggiore di\nun valore minimo, funzione della velocità della linea e comunque di 1,5 kN/m² sia nella verifica agli SLE (combinazione caratteri-\nstica) sia nella verifica agli SLU con ·Q = 1,00 e ·Qi=1,00."),
     ]),
@@ -66,15 +98,17 @@ const units: UnitDef[] = [
         p(184, "In mancanza di ulteriori specificazioni, per ponti con armamento su ballast, non devono registrarsi accelerazioni verticali superiori a 3,5 m/s² nel campo di frequenze da 0 a 20 Hz."),
         ih(184, "Deformazioni torsionali dell’impalcato"),
         p(184, "La torsione dell’impalcato del ponte è calcolata considerando il treno di carico LM 71 incrementato con il corrispondente coefficiente dinamico."),
-        p(184, "Il massimo sghembo, misurato su una lunghezza di 3 m e considerando le rotaie solidali all’impalcato (Fig. 5.2.14), non deve eccedere i seguenti valori:"), ref("figure-ref", 184, "5.2.14"),
+        ref("figure-ref", 184, "5.2.14"),
+        p(184, "Il massimo sghembo, misurato su una lunghezza di 3 m e considerando le rotaie solidali all’impalcato (Fig. 5.2.14), non deve eccedere i seguenti valori:"),
         li(184, "per V ≤ 120 km/h; t ≤ 4,5 mm/3m"), li(184, "per 120 < V ≤ 200 km/h; t ≤ 3,0 mm/3m"), li(184, "per V > 200 km/h; t ≤ 1,5 mm/3m"),
         p(184, "Per velocità V > 200 km/h si deve inoltre verificare che per convogli reali, moltiplicati per il relativo incremento dinamico, risulti t ≤ 1,2 mm/3m."),
         p(184, "In mancanza di ulteriori specifiche, lo sghembo complessivo dovuto alla geometria del binario (curve di transizione) e quello dovuto alla deformazione dell’impalcato, non deve comunque eccedere i 6 mm/3 m.", "In mancanza di ulteriori specifiche, lo sghembo complessivo dovuto alla geometria del binario (curve di transizione) e quello do-\nvuto alla deformazione dell’impalcato, non deve comunque eccedere i 6 mm/3 m."),
         ih(184, "Inflessione nel piano orizzontale dell’impalcato"),
         p(184, "Considerando la presenza del treno di carico LM 71, incrementato con il corrispondente coefficiente dinamico, l’azione del vento, la forza laterale (serpeggio), la forza centrifuga e gli effetti della variazione di temperatura lineare fra i due lati dell’impalcato stabilita al § 5.2.2.4, l’inflessione nel piano orizzontale dell’impalcato non deve produrre:"),
         li(184, "una variazione angolare maggiore di quella fornita nella successiva Tab. 5.2.VIII;"), li(184, "un raggio di curvatura orizzontale minore dei valori di cui alla citata tabella."),
+        ref("table-ref", 184, "5.2.viii"),
         p(184, "Il raggio di curvatura, nel caso di impalcati a semplice appoggio, è dato dalla seguente espressione:"), ref("formula-ref", 184, "5.2.11"),
-        p(184, "dove δh rappresenta la freccia orizzontale."), ref("table-ref", 184, "5.2.viii"),
+        p(184, "dove δh rappresenta la freccia orizzontale."),
         p(185, "La freccia orizzontale deve includere anche l’effetto della deformazione della sottostruttura del ponte (pile, spalle e fondazioni), qualora esso sia sfavorevole alla verifica.", "La freccia orizzontale deve includere anche l’effetto della deformazione della sottostruttura del ponte (pile, spalle e fondazio-\nni), qualora esso sia sfavorevole alla verifica."),
     ]),
     U("5.2.3.2.3", "VERIFICHE ALLO STATO LIMITE DI FATICA", 185, [
@@ -93,9 +127,30 @@ function parent(n: string): string | null { const p = n.split("."); return p.len
 function ancestors(n: string): string[] { const p = n.split("."); return Array.from({ length: p.length - 1 }, (_, i) => unitId(p.slice(0, i + 1).join("."))); }
 function kind(n: string): string { const d = n.split(".").length; return d === 1 ? "chapter" : d === 2 ? "section" : d === 3 ? "paragraph" : "subparagraph"; }
 function makeUnit(def: UnitDef): any { const blocks = def.blocks.map((b, i) => makeBlock(def.number, i, b)); const ids = { formulaIds: blocks.filter((b) => b.assetId?.includes(":formula:")).map((b) => b.assetId), tableIds: blocks.filter((b) => b.assetId?.includes(":table:")).map((b) => b.assetId), figureIds: blocks.filter((b) => b.assetId?.includes(":figure:")).map((b) => b.assetId) }; const issues: any[] = [{ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }]; if (Object.values(ids).some((x) => x.length)) issues.push({ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." }); return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((x) => x.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parent(def.number) ? unitId(parent(def.number) as string) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, workflow: { status: "extracted", createdBy: { actorId: "codex:ntc5-step4", kind: "automated-agent", toolVersion: ruleVersion }, createdAt, reviews: [], openIssues: issues } }; }
-const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
+const tableLatex: Record<string, string> = {
+    γG1: "\\gamma_{G1}",
+    γG2: "\\gamma_{G2}",
+    γB: "\\gamma_B",
+    γQ: "\\gamma_Q",
+    γQi: "\\gamma_{Qi}",
+    γP: "\\gamma_P",
+    γCed: "\\gamma_{Ced}",
+    Ψ0: "\\Psi_0",
+    Ψ1: "\\Psi_1",
+    Ψ2: "\\Psi_2",
+    "Gruppo di carico gr1": "\\text{Gruppo di carico }gr_1",
+    "Gruppo di carico gr2": "\\text{Gruppo di carico }gr_2",
+    "Gruppo di carico gr3": "\\text{Gruppo di carico }gr_3",
+    "Gruppo di carico gr4": "\\text{Gruppo di carico }gr_4",
+    "Azioni del vento FWk": "\\text{Azioni del vento }F_{Wk}",
+    "Azioni termiche Tk": "\\text{Azioni termiche }T_k",
+    "V ≤ 120": "V\\le120",
+    "120 < V ≤ 200": "120<V\\le200",
+    "200 < V": "200<V",
+};
+const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...(tableLatex[text] ? { latex: tableLatex[text] } : {}), ...extra });
 const tables: any[] = [
-    { id: asset("table", "5.2.iv"), unitId: unitId("5.2.3.1.3"), officialNumber: "5.2.IV", pdfPage: 182, caption: "Tab. 5.2.IV - Valutazione dei carichi da traffico", columnCount: 7, headers: [[cell("Gruppi di carico"), cell("Carico verticale (1)"), cell("Treno scarico"), cell("Frenatura e avviamento"), cell("Centrifuga"), cell("Serpeggio"), cell("Commenti")]], rows: [[cell("Gruppo 1 (2)"), cell("1,0"), cell("-"), cell("0,5 (0,0)"), cell("1,0 (0,0)"), cell("1,0 (0,0)"), cell("massima azione verticale e laterale")], [cell("Gruppo 2 (2)"), cell("-"), cell("1,0"), cell("0,0"), cell("1,0 (0,0)"), cell("1,0 (0,0)"), cell("stabilità laterale")], [cell("Gruppo 3 (2)"), cell("1,0 (0,5)"), cell("-"), cell("1,0"), cell("0,5 (0,0)"), cell("0,5 (0,0)"), cell("massima azione longitudinale")], [cell("Gruppo 4"), cell("0,8 (0,6;0,4)"), cell("-"), cell("0,8 (0,6;0,4)"), cell("0,8 (0,6;0,4)"), cell("0,8 (0,6;0,4)"), cell("Fessurazione")]], notes: ["(1) Includendo tutti i valori (F; α; etc..)", "(2) La simultaneità di due o tre valori caratteristici interi (assunzione di diversi coefficienti pari ad 1,0), sebbene improbabile, è stata considerata come semplificazione per i gruppi di carico 1, 2 e 3 senza che ciò abbia significative conseguenze progettuali.", "I valori campiti in grigio rappresentano l’azione dominante."] },
+    { id: asset("table", "5.2.iv"), unitId: unitId("5.2.3.1.3"), officialNumber: "5.2.IV", pdfPage: 182, caption: "Tab. 5.2.IV - Valutazione dei carichi da traffico", columnCount: 7, headers: [[cell("Gruppi di carico"), cell("Carico verticale (1)"), cell("Treno scarico"), cell("Frenatura e avviamento"), cell("Centrifuga"), cell("Serpeggio"), cell("Commenti")]], rows: [[cell("Gruppo 1 (2)"), cell("1,0"), cell("-"), cell("0,5 (0,0)"), cell("1,0 (0,0)"), cell("1,0 (0,0)"), cell("massima azione verticale e laterale")], [cell("Gruppo 2 (2)"), cell("-"), cell("1,0"), cell("0,0"), cell("1,0 (0,0)"), cell("1,0 (0,0)"), cell("stabilità laterale")], [cell("Gruppo 3 (2)"), cell("1,0 (0,5)"), cell("-"), cell("1,0"), cell("0,5 (0,0)"), cell("0,5 (0,0)"), cell("massima azione longitudinale")], [cell("Gruppo 4"), cell("0,8 (0,6;0,4)"), cell("-"), cell("0,8 (0,6;0,4)"), cell("0,8 (0,6;0,4)"), cell("0,8 (0,6;0,4)"), cell("Fessurazione")]], notes: ["(1) Includendo tutti i valori (F; a; etc..)", "(2) La simultaneità di due o tre valori caratteristici interi (assunzione di diversi coefficienti pari ad 1,0), sebbene improbabile, è stata considerata come semplificazione per i gruppi di carico 1, 2 e 3 senza che ciò abbia significative conseguenze progettuali.", "I valori campiti in grigio rappresentano l’azione dominante."] },
     { id: asset("table", "5.2.v"), unitId: unitId("5.2.3.2.1"), officialNumber: "5.2.V", pdfPage: 182, caption: "Tab. 5.2.V - Coefficienti parziali di sicurezza per le combinazioni di carico agli SLU", columnCount: 6, headers: [[cell("Azione"), cell("Condizione"), cell("Coefficiente"), cell("EQU(1)"), cell("A1"), cell("A2")]], rows: [[cell("Azioni permanenti"), cell("favorevoli"), cell("γG1"), cell("0,90"), cell("1,00"), cell("1,00")], [cell("Azioni permanenti"), cell("sfavorevoli"), cell("γG1"), cell("1,10"), cell("1,35"), cell("1,00")], [cell("Azioni permanenti non strutturali (2)"), cell("favorevoli"), cell("γG2"), cell("0,00"), cell("0,00"), cell("0,00")], [cell("Azioni permanenti non strutturali (2)"), cell("sfavorevoli"), cell("γG2"), cell("1,50"), cell("1,50"), cell("1,30")], [cell("Ballast (3)"), cell("favorevoli"), cell("γB"), cell("0,90"), cell("1,00"), cell("1,00")], [cell("Ballast (3)"), cell("sfavorevoli"), cell("γB"), cell("1,50"), cell("1,50"), cell("1,30")], [cell("Azioni variabili da traffico (4)"), cell("favorevoli"), cell("γQ"), cell("0,00"), cell("0,00"), cell("0,00")], [cell("Azioni variabili da traffico (4)"), cell("sfavorevoli"), cell("γQ"), cell("1,45"), cell("1,45"), cell("1,25")], [cell("Azioni variabili"), cell("favorevoli"), cell("γQi"), cell("0,00"), cell("0,00"), cell("0,00")], [cell("Azioni variabili"), cell("sfavorevoli"), cell("γQi"), cell("1,50"), cell("1,50"), cell("1,30")], [cell("Precompressione"), cell("favorevole"), cell("γP"), cell("0,90"), cell("1,00"), cell("1,00")], [cell("Precompressione"), cell("sfavorevole"), cell("γP"), cell("1,00 (5)"), cell("1,00 (6)"), cell("1,00")], [cell("Ritiro, viscosità e cedimenti non imposti appositamente"), cell("favorevole"), cell("γCed"), cell("0,00"), cell("0,00"), cell("0,00")], [cell("Ritiro, viscosità e cedimenti non imposti appositamente"), cell("sfavorevole"), cell("γCed"), cell("1,20"), cell("1,20"), cell("1,00")]], notes: ["(1) Equilibrio che non coinvolga i parametri di deformabilità e resistenza del terreno; altrimenti si applicano i valori della colonna A2.", "(2) Nel caso in cui l’intensità dei carichi permanenti non strutturali sia ben definita in fase di progetto, si potranno adottare gli stessi coefficienti validi per le azioni permanenti.", "(3) Quando si prevedano variazioni significative del carico dovuto al ballast, se ne dovrà tener conto esplicitamente nelle verifiche.", "(4) Le componenti delle azioni da traffico sono introdotte in combinazione considerando uno dei gruppi di carico gr della Tab. 5.2.IV.", "(5) 1,30 per instabilità in strutture con precompressione esterna", "(6) 1,20 per effetti locali"] },
     { id: asset("table", "5.2.vi"), unitId: unitId("5.2.3.2.1"), officialNumber: "5.2.VI", pdfPage: 183, caption: "Tab. 5.2.VI - Coefficienti di combinazione Ψ delle azioni", columnCount: 4, headers: [[cell("Azioni"), cell("Ψ0"), cell("Ψ1"), cell("Ψ2")]], rows: [[cell("Azioni singole da traffico - Carico sul rilevato a tergo delle spalle"), cell("0,80"), cell("0,50"), cell("0,0")], [cell("Azioni singole da traffico - Azioni aerodinamiche generate dal transito dei convogli"), cell("0,80"), cell("0,50"), cell("0,0")], [cell("Gruppo di carico gr1"), cell("0,80 (2)"), cell("0,80 (1)"), cell("0,0")], [cell("Gruppo di carico gr2"), cell("0,80 (2)"), cell("0,80 (1)"), cell("-")], [cell("Gruppo di carico gr3"), cell("0,80 (2)"), cell("0,80 (1)"), cell("0,0")], [cell("Gruppo di carico gr4"), cell("1,00"), cell("1,00 (1)"), cell("0,0")], [cell("Azioni del vento FWk"), cell("0,60"), cell("0,50"), cell("0,0")], [cell("Azioni da neve in fase di esecuzione"), cell("0,80"), cell("0,0"), cell("0,0")], [cell("Azioni da neve SLU e SLE"), cell("0,0"), cell("0,0"), cell("0,0")], [cell("Azioni termiche Tk"), cell("0,60"), cell("0,60"), cell("0,50")]], notes: ["(1) 0,80 se è carico solo un binario, 0,60 se sono carichi due binari e 0,40 se sono carichi tre o più binari.", "(2) Quando come azione di base venga assunta quella del vento, i coefficienti Ψ0 relativi ai gruppi di carico delle azioni da traffico vanno assunti pari a 0,0."] },
     { id: asset("table", "5.2.vii"), unitId: unitId("5.2.3.2.2"), officialNumber: "5.2.VII", pdfPage: 183, caption: "Tab. 5.2.VII - Ulteriori coefficienti di combinazione Ψ delle azioni", columnCount: 4, headers: [[cell("Azioni"), cell("Ψ0"), cell("Ψ1"), cell("Ψ2")]], rows: [[cell("Treno di carico LM 71"), cell("0,80 (3)"), cell("(1)"), cell("0,0")], [cell("Treno di carico SW/0"), cell("0,80 (3)"), cell("0,80"), cell("0,0")], [cell("Treno di carico SW/2"), cell("0,00 (3)"), cell("0,80"), cell("0,0")], [cell("Treno scarico"), cell("1,00 (3)"), cell("-"), cell("-")], [cell("Centrifuga"), cell("(2) (3)"), cell("(2)"), cell("(2)")], [cell("Azione laterale (serpeggio)"), cell("1,00 (3)"), cell("0,80"), cell("0,0")]], notes: ["(1) 0,80 se è carico solo un binario, 0,60 se sono carichi due binari e 0,40 se sono carichi tre o più binari.", "(2) Si usano gli stessi coefficienti Ψ adottati per i carichi che provocano dette azioni.", "(3) Quando come azione di base venga assunta quella del vento, i coefficienti Ψ0 relativi ai gruppi di carico delle azioni da traffico vanno assunti pari a 0,0."] },

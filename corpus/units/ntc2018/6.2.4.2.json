@@ -239,6 +239,41 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove V inst,d = G inst,d + Q inst,d [6.2.5]",
+        "normalized": "dove",
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 191,
+        "printedPage": "187",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc6-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4faa21b85ce51e6b0899baa5b4b43109d716370a8799ce98a83f2e37ea059f5f",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-006",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:6.2.5",
@@ -258,7 +293,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -318,7 +353,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-008",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:6.2.iii",
@@ -338,7 +373,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -362,7 +397,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-009",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-010",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -372,61 +407,43 @@
         "inline": [
           {
             "kind": "text",
-            "value": "a) nel caso di frontiera di efflusso libera, la verifica a sifonamento si esegue controllando che il gr"
+            "value": "a) nel caso di frontiera di efflusso libera, la verifica a sifonamento si esegue controllando che il gradiente idraulico "
           },
           {
             "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
+            "value": "i",
+            "latex": "i"
           },
           {
             "kind": "text",
-            "value": "iente idraulico i risulti non superiore al gr"
+            "value": " risulti non superiore al gradiente idraulico critico "
           },
           {
             "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
+            "value": "ic",
+            "latex": "i_c"
           },
           {
             "kind": "text",
-            "value": "iente idraulico critico ic diviso per un coefficiente parziale "
+            "value": " diviso per un coefficiente parziale "
           },
           {
             "kind": "math",
-            "value": "γR",
-            "latex": "\\gamma_R"
+            "value": "γR = 3",
+            "latex": "\\gamma_R=3"
           },
           {
             "kind": "text",
-            "value": " = 3, se si assume come effetto delle azioni il gr"
+            "value": ", se si assume come effetto delle azioni il gradiente idraulico medio, e per un coefficiente parziale "
           },
           {
             "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
+            "value": "γR = 2",
+            "latex": "\\gamma_R=2"
           },
           {
             "kind": "text",
-            "value": "iente idraulico medio, e per un coefficiente parziale "
-          },
-          {
-            "kind": "math",
-            "value": "γR",
-            "latex": "\\gamma_R"
-          },
-          {
-            "kind": "text",
-            "value": " = 2 nel caso in cui si consideri il gr"
-          },
-          {
-            "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
-          },
-          {
-            "kind": "text",
-            "value": "iente idraulico di efflusso;"
+            "value": " nel caso in cui si consideri il gradiente idraulico di efflusso;"
           }
         ]
       },
@@ -467,7 +484,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-010",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-011",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -481,12 +498,12 @@
           },
           {
             "kind": "math",
-            "value": "γR",
-            "latex": "\\gamma_R"
+            "value": "γR = 2",
+            "latex": "\\gamma_R=2"
           },
           {
             "kind": "text",
-            "value": " = 2."
+            "value": "."
           }
         ]
       },
@@ -527,28 +544,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-011",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "In tutti gli altri casi il progettista deve valutare gli effetti delle forze di filtrazione e garantire adeguati livelli di sicurezza, da pre-\nfissare e giustificare esplicitamente.",
         "normalized": "In tutti gli altri casi il progettista deve valutare gli effetti delle forze di filtrazione e garantire adeguati livelli di sicurezza, da prefissare e giustificare esplicitamente.",
-        "normalizationVersion": "ntc6-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "In tutti gli altri casi il progettista deve valutare gli effetti delle forze di filtrazione e garantire "
-          },
-          {
-            "kind": "math",
-            "value": "ad",
-            "latex": "a_d"
-          },
-          {
-            "kind": "text",
-            "value": "eguati livelli di sicurezza, da prefissare e giustificare esplicitamente."
-          }
-        ]
+        "normalizationVersion": "ntc6-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -587,7 +589,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-012",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:6.2.4.2#block-editorial-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {

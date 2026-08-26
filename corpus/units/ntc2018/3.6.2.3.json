@@ -96,7 +96,7 @@
       "text": {
         "raw": "Le esplosioni esercitano sulle costruzioni onde di pressione. Per le costruzioni usuali, è ammesso che tali onde di pressione siano\nconvenzionalmente ricondotte a distribuzioni di pressioni statiche equivalenti, purché comprovate da modelli teorici adeguati.",
         "normalized": "Le esplosioni esercitano sulle costruzioni onde di pressione. Per le costruzioni usuali, è ammesso che tali onde di pressione siano convenzionalmente ricondotte a distribuzioni di pressioni statiche equivalenti, purché comprovate da modelli teorici adeguati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -104,10 +104,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 294,
+          "width": 454,
+          "height": 21
         },
         "extraction": {
           "method": "pdf-text",
@@ -116,33 +116,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -157,7 +147,7 @@
       "text": {
         "raw": "Per esplosioni di Categoria 1 non è richiesto alcun tipo di verifica.",
         "normalized": "Per esplosioni di Categoria 1 non è richiesto alcun tipo di verifica.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -165,10 +155,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 318,
+          "width": 454,
+          "height": 12
         },
         "extraction": {
           "method": "pdf-text",
@@ -185,40 +175,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la\npressione statica equivalente nominale, espressa in kN/m², data dal valore maggiore fra quelli forniti dalle espressioni:vd p3p \u000e >3.6.5a@\n2\nvvd )V/A(/04,02/p3p \u000e\u000e >3.6.5b@\ndove:",
-        "normalized": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la pressione statica equivalente nominale, espressa in kN/m², data dal valore maggiore fra quelli forniti dalle espressioni:vd p3p >3.6.5a@ 2 vvd)V/A(/04,02/p3p >3.6.5b@ dove:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la\npressione statica equivalente nominale, espressa in kN/m², data dal valore maggiore fra quelli forniti dalle espressioni:",
+        "normalized": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la pressione statica equivalente nominale, espressa in kN/m², data dal valore maggiore fra quelli forniti dalle espressioni:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la pressione statica equivalente nominale, espressa in kN/"
+            "value": "Per esplosioni di Categoria 2, ove negli ambienti a rischio di esplosione siano presenti idonei pannelli di sfogo, si può utilizzare la pressione statica equivalente nominale, espressa in "
           },
           {
             "kind": "math",
-            "value": "m²",
-            "latex": "\\mathrm{m^2}"
+            "value": "kN/m²",
+            "latex": "\\mathrm{kN/m^2}"
           },
           {
             "kind": "text",
-            "value": ", data dal valore maggiore fra quelli forniti dalle espressioni:vd p3p "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.5a@ 2 vvd)V/A(/04,02/p3p "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.5b@ dove:"
+            "value": ", data dal valore maggiore fra quelli forniti dalle espressioni:"
           }
         ]
       },
@@ -228,10 +200,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 331,
+          "width": 454,
+          "height": 19
         },
         "extraction": {
           "method": "pdf-text",
@@ -240,70 +212,146 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "cc0beaaeef7e7d9fcd4b749449f4104e1594733b3f9f912fcb22c34e817c9e04",
-        "normalizedSha256": "676ff88cae1e94001c17bc4fc63700da7df3b62632e1adfe85ef994646fa5022"
+        "rawSha256": "f8a9e155bcded353db93df1e33c835427c11bfb7d0860dfa1c34dd41dd6821fc",
+        "normalizedSha256": "007d6786f5204cbd6c27447463938772cbc4fa53ea6a65cd38c4e37ba697f81f"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-004",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.5a",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 135,
+          "y": 351,
+          "width": 235,
+          "height": 16
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "b9d857d91c978fc74117c0a18c3f4a71408a8471c76dd6b6e59d4dbb9badf299",
+        "normalizedSha256": "7f1ec87721ad383d259907eb8f9993580fc85f993cff5fa94c6b45292d8f0ea4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-005",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.5b",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 120,
+          "y": 366,
+          "width": 250,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "761238f72a90d4125923d7bfed4f357ceeb2df7911501ab7ca6be2faf9e1385d",
+        "normalizedSha256": "202cdca56b1757b39d38807fb7a42bd99b8a593580b89b4fdbbdfaa2ed6ab893"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "pv è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in kN/m2\nA v è l’area delle aperture di sfogo, in m²\nV è il volume dell’ambiente, in m³\nIl rapporto fra l’area dei componenti di sfogo e il volume da proteggere deve soddisfare la relazione:.m15,0V/Am05,0 1\nV\n1 \u0010\u0010 dd >3.6.6@\nQueste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi 1.000 m³.",
-        "normalized": "pv è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in kN/m2 A v è l’area delle aperture di sfogo, in m² V è il volume dell’ambiente, in m³ Il rapporto fra l’area dei componenti di sfogo e il volume da proteggere deve soddisfare la relazione:.m15,0V/Am05,0 1 V 1 dd >3.6.6@ Queste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi 1.000 m³.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 382,
+          "width": 454,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "pv è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in kN/m2",
+        "normalized": "pv è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in kN/m²",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
+            "kind": "math",
+            "value": "pv",
+            "latex": "p_v"
+          },
+          {
             "kind": "text",
-            "value": "pv è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in kN/m2 A v è l’area delle aperture di sfogo, in "
+            "value": " è la pressione statica uniformemente distribuita in corrispondenza della quale le aperture di sfogo cedono, in "
           },
           {
             "kind": "math",
-            "value": "m²",
-            "latex": "\\mathrm{m^2}"
-          },
-          {
-            "kind": "text",
-            "value": " V è il volume dell’ambiente, in m³ Il rapporto fra l’area dei componenti di sfogo e il volume da proteggere deve soddisfare la relazione:.m15,0V/Am05,0 1 V 1 dd "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.6@ Queste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi 1.000 m³."
+            "value": "kN/m²",
+            "latex": "\\mathrm{kN/m^2}"
           }
         ]
       },
@@ -313,10 +361,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 394,
+          "width": 454,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
@@ -325,48 +373,258 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "c6d7007ac794590146786b55bab13d86fb6d075e85ccc8af48394985cc1752bd",
-        "normalizedSha256": "4ef3f93ad1cfca667892f014a84b36797e954968b2104364bdf575205396fd0a"
+        "rawSha256": "a821a313cb8c801b4b803dde92b11942bc95a26393c03e9641c76a560139104e",
+        "normalizedSha256": "c03108e47f68dc30beec8ecd857fcb2ddb5c3b56832c65769d3f53b80865741c"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "A v è l’area delle aperture di sfogo, in m²",
+        "normalized": "Av è l’area delle aperture di sfogo, in m²",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Av",
+            "latex": "A_v"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area delle aperture di sfogo, in "
+          },
+          {
+            "kind": "math",
+            "value": "m²",
+            "latex": "\\mathrm{m^2}"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 409,
+          "width": 454,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "085ed1832730683252d1f5bf569d4a0c797b64d21d9a5ba384d4dff830194232",
+        "normalizedSha256": "2fd04508bd0c25f1e9ffdf2b848855c24af091be226cac4db8b00cdcda610838"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "V è il volume dell’ambiente, in m³",
+        "normalized": "V è il volume dell’ambiente, in m³",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
+            "kind": "text",
+            "value": " è il volume dell’ambiente, in "
+          },
+          {
+            "kind": "math",
+            "value": "m³",
+            "latex": "\\mathrm{m^3}"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 422,
+          "width": 454,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5b8b030cb0f3bea9367ee7922069a08c023fd32a1c0490980864f118a479fb32",
+        "normalizedSha256": "5b8b030cb0f3bea9367ee7922069a08c023fd32a1c0490980864f118a479fb32"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il rapporto fra l’area dei componenti di sfogo e il volume da proteggere deve soddisfare la relazione:",
+        "normalized": "Il rapporto fra l’area dei componenti di sfogo e il volume da proteggere deve soddisfare la relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 436,
+          "width": 454,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "d0bb4645d551ae4cf6789c6184824117e7b670f8f20b347115816eaf0b479865",
+        "normalizedSha256": "d0bb4645d551ae4cf6789c6184824117e7b670f8f20b347115816eaf0b479865"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.6",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 130,
+          "y": 449,
+          "width": 240,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "f854f1aeba690e08278ba97267886cd340280bf5384de2baefab86e22f776a25",
+        "normalizedSha256": "b3d29b40d560a558f0a9186a49392384d68b7e49dc1af4952509be4f03b61be6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Queste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi 1.000 m³.",
+        "normalized": "Queste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi 1.000 m³.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Queste espressioni sono valide in ambienti o in zone di edifici il cui volume totale non superi "
+          },
+          {
+            "kind": "math",
+            "value": "1.000 m³",
+            "latex": "1000\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 69,
+        "printedPage": "65",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 70,
+          "y": 471,
+          "width": 454,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "be0dfc83b6ba0b378fb77129dfe8325d5255bdac58bbd48d01c7a90f0cdcb4a3",
+        "normalizedSha256": "be0dfc83b6ba0b378fb77129dfe8325d5255bdac58bbd48d01c7a90f0cdcb4a3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "La pressione dovuta all’esplosione è intesa agire simultaneamente su tutte le pareti dell’ambiente o del gruppo di ambienti con-\nsiderati.",
         "normalized": "La pressione dovuta all’esplosione è intesa agire simultaneamente su tutte le pareti dell’ambiente o del gruppo di ambienti considerati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -374,10 +632,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 484,
+          "width": 454,
+          "height": 20
         },
         "extraction": {
           "method": "pdf-text",
@@ -386,33 +644,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -421,13 +669,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Comunque, tutti gli elementi chiave e le loro connessioni devono essere progettati per sopportare una pressione statica equiva-\nlente con valore di progetto p d= 20 kN/m², applicata da ogni direzione, insieme con la reazione che ci si attende venga trasmessa\ndirettamente alle membrature dell’elemento chiave da ogni elemento costruttivo, ad esso collegato, altresì soggetto alla stessa\npressione.",
-        "normalized": "Comunque, tutti gli elementi chiave e le loro connessioni devono essere progettati per sopportare una pressione statica equivalente con valore di progetto p d= 20 kN/m², applicata da ogni direzione, insieme con la reazione che ci si attende venga trasmessa direttamente alle membrature dell’elemento chiave da ogni elemento costruttivo, ad esso collegato, altresì soggetto alla stessa pressione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Comunque, tutti gli elementi chiave e le loro connessioni devono essere progettati per sopportare una pressione statica equivalente con valore di progetto pd = 20 kN/m², applicata da ogni direzione, insieme con la reazione che ci si attende venga trasmessa direttamente alle membrature dell’elemento chiave da ogni elemento costruttivo, ad esso collegato, altresì soggetto alla stessa pressione.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -435,31 +683,8 @@
           },
           {
             "kind": "math",
-            "value": "p",
-            "latex": "p"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 20 kN/"
-          },
-          {
-            "kind": "math",
-            "value": "m²",
-            "latex": "\\mathrm{m^2}"
+            "value": "pd = 20 kN/m²",
+            "latex": "p_d=20\\,\\mathrm{kN/m^2}"
           },
           {
             "kind": "text",
@@ -473,10 +698,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 508,
+          "width": 454,
+          "height": 43
         },
         "extraction": {
           "method": "pdf-text",
@@ -485,48 +710,38 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "d435b255c92e22f9222e66671c053d3393ef025fd3c074db8e4e59a0cc6da968",
-        "normalizedSha256": "b8600b077bbd581e1cb1719b877c74c595d16665d6aeb02ffb72099bd5b847b1"
+        "normalizedSha256": "1213d87e6e3fef21e99babe09dcb3dbb0056c1ef609a116408181d95b2923983"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.3#block-editorial-015",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per esplosioni di Categoria 3 devono essere effettuati studi più approfonditi.",
         "normalized": "Per esplosioni di Categoria 3 devono essere effettuati studi più approfonditi.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -534,10 +749,10 @@
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.707,
-          "y": 295.694,
-          "width": 453.282,
-          "height": 268.541
+          "x": 70,
+          "y": 554,
+          "width": 454,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
@@ -553,7 +768,11 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.5a",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.5b",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.6"
+    ],
     "tableIds": [],
     "figureIds": []
   },

@@ -245,12 +245,26 @@
       "origin": "official",
       "text": {
         "raw": "f yk per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la\ntensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da fpyk (barre), fp(0,1)k (fili), f p(1)k (tre-\nfoli e trecce); si veda in proposito la Tab. 11.3.VIII.",
-        "normalized": "f yk per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da fpyk (barre), fp(0,1)k (fili), f p(1)k (trefoli e trecce); si veda in proposito la Tab. 11.3.VIII.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "fyk per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da fpyk (barre), fp(0,1)k (fili), fp(1)k (trefoli e trecce); si veda in proposito la Tab. 11.3.VIII.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
             "kind": "text",
-            "value": "f yk per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da fpyk (barre), "
+            "value": " per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da "
+          },
+          {
+            "kind": "math",
+            "value": "fpyk",
+            "latex": "f_{pyk}"
+          },
+          {
+            "kind": "text",
+            "value": " (barre), "
           },
           {
             "kind": "math",
@@ -259,21 +273,12 @@
           },
           {
             "kind": "text",
-            "value": " (fili), f "
+            "value": " (fili), "
           },
           {
             "kind": "math",
-            "value": "p",
-            "latex": "p"
-          },
-          {
-            "kind": "text",
-            "value": "(1)"
-          },
-          {
-            "kind": "math",
-            "value": "k",
-            "latex": "k"
+            "value": "fp(1)k",
+            "latex": "f_{p(1)k}"
           },
           {
             "kind": "text",
@@ -314,11 +319,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -327,10 +327,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "7c786bb42b75c6c18d97873c68749e380661af5590076f530e9c929f6a3f8b23",
-        "normalizedSha256": "897edf99306cf5e7d2250d50da4ea96272b7b3a95561f785a1d40a5ed089c324"
+        "normalizedSha256": "b21c8c28879aac25d26dcf0c78a438eb309c6c5571e2a80a24b2964d57248529"
       }
     },
     {

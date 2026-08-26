@@ -96,22 +96,7 @@
       "text": {
         "raw": "La verifica di ancoraggio deve tenere conto, qualora necessario, dell’effetto d’insieme delle barre e della presenza di eventuali\narmature trasversali.",
         "normalized": "La verifica di ancoraggio deve tenere conto, qualora necessario, dell’effetto d’insieme delle barre e della presenza di eventuali armature trasversali.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "La verifica di ancoraggio deve tenere conto, qualora necessario, dell’effetto "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’insieme delle barre e della presenza di eventuali armature trasversali."
-          }
-        ]
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -146,11 +131,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -159,6 +139,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "feff3827cda083d023e4cb3da95997ba5428fc41f0524a0241d1b2c5003eaca6",

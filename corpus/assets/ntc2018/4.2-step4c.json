@@ -12,21 +12,21 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.4",
       "officialNumber": "4.2.54",
       "pdfPage": 108,
-      "latex": "\\Delta\\sigma_d\\le\\frac{\\Delta\\sigma_R}{\\gamma_{Mf}}"
+      "latex": "\\Delta_d\\le\\frac{\\Delta_R}{\\gamma_{Mf}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.55",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.4",
       "officialNumber": "4.2.55",
       "pdfPage": 109,
-      "latex": "\\Delta\\sigma_{max,d}=\\gamma_{Mf}\\,\\Delta\\sigma_{max}\\le\\Delta\\sigma_D"
+      "latex": "\\Delta\\sigma_{max,d}=\\gamma_{Mf}\\cdot\\Delta\\sigma_{max}\\le\\Delta\\sigma_D"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.56",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.4",
       "officialNumber": "4.2.56",
       "pdfPage": 109,
-      "latex": "\\Delta\\tau_{max,d}=\\gamma_{Mf}\\,\\Delta\\tau_{max}\\le\\Delta\\tau_D=\\Delta\\tau_L"
+      "latex": "\\Delta\\tau_{max,d}=\\gamma_{Mf}\\cdot\\Delta\\tau_{max}\\le\\Delta\\tau_D=\\Delta\\tau_L"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.57",
@@ -84,10 +84,12 @@
             "text": "Strutture poco sensibili alla rottura per fatica"
           },
           {
-            "text": "γMf = 1,00"
+            "text": "γMf = 1,00",
+            "latex": "\\gamma_{Mf}=1{,}00"
           },
           {
-            "text": "γMf = 1,15"
+            "text": "γMf = 1,15",
+            "latex": "\\gamma_{Mf}=1{,}15"
           }
         ],
         [
@@ -95,10 +97,12 @@
             "text": "Strutture sensibili alla rottura per fatica"
           },
           {
-            "text": "γMf = 1,15"
+            "text": "γMf = 1,15",
+            "latex": "\\gamma_{Mf}=1{,}15"
           },
           {
-            "text": "γMf = 1,35"
+            "text": "γMf = 1,35",
+            "latex": "\\gamma_{Mf}=1{,}35"
           }
         ]
       ],
@@ -117,33 +121,78 @@
             "text": "Distribuzione del momento flettente"
           },
           {
-            "text": "Fattore correttivo kc"
+            "text": "Fattore correttivo kc",
+            "latex": "k_c"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "ψ = Mmin/Mmax = 1"
+            "text": "ψ = Mmin/Mmax = 1",
+            "latex": "\\psi=M_{min}/M_{max}=1"
           },
           {
-            "text": "1,0"
+            "text": "1,0",
+            "latex": "1{,}0"
           }
         ],
         [
           {
-            "text": "−1 ≤ ψ ≤ 1"
+            "text": "−1 ≤ ψ ≤ 1",
+            "latex": "-1\\le\\psi\\le1"
           },
           {
-            "text": "1/(1,33 − 0,33ψ)"
+            "text": "1/(1,33 − 0,33ψ)",
+            "latex": "\\frac{1}{1{,}33-0{,}33\\psi}"
           }
         ],
         [
           {
-            "text": "diagrammi di momento flettente"
+            "text": "diagramma di momento flettente (schema grafico 1)"
           },
           {
-            "text": "0,94; 0,90; 0,91; 0,86; 0,77; 0,82"
+            "text": "0,94"
+          }
+        ],
+        [
+          {
+            "text": "diagramma di momento flettente (schema grafico 2)"
+          },
+          {
+            "text": "0,90"
+          }
+        ],
+        [
+          {
+            "text": "diagramma di momento flettente (schema grafico 3)"
+          },
+          {
+            "text": "0,91"
+          }
+        ],
+        [
+          {
+            "text": "diagramma di momento flettente (schema grafico 4)"
+          },
+          {
+            "text": "0,86"
+          }
+        ],
+        [
+          {
+            "text": "diagramma di momento flettente (schema grafico 5)"
+          },
+          {
+            "text": "0,77"
+          }
+        ],
+        [
+          {
+            "text": "diagramma di momento flettente (schema grafico 6)"
+          },
+          {
+            "text": "0,82"
           }
         ]
       ],

@@ -60,7 +60,22 @@
       "text": {
         "raw": "La dimensione minima della sezione trasversale non deve essere inferiore a 25 cm.",
         "normalized": "La dimensione minima della sezione trasversale non deve essere inferiore a 25 cm.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La dimensione minima della sezione trasversale non deve essere inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "25 cm",
+            "latex": "25\\,\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -88,43 +103,52 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Se θ, "
+            "value": "Se "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "θ",
+            "latex": "\\theta"
           },
           {
             "kind": "text",
-            "value": "uale definito nel § 7.3.1, risulta > 0,1, la dimensione della sezione trasversale nella direzione parallela al piano d’inflessione non deve essere inferiore ad un ventesimo della maggiore tra le distanze tra il punto in cui si annulla il momento flettente e le estremità del pilastro. Quest’ultima limitazione geometrica non si applica "
+            "value": ", quale definito nel § 7.3.1, risulta "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "> 0,1",
+            "latex": ">0{,}1"
           },
           {
             "kind": "text",
-            "value": "uando gli effetti del secondo ordine siano presi in conto incrementando gli effetti dell’azione sismica di un fattore pari a 1/(1-θ) "
+            "value": ", la dimensione della sezione trasversale nella direzione parallela al piano d’inflessione non deve essere inferiore ad un ventesimo della maggiore tra le distanze tra il punto in cui si annulla il momento flettente e le estremità del pilastro. Quest’ultima limitazione geometrica non si applica quando gli effetti del secondo ordine siano presi in conto incrementando gli effetti dell’azione sismica di un fattore pari a "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "1/(1-θ)",
+            "latex": "\\frac{1}{1-\\theta}"
           },
           {
             "kind": "text",
-            "value": "uando θ è compreso tra 0,1 e 0,2 o computati attraverso un’analisi non lineare "
+            "value": " quando "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "θ",
+            "latex": "\\theta"
           },
           {
             "kind": "text",
-            "value": "uando θ è compreso tra 0,2 e 0,3."
+            "value": " è compreso tra 0,1 e 0,2 o computati attraverso un’analisi non lineare quando "
+          },
+          {
+            "kind": "math",
+            "value": "θ",
+            "latex": "\\theta"
+          },
+          {
+            "kind": "text",
+            "value": " è compreso tra 0,2 e 0,3."
           }
         ]
       },
@@ -175,16 +199,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In assenza di analisi più accurate, si può assumere che la lunghezza della zona dissipativa sia la maggiore tra: l’altezza della sezione, 1/6 dell’altezza libera del pilastro, 45 cm, l’altezza libera del pilastro se "
+            "value": "In assenza di analisi più accurate, si può assumere che la lunghezza della zona dissipativa sia la maggiore tra: l’altezza della sezione, "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "1/6",
+            "latex": "\\frac{1}{6}"
           },
           {
             "kind": "text",
-            "value": "uesta è inferiore a 3 volte l’altezza della sezione."
+            "value": " dell’altezza libera del pilastro, "
+          },
+          {
+            "kind": "math",
+            "value": "45 cm",
+            "latex": "45\\,\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": ", l’altezza libera del pilastro se questa è inferiore a 3 volte l’altezza della sezione."
           }
         ]
       },

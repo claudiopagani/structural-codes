@@ -12,28 +12,28 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3",
       "officialNumber": "5.1.1",
       "pdfPage": 157,
-      "latex": "q_{L,a}=128{,}95\\left(\\frac{1}{L}\\right)^{0{,}25}\\;[\\mathrm{kN/m}]"
+      "latex": "q_{L,a}=128{,}95\\left(\\frac{1}{L}\\right)^{0{,}25}\\;[\\mathrm{KN/m}]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.1.2",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3",
       "officialNumber": "5.1.2",
       "pdfPage": 157,
-      "latex": "q_{L,b}=88{,}71\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{kN/m}]"
+      "latex": "q_{L,b}=88{,}71\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{KN/m}]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.1.3",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3",
       "officialNumber": "5.1.3",
       "pdfPage": 157,
-      "latex": "q_{L,c}=77{,}12\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{kN/m}]"
+      "latex": "q_{L,c}=77{,}12\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{KN/m}]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.1.4",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.1.3.5",
       "officialNumber": "5.1.4",
       "pdfPage": 158,
-      "latex": "180\\,\\mathrm{kN}\\le q_3=0{,}6(2Q_{1k})+0{,}10q_{1k}\\,w_1\\,L\\le900\\,\\mathrm{kN}"
+      "latex": "180\\,\\mathrm{kN}\\le q_3=0{,}6(2Q_{1k})+0{,}10q_{1k}\\cdot w_1\\cdot L\\le900\\,\\mathrm{kN}"
     }
   ],
   "tables": [
@@ -47,60 +47,75 @@
       "headers": [
         [
           {
-            "text": "Larghezza della superficie carrabile \\\"w\\\""
+            "text": "Larghezza della superficie carrabile \\\"w\\\"",
+            "latex": "\\text{Larghezza della superficie carrabile }w"
           },
           {
             "text": "Numero di corsie convenzionali"
           },
           {
-            "text": "Larghezza di una corsia convenzionale [m]"
+            "text": "Larghezza di una corsia convenzionale [m]",
+            "latex": "\\text{Larghezza di una corsia convenzionale }[\\mathrm{m}]"
           },
           {
-            "text": "Larghezza della zona rimanente [m]"
+            "text": "Larghezza della zona rimanente [m]",
+            "latex": "\\text{Larghezza della zona rimanente }[\\mathrm{m}]"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "w < 5,40 m"
+            "text": "w < 5,40 m",
+            "latex": "w<5{,}40\\,\\mathrm{m}"
           },
           {
-            "text": "n_l = 1"
+            "text": "n_l = 1",
+            "latex": "n_l=1"
           },
           {
-            "text": "3,00"
+            "text": "3,00",
+            "latex": "3{,}00"
           },
           {
-            "text": "(w - 3,00)"
+            "text": "(w - 3,00)",
+            "latex": "(w-3{,}00)"
           }
         ],
         [
           {
-            "text": "5,4 ≤ w < 6,0 m"
+            "text": "5,4 ≤ w < 6,0 m",
+            "latex": "5{,}4\\le w<6{,}0\\,\\mathrm{m}"
           },
           {
-            "text": "n_l = 2"
+            "text": "n_l = 2",
+            "latex": "n_l=2"
           },
           {
-            "text": "w/2"
+            "text": "w/2",
+            "latex": "w/2"
           },
           {
-            "text": "0"
+            "text": "0",
+            "latex": "0"
           }
         ],
         [
           {
-            "text": "6,0 m ≤ w"
+            "text": "6,0 m ≤ w",
+            "latex": "6{,}0\\,\\mathrm{m}\\le w"
           },
           {
-            "text": "n_l = Int(w/3)"
+            "text": "n_l = Int(w/3)",
+            "latex": "n_l=\\operatorname{Int}(w/3)"
           },
           {
-            "text": "3,00"
+            "text": "3,00",
+            "latex": "3{,}00"
           },
           {
-            "text": "w - (3,00 × n_l)"
+            "text": "w - (3,00 × n_l)",
+            "latex": "w-(3{,}00\\times n_l)"
           }
         ]
       ],
@@ -119,10 +134,12 @@
             "text": "Posizione"
           },
           {
-            "text": "Carico asse Qik [kN]"
+            "text": "Carico asse Qik [kN]",
+            "latex": "\\text{Carico asse }Q_{ik}\\;[\\mathrm{kN}]"
           },
           {
-            "text": "qik [kN/m²]"
+            "text": "qik [kN/m²]",
+            "latex": "q_{ik}\\;[\\mathrm{kN/m^2}]"
           }
         ]
       ],
@@ -132,10 +149,12 @@
             "text": "Corsia Numero 1"
           },
           {
-            "text": "300"
+            "text": "300",
+            "latex": "300"
           },
           {
-            "text": "9,00"
+            "text": "9,00",
+            "latex": "9{,}00"
           }
         ],
         [
@@ -143,10 +162,12 @@
             "text": "Corsia Numero 2"
           },
           {
-            "text": "200"
+            "text": "200",
+            "latex": "200"
           },
           {
-            "text": "2,50"
+            "text": "2,50",
+            "latex": "2{,}50"
           }
         ],
         [
@@ -154,10 +175,12 @@
             "text": "Corsia Numero 3"
           },
           {
-            "text": "100"
+            "text": "100",
+            "latex": "100"
           },
           {
-            "text": "2,50"
+            "text": "2,50",
+            "latex": "2{,}50"
           }
         ],
         [
@@ -165,10 +188,12 @@
             "text": "Altre corsie"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "2,50"
+            "text": "2,50",
+            "latex": "2{,}50"
           }
         ]
       ],
@@ -184,36 +209,44 @@
       "headers": [
         [
           {
-            "text": "Raggio di curvatura [m]"
+            "text": "Raggio di curvatura [m]",
+            "latex": "\\text{Raggio di curvatura }[\\mathrm{m}]"
           },
           {
-            "text": "q4 [kN]"
+            "text": "q4 [kN]",
+            "latex": "q_4\\;[\\mathrm{kN}]"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "R < 200"
+            "text": "R < 200",
+            "latex": "R<200"
           },
           {
-            "text": "0,2 Qv"
+            "text": "0,2 Qv",
+            "latex": "0{,}2Q_v"
           }
         ],
         [
           {
-            "text": "200 ≤ R ≤ 1500"
+            "text": "200 ≤ R ≤ 1500",
+            "latex": "200\\le R\\le1500"
           },
           {
-            "text": "40 Qv/R"
+            "text": "40 Qv/R",
+            "latex": "40Q_v/R"
           }
         ],
         [
           {
-            "text": "1500 ≤ R"
+            "text": "1500 ≤ R",
+            "latex": "1500\\le R"
           },
           {
-            "text": "0"
+            "text": "0",
+            "latex": "0"
           }
         ]
       ],
@@ -254,7 +287,8 @@
       "rows": [
         [
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
             "text": "Valore caratteristico"
@@ -272,7 +306,8 @@
             "text": ""
           },
           {
-            "text": "Schema di carico 5 con valore di combinazione 2,5 kN/m²"
+            "text": "Schema di carico 5 con valore di combinazione 2,5 kN/m²",
+            "latex": "\\text{Schema di carico 5 con valore di combinazione }2{,}5\\,\\mathrm{kN/m^2}"
           }
         ],
         [
@@ -341,7 +376,8 @@
             "text": ""
           },
           {
-            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²"
+            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²",
+            "latex": "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}"
           }
         ],
         [
@@ -355,7 +391,8 @@
             "text": ""
           },
           {
-            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²"
+            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²",
+            "latex": "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}"
           },
           {
             "text": ""
@@ -364,7 +401,8 @@
             "text": ""
           },
           {
-            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²"
+            "text": "Schema di carico 5 con valore caratteristico 5,0 kN/m²",
+            "latex": "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}"
           }
         ],
         [
@@ -416,95 +454,118 @@
             "text": "Coefficiente"
           },
           {
-            "text": "EQU(1)"
+            "text": "EQU(1)",
+            "latex": "\\mathrm{EQU}^{(1)}"
           },
           {
-            "text": "A1"
+            "text": "A1",
+            "latex": "A_1"
           },
           {
-            "text": "A2"
+            "text": "A2",
+            "latex": "A_2"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Azioni permanenti g1 e g3"
+            "text": "Azioni permanenti g1 e g3",
+            "latex": "\\text{Azioni permanenti }g_1\\text{ e }g_3"
           },
           {
             "text": "favorevoli"
           },
           {
-            "text": "γG1 e γG3"
+            "text": "γG1 e γG3",
+            "latex": "\\gamma_{G1}\\text{ e }\\gamma_{G3}"
           },
           {
-            "text": "0,90"
+            "text": "0,90",
+            "latex": "0{,}90"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           }
         ],
         [
           {
-            "text": "Azioni permanenti g1 e g3"
+            "text": "Azioni permanenti g1 e g3",
+            "latex": "\\text{Azioni permanenti }g_1\\text{ e }g_3"
           },
           {
             "text": "sfavorevoli"
           },
           {
-            "text": "γG1 e γG3"
+            "text": "γG1 e γG3",
+            "latex": "\\gamma_{G1}\\text{ e }\\gamma_{G3}"
           },
           {
-            "text": "1,10"
+            "text": "1,10",
+            "latex": "1{,}10"
           },
           {
-            "text": "1,35"
+            "text": "1,35",
+            "latex": "1{,}35"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           }
         ],
         [
           {
-            "text": "Azioni permanenti non strutturali (2) g2"
+            "text": "Azioni permanenti non strutturali (2) g2",
+            "latex": "\\text{Azioni permanenti non strutturali}^{(2)},g_2"
           },
           {
             "text": "favorevoli"
           },
           {
-            "text": "γG2"
+            "text": "γG2",
+            "latex": "\\gamma_{G2}"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           }
         ],
         [
           {
-            "text": "Azioni permanenti non strutturali (2) g2"
+            "text": "Azioni permanenti non strutturali (2) g2",
+            "latex": "\\text{Azioni permanenti non strutturali}^{(2)},g_2"
           },
           {
             "text": "sfavorevoli"
           },
           {
-            "text": "γG2"
+            "text": "γG2",
+            "latex": "\\gamma_{G2}"
           },
           {
-            "text": "1,50"
+            "text": "1,50",
+            "latex": "1{,}50"
           },
           {
-            "text": "1,50"
+            "text": "1,50",
+            "latex": "1{,}50"
           },
           {
-            "text": "1,30"
+            "text": "1,30",
+            "latex": "1{,}30"
           }
         ],
         [
@@ -515,16 +576,20 @@
             "text": "favorevoli"
           },
           {
-            "text": "γQ"
+            "text": "γQ",
+            "latex": "\\gamma_Q"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           }
         ],
         [
@@ -535,16 +600,20 @@
             "text": "sfavorevoli"
           },
           {
-            "text": "γQ"
+            "text": "γQ",
+            "latex": "\\gamma_Q"
           },
           {
-            "text": "1,35"
+            "text": "1,35",
+            "latex": "1{,}35"
           },
           {
-            "text": "1,35"
+            "text": "1,35",
+            "latex": "1{,}35"
           },
           {
-            "text": "1,15"
+            "text": "1,15",
+            "latex": "1{,}15"
           }
         ],
         [
@@ -555,16 +624,20 @@
             "text": "favorevoli"
           },
           {
-            "text": "γQi"
+            "text": "γQi",
+            "latex": "\\gamma_{Qi}"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           }
         ],
         [
@@ -575,16 +648,20 @@
             "text": "sfavorevoli"
           },
           {
-            "text": "γQi"
+            "text": "γQi",
+            "latex": "\\gamma_{Qi}"
           },
           {
-            "text": "1,50"
+            "text": "1,50",
+            "latex": "1{,}50"
           },
           {
-            "text": "1,50"
+            "text": "1,50",
+            "latex": "1{,}50"
           },
           {
-            "text": "1,30"
+            "text": "1,30",
+            "latex": "1{,}30"
           }
         ],
         [
@@ -595,16 +672,20 @@
             "text": "favorevoli"
           },
           {
-            "text": "γε1"
+            "text": "γε1",
+            "latex": "\\gamma_{\\varepsilon1}"
           },
           {
-            "text": "0,90"
+            "text": "0,90",
+            "latex": "0{,}90"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           }
         ],
         [
@@ -615,16 +696,20 @@
             "text": "sfavorevoli"
           },
           {
-            "text": "γε1"
+            "text": "γε1",
+            "latex": "\\gamma_{\\varepsilon1}"
           },
           {
-            "text": "1,00 (3)"
+            "text": "1,00 (3)",
+            "latex": "1{,}00^{(3)}"
           },
           {
-            "text": "1,00 (4)"
+            "text": "1,00 (4)",
+            "latex": "1{,}00^{(4)}"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           }
         ],
         [
@@ -635,16 +720,20 @@
             "text": "favorevoli"
           },
           {
-            "text": "γε2, γε3, γε4"
+            "text": "γε2, γε3, γε4",
+            "latex": "\\gamma_{\\varepsilon2},\\,\\gamma_{\\varepsilon3},\\,\\gamma_{\\varepsilon4}"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           },
           {
-            "text": "0,00"
+            "text": "0,00",
+            "latex": "0{,}00"
           }
         ],
         [
@@ -655,16 +744,20 @@
             "text": "sfavorevoli"
           },
           {
-            "text": "γε2, γε3, γε4"
+            "text": "γε2, γε3, γε4",
+            "latex": "\\gamma_{\\varepsilon2},\\,\\gamma_{\\varepsilon3},\\,\\gamma_{\\varepsilon4}"
           },
           {
-            "text": "1,20"
+            "text": "1,20",
+            "latex": "1{,}20"
           },
           {
-            "text": "1,20"
+            "text": "1,20",
+            "latex": "1{,}20"
           },
           {
-            "text": "1,00"
+            "text": "1,00",
+            "latex": "1{,}00"
           }
         ]
       ],
@@ -691,13 +784,16 @@
             "text": "Gruppo di azioni (Tab. 5.1.IV)"
           },
           {
-            "text": "Coefficiente Ψ0 di combinazione"
+            "text": "Coefficiente Ψ0 di combinazione",
+            "latex": "\\text{Coefficiente }\\psi_0\\text{ di combinazione}"
           },
           {
-            "text": "Coefficiente Ψ1 (valori frequenti)"
+            "text": "Coefficiente Ψ1 (valori frequenti)",
+            "latex": "\\text{Coefficiente }\\psi_1\\text{ (valori frequenti)}"
           },
           {
-            "text": "Coefficiente Ψ2 (valori quasi permanenti)"
+            "text": "Coefficiente Ψ2 (valori quasi permanenti)",
+            "latex": "\\text{Coefficiente }\\psi_2\\text{ (valori quasi permanenti)}"
           }
         ]
       ],
@@ -710,13 +806,16 @@
             "text": "Schema 1 (carichi tandem)"
           },
           {
-            "text": "0,75"
+            "text": "0,75",
+            "latex": "0{,}75"
           },
           {
-            "text": "0,75"
+            "text": "0,75",
+            "latex": "0{,}75"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -727,13 +826,16 @@
             "text": "Schemi 1, 5 e 6 (carichi distribuiti)"
           },
           {
-            "text": "0,40"
+            "text": "0,40",
+            "latex": "0{,}40"
           },
           {
-            "text": "0,40"
+            "text": "0,40",
+            "latex": "0{,}40"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -744,13 +846,16 @@
             "text": "Schemi 3 e 4 (carichi concentrati)"
           },
           {
-            "text": "0,40"
+            "text": "0,40",
+            "latex": "0{,}40"
           },
           {
-            "text": "0,40"
+            "text": "0,40",
+            "latex": "0{,}40"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -761,13 +866,16 @@
             "text": "Schema 2"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,75"
+            "text": "0,75",
+            "latex": "0{,}75"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -775,16 +883,20 @@
             "text": "Azioni da traffico (Tab. 5.1.IV)"
           },
           {
-            "text": "2"
+            "text": "2",
+            "latex": "2"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -792,16 +904,20 @@
             "text": "Azioni da traffico (Tab. 5.1.IV)"
           },
           {
-            "text": "3"
+            "text": "3",
+            "latex": "3"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -815,10 +931,12 @@
             "text": "--"
           },
           {
-            "text": "0,75"
+            "text": "0,75",
+            "latex": "0{,}75"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -826,16 +944,20 @@
             "text": "Azioni da traffico (Tab. 5.1.IV)"
           },
           {
-            "text": "5"
+            "text": "5",
+            "latex": "5"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -846,13 +968,16 @@
             "text": "a ponte scarico - SLU e SLE"
           },
           {
-            "text": "0,6"
+            "text": "0,6",
+            "latex": "0{,}6"
           },
           {
-            "text": "0,2"
+            "text": "0,2",
+            "latex": "0{,}2"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -863,13 +988,16 @@
             "text": "in esecuzione"
           },
           {
-            "text": "0,8"
+            "text": "0,8",
+            "latex": "0{,}8"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -880,13 +1008,16 @@
             "text": "a ponte carico - SLU e SLE"
           },
           {
-            "text": "0,6"
+            "text": "0,6",
+            "latex": "0{,}6"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -897,13 +1028,16 @@
             "text": "SLU e SLE"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           },
           {
-            "text": "0,0"
+            "text": "0,0",
+            "latex": "0{,}0"
           }
         ],
         [
@@ -914,13 +1048,16 @@
             "text": "in esecuzione"
           },
           {
-            "text": "0,8"
+            "text": "0,8",
+            "latex": "0{,}8"
           },
           {
-            "text": "0,6"
+            "text": "0,6",
+            "latex": "0{,}6"
           },
           {
-            "text": "0,5"
+            "text": "0,5",
+            "latex": "0{,}5"
           }
         ],
         [
@@ -931,13 +1068,16 @@
             "text": "SLU e SLE"
           },
           {
-            "text": "0,6"
+            "text": "0,6",
+            "latex": "0{,}6"
           },
           {
-            "text": "0,6"
+            "text": "0,6",
+            "latex": "0{,}6"
           },
           {
-            "text": "0,5"
+            "text": "0,5",
+            "latex": "0{,}5"
           }
         ]
       ],

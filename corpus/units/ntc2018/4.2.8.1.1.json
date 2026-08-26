@@ -587,26 +587,8 @@
           },
           {
             "kind": "math",
-            "value": "Fp,C",
-            "latex": "F_{p,C}"
-          },
-          {
-            "kind": "text",
-            "value": " = 0,7·"
-          },
-          {
-            "kind": "math",
-            "value": "Ares",
-            "latex": "A_{res}"
-          },
-          {
-            "kind": "text",
-            "value": "·"
-          },
-          {
-            "kind": "math",
-            "value": "ftbk",
-            "latex": "f_{tbk}"
+            "value": "Fp,C = 0,7·Ares·ftbk",
+            "latex": "F_{p,C}=0{,}7\\cdot A_{res}\\cdot f_{tbk}"
           },
           {
             "kind": "text",
@@ -1071,30 +1053,21 @@
         "inline": [
           {
             "kind": "text",
-            "value": "L’instabilità locale del piatto posto tra i bulloni/chiodi non deve essere considerata se ("
+            "value": "L’instabilità locale del piatto posto tra i bulloni/chiodi non deve essere considerata se "
           },
           {
             "kind": "math",
-            "value": "p1/t",
-            "latex": "p_1/t"
+            "value": "(p1/t) < [9(235/fy)0,5]",
+            "latex": "\\left(\\frac{p_1}{t}\\right)<\\left[9\\left(\\frac{235}{f_y}\\right)^{0{,}5}\\right]"
           },
           {
             "kind": "text",
-            "value": ") < [9(235/"
+            "value": ": in caso contrario si assumerà una lunghezza di libera inflessione pari a "
           },
           {
             "kind": "math",
-            "value": "fy",
-            "latex": "f_y"
-          },
-          {
-            "kind": "text",
-            "value": ")0,5]: in caso contrario si assumerà una lunghezza di libera inflessione pari a 0,6·"
-          },
-          {
-            "kind": "math",
-            "value": "p1",
-            "latex": "p_1"
+            "value": "0,6·p1",
+            "latex": "0{,}6\\cdot p_1"
           },
           {
             "kind": "text",
@@ -1853,18 +1826,71 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-intro",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove: d è il diametro nominale del gambo del bullone, t è lo spessore della piastra collegata, ftk è la resistenza caratteristica a rottura del materiale della piastra collegata, α=min {e1/(3 d0) ; ftbk/ftk ; 1} per bulloni di bordo nella direzione del carico applicato, α=min {p1/(3 d0) − 0,25 ; ftbk/ftk ; 1} per bulloni interni nella direzione del carico applicato, k=min {2,8 e2/d0 − 1,7 ; 2,5} per bulloni di bordo nella direzione perpendicolare al carico applicato, k=min {1,4 p2/d0 − 1,7 , 2,5} per bulloni interni nella direzione perpendicolare al carico applicato, essendo e1, e2, p1 e p2 indicati in Fig. 4.2.5 e d0 il diametro nominale del foro di alloggiamento del bullone.",
-        "normalized": "dove: d è il diametro nominale del gambo del bullone, t è lo spessore della piastra collegata, ftk è la resistenza caratteristica a rottura del materiale della piastra collegata, α=min {e1/(3 d0) ; ftbk/ftk ; 1} per bulloni di bordo nella direzione del carico applicato, α=min {p1/(3 d0) − 0,25 ; ftbk/ftk ; 1} per bulloni interni nella direzione del carico applicato, k=min {2,8 e2/d0 − 1,7 ; 2,5} per bulloni di bordo nella direzione perpendicolare al carico applicato, k=min {1,4 p2/d0 − 1,7 , 2,5} per bulloni interni nella direzione perpendicolare al carico applicato, essendo e1, e2, p1 e p2 indicati in Fig. 4.2.5 e d0 il diametro nominale del foro di alloggiamento del bullone.",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "ntc42-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: "
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 278.358,
+          "width": 40,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-d",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "d è il diametro nominale del gambo del bullone,",
+        "normalized": "d è il diametro nominale del gambo del bullone,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "d",
@@ -1872,8 +1898,61 @@
           },
           {
             "kind": "text",
-            "value": " è il diametro nominale del gambo del bullone, "
+            "value": " è il diametro nominale del gambo del bullone,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 291,
+          "width": 300,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c9c904f08c6c66cb1efa253ef814e4ed64c885f1727a222d499985e7ee2e3321",
+        "normalizedSha256": "c9c904f08c6c66cb1efa253ef814e4ed64c885f1727a222d499985e7ee2e3321"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-t",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t è lo spessore della piastra collegata,",
+        "normalized": "t è lo spessore della piastra collegata,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "t",
@@ -1881,8 +1960,61 @@
           },
           {
             "kind": "text",
-            "value": " è lo spessore della piastra collegata, "
+            "value": " è lo spessore della piastra collegata,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 304,
+          "width": 280,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b618265b3abbf464894d03618b62c9f54036ffc5b1794673c13b9b69f4b29310",
+        "normalizedSha256": "b618265b3abbf464894d03618b62c9f54036ffc5b1794673c13b9b69f4b29310"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-ftk",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "ftk è la resistenza caratteristica a rottura del materiale della piastra collegata,",
+        "normalized": "ftk è la resistenza caratteristica a rottura del materiale della piastra collegata,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "ftk",
@@ -1890,8 +2022,61 @@
           },
           {
             "kind": "text",
-            "value": " è la resistenza caratteristica a rottura del materiale della piastra collegata, "
+            "value": " è la resistenza caratteristica a rottura del materiale della piastra collegata,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 317,
+          "width": 390,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e9f83acfecdb393cd6e2d7be591405fcb5f7873b26935238f0c42a7915553614",
+        "normalizedSha256": "e9f83acfecdb393cd6e2d7be591405fcb5f7873b26935238f0c42a7915553614"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-alpha-edge",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "α=min {e1/(3 d0) ; ftbk/ftk ; 1} per bulloni di bordo nella direzione del carico applicato,",
+        "normalized": "α=min {e1/(3 d0) ; ftbk/ftk ; 1} per bulloni di bordo nella direzione del carico applicato,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "α=min {e1/(3 d0) ; ftbk/ftk ; 1}",
@@ -1899,8 +2084,61 @@
           },
           {
             "kind": "text",
-            "value": " per bulloni di bordo nella direzione del carico applicato, "
+            "value": " per bulloni di bordo nella direzione del carico applicato,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 330,
+          "width": 428.6,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b43c1e31812499835291c09db389259628a81b5ef70754a0eb88be1d63adf757",
+        "normalizedSha256": "b43c1e31812499835291c09db389259628a81b5ef70754a0eb88be1d63adf757"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-alpha-inner",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "α=min {p1/(3 d0) − 0,25 ; ftbk/ftk ; 1} per bulloni interni nella direzione del carico applicato,",
+        "normalized": "α=min {p1/(3 d0) − 0,25 ; ftbk/ftk ; 1} per bulloni interni nella direzione del carico applicato,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "α=min {p1/(3 d0) − 0,25 ; ftbk/ftk ; 1}",
@@ -1908,8 +2146,61 @@
           },
           {
             "kind": "text",
-            "value": " per bulloni interni nella direzione del carico applicato, "
+            "value": " per bulloni interni nella direzione del carico applicato,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 343,
+          "width": 428.6,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ebcb7d5a66ac7afd2e0d261777dcab2b4c88991e08b87a391b80dbe15c165abf",
+        "normalizedSha256": "ebcb7d5a66ac7afd2e0d261777dcab2b4c88991e08b87a391b80dbe15c165abf"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-k-edge",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "k=min {2,8 e2/d0 − 1,7 ; 2,5} per bulloni di bordo nella direzione perpendicolare al carico applicato,",
+        "normalized": "k=min {2,8 e2/d0 − 1,7 ; 2,5} per bulloni di bordo nella direzione perpendicolare al carico applicato,",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k=min {2,8 e2/d0 − 1,7 ; 2,5}",
@@ -1917,11 +2208,64 @@
           },
           {
             "kind": "text",
-            "value": " per bulloni di bordo nella direzione perpendicolare al carico applicato, "
+            "value": " per bulloni di bordo nella direzione perpendicolare al carico applicato,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 115,
+        "printedPage": "111",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 356,
+          "width": 428.6,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
           {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "496207699d16eb0859dc8acc3da677cd043d90bd5e8b35b1ab38aeed1ad1070e",
+        "normalizedSha256": "496207699d16eb0859dc8acc3da677cd043d90bd5e8b35b1ab38aeed1ad1070e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p22-k-inner",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "k=min {1,4 p2/d0 − 1,7 ; 2,5} per bulloni interni nella direzione perpendicolare al carico applicato, essendo e1, e2, p1 e p2 indicati in Fig. 4.2.5 e d0 il diametro nominale del foro di alloggiamento del bullone.",
+        "normalized": "k=min {1,4 p2/d0 − 1,7 ; 2,5} per bulloni interni nella direzione perpendicolare al carico applicato, essendo e1, e2, p1 e p2 indicati in Fig. 4.2.5 e d0 il diametro nominale del foro di alloggiamento del bullone.",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
             "kind": "math",
-            "value": "k=min {1,4 p2/d0 − 1,7 , 2,5}",
+            "value": "k=min {1,4 p2/d0 − 1,7 ; 2,5}",
             "latex": "k=\\min\\{1{,}4p_2/d_0-1{,}7;2{,}5\\}"
           },
           {
@@ -1955,9 +2299,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82.954,
-          "y": 278.358,
+          "y": 369,
           "width": 428.6,
-          "height": 108
+          "height": 20
         },
         "extraction": {
           "method": "pdf-text",
@@ -1986,8 +2330,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "66e72b853677a6ac64cd2c3f2aeb4a143cddc5447bc85df46d61463d2459bbc3",
-        "normalizedSha256": "66e72b853677a6ac64cd2c3f2aeb4a143cddc5447bc85df46d61463d2459bbc3"
+        "rawSha256": "2145dbdcfa5332ef49c1a0a274b67972e6fc573b0ba3d38bd2c06b33cc3b814c",
+        "normalizedSha256": "2145dbdcfa5332ef49c1a0a274b67972e6fc573b0ba3d38bd2c06b33cc3b814c"
       }
     },
     {
@@ -2550,12 +2894,12 @@
           },
           {
             "kind": "math",
-            "value": "Ft,Ed/Ft,Rd",
-            "latex": "\\frac{F_{t,Ed}}{F_{t,Rd}}"
+            "value": "Ft,Ed/Ft,Rd ≤ 1",
+            "latex": "\\frac{F_{t,Ed}}{F_{t,Rd}}\\le1"
           },
           {
             "kind": "text",
-            "value": " ≤ 1, dove con "
+            "value": ", dove con "
           },
           {
             "kind": "math",
@@ -2845,21 +3189,21 @@
           },
           {
             "kind": "text",
-            "value": " è la forza di precarico del bullone data dalla espressione [4.2.62] che, in caso di serraggio controllato, può essere assunta pari a 0,7 "
+            "value": " è la forza di precarico del bullone data dalla espressione [4.2.62] che, in caso di serraggio controllato, può essere assunta pari a "
           },
           {
             "kind": "math",
-            "value": "ftbk Ares",
-            "latex": "f_{tbk}A_{res}"
+            "value": "0,7 ftbk Ares",
+            "latex": "0{,}7f_{tbk}A_{res}"
           },
           {
             "kind": "text",
-            "value": ", invece che pari a 0,7 "
+            "value": ", invece che pari a "
           },
           {
             "kind": "math",
-            "value": "ftbk Ares/γM7",
-            "latex": "f_{tbk}A_{res}/\\gamma_{M7}"
+            "value": "0,7 ftbk Ares/γM7",
+            "latex": "0{,}7f_{tbk}A_{res}/\\gamma_{M7}"
           },
           {
             "kind": "text",
@@ -2907,6 +3251,386 @@
         ],
         "rawSha256": "b102c2af69e21e6aae394b834fe4a2a30f0c58ce0d10582ab1a0942744942017",
         "normalizedSha256": "b102c2af69e21e6aae394b834fe4a2a30f0c58ce0d10582ab1a0942744942017"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-p30-friction-intro",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il coefficiente di attrito tra le piastre μ a contatto nelle unioni “precaricate” è in genere assunto pari a:",
+        "normalized": "Il coefficiente di attrito tra le piastre μ a contatto nelle unioni “precaricate” è in genere assunto pari a:",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente di attrito tra le piastre "
+          },
+          {
+            "kind": "math",
+            "value": "μ",
+            "latex": "\\mu"
+          },
+          {
+            "kind": "text",
+            "value": " a contatto nelle unioni “precaricate” è in genere assunto pari a:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 98,
+          "width": 428.6,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "5b40393884bf89b539b1abab890062431f6c4bb47198f68b6ab4b5f7b8f4d3db",
+        "normalizedSha256": "5b40393884bf89b539b1abab890062431f6c4bb47198f68b6ab4b5f7b8f4d3db"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-friction-mu-05",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "μ = 0,5 – superfici sabbiate meccanicamente o a graniglia, esenti da incrostazioni di ruggine e da vaiolature;",
+        "normalized": "μ = 0,5 – superfici sabbiate meccanicamente o a graniglia, esenti da incrostazioni di ruggine e da vaiolature;",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "μ = 0,5",
+            "latex": "\\mu=0{,}5"
+          },
+          {
+            "kind": "text",
+            "value": " – superfici sabbiate meccanicamente o a graniglia, esenti da incrostazioni di ruggine e da vaiolature;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 155,
+          "y": 112,
+          "width": 350,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4277d9fc31de5957f2a496ab02ba377eb08dfe2bbbd458b08bd67cd76fcfd2c0",
+        "normalizedSha256": "4277d9fc31de5957f2a496ab02ba377eb08dfe2bbbd458b08bd67cd76fcfd2c0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-friction-mu-04-a",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "μ = 0,4 – superfici sabbiate meccanicamente o a graniglia, e verniciate a spruzzo con prodotti a base di alluminio o di zinco.",
+        "normalized": "μ = 0,4 – superfici sabbiate meccanicamente o a graniglia, e verniciate a spruzzo con prodotti a base di alluminio o di zinco.",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "μ = 0,4",
+            "latex": "\\mu=0{,}4"
+          },
+          {
+            "kind": "text",
+            "value": " – superfici sabbiate meccanicamente o a graniglia, e verniciate a spruzzo con prodotti a base di alluminio o di zinco."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 155,
+          "y": 142,
+          "width": 350,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "10010ffca5e14740baa73a7f985ca1a016a7449c1bace48c3fdc8dc4a8374102",
+        "normalizedSha256": "10010ffca5e14740baa73a7f985ca1a016a7449c1bace48c3fdc8dc4a8374102"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-friction-mu-04-b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "– superfici sabbiate meccanicamente o a graniglia, e verniciate con silicato di zinco alcalino applicando uno spessore dello strato di 50-80 μm;",
+        "normalized": "– superfici sabbiate meccanicamente o a graniglia, e verniciate con silicato di zinco alcalino applicando uno spessore dello strato di 50-80 μm;",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– superfici sabbiate meccanicamente o a graniglia, e verniciate con silicato di zinco alcalino applicando uno spessore dello strato di 50-80 "
+          },
+          {
+            "kind": "math",
+            "value": "μm",
+            "latex": "\\mu\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 205,
+          "y": 171,
+          "width": 300,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "4d65b9eebd49fe87e052761b7f8308131ab4079821f5ae3a11084d74920e0b99",
+        "normalizedSha256": "4d65b9eebd49fe87e052761b7f8308131ab4079821f5ae3a11084d74920e0b99"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-friction-mu-03",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "μ = 0,3 – superfici pulite mediante spazzolatura o alla fiamma, esenti da incrostazioni di ruggine;",
+        "normalized": "μ = 0,3 – superfici pulite mediante spazzolatura o alla fiamma, esenti da incrostazioni di ruggine;",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "μ = 0,3",
+            "latex": "\\mu=0{,}3"
+          },
+          {
+            "kind": "text",
+            "value": " – superfici pulite mediante spazzolatura o alla fiamma, esenti da incrostazioni di ruggine;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 155,
+          "y": 198,
+          "width": 350,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "bec45cc44b685b8f4d6ba003514aaa4392d4370af5d0ac3f0ddf79a026e8ba6a",
+        "normalizedSha256": "bec45cc44b685b8f4d6ba003514aaa4392d4370af5d0ac3f0ddf79a026e8ba6a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1#block-friction-mu-02",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "μ = 0,2 – superfici non trattate.",
+        "normalized": "μ = 0,2 – superfici non trattate.",
+        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "μ = 0,2",
+            "latex": "\\mu=0{,}2"
+          },
+          {
+            "kind": "text",
+            "value": " – superfici non trattate."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 116,
+        "printedPage": "112",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 155,
+          "y": 220,
+          "width": 300,
+          "height": 8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione e la correzione dei glifi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9d84d9d514faedceaa771065396e3f261380d55ff3c99da412541f010eedb79e",
+        "normalizedSha256": "9d84d9d514faedceaa771065396e3f261380d55ff3c99da412541f010eedb79e"
       }
     },
     {

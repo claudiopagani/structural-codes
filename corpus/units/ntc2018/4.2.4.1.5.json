@@ -51,7 +51,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82.954,
-          "y": 907,
+          "y": 646,
           "width": 240,
           "height": 7.476
         },
@@ -87,7 +87,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La temperatura minima alla quale l’acciaio per impiego strutturale può essere utilizzato senza pericolo di rottura fragile, in assenza di dati più precisi, deve essere stimata sulla base della temperatura T alla quale per detto acciaio può essere garantita la resilienza KV, richiesta secondo le norme europee applicabili."
+            "value": "La temperatura minima alla quale l’acciaio per impiego strutturale può essere utilizzato senza pericolo di rottura fragile, in assenza di dati più precisi, deve essere stimata sulla base della temperatura "
+          },
+          {
+            "kind": "math",
+            "value": "T",
+            "latex": "T"
+          },
+          {
+            "kind": "text",
+            "value": " alla quale per detto acciaio può essere garantita la resilienza "
+          },
+          {
+            "kind": "math",
+            "value": "KV",
+            "latex": "KV"
+          },
+          {
+            "kind": "text",
+            "value": ", richiesta secondo le norme europee applicabili."
           }
         ]
       },
@@ -98,7 +116,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82.954,
-          "y": 920,
+          "y": 657.8,
           "width": 428.6,
           "height": 27.6
         },
@@ -173,9 +191,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82.954,
-          "y": 955,
+          "y": 690.5,
           "width": 428.6,
-          "height": 27.6
+          "height": 17.6
         },
         "extraction": {
           "method": "pdf-text",
@@ -215,7 +233,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 180,
-          "y": 1000,
+          "y": 714.1,
           "width": 220,
           "height": 25
         },
@@ -337,21 +355,21 @@
           },
           {
             "kind": "math",
-            "value": "TEd",
-            "latex": "T_{Ed}"
+            "value": "TEd = −25 °C",
+            "latex": "T_{Ed}=-25\\ ^\\circ\\mathrm{C}"
           },
           {
             "kind": "text",
-            "value": " = −25 °C per strutture non protette e "
+            "value": " per strutture non protette e "
           },
           {
             "kind": "math",
-            "value": "TEd",
-            "latex": "T_{Ed}"
+            "value": "TEd = −10 °C",
+            "latex": "T_{Ed}=-10\\ ^\\circ\\mathrm{C}"
           },
           {
             "kind": "text",
-            "value": " = −10 °C per strutture protette."
+            "value": " per strutture protette."
           }
         ]
       },
@@ -480,7 +498,7 @@
           {
             "kind": "math",
             "value": "σEd",
-            "latex": "\\\\sigma_{Ed}"
+            "latex": "\\sigma_{Ed}"
           },
           {
             "kind": "text",
@@ -596,17 +614,8 @@
           },
           {
             "kind": "math",
-            "value": "σEd",
-            "latex": "\\\\sigma_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " = 0,25 "
-          },
-          {
-            "kind": "math",
-            "value": "fy",
-            "latex": "f_y"
+            "value": "σEd = 0,25 fy",
+            "latex": "\\sigma_{Ed}=0{,}25f_y"
           },
           {
             "kind": "text",
@@ -650,12 +659,12 @@
           },
           {
             "kind": "math",
-            "value": "ε̇0",
-            "latex": "\\\\dot{\\\\varepsilon}_0"
+            "value": "ε̇0 = 4×10−4/s",
+            "latex": "\\dot{\\varepsilon}_0=4\\times10^{-4}/\\mathrm{s}"
           },
           {
             "kind": "text",
-            "value": " = 4×10−4/s e per materiali che non abbiano subito incrudimenti e/o invecchiamenti tali da alterarne le caratteristiche di tenacità."
+            "value": " e per materiali che non abbiano subito incrudimenti e/o invecchiamenti tali da alterarne le caratteristiche di tenacità."
           }
         ]
       },

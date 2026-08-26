@@ -35,7 +35,18 @@
       "text": {
         "raw": "5.1.3.5 A ZIONI VARIABILI DA TRAFFICO. A ZIONE LONGITUDINALE DI FRENAMENTO O DI ACCELERAZIONE : q\n3",
         "normalized": "5.1.3.5 AZIONI VARIABILI DA TRAFFICO. AZIONE LONGITUDINALE DI FRENAMENTO O DI ACCELERAZIONE: q3",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "5.1.3.5 AZIONI VARIABILI DA TRAFFICO. AZIONE LONGITUDINALE DI FRENAMENTO O DI ACCELERAZIONE: "
+          },
+          {
+            "kind": "math",
+            "value": "q3",
+            "latex": "q_{3}"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -203,12 +214,30 @@
       "origin": "official",
       "text": {
         "raw": "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed a-\ngente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione.",
-        "normalized": "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione.",
+        "normalized": "essendo w1 la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione.",
         "normalizationVersion": "ntc5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione."
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "w1",
+            "latex": "w_1"
+          },
+          {
+            "kind": "text",
+            "value": " la larghezza della corsia e "
+          },
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione."
           }
         ]
       },
@@ -261,7 +290,7 @@
           }
         ],
         "rawSha256": "c4c02ba1acbb9df5d4c15b83fdb49a5d8e960410889f04f46cb84674b9c026a9",
-        "normalizedSha256": "000753e73a45b2a797f0d892c51a276e66811ce76cec710907320c5751328c8b"
+        "normalizedSha256": "77cdfecf618f03dd521e98dba3771295d7e1fcc630b347e8445ec3812fa7d485"
       }
     }
   ],

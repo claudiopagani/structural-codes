@@ -95,20 +95,29 @@
       "text": {
         "raw": "Il coefficiente di esposizione CE tiene conto delle caratteristiche specifiche dell’area in cui sorge l’opera. Valori consigliati di que-\nsto coefficiente sono forniti in Tab. 3.4.I per diverse classi di esposizione. Se non diversamente indicato, si assumerà CE = 1.",
         "normalized": "Il coefficiente di esposizione CE tiene conto delle caratteristiche specifiche dell’area in cui sorge l’opera. Valori consigliati di questo coefficiente sono forniti in Tab. 3.4.I per diverse classi di esposizione. Se non diversamente indicato, si assumerà CE = 1.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Il coefficiente di esposizione CE tiene conto delle caratteristiche specifiche dell’area in cui sorge l’opera. Valori consigliati di questo coefficiente sono forniti in Tab. 3.4.I per diverse classi di esposizione. Se non diversamente indicato, si assumerà CE "
+            "value": "Il coefficiente di esposizione "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "CE",
+            "latex": "C_E"
           },
           {
             "kind": "text",
-            "value": " 1."
+            "value": " tiene conto delle caratteristiche specifiche dell’area in cui sorge l’opera. Valori consigliati di questo coefficiente sono forniti in Tab. 3.4.I per diverse classi di esposizione. Se non diversamente indicato, si assumerà "
+          },
+          {
+            "kind": "math",
+            "value": "CE = 1",
+            "latex": "C_E=1"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -145,11 +154,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,6 +162,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "31811c41fe41bc22739079cbeb94a6bb6d8a9b7b20d8d02ffe0b5c2bf13cda86",

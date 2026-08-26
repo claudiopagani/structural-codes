@@ -218,7 +218,7 @@
       "text": {
         "raw": "ȭ i componenti realizzati con l’impiego di calcestruzzi speciali o di classe > C 45/55;",
         "normalized": "i componenti realizzati con l’impiego di calcestruzzi speciali o di classe > C 45/55;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -226,21 +226,12 @@
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "> C 45/55",
+            "latex": ">\\mathrm{C}\\,45/55"
           },
           {
             "kind": "text",
-            "value": " C 45"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "55;"
+            "value": ";"
           }
         ]
       },
@@ -277,11 +268,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -290,6 +276,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "5756b6122570dd26d948769c39bd894eb15bc9ecd8a4389e355974fa81b87289",

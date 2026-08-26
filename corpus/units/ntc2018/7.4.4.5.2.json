@@ -59,7 +59,7 @@
       "origin": "official",
       "text": {
         "raw": "La domanda in duttilità di curvatura nelle zone dissipative delle pareti può essere espressa mediante il fattore di duttilità in\ncurvatura μI,; qualora non si proceda ad una determinazione diretta mediante analisi non lineare, tale domanda può essere\nvalutata attribuendo a ȝ)\u0003 i valori forniti dalle [7.4.3] del § 7.4.4.1.2 con il valore di q in queste espressioni ridotto del fattore\nM Ed/M Rd, dove MEd è il momento flettente di progetto alla base della parete fornito dall’analisi nella situazione sismica di progetto\ne M Rd è la resistenza flessionale di progetto.",
-        "normalized": "La domanda in duttilità di curvatura nelle zone dissipative delle pareti può essere espressa mediante il fattore di duttilità in curvatura μ_φ; qualora non si proceda ad una determinazione diretta mediante analisi non lineare, tale domanda può essere valutata attribuendo a μ_φ\u0003 i valori forniti dalle [7.4.3] del § 7.4.4.1.2 con il valore di q in queste espressioni ridotto del fattore M Ed/M Rd, dove M_Ed è il momento flettente di progetto alla base della parete fornito dall’analisi nella situazione sismica di progetto e M Rd è la resistenza flessionale di progetto.",
+        "normalized": "La domanda in duttilità di curvatura nelle zone dissipative delle pareti può essere espressa mediante il fattore di duttilità in curvatura μ_φ; qualora non si proceda ad una determinazione diretta mediante analisi non lineare, tale domanda può essere valutata attribuendo a μ_φ i valori forniti dalla [7.4.3] del § 7.4.4.1.2 con il valore di q in queste espressioni ridotto del fattore M_Ed/M_Rd, dove M_Ed è il momento flettente di progetto alla base della parete fornito dall’analisi nella situazione sismica di progetto e M_Rd è la resistenza flessionale di progetto.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -73,16 +73,7 @@
           },
           {
             "kind": "text",
-            "value": "; "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "ualora non si proceda ad una determinazione diretta mediante analisi non lineare, tale domanda può essere valutata attribuendo a "
+            "value": "; qualora non si proceda ad una determinazione diretta mediante analisi non lineare, tale domanda può essere valutata attribuendo a "
           },
           {
             "kind": "math",
@@ -91,7 +82,7 @@
           },
           {
             "kind": "text",
-            "value": "\u0003 i valori forniti dalle [7.4.3] del § 7.4.4.1.2 con il valore di "
+            "value": " i valori forniti dalla [7.4.3] del § 7.4.4.1.2 con il valore di "
           },
           {
             "kind": "math",
@@ -100,16 +91,16 @@
           },
           {
             "kind": "text",
-            "value": " in "
+            "value": " in queste espressioni ridotto del fattore "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "M_Ed/M_Rd",
+            "latex": "M_{Ed}/M_{Rd}"
           },
           {
             "kind": "text",
-            "value": "ueste espressioni ridotto del fattore M Ed/M Rd, dove "
+            "value": ", dove "
           },
           {
             "kind": "math",
@@ -118,7 +109,16 @@
           },
           {
             "kind": "text",
-            "value": " è il momento flettente di progetto alla base della parete fornito dall’analisi nella situazione sismica di progetto e M Rd è la resistenza flessionale di progetto."
+            "value": " è il momento flettente di progetto alla base della parete fornito dall’analisi nella situazione sismica di progetto e "
+          },
+          {
+            "kind": "math",
+            "value": "M_Rd",
+            "latex": "M_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza flessionale di progetto."
           }
         ]
       },
@@ -155,7 +155,7 @@
           }
         ],
         "rawSha256": "c318ed10fb883b2d0341e1f778835c540ad69ee6685003be017edb20783fe13a",
-        "normalizedSha256": "2c00b4b7d62b24a571ccadcc141106eb16d4189144e9f0873158a3a801ecc53e"
+        "normalizedSha256": "ca95d9e7007a3bb08347bc8ffb77383f1ce6911b50d72fa8fd08d20113b4a642"
       }
     },
     {
@@ -187,7 +187,16 @@
           },
           {
             "kind": "text",
-            "value": " cui corrisponde una riduzione del 15% della massima resistenza a flessione – oppure il raggiungimento della deformazione ultima del calcestruzzo e/o dell’acciaio – e la curvatura convenzionale "
+            "value": " cui corrisponde una riduzione del "
+          },
+          {
+            "kind": "math",
+            "value": "15%",
+            "latex": "15\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della massima resistenza a flessione – oppure il raggiungimento della deformazione ultima del calcestruzzo e/o dell’acciaio – e la curvatura convenzionale "
           },
           {
             "kind": "math",
@@ -196,16 +205,7 @@
           },
           {
             "kind": "text",
-            "value": " di prima plasticizzazione "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uale definita nel § 4.1.2.3.4.2."
+            "value": " di prima plasticizzazione quale definita nel § 4.1.2.3.4.2."
           }
         ]
       },
@@ -251,12 +251,21 @@
       "origin": "official",
       "text": {
         "raw": "Nelle sole regioni di estremità della sezione trasversale, dette “elementi di bordo”, si può tener conto, nel calcolo della capacità,\ndell’effetto del confinamento purché congiuntamente all’espulsione dei copriferri al raggiungimento, in essi, della deformazione\nultima di compressione del calcestruzzo non confinato (0,35%); gli elementi di bordo (zone campite di fig. 7.4.6) si assumono di\nlarghezza b 0 pari alla larghezza b w della sezione diminuita dello spessore dei copriferri e di lunghezza l C pari all’estensione della\nzona nella quale la deformazione a compressione del calcestruzzo supera Hcu2 \n=0,35%. In ogni caso: lC ǃ max (0,15ȉlW \n, 0,15ȉbW).",
-        "normalized": "Nelle sole regioni di estremità della sezione trasversale, dette “elementi di bordo”, si può tener conto, nel calcolo della capacità, dell’effetto del confinamento purché congiuntamente all’espulsione dei copriferri al raggiungimento, in essi, della deformazione ultima di compressione del calcestruzzo non confinato (0,35%); gli elementi di bordo (zone campite di fig. 7.4.6) si assumono di larghezza b_0 pari alla larghezza b w della sezione diminuita dello spessore dei copriferri e di lunghezza l_C pari all’estensione della zona nella quale la deformazione a compressione del calcestruzzo supera ε_cu2 =0,35%. In ogni caso: lC ≥ max (0,15ȉlW , 0,15ȉbW).",
+        "normalized": "Nelle sole regioni di estremità della sezione trasversale, dette “elementi di bordo”, si può tener conto, nel calcolo della capacità, dell’effetto del confinamento purché congiuntamente all’espulsione dei copriferri al raggiungimento, in essi, della deformazione ultima di compressione del calcestruzzo non confinato (0,35%); gli elementi di bordo (zone campite di fig. 7.4.6) si assumono di larghezza b_0 pari alla larghezza b_w della sezione diminuita dello spessore dei copriferri e di lunghezza l_c pari all’estensione della zona nella quale la deformazione a compressione del calcestruzzo supera ε_cu2 = 0,35%. In ogni caso: l_c ≥ max(0,15·l_w, 0,15·b_w).",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle sole regioni di estremità della sezione trasversale, dette “elementi di bordo”, si può tener conto, nel calcolo della capacità, dell’effetto del confinamento purché congiuntamente all’espulsione dei copriferri al raggiungimento, in essi, della deformazione ultima di compressione del calcestruzzo non confinato (0,35%); gli elementi di bordo (zone campite di fig. 7.4.6) si assumono di larghezza "
+            "value": "Nelle sole regioni di estremità della sezione trasversale, dette “elementi di bordo”, si può tener conto, nel calcolo della capacità, dell’effetto del confinamento purché congiuntamente all’espulsione dei copriferri al raggiungimento, in essi, della deformazione ultima di compressione del calcestruzzo non confinato ("
+          },
+          {
+            "kind": "math",
+            "value": "0,35%",
+            "latex": "0{,}35\\%"
+          },
+          {
+            "kind": "text",
+            "value": "); gli elementi di bordo (zone campite di fig. 7.4.6) si assumono di larghezza "
           },
           {
             "kind": "math",
@@ -265,25 +274,25 @@
           },
           {
             "kind": "text",
-            "value": " pari alla larghezza b w della sezione diminuita dello spessore dei copriferri e di lunghezza "
+            "value": " pari alla larghezza "
           },
           {
             "kind": "math",
-            "value": "l_C",
-            "latex": "l_C"
+            "value": "b_w",
+            "latex": "b_w"
           },
           {
             "kind": "text",
-            "value": " pari all’estensione della zona nella "
+            "value": " della sezione diminuita dello spessore dei copriferri e di lunghezza "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "l_c",
+            "latex": "l_c"
           },
           {
             "kind": "text",
-            "value": "uale la deformazione a compressione del calcestruzzo supera "
+            "value": " pari all’estensione della zona nella quale la deformazione a compressione del calcestruzzo supera "
           },
           {
             "kind": "math",
@@ -292,7 +301,25 @@
           },
           {
             "kind": "text",
-            "value": " =0,35%. In ogni caso: lC ≥ max (0,15ȉlW , 0,15ȉbW)."
+            "value": " = "
+          },
+          {
+            "kind": "math",
+            "value": "0,35%",
+            "latex": "0{,}35\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". In ogni caso: "
+          },
+          {
+            "kind": "math",
+            "value": "l_c ≥ max(0,15·l_w, 0,15·b_w)",
+            "latex": "l_c\\ge\\max(0{,}15\\cdot l_w,0{,}15\\cdot b_w)"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -329,7 +356,7 @@
           }
         ],
         "rawSha256": "2032a2b76e0313e46fbd8272c2fb98c1fa803285bdf66958eb99f5d46d8db1ec",
-        "normalizedSha256": "0544f846ffaf21a7bdd7a043eeec34ba7aaf207e43a7155e41b701f43bf649c5"
+        "normalizedSha256": "116f77a1cfdb2974d1f4d3c20a964375124de0eda3c188507862dee3d741afb5"
       }
     },
     {
@@ -378,16 +405,7 @@
           },
           {
             "kind": "text",
-            "value": " si ricava dalla condizione di e"
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uilibrio della sezione nella combinazione di progetto sismica facendo riferimento, per la valutazione della deformazione ultima del calcestruzzo "
+            "value": " si ricava dalla condizione di equilibrio della sezione nella combinazione di progetto sismica facendo riferimento, per la valutazione della deformazione ultima del calcestruzzo "
           },
           {
             "kind": "math",
@@ -396,16 +414,7 @@
           },
           {
             "kind": "text",
-            "value": " , alla "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uantità di armatura di confinamento effettivamente presente (v. § 4.1.2.1.2.1)."
+            "value": " , alla quantità di armatura di confinamento effettivamente presente (v. § 4.1.2.1.2.1)."
           }
         ]
       },
@@ -451,7 +460,7 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso si utilizzi la formulazione semplificata indicata al § 7.4.6.2.4 per eseguire la verifica di duttilità, si può porre\nwwc b5,1,l20,0maxl t .",
-        "normalized": "Nel caso si utilizzi la formulazione semplificata indicata al § 7.4.6.2.4 per eseguire la verifica di duttilità, si può porre l_C ≥ max(0,20·l_w, 1,5·b_w).",
+        "normalized": "Nel caso si utilizzi la formulazione semplificata indicata al § 7.4.6.2.4 per eseguire la verifica di duttilità, si può porre l_c ≥ max(0,20·l_w, 1,5·b_w).",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -460,30 +469,12 @@
           },
           {
             "kind": "math",
-            "value": "l_C",
-            "latex": "l_C"
+            "value": "l_c ≥ max(0,20·l_w, 1,5·b_w)",
+            "latex": "l_c\\ge\\max(0{,}20\\cdot l_w,1{,}5\\cdot b_w)"
           },
           {
             "kind": "text",
-            "value": " ≥ max(0,20·"
-          },
-          {
-            "kind": "math",
-            "value": "l_w",
-            "latex": "l_w"
-          },
-          {
-            "kind": "text",
-            "value": ", 1,5·"
-          },
-          {
-            "kind": "math",
-            "value": "b_w",
-            "latex": "b_w"
-          },
-          {
-            "kind": "text",
-            "value": ")."
+            "value": "."
           }
         ]
       },
@@ -520,7 +511,7 @@
           }
         ],
         "rawSha256": "7370410b0fcc3549ca77c4bf6dc0b7b47f145ac17f3790280e595041723dd189",
-        "normalizedSha256": "d46f67e600afdba5ab93873cd403588debf5eb0b98fd46f505342376367f3051"
+        "normalizedSha256": "48be5acc2c17348b8719b69b7bc61da57cb32ce6708b0d334c7fff838ce8c2a3"
       }
     }
   ],

@@ -141,7 +141,7 @@
       "origin": "official",
       "text": {
         "raw": "Le costruzioni caratterizzate, nei confronti dello SLV, da ag \nS ǂ 0,075g, in cui S è il coefficiente che comprende l’effetto\ndell’amplificazione stratigrafica (SS \n) e dell’amplificazione topografica (S T), di cui al § 3.2.3.2, e ag è l’accelerazione orizzontale\nmassima per il suddetto SLV su sito di riferimento rigido, possono essere progettate e verificate come segue:",
-        "normalized": "Le costruzioni caratterizzate, nei confronti dello SLV, da a_g S ≥ 0,075g, in cui S è il coefficiente che comprende l’effetto dell’amplificazione stratigrafica S_S e dell’amplificazione topografica S_T, di cui al § 3.2.3.2, e a_g è l’accelerazione orizzontale massima per il suddetto SLV su sito di riferimento rigido, possono essere progettate e verificate come segue:",
+        "normalized": "Le costruzioni caratterizzate, nei confronti dello SLV, da a_g S ≤ 0,075g, in cui S è il coefficiente che comprende l’effetto dell’amplificazione stratigrafica S_S e dell’amplificazione topografica S_T, di cui al § 3.2.3.2, e a_g è l’accelerazione orizzontale massima per il suddetto SLV su sito di riferimento rigido, possono essere progettate e verificate come segue:",
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
@@ -150,21 +150,12 @@
           },
           {
             "kind": "math",
-            "value": "a_g S",
-            "latex": "a_g S"
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 0,075g, in cui "
+            "value": ", in cui "
           },
           {
             "kind": "math",
@@ -243,7 +234,7 @@
           }
         ],
         "rawSha256": "7a066c68c7de589835ad243873542a7982221fa529303d7448bbec7ff2e22b9d",
-        "normalizedSha256": "0dc5e78db69535e555d94288d5c8df83fa5d24533b9f3f37c58df44bc15e5196"
+        "normalizedSha256": "3534a4721d41239b1d4a969e7f0dd7458c903be46f4b7b1b828768c1eea905ab"
       }
     },
     {
@@ -252,7 +243,7 @@
       "origin": "official",
       "text": {
         "raw": "- si considera la combinazione di azioni definita nel § 2.5.3, applicando, in due direzioni ortogonali, il sistema di forze\norizzontali definito dall’espressione [7.3.7] assumendo Fh = 0,10 W O per tutte le tipologie strutturali, essendo O definito al\n§7.3.3.2;",
-        "normalized": "- si considera la combinazione di azioni definita nel § 2.5.3, applicando, in due direzioni ortogonali, il sistema di forze orizzontali definito dall’espressione [7.3.7] assumendo F_h = 0,10 W per tutte le tipologie strutturali, essendo q definito al § 7.3.3.2;",
+        "normalized": "- si considera la combinazione di azioni definita nel § 2.5.3, applicando, in due direzioni ortogonali, il sistema di forze orizzontali definito dall’espressione [7.3.7] assumendo F_h = 0,10 W λ per tutte le tipologie strutturali, essendo q definito al § 7.3.3.2;",
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
@@ -261,12 +252,12 @@
           },
           {
             "kind": "math",
-            "value": "F_h",
-            "latex": "F_h"
+            "value": "F_h = 0,10 W λ",
+            "latex": "F_h=0{,}10W\\lambda"
           },
           {
             "kind": "text",
-            "value": " = 0,10 W per tutte le tipologie strutturali, essendo "
+            "value": " per tutte le tipologie strutturali, essendo "
           },
           {
             "kind": "math",
@@ -318,7 +309,7 @@
           }
         ],
         "rawSha256": "92be582ce1444ff5f71abbf36192fc887318483ed67d4e6b78507d58c01126e6",
-        "normalizedSha256": "790ad44f61a8dd014e2272ed544a32bcafd4baccf4f0b58e4b4b941841c03a8f"
+        "normalizedSha256": "478b73807b0b81978e3aef9822117ee1cf69b56fafffc7e95949d873065fac89"
       }
     },
     {

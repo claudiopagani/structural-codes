@@ -94,12 +94,21 @@
       "origin": "official",
       "text": {
         "raw": "La velocità di riferimento v r è il valore medio su 10 minuti, a 10 m di altezza dal suolo su un terreno pianeggiante e omogeneo di\ncategoria di esposizione II (vedi Tab. 3.3.II), riferito al periodo di ritorno di progetto TR. Tale velocità è definita dalla relazione:",
-        "normalized": "La velocità di riferimento v r è il valore medio su 10 minuti, a 10 m di altezza dal suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito al periodo di ritorno di progetto TR. Tale velocità è definita dalla relazione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La velocità di riferimento vr è il valore medio su 10 minuti, a 10 m di altezza dal suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito al periodo di ritorno di progetto TR. Tale velocità è definita dalla relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "La velocità di riferimento v r è il valore medio su 10 minuti, a 10 m di altezza dal suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito al periodo di ritorno di progetto "
+            "value": "La velocità di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "vr",
+            "latex": "v_r"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore medio su 10 minuti, a 10 m di altezza dal suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito al periodo di ritorno di progetto "
           },
           {
             "kind": "math",
@@ -145,11 +154,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,10 +162,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "76d4acfaf47561ed51c1e0a6bdb666ab0935f728b9ace23b5025b995b791a90e",
-        "normalizedSha256": "a52b289496c410561c7d0f74c4fb5f38f0ac8330e244c4ae074d664ee4ba7224"
+        "normalizedSha256": "e18fa9c0fc4923446d55addc7540441768e146db2399c8a26268d4569447ef61"
       }
     },
     {
@@ -202,21 +211,30 @@
       "origin": "official",
       "text": {
         "raw": "dove\nv b è la velocità base di riferimento, di cui al § 3.3.1;\nc r è il coefficiente di ritorno, funzione del periodo di ritorno di progetto TR.",
-        "normalized": "dove v b è la velocità base di riferimento, di cui al § 3.3.1; c r è il coefficiente di ritorno, funzione del periodo di ritorno di progetto TR.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "dove vb è la velocità base di riferimento, di cui al § 3.3.1; cr è il coefficiente di ritorno, funzione del periodo di ritorno di progetto TR.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "dove v b è la velocità base di riferimento, di cui al § 3.3.1; "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "vb",
+            "latex": "v_b"
           },
           {
             "kind": "text",
-            "value": " r è il coefficiente di ritorno, funzione del periodo di ritorno di progetto "
+            "value": " è la velocità base di riferimento, di cui al § 3.3.1; "
+          },
+          {
+            "kind": "math",
+            "value": "cr",
+            "latex": "c_r"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di ritorno, funzione del periodo di ritorno di progetto "
           },
           {
             "kind": "math",
@@ -262,11 +280,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -275,10 +288,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "fa5fcda8c7c2c2c015b30dfa88410b77495b028900b3c62ed04eb86018ca70c0",
-        "normalizedSha256": "7d25217afe844672a9250a7bd34cf65b5310aaeb4f3155238068c2558855aeeb"
+        "normalizedSha256": "3679fd5de777be28adf5f21d2bf5e1ceb0b97911bd5353b9d624ca53d32cc5f3"
       }
     },
     {
@@ -381,7 +399,7 @@
       "text": {
         "raw": "dove TR è il periodo di ritorno espresso in anni.",
         "normalized": "dove TR è il periodo di ritorno espresso in anni.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -414,7 +432,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "c7a6939e3255f0e17f3f7c82646e46d5fd76ba3a7eaaf2012090e0d6a94ed72e",
         "normalizedSha256": "c7a6939e3255f0e17f3f7c82646e46d5fd76ba3a7eaaf2012090e0d6a94ed72e"
       }
@@ -426,7 +450,7 @@
       "text": {
         "raw": "Ove non specificato diversamente, si assumerà TR = 50 anni, cui corrisponde cr = 1. Per un’opera di nuova realizzazione in fase di\ncostruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione potrà essere\nridotto come di seguito specificato:",
         "normalized": "Ove non specificato diversamente, si assumerà TR = 50 anni, cui corrisponde cr = 1. Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione potrà essere ridotto come di seguito specificato:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -434,39 +458,21 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR = 50 anni",
+            "latex": "T_R=50\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": ", cui corrisponde "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "cr = 1",
+            "latex": "c_r=1"
           },
           {
             "kind": "text",
-            "value": " 50 anni, cui corrisponde "
-          },
-          {
-            "kind": "math",
-            "value": "cr",
-            "latex": "c_r"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1. Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione potrà essere ridotto come di seguito specificato:"
+            "value": ". Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione potrà essere ridotto come di seguito specificato:"
           }
         ]
       },
@@ -503,11 +509,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -516,6 +517,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "bcdcd575f20ff8f84b10c4adf62a04409179a94f0d60fdaa957e30d1674d3845",
@@ -528,8 +534,8 @@
       "origin": "official",
       "text": {
         "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t\n5 anni;",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t 5 anni;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR ≥ 5 anni;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -537,12 +543,12 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR ≥ 5 anni",
+            "latex": "T_R\\ge5\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " t 5 anni;"
+            "value": ";"
           }
         ]
       },
@@ -579,11 +585,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -592,10 +593,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "9699fcf082cb626ae760140dc20169961e8539660d012e719f1f6d375121fefb",
-        "normalizedSha256": "7bba29b6ff21d3f19476abc42a922f0dc7307c12df7d4ed64a54403943019d4e"
+        "normalizedSha256": "bd5aa2580982c7e7efd19bc183cbf7e750334f783f9e388fc503790a904631cf"
       }
     },
     {
@@ -604,8 +610,8 @@
       "origin": "official",
       "text": {
         "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si as-\nsumerà TR t 10 anni;",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà TR t 10 anni;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà TR ≥ 10 anni;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -613,12 +619,12 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR ≥ 10 anni",
+            "latex": "T_R\\ge10\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " t 10 anni;"
+            "value": ";"
           }
         ]
       },
@@ -655,11 +661,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -668,10 +669,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "7f144fda524aad0b30eb1588deeee2e8f8fd1348caf413a8eb1e6a7eb06d94fd",
-        "normalizedSha256": "beddae17ad15a1fd0bd4e2c69c7f8bf851432bce4b57a70122ddcd5fa1f892ba"
+        "normalizedSha256": "5eaced37dd1fbbb83471a45f1ccb5498b3e69082be7b4bf57393a29e4f01fc65"
       }
     }
   ],

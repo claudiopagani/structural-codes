@@ -18,23 +18,66 @@ type Inline = { kind: "text"; value: string } | { kind: "math"; value: string; l
 type Block = { kind: "heading" | "paragraph" | "list-item" | "formula-ref" | "table-ref" | "figure-ref"; page: number; text?: string; raw?: string; assetId?: string; inline?: Inline[] };
 type UnitDef = { number: string; title: string; blocks: Block[] };
 
-function inlineMath(text: string): Inline[] {
-    const patterns: Array<[RegExp, string]> = [
+function inlineMath(text: string, page: number): Inline[] {
+    const quantityLatex = (value: string): string => {
+        const match = value.match(/^([+-]?\d+(?:,\d+)?)\s*(kN\/m²|kN\/m|kN|km\/h|m\/s²|m\/s|°C|mm|m)$/u);
+        if (!match) return value;
+        const rawNumber = match[1] as string;
+        const rawUnit = match[2] as string;
+        const number = rawNumber.replace(",", "{,}");
+        if (rawUnit === "°C") return `${number}\\,{}^\\circ\\mathrm{C}`;
+        const units: Record<string, string> = { "kN/m²": "kN/m^2", "kN/m": "kN/m", kN: "kN", "km/h": "km/h", "m/s²": "m/s^2", "m/s": "m/s", mm: "mm", m: "m" };
+        return `${number}\\,\\mathrm{${units[rawUnit]}}`;
+    };
+    const patterns: Array<[RegExp, string | ((value: string) => string)]> = page === 171 ? [
+        [/Φ₂/g, "\\Phi_2"], [/Φ₃/g, "\\Phi_3"], [/LΦ/g, "L_{\\Phi}"], [/δ₀/g, "\\delta_0"],
+        [/\d+(?:,\d+)?\s*kN\/m²/g, (value) => value.replace(/\s*kN\/m²/u, "").replace(",", "{,}") + "\\,\\mathrm{kN/m^2}"],
+        [/\d+(?:,\d+)?\s*km\/h/g, (value) => value.replace(/\s*km\/h/u, "").replace(",", "{,}") + "\\,\\mathrm{km/h}"],
+        [/\d+(?:,\d+)?\s*mm/g, (value) => value.replace(/\s*mm/u, "").replace(",", "{,}") + "\\,\\mathrm{mm}"],
+        [/\bmm\b/g, "\\mathrm{mm}"], [/\bL\b/g, "L"], [/n₀/g, "n_0"], [/Φ/g, "\\Phi"],
         [/Qla,k/g, "Q_{la,k}"], [/Qlb,k/g, "Q_{lb,k}"], [/qA1d/g, "q_{A1d}"], [/qA2d/g, "q_{A2d}"],
         [/Qsk/g, "Q_{sk}"], [/Qtk/g, "Q_{tk}"], [/qtk/g, "q_{tk}"], [/Qvk/g, "Q_{vk}"], [/qvk/g, "q_{vk}"],
         [/q1k/g, "q_{1k}"], [/q2k/g, "q_{2k}"], [/q3k/g, "q_{3k}"], [/q4k/g, "q_{4k}"],
         [/Φ2/g, "\\Phi_2"], [/Φ3/g, "\\Phi_3"], [/Φrid/g, "\\Phi_{rid}"], [/α/g, "\\alpha"], [/Ψ2/g, "\\Psi_2"],
-        [/LΦ/g, "L_{\\Phi}"], [/Lf/g, "L_f"], [/ag/g, "a_g"], [/hg/g, "h_g"], [/δ0/g, "\\delta_0"],
+        [/Lf/g, "L_f"], [/δ0/g, "\\delta_0"], [/Qvi/g, "Q_{vi}"], [/Ed/g, "E_d"], [/Rd/g, "R_d"], [/Cd/g, "C_d"], [/\bD\b/g, "D"],
+    ] : [
+        [/Qtk-qtk/g, "Q_{tk}\\!-\\!q_{tk}"], [/Qvk-qvk/g, "Q_{vk}\\!-\\!q_{vk}"],
+        [/Qsk = 100 kN/g, "Q_{sk}=100\\,\\mathrm{kN}"], [/α>1/g, "\\alpha>1"],
+        [/qA1d = 60 kN\/m/g, "q_{A1d}=60\\,\\mathrm{kN/m}"],
+        [/qA2d = 80 kN\/m · 1,4/g, "q_{A2d}=80\\,\\mathrm{kN/m}\\cdot1{,}4"],
+        [/max ag = 6,0 m/g, "\\max a_g=6{,}0\\,\\mathrm{m}"], [/max ag > 6 m/g, "\\max a_g>6\\,\\mathrm{m}"],
+        [/ψ0i=1,0/g, "\\psi_{0i}=1{,}0"], [/Ψ2 = 0,2/g, "\\Psi_2=0{,}2"], [/λ ≤ 30/g, "\\lambda\\le30"],
+        [/f\(V\) = f\(300\)/g, "f(V)=f(300)"], [/120 ≤ V ≤ 300 km\/h/g, "120\\le V\\le300\\,\\mathrm{km/h}"],
+        [/V ≤ 120 km\/h/g, "V\\le120\\,\\mathrm{km/h}"], [/V = 120 km\/h/g, "V=120\\,\\mathrm{km/h}"], [/V > 300 km\/h/g, "V>300\\,\\mathrm{km/h}"],
+        [/Lf ≤ 2,88 m/g, "L_f\\le2{,}88\\,\\mathrm{m}"], [/Lf > 2,88 m/g, "L_f>2{,}88\\,\\mathrm{m}"], [/f = 1/g, "f=1"], [/f < 1/g, "f<1"],
+        [/± q1k/g, "\\pm q_{1k}"], [/± q2k/g, "\\pm q_{2k}"], [/± q3k/g, "\\pm q_{3k}"], [/± q4k/g, "\\pm q_{4k}"],
+        [/k2 =1,3/g, "k_2=1{,}3"], [/± k4 · q1k/g, "\\pm k_4\\cdot q_{1k}"], [/k4 = 2/g, "k_4=2"],
+        [/± k5 · q2k/g, "\\pm k_5\\cdot q_{2k}"], [/k5 = 2,5/g, "k_5=2{,}5"], [/k5 = 3,5/g, "k_5=3{,}5"],
+        [/± 20 kN/g, "\\pm20\\,\\mathrm{kN}"], [/1,5 s/g, "1{,}5s"], [/≤1,0 m/g, "\\le1{,}0\\,\\mathrm{m}"], [/≤2,50 m/g, "\\le2{,}50\\,\\mathrm{m}"],
+        [/[+-]?\d+(?:,\d+)?\s*(?:kN\/m²|kN\/m|kN|km\/h|m\/s²|m\/s|°C|mm|m)(?=$|[\s,.;:)])/gu, quantityLatex],
+        [/\d+(?:,\d+)?%/g, (value) => value.slice(0, -1).replace(",", "{,}") + "\\%"], [/1\/3/g, "\\frac{1}{3}"],
+        [/kN\/m²/g, "\\mathrm{kN/m^2}"], [/kN\/m/g, "\\mathrm{kN/m}"], [/\bkN\b/g, "\\mathrm{kN}"], [/km\/h/g, "\\mathrm{km/h}"], [/m\/s²/g, "\\mathrm{m/s^2}"], [/m\/s/g, "\\mathrm{m/s}"], [/\bm\b/g, "\\mathrm{m}"],
+        [/Qla,k/g, "Q_{la,k}"], [/Qlb,k/g, "Q_{lb,k}"], [/qA1d/g, "q_{A1d}"], [/qA2d/g, "q_{A2d}"],
+        [/Qsk/g, "Q_{sk}"], [/Qtk/g, "Q_{tk}"], [/qtk/g, "q_{tk}"], [/Qvk/g, "Q_{vk}"], [/qvk/g, "q_{vk}"],
+        [/q1k/g, "q_{1k}"], [/q2k/g, "q_{2k}"], [/q3k/g, "q_{3k}"], [/q4k/g, "q_{4k}"],
+        [/\bk1\b/g, "k_1"], [/\bk2\b/g, "k_2"], [/\bk3\b/g, "k_3"], [/\bk4\b/g, "k_4"], [/\bk5\b/g, "k_5"],
+        [/Φrid/g, "\\Phi_{rid}"], [/Φ2/g, "\\Phi_2"], [/Φ3/g, "\\Phi_3"], [/Ψ2/g, "\\Psi_2"], [/ψ0i/g, "\\psi_{0i}"],
+        [/LΦ/g, "L_{\\Phi}"], [/Lf/g, "L_f"], [/δ0/g, "\\delta_0"], [/a[’']g/g, "a'_g"],
+        [/\bmax ag\b/g, "\\max a_g"], [/\bmin ag\b/g, "\\min a_g"], [/\bag\b/g, "a_g"], [/\bhg\b/g, "h_g"],
+        [/α/g, "\\alpha"], [/β/g, "\\beta"], [/λ/g, "\\lambda"], [/Φ/g, "\\Phi"],
+        [/\bL\b/g, "L"], [/\bV\b/g, "V"], [/\bv\b/g, "v"], [/\bf\b/g, "f"], [/\bg\b/g, "g"], [/\br\b/g, "r"], [/(?<!\/)\bh\b/g, "h"], [/\bS\b/g, "S"], [/\bE\b/g, "E"],
         [/Qvi/g, "Q_{vi}"], [/Ed/g, "E_d"], [/Rd/g, "R_d"], [/Cd/g, "C_d"], [/\bD\b/g, "D"],
     ];
     const matches: Array<{ start: number; end: number; value: string; latex: string }> = [];
-    for (const [pattern, latex] of patterns) {
+    for (const [pattern, toLatex] of patterns) {
         pattern.lastIndex = 0;
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(text)) !== null) {
             const start = match.index;
             const end = start + match[0].length;
-            if (!matches.some((item) => start < item.end && end > item.start)) matches.push({ start, end, value: match[0], latex });
+            if (!matches.some((item) => start < item.end && end > item.start)) {
+                matches.push({ start, end, value: match[0], latex: typeof toLatex === "function" ? toLatex(match[0]) : toLatex });
+            }
         }
     }
     matches.sort((a, b) => a.start - b.start);
@@ -48,8 +91,8 @@ function inlineMath(text: string): Inline[] {
     if (cursor < text.length) result.push({ kind: "text", value: text.slice(cursor) });
     return result.length ? result : [{ kind: "text", value: text }];
 }
-const p = (page: number, text: string, raw = text): Block => ({ kind: "paragraph", page, text, raw, inline: inlineMath(text) });
-const li = (page: number, text: string, raw = text): Block => ({ kind: "list-item", page, text, raw, inline: inlineMath(text) });
+const p = (page: number, text: string, raw = text): Block => ({ kind: "paragraph", page, text, raw, inline: inlineMath(text, page) });
+const li = (page: number, text: string, raw = text): Block => ({ kind: "list-item", page, text, raw, inline: inlineMath(text, page) });
 const h = (page: number, number: string, title: string, raw = `${number}. ${title}`): Block => ({ kind: "heading", page, text: `${number} ${title}`, raw });
 const ih = (page: number, text: string): Block => ({ kind: "heading", page, text, raw: text });
 const ref = (kind: "formula-ref" | "table-ref" | "figure-ref", page: number, suffix: string): Block => ({ kind, page, assetId: asset(kind.replace("-ref", "") as "formula" | "table" | "figure", suffix) });
@@ -63,17 +106,17 @@ const units: UnitDef[] = [
         li(171, "per le usuali tipologie di ponti, ove la velocità di percorrenza sia superiore a 200 km/h e quando la frequenza propria della struttura non ricade all’interno del fuso indicato in Fig. 5.2.7 e comunque per le tipologie non convenzionali (ponti strallati, ponti sospesi, ponti di grande luce, ponti metallici difformi dalle tipologie in uso in ambito ferroviario, ecc.) dovrà effettuarsi una analisi dinamica adottando convogli “reali” e parametri di controllo specifici dell’infrastruttura e del tipo di traffico ivi previsto.", "- per le usuali tipologie di ponti, ove la velocità di percorrenza sia superiore a 200 km/h e quando la frequenza propria della\nstruttura non ricade all’interno del fuso indicato in Fig. 5.2.7 e comunque per le tipologie non convenzionali (ponti strallati,\nponti sospesi, ponti di grande luce, ponti metallici difformi dalle tipologie in uso in ambito ferroviario, ecc.) dovrà effettuarsi\nuna analisi dinamica adottando convogli “reali” e parametri di controllo specifici dell’infrastruttura e del tipo di traffico ivi\nprevisto."),
         ref("figure-ref", 171, "5.2.7"),
         p(171, "In Fig. 5.2.7 il “fuso” è caratterizzato da:"),
-        p(171, "un limite superiore pari a: n₀ = 94,76 · L⁻⁰·⁷⁴⁸"), ref("formula-ref", 171, "5.2.2"),
-        p(171, "un limite inferiore pari a: n₀ = 80/L per 4 m ≤ L ≤ 20 m"), ref("formula-ref", 171, "5.2.3"),
-        p(171, "n₀ = 23,58 · L⁻⁰·⁵⁹² per 20 m ≤ L ≤ 100 m"), ref("formula-ref", 171, "5.2.4"),
+        p(171, "un limite superiore pari a:"), ref("formula-ref", 171, "5.2.2"),
+        p(171, "un limite inferiore pari a:"), ref("formula-ref", 171, "5.2.3"),
+        ref("formula-ref", 171, "5.2.4"),
         p(171, "Per una trave semplicemente appoggiata, sottoposta a flessione, la prima frequenza flessionale può valutarsi con la formula:"),
-        p(171, "n₀ = 17,75/√δ₀ [Hz]"), ref("formula-ref", 171, "5.2.5"),
+        ref("formula-ref", 171, "5.2.5"),
         p(171, "dove: δ₀ rappresenta la freccia, espressa in mm, valutata in mezzeria e dovuta alle azioni permanenti."),
         p(171, "Per ponti in calcestruzzo δ₀ deve calcolarsi impiegando il modulo elastico secante, in accordo con la breve durata del passaggio del treno."),
         p(171, "Per travi continue, salvo più precise determinazioni, L è da assumersi pari alla LΦ definita come di seguito."),
         p(171, "I coefficienti di incremento dinamico Φ che aumentano l’intensità dei modelli di carico definiti in 5.2.2.2.1 si assumono pari a Φ₂ o Φ₃, in dipendenza del livello di manutenzione della linea. In particolare, si assumerà:"),
-        li(171, "(a) per linee con elevato standard manutentivo: Φ₂ = 1,44/(√LΦ − 0,2) + 0,82 con la limitazione 1,00 ≤ Φ₂ ≤ 1,67", "(a) per linee con elevato standard manutentivo:\n1,44\nΦ₂ = ───────── + 0,82 con la limitazione 1,00 ≤ Φ₂ ≤ 1,67\n√LΦ − 0,2"), ref("formula-ref", 171, "5.2.6"),
-        li(171, "(b) per linee con ridotto standard manutentivo: Φ₃ = 2,16/(√LΦ − 0,2) + 0,73 con la limitazione 1,00 ≤ Φ₃ ≤ 2,00", "(b) per linee con ridotto standard manutentivo:\n2,16\nΦ₃ = ───────── + 0,73 con la limitazione 1,00 ≤ Φ₃ ≤ 2,00\n√LΦ − 0,2"), ref("formula-ref", 171, "5.2.7"),
+        li(171, "(a) per linee con elevato standard manutentivo:"), ref("formula-ref", 171, "5.2.6"),
+        li(171, "(b) per linee con ridotto standard manutentivo:"), ref("formula-ref", 171, "5.2.7"),
         p(172, "LΦ rappresenta la lunghezza “caratteristica” in metri, così come definita in Tab. 5.2.II."),
         ref("table-ref", 172, "5.2.ii"),
         p(173, "I coefficienti di incremento dinamico sono stabiliti con riferimento a travi semplicemente appoggiate. La lunghezza LΦ permette di estendere l’uso di questi coefficienti anche ad altre tipologie strutturali."),
@@ -81,7 +124,7 @@ const units: UnitDef[] = [
         p(173, "Questo coefficiente dinamico Φ non dovrà essere usato con i seguenti carichi:"),
         li(173, "treno scarico;", "▪ treno scarico;"), li(173, "treni “reali”.", "▪ treni “reali”."),
         p(173, "Per i ponti metallici con armamento diretto occorrerà considerare un ulteriore coefficiente di adattamento dell’incremento dinamico β (inserito per tener conto del maggiore incremento dinamico dovuto al particolare tipo di armamento), variabile esclusivamente in funzione della lunghezza caratteristica LΦ dell’elemento, dato da:"),
-        p(173, "β = 1,0 per LΦ ≤ 8 m ed LΦ > 90 m; β = 1,1 per 8 m < LΦ ≤ 90 m", "Ά= 1,0 per LΚ ǂ8 m ed LΚ > 90 m\nΆ= 1,1 per 8 m < LΚ ǂ90 m"),
+        ref("formula-ref", 173, "5.2.2.2.3-beta"),
         p(173, "Nei casi di ponti ad arco o scatolari, con o senza solettone di fondo, aventi copertura “h” maggiore di 1,0 m, il coefficiente dinamico può essere ridotto nella seguente maniera:"),
         ref("formula-ref", 173, "5.2.8"),
         p(173, "dove h, in metri, è l’altezza della copertura dall’estradosso della struttura alla faccia superiore delle traverse."),
@@ -117,8 +160,8 @@ const units: UnitDef[] = [
     U("5.2.2.3.3", "AZIONI DI AVVIAMENTO E FRENATURA", 174, [
         p(174, "Le forze di frenatura e di avviamento agiscono sulla sommità del binario, nella direzione longitudinale dello stesso. Dette forze sono da considerarsi uniformemente distribuite su una lunghezza di binario L determinata per ottenere l’effetto più gravoso sull’elemento strutturale considerato."),
         p(174, "I valori caratteristici da considerare sono i seguenti:"),
-        p(174, "avviamento: Qla,k = 33 [kN/m] · L[m] ≤ 1000 kN per modelli di carico LM 71, SW/0, SW/2", "avviamento: Qla,k = 33 [kN/m] · L[m] ǂ 1000 kN   per modelli di carico LM 71, SW/0,\nSW/2"),
-        p(175, "frenatura: Qlb,k = 20 [kN/m] · L[m] ≤ 6000 kN per modelli di carico LM 71, SW/0; Qlb,k = 35 [kN/m] · L[m] per modelli di carico SW/2", "frenatura: Qlb,k = 20 [kN/m] · L[m] ǂ 6000 kN   per modelli di carico LM 71, SW/0\nQlb,k = 35 [kN/m] · L[m]   per modelli di carico SW/2"),
+        ref("formula-ref", 174, "5.2.2.3.3-starting"),
+        ref("formula-ref", 175, "5.2.2.3.3-braking"),
         p(175, "Questi valori caratteristici sono applicabili a tutti i tipi di binario, sia con rotaie saldate, sia con rotaie giuntate, con o senza dispositivi di espansione."),
         p(175, "Le azioni di frenatura ed avviamento saranno combinate con i relativi carichi verticali (per modelli di carico SW/0 e SW/2 saranno tenute in conto solo le parti di struttura che sono caricate in accordo con la Fig. 5.2.2 e con la Tab. 5.2.I)."),
         p(175, "Quando la rotaia è continua ad una o ad entrambe le estremità del ponte solo una parte delle forze di frenatura ed avviamento è trasferita, attraverso l’impalcato, agli apparecchi di appoggio, la parte rimanente di queste forze è trasmessa, attraverso le rotaie, ai rilevati a tergo delle spalle. La percentuale di forze trasferite attraverso l’impalcato agli apparecchi di appoggio è valutabile con le modalità riportate nel paragrafo relativo agli effetti di interazione statica."),
@@ -177,8 +220,7 @@ const units: UnitDef[] = [
     U("5.2.2.6.1", "SUPERFICI VERTICALI PARALLELE AL BINARIO", 177, [
         p(177, "I valori caratteristici dell’azione ± q1k relativi a superfici verticali parallele al binario sono forniti in Fig. 5.2.8 in funzione della distanza ag dall’asse del binario più vicino."), ref("figure-ref", 177, "5.2.8"),
         p(177, "I suddetti valori sono relativi a treni con forme aerodinamiche sfavorevoli; per i casi di forme aerodinamiche favorevoli, questi valori dovranno essere corretti per mezzo del fattore k1, ove:"),
-        p(177, "k1 = 0,85 per convogli formati da carrozze con sagoma arrotondata;"),
-        p(177, "k1 = 0,60 per treni aerodinamici."),
+        ref("formula-ref", 177, "5.2.2.6.1-k1"),
         p(177, "Se l’altezza di un elemento strutturale (o parte della sua superficie di influenza) è ≤1,0 m o se la larghezza è ≤2,50 m, l’azione q1k deve essere incrementata del fattore k2 =1,3.", "Se l’altezza di un elemento strutturale (o parte della sua superficie di influenza) è ǂ1,0 m o se la larghezza è ǂ2,50 m, l’azione q1k deve\nessere incrementata del fattore k2 =1,3."),
     ]),
     U("5.2.2.6.2", "SUPERFICI ORIZZONTALI AL DI SOPRA DEL BINARIO", 177, [
@@ -193,11 +235,12 @@ const units: UnitDef[] = [
         p(177, "Per tutte le posizioni lungo le superfici da progettare, q3k si determinerà come una funzione della distanza ag dall’asse del binario più vicino. Le azioni saranno sommate, se ci sono binari su entrambi i lati dell’elemento strutturale da calcolare."),
         p(177, "Se la distanza hg supera i 3,80 m l’azione q3k può essere ridotta del fattore k3:"),
         p(177, "k3 = (7,5 − hg)/3,7 per 3,8 m < hg < 7,5 m; k3 = 0 per hg ≥ 7,5 m", "7,3\nh5,7\nk g\n3  \n per 3,8 m < hg < 7,5 m;\nk3 = 0 per hg ǃ 7,5 m"),
+        ref("formula-ref", 177, "5.2.2.6.3-k3"),
         p(177, "dove hg rappresenta la distanza dal P.F. alla superficie inferiore della struttura."),
     ]),
     U("5.2.2.6.4", "STRUTTURE CON SUPERFICI MULTIPLE A FIANCO DEL BINARIO SIA VERTICALI CHE ORIZZONTALI O INCLINATE", 178, [
         p(178, "I valori caratteristici dell’azione ± q4k sono forniti in Fig. 5.2.11 e si applicano ortogonalmente alla superficie considerata. Le azioni sono determinate secondo quanto detto nel precedente § 5.2.2.6.1 adottando una distanza fittizia dal binario pari a"),
-        p(178, "a’g = 0,6 min ag + 0,4 max ag"), ref("formula-ref", 178, "5.2.10-distance"),
+        ref("formula-ref", 178, "5.2.10-distance"),
         p(178, "Le distanze min ag, max ag sono indicate in Fig. 5.2.11."),
         ref("figure-ref", 179, "5.2.11"),
         p(178, "Nei casi in cui max ag > 6 m si adotterà max ag = 6,0 m"),
@@ -292,7 +335,13 @@ function parent(number: string): string | null { const parts = number.split(".")
 function ancestors(number: string): string[] { const parts = number.split("."); return Array.from({ length: parts.length - 1 }, (_, index) => unitId(parts.slice(0, index + 1).join("."))); }
 function kind(number: string): string { const depth = number.split(".").length; return depth === 1 ? "chapter" : depth === 2 ? "section" : depth === 3 ? "paragraph" : "subparagraph"; }
 function makeUnit(def: UnitDef): any {
-    const blocks = def.blocks.map((block, index) => makeBlock(def.number, index, block));
+    const editorialBlocks = def.number === "5.2.2.6.3"
+        ? def.blocks.filter((block) => !block.text?.startsWith("k3 = (7,5 − hg)/3,7"))
+        : def.blocks;
+    const blocks = editorialBlocks.map((block, index) => {
+        const stableIndex = def.number === "5.2.2.2.3" && block.page >= 172 ? index + 2 : index;
+        return makeBlock(def.number, stableIndex, block);
+    });
     const ids = { formulaIds: blocks.filter((b) => b.assetId?.includes(":formula:")).map((b) => b.assetId), tableIds: blocks.filter((b) => b.assetId?.includes(":table:")).map((b) => b.assetId), figureIds: blocks.filter((b) => b.assetId?.includes(":figure:")).map((b) => b.assetId) };
     const issues: any[] = [{ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }];
     if (Object.values(ids).some((items) => items.length)) issues.push({ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." });
@@ -301,7 +350,7 @@ function makeUnit(def: UnitDef): any {
 }
 const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
 const tables: any[] = [
-    { id: asset("table", "5.2.ii"), unitId: unitId("5.2.2.2.3"), officialNumber: "5.2.II", pdfPage: 172, caption: "Tab. 5.2.II - Lunghezza caratteristica LΦ", columnCount: 3, headers: [[cell("Caso"), cell("Elemento strutturale"), cell("Lunghezza LΦ")]], rows: [
+    { id: asset("table", "5.2.ii"), unitId: unitId("5.2.2.2.3"), officialNumber: "5.2.II", pdfPage: 172, caption: "Tab. 5.2.II - Lunghezza caratteristica LΦ", columnCount: 3, headers: [[cell("Caso"), cell("Elemento strutturale"), cell("Lunghezza LΦ", { latex: "\\text{Lunghezza }L_\\Phi" })]], rows: [
         [cell(""), cell("IMPALCATO DI PONTE IN ACCIAIO CON BALLAST (LASTRA ORTOTROPA O STRUTTURA EQUIVALENTE)", { colSpan: 2 })],
         [cell("1"), cell("Piastra con nervature longitudinali e trasversali, o solo longitudinali: 1.1 Piastra (in entrambe le direzioni)"), cell("3 volte l’interasse delle travi trasversali")],
         [cell("1"), cell("1.2 Nervature longitudinali (comprese mensole fino a 0,50 m)"), cell("3 volte l’interasse delle travi trasversali")],
@@ -312,7 +361,7 @@ const tables: any[] = [
         [cell(""), cell("IMPALCATO DI PONTE IN ACCIAIO SENZA BALLAST (PER TENSIONI LOCALI)", { colSpan: 2 })],
         [cell("3"), cell("3.1 Sostegni per rotaie (longherine): come elemento di un grigliato"), cell("3 volte l’interasse delle travi trasversali")],
         [cell("3"), cell("3.1 Sostegni per rotaie (longherine): come elemento semplicemente appoggiato"), cell("distanza fra le travi trasversali + 3 m")],
-        [cell("3"), cell("3.2 Sostegni per rotaie a mensola (longherine a mensola) per travi trasversali di estremità"), cell("Φ3 = 2,0, ove non meglio specificato")],
+        [cell("3"), cell("3.2 Sostegni per rotaie a mensola (longherine a mensola) per travi trasversali di estremità"), cell("Φ₃ = 2,0, ove non meglio specificato", { latex: "\\Phi_3=2{,}0,\\quad\\text{ove non meglio specificato}" })],
         [cell("3"), cell("3.3 Travi trasversali intermedie"), cell("2 volte la luce delle travi trasversali")], [cell("3"), cell("3.4 Travi trasversali d’estremità"), cell("luce della trave trasversale")],
         [cell(""), cell("IMPALCATO DI PONTE IN CALCESTRUZZO CON BALLAST (PER IL CALCOLO DEGLI EFFETTI LOCALI E TRASVERSALI)", { colSpan: 2 })],
         [cell("4"), cell("4.1 Solette superiori e traversi di impalcati a sezione scatolare o a graticcio di travi: nella direzione trasversale alle travi principali"), cell("3 volte la luce della soletta")],
@@ -322,35 +371,35 @@ const tables: any[] = [
         [cell("4"), cell("4.3 Solette per ponti a via inferiore: ordite perpendicolarmente alle travi principali"), cell("2 volte la luce della soletta")],
         [cell("4"), cell("4.3 Solette per ponti a via inferiore: ordite parallelamente alle travi principali"), cell("2 volte la luce della soletta o, se minore, la lunghezza caratteristica delle travi principali")],
         [cell("4"), cell("4.4 Impalcati a travi incorporate tessute ortogonalmente all’asse del binario"), cell("2 volte la lunghezza caratteristica in direzione longitudinale")],
-        [cell("4"), cell("4.5 Mensole longitudinali supportanti carichi ferroviari (per le azioni in direzione longitudinale)"), cell("se e≤0,5: m Φ2=1,67; per e>0,5 m v. (4.1)")],
+        [cell("4"), cell("4.5 Mensole longitudinali supportanti carichi ferroviari (per le azioni in direzione longitudinale)"), cell("se e≤0,5: m Φ₂=1,67; per e>0,5 m v. (4.1)", { latex: "\\text{se }e\\le0{,}5:\\,\\mathrm{m}\\;\\Phi_2=1{,}67;\\quad\\text{per }e>0{,}5\\,\\mathrm{m}\\;\\text{v. (4.1)}" })],
         [cell(""), cell("TRAVI PRINCIPALI", { colSpan: 2 })],
         [cell("5"), cell("5.1 Travi e solette semplicemente appoggiate (compresi i solettoni a travi incorporate)"), cell("luce nella direzione delle travi principali")],
-        [cell("5"), cell("5.2 Travi e solette continue su n luci, indicando con: Lm=1/n·(L1+L2+.....+Ln)"), cell("LΦ = kLm dove: n=2-3-4-≥5; k=1,2-1,3-1,4-1,5")],
+        [cell("5"), cell("5.2 Travi e solette continue su n luci, indicando con: Lₘ = 1/n · (L₁+L₂+.....+Lₙ)", { latex: "\\begin{gathered}\\text{5.2 Travi e solette continue su }n\\text{ luci, indicando con:}\\\\L_m=\\frac{1}{n}\\cdot(L_1+L_2+\\ldots+L_n)\\end{gathered}" }), cell("LΦ = kLₘ dove: n = 2-3-4-≥5; k = 1,2-1,3-1,4-1,5", { latex: "\\begin{gathered}L_\\Phi=kL_m\\quad\\text{dove:}\\\\n=2-3-4-\\ge5\\\\k=1{,}2-1{,}3-1{,}4-1{,}5\\end{gathered}" })],
         [cell("5"), cell("5.3 Portali: a luce singola"), cell("da considerare come trave continua a tre luci (usando la 5.2 considerando le altezze dei piedritti e la lunghezza del traverso)")],
         [cell("5"), cell("5.3 Portali: a luci multiple"), cell("da considerare come trave continua a più luci (usando la 5.2 considerando le altezze dei piedritti terminali e la lunghezza di tutti i traversi)")],
-        [cell("5"), cell("5.4 Solette ed altri elementi di scatolari per uno o più binari (sottovia di altezza libera ≤5,0 m e luce libera ≤8,0 m). Per gli scatolari che non rispettano i precedenti limiti vale il punto 5.3, trascurando la presenza della soletta inferiore e considerando un coefficiente riduttivo del Φ pari a 0,9, da applicare al coefficiente Φ2=1,20; Φ3=1,35"), cell(" ")],
+        [cell("5"), cell("5.4 Solette ed altri elementi di scatolari per uno o più binari (sottovia di altezza libera ≤5,0 m e luce libera ≤8,0 m). Per gli scatolari che non rispettano i precedenti limiti vale il punto 5.3, trascurando la presenza della soletta inferiore e considerando un coefficiente riduttivo del Φ pari a 0,9, da applicare al coefficiente Φ"), cell("Φ₂ = 1,20; Φ₃ = 1,35", { latex: "\\Phi_2=1{,}20;\\quad\\Phi_3=1{,}35" })],
         [cell("5"), cell("5.5 Travi ad asse curvilineo, archi a spinta eliminata, archi senza riempimento."), cell("metà della luce libera")],
         [cell("5"), cell("5.6 Archi e serie di archi con riempimento"), cell("due volte la luce libera")],
         [cell("5"), cell("5.7 Strutture di sospensione (di collegamento a travi di irrigidimento)"), cell("4 volte la distanza longitudinale fra le strutture di sospensione")],
         [cell(""), cell("SUPPORTI STRUTTURALI", { colSpan: 2 })],
-        [cell("6"), cell("6.1 Pile con snellezza λ>30"), cell("somma delle lunghezze delle campate adiacenti la pila")],
+        [cell("6"), cell("6.1 Pile con snellezza λ>30", { latex: "\\text{6.1 Pile con snellezza }\\lambda>30" }), cell("somma delle lunghezze delle campate adiacenti la pila")],
         [cell("6"), cell("6.2 Appoggi, calcolo delle tensioni di contatto al di sotto degli stessi e tiranti di sospensione"), cell("lunghezza degli elementi sostenuti")],
     ], notes: [] },
-    { id: asset("table", "5.2.ii.b"), unitId: unitId("5.2.2.3.1"), officialNumber: "5.2.II.b", pdfPage: 174, caption: "Tab. 5.2.II.b - Parametri per determinazione della forza centrifuga", columnCount: 7, headers: [[cell("Valore di α"), cell("Massima velocità della linea [Km/h]"), cell("V"), cell("α"), cell("f"), cell("Azione centrifuga basata su"), cell("Carico verticale associato")]], rows: [
-        [cell("SW/2"), cell("≥ 100"), cell("100"), cell("1"), cell("1"), cell("1 × 1 × SW/2"), cell("Φ × 1 × 1 × SW/2")],
-        [cell("SW/2"), cell("< 100"), cell("V"), cell("1"), cell("1"), cell("1 × 1 × SW/2"), cell("Φ × 1 × 1 × SW/2")],
-        [cell("LM71 e SW/0"), cell("> 120"), cell("V"), cell("1"), cell("f"), cell("1 × f × (LM71 + SW/0)"), cell("Φ × 1 × 1 × (LM71 + SW/0)")],
-        [cell("LM71 e SW/0"), cell("> 120"), cell("120"), cell("α"), cell("1"), cell("α × 1 × (LM71 + SW/0)"), cell("Φ × α × 1 × (LM71 + SW/0)")],
-        [cell("LM71 e SW/0"), cell("≤ 120"), cell("V"), cell("α"), cell("1"), cell("α × 1 × (LM71 + SW/0)"), cell("Φ × α × 1 × (LM71 + SW/0)")],
+    { id: asset("table", "5.2.ii.b"), unitId: unitId("5.2.2.3.1"), officialNumber: "5.2.II.b", pdfPage: 174, caption: "Tab. 5.2.II.b - Parametri per determinazione della forza centrifuga", columnCount: 7, headers: [[cell("Valore di α", { latex: "\\text{Valore di }\\alpha" }), cell("Massima velocità della linea [Km/h]"), cell("V", { latex: "V" }), cell("α", { latex: "\\alpha" }), cell("f", { latex: "f" }), cell("Azione centrifuga basata su"), cell("Carico verticale associato")]], rows: [
+        [cell("SW/2", { latex: "\\mathrm{SW/2}" }), cell("≥ 100", { latex: "\\ge100" }), cell("100", { latex: "100" }), cell("1", { latex: "1" }), cell("1", { latex: "1" }), cell("1 × 1 × SW/2", { latex: "1\\times1\\times\\mathrm{SW/2}" }), cell("Φ × 1 × 1 × SW/2", { latex: "\\Phi\\times1\\times1\\times\\mathrm{SW/2}" })],
+        [cell("SW/2", { latex: "\\mathrm{SW/2}" }), cell("< 100", { latex: "<100" }), cell("V", { latex: "V" }), cell("1", { latex: "1" }), cell("1", { latex: "1" }), cell("1 × 1 × SW/2", { latex: "1\\times1\\times\\mathrm{SW/2}" }), cell("Φ × 1 × 1 × SW/2", { latex: "\\Phi\\times1\\times1\\times\\mathrm{SW/2}" })],
+        [cell("LM71 e SW/0"), cell("> 120", { latex: ">120" }), cell("V", { latex: "V" }), cell("1", { latex: "1" }), cell("f", { latex: "f" }), cell("1 × f × (LM71 “+” SW/0)", { latex: "1\\times f\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × 1 × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times1\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
+        [cell("LM71 e SW/0"), cell("> 120", { latex: ">120" }), cell("120", { latex: "120" }), cell("α", { latex: "\\alpha" }), cell("1", { latex: "1" }), cell("α × 1 × (LM71 “+” SW/0)", { latex: "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × α × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
+        [cell("LM71 e SW/0"), cell("≤ 120", { latex: "\\le120" }), cell("V", { latex: "V" }), cell("α", { latex: "\\alpha" }), cell("1", { latex: "1" }), cell("α × 1 × (LM71 “+” SW/0)", { latex: "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × α × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
     ], notes: ["La composizione grafica delle intestazioni e delle celle è stata resa in celle strutturate; mantenere issue di revisione umana sul PDF."] },
     { id: asset("table", "5.2.iii"), unitId: unitId("5.2.3.1.2"), officialNumber: "5.2.III", pdfPage: 181, caption: "Tab. 5.2.III - Carichi mobili in funzione del numero di binari presenti sul ponte", columnCount: 5, headers: [[cell("Numero di binari"), cell("Binari / Carichi"), cell("Traffico normale: caso a(1)"), cell("Traffico normale: caso b(1)"), cell("Traffico pesante(2)")]], rows: [
-        [cell("1"), cell("Primo"), cell("1,0 (LM 71 + SW/0)"), cell("-"), cell("1,0 SW/2")],
-        [cell("2"), cell("Primo"), cell("1,0 (LM 71 + SW/0)"), cell("-"), cell("1,0 SW/2")],
-        [cell("2"), cell("secondo"), cell("1,0 (LM 71 + SW/0)"), cell("-"), cell("1,0 (LM 71 + SW/0)")],
-        [cell("≥3"), cell("Primo"), cell("1,0 (LM 71 + SW/0)"), cell("0,75 (LM 71 + SW/0)"), cell("1,0 SW/2")],
-        [cell("≥3"), cell("secondo"), cell("1,0 (LM 71 + SW/0)"), cell("0,75 (LM 71 + SW/0)"), cell("1,0 (LM 71 + SW/0)")],
-        [cell("≥3"), cell("Altri"), cell("-"), cell("0,75 (LM 71 + SW/0)"), cell("-")],
-    ], notes: ["(1) LM71 + SW/0 significa considerare il più sfavorevole fra i treni LM 71, SW/0.", "(2) Salvo i casi in cui sia esplicitamente escluso."] },
+        [cell("1"), cell("Primo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-"), cell("1,0 SW/2", { latex: "1{,}0\\,\\mathrm{SW/2}" })],
+        [cell("2"), cell("Primo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-"), cell("1,0 SW/2", { latex: "1{,}0\\,\\mathrm{SW/2}" })],
+        [cell("2"), cell("secondo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
+        [cell("≥3", { latex: "\\ge3" }), cell("Primo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("0,75 (LM71 “+” SW/0)", { latex: "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("1,0 SW/2", { latex: "1{,}0\\,\\mathrm{SW/2}" })],
+        [cell("≥3", { latex: "\\ge3" }), cell("secondo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("0,75 (LM71 “+” SW/0)", { latex: "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
+        [cell("≥3", { latex: "\\ge3" }), cell("Altri"), cell("-"), cell("0,75 (LM71 “+” SW/0)", { latex: "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-")],
+    ], notes: ["(1) LM71 “+” SW/0 significa considerare il più sfavorevole fra i treni LM 71, SW/0.", "(2) Salvo i casi in cui sia esplicitamente escluso."] },
 ];
 const figureDefs: Array<[string, string, number, string, string, string, { x: number; y: number; width: number; height: number }]> = [
     ["5.2.7", "5.2.2.2.3", 171, "Fig. 5.2.7 - Limiti delle frequenze proprie n₀ in Hz in funzione della luce della campata", "Limiti delle frequenze proprie in funzione della luce della campata", "fig5.2.7.png", { x: 70, y: 315, width: 460, height: 145 }],
@@ -362,9 +411,26 @@ const figureDefs: Array<[string, string, number, string, string, string, { x: nu
     ["5.2.13", "5.2.2.9.2", 180, "Fig. 5.2.13 - Caso 2", "Deragliamento al di sopra del ponte, caso 2", "fig5.2.13.png", { x: 165, y: 390, width: 330, height: 115 }],
 ];
 const figures: any[] = figureDefs.map(([n, u, page, caption, alt, filename, r]) => ({ id: asset("figure", n), unitId: unitId(u), officialNumber: n, pdfPage: page, caption, alt, imagePath: `figures/ntc2018/${filename}`, region: { coordinateSystem: "pdf-points-top-left", ...r }, sha256: "" }));
-const formulas = [
-    ["5.2.2", "5.2.2.2.3", "5.2.2", 171, "n_0=94{,}76\\,L^{-0{,}748}"], ["5.2.3", "5.2.2.2.3", "5.2.3", 171, "n_0=80/L"], ["5.2.4", "5.2.2.2.3", "5.2.4", 171, "n_0=23{,}58\\,L^{-0{,}592}"], ["5.2.5", "5.2.2.2.3", "5.2.5", 171, "n_0=\\frac{17{,}75}{\\sqrt{\\delta_0}}\\;[\\mathrm{Hz}]"], ["5.2.6", "5.2.2.2.3", "5.2.6", 171, "\\Phi_2=\\frac{1{,}44}{\\sqrt{L_\\Phi}-0{,}2}+0{,}82"], ["5.2.7", "5.2.2.2.3", "5.2.7", 171, "\\Phi_3=\\frac{2{,}16}{\\sqrt{L_\\Phi}-0{,}2}+0{,}73"], ["5.2.8", "5.2.2.2.3", "5.2.8", 173, "\\Phi_{rid}=\\Phi-\\frac{h-1{,}00}{10}\\ge1{,}0"], ["5.2.9.a", "5.2.2.3.1", "5.2.9.a", 173, "Q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha Q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha Q_{vk})"], ["5.2.9.b", "5.2.2.3.1", "5.2.9.b", 173, "q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha q_{vk})"], ["5.2.10-force", "5.2.2.3.1", "5.2.10", 174, "f=\\left[1-\\frac{V-120}{1000}\\left(\\frac{814}{V}+1{,}75\\right)\\right]\\left[1-\\sqrt{\\frac{2{,}88}{L_f}}\\right]"], ["5.2.10-distance", "5.2.2.6.4", "5.2.10", 178, "a'_g=0{,}6\\,\\min a_g+0{,}4\\,\\max a_g"],
+const formulas: any[] = [
+    ["5.2.2", "5.2.2.2.3", "5.2.2", 171, "n_0=94{,}76\\cdot L^{-0{,}748}"], ["5.2.3", "5.2.2.2.3", "5.2.3", 171, "n_0=80/L\\qquad\\text{per}\\quad4\\,\\mathrm{m}\\le L\\le20\\,\\mathrm{m}"], ["5.2.4", "5.2.2.2.3", "5.2.4", 171, "n_0=23{,}58\\cdot L^{-0{,}592}\\qquad\\text{per}\\quad20\\,\\mathrm{m}\\le L\\le100\\,\\mathrm{m}"], ["5.2.5", "5.2.2.2.3", "5.2.5", 171, "n_0=\\frac{17{,}75}{\\sqrt{\\delta_0}}\\;[\\mathrm{Hz}]"], ["5.2.6", "5.2.2.2.3", "5.2.6", 171, "\\Phi_2=\\frac{1{,}44}{\\sqrt{L_\\Phi}-0{,}2}+0{,}82\\qquad\\text{con la limitazione}\\quad1{,}00\\le\\Phi_2\\le1{,}67"], ["5.2.7", "5.2.2.2.3", "5.2.7", 171, "\\Phi_3=\\frac{2{,}16}{\\sqrt{L_\\Phi}-0{,}2}+0{,}73\\qquad\\text{con la limitazione}\\quad1{,}00\\le\\Phi_3\\le2{,}00"], ["5.2.8", "5.2.2.2.3", "5.2.8", 173, "\\Phi_{rid}=\\Phi-\\frac{h-1{,}00}{10}\\ge1{,}0"], ["5.2.9.a", "5.2.2.3.1", "5.2.9.a", 173, "Q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha Q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha Q_{vk})"], ["5.2.9.b", "5.2.2.3.1", "5.2.9.b", 173, "q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha q_{vk})"], ["5.2.10-force", "5.2.2.3.1", "5.2.10", 174, "f=\\left[1-\\frac{V-120}{1000}\\left(\\frac{814}{V}+1{,}75\\right)\\right]\\left[1-\\sqrt{\\frac{2{,}88}{L_f}}\\right]"], ["5.2.10-distance", "5.2.2.6.4", "5.2.10", 178, "a'_g=0{,}6\\,\\min a_g+0{,}4\\,\\max a_g"],
 ].map(([id, u, officialNumber, page, latex]) => ({ id: asset("formula", id as string), unitId: unitId(u as string), officialNumber, pdfPage: page, latex }));
+
+const formulaCorrections = new Map<string, string>([
+    ["5.2.9.a", "Q_{tk}=\\frac{v^2}{g\\cdot r}\\cdot(f\\cdot\\alpha Q_{vk})=\\frac{V^2}{127\\cdot r}\\cdot(f\\cdot\\alpha Q_{vk})"],
+    ["5.2.9.b", "q_{tk}=\\frac{v^2}{g\\cdot r}\\cdot(f\\cdot\\alpha q_{vk})=\\frac{V^2}{127\\cdot r}\\cdot(f\\cdot\\alpha q_{vk})"],
+    ["5.2.10-force", "f=\\left[1-\\frac{V-120}{1000}\\left(\\frac{814}{V}+1{,}75\\right)\\cdot\\left(1-\\sqrt{\\frac{2{,}88}{L_f}}\\right)\\right]"],
+]);
+for (const formula of formulas) {
+    const suffix = formula.id.split(":").at(-1) as string;
+    if (formulaCorrections.has(suffix)) formula.latex = formulaCorrections.get(suffix);
+}
+for (const [id, u, page, latex] of [
+    ["5.2.2.2.3-beta", "5.2.2.2.3", 173, "\\begin{aligned}\\beta&=1{,}0\\quad\\text{per }L_\\Phi\\le8\\,\\mathrm{m}\\text{ ed }L_\\Phi>90\\,\\mathrm{m}\\\\\\beta&=1{,}1\\quad\\text{per }8\\,\\mathrm{m}<L_\\Phi\\le90\\,\\mathrm{m}\\end{aligned}"],
+    ["5.2.2.3.3-starting", "5.2.2.3.3", 174, "\\begin{aligned}\\text{avviamento:}\\quad Q_{la,k}&=33\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\le1000\\,\\mathrm{kN}\\quad\\text{per modelli di carico LM 71, SW/0,}\\\\&\\hspace{15.5em}\\text{SW/2}\\end{aligned}"],
+    ["5.2.2.3.3-braking", "5.2.2.3.3", 175, "\\begin{aligned}\\text{frenatura:}\\quad Q_{lb,k}&=20\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\le6000\\,\\mathrm{kN}\\quad\\text{per modelli di carico LM 71, SW/0}\\\\Q_{lb,k}&=35\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\quad\\text{per modelli di carico SW/2}\\end{aligned}"],
+    ["5.2.2.6.1-k1", "5.2.2.6.1", 177, "\\begin{aligned}k_1&=0{,}85\\quad\\text{per convogli formati da carrozze con sagoma arrotondata;}\\\\k_1&=0{,}60\\quad\\text{per treni aerodinamici.}\\end{aligned}"],
+    ["5.2.2.6.3-k3", "5.2.2.6.3", 177, "\\begin{aligned}k_3&=\\frac{7{,}5-h_g}{3{,}7}\\quad\\text{per }3{,}8\\,\\mathrm{m}<h_g<7{,}5\\,\\mathrm{m};\\\\k_3&=0\\quad\\text{per }h_g\\ge7{,}5\\,\\mathrm{m}\\end{aligned}"],
+] as Array<[string, string, number, string]>) formulas.push({ id: asset("formula", id), unitId: unitId(u), officialNumber: null, pdfPage: page, latex });
 
 const assetManifest: any = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step3", sourceId, status: "transcribed-unreviewed", formulas, tables, figures };
 const unitOutput = join(root, "corpus", "units", "ntc2018");

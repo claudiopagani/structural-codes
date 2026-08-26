@@ -12,14 +12,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
       "officialNumber": "4.3.15",
       "pdfPage": 128,
-      "latex": "\\delta=\\frac{A_a\\,f_{yk}}{\\gamma_A}\\cdot\\frac{1}{N_{pl,Rd}}"
+      "latex": "\\delta=\\frac{A_a\\cdot f_{yk}}{\\gamma_A}\\cdot\\frac{1}{N_{pl,Rd}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.16",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
       "officialNumber": "4.3.16",
       "pdfPage": 128,
-      "latex": "(EJ)_{\\mathrm{eff}}=E_aJ_a+E_sJ_s+k_eE_{c,\\mathrm{eff}}J_c"
+      "latex": "(EJ)_{\\mathrm{eff}}=E_aJ_a+E_sJ_s+k_eE_{c,\\mathrm{eff}}\\cdot J_c"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.17",
@@ -40,77 +40,77 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
       "officialNumber": "4.3.19",
       "pdfPage": 128,
-      "latex": "N_{pl,Rk}=A_af_{yk}+0.85A_cf_{ck}+A_sf_{sk}"
+      "latex": "N_{pl,Rk}=A_a\\cdot f_{yk}+0{,}85\\cdot A_c\\cdot f_{ck}+A_s\\cdot f_{sk}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.20",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2",
       "officialNumber": "4.3.20",
       "pdfPage": 128,
-      "latex": "(EJ)_{\\mathrm{eff,II}}=k_0(E_aJ_a+E_sJ_s+k_{e,II}E_{cm}J_c)"
+      "latex": "(EJ)_{\\mathrm{eff,II}}=k_0\\cdot\\left(E_aJ_a+E_sJ_s+k_{e,II}E_{cm}\\cdot J_c\\right)"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.21",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.21",
       "pdfPage": 129,
-      "latex": "N_{pl,Rd}=\\frac{A_af_{yk}}{\\gamma_A}+\\frac{A_c\\,0.85f_{ck}}{\\gamma_C}+\\frac{A_sf_{sk}}{\\gamma_S}"
+      "latex": "N_{pl,Rd}=\\frac{A_a\\cdot f_{yk}}{\\gamma_A}+\\frac{A_c\\cdot0{,}85\\cdot f_{ck}}{\\gamma_C}+\\frac{A_s\\cdot f_{sk}}{\\gamma_S}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.22",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.22",
       "pdfPage": 129,
-      "latex": "N_{pl,Rd}=\\eta_a\\frac{A_af_{yk}}{\\gamma_A}+\\frac{A_cf_{ck}}{\\gamma_C}\\left(1+\\eta_c\\frac{t}{d}\\frac{f_{yk}}{f_{ck}}\\right)+\\frac{A_sf_{sk}}{\\gamma_S}"
+      "latex": "N_{pl,Rd}=\\eta_a\\cdot\\frac{A_a\\cdot f_{yk}}{\\gamma_A}+\\frac{A_c\\cdot f_{ck}}{\\gamma_C}\\left(1+\\eta_c\\cdot\\frac{t}{d}\\cdot\\frac{f_{yk}}{f_{ck}}\\right)+\\frac{A_s\\cdot f_{sk}}{\\gamma_S}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.23",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.23",
       "pdfPage": 129,
-      "latex": "\\eta_a=\\begin{cases}0.25(3+2\\bar{\\lambda})\\le1.0& e=0\\\\0.25(3+2\\bar{\\lambda})+10(0.25-0.5\\bar{\\lambda})\\frac{e}{d}&0<e/d\\le0.1\\\\1.0&e>0.1\\end{cases}"
+      "latex": "\\eta_a=\\begin{cases}0{,}25\\left(3+2\\cdot\\bar{\\lambda}\\right)\\le1{,}0&e=0\\\\0{,}25\\left(3+2\\cdot\\bar{\\lambda}\\right)+10\\cdot\\left(0{,}25-0{,}5\\cdot\\bar{\\lambda}\\right)\\cdot\\frac{e}{d}&0<e/d\\le0{,}1\\\\1{,}0&e>0{,}1\\end{cases}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.24",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.24",
       "pdfPage": 129,
-      "latex": "\\eta_c=\\begin{cases}(4.9-18.5\\bar{\\lambda}+17\\bar{\\lambda}^2)\\ge0&e=0\\\\(4.9-18.5\\bar{\\lambda}+17\\bar{\\lambda}^2)\\left(1-10\\frac{e}{d}\\right)&0<e/d\\le0.1\\\\0&e>0.1\\end{cases}"
+      "latex": "\\eta_c=\\begin{cases}\\left(4{,}9-18{,}5\\bar{\\lambda}+17\\cdot\\bar{\\lambda}^2\\right)\\ge0&e=0\\\\\\left(4{,}9-18{,}5\\bar{\\lambda}+17\\cdot\\bar{\\lambda}^2\\right)\\cdot\\left(1-10\\frac{e}{d}\\right)&0<e/d\\le0{,}1\\\\0&e>0{,}1\\end{cases}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.25",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.25",
       "pdfPage": 130,
-      "latex": "N_{pm,Rd}=0.85\\frac{f_{ck}}{\\gamma_C}A_c"
+      "latex": "N_{pm,Rd}=0{,}85\\cdot\\frac{f_{ck}}{\\gamma_C}\\cdot A_c"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.26",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.26",
       "pdfPage": 130,
-      "latex": "M_{pl,Rd}(N_{Ed})=\\mu_d\\,M_{pl,Rd}"
+      "latex": "M_{pl,Rd}(N_{Ed})=\\mu_d\\cdot M_{pl,Rd}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.27",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.1",
       "officialNumber": "4.3.27",
       "pdfPage": 130,
-      "latex": "\\begin{aligned}\\frac{M_{y,Ed}}{\\mu_{dy}M_{pl,y,Rd}}&\\le\\alpha_{M,y} & \\frac{M_{z,Ed}}{\\mu_{dz}M_{pl,z,Rd}}&\\le\\alpha_{M,z}\\\\\\frac{M_{y,Ed}}{\\mu_{dy}M_{pl,y,Rd}}+\\frac{M_{z,Ed}}{\\mu_{dz}M_{pl,z,Rd}}&\\le1.0\\end{aligned}"
+      "latex": "\\begin{aligned}\\frac{M_{y,Ed}}{\\mu_{dy}\\cdot M_{pl,y,Rd}}&\\le\\alpha_{M,y}&&\\frac{M_{z,Ed}}{\\mu_{dz}\\cdot M_{pl,z,Rd}}\\le\\alpha_{M,z}\\\\\\frac{M_{y,Ed}}{\\mu_{dy}\\cdot M_{pl,y,Rd}}+\\frac{M_{z,Ed}}{\\mu_{dz}\\cdot M_{pl,z,Rd}}&\\le1{,}0\\end{aligned}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.28",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.3.2",
       "officialNumber": "4.3.28",
       "pdfPage": 130,
-      "latex": "V_{a,Ed}=V_{Ed}\\frac{M_{pl,a,Rd}}{M_{pl,Rd}}\\qquad V_{c,Ed}=V_{Ed}-V_{a,Ed}"
+      "latex": "\\begin{aligned}V_{a,Ed}&=V_{Ed}\\cdot\\frac{M_{pl,a,Rd}}{M_{pl,Rd}}\\\\V_{c,Ed}&=V_{Ed}-V_{a,Ed}\\end{aligned}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.29",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
       "officialNumber": "4.3.29",
       "pdfPage": 131,
-      "latex": "N_{b,Rd}=\\chi\\,N_{pl,Rd}"
+      "latex": "N_{b,Rd}=\\chi\\cdot N_{pl,Rd}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.30",
@@ -120,39 +120,32 @@
       "latex": "\\chi=\\frac{1}{\\Phi+\\sqrt{\\Phi^2-\\bar{\\lambda}^2}}\\le1.0"
     },
     {
-      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.30-phi",
-      "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1",
-      "officialNumber": null,
-      "pdfPage": 131,
-      "latex": "\\Phi=0.5\\left[1+\\alpha(\\bar{\\lambda}-0.2)+\\bar{\\lambda}^2\\right]"
-    },
-    {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.31",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
       "officialNumber": "4.3.31",
       "pdfPage": 131,
-      "latex": "\\frac{d}{t}\\le90\\frac{235}{f_y}"
+      "latex": "\\frac{d}{t}\\le90\\cdot\\frac{235}{f_y}\\qquad\\text{per colonne circolari cave riempite;}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.32",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
       "officialNumber": "4.3.32",
       "pdfPage": 131,
-      "latex": "\\frac{d}{t}\\le52\\sqrt{\\frac{235}{f_y}}"
+      "latex": "\\frac{d}{t}\\le52\\cdot\\sqrt{\\frac{235}{f_y}}\\qquad\\text{per colonne rettangolari cave riempite;}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.33",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
       "officialNumber": "4.3.33",
       "pdfPage": 132,
-      "latex": "\\frac{b}{t_f}\\le44\\sqrt{\\frac{235}{f_y}}"
+      "latex": "\\frac{b}{t_f}\\le44\\cdot\\sqrt{\\frac{235}{f_y}}\\qquad\\text{per sezioni parzialmente rivestite;}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.3.34",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.2",
       "officialNumber": "4.3.34",
       "pdfPage": 132,
-      "latex": "c\\ge\\max\\left\\{40\\,\\mathrm{mm};\\frac{b}{6}\\right\\}"
+      "latex": "c\\ge\\max\\left\\{40\\,\\mathrm{mm};\\frac{b}{6}\\right\\}\\qquad\\text{per sezioni completamente rivestite;}"
     }
   ],
   "tables": [
@@ -186,24 +179,28 @@
             "rowSpan": 2
           },
           {
-            "text": "y-y"
+            "text": "y-y",
+            "latex": "y-y"
           },
           {
             "text": "b"
           },
           {
-            "text": "L/200"
+            "text": "L/200",
+            "latex": "L/200"
           }
         ],
         [
           {
-            "text": "z-z"
+            "text": "z-z",
+            "latex": "z-z"
           },
           {
             "text": "c"
           },
           {
-            "text": "L/150"
+            "text": "L/150",
+            "latex": "L/150"
           }
         ],
         [
@@ -212,24 +209,28 @@
             "rowSpan": 2
           },
           {
-            "text": "y-y"
+            "text": "y-y",
+            "latex": "y-y"
           },
           {
             "text": "b"
           },
           {
-            "text": "L/200"
+            "text": "L/200",
+            "latex": "L/200"
           }
         ],
         [
           {
-            "text": "z-z"
+            "text": "z-z",
+            "latex": "z-z"
           },
           {
             "text": "c"
           },
           {
-            "text": "L/150"
+            "text": "L/150",
+            "latex": "L/150"
           }
         ],
         [
@@ -245,7 +246,8 @@
             "latex": "a\\;(\\rho_s<3\\%)"
           },
           {
-            "text": "L/300"
+            "text": "L/300",
+            "latex": "L/300"
           }
         ],
         [
@@ -257,7 +259,8 @@
             "latex": "b\\;(3\\%<\\rho_s<6\\%)"
           },
           {
-            "text": "L/200"
+            "text": "L/200",
+            "latex": "L/200"
           }
         ],
         [
@@ -266,7 +269,7 @@
           },
           {
             "text": "ρ_s=A_s/A_c (A_s area armature, A_c area calcestruzzo)",
-            "latex": "\\rho_s=A_s/A_c"
+            "latex": "\\begin{gathered}\\rho_s=A_s/A_c\\\\\\left(A_s\\;\\text{area armature},\\;A_c\\;\\text{area calcestruzzo}\\right)\\end{gathered}"
           },
           {
             "text": ""

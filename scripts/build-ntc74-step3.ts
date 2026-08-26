@@ -150,6 +150,10 @@ const units: Unit[] = [
                 to: 46,
                 norm:
                     "La larghezza b della trave deve essere ≥ 20 cm e, per le travi “a spessore di solaio”, deve essere non maggiore della larghezza del pilastro, aumentata da ogni lato di metà dell’altezza della sezione trasversale della trave stessa, risultando comunque non maggiore di due volte b_c, essendo b_c la larghezza del pilastro misurata ortogonalmente all’asse della trave.",
+                inline: inline(
+                    "La larghezza b della trave deve essere ≥ 20 cm e, per le travi “a spessore di solaio”, deve essere non maggiore della larghezza del pilastro, aumentata da ogni lato di metà dell’altezza della sezione trasversale della trave stessa, risultando comunque non maggiore di due volte b_c, essendo b_c la larghezza del pilastro misurata ortogonalmente all’asse della trave.",
+                    [["b", "b"]],
+                ),
             },
             {
                 kind: "paragraph",
@@ -234,7 +238,13 @@ const units: Unit[] = [
         blocks: [
             { kind: "heading", page: 240, from: 30 },
             { kind: "paragraph", page: 240, from: 31, to: 32 },
-            { kind: "paragraph", page: 240, from: 33, to: 36 },
+            {
+                kind: "paragraph",
+                page: 240,
+                from: 33,
+                to: 36,
+                norm: "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la classe di duttilità adottata, il rapporto geometrico ρ relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia quella al lembo superiore della sezione A_s o quella al lembo inferiore della sezione A_i, deve essere compreso entro i seguenti limiti:",
+            },
             { kind: "formula-ref", page: 240, from: 37, to: 43, asset: f("7.4.26") },
             {
                 kind: "paragraph",
@@ -254,7 +264,13 @@ const units: Unit[] = [
             { kind: "paragraph", page: 240, from: 49, to: 53 },
             { kind: "paragraph", page: 240, from: 54, to: 55 },
             { kind: "list-item", page: 240, from: 56, to: 57 },
-            { kind: "list-item", page: 240, from: 58, to: 59 },
+            {
+                kind: "list-item",
+                page: 240,
+                from: 58,
+                to: 59,
+                norm: "la lunghezza di ancoraggio delle armature tese va calcolata in modo da sviluppare una tensione nelle barre pari a 1,25 f_yk e misurata a partire da una distanza pari a 6 diametri dalla faccia del pilastro verso l’interno.",
+            },
             { kind: "paragraph", page: 241, from: 3, to: 4 },
             { kind: "paragraph", page: 241, from: 5 },
             {
@@ -278,7 +294,7 @@ const units: Unit[] = [
                 page: 241,
                 from: 41,
                 norm:
-                    "k_D vale 1 o 2/3, rispettivamente per CD “A” e per CD “B”;",
+                    "κ_D vale 1 o 2/3, rispettivamente per CD “A” e per CD “B”;",
             },
             {
                 kind: "paragraph",
@@ -335,7 +351,20 @@ const units: Unit[] = [
             { kind: "paragraph", page: 241, from: 78 },
             { kind: "list-item", page: 241, from: 79 },
             { kind: "list-item", page: 241, from: 80 },
-            { kind: "list-item", page: 241, from: 81 },
+            {
+                kind: "list-item",
+                page: 241,
+                from: 81,
+                norm: "5 6 e 8 volte il diametro delle barre longitudinali che collegano, rispettivamente per CD “A” e CD “B”.",
+                inline: [
+                    { kind: "math", value: "5", latex: "5" },
+                    { kind: "text", value: " " },
+                    { kind: "math", value: "6", latex: "6" },
+                    { kind: "text", value: " e " },
+                    { kind: "math", value: "8", latex: "8" },
+                    { kind: "text", value: " volte il diametro delle barre longitudinali che collegano, rispettivamente per CD “A” e CD “B”." },
+                ],
+            },
             {
                 kind: "paragraph",
                 page: 242,
@@ -521,9 +550,9 @@ const units: Unit[] = [
 
 const formulas: Record<string, [string, string | null, number, string]> = {
     "7.4.26": ["7.4.6.2.1", "7.4.26", 240, "\\frac{1{,}4}{f_{yk}}<\\rho<\\rho_{comp}+\\frac{3{,}5}{f_{yk}}"],
-    "7.4.27": ["7.4.6.2.1", "7.4.27", 241, "\\alpha_{bL}=\\begin{cases}\\dfrac{7{,}5f_{ctm}}{\\gamma_{Rd}f_{yd}}\\dfrac{1+0{,}8\\nu_d}{1+0{,}75k_D\\rho_{comp}/\\rho}&\\text{per nodi interni}\\\\\\dfrac{7{,}5f_{ctm}}{\\gamma_{Rd}f_{yd}}\\left(1+0{,}8\\nu_d\\right)&\\text{per nodi esterni}\\end{cases}"],
+    "7.4.27": ["7.4.6.2.1", "7.4.27", 241, "\\alpha_{bL}=\\begin{cases}\\dfrac{7{,}5\\cdot f_{ctm}}{\\gamma_{Rd}\\cdot f_{yd}}\\cdot\\dfrac{1+0{,}8\\nu_d}{1+0{,}75\\kappa_D\\cdot\\rho_{comp}/\\rho}&\\text{per nodi interni}\\\\\\dfrac{7{,}5\\cdot f_{ctm}}{\\gamma_{Rd}\\cdot f_{yd}}\\cdot\\left(1+0{,}8\\nu_d\\right)&\\text{per nodi esterni}\\end{cases}"],
     "7.4.28": ["7.4.6.2.2", "7.4.28", 241, "1\\%\\le\\rho\\le4\\%"],
-    "7.4.28:staffe-minime": ["7.4.6.2.2", null, 241, "\\max\\left[6\\,\\mathrm{mm};\\;0{,}4d_{bl,max}\\sqrt{\\frac{f_{yd,l}}{f_{yd,st}}}\\right]\\quad\\text{per CD “A”, e }6\\,\\mathrm{mm}\\quad\\text{per CD “B”}"],
+    "7.4.28:staffe-minime": ["7.4.6.2.2", null, 241, "\\max\\left[6\\,\\mathrm{mm};\\;0{,}4\\cdot d_{bl,max}\\cdot\\sqrt{\\frac{f_{yd,l}}{f_{yd,st}}}\\right]\\quad\\text{per CD “A”, e }6\\,\\mathrm{mm}\\quad\\text{per CD “B”}"],
     "7.4.29": ["7.4.6.2.2", "7.4.29", 242, "\\alpha\\omega_{wd}\\ge30\\mu_\\phi\\nu_d\\varepsilon_{sy,d}\\frac{b_c}{b_0}-0{,}035"],
     "7.4.30": ["7.4.6.2.2", "7.4.30", 242, "\\omega_{wd}=\\frac{\\text{volume delle staffe di confinamento}}{\\text{volume del nucleo di calcestruzzo}}\\frac{f_{yd}}{f_{cd}}"],
     "7.4.31a": ["7.4.6.2.2", "7.4.31a", 242, "\\alpha_n=1-\\sum_{i=1}^{n}\\frac{b_i^2}{6b_0h_0}"],
@@ -552,7 +581,12 @@ for (const unit of units) {
                 evidence: ev(block.page, source, source),
             };
         }
-        const segments = block.inline ?? inline(norm);
+        const segments = block.inline ?? inline(
+            norm,
+            [],
+            block.page <= 241,
+            block.page > 241,
+        );
         return {
             blockId: `${id}#${blockId}`,
             kind: block.kind,
@@ -625,6 +659,16 @@ for (const unit of units) {
                     severity: "blocking",
                     note: "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
                 },
+                ...(unit.number === "7.4.6.2.2"
+                    ? [
+                          {
+                              issueId: "ntc2018-7-4-6-2-2-source-anomaly-001",
+                              type: "other",
+                              severity: "warning",
+                              note: "La fonte ufficiale stampa letteralmente «5 6 e 8 volte» nell’ultima voce di pagina PDF 241; la sequenza è leggibile nel crop a scala 8 ed è conservata senza correzione come possibile refuso della fonte.",
+                          },
+                      ]
+                    : []),
             ],
         },
     };

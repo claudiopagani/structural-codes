@@ -19,7 +19,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
       "officialNumber": null,
       "pdfPage": 221,
-      "latex": "k_w=\\begin{cases}1{,}00 & \\text{per strutture a telaio e miste equivalenti a telai}\\\\0{,}5\\le(1+\\alpha_0)/3\\le1 & \\text{per strutture a pareti, miste equivalenti a pareti, torsionalmente deformabili}\\end{cases}"
+      "latex": "k_w=\\begin{cases}1{,}00 & \\text{per strutture a telaio e miste equivalenti a telai}\\\\0{,}5\\le\\frac{1+\\alpha_0}{3}\\le1 & \\text{per strutture a pareti, miste equivalenti a pareti, torsionalmente deformabili}\\end{cases}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.1-7.3.2",
@@ -33,14 +33,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.1",
       "officialNumber": "7.3.3",
       "pdfPage": 221,
-      "latex": "\\theta=\\frac{P\\cdot d_{ER}}{V\\cdot h}"
+      "latex": "\\theta=\\frac{P\\cdot d_{Er}}{V\\cdot h}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.1-7.3.4",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.1",
       "officialNumber": "7.3.4",
       "pdfPage": 222,
-      "latex": "E=\\sqrt{\\sum_i\\sum_j\\rho_{ij}\\cdot E_i\\cdot E_j}"
+      "latex": "E=\\sqrt{\\sum_j\\sum_i\\rho_{ij}\\cdot E_i\\cdot E_j}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.1-7.3.5a",
@@ -54,7 +54,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.1",
       "officialNumber": "7.3.5b",
       "pdfPage": 223,
-      "latex": "\\rho_{ij}=\\frac{8\\xi^2\\beta_{ij}^{3/2}}{(1+\\beta_{ij})\\left[(1-\\beta_{ij})^2+4\\xi^2\\beta_{ij}\\right]}"
+      "latex": "\\rho_{ij}=\\frac{8\\xi^2\\beta_{ij}^{3/2}}{(1+\\beta_{ij})\\cdot\\left[(1-\\beta_{ij})^2+4\\xi^2\\beta_{ij}\\right]}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.2-7.3.6",
@@ -82,7 +82,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.3.3.3",
       "officialNumber": "7.3.9",
       "pdfPage": 223,
-      "latex": "\\mu_d=\\begin{cases}q & \\text{se }T_1\\ge T_C\\\\1+(q-1)\\frac{T_C}{T_1} & \\text{se }T_1<T_C\\end{cases}"
+      "latex": "\\mu_d=\\begin{cases}q & \\text{se }T_1\\ge T_C\\\\1+(q-1)\\cdot\\frac{T_C}{T_1} & \\text{se }T_1<T_C\\end{cases}"
     }
   ],
   "tables": [

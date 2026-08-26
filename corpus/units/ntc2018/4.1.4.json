@@ -156,7 +156,7 @@
       "text": {
         "raw": "– calcestruzzo e aderenza con le armature ·C = 1,0",
         "normalized": "calcestruzzo e aderenza con le armature γC = 1,0",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -164,21 +164,8 @@
           },
           {
             "kind": "math",
-            "value": "γC",
-            "latex": "\\gamma_{C}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,0"
+            "value": "γC = 1,0",
+            "latex": "\\gamma_C=1{,}0"
           }
         ]
       },
@@ -215,11 +202,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -228,6 +210,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "2823b19ac4546a89ebb6910c3ab2d94f4e0db3eb3ab21b3a957e1f390bbb4099",
@@ -241,38 +228,16 @@
       "text": {
         "raw": "– acciaio d’armatura ·S = 1,0",
         "normalized": "acciaio d’armatura γS = 1,0",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "acciaio "
+            "value": "acciaio d’armatura "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’armatura "
-          },
-          {
-            "kind": "math",
-            "value": "γS",
-            "latex": "\\gamma_{S}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,0"
+            "value": "γS = 1,0",
+            "latex": "\\gamma_S=1{,}0"
           }
         ]
       },
@@ -309,11 +274,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -322,6 +282,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "c4954e8556614479ff39746744ca12c4fda52ab5832b3671533835ac1fc706dd",

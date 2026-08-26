@@ -38,6 +38,10 @@ function sha256(value: string): string {
     return createHash("sha256").update(value, "utf8").digest("hex");
 }
 
+async function fileSha256(path: string): Promise<string> {
+    return createHash("sha256").update(await readFile(path)).digest("hex");
+}
+
 function clean(value: string): string {
     return value
         .replace(/\n/gu, " ")
@@ -71,7 +75,16 @@ function inlineSegments(text: string, terms: MathTerm[]): any[] | undefined {
     while (cursor < text.length) {
         let match: { index: number; term: MathTerm } | undefined;
         for (const term of unique) {
-            const index = text.indexOf(term.value, cursor);
+            let index = text.indexOf(term.value, cursor);
+            const needsWordBoundaries = /^[A-Za-z]$/u.test(term.value);
+            while (index >= 0 && needsWordBoundaries) {
+                const before = text[index - 1];
+                const after = text[index + term.value.length];
+                const beforeIsWord = before !== undefined && /[\p{L}\p{N}_]/u.test(before);
+                const afterIsWord = after !== undefined && /[\p{L}\p{N}_]/u.test(after);
+                if (!beforeIsWord && !afterIsWord) break;
+                index = text.indexOf(term.value, index + 1);
+            }
             if (
                 index >= 0 &&
                 (match === undefined ||
@@ -998,33 +1011,33 @@ const formulaLatex: Record<string, { unit: string; number: string | null; page: 
         number: "7.4.1",
         page: 230,
         latex:
-            "V_{R1}=\\left(2-\\left|\\frac{V_{Ed,min}}{V_{Ed,max}}\\right|\\right)\\,f_{ctd}\\,b_w\\,d",
+            "V_{R1}=\\left(2-\\left|\\frac{V_{Ed,min}}{V_{Ed,max}}\\right|\\right)\\cdot f_{ctd}\\cdot b_w\\cdot d",
     },
     "7.4.2": {
         unit: "7.4.4.1.1",
         number: "7.4.2",
         page: 230,
-        latex: "V_{Ed,max}\\le\\frac{A_s\\,f_{yd}}{\\sqrt{2}}",
+        latex: "V_{Ed,max}\\le\\frac{A_s\\cdot f_{yd}}{\\sqrt{2}}",
     },
     "7.4.3": {
         unit: "7.4.4.1.2",
         number: "7.4.3",
         page: 230,
         latex:
-            "\\mu_\\phi=\\begin{cases}1{,}2\\left(2q_0-1\\right)&\\text{per }T_1\\ge T_C\\\\1{,}2\\left[1+2\\left(q_0-1\\right)\\dfrac{T_C}{T_1}\\right]&\\text{per }T_1<T_C\\end{cases}",
+            "\\mu_\\phi=\\begin{cases}1{,}2\\cdot\\left(2q_0-1\\right)&\\text{per }T_1\\ge T_C\\\\1{,}2\\cdot\\left[1+2\\left(q_0-1\\right)\\dfrac{T_C}{T_1}\\right]&\\text{per }T_1<T_C\\end{cases}",
     },
     "7.4.4": {
         unit: "7.4.4.2.1",
         number: "7.4.4",
         page: 230,
-        latex: "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\sum M_{b,Rd}",
+        latex: "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\cdot\\sum M_{b,Rd}",
     },
     "7.4.5": {
         unit: "7.4.4.2.1",
         number: "7.4.5",
         page: 231,
         latex:
-            "V_{Ed}=\\frac{\\gamma_{Rd}}{l_p}\\left(M_{i,d}^{s}+M_{i,d}^{i}\\right)",
+            "V_{Ed}l_p=\\gamma_{Rd}\\left(M_{i,d}^{s}+M_{i,d}^{i}\\right)",
     },
     "7.4.5:mi-d": {
         unit: "7.4.4.2.1",
@@ -1038,49 +1051,49 @@ const formulaLatex: Record<string, { unit: string; number: string | null; page: 
         number: "7.4.6",
         page: 232,
         latex:
-            "V_{jbd}=\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}-V_C\\qquad\\text{per nodi interni}",
+            "V_{jbd}=\\gamma_{Rd}\\cdot\\left(A_{s1}+A_{s2}\\right)\\cdot f_{yd}-V_C\\qquad\\text{per nodi interni}",
     },
     "7.4.7": {
         unit: "7.4.4.3.1",
         number: "7.4.7",
         page: 232,
         latex:
-            "V_{jbd}=\\gamma_{Rd}A_{s1}f_{yd}-V_C\\qquad\\text{per nodi esterni}",
+            "V_{jbd}=\\gamma_{Rd}\\cdot A_{s1}\\cdot f_{yd}-V_C\\qquad\\text{per nodi esterni}",
     },
     "7.4.8": {
         unit: "7.4.4.3.1",
         number: "7.4.8",
         page: 232,
         latex:
-            "V_{jbd}\\le\\eta\\,f_{cd}\\,b_j\\,h_{jc}\\sqrt{1-\\frac{\\nu_d}{\\eta}}",
+            "V_{jbd}\\le\\eta\\cdot f_{cd}\\cdot b_j\\cdot h_{jc}\\cdot\\sqrt{1-\\frac{\\nu_d}{\\eta}}",
     },
     "7.4.9": {
         unit: "7.4.4.3.1",
         number: "7.4.9",
         page: 232,
         latex:
-            "\\eta=\\alpha_j\\left(1-\\frac{f_{ck}}{250}\\right)\\qquad\\text{con }f_{ck}\\text{ espresso in MPa}",
+            "\\eta=\\alpha_j\\cdot\\left(1-\\frac{f_{ck}}{250}\\right)\\qquad\\text{con }f_{ck}\\text{ espresso in MPa}",
     },
     "7.4.10": {
         unit: "7.4.4.3.1",
         number: "7.4.10",
         page: 232,
         latex:
-            "\\frac{A_{sh}f_{ywd}}{b_jh_{jw}}\\ge\\frac{\\left[V_{jbd}/\\left(b_jh_{jc}\\right)\\right]^2}{f_{ctd}+\\nu_df_{cd}}-f_{ctd}",
+            "\\frac{A_{sh}\\cdot f_{ywd}}{b_j\\cdot h_{jw}}\\ge\\frac{\\left[V_{jbd}/\\left(b_j\\cdot h_{jc}\\right)\\right]^2}{f_{ctd}+\\nu_d\\cdot f_{cd}}-f_{ctd}",
     },
     "7.4.11": {
         unit: "7.4.4.3.1",
         number: "7.4.11",
         page: 232,
         latex:
-            "A_{sh}f_{ywd}\\ge\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi interni}",
+            "A_{sh}\\cdot f_{ywd}\\ge\\gamma_{Rd}\\cdot\\left(A_{s1}+A_{s2}\\right)\\cdot f_{yd}\\cdot\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi interni}",
     },
     "7.4.12": {
         unit: "7.4.4.3.1",
         number: "7.4.12",
         page: 232,
         latex:
-            "A_{sh}f_{ywd}\\ge\\gamma_{Rd}A_{s2}f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi esterni}",
+            "A_{sh}\\cdot f_{ywd}\\ge\\gamma_{Rd}\\cdot A_{s2}\\cdot f_{yd}\\cdot\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi esterni}",
     },
 };
 
@@ -1252,6 +1265,13 @@ for (const spec of units) {
     );
 }
 
+const figure741Sha256 = await fileSha256(
+    join(repoRoot, "corpus", "assets", "figures", "ntc2018", "fig7.4.1.png"),
+);
+const figure742Sha256 = await fileSha256(
+    join(repoRoot, "corpus", "assets", "figures", "ntc2018", "fig7.4.2.png"),
+);
+
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
     schemaVersion: "2.0.0-alpha.1",
@@ -1284,7 +1304,7 @@ const manifest = {
                 width: 250,
                 height: 148,
             },
-            sha256: "0".repeat(64),
+            sha256: figure741Sha256,
         },
         {
             id: "urn:structural-codes:it:asset:figure:ntc2018:7.4.2",
@@ -1301,7 +1321,7 @@ const manifest = {
                 width: 265,
                 height: 156,
             },
-            sha256: "0".repeat(64),
+            sha256: figure742Sha256,
         },
     ],
 };

@@ -96,7 +96,7 @@
       "text": {
         "raw": "I coefficienti di forma delle coperture dipendono dalla forma stessa della copertura e dall’inclinazione sull’orizzontale delle sue\nparti componenti e dalle condizioni climatiche locali del sito ove sorge la costruzione.",
         "normalized": "I coefficienti di forma delle coperture dipendono dalla forma stessa della copertura e dall’inclinazione sull’orizzontale delle sue parti componenti e dalle condizioni climatiche locali del sito ove sorge la costruzione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -104,10 +104,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.165,
-          "y": 622.787,
-          "width": 443.014,
-          "height": 99.883
+          "x": 76,
+          "y": 622,
+          "width": 444,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -116,33 +116,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -157,7 +147,7 @@
       "text": {
         "raw": "In assenza di dati suffragati da opportuna documentazione, i valori nominali del coefficiente di forma μ1 delle coperture ad una o\na due falde possono essere ricavati dalla Tab. 3.4.II, essendo ΅, espresso in gradi sessagesimali, l’angolo formato dalla falda con\nl’orizzontale.",
         "normalized": "In assenza di dati suffragati da opportuna documentazione, i valori nominali del coefficiente di forma μ1 delle coperture ad una o a due falde possono essere ricavati dalla Tab. 3.4.II, essendo α, espresso in gradi sessagesimali, l’angolo formato dalla falda con l’orizzontale.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -166,7 +156,7 @@
           {
             "kind": "math",
             "value": "μ1",
-            "latex": "\\mu_{1}"
+            "latex": "\\mu_1"
           },
           {
             "kind": "text",
@@ -189,10 +179,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.165,
-          "y": 622.787,
-          "width": 443.014,
-          "height": 99.883
+          "x": 76,
+          "y": 645,
+          "width": 444,
+          "height": 32
         },
         "extraction": {
           "method": "pdf-text",
@@ -201,33 +191,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -246,25 +226,25 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.165,
-          "y": 622.787,
-          "width": 443.014,
-          "height": 99.883
+          "x": 76,
+          "y": 683,
+          "width": 275,
+          "height": 43
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "pdfplumber-table-extraction",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Tabella ricostruita dalla geometria del PDF e collocata al posto delle righe estratte linearmente; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "ed3326ff41c7a554db7f98f3688165062eab806960f40655deab6a0d0ccd0d18",
-        "normalizedSha256": "bc851a8189325685f591fe617b20a880eb50e45d112eaa5fa75edf1184663f58"
+        "rawSha256": "9264af2c5e446a4d3b751e8ffa9e9019b7ac5a1f1cdf7cc8018b36dfc34942f3",
+        "normalizedSha256": "bb59159b95c53416df674707892c5316c715c1ce2568b4b4d08da8b86967a4e4"
       }
     },
     {
@@ -272,20 +252,44 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": ")60(\n8,0 D\u0010\n 0,0\nSi assume che alla neve non sia impedito di scivolare. Se l’estremità più bassa della falda termina con un parapetto, una barriera\nod altre ostruzioni, allora il coefficiente di forma non potrà essere assunto inferiore a 0,8 indipendentemente dall’angolo ΅.",
-        "normalized": ")60( 8,0 D 0,0 Si assume che alla neve non sia impedito di scivolare. Se l’estremità più bassa della falda termina con un parapetto, una barriera od altre ostruzioni, allora il coefficiente di forma non potrà essere assunto inferiore a 0,8 indipendentemente dall’angolo α.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Si assume che alla neve non sia impedito di scivolare. Se l’estremità più bassa della falda termina con un parapetto, una barriera\nod altre ostruzioni, allora il coefficiente di forma non potrà essere assunto inferiore a 0,8 indipendentemente dall’angolo ΅.\nPer coperture a più falde, per coperture con forme diverse, così come per coperture contigue a edifici più alti o per accumulo di",
+        "normalized": "Si assume che alla neve non sia impedito di scivolare. Se l’estremità più bassa della falda termina con un parapetto, una barriera od altre ostruzioni, allora il coefficiente di forma non potrà essere assunto inferiore a 0,8 indipendentemente dall’angolo α.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si assume che alla neve non sia impedito di scivolare. Se l’estremità più bassa della falda termina con un parapetto, una barriera od altre ostruzioni, allora il coefficiente di forma non potrà essere assunto inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,8",
+            "latex": "0{,}8"
+          },
+          {
+            "kind": "text",
+            "value": " indipendentemente dall’angolo "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 62,
-        "printedPage": "58",
+        "pdfPage": 63,
+        "printedPage": "59",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.165,
-          "y": 622.787,
-          "width": 443.014,
-          "height": 99.883
+          "x": 79,
+          "y": 95,
+          "width": 437,
+          "height": 24
         },
         "extraction": {
           "method": "pdf-text",
@@ -294,43 +298,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
-            "operation": "join-page-break",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unita una continuazione testuale attraversata da un cambio pagina."
           }
         ],
-        "rawSha256": "313cc01f2bcc58d1e671f7348f5f11144a08c2e992bcc8b8da00b6c1afefe08c",
-        "normalizedSha256": "b656d7fb8b5789e9eba7b77902f5d57513cf8907c14a93a5b8bfe8134f57a08b"
+        "rawSha256": "df64062bf49999f54878dfdbc2e61927bc29ff467521db82cc7290f99c668115",
+        "normalizedSha256": "35b2fc6a7b25e11926804c679d769c866fa3614c834e119bcb3d10011ad5b929"
       }
     },
     {
@@ -340,7 +329,7 @@
       "text": {
         "raw": "Per coperture a più falde, per coperture con forme diverse, così come per coperture contigue a edifici più alti o per accumulo di\nneve contro parapetti o più in generale per altre situazioni ritenute significative dal progettista si deve fare riferimento a\nnormative o documenti di comprovata validità.",
         "normalized": "Per coperture a più falde, per coperture con forme diverse, così come per coperture contigue a edifici più alti o per accumulo di neve contro parapetti o più in generale per altre situazioni ritenute significative dal progettista si deve fare riferimento a normative o documenti di comprovata validità.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -348,10 +337,10 @@
         "printedPage": "59",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.832,
-          "y": 95.011,
-          "width": 435.693,
-          "height": 51.125
+          "x": 79,
+          "y": 119,
+          "width": 437,
+          "height": 29
         },
         "extraction": {
           "method": "pdf-text",
@@ -360,33 +349,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],

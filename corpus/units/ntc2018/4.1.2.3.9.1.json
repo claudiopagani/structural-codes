@@ -67,20 +67,20 @@
       "text": {
         "raw": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spi-\nrale di passo non maggiore di 1/5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola som-\nmando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo\ndi calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una\narmatura fittizia longitudinale di peso eguale alla spirale.",
         "normalized": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spirale di passo non maggiore di 1/5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola sommando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo di calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una armatura fittizia longitudinale di peso eguale alla spirale.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spirale di passo non maggiore di 1"
+            "value": "Per elementi prevalentemente compressi, armati con barre longitudinali disposte lungo una circonferenza e racchiuse da una spirale di passo non maggiore di "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "1/5",
+            "latex": "1/5"
           },
           {
             "kind": "text",
-            "value": "5 del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola sommando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo di calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una armatura fittizia longitudinale di peso eguale alla spirale."
+            "value": " del diametro inscritto dal nucleo cerchiato, la resistenza allo stato limite ultimo si calcola sommando i contributi della sezione di calcestruzzo confinato del nucleo e dell’armatura longitudinale, dove la resistenza del nucleo di calcestruzzo confinato può esprimersi come somma di quella del nucleo di calcestruzzo non confinato più il contributo di una armatura fittizia longitudinale di peso eguale alla spirale."
           }
         ]
       },
@@ -117,11 +117,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -135,6 +130,11 @@
             "operation": "join-page-break",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Ricomposta una continuazione testuale attraversata da un cambio pagina; il cambio pagina non genera un capoverso."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "873b4926d5585fcb1f292278b2af005deb3bc1f4243780a40d6fad39b2eb0040",

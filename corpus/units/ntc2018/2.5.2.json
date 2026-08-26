@@ -388,8 +388,8 @@
       "origin": "official",
       "text": {
         "raw": "- valore quasi permanente ȥ2j ȉQ kj: il valore istantaneo superato oltre il 50% del tempo nel periodo di riferimento. Indicativamen-\nte, esso può assumersi uguale alla media della distribuzione temporale dell’intensità;",
-        "normalized": "valore quasi permanente ψ2j ·Q kj: il valore istantaneo superato oltre il 50% del tempo nel periodo di riferimento. Indicativamente, esso può assumersi uguale alla media della distribuzione temporale dell’intensità;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "valore quasi permanente ψ2j·Qkj: il valore istantaneo superato oltre il 50% del tempo nel periodo di riferimento. Indicativamente, esso può assumersi uguale alla media della distribuzione temporale dell’intensità;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -397,21 +397,12 @@
           },
           {
             "kind": "math",
-            "value": "ψ2j",
-            "latex": "\\psi_{2j}"
+            "value": "ψ2j·Qkj",
+            "latex": "\\psi_{2j}\\cdot Q_{kj}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": "Q kj: il valore istantaneo superato oltre il 50% del tempo nel periodo di riferimento. Indicativamente, esso può assumersi uguale alla media della distribuzione temporale dell’intensità;"
+            "value": ": il valore istantaneo superato oltre il 50% del tempo nel periodo di riferimento. Indicativamente, esso può assumersi uguale alla media della distribuzione temporale dell’intensità;"
           }
         ]
       },
@@ -461,10 +452,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ricostruita dal render ufficiale l’intera espressione inline ψ_{2j}·Q_{kj}, inclusi pedici e punto di moltiplicazione."
           }
         ],
         "rawSha256": "a4b86f8ec9900a46452f59c6c1ab2229f01d4b204be1573afe4aa1bf214a38c1",
-        "normalizedSha256": "7fafd98e77ec5f4b0c0ab8b2458a0c0ce87144845c7f1274f1b6cd2e3c42c02c"
+        "normalizedSha256": "cfa519d9906a278b940fb64807fc9d63e5ca36f2a7a75dd86c1f6591b78a7f1a"
       }
     },
     {
@@ -474,7 +470,7 @@
       "text": {
         "raw": "- valore frequente ȥ1jȉQkj: il valore superato per un periodo totale di tempo che rappresenti una piccola frazione del periodo di\nriferimento. Indicativamente, esso può assumersi uguale al frattile 95% della distribuzione temporale dell’intensità;",
         "normalized": "valore frequente ψ1j·Qkj: il valore superato per un periodo totale di tempo che rappresenti una piccola frazione del periodo di riferimento. Indicativamente, esso può assumersi uguale al frattile 95% della distribuzione temporale dell’intensità;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -482,18 +478,8 @@
           },
           {
             "kind": "math",
-            "value": "ψ1j",
-            "latex": "\\psi_{1j}"
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "math",
-            "value": "Qkj",
-            "latex": "Q_{kj}"
+            "value": "ψ1j·Qkj",
+            "latex": "\\psi_{1j}\\cdot Q_{kj}"
           },
           {
             "kind": "text",
@@ -547,6 +533,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Riunita l’intera espressione inline ψ_{1j}·Q_{kj} in un unico segmento matematico verificato sul render ufficiale."
           }
         ],
         "rawSha256": "53f22518453b3c63a6d77c84dc3779198d777341eaa0852be40a88ce5bb67aef",
@@ -559,8 +550,8 @@
       "origin": "official",
       "text": {
         "raw": "- valore di combinazione ȥ0j ȉQ kj \n: il valore tale che la probabilità di superamento degli effetti causati dalla concomitanza con altre\nazioni sia circa la stessa di quella associata al valore caratteristico di una singola azione.",
-        "normalized": "valore di combinazione ψ0j ·Q kj : il valore tale che la probabilità di superamento degli effetti causati dalla concomitanza con altre azioni sia circa la stessa di quella associata al valore caratteristico di una singola azione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "valore di combinazione ψ0j·Qkj: il valore tale che la probabilità di superamento degli effetti causati dalla concomitanza con altre azioni sia circa la stessa di quella associata al valore caratteristico di una singola azione.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -568,21 +559,12 @@
           },
           {
             "kind": "math",
-            "value": "ψ0j",
-            "latex": "\\psi_{0j}"
+            "value": "ψ0j·Qkj",
+            "latex": "\\psi_{0j}\\cdot Q_{kj}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": "Q kj : il valore tale che la probabilità di superamento degli effetti causati dalla concomitanza con altre azioni sia circa la stessa di quella associata al valore caratteristico di una singola azione."
+            "value": ": il valore tale che la probabilità di superamento degli effetti causati dalla concomitanza con altre azioni sia circa la stessa di quella associata al valore caratteristico di una singola azione."
           }
         ]
       },
@@ -632,10 +614,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ricostruita dal render ufficiale l’intera espressione inline ψ_{0j}·Q_{kj}, inclusi pedici e punto di moltiplicazione."
           }
         ],
         "rawSha256": "c6ad121c43a6064741ba40221b5902c09ded51db550467e40711b004fb63f945",
-        "normalizedSha256": "15f66cc7e335123f7be372e60958b0cb214ef82766bf313592406c23692e745a"
+        "normalizedSha256": "239328c62bab40719675aeb7eeade6484687956bd73d2952bc7df622d24467e2"
       }
     },
     {

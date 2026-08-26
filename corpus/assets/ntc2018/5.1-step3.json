@@ -12,21 +12,21 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
       "officialNumber": "5.2.2",
       "pdfPage": 171,
-      "latex": "n_0=94{,}76\\,L^{-0{,}748}"
+      "latex": "n_0=94{,}76\\cdot L^{-0{,}748}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.3",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
       "officialNumber": "5.2.3",
       "pdfPage": 171,
-      "latex": "n_0=80/L"
+      "latex": "n_0=80/L\\qquad\\text{per}\\quad4\\,\\mathrm{m}\\le L\\le20\\,\\mathrm{m}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.4",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
       "officialNumber": "5.2.4",
       "pdfPage": 171,
-      "latex": "n_0=23{,}58\\,L^{-0{,}592}"
+      "latex": "n_0=23{,}58\\cdot L^{-0{,}592}\\qquad\\text{per}\\quad20\\,\\mathrm{m}\\le L\\le100\\,\\mathrm{m}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.5",
@@ -40,14 +40,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
       "officialNumber": "5.2.6",
       "pdfPage": 171,
-      "latex": "\\Phi_2=\\frac{1{,}44}{\\sqrt{L_\\Phi}-0{,}2}+0{,}82"
+      "latex": "\\Phi_2=\\frac{1{,}44}{\\sqrt{L_\\Phi}-0{,}2}+0{,}82\\qquad\\text{con la limitazione}\\quad1{,}00\\le\\Phi_2\\le1{,}67"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.7",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
       "officialNumber": "5.2.7",
       "pdfPage": 171,
-      "latex": "\\Phi_3=\\frac{2{,}16}{\\sqrt{L_\\Phi}-0{,}2}+0{,}73"
+      "latex": "\\Phi_3=\\frac{2{,}16}{\\sqrt{L_\\Phi}-0{,}2}+0{,}73\\qquad\\text{con la limitazione}\\quad1{,}00\\le\\Phi_3\\le2{,}00"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.8",
@@ -61,21 +61,21 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.1",
       "officialNumber": "5.2.9.a",
       "pdfPage": 173,
-      "latex": "Q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha Q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha Q_{vk})"
+      "latex": "Q_{tk}=\\frac{v^2}{g\\cdot r}\\cdot(f\\cdot\\alpha Q_{vk})=\\frac{V^2}{127\\cdot r}\\cdot(f\\cdot\\alpha Q_{vk})"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.9.b",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.1",
       "officialNumber": "5.2.9.b",
       "pdfPage": 173,
-      "latex": "q_{tk}=\\frac{v^2}{g\\,r}(f\\,\\alpha q_{vk})=\\frac{V^2}{127\\,r}(f\\,\\alpha q_{vk})"
+      "latex": "q_{tk}=\\frac{v^2}{g\\cdot r}\\cdot(f\\cdot\\alpha q_{vk})=\\frac{V^2}{127\\cdot r}\\cdot(f\\cdot\\alpha q_{vk})"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.10-force",
       "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.1",
       "officialNumber": "5.2.10",
       "pdfPage": 174,
-      "latex": "f=\\left[1-\\frac{V-120}{1000}\\left(\\frac{814}{V}+1{,}75\\right)\\right]\\left[1-\\sqrt{\\frac{2{,}88}{L_f}}\\right]"
+      "latex": "f=\\left[1-\\frac{V-120}{1000}\\left(\\frac{814}{V}+1{,}75\\right)\\cdot\\left(1-\\sqrt{\\frac{2{,}88}{L_f}}\\right)\\right]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.10-distance",
@@ -83,6 +83,41 @@
       "officialNumber": "5.2.10",
       "pdfPage": 178,
       "latex": "a'_g=0{,}6\\,\\min a_g+0{,}4\\,\\max a_g"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.2.3-beta",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
+      "officialNumber": null,
+      "pdfPage": 173,
+      "latex": "\\begin{aligned}\\beta&=1{,}0\\quad\\text{per }L_\\Phi\\le8\\,\\mathrm{m}\\text{ ed }L_\\Phi>90\\,\\mathrm{m}\\\\\\beta&=1{,}1\\quad\\text{per }8\\,\\mathrm{m}<L_\\Phi\\le90\\,\\mathrm{m}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-starting",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.3",
+      "officialNumber": null,
+      "pdfPage": 174,
+      "latex": "\\begin{aligned}\\text{avviamento:}\\quad Q_{la,k}&=33\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\le1000\\,\\mathrm{kN}\\quad\\text{per modelli di carico LM 71, SW/0,}\\\\&\\hspace{15.5em}\\text{SW/2}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-braking",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.3",
+      "officialNumber": null,
+      "pdfPage": 175,
+      "latex": "\\begin{aligned}\\text{frenatura:}\\quad Q_{lb,k}&=20\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\le6000\\,\\mathrm{kN}\\quad\\text{per modelli di carico LM 71, SW/0}\\\\Q_{lb,k}&=35\\,[\\mathrm{kN/m}]\\cdot L[\\mathrm{m}]\\quad\\text{per modelli di carico SW/2}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.1-k1",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.1",
+      "officialNumber": null,
+      "pdfPage": 177,
+      "latex": "\\begin{aligned}k_1&=0{,}85\\quad\\text{per convogli formati da carrozze con sagoma arrotondata;}\\\\k_1&=0{,}60\\quad\\text{per treni aerodinamici.}\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.3-k3",
+      "unitId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.3",
+      "officialNumber": null,
+      "pdfPage": 177,
+      "latex": "\\begin{aligned}k_3&=\\frac{7{,}5-h_g}{3{,}7}\\quad\\text{per }3{,}8\\,\\mathrm{m}<h_g<7{,}5\\,\\mathrm{m};\\\\k_3&=0\\quad\\text{per }h_g\\ge7{,}5\\,\\mathrm{m}\\end{aligned}"
     }
   ],
   "tables": [
@@ -102,7 +137,8 @@
             "text": "Elemento strutturale"
           },
           {
-            "text": "Lunghezza LΦ"
+            "text": "Lunghezza LΦ",
+            "latex": "\\text{Lunghezza }L_\\Phi"
           }
         ]
       ],
@@ -221,7 +257,8 @@
             "text": "3.2 Sostegni per rotaie a mensola (longherine a mensola) per travi trasversali di estremità"
           },
           {
-            "text": "Φ3 = 2,0, ove non meglio specificato"
+            "text": "Φ₃ = 2,0, ove non meglio specificato",
+            "latex": "\\Phi_3=2{,}0,\\quad\\text{ove non meglio specificato}"
           }
         ],
         [
@@ -340,7 +377,8 @@
             "text": "4.5 Mensole longitudinali supportanti carichi ferroviari (per le azioni in direzione longitudinale)"
           },
           {
-            "text": "se e≤0,5: m Φ2=1,67; per e>0,5 m v. (4.1)"
+            "text": "se e≤0,5: m Φ₂=1,67; per e>0,5 m v. (4.1)",
+            "latex": "\\text{se }e\\le0{,}5:\\,\\mathrm{m}\\;\\Phi_2=1{,}67;\\quad\\text{per }e>0{,}5\\,\\mathrm{m}\\;\\text{v. (4.1)}"
           }
         ],
         [
@@ -368,10 +406,12 @@
             "text": "5"
           },
           {
-            "text": "5.2 Travi e solette continue su n luci, indicando con: Lm=1/n·(L1+L2+.....+Ln)"
+            "text": "5.2 Travi e solette continue su n luci, indicando con: Lₘ = 1/n · (L₁+L₂+.....+Lₙ)",
+            "latex": "\\begin{gathered}\\text{5.2 Travi e solette continue su }n\\text{ luci, indicando con:}\\\\L_m=\\frac{1}{n}\\cdot(L_1+L_2+\\ldots+L_n)\\end{gathered}"
           },
           {
-            "text": "LΦ = kLm dove: n=2-3-4-≥5; k=1,2-1,3-1,4-1,5"
+            "text": "LΦ = kLₘ dove: n = 2-3-4-≥5; k = 1,2-1,3-1,4-1,5",
+            "latex": "\\begin{gathered}L_\\Phi=kL_m\\quad\\text{dove:}\\\\n=2-3-4-\\ge5\\\\k=1{,}2-1{,}3-1{,}4-1{,}5\\end{gathered}"
           }
         ],
         [
@@ -401,10 +441,11 @@
             "text": "5"
           },
           {
-            "text": "5.4 Solette ed altri elementi di scatolari per uno o più binari (sottovia di altezza libera ≤5,0 m e luce libera ≤8,0 m). Per gli scatolari che non rispettano i precedenti limiti vale il punto 5.3, trascurando la presenza della soletta inferiore e considerando un coefficiente riduttivo del Φ pari a 0,9, da applicare al coefficiente Φ2=1,20; Φ3=1,35"
+            "text": "5.4 Solette ed altri elementi di scatolari per uno o più binari (sottovia di altezza libera ≤5,0 m e luce libera ≤8,0 m). Per gli scatolari che non rispettano i precedenti limiti vale il punto 5.3, trascurando la presenza della soletta inferiore e considerando un coefficiente riduttivo del Φ pari a 0,9, da applicare al coefficiente Φ"
           },
           {
-            "text": " "
+            "text": "Φ₂ = 1,20; Φ₃ = 1,35",
+            "latex": "\\Phi_2=1{,}20;\\quad\\Phi_3=1{,}35"
           }
         ],
         [
@@ -454,7 +495,8 @@
             "text": "6"
           },
           {
-            "text": "6.1 Pile con snellezza λ>30"
+            "text": "6.1 Pile con snellezza λ>30",
+            "latex": "\\text{6.1 Pile con snellezza }\\lambda>30"
           },
           {
             "text": "somma delle lunghezze delle campate adiacenti la pila"
@@ -484,19 +526,23 @@
       "headers": [
         [
           {
-            "text": "Valore di α"
+            "text": "Valore di α",
+            "latex": "\\text{Valore di }\\alpha"
           },
           {
             "text": "Massima velocità della linea [Km/h]"
           },
           {
-            "text": "V"
+            "text": "V",
+            "latex": "V"
           },
           {
-            "text": "α"
+            "text": "α",
+            "latex": "\\alpha"
           },
           {
-            "text": "f"
+            "text": "f",
+            "latex": "f"
           },
           {
             "text": "Azione centrifuga basata su"
@@ -509,71 +555,62 @@
       "rows": [
         [
           {
-            "text": "SW/2"
+            "text": "SW/2",
+            "latex": "\\mathrm{SW/2}"
           },
           {
-            "text": "≥ 100"
+            "text": "≥ 100",
+            "latex": "\\ge100"
           },
           {
-            "text": "100"
+            "text": "100",
+            "latex": "100"
           },
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "1 × 1 × SW/2"
+            "text": "1 × 1 × SW/2",
+            "latex": "1\\times1\\times\\mathrm{SW/2}"
           },
           {
-            "text": "Φ × 1 × 1 × SW/2"
+            "text": "Φ × 1 × 1 × SW/2",
+            "latex": "\\Phi\\times1\\times1\\times\\mathrm{SW/2}"
           }
         ],
         [
           {
-            "text": "SW/2"
+            "text": "SW/2",
+            "latex": "\\mathrm{SW/2}"
           },
           {
-            "text": "< 100"
+            "text": "< 100",
+            "latex": "<100"
           },
           {
-            "text": "V"
+            "text": "V",
+            "latex": "V"
           },
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "1 × 1 × SW/2"
+            "text": "1 × 1 × SW/2",
+            "latex": "1\\times1\\times\\mathrm{SW/2}"
           },
           {
-            "text": "Φ × 1 × 1 × SW/2"
-          }
-        ],
-        [
-          {
-            "text": "LM71 e SW/0"
-          },
-          {
-            "text": "> 120"
-          },
-          {
-            "text": "V"
-          },
-          {
-            "text": "1"
-          },
-          {
-            "text": "f"
-          },
-          {
-            "text": "1 × f × (LM71 + SW/0)"
-          },
-          {
-            "text": "Φ × 1 × 1 × (LM71 + SW/0)"
+            "text": "Φ × 1 × 1 × SW/2",
+            "latex": "\\Phi\\times1\\times1\\times\\mathrm{SW/2}"
           }
         ],
         [
@@ -581,22 +618,28 @@
             "text": "LM71 e SW/0"
           },
           {
-            "text": "> 120"
+            "text": "> 120",
+            "latex": ">120"
           },
           {
-            "text": "120"
+            "text": "V",
+            "latex": "V"
           },
           {
-            "text": "α"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "1"
+            "text": "f",
+            "latex": "f"
           },
           {
-            "text": "α × 1 × (LM71 + SW/0)"
+            "text": "1 × f × (LM71 “+” SW/0)",
+            "latex": "1\\times f\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "Φ × α × 1 × (LM71 + SW/0)"
+            "text": "Φ × 1 × 1 × (LM71 “+” SW/0)",
+            "latex": "\\Phi\\times1\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           }
         ],
         [
@@ -604,22 +647,57 @@
             "text": "LM71 e SW/0"
           },
           {
-            "text": "≤ 120"
+            "text": "> 120",
+            "latex": ">120"
           },
           {
-            "text": "V"
+            "text": "120",
+            "latex": "120"
           },
           {
-            "text": "α"
+            "text": "α",
+            "latex": "\\alpha"
           },
           {
-            "text": "1"
+            "text": "1",
+            "latex": "1"
           },
           {
-            "text": "α × 1 × (LM71 + SW/0)"
+            "text": "α × 1 × (LM71 “+” SW/0)",
+            "latex": "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "Φ × α × 1 × (LM71 + SW/0)"
+            "text": "Φ × α × 1 × (LM71 “+” SW/0)",
+            "latex": "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
+          }
+        ],
+        [
+          {
+            "text": "LM71 e SW/0"
+          },
+          {
+            "text": "≤ 120",
+            "latex": "\\le120"
+          },
+          {
+            "text": "V",
+            "latex": "V"
+          },
+          {
+            "text": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "α × 1 × (LM71 “+” SW/0)",
+            "latex": "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
+          },
+          {
+            "text": "Φ × α × 1 × (LM71 “+” SW/0)",
+            "latex": "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           }
         ]
       ],
@@ -662,13 +740,15 @@
             "text": "Primo"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
             "text": "-"
           },
           {
-            "text": "1,0 SW/2"
+            "text": "1,0 SW/2",
+            "latex": "1{,}0\\,\\mathrm{SW/2}"
           }
         ],
         [
@@ -679,13 +759,15 @@
             "text": "Primo"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
             "text": "-"
           },
           {
-            "text": "1,0 SW/2"
+            "text": "1,0 SW/2",
+            "latex": "1{,}0\\,\\mathrm{SW/2}"
           }
         ],
         [
@@ -696,52 +778,63 @@
             "text": "secondo"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
             "text": "-"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           }
         ],
         [
           {
-            "text": "≥3"
+            "text": "≥3",
+            "latex": "\\ge3"
           },
           {
             "text": "Primo"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "0,75 (LM 71 + SW/0)"
+            "text": "0,75 (LM71 “+” SW/0)",
+            "latex": "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "1,0 SW/2"
+            "text": "1,0 SW/2",
+            "latex": "1{,}0\\,\\mathrm{SW/2}"
           }
         ],
         [
           {
-            "text": "≥3"
+            "text": "≥3",
+            "latex": "\\ge3"
           },
           {
             "text": "secondo"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "0,75 (LM 71 + SW/0)"
+            "text": "0,75 (LM71 “+” SW/0)",
+            "latex": "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
-            "text": "1,0 (LM 71 + SW/0)"
+            "text": "1,0 (LM71 “+” SW/0)",
+            "latex": "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           }
         ],
         [
           {
-            "text": "≥3"
+            "text": "≥3",
+            "latex": "\\ge3"
           },
           {
             "text": "Altri"
@@ -750,7 +843,8 @@
             "text": "-"
           },
           {
-            "text": "0,75 (LM 71 + SW/0)"
+            "text": "0,75 (LM71 “+” SW/0)",
+            "latex": "0{,}75\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})"
           },
           {
             "text": "-"
@@ -758,7 +852,7 @@
         ]
       ],
       "notes": [
-        "(1) LM71 + SW/0 significa considerare il più sfavorevole fra i treni LM 71, SW/0.",
+        "(1) LM71 “+” SW/0 significa considerare il più sfavorevole fra i treni LM 71, SW/0.",
         "(2) Salvo i casi in cui sia esplicitamente escluso."
       ]
     }

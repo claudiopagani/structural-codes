@@ -544,12 +544,12 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2#block-p-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2#block-definition-001",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove E   cm   è il modulo elastico istantaneo del calcestruzzo M   è il coefficiente di viscosità definito al punto (11.2.10.7) N   Ed   è la massima azione assiale di progetto N   G,Ed   è l'aliquota di azione assiale dovuta alle azioni permanenti La snellezza normalizzata della colonna è definita come:",
-        "normalized": "E_cm è il modulo elastico istantaneo del calcestruzzo; φ è il coefficiente di viscosità definito al punto (11.2.10.7); N_Ed è la massima azione assiale di progetto; N_G,Ed è l’aliquota di azione assiale dovuta alle azioni permanenti.",
+        "raw": "dove E   cm   è il modulo elastico istantaneo del calcestruzzo M   è il coefficiente di viscosità definito al punto (11.2.10.7)",
+        "normalized": "E_cm è il modulo elastico istantaneo del calcestruzzo",
         "normalizationVersion": "ntc43-editorial-profile-0.1.0",
         "inline": [
           {
@@ -559,34 +559,7 @@
           },
           {
             "kind": "text",
-            "value": " è il modulo elastico istantaneo del calcestruzzo; "
-          },
-          {
-            "kind": "math",
-            "value": "φ",
-            "latex": "\\varphi"
-          },
-          {
-            "kind": "text",
-            "value": " è il coefficiente di viscosità definito al punto (11.2.10.7); "
-          },
-          {
-            "kind": "math",
-            "value": "N_Ed",
-            "latex": "N_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " è la massima azione assiale di progetto; "
-          },
-          {
-            "kind": "math",
-            "value": "N_G,Ed",
-            "latex": "N_{G,Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " è l’aliquota di azione assiale dovuta alle azioni permanenti."
+            "value": " è il modulo elastico istantaneo del calcestruzzo"
           }
         ]
       },
@@ -599,7 +572,7 @@
           "x": 82,
           "y": 500,
           "width": 430,
-          "height": 55
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
@@ -628,8 +601,194 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "983cdff51307c38973f627e99ed3f07b083cfe61f8ea89904c28284bfcd01495",
-        "normalizedSha256": "a500bf5e37bc7bdd24d85a4f5fcb977150ed5e0c00587c4a9cba22d89f59cda0"
+        "rawSha256": "01f83f8b063856927970499898201a69adc00cf9602f2950c57817e41d6bdbc1",
+        "normalizedSha256": "d761592b2b1dedac770b33f5c47e9e9068d0b9f12d41f97ecd2847de55b071e8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2#block-definition-002",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "M   è il coefficiente di viscosità definito al punto (11.2.10.7) N   è la massima azione assiale di progetto",
+        "normalized": "φ è il coefficiente di viscosità definito al punto (11.2.10.7)",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "φ",
+            "latex": "\\varphi"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di viscosità definito al punto (11.2.10.7)"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 128,
+        "printedPage": "124",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 512,
+          "width": 430,
+          "height": 14
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fcc3c9dd1826c7a3ead13aed04b96cdd87eb929d6b5f216d2e7ebe6d14def3bb",
+        "normalizedSha256": "3f7e75bd6f18e62c52de8c8ad37b5882408a082ff9fe13745b02a2071371936b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2#block-definition-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "N   Ed   è la massima azione assiale di progetto N   G,Ed   è l'aliquota di azione assiale dovuta alle azioni permanenti",
+        "normalized": "N_Ed è la massima azione assiale di progetto",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "N_Ed",
+            "latex": "N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è la massima azione assiale di progetto"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 128,
+        "printedPage": "124",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 524,
+          "width": 430,
+          "height": 14
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e665257251fb66ab6460a529cac07ad653cd57fb16b533edcca87d961bdde307",
+        "normalizedSha256": "78e2308cf681ff853f196ec114d9f350d62d0ff6abddeda6fdb34221310738ad"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.2#block-definition-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "N   G,Ed   è l'aliquota di azione assiale dovuta alle azioni permanenti La snellezza normalizzata della colonna è definita come:",
+        "normalized": "N_G,Ed è l’aliquota di azione assiale dovuta alle azioni permanenti",
+        "normalizationVersion": "ntc43-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "N_G,Ed",
+            "latex": "N_{G,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’aliquota di azione assiale dovuta alle azioni permanenti"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 128,
+        "printedPage": "124",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 536,
+          "width": 430,
+          "height": 14
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc43-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "75bad7be2f237620b5df77de44f557e5018ed611d01084388da3e0f5e1b36c4f",
+        "normalizedSha256": "677027b9da55a36ef2e980368e5982682a9cf2f51daa185b22a4ba5e4da0f6dc"
       }
     },
     {
@@ -637,7 +796,7 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "N   G,Ed   è l'aliquota di azione assiale dovuta alle azioni permanenti La snellezza normalizzata della colonna è definita come: N",
+        "raw": "La snellezza normalizzata della colonna è definita come: Rk , pl N O   [4.3.18]",
         "normalized": "La snellezza normalizzata della colonna è definita come:",
         "normalizationVersion": "ntc43-editorial-profile-0.1.0",
         "inline": [
@@ -654,7 +813,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
-          "y": 540,
+          "y": 548,
           "width": 430,
           "height": 18
         },
@@ -685,7 +844,7 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "222e4a67d19978408411c30aee8132d9aabd166fca8d90b403ffc52782ede811",
+        "rawSha256": "515ad6a5aaa676cac02a84689cd83d745fc5b2c115c08e7cd883b9a7d498feec",
         "normalizedSha256": "54e7ef2c997b8d15d6a2de2478f13d60e16e27b40a0fd69c960c024b64c4321e"
       }
     },
@@ -701,7 +860,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 150,
-          "y": 550,
+          "y": 558,
           "width": 260,
           "height": 40
         },
@@ -766,7 +925,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
-          "y": 580,
+          "y": 584,
           "width": 430,
           "height": 18
         },
@@ -813,7 +972,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 150,
-          "y": 594,
+          "y": 598,
           "width": 260,
           "height": 28
         },
@@ -843,7 +1002,7 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel calcolo delle sollecitazioni allo stato limite ultimo la rigidezza flessionale dovrebbe essere determinata in base alla relazione seguente per tenere conto degli effetti del secondo ordine:",
+        "raw": "Nel calcolo delle sollecitazioni allo stato limite ultimo la rigidezza flessionale dovrebbe essere determinata in base alla relazione seguente per tenere conto degli effetti del secondo ordine: ) J E k J E J E ( k ) EJ (    \u000e \u000e    [4.3.20]",
         "normalized": "Nel calcolo delle sollecitazioni allo stato limite ultimo la rigidezza flessionale dovrebbe essere determinata in base alla relazione seguente per tenere conto degli effetti del secondo ordine:",
         "normalizationVersion": "ntc43-editorial-profile-0.1.0",
         "inline": [
@@ -860,7 +1019,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
-          "y": 617,
+          "y": 621,
           "width": 430,
           "height": 25
         },
@@ -896,7 +1055,7 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "76c548c709458e1a70bcdac8159cccaeef020d39fd0bd45db77a6dc0e7d8efa3",
+        "rawSha256": "82c32197d687c9b43f903e2cf6b1d14f8d00915ebe253481afb7eb844eeb15c9",
         "normalizedSha256": "76c548c709458e1a70bcdac8159cccaeef020d39fd0bd45db77a6dc0e7d8efa3"
       }
     },
@@ -912,7 +1071,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 140,
-          "y": 635,
+          "y": 639,
           "width": 300,
           "height": 30
         },
@@ -942,7 +1101,7 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "c cm II , e s s a a 0 II , eff   dove k 0   vale 0,9 e k e,II   è assunto pari a 0,5.",
+        "raw": "dove k 0   vale 0,9 e k e,II   è assunto pari a 0,5. Quando una colonna è particolarmente snella, oppure quando la costruzione richiede particolari livelli di sicurezza, è necessario",
         "normalized": "dove k_0 vale 0,9 e k_e,II è assunto pari a 0,5.",
         "normalizationVersion": "ntc43-editorial-profile-0.1.0",
         "inline": [
@@ -977,7 +1136,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
-          "y": 652,
+          "y": 656,
           "width": 430,
           "height": 18
         },
@@ -1008,7 +1167,7 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "2b178ade9168f06226d1e1777758bed4f9dcfef26eb5b907705e966bd336cd3f",
+        "rawSha256": "149a32ce24c7c67b9e858da0b09e7904224c7e6a2991ae9b7d421bd89c5d29c1",
         "normalizedSha256": "661c02a79af0b2376744d8989ec17e4a886896ea28a09bcfb301cde5ca0ac5e4"
       }
     },
@@ -1034,7 +1193,7 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
-          "y": 668,
+          "y": 672,
           "width": 430,
           "height": 22
         },

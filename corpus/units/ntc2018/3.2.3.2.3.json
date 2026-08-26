@@ -64,9 +64,33 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Lo spettro di risposta elastico in spostamento delle componenti orizzontali SDe \n(T) si ricava dalla corrispondente risposta in accele-\nrazione S e \n(T) mediante la seguente espressione: 2\n2\nT\nx)T(S)T(S eDe ¸\n¹\n·\n¨\n©\n§\nS >3.2.10@",
-        "normalized": "Lo spettro di risposta elastico in spostamento delle componenti orizzontali SDe (T) si ricava dalla corrispondente risposta in accelerazione S e Lo spettro di risposta elastico in spostamento si ricava dalla corrispondente risposta in accelerazione mediante la seguente espressione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Lo spettro di risposta elastico in spostamento delle componenti orizzontali SDe (T) si ricava dalla corrispondente risposta in accele-\nrazione S e (T) mediante la seguente espressione: 2\nT\n·\n§",
+        "normalized": "Lo spettro di risposta elastico in spostamento delle componenti orizzontali SDe(T) si ricava dalla corrispondente risposta in accelerazione Se(T) mediante la seguente espressione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Lo spettro di risposta elastico in spostamento delle componenti orizzontali "
+          },
+          {
+            "kind": "math",
+            "value": "SDe(T)",
+            "latex": "S_{De}(T)"
+          },
+          {
+            "kind": "text",
+            "value": " si ricava dalla corrispondente risposta in accelerazione "
+          },
+          {
+            "kind": "math",
+            "value": "Se(T)",
+            "latex": "S_e(T)"
+          },
+          {
+            "kind": "text",
+            "value": " mediante la seguente espressione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -74,10 +98,10 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.234,
-          "y": 607.355,
-          "width": 436.233,
-          "height": 117.46
+          "x": 77,
+          "y": 604,
+          "width": 440,
+          "height": 32
         },
         "extraction": {
           "method": "pdf-text",
@@ -86,38 +110,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "b1f6508f1c81efb5d617017a2d64c7a3d9ffd37d3142f13a1401ea327454305b",
-        "normalizedSha256": "f4f875255370f26fdb8f4b81d1e44e983ed698c9429f46fbfcc055a62ef4f4b9"
+        "rawSha256": "0c04f5ad60452680c37434b65c91a9859b48b47593e765440f38a5720adbdf5f",
+        "normalizedSha256": "45235be53b48f5673a2ffed916816e9fe5eabd99157e4524718cdcca7370ca28"
       }
     },
     {
@@ -131,25 +145,25 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.234,
-          "y": 607.355,
-          "width": 436.233,
-          "height": 117.46
+          "x": 170,
+          "y": 631,
+          "width": 220,
+          "height": 25
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Formula trascritta in LaTeX dal documento ufficiale e collocata nella posizione originaria; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "644e5de493cce8750f231c0ed413ef6dba1d0bb4481777611274279a5c08cdb5",
-        "normalizedSha256": "644e5de493cce8750f231c0ed413ef6dba1d0bb4481777611274279a5c08cdb5"
+        "rawSha256": "72d4b5b06a48dce4c3d1df66dd4af3f27bca1699636df3553c586b6a3322f4cd",
+        "normalizedSha256": "928ed3afe9972bfb98968a1bcab062d62f8d9afd906ecc3b9c855eb43449c386"
       }
     },
     {
@@ -157,9 +171,33 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "purché il periodo proprio di vibrazione T non ecceda i valori T E indicati in Tab. 3.2.VII.",
-        "normalized": "purché il periodo proprio di vibrazione T non ecceda i valori T E indicati in Tab. 3.2.VII.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "2\n¹\n©\nS purché il periodo proprio di vibrazione T non ecceda i valori T E indicati in Tab. 3.2.VII.",
+        "normalized": "purché il periodo proprio di vibrazione T non ecceda i valori TE indicati in Tab. 3.2.VII.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "purché il periodo proprio di vibrazione "
+          },
+          {
+            "kind": "math",
+            "value": "T",
+            "latex": "T"
+          },
+          {
+            "kind": "text",
+            "value": " non ecceda i valori "
+          },
+          {
+            "kind": "math",
+            "value": "TE",
+            "latex": "T_E"
+          },
+          {
+            "kind": "text",
+            "value": " indicati in Tab. 3.2.VII."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -167,19 +205,40 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.234,
-          "y": 607.355,
-          "width": 436.233,
-          "height": 117.46
+          "x": 77,
+          "y": 650,
+          "width": 440,
+          "height": 15
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "8b90c9fec76e3c59822a7389ae477f43178023e67287fc5966543372dbd1c0c0",
-        "normalizedSha256": "8b90c9fec76e3c59822a7389ae477f43178023e67287fc5966543372dbd1c0c0"
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d14528bd2fc87d5b4966491c60a4378cf872dbff7900b2665d494c1674ebb9cb",
+        "normalizedSha256": "89d9e775abb213066ed460e407e451c0345900f6b1cac36329bfbe323db82c78"
       }
     },
     {
@@ -193,25 +252,25 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.234,
-          "y": 607.355,
-          "width": 436.233,
-          "height": 117.46
+          "x": 77,
+          "y": 672,
+          "width": 330,
+          "height": 61
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "pdfplumber-table-extraction",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Tabella ricostruita dalla geometria del PDF e collocata al posto delle righe estratte linearmente; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "644e5de493cce8750f231c0ed413ef6dba1d0bb4481777611274279a5c08cdb5",
-        "normalizedSha256": "644e5de493cce8750f231c0ed413ef6dba1d0bb4481777611274279a5c08cdb5"
+        "rawSha256": "8c2d1472735bf1ae22f0bc17f1790d14efa2435d18e9aaa7c14ad71b247e808b",
+        "normalizedSha256": "52c7f3e5caf3b451163647ff7ba106305f1adf724513ec84191a0ab2dd1624d7"
       }
     },
     {
@@ -219,31 +278,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per periodi di vibrazione eccedenti T E, le ordinate dello spettro possono essere ottenute dalle formule seguenti:E\nE F De g C D o o\nF e\nF De g\nT T\nT T T S (T) 0, 025 a S T T F 1 F T T\nT T S (T) d ª º\u0010\n\u001f d       K \u000e \u0010  K « »\n\u0010« »¬ ¼",
-        "normalized": "Per periodi di vibrazione eccedenti T E, le ordinate dello spettro possono essere ottenute dalle formule seguenti:E E F De g C D o o F e F De g T T T T TS (T) 0, 025 a S T T F 1 F T T T TS (T) d ª º d K K « » « »¬ ¼",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Per periodi di vibrazione eccedenti T E, le ordinate dello spettro possono essere ottenute dalle formule seguenti:",
+        "normalized": "Per periodi di vibrazione eccedenti TE, le ordinate dello spettro possono essere ottenute dalle formule seguenti:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Per periodi di vibrazione eccedenti T E, le ordinate dello spettro possono essere ottenute dalle formule seguenti:E E F De g C D o o F e F De g T T T T TS (T) 0, 025 a S T T F 1 F T T T TS (T) "
+            "value": "Per periodi di vibrazione eccedenti "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "TE",
+            "latex": "T_E"
           },
           {
             "kind": "text",
-            "value": " ª º "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " K K « » « »¬ ¼"
+            "value": ", le ordinate dello spettro possono essere ottenute dalle formule seguenti:"
           }
         ]
       },
@@ -253,10 +303,10 @@
         "printedPage": "50",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.6,
-          "y": 96.478,
-          "width": 371.568,
-          "height": 68.892
+          "x": 77,
+          "y": 93,
+          "width": 440,
+          "height": 15
         },
         "extraction": {
           "method": "pdf-text",
@@ -265,57 +315,74 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "b5ab8266e7487b81dee9c10005dfce35b813b33b9e90aa98bc3578c5b6398a1b",
-        "normalizedSha256": "ca55c76d8ebd5fe2d05c2e6552a3a3bc58ae170e40a63f13581eb0283889d53f"
+        "rawSha256": "481b4fb414f5babab31ce9ec93c0d1bf4288b0f478f132329ffaafaa37b498bc",
+        "normalizedSha256": "3769dfc93cf3374a87d0dcfc32172c4e8ee5d7ac587781d5638f2f4c901efaca"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.3#block-editorial-006",
-      "kind": "list-item",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.11",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 54,
+        "printedPage": "50",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 108,
+          "width": 300,
+          "height": 47
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "ee909b674109af57cb03b7c347f4fddc63e21414c2ab5c3056448d9efb0cd421",
+        "normalizedSha256": "cb7635554895a010487eee4d0d644fa0289548a1cc18df5ac221f30f9829f900"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.3#block-editorial-007",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "! >3.2.11@\ndove tutti i simboli sono già stati definiti, ad eccezione di dg, definito nel § 3.2.3.3.",
-        "normalized": ">3.2.11@ dove tutti i simboli sono già stati definiti, ad eccezione di dg, definito nel § 3.2.3.3.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "dove tutti i simboli sono già stati definiti, ad eccezione di dg, definito nel § 3.2.3.3.",
+        "normalized": "dove tutti i simboli sono già stati definiti, ad eccezione di dg, definito nel § 3.2.3.3.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
             "kind": "text",
-            "value": "3.2.11@ dove tutti i simboli sono già stati definiti, ad eccezione di "
+            "value": "dove tutti i simboli sono già stati definiti, ad eccezione di "
           },
           {
             "kind": "math",
@@ -334,50 +401,19 @@
         "printedPage": "50",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.6,
-          "y": 96.478,
-          "width": 371.568,
-          "height": 68.892
+          "x": 77,
+          "y": 153,
+          "width": 285,
+          "height": 15
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "34c948d7f7aa5ca3714f40ea53cc354bbf590eb3094c71cb3b5f43a486002e82",
-        "normalizedSha256": "56097643bc58bae3c6a42a608f46f1cf208531f883e95a631292a50659c32bfd"
+        "transformations": [],
+        "rawSha256": "39a0cbb6750d2b2fc62941a28d1d7de97c6d24b197b6a2011cb574c4aa9adf8e",
+        "normalizedSha256": "39a0cbb6750d2b2fc62941a28d1d7de97c6d24b197b6a2011cb574c4aa9adf8e"
       }
     }
   ],
@@ -385,7 +421,8 @@
   "relations": [],
   "assets": {
     "formulaIds": [
-      "urn:structural-codes:it:asset:formula:ntc2018:3.2.10"
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.10",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.11"
     ],
     "tableIds": [
       "urn:structural-codes:it:asset:table:ntc2018:3.2.vii"

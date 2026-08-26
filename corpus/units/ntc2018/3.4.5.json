@@ -95,20 +95,20 @@
       "text": {
         "raw": "Il coefficiente termico tiene conto della riduzione del carico della neve, a causa dello scioglimento della stessa, causata dalla per-\ndita di calore della costruzione. Tale coefficiente dipende dalle proprietà di isolamento termico del materiale utilizzato in coper-\ntura. In assenza di uno specifico e documentato studio, deve essere posto Ct = 1.",
         "normalized": "Il coefficiente termico tiene conto della riduzione del carico della neve, a causa dello scioglimento della stessa, causata dalla perdita di calore della costruzione. Tale coefficiente dipende dalle proprietà di isolamento termico del materiale utilizzato in copertura. In assenza di uno specifico e documentato studio, deve essere posto Ct = 1.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Il coefficiente termico tiene conto della riduzione del carico della neve, a causa dello scioglimento della stessa, causata dalla perdita di calore della costruzione. Tale coefficiente dipende dalle proprietà di isolamento termico del materiale utilizzato in copertura. In assenza di uno specifico e documentato studio, deve essere posto Ct "
+            "value": "Il coefficiente termico tiene conto della riduzione del carico della neve, a causa dello scioglimento della stessa, causata dalla perdita di calore della costruzione. Tale coefficiente dipende dalle proprietà di isolamento termico del materiale utilizzato in copertura. In assenza di uno specifico e documentato studio, deve essere posto "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "Ct = 1",
+            "latex": "C_t=1"
           },
           {
             "kind": "text",
-            "value": " 1."
+            "value": "."
           }
         ]
       },
@@ -145,11 +145,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,6 +153,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "c9830467af263c36b070de1873d7322c70ce53ce6a7cc49fa6bed7d14dfff938",

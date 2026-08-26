@@ -95,7 +95,31 @@
       "text": {
         "raw": "In mancanza di più precise valutazioni, legate alla tipologia della costruzione ed alla sua destinazione d’uso, la temperatura\ndell’aria interna, Tint , può essere assunta pari a 20 °C.",
         "normalized": "In mancanza di più precise valutazioni, legate alla tipologia della costruzione ed alla sua destinazione d’uso, la temperatura dell’aria interna, Tint, può essere assunta pari a 20 °C.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In mancanza di più precise valutazioni, legate alla tipologia della costruzione ed alla sua destinazione d’uso, la temperatura dell’aria interna, "
+          },
+          {
+            "kind": "math",
+            "value": "Tint",
+            "latex": "T_{int}"
+          },
+          {
+            "kind": "text",
+            "value": ", può essere assunta pari a "
+          },
+          {
+            "kind": "math",
+            "value": "20 °C",
+            "latex": "20\\,{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -130,11 +154,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -143,6 +162,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "b52cf31f2314ba0b6a849e791103a0a00cba1a1eb26098797727d625a08d9a28",

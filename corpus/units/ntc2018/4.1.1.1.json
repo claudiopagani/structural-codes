@@ -309,22 +309,7 @@
       "text": {
         "raw": "– valori medi del modulo d’elasticità.",
         "normalized": "valori medi del modulo d’elasticità.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "valori medi del modulo "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’elasticità."
-          }
-        ]
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -359,11 +344,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -372,6 +352,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "61f27c50c140e2af1e6f3650d7c13adaa0d4459f4f351ef7ad6f86118982b84a",
@@ -628,8 +613,8 @@
       "origin": "official",
       "text": {
         "raw": "Per le travi e le solette che soddisfano le condizioni dette, la ridistribuzione dei momenti flettenti può effettuarsi senza esplicite\nverifiche in merito alla duttilità delle membrature, purché il rapporto Έ tra il momento dopo la ridistribuzione ed il momento\nprima della ridistribuzione risulti 1ǃΈǃ 0,70.",
-        "normalized": "Per le travi e le solette che soddisfano le condizioni dette, la ridistribuzione dei momenti flettenti può effettuarsi senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione risulti 1≥δ≥ 0,70.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Per le travi e le solette che soddisfano le condizioni dette, la ridistribuzione dei momenti flettenti può effettuarsi senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione risulti 1≥δ≥0,70.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -642,26 +627,16 @@
           },
           {
             "kind": "text",
-            "value": " tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione risulti 1"
+            "value": " tra il momento dopo la ridistribuzione ed il momento prima della ridistribuzione risulti "
           },
           {
             "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "math",
-            "value": "δ",
-            "latex": "\\delta"
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
+            "value": "1≥δ≥0,70",
+            "latex": "1\\ge\\delta\\ge0{,}70"
           },
           {
             "kind": "text",
-            "value": " 0,70."
+            "value": "."
           }
         ]
       },
@@ -698,11 +673,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -711,10 +681,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ee7f4ba6dffc04c6516e62d643bf78d157d8eb2d72bc29008ba2d606993319f3",
-        "normalizedSha256": "6609c8f4801539108d7cb8aa6f2f24b588690a18d4a199751b9515af99b928ce"
+        "normalizedSha256": "805b9862a96596f800df0399d9e820a55e87977fd4d07fe81ebece1ad060ced8"
       }
     },
     {
@@ -958,7 +933,7 @@
       "text": {
         "raw": "Per le travi continue, le travi di telai in cui possono essere trascurati gli effetti del secondo ordine e le solette, il rapporto x/d nelle\nsezioni critiche non deve comunque superare il valore 0,45 per fck ǂ 50 MPa e 0,35 per fck > 50 MPa.",
         "normalized": "Per le travi continue, le travi di telai in cui possono essere trascurati gli effetti del secondo ordine e le solette, il rapporto x/d nelle sezioni critiche non deve comunque superare il valore 0,45 per fck ≤ 50 MPa e 0,35 per fck > 50 MPa.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -967,7 +942,7 @@
           {
             "kind": "math",
             "value": "x/d",
-            "latex": "\\frac{x}{d}"
+            "latex": "x/d"
           },
           {
             "kind": "text",
@@ -975,39 +950,21 @@
           },
           {
             "kind": "math",
-            "value": "fck",
-            "latex": "f_{ck}"
+            "value": "fck ≤ 50 MPa",
+            "latex": "f_{ck}\\le50\\,\\mathrm{MPa}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " e 0,35 per "
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "fck > 50 MPa",
+            "latex": "f_{ck}>50\\,\\mathrm{MPa}"
           },
           {
             "kind": "text",
-            "value": " 50 MPa e 0,35 per "
-          },
-          {
-            "kind": "math",
-            "value": "fck",
-            "latex": "f_{ck}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 50 MPa."
+            "value": "."
           }
         ]
       },
@@ -1044,11 +1001,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1057,6 +1009,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "a6b9cd001cd6583d693c3343cd973d63f6af0e93128b9cccd5275c545a7aac9d",

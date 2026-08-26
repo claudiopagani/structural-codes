@@ -156,8 +156,8 @@
       "origin": "official",
       "text": {
         "raw": "Il valore caratteristico di apertura delle fessure (wk \n) non deve superare i valori nominali w1, w2, w3 secondo quanto riportato nel-\nla Tab. 4.1.IV.",
-        "normalized": "Il valore caratteristico di apertura delle fessure (wk ) non deve superare i valori nominali w1, w2, w3 secondo quanto riportato nella Tab. 4.1.IV.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Il valore caratteristico di apertura delle fessure (wk) non deve superare i valori nominali w1, w2, w3 secondo quanto riportato nella Tab. 4.1.IV.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -170,7 +170,7 @@
           },
           {
             "kind": "text",
-            "value": " ) non deve superare i valori nominali "
+            "value": ") non deve superare i valori nominali "
           },
           {
             "kind": "math",
@@ -234,11 +234,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -247,10 +242,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "fd013e3be04ddec34c8ee4a3c7ff132451363f91031f254b97287b61e786fda9",
-        "normalizedSha256": "80e0e986c1685abfec22157df2a9a76011572f20c1fad08a0500fa3dbed5f0f2"
+        "normalizedSha256": "5a5239c99c041dc205aee01fb5371940a991b7f9a94e4894f7f35159e8f30fe2"
       }
     },
     {
@@ -260,7 +260,7 @@
       "text": {
         "raw": "L’ampiezza caratteristica delle fessure wk è calcolata come 1,7 volte il prodotto della deformazione media delle barre d’armatura\nΉsm per la distanza media tra le fessure Ǌsm:",
         "normalized": "L’ampiezza caratteristica delle fessure wk è calcolata come 1,7 volte il prodotto della deformazione media delle barre d’armatura εsm per la distanza media tra le fessure Δsm:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -273,16 +273,7 @@
           },
           {
             "kind": "text",
-            "value": " è calcolata come 1,7 volte il prodotto della deformazione media delle barre "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’armatura "
+            "value": " è calcolata come 1,7 volte il prodotto della deformazione media delle barre d’armatura "
           },
           {
             "kind": "math",
@@ -337,11 +328,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -350,6 +336,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "e433c789d626a506428536a1bcef7a9f284c0ffc2067d4453462f66d45e367b7",

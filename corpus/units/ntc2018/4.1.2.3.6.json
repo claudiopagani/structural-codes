@@ -159,7 +159,7 @@
       "text": {
         "raw": "dove TEd è il valore di progetto del momento torcente agente.",
         "normalized": "dove TEd è il valore di progetto del momento torcente agente.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -192,7 +192,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "87e6b2a64b7b5951d5647788a9b663bb83868c873b46c947c8857e7aa06ee845",
         "normalizedSha256": "87e6b2a64b7b5951d5647788a9b663bb83868c873b46c947c8857e7aa06ee845"
       }
@@ -326,53 +332,66 @@
       "origin": "official",
       "text": {
         "raw": "dove t è lo spessore della sezione cava; per sezioni piene t = A c/u dove A c è l’area della sezione ed u è il suo perimetro; t deve es-\nsere assunta comunque ǃ 2 volte la distanza fra il bordo e il centro dell’armatura longitudinale.",
-        "normalized": "dove t è lo spessore della sezione cava; per sezioni piene t = A c/u dove A c è l’area della sezione ed u è il suo perimetro; t deve essere assunta comunque ≥ 2 volte la distanza fra il bordo e il centro dell’armatura longitudinale.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove t è lo spessore della sezione cava; per sezioni piene t = Ac/u dove Ac è l’area della sezione ed u è il suo perimetro; t deve essere assunta comunque ≥ 2 volte la distanza fra il bordo e il centro dell’armatura longitudinale.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove t è lo spessore della sezione cava; per sezioni piene t "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "t",
+            "latex": "t"
           },
           {
             "kind": "text",
-            "value": " A "
+            "value": " è lo spessore della sezione cava; per sezioni piene "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "t = Ac/u",
+            "latex": "t=A_c/u"
           },
           {
             "kind": "text",
-            "value": "u dove A "
+            "value": " dove "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "Ac",
+            "latex": "A_c"
           },
           {
             "kind": "text",
-            "value": " è l’area della sezione ed u è il suo perimetro; t deve essere assunta comunque "
+            "value": " è l’area della sezione ed "
           },
           {
             "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
+            "value": "u",
+            "latex": "u"
           },
           {
             "kind": "text",
-            "value": " 2 volte la distanza fra il bordo e il centro dell’armatura longitudinale."
+            "value": " è il suo perimetro; "
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " deve essere assunta comunque "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 2",
+            "latex": "\\ge2"
+          },
+          {
+            "kind": "text",
+            "value": " volte la distanza fra il bordo e il centro dell’armatura longitudinale."
           }
         ]
       },
@@ -409,11 +428,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -422,10 +436,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "de2159ce638f2ff55ab52ce6dec6a210557f2ffb2ec1ceece7ab0ca8aad67c5a",
-        "normalizedSha256": "347c833c88ba82b4d15a3991a7363eb0f843641d795b0006527536791ca87267"
+        "normalizedSha256": "fbed62e03242da988fc695b9b942d485b2599994eb909cf3ef6b62810f0e05fd"
       }
     },
     {
@@ -435,7 +454,22 @@
       "text": {
         "raw": "Le armature longitudinali e trasversali del traliccio resistente devono essere poste entro lo spessore t del profilo periferico. Le\nbarre longitudinali possono essere distribuite lungo detto profilo, ma comunque una barra deve essere presente su tutti i suoi\nspigoli.",
         "normalized": "Le armature longitudinali e trasversali del traliccio resistente devono essere poste entro lo spessore t del profilo periferico. Le barre longitudinali possono essere distribuite lungo detto profilo, ma comunque una barra deve essere presente su tutti i suoi spigoli.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le armature longitudinali e trasversali del traliccio resistente devono essere poste entro lo spessore "
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " del profilo periferico. Le barre longitudinali possono essere distribuite lungo detto profilo, ma comunque una barra deve essere presente su tutti i suoi spigoli."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -470,11 +504,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -483,6 +512,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "a33dbf64a609b936c452f84599ac95d08ff756de47deaf14e044f0009e232aae",
@@ -559,12 +593,30 @@
       "origin": "official",
       "text": {
         "raw": "dove si è posto\nA area racchiusa dalla fibra media del profilo periferico;\nA s area delle staffe;\num perimetro medio del nucleo resistente\ns passo delle staffe;\n¦ 1",
-        "normalized": "dove si è posto A area racchiusa dalla fibra media del profilo periferico; A s area delle staffe; um perimetro medio del nucleo resistente s passo delle staffe; ΣAₗ è l’area complessiva delle barre longitudinali.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove si è posto A area racchiusa dalla fibra media del profilo periferico; As area delle staffe; um perimetro medio del nucleo resistente; s passo delle staffe; ΣAl è l’area complessiva delle barre longitudinali.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove si è posto A area racchiusa dalla fibra media del profilo periferico; A s area delle staffe; "
+            "value": "dove si è posto "
+          },
+          {
+            "kind": "math",
+            "value": "A",
+            "latex": "A"
+          },
+          {
+            "kind": "text",
+            "value": " area racchiusa dalla fibra media del profilo periferico; "
+          },
+          {
+            "kind": "math",
+            "value": "As",
+            "latex": "A_s"
+          },
+          {
+            "kind": "text",
+            "value": " area delle staffe; "
           },
           {
             "kind": "math",
@@ -573,7 +625,25 @@
           },
           {
             "kind": "text",
-            "value": " perimetro medio del nucleo resistente s passo delle staffe; ΣAₗ è l’area complessiva delle barre longitudinali."
+            "value": " perimetro medio del nucleo resistente; "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " passo delle staffe; "
+          },
+          {
+            "kind": "math",
+            "value": "ΣAl",
+            "latex": "\\sum A_l"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area complessiva delle barre longitudinali."
           }
         ]
       },
@@ -610,11 +680,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -623,10 +688,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d891107f4aaff6016cb94fa0647691442665523cfc7a057b9a30c0408feacfa2",
-        "normalizedSha256": "eeca14ec6336aa2d2fef85511dfd6bb4af052f05bbc665bb3e7bfbaefdf96528"
+        "normalizedSha256": "583fcbfcca9e585e64e6ede6b8431eba62c9e786c9188f68e427da846f76baed"
       }
     },
     {
@@ -636,7 +706,7 @@
       "text": {
         "raw": "L’inclinazione Ό delle bielle compresse di calcestruzzo rispetto all’asse della trave deve rispettare i limiti seguenti",
         "normalized": "L’inclinazione θ delle bielle compresse di calcestruzzo rispetto all’asse della trave deve rispettare i limiti seguenti",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -686,11 +756,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -699,6 +764,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ae922af3f49611d83e7061ef34a8d14559b1da4c26b2479a3f46bba83450a428",
@@ -1356,7 +1426,7 @@
       "text": {
         "raw": "Per l’angolo Ό delle bielle compresse di conglomerato cementizio deve essere assunto un unico valore per le due verifiche di ta-\nglio e torsione.",
         "normalized": "Per l’angolo θ delle bielle compresse di conglomerato cementizio deve essere assunto un unico valore per le due verifiche di taglio e torsione.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -1406,11 +1476,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1419,6 +1484,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "41bad928729bf6067bfa6ec4046d7b10445424107b3d256aae78b1224422919c",

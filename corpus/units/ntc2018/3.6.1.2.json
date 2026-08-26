@@ -121,63 +121,34 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.2#block-editorial-002",
-      "kind": "paragraph",
+      "kind": "table-ref",
       "origin": "official",
-      "text": {
-        "raw": "Tab. 3.5.IV - Livelli di prestazione in caso di incendi\nLivello I Nessun requisito specifico di resistenza al fuoco dove le conseguenze del collas-\nso delle strutture siano accettabili o dove il rischio di incendio sia trascurabile;\nLivello II Mantenimento dei requisiti di resistenza al fuoco delle strutture per un periodo\nsufficiente a garantire l’evacuazione degli occupanti in luogo sicuro all’esterno\ndella costruzione;\nLivello III Mantenimento dei requisiti di resistenza al fuoco delle strutture per un periodo\ncongruo con la gestione dell’emergenza;\nLivello IV Requisiti di resistenza al fuoco delle strutture per garantire, dopo la fine\ndell’incendio, un limitato danneggiamento delle strutture stesse;\nLivello V Requisiti di resistenza al fuoco delle strutture per garantire, dopo la fine\ndell’incendio, il mantenimento della totale funzionalità delle strutture stesse.",
-        "normalized": "Tab. 3.5.IV - Livelli di prestazione in caso di incendi Livello I Nessun requisito specifico di resistenza al fuoco dove le conseguenze del collasso delle strutture siano accettabili o dove il rischio di incendio sia trascurabile; Livello II Mantenimento dei requisiti di resistenza al fuoco delle strutture per un periodo sufficiente a garantire l’evacuazione degli occupanti in luogo sicuro all’esterno della costruzione; Livello III Mantenimento dei requisiti di resistenza al fuoco delle strutture per un periodo congruo con la gestione dell’emergenza; Livello IV Requisiti di resistenza al fuoco delle strutture per garantire, dopo la fine dell’incendio, un limitato danneggiamento delle strutture stesse; Livello V Requisiti di resistenza al fuoco delle strutture per garantire, dopo la fine dell’incendio, il mantenimento della totale funzionalità delle strutture stesse.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:3.5.iv",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 67,
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 335.821,
-          "width": 428.118,
-          "height": 234.529
+          "x": 83,
+          "y": 365,
+          "width": 290,
+          "height": 122
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "e44c68160fee8a87d3263910fb87ece202a8f32f7d86e58540bc9c9a78a530fd",
-        "normalizedSha256": "57e91758d73b8a86e48fc3c1658e32bb7508cbb279d0c736971d46cc13cd8085"
+        "rawSha256": "86eb327c1603f05d2b5d716f83e5adb25d908d7ca8842aa80e76e7e481f3492c",
+        "normalizedSha256": "e455590ae54934f281cc257bb72ea5a93dfd8516c5e6ac336a6c399bbe68ca83"
       }
     },
     {
@@ -307,7 +278,9 @@
   "relations": [],
   "assets": {
     "formulaIds": [],
-    "tableIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:3.5.iv"
+    ],
     "figureIds": []
   },
   "workflow": {

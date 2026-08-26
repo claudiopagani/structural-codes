@@ -12,14 +12,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
       "officialNumber": "4.2.61",
       "pdfPage": 113,
-      "latex": "M=k\\,d\\,F_{p,C}=k\\,d\\,0{,}7\\,A_{res}\\,f_{tbk}"
+      "latex": "M=k\\cdot d\\cdot F_{p,c}=k\\cdot d\\cdot0{,}7\\cdot A_{res}\\cdot f_{tbk}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.62",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.8.1.1",
       "officialNumber": "4.2.62",
       "pdfPage": 114,
-      "latex": "F_{p,Cd}=\\frac{0{,}7\\,A_{res}\\,f_{tbk}}{\\gamma_{M7}}"
+      "latex": "F_{p,Cd}=0{,}7\\cdot\\frac{f_{tbk}\\cdot A_{res}}{\\gamma_{M7}}"
     }
   ],
   "tables": [
@@ -30,55 +30,36 @@
       "pdfPage": 112,
       "caption": "Coefficienti di sicurezza per la verifica delle unioni",
       "columnCount": 2,
-      "headers": [
-        [
-          {
-            "text": "Resistenza"
-          },
-          {
-            "text": "Fattore parziale"
-          }
-        ]
-      ],
+      "headers": [],
       "rows": [
         [
           {
             "text": "Resistenza dei bulloni"
           },
           {
-            "text": "γM2 = 1,25"
+            "text": "γM2 = 1,25",
+            "latex": "\\gamma_{M2}=1{,}25",
+            "rowSpan": 5
           }
         ],
         [
           {
             "text": "Resistenza dei chiodi"
-          },
-          {
-            "text": "γM2 = 1,25"
           }
         ],
         [
           {
             "text": "Resistenza delle connessioni a perno"
-          },
-          {
-            "text": "γM2 = 1,25"
           }
         ],
         [
           {
             "text": "Resistenza delle saldature a parziale penetrazione e a cordone d’angolo"
-          },
-          {
-            "text": "γM2 = 1,25"
           }
         ],
         [
           {
             "text": "Resistenza dei piatti a contatto"
-          },
-          {
-            "text": "γM2 = 1,25"
           }
         ],
         [
@@ -86,7 +67,8 @@
             "text": "Resistenza a scorrimento: per SLU"
           },
           {
-            "text": "γM3 = 1,25"
+            "text": "γM3 = 1,25",
+            "latex": "\\gamma_{M3}=1{,}25"
           }
         ],
         [
@@ -94,7 +76,8 @@
             "text": "per SLE"
           },
           {
-            "text": "γM3 = 1,10"
+            "text": "γM3 = 1,10",
+            "latex": "\\gamma_{M3}=1{,}10"
           }
         ],
         [
@@ -102,7 +85,8 @@
             "text": "Resistenza delle connessioni a perno allo stato limite di esercizio"
           },
           {
-            "text": "γM6,ser = 1,0"
+            "text": "γM6,ser = 1,0",
+            "latex": "\\gamma_{M6,ser}=1{,}0"
           }
         ],
         [
@@ -110,7 +94,8 @@
             "text": "Precarico di bullone ad alta resistenza con serraggio controllato"
           },
           {
-            "text": "γM7 = 1,0"
+            "text": "γM7 = 1,0",
+            "latex": "\\gamma_{M7}=1{,}0"
           }
         ],
         [
@@ -118,7 +103,8 @@
             "text": "Precarico di bullone ad alta resistenza con serraggio non controllato"
           },
           {
-            "text": "γM7 = 1,10"
+            "text": "γM7 = 1,10",
+            "latex": "\\gamma_{M7}=1{,}10"
           }
         ]
       ],
@@ -131,39 +117,36 @@
       "pdfPage": 113,
       "caption": "Classi funzionali per i bulloni",
       "columnCount": 2,
-      "headers": [
-        [
-          {
-            "text": "Classe"
-          },
-          {
-            "text": "Requisito"
-          }
-        ]
-      ],
+      "headers": [],
       "rows": [
         [
           {
-            "text": "K0"
+            "text": "K0",
+            "latex": "K0"
           },
           {
-            "text": "Nessun requisito sul fattore k"
+            "text": "Nessun requisito sul fattore k",
+            "latex": "\\text{Nessun requisito sul fattore }k"
           }
         ],
         [
           {
-            "text": "K1"
+            "text": "K1",
+            "latex": "K1"
           },
           {
-            "text": "Campo di variabilità del fattore ki del singolo elemento tra minimo e massimo dichiarati sulla confezione"
+            "text": "Campo di variabilità del fattore ki del singolo elemento tra minimo e massimo dichiarati sulla confezione",
+            "latex": "\\text{Campo di variabilità del fattore }k_i\\text{ del singolo elemento tra minimo e massimo dichiarati sulla confezione}"
           }
         ],
         [
           {
-            "text": "K2"
+            "text": "K2",
+            "latex": "K2"
           },
           {
-            "text": "Valore medio km del fattore e suo coefficiente di variazione Vk dichiarati sulla confezione"
+            "text": "Valore medio km del fattore e suo coefficiente di variazione Vk dichiarati sulla confezione",
+            "latex": "\\text{Valore medio }k_m\\text{ del fattore e suo coefficiente di variazione }V_k\\text{ dichiarati sulla confezione}"
           }
         ]
       ],
@@ -179,25 +162,37 @@
       "headers": [
         [
           {
+            "text": "Viti 8.8 – Momento di serraggio M [N m]",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
             "text": "Vite"
           },
           {
-            "text": "k=0,10"
+            "text": "k=0,10",
+            "latex": "k=0{,}10"
           },
           {
-            "text": "k=0,12"
+            "text": "k=0,12",
+            "latex": "k=0{,}12"
           },
           {
-            "text": "k=0,14"
+            "text": "k=0,14",
+            "latex": "k=0{,}14"
           },
           {
-            "text": "k=0,16"
+            "text": "k=0,16",
+            "latex": "k=0{,}16"
           },
           {
-            "text": "Fp,C [kN]"
+            "text": "Fp,C [kN]",
+            "latex": "F_{p,C}\\,[\\mathrm{kN}]"
           },
           {
-            "text": "Ares [mm²]"
+            "text": "Ares [mm²]",
+            "latex": "A_{res}\\,[\\mathrm{mm^2}]"
           }
         ]
       ],
@@ -445,25 +440,37 @@
       "headers": [
         [
           {
+            "text": "Viti 10.9 – Momento di serraggio M [N m]",
+            "colSpan": 7
+          }
+        ],
+        [
+          {
             "text": "Vite"
           },
           {
-            "text": "k=0,10"
+            "text": "k=0,10",
+            "latex": "k=0{,}10"
           },
           {
-            "text": "k=0,12"
+            "text": "k=0,12",
+            "latex": "k=0{,}12"
           },
           {
-            "text": "k=0,14"
+            "text": "k=0,14",
+            "latex": "k=0{,}14"
           },
           {
-            "text": "k=0,16"
+            "text": "k=0,16",
+            "latex": "k=0{,}16"
           },
           {
-            "text": "Fp,C [kN]"
+            "text": "Fp,C [kN]",
+            "latex": "F_{p,C}\\,[\\mathrm{kN}]"
           },
           {
-            "text": "Ares [mm²]"
+            "text": "Ares [mm²]",
+            "latex": "A_{res}\\,[\\mathrm{mm^2}]"
           }
         ]
       ],
@@ -711,11 +718,19 @@
       "headers": [
         [
           {
-            "text": "Distanze e interassi (Fig. 4.2.5)"
+            "text": "Distanze e interassi (Fig. 4.2.5)",
+            "rowSpan": 2
           },
           {
-            "text": "Minimo"
+            "text": "Minimo",
+            "rowSpan": 2
           },
+          {
+            "text": "Massimo",
+            "colSpan": 3
+          }
+        ],
+        [
           {
             "text": "Unioni esposte a fenomeni corrosivi o ambientali"
           },
@@ -730,81 +745,79 @@
       "rows": [
         [
           {
-            "text": "e1"
+            "text": "e1",
+            "latex": "e_1"
           },
           {
-            "text": "1,2 d0"
+            "text": "1,2 d0",
+            "latex": "1{,}2d_0"
           },
           {
-            "text": "4t+40 mm"
+            "text": "4t+40 mm",
+            "latex": "4t+40\\,\\mathrm{mm}"
           },
           {
             "text": "–"
           },
           {
-            "text": "max(8t;12 mm)"
+            "text": "max(8t;12 mm)",
+            "latex": "\\max(8t;12\\,\\mathrm{mm})"
           }
         ],
         [
           {
-            "text": "e2"
+            "text": "e2",
+            "latex": "e_2"
           },
           {
-            "text": "1,2 d0"
+            "text": "1,2 d0",
+            "latex": "1{,}2d_0"
           },
           {
-            "text": "4t+40 mm"
+            "text": "4t+40 mm",
+            "latex": "4t+40\\,\\mathrm{mm}"
           },
           {
             "text": "–"
           },
           {
-            "text": "max(8t;125 mm)"
+            "text": "max(8t;125 mm)",
+            "latex": "\\max(8t;125\\,\\mathrm{mm})"
           }
         ],
         [
           {
-            "text": "p1"
+            "text": "p1",
+            "latex": "p_1"
           },
           {
-            "text": "2,2 d0"
+            "text": "2,2 d0",
+            "latex": "2{,}2d_0"
           },
           {
-            "text": "min(14t;200 mm)"
+            "text": "min(14t;200 mm)",
+            "latex": "\\min(14t;200\\,\\mathrm{mm})"
           },
           {
-            "text": "min(14t;200 mm)"
+            "text": "min(14t;200 mm)",
+            "latex": "\\min(14t;200\\,\\mathrm{mm})"
           },
           {
-            "text": "min(14t;175 mm)"
+            "text": "min(14t;175 mm)",
+            "latex": "\\min(14t;175\\,\\mathrm{mm})"
           }
         ],
         [
           {
-            "text": "p1,0"
+            "text": "p1,0",
+            "latex": "p_{1,0}"
           },
           {
             "text": "–"
           },
           {
-            "text": "min(14t;200 mm)"
-          },
-          {
-            "text": "–"
-          },
-          {
-            "text": "–"
-          }
-        ],
-        [
-          {
-            "text": "p1,i"
-          },
-          {
-            "text": "–"
-          },
-          {
-            "text": "min(28t;400 mm)"
+            "text": "min(14t;200 mm)",
+            "latex": "\\min(14t;200\\,\\mathrm{mm})"
           },
           {
             "text": "–"
@@ -815,19 +828,43 @@
         ],
         [
           {
-            "text": "p2"
+            "text": "p1,i",
+            "latex": "p_{1,i}"
           },
           {
-            "text": "2,4 d0"
+            "text": "–"
           },
           {
-            "text": "min(14t;200 mm)"
+            "text": "min(28t;400 mm)",
+            "latex": "\\min(28t;400\\,\\mathrm{mm})"
           },
           {
-            "text": "min(14t;200 mm)"
+            "text": "–"
           },
           {
-            "text": "min(14t;175 mm)"
+            "text": "–"
+          }
+        ],
+        [
+          {
+            "text": "p2",
+            "latex": "p_2"
+          },
+          {
+            "text": "2,4 d0",
+            "latex": "2{,}4d_0"
+          },
+          {
+            "text": "min(14t;200 mm)",
+            "latex": "\\min(14t;200\\,\\mathrm{mm})"
+          },
+          {
+            "text": "min(14t;200 mm)",
+            "latex": "\\min(14t;200\\,\\mathrm{mm})"
+          },
+          {
+            "text": "min(14t;175 mm)",
+            "latex": "\\min(14t;175\\,\\mathrm{mm})"
           }
         ]
       ],

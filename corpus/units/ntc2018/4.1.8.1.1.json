@@ -66,7 +66,7 @@
       "text": {
         "raw": "Per la valutazione della resistenza degli elementi strutturali vale quanto stabilito al § 4.1.2.3, tenendo presente che per la verifica\ndelle sezioni si assumerà il valore di progetto della forza di precompressione con il coefficiente parziale ·P = 1, secondo quanto\nprevisto al punto § 2.6.1.",
         "normalized": "Per la valutazione della resistenza degli elementi strutturali vale quanto stabilito al § 4.1.2.3, tenendo presente che per la verifica delle sezioni si assumerà il valore di progetto della forza di precompressione con il coefficiente parziale γP = 1, secondo quanto previsto al punto § 2.6.1.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -74,21 +74,12 @@
           },
           {
             "kind": "math",
-            "value": "γP",
-            "latex": "\\gamma_{P}"
+            "value": "γP = 1",
+            "latex": "\\gamma_P=1"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1, secondo quanto previsto al punto § 2.6.1."
+            "value": ", secondo quanto previsto al punto § 2.6.1."
           }
         ]
       },
@@ -125,11 +116,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -138,6 +124,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "40c5c152130a3c1a2a7cc379ed056710faa95a8c1307b66590d742064169a11a",
@@ -151,7 +142,7 @@
       "text": {
         "raw": "Per le verifiche di resistenza locale degli ancoraggi delle armature di precompressione, si assumerà, invece, un valore di progetto\ndella forza di precompressione con ·P = 1,2.",
         "normalized": "Per le verifiche di resistenza locale degli ancoraggi delle armature di precompressione, si assumerà, invece, un valore di progetto della forza di precompressione con γP = 1,2.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -159,21 +150,12 @@
           },
           {
             "kind": "math",
-            "value": "γP",
-            "latex": "\\gamma_{P}"
+            "value": "γP = 1,2",
+            "latex": "\\gamma_P=1{,}2"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,2."
+            "value": "."
           }
         ]
       },
@@ -210,11 +192,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -223,6 +200,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "704a2607f76695bd9aaa299afb987a7885707b90f2b5513d7b63856478ca7dd9",

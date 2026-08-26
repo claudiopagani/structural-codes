@@ -11,6 +11,11 @@ const createdAt = "2026-08-09T12:00:00Z";
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "ntc2018");
 const assetDir = join(root, "corpus", "assets", "ntc2018");
+const throughPageArg = process.argv.indexOf("--through-page");
+const throughPage = throughPageArg >= 0 ? Number(process.argv[throughPageArg + 1]) : null;
+if (throughPage !== null && (!Number.isInteger(throughPage) || throughPage < 187 || throughPage > 196)) {
+    throw new Error("--through-page deve essere una pagina intera compresa fra 187 e 196");
+}
 
 const pageLines = new Map<number, string[]>();
 for (let page = 187; page <= 196; page += 1) {
@@ -58,6 +63,7 @@ function normalize(source: string): string {
         .replace(/·F/gu, "γF")
         .replace(/·E/gu, "γE")
         .replace(/·M/gu, "γM")
+        .replace(/·WR/gu, "γτR")
         .replace(/·R/gu, "γR")
         .replace(/\bE inst,d\b/gu, "Einst,d")
         .replace(/\bE stb,d\b/gu, "Estb,d")
@@ -86,6 +92,7 @@ function normalize(source: string): string {
         .replace(/Πȝk/gu, "tan φ′k")
         .replace(/·Πȝ/gu, "γφ′")
         .replace(/\bJR\b/gu, "γR")
+        .replace(/\bWR\b/gu, "τR")
         .replace(/Wf/gu, "τf")
         .replace(/\bW\b/gu, "τ")
         .replace(/Β([1-6])/gu, "ξ$1")
@@ -97,6 +104,15 @@ function normalize(source: string): string {
 
 type MathTerm = [string, string];
 const mathTerms: MathTerm[] = [
+    ["γτR =1,0", "\\gamma_{\\tau_R}=1{,}0"],
+    ["γτR=1,25", "\\gamma_{\\tau_R}=1{,}25"],
+    ["γE = γF", "\\gamma_E=\\gamma_F"],
+    ["γF Fk", "\\gamma_F F_k"],
+    ["Xk /γM", "\\frac{X_k}{\\gamma_M}"],
+    ["A2+M2+R2", "\\mathrm{A2+M2+R2}"],
+    ["A1+M1+R3", "\\mathrm{A1+M1+R3}"],
+    ["γR = 3", "\\gamma_R=3"],
+    ["γR = 2", "\\gamma_R=2"],
     ["Einst,d", "E_{inst,d}"],
     ["Estb,d", "E_{stb,d}"],
     ["Vinst,d", "V_{inst,d}"],
@@ -117,48 +133,73 @@ const mathTerms: MathTerm[] = [
     ["γE", "\\gamma_E"],
     ["γM", "\\gamma_M"],
     ["γR", "\\gamma_R"],
-    ["φ′k", "\\tan\\varphi'_k"],
+    ["γτR", "\\gamma_{\\tau_R}"],
+    ["ψij", "\\psi_{ij}"],
+    ["φ′k", "\\varphi'_k"],
     ["c′k", "c'_k"],
     ["cuk", "c_{uk}"],
     ["τf", "\\tau_f"],
+    ["τR", "\\tau_R"],
     ["τ", "\\tau"],
+    ["ic", "i_c"],
     ["ξ1", "\\xi_1"],
     ["ξ2", "\\xi_2"],
     ["ξ3", "\\xi_3"],
     ["ξ4", "\\xi_4"],
     ["ξ5", "\\xi_5"],
     ["ξ6", "\\xi_6"],
+    ["ξ", "\\xi"],
+    ["n", "n"],
+    ["M1", "\\mathrm{M1}"],
+    ["R3", "\\mathrm{R3}"],
     ["Ed", "E_d"],
     ["Rd", "R_d"],
     ["Fk", "F_k"],
     ["Xk", "X_k"],
-    ["ad", "a_d"],
+    ["Cd", "C_d"],
     ["Rk", "R_k"],
 ];
 
-function inline(text: string): any[] | undefined {
-    const terms = mathTerms
-        .filter((term) => text.includes(term[0]))
-        .sort((left, right) => right[0].length - left[0].length);
-    if (terms.length === 0) return undefined;
+function inline(text: string, terms = mathTerms): any[] | undefined {
+    const isWord = (character: string | undefined): boolean => character !== undefined && /[\p{L}\p{N}]/u.test(character);
+    const candidates: Array<{ start: number; end: number; value: string; latex: string }> = [];
+    for (const [value, latex] of terms) {
+        let start = text.indexOf(value);
+        while (start >= 0) {
+            const end = start + value.length;
+            const leftOk = !isWord(value[0]) || !isWord(text[start - 1]);
+            const rightOk = !isWord(value.at(-1)) || !isWord(text[end]);
+            if (leftOk && rightOk) candidates.push({ start, end, value, latex });
+            start = text.indexOf(value, start + 1);
+        }
+    }
+    const hydraulicGradient = /(?<=gradiente idraulico )i(?= risulti)/gu;
+    for (const match of text.matchAll(hydraulicGradient)) {
+        candidates.push({ start: match.index, end: match.index + 1, value: "i", latex: "i" });
+    }
+    const designParameter = /(?<=parametri geometrici di progetto )ad\b/gu;
+    for (const match of text.matchAll(designParameter)) {
+        candidates.push({ start: match.index, end: match.index + 2, value: "ad", latex: "a_d" });
+    }
+    candidates.sort((left, right) => left.start - right.start || (right.end - right.start) - (left.end - left.start));
+    const matches: typeof candidates = [];
+    for (const candidate of candidates) {
+        if (!matches.some((match) => candidate.start < match.end && candidate.end > match.start)) matches.push(candidate);
+    }
+    if (matches.length === 0) return undefined;
     const segments: any[] = [];
     let cursor = 0;
-    while (cursor < text.length) {
-        let match: { index: number; term: MathTerm } | undefined;
-        for (const term of terms) {
-            const index = text.indexOf(term[0], cursor);
-            if (index >= 0 && (!match || index < match.index)) match = { index, term };
-        }
-        if (!match) {
-            segments.push({ kind: "text", value: text.slice(cursor) });
-            break;
-        }
-        if (match.index > cursor) segments.push({ kind: "text", value: text.slice(cursor, match.index) });
-        segments.push({ kind: "math", value: match.term[0], latex: match.term[1] });
-        cursor = match.index + match.term[0].length;
+    for (const match of matches) {
+        if (match.start > cursor) segments.push({ kind: "text", value: text.slice(cursor, match.start) });
+        segments.push({ kind: "math", value: match.value, latex: match.latex });
+        cursor = match.end;
     }
+    if (cursor < text.length) segments.push({ kind: "text", value: text.slice(cursor) });
     return segments.filter((segment) => segment.value.length > 0);
 }
+
+const step17TermValues = new Set(["A2+M2+R2", "A1+M1+R3", "ξ", "n", "M1", "R3"]);
+const beforeStep17Terms = mathTerms.filter(([value]) => !step17TermValues.has(value));
 
 function transformations(source: string, normalized: string): any[] {
     if (source === normalized) return [];
@@ -232,16 +273,16 @@ const formulas = [
     { suffix: "6.2.4.1:equ", unit: "6.2.4.1", number: null, page: 189, latex: "E_{inst,d}\\le E_{stb,d}" },
     { suffix: "6.2.1", unit: "6.2.4.1", number: "6.2.1", page: 189, latex: "E_d\\le R_d" },
     { suffix: "6.2.2a", unit: "6.2.4.1", number: "6.2.2a", page: 189, latex: "E_d=E\\left[\\gamma_F F_k;\\frac{X_k}{\\gamma_M};a_d\\right]" },
-    { suffix: "6.2.2b", unit: "6.2.4.1", number: "6.2.2b", page: 189, latex: "E_d=\\gamma_E\\,E\\left[F_k;\\frac{X_k}{\\gamma_M};a_d\\right]" },
+    { suffix: "6.2.2b", unit: "6.2.4.1", number: "6.2.2b", page: 189, latex: "E_d=\\gamma_E\\cdot E\\left[F_k;\\frac{X_k}{\\gamma_M};a_d\\right]" },
     { suffix: "6.2.3", unit: "6.2.4.1", number: "6.2.3", page: 189, latex: "R_d=\\frac{1}{\\gamma_R}R\\left[\\gamma_F F_k;\\frac{X_k}{\\gamma_M};a_d\\right]" },
     { suffix: "6.2.4", unit: "6.2.4.2", number: "6.2.4", page: 191, latex: "V_{inst,d}\\le G_{stb,d}+R_d" },
     { suffix: "6.2.5", unit: "6.2.4.2", number: "6.2.5", page: 191, latex: "V_{inst,d}=G_{inst,d}+Q_{inst,d}" },
     { suffix: "6.2.7", unit: "6.2.4.3", number: "6.2.7", page: 191, latex: "E_d\\le C_d" },
-    { suffix: "6.4.1", unit: "6.4.3.1.1", number: "6.4.1", page: 196, latex: "R_{c,k}=\\min\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{c,m})_{\\min}}{\\xi_2}\\right\\}" },
-    { suffix: "6.4.2", unit: "6.4.3.1.1", number: "6.4.2", page: 196, latex: "R_{t,k}=\\min\\left\\{\\frac{(R_{t,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{t,m})_{\\min}}{\\xi_2}\\right\\}" },
-    { suffix: "6.4.3", unit: "6.4.3.1.1", number: "6.4.3", page: 196, latex: "R_{c,k}=\\min\\left\\{\\frac{(R_{c,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{c,cal})_{\\min}}{\\xi_4}\\right\\}" },
-    { suffix: "6.4.4", unit: "6.4.3.1.1", number: "6.4.4", page: 196, latex: "R_{t,k}=\\min\\left\\{\\frac{(R_{t,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{t,cal})_{\\min}}{\\xi_4}\\right\\}" },
-    { suffix: "6.4.5", unit: "6.4.3.1.1", number: "6.4.5", page: 196, latex: "R_{c,k}=\\min\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_5};\\frac{(R_{c,m})_{\\min}}{\\xi_6}\\right\\}" },
+    { suffix: "6.4.1", unit: "6.4.3.1.1", number: "6.4.1", page: 196, latex: "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{c,m})_{\\mathrm{min}}}{\\xi_2}\\right\\}" },
+    { suffix: "6.4.2", unit: "6.4.3.1.1", number: "6.4.2", page: 196, latex: "R_{t,k}=\\operatorname{Min}\\left\\{\\frac{(R_{t,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{t,m})_{\\mathrm{min}}}{\\xi_2}\\right\\}" },
+    { suffix: "6.4.3", unit: "6.4.3.1.1", number: "6.4.3", page: 196, latex: "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{c,cal})_{\\mathrm{min}}}{\\xi_4}\\right\\}" },
+    { suffix: "6.4.4", unit: "6.4.3.1.1", number: "6.4.4", page: 196, latex: "R_{t,k}=\\operatorname{Min}\\left\\{\\frac{(R_{t,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{t,cal})_{\\mathrm{min}}}{\\xi_4}\\right\\}" },
+    { suffix: "6.4.5", unit: "6.4.3.1.1", number: "6.4.5", page: 196, latex: "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_5};\\frac{(R_{c,m})_{\\mathrm{min}}}{\\xi_6}\\right\\}" },
 ];
 
 const cell = (text: string, latex?: string, extra: Record<string, number> = {}): any => ({
@@ -257,7 +298,7 @@ const tables = [
         columnCount: 6,
         headers: [
             [cell(""), cell("Effetto"), cell("Coefficiente Parziale"), cell("EQU"), cell("(A1)"), cell("(A2)")],
-            [cell(""), cell(""), cell("γF (o γE)", "\\gamma_F\\ (o\\ \\gamma_E)"), cell(""), cell(""), cell("")],
+            [cell(""), cell(""), cell("γF (o γE)", "\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"), cell(""), cell(""), cell("")],
         ],
         rows: [
             [cell("Carichi permanenti G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9"), cell("1,0"), cell("1,0")],
@@ -286,7 +327,7 @@ const tables = [
         id: t("6.2.iii"), unit: "6.2.4.2", number: "6.2.III", page: 191,
         caption: "Coefficienti parziali sulle azioni per le verifiche nei confronti di stati limite di sollevamento",
         columnCount: 4,
-        headers: [[cell(""), cell("Effetto"), cell("Coefficiente Parziale γF (o γE)", "\\gamma_F\\ (o\\ \\gamma_E)"), cell("Sollevamento (UPL)")]],
+        headers: [[cell(""), cell("Effetto"), cell("Coefficiente Parziale γF (o γE)", "\\text{Coefficiente Parziale }\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"), cell("Sollevamento (UPL)")]],
         rows: [
             [cell("Carichi permanenti G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9")],
             [cell("Sfavorevole"), cell("1,1")],
@@ -301,7 +342,7 @@ const tables = [
         id: t("6.4.i"), unit: "6.4.2.1", number: "6.4.I", page: 194,
         caption: "Coefficienti parziali γR per le verifiche agli stati limite ultimi di fondazioni superficiali",
         columnCount: 2,
-        headers: [[cell("Verifica"), cell("Coefficiente parziale")]],
+        headers: [[cell("Verifica"), cell("Coefficiente parziale")], [cell(""), cell("(R3)", "(\\mathrm{R3})")]],
         rows: [[cell("Carico limite"), cell("γR = 2,3", "\\gamma_R=2{,}3")], [cell("Scorrimento"), cell("γR = 1,1", "\\gamma_R=1{,}1")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 194; review umana cella per cella ancora obbligatoria."],
     },
@@ -309,7 +350,7 @@ const tables = [
         id: t("6.4.ii"), unit: "6.4.3.1.1", number: "6.4.II", page: 195,
         caption: "Coefficienti parziali γR da applicare alle resistenze caratteristiche a carico verticale dei pali",
         columnCount: 5,
-        headers: [[cell("Resistenza"), cell("Simbolo"), cell("Pali infissi"), cell("Pali trivellati"), cell("Pali ad elica continua")], [cell(""), cell(""), cell("(R3)"), cell("(R3)"), cell("(R3)")]],
+        headers: [[cell("Resistenza"), cell("Simbolo"), cell("Pali infissi"), cell("Pali trivellati"), cell("Pali ad elica continua")], [cell(""), cell("γR", "\\gamma_R"), cell("(R3)", "(\\mathrm{R3})"), cell("(R3)", "(\\mathrm{R3})"), cell("(R3)", "(\\mathrm{R3})")]],
         rows: [
             [cell("Base"), cell("γb", "\\gamma_b"), cell("1,15"), cell("1,35"), cell("1,3")],
             [cell("Laterale in compressione"), cell("γs", "\\gamma_s"), cell("1,15"), cell("1,15"), cell("1,15")],
@@ -322,7 +363,7 @@ const tables = [
         id: t("6.4.iii"), unit: "6.4.3.1.1", number: "6.4.III", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica a partire dai risultati di prove di carico statico su pali pilota",
         columnCount: 6,
-        headers: [[cell("Numero di prove di carico"), cell("1"), cell("2"), cell("3"), cell("4"), cell("≥ 5")]],
+        headers: [[cell("Numero di prove di carico"), cell("1"), cell("2"), cell("3"), cell("4"), cell("≥ 5", "\\ge5")]],
         rows: [[cell("ξ1", "\\xi_1"), cell("1,40"), cell("1,30"), cell("1,20"), cell("1,10"), cell("1,0")], [cell("ξ2", "\\xi_2"), cell("1,40"), cell("1,20"), cell("1,05"), cell("1,00"), cell("1,0")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
     },
@@ -330,7 +371,7 @@ const tables = [
         id: t("6.4.iv"), unit: "6.4.3.1.1", number: "6.4.IV", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica in funzione del numero di verticali indagate",
         columnCount: 8,
-        headers: [[cell("Numero di verticali indagate"), cell("1"), cell("2"), cell("3"), cell("4"), cell("5"), cell("7"), cell("≥ 10")]],
+        headers: [[cell("Numero di verticali indagate"), cell("1"), cell("2"), cell("3"), cell("4"), cell("5"), cell("7"), cell("≥ 10", "\\ge10")]],
         rows: [[cell("ξ3", "\\xi_3"), cell("1,70"), cell("1,65"), cell("1,60"), cell("1,55"), cell("1,50"), cell("1,45"), cell("1,40")], [cell("ξ4", "\\xi_4"), cell("1,70"), cell("1,55"), cell("1,48"), cell("1,42"), cell("1,34"), cell("1,28"), cell("1,21")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
     },
@@ -338,7 +379,7 @@ const tables = [
         id: t("6.4.v"), unit: "6.4.3.1.1", number: "6.4.V", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica a partire dai risultati di prove dinamiche su pali pilota",
         columnCount: 6,
-        headers: [[cell("Numero di prove di carico"), cell("≥ 2"), cell("≥ 5"), cell("≥ 10"), cell("≥ 15"), cell("≥ 20")]],
+        headers: [[cell("Numero di prove di carico"), cell("≥ 2", "\\ge2"), cell("≥ 5", "\\ge5"), cell("≥ 10", "\\ge10"), cell("≥ 15", "\\ge15"), cell("≥ 20", "\\ge20")]],
         rows: [[cell("ξ5", "\\xi_5"), cell("1,60"), cell("1,50"), cell("1,45"), cell("1,42"), cell("1,40")], [cell("ξ6", "\\xi_6"), cell("1,50"), cell("1,35"), cell("1,30"), cell("1,25"), cell("1,25")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
     },
@@ -395,7 +436,12 @@ const units: UnitSpec[] = [
         { kind: "formula-ref", page: 189, from: 47, asset: f("6.2.2b") },
         { kind: "paragraph", page: 189, from: 48 },
         { kind: "formula-ref", page: 189, from: 49, asset: f("6.2.3") },
-        { kind: "paragraph", page: 190, from: 3, to: 21 },
+        { kind: "paragraph", page: 190, from: 3, to: 10 },
+        { kind: "paragraph", page: 190, from: 11, to: 13 },
+        { kind: "paragraph", page: 190, from: 14 },
+        { kind: "paragraph", page: 190, from: 15, to: 16 },
+        { kind: "paragraph", page: 190, from: 17 },
+        { kind: "paragraph", page: 190, from: 18, to: 21 },
     ] },
     { number: "6.2.4.1.1", title: "Azioni", heading: { page: 190, from: 22 }, blocks: [
         { kind: "paragraph", page: 190, from: 23, to: 26 },
@@ -409,6 +455,7 @@ const units: UnitSpec[] = [
         { kind: "list-item", page: 190, from: 46, to: 47 },
         { kind: "list-item", page: 190, from: 48, to: 49 },
         { kind: "table-ref", page: 190, from: 50, to: 60, asset: t("6.2.ii") },
+        { kind: "paragraph", page: 191, from: 3, to: 6 },
     ] },
     { number: "6.2.4.1.3", title: "Verifiche strutturali con l’analisi di interazione terreno-struttura", heading: { page: 191, from: 7 }, blocks: [{ kind: "paragraph", page: 191, from: 8, to: 9 }] },
     { number: "6.2.4.2", title: "Verifiche nei confronti degli stati limite ultimi idraulici", heading: { page: 191, from: 10 }, blocks: [
@@ -416,6 +463,7 @@ const units: UnitSpec[] = [
         { kind: "paragraph", page: 191, from: 12, to: 13 },
         { kind: "paragraph", page: 191, from: 14, to: 17 },
         { kind: "formula-ref", page: 191, from: 18, asset: f("6.2.4") },
+        { kind: "paragraph", page: 191, from: 19, norm: "dove" },
         { kind: "formula-ref", page: 191, from: 19, asset: f("6.2.5") },
         { kind: "paragraph", page: 191, from: 20, to: 23 },
         { kind: "table-ref", page: 191, from: 24, to: 39, asset: t("6.2.iii") },
@@ -537,7 +585,7 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
         return { blockId, kind: block.kind, origin: "official", assetId: block.asset, evidence: evidence(block.page, source, source, "manual-transcription") };
     }
     const normalized = block.norm ?? normalize(source);
-    const segments = inline(normalized);
+    const segments = inline(normalized, block.page >= 192 ? mathTerms : beforeStep17Terms);
     return {
         blockId,
         kind: block.kind,
@@ -549,6 +597,8 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
 
 await mkdir(unitDir, { recursive: true });
 for (const unit of units) {
+    const unitPages = [unit.heading.page, ...(unit.blocks ?? []).map((block) => block.page)];
+    if (throughPage !== null && Math.max(...unitPages) > throughPage) continue;
     const id = uid(unit.number);
     const parts = unit.number.split(".");
     const blocks = [
@@ -608,4 +658,7 @@ const manifest = {
     figures: [],
 };
 await writeFile(join(assetDir, "6-step1.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-console.log(`ntc6-step1: generated ${units.length} units, ${formulas.length} formulas, ${tables.length} tables`);
+const generatedUnits = throughPage === null
+    ? units.length
+    : units.filter((unit) => Math.max(unit.heading.page, ...(unit.blocks ?? []).map((block) => block.page)) <= throughPage).length;
+console.log(`ntc6-step1: generated ${generatedUnits} units, ${formulas.length} formulas, ${tables.length} tables`);

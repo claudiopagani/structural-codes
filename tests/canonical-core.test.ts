@@ -81,7 +81,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        10883,
+        10939,
     );
 });
 
@@ -161,7 +161,7 @@ test("NTC 4.1 conserva il testo ricomposto e risolve gli asset", async () => {
         }
     }
 
-    assert.equal(manifest.formulas.length, 70);
+    assert.equal(manifest.formulas.length, 73);
     assert.equal(manifest.tables.length, 5);
     assert.equal(manifest.figures.length, 4);
 

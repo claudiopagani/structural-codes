@@ -66,7 +66,7 @@
       "text": {
         "raw": "Secondo l’incendio convenzionale di progetto adottato, l’andamento delle temperature viene valutato con riferimento a una delle\ndue seguenti condizioni:",
         "normalized": "Secondo l’incendio convenzionale di progetto adottato, l’andamento delle temperature viene valutato con riferimento a una delle due seguenti condizioni:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -74,10 +74,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 81,
+          "y": 162,
+          "width": 434,
+          "height": 24
         },
         "extraction": {
           "method": "pdf-text",
@@ -86,33 +86,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -125,9 +115,9 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione pari\nalla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento,",
+        "raw": "- curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione pari\nalla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento,\n- curva naturale d’incendio, da individuare tenendo conto dell’intera durata dello stesso, compresa la fase di raffreddamento fi-",
         "normalized": "curva nominale d’incendio, da individuare tra quelle indicate successivamente, per l’intervallo di tempo di esposizione pari alla classe di resistenza al fuoco prevista, senza alcuna fase di raffreddamento,",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -135,10 +125,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 90,
+          "y": 188,
+          "width": 425,
+          "height": 25
         },
         "extraction": {
           "method": "pdf-text",
@@ -147,37 +137,27 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "a15f00609615539b6cbc1368c23b8793735ac22c4a7eac93dfbf7d73cd8567c8",
+        "rawSha256": "b2cdd79be2d0311d293b3d9b8228377bcfda1fe98470c0e85aca304f45714740",
         "normalizedSha256": "3fb43e692c1b270f17df83edab8f846d5640cc0aab5ac4639bc540ae314c6311"
       }
     },
@@ -186,9 +166,9 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- curva naturale d’incendio, da individuare tenendo conto dell’intera durata dello stesso, compresa la fase di raffreddamento fi-\nno al ritorno alla temperatura ambiente.",
+        "raw": "- curva naturale d’incendio, da individuare tenendo conto dell’intera durata dello stesso, compresa la fase di raffreddamento fi-\nno al ritorno alla temperatura ambiente.\nNel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento",
         "normalized": "curva naturale d’incendio, da individuare tenendo conto dell’intera durata dello stesso, compresa la fase di raffreddamento fino al ritorno alla temperatura ambiente.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -196,10 +176,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 90,
+          "y": 211,
+          "width": 425,
+          "height": 25
         },
         "extraction": {
           "method": "pdf-text",
@@ -208,37 +188,27 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "62ab6b2b2069e158bfcf7b238857fe027e36fdfcee44fe58d67083446120e6ae",
+        "rawSha256": "700a9e039f5070436ba1b4648ff2bd50caa506ba4efe17bd389d6616f3d1c60c",
         "normalizedSha256": "df732ac39232e32172488d0d5ad977a1186a47e084c5ed77a369607952277188"
       }
     },
@@ -247,40 +217,123 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento\nè la curva di incendio nominale standard definita come segue:> @C)1t8(log34520 10g q\u000e\u000eT >3.6.2@\ndove Όg è la temperatura dei gas caldi, espressa in °C, e t è il tempo espresso in minuti primi.",
-        "normalized": "Nel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento è la curva di incendio nominale standard definita come segue:> @C)1t8(log34520 10g qT >3.6.2@ dove θg è la temperatura dei gas caldi, espressa in °C, e t è il tempo espresso in minuti primi.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Nel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento\nè la curva di incendio nominale standard definita come segue:> @C)1t8(log34520 q\u000e\u000eT >3.6.2@",
+        "normalized": "Nel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento è la curva di incendio nominale standard definita come segue:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81,
+          "y": 235,
+          "width": 434,
+          "height": 17
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a970b630c0a72fe4f916cfd5a060309568e8dfdc418019ce5a286b985a8c75d1",
+        "normalizedSha256": "3091f4ad5d4cdc3676956c9464b3a481708c5b06282580420a99ba929b107253"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-005",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 150,
+          "y": 244,
+          "width": 220,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "c3abf5e8e5b29a5a9a1720f6a64132f2fb83314f7d124952a9822f04b30c1ff0",
+        "normalizedSha256": "29cc4f2816f4ac059b3968eaf8ce5ffb41271ec53ce9dd5b352e74d61a2eb551"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove Όg è la temperatura dei gas caldi, espressa in °C, e t è il tempo espresso in minuti primi.",
+        "normalized": "dove θg è la temperatura dei gas caldi, espressa in °C, e t è il tempo espresso in minuti primi.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di incendio di materiali combustibili prevalentemente di natura cellulosica, la curva di incendio nominale di riferimento è la curva di incendio nominale standard definita come segue:"
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " @C)1t8(log34520 10g qT "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.2@ dove "
+            "value": "dove "
           },
           {
             "kind": "math",
             "value": "θg",
-            "latex": "\\theta_{g}"
+            "latex": "\\theta_g"
           },
           {
             "kind": "text",
-            "value": " è la temperatura dei gas caldi, espressa in °C, e t è il tempo espresso in minuti primi."
+            "value": " è la temperatura dei gas caldi, espressa in "
+          },
+          {
+            "kind": "math",
+            "value": "°C",
+            "latex": "{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": ", e "
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è il tempo espresso in minuti primi."
           }
         ]
       },
@@ -290,10 +343,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 81,
+          "y": 262,
+          "width": 434,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
@@ -302,48 +355,38 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "1599332a19d877858bdd0c10f44991e111eced219eed6627cb9b08f73842ec3c",
-        "normalizedSha256": "a03c5be873bb5ba8dfccfdc5803bf6d98ea4c54020d4994886f3aed10af5bd9d"
+        "rawSha256": "5ccaf6e3f9853302c7abffcf7a24769d3dd025dff5b13f311141036a623247c9",
+        "normalizedSha256": "3d1b7052908bb77df6bd71844348209541e8d296f61872dbee86ed945245d975"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Nel caso di incendi di quantità rilevanti di idrocarburi o altre sostanze con equivalente velocità di rilascio termico, la curva di in-\ncendio nominale standard può essere sostituita con la curva nominale degli idrocarburi seguente:",
         "normalized": "Nel caso di incendi di quantità rilevanti di idrocarburi o altre sostanze con equivalente velocità di rilascio termico, la curva di incendio nominale standard può essere sostituita con la curva nominale degli idrocarburi seguente:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -351,10 +394,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 81,
+          "y": 276,
+          "width": 434,
+          "height": 19
         },
         "extraction": {
           "method": "pdf-text",
@@ -363,33 +406,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -398,175 +431,158 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-006",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "> @C20)e675,0e325,01(1080 t5,2t167,0\ng q\u000e\u0010\u0010T \u0010\u0010 >3.6.3@\nNel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la\ncurva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:",
-        "normalized": "> @C20)e675,0e325,01(1080 t5,2t167,0 g qT >3.6.3@ Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la curva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " @C20)e675,0e325,01(1080 t5,2t167,0 g qT "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.3@ Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la curva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 68,
-        "printedPage": "64",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "29aa9b9f978ce82a15cb0cd14adbe87e724f219bdf483c2c639c1b99c8c26c88",
-        "normalizedSha256": "52d6bae9f5b2fbfca3a0f3587034ba51e82b5eb85c486065469025dbeb404f64"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "> @C20)e313,0e687,01(660 t8,3t32,0\ng q\u000e\u0010\u0010T \u0010\u0010 >3.6.4@\nGli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta.",
-        "normalized": "> @C20)e313,0e687,01(660 t8,3t32,0 g qT >3.6.4@ Gli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " @C20)e313,0e687,01(660 t8,3t32,0 g qT "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.4@ Gli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 68,
-        "printedPage": "64",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "7d6fee590f65df45ee1132ebb1054d6560eb31f39540b8c39885f2e08ced50d4",
-        "normalizedSha256": "1e9a66e2abf1a6de7796ce251f48120a92d893240a5e245794ab2a505d627b7a"
-      }
-    },
-    {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-008",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 125,
+          "y": 296,
+          "width": 245,
+          "height": 18
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "595e4d460f7a723c7ca339492e44b19150b359b69ba5a37dd5378bf536da4c9e",
+        "normalizedSha256": "182b0de58558443c3de7e1203f1c0964d2d5d86059d4627a1a65abe67583a689"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la\ncurva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:",
+        "normalized": "Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la curva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81,
+          "y": 314,
+          "width": 434,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c98fb882e6dd668d59080793b435fc8e02250560b12495e7b3191687b1e8a055",
+        "normalizedSha256": "5e5f8a859c2df28c59b77017930ac65ba6b8a5a7b170e681a0778051759ad55e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-010",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.4",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 125,
+          "y": 334,
+          "width": 245,
+          "height": 18
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "ab37bdca58ede0b973f73452e5291cad179320995911732c9658d8a92333724c",
+        "normalizedSha256": "4764a6abcb02f7f6d74fcaaab6abbc2136f0d6f8a5352048cc8900ccbb6e356c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-011",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta.",
+        "normalized": "Gli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta.",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 68,
+        "printedPage": "64",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 81,
+          "y": 352,
+          "width": 434,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "490778891fc6bbe0f9fb259b04a4e07f40b44e44c2fc96ef182e2a615ce7b882",
+        "normalizedSha256": "490778891fc6bbe0f9fb259b04a4e07f40b44e44c2fc96ef182e2a615ce7b882"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.5.1#block-editorial-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Sono ammesse altresì specifiche curve nominali, per descrivere particolari scenari di incendio (tunnel curve, slow heating curve,\necc.), purché di comprovata validità.",
         "normalized": "Sono ammesse altresì specifiche curve nominali, per descrivere particolari scenari di incendio (tunnel curve, slow heating curve, ecc.), purché di comprovata validità.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -574,10 +590,10 @@
         "printedPage": "64",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 81.133,
-          "y": 163.682,
-          "width": 433.775,
-          "height": 220.412
+          "x": 81,
+          "y": 365,
+          "width": 434,
+          "height": 17
         },
         "extraction": {
           "method": "pdf-text",
@@ -586,33 +602,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -624,7 +630,11 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.2",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.3",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.4"
+    ],
     "tableIds": [],
     "figureIds": []
   },

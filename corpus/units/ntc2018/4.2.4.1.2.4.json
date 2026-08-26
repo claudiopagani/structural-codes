@@ -1090,7 +1090,7 @@
       "origin": "official",
       "text": {
         "raw": "dove ΘEd è valutata in campo elastico lineare.",
-        "normalized": "dove ΘEd è valutata in campo elastico lineare.",
+        "normalized": "dove τt,Ed è valutata in campo elastico lineare.",
         "normalizationVersion": "ntc42-editorial-profile-0.1.0",
         "inline": [
           {
@@ -1099,8 +1099,8 @@
           },
           {
             "kind": "math",
-            "value": "ΘEd",
-            "latex": "\\Theta_{Ed}"
+            "value": "τt,Ed",
+            "latex": "\\tau_{t,Ed}"
           },
           {
             "kind": "text",
@@ -1124,9 +1124,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, simboli e notazione matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "b593bc113f745ccb166fdf4d3c349df6b22669d4ccf2e022e0916d2a0162b6e0",
-        "normalizedSha256": "b593bc113f745ccb166fdf4d3c349df6b22669d4ccf2e022e0916d2a0162b6e0"
+        "normalizedSha256": "046ebfbc38f3f9e6a8a7347b8aa404de1fa38883abde51b128896fb6da1fa7c8"
       }
     },
     {

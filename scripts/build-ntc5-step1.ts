@@ -36,7 +36,35 @@ function sha256(value: string): string {
 }
 
 function inlineMath(text: string): Inline[] {
-    const patterns: Array<[RegExp, string]> = [
+    const decimal = (value: string) => value.replace(",", "{,}");
+    const quantity = (value: string) => {
+        const match = value.match(/^(\d+(?:,\d+)?)\s*(kN\/m²|kN\/m|kN|m²|mm²|cm²|mm|cm|m)$/u);
+        if (!match) return value;
+        const units: Record<string, string> = {
+            "kN/m²": "\\mathrm{kN/m^2}",
+            "kN/m": "\\mathrm{kN/m}",
+            kN: "\\mathrm{kN}",
+            "m²": "\\mathrm{m^2}",
+            "mm²": "\\mathrm{mm^2}",
+            "cm²": "\\mathrm{cm^2}",
+            mm: "\\mathrm{mm}",
+            cm: "\\mathrm{cm}",
+            m: "\\mathrm{m}",
+        };
+        return `${decimal(match[1] ?? "")}\\,${units[match[2] ?? ""]}`;
+    };
+    const patterns: Array<[RegExp, string | ((match: RegExpExecArray) => string)]> = [
+        [/Qv = Σi 2Qik/g, "Q_v=\\sum_i2Q_{ik}"],
+        [/Ψ([012])j\s*=\s*(\d+,\d+)/g, (match) => `\\psi_{${match[1]}j}=${decimal(match[2] ?? "")}`],
+        [/Ψ([01])(?!j)/g, (match) => `\\psi_${match[1]}`],
+        [/Tr\s*=\s*(\d+(?:,\d+)?)/g, (match) => `T_r=${decimal(match[1] ?? "")}`],
+        [/h1\s*=/g, "h_1="],
+        [/h2\s*=\s*1,00 m/g, "h_2=1{,}00\\,\\mathrm{m}"],
+        [/≤\s*5,0 m/g, "\\le5{,}0\\,\\mathrm{m}"],
+        [/45°/g, "45^\\circ"],
+        [/2\/3/g, "2/3"],
+        [/\d+(?:,\d+)?\s*(?:kN\/m²|kN\/m|kN|m²|mm²|cm²|mm|cm|m)/g, (match) => quantity(match[0])],
+        [/\d+,\d+/g, (match) => decimal(match[0])],
         [/qL,a/g, "q_{L,a}"],
         [/qL,b/g, "q_{L,b}"],
         [/qL,c/g, "q_{L,c}"],
@@ -46,6 +74,7 @@ function inlineMath(text: string): Inline[] {
         [/Q1k/g, "Q_{1k}"],
         [/q1k/g, "q_{1k}"],
         [/w1/g, "w_1"],
+        [/wl/g, "w_l"],
         [/nl/g, "n_l"],
         [/Tr/g, "T_r"],
         [/ε1/g, "\\varepsilon_1"],
@@ -60,6 +89,15 @@ function inlineMath(text: string): Inline[] {
         [/Ed/g, "E_d"],
         [/Rd/g, "R_d"],
         [/Cd/g, "C_d"],
+        [/h1/g, "h_1"],
+        [/h2/g, "h_2"],
+        [/(?<=quota )h\b/g, "h"],
+        [/\bR\b/g, "R"],
+        [/(?<=essendo )L\b/g, "L"],
+        [/(?<= e )L(?= la lunghezza)/g, "L"],
+        [/(?<= in )m(?=\.)/g, "\\mathrm{m}"],
+        [/(?<=: )E$/g, "E"],
+        [/(?<=: )A$/g, "A"],
     ];
     let cursor = 0;
     const matches: Array<{ start: number; end: number; value: string; latex: string }> = [];
@@ -70,7 +108,12 @@ function inlineMath(text: string): Inline[] {
             const start = match.index;
             const end = start + match[0].length;
             if (matches.some((item) => start < item.end && end > item.start)) continue;
-            matches.push({ start, end, value: match[0], latex: latex.replace("$1", match[1] ?? "") });
+            matches.push({
+                start,
+                end,
+                value: match[0],
+                latex: typeof latex === "function" ? latex(match) : latex.replace("$1", match[1] ?? ""),
+            });
         }
     }
     matches.sort((a, b) => a.start - b.start);
@@ -91,19 +134,24 @@ const p = (page: number, text: string, raw = text, inline = inlineMath(text)): B
     raw,
     inline,
 });
-const li = (page: number, text: string, raw = text): BlockDef => ({
+const li = (page: number, text: string, raw = text, inline = inlineMath(text)): BlockDef => ({
     kind: "list-item",
     page,
     text,
     raw,
-    inline: inlineMath(text),
+    inline,
 });
-const heading = (page: number, number: string, title: string, raw = `${number}. ${title}`): BlockDef => ({
-    kind: "heading",
-    page,
-    text: `${number} ${title}`,
-    raw,
-});
+const heading = (page: number, number: string, title: string, raw = `${number}. ${title}`): BlockDef => {
+    const text = `${number} ${title}`;
+    const inline = inlineMath(text);
+    return {
+        kind: "heading",
+        page,
+        text,
+        raw,
+        ...(inline.some((segment) => segment.kind === "math") ? { inline } : {}),
+    };
+};
 const innerHeading = (page: number, text: string): BlockDef => ({
     kind: "heading",
     page,
@@ -337,7 +385,7 @@ const units: UnitDef[] = [
             heading(158, "5.1.3.5", "AZIONI VARIABILI DA TRAFFICO. AZIONE LONGITUDINALE DI FRENAMENTO O DI ACCELERAZIONE: q3", "5.1.3.5 A ZIONI VARIABILI DA TRAFFICO. A ZIONE LONGITUDINALE DI FRENAMENTO O DI ACCELERAZIONE : q\n3"),
             p(158, "La forza di frenamento o di accelerazione q3 è funzione del carico verticale totale agente sulla corsia convenzionale n. 1 ed è uguale a", "La forza di frenamento o di accelerazione q3 è funzione del carico verticale totale agente sulla corsia convenzionale n. 1 ed è ugua-\nle a"),
             ref("formula-ref", 158, "5.1.4"),
-            p(158, "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione.", "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed a-\ngente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione."),
+            p(158, "essendo w1 la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed agente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione.", "essendo wl la larghezza della corsia e L la lunghezza della zona caricata. La forza, applicata a livello della pavimentazione ed a-\ngente lungo l’asse della corsia, è assunta uniformemente distribuita sulla lunghezza caricata e include gli effetti di interazione."),
         ],
     },
     {
@@ -602,7 +650,16 @@ const table = (id: string, unitId: string, officialNumber: string, pdfPage: numb
     rows,
     notes,
 });
-const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
+function inferredCellLatex(text: string): string | undefined {
+    const footnoted = text.match(/^(\d+(?:,\d+)?) \((\d+)\)$/u);
+    if (footnoted) return `${(footnoted[1] ?? "").replace(",", "{,}")}^{(${footnoted[2]})}`;
+    if (/^\d+(?:,\d+)?$/u.test(text)) return text.replace(",", "{,}");
+    return undefined;
+}
+const cell = (text: string, extra: Record<string, unknown> = {}) => {
+    const latex = inferredCellLatex(text);
+    return { text, ...(latex ? { latex } : {}), ...extra };
+};
 
 const assetManifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
@@ -613,53 +670,53 @@ const assetManifest = {
     sourceId,
     status: "transcribed-unreviewed",
     formulas: [
-        { id: asset("formula", "5.1.1"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.1", pdfPage: 157, latex: "q_{L,a}=128{,}95\\left(\\frac{1}{L}\\right)^{0{,}25}\\;[\\mathrm{kN/m}]" },
-        { id: asset("formula", "5.1.2"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.2", pdfPage: 157, latex: "q_{L,b}=88{,}71\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{kN/m}]" },
-        { id: asset("formula", "5.1.3"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.3", pdfPage: 157, latex: "q_{L,c}=77{,}12\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{kN/m}]" },
-        { id: asset("formula", "5.1.4"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.5", officialNumber: "5.1.4", pdfPage: 158, latex: "180\\,\\mathrm{kN}\\le q_3=0{,}6(2Q_{1k})+0{,}10q_{1k}\\,w_1\\,L\\le900\\,\\mathrm{kN}" },
+        { id: asset("formula", "5.1.1"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.1", pdfPage: 157, latex: "q_{L,a}=128{,}95\\left(\\frac{1}{L}\\right)^{0{,}25}\\;[\\mathrm{KN/m}]" },
+        { id: asset("formula", "5.1.2"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.2", pdfPage: 157, latex: "q_{L,b}=88{,}71\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{KN/m}]" },
+        { id: asset("formula", "5.1.3"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.3", pdfPage: 157, latex: "q_{L,c}=77{,}12\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{KN/m}]" },
+        { id: asset("formula", "5.1.4"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.5", officialNumber: "5.1.4", pdfPage: 158, latex: "180\\,\\mathrm{kN}\\le q_3=0{,}6(2Q_{1k})+0{,}10q_{1k}\\cdot w_1\\cdot L\\le900\\,\\mathrm{kN}" },
     ],
     tables: [
-        table("5.1.i", "5.1.3.3.2", "5.1.I", 156, "Tab. 5.1.I - Numero e larghezza delle corsie", [[cell("Larghezza della superficie carrabile \\\"w\\\""), cell("Numero di corsie convenzionali"), cell("Larghezza di una corsia convenzionale [m]"), cell("Larghezza della zona rimanente [m]")]], [
-            [cell("w < 5,40 m"), cell("n_l = 1"), cell("3,00"), cell("(w - 3,00)")],
-            [cell("5,4 ≤ w < 6,0 m"), cell("n_l = 2"), cell("w/2"), cell("0")],
-            [cell("6,0 m ≤ w"), cell("n_l = Int(w/3)"), cell("3,00"), cell("w - (3,00 × n_l)")],
+        table("5.1.i", "5.1.3.3.2", "5.1.I", 156, "Tab. 5.1.I - Numero e larghezza delle corsie", [[cell("Larghezza della superficie carrabile \\\"w\\\"", { latex: "\\text{Larghezza della superficie carrabile }w" }), cell("Numero di corsie convenzionali"), cell("Larghezza di una corsia convenzionale [m]", { latex: "\\text{Larghezza di una corsia convenzionale }[\\mathrm{m}]" }), cell("Larghezza della zona rimanente [m]", { latex: "\\text{Larghezza della zona rimanente }[\\mathrm{m}]" })]], [
+            [cell("w < 5,40 m", { latex: "w<5{,}40\\,\\mathrm{m}" }), cell("n_l = 1", { latex: "n_l=1" }), cell("3,00"), cell("(w - 3,00)", { latex: "(w-3{,}00)" })],
+            [cell("5,4 ≤ w < 6,0 m", { latex: "5{,}4\\le w<6{,}0\\,\\mathrm{m}" }), cell("n_l = 2", { latex: "n_l=2" }), cell("w/2", { latex: "w/2" }), cell("0")],
+            [cell("6,0 m ≤ w", { latex: "6{,}0\\,\\mathrm{m}\\le w" }), cell("n_l = Int(w/3)", { latex: "n_l=\\operatorname{Int}(w/3)" }), cell("3,00"), cell("w - (3,00 × n_l)", { latex: "w-(3{,}00\\times n_l)" })],
         ]),
-        table("5.1.ii", "5.1.3.3.5", "5.1.II", 158, "Tab. 5.1.II - Intensità dei carichi Qik e qik per le diverse corsie", [[cell("Posizione"), cell("Carico asse Qik [kN]"), cell("qik [kN/m²]")]], [
+        table("5.1.ii", "5.1.3.3.5", "5.1.II", 158, "Tab. 5.1.II - Intensità dei carichi Qik e qik per le diverse corsie", [[cell("Posizione"), cell("Carico asse Qik [kN]", { latex: "\\text{Carico asse }Q_{ik}\\;[\\mathrm{kN}]" }), cell("qik [kN/m²]", { latex: "q_{ik}\\;[\\mathrm{kN/m^2}]" })]], [
             [cell("Corsia Numero 1"), cell("300"), cell("9,00")],
             [cell("Corsia Numero 2"), cell("200"), cell("2,50")],
             [cell("Corsia Numero 3"), cell("100"), cell("2,50")],
             [cell("Altre corsie"), cell("0,00"), cell("2,50")],
         ]),
-        table("5.1.iii", "5.1.3.6", "5.1.III", 159, "Tab. 5.1.III - Valori caratteristici delle forze centrifughe", [[cell("Raggio di curvatura [m]"), cell("q4 [kN]")]], [
-            [cell("R < 200"), cell("0,2 Qv")],
-            [cell("200 ≤ R ≤ 1500"), cell("40 Qv/R")],
-            [cell("1500 ≤ R"), cell("0")],
+        table("5.1.iii", "5.1.3.6", "5.1.III", 159, "Tab. 5.1.III - Valori caratteristici delle forze centrifughe", [[cell("Raggio di curvatura [m]", { latex: "\\text{Raggio di curvatura }[\\mathrm{m}]" }), cell("q4 [kN]", { latex: "q_4\\;[\\mathrm{kN}]" })]], [
+            [cell("R < 200", { latex: "R<200" }), cell("0,2 Qv", { latex: "0{,}2Q_v" })],
+            [cell("200 ≤ R ≤ 1500", { latex: "200\\le R\\le1500" }), cell("40 Qv/R", { latex: "40Q_v/R" })],
+            [cell("1500 ≤ R", { latex: "1500\\le R" }), cell("0")],
         ]),
         table("5.1.iv", "5.1.3.14", "5.1.IV", 160, "Tab. 5.1.IV - Valori caratteristici delle azioni dovute al traffico", [[
             cell("Gruppo di azioni"), cell("Modello principale (schemi di carico 1, 2, 3, 4 e 6)"), cell("Veicoli speciali"), cell("Folla (Schema di carico 5)"), cell("Frenatura"), cell("Forza centrifuga"), cell("Carico uniformemente distribuito"),
         ]], [
-            [cell("1"), cell("Valore caratteristico"), cell(""), cell(""), cell(""), cell(""), cell("Schema di carico 5 con valore di combinazione 2,5 kN/m²")],
+            [cell("1"), cell("Valore caratteristico"), cell(""), cell(""), cell(""), cell(""), cell("Schema di carico 5 con valore di combinazione 2,5 kN/m²", { latex: "\\text{Schema di carico 5 con valore di combinazione }2{,}5\\,\\mathrm{kN/m^2}" })],
             [cell("2a"), cell("Valore frequente"), cell(""), cell(""), cell("Valore caratteristico"), cell(""), cell("")],
             [cell("2b"), cell("Valore frequente"), cell(""), cell(""), cell(""), cell("Valore caratteristico"), cell("")],
-            [cell("3 (*)"), cell(""), cell(""), cell(""), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²")],
-            [cell("4 (**)"), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²"), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²")],
+            [cell("3 (*)"), cell(""), cell(""), cell(""), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²", { latex: "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}" })],
+            [cell("4 (**)"), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²", { latex: "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}" }), cell(""), cell(""), cell("Schema di carico 5 con valore caratteristico 5,0 kN/m²", { latex: "\\text{Schema di carico 5 con valore caratteristico }5{,}0\\,\\mathrm{kN/m^2}" })],
             [cell("5 (***)"), cell("Da definirsi per il singolo progetto"), cell("Valore caratteristico o nominale"), cell(""), cell(""), cell(""), cell("")],
         ], ["(*) Ponti pedonali", "(**) Da considerare solo se richiesto dal particolare progetto (ad es. ponti in zona urbana)", "(***) Da considerare solo se si considerano veicoli speciali"]),
-        table("5.1.v", "5.1.3.14", "5.1.V", 161, "Tab. 5.1.V - Coefficienti parziali di sicurezza per le combinazioni di carico agli SLU", [[cell("Azione"), cell("Condizione"), cell("Coefficiente"), cell("EQU(1)"), cell("A1"), cell("A2")]], [
-            [cell("Azioni permanenti g1 e g3"), cell("favorevoli"), cell("γG1 e γG3"), cell("0,90"), cell("1,00"), cell("1,00")],
-            [cell("Azioni permanenti g1 e g3"), cell("sfavorevoli"), cell("γG1 e γG3"), cell("1,10"), cell("1,35"), cell("1,00")],
-            [cell("Azioni permanenti non strutturali (2) g2"), cell("favorevoli"), cell("γG2"), cell("0,00"), cell("0,00"), cell("0,00")],
-            [cell("Azioni permanenti non strutturali (2) g2"), cell("sfavorevoli"), cell("γG2"), cell("1,50"), cell("1,50"), cell("1,30")],
-            [cell("Azioni variabili da traffico"), cell("favorevoli"), cell("γQ"), cell("0,00"), cell("0,00"), cell("0,00")],
-            [cell("Azioni variabili da traffico"), cell("sfavorevoli"), cell("γQ"), cell("1,35"), cell("1,35"), cell("1,15")],
-            [cell("Azioni variabili"), cell("favorevoli"), cell("γQi"), cell("0,00"), cell("0,00"), cell("0,00")],
-            [cell("Azioni variabili"), cell("sfavorevoli"), cell("γQi"), cell("1,50"), cell("1,50"), cell("1,30")],
-            [cell("Distorsioni e presollecitazioni di progetto"), cell("favorevoli"), cell("γε1"), cell("0,90"), cell("1,00"), cell("1,00")],
-            [cell("Distorsioni e presollecitazioni di progetto"), cell("sfavorevoli"), cell("γε1"), cell("1,00 (3)"), cell("1,00 (4)"), cell("1,00")],
-            [cell("Ritiro e viscosità, Cedimenti vincolari"), cell("favorevoli"), cell("γε2, γε3, γε4"), cell("0,00"), cell("0,00"), cell("0,00")],
-            [cell("Ritiro e viscosità, Cedimenti vincolari"), cell("sfavorevoli"), cell("γε2, γε3, γε4"), cell("1,20"), cell("1,20"), cell("1,00")],
+        table("5.1.v", "5.1.3.14", "5.1.V", 161, "Tab. 5.1.V - Coefficienti parziali di sicurezza per le combinazioni di carico agli SLU", [[cell("Azione"), cell("Condizione"), cell("Coefficiente"), cell("EQU(1)", { latex: "\\mathrm{EQU}^{(1)}" }), cell("A1", { latex: "A_1" }), cell("A2", { latex: "A_2" })]], [
+            [cell("Azioni permanenti g1 e g3", { latex: "\\text{Azioni permanenti }g_1\\text{ e }g_3" }), cell("favorevoli"), cell("γG1 e γG3", { latex: "\\gamma_{G1}\\text{ e }\\gamma_{G3}" }), cell("0,90"), cell("1,00"), cell("1,00")],
+            [cell("Azioni permanenti g1 e g3", { latex: "\\text{Azioni permanenti }g_1\\text{ e }g_3" }), cell("sfavorevoli"), cell("γG1 e γG3", { latex: "\\gamma_{G1}\\text{ e }\\gamma_{G3}" }), cell("1,10"), cell("1,35"), cell("1,00")],
+            [cell("Azioni permanenti non strutturali (2) g2", { latex: "\\text{Azioni permanenti non strutturali}^{(2)}\,g_2" }), cell("favorevoli"), cell("γG2", { latex: "\\gamma_{G2}" }), cell("0,00"), cell("0,00"), cell("0,00")],
+            [cell("Azioni permanenti non strutturali (2) g2", { latex: "\\text{Azioni permanenti non strutturali}^{(2)}\,g_2" }), cell("sfavorevoli"), cell("γG2", { latex: "\\gamma_{G2}" }), cell("1,50"), cell("1,50"), cell("1,30")],
+            [cell("Azioni variabili da traffico"), cell("favorevoli"), cell("γQ", { latex: "\\gamma_Q" }), cell("0,00"), cell("0,00"), cell("0,00")],
+            [cell("Azioni variabili da traffico"), cell("sfavorevoli"), cell("γQ", { latex: "\\gamma_Q" }), cell("1,35"), cell("1,35"), cell("1,15")],
+            [cell("Azioni variabili"), cell("favorevoli"), cell("γQi", { latex: "\\gamma_{Qi}" }), cell("0,00"), cell("0,00"), cell("0,00")],
+            [cell("Azioni variabili"), cell("sfavorevoli"), cell("γQi", { latex: "\\gamma_{Qi}" }), cell("1,50"), cell("1,50"), cell("1,30")],
+            [cell("Distorsioni e presollecitazioni di progetto"), cell("favorevoli"), cell("γε1", { latex: "\\gamma_{\\varepsilon1}" }), cell("0,90"), cell("1,00"), cell("1,00")],
+            [cell("Distorsioni e presollecitazioni di progetto"), cell("sfavorevoli"), cell("γε1", { latex: "\\gamma_{\\varepsilon1}" }), cell("1,00 (3)"), cell("1,00 (4)"), cell("1,00")],
+            [cell("Ritiro e viscosità, Cedimenti vincolari"), cell("favorevoli"), cell("γε2, γε3, γε4", { latex: "\\gamma_{\\varepsilon2},\\,\\gamma_{\\varepsilon3},\\,\\gamma_{\\varepsilon4}" }), cell("0,00"), cell("0,00"), cell("0,00")],
+            [cell("Ritiro e viscosità, Cedimenti vincolari"), cell("sfavorevoli"), cell("γε2, γε3, γε4", { latex: "\\gamma_{\\varepsilon2},\\,\\gamma_{\\varepsilon3},\\,\\gamma_{\\varepsilon4}" }), cell("1,20"), cell("1,20"), cell("1,00")],
         ], ["(1) Equilibrio che non coinvolga i parametri di deformabilità e resistenza del terreno; altrimenti si applicano i valori della colonna A2.", "(2) Nel caso in cui l’intensità dei carichi permanenti non strutturali, o di una parte di essi (ad esempio carichi permanenti portati), sia ben definita in fase di progetto, per detti carichi o per la parte di essi nota si potranno adottare gli stessi coefficienti validi per le azioni permanenti.", "(3) 1,30 per instabilità in strutture con precompressione esterna", "(4) 1,20 per effetti locali"]),
-        table("5.1.vi", "5.1.3.14", "5.1.VI", 161, "Tab. 5.1.VI - Coefficienti Ψ per le azioni variabili per ponti stradali e pedonali", [[cell("Azioni"), cell("Gruppo di azioni (Tab. 5.1.IV)"), cell("Coefficiente Ψ0 di combinazione"), cell("Coefficiente Ψ1 (valori frequenti)"), cell("Coefficiente Ψ2 (valori quasi permanenti)")]], [
+        table("5.1.vi", "5.1.3.14", "5.1.VI", 161, "Tab. 5.1.VI - Coefficienti Ψ per le azioni variabili per ponti stradali e pedonali", [[cell("Azioni"), cell("Gruppo di azioni (Tab. 5.1.IV)"), cell("Coefficiente Ψ0 di combinazione", { latex: "\\text{Coefficiente }\\psi_0\\text{ di combinazione}" }), cell("Coefficiente Ψ1 (valori frequenti)", { latex: "\\text{Coefficiente }\\psi_1\\text{ (valori frequenti)}" }), cell("Coefficiente Ψ2 (valori quasi permanenti)", { latex: "\\text{Coefficiente }\\psi_2\\text{ (valori quasi permanenti)}" })]], [
             [cell("Azioni da traffico (Tab. 5.1.IV)"), cell("Schema 1 (carichi tandem)"), cell("0,75"), cell("0,75"), cell("0,0")],
             [cell("Azioni da traffico (Tab. 5.1.IV)"), cell("Schemi 1, 5 e 6 (carichi distribuiti)"), cell("0,40"), cell("0,40"), cell("0,0")],
             [cell("Azioni da traffico (Tab. 5.1.IV)"), cell("Schemi 3 e 4 (carichi concentrati)"), cell("0,40"), cell("0,40"), cell("0,0")],

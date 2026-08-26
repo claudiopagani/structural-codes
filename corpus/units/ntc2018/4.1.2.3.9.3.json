@@ -128,20 +128,20 @@
       "text": {
         "raw": "Per i pilastri compressi di telai a nodi fissi, non altrimenti soggetti ad esplicite azioni flettenti, va comunque inserito nel modello\ndi calcolo un difetto di rettilineità pari a 1/300 della loro altezza.",
         "normalized": "Per i pilastri compressi di telai a nodi fissi, non altrimenti soggetti ad esplicite azioni flettenti, va comunque inserito nel modello di calcolo un difetto di rettilineità pari a 1/300 della loro altezza.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per i pilastri compressi di telai a nodi fissi, non altrimenti soggetti ad esplicite azioni flettenti, va comunque inserito nel modello di calcolo un difetto di rettilineità pari a 1"
+            "value": "Per i pilastri compressi di telai a nodi fissi, non altrimenti soggetti ad esplicite azioni flettenti, va comunque inserito nel modello di calcolo un difetto di rettilineità pari a "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "1/300",
+            "latex": "1/300"
           },
           {
             "kind": "text",
-            "value": "300 della loro altezza."
+            "value": " della loro altezza."
           }
         ]
       },
@@ -178,11 +178,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -191,6 +186,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "3986a42e2317811d4bd8ecd00c5c161e4a291b9fb9957db6548d1e69bc300e54",
@@ -326,30 +326,21 @@
       "origin": "official",
       "text": {
         "raw": "dove I c è il momento d’inerzia della sezione di calcestruzzo interamente reagente e Κ è il coefficiente di viscosità del calcestruzzo\n(11.2.10.7).",
-        "normalized": "dove I c è il momento d’inerzia della sezione di calcestruzzo interamente reagente e φ è il coefficiente di viscosità del calcestruzzo (11.2.10.7).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove Ic è il momento d’inerzia della sezione di calcestruzzo interamente reagente e φ è il coefficiente di viscosità del calcestruzzo (§ 11.2.10.7).",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove I "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "Ic",
+            "latex": "I_c"
           },
           {
             "kind": "text",
-            "value": " è il momento "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’inerzia della sezione di calcestruzzo interamente reagente e "
+            "value": " è il momento d’inerzia della sezione di calcestruzzo interamente reagente e "
           },
           {
             "kind": "math",
@@ -358,7 +349,7 @@
           },
           {
             "kind": "text",
-            "value": " è il coefficiente di viscosità del calcestruzzo (11.2.10.7)."
+            "value": " è il coefficiente di viscosità del calcestruzzo (§ 11.2.10.7)."
           }
         ]
       },
@@ -395,11 +386,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -408,10 +394,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "bd506d1603a4ee31d9e51b3aaf3d1d3a3edf49fc8035e78528176dc0e8d29a54",
-        "normalizedSha256": "ec21b87034824a2dcf8071bebcf10978f251668e3c933c3e83ebc00d01a31a86"
+        "normalizedSha256": "a4cfd576d82814253d748ea50baf93a196b173577aa2a9afcab384e1a60f672f"
       }
     },
     {
@@ -421,7 +412,7 @@
       "text": {
         "raw": "Per i coefficienti elastici corretti si possono utilizzare le espressioni linearizzate nella variabile NEd (sforzo assiale dell’elemento).",
         "normalized": "Per i coefficienti elastici corretti si possono utilizzare le espressioni linearizzate nella variabile NEd (sforzo assiale dell’elemento).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -454,7 +445,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "7bbe9f2c6d7a59f4fe44a03b4825e6b06ccb1a5a20a6573e06f2dea5e6057145",
         "normalizedSha256": "7bbe9f2c6d7a59f4fe44a03b4825e6b06ccb1a5a20a6573e06f2dea5e6057145"
       }
@@ -556,8 +553,19 @@
       "origin": "official",
       "text": {
         "raw": "f ck resistenza caratteristica del calcestruzzo;",
-        "normalized": "f ck resistenza caratteristica del calcestruzzo;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalized": "fck resistenza caratteristica del calcestruzzo;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " resistenza caratteristica del calcestruzzo;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -575,9 +583,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "af57b24c5144c2d592a5b1ba4d00128a3eda3f9df5687fd381abaaaf707322f6",
-        "normalizedSha256": "af57b24c5144c2d592a5b1ba4d00128a3eda3f9df5687fd381abaaaf707322f6"
+        "normalizedSha256": "7cf67ead96af35e596691bed527f3c5f71051fb9c3abceecf47279aa88322642"
       }
     },
     {
@@ -586,53 +600,13 @@
       "origin": "official",
       "text": {
         "raw": "E cd = Ecm / ·CE modulo elastico di progetto del calcestruzzo con ·CE = 1,2;",
-        "normalized": "E cd = Ecm / γCE modulo elastico di progetto del calcestruzzo con γCE = 1,2;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Ecd = Ecm/γCE modulo elastico di progetto del calcestruzzo con γCE = 1,2;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "E "
-          },
-          {
             "kind": "math",
-            "value": "cd",
-            "latex": "c_d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "Ecm",
-            "latex": "E_{cm}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "γCE",
-            "latex": "\\gamma_{CE}"
+            "value": "Ecd = Ecm/γCE",
+            "latex": "E_{cd}=E_{cm}/\\gamma_{CE}"
           },
           {
             "kind": "text",
@@ -640,21 +614,12 @@
           },
           {
             "kind": "math",
-            "value": "γCE",
-            "latex": "\\gamma_{CE}"
+            "value": "γCE = 1,2",
+            "latex": "\\gamma_{CE}=1{,}2"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,2;"
+            "value": ";"
           }
         ]
       },
@@ -691,11 +656,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -704,10 +664,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "3153bb6ef0ee48c0838c72bf5b2fdf0f6ac048f08397bcee7e261667c0771238",
-        "normalizedSha256": "fa69051e8deb7ba617852ecbac3660771a4de114c3b2e35cddfc50f371ba5ba7"
+        "normalizedSha256": "e13fe138a52f4c094b9e8356121ca11636f6d670353633156a822fa6270b15d7"
       }
     },
     {
@@ -717,7 +682,7 @@
       "text": {
         "raw": "Κ coefficiente di viscosità del calcestruzzo (§ 11.2.10.7);",
         "normalized": "φ coefficiente di viscosità del calcestruzzo (§ 11.2.10.7);",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -763,11 +728,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -776,6 +736,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ccfa7c87a204a2fe720cd45dda9a8f63af209b0cd307f9cf858f5957827a933b",
@@ -789,7 +754,7 @@
       "text": {
         "raw": "fyk tensione di snervamento caratteristica dell’armatura;",
         "normalized": "fyk tensione di snervamento caratteristica dell’armatura;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -818,7 +783,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "184926ae7ac5ebcf9683571816ea7b271420f32083b283d8332a6e5fa086f86c",
         "normalizedSha256": "184926ae7ac5ebcf9683571816ea7b271420f32083b283d8332a6e5fa086f86c"
       }
@@ -829,8 +800,19 @@
       "origin": "official",
       "text": {
         "raw": "E s modulo elastico dell’armatura.",
-        "normalized": "E s modulo elastico dell’armatura.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalized": "Es modulo elastico dell’armatura.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Es",
+            "latex": "E_s"
+          },
+          {
+            "kind": "text",
+            "value": " modulo elastico dell’armatura."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -848,9 +830,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "aa5a4002e9f3cf3ce4ddacd65724ab69b8be4fb37ed852bb0ada27148f81a96a",
-        "normalizedSha256": "aa5a4002e9f3cf3ce4ddacd65724ab69b8be4fb37ed852bb0ada27148f81a96a"
+        "normalizedSha256": "e2a7d024f696ad75cb19593b040f61974ea3dc4c15bb4124363a3017e7cb98d5"
       }
     },
     {

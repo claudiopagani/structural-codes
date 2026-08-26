@@ -101,16 +101,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nei ponti ferroviari al di sopra dei quali il binario presenta un tracciato in curva deve essere considerata la forza centrifuga "
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "ente su tutta l’estensione del tratto in curva."
+            "value": "Nei ponti ferroviari al di sopra dei quali il binario presenta un tracciato in curva deve essere considerata la forza centrifuga agente su tutta l’estensione del tratto in curva."
           }
         ]
       },
@@ -146,16 +137,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La forza centrifuga si considera "
+            "value": "La forza centrifuga si considera agente verso l’esterno della curva, in direzione orizzontale ed applicata alla quota di "
           },
           {
             "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
+            "value": "1,80 m",
+            "latex": "1{,}80\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": "ente verso l’esterno della curva, in direzione orizzontale ed applicata alla quota di 1,80 m al di sopra del P.F.."
+            "value": " al di sopra del P.F.."
           }
         ]
       },
@@ -191,7 +182,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "I calcoli si basano sulla massima velocità compatibile con il tracciato della linea. Ove siano considerati gli effetti dei modelli di carico SW, si assumerà una velocità di 100 km/h."
+            "value": "I calcoli si basano sulla massima velocità compatibile con il tracciato della linea. Ove siano considerati gli effetti dei modelli di carico SW, si assumerà una velocità di "
+          },
+          {
+            "kind": "math",
+            "value": "100 km/h",
+            "latex": "100\\,\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -331,39 +331,57 @@
           },
           {
             "kind": "math",
-            "value": "Qtk",
-            "latex": "Q_{tk}"
+            "value": "Qtk-qtk",
+            "latex": "Q_{tk}\\!-\\!q_{tk}"
           },
           {
             "kind": "text",
-            "value": "-"
+            "value": " = valore caratteristico della forza centrifuga ["
           },
           {
             "kind": "math",
-            "value": "qtk",
-            "latex": "q_{tk}"
+            "value": "kN",
+            "latex": "\\mathrm{kN}"
           },
           {
             "kind": "text",
-            "value": " = valore caratteristico della forza centrifuga [kN - kN/m]; "
+            "value": " - "
           },
           {
             "kind": "math",
-            "value": "Qvk",
-            "latex": "Q_{vk}"
+            "value": "kN/m",
+            "latex": "\\mathrm{kN/m}"
           },
           {
             "kind": "text",
-            "value": "-"
+            "value": "]; "
           },
           {
             "kind": "math",
-            "value": "qvk",
-            "latex": "q_{vk}"
+            "value": "Qvk-qvk",
+            "latex": "Q_{vk}\\!-\\!q_{vk}"
           },
           {
             "kind": "text",
-            "value": " = valore caratteristico dei carichi verticali [kN - kN/m]; "
+            "value": " = valore caratteristico dei carichi verticali ["
+          },
+          {
+            "kind": "math",
+            "value": "kN",
+            "latex": "\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": " - "
+          },
+          {
+            "kind": "math",
+            "value": "kN/m",
+            "latex": "\\mathrm{kN/m}"
+          },
+          {
+            "kind": "text",
+            "value": "]; "
           },
           {
             "kind": "math",
@@ -372,16 +390,88 @@
           },
           {
             "kind": "text",
-            "value": " = coefficiente di adattamento; v = velocità di progetto espressa in m/s; V = velocità di progetto espressa in km/h; f = fattore di riduzione (definito in seguito nella 5.2.10); g = accelerazione di gravità in m/s²; r = r"
+            "value": " = coefficiente di adattamento; "
           },
           {
             "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
+            "value": "v",
+            "latex": "v"
           },
           {
             "kind": "text",
-            "value": "gio di curvatura in m."
+            "value": " = velocità di progetto espressa in "
+          },
+          {
+            "kind": "math",
+            "value": "m/s",
+            "latex": "\\mathrm{m/s}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
+            "kind": "text",
+            "value": " = velocità di progetto espressa in "
+          },
+          {
+            "kind": "math",
+            "value": "km/h",
+            "latex": "\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "f",
+            "latex": "f"
+          },
+          {
+            "kind": "text",
+            "value": " = fattore di riduzione (definito in seguito nella 5.2.10); "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": " = accelerazione di gravità in "
+          },
+          {
+            "kind": "math",
+            "value": "m/s²",
+            "latex": "\\mathrm{m/s^2}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "r",
+            "latex": "r"
+          },
+          {
+            "kind": "text",
+            "value": " = raggio di curvatura in "
+          },
+          {
+            "kind": "math",
+            "value": "m",
+            "latex": "\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -448,25 +538,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di curva policentrica come valore del r"
+            "value": "Nel caso di curva policentrica come valore del raggio "
           },
           {
             "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
+            "value": "r",
+            "latex": "r"
           },
           {
             "kind": "text",
-            "value": "gio r dovrà essere assunto un opportuno valore medio fra i r"
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "gi di curvatura che interessano la campata in esame."
+            "value": " dovrà essere assunto un opportuno valore medio fra i raggi di curvatura che interessano la campata in esame."
           }
         ]
       },
@@ -502,16 +583,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La forza centrifuga sarà sempre combinata con i carichi verticali supposti "
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "enti nella generica configurazione di carico, e non sarà incrementata dai coefficienti dinamici."
+            "value": "La forza centrifuga sarà sempre combinata con i carichi verticali supposti agenti nella generica configurazione di carico, e non sarà incrementata dai coefficienti dinamici."
           }
         ]
       },
@@ -546,8 +618,22 @@
         "normalizationVersion": "ntc5-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "f",
+            "latex": "f"
+          },
+          {
             "kind": "text",
-            "value": "f è un fattore di riduzione dato in funzione della velocità V e della lunghezza "
+            "value": " è un fattore di riduzione dato in funzione della velocità "
+          },
+          {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
+            "kind": "text",
+            "value": " e della lunghezza "
           },
           {
             "kind": "math",
@@ -633,25 +719,79 @@
           },
           {
             "kind": "text",
-            "value": " = lunghezza di influenza, in metri, della parte curva di binario carico sul ponte, che è la più sfavorevole per il progetto del generico elemento strutturale; f = 1 per V ≤ 120 km/h o "
+            "value": " = lunghezza di influenza, in metri, della parte curva di binario carico sul ponte, che è la più sfavorevole per il progetto del generico elemento strutturale; "
           },
           {
             "kind": "math",
-            "value": "Lf",
-            "latex": "L_f"
+            "value": "f = 1",
+            "latex": "f=1"
           },
           {
             "kind": "text",
-            "value": " ≤ 2,88 m; f < 1 per 120 ≤ V ≤ 300 km/h e "
+            "value": " per "
           },
           {
             "kind": "math",
-            "value": "Lf",
-            "latex": "L_f"
+            "value": "V ≤ 120 km/h",
+            "latex": "V\\le120\\,\\mathrm{km/h}"
           },
           {
             "kind": "text",
-            "value": " > 2,88 m; f(V) = f(300) per V > 300 km/h."
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "Lf ≤ 2,88 m",
+            "latex": "L_f\\le2{,}88\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "f < 1",
+            "latex": "f<1"
+          },
+          {
+            "kind": "text",
+            "value": " per "
+          },
+          {
+            "kind": "math",
+            "value": "120 ≤ V ≤ 300 km/h",
+            "latex": "120\\le V\\le300\\,\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Lf > 2,88 m",
+            "latex": "L_f>2{,}88\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "f(V) = f(300)",
+            "latex": "f(V)=f(300)"
+          },
+          {
+            "kind": "text",
+            "value": " per "
+          },
+          {
+            "kind": "math",
+            "value": "V > 300 km/h",
+            "latex": "V>300\\,\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -687,7 +827,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per il modello di carico LM 71 e per velocità di progetto superiori ai 120 km/h, saranno considerati due casi:"
+            "value": "Per il modello di carico LM 71 e per velocità di progetto superiori ai "
+          },
+          {
+            "kind": "math",
+            "value": "120 km/h",
+            "latex": "120\\,\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": ", saranno considerati due casi:"
           }
         ]
       },
@@ -723,7 +872,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "(a) Modello di carico LM 71 e forza centrifuga per V = 120 km/h in accordo con le formule precedenti dove f = 1;"
+            "value": "(a) Modello di carico LM 71 e forza centrifuga per "
+          },
+          {
+            "kind": "math",
+            "value": "V = 120 km/h",
+            "latex": "V=120\\,\\mathrm{km/h}"
+          },
+          {
+            "kind": "text",
+            "value": " in accordo con le formule precedenti dove "
+          },
+          {
+            "kind": "math",
+            "value": "f = 1",
+            "latex": "f=1"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -831,7 +998,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per i modelli di carico LM71 e SW/0 l’azione centrifuga si dovrà determinare partendo dalle equazioni [5.2.9] e [5.2.10] considerando i valori di V, "
+            "value": "Per i modelli di carico LM71 e SW/0 l’azione centrifuga si dovrà determinare partendo dalle equazioni [5.2.9] e [5.2.10] considerando i valori di "
+          },
+          {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
+            "kind": "text",
+            "value": ", "
           },
           {
             "kind": "math",
@@ -840,7 +1016,16 @@
           },
           {
             "kind": "text",
-            "value": ", e f definiti nella seguente Tab. 5.2 II.b."
+            "value": ", e "
+          },
+          {
+            "kind": "math",
+            "value": "f",
+            "latex": "f"
+          },
+          {
+            "kind": "text",
+            "value": " definiti nella seguente Tab. 5.2 II.b."
           }
         ]
       },

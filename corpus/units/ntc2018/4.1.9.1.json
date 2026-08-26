@@ -157,22 +157,7 @@
       "text": {
         "raw": "Nel caso di blocchi non collaboranti la resistenza allo stato limite ultimo è affidata al calcestruzzo ed alle armature ordinarie e/o\ndi precompressione. Nel caso di blocchi collaboranti questi partecipano alla resistenza in modo solidale con gli altri materiali.",
         "normalized": "Nel caso di blocchi non collaboranti la resistenza allo stato limite ultimo è affidata al calcestruzzo ed alle armature ordinarie e/o di precompressione. Nel caso di blocchi collaboranti questi partecipano alla resistenza in modo solidale con gli altri materiali.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Nel caso di blocchi non collaboranti la resistenza allo stato limite ultimo è affidata al calcestruzzo ed alle armature ordinarie e"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "o di precompressione. Nel caso di blocchi collaboranti questi partecipano alla resistenza in modo solidale con gli altri materiali."
-          }
-        ]
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -207,11 +192,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -220,6 +200,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "eb490ab2efc4cff818dd90fb9998555d142f24da23a811ba9701845da6c76d97",

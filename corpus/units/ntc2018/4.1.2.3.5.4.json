@@ -128,11 +128,20 @@
       "text": {
         "raw": "In mancanza di un’armatura trasversale appositamente dimensionata, la resistenza al punzonamento deve essere valutata, utiliz-\nzando formule di comprovata affidabilità, sulla base della resistenza a trazione del calcestruzzo, intendendo la sollecitazione di-\nstribuita su di un perimetro efficace distante 2d dall’impronta caricata, con d altezza utile (media) della soletta.",
         "normalized": "In mancanza di un’armatura trasversale appositamente dimensionata, la resistenza al punzonamento deve essere valutata, utilizzando formule di comprovata affidabilità, sulla base della resistenza a trazione del calcestruzzo, intendendo la sollecitazione distribuita su di un perimetro efficace distante 2d dall’impronta caricata, con d altezza utile (media) della soletta.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In mancanza di un’armatura trasversale appositamente dimensionata, la resistenza al punzonamento deve essere valutata, utilizzando formule di comprovata affidabilità, sulla base della resistenza a trazione del calcestruzzo, intendendo la sollecitazione distribuita su di un perimetro efficace distante 2d dall’impronta caricata, con "
+            "value": "In mancanza di un’armatura trasversale appositamente dimensionata, la resistenza al punzonamento deve essere valutata, utilizzando formule di comprovata affidabilità, sulla base della resistenza a trazione del calcestruzzo, intendendo la sollecitazione distribuita su di un perimetro efficace distante "
+          },
+          {
+            "kind": "math",
+            "value": "2d",
+            "latex": "2d"
+          },
+          {
+            "kind": "text",
+            "value": " dall’impronta caricata, con "
           },
           {
             "kind": "math",
@@ -178,11 +187,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -191,6 +195,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d6846658a439d41717c1d2c2c2803b348731d07733b8b4a89373bc28f9bbef26",

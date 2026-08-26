@@ -672,9 +672,24 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "I valori del carico d’incendio specifico di progetto (qf,d) sono determinati mediante la relazione:\nqf,d = qf · Έq1 · Έq2 · Έn >3.6.1@",
-        "normalized": "I valori del carico d'incendio specifico di progetto sono determinati mediante la relazione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "di incendio del compartimento e dei fattori relativi alle misure di protezione presenti.\nI valori del carico d’incendio specifico di progetto (qf,d) sono determinati mediante la relazione:",
+        "normalized": "I valori del carico d’incendio specifico di progetto (qf,d) sono determinati mediante la relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I valori del carico d’incendio specifico di progetto ("
+          },
+          {
+            "kind": "math",
+            "value": "qf,d",
+            "latex": "q_{f,d}"
+          },
+          {
+            "kind": "text",
+            "value": ") sono determinati mediante la relazione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -682,10 +697,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 690,
+          "width": 440,
+          "height": 16
         },
         "extraction": {
           "method": "pdf-text",
@@ -694,38 +709,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ba28a1e821b635cac24af3f4a882cf8c712b7c768a26002beb373e7dfb0cd11d",
-        "normalizedSha256": "0694c69bc4daebdf348c5c8e3d55b2baa2916b844411d66bc2315ea18129a9a9"
+        "rawSha256": "1676ddfeef6df9a28c5c8c0823dc0c8390d154b8037b3981b197620e0a9071af",
+        "normalizedSha256": "a5ab65479eef63d81e56a8db7ee4ff1a5aa13297119f44f3d4644d2ddc369bd8"
       }
     },
     {
@@ -739,25 +744,25 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 155,
+          "y": 704,
+          "width": 220,
+          "height": 22
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Formula trascritta in LaTeX dal documento ufficiale e collocata nella posizione originaria; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "2d0351d74ca8fd3d3648d6f230c89a2cef8abcecd057d8b47e718538a1c5941f",
-        "normalizedSha256": "2d0351d74ca8fd3d3648d6f230c89a2cef8abcecd057d8b47e718538a1c5941f"
+        "rawSha256": "ba28a1e821b635cac24af3f4a882cf8c712b7c768a26002beb373e7dfb0cd11d",
+        "normalizedSha256": "a017603c541b1f474f069e1e6b1e8d4046630356007d4f2ee44fc57b249ef820"
       }
     },
     {
@@ -765,9 +770,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "q f è il valore nominale del carico d’incendio [MJ/m2 ].",
-        "normalized": "q f è il valore nominale del carico d’incendio [MJ/m2 ].",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "q dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -775,19 +780,40 @@
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 101.903,
-          "width": 428.199,
-          "height": 207.153
+          "x": 83,
+          "y": 92,
+          "width": 45,
+          "height": 10
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "6877ee8ebbf8b8feb32420fa26f00ca6e7b08cf5111a046a436893fb45687bcc",
-        "normalizedSha256": "6877ee8ebbf8b8feb32420fa26f00ca6e7b08cf5111a046a436893fb45687bcc"
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "ec1300754232d74780e314c0640b41786ae42a010d65f8166d601c22d2a114cb",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
     },
     {
@@ -795,41 +821,27 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Έq1 ǃ 1,00 è un fattore che tiene conto del rischio di incendio in relazione\nalla superficie del compartimento\nΈq2ǃ 0,80 è un fattore che tiene conto del rischio di incendio in relazione\nal tipo di attività svolta nel compartimento\n tGG 10\n1i\nnin 20,0 è un fattore che tiene conto delle differenti misure di protezione\ndall’incendio (sistemi automatici di estinzione, rivelatori, rete\nidranti, squadre antincendio, ecc.)",
-        "normalized": "δq1 ≥ 1,00 è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento δq2≥ 0,80 è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento tGG 10 1i nin 20,0 è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "q f è il valore nominale del carico d’incendio [MJ/m2 ].",
+        "normalized": "qf è il valore nominale del carico d’incendio [MJ/m²].",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "math",
-            "value": "δq1",
-            "latex": "\\delta_{q1}"
+            "value": "qf",
+            "latex": "q_f"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " è il valore nominale del carico d’incendio ["
           },
           {
             "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
+            "value": "MJ/m²",
+            "latex": "\\mathrm{MJ/m^2}"
           },
           {
             "kind": "text",
-            "value": " 1,00 è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento "
-          },
-          {
-            "kind": "math",
-            "value": "δq2",
-            "latex": "\\delta_{q2}"
-          },
-          {
-            "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
-          },
-          {
-            "kind": "text",
-            "value": " 0,80 è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento tGG 10 1i nin 20,0 è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)"
+            "value": "]."
           }
         ]
       },
@@ -839,10 +851,10 @@
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 101.903,
-          "width": 428.199,
-          "height": 207.153
+          "x": 83,
+          "y": 99,
+          "width": 430,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
@@ -851,38 +863,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ec468e7865a5b16f70d45be8140fd540cf4504e5a9f2be01e82116e3b1764d93",
-        "normalizedSha256": "bbf895bed39463476718d930b934682ec26090dea745e5472171fb6f2fd21850"
+        "rawSha256": "6877ee8ebbf8b8feb32420fa26f00ca6e7b08cf5111a046a436893fb45687bcc",
+        "normalizedSha256": "e5d170366edaec36902cbb22b297fbd559b502dbd4d951fd9a930dd254069b13"
       }
     },
     {
@@ -890,9 +892,20 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale\nq f del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concen-\ntrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni\nper lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite\nnel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii.",
-        "normalized": "Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale q f del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Έq1 ǃ 1,00 è un fattore che tiene conto del rischio di incendio in relazione\nalla superficie del compartimento",
+        "normalized": "δq1 ≥ 1,00 è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "δq1 ≥ 1,00",
+            "latex": "\\delta_{q1}\\ge1{,}00"
+          },
+          {
+            "kind": "text",
+            "value": " è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -900,10 +913,10 @@
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 101.903,
-          "width": 428.199,
-          "height": 207.153
+          "x": 83,
+          "y": 113,
+          "width": 430,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -912,38 +925,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "144dce97037461a74305c8a85931ae4bbfe847fd6f322d1a04e56cd3b7ab321f",
-        "normalizedSha256": "2cb7c194a6cac09debc72ff4f8a61abc670548a12852e9e59c0e4cc2c8aa8d25"
+        "rawSha256": "59e5130a976ef3dc96b7ff79615f807c40580abb89c8deb5c5b891e971c4bb61",
+        "normalizedSha256": "0360822673d5fa9a97f6dc5317ec4cde545c73ec96e9eeae2529147489487643"
       }
     },
     {
@@ -951,9 +954,20 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per incendio localizzato deve intendersi un focolaio d’incendio che interessa una zona limitata del compartimento antincendio, con\nsviluppo di calore concentrato in prossimità degli elementi strutturali posti superiormente al focolaio o immediatamente adiacen-\nti.",
-        "normalized": "Per incendio localizzato deve intendersi un focolaio d’incendio che interessa una zona limitata del compartimento antincendio, con sviluppo di calore concentrato in prossimità degli elementi strutturali posti superiormente al focolaio o immediatamente adiacenti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Έq2ǃ 0,80 è un fattore che tiene conto del rischio di incendio in relazione\nal tipo di attività svolta nel compartimento",
+        "normalized": "δq2 ≥ 0,80 è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "δq2 ≥ 0,80",
+            "latex": "\\delta_{q2}\\ge0{,}80"
+          },
+          {
+            "kind": "text",
+            "value": " è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -961,10 +975,10 @@
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 101.903,
-          "width": 428.199,
-          "height": 207.153
+          "x": 83,
+          "y": 136,
+          "width": 430,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -973,33 +987,202 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e0b2b4861af623943b71505c9cf6affe432f3839795d8416e22578083da98b10",
+        "normalizedSha256": "8110be2adbb55567ef7e7846abddfdf9240bb7abda0317609f7557a1a09cecda"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-018",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": " tGG10\n1i\nnin 20,0 è un fattore che tiene conto delle differenti misure di protezione\ndall’incendio (sistemi automatici di estinzione, rivelatori, rete\nidranti, squadre antincendio, ecc.)",
+        "normalized": "δn = ∏i=1^10 δni ≥ 0,20 è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "δn = ∏i=1^10 δni ≥ 0,20",
+            "latex": "\\delta_n=\\prod_{i=1}^{10}\\delta_{ni}\\ge0{,}20"
+          },
+          {
+            "kind": "text",
+            "value": " è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83,
+          "y": 158,
+          "width": 430,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e6b52792baa6d4736f1515bb4d9777e5550c92940a5dd3ff7a4017be5af2adcf",
+        "normalizedSha256": "8e83245cd6889e4cedfefa5e7f34d5720413c8d37188343087ed0a385e2fc20e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-019",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale\nq f del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concen-\ntrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni\nper lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite\nnel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii.",
+        "normalized": "Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale qf del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale "
+          },
+          {
+            "kind": "math",
+            "value": "qf",
+            "latex": "q_f"
+          },
+          {
+            "kind": "text",
+            "value": " del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83,
+          "y": 202,
+          "width": 430,
+          "height": 48
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "144dce97037461a74305c8a85931ae4bbfe847fd6f322d1a04e56cd3b7ab321f",
+        "normalizedSha256": "0b13f2a8440de6780e376e59116b72f1fbc6fcf75480af875a92f43d4afd8fa0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-020",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per incendio localizzato deve intendersi un focolaio d’incendio che interessa una zona limitata del compartimento antincendio, con\nsviluppo di calore concentrato in prossimità degli elementi strutturali posti superiormente al focolaio o immediatamente adiacen-\nti.",
+        "normalized": "Per incendio localizzato deve intendersi un focolaio d’incendio che interessa una zona limitata del compartimento antincendio, con sviluppo di calore concentrato in prossimità degli elementi strutturali posti superiormente al focolaio o immediatamente adiacenti.",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 67,
+        "printedPage": "63",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83,
+          "y": 256,
+          "width": 430,
+          "height": 28
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -1008,13 +1191,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-018",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-021",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Nel caso di presenza di elementi strutturali lignei è possibile considerare solo una quota parte del loro contributo alla determina-\nzione del carico di incendio, da definire con riferimento a riconosciute normative o documenti di comprovata validità.",
         "normalized": "Nel caso di presenza di elementi strutturali lignei è possibile considerare solo una quota parte del loro contributo alla determinazione del carico di incendio, da definire con riferimento a riconosciute normative o documenti di comprovata validità.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1022,10 +1205,10 @@
         "printedPage": "63",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 83.582,
-          "y": 101.903,
-          "width": 428.199,
-          "height": 207.153
+          "x": 83,
+          "y": 289,
+          "width": 430,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -1034,33 +1217,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],

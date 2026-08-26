@@ -320,7 +320,7 @@
       "text": {
         "raw": "Il valore di progetto della resistenza di un dato materiale Xd è, a sua volta, funzione del valore caratteristico della resistenza, defi-\nnito come frattile 5 % della distribuzione statistica della grandezza, attraverso l’espressione: Xd = Xk/·M, essendo ·M il fattore par-\nziale associato alla resistenza del materiale.",
         "normalized": "Il valore di progetto della resistenza di un dato materiale Xd è, a sua volta, funzione del valore caratteristico della resistenza, definito come frattile 5 % della distribuzione statistica della grandezza, attraverso l’espressione: Xd = Xk/γM, essendo γM il fattore parziale associato alla resistenza del materiale.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -337,35 +337,8 @@
           },
           {
             "kind": "math",
-            "value": "Xd",
-            "latex": "X_d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "Xk",
-            "latex": "X_k"
-          },
-          {
-            "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "γM",
-            "latex": "\\gamma_{M}"
+            "value": "Xd = Xk/γM",
+            "latex": "X_d = X_k/\\gamma_M"
           },
           {
             "kind": "text",
@@ -428,6 +401,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Riunita l’intera espressione inline X_d = X_k/γ_M in un unico segmento matematico verificato sul render ufficiale."
           }
         ],
         "rawSha256": "07eb05d93d67d56a0303e487fe15fc819a7987c6d0c71b2e893385a7354f9dfa",
@@ -440,8 +418,8 @@
       "origin": "official",
       "text": {
         "raw": "Il valore di progetto di ciascuna delle azioni agenti sulla struttura Fd è ottenuto dal suo valore caratteristico Fk, inteso come frattile\n95%della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l’espressione: Fd =JFFk\nessendo ·F il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un\nvalore di combinazione \\0 Fk, ove \\0ǂ1 è un opportuno coefficiente di combinazione,\u0002che tiene conto della ridotta probabilità che\npiù azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico.",
-        "normalized": "Il valore di progetto di ciascuna delle azioni agenti sulla struttura Fd è ottenuto dal suo valore caratteristico Fk, inteso come frattile 95%della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l’espressione: Fd =JFFk essendo γF il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un valore di combinazione \\0 Fk, ove \\0≤1 è un opportuno coefficiente di combinazione,che tiene conto della ridotta probabilità che più azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Il valore di progetto di ciascuna delle azioni agenti sulla struttura Fd è ottenuto dal suo valore caratteristico Fk, inteso come frattile 95% della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l’espressione: Fd = γF Fk, essendo γF il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un valore di combinazione ψ0 Fk, ove ψ0 ≤ 1 è un opportuno coefficiente di combinazione, che tiene conto della ridotta probabilità che più azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -463,25 +441,16 @@
           },
           {
             "kind": "text",
-            "value": ", inteso come frattile 95%della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l’espressione: "
+            "value": ", inteso come frattile 95% della distribuzione statistica o come valore caratterizzato da un assegnato periodo di ritorno, attraverso l’espressione: "
           },
           {
             "kind": "math",
-            "value": "Fd",
-            "latex": "F_d"
+            "value": "Fd = γF Fk",
+            "latex": "F_d = \\gamma_F F_k"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": "JFFk essendo "
+            "value": ", essendo "
           },
           {
             "kind": "math",
@@ -490,25 +459,25 @@
           },
           {
             "kind": "text",
-            "value": " il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un valore di combinazione \\0 "
+            "value": " il fattore parziale relativo alle azioni. Nel caso di concomitanza di più azioni variabili di origine diversa si definisce un valore di combinazione "
           },
           {
             "kind": "math",
-            "value": "Fk",
-            "latex": "F_k"
+            "value": "ψ0 Fk",
+            "latex": "\\psi_0 F_k"
           },
           {
             "kind": "text",
-            "value": ", ove \\0"
+            "value": ", ove "
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "ψ0 ≤ 1",
+            "latex": "\\psi_0 \\le 1"
           },
           {
             "kind": "text",
-            "value": "1 è un opportuno coefficiente di combinazione,che tiene conto della ridotta probabilità che più azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico."
+            "value": " è un opportuno coefficiente di combinazione, che tiene conto della ridotta probabilità che più azioni di diversa origine si realizzino simultaneamente con il loro valore caratteristico."
           }
         ]
       },
@@ -558,10 +527,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinate dal render ufficiale le espressioni F_d = γ_F F_k, ψ_0 F_k e ψ_0 ≤ 1, insieme agli spazi tipografici omessi dall’estrazione."
           }
         ],
         "rawSha256": "5f886c8a54f1db4f11868abecbaf90edc472aa825467b5341b964900d68436a9",
-        "normalizedSha256": "aa636ae68118e5a1778609d89596e7590324f4584c26238613eb2fea0410e9d1"
+        "normalizedSha256": "dea713a1aaf156d91b16db83ca5c162076b8798a82c93bdc16da1f0b20e3f474"
       }
     },
     {

@@ -199,7 +199,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In mancanza di ulteriori specificazioni, per ponti con armamento su ballast, non devono registrarsi accelerazioni verticali superiori a 3,5 m/s² nel campo di frequenze da 0 a 20 Hz."
+            "value": "In mancanza di ulteriori specificazioni, per ponti con armamento su ballast, non devono registrarsi accelerazioni verticali superiori a "
+          },
+          {
+            "kind": "math",
+            "value": "3,5 m/s²",
+            "latex": "3{,}5\\ \\mathrm{m/s^2}"
+          },
+          {
+            "kind": "text",
+            "value": " nel campo di frequenze da "
+          },
+          {
+            "kind": "math",
+            "value": "0 a 20 Hz",
+            "latex": "0\\text{ a }20\\ \\mathrm{Hz}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -292,6 +310,38 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-006",
+      "kind": "figure-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:figure:ntc2018:5.2.14",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 184,
+        "printedPage": "180",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "d41f076fd7be561226218b51d1d7858b43c464aaef60411a48c4295bd7b055d2",
+        "normalizedSha256": "d41f076fd7be561226218b51d1d7858b43c464aaef60411a48c4295bd7b055d2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -327,38 +377,6 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-007",
-      "kind": "figure-ref",
-      "origin": "official",
-      "assetId": "urn:structural-codes:it:asset:figure:ntc2018:5.2.14",
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 184,
-        "printedPage": "180",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73,
-          "y": 75,
-          "width": 455,
-          "height": 680
-        },
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "ntc5-editorial-profile-0.1.0"
-        },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
-          }
-        ],
-        "rawSha256": "d41f076fd7be561226218b51d1d7858b43c464aaef60411a48c4295bd7b055d2",
-        "normalizedSha256": "d41f076fd7be561226218b51d1d7858b43c464aaef60411a48c4295bd7b055d2"
-      }
-    },
-    {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-008",
       "kind": "list-item",
       "origin": "official",
@@ -373,12 +391,17 @@
           },
           {
             "kind": "math",
-            "value": "V",
-            "latex": "V"
+            "value": "V ≤ 120 km/h",
+            "latex": "V\\le 120\\ \\mathrm{km/h}"
           },
           {
             "kind": "text",
-            "value": " ≤ 120 km/h; t ≤ 4,5 mm/3m"
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "t ≤ 4,5 mm/3m",
+            "latex": "t\\le 4{,}5\\ \\mathrm{mm}/3\\mathrm{m}"
           }
         ]
       },
@@ -414,16 +437,21 @@
         "inline": [
           {
             "kind": "text",
-            "value": "per 120 < "
+            "value": "per "
           },
           {
             "kind": "math",
-            "value": "V",
-            "latex": "V"
+            "value": "120 < V ≤ 200 km/h",
+            "latex": "120<V\\le 200\\ \\mathrm{km/h}"
           },
           {
             "kind": "text",
-            "value": " ≤ 200 km/h; t ≤ 3,0 mm/3m"
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "t ≤ 3,0 mm/3m",
+            "latex": "t\\le 3{,}0\\ \\mathrm{mm}/3\\mathrm{m}"
           }
         ]
       },
@@ -463,12 +491,17 @@
           },
           {
             "kind": "math",
-            "value": "V",
-            "latex": "V"
+            "value": "V > 200 km/h",
+            "latex": "V>200\\ \\mathrm{km/h}"
           },
           {
             "kind": "text",
-            "value": " > 200 km/h; t ≤ 1,5 mm/3m"
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "t ≤ 1,5 mm/3m",
+            "latex": "t\\le 1{,}5\\ \\mathrm{mm}/3\\mathrm{m}"
           }
         ]
       },
@@ -508,12 +541,21 @@
           },
           {
             "kind": "math",
-            "value": "V",
-            "latex": "V"
+            "value": "V > 200 km/h",
+            "latex": "V>200\\ \\mathrm{km/h}"
           },
           {
             "kind": "text",
-            "value": " > 200 km/h si deve inoltre verificare che per convogli reali, moltiplicati per il relativo incremento dinamico, risulti t ≤ 1,2 mm/3m."
+            "value": " si deve inoltre verificare che per convogli reali, moltiplicati per il relativo incremento dinamico, risulti "
+          },
+          {
+            "kind": "math",
+            "value": "t ≤ 1,2 mm/3m",
+            "latex": "t\\le 1{,}2\\ \\mathrm{mm}/3\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -549,7 +591,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In mancanza di ulteriori specifiche, lo sghembo complessivo dovuto alla geometria del binario (curve di transizione) e quello dovuto alla deformazione dell’impalcato, non deve comunque eccedere i 6 mm/3 m."
+            "value": "In mancanza di ulteriori specifiche, lo sghembo complessivo dovuto alla geometria del binario (curve di transizione) e quello dovuto alla deformazione dell’impalcato, non deve comunque eccedere i "
+          },
+          {
+            "kind": "math",
+            "value": "6 mm/3 m",
+            "latex": "6\\ \\mathrm{mm}/3\\ \\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -745,6 +796,38 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-017",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:5.2.viii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 184,
+        "printedPage": "180",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "8ea1f1e270579bff0f8b0f9994c3fd899e8ed438f7ec421363525149ca94d41e",
+        "normalizedSha256": "8ea1f1e270579bff0f8b0f9994c3fd899e8ed438f7ec421363525149ca94d41e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -780,7 +863,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-018",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-019",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.2.11",
@@ -812,7 +895,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-019",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-020",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -854,38 +937,6 @@
         "transformations": [],
         "rawSha256": "0ef1b103522300bf6d21962f501726c2d659cdf71f73ec28908420ce5cd66d97",
         "normalizedSha256": "0ef1b103522300bf6d21962f501726c2d659cdf71f73ec28908420ce5cd66d97"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1#block-editorial-020",
-      "kind": "table-ref",
-      "origin": "official",
-      "assetId": "urn:structural-codes:it:asset:table:ntc2018:5.2.viii",
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 184,
-        "printedPage": "180",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73,
-          "y": 75,
-          "width": 455,
-          "height": 680
-        },
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "ntc5-editorial-profile-0.1.0"
-        },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
-          }
-        ],
-        "rawSha256": "8ea1f1e270579bff0f8b0f9994c3fd899e8ed438f7ec421363525149ca94d41e",
-        "normalizedSha256": "8ea1f1e270579bff0f8b0f9994c3fd899e8ed438f7ec421363525149ca94d41e"
       }
     },
     {

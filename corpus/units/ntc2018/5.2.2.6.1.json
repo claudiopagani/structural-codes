@@ -101,12 +101,12 @@
         "inline": [
           {
             "kind": "text",
-            "value": "I valori caratteristici dell’azione ± "
+            "value": "I valori caratteristici dell’azione "
           },
           {
             "kind": "math",
-            "value": "q1k",
-            "latex": "q_{1k}"
+            "value": "± q1k",
+            "latex": "\\pm q_{1k}"
           },
           {
             "kind": "text",
@@ -187,7 +187,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "I suddetti valori sono relativi a treni con forme aerodinamiche sfavorevoli; per i casi di forme aerodinamiche favorevoli, questi valori dovranno essere corretti per mezzo del fattore k1, ove:"
+            "value": "I suddetti valori sono relativi a treni con forme aerodinamiche sfavorevoli; per i casi di forme aerodinamiche favorevoli, questi valori dovranno essere corretti per mezzo del fattore "
+          },
+          {
+            "kind": "math",
+            "value": "k1",
+            "latex": "k_1"
+          },
+          {
+            "kind": "text",
+            "value": ", ove:"
           }
         ]
       },
@@ -214,28 +223,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "k1 = 0,85 per convogli formati da carrozze con sagoma arrotondata;",
-        "normalized": "k1 = 0,85 per convogli formati da carrozze con sagoma arrotondata;",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "k1 = 0,85 per convogli formati da carrozze con s"
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "oma arrotondata;"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.1-k1",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 177,
@@ -248,53 +238,23 @@
           "height": 680
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
         },
-        "transformations": [],
-        "rawSha256": "093109ca8f977c6d9223411918a908647c70e4d1ca5a85d500b1343c1c560cc2",
-        "normalizedSha256": "093109ca8f977c6d9223411918a908647c70e4d1ca5a85d500b1343c1c560cc2"
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "bb02add2b3a97f689a146cab232f6830dfeed86246e7bd8db1d9e69616af862e",
+        "normalizedSha256": "bb02add2b3a97f689a146cab232f6830dfeed86246e7bd8db1d9e69616af862e"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.1#block-editorial-005",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "k1 = 0,60 per treni aerodinamici.",
-        "normalized": "k1 = 0,60 per treni aerodinamici.",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "k1 = 0,60 per treni aerodinamici."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 177,
-        "printedPage": "173",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73,
-          "y": 75,
-          "width": 455,
-          "height": 680
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "50fbf52a4067503f5bdfe0944ec0e5efd4ca0b46d537d360939218d6671bfe20",
-        "normalizedSha256": "50fbf52a4067503f5bdfe0944ec0e5efd4ca0b46d537d360939218d6671bfe20"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.1#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -304,7 +264,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Se l’altezza di un elemento strutturale (o parte della sua superficie di influenza) è ≤1,0 m o se la larghezza è ≤2,50 m, l’azione "
+            "value": "Se l’altezza di un elemento strutturale (o parte della sua superficie di influenza) è "
+          },
+          {
+            "kind": "math",
+            "value": "≤1,0 m",
+            "latex": "\\le1{,}0\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " o se la larghezza è "
+          },
+          {
+            "kind": "math",
+            "value": "≤2,50 m",
+            "latex": "\\le2{,}50\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ", l’azione "
           },
           {
             "kind": "math",
@@ -313,7 +291,16 @@
           },
           {
             "kind": "text",
-            "value": " deve essere incrementata del fattore k2 =1,3."
+            "value": " deve essere incrementata del fattore "
+          },
+          {
+            "kind": "math",
+            "value": "k2 =1,3",
+            "latex": "k_2=1{,}3"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -373,7 +360,9 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.1-k1"
+    ],
     "tableIds": [],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:ntc2018:5.2.8"

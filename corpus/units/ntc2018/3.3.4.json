@@ -156,8 +156,8 @@
       "origin": "official",
       "text": {
         "raw": "dove\nqr è la pressione cinetica di riferimento di cui al § 3.3.6;\nc e è il coefficiente di esposizione di cui al § 3.3.7;\nc p è il coefficiente di pressione di cui al § 3.3.8;\nc d è il coefficiente dinamico di cui al § 3.3.9.",
-        "normalized": "dove qr è la pressione cinetica di riferimento di cui al § 3.3.6; c e è il coefficiente di esposizione di cui al § 3.3.7; c p è il coefficiente di pressione di cui al § 3.3.8; c d è il coefficiente dinamico di cui al § 3.3.9.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "dove qr è la pressione cinetica di riferimento di cui al § 3.3.6; ce è il coefficiente di esposizione di cui al § 3.3.7; cp è il coefficiente di pressione di cui al § 3.3.8; cd è il coefficiente dinamico di cui al § 3.3.9.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -174,26 +174,17 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "ce",
+            "latex": "c_e"
           },
           {
             "kind": "text",
-            "value": " e è il coefficiente di esposizione di cui al § 3.3.7; "
+            "value": " è il coefficiente di esposizione di cui al § 3.3.7; "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "cp",
+            "latex": "c_p"
           },
           {
             "kind": "text",
@@ -201,17 +192,8 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "cd",
+            "latex": "c_d"
           },
           {
             "kind": "text",
@@ -252,11 +234,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -265,10 +242,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "cc60f9df310d964d911fd5b202362b1ea34432452fe6598305c57057ed96bc84",
-        "normalizedSha256": "24b6b8b3227db5e4771642242199ba7f424357b5c605b0f4a3617b6e2b04c9c2"
+        "normalizedSha256": "405b5a3f315201b901b71806c877e4c1adab7a78d63635dc1b4e23955f8e3239"
       }
     }
   ],

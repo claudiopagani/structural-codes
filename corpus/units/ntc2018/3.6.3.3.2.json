@@ -66,7 +66,40 @@
       "text": {
         "raw": "In assenza di specifiche prescrizioni, nel progetto strutturale dei ponti si può tener conto delle forze causate da collisioni acciden-\ntali sugli elementi di sicurezza attraverso una forza orizzontale equivalente di collisione pari a 100 kN. Essa rappresenta l’effetto\ndell’impatto da trasmettere ai vincoli e deve essere considerata agente trasversalmente ed orizzontalmente 100 mm sotto la som-\nmità dell’elemento o 1,0 m sopra il livello del piano di marcia, a seconda di quale valore sia più piccolo.",
         "normalized": "In assenza di specifiche prescrizioni, nel progetto strutturale dei ponti si può tener conto delle forze causate da collisioni accidentali sugli elementi di sicurezza attraverso una forza orizzontale equivalente di collisione pari a 100 kN. Essa rappresenta l’effetto dell’impatto da trasmettere ai vincoli e deve essere considerata agente trasversalmente ed orizzontalmente 100 mm sotto la sommità dell’elemento o 1,0 m sopra il livello del piano di marcia, a seconda di quale valore sia più piccolo.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In assenza di specifiche prescrizioni, nel progetto strutturale dei ponti si può tener conto delle forze causate da collisioni accidentali sugli elementi di sicurezza attraverso una forza orizzontale equivalente di collisione pari a "
+          },
+          {
+            "kind": "math",
+            "value": "100 kN",
+            "latex": "100\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": ". Essa rappresenta l’effetto dell’impatto da trasmettere ai vincoli e deve essere considerata agente trasversalmente ed orizzontalmente "
+          },
+          {
+            "kind": "math",
+            "value": "100 mm",
+            "latex": "100\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " sotto la sommità dell’elemento o "
+          },
+          {
+            "kind": "math",
+            "value": "1,0 m",
+            "latex": "1{,}0\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " sopra il livello del piano di marcia, a seconda di quale valore sia più piccolo."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -101,11 +134,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -114,6 +142,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "0aa5c6b5498a43f0a40adbafc420c5edc40c79e8d3c59eba1f0ce8ea905deebd",

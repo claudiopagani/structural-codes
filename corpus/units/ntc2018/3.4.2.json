@@ -156,7 +156,31 @@
       "text": {
         "raw": "In mancanza di adeguate indagini statistiche e specifici studi locali, che tengano conto sia dell’altezza del manto nevoso che della\nsua densità, il carico di riferimento della neve al suolo, per località poste a quota inferiore a 1500 m sul livello del mare, non do-\nvrà essere assunto minore di quello calcolato in base alle espressioni riportate nel seguito, cui corrispondono valori associati ad\nun periodo di ritorno pari a 50 anni per le varie zone indicate nella Fig. 3.4.1. Tale zonazione non tiene conto di aspetti specifici e\nlocali che, se necessario, devono essere definiti singolarmente.Fig. 3.4.1 – Zone di carico della neve",
         "normalized": "In mancanza di adeguate indagini statistiche e specifici studi locali, che tengano conto sia dell’altezza del manto nevoso che della sua densità, il carico di riferimento della neve al suolo, per località poste a quota inferiore a 1500 m sul livello del mare, non dovrà essere assunto minore di quello calcolato in base alle espressioni riportate nel seguito, cui corrispondono valori associati ad un periodo di ritorno pari a 50 anni per le varie zone indicate nella Fig. 3.4.1. Tale zonazione non tiene conto di aspetti specifici e locali che, se necessario, devono essere definiti singolarmente.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In mancanza di adeguate indagini statistiche e specifici studi locali, che tengano conto sia dell’altezza del manto nevoso che della sua densità, il carico di riferimento della neve al suolo, per località poste a quota inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1500 m",
+            "latex": "1500\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " sul livello del mare, non dovrà essere assunto minore di quello calcolato in base alle espressioni riportate nel seguito, cui corrispondono valori associati ad un periodo di ritorno pari a "
+          },
+          {
+            "kind": "math",
+            "value": "50 anni",
+            "latex": "50\\,\\text{anni}"
+          },
+          {
+            "kind": "text",
+            "value": " per le varie zone indicate nella Fig. 3.4.1. Tale zonazione non tiene conto di aspetti specifici e locali che, se necessario, devono essere definiti singolarmente."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -191,11 +215,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -204,6 +223,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "22426d9a510e9c869649decbb3046a45320a3ddceeef7c457e5b93cc8f11330f",
@@ -249,7 +273,31 @@
       "text": {
         "raw": "Nelle espressioni seguenti, l’altitudine di riferimento as (espressa in m) è la quota del suolo sul livello del mare nel sito dove è re-\nalizzata la costruzione.",
         "normalized": "Nelle espressioni seguenti, l’altitudine di riferimento as (espressa in m) è la quota del suolo sul livello del mare nel sito dove è realizzata la costruzione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nelle espressioni seguenti, l’altitudine di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "as",
+            "latex": "a_s"
+          },
+          {
+            "kind": "text",
+            "value": " (espressa in "
+          },
+          {
+            "kind": "math",
+            "value": "m",
+            "latex": "\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ") è la quota del suolo sul livello del mare nel sito dove è realizzata la costruzione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -257,10 +305,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 95,
+          "width": 444,
+          "height": 24
         },
         "extraction": {
           "method": "pdf-text",
@@ -269,33 +317,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -305,12 +343,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "Zona I - Alpina\nAosta, Belluno, Bergamo, Biella, Bolzano, Brescia, Como, Cuneo, Lecco, Pordenone, Sondrio, Torino, Trento, Udine, Verbano-\nCusio-Ossola, Vercelli, Vicenza:",
-        "normalized": "Zona I - Alpina Aosta, Belluno, Bergamo, Biella, Bolzano, Brescia, Como, Cuneo, Lecco, Pordenone, Sondrio, Torino, Trento, Udine, Verbano- Cusio-Ossola, Vercelli, Vicenza:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Zona I - Alpina",
+        "normalized": "Zona I - Alpina",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -318,50 +356,19 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 120,
+          "width": 100,
+          "height": 11
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "f5a1506d9e2e05ba671e75e055e2ed37c493e698a4845afaf71bdfcb24a3e749",
-        "normalizedSha256": "74d0e59ebdb5753c080f26b633cd5b6b847702367f65ff5a8bb04c36e63a25e9"
+        "transformations": [],
+        "rawSha256": "419663b585c109fc67090a8544bc25298329911fcf8d095e8d222839cc6f6e4b",
+        "normalizedSha256": "419663b585c109fc67090a8544bc25298329911fcf8d095e8d222839cc6f6e4b"
       }
     },
     {
@@ -369,60 +376,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "q sk = 1,50 kN/m2 a s ǂ 200 m\n[3.4.2]\nqsk = 1,39 [1 + (as/728) 2\n] kN/m2 as > 200 m\nZona I - Mediterranea\nAlessandria, Ancona, Asti, Bologna, Cremona, Forlì-Cesena, Lodi, Milano, Modena, Monza Brianza, Novara, Parma, Pavia, Pesa-\nro e Urbino, Piacenza, Ravenna, Reggio Emilia, Rimini, Treviso, Varese:",
-        "normalized": "q sk = 1,50 kN/m2 a s ≤ 200 m [3.4.2] qsk = 1,39 [1 + (as/728) 2 ] kN/m2 as > 200 m Zona I - Mediterranea Alessandria, Ancona, Asti, Bologna, Cremona, Forlì-Cesena, Lodi, Milano, Modena, Monza Brianza, Novara, Parma, Pavia, Pesaro e Urbino, Piacenza, Ravenna, Reggio Emilia, Rimini, Treviso, Varese:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "q sk "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,50 kN/m2 a s "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m [3.4.2] "
-          },
-          {
-            "kind": "math",
-            "value": "qsk",
-            "latex": "q_{sk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,39 [1 + (as/728) 2 ] kN/m2 as "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m Zona I - Mediterranea Alessandria, Ancona, Asti, Bologna, Cremona, Forlì-Cesena, Lodi, Milano, Modena, Monza Brianza, Novara, Parma, Pavia, Pesaro e Urbino, Piacenza, Ravenna, Reggio Emilia, Rimini, Treviso, Varese:"
-          }
-        ]
+        "raw": "Aosta, Belluno, Bergamo, Biella, Bolzano, Brescia, Como, Cuneo, Lecco, Pordenone, Sondrio, Torino, Trento, Udine, Verbano-\nCusio-Ossola, Vercelli, Vicenza:",
+        "normalized": "Aosta, Belluno, Bergamo, Biella, Bolzano, Brescia, Como, Cuneo, Lecco, Pordenone, Sondrio, Torino, Trento, Udine, Verbano-Cusio-Ossola, Vercelli, Vicenza:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -430,10 +386,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 130,
+          "width": 444,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -442,211 +398,70 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "35f692decdf8833b40db8237c433bbe0b347e61f27f413ed845c77f42e0438e6",
-        "normalizedSha256": "0587195c7fc7ee7cd47fbc0dab248e886e190283f1cc1219d08b7d07fd15115c"
+        "rawSha256": "90a011692d83e7146bbc377393b11997817e380bcf7d5fe3ecf9dbbd3e184d55",
+        "normalizedSha256": "6e42d0d97a4bc2b850121f5a0dca0721e4cefedcb1a07d7f31bc93cc90a85790"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-007",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "q sk = 1,50 kN/m2 a s ǂ 200 m\n[3.4.3]\nqsk = 1,35 [1 + (as/602)²] kN/m2 a s > 200 m\nZona II\nArezzo, Ascoli Piceno, Avellino, Bari, Barletta-Andria-Trani, Benevento, Campobasso, Chieti, Fermo, Ferrara, Firenze, Foggia,\nFrosinone, Genova, Gorizia, Imperia, Isernia, L’Aquila, La Spezia, Lucca, Macerata, Mantova, Massa Carrara, Padova, Perugia,\nPescara, Pistoia, Prato, Rieti, Rovigo, Savona, Teramo, Trieste, Venezia, Verona:",
-        "normalized": "q sk = 1,50 kN/m2 a s ≤ 200 m [3.4.3] qsk = 1,35 [1 + (as/602)²] kN/m2 a s > 200 m Zona II Arezzo, Ascoli Piceno, Avellino, Bari, Barletta-Andria-Trani, Benevento, Campobasso, Chieti, Fermo, Ferrara, Firenze, Foggia, Frosinone, Genova, Gorizia, Imperia, Isernia, L’Aquila, La Spezia, Lucca, Macerata, Mantova, Massa Carrara, Padova, Perugia, Pescara, Pistoia, Prato, Rieti, Rovigo, Savona, Teramo, Trieste, Venezia, Verona:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "q sk "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,50 kN/m2 a s "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m [3.4.3] "
-          },
-          {
-            "kind": "math",
-            "value": "qsk",
-            "latex": "q_{sk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,35 [1 + (as/602)²] kN/m2 a s "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m Zona II Arezzo, Ascoli Piceno, Avellino, Bari, Barletta-Andria-Trani, Benevento, Campobasso, Chieti, Fermo, Ferrara, Firenze, Foggia, Frosinone, Genova, Gorizia, Imperia, Isernia, L’Aquila, La Spezia, Lucca, Macerata, Mantova, Massa Carrara, Padova, Perugia, Pescara, Pistoia, Prato, Rieti, Rovigo, Savona, Teramo, Trieste, Venezia, Verona:"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.4.2",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 62,
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 100,
+          "y": 151,
+          "width": 270,
+          "height": 45
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "ee867a3d9167b26dbd8d2775f8607af8801a3f42e3270ba257fec70b7838810b",
-        "normalizedSha256": "b530b6182718ed436bf79321a90572191c450ca26d0bf1a6dffdfe454d4d7607"
+        "rawSha256": "240b3feaf1f611aacc36cda9e36caa96ec99f524cd723f7e3810bb4ce4a52857",
+        "normalizedSha256": "c88cbd7910ecc16b2a28b0f9c7150ae1e27c10219495a39dbd30b01531138f87"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-008",
-      "kind": "paragraph",
+      "kind": "heading",
       "origin": "official",
       "text": {
-        "raw": "q sk = 1,00 kN/m2 as ǂ 200 m\n[3.4.4]\nqsk = 0,85 [1 + (as/481)²] kN/m2 as > 200 m\nZona III\nAgrigento, Brindisi, Cagliari, Caltanissetta, Carbonia-Iglesias, Caserta, Catania, Catanzaro, Cosenza, Crotone, Enna, Grosseto, Latina,\nLecce, Livorno, Matera, Medio Campidano, Messina, Napoli, Nuoro, Ogliastra, Olbia-Tempio, Oristano, Palermo, Pisa, Potenza,\nRagusa, Reggio Calabria, Roma, Salerno, Sassari, Siena, Siracusa, Taranto, Terni, Trapani, Vibo Valentia, Viterbo:",
-        "normalized": "q sk = 1,00 kN/m2 as ≤ 200 m [3.4.4] qsk = 0,85 [1 + (as/481)²] kN/m2 as > 200 m Zona III Agrigento, Brindisi, Cagliari, Caltanissetta, Carbonia-Iglesias, Caserta, Catania, Catanzaro, Cosenza, Crotone, Enna, Grosseto, Latina, Lecce, Livorno, Matera, Medio Campidano, Messina, Napoli, Nuoro, Ogliastra, Olbia-Tempio, Oristano, Palermo, Pisa, Potenza, Ragusa, Reggio Calabria, Roma, Salerno, Sassari, Siena, Siracusa, Taranto, Terni, Trapani, Vibo Valentia, Viterbo:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "q sk "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,00 kN/m2 as "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m [3.4.4] "
-          },
-          {
-            "kind": "math",
-            "value": "qsk",
-            "latex": "q_{sk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,85 [1 + (as/481)²] kN/m2 as "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m Zona III Agrigento, Brindisi, Cagliari, Caltanissetta, Carbonia-Iglesias, Caserta, Catania, Catanzaro, Cosenza, Crotone, Enna, Grosseto, Latina, Lecce, Livorno, Matera, Medio Campidano, Messina, Napoli, Nuoro, Ogliastra, Olbia-Tempio, Oristano, Palermo, Pisa, Potenza, Ragusa, Reggio Calabria, Roma, Salerno, Sassari, Siena, Siracusa, Taranto, Terni, Trapani, Vibo Valentia, Viterbo:"
-          }
-        ]
+        "raw": "Zona I - Mediterranea",
+        "normalized": "Zona I - Mediterranea",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -654,50 +469,19 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 207,
+          "width": 110,
+          "height": 11
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "766d28ddfeb8455068e7936f61dae309107c51b006a007803bbe8cb3e11f26b0",
-        "normalizedSha256": "8b2fe32e0652d8ba56c672af838904c90302e48270339939cf194578e201d19b"
+        "transformations": [],
+        "rawSha256": "19c82ae08e289c96be03120c17e405772e151d0e707e65efadac047deae67995",
+        "normalizedSha256": "19c82ae08e289c96be03120c17e405772e151d0e707e65efadac047deae67995"
       }
     },
     {
@@ -705,63 +489,340 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "qsk = 0,60 kN/m2 a s ǂ 200 m\n[3.4.5]\nqsk = 0,51 [1 + (as/481)²] kN/m2 a s > 200 m\nPer altitudini superiori a 1500 m sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utiliz-\nzando comunque valori di carico neve non inferiori a quelli previsti per 1500 m.",
-        "normalized": "qsk = 0,60 kN/m2 a s ≤ 200 m [3.4.5] qsk = 0,51 [1 + (as/481)²] kN/m2 a s > 200 m Per altitudini superiori a 1500 m sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utilizzando comunque valori di carico neve non inferiori a quelli previsti per 1500 m.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Alessandria, Ancona, Asti, Bologna, Cremona, Forlì-Cesena, Lodi, Milano, Modena, Monza Brianza, Novara, Parma, Pavia, Pesa-\nro e Urbino, Piacenza, Ravenna, Reggio Emilia, Rimini, Treviso, Varese:",
+        "normalized": "Alessandria, Ancona, Asti, Bologna, Cremona, Forlì-Cesena, Lodi, Milano, Modena, Monza Brianza, Novara, Parma, Pavia, Pesaro e Urbino, Piacenza, Ravenna, Reggio Emilia, Rimini, Treviso, Varese:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76,
+          "y": 218,
+          "width": 444,
+          "height": 23
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b24a8e4e1cc98fa23ab9c87d5e289109ab5a9950a221daac4e131cf363932e0e",
+        "normalizedSha256": "d8a817f608e02fae5dcfa07c51c556cf24aef884f95ec939843d7aaa56e11726"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-010",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.4.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 100,
+          "y": 238,
+          "width": 270,
+          "height": 43
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "bc7787d307923307131ddd6d89f00887a09ac7f4117cc6bd2a4e55980f1e3630",
+        "normalizedSha256": "4c280f072a507a80709fc15ecc1eaec7597ba9c3d63b2aa799f9e2343b8c9921"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-011",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona II",
+        "normalized": "Zona II",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76,
+          "y": 284,
+          "width": 70,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "43db0f6270592867c768daf86a7b9ed5d5b4a5debbc7163c5b71885c93529c8b",
+        "normalizedSha256": "43db0f6270592867c768daf86a7b9ed5d5b4a5debbc7163c5b71885c93529c8b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Arezzo, Ascoli Piceno, Avellino, Bari, Barletta-Andria-Trani, Benevento, Campobasso, Chieti, Fermo, Ferrara, Firenze, Foggia,\nFrosinone, Genova, Gorizia, Imperia, Isernia, L’Aquila, La Spezia, Lucca, Macerata, Mantova, Massa Carrara, Padova, Perugia,\nPescara, Pistoia, Prato, Rieti, Rovigo, Savona, Teramo, Trieste, Venezia, Verona:",
+        "normalized": "Arezzo, Ascoli Piceno, Avellino, Bari, Barletta-Andria-Trani, Benevento, Campobasso, Chieti, Fermo, Ferrara, Firenze, Foggia, Frosinone, Genova, Gorizia, Imperia, Isernia, L’Aquila, La Spezia, Lucca, Macerata, Mantova, Massa Carrara, Padova, Perugia, Pescara, Pistoia, Prato, Rieti, Rovigo, Savona, Teramo, Trieste, Venezia, Verona:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76,
+          "y": 294,
+          "width": 444,
+          "height": 31
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "837b5ce5fb6ac929188579a4550394ef61c62edd60eabfaf1846da234bcd4dd2",
+        "normalizedSha256": "46ae43bb553eebdbc8491ba102203ca791c52c3a27d59433a3014632ee156c9f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-013",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.4.4",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 100,
+          "y": 327,
+          "width": 271,
+          "height": 43
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "944ec0cfa2577b8a0ff9223062d8ac9b3b5f8b7e114c305df4d22cdf35ab43cb",
+        "normalizedSha256": "df31f1409524055f7b520efa7c634ca907e295798d2c27fa1966f2bcc6f2fa6b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-014",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona III",
+        "normalized": "Zona III",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76,
+          "y": 371,
+          "width": 70,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "fd214c5c49562d12f17b5f3666952937cd498370ba584035fe07856d046b3c1a",
+        "normalizedSha256": "fd214c5c49562d12f17b5f3666952937cd498370ba584035fe07856d046b3c1a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-015",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Agrigento, Brindisi, Cagliari, Caltanissetta, Carbonia-Iglesias, Caserta, Catania, Catanzaro, Cosenza, Crotone, Enna, Grosseto, Latina,\nLecce, Livorno, Matera, Medio Campidano, Messina, Napoli, Nuoro, Ogliastra, Olbia-Tempio, Oristano, Palermo, Pisa, Potenza,\nRagusa, Reggio Calabria, Roma, Salerno, Sassari, Siena, Siracusa, Taranto, Terni, Trapani, Vibo Valentia, Viterbo:",
+        "normalized": "Agrigento, Brindisi, Cagliari, Caltanissetta, Carbonia-Iglesias, Caserta, Catania, Catanzaro, Cosenza, Crotone, Enna, Grosseto, Latina, Lecce, Livorno, Matera, Medio Campidano, Messina, Napoli, Nuoro, Ogliastra, Olbia-Tempio, Oristano, Palermo, Pisa, Potenza, Ragusa, Reggio Calabria, Roma, Salerno, Sassari, Siena, Siracusa, Taranto, Terni, Trapani, Vibo Valentia, Viterbo:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76,
+          "y": 384,
+          "width": 444,
+          "height": 31
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f4a2bd4e6fdfc650a86a8753ff39ebc12ab28fb82f71d06b8bad2353e9e92f00",
+        "normalizedSha256": "637d31c27923f70540ee012e87f28147249b67d63aaa5d9958fc28ea4ee4bb0f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-016",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.4.5",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 62,
+        "printedPage": "58",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 100,
+          "y": 416,
+          "width": 270,
+          "height": 44
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "265117c8c1a432141683a54022071952e4447876b5dd1b95f80dd5acaed87d4b",
+        "normalizedSha256": "2fbd20b0cca14515d5c9c09dd85489a13fd2b7ce0f2a0ba8866250b85e75279b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-017",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per altitudini superiori a 1500 m sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utiliz-\nzando comunque valori di carico neve non inferiori a quelli previsti per 1500 m.",
+        "normalized": "Per altitudini superiori a 1500 m sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utilizzando comunque valori di carico neve non inferiori a quelli previsti per 1500 m.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
-            "kind": "math",
-            "value": "qsk",
-            "latex": "q_{sk}"
-          },
-          {
             "kind": "text",
-            "value": " "
+            "value": "Per altitudini superiori a "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "1500 m",
+            "latex": "1500\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " 0,60 kN/m2 a s "
+            "value": " sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utilizzando comunque valori di carico neve non inferiori a quelli previsti per "
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "1500 m",
+            "latex": "1500\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " 200 m [3.4.5] "
-          },
-          {
-            "kind": "math",
-            "value": "qsk",
-            "latex": "q_{sk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,51 [1 + (as/481)²] kN/m2 a s "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 200 m Per altitudini superiori a 1500 m sul livello del mare si deve fare riferimento alle condizioni locali di clima e di esposizione utilizzando comunque valori di carico neve non inferiori a quelli previsti per 1500 m."
+            "value": "."
           }
         ]
       },
@@ -771,10 +832,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 461,
+          "width": 444,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -783,48 +844,38 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "bd8cfd02ce8305e7b6c7d278d3a3fc7727e37b1e2bf7c4bb4abee28ce3acd70c",
-        "normalizedSha256": "b6ce70e92ee481d09edbae8d9499ee5dddc2ff97c8f3aad0d5495fcbc47ed37f"
+        "rawSha256": "750065dedb364f53903858ed447338e88c103330909fb7b66370987eed8011d0",
+        "normalizedSha256": "6fbce0011fc118fa0da1d602f524b9e880a64db9dba5a48669facde772a4cf8d"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-010",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti,\nil periodo di ritorno dell’azione può essere ridotto come di seguito specificato:",
         "normalized": "Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione può essere ridotto come di seguito specificato:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -832,10 +883,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 76,
+          "y": 484,
+          "width": 444,
+          "height": 24
         },
         "extraction": {
           "method": "pdf-text",
@@ -844,33 +895,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -879,13 +920,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-011",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-019",
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t\n5 anni;",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t 5 anni;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t5 anni;",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR ≥ 5 anni;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -893,12 +934,12 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR ≥ 5 anni",
+            "latex": "T_R\\ge5\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " t 5 anni;"
+            "value": ";"
           }
         ]
       },
@@ -908,10 +949,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 91,
+          "y": 510,
+          "width": 430,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -920,70 +961,51 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "9699fcf082cb626ae760140dc20169961e8539660d012e719f1f6d375121fefb",
-        "normalizedSha256": "7bba29b6ff21d3f19476abc42a922f0dc7307c12df7d4ed64a54403943019d4e"
+        "rawSha256": "3476a964dc4bf1797bd1bab1822b82c6b877463b2a8fe4e370c74c202e379a51",
+        "normalizedSha256": "bd5aa2580982c7e7efd19bc183cbf7e750334f783f9e388fc503790a904631cf"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-012",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.4.2#block-editorial-020",
       "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi d un anno, si as-\nsumerà TR t 10 anni.",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi d un anno, si assumerà TR t 10 anni.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà TR ≥ 10 anni.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi "
+            "value": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "TR ≥ 10 anni",
+            "latex": "T_R\\ge10\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " un anno, si assumerà "
-          },
-          {
-            "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
-          },
-          {
-            "kind": "text",
-            "value": " t 10 anni."
+            "value": "."
           }
         ]
       },
@@ -993,10 +1015,10 @@
         "printedPage": "58",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 76.155,
-          "y": 96.583,
-          "width": 443.156,
-          "height": 458.928
+          "x": 91,
+          "y": 536,
+          "width": 430,
+          "height": 24
         },
         "extraction": {
           "method": "pdf-text",
@@ -1005,45 +1027,40 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "27bd43a81938e5a8d66c600592b041db1dd704f6f97f8b720f2ebc97b1c08ae9",
-        "normalizedSha256": "036ca9adc4f0651ad5fd266d2d395d7c75d88b2f13470d40976ec44a9190ea1b"
+        "normalizedSha256": "ef1d1d4a69a0e99a7bd107fea0a113c3a547f066bfa2bf3d2671d6a82b077cfc"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.4.2",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.4.3",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.4.4",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.4.5"
+    ],
     "tableIds": [],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:ntc2018:3.4.1"

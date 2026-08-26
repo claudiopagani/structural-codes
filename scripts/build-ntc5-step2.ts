@@ -19,20 +19,35 @@ type Block = { kind: "heading" | "paragraph" | "list-item" | "formula-ref" | "ta
 type UnitDef = { number: string; title: string; blocks: Block[] };
 
 function inlineMath(text: string): Inline[] {
-    const patterns: Array<[RegExp, string]> = [
-        [/Q_{V2}/g, "Q_{V2}"], [/Q_{V1}/g, "Q_{V1}"], [/Qv2/g, "Q_{V2}"], [/Qv1/g, "Q_{V1}"],
-        [/Qvi/g, "Q_{vi}"], [/qvk/g, "q_{vk}"], [/Qh/g, "Q_h"], [/Qh/g, "Q_h"],
-        [/Ed/g, "E_d"], [/Rd/g, "R_d"], [/Cd/g, "C_d"], [/\bD\b/g, "D"], [/α/g, "\\alpha"],
-        [/n₀/g, "n_0"], [/no/g, "n_0"], [/Qv/g, "Q_v"],
+    const patterns: Array<[RegExp, string | ((value: string) => string)]> = [
+        [/Δσmax = \(σmax − σmin\)/g, "\\Delta\\sigma_{\\max}=(\\sigma_{\\max}-\\sigma_{\\min})"],
+        [/Ed ≤ Rd/g, "E_d\\le R_d"], [/Ed ≤ Cd/g, "E_d\\le C_d"], [/D ≤ 1/g, "D\\le1"],
+        [/s\/18 con s = 1435 mm/g, "s/18\\text{ con }s=1435\\,\\mathrm{mm}"],
+        [/Q_{V2}/g, "Q_{v2}"], [/Q_{V1}/g, "Q_{v1}"], [/QV2/g, "Q_{v2}"], [/QV1/g, "Q_{v1}"], [/Qv2/g, "Q_{v2}"], [/Qv1/g, "Q_{v1}"],
+        [/Qvi/g, "Q_{vi}"], [/qvk/g, "q_{vk}"], [/Qh/g, "Q_h"],
+        [/Δσmax/g, "\\Delta\\sigma_{\\max}"], [/Ed/g, "E_d"], [/Rd/g, "R_d"], [/Cd/g, "C_d"], [/\bD\b/g, "D"],
+        [/α/g, "\\alpha"], [/λ/g, "\\lambda"], [/n₀/g, "n_0"], [/\bno\b/g, "n_0"], [/Qv/g, "Q_v"],
+        [/“a”/g, "a"], [/“u”/g, "u"], [/\bs\b/g, "s"],
+        [/\d+(?:,\d+)?\s*kN\/m³/g, (value) => value.replace(/\s*kN\/m³/u, "").replace(",", "{,}") + "\\,\\mathrm{kN/m^3}"],
+        [/\d+(?:,\d+)?\s*kN\/m²/g, (value) => value.replace(/\s*kN\/m²/u, "").replace(",", "{,}") + "\\,\\mathrm{kN/m^2}"],
+        [/\d+(?:,\d+)?\s*kN\/m/g, (value) => value.replace(/\s*kN\/m/u, "").replace(",", "{,}") + "\\,\\mathrm{kN/m}"],
+        [/\d+(?:,\d+)?\s*kN/g, (value) => value.replace(/\s*kN/u, "").replace(",", "{,}") + "\\,\\mathrm{kN}"],
+        [/\d+(?:,\d+)?\s*km\/h/g, (value) => value.replace(/\s*km\/h/u, "").replace(",", "{,}") + "\\,\\mathrm{km/h}"],
+        [/\d+(?:,\d+)?\s*mm/g, (value) => value.replace(/\s*mm/u, "").replace(",", "{,}") + "\\,\\mathrm{mm}"],
+        [/\d+(?:,\d+)?\s*m/g, (value) => value.replace(/\s*m/u, "").replace(",", "{,}") + "\\,\\mathrm{m}"],
+        [/\d+,\d+/g, (value) => value.replace(",", "{,}")],
+        [/\d+(?:,\d+)?%/g, (value) => value.replace("%", "\\%")], [/45°/g, "45^{\\circ}"],
     ];
     const matches: Array<{ start: number; end: number; value: string; latex: string }> = [];
-    for (const [pattern, latex] of patterns) {
+    for (const [pattern, toLatex] of patterns) {
         pattern.lastIndex = 0;
         let match: RegExpExecArray | null;
         while ((match = pattern.exec(text)) !== null) {
             const start = match.index;
             const end = start + match[0].length;
-            if (!matches.some((item) => start < item.end && end > item.start)) matches.push({ start, end, value: match[0], latex });
+            if (!matches.some((item) => start < item.end && end > item.start)) {
+                matches.push({ start, end, value: match[0], latex: typeof toLatex === "function" ? toLatex(match[0]) : toLatex });
+            }
         }
     }
     matches.sort((a, b) => a.start - b.start);
@@ -95,7 +110,7 @@ const units: UnitDef[] = [
         p(163, "In assenza di studi specifici, per verifiche di danneggiamento, si deve considerare sulla corsia lenta il flusso annuo di veicoli di peso superiore a 100 kN, rilevanti ai fini della verifica a fatica, dedotto dalla Tab. 5.1.X."),
         ref("table-ref", 165, "5.1.x"),
         p(163, "Nel caso in cui siano da prevedere significativi effetti di interazione tra veicoli, si deve far riferimento a studi specifici o a metodologie consolidate."),
-        p(163, "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo O, o metodo dei coefficienti di danneggiamento equivalente. Per la determinazione dei coefficienti di danneggiamento equivalente, che devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI EN1992-2, UNI EN1993-2 ed UNI EN1994-2.", "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo O, o\nmetodo dei coefficienti di danneggiamento equivalente. Per la determinazione dei coefficienti di danneggiamento equivalente,\nche devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI\nEN1992-2, UNI EN1993-2 ed UNI EN1994-2."),
+        p(163, "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo λ, o metodo dei coefficienti di danneggiamento equivalente. Per la determinazione dei coefficienti di danneggiamento equivalente, che devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI EN1992-2, UNI EN1993-2 ed UNI EN1994-2.", "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo O, o\nmetodo dei coefficienti di danneggiamento equivalente. Per la determinazione dei coefficienti di danneggiamento equivalente,\nche devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI\nEN1992-2, UNI EN1993-2 ed UNI EN1994-2."),
     ]},
     { number: "5.1.4.4", title: "VERIFICHE ALLO STATO LIMITE DI FESSURAZIONE", blocks: [
         h(165, "5.1.4.4", "VERIFICHE ALLO STATO LIMITE DI FESSURAZIONE"),
@@ -336,26 +351,34 @@ function makeUnit(def: UnitDef): any {
     return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parentId ? unitId(parentId) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, workflow: { status: "extracted", createdBy: { actorId: "codex:ntc5-step2", kind: "automated-agent", toolVersion: ruleVersion }, createdAt, reviews: [], openIssues: issues } };
 }
 
-const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
+function inferredCellLatex(text: string): string | undefined {
+    if (!/^\d+(?:,\d+)?(?:\n\d+(?:,\d+)?)*$/u.test(text)) return undefined;
+    const values = text.split("\n").map((value) => value.replace(",", "{,}"));
+    return values.length === 1 ? values[0] : `\\begin{gathered}${values.join("\\\\")}\\end{gathered}`;
+}
+const cell = (text: string, extra: Record<string, unknown> = {}) => {
+    const inferred = inferredCellLatex(text);
+    return { text, ...(inferred ? { latex: inferred } : {}), ...extra };
+};
 const table = (suffix: string, number: string, page: number, caption: string, headers: any[][], rows: any[][], notes: string[] = []) => ({ id: asset("table", suffix), unitId: unitId("5.1.4.3"), officialNumber: number, pdfPage: page, caption, columnCount: Math.max(...headers.concat(rows).map((row) => row.length)), headers, rows, notes });
 const assetManifest: any = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step2", sourceId, status: "transcribed-unreviewed",
-    formulas: [{ id: asset("formula", "5.2.1"), unitId: unitId("5.2.2.2.1.1"), officialNumber: "5.2.1", pdfPage: 169, latex: "\\frac{Q_{V2}}{Q_{V1}}=1{,}25" }],
+    formulas: [{ id: asset("formula", "5.2.1"), unitId: unitId("5.2.2.2.1.1"), officialNumber: "5.2.1", pdfPage: 169, latex: "\\frac{Q_{v2}}{Q_{v1}}=1{,}25" }],
     tables: [
-        table("5.1.vii", "5.1.VII", 163, "Tab. 5.1.VII - Modello di carico di fatica 2 – veicoli frequenti", [[cell("Sagoma del veicolo"), cell("Distanza tra gli assi (m)"), cell("Carico frequente per asse (kN)"), cell("Tipo di ruota (Tab. 5.1.IX)")]], [
+        table("5.1.vii", "5.1.VII", 163, "Tab. 5.1.VII - Modello di carico di fatica 2 – veicoli frequenti", [[cell("Sagoma del veicolo"), cell("Distanza tra gli assi (m)", { latex: "\\text{Distanza tra gli assi }(\\mathrm{m})" }), cell("Carico frequente per asse (kN)", { latex: "\\text{Carico frequente per asse }(\\mathrm{kN})" }), cell("Tipo di ruota (Tab. 5.1.IX)")]], [
             [cell(""), cell("4,50"), cell("90\n190"), cell("A\nB")], [cell(""), cell("4,20\n1,30"), cell("80\n140\n140"), cell("A\nB\nB")], [cell(""), cell("3,20\n5,20\n1,30\n1,30"), cell("90\n180\n120\n120\n120"), cell("A\nB\nC\nC\nC")], [cell(""), cell("3,40\n6,00\n1,80"), cell("90\n190\n140\n140"), cell("A\nB\nB\nB")], [cell(""), cell("4,80\n3,60\n4,40\n1,30"), cell("90\n180\n120\n110\n110"), cell("A\nB\nC\nC\nC")],
         ], ["La prima colonna contiene la sagoma grafica ufficiale del veicolo; il modello corrente non supporta immagini incorporate nelle celle."]),
-        table("5.1.viii", "5.1.VIII", 164, "Tab. 5.1.VIII - Modello di carico di fatica 4 – veicoli equivalenti", [[cell("Sagoma del veicolo"), cell("Tipo di pneumatico (Tab. 5.1.IX)"), cell("Interassi [m]"), cell("Valori equivalenti dei carichi per asse [kN]"), cell("Lunga percorrenza"), cell("Media percorrenza"), cell("Traffico locale")]], [
+        table("5.1.viii", "5.1.VIII", 164, "Tab. 5.1.VIII - Modello di carico di fatica 4 – veicoli equivalenti", [[cell("Sagoma del veicolo"), cell("Tipo di pneumatico (Tab. 5.1.IX)"), cell("Interassi [m]", { latex: "\\text{Interassi }[\\mathrm{m}]" }), cell("Valori equivalenti dei carichi per asse [kN]", { latex: "\\text{Valori equivalenti dei carichi per asse }[\\mathrm{kN}]" }), cell("Lunga percorrenza"), cell("Media percorrenza"), cell("Traffico locale")]], [
             [cell(""), cell("A\nB"), cell("4,50"), cell("70\n130"), cell("20,0"), cell("40,0"), cell("80,0")], [cell(""), cell("A\nB\nB"), cell("4,20\n1,30"), cell("70\n120\n120"), cell("5,0"), cell("10,0"), cell("5,0")], [cell(""), cell("A\nB\nC\nC\nC"), cell("3,20\n5,20\n1,30\n1,30"), cell("70\n150\n90\n90\n90"), cell("50,0"), cell("30,0"), cell("5,0")], [cell(""), cell("A\nB\nB\nB"), cell("3,40\n6,00\n1,80"), cell("70\n140\n90\n90"), cell("15,0"), cell("15,0"), cell("5,0")], [cell(""), cell("A\nB\nC\nC\nC"), cell("4,80\n3,60\n4,40\n1,30"), cell("70\n130\n90\n80\n80"), cell("10,0"), cell("5,0"), cell("5,0")],
         ], ["La prima colonna contiene la sagoma grafica ufficiale del veicolo; il modello corrente non supporta immagini incorporate nelle celle."]),
         table("5.1.ix", "5.1.IX", 165, "Tab. 5.1.IX - Dimensioni degli assi e delle impronte per i veicoli equivalenti", [[cell("Tipo di pneumatico"), cell("Dimensioni dell’asse e delle impronte")]], [[cell("A"), cell("")], [cell("B"), cell("")], [cell("C"), cell("")]], ["La seconda colonna contiene i disegni quotati ufficiali delle dimensioni degli assi e delle impronte; il modello corrente non supporta immagini incorporate nelle celle."]),
-        table("5.1.x", "5.1.X", 165, "Tab. 5.1.X – Flusso annuo di veicoli pesanti sulla corsia di marcia lenta", [[cell("Categorie di traffico"), cell("Flusso annuo di veicoli di peso superiore a 100 kN sulla corsia di marcia lenta")]], [
+        table("5.1.x", "5.1.X", 165, "Tab. 5.1.X – Flusso annuo di veicoli pesanti sulla corsia di marcia lenta", [[cell("Categorie di traffico"), cell("Flusso annuo di veicoli di peso superiore a 100 kN sulla corsia di marcia lenta", { latex: "\\text{Flusso annuo di veicoli di peso superiore a }100\\,\\mathrm{kN}\\text{ sulla corsia di marcia lenta}" })]], [
             [cell("1 - Strade ed autostrade con 2 o più corsie per senso di marcia, caratterizzate da intenso traffico pesante"), cell("2,0 × 10⁶", { latex: "2{,}0\\times 10^6" })],
             [cell("2 - Strade ed autostrade caratterizzate da traffico pesante di media intensità"), cell("0,5 × 10⁶", { latex: "0{,}5\\times 10^6" })],
             [cell("3 - Strade principali caratterizzate da traffico pesante di modesta intensità"), cell("0,125 × 10⁶", { latex: "0{,}125\\times 10^6" })],
             [cell("4 - Strade locali caratterizzate da traffico pesante di intensità molto ridotta"), cell("0,05 × 10⁶", { latex: "0{,}05\\times 10^6" })],
         ]),
-        { id: asset("table", "5.2.i"), unitId: unitId("5.2.2.2.1.2"), officialNumber: "5.2.I", pdfPage: 169, caption: "Tab. 5.2.I - Caratteristiche Modelli di Carico SW", columnCount: 4, headers: [[cell("Tipo di Carico"), cell("qvk [kN/m]", { latex: "q_{vk}\\;[\\mathrm{kN/m}]" }), cell("a [m]"), cell("c [m]")]], rows: [[cell("SW/0"), cell("133"), cell("15,0"), cell("5,3")], [cell("SW/2"), cell("150"), cell("25,0"), cell("7,0")]], notes: [] },
+        { id: asset("table", "5.2.i"), unitId: unitId("5.2.2.2.1.2"), officialNumber: "5.2.I", pdfPage: 169, caption: "Tab. 5.2.I - Caratteristiche Modelli di Carico SW", columnCount: 4, headers: [[cell("Tipo di Carico"), cell("qvk [kN/m]", { latex: "q_{vk}\\;[\\mathrm{kN/m}]" }), cell("a [m]", { latex: "a\\;[\\mathrm{m}]" }), cell("c [m]", { latex: "c\\;[\\mathrm{m}]" })]], rows: [[cell("SW/0"), cell("133"), cell("15,0"), cell("5,3")], [cell("SW/2"), cell("150"), cell("25,0"), cell("7,0")]], notes: [] },
     ],
     figures: [
         { id: asset("figure", "5.1.4"), unitId: unitId("5.1.4.3"), officialNumber: "5.1.4", pdfPage: 162, caption: "Fig. 5.1.4 - Modello di carico di fatica 1", alt: "Modello di carico di fatica 1", imagePath: "figures/ntc2018/fig5.1.4.png", region: { coordinateSystem: "pdf-points-top-left", x: 170, y: 490, width: 260, height: 145 }, sha256: "" },

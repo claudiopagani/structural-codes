@@ -189,7 +189,22 @@
       "text": {
         "raw": "Non possono impiegarsi barre di diametro maggiore di 32 mm. Per ogni indicazione applicativa si potrà fare utile riferimento alla\nsezione 11 di UNI EN 1992-1-1:2005.",
         "normalized": "Non possono impiegarsi barre di diametro maggiore di 32 mm. Per ogni indicazione applicativa si potrà fare utile riferimento alla sezione 11 di UNI EN 1992-1-1:2005.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Non possono impiegarsi barre di diametro maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "32 mm",
+            "latex": "32\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ". Per ogni indicazione applicativa si potrà fare utile riferimento alla sezione 11 di UNI EN 1992-1-1:2005."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -224,11 +239,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -237,6 +247,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ca8768900953e27a225c0d12b8db13a0cd6d1b59400ac008319c89b1a091aa38",

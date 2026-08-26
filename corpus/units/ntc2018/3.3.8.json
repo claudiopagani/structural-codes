@@ -95,7 +95,7 @@
       "text": {
         "raw": "Il coefficiente di pressione cp dipende dalla tipologia e dalla geometria della costruzione e dal suo orientamento rispetto alla dire-\nzione del vento.",
         "normalized": "Il coefficiente di pressione cp dipende dalla tipologia e dalla geometria della costruzione e dal suo orientamento rispetto alla direzione del vento.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -145,11 +145,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,6 +153,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "3be94a15a1787b3eed8b3324b09d5460d0a62a91870a1e32a4546ae179033f5a",
@@ -170,8 +170,8 @@
       "origin": "official",
       "text": {
         "raw": "Il coefficiente d’attrito c f dipende dalla scabrezza della superficie sulla quale il vento esercita l’azione tangente.",
-        "normalized": "Il coefficiente d’attrito c f dipende dalla scabrezza della superficie sulla quale il vento esercita l’azione tangente.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Il coefficiente d’attrito cf dipende dalla scabrezza della superficie sulla quale il vento esercita l’azione tangente.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -179,12 +179,12 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "cf",
+            "latex": "c_f"
           },
           {
             "kind": "text",
-            "value": " f dipende dalla scabrezza della superficie sulla quale il vento esercita l’azione tangente."
+            "value": " dipende dalla scabrezza della superficie sulla quale il vento esercita l’azione tangente."
           }
         ]
       },
@@ -204,9 +204,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "65c65eaab5dc2fd9a122213102019fcf99dc179d7c6eefa9f6910eee2e36834c",
-        "normalizedSha256": "65c65eaab5dc2fd9a122213102019fcf99dc179d7c6eefa9f6910eee2e36834c"
+        "normalizedSha256": "09a124801b3d56fa0b4e15103f40db5bb34b329b4b23da8352b588fe1e3a2a45"
       }
     },
     {

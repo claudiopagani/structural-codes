@@ -184,7 +184,7 @@
       "text": {
         "raw": "In Fig. 4.1.1 sono rappresentati i modelli Η-Ή per il calcestruzzo:",
         "normalized": "In Fig. 4.1.1 sono rappresentati i modelli σ-ε per il calcestruzzo:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -192,17 +192,8 @@
           },
           {
             "kind": "math",
-            "value": "σ",
-            "latex": "\\sigma"
-          },
-          {
-            "kind": "text",
-            "value": "-"
-          },
-          {
-            "kind": "math",
-            "value": "ε",
-            "latex": "\\varepsilon"
+            "value": "σ-ε",
+            "latex": "\\sigma-\\varepsilon"
           },
           {
             "kind": "text",
@@ -243,11 +234,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -256,6 +242,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d96efb542e7fdd098544706abc78a2650bbe0478982317edfe9bd912629bf3c4",
@@ -269,22 +260,7 @@
       "text": {
         "raw": "(a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block).",
         "normalized": "(a) parabola-rettangolo; (b) triangolo-rettangolo; (c) rettangolo (stress block).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "(a) parabola-rettangolo; (b) triangolo-rettangolo; ("
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": ") rettangolo (stress block)."
-          }
-        ]
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -302,7 +278,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "b7beb2d6bfa5fcce55e978e6e9cfa361d2a6e812a88474375b33ccd9e51dec41",
         "normalizedSha256": "b7beb2d6bfa5fcce55e978e6e9cfa361d2a6e812a88474375b33ccd9e51dec41"
       }
@@ -314,22 +296,7 @@
       "text": {
         "raw": "In particolare, per le classi di resistenza pari o inferiore a C50/60 si può porre:",
         "normalized": "In particolare, per le classi di resistenza pari o inferiore a C50/60 si può porre:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "In particolare, per le classi di resistenza pari o inferiore a C50"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "60 si può porre:"
-          }
-        ]
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -347,7 +314,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "68431295e67bdf40eacb65380a1b827322b6473200de0fc193036281cf401cae",
         "normalizedSha256": "68431295e67bdf40eacb65380a1b827322b6473200de0fc193036281cf401cae"
       }
@@ -391,22 +364,7 @@
       "text": {
         "raw": "Per le classi di resistenza superiore a C50/60 si può porre:",
         "normalized": "Per le classi di resistenza superiore a C50/60 si può porre:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Per le classi di resistenza superiore a C50"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "60 si può porre:"
-          }
-        ]
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -424,7 +382,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "2864aa81f409d2b2b2f323177ced5885d86f118480168885ab2888c7446e8d72",
         "normalizedSha256": "2864aa81f409d2b2b2f323177ced5885d86f118480168885ab2888c7446e8d72"
       }
@@ -468,22 +432,7 @@
       "text": {
         "raw": "purché si adottino opportune limitazioni quando si usa il modello (c).",
         "normalized": "purché si adottino opportune limitazioni quando si usa il modello (c).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "purché si adottino opportune limitazioni quando si usa il modello ("
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": ")."
-          }
-        ]
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -501,7 +450,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "cae273f2ca2d18f971b6653eed8c3fe423d1e0c618df0af709bed63d7399c488",
         "normalizedSha256": "cae273f2ca2d18f971b6653eed8c3fe423d1e0c618df0af709bed63d7399c488"
       }
@@ -971,11 +926,20 @@
       "text": {
         "raw": "essendo V2 la pressione laterale efficace di confinamento allo SLV mentre Hc2 ed Hcu sono valutate in accordo al § 4.1.2.1.2.1.",
         "normalized": "essendo σ₂ la pressione laterale efficace di confinamento allo SLV mentre εc2 ed εcu sono valutate in accordo al § 4.1.2.1.2.1.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "essendo σ₂ la pressione laterale efficace di confinamento allo SLV mentre "
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "σ₂",
+            "latex": "\\sigma_2"
+          },
+          {
+            "kind": "text",
+            "value": " la pressione laterale efficace di confinamento allo SLV mentre "
           },
           {
             "kind": "math",
@@ -1030,11 +994,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1043,6 +1002,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "54822400d3c9a6d3f3d95921ae71732a135547ea774ececcdb4fbb88bfde9b2c",
@@ -1088,7 +1052,22 @@
       "text": {
         "raw": "La pressione efficace di confinamento V2 può essere determinata attraverso la relazione seguente:",
         "normalized": "La pressione efficace di confinamento σ₂ può essere determinata attraverso la relazione seguente:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La pressione efficace di confinamento "
+          },
+          {
+            "kind": "math",
+            "value": "σ₂",
+            "latex": "\\sigma_2"
+          },
+          {
+            "kind": "text",
+            "value": " può essere determinata attraverso la relazione seguente:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1123,11 +1102,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1136,6 +1110,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "cf459e44aad91110f94df3d2ba3508f41ad301cbfaa7d426ca1b34c869b3b0a2",
@@ -1181,7 +1160,7 @@
       "text": {
         "raw": "dove D è un coefficiente di efficienza (d 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il\nvolume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e Vl è la\npressione di confinamento esercitata dalle armature trasversali.",
         "normalized": "dove α è un coefficiente di efficienza (≤ 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il volume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e σₗ è la pressione di confinamento esercitata dalle armature trasversali.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -1198,12 +1177,39 @@
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "≤ 1",
+            "latex": "\\le1"
           },
           {
             "kind": "text",
-            "value": " 1), definito come rapporto fra il volume Vc,eff di calcestruzzo efficacemente confinato ed il volume Vc dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e σₗ è la pressione di confinamento esercitata dalle armature trasversali."
+            "value": "), definito come rapporto fra il volume "
+          },
+          {
+            "kind": "math",
+            "value": "Vc,eff",
+            "latex": "V_{c,eff}"
+          },
+          {
+            "kind": "text",
+            "value": " di calcestruzzo efficacemente confinato ed il volume "
+          },
+          {
+            "kind": "math",
+            "value": "Vc",
+            "latex": "V_c"
+          },
+          {
+            "kind": "text",
+            "value": " dell’elemento di calcestruzzo, depurato da quello delle armature longitudinali (generalmente trascurabile) e "
+          },
+          {
+            "kind": "math",
+            "value": "σₗ",
+            "latex": "\\sigma_l"
+          },
+          {
+            "kind": "text",
+            "value": " è la pressione di confinamento esercitata dalle armature trasversali."
           }
         ]
       },
@@ -1240,11 +1246,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1253,6 +1254,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "547350b675360823fcabbfe2539c5acea05733717c06056f2d4b3f4dd1651dad",
@@ -1357,7 +1363,7 @@
       "text": {
         "raw": "Per le due direzioni principali della sezione x e y valgono, rispettivamente, le relazioni:",
         "normalized": "Per le due direzioni principali della sezione x e y valgono, rispettivamente, le relazioni:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -1370,7 +1376,16 @@
           },
           {
             "kind": "text",
-            "value": " e y valgono, rispettivamente, le relazioni:"
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": " valgono, rispettivamente, le relazioni:"
           }
         ]
       },
@@ -1390,7 +1405,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "f12f1b3307452da93174de01174b483e3f0f20592ae9f38cc05c8493ea055590",
         "normalizedSha256": "f12f1b3307452da93174de01174b483e3f0f20592ae9f38cc05c8493ea055590"
       }
@@ -1433,12 +1454,30 @@
       "origin": "official",
       "text": {
         "raw": "dove A st,x e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle\ndirezioni principali x e y, bx e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea\nmedia delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell’acciaio delle staffe.",
-        "normalized": "dove A st,x e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali x e y, bx e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell’acciaio delle staffe.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove Ast,x e Ast,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali x e y, bx e by sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, fyk,st è la tensione caratteristica dell’acciaio delle staffe.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove A st,"
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Ast,x",
+            "latex": "A_{st,x}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Ast,y",
+            "latex": "A_{st,y}"
+          },
+          {
+            "kind": "text",
+            "value": " sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali "
           },
           {
             "kind": "math",
@@ -1447,16 +1486,16 @@
           },
           {
             "kind": "text",
-            "value": " e A st,y sono il quantitativo totale (aree delle sezioni) di armatura trasversale in direzione parallela, rispettivamente, alle direzioni principali "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "y",
+            "latex": "y"
           },
           {
             "kind": "text",
-            "value": " e y, "
+            "value": ", "
           },
           {
             "kind": "math",
@@ -1465,16 +1504,34 @@
           },
           {
             "kind": "text",
-            "value": " e b y sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), s è il passo delle staffe, "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "fyk",
-            "latex": "f_{yk}"
+            "value": "by",
+            "latex": "b_y"
           },
           {
             "kind": "text",
-            "value": ",st è la tensione caratteristica dell’acciaio delle staffe."
+            "value": " sono le dimensioni del nucleo confinato nelle direzioni corrispondenti (con riferimento alla linea media delle staffe), "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " è il passo delle staffe, "
+          },
+          {
+            "kind": "math",
+            "value": "fyk,st",
+            "latex": "f_{yk,st}"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione caratteristica dell’acciaio delle staffe."
           }
         ]
       },
@@ -1511,11 +1568,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1524,10 +1576,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d7e0e5fc8ce2fd67ffa791638dc9324f0e7ca4c1f960520606812ab2f6caf7b8",
-        "normalizedSha256": "73064913ec8547d971d60e0e2ecdc2705829be2fa654b02d8a817af7f216acd9"
+        "normalizedSha256": "f365dfeb3ade750ea4a33b3ddcce951effb2cc9134553ff309eedf2e65ea25c7"
       }
     },
     {
@@ -1537,7 +1594,22 @@
       "text": {
         "raw": "La pressione laterale equivalente Vl può essere determinata attraverso la relazione:ylxll ,, V",
         "normalized": "La pressione laterale equivalente σₗ può essere determinata attraverso la relazione:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La pressione laterale equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "σₗ",
+            "latex": "\\sigma_l"
+          },
+          {
+            "kind": "text",
+            "value": " può essere determinata attraverso la relazione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1572,11 +1644,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1585,6 +1652,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "e9a1cb9e383d12aa2ad94d11ef9d9def1b388d3d08e0d15c9ae88ccfd39cd2f4",
@@ -1722,12 +1794,21 @@
       "origin": "official",
       "text": {
         "raw": "dove: A st è l’area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).",
-        "normalized": "dove: A st è l’area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove: Ast è l’area della sezione della staffa, D0 è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: A st è l’area della sezione della staffa, "
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "Ast",
+            "latex": "A_{st}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area della sezione della staffa, "
           },
           {
             "kind": "math",
@@ -1756,9 +1837,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "0d179541faa4cdb10efbaafe2a0d16dbeb9f282a74686ee2db11475f8e93bcd3",
-        "normalizedSha256": "0d179541faa4cdb10efbaafe2a0d16dbeb9f282a74686ee2db11475f8e93bcd3"
+        "normalizedSha256": "1090aba7a41af734fc4d0e19541f6659871d758e29e8c322fea646760cafd50d"
       }
     },
     {
@@ -2031,7 +2118,31 @@
       "text": {
         "raw": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive\ncontenute.",
         "normalized": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive contenute.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, "
+          },
+          {
+            "kind": "math",
+            "value": "bi",
+            "latex": "b_i"
+          },
+          {
+            "kind": "text",
+            "value": " è la distanza tra barre consecutive contenute."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -2066,11 +2177,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -2079,6 +2185,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "06fe1b76fc73991ba65c955d9bf8dad07d5297d5b502f62f42ad1c6e1aff108d",
@@ -2217,7 +2328,7 @@
       "text": {
         "raw": "dove: E = 2 per staffe circolari singole, E = 1 per staffa a spirale.",
         "normalized": "dove: β = 2 per staffe circolari singole, β = 1 per staffa a spirale.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -2225,39 +2336,21 @@
           },
           {
             "kind": "math",
-            "value": "β",
-            "latex": "\\beta"
+            "value": "β = 2",
+            "latex": "\\beta=2"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " per staffe circolari singole, "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "β = 1",
+            "latex": "\\beta=1"
           },
           {
             "kind": "text",
-            "value": " 2 per staffe circolari singole, "
-          },
-          {
-            "kind": "math",
-            "value": "β",
-            "latex": "\\beta"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1 per staffa a spirale."
+            "value": " per staffa a spirale."
           }
         ]
       },
@@ -2294,11 +2387,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -2307,6 +2395,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "c2a61fe7351871bf68d505f055dd8ad987003fd0329f613dce16b3844ad20098",

@@ -75,7 +75,7 @@ test("NTC 7.4 conserva la sequenza ufficiale delle formule", async () => {
             ({ officialNumber }: { officialNumber: string }) =>
                 officialNumber === "7.4.22",
         )?.latex,
-        "V_{fd}=\\min\\begin{cases}\\mu_f\\left[\\left(\\sum A_{sj}f_{yd}+N_{Ed}\\right)\\xi+M_{Ed}/z\\right]\\\\0{,}5\\eta f_{cd}\\xi l_w b_{wo}\\end{cases}",
+        "V_{fd}=\\min\\begin{cases}\\mu_f\\cdot\\left[\\left(\\sum A_{sj}\\cdot f_{yd}+N_{Ed}\\right)\\cdot\\xi+M_{Ed}/z\\right]\\\\0{,}5\\cdot\\eta\\cdot f_{cd}\\cdot\\xi\\cdot l_w\\cdot b_{wo}\\end{cases}",
     );
     assert.equal(
         step3.formulas.find(

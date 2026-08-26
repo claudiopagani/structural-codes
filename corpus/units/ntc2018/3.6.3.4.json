@@ -217,7 +217,7 @@
       "text": {
         "raw": "In mancanza di specifiche analisi di rischio possono assumersi le seguenti azioni statiche equivalenti, in funzione della distanza d\ndegli elementi esposti dall’asse del binario:",
         "normalized": "In mancanza di specifiche analisi di rischio possono assumersi le seguenti azioni statiche equivalenti, in funzione della distanza d degli elementi esposti dall’asse del binario:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -240,10 +240,10 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 72,
+          "y": 271,
+          "width": 450,
+          "height": 17
         },
         "extraction": {
           "method": "pdf-text",
@@ -252,33 +252,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -288,34 +278,25 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ȡ per d ǂ 5 m:",
-        "normalized": "ȡ per d ≤ 5 m:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "per d ǂ 5 m:",
+        "normalized": "per d ≤ 5 m:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "ȡ per "
+            "value": "per "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "d ≤ 5 m",
+            "latex": "d\\le5\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 5 m:"
+            "value": ":"
           }
         ]
       },
@@ -325,10 +306,10 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 83,
+          "y": 294,
+          "width": 430,
+          "height": 12
         },
         "extraction": {
           "method": "pdf-text",
@@ -337,38 +318,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "38eebe580e1bb7c76bdd94fd7842f0c5f811c9a7b114f8c1d131c3d4b28ac937",
-        "normalizedSha256": "6f2ffe32524113db9555bf65c7d8b3d64d7ccb16c2e11bc7100b0b58cbb819e3"
+        "rawSha256": "c07382bd0512143275d2dea7dea16813f842425298ff9d171ddb050d40f87122",
+        "normalizedSha256": "8fa9b61f9e69889cecb94283e35c46baecd7b8fa13caf8c83f275ca244ef937a"
       }
     },
     {
@@ -376,9 +347,20 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- 4000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
+        "raw": "per d ǂ 5 m:\n4000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
         "normalized": "4000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "4000 kN",
+            "latex": "4000\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": " in direzione parallela alla direzione di marcia dei convogli ferroviari;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -386,10 +368,10 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 95,
+          "y": 305,
+          "width": 420,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
@@ -398,37 +380,27 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "dfbfe27f2e1ccfe8615d31b392816df4bdd933b7510815983e5cff14dcc82c99",
+        "rawSha256": "3c1bdd6732e1bbe8b665748134935998025bdeac1256db109f03aebe32874580",
         "normalizedSha256": "dbb85b784ccef739487575c2567bfa493061fe8635eb1b41a4c922a6cf0f14fd"
       }
     },
@@ -437,40 +409,18 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- 1500 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;\nȡ per 5 m < d ǂ 15 m:",
-        "normalized": "1500 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari; ȡ per 5 m < d ≤ 15 m:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "1500 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;",
+        "normalized": "1500 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
-            "kind": "text",
-            "value": "1500 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari; ȡ per 5 m "
-          },
-          {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "1500 kN",
+            "latex": "1500\\,\\mathrm{kN}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 15 m:"
+            "value": " in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"
           }
         ]
       },
@@ -480,50 +430,19 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 95,
+          "y": 318,
+          "width": 420,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "e4dc5948b34491564dbae84a55be3d5ef724c111189da4e200f3fbe3ebb0d874",
-        "normalizedSha256": "829392b842d6285aecbba03ab416a0aa7b24655c6b5c62f9d7658235012ab022"
+        "transformations": [],
+        "rawSha256": "5b450bc5c39c9589dd0d1caa98402a853e7056b675fffdb68bdb943bbc298a80",
+        "normalizedSha256": "5b450bc5c39c9589dd0d1caa98402a853e7056b675fffdb68bdb943bbc298a80"
       }
     },
     {
@@ -531,92 +450,22 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- 2000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
-        "normalized": "2000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 71,
-        "printedPage": "67",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "8472656b2dba61e3fce89d563032da7c96dc719607490fdfc8b963e98fe24cd4",
-        "normalizedSha256": "6049fdd9ea1ba30ef50d878c4e2adebec22e56038cad6c090b43cb59d7051f38"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-009",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "- 750 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;\nȡ per d > 15 m pari a zero in entrambe le direzioni.",
-        "normalized": "750 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari; ȡ per d > 15 m pari a zero in entrambe le direzioni.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "per 5 m < d ǂ 15 m:",
+        "normalized": "per 5 m < d ≤ 15 m:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "750 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari; ȡ per "
+            "value": "per "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "5 m < d ≤ 15 m",
+            "latex": "5\\,\\mathrm{m}<d\\le15\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 15 m pari a zero in entrambe le direzioni."
+            "value": ":"
           }
         ]
       },
@@ -626,10 +475,10 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 83,
+          "y": 332,
+          "width": 430,
+          "height": 12
         },
         "extraction": {
           "method": "pdf-text",
@@ -638,48 +487,49 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "18688243c25c483f10ded2a99151c7fcc0729780ac055e3fe534afe796d974a7",
-        "normalizedSha256": "d82d2bf522ebb6b636bdba70dfb5531eb2b4060660286789e085542e8598ef82"
+        "rawSha256": "3b6713dc5a8debb2407c32bddbe36ed5675ffb9ebfb3cf0c36c6b626144b03f5",
+        "normalizedSha256": "fcb96ba0c09257b88b982a494d13ffcd4f268783c43e54c82b72f74ccbfb30e0"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-010",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-009",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "Queste forze dovranno essere applicate a 1,80 m dal piano del ferro e non dovranno essere considerate agenti simultaneamente.",
-        "normalized": "Queste forze dovranno essere applicate a 1,80 m dal piano del ferro e non dovranno essere considerate agenti simultaneamente.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "per 5 m < d ǂ 15 m:\n2000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
+        "normalized": "2000 kN in direzione parallela alla direzione di marcia dei convogli ferroviari;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "2000 kN",
+            "latex": "2000\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": " in direzione parallela alla direzione di marcia dei convogli ferroviari;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -687,10 +537,162 @@
         "printedPage": "67",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 72.25,
-          "y": 215.214,
-          "width": 450.043,
-          "height": 177.046
+          "x": 95,
+          "y": 342,
+          "width": 420,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1a7386f581fa4c0b4e3eb3e1fd614e5812b55eea4801fab593f343bf81018770",
+        "normalizedSha256": "6049fdd9ea1ba30ef50d878c4e2adebec22e56038cad6c090b43cb59d7051f38"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-010",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "750 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;",
+        "normalized": "750 kN in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "750 kN",
+            "latex": "750\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": " in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 95,
+          "y": 356,
+          "width": 420,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "55e9501866b6f02b24d1c691fb88d29674ee35aed9eabf6907ad979dab424ac5",
+        "normalizedSha256": "55e9501866b6f02b24d1c691fb88d29674ee35aed9eabf6907ad979dab424ac5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-011",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "per d > 15 m pari a zero in entrambe le direzioni.",
+        "normalized": "per d > 15 m pari a zero in entrambe le direzioni.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "per "
+          },
+          {
+            "kind": "math",
+            "value": "d > 15 m",
+            "latex": "d>15\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " pari a zero in entrambe le direzioni."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 83,
+          "y": 369,
+          "width": 430,
+          "height": 13
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "1b5fe8833b585a36ddb9f2646287165f84e41af4f529f8769e15abce73fadb61",
+        "normalizedSha256": "1b5fe8833b585a36ddb9f2646287165f84e41af4f529f8769e15abce73fadb61"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.4#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Queste forze dovranno essere applicate a 1,80 m dal piano del ferro e non dovranno essere considerate agenti simultaneamente.",
+        "normalized": "Queste forze dovranno essere applicate a 1,80 m dal piano del ferro e non dovranno essere considerate agenti simultaneamente.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Queste forze dovranno essere applicate a "
+          },
+          {
+            "kind": "math",
+            "value": "1,80 m",
+            "latex": "1{,}80\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " dal piano del ferro e non dovranno essere considerate agenti simultaneamente."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 71,
+        "printedPage": "67",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 72,
+          "y": 382,
+          "width": 450,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",

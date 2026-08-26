@@ -67,7 +67,7 @@
       "text": {
         "raw": "Con riferimento alla sezione pressoinflessa, rappresentata in Fig. 4.1.4, la capacità, in termini di resistenza e duttilità, si determi-\nna in base alle ipotesi di calcolo e ai modelli ΗƺΉ di cui al § 4.1.2.1.2.",
         "normalized": "Con riferimento alla sezione pressoinflessa, rappresentata in Fig. 4.1.4, la capacità, in termini di resistenza e duttilità, si determina in base alle ipotesi di calcolo e ai modelli σ-ε di cui al § 4.1.2.1.2.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -75,17 +75,8 @@
           },
           {
             "kind": "math",
-            "value": "σ",
-            "latex": "\\sigma"
-          },
-          {
-            "kind": "text",
-            "value": "-"
-          },
-          {
-            "kind": "math",
-            "value": "ε",
-            "latex": "\\varepsilon"
+            "value": "σ-ε",
+            "latex": "\\sigma-\\varepsilon"
           },
           {
             "kind": "text",
@@ -126,11 +117,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -139,6 +125,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "87f10f1bf24199e339c83b180de99d9b26eabef0092f57faab1bf4221a04c687",
@@ -308,17 +299,17 @@
       "origin": "official",
       "text": {
         "raw": "dove\nM Rd è il valore di progetto del momento resistente corrispondente a NEd;\nN Ed è il valore di progetto dello sforzo normale sollecitante;\nM Ed è il valore di progetto del momento di domanda;\nμI è il valore di progetto della duttilità di curvatura corrispondente a NEd;\nPEd è la domanda in termini di duttilità di curvatura.",
-        "normalized": "dove M Rd è il valore di progetto del momento resistente corrispondente a NEd; N Ed è il valore di progetto dello sforzo normale sollecitante; M Ed è il valore di progetto del momento di domanda; μφ è il valore di progetto della duttilità di curvatura corrispondente a NEd; μEd è la domanda in termini di duttilità di curvatura.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove MRd è il valore di progetto del momento resistente corrispondente a NEd; NEd è il valore di progetto dello sforzo normale sollecitante; MEd è il valore di progetto del momento di domanda; μφ è il valore di progetto della duttilità di curvatura corrispondente a NEd; μEd è la domanda in termini di duttilità di curvatura.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove M "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "Rd",
-            "latex": "R_d"
+            "value": "MRd",
+            "latex": "M_{Rd}"
           },
           {
             "kind": "text",
@@ -331,25 +322,34 @@
           },
           {
             "kind": "text",
-            "value": "; N "
+            "value": "; "
           },
           {
             "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
+            "value": "NEd",
+            "latex": "N_{Ed}"
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto dello sforzo normale sollecitante; M "
+            "value": " è il valore di progetto dello sforzo normale sollecitante; "
           },
           {
             "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
+            "value": "MEd",
+            "latex": "M_{Ed}"
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto del momento di domanda; μφ è il valore di progetto della duttilità di curvatura corrispondente a "
+            "value": " è il valore di progetto del momento di domanda; "
+          },
+          {
+            "kind": "math",
+            "value": "μφ",
+            "latex": "\\mu_\\phi"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore di progetto della duttilità di curvatura corrispondente a "
           },
           {
             "kind": "math",
@@ -404,11 +404,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -417,10 +412,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "b0f5f31e5ad1c39331964200e2ec207eddca3bbc2ee04a2917e599b6067ae977",
-        "normalizedSha256": "a8c28212e82a43fe0b352754fe88e188ad0af1debd035c3fd7b24e86929bac2e"
+        "normalizedSha256": "3e1b7f91a30aab0edd4b018f0c002dd2f29d5480e8e3132af700b504fa93d6c1"
       }
     },
     {
@@ -429,8 +429,8 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso di pilastri soggetti a compressione assiale, si deve comunque assumere una componente flettente MEd = e  N EI con eccen-\ntricità e pari almeno ad 1/200 dell’altezza libera di inflessione del pilastro, e comunque non minore di 20 mm.",
-        "normalized": "Nel caso di pilastri soggetti a compressione assiale, si deve comunque assumere una componente flettente MEd = e Nₑd con eccentricità e pari almeno ad 1/200 dell’altezza libera di inflessione del pilastro, e comunque non minore di 20 mm.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Nel caso di pilastri soggetti a compressione assiale, si deve comunque assumere una componente flettente MEd = e · NEd con eccentricità e pari almeno ad 1/200 dell’altezza libera di inflessione del pilastro, e comunque non minore di 20 mm.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -438,30 +438,39 @@
           },
           {
             "kind": "math",
-            "value": "MEd",
-            "latex": "M_{Ed}"
+            "value": "MEd = e · NEd",
+            "latex": "M_{Ed}=e\\cdot N_{Ed}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " con eccentricità "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "e",
+            "latex": "e"
           },
           {
             "kind": "text",
-            "value": " e Nₑd con eccentricità e pari almeno ad 1"
+            "value": " pari almeno ad "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "1/200",
+            "latex": "1/200"
           },
           {
             "kind": "text",
-            "value": "200 dell’altezza libera di inflessione del pilastro, e comunque non minore di 20 mm."
+            "value": " dell’altezza libera di inflessione del pilastro, e comunque non minore di "
+          },
+          {
+            "kind": "math",
+            "value": "20 mm",
+            "latex": "20\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -498,11 +507,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -511,10 +515,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "92e49e905c87edc56c2fd9f410e857643714b68cc6b9773158345896084e9b6a",
-        "normalizedSha256": "db6912223acef75404561f1315275650ac26893670cb0927c201d1507b06d341"
+        "normalizedSha256": "4a520e74475c06066c8b5247562489dfe572c4adaaecad838a37e54a98524efd"
       }
     },
     {
@@ -585,12 +594,66 @@
       "origin": "official",
       "text": {
         "raw": "dove\nM Eyd\n, M Ezd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z;\nM Ryd\n, M Rzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente\nattorno agli assi y e z.",
-        "normalized": "dove M Eyd , M Ezd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z; M Ryd , M Rzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente attorno agli assi y e z.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove MEyd, MEzd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z; MRyd, MRzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente attorno agli assi y e z.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove M Eyd , M Ezd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z; M Ryd , M Rzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a "
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "MEyd",
+            "latex": "M_{Eyd}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "MEzd",
+            "latex": "M_{Ezd}"
+          },
+          {
+            "kind": "text",
+            "value": " sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "z",
+            "latex": "z"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "MRyd",
+            "latex": "M_{Ryd}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "MRzd",
+            "latex": "M_{Rzd}"
+          },
+          {
+            "kind": "text",
+            "value": " sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a "
           },
           {
             "kind": "math",
@@ -599,7 +662,25 @@
           },
           {
             "kind": "text",
-            "value": " valutati separatamente attorno agli assi y e z."
+            "value": " valutati separatamente attorno agli assi "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "z",
+            "latex": "z"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -636,11 +717,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -649,10 +725,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "0162ad6dccfdd9894625f8d08618af66b16a35f1514a9b85d393a05106b1f783",
-        "normalizedSha256": "577a45053180e67a105fb51799b503f3c053437e57a1230f2523f296694e1f5d"
+        "normalizedSha256": "7afeca359135390c5c102f6f7a1d3a7c8506f34ebd8ed57106a5c936b5c137ac"
       }
     },
     {
@@ -662,7 +743,7 @@
       "text": {
         "raw": "L’esponente ΅ può dedursi in funzione della geometria della sezione e dei parametriΑ = NEd/N Rcd [4.1.20]",
         "normalized": "L’esponente α può dedursi in funzione della geometria della sezione e dei parametri:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -712,11 +793,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -725,6 +801,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "21bea8c9e32a535f0ee90f6c0f1565ceafa375a07855b927a2e662244666b8a3",
@@ -926,8 +1007,8 @@
       "origin": "official",
       "text": {
         "raw": "con interpolazione lineare per valori diversi di NEd/N Rcd;",
-        "normalized": "con interpolazione lineare per valori diversi di NEd/N Rcd;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "con interpolazione lineare per valori diversi di NEd/NRcd;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -935,17 +1016,12 @@
           },
           {
             "kind": "math",
-            "value": "NEd",
-            "latex": "N_{Ed}"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "NEd/NRcd",
+            "latex": "N_{Ed}/N_{Rcd}"
           },
           {
             "kind": "text",
-            "value": "N Rcd;"
+            "value": ";"
           }
         ]
       },
@@ -965,9 +1041,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "9094a5d7e4a9f169a4e046a82014f7aade8d333b461a42b4c7122beea2b8fd2f",
-        "normalizedSha256": "9094a5d7e4a9f169a4e046a82014f7aade8d333b461a42b4c7122beea2b8fd2f"
+        "normalizedSha256": "eb42d95bdb35c7eec4f2723a936534d764f35915fe6be7add12ae45a1c46071e"
       }
     },
     {
@@ -977,7 +1059,7 @@
       "text": {
         "raw": "- per sezioni circolari ed ellittiche: D = 2.",
         "normalized": "per sezioni circolari ed ellittiche: α = 2.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -985,21 +1067,12 @@
           },
           {
             "kind": "math",
-            "value": "α",
-            "latex": "\\alpha"
+            "value": "α = 2",
+            "latex": "\\alpha=2"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 2."
+            "value": "."
           }
         ]
       },
@@ -1036,11 +1109,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1049,6 +1117,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "e5bed75331bfd5f52d400b3322c0af5ff6f2c025bfff8d77819ba9148d58bfe1",
@@ -1062,20 +1135,20 @@
       "text": {
         "raw": "La capacità in termini di fattore di duttilità in curvatura μI può essere calcolata, separatamente per le due direzioni principali di\nverifica, come rapporto tra la curvatura cui corrisponde una riduzione del 15% della massima resistenza a flessione – oppure il\nraggiungimento della deformazione ultima del calcestruzzo e/o dell’acciaio – e la curvatura convenzionale di prima plasticizza-\nzione Iyd espressa dalla relazione seguente:",
         "normalized": "La capacità in termini di fattore di duttilità in curvatura μφ può essere calcolata, separatamente per le due direzioni principali di verifica, come rapporto tra la curvatura cui corrisponde una riduzione del 15% della massima resistenza a flessione – oppure il raggiungimento della deformazione ultima del calcestruzzo e/o dell’acciaio – e la curvatura convenzionale di prima plasticizzazione φyd espressa dalla relazione seguente:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La capacità in termini di fattore di duttilità in curvatura μφ può essere calcolata, separatamente per le due direzioni principali di verifica, come rapporto tra la curvatura cui corrisponde una riduzione del 15% della massima resistenza a flessione – oppure il raggiungimento della deformazione ultima del calcestruzzo e"
+            "value": "La capacità in termini di fattore di duttilità in curvatura "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "μφ",
+            "latex": "\\mu_\\phi"
           },
           {
             "kind": "text",
-            "value": "o dell’acciaio – e la curvatura convenzionale di prima plasticizzazione "
+            "value": " può essere calcolata, separatamente per le due direzioni principali di verifica, come rapporto tra la curvatura cui corrisponde una riduzione del 15% della massima resistenza a flessione – oppure il raggiungimento della deformazione ultima del calcestruzzo e/o dell’acciaio – e la curvatura convenzionale di prima plasticizzazione "
           },
           {
             "kind": "math",
@@ -1121,11 +1194,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1134,6 +1202,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "309d7c326c8e2b00c224ae7b6166704148109d29bcd85ac7aa37348fcd68aa68",
@@ -1178,21 +1251,21 @@
       "origin": "official",
       "text": {
         "raw": "dove:cIyd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in cor-\nrispondenza della deformazione di picco (İc2 se si usa il modello parabola-rettangolo oppure İc3 se si usa il modello triangolo-\nrettangolo) del calcestruzzo compresso;\nM Rd è il momento resistente della sezione allo SLU;\nM’ yd è il momento corrispondente a cIyd e può essere assunto come momento resistente massimo della sezione in campo sostan-\nzialmente elastico.",
-        "normalized": "dove:φ'yd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco (εc2 se si usa il modello parabola-rettangolo oppure εc3 se si usa il modello triangolorettangolo) del calcestruzzo compresso; M Rd è il momento resistente della sezione allo SLU; M’ yd è il momento corrispondente a φ'yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove: φ'yd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco (εc2 se si usa il modello parabola-rettangolo oppure εc3 se si usa il modello triangolo-rettangolo) del calcestruzzo compresso; MRd è il momento resistente della sezione allo SLU; M’yd è il momento corrispondente a φ'yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove:"
+            "value": "dove: "
           },
           {
             "kind": "math",
-            "value": "φ'",
-            "latex": "\\phi'"
+            "value": "φ'yd",
+            "latex": "\\phi'_{yd}"
           },
           {
             "kind": "text",
-            "value": "yd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco ("
+            "value": " è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco ("
           },
           {
             "kind": "math",
@@ -1210,25 +1283,34 @@
           },
           {
             "kind": "text",
-            "value": " se si usa il modello triangolorettangolo) del calcestruzzo compresso; M "
+            "value": " se si usa il modello triangolo-rettangolo) del calcestruzzo compresso; "
           },
           {
             "kind": "math",
-            "value": "Rd",
-            "latex": "R_d"
+            "value": "MRd",
+            "latex": "M_{Rd}"
           },
           {
             "kind": "text",
-            "value": " è il momento resistente della sezione allo SLU; M’ yd è il momento corrispondente a "
+            "value": " è il momento resistente della sezione allo SLU; "
           },
           {
             "kind": "math",
-            "value": "φ'",
-            "latex": "\\phi'"
+            "value": "M’yd",
+            "latex": "M'_{yd}"
           },
           {
             "kind": "text",
-            "value": "yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico."
+            "value": " è il momento corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "φ'yd",
+            "latex": "\\phi'_{yd}"
+          },
+          {
+            "kind": "text",
+            "value": " e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico."
           }
         ]
       },
@@ -1265,11 +1347,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -1278,10 +1355,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "fcd0496b0835a67d411bc0cd9af9f0309b98fefc721d3ff0acb61ade0b43913f",
-        "normalizedSha256": "e548410f851c85cae145fb9060d16f94f2c101456c9f0ca2d52ec08bf87eff18"
+        "normalizedSha256": "dbfa7d68fc32bf3a2f57bfa66afafe39823fa936b09671c86ee186e8725606fe"
       }
     }
   ],

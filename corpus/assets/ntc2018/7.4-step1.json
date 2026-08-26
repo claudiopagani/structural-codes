@@ -12,35 +12,35 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
       "officialNumber": "7.4.1",
       "pdfPage": 230,
-      "latex": "V_{R1}=\\left(2-\\left|\\frac{V_{Ed,min}}{V_{Ed,max}}\\right|\\right)\\,f_{ctd}\\,b_w\\,d"
+      "latex": "V_{R1}=\\left(2-\\left|\\frac{V_{Ed,min}}{V_{Ed,max}}\\right|\\right)\\cdot f_{ctd}\\cdot b_w\\cdot d"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.2",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
       "officialNumber": "7.4.2",
       "pdfPage": 230,
-      "latex": "V_{Ed,max}\\le\\frac{A_s\\,f_{yd}}{\\sqrt{2}}"
+      "latex": "V_{Ed,max}\\le\\frac{A_s\\cdot f_{yd}}{\\sqrt{2}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.3",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.1.2",
       "officialNumber": "7.4.3",
       "pdfPage": 230,
-      "latex": "\\mu_\\phi=\\begin{cases}1{,}2\\left(2q_0-1\\right)&\\text{per }T_1\\ge T_C\\\\1{,}2\\left[1+2\\left(q_0-1\\right)\\dfrac{T_C}{T_1}\\right]&\\text{per }T_1<T_C\\end{cases}"
+      "latex": "\\mu_\\phi=\\begin{cases}1{,}2\\cdot\\left(2q_0-1\\right)&\\text{per }T_1\\ge T_C\\\\1{,}2\\cdot\\left[1+2\\left(q_0-1\\right)\\dfrac{T_C}{T_1}\\right]&\\text{per }T_1<T_C\\end{cases}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.4",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
       "officialNumber": "7.4.4",
       "pdfPage": 230,
-      "latex": "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\sum M_{b,Rd}"
+      "latex": "\\sum M_{c,Rd}\\ge\\gamma_{Rd}\\cdot\\sum M_{b,Rd}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.5",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1",
       "officialNumber": "7.4.5",
       "pdfPage": 231,
-      "latex": "V_{Ed}=\\frac{\\gamma_{Rd}}{l_p}\\left(M_{i,d}^{s}+M_{i,d}^{i}\\right)"
+      "latex": "V_{Ed}l_p=\\gamma_{Rd}\\left(M_{i,d}^{s}+M_{i,d}^{i}\\right)"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.5:mi-d",
@@ -54,49 +54,49 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.6",
       "pdfPage": 232,
-      "latex": "V_{jbd}=\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}-V_C\\qquad\\text{per nodi interni}"
+      "latex": "V_{jbd}=\\gamma_{Rd}\\cdot\\left(A_{s1}+A_{s2}\\right)\\cdot f_{yd}-V_C\\qquad\\text{per nodi interni}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.7",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.7",
       "pdfPage": 232,
-      "latex": "V_{jbd}=\\gamma_{Rd}A_{s1}f_{yd}-V_C\\qquad\\text{per nodi esterni}"
+      "latex": "V_{jbd}=\\gamma_{Rd}\\cdot A_{s1}\\cdot f_{yd}-V_C\\qquad\\text{per nodi esterni}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.8",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.8",
       "pdfPage": 232,
-      "latex": "V_{jbd}\\le\\eta\\,f_{cd}\\,b_j\\,h_{jc}\\sqrt{1-\\frac{\\nu_d}{\\eta}}"
+      "latex": "V_{jbd}\\le\\eta\\cdot f_{cd}\\cdot b_j\\cdot h_{jc}\\cdot\\sqrt{1-\\frac{\\nu_d}{\\eta}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.9",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.9",
       "pdfPage": 232,
-      "latex": "\\eta=\\alpha_j\\left(1-\\frac{f_{ck}}{250}\\right)\\qquad\\text{con }f_{ck}\\text{ espresso in MPa}"
+      "latex": "\\eta=\\alpha_j\\cdot\\left(1-\\frac{f_{ck}}{250}\\right)\\qquad\\text{con }f_{ck}\\text{ espresso in MPa}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.10",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.10",
       "pdfPage": 232,
-      "latex": "\\frac{A_{sh}f_{ywd}}{b_jh_{jw}}\\ge\\frac{\\left[V_{jbd}/\\left(b_jh_{jc}\\right)\\right]^2}{f_{ctd}+\\nu_df_{cd}}-f_{ctd}"
+      "latex": "\\frac{A_{sh}\\cdot f_{ywd}}{b_j\\cdot h_{jw}}\\ge\\frac{\\left[V_{jbd}/\\left(b_j\\cdot h_{jc}\\right)\\right]^2}{f_{ctd}+\\nu_d\\cdot f_{cd}}-f_{ctd}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.11",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.11",
       "pdfPage": 232,
-      "latex": "A_{sh}f_{ywd}\\ge\\gamma_{Rd}\\left(A_{s1}+A_{s2}\\right)f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi interni}"
+      "latex": "A_{sh}\\cdot f_{ywd}\\ge\\gamma_{Rd}\\cdot\\left(A_{s1}+A_{s2}\\right)\\cdot f_{yd}\\cdot\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi interni}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.4.12",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.4.4.3.1",
       "officialNumber": "7.4.12",
       "pdfPage": 232,
-      "latex": "A_{sh}f_{ywd}\\ge\\gamma_{Rd}A_{s2}f_{yd}\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi esterni}"
+      "latex": "A_{sh}\\cdot f_{ywd}\\ge\\gamma_{Rd}\\cdot A_{s2}\\cdot f_{yd}\\cdot\\left(1-0{,}8\\nu_d\\right)\\qquad\\text{per nodi esterni}"
     }
   ],
   "tables": [],

@@ -33,21 +33,21 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1",
       "officialNumber": "4.2.44",
       "pdfPage": 105,
-      "latex": "\\chi=\\frac{1}{\\phi+\\sqrt{\\phi^2-\\bar{\\lambda}^2}}\\le1"
+      "latex": "\\chi=\\frac{1}{\\Phi+\\sqrt{\\Phi^2-\\bar{\\lambda}^2}}\\le1"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.45",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1",
       "officialNumber": "4.2.45",
       "pdfPage": 105,
-      "latex": "\\bar{\\lambda}=\\sqrt{\\frac{A f_{yk}}{N_{cr}}}\\quad\\text{per le sezioni di classe 1, 2 e 3}"
+      "latex": "\\bar{\\lambda}=\\sqrt{\\frac{A\\cdot f_{yk}}{N_{cr}}}\\quad\\text{per le sezioni di classe 1, 2 e 3}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.46",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1",
       "officialNumber": "4.2.46",
       "pdfPage": 105,
-      "latex": "\\bar{\\lambda}=\\sqrt{\\frac{A_{eff}f_{yk}}{N_{cr}}}\\quad\\text{per le sezioni di classe 4}"
+      "latex": "\\bar{\\lambda}=\\sqrt{\\frac{A_{eff}\\cdot f_{yk}}{N_{cr}}}\\quad\\text{per le sezioni di classe 4}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.47",
@@ -68,21 +68,21 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.2",
       "officialNumber": "4.2.49",
       "pdfPage": 107,
-      "latex": "M_{b,Rd}=\\frac{\\chi_{LT}W_y f_{yk}}{\\gamma_{M1}}"
+      "latex": "M_{b,Rd}=\\frac{\\chi_{LT}\\cdot W_y\\cdot f_{yk}}{\\gamma_{M1}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.50",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.2",
       "officialNumber": "4.2.50",
       "pdfPage": 107,
-      "latex": "\\chi_{LT}=\\frac{1}{\\bar{\\Phi}_{LT}+\\sqrt{\\bar{\\Phi}_{LT}^2-\\beta\\bar{\\lambda}_{LT}^2}}\\le\\kappa_\\chi"
+      "latex": "\\chi_{LT}=\\frac{1}{f}\\cdot\\frac{1}{\\Phi_{LT}+\\sqrt{\\Phi_{LT}^2-\\beta\\cdot\\bar{\\lambda}_{LT}^2}}\\le K\\chi"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.51",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.2",
       "officialNumber": "4.2.51",
       "pdfPage": 107,
-      "latex": "\\bar{\\lambda}_{LT}=\\sqrt{\\frac{W_y f_{yk}}{M_{cr}}}"
+      "latex": "\\bar{\\lambda}_{LT}=\\sqrt{\\frac{W_y\\cdot f_{yk}}{M_{cr}}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.2.52",
@@ -96,7 +96,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.2",
       "officialNumber": "4.2.53",
       "pdfPage": 108,
-      "latex": "\\kappa_\\chi=\\min\\left(1,\\frac{1}{f\\bar{\\lambda}_{LT}^2}\\right)"
+      "latex": "K\\chi=\\min\\left(1,\\frac{1}{f\\cdot\\bar{\\lambda}_{LT}^2}\\right)"
     }
   ],
   "tables": [
@@ -135,7 +135,8 @@
             "text": "Sezioni laminate ad I"
           },
           {
-            "text": "h/b ≤ 1,2; tf ≤ 40 mm"
+            "text": "h/b > 1,2; tf ≤ 40 mm",
+            "latex": "h/b>1{,}2;\\ t_f\\le40\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -144,7 +145,8 @@
             "text": "a; b"
           },
           {
-            "text": "a0; a0"
+            "text": "a0; a0",
+            "latex": "a_0;\\ a_0"
           },
           {
             "text": "schema sezione I"
@@ -155,7 +157,8 @@
             "text": "Sezioni laminate ad I"
           },
           {
-            "text": "h/b ≤ 1,2; 40 mm < tf ≤ 100 mm"
+            "text": "h/b > 1,2; 40 mm < tf ≤ 100 mm",
+            "latex": "h/b>1{,}2;\\ 40\\,\\mathrm{mm}<t_f\\le100\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -175,7 +178,8 @@
             "text": "Sezioni laminate ad I"
           },
           {
-            "text": "h/b > 1,2; tf ≤ 100 mm"
+            "text": "h/b ≤ 1,2; tf ≤ 100 mm",
+            "latex": "h/b\\le1{,}2;\\ t_f\\le100\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -195,7 +199,8 @@
             "text": "Sezioni laminate ad I"
           },
           {
-            "text": "h/b > 1,2; tf > 100 mm"
+            "text": "h/b ≤ 1,2; tf > 100 mm",
+            "latex": "h/b\\le1{,}2;\\ t_f>100\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -215,7 +220,8 @@
             "text": "Sezioni ad I saldate"
           },
           {
-            "text": "tf ≤ 40 mm"
+            "text": "tf ≤ 40 mm",
+            "latex": "t_f\\le40\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -235,7 +241,8 @@
             "text": "Sezioni ad I saldate"
           },
           {
-            "text": "tf > 40 mm"
+            "text": "tf > 40 mm",
+            "latex": "t_f>40\\,\\mathrm{mm}"
           },
           {
             "text": "y-y; z-z"
@@ -315,7 +322,8 @@
             "text": "Sezioni scatolari saldate"
           },
           {
-            "text": "saldature spesse: a > 0,5tf; b/tw > 30; h/tw > 30"
+            "text": "saldature spesse: a > 0,5tf; b/tf < 30; h/tw < 30",
+            "latex": "a>0{,}5t_f;\\ b/t_f<30;\\ h/t_w<30"
           },
           {
             "text": "qualsiasi"
@@ -332,7 +340,7 @@
         ],
         [
           {
-            "text": "Sezioni aperte ad U"
+            "text": "Sezioni piene, ad U e T"
           },
           {
             "text": "qualsiasi"
@@ -347,7 +355,7 @@
             "text": "c"
           },
           {
-            "text": "schema U"
+            "text": "schemi U, T, rettangolare e circolare"
           }
         ],
         [
@@ -375,7 +383,8 @@
             "text": "Curva di instabilità"
           },
           {
-            "text": "a0"
+            "text": "a0",
+            "latex": "a_0"
           },
           {
             "text": "a"
@@ -392,7 +401,8 @@
         ],
         [
           {
-            "text": "Fattore di imperfezione α"
+            "text": "Fattore di imperfezione α",
+            "latex": "\\alpha"
           },
           {
             "text": "0,13"
@@ -444,7 +454,8 @@
       "rows": [
         [
           {
-            "text": "Fattore di imperfezione αLT"
+            "text": "Fattore di imperfezione αLT",
+            "latex": "\\alpha_{LT}"
           },
           {
             "text": "0,21"
@@ -488,7 +499,8 @@
             "text": "Sezione laminata ad I"
           },
           {
-            "text": "h/b ≤ 2"
+            "text": "h/b ≤ 2",
+            "latex": "h/b\\le2"
           },
           {
             "text": "b"
@@ -499,7 +511,8 @@
             "text": "Sezione laminata ad I"
           },
           {
-            "text": "h/b > 2"
+            "text": "h/b > 2",
+            "latex": "h/b>2"
           },
           {
             "text": "c"
@@ -510,7 +523,8 @@
             "text": "Sezione composta saldata"
           },
           {
-            "text": "h/b ≤ 2"
+            "text": "h/b ≤ 2",
+            "latex": "h/b\\le2"
           },
           {
             "text": "c"
@@ -521,7 +535,8 @@
             "text": "Sezione composta saldata"
           },
           {
-            "text": "h/b > 2"
+            "text": "h/b > 2",
+            "latex": "h/b>2"
           },
           {
             "text": "d"

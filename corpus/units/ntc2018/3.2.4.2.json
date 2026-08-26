@@ -94,9 +94,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Il valore dello spostamento assoluto orizzontale massimo del suolo (d g \n) può ottenersi utilizzando l’espressione [3.2.12].",
-        "normalized": "Il valore dello spostamento assoluto orizzontale massimo del suolo (d g ) può ottenersi utilizzando l’espressione [3.2.12].",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Il valore dello spostamento assoluto orizzontale massimo del suolo (d g ) può ottenersi utilizzando l’espressione [3.2.12].",
+        "normalized": "Il valore dello spostamento assoluto orizzontale massimo del suolo (dg) può ottenersi utilizzando l’espressione [3.2.12].",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -104,12 +104,12 @@
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "dg",
+            "latex": "d_g"
           },
           {
             "kind": "text",
-            "value": " g ) può ottenersi utilizzando l’espressione [3.2.12]."
+            "value": ") può ottenersi utilizzando l’espressione [3.2.12]."
           }
         ]
       },
@@ -119,10 +119,10 @@
         "printedPage": "51",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.897,
-          "y": 416.184,
-          "width": 447.563,
-          "height": 285.642
+          "x": 73,
+          "y": 415,
+          "width": 449,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
@@ -131,38 +131,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "d4548be17b9c0d983e0502b14c8c77c77fde688449602774b8ff2959474b6bc0",
-        "normalizedSha256": "6af15ecceea19ce3bbde9d6292f8f27a3005e10c78ef5160cdc25e987b59f92e"
+        "rawSha256": "6af15ecceea19ce3bbde9d6292f8f27a3005e10c78ef5160cdc25e987b59f92e",
+        "normalizedSha256": "ff7f4699780d338fc76a94c91592d73cf32073fff5faa9c6fb72d35c02d65067"
       }
     },
     {
@@ -170,40 +160,31 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore\ndello spostamento relativo tra due punti i e j caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto\npossa considerarsi indipendente, può essere stimato secondo l’espressione seguente:2\ngj\n2\ngimaxij dd25,1d \u000e >3.2.13@\ndove d gi e d gj sono rispettivamente gli spostamenti massimi del suolo nei punti i e j, calcolati con riferimento alle caratteristiche\nlocali del sottosuolo.",
-        "normalized": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore dello spostamento relativo tra due punti i e j caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto possa considerarsi indipendente, può essere stimato secondo l’espressione seguente:2 gj 2 gimaxij dd25,1d >3.2.13@ dove d gi e d gj sono rispettivamente gli spostamenti massimi del suolo nei punti i e j, calcolati con riferimento alle caratteristiche locali del sottosuolo.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore\ndello spostamento relativo tra due punti i e j caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto\npossa considerarsi indipendente, può essere stimato secondo l’espressione seguente:>3.2.13@",
+        "normalized": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore dello spostamento relativo tra due punti i e j caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto possa considerarsi indipendente, può essere stimato secondo l’espressione seguente:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore dello spostamento relativo tra due punti i e j caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto possa considerarsi indipendente, può essere stimato secondo l’espressione seguente:2 gj 2 gimaxij dd25,1d "
+            "value": "Nel caso in cui sia necessario valutare gli effetti della variabilità spaziale del moto richiamati nel paragrafo precedente, il valore dello spostamento relativo tra due punti "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "i",
+            "latex": "i"
           },
           {
             "kind": "text",
-            "value": "3.2.13@ dove "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "j",
+            "latex": "j"
           },
           {
             "kind": "text",
-            "value": " gi e "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " gj sono rispettivamente gli spostamenti massimi del suolo nei punti i e j, calcolati con riferimento alle caratteristiche locali del sottosuolo."
+            "value": " caratterizzati dalle proprietà stratigrafiche del rispettivo sottosuolo ed il cui moto possa considerarsi indipendente, può essere stimato secondo l’espressione seguente:"
           }
         ]
       },
@@ -213,10 +194,10 @@
         "printedPage": "51",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.897,
-          "y": 416.184,
-          "width": 447.563,
-          "height": 285.642
+          "x": 73,
+          "y": 429,
+          "width": 449,
+          "height": 35
         },
         "extraction": {
           "method": "pdf-text",
@@ -225,48 +206,112 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "2a6d1d5fd17afc98e17bd8aa6469855fb1787ace703533b7fbbd105f42b2f824",
-        "normalizedSha256": "34e9135da212b4c57c0998d28043017122e8df58d0862faddcb83f5102d54e7e"
+        "rawSha256": "853a28634151a160e5120b1edc895fc7fa6a5fee7fbed7cee667a0aaef01740b",
+        "normalizedSha256": "fa0d837fcc7b51703180cd364816e424280c76d7f7b5195db7555abaf0ed0bf6"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-003",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.13",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 180,
+          "y": 458,
+          "width": 190,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "ebcb98a29b1d813e1c092144e2a072a6072bf05d9d156d010ead582aacd8e0e7",
+        "normalizedSha256": "da86acf32fa19c9cb822808d0d35fcc1c4d143129af6b4901e59f03105891e1d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-004",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Il moto di due punti del terreno può considerarsi indipendente per punti posti a distanze notevoli, in relazione al tipo di\nsottosuolo; il moto è reso indipendente anche dalla presenza di forti variabilità orografiche tra i punti.",
-        "normalized": "Il moto di due punti del terreno può considerarsi indipendente per punti posti a distanze notevoli, in relazione al tipo di sottosuolo; il moto è reso indipendente anche dalla presenza di forti variabilità orografiche tra i punti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "dove d gi e d gj sono rispettivamente gli spostamenti massimi del suolo nei punti i e j, calcolati con riferimento alle caratteristiche\nlocali del sottosuolo.",
+        "normalized": "dove dgi e dgj sono rispettivamente gli spostamenti massimi del suolo nei punti i e j, calcolati con riferimento alle caratteristiche locali del sottosuolo.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "dgi",
+            "latex": "d_{gi}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "dgj",
+            "latex": "d_{gj}"
+          },
+          {
+            "kind": "text",
+            "value": " sono rispettivamente gli spostamenti massimi del suolo nei punti "
+          },
+          {
+            "kind": "math",
+            "value": "i",
+            "latex": "i"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "j",
+            "latex": "j"
+          },
+          {
+            "kind": "text",
+            "value": ", calcolati con riferimento alle caratteristiche locali del sottosuolo."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -274,10 +319,10 @@
         "printedPage": "51",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.897,
-          "y": 416.184,
-          "width": 447.563,
-          "height": 285.642
+          "x": 73,
+          "y": 478,
+          "width": 449,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -286,33 +331,74 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "08613b486acb57ecbf25dff416d2081bc6a3b258c3bb1b94c60c46da69e4df18",
+        "normalizedSha256": "fb5bdf935ba85450cab452397b0f365f4005717012bae0cccf3a4de2c22555bf"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il moto di due punti del terreno può considerarsi indipendente per punti posti a distanze notevoli, in relazione al tipo di\nsottosuolo; il moto è reso indipendente anche dalla presenza di forti variabilità orografiche tra i punti.",
+        "normalized": "Il moto di due punti del terreno può considerarsi indipendente per punti posti a distanze notevoli, in relazione al tipo di sottosuolo; il moto è reso indipendente anche dalla presenza di forti variabilità orografiche tra i punti.",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 503,
+          "width": 449,
+          "height": 22
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -321,13 +407,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "In assenza di forti discontinuità orografiche, lo spostamento relativo tra punti a distanza x (in m) si può valutare con\nl’espressione: > @7,0\ns )v/x(25,1\n0ijmaxij0ijij e1)dd(d)x(d \u0010\n\u0010\u0010\u000e >3.2.14@\ndove v s è la velocità di propagazione delle onde di taglio in m/s e dij0 è dato dall’espressione\ngjgi0ij dd25,1d \u0010 >3.2.15@\nPer punti che ricadano su sottosuoli differenti a distanza inferiore a 20 m, lo spostamento relativo è rappresentato da dij0 ; se i\npunti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con\nle espressioni ijmax\nij\ns\nd\nd (x) 2,3x\nv  per sottosuolo tipo D, >3.2.16@\nijmax\nij\ns\nd\nd (x) 3, 0x\nv  per sottosuolo di tipo diverso da D.",
-        "normalized": "In assenza di forti discontinuità orografiche, lo spostamento relativo tra punti a distanza x (in m) si può valutare con l’espressione: > @7,0 s)v/x(25,1 0ijmaxij0ijij e1)dd(d)x(d >3.2.14@ dove v s è la velocità di propagazione delle onde di taglio in m/s e dij0 è dato dall’espressione gjgi0ij dd25,1d >3.2.15@ Per punti che ricadano su sottosuoli differenti a distanza inferiore a 20 m, lo spostamento relativo è rappresentato da dij0; se i punti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con le espressioni ijmax ij s d d (x) 2,3x v per sottosuolo tipo D, >3.2.16@ ijmax ij s d d (x) 3, 0x v per sottosuolo di tipo diverso da D.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "In assenza di forti discontinuità orografiche, lo spostamento relativo tra punti a distanza x (in m) si può valutare con\nl’espressione:",
+        "normalized": "In assenza di forti discontinuità orografiche, lo spostamento relativo tra punti a distanza x (in m) si può valutare con l’espressione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -340,106 +426,16 @@
           },
           {
             "kind": "text",
-            "value": " (in m) si può valutare con l’espressione: "
+            "value": " (in "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "m",
+            "latex": "\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " @7,0 s)v/"
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": "(25,1 0ijmaxij0ijij e1)dd(d)"
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": "("
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.2.14@ dove v s è la velocità di propagazione delle onde di taglio in m/s e dij0 è dato dall’espressione gjgi0ij dd25,1d "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.2.15@ Per punti che ricadano su sottosuoli differenti a distanza inferiore a 20 m, lo spostamento relativo è rappresentato da dij0; se i punti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con le espressioni ijmax ij s "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " (x) 2,3x v per sottosuolo tipo D, "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.2.16@ ijmax ij s "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " (x) 3, 0x v per sottosuolo di tipo diverso da D."
+            "value": ") si può valutare con l’espressione:"
           }
         ]
       },
@@ -449,10 +445,10 @@
         "printedPage": "51",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.897,
-          "y": 416.184,
-          "width": 447.563,
-          "height": 285.642
+          "x": 73,
+          "y": 527,
+          "width": 449,
+          "height": 18
         },
         "extraction": {
           "method": "pdf-text",
@@ -461,48 +457,103 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "d27de3f0d93f0611f3ee65950411df398d909f2b953c541521cd612e6c1e9fb7",
-        "normalizedSha256": "bd81a25ad31a206b9055a565dc1b2146e5250162d4d7fdb965f2ac9b107cc423"
+        "rawSha256": "dedb6bd1f03785ab2a259a2f3a599c3981070f6f88617cf3a828903f8f6075bc",
+        "normalizedSha256": "155bb1322b18bb68072c381b0638a4b03c187968b18b51558f6f8902b38493cc"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-007",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.14",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 544,
+          "width": 225,
+          "height": 25
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "8c569dc2bbcd46168db1b4122132f5608cc5c1d09d8612a04e8b1a66ccaa5ca2",
+        "normalizedSha256": "299321872138972241d9447747036d4b6d142356917207948fe1eabf0a59aa49"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per la determinazione delle sollecitazioni indotte nei ponti dagli spostamenti relativi del terreno, si possono utilizzare criteri ri-\nportati in documenti di comprovata validità.",
-        "normalized": "Per la determinazione delle sollecitazioni indotte nei ponti dagli spostamenti relativi del terreno, si possono utilizzare criteri riportati in documenti di comprovata validità.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "dove v s è la velocità di propagazione delle onde di taglio in m/s e dij0 è dato dall’espressionedd25,1d \u0010 >3.2.15@",
+        "normalized": "dove vs è la velocità di propagazione delle onde di taglio in m/s e dij0 è dato dall’espressione",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "vs",
+            "latex": "v_s"
+          },
+          {
+            "kind": "text",
+            "value": " è la velocità di propagazione delle onde di taglio in "
+          },
+          {
+            "kind": "math",
+            "value": "m/s",
+            "latex": "\\mathrm{m/s}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "dij0",
+            "latex": "d_{ij0}"
+          },
+          {
+            "kind": "text",
+            "value": " è dato dall’espressione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -510,10 +561,10 @@
         "printedPage": "51",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 73.897,
-          "y": 416.184,
-          "width": 447.563,
-          "height": 285.642
+          "x": 73,
+          "y": 568,
+          "width": 449,
+          "height": 17
         },
         "extraction": {
           "method": "pdf-text",
@@ -522,33 +573,213 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c9caf7787cb8467bb4ca73d94d757646b07fae96dbb2d1b258c12a4a47af7a3d",
+        "normalizedSha256": "8e0fa876681d5e111b8da7023574dbafaa014fc556d6460237301878f565082c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-009",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.15",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 180,
+          "y": 581,
+          "width": 190,
+          "height": 20
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "d050eda284d80210b11f320de28afa9b7de63e2b93c6b27ad892894db7f7f7b7",
+        "normalizedSha256": "a0100551b863b9569186036195ba20ca76c9f883d3d26c742633a6d3ad23a130"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per punti che ricadano su sottosuoli differenti a distanza inferiore a 20 m, lo spostamento relativo è rappresentato da dij0 ; se i\npunti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con\nle espressioni",
+        "normalized": "Per punti che ricadano su sottosuoli differenti a distanza inferiore a 20 m, lo spostamento relativo è rappresentato da dij0; se i punti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con le espressioni",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per punti che ricadano su sottosuoli differenti a distanza inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "20 m",
+            "latex": "20\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ", lo spostamento relativo è rappresentato da "
+          },
+          {
+            "kind": "math",
+            "value": "dij0",
+            "latex": "d_{ij0}"
+          },
+          {
+            "kind": "text",
+            "value": "; se i punti ricadono su sottosuolo dello stesso tipo, lo spostamento relativo può essere stimato, anziché con l’espressione [3.2.14], con le espressioni"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 600,
+          "width": 449,
+          "height": 25
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "243b97721b8b80837656ac6044026e7843891684dee810c892b8cbb30b7c2a54",
+        "normalizedSha256": "12a03bb77a509ef9296ff747bedb5d0d886417f424436b5856fdfd61cc7664c1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.16",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 100,
+          "y": 630,
+          "width": 270,
+          "height": 48
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "bb566174bf052e9b6e1cb2c121af4aa2389df0773d3c88b4034ab399ba80aea8",
+        "normalizedSha256": "d2ce8a70bb9fc7b95330d7c491132bde91e6152cd5be4f9140e68d8bbf1e27a3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.4.2#block-editorial-012",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la determinazione delle sollecitazioni indotte nei ponti dagli spostamenti relativi del terreno, si possono utilizzare criteri ri-\nportati in documenti di comprovata validità.",
+        "normalized": "Per la determinazione delle sollecitazioni indotte nei ponti dagli spostamenti relativi del terreno, si possono utilizzare criteri riportati in documenti di comprovata validità.",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 55,
+        "printedPage": "51",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 682,
+          "width": 449,
+          "height": 23
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -560,7 +791,12 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.13",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.14",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.15",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.16"
+    ],
     "tableIds": [],
     "figureIds": []
   },

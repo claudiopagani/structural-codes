@@ -96,22 +96,7 @@
       "text": {
         "raw": "Il Progettista e il Direttore tecnico dello stabilimento di prefabbricazione, ciascuno per le proprie competenze, sono responsabili\ndella capacità portante e della sicurezza del componente, sia incorporato nell’opera, sia durante le fasi di trasporto fino a piè\nd’opera.",
         "normalized": "Il Progettista e il Direttore tecnico dello stabilimento di prefabbricazione, ciascuno per le proprie competenze, sono responsabili della capacità portante e della sicurezza del componente, sia incorporato nell’opera, sia durante le fasi di trasporto fino a piè d’opera.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Il Progettista e il Direttore tecnico dello stabilimento di prefabbricazione, ciascuno per le proprie competenze, sono responsabili della capacità portante e della sicurezza del componente, sia incorporato nell’opera, sia durante le fasi di trasporto fino a piè "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’opera."
-          }
-        ]
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -146,11 +131,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -159,6 +139,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "c0816c69ec45bb474a0b1b7f537a2ebec6a3e1984311a221e6b428b94eb8a02b",

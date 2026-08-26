@@ -66,8 +66,8 @@
       "origin": "official",
       "text": {
         "raw": "Per il diagramma tensione-deformazione dell’acciaio è possibile adottare opportuni modelli rappresentativi del reale comporta-\nmento del materiale, modelli definiti in base al valore di progetto Ήud = 0,9Ήuk (Ήuk = (A gt \n) k \n) della deformazione uniforme ultima, al\nvalore di progetto della tensione di snervamento fyd ed al rapporto di sovraresistenza k = (ft / fy \n) k (Tab. 11.3.Ia-b).",
-        "normalized": "Per il diagramma tensione-deformazione dell’acciaio è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, modelli definiti in base al valore di progetto εud = 0,9εuk (εuk = (A gt ) k ) della deformazione uniforme ultima, al valore di progetto della tensione di snervamento fyd ed al rapporto di sovraresistenza k = (ft / fy ) k (Tab. 11.3.Ia-b).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Per il diagramma tensione-deformazione dell’acciaio è possibile adottare opportuni modelli rappresentativi del reale comportamento del materiale, modelli definiti in base al valore di progetto εud = 0,9εuk (εuk = (Agt)k) della deformazione uniforme ultima, al valore di progetto della tensione di snervamento fyd ed al rapporto di sovraresistenza k = (ft/fy)k (Tab. 11.3.Ia-b).",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -75,48 +75,21 @@
           },
           {
             "kind": "math",
-            "value": "εud",
-            "latex": "\\varepsilon_{ud}"
+            "value": "εud = 0,9εuk",
+            "latex": "\\varepsilon_{ud}=0{,}9\\varepsilon_{uk}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " ("
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "εuk = (Agt)k",
+            "latex": "\\varepsilon_{uk}=(A_{gt})_k"
           },
           {
             "kind": "text",
-            "value": " 0,9εuk ("
-          },
-          {
-            "kind": "math",
-            "value": "εuk",
-            "latex": "\\varepsilon_{uk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " (A gt ) "
-          },
-          {
-            "kind": "math",
-            "value": "k",
-            "latex": "k"
-          },
-          {
-            "kind": "text",
-            "value": " ) della deformazione uniforme ultima, al valore di progetto della tensione di snervamento "
+            "value": ") della deformazione uniforme ultima, al valore di progetto della tensione di snervamento "
           },
           {
             "kind": "math",
@@ -129,35 +102,8 @@
           },
           {
             "kind": "math",
-            "value": "k",
-            "latex": "k"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " (ft "
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": " fy ) "
-          },
-          {
-            "kind": "math",
-            "value": "k",
-            "latex": "k"
+            "value": "k = (ft/fy)k",
+            "latex": "k=(f_t/f_y)_k"
           },
           {
             "kind": "text",
@@ -198,11 +144,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -211,10 +152,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "a8b8f7d8a5e368fe55556368c62bea76af3e497a90a47d7ee9d3af52cbb10754",
-        "normalizedSha256": "721711521fdcffb085ce3813da470910d795f78c5c3032a1665b9dd9b51ec7ba"
+        "normalizedSha256": "4f2841030dfd3a35a671be0a0ca5c45f03644ae04362a558898c43e84f6ecfae"
       }
     },
     {
@@ -224,7 +170,7 @@
       "text": {
         "raw": "In Fig. 4.1.3 sono rappresentati i modelli ΗƺΉ per l’acciaio:",
         "normalized": "In Fig. 4.1.3 sono rappresentati i modelli σ-ε per l’acciaio:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -232,17 +178,8 @@
           },
           {
             "kind": "math",
-            "value": "σ",
-            "latex": "\\sigma"
-          },
-          {
-            "kind": "text",
-            "value": "-"
-          },
-          {
-            "kind": "math",
-            "value": "ε",
-            "latex": "\\varepsilon"
+            "value": "σ-ε",
+            "latex": "\\sigma-\\varepsilon"
           },
           {
             "kind": "text",
@@ -283,11 +220,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -296,6 +228,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "83c2604b28f0b44a5c460895b33ec87b12b479cd68ecdd3eb3537839615ed6f7",

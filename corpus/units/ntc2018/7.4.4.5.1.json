@@ -36,7 +36,13 @@
       "text": {
         "raw": "7.4.4.5.1 Verifiche di resistenza (RES)",
         "normalized": "7.4.4.5.1 Verifiche di resistenza (RES)",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "7.4.4.5.1 Verifiche di resistenza (RES)"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -106,25 +112,7 @@
           },
           {
             "kind": "text",
-            "value": " . A tal fine si intende per base della parete l’estradosso del suo piano di fondazione o la sommità della struttura scatolare interrata avente diaframmi rigidi e pareti perimetrali; in "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uest’ultimo caso la verifica della struttura scatolare di base è comun"
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "ue necessaria."
+            "value": " . A tal fine si intende per base della parete l’estradosso del suo piano di fondazione o la sommità della struttura scatolare interrata avente diaframmi rigidi e pareti perimetrali; in quest’ultimo caso la verifica della struttura scatolare di base è comunque necessaria."
           }
         ]
       },
@@ -197,7 +185,13 @@
       "text": {
         "raw": "Nel caso di pareti composte, la verifica di resistenza si esegue considerando la parte di sezione costituita dalle anime parallele, o\napprossimativamente parallele, alla direzione dell’azione sismica esaminata ed assumendo che la larghezza efficace della flangia\nsu ciascun lato dell’anima considerata si estenda, dalla faccia dell’anima, del valore minimo tra (v. fig. 7.4.3):",
         "normalized": "Nel caso di pareti composte, la verifica di resistenza si esegue considerando la parte di sezione costituita dalle anime parallele, o approssimativamente parallele, alla direzione dell’azione sismica esaminata ed assumendo che la larghezza efficace della flangia su ciascun lato dell’anima considerata si estenda, dalla faccia dell’anima, del valore minimo tra (v. fig. 7.4.3):",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di pareti composte, la verifica di resistenza si esegue considerando la parte di sezione costituita dalle anime parallele, o approssimativamente parallele, alla direzione dell’azione sismica esaminata ed assumendo che la larghezza efficace della flangia su ciascun lato dell’anima considerata si estenda, dalla faccia dell’anima, del valore minimo tra (v. fig. 7.4.3):"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -241,8 +235,23 @@
       "origin": "official",
       "text": {
         "raw": "a) la larghezza reale (lf \n) della flangia;",
-        "normalized": "a) la larghezza reale (lf ) della flangia;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "a) la larghezza reale (l_f) della flangia;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) la larghezza reale ("
+          },
+          {
+            "kind": "math",
+            "value": "l_f",
+            "latex": "l_f"
+          },
+          {
+            "kind": "text",
+            "value": ") della flangia;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -277,7 +286,7 @@
           }
         ],
         "rawSha256": "4fd4cb90c1ffc87cadcb215b66a0c646636d71831e76641f4f84a08c4df5572b",
-        "normalizedSha256": "2e9a4b8a768ff8f6318aee5d28ec0ad31df4101494a5842c5cd57f1d85927605"
+        "normalizedSha256": "5ae125d605e6f15c6801b313ded0f5491962c5b3b1dfb61c90723f33e0140d18"
       }
     },
     {
@@ -291,7 +300,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "b) il 25% dell’altezza totale della parete ("
+            "value": "b) il "
+          },
+          {
+            "kind": "math",
+            "value": "25%",
+            "latex": "25\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dell’altezza totale della parete ("
           },
           {
             "kind": "math",
@@ -347,7 +365,22 @@
       "text": {
         "raw": "c) la metà della distanza (d) tra anime adiacenti.",
         "normalized": "c) la metà della distanza (d) tra anime adiacenti.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) la metà della distanza ("
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": ") tra anime adiacenti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -375,16 +408,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Tra pareti sismiche primarie (v. § 7.2.3) è permessa, per la singola parete, una ridistribuzione degli effetti dell'azione sismica fino al 30%, purché non si verifichi una riduzione della domanda totale di resistenza delle pareti. Si raccomanda che le forze di taglio siano ridistribuite insieme con i momenti flettenti, in modo tale che nelle singole pareti il rapporto tra i momenti flettenti e le forze di taglio non vari in maniera apprezzabile. Nelle pareti soggette a grandi variazioni dell’azione assiale, come per esempio nelle pareti accoppiate, si raccomanda che i momenti e i tagli siano ridistribuiti dalle pareti soggette a modesta compressione o a trazione semplice a "
+            "value": "Tra pareti sismiche primarie (v. § 7.2.3) è permessa, per la singola parete, una ridistribuzione degli effetti dell'azione sismica fino al "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "30%",
+            "latex": "30\\%"
           },
           {
             "kind": "text",
-            "value": "uelle soggette a un’elevata compressione assiale."
+            "value": ", purché non si verifichi una riduzione della domanda totale di resistenza delle pareti. Si raccomanda che le forze di taglio siano ridistribuite insieme con i momenti flettenti, in modo tale che nelle singole pareti il rapporto tra i momenti flettenti e le forze di taglio non vari in maniera apprezzabile. Nelle pareti soggette a grandi variazioni dell’azione assiale, come per esempio nelle pareti accoppiate, si raccomanda che i momenti e i tagli siano ridistribuiti dalle pareti soggette a modesta compressione o a trazione semplice a quelle soggette a un’elevata compressione assiale."
           }
         ]
       },
@@ -431,7 +464,22 @@
       "text": {
         "raw": "Tra travi di collegamento di pareti accoppiate è permessa, per la singola trave, una ridistribuzione degli effetti dell’azione sismica\nfino al 20%, purché non vari l’azione assiale sismica alla base di ogni singola parete.",
         "normalized": "Tra travi di collegamento di pareti accoppiate è permessa, per la singola trave, una ridistribuzione degli effetti dell’azione sismica fino al 20%, purché non vari l’azione assiale sismica alla base di ogni singola parete.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tra travi di collegamento di pareti accoppiate è permessa, per la singola trave, una ridistribuzione degli effetti dell’azione sismica fino al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", purché non vari l’azione assiale sismica alla base di ogni singola parete."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -476,7 +524,13 @@
       "text": {
         "raw": "In mancanza di analisi più accurate, la domanda di progetto nelle pareti può essere determinata mediante le procedure\nsemplificate illustrate nel seguito.",
         "normalized": "In mancanza di analisi più accurate, la domanda di progetto nelle pareti può essere determinata mediante le procedure semplificate illustrate nel seguito.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In mancanza di analisi più accurate, la domanda di progetto nelle pareti può essere determinata mediante le procedure semplificate illustrate nel seguito."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -545,7 +599,13 @@
       "text": {
         "raw": "Per le sole pareti snelle, sia in CD”A” sia in CD”B”, la domanda in termini di momenti flettenti lungo l’altezza della parete (linea c di\nfig. 7.4.4) è ottenuta per traslazione verso l’alto dell’inviluppo del diagramma dei momenti (linea b di fig. 7.4.4) derivante dai\nmomenti forniti dall’analisi (linea a di fig. 7.4.4); l’inviluppo può essere assunto lineare se la struttura non presenta significative\ndiscontinuità in termini di massa, rigidezza e resistenza lungo l’altezza.",
         "normalized": "Per le sole pareti snelle, sia in CD “A” sia in CD “B”, la domanda in termini di momenti flettenti lungo l’altezza della parete (linea c di fig. 7.4.4) è ottenuta per traslazione verso l’alto dell’inviluppo del diagramma dei momenti (linea b di fig. 7.4.4) derivante dai momenti forniti dall’analisi (linea a di fig. 7.4.4); l’inviluppo può essere assunto lineare se la struttura non presenta significative discontinuità in termini di massa, rigidezza e resistenza lungo l’altezza.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le sole pareti snelle, sia in CD “A” sia in CD “B”, la domanda in termini di momenti flettenti lungo l’altezza della parete (linea c di fig. 7.4.4) è ottenuta per traslazione verso l’alto dell’inviluppo del diagramma dei momenti (linea b di fig. 7.4.4) derivante dai momenti forniti dall’analisi (linea a di fig. 7.4.4); l’inviluppo può essere assunto lineare se la struttura non presenta significative discontinuità in termini di massa, rigidezza e resistenza lungo l’altezza."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -755,12 +815,21 @@
       "origin": "official",
       "text": {
         "raw": "dove lw e hw hanno il significato mostrato in fig. 7.4.3, n è il numero di piani della costruzione, hs è l’altezza libera di piano.",
-        "normalized": "dove lw e h_w hanno il significato mostrato in fig. 7.4.3, n è il numero di piani della costruzione, hs è l’altezza libera di piano.",
+        "normalized": "dove l_w e h_w hanno il significato mostrato in fig. 7.4.3, n è il numero di piani della costruzione, h_s è l’altezza libera di piano.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove lw e "
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "l_w",
+            "latex": "l_w"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -769,7 +838,16 @@
           },
           {
             "kind": "text",
-            "value": " hanno il significato mostrato in fig. 7.4.3, n è il numero di piani della costruzione, hs è l’altezza libera di piano."
+            "value": " hanno il significato mostrato in fig. 7.4.3, n è il numero di piani della costruzione, "
+          },
+          {
+            "kind": "math",
+            "value": "h_s",
+            "latex": "h_s"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altezza libera di piano."
           }
         ]
       },
@@ -806,7 +884,7 @@
           }
         ],
         "rawSha256": "82683bdb8943124d9f2730a4b87084a8d3a96c2d543cc6b6711139652dd81066",
-        "normalizedSha256": "d965aaa4ea0cb9aa32f4db2d7a1bc491332df768a57ccaf576213e49b05cc28e"
+        "normalizedSha256": "0bd39a19595eb3115101c8e0c67661db85cefd030ff30ef39bcc54c890f44702"
       }
     },
     {
@@ -816,7 +894,31 @@
       "text": {
         "raw": "Per tutte le pareti, la domanda in forza normale di compressione non deve eccedere rispettivamente il 35% in CD”A” e il 40% in\nCD”B” della capacità massima a compressione della sezione di solo calcestruzzo, per tutte le combinazioni considerate.",
         "normalized": "Per tutte le pareti, la domanda in forza normale di compressione non deve eccedere rispettivamente il 35% in CD “A” e il 40% in CD “B” della capacità massima a compressione della sezione di solo calcestruzzo, per tutte le combinazioni considerate.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per tutte le pareti, la domanda in forza normale di compressione non deve eccedere rispettivamente il "
+          },
+          {
+            "kind": "math",
+            "value": "35%",
+            "latex": "35\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in CD “A” e il "
+          },
+          {
+            "kind": "math",
+            "value": "40%",
+            "latex": "40\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in CD “B” della capacità massima a compressione della sezione di solo calcestruzzo, per tutte le combinazioni considerate."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -861,7 +963,13 @@
       "text": {
         "raw": "Le verifiche devono essere condotte nel modo indicato per i pilastri nel § 7.4.4.2.1 tenendo conto, nella determinazione della\ncapacità, di tutte le armature longitudinali presenti nella parete.",
         "normalized": "Le verifiche devono essere condotte nel modo indicato per i pilastri nel § 7.4.4.2.1 tenendo conto, nella determinazione della capacità, di tutte le armature longitudinali presenti nella parete.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le verifiche devono essere condotte nel modo indicato per i pilastri nel § 7.4.4.2.1 tenendo conto, nella determinazione della capacità, di tutte le armature longitudinali presenti nella parete."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -905,30 +1013,30 @@
       "origin": "official",
       "text": {
         "raw": "Per le pareti estese debolmente armate, occorre limitare le tensioni di compressione nel calcestruzzo per prevenire l’instabilità\nfuori dal piano, secondo quanto indicato nel § 4.1.2.3.9.2 per i pilastri singoli. Se il fattore di comportamento q è superiore a 2, si\ndeve tener conto della domanda in forza assiale dinamica aggiuntiva che si genera nelle pareti per effetto dell’apertura e chiusura\ndi fessure orizzontali e del sollevamento dal suolo. In assenza di più accurate analisi essa può essere assunta pari al ±50% della\ndomanda in forza assiale dovuta ai carichi gravitazionali relativi alla combinazione sismica di progetto.",
-        "normalized": "Per le pareti estese debolmente armate, occorre limitare le tensioni di compressione nel calcestruzzo per prevenire l’instabilità fuori dal piano, secondo quanto indicato nel § 4.1.2.3.9.2 per i pilastri singoli. Se il fattore di comportamento q è superiore a 2, si deve tener conto della domanda in forza assiale dinamica aggiuntiva che si genera nelle pareti per effetto dell’apertura e chiusura di fessure orizzontali e del sollevamento dal suolo. In assenza di più accurate analisi essa può essere assunta pari al ±50% della domanda in forza assiale dovuta ai carichi gravitazionali relativi alla combinazione sismica di progetto.",
+        "normalized": "Per le pareti estese debolmente armate, occorre limitare le tensioni di compressione nel calcestruzzo per prevenire l’instabilità fuori dal piano, secondo quanto indicato nel § 4.1.2.3.9.2 per i pilastri singoli. Se il fattore di comportamento q > 2, si deve tener conto della domanda in forza assiale dinamica aggiuntiva che si genera nelle pareti per effetto dell’apertura e chiusura di fessure orizzontali e del sollevamento dal suolo. In assenza di più accurate analisi essa può essere assunta pari al ±50% della domanda in forza assiale dovuta ai carichi gravitazionali relativi alla combinazione sismica di progetto.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le pareti estese debolmente armate, occorre limitare le tensioni di compressione nel calcestruzzo per prevenire l’instabilità fuori dal piano, secondo "
+            "value": "Per le pareti estese debolmente armate, occorre limitare le tensioni di compressione nel calcestruzzo per prevenire l’instabilità fuori dal piano, secondo quanto indicato nel § 4.1.2.3.9.2 per i pilastri singoli. Se il fattore di comportamento "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "q > 2",
+            "latex": "q>2"
           },
           {
             "kind": "text",
-            "value": "uanto indicato nel § 4.1.2.3.9.2 per i pilastri singoli. Se il fattore di comportamento "
+            "value": ", si deve tener conto della domanda in forza assiale dinamica aggiuntiva che si genera nelle pareti per effetto dell’apertura e chiusura di fessure orizzontali e del sollevamento dal suolo. In assenza di più accurate analisi essa può essere assunta pari al "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "±50%",
+            "latex": "\\pm50\\%"
           },
           {
             "kind": "text",
-            "value": " è superiore a 2, si deve tener conto della domanda in forza assiale dinamica aggiuntiva che si genera nelle pareti per effetto dell’apertura e chiusura di fessure orizzontali e del sollevamento dal suolo. In assenza di più accurate analisi essa può essere assunta pari al ±50% della domanda in forza assiale dovuta ai carichi gravitazionali relativi alla combinazione sismica di progetto."
+            "value": " della domanda in forza assiale dovuta ai carichi gravitazionali relativi alla combinazione sismica di progetto."
           }
         ]
       },
@@ -965,7 +1073,7 @@
           }
         ],
         "rawSha256": "bd22984d2e360c16c4ee7ae65f1e31e2f454609e99fd35394f700fe8c1756511",
-        "normalizedSha256": "22632723334a0ff7cd8d9e05f26a46b0a5d28bca0821bbbab44e87c58d7ce4c6"
+        "normalizedSha256": "172c309446ea434740af274856d77598d396b0c25ead4db3a413236f4fd86f22"
       }
     },
     {
@@ -999,7 +1107,13 @@
       "text": {
         "raw": "Per le pareti si deve tener conto del possibile incremento delle forze di taglio a seguito della formazione della cerniera plastica\nalla base della parete. A tal fine, la domanda di taglio di progetto deve essere incrementata del fattore:",
         "normalized": "Per le pareti si deve tener conto del possibile incremento delle forze di taglio a seguito della formazione della cerniera plastica alla base della parete. A tal fine, la domanda di taglio di progetto deve essere incrementata del fattore:",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le pareti si deve tener conto del possibile incremento delle forze di taglio a seguito della formazione della cerniera plastica alla base della parete. A tal fine, la domanda di taglio di progetto deve essere incrementata del fattore:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1083,7 +1197,7 @@
       "origin": "official",
       "text": {
         "raw": "dove per ·Rd si veda la Tab. 7.2.I, e con MEd ed MRd si indicano i momenti flettenti di progetto, rispettivamente, di domanda e\ndi capacità alla base della parete, con T1 il periodo fondamentale di vibrazione dell’edificio nella direzione dell’azione sismica,\ncon Se(T) l’ordinata dello spettro di risposta elastico corrispondente all’ascissa T.",
-        "normalized": "dove per γ_Rd si veda la Tab. 7.2.I, e con M_Ed ed M_Rd si indicano i momenti flettenti di progetto, rispettivamente, di domanda e di capacità alla base della parete, con T1 il periodo fondamentale di vibrazione dell’edificio nella direzione dell’azione sismica, con Se(T) l’ordinata dello spettro di risposta elastico corrispondente all’ascissa T.",
+        "normalized": "dove per γ_Rd si veda la Tab. 7.2.I, e con M_Ed ed M_Rd si indicano i momenti flettenti di progetto, rispettivamente, di domanda e di capacità alla base della parete, con T_1 il periodo fondamentale di vibrazione dell’edificio nella direzione dell’azione sismica, con S_e(T) l’ordinata dello spettro di risposta elastico corrispondente all’ascissa T.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -1115,7 +1229,25 @@
           },
           {
             "kind": "text",
-            "value": " si indicano i momenti flettenti di progetto, rispettivamente, di domanda e di capacità alla base della parete, con T1 il periodo fondamentale di vibrazione dell’edificio nella direzione dell’azione sismica, con Se(T) l’ordinata dello spettro di risposta elastico corrispondente all’ascissa T."
+            "value": " si indicano i momenti flettenti di progetto, rispettivamente, di domanda e di capacità alla base della parete, con "
+          },
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " il periodo fondamentale di vibrazione dell’edificio nella direzione dell’azione sismica, con "
+          },
+          {
+            "kind": "math",
+            "value": "S_e(T)",
+            "latex": "S_e(T)"
+          },
+          {
+            "kind": "text",
+            "value": " l’ordinata dello spettro di risposta elastico corrispondente all’ascissa T."
           }
         ]
       },
@@ -1152,7 +1284,7 @@
           }
         ],
         "rawSha256": "9e1f7b5915b88fcd8c0020357debb38269a4f2bbd40fefb5aa3fca43bc31d1ad",
-        "normalizedSha256": "6e13d9639654d017c85d74e5610f2ea81cb38a8e16253ed0de8f01fe62f7eba4"
+        "normalizedSha256": "ad9290e454389e5262372afb029ac705d911196477137a228e1a01065ca650e8"
       }
     },
     {
@@ -1161,21 +1293,12 @@
       "origin": "official",
       "text": {
         "raw": "Nelle strutture miste, il taglio nelle pareti snelle deve tener conto delle sollecitazioni dovute ai modi di vibrare superiori. A tal\nfine, il taglio derivante dall’analisi (linea a di fig. 7.4.5) può essere sostituito dal taglio incrementato (linea b di fig. 7.4.5) e\nquest’ultimo dal diagramma inviluppo (linea c di Fig. 7.4.5); hw è l’altezza della parete, VA è il taglio alla base già incrementato,\nVB è il taglio ad 1/3 dell’altezza hw \n, che comunque deve essere assunto almeno pari a VA \n/2.",
-        "normalized": "Nelle strutture miste, il taglio nelle pareti snelle deve tener conto delle sollecitazioni dovute ai modi di vibrare superiori. A tal fine, il taglio derivante dall’analisi (linea a di fig. 7.4.5) può essere sostituito dal taglio incrementato (linea b di fig. 7.4.5) e quest’ultimo dal diagramma inviluppo (linea c di Fig. 7.4.5); h_w è l’altezza della parete, VA è il taglio alla base già incrementato, VB è il taglio ad 1/3 dell’altezza h_w , che comunque deve essere assunto almeno pari a VA /2.",
+        "normalized": "Nelle strutture miste, il taglio nelle pareti snelle deve tener conto delle sollecitazioni dovute ai modi di vibrare superiori. A tal fine, il taglio derivante dall’analisi (linea a di fig. 7.4.5) può essere sostituito dal taglio incrementato (linea b di fig. 7.4.5) e quest’ultimo dal diagramma inviluppo (linea c di Fig. 7.4.5); h_w è l’altezza della parete, V_A è il taglio alla base già incrementato, V_B è il taglio ad 1/3 dell’altezza h_w, che comunque deve essere assunto almeno pari a V_A/2.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle strutture miste, il taglio nelle pareti snelle deve tener conto delle sollecitazioni dovute ai modi di vibrare superiori. A tal fine, il taglio derivante dall’analisi (linea a di fig. 7.4.5) può essere sostituito dal taglio incrementato (linea b di fig. 7.4.5) e "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uest’ultimo dal diagramma inviluppo (linea c di Fig. 7.4.5); "
+            "value": "Nelle strutture miste, il taglio nelle pareti snelle deve tener conto delle sollecitazioni dovute ai modi di vibrare superiori. A tal fine, il taglio derivante dall’analisi (linea a di fig. 7.4.5) può essere sostituito dal taglio incrementato (linea b di fig. 7.4.5) e quest’ultimo dal diagramma inviluppo (linea c di Fig. 7.4.5); "
           },
           {
             "kind": "math",
@@ -1184,7 +1307,34 @@
           },
           {
             "kind": "text",
-            "value": " è l’altezza della parete, VA è il taglio alla base già incrementato, VB è il taglio ad 1/3 dell’altezza "
+            "value": " è l’altezza della parete, "
+          },
+          {
+            "kind": "math",
+            "value": "V_A",
+            "latex": "V_A"
+          },
+          {
+            "kind": "text",
+            "value": " è il taglio alla base già incrementato, "
+          },
+          {
+            "kind": "math",
+            "value": "V_B",
+            "latex": "V_B"
+          },
+          {
+            "kind": "text",
+            "value": " è il taglio ad "
+          },
+          {
+            "kind": "math",
+            "value": "1/3",
+            "latex": "\\frac{1}{3}"
+          },
+          {
+            "kind": "text",
+            "value": " dell’altezza "
           },
           {
             "kind": "math",
@@ -1193,16 +1343,16 @@
           },
           {
             "kind": "text",
-            "value": " , che comun"
+            "value": ", che comunque deve essere assunto almeno pari a "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "V_A/2",
+            "latex": "V_A/2"
           },
           {
             "kind": "text",
-            "value": "ue deve essere assunto almeno pari a VA /2."
+            "value": "."
           }
         ]
       },
@@ -1239,7 +1389,7 @@
           }
         ],
         "rawSha256": "40d14c7cfa39c2b8f4ec2757db6d245321afb4f51b4c3a30f57087dc0db61ee7",
-        "normalizedSha256": "72f5b0db200db6853f9472c9a6f559303e91330c947028c57184467ce5c55e57"
+        "normalizedSha256": "326076200326577b8577a726995d6e6aec04ae0914333ed5b6c3b20dbd0012c4"
       }
     },
     {
@@ -1279,16 +1429,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle pareti estese debolmente armate, per garantire che lo snervamento a flessione preceda il raggiungimento dello stato limite ultimo per taglio, il taglio derivante dall’analisi deve essere amplificato, ad ogni piano, del fattore ("
+            "value": "Nelle pareti estese debolmente armate, per garantire che lo snervamento a flessione preceda il raggiungimento dello stato limite ultimo per taglio, il taglio derivante dall’analisi deve essere amplificato, ad ogni piano, del fattore "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "(q+1)/2",
+            "latex": "\\frac{q+1}{2}"
           },
           {
             "kind": "text",
-            "value": "+1)/2."
+            "value": "."
           }
         ]
       },
@@ -1335,7 +1485,13 @@
       "text": {
         "raw": "Nelle verifiche delle pareti, sia in CD “A” sia in CD “B”, si deve considerare: la possibile rottura a taglio-compressione del\ncalcestruzzo dell’anima, la possibile rottura a taglio-trazione delle armature dell’anima e la possibile rottura per scorrimento nelle\nzone dissipative.",
         "normalized": "Nelle verifiche delle pareti, sia in CD “A” sia in CD “B”, si deve considerare: la possibile rottura a taglio-compressione del calcestruzzo dell’anima, la possibile rottura a taglio-trazione delle armature dell’anima e la possibile rottura per scorrimento nelle zone dissipative.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nelle verifiche delle pareti, sia in CD “A” sia in CD “B”, si deve considerare: la possibile rottura a taglio-compressione del calcestruzzo dell’anima, la possibile rottura a taglio-trazione delle armature dell’anima e la possibile rottura per scorrimento nelle zone dissipative."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1380,7 +1536,13 @@
       "text": {
         "raw": "Verifica a taglio-compressione del calcestruzzo dell’anima",
         "normalized": "Verifica a taglio-compressione del calcestruzzo dell’anima",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Verifica a taglio-compressione del calcestruzzo dell’anima"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1403,21 +1565,39 @@
       "origin": "official",
       "text": {
         "raw": "La determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne z pari a 0,8 l w\ned un’inclinazione delle diagonali compresse pari a 45°. Nelle zone dissipative tale resistenza va moltiplicata per un fattore\nriduttivo 0,4.",
-        "normalized": "La determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne z pari a 0,8 l_w ed un’inclinazione delle diagonali compresse pari a 45°. Nelle zone dissipative tale resistenza va moltiplicata per un fattore riduttivo 0,4.",
+        "normalized": "La determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne z pari a 0,8·l_w ed un’inclinazione delle diagonali compresse pari a 45°. Nelle zone dissipative tale resistenza va moltiplicata per un fattore riduttivo 0,4.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne z pari a 0,8 "
+            "value": "La determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne "
           },
           {
             "kind": "math",
-            "value": "l_w",
-            "latex": "l_w"
+            "value": "z",
+            "latex": "z"
           },
           {
             "kind": "text",
-            "value": " ed un’inclinazione delle diagonali compresse pari a 45°. Nelle zone dissipative tale resistenza va moltiplicata per un fattore riduttivo 0,4."
+            "value": " pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,8·l_w",
+            "latex": "0{,}8\\cdot l_w"
+          },
+          {
+            "kind": "text",
+            "value": " ed un’inclinazione delle diagonali compresse pari a "
+          },
+          {
+            "kind": "math",
+            "value": "45°",
+            "latex": "45^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ". Nelle zone dissipative tale resistenza va moltiplicata per un fattore riduttivo 0,4."
           }
         ]
       },
@@ -1454,7 +1634,7 @@
           }
         ],
         "rawSha256": "2829bba0cc3be0db83d4536229dc541d042a819a6e7a0015534fe399c19d4247",
-        "normalizedSha256": "86a6bf47218efdefec22aa86bc2572d694dc4bafcf0d302a96f2c23745d0ce82"
+        "normalizedSha256": "b40078f404fa7e59d79ecdd5276515e38a0a43013dcff48c4c878439f3c16181"
       }
     },
     {
@@ -1464,7 +1644,13 @@
       "text": {
         "raw": "Verifica a taglio-trazione dell’armatura dell’anima",
         "normalized": "Verifica a taglio-trazione dell’armatura dell’anima",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Verifica a taglio-trazione dell’armatura dell’anima"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1487,7 +1673,7 @@
       "origin": "official",
       "text": {
         "raw": "Il calcolo dell’armatura d’anima deve tener conto del rapporto di taglio ΅s = MEd /(VEd lw). Per la verifica va considerato, ad\nogni piano, il massimo valore di ΅s.\nSe ΅s ǃ 2 , la determinazione della resistenza è condotta in accordo con il § 4.1.2. .3.5, assumendo un braccio delle forze interne z\npari a 0,8 lw ed un’inclinazione delle diagonali compresse pari a 45°. Altrimenti si utilizzano le seguenti espressioni:",
-        "normalized": "Il calcolo dell’armatura d’anima deve tener conto del rapporto di taglio α_s = M_Ed /(V_Ed lw). Per la verifica va considerato, ad ogni piano, il massimo valore di α_s. Se α_s ≥ 2 , la determinazione della resistenza è condotta in accordo con il § 4.1.2. .3.5, assumendo un braccio delle forze interne z pari a 0,8 lw ed un’inclinazione delle diagonali compresse pari a 45°. Altrimenti si utilizzano le seguenti espressioni:",
+        "normalized": "Il calcolo dell’armatura d’anima deve tener conto del rapporto di taglio α_s = M_Ed/(V_Ed·l_w). Per la verifica va considerato, ad ogni piano, il massimo valore di α_s. Se α_s ≥ 2, la determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne z pari a 0,8·l_w ed un’inclinazione delle diagonali compresse pari a 45°. Altrimenti si utilizzano le seguenti espressioni:",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -1496,30 +1682,12 @@
           },
           {
             "kind": "math",
-            "value": "α_s",
-            "latex": "\\alpha_s"
+            "value": "α_s = M_Ed/(V_Ed·l_w)",
+            "latex": "\\alpha_s=\\frac{M_{Ed}}{V_{Ed}\\cdot l_w}"
           },
           {
             "kind": "text",
-            "value": " = "
-          },
-          {
-            "kind": "math",
-            "value": "M_Ed",
-            "latex": "M_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " /("
-          },
-          {
-            "kind": "math",
-            "value": "V_Ed",
-            "latex": "V_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " lw). Per la verifica va considerato, ad ogni piano, il massimo valore di "
+            "value": ". Per la verifica va considerato, ad ogni piano, il massimo valore di "
           },
           {
             "kind": "math",
@@ -1532,12 +1700,39 @@
           },
           {
             "kind": "math",
-            "value": "α_s",
-            "latex": "\\alpha_s"
+            "value": "α_s ≥ 2",
+            "latex": "\\alpha_s\\ge2"
           },
           {
             "kind": "text",
-            "value": " ≥ 2 , la determinazione della resistenza è condotta in accordo con il § 4.1.2. .3.5, assumendo un braccio delle forze interne z pari a 0,8 lw ed un’inclinazione delle diagonali compresse pari a 45°. Altrimenti si utilizzano le seguenti espressioni:"
+            "value": ", la determinazione della resistenza è condotta in accordo con il § 4.1.2.3.5, assumendo un braccio delle forze interne "
+          },
+          {
+            "kind": "math",
+            "value": "z",
+            "latex": "z"
+          },
+          {
+            "kind": "text",
+            "value": " pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,8·l_w",
+            "latex": "0{,}8\\cdot l_w"
+          },
+          {
+            "kind": "text",
+            "value": " ed un’inclinazione delle diagonali compresse pari a "
+          },
+          {
+            "kind": "math",
+            "value": "45°",
+            "latex": "45^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ". Altrimenti si utilizzano le seguenti espressioni:"
           }
         ]
       },
@@ -1574,7 +1769,7 @@
           }
         ],
         "rawSha256": "b5e496e8ffc60833bdc00cdd861ac03d581f9aec5cc0c6ca934207df42697af9",
-        "normalizedSha256": "8922458c1c9cdfbb79bfa174edaf5548a7965005dd56156bfc75a4d7ea5c0a44"
+        "normalizedSha256": "e7a72659367553d138f862959db975dc4ffd43eac9417dd7a548fec48af1b158"
       }
     },
     {
@@ -1623,21 +1818,75 @@
       "origin": "official",
       "text": {
         "raw": "in cui Εh e Εv sono i rapporti tra l’area della sezione dell’armatura orizzontale o verticale d’anima, rispettivamente, e l’area della\nrelativa sezione di calcestruzzo, fyd,h e f \nyd,v sono i valori di progetto della resistenza delle armature orizzontali e verticali, NEd è la\nforza assiale di progetto (positiva se di compressione), VRd,c è la resistenza a taglio degli elementi non armati, determinata in\naccordo con il § 4.1.2..3.5.1, da assumersi nulla nelle zone dissipative quando NEd è di trazione.",
-        "normalized": "in cui Εh e Εv sono i rapporti tra l’area della sezione dell’armatura orizzontale o verticale d’anima, rispettivamente, e l’area della relativa sezione di calcestruzzo, fyd,h e f yd,v sono i valori di progetto della resistenza delle armature orizzontali e verticali, NEd è la forza assiale di progetto (positiva se di compressione), VRd,c è la resistenza a taglio degli elementi non armati, determinata in accordo con il § 4.1.2..3.5.1, da assumersi nulla nelle zone dissipative quando NEd è di trazione.",
+        "normalized": "in cui ρ_h e ρ_v sono i rapporti tra l’area della sezione dell’armatura orizzontale o verticale d’anima, rispettivamente, e l’area della relativa sezione di calcestruzzo, f_yd,h e f_yd,v sono i valori di progetto della resistenza delle armature orizzontali e verticali, N_Ed è la forza assiale di progetto (positiva se di compressione), V_Rd,c è la resistenza a taglio degli elementi non armati, determinata in accordo con il § 4.1.2.3.5.1, da assumersi nulla nelle zone dissipative quando N_Ed è di trazione.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "in cui Εh e Εv sono i rapporti tra l’area della sezione dell’armatura orizzontale o verticale d’anima, rispettivamente, e l’area della relativa sezione di calcestruzzo, fyd,h e f yd,v sono i valori di progetto della resistenza delle armature orizzontali e verticali, NEd è la forza assiale di progetto (positiva se di compressione), VRd,c è la resistenza a taglio degli elementi non armati, determinata in accordo con il § 4.1.2..3.5.1, da assumersi nulla nelle zone dissipative "
+            "value": "in cui "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "ρ_h",
+            "latex": "\\rho_h"
           },
           {
             "kind": "text",
-            "value": "uando NEd è di trazione."
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "ρ_v",
+            "latex": "\\rho_v"
+          },
+          {
+            "kind": "text",
+            "value": " sono i rapporti tra l’area della sezione dell’armatura orizzontale o verticale d’anima, rispettivamente, e l’area della relativa sezione di calcestruzzo, "
+          },
+          {
+            "kind": "math",
+            "value": "f_yd,h",
+            "latex": "f_{yd,h}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "f_yd,v",
+            "latex": "f_{yd,v}"
+          },
+          {
+            "kind": "text",
+            "value": " sono i valori di progetto della resistenza delle armature orizzontali e verticali, "
+          },
+          {
+            "kind": "math",
+            "value": "N_Ed",
+            "latex": "N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è la forza assiale di progetto (positiva se di compressione), "
+          },
+          {
+            "kind": "math",
+            "value": "V_Rd,c",
+            "latex": "V_{Rd,c}"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza a taglio degli elementi non armati, determinata in accordo con il § 4.1.2.3.5.1, da assumersi nulla nelle zone dissipative quando "
+          },
+          {
+            "kind": "math",
+            "value": "N_Ed",
+            "latex": "N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è di trazione."
           }
         ]
       },
@@ -1674,7 +1923,7 @@
           }
         ],
         "rawSha256": "85ad4b8fe994fc712c875cc5857480fdd4fb50af75ccbe002307350d8f0efb71",
-        "normalizedSha256": "71d17ffa9d41fb0b0522f8413d3de331b0d76c357c7d9f13326526b6b253295e"
+        "normalizedSha256": "3fce7138e768d1fc48afc98f3b3359601355045eecf24c875dfe1cab6831f380"
       }
     },
     {
@@ -1684,7 +1933,13 @@
       "text": {
         "raw": "Verifica a scorrimento nelle zone dissipative",
         "normalized": "Verifica a scorrimento nelle zone dissipative",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Verifica a scorrimento nelle zone dissipative"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1708,7 +1963,13 @@
       "text": {
         "raw": "Sui possibili piani di scorrimento (per esempio le riprese di getto o i giunti costruttivi) posti all’interno delle zone dissipative\ndeve risultare: ",
         "normalized": "Sui possibili piani di scorrimento (per esempio le riprese di getto o i giunti costruttivi) posti all’interno delle zone dissipative deve risultare:",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Sui possibili piani di scorrimento (per esempio le riprese di getto o i giunti costruttivi) posti all’interno delle zone dissipative deve risultare:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1852,21 +2113,21 @@
       "origin": "official",
       "text": {
         "raw": "nella quale Vdd, Vid e Vfd rappresentano, rispettivamente, il contributo dell’effetto “spinotto” delle armature verticali, il contributo\ndelle armature inclinate presenti alla base, il contributo della resistenza per attrito, e sono dati dalle espressioni:",
-        "normalized": "nella quale Vdd, V_id e Vfd rappresentano, rispettivamente, il contributo dell’effetto “spinotto” delle armature verticali, il contributo delle armature inclinate presenti alla base, il contributo della resistenza per attrito, e sono dati dalle espressioni:",
+        "normalized": "nella quale V_dd, V_id e V_fd rappresentano, rispettivamente, il contributo dell’effetto “spinotto” delle armature verticali, il contributo delle armature inclinate presenti alla base, il contributo della resistenza per attrito, e sono dati dalle espressioni:",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "nella "
+            "value": "nella quale "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "V_dd",
+            "latex": "V_{dd}"
           },
           {
             "kind": "text",
-            "value": "uale Vdd, "
+            "value": ", "
           },
           {
             "kind": "math",
@@ -1875,7 +2136,16 @@
           },
           {
             "kind": "text",
-            "value": " e Vfd rappresentano, rispettivamente, il contributo dell’effetto “spinotto” delle armature verticali, il contributo delle armature inclinate presenti alla base, il contributo della resistenza per attrito, e sono dati dalle espressioni:"
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "V_fd",
+            "latex": "V_{fd}"
+          },
+          {
+            "kind": "text",
+            "value": " rappresentano, rispettivamente, il contributo dell’effetto “spinotto” delle armature verticali, il contributo delle armature inclinate presenti alla base, il contributo della resistenza per attrito, e sono dati dalle espressioni:"
           }
         ]
       },
@@ -1912,7 +2182,7 @@
           }
         ],
         "rawSha256": "59eb4cd0decb40153abb2bce82b6018d7b1629f3bf9742ef4b3a580a32828f50",
-        "normalizedSha256": "2974f97b480be064db4ea6519393907be9c5570e0bab4e4359be9c2ef828a951"
+        "normalizedSha256": "675a3e9f3f88ffdfe368798f87a8b651b1e815598daa09bd80512a90f19796b7"
       }
     },
     {
@@ -1981,8 +2251,77 @@
       "origin": "official",
       "text": {
         "raw": "dove ΋ è dato dall’espressione [7.4.9] (in cui ΅j = 0,60), μf è il coefficiente d’attrito calcestruzzo-calcestruzzo sotto azioni cicliche\n(può essere assunto pari a 0,60), ǌ Asj è la somma delle aree delle barre verticali intersecanti il piano contenente la potenziale\nsuperficie di scorrimento, Β è l’altezza della parte compressa della sezione normalizzata all’altezza della sezione, Asi è l’area di\nciascuna armatura inclinata che attraversa il piano detto formando con esso un angolo Κi.",
-        "normalized": "dove ΋ è dato dall’espressione [7.4.9] (in cui ΅j = 0,60), μf è il coefficiente d’attrito calcestruzzo-calcestruzzo sotto azioni cicliche (può essere assunto pari a 0,60), ǌ Asj è la somma delle aree delle barre verticali intersecanti il piano contenente la potenziale superficie di scorrimento, Β è l’altezza della parte compressa della sezione normalizzata all’altezza della sezione, Asi è l’area di ciascuna armatura inclinata che attraversa il piano detto formando con esso un angolo Κi.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "dove η è dato dall’espressione [7.4.9] (in cui α_j = 0,60), μ_f è il coefficiente d’attrito calcestruzzo-calcestruzzo sotto azioni cicliche (può essere assunto pari a 0,60), Σ A_sj è la somma delle aree delle barre verticali intersecanti il piano contenente la potenziale superficie di scorrimento, ξ è l’altezza della parte compressa della sezione normalizzata all’altezza della sezione, A_si è l’area di ciascuna armatura inclinata che attraversa il piano detto formando con esso un angolo φ_i.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "η",
+            "latex": "\\eta"
+          },
+          {
+            "kind": "text",
+            "value": " è dato dall’espressione [7.4.9] (in cui "
+          },
+          {
+            "kind": "math",
+            "value": "α_j = 0,60",
+            "latex": "\\alpha_j=0{,}60"
+          },
+          {
+            "kind": "text",
+            "value": "), "
+          },
+          {
+            "kind": "math",
+            "value": "μ_f",
+            "latex": "\\mu_f"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente d’attrito calcestruzzo-calcestruzzo sotto azioni cicliche (può essere assunto pari a 0,60), "
+          },
+          {
+            "kind": "math",
+            "value": "Σ A_sj",
+            "latex": "\\sum A_{sj}"
+          },
+          {
+            "kind": "text",
+            "value": " è la somma delle aree delle barre verticali intersecanti il piano contenente la potenziale superficie di scorrimento, "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altezza della parte compressa della sezione normalizzata all’altezza della sezione, "
+          },
+          {
+            "kind": "math",
+            "value": "A_si",
+            "latex": "A_{si}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area di ciascuna armatura inclinata che attraversa il piano detto formando con esso un angolo "
+          },
+          {
+            "kind": "math",
+            "value": "φ_i",
+            "latex": "\\phi_i"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -2017,7 +2356,7 @@
           }
         ],
         "rawSha256": "c1688f4d15cd9bba2b7f21f2c004a366411a335b6daeb04669d4a470960eec58",
-        "normalizedSha256": "ba094d10824725fbb8e27f4290ba87b0a6400dcba4d1f87f8f27f539584e3fbd"
+        "normalizedSha256": "ccc993bc92e3dd7321ba377e3176c49a0ab474c93e69529fe80103f4f21979b3"
       }
     },
     {
@@ -2035,21 +2374,12 @@
           },
           {
             "kind": "math",
-            "value": "V_id",
-            "latex": "V_{id}"
+            "value": "V_id>V_Ed/2",
+            "latex": "V_{id}>V_{Ed}/2"
           },
           {
             "kind": "text",
-            "value": ">"
-          },
-          {
-            "kind": "math",
-            "value": "V_Ed",
-            "latex": "V_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": "/2."
+            "value": "."
           }
         ]
       },
@@ -2100,16 +2430,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La presenza di armature inclinate comporta un incremento della resistenza a flessione alla base della parete che deve essere considerato "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uando si determina il taglio di progetto "
+            "value": "La presenza di armature inclinate comporta un incremento della resistenza a flessione alla base della parete che deve essere considerato quando si determina il taglio di progetto "
           },
           {
             "kind": "math",

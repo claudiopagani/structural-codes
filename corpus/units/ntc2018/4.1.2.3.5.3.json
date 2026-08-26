@@ -189,20 +189,16 @@
       "text": {
         "raw": "Vd = valore di progetto del taglio dovuto ai carichi esterni;",
         "normalized": "Vd = valore di progetto del taglio dovuto ai carichi esterni;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "Vd "
-          },
-          {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "Vd",
+            "latex": "V_d"
           },
           {
             "kind": "text",
-            "value": " valore di progetto del taglio dovuto ai carichi esterni;"
+            "value": " = valore di progetto del taglio dovuto ai carichi esterni;"
           }
         ]
       },
@@ -222,7 +218,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "535b6aa153f49ea8513ec5f01ba0bab8e1fa29cdfa4add4711dbb2f313d14e7b",
         "normalizedSha256": "535b6aa153f49ea8513ec5f01ba0bab8e1fa29cdfa4add4711dbb2f313d14e7b"
       }
@@ -234,20 +236,16 @@
       "text": {
         "raw": "Vmd = valore di progetto della componente di taglio dovuta all’inclinazione dei lembi della membratura;",
         "normalized": "Vmd = valore di progetto della componente di taglio dovuta all’inclinazione dei lembi della membratura;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "Vmd "
-          },
-          {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "Vmd",
+            "latex": "V_{md}"
           },
           {
             "kind": "text",
-            "value": " valore di progetto della componente di taglio dovuta all’inclinazione dei lembi della membratura;"
+            "value": " = valore di progetto della componente di taglio dovuta all’inclinazione dei lembi della membratura;"
           }
         ]
       },
@@ -267,7 +265,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "66830cd59f7172c69290653690034016bbd1b5fa056441004e096f96e882444a",
         "normalizedSha256": "66830cd59f7172c69290653690034016bbd1b5fa056441004e096f96e882444a"
       }
@@ -279,20 +283,16 @@
       "text": {
         "raw": "Vpd = valore di progetto della componente di taglio dovuta alla precompressione.",
         "normalized": "Vpd = valore di progetto della componente di taglio dovuta alla precompressione.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "Vpd "
-          },
-          {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "Vpd",
+            "latex": "V_{pd}"
           },
           {
             "kind": "text",
-            "value": " valore di progetto della componente di taglio dovuta alla precompressione."
+            "value": " = valore di progetto della componente di taglio dovuta alla precompressione."
           }
         ]
       },
@@ -312,7 +312,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "baad4b3c76d0b163aa6435b679d6f1a3915eca0c02c863a49c3dd7042bb908ed",
         "normalizedSha256": "baad4b3c76d0b163aa6435b679d6f1a3915eca0c02c863a49c3dd7042bb908ed"
       }
@@ -353,30 +359,30 @@
       "origin": "official",
       "text": {
         "raw": "Il taglio all’appoggio determinato da carichi applicati alla distanza a v ǂ 2d dall’appoggio stesso si potrà ridurre del rapporto\na v \n/2d, con l’osservanza delle seguenti prescrizioni:",
-        "normalized": "Il taglio all’appoggio determinato da carichi applicati alla distanza a v ≤ 2d dall’appoggio stesso si potrà ridurre del rapporto a v /2d, con l’osservanza delle seguenti prescrizioni:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Il taglio all’appoggio determinato da carichi applicati alla distanza av ≤ 2d dall’appoggio stesso si potrà ridurre del rapporto av/2d, con l’osservanza delle seguenti prescrizioni:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Il taglio all’appoggio determinato da carichi applicati alla distanza a v "
+            "value": "Il taglio all’appoggio determinato da carichi applicati alla distanza "
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "av ≤ 2d",
+            "latex": "a_v\\le2d"
           },
           {
             "kind": "text",
-            "value": " 2d dall’appoggio stesso si potrà ridurre del rapporto a v "
+            "value": " dall’appoggio stesso si potrà ridurre del rapporto "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "av/2d",
+            "latex": "a_v/2d"
           },
           {
             "kind": "text",
-            "value": "2d, con l’osservanza delle seguenti prescrizioni:"
+            "value": ", con l’osservanza delle seguenti prescrizioni:"
           }
         ]
       },
@@ -413,11 +419,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -426,10 +427,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "12405c4cc6f7b639cb31fefcb74d84edf7e06ba83d7da68e17adb84bd74b14ab",
-        "normalizedSha256": "77f871d036af96729ec29ac7e5e24dca070bf0474ba71b2c0e90471914df2543"
+        "normalizedSha256": "87adf1c1e66a048e6862df143b5d85ec14fb291a499a59d54e0c3c583b2aa231"
       }
     },
     {
@@ -500,7 +506,7 @@
       "text": {
         "raw": "- nel caso di appoggio intermedio, l’armatura di trazione all’appoggio deve essere prolungata sin dove necessario e comunque\nfino alla sezione ove è applicato il carico più lontano compreso nella zona con av ǂ 2d.",
         "normalized": "nel caso di appoggio intermedio, l’armatura di trazione all’appoggio deve essere prolungata sin dove necessario e comunque fino alla sezione ove è applicato il carico più lontano compreso nella zona con av ≤ 2d.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -508,21 +514,12 @@
           },
           {
             "kind": "math",
-            "value": "av",
-            "latex": "a_v"
+            "value": "av ≤ 2d",
+            "latex": "a_v\\le2d"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 2d."
+            "value": "."
           }
         ]
       },
@@ -559,11 +556,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -572,6 +564,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "3509acfb65edca64a998413e065db19bac66d2e21cc9b4edca2a9f7d04944114",
@@ -585,7 +582,7 @@
       "text": {
         "raw": "Nel caso di elementi con armature trasversali resistenti al taglio, si deve verificare che lo sforzo di taglio VEd, calcolato in questo\nmodo, soddisfi la condizione",
         "normalized": "Nel caso di elementi con armature trasversali resistenti al taglio, si deve verificare che lo sforzo di taglio VEd, calcolato in questo modo, soddisfi la condizione",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -635,11 +632,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -648,6 +640,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "aa29e2ee7bcde2e1d459bd42ae52e5d0b6973bcc554b5e995b3e6354faad418c",
@@ -692,26 +689,26 @@
       "origin": "official",
       "text": {
         "raw": "dove A s fyd è la resistenza dell’armatura trasversale contenuta nella zona di lunghezza 0,75 av centrata tra carico ed appoggio e\nche attraversa la fessura di taglio inclinata ivi compresa.",
-        "normalized": "dove A s fyd è la resistenza dell’armatura trasversale contenuta nella zona di lunghezza 0,75 av centrata tra carico ed appoggio e che attraversa la fessura di taglio inclinata ivi compresa.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove As fyd è la resistenza dell’armatura trasversale contenuta nella zona di lunghezza 0,75 av centrata tra carico ed appoggio e che attraversa la fessura di taglio inclinata ivi compresa.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove A s "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "fyd",
-            "latex": "f_{yd}"
+            "value": "As fyd",
+            "latex": "A_s f_{yd}"
           },
           {
             "kind": "text",
-            "value": " è la resistenza dell’armatura trasversale contenuta nella zona di lunghezza 0,75 "
+            "value": " è la resistenza dell’armatura trasversale contenuta nella zona di lunghezza "
           },
           {
             "kind": "math",
-            "value": "av",
-            "latex": "a_v"
+            "value": "0,75 av",
+            "latex": "0{,}75a_v"
           },
           {
             "kind": "text",
@@ -752,11 +749,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -765,10 +757,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "259c6d21e893dcfeac862e26983c6ef4f59aa6ad1bb9b15cec733849aaca2c13",
-        "normalizedSha256": "76ad71d860d21fc88878658c8ea0e6f5124c1b1b5826830b37fc92d2ec384cac"
+        "normalizedSha256": "d57ffecca54d96e8fce7cc66c54e02c6989aeb8f9795b98d7645c9fac9733c9a"
       }
     },
     {
@@ -777,8 +774,8 @@
       "origin": "official",
       "text": {
         "raw": "Lo sforzo di taglio VEd, calcolato senza la riduzione av \n/2d, deve comunque sempre rispettare la condizione:",
-        "normalized": "Lo sforzo di taglio VEd, calcolato senza la riduzione av /2d, deve comunque sempre rispettare la condizione:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Lo sforzo di taglio VEd, calcolato senza la riduzione av/2d, deve comunque sempre rispettare la condizione:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -795,21 +792,12 @@
           },
           {
             "kind": "math",
-            "value": "av",
-            "latex": "a_v"
+            "value": "av/2d",
+            "latex": "a_v/2d"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "2d, deve comunque sempre rispettare la condizione:"
+            "value": ", deve comunque sempre rispettare la condizione:"
           }
         ]
       },
@@ -846,11 +834,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -859,10 +842,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "3976fb611c7bba94434ce0f60ad318c224378479bdf2683bf9de91d1a0a74409",
-        "normalizedSha256": "48a8e3d46b2de5f93a956fc45cff2477866bc2b56349f2fee83a0d076d812b27"
+        "normalizedSha256": "1edf20c08b71068e092b64efe572a0cfd71407bd4bfc335f456229ef6b3d82bc"
       }
     },
     {
@@ -904,7 +892,7 @@
       "text": {
         "raw": "essendo Α = 0,5 un coefficiente di riduzione della resistenza del calcestruzzo fessurato per taglio.",
         "normalized": "essendo ν = 0,5 un coefficiente di riduzione della resistenza del calcestruzzo fessurato per taglio.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -912,21 +900,12 @@
           },
           {
             "kind": "math",
-            "value": "ν",
-            "latex": "\\nu"
+            "value": "ν = 0,5",
+            "latex": "\\nu=0{,}5"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,5 un coefficiente di riduzione della resistenza del calcestruzzo fessurato per taglio."
+            "value": " un coefficiente di riduzione della resistenza del calcestruzzo fessurato per taglio."
           }
         ]
       },
@@ -963,11 +942,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -976,6 +950,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "e719654218d7d9b2ffef52085246408c41e612cdbca7db7dd56a47ab897e8945",

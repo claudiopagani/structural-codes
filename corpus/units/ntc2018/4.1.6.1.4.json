@@ -339,21 +339,21 @@
       "origin": "official",
       "text": {
         "raw": "Per barre di diametro Ø >32 mm occorrerà adottare particolari cautele negli ancoraggi e nelle sovrapposizioni.",
-        "normalized": "Per barre di diametro Ø >32 mm occorrerà adottare particolari cautele negli ancoraggi e nelle sovrapposizioni.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Per barre di diametro Ø > 32 mm occorrerà adottare particolari cautele negli ancoraggi e nelle sovrapposizioni.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per barre di diametro Ø "
+            "value": "Per barre di diametro "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "Ø > 32 mm",
+            "latex": "\\Phi>32\\,\\mathrm{mm}"
           },
           {
             "kind": "text",
-            "value": "32 mm occorrerà adottare particolari cautele negli ancoraggi e nelle sovrapposizioni."
+            "value": " occorrerà adottare particolari cautele negli ancoraggi e nelle sovrapposizioni."
           }
         ]
       },
@@ -373,9 +373,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "a6a38d99590ccdd82ffb332e445176012d76dffc66505c3baa4ccddca9ae30ed",
-        "normalizedSha256": "a6a38d99590ccdd82ffb332e445176012d76dffc66505c3baa4ccddca9ae30ed"
+        "normalizedSha256": "c3dfcd97602ab36cf129bbff253496b94c582495824008d05ffe1bae04d3ea52"
       }
     },
     {

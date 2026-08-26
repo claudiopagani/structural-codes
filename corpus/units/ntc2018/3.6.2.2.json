@@ -121,63 +121,34 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.2.2#block-editorial-002",
-      "kind": "paragraph",
+      "kind": "table-ref",
       "origin": "official",
-      "text": {
-        "raw": "Tab. 3.6.I - Categorie di azione dovute alle esplosioni\nCategoria di azione Possibili effetti\n1 Effetti trascurabili sulle strutture\n2 Effetti localizzati su parte delle strutture\n3 Effetti generalizzati sulle strutture",
-        "normalized": "Tab. 3.6.I - Categorie di azione dovute alle esplosioni Categoria di azione Possibili effetti 1 Effetti trascurabili sulle strutture 2 Effetti localizzati su parte delle strutture 3 Effetti generalizzati sulle strutture",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:3.6.i",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 69,
         "printedPage": "65",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 70.709,
-          "y": 189.884,
-          "width": 453.197,
-          "height": 79.676
+          "x": 70,
+          "y": 218,
+          "width": 300,
+          "height": 55
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "3e4fedc58b1195f31530e02a3aef308bc55c8c0a7b48705acfd604c67825c7c7",
-        "normalizedSha256": "7ea8eef6a27ae14595503551a70b2e1bbb224674639a1eac31d92acd2ab540e5"
+        "rawSha256": "ba4216ebb8b273d7ea2ebc637630ec44b009225b7d387bb20b059bb472d6d3b9",
+        "normalizedSha256": "8f26aa881bbacaf373d2ec298bcf33682b18fa63cd8d4835417d36427fa14e8a"
       }
     }
   ],
@@ -185,7 +156,9 @@
   "relations": [],
   "assets": {
     "formulaIds": [],
-    "tableIds": [],
+    "tableIds": [
+      "urn:structural-codes:it:asset:table:ntc2018:3.6.i"
+    ],
     "figureIds": []
   },
   "workflow": {

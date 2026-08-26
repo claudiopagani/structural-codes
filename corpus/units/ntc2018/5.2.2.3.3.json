@@ -101,16 +101,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Le forze di frenatura e di avviamento "
+            "value": "Le forze di frenatura e di avviamento agiscono sulla sommità del binario, nella direzione longitudinale dello stesso. Dette forze sono da considerarsi uniformemente distribuite su una lunghezza di binario "
           },
           {
             "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
+            "value": "L",
+            "latex": "L"
           },
           {
             "kind": "text",
-            "value": "iscono sulla sommità del binario, nella direzione longitudinale dello stesso. Dette forze sono da considerarsi uniformemente distribuite su una lunghezza di binario L determinata per ottenere l’effetto più gravoso sull’elemento strutturale considerato."
+            "value": " determinata per ottenere l’effetto più gravoso sull’elemento strutturale considerato."
           }
         ]
       },
@@ -173,28 +173,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.3#block-editorial-003",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "avviamento: Qla,k = 33 [kN/m] · L[m] ǂ 1000 kN   per modelli di carico LM 71, SW/0,\nSW/2",
-        "normalized": "avviamento: Qla,k = 33 [kN/m] · L[m] ≤ 1000 kN per modelli di carico LM 71, SW/0, SW/2",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "avviamento: "
-          },
-          {
-            "kind": "math",
-            "value": "Qla,k",
-            "latex": "Q_{la,k}"
-          },
-          {
-            "kind": "text",
-            "value": " = 33 [kN/m] · L[m] ≤ 1000 kN per modelli di carico LM 71, SW/0, SW/2"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-starting",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 174,
@@ -207,79 +188,26 @@
           "height": 680
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimossi caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
           }
         ],
-        "rawSha256": "e7f8761e2293fd5ed60ba78d8580687f979e7f56739814904c319763fb615287",
-        "normalizedSha256": "791f889cd99fe82ac6177b136a26a7f26ea83e42c2123563b95952fd349445d3"
+        "rawSha256": "5114786d0d42951015c804e4053eea56cf649388fc21afaf2f1be3403b04a3bd",
+        "normalizedSha256": "5114786d0d42951015c804e4053eea56cf649388fc21afaf2f1be3403b04a3bd"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.3#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "frenatura: Qlb,k = 20 [kN/m] · L[m] ǂ 6000 kN   per modelli di carico LM 71, SW/0\nQlb,k = 35 [kN/m] · L[m]   per modelli di carico SW/2",
-        "normalized": "frenatura: Qlb,k = 20 [kN/m] · L[m] ≤ 6000 kN per modelli di carico LM 71, SW/0; Qlb,k = 35 [kN/m] · L[m] per modelli di carico SW/2",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "frenatura: "
-          },
-          {
-            "kind": "math",
-            "value": "Qlb,k",
-            "latex": "Q_{lb,k}"
-          },
-          {
-            "kind": "text",
-            "value": " = 20 [kN/m] · L[m] ≤ 6000 kN per modelli di carico LM 71, SW/0; "
-          },
-          {
-            "kind": "math",
-            "value": "Qlb,k",
-            "latex": "Q_{lb,k}"
-          },
-          {
-            "kind": "text",
-            "value": " = 35 [kN/m] · L[m] per modelli di carico SW/2"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-braking",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 175,
@@ -292,44 +220,19 @@
           "height": 680
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimossi caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
           }
         ],
-        "rawSha256": "d31c6e4a8347a746ac35e8ba5ca97463b09cd25a0a968e0e8110bb95cc1174fa",
-        "normalizedSha256": "70a6761c307e4fbf68aa6bf9d5fab8a4af7fb633cb2841cacdd15c13d9927930"
+        "rawSha256": "2fbfba9adb296eaf6a94e0e0caddacfc342b94b3e49b235a695e19f4e135c6f9",
+        "normalizedSha256": "2fbfba9adb296eaf6a94e0e0caddacfc342b94b3e49b235a695e19f4e135c6f9"
       }
     },
     {
@@ -415,43 +318,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Quando la rotaia è continua ad una o ad entrambe le estremità del ponte solo una parte delle forze di frenatura ed avviamento è trasferita, attraverso l’impalcato, "
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "li apparecchi di appoggio, la parte rimanente di queste forze è trasmessa, attraverso le rotaie, ai rilevati a tergo delle spalle. La percentuale di forze trasferite attraverso l’impalcato "
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "li apparecchi di appoggio è valutabile con le modalità riportate nel par"
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "rafo relativo "
-          },
-          {
-            "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
-          },
-          {
-            "kind": "text",
-            "value": "li effetti di interazione statica."
+            "value": "Quando la rotaia è continua ad una o ad entrambe le estremità del ponte solo una parte delle forze di frenatura ed avviamento è trasferita, attraverso l’impalcato, agli apparecchi di appoggio, la parte rimanente di queste forze è trasmessa, attraverso le rotaie, ai rilevati a tergo delle spalle. La percentuale di forze trasferite attraverso l’impalcato agli apparecchi di appoggio è valutabile con le modalità riportate nel paragrafo relativo agli effetti di interazione statica."
           }
         ]
       },
@@ -693,7 +560,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "un terzo ed un quarto binario con il 50% della forza di frenatura, concorde con le precedenti;"
+            "value": "un terzo ed un quarto binario con il "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della forza di frenatura, concorde con le precedenti;"
           }
         ]
       },
@@ -863,16 +739,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per lunghezze di carico superiori a 300 m dovranno essere eseguiti appositi studi per valutare i requisiti "
+            "value": "Per lunghezze di carico superiori a "
           },
           {
             "kind": "math",
-            "value": "ag",
-            "latex": "a_g"
+            "value": "300 m",
+            "latex": "300\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": "giuntivi da tenere in conto ai fini degli effetti di frenatura ed avviamento."
+            "value": " dovranno essere eseguiti appositi studi per valutare i requisiti aggiuntivi da tenere in conto ai fini degli effetti di frenatura ed avviamento."
           }
         ]
       },
@@ -984,7 +860,16 @@
           },
           {
             "kind": "text",
-            "value": " e non devono essere moltiplicati per Φ."
+            "value": " e non devono essere moltiplicati per "
+          },
+          {
+            "kind": "math",
+            "value": "Φ",
+            "latex": "\\Phi"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1044,7 +929,10 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-starting",
+      "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.3.3-braking"
+    ],
     "tableIds": [],
     "figureIds": []
   },
@@ -1063,6 +951,12 @@
         "type": "normalization-review",
         "severity": "blocking",
         "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+      },
+      {
+        "issueId": "ntc2018-5-2-2-3-3-assets",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
       }
     ]
   }

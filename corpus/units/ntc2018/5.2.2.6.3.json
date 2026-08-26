@@ -101,12 +101,12 @@
         "inline": [
           {
             "kind": "text",
-            "value": "I valori caratteristici dell’azione ± "
+            "value": "I valori caratteristici dell’azione "
           },
           {
             "kind": "math",
-            "value": "q3k",
-            "latex": "q_{3k}"
+            "value": "± q3k",
+            "latex": "\\pm q_{3k}"
           },
           {
             "kind": "text",
@@ -241,7 +241,16 @@
           },
           {
             "kind": "text",
-            "value": " supera i 3,80 m l’azione "
+            "value": " supera i "
+          },
+          {
+            "kind": "math",
+            "value": "3,80 m",
+            "latex": "3{,}80\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " l’azione "
           },
           {
             "kind": "math",
@@ -250,7 +259,16 @@
           },
           {
             "kind": "text",
-            "value": " può essere ridotta del fattore k3:"
+            "value": " può essere ridotta del fattore "
+          },
+          {
+            "kind": "math",
+            "value": "k3",
+            "latex": "k_3"
+          },
+          {
+            "kind": "text",
+            "value": ":"
           }
         ]
       },
@@ -277,46 +295,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.3#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "7,3\nh5,7\nk g\n3  \n\u0010 per 3,8 m < hg < 7,5 m;\nk3 = 0 per hg ǃ 7,5 m",
-        "normalized": "k3 = (7,5 − hg)/3,7 per 3,8 m < hg < 7,5 m; k3 = 0 per hg ≥ 7,5 m",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "k3 = (7,5 − "
-          },
-          {
-            "kind": "math",
-            "value": "hg",
-            "latex": "h_g"
-          },
-          {
-            "kind": "text",
-            "value": ")/3,7 per 3,8 m < "
-          },
-          {
-            "kind": "math",
-            "value": "hg",
-            "latex": "h_g"
-          },
-          {
-            "kind": "text",
-            "value": " < 7,5 m; k3 = 0 per "
-          },
-          {
-            "kind": "math",
-            "value": "hg",
-            "latex": "h_g"
-          },
-          {
-            "kind": "text",
-            "value": " ≥ 7,5 m"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.3-k3",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 177,
@@ -329,44 +310,19 @@
           "height": 680
         },
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimossi caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
           }
         ],
-        "rawSha256": "b1784bfd934745f4e9c63e53c47bcff151082d41027a5214e40b80bb717135a7",
-        "normalizedSha256": "7475c7aaa51ee8fcb245966a4a51bbe412ad3330d49a5585e93a63c55dff0a71"
+        "rawSha256": "9420d492a56e26e1cde8a32d88a27e70603cb957762b874dcf9c9c843810dd0e",
+        "normalizedSha256": "9420d492a56e26e1cde8a32d88a27e70603cb957762b874dcf9c9c843810dd0e"
       }
     },
     {
@@ -418,7 +374,9 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:5.2.2.6.3-k3"
+    ],
     "tableIds": [],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:ntc2018:5.2.10"

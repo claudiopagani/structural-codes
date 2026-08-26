@@ -66,31 +66,7 @@
       "text": {
         "raw": "Per i componenti appoggiati in via definitiva, particolare attenzione va posta alla posizione e dimensione dell’apparecchio\nd’appoggio, sia rispetto alla geometria dell’elemento di sostegno, sia rispetto alla sezione terminale dell’elemento portato, tenen-\ndo nel dovuto conto le tolleranze dimensionali e di montaggio e le deformazioni per fenomeni reologici e/o termici.",
         "normalized": "Per i componenti appoggiati in via definitiva, particolare attenzione va posta alla posizione e dimensione dell’apparecchio d’appoggio, sia rispetto alla geometria dell’elemento di sostegno, sia rispetto alla sezione terminale dell’elemento portato, tenendo nel dovuto conto le tolleranze dimensionali e di montaggio e le deformazioni per fenomeni reologici e/o termici.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Per i componenti appoggiati in via definitiva, particolare attenzione va posta alla posizione e dimensione dell’apparecchio "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’appoggio, sia rispetto alla geometria dell’elemento di sostegno, sia rispetto alla sezione terminale dell’elemento portato, tenendo nel dovuto conto le tolleranze dimensionali e di montaggio e le deformazioni per fenomeni reologici e"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "o termici."
-          }
-        ]
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -125,11 +101,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -138,6 +109,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "cb495a5ae8a72b567785e4f5aeecdbf996f44fb20837bed09ad218590f323ae4",

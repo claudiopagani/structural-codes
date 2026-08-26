@@ -400,13 +400,13 @@ const p122 = {
 };
 
 const formulaAssets = [
-    { id: formulaId("4.3.1.a"), unitId: unitId("4.3.2.1"), officialNumber: "4.3.1.a", pdfPage: 120, latex: "A_s\\ge\\rho_s A_c" },
-    { id: formulaId("4.3.1.b"), unitId: unitId("4.3.2.1"), officialNumber: "4.3.1.b", pdfPage: 120, latex: "\\rho_s=\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}\\sqrt{\\frac{1}{1+\\frac{h_c}{2z_0}}}+0.3\\le\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}" },
-    { id: formulaId("4.3.2"), unitId: unitId("4.3.2.3"), officialNumber: "4.3.2", pdfPage: 121, latex: "b_{\\mathrm{eff}}=b_0+b_{e1}+b_{e2}" },
+    { id: formulaId("4.3.1.a"), unitId: unitId("4.3.2.1"), officialNumber: "4.3.1.a", pdfPage: 120, latex: "A_s\\ge\\rho_s\\cdot A_c" },
+    { id: formulaId("4.3.1.b"), unitId: unitId("4.3.2.1"), officialNumber: "4.3.1.b", pdfPage: 120, latex: "\\rho_s=\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}\\sqrt{\\frac{1}{1+\\frac{h_c}{2z_0}}}+0{,}3\\le\\delta\\frac{f_{yk}}{235}\\frac{f_{ctm}}{f_{sk}}" },
+    { id: formulaId("4.3.2"), unitId: unitId("4.3.2.3"), officialNumber: "4.3.2", pdfPage: 121, latex: "b_{\\mathrm{eff}}=b_0+b_{e1}+b_{e2}," },
     { id: formulaId("4.3.3"), unitId: unitId("4.3.2.3"), officialNumber: "4.3.3", pdfPage: 122, latex: "b_{\\mathrm{eff}}=b_0+\\beta_1b_{e-1}+\\beta_2b_{e-2}" },
-    { id: formulaId("4.3.3-beta"), unitId: unitId("4.3.2.3"), officialNumber: null, pdfPage: 122, latex: "\\beta_i=\\left(0.55+0.025\\frac{L_e}{b_{\\mathrm{eff},i}}\\right)\\le1.0" },
+    { id: formulaId("4.3.3-beta"), unitId: unitId("4.3.2.3"), officialNumber: null, pdfPage: 122, latex: "\\beta_i=\\left(0{,}55+0{,}025\\cdot\\frac{L_e}{b_{\\mathrm{eff},i}}\\right)\\le1{,}0" },
     { id: formulaId("4.3.4"), unitId: unitId("4.3.2.4"), officialNumber: "4.3.4", pdfPage: 122, latex: "\\alpha_{\\mathrm{cr}}\\ge10" },
-    { id: formulaId("4.3.5"), unitId: unitId("4.3.2.5"), officialNumber: "4.3.5", pdfPage: 122, latex: "\\bar{\\lambda}\\le0.5\\sqrt{\\frac{N_{\\mathrm{pl,Rk}}}{N_{\\mathrm{Ed}}}}" },
+    { id: formulaId("4.3.5"), unitId: unitId("4.3.2.5"), officialNumber: "4.3.5", pdfPage: 122, latex: "\\bar{\\lambda}\\le0{,}5\\cdot\\sqrt{\\frac{N_{\\mathrm{pl,Rk}}}{N_{\\mathrm{Ed}}}}" },
 ];
 
 const tableAsset = {
@@ -594,7 +594,7 @@ const units = [
         ]),
         textBlock("4.3.2.3", "editorial-005", "paragraph", 122, p122.effective5, "Per gli appoggi di estremità la formula diviene:"),
         formulaRefForUnit("4.3.2.3", "4.3.3", "formula-002", 122, p122.formula33),
-        textBlock("4.3.2.3", "editorial-006", "paragraph", 122, p122.effective6, "dove β_i =", [{ kind: "text", value: "dove " }, { kind: "math", value: "β_i", latex: "\\beta_i" }, { kind: "text", value: " =" }]),
+        textBlock("4.3.2.3", "editorial-006", "paragraph", 122, p122.effective6, "dove"),
         formulaRefForUnit("4.3.2.3", "4.3.3-beta", "formula-003", 122, p122.beta),
         textBlock("4.3.2.3", "editorial-007", "paragraph", 122, p122.effective7, "essendo L_e e b_eff,i relativi alla campata di estremità.", [
             { kind: "text", value: "essendo " },

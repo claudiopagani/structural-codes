@@ -156,8 +156,8 @@
       "origin": "official",
       "text": {
         "raw": "dove\nqr è la pressione cinetica di riferimento di cui al § 3.3.6;\nc e è il coefficiente di esposizione di cui al § 3.3.7;\nc f è il coefficiente d’attrito di cui al § 3.3.8.",
-        "normalized": "dove qr è la pressione cinetica di riferimento di cui al § 3.3.6; c e è il coefficiente di esposizione di cui al § 3.3.7; c f è il coefficiente d’attrito di cui al § 3.3.8.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "dove qr è la pressione cinetica di riferimento di cui al § 3.3.6; ce è il coefficiente di esposizione di cui al § 3.3.7; cf è il coefficiente d’attrito di cui al § 3.3.8.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -174,21 +174,21 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "ce",
+            "latex": "c_e"
           },
           {
             "kind": "text",
-            "value": " e è il coefficiente di esposizione di cui al § 3.3.7; "
+            "value": " è il coefficiente di esposizione di cui al § 3.3.7; "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "cf",
+            "latex": "c_f"
           },
           {
             "kind": "text",
-            "value": " f è il coefficiente d’attrito di cui al § 3.3.8."
+            "value": " è il coefficiente d’attrito di cui al § 3.3.8."
           }
         ]
       },
@@ -225,11 +225,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -238,10 +233,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "76671e1c7d979136e89d200702de8c2cd1285c39e2b2254cbe430629e0069030",
-        "normalizedSha256": "e5bdfa972fbd55bab0189adb9d026243adaf30738611c6dfacc7f0524b31ee80"
+        "normalizedSha256": "c2b15068d8214dc7af3338b89070bb536903253003db5bea433be8f17ec93904"
       }
     }
   ],

@@ -218,7 +218,7 @@
       "text": {
         "raw": "qsk è il valore di riferimento del carico della neve al suolo, di cui al § 3.4.2;\nμi è il coefficiente di forma della copertura, di cui al § 3.4.3;\nCE è il coefficiente di esposizione di cui al § 3.4.4;\nCt è il coefficiente termico di cui al § 3.4.5.",
         "normalized": "qsk è il valore di riferimento del carico della neve al suolo, di cui al § 3.4.2; μi è il coefficiente di forma della copertura, di cui al § 3.4.3; CE è il coefficiente di esposizione di cui al § 3.4.4; Ct è il coefficiente termico di cui al § 3.4.5.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "math",
@@ -232,11 +232,29 @@
           {
             "kind": "math",
             "value": "μi",
-            "latex": "\\mu_{i}"
+            "latex": "\\mu_i"
           },
           {
             "kind": "text",
-            "value": " è il coefficiente di forma della copertura, di cui al § 3.4.3; CE è il coefficiente di esposizione di cui al § 3.4.4; Ct è il coefficiente termico di cui al § 3.4.5."
+            "value": " è il coefficiente di forma della copertura, di cui al § 3.4.3; "
+          },
+          {
+            "kind": "math",
+            "value": "CE",
+            "latex": "C_E"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di esposizione di cui al § 3.4.4; "
+          },
+          {
+            "kind": "math",
+            "value": "Ct",
+            "latex": "C_t"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente termico di cui al § 3.4.5."
           }
         ]
       },
@@ -273,11 +291,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -286,6 +299,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "2b40907e52a8cbc172ab660bc97fb8c78258fd1a6ddea9e5853fd7c832422474",

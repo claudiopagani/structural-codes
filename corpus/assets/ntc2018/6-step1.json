@@ -33,7 +33,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.2.4.1",
       "officialNumber": "6.2.2b",
       "pdfPage": 189,
-      "latex": "E_d=\\gamma_E\\,E\\left[F_k;\\frac{X_k}{\\gamma_M};a_d\\right]"
+      "latex": "E_d=\\gamma_E\\cdot E\\left[F_k;\\frac{X_k}{\\gamma_M};a_d\\right]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:6.2.3",
@@ -68,35 +68,35 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
       "officialNumber": "6.4.1",
       "pdfPage": 196,
-      "latex": "R_{c,k}=\\min\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{c,m})_{\\min}}{\\xi_2}\\right\\}"
+      "latex": "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{c,m})_{\\mathrm{min}}}{\\xi_2}\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:6.4.2",
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
       "officialNumber": "6.4.2",
       "pdfPage": 196,
-      "latex": "R_{t,k}=\\min\\left\\{\\frac{(R_{t,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{t,m})_{\\min}}{\\xi_2}\\right\\}"
+      "latex": "R_{t,k}=\\operatorname{Min}\\left\\{\\frac{(R_{t,m})_{\\mathrm{media}}}{\\xi_1};\\frac{(R_{t,m})_{\\mathrm{min}}}{\\xi_2}\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:6.4.3",
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
       "officialNumber": "6.4.3",
       "pdfPage": 196,
-      "latex": "R_{c,k}=\\min\\left\\{\\frac{(R_{c,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{c,cal})_{\\min}}{\\xi_4}\\right\\}"
+      "latex": "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{c,cal})_{\\mathrm{min}}}{\\xi_4}\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:6.4.4",
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
       "officialNumber": "6.4.4",
       "pdfPage": 196,
-      "latex": "R_{t,k}=\\min\\left\\{\\frac{(R_{t,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{t,cal})_{\\min}}{\\xi_4}\\right\\}"
+      "latex": "R_{t,k}=\\operatorname{Min}\\left\\{\\frac{(R_{t,cal})_{\\mathrm{media}}}{\\xi_3};\\frac{(R_{t,cal})_{\\mathrm{min}}}{\\xi_4}\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:6.4.5",
       "unitId": "urn:structural-codes:it:unit:ntc2018:6.4.3.1.1",
       "officialNumber": "6.4.5",
       "pdfPage": 196,
-      "latex": "R_{c,k}=\\min\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_5};\\frac{(R_{c,m})_{\\min}}{\\xi_6}\\right\\}"
+      "latex": "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_5};\\frac{(R_{c,m})_{\\mathrm{min}}}{\\xi_6}\\right\\}"
     }
   ],
   "tables": [
@@ -137,7 +137,7 @@
           },
           {
             "text": "γF (o γE)",
-            "latex": "\\gamma_F\\ (o\\ \\gamma_E)"
+            "latex": "\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"
           },
           {
             "text": ""
@@ -397,7 +397,7 @@
           },
           {
             "text": "Coefficiente Parziale γF (o γE)",
-            "latex": "\\gamma_F\\ (o\\ \\gamma_E)"
+            "latex": "\\text{Coefficiente Parziale }\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"
           },
           {
             "text": "Sollevamento (UPL)"
@@ -504,6 +504,15 @@
           {
             "text": "Coefficiente parziale"
           }
+        ],
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "(R3)",
+            "latex": "(\\mathrm{R3})"
+          }
         ]
       ],
       "rows": [
@@ -560,16 +569,20 @@
             "text": ""
           },
           {
-            "text": ""
+            "text": "γR",
+            "latex": "\\gamma_R"
           },
           {
-            "text": "(R3)"
+            "text": "(R3)",
+            "latex": "(\\mathrm{R3})"
           },
           {
-            "text": "(R3)"
+            "text": "(R3)",
+            "latex": "(\\mathrm{R3})"
           },
           {
-            "text": "(R3)"
+            "text": "(R3)",
+            "latex": "(\\mathrm{R3})"
           }
         ]
       ],
@@ -677,7 +690,8 @@
             "text": "4"
           },
           {
-            "text": "≥ 5"
+            "text": "≥ 5",
+            "latex": "\\ge5"
           }
         ]
       ],
@@ -760,7 +774,8 @@
             "text": "7"
           },
           {
-            "text": "≥ 10"
+            "text": "≥ 10",
+            "latex": "\\ge10"
           }
         ]
       ],
@@ -837,19 +852,24 @@
             "text": "Numero di prove di carico"
           },
           {
-            "text": "≥ 2"
+            "text": "≥ 2",
+            "latex": "\\ge2"
           },
           {
-            "text": "≥ 5"
+            "text": "≥ 5",
+            "latex": "\\ge5"
           },
           {
-            "text": "≥ 10"
+            "text": "≥ 10",
+            "latex": "\\ge10"
           },
           {
-            "text": "≥ 15"
+            "text": "≥ 15",
+            "latex": "\\ge15"
           },
           {
-            "text": "≥ 20"
+            "text": "≥ 20",
+            "latex": "\\ge20"
           }
         ]
       ],

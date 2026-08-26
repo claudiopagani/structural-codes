@@ -93,9 +93,51 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "La temperatura dell’aria esterna, Test \n, può assumere il valore Tmax o Tmin , definite rispettivamente come temperatura massima e-\nstiva e minima invernale dell’aria nel sito della costruzione, con riferimento ad un periodo di ritorno di 50 anni.",
-        "normalized": "La temperatura dell’aria esterna, Test , può assumere il valore Tmax o Tmin, definite rispettivamente come temperatura massima estiva e minima invernale dell’aria nel sito della costruzione, con riferimento ad un periodo di ritorno di 50 anni.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "La temperatura dell’aria esterna, Test , può assumere il valore Tmax o Tmin , definite rispettivamente come temperatura massima e-\nstiva e minima invernale dell’aria nel sito della costruzione, con riferimento ad un periodo di ritorno di 50 anni.",
+        "normalized": "La temperatura dell’aria esterna, Test, può assumere il valore Tmax o Tmin, definite rispettivamente come temperatura massima estiva e minima invernale dell’aria nel sito della costruzione, con riferimento ad un periodo di ritorno di 50 anni.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La temperatura dell’aria esterna, "
+          },
+          {
+            "kind": "math",
+            "value": "Test",
+            "latex": "T_{est}"
+          },
+          {
+            "kind": "text",
+            "value": ", può assumere il valore "
+          },
+          {
+            "kind": "math",
+            "value": "Tmax",
+            "latex": "T_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "Tmin",
+            "latex": "T_{min}"
+          },
+          {
+            "kind": "text",
+            "value": ", definite rispettivamente come temperatura massima estiva e minima invernale dell’aria nel sito della costruzione, con riferimento ad un periodo di ritorno di "
+          },
+          {
+            "kind": "math",
+            "value": "50 anni",
+            "latex": "50\\,\\text{anni}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -103,10 +145,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 78,
+          "y": 108,
+          "width": 441,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -115,38 +157,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "81ac1045b3a9cdbc9a40fa65719b64b289bb92c76a0197bf544894eae45423b0",
-        "normalizedSha256": "ab3d8fae907e06157af7d8a7aadf26fe08859f4c85b2c17ada473523e3b70bf7"
+        "rawSha256": "531ca84cd9aa917a50bc429c41765b9a8dc11a559412ce098414c15492c9b324",
+        "normalizedSha256": "b2841cfc94138f12e7941477bb2135248eeaa94472a589fd66cf45b9f7ccb5b9"
       }
     },
     {
@@ -156,7 +188,7 @@
       "text": {
         "raw": "Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti,\nil periodo di ritorno dell’azione potrà essere ridotto come di seguito specificato:",
         "normalized": "Per un’opera di nuova realizzazione in fase di costruzione o per le fasi transitorie relative ad interventi sulle costruzioni esistenti, il periodo di ritorno dell’azione potrà essere ridotto come di seguito specificato:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -164,10 +196,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 78,
+          "y": 132,
+          "width": 441,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -176,33 +208,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -215,9 +237,9 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t\n5 anni;",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t 5 anni;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR t5 anni;",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto non superiore a tre mesi, si assumerà TR ≥ 5 anni;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -225,12 +247,12 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR ≥ 5 anni",
+            "latex": "T_R\\ge5\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " t 5 anni;"
+            "value": ";"
           }
         ]
       },
@@ -240,10 +262,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 93,
+          "y": 157,
+          "width": 426,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -252,38 +274,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "9699fcf082cb626ae760140dc20169961e8539660d012e719f1f6d375121fefb",
-        "normalizedSha256": "7bba29b6ff21d3f19476abc42a922f0dc7307c12df7d4ed64a54403943019d4e"
+        "rawSha256": "3476a964dc4bf1797bd1bab1822b82c6b877463b2a8fe4e370c74c202e379a51",
+        "normalizedSha256": "bd5aa2580982c7e7efd19bc183cbf7e750334f783f9e388fc503790a904631cf"
       }
     },
     {
@@ -292,30 +304,21 @@
       "origin": "official",
       "text": {
         "raw": "- per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi d un anno, si as-\nsumerà TR t 10 anni;",
-        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi d un anno, si assumerà TR t 10 anni;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà TR ≥ 10 anni;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi "
+            "value": "per fasi di costruzione o fasi transitorie con durata prevista in sede di progetto compresa fra tre mesi ed un anno, si assumerà "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "TR ≥ 10 anni",
+            "latex": "T_R\\ge10\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " un anno, si assumerà "
-          },
-          {
-            "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
-          },
-          {
-            "kind": "text",
-            "value": " t 10 anni;"
+            "value": ";"
           }
         ]
       },
@@ -325,10 +328,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 93,
+          "y": 183,
+          "width": 426,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -337,38 +340,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "f271d17ebb15f69f412732ee8efa242cac1f0cbaa722be5abc406190e88c9a1a",
-        "normalizedSha256": "426828b7e7b398b54360bb8dfc48bf22ecafb077b3db02b6c5bd3049a18fcf88"
+        "normalizedSha256": "5eaced37dd1fbbb83471a45f1ccb5498b3e69082be7b4bf57393a29e4f01fc65"
       }
     },
     {
@@ -377,8 +370,32 @@
       "origin": "official",
       "text": {
         "raw": "In mancanza di adeguate indagini statistiche basate su dati specifici relativi al sito in esame, Tmax o T min dovranno essere calcolati\nin base alle espressioni riportate nel seguito, per le varie zone indicate nella Fig. 3.5.1. Tale zonazione non tiene conto di aspetti\nspecifici e locali che, se necessario, dovranno essere definiti singolarmente.",
-        "normalized": "In mancanza di adeguate indagini statistiche basate su dati specifici relativi al sito in esame, Tmax o T min dovranno essere calcolati in base alle espressioni riportate nel seguito, per le varie zone indicate nella Fig. 3.5.1. Tale zonazione non tiene conto di aspetti specifici e locali che, se necessario, dovranno essere definiti singolarmente.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "In mancanza di adeguate indagini statistiche basate su dati specifici relativi al sito in esame, Tmax o Tmin dovranno essere calcolati in base alle espressioni riportate nel seguito, per le varie zone indicate nella Fig. 3.5.1. Tale zonazione non tiene conto di aspetti specifici e locali che, se necessario, dovranno essere definiti singolarmente.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In mancanza di adeguate indagini statistiche basate su dati specifici relativi al sito in esame, "
+          },
+          {
+            "kind": "math",
+            "value": "Tmax",
+            "latex": "T_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "Tmin",
+            "latex": "T_{min}"
+          },
+          {
+            "kind": "text",
+            "value": " dovranno essere calcolati in base alle espressioni riportate nel seguito, per le varie zone indicate nella Fig. 3.5.1. Tale zonazione non tiene conto di aspetti specifici e locali che, se necessario, dovranno essere definiti singolarmente."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -386,10 +403,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 78,
+          "y": 209,
+          "width": 441,
+          "height": 32
         },
         "extraction": {
           "method": "pdf-text",
@@ -398,38 +415,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "1880097babe6c579d9619726d2ef1645ad6a13da73a6ce810649bfa28d92b813",
-        "normalizedSha256": "62e687d8fa429735d0b8dfa90aaf0ee00e9c373eafa98297af3a0779cf06cb63"
+        "normalizedSha256": "68b3aa9935b9183c9646af82906b984108334d876bec04faaf511d55cf25984f"
       }
     },
     {
@@ -470,145 +477,57 @@
       "origin": "official",
       "text": {
         "raw": "Nelle espressioni seguenti, Tmax o T min sono espressi in °C; l’altitudine di riferimento as (espressa in m) è la quota del suolo sul li-\nvello del mare nel sito dove è realizzata la costruzione.",
-        "normalized": "Nelle espressioni seguenti, Tmax o T min sono espressi in °C; l’altitudine di riferimento as (espressa in m) è la quota del suolo sul livello del mare nel sito dove è realizzata la costruzione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 64,
-        "printedPage": "60",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "12f8955c014d961720b2cea31f143e95f9a8affe2ca18ef6c360c1f1eae9afe5",
-        "normalizedSha256": "bb20c7fe10d2cf01198a296e97df4104db6f9ab070da8f2d3740aada628f1e7d"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-008",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Zona I\nValle d’Aosta, Piemonte, Lombardia, Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia Romagna:min s\nT 15 4 a /1000\u0010 \u0010  >3.5.1@\nmax s\nT 42 6 a /1000\u0010  >3.5.2@\nZona II\nLiguria, Toscana, Umbria, Lazio, Sardegna, Campania, Basilicata:min s\nT 8 6 a /1000\u0010 \u0010  >3.5.3@\nmax s\nT 42 2 a / 1000\u0010  >3.5.4@\nZona III\nMarche, Abruzzo, Molise, Puglia:min s\nT 8 7 a /1000\u0010 \u0010  >3.5.5@\nmax s\nT 42 0.3 a /1000\u0010  >3.5.6@\nZona IV\nCalabria, Sicilia: min s\nT 2 9 a /1000\u0010 \u0010  >3.5.7@\nmax s\nT 42 2 a / 1000\u0010  >3.5.8@",
-        "normalized": "Zona I Valle d’Aosta, Piemonte, Lombardia, Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia Romagna:min s T 15 4 a /1000 >3.5.1@ max s T 42 6 a /1000 >3.5.2@ Zona II Liguria, Toscana, Umbria, Lazio, Sardegna, Campania, Basilicata:min s T 8 6 a /1000 >3.5.3@ max s T 42 2 a / 1000 >3.5.4@ Zona III Marche, Abruzzo, Molise, Puglia:min s T 8 7 a /1000 >3.5.5@ max s T 42 0.3 a /1000 >3.5.6@ Zona IV Calabria, Sicilia: min s T 2 9 a /1000 >3.5.7@ max s T 42 2 a / 1000 >3.5.8@",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Nelle espressioni seguenti, Tmax o Tmin sono espressi in °C; l’altitudine di riferimento as (espressa in m) è la quota del suolo sul livello del mare nel sito dove è realizzata la costruzione.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Zona I Valle d’Aosta, Piemonte, Lombardia, Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia Romagna:min s T 15 4 a /1000 "
+            "value": "Nelle espressioni seguenti, "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "Tmax",
+            "latex": "T_{max}"
           },
           {
             "kind": "text",
-            "value": "3.5.1@ max s T 42 6 a /1000 "
+            "value": " o "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "Tmin",
+            "latex": "T_{min}"
           },
           {
             "kind": "text",
-            "value": "3.5.2@ Zona II Liguria, Toscana, Umbria, Lazio, Sardegna, Campania, Basilicata:min s T 8 6 a /1000 "
+            "value": " sono espressi in "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "°C",
+            "latex": "{}^\\circ\\mathrm{C}"
           },
           {
             "kind": "text",
-            "value": "3.5.3@ max s T 42 2 a / 1000 "
+            "value": "; l’altitudine di riferimento "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "as",
+            "latex": "a_s"
           },
           {
             "kind": "text",
-            "value": "3.5.4@ Zona III Marche, Abruzzo, Molise, Puglia:min s T 8 7 a /1000 "
+            "value": " (espressa in "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "m",
+            "latex": "\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": "3.5.5@ max s T 42 0.3 a /1000 "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.5.6@ Zona IV Calabria, Sicilia: min s T 2 9 a /1000 "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.5.7@ max s T 42 2 a / 1000 "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.5.8@"
+            "value": ") è la quota del suolo sul livello del mare nel sito dove è realizzata la costruzione."
           }
         ]
       },
@@ -618,10 +537,10 @@
         "printedPage": "60",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.117,
-          "y": 108.326,
-          "width": 440.569,
-          "height": 572.746
+          "x": 78,
+          "y": 463,
+          "width": 441,
+          "height": 23
         },
         "extraction": {
           "method": "pdf-text",
@@ -630,45 +549,561 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "8624b4bb40655d2e0d6b102a642e95aeaaae6532c7313bbfe700d90dcd6de7fd",
-        "normalizedSha256": "32fcdd648b23c974837e1adf5ad9e6376a9ac97051f81842e87779d3a7f3886c"
+        "rawSha256": "12f8955c014d961720b2cea31f143e95f9a8affe2ca18ef6c360c1f1eae9afe5",
+        "normalizedSha256": "3e473377d9e4e64a36918225080e19ed4897cb1dc009f70441f8334614e3234c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-008",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona I",
+        "normalized": "Zona I",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 487,
+          "width": 60,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "9b0618aeca9491674f7824b8fbeb6d117736c4d1633b0cb7b730c2745ffc34b0",
+        "normalizedSha256": "9b0618aeca9491674f7824b8fbeb6d117736c4d1633b0cb7b730c2745ffc34b0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Valle d’Aosta, Piemonte, Lombardia, Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia Romagna:",
+        "normalized": "Valle d’Aosta, Piemonte, Lombardia, Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia Romagna:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 498,
+          "width": 365,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "05da5c910434d0d74469a570ba1876f4a0e0efcd9b99781b0788b086f831973e",
+        "normalizedSha256": "05da5c910434d0d74469a570ba1876f4a0e0efcd9b99781b0788b086f831973e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-010",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.1",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 507,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "1cf08fb962ef4a560e9c5403fe48a69ebde7f4feacbda6d1ffe57fbef2170255",
+        "normalizedSha256": "4e42c74d1cab6e1c38409cb997caf7dbb68cd045d994fbf85ebc93b50e33c1f7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.2",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 520,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "879299bdf5b1bbc80e6b6415666c87dfec1fe6e61a80a75b3d4e97d0d3f743a3",
+        "normalizedSha256": "9d3d2b84b2fdafe87fcbb72d59a884c202e439055320446ff3ea15cc43defc5d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-012",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona II",
+        "normalized": "Zona II",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 536,
+          "width": 60,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "43db0f6270592867c768daf86a7b9ed5d5b4a5debbc7163c5b71885c93529c8b",
+        "normalizedSha256": "43db0f6270592867c768daf86a7b9ed5d5b4a5debbc7163c5b71885c93529c8b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Liguria, Toscana, Umbria, Lazio, Sardegna, Campania, Basilicata:",
+        "normalized": "Liguria, Toscana, Umbria, Lazio, Sardegna, Campania, Basilicata:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 547,
+          "width": 260,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "d897e8ab030e9de6aa401609567f0fd1469fabb918f994bda7071c501971dacc",
+        "normalizedSha256": "d897e8ab030e9de6aa401609567f0fd1469fabb918f994bda7071c501971dacc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-014",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.3",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 556,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "6108f1b42918faffa2627eca1c50db8e421d79510df09641dad3a07949c5a4d9",
+        "normalizedSha256": "08cb4a6e9d0a87c6d80c814577e8ce65a9e9d4ba5cc3875ef7eb632e353aabd3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-015",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.4",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 569,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "512188d2351e88718bf7823d2eb9eca38c82315c9bcc70a9ffd1c14914bc0fd1",
+        "normalizedSha256": "fa14ddd5b489760302db840d5fb680de66dbd339bfab5d69c124a077cc7232cc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-016",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona III",
+        "normalized": "Zona III",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 585,
+          "width": 60,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "fd214c5c49562d12f17b5f3666952937cd498370ba584035fe07856d046b3c1a",
+        "normalizedSha256": "fd214c5c49562d12f17b5f3666952937cd498370ba584035fe07856d046b3c1a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-017",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Marche, Abruzzo, Molise, Puglia:",
+        "normalized": "Marche, Abruzzo, Molise, Puglia:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 596,
+          "width": 160,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "5a1bc7008fe8a66b5bd57f9bdebd1bd9e095fe90384be99e75db1af5e0737112",
+        "normalizedSha256": "5a1bc7008fe8a66b5bd57f9bdebd1bd9e095fe90384be99e75db1af5e0737112"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-018",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.5",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 605,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "807d7a2b04a682e50aa45e51a89b4fb51a23410601c6bafe4a98839d98edc75f",
+        "normalizedSha256": "1998277c2c6d50faeba126b2775b87a535632584b4fc188777d6bcc517ba2512"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-019",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.6",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 618,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "69ca744111c7cfef99952b518afd2fcd8cd28094b7b56a7ce5044d6b48e56b6a",
+        "normalizedSha256": "2546b0f275244f4969ffbd7e2347511f78767a9d37f0a51a2c0ec03011247259"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-020",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Zona IVCalabria, Sicilia:",
+        "normalized": "Zona IV",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 634,
+          "width": 60,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8253a46606648de7c4877559bafe390ff19e91caed09e65601c8becd7e127901",
+        "normalizedSha256": "3fec7e0db72ca6bb58b5eaf1664a8d84c535d0a88f745cd05e973e99179c0031"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-021",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Calabria, Sicilia:",
+        "normalized": "Calabria, Sicilia:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 645,
+          "width": 90,
+          "height": 11
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "724033827848798e451ad069c7c8661785f3cd89700158ce424712a932fe9870",
+        "normalizedSha256": "724033827848798e451ad069c7c8661785f3cd89700158ce424712a932fe9870"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-022",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.7",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 654,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "1c3fa2e925fcb5c76400b43e8cc3248414143d94a88ca217707d6fb2ab797cb5",
+        "normalizedSha256": "24c7569a399a0cd0e5eec260ff31d8f2106deccae48b294d1c17feb275f28851"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.2#block-editorial-023",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.5.8",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 64,
+        "printedPage": "60",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 667,
+          "width": 195,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "396a862827f799cc42b956f797e13922bbb8948b286571f0110f7998faedf3ea",
+        "normalizedSha256": "0e37529b034ce6be936d4bde5ffa82e1550c396b579e34c3001b722f211c2ad4"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.1",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.2",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.3",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.4",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.5",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.6",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.7",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.5.8"
+    ],
     "tableIds": [],
     "figureIds": [
       "urn:structural-codes:it:asset:figure:ntc2018:3.5.1"

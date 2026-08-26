@@ -94,9 +94,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "I valori dello spostamento orizzontale dg e della velocità orizzontale vg massimi del terreno sono dati dalle seguenti espressioni:",
+        "raw": "I valori dello spostamento orizzontale dg e della velocità orizzontale vg massimi del terreno sono dati dalle seguenti espressioni:TTSa025,0d ",
         "normalized": "I valori dello spostamento orizzontale dg e della velocità orizzontale vg massimi del terreno sono dati dalle seguenti espressioni:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -128,18 +128,39 @@
         "printedPage": "50",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.598,
-          "y": 191.858,
-          "width": 427.021,
-          "height": 53.532
+          "x": 77,
+          "y": 189,
+          "width": 440,
+          "height": 17
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "57afe4033f417887566ee81599699b6af7cc8e77e432b8d25b893fba8ce8f1f4",
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1d374f38c768af40bdcd42016fffac12f5a9bc09c8b751db4680e4e75295c206",
         "normalizedSha256": "57afe4033f417887566ee81599699b6af7cc8e77e432b8d25b893fba8ce8f1f4"
       }
     },
@@ -154,25 +175,25 @@
         "printedPage": "50",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.598,
-          "y": 191.858,
-          "width": 427.021,
-          "height": 53.532
+          "x": 135,
+          "y": 207,
+          "width": 260,
+          "height": 42
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Formula trascritta in LaTeX dal documento ufficiale e collocata nella posizione originaria; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "a43d10f5d858724097899adb88fdef41667df2efc8d018417cc9c379b5db401c",
-        "normalizedSha256": "a43d10f5d858724097899adb88fdef41667df2efc8d018417cc9c379b5db401c"
+        "rawSha256": "44a27acf4ca020fc47e2782d14cd5d781b18fa56c1ae68856a39dd352527636d",
+        "normalizedSha256": "06f2cf3bd8f0ae74aaae4d3cd09aac51c32f61cac7f0381f66d05aacfafdf445"
       }
     },
     {
@@ -180,9 +201,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove ag \n, S, T C, T D assumono i valori già utilizzati al § 3.2.3.2.1.",
-        "normalized": "dove ag , S, T C, T D assumono i valori già utilizzati al § 3.2.3.2.1.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "g CD 3.2.3.4 S ( )",
+        "normalized": "dove ag, S, TC, TD assumono i valori già utilizzati al § 3.2.3.2.1.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -195,7 +216,34 @@
           },
           {
             "kind": "text",
-            "value": " , S, T C, T D assumono i valori già utilizzati al § 3.2.3.2.1."
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "S",
+            "latex": "S"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "TC",
+            "latex": "T_C"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "TD",
+            "latex": "T_D"
+          },
+          {
+            "kind": "text",
+            "value": " assumono i valori già utilizzati al § 3.2.3.2.1."
           }
         ]
       },
@@ -205,10 +253,10 @@
         "printedPage": "50",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.598,
-          "y": 191.858,
-          "width": 427.021,
-          "height": 53.532
+          "x": 77,
+          "y": 244,
+          "width": 355,
+          "height": 15
         },
         "extraction": {
           "method": "pdf-text",
@@ -217,38 +265,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "e4b083993d2abaa56d8405eb40cbd8e0fdc334e5a575f19cab2ce7024e19ff0c",
-        "normalizedSha256": "625239646eab5d3421fb4d37bf7d7c8cea8024152f255ce0866c96b2ea4dd54b"
+        "rawSha256": "4da355c2e923b538de6a255ba9210224117731df7392d31e5c780a532f65ff02",
+        "normalizedSha256": "5cd62154db7c8316616f2ad019d3aef2957ef4b095f4b82a3024fc420614cc48"
       }
     }
   ],

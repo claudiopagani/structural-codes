@@ -66,7 +66,22 @@
       "text": {
         "raw": "Lo spettro di risposta elastico in accelerazione della componente verticale del moto sismico, Sve, è definito dalle espressioni:",
         "normalized": "Lo spettro di risposta elastico in accelerazione della componente verticale del moto sismico, Sve, è definito dalle espressioni:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Lo spettro di risposta elastico in accelerazione della componente verticale del moto sismico, "
+          },
+          {
+            "kind": "math",
+            "value": "Sve",
+            "latex": "S_{ve}"
+          },
+          {
+            "kind": "text",
+            "value": ", è definito dalle espressioni:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -74,10 +89,10 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.23,
-          "y": 305.439,
-          "width": 436.167,
-          "height": 276.355
+          "x": 77,
+          "y": 303,
+          "width": 440,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
@@ -91,124 +106,83 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.8",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 53,
+        "printedPage": "49",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 317,
+          "width": 300,
+          "height": 96
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "25bc194e1bf387f811876f0a4a9319a629d8ef9c3181ac6f5c05d2bcac0fdd8f",
+        "normalizedSha256": "fba89126980974be51056dc99f1c0fbf353fc82155ba57e64c28594cc47fd64a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-003",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "0 d T < TB ve g v\nB o B\nT 1 T\nS (T) a S F 1\nT F T\nª º§ ·\n  K   \u000e \u0010« »¨ ¸\nK « »© ¹¬ ¼ >3.2.8@\nT B d T < TC ve g v\nS (T) a S F  K \nT C d T < TD C\nve g v\nT\nS (T) a S F T\n§ ·\n  K   ¨ ¸\n© ¹\nT D d T C D\nve g v 2\nT T\nS (T) a S F T§ ·\n  K   ¨ ¸\n© ¹\nnelle quali:",
-        "normalized": "0 d T < TB ve g v B o B T 1 T S (T) a S F 1 T F T ª º§ · K « »¨ ¸ K « »© ¹¬ ¼ >3.2.8@ T Bd T < TC ve g v S (T) a S F K T Cd T < TD C ve g v T S (T) a S F T § · K ¨ ¸ © ¹ T Dd T C D ve g v 2 T T S (T) a S F T§ · K ¨ ¸ © ¹ nelle quali:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "nelle quali:",
+        "normalized": "nelle quali:",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 53,
+        "printedPage": "49",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 411,
+          "width": 55,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "a25ada6005485339ce3c246592d3221932526e8f1c0b9da2cf79c1d2a67d9c44",
+        "normalizedSha256": "a25ada6005485339ce3c246592d3221932526e8f1c0b9da2cf79c1d2a67d9c44"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "T è il periodo proprio di vibrazione (in direzione verticale);",
+        "normalized": "T è il periodo proprio di vibrazione (in direzione verticale);",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
-            "kind": "text",
-            "value": "0 "
-          },
-          {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "T",
+            "latex": "T"
           },
           {
             "kind": "text",
-            "value": " T "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "TB",
-            "latex": "T_B"
-          },
-          {
-            "kind": "text",
-            "value": " ve g v B o B T 1 T S (T) a S F 1 T F T ª º§ "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": " K « »¨ ¸ K « »© ¹¬ ¼ "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.2.8@ T Bd T "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "TC",
-            "latex": "T_C"
-          },
-          {
-            "kind": "text",
-            "value": " ve g v S (T) a S F K T "
-          },
-          {
-            "kind": "math",
-            "value": "Cd",
-            "latex": "C_d"
-          },
-          {
-            "kind": "text",
-            "value": " T "
-          },
-          {
-            "kind": "math",
-            "value": "<",
-            "latex": "<"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "TD",
-            "latex": "T_D"
-          },
-          {
-            "kind": "text",
-            "value": " C ve g v T S (T) a S F T § "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": " K ¨ ¸ © ¹ T Dd T C D ve g v 2 T T S (T) a S F T§ "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": " K ¨ ¸ © ¹ nelle quali:"
+            "value": " è il periodo proprio di vibrazione (in direzione verticale);"
           }
         ]
       },
@@ -218,65 +192,30 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.23,
-          "y": 305.439,
-          "width": 436.167,
-          "height": 276.355
+          "x": 77,
+          "y": 423,
+          "width": 225,
+          "height": 14
         },
         "extraction": {
           "method": "pdf-text",
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "23feaebb6ca2bbd5e659faf809c2a78453f0164976b9fbb4d566d0b79f227f08",
-        "normalizedSha256": "35efbb4384d579771643fe3c192da025e03c86455935f89cebaa126580be9a47"
+        "transformations": [],
+        "rawSha256": "6c014bb79c9004f50c32bedf6d71459f11f375135bd0c68412cd21d413f0d4d0",
+        "normalizedSha256": "6c014bb79c9004f50c32bedf6d71459f11f375135bd0c68412cd21d413f0d4d0"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-003",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "T è il periodo proprio di vibrazione (in direzione verticale);\nFv è il fattore che quantifica l’amplificazione spettrale massima, in termini di accelerazione orizzontale massima del terreno ag su\nsito di riferimento rigido orizzontale, mediante la relazione:0,5\ng\nv o\na\nF 1,35 F g\n§ ·\n  ¨ ¸\n© ¹ >3.2.9@\nI valori di ag \n, Fo \n, S, ΋ sono definiti nel § 3.2.3.2.1 per le componenti orizzontali del moto sismico; i valori di SS \n, T B, T C e TD, salvo\npiù accurate determinazioni, sono riportati nella Tab. 3.2.VI.",
-        "normalized": "T è il periodo proprio di vibrazione (in direzione verticale); Fv è il fattore che quantifica l’amplificazione spettrale massima, in termini di accelerazione orizzontale massima del terreno ag su sito di riferimento rigido orizzontale, mediante la relazione:0,5 g v o a F 1,35 F g § · ¨ ¸ © ¹ >3.2.9@ I valori di ag , Fo , S, η sono definiti nel § 3.2.3.2.1 per le componenti orizzontali del moto sismico; i valori di SS , T B, T C e TD, salvo più accurate determinazioni, sono riportati nella Tab. 3.2.VI.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Fv è il fattore che quantifica l’amplificazione spettrale massima, in termini di accelerazione orizzontale massima del terreno ag su\nsito di riferimento rigido orizzontale, mediante la relazione:0,5",
+        "normalized": "Fv è il fattore che quantifica l’amplificazione spettrale massima, in termini di accelerazione orizzontale massima del terreno ag su sito di riferimento rigido orizzontale, mediante la relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
-          {
-            "kind": "text",
-            "value": "T è il periodo proprio di vibrazione (in direzione verticale); "
-          },
           {
             "kind": "math",
             "value": "Fv",
@@ -293,25 +232,96 @@
           },
           {
             "kind": "text",
-            "value": " su sito di riferimento rigido orizzontale, mediante la relazione:0,5 g v o a F 1,35 F g § "
+            "value": " su sito di riferimento rigido orizzontale, mediante la relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 53,
+        "printedPage": "49",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 77,
+          "y": 435,
+          "width": 440,
+          "height": 27
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "007f1e3db667a22b4f36c3ceb6c5b48834a867ec5a9ee98ef8e1af169f14a5b5",
+        "normalizedSha256": "1863ec5ef293ccf71fd7631be2a9fbf48213e3e3914a4aee9d09ee895809a85f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-006",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.2.9",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 53,
+        "printedPage": "49",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 180,
+          "y": 458,
+          "width": 205,
+          "height": 31
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "7c8e1aa6f113ec386bcb38bb625fbf655055f0abb6061055c980c6737831b773",
+        "normalizedSha256": "8284fea6aa98526bbbcae6d7ab4fc788ca26398c42864ee0e0531f94dc1d2ecb"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I valori di ag , Fo , S, ΋ sono definiti nel § 3.2.3.2.1 per le componenti orizzontali del moto sismico; i valori di SS , T B, T C e TD, salvo\npiù accurate determinazioni, sono riportati nella Tab. 3.2.VI.",
+        "normalized": "I valori di ag, Fo, S, η sono definiti nel § 3.2.3.2.1 per le componenti orizzontali del moto sismico; i valori di SS, TB, TC e TD, salvo più accurate determinazioni, sono riportati nella Tab. 3.2.VI.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
           {
             "kind": "text",
-            "value": " ¨ ¸ © ¹ "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.2.9@ I valori di "
+            "value": "I valori di "
           },
           {
             "kind": "math",
@@ -320,16 +330,25 @@
           },
           {
             "kind": "text",
-            "value": " , "
+            "value": ", "
           },
           {
             "kind": "math",
             "value": "Fo",
-            "latex": "F_0"
+            "latex": "F_o"
           },
           {
             "kind": "text",
-            "value": " , S, "
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "S",
+            "latex": "S"
+          },
+          {
+            "kind": "text",
+            "value": ", "
           },
           {
             "kind": "math",
@@ -347,7 +366,25 @@
           },
           {
             "kind": "text",
-            "value": " , T B, T C e "
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "TB",
+            "latex": "T_B"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "TC",
+            "latex": "T_C"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -366,10 +403,10 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.23,
-          "y": 305.439,
-          "width": 436.167,
-          "height": 276.355
+          "x": 77,
+          "y": 487,
+          "width": 440,
+          "height": 29
         },
         "extraction": {
           "method": "pdf-text",
@@ -378,42 +415,32 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "7f28b26ad5de28b0e3451582f314a35c05853515a31d48b0ad4522a883a6569c",
-        "normalizedSha256": "04057a90f6d75d0929b6b0d8b36a79cf9de4b44933e7da51a7ef43de90771707"
+        "rawSha256": "86deda2abcf5f26e52759700f269bb05145dc584903517373c9d40c22fd0bcec",
+        "normalizedSha256": "cba465fba9ef79bd8f8c8fcad286192c2e3254f3b0bd1bf4eece04839bafa23d"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-008",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:3.2.vi",
@@ -423,35 +450,50 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.23,
-          "y": 305.439,
-          "width": 436.167,
-          "height": 276.355
+          "x": 77,
+          "y": 516,
+          "width": 295,
+          "height": 42
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "pdfplumber-table-extraction",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Tabella ricostruita dalla geometria del PDF e collocata al posto delle righe estratte linearmente; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "8a86c54ca8d6bd4fc48dd21dcaf7e0cfdbdf342828e644ab548535ceee782672",
-        "normalizedSha256": "687f71285804d47bbdadb2b8b1858fbb046509dc2c8a039242666413e9426b9d"
+        "rawSha256": "2ae5f84ad89e09bc53c4d4efad9d5970390305ac0bd4f422df0d5a3f4e0c1e45",
+        "normalizedSha256": "8e8e97ae1ffcc4321491bb0bc08b6f0519c4be59c37a8fb6ea35b16431c75f54"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2.3.2.2#block-editorial-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per tener conto delle condizioni topografiche, in assenza di specifiche analisi si utilizzano i valori del coefficiente topografico S T\nriportati in Tab. 3.2.V.",
-        "normalized": "Per tener conto delle condizioni topografiche, in assenza di specifiche analisi si utilizzano i valori del coefficiente topografico S T riportati in Tab. 3.2.V.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Per tener conto delle condizioni topografiche, in assenza di specifiche analisi si utilizzano i valori del coefficiente topografico ST riportati in Tab. 3.2.V.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per tener conto delle condizioni topografiche, in assenza di specifiche analisi si utilizzano i valori del coefficiente topografico "
+          },
+          {
+            "kind": "math",
+            "value": "ST",
+            "latex": "S_T"
+          },
+          {
+            "kind": "text",
+            "value": " riportati in Tab. 3.2.V."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -459,10 +501,10 @@
         "printedPage": "49",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 79.23,
-          "y": 305.439,
-          "width": 436.167,
-          "height": 276.355
+          "x": 77,
+          "y": 558,
+          "width": 440,
+          "height": 26
         },
         "extraction": {
           "method": "pdf-text",
@@ -471,45 +513,38 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, simboli greci e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "188daa846af45e842ced60ba52d6d457296c1627406d1e6846e978a20189f90e",
-        "normalizedSha256": "a0e589bc3799612ce5b1b458bd7127f4880f4167e46ae54611648ca6bc66cbc4"
+        "normalizedSha256": "735761bc5deb9d62c54e3d3a61dfbf20d4dc204be696cac57b165c99392bf187"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.8",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.2.9"
+    ],
     "tableIds": [
       "urn:structural-codes:it:asset:table:ntc2018:3.2.vi"
     ],

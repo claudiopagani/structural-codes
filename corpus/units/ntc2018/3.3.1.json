@@ -94,30 +94,30 @@
       "origin": "official",
       "text": {
         "raw": "La velocità base di riferimento v b è il valore medio su 10 minuti, a 10 m di altezza sul suolo su un terreno pianeggiante e omoge-\nneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito ad un periodo di ritorno TR = 50 anni.",
-        "normalized": "La velocità base di riferimento v b è il valore medio su 10 minuti, a 10 m di altezza sul suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito ad un periodo di ritorno TR = 50 anni.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La velocità base di riferimento vb è il valore medio su 10 minuti, a 10 m di altezza sul suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito ad un periodo di ritorno TR = 50 anni.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "La velocità base di riferimento v b è il valore medio su 10 minuti, a 10 m di altezza sul suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito ad un periodo di ritorno "
+            "value": "La velocità base di riferimento "
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "vb",
+            "latex": "v_b"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " è il valore medio su 10 minuti, a 10 m di altezza sul suolo su un terreno pianeggiante e omogeneo di categoria di esposizione II (vedi Tab. 3.3.II), riferito ad un periodo di ritorno "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "TR = 50 anni",
+            "latex": "T_R=50\\,\\text{anni}"
           },
           {
             "kind": "text",
-            "value": " 50 anni."
+            "value": "."
           }
         ]
       },
@@ -154,11 +154,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -167,10 +162,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "e3333a3dd51058996b1a5fb92bca5f48106b498ff62041d620f10befdb6e8794",
-        "normalizedSha256": "ac1c2a75bd67bef0ad4c688c335df99bff70829b6e4776ef1b9fa560694cfbba"
+        "normalizedSha256": "92404393069f056c4f0941f092ad5e6c4d4ad59743d08d9c7d3b414a140feaf3"
       }
     },
     {
@@ -180,7 +180,7 @@
       "text": {
         "raw": "In mancanza di specifiche ed adeguate indagini statistiche, vb è data dall’espressione:",
         "normalized": "In mancanza di specifiche ed adeguate indagini statistiche, vb è data dall’espressione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -213,7 +213,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "c6f38c0865403062999d7cd505793d47949c026a799e1a07775421a1bebef046",
         "normalizedSha256": "c6f38c0865403062999d7cd505793d47949c026a799e1a07775421a1bebef046"
       }
@@ -257,11 +263,16 @@
       "text": {
         "raw": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la co-\nstruzione (Fig. 3.3.1);\nc a è il coefficiente di altitudine fornito dalla relazione:a s 0\ns\na s 0 s\n0\nc 1 per a a\na\nc 1 k 1 per a a 1500 m\na d\n§ ·\n\u000e \u0010 \u001f d¨ ¸\n© ¹ [3.3.1.b]",
         "normalized": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); ca è il coefficiente di altitudine fornito dalla relazione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
+            "kind": "math",
+            "value": "Vb,0",
+            "latex": "V_{b,0}"
+          },
+          {
             "kind": "text",
-            "value": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "
+            "value": " è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "
           },
           {
             "kind": "math",
@@ -307,11 +318,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -320,6 +326,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "5ba88430ff9052772012ee82b2b7dd23ae92159053b14ea791480ed437beff41",
@@ -394,8 +405,37 @@
       "origin": "official",
       "text": {
         "raw": "a 0 \n, ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);\nas è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
-        "normalized": "a 0 , ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); as è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "a0, ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); as è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "a0",
+            "latex": "a_0"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "ks",
+            "latex": "k_s"
+          },
+          {
+            "kind": "text",
+            "value": " sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "
+          },
+          {
+            "kind": "math",
+            "value": "as",
+            "latex": "a_s"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altitudine sul livello del mare del sito ove sorge la costruzione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -430,11 +470,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -443,10 +478,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "175c2e403d41bc232f94e59283df016c5faf463c166676019f0a50a2ac784207",
-        "normalizedSha256": "73a4a21bf12bb81b00cb13842780b7e937d02d0560dfbcd0b35f5fe7600c0044"
+        "normalizedSha256": "ad3519c3ccba79ea7faf9faf659c31a401cddcda395c0483d18814e2ba6d0f5e"
       }
     },
     {

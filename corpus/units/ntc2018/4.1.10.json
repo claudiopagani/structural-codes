@@ -156,22 +156,7 @@
       "text": {
         "raw": "Rientrano nel campo di applicazione delle presenti norme i componenti prodotti in stabilimenti permanenti o in impianti tempo-\nranei allestiti per uno specifico cantiere, oppure realizzati a piè d’opera.",
         "normalized": "Rientrano nel campo di applicazione delle presenti norme i componenti prodotti in stabilimenti permanenti o in impianti temporanei allestiti per uno specifico cantiere, oppure realizzati a piè d’opera.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Rientrano nel campo di applicazione delle presenti norme i componenti prodotti in stabilimenti permanenti o in impianti temporanei allestiti per uno specifico cantiere, oppure realizzati a piè "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’opera."
-          }
-        ]
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -206,11 +191,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -219,6 +199,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "cbdaea4b38cfe1bf2797eb5e8ebd5c9b3e02e842a4586412a0e4c77adc44f2dd",

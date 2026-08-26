@@ -95,7 +95,7 @@
       "text": {
         "raw": "Il campo di temperatura sulla sezione di un elemento strutturale monodimensionale con asse longitudinale x può essere in\ngenerale descritto mediante:",
         "normalized": "Il campo di temperatura sulla sezione di un elemento strutturale monodimensionale con asse longitudinale x può essere in generale descritto mediante:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -145,11 +145,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,6 +153,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "a970bc37ef25589fc138c3cb746e340efbe0a13af4cb51a1c25d2b2962269032",
@@ -170,8 +170,8 @@
       "origin": "official",
       "text": {
         "raw": "a) la componente uniforme ǊT u = T ƺ T 0 pari alla differenza tra la temperatura media attuale T e quella iniziale alla data della co-\nstruzione T0;",
-        "normalized": "a) la componente uniforme ΔT u = T - T 0 pari alla differenza tra la temperatura media attuale T e quella iniziale alla data della costruzione T0;",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "a) la componente uniforme ΔTu = T − T0 pari alla differenza tra la temperatura media attuale T e quella iniziale alla data della costruzione T0;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -179,21 +179,30 @@
           },
           {
             "kind": "math",
-            "value": "ΔT",
-            "latex": "\\Delta_{T}"
+            "value": "ΔTu = T − T0",
+            "latex": "\\Delta T_u=T-T_0"
           },
           {
             "kind": "text",
-            "value": " u "
+            "value": " pari alla differenza tra la temperatura media attuale "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "T",
+            "latex": "T"
           },
           {
             "kind": "text",
-            "value": " T - T 0 pari alla differenza tra la temperatura media attuale T e quella iniziale alla data della costruzione T0;"
+            "value": " e quella iniziale alla data della costruzione "
+          },
+          {
+            "kind": "math",
+            "value": "T0",
+            "latex": "T_0"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -230,11 +239,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -243,10 +247,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "d6d9e27d099d4766988d9c902165f5c116b2274fb4c5092179e3a97fc8c969f4",
-        "normalizedSha256": "23317c5ecb074ec2ffffe717afa49c573bd88693b6bbbac7060cb5fbeaefe8c0"
+        "normalizedSha256": "4facdb5ba5a0e61565cf3e3bcecabb3ade1eb2a041004945a0463630d0692bf5"
       }
     },
     {
@@ -255,30 +264,48 @@
       "origin": "official",
       "text": {
         "raw": "b) le componenti variabili con legge lineare secondo gli assi principali y e z della sezione, ǊT My e ǊT Mz .",
-        "normalized": "b) le componenti variabili con legge lineare secondo gli assi principali y e z della sezione, ΔT My e ΔT Mz.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "b) le componenti variabili con legge lineare secondo gli assi principali y e z della sezione, ΔTMy e ΔTMz.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "b) le componenti variabili con legge lineare secondo gli assi principali y e z della sezione, "
+            "value": "b) le componenti variabili con legge lineare secondo gli assi principali "
           },
           {
             "kind": "math",
-            "value": "ΔT",
-            "latex": "\\Delta_{T}"
+            "value": "y",
+            "latex": "y"
           },
           {
             "kind": "text",
-            "value": " My e "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "ΔT",
-            "latex": "\\Delta_{T}"
+            "value": "z",
+            "latex": "z"
           },
           {
             "kind": "text",
-            "value": " Mz."
+            "value": " della sezione, "
+          },
+          {
+            "kind": "math",
+            "value": "ΔTMy",
+            "latex": "\\Delta T_{My}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "ΔTMz",
+            "latex": "\\Delta T_{Mz}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -315,11 +342,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -328,10 +350,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "609deac401772aa6f11fdb9b97a2c987065011b0c6bda863f2f3d559c3a6aa7c",
-        "normalizedSha256": "9e7e82da7e8a5a2ab399a5f8cb84b62fc3053fdf446d2b0671412cdb02e51938"
+        "normalizedSha256": "b2713b78d3cf6879195e9911cee34c404a107e481d97f86ff83e6aaf99e0ad27"
       }
     },
     {
@@ -401,143 +428,39 @@
       "origin": "official",
       "text": {
         "raw": "La temperatura media attuale T può essere valutata come media tra la temperatura della superficie esterna Tsup,est e quella della\nsuperficie interna dell’elemento considerato, Tsup,int \n.",
-        "normalized": "La temperatura media attuale T può essere valutata come media tra la temperatura della superficie esterna Tsup,est e quella della superficie interna dell’elemento considerato, Tsup,int .",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 65,
-        "printedPage": "61",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 78.033,
-          "y": 106.102,
-          "width": 439.548,
-          "height": 412.568
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "311079af5054025446cd5263e4bc68daa393dc0ec4e5a11a2b41d9851c6445a0",
-        "normalizedSha256": "c73ca7f180e712797102405f7ce2246fcf7b82a56addfc33ebc63d05a642771b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.4#block-editorial-006",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Le temperature della superficie esterna, Tsup,est \n, e quella della superficie interna Tsup,int \n, dell’elemento considerato vengono valuta-\nte a partire dalla temperatura dell’aria esterna, Test \n, e di quella interna, Tint \n, tenendo conto del trasferimento di calore per irrag-\ngiamento e per convezione all’interfaccia aria-costruzione e della eventuale presenza di materiale isolante (vedi Fig. 3.5.2).",
-        "normalized": "Le temperature della superficie esterna, Tsup,est , e quella della superficie interna Tsup,int , dell’elemento considerato vengono valutate a partire dalla temperatura dell’aria esterna, Test , e di quella interna, Tint , tenendo conto del trasferimento di calore per irraggiamento e per convezione all’interfaccia aria-costruzione e della eventuale presenza di materiale isolante (vedi Fig. 3.5.2).",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 65,
-        "printedPage": "61",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 78.033,
-          "y": 106.102,
-          "width": 439.548,
-          "height": 412.568
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "efb6bbd1a78e16e58957f931786dd0c7b9623a8c7ff119d11005721eb51a7b1a",
-        "normalizedSha256": "84f6124182c6b0986e66c3e85b4e021a32f459e3b5acc188cbb0d40f0d5a196e"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.4#block-editorial-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta T0=15 °C.",
-        "normalized": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta T0=15 °C.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La temperatura media attuale T può essere valutata come media tra la temperatura della superficie esterna Tsup,est e quella della superficie interna dell’elemento considerato, Tsup,int.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta T0"
+            "value": "La temperatura media attuale "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "T",
+            "latex": "T"
           },
           {
             "kind": "text",
-            "value": "15 °C."
+            "value": " può essere valutata come media tra la temperatura della superficie esterna "
+          },
+          {
+            "kind": "math",
+            "value": "Tsup,est",
+            "latex": "T_{sup,est}"
+          },
+          {
+            "kind": "text",
+            "value": " e quella della superficie interna dell’elemento considerato, "
+          },
+          {
+            "kind": "math",
+            "value": "Tsup,int",
+            "latex": "T_{sup,int}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -557,7 +480,192 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
+        "rawSha256": "311079af5054025446cd5263e4bc68daa393dc0ec4e5a11a2b41d9851c6445a0",
+        "normalizedSha256": "3f92145762c1e0108fe3567dffcc33c088585adf06919ba792609664e66065b5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.4#block-editorial-006",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le temperature della superficie esterna, Tsup,est \n, e quella della superficie interna Tsup,int \n, dell’elemento considerato vengono valuta-\nte a partire dalla temperatura dell’aria esterna, Test \n, e di quella interna, Tint \n, tenendo conto del trasferimento di calore per irrag-\ngiamento e per convezione all’interfaccia aria-costruzione e della eventuale presenza di materiale isolante (vedi Fig. 3.5.2).",
+        "normalized": "Le temperature della superficie esterna, Tsup,est, e quella della superficie interna Tsup,int, dell’elemento considerato vengono valutate a partire dalla temperatura dell’aria esterna, Test, e di quella interna, Tint, tenendo conto del trasferimento di calore per irraggiamento e per convezione all’interfaccia aria-costruzione e della eventuale presenza di materiale isolante (vedi Fig. 3.5.2).",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le temperature della superficie esterna, "
+          },
+          {
+            "kind": "math",
+            "value": "Tsup,est",
+            "latex": "T_{sup,est}"
+          },
+          {
+            "kind": "text",
+            "value": ", e quella della superficie interna "
+          },
+          {
+            "kind": "math",
+            "value": "Tsup,int",
+            "latex": "T_{sup,int}"
+          },
+          {
+            "kind": "text",
+            "value": ", dell’elemento considerato vengono valutate a partire dalla temperatura dell’aria esterna, "
+          },
+          {
+            "kind": "math",
+            "value": "Test",
+            "latex": "T_{est}"
+          },
+          {
+            "kind": "text",
+            "value": ", e di quella interna, "
+          },
+          {
+            "kind": "math",
+            "value": "Tint",
+            "latex": "T_{int}"
+          },
+          {
+            "kind": "text",
+            "value": ", tenendo conto del trasferimento di calore per irraggiamento e per convezione all’interfaccia aria-costruzione e della eventuale presenza di materiale isolante (vedi Fig. 3.5.2)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 65,
+        "printedPage": "61",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78.033,
+          "y": 106.102,
+          "width": 439.548,
+          "height": 412.568
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
+        "rawSha256": "efb6bbd1a78e16e58957f931786dd0c7b9623a8c7ff119d11005721eb51a7b1a",
+        "normalizedSha256": "45ac860385af773158d4118eba4e61362d7675abf1ba123e58f73751fea4a2fa"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.5.4#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta T0=15 °C.",
+        "normalized": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta T0=15 °C.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In mancanza di determinazioni più precise, la temperatura iniziale può essere assunta "
+          },
+          {
+            "kind": "math",
+            "value": "T0=15 °C",
+            "latex": "T_0=15\\,{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 65,
+        "printedPage": "61",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78.033,
+          "y": 106.102,
+          "width": 439.548,
+          "height": 412.568
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "5ff0c0fb0e9ae77f01f35eaaf88caadd7c96e2d8a6da894f4f590e83dccd2319",
         "normalizedSha256": "5ff0c0fb0e9ae77f01f35eaaf88caadd7c96e2d8a6da894f4f590e83dccd2319"
       }

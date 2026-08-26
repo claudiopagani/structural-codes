@@ -159,7 +159,22 @@
       "text": {
         "raw": "essendo fckj la resistenza caratteristica del calcestruzzo all’atto del tiro.",
         "normalized": "essendo fckj la resistenza caratteristica del calcestruzzo all’atto del tiro.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "fckj",
+            "latex": "f_{ckj}"
+          },
+          {
+            "kind": "text",
+            "value": " la resistenza caratteristica del calcestruzzo all’atto del tiro."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -177,7 +192,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "981ad77462d58aede0dfe233854407ec492449ac0a510a823b9f2c017ed07bd9",
         "normalizedSha256": "981ad77462d58aede0dfe233854407ec492449ac0a510a823b9f2c017ed07bd9"
       }
@@ -189,7 +210,22 @@
       "text": {
         "raw": "Per elementi con armatura pre-tesa, la tensione del calcestruzzo al momento del trasferimento della pretensione può essere au-\nmentata sino al valore 0,70 fckj.",
         "normalized": "Per elementi con armatura pre-tesa, la tensione del calcestruzzo al momento del trasferimento della pretensione può essere aumentata sino al valore 0,70 fckj.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per elementi con armatura pre-tesa, la tensione del calcestruzzo al momento del trasferimento della pretensione può essere aumentata sino al valore "
+          },
+          {
+            "kind": "math",
+            "value": "0,70 fckj",
+            "latex": "0{,}70f_{ckj}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -224,11 +260,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -237,6 +268,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "f25ac8232903beb8f0b1716d660fe5a978fee6739efca73f7e27c8fcf66becee",
@@ -250,7 +286,7 @@
       "text": {
         "raw": "Nella zona di ancoraggio delle armature di precompressione si possono tollerare compressioni locali Ηc prodotte dagli apparecchi\ndi ancoraggio pari a: Ηc < c fcd [4.1.48]",
         "normalized": "Nella zona di ancoraggio delle armature di precompressione si possono tollerare compressioni locali σc prodotte dagli apparecchi di ancoraggio pari a:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -259,7 +295,7 @@
           {
             "kind": "math",
             "value": "σc",
-            "latex": "\\sigma_{c}"
+            "latex": "\\sigma_c"
           },
           {
             "kind": "text",
@@ -300,11 +336,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -313,6 +344,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "40d3a49bc59b666f4080c54dc1ebcbc5c2042b72051ca13a7f92ba9d68e76309",
@@ -357,8 +393,8 @@
       "origin": "official",
       "text": {
         "raw": "dove\nΗc = ·P P / A 0 è la pressione agente sull’impronta caricata di area A0 \n;\nP è la forza iniziale di tesatura nel cavo (·P =1,2);\nf cd = fckj / ·c è la resistenza cilindrica del calcestruzzo all’atto della precompressione;\nc ǂ 3 è un fattore di sovraresistenza che dipende da:",
-        "normalized": "dove σc = γP P / A 0 è la pressione agente sull’impronta caricata di area A0 ; P è la forza iniziale di tesatura nel cavo (γP =1,2); f cd = fckj / γc è la resistenza cilindrica del calcestruzzo all’atto della precompressione; c ≤ 3 è un fattore di sovraresistenza che dipende da:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove σc = γP P/A0 è la pressione agente sull’impronta caricata di area A0; P è la forza iniziale di tesatura nel cavo (γP = 1,2); fcd = fckj/γc è la resistenza cilindrica del calcestruzzo all’atto della precompressione; c ≤ 3 è un fattore di sovraresistenza che dipende da:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -366,89 +402,44 @@
           },
           {
             "kind": "math",
-            "value": "σc",
-            "latex": "\\sigma_{c}"
+            "value": "σc = γP P/A0",
+            "latex": "\\sigma_c=\\gamma_P P/A_0"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " è la pressione agente sull’impronta caricata di area "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "A0",
+            "latex": "A_0"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": "; "
           },
           {
             "kind": "math",
-            "value": "γP",
-            "latex": "\\gamma_{P}"
+            "value": "P",
+            "latex": "P"
           },
           {
             "kind": "text",
-            "value": " P "
+            "value": " è la forza iniziale di tesatura nel cavo ("
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "γP = 1,2",
+            "latex": "\\gamma_P=1{,}2"
           },
           {
             "kind": "text",
-            "value": " A 0 è la pressione agente sull’impronta caricata di area A0 ; P è la forza iniziale di tesatura nel cavo ("
+            "value": "); "
           },
           {
             "kind": "math",
-            "value": "γP",
-            "latex": "\\gamma_{P}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": "1,2); f "
-          },
-          {
-            "kind": "math",
-            "value": "cd",
-            "latex": "c_d"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " fckj "
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "γc",
-            "latex": "\\gamma_{c}"
+            "value": "fcd = fckj/γc",
+            "latex": "f_{cd}=f_{ckj}/\\gamma_c"
           },
           {
             "kind": "text",
@@ -456,21 +447,12 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "c ≤ 3",
+            "latex": "c\\le3"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 3 è un fattore di sovraresistenza che dipende da:"
+            "value": " è un fattore di sovraresistenza che dipende da:"
           }
         ]
       },
@@ -507,11 +489,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -520,10 +497,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "23fa7c3cd945b639c6db7d0223d898abdfb5919596b57efcf2cb916632c33ff1",
-        "normalizedSha256": "4516efa6608a4fefc25d78df8afe49e4eb3cbf15fa9779fe419372d17b25a22f"
+        "normalizedSha256": "e743170f251ab305c7d786601352cd7aa9624dfd0170a2db1a476828a8bad088"
       }
     },
     {
@@ -532,21 +514,21 @@
       "origin": "official",
       "text": {
         "raw": "il rapporto A0/A 1 tra l’area caricata e quella circostante interessata;",
-        "normalized": "il rapporto A0/A 1 tra l’area caricata e quella circostante interessata;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "il rapporto A0/A1 tra l’area caricata e quella circostante interessata;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "il rapporto A0"
+            "value": "il rapporto "
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "A0/A1",
+            "latex": "A_0/A_1"
           },
           {
             "kind": "text",
-            "value": "A 1 tra l’area caricata e quella circostante interessata;"
+            "value": " tra l’area caricata e quella circostante interessata;"
           }
         ]
       },
@@ -566,9 +548,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "aeead060b06e55d50ec9e21f5df6283410489ebaf0047dc69ffc8b6420faec70",
-        "normalizedSha256": "aeead060b06e55d50ec9e21f5df6283410489ebaf0047dc69ffc8b6420faec70"
+        "normalizedSha256": "0d1752d2ca8b99d923b9c103f0f6006cf6c22322696fbea9c49ff5325b3b3ed1"
       }
     },
     {
@@ -637,8 +625,8 @@
       "origin": "official",
       "text": {
         "raw": "Per i valori di c si può far utile riferimento al §6.7 della norma UNI EN1992-1-1.",
-        "normalized": "Per i valori di c si può far utile riferimento al §6.7 della norma UNI EN1992-1-1.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Per i valori di c si può far utile riferimento al § 6.7 della norma UNI EN 1992-1-1.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -651,7 +639,7 @@
           },
           {
             "kind": "text",
-            "value": " si può far utile riferimento al §6.7 della norma UNI EN1992-1-1."
+            "value": " si può far utile riferimento al § 6.7 della norma UNI EN 1992-1-1."
           }
         ]
       },
@@ -671,9 +659,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "e6445f62caca6f6791c6ea7cd1d3b3f31f71e3da2126371700f71a96e04730ba",
-        "normalizedSha256": "e6445f62caca6f6791c6ea7cd1d3b3f31f71e3da2126371700f71a96e04730ba"
+        "normalizedSha256": "055e7b55e9cad92e52ed82a414060bd11fb5c4f8cf61c023f359ffc36372a48e"
       }
     },
     {

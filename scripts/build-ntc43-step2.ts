@@ -218,14 +218,14 @@ const p127 = { detail4: region(82, 95, 430, 30) };
 
 const formulaAssets = [
     { id: formulaId("4.3.6"), unitId: unitId("4.3.3"), officialNumber: "4.3.6", pdfPage: 123, latex: "f_d=\\frac{f_k}{\\gamma_M}" },
-    { id: formulaId("4.3.7"), unitId: unitId("4.3.4.3.1.1"), officialNumber: "4.3.7", pdfPage: 125, latex: "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\left(1.0-0.04L_e\\right)\\right];0.4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}" },
-    { id: formulaId("4.3.8"), unitId: unitId("4.3.4.3.1.1"), officialNumber: "4.3.8", pdfPage: 125, latex: "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\left(0.75-0.03L_e\\right)\\right];0.4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}" },
-    { id: formulaId("4.3.9"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.9", pdfPage: 125, latex: "P_{Rd,a}=0.8f_{tk}\\left(\\pi d^2/4\\right)/\\gamma_V" },
-    { id: formulaId("4.3.10"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.10", pdfPage: 125, latex: "P_{Rd,c}=0.29\\alpha d^2\\left(f_{ck}E_{cm}\\right)^{0.5}/\\gamma_V" },
-    { id: formulaId("4.3.11.a"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.11 a", pdfPage: 125, latex: "\\alpha=0.2\\left(h_{sc}/d+1\\right)\\quad\\text{per }3\\le h_{sc}/d\\le4" },
-    { id: formulaId("4.3.11.b"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.11 b", pdfPage: 125, latex: "\\alpha=1.0\\quad\\text{per }h_{sc}/d>4" },
-    { id: formulaId("4.3.13"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.13", pdfPage: 126, latex: "k_l=0.6\\,b_0\\left(h_{sc}-h_p\\right)/h_p^2\\le1.0" },
-    { id: formulaId("4.3.14"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.14", pdfPage: 126, latex: "k_t=0.7\\,b_0\\left(h_{sc}-h_p\\right)/h_p^2/\\sqrt{n_r}" },
+    { id: formulaId("4.3.7"), unitId: unitId("4.3.4.3.1.1"), officialNumber: "4.3.7", pdfPage: 125, latex: "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\cdot\\left(1{,}0-0{,}04\\cdot L_e\\right)\\right];0{,}4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}" },
+    { id: formulaId("4.3.8"), unitId: unitId("4.3.4.3.1.1"), officialNumber: "4.3.8", pdfPage: 125, latex: "\\begin{aligned}\\eta&\\ge\\max\\left\\{\\left[1-\\left(\\frac{355}{f_{yk}}\\right)\\cdot\\left(0{,}75-0{,}03\\cdot L_e\\right)\\right];0{,}4\\right\\}&&\\text{per }L_e\\le25\\,\\mathrm{m}\\\\\\eta&\\ge1&&\\text{per }L_e>25\\,\\mathrm{m}\\end{aligned}" },
+    { id: formulaId("4.3.9"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.9", pdfPage: 125, latex: "P_{Rd,a}=0{,}8f_{tk}\\left(\\pi d^2/4\\right)/\\gamma_V" },
+    { id: formulaId("4.3.10"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.10", pdfPage: 125, latex: "P_{Rd,c}=0{,}29\\alpha d^2\\left(f_{ck}E_{cm}\\right)^{0{,}5}/\\gamma_V" },
+    { id: formulaId("4.3.11.a"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.11 a", pdfPage: 125, latex: "\\alpha=0{,}2\\left(h_{sc}/d+1\\right)\\quad\\text{per }3\\le h_{sc}/d\\le4," },
+    { id: formulaId("4.3.11.b"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.11 b", pdfPage: 125, latex: "\\alpha=1{,}0\\quad\\text{per }h_{sc}/d>4." },
+    { id: formulaId("4.3.13"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.13", pdfPage: 126, latex: "k_l=0{,}6\\cdot b_0\\cdot\\left(h_{sc}-h_p\\right)/h_p^2\\le1{,}0" },
+    { id: formulaId("4.3.14"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.14", pdfPage: 126, latex: "k_t=0{,}7\\cdot b_0\\cdot\\left(h_{sc}-h_p\\right)/h_p^2/\\sqrt{n_r}" },
 ];
 
 const tableAsset = {
@@ -238,10 +238,10 @@ const tableAsset = {
         { text: "Lamiera con fori e pioli saldati sul profilo – diametro pioli 19 o 22 mm" },
     ]],
     rows: [
-        [{ text: "Nr=1", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1.0" }, { text: "0,85" }, { text: "0,75" }],
-        [{ text: ">1,0", latex: ">1.0" }, { text: "1,00" }, { text: "0,75" }],
-        [{ text: "Nr=2", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1.0" }, { text: "0,70" }, { text: "0,60" }],
-        [{ text: ">1,0", latex: ">1.0" }, { text: "0,80" }, { text: "0,60" }],
+        [{ text: "Nr=1", latex: "N_r=1", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1{,}0" }, { text: "0,85", latex: "0{,}85" }, { text: "0,75", latex: "0{,}75" }],
+        [{ text: ">1,0", latex: ">1{,}0" }, { text: "1,00", latex: "1{,}00" }, { text: "0,75", latex: "0{,}75" }],
+        [{ text: "Nr=2", latex: "N_r=2", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1{,}0" }, { text: "0,70", latex: "0{,}70" }, { text: "0,60", latex: "0{,}60" }],
+        [{ text: ">1,0", latex: ">1{,}0" }, { text: "0,80", latex: "0{,}80" }, { text: "0,60", latex: "0{,}60" }],
     ],
     notes: ["Tabella trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
 };

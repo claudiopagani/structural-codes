@@ -920,70 +920,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Qualora la domanda in resistenza allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " risulti inferiore a quella allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLD",
-            "latex": "\\mathrm{SLD}"
-          },
-          {
-            "kind": "text",
-            "value": ", si può scegliere di progettare la capacità in resistenza sulla base della domanda allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLD",
-            "latex": "\\mathrm{SLD}"
-          },
-          {
-            "kind": "text",
-            "value": " invece che allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": ". In tal caso il fattore di comportamento allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " deve essere scelto in modo che le ordinate dello spettro di progetto per lo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " siano non inferiori a quelle dello spettro di progetto per lo "
-          },
-          {
-            "kind": "math",
-            "value": "SLD",
-            "latex": "\\mathrm{SLD}"
-          },
-          {
-            "kind": "text",
-            "value": "."
+            "value": "Qualora la domanda in resistenza allo SLV risulti inferiore a quella allo SLD, si può scegliere di progettare la capacità in resistenza sulla base della domanda allo SLD invece che allo SLV. In tal caso il fattore di comportamento allo SLV deve essere scelto in modo che le ordinate dello spettro di progetto per lo SLV siano non inferiori a quelle dello spettro di progetto per lo SLD."
           }
         ]
       },
@@ -1365,7 +1302,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "dove: P è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;"
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "P",
+            "latex": "P"
+          },
+          {
+            "kind": "text",
+            "value": " è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;"
           }
         ]
       },
@@ -1417,13 +1363,13 @@
       "origin": "official",
       "text": {
         "raw": "d \nER è lo spostamento orizzontale medio d’interpiano allo SLV, ottenuto come differenza tra lo spostamento orizzontale\ndell’orizzontamento considerato e lo spostamento orizzontale dell’orizzontamento immediatamente sottostante, entrambi\nvalutati come indicato al § 7.3.3.3;",
-        "normalized": "d_{ER} è lo spostamento orizzontale medio d’interpiano allo SLV, ottenuto come differenza tra lo spostamento orizzontale dell’orizzontamento considerato e lo spostamento orizzontale dell’orizzontamento immediatamente sottostante, entrambi valutati come indicato al § 7.3.3.3;",
+        "normalized": "d_{Er} è lo spostamento orizzontale medio d’interpiano allo SLV, ottenuto come differenza tra lo spostamento orizzontale dell’orizzontamento considerato e lo spostamento orizzontale dell’orizzontamento immediatamente sottostante, entrambi valutati come indicato al § 7.3.3.3;",
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "d_{ER}",
-            "latex": "d_{ER}"
+            "value": "d_{Er}",
+            "latex": "d_{Er}"
           },
           {
             "kind": "text",
@@ -1470,7 +1416,7 @@
           }
         ],
         "rawSha256": "f2a8fb756247ed87997b95fa43c3ac335b53afe591df6ed732a40fb720aab9c2",
-        "normalizedSha256": "62a74d8db0548292c597e5502f9fdb74dd4d7d0d6f33595b5cb84976297a57d1"
+        "normalizedSha256": "538e23e8ca267652852a25be4cef86501c4d5df668373b3b16062794227e1ad2"
       }
     },
     {
@@ -1483,8 +1429,13 @@
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
             "kind": "text",
-            "value": "V è la forza orizzontale totale in corrispondenza dell’orizzontamento in esame, derivante dall’analisi lineare con fattore di comportamento "
+            "value": " è la forza orizzontale totale in corrispondenza dell’orizzontamento in esame, derivante dall’analisi lineare con fattore di comportamento "
           },
           {
             "kind": "math",
@@ -1549,8 +1500,13 @@
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
             "kind": "text",
-            "value": "h è la distanza tra l’orizzontamento in esame e quello immediatamente sottostante."
+            "value": " è la distanza tra l’orizzontamento in esame e quello immediatamente sottostante."
           }
         ]
       },

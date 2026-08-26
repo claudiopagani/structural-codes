@@ -94,8 +94,8 @@
       "origin": "official",
       "text": {
         "raw": "La pressione cinetica di riferimento qr è data dall’espressione:2\nr r\n1\nq v\n2 U >3.3.6@",
-        "normalized": "La pressione cinetica di riferimento qr è data dall'espressione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La pressione cinetica di riferimento qr è data dall’espressione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -108,7 +108,7 @@
           },
           {
             "kind": "text",
-            "value": " è data dall'espressione:"
+            "value": " è data dall’espressione:"
           }
         ]
       },
@@ -145,11 +145,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -158,10 +153,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "7e1c0913eb01db7d28c7d9649670df309ad54a4a0c1fdb62d64e0a2695264395",
-        "normalizedSha256": "c22a68efadd7c3a368099e74363aec3106121d9e43296547b9e39bdf6fe95f64"
+        "normalizedSha256": "87a01a3bbd957d4dd5bfa7717db680dd9cac5732f82d8168db533e6de53ae173"
       }
     },
     {
@@ -202,8 +202,41 @@
       "origin": "official",
       "text": {
         "raw": "dove\nv r è la velocità di riferimento del vento di cui al § 3.3.2;\nU è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
-        "normalized": "dove v r è la velocità di riferimento del vento di cui al § 3.3.2; U è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "dove vr è la velocità di riferimento del vento di cui al § 3.3.2; ρ è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "vr",
+            "latex": "v_r"
+          },
+          {
+            "kind": "text",
+            "value": " è la velocità di riferimento del vento di cui al § 3.3.2; "
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " è la densità dell’aria assunta convenzionalmente costante e pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,25 kg/m³",
+            "latex": "1{,}25\\,\\mathrm{kg/m^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -238,11 +271,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -251,10 +279,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "ad1e8d208a08e34addb4288dc9e23fb13c0be1f49bee09550cda75f36a2f1083",
-        "normalizedSha256": "c9cfeb4b0d484dc1225b5dd28fc5a4c79541b8975ae1d6b55a9763f180763e72"
+        "normalizedSha256": "84fe8a6567cb690cc86d80ed66ce033d70b8ac25091035b0ef7541e6877f4ddc"
       }
     },
     {
@@ -263,12 +296,30 @@
       "origin": "official",
       "text": {
         "raw": "Esprimendo U in kg/m³ e vr in m/s, qr risulta espresso in N/m2.",
-        "normalized": "Esprimendo U in kg/m³ e vr in m/s, qr risulta espresso in N/m2.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Esprimendo ρ in kg/m³ e vr in m/s, qr risulta espresso in N/m².",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Esprimendo U in kg/m³ e "
+            "value": "Esprimendo "
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " in "
+          },
+          {
+            "kind": "math",
+            "value": "kg/m³",
+            "latex": "\\mathrm{kg/m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -277,7 +328,16 @@
           },
           {
             "kind": "text",
-            "value": " in m/s, "
+            "value": " in "
+          },
+          {
+            "kind": "math",
+            "value": "m/s",
+            "latex": "\\mathrm{m/s}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
           },
           {
             "kind": "math",
@@ -286,7 +346,16 @@
           },
           {
             "kind": "text",
-            "value": " risulta espresso in N/m2."
+            "value": " risulta espresso in "
+          },
+          {
+            "kind": "math",
+            "value": "N/m²",
+            "latex": "\\mathrm{N/m^2}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -306,9 +375,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "cf969b4074ce29b852eb716e867be3c800d1919a60859782e56a75e180b72335",
-        "normalizedSha256": "cf969b4074ce29b852eb716e867be3c800d1919a60859782e56a75e180b72335"
+        "normalizedSha256": "465382a31a3fac71c0b6cccc5d12707720b314306e8b7e46fa1646bb6c424fa3"
       }
     }
   ],

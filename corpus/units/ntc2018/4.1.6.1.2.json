@@ -188,8 +188,8 @@
       "origin": "official",
       "text": {
         "raw": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento)\nN Ed è la forza di compressione assiale di progetto\nA c è l’area di calcestruzzo.",
-        "normalized": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento) N Ed è la forza di compressione assiale di progetto A c è l’area di calcestruzzo.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento); NEd è la forza di compressione assiale di progetto; Ac è l’area di calcestruzzo.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -198,21 +198,21 @@
           },
           {
             "kind": "text",
-            "value": " è la resistenza di progetto dell’armatura (riferita allo snervamento) N "
+            "value": " è la resistenza di progetto dell’armatura (riferita allo snervamento); "
           },
           {
             "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
+            "value": "NEd",
+            "latex": "N_{Ed}"
           },
           {
             "kind": "text",
-            "value": " è la forza di compressione assiale di progetto A "
+            "value": " è la forza di compressione assiale di progetto; "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "Ac",
+            "latex": "A_c"
           },
           {
             "kind": "text",
@@ -253,11 +253,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -266,10 +261,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "19f78cab4ef20c4f967a878fca556cb0c1061b7c4b0104766d2d784a67bf880b",
-        "normalizedSha256": "9b9137ae36da2c4e476eeb26312778bdca7be2414f93524646aea40fdd4cb2a3"
+        "normalizedSha256": "0f4ecdfa62f699b3d4d7e0b97605a228c1e787150cb3641f1ecf2dac41ae658b"
       }
     },
     {
@@ -339,8 +339,8 @@
       "origin": "official",
       "text": {
         "raw": "Al di fuori delle zone di sovrapposizione, l’area di armatura non deve superare As,max = 0,04 A c, essendo Ac l’area della sezione\ntrasversale di calcestruzzo.",
-        "normalized": "Al di fuori delle zone di sovrapposizione, l’area di armatura non deve superare As,max = 0,04 A c, essendo Ac l’area della sezione trasversale di calcestruzzo.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Al di fuori delle zone di sovrapposizione, l’area di armatura non deve superare As,max = 0,04 Ac, essendo Ac l’area della sezione trasversale di calcestruzzo.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -348,26 +348,8 @@
           },
           {
             "kind": "math",
-            "value": "As",
-            "latex": "A_s"
-          },
-          {
-            "kind": "text",
-            "value": ",max "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,04 A "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "As,max = 0,04 Ac",
+            "latex": "A_{s,\\max}=0{,}04A_c"
           },
           {
             "kind": "text",
@@ -417,11 +399,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -430,10 +407,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ef9b7962132f852f20c8ab022ae74c85a519e7084c87fb18be7b55824ba55a8e",
-        "normalizedSha256": "be24b60517475d3e4ca603f92af7a1eab162395b08e59016e1b4461a16bbd327"
+        "normalizedSha256": "ed50ec5d6858f221580893d17b83882d7fdacbfbdfa84e7280a8e892b67579da"
       }
     }
   ],

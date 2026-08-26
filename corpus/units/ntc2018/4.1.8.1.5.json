@@ -66,7 +66,7 @@
       "text": {
         "raw": "Per le tensioni in esercizio a perdite avvenute vale quanto stabilito al § 4.1.2.2.5.2 ove si sostituisca fp(0,1)k , fp(1)k o fpyk a fyk .",
         "normalized": "Per le tensioni in esercizio a perdite avvenute vale quanto stabilito al § 4.1.2.2.5.2 ove si sostituisca fp(0,1)k, fp(1)k o fpyk a fyk.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -88,7 +88,16 @@
           },
           {
             "kind": "text",
-            "value": " o fpyk a "
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "fpyk",
+            "latex": "f_{pyk}"
+          },
+          {
+            "kind": "text",
+            "value": " a "
           },
           {
             "kind": "math",
@@ -134,11 +143,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -147,6 +151,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "c70105b787d1ca6901700339335bba41df18bef2437fdf83d7d0cd0fbe1fcc8f",
@@ -252,8 +261,8 @@
       "origin": "official",
       "text": {
         "raw": "ove si sostituisca fp(1)k o fpyk a f p(0,1)k \n, se del caso.",
-        "normalized": "ove si sostituisca fp(1)k o fpyk a f p(0,1)k , se del caso.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "ove si sostituisca fp(1)k o fpyk a fp(0,1)k, se del caso.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -266,92 +275,16 @@
           },
           {
             "kind": "text",
-            "value": " o fpyk a f "
+            "value": " o "
           },
           {
             "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "fpyk",
+            "latex": "f_{pyk}"
           },
           {
             "kind": "text",
-            "value": "(0,1)"
-          },
-          {
-            "kind": "math",
-            "value": "k",
-            "latex": "k"
-          },
-          {
-            "kind": "text",
-            "value": " , se del caso."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 91,
-        "printedPage": "87",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 82.951,
-          "y": 360.138,
-          "width": 399.243,
-          "height": 75.712
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "61c122bad842b5ddc56a8605a27478610a78aa584de925dcdba2e0051f0165d5",
-        "normalizedSha256": "35b8a3be33d545d812e582b7669f458274d98b2ced56f8478c0899869dde1181"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.5#block-editorial-005",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a 0,05 fp(0,1)k \n.",
-        "normalized": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a 0,05 fp(0,1)k .",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a 0,05 "
+            "value": " a "
           },
           {
             "kind": "math",
@@ -360,7 +293,7 @@
           },
           {
             "kind": "text",
-            "value": " ."
+            "value": ", se del caso."
           }
         ]
       },
@@ -397,9 +330,80 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
+            "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "61c122bad842b5ddc56a8605a27478610a78aa584de925dcdba2e0051f0165d5",
+        "normalizedSha256": "7bb6e57f6477e7ce493f73e762ba0038b9b90507b1c16d3fac8fac230e6f7db0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.5#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a 0,05 fp(0,1)k \n.",
+        "normalized": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a 0,05 fp(0,1)k.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In entrambi i casi è ammessa una sovratensione, in misura non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,05 fp(0,1)k",
+            "latex": "0{,}05f_{p(0{,}1)k}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.951,
+          "y": 360.138,
+          "width": 399.243,
+          "height": 75.712
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
             "operation": "normalize-whitespace",
@@ -410,10 +414,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "3a495c655fd9a6db0d5f603ef484eed757fb0fea1c1729cc43a4492eebf5f6e1",
-        "normalizedSha256": "ac15a15eb31f4151e99b1000428a62ba66f375f33c7b1ad9b4bc238805305be4"
+        "normalizedSha256": "2d352ef958dca25c6b78a80ce64ca677e021ab655691bd4671209d70d8bfafbb"
       }
     }
   ],

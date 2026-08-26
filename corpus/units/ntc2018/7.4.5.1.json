@@ -173,7 +173,13 @@
       "text": {
         "raw": "ȭ strutture con pilastri incastrati alla base ed orizzontamenti ad essi incernierati.",
         "normalized": "strutture con pilastri incastrati alla base ed orizzontamenti ad essi incernierati.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "strutture con pilastri incastrati alla base ed orizzontamenti ad essi incernierati."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -217,7 +223,7 @@
       "origin": "official",
       "text": {
         "raw": "I valori massimi di qo per queste ultime categorie sono contenuti nella tabella 7.3.II.",
-        "normalized": "I valori massimi di qo per queste ultime categorie sono contenuti nella tabella 7.3.II.",
+        "normalized": "I valori massimi di q_0 per queste ultime categorie sono contenuti nella tabella 7.3.II.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -226,21 +232,12 @@
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "q_0",
+            "latex": "q_0"
           },
           {
             "kind": "text",
-            "value": "o per "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "ueste ultime categorie sono contenuti nella tabella 7.3.II."
+            "value": " per queste ultime categorie sono contenuti nella tabella 7.3.II."
           }
         ]
       },
@@ -254,9 +251,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "3f59cf4f5b1f68db172e610aca76a49fc6488dca1d7966d7e8cdc67850a3c78a",
-        "normalizedSha256": "3f59cf4f5b1f68db172e610aca76a49fc6488dca1d7966d7e8cdc67850a3c78a"
+        "normalizedSha256": "e0a4cc34dd778c3ce4de94747251f9ab77646df142324b8306e14924439a00ea"
       }
     },
     {
@@ -270,16 +288,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Altre tipologie possono essere utilizzate giustificando i fattori di comportamento adottati e impiegando regole di dettaglio tali da garantire i re"
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uisiti generali di sicurezza di cui alle presenti norme."
+            "value": "Altre tipologie possono essere utilizzate giustificando i fattori di comportamento adottati e impiegando regole di dettaglio tali da garantire i requisiti generali di sicurezza di cui alle presenti norme."
           }
         ]
       },
@@ -325,7 +334,7 @@
       "origin": "official",
       "text": {
         "raw": "Nelle strutture prefabbricate il meccanismo di dissipazione energetica è associato prevalentemente alle rotazioni plastiche nelle\nzone dissipative. In aggiunta, la dissipazione può avvenire attraverso meccanismi plastici a taglio nelle connessioni, purché le\nforze di richiamo non diminuiscano significativamente al susseguirsi dei cicli dell’azione sismica e si evitino fenomeni\nd’instabilità. Nella scelta del fattore di comportamento complessivo q possono essere considerate le capacità di dissipazione per\nmeccanismi a taglio, specialmente nei sistemi a pareti prefabbricate, tenendo conto dei valori di duttilità locali a scorrimento μs.",
-        "normalized": "Nelle strutture prefabbricate il meccanismo di dissipazione energetica è associato prevalentemente alle rotazioni plastiche nelle zone dissipative. In aggiunta, la dissipazione può avvenire attraverso meccanismi plastici a taglio nelle connessioni, purché le forze di richiamo non diminuiscano significativamente al susseguirsi dei cicli dell’azione sismica e si evitino fenomeni d’instabilità. Nella scelta del fattore di comportamento complessivo q possono essere considerate le capacità di dissipazione per meccanismi a taglio, specialmente nei sistemi a pareti prefabbricate, tenendo conto dei valori di duttilità locali a scorrimento μs.",
+        "normalized": "Nelle strutture prefabbricate il meccanismo di dissipazione energetica è associato prevalentemente alle rotazioni plastiche nelle zone dissipative. In aggiunta, la dissipazione può avvenire attraverso meccanismi plastici a taglio nelle connessioni, purché le forze di richiamo non diminuiscano significativamente al susseguirsi dei cicli dell’azione sismica e si evitino fenomeni d’instabilità. Nella scelta del fattore di comportamento complessivo q possono essere considerate le capacità di dissipazione per meccanismi a taglio, specialmente nei sistemi a pareti prefabbricate, tenendo conto dei valori di duttilità locali a scorrimento μ_s.",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
@@ -339,7 +348,16 @@
           },
           {
             "kind": "text",
-            "value": " possono essere considerate le capacità di dissipazione per meccanismi a taglio, specialmente nei sistemi a pareti prefabbricate, tenendo conto dei valori di duttilità locali a scorrimento μs."
+            "value": " possono essere considerate le capacità di dissipazione per meccanismi a taglio, specialmente nei sistemi a pareti prefabbricate, tenendo conto dei valori di duttilità locali a scorrimento "
+          },
+          {
+            "kind": "math",
+            "value": "μ_s",
+            "latex": "\\mu_s"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -376,7 +394,7 @@
           }
         ],
         "rawSha256": "83d35fa912c82af228d770bc6065a67ee8c2441aef403db3df4eaa13ca8e6f65",
-        "normalizedSha256": "fbf36baac6f13212bcd1b1eb7090585865192afb213cb9da6b000c81eb75312a"
+        "normalizedSha256": "c28f01ee0ed29bb13a9781faf29ea8792abe424ababa346cc5373b207d48566f"
       }
     },
     {
@@ -386,7 +404,13 @@
       "text": {
         "raw": "Nelle strutture con pilastri incastrati alla base e orizzontamenti collegati ad essi mediante cerniere fisse, la dissipazione di energia\navviene unicamente nelle sezioni dei pilastri allo spiccato dalle fondazioni o dalla struttura scatolare rigida di base di cui al §\n7.2.1. Per assicurare l’efficacia di tale dissipazione, in tali zone è richiesta la verifica di duttilità, indipendentemente dai\nparticolari costruttivi adottati. A tal fine, non è consentito il ricorso alla [7.4.29] di cui al § 7.4.6.2.2.",
         "normalized": "Nelle strutture con pilastri incastrati alla base e orizzontamenti collegati ad essi mediante cerniere fisse, la dissipazione di energia avviene unicamente nelle sezioni dei pilastri allo spiccato dalle fondazioni o dalla struttura scatolare rigida di base di cui al § 7.2.1. Per assicurare l’efficacia di tale dissipazione, in tali zone è richiesta la verifica di duttilità, indipendentemente dai particolari costruttivi adottati. A tal fine, non è consentito il ricorso alla [7.4.29] di cui al § 7.4.6.2.2.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nelle strutture con pilastri incastrati alla base e orizzontamenti collegati ad essi mediante cerniere fisse, la dissipazione di energia avviene unicamente nelle sezioni dei pilastri allo spiccato dalle fondazioni o dalla struttura scatolare rigida di base di cui al § 7.2.1. Per assicurare l’efficacia di tale dissipazione, in tali zone è richiesta la verifica di duttilità, indipendentemente dai particolari costruttivi adottati. A tal fine, non è consentito il ricorso alla [7.4.29] di cui al § 7.4.6.2.2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

@@ -164,38 +164,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2#block-editorial-003",
-      "kind": "table-ref",
-      "origin": "official",
-      "assetId": "urn:structural-codes:it:asset:table:ntc2018:5.2.vii",
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 183,
-        "printedPage": "179",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73,
-          "y": 75,
-          "width": 455,
-          "height": 680
-        },
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "ntc5-editorial-profile-0.1.0"
-        },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
-          }
-        ],
-        "rawSha256": "c5faedd2680396ae3546e93a098a54e5eba3ac4fd8d6d806fe5dc82dbc788868",
-        "normalizedSha256": "c5faedd2680396ae3546e93a098a54e5eba3ac4fd8d6d806fe5dc82dbc788868"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2#block-editorial-004",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -231,6 +199,38 @@
       }
     },
     {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2#block-editorial-004",
+      "kind": "table-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:table:ntc2018:5.2.vii",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 183,
+        "printedPage": "179",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc5-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+          }
+        ],
+        "rawSha256": "c5faedd2680396ae3546e93a098a54e5eba3ac4fd8d6d806fe5dc82dbc788868",
+        "normalizedSha256": "c5faedd2680396ae3546e93a098a54e5eba3ac4fd8d6d806fe5dc82dbc788868"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2#block-editorial-005",
       "kind": "paragraph",
       "origin": "official",
@@ -241,7 +241,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per la valutazione degli effetti dell’interazione si usano gli stessi coefficienti Ψ adottati per le azioni che provocano dette interazioni e cioè: temperatura, carichi verticali da traffico ferroviario, frenatura."
+            "value": "Per la valutazione degli effetti dell’interazione si usano gli stessi coefficienti "
+          },
+          {
+            "kind": "math",
+            "value": "Ψ",
+            "latex": "\\Psi"
+          },
+          {
+            "kind": "text",
+            "value": " adottati per le azioni che provocano dette interazioni e cioè: temperatura, carichi verticali da traffico ferroviario, frenatura."
           }
         ]
       },
@@ -277,25 +286,34 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In ogni caso le azioni aerodinamiche devono essere cumulate con l’azione del vento. L’azione risultante dovrà essere maggiore di un valore minimo, funzione della velocità della linea e comunque di 1,5 kN/m² sia nella verifica agli SLE (combinazione caratteristica) sia nella verifica agli SLU con "
+            "value": "In ogni caso le azioni aerodinamiche devono essere cumulate con l’azione del vento. L’azione risultante dovrà essere maggiore di un valore minimo, funzione della velocità della linea e comunque di "
           },
           {
             "kind": "math",
-            "value": "γQ",
-            "latex": "\\gamma_Q"
+            "value": "1,5 kN/m²",
+            "latex": "1{,}5\\ \\mathrm{kN/m^2}"
           },
           {
             "kind": "text",
-            "value": "=1,00 e "
+            "value": " sia nella verifica agli SLE (combinazione caratteristica) sia nella verifica agli SLU con "
           },
           {
             "kind": "math",
-            "value": "γQ",
-            "latex": "\\gamma_Q"
+            "value": "γQ=1,00",
+            "latex": "\\gamma_Q=1{,}00"
           },
           {
             "kind": "text",
-            "value": "i=1,00."
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "γQi=1,00",
+            "latex": "\\gamma_{Qi}=1{,}00"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },

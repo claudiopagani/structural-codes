@@ -19,35 +19,35 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.2.3",
       "officialNumber": "7.2.1",
       "pdfPage": 216,
-      "latex": "F_a=\\frac{S_a W_a}{q_a}"
+      "latex": "F_a=\\frac{S_a\\cdot W_a}{q_a}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.2.5-axial-a",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.2.5",
       "officialNumber": null,
       "pdfPage": 218,
-      "latex": "\\pm 0{,}2\\,N_{sd}\\,a_{max}/g"
+      "latex": "\\pm 0{,}2\\,N_{Sd}\\,a_{max}/g"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.2.5-axial-b",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.2.5",
       "officialNumber": null,
       "pdfPage": 218,
-      "latex": "\\pm 0{,}3\\,N_{sd}\\,a_{max}/g"
+      "latex": "\\pm 0{,}3\\,N_{Sd}\\,a_{max}/g"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.2.5-axial-c",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.2.5",
       "officialNumber": null,
       "pdfPage": 218,
-      "latex": "\\pm 0{,}4\\,N_{sd}\\,a_{max}/g"
+      "latex": "\\pm 0{,}4\\,N_{Sd}\\,a_{max}/g"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:7.2.5-axial-d",
       "unitId": "urn:structural-codes:it:unit:ntc2018:7.2.5",
       "officialNumber": null,
       "pdfPage": 218,
-      "latex": "\\pm 0{,}6\\,N_{sd}\\,a_{max}/g"
+      "latex": "\\pm 0{,}6\\,N_{Sd}\\,a_{max}/g"
     }
   ],
   "tables": [
@@ -213,18 +213,16 @@
         ],
         [
           {
-            "text": "Acciaio"
+            "text": "Acciaio",
+            "rowSpan": 2
           },
           {
             "text": "Si impiega il fattore di sovraresistenza γ_ov definito al § 7.5.1",
-            "latex": "\\gamma_{ov}",
+            "latex": "\\text{Si impiega il fattore di sovraresistenza }\\gamma_{ov}\\text{ definito al }\\S\\,7.5.1",
             "colSpan": 4
           }
         ],
         [
-          {
-            "text": ""
-          },
           {
             "text": "Colonne (§ 7.5.4.2)"
           },
@@ -240,18 +238,16 @@
         ],
         [
           {
-            "text": "Composta acciaio-calcestruzzo"
+            "text": "Composta acciaio-calcestruzzo",
+            "rowSpan": 2
           },
           {
             "text": "Si impiega il fattore di sovraresistenza γ_ov definito al § 7.5.1",
-            "latex": "\\gamma_{ov}",
+            "latex": "\\text{Si impiega il fattore di sovraresistenza }\\gamma_{ov}\\text{ definito al }\\S\\,7.5.1",
             "colSpan": 4
           }
         ],
         [
-          {
-            "text": ""
-          },
           {
             "text": "Colonne (§ 7.6.6.2)"
           },
@@ -293,10 +289,8 @@
             "text": "Taglio"
           },
           {
-            "text": "1,50"
-          },
-          {
-            "text": "-"
+            "text": "1,50",
+            "colSpan": 2
           }
         ],
         [
@@ -364,10 +358,12 @@
             "text": "SLO"
           },
           {
-            "text": "q = 1,0\n§ 3.2.3.4"
+            "text": "q = 1.0\n§ 3.2.3.4",
+            "latex": "\\begin{gathered}q=1.0\\\\\\S\\,3.2.3.4\\end{gathered}"
           },
           {
-            "text": "q = 1,0\n§ 3.2.3.4"
+            "text": "q = 1.0\n§ 3.2.3.4",
+            "latex": "\\begin{gathered}q=1.0\\\\\\S\\,3.2.3.4\\end{gathered}"
           },
           {
             "text": "§ 7.3.4.1",
@@ -383,10 +379,12 @@
             "text": "SLD"
           },
           {
-            "text": "q ≤ 1,5\n§ 3.2.3.5"
+            "text": "q ≤ 1,5\n§ 3.2.3.5",
+            "latex": "\\begin{gathered}q\\le1{,}5\\\\\\S\\,3.2.3.5\\end{gathered}"
           },
           {
-            "text": "q ≤ 1,5\n§ 3.2.3.5"
+            "text": "q ≤ 1,5\n§ 3.2.3.5",
+            "latex": "\\begin{gathered}q\\le1{,}5\\\\\\S\\,3.2.3.5\\end{gathered}"
           }
         ],
         [
@@ -398,10 +396,12 @@
             "text": "SLV"
           },
           {
-            "text": "q ≥ 1,5\n§ 3.2.3.5"
+            "text": "q ≥ 1,5\n§ 3.2.3.5",
+            "latex": "\\begin{gathered}q\\ge1{,}5\\\\\\S\\,3.2.3.5\\end{gathered}"
           },
           {
-            "text": "q ≤ 1,5\n§ 3.2.3.5"
+            "text": "q ≤ 1,5\n§ 3.2.3.5",
+            "latex": "\\begin{gathered}q\\le1{,}5\\\\\\S\\,3.2.3.5\\end{gathered}"
           }
         ],
         [

@@ -186,22 +186,7 @@
       "text": {
         "raw": "Sulla base della denominazione normalizzata come definita in § 4.1 per il calcestruzzo di peso normale, vengono ammesse classi\ndi resistenza fino alla classe LC55/60.",
         "normalized": "Sulla base della denominazione normalizzata come definita in § 4.1 per il calcestruzzo di peso normale, vengono ammesse classi di resistenza fino alla classe LC55/60.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Sulla base della denominazione normalizzata come definita in § 4.1 per il calcestruzzo di peso normale, vengono ammesse classi di resistenza fino alla classe LC55"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "60."
-          }
-        ]
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -236,11 +221,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -249,6 +229,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "66d46fe251ca5dc0d365a44610a7fb3f3f6a659e00269899d9f78f3c9f4e5c7b",

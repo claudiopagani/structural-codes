@@ -249,7 +249,7 @@
       "text": {
         "raw": "In via approssimata gli effetti del secondo ordine in pilastri singoli possono essere trascurati se la snellezza Ώ non supera il valore",
         "normalized": "In via approssimata gli effetti del secondo ordine in pilastri singoli possono essere trascurati se la snellezza λ non supera il valore",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -299,11 +299,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -312,6 +307,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "fc5407a059ae27ca0fe833544797f6bd06726094562ba6576626e9ac34e20d8a",
@@ -356,8 +356,8 @@
       "origin": "official",
       "text": {
         "raw": "dove\nΑ = NEd / (A c · fcd) è l’azione assiale adimensionalizzata.",
-        "normalized": "dove ν = NEd / (A c · fcd) è l’azione assiale adimensionalizzata.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "dove ν = NEd/(Ac · fcd) è l’azione assiale adimensionalizzata.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -365,66 +365,12 @@
           },
           {
             "kind": "math",
-            "value": "ν",
-            "latex": "\\nu"
+            "value": "ν = NEd/(Ac · fcd)",
+            "latex": "\\nu=N_{Ed}/(A_c\\cdot f_{cd})"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "NEd",
-            "latex": "N_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": " (A "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "fcd",
-            "latex": "f_{cd}"
-          },
-          {
-            "kind": "text",
-            "value": ") è l’azione assiale adimensionalizzata."
+            "value": " è l’azione assiale adimensionalizzata."
           }
         ]
       },
@@ -461,11 +407,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -474,10 +415,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "4dbdc178396c72b5423d31ca19a0c3b94f26c965b9104e82db32a5260fd1c579",
-        "normalizedSha256": "9c1f1a78c147be95c5bf9d5f9473029f09aae75d2eb5bb76521ff7e62e498e8e"
+        "normalizedSha256": "6b1b4a0043273a099a26b990659cfc8d940d3e4cce999c206b97653832cd2060"
       }
     },
     {
@@ -486,8 +432,8 @@
       "origin": "official",
       "text": {
         "raw": "La snellezza è calcolata come rapporto tra la lunghezza libera di inflessione, l0, ed il raggio d’inerzia, i, della sezione di calce-\nstruzzo non fessurato: Ώ= l0 / i [4.1.42]",
-        "normalized": "La snellezza è calcolata come rapporto tra la lunghezza libera di inflessione, l0, ed il raggio d’inerzia, i, della sezione di calce- La snellezza è calcolata come rapporto tra la lunghezza libera di inflessione, l₀, ed il raggio d’inerzia, i, della sezione di calcestruzzo non fessurato:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "La snellezza è calcolata come rapporto tra la lunghezza libera di inflessione, l0, ed il raggio d’inerzia, i, della sezione di calcestruzzo non fessurato:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -500,25 +446,16 @@
           },
           {
             "kind": "text",
-            "value": ", ed il raggio "
+            "value": ", ed il raggio d’inerzia, "
           },
           {
             "kind": "math",
-            "value": "d",
-            "latex": "d"
+            "value": "i",
+            "latex": "i"
           },
           {
             "kind": "text",
-            "value": "’inerzia, i, della sezione di calce- La snellezza è calcolata come rapporto tra la lunghezza libera di inflessione, l₀, ed il raggio "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’inerzia, i, della sezione di calcestruzzo non fessurato:"
+            "value": ", della sezione di calcestruzzo non fessurato:"
           }
         ]
       },
@@ -555,11 +492,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -568,10 +500,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d1e603d38796f0f432b0e07bfea9b5cecf246511d1e01a79c455d60d344a55e5",
-        "normalizedSha256": "4c1083582d5cc26455a0af0a5bcd7a0ade70939b43fc4bf2c7a082bf0e491877"
+        "normalizedSha256": "9bc511fd3e57259acd8e79dc87a2bb4eabd358db9d874809e3ce93a30715e2d2"
       }
     },
     {
@@ -613,7 +550,7 @@
       "text": {
         "raw": "dove in particolare l0 va definita in base ai vincoli d’estremità ed all’interazione con eventuali elementi contigui.",
         "normalized": "dove in particolare l0 va definita in base ai vincoli d’estremità ed all’interazione con eventuali elementi contigui.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -626,16 +563,7 @@
           },
           {
             "kind": "text",
-            "value": " va definita in base ai vincoli "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": "’estremità ed all’interazione con eventuali elementi contigui."
+            "value": " va definita in base ai vincoli d’estremità ed all’interazione con eventuali elementi contigui."
           }
         ]
       },
@@ -655,7 +583,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "adf5cc7670ada7a6185a004e5988a0108462ace9ff244e0e516a2e503a00e3bc",
         "normalizedSha256": "adf5cc7670ada7a6185a004e5988a0108462ace9ff244e0e516a2e503a00e3bc"
       }
@@ -667,7 +601,7 @@
       "text": {
         "raw": "Per le pareti il calcolo di l0 deve tenere conto delle condizioni di vincolo sui quattro lati e del rapporto tra le dimensioni principali\nnel piano.",
         "normalized": "Per le pareti il calcolo di l0 deve tenere conto delle condizioni di vincolo sui quattro lati e del rapporto tra le dimensioni principali nel piano.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -717,11 +651,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -730,6 +659,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "99b96bc1bb157373737f44430b5a9ffd7187755285db6a8666ee41e32b52b93e",
@@ -864,17 +798,13 @@
       "origin": "official",
       "text": {
         "raw": "P Ed è il carico verticale totale (su elementi controventati e di controvento);",
-        "normalized": "P Ed è il carico verticale totale (su elementi controventati e di controvento);",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "PEd è il carico verticale totale (su elementi controventati e di controvento);",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "P "
-          },
-          {
             "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
+            "value": "PEd",
+            "latex": "P_{Ed}"
           },
           {
             "kind": "text",
@@ -898,9 +828,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "766a345daf72d2d0c8ec00b6e67b3e7f99e68694bbb83d0e73d94c8085ea20e3",
-        "normalizedSha256": "766a345daf72d2d0c8ec00b6e67b3e7f99e68694bbb83d0e73d94c8085ea20e3"
+        "normalizedSha256": "d8262253c3dea25f03db95e55425e1786540c2c554ac7137fa262f76467ff3d7"
       }
     },
     {
@@ -969,17 +905,13 @@
       "origin": "official",
       "text": {
         "raw": "E cd è il valore di progetto del modulo elastico del calcestruzzo definito in § 4.1.2.3.9.3;",
-        "normalized": "E cd è il valore di progetto del modulo elastico del calcestruzzo definito in § 4.1.2.3.9.3;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Ecd è il valore di progetto del modulo elastico del calcestruzzo definito in § 4.1.2.3.9.3;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "E "
-          },
-          {
             "kind": "math",
-            "value": "cd",
-            "latex": "c_d"
+            "value": "Ecd",
+            "latex": "E_{cd}"
           },
           {
             "kind": "text",
@@ -1003,9 +935,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "3b9734519a693681a0016ba2c72dcf761ce2802915460ad42e1236ee012d0e9f",
-        "normalizedSha256": "3b9734519a693681a0016ba2c72dcf761ce2802915460ad42e1236ee012d0e9f"
+        "normalizedSha256": "846b666a8f46d9c80bcfd297ece003e51cafe13ea23b265995f85bdb8869ac47"
       }
     },
     {
@@ -1014,17 +952,13 @@
       "origin": "official",
       "text": {
         "raw": "I c è il momento di inerzia della sezione di calcestruzzo degli elementi di controvento, ipotizzata interamente reagente.",
-        "normalized": "I c è il momento di inerzia della sezione di calcestruzzo degli elementi di controvento, ipotizzata interamente reagente.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Ic è il momento di inerzia della sezione di calcestruzzo degli elementi di controvento, ipotizzata interamente reagente.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "I "
-          },
-          {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "Ic",
+            "latex": "I_c"
           },
           {
             "kind": "text",
@@ -1048,9 +982,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "bdc54cb4f5188077c4e357f682da58d84c2dc352bb22426e538047c2e3352cea",
-        "normalizedSha256": "bdc54cb4f5188077c4e357f682da58d84c2dc352bb22426e538047c2e3352cea"
+        "normalizedSha256": "3cf834675b5c80eaaf7b579666b69e4a1d5ee0530c7c4412638e380ffbb766d2"
       }
     }
   ],

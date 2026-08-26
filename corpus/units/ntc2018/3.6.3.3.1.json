@@ -64,9 +64,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Le azioni da urto hanno direzione parallela a quella del moto del veicolo al momento dell’impatto. Nelle verifiche si possono\nconsiderare, non simultaneamente, due azioni nelle direzioni parallela (Fd,x ) e ortogonale (Fd,y ) alla direzione di marcia normale,\ncon x,dy,d F50,0F >3.6.7@\nIn assenza di determinazioni più accurate e trascurando la capacità dissipativa della struttura, si possono adottare le forze\nstatiche equivalenti riportate in Tab. 3.6.III.",
-        "normalized": "Le azioni da urto hanno direzione parallela a quella del moto del veicolo al momento dell’impatto. Nelle verifiche si possono considerare, non simultaneamente, due azioni nelle direzioni parallela (Fd,x) e ortogonale (Fd,y) alla direzione di marcia normale, con x,dy,d F50,0F >3.6.7@ In assenza di determinazioni più accurate e trascurando la capacità dissipativa della struttura, si possono adottare le forze statiche equivalenti riportate in Tab. 3.6.III.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Le azioni da urto hanno direzione parallela a quella del moto del veicolo al momento dell’impatto. Nelle verifiche si possono\nconsiderare, non simultaneamente, due azioni nelle direzioni parallela (Fd,x ) e ortogonale (Fd,y ) alla direzione di marcia normale,\ncon",
+        "normalized": "Le azioni da urto hanno direzione parallela a quella del moto del veicolo al momento dell’impatto. Nelle verifiche si possono considerare, non simultaneamente, due azioni nelle direzioni parallela (Fd,x) e ortogonale (Fd,y) alla direzione di marcia normale, con",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
@@ -74,48 +74,21 @@
           },
           {
             "kind": "math",
-            "value": "Fd",
-            "latex": "F_d"
+            "value": "Fd,x",
+            "latex": "F_{d,x}"
           },
           {
             "kind": "text",
-            "value": ",x) e ortogonale ("
+            "value": ") e ortogonale ("
           },
           {
             "kind": "math",
-            "value": "Fd",
-            "latex": "F_d"
+            "value": "Fd,y",
+            "latex": "F_{d,y}"
           },
           {
             "kind": "text",
-            "value": ",y) alla direzione di marcia normale, con "
-          },
-          {
-            "kind": "math",
-            "value": "x",
-            "latex": "x"
-          },
-          {
-            "kind": "text",
-            "value": ",dy,"
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": " F50,0F "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.7@ In assenza di determinazioni più accurate e trascurando la capacità dissipativa della struttura, si possono adottare le forze statiche equivalenti riportate in Tab. 3.6.III."
+            "value": ") alla direzione di marcia normale, con"
           }
         ]
       },
@@ -125,10 +98,10 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 351,
+          "width": 456,
+          "height": 25
         },
         "extraction": {
           "method": "pdf-text",
@@ -137,42 +110,115 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "508b4c9b72ea97a01adf4829e53d883655f62e70f08ab883d24dd82c1be57d79",
-        "normalizedSha256": "cbb535527a865ba3fcf39c5ee23169b8a9b124cc23e55cd3909f1c3d37909832"
+        "rawSha256": "73cd317d44255d382a389233f7bd8616ac0c33eb9b545ce2bfded16c4f3602dd",
+        "normalizedSha256": "390b9f8456c57d8fdde4c6863419e19f4d8eabc6546bf616e455b13f461445dc"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-002",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.7",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 378,
+          "width": 230,
+          "height": 16
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "6431e11398c60b0c83597db7174a54c617facdc19db21382e133f553622a09e7",
+        "normalizedSha256": "69ab34449ca5de67c5e695f05e0ba8ec45a5b0c39516d13706632d9bbaec6080"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-003",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "x,dy,d In assenza di determinazioni più accurate e trascurando la capacità dissipativa della struttura, si possono adottare le forze\nstatiche equivalenti riportate in Tab. 3.6.III.",
+        "normalized": "In assenza di determinazioni più accurate e trascurando la capacità dissipativa della struttura, si possono adottare le forze statiche equivalenti riportate in Tab. 3.6.III.",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 69,
+          "y": 390,
+          "width": 456,
+          "height": 22
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "2055a19e4179b7cd56e364565ab3d6ad0a2a59f2eeea43813e135c454f8bec63",
+        "normalizedSha256": "5bbeb783a56d8dc215793a5556cab6f5b02ae6531db5d40be789d40fb0b94a2c"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-004",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:3.6.iii",
@@ -182,147 +228,25 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 416,
+          "width": 305,
+          "height": 101
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "pdfplumber-table-extraction",
-          "toolVersion": "core-editorial-profile-0.1.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Tabella ricostruita dalla geometria del PDF e collocata al posto delle righe estratte linearmente; richiede revisione puntuale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "28c4cbddfb2390482e8d2bc019fbbe5af8169cd153d16a72edd49fd4d075274e",
-        "normalizedSha256": "28c4cbddfb2390482e8d2bc019fbbe5af8169cd153d16a72edd49fd4d075274e"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-003",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Per urti di automobili su membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 0,5 m al di\nsopra della superficie di marcia. L’area di applicazione della forza è pari a 0,25 m (in altezza) per il valore più piccolo tra 1,50 m e\nla larghezza della membratura (in larghezza).",
-        "normalized": "Per urti di automobili su membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 0,5 m al di sopra della superficie di marcia. L’area di applicazione della forza è pari a 0,25 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza della membratura (in larghezza).",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 70,
-        "printedPage": "66",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "d86b0c3b57700751272a187007651746b653927013f8ea007d613954a8a8d509",
-        "normalizedSha256": "e620e36418d68a9deb4321c99982563d263bc48affb3e331fbaa645818415a80"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-004",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Per urti sulle membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 1,25 m al di sopra della\nsuperficie di marcia. L’area di applicazione della forza è pari a 0,5 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza\ndella membratura (in larghezza).",
-        "normalized": "Per urti sulle membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 1,25 m al di sopra della superficie di marcia. L’area di applicazione della forza è pari a 0,5 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza della membratura (in larghezza).",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 70,
-        "printedPage": "66",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "d281a18190303f2770499fb3cde929285471baa37b59a09f68c53c165331f7ee",
-        "normalizedSha256": "9fd34533dd559a370bba3245d2ee767d4a666f49ba2271e040fa5822ad71863f"
+        "rawSha256": "23882d1bfc742b281de6ee8b17e8ce580303134518950b933672c1b0fb7db17d",
+        "normalizedSha256": "c1b32befc2c710b9e37228406e1b61cc8f5f1b08c27430de57a117034c2f8ee6"
       }
     },
     {
@@ -330,110 +254,49 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso di urti su elementi strutturali orizzontali al di sopra della strada, la forza risultante di collisione F da utilizzare per le ve-\nrifiche dell’equilibrio statico o della resistenza o della capacità di deformazione degli elementi strutturali è data da:",
-        "normalized": "Nel caso di urti su elementi strutturali orizzontali al di sopra della strada, la forza risultante di collisione F da utilizzare per le verifiche dell’equilibrio statico o della resistenza o della capacità di deformazione degli elementi strutturali è data da:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 70,
-        "printedPage": "66",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "a94d3ca3971fc21ab92d3c8fa1ce590d57899a11fe43c850e816c0d2b08fb64f",
-        "normalizedSha256": "615e620ffa9f43d71489cf4cecb07d2171b2eec6f8cfbaf0e9a6294eecf2d3a6"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-006",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "F = r Fd,x >3.6.8@\ndove il fattore r è pari ad 1,0 per altezze del sottovia fino a 5 m, decresce linearmente da 1,0 a 0 per altezze comprese fra 5 e 6 m\ned è pari a 0 per altezze superiori a 6 m. La forza F è applicata sulle superfici verticali (prospetto dell’elemento strutturale).",
-        "normalized": "F = r Fd,x >3.6.8@ dove il fattore r è pari ad 1,0 per altezze del sottovia fino a 5 m, decresce linearmente da 1,0 a 0 per altezze comprese fra 5 e 6 m ed è pari a 0 per altezze superiori a 6 m. La forza F è applicata sulle superfici verticali (prospetto dell’elemento strutturale).",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Per urti di automobili su membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 0,5 m al di\nsopra della superficie di marcia. L’area di applicazione della forza è pari a 0,25 m (in altezza) per il valore più piccolo tra 1,50 m e\nla larghezza della membratura (in larghezza).",
+        "normalized": "Per urti di automobili su membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 0,5 m al di sopra della superficie di marcia. L’area di applicazione della forza è pari a 0,25 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza della membratura (in larghezza).",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "F "
+            "value": "Per urti di automobili su membrature verticali, la forza risultante di collisione "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "F",
+            "latex": "F"
           },
           {
             "kind": "text",
-            "value": " r "
+            "value": " deve essere applicata sulla struttura "
           },
           {
             "kind": "math",
-            "value": "Fd",
-            "latex": "F_d"
+            "value": "0,5 m",
+            "latex": "0{,}5\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": ","
+            "value": " al di sopra della superficie di marcia. L’area di applicazione della forza è pari a "
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "0,25 m",
+            "latex": "0{,}25\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " (in altezza) per il valore più piccolo tra "
           },
           {
             "kind": "math",
-            "value": ">",
-            "latex": ">"
+            "value": "1,50 m",
+            "latex": "1{,}50\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": "3.6.8@ dove il fattore r è pari ad 1,0 per altezze del sottovia fino a 5 m, decresce linearmente da 1,0 a 0 per altezze comprese fra 5 e 6 m ed è pari a 0 per altezze superiori a 6 m. La forza F è applicata sulle superfici verticali (prospetto dell’elemento strutturale)."
+            "value": " e la larghezza della membratura (in larghezza)."
           }
         ]
       },
@@ -443,10 +306,10 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 525,
+          "width": 456,
+          "height": 28
         },
         "extraction": {
           "method": "pdf-text",
@@ -455,48 +318,80 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ab37ab67333322a15a41d5aaf6262cc6f02409499430f729a2fb46850bb1cb4b",
-        "normalizedSha256": "6f6d99f3be74ef2a84dd4925fd7fa80b1ca289b0a6608941a68193fd971bc823"
+        "rawSha256": "d86b0c3b57700751272a187007651746b653927013f8ea007d613954a8a8d509",
+        "normalizedSha256": "e620e36418d68a9deb4321c99982563d263bc48affb3e331fbaa645818415a80"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Sull’intradosso dell’elemento strutturale si devono considerare gli stessi carichi da urto F di cui sopra, con un’inclinazione rispet-\nto all’orizzontale di 10° verso l’alto.",
-        "normalized": "Sull’intradosso dell’elemento strutturale si devono considerare gli stessi carichi da urto F di cui sopra, con un’inclinazione rispetto all’orizzontale di 10° verso l’alto.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Per urti sulle membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 1,25 m al di sopra della\nsuperficie di marcia. L’area di applicazione della forza è pari a 0,5 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza\ndella membratura (in larghezza).",
+        "normalized": "Per urti sulle membrature verticali, la forza risultante di collisione F deve essere applicata sulla struttura 1,25 m al di sopra della superficie di marcia. L’area di applicazione della forza è pari a 0,5 m (in altezza) per il valore più piccolo tra 1,50 m e la larghezza della membratura (in larghezza).",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per urti sulle membrature verticali, la forza risultante di collisione "
+          },
+          {
+            "kind": "math",
+            "value": "F",
+            "latex": "F"
+          },
+          {
+            "kind": "text",
+            "value": " deve essere applicata sulla struttura "
+          },
+          {
+            "kind": "math",
+            "value": "1,25 m",
+            "latex": "1{,}25\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " al di sopra della superficie di marcia. L’area di applicazione della forza è pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,5 m",
+            "latex": "0{,}5\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " (in altezza) per il valore più piccolo tra "
+          },
+          {
+            "kind": "math",
+            "value": "1,50 m",
+            "latex": "1{,}50\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " e la larghezza della membratura (in larghezza)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -504,10 +399,10 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 557,
+          "width": 456,
+          "height": 28
         },
         "extraction": {
           "method": "pdf-text",
@@ -516,33 +411,334 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d281a18190303f2770499fb3cde929285471baa37b59a09f68c53c165331f7ee",
+        "normalizedSha256": "9fd34533dd559a370bba3245d2ee767d4a666f49ba2271e040fa5822ad71863f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-007",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di urti su elementi strutturali orizzontali al di sopra della strada, la forza risultante di collisione F da utilizzare per le ve-\nrifiche dell’equilibrio statico o della resistenza o della capacità di deformazione degli elementi strutturali è data da:",
+        "normalized": "Nel caso di urti su elementi strutturali orizzontali al di sopra della strada, la forza risultante di collisione F da utilizzare per le verifiche dell’equilibrio statico o della resistenza o della capacità di deformazione degli elementi strutturali è data da:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di urti su elementi strutturali orizzontali al di sopra della strada, la forza risultante di collisione "
+          },
+          {
+            "kind": "math",
+            "value": "F",
+            "latex": "F"
+          },
+          {
+            "kind": "text",
+            "value": " da utilizzare per le verifiche dell’equilibrio statico o della resistenza o della capacità di deformazione degli elementi strutturali è data da:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 69,
+          "y": 589,
+          "width": 456,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "a94d3ca3971fc21ab92d3c8fa1ce590d57899a11fe43c850e816c0d2b08fb64f",
+        "normalizedSha256": "615e620ffa9f43d71489cf4cecb07d2171b2eec6f8cfbaf0e9a6294eecf2d3a6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-008",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.8",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 608,
+          "width": 230,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "99c3b26c73d3af289234a192a972852bba54da31c06c1384a974489f50d27417",
+        "normalizedSha256": "4e1707407299a3ac66e811c0378aba3edc7edc207917cf94440da6b10d5801fe"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-009",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "F = r Fd,x >3.6.8@dove il fattore r è pari ad 1,0 per altezze del sottovia fino a 5 m, decresce linearmente da 1,0 a 0 per altezze comprese fra 5 e 6 m\ned è pari a 0 per altezze superiori a 6 m. La forza F è applicata sulle superfici verticali (prospetto dell’elemento strutturale).",
+        "normalized": "dove il fattore r è pari ad 1,0 per altezze del sottovia fino a 5 m, decresce linearmente da 1,0 a 0 per altezze comprese fra 5 e 6 m ed è pari a 0 per altezze superiori a 6 m. La forza F è applicata sulle superfici verticali (prospetto dell’elemento strutturale).",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove il fattore "
+          },
+          {
+            "kind": "math",
+            "value": "r",
+            "latex": "r"
+          },
+          {
+            "kind": "text",
+            "value": " è pari ad "
+          },
+          {
+            "kind": "math",
+            "value": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "kind": "text",
+            "value": " per altezze del sottovia fino a "
+          },
+          {
+            "kind": "math",
+            "value": "5 m",
+            "latex": "5\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ", decresce linearmente da "
+          },
+          {
+            "kind": "math",
+            "value": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "kind": "text",
+            "value": " a "
+          },
+          {
+            "kind": "math",
+            "value": "0",
+            "latex": "0"
+          },
+          {
+            "kind": "text",
+            "value": " per altezze comprese fra "
+          },
+          {
+            "kind": "math",
+            "value": "5 e 6 m",
+            "latex": "5\\,\\mathrm{m}\\text{ e }6\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " ed è pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0",
+            "latex": "0"
+          },
+          {
+            "kind": "text",
+            "value": " per altezze superiori a "
+          },
+          {
+            "kind": "math",
+            "value": "6 m",
+            "latex": "6\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ". La forza "
+          },
+          {
+            "kind": "math",
+            "value": "F",
+            "latex": "F"
+          },
+          {
+            "kind": "text",
+            "value": " è applicata sulle superfici verticali (prospetto dell’elemento strutturale)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 69,
+          "y": 621,
+          "width": 456,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "80ba389c3c5dba42027eb3742bddfae9f814da6d8332cc1457336898fa8c5b08",
+        "normalizedSha256": "490f4938c727794c716a3ef65b09ece42ef60bfda281d8f59effdfeb286f2bbe"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Sull’intradosso dell’elemento strutturale si devono considerare gli stessi carichi da urto F di cui sopra, con un’inclinazione rispet-\nto all’orizzontale di 10° verso l’alto.",
+        "normalized": "Sull’intradosso dell’elemento strutturale si devono considerare gli stessi carichi da urto F di cui sopra, con un’inclinazione rispetto all’orizzontale di 10° verso l’alto.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Sull’intradosso dell’elemento strutturale si devono considerare gli stessi carichi da urto "
+          },
+          {
+            "kind": "math",
+            "value": "F",
+            "latex": "F"
+          },
+          {
+            "kind": "text",
+            "value": " di cui sopra, con un’inclinazione rispetto all’orizzontale di "
+          },
+          {
+            "kind": "math",
+            "value": "10°",
+            "latex": "10^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " verso l’alto."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 69,
+          "y": 643,
+          "width": 456,
+          "height": 18
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -551,13 +747,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-011",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "L’area di applicazione della forza è assunta pari a 0,25 per 0,25 m.",
         "normalized": "L’area di applicazione della forza è assunta pari a 0,25 per 0,25 m.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’area di applicazione della forza è assunta pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,25 per 0,25 m",
+            "latex": "0{,}25\\,\\mathrm{m}\\times0{,}25\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -565,10 +776,10 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 665,
+          "width": 456,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
@@ -581,35 +792,109 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-009",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nelle costruzioni dove sono presenti con regolarità carrelli elevatori si può considerare equivalente agli urti accidentali un’azione\norizzontale statica, applicata all’altezza di 0,75 m dal piano di calpestio, pari a\nF = 5 W >3.6.9@\nessendo W il peso complessivo del carrello elevatore e del massimo carico trasportabile.",
-        "normalized": "Nelle costruzioni dove sono presenti con regolarità carrelli elevatori si può considerare equivalente agli urti accidentali un’azione orizzontale statica, applicata all’altezza di 0,75 m dal piano di calpestio, pari a F = 5 W >3.6.9@ essendo W il peso complessivo del carrello elevatore e del massimo carico trasportabile.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "Nelle costruzioni dove sono presenti con regolarità carrelli elevatori si può considerare equivalente agli urti accidentali un’azione\norizzontale statica, applicata all’altezza di 0,75 m dal piano di calpestio, pari a",
+        "normalized": "Nelle costruzioni dove sono presenti con regolarità carrelli elevatori si può considerare equivalente agli urti accidentali un’azione orizzontale statica, applicata all’altezza di 0,75 m dal piano di calpestio, pari a",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 69,
+          "y": 677,
+          "width": 456,
+          "height": 20
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d0af49735bf084595cc471aeec0fb51f1625d1b1fc14cfa600ed6650b6e91ed5",
+        "normalizedSha256": "a3b90fa2f2de409ecf18e490260427a45e0603f5addafc948939689677754d17"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-013",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:3.6.9",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 70,
+        "printedPage": "66",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 145,
+          "y": 696,
+          "width": 230,
+          "height": 17
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "core-editorial-profile-0.1.1"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Asset trascritto e collocato confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "4ba64ae77a8a1c3ad64350bd018e757259430e8fe0d06562f1badeb7c2d7e80d",
+        "normalizedSha256": "b513a4c0a6c2458d64669566a7db0411840510e3b5746d8744a7c8af75615cf9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.3.3.1#block-editorial-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "F = 5 W >3.6.9@essendo W il peso complessivo del carrello elevatore e del massimo carico trasportabile.",
+        "normalized": "essendo W il peso complessivo del carrello elevatore e del massimo carico trasportabile.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle costruzioni dove sono presenti con regolarità carrelli elevatori si può considerare equivalente agli urti accidentali un’azione orizzontale statica, applicata all’altezza di 0,75 m dal piano di calpestio, pari a F "
+            "value": "essendo "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "W",
+            "latex": "W"
           },
           {
             "kind": "text",
-            "value": " 5 W "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": "3.6.9@ essendo W il peso complessivo del carrello elevatore e del massimo carico trasportabile."
+            "value": " il peso complessivo del carrello elevatore e del massimo carico trasportabile."
           }
         ]
       },
@@ -619,10 +904,10 @@
         "printedPage": "66",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 69.131,
-          "y": 352.847,
-          "width": 456.422,
-          "height": 366.393
+          "x": 69,
+          "y": 709,
+          "width": 456,
+          "height": 13
         },
         "extraction": {
           "method": "pdf-text",
@@ -631,45 +916,39 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "4b61c4f89125155bdc54466f2d237ee6fc10646503f5a10b7fd89bb61060d832",
-        "normalizedSha256": "82b87ab487a29ea3f29fc085f27fd5f06a3db5932995d9289c637523396153de"
+        "rawSha256": "b1686091387c6f1ff788df130d00d4cf54d2b6f43feef6aac29bfac6478ab21f",
+        "normalizedSha256": "a19c92d318324672555897812f36091d1e0f9add3c3f0da0e8d03e3e310f0c7c"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.7",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.8",
+      "urn:structural-codes:it:asset:formula:ntc2018:3.6.9"
+    ],
     "tableIds": [
       "urn:structural-codes:it:asset:table:ntc2018:3.6.iii"
     ],

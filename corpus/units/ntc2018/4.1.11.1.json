@@ -95,21 +95,57 @@
       "origin": "official",
       "text": {
         "raw": "Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una se-\nzione rettangolare di lati a e b soggetta ad una forza normale N Ed con una eccentricità e nella direzione del lato a la verifica di re-\nsistenza allo SLU, con il modello (c) di § 4.1.2.1.2.1, si pone con",
-        "normalized": "Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una sezione rettangolare di lati a e b soggetta ad una forza normale N Ed con una eccentricità e nella direzione del lato a la verifica di resistenza allo SLU, con il modello (c) di § 4.1.2.1.2.1, si pone con",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una sezione rettangolare di lati a e b soggetta ad una forza normale NEd con una eccentricità e nella direzione del lato a la verifica di resistenza allo SLU, con il modello (c) di § 4.1.2.1.2.1, si pone con",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una sezione rettangolare di lati a e b soggetta ad una forza normale N "
+            "value": "Per le verifiche di resistenza delle sezioni sotto sforzi normali si adottano le competenti ipotesi tratte dal § 4.1.2.3.4.1. Per una sezione rettangolare di lati "
           },
           {
             "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
+            "value": "a",
+            "latex": "a"
           },
           {
             "kind": "text",
-            "value": " con una eccentricità e nella direzione del lato a la verifica di resistenza allo SLU, con il modello ("
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " soggetta ad una forza normale "
+          },
+          {
+            "kind": "math",
+            "value": "NEd",
+            "latex": "N_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " con una eccentricità "
+          },
+          {
+            "kind": "math",
+            "value": "e",
+            "latex": "e"
+          },
+          {
+            "kind": "text",
+            "value": " nella direzione del lato "
+          },
+          {
+            "kind": "math",
+            "value": "a",
+            "latex": "a"
+          },
+          {
+            "kind": "text",
+            "value": " la verifica di resistenza allo SLU, con il modello ("
           },
           {
             "kind": "math",
@@ -155,11 +191,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -168,10 +199,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "397debd90ac485a1126b19054eb61391f0c664c62f51431f333424767666ad11",
-        "normalizedSha256": "353b12ee53183a34675d4a7754259d800444ea285f2fc0cfccf70d88e531b62d"
+        "normalizedSha256": "c7cfa033449bd1e5de636a448f34acd12fbc69458eaa348c1b08bce29fe5fdd0"
       }
     },
     {
@@ -212,8 +248,8 @@
       "origin": "official",
       "text": {
         "raw": "con x = a – 2e.",
-        "normalized": "con x = a – 2e.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "con x = a − 2e.",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -221,21 +257,12 @@
           },
           {
             "kind": "math",
-            "value": "x",
-            "latex": "x"
+            "value": "x = a − 2e",
+            "latex": "x=a-2e"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " a – 2e."
+            "value": "."
           }
         ]
       },
@@ -255,9 +282,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "9cf33642eb2facb8853c8a9ae1be15994f697e748c83db0ca09e3aa1927c35b1",
-        "normalizedSha256": "9cf33642eb2facb8853c8a9ae1be15994f697e748c83db0ca09e3aa1927c35b1"
+        "normalizedSha256": "0376560011ee711fc03f56423b93235ab3c92cf5d175ad4e8a110f29a4fd1fe9"
       }
     },
     {
@@ -267,11 +300,29 @@
       "text": {
         "raw": "La verifica di resistenza della stessa sezione rettangolare di lati a e b soggetta anche ad un sforzo di taglio VEd nella direzione del\nlato a si pone con",
         "normalized": "La verifica di resistenza della stessa sezione rettangolare di lati a e b soggetta anche ad un sforzo di taglio VEd nella direzione del lato a si pone con",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La verifica di resistenza della stessa sezione rettangolare di lati a e b soggetta anche ad un sforzo di taglio "
+            "value": "La verifica di resistenza della stessa sezione rettangolare di lati "
+          },
+          {
+            "kind": "math",
+            "value": "a",
+            "latex": "a"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " soggetta anche ad un sforzo di taglio "
           },
           {
             "kind": "math",
@@ -280,7 +331,16 @@
           },
           {
             "kind": "text",
-            "value": " nella direzione del lato a si pone con"
+            "value": " nella direzione del lato "
+          },
+          {
+            "kind": "math",
+            "value": "a",
+            "latex": "a"
+          },
+          {
+            "kind": "text",
+            "value": " si pone con"
           }
         ]
       },
@@ -317,11 +377,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -330,6 +385,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "d9bef2d90beec3f9720d30d71fe354d81fa33b9e4d14e51fb9dc92174fa33321",
@@ -347,25 +407,222 @@
         "printedPage": "91",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 82.948,
-          "y": 98.928,
-          "width": 428.573,
-          "height": 128.502
+          "x": 250,
+          "y": 116,
+          "width": 100,
+          "height": 15
         },
         "extraction": {
           "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "ntc41-editorial-profile-0.2.0"
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "ntc4-step7-editorial-profile-0.1.0"
         },
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Formula trascritta e collocata confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "746051f346af2fa6b23e88e08b15340d58515717ab29d913eee1fdb772fb04f2",
-        "normalizedSha256": "9bef6c5fee1c5db50d9c73a6af0e1806b26108f65ee21913cb5f8aab50b8a5e7"
+        "rawSha256": "d49cdb6e15dab6ce4325647d14d658958163ca1b4d088f262f86a06deb1a60dd",
+        "normalizedSha256": "8670a3dc3fc9d34ba839cf7ea952a851b8a2103c3e84c3d8ac689ea8f69170c7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005a",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "con",
+        "normalized": "con",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 127,
+          "width": 25,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "1143da2bc54c495c4be31d3868785d39ffdfd56df5668f0645d8f14d47647952",
+        "normalizedSha256": "1143da2bc54c495c4be31d3868785d39ffdfd56df5668f0645d8f14d47647952"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005b",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear-strength",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 137,
+          "width": 135,
+          "height": 24
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "ntc4-step7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Formula trascritta e collocata confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "554c6bf43e075e2baf872c5bda05c5cb15b70e5851fdbae7a1adc9c4e144ede4",
+        "normalizedSha256": "2beda539821151da99c9b6e11fe46cb3d3246a1c638ce1124fea69014360d36a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005c",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove",
+        "normalized": "dove",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 157,
+          "width": 28,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005d",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear-parameters",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 167,
+          "width": 105,
+          "height": 34
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "ntc4-step7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Formula trascritta e collocata confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "c4ea6073221ee6b5fe1f61055b2157e47ca7aa941cfd12abd743e2a551fee917",
+        "normalizedSha256": "d6eb856c65059e408af0ad24ddda5c3976f11fcc0d0e7e4d6b9907cbecf3f4fd"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005e",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Vclim= f cd dove",
+        "normalized": "dove",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82,
+          "y": 197,
+          "width": 28,
+          "height": 12
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Separata l’etichetta testuale dal gruppo di formule verificato sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c4f7d9ea0df12f426ffe2c2a2a8f0bddabba3f0a7ae72bf4791a5c46d1a6a303",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.11.1#block-editorial-005f",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:tensile-strength",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 270,
+          "y": 207,
+          "width": 70,
+          "height": 15
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-reviewed-source-transcription",
+          "toolVersion": "ntc4-step7-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Formula trascritta e collocata confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "1223bbaa3d7b5f1e4a04d97334bf4a855da049e4e3464473586021227de9496f",
+        "normalizedSha256": "cb2f8504f075f73cae9174a846f1a1a36edab66540eeab041fb21984f9640918"
       }
     },
     {
@@ -404,7 +661,10 @@
   "assets": {
     "formulaIds": [
       "urn:structural-codes:it:asset:formula:ntc2018:4.1.50:4.1.11.1",
-      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear"
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear-strength",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:shear-parameters",
+      "urn:structural-codes:it:asset:formula:ntc2018:4.1.11.1:tensile-strength"
     ],
     "tableIds": [],
     "figureIds": []

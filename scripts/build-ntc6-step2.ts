@@ -85,18 +85,63 @@ function normalize(source: string): string {
 
 type MathTerm = [string, string];
 const mathTerms: MathTerm[] = [
+    ["5 + n/500", "5+\\frac{n}{500}"],
+    ["A2+M2+R2", "\\mathrm{A2+M2+R2}"], ["A1+M1+R3", "\\mathrm{A1+M1+R3}"],
+    ["A1+M1+R1", "\\mathrm{A1+M1+R1}"], ["A2+M2+R1", "\\mathrm{A2+M2+R1}"],
     ["Rtr,d", "R_{tr,d}"], ["Rtr,k", "R_{tr,k}"], ["Rtr,m", "R_{tr,m}"],
     ["Rad", "R_{ad}"], ["Rak", "R_{ak}"], ["Ra,m", "R_{a,m}"], ["Ra,c", "R_{a,c}"],
     ["γT", "\\gamma_T"], ["γR", "\\gamma_R"], ["γM", "\\gamma_M"],
     ["ξa1", "\\xi_{a1}"], ["ξa2", "\\xi_{a2}"], ["ξa3", "\\xi_{a3}"], ["ξa4", "\\xi_{a4}"],
-    ["Pd", "P_d"], ["Ed", "E_d"], ["Fk", "F_k"], ["Xk", "X_k"],
+    ["Pd", "P_d"], ["Ed", "E_d"], ["Rd", "R_d"], ["Fk", "F_k"], ["Xk", "X_k"],
+    ["R3", "\\mathrm{R3}"], ["R2", "\\mathrm{R2}"], ["R1", "\\mathrm{R1}"], ["M1", "\\mathrm{M1}"], ["n", "n"],
     ["UPL", "\\mathrm{UPL}"], ["HYD", "\\mathrm{HYD}"], ["GEO", "\\mathrm{GEO}"], ["STR", "\\mathrm{STR}"],
     ["d ≥ 80 cm", "d\\ge 80\\,\\mathrm{cm}"], ["d < 80 cm", "d<80\\,\\mathrm{cm}"],
-    ["k < 10^{-6} m/s", "k<10^{-6}\\,\\mathrm{m/s}"], ["φ > π′/2", "\\varphi>\\pi'/2"],
+    ["k < 10^{-6} m/s", "k<10^{-6}\\,\\mathrm{m/s}"], ["δ > φ′/2", "\\delta>\\varphi'/2"],
 ];
 
-function inline(text: string): any[] | undefined {
-    const terms = mathTerms.filter((term) => text.includes(term[0])).sort((a, b) => b[0].length - a[0].length);
+const proseAcronyms = new Set(["UPL", "HYD", "GEO", "STR"]);
+function inline(text: string, page: number): any[] | undefined {
+    const isWord = (character: string | undefined): boolean => character !== undefined && /[\p{L}\p{N}]/u.test(character);
+    const candidates: Array<{ start: number; end: number; value: string; latex: string }> = [];
+    for (const [value, latex] of mathTerms) {
+        if (page < 202 && value === "R2") continue;
+        if (page >= 202 && proseAcronyms.has(value)) continue;
+        let start = text.indexOf(value);
+        while (start >= 0) {
+            const end = start + value.length;
+            const leftOk = !isWord(value[0]) || !isWord(text[start - 1]);
+            const rightOk = !isWord(value.at(-1)) || !isWord(text[end]);
+            if (leftOk && rightOk) candidates.push({ start, end, value, latex });
+            start = text.indexOf(value, start + 1);
+        }
+    }
+    candidates.sort((left, right) => left.start - right.start || (right.end - right.start) - (left.end - left.start));
+    const matches: typeof candidates = [];
+    for (const candidate of candidates) {
+        if (!matches.some((match) => candidate.start < match.end && candidate.end > match.start)) matches.push(candidate);
+    }
+    if (matches.length === 0) return undefined;
+    const segments: any[] = [];
+    let cursor = 0;
+    for (const match of matches) {
+        if (match.start > cursor) segments.push({ kind: "text", value: text.slice(cursor, match.start) });
+        segments.push({ kind: "math", value: match.value, latex: match.latex });
+        cursor = match.end;
+    }
+    if (cursor < text.length) segments.push({ kind: "text", value: text.slice(cursor) });
+    return segments.filter((segment) => segment.value.length > 0);
+}
+
+const auditedThroughPage = 206;
+const legacyExcludedValues = new Set([
+    "5 + n/500", "A2+M2+R2", "A1+M1+R3", "A1+M1+R1", "A2+M2+R1",
+    "Rd", "R3", "R1", "M1", "n", "δ > φ′/2",
+]);
+function inlineLegacy(text: string): any[] | undefined {
+    const terms = mathTerms
+        .filter((term) => !legacyExcludedValues.has(term[0]))
+        .filter((term) => text.includes(term[0]))
+        .sort((a, b) => b[0].length - a[0].length);
     if (terms.length === 0) return undefined;
     const segments: any[] = [];
     let cursor = 0;
@@ -151,17 +196,17 @@ const multi = (kind: "paragraph" | "list-item", refs: Ref[], norm?: string): Blo
 };
 
 const formulas = [
-    { suffix: "6.6.1", unit: "6.6.2", number: "6.6.1", page: 202, latex: "R_{ak}=\\mathrm{Min}\\left\\{\\frac{(R_{a,m})_{\\mathrm{medio}}}{\\xi_{a1}};\\frac{(R_{a,m})_{\\mathrm{min}}}{\\xi_{a2}}\\right\\}" },
-    { suffix: "6.6.2", unit: "6.6.2", number: "6.6.2", page: 202, latex: "R_{ak}=\\mathrm{Min}\\left\\{\\frac{(R_{a,c})_{\\mathrm{medio}}}{\\xi_{a3}};\\frac{(R_{a,c})_{\\mathrm{min}}}{\\xi_{a4}}\\right\\}" },
+    { suffix: "6.6.1", unit: "6.6.2", number: "6.6.1", page: 202, latex: "R_{ak}=\\operatorname{Min}\\left\\{\\frac{(R_{a,m})_{\\mathrm{medio}}}{\\xi_{a1}};\\frac{(R_{a,m})_{\\mathrm{min}}}{\\xi_{a2}}\\right\\}" },
+    { suffix: "6.6.2", unit: "6.6.2", number: "6.6.2", page: 202, latex: "R_{ak}=\\operatorname{Min}\\left\\{\\frac{(R_{a,c})_{\\mathrm{medio}}}{\\xi_{a3}};\\frac{(R_{a,c})_{\\mathrm{min}}}{\\xi_{a4}}\\right\\}" },
 ];
 const cell = (text: string, latex?: string, extra: Record<string, number> = {}): any => ({ text, ...(latex ? { latex } : {}), ...extra });
 const tables = [
-    { id: t("6.4.vi"), unit: "6.4.3.1.2", number: "6.4.VI", page: 197, caption: "Coefficiente parziale γT per le verifiche agli stati limite ultimi di pali soggetti a carichi trasversali", columnCount: 1, headers: [[cell("Coefficiente parziale (R3)")]], rows: [[cell("γT = 1,3", "\\gamma_T=1{,}3")]], notes: ["Trascrizione verificata sul render della pagina PDF 197; review umana cella per cella ancora obbligatoria."] },
-    { id: t("6.5.i"), unit: "6.5.3.1.1", number: "6.5.I", page: 200, caption: "Coefficienti parziali γR per le verifiche agli stati limite ultimi di muri di sostegno", columnCount: 2, headers: [[cell("Verifica"), cell("Coefficiente parziale (R3)")]], rows: [[cell("Capacità portante della fondazione"), cell("γR = 1,4", "\\gamma_R=1{,}4")], [cell("Scorrimento"), cell("γR = 1,1", "\\gamma_R=1{,}1")], [cell("Ribaltamento"), cell("γR = 1,15", "\\gamma_R=1{,}15")], [cell("Resistenza del terreno a valle"), cell("γR = 1,4", "\\gamma_R=1{,}4")]], notes: ["Trascrizione verificata sul render della pagina PDF 200; review umana cella per cella ancora obbligatoria."] },
+    { id: t("6.4.vi"), unit: "6.4.3.1.2", number: "6.4.VI", page: 197, caption: "Coefficiente parziale γT per le verifiche agli stati limite ultimi di pali soggetti a carichi trasversali", columnCount: 1, headers: [[cell("Coefficiente parziale (R3)", "\\text{Coefficiente parziale }(\\mathrm{R3})")]], rows: [[cell("γT = 1,3", "\\gamma_T=1{,}3")]], notes: ["Trascrizione verificata sul render della pagina PDF 197; review umana cella per cella ancora obbligatoria."] },
+    { id: t("6.5.i"), unit: "6.5.3.1.1", number: "6.5.I", page: 200, caption: "Coefficienti parziali γR per le verifiche agli stati limite ultimi di muri di sostegno", columnCount: 2, headers: [[cell("Verifica"), cell("Coefficiente parziale (R3)", "\\text{Coefficiente parziale }(\\mathrm{R3})")]], rows: [[cell("Capacità portante della fondazione"), cell("γR = 1,4", "\\gamma_R=1{,}4")], [cell("Scorrimento"), cell("γR = 1,1", "\\gamma_R=1{,}1")], [cell("Ribaltamento"), cell("γR = 1,15", "\\gamma_R=1{,}15")], [cell("Resistenza del terreno a valle"), cell("γR = 1,4", "\\gamma_R=1{,}4")]], notes: ["Trascrizione verificata sul render della pagina PDF 200; review umana cella per cella ancora obbligatoria."] },
     { id: t("6.6.i"), unit: "6.6.2", number: "6.6.I", page: 202, caption: "Coefficienti parziali per la resistenza degli ancoraggi", columnCount: 3, headers: [[cell(""), cell("Simbolo"), cell("Coefficiente parziale")]], rows: [[cell("Temporanei"), cell("γR", "\\gamma_R"), cell("1,1")], [cell("Permanenti"), cell("γR", "\\gamma_R"), cell("1,2")]], notes: ["Trascrizione verificata sul render della pagina PDF 202; review umana cella per cella ancora obbligatoria."] },
-    { id: t("6.6.ii"), unit: "6.6.2", number: "6.6.II", page: 202, caption: "Fattori di correlazione per derivare la resistenza caratteristica da prove di progetto, in funzione del numero degli ancoraggi di prova", columnCount: 4, headers: [[cell("Numero degli ancoraggi di prova"), cell("1"), cell("2"), cell("> 2")]], rows: [[cell("ξa1", "\\xi_{a1}"), cell("1,5"), cell("1,4"), cell("1,3")], [cell("ξa2", "\\xi_{a2}"), cell("1,5"), cell("1,3"), cell("1,2")]], notes: ["Trascrizione verificata sul render della pagina PDF 202; review umana cella per cella ancora obbligatoria."] },
-    { id: t("6.6.iii"), unit: "6.6.2", number: "6.6.III", page: 203, caption: "Fattori di correlazione per derivare la resistenza caratteristica dalle prove geotecniche, in funzione del numero n di profili di indagine", columnCount: 6, headers: [[cell("Numero di profili di indagine"), cell("1"), cell("2"), cell("3"), cell("4"), cell("≥ 5")]], rows: [[cell("ξa3", "\\xi_{a3}"), cell("1,80"), cell("1,75"), cell("1,70"), cell("1,65"), cell("1,60")], [cell("ξa4", "\\xi_{a4}"), cell("1,80"), cell("1,70"), cell("1,65"), cell("1,60"), cell("1,55")]], notes: ["Trascrizione verificata sul render della pagina PDF 203; review umana cella per cella ancora obbligatoria."] },
-    { id: t("6.8.i"), unit: "6.8.2", number: "6.8.I", page: 206, caption: "Coefficienti parziali per le verifiche di sicurezza di opere di materiali sciolti e di fronti di scavo", columnCount: 2, headers: [[cell("Coefficiente"), cell("R2")]], rows: [[cell("γR", "\\gamma_R"), cell("1,1")]], notes: ["Trascrizione verificata sul render della pagina PDF 206; review umana cella per cella ancora obbligatoria."] },
+    { id: t("6.6.ii"), unit: "6.6.2", number: "6.6.II", page: 202, caption: "Fattori di correlazione per derivare la resistenza caratteristica da prove di progetto, in funzione del numero degli ancoraggi di prova", columnCount: 4, headers: [[cell("Numero degli ancoraggi di prova"), cell("1"), cell("2"), cell("> 2", ">2")]], rows: [[cell("ξa1", "\\xi_{a1}"), cell("1,5"), cell("1,4"), cell("1,3")], [cell("ξa2", "\\xi_{a2}"), cell("1,5"), cell("1,3"), cell("1,2")]], notes: ["Trascrizione verificata sul render della pagina PDF 202; review umana cella per cella ancora obbligatoria."] },
+    { id: t("6.6.iii"), unit: "6.6.2", number: "6.6.III", page: 203, caption: "Fattori di correlazione per derivare la resistenza caratteristica dalle prove geotecniche, in funzione del numero n di profili di indagine", columnCount: 6, headers: [[cell("Numero di profili di indagine"), cell("1"), cell("2"), cell("3"), cell("4"), cell("≥ 5", "\\ge5")]], rows: [[cell("ξa3", "\\xi_{a3}"), cell("1,80"), cell("1,75"), cell("1,70"), cell("1,65"), cell("1,60")], [cell("ξa4", "\\xi_{a4}"), cell("1,80"), cell("1,70"), cell("1,65"), cell("1,60"), cell("1,55")]], notes: ["Trascrizione verificata sul render della pagina PDF 203; review umana cella per cella ancora obbligatoria."] },
+    { id: t("6.8.i"), unit: "6.8.2", number: "6.8.I", page: 206, caption: "Coefficienti parziali per le verifiche di sicurezza di opere di materiali sciolti e di fronti di scavo", columnCount: 2, headers: [[cell("Coefficiente"), cell("R2", "\\mathrm{R2}")]], rows: [[cell("γR", "\\gamma_R"), cell("1,1")]], notes: ["Trascrizione verificata sul render della pagina PDF 206; review umana cella per cella ancora obbligatoria."] },
 ];
 
 const units: UnitSpec[] = [
@@ -173,17 +218,17 @@ const units: UnitSpec[] = [
     { number: "6.4.3.5", title: "ASPETTI COSTRUTTIVI", heading: { page: 198, from: 11 }, blocks: [p(198, 12, 17)] },
     { number: "6.4.3.6", title: "CONTROLLI D’INTEGRITÀ DEI PALI", heading: { page: 198, from: 18 }, blocks: [p(198, 19, 20), p(198, 21, 22), p(198, 23, 24, "Nel caso di gruppi di pali di grande diametro (d ≥ 80 cm), il controllo dell’integrità deve essere effettuato su tutti i pali di ciascun gruppo se i pali del gruppo sono in numero inferiore o uguale a 4.")] },
     { number: "6.4.3.7", title: "PROVE DI CARICO", heading: { page: 198, from: 25 }, blocks: [] },
-    { number: "6.4.3.7.1", title: "Prove di progetto su pali pilota", heading: { page: 198, from: 26 }, blocks: [p(198, 27, 31), p(198, 32, 33), p(198, 34, 36), p(198, 37, 38), p(198, 39, 41, "La resistenza del complesso palo-terreno è assunta pari al valore del carico applicato corrispondente ad un cedimento della testa pari al 10% del diametro nel caso di pali di piccolo e medio diametro (d < 80 cm), non inferiori al 5% del diametro nel caso di pali di grande diametro (d ≥ 80 cm)."), p(198, 42, 43), p(198, 44, 48), p(198, 49, 50)] },
+    { number: "6.4.3.7.1", title: "Prove di progetto su pali pilota", heading: { page: 198, from: 26 }, blocks: [p(198, 27, 31), p(198, 32, 33), p(198, 34, 36), p(198, 37, 38), p(198, 39, 41, "La resistenza del complesso palo-terreno è assunta pari al valore del carico applicato corrispondente ad un cedimento della testa pari al 10% del diametro nel caso di pali di piccolo e medio diametro (d < 80 cm), non inferiori al 5% del diametro nel caso di pali di grande diametro (d ≥ 80 cm)."), p(198, 42, 43), p(198, 44, 48, "Per i pali di grande diametro si può ricorrere a prove statiche eseguite su pali aventi la stessa lunghezza dei pali da realizzare, ma diametro inferiore, purché tali prove siano adeguatamente motivate ed interpretate al fine di fornire indicazioni utili per i pali da realizzare. In ogni caso, la riduzione del diametro non può essere superiore al 50% e tale da restituire un palo ancora di grande diametro (d ≥ 80 cm); il palo di prova deve essere opportunamente strumentato per consentire il rilievo separato delle curve di mobilitazione della resistenza laterale e della resistenza alla base."), p(198, 49, 50)] },
     { number: "6.4.3.7.2", title: "Prove in corso d’opera", heading: { page: 198, from: 51 }, blocks: [p(198, 52, 54), p(199, 3, 4), p(199, 5, 7), li(199, 8), li(199, 9), li(199, 10), li(199, 11), li(199, 12), li(199, 13), p(199, 14, 17), p(199, 18, 19)] },
     { number: "6.5", title: "OPERE DI SOSTEGNO", heading: { page: 199, from: 20 }, blocks: [p(199, 21, 22), li(199, 23, 24), li(199, 25, 26), li(199, 27, 28), p(199, 29, 30)] },
     { number: "6.5.1", title: "CRITERI GENERALI DI PROGETTO", heading: { page: 199, from: 31 }, blocks: [p(199, 32, 35), p(199, 36, 39), p(199, 40, 42), p(199, 43, 47), p(199, 48, 49), p(199, 50)] },
     { number: "6.5.2", title: "AZIONI", heading: { page: 199, from: 51 }, blocks: [p(199, 52, 53)] },
     { number: "6.5.2.1", title: "SOVRACCARICHI", heading: { page: 200, from: 3 }, blocks: [p(200, 4, 5)] },
-    { number: "6.5.2.2", title: "MODELLO GEOMETRICO DI RIFERIMENTO", heading: { page: 200, from: 6 }, blocks: [p(200, 7, 8), p(200, 9, 10), li(200, 11), li(200, 12), li(200, 13), p(200, 14, 19, "Il livello della superficie libera dell’acqua deve essere scelto sulla base di misure e sulla possibile evoluzione del regime delle pressioni interstiziali anche legati a eventi di carattere eccezionale e a possibili malfunzionamenti dei sistemi di drenaggio. In assenza di particolari sistemi di drenaggio, nelle verifiche allo stato limite ultimo, si deve sempre ipotizzare che la superficie libera della falda non sia inferiore a quella del livello di sommità dei terreni con bassa permeabilità (k < 10^{-6} m/s). ")] },
+    { number: "6.5.2.2", title: "MODELLO GEOMETRICO DI RIFERIMENTO", heading: { page: 200, from: 6 }, blocks: [p(200, 7, 8), p(200, 9, 10), li(200, 11), li(200, 12), li(200, 13), p(200, 14, 19, "Il livello della superficie libera dell’acqua deve essere scelto sulla base di misure e sulla possibile evoluzione del regime delle pressioni interstiziali anche legati a eventi di carattere eccezionale e a possibili malfunzionamenti dei sistemi di drenaggio. In assenza di particolari sistemi di drenaggio, nelle verifiche allo stato limite ultimo, si deve sempre ipotizzare che la superficie libera della falda non sia inferiore a quella del livello di sommità dei terreni con bassa permeabilità (k < 10^{-6} m/s).")] },
     { number: "6.5.3", title: "VERIFICHE AGLI STATI LIMITE", heading: { page: 200, from: 20 }, blocks: [p(200, 21, 23)] },
     { number: "6.5.3.1", title: "VERIFICHE DI SICUREZZA (SLU)", heading: { page: 200, from: 24 }, blocks: [p(200, 25, 28)] },
     { number: "6.5.3.1.1", title: "Muri di sostegno", heading: { page: 200, from: 29 }, blocks: [p(200, 30, 31), li(200, 32), li(200, 33), li(200, 34), li(200, 35), li(200, 36), li(200, 37), li(200, 38), p(200, 39, 42), p(200, 43, 44), p(200, 45), ref("table-ref", 200, 46, 54, t("6.5.i")), multi("paragraph", [[200, 55, 57], [201, 3, 5]]), p(201, 6, 10), p(201, 11, 12)] },
-    { number: "6.5.3.1.2", title: "Paratie", heading: { page: 201, from: 13 }, blocks: [p(201, 14, 15), li(201, 16), li(201, 17), li(201, 18), li(201, 19), li(201, 20), li(201, 21), li(201, 22), li(201, 23), li(201, 24), li(201, 25), li(201, 26), li(201, 27), p(201, 28, 30), p(201, 31), li(201, 32), li(201, 33), p(201, 34, 35), p(201, 36, 37), p(201, 38, 39, "Fermo restando quanto specificato nel § 6.5.3.1.1 per il calcolo delle spinte, per valori dell’angolo d’attrito tra terreno e parete φ > π′/2, ai fini della valutazione della resistenza passiva è necessario tener conto della non planarità delle superfici di scorrimento.")] },
+    { number: "6.5.3.1.2", title: "Paratie", heading: { page: 201, from: 13 }, blocks: [p(201, 14, 15), li(201, 16), li(201, 17), li(201, 18), li(201, 19), li(201, 20), li(201, 21), li(201, 22), li(201, 23), li(201, 24), li(201, 25), li(201, 26), li(201, 27), p(201, 28, 30), p(201, 31), li(201, 32), li(201, 33), p(201, 34, 35), p(201, 36, 37), p(201, 38, 39, "Fermo restando quanto specificato nel § 6.5.3.1.1 per il calcolo delle spinte, per valori dell’angolo d’attrito tra terreno e parete δ > φ′/2, ai fini della valutazione della resistenza passiva è necessario tener conto della non planarità delle superfici di scorrimento.")] },
     { number: "6.5.3.2", title: "VERIFICHE DI ESERCIZIO (SLE)", heading: { page: 201, from: 40 }, blocks: [p(201, 41, 43), p(201, 44, 45)] },
     { number: "6.6", title: "TIRANTI DI ANCORAGGIO", heading: { page: 201, from: 46 }, blocks: [p(201, 47)] },
     { number: "6.6.1", title: "CRITERI DI PROGETTO", heading: { page: 201, from: 48 }, blocks: [p(201, 49, 51), p(201, 52, 53), p(202, 3, 4), p(202, 5, 8), p(202, 9, 11), p(202, 12, 13), p(202, 14, 16)] },
@@ -216,7 +261,7 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
     const source = block.refs ? rawRefs(block.refs) : raw(block.page, block.from, block.to);
     if (block.kind === "formula-ref" || block.kind === "table-ref") return { blockId, kind: block.kind, origin: "official", assetId: block.asset, evidence: evidence(block.page, source, source, "manual-transcription") };
     const normalized = block.norm ?? normalize(source);
-    const segments = inline(normalized);
+    const segments = block.page <= auditedThroughPage ? inline(normalized, block.page) : inlineLegacy(normalized);
     return { blockId, kind: block.kind, origin: "official", text: { raw: source, normalized, normalizationVersion: profile, ...(segments ? { inline: segments } : {}) }, evidence: evidence(block.page, source, normalized) };
 }
 

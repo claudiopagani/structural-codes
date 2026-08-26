@@ -297,7 +297,7 @@
       "origin": "official",
       "text": {
         "raw": "dove   » ¼ º « ¬ ª   O \u000e \u0010 O D \u000e )   2 2 . 0 1 5 . 0   e   ΅   è il fattore di imperfezione, ricavato dalla Tab. 4.3.III. Tab. 4.3.III -   Curve di instabilità e fattori di imperfezione",
-        "normalized": "dove Φ = 0,5 [1 + α (λ̄ − 0,2) + λ̄²] e α è il fattore di imperfezione, ricavato dalla Tab. 4.3.III.",
+        "normalized": "dove Φ = 0.5 [1 + α (λ̄ − 0.2) + λ̄²] e α è il fattore di imperfezione, ricavato dalla Tab. 4.3.III.",
         "normalizationVersion": "ntc43-editorial-profile-0.1.0",
         "inline": [
           {
@@ -306,39 +306,12 @@
           },
           {
             "kind": "math",
-            "value": "Φ",
-            "latex": "\\Phi"
+            "value": "Φ = 0.5 [1 + α (λ̄ − 0.2) + λ̄²]",
+            "latex": "\\Phi=0.5\\left[1+\\alpha\\left(\\bar{\\lambda}-0.2\\right)+\\bar{\\lambda}^2\\right]"
           },
           {
             "kind": "text",
-            "value": " = 0,5 [1 + "
-          },
-          {
-            "kind": "math",
-            "value": "α",
-            "latex": "\\alpha"
-          },
-          {
-            "kind": "text",
-            "value": " ("
-          },
-          {
-            "kind": "math",
-            "value": "λ̄",
-            "latex": "\\bar{\\lambda}"
-          },
-          {
-            "kind": "text",
-            "value": " − 0,2) + "
-          },
-          {
-            "kind": "math",
-            "value": "λ̄²",
-            "latex": "\\bar{\\lambda}^2"
-          },
-          {
-            "kind": "text",
-            "value": "] e "
+            "value": " e "
           },
           {
             "kind": "math",
@@ -359,7 +332,7 @@
           "coordinateSystem": "pdf-points-top-left",
           "x": 82,
           "y": 312,
-          "width": 300,
+          "width": 430,
           "height": 25
         },
         "extraction": {
@@ -390,44 +363,7 @@
           }
         ],
         "rawSha256": "49968b43db8c00fde1a745cb2f59a21d3e1bcecd8366a226423117e0463df4aa",
-        "normalizedSha256": "e18130f881a816602dcf2845f828722903e60c1cb1d53244090b1fbaa7feffb5"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:4.3.5.4.1#block-formula-003",
-      "kind": "formula-ref",
-      "origin": "official",
-      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.3.30-phi",
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 131,
-        "printedPage": "127",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 82,
-          "y": 312,
-          "width": 300,
-          "height": 25
-        },
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-source-transcription",
-          "toolVersion": "ntc43-editorial-profile-0.1.0"
-        },
-        "transformations": [
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc43-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, simboli matematici e sillabazioni confrontati con il render della fonte ufficiale."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc43-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "58f518fb9c203b16297ecd2a74c9f6b66b8fa4680a9ed99e5026ab170c213fa1",
-        "normalizedSha256": "58f518fb9c203b16297ecd2a74c9f6b66b8fa4680a9ed99e5026ab170c213fa1"
+        "normalizedSha256": "b2f2df64e6861d89f9a42a6512316f57439ba1818917ea74b53fd635ae0a6aef"
       }
     },
     {
@@ -473,8 +409,7 @@
   "assets": {
     "formulaIds": [
       "urn:structural-codes:it:asset:formula:ntc2018:4.3.29",
-      "urn:structural-codes:it:asset:formula:ntc2018:4.3.30",
-      "urn:structural-codes:it:asset:formula:ntc2018:4.3.30-phi"
+      "urn:structural-codes:it:asset:formula:ntc2018:4.3.30"
     ],
     "tableIds": [
       "urn:structural-codes:it:asset:table:ntc2018:4.3.iii"

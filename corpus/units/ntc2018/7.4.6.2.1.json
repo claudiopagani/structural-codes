@@ -84,7 +84,22 @@
       "text": {
         "raw": "Almeno due barre di diametro non inferiore a 14 mm devono essere presenti superiormente e inferiormente, per tutta la\nlunghezza della trave.",
         "normalized": "Almeno due barre di diametro non inferiore a 14 mm devono essere presenti superiormente e inferiormente, per tutta la lunghezza della trave.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Almeno due barre di diametro non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "14 mm",
+            "latex": "14\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " devono essere presenti superiormente e inferiormente, per tutta la lunghezza della trave."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -128,30 +143,39 @@
       "origin": "official",
       "text": {
         "raw": "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la\nclasse di duttilità adottata, il rapporto geometrico Ε relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia\nquella al lembo superiore della sezione As o quella al lembo inferiore della sezione Ai, deve essere compreso entro i seguenti\nlimiti: ",
-        "normalized": "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la classe di duttilità adottata, il rapporto geometrico Ε relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia quella al lembo superiore della sezione As o quella al lembo inferiore della sezione Ai, deve essere compreso entro i seguenti limiti:",
+        "normalized": "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la classe di duttilità adottata, il rapporto geometrico ρ relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia quella al lembo superiore della sezione A_s o quella al lembo inferiore della sezione A_i, deve essere compreso entro i seguenti limiti:",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la classe di duttilità adottata, il rapporto geometrico Ε relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia "
+            "value": "In ogni sezione della trave, salvo giustificazioni che dimostrino che le modalità di collasso della sezione sono coerenti con la classe di duttilità adottata, il rapporto geometrico "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "ρ",
+            "latex": "\\rho"
           },
           {
             "kind": "text",
-            "value": "uella al lembo superiore della sezione As o "
+            "value": " relativo all’armatura tesa, indipendentemente dal fatto che l’armatura tesa sia quella al lembo superiore della sezione "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "A_s",
+            "latex": "A_s"
           },
           {
             "kind": "text",
-            "value": "uella al lembo inferiore della sezione Ai, deve essere compreso entro i seguenti limiti:"
+            "value": " o quella al lembo inferiore della sezione "
+          },
+          {
+            "kind": "math",
+            "value": "A_i",
+            "latex": "A_i"
+          },
+          {
+            "kind": "text",
+            "value": ", deve essere compreso entro i seguenti limiti:"
           }
         ]
       },
@@ -188,7 +212,7 @@
           }
         ],
         "rawSha256": "c3eb4bb99b7165cdcd893a82861e8897471704e5cbd838f9225bc6b62ddef1e0",
-        "normalizedSha256": "63e2252b6ddf8a3f2e7d7d0dc83da7115fa714298fd3c590d37fe5b1a42af840"
+        "normalizedSha256": "ea75c5b86946d272d5a44d82b7775abe2603d2a3165e4cf2ca2eaca672bd2ccf"
       }
     },
     {
@@ -218,7 +242,58 @@
       "text": {
         "raw": "dove:\nΕ è il rapporto geometrico relativo all’armatura tesa, pari ad As/(bȉh) oppure ad Ai/(bȉh);\nΕcomp è il rapporto geometrico relativo all’armatura compressa;\nf yk è la tensione caratteristica di snervamento dell’acciaio (in MPa).",
         "normalized": "dove: ρ è il rapporto geometrico relativo all’armatura tesa, pari ad A_s/(b·h) oppure ad A_i/(b·h); ρ_comp è il rapporto geometrico relativo all’armatura compressa; f_yk è la tensione caratteristica di snervamento dell’acciaio (in MPa).",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto geometrico relativo all’armatura tesa, pari ad "
+          },
+          {
+            "kind": "math",
+            "value": "A_s/(b·h)",
+            "latex": "A_s/(b\\cdot h)"
+          },
+          {
+            "kind": "text",
+            "value": " oppure ad "
+          },
+          {
+            "kind": "math",
+            "value": "A_i/(b·h)",
+            "latex": "A_i/(b\\cdot h)"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "ρ_comp",
+            "latex": "\\rho_{comp}"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto geometrico relativo all’armatura compressa; "
+          },
+          {
+            "kind": "math",
+            "value": "f_yk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione caratteristica di snervamento dell’acciaio (in MPa)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -267,16 +342,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Inoltre deve essere ρ_comp ≥ 0,25ρ ovun"
+            "value": "Inoltre deve essere "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "ρ_comp ≥ 0,25ρ",
+            "latex": "\\rho_{comp}\\ge0{,}25\\rho"
           },
           {
             "kind": "text",
-            "value": "ue e nelle zone dissipative ρ_comp ≥ 1/2ρ."
+            "value": " ovunque e nelle zone dissipative "
+          },
+          {
+            "kind": "math",
+            "value": "ρ_comp ≥ 1/2ρ",
+            "latex": "\\rho_{comp}\\ge\\frac{1}{2}\\rho"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -327,16 +411,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "L’armatura superiore, disposta per il momento negativo alle estremità delle travi, deve essere contenuta, per almeno il 75%, entro la larghezza dell’anima e comun"
+            "value": "L’armatura superiore, disposta per il momento negativo alle estremità delle travi, deve essere contenuta, per almeno il "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "75%",
+            "latex": "75\\%"
           },
           {
             "kind": "text",
-            "value": "ue, per le sezioni a T o ad L, entro una fascia di soletta pari, rispettivamente, alla larghezza del pilastro, od alla larghezza del pilastro aumentata di 2 volte lo spessore della soletta da ciascun lato del pilastro, a seconda che nel nodo manchi o sia presente una trave ortogonale. Almeno ¼ della suddetta armatura deve essere mantenuta per tutta la lunghezza della trave."
+            "value": ", entro la larghezza dell’anima e comunque, per le sezioni a T o ad L, entro una fascia di soletta pari, rispettivamente, alla larghezza del pilastro, od alla larghezza del pilastro aumentata di 2 volte lo spessore della soletta da ciascun lato del pilastro, a seconda che nel nodo manchi o sia presente una trave ortogonale. Almeno ¼ della suddetta armatura deve essere mantenuta per tutta la lunghezza della trave."
           }
         ]
       },
@@ -383,7 +467,13 @@
       "text": {
         "raw": "Le armature longitudinali delle travi, sia superiori sia inferiori, devono attraversare, di regola, i nodi senza ancorarsi o giuntarsi\nper sovrapposizione in essi. Quando ciò non risulti possibile, sono da rispettare le seguenti prescrizioni:",
         "normalized": "Le armature longitudinali delle travi, sia superiori sia inferiori, devono attraversare, di regola, i nodi senza ancorarsi o giuntarsi per sovrapposizione in essi. Quando ciò non risulti possibile, sono da rispettare le seguenti prescrizioni:",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le armature longitudinali delle travi, sia superiori sia inferiori, devono attraversare, di regola, i nodi senza ancorarsi o giuntarsi per sovrapposizione in essi. Quando ciò non risulti possibile, sono da rispettare le seguenti prescrizioni:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -432,16 +522,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "le barre vanno ancorate oltre la faccia opposta a "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uella di intersezione con il nodo, oppure rivoltate verticalmente in corrispondenza di tale faccia, a contenimento del nodo;"
+            "value": "le barre vanno ancorate oltre la faccia opposta a quella di intersezione con il nodo, oppure rivoltate verticalmente in corrispondenza di tale faccia, a contenimento del nodo;"
           }
         ]
       },
@@ -487,8 +568,23 @@
       "origin": "official",
       "text": {
         "raw": "ȭ la lunghezza di ancoraggio delle armature tese va calcolata in modo da sviluppare una tensione nelle barre pari a 1,25 fyk, e\nmisurata a partire da una distanza pari a 6 diametri dalla faccia del pilastro verso l’interno.",
-        "normalized": "la lunghezza di ancoraggio delle armature tese va calcolata in modo da sviluppare una tensione nelle barre pari a 1,25 fyk, e misurata a partire da una distanza pari a 6 diametri dalla faccia del pilastro verso l’interno.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "la lunghezza di ancoraggio delle armature tese va calcolata in modo da sviluppare una tensione nelle barre pari a 1,25 f_yk e misurata a partire da una distanza pari a 6 diametri dalla faccia del pilastro verso l’interno.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "la lunghezza di ancoraggio delle armature tese va calcolata in modo da sviluppare una tensione nelle barre pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,25 f_yk",
+            "latex": "1{,}25f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " e misurata a partire da una distanza pari a 6 diametri dalla faccia del pilastro verso l’interno."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -523,7 +619,7 @@
           }
         ],
         "rawSha256": "02beb8a5361eaeed7edf0c913409fa72cdebfec2e4e5c0c1c2123a97a9ebae78",
-        "normalizedSha256": "ab639b3f28292c9795f400b0da493f73c3776d8ac3999088ecba76bdf4f88614"
+        "normalizedSha256": "e6ec706aad987ca156dd5f7b35fd2afb84024f95e63ed448243f591841430aa4"
       }
     },
     {
@@ -533,7 +629,13 @@
       "text": {
         "raw": "La parte dell’armatura longitudinale della trave che si ancora oltre il nodo non può terminare all’interno di una zona dissipativa,\nma deve ancorarsi oltre di essa.",
         "normalized": "La parte dell’armatura longitudinale della trave che si ancora oltre il nodo non può terminare all’interno di una zona dissipativa, ma deve ancorarsi oltre di essa.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La parte dell’armatura longitudinale della trave che si ancora oltre il nodo non può terminare all’interno di una zona dissipativa, ma deve ancorarsi oltre di essa."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -606,16 +708,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per prevenire lo sfilamento di "
+            "value": "Per prevenire lo sfilamento di queste armature il diametro delle barre non inclinate deve essere "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "≤ α_bL",
+            "latex": "\\le\\alpha_{bL}"
           },
           {
             "kind": "text",
-            "value": "ueste armature il diametro delle barre non inclinate deve essere ≤ α_bL volte l’altezza della sezione del pilastro, essendo"
+            "value": " volte l’altezza della sezione del pilastro, essendo"
           }
         ]
       },
@@ -706,7 +808,18 @@
       "text": {
         "raw": "Αd è la forza assiale di progetto normalizzata;",
         "normalized": "ν_d è la forza assiale di progetto normalizzata;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ν_d",
+            "latex": "\\nu_d"
+          },
+          {
+            "kind": "text",
+            "value": " è la forza assiale di progetto normalizzata;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -750,8 +863,28 @@
       "origin": "official",
       "text": {
         "raw": "kD vale 1 o 2/3, rispettivamente per CD”A” e per CD”B”;",
-        "normalized": "k_D vale 1 o 2/3, rispettivamente per CD “A” e per CD “B”;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "κ_D vale 1 o 2/3, rispettivamente per CD “A” e per CD “B”;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "κ_D",
+            "latex": "\\kappa_D"
+          },
+          {
+            "kind": "text",
+            "value": " vale 1 o "
+          },
+          {
+            "kind": "math",
+            "value": "2/3",
+            "latex": "\\frac{2}{3}"
+          },
+          {
+            "kind": "text",
+            "value": ", rispettivamente per CD “A” e per CD “B”;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -786,7 +919,7 @@
           }
         ],
         "rawSha256": "cd4ffc96034fa38b13575b951957cad33f095f0e0d6a3f68e000de683dbb9bd5",
-        "normalizedSha256": "f589d0a7cf737ebf56e415596d6da71e3951479608cf3ff177a5ff810786c297"
+        "normalizedSha256": "d92463caf3c3ac1ae06cfc96e95572e000708deeffeb951b794a3ff6a4379fd0"
       }
     },
     {
@@ -852,7 +985,13 @@
       "text": {
         "raw": "Se per nodi esterni non è possibile soddisfare tale limitazione, si può prolungare la trave oltre il pilastro, si possono usare piastre\nsaldate alla fine delle barre, si possono piegare le barre per una lunghezza minima pari a 10 volte il loro diametro disponendo\nun’apposita armatura trasversale dietro la piegatura.",
         "normalized": "Se per nodi esterni non è possibile soddisfare tale limitazione, si può prolungare la trave oltre il pilastro, si possono usare piastre saldate alla fine delle barre, si possono piegare le barre per una lunghezza minima pari a 10 volte il loro diametro disponendo un’apposita armatura trasversale dietro la piegatura.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Se per nodi esterni non è possibile soddisfare tale limitazione, si può prolungare la trave oltre il pilastro, si possono usare piastre saldate alla fine delle barre, si possono piegare le barre per una lunghezza minima pari a 10 volte il loro diametro disponendo un’apposita armatura trasversale dietro la piegatura."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -921,7 +1060,22 @@
       "text": {
         "raw": "Nelle zone dissipative devono essere previste staffe di contenimento. La prima staffa di contenimento deve distare non più di 5\ncm dalla sezione a filo pilastro; le successive devono essere disposte ad un passo non superiore alla minore tra le grandezze\nseguenti:",
         "normalized": "Nelle zone dissipative devono essere previste staffe di contenimento. La prima staffa di contenimento deve distare non più di 5 cm dalla sezione a filo pilastro; le successive devono essere disposte ad un passo non superiore alla minore tra le grandezze seguenti:",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nelle zone dissipative devono essere previste staffe di contenimento. La prima staffa di contenimento deve distare non più di "
+          },
+          {
+            "kind": "math",
+            "value": "5 cm",
+            "latex": "5\\,\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": " dalla sezione a filo pilastro; le successive devono essere disposte ad un passo non superiore alla minore tra le grandezze seguenti:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -970,16 +1124,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "un "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "uarto dell’altezza utile della sezione trasversale;"
+            "value": "un quarto dell’altezza utile della sezione trasversale;"
           }
         ]
       },
@@ -1026,7 +1171,27 @@
       "text": {
         "raw": "ȭ 175 mm e 225 mm, rispettivamente per CD”A” e CD “B”;",
         "normalized": "175 mm e 225 mm, rispettivamente per CD “A” e CD “B”;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "175 mm",
+            "latex": "175\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "225 mm",
+            "latex": "225\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ", rispettivamente per CD “A” e CD “B”;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1161,7 +1326,31 @@
       "text": {
         "raw": "Per staffa di contenimento si intende una staffa rettangolare, circolare o a spirale, di diametro minimo 6 mm, con ganci a 135°\nprolungati, alle due estremità, per almeno 10 diametri. I ganci devono essere assicurati alle barre longitudinali.",
         "normalized": "Per staffa di contenimento si intende una staffa rettangolare, circolare o a spirale, di diametro minimo 6 mm, con ganci a 135° prolungati, alle due estremità, per almeno 10 diametri. I ganci devono essere assicurati alle barre longitudinali.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per staffa di contenimento si intende una staffa rettangolare, circolare o a spirale, di diametro minimo "
+          },
+          {
+            "kind": "math",
+            "value": "6 mm",
+            "latex": "6\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ", con ganci a "
+          },
+          {
+            "kind": "math",
+            "value": "135°",
+            "latex": "135^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " prolungati, alle due estremità, per almeno 10 diametri. I ganci devono essere assicurati alle barre longitudinali."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

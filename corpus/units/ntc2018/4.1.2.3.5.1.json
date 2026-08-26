@@ -190,7 +190,7 @@
       "text": {
         "raw": "dove VEd è il valore di progetto dello sforzo di taglio agente.",
         "normalized": "dove VEd è il valore di progetto dello sforzo di taglio agente.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -223,7 +223,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "5dfaf1a05c7369caf2c99f1bb1ee4fde0a0bf7cbbee703352ff81e74fca0e5f4",
         "normalizedSha256": "5dfaf1a05c7369caf2c99f1bb1ee4fde0a0bf7cbbee703352ff81e74fca0e5f4"
       }
@@ -266,8 +272,23 @@
       "origin": "official",
       "text": {
         "raw": "con\nf ck espresso in MPa",
-        "normalized": "con f ck espresso in MPa",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalized": "con fck espresso in MPa",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "con "
+          },
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " espresso in MPa"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -302,11 +323,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -315,10 +331,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "ff9eecaa8b49e28f07b6e7cfb41640ba9a80d4deb61af5293b16cb0f33baee82",
-        "normalizedSha256": "600081f6593b730af3d28f36a36ae470da2b4f25ae509953883a90d66636b8d8"
+        "normalizedSha256": "556848d47d0d716b0a24b38a2434804f78f0cd128b18da5e9dac276e0f625033"
       }
     },
     {
@@ -359,8 +380,8 @@
       "origin": "official",
       "text": {
         "raw": "e dove\nd è l’altezza utile della sezione (in mm);\nU1 = A sl / (bw · d) è il rapporto geometrico di armatura longitudinale tesa (ǂ 0,02) che si estende per non meno di (lbd + d) oltre la\nsezione considerata, dove l bd è la lunghezza di ancoraggio;\nVcp = N Ed/A c [MPa] è la tensione media di compressione nella sezione (ǂ 0,2 fcd);\nb w è la larghezza minima della sezione (in mm).",
-        "normalized": "e dove d è l’altezza utile della sezione (in mm); ρₗ = A sl / (bw · d) è il rapporto geometrico di armatura longitudinale tesa (≤ 0,02) che si estende per non meno di (lbd + d) oltre la sezione considerata, dove l bd è la lunghezza di ancoraggio; σcp = N Ed/A c [MPa] è la tensione media di compressione nella sezione (≤ 0,2 fcd); b w è la larghezza minima della sezione (in mm).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalized": "e dove d è l’altezza utile della sezione (in mm); ρl = Asl/(bw · d) è il rapporto geometrico di armatura longitudinale tesa (≤ 0,02) che si estende per non meno di (lbd + d) oltre la sezione considerata, dove lbd è la lunghezza di ancoraggio; σcp = NEd/Ac [MPa] è la tensione media di compressione nella sezione (≤ 0,2fcd); bw è la larghezza minima della sezione (in mm).",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -373,25 +394,61 @@
           },
           {
             "kind": "text",
-            "value": " è l’altezza utile della sezione (in mm); ρₗ "
+            "value": " è l’altezza utile della sezione (in mm); "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "ρl = Asl/(bw · d)",
+            "latex": "\\rho_l=A_{sl}/(b_w\\cdot d)"
           },
           {
             "kind": "text",
-            "value": " A sl "
+            "value": " è il rapporto geometrico di armatura longitudinale tesa ("
           },
           {
             "kind": "math",
-            "value": "/",
-            "latex": "/"
+            "value": "≤ 0,02",
+            "latex": "\\le0{,}02"
           },
           {
             "kind": "text",
-            "value": " ("
+            "value": ") che si estende per non meno di ("
+          },
+          {
+            "kind": "math",
+            "value": "lbd + d",
+            "latex": "l_{bd}+d"
+          },
+          {
+            "kind": "text",
+            "value": ") oltre la sezione considerata, dove "
+          },
+          {
+            "kind": "math",
+            "value": "lbd",
+            "latex": "l_{bd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la lunghezza di ancoraggio; "
+          },
+          {
+            "kind": "math",
+            "value": "σcp = NEd/Ac [MPa]",
+            "latex": "\\sigma_{cp}=N_{Ed}/A_c\\,[\\mathrm{MPa}]"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione media di compressione nella sezione ("
+          },
+          {
+            "kind": "math",
+            "value": "≤ 0,2fcd",
+            "latex": "\\le0{,}2f_{cd}"
+          },
+          {
+            "kind": "text",
+            "value": "); "
           },
           {
             "kind": "math",
@@ -400,102 +457,7 @@
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "·",
-            "latex": "\\cdot"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": ") è il rapporto geometrico di armatura longitudinale tesa ("
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 0,02) che si estende per non meno di (lbd + "
-          },
-          {
-            "kind": "math",
-            "value": "d",
-            "latex": "d"
-          },
-          {
-            "kind": "text",
-            "value": ") oltre la sezione considerata, dove l bd è la lunghezza di ancoraggio; "
-          },
-          {
-            "kind": "math",
-            "value": "σcp",
-            "latex": "\\sigma_{cp}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " N "
-          },
-          {
-            "kind": "math",
-            "value": "Ed",
-            "latex": "E_d"
-          },
-          {
-            "kind": "math",
-            "value": "/",
-            "latex": "/"
-          },
-          {
-            "kind": "text",
-            "value": "A "
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " [MPa] è la tensione media di compressione nella sezione ("
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 0,2 "
-          },
-          {
-            "kind": "math",
-            "value": "fcd",
-            "latex": "f_{cd}"
-          },
-          {
-            "kind": "text",
-            "value": "); b w è la larghezza minima della sezione (in mm)."
+            "value": " è la larghezza minima della sezione (in mm)."
           }
         ]
       },
@@ -532,11 +494,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -545,10 +502,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "03a13434b758ba547e0e1cf8b5fb029a3826a1ca5746250a1d9642f0aa0b91b9",
-        "normalizedSha256": "f0ddeb63b5d6164c4137073fa1dd0342947eb2258c51dea7faa4685c27a847ec"
+        "normalizedSha256": "af6750b94d5b6dddfbbe1a846ca211bfdb58575e0dfe54b7a0e9a27553d882d4"
       }
     },
     {
@@ -558,7 +520,7 @@
       "text": {
         "raw": "Nel caso di elementi in calcestruzzo armato precompresso disposti in semplice appoggio, nelle zone non fessurate da momento\nflettente (con tensioni di trazione non superiori a fctd) la resistenza di progetto può valutarsi, in via semplificativa, con la formula:",
         "normalized": "Nel caso di elementi in calcestruzzo armato precompresso disposti in semplice appoggio, nelle zone non fessurate da momento flettente (con tensioni di trazione non superiori a fctd) la resistenza di progetto può valutarsi, in via semplificativa, con la formula:",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -608,11 +570,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -621,6 +578,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "18719b964b8220df72c9848d48aecab2b8c1f9237eec47a07448f0fbc418cc7e",
