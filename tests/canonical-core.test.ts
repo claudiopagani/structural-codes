@@ -22,6 +22,11 @@ interface CanonicalUnit {
     };
     workflow: {
         status: string;
+        reviews: Array<{
+            type: string;
+            result: string;
+            reviewer: { kind: string };
+        }>;
         openIssues: Array<{ severity: string; type: string }>;
     };
 }
@@ -81,13 +86,37 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        11014,
+        11016,
     );
 });
 
 const sourceCheckedUnitIds = new Set([
     "urn:structural-codes:it:unit:ntc2018:1",
     "urn:structural-codes:it:unit:ntc2018:1.1",
+    "urn:structural-codes:it:unit:ntc2018:2",
+    "urn:structural-codes:it:unit:ntc2018:2.1",
+    "urn:structural-codes:it:unit:ntc2018:2.2",
+    "urn:structural-codes:it:unit:ntc2018:2.2.1",
+    "urn:structural-codes:it:unit:ntc2018:2.2.2",
+    "urn:structural-codes:it:unit:ntc2018:2.2.3",
+    "urn:structural-codes:it:unit:ntc2018:2.2.4",
+    "urn:structural-codes:it:unit:ntc2018:2.2.5",
+    "urn:structural-codes:it:unit:ntc2018:2.2.6",
+    "urn:structural-codes:it:unit:ntc2018:2.3",
+    "urn:structural-codes:it:unit:ntc2018:2.4",
+    "urn:structural-codes:it:unit:ntc2018:2.4.1",
+    "urn:structural-codes:it:unit:ntc2018:2.4.2",
+    "urn:structural-codes:it:unit:ntc2018:2.4.3",
+    "urn:structural-codes:it:unit:ntc2018:2.5",
+    "urn:structural-codes:it:unit:ntc2018:2.5.1",
+    "urn:structural-codes:it:unit:ntc2018:2.5.1.1",
+    "urn:structural-codes:it:unit:ntc2018:2.5.1.2",
+    "urn:structural-codes:it:unit:ntc2018:2.5.1.3",
+    "urn:structural-codes:it:unit:ntc2018:2.5.2",
+    "urn:structural-codes:it:unit:ntc2018:2.5.3",
+    "urn:structural-codes:it:unit:ntc2018:2.6",
+    "urn:structural-codes:it:unit:ntc2018:2.6.1",
+    "urn:structural-codes:it:unit:ntc2018:2.6.2",
 ]);
 
 test("le unità verificate sono source-checked, le altre restano estratte e bloccate dalla review", async () => {

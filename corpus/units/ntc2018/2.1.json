@@ -277,7 +277,17 @@
       "text": {
         "raw": "- sicurezza nei confronti di stati limite ultimi (SLU): capacità di evitare crolli, perdite di equilibrio e dissesti gravi, totali o parziali,\nche possano compromettere l’incolumità delle persone oppure comportare la perdita di beni, oppure provocare gravi danni\nambientali e sociali, oppure mettere fuori servizio l’opera;",
         "normalized": "sicurezza nei confronti di stati limite ultimi (SLU): capacità di evitare crolli, perdite di equilibrio e dissesti gravi, totali o parziali, che possano compromettere l’incolumità delle persone oppure comportare la perdita di beni, oppure provocare gravi danni ambientali e sociali, oppure mettere fuori servizio l’opera;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "sicurezza nei confronti di stati limite ultimi (SLU)"
+          },
+          {
+            "kind": "text",
+            "value": ": capacità di evitare crolli, perdite di equilibrio e dissesti gravi, totali o parziali, che possano compromettere l’incolumità delle persone oppure comportare la perdita di beni, oppure provocare gravi danni ambientali e sociali, oppure mettere fuori servizio l’opera;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -338,7 +348,17 @@
       "text": {
         "raw": "- sicurezza nei confronti di stati limite di esercizio (SLE): capacità di garantire le prestazioni previste per le condizioni di esercizio;",
         "normalized": "sicurezza nei confronti di stati limite di esercizio (SLE): capacità di garantire le prestazioni previste per le condizioni di esercizio;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "sicurezza nei confronti di stati limite di esercizio (SLE)"
+          },
+          {
+            "kind": "text",
+            "value": ": capacità di garantire le prestazioni previste per le condizioni di esercizio;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -399,7 +419,17 @@
       "text": {
         "raw": "- sicurezza antincendio: capacità di garantire le prestazioni strutturali previste in caso d’incendio, per un periodo richiesto;",
         "normalized": "sicurezza antincendio: capacità di garantire le prestazioni strutturali previste in caso d’incendio, per un periodo richiesto;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "sicurezza antincendio"
+          },
+          {
+            "kind": "text",
+            "value": ": capacità di garantire le prestazioni strutturali previste in caso d’incendio, per un periodo richiesto;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -460,7 +490,17 @@
       "text": {
         "raw": "- durabilità: capacità della costruzione di mantenere, nell’arco della vita nominale di progetto, i livelli prestazionali per i quali è\nstata progettata, tenuto conto delle caratteristiche ambientali in cui si trova e del livello previsto di manutenzione;",
         "normalized": "durabilità: capacità della costruzione di mantenere, nell’arco della vita nominale di progetto, i livelli prestazionali per i quali è stata progettata, tenuto conto delle caratteristiche ambientali in cui si trova e del livello previsto di manutenzione;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "durabilità"
+          },
+          {
+            "kind": "text",
+            "value": ": capacità della costruzione di mantenere, nell’arco della vita nominale di progetto, i livelli prestazionali per i quali è stata progettata, tenuto conto delle caratteristiche ambientali in cui si trova e del livello previsto di manutenzione;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -521,7 +561,17 @@
       "text": {
         "raw": "- robustezza: capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e\nurti.",
         "normalized": "robustezza: capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "robustezza"
+          },
+          {
+            "kind": "text",
+            "value": ": capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -580,8 +630,8 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Il superamento di uno stato limite ultimo ha carattere irreversibile\nIl superamento di uno stato limite di esercizio può avere carattere reversibile o irreversibile.",
-        "normalized": "Il superamento di uno stato limite ultimo ha carattere irreversibile Il superamento di uno stato limite di esercizio può avere carattere reversibile o irreversibile.",
+        "raw": "Il superamento di uno stato limite ultimo ha carattere irreversibile",
+        "normalized": "Il superamento di uno stato limite ultimo ha carattere irreversibile",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -630,14 +680,85 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separato il capoverso dopo 'irreversibile': nel render ufficiale lo stacco tipografico (≈12,9 pt contro ≈10,3 pt del passo di riga) introduce un nuovo capoverso pur in assenza di punto finale."
           }
         ],
-        "rawSha256": "064fc3ce24cdd580d1867aad3baa878958858fb34ab5af18f2e37aa13680820a",
-        "normalizedSha256": "0b3e0365ff8e6e6603947ea21b2d057194a8a872583a3c78136ed31b65f784b5"
+        "rawSha256": "3249c3a62df4b9d09565a4a3fbda43816d089d0426d7364cd72daeda4b2b056d",
+        "normalizedSha256": "3249c3a62df4b9d09565a4a3fbda43816d089d0426d7364cd72daeda4b2b056d"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Il superamento di uno stato limite di esercizio può avere carattere reversibile o irreversibile.",
+        "normalized": "Il superamento di uno stato limite di esercizio può avere carattere reversibile o irreversibile.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 38,
+        "printedPage": "34",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78.488,
+          "y": 119.696,
+          "width": 437.214,
+          "height": 339.943
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Capoverso separato da quello precedente ('…carattere irreversibile') per lo stacco tipografico rilevato nel render ufficiale."
+          }
+        ],
+        "rawSha256": "8a9ff9447695f3ebd79b33bfbe8c5aa87e0e8e4b24781c88e2714db0ea3d47f0",
+        "normalizedSha256": "8a9ff9447695f3ebd79b33bfbe8c5aa87e0e8e4b24781c88e2714db0ea3d47f0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-011",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -698,7 +819,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-011",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -759,7 +880,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-012",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -820,7 +941,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-013",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.1#block-editorial-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -889,21 +1010,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-2-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

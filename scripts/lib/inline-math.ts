@@ -4,6 +4,14 @@ export type InlineSegment =
           value: string;
       }
     | {
+          kind: "em";
+          value: string;
+      }
+    | {
+          kind: "strong";
+          value: string;
+      }
+    | {
           kind: "math";
           value: string;
           latex: string;

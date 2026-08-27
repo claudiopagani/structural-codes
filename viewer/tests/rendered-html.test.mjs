@@ -40,10 +40,10 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
   assert.equal(manifest.schemaVersion, "2.0.0-alpha.2");
   assert.equal(manifest.stats.units, 1745);
-  assert.equal(manifest.stats.blocks, 11014);
+  assert.equal(manifest.stats.blocks, 11016);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 2);
+  assert.equal(manifest.stats.reviewedUnits, 26);
   assert.equal(manifest.stats.assetUnits, 434);
   assert.equal(manifest.stats.formulas, 888);
   assert.equal(manifest.stats.tables, 219);
@@ -83,6 +83,30 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
     [
       "urn:structural-codes:it:unit:ntc2018:1",
       "urn:structural-codes:it:unit:ntc2018:1.1",
+      "urn:structural-codes:it:unit:ntc2018:2",
+      "urn:structural-codes:it:unit:ntc2018:2.1",
+      "urn:structural-codes:it:unit:ntc2018:2.2",
+      "urn:structural-codes:it:unit:ntc2018:2.2.1",
+      "urn:structural-codes:it:unit:ntc2018:2.2.2",
+      "urn:structural-codes:it:unit:ntc2018:2.2.3",
+      "urn:structural-codes:it:unit:ntc2018:2.2.4",
+      "urn:structural-codes:it:unit:ntc2018:2.2.5",
+      "urn:structural-codes:it:unit:ntc2018:2.2.6",
+      "urn:structural-codes:it:unit:ntc2018:2.3",
+      "urn:structural-codes:it:unit:ntc2018:2.4",
+      "urn:structural-codes:it:unit:ntc2018:2.4.1",
+      "urn:structural-codes:it:unit:ntc2018:2.4.2",
+      "urn:structural-codes:it:unit:ntc2018:2.4.3",
+      "urn:structural-codes:it:unit:ntc2018:2.5",
+      "urn:structural-codes:it:unit:ntc2018:2.5.1",
+      "urn:structural-codes:it:unit:ntc2018:2.5.1.1",
+      "urn:structural-codes:it:unit:ntc2018:2.5.1.2",
+      "urn:structural-codes:it:unit:ntc2018:2.5.1.3",
+      "urn:structural-codes:it:unit:ntc2018:2.5.2",
+      "urn:structural-codes:it:unit:ntc2018:2.5.3",
+      "urn:structural-codes:it:unit:ntc2018:2.6",
+      "urn:structural-codes:it:unit:ntc2018:2.6.1",
+      "urn:structural-codes:it:unit:ntc2018:2.6.2",
     ],
   );
 

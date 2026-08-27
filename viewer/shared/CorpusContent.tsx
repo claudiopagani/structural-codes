@@ -41,6 +41,11 @@ export function hasOfficialListMarker(block: CorpusBlock) {
   return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])/iu.test(block.text?.normalized ?? "");
 }
 
+export function hasTrailingStrong(block: CorpusBlock) {
+  const inline = block.text?.inline;
+  return block.kind === "list-item" && inline !== undefined && inline.length > 0 && inline.at(-1)?.kind === "strong";
+}
+
 export interface BlockContentProps {
   block: CorpusBlock;
   assets: AssetBundle | null;
@@ -53,7 +58,7 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
     if (showRaw || !block.text.inline) return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
     return <p>{block.text.inline.map((segment, index) => segment.kind === "math" ? (
       <span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />
-    ) : <span key={`text-${index}`}>{segment.value}</span>)}</p>;
+    ) : segment.kind === "em" ? <em key={`em-${index}`}>{segment.value}</em> : segment.kind === "strong" ? <strong key={`strong-${index}`}>{segment.value}</strong> : <span key={`text-${index}`}>{segment.value}</span>)}</p>;
   }
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
@@ -93,7 +98,7 @@ export function isRepeatedUnitTitle(unit: CorpusUnit, block: CorpusUnit["blocks"
 
 export function UnitBlocks({ unit, assets, showRaw = false, compact = false, assetsBaseUrl = "/assets" }: { unit: CorpusUnit; assets: AssetBundle; showRaw?: boolean; compact?: boolean; assetsBaseUrl?: string }) {
   return <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
       <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
       <div><span className="block-kind">{block.kind}</span><BlockContent block={block} assets={assets} showRaw={showRaw} assetsBaseUrl={assetsBaseUrl} />
         {block.evidence?.transformations && block.evidence.transformations.length > 0 && <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}

@@ -101,6 +101,8 @@
 .scv-block-list-item p::before { margin-right: 5px; color: var(--scv-primary); content: "–"; font-weight: 700; }
 .scv-block-list-item.list-item-with-official-marker { padding-left: 0; }
 .scv-block-list-item.list-item-with-official-marker p::before { content: none; }
+.scv-block-list-item.list-item-with-trailing-siglum p { display: grid; grid-template-columns: auto minmax(0, 1fr) 96px; column-gap: 8px; }
+.scv-block-list-item.list-item-with-trailing-siglum p strong { font-weight: 700; white-space: nowrap; }
 .scv-related-unit { margin: 14px 0 18px; padding: 13px 15px; background: var(--scv-circular); border: 1px solid #cfd7ee; border-left: 3px solid var(--scv-primary); border-radius: 4px; }
 .scv-related-unit > header h3 { display: block; margin: 6px 0; color: var(--scv-primary); font-family: "Tinos", serif; font-size: 16px; font-variant-numeric: lining-nums; font-weight: 700; line-height: 1.2; }
 .scv-related-unit > header h3 span { margin-right: 7px; color: var(--scv-primary); font-family: "Tinos", serif; font-size: inherit; font-variant-numeric: lining-nums; font-weight: 700; white-space: nowrap; }

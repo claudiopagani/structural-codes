@@ -668,6 +668,17 @@ summary:focus-visible {
   content: none;
 }
 
+.list-item-block.list-item-with-trailing-siglum p {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  column-gap: 8px;
+}
+
+.list-item-block.list-item-with-trailing-siglum p strong {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .asset-block {
   padding-block: 34px;
 }

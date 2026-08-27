@@ -771,167 +771,6 @@
         "rawSha256": "687716cac7c62d56de4cf598fa6a0120b27203eecdcb86aa9ce67d54df9bf76d",
         "normalizedSha256": "687716cac7c62d56de4cf598fa6a0120b27203eecdcb86aa9ce67d54df9bf76d"
       }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.2#block-editorial-011",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Categoria G – Rimesse, parcheggi ed aree per il traffico di veicoli (per autoveicoli\ndi peso > 30 kN) 0,7 0,5 0,3\nCategoria H - Coperture accessibili per sola manutenzione 0,0 0,0 0,0\nCategoria I – Coperture praticabili da valutarsi caso per\ncasoCategoria K – Coperture per usi speciali (impianti, eliporti, ...)",
-        "normalized": "Categoria G – Rimesse, parcheggi ed aree per il traffico di veicoli (per autoveicoli di peso > 30 kN) 0,7 0,5 0,3 Categoria H - Coperture accessibili per sola manutenzione 0,0 0,0 0,0 Categoria I – Coperture praticabili da valutarsi caso per casoCategoria K – Coperture per usi speciali (impianti, eliporti,...)",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Categoria G – Rimesse, parcheggi ed aree per il traffico di veicoli (per autoveicoli di peso "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 30 kN) 0,7 0,5 0,3 Categoria H - Coperture accessibili per sola manutenzione 0,0 0,0 0,0 Categoria I – Coperture praticabili da valutarsi caso per casoCategoria K – Coperture per usi speciali (impianti, eliporti,...)"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 43,
-        "printedPage": "39",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.234,
-          "y": 96.407,
-          "width": 282.705,
-          "height": 87.454
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "31ba61b0dc3db1185dc073454e517590b608f4b3b531b92cc8af82d54896090d",
-        "normalizedSha256": "3c8f1365fdb3cbd44ec29ae253ecd93793161af9e3e010558cc68d6cd3ccddae"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.2#block-editorial-012",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Vento 0,6 0,2 0,0\nNeve (a quota ǂ 1000 m s.l.m.) 0,5 0,2 0,0\nNeve (a quota > 1000 m s.l.m.) 0,7 0,5 0,2\nVariazioni termiche 0,6 0,5 0,0",
-        "normalized": "Vento 0,6 0,2 0,0 Neve (a quota ≤ 1000 m s.l.m.) 0,5 0,2 0,0 Neve (a quota > 1000 m s.l.m.) 0,7 0,5 0,2 Variazioni termiche 0,6 0,5 0,0",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Vento 0,6 0,2 0,0 Neve (a quota "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 1000 m s.l.m.) 0,5 0,2 0,0 Neve (a quota "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 1000 m s.l.m.) 0,7 0,5 0,2 Variazioni termiche 0,6 0,5 0,0"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 43,
-        "printedPage": "39",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 81.234,
-          "y": 96.407,
-          "width": 282.705,
-          "height": 87.454
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "a150ce26515803491ff05e9c02203c6b89c44d4eae28d4b6fff30d8b9ae2ae10",
-        "normalizedSha256": "7e1868ac3d36cd7d181bc3bd343e33f685dbcbd9453718b2b5c343f7f5a6c388"
-      }
     }
   ],
   "citations": [],
@@ -944,27 +783,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-5-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-2-5-2-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+        "reviewId": "ntc2018-2-5-2-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

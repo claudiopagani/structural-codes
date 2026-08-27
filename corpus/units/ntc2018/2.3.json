@@ -154,7 +154,7 @@
       "origin": "official",
       "text": {
         "raw": "Nel metodo agli stati limite, la sicurezza strutturale nei confronti degli stati limite ultimi deve essere verificata confrontando la\ncapacità di progetto Rd, in termini di resistenza, duttilità e/o spostamento della struttura o della membratura strutturale, funzione\ndelle caratteristiche meccaniche dei materiali che la compongono (Xd) e dei valori nominali delle grandezze geometriche interes-\nsate (a d), con il corrispondente valore di progetto della domanda E d, funzione dei valori di progetto delle azioni (Fd) e dei valori\nnominali delle grandezze geometriche della struttura interessate.",
-        "normalized": "Nel metodo agli stati limite, la sicurezza strutturale nei confronti degli stati limite ultimi deve essere verificata confrontando la capacità di progetto Rd, in termini di resistenza, duttilità e/o spostamento della struttura o della membratura strutturale, funzione delle caratteristiche meccaniche dei materiali che la compongono (Xd) e dei valori nominali delle grandezze geometriche interessate (a d), con il corrispondente valore di progetto della domanda Ed, funzione dei valori di progetto delle azioni (Fd) e dei valori nominali delle grandezze geometriche della struttura interessate.",
+        "normalized": "Nel metodo agli stati limite, la sicurezza strutturale nei confronti degli stati limite ultimi deve essere verificata confrontando la capacità di progetto Rd, in termini di resistenza, duttilità e/o spostamento della struttura o della membratura strutturale, funzione delle caratteristiche meccaniche dei materiali che la compongono (Xd) e dei valori nominali delle grandezze geometriche interessate (a_d), con il corrispondente valore di progetto della domanda Ed, funzione dei valori di progetto delle azioni (Fd) e dei valori nominali delle grandezze geometriche della struttura interessate.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
@@ -177,7 +177,16 @@
           },
           {
             "kind": "text",
-            "value": ") e dei valori nominali delle grandezze geometriche interessate (a d), con il corrispondente valore di progetto della domanda "
+            "value": ") e dei valori nominali delle grandezze geometriche interessate ("
+          },
+          {
+            "kind": "math",
+            "value": "a_d",
+            "latex": "a_d"
+          },
+          {
+            "kind": "text",
+            "value": "), con il corrispondente valore di progetto della domanda "
           },
           {
             "kind": "math",
@@ -245,10 +254,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinato il pedice in 'a_d': nel layer ufficiale il glifo 'd' ha corpo ridotto e quota inferiore (pedice), come in 'Rd', 'Xd', 'Ed' e 'Fd'."
           }
         ],
         "rawSha256": "8a8fc39d9a8fa01f0bd671b9344f42baefdb6a7107aa39a2ac1b6e25a6cf5474",
-        "normalizedSha256": "39eccc743aa91f5e8ab6e2d2826e0913adaa3a1a0c99c3561c00710382f7462c"
+        "normalizedSha256": "1f7d30dfc369d2705a1446d008fb2ab0afbbdf7c2217a6ada3c019d697bef3ec"
       }
     },
     {
@@ -789,33 +803,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-2-3-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
-      },
-      {
-        "issueId": "ntc2018-2-3-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
+        "reviewId": "ntc2018-2-3-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

@@ -125,7 +125,17 @@
       "text": {
         "raw": "ƺ lo stato limite di equilibrio come corpo rigido: EQU",
         "normalized": "lo stato limite di equilibrio come corpo rigido: EQU",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "lo stato limite di equilibrio come corpo rigido: "
+          },
+          {
+            "kind": "strong",
+            "value": "EQU"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -185,8 +195,18 @@
       "origin": "official",
       "text": {
         "raw": "ƺ lo stato limite di resistenza della struĴura compresi gli elementi di fondazione: STR",
-        "normalized": "lo stato limite di resistenza della struĴura compresi gli elementi di fondazione: STR",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "lo stato limite di resistenza della struttura compresi gli elementi di fondazione: STR",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "lo stato limite di resistenza della struttura compresi gli elementi di fondazione: "
+          },
+          {
+            "kind": "strong",
+            "value": "STR"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -234,10 +254,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ricostruito il glifo corrotto nel layer testuale 'struĴura' in 'struttura' (il glifo 'Ĵ' è un artefatto dell'estrazione, assente nel render ufficiale)."
           }
         ],
         "rawSha256": "48ced759487833a188fededdd6ba886784ba1d9037a7cc79487d5f4b637f2c3c",
-        "normalizedSha256": "1947f96c1b050a08c027cb00eaae4d155b43c4481f5aab280ffa70396ece0bc6"
+        "normalizedSha256": "0a0146b5b699ee609aa2592b3f704de2cd15114125e45ba7e6e5997027063ad4"
       }
     },
     {
@@ -245,13 +270,89 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ƺ lo stato limite di resistenza del terreno: GEO\nFatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti par-\nziali ·F da assumersi per la determinazione degli effetti delle azioni nelle verifiche agli stati limite ultimi.",
-        "normalized": "lo stato limite di resistenza del terreno: GEO Fatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti parziali γF da assumersi per la determinazione degli effetti delle azioni nelle verifiche agli stati limite ultimi.",
+        "raw": "ƺ lo stato limite di resistenza del terreno: GEO",
+        "normalized": "lo stato limite di resistenza del terreno: GEO",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "lo stato limite di resistenza del terreno: GEO Fatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti parziali "
+            "value": "lo stato limite di resistenza del terreno: "
+          },
+          {
+            "kind": "strong",
+            "value": "GEO"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 43,
+        "printedPage": "39",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 76.386,
+          "y": 568.523,
+          "width": 443.479,
+          "height": 154.7
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la voce 'GEO' dal capoverso successivo: nel render ufficiale 'Fatte salve…' inizia un nuovo capoverso."
+          }
+        ],
+        "rawSha256": "947bd279fd94294d0d24b5f3313b8fa334a688d9325cb994b4401116fc95fc72",
+        "normalizedSha256": "1c2dc709ade61ba2ce309546906fb8e1c60030a3bc7469a81c1e5314fd65616b"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-005",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Fatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti par-\nziali ·F da assumersi per la determinazione degli effetti delle azioni nelle verifiche agli stati limite ultimi.",
+        "normalized": "Fatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti parziali γF da assumersi per la determinazione degli effetti delle azioni nelle verifiche agli stati limite ultimi.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Fatte salve tutte le prescrizioni fornite nei capitoli successivi delle presenti norme, la Tab. 2.6.I riporta i valori dei coefficienti parziali "
           },
           {
             "kind": "math",
@@ -310,14 +411,19 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Capoverso separato dalla voce 'GEO': nel render ufficiale inizia sulla riga successiva alla voce."
           }
         ],
-        "rawSha256": "a23a52e7d6bb4bf48175f24ee715c26ff55fc83881b24ec4254cde5ceab1a4e1",
-        "normalizedSha256": "996c04491de1d5428457bb0cd20b824082d20e1134632f581906fddbc02a8279"
+        "rawSha256": "c987601d14bde53e75a43f0665213289921fb44be8107c679ea4d588e3248cb7",
+        "normalizedSha256": "8f37bbbe8e32631686302b321678724d29be65c147b358baac8bbbe2a2f52c47"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -393,7 +499,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -469,7 +575,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -530,7 +636,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -540,7 +646,15 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nell’Approccio 1, le verifiche si conducono con due diverse combinazioni di gruppi di coefficienti parziali, rispettivamente definiti per le azioni ("
+            "value": "Nell’"
+          },
+          {
+            "kind": "em",
+            "value": "Approccio 1"
+          },
+          {
+            "kind": "text",
+            "value": ", le verifiche si conducono con due diverse combinazioni di gruppi di coefficienti parziali, rispettivamente definiti per le azioni ("
           },
           {
             "kind": "math",
@@ -567,7 +681,23 @@
           },
           {
             "kind": "text",
-            "value": " ). Nella Combinazione 1 dell’Approccio 1, per le azioni si impiegano i coefficienti "
+            "value": " ). Nella "
+          },
+          {
+            "kind": "em",
+            "value": "Combinazione 1"
+          },
+          {
+            "kind": "text",
+            "value": " dell’"
+          },
+          {
+            "kind": "em",
+            "value": "Approccio 1"
+          },
+          {
+            "kind": "text",
+            "value": ", per le azioni si impiegano i coefficienti "
           },
           {
             "kind": "math",
@@ -576,7 +706,23 @@
           },
           {
             "kind": "text",
-            "value": " riportati nella colonna A1 della Tabella 2.6.I. Nella Combinazione 2 dell’Approccio 1, si impiegano invece i coefficienti "
+            "value": " riportati nella colonna A1 della Tabella 2.6.I. Nella "
+          },
+          {
+            "kind": "em",
+            "value": "Combinazione 2"
+          },
+          {
+            "kind": "text",
+            "value": " dell’"
+          },
+          {
+            "kind": "em",
+            "value": "Approccio 1"
+          },
+          {
+            "kind": "text",
+            "value": ", si impiegano invece i coefficienti "
           },
           {
             "kind": "math",
@@ -642,7 +788,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-009",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-010",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -652,7 +798,15 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nell’Approccio 2 si impiega un’unica combinazione dei gruppi di coefficienti parziali definiti per le Azioni ("
+            "value": "Nell’"
+          },
+          {
+            "kind": "em",
+            "value": "Approccio 2"
+          },
+          {
+            "kind": "text",
+            "value": " si impiega un’unica combinazione dei gruppi di coefficienti parziali definiti per le Azioni ("
           },
           {
             "kind": "math",
@@ -745,7 +899,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-010",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-011",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -830,7 +984,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-011",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-012",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:2.6.i",
@@ -862,13 +1016,63 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-012",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "(1)\nNel caso in cui l’intensità dei carichi permanenti non strutturali o di una parte di essi (ad es. carichi per-\nmanenti portati) sia ben definita in fase di progetto, per detti carichi o per la parte di essi nota si potranno\nadottare gli stessi coefficienti parziali validi per le azioni permanenti.",
-        "normalized": "(1) Nel caso in cui l’intensità dei carichi permanenti non strutturali o di una parte di essi (ad es. carichi permanenti portati) sia ben definita in fase di progetto, per detti carichi o per la parte di essi nota si potranno adottare gli stessi coefficienti parziali validi per le azioni permanenti.",
+        "raw": "Nella Tab. 2.6.I il significato dei simboli è il seguente:",
+        "normalized": "Nella Tab. 2.6.I il significato dei simboli è il seguente:",
         "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 44,
+        "printedPage": "40",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75.156,
+          "y": 95.027,
+          "width": 444.526,
+          "height": 349.082
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "a54209963528f5b4c1acaf9e1786bfe57fd18c70dd11ab080eca532eedc21d32",
+        "normalizedSha256": "a54209963528f5b4c1acaf9e1786bfe57fd18c70dd11ab080eca532eedc21d32"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-015",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "·G1 coefficiente parziale dei carichi permanenti G1 \n;",
+        "normalized": "γG1 coefficiente parziale dei carichi permanenti G1;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "γG1",
+            "latex": "\\gamma_{G1}"
+          },
+          {
+            "kind": "text",
+            "value": " coefficiente parziale dei carichi permanenti "
+          },
+          {
+            "kind": "math",
+            "value": "G1",
+            "latex": "G_1"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -916,20 +1120,45 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Voce di elenco separata: nel render ufficiale il simbolo 'γG1' è il marcatore della propria voce (elenco senza trattini)."
           }
         ],
-        "rawSha256": "8abea48a78e8d0e7a3441f0ec850517f73dd06e44f64669d681977d6381db152",
-        "normalizedSha256": "65d63561f88138f3dad2cff7674bc329d2c2c453ce475175bf64b9bd0de4f1d3"
+        "rawSha256": "233c760ad2bb9e09b4c1bc27e7518d8ca590aeb9e00e4af1df36f60bac5b0aa0",
+        "normalizedSha256": "cb37ff88388674ad158e70ecc4559315dd1f6063e2ab85dc34be284806eee8ef"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-013",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-016",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "Nella Tab. 2.6.I il significato dei simboli è il seguente:",
-        "normalized": "Nella Tab. 2.6.I il significato dei simboli è il seguente:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "·G2 coefficiente parziale dei carichi permanenti non strutturali G 2 \n;",
+        "normalized": "γG2 coefficiente parziale dei carichi permanenti non strutturali G2;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "γG2",
+            "latex": "\\gamma_{G2}"
+          },
+          {
+            "kind": "text",
+            "value": " coefficiente parziale dei carichi permanenti non strutturali "
+          },
+          {
+            "kind": "math",
+            "value": "G2",
+            "latex": "G_2"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -947,47 +1176,56 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "a54209963528f5b4c1acaf9e1786bfe57fd18c70dd11ab080eca532eedc21d32",
-        "normalizedSha256": "a54209963528f5b4c1acaf9e1786bfe57fd18c70dd11ab080eca532eedc21d32"
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Voce di elenco separata: nel render ufficiale il simbolo 'γG2' è il marcatore della propria voce (elenco senza trattini); ripristinato il pedice '2' in 'G2'."
+          }
+        ],
+        "rawSha256": "f8f399b357d2abab46d0b3f3196e4c45f78d8817a37c8682915f0681126001c9",
+        "normalizedSha256": "92dfdea795e5e3467d413b8f41fde5537bfecb25a0cffaeee97e224cf068c613"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-014",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-017",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "·G1 coefficiente parziale dei carichi permanenti G1 \n;\n·G2 coefficiente parziale dei carichi permanenti non strutturali G 2 \n;\n·Qi coefficiente parziale delle azioni variabili Q.",
-        "normalized": "γG1 coefficiente parziale dei carichi permanenti G1 ; γG2 coefficiente parziale dei carichi permanenti non strutturali G 2 ; γQi coefficiente parziale delle azioni variabili Q.",
+        "raw": "·Qi coefficiente parziale delle azioni variabili Q.",
+        "normalized": "γQi coefficiente parziale delle azioni variabili Q.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
-          {
-            "kind": "math",
-            "value": "γG1",
-            "latex": "\\gamma_{G1}"
-          },
-          {
-            "kind": "text",
-            "value": " coefficiente parziale dei carichi permanenti "
-          },
-          {
-            "kind": "math",
-            "value": "G1",
-            "latex": "G_1"
-          },
-          {
-            "kind": "text",
-            "value": " ; "
-          },
-          {
-            "kind": "math",
-            "value": "γG2",
-            "latex": "\\gamma_{G2}"
-          },
-          {
-            "kind": "text",
-            "value": " coefficiente parziale dei carichi permanenti non strutturali G 2 ; "
-          },
           {
             "kind": "math",
             "value": "γQi",
@@ -1045,14 +1283,19 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Voce di elenco separata: nel render ufficiale il simbolo 'γQi' è il marcatore della propria voce (elenco senza trattini)."
           }
         ],
-        "rawSha256": "4f85d996e283211e6b623e3b03c1548e83bbb97edf791486fa67c1671944987c",
-        "normalizedSha256": "50d734b4cc7a3940c442cdc7e15cf7612c07415e5033a4aaee07446d0e99e35f"
+        "rawSha256": "1473eef9b2cdec16bc3537412a250a2c58d71bd71a5ac39aea3fa9694070ae58",
+        "normalizedSha256": "18ba7c74f0147176ddf3d6b4494c82721a0c0b90933448c99d528d1f3b5bf6a3"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-015",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1113,7 +1356,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-016",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-019",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1198,7 +1441,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-017",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.6.1#block-editorial-020",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1238,27 +1481,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-6-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-2-6-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Il segmento contiene candidati formula, tabella o figura che devono essere separati, trascritti e verificati come asset canonici."
+        "reviewId": "ntc2018-2-6-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

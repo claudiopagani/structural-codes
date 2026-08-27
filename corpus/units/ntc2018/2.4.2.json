@@ -156,7 +156,17 @@
       "text": {
         "raw": "Classe I: Costruzioni con presenza solo occasionale di persone, edifici agricoli.",
         "normalized": "Classe I: Costruzioni con presenza solo occasionale di persone, edifici agricoli.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Classe I"
+          },
+          {
+            "kind": "text",
+            "value": ": Costruzioni con presenza solo occasionale di persone, edifici agricoli."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -186,7 +196,17 @@
       "text": {
         "raw": "Classe II: Costruzioni il cui uso preveda normali affollamenti, senza contenuti pericolosi per l’ambiente e senza funzioni pubbli-\nche e sociali essenziali. Industrie con attività non pericolose per l’ambiente. Ponti, opere infrastrutturali, reti viarie non\nricadenti in Classe d’uso III o in Classe d’uso IV, reti ferroviarie la cui interruzione non provochi situazioni di emergen-\nza. Dighe il cui collasso non provochi conseguenze rilevanti.",
         "normalized": "Classe II: Costruzioni il cui uso preveda normali affollamenti, senza contenuti pericolosi per l’ambiente e senza funzioni pubbliche e sociali essenziali. Industrie con attività non pericolose per l’ambiente. Ponti, opere infrastrutturali, reti viarie non ricadenti in Classe d’uso III o in Classe d’uso IV, reti ferroviarie la cui interruzione non provochi situazioni di emergenza. Dighe il cui collasso non provochi conseguenze rilevanti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Classe II"
+          },
+          {
+            "kind": "text",
+            "value": ": Costruzioni il cui uso preveda normali affollamenti, senza contenuti pericolosi per l’ambiente e senza funzioni pubbliche e sociali essenziali. Industrie con attività non pericolose per l’ambiente. Ponti, opere infrastrutturali, reti viarie non ricadenti in Classe d’uso III o in Classe d’uso IV, reti ferroviarie la cui interruzione non provochi situazioni di emergenza. Dighe il cui collasso non provochi conseguenze rilevanti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -245,9 +265,19 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Classe III: Costruzioni il cui uso preveda affollamenti significativi. Industrie con attività pericolose per l’ambiente. Reti viarie e-\nxtraurbane non ricadenti in Classe d’uso IV. Ponti e reti ferroviarie la cui interruzione provochi situazioni di emergenza.",
-        "normalized": "Classe III: Costruzioni il cui uso preveda affollamenti significativi. Industrie con attività pericolose per l’ambiente. Reti viarie extraurbane non ricadenti in Classe d’uso IV. Ponti e reti ferroviarie la cui interruzione provochi situazioni di emergenza.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "Classe III: Costruzioni il cui uso preveda affollamenti significativi. Industrie con attività pericolose per l’ambiente. Reti viarie e-\nxtraurbane non ricadenti in Classe d’uso IV. Ponti e reti ferroviarie la cui interruzione provochi situazioni di emergenza.\nDighe rilevanti per le conseguenze di un loro eventuale collasso.",
+        "normalized": "Classe III: Costruzioni il cui uso preveda affollamenti significativi. Industrie con attività pericolose per l’ambiente. Reti viarie extraurbane non ricadenti in Classe d’uso IV. Ponti e reti ferroviarie la cui interruzione provochi situazioni di emergenza. Dighe rilevanti per le conseguenze di un loro eventuale collasso.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Classe III"
+          },
+          {
+            "kind": "text",
+            "value": ": Costruzioni il cui uso preveda affollamenti significativi. Industrie con attività pericolose per l’ambiente. Reti viarie extraurbane non ricadenti in Classe d’uso IV. Ponti e reti ferroviarie la cui interruzione provochi situazioni di emergenza. Dighe rilevanti per le conseguenze di un loro eventuale collasso."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -295,40 +325,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unita la frase 'Dighe rilevanti per le conseguenze di un loro eventuale collasso.' al capoverso della Classe III: nel render ufficiale prosegue nel corpo della classe (stacco di riga, non di capoverso)."
           }
         ],
-        "rawSha256": "a4619067388fcad4da1cdc3d778f162e8ba4b17197ce11e8ccda8629fb7f167e",
-        "normalizedSha256": "d406d01a8f8d41f9a9ed1831e7e37583c19165450a5a4c97aadf37bef4f2046b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.4.2#block-editorial-005",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Dighe rilevanti per le conseguenze di un loro eventuale collasso.",
-        "normalized": "Dighe rilevanti per le conseguenze di un loro eventuale collasso.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 41,
-        "printedPage": "37",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 74.907,
-          "y": 104.749,
-          "width": 445.066,
-          "height": 175.221
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "154d577cae1468d079892caa92fb37c1036144b6e9091a9b95be23f2d3bf8da9",
-        "normalizedSha256": "154d577cae1468d079892caa92fb37c1036144b6e9091a9b95be23f2d3bf8da9"
+        "rawSha256": "5e1cc8dd2b75007f0ce69bb0ee83678d2287123643414439ca3aba82a189a3fd",
+        "normalizedSha256": "51baf3bd8b8f2772bddbc58c5595f6240593949af97d18181f22ac82e2e07150"
       }
     },
     {
@@ -338,7 +343,17 @@
       "text": {
         "raw": "Classe IV: Costruzioni con funzioni pubbliche o strategiche importanti, anche con riferimento alla gestione della protezione civile in\ncaso di calamità. Industrie con attività particolarmente pericolose per l’ambiente. Reti viarie di tipo A o B, di cui al DM\n5/11/2001, n. 6792, “Norme funzionali e geometriche per la costruzione delle strade”, e di tipo C quando appartenenti ad i-\ntinerari di collegamento tra capoluoghi di provincia non altresì serviti da strade di tipo A o B. Ponti e reti ferroviarie di\nimportanza critica per il mantenimento delle vie di comunicazione, particolarmente dopo un evento sismico. Dighe con-\nnesse al funzionamento di acquedotti e a impianti di produzione di energia elettrica.",
         "normalized": "Classe IV: Costruzioni con funzioni pubbliche o strategiche importanti, anche con riferimento alla gestione della protezione civile in caso di calamità. Industrie con attività particolarmente pericolose per l’ambiente. Reti viarie di tipo A o B, di cui al DM 5/11/2001, n. 6792, “Norme funzionali e geometriche per la costruzione delle strade”, e di tipo C quando appartenenti ad itinerari di collegamento tra capoluoghi di provincia non altresì serviti da strade di tipo A o B. Ponti e reti ferroviarie di importanza critica per il mantenimento delle vie di comunicazione, particolarmente dopo un evento sismico. Dighe connesse al funzionamento di acquedotti e a impianti di produzione di energia elettrica.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Classe IV"
+          },
+          {
+            "kind": "text",
+            "value": ": Costruzioni con funzioni pubbliche o strategiche importanti, anche con riferimento alla gestione della protezione civile in caso di calamità. Industrie con attività particolarmente pericolose per l’ambiente. Reti viarie di tipo A o B, di cui al DM 5/11/2001, n. 6792, “Norme funzionali e geometriche per la costruzione delle strade”, e di tipo C quando appartenenti ad itinerari di collegamento tra capoluoghi di provincia non altresì serviti da strade di tipo A o B. Ponti e reti ferroviarie di importanza critica per il mantenimento delle vie di comunicazione, particolarmente dopo un evento sismico. Dighe connesse al funzionamento di acquedotti e a impianti di produzione di energia elettrica."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -401,21 +416,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-4-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-2-4-2-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

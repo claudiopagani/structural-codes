@@ -21,6 +21,8 @@ export interface CorpusBlock {
     normalizationVersion: string;
     inline?: Array<
       | { kind: "text"; value: string }
+      | { kind: "em"; value: string }
+      | { kind: "strong"; value: string }
       | { kind: "math"; value: string; latex: string }
     >;
   };

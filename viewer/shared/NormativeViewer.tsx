@@ -18,7 +18,7 @@ import {
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
-import { BlockContent, hasOfficialListMarker, isRepeatedUnitTitle } from "./CorpusContent";
+import { BlockContent, hasOfficialListMarker, hasTrailingStrong, isRepeatedUnitTitle } from "./CorpusContent";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
@@ -356,8 +356,8 @@ export function NormativeViewer({
   function renderRecord({ unit, chunk: unitChunk }: UnitRecord) {
     return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} key={unit.id}>
       <h2><span>{unit.numbering.official}</span>{unit.title}</h2>
-      <div className="scv-unit-blocks">{unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""}`} key={block.blockId}><BlockContent block={block} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>
-      {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span>{relatedUnit.numbering.official}</span>{relatedUnit.title}</h3></header><div className="scv-unit-blocks">{relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""}`} key={block.blockId}><BlockContent block={block} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div></section>)}
+      <div className="scv-unit-blocks">{unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""}`} key={block.blockId}><BlockContent block={block} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>
+      {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span>{relatedUnit.numbering.official}</span>{relatedUnit.title}</h3></header><div className="scv-unit-blocks">{relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""}`} key={block.blockId}><BlockContent block={block} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div></section>)}
     </section>;
   }
 

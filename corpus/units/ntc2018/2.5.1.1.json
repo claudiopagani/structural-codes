@@ -63,9 +63,23 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "a) dirette:\nforze concentrate, carichi distribuiti, fissi o mobili;",
-        "normalized": "a) dirette: forze concentrate, carichi distribuiti, fissi o mobili;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "a) dirette:",
+        "normalized": "a) dirette:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) "
+          },
+          {
+            "kind": "em",
+            "value": "dirette"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -113,19 +127,24 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la descrizione dalla voce di elenco: nel render ufficiale la descrizione inizia sulla riga successiva alla voce 'a) dirette:'."
           }
         ],
-        "rawSha256": "2be3ee314fbb6aeb7cf6dcaf2ee68cb2d3d9fa84c425bc805fe11802bc6544eb",
-        "normalizedSha256": "95e56f599c8d7208e7393999a1e029702c3272e6ba2fd86146df7717d14dd94d"
+        "rawSha256": "6974aea8654252f38d105ac35851cab22af51f50ca14d2df6e31d88943d2316a",
+        "normalizedSha256": "6974aea8654252f38d105ac35851cab22af51f50ca14d2df6e31d88943d2316a"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-002",
-      "kind": "list-item",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "b) indirette:\nspostamenti impressi, variazioni di temperatura e di umidità, ritiro, precompressione, cedimenti di vincoli, ecc.",
-        "normalized": "b) indirette: spostamenti impressi, variazioni di temperatura e di umidità, ritiro, precompressione, cedimenti di vincoli, ecc.",
+        "raw": "forze concentrate, carichi distribuiti, fissi o mobili;",
+        "normalized": "forze concentrate, carichi distribuiti, fissi o mobili;",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -174,10 +193,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Descrizione della voce 'a) dirette:' separata in blocco proprio: nel render ufficiale inizia sulla riga successiva alla voce."
           }
         ],
-        "rawSha256": "4c2520286892bc04b4d4778784aa4b9185a4a47d0310b5da4f504c08ecf56014",
-        "normalizedSha256": "c36202b0c74def4b40d11f0f63caf527f1500ae49cd51db1bc255f87c72685df"
+        "rawSha256": "32a1eba348c0844427a8a3af439a57e21abbea02023a5fd1364ccb426a15b11a",
+        "normalizedSha256": "32a1eba348c0844427a8a3af439a57e21abbea02023a5fd1364ccb426a15b11a"
       }
     },
     {
@@ -185,9 +209,169 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
+        "raw": "b) indirette:",
+        "normalized": "b) indirette:",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) "
+          },
+          {
+            "kind": "em",
+            "value": "indirette"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 41,
+        "printedPage": "37",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.909,
+          "y": 532.305,
+          "width": 399.353,
+          "height": 82.691
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la descrizione dalla voce di elenco: nel render ufficiale la descrizione inizia sulla riga successiva alla voce 'b) indirette:'."
+          }
+        ],
+        "rawSha256": "ea51653209134c2032033fd7a6d57b707d11f8a7dc501b59bbe867da86e3c6e9",
+        "normalizedSha256": "ea51653209134c2032033fd7a6d57b707d11f8a7dc501b59bbe867da86e3c6e9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-004",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "spostamenti impressi, variazioni di temperatura e di umidità, ritiro, precompressione, cedimenti di vincoli, ecc.",
+        "normalized": "spostamenti impressi, variazioni di temperatura e di umidità, ritiro, precompressione, cedimenti di vincoli, ecc.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 41,
+        "printedPage": "37",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.909,
+          "y": 532.305,
+          "width": 399.353,
+          "height": 82.691
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Descrizione della voce 'b) indirette:' separata in blocco proprio: nel render ufficiale inizia sulla riga successiva alla voce."
+          }
+        ],
+        "rawSha256": "5f6c8dd88ee8d2315944966ce762fd1b090ae0c370902d2c1fdf5e5962056ced",
+        "normalizedSha256": "5f6c8dd88ee8d2315944966ce762fd1b090ae0c370902d2c1fdf5e5962056ced"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
         "raw": "c) degrado:",
         "normalized": "c) degrado:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) "
+          },
+          {
+            "kind": "em",
+            "value": "degrado"
+          },
+          {
+            "kind": "text",
+            "value": ":"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -211,7 +395,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-006",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -272,7 +456,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:2.5.1.1#block-editorial-007",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -341,21 +525,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-5-1-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-2-5-1-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

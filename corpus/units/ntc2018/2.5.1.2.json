@@ -65,7 +65,21 @@
       "text": {
         "raw": "a) statiche: azioni applicate alla struttura che non provocano accelerazioni significative della stessa o di alcune sue parti;",
         "normalized": "a) statiche: azioni applicate alla struttura che non provocano accelerazioni significative della stessa o di alcune sue parti;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) "
+          },
+          {
+            "kind": "em",
+            "value": "statiche"
+          },
+          {
+            "kind": "text",
+            "value": ": azioni applicate alla struttura che non provocano accelerazioni significative della stessa o di alcune sue parti;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -95,7 +109,21 @@
       "text": {
         "raw": "b) pseudo statiche: azioni dinamiche rappresentabili mediante un’azione statica equivalente;",
         "normalized": "b) pseudo statiche: azioni dinamiche rappresentabili mediante un’azione statica equivalente;",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) "
+          },
+          {
+            "kind": "em",
+            "value": "pseudo statiche"
+          },
+          {
+            "kind": "text",
+            "value": ": azioni dinamiche rappresentabili mediante un’azione statica equivalente;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -125,7 +153,21 @@
       "text": {
         "raw": "c) dinamiche: azioni che causano significative accelerazioni della struttura o dei suoi componenti.",
         "normalized": "c) dinamiche: azioni che causano significative accelerazioni della struttura o dei suoi componenti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) "
+          },
+          {
+            "kind": "em",
+            "value": "dinamiche"
+          },
+          {
+            "kind": "text",
+            "value": ": azioni che causano significative accelerazioni della struttura o dei suoi componenti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -157,21 +199,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-2-5-1-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-2-5-1-2-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T23:33:11Z",
+        "result": "accepted",
+        "note": "Capitolo 2 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

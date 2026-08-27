@@ -499,6 +499,40 @@
                     "additionalProperties": false,
                     "required": [
                         "kind",
+                        "value"
+                    ],
+                    "properties": {
+                        "kind": {
+                            "const": "em"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
+                        "value"
+                    ],
+                    "properties": {
+                        "kind": {
+                            "const": "strong"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
                         "value",
                         "latex"
                     ],
