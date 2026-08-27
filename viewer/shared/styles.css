@@ -93,11 +93,10 @@
 .scv-unit-depth-0 h2 { margin-top: 18px; color: var(--scv-primary-dark); font-size: 19px; }
 .scv-unit:first-child h2 { margin-top: 0; }
 .scv-unit-blocks { display: block; }
-.scv-block { display: contents; }
-.scv-block p { display: inline; margin: 0; color: #272c35; font-family: "Tinos", serif; font-size: 13px; line-height: 1.48; }
-.scv-block p::after { content: " "; }
+.scv-block { display: block; }
+.scv-block p { display: block; margin: 0 0 8px; color: #272c35; font-family: "Tinos", serif; font-size: 13px; line-height: 1.48; }
 .scv-block-heading, .scv-block-list-item, .scv-block-formula-ref, .scv-block-table-ref, .scv-block-figure-ref { display: block; }
-.scv-block-heading p { display: block; margin: 6px 0 2px; font-weight: 700; }
+.scv-block-heading p { display: block; margin: 8px 0 4px; font-weight: 700; }
 .scv-block-list-item { padding-left: 11px; }
 .scv-block-list-item p::before { margin-right: 5px; color: var(--scv-primary); content: "–"; font-weight: 700; }
 .scv-block-list-item.list-item-with-official-marker { padding-left: 0; }

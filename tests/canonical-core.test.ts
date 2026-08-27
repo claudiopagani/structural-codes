@@ -68,7 +68,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
     };
     const units = await loadUnits();
 
-    assert.equal(manifest.status, "canonical-extracted-not-reviewed");
+    assert.equal(manifest.status, "canonical-partially-source-checked");
     assert.deepEqual(Object.keys(manifest.documents).sort(), [
         "circ2019",
         "ntc2018",
@@ -85,20 +85,48 @@ test("il manifest descrive l'intero corpus canonico", async () => {
     );
 });
 
-test("tutte le unità restano estratte e bloccate dalla review", async () => {
+const sourceCheckedUnitIds = new Set([
+    "urn:structural-codes:it:unit:ntc2018:1",
+    "urn:structural-codes:it:unit:ntc2018:1.1",
+]);
+
+test("le unità verificate sono source-checked, le altre restano estratte e bloccate dalla review", async () => {
     const units = await loadUnits();
 
     for (const unit of units) {
-        assert.equal(unit.workflow.status, "extracted", unit.id);
-        assert.equal(
-            unit.workflow.openIssues.some(
-                (issue) =>
-                    issue.severity === "blocking" &&
-                    issue.type === "normalization-review",
-            ),
-            true,
-            unit.id,
-        );
+        if (sourceCheckedUnitIds.has(unit.id)) {
+            assert.equal(unit.workflow.status, "source-checked", unit.id);
+            assert.equal(
+                unit.workflow.openIssues.some(
+                    (issue) =>
+                        issue.severity === "blocking" &&
+                        issue.type === "normalization-review",
+                ),
+                false,
+                unit.id,
+            );
+            assert.equal(
+                unit.workflow.reviews.some(
+                    (review) =>
+                        review.type === "source" &&
+                        review.result === "accepted" &&
+                        review.reviewer.kind === "human",
+                ),
+                true,
+                unit.id,
+            );
+        } else {
+            assert.equal(unit.workflow.status, "extracted", unit.id);
+            assert.equal(
+                unit.workflow.openIssues.some(
+                    (issue) =>
+                        issue.severity === "blocking" &&
+                        issue.type === "normalization-review",
+                ),
+                true,
+                unit.id,
+            );
+        }
     }
 });
 

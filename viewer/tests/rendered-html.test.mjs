@@ -43,7 +43,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.stats.blocks, 11014);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 0);
+  assert.equal(manifest.stats.reviewedUnits, 2);
   assert.equal(manifest.stats.assetUnits, 434);
   assert.equal(manifest.stats.formulas, 888);
   assert.equal(manifest.stats.tables, 219);
@@ -74,7 +74,17 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   }
   const units = [...chunks.values()].flatMap(({ units }) => units);
   assert.equal(units.length, 1745);
-  assert.equal(units.every((unit) => unit.workflow.status === "extracted"), true);
+  assert.equal(
+    units.every((unit) => unit.workflow.status === "extracted" || unit.workflow.status === "source-checked"),
+    true,
+  );
+  assert.deepEqual(
+    units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
+    [
+      "urn:structural-codes:it:unit:ntc2018:1",
+      "urn:structural-codes:it:unit:ntc2018:1.1",
+    ],
+  );
 
   const assets = { formulas: new Map(), tables: new Map(), figures: new Map() };
   for (const chunk of chunks.values()) {

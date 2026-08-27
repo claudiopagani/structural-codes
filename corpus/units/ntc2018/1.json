@@ -91,7 +91,7 @@
       "origin": "official",
       "text": {
         "raw": "PPREMESSA",
-        "normalized": "PPREMESSA",
+        "normalized": "PREMESSA",
         "normalizationVersion": "core-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -110,9 +110,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosso il glifo 'P' iniziale duplicato nel layer testuale della fonte; il render ufficiale mostra 'PREMESSA' (stesso artefatto della 'C' duplicata in 'CCAPITOLO')."
+          }
+        ],
         "rawSha256": "ed61adad3736aa39391814785143ea26daf1909b1ef429de7347987c3fba8fe8",
-        "normalizedSha256": "ed61adad3736aa39391814785143ea26daf1909b1ef429de7347987c3fba8fe8"
+        "normalizedSha256": "6042812f7a2b1ef09e4cf012c33b8af1ad630ace25612ac58d7445d4e66d7c69"
       }
     },
     {
@@ -185,21 +191,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-08-27T22:18:53Z",
+        "result": "accepted",
+        "note": "Confronto integrale con il render ufficiale (pagine PDF 35–36): corretto il titolo 'PREMESSA' (glifo 'P' duplicato nel layer testuale della fonte), testo della Premessa e capoversi verificati; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }
