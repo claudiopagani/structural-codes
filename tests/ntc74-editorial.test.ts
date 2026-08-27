@@ -68,6 +68,8 @@ test("NTC 7.4 conserva la sequenza ufficiale delle formule", async () => {
             "7.4.31b",
             "7.4.31c",
             "7.4.31d",
+            "7.4.32",
+            "7.4.33",
         ],
     );
     assert.equal(
@@ -82,7 +84,7 @@ test("NTC 7.4 conserva la sequenza ufficiale delle formule", async () => {
             ({ officialNumber }: { officialNumber: string }) =>
                 officialNumber === "7.4.31d",
         )?.latex,
-        "\\alpha_s=\\left[1-\\frac{s}{2D_0}\\right]^\\beta",
+        "\\alpha_s=\\left[1-\\frac{s}{2\\cdot D_0}\\right]^\\beta",
     );
 });
 

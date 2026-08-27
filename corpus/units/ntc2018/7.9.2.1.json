@@ -94,7 +94,16 @@
           },
           {
             "kind": "text",
-            "value": " è assunto pari a 1,0."
+            "value": " è assunto pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -158,7 +167,16 @@
           },
           {
             "kind": "text",
-            "value": ", se α ≥ 3, "
+            "value": ", se "
+          },
+          {
+            "kind": "math",
+            "value": "α ≥ 3",
+            "latex": "\\alpha\\ge3"
+          },
+          {
+            "kind": "text",
+            "value": ", "
           },
           {
             "kind": "math",
@@ -167,7 +185,16 @@
           },
           {
             "kind": "text",
-            "value": ", se 3 > α ≥ 1, essendo "
+            "value": ", se "
+          },
+          {
+            "kind": "math",
+            "value": "3 > α ≥ 1",
+            "latex": "3>\\alpha\\ge1"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
           },
           {
             "kind": "math",
@@ -176,7 +203,25 @@
           },
           {
             "kind": "text",
-            "value": ", dove L è la distanza della sezione di cerniera plastica dalla sezione di momento nullo ed H è la dimensione della sezione nel piano di inflessione della cerniera plastica."
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " è la distanza della sezione di cerniera plastica dalla sezione di momento nullo ed "
+          },
+          {
+            "kind": "math",
+            "value": "H",
+            "latex": "H"
+          },
+          {
+            "kind": "text",
+            "value": " è la dimensione della sezione nel piano di inflessione della cerniera plastica."
           }
         ]
       },
@@ -258,30 +303,21 @@
           },
           {
             "kind": "math",
-            "value": "ν_k",
-            "latex": "\\nu_k"
+            "value": "ν_k = N_Ed/A_c f_ck",
+            "latex": "\\nu_k=N_{Ed}/A_c f_{ck}"
           },
           {
             "kind": "text",
-            "value": " = "
+            "value": "), non eccede il valore "
           },
           {
             "kind": "math",
-            "value": "N_Ed",
-            "latex": "N_{Ed}"
+            "value": "0,3",
+            "latex": "0{,}3"
           },
           {
             "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "A_c f_ck",
-            "latex": "A_c f_{ck}"
-          },
-          {
-            "kind": "text",
-            "value": "), non eccede il valore 0,3."
+            "value": "."
           }
         ]
       },
@@ -396,7 +432,25 @@
           },
           {
             "kind": "text",
-            "value": " intermedi tra 0,3 e 0,6, il valore di "
+            "value": " intermedi tra "
+          },
+          {
+            "kind": "math",
+            "value": "0,3",
+            "latex": "0{,}3"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "0,6",
+            "latex": "0{,}6"
+          },
+          {
+            "kind": "text",
+            "value": ", il valore di "
           },
           {
             "kind": "math",
@@ -536,12 +590,21 @@
       "origin": "official",
       "text": {
         "raw": "Nella tabella 7.3.II sono riportate anche le strutture che si muovono con il terreno. Esse non subiscono amplificazione\ndell’accelerazione del suolo poiché sono caratterizzate da periodi naturali di vibrazione in direzione orizzontale molto bassi (T\nǂ0,03 s). Appartengono a questa categoria anche le spalle connesse all’impalcato mediante collegamenti flessibili o appoggi\nmobili.",
-        "normalized": "Nella tabella 7.3.II sono riportate anche le strutture che si muovono con il terreno. Esse non subiscono amplificazione dell’accelerazione del suolo poiché sono caratterizzate da periodi naturali di vibrazione in direzione orizzontale molto bassi (T ǂ0,03 s). Appartengono a questa categoria anche le spalle connesse all’impalcato mediante collegamenti flessibili o appoggi mobili.",
+        "normalized": "Nella tabella 7.3.II sono riportate anche le strutture che si muovono con il terreno. Esse non subiscono amplificazione dell’accelerazione del suolo poiché sono caratterizzate da periodi naturali di vibrazione in direzione orizzontale molto bassi (T ≤ 0,03 s). Appartengono a questa categoria anche le spalle connesse all’impalcato mediante collegamenti flessibili o appoggi mobili.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nella tabella 7.3.II sono riportate anche le strutture che si muovono con il terreno. Esse non subiscono amplificazione dell’accelerazione del suolo poiché sono caratterizzate da periodi naturali di vibrazione in direzione orizzontale molto bassi (T ǂ0,03 s). Appartengono a questa categoria anche le spalle connesse all’impalcato mediante collegamenti flessibili o appoggi mobili."
+            "value": "Nella tabella 7.3.II sono riportate anche le strutture che si muovono con il terreno. Esse non subiscono amplificazione dell’accelerazione del suolo poiché sono caratterizzate da periodi naturali di vibrazione in direzione orizzontale molto bassi ("
+          },
+          {
+            "kind": "math",
+            "value": "T ≤ 0,03 s",
+            "latex": "T\\le0{,}03\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": "). Appartengono a questa categoria anche le spalle connesse all’impalcato mediante collegamenti flessibili o appoggi mobili."
           }
         ]
       },
@@ -560,6 +623,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -573,7 +641,7 @@
           }
         ],
         "rawSha256": "1509d1e93c81790160ad807a2b5819e016af9acb9beac073dd176c6cc9cc3848",
-        "normalizedSha256": "77330fea676d54a60c886afb111ba53c43764e9b049c260f8ed94aa822028cd3"
+        "normalizedSha256": "2965f0d41601e0e4c71db81de4b89bdee92db299361ec809d6037863ba16a627"
       }
     },
     {
@@ -582,12 +650,21 @@
       "origin": "official",
       "text": {
         "raw": "Per ciascuna delle due direzioni principali, i valori massimi q0 del fattore di comportamento sono da applicare, nel caso di ponti\nisostatici, alle singole pile, nel caso di ponti a travata continua, all’intera opera.",
-        "normalized": "Per ciascuna delle due direzioni principali, i valori massimi q0 del fattore di comportamento sono da applicare, nel caso di ponti isostatici, alle singole pile, nel caso di ponti a travata continua, all’intera opera.",
+        "normalized": "Per ciascuna delle due direzioni principali, i valori massimi q_0 del fattore di comportamento sono da applicare, nel caso di ponti isostatici, alle singole pile, nel caso di ponti a travata continua, all’intera opera.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per ciascuna delle due direzioni principali, i valori massimi q0 del fattore di comportamento sono da applicare, nel caso di ponti isostatici, alle singole pile, nel caso di ponti a travata continua, all’intera opera."
+            "value": "Per ciascuna delle due direzioni principali, i valori massimi "
+          },
+          {
+            "kind": "math",
+            "value": "q_0",
+            "latex": "q_0"
+          },
+          {
+            "kind": "text",
+            "value": " del fattore di comportamento sono da applicare, nel caso di ponti isostatici, alle singole pile, nel caso di ponti a travata continua, all’intera opera."
           }
         ]
       },
@@ -608,6 +685,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -619,7 +701,7 @@
           }
         ],
         "rawSha256": "22e5a9b42420b0f7e97f3c91d666e25dc48e4450e8d66e5f7a2bb4df94883833",
-        "normalizedSha256": "aa03c0bd7ff8d03473736cf4cdb7bab6e541feea6c37c83eb619c85199993ed1"
+        "normalizedSha256": "f6c03b2ce1c27de6e37a916da53f23c22396a2d3b6cde598e4388ec3d4a4364c"
       }
     },
     {
@@ -748,7 +830,25 @@
           },
           {
             "kind": "text",
-            "value": ", dove M_Ed,i è il momento alla base dell’elemento duttile i-esimo prodotto dalla combinazione sismica di progetto, M_Rd,i è il corrispondente momento resistente;"
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "M_Ed,i",
+            "latex": "M_{Ed,i}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento alla base dell’elemento duttile i-esimo prodotto dalla combinazione sismica di progetto, "
+          },
+          {
+            "kind": "math",
+            "value": "M_Rd,i",
+            "latex": "M_{Rd,i}"
+          },
+          {
+            "kind": "text",
+            "value": " è il corrispondente momento resistente;"
           }
         ]
       },
@@ -799,7 +899,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "la geometria del ponte si considera “regolare” se il rapporto tra il massimo ed il minimo dei rapporti r_i, calcolati per le pile facenti parte del sistema resistente al sisma nella direzione considerata, risulta inferiore a 2 ("
+            "value": "la geometria del ponte si considera “regolare” se il rapporto tra il massimo ed il minimo dei rapporti "
+          },
+          {
+            "kind": "math",
+            "value": "r_i",
+            "latex": "r_i"
+          },
+          {
+            "kind": "text",
+            "value": ", calcolati per le pile facenti parte del sistema resistente al sisma nella direzione considerata, risulta inferiore a 2 ("
           },
           {
             "kind": "math",
@@ -1004,12 +1113,39 @@
       "origin": "official",
       "text": {
         "raw": "Ai fini della determinazione di rmax e rmin nella direzione orizzontale considerata si possono escludere le pile la cui resistenza a\ntaglio non ecceda il 20% della resistenza sismica totale diviso il numero degli elementi resistenti.",
-        "normalized": "Ai fini della determinazione di rmax e rmin nella direzione orizzontale considerata si possono escludere le pile la cui resistenza a taglio non ecceda il 20% della resistenza sismica totale diviso il numero degli elementi resistenti.",
+        "normalized": "Ai fini della determinazione di r_max e r_min nella direzione orizzontale considerata si possono escludere le pile la cui resistenza a taglio non ecceda il 20% della resistenza sismica totale diviso il numero degli elementi resistenti.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Ai fini della determinazione di rmax e rmin nella direzione orizzontale considerata si possono escludere le pile la cui resistenza a taglio non ecceda il 20% della resistenza sismica totale diviso il numero degli elementi resistenti."
+            "value": "Ai fini della determinazione di "
+          },
+          {
+            "kind": "math",
+            "value": "r_max",
+            "latex": "r_{\\max}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "r_min",
+            "latex": "r_{\\min}"
+          },
+          {
+            "kind": "text",
+            "value": " nella direzione orizzontale considerata si possono escludere le pile la cui resistenza a taglio non ecceda il "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della resistenza sismica totale diviso il numero degli elementi resistenti."
           }
         ]
       },
@@ -1030,6 +1166,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -1041,7 +1182,7 @@
           }
         ],
         "rawSha256": "bfa22a6aa4e9883de06bbf76be9de5f3fc6be0d90d02982649b45e147465f880",
-        "normalizedSha256": "71eb49df35b4e7a44ac1cc74d67431c7db4bdeec9eaa38fd68c19eaef5580d5d"
+        "normalizedSha256": "61d341c858f8d7984d4b309c242a81411e4bb756359d16d92d517aaf5673b604"
       }
     },
     {
@@ -1055,7 +1196,52 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per ponti a geometria irregolare (ad esempio con angolo di obliquità maggiore di 45°, con raggio di curvatura molto ridotto, ecc.) si adotta un fattore di comportamento q pari a 1,5. Valori maggiori di 1,5, e comunque non superiori a 3,5, possono essere adottati solo qualora le richieste di duttilità siano verificate mediante analisi non lineare."
+            "value": "Per ponti a geometria irregolare (ad esempio con angolo di obliquità maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "45°",
+            "latex": "45^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ", con raggio di curvatura molto ridotto, ecc.) si adotta un fattore di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": " pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,5",
+            "latex": "1{,}5"
+          },
+          {
+            "kind": "text",
+            "value": ". Valori maggiori di "
+          },
+          {
+            "kind": "math",
+            "value": "1,5",
+            "latex": "1{,}5"
+          },
+          {
+            "kind": "text",
+            "value": ", e comunque non superiori a "
+          },
+          {
+            "kind": "math",
+            "value": "3,5",
+            "latex": "3{,}5"
+          },
+          {
+            "kind": "text",
+            "value": ", possono essere adottati solo qualora le richieste di duttilità siano verificate mediante analisi non lineare."
           }
         ]
       },

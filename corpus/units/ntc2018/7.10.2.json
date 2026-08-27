@@ -413,12 +413,21 @@
       "origin": "official",
       "text": {
         "raw": "La sovrastruttura e la sottostruttura si devono mantenere in campo sostanzialmente elastico. Per questo la struttura può essere\nprogettata con riferimento ai particolari costruttivi richiesti per le costruzioni caratterizzate, allo SLV, da a g \nS ǂ0,075g, con deroga, per\nle strutture in c.a., a quanto previsto al § 7.4.6 e al § 7.9.6.",
-        "normalized": "La sovrastruttura e la sottostruttura si devono mantenere in campo sostanzialmente elastico. Per questo la struttura può essere progettata con riferimento ai particolari costruttivi richiesti per le costruzioni caratterizzate, allo SLV, da a g S ǂ0,075g, con deroga, per le strutture in c.a., a quanto previsto al § 7.4.6 e al § 7.9.6.",
+        "normalized": "La sovrastruttura e la sottostruttura si devono mantenere in campo sostanzialmente elastico. Per questo la struttura può essere progettata con riferimento ai particolari costruttivi richiesti per le costruzioni caratterizzate, allo SLV, da a_g S ≤ 0,075g, con deroga, per le strutture in c.a., a quanto previsto al § 7.4.6 e al § 7.9.6.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La sovrastruttura e la sottostruttura si devono mantenere in campo sostanzialmente elastico. Per questo la struttura può essere progettata con riferimento ai particolari costruttivi richiesti per le costruzioni caratterizzate, allo SLV, da a g S ǂ0,075g, con deroga, per le strutture in c.a., a quanto previsto al § 7.4.6 e al § 7.9.6."
+            "value": "La sovrastruttura e la sottostruttura si devono mantenere in campo sostanzialmente elastico. Per questo la struttura può essere progettata con riferimento ai particolari costruttivi richiesti per le costruzioni caratterizzate, allo SLV, da "
+          },
+          {
+            "kind": "math",
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_gS\\le0{,}075g"
+          },
+          {
+            "kind": "text",
+            "value": ", con deroga, per le strutture in c.a., a quanto previsto al § 7.4.6 e al § 7.9.6."
           }
         ]
       },
@@ -439,6 +448,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -450,7 +464,7 @@
           }
         ],
         "rawSha256": "a74a1c6da7a9acf989d81ce6fcad35bda00372cca46242b4bd9c3644365cd0c9",
-        "normalizedSha256": "9917e7ee229ccaae292ef6e72600a0166aae764e6a1da97ae180b88ed6dbd5e1"
+        "normalizedSha256": "837b9f74196a0185c3c45f280131dc8a06cfe741f128a7f42a0b070139538ade"
       }
     },
     {

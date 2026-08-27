@@ -103,7 +103,40 @@
       "text": {
         "raw": "Gli elementi di connessione vengono denominati “corti” quando la plasticizzazione avviene per taglio, “lunghi” quando la\nplasticizzazione avviene per flessione e “intermedi” quando la plasticizzazione è un effetto combinato di taglio e flessione. In\nrelazione alla lunghezza “e” dell’elemento di connessione, si adotta la classificazione seguente:",
         "normalized": "Gli elementi di connessione vengono denominati “corti” quando la plasticizzazione avviene per taglio, “lunghi” quando la plasticizzazione avviene per flessione e “intermedi” quando la plasticizzazione è un effetto combinato di taglio e flessione. In relazione alla lunghezza “e” dell’elemento di connessione, si adotta la classificazione seguente:",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli elementi di connessione vengono denominati “corti” quando la plasticizzazione avviene per taglio, “lunghi” quando la plasticizzazione avviene per flessione "
+          },
+          {
+            "kind": "math",
+            "value": "e",
+            "latex": "e"
+          },
+          {
+            "kind": "text",
+            "value": " “intermedi” quando la plasticizzazione è un effetto combinato di taglio "
+          },
+          {
+            "kind": "math",
+            "value": "e",
+            "latex": "e"
+          },
+          {
+            "kind": "text",
+            "value": " flessione. In relazione alla lunghezza “"
+          },
+          {
+            "kind": "math",
+            "value": "e",
+            "latex": "e"
+          },
+          {
+            "kind": "text",
+            "value": "” dell’elemento di connessione, si adotta la classificazione seguente:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -320,8 +353,32 @@
       "origin": "official",
       "text": {
         "raw": "Per le sezioni ad I la capacità a flessione, Ml,Rd, e la capacità a taglio, Vl,Rd, dell’elemento di connessione sono definiti, in assenza di\ndomanda a sforzo normale, rispettivamente dalle formule:",
-        "normalized": "Per le sezioni ad I la capacità a flessione, Ml,Rd, e la capacità a taglio, Vl,Rd, dell’elemento di connessione sono definiti, in assenza di domanda a sforzo normale, rispettivamente dalle formule:",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "Per le sezioni ad I la capacità a flessione, M_{l,Rd}, e la capacità a taglio, V_{l,Rd}, dell’elemento di connessione sono definiti, in assenza di domanda a sforzo normale, rispettivamente dalle formule:",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le sezioni ad I la capacità a flessione, "
+          },
+          {
+            "kind": "math",
+            "value": "M_{l,Rd}",
+            "latex": "M_{l,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", e la capacità a taglio, "
+          },
+          {
+            "kind": "math",
+            "value": "V_{l,Rd}",
+            "latex": "V_{l,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", dell’elemento di connessione sono definiti, in assenza di domanda a sforzo normale, rispettivamente dalle formule:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -356,7 +413,7 @@
           }
         ],
         "rawSha256": "6d123fa81c01c41b9d82a9af9620a9b7a9c9c1eebf821cdb9924d4640951d5cb",
-        "normalizedSha256": "f71ae10f3d600c0089135a7d83b53a55da0aa86db62968497d55b8f5573aabf3"
+        "normalizedSha256": "8aa539a7ccf06e6693729a070d8d61bd187014012d1dcb04996253e9899183c3"
       }
     },
     {
@@ -410,7 +467,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "essendo b e "
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -419,7 +485,16 @@
           },
           {
             "kind": "text",
-            "value": " la larghezza e lo spessore della flangia, h l’altezza della sezione e "
+            "value": " la larghezza e lo spessore della flangia, "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " l’altezza della sezione e "
           },
           {
             "kind": "math",
@@ -483,21 +558,12 @@
           },
           {
             "kind": "math",
-            "value": "N_{Ed}",
-            "latex": "N_{Ed}"
+            "value": "N_{Ed}/N_{pl,Rd} < 0,15",
+            "latex": "\\frac{N_{Ed}}{N_{pl,Rd}}<0{,}15"
           },
           {
             "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "N_{pl,Rd}",
-            "latex": "N_{pl,Rd}"
-          },
-          {
-            "kind": "text",
-            "value": " < 0,15 occorre che ad entrambe le estremità del collegamento la capacità a taglio ed a flessione siano maggiori della corrispondente domanda:"
+            "value": " occorre che ad entrambe le estremità del collegamento la capacità a taglio ed a flessione siano maggiori della corrispondente domanda:"
           }
         ]
       },
@@ -684,7 +750,16 @@
           },
           {
             "kind": "text",
-            "value": " agente sull’elemento di connessione supera il 15% della corrispondente capacità della sezione costituente l’elemento "
+            "value": " agente sull’elemento di connessione supera il "
+          },
+          {
+            "kind": "math",
+            "value": "15%",
+            "latex": "15\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della corrispondente capacità della sezione costituente l’elemento "
           },
           {
             "kind": "math",
@@ -797,8 +872,23 @@
       "origin": "official",
       "text": {
         "raw": "Se N Ed/N pl,Rd ǃ 0,15 occorre anche che sia:",
-        "normalized": "Se N Ed/N pl,Rd ǃ 0,15 occorre anche che sia:",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "Se N_{Ed}/N_{pl,Rd} ≥ 0,15 occorre anche che sia:",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Se "
+          },
+          {
+            "kind": "math",
+            "value": "N_{Ed}/N_{pl,Rd} ≥ 0,15",
+            "latex": "\\frac{N_{Ed}}{N_{pl,Rd}}\\ge0{,}15"
+          },
+          {
+            "kind": "text",
+            "value": " occorre anche che sia:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -810,9 +900,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "0a470e4503f6adb9a5b999f28a07b80fb9fa720f545572b6cac29f8da0dbc6a0",
-        "normalizedSha256": "0a470e4503f6adb9a5b999f28a07b80fb9fa720f545572b6cac29f8da0dbc6a0"
+        "normalizedSha256": "5b1adecaa820c034f20493489a11b88316cb559f5b994088f8bb69af0a6ae574"
       }
     },
     {
@@ -870,48 +971,21 @@
           },
           {
             "kind": "math",
-            "value": "R",
-            "latex": "R"
+            "value": "R = N_{Ed} t_w (d - 2t_f) / (V_{Ed} A)",
+            "latex": "R=\\frac{N_{Ed}t_w(d-2t_f)}{V_{Ed}A}"
           },
           {
             "kind": "text",
-            "value": " = "
+            "value": ", in cui "
           },
           {
             "kind": "math",
-            "value": "N_{Ed}",
-            "latex": "N_{Ed}"
+            "value": "A",
+            "latex": "A"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "t_w",
-            "latex": "t_w"
-          },
-          {
-            "kind": "text",
-            "value": " (d - 2"
-          },
-          {
-            "kind": "math",
-            "value": "t_f",
-            "latex": "t_f"
-          },
-          {
-            "kind": "text",
-            "value": ") / ("
-          },
-          {
-            "kind": "math",
-            "value": "V_{Ed}",
-            "latex": "V_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " A), in cui A è l’area lorda del collegamento."
+            "value": " è l’area lorda del collegamento."
           }
         ]
       },
@@ -1051,30 +1125,12 @@
         "inline": [
           {
             "kind": "math",
-            "value": "N_{Rd}",
-            "latex": "N_{Rd}"
+            "value": "N_{Rd}(M_{Ed}, V_{Ed})",
+            "latex": "N_{Rd}(M_{Ed},V_{Ed})"
           },
           {
             "kind": "text",
-            "value": "("
-          },
-          {
-            "kind": "math",
-            "value": "M_{Ed}",
-            "latex": "M_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "V_{Ed}",
-            "latex": "V_{Ed}"
-          },
-          {
-            "kind": "text",
-            "value": ") è la capacità a sforzo normale di progetto della colonna o dell’elemento diagonale valutata tenendo conto dell’interazione con la domanda a flessione ed a taglio, "
+            "value": " è la capacità a sforzo normale di progetto della colonna o dell’elemento diagonale valutata tenendo conto dell’interazione con la domanda a flessione ed a taglio, "
           },
           {
             "kind": "math",
@@ -1305,26 +1361,8 @@
           },
           {
             "kind": "math",
-            "value": "Ω_i",
-            "latex": "\\Omega_i"
-          },
-          {
-            "kind": "text",
-            "value": " = 1,5 "
-          },
-          {
-            "kind": "math",
-            "value": "V_{l,Rd,i}",
-            "latex": "V_{l,Rd,i}"
-          },
-          {
-            "kind": "text",
-            "value": " / "
-          },
-          {
-            "kind": "math",
-            "value": "V_{Ed,i}",
-            "latex": "V_{Ed,i}"
+            "value": "Ω_i = 1,5 V_{l,Rd,i} / V_{Ed,i}",
+            "latex": "\\Omega_i=1{,}5\\frac{V_{l,Rd,i}}{V_{Ed,i}}"
           },
           {
             "kind": "text",
@@ -1332,26 +1370,8 @@
           },
           {
             "kind": "math",
-            "value": "Ω_i",
-            "latex": "\\Omega_i"
-          },
-          {
-            "kind": "text",
-            "value": " = 1,5 "
-          },
-          {
-            "kind": "math",
-            "value": "M_{l,Rd,i}",
-            "latex": "M_{l,Rd,i}"
-          },
-          {
-            "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "M_{Ed,i}",
-            "latex": "M_{Ed,i}"
+            "value": "Ω_i = 1,5 M_{l,Rd,i}/M_{Ed,i}",
+            "latex": "\\Omega_i=1{,}5\\frac{M_{l,Rd,i}}{M_{Ed,i}}"
           },
           {
             "kind": "text",
@@ -1505,8 +1525,19 @@
       "origin": "official",
       "text": {
         "raw": "E d,G è la domanda agente sul collegamento per le azioni di tipo non-sismico incluse nella combinazione sismica di progetto;",
-        "normalized": "E d,G è la domanda agente sul collegamento per le azioni di tipo non-sismico incluse nella combinazione sismica di progetto;",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "E_{d,G} è la domanda agente sul collegamento per le azioni di tipo non-sismico incluse nella combinazione sismica di progetto;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "E_{d,G}",
+            "latex": "E_{d,G}"
+          },
+          {
+            "kind": "text",
+            "value": " è la domanda agente sul collegamento per le azioni di tipo non-sismico incluse nella combinazione sismica di progetto;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1518,9 +1549,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "7f5dcbcead732596ecfe358fd9495b4044f66a9ac3a4141bdd43b522977a1efa",
-        "normalizedSha256": "7f5dcbcead732596ecfe358fd9495b4044f66a9ac3a4141bdd43b522977a1efa"
+        "normalizedSha256": "73f7106d66ecda36d1d75f0528adc709eb2694a8b707f124d4fd03ec27067660"
       }
     },
     {
@@ -1529,8 +1571,19 @@
       "origin": "official",
       "text": {
         "raw": "E d,E è la domanda agente sul collegamento per l’azione sismica di progetto;",
-        "normalized": "E d,E è la domanda agente sul collegamento per l’azione sismica di progetto;",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "E_{d,E} è la domanda agente sul collegamento per l’azione sismica di progetto;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "E_{d,E}",
+            "latex": "E_{d,E}"
+          },
+          {
+            "kind": "text",
+            "value": " è la domanda agente sul collegamento per l’azione sismica di progetto;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1542,9 +1595,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "fbf5443e8788c58f0a5f9ef99e3b75f775508aeeaea17f4a5a1b047e78c0b208",
-        "normalizedSha256": "fbf5443e8788c58f0a5f9ef99e3b75f775508aeeaea17f4a5a1b047e78c0b208"
+        "normalizedSha256": "5836f21f44e66226b4c30118589c74ff781e45c710e8e0b77f515e236a0d3070"
       }
     },
     {
@@ -1553,7 +1617,7 @@
       "origin": "official",
       "text": {
         "raw": "·ov è il coefficiente di sovraresistenza;",
-        "normalized": "γ_ov è il coefficiente di sovraresistenza;",
+        "normalized": "γ_{ov} è il coefficiente di sovraresistenza;",
         "normalizationVersion": "ntc75-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -1584,7 +1648,7 @@
           }
         ],
         "rawSha256": "b9a6f003ceb9e485b50c281884d2cc25d0a9a7bfb1ad64609ab190d8c069a929",
-        "normalizedSha256": "dcfa6eea1e649d806d00ea3ddcad8cefd8fac9527b873ee34ccb8289a9b2ddcf"
+        "normalizedSha256": "29c6445ebc630324355ae94799416ff404f5d630a2356fa6188f59838777dd8d"
       }
     },
     {
@@ -1612,7 +1676,16 @@
           },
           {
             "kind": "text",
-            "value": " calcolati per tutti gli elementi di connessione come indicato in precedenza nel presente paragrafo, devono differire tra il massimo ed il minimo di non più del 25%."
+            "value": " calcolati per tutti gli elementi di connessione come indicato in precedenza nel presente paragrafo, devono differire tra il massimo ed il minimo di non più del "
+          },
+          {
+            "kind": "math",
+            "value": "25%",
+            "latex": "25\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1980,7 +2053,7 @@
       "origin": "official",
       "text": {
         "raw": "Il comportamento degli elementi di connessione lunghi è dominato dalla plasticizzazione per flessione. Le modalità di collasso\ntipiche di tali elementi di connessione sono rappresentate dalla instabilità locale della piattabanda compressa e dalla instabilità\nflesso-torsionale. Al fine di evitare tali fenomeni, occorre disporre irrigidimenti ad una distanza massima pari a 1.5 b, essendo b\nla larghezza della flangia del profilo costituente l’elemento di connessione, dall’estremità dell’elemento di connessione stesso.",
-        "normalized": "Il comportamento degli elementi di connessione lunghi è dominato dalla plasticizzazione per flessione. Le modalità di collasso tipiche di tali elementi di connessione sono rappresentate dalla instabilità locale della piattabanda compressa e dalla instabilità flesso-torsionale. Al fine di evitare tali fenomeni, occorre disporre irrigidimenti ad una distanza massima pari a 1,5 b, essendo b la larghezza della flangia del profilo costituente l’elemento di connessione, dall’estremità dell’elemento di connessione stesso.",
+        "normalized": "Il comportamento degli elementi di connessione lunghi è dominato dalla plasticizzazione per flessione. Le modalità di collasso tipiche di tali elementi di connessione sono rappresentate dalla instabilità locale della piattabanda compressa e dalla instabilità flesso-torsionale. Al fine di evitare tali fenomeni, occorre disporre irrigidimenti ad una distanza massima pari a 1.5 b, essendo b la larghezza della flangia del profilo costituente l’elemento di connessione, dall’estremità dell’elemento di connessione stesso.",
         "normalizationVersion": "ntc75-editorial-profile-0.1.0",
         "inline": [
           {
@@ -1989,12 +2062,21 @@
           },
           {
             "kind": "math",
-            "value": "1,5 b",
-            "latex": "1{,}5b"
+            "value": "1.5 b",
+            "latex": "1.5b"
           },
           {
             "kind": "text",
-            "value": ", essendo b la larghezza della flangia del profilo costituente l’elemento di connessione, dall’estremità dell’elemento di connessione stesso."
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " la larghezza della flangia del profilo costituente l’elemento di connessione, dall’estremità dell’elemento di connessione stesso."
           }
         ]
       },
@@ -2031,7 +2113,7 @@
           }
         ],
         "rawSha256": "04b8836291ce9354ae7c84c3638f0c9e936b584af02e51c58e613df99cb08a01",
-        "normalizedSha256": "ec56426e218ef00972b24ea7bd5e34d20ddbb0d041238ffbbb667de87d7997fd"
+        "normalizedSha256": "ec389194637738291adba552144907b1f340539df632e062e180d868520e9cb3"
       }
     },
     {
@@ -2069,7 +2151,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di elementi di connessione corti e travi di modesta altezza (minore di 600 mm) è sufficiente che gli irrigidimenti siano disposti da un solo lato dell’anima, impegnando almeno i 3/4 della altezza dell’anima stessa. Tali irrigidimenti devono avere spessore non inferiore a "
+            "value": "Nel caso di elementi di connessione corti e travi di modesta altezza (minore di "
+          },
+          {
+            "kind": "math",
+            "value": "600 mm",
+            "latex": "600\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ") è sufficiente che gli irrigidimenti siano disposti da un solo lato dell’anima, impegnando almeno i "
+          },
+          {
+            "kind": "math",
+            "value": "3/4",
+            "latex": "\\frac{3}{4}"
+          },
+          {
+            "kind": "text",
+            "value": " della altezza dell’anima stessa. Tali irrigidimenti devono avere spessore non inferiore a "
           },
           {
             "kind": "math",
@@ -2078,12 +2178,21 @@
           },
           {
             "kind": "text",
-            "value": ", e comunque non inferiore a 10 mm, e larghezza pari a (b/2)-"
+            "value": ", e comunque non inferiore a "
           },
           {
             "kind": "math",
-            "value": "t_w",
-            "latex": "t_w"
+            "value": "10 mm",
+            "latex": "10\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ", e larghezza pari a "
+          },
+          {
+            "kind": "math",
+            "value": "(b/2)-t_w",
+            "latex": "\\frac{b}{2}-t_w"
           },
           {
             "kind": "text",
@@ -2196,17 +2305,8 @@
           },
           {
             "kind": "math",
-            "value": "A_{st}",
-            "latex": "A_{st}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "f_y",
-            "latex": "f_y"
+            "value": "A_{st} f_y",
+            "latex": "A_{st}f_y"
           },
           {
             "kind": "text",
@@ -2223,21 +2323,12 @@
           },
           {
             "kind": "math",
-            "value": "A_{st}",
-            "latex": "A_{st}"
+            "value": "A_{st} f_y/4",
+            "latex": "\\frac{A_{st}f_y}{4}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "f_y",
-            "latex": "f_y"
-          },
-          {
-            "kind": "text",
-            "value": "/4."
+            "value": "."
           }
         ]
       },

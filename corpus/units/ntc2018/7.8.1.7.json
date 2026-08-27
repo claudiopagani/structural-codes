@@ -110,12 +110,21 @@
       "origin": "official",
       "text": {
         "raw": "Per ogni pannello murario, il principio fondamentale è finalizzato ad evitare il collasso per taglio, assicurandosi che sia preceduto\ndal collasso per flessione. Tale principio è rispettato quando ciascun pannello murario è verificato a flessione rispetto alle azioni\nagenti ed è verificato a taglio rispetto alle azioni risultanti dalla resistenza a collasso per flessione, amplificate del fattore ·Rd di\ncui alla Tab. 7.2.I.",
-        "normalized": "Per ogni pannello murario, il principio fondamentale è finalizzato ad evitare il collasso per taglio, assicurandosi che sia preceduto dal collasso per flessione. Tale principio è rispettato quando ciascun pannello murario è verificato a flessione rispetto alle azioni agenti ed è verificato a taglio rispetto alle azioni risultanti dalla resistenza a collasso per flessione, amplificate del fattore ·Rd di cui alla Tab. 7.2.I.",
+        "normalized": "Per ogni pannello murario, il principio fondamentale è finalizzato ad evitare il collasso per taglio, assicurandosi che sia preceduto dal collasso per flessione. Tale principio è rispettato quando ciascun pannello murario è verificato a flessione rispetto alle azioni agenti ed è verificato a taglio rispetto alle azioni risultanti dalla resistenza a collasso per flessione, amplificate del fattore γ_Rd di cui alla Tab. 7.2.I.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per ogni pannello murario, il principio fondamentale è finalizzato ad evitare il collasso per taglio, assicurandosi che sia preceduto dal collasso per flessione. Tale principio è rispettato quando ciascun pannello murario è verificato a flessione rispetto alle azioni agenti ed è verificato a taglio rispetto alle azioni risultanti dalla resistenza a collasso per flessione, amplificate del fattore ·Rd di cui alla Tab. 7.2.I."
+            "value": "Per ogni pannello murario, il principio fondamentale è finalizzato ad evitare il collasso per taglio, assicurandosi che sia preceduto dal collasso per flessione. Tale principio è rispettato quando ciascun pannello murario è verificato a flessione rispetto alle azioni agenti ed è verificato a taglio rispetto alle azioni risultanti dalla resistenza a collasso per flessione, amplificate del fattore "
+          },
+          {
+            "kind": "math",
+            "value": "γ_Rd",
+            "latex": "\\gamma_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " di cui alla Tab. 7.2.I."
           }
         ]
       },
@@ -136,6 +145,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -147,7 +161,7 @@
           }
         ],
         "rawSha256": "f91581062afe2e01badcadda2844585435b9b8ce34a638e18f64231467539543",
-        "normalizedSha256": "2a6e95004a03e05ec3031b40da89a897390b7c9d5c039573a02e0a928fbb84fb"
+        "normalizedSha256": "64f4e050749caeb035d50bc163280fbc8f2c7132a10196ccbc68a46d1aaa5d25"
       }
     }
   ],

@@ -193,7 +193,7 @@
       "origin": "official",
       "text": {
         "raw": "nella quale E e Ecm sono i moduli di elasticità dell’acciaio e del calcestruzzo; Ia, I \nc e I \ns sono i momenti di inerzia della sezione in\nacciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione r dipende dal tipo di sezione trasversale; in\nassenza di più accurate determinazioni, può essere assunto pari a 0.5.",
-        "normalized": "nella quale E e Ecm sono i moduli di elasticità dell’acciaio e del calcestruzzo; Ia, Ic e Is sono i momenti di inerzia della sezione in acciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione r dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a 0,5.",
+        "normalized": "nella quale E e Ecm sono i moduli di elasticità dell’acciaio e del calcestruzzo; Ia, Ic e Is sono i momenti di inerzia della sezione in acciaio, del calcestruzzo e delle armature, rispettivamente. Il coefficiente di riduzione r dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a 0.5.",
         "normalizationVersion": "ntc76-editorial-profile-0.1.0",
         "inline": [
           {
@@ -252,7 +252,16 @@
           },
           {
             "kind": "text",
-            "value": " dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a 0,5."
+            "value": " dipende dal tipo di sezione trasversale; in assenza di più accurate determinazioni, può essere assunto pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0.5",
+            "latex": "0.5"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -289,7 +298,7 @@
           }
         ],
         "rawSha256": "a254064d853a1fffcfdee6e2d76ff018865d7e71cc3d3ba5b13fe707d6874975",
-        "normalizedSha256": "2679dbecb1dca0108527fc6a00098b944e0cf4e5a5c73fb36dd288056f5a79a6"
+        "normalizedSha256": "2e9c08fb735d2df04ee643f2aaac6e8476382bd6bcf4f193c4c47fd32c131be6"
       }
     }
   ],

@@ -80,12 +80,21 @@
       "origin": "official",
       "text": {
         "raw": "Le proprietà meccaniche del sistema di isolamento da adottare nelle analisi di progetto, derivanti dalla combinazione delle\nproprietà meccaniche dei singoli dispositivi che lo costituiscono, sono le più sfavorevoli che si possono verificare durante il\nperiodo di riferimento VR considerato. Esse devono tener conto, ove pertinente, di:",
-        "normalized": "Le proprietà meccaniche del sistema di isolamento da adottare nelle analisi di progetto, derivanti dalla combinazione delle proprietà meccaniche dei singoli dispositivi che lo costituiscono, sono le più sfavorevoli che si possono verificare durante il periodo di riferimento VR considerato. Esse devono tener conto, ove pertinente, di:",
+        "normalized": "Le proprietà meccaniche del sistema di isolamento da adottare nelle analisi di progetto, derivanti dalla combinazione delle proprietà meccaniche dei singoli dispositivi che lo costituiscono, sono le più sfavorevoli che si possono verificare durante il periodo di riferimento V_R considerato. Esse devono tener conto, ove pertinente, di:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le proprietà meccaniche del sistema di isolamento da adottare nelle analisi di progetto, derivanti dalla combinazione delle proprietà meccaniche dei singoli dispositivi che lo costituiscono, sono le più sfavorevoli che si possono verificare durante il periodo di riferimento VR considerato. Esse devono tener conto, ove pertinente, di:"
+            "value": "Le proprietà meccaniche del sistema di isolamento da adottare nelle analisi di progetto, derivanti dalla combinazione delle proprietà meccaniche dei singoli dispositivi che lo costituiscono, sono le più sfavorevoli che si possono verificare durante il periodo di riferimento "
+          },
+          {
+            "kind": "math",
+            "value": "V_R",
+            "latex": "V_R"
+          },
+          {
+            "kind": "text",
+            "value": " considerato. Esse devono tener conto, ove pertinente, di:"
           }
         ]
       },
@@ -106,6 +115,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -117,7 +131,7 @@
           }
         ],
         "rawSha256": "e7a47bd7aba05a4fa41dec6f6a7082ba7b93696d5bb6c8f26046b5d984230480",
-        "normalizedSha256": "998c863bb5f9387aed6f029f4077bfcae0cff1d6f38b8920194f6b3795882bc3"
+        "normalizedSha256": "105a337f1054b5f88c47fff5a596316011af20b1454b2f13b29aa7d9d2c0ffe7"
       }
     },
     {
@@ -191,7 +205,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "– velocità massima di deformazione (frequenza) in un intervallo di variabilità di ±30% del valore di progetto;"
+            "value": "– velocità massima di deformazione (frequenza) in un intervallo di variabilità di "
+          },
+          {
+            "kind": "math",
+            "value": "±30%",
+            "latex": "\\pm30\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del valore di progetto;"
           }
         ]
       },
@@ -403,7 +426,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso in cui i valori estremi (massimo oppure minimo) differiscano di non più del 20% dal valor medio, si potranno adottare i valori medi delle proprietà meccaniche del sistema di isolamento."
+            "value": "Nel caso in cui i valori estremi (massimo oppure minimo) differiscano di non più del "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dal valor medio, si potranno adottare i valori medi delle proprietà meccaniche del sistema di isolamento."
           }
         ]
       },

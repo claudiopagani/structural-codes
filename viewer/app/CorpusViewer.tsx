@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { BlockContent } from "../shared/CorpusContent";
+import { BlockContent, hasOfficialListMarker } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -478,7 +478,7 @@ function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUn
   return (
     <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
       {unit.blocks.map((block, index) => (
-        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
           <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
           <div>
             <span className="block-kind">{displayLabel(block.kind)}</span>

@@ -62,6 +62,8 @@ function evidence(source: string, normalized: string): any {
 
 type MathTerm = { value: string; latex: string };
 const gammaRd: MathTerm = { value: "γ_Rd", latex: "\\gamma_{Rd}" };
+const oneThree: MathTerm = { value: "1,3", latex: "1{,}3" };
+const oneOne: MathTerm = { value: "1,1", latex: "1{,}1" };
 
 function inlineSegments(text: string, terms: MathTerm[]): any[] | undefined {
     const unique = [...new Map(terms.map((term) => [term.value, term])).values()];
@@ -160,7 +162,7 @@ const units: UnitSpec[] = [
             { kind: "list-item", from: 26 },
             { kind: "paragraph", from: 27, to: 28 },
             { kind: "paragraph", from: 29, to: 32 },
-            { kind: "paragraph", from: 33, to: 38, math: [gammaRd], normalized: "Ai fini dell’applicazione dei criteri della progettazione in capacità, per assicurare la plasticizzazione delle zone dissipative (i collegamenti prescelti e/o gli elementi specificatamente progettati), queste devono possedere una capacità almeno pari alla domanda mentre le componenti non dissipative (gli altri collegamenti e gli elementi strutturali) adiacenti, debbono possedere una capacità pari alla capacità della zona dissipativa amplificata del fattore di sovraresistenza γ_Rd, di cui alla Tab. 7.2.I; valori inferiori del fattore di sovraresistenza ed in ogni caso maggiori o uguali a 1,3 per CD “A” e a 1,1 per CD “B” devono essere giustificati sulla base di idonee evidenze teorico-sperimentali." },
+            { kind: "paragraph", from: 33, to: 38, math: [gammaRd, oneThree, oneOne], normalized: "Ai fini dell’applicazione dei criteri della progettazione in capacità, per assicurare la plasticizzazione delle zone dissipative (i collegamenti prescelti e/o gli elementi specificatamente progettati), queste devono possedere una capacità almeno pari alla domanda mentre le componenti non dissipative (gli altri collegamenti e gli elementi strutturali) adiacenti, debbono possedere una capacità pari alla capacità della zona dissipativa amplificata del fattore di sovraresistenza γ_Rd, di cui alla Tab. 7.2.I; valori inferiori del fattore di sovraresistenza ed in ogni caso maggiori o uguali a 1,3 per CD “A” e a 1,1 per CD “B” devono essere giustificati sulla base di idonee evidenze teorico-sperimentali." },
             { kind: "paragraph", from: 39, to: 40 },
             { kind: "paragraph", from: 41, to: 42 },
         ],

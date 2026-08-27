@@ -93,7 +93,7 @@
       "text": {
         "raw": "Per i carichi permanenti, un accurato rilievo geometrico-strutturale e dei materiali potrà consentire di adottare coefficienti parzia-\nli modificati, assegnando a ·G valori esplicitamente motivati. I valori di progetto delle altre azioni saranno quelli previsti dalla\npresente norma.",
         "normalized": "Per i carichi permanenti, un accurato rilievo geometrico-strutturale e dei materiali potrà consentire di adottare coefficienti parziali modificati, assegnando a γ_G valori esplicitamente motivati. I valori di progetto delle altre azioni saranno quelli previsti dalla presente norma.",
-        "normalizationVersion": "ntc8-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -116,25 +116,30 @@
         "printedPage": "293",
         "region": null,
         "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "ntc77-78-editorial-profile-0.1.0"
         },
         "transformations": [
           {
             "operation": "join-line-wrap",
-            "ruleVersion": "ntc8-editorial-profile-0.1.0",
-            "note": "Rimossi i ritorni a capo tipografici del capoverso."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc8-editorial-profile-0.1.0",
-            "note": "Ricostruita la parola spezzata parzia-li."
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "ntc8-editorial-profile-0.1.0",
-            "note": "Ripristinato il simbolo γ_G verificato sul render ufficiale e sul ritaglio ad alta scala."
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "6b5628af13ddbe0c1278411b2a79998668f36c5ebc5309f29b17fb851a097dcf",

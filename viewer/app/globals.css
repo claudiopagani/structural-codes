@@ -660,6 +660,14 @@ summary:focus-visible {
   font-weight: 700;
 }
 
+.list-item-block.list-item-with-official-marker p {
+  padding-left: 0;
+}
+
+.list-item-block.list-item-with-official-marker p::before {
+  content: none;
+}
+
 .asset-block {
   padding-block: 34px;
 }
@@ -698,6 +706,10 @@ summary:focus-visible {
   font-size: 1.08rem;
 }
 
+.formula-scroll.formula-scroll-long {
+  font-size: 0.72rem;
+}
+
 .formula-number {
   flex: 0 0 auto;
   margin-left: auto;
@@ -733,6 +745,10 @@ summary:focus-visible {
   font-family: var(--sans);
   font-size: 12px;
   line-height: 1.42;
+}
+
+.table-scroll-compact table {
+  min-width: 100%;
 }
 
 .table-asset th,
@@ -1791,6 +1807,10 @@ summary:focus-visible {
 .comparison-text-pane .formula-scroll {
   padding: 3px;
   font-size: 0.78rem;
+}
+
+.comparison-text-pane .formula-scroll.formula-scroll-long {
+  font-size: 0.62rem;
 }
 
 .comparison-text-pane .formula-asset figcaption,

@@ -779,16 +779,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In ogni caso alle estremità di tutti i pilastri primari, per una lunghezza pari a "
+            "value": "In ogni caso alle estremità di tutti i pilastri primari, per una lunghezza pari a quella delle zone dissipative, il rapporto "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "ω_wd",
+            "latex": "\\omega_{wd}"
           },
           {
             "kind": "text",
-            "value": "uella delle zone dissipative, il rapporto ω_wd definito in [7.4.30] deve essere non minore di 0,08."
+            "value": " definito in [7.4.30] deve essere non minore di "
+          },
+          {
+            "kind": "math",
+            "value": "0,08",
+            "latex": "0{,}08"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -859,7 +868,13 @@
       "text": {
         "raw": "Per le zone dissipative allo spiccato dei pilastri primari e per le zone terminali di tutti i pilastri secondari devono essere eseguite\nle verifiche di duttilità indicate al § 7.4.4.2.2. In alternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona\ndissipativa, si rispettano le limitazioni seguenti: ",
         "normalized": "Per le zone dissipative allo spiccato dei pilastri primari e per le zone terminali di tutti i pilastri secondari devono essere eseguite le verifiche di duttilità indicate al § 7.4.4.2.2. In alternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona dissipativa, si rispettano le limitazioni seguenti:",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le zone dissipative allo spiccato dei pilastri primari e per le zone terminali di tutti i pilastri secondari devono essere eseguite le verifiche di duttilità indicate al § 7.4.4.2.2. In alternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona dissipativa, si rispettano le limitazioni seguenti:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -968,7 +983,27 @@
       "text": {
         "raw": "Zwd è il rapporto meccanico dell’armatura trasversale di confinamento all’interno della zona dissipativa (il nucleo di calcestruzzo\nè individuato con riferimento alla linea media delle staffe) che deve essere non minore di 0,12 in CD”A” .",
         "normalized": "ω_wd è il rapporto meccanico dell’armatura trasversale di confinamento all’interno della zona dissipativa (il nucleo di calcestruzzo è individuato con riferimento alla linea media delle staffe) che deve essere non minore di 0,12 in CD “A”.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ω_wd",
+            "latex": "\\omega_{wd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto meccanico dell’armatura trasversale di confinamento all’interno della zona dissipativa (il nucleo di calcestruzzo è individuato con riferimento alla linea media delle staffe) che deve essere non minore di "
+          },
+          {
+            "kind": "math",
+            "value": "0,12",
+            "latex": "0{,}12"
+          },
+          {
+            "kind": "text",
+            "value": " in CD “A”."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1069,7 +1104,27 @@
       "text": {
         "raw": "Qd è la forza assiale adimensionalizzata di progetto relativa alla combinazione sismica SLV (Qd = \u0011Ed/\u0004cȉcd);",
         "normalized": "ν_d è la forza assiale adimensionalizzata di progetto relativa alla combinazione sismica SLV (ν_d = N_Ed/(A_c·f_cd));",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ν_d",
+            "latex": "\\nu_d"
+          },
+          {
+            "kind": "text",
+            "value": " è la forza assiale adimensionalizzata di progetto relativa alla combinazione sismica SLV ("
+          },
+          {
+            "kind": "math",
+            "value": "ν_d = N_Ed/(A_c·f_cd)",
+            "latex": "\\nu_d=\\frac{N_{Ed}}{A_c\\cdot f_{cd}}"
+          },
+          {
+            "kind": "text",
+            "value": ");"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1114,7 +1169,18 @@
       "text": {
         "raw": "Hsy,d è la deformazione di snervamento dell’acciaio;",
         "normalized": "ε_sy,d è la deformazione di snervamento dell’acciaio;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ε_sy,d",
+            "latex": "\\varepsilon_{sy,d}"
+          },
+          {
+            "kind": "text",
+            "value": " è la deformazione di snervamento dell’acciaio;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1158,8 +1224,19 @@
       "origin": "official",
       "text": {
         "raw": "hc è la profondità della sezione trasversale lorda;",
-        "normalized": "hc è la profondità della sezione trasversale lorda;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "h_c è la profondità della sezione trasversale lorda;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "h_c",
+            "latex": "h_c"
+          },
+          {
+            "kind": "text",
+            "value": " è la profondità della sezione trasversale lorda;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1171,9 +1248,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "169286cb821131944cabe32af6391415994fc4eaadcfd782ad4993994cc6e9d6",
-        "normalizedSha256": "169286cb821131944cabe32af6391415994fc4eaadcfd782ad4993994cc6e9d6"
+        "normalizedSha256": "3b824e71a4a27a3494a56470d67713766317c45a78a60e187a5c117e282d7c23"
       }
     },
     {
@@ -1182,8 +1280,19 @@
       "origin": "official",
       "text": {
         "raw": "h0 è la profondità del nucleo confinato (con riferimento alla linea media delle staffe);",
-        "normalized": "h0 è la profondità del nucleo confinato (con riferimento alla linea media delle staffe);",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "h_0 è la profondità del nucleo confinato (con riferimento alla linea media delle staffe);",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "h_0",
+            "latex": "h_0"
+          },
+          {
+            "kind": "text",
+            "value": " è la profondità del nucleo confinato (con riferimento alla linea media delle staffe);"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1195,9 +1304,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "f3fc1bf819410cb5388d05a9deb199c3f07389610f86e3b57f334966bb2a9e41",
-        "normalizedSha256": "f3fc1bf819410cb5388d05a9deb199c3f07389610f86e3b57f334966bb2a9e41"
+        "normalizedSha256": "a1b22fdc5506a96994721b873419f3d5f109c1f2207fc3b916e09056b63c6b6d"
       }
     },
     {
@@ -1206,8 +1336,19 @@
       "origin": "official",
       "text": {
         "raw": "bc è la larghezza minima della sezione trasversale lorda;",
-        "normalized": "bc è la larghezza minima della sezione trasversale lorda;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "b_c è la larghezza minima della sezione trasversale lorda;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "b_c",
+            "latex": "b_c"
+          },
+          {
+            "kind": "text",
+            "value": " è la larghezza minima della sezione trasversale lorda;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1219,9 +1360,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "e6794e1482e560f6626dd7a65edcf1937250bab2ac77b9f2d3e197608b7d89fb",
-        "normalizedSha256": "e6794e1482e560f6626dd7a65edcf1937250bab2ac77b9f2d3e197608b7d89fb"
+        "normalizedSha256": "69ea20f5f3c85bc61c8e72058caefe22051076c3b8a0d1e9b31752a9a81a4b1a"
       }
     },
     {
@@ -1230,8 +1392,28 @@
       "origin": "official",
       "text": {
         "raw": "b0 è la larghezza del nucleo confinato corrispondente a bc (con riferimento alla linea media delle staffe);",
-        "normalized": "b0 è la larghezza del nucleo confinato corrispondente a bc (con riferimento alla linea media delle staffe);",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "b_0 è la larghezza del nucleo confinato corrispondente a b_c (con riferimento alla linea media delle staffe);",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "b_0",
+            "latex": "b_0"
+          },
+          {
+            "kind": "text",
+            "value": " è la larghezza del nucleo confinato corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "b_c",
+            "latex": "b_c"
+          },
+          {
+            "kind": "text",
+            "value": " (con riferimento alla linea media delle staffe);"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1243,9 +1425,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "85e638572818e302fdf70a2ae7c5afe3f4af31225c6833c92a46f0f1e730d850",
-        "normalizedSha256": "85e638572818e302fdf70a2ae7c5afe3f4af31225c6833c92a46f0f1e730d850"
+        "normalizedSha256": "b4941d141a5460d49681eaaf3a064d7b1299b5770a1d6563637ae5cdd84cc19e"
       }
     },
     {
@@ -1259,12 +1462,12 @@
         "inline": [
           {
             "kind": "text",
-            "value": "α è il coefficiente di efficacia del confinamento, uguale a α = α_n·"
+            "value": "α è il coefficiente di efficacia del confinamento, uguale a "
           },
           {
             "kind": "math",
-            "value": "α_s",
-            "latex": "\\alpha_s"
+            "value": "α = α_n·α_s",
+            "latex": "\\alpha=\\alpha_n\\cdot\\alpha_s"
           },
           {
             "kind": "text",
@@ -1315,7 +1518,13 @@
       "text": {
         "raw": "a) per sezioni trasversali rettangolari",
         "normalized": "a) per sezioni trasversali rettangolari",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "a) per sezioni trasversali rettangolari"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1378,8 +1587,41 @@
       "origin": "official",
       "text": {
         "raw": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive\ncontenute e s è il passo delle staffe;",
-        "normalized": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, bi è la distanza tra barre consecutive contenute e s è il passo delle staffe;",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute e s è il passo delle staffe;",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, "
+          },
+          {
+            "kind": "math",
+            "value": "b_i",
+            "latex": "b_i"
+          },
+          {
+            "kind": "text",
+            "value": " è la distanza tra barre consecutive contenute e "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " è il passo delle staffe;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1414,7 +1656,7 @@
           }
         ],
         "rawSha256": "b9dd5d19b01b27200919bb8394d5a97701f7a03a04717fd4b9d1a33a3cc9a940",
-        "normalizedSha256": "f342282a2558358ae49378139443400523dd9dc86369c58d784cbf9e32e18f79"
+        "normalizedSha256": "83d316a0d3dedce7dbc90430093b2fa72a11daf8eea8d852e948cb0b358cd510"
       }
     },
     {
@@ -1423,8 +1665,23 @@
       "origin": "official",
       "text": {
         "raw": "b) per sezioni trasversali circolari con diametro del nucleo confinato D 0 (con riferimento alla linea media delle staffe)",
-        "normalized": "b) per sezioni trasversali circolari con diametro del nucleo confinato D 0 (con riferimento alla linea media delle staffe)",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalized": "b) per sezioni trasversali circolari con diametro del nucleo confinato D_0 (con riferimento alla linea media delle staffe)",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "b) per sezioni trasversali circolari con diametro del nucleo confinato "
+          },
+          {
+            "kind": "math",
+            "value": "D_0",
+            "latex": "D_0"
+          },
+          {
+            "kind": "text",
+            "value": " (con riferimento alla linea media delle staffe)"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1436,9 +1693,30 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "640a623b9ed66bef762741f8c0518d772cc5b135ed9725bf4699ddf8436d1cfa",
-        "normalizedSha256": "640a623b9ed66bef762741f8c0518d772cc5b135ed9725bf4699ddf8436d1cfa"
+        "normalizedSha256": "8f0574ca17e165d51895dffba33122a3ee38bd46d6284f4d10e44b5766734b96"
       }
     },
     {
@@ -1488,7 +1766,49 @@
       "text": {
         "raw": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b i è la distanza tra barre consecutive\ncontenute, E = 2 per staffe circolari singole, E = 1 per staffa a spirale.",
         "normalized": "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute, β = 2 per staffe circolari singole, β = 1 per staffa a spirale.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, "
+          },
+          {
+            "kind": "math",
+            "value": "b_i",
+            "latex": "b_i"
+          },
+          {
+            "kind": "text",
+            "value": " è la distanza tra barre consecutive contenute, "
+          },
+          {
+            "kind": "math",
+            "value": "β = 2",
+            "latex": "\\beta=2"
+          },
+          {
+            "kind": "text",
+            "value": " per staffe circolari singole, "
+          },
+          {
+            "kind": "math",
+            "value": "β = 1",
+            "latex": "\\beta=1"
+          },
+          {
+            "kind": "text",
+            "value": " per staffa a spirale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

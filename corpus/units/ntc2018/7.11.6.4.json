@@ -79,13 +79,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica\nsi produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di\ncui sono composti. In caso contrario si deve porre Ά = 1.\nNel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto\ndel sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella\nrelativa al caso statico. Detta L s la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in\ncondizioni sismiche Le può essere ottenuta mediante la relazione:",
-        "normalized": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica si produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di cui sono composti. In caso contrario si deve porre Ά = 1. Nel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto del sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella relativa al caso statico. Detta L s la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in condizioni sismiche Le può essere ottenuta mediante la relazione:",
+        "raw": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica\nsi produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di\ncui sono composti. In caso contrario si deve porre Ά = 1.",
+        "normalized": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica si produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di cui sono composti. In caso contrario si deve porre β = 1.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica si produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di cui sono composti. In caso contrario si deve porre Ά = 1. Nel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto del sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella relativa al caso statico. Detta L s la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in condizioni sismiche Le può essere ottenuta mediante la relazione:"
+            "value": "Gli elementi di contrasto sollecitati a compressione (puntoni) devono essere dimensionati in maniera che l’instabilità geometrica si produca per forze assiali maggiori di quelle che provocano il raggiungimento della resistenza a compressione del materiale di cui sono composti. In caso contrario si deve porre "
+          },
+          {
+            "kind": "math",
+            "value": "β = 1",
+            "latex": "\\beta=1"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -106,6 +115,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -116,8 +130,77 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "9e4d43684809942b61b2743ee0ee01d1ed325afb4256563c08823f650eb00ac3",
-        "normalizedSha256": "211ca6de25ea96c1a23c0b255ddf49e073ecad37fa293e3622697793288a1187"
+        "rawSha256": "8d341b98aca88eba5e4a7254c8646a0c867d698a0df67b1dc8a26a77f2abd660",
+        "normalizedSha256": "1b65de922d0cc9ae808a700fcb01fa3736c0e444bb97717499e4b3ff3e528c76"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4#block-p2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto\ndel sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella\nrelativa al caso statico. Detta L s la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in\ncondizioni sismiche Le può essere ottenuta mediante la relazione:",
+        "normalized": "Nel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto del sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella relativa al caso statico. Detta L_s la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in condizioni sismiche L_e può essere ottenuta mediante la relazione:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di strutture ancorate, ai fini del posizionamento della fondazione dell’ancoraggio si deve tenere presente che, per effetto del sisma, la potenziale superficie di scorrimento dei cunei di spinta presenta un’inclinazione sull’orizzontale minore di quella relativa al caso statico. Detta "
+          },
+          {
+            "kind": "math",
+            "value": "L_s",
+            "latex": "L_s"
+          },
+          {
+            "kind": "text",
+            "value": " la lunghezza libera dell’ancoraggio in condizioni statiche, la corrispondente lunghezza libera in condizioni sismiche "
+          },
+          {
+            "kind": "math",
+            "value": "L_e",
+            "latex": "L_e"
+          },
+          {
+            "kind": "text",
+            "value": " può essere ottenuta mediante la relazione:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 292,
+        "printedPage": "288",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b7da860e73703e98f7e42b24e24a558d8fd690f797d4324560c2d3acc3db5850",
+        "normalizedSha256": "a46200b9c28236013368e8a78e1ce4d36a34b0be6c204e4b36d9ce0eed21bdd1"
       }
     },
     {
@@ -147,17 +230,72 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4#block-p2",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4#block-p3",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove amax è l’accelerazione orizzontale massima attesa al sito.\nGli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo\nl’evento sismico.\nSi deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio\ndurante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione.",
-        "normalized": "dove amax è l’accelerazione orizzontale massima attesa al sito. Gli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo l’evento sismico. Si deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio durante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione.",
+        "raw": "dove amax è l’accelerazione orizzontale massima attesa al sito.",
+        "normalized": "dove a_max è l’accelerazione orizzontale massima attesa al sito.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove amax è l’accelerazione orizzontale massima attesa al sito. Gli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo l’evento sismico. Si deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio durante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione."
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "a_max",
+            "latex": "a_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’accelerazione orizzontale massima attesa al sito."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 292,
+        "printedPage": "288",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d702d04583184bb19e41c7a3501025f6382744f9811134d894661e36fe3cce6e",
+        "normalizedSha256": "ae50134cf0ccac17c548278ca9c39fc9eda8cb0d29885b582d47215d777bd965"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo\nl’evento sismico.",
+        "normalized": "Gli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo l’evento sismico.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli elementi di ancoraggio devono avere resistenza e lunghezza tali da assicurare l’equilibrio dell’opera prima, durante e dopo l’evento sismico."
           }
         ]
       },
@@ -188,8 +326,54 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "8e9ed123f147a9bd43082fad71deec7dc8ffe88dd5bafbeef33f683b32f72e7f",
-        "normalizedSha256": "450600b968afa9d435d7b5c622c45b4f1ceb8f439b739b0c1d34b4c9ebac18b9"
+        "rawSha256": "91034536657f2ce010adc665cdc9c98903419856d6bac45fcd01625e22edd3af",
+        "normalizedSha256": "4b1a2e1fb10372672c9888ddd378f8fd02f63cd541d1bc903e90b9a2924357a8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.6.4#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Si deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio\ndurante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione.",
+        "normalized": "Si deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio durante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si deve inoltre accertare che il terreno sia in grado di fornire la resistenza necessaria per il funzionamento dell’ancoraggio durante il terremoto di riferimento e che sia mantenuto un margine di sicurezza adeguato nei confronti della liquefazione."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 292,
+        "printedPage": "288",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "6fe2776a761f5701e13436150b3534b164ad0a23f2190eff21a438f80ce4d6cb",
+        "normalizedSha256": "aa6c038e843b5e96d3c6cd94119cd1f55448844601e832d9690d9c236d1c9462"
       }
     }
   ],

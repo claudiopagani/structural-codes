@@ -78,13 +78,13 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito,\nche comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio.\nLe indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la\npropagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad\nesso assimilabile.",
-        "normalized": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito, che comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio. Le indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la propagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad esso assimilabile.",
+        "raw": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito,\nche comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio.",
+        "normalized": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito, che comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito, che comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio. Le indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la propagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad esso assimilabile."
+            "value": "Le indagini geotecniche devono essere predisposte dal progettista in presenza di un quadro geologico adeguatamente definito, che comprenda i principali caratteri tettonici e litologici, nonché l’eventuale preesistenza di fenomeni di instabilità del territorio."
           }
         ]
       },
@@ -115,8 +115,54 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "0a6e0f87e3c6b398932ce563241f2688245e3d8dbbd9354d66aa5f48b2f5e737",
-        "normalizedSha256": "2e0d69b170a081787f383fce5f8e7910016693e97586f3c98e3ee53902dd39b4"
+        "rawSha256": "c8286089574e8c9a3885d9624a7208742bd87d1c4a2ebb48785dad87767a1bfe",
+        "normalizedSha256": "1c06b49837899d0ccb62ab8c000febfac26bc1c5fdc8ad709c00d2b4d893e156"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.2#block-p1b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la\npropagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad\nesso assimilabile.",
+        "normalized": "Le indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la propagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad esso assimilabile.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le indagini devono comprendere l’accertamento degli elementi che, unitamente agli effetti topografici, influenzano la propagazione delle onde sismiche, quali le condizioni stratigrafiche e la presenza di un substrato rigido o di una formazione ad esso assimilabile."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "465360eac634762d598489c49f953df57b720ca541428dd8fe8d7e4b201fdd7c",
+        "normalizedSha256": "25525f95604db8d767e749e6aff27d52d9a1a6783823f5fc981ec45a16d4d8b1"
       }
     },
     {
@@ -381,12 +427,48 @@
       "origin": "official",
       "text": {
         "raw": "Dove Η’ n è la tensione efficace iniziale normale alla giacitura di rottura, Ǌu è l’eventuale sovrappressione interstiziale generata\ndal sisma e i parametri c’ e Π’ tengono conto della degradazione dei terreni per effetto della storia ciclica di sollecitazione.",
-        "normalized": "Dove Η’ n è la tensione efficace iniziale normale alla giacitura di rottura, Ǌu è l’eventuale sovrappressione interstiziale generata dal sisma e i parametri c’ e Π’ tengono conto della degradazione dei terreni per effetto della storia ciclica di sollecitazione.",
+        "normalized": "Dove σ'_n è la tensione efficace iniziale normale alla giacitura di rottura, Δu è l’eventuale sovrappressione interstiziale generata dal sisma e i parametri c’ e φ’ tengono conto della degradazione dei terreni per effetto della storia ciclica di sollecitazione.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Dove Η’ n è la tensione efficace iniziale normale alla giacitura di rottura, Ǌu è l’eventuale sovrappressione interstiziale generata dal sisma e i parametri c’ e Π’ tengono conto della degradazione dei terreni per effetto della storia ciclica di sollecitazione."
+            "value": "Dove "
+          },
+          {
+            "kind": "math",
+            "value": "σ'_n",
+            "latex": "\\sigma'_n"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione efficace iniziale normale alla giacitura di rottura, "
+          },
+          {
+            "kind": "math",
+            "value": "Δu",
+            "latex": "\\Delta u"
+          },
+          {
+            "kind": "text",
+            "value": " è l’eventuale sovrappressione interstiziale generata dal sisma e i parametri "
+          },
+          {
+            "kind": "math",
+            "value": "c’",
+            "latex": "c'"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "φ’",
+            "latex": "\\phi'"
+          },
+          {
+            "kind": "text",
+            "value": " tengono conto della degradazione dei terreni per effetto della storia ciclica di sollecitazione."
           }
         ]
       },
@@ -407,6 +489,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -418,7 +505,7 @@
           }
         ],
         "rawSha256": "57bab01dd595d3d51be0a402e5ae9bc602d00a1e7c7daf64f4695404cd74374d",
-        "normalizedSha256": "46f823c87a67df543262c0c291826cb2a0a14084eba1cec2431a931197a24051"
+        "normalizedSha256": "f9f156ecb151b6051ea50c2049b66e414e1c846b94cc023a924f18ecaa9fd708"
       }
     },
     {
@@ -499,12 +586,21 @@
       "origin": "official",
       "text": {
         "raw": "dove c u,c include gli effetti di degradazione dei terreni.",
-        "normalized": "dove c u,c include gli effetti di degradazione dei terreni.",
+        "normalized": "dove c_{u,c} include gli effetti di degradazione dei terreni.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove c u,c include gli effetti di degradazione dei terreni."
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "c_{u,c}",
+            "latex": "c_{u,c}"
+          },
+          {
+            "kind": "text",
+            "value": " include gli effetti di degradazione dei terreni."
           }
         ]
       },
@@ -518,9 +614,25 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "af78d41e18040fcb353bce00e631931423e970e938d5fa1bdbdc6b4a82061e49",
-        "normalizedSha256": "af78d41e18040fcb353bce00e631931423e970e938d5fa1bdbdc6b4a82061e49"
+        "normalizedSha256": "27b7ae1f625f603eaafc0e6106c52e72fb9aff7ab00e1a82205576682b543d74"
       }
     }
   ],

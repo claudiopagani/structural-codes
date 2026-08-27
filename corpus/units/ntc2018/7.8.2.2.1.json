@@ -71,17 +71,17 @@
       "origin": "official",
       "text": {
         "raw": "La verifica a pressoflessione di una sezione di un elemento strutturale si esegue confrontando il momento agente di progetto con\nil momento ultimo resistente calcolato assumendo la muratura non reagente a trazione e un’opportuna distribuzione non lineare\ndelle compressioni. Nel caso di una sezione rettangolare e diagramma delle compressioni rettangolare con valore della resistenza\npari a 0.85 fd, tale momento ultimo può essere calcolato come:",
-        "normalized": "La verifica a pressoflessione di una sezione di un elemento strutturale si esegue confrontando il momento agente di progetto con il momento ultimo resistente calcolato assumendo la muratura non reagente a trazione e un’opportuna distribuzione non lineare delle compressioni. Nel caso di una sezione rettangolare e diagramma delle compressioni rettangolare con valore della resistenza pari a 0,85 f_d, tale momento ultimo può essere calcolato come:",
+        "normalized": "La verifica a pressoflessione di una sezione di un elemento strutturale si esegue confrontando il momento agente di progetto con il momento ultimo resistente calcolato assumendo la muratura non reagente a trazione e un’opportuna distribuzione non lineare delle compressioni. Nel caso di una sezione rettangolare e diagramma delle compressioni rettangolare con valore della resistenza pari a 0.85 f_d, tale momento ultimo può essere calcolato come:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La verifica a pressoflessione di una sezione di un elemento strutturale si esegue confrontando il momento agente di progetto con il momento ultimo resistente calcolato assumendo la muratura non reagente a trazione e un’opportuna distribuzione non lineare delle compressioni. Nel caso di una sezione rettangolare e diagramma delle compressioni rettangolare con valore della resistenza pari a 0,85 "
+            "value": "La verifica a pressoflessione di una sezione di un elemento strutturale si esegue confrontando il momento agente di progetto con il momento ultimo resistente calcolato assumendo la muratura non reagente a trazione e un’opportuna distribuzione non lineare delle compressioni. Nel caso di una sezione rettangolare e diagramma delle compressioni rettangolare con valore della resistenza pari a "
           },
           {
             "kind": "math",
-            "value": "f_d",
-            "latex": "f_d"
+            "value": "0.85 f_d",
+            "latex": "0.85f_d"
           },
           {
             "kind": "text",
@@ -122,7 +122,7 @@
           }
         ],
         "rawSha256": "19c1bf4dad1a5d767297b6aca5c90a3f011f7b7b5ea4d726e1d310ff5b4c002e",
-        "normalizedSha256": "4382920d5c9354498a23cc660406b933a1da8c490a64bd3bb7e1b7fcbc3712cd"
+        "normalizedSha256": "0671d71f3db43d779aac1e14202164601dd15659af4e057c54405cbaaa442923"
       }
     },
     {
@@ -156,13 +156,48 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove:\nM u è il momento corrispondente al collasso per pressoflessione;",
-        "normalized": "dove: M u è il momento corrispondente al collasso per pressoflessione;",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: M u è il momento corrispondente al collasso per pressoflessione;"
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 265,
+        "printedPage": "261",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "M u è il momento corrispondente al collasso per pressoflessione;",
+        "normalized": "M_u è il momento corrispondente al collasso per pressoflessione;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "M_u",
+            "latex": "M_u"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento corrispondente al collasso per pressoflessione;"
           }
         ]
       },
@@ -178,9 +213,9 @@
         },
         "transformations": [
           {
-            "operation": "join-line-wrap",
+            "operation": "manual-correction",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -193,8 +228,286 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "3d4ef19c172478883c59c4e183c5823c2a57f91f539133017258fa0295df7023",
-        "normalizedSha256": "d32d16788dad6f9a204755ca47d90fe1ae67dc4f6e675bcfce0698217cf822cc"
+        "rawSha256": "10c80a1a4c10d5855cc11ef33b333a56a60fa8ad2b1e4ebcf769fcbb89852401",
+        "normalizedSha256": "f50b14558de9fdfaaf0ed4b0705d0d407a61c8e790e240d13a840df4147ed56e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p4",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "l è la lunghezza complessiva della parete (comprensiva della zona tesa);",
+        "normalized": "l è la lunghezza complessiva della parete (comprensiva della zona tesa);",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "l",
+            "latex": "l"
+          },
+          {
+            "kind": "text",
+            "value": " è la lunghezza complessiva della parete (comprensiva della zona tesa);"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 266,
+        "printedPage": "262",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "a657bb4fc429627fe3599bc87f4d7b73db8dde658f78af35b9fd04a5f500f7ac",
+        "normalizedSha256": "a657bb4fc429627fe3599bc87f4d7b73db8dde658f78af35b9fd04a5f500f7ac"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p5",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "t è lo spessore della zona compressa della parete;",
+        "normalized": "t è lo spessore della zona compressa della parete;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore della zona compressa della parete;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 266,
+        "printedPage": "262",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "086fabc5b259acf35d7c6477d8266e30b160cd0d204fdc41b9c0d0fd88ee7dc2",
+        "normalizedSha256": "086fabc5b259acf35d7c6477d8266e30b160cd0d204fdc41b9c0d0fd88ee7dc2"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p6",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Η0 è la tensione normale media, riferita all’area totale della sezione, Η0 = N/(lȉt), con N forza assiale agente positiva se di\ncompressione); se N è di trazione, Mu = 0",
+        "normalized": "σ_0 è la tensione normale media, riferita all’area totale della sezione, σ_0 = N/(l·t), con N forza assiale agente positiva se di compressione); se N è di trazione, M_u = 0",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "σ_0",
+            "latex": "\\sigma_0"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione normale media, riferita all’area totale della sezione, "
+          },
+          {
+            "kind": "math",
+            "value": "σ_0 = N/(l·t)",
+            "latex": "\\sigma_0=N/(l\\cdot t)"
+          },
+          {
+            "kind": "text",
+            "value": ", con "
+          },
+          {
+            "kind": "math",
+            "value": "N",
+            "latex": "N"
+          },
+          {
+            "kind": "text",
+            "value": " forza assiale agente positiva se di compressione); se "
+          },
+          {
+            "kind": "math",
+            "value": "N",
+            "latex": "N"
+          },
+          {
+            "kind": "text",
+            "value": " è di trazione, "
+          },
+          {
+            "kind": "math",
+            "value": "M_u = 0",
+            "latex": "M_u=0"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 266,
+        "printedPage": "262",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1d0d94dd1aeecf4e26fe1577ba08a3cfe6f6db66d29d378e377ec652bee04b35",
+        "normalizedSha256": "ab7aa75d295056c2e335ac54ff7d10fe1f7a878861680cb479ef817ade9efa76"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p7",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "f d = fk / ·M è la resistenza a compressione di progetto della muratura.",
+        "normalized": "f_d = f_k / γ_M è la resistenza a compressione di progetto della muratura.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "f_d = f_k / γ_M",
+            "latex": "f_d=f_k/\\gamma_M"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza a compressione di progetto della muratura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 266,
+        "printedPage": "262",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "e04179e7799f7c101902030f0910af9ce52c14aeff6313a31ff2320bb1ea8a6a",
+        "normalizedSha256": "278ff4570554ae7c92ba3f984eff8abdeae0c893e505ce3609dd56fbb8d1b066"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.8.2.2.1#block-p8",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "In caso di analisi statica non lineare, la capacità a pressoflessione può essere calcolata ponendo fd pari al valore medio della\ncapacità a compressione della muratura e lo spostamento ultimo allo SLC, a meno di moti rigidi del pannello, può essere assunto\npari all’1,0% dell’altezza del pannello.",
+        "normalized": "In caso di analisi statica non lineare, la capacità a pressoflessione può essere calcolata ponendo f_d pari al valore medio della capacità a compressione della muratura e lo spostamento ultimo allo SLC, a meno di moti rigidi del pannello, può essere assunto pari all’1,0% dell’altezza del pannello.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In caso di analisi statica non lineare, la capacità a pressoflessione può essere calcolata ponendo "
+          },
+          {
+            "kind": "math",
+            "value": "f_d",
+            "latex": "f_d"
+          },
+          {
+            "kind": "text",
+            "value": " pari al valore medio della capacità a compressione della muratura e lo spostamento ultimo allo SLC, a meno di moti rigidi del pannello, può essere assunto pari all’"
+          },
+          {
+            "kind": "math",
+            "value": "1,0%",
+            "latex": "1{,}0\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dell’altezza del pannello."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 266,
+        "printedPage": "262",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "22085853525ef8a1b5e014d1b9dc03ba0294586894340534bb95f3a321fb0b61",
+        "normalizedSha256": "906049cab74c1a84c116dc3d0794c7deba6d6eddf3086a52bc7ac45c9a426e50"
       }
     }
   ],

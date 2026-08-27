@@ -71,12 +71,30 @@
       "origin": "official",
       "text": {
         "raw": "I dispositivi del sistema d’isolamento devono essere in grado di sostenere, senza rotture, gli spostamenti d2 , valutati per una\nazione sismica riferita allo SLC. Nel caso di sistemi a comportamento non lineare, allo spostamento ottenuto con l’azione sismica\ndetta occorre aggiungere il maggiore tra lo spostamento residuo allo SLD e il 50% dello spostamento corrispondente\nall’annullamento della forza, seguendo il ramo di scarico a partire dal punto di massimo spostamento raggiunto allo SLD.",
-        "normalized": "I dispositivi del sistema d’isolamento devono essere in grado di sostenere, senza rotture, gli spostamenti d2 , valutati per una azione sismica riferita allo SLC. Nel caso di sistemi a comportamento non lineare, allo spostamento ottenuto con l’azione sismica detta occorre aggiungere il maggiore tra lo spostamento residuo allo SLD e il 50% dello spostamento corrispondente all’annullamento della forza, seguendo il ramo di scarico a partire dal punto di massimo spostamento raggiunto allo SLD.",
+        "normalized": "I dispositivi del sistema d’isolamento devono essere in grado di sostenere, senza rotture, gli spostamenti d_2, valutati per una azione sismica riferita allo SLC. Nel caso di sistemi a comportamento non lineare, allo spostamento ottenuto con l’azione sismica detta occorre aggiungere il maggiore tra lo spostamento residuo allo SLD e il 50% dello spostamento corrispondente all’annullamento della forza, seguendo il ramo di scarico a partire dal punto di massimo spostamento raggiunto allo SLD.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "I dispositivi del sistema d’isolamento devono essere in grado di sostenere, senza rotture, gli spostamenti d2 , valutati per una azione sismica riferita allo SLC. Nel caso di sistemi a comportamento non lineare, allo spostamento ottenuto con l’azione sismica detta occorre aggiungere il maggiore tra lo spostamento residuo allo SLD e il 50% dello spostamento corrispondente all’annullamento della forza, seguendo il ramo di scarico a partire dal punto di massimo spostamento raggiunto allo SLD."
+            "value": "I dispositivi del sistema d’isolamento devono essere in grado di sostenere, senza rotture, gli spostamenti "
+          },
+          {
+            "kind": "math",
+            "value": "d_2",
+            "latex": "d_2"
+          },
+          {
+            "kind": "text",
+            "value": ", valutati per una azione sismica riferita allo SLC. Nel caso di sistemi a comportamento non lineare, allo spostamento ottenuto con l’azione sismica detta occorre aggiungere il maggiore tra lo spostamento residuo allo SLD e il "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dello spostamento corrispondente all’annullamento della forza, seguendo il ramo di scarico a partire dal punto di massimo spostamento raggiunto allo SLD."
           }
         ]
       },
@@ -97,6 +115,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -108,7 +131,7 @@
           }
         ],
         "rawSha256": "35e577105d54947693b2845a551e6d56d09e7bce3d820f9bd0c48c0db3278317",
-        "normalizedSha256": "633c0f9acd52220e37c45de07a14810a9b12778296ebf1dbec90de6fdf1e34f1"
+        "normalizedSha256": "522ab5d3b4b74182cdb2125ee2719607d1c8b7c18f20277f5622e13cc1e1516d"
       }
     },
     {

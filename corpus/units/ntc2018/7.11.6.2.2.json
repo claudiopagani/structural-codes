@@ -117,12 +117,21 @@
       "origin": "official",
       "text": {
         "raw": "Nelle verifiche di sicurezza si deve controllare che la resistenza del sistema sia maggiore delle azioni nel rispetto della condizione\n[6.2.1], ponendo pari all’unità i coefficienti parziali sulle azioni e sui parametri geotecnici (§ 7.11.1) e impiegando le resistenze di\nprogetto con i coefficienti parziali JR indicati nella tabella 7.11.III.",
-        "normalized": "Nelle verifiche di sicurezza si deve controllare che la resistenza del sistema sia maggiore delle azioni nel rispetto della condizione [6.2.1], ponendo pari all’unità i coefficienti parziali sulle azioni e sui parametri geotecnici (§ 7.11.1) e impiegando le resistenze di progetto con i coefficienti parziali JR indicati nella tabella 7.11.III.",
+        "normalized": "Nelle verifiche di sicurezza si deve controllare che la resistenza del sistema sia maggiore delle azioni nel rispetto della condizione [6.2.1], ponendo pari all’unità i coefficienti parziali sulle azioni e sui parametri geotecnici (§ 7.11.1) e impiegando le resistenze di progetto con i coefficienti parziali γ_R indicati nella tabella 7.11.III.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle verifiche di sicurezza si deve controllare che la resistenza del sistema sia maggiore delle azioni nel rispetto della condizione [6.2.1], ponendo pari all’unità i coefficienti parziali sulle azioni e sui parametri geotecnici (§ 7.11.1) e impiegando le resistenze di progetto con i coefficienti parziali JR indicati nella tabella 7.11.III."
+            "value": "Nelle verifiche di sicurezza si deve controllare che la resistenza del sistema sia maggiore delle azioni nel rispetto della condizione [6.2.1], ponendo pari all’unità i coefficienti parziali sulle azioni e sui parametri geotecnici (§ 7.11.1) e impiegando le resistenze di progetto con i coefficienti parziali "
+          },
+          {
+            "kind": "math",
+            "value": "γ_R",
+            "latex": "\\gamma_R"
+          },
+          {
+            "kind": "text",
+            "value": " indicati nella tabella 7.11.III."
           }
         ]
       },
@@ -143,6 +152,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -154,7 +168,7 @@
           }
         ],
         "rawSha256": "1bc019b84fb8a2d4ed84112b1bcd6db1f2986e7bce1187aec58f357c98eb9267",
-        "normalizedSha256": "9b21a155e5942a34178de9ca4ff6d58eb569b3c048a9b11f35522202a3df5e15"
+        "normalizedSha256": "19ea6274d54e61a6f214fbff7acef0a0c2e357084d01cf64898dfb12c623ed8f"
       }
     },
     {

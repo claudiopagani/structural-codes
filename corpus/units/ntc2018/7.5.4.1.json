@@ -338,8 +338,19 @@
       "origin": "official",
       "text": {
         "raw": "VEd,G è la domanda a taglio dovuta alle azioni non-sismiche;",
-        "normalized": "VEd,G è la domanda a taglio dovuta alle azioni non-sismiche;",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "V_{Ed,G} è la domanda a taglio dovuta alle azioni non-sismiche;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "V_{Ed,G}",
+            "latex": "V_{Ed,G}"
+          },
+          {
+            "kind": "text",
+            "value": " è la domanda a taglio dovuta alle azioni non-sismiche;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -351,9 +362,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "061e4ab13caf59836dc84813197e32fe039a9ae36e1126822194a7af7eea3ded",
-        "normalizedSha256": "061e4ab13caf59836dc84813197e32fe039a9ae36e1126822194a7af7eea3ded"
+        "normalizedSha256": "f1da1029b458a63200d3ac6cb3c61c911d497f9a9920b408743a7088fdfe1bc6"
       }
     },
     {
@@ -366,8 +388,13 @@
         "normalizationVersion": "ntc75-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "V_{Ed,M}",
+            "latex": "V_{Ed,M}"
+          },
+          {
             "kind": "text",
-            "value": "V_{Ed,M} è la domanda a taglio dovuta all’applicazione di momenti plastici equiversi "
+            "value": " è la domanda a taglio dovuta all’applicazione di momenti plastici equiversi "
           },
           {
             "kind": "math",

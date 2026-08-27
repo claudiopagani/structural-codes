@@ -71,12 +71,21 @@
       "origin": "official",
       "text": {
         "raw": "È applicabile nei casi previsti al § 7.3.3.2, anche per le costruzioni irregolari in altezza, purché si ponga Ώ = 1,0.",
-        "normalized": "È applicabile nei casi previsti al § 7.3.3.2, anche per le costruzioni irregolari in altezza, purché si ponga Ώ = 1,0.",
+        "normalized": "È applicabile nei casi previsti al § 7.3.3.2, anche per le costruzioni irregolari in altezza, purché si ponga λ = 1,0.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "È applicabile nei casi previsti al § 7.3.3.2, anche per le costruzioni irregolari in altezza, purché si ponga Ώ = 1,0."
+            "value": "È applicabile nei casi previsti al § 7.3.3.2, anche per le costruzioni irregolari in altezza, purché si ponga "
+          },
+          {
+            "kind": "math",
+            "value": "λ = 1,0",
+            "latex": "\\lambda=1{,}0"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -90,9 +99,25 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "014551d937090fdba03baed388035a0b1707ae6bfb7e9674f5040b194c0b8343",
-        "normalizedSha256": "014551d937090fdba03baed388035a0b1707ae6bfb7e9674f5040b194c0b8343"
+        "normalizedSha256": "a8a42361a7e802d960833664f43b944759eca65a05b508fba985abf10492e024"
       }
     },
     {
@@ -239,12 +264,21 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso di solai rigidi, la distribuzione delle forze di taglio nei diversi pannelli ottenuta dall’analisi lineare può essere modificata\ncon una ridistribuzione limitata, facendo sì che l’equilibrio globale di piano sia rispettato (il modulo e la posizione della forza\nrisultante di piano restino invariati) e a condizione che la variazione del taglio in ciascun pannello, ǊV, soddisfi la relazione",
-        "normalized": "Nel caso di solai rigidi, la distribuzione delle forze di taglio nei diversi pannelli ottenuta dall’analisi lineare può essere modificata con una ridistribuzione limitata, facendo sì che l’equilibrio globale di piano sia rispettato (il modulo e la posizione della forza risultante di piano restino invariati) e a condizione che la variazione del taglio in ciascun pannello, ǊV, soddisfi la relazione",
+        "normalized": "Nel caso di solai rigidi, la distribuzione delle forze di taglio nei diversi pannelli ottenuta dall’analisi lineare può essere modificata con una ridistribuzione limitata, facendo sì che l’equilibrio globale di piano sia rispettato (il modulo e la posizione della forza risultante di piano restino invariati) e a condizione che la variazione del taglio in ciascun pannello, ΔV, soddisfi la relazione",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di solai rigidi, la distribuzione delle forze di taglio nei diversi pannelli ottenuta dall’analisi lineare può essere modificata con una ridistribuzione limitata, facendo sì che l’equilibrio globale di piano sia rispettato (il modulo e la posizione della forza risultante di piano restino invariati) e a condizione che la variazione del taglio in ciascun pannello, ǊV, soddisfi la relazione"
+            "value": "Nel caso di solai rigidi, la distribuzione delle forze di taglio nei diversi pannelli ottenuta dall’analisi lineare può essere modificata con una ridistribuzione limitata, facendo sì che l’equilibrio globale di piano sia rispettato (il modulo e la posizione della forza risultante di piano restino invariati) e a condizione che la variazione del taglio in ciascun pannello, "
+          },
+          {
+            "kind": "math",
+            "value": "ΔV",
+            "latex": "\\Delta V"
+          },
+          {
+            "kind": "text",
+            "value": ", soddisfi la relazione"
           }
         ]
       },
@@ -265,6 +299,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -276,7 +315,7 @@
           }
         ],
         "rawSha256": "3505679eea62f902d3826866a378b3ad2b5fb498020fda204828d92617242949",
-        "normalizedSha256": "9938e93d7218b784973b05893a617676dc6a374a49bf8d14439e524a6332ed00"
+        "normalizedSha256": "f246128b40b8cf8e386756c2bba1f64021a369283b0813ca05a67a48ba89bb56"
       }
     },
     {
@@ -316,7 +355,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "dove V è il taglio nel pannello e V_piano è il taglio totale al piano nella direzione parallela al pannello. Tale ridistribuzione non è ammessa nel caso in cui il rapporto "
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "V",
+            "latex": "V"
+          },
+          {
+            "kind": "text",
+            "value": " è il taglio nel pannello e "
+          },
+          {
+            "kind": "math",
+            "value": "V_piano",
+            "latex": "V_{piano}"
+          },
+          {
+            "kind": "text",
+            "value": " è il taglio totale al piano nella direzione parallela al pannello. Tale ridistribuzione non è ammessa nel caso in cui il rapporto "
           },
           {
             "kind": "math",
@@ -389,12 +446,21 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o\nincatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, Vpiano è da intendersi\ncome la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete.",
-        "normalized": "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o incatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, Vpiano è da intendersi come la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete.",
+        "normalized": "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o incatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, V_piano è da intendersi come la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o incatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, Vpiano è da intendersi come la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete."
+            "value": "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o incatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, "
+          },
+          {
+            "kind": "math",
+            "value": "V_piano",
+            "latex": "V_{piano}"
+          },
+          {
+            "kind": "text",
+            "value": " è da intendersi come la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete."
           }
         ]
       },
@@ -413,6 +479,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -426,7 +497,7 @@
           }
         ],
         "rawSha256": "9ff795efba12d03197932ea70ead6a43845ef82e29e7c27849a79d56c7de0e30",
-        "normalizedSha256": "317332818fee49e8bc7165b8dc297ed69b8293a060cfa20a1397fceae136a109"
+        "normalizedSha256": "f8326bbdde4579d3a632338fd01183f56b0e80a217ccfdc0fd333b37b01e3ddc"
       }
     },
     {
@@ -435,12 +506,48 @@
       "origin": "official",
       "text": {
         "raw": "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3\nper gli elementi non strutturali, assumendo qa = 3. Più precisamente l’azione sismica ortogonale alla parete può essere\nrappresentata da una forza orizzontale distribuita, pari a (S \na/q \na) volte il peso della parete nonché da forze orizzontali concentrate\npari a (S \na/q \na) volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano\nefficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che\nrispettano i limiti di Tab. 7.8.II, si può assumere per Sa la seguente espressione:",
-        "normalized": "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3 per gli elementi non strutturali, assumendo qa = 3. Più precisamente l’azione sismica ortogonale alla parete può essere rappresentata da una forza orizzontale distribuita, pari a (S a/q a) volte il peso della parete nonché da forze orizzontali concentrate pari a (S a/q a) volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano efficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che rispettano i limiti di Tab. 7.8.II, si può assumere per Sa la seguente espressione:",
+        "normalized": "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3 per gli elementi non strutturali, assumendo q_a = 3. Più precisamente l’azione sismica ortogonale alla parete può essere rappresentata da una forza orizzontale distribuita, pari a (S_a/q_a) volte il peso della parete nonché da forze orizzontali concentrate pari a (S_a/q_a) volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano efficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che rispettano i limiti di Tab. 7.8.II, si può assumere per S_a la seguente espressione:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3 per gli elementi non strutturali, assumendo qa = 3. Più precisamente l’azione sismica ortogonale alla parete può essere rappresentata da una forza orizzontale distribuita, pari a (S a/q a) volte il peso della parete nonché da forze orizzontali concentrate pari a (S a/q a) volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano efficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che rispettano i limiti di Tab. 7.8.II, si può assumere per Sa la seguente espressione:"
+            "value": "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3 per gli elementi non strutturali, assumendo "
+          },
+          {
+            "kind": "math",
+            "value": "q_a = 3",
+            "latex": "q_a=3"
+          },
+          {
+            "kind": "text",
+            "value": ". Più precisamente l’azione sismica ortogonale alla parete può essere rappresentata da una forza orizzontale distribuita, pari a "
+          },
+          {
+            "kind": "math",
+            "value": "(S_a/q_a)",
+            "latex": "(S_a/q_a)"
+          },
+          {
+            "kind": "text",
+            "value": " volte il peso della parete nonché da forze orizzontali concentrate pari a "
+          },
+          {
+            "kind": "math",
+            "value": "(S_a/q_a)",
+            "latex": "(S_a/q_a)"
+          },
+          {
+            "kind": "text",
+            "value": " volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano efficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che rispettano i limiti di Tab. 7.8.II, si può assumere per "
+          },
+          {
+            "kind": "math",
+            "value": "S_a",
+            "latex": "S_a"
+          },
+          {
+            "kind": "text",
+            "value": " la seguente espressione:"
           }
         ]
       },
@@ -461,6 +568,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -472,7 +584,7 @@
           }
         ],
         "rawSha256": "308e547e4d3fc8ed7c1ce17288d1b35e9e679d02bee5fb2c0992202d577be531",
-        "normalizedSha256": "68ba843ca10427e73da815a9aa7c7e92e95b8f2de4f234f93b0419bad800fa01"
+        "normalizedSha256": "301979ff8b135056a775709f3b21b1d86d0789e4b9490e142777347ec13fd171"
       }
     },
     {
@@ -507,12 +619,39 @@
       "origin": "official",
       "text": {
         "raw": "dove:\n΅ è il rapporto tra accelerazione massima del terreno ag su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e\nl’accelerazione di gravità g;\nS è il coefficiente che tiene conto della categoria di sottosuolo e delle condizioni topografiche secondo quanto riportato nel §\n3.2.3.2.1;\nZ è la quota del baricentro dell’elemento non strutturale misurata a partire dal piano di fondazione (vedi § 3.2.2);\nH è l’altezza della costruzione misurata a partire dal piano di fondazione;\nPer le strutture con isolamento sismico si assume sempre Z=0.",
-        "normalized": "dove: ΅ è il rapporto tra accelerazione massima del terreno ag su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità g; S è il coefficiente che tiene conto della categoria di sottosuolo e delle condizioni topografiche secondo quanto riportato nel § 3.2.3.2.1; Z è la quota del baricentro dell’elemento non strutturale misurata a partire dal piano di fondazione (vedi § 3.2.2); H è l’altezza della costruzione misurata a partire dal piano di fondazione; Per le strutture con isolamento sismico si assume sempre Z=0.",
+        "normalized": "dove: α è il rapporto tra accelerazione massima del terreno a_g su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità g; S è il coefficiente che tiene conto della categoria di sottosuolo e delle condizioni topografiche secondo quanto riportato nel § 3.2.3.2.1; Z è la quota del baricentro dell’elemento non strutturale misurata a partire dal piano di fondazione (vedi § 3.2.2); H è l’altezza della costruzione misurata a partire dal piano di fondazione; Per le strutture con isolamento sismico si assume sempre Z=0.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: ΅ è il rapporto tra accelerazione massima del terreno ag su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità g; "
+            "value": "dove: "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto tra accelerazione massima del terreno "
+          },
+          {
+            "kind": "math",
+            "value": "a_g",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": " su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità "
+          },
+          {
+            "kind": "math",
+            "value": "g",
+            "latex": "g"
+          },
+          {
+            "kind": "text",
+            "value": "; "
           },
           {
             "kind": "math",
@@ -543,12 +682,12 @@
           },
           {
             "kind": "math",
-            "value": "Z",
-            "latex": "Z"
+            "value": "Z=0",
+            "latex": "Z=0"
           },
           {
             "kind": "text",
-            "value": "=0."
+            "value": "."
           }
         ]
       },
@@ -569,6 +708,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -580,7 +724,7 @@
           }
         ],
         "rawSha256": "3d0dc1d86ca83a179fc91da601f98740f157c6827a707ddbc6a59d329e400474",
-        "normalizedSha256": "559d3663b765003f7af3c15bbabde0c4e4c1fcc0ca8b1b378ee9a2f52d767575"
+        "normalizedSha256": "98ead5ca17d0b7e997a1ffe3e64b2b8007b9ea2cc960df74679b5ce73d32a016"
       }
     },
     {

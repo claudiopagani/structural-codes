@@ -161,21 +161,17 @@
       "origin": "official",
       "text": {
         "raw": "1,3 ǂ O ǂ 2 in telai con controventi ad X;",
-        "normalized": "1,3 ≤ λ ≤ 2 in telai con controventi ad X;",
+        "normalized": "1,3 ≤ λ̄ ≤ 2 in telai con controventi ad X;",
         "normalizationVersion": "ntc75-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "1,3 ≤ "
-          },
-          {
             "kind": "math",
-            "value": "λ",
-            "latex": "\\lambda"
+            "value": "1,3 ≤ λ̄ ≤ 2",
+            "latex": "1{,}3\\le\\overline{\\lambda}\\le2"
           },
           {
             "kind": "text",
-            "value": " ≤ 2 in telai con controventi ad X;"
+            "value": " in telai con controventi ad X;"
           }
         ]
       },
@@ -202,7 +198,7 @@
           }
         ],
         "rawSha256": "2662b44b80a7d69d3f77d14ccc314d925598e34da3f3b2009a1e67d50021ef1c",
-        "normalizedSha256": "df5d42544180cadd70079e8f6e2f0d45a5df5e0567dca220f983f2c1d06d6601"
+        "normalizedSha256": "6576b9c1de30a8315e6a4853f462a706c45dc41f453460cc06652ac4357ed698"
       }
     },
     {
@@ -211,17 +207,17 @@
       "origin": "official",
       "text": {
         "raw": "O ǂ 2 in telai con controventi a V.",
-        "normalized": "λ ≤ 2 in telai con controventi a V.",
+        "normalized": "λ̄ ≤ 2 in telai con controventi a V.",
         "normalizationVersion": "ntc75-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "λ",
-            "latex": "\\lambda"
+            "value": "λ̄ ≤ 2",
+            "latex": "\\overline{\\lambda}\\le2"
           },
           {
             "kind": "text",
-            "value": " ≤ 2 in telai con controventi a V."
+            "value": " in telai con controventi a V."
           }
         ]
       },
@@ -248,7 +244,7 @@
           }
         ],
         "rawSha256": "7aac9af9eb23360f42aca0dabe60030b6336a0ecce779c0e96778ae8a56a0091",
-        "normalizedSha256": "9e1b27be0bcc2e9129b990696dcac97ebdb6a463c49ad5fd6edcbcef26c89e14"
+        "normalizedSha256": "358275ccb4c009e014e7a3c05d8fa38c534ae488d3437d3e1452f84d61bfaeb7"
       }
     },
     {
@@ -478,26 +474,8 @@
           },
           {
             "kind": "math",
-            "value": "Ω_i",
-            "latex": "\\Omega_i"
-          },
-          {
-            "kind": "text",
-            "value": " = "
-          },
-          {
-            "kind": "math",
-            "value": "N_{pl,Rd,i}",
-            "latex": "N_{pl,Rd,i}"
-          },
-          {
-            "kind": "text",
-            "value": " / "
-          },
-          {
-            "kind": "math",
-            "value": "N_{Ed,i}",
-            "latex": "N_{Ed,i}"
+            "value": "Ω_i = N_{pl,Rd,i} / N_{Ed,i}",
+            "latex": "\\Omega_i=\\frac{N_{pl,Rd,i}}{N_{Ed,i}}"
           },
           {
             "kind": "text",
@@ -574,26 +552,8 @@
           },
           {
             "kind": "math",
-            "value": "Ω_i",
-            "latex": "\\Omega_i"
-          },
-          {
-            "kind": "text",
-            "value": " = "
-          },
-          {
-            "kind": "math",
-            "value": "N_{pl,Rd,i}",
-            "latex": "N_{pl,Rd,i}"
-          },
-          {
-            "kind": "text",
-            "value": " / "
-          },
-          {
-            "kind": "math",
-            "value": "N_{Ed,i}",
-            "latex": "N_{Ed,i}"
+            "value": "Ω_i = N_{pl,Rd,i} / N_{Ed,i}",
+            "latex": "\\Omega_i=\\frac{N_{pl,Rd,i}}{N_{Ed,i}}"
           },
           {
             "kind": "text",
@@ -615,7 +575,16 @@
           },
           {
             "kind": "text",
-            "value": " la domanda a sforzo normale per la combinazione sismica, calcolati per tutti gli elementi di controvento in cui si attende la formazione di zone dissipative, devono differire non più del 25%."
+            "value": " la domanda a sforzo normale per la combinazione sismica, calcolati per tutti gli elementi di controvento in cui si attende la formazione di zone dissipative, devono differire non più del "
+          },
+          {
+            "kind": "math",
+            "value": "25%",
+            "latex": "25\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -724,17 +693,8 @@
           },
           {
             "kind": "math",
-            "value": "γ_{pb}",
-            "latex": "\\gamma_{pb}"
-          },
-          {
-            "kind": "text",
-            "value": " · "
-          },
-          {
-            "kind": "math",
-            "value": "N_{pl,Rd}",
-            "latex": "N_{pl,Rd}"
+            "value": "γ_{pb} · N_{pl,Rd}",
+            "latex": "\\gamma_{pb}\\cdot N_{pl,Rd}"
           },
           {
             "kind": "text",
@@ -742,12 +702,12 @@
           },
           {
             "kind": "math",
-            "value": "γ_{pb}",
-            "latex": "\\gamma_{pb}"
+            "value": "γ_{pb} = 0,30",
+            "latex": "\\gamma_{pb}=0{,}30"
           },
           {
             "kind": "text",
-            "value": " = 0,30 il fattore che permette di stimare la capacità residua dopo l’instabilizzazione della diagonale. I collegamenti delle diagonali alle altre parti strutturali devono garantire il rispetto dei requisiti di cui al § 7.5.3.1."
+            "value": " il fattore che permette di stimare la capacità residua dopo l’instabilizzazione della diagonale. I collegamenti delle diagonali alle altre parti strutturali devono garantire il rispetto dei requisiti di cui al § 7.5.3.1."
           }
         ]
       },
@@ -833,16 +793,34 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Qualora non si eseguano le specifiche verifiche di duttilità di cui al § 7.5.3.2, le membrature di controvento devono appartenere alla prima o alla seconda classe di cui al § 4.2.3.1 secondo la Tab. 7.5.I. Qualora esse siano costituite da sezioni circolari cave, il rapporto tra il diametro esterno d e lo spessore t deve soddisfare la limitazione "
+            "value": "Qualora non si eseguano le specifiche verifiche di duttilità di cui al § 7.5.3.2, le membrature di controvento devono appartenere alla prima o alla seconda classe di cui al § 4.2.3.1 secondo la Tab. 7.5.I. Qualora esse siano costituite da sezioni circolari cave, il rapporto tra il diametro esterno "
           },
           {
             "kind": "math",
-            "value": "d/t",
-            "latex": "d/t"
+            "value": "d",
+            "latex": "d"
           },
           {
             "kind": "text",
-            "value": " ≤ 36. Nel caso in cui le aste di controvento siano costituite da profili tubolari a sezione rettangolare, i rapporti larghezza/spessore delle parti che costituiscono la sezione non devono eccedere 18, a meno che le pareti del tubo non siano irrigidite."
+            "value": " e lo spessore "
+          },
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " deve soddisfare la limitazione "
+          },
+          {
+            "kind": "math",
+            "value": "d/t ≤ 36",
+            "latex": "d/t\\le36"
+          },
+          {
+            "kind": "text",
+            "value": ". Nel caso in cui le aste di controvento siano costituite da profili tubolari a sezione rettangolare, i rapporti larghezza/spessore delle parti che costituiscono la sezione non devono eccedere 18, a meno che le pareti del tubo non siano irrigidite."
           }
         ]
       },
@@ -913,6 +891,12 @@
         "type": "asset-review",
         "severity": "blocking",
         "note": "Formule, tabella e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
+      },
+      {
+        "issueId": "ntc2018-7-5-15-source-anomaly-rdp",
+        "type": "other",
+        "severity": "warning",
+        "note": "La formula [7.5.15] nel PDF ufficiale stampa N_{b,Rdp}(M_{Ed}), mentre la definizione immediatamente successiva usa N_{b,Rd}; possibile refuso della fonte, conservato senza correzione editoriale."
       }
     ]
   }

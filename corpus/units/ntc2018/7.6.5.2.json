@@ -120,21 +120,12 @@
           },
           {
             "kind": "math",
-            "value": "s_l",
-            "latex": "s_l"
+            "value": "s_l/c < 1,0",
+            "latex": "s_l/c<1{,}0"
           },
           {
             "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " < 1,0:"
+            "value": ":"
           }
         ]
       },
@@ -189,12 +180,21 @@
           },
           {
             "kind": "math",
-            "value": "s_l/c",
-            "latex": "s_l/c"
+            "value": "s_l/c ≤ 0,5",
+            "latex": "s_l/c\\le0{,}5"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,5, i limiti di Tab. 7.6.I possono essere moltiplicati per un coefficiente 1,50;"
+            "value": ", i limiti di Tab. 7.6.I possono essere moltiplicati per un coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "1,50",
+            "latex": "1{,}50"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -245,16 +245,34 @@
         "inline": [
           {
             "kind": "text",
-            "value": "per 0,5 < "
+            "value": "per "
           },
           {
             "kind": "math",
-            "value": "s_l/c",
-            "latex": "s_l/c"
+            "value": "0,5 < s_l/c < 1,0",
+            "latex": "0{,}5<s_l/c<1{,}0"
           },
           {
             "kind": "text",
-            "value": " < 1,0 si può interpolare linearmente tra i coefficienti 1,50 e 1,00."
+            "value": " si può interpolare linearmente tra i coefficienti "
+          },
+          {
+            "kind": "math",
+            "value": "1,50",
+            "latex": "1{,}50"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "1,00",
+            "latex": "1{,}00"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -301,7 +319,31 @@
       "text": {
         "raw": "Deve essere inoltre garantito uno spessore del copriferro netto di almeno 20 mm e non superiore a 40 mm.",
         "normalized": "Deve essere inoltre garantito uno spessore del copriferro netto di almeno 20 mm e non superiore a 40 mm.",
-        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Deve essere inoltre garantito uno spessore del copriferro netto di almeno "
+          },
+          {
+            "kind": "math",
+            "value": "20 mm",
+            "latex": "20\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " e non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "40 mm",
+            "latex": "40\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

@@ -158,8 +158,19 @@
       "origin": "official",
       "text": {
         "raw": "R j,d è la capacità di progetto del collegamento;",
-        "normalized": "R j,d è la capacità di progetto del collegamento;",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "R_{j,d} è la capacità di progetto del collegamento;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "R_{j,d}",
+            "latex": "R_{j,d}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità di progetto del collegamento;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -171,9 +182,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "caa7f8e0bfe89d1075b402a571dd7571a2c2c5392329fd1b4515c46ddf9c8e3d",
-        "normalizedSha256": "caa7f8e0bfe89d1075b402a571dd7571a2c2c5392329fd1b4515c46ddf9c8e3d"
+        "normalizedSha256": "bb604107aac29a2e59de427ebb9de5336a47a005a4283ae386acd3084f665f23"
       }
     },
     {
@@ -182,8 +204,19 @@
       "origin": "official",
       "text": {
         "raw": "R pl,Rd è la capacità al limite plastico della membratura dissipativa collegata;",
-        "normalized": "R pl,Rd è la capacità al limite plastico della membratura dissipativa collegata;",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "R_{pl,Rd} è la capacità al limite plastico della membratura dissipativa collegata;",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "R_{pl,Rd}",
+            "latex": "R_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità al limite plastico della membratura dissipativa collegata;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -195,9 +228,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "220a1eac571cda7364db8e63af132c8529a6ff5de95fb5c822b260b8adfcfd41",
-        "normalizedSha256": "220a1eac571cda7364db8e63af132c8529a6ff5de95fb5c822b260b8adfcfd41"
+        "normalizedSha256": "7e4cd1758122e005dd9eb4742c6ac6fde42369aa5afa31359c30d0517aa0ccea"
       }
     },
     {
@@ -206,8 +250,19 @@
       "origin": "official",
       "text": {
         "raw": "RU,Rd è il limite superiore della capacità della membratura collegata.",
-        "normalized": "RU,Rd è il limite superiore della capacità della membratura collegata.",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "R_{U,Rd} è il limite superiore della capacità della membratura collegata.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "R_{U,Rd}",
+            "latex": "R_{U,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il limite superiore della capacità della membratura collegata."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -219,9 +274,20 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc75-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
         "rawSha256": "0ef7de6859fce3f3aaf112d6e6e435b72ad21b10838e7cdcc28a35ddda475240",
-        "normalizedSha256": "0ef7de6859fce3f3aaf112d6e6e435b72ad21b10838e7cdcc28a35ddda475240"
+        "normalizedSha256": "2a71e60bd079b50f011408a874b9a6a10349baa9e59709e38aaeef61a1601eca"
       }
     },
     {
@@ -295,8 +361,50 @@
       "origin": "official",
       "text": {
         "raw": "essendo A l’area lorda e Ares l’area resistente costituita dall’area netta in corrispondenza dei fori, integrata da un’eventuale area di\nrinforzo. I fattori parziali ·M0 e ·M2 sono definiti nella Tab. 4.2.V del § 4.2.3.1.1. delle presenti norme.",
-        "normalized": "essendo A l’area lorda e Ares l’area resistente costituita dall’area netta in corrispondenza dei fori, integrata da un’eventuale area di rinforzo. I fattori parziali ·M0 e ·M2 sono definiti nella Tab. 4.2.V del § 4.2.3.1.1. delle presenti norme.",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "essendo A l’area lorda e A_{res} l’area resistente costituita dall’area netta in corrispondenza dei fori, integrata da un’eventuale area di rinforzo. I fattori parziali γ_{M0} e γ_{M2} sono definiti nella Tab. 4.2.V del § 4.2.3.1.1. delle presenti norme.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "A",
+            "latex": "A"
+          },
+          {
+            "kind": "text",
+            "value": " l’area lorda e "
+          },
+          {
+            "kind": "math",
+            "value": "A_{res}",
+            "latex": "A_{res}"
+          },
+          {
+            "kind": "text",
+            "value": " l’area resistente costituita dall’area netta in corrispondenza dei fori, integrata da un’eventuale area di rinforzo. I fattori parziali "
+          },
+          {
+            "kind": "math",
+            "value": "γ_{M0}",
+            "latex": "\\gamma_{M0}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "γ_{M2}",
+            "latex": "\\gamma_{M2}"
+          },
+          {
+            "kind": "text",
+            "value": " sono definiti nella Tab. 4.2.V del § 4.2.3.1.1. delle presenti norme."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -331,7 +439,7 @@
           }
         ],
         "rawSha256": "e034a5b0e0d2dbfb2c69be8f0f4b58bbc7fca7c942278be69f97298bad79ef3d",
-        "normalizedSha256": "f4ea78267521d8025ed5307d4a009604cfdc0a0fe4821ea81b7d63682d0c39d7"
+        "normalizedSha256": "3c5645eddfe279ba27a44b62b15fea5b969c3f159baa8565aff23a9b1e8b2ca4"
       }
     }
   ],

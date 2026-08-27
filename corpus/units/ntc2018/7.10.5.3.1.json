@@ -147,131 +147,48 @@
       "origin": "official",
       "text": {
         "raw": "b) il periodo equivalente Tis della costruzione isolata ha un valore compreso fra 3 ȉ T \nbf e 3,0 s, in cui Tbf è il periodo della\nsovrastruttura assunta a base fissa, stimato con un’espressione approssimata;",
-        "normalized": "b) il periodo equivalente Tis della costruzione isolata ha un valore compreso fra 3 ȉ T bf e 3,0 s, in cui Tbf è il periodo della sovrastruttura assunta a base fissa, stimato con un’espressione approssimata;",
+        "normalized": "b) il periodo equivalente T_is della costruzione isolata ha un valore compreso fra 3 · T_bf e 3,0 s, in cui T_bf è il periodo della sovrastruttura assunta a base fissa, stimato con un’espressione approssimata;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "b) il periodo equivalente Tis della costruzione isolata ha un valore compreso fra 3 ȉ T bf e 3,0 s, in cui Tbf è il periodo della sovrastruttura assunta a base fissa, stimato con un’espressione approssimata;"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 279,
-        "printedPage": "275",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "776021b7c5e50ecb9d75ecd174058a1a9287b83d34c8b441eff4d5b15be8eb10",
-        "normalizedSha256": "5edb349f9c6745444a239cbe1dee26dfeafdf84ed5c8e1700fdf68b3f504981b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-c",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "c) la rigidezza verticale del sistema di isolamento K \nV è almeno 800 volte più grande della rigidezza equivalente orizzontale del\nsistema di isolamento Kesi \n;",
-        "normalized": "c) la rigidezza verticale del sistema di isolamento K V è almeno 800 volte più grande della rigidezza equivalente orizzontale del sistema di isolamento Kesi ;",
-        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "c) la rigidezza verticale del sistema di isolamento K V è almeno 800 volte più grande della rigidezza equivalente orizzontale del sistema di isolamento Kesi ;"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 279,
-        "printedPage": "275",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "b6e67cc07828894851286309c1a36e4f40cb822223c2e5714063515f04a42418",
-        "normalizedSha256": "bc9d8f6e8a67e3cc37ac697ba012e2dfda2de36f16a302b6e0b6fff184e5af4b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-d",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "d) il periodo in direzione verticale TV, calcolato come VV M/K2ʌT , è inferiore a 0,1 s;\ne) nessun isolatore risulta in trazione per l’effetto combinato dell’azione sismica e dei carichi verticali;",
-        "normalized": "il periodo in direzione verticale T_V, calcolato come T_V = 2π√(M/K_V), è inferiore a 0,1 s;",
-        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "il periodo in direzione verticale "
+            "value": "b) il periodo equivalente "
           },
           {
             "kind": "math",
-            "value": "T_V",
-            "latex": "T_V"
+            "value": "T_is",
+            "latex": "T_{is}"
           },
           {
             "kind": "text",
-            "value": ", calcolato come "
+            "value": " della costruzione isolata ha un valore compreso fra "
           },
           {
             "kind": "math",
-            "value": "T_V",
-            "latex": "T_V"
+            "value": "3 · T_bf",
+            "latex": "3\\cdot T_{bf}"
           },
           {
             "kind": "text",
-            "value": " = 2π√(M/"
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "K_V",
-            "latex": "K_V"
+            "value": "3,0 s",
+            "latex": "3{,}0\\,\\mathrm{s}"
           },
           {
             "kind": "text",
-            "value": "), è inferiore a 0,1 s;"
+            "value": ", in cui "
+          },
+          {
+            "kind": "math",
+            "value": "T_bf",
+            "latex": "T_{bf}"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo della sovrastruttura assunta a base fissa, stimato con un’espressione approssimata;"
           }
         ]
       },
@@ -307,8 +224,159 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "6321eecbcb9f82535bfa56a2d88ecc1c5850ffd26908a099ec0f653d021bc6d8",
-        "normalizedSha256": "a6d6c41135345832e62d41635304d6e12a2e9ec2603c99bd1084224586c84d97"
+        "rawSha256": "776021b7c5e50ecb9d75ecd174058a1a9287b83d34c8b441eff4d5b15be8eb10",
+        "normalizedSha256": "48c505b7745600001d210fb52c632a37ab35582ba75d2c81172baaabe9d49885"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-c",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "c) la rigidezza verticale del sistema di isolamento K \nV è almeno 800 volte più grande della rigidezza equivalente orizzontale del\nsistema di isolamento Kesi \n;",
+        "normalized": "c) la rigidezza verticale del sistema di isolamento K_V è almeno 800 volte più grande della rigidezza equivalente orizzontale del sistema di isolamento K_esi;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "c) la rigidezza verticale del sistema di isolamento "
+          },
+          {
+            "kind": "math",
+            "value": "K_V",
+            "latex": "K_V"
+          },
+          {
+            "kind": "text",
+            "value": " è almeno "
+          },
+          {
+            "kind": "math",
+            "value": "800",
+            "latex": "800"
+          },
+          {
+            "kind": "text",
+            "value": " volte più grande della rigidezza equivalente orizzontale del sistema di isolamento "
+          },
+          {
+            "kind": "math",
+            "value": "K_esi",
+            "latex": "K_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "b6e67cc07828894851286309c1a36e4f40cb822223c2e5714063515f04a42418",
+        "normalizedSha256": "0addce4e428d22d3c4dfa93f40fe9cd6bd2354d358570d5f5fc6754e94df5990"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-d",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "d) il periodo in direzione verticale TV, calcolato come VV M/K2ʌT , è inferiore a 0,1 s;",
+        "normalized": "d) il periodo in direzione verticale T_V, calcolato come T_V = 2π√(M/K_V), è inferiore a 0,1 s;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "d) il periodo in direzione verticale "
+          },
+          {
+            "kind": "math",
+            "value": "T_V",
+            "latex": "T_V"
+          },
+          {
+            "kind": "text",
+            "value": ", calcolato come "
+          },
+          {
+            "kind": "math",
+            "value": "T_V = 2π√(M/K_V)",
+            "latex": "T_V=2\\pi\\sqrt{M/K_V}"
+          },
+          {
+            "kind": "text",
+            "value": ", è inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,1 s",
+            "latex": "0{,}1\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 279,
+        "printedPage": "275",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9f54cde9684b35a3eab0af23690d2ea11f11dd7533037bd65b3c6e893afd6680",
+        "normalizedSha256": "c3b0d8d4ce77a98f3daaa988e9724af188a37792d166c6243839ff2f5037579e"
       }
     },
     {
@@ -406,13 +474,31 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ȭ la sovrastruttura ha altezza non maggiore di 20 m e non più di 5 piani\nȭ la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di 0,05s.",
-        "normalized": "ȭ la sovrastruttura ha altezza non maggiore di 20 m e non più di 5 piani ȭ la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di 0,05s.",
+        "raw": "ȭ la sovrastruttura ha altezza non maggiore di 20 m e non più di 5 piani",
+        "normalized": "– la sovrastruttura ha altezza non maggiore di 20 m e non più di 5 piani",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "ȭ la sovrastruttura ha altezza non maggiore di 20 m e non più di 5 piani ȭ la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di 0,05s."
+            "value": "– la sovrastruttura ha altezza non maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "20 m",
+            "latex": "20\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " e non più di "
+          },
+          {
+            "kind": "math",
+            "value": "5",
+            "latex": "5"
+          },
+          {
+            "kind": "text",
+            "value": " piani"
           }
         ]
       },
@@ -428,9 +514,9 @@
         },
         "transformations": [
           {
-            "operation": "join-line-wrap",
+            "operation": "manual-correction",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -443,8 +529,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "2f42679c9855ab0dfa0c9657b2e55f51b5d67b27bb0d31a77fcdee3cf453c5e1",
-        "normalizedSha256": "6658b266cb956e4367983fea95f34d6606a44f7ccdd871d9c6a7742cbf630fb1"
+        "rawSha256": "75bb8c34e6ce7e14f7c49197dfaa49d1a4007bfa0d7089b5b85356c49f600d53",
+        "normalizedSha256": "1722adc1c38c35b380a2f9e994cd20033f4b4dd6631250144e568951cd93955d"
       }
     },
     {
@@ -452,13 +538,22 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ȭ la dimensione maggiore in pianta della sovrastruttura è inferiore a 50 m;",
-        "normalized": "ȭ la dimensione maggiore in pianta della sovrastruttura è inferiore a 50 m;",
+        "raw": "ȭ la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di 0,05s.",
+        "normalized": "– la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di 0,05s.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "ȭ la dimensione maggiore in pianta della sovrastruttura è inferiore a 50 m;"
+            "value": "– la sottostruttura può essere considerata infinitamente rigida, per cui il suo periodo proprio è non maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "0,05s",
+            "latex": "0{,}05\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -472,9 +567,25 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
-        "rawSha256": "1ec718578e2840d8e76b4288c0d732bdf4f745fa784d8a8bc245d4d0ebc95d97",
-        "normalizedSha256": "1ec718578e2840d8e76b4288c0d732bdf4f745fa784d8a8bc245d4d0ebc95d97"
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "54983ca85b832edb436ce6423e5b8a142174a3d98b0dbd910d3f6267e16317e6",
+        "normalizedSha256": "08174fe48a5f9d3223461b2200263ee3428755af00898069b7a6b2dc291efdef"
       }
     },
     {
@@ -482,13 +593,77 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ȭ in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la\nproiezione verticale del centro di massa non è superiore al 3% della dimensione della sovrastruttura trasversale alla direzione\norizzontale considerata.",
-        "normalized": "ȭ in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la proiezione verticale del centro di massa non è superiore al 3% della dimensione della sovrastruttura trasversale alla direzione orizzontale considerata.",
+        "raw": "ȭ la dimensione maggiore in pianta della sovrastruttura è inferiore a 50 m;",
+        "normalized": "– la dimensione maggiore in pianta della sovrastruttura è inferiore a 50 m;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "ȭ in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la proiezione verticale del centro di massa non è superiore al 3% della dimensione della sovrastruttura trasversale alla direzione orizzontale considerata."
+            "value": "– la dimensione maggiore in pianta della sovrastruttura è inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "50 m",
+            "latex": "50\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "1ec718578e2840d8e76b4288c0d732bdf4f745fa784d8a8bc245d4d0ebc95d97",
+        "normalizedSha256": "eb2000f0f5f0978623a5f1f41a49b09d25e26aa4a1c39840238f75e583b6f611"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-i2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ȭ in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la\nproiezione verticale del centro di massa non è superiore al 3% della dimensione della sovrastruttura trasversale alla direzione\norizzontale considerata.",
+        "normalized": "– in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la proiezione verticale del centro di massa non è superiore al 3% della dimensione della sovrastruttura trasversale alla direzione orizzontale considerata.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– in ciascuna delle direzioni principali orizzontali, l’eccentricità totale tra il centro di rigidezza del sistema di isolamento e la proiezione verticale del centro di massa non è superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "3%",
+            "latex": "3\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della dimensione della sovrastruttura trasversale alla direzione orizzontale considerata."
           }
         ]
       },
@@ -507,6 +682,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -520,7 +700,7 @@
           }
         ],
         "rawSha256": "7b1b0a1d0e2961886ba40eefbacbda2e6cbebe6843e13720beaa0484832044bb",
-        "normalizedSha256": "fdc041cec1ccc90da0e57d78dd75072d670f10e26f9bc8c74a8af0578aed3e5e"
+        "normalizedSha256": "f704ec7eb1fdf16ce3d7f15ea848341642deceba3ead0be26f451bcc038d3eb1"
       }
     },
     {
@@ -564,7 +744,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "– lo schema statico è ad impalcati semplicemente appoggiati, oppure lo schema statico è a impalcati continui con geometria regolare, caratterizzata da: sostanziale rettilineità dell’impalcato, luci uguali, rapporto massimo tra le rigidezze delle pile inferiore a 2, lunghezza totale dell’impalcato continuo inferiore a 150 m;"
+            "value": "– lo schema statico è ad impalcati semplicemente appoggiati, oppure lo schema statico è a impalcati continui con geometria regolare, caratterizzata da: sostanziale rettilineità dell’impalcato, luci uguali, rapporto massimo tra le rigidezze delle pile inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "2",
+            "latex": "2"
+          },
+          {
+            "kind": "text",
+            "value": ", lunghezza totale dell’impalcato continuo inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "150 m",
+            "latex": "150\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -604,13 +802,22 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– la massa della metà superiore delle pile è inferiore a 1/5 della massa dell’impalcato;\n– le pile hanno altezza inferiore a 20 m;",
-        "normalized": "– la massa della metà superiore delle pile è inferiore a 1/5 della massa dell’impalcato; – le pile hanno altezza inferiore a 20 m;",
+        "raw": "– la massa della metà superiore delle pile è inferiore a 1/5 della massa dell’impalcato;",
+        "normalized": "– la massa della metà superiore delle pile è inferiore a 1/5 della massa dell’impalcato;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– la massa della metà superiore delle pile è inferiore a 1/5 della massa dell’impalcato; – le pile hanno altezza inferiore a 20 m;"
+            "value": "– la massa della metà superiore delle pile è inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1/5",
+            "latex": "1/5"
+          },
+          {
+            "kind": "text",
+            "value": " della massa dell’impalcato;"
           }
         ]
       },
@@ -624,29 +831,52 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "e4a75ed24556095e2b9f48bd35b09558812e4a2c91e75804f32d90a1d6ffc24b",
-        "normalizedSha256": "ce2877807703410df89f8d1bb347a73c80b890d0faacd1d3c4b77aab20915785"
+        "transformations": [],
+        "rawSha256": "8a14fec1ad167c60ab970269f661bc18cfb35d154d00ed41ddd4a359b27c9b12",
+        "normalizedSha256": "8a14fec1ad167c60ab970269f661bc18cfb35d154d00ed41ddd4a359b27c9b12"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-l",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– le pile hanno altezza inferiore a 20 m;",
+        "normalized": "– le pile hanno altezza inferiore a 20 m;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– le pile hanno altezza inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "20 m",
+            "latex": "20\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "eccc94728601e53352cddc03fe35636c35801b7cb2a1aa90203fd75c53fe9bf8",
+        "normalizedSha256": "eccc94728601e53352cddc03fe35636c35801b7cb2a1aa90203fd75c53fe9bf8"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-m",
       "kind": "list-item",
       "origin": "official",
       "text": {
@@ -656,7 +886,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "– in direzione trasversale la distanza tra il centro di rigidezza del sistema di isolamento e il centro di massa dell’impalcato non è superiore al 5% della dimensione trasversale della sovrastruttura."
+            "value": "– in direzione trasversale la distanza tra il centro di rigidezza del sistema di isolamento e il centro di massa dell’impalcato non è superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della dimensione trasversale della sovrastruttura."
           }
         ]
       },
@@ -742,13 +981,13 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la\nsottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a:\n)ȟ,(TSMF esiise",
-        "normalized": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la sottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a: )ȟ,(TSMF esiise",
+        "raw": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la\nsottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a:",
+        "normalized": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la sottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la sottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a: )ȟ,(TSMF esiise"
+            "value": "La forza orizzontale complessiva applicata al sistema d’isolamento, da ripartire tra gli elementi strutturali costituenti la sottostruttura in proporzione alle rigidezze dei corrispondenti dispositivi d’isolamento, è pari a:"
           }
         ]
       },
@@ -779,8 +1018,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "c9d612b939b918d942c92ac7f62b5c4c486001339907cdff55b591671d0b3a01",
-        "normalizedSha256": "391939e2030d423ef0420d800c8bf48488d8f703c2d60c241c2fe6f937859dc9"
+        "rawSha256": "4c63e11d96bc4b3fef084a9ff476decf3162a63b048212e908bce192de49bee6",
+        "normalizedSha256": "0e254038a285a01cbcbaaee2ce31469a7e9f16008024ceb34af9cd505488eaee"
       }
     },
     {
@@ -815,12 +1054,30 @@
       "origin": "official",
       "text": {
         "raw": "dove )ȟ,(TS esiise è l’accelerazione spettrale definita nel § 3.2.3 per la categoria di suolo di fondazione appropriata e K \nesi,min \n,min è\nla rigidezza equivalente minima in relazione alla variabilità delle proprietà meccaniche del sistema di isolamento, per effetto dei\nfattori definiti nel § 7.10.5.1.",
-        "normalized": "dove )ȟ,(TS esiise è l’accelerazione spettrale definita nel § 3.2.3 per la categoria di suolo di fondazione appropriata e K esi,min ,min è la rigidezza equivalente minima in relazione alla variabilità delle proprietà meccaniche del sistema di isolamento, per effetto dei fattori definiti nel § 7.10.5.1.",
+        "normalized": "dove S_e(T_is, ξ_esi) è l’accelerazione spettrale definita nel § 3.2.3 per la categoria di suolo di fondazione appropriata e K_esi,min,min è la rigidezza equivalente minima in relazione alla variabilità delle proprietà meccaniche del sistema di isolamento, per effetto dei fattori definiti nel § 7.10.5.1.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove )ȟ,(TS esiise è l’accelerazione spettrale definita nel § 3.2.3 per la categoria di suolo di fondazione appropriata e K esi,min ,min è la rigidezza equivalente minima in relazione alla variabilità delle proprietà meccaniche del sistema di isolamento, per effetto dei fattori definiti nel § 7.10.5.1."
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "S_e(T_is, ξ_esi)",
+            "latex": "S_e(T_{is},\\xi_{esi})"
+          },
+          {
+            "kind": "text",
+            "value": " è l’accelerazione spettrale definita nel § 3.2.3 per la categoria di suolo di fondazione appropriata e "
+          },
+          {
+            "kind": "math",
+            "value": "K_esi,min",
+            "latex": "K_{esi,min}"
+          },
+          {
+            "kind": "text",
+            "value": ",min è la rigidezza equivalente minima in relazione alla variabilità delle proprietà meccaniche del sistema di isolamento, per effetto dei fattori definiti nel § 7.10.5.1."
           }
         ]
       },
@@ -839,6 +1096,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -852,7 +1114,7 @@
           }
         ],
         "rawSha256": "c96a90c5c638bbd3d9e0a9de26b7e439a36e429f5b96826cadd608cce03ec973",
-        "normalizedSha256": "6f50e613d00a6fcdbe572f89461d1098bfe4cccfe0230cdf3a425dbd3d5c2b31"
+        "normalizedSha256": "604410993b9b631683f81ce8a1e6d473cb93252690d6ee57f1512b8fb39e602b"
       }
     },
     {
@@ -861,12 +1123,21 @@
       "origin": "official",
       "text": {
         "raw": "Lo spostamento del centro di rigidezza dovuto all’azione sismica d \ndc deve essere calcolato, in ciascuna direzione orizzontale,\nmediante la seguente espressione: ",
-        "normalized": "Lo spostamento del centro di rigidezza dovuto all’azione sismica d dc deve essere calcolato, in ciascuna direzione orizzontale, mediante la seguente espressione:",
+        "normalized": "Lo spostamento del centro di rigidezza dovuto all’azione sismica d_dc deve essere calcolato, in ciascuna direzione orizzontale, mediante la seguente espressione:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Lo spostamento del centro di rigidezza dovuto all’azione sismica d dc deve essere calcolato, in ciascuna direzione orizzontale, mediante la seguente espressione:"
+            "value": "Lo spostamento del centro di rigidezza dovuto all’azione sismica "
+          },
+          {
+            "kind": "math",
+            "value": "d_dc",
+            "latex": "d_{dc}"
+          },
+          {
+            "kind": "text",
+            "value": " deve essere calcolato, in ciascuna direzione orizzontale, mediante la seguente espressione:"
           }
         ]
       },
@@ -887,6 +1158,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -898,7 +1174,7 @@
           }
         ],
         "rawSha256": "07165e0f645138502a2ca125d046ee3b50f158d2a3af96351bc308a0521c3d1b",
-        "normalizedSha256": "5f10d09cdd374db2cbc72aa9f8b00ba70b0364d4e373f6b049f853962e4457d7"
+        "normalizedSha256": "90ef56f18dd2d5ce3a830c4934050d65452194b5af823f2b64941ef6a66e5f95"
       }
     },
     {
@@ -1000,17 +1276,108 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p9",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p9a",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "in cui mj è la massa del livello j-esimo.\nGli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto\namplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori Έxi e Έyi da applicare,\nrispettivamente, alle azioni in direzione x e y:",
-        "normalized": "in cui mj è la massa del livello j-esimo. Gli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto amplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori Έxi e Έyi da applicare, rispettivamente, alle azioni in direzione x e y:",
+        "raw": "in cui mj è la massa del livello j-esimo.",
+        "normalized": "in cui m_j è la massa del livello j-esimo.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "in cui mj è la massa del livello j-esimo. Gli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto amplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori Έxi e Έyi da applicare, rispettivamente, alle azioni in direzione x e y:"
+            "value": "in cui "
+          },
+          {
+            "kind": "math",
+            "value": "m_j",
+            "latex": "m_j"
+          },
+          {
+            "kind": "text",
+            "value": " è la massa del livello j-esimo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "dde04b9ed85ae240fa6b33553111f88fa8cc1acd9a1a4a315269f6be57e95b02",
+        "normalizedSha256": "7faabb01e3c94294c54b769c78795b1ba5c90bddff07d2d80e36bde706b9ddfc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p9b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Gli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto\namplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori Έxi e Έyi da applicare,\nrispettivamente, alle azioni in direzione x e y:",
+        "normalized": "Gli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto amplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori δ_xi e δ_yi da applicare, rispettivamente, alle azioni in direzione x e y:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli effetti della torsione d’insieme della sovrastruttura sui singoli dispositivi di isolamento possono essere messi in conto amplificando in ciascuna direzione gli spostamenti e le forze precedentemente definiti mediante i fattori "
+          },
+          {
+            "kind": "math",
+            "value": "δ_xi",
+            "latex": "\\delta_{xi}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "δ_yi",
+            "latex": "\\delta_{yi}"
+          },
+          {
+            "kind": "text",
+            "value": " da applicare, rispettivamente, alle azioni in direzione "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": ":"
           }
         ]
       },
@@ -1031,6 +1398,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -1041,8 +1413,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "7f6650232a8dbd663e780a7fa285d4e7dcc1b2b770927a32ab7fdd79a8a88a4b",
-        "normalizedSha256": "a11ae43df0c582ecd2bb825ee6295fe8af34bc31c65571ca28d52cc2a79fa913"
+        "rawSha256": "66af1ce89bd0ce604bf64f0de8134c6b92cc6b3115f97d8df564d8d7001529f5",
+        "normalizedSha256": "997ce89a10108cd750ad02068f8aa530a8180d73b5147844e8b707e4cba1f600"
       }
     },
     {
@@ -1072,17 +1444,52 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p10",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p10a",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "in cui:\n(xi \n, xi \n) sono le coordinate del dispositivo rispetto al centro di rigidezza;\ne \ntot,x e \ntot,y è l’eccentricità totale nella direzione x, y;\nrx ry sono le componenti, in direzione x e y del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:",
-        "normalized": "in cui: (xi , xi ) sono le coordinate del dispositivo rispetto al centro di rigidezza; e tot,x e tot,y è l’eccentricità totale nella direzione x, y; rx ry sono le componenti, in direzione x e y del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:",
+        "raw": "in cui:",
+        "normalized": "in cui:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "in cui: (xi , xi ) sono le coordinate del dispositivo rispetto al centro di rigidezza; e tot,x e tot,y è l’eccentricità totale nella direzione x, y; rx ry sono le componenti, in direzione x e y del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:"
+            "value": "in cui:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d",
+        "normalizedSha256": "99ad78b317e8c5943a84ab80161478b18b48ada7a3417a495661dde21242a84d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p10b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "(xi \n, xi \n) sono le coordinate del dispositivo rispetto al centro di rigidezza;",
+        "normalized": "(x_i, x_i) sono le coordinate del dispositivo rispetto al centro di rigidezza;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "(x_i, x_i)",
+            "latex": "(x_i,x_i)"
+          },
+          {
+            "kind": "text",
+            "value": " sono le coordinate del dispositivo rispetto al centro di rigidezza;"
           }
         ]
       },
@@ -1103,6 +1510,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -1113,8 +1525,169 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "4d6982378d4fb9c4cae811b39a0f961a09911ca96697cde87e809e455017cdbb",
-        "normalizedSha256": "de8b1c04e499001fd29517f626afe49049a94be23622824bdf1fa24e0024e6f4"
+        "rawSha256": "766cce9ec342b2dff2762486c3f6026fe8a7642d093a93d493fc9b0837c3ac02",
+        "normalizedSha256": "c7529e99ecb3f4182715520c43161431618fe65504c5ff409f56e6c1ab60abcc"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p10c",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "e \ntot,x e \ntot,y è l’eccentricità totale nella direzione x, y;",
+        "normalized": "e_tot,x e_tot,y è l’eccentricità totale nella direzione x, y;",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "e_tot,x",
+            "latex": "e_{tot,x}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "e_tot,y",
+            "latex": "e_{tot,y}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’eccentricità totale nella direzione "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "79b998250fb00963661196544b202c07c6acad7aa96c8872a3b38739b1b902d0",
+        "normalizedSha256": "fe06fbef2fc3ecc176b504671ef337387f48d27b59181eb727b70a63493f674d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p10d",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "rx ry sono le componenti, in direzione x e y del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:",
+        "normalized": "r_x r_y sono le componenti, in direzione x e y del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "r_x",
+            "latex": "r_x"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "r_y",
+            "latex": "r_y"
+          },
+          {
+            "kind": "text",
+            "value": " sono le componenti, in direzione "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": " del raggio torsionale del sistema di isolamento, date dalle seguenti espressioni:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "243d540a6031baf6c408830a31465c370f241ee17db27ac1c99c42e54f7b3821",
+        "normalizedSha256": "14acb5a302e7ca796e9139059aa5865ace77630bbab33b1b74d9113342fe5a5a"
       }
     },
     {
@@ -1144,17 +1717,49 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p11",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p11a",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "K \nxi \n, K \nxi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y.\nAi fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3.",
-        "normalized": "K xi , K xi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y. Ai fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3.",
+        "raw": "K \nxi \n, K \nxi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y.",
+        "normalized": "K_xi, K_xi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "K_xi",
+            "latex": "K_{xi}"
+          },
+          {
             "kind": "text",
-            "value": "K xi , K xi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y. Ai fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3."
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "K_xi",
+            "latex": "K_{xi}"
+          },
+          {
+            "kind": "text",
+            "value": " sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni "
+          },
+          {
+            "kind": "math",
+            "value": "x",
+            "latex": "x"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "y",
+            "latex": "y"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1175,6 +1780,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -1185,8 +1795,38 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "6104bbdb378a706b76f2cb778eef097248e0d51e6ba2f9d4bf936486a03394f0",
-        "normalizedSha256": "ae0cc2227a8e4d631a376252cd158b5bc0a41c7405c68bbd5b2377cbff83fe76"
+        "rawSha256": "f03e25b2de2693a9aeb2c9399f66b274babfe384a8227ed4ae322d5539924e57",
+        "normalizedSha256": "03bc3c0c9304cfbaf0b9ce5677cf750090305bfab15fbaf12616a8699b6aa4b7"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1#block-p11b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Ai fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3.",
+        "normalized": "Ai fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della verifica degli elementi strutturali, gli effetti torsionali sulla sovrastruttura sono valutati come specificato in § 7.3.3."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 280,
+        "printedPage": "276",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "1edd6a1c3cd146963b710080c93b2d9d3dba0c992f84c34068be4450df7b47a4",
+        "normalizedSha256": "1edd6a1c3cd146963b710080c93b2d9d3dba0c992f84c34068be4450df7b47a4"
       }
     }
   ],
@@ -1218,6 +1858,24 @@
         "type": "normalization-review",
         "severity": "blocking",
         "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
+      },
+      {
+        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-k-esi-min",
+        "type": "other",
+        "severity": "warning",
+        "note": "La fonte ufficiale stampa K_esi,min seguito da un ulteriore ‘,min’ nella definizione dopo la formula [7.10.1]; il possibile refuso è conservato nel testo normalizzato e richiede decisione editoriale umana."
+      },
+      {
+        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-d-de",
+        "type": "other",
+        "severity": "warning",
+        "note": "La frase introduttiva della formula [7.10.2] usa d_dc, mentre la formula ufficiale stampa chiaramente d_de; entrambe le grafie sono conservate e l’incoerenza richiede decisione editoriale umana."
+      },
+      {
+        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-duplicated-x",
+        "type": "other",
+        "severity": "warning",
+        "note": "Le definizioni sotto [7.10.4]–[7.10.5] stampano (x_i, x_i) e K_xi, K_xi, mentre le formule usano anche y_i e K_yi; le duplicazioni sono conservate come possibili refusi della fonte e richiedono decisione editoriale umana."
       }
     ]
   }

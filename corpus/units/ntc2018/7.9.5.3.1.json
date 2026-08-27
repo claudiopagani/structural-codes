@@ -71,7 +71,7 @@
       "origin": "official",
       "text": {
         "raw": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono\nquindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone\ndissipative alla base della pila, un momento flettente pari a: ·RdȉM \nRd , dove MRd è il momento resistente della zona o delle zone\ndissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica.",
-        "normalized": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono quindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone dissipative alla base della pila, un momento flettente pari a γ_Rd M_Rd, dove M_Rd è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica.",
+        "normalized": "Gli apparecchi d’appoggio o di vincolo fissi devono essere dimensionati con i criteri della progettazione in capacità. Essi devono quindi essere in grado di trasmettere, mantenendo la piena funzionalità, forze orizzontali tali da produrre, nella zona o nelle zone dissipative alla base della pila, un momento flettente pari a γ_Rd · M_Rd, dove M_Rd è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -80,12 +80,21 @@
           },
           {
             "kind": "math",
-            "value": "γ_Rd M_Rd",
-            "latex": "\\gamma_{Rd}M_{Rd}"
+            "value": "γ_Rd · M_Rd",
+            "latex": "\\gamma_{Rd}\\cdot M_{Rd}"
           },
           {
             "kind": "text",
-            "value": ", dove M_Rd è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica."
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "M_Rd",
+            "latex": "M_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento resistente della zona o delle zone dissipative. Questa verifica può essere eseguita in modo indipendente per le due direzioni dell’azione sismica."
           }
         ]
       },
@@ -122,7 +131,7 @@
           }
         ],
         "rawSha256": "1fa540c760b35e8f616dcea29c27b40b2f19547ba9667de275e9b69ca7e87cb3",
-        "normalizedSha256": "9a24d05373c5f60804af940a2d6299171b24256914aa1f8f90d4e95d717ef2a4"
+        "normalizedSha256": "b41acf46fdb2429d2faf96c05eb13df36b2d9694a7530bb2a520c2bbbcef898a"
       }
     },
     {
@@ -136,7 +145,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Le forze determinate come sopra possono essere superiori a quelle che si ottengono dall’analisi ponendo q = 1; in tal caso, per il progetto degli apparecchi è consentito adottare queste ultime."
+            "value": "Le forze determinate come sopra possono essere superiori a quelle che si ottengono dall’analisi ponendo "
+          },
+          {
+            "kind": "math",
+            "value": "q = 1",
+            "latex": "q=1"
+          },
+          {
+            "kind": "text",
+            "value": "; in tal caso, per il progetto degli apparecchi è consentito adottare queste ultime."
           }
         ]
       },

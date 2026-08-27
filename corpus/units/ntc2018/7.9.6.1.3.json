@@ -161,12 +161,30 @@
       "origin": "official",
       "text": {
         "raw": "- la distanza tra la sezione di momento massimo e la sezione in cui il momento si riduce del 20%. Il diagramma dei\nmomenti flettenti su cui computare il decremento del 20% è quello in cui il valore massimo del momento vale Mprc \n.",
-        "normalized": "la distanza tra la sezione di momento massimo e la sezione in cui il momento si riduce del 20%. Il diagramma dei momenti flettenti su cui computare il decremento del 20% è quello in cui il valore massimo del momento vale M_prc.",
+        "normalized": "- la distanza tra la sezione di momento massimo e la sezione in cui il momento si riduce del 20%. Il diagramma dei momenti flettenti su cui computare il decremento del 20% è quello in cui il valore massimo del momento vale M_prc.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "la distanza tra la sezione di momento massimo e la sezione in cui il momento si riduce del 20%. Il diagramma dei momenti flettenti su cui computare il decremento del 20% è quello in cui il valore massimo del momento vale "
+            "value": "- la distanza tra la sezione di momento massimo e la sezione in cui il momento si riduce del "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Il diagramma dei momenti flettenti su cui computare il decremento del "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " è quello in cui il valore massimo del momento vale "
           },
           {
             "kind": "math",
@@ -212,16 +230,16 @@
           }
         ],
         "rawSha256": "9c0b4537aafbb156ee23059b199aaa9407fa82f1a4a85624c5a8580aa1c96512",
-        "normalizedSha256": "678461eede994ba6e15bc1cb4207560cdfbf52f40d2f50511fdf0e921ff2fc22"
+        "normalizedSha256": "e198ceb48fcc8a1ddaf2d3969b0dd3db0a497441ce8021b9920390da7716d07f"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.3#block-p2",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.3#block-p2a",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Per 0,3 ǂ Αk ǂ 0,6 tale valore deve essere incrementano del 50%.\nPer un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente\ndecrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto.",
-        "normalized": "Per 0,3 ≤ ν_k ≤ 0,6 tale valore deve essere incrementato del 50%. Per un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente decrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto.",
+        "raw": "Per 0,3 ǂ Αk ǂ 0,6 tale valore deve essere incrementano del 50%.",
+        "normalized": "Per 0,3 ≤ ν_k ≤ 0,6 tale valore deve essere incrementato del 50%.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -235,7 +253,62 @@
           },
           {
             "kind": "text",
-            "value": " tale valore deve essere incrementato del 50%. Per un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente decrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto."
+            "value": " tale valore deve essere incrementato del "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 276,
+        "printedPage": "272",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "23207800962bc16c9beaef7ae5f656da145098ac1882998e52af7cbbc929e202",
+        "normalizedSha256": "6b5676051c2e28c75de6056a6f0fde72773dce43102770ae1377c683ac33fff4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.9.6.1.3#block-p2b",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente\ndecrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto.",
+        "normalized": "Per un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente decrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per un’ulteriore estensione di lunghezza pari alla precedente si dispone solo l’armatura di confinamento gradualmente decrescente, in misura non inferiore in totale a metà di quella necessaria nel primo tratto."
           }
         ]
       },
@@ -256,11 +329,6 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -271,8 +339,8 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "5c9c8a8918306884ce55d7f316d25e3529b6374d893202c65498aa7f61b51f95",
-        "normalizedSha256": "b5cf92c13a5a6859ac3b89869ab9a2b9047c3daa7f1cfc457036df9c2fe92b69"
+        "rawSha256": "5fe9c4b6b1a292736b8c3615befbb4a0ac8becf05d664e37d334befe3afe0b41",
+        "normalizedSha256": "d0c0cc11aece07082347e13b6c128fc6a2f05714a853843f0cbd9ec36e2b41ab"
       }
     },
     {
@@ -346,7 +414,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Tutte le armature di confinamento, staffe o tiranti, devono terminare con piegature a 135° che si ancorano verso l’interno per una lunghezza minima di 10 diametri."
+            "value": "Tutte le armature di confinamento, staffe o tiranti, devono terminare con piegature a "
+          },
+          {
+            "kind": "math",
+            "value": "135°",
+            "latex": "135^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " che si ancorano verso l’interno per una lunghezza minima di 10 diametri."
           }
         ]
       },
@@ -417,12 +494,39 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso di sezioni ove risulti Αk ǂ 0,30 è possibile impiegare tiranti con piegature a 135° su una estremità e a 90° sull’altra\nestremità, purché siano alternati i versi di posa.",
-        "normalized": "Nel caso di sezioni ove risulti Αk ǂ 0,30 è possibile impiegare tiranti con piegature a 135° su una estremità e a 90° sull’altra estremità, purché siano alternati i versi di posa.",
+        "normalized": "Nel caso di sezioni ove risulti ν_k ≤ 0,30 è possibile impiegare tiranti con piegature a 135° su una estremità e a 90° sull’altra estremità, purché siano alternati i versi di posa.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di sezioni ove risulti Αk ǂ 0,30 è possibile impiegare tiranti con piegature a 135° su una estremità e a 90° sull’altra estremità, purché siano alternati i versi di posa."
+            "value": "Nel caso di sezioni ove risulti "
+          },
+          {
+            "kind": "math",
+            "value": "ν_k ≤ 0,30",
+            "latex": "\\nu_k\\le0{,}30"
+          },
+          {
+            "kind": "text",
+            "value": " è possibile impiegare tiranti con piegature a "
+          },
+          {
+            "kind": "math",
+            "value": "135°",
+            "latex": "135^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " su una estremità e a "
+          },
+          {
+            "kind": "math",
+            "value": "90°",
+            "latex": "90^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " sull’altra estremità, purché siano alternati i versi di posa."
           }
         ]
       },
@@ -443,6 +547,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -454,7 +563,7 @@
           }
         ],
         "rawSha256": "daf434cb6472545c5a95547ca436246fd837e8767c72471ae2c4b5202360ad79",
-        "normalizedSha256": "2dcc7ffdf3067c0b77c342a7c669a51a0346ac71c704116be737a09c99ab7236"
+        "normalizedSha256": "4d15394900a5246577552faf95f90eb04e205de90a4e7e7d5d6bdd518fd7c85c"
       }
     },
     {
@@ -468,7 +577,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Tiranti con entrambe le piegature di estremità a 135° possono essere costituiti da due elementi distinti con tratti rettilinei convenientemente sovrapposti all’interno della zona centrale del nucleo di calcestruzzo."
+            "value": "Tiranti con entrambe le piegature di estremità a "
+          },
+          {
+            "kind": "math",
+            "value": "135°",
+            "latex": "135^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " possono essere costituiti da due elementi distinti con tratti rettilinei convenientemente sovrapposti all’interno della zona centrale del nucleo di calcestruzzo."
           }
         ]
       },

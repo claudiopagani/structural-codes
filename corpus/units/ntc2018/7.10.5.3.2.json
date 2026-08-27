@@ -112,17 +112,44 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.2#block-p2",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.2#block-p2a",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo\ndiverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale\nagenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente\nverticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del\nsistema di isolamento K \nV e la rigidezza equivalente orizzontale Kesi risulti inferiore a 800. In tali casi si avrà cura che la massa\neccitata dai modi in direzione verticale considerati nell’analisi sia significativa.\nLo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi T ǃ 0,8 T \nis , assumendo per il coefficiente riduttivo ΋\nil valore corrispondente al coefficiente di smorzamento viscoso equivalente Βesi del sistema di isolamento.",
-        "normalized": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo diverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale agenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente verticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del sistema di isolamento K V e la rigidezza equivalente orizzontale Kesi risulti inferiore a 800. In tali casi si avrà cura che la massa eccitata dai modi in direzione verticale considerati nell’analisi sia significativa. Lo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi T ǃ 0,8 T is , assumendo per il coefficiente riduttivo ΋ il valore corrispondente al coefficiente di smorzamento viscoso equivalente Βesi del sistema di isolamento.",
+        "raw": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo\ndiverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale\nagenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente\nverticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del\nsistema di isolamento K \nV e la rigidezza equivalente orizzontale Kesi risulti inferiore a 800. In tali casi si avrà cura che la massa\neccitata dai modi in direzione verticale considerati nell’analisi sia significativa.",
+        "normalized": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo diverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale agenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente verticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del sistema di isolamento K_V e la rigidezza equivalente orizzontale K_esi risulti inferiore a 800. In tali casi si avrà cura che la massa eccitata dai modi in direzione verticale considerati nell’analisi sia significativa.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo diverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale agenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente verticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del sistema di isolamento K V e la rigidezza equivalente orizzontale Kesi risulti inferiore a 800. In tali casi si avrà cura che la massa eccitata dai modi in direzione verticale considerati nell’analisi sia significativa. Lo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi T ǃ 0,8 T is , assumendo per il coefficiente riduttivo ΋ il valore corrispondente al coefficiente di smorzamento viscoso equivalente Βesi del sistema di isolamento."
+            "value": "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo diverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale agenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente verticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del sistema di isolamento "
+          },
+          {
+            "kind": "math",
+            "value": "K_V",
+            "latex": "K_V"
+          },
+          {
+            "kind": "text",
+            "value": " e la rigidezza equivalente orizzontale "
+          },
+          {
+            "kind": "math",
+            "value": "K_esi",
+            "latex": "K_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": " risulti inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "800",
+            "latex": "800"
+          },
+          {
+            "kind": "text",
+            "value": ". In tali casi si avrà cura che la massa eccitata dai modi in direzione verticale considerati nell’analisi sia significativa."
           }
         ]
       },
@@ -141,6 +168,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -153,22 +185,49 @@
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ff0225f457605f735e76535400cbd83315b1d60043b0d2c49a0356277f69bf03",
-        "normalizedSha256": "833d10547200f5aec18bfd03bc290508416decc4a6509e1fe51f02e5ff81b531"
+        "rawSha256": "325d512f01f6d8c98abc846e934fb9ff4a759013a1e3187329582d50282f89ed",
+        "normalizedSha256": "6b72aeaa9b22c385dc37258ede04da1644aafd3482e566bf4f79fb6e731dbce3"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.2#block-p3",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.2#block-p2b",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso\nequivalente Β si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il\ncorrispondente valore modale di Β o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di\nsmorzamento del sistema.",
-        "normalized": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso equivalente Β si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il corrispondente valore modale di Β o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di smorzamento del sistema.",
+        "raw": "Lo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi T ǃ 0,8 T \nis , assumendo per il coefficiente riduttivo ΋\nil valore corrispondente al coefficiente di smorzamento viscoso equivalente Βesi del sistema di isolamento.",
+        "normalized": "Lo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi T ≥ 0,8 T_is, assumendo per il coefficiente riduttivo η il valore corrispondente al coefficiente di smorzamento viscoso equivalente ξ_esi del sistema di isolamento.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso equivalente Β si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il corrispondente valore modale di Β o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di smorzamento del sistema."
+            "value": "Lo spettro elastico definito in § 3.2.3.2 va ridotto per tutto il campo di periodi "
+          },
+          {
+            "kind": "math",
+            "value": "T ≥ 0,8 T_is",
+            "latex": "T\\ge0{,}8T_{is}"
+          },
+          {
+            "kind": "text",
+            "value": ", assumendo per il coefficiente riduttivo "
+          },
+          {
+            "kind": "math",
+            "value": "η",
+            "latex": "\\eta"
+          },
+          {
+            "kind": "text",
+            "value": " il valore corrispondente al coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξ_esi",
+            "latex": "\\xi_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": " del sistema di isolamento."
           }
         ]
       },
@@ -187,6 +246,80 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "8b29fb1126f57a4022b1581bc01540458fcfe675f7e0c84859bee1ef3be784d4",
+        "normalizedSha256": "172922b9b0e555217d73d678d5f04caafe424aeb233a3f68ae650f7f16294f3e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.2#block-p3",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso\nequivalente Β si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il\ncorrispondente valore modale di Β o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di\nsmorzamento del sistema.",
+        "normalized": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso equivalente ξ si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il corrispondente valore modale di ξ o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di smorzamento del sistema.",
+        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di analisi lineare con integrazione al passo, la messa in conto del corretto valore del coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " si ottiene, quando si opera sulle singole equazioni modali disaccoppiate, assegnando a ciascuna equazione il corrispondente valore modale di "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " o, quando si opera sul sistema completo, definendo in maniera appropriata la matrice di smorzamento del sistema."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 281,
+        "printedPage": "277",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -200,7 +333,7 @@
           }
         ],
         "rawSha256": "c94b3f883d77cb25c9d81d206e0caf83e1735a37f19c1c1a39610d0a1827bd5c",
-        "normalizedSha256": "983b21a37bc145758228632c4331ed10e3e4204b1afaabd9d4a9fe135d747254"
+        "normalizedSha256": "5a58e723b7cf9a7d0c5d4fb6dc115a2d7244b4eae6eda1a1e608e2fa13c87c23"
       }
     }
   ],

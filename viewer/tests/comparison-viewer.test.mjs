@@ -100,11 +100,16 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   ]);
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
+  assert.match(component, /formula-scroll-long/);
+  assert.match(component, /table-scroll-compact/);
+  assert.match(component, /hasOfficialListMarker/);
   assert.match(component, /loading="lazy"/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);
   assert.match(styles, /font-family:\s*"Tinos"/);
   assert.match(styles, /font-variant-numeric:\s*lining-nums/);
   assert.match(styles, /\.scv-root \.formula-number/);
+  assert.match(styles, /\.scv-root \.formula-scroll\.formula-scroll-long/);
+  assert.match(styles, /list-item-with-official-marker/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
 });
 

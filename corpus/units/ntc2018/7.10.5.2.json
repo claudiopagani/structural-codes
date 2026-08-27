@@ -103,7 +103,16 @@
           },
           {
             "kind": "text",
-            "value": " è inferiore a 800."
+            "value": " è inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "800",
+            "latex": "800"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -149,12 +158,30 @@
       "origin": "official",
       "text": {
         "raw": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo\nstato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di\nisolamento, Kesi \n, è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento\ndeve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi \n, valutato con\nriferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi\nconsiderati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo\ndeve essere quello della sovrastruttura nella condizione di base fissa.",
-        "normalized": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, Kesi , è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi , valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa.",
+        "normalized": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, K_esi, è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento ξ_esi, valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, Kesi , è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento Βesi , valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa."
+            "value": "Se è utilizzato un modello lineare, si deve adottare una rigidezza equivalente riferita allo spostamento totale di progetto per lo stato limite in esame di ciascun dispositivo facente parte del sistema di isolamento. La rigidezza totale equivalente del sistema di isolamento, "
+          },
+          {
+            "kind": "math",
+            "value": "K_esi",
+            "latex": "K_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": ", è pari alla somma delle rigidezze equivalenti dei singoli dispositivi. L’energia dissipata dal sistema d’isolamento deve essere espressa in termini di coefficiente di smorzamento viscoso equivalente del sistema d’isolamento "
+          },
+          {
+            "kind": "math",
+            "value": "ξ_esi",
+            "latex": "\\xi_{esi}"
+          },
+          {
+            "kind": "text",
+            "value": ", valutato con riferimento all’energia dissipata dal sistema di isolamento in cicli con frequenza nell’intervallo delle frequenze naturali dei modi considerati. Per i modi superiori della struttura, al di fuori di tale intervallo, il rapporto di smorzamento del modello completo deve essere quello della sovrastruttura nella condizione di base fissa."
           }
         ]
       },
@@ -175,6 +202,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -186,7 +218,7 @@
           }
         ],
         "rawSha256": "f206d79aab6dbebb6f724600a347772612f0aaaef971ddb521748185e300c9ac",
-        "normalizedSha256": "811023f2f11a4f502cb4f5c0ab50a23b0a7e9d972e4c0ebe8f3e0565f4c055ef"
+        "normalizedSha256": "7ab251df55f1f304ed14b8c584a990ab462834f82ee9e77b7d30737ccd0cec13"
       }
     },
     {
@@ -200,7 +232,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Quando la rigidezza e/o lo smorzamento equivalenti del sistema di isolamento dipendono significativamente dallo spostamento di progetto, deve applicarsi una procedura iterativa fino a che la differenza tra il valore assunto e quello calcolato non sia inferiore al 5%."
+            "value": "Quando la rigidezza e/o lo smorzamento equivalenti del sistema di isolamento dipendono significativamente dallo spostamento di progetto, deve applicarsi una procedura iterativa fino a che la differenza tra il valore assunto e quello calcolato non sia inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -292,7 +333,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "a) la rigidezza equivalente del sistema d’isolamento è almeno pari al 50% della rigidezza secante per cicli con spostamento pari al 20% dello spostamento di riferimento;"
+            "value": "a) la rigidezza equivalente del sistema d’isolamento è almeno pari al "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della rigidezza secante per cicli con spostamento pari al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dello spostamento di riferimento;"
           }
         ]
       },
@@ -338,7 +397,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "b) lo smorzamento lineare equivalente del sistema di isolamento, come definito in precedenza, è inferiore al 30%;"
+            "value": "b) lo smorzamento lineare equivalente del sistema di isolamento, come definito in precedenza, è inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "30%",
+            "latex": "30\\%"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -368,7 +436,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "c) le caratteristiche forza-spostamento del sistema d’isolamento non variano di più del 10% per effetto di variazioni della velocità di deformazione in un campo del ±30% intorno al valore di progetto, e dell’azione verticale sui dispositivi, nel campo di variabilità di progetto;"
+            "value": "c) le caratteristiche forza-spostamento del sistema d’isolamento non variano di più del "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " per effetto di variazioni della velocità di deformazione in un campo del "
+          },
+          {
+            "kind": "math",
+            "value": "±30%",
+            "latex": "\\pm30\\%"
+          },
+          {
+            "kind": "text",
+            "value": " intorno al valore di progetto, e dell’azione verticale sui dispositivi, nel campo di variabilità di progetto;"
           }
         ]
       },
@@ -409,12 +495,48 @@
       "origin": "official",
       "text": {
         "raw": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d \ndc, essendo d \ndc lo spostamento del centro di\nrigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura.",
-        "normalized": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d dc, essendo d dc lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura.",
+        "normalized": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 d_dc e d_dc, essendo d_dc lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra 0,5 dc e d dc, essendo d dc lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al 2,5% del peso totale della sovrastruttura."
+            "value": "d) l’incremento della forza nel sistema d’isolamento per spostamenti tra "
+          },
+          {
+            "kind": "math",
+            "value": "0,5 d_dc",
+            "latex": "0{,}5d_{dc}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "d_dc",
+            "latex": "d_{dc}"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "d_dc",
+            "latex": "d_{dc}"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento del centro di rigidezza dovuto all’azione sismica, è almeno pari al "
+          },
+          {
+            "kind": "math",
+            "value": "2,5%",
+            "latex": "2{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del peso totale della sovrastruttura."
           }
         ]
       },
@@ -435,6 +557,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -446,7 +573,7 @@
           }
         ],
         "rawSha256": "f9eecbe455c80dfcf549bffaac80148737e444ab0330308a047058f157d6b126",
-        "normalizedSha256": "4d7c004de4949b438745e7d1814d15dbd497c1623d4e9150ea9e6b3e4d0a4624"
+        "normalizedSha256": "4e7d05a3d9e4346b373b52c5875dda8717eefc8511e8e982bda7b9eeebdbb814"
       }
     },
     {

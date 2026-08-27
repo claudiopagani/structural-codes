@@ -100,6 +100,8 @@
 .scv-block-heading p { display: block; margin: 6px 0 2px; font-weight: 700; }
 .scv-block-list-item { padding-left: 11px; }
 .scv-block-list-item p::before { margin-right: 5px; color: var(--scv-primary); content: "–"; font-weight: 700; }
+.scv-block-list-item.list-item-with-official-marker { padding-left: 0; }
+.scv-block-list-item.list-item-with-official-marker p::before { content: none; }
 .scv-related-unit { margin: 14px 0 18px; padding: 13px 15px; background: var(--scv-circular); border: 1px solid #cfd7ee; border-left: 3px solid var(--scv-primary); border-radius: 4px; }
 .scv-related-unit > header h3 { display: block; margin: 6px 0; color: var(--scv-primary); font-family: "Tinos", serif; font-size: 16px; font-variant-numeric: lining-nums; font-weight: 700; line-height: 1.2; }
 .scv-related-unit > header h3 span { margin-right: 7px; color: var(--scv-primary); font-family: "Tinos", serif; font-size: inherit; font-variant-numeric: lining-nums; font-weight: 700; white-space: nowrap; }
@@ -110,10 +112,12 @@
 .scv-root .formula-row { display: flex; align-items: center; gap: 14px; }
 .scv-root .formula-scroll, .scv-root .table-scroll { max-width: 100%; overflow-x: auto; }
 .scv-root .formula-scroll { flex: 1 1 auto; min-width: 0; padding: 3px; font-size: .8rem; }
+.scv-root .formula-scroll.formula-scroll-long { font-size: .62rem; }
 .scv-root .formula-number { flex: 0 0 auto; margin-left: auto; color: var(--scv-primary-dark); font-family: "Tinos", serif; font-size: 12px; font-variant-numeric: lining-nums; white-space: nowrap; }
 .scv-root .formula-asset figcaption, .scv-root .table-asset figcaption, .scv-root .figure-asset figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 5px; color: #687284; font-size: 8px; }
 .scv-root .table-asset figcaption { display: block; margin-bottom: 7px; }
 .scv-root .table-asset table { width: 100%; min-width: 520px; border-collapse: collapse; color: #2a3039; font-size: 8px; line-height: 1.42; }
+.scv-root .table-scroll-compact table { min-width: 100%; }
 .scv-root .table-asset th, .scv-root .table-asset td { padding: 4px 5px; vertical-align: middle; border: 1px solid #c7ccda; }
 .scv-root .table-asset th { color: #fff; font-weight: 700; text-align: center; background: var(--scv-primary-dark); }
 .scv-root .table-asset td { background: #fbfcff; }

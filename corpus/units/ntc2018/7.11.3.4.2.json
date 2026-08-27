@@ -106,7 +106,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "1. accelerazioni massime attese al piano campagna in assenza di manufatti (condizioni di campo libero) minori di 0,1g;"
+            "value": "1. accelerazioni massime attese al piano campagna in assenza di manufatti (condizioni di campo libero) minori di "
+          },
+          {
+            "kind": "math",
+            "value": "0,1g",
+            "latex": "0{,}1g"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -136,7 +145,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "2. profondità media stagionale della falda superiore a 15 m dal piano campagna, per piano campagna sub-orizzontale e strutture con fondazioni superficiali;"
+            "value": "2. profondità media stagionale della falda superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "15 m",
+            "latex": "15\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " dal piano campagna, per piano campagna sub-orizzontale e strutture con fondazioni superficiali;"
           }
         ]
       },
@@ -177,12 +195,66 @@
       "origin": "official",
       "text": {
         "raw": "3. depositi costituiti da sabbie pulite con resistenza penetrometrica normalizzata (N1 )60 > 30 oppure qc1N > 180 dove (N1)60 è il\nvalore della resistenza determinata in prove penetrometriche dinamiche (Standard Penetration Test) normalizzata ad una\ntensione efficace verticale di 100 kPa e qc1N è il valore della resistenza determinata in prove penetrometriche statiche (Cone\nPenetration Test) normalizzata ad una tensione efficace verticale di 100 kPa;",
-        "normalized": "3. depositi costituiti da sabbie pulite con resistenza penetrometrica normalizzata (N1 )60 > 30 oppure qc1N > 180 dove (N1)60 è il valore della resistenza determinata in prove penetrometriche dinamiche (Standard Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa e qc1N è il valore della resistenza determinata in prove penetrometriche statiche (Cone Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa;",
+        "normalized": "3. depositi costituiti da sabbie pulite con resistenza penetrometrica normalizzata (N_1)_{60} > 30 oppure q_{c1N} > 180 dove (N_1)_{60} è il valore della resistenza determinata in prove penetrometriche dinamiche (Standard Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa e q_{c1N} è il valore della resistenza determinata in prove penetrometriche statiche (Cone Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "3. depositi costituiti da sabbie pulite con resistenza penetrometrica normalizzata (N1 )60 > 30 oppure qc1N > 180 dove (N1)60 è il valore della resistenza determinata in prove penetrometriche dinamiche (Standard Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa e qc1N è il valore della resistenza determinata in prove penetrometriche statiche (Cone Penetration Test) normalizzata ad una tensione efficace verticale di 100 kPa;"
+            "value": "3. depositi costituiti da sabbie pulite con resistenza penetrometrica normalizzata "
+          },
+          {
+            "kind": "math",
+            "value": "(N_1)_{60} > 30",
+            "latex": "(N_1)_{60}>30"
+          },
+          {
+            "kind": "text",
+            "value": " oppure "
+          },
+          {
+            "kind": "math",
+            "value": "q_{c1N} > 180",
+            "latex": "q_{c1N}>180"
+          },
+          {
+            "kind": "text",
+            "value": " dove "
+          },
+          {
+            "kind": "math",
+            "value": "(N_1)_{60}",
+            "latex": "(N_1)_{60}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore della resistenza determinata in prove penetrometriche dinamiche (Standard Penetration Test) normalizzata ad una tensione efficace verticale di "
+          },
+          {
+            "kind": "math",
+            "value": "100 kPa",
+            "latex": "100\\,\\mathrm{kPa}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "q_{c1N}",
+            "latex": "q_{c1N}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore della resistenza determinata in prove penetrometriche statiche (Cone Penetration Test) normalizzata ad una tensione efficace verticale di "
+          },
+          {
+            "kind": "math",
+            "value": "100 kPa",
+            "latex": "100\\,\\mathrm{kPa}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -201,6 +273,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -214,7 +291,7 @@
           }
         ],
         "rawSha256": "b703e2bfb13071fe649a2d0ca58af286b78ed169d0eb739bc210b25ba42e7e95",
-        "normalizedSha256": "b70a0d0dc4dc415344cdae6c616891b211d3937a26e72380507f8c8ae624ebf9"
+        "normalizedSha256": "d3d68c5d9310ac56ac58f631c2d76350d026cd045b0b878320692d7f0701ce88"
       }
     },
     {
@@ -223,12 +300,30 @@
       "origin": "official",
       "text": {
         "raw": "4. distribuzione granulometrica esterna alle zone indicate nella Fig. 7.11.1(a) nel caso di terreni con coefficiente di uniformità Uc\n< 3,5 e in Fig. 7.11.1(b) nel caso di terreni con coefficiente di uniformità Uc > 3,5. ",
-        "normalized": "4. distribuzione granulometrica esterna alle zone indicate nella Fig. 7.11.1(a) nel caso di terreni con coefficiente di uniformità Uc < 3,5 e in Fig. 7.11.1(b) nel caso di terreni con coefficiente di uniformità Uc > 3,5.",
+        "normalized": "4. distribuzione granulometrica esterna alle zone indicate nella Fig. 7.11.1(a) nel caso di terreni con coefficiente di uniformità U_C < 3,5 e in Fig. 7.11.1(b) nel caso di terreni con coefficiente di uniformità U_C > 3,5.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4. distribuzione granulometrica esterna alle zone indicate nella Fig. 7.11.1(a) nel caso di terreni con coefficiente di uniformità Uc < 3,5 e in Fig. 7.11.1(b) nel caso di terreni con coefficiente di uniformità Uc > 3,5."
+            "value": "4. distribuzione granulometrica esterna alle zone indicate nella Fig. 7.11.1(a) nel caso di terreni con coefficiente di uniformità "
+          },
+          {
+            "kind": "math",
+            "value": "U_C < 3,5",
+            "latex": "U_C<3{,}5"
+          },
+          {
+            "kind": "text",
+            "value": " e in Fig. 7.11.1(b) nel caso di terreni con coefficiente di uniformità "
+          },
+          {
+            "kind": "math",
+            "value": "U_C > 3,5",
+            "latex": "U_C>3{,}5"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -247,6 +342,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -260,53 +360,7 @@
           }
         ],
         "rawSha256": "f4aed9d73d1bc8f21aa6b045fd94321d102ecfeb6b749c7a536ac51b320d1e03",
-        "normalizedSha256": "16aac097eed7b71dd1fa534f84aba7ae535958e552a942c4946e7937ccdcdb7a"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.11.3.4.2#block-p2",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "a)\nb)",
-        "normalized": "a) b)",
-        "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "a) b)"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 284,
-        "printedPage": "280",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "9f0feae66ff4d14b0bc5cc3ddb5825a471fe5fca02ee35a6745e87c0970520c1",
-        "normalizedSha256": "7646bebe9765ccb30855e882018b32adbba5c26626ecdaa08a194a1c0dbf68b9"
+        "normalizedSha256": "83866207be709d779ed750b3b6fe542a4360dc4d11f0c537181959aec6c95781"
       }
     },
     {

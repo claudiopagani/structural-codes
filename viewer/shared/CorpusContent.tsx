@@ -24,6 +24,10 @@ function visibleTableNotes(notes: string[]) {
   return notes.filter((note) => !editorialTableNotePatterns.some((pattern) => pattern.test(note)));
 }
 
+function tableColumnCount(headers: TableCell[][], rows: TableCell[][]) {
+  return Math.max(0, ...[...headers, ...rows].map((row) => row.reduce((count, cell) => count + (cell.colSpan ?? 1), 0)));
+}
+
 function latexMarkup(latex: string, displayMode: boolean) {
   return { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
 }
@@ -31,6 +35,10 @@ function latexMarkup(latex: string, displayMode: boolean) {
 function MathCell({ cell }: { cell: TableCell }) {
   if (!cell.latex) return cell.text;
   return <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />;
+}
+
+export function hasOfficialListMarker(block: CorpusBlock) {
+  return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])/iu.test(block.text?.normalized ?? "");
 }
 
 export interface BlockContentProps {
@@ -50,15 +58,16 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
   if (formula) return (
-    <figure className="formula-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div>{!formula.officialNumber && <figcaption><span>Formula non numerata</span></figcaption>}</figure>
+    <figure className="formula-asset"><div className="formula-row"><div className={`formula-scroll ${formula.latex.length > 52 ? "formula-scroll-long" : ""}`} dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div>{!formula.officialNumber && <figcaption><span>Formula non numerata</span></figcaption>}</figure>
   );
   const table = assets.tables[block.assetId];
   if (table) {
     const notes = visibleTableNotes(table.notes);
+    const compactTable = tableColumnCount(table.headers, table.rows) <= 4;
     return (
       <figure className="table-asset">
         <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}` : "Tabella non numerata"}</strong>{table.caption && <span> — {table.caption}</span>}</figcaption>
-        <div className="table-scroll"><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
+        <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>
     );
@@ -84,7 +93,7 @@ export function isRepeatedUnitTitle(unit: CorpusUnit, block: CorpusUnit["blocks"
 
 export function UnitBlocks({ unit, assets, showRaw = false, compact = false, assetsBaseUrl = "/assets" }: { unit: CorpusUnit; assets: AssetBundle; showRaw?: boolean; compact?: boolean; assetsBaseUrl?: string }) {
   return <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
       <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
       <div><span className="block-kind">{block.kind}</span><BlockContent block={block} assets={assets} showRaw={showRaw} assetsBaseUrl={assetsBaseUrl} />
         {block.evidence?.transformations && block.evidence.transformations.length > 0 && <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}

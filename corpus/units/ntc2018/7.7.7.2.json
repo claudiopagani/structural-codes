@@ -80,7 +80,7 @@
       "origin": "official",
       "text": {
         "raw": "In assenza di elementi di controvento trasversali intermedi lungo la trave, il rapporto altezza/spessore per una trave a sezione\nrettangolare deve rispettare la condizione h/b ǂ 4.",
-        "normalized": "In assenza di elementi di controvento trasversali intermedi lungo la trave, il rapporto altezza/spessore per una trave a sezione rettangolare deve rispettare la condizione h/b ǂ 4.",
+        "normalized": "In assenza di elementi di controvento trasversali intermedi lungo la trave, il rapporto altezza/spessore per una trave a sezione rettangolare deve rispettare la condizione h/b ≤ 4.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -89,12 +89,12 @@
           },
           {
             "kind": "math",
-            "value": "h/b",
-            "latex": "h/b"
+            "value": "h/b ≤ 4",
+            "latex": "h/b\\le4"
           },
           {
             "kind": "text",
-            "value": " ǂ 4."
+            "value": "."
           }
         ]
       },
@@ -113,6 +113,11 @@
             "operation": "join-line-wrap",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
@@ -126,7 +131,7 @@
           }
         ],
         "rawSha256": "85e7fc00cbd6d3b698e4609601c2be9048cb6165e35964460512f3c180ddd036",
-        "normalizedSha256": "2e051ca642cdfb8c3f2556177f197848838e40dee0cfc3360c8e350782eb7c1a"
+        "normalizedSha256": "ce727dac8ffba4b4606bd7f371bc71a6709b3a225d9094782389ab8a94673461"
       }
     },
     {
@@ -135,12 +140,21 @@
       "origin": "official",
       "text": {
         "raw": "In siti caratterizzati da un valore agS ǃ 0,2 g, particolare attenzione deve essere posta alla spaziatura degli elementi di fissaggio in\nzone di discontinuità.",
-        "normalized": "In siti caratterizzati da un valore agS ǃ 0,2 g, particolare attenzione deve essere posta alla spaziatura degli elementi di fissaggio in zone di discontinuità.",
+        "normalized": "In siti caratterizzati da un valore a_g S ≥ 0,2 g, particolare attenzione deve essere posta alla spaziatura degli elementi di fissaggio in zone di discontinuità.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In siti caratterizzati da un valore agS ǃ 0,2 g, particolare attenzione deve essere posta alla spaziatura degli elementi di fissaggio in zone di discontinuità."
+            "value": "In siti caratterizzati da un valore "
+          },
+          {
+            "kind": "math",
+            "value": "a_g S ≥ 0,2 g",
+            "latex": "a_g S\\ge0{,}2g"
+          },
+          {
+            "kind": "text",
+            "value": ", particolare attenzione deve essere posta alla spaziatura degli elementi di fissaggio in zone di discontinuità."
           }
         ]
       },
@@ -161,6 +175,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -172,7 +191,7 @@
           }
         ],
         "rawSha256": "9e2f9b95ce854537746172afbcedf657d4ad8e1f7723566f24a7f423cdd12e17",
-        "normalizedSha256": "2693246d6dee8d1ddf8261131752194071b637367b3f0ca13a0c228df668c9ca"
+        "normalizedSha256": "02ea0e7e5a92a0efdb8463b149cfedae5319bf355dbb1e80e5fe40af9a2780ca"
       }
     }
   ],

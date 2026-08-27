@@ -80,7 +80,7 @@
       "origin": "official",
       "text": {
         "raw": "Gli elementi da utilizzare per costruzioni di muratura portante devono essere tali da evitare rotture fragili. A tal fine gli elementi\ndevono possedere i requisiti indicati nel § 4.5.2 e, fatta eccezione per le costruzioni caratterizzate, allo SLV, da ag \nS ǂ0,075g,\nrispettare le seguenti ulteriori indicazioni:",
-        "normalized": "Gli elementi da utilizzare per costruzioni di muratura portante devono essere tali da evitare rotture fragili. A tal fine gli elementi devono possedere i requisiti indicati nel § 4.5.2 e, fatta eccezione per le costruzioni caratterizzate, allo SLV, da a_{gS} ≤ 0,075g, rispettare le seguenti ulteriori indicazioni:",
+        "normalized": "Gli elementi da utilizzare per costruzioni di muratura portante devono essere tali da evitare rotture fragili. A tal fine gli elementi devono possedere i requisiti indicati nel § 4.5.2 e, fatta eccezione per le costruzioni caratterizzate, allo SLV, da a_g S ≤ 0,075g, rispettare le seguenti ulteriori indicazioni:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -89,12 +89,12 @@
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,075g, rispettare le seguenti ulteriori indicazioni:"
+            "value": ", rispettare le seguenti ulteriori indicazioni:"
           }
         ]
       },
@@ -131,7 +131,7 @@
           }
         ],
         "rawSha256": "ee7c4543b2b719c9f33fe38677bd5615a0ce389f76b622e1c4eafc36a370d63d",
-        "normalizedSha256": "c127743386409332137e6bc568b653d285b87fd43799d4735cb4e7a1384192d6"
+        "normalizedSha256": "5ec64518ab07402eea2c46f33318c0b138c17270b6fbad5c03eaeb7a2707b064"
       }
     },
     {
@@ -145,7 +145,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "– percentuale volumetrica degli eventuali vuoti, non superiore al 45% del volume totale del blocco;"
+            "value": "– percentuale volumetrica degli eventuali vuoti, non superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "45%",
+            "latex": "45\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del volume totale del blocco;"
           }
         ]
       },
@@ -216,12 +225,48 @@
       "origin": "official",
       "text": {
         "raw": "– resistenza caratteristica a rottura nella direzione portante (fbk \n), calcolata sull’area al lordo delle forature, non inferiore a 5 MPa\no, in alternativa, resistenza media normalizzata nella direzione portante (fb) non inferiore a 6 MPa ;",
-        "normalized": "– resistenza caratteristica a rottura nella direzione portante (fbk ), calcolata sull’area al lordo delle forature, non inferiore a 5 MPa o, in alternativa, resistenza media normalizzata nella direzione portante (fb) non inferiore a 6 MPa ;",
+        "normalized": "– resistenza caratteristica a rottura nella direzione portante (f_{bk}), calcolata sull’area al lordo delle forature, non inferiore a 5 MPa o, in alternativa, resistenza media normalizzata nella direzione portante (f_b) non inferiore a 6 MPa;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– resistenza caratteristica a rottura nella direzione portante (fbk ), calcolata sull’area al lordo delle forature, non inferiore a 5 MPa o, in alternativa, resistenza media normalizzata nella direzione portante (fb) non inferiore a 6 MPa ;"
+            "value": "– resistenza caratteristica a rottura nella direzione portante ("
+          },
+          {
+            "kind": "math",
+            "value": "f_{bk}",
+            "latex": "f_{bk}"
+          },
+          {
+            "kind": "text",
+            "value": "), calcolata sull’area al lordo delle forature, non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "5 MPa",
+            "latex": "5\\,\\mathrm{MPa}"
+          },
+          {
+            "kind": "text",
+            "value": " o, in alternativa, resistenza media normalizzata nella direzione portante ("
+          },
+          {
+            "kind": "math",
+            "value": "f_b",
+            "latex": "f_b"
+          },
+          {
+            "kind": "text",
+            "value": ") non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "6 MPa",
+            "latex": "6\\,\\mathrm{MPa}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -242,6 +287,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -253,7 +303,7 @@
           }
         ],
         "rawSha256": "ab1048fbd4c4ec34ce86ff0714cf73de78f402e40e79b9a653760e99a23acf0f",
-        "normalizedSha256": "abc51198a46098092c0c557dfd74976a199a0b145253dabb169717b882a62b60"
+        "normalizedSha256": "93362f9fdef1e20dcc4c4af17a98ddaf69404456fea039fc50463c71dc069890"
       }
     },
     {
@@ -262,7 +312,7 @@
       "origin": "official",
       "text": {
         "raw": "– resistenza caratteristica a rottura nella direzione perpendicolare a quella portante ossia nel piano di sviluppo della parete ( bk\nf ),\ncalcolata nello stesso modo, non inferiore a 1,5 MPa.",
-        "normalized": "– resistenza caratteristica a rottura nella direzione perpendicolare a quella portante ossia nel piano di sviluppo della parete (f_{bk}), calcolata nello stesso modo, non inferiore a 1,5 MPa.",
+        "normalized": "– resistenza caratteristica a rottura nella direzione perpendicolare a quella portante ossia nel piano di sviluppo della parete (f̄_{bk}), calcolata nello stesso modo, non inferiore a 1,5 MPa.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -271,12 +321,21 @@
           },
           {
             "kind": "math",
-            "value": "f_{bk}",
-            "latex": "f_{bk}"
+            "value": "f̄_{bk}",
+            "latex": "\\bar{f}_{bk}"
           },
           {
             "kind": "text",
-            "value": "), calcolata nello stesso modo, non inferiore a 1,5 MPa."
+            "value": "), calcolata nello stesso modo, non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1,5 MPa",
+            "latex": "1{,}5\\,\\mathrm{MPa}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -313,7 +372,7 @@
           }
         ],
         "rawSha256": "772fda1582d7ea44c2c770f2ee72137e38f7b211c99da67d886b2f57f85be342",
-        "normalizedSha256": "66ada8a5341dbd78baabc886f56b0ad1ed201e20773b375288820e847d9548d5"
+        "normalizedSha256": "6555e22c4c65ba4e84c1a19be06aac22b1694979eeb469c913b84cd1505f6e01"
       }
     },
     {
@@ -327,7 +386,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La malta di allettamento per la muratura ordinaria deve avere resistenza media non inferiore a 5 MPa."
+            "value": "La malta di allettamento per la muratura ordinaria deve avere resistenza media non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "5 MPa",
+            "latex": "5\\,\\mathrm{MPa}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -357,7 +425,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso di utilizzo di elementi per muratura che fanno affidamento a tasche per riempimento di malta, i giunti verticali possono essere considerati riempiti se la malta è posta su tutta l’altezza del giunto su di un minimo del 40% della larghezza dell’elemento murario."
+            "value": "Nel caso di utilizzo di elementi per muratura che fanno affidamento a tasche per riempimento di malta, i giunti verticali possono essere considerati riempiti se la malta è posta su tutta l’altezza del giunto su di un minimo del "
+          },
+          {
+            "kind": "math",
+            "value": "40%",
+            "latex": "40\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della larghezza dell’elemento murario."
           }
         ]
       },
@@ -398,21 +475,39 @@
       "origin": "official",
       "text": {
         "raw": "L’uso di giunti sottili (spessore compreso tra 0.5 mm e 3 mm) è consentito esclusivamente per edifici caratterizzati allo SLV, da\na g \nS ǂ0,15 g, con le seguenti limitazioni:",
-        "normalized": "L’uso di giunti sottili (spessore compreso tra 0,5 mm e 3 mm) è consentito esclusivamente per edifici caratterizzati allo SLV, da a_{gS} ≤ 0,15 g, con le seguenti limitazioni:",
+        "normalized": "L’uso di giunti sottili (spessore compreso tra 0,5 mm e 3 mm) è consentito esclusivamente per edifici caratterizzati allo SLV, da a_g S ≤ 0,15 g, con le seguenti limitazioni:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "L’uso di giunti sottili (spessore compreso tra 0,5 mm e 3 mm) è consentito esclusivamente per edifici caratterizzati allo SLV, da "
+            "value": "L’uso di giunti sottili (spessore compreso tra "
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "0,5 mm",
+            "latex": "0{,}5\\,\\mathrm{mm}"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,15 g, con le seguenti limitazioni:"
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "3 mm",
+            "latex": "3\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ") è consentito esclusivamente per edifici caratterizzati allo SLV, da "
+          },
+          {
+            "kind": "math",
+            "value": "a_g S ≤ 0,15 g",
+            "latex": "a_g S\\le0{,}15g"
+          },
+          {
+            "kind": "text",
+            "value": ", con le seguenti limitazioni:"
           }
         ]
       },
@@ -449,7 +544,7 @@
           }
         ],
         "rawSha256": "6f1caff9c00bafb52581caea274976c2597224d03bcc81267c0bf150c448b20d",
-        "normalizedSha256": "36534e4fcb40920c7804f4e58c0e796d915e929349c79acf932b857425c65d4f"
+        "normalizedSha256": "6f17ea634a562a8725cf1eab7ed7d480c53b15e287b24874c164800ede0ada97"
       }
     },
     {
@@ -458,30 +553,48 @@
       "origin": "official",
       "text": {
         "raw": "- altezza massima, misurata in asse allo spessore della muratura: 10,5 m se ag \nS ǂ0,075 g; 7 m se 0,075 g< ag \nS ǂ0,15 g ;",
-        "normalized": "– altezza massima, misurata in asse allo spessore della muratura: 10,5 m se a_{gS} ≤ 0,075 g; 7 m se 0,075 g < a_{gS} ≤ 0,15 g;",
+        "normalized": "– altezza massima, misurata in asse allo spessore della muratura: 10,5 m se a_g S ≤ 0,075 g; 7 m se 0,075 g < a_g S ≤ 0,15 g;",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– altezza massima, misurata in asse allo spessore della muratura: 10,5 m se "
+            "value": "– altezza massima, misurata in asse allo spessore della muratura: "
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "10,5 m",
+            "latex": "10{,}5\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,075 g; 7 m se 0,075 g < "
+            "value": " se "
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "a_g S ≤ 0,075 g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,15 g;"
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "7 m",
+            "latex": "7\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " se "
+          },
+          {
+            "kind": "math",
+            "value": "0,075 g < a_g S ≤ 0,15 g",
+            "latex": "0{,}075g<a_g S\\le0{,}15g"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -518,7 +631,7 @@
           }
         ],
         "rawSha256": "d37dc4a328dfa6c08144808e2ff53d7f5741a2e707ed3eae58c0a0bf4b66c146",
-        "normalizedSha256": "285201dbb0ee17550cd4967cad14cf6377c67dd147d9f80db26f7bdaf729b200"
+        "normalizedSha256": "c55cd9cd43f8ebb4bb5b6158da681e6fb04a5401fe1108a6d7ff2fc30afd3a83"
       }
     },
     {
@@ -527,30 +640,48 @@
       "origin": "official",
       "text": {
         "raw": "- numero dei piani in muratura da quota campagna: ǂ 3 per a g \nS ǂ0,075g ; ǂ 2 per 0,075g < ag \nS ǂ0,15g .",
-        "normalized": "– numero dei piani in muratura da quota campagna: ≤ 3 per a_{gS} ≤ 0,075g; ≤ 2 per 0,075g < a_{gS} ≤ 0,15g.",
+        "normalized": "– numero dei piani in muratura da quota campagna: ≤ 3 per a_g S ≤ 0,075g; ≤ 2 per 0,075g < a_g S ≤ 0,15g.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– numero dei piani in muratura da quota campagna: ≤ 3 per "
+            "value": "– numero dei piani in muratura da quota campagna: "
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "≤ 3",
+            "latex": "\\le3"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,075g; ≤ 2 per 0,075g < "
+            "value": " per "
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,15g."
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "≤ 2",
+            "latex": "\\le2"
+          },
+          {
+            "kind": "text",
+            "value": " per "
+          },
+          {
+            "kind": "math",
+            "value": "0,075g < a_g S ≤ 0,15g",
+            "latex": "0{,}075g<a_g S\\le0{,}15g"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -587,7 +718,7 @@
           }
         ],
         "rawSha256": "5f072432c1e16a4456bd0af73b75ac975660731109e33d1c9f9ac5eb5c3de653",
-        "normalizedSha256": "a7b0950a8b68820010449da9e4b8d795369f6498d75f4d5af3e9c23ff821e538"
+        "normalizedSha256": "41e4048f8df11f05c7438af2ab90b9bc3520aa3b0f32f24eea7519a594ddcab0"
       }
     },
     {
@@ -596,7 +727,7 @@
       "origin": "official",
       "text": {
         "raw": "L’uso di giunti verticali non riempiti è consentito esclusivamente per edifici caratterizzati, allo SLV, da ag \nS ǂ0,075g, costituiti da\nun numero di piani in muratura da quota campagna non maggiore di due e altezza massima, misurata in asse allo spessore della\nmuratura di 7 m.",
-        "normalized": "L’uso di giunti verticali non riempiti è consentito esclusivamente per edifici caratterizzati, allo SLV, da a_{gS} ≤ 0,075g, costituiti da un numero di piani in muratura da quota campagna non maggiore di due e altezza massima, misurata in asse allo spessore della muratura di 7 m.",
+        "normalized": "L’uso di giunti verticali non riempiti è consentito esclusivamente per edifici caratterizzati, allo SLV, da a_g S ≤ 0,075g, costituiti da un numero di piani in muratura da quota campagna non maggiore di due e altezza massima, misurata in asse allo spessore della muratura di 7 m.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -605,12 +736,21 @@
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,075g, costituiti da un numero di piani in muratura da quota campagna non maggiore di due e altezza massima, misurata in asse allo spessore della muratura di 7 m."
+            "value": ", costituiti da un numero di piani in muratura da quota campagna non maggiore di due e altezza massima, misurata in asse allo spessore della muratura di "
+          },
+          {
+            "kind": "math",
+            "value": "7 m",
+            "latex": "7\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -647,7 +787,7 @@
           }
         ],
         "rawSha256": "32d418e3a44746b5705d569cd000716c65be755ccdc9ed99fee839aae6069100",
-        "normalizedSha256": "fa18bf4d008362d2949da0c995481d5db9e0bdee572a2ee6f206e9adaecca1d3"
+        "normalizedSha256": "c8456004e13ff64e7bd4462cadf1edb7d198ba3d1c36e3bd7daeb7c55bb16726"
       }
     },
     {
@@ -691,7 +831,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "- spessore minimo dei setti interni: 7 mm;"
+            "value": "- spessore minimo dei setti interni: "
+          },
+          {
+            "kind": "math",
+            "value": "7 mm",
+            "latex": "7\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -721,7 +870,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "- spessore minimo dei setti esterni: 10 mm;"
+            "value": "- spessore minimo dei setti esterni: "
+          },
+          {
+            "kind": "math",
+            "value": "10 mm",
+            "latex": "10\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -751,7 +909,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "- percentuale massima di foratura: 55% ;"
+            "value": "- percentuale massima di foratura: "
+          },
+          {
+            "kind": "math",
+            "value": "55%",
+            "latex": "55\\%"
+          },
+          {
+            "kind": "text",
+            "value": " ;"
           }
         ]
       },
@@ -806,7 +973,7 @@
       "origin": "official",
       "text": {
         "raw": "È consentito utilizzare la muratura di pietra non squadrata o la muratura listata solo per costruzioni caratterizzate, allo SLV,\nda a g \nS ǂ0,075g.",
-        "normalized": "È consentito utilizzare la muratura di pietra non squadrata o la muratura listata solo per costruzioni caratterizzate, allo SLV, da a_{gS} ≤ 0,075g.",
+        "normalized": "È consentito utilizzare la muratura di pietra non squadrata o la muratura listata solo per costruzioni caratterizzate, allo SLV, da a_g S ≤ 0,075g.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -815,12 +982,12 @@
           },
           {
             "kind": "math",
-            "value": "a_{gS}",
-            "latex": "a_{gS}"
+            "value": "a_g S ≤ 0,075g",
+            "latex": "a_g S\\le0{,}075g"
           },
           {
             "kind": "text",
-            "value": " ≤ 0,075g."
+            "value": "."
           }
         ]
       },
@@ -857,7 +1024,7 @@
           }
         ],
         "rawSha256": "146395308b1a4d03a3cb90dbb48f8da3e9d6cc042495a02d9a81756c2e3af7e5",
-        "normalizedSha256": "cf2b4f07c66424614b7a815b088541f970ae1b95b822d455e4aa2daab4ffb203"
+        "normalizedSha256": "fa32f439936223ea60baed2314cac5d465b94a824475a3c3c21779689bb5facd"
       }
     }
   ],

@@ -64,16 +64,52 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle parti della parete, in pianta ed in altezza, al di fuori di una zona dissipativa, vanno seguite le regole del Capitolo 4, con un’armatura minima verticale e orizzontale, finalizzata a controllare la fessurazione da taglio, avente rapporto geometrico ρ riferito, rispettivamente, all’area della sezione orizzontale e verticale almeno pari allo 0,2%. Tuttavia, in "
+            "value": "Nelle parti della parete, in pianta ed in altezza, al di fuori di una zona dissipativa, vanno seguite le regole del Capitolo 4, con un’armatura minima verticale e orizzontale, finalizzata a controllare la fessurazione da taglio, avente rapporto geometrico "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "ρ",
+            "latex": "\\rho"
           },
           {
             "kind": "text",
-            "value": "uelle parti della sezione dove, nella situazione sismica di progetto, la deformazione a compressione ε_c è maggiore dello 0,2%, si raccomanda di fornire un rapporto geometrico di armatura verticale ρ ≥ 0,5%."
+            "value": " riferito, rispettivamente, all’area della sezione orizzontale e verticale almeno pari allo "
+          },
+          {
+            "kind": "math",
+            "value": "0,2%",
+            "latex": "0{,}2\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Tuttavia, in quelle parti della sezione dove, nella situazione sismica di progetto, la deformazione a compressione "
+          },
+          {
+            "kind": "math",
+            "value": "ε_c",
+            "latex": "\\varepsilon_c"
+          },
+          {
+            "kind": "text",
+            "value": " è maggiore dello "
+          },
+          {
+            "kind": "math",
+            "value": "0,2%",
+            "latex": "0{,}2\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", si raccomanda di fornire un rapporto geometrico di armatura verticale "
+          },
+          {
+            "kind": "math",
+            "value": "ρ ≥ 0,5%",
+            "latex": "\\rho\\ge0{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -124,16 +160,34 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad 1/10 dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a 30 cm, devono essere collegate con legature, in ragione di almeno 9 legature ogni metro "
+            "value": "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad "
           },
           {
             "kind": "math",
-            "value": "q",
-            "latex": "q"
+            "value": "1/10",
+            "latex": "\\frac{1}{10}"
           },
           {
             "kind": "text",
-            "value": "uadrato."
+            "value": " dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "30 cm",
+            "latex": "30\\,\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": ", devono essere collegate con legature, in ragione di almeno "
+          },
+          {
+            "kind": "math",
+            "value": "9",
+            "latex": "9"
+          },
+          {
+            "kind": "text",
+            "value": " legature ogni metro quadrato."
           }
         ]
       },
@@ -204,7 +258,13 @@
       "text": {
         "raw": "Negli elementi di bordo delle zone dissipative l’armatura longitudinale deve rispettare le prescrizioni fornite per le zone\ndissipative dei pilastri primari nel § 7.4.6.2.2.",
         "normalized": "Negli elementi di bordo delle zone dissipative l’armatura longitudinale deve rispettare le prescrizioni fornite per le zone dissipative dei pilastri primari nel § 7.4.6.2.2.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Negli elementi di bordo delle zone dissipative l’armatura longitudinale deve rispettare le prescrizioni fornite per le zone dissipative dei pilastri primari nel § 7.4.6.2.2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -273,7 +333,13 @@
       "text": {
         "raw": "Negli elementi di bordo delle zone dissipative l’armatura trasversale deve rispettare le prescrizioni fornite per le zone dissipative\ndei pilastri primari nel § 7.4.6.2.2.",
         "normalized": "Negli elementi di bordo delle zone dissipative l’armatura trasversale deve rispettare le prescrizioni fornite per le zone dissipative dei pilastri primari nel § 7.4.6.2.2.",
-        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Negli elementi di bordo delle zone dissipative l’armatura trasversale deve rispettare le prescrizioni fornite per le zone dissipative dei pilastri primari nel § 7.4.6.2.2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -310,12 +376,301 @@
         "rawSha256": "11ec8972f621b7512ce350381133a5c61a864a299d536125ee6c2e101e446457",
         "normalizedSha256": "61bcee1f7d5165aa9908c26cb120a5a2215876279e1ecbf6245d7ff0805c3d55"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-007",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Armature inclinate",
+        "normalized": "Armature inclinate",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "e4136d920a263b78802e6f10601faa108cb854b76aa2229917f7db0a7a1405f3",
+        "normalizedSha256": "e4136d920a263b78802e6f10601faa108cb854b76aa2229917f7db0a7a1405f3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-008",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Le armature inclinate che attraversano potenziali superfici di scorrimento devono essere efficacemente ancorate al di sopra e al di\nsotto della superficie di scorrimento ed attraversare tutte le sezioni della parete poste al di sopra di essa e distanti da essa meno\ndella minore tra ½hw e ½lw \n.",
+        "normalized": "Le armature inclinate che attraversano potenziali superfici di scorrimento devono essere efficacemente ancorate al di sopra e al di sotto della superficie di scorrimento ed attraversare tutte le sezioni della parete poste al di sopra di essa e distanti da essa meno della minore tra ½h_w e ½l_w.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le armature inclinate che attraversano potenziali superfici di scorrimento devono essere efficacemente ancorate al di sopra e al di sotto della superficie di scorrimento ed attraversare tutte le sezioni della parete poste al di sopra di essa e distanti da essa meno della minore tra "
+          },
+          {
+            "kind": "math",
+            "value": "½h_w",
+            "latex": "\\frac{1}{2}h_w"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "½l_w",
+            "latex": "\\frac{1}{2}l_w"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "da22ab4c11ef3c85f843b41b301603710e274a776a52126036d7d08d70466dac",
+        "normalizedSha256": "88cd43ec5bcd7d9ca91b4e163d7c782cdd23ff3eaa21942325373d9bed193cea"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-009",
+      "kind": "heading",
+      "origin": "official",
+      "text": {
+        "raw": "Dettagli costruttivi per la duttilità",
+        "normalized": "Dettagli costruttivi per la duttilità",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "b4fbcc50133800680928d32993b523858853a04a54cbf54d15126e778682274a",
+        "normalizedSha256": "b4fbcc50133800680928d32993b523858853a04a54cbf54d15126e778682274a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-010",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per le zone dissipative di base delle pareti primarie devono essere eseguite le verifiche di duttilità indicate al § 7.4.4.5.2. In\nalternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona dissipativa, il rapporto volumetrico di armatura\ntrasversale negli elementi di bordo rispetta le limitazioni seguenti:",
+        "normalized": "Per le zone dissipative di base delle pareti primarie devono essere eseguite le verifiche di duttilità indicate al § 7.4.4.5.2. In alternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona dissipativa, il rapporto volumetrico di armatura trasversale negli elementi di bordo rispetta le limitazioni seguenti:",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le zone dissipative di base delle pareti primarie devono essere eseguite le verifiche di duttilità indicate al § 7.4.4.5.2. In alternativa, tali verifiche possono ritenersi soddisfatte se, per ciascuna zona dissipativa, il rapporto volumetrico di armatura trasversale negli elementi di bordo rispetta le limitazioni seguenti:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "0938c1eadb30fdcdd2d5591bc2857a386d4f657cd612ee2306d7f934d73cf244",
+        "normalizedSha256": "f628e6dbf8e0f8eb4942fcc88252710cc2f40185f02b58220b688633fc846161"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-011",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.4.32",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "7d904cf234bf08e8de359d953d96c461ec3072a122d46b74b8e94432e272ecd3",
+        "normalizedSha256": "7d904cf234bf08e8de359d953d96c461ec3072a122d46b74b8e94432e272ecd3"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-012",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:7.4.33",
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "f6d53ac82cbc44bb8dc71c347930f24e1dac83873c723bd216312a4f8f798f4f",
+        "normalizedSha256": "f6d53ac82cbc44bb8dc71c347930f24e1dac83873c723bd216312a4f8f798f4f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4#block-editorial-013",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "dove i simboli hanno il significato della [7.4.29] e cdvyd,vv ff\nU\nZ , essendo v\nU e vyd,\nf , rispettivamente, il rapporto\ngeometrico e la resistenza di snervamento di progetto dell’armatura verticale al di fuori degli elementi di bordo.",
+        "normalized": "dove i simboli hanno il significato della [7.4.29] e ω_v = ρ_v·f_yd,v/f_cd, essendo ρ_v e f_yd,v, rispettivamente, il rapporto geometrico e la resistenza di snervamento di progetto dell’armatura verticale al di fuori degli elementi di bordo.",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove i simboli hanno il significato della [7.4.29] e "
+          },
+          {
+            "kind": "math",
+            "value": "ω_v = ρ_v·f_yd,v/f_cd",
+            "latex": "\\omega_v=\\rho_v\\cdot\\frac{f_{yd,v}}{f_{cd}}"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "ρ_v",
+            "latex": "\\rho_v"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "f_yd,v",
+            "latex": "f_{yd,v}"
+          },
+          {
+            "kind": "text",
+            "value": ", rispettivamente, il rapporto geometrico e la resistenza di snervamento di progetto dell’armatura verticale al di fuori degli elementi di bordo."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 243,
+        "printedPage": "239",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati glifi, indici e simboli matematici verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "7a30186f9cc3b34811c0757e3bcac95d82722528cd56ba0c7b70b3e3728da8a0",
+        "normalizedSha256": "fcb289f3d00d845e0463a37b1537bf1ae507ccae5513e89c3dbcc6fc6bf896ba"
+      }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:ntc2018:7.4.32",
+      "urn:structural-codes:it:asset:formula:ntc2018:7.4.33"
+    ],
     "tableIds": [],
     "figureIds": []
   },

@@ -10,7 +10,7 @@
     "official": "7.11.5.3.1",
     "sortKey": "007.011.005.003.001"
   },
-  "title": "Verifiche nei confronti dello stato limite ultimo (SLV)",
+  "title": "Fondazioni superficiali",
   "titleBlockId": "urn:structural-codes:it:unit:ntc2018:7.11.5.3.1#block-heading",
   "hierarchy": {
     "parentId": "urn:structural-codes:it:unit:ntc2018:7.11.5.3",
@@ -35,12 +35,12 @@
       "origin": "official",
       "text": {
         "raw": "7.11.5.3.1 Fondazioni superficiali",
-        "normalized": "7.11.5.3.1 Verifiche nei confronti dello stato limite ultimo (SLV)",
+        "normalized": "7.11.5.3.1 Fondazioni superficiali",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "7.11.5.3.1 Verifiche nei confronti dello stato limite ultimo (SLV)"
+            "value": "7.11.5.3.1 Fondazioni superficiali"
           }
         ]
       },
@@ -59,20 +59,10 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
           }
         ],
         "rawSha256": "b2ceaa4b08e828b08dd5399da90f4794c18436e09cf896023c1273c624e12872",
-        "normalizedSha256": "e808bbe2e5def388e893416ac1975b1bbb3ba2917b3086a690cb4d2e07089aa1"
+        "normalizedSha256": "b2ceaa4b08e828b08dd5399da90f4794c18436e09cf896023c1273c624e12872"
       }
     },
     {
@@ -163,12 +153,39 @@
       "origin": "official",
       "text": {
         "raw": "Le azioni derivano dall’analisi della struttura in elevazione come specificato al § 7.2.5. Le resistenze sono i corrispondenti valori\nlimite che producono il collasso del complesso fondazione-terreno; esse sono valutabili mediante l’estensione di procedure\nclassiche al caso di azione sismica, tenendo conto dell’effetto dell’inclinazione e dell’eccentricità delle azioni in fondazione. Il\ncorrispondente valore di progetto si ottiene applicando il coefficiente JR di Tabella 7.11.II. Se, nel calcolo del carico limite, si\nconsidera esplicitamente l'effetto delle azioni inerziali sul volume di terreno significativo, il coefficiente JR può essere ridotto a\n1.8.",
-        "normalized": "Le azioni derivano dall’analisi della struttura in elevazione come specificato al § 7.2.5. Le resistenze sono i corrispondenti valori limite che producono il collasso del complesso fondazione-terreno; esse sono valutabili mediante l’estensione di procedure classiche al caso di azione sismica, tenendo conto dell’effetto dell’inclinazione e dell’eccentricità delle azioni in fondazione. Il corrispondente valore di progetto si ottiene applicando il coefficiente JR di Tabella 7.11.II. Se, nel calcolo del carico limite, si considera esplicitamente l'effetto delle azioni inerziali sul volume di terreno significativo, il coefficiente JR può essere ridotto a 1.8.",
+        "normalized": "Le azioni derivano dall’analisi della struttura in elevazione come specificato al § 7.2.5. Le resistenze sono i corrispondenti valori limite che producono il collasso del complesso fondazione-terreno; esse sono valutabili mediante l’estensione di procedure classiche al caso di azione sismica, tenendo conto dell’effetto dell’inclinazione e dell’eccentricità delle azioni in fondazione. Il corrispondente valore di progetto si ottiene applicando il coefficiente γ_R di Tabella 7.11.II. Se, nel calcolo del carico limite, si considera esplicitamente l’effetto delle azioni inerziali sul volume di terreno significativo, il coefficiente γ_R può essere ridotto a 1.8.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le azioni derivano dall’analisi della struttura in elevazione come specificato al § 7.2.5. Le resistenze sono i corrispondenti valori limite che producono il collasso del complesso fondazione-terreno; esse sono valutabili mediante l’estensione di procedure classiche al caso di azione sismica, tenendo conto dell’effetto dell’inclinazione e dell’eccentricità delle azioni in fondazione. Il corrispondente valore di progetto si ottiene applicando il coefficiente JR di Tabella 7.11.II. Se, nel calcolo del carico limite, si considera esplicitamente l'effetto delle azioni inerziali sul volume di terreno significativo, il coefficiente JR può essere ridotto a 1.8."
+            "value": "Le azioni derivano dall’analisi della struttura in elevazione come specificato al § 7.2.5. Le resistenze sono i corrispondenti valori limite che producono il collasso del complesso fondazione-terreno; esse sono valutabili mediante l’estensione di procedure classiche al caso di azione sismica, tenendo conto dell’effetto dell’inclinazione e dell’eccentricità delle azioni in fondazione. Il corrispondente valore di progetto si ottiene applicando il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "γ_R",
+            "latex": "\\gamma_R"
+          },
+          {
+            "kind": "text",
+            "value": " di Tabella 7.11.II. Se, nel calcolo del carico limite, si considera esplicitamente l’effetto delle azioni inerziali sul volume di terreno significativo, il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "γ_R",
+            "latex": "\\gamma_R"
+          },
+          {
+            "kind": "text",
+            "value": " può essere ridotto a "
+          },
+          {
+            "kind": "math",
+            "value": "1.8",
+            "latex": "1.8"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -189,6 +206,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -200,7 +222,7 @@
           }
         ],
         "rawSha256": "d6f2c07f69e07e763a4f3c0b86ae46b76659576446249b968ae55bbce21bf925",
-        "normalizedSha256": "2a98f9c846ddf733016dcb09f5dce9abcbd019d584c70025442fcf9cce050e69"
+        "normalizedSha256": "a39625804d2e415f6396c12251380acf9e74198ee3d66af064808d588a46bc83"
       }
     },
     {
@@ -250,7 +272,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per azione si intende il valore della forza agente parallelamente al piano di scorrimento, per resistenza si intende la risultante delle tensioni tangenziali limite sullo stesso piano, sommata, in casi particolari, alla risultante delle tensioni limite agenti sulle superfici laterali della fondazione. Specificamente, si può tener conto della resistenza lungo le superfici laterali nel caso di contatto diretto fondazione-terreno in scavi a sezione obbligata o di contatto diretto fondazione-calcestruzzo o fondazione-acciaio in scavi sostenuti da paratie o palancole. In tali casi, il progettista deve indicare l’aliquota della resistenza lungo le superfici laterali che intende portare in conto, da giustificare con considerazioni relative alle caratteristiche meccaniche dei terreni e ai criteri costruttivi dell’opera. Ai fini della verifica allo scorrimento, si può considerare la resistenza passiva solo nel caso di effettiva permanenza di tale contributo, portando in conto un’aliquota non superiore al 50%."
+            "value": "Per azione si intende il valore della forza agente parallelamente al piano di scorrimento, per resistenza si intende la risultante delle tensioni tangenziali limite sullo stesso piano, sommata, in casi particolari, alla risultante delle tensioni limite agenti sulle superfici laterali della fondazione. Specificamente, si può tener conto della resistenza lungo le superfici laterali nel caso di contatto diretto fondazione-terreno in scavi a sezione obbligata o di contatto diretto fondazione-calcestruzzo o fondazione-acciaio in scavi sostenuti da paratie o palancole. In tali casi, il progettista deve indicare l’aliquota della resistenza lungo le superfici laterali che intende portare in conto, da giustificare con considerazioni relative alle caratteristiche meccaniche dei terreni e ai criteri costruttivi dell’opera. Ai fini della verifica allo scorrimento, si può considerare la resistenza passiva solo nel caso di effettiva permanenza di tale contributo, portando in conto un’aliquota non superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -353,12 +384,21 @@
       "origin": "official",
       "text": {
         "raw": "A meno dell’impiego di specifiche analisi dinamiche, in grado di fornire la risposta deformativa del sistema fondazione-terreno,\nla verifica nei confronti dello stato limite di danno può essere ritenuta soddisfatta impiegando le azioni corrispondenti allo SLD e\ndeterminando il carico limite di progetto con il coefficiente \nJR riportato nella Tabella 7.11.II.",
-        "normalized": "A meno dell’impiego di specifiche analisi dinamiche, in grado di fornire la risposta deformativa del sistema fondazione-terreno, la verifica nei confronti dello stato limite di danno può essere ritenuta soddisfatta impiegando le azioni corrispondenti allo SLD e determinando il carico limite di progetto con il coefficiente JR riportato nella Tabella 7.11.II.",
+        "normalized": "A meno dell’impiego di specifiche analisi dinamiche, in grado di fornire la risposta deformativa del sistema fondazione-terreno, la verifica nei confronti dello stato limite di danno può essere ritenuta soddisfatta impiegando le azioni corrispondenti allo SLD e determinando il carico limite di progetto con il coefficiente γ_R riportato nella Tabella 7.11.II.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "A meno dell’impiego di specifiche analisi dinamiche, in grado di fornire la risposta deformativa del sistema fondazione-terreno, la verifica nei confronti dello stato limite di danno può essere ritenuta soddisfatta impiegando le azioni corrispondenti allo SLD e determinando il carico limite di progetto con il coefficiente JR riportato nella Tabella 7.11.II."
+            "value": "A meno dell’impiego di specifiche analisi dinamiche, in grado di fornire la risposta deformativa del sistema fondazione-terreno, la verifica nei confronti dello stato limite di danno può essere ritenuta soddisfatta impiegando le azioni corrispondenti allo SLD e determinando il carico limite di progetto con il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "γ_R",
+            "latex": "\\gamma_R"
+          },
+          {
+            "kind": "text",
+            "value": " riportato nella Tabella 7.11.II."
           }
         ]
       },
@@ -379,6 +419,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -390,7 +435,7 @@
           }
         ],
         "rawSha256": "041fde18bc3d78326fa2e6fa91e3eec555b759a08e1c7d6f9fd6789fb8ebc7b4",
-        "normalizedSha256": "6457f21513eb4ce7e1ba73a5531c5fe6664d083d0596ce6842f8e56ddee2b082"
+        "normalizedSha256": "a9b401ef040d4e2f8e72979c0f497cb35d34c1c1ef852b2aeb063283766ad82a"
       }
     }
   ],

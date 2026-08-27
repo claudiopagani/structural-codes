@@ -522,12 +522,39 @@
           },
           {
             "kind": "math",
-            "value": "Ω",
-            "latex": "\\Omega"
+            "value": "Ω_i = (M_{pl,Rd,i} − M_{Ed,G,i}) / M_{Ed,E,i}",
+            "latex": "\\Omega_i=\\frac{M_{pl,Rd,i}-M_{Ed,G,i}}{M_{Ed,E,i}}"
           },
           {
             "kind": "text",
-            "value": "_i = (M_{pl,Rd,i} − M_{Ed,G,i}) / M_{Ed,E,i} valutati per tutte le travi in cui si attende la formazione di zone dissipative, essendo M_{Ed,E,i} la domanda a flessione dovuta alle azioni sismiche di progetto, M_{Ed,G,i} la domanda a flessione dovuta alle azioni non sismiche incluse nella combinazione delle azioni per la condizione sismica di progetto e M_{pl,Rd,i} il valore della capacità a flessione della i-esima trave."
+            "value": " valutati per tutte le travi in cui si attende la formazione di zone dissipative, essendo "
+          },
+          {
+            "kind": "math",
+            "value": "M_{Ed,E,i}",
+            "latex": "M_{Ed,E,i}"
+          },
+          {
+            "kind": "text",
+            "value": " la domanda a flessione dovuta alle azioni sismiche di progetto, "
+          },
+          {
+            "kind": "math",
+            "value": "M_{Ed,G,i}",
+            "latex": "M_{Ed,G,i}"
+          },
+          {
+            "kind": "text",
+            "value": " la domanda a flessione dovuta alle azioni non sismiche incluse nella combinazione delle azioni per la condizione sismica di progetto e "
+          },
+          {
+            "kind": "math",
+            "value": "M_{pl,Rd,i}",
+            "latex": "M_{pl,Rd,i}"
+          },
+          {
+            "kind": "text",
+            "value": " il valore della capacità a flessione della i-esima trave."
           }
         ]
       },
@@ -742,8 +769,41 @@
       "origin": "official",
       "text": {
         "raw": "dove ·Rd è dato in Tab. 7.2.I, M \nC,pl,Rd è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale\nvalutata nelle combinazioni sismiche delle azioni ed Mb,pl,Rd è la capacità delle travi che convergono nel nodo trave-colonna.\nNella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i\nmomenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta\nla maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi.",
-        "normalized": "dove ·Rd è dato in Tab. 7.2.I, M C,pl,Rd è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale valutata nelle combinazioni sismiche delle azioni ed Mb,pl,Rd è la capacità delle travi che convergono nel nodo trave-colonna. Nella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i momenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta la maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi.",
-        "normalizationVersion": "ntc75-editorial-profile-0.1.0"
+        "normalized": "dove γ_{Rd} è dato in Tab. 7.2.I, M_{C,pl,Rd} è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale valutata nelle combinazioni sismiche delle azioni ed M_{b,pl,Rd} è la capacità delle travi che convergono nel nodo trave-colonna. Nella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i momenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta la maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi.",
+        "normalizationVersion": "ntc75-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "γ_{Rd}",
+            "latex": "\\gamma_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è dato in Tab. 7.2.I, "
+          },
+          {
+            "kind": "math",
+            "value": "M_{C,pl,Rd}",
+            "latex": "M_{C,pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale valutata nelle combinazioni sismiche delle azioni ed "
+          },
+          {
+            "kind": "math",
+            "value": "M_{b,pl,Rd}",
+            "latex": "M_{b,pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è la capacità delle travi che convergono nel nodo trave-colonna. Nella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i momenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta la maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -778,7 +838,7 @@
           }
         ],
         "rawSha256": "6838e23e3ae9390209b6e3f3f869ee50e92595174c7d9460c8370c79365a8818",
-        "normalizedSha256": "02f85a75c224c967dc810f595efcf4b7f6fd0b813f95c0877ce91a908038744e"
+        "normalizedSha256": "689580a8a7ad0d6e3ea6bab5dcd418c2ed958c3201270cbca6597da31e111929"
       }
     }
   ],

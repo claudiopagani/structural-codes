@@ -69,7 +69,7 @@
       "origin": "official",
       "text": {
         "raw": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore (Epl,Rd) e del\nlimite superiore (EU.Rd) della capacità.",
-        "normalized": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore (Epl,Rd) e del limite superiore (EU.Rd) della capacità.",
+        "normalized": "La progettazione sismica delle strutture composte acciaio-calcestruzzo è basata sulla valutazione del limite inferiore (Epl,Rd) e del limite superiore (EU,Rd) della capacità.",
         "normalizationVersion": "ntc76-editorial-profile-0.1.0",
         "inline": [
           {
@@ -83,7 +83,16 @@
           },
           {
             "kind": "text",
-            "value": ") e del limite superiore (EU.Rd) della capacità."
+            "value": ") e del limite superiore ("
+          },
+          {
+            "kind": "math",
+            "value": "EU,Rd",
+            "latex": "E_{U,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ") della capacità."
           }
         ]
       },
@@ -104,6 +113,11 @@
             "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc76-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici, indici e marcatori verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc76-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
@@ -115,7 +129,7 @@
           }
         ],
         "rawSha256": "e73e53f1d9a8c07a55bde600fa1c90391340e0e31f49423a2f10b4a211b82eeb",
-        "normalizedSha256": "ed8e1a56ccda786e43cc40377fb3c2c4a047343cb79c569438c4b1e531c49573"
+        "normalizedSha256": "16f10e4aae519f021c00c56674578507ae6d1584a48c3db6b22d4077b7f13a5d"
       }
     },
     {
@@ -151,17 +165,8 @@
           },
           {
             "kind": "math",
-            "value": "ESd",
-            "latex": "E_{Sd}"
-          },
-          {
-            "kind": "text",
-            "value": " < "
-          },
-          {
-            "kind": "math",
-            "value": "Epl,Rd",
-            "latex": "E_{pl,Rd}"
+            "value": "ESd < Epl,Rd",
+            "latex": "E_{Sd}<E_{pl,Rd}"
           },
           {
             "kind": "text",
@@ -178,26 +183,8 @@
           },
           {
             "kind": "math",
-            "value": "EU,Rd",
-            "latex": "E_{U,Rd}"
-          },
-          {
-            "kind": "text",
-            "value": " = 1,1 "
-          },
-          {
-            "kind": "math",
-            "value": "γ_ov",
-            "latex": "\\gamma_{ov}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "Epl,Rd",
-            "latex": "E_{pl,Rd}"
+            "value": "EU,Rd = 1,1 γ_ov Epl,Rd",
+            "latex": "E_{U,Rd}=1{,}1\\gamma_{ov}E_{pl,Rd}"
           },
           {
             "kind": "text",
@@ -370,7 +357,22 @@
       "text": {
         "raw": "Nei nodi trave-colonna adiacenti le zone dissipative di telai con colonne costituite da profili rivestiti completamente o\nparzialmente di calcestruzzo, la capacità a taglio del pannello d’anima della colonna può essere calcolata come la somma dei\ncontributi del calcestruzzo e del pannello in acciaio. In particolare, se l’altezza della sezione della trave non differisce da quella\ndel pilastro di più del 40%, la capacità a taglio si ottiene sommando i due contributi forniti, rispettivamente, dall’acciaio e dal\ncalcestruzzo: ",
         "normalized": "Nei nodi trave-colonna adiacenti le zone dissipative di telai con colonne costituite da profili rivestiti completamente o parzialmente di calcestruzzo, la capacità a taglio del pannello d’anima della colonna può essere calcolata come la somma dei contributi del calcestruzzo e del pannello in acciaio. In particolare, se l’altezza della sezione della trave non differisce da quella del pilastro di più del 40%, la capacità a taglio si ottiene sommando i due contributi forniti, rispettivamente, dall’acciaio e dal calcestruzzo:",
-        "normalizationVersion": "ntc76-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc76-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei nodi trave-colonna adiacenti le zone dissipative di telai con colonne costituite da profili rivestiti completamente o parzialmente di calcestruzzo, la capacità a taglio del pannello d’anima della colonna può essere calcolata come la somma dei contributi del calcestruzzo e del pannello in acciaio. In particolare, se l’altezza della sezione della trave non differisce da quella del pilastro di più del "
+          },
+          {
+            "kind": "math",
+            "value": "40%",
+            "latex": "40\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", la capacità a taglio si ottiene sommando i due contributi forniti, rispettivamente, dall’acciaio e dal calcestruzzo:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

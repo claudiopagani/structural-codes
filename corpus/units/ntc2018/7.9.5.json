@@ -79,12 +79,21 @@
       "origin": "official",
       "text": {
         "raw": "Le indicazioni successive si applicano agli elementi strutturali delle strutture in elevazione. Per essi si effettuano verifiche di\nresistenza e verifiche di duttilità nei modi indicati nel § 7.3.6.1.\nI fattori di sovraresistenza ·Rd da utilizzare nelle singole verifiche, secondo le regole della progettazione in capacità, sono calcolati\nmediante l’espressione: ",
-        "normalized": "Le indicazioni successive si applicano agli elementi strutturali delle strutture in elevazione. Per essi si effettuano verifiche di resistenza e verifiche di duttilità nei modi indicati nel § 7.3.6.1. I fattori di sovraresistenza ·Rd da utilizzare nelle singole verifiche, secondo le regole della progettazione in capacità, sono calcolati mediante l’espressione:",
+        "normalized": "Le indicazioni successive si applicano agli elementi strutturali delle strutture in elevazione. Per essi si effettuano verifiche di resistenza e verifiche di duttilità nei modi indicati nel § 7.3.6.1. I fattori di sovraresistenza γ_Rd da utilizzare nelle singole verifiche, secondo le regole della progettazione in capacità, sono calcolati mediante l’espressione:",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le indicazioni successive si applicano agli elementi strutturali delle strutture in elevazione. Per essi si effettuano verifiche di resistenza e verifiche di duttilità nei modi indicati nel § 7.3.6.1. I fattori di sovraresistenza ·Rd da utilizzare nelle singole verifiche, secondo le regole della progettazione in capacità, sono calcolati mediante l’espressione:"
+            "value": "Le indicazioni successive si applicano agli elementi strutturali delle strutture in elevazione. Per essi si effettuano verifiche di resistenza e verifiche di duttilità nei modi indicati nel § 7.3.6.1. I fattori di sovraresistenza "
+          },
+          {
+            "kind": "math",
+            "value": "γ_Rd",
+            "latex": "\\gamma_{Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " da utilizzare nelle singole verifiche, secondo le regole della progettazione in capacità, sono calcolati mediante l’espressione:"
           }
         ]
       },
@@ -105,6 +114,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -116,7 +130,7 @@
           }
         ],
         "rawSha256": "871321f6e5ab8246494c054b591076aa546cf2bcd76757f9c88c8b0bbe8a23e6",
-        "normalizedSha256": "dd30e601371aca897be88033f971c7f3c1897b112bec3195f189f7aaf85573d5"
+        "normalizedSha256": "6ab2054e3dc8f30bd0c2bf028c72d00ef19d88971c9a580cd216ff6e5433ff38"
       }
     },
     {
@@ -156,7 +170,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "nella "
+            "value": "nella quale "
           },
           {
             "kind": "math",
@@ -165,25 +179,7 @@
           },
           {
             "kind": "text",
-            "value": "uale "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": " è il valore del fattore di comportamento utilizzato nel calcolo. Nel caso di sezioni in calcestruzzo armato, "
-          },
-          {
-            "kind": "math",
-            "value": "q",
-            "latex": "q"
-          },
-          {
-            "kind": "text",
-            "value": "ualora il rapporto "
+            "value": " è il valore del fattore di comportamento utilizzato nel calcolo. Nel caso di sezioni in calcestruzzo armato, qualora il rapporto "
           },
           {
             "kind": "math",
@@ -192,16 +188,25 @@
           },
           {
             "kind": "text",
-            "value": " tra la forza assiale e la resistenza a compressione della sezione di calcestruzzo eccede 0,1, il fattore di sovraresistenza va moltiplicato per 1 + 2("
+            "value": " tra la forza assiale e la resistenza a compressione della sezione di calcestruzzo eccede "
           },
           {
             "kind": "math",
-            "value": "ν_k",
-            "latex": "\\nu_k"
+            "value": "0,1",
+            "latex": "0{,}1"
           },
           {
             "kind": "text",
-            "value": " − 0,1)²."
+            "value": ", il fattore di sovraresistenza va moltiplicato per "
+          },
+          {
+            "kind": "math",
+            "value": "1 + 2(ν_k − 0,1)²",
+            "latex": "1+2(\\nu_k-0{,}1)^2"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -247,12 +252,21 @@
       "origin": "official",
       "text": {
         "raw": "Le sollecitazioni calcolate a partire dalle capacità flessionali amplificate, incrementate dell’effetto dei carichi permanenti\ndistribuiti sugli elementi, ottenute con il criterio della progettazione in capacità, si indicano con l’indice “prc”, ad es. Fprc.",
-        "normalized": "Le sollecitazioni calcolate a partire dalle capacità flessionali amplificate, incrementate dell’effetto dei carichi permanenti distribuiti sugli elementi, ottenute con il criterio della progettazione in capacità, si indicano con l’indice “prc”, ad es. Fprc.",
+        "normalized": "Le sollecitazioni calcolate a partire dalle capacità flessionali amplificate, incrementate dell’effetto dei carichi permanenti distribuiti sugli elementi, ottenute con il criterio della progettazione in capacità, si indicano con l’indice “prc”, ad es. F_prc.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le sollecitazioni calcolate a partire dalle capacità flessionali amplificate, incrementate dell’effetto dei carichi permanenti distribuiti sugli elementi, ottenute con il criterio della progettazione in capacità, si indicano con l’indice “prc”, ad es. Fprc."
+            "value": "Le sollecitazioni calcolate a partire dalle capacità flessionali amplificate, incrementate dell’effetto dei carichi permanenti distribuiti sugli elementi, ottenute con il criterio della progettazione in capacità, si indicano con l’indice “prc”, ad es. "
+          },
+          {
+            "kind": "math",
+            "value": "F_prc",
+            "latex": "F_{prc}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -273,6 +287,11 @@
             "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -284,7 +303,7 @@
           }
         ],
         "rawSha256": "fbc73957b847ab16f38e26cd6472c225643ca9fa95bb7866fdad53f750b8d5bd",
-        "normalizedSha256": "ddf2226ab0c4179e448ac79ffa513830c21761800b22f9f17d576ab02054234a"
+        "normalizedSha256": "2908a9cffa20a763c055aac17e3f4224c86fca77ef3ef5ed10c59f4e62ac2098"
       }
     },
     {
@@ -298,7 +317,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per le strutture di fondazione vale quanto indicato nel § 7.2.5. Alle azioni sismiche, cui la spalla o la pila devono resistere come strutture a sé stanti, sono da aggiungere le forze parassite trasmesse per attrito dagli appoggi mobili o elastomerici che non assolvono la funzione di isolamento ai sensi del § 7.10, che devono essere maggiorate di un fattore pari a 1,30."
+            "value": "Per le strutture di fondazione vale quanto indicato nel § 7.2.5. Alle azioni sismiche, cui la spalla o la pila devono resistere come strutture a sé stanti, sono da aggiungere le forze parassite trasmesse per attrito dagli appoggi mobili o elastomerici che non assolvono la funzione di isolamento ai sensi del § 7.10, che devono essere maggiorate di un fattore pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,30",
+            "latex": "1{,}30"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },

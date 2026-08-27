@@ -30,6 +30,41 @@ type Unit = {
 };
 const f = (number: string): string => aid("formula", number);
 
+const step22MathTerms: Array<[string, string]> = [
+    ["ν_d = N_Ed/(A_c·f_cd)", "\\nu_d=\\frac{N_{Ed}}{A_c\\cdot f_{cd}}"],
+    ["ω_v = ρ_v·f_yd,v/f_cd", "\\omega_v=\\rho_v\\cdot\\frac{f_{yd,v}}{f_{cd}}"],
+    ["α = α_n·α_s", "\\alpha=\\alpha_n\\cdot\\alpha_s"],
+    ["ρ ≥ 0,5%", "\\rho\\ge0{,}5\\%"],
+    ["½h_w", "\\frac{1}{2}h_w"],
+    ["½l_w", "\\frac{1}{2}l_w"],
+    ["ω_wd", "\\omega_{wd}"],
+    ["ω_v", "\\omega_v"],
+    ["μ_φ", "\\mu_\\phi"],
+    ["ε_sy,d", "\\varepsilon_{sy,d}"],
+    ["ε_c", "\\varepsilon_c"],
+    ["α_n", "\\alpha_n"],
+    ["α_s", "\\alpha_s"],
+    ["ρ_v", "\\rho_v"],
+    ["f_yd,v", "f_{yd,v}"],
+    ["f_cd", "f_{cd}"],
+    ["N_Ed", "N_{Ed}"],
+    ["A_c", "A_c"],
+    ["h_c", "h_c"],
+    ["h_0", "h_0"],
+    ["b_c", "b_c"],
+    ["b_0", "b_0"],
+    ["b_i", "b_i"],
+    ["D_0", "D_0"],
+    ["β", "\\beta"],
+    ["0,08", "0{,}08"],
+    ["0,12", "0{,}12"],
+    ["0,2%", "0{,}2\\%"],
+    ["0,5%", "0{,}5\\%"],
+    ["1/10", "\\frac{1}{10}"],
+    ["30 cm", "30\\,\\mathrm{cm}"],
+    ["15 cm", "15\\,\\mathrm{cm}"],
+];
+
 const units: Unit[] = [
     {
         number: "7.4.5.2.1",
@@ -405,10 +440,30 @@ const units: Unit[] = [
                 from: 28,
                 norm: "ε_sy,d è la deformazione di snervamento dell’acciaio;",
             },
-            { kind: "paragraph", page: 242, from: 29 },
-            { kind: "paragraph", page: 242, from: 30 },
-            { kind: "paragraph", page: 242, from: 31 },
-            { kind: "paragraph", page: 242, from: 32 },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 29,
+                norm: "h_c è la profondità della sezione trasversale lorda;",
+            },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 30,
+                norm: "h_0 è la profondità del nucleo confinato (con riferimento alla linea media delle staffe);",
+            },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 31,
+                norm: "b_c è la larghezza minima della sezione trasversale lorda;",
+            },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 32,
+                norm: "b_0 è la larghezza del nucleo confinato corrispondente a b_c (con riferimento alla linea media delle staffe);",
+            },
             {
                 kind: "paragraph",
                 page: 242,
@@ -420,8 +475,23 @@ const units: Unit[] = [
             { kind: "list-item", page: 242, from: 35 },
             { kind: "formula-ref", page: 242, from: 36, to: 38, asset: f("7.4.31a") },
             { kind: "formula-ref", page: 242, from: 39, to: 40, asset: f("7.4.31b") },
-            { kind: "paragraph", page: 242, from: 41, to: 42 },
-            { kind: "list-item", page: 242, from: 43 },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 41,
+                to: 42,
+                norm: "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute e s è il passo delle staffe;",
+                inline: inline(
+                    "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute e s è il passo delle staffe;",
+                    [["n", "n"], ["b_i", "b_i"], ["s", "s"]],
+                ),
+            },
+            {
+                kind: "list-item",
+                page: 242,
+                from: 43,
+                norm: "b) per sezioni trasversali circolari con diametro del nucleo confinato D_0 (con riferimento alla linea media delle staffe)",
+            },
             { kind: "formula-ref", page: 242, from: 44, asset: f("7.4.31c") },
             { kind: "formula-ref", page: 242, from: 45, to: 46, asset: f("7.4.31d") },
             {
@@ -431,6 +501,10 @@ const units: Unit[] = [
                 to: 48,
                 norm:
                     "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute, β = 2 per staffe circolari singole, β = 1 per staffa a spirale.",
+                inline: inline(
+                    "dove: n è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, b_i è la distanza tra barre consecutive contenute, β = 2 per staffe circolari singole, β = 1 per staffa a spirale.",
+                    [["n", "n"], ["b_i", "b_i"], ["β = 2", "\\beta=2"], ["β = 1", "\\beta=1"]],
+                ),
             },
         ],
     },
@@ -443,7 +517,15 @@ const units: Unit[] = [
             from: 49,
             norm: "7.4.6.2.3 Nodi trave-pilastro",
         },
-        blocks: [{ kind: "paragraph", page: 242, from: 50, to: 53 }],
+        blocks: [
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 50,
+                to: 53,
+                norm: "Oltre a quanto richiesto dalla verifica nel § 7.4.4.3.1, lungo le armature longitudinali del pilastro che attraversano i nodi devono essere disposte staffe di contenimento in quantità almeno pari alla maggiore prevista nelle zone adiacenti al nodo del pilastro inferiore e superiore; nel caso di nodi interamente confinati il passo risultante dell’armatura di confinamento orizzontale nel nodo può essere raddoppiato, ma non può essere maggiore di 15 cm.",
+            },
+        ],
     },
     {
         number: "7.4.6.2.4",
@@ -463,11 +545,40 @@ const units: Unit[] = [
                 norm:
                     "Nelle parti della parete, in pianta ed in altezza, al di fuori di una zona dissipativa, vanno seguite le regole del Capitolo 4, con un’armatura minima verticale e orizzontale, finalizzata a controllare la fessurazione da taglio, avente rapporto geometrico ρ riferito, rispettivamente, all’area della sezione orizzontale e verticale almeno pari allo 0,2%. Tuttavia, in quelle parti della sezione dove, nella situazione sismica di progetto, la deformazione a compressione ε_c è maggiore dello 0,2%, si raccomanda di fornire un rapporto geometrico di armatura verticale ρ ≥ 0,5%.",
             },
-            { kind: "paragraph", page: 242, from: 60, to: 62 },
+            {
+                kind: "paragraph",
+                page: 242,
+                from: 60,
+                to: 62,
+                norm: "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad 1/10 dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a 30 cm, devono essere collegate con legature, in ragione di almeno 9 legature ogni metro quadrato.",
+                inline: inline(
+                    "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad 1/10 dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a 30 cm, devono essere collegate con legature, in ragione di almeno 9 legature ogni metro quadrato.",
+                    [["1/10", "\\frac{1}{10}"], ["30 cm", "30\\,\\mathrm{cm}"], ["9", "9"]],
+                ),
+            },
             { kind: "heading", page: 242, from: 63 },
             { kind: "paragraph", page: 242, from: 64, to: 65 },
             { kind: "heading", page: 242, from: 66 },
             { kind: "paragraph", page: 242, from: 67, to: 68 },
+            { kind: "heading", page: 243, from: 3 },
+            {
+                kind: "paragraph",
+                page: 243,
+                from: 4,
+                to: 7,
+                norm: "Le armature inclinate che attraversano potenziali superfici di scorrimento devono essere efficacemente ancorate al di sopra e al di sotto della superficie di scorrimento ed attraversare tutte le sezioni della parete poste al di sopra di essa e distanti da essa meno della minore tra ½h_w e ½l_w.",
+            },
+            { kind: "heading", page: 243, from: 8 },
+            { kind: "paragraph", page: 243, from: 9, to: 11 },
+            { kind: "formula-ref", page: 243, from: 12, to: 18, asset: f("7.4.32") },
+            { kind: "formula-ref", page: 243, from: 19, to: 25, asset: f("7.4.33") },
+            {
+                kind: "paragraph",
+                page: 243,
+                from: 26,
+                to: 31,
+                norm: "dove i simboli hanno il significato della [7.4.29] e ω_v = ρ_v·f_yd,v/f_cd, essendo ρ_v e f_yd,v, rispettivamente, il rapporto geometrico e la resistenza di snervamento di progetto dell’armatura verticale al di fuori degli elementi di bordo.",
+            },
         ],
     },
     {
@@ -553,12 +664,14 @@ const formulas: Record<string, [string, string | null, number, string]> = {
     "7.4.27": ["7.4.6.2.1", "7.4.27", 241, "\\alpha_{bL}=\\begin{cases}\\dfrac{7{,}5\\cdot f_{ctm}}{\\gamma_{Rd}\\cdot f_{yd}}\\cdot\\dfrac{1+0{,}8\\nu_d}{1+0{,}75\\kappa_D\\cdot\\rho_{comp}/\\rho}&\\text{per nodi interni}\\\\\\dfrac{7{,}5\\cdot f_{ctm}}{\\gamma_{Rd}\\cdot f_{yd}}\\cdot\\left(1+0{,}8\\nu_d\\right)&\\text{per nodi esterni}\\end{cases}"],
     "7.4.28": ["7.4.6.2.2", "7.4.28", 241, "1\\%\\le\\rho\\le4\\%"],
     "7.4.28:staffe-minime": ["7.4.6.2.2", null, 241, "\\max\\left[6\\,\\mathrm{mm};\\;0{,}4\\cdot d_{bl,max}\\cdot\\sqrt{\\frac{f_{yd,l}}{f_{yd,st}}}\\right]\\quad\\text{per CD “A”, e }6\\,\\mathrm{mm}\\quad\\text{per CD “B”}"],
-    "7.4.29": ["7.4.6.2.2", "7.4.29", 242, "\\alpha\\omega_{wd}\\ge30\\mu_\\phi\\nu_d\\varepsilon_{sy,d}\\frac{b_c}{b_0}-0{,}035"],
-    "7.4.30": ["7.4.6.2.2", "7.4.30", 242, "\\omega_{wd}=\\frac{\\text{volume delle staffe di confinamento}}{\\text{volume del nucleo di calcestruzzo}}\\frac{f_{yd}}{f_{cd}}"],
-    "7.4.31a": ["7.4.6.2.2", "7.4.31a", 242, "\\alpha_n=1-\\sum_{i=1}^{n}\\frac{b_i^2}{6b_0h_0}"],
-    "7.4.31b": ["7.4.6.2.2", "7.4.31b", 242, "\\alpha_s=\\left[1-\\frac{s}{2b_0}\\right]\\left[1-\\frac{s}{2h_0}\\right]"],
+    "7.4.29": ["7.4.6.2.2", "7.4.29", 242, "\\alpha\\cdot\\omega_{wd}\\ge30\\mu_\\phi\\cdot\\nu_d\\cdot\\varepsilon_{sy,d}\\cdot\\frac{b_c}{b_0}-0{,}035"],
+    "7.4.30": ["7.4.6.2.2", "7.4.30", 242, "\\omega_{wd}=\\frac{\\text{volume delle staffe di confinamento}}{\\text{volume del nucleo di calcestruzzo}}\\cdot\\frac{f_{yd}}{f_{cd}}"],
+    "7.4.31a": ["7.4.6.2.2", "7.4.31a", 242, "\\alpha_n=1-\\frac{\\sum_n b_i^2}{6\\cdot b_0\\cdot h_0}"],
+    "7.4.31b": ["7.4.6.2.2", "7.4.31b", 242, "\\alpha_s=\\left[1-\\frac{s}{2\\cdot b_0}\\right]\\cdot\\left[1-\\frac{s}{2\\cdot h_0}\\right]"],
     "7.4.31c": ["7.4.6.2.2", "7.4.31c", 242, "\\alpha_n=1"],
-    "7.4.31d": ["7.4.6.2.2", "7.4.31d", 242, "\\alpha_s=\\left[1-\\frac{s}{2D_0}\\right]^\\beta"],
+    "7.4.31d": ["7.4.6.2.2", "7.4.31d", 242, "\\alpha_s=\\left[1-\\frac{s}{2\\cdot D_0}\\right]^\\beta"],
+    "7.4.32": ["7.4.6.2.4", "7.4.32", 243, "\\alpha\\cdot\\omega_{wd}\\ge30\\mu_\\phi\\cdot\\left(\\nu_d+\\omega_v\\right)\\cdot\\varepsilon_{sy,d}\\cdot\\frac{b_c}{b_0}-0{,}035"],
+    "7.4.33": ["7.4.6.2.4", "7.4.33", 243, "\\omega_{wd}=\\frac{\\text{volume delle staffe di confinamento}}{\\text{volume del nucleo di calcestruzzo degli elementi di bordo}}\\cdot\\frac{f_{yd}}{f_{cd}}"],
 };
 
 const output = join(root, "corpus", "units", "ntc2018");
@@ -583,9 +696,9 @@ for (const unit of units) {
         }
         const segments = block.inline ?? inline(
             norm,
-            [],
-            block.page <= 241,
-            block.page > 241,
+            block.page >= 242 ? step22MathTerms : [],
+            true,
+            block.page > 243,
         );
         return {
             blockId: `${id}#${blockId}`,

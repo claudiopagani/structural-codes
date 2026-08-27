@@ -80,7 +80,7 @@
       "origin": "official",
       "text": {
         "raw": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici\nriconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione\nmassima (amax \n) attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di amax può essere ricavato dalla relazione\namax = SSȉag dove ag è l’accelerazione massima su sito di riferimento rigido ed SS è il coefficiente di amplificazione stratigrafica.",
-        "normalized": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici riconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione massima a_max attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di a_max può essere ricavato dalla relazione a_max = S_S a_g dove a_g è l’accelerazione massima su sito di riferimento rigido ed S_S è il coefficiente di amplificazione stratigrafica.",
+        "normalized": "In condizioni stratigrafiche e morfologiche schematizzabili con un modello mono-dimensionale e per profili stratigrafici riconducibili alle categorie di cui alla Tab. 3.2.II, il moto sismico alla superficie di un sito è definibile mediante l’accelerazione massima a_max attesa in superficie ed una forma spettrale ancorata ad essa. Il valore di a_max può essere ricavato dalla relazione a_max = S_S · a_g dove a_g è l’accelerazione massima su sito di riferimento rigido ed S_S è il coefficiente di amplificazione stratigrafica.",
         "normalizationVersion": "ntc77-78-editorial-profile-0.1.0",
         "inline": [
           {
@@ -107,12 +107,30 @@
           },
           {
             "kind": "math",
-            "value": "a_max = S_S a_g",
-            "latex": "a_{max}=S_Sa_g"
+            "value": "a_max = S_S · a_g",
+            "latex": "a_{max}=S_S\\cdot a_g"
           },
           {
             "kind": "text",
-            "value": " dove a_g è l’accelerazione massima su sito di riferimento rigido ed S_S è il coefficiente di amplificazione stratigrafica."
+            "value": " dove "
+          },
+          {
+            "kind": "math",
+            "value": "a_g",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": " è l’accelerazione massima su sito di riferimento rigido ed "
+          },
+          {
+            "kind": "math",
+            "value": "S_S",
+            "latex": "S_S"
+          },
+          {
+            "kind": "text",
+            "value": " è il coefficiente di amplificazione stratigrafica."
           }
         ]
       },
@@ -149,7 +167,7 @@
           }
         ],
         "rawSha256": "38cccd8272c7498e591a0c4f4c9f0910d7fcd899e872091ca842222897fe4855",
-        "normalizedSha256": "d208da107c33448db254b968a49b5fbd3b345e46a12ada46467a09eff484f8eb"
+        "normalizedSha256": "4d4068713d20c8bc06b90717e3a77eaa67f73f08f166a728c3ec27aa1df05ee5"
       }
     }
   ],
