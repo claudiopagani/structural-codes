@@ -156,12 +156,30 @@
       "origin": "official",
       "text": {
         "raw": "Per le categorie d’uso A, B, C, D, H e I, i sovraccarichi verticali distribuiti che agiscono su un singolo elemento strutturale facente\nparte di un orizzontamento (ad esempio una trave), possono essere ridotti in base all’estensione dell’area di influenza A [m2 ] di\ncompetenza dell’elemento stesso. Il coefficiente riduttivo DA è dato da\n0,1\nA\n10\n7\n5 0A d\u000e\\D [3.1.1]",
-        "normalized": "Per le categorie d’uso A, B, C, D, H e I, i sovraccarichi verticali distribuiti che agiscono su un singolo elemento strutturale facente parte di un orizzontamento (ad esempio una trave), possono essere ridotti in base all’estensione dell’area di influenza A [m2 ] di Il coefficiente riduttivo αA è dato da:",
+        "normalized": "Per le categorie d’uso A, B, C, D, H e I, i sovraccarichi verticali distribuiti che agiscono su un singolo elemento strutturale facente parte di un orizzontamento (ad esempio una trave), possono essere ridotti in base all’estensione dell’area di influenza A [m²] di competenza dell’elemento stesso. Il coefficiente riduttivo αA è dato da:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le categorie d’uso A, B, C, D, H e I, i sovraccarichi verticali distribuiti che agiscono su un singolo elemento strutturale facente parte di un orizzontamento (ad esempio una trave), possono essere ridotti in base all’estensione dell’area di influenza A [m2 ] di Il coefficiente riduttivo "
+            "value": "Per le categorie d’uso A, B, C, D, H e I, i sovraccarichi verticali distribuiti che agiscono su un singolo elemento strutturale facente parte di un orizzontamento (ad esempio una trave), possono essere ridotti in base all’estensione dell’area di influenza "
+          },
+          {
+            "kind": "math",
+            "value": "A",
+            "latex": "A"
+          },
+          {
+            "kind": "text",
+            "value": " ["
+          },
+          {
+            "kind": "math",
+            "value": "m²",
+            "latex": "\\mathrm{m^2}"
+          },
+          {
+            "kind": "text",
+            "value": "] di competenza dell’elemento stesso. Il coefficiente riduttivo "
           },
           {
             "kind": "math",
@@ -220,10 +238,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinato il frammento 'di competenza dell’elemento stesso' omesso nell’estrazione; 'A' e 'm²' come grandezze (m² con 2 all’apice)."
           }
         ],
         "rawSha256": "753dfb96e1d8478759520f98c9339e91ed7de8a23ec07e3f82099d6cfd250360",
-        "normalizedSha256": "a603ae9bbfc52bcd994a77a7cd56456fe90ed39ebf93550a4a45ecd6fbb6da09"
+        "normalizedSha256": "88a3a2d6b667e56cf7252ecd39118bffa35365a314d3fbed399bcd1d18c03c82"
       }
     },
     {
@@ -264,8 +287,32 @@
       "origin": "official",
       "text": {
         "raw": "essendo \\0 il coefficiente di combinazione (Tab. 2.5.I). Per le categorie C e D, DA non può essere minore di 0,6.",
-        "normalized": "essendo \\0 il coefficiente di combinazione (Tab. 2.5.I). Per le categorie C e D, DA non può essere minore di 0,6.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "essendo ψ0 il coefficiente di combinazione (Tab. 2.5.I). Per le categorie C e D, αA non può essere minore di 0,6.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "ψ0",
+            "latex": "\\psi_0"
+          },
+          {
+            "kind": "text",
+            "value": " il coefficiente di combinazione (Tab. 2.5.I). Per le categorie C e D, "
+          },
+          {
+            "kind": "math",
+            "value": "αA",
+            "latex": "\\alpha_{A}"
+          },
+          {
+            "kind": "text",
+            "value": " non può essere minore di 0,6."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -283,9 +330,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati 'ψ0' (il glifo corrotto '\\0' dell'estrazione) e 'αA' (il glifo 'D' corrotto): grandezze in LaTeX con pedici."
+          }
+        ],
         "rawSha256": "ef01afae7ebf20ca6ccfa190e932d5d5e4f133958e42885c0ce068eac6b31b2a",
-        "normalizedSha256": "ef01afae7ebf20ca6ccfa190e932d5d5e4f133958e42885c0ce068eac6b31b2a"
+        "normalizedSha256": "230ce5ef30f3cd6e29288de44b604bf2429e127e91792a2edc74e447ef51dffe"
       }
     },
     {
@@ -294,12 +347,21 @@
       "origin": "official",
       "text": {
         "raw": "Analogamente, per le sole categorie d’uso da A a D, le componenti di sollecitazione indotte dai sovraccarichi agenti su membra-\nture verticali, tra i quali pilastri o setti, facenti parte di edifici multipiano con più di 2 piani, possono essere ridotti in funzione del\nnumero di piani caricati n, essendo il coefficiente riduttivo Dn dato da\nn\n2n2 0\nn \\\u0010\u000e\nD . [3.1.2]",
-        "normalized": "Analogamente, per le sole categorie d’uso da A a D, le componenti di sollecitazione indotte dai sovraccarichi agenti su membrature verticali, tra i quali pilastri o setti, facenti parte di edifici multipiano con più di 2 piani, possono essere ridotti in funzione del Il coefficiente riduttivo αn è dato da:",
+        "normalized": "Analogamente, per le sole categorie d’uso da A a D, le componenti di sollecitazione indotte dai sovraccarichi agenti su membrature verticali, tra i quali pilastri o setti, facenti parte di edifici multipiano con più di 2 piani, possono essere ridotti in funzione del numero di piani caricati n, essendo il coefficiente riduttivo αn dato da:",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Analogamente, per le sole categorie d’uso da A a D, le componenti di sollecitazione indotte dai sovraccarichi agenti su membrature verticali, tra i quali pilastri o setti, facenti parte di edifici multipiano con più di 2 piani, possono essere ridotti in funzione del Il coefficiente riduttivo "
+            "value": "Analogamente, per le sole categorie d’uso da A a D, le componenti di sollecitazione indotte dai sovraccarichi agenti su membrature verticali, tra i quali pilastri o setti, facenti parte di edifici multipiano con più di 2 piani, possono essere ridotti in funzione del numero di piani caricati "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo il coefficiente riduttivo "
           },
           {
             "kind": "math",
@@ -308,7 +370,7 @@
           },
           {
             "kind": "text",
-            "value": " è dato da:"
+            "value": " dato da:"
           }
         ]
       },
@@ -358,10 +420,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinato il frammento 'numero di piani caricati n, essendo' omesso nell'estrazione; 'n' e 'αn' come grandezze."
           }
         ],
         "rawSha256": "558b1198afba0dd7ff4957d8a0a84d8a6facafe5d10c69ffc5ec94c44cca53a9",
-        "normalizedSha256": "7a524efee87f8daffa8084b4c8446cb5dc2b13df847ac9a0c71097d80e1b4208"
+        "normalizedSha256": "f49387a610df7ebdf89f22465bf813b46dd905557107840795d985a42ac9fa38"
       }
     },
     {
@@ -402,8 +469,32 @@
       "origin": "official",
       "text": {
         "raw": "I due coefficienti riduttivi DA e Dn non possono essere combinati.",
-        "normalized": "I due coefficienti riduttivi DA e Dn non possono essere combinati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "I due coefficienti riduttivi αA e αn non possono essere combinati.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I due coefficienti riduttivi "
+          },
+          {
+            "kind": "math",
+            "value": "αA",
+            "latex": "\\alpha_{A}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "αn",
+            "latex": "\\alpha_{n}"
+          },
+          {
+            "kind": "text",
+            "value": " non possono essere combinati."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -421,9 +512,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati 'αA' e 'αn' (glifi corrotti in 'D' dall'estrazione) come grandezze in LaTeX con pedici."
+          }
+        ],
         "rawSha256": "016bc0ac0bd1908ffa39c230162317911db918e210b76f5fb283afecaf5c627d",
-        "normalizedSha256": "016bc0ac0bd1908ffa39c230162317911db918e210b76f5fb283afecaf5c627d"
+        "normalizedSha256": "c4f07f65a72893a5108d66628e1d44e60a37807266467b583f8c38399835ba6f"
       }
     }
   ],

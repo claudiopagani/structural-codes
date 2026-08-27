@@ -31,7 +31,7 @@ export interface CorpusBlock {
 }
 
 export interface FormulaAsset { id: string; officialNumber: string | null; pdfPage: number; latex: string; }
-export interface TableCell { text: string; latex?: string; colSpan?: number; rowSpan?: number; }
+export interface TableCell { text: string; latex?: string; colSpan?: number; rowSpan?: number; strong?: boolean; }
 export interface TableAsset {
   id: string;
   officialNumber: string | null;

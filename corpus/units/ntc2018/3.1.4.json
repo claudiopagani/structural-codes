@@ -155,17 +155,17 @@
       "origin": "official",
       "text": {
         "raw": "- carichi verticali uniformemente distribuiti q k",
-        "normalized": "carichi verticali uniformemente distribuiti q k",
+        "normalized": "carichi verticali uniformemente distribuiti qk",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "carichi verticali uniformemente distribuiti q "
+            "value": "carichi verticali uniformemente distribuiti "
           },
           {
             "kind": "math",
-            "value": "k",
-            "latex": "k"
+            "value": "qk",
+            "latex": "q_k"
           }
         ]
       },
@@ -215,10 +215,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinato il simbolo 'qk' come grandezza con pedice 'k' (qₖ), rimosso lo spazio residuo dell'estrazione."
           }
         ],
         "rawSha256": "5ea96fc7a918b93a85ba9249edfeb101b6eaca0369cf0f60a7d201fee328774c",
-        "normalizedSha256": "a85a3cf42a80edee9108fad615d34a2e5adeefd483a697b049693a9478234472"
+        "normalizedSha256": "17c2f184cf873d1212dcbd99a7febd112438c1f5ab8c88c89257eaac588872af"
       }
     },
     {
@@ -228,7 +233,18 @@
       "text": {
         "raw": "- carichi verticali concentrati Q k",
         "normalized": "carichi verticali concentrati Qk",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "carichi verticali concentrati "
+          },
+          {
+            "kind": "math",
+            "value": "Qk",
+            "latex": "Q_k"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",

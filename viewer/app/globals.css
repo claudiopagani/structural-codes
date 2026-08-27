@@ -679,6 +679,24 @@ summary:focus-visible {
   white-space: nowrap;
 }
 
+.list-item-block.list-item-with-trailing-symbol p {
+  display: grid;
+  grid-template-columns: 250px auto;
+  column-gap: 8px;
+}
+
+.list-item-block.list-item-with-trailing-symbol p .inline-math {
+  white-space: nowrap;
+}
+
+.inline-keep-punct {
+  white-space: nowrap;
+}
+
+.table-asset .table-cell-strong {
+  font-weight: 700;
+}
+
 .asset-block {
   padding-block: 34px;
 }
