@@ -170,7 +170,22 @@
       "text": {
         "raw": "Le durezze eseguite sulle macrografie non dovranno essere superiori a 350 HV30.",
         "normalized": "Le durezze eseguite sulle macrografie non dovranno essere superiori a 350 HV30.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le durezze eseguite sulle macrografie non dovranno essere superiori a "
+          },
+          {
+            "kind": "math",
+            "value": "350 HV30",
+            "latex": "350\\;\\mathrm{HV30}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -182,7 +197,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "c53474c41e464f95750609921e37709303e8826395f7edd30d03fc72c66b4a12",
         "normalizedSha256": "c53474c41e464f95750609921e37709303e8826395f7edd30d03fc72c66b4a12"
       }
@@ -404,7 +425,22 @@
       "text": {
         "raw": "L’entità ed il tipo di tali controlli, distruttivi e non distruttivi, in aggiunta a quello visivo al 100%, saranno definiti dal Collaudato-\nre e dal Direttore dei Lavori; per i cordoni ad angolo o giunti a parziale penetrazione si useranno metodi di superficie (ad es. li-\nquidi penetranti o polveri magnetiche), mentre per i giunti a piena penetrazione, oltre a quanto sopra previsto, si useranno meto-\ndi volumetrici e cioè raggi X o gamma o ultrasuoni per i giunti testa a testa e solo ultrasuoni per i giunti a T a piena penetrazione.",
         "normalized": "L’entità ed il tipo di tali controlli, distruttivi e non distruttivi, in aggiunta a quello visivo al 100%, saranno definiti dal Collaudatore e dal Direttore dei Lavori; per i cordoni ad angolo o giunti a parziale penetrazione si useranno metodi di superficie (ad es. liquidi penetranti o polveri magnetiche), mentre per i giunti a piena penetrazione, oltre a quanto sopra previsto, si useranno metodi volumetrici e cioè raggi X o gamma o ultrasuoni per i giunti testa a testa e solo ultrasuoni per i giunti a T a piena penetrazione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’entità ed il tipo di tali controlli, distruttivi e non distruttivi, in aggiunta a quello visivo al "
+          },
+          {
+            "kind": "math",
+            "value": "100%",
+            "latex": "100\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", saranno definiti dal Collaudatore e dal Direttore dei Lavori; per i cordoni ad angolo o giunti a parziale penetrazione si useranno metodi di superficie (ad es. liquidi penetranti o polveri magnetiche), mentre per i giunti a piena penetrazione, oltre a quanto sopra previsto, si useranno metodi volumetrici e cioè raggi X o gamma o ultrasuoni per i giunti testa a testa e solo ultrasuoni per i giunti a T a piena penetrazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -431,6 +467,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "657f1559f8b88671e25a62980cd4e62203c1c7614f65fba5e9b8efc42590fc89",
@@ -635,110 +676,6 @@
         ],
         "rawSha256": "76a3e78e30556eb90536bab6d8542d8ed497467dc7bb7516f9ef10c86acd71cc",
         "normalizedSha256": "76a3e78e30556eb90536bab6d8542d8ed497467dc7bb7516f9ef10c86acd71cc"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.5#block-018",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Tipo di azione sulle strutture Strutture soggette a fatica in modo non significativo\nStrutture soggette a\nfatica in modo signi-\nficativo\nRiferimento A B C D",
-        "normalized": "Tipo di azione sulle strutture Strutture soggette a fatica in modo non significativo Strutture soggette a fatica in modo significativo Riferimento A B C D",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 342,
-        "printedPage": "338",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "7785366d30af0065848a41ed5a387e2d28128b2772278553f8819f7117836543",
-        "normalizedSha256": "96b8e68279bb243868e83015d542ddfc75abaea6a1d5f0fb1008426fdde8631b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.5#block-019",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Materiale Base:\nSpessore minimo delle membrature\nS235, s ǂ 30 mm\nS275, s ǂ 30 mm\nS355, s ǂ 30 mm\nS235\nS275\nS235\nS275\nS355\nS460, s ǂ 30 mm\nS235\nS275\nS355\nS460 (Nota 1)\nAcciai inossidabili e\naltri acciai non e-\nsplicitamente men-\nzionati (Nota 1)\nLivello dei requisiti di qualità secondo la norma\nUNI EN ISO 3834:2006\nElementare\nUNI EN ISO 3834-4\nMedio\nUNI EN ISO 3834-3\nMedio\nUNI EN ISO 3834-3\nCompleto\nUNI EN ISO 3834-2\nLivello di conoscenza tecnica del personale di\nCoordinamento della saldatura secondo la\nnorma UNI EN ISO 14731:2007\nDi base Specifico Completo Completo",
-        "normalized": "Materiale Base: Spessore minimo delle membrature S235, s ǂ 30 mm S275, s ǂ 30 mm S355, s ǂ 30 mm S235 S275 S235 S275 S355 S460, s ǂ 30 mm S235 S275 S355 S460 (Nota 1) Acciai inossidabili e altri acciai non esplicitamente menzionati (Nota 1) Livello dei requisiti di qualità secondo la norma UNI EN ISO 3834:2006 Elementare UNI EN ISO 3834-4 Medio UNI EN ISO 3834-3 Medio UNI EN ISO 3834-3 Completo UNI EN ISO 3834-2 Livello di conoscenza tecnica del personale di Coordinamento della saldatura secondo la norma UNI EN ISO 14731:2007 Di base Specifico Completo Completo",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 342,
-        "printedPage": "338",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "274022bd7b5a5426ef8f5ef2cef9a19fae4acebefd54e3744299395c2c138b47",
-        "normalizedSha256": "b79cd9f825ba586bce061923016557c803c54ae4088992d7f5fcf932cfe76a32"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.5#block-020",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Nota 1) Vale anche per strutture non soggette a fatica in modo significativo",
-        "normalized": "Nota 1) Vale anche per strutture non soggette a fatica in modo significativo",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 342,
-        "printedPage": "338",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "580dc20a8690ace2833aafbe59cab816cabf1350d90e96e8610128759e1586cf",
-        "normalizedSha256": "580dc20a8690ace2833aafbe59cab816cabf1350d90e96e8610128759e1586cf"
       }
     }
   ],

@@ -100,8 +100,32 @@
       "origin": "official",
       "text": {
         "raw": "La documentazione deve essere riferita ad una produzione relativa ad un periodo di tempo di almeno sei mesi e ad un quantita-\ntivo di prodotti tale da fornire un quadro statisticamente significativo della produzione stessa e comunque ǃ 500 t oppure ad un\nnumero di colate o di lotti ǃ 25.",
-        "normalized": "La documentazione deve essere riferita ad una produzione relativa ad un periodo di tempo di almeno sei mesi e ad un quantitativo di prodotti tale da fornire un quadro statisticamente significativo della produzione stessa e comunque ǃ 500 t oppure ad un numero di colate o di lotti ǃ 25.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "La documentazione deve essere riferita ad una produzione relativa ad un periodo di tempo di almeno sei mesi e ad un quantitativo di prodotti tale da fornire un quadro statisticamente significativo della produzione stessa e comunque ≥ 500 t oppure ad un numero di colate o di lotti ≥ 25.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La documentazione deve essere riferita ad una produzione relativa ad un periodo di tempo di almeno sei mesi e ad un quantitativo di prodotti tale da fornire un quadro statisticamente significativo della produzione stessa e comunque "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 500 t",
+            "latex": "\\ge500\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " oppure ad un numero di colate o di lotti "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 25",
+            "latex": "\\ge25"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -128,10 +152,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "3bc87a312da0581676448a372fdf1cbbf120d8d574e6f2a3a4cea6fb6cf731e4",
-        "normalizedSha256": "0d05c4315816216b728161e41ba168e71773d99891e748d075038f24b45ed034"
+        "normalizedSha256": "ed748c3240ba2d8b49f0f791228c68c9b048dc256c67cf064d15bf6601bbed1f"
       }
     },
     {
@@ -181,7 +210,40 @@
       "text": {
         "raw": "Le prove di qualificazione devono riferirsi a ciascun tipo di prodotto, inteso individuato da gamma merceologica, classe di spes-\nsore e qualità di acciaio, ed essere relative al rilievo dei valori caratteristici; per ciascun tipo verranno eseguite almeno 30 prove su\n30 saggi appositamente prelevati da almeno 3 lotti diversi.",
         "normalized": "Le prove di qualificazione devono riferirsi a ciascun tipo di prodotto, inteso individuato da gamma merceologica, classe di spessore e qualità di acciaio, ed essere relative al rilievo dei valori caratteristici; per ciascun tipo verranno eseguite almeno 30 prove su 30 saggi appositamente prelevati da almeno 3 lotti diversi.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove di qualificazione devono riferirsi a ciascun tipo di prodotto, inteso individuato da gamma merceologica, classe di spessore e qualità di acciaio, ed essere relative al rilievo dei valori caratteristici; per ciascun tipo verranno eseguite almeno "
+          },
+          {
+            "kind": "math",
+            "value": "30 prove",
+            "latex": "30\\;\\mathrm{prove}"
+          },
+          {
+            "kind": "text",
+            "value": " su "
+          },
+          {
+            "kind": "math",
+            "value": "30 saggi",
+            "latex": "30\\;\\mathrm{saggi}"
+          },
+          {
+            "kind": "text",
+            "value": " appositamente prelevati da almeno "
+          },
+          {
+            "kind": "math",
+            "value": "3 lotti",
+            "latex": "3\\;\\mathrm{lotti}"
+          },
+          {
+            "kind": "text",
+            "value": " diversi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -208,6 +270,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f10163a91f337e1b5e75b7029b5f897ee1b16c4695fa25ab69e5bf1428f57f8e",

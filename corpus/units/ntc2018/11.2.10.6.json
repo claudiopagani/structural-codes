@@ -423,6 +423,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a000b508248097f9742731f90518f2888b0668ad42d70390ca0774ce50efa5ca",
@@ -457,87 +462,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-013",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "f ck \nDeformazione da ritiro per essiccamento (in ‰)",
-        "normalized": "fck Deformazione da ritiro per essiccamento (in ‰)",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "fck",
-            "latex": "f_{ck}"
-          },
-          {
-            "kind": "text",
-            "value": " Deformazione da ritiro per essiccamento (in ‰)"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "d05fd6abf513cc0ace1c7975de7d062492b139e9702f88b744d37052481ce343",
-        "normalizedSha256": "2c768c58cd7c41c8a1b580d31f900bb192afe534e165b5cde509a30236538eab"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-014",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Umidità Relativa (in %)\n20 40 60 80 90 100\n20 -0,62 -0,58 -0,49 -0,30 -0,17 +0,00\n40 -0,48 -0,46 -0,38 -0,24 -0,13 +0,00\n60 -0,38 -0,36 -0,30 -0,19 -0,10 +0,00\n80 -0,30 -0,28 -0,24 -0,15 -0,07 +0,00",
-        "normalized": "Umidità Relativa (in %) 20 40 60 80 90 100 20 -0,62 -0,58 -0,49 -0,30 -0,17 +0,00 40 -0,48 -0,46 -0,38 -0,24 -0,13 +0,00 60 -0,38 -0,36 -0,30 -0,19 -0,10 +0,00 80 -0,30 -0,28 -0,24 -0,15 -0,07 +0,00",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "5a0872539a784bb38306ad4b43a570d2c526d2f2c0bdacd43cb845a54af5f57f",
-        "normalizedSha256": "1474c8f2b930b9f0c51d88f7c0063f996120306ad2c5388cde2178fb33de065e"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-015",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.2.vb",
@@ -573,7 +497,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-016",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -616,6 +540,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "1c8db21b18dd21426c89356cbdab41cb54c49c1f0beb50f48ba072044a6dd0b6",
@@ -623,7 +552,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-017",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-015",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.2.8",
@@ -659,7 +588,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-018",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-016",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -683,7 +612,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-019",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-017",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.2.9",
@@ -719,7 +648,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-020",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -743,13 +672,24 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-021",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-019",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "t è l’età del calcestruzzo nel momento considerato (in giorni)",
         "normalized": "t è l’età del calcestruzzo nel momento considerato (in giorni)",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è l’età del calcestruzzo nel momento considerato (in giorni)"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -761,19 +701,36 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "22521619ee33973697813735879250990dd6dc37f4d40832f51eea217a3b4693",
         "normalizedSha256": "22521619ee33973697813735879250990dd6dc37f4d40832f51eea217a3b4693"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-022",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-020",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "t s è l’età del calcestruzzo a partire dalla quale si considera l’effetto del ritiro da essiccamento (normalmente il termine della\nmaturazione, espresso in giorni).",
-        "normalized": "t s è l’età del calcestruzzo a partire dalla quale si considera l’effetto del ritiro da essiccamento (normalmente il termine della maturazione, espresso in giorni).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "ts è l’età del calcestruzzo a partire dalla quale si considera l’effetto del ritiro da essiccamento (normalmente il termine della maturazione, espresso in giorni).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ts",
+            "latex": "t_s"
+          },
+          {
+            "kind": "text",
+            "value": " è l’età del calcestruzzo a partire dalla quale si considera l’effetto del ritiro da essiccamento (normalmente il termine della maturazione, espresso in giorni)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -795,19 +752,24 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "2f43c11b8afd2ea27e5c7dfc7867e9238f9e91e06caaea0ba14bc072ccbb19af",
-        "normalizedSha256": "f6943fa0631571fbd4e4853e5d3f37073b9ba44c7059a31002f248682db1b77d"
+        "normalizedSha256": "b52c33e3f30e0e14888a979e708a474a49d091f9ac4f603398255ca225264b9b"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-023",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-021",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "h0 è la dimensione fittizia (in mm) pari al rapporto 2Ac / u",
-        "normalized": "h0 è la dimensione fittizia (in mm) pari al rapporto 2Ac / u",
+        "normalized": "h0 è la dimensione fittizia (in mm) pari al rapporto 2Ac/u",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -817,7 +779,12 @@
           },
           {
             "kind": "text",
-            "value": " è la dimensione fittizia (in mm) pari al rapporto 2Ac / u"
+            "value": " è la dimensione fittizia (in mm) pari al rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "2Ac/u",
+            "latex": "2A_c/u"
           }
         ]
       },
@@ -831,9 +798,97 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "f9b6dff241c7249b07a4fa58768dd3d40ab8991a7107a05a0992d0c48d592b4e",
-        "normalizedSha256": "f9b6dff241c7249b07a4fa58768dd3d40ab8991a7107a05a0992d0c48d592b4e"
+        "normalizedSha256": "b3b8f445b87ef34ef7f9d23ee436f6bccf3983b07debde927771b1c3a2063900"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-022",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "A c è l’area della sezione in calcestruzzo",
+        "normalized": "Ac è l’area della sezione in calcestruzzo",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Ac",
+            "latex": "A_c"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area della sezione in calcestruzzo"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
+        "rawSha256": "62663b88a8472968d4acfbd3070319897bc6105818bb5fc4f9142ea2dabbec6d",
+        "normalizedSha256": "2fad1c2c6c9d2bd836a9b4f0727bf520a625b8ee76ba7a55c995891086d669e0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-023",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "u è il perimetro della sezione in calcestruzzo esposto all’aria.",
+        "normalized": "u è il perimetro della sezione in calcestruzzo esposto all’aria.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "u",
+            "latex": "u"
+          },
+          {
+            "kind": "text",
+            "value": " è il perimetro della sezione in calcestruzzo esposto all’aria."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 318,
+        "printedPage": "314",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
+        "rawSha256": "0c321a92e63755b1b9302ff1c6f2a635fe11bdd4e316209782a8cd3336de2ac8",
+        "normalizedSha256": "0c321a92e63755b1b9302ff1c6f2a635fe11bdd4e316209782a8cd3336de2ac8"
       }
     },
     {
@@ -841,56 +896,8 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "A c è l’area della sezione in calcestruzzo",
-        "normalized": "A c è l’area della sezione in calcestruzzo",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "62663b88a8472968d4acfbd3070319897bc6105818bb5fc4f9142ea2dabbec6d",
-        "normalizedSha256": "62663b88a8472968d4acfbd3070319897bc6105818bb5fc4f9142ea2dabbec6d"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-025",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "u è il perimetro della sezione in calcestruzzo esposto all’aria.",
-        "normalized": "u è il perimetro della sezione in calcestruzzo esposto all’aria.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "0c321a92e63755b1b9302ff1c6f2a635fe11bdd4e316209782a8cd3336de2ac8",
-        "normalizedSha256": "0c321a92e63755b1b9302ff1c6f2a635fe11bdd4e316209782a8cd3336de2ac8"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-026",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
         "raw": "Il valore medio a tempo infinito della deformazione per ritiro autogeno Ήca,ǈ può essere valutato mediante l’espressione:",
-        "normalized": "Il valore medio a tempo infinito della deformazione per ritiro autogeno εca,ǈ può essere valutato mediante l’espressione:",
+        "normalized": "Il valore medio a tempo infinito della deformazione per ritiro autogeno εca,∞ può essere valutato mediante l’espressione:",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -899,12 +906,12 @@
           },
           {
             "kind": "math",
-            "value": "εca",
-            "latex": "\\varepsilon_{ca}"
+            "value": "εca,∞",
+            "latex": "\\varepsilon_{ca,\\infty}"
           },
           {
             "kind": "text",
-            "value": ",ǈ può essere valutato mediante l’espressione:"
+            "value": " può essere valutato mediante l’espressione:"
           }
         ]
       },
@@ -923,14 +930,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "cdc1fd12d29917719cf72283c71a01cdb184578103e9ffea10195ff7c7954392",
-        "normalizedSha256": "c812fcfd7b1582344138802179813afded5a553f84ef46357e0fc7ca38d59f48"
+        "normalizedSha256": "bfd2841e1843294fb2f0ebca1db7a440a3086c721258f235499eb2325802fd82"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-027",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-025",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.2.10",
@@ -966,12 +978,12 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-028",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6#block-026",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "con f ck in N/mm2\n.",
-        "normalized": "con fck in N/mm2 .",
+        "normalized": "con fck in N/mm².",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -985,7 +997,16 @@
           },
           {
             "kind": "text",
-            "value": " in N/mm2 ."
+            "value": " in "
+          },
+          {
+            "kind": "math",
+            "value": "N/mm²",
+            "latex": "\\mathrm{N/mm^2}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1009,10 +1030,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5263b54544044105f0fb15faae9b17ee7de5d2c7150114c51ac13fef06d58221",
-        "normalizedSha256": "6a71cea3469efee219dfe0cd6602407d58cbfc5b86188e5e59217b0dd24c3cbe"
+        "normalizedSha256": "6b044ac02139954bc24fe8f785b57727ac7bbc67a87b3f7e85b5b751d349af4a"
       }
     }
   ],

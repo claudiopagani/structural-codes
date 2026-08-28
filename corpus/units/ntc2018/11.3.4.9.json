@@ -128,7 +128,7 @@
       "origin": "official",
       "text": {
         "raw": "– per gli acciai da carpenteria il rapporto fra i valori caratteristici della tensione di rottura ftk e la tensione di snervamento fyk de-\nve essere maggiore di 1,10 e l’allungamento a rottura A5 \n, misurato su provino standard, deve essere non inferiore al 20%;",
-        "normalized": "– per gli acciai da carpenteria il rapporto fra i valori caratteristici della tensione di rottura ftk e la tensione di snervamento fyk deve essere maggiore di 1,10 e l’allungamento a rottura A5 , misurato su provino standard, deve essere non inferiore al 20%;",
+        "normalized": "– per gli acciai da carpenteria il rapporto fra i valori caratteristici della tensione di rottura ftk e la tensione di snervamento fyk deve essere maggiore di 1,10 e l’allungamento a rottura A5, misurato su provino standard, deve essere non inferiore al 20%;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -151,7 +151,34 @@
           },
           {
             "kind": "text",
-            "value": " deve essere maggiore di 1,10 e l’allungamento a rottura A5 , misurato su provino standard, deve essere non inferiore al 20%;"
+            "value": " deve essere maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "1,10",
+            "latex": "1{,}10"
+          },
+          {
+            "kind": "text",
+            "value": " e l’allungamento a rottura "
+          },
+          {
+            "kind": "math",
+            "value": "A5",
+            "latex": "A_5"
+          },
+          {
+            "kind": "text",
+            "value": ", misurato su provino standard, deve essere non inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": ";"
           }
         ]
       },
@@ -180,10 +207,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c676afec567eef28c4b686015507a71add2d9e4e3bf85fbaa7b49e2a3360a92f",
-        "normalizedSha256": "ac4e14fe32a8cf15350a1ec144960e3398c42f41722b51cba1b611deb4caf5f7"
+        "normalizedSha256": "8c243169bcddd99efbb38c41e4cddf39e9a699c1a4811f34749e4e94f33d8569"
       }
     },
     {
@@ -192,7 +224,7 @@
       "origin": "official",
       "text": {
         "raw": "– la tensione di snervamento media fy,media deve risultare inferiore ad 1,20 f y,k per acciaio S235 e S275, oppure ad 1,10 fy,k per ac-\nciai S355 S420 ed S460;",
-        "normalized": "– la tensione di snervamento media fy,media deve risultare inferiore ad 1,20 f y,k per acciaio S235 e S275, oppure ad 1,10 fy,k per acciai S355 S420 ed S460;",
+        "normalized": "– la tensione di snervamento media fy,media deve risultare inferiore a 1,20 fy,k per acciai S235 e S275, oppure a 1,10 fy,k per acciai S355, S420 ed S460;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -201,21 +233,30 @@
           },
           {
             "kind": "math",
-            "value": "fy",
-            "latex": "f_y"
+            "value": "fy,media",
+            "latex": "f_{y,\\mathrm{media}}"
           },
           {
             "kind": "text",
-            "value": ",media deve risultare inferiore ad 1,20 f y,k per acciaio S235 e S275, oppure ad 1,10 "
+            "value": " deve risultare inferiore a "
           },
           {
             "kind": "math",
-            "value": "fy",
-            "latex": "f_y"
+            "value": "1,20 fy,k",
+            "latex": "1{,}20f_{y,k}"
           },
           {
             "kind": "text",
-            "value": ",k per acciai S355 S420 ed S460;"
+            "value": " per acciai S235 e S275, oppure a "
+          },
+          {
+            "kind": "math",
+            "value": "1,10 fy,k",
+            "latex": "1{,}10f_{y,k}"
+          },
+          {
+            "kind": "text",
+            "value": " per acciai S355, S420 ed S460;"
           }
         ]
       },
@@ -244,10 +285,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5198a16e3b0a7766c9c671ee6a15524568673021c5d8ca775a9407b629c53128",
-        "normalizedSha256": "44f6b43030ac38ec92c0b69fa68395574cf7aa4a1734fa8aaf185822b56a8fcd"
+        "normalizedSha256": "ae62a7338127fd5bad06346559c3c873317f817d239729bc2f8597334e3319a4"
       }
     },
     {
@@ -280,8 +326,23 @@
       "origin": "official",
       "text": {
         "raw": "Il valore del coefficiente ·ov è specificato nel § 7.5.",
-        "normalized": "Il valore del coefficiente ·ov è specificato nel § 7.5.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il valore del coefficiente γov è specificato nel § 7.5.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il valore del coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "γov",
+            "latex": "\\gamma_{ov}"
+          },
+          {
+            "kind": "text",
+            "value": " è specificato nel § 7.5."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -293,9 +354,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "43b3609007a7379447198b95edd8c87bb24465c7b1c2b8e0fbea94944932b715",
-        "normalizedSha256": "43b3609007a7379447198b95edd8c87bb24465c7b1c2b8e0fbea94944932b715"
+        "normalizedSha256": "0f1ab5fac6addfc33bd7e27d57254542811fa3f727468a4625301365fc2cad68"
       }
     },
     {

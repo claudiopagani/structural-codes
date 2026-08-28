@@ -98,8 +98,41 @@
       "origin": "official",
       "text": {
         "raw": "– allungamento percentuale a rottura (valutato su base 00 A65,5L ,dove A 0 è l’area della sezione trasversale del saggio) ǃ 12;",
-        "normalized": "– allungamento percentuale a rottura (valutato su base 00 A65,5L ,dove A 0 è l’area della sezione trasversale del saggio) ǃ 12;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "– allungamento percentuale a rottura (valutato su base L0 = 5,65 √A0, dove A0 è l’area della sezione trasversale del saggio) ≥ 12;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– allungamento percentuale a rottura (valutato su base "
+          },
+          {
+            "kind": "math",
+            "value": "L0 = 5,65 √A0",
+            "latex": "L_0=5{,}65\\sqrt{A_0}"
+          },
+          {
+            "kind": "text",
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "A0",
+            "latex": "A_0"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area della sezione trasversale del saggio) "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 12",
+            "latex": "\\ge12"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -111,9 +144,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "f03dd415cb7b6fa20cf2507240d153a77ed7726a7914cd5d2f05579a19f72ad0",
-        "normalizedSha256": "f03dd415cb7b6fa20cf2507240d153a77ed7726a7914cd5d2f05579a19f72ad0"
+        "normalizedSha256": "0d6583bb8ef975fbf1cd6c05cba4cd26dc038b2e889acdb3f014660d23665c19"
       }
     },
     {
@@ -122,7 +161,7 @@
       "origin": "official",
       "text": {
         "raw": "– rapporto ft / fy ǃ1,2.\nQuando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono es-\nsere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti:\nC ǂ 0,18%, Mn ǂ 0,9%, S ǂ 0,04%, P ǂ 0,05%\nPer essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
-        "normalized": "– rapporto ft / fy ǃ1,2. Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: C ǂ 0,18%, Mn ǂ 0,9%, S ǂ 0,04%, P ǂ 0,05% Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
+        "normalized": "– rapporto ft/fy ≥ 1,2. Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: C ≤ 0,18%, Mn ≤ 0,9%, S ≤ 0,04%, P ≤ 0,05%. Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -131,21 +170,48 @@
           },
           {
             "kind": "math",
-            "value": "ft",
-            "latex": "f_t"
+            "value": "ft/fy ≥ 1,2",
+            "latex": "f_t/f_y\\ge1{,}2"
           },
           {
             "kind": "text",
-            "value": " / "
+            "value": ". Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: "
           },
           {
             "kind": "math",
-            "value": "fy",
-            "latex": "f_y"
+            "value": "C ≤ 0,18%",
+            "latex": "C\\le0{,}18\\%"
           },
           {
             "kind": "text",
-            "value": " ǃ1,2. Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: C ǂ 0,18%, Mn ǂ 0,9%, S ǂ 0,04%, P ǂ 0,05% Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie."
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Mn ≤ 0,9%",
+            "latex": "Mn\\le0{,}9\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "S ≤ 0,04%",
+            "latex": "S\\le0{,}04\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "P ≤ 0,05%",
+            "latex": "P\\le0{,}05\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie."
           }
         ]
       },
@@ -174,10 +240,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "525450353ea4a9fd34e1dd4cd31b358caeb46aa4435c9273dac37448762ec26e",
-        "normalizedSha256": "066028025246547191adf328ee8c6c69bf95057585f983180375302d92aa1908"
+        "normalizedSha256": "cb10e709f3a324ebe31882487c290a11a3f3a09cf9d78378817c796d72813f9a"
       }
     }
   ],

@@ -61,7 +61,22 @@
       "text": {
         "raw": "Negli stabilimenti soggetti a controlli sistematici di cui al presente § 11.3.3.5.2, i produttori possono richiedere di sottoporsi a con-\ntrolli, eseguiti a cura del laboratorio di cui all’art. 59 del DPR n. 380/2001 già incaricato per le prove di verifica della qualità, su\nsingoli lotti di produzione (massima massa del lotto = 100 t) di quei prodotti che, per ragioni di produzione, non possono ancora\nrispettare le condizioni minime quantitative per qualificarsi. Le prove da effettuare sono quelle di cui al successivo § 11.3.3.5.3.",
         "normalized": "Negli stabilimenti soggetti a controlli sistematici di cui al presente § 11.3.3.5.2, i produttori possono richiedere di sottoporsi a controlli, eseguiti a cura del laboratorio di cui all’art. 59 del DPR n. 380/2001 già incaricato per le prove di verifica della qualità, su singoli lotti di produzione (massima massa del lotto = 100 t) di quei prodotti che, per ragioni di produzione, non possono ancora rispettare le condizioni minime quantitative per qualificarsi. Le prove da effettuare sono quelle di cui al successivo § 11.3.3.5.3.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Negli stabilimenti soggetti a controlli sistematici di cui al presente § 11.3.3.5.2, i produttori possono richiedere di sottoporsi a controlli, eseguiti a cura del laboratorio di cui all’art. 59 del DPR n. 380/2001 già incaricato per le prove di verifica della qualità, su singoli lotti di produzione (massima massa del lotto = "
+          },
+          {
+            "kind": "math",
+            "value": "100 t",
+            "latex": "100\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": ") di quei prodotti che, per ragioni di produzione, non possono ancora rispettare le condizioni minime quantitative per qualificarsi. Le prove da effettuare sono quelle di cui al successivo § 11.3.3.5.3."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -88,6 +103,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "7be576befc94d1b09a63592b29d1444753dc60568824330063b2940010eabe18",

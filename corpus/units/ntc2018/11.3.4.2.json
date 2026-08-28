@@ -280,8 +280,23 @@
       "origin": "official",
       "text": {
         "raw": "– nastri zincati di spessore ǂ 4 mm.",
-        "normalized": "– nastri zincati di spessore ǂ 4 mm.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "– nastri zincati di spessore s ≤ 4 mm.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– nastri zincati di spessore "
+          },
+          {
+            "kind": "math",
+            "value": "s ≤ 4 mm",
+            "latex": "s\\le4\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -293,9 +308,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "69e13170704fc8a24eddeb547553c7580cf636b27d3375099b3d4a9d24ab68af",
-        "normalizedSha256": "69e13170704fc8a24eddeb547553c7580cf636b27d3375099b3d4a9d24ab68af"
+        "normalizedSha256": "18b134641171d8d493836c95e3af3a8fc4dd5f4e3d733e8268633fcc61d17cd8"
       }
     },
     {

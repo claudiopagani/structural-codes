@@ -60,7 +60,22 @@
       "text": {
         "raw": "I controlli di accettazione in cantiere devono essere eseguiti secondo le medesime indicazioni di cui al precedente § 11.3.3.5.3, o-\ngni 30 t della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive.",
         "normalized": "I controlli di accettazione in cantiere devono essere eseguiti secondo le medesime indicazioni di cui al precedente § 11.3.3.5.3, ogni 30 t della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I controlli di accettazione in cantiere devono essere eseguiti secondo le medesime indicazioni di cui al precedente § 11.3.3.5.3, ogni "
+          },
+          {
+            "kind": "math",
+            "value": "30 t",
+            "latex": "30\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -87,6 +102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5994385a7202a24bc37ed99a3f3b65948965daa2f309d1b1d7bf797c847eadc4",

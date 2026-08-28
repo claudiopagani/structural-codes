@@ -136,7 +136,22 @@
       "text": {
         "raw": "Si determinano così le nuove tensioni caratteristiche sostitutive delle precedenti sempre ponendo n = 80.",
         "normalized": "Si determinano così le nuove tensioni caratteristiche sostitutive delle precedenti sempre ponendo n = 80.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si determinano così le nuove tensioni caratteristiche sostitutive delle precedenti sempre ponendo "
+          },
+          {
+            "kind": "math",
+            "value": "n = 80",
+            "latex": "n=80"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -148,7 +163,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "8bf4826622e1a29471b740e5d9d9b4d00460613a51f633e2aba07ca2d8bddc6d",
         "normalizedSha256": "8bf4826622e1a29471b740e5d9d9b4d00460613a51f633e2aba07ca2d8bddc6d"
       }
@@ -199,8 +220,14 @@
       "origin": "official",
       "text": {
         "raw": "Qualora uno dei campioni sottoposti a prove di verifica non soddisfi i valori previsti al § 11.3.2, il prelievo relativo all’elemento di\ncui trattasi va ripetuto su un altro elemento della stessa partita. Il nuovo prelievo sostituisce quello precedente a tutti gli effetti. In\ncaso di ulteriore risultato negativo, il laboratorio incaricato sospende le prove di verifica della qualità dandone comunicazione al\nServizio Tecnico Centrale e ripete la qualificazione dopo che il fabbricante ha ovviato alle cause che hanno dato luogo al risultato\ninsoddisfacente. \nBarre Rotoli",
-        "normalized": "Qualora uno dei campioni sottoposti a prove di verifica non soddisfi i valori previsti al § 11.3.2, il prelievo relativo all’elemento di cui trattasi va ripetuto su un altro elemento della stessa partita. Il nuovo prelievo sostituisce quello precedente a tutti gli effetti. In caso di ulteriore risultato negativo, il laboratorio incaricato sospende le prove di verifica della qualità dandone comunicazione al Servizio Tecnico Centrale e ripete la qualificazione dopo che il fabbricante ha ovviato alle cause che hanno dato luogo al risultato insoddisfacente. Barre Rotoli",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Qualora uno dei campioni sottoposti a prove di verifica non soddisfi i valori previsti al § 11.3.2, il prelievo relativo all’elemento di cui trattasi va ripetuto su un altro elemento della stessa partita. Il nuovo prelievo sostituisce quello precedente a tutti gli effetti. In caso di ulteriore risultato negativo, il laboratorio incaricato sospende le prove di verifica della qualità dandone comunicazione al Servizio Tecnico Centrale e ripete la qualificazione dopo che il fabbricante ha ovviato alle cause che hanno dato luogo al risultato insoddisfacente.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora uno dei campioni sottoposti a prove di verifica non soddisfi i valori previsti al § 11.3.2, il prelievo relativo all’elemento di cui trattasi va ripetuto su un altro elemento della stessa partita. Il nuovo prelievo sostituisce quello precedente a tutti gli effetti. In caso di ulteriore risultato negativo, il laboratorio incaricato sospende le prove di verifica della qualità dandone comunicazione al Servizio Tecnico Centrale e ripete la qualificazione dopo che il fabbricante ha ovviato alle cause che hanno dato luogo al risultato insoddisfacente."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -222,10 +249,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b037223ae2fa7c5d6cb67d0f15c68a28f2bf1c2c87a45e635d4c3e7aabadd207",
-        "normalizedSha256": "a28b0cc3a92653449bb7b4e579296df82fb5abacdac0723758b72b118d53a54b"
+        "normalizedSha256": "a408f43de82fb6ddeb8dc7aded3db07c2f9ec9a188cb9f38756b3ff68daaa628"
       }
     }
   ],

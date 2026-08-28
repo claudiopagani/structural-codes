@@ -95,8 +95,50 @@
       "origin": "official",
       "text": {
         "raw": "I valori delle tensioni fpt \n, f py, f p(0,1), f p(1) devono essere riferiti al valore nominale dell’area della sezione trasversale riportata nel ca-\ntalogo del fabbricante.",
-        "normalized": "I valori delle tensioni fpt , f py, f p(0,1), f p(1) devono essere riferiti al valore nominale dell’area della sezione trasversale riportata nel catalogo del fabbricante.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "I valori delle tensioni fpt, fpy, fp(0,1), fp(1) devono essere riferiti al valore nominale dell’area della sezione trasversale riportata nel catalogo del fabbricante.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I valori delle tensioni "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": " devono essere riferiti al valore nominale dell’area della sezione trasversale riportata nel catalogo del fabbricante."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -123,10 +165,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "1048a6b4179b5a22983fb2a994e9e870e1e95aa56db1ce6dc41b77a32497d25f",
-        "normalizedSha256": "000e2788672781b51c7a5ee1638df58014dce222a800eeaad8bcbbf47639ca27"
+        "normalizedSha256": "3956dd5b39809e380339673079070b21f09df1c4340622b2d2657d59c6188e31"
       }
     },
     {
@@ -135,8 +182,86 @@
       "origin": "official",
       "text": {
         "raw": "Diametro (Ø), area della sezione trasversale (A) e massa per unità di lunghezza (M)\nL’area della sezione trasversale si valuta per pesata assumendo che la densità dell’acciaio sia pari a 7,81 kg/dm3 per i fili, le trecce\ne i trefoli e 7,85 kg/dm3 per le barre.\nQualora richiesto, il diametro dei fili lisci e delle barre lisce si misura con uno strumento appropriato che garantisca una accura-\ntezza di lettura di 0,01 mm o migliore.\nIl valore ottenuto per la massa deve essere riferito a un metro di lunghezza di prodotto.\nSui valori nominali delle aree delle sezioni dei fili, delle barre, delle trecce e dei trefoli è ammessa una tolleranza di ± 2%. Per le\nbarre la tolleranza è compresa tra -2% e +6%. Le stesse tolleranze si applicano al valore della massa nominale per unità di lun-\nghezza dichiarata dal fabbricante.\nNei calcoli statici si adottano le aree delle sezioni nominali.",
-        "normalized": "Diametro (Ø), area della sezione trasversale (A) e massa per unità di lunghezza (M) L’area della sezione trasversale si valuta per pesata assumendo che la densità dell’acciaio sia pari a 7,81 kg/dm3 per i fili, le trecce e i trefoli e 7,85 kg/dm3 per le barre. Qualora richiesto, il diametro dei fili lisci e delle barre lisce si misura con uno strumento appropriato che garantisca una accuratezza di lettura di 0,01 mm o migliore. Il valore ottenuto per la massa deve essere riferito a un metro di lunghezza di prodotto. Sui valori nominali delle aree delle sezioni dei fili, delle barre, delle trecce e dei trefoli è ammessa una tolleranza di ± 2%. Per le barre la tolleranza è compresa tra -2% e +6%. Le stesse tolleranze si applicano al valore della massa nominale per unità di lunghezza dichiarata dal fabbricante. Nei calcoli statici si adottano le aree delle sezioni nominali.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Diametro (Ø), area della sezione trasversale (A) e massa per unità di lunghezza (M) L’area della sezione trasversale si valuta per pesata assumendo che la densità dell’acciaio sia pari a 7,81 kg/dm³ per i fili, le trecce e i trefoli e 7,85 kg/dm³ per le barre. Qualora richiesto, il diametro dei fili lisci e delle barre lisce si misura con uno strumento appropriato che garantisca una accuratezza di lettura di 0,01 mm o migliore. Il valore ottenuto per la massa deve essere riferito a un metro di lunghezza di prodotto. Sui valori nominali delle aree delle sezioni dei fili, delle barre, delle trecce e dei trefoli è ammessa una tolleranza di ± 2%. Per le barre la tolleranza è compresa tra -2% e +6%. Le stesse tolleranze si applicano al valore della massa nominale per unità di lunghezza dichiarata dal fabbricante. Nei calcoli statici si adottano le aree delle sezioni nominali.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Diametro "
+          },
+          {
+            "kind": "math",
+            "value": "(Ø)",
+            "latex": "(\\varnothing)"
+          },
+          {
+            "kind": "text",
+            "value": ", area della sezione trasversale "
+          },
+          {
+            "kind": "math",
+            "value": "(A)",
+            "latex": "(A)"
+          },
+          {
+            "kind": "text",
+            "value": " e massa per unità di lunghezza "
+          },
+          {
+            "kind": "math",
+            "value": "(M)",
+            "latex": "(M)"
+          },
+          {
+            "kind": "text",
+            "value": " L’area della sezione trasversale si valuta per pesata assumendo che la densità dell’acciaio sia pari a "
+          },
+          {
+            "kind": "math",
+            "value": "7,81 kg/dm³",
+            "latex": "7{,}81\\;\\mathrm{kg/dm^3}"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili, le trecce e i trefoli e "
+          },
+          {
+            "kind": "math",
+            "value": "7,85 kg/dm³",
+            "latex": "7{,}85\\;\\mathrm{kg/dm^3}"
+          },
+          {
+            "kind": "text",
+            "value": " per le barre. Qualora richiesto, il diametro dei fili lisci e delle barre lisce si misura con uno strumento appropriato che garantisca una accuratezza di lettura di "
+          },
+          {
+            "kind": "math",
+            "value": "0,01 mm",
+            "latex": "0{,}01\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " o migliore. Il valore ottenuto per la massa deve essere riferito a un metro di lunghezza di prodotto. Sui valori nominali delle aree delle sezioni dei fili, delle barre, delle trecce e dei trefoli è ammessa una tolleranza di "
+          },
+          {
+            "kind": "math",
+            "value": "± 2%",
+            "latex": "\\pm2\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Per le barre la tolleranza è compresa tra "
+          },
+          {
+            "kind": "math",
+            "value": "-2% e +6%",
+            "latex": "-2\\%\\text{ e }+6\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Le stesse tolleranze si applicano al valore della massa nominale per unità di lunghezza dichiarata dal fabbricante. Nei calcoli statici si adottano le aree delle sezioni nominali."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -163,10 +288,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "22d220be257b56f5c7fc1441b602abf89f26edda3fd8994ecb4df24850be92ef",
-        "normalizedSha256": "90c1d3a5be90f9c6051afc4fbb26e43f015cede6c02e36d0ca1ea9ebd8a0c7f2"
+        "normalizedSha256": "98befeb618351ad9800b1d8f5d33ea6f0f55e61fc9122c1ffdc94b05202b38b4"
       }
     },
     {
@@ -176,7 +306,49 @@
       "text": {
         "raw": "Rettilineità\nI prodotti forniti in rotolo o in bobine devono avere raggio di avvolgimento tale per cui all’atto dello svolgimento, allungati al\nsuolo, su un tratto di 1 m non presentino curvatura con freccia superiore a 25 mm; il fabbricante deve indicare il diametro minimo\ndi avvolgimento del prodotto. Nel caso di fili forniti in fasci il valore massimo di curvatura come sopra definito è pari a 10 mm.\nPer le barre il valore massimo di deviazione dalla rettilineità, misurato su una qualsiasi lunghezza, non deve superare 4 mm per\nmetro di lunghezza.",
         "normalized": "Rettilineità I prodotti forniti in rotolo o in bobine devono avere raggio di avvolgimento tale per cui all’atto dello svolgimento, allungati al suolo, su un tratto di 1 m non presentino curvatura con freccia superiore a 25 mm; il fabbricante deve indicare il diametro minimo di avvolgimento del prodotto. Nel caso di fili forniti in fasci il valore massimo di curvatura come sopra definito è pari a 10 mm. Per le barre il valore massimo di deviazione dalla rettilineità, misurato su una qualsiasi lunghezza, non deve superare 4 mm per metro di lunghezza.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Rettilineità I prodotti forniti in rotolo o in bobine devono avere raggio di avvolgimento tale per cui all’atto dello svolgimento, allungati al suolo, su un tratto di "
+          },
+          {
+            "kind": "math",
+            "value": "1 m",
+            "latex": "1\\;\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " non presentino curvatura con freccia superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "25 mm",
+            "latex": "25\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "; il fabbricante deve indicare il diametro minimo di avvolgimento del prodotto. Nel caso di fili forniti in fasci il valore massimo di curvatura come sopra definito è pari a "
+          },
+          {
+            "kind": "math",
+            "value": "10 mm",
+            "latex": "10\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ". Per le barre il valore massimo di deviazione dalla rettilineità, misurato su una qualsiasi lunghezza, non deve superare "
+          },
+          {
+            "kind": "math",
+            "value": "4 mm",
+            "latex": "4\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per metro di lunghezza."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -198,6 +370,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b65252c67858c0d7c0e7dce353d8a2df185a28c37290265f4adc980fad2a019d",
@@ -235,7 +412,40 @@
       "text": {
         "raw": "L’ovalità dei fili lisci, definita come differenza tra massimo e minimo diametro misurato, non deve essere maggiore di 2/100 del\nloro diametro nominale. La misurazione delle dimensioni deve essere effettuata con uno strumento che garantisca una accuratez-\nza di lettura di 1/100 di mm o migliore. Il diametro medio, inteso come media delle misurazione di due diametri ortogonali tra\nloro di cui uno sia il massimo tra quelli ottenuti, non deve differire per più dell’1% dal valore nominale del diametro dichiarato\ndal fabbricante.",
         "normalized": "L’ovalità dei fili lisci, definita come differenza tra massimo e minimo diametro misurato, non deve essere maggiore di 2/100 del loro diametro nominale. La misurazione delle dimensioni deve essere effettuata con uno strumento che garantisca una accuratezza di lettura di 1/100 di mm o migliore. Il diametro medio, inteso come media delle misurazione di due diametri ortogonali tra loro di cui uno sia il massimo tra quelli ottenuti, non deve differire per più dell’1% dal valore nominale del diametro dichiarato dal fabbricante.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’ovalità dei fili lisci, definita come differenza tra massimo e minimo diametro misurato, non deve essere maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "2/100",
+            "latex": "2/100"
+          },
+          {
+            "kind": "text",
+            "value": " del loro diametro nominale. La misurazione delle dimensioni deve essere effettuata con uno strumento che garantisca una accuratezza di lettura di "
+          },
+          {
+            "kind": "math",
+            "value": "1/100 di mm",
+            "latex": "1/100\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " o migliore. Il diametro medio, inteso come media delle misurazione di due diametri ortogonali tra loro di cui uno sia il massimo tra quelli ottenuti, non deve differire per più dell’"
+          },
+          {
+            "kind": "math",
+            "value": "1%",
+            "latex": "1\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dal valore nominale del diametro dichiarato dal fabbricante."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -262,6 +472,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "ba8c022d0cbc6aa0d5f68200ef7979b632e2f9971a024ed689becc657bcb072e",
@@ -275,7 +490,40 @@
       "text": {
         "raw": "Passo di avvolgimento (p)\nIl passo di avvolgimento dei fili delle trecce deve essere compreso tra 14 e 22 volte il loro diametro nominale.\nIl passo di avvolgimento dei fili esterni dei trefoli deve essere compreso tra 14 e 18 volte il loro diametro nominale.",
         "normalized": "Passo di avvolgimento (p) Il passo di avvolgimento dei fili delle trecce deve essere compreso tra 14 e 22 volte il loro diametro nominale. Il passo di avvolgimento dei fili esterni dei trefoli deve essere compreso tra 14 e 18 volte il loro diametro nominale.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Passo di avvolgimento "
+          },
+          {
+            "kind": "math",
+            "value": "(p)",
+            "latex": "(p)"
+          },
+          {
+            "kind": "text",
+            "value": " Il passo di avvolgimento dei fili delle trecce deve essere compreso tra "
+          },
+          {
+            "kind": "math",
+            "value": "14 e 22",
+            "latex": "14\\text{ e }22"
+          },
+          {
+            "kind": "text",
+            "value": " volte il loro diametro nominale. Il passo di avvolgimento dei fili esterni dei trefoli deve essere compreso tra "
+          },
+          {
+            "kind": "math",
+            "value": "14 e 18",
+            "latex": "14\\text{ e }18"
+          },
+          {
+            "kind": "text",
+            "value": " volte il loro diametro nominale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -297,6 +545,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f9043e573f6d622dae1bb19b185d480a599302e4554b96a958c7da50cd849a41",
@@ -310,7 +563,31 @@
       "text": {
         "raw": "Diametro dei fili delle trecce e dei trefoli\nIl rapporto tra il diametro del filo interno e quello di ciascuno dei fili esterni di un trefolo a fili lisci o improntati deve essere al-\nmeno pari a 1,03.\nPer la misurazione deve essere usato uno strumento che assicuri una risoluzione di 0,01 mm o migliore.",
         "normalized": "Diametro dei fili delle trecce e dei trefoli Il rapporto tra il diametro del filo interno e quello di ciascuno dei fili esterni di un trefolo a fili lisci o improntati deve essere almeno pari a 1,03. Per la misurazione deve essere usato uno strumento che assicuri una risoluzione di 0,01 mm o migliore.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Diametro dei fili delle trecce e dei trefoli Il rapporto tra il diametro del filo interno e quello di ciascuno dei fili esterni di un trefolo a fili lisci o improntati deve essere almeno pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,03",
+            "latex": "1{,}03"
+          },
+          {
+            "kind": "text",
+            "value": ". Per la misurazione deve essere usato uno strumento che assicuri una risoluzione di "
+          },
+          {
+            "kind": "math",
+            "value": "0,01 mm",
+            "latex": "0{,}01\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " o migliore."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -337,6 +614,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "28e37d97902ae050a7f3a2d01fe4b85bd4dcd3d77521a03ce0acd3941ed85ebc",
@@ -409,302 +691,78 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Diametro nominale del prodotto\nØ\nLimiti della profondità\nmassima delle impronte\nLunghezza delle impronte e\nrelativa tolleranza “l”\nDistanza tra le impronte e\nrelativa tolleranza",
-        "normalized": "Diametro nominale del prodotto Ø Limiti della profondità massima delle impronte Lunghezza delle impronte e relativa tolleranza “l” Distanza tra le impronte e relativa tolleranza",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "79f60b7cef764cd1a6ab7b7f2a1276f28dfd881bc0e0d37b63a2497f9a1e0c4b",
-        "normalizedSha256": "f3eb978923ecbe41778bb0296062effe453eadabc3f5f6f65f71ebfe650bcf58"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-012",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Fili\nØ ǂ 5 mm Minimo = 0,03\nMassimo = 0,16 3,5 ± 0,5 5,5 ± 0,5",
-        "normalized": "Fili Ø ǂ 5 mm Minimo = 0,03 Massimo = 0,16 3,5 ± 0,5 5,5 ± 0,5",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "e8a4c0659b2f6fd018981d624a4135f3ec2dd0cfc591dbf1d820e96e0fe8582a",
-        "normalizedSha256": "f50d2c54931e772f1fcb8ec013436449959c49b13bc1d2ff2dd85abf0327451f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-013",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "5 mm < Ø ǂ 8 mm\nMinimo = 0,05",
-        "normalized": "5 mm < Ø ǂ 8 mm Minimo = 0,05",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "8cea765990d483888c58d4e793a94197aa4b370e9f0bf8eb5bb257c1ca8d2ffe",
-        "normalizedSha256": "1aca34a9f49b1d40f0abd28a348ef5a7011ab222c8fa14afae797538acf44328"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-014",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Massimo = 0,20\n5,0 ± 0,5 8,0 ± 0,5\n8 mm < Ø ǂ 11\nmm\nMinimo = 0,05",
-        "normalized": "Massimo = 0,20 5,0 ± 0,5 8,0 ± 0,5 8 mm < Ø ǂ 11 mm Minimo = 0,05",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "432a8cd5777ecdf037c2e638c18d28d7037e32159dc556326f79b1df3aa01a55",
-        "normalizedSha256": "7b78ab641bf4d350ffc4c863e881bf7b5fa02c21348c0e5c5e505720e3161820"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-015",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Massimo = 0,25",
-        "normalized": "Massimo = 0,25",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "3fbac4b9dbbc3893c8ea373d1560eab222ff02503276da411d9db58fd4c727ab",
-        "normalizedSha256": "3fbac4b9dbbc3893c8ea373d1560eab222ff02503276da411d9db58fd4c727ab"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-016",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Trecce e\ntrefoli\nØ ǂ 12 mm\nMinimo = 0,03",
-        "normalized": "Trecce e trefoli Ø ǂ 12 mm Minimo = 0,03",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "6c516e5564f869753f0ffc49e998f9d075304af6b09585606c3fbae29bf65982",
-        "normalizedSha256": "5e2b95997b8e470730f6ab535c3075702e263011c2d967c71cf5886167e3e7cb"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-017",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Massimo = 0,09\n3,5 ± 0,5 5,5 ± 0,5",
-        "normalized": "Massimo = 0,09 3,5 ± 0,5 5,5 ± 0,5",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "de877e68b3a5d500dab3b97c084b8cb45a5aa71fbc675e0028f8901565fa9b0c",
-        "normalizedSha256": "84b8f8191b57b9e527002b5973b7d753c3849d36e029b1d6ce3f50767febfb47"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-018",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Ø > 12 mm\nMinimo = 0,04",
-        "normalized": "Ø > 12 mm Minimo = 0,04",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "86c30bf086d44f6dae9ea35a24bf569dad1e329bbf1693e34332208de3f752ee",
-        "normalizedSha256": "1bfdb353c3f09c009f1064063006ec0d29d724ff2f54bc4f15aa3b677efda868"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-019",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Massimo = 0,10",
-        "normalized": "Massimo = 0,10",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 337,
-        "printedPage": "333",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "c735690064e0cdcfa6568bde5fe71e31442583dcd424d2d5b9920d46317cf3f5",
-        "normalizedSha256": "c735690064e0cdcfa6568bde5fe71e31442583dcd424d2d5b9920d46317cf3f5"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-020",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
         "raw": "Coefficiente di strizione (Z)\nIl valore minimo del coefficiente di strizione Z, riferito al valore dell’area della sezione trasversale effettiva dei fili costituenti le\ntrecce e i trefoli, è pari al 25% per i fili lisci e pari al 20% per i fili improntati.\nPer i fili lisci la grandezza Z non deve essere inferiore al 25%. Tale limite si riduce al 20% per i fili improntati.\nPer le barre è richiesta una rottura duttile (con strizione) visibile ad occhio nudo.",
         "normalized": "Coefficiente di strizione (Z) Il valore minimo del coefficiente di strizione Z, riferito al valore dell’area della sezione trasversale effettiva dei fili costituenti le trecce e i trefoli, è pari al 25% per i fili lisci e pari al 20% per i fili improntati. Per i fili lisci la grandezza Z non deve essere inferiore al 25%. Tale limite si riduce al 20% per i fili improntati. Per le barre è richiesta una rottura duttile (con strizione) visibile ad occhio nudo.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Coefficiente di strizione "
+          },
+          {
+            "kind": "math",
+            "value": "(Z)",
+            "latex": "(Z)"
+          },
+          {
+            "kind": "text",
+            "value": " Il valore minimo del coefficiente di strizione "
+          },
+          {
+            "kind": "math",
+            "value": "Z",
+            "latex": "Z"
+          },
+          {
+            "kind": "text",
+            "value": ", riferito al valore dell’area della sezione trasversale effettiva dei fili costituenti le trecce e i trefoli, è pari al "
+          },
+          {
+            "kind": "math",
+            "value": "25%",
+            "latex": "25\\%"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili lisci e pari al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili improntati. Per i fili lisci la grandezza "
+          },
+          {
+            "kind": "math",
+            "value": "Z",
+            "latex": "Z"
+          },
+          {
+            "kind": "text",
+            "value": " non deve essere inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "25%",
+            "latex": "25\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Tale limite si riduce al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili improntati. Per le barre è richiesta una rottura duttile (con strizione) visibile ad occhio nudo."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -726,6 +784,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "6e68b808703d8d4ffd835ec96fe305d00c3b8af05e20f5fa91b673085ea71dfb",
@@ -733,13 +796,46 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-021",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Tensione al carico massimo (fpt \n)\nLa determinazione di f pt si effettua per mezzo della prova di trazione. La tensione al carico massimo non può essere maggiore del\ncorrispondente valore caratteristico garantito dal fabbricante, incrementato del 15%.",
-        "normalized": "Tensione al carico massimo (fpt ) La determinazione di f pt si effettua per mezzo della prova di trazione. La tensione al carico massimo non può essere maggiore del corrispondente valore caratteristico garantito dal fabbricante, incrementato del 15%.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Tensione al carico massimo (fpt) La determinazione di fpt si effettua per mezzo della prova di trazione. La tensione al carico massimo non può essere maggiore del corrispondente valore caratteristico garantito dal fabbricante, incrementato del 15%.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tensione al carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "(fpt)",
+            "latex": "(f_{pt})"
+          },
+          {
+            "kind": "text",
+            "value": " La determinazione di "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " si effettua per mezzo della prova di trazione. La tensione al carico massimo non può essere maggiore del corrispondente valore caratteristico garantito dal fabbricante, incrementato del "
+          },
+          {
+            "kind": "math",
+            "value": "15%",
+            "latex": "15\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -761,20 +857,58 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "31b1e9fbad0a0c0f247fcd5a80b3916ac342bfd80670963871370097e6e935ca",
-        "normalizedSha256": "e4c06d48e1142217c4d7877d53c8fe87555cbe498f94d61449c586e0b5991bb2"
+        "normalizedSha256": "fafe5c1892229dadccfbfbc1a46f055fb01d246dbb4b238049c39570870c5842"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-022",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Tensione di scostamento dalla proporzionalità allo 0.1% (fp(0,1))\nIl valore della tensione f p(0,1) si ricava dal corrispondente diagramma sforzi – deformazioni, ottenuto con prove di trazione.",
-        "normalized": "Tensione di scostamento dalla proporzionalità allo 0.1% (fp(0,1)) Il valore della tensione f p(0,1) si ricava dal corrispondente diagramma sforzi – deformazioni, ottenuto con prove di trazione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Tensione di scostamento dalla proporzionalità allo 0.1% (fp(0,1)) Il valore della tensione fp(0,1) si ricava dal corrispondente diagramma sforzi – deformazioni, ottenuto con prove di trazione.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tensione di scostamento dalla proporzionalità allo "
+          },
+          {
+            "kind": "math",
+            "value": "0.1%",
+            "latex": "0.1\\%"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "(fp(0,1))",
+            "latex": "(f_{p(0{,}1)})"
+          },
+          {
+            "kind": "text",
+            "value": " Il valore della tensione "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": " si ricava dal corrispondente diagramma sforzi – deformazioni, ottenuto con prove di trazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -796,20 +930,36 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f0f3ac3afffb2cf21963ccf4ba97da4103dd9e5bea0869829c59052ac3797b2e",
-        "normalizedSha256": "6082087faead590445fe3e81fcff08f8ddb7d6b91ad9c4c4ab9191271b65374b"
+        "normalizedSha256": "5400809c26eaa0c20fd19c364aece74fbc76a80bdedb40b30722696ef15d6225"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-023",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Tensione di snervamento (fpy)",
         "normalized": "Tensione di snervamento (fpy)",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tensione di snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "(fpy)",
+            "latex": "(f_{py})"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -821,19 +971,40 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "ff3aacdd111b331dc7480d944537ebaa395afb5d2b62ee982920f0f2ac2addd5",
         "normalizedSha256": "ff3aacdd111b331dc7480d944537ebaa395afb5d2b62ee982920f0f2ac2addd5"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-024",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-015",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per le barre, il valore della tensione di snervamento fpy si ricava dal corrispondente diagramma sforzi – deformazioni ottenuto\ncon la prova di trazione.",
         "normalized": "Per le barre, il valore della tensione di snervamento fpy si ricava dal corrispondente diagramma sforzi – deformazioni ottenuto con la prova di trazione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le barre, il valore della tensione di snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": " si ricava dal corrispondente diagramma sforzi – deformazioni ottenuto con la prova di trazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -855,6 +1026,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5f49d2b5e832004db5dbbff60722c7bad299572bef68a1630362d90ae9233b4a",
@@ -862,13 +1038,55 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-025",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-016",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Modulo di elasticità (Ep \n)\nIl modulo di elasticità Ep è inteso come rapporto fra la differenza di tensione media e la differenza di deformazione corrisponden-\nte, valutato per l’intervallo di tensione (0,2-0,7) fpt sul diagramma sforzi-deformazioni ottenuto con la prova di trazione .\nSono tollerati scarti del ± 5% rispetto al valore dichiarato dal fabbricante.",
-        "normalized": "Modulo di elasticità (Ep ) Il modulo di elasticità Ep è inteso come rapporto fra la differenza di tensione media e la differenza di deformazione corrispondente, valutato per l’intervallo di tensione (0,2-0,7) fpt sul diagramma sforzi-deformazioni ottenuto con la prova di trazione . Sono tollerati scarti del ± 5% rispetto al valore dichiarato dal fabbricante.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Modulo di elasticità (Ep) Il modulo di elasticità Ep è inteso come rapporto fra la differenza di tensione media e la differenza di deformazione corrispondente, valutato per l’intervallo di tensione (0,2-0,7) fpt sul diagramma sforzi-deformazioni ottenuto con la prova di trazione. Sono tollerati scarti del ± 5% rispetto al valore dichiarato dal fabbricante.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Modulo di elasticità "
+          },
+          {
+            "kind": "math",
+            "value": "(Ep)",
+            "latex": "(E_p)"
+          },
+          {
+            "kind": "text",
+            "value": " Il modulo di elasticità "
+          },
+          {
+            "kind": "math",
+            "value": "Ep",
+            "latex": "E_p"
+          },
+          {
+            "kind": "text",
+            "value": " è inteso come rapporto fra la differenza di tensione media e la differenza di deformazione corrispondente, valutato per l’intervallo di tensione "
+          },
+          {
+            "kind": "math",
+            "value": "(0,2-0,7) fpt",
+            "latex": "(0{,}2-0{,}7)f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " sul diagramma sforzi-deformazioni ottenuto con la prova di trazione. Sono tollerati scarti del "
+          },
+          {
+            "kind": "math",
+            "value": "± 5%",
+            "latex": "\\pm5\\%"
+          },
+          {
+            "kind": "text",
+            "value": " rispetto al valore dichiarato dal fabbricante."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -895,20 +1113,58 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "fc278b66c4ecd66a4787ba7006efc01543b242abe99ac98ef9961166b4ed7191",
-        "normalizedSha256": "852050af35e2a4ed57f830c1829eecbdd54deb8b569b32be3a3112991cb3848f"
+        "normalizedSha256": "0c1e2759e7c201e2a1b6114ade2fe6f8128bab3ed670781c0f1d77555597b469"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-026",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-017",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Tensione all’1% di deformazione totale (fp(1))\nIl valore della tensione corrispondente all’1% di deformazione totale si ricava dal diagramma sforzi-deformazioni ottenuto con la\nprova di trazione.",
         "normalized": "Tensione all’1% di deformazione totale (fp(1)) Il valore della tensione corrispondente all’1% di deformazione totale si ricava dal diagramma sforzi-deformazioni ottenuto con la prova di trazione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tensione all’"
+          },
+          {
+            "kind": "math",
+            "value": "1%",
+            "latex": "1\\%"
+          },
+          {
+            "kind": "text",
+            "value": " di deformazione totale "
+          },
+          {
+            "kind": "math",
+            "value": "(fp(1))",
+            "latex": "(f_{p(1)})"
+          },
+          {
+            "kind": "text",
+            "value": " Il valore della tensione corrispondente all’"
+          },
+          {
+            "kind": "math",
+            "value": "1%",
+            "latex": "1\\%"
+          },
+          {
+            "kind": "text",
+            "value": " di deformazione totale si ricava dal diagramma sforzi-deformazioni ottenuto con la prova di trazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -930,6 +1186,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "ed54f4474d969795e10cdbf278e87406a084ce279d409f6c504d8c233f40d333",
@@ -937,13 +1198,127 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-027",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Limiti del rapporto tra le tensioni fp(0,1) \n, f py, f p(1) e la tensione al carico massimo fpt\nIl valore delle grandezze fp(0,1)/f pt \n, f py/f pt \n, e f p(1)/f pt ottenute come rapporto tra i valori singoli fp(0,1), f py, f p(1) e il corrispondente valore\nal carico massimo fpt \n, deve risultare compreso tra i limiti 0,87 e 0,95.",
-        "normalized": "Limiti del rapporto tra le tensioni fp(0,1) , f py, f p(1) e la tensione al carico massimo fpt Il valore delle grandezze fp(0,1)/f pt , f py/f pt , e f p(1)/f pt ottenute come rapporto tra i valori singoli fp(0,1), f py, f p(1) e il corrispondente valore al carico massimo fpt , deve risultare compreso tra i limiti 0,87 e 0,95.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Limiti del rapporto tra le tensioni fp(0,1), fpy, fp(1) e la tensione al carico massimo fpt Il valore delle grandezze fp(0,1)/fpt, fpy/fpt, e fp(1)/fpt ottenute come rapporto tra i valori singoli fp(0,1), fpy, fp(1) e il corrispondente valore al carico massimo fpt, deve risultare compreso tra i limiti 0,87 e 0,95.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Limiti del rapporto tra le tensioni "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": " e la tensione al carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " Il valore delle grandezze "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)/fpt",
+            "latex": "f_{p(0{,}1)}/f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy/fpt",
+            "latex": "f_{py}/f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", e "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)/fpt",
+            "latex": "f_{p(1)}/f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " ottenute come rapporto tra i valori singoli "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": " e il corrispondente valore al carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", deve risultare compreso tra i limiti "
+          },
+          {
+            "kind": "math",
+            "value": "0,87 e 0,95",
+            "latex": "0{,}87\\text{ e }0{,}95"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -965,20 +1340,49 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "02aaf0aea55d3089350e0d9ac3d503c1731717b0ffd86b117e6d3fee06fee0e4",
-        "normalizedSha256": "ffd38a86b0987fcb151abca1c2963a8c169bcf6a17dba84ae972fd9b4ae16163"
+        "normalizedSha256": "4fa283ee594686f8918554e25ebe32bd28c7266f5b9e0d666058db72b757901f"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-028",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-019",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Allungamento totale percentuale sotto carico massimo (Agt)\nIl valore dell’allungamento totale percentuale sotto carico massimo si ricava dal diagramma sforzi-deformazioni ottenuto con la\nprova di trazione La base di misura dell’estensimetro deve essere in accordo alla UNI 7676:2016 per trefolo e treccia; UNI\n7675:2016 per i fili e ǃ 200 mm per le barre.",
-        "normalized": "Allungamento totale percentuale sotto carico massimo (Agt) Il valore dell’allungamento totale percentuale sotto carico massimo si ricava dal diagramma sforzi-deformazioni ottenuto con la prova di trazione La base di misura dell’estensimetro deve essere in accordo alla UNI 7676:2016 per trefolo e treccia; UNI 7675:2016 per i fili e ǃ 200 mm per le barre.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Allungamento totale percentuale sotto carico massimo (Agt) Il valore dell’allungamento totale percentuale sotto carico massimo si ricava dal diagramma sforzi-deformazioni ottenuto con la prova di trazione La base di misura dell’estensimetro deve essere in accordo alla UNI 7676:2016 per trefolo e treccia; UNI 7675:2016 per i fili e ≥ 200 mm per le barre.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Allungamento totale percentuale sotto carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "(Agt)",
+            "latex": "(A_{gt})"
+          },
+          {
+            "kind": "text",
+            "value": " Il valore dell’allungamento totale percentuale sotto carico massimo si ricava dal diagramma sforzi-deformazioni ottenuto con la prova di trazione La base di misura dell’estensimetro deve essere in accordo alla UNI 7676:2016 per trefolo e treccia; UNI 7675:2016 per i fili e "
+          },
+          {
+            "kind": "math",
+            "value": "≥ 200 mm",
+            "latex": "\\ge200\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per le barre."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1000,20 +1404,67 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "87e11af8f7a829ba506c828ca1710f1c02c281e7ad87b6672dfa2961af41d327",
-        "normalizedSha256": "85a5a8eb17471dce301f4b1ca531546bd2cbf82828f56060de2d2421743d175c"
+        "normalizedSha256": "cd86f26dfce304c50d2b6cf000aa9d246baa4adb385d9b7ca18f33e5b5cd642e"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-029",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-020",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Prova di piegamento alternato (N)\nLa prova di piegamento alternato si esegue su fili aventi  d 8.\nIl numero dei piegamenti alterni a rottura non deve risultare inferiore a 4 per i fili lisci e a 3 per i fili con impronte. Per il filo cen-\ntrale dei trefoli valgono gli stessi limiti precedenti.",
-        "normalized": "Prova di piegamento alternato (N) La prova di piegamento alternato si esegue su fili aventi d 8. Il numero dei piegamenti alterni a rottura non deve risultare inferiore a 4 per i fili lisci e a 3 per i fili con impronte. Per il filo centrale dei trefoli valgono gli stessi limiti precedenti.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Prova di piegamento alternato (N) La prova di piegamento alternato si esegue su fili aventi Ø ≤ 8. Il numero dei piegamenti alterni a rottura non deve risultare inferiore a 4 per i fili lisci e a 3 per i fili con impronte. Per il filo centrale dei trefoli valgono gli stessi limiti precedenti.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Prova di piegamento alternato "
+          },
+          {
+            "kind": "math",
+            "value": "(N)",
+            "latex": "(N)"
+          },
+          {
+            "kind": "text",
+            "value": " La prova di piegamento alternato si esegue su fili aventi "
+          },
+          {
+            "kind": "math",
+            "value": "Ø ≤ 8",
+            "latex": "\\varnothing\\le8"
+          },
+          {
+            "kind": "text",
+            "value": ". Il numero dei piegamenti alterni a rottura non deve risultare inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "4",
+            "latex": "4"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili lisci e a "
+          },
+          {
+            "kind": "math",
+            "value": "3",
+            "latex": "3"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili con impronte. Per il filo centrale dei trefoli valgono gli stessi limiti precedenti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1045,20 +1496,103 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a8b201bec7c989deb3f42d0feb45be725d00ea6307e15decb21f0b7a813e001d",
-        "normalizedSha256": "cff359e14f5a76bf483b107a9f5f4088a1fd8727e4b0b621abad764e2f139bfb"
+        "normalizedSha256": "6242ec7493354d364e0f36c239f59e44fc4fea9b83a078dfd5741b86df0b04cf"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-030",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-021",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Prova di piegamento (΅)\nLa prova di piegamento si esegue su fili aventi   ҆ 8 mm e su barre.\nL’angolo di piegamento deve essere di 180° e il diametro del mandrino deve essere pari a:\n5  per i fili;\n6  per le barre con  d 26 mm\n8  per le barre con  > 26 mm.",
-        "normalized": "Prova di piegamento (΅) La prova di piegamento si esegue su fili aventi ҆ 8 mm e su barre. L’angolo di piegamento deve essere di 180° e il diametro del mandrino deve essere pari a: 5 per i fili; 6 per le barre con d 26 mm 8 per le barre con > 26 mm.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Prova di piegamento (α) La prova di piegamento si esegue su fili aventi Ø ≥ 8 mm e su barre. L’angolo di piegamento deve essere di 180° e il diametro del mandrino deve essere pari a: 5 Ø per i fili; 6 Ø per le barre con Ø ≤ 26 mm; 8 Ø per le barre con Ø > 26 mm.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Prova di piegamento "
+          },
+          {
+            "kind": "math",
+            "value": "(α)",
+            "latex": "(\\alpha)"
+          },
+          {
+            "kind": "text",
+            "value": " La prova di piegamento si esegue su fili aventi "
+          },
+          {
+            "kind": "math",
+            "value": "Ø ≥ 8 mm",
+            "latex": "\\varnothing\\ge8\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " e su barre. L’angolo di piegamento deve essere di "
+          },
+          {
+            "kind": "math",
+            "value": "180°",
+            "latex": "180^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " e il diametro del mandrino deve essere pari a: "
+          },
+          {
+            "kind": "math",
+            "value": "5 Ø",
+            "latex": "5\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili; "
+          },
+          {
+            "kind": "math",
+            "value": "6 Ø",
+            "latex": "6\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": " per le barre con "
+          },
+          {
+            "kind": "math",
+            "value": "Ø ≤ 26 mm",
+            "latex": "\\varnothing\\le26\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "8 Ø",
+            "latex": "8\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": " per le barre con "
+          },
+          {
+            "kind": "math",
+            "value": "Ø > 26 mm",
+            "latex": "\\varnothing>26\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1085,20 +1619,94 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "002f3abab4a147487004a8c78a82a3a9f96282dee5ac1704b2d2f8eaee921517",
-        "normalizedSha256": "d3f4302f8278603b14b14cca05541e3cfbdad6c7418bfcb147cb66246fc72f01"
+        "normalizedSha256": "8f689064d621f824420456f4cec049b0a0c65b542cd9e941bf0349cd0d9de116"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-031",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-022",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Resistenza a fatica (L)\nLe prove per la determinazione del limite di fatica L e della resistenza alla fatica, vengono condotte con sollecitazione assiale a\nciclo pulsante, facendo oscillare la tensione fra un valore superiore V1 e un valore inferiore V2 \n. Il risultato della prova per la verifi-\nca di resistenza a fatica è ritenuto soddisfacente se il campione sopporta, senza rompersi, almeno due milioni di cicli.\nNelle prove di resistenza alla fatica, il valore superiore della tensione di prova V1 deve essere pari al 70% del valore ottenuto co-\nme media delle tensioni al carico massimo, ricavate su due saggi prelevati in adiacenza a quello sottoposto a prova. Il valore infe-\nriore della tensione di prova V2 è dato in Tab. 11.3.XI.",
-        "normalized": "Resistenza a fatica (L) Le prove per la determinazione del limite di fatica L e della resistenza alla fatica, vengono condotte con sollecitazione assiale a ciclo pulsante, facendo oscillare la tensione fra un valore superiore V1 e un valore inferiore V2 . Il risultato della prova per la verifica di resistenza a fatica è ritenuto soddisfacente se il campione sopporta, senza rompersi, almeno due milioni di cicli. Nelle prove di resistenza alla fatica, il valore superiore della tensione di prova V1 deve essere pari al 70% del valore ottenuto come media delle tensioni al carico massimo, ricavate su due saggi prelevati in adiacenza a quello sottoposto a prova. Il valore inferiore della tensione di prova V2 è dato in Tab. 11.3.XI.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Resistenza a fatica (L) Le prove per la determinazione del limite di fatica L e della resistenza alla fatica, vengono condotte con sollecitazione assiale a ciclo pulsante, facendo oscillare la tensione fra un valore superiore σ1 e un valore inferiore σ2. Il risultato della prova per la verifica di resistenza a fatica è ritenuto soddisfacente se il campione sopporta, senza rompersi, almeno due milioni di cicli. Nelle prove di resistenza alla fatica, il valore superiore della tensione di prova σ1 deve essere pari al 70% del valore ottenuto come media delle tensioni al carico massimo, ricavate su due saggi prelevati in adiacenza a quello sottoposto a prova. Il valore inferiore della tensione di prova σ2 è dato in Tab. 11.3.XI.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Resistenza a fatica "
+          },
+          {
+            "kind": "math",
+            "value": "(L)",
+            "latex": "(L)"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": "e prove per la determinazione del limite di fatica L e della resistenza alla fatica, vengono condotte con sollecitazione assiale a ciclo pulsante, facendo oscillare la tensione fra un valore superiore "
+          },
+          {
+            "kind": "math",
+            "value": "σ1",
+            "latex": "\\sigma_1"
+          },
+          {
+            "kind": "text",
+            "value": " e un valore inferiore "
+          },
+          {
+            "kind": "math",
+            "value": "σ2",
+            "latex": "\\sigma_2"
+          },
+          {
+            "kind": "text",
+            "value": ". Il risultato della prova per la verifica di resistenza a fatica è ritenuto soddisfacente se il campione sopporta, senza rompersi, almeno due milioni di cicli. Nelle prove di resistenza alla fatica, il valore superiore della tensione di prova "
+          },
+          {
+            "kind": "math",
+            "value": "σ1",
+            "latex": "\\sigma_1"
+          },
+          {
+            "kind": "text",
+            "value": " deve essere pari al "
+          },
+          {
+            "kind": "math",
+            "value": "70%",
+            "latex": "70\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del valore ottenuto come media delle tensioni al carico massimo, ricavate su due saggi prelevati in adiacenza a quello sottoposto a prova. Il valore inferiore della tensione di prova "
+          },
+          {
+            "kind": "math",
+            "value": "σ2",
+            "latex": "\\sigma_2"
+          },
+          {
+            "kind": "text",
+            "value": " è dato in Tab. 11.3.XI."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1125,14 +1733,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "bfe7cba7257e0df420f67d47d405f5718d0f8e6382388325df3026f215cc2391",
-        "normalizedSha256": "70f8f5b083a559ac13009197f06abfd5b758c2e3d5fb609e24cc7f0cb2eddf6d"
+        "normalizedSha256": "bd0d237bf069adc2216200ed4d764d395b14d504ad0de2feebe1efd528f77f8f"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-032",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-023",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.3.xi",
@@ -1173,93 +1786,37 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-033",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Barre lisce V\u0014 \n\u0003\u0010 200 MPa (Ø ǂ 40 mm) V\u0014 \n\u0003\u0010 150 MPa (Ø > 40 mm)",
-        "normalized": "Barre lisce V 200 MPa (Ø ǂ 40 mm) V 150 MPa (Ø > 40 mm)",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 338,
-        "printedPage": "334",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "8241515ada32e0082984671e2ae0cb4a0a95fb302993135ad402fc800b59e8aa",
-        "normalizedSha256": "de6f777b127d3a1303981e4b2248317ed468ffd93a236510d8507dd4413c9187"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-034",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Barre filettate o improntate V\u0014 \n\u0003\u0010 180 MPa (Ø ǂ 40 mm) V\u0014 \n\u0003\u0010 120 MPa (Ø > 40 mm)",
-        "normalized": "Barre filettate o improntate V 180 MPa (Ø ǂ 40 mm) V 120 MPa (Ø > 40 mm)",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 338,
-        "printedPage": "334",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "b431d9ab15f0d5a1506d4ea63900fea32c687a37a5218aef3d651570dc33768f",
-        "normalizedSha256": "e0c4fa2ae8dc4a2a40b444fbef6806cccabe8c128ad74797fc06311293cde8c1"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-035",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-024",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "La frequenza di prova deve essere non superiore a 120 Hz per i fili e le barre e 20 Hz per i trefoli.",
         "normalized": "La frequenza di prova deve essere non superiore a 120 Hz per i fili e le barre e 20 Hz per i trefoli.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La frequenza di prova deve essere non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "120 Hz",
+            "latex": "120\\;\\mathrm{Hz}"
+          },
+          {
+            "kind": "text",
+            "value": " per i fili e le barre e "
+          },
+          {
+            "kind": "math",
+            "value": "20 Hz",
+            "latex": "20\\;\\mathrm{Hz}"
+          },
+          {
+            "kind": "text",
+            "value": " per i trefoli."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1271,19 +1828,94 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "a7a46f3505b7a1160cd3ec88d0db1c3d2efb5d132b73172b4d5f694c49b06209",
         "normalizedSha256": "a7a46f3505b7a1160cd3ec88d0db1c3d2efb5d132b73172b4d5f694c49b06209"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-036",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-025",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Prove di rilassamento a temperatura ordinaria (\nU)\nLe prove per la determinazione della caduta di tensione nel tempo a lunghezza costante ed a alla temperatura T= di 20°C ± 1°C\ndevono essere condotte a partire dalla tensione iniziale Vspi del punto 11.3.3.3 e per la durata stabilita. I diagrammi sperimentali\nottenuti devono essere allegati al certificato di prova. La durata stabilita della singola prova è di 1000 ore. Sono consentiti tempi\ndi prova pari a 120 ore. In sede di prima qualificazione del prodotto, tutte le prove devono avere durata di 1000 ore. In sede di\nverifica della qualità le prove devono avere durata di 120 ore. I risultati di prova, per ciascuna delle durate stabilite, devono esse-\nre tutti non superiori:",
-        "normalized": "Prove di rilassamento a temperatura ordinaria ( U) Le prove per la determinazione della caduta di tensione nel tempo a lunghezza costante ed a alla temperatura T= di 20°C ± 1°C devono essere condotte a partire dalla tensione iniziale Vspi del punto 11.3.3.3 e per la durata stabilita. I diagrammi sperimentali ottenuti devono essere allegati al certificato di prova. La durata stabilita della singola prova è di 1000 ore. Sono consentiti tempi di prova pari a 120 ore. In sede di prima qualificazione del prodotto, tutte le prove devono avere durata di 1000 ore. In sede di verifica della qualità le prove devono avere durata di 120 ore. I risultati di prova, per ciascuna delle durate stabilite, devono essere tutti non superiori:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Prove di rilassamento a temperatura ordinaria (ρ) Le prove per la determinazione della caduta di tensione nel tempo a lunghezza costante ed alla temperatura T = 20°C ± 1°C devono essere condotte a partire dalla tensione iniziale σspi del punto 11.3.3.3 e per la durata stabilita. I diagrammi sperimentali ottenuti devono essere allegati al certificato di prova. La durata stabilita della singola prova è di 1000 ore. Sono consentiti tempi di prova pari a 120 ore. In sede di prima qualificazione del prodotto, tutte le prove devono avere durata di 1000 ore. In sede di verifica della qualità le prove devono avere durata di 120 ore. I risultati di prova, per ciascuna delle durate stabilite, devono essere tutti non superiori:",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Prove di rilassamento a temperatura ordinaria "
+          },
+          {
+            "kind": "math",
+            "value": "(ρ)",
+            "latex": "(\\rho)"
+          },
+          {
+            "kind": "text",
+            "value": " Le prove per la determinazione della caduta di tensione nel tempo a lunghezza costante ed alla temperatura "
+          },
+          {
+            "kind": "math",
+            "value": "T = 20°C ± 1°C",
+            "latex": "T=20^\\circ\\mathrm{C}\\pm1^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " devono essere condotte a partire dalla tensione iniziale "
+          },
+          {
+            "kind": "math",
+            "value": "σspi",
+            "latex": "\\sigma_{spi}"
+          },
+          {
+            "kind": "text",
+            "value": " del punto 11.3.3.3 e per la durata stabilita. I diagrammi sperimentali ottenuti devono essere allegati al certificato di prova. La durata stabilita della singola prova è di "
+          },
+          {
+            "kind": "math",
+            "value": "1000 ore",
+            "latex": "1000\\;\\mathrm{h}"
+          },
+          {
+            "kind": "text",
+            "value": ". Sono consentiti tempi di prova pari a "
+          },
+          {
+            "kind": "math",
+            "value": "120 ore",
+            "latex": "120\\;\\mathrm{h}"
+          },
+          {
+            "kind": "text",
+            "value": ". In sede di prima qualificazione del prodotto, tutte le prove devono avere durata di "
+          },
+          {
+            "kind": "math",
+            "value": "1000 ore",
+            "latex": "1000\\;\\mathrm{h}"
+          },
+          {
+            "kind": "text",
+            "value": ". In sede di verifica della qualità le prove devono avere durata di "
+          },
+          {
+            "kind": "math",
+            "value": "120 ore",
+            "latex": "120\\;\\mathrm{h}"
+          },
+          {
+            "kind": "text",
+            "value": ". I risultati di prova, per ciascuna delle durate stabilite, devono essere tutti non superiori:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1310,20 +1942,45 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a99881b0cd8bcdba9d1e2647838a515b51eaedca4c66c9edc8fb896225898950",
-        "normalizedSha256": "b7d9af9eb4dc68997eda93023654a55ec615df94b8b43855dec586eab7b0cd49"
+        "normalizedSha256": "822b4515c5b3c2a1b25665f70a30b04c6733179f5dfa119f8686b1beb51ca856"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-037",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-026",
       "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- Per treccia, trefolo e filo: a 1,5% a 120 ore",
         "normalized": "- Per treccia, trefolo e filo: a 1,5% a 120 ore",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- Per treccia, trefolo e filo: a "
+          },
+          {
+            "kind": "math",
+            "value": "1,5%",
+            "latex": "1{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": " a "
+          },
+          {
+            "kind": "math",
+            "value": "120 ore",
+            "latex": "120\\;\\mathrm{h}"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1335,19 +1992,45 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "49f502db46de0e3a70a9f55415f63285d84d0d02958f398697aceecdb6ebed1a",
         "normalizedSha256": "49f502db46de0e3a70a9f55415f63285d84d0d02958f398697aceecdb6ebed1a"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-038",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-027",
       "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- Per barre: 4% a 1000 ore",
         "normalized": "- Per barre: 4% a 1000 ore",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- Per barre: "
+          },
+          {
+            "kind": "math",
+            "value": "4%",
+            "latex": "4\\%"
+          },
+          {
+            "kind": "text",
+            "value": " a "
+          },
+          {
+            "kind": "math",
+            "value": "1000 ore",
+            "latex": "1000\\;\\mathrm{h}"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1359,19 +2042,40 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "0159be550480b8ad96c28808906ae4f12f7517b25a674938db9b4ad9aa738d46",
         "normalizedSha256": "0159be550480b8ad96c28808906ae4f12f7517b25a674938db9b4ad9aa738d46"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-039",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-028",
       "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- Per tutti i prodotti: a quanto stabilito in tabella 11.3.IX\nIl campione deve essere sollecitato per un tratto non inferiore a 100 cm; in conseguenza la lunghezza del saggio deve essere con-\nvenientemente incrementata per tener conto della lunghezza dei dispositivi di afferraggio. Nella zona sollecitata il campione non\ndeve subire alcuna lavorazione, deformazione meccanica o pulitura.",
         "normalized": "- Per tutti i prodotti: a quanto stabilito in tabella 11.3.IX Il campione deve essere sollecitato per un tratto non inferiore a 100 cm; in conseguenza la lunghezza del saggio deve essere convenientemente incrementata per tener conto della lunghezza dei dispositivi di afferraggio. Nella zona sollecitata il campione non deve subire alcuna lavorazione, deformazione meccanica o pulitura.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- Per tutti i prodotti: a quanto stabilito in tabella 11.3.IX Il campione deve essere sollecitato per un tratto non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "100 cm",
+            "latex": "100\\;\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": "; in conseguenza la lunghezza del saggio deve essere convenientemente incrementata per tener conto della lunghezza dei dispositivi di afferraggio. Nella zona sollecitata il campione non deve subire alcuna lavorazione, deformazione meccanica o pulitura."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1398,6 +2102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "30047ef025ccd81e2cdd61ef07e9181bb9f65fafac25baeafd5e066432a83113",
@@ -1405,13 +2114,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-040",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-029",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Prove per la determinazione del coefficiente medio D di riduzione del carico massimo (trazione deviata).",
         "normalized": "Prove per la determinazione del coefficiente medio D di riduzione del carico massimo (trazione deviata).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Prove per la determinazione del coefficiente medio "
+          },
+          {
+            "kind": "math",
+            "value": "D",
+            "latex": "D"
+          },
+          {
+            "kind": "text",
+            "value": " di riduzione del carico massimo (trazione deviata)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1423,19 +2147,67 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "dacb28d54da6e993c8e350f34c4d76846a75fff04076df22aa6380a9076f3b19",
         "normalizedSha256": "dacb28d54da6e993c8e350f34c4d76846a75fff04076df22aa6380a9076f3b19"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-041",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3#block-030",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Le prove per la determinazione del coefficiente medio D di riduzione del carico massimo per trazione deviata, sono richieste per i\ntrefoli con diametro nominale maggiore o uguale a 12,5 mm e per i trefoli compattati. Il valore limite di D non può superare il\n28%.",
         "normalized": "Le prove per la determinazione del coefficiente medio D di riduzione del carico massimo per trazione deviata, sono richieste per i trefoli con diametro nominale maggiore o uguale a 12,5 mm e per i trefoli compattati. Il valore limite di D non può superare il 28%.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove per la determinazione del coefficiente medio "
+          },
+          {
+            "kind": "math",
+            "value": "D",
+            "latex": "D"
+          },
+          {
+            "kind": "text",
+            "value": " di riduzione del carico massimo per trazione deviata, sono richieste per i trefoli con diametro nominale maggiore o uguale a "
+          },
+          {
+            "kind": "math",
+            "value": "12,5 mm",
+            "latex": "12{,}5\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " e per i trefoli compattati. Il valore limite di "
+          },
+          {
+            "kind": "math",
+            "value": "D",
+            "latex": "D"
+          },
+          {
+            "kind": "text",
+            "value": " non può superare il "
+          },
+          {
+            "kind": "math",
+            "value": "28%",
+            "latex": "28\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1457,6 +2229,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "31a2527982b6869a7904de0c106b8d98c9a723823a16612e5752cd113660b338",

@@ -101,6 +101,10 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
   assert.match(component, /formula-scroll-long/);
+  assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
+  assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
+  assert.match(component, /inline\.length === 2 && inline\.at\(-1\)\?\.kind === "math"/);
+  assert.match(component, /caption && <span> — \{caption\}<\/span>/);
   assert.match(component, /table-scroll-compact/);
   assert.match(component, /hasOfficialListMarker/);
   assert.match(component, /loading="lazy"/);

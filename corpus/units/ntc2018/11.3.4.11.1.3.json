@@ -101,7 +101,31 @@
       "text": {
         "raw": "Per ogni colata, o per ogni lotto di produzione, contraddistinti dal proprio numero di riferimento, viene prelevato dal prodotto\nfinito un saggio per colata e comunque un saggio ogni 80 t oppure un saggio per lotto e comunque un saggio ogni 40 t o frazione;\nper quanto riguarda i profilati cavi, il lotto di produzione è definito dalle relative norme UNI di prodotto, in base al numero dei\npezzi.",
         "normalized": "Per ogni colata, o per ogni lotto di produzione, contraddistinti dal proprio numero di riferimento, viene prelevato dal prodotto finito un saggio per colata e comunque un saggio ogni 80 t oppure un saggio per lotto e comunque un saggio ogni 40 t o frazione; per quanto riguarda i profilati cavi, il lotto di produzione è definito dalle relative norme UNI di prodotto, in base al numero dei pezzi.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per ogni colata, o per ogni lotto di produzione, contraddistinti dal proprio numero di riferimento, viene prelevato dal prodotto finito un saggio per colata e comunque un saggio ogni "
+          },
+          {
+            "kind": "math",
+            "value": "80 t",
+            "latex": "80\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " oppure un saggio per lotto e comunque un saggio ogni "
+          },
+          {
+            "kind": "math",
+            "value": "40 t",
+            "latex": "40\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " o frazione; per quanto riguarda i profilati cavi, il lotto di produzione è definito dalle relative norme UNI di prodotto, in base al numero dei pezzi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -123,6 +147,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b3f560aa8ec1ac497008a9ab1868566e3deff5059815277040055923b947a957",
@@ -170,8 +199,32 @@
       "origin": "official",
       "text": {
         "raw": "Per quanto concerne f y e f t i dati singoli raccolti, suddivisi per qualità e prodotti (secondo le gamme dimensionali) vengono ripor-\ntati su idonei diagrammi per consentire di valutare statisticamente nel tempo i risultati della produzione rispetto alle prescrizioni\ndelle presenti norme tecniche.",
-        "normalized": "Per quanto concerne f y e f t i dati singoli raccolti, suddivisi per qualità e prodotti (secondo le gamme dimensionali) vengono riportati su idonei diagrammi per consentire di valutare statisticamente nel tempo i risultati della produzione rispetto alle prescrizioni delle presenti norme tecniche.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Per quanto concerne fy e ft i dati singoli raccolti, suddivisi per qualità e prodotti (secondo le gamme dimensionali) vengono riportati su idonei diagrammi per consentire di valutare statisticamente nel tempo i risultati della produzione rispetto alle prescrizioni delle presenti norme tecniche.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per quanto concerne "
+          },
+          {
+            "kind": "math",
+            "value": "fy",
+            "latex": "f_y"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "ft",
+            "latex": "f_t"
+          },
+          {
+            "kind": "text",
+            "value": " i dati singoli raccolti, suddivisi per qualità e prodotti (secondo le gamme dimensionali) vengono riportati su idonei diagrammi per consentire di valutare statisticamente nel tempo i risultati della produzione rispetto alle prescrizioni delle presenti norme tecniche."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -198,10 +251,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "324a4e421280f9bf35603805f588eaa218f3d9c9e538abb46213e489c8975654",
-        "normalizedSha256": "8e82bd18348d7bcd2d5b647c630eb0d18224756b2f70bd580bd422311d06103c"
+        "normalizedSha256": "f6df47be33d7fea4b70619cd7ac41845cbe9312ddb2d20f947e7cc7c4408abd8"
       }
     },
     {

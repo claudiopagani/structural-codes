@@ -19,28 +19,28 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6",
       "officialNumber": "11.2.8",
       "pdfPage": 318,
-      "latex": "\\varepsilon_{cd}(t)=\\beta_{ds}(t-t_s)\\varepsilon_{cd,\\infty}"
+      "latex": "\\varepsilon_{cd}(t)=\\beta_{ds}(t-t_s)\\cdot\\varepsilon_{cd,\\infty}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.2.9",
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6",
       "officialNumber": "11.2.9",
       "pdfPage": 318,
-      "latex": "\\beta_{ds}(t-t_s)=\\frac{t-t_s}{(t-t_s)+0{,}04\\sqrt{h_0^3}}"
+      "latex": "\\beta_{ds}(t-t_s)=\\frac{t-t_s}{(t-t_s)+0{,}04h_0^{3/2}}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.2.10",
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6",
       "officialNumber": "11.2.10",
       "pdfPage": 318,
-      "latex": "\\varepsilon_{ca,\\infty}=-2{,}5\\,(f_{ck}-10)\\,10^{-6}"
+      "latex": "\\varepsilon_{ca,\\infty}=-2{,}5\\cdot(f_{ck}-10)\\cdot10^{-6}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.3.1",
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.5",
       "officialNumber": "11.3.1",
       "pdfPage": 325,
-      "latex": "\\frac{\\phi_{\\min}}{\\phi_{\\max}}\\ge0{,}6"
+      "latex": "\\frac{\\varnothing_{\\min}}{\\varnothing_{\\max}}\\ge0{,}6"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.3.2",
@@ -68,14 +68,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4",
       "officialNumber": "11.3.5",
       "pdfPage": 329,
-      "latex": "\\tau_m\\ge0{,}098(80-1{,}2\\phi)"
+      "latex": "\\tau_m\\ge0{,}098(80-1{,}2\\varnothing)"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.3.6",
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4",
       "officialNumber": "11.3.6",
       "pdfPage": 329,
-      "latex": "\\tau_r\\ge0{,}098(130-1{,}9\\phi)"
+      "latex": "\\tau_r\\ge0{,}098(130-1{,}9\\varnothing)"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.7.1",
@@ -224,24 +224,177 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6",
       "officialNumber": "11.2.Va",
       "pdfPage": 318,
-      "caption": "Tab. 11.2.Va – Valori di Ήc0",
-      "columnCount": 1,
-      "headers": [],
-      "rows": [
+      "caption": "Tab. 11.2.Va – Valori di εc0",
+      "columnCount": 7,
+      "headers": [
         [
           {
-            "text": "f ck Deformazione da ritiro per essiccamento (in ‰)"
+            "text": "fck",
+            "latex": "f_{ck}",
+            "rowSpan": 3
+          },
+          {
+            "text": "Deformazione da ritiro per essiccamento (in ‰)",
+            "colSpan": 6
           }
         ],
         [
           {
-            "text": "Umidità Relativa (in %) 20 40 60 80 90 100 20 -0,62 -0,58 -0,49 -0,30 -0,17 +0,00 40 -0,48 -0,46 -0,38 -0,24 -0,13 +0,00 60 -0,38 -0,36 -0,30 -0,19 -0,10 +0,00 80 -0,30 -0,28 -0,24 -0,15 -0,07 +0,00"
+            "text": "Umidità Relativa (in %)",
+            "colSpan": 6
+          }
+        ],
+        [
+          {
+            "text": "20",
+            "latex": "20"
+          },
+          {
+            "text": "40",
+            "latex": "40"
+          },
+          {
+            "text": "60",
+            "latex": "60"
+          },
+          {
+            "text": "80",
+            "latex": "80"
+          },
+          {
+            "text": "90",
+            "latex": "90"
+          },
+          {
+            "text": "100",
+            "latex": "100"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "20",
+            "latex": "20"
+          },
+          {
+            "text": "-0,62",
+            "latex": "-0{,}62"
+          },
+          {
+            "text": "-0,58",
+            "latex": "-0{,}58"
+          },
+          {
+            "text": "-0,49",
+            "latex": "-0{,}49"
+          },
+          {
+            "text": "-0,30",
+            "latex": "-0{,}30"
+          },
+          {
+            "text": "-0,17",
+            "latex": "-0{,}17"
+          },
+          {
+            "text": "+0,00",
+            "latex": "+0{,}00"
+          }
+        ],
+        [
+          {
+            "text": "40",
+            "latex": "40"
+          },
+          {
+            "text": "-0,48",
+            "latex": "-0{,}48"
+          },
+          {
+            "text": "-0,46",
+            "latex": "-0{,}46"
+          },
+          {
+            "text": "-0,38",
+            "latex": "-0{,}38"
+          },
+          {
+            "text": "-0,24",
+            "latex": "-0{,}24"
+          },
+          {
+            "text": "-0,13",
+            "latex": "-0{,}13"
+          },
+          {
+            "text": "+0,00",
+            "latex": "+0{,}00"
+          }
+        ],
+        [
+          {
+            "text": "60",
+            "latex": "60"
+          },
+          {
+            "text": "-0,38",
+            "latex": "-0{,}38"
+          },
+          {
+            "text": "-0,36",
+            "latex": "-0{,}36"
+          },
+          {
+            "text": "-0,30",
+            "latex": "-0{,}30"
+          },
+          {
+            "text": "-0,19",
+            "latex": "-0{,}19"
+          },
+          {
+            "text": "-0,10",
+            "latex": "-0{,}10"
+          },
+          {
+            "text": "+0,00",
+            "latex": "+0{,}00"
+          }
+        ],
+        [
+          {
+            "text": "80",
+            "latex": "80"
+          },
+          {
+            "text": "-0,30",
+            "latex": "-0{,}30"
+          },
+          {
+            "text": "-0,28",
+            "latex": "-0{,}28"
+          },
+          {
+            "text": "-0,24",
+            "latex": "-0{,}24"
+          },
+          {
+            "text": "-0,15",
+            "latex": "-0{,}15"
+          },
+          {
+            "text": "-0,07",
+            "latex": "-0{,}07"
+          },
+          {
+            "text": "+0,00",
+            "latex": "+0{,}00"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -249,19 +402,64 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.6",
       "officialNumber": "11.2.Vb",
       "pdfPage": 318,
-      "caption": "Tab. 11.2.Vb – Valori di k h h0 (mm) kh 100 1,00 200 0,85 300 0,75 ǃ 500 0,70",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.2.Vb – Valori di kh",
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "h0 (mm)",
+            "latex": "h_0\\;[\\mathrm{mm}]"
+          },
+          {
+            "text": "kh",
+            "latex": "k_h"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": ""
+            "text": "100",
+            "latex": "100"
+          },
+          {
+            "text": "1,00",
+            "latex": "1{,}00"
+          }
+        ],
+        [
+          {
+            "text": "200",
+            "latex": "200"
+          },
+          {
+            "text": "0,85",
+            "latex": "0{,}85"
+          }
+        ],
+        [
+          {
+            "text": "300",
+            "latex": "300"
+          },
+          {
+            "text": "0,75",
+            "latex": "0{,}75"
+          }
+        ],
+        [
+          {
+            "text": "≥ 500",
+            "latex": "\\ge500"
+          },
+          {
+            "text": "0,70",
+            "latex": "0{,}70"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -269,19 +467,141 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7",
       "officialNumber": "11.2.VI",
       "pdfPage": 318,
-      "caption": "Tab. 11.2.VI – Valori di Κ (ǈ, t0 ). Atmosfera con umidità relativa di circa il 75%",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.2.VI – Valori di φ(∞, t0). Atmosfera con umidità relativa di circa il 75%",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "t0",
+            "latex": "t_0"
+          },
+          {
+            "text": "h0 ≤ 75 mm",
+            "latex": "h_0\\le75\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 = 150 mm",
+            "latex": "h_0=150\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 = 300 mm",
+            "latex": "h_0=300\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 ≥ 600 mm",
+            "latex": "h_0\\ge600\\;\\mathrm{mm}"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 3,5 3,2 3,0 2,8 7 giorni 2,9 2,7 2,5 2,3 15 giorni 2,6 2,4 2,2 2,1 30 giorni 2,3 2,1 1,9 1,8 ǃ 60 giorni 2,0 1,8 1,7 1,6"
+            "text": "3 giorni"
+          },
+          {
+            "text": "3,5",
+            "latex": "3{,}5"
+          },
+          {
+            "text": "3,2",
+            "latex": "3{,}2"
+          },
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          },
+          {
+            "text": "2,8",
+            "latex": "2{,}8"
+          }
+        ],
+        [
+          {
+            "text": "7 giorni"
+          },
+          {
+            "text": "2,9",
+            "latex": "2{,}9"
+          },
+          {
+            "text": "2,7",
+            "latex": "2{,}7"
+          },
+          {
+            "text": "2,5",
+            "latex": "2{,}5"
+          },
+          {
+            "text": "2,3",
+            "latex": "2{,}3"
+          }
+        ],
+        [
+          {
+            "text": "15 giorni"
+          },
+          {
+            "text": "2,6",
+            "latex": "2{,}6"
+          },
+          {
+            "text": "2,4",
+            "latex": "2{,}4"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,1",
+            "latex": "2{,}1"
+          }
+        ],
+        [
+          {
+            "text": "30 giorni"
+          },
+          {
+            "text": "2,3",
+            "latex": "2{,}3"
+          },
+          {
+            "text": "2,1",
+            "latex": "2{,}1"
+          },
+          {
+            "text": "1,9",
+            "latex": "1{,}9"
+          },
+          {
+            "text": "1,8",
+            "latex": "1{,}8"
+          }
+        ],
+        [
+          {
+            "text": "≥ 60 giorni"
+          },
+          {
+            "text": "2,0",
+            "latex": "2{,}0"
+          },
+          {
+            "text": "1,8",
+            "latex": "1{,}8"
+          },
+          {
+            "text": "1,7",
+            "latex": "1{,}7"
+          },
+          {
+            "text": "1,6",
+            "latex": "1{,}6"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -289,19 +609,141 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7",
       "officialNumber": "11.2.VII",
       "pdfPage": 318,
-      "caption": "Tab. 11.2.VII - Valori di Κ (ǈ, t0 ). Atmosfera con umidità relativa di circa il 55%",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.2.VII – Valori di φ(∞, t0). Atmosfera con umidità relativa di circa il 55%",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "t0",
+            "latex": "t_0"
+          },
+          {
+            "text": "h0 ≤ 75 mm",
+            "latex": "h_0\\le75\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 = 150 mm",
+            "latex": "h_0=150\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 = 300 mm",
+            "latex": "h_0=300\\;\\mathrm{mm}"
+          },
+          {
+            "text": "h0 ≥ 600 mm",
+            "latex": "h_0\\ge600\\;\\mathrm{mm}"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 4,5 4,0 3,6 3,3 7 giorni 3,7 3,3 3,0 2,8 15 giorni 3,3 3,0 2,7 2,5 30 giorni 2,9 2,6 2,3 2,2 ǃ 60 giorni 2,5 2,3 2,1 1,9"
+            "text": "3 giorni"
+          },
+          {
+            "text": "4,5",
+            "latex": "4{,}5"
+          },
+          {
+            "text": "4,0",
+            "latex": "4{,}0"
+          },
+          {
+            "text": "3,6",
+            "latex": "3{,}6"
+          },
+          {
+            "text": "3,3",
+            "latex": "3{,}3"
+          }
+        ],
+        [
+          {
+            "text": "7 giorni"
+          },
+          {
+            "text": "3,7",
+            "latex": "3{,}7"
+          },
+          {
+            "text": "3,3",
+            "latex": "3{,}3"
+          },
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          },
+          {
+            "text": "2,8",
+            "latex": "2{,}8"
+          }
+        ],
+        [
+          {
+            "text": "15 giorni"
+          },
+          {
+            "text": "3,3",
+            "latex": "3{,}3"
+          },
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          },
+          {
+            "text": "2,7",
+            "latex": "2{,}7"
+          },
+          {
+            "text": "2,5",
+            "latex": "2{,}5"
+          }
+        ],
+        [
+          {
+            "text": "30 giorni"
+          },
+          {
+            "text": "2,9",
+            "latex": "2{,}9"
+          },
+          {
+            "text": "2,6",
+            "latex": "2{,}6"
+          },
+          {
+            "text": "2,3",
+            "latex": "2{,}3"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          }
+        ],
+        [
+          {
+            "text": "≥ 60 giorni"
+          },
+          {
+            "text": "2,5",
+            "latex": "2{,}5"
+          },
+          {
+            "text": "2,3",
+            "latex": "2{,}3"
+          },
+          {
+            "text": "2,1",
+            "latex": "2{,}1"
+          },
+          {
+            "text": "1,9",
+            "latex": "1{,}9"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -309,19 +751,33 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.1",
       "officialNumber": "11.3.Ia",
       "pdfPage": 323,
-      "caption": "Tab. 11.3.Ia fy nom 450 N/mm² ft nom 540 N/mm²",
-      "columnCount": 1,
+      "caption": "Tab. 11.3.Ia",
+      "columnCount": 2,
       "headers": [],
       "rows": [
         [
           {
-            "text": ""
+            "text": "fy nom",
+            "latex": "f_{y\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "450 N/mm²",
+            "latex": "450\\;\\mathrm{N/mm^2}"
+          }
+        ],
+        [
+          {
+            "text": "ft nom",
+            "latex": "f_{t\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "540 N/mm²",
+            "latex": "540\\;\\mathrm{N/mm^2}"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -329,19 +785,156 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.1",
       "officialNumber": "11.3.Ib",
       "pdfPage": 324,
-      "caption": "Tab. 11.3.Ib Caratteristiche Requisiti Frattile (%) Tensione caratteristica di snervamento fyk ǃ fy nom 5.0 Tensione caratteristica a carico massimo ftk ǃ ft nom 5.0",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.Ib",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Caratteristiche"
+          },
+          {
+            "text": "Requisiti"
+          },
+          {
+            "text": "Frattile (%)",
+            "latex": "\\mathrm{Frattile}\\;(\\%)"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "(ft /fy )k ǃ 1,15 10.0 < 1,35 (fy /fynom)k ǂ 1,25 10.0 Allungamento (Agt )k ǃ 7,5% 10.0 Diametro del mandrino per prove di piegamento a 90° e successivo raddrizzamento senza cricche: Κ < 12 mm 4 Κ 12 ǂ Κ ǂ 16 mm 5 Κ per 16 < Κ ǂ 25 mm 8 Κ per 25 < Κ ǂ 40 mm 10 Κ"
+            "text": "Tensione caratteristica di snervamento fyk",
+            "latex": "\\text{Tensione caratteristica di snervamento } f_{yk}"
+          },
+          {
+            "text": "≥ fy nom",
+            "latex": "\\ge f_{y\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "5.0",
+            "latex": "5.0"
+          }
+        ],
+        [
+          {
+            "text": "Tensione caratteristica a carico massimo ftk",
+            "latex": "\\text{Tensione caratteristica a carico massimo } f_{tk}"
+          },
+          {
+            "text": "≥ ft nom",
+            "latex": "\\ge f_{t\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "5.0",
+            "latex": "5.0"
+          }
+        ],
+        [
+          {
+            "text": "(ft/fy)k",
+            "latex": "(f_t/f_y)_k",
+            "rowSpan": 2
+          },
+          {
+            "text": "≥ 1,15",
+            "latex": "\\ge1{,}15"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0",
+            "rowSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "< 1,35",
+            "latex": "<1{,}35"
+          }
+        ],
+        [
+          {
+            "text": "(fy/fynom)k",
+            "latex": "(f_y/f_{y\\,\\mathrm{nom}})_k"
+          },
+          {
+            "text": "≤ 1,25",
+            "latex": "\\le1{,}25"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0"
+          }
+        ],
+        [
+          {
+            "text": "Allungamento (Agt)k",
+            "latex": "\\text{Allungamento }(A_{gt})_k"
+          },
+          {
+            "text": "≥ 7,5%",
+            "latex": "\\ge7{,}5\\%"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0"
+          }
+        ],
+        [
+          {
+            "text": "Diametro del mandrino per prove di piegamento a 90° e successivo raddrizzamento senza cricche: Ø < 12 mm",
+            "latex": "\\text{Diametro del mandrino per prove di piegamento a }90^\\circ\\text{ e successivo raddrizzamento senza cricche: }\\varnothing<12\\;\\mathrm{mm}"
+          },
+          {
+            "text": "4 Ø",
+            "latex": "4\\varnothing"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "12 ≤ Ø ≤ 16 mm",
+            "latex": "12\\le\\varnothing\\le16\\;\\mathrm{mm}"
+          },
+          {
+            "text": "5 Ø",
+            "latex": "5\\varnothing"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "per 16 < Ø ≤ 25 mm",
+            "latex": "\\text{per }16<\\varnothing\\le25\\;\\mathrm{mm}"
+          },
+          {
+            "text": "8 Ø",
+            "latex": "8\\varnothing"
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "per 25 < Ø ≤ 40 mm",
+            "latex": "\\text{per }25<\\varnothing\\le40\\;\\mathrm{mm}"
+          },
+          {
+            "text": "10 Ø",
+            "latex": "10\\varnothing"
+          },
+          {
+            "text": ""
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -349,19 +942,109 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.2",
       "officialNumber": "11.3.Ic",
       "pdfPage": 324,
-      "caption": "Tab. 11.3.Ic Caratteristiche Requisiti Frattile (%) Tensione caratteristica di snervamento fyk ǃ fy nom 5.0 Tensione caratteristica a carico massimo ftk ǃ ft nom 5.0 (ft /fy )k ǃ 1,05 10.0",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.Ic",
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Caratteristiche"
+          },
+          {
+            "text": "Requisiti"
+          },
+          {
+            "text": "Frattile (%)",
+            "latex": "\\mathrm{Frattile}\\;(\\%)"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "(fy /fynom)k ǂ 1,25 10.0 Allungamento (Agt )k ǃ 2,5% 10.0 Diametro del mandrino per prove di piegamento a 90° e successivo raddrizzamento senza cricche: per Κ ǂ 10 mm 4 Κ"
+            "text": "Tensione caratteristica di snervamento fyk",
+            "latex": "\\text{Tensione caratteristica di snervamento } f_{yk}"
+          },
+          {
+            "text": "≥ fy nom",
+            "latex": "\\ge f_{y\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "5.0",
+            "latex": "5.0"
+          }
+        ],
+        [
+          {
+            "text": "Tensione caratteristica a carico massimo ftk",
+            "latex": "\\text{Tensione caratteristica a carico massimo } f_{tk}"
+          },
+          {
+            "text": "≥ ft nom",
+            "latex": "\\ge f_{t\\,\\mathrm{nom}}"
+          },
+          {
+            "text": "5.0",
+            "latex": "5.0"
+          }
+        ],
+        [
+          {
+            "text": "(ft/fy)k",
+            "latex": "(f_t/f_y)_k"
+          },
+          {
+            "text": "≥ 1,05",
+            "latex": "\\ge1{,}05"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0"
+          }
+        ],
+        [
+          {
+            "text": "(fy/fynom)k",
+            "latex": "(f_y/f_{y\\,\\mathrm{nom}})_k"
+          },
+          {
+            "text": "≤ 1,25",
+            "latex": "\\le1{,}25"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0"
+          }
+        ],
+        [
+          {
+            "text": "Allungamento (Agt)k",
+            "latex": "\\text{Allungamento }(A_{gt})_k"
+          },
+          {
+            "text": "≥ 2,5%",
+            "latex": "\\ge2{,}5\\%"
+          },
+          {
+            "text": "10.0",
+            "latex": "10.0"
+          }
+        ],
+        [
+          {
+            "text": "Diametro del mandrino per prove di piegamento a 90° e successivo raddrizzamento senza cricche: per Ø ≤ 10 mm",
+            "latex": "\\text{Diametro del mandrino per prove di piegamento a }90^\\circ\\text{ e successivo raddrizzamento senza cricche: per }\\varnothing\\le10\\;\\mathrm{mm}"
+          },
+          {
+            "text": "4 Ø",
+            "latex": "4\\varnothing"
+          },
+          {
+            "text": ""
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -370,18 +1053,129 @@
       "officialNumber": "11.3.II",
       "pdfPage": 325,
       "caption": "Tab. 11.3.II – Massimo contenuto di elementi chimici in %",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "Analisi di prodotto"
+          },
+          {
+            "text": "Analisi di colata"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Analisi di prodotto Analisi di colata Carbonio C 0,24 0,22 Fosforo P 0,055 0,050 Zolfo S 0,055 0,050 Rame Cu 0,85 0,80 Azoto N 0,014 0,012 Carbonio equivalente Ceq 0,52 0,50"
+            "text": "Carbonio"
+          },
+          {
+            "text": "C",
+            "latex": "\\mathrm{C}"
+          },
+          {
+            "text": "0,24",
+            "latex": "0{,}24"
+          },
+          {
+            "text": "0,22",
+            "latex": "0{,}22"
+          }
+        ],
+        [
+          {
+            "text": "Fosforo"
+          },
+          {
+            "text": "P",
+            "latex": "\\mathrm{P}"
+          },
+          {
+            "text": "0,055",
+            "latex": "0{,}055"
+          },
+          {
+            "text": "0,050",
+            "latex": "0{,}050"
+          }
+        ],
+        [
+          {
+            "text": "Zolfo"
+          },
+          {
+            "text": "S",
+            "latex": "\\mathrm{S}"
+          },
+          {
+            "text": "0,055",
+            "latex": "0{,}055"
+          },
+          {
+            "text": "0,050",
+            "latex": "0{,}050"
+          }
+        ],
+        [
+          {
+            "text": "Rame"
+          },
+          {
+            "text": "Cu",
+            "latex": "\\mathrm{Cu}"
+          },
+          {
+            "text": "0,85",
+            "latex": "0{,}85"
+          },
+          {
+            "text": "0,80",
+            "latex": "0{,}80"
+          }
+        ],
+        [
+          {
+            "text": "Azoto"
+          },
+          {
+            "text": "N",
+            "latex": "\\mathrm{N}"
+          },
+          {
+            "text": "0,014",
+            "latex": "0{,}014"
+          },
+          {
+            "text": "0,012",
+            "latex": "0{,}012"
+          }
+        ],
+        [
+          {
+            "text": "Carbonio equivalente"
+          },
+          {
+            "text": "Ceq",
+            "latex": "C_{eq}"
+          },
+          {
+            "text": "0,52",
+            "latex": "0{,}52"
+          },
+          {
+            "text": "0,50",
+            "latex": "0{,}50"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -390,23 +1184,41 @@
       "officialNumber": "11.3.III",
       "pdfPage": 326,
       "caption": "Tab. 11.3.III",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Diametro nominale, (mm)",
+            "latex": "\\text{Diametro nominale }(\\mathrm{mm})"
+          },
+          {
+            "text": "5 ≤ Ø ≤ 8",
+            "latex": "5\\le\\varnothing\\le8"
+          },
+          {
+            "text": "8 < Ø ≤ 40",
+            "latex": "8<\\varnothing\\le40"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Diametro nominale, (mm) 5 ǂ Κ ǂ 8 8 < Κ ǂ 40"
-          }
-        ],
-        [
+            "text": "Tolleranza in % sulla massa nominale per metro",
+            "latex": "\\text{Tolleranza in }\\%\\text{ sulla massa nominale per metro}"
+          },
           {
-            "text": "Tolleranza in % sulla massa nominale per metro r 6 r 4,5"
+            "text": "± 6",
+            "latex": "\\pm6"
+          },
+          {
+            "text": "± 4,5",
+            "latex": "\\pm4{,}5"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -414,19 +1226,320 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.1.3",
       "officialNumber": "11.3.IV",
       "pdfPage": 327,
-      "caption": "Tab. 11.3.IV - fy – f t – Coefficiente k in funzione del numero n di campioni (per una probabilità di insuccesso attesa del 5% [p = 0,95] con una probabilità del 90%)",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.IV - fy – ft – Coefficiente k in funzione del numero n di campioni (per una probabilità di insuccesso attesa del 5% [p = 0,95] con una probabilità del 90%)",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "n",
+            "latex": "n"
+          },
+          {
+            "text": "k",
+            "latex": "k"
+          },
+          {
+            "text": "n",
+            "latex": "n"
+          },
+          {
+            "text": "K",
+            "latex": "K"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "n k n K 5 3,40 30 2,08 6 3,09 40 2,01 7 2,89 50 1,97 8 2,75 60 1,93 9 2,65 70 1,90 10 2,57 80 1,89 11 2,50 90 1,87 12 2,45 100 1,86 13 2,40 150 1,82 14 2,36 200 1,79 15 2,33 250 1,78 16 2,30 300 1,77 17 2,27 400 1,75 18 2,25 500 1,74 19 2,23 1000 1,71 20 2,21 -- 1,64"
+            "text": "5",
+            "latex": "5"
+          },
+          {
+            "text": "3,40",
+            "latex": "3{,}40"
+          },
+          {
+            "text": "30",
+            "latex": "30"
+          },
+          {
+            "text": "2,08",
+            "latex": "2{,}08"
+          }
+        ],
+        [
+          {
+            "text": "6",
+            "latex": "6"
+          },
+          {
+            "text": "3,09",
+            "latex": "3{,}09"
+          },
+          {
+            "text": "40",
+            "latex": "40"
+          },
+          {
+            "text": "2,01",
+            "latex": "2{,}01"
+          }
+        ],
+        [
+          {
+            "text": "7",
+            "latex": "7"
+          },
+          {
+            "text": "2,89",
+            "latex": "2{,}89"
+          },
+          {
+            "text": "50",
+            "latex": "50"
+          },
+          {
+            "text": "1,97",
+            "latex": "1{,}97"
+          }
+        ],
+        [
+          {
+            "text": "8",
+            "latex": "8"
+          },
+          {
+            "text": "2,75",
+            "latex": "2{,}75"
+          },
+          {
+            "text": "60",
+            "latex": "60"
+          },
+          {
+            "text": "1,93",
+            "latex": "1{,}93"
+          }
+        ],
+        [
+          {
+            "text": "9",
+            "latex": "9"
+          },
+          {
+            "text": "2,65",
+            "latex": "2{,}65"
+          },
+          {
+            "text": "70",
+            "latex": "70"
+          },
+          {
+            "text": "1,90",
+            "latex": "1{,}90"
+          }
+        ],
+        [
+          {
+            "text": "10",
+            "latex": "10"
+          },
+          {
+            "text": "2,57",
+            "latex": "2{,}57"
+          },
+          {
+            "text": "80",
+            "latex": "80"
+          },
+          {
+            "text": "1,89",
+            "latex": "1{,}89"
+          }
+        ],
+        [
+          {
+            "text": "11",
+            "latex": "11"
+          },
+          {
+            "text": "2,50",
+            "latex": "2{,}50"
+          },
+          {
+            "text": "90",
+            "latex": "90"
+          },
+          {
+            "text": "1,87",
+            "latex": "1{,}87"
+          }
+        ],
+        [
+          {
+            "text": "12",
+            "latex": "12"
+          },
+          {
+            "text": "2,45",
+            "latex": "2{,}45"
+          },
+          {
+            "text": "100",
+            "latex": "100"
+          },
+          {
+            "text": "1,86",
+            "latex": "1{,}86"
+          }
+        ],
+        [
+          {
+            "text": "13",
+            "latex": "13"
+          },
+          {
+            "text": "2,40",
+            "latex": "2{,}40"
+          },
+          {
+            "text": "150",
+            "latex": "150"
+          },
+          {
+            "text": "1,82",
+            "latex": "1{,}82"
+          }
+        ],
+        [
+          {
+            "text": "14",
+            "latex": "14"
+          },
+          {
+            "text": "2,36",
+            "latex": "2{,}36"
+          },
+          {
+            "text": "200",
+            "latex": "200"
+          },
+          {
+            "text": "1,79",
+            "latex": "1{,}79"
+          }
+        ],
+        [
+          {
+            "text": "15",
+            "latex": "15"
+          },
+          {
+            "text": "2,33",
+            "latex": "2{,}33"
+          },
+          {
+            "text": "250",
+            "latex": "250"
+          },
+          {
+            "text": "1,78",
+            "latex": "1{,}78"
+          }
+        ],
+        [
+          {
+            "text": "16",
+            "latex": "16"
+          },
+          {
+            "text": "2,30",
+            "latex": "2{,}30"
+          },
+          {
+            "text": "300",
+            "latex": "300"
+          },
+          {
+            "text": "1,77",
+            "latex": "1{,}77"
+          }
+        ],
+        [
+          {
+            "text": "17",
+            "latex": "17"
+          },
+          {
+            "text": "2,27",
+            "latex": "2{,}27"
+          },
+          {
+            "text": "400",
+            "latex": "400"
+          },
+          {
+            "text": "1,75",
+            "latex": "1{,}75"
+          }
+        ],
+        [
+          {
+            "text": "18",
+            "latex": "18"
+          },
+          {
+            "text": "2,25",
+            "latex": "2{,}25"
+          },
+          {
+            "text": "500",
+            "latex": "500"
+          },
+          {
+            "text": "1,74",
+            "latex": "1{,}74"
+          }
+        ],
+        [
+          {
+            "text": "19",
+            "latex": "19"
+          },
+          {
+            "text": "2,23",
+            "latex": "2{,}23"
+          },
+          {
+            "text": "1000",
+            "latex": "1000"
+          },
+          {
+            "text": "1,71",
+            "latex": "1{,}71"
+          }
+        ],
+        [
+          {
+            "text": "20",
+            "latex": "20"
+          },
+          {
+            "text": "2,21",
+            "latex": "2{,}21"
+          },
+          {
+            "text": "--",
+            "latex": "--"
+          },
+          {
+            "text": "1,64",
+            "latex": "1{,}64"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -434,19 +1547,320 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.1.3",
       "officialNumber": "11.3.V",
       "pdfPage": 327,
-      "caption": "Tab. 11.3.V - Agt , f t/f y . f y /f ynom .– Coefficiente k in funzione del numero n di campioni (per una probabilità di insuccesso attesa del 10% [p = 0,90] con una probabilità del 90%)",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.V - Agt, ft/fy, fy/fynom – Coefficiente k in funzione del numero n di campioni (per una probabilità di insuccesso attesa del 10% [p = 0,90] con una probabilità del 90%)",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "n",
+            "latex": "n"
+          },
+          {
+            "text": "k",
+            "latex": "k"
+          },
+          {
+            "text": "n",
+            "latex": "n"
+          },
+          {
+            "text": "K",
+            "latex": "K"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "n k n K 5 2,74 30 1,66 6 2,49 40 1,60 7 2,33 50 1,56 8 2,22 60 1,53 9 2,13 70 1,51 10 2,07 80 1,49 11 2,01 90 1,48 12 1,97 100 1,47 13 1,93 150 1,43 14 1,90 200 1,41 15 1,87 250 1,40 16 1,84 300 1,39 17 1,82 400 1,37 18 1,80 500 1,36 19 1,78 1000 1,34 20 1,77 – 1,282"
+            "text": "5",
+            "latex": "5"
+          },
+          {
+            "text": "2,74",
+            "latex": "2{,}74"
+          },
+          {
+            "text": "30",
+            "latex": "30"
+          },
+          {
+            "text": "1,66",
+            "latex": "1{,}66"
+          }
+        ],
+        [
+          {
+            "text": "6",
+            "latex": "6"
+          },
+          {
+            "text": "2,49",
+            "latex": "2{,}49"
+          },
+          {
+            "text": "40",
+            "latex": "40"
+          },
+          {
+            "text": "1,60",
+            "latex": "1{,}60"
+          }
+        ],
+        [
+          {
+            "text": "7",
+            "latex": "7"
+          },
+          {
+            "text": "2,33",
+            "latex": "2{,}33"
+          },
+          {
+            "text": "50",
+            "latex": "50"
+          },
+          {
+            "text": "1,56",
+            "latex": "1{,}56"
+          }
+        ],
+        [
+          {
+            "text": "8",
+            "latex": "8"
+          },
+          {
+            "text": "2,22",
+            "latex": "2{,}22"
+          },
+          {
+            "text": "60",
+            "latex": "60"
+          },
+          {
+            "text": "1,53",
+            "latex": "1{,}53"
+          }
+        ],
+        [
+          {
+            "text": "9",
+            "latex": "9"
+          },
+          {
+            "text": "2,13",
+            "latex": "2{,}13"
+          },
+          {
+            "text": "70",
+            "latex": "70"
+          },
+          {
+            "text": "1,51",
+            "latex": "1{,}51"
+          }
+        ],
+        [
+          {
+            "text": "10",
+            "latex": "10"
+          },
+          {
+            "text": "2,07",
+            "latex": "2{,}07"
+          },
+          {
+            "text": "80",
+            "latex": "80"
+          },
+          {
+            "text": "1,49",
+            "latex": "1{,}49"
+          }
+        ],
+        [
+          {
+            "text": "11",
+            "latex": "11"
+          },
+          {
+            "text": "2,01",
+            "latex": "2{,}01"
+          },
+          {
+            "text": "90",
+            "latex": "90"
+          },
+          {
+            "text": "1,48",
+            "latex": "1{,}48"
+          }
+        ],
+        [
+          {
+            "text": "12",
+            "latex": "12"
+          },
+          {
+            "text": "1,97",
+            "latex": "1{,}97"
+          },
+          {
+            "text": "100",
+            "latex": "100"
+          },
+          {
+            "text": "1,47",
+            "latex": "1{,}47"
+          }
+        ],
+        [
+          {
+            "text": "13",
+            "latex": "13"
+          },
+          {
+            "text": "1,93",
+            "latex": "1{,}93"
+          },
+          {
+            "text": "150",
+            "latex": "150"
+          },
+          {
+            "text": "1,43",
+            "latex": "1{,}43"
+          }
+        ],
+        [
+          {
+            "text": "14",
+            "latex": "14"
+          },
+          {
+            "text": "1,90",
+            "latex": "1{,}90"
+          },
+          {
+            "text": "200",
+            "latex": "200"
+          },
+          {
+            "text": "1,41",
+            "latex": "1{,}41"
+          }
+        ],
+        [
+          {
+            "text": "15",
+            "latex": "15"
+          },
+          {
+            "text": "1,87",
+            "latex": "1{,}87"
+          },
+          {
+            "text": "250",
+            "latex": "250"
+          },
+          {
+            "text": "1,40",
+            "latex": "1{,}40"
+          }
+        ],
+        [
+          {
+            "text": "16",
+            "latex": "16"
+          },
+          {
+            "text": "1,84",
+            "latex": "1{,}84"
+          },
+          {
+            "text": "300",
+            "latex": "300"
+          },
+          {
+            "text": "1,39",
+            "latex": "1{,}39"
+          }
+        ],
+        [
+          {
+            "text": "17",
+            "latex": "17"
+          },
+          {
+            "text": "1,82",
+            "latex": "1{,}82"
+          },
+          {
+            "text": "400",
+            "latex": "400"
+          },
+          {
+            "text": "1,37",
+            "latex": "1{,}37"
+          }
+        ],
+        [
+          {
+            "text": "18",
+            "latex": "18"
+          },
+          {
+            "text": "1,80",
+            "latex": "1{,}80"
+          },
+          {
+            "text": "500",
+            "latex": "500"
+          },
+          {
+            "text": "1,36",
+            "latex": "1{,}36"
+          }
+        ],
+        [
+          {
+            "text": "19",
+            "latex": "19"
+          },
+          {
+            "text": "1,78",
+            "latex": "1{,}78"
+          },
+          {
+            "text": "1000",
+            "latex": "1000"
+          },
+          {
+            "text": "1,34",
+            "latex": "1{,}34"
+          }
+        ],
+        [
+          {
+            "text": "20",
+            "latex": "20"
+          },
+          {
+            "text": "1,77",
+            "latex": "1{,}77"
+          },
+          {
+            "text": "–",
+            "latex": "-"
+          },
+          {
+            "text": "1,282",
+            "latex": "1{,}282"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -455,48 +1869,126 @@
       "officialNumber": "11.3.VI a",
       "pdfPage": 328,
       "caption": "Tab. 11.3.VI a) – Valori di accettazione nei centri di trasformazione – barre e rotoli dopo la raddrizzatura",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Caratteristica"
+          },
+          {
+            "text": "Valore limite"
+          },
+          {
+            "text": "Note"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Caratteristica Valore limite Note"
+            "text": "fy minimo",
+            "latex": "f_y\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "425 N/mm²",
+            "latex": "425\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy minimo 425 N/mm2 per acciai B450A e B450C"
+            "text": "fy massimo",
+            "latex": "f_y\\;\\mathrm{massimo}"
+          },
+          {
+            "text": "572 N/mm²",
+            "latex": "572\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy massimo 572 N/mm2 per acciai B450A e B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 6,0%",
+            "latex": "\\ge6{,}0\\%"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 6,0% per acciai B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 2,0%",
+            "latex": "\\ge2{,}0\\%"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 2,0% per acciai B450A"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "1,13 ≤ ft / fy ≤ 1,37",
+            "latex": "1{,}13\\le f_t/f_y\\le1{,}37"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "ft / f y 1,13 ǂ ft / f y ǂ 1,37 per acciai B450C"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "ft / fy ≥ 1,03",
+            "latex": "f_t/f_y\\ge1{,}03"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "ft / f y ft / f y ǃ 1,03 per acciai B450A"
+            "text": "Piegamento / Raddrizzamento"
+          },
+          {
+            "text": "Assenza di cricche"
+          },
+          {
+            "text": "per acciai B450A e B450C"
+          }
+        ],
+        [
+          {
+            "text": "fr / fp",
+            "latex": "f_r/f_p"
+          },
+          {
+            "text": "per 5 mm ≤ Ø ≤ 6 mm ≥ 0.035; per 6 mm ≤ Ø ≤ 12 mm ≥ 0.040; per Ø ≥ 12 mm ≥ 0.056",
+            "latex": "\\begin{gathered}\\text{per }5\\;\\mathrm{mm}\\le\\varnothing\\le6\\;\\mathrm{mm}\\quad\\ge0.035\\\\\\text{per }6\\;\\mathrm{mm}\\le\\varnothing\\le12\\;\\mathrm{mm}\\quad\\ge0.040\\\\\\text{per }\\varnothing\\ge12\\;\\mathrm{mm}\\quad\\ge0.056\\end{gathered}"
+          },
+          {
+            "text": "per acciai B450A e B450C provenienti da rotolo"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -505,28 +1997,81 @@
       "officialNumber": "11.3.VI b",
       "pdfPage": 330,
       "caption": "Tab. 11.3.VI b)",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": "Barre"
+          },
+          {
+            "text": "Rotoli"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "per 5 ǂ  ǂ 6 mm f r oppure fp ǃ 0.035 0.037"
+            "text": "per 5 ≤ Ø ≤ 6 mm",
+            "latex": "\\text{per }5\\le\\varnothing\\le6\\;\\mathrm{mm}"
+          },
+          {
+            "text": "fr oppure fp ≥",
+            "latex": "f_r\\text{ oppure }f_p\\ge"
+          },
+          {
+            "text": "0.035",
+            "latex": "0.035"
+          },
+          {
+            "text": "0.037",
+            "latex": "0.037"
           }
         ],
         [
           {
-            "text": "per 6 <  ǂ 12 mm fr oppure fp ǃ 0.040 0.042"
+            "text": "per 6 < Ø ≤ 12 mm",
+            "latex": "\\text{per }6<\\varnothing\\le12\\;\\mathrm{mm}"
+          },
+          {
+            "text": "fr oppure fp ≥",
+            "latex": "f_r\\text{ oppure }f_p\\ge"
+          },
+          {
+            "text": "0.040",
+            "latex": "0.040"
+          },
+          {
+            "text": "0.042",
+            "latex": "0.042"
           }
         ],
         [
           {
-            "text": "per  > 12 mm fr oppure fp ǃ 0.056 0.059"
+            "text": "per Ø > 12 mm",
+            "latex": "\\text{per }\\varnothing>12\\;\\mathrm{mm}"
+          },
+          {
+            "text": "fr oppure fp ≥",
+            "latex": "f_r\\text{ oppure }f_p\\ge"
+          },
+          {
+            "text": "0.056",
+            "latex": "0.056"
+          },
+          {
+            "text": "0.059",
+            "latex": "0.059"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -535,48 +2080,113 @@
       "officialNumber": "11.3.VII a",
       "pdfPage": 331,
       "caption": "Tab. 11.3.VII a) – Valori di accettazione in cantiere – barre",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Caratteristica"
+          },
+          {
+            "text": "Valore limite"
+          },
+          {
+            "text": "Note"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Caratteristica Valore limite Note"
+            "text": "fy minimo",
+            "latex": "f_y\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "425 N/mm²",
+            "latex": "425\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy minimo 425 N/mm2 per acciai B450A e B450C"
+            "text": "fy massimo",
+            "latex": "f_y\\;\\mathrm{massimo}"
+          },
+          {
+            "text": "572 N/mm²",
+            "latex": "572\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy massimo 572 N/mm2 per acciai B450A e B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 6,0%",
+            "latex": "\\ge6{,}0\\%"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 6,0% per acciai B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 2,0%",
+            "latex": "\\ge2{,}0\\%"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 2,0% per acciai B450A"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "1,13 ≤ ft / fy ≤ 1,37",
+            "latex": "1{,}13\\le f_t/f_y\\le1{,}37"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "ft / f y 1,13 ǂ ft / f y ǂ 1,37 per acciai B450C"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "ft / fy ≥ 1,03",
+            "latex": "f_t/f_y\\ge1{,}03"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "ft / f y ft / f y ǃ 1,03 per acciai B450A"
+            "text": "Piegamento/raddrizzamento"
+          },
+          {
+            "text": "assenza di cricche"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -585,48 +2195,114 @@
       "officialNumber": "11.3.VII b",
       "pdfPage": 331,
       "caption": "Tab. 11.3.VII b) – Valori di accettazione in cantiere – reti e tralicci",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Caratteristica"
+          },
+          {
+            "text": "Valore limite"
+          },
+          {
+            "text": "Note"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Caratteristica Valore limite Note"
+            "text": "fy minimo",
+            "latex": "f_y\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "425 N/mm²",
+            "latex": "425\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy minimo 425 N/mm2 per acciai B450A e B450C"
+            "text": "fy massimo",
+            "latex": "f_y\\;\\mathrm{massimo}"
+          },
+          {
+            "text": "572 N/mm²",
+            "latex": "572\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ],
         [
           {
-            "text": "fy massimo 572 N/mm2 per acciai B450A e B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 6,0%",
+            "latex": "\\ge6{,}0\\%"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 6,0% per acciai B450C"
+            "text": "Agt minimo",
+            "latex": "A_{gt}\\;\\mathrm{minimo}"
+          },
+          {
+            "text": "≥ 2,0%",
+            "latex": "\\ge2{,}0\\%"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "Agt minimo ǃ 2,0% per acciai B450A"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "1,13 ≤ ft / fy ≤ 1,37",
+            "latex": "1{,}13\\le f_t/f_y\\le1{,}37"
+          },
+          {
+            "text": "per acciai B450C"
           }
         ],
         [
           {
-            "text": "ft / f y 1,13 ǂ ft / f y ǂ 1,37 per acciai B450C"
+            "text": "ft / fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "text": "ft / fy ≥ 1,03",
+            "latex": "f_t/f_y\\ge1{,}03"
+          },
+          {
+            "text": "per acciai B450A"
           }
         ],
         [
           {
-            "text": "ft / f y ft / f y ǃ 1,03 per acciai B450A"
+            "text": "Distacco del nodo"
+          },
+          {
+            "text": "≥ Sez. nom. Ø maggiore × 450 × 25%",
+            "latex": "\\ge\\text{Sez. nom. }\\varnothing\\text{ maggiore}\\times450\\times25\\%"
+          },
+          {
+            "text": "per acciai B450A e B450C"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -635,38 +2311,133 @@
       "officialNumber": "11.3.VIII",
       "pdfPage": 333,
       "caption": "Tab. 11.3.VIII",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Tipo di acciaio"
+          },
+          {
+            "text": "Barre"
+          },
+          {
+            "text": "Fili"
+          },
+          {
+            "text": "Trefoli e trecce"
+          },
+          {
+            "text": "Trefoli compattati"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Tipo di acciaio Barre Fili Trefoli e trecce Trefoli compattati Tensione caratteristica al carico massimo fptk N/mm2 t 1000 t 1570 t1860 t 1820"
+            "text": "Tensione caratteristica al carico massimo fptk N/mm²",
+            "latex": "\\text{Tensione caratteristica al carico massimo }f_{ptk}\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "≥ 1000",
+            "latex": "\\ge1000"
+          },
+          {
+            "text": "≥ 1570",
+            "latex": "\\ge1570"
+          },
+          {
+            "text": "≥ 1860",
+            "latex": "\\ge1860"
+          },
+          {
+            "text": "≥ 1820",
+            "latex": "\\ge1820"
           }
         ],
         [
           {
-            "text": "Tensione caratteristica allo 0,1 % di deformazione residua - scostamento dalla proporzionalità fp(0,1)k N/mm2 na t 1420 na na"
+            "text": "Tensione caratteristica allo 0,1% di deformazione residua - scostamento dalla proporzionalità fp(0,1)k N/mm²",
+            "latex": "\\text{Tensione caratteristica allo }0{,}1\\%\\text{ di deformazione residua - scostamento dalla proporzionalità }f_{p(0{,}1)k}\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "≥ 1420",
+            "latex": "\\ge1420"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "na"
           }
         ],
         [
           {
-            "text": "Tensione caratteristica all’1 % di deformazione totale ……f p(1)k N/mm2 na na t1670 t 1620"
+            "text": "Tensione caratteristica all’1% di deformazione totale fp(1)k N/mm²",
+            "latex": "\\text{Tensione caratteristica all’}1\\%\\text{ di deformazione totale }f_{p(1)k}\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "≥ 1670",
+            "latex": "\\ge1670"
+          },
+          {
+            "text": "≥ 1620",
+            "latex": "\\ge1620"
           }
         ],
         [
           {
-            "text": "Tensione caratteristiche di snervamento fpyk N/mm2 t 800 na na na"
+            "text": "Tensione caratteristica di snervamento fpyk N/mm²",
+            "latex": "\\text{Tensione caratteristica di snervamento }f_{pyk}\\;\\mathrm{N/mm^2}"
+          },
+          {
+            "text": "≥ 800",
+            "latex": "\\ge800"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "na"
+          },
+          {
+            "text": "na"
           }
         ],
         [
           {
-            "text": "Allungamento totale percentuale a carico massimo A gt t 3,5 t 3,5 t3,5 t 3,5 na=non applicabile"
+            "text": "Allungamento totale percentuale a carico massimo Agt",
+            "latex": "\\text{Allungamento totale percentuale a carico massimo }A_{gt}"
+          },
+          {
+            "text": "≥ 3,5",
+            "latex": "\\ge3{,}5"
+          },
+          {
+            "text": "≥ 3,5",
+            "latex": "\\ge3{,}5"
+          },
+          {
+            "text": "≥ 3,5",
+            "latex": "\\ge3{,}5"
+          },
+          {
+            "text": "≥ 3,5",
+            "latex": "\\ge3{,}5"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "na=non applicabile",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -675,18 +2446,40 @@
       "officialNumber": "11.3.IX",
       "pdfPage": 334,
       "caption": "Tab. 11.3.IX",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 2,
+      "headers": [
+        [
+          {
+            "text": "armatura Prodotto"
+          },
+          {
+            "text": "ρ1000",
+            "latex": "\\rho_{1000}"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "armatura Prodotto U1000 Trecce, filo o trefolo stabilizzato 2,5 Barre laminate a caldo 4,0"
+            "text": "Trecce, filo o trefolo stabilizzato"
+          },
+          {
+            "text": "2,5",
+            "latex": "2{,}5"
+          }
+        ],
+        [
+          {
+            "text": "Barre laminate a caldo"
+          },
+          {
+            "text": "4,0",
+            "latex": "4{,}0"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -695,48 +2488,116 @@
       "officialNumber": "11.3.X",
       "pdfPage": 337,
       "caption": "Tab. 11.3.X - Dimensioni e tolleranze per le impronte dei fili, delle trecce e dei trefoli improntati (mm).",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Diametro nominale del prodotto Ø",
+            "latex": "\\text{Diametro nominale del prodotto }\\varnothing",
+            "colSpan": 2
+          },
+          {
+            "text": "Limiti della profondità massima delle impronte"
+          },
+          {
+            "text": "Lunghezza delle impronte e relativa tolleranza “l”",
+            "latex": "\\text{Lunghezza delle impronte e relativa tolleranza }l"
+          },
+          {
+            "text": "Distanza tra le impronte e relativa tolleranza"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Diametro nominale del prodotto Ø Limiti della profondità massima delle impronte Lunghezza delle impronte e relativa tolleranza “l” Distanza tra le impronte e relativa tolleranza"
+            "text": "Fili",
+            "rowSpan": 3
+          },
+          {
+            "text": "Ø ≤ 5 mm",
+            "latex": "\\varnothing\\le5\\;\\mathrm{mm}"
+          },
+          {
+            "text": "Minimo = 0,03; Massimo = 0,16",
+            "latex": "\\begin{gathered}\\mathrm{Minimo}=0{,}03\\\\\\mathrm{Massimo}=0{,}16\\end{gathered}"
+          },
+          {
+            "text": "3,5 ± 0,5",
+            "latex": "3{,}5\\pm0{,}5"
+          },
+          {
+            "text": "5,5 ± 0,5",
+            "latex": "5{,}5\\pm0{,}5"
           }
         ],
         [
           {
-            "text": "Fili Ø ǂ 5 mm Minimo = 0,03 Massimo = 0,16 3,5 ± 0,5 5,5 ± 0,5"
+            "text": "5 mm < Ø ≤ 8 mm",
+            "latex": "5\\;\\mathrm{mm}<\\varnothing\\le8\\;\\mathrm{mm}"
+          },
+          {
+            "text": "Minimo = 0,05; Massimo = 0,20",
+            "latex": "\\begin{gathered}\\mathrm{Minimo}=0{,}05\\\\\\mathrm{Massimo}=0{,}20\\end{gathered}"
+          },
+          {
+            "text": "5,0 ± 0,5",
+            "latex": "5{,}0\\pm0{,}5",
+            "rowSpan": 2
+          },
+          {
+            "text": "8,0 ± 0,5",
+            "latex": "8{,}0\\pm0{,}5",
+            "rowSpan": 2
           }
         ],
         [
           {
-            "text": "5 mm < Ø ǂ 8 mm Minimo = 0,05"
+            "text": "8 mm < Ø ≤ 11 mm",
+            "latex": "8\\;\\mathrm{mm}<\\varnothing\\le11\\;\\mathrm{mm}"
+          },
+          {
+            "text": "Minimo = 0,05; Massimo = 0,25",
+            "latex": "\\begin{gathered}\\mathrm{Minimo}=0{,}05\\\\\\mathrm{Massimo}=0{,}25\\end{gathered}"
           }
         ],
         [
           {
-            "text": "Massimo = 0,20 5,0 ± 0,5 8,0 ± 0,5 8 mm < Ø ǂ 11 mm Minimo = 0,05"
+            "text": "Trecce e trefoli",
+            "rowSpan": 2
+          },
+          {
+            "text": "Ø ≤ 12 mm",
+            "latex": "\\varnothing\\le12\\;\\mathrm{mm}"
+          },
+          {
+            "text": "Minimo = 0,03; Massimo = 0,09",
+            "latex": "\\begin{gathered}\\mathrm{Minimo}=0{,}03\\\\\\mathrm{Massimo}=0{,}09\\end{gathered}"
+          },
+          {
+            "text": "3,5 ± 0,5",
+            "latex": "3{,}5\\pm0{,}5",
+            "rowSpan": 2
+          },
+          {
+            "text": "5,5 ± 0,5",
+            "latex": "5{,}5\\pm0{,}5",
+            "rowSpan": 2
           }
         ],
         [
           {
-            "text": "Massimo = 0,25"
-          }
-        ],
-        [
+            "text": "Ø > 12 mm",
+            "latex": "\\varnothing>12\\;\\mathrm{mm}"
+          },
           {
-            "text": "Trecce e trefoli Ø ǂ 12 mm Minimo = 0,03"
-          }
-        ],
-        [
-          {
-            "text": "Massimo = 0,09 3,5 ± 0,5 5,5 ± 0,5"
+            "text": "Minimo = 0,04; Massimo = 0,10",
+            "latex": "\\begin{gathered}\\mathrm{Minimo}=0{,}04\\\\\\mathrm{Massimo}=0{,}10\\end{gathered}"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -744,24 +2605,59 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.3",
       "officialNumber": "11.3.XI",
       "pdfPage": 338,
-      "caption": "Tab. 11.3.XI - Valori inferiori della tensione di prova, V2 (MPa), nella prova di verifica della resistenza a fatica Fili lisci, trecce e trefoli con fili lisci V 0Pa Fili improntati, trecce e trefoli con fili improntati V 0Pa",
-      "columnCount": 1,
+      "caption": "Tab. 11.3.XI - Valori inferiori della tensione di prova, σ2 (MPa), nella prova di verifica della resistenza a fatica",
+      "columnCount": 3,
       "headers": [],
       "rows": [
         [
           {
-            "text": "Barre lisce V 200 MPa (Ø ǂ 40 mm) V 150 MPa (Ø > 40 mm)"
+            "text": "Fili lisci, trecce e trefoli con fili lisci"
+          },
+          {
+            "text": "σ1 − 200 MPa",
+            "latex": "\\sigma_1-200\\;\\mathrm{MPa}",
+            "colSpan": 2
           }
         ],
         [
           {
-            "text": "Barre filettate o improntate V 180 MPa (Ø ǂ 40 mm) V 120 MPa (Ø > 40 mm)"
+            "text": "Fili improntati, trecce e trefoli con fili improntati"
+          },
+          {
+            "text": "σ1 − 180 MPa",
+            "latex": "\\sigma_1-180\\;\\mathrm{MPa}",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Barre lisce"
+          },
+          {
+            "text": "σ1 − 200 MPa (Ø ≤ 40 mm)",
+            "latex": "\\sigma_1-200\\;\\mathrm{MPa}\\;(\\varnothing\\le40\\;\\mathrm{mm})"
+          },
+          {
+            "text": "σ1 − 150 MPa (Ø > 40 mm)",
+            "latex": "\\sigma_1-150\\;\\mathrm{MPa}\\;(\\varnothing>40\\;\\mathrm{mm})"
+          }
+        ],
+        [
+          {
+            "text": "Barre filettate o improntate"
+          },
+          {
+            "text": "σ1 − 180 MPa (Ø ≤ 40 mm)",
+            "latex": "\\sigma_1-180\\;\\mathrm{MPa}\\;(\\varnothing\\le40\\;\\mathrm{mm})"
+          },
+          {
+            "text": "σ1 − 120 MPa (Ø > 40 mm)",
+            "latex": "\\sigma_1-120\\;\\mathrm{MPa}\\;(\\varnothing>40\\;\\mathrm{mm})"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -769,29 +2665,94 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.4.5",
       "officialNumber": "11.3.XII",
       "pdfPage": 342,
-      "caption": "Tab. 11.3.XII",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.XII – Requisiti di qualità per la saldatura",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Tipo di azione sulle strutture",
+            "rowSpan": 2
+          },
+          {
+            "text": "Strutture soggette a fatica in modo non significativo",
+            "colSpan": 3
+          },
+          {
+            "text": "Strutture soggette a fatica in modo significativo",
+            "rowSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "A"
+          },
+          {
+            "text": "B"
+          },
+          {
+            "text": "C"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Tipo di azione sulle strutture Strutture soggette a fatica in modo non significativo Strutture soggette a fatica in modo signi- ficativo Riferimento A B C D"
+            "text": "Materiale base: spessore minimo delle membrature"
+          },
+          {
+            "text": "S235, s ≤ 30 mm\nS275, s ≤ 30 mm",
+            "latex": "\\begin{gathered}\\mathrm{S235},\\ s\\le30\\;\\mathrm{mm}\\\\\\mathrm{S275},\\ s\\le30\\;\\mathrm{mm}\\end{gathered}"
+          },
+          {
+            "text": "S355, s ≤ 30 mm\nS235\nS275",
+            "latex": "\\begin{gathered}\\mathrm{S355},\\ s\\le30\\;\\mathrm{mm}\\\\\\mathrm{S235}\\\\\\mathrm{S275}\\end{gathered}"
+          },
+          {
+            "text": "S235\nS275\nS355\nS460, s ≤ 30 mm",
+            "latex": "\\begin{gathered}\\mathrm{S235}\\\\\\mathrm{S275}\\\\\\mathrm{S355}\\\\\\mathrm{S460},\\ s\\le30\\;\\mathrm{mm}\\end{gathered}"
+          },
+          {
+            "text": "S235\nS275\nS355\nS460 (Nota 1)\nAcciai inossidabili e altri acciai non esplicitamente menzionati (Nota 1)"
           }
         ],
         [
           {
-            "text": "Materiale Base: Spessore minimo delle membrature S235, s ǂ 30 mm S275, s ǂ 30 mm S355, s ǂ 30 mm S235 S275 S235 S275 S355 S460, s ǂ 30 mm S235 S275 S355 S460 (Nota 1) Acciai inossidabili e altri acciai non e- splicitamente men- zionati (Nota 1) Livello dei requisiti di qualità secondo la norma UNI EN ISO 3834:2006 Elementare UNI EN ISO 3834-4 Medio UNI EN ISO 3834-3 Medio UNI EN ISO 3834-3 Completo UNI EN ISO 3834-2 Livello di conoscenza tecnica del personale di Coordinamento della saldatura secondo la norma UNI EN ISO 14731:2007 Di base Specifico Completo Completo"
+            "text": "Livello dei requisiti di qualità secondo la norma UNI EN ISO 3834:2006"
+          },
+          {
+            "text": "Elementare\nUNI EN ISO 3834-4"
+          },
+          {
+            "text": "Medio\nUNI EN ISO 3834-3"
+          },
+          {
+            "text": "Medio\nUNI EN ISO 3834-3"
+          },
+          {
+            "text": "Completo\nUNI EN ISO 3834-2"
           }
         ],
         [
           {
-            "text": "Nota 1) Vale anche per strutture non soggette a fatica in modo significativo"
+            "text": "Livello di conoscenza tecnica del personale di coordinamento della saldatura secondo la norma UNI EN ISO 14731"
+          },
+          {
+            "text": "Di base"
+          },
+          {
+            "text": "Specifico"
+          },
+          {
+            "text": "Completo"
+          },
+          {
+            "text": "Completo"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Nota 1) Vale anche per strutture non soggette a fatica in modo significativo.",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -799,49 +2760,113 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.4.6.1",
       "officialNumber": "11.3.XIII.a",
       "pdfPage": 342,
-      "caption": "Tab. 11.3.XIII.a",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.XIII.a – Assiemi di viti, dadi e rondelle per giunzioni non precaricate",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "Viti"
+          },
+          {
+            "text": "Dadi"
+          },
+          {
+            "text": "Rondelle"
+          },
+          {
+            "text": "Riferimento",
+            "rowSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Classe di resistenza\nUNI EN ISO 898-1:2013"
+          },
+          {
+            "text": "Classe di resistenza\nUNI EN ISO 898-2:2012"
+          },
+          {
+            "text": "Durezza"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Viti Dadi Rondelle Riferimento"
+            "text": "4.6",
+            "latex": "4.6"
+          },
+          {
+            "text": "4; 5; 6 oppure 8",
+            "rowSpan": 2
+          },
+          {
+            "text": "100 HV min.",
+            "latex": "100\\;\\mathrm{HV\\ min.}",
+            "rowSpan": 5
+          },
+          {
+            "text": "UNI EN 15048-1",
+            "rowSpan": 7
           }
         ],
         [
           {
-            "text": "Classe di resistenza"
+            "text": "4.8",
+            "latex": "4.8"
           }
         ],
         [
           {
-            "text": "UNI EN ISO 898-1:2013 Classe di resistenza"
+            "text": "5.6",
+            "latex": "5.6"
+          },
+          {
+            "text": "5; 6 oppure 8",
+            "rowSpan": 2
           }
         ],
         [
           {
-            "text": "UNI EN ISO 898-2:2012 Durezza"
+            "text": "5.8",
+            "latex": "5.8"
           }
         ],
         [
           {
-            "text": "4.6 4; 5; 6 oppure 8"
+            "text": "6.8",
+            "latex": "6.8"
+          },
+          {
+            "text": "6 oppure 8"
           }
         ],
         [
           {
-            "text": "100 HV min."
+            "text": "8.8",
+            "latex": "8.8"
+          },
+          {
+            "text": "8 oppure 10"
+          },
+          {
+            "text": "100 HV min. oppure 300 HV min.",
+            "latex": "100\\;\\mathrm{HV\\ min.}\\ \\text{oppure}\\ 300\\;\\mathrm{HV\\ min.}",
+            "rowSpan": 2
           }
         ],
         [
           {
-            "text": "UNI EN 15048-1 4.8"
+            "text": "10.9",
+            "latex": "10.9"
+          },
+          {
+            "text": "10 oppure 12"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -849,19 +2874,108 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.4.6.1",
       "officialNumber": "11.3.XIII.b",
       "pdfPage": 342,
-      "caption": "Tab. 11.3.XIII.b Classe 4.6 4.8 5.6 5.8 6.8 8.8 10.9 fyb (N/mm2 ) ftb (N/mm2 ) 240 400 320 400 300 500 400 500 480 600 640 800 900 1000",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.3.XIII.b – Tensioni di snervamento e di rottura delle viti",
+      "columnCount": 8,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "4.6"
+          },
+          {
+            "text": "4.8"
+          },
+          {
+            "text": "5.6"
+          },
+          {
+            "text": "5.8"
+          },
+          {
+            "text": "6.8"
+          },
+          {
+            "text": "8.8"
+          },
+          {
+            "text": "10.9"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": ""
+            "text": "fyb (N/mm²)",
+            "latex": "f_{yb}\\;(\\mathrm{N/mm^2})"
+          },
+          {
+            "text": "240",
+            "latex": "240"
+          },
+          {
+            "text": "320",
+            "latex": "320"
+          },
+          {
+            "text": "300",
+            "latex": "300"
+          },
+          {
+            "text": "400",
+            "latex": "400"
+          },
+          {
+            "text": "480",
+            "latex": "480"
+          },
+          {
+            "text": "640",
+            "latex": "640"
+          },
+          {
+            "text": "900",
+            "latex": "900"
+          }
+        ],
+        [
+          {
+            "text": "ftb (N/mm²)",
+            "latex": "f_{tb}\\;(\\mathrm{N/mm^2})"
+          },
+          {
+            "text": "400",
+            "latex": "400"
+          },
+          {
+            "text": "400",
+            "latex": "400"
+          },
+          {
+            "text": "500",
+            "latex": "500"
+          },
+          {
+            "text": "500",
+            "latex": "500"
+          },
+          {
+            "text": "600",
+            "latex": "600"
+          },
+          {
+            "text": "800",
+            "latex": "800"
+          },
+          {
+            "text": "1000",
+            "latex": "1000"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -869,24 +2983,116 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.3.4.6.2",
       "officialNumber": "11.3.XIV",
       "pdfPage": 342,
-      "caption": "Tab. 11.3.XIV",
-      "columnCount": 1,
-      "headers": [],
-      "rows": [
+      "caption": "Tab. 11.3.XIV – Assiemi di viti, dadi e rondelle per giunzioni precaricate",
+      "columnCount": 7,
+      "headers": [
         [
           {
-            "text": "Sistema Viti Dadi Rondelle Classe di resistenza Riferimento Classe di resistenza Riferimento Durezza Riferimento"
+            "text": "Sistema",
+            "rowSpan": 2
+          },
+          {
+            "text": "Viti",
+            "colSpan": 2
+          },
+          {
+            "text": "Dadi",
+            "colSpan": 2
+          },
+          {
+            "text": "Rondelle",
+            "colSpan": 2
           }
         ],
         [
           {
-            "text": "HR 8.8 UNI EN 14399-1 8 UNI EN 14399-3 300-370 HV UNI EN 14399 parti 5 e 6 10.9 UNI EN 14399-3 10 UNI EN 14399-3 HV 10.9 UNI EN 14399-4 10 UNI EN 14399-4"
+            "text": "Classe di resistenza"
+          },
+          {
+            "text": "Riferimento"
+          },
+          {
+            "text": "Classe di resistenza"
+          },
+          {
+            "text": "Riferimento"
+          },
+          {
+            "text": "Durezza"
+          },
+          {
+            "text": "Riferimento"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "HR",
+            "rowSpan": 2
+          },
+          {
+            "text": "8.8",
+            "latex": "8.8"
+          },
+          {
+            "text": "UNI EN 14399-1"
+          },
+          {
+            "text": "8",
+            "latex": "8"
+          },
+          {
+            "text": "UNI EN 14399-3"
+          },
+          {
+            "text": "300-370 HV",
+            "latex": "300\\text{-}370\\;\\mathrm{HV}",
+            "rowSpan": 3
+          },
+          {
+            "text": "UNI EN 14399 parti 5 e 6",
+            "rowSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "10.9",
+            "latex": "10.9"
+          },
+          {
+            "text": "UNI EN 14399-3"
+          },
+          {
+            "text": "10",
+            "latex": "10"
+          },
+          {
+            "text": "UNI EN 14399-3"
+          }
+        ],
+        [
+          {
+            "text": "HV"
+          },
+          {
+            "text": "10.9",
+            "latex": "10.9"
+          },
+          {
+            "text": "UNI EN 14399-4"
+          },
+          {
+            "text": "10",
+            "latex": "10"
+          },
+          {
+            "text": "UNI EN 14399-4"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {

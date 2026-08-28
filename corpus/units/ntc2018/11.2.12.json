@@ -98,8 +98,32 @@
       "origin": "official",
       "text": {
         "raw": "La miscela del calcestruzzo fibrorinforzato deve essere sottoposta a valutazione preliminare secondo le indicazioni riportate nel\nprecedente § 11.2.3 con determinazione dei valori di resistenza a trazione residua f R1k per lo Stato limite di esercizio e f R3k per lo\nStato limite Ultimo determinati secondo UNI EN 14651:2007.",
-        "normalized": "La miscela del calcestruzzo fibrorinforzato deve essere sottoposta a valutazione preliminare secondo le indicazioni riportate nel precedente § 11.2.3 con determinazione dei valori di resistenza a trazione residua f R1k per lo Stato limite di esercizio e f R3k per lo Stato limite Ultimo determinati secondo UNI EN 14651:2007.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "La miscela del calcestruzzo fibrorinforzato deve essere sottoposta a valutazione preliminare secondo le indicazioni riportate nel precedente § 11.2.3 con determinazione dei valori di resistenza a trazione residua fR1k per lo Stato limite di esercizio e fR3k per lo Stato limite Ultimo determinati secondo UNI EN 14651:2007.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La miscela del calcestruzzo fibrorinforzato deve essere sottoposta a valutazione preliminare secondo le indicazioni riportate nel precedente § 11.2.3 con determinazione dei valori di resistenza a trazione residua "
+          },
+          {
+            "kind": "math",
+            "value": "fR1k",
+            "latex": "f_{R1k}"
+          },
+          {
+            "kind": "text",
+            "value": " per lo Stato limite di esercizio e "
+          },
+          {
+            "kind": "math",
+            "value": "fR3k",
+            "latex": "f_{R3k}"
+          },
+          {
+            "kind": "text",
+            "value": " per lo Stato limite Ultimo determinati secondo UNI EN 14651:2007."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -121,10 +145,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b4d55e98de34b8bda433937d8c5e9c07932e3a3cc02b9bee0ca35b979589d549",
-        "normalizedSha256": "8a0a33a4265e8d5c1e8153d27187c784744efcbecf7f77c6ef2ae75b7dba4bc5"
+        "normalizedSha256": "1cdac4fc66a05a4ac6026fbf715f515c659387fbbb506234337236892086d1c0"
       }
     },
     {

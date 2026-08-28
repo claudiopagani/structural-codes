@@ -64,7 +64,7 @@
       "origin": "official",
       "text": {
         "raw": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo t0 = j di messa in carico, non è superiore a 0,45\nf ckj, il coefficiente di viscosità Κ (ǈ, t 0 \n), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1-\n1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove h0 è la dimensione fittizia definita in § 11.2.10.6:",
-        "normalized": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo t0 = j di messa in carico, non è superiore a 0,45 f ckj, il coefficiente di viscosità Κ (ǈ, t 0 ), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1- 1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove h0 è la dimensione fittizia definita in § 11.2.10.6:",
+        "normalized": "In sede di progettazione, se la tensione di compressione del calcestruzzo, al tempo t0 = j di messa in carico, non è superiore a 0,45 fckj, il coefficiente di viscosità φ(∞, t0), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1-1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove h0 è la dimensione fittizia definita in § 11.2.10.6:",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -73,12 +73,30 @@
           },
           {
             "kind": "math",
-            "value": "t0",
-            "latex": "t_0"
+            "value": "t0 = j",
+            "latex": "t_0=j"
           },
           {
             "kind": "text",
-            "value": " = j di messa in carico, non è superiore a 0,45 f ckj, il coefficiente di viscosità Κ (ǈ, t 0 ), a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1- 1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove "
+            "value": " di messa in carico, non è superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,45 fckj",
+            "latex": "0{,}45f_{ckj}"
+          },
+          {
+            "kind": "text",
+            "value": ", il coefficiente di viscosità "
+          },
+          {
+            "kind": "math",
+            "value": "φ(∞, t0)",
+            "latex": "\\phi(\\infty,t_0)"
+          },
+          {
+            "kind": "text",
+            "value": ", a tempo infinito, a meno di valutazioni più precise (per es. § 3.1.4 di UNI EN 1992-1-1:2005), può essere dedotto dalle seguenti Tabelle 11.2.VI e 11.2.VII dove "
           },
           {
             "kind": "math",
@@ -121,10 +139,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "ecf156cb68de5a9ba3c01322ba7d55b58a817a61985e1715a276d5570a6308fc",
-        "normalizedSha256": "c383712603840d7bef29ac7c9025d001eafb47469414e41dd377d2d2dc9f80e6"
+        "normalizedSha256": "8f032fe1747f2b55b424314378feb1583f6a2d84d9298b5df34a2bff3c7d5eb2"
       }
     },
     {
@@ -165,83 +188,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-003",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm\n3 giorni 3,5 3,2 3,0 2,8\n7 giorni 2,9 2,7 2,5 2,3\n15 giorni 2,6 2,4 2,2 2,1\n30 giorni 2,3 2,1 1,9 1,8\nǃ 60 giorni 2,0 1,8 1,7 1,6",
-        "normalized": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 3,5 3,2 3,0 2,8 7 giorni 2,9 2,7 2,5 2,3 15 giorni 2,6 2,4 2,2 2,1 30 giorni 2,3 2,1 1,9 1,8 ǃ 60 giorni 2,0 1,8 1,7 1,6",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "t 0 "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " ǂ 75 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " = 150 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " = 300 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " ǃ 600 mm 3 giorni 3,5 3,2 3,0 2,8 7 giorni 2,9 2,7 2,5 2,3 15 giorni 2,6 2,4 2,2 2,1 30 giorni 2,3 2,1 1,9 1,8 ǃ 60 giorni 2,0 1,8 1,7 1,6"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "496beada40fcc3235275874ccc12113103d579d875318db1092917842ed34dc9",
-        "normalizedSha256": "ab3877c83ab97f5a381840716fd03acec49d1060abb2a79e541bfb5b7f2e85ab"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-004",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.2.vii",
@@ -277,84 +223,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-005",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm\n3 giorni 4,5 4,0 3,6 3,3\n7 giorni 3,7 3,3 3,0 2,8\n15 giorni 3,3 3,0 2,7 2,5\n30 giorni 2,9 2,6 2,3 2,2\nǃ 60 giorni 2,5 2,3 2,1 1,9",
-        "normalized": "t 0 h0 ǂ 75 mm h0 = 150 mm h0 = 300 mm h0 ǃ 600 mm 3 giorni 4,5 4,0 3,6 3,3 7 giorni 3,7 3,3 3,0 2,8 15 giorni 3,3 3,0 2,7 2,5 30 giorni 2,9 2,6 2,3 2,2 ǃ 60 giorni 2,5 2,3 2,1 1,9",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "t 0 "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " ǂ 75 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " = 150 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " = 300 mm "
-          },
-          {
-            "kind": "math",
-            "value": "h0",
-            "latex": "h_0"
-          },
-          {
-            "kind": "text",
-            "value": " ǃ 600 mm 3 giorni 4,5 4,0 3,6 3,3 7 giorni 3,7 3,3 3,0 2,8 15 giorni 3,3 3,0 2,7 2,5 30 giorni 2,9 2,6 2,3 2,2 ǃ 60 giorni 2,5 2,3 2,1 1,9"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 318,
-        "printedPage": "314",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "d35357a3ab636a922447e0e44fcd37ed64eb09181faa95632622ed4737b2adc7",
-        "normalizedSha256": "0184d1da3bc73862318d1017427d0a75492295acca9843f51073fa4cf5820472"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-004",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -378,13 +247,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.10.7#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Nel caso in cui sia richiesta una valutazione in tempi diversi da t = ǈ del coeĜciente di viscosità questo potrà essere valutato se-\ncondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12.",
-        "normalized": "Nel caso in cui sia richiesta una valutazione in tempi diversi da t = ǈ del coeĜciente di viscosità questo potrà essere valutato secondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Nel caso in cui sia richiesta una valutazione in tempi diversi da t = ∞ del coefficiente di viscosità questo potrà essere valutato secondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso in cui sia richiesta una valutazione in tempi diversi da "
+          },
+          {
+            "kind": "math",
+            "value": "t = ∞",
+            "latex": "t=\\infty"
+          },
+          {
+            "kind": "text",
+            "value": " del coefficiente di viscosità questo potrà essere valutato secondo modelli tratti da documenti di comprovata validità di cui al Capitolo 12."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -411,10 +295,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b293c5170a3bba763cdbad33884d5f11aac5d021b3f7a0a5f89f9239eb7e50f6",
-        "normalizedSha256": "8e768da875d294fd529a9e56cbb0a406dbd560e88b7d2249bd76b35b1728238b"
+        "normalizedSha256": "7ebfbf44a070f6728a11d6f8c2292a777de9f9ee2a343e0901d9600706c5c5ff"
       }
     }
   ],

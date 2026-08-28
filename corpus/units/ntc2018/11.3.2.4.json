@@ -314,8 +314,32 @@
       "origin": "official",
       "text": {
         "raw": "Tutti i prodotti sono caratterizzati dal diametro  della barra tonda liscia equipesante, calcolato nell’ipotesi che la densità\ndell’acciaio sia pari a 7,85 kg/dm3.",
-        "normalized": "Tutti i prodotti sono caratterizzati dal diametro della barra tonda liscia equipesante, calcolato nell’ipotesi che la densità dell’acciaio sia pari a 7,85 kg/dm3.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Tutti i prodotti sono caratterizzati dal diametro Ø della barra tonda liscia equipesante, calcolato nell’ipotesi che la densità dell’acciaio sia pari a 7,85 kg/dm³.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tutti i prodotti sono caratterizzati dal diametro "
+          },
+          {
+            "kind": "math",
+            "value": "Ø",
+            "latex": "\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": " della barra tonda liscia equipesante, calcolato nell’ipotesi che la densità dell’acciaio sia pari a "
+          },
+          {
+            "kind": "math",
+            "value": "7,85 kg/dm³",
+            "latex": "7{,}85\\;\\mathrm{kg/dm^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -342,10 +366,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "be38fc7ee82f05d2d6a2cd417460ce528d0dd5459ab694ba83b6122ec1ba4fbc",
-        "normalizedSha256": "46a6199153c9e00cbbbe03234b594e978c71215d4a9fd8e30da90d104282f43c"
+        "normalizedSha256": "4e84af6ad9e75a4848eedfe8574ca5eb5245cd9e927d49194157687cd2d32fb8"
       }
     },
     {
@@ -354,8 +383,23 @@
       "origin": "official",
       "text": {
         "raw": "Gli acciai B450C, di cui al § 11.3.2.1, possono essere impiegati in barre di diametro  compreso tra 6 e 40 mm.",
-        "normalized": "Gli acciai B450C, di cui al § 11.3.2.1, possono essere impiegati in barre di diametro compreso tra 6 e 40 mm.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Gli acciai B450C, di cui al § 11.3.2.1, possono essere impiegati in barre di diametro Ø compreso tra 6 e 40 mm.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli acciai B450C, di cui al § 11.3.2.1, possono essere impiegati in barre di diametro "
+          },
+          {
+            "kind": "math",
+            "value": "Ø compreso tra 6 e 40 mm",
+            "latex": "6\\;\\mathrm{mm}\\le\\varnothing\\le40\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -377,10 +421,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "9ce1a37adbe52e57c53e24d4ed5652135b60728b1f883772c56d44ab8ff14742",
-        "normalizedSha256": "608f171a529e11c0d1550a25ddb82619aac0a6297c2334a442d6197c92b9af32"
+        "normalizedSha256": "d1f6a971837045d46523a517a6eb0bc680594e2ec9426fc8059f683ca51d8685"
       }
     },
     {
@@ -389,8 +438,23 @@
       "origin": "official",
       "text": {
         "raw": "Per gli acciai B450A, di cui al § 11.3.2.2 il diametro  delle barre deve essere compreso tra 5 e 10 mm.",
-        "normalized": "Per gli acciai B450A, di cui al § 11.3.2.2 il diametro delle barre deve essere compreso tra 5 e 10 mm.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Per gli acciai B450A, di cui al § 11.3.2.2 il diametro Ø delle barre deve essere compreso tra 5 e 10 mm.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli acciai B450A, di cui al § 11.3.2.2 il diametro "
+          },
+          {
+            "kind": "math",
+            "value": "Ø delle barre deve essere compreso tra 5 e 10 mm",
+            "latex": "5\\;\\mathrm{mm}\\le\\varnothing\\le10\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -412,10 +476,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "29b1320433e6eb420cfa3b1c98faed9797b92822fe6236e68a678d4ea504d706",
-        "normalizedSha256": "742760443481ff0e3bcaf53fae08d32fe0b045be4bec2acb6da302ce2451c20d"
+        "normalizedSha256": "cf5c87ae78695089a4367ca369eb82ef4c4f62de9e2acccdfbfd5cf205a0c0ab"
       }
     },
     {
@@ -424,8 +493,32 @@
       "origin": "official",
       "text": {
         "raw": "L’uso di acciai forniti in rotolo è ammesso, esclusivamente per impieghi strutturali, per diametri  non superiori a 16 mm per gli\nacciai B450C e diametri  non superiori a 10 mm per gli acciai B450A.",
-        "normalized": "L’uso di acciai forniti in rotolo è ammesso, esclusivamente per impieghi strutturali, per diametri non superiori a 16 mm per gli acciai B450C e diametri non superiori a 10 mm per gli acciai B450A.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "L’uso di acciai forniti in rotolo è ammesso, esclusivamente per impieghi strutturali, per diametri Ø non superiori a 16 mm per gli acciai B450C e diametri Ø non superiori a 10 mm per gli acciai B450A.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’uso di acciai forniti in rotolo è ammesso, esclusivamente per impieghi strutturali, per diametri "
+          },
+          {
+            "kind": "math",
+            "value": "Ø non superiori a 16 mm",
+            "latex": "\\varnothing\\le16\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per gli acciai B450C e diametri "
+          },
+          {
+            "kind": "math",
+            "value": "Ø non superiori a 10 mm",
+            "latex": "\\varnothing\\le10\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per gli acciai B450A."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -452,10 +545,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c8f117e3333c093229609b383e07f06d2322128df7bdc510996aa2fcfc9d67b7",
-        "normalizedSha256": "afa6fe147df8af1a5d4b43fb1c4955a2f347157daf4c0e3faec40649bf046894"
+        "normalizedSha256": "fdc9ce145d781297736edb710e9fa7b83edd6381f2287816c9f11092b3e7f005"
       }
     },
     {

@@ -83,6 +83,31 @@ test("NTC 9 conserva testo significativo, elenchi e matematica inline", async ()
     }
 });
 
+test("NTC 9 contiene tutte e sole le due occorrenze matematiche ufficiali", async () => {
+    const units = await Promise.all(
+        numbers.map((number) => json(`corpus/units/ntc2018/${number}.json`)),
+    );
+    const mathInventory = units.flatMap((unit) =>
+        unit.blocks.flatMap(
+            (block: {
+                text?: { inline?: Array<{ kind: string; value: string; latex?: string }> };
+            }) =>
+                block.text?.inline
+                    ?.filter((segment) => segment.kind === "math")
+                    .map((segment) => ({
+                        unit: unit.numbering.official,
+                        value: segment.value,
+                        latex: segment.latex,
+                    })) ?? [],
+        ),
+    );
+
+    assert.deepEqual(mathInventory, [
+        { unit: "9.2.2", value: "15%", latex: "15\\%" },
+        { unit: "9.2.3", value: "15%", latex: "15\\%" },
+    ]);
+});
+
 test("NTC 9 non dichiara asset inattesi o duplicati e non invade il Capitolo 10", async () => {
     const units = await Promise.all(
         numbers.map((number) => json(`corpus/units/ntc2018/${number}.json`)),

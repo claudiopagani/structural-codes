@@ -65,7 +65,22 @@
       "text": {
         "raw": "Per la realizzazione di strutture metalliche e di strutture composte si dovranno utilizzare acciai conformi alle norme armonizzate\nUNI EN 10025-1, UNI EN 10210-1 e UNI EN 10219-1, recanti la Marcatura CE, cui si applica il sistema di valutazione e verifica\ndella costanza della prestazione 2+, e per i quali si rimanda a quanto specificato al punto A del § 11.1. Solo per i prodotti per cui\nnon sia applicabile la marcatura CE si rimanda a quanto specificato al punto B del § 11.1 e si applica la procedura di cui ai §",
         "normalized": "Per la realizzazione di strutture metalliche e di strutture composte si dovranno utilizzare acciai conformi alle norme armonizzate UNI EN 10025-1, UNI EN 10210-1 e UNI EN 10219-1, recanti la Marcatura CE, cui si applica il sistema di valutazione e verifica della costanza della prestazione 2+, e per i quali si rimanda a quanto specificato al punto A del § 11.1. Solo per i prodotti per cui non sia applicabile la marcatura CE si rimanda a quanto specificato al punto B del § 11.1 e si applica la procedura di cui ai §",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per la realizzazione di strutture metalliche e di strutture composte si dovranno utilizzare acciai conformi alle norme armonizzate UNI EN 10025-1, UNI EN 10210-1 e UNI EN 10219-1, recanti la Marcatura CE, cui si applica il sistema di valutazione e verifica della costanza della prestazione "
+          },
+          {
+            "kind": "math",
+            "value": "2+",
+            "latex": "2+"
+          },
+          {
+            "kind": "text",
+            "value": ", e per i quali si rimanda a quanto specificato al punto A del § 11.1. Solo per i prodotti per cui non sia applicabile la marcatura CE si rimanda a quanto specificato al punto B del § 11.1 e si applica la procedura di cui ai §"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -87,6 +102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "81e2472c8aad7e663fecda3b9567c7d10882151534aba854ee47f0d204e30edb",
@@ -99,8 +119,23 @@
       "origin": "official",
       "text": {
         "raw": "Per le palancole metalliche e per i nastri zincati di spessore ǂ 4 mm si farà riferimento rispettivamente alle UNI EN 10248-1:1997\ned UNI EN 10346:2015.",
-        "normalized": "Per le palancole metalliche e per i nastri zincati di spessore ǂ 4 mm si farà riferimento rispettivamente alle UNI EN 10248-1:1997 ed UNI EN 10346:2015.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Per le palancole metalliche e per i nastri zincati di spessore s ≤ 4 mm si farà riferimento rispettivamente alle UNI EN 10248-1:1997 ed UNI EN 10346:2015.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le palancole metalliche e per i nastri zincati di spessore "
+          },
+          {
+            "kind": "math",
+            "value": "s ≤ 4 mm",
+            "latex": "s\\le4\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " si farà riferimento rispettivamente alle UNI EN 10248-1:1997 ed UNI EN 10346:2015."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -122,10 +157,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "af533d6d45aea20d6e984b9f8688163ea74178ccb5f787ee4bde04c0612bacb4",
-        "normalizedSha256": "d03a321106bf579135c67b2f35d4ddb4121d9b5ce3733d1d5a3e3882fb98d5dd"
+        "normalizedSha256": "b1e21a033870a63fef072f369358d5bc132a7ce85acb86cba8b4ded329a5cd33"
       }
     },
     {

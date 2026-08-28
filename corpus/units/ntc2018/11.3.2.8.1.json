@@ -59,7 +59,7 @@
       "origin": "official",
       "text": {
         "raw": "È ammesso l’impiego di acciai inossidabili di natura austenitica o austeno-ferritica, purché le caratteristiche meccaniche siano\nconformi alle prescrizioni relative agli acciai di cui al § 11.3.2.1, con l’avvertenza di sostituire al termine ft della Tab. 11.3.Ib, solo\nnel calcolo del rapporto ft / f y, il termine f 7% \n, tensione corrispondente ad un allungamento totale pari al 7%. La saldabilità di tali\nacciai va documentata attraverso prove di saldabilità certificate da un laboratorio di cui all’art. 59 del DPR n. 380/2001 ed effettua-\nte su campioni realizzati con gli specifici procedimenti di saldatura previsti dal fabbricante per l’utilizzo in cantiere o nei Centri di\ntrasformazione.",
-        "normalized": "È ammesso l’impiego di acciai inossidabili di natura austenitica o austeno-ferritica, purché le caratteristiche meccaniche siano conformi alle prescrizioni relative agli acciai di cui al § 11.3.2.1, con l’avvertenza di sostituire al termine ft della Tab. 11.3.Ib, solo nel calcolo del rapporto ft / f y, il termine f 7% , tensione corrispondente ad un allungamento totale pari al 7%. La saldabilità di tali acciai va documentata attraverso prove di saldabilità certificate da un laboratorio di cui all’art. 59 del DPR n. 380/2001 ed effettuate su campioni realizzati con gli specifici procedimenti di saldatura previsti dal fabbricante per l’utilizzo in cantiere o nei Centri di trasformazione.",
+        "normalized": "È ammesso l’impiego di acciai inossidabili di natura austenitica o austeno-ferritica, purché le caratteristiche meccaniche siano conformi alle prescrizioni relative agli acciai di cui al § 11.3.2.1, con l’avvertenza di sostituire al termine ft della Tab. 11.3.Ib, solo nel calcolo del rapporto ft/fy, il termine ft7%, tensione corrispondente ad un allungamento totale pari al 7%. La saldabilità di tali acciai va documentata attraverso prove di saldabilità certificate da un laboratorio di cui all’art. 59 del DPR n. 380/2001 ed effettuate su campioni realizzati con gli specifici procedimenti di saldatura previsti dal fabbricante per l’utilizzo in cantiere o nei Centri di trasformazione.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -77,12 +77,30 @@
           },
           {
             "kind": "math",
-            "value": "ft",
-            "latex": "f_t"
+            "value": "ft/fy",
+            "latex": "f_t/f_y"
           },
           {
             "kind": "text",
-            "value": " / f y, il termine f 7% , tensione corrispondente ad un allungamento totale pari al 7%. La saldabilità di tali acciai va documentata attraverso prove di saldabilità certificate da un laboratorio di cui all’art. 59 del DPR n. 380/2001 ed effettuate su campioni realizzati con gli specifici procedimenti di saldatura previsti dal fabbricante per l’utilizzo in cantiere o nei Centri di trasformazione."
+            "value": ", il termine "
+          },
+          {
+            "kind": "math",
+            "value": "ft7%",
+            "latex": "f_{t7\\%}"
+          },
+          {
+            "kind": "text",
+            "value": ", tensione corrispondente ad un allungamento totale pari al "
+          },
+          {
+            "kind": "math",
+            "value": "7%",
+            "latex": "7\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". La saldabilità di tali acciai va documentata attraverso prove di saldabilità certificate da un laboratorio di cui all’art. 59 del DPR n. 380/2001 ed effettuate su campioni realizzati con gli specifici procedimenti di saldatura previsti dal fabbricante per l’utilizzo in cantiere o nei Centri di trasformazione."
           }
         ]
       },
@@ -111,10 +129,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5cb2eee7ce9cda0b2963058dc5ab1d775c001d669c09dd032554393c43e9c9ec",
-        "normalizedSha256": "82eff45509dfe222cc57aa7dccdefe2eb8faa116bcd0511cf0842d88086a1fe4"
+        "normalizedSha256": "dfab69a1be751fd216df6778bdabc55e401a0c30f2b947e153884882aeb42868"
       }
     },
     {

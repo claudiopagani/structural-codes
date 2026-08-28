@@ -65,7 +65,22 @@
       "text": {
         "raw": "L’analisi chimica effettuata su colata e l’eventuale analisi chimica di controllo effettuata sul prodotto finito devono soddisfare le\nlimitazioni riportate nella Tab. 11.3.II dove il calcolo del carbonio equivalente Ceq è effettuato con la seguente formula:",
         "normalized": "L’analisi chimica effettuata su colata e l’eventuale analisi chimica di controllo effettuata sul prodotto finito devono soddisfare le limitazioni riportate nella Tab. 11.3.II dove il calcolo del carbonio equivalente Ceq è effettuato con la seguente formula:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’analisi chimica effettuata su colata e l’eventuale analisi chimica di controllo effettuata sul prodotto finito devono soddisfare le limitazioni riportate nella Tab. 11.3.II dove il calcolo del carbonio equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "Ceq",
+            "latex": "C_{eq}"
+          },
+          {
+            "kind": "text",
+            "value": " è effettuato con la seguente formula:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -87,6 +102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "bf9e9281b878ff80f4925cb005ed4d07c19c86150f489a91caa2209f47f5a1a1",
@@ -95,76 +115,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-002",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "15\nCuNi",
-        "normalized": "15 CuNi",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 325,
-        "printedPage": "321",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "de3d6e0c9a8de7a81b75d3aac9552c6cc5ce82204303ba2697f2d225a89004ef",
-        "normalizedSha256": "de755c8a8a4fdba1925b04d38deb807e8ff9d40e6ce3914426865ed3531e303e"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-003",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "5\nVMoCr",
-        "normalized": "5 VMoCr",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 325,
-        "printedPage": "321",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "e7d0fbf62d4fd6dde02566d5f622735fa52171e1f199a23d0a75270f9648a573",
-        "normalizedSha256": "af6191093c0c1b773f99c3387ede581e182396226d10315415f09ba68a2caf0b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-004",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.3.2",
@@ -205,7 +155,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-003",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -229,7 +179,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-004",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.3.ii",
@@ -255,48 +205,55 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Analisi di prodotto Analisi di colata\nCarbonio C 0,24 0,22\nFosforo P 0,055 0,050\nZolfo S 0,055 0,050\nRame Cu 0,85 0,80\nAzoto N 0,014 0,012\nCarbonio equivalente Ceq 0,52 0,50",
-        "normalized": "Analisi di prodotto Analisi di colata Carbonio C 0,24 0,22 Fosforo P 0,055 0,050 Zolfo S 0,055 0,050 Rame Cu 0,85 0,80 Azoto N 0,014 0,012 Carbonio equivalente Ceq 0,52 0,50",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 325,
-        "printedPage": "321",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "d2d8c3803bcd855db9d7aade8ac439b06c75c156ffa79937d3e54db8b4b615e9",
-        "normalizedSha256": "407f0483209c6c71593f628b133ff0f2d0945a25e8e17efcd651e2d5a3a52969"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "È possibile eccedere il valore massimo di C dello 0,03% in massa, a patto che il valore del Ceq sia ridotto dello 0,02% in massa.",
         "normalized": "È possibile eccedere il valore massimo di C dello 0,03% in massa, a patto che il valore del Ceq sia ridotto dello 0,02% in massa.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "È possibile eccedere il valore massimo di "
+          },
+          {
+            "kind": "math",
+            "value": "C",
+            "latex": "\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " dello "
+          },
+          {
+            "kind": "math",
+            "value": "0,03%",
+            "latex": "0{,}03\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in massa, a patto che il valore del "
+          },
+          {
+            "kind": "math",
+            "value": "Ceq",
+            "latex": "C_{eq}"
+          },
+          {
+            "kind": "text",
+            "value": " sia ridotto dello "
+          },
+          {
+            "kind": "math",
+            "value": "0,02%",
+            "latex": "0{,}02\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in massa."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -308,13 +265,19 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "a3e3f65512bfa55b67a0216aeea54214641743db7af468bf1a8c1c3b9b12fd18",
         "normalizedSha256": "a3e3f65512bfa55b67a0216aeea54214641743db7af468bf1a8c1c3b9b12fd18"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-009",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.6#block-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {

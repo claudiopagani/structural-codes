@@ -110,10 +110,10 @@ const assetSpecs: AssetSpec[] = [
 const formulaLatex: Record<string, string> = {
     "urn:structural-codes:it:asset:formula:ntc2018:11.2.1": "f_{ck}=0{,}83\\cdot R_{ck}",
     "urn:structural-codes:it:asset:formula:ntc2018:11.2.2": "f_{cm}=f_{ck}+8\\;[\\mathrm{N/mm^2}]",
-    "urn:structural-codes:it:asset:formula:ntc2018:11.2.3a": "f_{ctm}=0{,}30\\,f_{ck}^{2/3}\\qquad\\text{per classi }\\le\\mathrm{C50/60}",
-    "urn:structural-codes:it:asset:formula:ntc2018:11.2.3b": "f_{ctm}=2{,}12\\,\\ln\\left[1+\\frac{f_{cm}}{10}\\right]\\qquad\\text{per classi }>\\mathrm{C50/60}",
+    "urn:structural-codes:it:asset:formula:ntc2018:11.2.3a": "f_{ctm}=0{,}30\\cdot f_{ck}^{2/3}\\qquad\\text{per classi }\\le\\mathrm{C50/60}",
+    "urn:structural-codes:it:asset:formula:ntc2018:11.2.3b": "f_{ctm}=2{,}12\\cdot\\ln\\left[1+\\frac{f_{cm}}{10}\\right]\\qquad\\text{per classi }>\\mathrm{C50/60}",
     "urn:structural-codes:it:asset:formula:ntc2018:11.2.4": "f_{cfm}=1{,}2\\,f_{ctm}",
-    "urn:structural-codes:it:asset:formula:ntc2018:11.2.5": "E_{cm}=22\\,000\\left[\\frac{f_{cm}}{10}\\right]^{0{,}3}\\;[\\mathrm{N/mm^2}]",
+    "urn:structural-codes:it:asset:formula:ntc2018:11.2.5": "E_{cm}=22{.}000\\cdot\\left[\\frac{f_{cm}}{10}\\right]^{0{,}3}\\;[\\mathrm{N/mm^2}]",
     "urn:structural-codes:it:asset:formula:ntc2018:11.2.6": "\\varepsilon_{cs}=\\varepsilon_{cd}+\\varepsilon_{ca}",
 };
 
@@ -309,6 +309,22 @@ function inlineSegments(text: string): any[] | undefined {
     return segments.filter((segment) => segment.value.length > 0);
 }
 
+type VerifiedInlineToken = { value: string; latex: string };
+
+function verifiedInline(text: string, tokens: VerifiedInlineToken[]): any[] {
+    const segments: any[] = [];
+    let cursor = 0;
+    for (const token of tokens) {
+        const index = text.indexOf(token.value, cursor);
+        if (index < 0) throw new Error(`Token inline non trovato: ${token.value} in ${text}`);
+        if (index > cursor) segments.push({ kind: "text", value: text.slice(cursor, index) });
+        segments.push({ kind: "math", value: token.value, latex: token.latex });
+        cursor = index + token.value.length;
+    }
+    if (cursor < text.length) segments.push({ kind: "text", value: text.slice(cursor) });
+    return segments;
+}
+
 function evidence(page: number, printedPage: string | null, raw: string, normalized: string, region: any = null): any {
     return {
         sourceId,
@@ -393,17 +409,20 @@ const tableSeeds: any[] = [
         caption: "Tab. 11.2.I", columnCount: 2,
         headers: [[tableCell("Controllo di tipo A"), tableCell("Controllo di tipo B")]],
         rows: [
-            [tableCell("Rc,min ≥ Rck − 3,5", { colSpan: 2 })],
-            [tableCell("Rcm28 ≥ Rck + 3,5"), tableCell("Rcm28 ≥ Rck + 1,48 s")],
+            [tableCell("Rc,min ≥ Rck − 3,5", { latex: "R_{c,\\min}\\ge R_{ck}-3{,}5", colSpan: 2 })],
+            [tableCell("Rcm28 ≥ Rck + 3,5", { latex: "R_{cm28}\\ge R_{ck}+3{,}5" }), tableCell("Rcm28 ≥ Rck + 1,48 s", { latex: "R_{cm28}\\ge R_{ck}+1{,}48s" })],
             [tableCell("(N° prelievi: 3)"), tableCell("(N° prelievi ≥ 15)")],
-        ], notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
+        ], notes: [
+            "Ove: Rcm28 = resistenza media dei prelievi (N/mm²); Rc,min = minore valore di resistenza dei prelievi (N/mm²); s = scarto quadratico medio.",
+            "Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria.",
+        ],
     },
     {
         id: "urn:structural-codes:it:asset:table:ntc2018:11.2.ii",
         unitId: idFor("11.2.9.2"), officialNumber: "11.2.II", pdfPage: 316,
         caption: "Tab. 11.2.II", columnCount: 3,
         headers: [[tableCell("Specifica Tecnica Europea armonizzata di riferimento"), tableCell("Uso Previsto"), tableCell("Sistema di Valutazione e Verifica della Costanza della Prestazione")]],
-        rows: [[tableCell("Aggregati per calcestruzzo UNI EN 12620 e UNI EN 13055-1"), tableCell("Calcestruzzo strutturale"), tableCell("2 +")]],
+        rows: [[tableCell("Aggregati per calcestruzzo UNI EN 12620 e UNI EN 13055-1"), tableCell("Calcestruzzo strutturale"), tableCell("2 +", { latex: "2+" })]],
         notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
     },
     {
@@ -412,10 +431,10 @@ const tableSeeds: any[] = [
         caption: "Tab. 11.2.III", columnCount: 3,
         headers: [[tableCell("Origine del materiale da riciclo"), tableCell("Classe del calcestruzzo"), tableCell("percentuale di impiego")]],
         rows: [
-            [tableCell("demolizioni di edifici (macerie)"), tableCell("= C 8/10"), tableCell("fino al 100%")],
-            [tableCell("demolizioni di solo calcestruzzo e c.a. (frammenti di calcestruzzo ≥ 90%, UNI EN 933-11:2009)", { rowSpan: 3 }), tableCell("≤ C20/25"), tableCell("fino al 60%")],
-            [tableCell("≤ C30/37"), tableCell("≤ 30%")],
-            [tableCell("≤ C45/55"), tableCell("≤ 20%")],
+            [tableCell("demolizioni di edifici (macerie)"), tableCell("= C 8/10", { latex: "=\\mathrm{C8/10}" }), tableCell("fino al 100%")],
+            [tableCell("demolizioni di solo calcestruzzo e c.a. (frammenti di calcestruzzo ≥ 90%, UNI EN 933-11:2009)", { rowSpan: 3 }), tableCell("≤ C20/25", { latex: "\\le\\mathrm{C20/25}" }), tableCell("fino al 60%")],
+            [tableCell("≤ C30/37", { latex: "\\le\\mathrm{C30/37}" }), tableCell("≤ 30%", { latex: "\\le30\\%" })],
+            [tableCell("≤ C45/55", { latex: "\\le\\mathrm{C45/55}" }), tableCell("≤ 20%", { latex: "\\le20\\%" })],
             [tableCell("Riutilizzo di calcestruzzo interno negli stabilimenti di prefabbricazione qualificati - da qualsiasi classe", { rowSpan: 2 }), tableCell("Classe minore del calcestruzzo di origine"), tableCell("fino al 15%")],
             [tableCell("Stessa classe del calcestruzzo di origine"), tableCell("fino al 10%")],
         ], notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
@@ -642,6 +661,116 @@ for (let index = 0; index < starts.length; index += 1) {
             openIssues: [{ issueId: `ntc2018-11-${current.spec.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione." }],
         },
     });
+}
+
+function patchVerifiedInline(
+    unitNumber: string,
+    prefix: string,
+    tokens: VerifiedInlineToken[],
+    replacement?: string,
+): void {
+    const unit = generatedUnits.find((candidate) => candidate.numbering.official === unitNumber);
+    const block = unit?.blocks.find((candidate: any) => candidate.text?.normalized?.startsWith(prefix));
+    if (block === undefined) throw new Error(`Blocco inline verificato non trovato: ${unitNumber} / ${prefix}`);
+    if (replacement !== undefined && replacement !== block.text.normalized) {
+        block.text.normalized = replacement;
+        block.evidence.normalizedSha256 = sha256(replacement);
+        block.evidence.transformations = [
+            ...(block.evidence.transformations ?? []),
+            {
+                operation: "manual-correction",
+                ruleVersion: profile,
+                note: "Notazione matematica ricostruita dal render ufficiale ad alta scala.",
+            },
+        ];
+    }
+    block.text.inline = verifiedInline(block.text.normalized, tokens);
+}
+
+patchVerifiedInline("11.2.1", "La prescrizione del calcestruzzo", [
+    { value: "Rck", latex: "R_{ck}" },
+    { value: "fck", latex: "f_{ck}" },
+    { value: "150 mm", latex: "150\\;\\mathrm{mm}" },
+    { value: "150 mm", latex: "150\\;\\mathrm{mm}" },
+    { value: "300 mm", latex: "300\\;\\mathrm{mm}" },
+]);
+patchVerifiedInline("11.2.1", "La resistenza caratteristica a compressione", [
+    { value: "5%", latex: "5\\%" },
+    { value: "28 giorni", latex: "28\\;\\mathrm{giorni}" },
+]);
+patchVerifiedInline("11.2.4", "La media delle resistenze", [{ value: "20%", latex: "20\\%" }]);
+patchVerifiedInline("11.2.5.1", "Ogni controllo di tipo A", [
+    { value: "300 m3", latex: "300\\;\\mathrm{m^3}" },
+    { value: "100 m3", latex: "100\\;\\mathrm{m^3}" },
+    { value: "300 m3", latex: "300\\;\\mathrm{m^3}" },
+]);
+patchVerifiedInline("11.2.5.1", "Nelle costruzioni con meno", [
+    { value: "100 m3", latex: "100\\;\\mathrm{m^3}" },
+]);
+patchVerifiedInline("11.2.5.2", "Nella realizzazione di opere", [
+    { value: "1500 m3", latex: "1500\\;\\mathrm{m^3}" },
+]);
+patchVerifiedInline("11.2.5.2", "Il controllo è riferito", [
+    { value: "1500 m3", latex: "1500\\;\\mathrm{m^3}" },
+]);
+patchVerifiedInline("11.2.5.2", "Ogni controllo di accettazione", [
+    { value: "100 m3", latex: "100\\;\\mathrm{m^3}" },
+]);
+{
+    const original = generatedUnits.find((unit) => unit.numbering.official === "11.2.5.2")!.blocks
+        .find((block: any) => block.text?.normalized?.startsWith("Se si eseguono controlli statistici"))!.text.normalized;
+    patchVerifiedInline("11.2.5.2", "Se si eseguono controlli statistici", [
+        { value: "0,3", latex: "0{,}3" },
+        { value: "s/Rm", latex: "s/R_m" },
+        { value: "0,15", latex: "0{,}15" },
+    ], original.replace("s/R m", "s/Rm"));
+}
+patchVerifiedInline("11.2.5.2", "Infine, la resistenza caratteristica", [
+    { value: "Rck", latex: "R_{ck}" },
+    { value: "5%", latex: "5\\%" },
+    { value: "Rc,min", latex: "R_{c,\\min}" },
+    { value: "1%", latex: "1\\%" },
+]);
+patchVerifiedInline("11.2.6", "Il valore caratteristico della resistenza", [
+    { value: "Rckis", latex: "R_{ckis}" },
+    { value: "fckis", latex: "f_{ckis}" },
+    { value: "Rck", latex: "R_{ck}" },
+    { value: "fck", latex: "f_{ck}" },
+    { value: "85%", latex: "85\\%" },
+]);
+patchVerifiedInline("11.2.8", "Per produzioni di calcestruzzo", [
+    { value: "1500 m3", latex: "1500\\;\\mathrm{m^3}" },
+]);
+{
+    const block = generatedUnits.find((unit) => unit.numbering.official === "11.2.10.2")!.blocks
+        .find((candidate: any) => candidate.text?.normalized?.startsWith("In sede di progettazione si può assumere"))!;
+    patchVerifiedInline("11.2.10.2", "In sede di progettazione si può assumere", [
+        { value: "N/mm²", latex: "\\mathrm{N/mm^2}" },
+    ], block.text.normalized.replace("N/mm2", "N/mm²"));
+}
+patchVerifiedInline("11.2.10.2", "valori che dovranno essere ridotti", [
+    { value: "10%", latex: "10\\%" },
+]);
+patchVerifiedInline("11.2.10.2", "I valori caratteristici corrispondenti", [
+    { value: "5%", latex: "5\\%" },
+    { value: "95%", latex: "95\\%" },
+    { value: "0,7 fctm", latex: "0{,}7f_{ctm}" },
+    { value: "1,3 fctm", latex: "1{,}3f_{ctm}" },
+]);
+patchVerifiedInline("11.2.10.3", "Per modulo elastico istantaneo", [
+    { value: "0,40 fcm", latex: "0{,}40f_{cm}" },
+]);
+patchVerifiedInline("11.2.10.3", "che dovrà essere ridotto", [{ value: "20%", latex: "20\\%" }]);
+patchVerifiedInline("11.2.10.4", "Per il coefficiente di Poisson", [
+    { value: "0", latex: "0" },
+    { value: "0,2", latex: "0{,}2" },
+]);
+{
+    const block = generatedUnits.find((unit) => unit.numbering.official === "11.2.10.5")!.blocks
+        .find((candidate: any) => candidate.text?.normalized?.startsWith("In sede di progettazione strutturale"))!;
+    patchVerifiedInline("11.2.10.5", "In sede di progettazione strutturale", [
+        { value: "10 × 10⁻⁶ °C⁻¹", latex: "10\\times10^{-6}\\;{}^\\circ\\mathrm{C}^{-1}" },
+    ], block.text.normalized.replace("10 x 10-6 °C-1", "10 × 10⁻⁶ °C⁻¹"));
 }
 
 const siblingPositions = new Map<string, number>();

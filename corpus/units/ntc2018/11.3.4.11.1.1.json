@@ -160,7 +160,22 @@
       "text": {
         "raw": "Un lotto di produzione è costituito da un quantitativo compreso fra 30 e 120 t, o frazione residua, per ogni profilo, qualità e\ngamma di spessore, senza alcun riferimento alle colate che sono state utilizzate per la loro produzione. Per quanto riguarda i pro-\nfilati cavi, il lotto di produzione corrisponde all’unità di collaudo come definita dalle norme europee armonizzate UNI EN 10210-\n1 e UNI EN 10219-1 in base al numero dei pezzi.",
         "normalized": "Un lotto di produzione è costituito da un quantitativo compreso fra 30 e 120 t, o frazione residua, per ogni profilo, qualità e gamma di spessore, senza alcun riferimento alle colate che sono state utilizzate per la loro produzione. Per quanto riguarda i profilati cavi, il lotto di produzione corrisponde all’unità di collaudo come definita dalle norme europee armonizzate UNI EN 10210- 1 e UNI EN 10219-1 in base al numero dei pezzi.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Un lotto di produzione è costituito da un quantitativo compreso fra "
+          },
+          {
+            "kind": "math",
+            "value": "30 e 120 t",
+            "latex": "30\\text{ e }120\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": ", o frazione residua, per ogni profilo, qualità e gamma di spessore, senza alcun riferimento alle colate che sono state utilizzate per la loro produzione. Per quanto riguarda i profilati cavi, il lotto di produzione corrisponde all’unità di collaudo come definita dalle norme europee armonizzate UNI EN 10210- 1 e UNI EN 10219-1 in base al numero dei pezzi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -187,6 +202,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "15c4cd613a9ba23e460c769d60f729cc999a8a8a12f7308d786ea5eead2dd51f",

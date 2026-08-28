@@ -181,7 +181,22 @@
       "text": {
         "raw": "Detti controlli in officina devono essere effettuati in ragione di almeno 1 prova ogni 30 t di acciaio della stessa categoria, prove-\nniente dallo stesso stabilimento, anche se acquisito in tempi diversi, avendo cura di prelevare di volta in volta i campioni da tipi\ndi prodotti o spessori diversi.",
         "normalized": "Detti controlli in officina devono essere effettuati in ragione di almeno 1 prova ogni 30 t di acciaio della stessa categoria, proveniente dallo stesso stabilimento, anche se acquisito in tempi diversi, avendo cura di prelevare di volta in volta i campioni da tipi di prodotti o spessori diversi.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Detti controlli in officina devono essere effettuati in ragione di almeno "
+          },
+          {
+            "kind": "math",
+            "value": "1 prova ogni 30 t",
+            "latex": "1\\;\\mathrm{prova\\ ogni}\\;30\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " di acciaio della stessa categoria, proveniente dallo stesso stabilimento, anche se acquisito in tempi diversi, avendo cura di prelevare di volta in volta i campioni da tipi di prodotti o spessori diversi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -208,6 +223,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c51ba33a24caaf0795c3bd18d04bcebeb160bea23a3c3a7acb518d63521f6706",

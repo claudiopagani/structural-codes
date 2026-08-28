@@ -68,15 +68,22 @@ test("NTC 10 conserva sottotitoli, elenchi e continuità fra le pagine", async (
     );
 });
 
-test("NTC 10 non dichiara asset inattesi o duplicati", async () => {
+test("NTC 10 non dichiara matematica o asset inattesi", async () => {
     const units = await Promise.all(
         numbers.map((number) => json(`corpus/units/ntc2018/${number}.json`)),
+    );
+    const mathSegments = units.flatMap((unit) =>
+        unit.blocks.flatMap(
+            (block: { text?: { inline?: Array<{ kind: string }> } }) =>
+                block.text?.inline?.filter((segment) => segment.kind === "math") ?? [],
+        ),
     );
     const assetIds = units.flatMap((unit) => [
         ...unit.assets.formulaIds,
         ...unit.assets.tableIds,
         ...unit.assets.figureIds,
     ]);
+    assert.deepEqual(mathSegments, []);
     assert.deepEqual(assetIds, []);
     assert.equal(new Set(assetIds).size, assetIds.length);
 });

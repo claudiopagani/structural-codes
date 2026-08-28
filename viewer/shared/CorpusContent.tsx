@@ -28,6 +28,20 @@ function tableColumnCount(headers: TableCell[][], rows: TableCell[][]) {
   return Math.max(0, ...[...headers, ...rows].map((row) => row.reduce((count, cell) => count + (cell.colSpan ?? 1), 0)));
 }
 
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+}
+
+export function visibleTableCaption(officialNumber: string | null, caption: string | null) {
+  if (!caption || !officialNumber) return caption;
+  return caption.replace(new RegExp(`^\\s*Tab\\.\\s*${escapeRegExp(officialNumber)}(?:\\s*\\))?(?:\\s*[–—-])?\\s*`, "iu"), "").trim();
+}
+
+export function visibleTableNumberSuffix(officialNumber: string | null, caption: string | null) {
+  if (!caption || !officialNumber) return "";
+  return new RegExp(`^\\s*Tab\\.\\s*${escapeRegExp(officialNumber)}\\s*\\)`, "iu").test(caption) ? ")" : "";
+}
+
 function latexMarkup(latex: string, displayMode: boolean) {
   return { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
 }
@@ -48,7 +62,7 @@ export function hasTrailingStrong(block: CorpusBlock) {
 
 export function hasTrailingMath(block: CorpusBlock) {
   const inline = block.text?.inline;
-  return block.kind === "list-item" && inline !== undefined && inline.length > 0 && inline.at(-1)?.kind === "math";
+  return block.kind === "list-item" && inline !== undefined && inline.length === 2 && inline.at(-1)?.kind === "math";
 }
 
 export interface BlockContentProps {
@@ -96,10 +110,12 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
   const table = assets.tables[block.assetId];
   if (table) {
     const notes = visibleTableNotes(table.notes);
+    const caption = visibleTableCaption(table.officialNumber, table.caption);
+    const numberSuffix = visibleTableNumberSuffix(table.officialNumber, table.caption);
     const compactTable = tableColumnCount(table.headers, table.rows) <= 4;
     return (
       <figure className="table-asset">
-        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}` : "Tabella non numerata"}</strong>{table.caption && <span> — {table.caption}</span>}</figcaption>
+        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : "Tabella non numerata"}</strong>{caption && <span> — {caption}</span>}</figcaption>
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={cell.strong ? "table-cell-strong" : undefined} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={cell.strong ? "table-cell-strong" : undefined} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>

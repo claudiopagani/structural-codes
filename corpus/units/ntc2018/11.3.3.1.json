@@ -546,7 +546,22 @@
       "text": {
         "raw": "Le barre possono essere lisce, a filettatura continua o parziale, con risalti o nervature; vengono individuate mediante il diametro\nnominale nel caso di barre lisce o mediante il diametro nominale equivalente riferito alla sezione circolare equipesante nel caso di\nbarre non lisce. Le barre filettate devono avere filetto con passo uniforme e non superiore a 0,8 volte il diametro nominale. Le bar-\nre a filettatura continua o parziale, con risalti o nervature, devono avere geometria superficiale conforme a quanto specificato nel\n§ 11.3.3.5.2.3.",
         "normalized": "Le barre possono essere lisce, a filettatura continua o parziale, con risalti o nervature; vengono individuate mediante il diametro nominale nel caso di barre lisce o mediante il diametro nominale equivalente riferito alla sezione circolare equipesante nel caso di barre non lisce. Le barre filettate devono avere filetto con passo uniforme e non superiore a 0,8 volte il diametro nominale. Le barre a filettatura continua o parziale, con risalti o nervature, devono avere geometria superficiale conforme a quanto specificato nel § 11.3.3.5.2.3.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le barre possono essere lisce, a filettatura continua o parziale, con risalti o nervature; vengono individuate mediante il diametro nominale nel caso di barre lisce o mediante il diametro nominale equivalente riferito alla sezione circolare equipesante nel caso di barre non lisce. Le barre filettate devono avere filetto con passo uniforme e non superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "0,8 volte il diametro nominale",
+            "latex": "0{,}8\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": ". Le barre a filettatura continua o parziale, con risalti o nervature, devono avere geometria superficiale conforme a quanto specificato nel § 11.3.3.5.2.3."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -573,6 +588,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5f90caa9de13b2b016a42baeb9dcf5ec39bfee2b0ea68682c34ce9a14b6451c2",

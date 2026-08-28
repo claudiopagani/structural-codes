@@ -131,8 +131,77 @@
       "origin": "official",
       "text": {
         "raw": "Effettuato un prelievo di 3 saggi ogni 30 t della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con for-\nniture successive, si determinano, mediante prove eseguite presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i corri-\nspondenti valori minimi di fpt \n, f py \n, f p(1), f p(0,1), A gt e E p.",
-        "normalized": "Effettuato un prelievo di 3 saggi ogni 30 t della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive, si determinano, mediante prove eseguite presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i corrispondenti valori minimi di fpt , f py , f p(1), f p(0,1), A gt e E p.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Effettuato un prelievo di 3 saggi ogni 30 t della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive, si determinano, mediante prove eseguite presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i corrispondenti valori minimi di fpt, fpy, fp(1), fp(0,1), Agt e Ep.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Effettuato un prelievo di "
+          },
+          {
+            "kind": "math",
+            "value": "3 saggi ogni 30 t",
+            "latex": "3\\;\\mathrm{saggi\\ ogni}\\;30\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " della stessa categoria di acciaio proveniente dallo stesso stabilimento, anche se con forniture successive, si determinano, mediante prove eseguite presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i corrispondenti valori minimi di "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Agt",
+            "latex": "A_{gt}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "Ep",
+            "latex": "E_p"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -159,10 +228,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "46425d6a8a5912407150acf17fb533d6e1fe88f26d662c6fc9e0036aa404ad40",
-        "normalizedSha256": "994d107b5c27dcebea934ccb0f6d2cc50732e9870d0821257acb3e7146cee6e8"
+        "normalizedSha256": "f87eae314bfb230da8a36dbffddf85027f390c0115d801a1f24f7bbfd61e1299"
       }
     },
     {
@@ -219,8 +293,41 @@
       "origin": "official",
       "text": {
         "raw": "- tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico f ptk corrispondente, incrementato del\n15%.",
-        "normalized": "- tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico f ptk corrispondente, incrementato del 15%.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "- tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico fptk corrispondente, incrementato del 15%.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- tutti i valori di tensione al carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " non superano il valore caratteristico "
+          },
+          {
+            "kind": "math",
+            "value": "fptk",
+            "latex": "f_{ptk}"
+          },
+          {
+            "kind": "text",
+            "value": " corrispondente, incrementato del "
+          },
+          {
+            "kind": "math",
+            "value": "15%",
+            "latex": "15\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -242,10 +349,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "2780a87d860bd83e7b99b636c6dd45b8ae62c8eec2705dbbcee7597522c3cf99",
-        "normalizedSha256": "b42fbf41ea4927e2550179cf4a2a5a0135a6e30db07b4113a5d4c859ed491fb1"
+        "normalizedSha256": "29877044e388ac1af617171ed6af26d6d873fd8ffbe60200d4fdbb169eced545"
       }
     },
     {
@@ -255,7 +367,22 @@
       "text": {
         "raw": "- tutti i valori dell’allungamento totale percentuale al carico massimo Agt non sono inferiori al limite della Tab. 11.3.VIII;",
         "normalized": "- tutti i valori dell’allungamento totale percentuale al carico massimo Agt non sono inferiori al limite della Tab. 11.3.VIII;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- tutti i valori dell’allungamento totale percentuale al carico massimo "
+          },
+          {
+            "kind": "math",
+            "value": "Agt",
+            "latex": "A_{gt}"
+          },
+          {
+            "kind": "text",
+            "value": " non sono inferiori al limite della Tab. 11.3.VIII;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -267,7 +394,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "ff1c9cfca7e9fa7e736fd12737e8d3ab6cc7dc9198bda4f7c020f7eb82881e76",
         "normalizedSha256": "ff1c9cfca7e9fa7e736fd12737e8d3ab6cc7dc9198bda4f7c020f7eb82881e76"
       }
@@ -342,8 +475,68 @@
       "origin": "official",
       "text": {
         "raw": "Effettuato il prelievo supplementare si determinano, mediante prove effettuate presso un laboratorio di cui all’art. 59 del DPR n.\n380/2001, i valori di fpt, f py, f p(1), f p(0,1), A gt \n, E p.",
-        "normalized": "Effettuato il prelievo supplementare si determinano, mediante prove effettuate presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i valori di fpt, f py, f p(1), f p(0,1), A gt , E p.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Effettuato il prelievo supplementare si determinano, mediante prove effettuate presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i valori di fpt, fpy, fp(1), fp(0,1), Agt, Ep.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Effettuato il prelievo supplementare si determinano, mediante prove effettuate presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, i valori di "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Agt",
+            "latex": "A_{gt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "Ep",
+            "latex": "E_p"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -365,10 +558,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "9c43dea976d271b04a867be83209b21f1e03ce77b896a17c2da8bc810edf3581",
-        "normalizedSha256": "edc6b54bcb7eb1c1dba0f69fc04fd4278f568d7521be87bf9b28f00d2852bc59"
+        "normalizedSha256": "69b8761524269ba28af393a1888e7a3298fbb4a7bd39e387f142bab4f934f3fb"
       }
     },
     {
@@ -401,8 +599,59 @@
       "origin": "official",
       "text": {
         "raw": "- la media dei risultati ottenuti per le grandezze f pt \n, f py, f p(0,1) \n, f p(1) sugli ulteriori saggi è almeno uguale al valore caratteristico ga-\nrantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito del 1,5%.",
-        "normalized": "- la media dei risultati ottenuti per le grandezze f pt , f py, f p(0,1) , f p(1) sugli ulteriori saggi è almeno uguale al valore caratteristico garantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito del 1,5%.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "- la media dei risultati ottenuti per le grandezze fpt, fpy, fp(0,1), fp(1) sugli ulteriori saggi è almeno uguale al valore caratteristico garantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito dell’1,5%.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- la media dei risultati ottenuti per le grandezze "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fpy",
+            "latex": "f_{py}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(0,1)",
+            "latex": "f_{p(0{,}1)}"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fp(1)",
+            "latex": "f_{p(1)}"
+          },
+          {
+            "kind": "text",
+            "value": " sugli ulteriori saggi è almeno uguale al valore caratteristico garantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito dell’"
+          },
+          {
+            "kind": "math",
+            "value": "1,5%",
+            "latex": "1{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -429,10 +678,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "1ce494d2b864cb3494e4b801fd4d30a0fdf4fdc6d15065ee9e6abd8d5cf9606c",
-        "normalizedSha256": "1a564f82cee3f0f1f02ec079d301c4b0e2dbc3d93a56ffd2c8ae0231bf970673"
+        "normalizedSha256": "630c9f4996057e67a683a29fb1ee9cd9f2ee10167f25f6a4b86a9d4201247a50"
       }
     },
     {
@@ -441,8 +695,86 @@
       "origin": "official",
       "text": {
         "raw": "- la media dei risultati ottenuti per la grandezza f pt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico\nf ptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato del 1,5%.\nla media dei risultati ottenuti per la grandezza A gt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab.\n11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
-        "normalized": "- la media dei risultati ottenuti per la grandezza f pt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico f ptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato del 1,5%. la media dei risultati ottenuti per la grandezza A gt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab. 11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "- la media dei risultati ottenuti per la grandezza fpt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico fptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato dell’1,5%. La media dei risultati ottenuti per la grandezza Agt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab. 11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- la media dei risultati ottenuti per la grandezza "
+          },
+          {
+            "kind": "math",
+            "value": "fpt",
+            "latex": "f_{pt}"
+          },
+          {
+            "kind": "text",
+            "value": " sui "
+          },
+          {
+            "kind": "math",
+            "value": "10",
+            "latex": "10"
+          },
+          {
+            "kind": "text",
+            "value": " ulteriori saggi è al massimo uguale a "
+          },
+          {
+            "kind": "math",
+            "value": "1,15",
+            "latex": "1{,}15"
+          },
+          {
+            "kind": "text",
+            "value": " volte il valore caratteristico "
+          },
+          {
+            "kind": "math",
+            "value": "fptk",
+            "latex": "f_{ptk}"
+          },
+          {
+            "kind": "text",
+            "value": " garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato dell’"
+          },
+          {
+            "kind": "math",
+            "value": "1,5%",
+            "latex": "1{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". La media dei risultati ottenuti per la grandezza "
+          },
+          {
+            "kind": "math",
+            "value": "Agt",
+            "latex": "A_{gt}"
+          },
+          {
+            "kind": "text",
+            "value": " sui "
+          },
+          {
+            "kind": "math",
+            "value": "10",
+            "latex": "10"
+          },
+          {
+            "kind": "text",
+            "value": " ulteriori saggi è al minimo uguale al limite indicato nella Tab. 11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -464,10 +796,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "4242a656b945fad82dd6be44005a21f9d72647ea8f8dcb2dab656aa632927db3",
-        "normalizedSha256": "4f7cd68546cc125c133977a7c40a9714fdcd085c1fabed585e3f1ea5cbb516af"
+        "normalizedSha256": "83e212ec33d4679507a293f7c5c206e8c63360f6aaec808556a53d401a3736eb"
       }
     },
     {

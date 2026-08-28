@@ -89,7 +89,31 @@
       "text": {
         "raw": "Le proprietà meccaniche dei campioni ottenuti da rotolo raddrizzato, reti e tralicci sono determinate su provette mantenute per\n60 (+15, –0) minuti a 100 ± 10 °C e successivamente raffreddate in aria calma a temperatura ambiente.",
         "normalized": "Le proprietà meccaniche dei campioni ottenuti da rotolo raddrizzato, reti e tralicci sono determinate su provette mantenute per 60 (+15, –0) minuti a 100 ± 10 °C e successivamente raffreddate in aria calma a temperatura ambiente.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le proprietà meccaniche dei campioni ottenuti da rotolo raddrizzato, reti e tralicci sono determinate su provette mantenute per "
+          },
+          {
+            "kind": "math",
+            "value": "60 (+15, –0) minuti",
+            "latex": "60^{+15}_{-0}\\;\\mathrm{min}"
+          },
+          {
+            "kind": "text",
+            "value": " a "
+          },
+          {
+            "kind": "math",
+            "value": "100 ± 10 °C",
+            "latex": "100\\pm10\\;{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " e successivamente raffreddate in aria calma a temperatura ambiente."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -111,6 +135,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "580287189d4c94b7210d36e7617cbbf45cd72f95d8c08b73d9fa793edb01fc8d",
@@ -123,8 +152,32 @@
       "origin": "official",
       "text": {
         "raw": "In ogni caso, qualora lo snervamento non sia chiaramente individuabile, si sostituisce f y con f (0,2).",
-        "normalized": "In ogni caso, qualora lo snervamento non sia chiaramente individuabile, si sostituisce f y con f (0,2).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "In ogni caso, qualora lo snervamento non sia chiaramente individuabile, si sostituisce fy con f(0,2).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In ogni caso, qualora lo snervamento non sia chiaramente individuabile, si sostituisce "
+          },
+          {
+            "kind": "math",
+            "value": "fy",
+            "latex": "f_y"
+          },
+          {
+            "kind": "text",
+            "value": " con "
+          },
+          {
+            "kind": "math",
+            "value": "f(0,2)",
+            "latex": "f_{(0{,}2)}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -136,9 +189,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "74e8b4db384900726d4f599951a418758ee6f870def8776b6187ccb4e82865af",
-        "normalizedSha256": "74e8b4db384900726d4f599951a418758ee6f870def8776b6187ccb4e82865af"
+        "normalizedSha256": "54580c22a8fcbbd81e629fed80e2908dffb575c540e3e3485e2eb7da06d04122"
       }
     },
     {
@@ -148,7 +207,58 @@
       "text": {
         "raw": "La prova di piegamento e raddrizzamento si esegue alla temperatura di 20 ± 5 °C piegando la provetta a 90°, mantenendola poi\nper 60 minuti a 100 ± 10 °C e procedendo, dopo raffreddamento in aria, al parziale raddrizzamento per almeno 20°. Dopo la pro-\nva il campione non deve presentare cricche.",
         "normalized": "La prova di piegamento e raddrizzamento si esegue alla temperatura di 20 ± 5 °C piegando la provetta a 90°, mantenendola poi per 60 minuti a 100 ± 10 °C e procedendo, dopo raffreddamento in aria, al parziale raddrizzamento per almeno 20°. Dopo la prova il campione non deve presentare cricche.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La prova di piegamento e raddrizzamento si esegue alla temperatura di "
+          },
+          {
+            "kind": "math",
+            "value": "20 ± 5 °C",
+            "latex": "20\\pm5\\;{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " piegando la provetta a "
+          },
+          {
+            "kind": "math",
+            "value": "90°",
+            "latex": "90^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ", mantenendola poi per "
+          },
+          {
+            "kind": "math",
+            "value": "60 minuti",
+            "latex": "60\\;\\mathrm{min}"
+          },
+          {
+            "kind": "text",
+            "value": " a "
+          },
+          {
+            "kind": "math",
+            "value": "100 ± 10 °C",
+            "latex": "100\\pm10\\;{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " e procedendo, dopo raffreddamento in aria, al parziale raddrizzamento per almeno "
+          },
+          {
+            "kind": "math",
+            "value": "20°",
+            "latex": "20^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": ". Dopo la prova il campione non deve presentare cricche."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -175,6 +285,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "e989b8412e4986cabdfabfcf772c1e6411b48a1ef0c51dd3d52ba44f4d9380fb",

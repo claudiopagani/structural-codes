@@ -214,8 +214,19 @@
       "origin": "official",
       "text": {
         "raw": " il diametro nominale del campione in mm;",
-        "normalized": "il diametro nominale del campione in mm;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Ø il diametro nominale del campione in mm;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Ø",
+            "latex": "\\varnothing"
+          },
+          {
+            "kind": "text",
+            "value": " il diametro nominale del campione in mm;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -237,10 +248,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f074b64c3f4a10b18a98c287620afe2a00ed92861c3b7cd57cde62a05e3c1864",
-        "normalizedSha256": "2f8bcaf937a8c7eab75383cab6b7ef9279fd5c9d2a1916d02bc41ce316ff3e8b"
+        "normalizedSha256": "d416eb224312e23bb2f7e03652837a7eb6613b948245d8b8511d767bea47cb14"
       }
     },
     {
@@ -249,8 +265,28 @@
       "origin": "official",
       "text": {
         "raw": "Θm il valor medio della tensione di aderenza in MPa calcolata in corrispondenza di uno scorrimento pari a 0,01 , 0,1 ed 1 mm;",
-        "normalized": "Θm il valor medio della tensione di aderenza in MPa calcolata in corrispondenza di uno scorrimento pari a 0,01 , 0,1 ed 1 mm;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "τm il valor medio della tensione di aderenza in MPa calcolata in corrispondenza di uno scorrimento pari a 0,01, 0,1 ed 1 mm;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "τm",
+            "latex": "\\tau_m"
+          },
+          {
+            "kind": "text",
+            "value": " il valor medio della tensione di aderenza in MPa calcolata in corrispondenza di uno scorrimento pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,01, 0,1 ed 1 mm",
+            "latex": "0{,}01,\\;0{,}1\\text{ ed }1\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -262,9 +298,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "547a73411c5bc84cd75d648db819674b44179e6854989ff241243e7f00706526",
-        "normalizedSha256": "547a73411c5bc84cd75d648db819674b44179e6854989ff241243e7f00706526"
+        "normalizedSha256": "de84e7e5abbb67c77a72f83190e45698af2161db9d290cc91acac03279c34603"
       }
     },
     {
@@ -273,8 +315,19 @@
       "origin": "official",
       "text": {
         "raw": "Θr la tensione di aderenza massima al collasso.",
-        "normalized": "Θr la tensione di aderenza massima al collasso.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "τr la tensione di aderenza massima al collasso.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "τr",
+            "latex": "\\tau_r"
+          },
+          {
+            "kind": "text",
+            "value": " la tensione di aderenza massima al collasso."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -286,9 +339,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "bbebb097c6885fa490d23709cf10bf60e099793874d95921aa155d086697d440",
-        "normalizedSha256": "bbebb097c6885fa490d23709cf10bf60e099793874d95921aa155d086697d440"
+        "normalizedSha256": "41394828494336e95c24278f06ffda93f9d5725e33f6e51d60238e38e66ae6f6"
       }
     },
     {
@@ -321,8 +380,32 @@
       "origin": "official",
       "text": {
         "raw": "– uno nell’intervallo 5 ǂ  ǂ 10 mm (barre) e 5 ǂ  ǂ 8 mm (rotoli);",
-        "normalized": "– uno nell’intervallo 5 ǂ ǂ 10 mm (barre) e 5 ǂ ǂ 8 mm (rotoli);",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "– uno nell’intervallo 5 ≤ Ø ≤ 10 mm (barre) e 5 ≤ Ø ≤ 8 mm (rotoli);",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– uno nell’intervallo "
+          },
+          {
+            "kind": "math",
+            "value": "5 ≤ Ø ≤ 10 mm",
+            "latex": "5\\le\\varnothing\\le10\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " (barre) e "
+          },
+          {
+            "kind": "math",
+            "value": "5 ≤ Ø ≤ 8 mm",
+            "latex": "5\\le\\varnothing\\le8\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " (rotoli);"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -344,10 +427,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a1629cae8a6b21cce6d429bc36631748592daad333c49117bfd318c5cf463f74",
-        "normalizedSha256": "a224b1c3a087c0b143c8e3325c137123ccfc3193cf29852e57af6a4f0349f25a"
+        "normalizedSha256": "9b2e6de552e1e9b2f8e3820528d55ddab9f31254894d7fcdb645912c64659f94"
       }
     },
     {
@@ -356,8 +444,32 @@
       "origin": "official",
       "text": {
         "raw": "– uno nell’intervallo 12 ǂ  ǂ 18 mm (barre) e 10 ǂ  ǂ 14 mm (rotoli);",
-        "normalized": "– uno nell’intervallo 12 ǂ ǂ 18 mm (barre) e 10 ǂ ǂ 14 mm (rotoli);",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "– uno nell’intervallo 12 ≤ Ø ≤ 18 mm (barre) e 10 ≤ Ø ≤ 14 mm (rotoli);",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– uno nell’intervallo "
+          },
+          {
+            "kind": "math",
+            "value": "12 ≤ Ø ≤ 18 mm",
+            "latex": "12\\le\\varnothing\\le18\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " (barre) e "
+          },
+          {
+            "kind": "math",
+            "value": "10 ≤ Ø ≤ 14 mm",
+            "latex": "10\\le\\varnothing\\le14\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " (rotoli);"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -379,10 +491,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "053c3cee9340c7947779ea112739b5589bbba5d29095816b4fe5c748aa863f0a",
-        "normalizedSha256": "5506a4cc94544daebe67ddf0f0448f762e44ef08c4a390f0aa8a9b46a0c5ad71"
+        "normalizedSha256": "61bbf4482fbc735284fa6ec74c55b95174a78de638b04db8a883cd16d0e4a3c0"
       }
     },
     {
@@ -456,7 +573,22 @@
       "text": {
         "raw": "Con riferimento sia all’acciaio nervato che all’acciaio dentellato, per accertare la rispondenza delle singole partite nei riguardi del-\nle proprietà di aderenza, si valuteranno su 3 campioni per ciascun diametro considerato, conformemente alle procedure riportate\nnella norma UNI EN ISO 15630-1:2010:",
         "normalized": "Con riferimento sia all’acciaio nervato che all’acciaio dentellato, per accertare la rispondenza delle singole partite nei riguardi delle proprietà di aderenza, si valuteranno su 3 campioni per ciascun diametro considerato, conformemente alle procedure riportate nella norma UNI EN ISO 15630-1:2010:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Con riferimento sia all’acciaio nervato che all’acciaio dentellato, per accertare la rispondenza delle singole partite nei riguardi delle proprietà di aderenza, si valuteranno su "
+          },
+          {
+            "kind": "math",
+            "value": "3 campioni",
+            "latex": "3\\;\\mathrm{campioni}"
+          },
+          {
+            "kind": "text",
+            "value": " per ciascun diametro considerato, conformemente alle procedure riportate nella norma UNI EN ISO 15630-1:2010:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -483,6 +615,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "9e01c4d4663a6c211dde0004423eca8679d1be8a65956b618806adace61532d4",
@@ -495,8 +632,23 @@
       "origin": "official",
       "text": {
         "raw": "– il valore dell’area relativa di nervatura fr \n, per l’acciaio nervato;",
-        "normalized": "– il valore dell’area relativa di nervatura fr , per l’acciaio nervato;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "– il valore dell’area relativa di nervatura fr, per l’acciaio nervato;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– il valore dell’area relativa di nervatura "
+          },
+          {
+            "kind": "math",
+            "value": "fr",
+            "latex": "f_r"
+          },
+          {
+            "kind": "text",
+            "value": ", per l’acciaio nervato;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -518,10 +670,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "cddcc0b9125ea15453000db35f06be5c84c2b87fda83749bca38a5f943f140c6",
-        "normalizedSha256": "a0cafd021e81571d959fdfdd801a8a40526ef409290c387f0ac2848b5f86cd66"
+        "normalizedSha256": "085ecc7478e2500308a0d76199fd2a41f3186c5f87281749e82213496c8f3c86"
       }
     },
     {
@@ -531,7 +688,22 @@
       "text": {
         "raw": "– il valore dell’area relativa di dentellatura fp, per l’acciaio dentellato.",
         "normalized": "– il valore dell’area relativa di dentellatura fp, per l’acciaio dentellato.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– il valore dell’area relativa di dentellatura "
+          },
+          {
+            "kind": "math",
+            "value": "fp",
+            "latex": "f_p"
+          },
+          {
+            "kind": "text",
+            "value": ", per l’acciaio dentellato."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -543,7 +715,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "f412503be5f83050421bbdb2339579153f6f80c4025cf7a01dc8b1706e284f2c",
         "normalizedSha256": "f412503be5f83050421bbdb2339579153f6f80c4025cf7a01dc8b1706e284f2c"
       }
@@ -600,111 +778,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4#block-019",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "per 5 ǂ  ǂ 6 mm f r oppure fp ǃ 0.035 0.037",
-        "normalized": "per 5 ǂ ǂ 6 mm f r oppure fp ǃ 0.035 0.037",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 330,
-        "printedPage": "326",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "5efea76a983826de948c981056205317aa88d6ee1dc8ea10c86e821244106219",
-        "normalizedSha256": "b554fdbab60262800a02602bac403509c9c647a899e68b70257de0e9c13a0148"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4#block-020",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "per 6 <  ǂ 12 mm fr oppure fp ǃ 0.040 0.042",
-        "normalized": "per 6 < ǂ 12 mm fr oppure fp ǃ 0.040 0.042",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 330,
-        "printedPage": "326",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "64d8eb8bb5f4329eaf3e9ae9e8a86e14072a8e250a91ab8275bee32cf140847a",
-        "normalizedSha256": "8f4bda4f418aa528b0fdf7459a3b128178791a35add8f74665791a44c5f18dfa"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4#block-021",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "per  > 12 mm fr oppure fp ǃ 0.056 0.059",
-        "normalized": "per > 12 mm fr oppure fp ǃ 0.056 0.059",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 330,
-        "printedPage": "326",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "42cc92a3cd37de286ad8967c0283c5d6a9caf3791b25d7854149be9117c1a88d",
-        "normalizedSha256": "1fa43660f507a0321160a68fdd38c148655a4c714e9088f7a32879a10357bb4d"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.2.10.4#block-022",
       "kind": "paragraph",
       "origin": "official",
       "text": {

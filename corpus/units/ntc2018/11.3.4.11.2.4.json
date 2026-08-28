@@ -141,7 +141,31 @@
       "text": {
         "raw": "I controlli in stabilimento sono obbligatori e devono essere effettuati a cura del Direttore Tecnico dell’officina in numero di alme-\nno 1 prova a trazione su bullone o chiodo ogni 1000 prodotti.",
         "normalized": "I controlli in stabilimento sono obbligatori e devono essere effettuati a cura del Direttore Tecnico dell’officina in numero di almeno 1 prova a trazione su bullone o chiodo ogni 1000 prodotti.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I controlli in stabilimento sono obbligatori e devono essere effettuati a cura del Direttore Tecnico dell’officina in numero di almeno "
+          },
+          {
+            "kind": "math",
+            "value": "1 prova",
+            "latex": "1\\;\\mathrm{prova}"
+          },
+          {
+            "kind": "text",
+            "value": " a trazione su bullone o chiodo ogni "
+          },
+          {
+            "kind": "math",
+            "value": "1000 prodotti",
+            "latex": "1000\\;\\mathrm{prodotti}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -168,6 +192,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "57a84275e5d311b0bd13c1489bf208e201359a9b0698491729a50f2f8cba41d2",

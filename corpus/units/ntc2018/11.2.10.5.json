@@ -93,8 +93,23 @@
       "origin": "official",
       "text": {
         "raw": "In sede di progettazione strutturale, o in mancanza di una determinazione sperimentale diretta, per il coefficiente di dilatazione\ntermica del calcestruzzo può assumersi un valor medio pari a 10 x 10-6 °C-1\n, fermo restando che tale grandezza dipende dal tipo di\ncalcestruzzo considerato (rapporto aggregati/legante, tipi di aggregati, ecc.) e può assumere valori anche sensibilmente diversi da\nquello indicato.",
-        "normalized": "In sede di progettazione strutturale, o in mancanza di una determinazione sperimentale diretta, per il coefficiente di dilatazione termica del calcestruzzo può assumersi un valor medio pari a 10 x 10-6 °C-1 , fermo restando che tale grandezza dipende dal tipo di calcestruzzo considerato (rapporto aggregati/legante, tipi di aggregati, ecc.) e può assumere valori anche sensibilmente diversi da quello indicato.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "In sede di progettazione strutturale, o in mancanza di una determinazione sperimentale diretta, per il coefficiente di dilatazione termica del calcestruzzo può assumersi un valor medio pari a 10 × 10⁻⁶ °C⁻¹ , fermo restando che tale grandezza dipende dal tipo di calcestruzzo considerato (rapporto aggregati/legante, tipi di aggregati, ecc.) e può assumere valori anche sensibilmente diversi da quello indicato.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In sede di progettazione strutturale, o in mancanza di una determinazione sperimentale diretta, per il coefficiente di dilatazione termica del calcestruzzo può assumersi un valor medio pari a "
+          },
+          {
+            "kind": "math",
+            "value": "10 × 10⁻⁶ °C⁻¹",
+            "latex": "10\\times10^{-6}\\;{}^\\circ\\mathrm{C}^{-1}"
+          },
+          {
+            "kind": "text",
+            "value": " , fermo restando che tale grandezza dipende dal tipo di calcestruzzo considerato (rapporto aggregati/legante, tipi di aggregati, ecc.) e può assumere valori anche sensibilmente diversi da quello indicato."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -116,10 +131,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Notazione matematica ricostruita dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "88826852611ce07e00fe69e7aca4c21b548a3bd3db1f7a12dd6241e7939fa61b",
-        "normalizedSha256": "7e123e801e7f16e31ece036c8b8e75ea8a3932bda564faca171708dc701dadf0"
+        "normalizedSha256": "5df8a26aa3b86b66dfe14cb604089d7fc7260bc11a7d27c42ef7be5dc85e65bf"
       }
     }
   ],

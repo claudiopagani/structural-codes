@@ -170,8 +170,23 @@
       "origin": "official",
       "text": {
         "raw": "In sede di progettazione si può assumere come resistenza media a trazione semplice (assiale) del calcestruzzo il valore (in\nN/mm2):",
-        "normalized": "In sede di progettazione si può assumere come resistenza media a trazione semplice (assiale) del calcestruzzo il valore (in N/mm2):",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "In sede di progettazione si può assumere come resistenza media a trazione semplice (assiale) del calcestruzzo il valore (in N/mm²):",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In sede di progettazione si può assumere come resistenza media a trazione semplice (assiale) del calcestruzzo il valore (in "
+          },
+          {
+            "kind": "math",
+            "value": "N/mm²",
+            "latex": "\\mathrm{N/mm^2}"
+          },
+          {
+            "kind": "text",
+            "value": "):"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -193,10 +208,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Notazione matematica ricostruita dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "025bec9df443adcffd6bb9179156d1eff3da4a95e50de51d682fa57ac1823772",
-        "normalizedSha256": "341085c564b5ead0009a9888691b548ff526d2fe10611278990fa395e40dff26"
+        "normalizedSha256": "6971b8c2a36bc555b7da5060a0903966777541d98890cf7f0f34b9a9fdd77675"
       }
     },
     {
@@ -232,7 +252,7 @@
           }
         ],
         "rawSha256": "3adfe4ab9f27276bade9ce3ca10860a4119816ef74ea7ba418a042365dd32200",
-        "normalizedSha256": "c57e654c17330602aa06f8837ee1ff5022b34a735842ddb788fc773a2da18225"
+        "normalizedSha256": "d37203c3f6b2d4404cbfa52d6b6d8426f83e9defd691281aaa2034b13a35145b"
       }
     },
     {
@@ -263,7 +283,7 @@
           }
         ],
         "rawSha256": "8e75a2cf3e99f7879055108f42870a1d355d12d5c437a0d4d3b171814de47d5f",
-        "normalizedSha256": "2a016cfb4afff7428c19942a3fce7140149c3fef8c27b968111244582cf6c418"
+        "normalizedSha256": "674d6b6b22312126b4a5dcf6d8f49961e70c3f89231d60e7e3c89572e05eabfd"
       }
     },
     {
@@ -273,7 +293,22 @@
       "text": {
         "raw": "valori che dovranno essere ridotti del 10% in caso di utilizzo di aggregati grossi di riciclo nei limiti previsti dalla Tab. 11.2.III.",
         "normalized": "valori che dovranno essere ridotti del 10% in caso di utilizzo di aggregati grossi di riciclo nei limiti previsti dalla Tab. 11.2.III.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "valori che dovranno essere ridotti del "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in caso di utilizzo di aggregati grossi di riciclo nei limiti previsti dalla Tab. 11.2.III."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -301,21 +336,39 @@
         "inline": [
           {
             "kind": "text",
-            "value": "I valori caratteristici corrispondenti ai frattili 5% e 95% sono assunti, rispettivamente, pari a 0,7 "
+            "value": "I valori caratteristici corrispondenti ai frattili "
           },
           {
             "kind": "math",
-            "value": "fctm",
-            "latex": "f_{ctm}"
+            "value": "5%",
+            "latex": "5\\%"
           },
           {
             "kind": "text",
-            "value": ", ed 1,3 "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "fctm",
-            "latex": "f_{ctm}"
+            "value": "95%",
+            "latex": "95\\%"
+          },
+          {
+            "kind": "text",
+            "value": " sono assunti, rispettivamente, pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,7 fctm",
+            "latex": "0{,}7f_{ctm}"
+          },
+          {
+            "kind": "text",
+            "value": ", ed "
+          },
+          {
+            "kind": "math",
+            "value": "1,3 fctm",
+            "latex": "1{,}3f_{ctm}"
           },
           {
             "kind": "text",
