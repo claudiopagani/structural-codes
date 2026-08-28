@@ -59,8 +59,68 @@
       "origin": "official",
       "text": {
         "raw": "Il controllo di accettazione in cantiere ha lo scopo di accertare se gli elementi da mettere in opera abbiano le caratteristiche dichia-\nrate dal fabbricante.\nNel caso in cui il fabbricante abbia dichiarato la resistenza media, il controllo sarà effettuato su almeno un campione per ogni 350\nm3 di fornitura per elementi di Categoria II, e per ogni 650 m3 per elementi di Categoria I. Ogni campione sarà costituito da n e-\nlementi (nǃ6) da sottoporre a prova di compressione. Per ogni campione siano f 1, f2, … fn le resistenze a compressione degli ele-",
-        "normalized": "Il controllo di accettazione in cantiere ha lo scopo di accertare se gli elementi da mettere in opera abbiano le caratteristiche dichiarate dal fabbricante. Nel caso in cui il fabbricante abbia dichiarato la resistenza media, il controllo sarà effettuato su almeno un campione per ogni 350 m3 di fornitura per elementi di Categoria II, e per ogni 650 m3 per elementi di Categoria I. Ogni campione sarà costituito da n elementi (nǃ6) da sottoporre a prova di compressione. Per ogni campione siano f 1, f2, … fn le resistenze a compressione degli ele-",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il controllo di accettazione in cantiere ha lo scopo di accertare se gli elementi da mettere in opera abbiano le caratteristiche dichiarate dal fabbricante. Nel caso in cui il fabbricante abbia dichiarato la resistenza media, il controllo sarà effettuato su almeno un campione per ogni 350 m³ di fornitura per elementi di Categoria II, e per ogni 650 m³ per elementi di Categoria I. Ogni campione sarà costituito da n elementi (n ≥ 6) da sottoporre a prova di compressione. Per ogni campione siano f1, f2, …, fn le resistenze a compressione degli elementi con f1 < f2 < … < fn; il controllo sul campione si considera positivo se risultino verificate entrambe le disuguaglianze:",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il controllo di accettazione in cantiere ha lo scopo di accertare se gli elementi da mettere in opera abbiano le caratteristiche dichiarate dal fabbricante. Nel caso in cui il fabbricante abbia dichiarato la resistenza media, il controllo sarà effettuato su almeno un campione per ogni "
+          },
+          {
+            "kind": "math",
+            "value": "350 m³",
+            "latex": "350\\;\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " di fornitura per elementi di Categoria II, e per ogni "
+          },
+          {
+            "kind": "math",
+            "value": "650 m³",
+            "latex": "650\\;\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " per eleme"
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": "ti di Categoria I. Ogni campione sarà costituito da n elementi "
+          },
+          {
+            "kind": "math",
+            "value": "(n ≥ 6)",
+            "latex": "(n\\ge6)"
+          },
+          {
+            "kind": "text",
+            "value": " da sottoporre a prova di compressione. Per ogni campione siano "
+          },
+          {
+            "kind": "math",
+            "value": "f1, f2, …, fn",
+            "latex": "f_1,f_2,\\ldots,f_n"
+          },
+          {
+            "kind": "text",
+            "value": " le resistenze a compressione degli elementi con "
+          },
+          {
+            "kind": "math",
+            "value": "f1 < f2 < … < fn",
+            "latex": "f_1<f_2<\\ldots<f_n"
+          },
+          {
+            "kind": "text",
+            "value": "; il controllo sul campione si considera positivo se risultino verificate entrambe le disuguaglianze:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -87,38 +147,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "d72da98f6b3422ea9dc268cc6fb19f88b6c817e548485775a22414e38831b98f",
-        "normalizedSha256": "4201cf2d3b859cc4a5fdd7c753f7ec468cbf86dd95fa3d03b88d5d845ea58ab6"
+        "normalizedSha256": "284df61d9217361d771819a86ca7c9bb55cfca6e6d3e83cc5bf729a006c3ebf7"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-002",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "menti con f1 < f2 < … < fn; il controllo sul campione si considera positivo se risultino verificate entrambe le disuguaglianze:",
-        "normalized": "menti con f1 < f2 < … < fn; il controllo sul campione si considera positivo se risultino verificate entrambe le disuguaglianze:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 365,
-        "printedPage": "361",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "2d8937e83060e417ff69c35eb599ec6a4f9f6ca983a78bb79170c542a5b1fa4f",
-        "normalizedSha256": "2d8937e83060e417ff69c35eb599ec6a4f9f6ca983a78bb79170c542a5b1fa4f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-003",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.10.1",
@@ -149,7 +190,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-003",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.10.2",
@@ -180,7 +221,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-004",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -219,22 +260,58 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il con-\ntrollo di accettazione in cantiere sarà effettuato su almeno un campione per ogni 350 m3 di fornitura per elementi di Categoria II,\ninnalzabili a 650 m3 per elementi di Categoria I. Per ogni campione, siano f1, f2, …f6 la resistenza a compressione dei sei elementi\ncon f1 < f2 < … f6, il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: f1ǃ fbk, dove\nfbk è la resistenza caratteristica a compressione dichiarata dal fabbricante.",
-        "normalized": "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il controllo di accettazione in cantiere sarà effettuato su almeno un campione per ogni 350 m3 di fornitura per elementi di Categoria II, innalzabili a 650 m3 per elementi di Categoria I. Per ogni campione, siano f1, f2, …f6 la resistenza a compressione dei sei elementi con f1 < f2 < … f6, il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: f1ǃ fbk, dove fbk è la resistenza caratteristica a compressione dichiarata dal fabbricante.",
+        "normalized": "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il controllo di accettazione in cantiere sarà effettuato su almeno un campione per ogni 350 m³ di fornitura per elementi di Categoria II, innalzabili a 650 m³ per elementi di Categoria I. Per ogni campione, siano f1, f2, …, f6 le resistenze a compressione dei sei elementi con f1 < f2 < … < f6; il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: f1 ≥ fbk, dove fbk è la resistenza caratteristica a compressione dichiarata dal fabbricante.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il controllo di accettazione in cantiere sarà effettuato su almeno un campione per ogni 350 m3 di fornitura per elementi di Categoria II, innalzabili a 650 m3 per elementi di Categoria I. Per ogni campione, siano f1, f2, …f6 la resistenza a compressione dei sei elementi con f1 < f2 < … f6, il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: f1ǃ "
+            "value": "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il controllo di accettazione in cantiere sarà effettuato su almeno un campione per ogni "
           },
           {
             "kind": "math",
-            "value": "fbk",
-            "latex": "f_{bk}"
+            "value": "350 m³",
+            "latex": "350\\;\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " di fornitura per elementi di Categoria II, innalzabili a "
+          },
+          {
+            "kind": "math",
+            "value": "650 m³",
+            "latex": "650\\;\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " per elementi di Categoria I. Per ogni campione, siano "
+          },
+          {
+            "kind": "math",
+            "value": "f1, f2, …, f6",
+            "latex": "f_1,f_2,\\ldots,f_6"
+          },
+          {
+            "kind": "text",
+            "value": " le resistenze a compressione dei sei elementi con "
+          },
+          {
+            "kind": "math",
+            "value": "f1 < f2 < … < f6",
+            "latex": "f_1<f_2<\\ldots<f_6"
+          },
+          {
+            "kind": "text",
+            "value": "; il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: "
+          },
+          {
+            "kind": "math",
+            "value": "f1 ≥ fbk",
+            "latex": "f_1\\ge f_{bk}"
           },
           {
             "kind": "text",
@@ -276,14 +353,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "3f6d69c1eb06cc1e9bcb0e9fbf95685b98cedd6600f673988804f44a448bac85",
-        "normalizedSha256": "3cd3285113f77bfcc19615159a16520764144c95241529541ab03fbd8a465e59"
+        "normalizedSha256": "24da7620ce16a78fe222bd1c06c0ef693d7c87f8bc7e2669dbeddcdeac2ca5d8"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -318,7 +400,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1#block-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {

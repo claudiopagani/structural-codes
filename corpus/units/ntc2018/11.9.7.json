@@ -104,7 +104,40 @@
       "text": {
         "raw": "Le piastre di acciaio devono essere conformi a quanto previsto nelle norme per gli apparecchi di appoggio, con un allungamento\nminimo a rottura del 18% e spessore minimo pari a 2 mm per le piastre interne e a 20 mm per le piastre esterne.",
         "normalized": "Le piastre di acciaio devono essere conformi a quanto previsto nelle norme per gli apparecchi di appoggio, con un allungamento minimo a rottura del 18% e spessore minimo pari a 2 mm per le piastre interne e a 20 mm per le piastre esterne.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le piastre di acciaio devono essere conformi a quanto previsto nelle norme per gli apparecchi di appoggio, con un allungamento minimo a rottura del "
+          },
+          {
+            "kind": "math",
+            "value": "18%",
+            "latex": "18\\%"
+          },
+          {
+            "kind": "text",
+            "value": " e spessore minimo pari a "
+          },
+          {
+            "kind": "math",
+            "value": "2 mm",
+            "latex": "2\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per le piastre interne e a "
+          },
+          {
+            "kind": "math",
+            "value": "20 mm",
+            "latex": "20\\;\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " per le piastre esterne."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -126,6 +159,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "5f668482c8f7e196e014eeeded25368e09086b1c336524c6a9b54aca0365e1f2",
@@ -162,8 +200,46 @@
       "origin": "official",
       "text": {
         "raw": "S1 fattore di forma primario, rapporto tra la superficie A’ comune al singolo strato di elastomero ed alla singola piastra d’acciaio,\ndepurata degli eventuali fori (se non riempiti successivamente), e la superficie laterale libera L del singolo strato di elastomero,\nmaggiorata della superficie laterale degli eventuali fori (se non riempiti successivamente) ossia S1=A’/L;",
-        "normalized": "S1 fattore di forma primario, rapporto tra la superficie A’ comune al singolo strato di elastomero ed alla singola piastra d’acciaio, depurata degli eventuali fori (se non riempiti successivamente), e la superficie laterale libera L del singolo strato di elastomero, maggiorata della superficie laterale degli eventuali fori (se non riempiti successivamente) ossia S1=A’/L;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "S1 fattore di forma primario, rapporto tra la superficie A’ comune al singolo strato di elastomero ed alla singola piastra d’acciaio, depurata degli eventuali fori (se non riempiti successivamente), e la superficie laterale libera L del singolo strato di elastomero, maggiorata della superficie laterale degli eventuali fori (se non riempiti successivamente) ossia S1 = A’/L;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "S1",
+            "latex": "S_1"
+          },
+          {
+            "kind": "text",
+            "value": " fattore di forma primario, rapporto tra la superficie "
+          },
+          {
+            "kind": "math",
+            "value": "A’",
+            "latex": "A'"
+          },
+          {
+            "kind": "text",
+            "value": " comune al singolo strato di elastomero ed alla singola piastra d’acciaio, depurata degli eventuali fori (se non riempiti successivamente), e la superficie laterale libera "
+          },
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " del singolo strato di elastomero, maggiorata della superficie laterale degli eventuali fori (se non riempiti successivamente) ossia "
+          },
+          {
+            "kind": "math",
+            "value": "S1 = A’/L",
+            "latex": "S_1=A'/L"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -185,10 +261,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "96cd2a145f2430caec511be81504bea67aa7622f4a88aa613dfbc8134bcb11f3",
-        "normalizedSha256": "e2b9c7deb013afeefa27a9376fb103422c7cf7599f0aa68d0c28d3fd6ec2727c"
+        "normalizedSha256": "ef71d28ef25988a13ffb7a422ec5dc8d95d2bbb90a54c6d622840129d0ed711d"
       }
     },
     {
@@ -197,8 +278,46 @@
       "origin": "official",
       "text": {
         "raw": "S2 fattore di forma secondario, rapporto tra la dimensione in pianta D della singola piastra in acciaio, parallelamente all’azione\norizzontale agente, e lo spessore totale te degli strati di elastomero ossia S2 = D/t e \n.",
-        "normalized": "S2 fattore di forma secondario, rapporto tra la dimensione in pianta D della singola piastra in acciaio, parallelamente all’azione orizzontale agente, e lo spessore totale te degli strati di elastomero ossia S2 = D/t e .",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "S2 fattore di forma secondario, rapporto tra la dimensione in pianta D della singola piastra in acciaio, parallelamente all’azione orizzontale agente, e lo spessore totale te degli strati di elastomero ossia S2 = D/te.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "S2",
+            "latex": "S_2"
+          },
+          {
+            "kind": "text",
+            "value": " fattore di forma secondario, rapporto tra la dimensione in pianta "
+          },
+          {
+            "kind": "math",
+            "value": "D",
+            "latex": "D"
+          },
+          {
+            "kind": "text",
+            "value": " della singola piastra in acciaio, parallelamen"
+          },
+          {
+            "kind": "math",
+            "value": "te",
+            "latex": "t_e"
+          },
+          {
+            "kind": "text",
+            "value": " all’azione orizzontale agente, e lo spessore totale te degli strati di elastomero ossia "
+          },
+          {
+            "kind": "math",
+            "value": "S2 = D/te",
+            "latex": "S_2=D/t_e"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -220,10 +339,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c0bb7d46e7c018d61f0e2aa0c3c8782b1a8499cbd8f6feb54ba455601c2d2e38",
-        "normalizedSha256": "32f1e61b9319e276f340c526a84b69389abbeea784dc5dd0aa00a02ff4cbc64c"
+        "normalizedSha256": "f08e314c283244b96394d58f8ae299d1a606263abe4848f6748d79bc15b1f170"
       }
     },
     {
@@ -232,8 +356,32 @@
       "origin": "official",
       "text": {
         "raw": "Gli isolatori in materiale elastomerico ed acciaio sono individuati attraverso le loro curve caratteristiche forza -spostamento, ge-\nneralmente non lineari, tramite i due parametri sintetici: la rigidezza equivalente Ke, il coefficiente di smorzamento viscoso equi-\nvalente Βe \n.",
-        "normalized": "Gli isolatori in materiale elastomerico ed acciaio sono individuati attraverso le loro curve caratteristiche forza -spostamento, generalmente non lineari, tramite i due parametri sintetici: la rigidezza equivalente Ke, il coefficiente di smorzamento viscoso equivalente Βe .",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Gli isolatori in materiale elastomerico ed acciaio sono individuati attraverso le loro curve caratteristiche forza-spostamento, generalmente non lineari, tramite i due parametri sintetici: la rigidezza equivalente Ke, il coefficiente di smorzamento viscoso equivalente ξe.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli isolatori in materiale elastomerico ed acciaio sono individuati attraverso le loro curve caratteristiche forza-spostamento, generalmente non lineari, tramite i due parametri sintetici: la rigidezza equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "Ke",
+            "latex": "K_e"
+          },
+          {
+            "kind": "text",
+            "value": ", il coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξe",
+            "latex": "\\xi_e"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -260,10 +408,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c5e6197320b5c731087505fedbe2fc4e44a25244ad5228b73b071d5e48efb5d8",
-        "normalizedSha256": "1dd92035163ab6c27bac012c81ec3a72d548251c59f70c640e34aabe1131767b"
+        "normalizedSha256": "96c8ebff90dd3d6abf4a0366bed32a651908bb63de3b389f2b3d7e3da48ea667"
       }
     },
     {
@@ -272,8 +425,68 @@
       "origin": "official",
       "text": {
         "raw": "La rigidezza equivalente Ke \n, relativa ad un ciclo di carico, è definita come rapporto tra la forza F corrispondente allo spostamento\nmassimo d raggiunto in quel ciclo e lo stesso spostamento (Ke = F/d) e si valuta come prodotto del modulo dinamico equivalente\na taglio Gdin per A/te \n.",
-        "normalized": "La rigidezza equivalente Ke , relativa ad un ciclo di carico, è definita come rapporto tra la forza F corrispondente allo spostamento massimo d raggiunto in quel ciclo e lo stesso spostamento (Ke = F/d) e si valuta come prodotto del modulo dinamico equivalente a taglio Gdin per A/te .",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "La rigidezza equivalente Ke, relativa ad un ciclo di carico, è definita come rapporto tra la forza F corrispondente allo spostamento massimo d raggiunto in quel ciclo e lo stesso spostamento (Ke = F/d) e si valuta come prodotto del modulo dinamico equivalente a taglio Gdin per A/te.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La rigidezza equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "Ke",
+            "latex": "K_e"
+          },
+          {
+            "kind": "text",
+            "value": ", relativa ad un ciclo di carico, è definita come rapporto tra la forza "
+          },
+          {
+            "kind": "math",
+            "value": "F",
+            "latex": "F"
+          },
+          {
+            "kind": "text",
+            "value": " corrispon"
+          },
+          {
+            "kind": "math",
+            "value": "d",
+            "latex": "d"
+          },
+          {
+            "kind": "text",
+            "value": "ente allo spostamento massimo d raggiunto in quel ciclo e lo stesso spostamento "
+          },
+          {
+            "kind": "math",
+            "value": "(Ke = F/d)",
+            "latex": "(K_e=F/d)"
+          },
+          {
+            "kind": "text",
+            "value": " e si valuta come prodotto del modulo dinamico equivalente a taglio "
+          },
+          {
+            "kind": "math",
+            "value": "Gdin",
+            "latex": "G_{din}"
+          },
+          {
+            "kind": "text",
+            "value": " per "
+          },
+          {
+            "kind": "math",
+            "value": "A/te",
+            "latex": "A/t_e"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -295,10 +508,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a9b23e78628d40fabff865c00c9cd6052d2ac5029d7a9d060d78de6183ab5834",
-        "normalizedSha256": "3a2a17717b22abe14e083482603b3f864baec5b2ca8940166d727afb37b77ede"
+        "normalizedSha256": "bac83c3506cf06d5f32e8ff60f21372b4a2fb8957ae4155a759a563e9f4c61e2"
       }
     },
     {
@@ -307,8 +525,50 @@
       "origin": "official",
       "text": {
         "raw": "Il coefficiente di smorzamento viscoso equivalente Βe si definisce come rapporto tra l’energia dissipata in un ciclo completo di ca-\nrico E d e 2ΔFd, ossia Βe = Ed /(2Δ Fd).",
-        "normalized": "Il coefficiente di smorzamento viscoso equivalente Βe si definisce come rapporto tra l’energia dissipata in un ciclo completo di carico E d e 2ΔFd, ossia Βe = Ed /(2Δ Fd).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il coefficiente di smorzamento viscoso equivalente ξe si definisce come rapporto tra l’energia dissipata in un ciclo completo di carico Ed e 2πFd, ossia ξe = Ed/(2πFd).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξe",
+            "latex": "\\xi_e"
+          },
+          {
+            "kind": "text",
+            "value": " si definisce come rapporto tra l’energia dissipata in un ciclo completo di carico "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "2πFd",
+            "latex": "2\\pi Fd"
+          },
+          {
+            "kind": "text",
+            "value": ", ossia "
+          },
+          {
+            "kind": "math",
+            "value": "ξe = Ed/(2πFd)",
+            "latex": "\\xi_e=E_d/(2\\pi Fd)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -335,10 +595,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "01aaecf1ce41c1b68945990db47e7f00a82fc0f23f36906caa50086d8227593c",
-        "normalizedSha256": "9b3a4921b668c8251240a34991c81e78f99da3dae78a07b13c0e9947c13b8553"
+        "normalizedSha256": "1a4d4b249d15c1926a45671ce30eae15d47ce79c266432fcf29ffeb4d440e85b"
       }
     },
     {
@@ -347,8 +612,50 @@
       "origin": "official",
       "text": {
         "raw": "La rigidezza verticale Kv è definita come rapporto tra la forza verticale di progetto Fv e lo spostamento verticale dv (Kv = Fv \n/dv \n).",
-        "normalized": "La rigidezza verticale Kv è definita come rapporto tra la forza verticale di progetto Fv e lo spostamento verticale dv (Kv = Fv /dv ).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "La rigidezza verticale Kv è definita come rapporto tra la forza verticale di progetto Fv e lo spostamento verticale dv (Kv = Fv/dv).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La rigidezza verticale "
+          },
+          {
+            "kind": "math",
+            "value": "Kv",
+            "latex": "K_v"
+          },
+          {
+            "kind": "text",
+            "value": " è definita come rapporto tra la forza verticale di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "Fv",
+            "latex": "F_v"
+          },
+          {
+            "kind": "text",
+            "value": " e lo spostamento verticale "
+          },
+          {
+            "kind": "math",
+            "value": "dv",
+            "latex": "d_v"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "math",
+            "value": "(Kv = Fv/dv)",
+            "latex": "(K_v=F_v/d_v)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -370,10 +677,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "e27a7f4b8f18479d77a5780a48dfe2d14cce736e1007cca6a019f5128e2df66b",
-        "normalizedSha256": "31d747cced82e0b22fba91fb774acabca5b763fb33267ec8abe2e6cf58992b58"
+        "normalizedSha256": "af3c3e0c614ba12bf20ccd8e2c5c62ca989555faf5a7d6880a580102de302c90"
       }
     },
     {
@@ -422,8 +734,41 @@
       "origin": "official",
       "text": {
         "raw": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova. Le frequenze di prova per valutare le variazioni delle\ncaratteristiche meccaniche sono 0,1Hz e 0,5Hz.",
-        "normalized": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova. Le frequenze di prova per valutare le variazioni delle caratteristiche meccaniche sono 0,1Hz e 0,5Hz.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova. Le frequenze di prova per valutare le variazioni delle caratteristiche meccaniche sono 0,1 Hz e 0,5 Hz.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le variazioni devono essere valutate con riferimento al "
+          },
+          {
+            "kind": "math",
+            "value": "3°",
+            "latex": "3^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " ciclo di prova. Le frequenze di prova per valutare le variazioni delle caratteristiche meccaniche sono "
+          },
+          {
+            "kind": "math",
+            "value": "0,1 Hz",
+            "latex": "0{,}1\\;\\mathrm{Hz}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "0,5 Hz",
+            "latex": "0{,}5\\;\\mathrm{Hz}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -445,10 +790,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f5ef799727426e22ecdb39fd395e6f652bdb88643cf0c197e52f1ec699dfa991",
-        "normalizedSha256": "0bb09b5bd4379658925a7909822d195536358af2e3015c8b7b5b49c88bc36b4b"
+        "normalizedSha256": "7b335b9bd3d050c92b6c91d4fe4d1eec2bc1f23c9b39cf0ef1d091a1f3544775"
       }
     },
     {
@@ -482,49 +832,24 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Fornitura Invecchiamento Temperatura Frequenza di prova\nK e ±20% ±20% ±20% ±20%\nK v –30% - - -\nΒe ±20% ±20% ±20% ±20%",
-        "normalized": "Fornitura Invecchiamento Temperatura Frequenza di prova K e ±20% ±20% ±20% ±20% K v –30% - - - Βe ±20% ±20% ±20% ±20%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 363,
-        "printedPage": "359",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "f1b75930078b9941a58980dd5d64217e4efa0ccca4484e74b677e77ffacf4556",
-        "normalizedSha256": "b9baa59d1bf9d9182e6d21bd2a8fe73a27429aa7c5ebdf27595f3a4605f71a37"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.7#block-014",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
         "raw": "Le variazioni dovute al carico verticale, valutate come differenza tra i valori corrispondenti al carico verticale massimo ed a quel-\nlo minimo, non dovranno superare il 15% del valore di progetto.",
         "normalized": "Le variazioni dovute al carico verticale, valutate come differenza tra i valori corrispondenti al carico verticale massimo ed a quello minimo, non dovranno superare il 15% del valore di progetto.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le variazioni dovute al carico verticale, valutate come differenza tra i valori corrispondenti al carico verticale massimo ed a quello minimo, non dovranno superare il "
+          },
+          {
+            "kind": "math",
+            "value": "15%",
+            "latex": "15\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del valore di progetto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -551,6 +876,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "9ec4a94223100ea1f10de7613b944409cbfde06e1c40dfd440007bdc1c81392b",

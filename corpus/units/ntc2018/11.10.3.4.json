@@ -64,8 +64,32 @@
       "origin": "official",
       "text": {
         "raw": "Il modulo di elasticità normale secante della muratura è valutato sperimentalmente su n muretti (n ǃ 6), seguendo sia per la con-\nfezione che per la prova le modalità indicate nella norma UNI EN 1052-1:2001.",
-        "normalized": "Il modulo di elasticità normale secante della muratura è valutato sperimentalmente su n muretti (n ǃ 6), seguendo sia per la confezione che per la prova le modalità indicate nella norma UNI EN 1052-1:2001.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il modulo di elasticità normale secante della muratura è valutato sperimentalmente su n muretti (n ≥ 6), seguendo sia per la confezione che per la prova le modalità indicate nella norma UNI EN 1052-1:2001.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il modulo di elasticità "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": "ormale secante della muratura è valutato sperimentalmente su n muretti "
+          },
+          {
+            "kind": "math",
+            "value": "(n ≥ 6)",
+            "latex": "(n\\ge6)"
+          },
+          {
+            "kind": "text",
+            "value": ", seguendo sia per la confezione che per la prova le modalità indicate nella norma UNI EN 1052-1:2001."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -92,10 +116,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "992be11cc38a46c9f0c8c05ae3bd5e8cdc70c4aa665257f0c69ce5dde7219864",
-        "normalizedSha256": "eeb5c0887e9eda35ab2cd29d3967f7d867e2135e658c4c9aa2b915fe7c04d5b3"
+        "normalizedSha256": "18699b9eae8d1eb40bfdcce5f86a6e12863ef06deca9c647eb532ffdc23fc008"
       }
     },
     {
@@ -124,6 +153,47 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4#block-003",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– modulo di elasticità normale secante E = 1000 fk >11.10.8@",
+        "normalized": "– modulo di elasticità normale secante",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– modulo di elasticità normale secante"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 369,
+        "printedPage": "365",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Separata la descrizione della voce dalla formula display dopo confronto con il render ufficiale."
+          }
+        ],
+        "rawSha256": "c131d27fc92b78db2125d609daa78a3353a022444f732977864dc28bd47ffd35",
+        "normalizedSha256": "ba5d0f8815d228aaadbabd6425e76c1eff931c8383fefa8f239334353f4d2194"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4#block-004",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.10.8",
@@ -154,7 +224,48 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4#block-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4#block-005",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– modulo di elasticità tangenziale secante G = 0.4 E >11.10.9@.",
+        "normalized": "– modulo di elasticità tangenziale secante",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "– modulo di elasticità tangenziale secante"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 369,
+        "printedPage": "365",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Separata la descrizione della voce dalla formula display dopo confronto con il render ufficiale."
+          }
+        ],
+        "rawSha256": "dabd709c31b1130d8a598e5c78dd10e22a190907c1b0094cf51b359f42aa181e",
+        "normalizedSha256": "97d1547b191369c4af7ba1a269158a9912ad41451d45e42070f0a68862925395"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4#block-006",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.10.9",

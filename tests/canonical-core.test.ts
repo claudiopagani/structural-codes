@@ -86,7 +86,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        10942,
+        10911,
     );
 });
 

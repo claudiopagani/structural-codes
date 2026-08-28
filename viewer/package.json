@@ -45,7 +45,7 @@
     "dev": "npm run sync:corpus && vinext dev",
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",
-    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/package-boundary.test.mjs",
+    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern package-dist --ignore-pattern .next --max-warnings 0",
     "check": "npm run lint && npm test"
   },

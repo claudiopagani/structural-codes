@@ -99,7 +99,22 @@
       "text": {
         "raw": "Inoltre, per manufatti di peso superiore ad 8 kN, dovrà essere indicato in modo visibile, per lo meno fino all’eventuale getto di\ncompletamento, anche il peso dell’elemento.",
         "normalized": "Inoltre, per manufatti di peso superiore ad 8 kN, dovrà essere indicato in modo visibile, per lo meno fino all’eventuale getto di completamento, anche il peso dell’elemento.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Inoltre, per manufatti di peso superiore ad "
+          },
+          {
+            "kind": "math",
+            "value": "8 kN",
+            "latex": "8\\;\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": ", dovrà essere indicato in modo visibile, per lo meno fino all’eventuale getto di completamento, anche il peso dell’elemento."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -121,6 +136,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "bc8d680836e143a902b1cc47f5f14ad617b53c9d599e282d96681f9251013b0b",

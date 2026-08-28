@@ -99,7 +99,22 @@
       "text": {
         "raw": "Il tecnico suddetto provvederà alla trascrizione giornaliera dei risultati su appositi registri di produzione con data certa, da con-\nservare per dieci anni da parte del fabbricante. Detti registri devono essere disponibili per i competenti organi del Consiglio Su-\nperiore dei lavori pubblici - Servizio Tecnico Centrale, per i direttori dei lavori e per tutti gli aventi causa nella costruzione.",
         "normalized": "Il tecnico suddetto provvederà alla trascrizione giornaliera dei risultati su appositi registri di produzione con data certa, da conservare per dieci anni da parte del fabbricante. Detti registri devono essere disponibili per i competenti organi del Consiglio Superiore dei lavori pubblici - Servizio Tecnico Centrale, per i direttori dei lavori e per tutti gli aventi causa nella costruzione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il tecnico suddetto provvederà alla trascrizione giornaliera dei risultati su appositi registri di produzione con data certa, da conservare per "
+          },
+          {
+            "kind": "math",
+            "value": "dieci anni",
+            "latex": "10\\;\\mathrm{anni}"
+          },
+          {
+            "kind": "text",
+            "value": " da parte del fabbricante. Detti registri devono essere disponibili per i competenti organi del Consiglio Superiore dei lavori pubblici - Servizio Tecnico Centrale, per i direttori dei lavori e per tutti gli aventi causa nella costruzione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -126,6 +141,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f9b974b74017e293c7f8c2a9f3eeb1f073ce02e307800101b6cd25a915f91829",
@@ -139,7 +159,22 @@
       "text": {
         "raw": "Le prove di stabilimento dovranno essere eseguite a 28 giorni di stagionatura e ai tempi significativi nelle varie fasi del ciclo tec-\nnologico, secondo le modalità precisate in § 11.2.4.",
         "normalized": "Le prove di stabilimento dovranno essere eseguite a 28 giorni di stagionatura e ai tempi significativi nelle varie fasi del ciclo tecnologico, secondo le modalità precisate in § 11.2.4.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove di stabilimento dovranno essere eseguite a "
+          },
+          {
+            "kind": "math",
+            "value": "28 giorni",
+            "latex": "28\\;\\mathrm{giorni}"
+          },
+          {
+            "kind": "text",
+            "value": " di stagionatura e ai tempi significativi nelle varie fasi del ciclo tecnologico, secondo le modalità precisate in § 11.2.4."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -166,6 +201,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "3107ae5c7d6ea5b46ec36c81bae649f447d18b6e5d366516fdeff21cd56c9e7b",
@@ -219,7 +259,40 @@
       "text": {
         "raw": "Inoltre dovranno eseguirsi controlli del calcestruzzo a 28 giorni di stagionatura, presso un laboratorio di cui all’art. 59 del DPR n.\n380/2001, per non meno di un prelievo ogni cinque giorni di produzione effettiva per ogni tipo di calcestruzzo omogeneo; tali ri-\nsultati dovranno soddisfare il controllo di tipo A di cui al § 11.2.5, operando su tre prelievi consecutivi, indipendentemente dal\nquantitativo di calcestruzzo prodotto.",
         "normalized": "Inoltre dovranno eseguirsi controlli del calcestruzzo a 28 giorni di stagionatura, presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, per non meno di un prelievo ogni cinque giorni di produzione effettiva per ogni tipo di calcestruzzo omogeneo; tali risultati dovranno soddisfare il controllo di tipo A di cui al § 11.2.5, operando su tre prelievi consecutivi, indipendentemente dal quantitativo di calcestruzzo prodotto.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Inoltre dovranno eseguirsi controlli del calcestruzzo a "
+          },
+          {
+            "kind": "math",
+            "value": "28 giorni",
+            "latex": "28\\;\\mathrm{giorni}"
+          },
+          {
+            "kind": "text",
+            "value": " di stagionatura, presso un laboratorio di cui all’art. 59 del DPR n. 380/2001, per non meno di "
+          },
+          {
+            "kind": "math",
+            "value": "un prelievo ogni cinque giorni",
+            "latex": "1\\;\\mathrm{prelievo\\ ogni}\\;5\\;\\mathrm{giorni}"
+          },
+          {
+            "kind": "text",
+            "value": " di produzione effettiva per ogni tipo di calcestruzzo omogeneo; tali risultati dovranno soddisfare il controllo di tipo A di cui al § 11.2.5, operando su "
+          },
+          {
+            "kind": "math",
+            "value": "tre prelievi",
+            "latex": "3\\;\\mathrm{prelievi}"
+          },
+          {
+            "kind": "text",
+            "value": " consecutivi, indipendentemente dal quantitativo di calcestruzzo prodotto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -246,6 +319,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "1efac02d9e0116b2e7c8bdedb493bd8687317f25957472cc8eab4c69149ff402",
@@ -419,7 +497,31 @@
       "text": {
         "raw": "La prova di piegatura va eseguita su tre campioni ogni 90 tonnellate di acciaio lavorato (in uscita dalla/e apparecchiatura/e dello\nstabilimento), e comunque almeno 1 volta al mese, secondo la norma UNI EN ISO 15630-1:2010. Vanno usati mandrini di diame-\ntro opportuno. Dopo la prova il campione non deve presentare cricche.",
         "normalized": "La prova di piegatura va eseguita su tre campioni ogni 90 tonnellate di acciaio lavorato (in uscita dalla/e apparecchiatura/e dello stabilimento), e comunque almeno 1 volta al mese, secondo la norma UNI EN ISO 15630-1:2010. Vanno usati mandrini di diametro opportuno. Dopo la prova il campione non deve presentare cricche.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La prova di piegatura va eseguita su "
+          },
+          {
+            "kind": "math",
+            "value": "tre campioni ogni 90 tonnellate",
+            "latex": "3\\;\\mathrm{campioni\\ ogni}\\;90\\;\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " di acciaio lavorato (in uscita dalla/e apparecchiatura/e dello stabilimento), e comunque almeno "
+          },
+          {
+            "kind": "math",
+            "value": "1 volta al mese",
+            "latex": "1\\;\\mathrm{volta\\ al\\ mese}"
+          },
+          {
+            "kind": "text",
+            "value": ", secondo la norma UNI EN ISO 15630-1:2010. Vanno usati mandrini di diametro opportuno. Dopo la prova il campione non deve presentare cricche."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -446,6 +548,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "55f0322bd36759c72f4eeb539e9ba33082d2fcf1a8f5347632f9284ac06063d3",
@@ -459,7 +566,22 @@
       "text": {
         "raw": "Le prove sulle saldature strutturali, eseguite da operatore qualificato, devono essere definite all’interno del controllo di produ-\nzione in fabbrica aziendale. Per le modalità di esecuzione dei controlli ed i livelli di accettabilità si potrà fare utile riferimento alla\nnorma UNI EN ISO 17635. Ogni due anni, al rinnovo della qualifica dell’operatore, verranno effettuate sulle saldature tutte le\nprove previste dalle norme europee applicabili.",
         "normalized": "Le prove sulle saldature strutturali, eseguite da operatore qualificato, devono essere definite all’interno del controllo di produzione in fabbrica aziendale. Per le modalità di esecuzione dei controlli ed i livelli di accettabilità si potrà fare utile riferimento alla norma UNI EN ISO 17635. Ogni due anni, al rinnovo della qualifica dell’operatore, verranno effettuate sulle saldature tutte le prove previste dalle norme europee applicabili.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove sulle saldature strutturali, eseguite da operatore qualificato, devono essere definite all’interno del controllo di produzione in fabbrica aziendale. Per le modalità di esecuzione dei controlli ed i livelli di accettabilità si potrà fare utile riferimento alla norma UNI EN ISO 17635. Ogni "
+          },
+          {
+            "kind": "math",
+            "value": "due anni",
+            "latex": "2\\;\\mathrm{anni}"
+          },
+          {
+            "kind": "text",
+            "value": ", al rinnovo della qualifica dell’operatore, verranno effettuate sulle saldature tutte le prove previste dalle norme europee applicabili."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -486,6 +608,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "790241f4b37f01f2c2e5b7d1ef9701541d7bc76848dd80ee83d6fb6178ae9f4b",
@@ -499,7 +626,22 @@
       "text": {
         "raw": "A valle dell’operazione di raddrizzamento dei rotoli, verrà effettuata una prova a trazione su tre campioni ogni 10 rotoli presso\nuno dei laboratori di cui all’art. 59 del DPR n. 380/2001.",
         "normalized": "A valle dell’operazione di raddrizzamento dei rotoli, verrà effettuata una prova a trazione su tre campioni ogni 10 rotoli presso uno dei laboratori di cui all’art. 59 del DPR n. 380/2001.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "A valle dell’operazione di raddrizzamento dei rotoli, verrà effettuata una prova a trazione su "
+          },
+          {
+            "kind": "math",
+            "value": "tre campioni ogni 10 rotoli",
+            "latex": "3\\;\\mathrm{campioni\\ ogni}\\;10\\;\\mathrm{rotoli}"
+          },
+          {
+            "kind": "text",
+            "value": " presso uno dei laboratori di cui all’art. 59 del DPR n. 380/2001."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -521,6 +663,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a691b594f8d37ad710de32787666299393b821f10a016f4a3e34dc1e6d8b04ce",
@@ -534,7 +681,22 @@
       "text": {
         "raw": "Il Direttore tecnico di stabilimento curerà la registrazione di tutti i risultati delle prove di controllo interno e del laboratorio ester-\nno su apposito registro di produzione, da conservare per dieci anni, di cui dovrà essere consentita la visione a quanti ne abbiano\ntitolo.",
         "normalized": "Il Direttore tecnico di stabilimento curerà la registrazione di tutti i risultati delle prove di controllo interno e del laboratorio esterno su apposito registro di produzione, da conservare per dieci anni, di cui dovrà essere consentita la visione a quanti ne abbiano titolo.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il Direttore tecnico di stabilimento curerà la registrazione di tutti i risultati delle prove di controllo interno e del laboratorio esterno su apposito registro di produzione, da conservare per "
+          },
+          {
+            "kind": "math",
+            "value": "dieci anni",
+            "latex": "10\\;\\mathrm{anni}"
+          },
+          {
+            "kind": "text",
+            "value": ", di cui dovrà essere consentita la visione a quanti ne abbiano titolo."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -561,6 +723,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "756626c0832458b74666be6c0460ce4f3d77ee7daf64d9798b3db69ef8315e56",

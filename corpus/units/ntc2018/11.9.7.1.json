@@ -65,7 +65,31 @@
       "text": {
         "raw": "Le prove di accettazione devono essere effettuate su almeno il 20% dei dispositivi, e comunque non meno di 4 e non più del nu-\nmero di dispositivi da mettere in opera.",
         "normalized": "Le prove di accettazione devono essere effettuate su almeno il 20% dei dispositivi, e comunque non meno di 4 e non più del numero di dispositivi da mettere in opera.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove di accettazione devono essere effettuate su almeno il "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dei dispositivi, e comunque non meno di "
+          },
+          {
+            "kind": "math",
+            "value": "4",
+            "latex": "4"
+          },
+          {
+            "kind": "text",
+            "value": " e non più del numero di dispositivi da mettere in opera."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -92,6 +116,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "73b3b80363edf26dcff289420edb8d98c66eed66907353aca56fd6ac91167341",

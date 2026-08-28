@@ -59,12 +59,21 @@
       "origin": "official",
       "text": {
         "raw": "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a com-\npressione della muratura f k può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di ap-\npartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi\nsia dichiarata mediante il suo valore medio fbm, in assenza di una determinazione sperimentale diretta, la resistenza caratteristica\ndell’elemento fbk può essere stimata mediante la relazione fbk= 0,8 fbm. La validità della tabella è limitata a quelle murature aventi\ngiunti orizzontali e verticali riempiti di malta e di spessore compreso tra 5 e 15 mm. Per valori non contemplati in tabella è am-\nmessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni.",
-        "normalized": "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a compressione della muratura f k può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di appartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi sia dichiarata mediante il suo valore medio fbm, in assenza di una determinazione sperimentale diretta, la resistenza caratteristica dell’elemento fbk può essere stimata mediante la relazione fbk= 0,8 fbm. La validità della tabella è limitata a quelle murature aventi giunti orizzontali e verticali riempiti di malta e di spessore compreso tra 5 e 15 mm. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni.",
+        "normalized": "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a compressione della muratura fk può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di appartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi sia dichiarata mediante il suo valore medio fbm, in assenza di una determinazione sperimentale diretta, la resistenza caratteristica dell’elemento fbk può essere stimata mediante la relazione fbk = 0,8 fbm. La validità della tabella è limitata a quelle murature aventi giunti orizzontali e verticali riempiti di malta e di spessore compreso tra 5 e 15 mm. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a compressione della muratura f k può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di appartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi sia dichiarata mediante il suo valore medio "
+            "value": "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a compressione della muratura "
+          },
+          {
+            "kind": "math",
+            "value": "fk",
+            "latex": "f_k"
+          },
+          {
+            "kind": "text",
+            "value": " può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di appartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi sia dichiarata mediante il suo valore medio "
           },
           {
             "kind": "math",
@@ -86,21 +95,21 @@
           },
           {
             "kind": "math",
-            "value": "fbk",
-            "latex": "f_{bk}"
+            "value": "fbk = 0,8 fbm",
+            "latex": "f_{bk}=0{,}8f_{bm}"
           },
           {
             "kind": "text",
-            "value": "= 0,8 "
+            "value": ". La validità della tabella è limitata a quelle murature aventi giunti orizzontali e verticali riempiti di malta e di spessore compreso tra "
           },
           {
             "kind": "math",
-            "value": "fbm",
-            "latex": "f_{bm}"
+            "value": "5 e 15 mm",
+            "latex": "5\\text{ e }15\\;\\mathrm{mm}"
           },
           {
             "kind": "text",
-            "value": ". La validità della tabella è limitata a quelle murature aventi giunti orizzontali e verticali riempiti di malta e di spessore compreso tra 5 e 15 mm. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni."
+            "value": ". Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni."
           }
         ]
       },
@@ -129,10 +138,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "344972f69cab7322967e0bdd3d207e0dff87a3a4a0253578be4a759a9d3354d8",
-        "normalizedSha256": "230a0e8ba7af3d10a31eb1b6f4a234155fd7f756761388b30b3c0c1fcd588ada"
+        "normalizedSha256": "c375b83752c9bc061e082fb320ac377354a2f4bf8974d8bf211ad4c5d2517d93"
       }
     },
     {
@@ -215,6 +229,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a360be1b798aafdcd687a2cc03f92619bc19c8d227660c7b2f8da81eb6e379a7",
@@ -286,7 +305,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "681e00605b704244d4bf9038d7a78ff2a4f590a6dc12ad1bbd4685ae1f8c82f6",
         "normalizedSha256": "681e00605b704244d4bf9038d7a78ff2a4f590a6dc12ad1bbd4685ae1f8c82f6"
       }
@@ -297,12 +322,21 @@
       "origin": "official",
       "text": {
         "raw": "Il valore della resistenza caratteristica a compressione della muratura f k può essere dedotto dalla resistenza caratteristica a\ncompressione degli elementi fbk e dalla classe di appartenenza della malta tramite la seguente Tab. 11.10.VII.",
-        "normalized": "Il valore della resistenza caratteristica a compressione della muratura f k può essere dedotto dalla resistenza caratteristica a compressione degli elementi fbk e dalla classe di appartenenza della malta tramite la seguente Tab. 11.10.VII.",
+        "normalized": "Il valore della resistenza caratteristica a compressione della muratura fk può essere dedotto dalla resistenza caratteristica a compressione degli elementi fbk e dalla classe di appartenenza della malta tramite la seguente Tab. 11.10.VII.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Il valore della resistenza caratteristica a compressione della muratura f k può essere dedotto dalla resistenza caratteristica a compressione degli elementi "
+            "value": "Il valore della resistenza caratteristica a compressione della muratura "
+          },
+          {
+            "kind": "math",
+            "value": "fk",
+            "latex": "f_k"
+          },
+          {
+            "kind": "text",
+            "value": " può essere dedotto dalla resistenza caratteristica a compressione degli elementi "
           },
           {
             "kind": "math",
@@ -335,10 +369,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "fed984a3c135e2fdc85b15eb1ff781b8af18c0a04ea70e564cd91a38455dd694",
-        "normalizedSha256": "82b2a30a388af5aaecb457d8229a88cecbfa7fa5ee9af2efde7b867b1512d3da"
+        "normalizedSha256": "9ea37fd5d35314edd4df92b9f4c39769d17875d9185c380ae6d9b44ea2cd3372"
       }
     },
     {
@@ -369,56 +408,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2#block-008",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Resistenza caratteristica a compressione fbk dell’elemento Tipo di malta\nM15 M10 M5 M2,5\n2,0 1,0 1,0 1,0 1,0\n3,0 2,2 2,2 2,2 2,0\n5,0 3,5 3,4 3,3 3,0\n7,5 5,0 4,5 4,1 3,5\n10,0 6,2 5,3 4,7 4,1\n15,0 8,2 6,7 6,0 5,1\n20,0 9,7 8,0 7,0 6,1\n30,0 12,0 10,0 8,6 7,2\nǃ 40,0 14,3 12,0 10,4 –",
-        "normalized": "Resistenza caratteristica a compressione fbk dell’elemento Tipo di malta M15 M10 M5 M2,5 2,0 1,0 1,0 1,0 1,0 3,0 2,2 2,2 2,2 2,0 5,0 3,5 3,4 3,3 3,0 7,5 5,0 4,5 4,1 3,5 10,0 6,2 5,3 4,7 4,1 15,0 8,2 6,7 6,0 5,1 20,0 9,7 8,0 7,0 6,1 30,0 12,0 10,0 8,6 7,2 ǃ 40,0 14,3 12,0 10,4 –",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Resistenza caratteristica a compressione "
-          },
-          {
-            "kind": "math",
-            "value": "fbk",
-            "latex": "f_{bk}"
-          },
-          {
-            "kind": "text",
-            "value": " dell’elemento Tipo di malta M15 M10 M5 M2,5 2,0 1,0 1,0 1,0 1,0 3,0 2,2 2,2 2,2 2,0 5,0 3,5 3,4 3,3 3,0 7,5 5,0 4,5 4,1 3,5 10,0 6,2 5,3 4,7 4,1 15,0 8,2 6,7 6,0 5,1 20,0 9,7 8,0 7,0 6,1 30,0 12,0 10,0 8,6 7,2 ǃ 40,0 14,3 12,0 10,4 –"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 368,
-        "printedPage": "364",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "b6ce103ba8712ba3958a311b0c07a52234db67d719d34c725fe533493fa917de",
-        "normalizedSha256": "bcd370474c58c31d027d08ceffd6443baca07b82d92394d5b3bcc8874a148ee3"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2#block-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -458,13 +447,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2#block-010",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2#block-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "In alternativa alla determinazione sperimentale della resistenza a compressione, per la stima della resistenza caratteristica a com-\npressione della muratura in elementi artificiali e naturali, è anche possibile fare riferimento a quanto riportato al § 3.6 della norma\nUNI EN 1996-1-1:2013, integrata dalla relativa Appendice Nazionale. Per la determinazione della resistenza normalizzata del\nblocco fb a cui queste norme si riferiscono, qualora essa non sia dichiarata dal fabbricante, si utilizzano i fattori di conversione del-\nla resistenza alla compressione media del blocco contenuti nella appendice A della UNI EN 772-1.",
         "normalized": "In alternativa alla determinazione sperimentale della resistenza a compressione, per la stima della resistenza caratteristica a compressione della muratura in elementi artificiali e naturali, è anche possibile fare riferimento a quanto riportato al § 3.6 della norma UNI EN 1996-1-1:2013, integrata dalla relativa Appendice Nazionale. Per la determinazione della resistenza normalizzata del blocco fb a cui queste norme si riferiscono, qualora essa non sia dichiarata dal fabbricante, si utilizzano i fattori di conversione della resistenza alla compressione media del blocco contenuti nella appendice A della UNI EN 772-1.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In alternativa alla determinazione sperimentale della resistenza a compressione, per la stima della resistenza caratteristica a compressione della muratura in elementi artificiali e naturali, è anche possibile fare riferimento a quanto riportato al § 3.6 della norma UNI EN 1996-1-1:2013, integrata dalla relativa Appendice Nazionale. Per la determinazione della resistenza normalizzata del blocco "
+          },
+          {
+            "kind": "math",
+            "value": "fb",
+            "latex": "f_b"
+          },
+          {
+            "kind": "text",
+            "value": " a cui queste norme si riferiscono, qualora essa non sia dichiarata dal fabbricante, si utilizzano i fattori di conversione della resistenza alla compressione media del blocco contenuti nella appendice A della UNI EN 772-1."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -491,6 +495,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "0c8cadbfac0005cbf296db7803664359051bf10c63196ffd3a6a762ecfa3ee16",

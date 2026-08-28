@@ -123,73 +123,24 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Specifica Tecnica Europea di riferimento Categoria\nSistema di Valutazione e\nVerifica della Costanza\ndella Prestazione\nSpecifica per elementi per muratura - Elementi per mu-\nratura di laterizio, silicato di calcio, in calcestruzzo vi-\nbrocompresso (aggregati pesanti e leggeri), calcestruzzo\naerato autoclavato, pietra agglomerata, pietra naturale\nUNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6\nCategoria I 2+",
-        "normalized": "Specifica Tecnica Europea di riferimento Categoria Sistema di Valutazione e Verifica della Costanza della Prestazione Specifica per elementi per muratura - Elementi per muratura di laterizio, silicato di calcio, in calcestruzzo vibrocompresso (aggregati pesanti e leggeri), calcestruzzo aerato autoclavato, pietra agglomerata, pietra naturale UNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6 Categoria I 2+",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 365,
-        "printedPage": "361",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "4ab6a6e0ca5a780cbd9f718fa5df583ffcbde47ae937aba261ff925d8c554843",
-        "normalizedSha256": "2371dfc3a88ea1910052b5592a20db61af23f94905e5cb5e536082e17484c3dd"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1#block-004",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Categoria II 4",
-        "normalized": "Categoria II 4",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 365,
-        "printedPage": "361",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "368ec89e47f7936b835fb868907e612e42d2b44bb0d3f253298abd270642fe4b",
-        "normalizedSha256": "368ec89e47f7936b835fb868907e612e42d2b44bb0d3f253298abd270642fe4b"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1#block-005",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
         "raw": "Come più precisamente specificato nelle norme europee armonizzate della serie UNI EN 771, gli elementi di categoria I hanno\nuna resistenza alla compressione dichiarata, determinata tramite il valore medio o il valore caratteristico, e una probabilità di in-\nsuccesso nel raggiungerla non maggiore del 5%. Gli elementi di categoria II non soddisfano questo requisito.",
         "normalized": "Come più precisamente specificato nelle norme europee armonizzate della serie UNI EN 771, gli elementi di categoria I hanno una resistenza alla compressione dichiarata, determinata tramite il valore medio o il valore caratteristico, e una probabilità di insuccesso nel raggiungerla non maggiore del 5%. Gli elementi di categoria II non soddisfano questo requisito.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Come più precisamente specificato nelle norme europee armonizzate della serie UNI EN 771, gli elementi di categoria I hanno una resistenza alla compressione dichiarata, determinata tramite il valore medio o il valore caratteristico, e una probabilità di insuccesso nel raggiungerla non maggiore del "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Gli elementi di categoria II non soddisfano questo requisito."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -216,6 +167,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a56d873e57ffdaa1689025db6a227900b184822f6a5f7057daec11393a99c660",
@@ -223,13 +179,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1#block-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.10.1#block-004",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "L’uso di elementi per muratura portante di Categoria I e II è subordinato all’adozione, nella valutazione della resistenza di pro-\ngetto, del corrispondente coefficiente di sicurezza ·M riportato nel relativo paragrafo 4.5.6.",
-        "normalized": "L’uso di elementi per muratura portante di Categoria I e II è subordinato all’adozione, nella valutazione della resistenza di progetto, del corrispondente coefficiente di sicurezza ·M riportato nel relativo paragrafo 4.5.6.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "L’uso di elementi per muratura portante di Categoria I e II è subordinato all’adozione, nella valutazione della resistenza di progetto, del corrispondente coefficiente di sicurezza γM riportato nel relativo paragrafo 4.5.6.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’uso di elementi per muratura portante di Categoria I e II è subordinato all’adozione, nella valutazione della resistenza di progetto, del corrispondente coefficiente di sicurezza "
+          },
+          {
+            "kind": "math",
+            "value": "γM",
+            "latex": "\\gamma_M"
+          },
+          {
+            "kind": "text",
+            "value": " riportato nel relativo paragrafo 4.5.6."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -256,10 +227,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "0592d3be560db4ac3ec420b95728d0666274b6ba8152da579892e2ba6bdac75a",
-        "normalizedSha256": "51e07e896a738f4af17d26c9dd5d0a645afbbe5591c70d77ddedb1b95a4fb4b1"
+        "normalizedSha256": "73e8d1e32efb1e11a3ca3328865c9433e1db22ccdddae7ee7a30828af82407f0"
       }
     }
   ],

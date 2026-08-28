@@ -82,14 +82,14 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.7.1.1",
       "officialNumber": "11.7.1",
       "pdfPage": 350,
-      "latex": "k_h=\\min\\left\\{\\left(\\frac{150}{h}\\right)^{0{,}2},1{,}3\\right\\}"
+      "latex": "k_h=\\min\\left\\{\\left[\\left(\\frac{150}{h}\\right)^{0{,}2};1{,}3\\right]\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.7.2",
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.7.1.1",
       "officialNumber": "11.7.2",
       "pdfPage": 350,
-      "latex": "k_h=\\min\\left\\{\\left(\\frac{600}{h}\\right)^{0{,}1},1{,}1\\right\\}"
+      "latex": "k_h=\\min\\left\\{\\left[\\left(\\frac{600}{h}\\right)^{0{,}1};1{,}1\\right]\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.9.1",
@@ -145,7 +145,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.9.6",
       "officialNumber": "11.9.8",
       "pdfPage": 362,
-      "latex": "\\gamma_v=(1+t_d)\\,(1{,}5)^\\alpha"
+      "latex": "\\gamma_v=(1+t_d)\\cdot(1{,}5)^\\alpha"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.9.9",
@@ -159,7 +159,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.1.1.1",
       "officialNumber": "11.10.1",
       "pdfPage": 365,
-      "latex": "\\frac{f_1+\\cdots+f_n}{n}\\ge f_{bm}"
+      "latex": "\\frac{f_1+f_2+\\cdots+f_n}{n}\\ge f_{bm}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:11.10.2",
@@ -215,7 +215,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.3.4",
       "officialNumber": "11.10.9",
       "pdfPage": 369,
-      "latex": "G=0{,}4E"
+      "latex": "G=0.4E"
     }
   ],
   "tables": [
@@ -3100,19 +3100,162 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.7.1.1",
       "officialNumber": "11.7.I",
       "pdfPage": 349,
-      "caption": "Tab. 11.7.I – Profilo resistente per materiali e prodotti a base di legno Resistenze caratteristiche Moduli elastici Massa volumica",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.7.I – Profilo resistente per materiali e prodotti a base di legno",
+      "columnCount": 6,
+      "headers": [
+        [
+          {
+            "text": "Resistenze caratteristiche",
+            "colSpan": 2
+          },
+          {
+            "text": "Moduli elastici",
+            "colSpan": 2
+          },
+          {
+            "text": "Massa volumica",
+            "colSpan": 2
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Flessione fm,k Modulo elastico paral- lelo medio ** E0,mean Massa volumi- ca caratteristica Uk Trazione paral- lela ft,0,k Modulo elastico paral- lelo caratteristico E0,05 Massa volumi- ca media *,** Umean Trazione per- pendicolare ft,90,k Modulo elastico per- pendicolare medio ** E90,mean Compressione parallela fc,0,k Modulo elastico tan- genziale medio ** G mean Compressione perpendicolare fc,90,k Taglio fv,k * La massa volumica media può non essere dichiarata. ** Il pedice mean può essere abbreviato con m"
+            "text": "Flessione"
+          },
+          {
+            "text": "fm,k",
+            "latex": "f_{m,k}"
+          },
+          {
+            "text": "Modulo elastico parallelo medio **"
+          },
+          {
+            "text": "E0,mean",
+            "latex": "E_{0,\\mathrm{mean}}"
+          },
+          {
+            "text": "Massa volumica caratteristica"
+          },
+          {
+            "text": "ρk",
+            "latex": "\\rho_k"
+          }
+        ],
+        [
+          {
+            "text": "Trazione parallela"
+          },
+          {
+            "text": "ft,0,k",
+            "latex": "f_{t,0,k}"
+          },
+          {
+            "text": "Modulo elastico parallelo caratteristico"
+          },
+          {
+            "text": "E0,05",
+            "latex": "E_{0,05}"
+          },
+          {
+            "text": "Massa volumica media *,**"
+          },
+          {
+            "text": "ρmean",
+            "latex": "\\rho_{\\mathrm{mean}}"
+          }
+        ],
+        [
+          {
+            "text": "Trazione perpendicolare"
+          },
+          {
+            "text": "ft,90,k",
+            "latex": "f_{t,90,k}"
+          },
+          {
+            "text": "Modulo elastico perpendicolare medio **"
+          },
+          {
+            "text": "E90,mean",
+            "latex": "E_{90,\\mathrm{mean}}"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Compressione parallela"
+          },
+          {
+            "text": "fc,0,k",
+            "latex": "f_{c,0,k}"
+          },
+          {
+            "text": "Modulo elastico tangenziale medio **"
+          },
+          {
+            "text": "Gmean",
+            "latex": "G_{\\mathrm{mean}}"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Compressione perpendicolare"
+          },
+          {
+            "text": "fc,90,k",
+            "latex": "f_{c,90,k}"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          }
+        ],
+        [
+          {
+            "text": "Taglio"
+          },
+          {
+            "text": "fv,k",
+            "latex": "f_{v,k}"
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
+          },
+          {
+            "text": ""
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "* La massa volumica media può non essere dichiarata.",
+        "** Il pedice mean può essere abbreviato con m.",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3120,19 +3263,75 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.9.4",
       "officialNumber": "11.9.I",
       "pdfPage": 360,
-      "caption": "Tab. 11.9.I Fornitura Invecchiamento Temperatura Frequenza di prova K e ±15% ±20% ±40% ±10% Βe ±15% ±15% ±15% ±10%",
-      "columnCount": 1,
-      "headers": [],
-      "rows": [
+      "caption": "Tab. 11.9.I",
+      "columnCount": 5,
+      "headers": [
         [
           {
             "text": ""
+          },
+          {
+            "text": "Fornitura"
+          },
+          {
+            "text": "Invecchiamento"
+          },
+          {
+            "text": "Temperatura"
+          },
+          {
+            "text": "Frequenza di prova"
+          }
+        ]
+      ],
+      "rows": [
+        [
+          {
+            "text": "K_e",
+            "latex": "K_e"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±40%",
+            "latex": "\\pm40\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
+          }
+        ],
+        [
+          {
+            "text": "\\xi_e",
+            "latex": "\\xi_e"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3140,34 +3339,99 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.9.5",
       "officialNumber": "11.9.II",
       "pdfPage": 361,
-      "caption": "Tab. 11.9.II Fornitura Invecchiamento Temperatura Frequenza di prova (1)",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.9.II",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "Fornitura"
+          },
+          {
+            "text": "Invecchiamento"
+          },
+          {
+            "text": "Temperatura"
+          },
+          {
+            "text": "Frequenza di prova (1)",
+            "latex": "\\mathrm{Frequenza\\ di\\ prova}^{(1)}"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "K 2 ±15% ±20% ±20% ±10%"
+            "text": "K_2",
+            "latex": "K_2"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ],
         [
           {
-            "text": "K sec ±15% ±20% ±40% ±10%"
+            "text": "K_{sec}",
+            "latex": "K_{sec}"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±40%",
+            "latex": "\\pm40\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ],
         [
           {
-            "text": "Βe ±10% ±15% ±15% ±10%"
-          }
-        ],
-        [
+            "text": "\\xi_e",
+            "latex": "\\xi_e"
+          },
           {
-            "text": "(1) Valori ottenuti o dichiarati con riferimento alle stesse frequenze delle prove di qualificazione."
+            "text": "±10%",
+            "latex": "\\pm10\\%"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "(1) Valori ottenuti o dichiarati con riferimento alle stesse frequenze delle prove di qualificazione.",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3176,28 +3440,74 @@
       "officialNumber": "11.9.III",
       "pdfPage": 362,
       "caption": "Tab. 11.9.III",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "Fornitura"
+          },
+          {
+            "text": "Invecchiamento"
+          },
+          {
+            "text": "Temperatura"
+          },
+          {
+            "text": "Frequenza di prova"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Fornitura Invecchiamento Temperatura Frequenza di prova"
+            "text": "F_{max}",
+            "latex": "F_{max}"
+          },
+          {
+            "text": "±15%",
+            "latex": "\\pm15\\%"
+          },
+          {
+            "text": "±5%",
+            "latex": "\\pm5\\%"
+          },
+          {
+            "text": "±5%",
+            "latex": "\\pm5\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ],
         [
           {
-            "text": "F max ±15% ±5% ±5% ±10%"
-          }
-        ],
-        [
+            "text": "E_d",
+            "latex": "E_d"
+          },
           {
-            "text": "Ed -15% -5% -5% ±10%"
+            "text": "-15%",
+            "latex": "-15\\%"
+          },
+          {
+            "text": "-5%",
+            "latex": "-5\\%"
+          },
+          {
+            "text": "-5%",
+            "latex": "-5\\%"
+          },
+          {
+            "text": "±10%",
+            "latex": "\\pm10\\%"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3206,18 +3516,96 @@
       "officialNumber": "11.9.IV",
       "pdfPage": 363,
       "caption": "Tab. 11.9.IV",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": ""
+          },
+          {
+            "text": "Fornitura"
+          },
+          {
+            "text": "Invecchiamento"
+          },
+          {
+            "text": "Temperatura"
+          },
+          {
+            "text": "Frequenza di prova"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Fornitura Invecchiamento Temperatura Frequenza di prova K e ±20% ±20% ±20% ±20% K v –30% - - - Βe ±20% ±20% ±20% ±20%"
+            "text": "K_e",
+            "latex": "K_e"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          }
+        ],
+        [
+          {
+            "text": "K_v",
+            "latex": "K_v"
+          },
+          {
+            "text": "-30%",
+            "latex": "-30\\%"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          }
+        ],
+        [
+          {
+            "text": "\\xi_e",
+            "latex": "\\xi_e"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
+          },
+          {
+            "text": "±20%",
+            "latex": "\\pm20\\%"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3226,23 +3614,46 @@
       "officialNumber": "11.10.I",
       "pdfPage": 365,
       "caption": "Tab. 11.10.I",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Specifica Tecnica Europea di riferimento"
+          },
+          {
+            "text": "Categoria"
+          },
+          {
+            "text": "Sistema di Valutazione e Verifica della Costanza della Prestazione"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Specifica Tecnica Europea di riferimento Categoria Sistema di Valutazione e Verifica della Costanza della Prestazione Specifica per elementi per muratura - Elementi per mu- ratura di laterizio, silicato di calcio, in calcestruzzo vi- brocompresso (aggregati pesanti e leggeri), calcestruzzo aerato autoclavato, pietra agglomerata, pietra naturale UNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6 Categoria I 2+"
+            "text": "Specifica per elementi per muratura - Elementi per muratura di laterizio, silicato di calcio, in calcestruzzo vibrocompresso (aggregati pesanti e leggeri), calcestruzzo aerato autoclavato, pietra agglomerata, pietra naturale UNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6",
+            "rowSpan": 2
+          },
+          {
+            "text": "Categoria I"
+          },
+          {
+            "text": "2+",
+            "latex": "2+"
           }
         ],
         [
           {
-            "text": "Categoria II 4"
+            "text": "Categoria II"
+          },
+          {
+            "text": "4",
+            "latex": "4"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3251,28 +3662,67 @@
       "officialNumber": "11.10.II",
       "pdfPage": 366,
       "caption": "Tab. 11.10.II - Classi di malte a prestazione garantita",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Classe"
+          },
+          {
+            "text": "M 2,5"
+          },
+          {
+            "text": "M 5"
+          },
+          {
+            "text": "M 10"
+          },
+          {
+            "text": "M 15"
+          },
+          {
+            "text": "M 20"
+          },
+          {
+            "text": "M d"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Classe M 2,5 M 5 M 10 M 15 M 20 M d"
-          }
-        ],
-        [
+            "text": "Resistenza a compressione N/mm²",
+            "latex": "\\mathrm{Resistenza\\ a\\ compressione}\\;[\\mathrm{N/mm^2}]"
+          },
           {
-            "text": "Resistenza a compressione N/mm2 2,5 5 10 15 20 d"
-          }
-        ],
-        [
+            "text": "2,5",
+            "latex": "2{,}5"
+          },
           {
-            "text": "d è una resistenza a compressione maggiore di 25 N/mm² dichiarata dal fabbricante"
+            "text": "5",
+            "latex": "5"
+          },
+          {
+            "text": "10",
+            "latex": "10"
+          },
+          {
+            "text": "15",
+            "latex": "15"
+          },
+          {
+            "text": "20",
+            "latex": "20"
+          },
+          {
+            "text": "d",
+            "latex": "d"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "d è una resistenza a compressione maggiore di 25 N/mm² dichiarata dal fabbricante",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3281,18 +3731,36 @@
       "officialNumber": "11.10.III",
       "pdfPage": 366,
       "caption": "Tab. 11.10.III",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Specifica Tecnica Europea di Riferimento"
+          },
+          {
+            "text": "Uso Previsto"
+          },
+          {
+            "text": "Sistema di Valutazione e Verifica della Costanza della Prestazione"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Specifica Tecnica Europea di Riferimento Uso Previsto Sistema di Valutazione e Verifica della Costanza della Prestazione Malta per murature UNI EN 998-2 Usi strutturali 2+"
+            "text": "Malta per murature UNI EN 998-2"
+          },
+          {
+            "text": "Usi strutturali"
+          },
+          {
+            "text": "2+",
+            "latex": "2+"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3301,18 +3769,36 @@
       "officialNumber": "11.10.IV",
       "pdfPage": 366,
       "caption": "Tab. 11.10.IV",
-      "columnCount": 1,
-      "headers": [],
+      "columnCount": 3,
+      "headers": [
+        [
+          {
+            "text": "Specifica Tecnica Europea di Riferimento"
+          },
+          {
+            "text": "Uso Previsto"
+          },
+          {
+            "text": "Sistema di Valutazione e Verifica della Costanza della Prestazione"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Specifica Tecnica Europea di Riferimento Uso Previsto Sistema di Valutazione e Verifica della Costanza della Prestazione Malta per murature UNI EN 998-2 Usi strutturali e non 4"
+            "text": "Malta per murature UNI EN 998-2"
+          },
+          {
+            "text": "Usi strutturali e non"
+          },
+          {
+            "text": "4",
+            "latex": "4"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3320,19 +3806,213 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.2.2",
       "officialNumber": "11.10.V",
       "pdfPage": 366,
-      "caption": "Tab. 11.10.V - Corrispondenza tra classi di resistenza e composizione in volume delle malte Classe Tipo di malta Composizione Cemento Calce aerea Calce idraulica Sabbia Pozzolana M 2,5 Idraulica – – 1 3 – M 2,5 Pozzolanica – 1 – – 3 M 2,5 Bastarda 1 – 2 9 – M 5 Bastarda 1 – 1 5 – M 8 Cementizia 2 – 1 8 – M 12 Cementizia 1 – – 3 –",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.10.V - Corrispondenza tra classi di resistenza e composizione in volume delle malte",
+      "columnCount": 7,
+      "headers": [
+        [
+          {
+            "text": "Classe",
+            "rowSpan": 2
+          },
+          {
+            "text": "Tipo di malta",
+            "rowSpan": 2
+          },
+          {
+            "text": "Composizione",
+            "colSpan": 5
+          }
+        ],
+        [
+          {
+            "text": "Cemento"
+          },
+          {
+            "text": "Calce aerea"
+          },
+          {
+            "text": "Calce idraulica"
+          },
+          {
+            "text": "Sabbia"
+          },
+          {
+            "text": "Pozzolana"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": ""
+            "text": "M 2,5"
+          },
+          {
+            "text": "Idraulica"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "3",
+            "latex": "3"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          }
+        ],
+        [
+          {
+            "text": "M 2,5"
+          },
+          {
+            "text": "Pozzolanica"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "3",
+            "latex": "3"
+          }
+        ],
+        [
+          {
+            "text": "M 2,5"
+          },
+          {
+            "text": "Bastarda"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "2",
+            "latex": "2"
+          },
+          {
+            "text": "9",
+            "latex": "9"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          }
+        ],
+        [
+          {
+            "text": "M 5"
+          },
+          {
+            "text": "Bastarda"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "5",
+            "latex": "5"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          }
+        ],
+        [
+          {
+            "text": "M 8"
+          },
+          {
+            "text": "Cementizia"
+          },
+          {
+            "text": "2",
+            "latex": "2"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "8",
+            "latex": "8"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          }
+        ],
+        [
+          {
+            "text": "M 12"
+          },
+          {
+            "text": "Cementizia"
+          },
+          {
+            "text": "1",
+            "latex": "1"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "-",
+            "latex": "-"
+          },
+          {
+            "text": "3",
+            "latex": "3"
+          },
+          {
+            "text": "-",
+            "latex": "-"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3340,19 +4020,237 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2",
       "officialNumber": "11.10.VI",
       "pdfPage": 367,
-      "caption": "Tab. 11.10.VI - Valori di f k per murature in elementi artificiali pieni e semipieni (valori in N/mm 2 ) Resistenza caratteristica a compressione fbk dell’elemento N/mm2 Tipo di malta M15 M10 M5 M2,5 2,0 1,2 1,2 1,2 1,2 3,0 2,2 2,2 2,2 2,0 5,0 3,5 3,4 3,3 3,0 7,5 5,0 4,5 4,1 3,5 10,0 6,2 5,3 4,7 4,1 15,0 8,2 6,7 6,0 5,1 20,0 9,7 8,0 7,0 6,1 30,0 12,0 10,0 8,6 7,2 40,0 14,3 12,0 10,4 –",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.10.VI - Valori di fk per murature in elementi artificiali pieni e semipieni (valori in N/mm²)",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Resistenza caratteristica a compressione fbk dell’elemento N/mm²",
+            "latex": "\\mathrm{Resistenza\\ caratteristica\\ a\\ compressione}\\;f_{bk}\\;[\\mathrm{N/mm^2}]",
+            "rowSpan": 2
+          },
+          {
+            "text": "Tipo di malta",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "M15"
+          },
+          {
+            "text": "M10"
+          },
+          {
+            "text": "M5"
+          },
+          {
+            "text": "M2,5"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": ""
+            "text": "2,0",
+            "latex": "2{,}0"
+          },
+          {
+            "text": "1,2",
+            "latex": "1{,}2"
+          },
+          {
+            "text": "1,2",
+            "latex": "1{,}2"
+          },
+          {
+            "text": "1,2",
+            "latex": "1{,}2"
+          },
+          {
+            "text": "1,2",
+            "latex": "1{,}2"
+          }
+        ],
+        [
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,0",
+            "latex": "2{,}0"
+          }
+        ],
+        [
+          {
+            "text": "5,0",
+            "latex": "5{,}0"
+          },
+          {
+            "text": "3,5",
+            "latex": "3{,}5"
+          },
+          {
+            "text": "3,4",
+            "latex": "3{,}4"
+          },
+          {
+            "text": "3,3",
+            "latex": "3{,}3"
+          },
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          }
+        ],
+        [
+          {
+            "text": "7,5",
+            "latex": "7{,}5"
+          },
+          {
+            "text": "5,0",
+            "latex": "5{,}0"
+          },
+          {
+            "text": "4,5",
+            "latex": "4{,}5"
+          },
+          {
+            "text": "4,1",
+            "latex": "4{,}1"
+          },
+          {
+            "text": "3,5",
+            "latex": "3{,}5"
+          }
+        ],
+        [
+          {
+            "text": "10,0",
+            "latex": "10{,}0"
+          },
+          {
+            "text": "6,2",
+            "latex": "6{,}2"
+          },
+          {
+            "text": "5,3",
+            "latex": "5{,}3"
+          },
+          {
+            "text": "4,7",
+            "latex": "4{,}7"
+          },
+          {
+            "text": "4,1",
+            "latex": "4{,}1"
+          }
+        ],
+        [
+          {
+            "text": "15,0",
+            "latex": "15{,}0"
+          },
+          {
+            "text": "8,2",
+            "latex": "8{,}2"
+          },
+          {
+            "text": "6,7",
+            "latex": "6{,}7"
+          },
+          {
+            "text": "6,0",
+            "latex": "6{,}0"
+          },
+          {
+            "text": "5,1",
+            "latex": "5{,}1"
+          }
+        ],
+        [
+          {
+            "text": "20,0",
+            "latex": "20{,}0"
+          },
+          {
+            "text": "9,7",
+            "latex": "9{,}7"
+          },
+          {
+            "text": "8,0",
+            "latex": "8{,}0"
+          },
+          {
+            "text": "7,0",
+            "latex": "7{,}0"
+          },
+          {
+            "text": "6,1",
+            "latex": "6{,}1"
+          }
+        ],
+        [
+          {
+            "text": "30,0",
+            "latex": "30{,}0"
+          },
+          {
+            "text": "12,0",
+            "latex": "12{,}0"
+          },
+          {
+            "text": "10,0",
+            "latex": "10{,}0"
+          },
+          {
+            "text": "8,6",
+            "latex": "8{,}6"
+          },
+          {
+            "text": "7,2",
+            "latex": "7{,}2"
+          }
+        ],
+        [
+          {
+            "text": "40,0",
+            "latex": "40{,}0"
+          },
+          {
+            "text": "14,3",
+            "latex": "14{,}3"
+          },
+          {
+            "text": "12,0",
+            "latex": "12{,}0"
+          },
+          {
+            "text": "10,4",
+            "latex": "10{,}4"
+          },
+          {
+            "text": "-",
+            "latex": "-"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3360,19 +4258,237 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.3.1.2",
       "officialNumber": "11.10.VII",
       "pdfPage": 368,
-      "caption": "Tab. 11.10.VII - Valori di f k per murature in elementi naturali di pietra squadrata (valori in N/mm 2 )",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.10.VII - Valori di fk per murature in elementi naturali di pietra squadrata (valori in N/mm²)",
+      "columnCount": 5,
+      "headers": [
+        [
+          {
+            "text": "Resistenza caratteristica a compressione fbk dell’elemento",
+            "latex": "\\mathrm{Resistenza\\ caratteristica\\ a\\ compressione}\\;f_{bk}\\;\\mathrm{dell'elemento}",
+            "rowSpan": 2
+          },
+          {
+            "text": "Tipo di malta",
+            "colSpan": 4
+          }
+        ],
+        [
+          {
+            "text": "M15"
+          },
+          {
+            "text": "M10"
+          },
+          {
+            "text": "M5"
+          },
+          {
+            "text": "M2,5"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Resistenza caratteristica a compressione fbk dell’elemento Tipo di malta M15 M10 M5 M2,5 2,0 1,0 1,0 1,0 1,0 3,0 2,2 2,2 2,2 2,0 5,0 3,5 3,4 3,3 3,0 7,5 5,0 4,5 4,1 3,5 10,0 6,2 5,3 4,7 4,1 15,0 8,2 6,7 6,0 5,1 20,0 9,7 8,0 7,0 6,1 30,0 12,0 10,0 8,6 7,2 ǃ 40,0 14,3 12,0 10,4 –"
+            "text": "2,0",
+            "latex": "2{,}0"
+          },
+          {
+            "text": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "text": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "text": "1,0",
+            "latex": "1{,}0"
+          },
+          {
+            "text": "1,0",
+            "latex": "1{,}0"
+          }
+        ],
+        [
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,2",
+            "latex": "2{,}2"
+          },
+          {
+            "text": "2,0",
+            "latex": "2{,}0"
+          }
+        ],
+        [
+          {
+            "text": "5,0",
+            "latex": "5{,}0"
+          },
+          {
+            "text": "3,5",
+            "latex": "3{,}5"
+          },
+          {
+            "text": "3,4",
+            "latex": "3{,}4"
+          },
+          {
+            "text": "3,3",
+            "latex": "3{,}3"
+          },
+          {
+            "text": "3,0",
+            "latex": "3{,}0"
+          }
+        ],
+        [
+          {
+            "text": "7,5",
+            "latex": "7{,}5"
+          },
+          {
+            "text": "5,0",
+            "latex": "5{,}0"
+          },
+          {
+            "text": "4,5",
+            "latex": "4{,}5"
+          },
+          {
+            "text": "4,1",
+            "latex": "4{,}1"
+          },
+          {
+            "text": "3,5",
+            "latex": "3{,}5"
+          }
+        ],
+        [
+          {
+            "text": "10,0",
+            "latex": "10{,}0"
+          },
+          {
+            "text": "6,2",
+            "latex": "6{,}2"
+          },
+          {
+            "text": "5,3",
+            "latex": "5{,}3"
+          },
+          {
+            "text": "4,7",
+            "latex": "4{,}7"
+          },
+          {
+            "text": "4,1",
+            "latex": "4{,}1"
+          }
+        ],
+        [
+          {
+            "text": "15,0",
+            "latex": "15{,}0"
+          },
+          {
+            "text": "8,2",
+            "latex": "8{,}2"
+          },
+          {
+            "text": "6,7",
+            "latex": "6{,}7"
+          },
+          {
+            "text": "6,0",
+            "latex": "6{,}0"
+          },
+          {
+            "text": "5,1",
+            "latex": "5{,}1"
+          }
+        ],
+        [
+          {
+            "text": "20,0",
+            "latex": "20{,}0"
+          },
+          {
+            "text": "9,7",
+            "latex": "9{,}7"
+          },
+          {
+            "text": "8,0",
+            "latex": "8{,}0"
+          },
+          {
+            "text": "7,0",
+            "latex": "7{,}0"
+          },
+          {
+            "text": "6,1",
+            "latex": "6{,}1"
+          }
+        ],
+        [
+          {
+            "text": "30,0",
+            "latex": "30{,}0"
+          },
+          {
+            "text": "12,0",
+            "latex": "12{,}0"
+          },
+          {
+            "text": "10,0",
+            "latex": "10{,}0"
+          },
+          {
+            "text": "8,6",
+            "latex": "8{,}6"
+          },
+          {
+            "text": "7,2",
+            "latex": "7{,}2"
+          }
+        ],
+        [
+          {
+            "text": "≥ 40,0",
+            "latex": "\\ge40{,}0"
+          },
+          {
+            "text": "14,3",
+            "latex": "14{,}3"
+          },
+          {
+            "text": "12,0",
+            "latex": "12{,}0"
+          },
+          {
+            "text": "10,4",
+            "latex": "10{,}4"
+          },
+          {
+            "text": "-",
+            "latex": "-"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     },
     {
@@ -3380,39 +4496,90 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:11.10.3.2.2",
       "officialNumber": "11.10.VIII",
       "pdfPage": 368,
-      "caption": "Tab. 11.10.VIII - Resistenza caratteristica a taglio in assenza di tensioni normali f vk0 (valori in N/mm 2 )",
-      "columnCount": 1,
-      "headers": [],
+      "caption": "Tab. 11.10.VIII - Resistenza caratteristica a taglio in assenza di tensioni normali fvk0 (valori in N/mm²)",
+      "columnCount": 4,
+      "headers": [
+        [
+          {
+            "text": "Elementi per muratura",
+            "rowSpan": 2
+          },
+          {
+            "text": "fvk0 (N/mm²)",
+            "latex": "f_{vk0}\\;[\\mathrm{N/mm^2}]",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "Malta ordinaria di classe di resistenza data"
+          },
+          {
+            "text": "Malta per strati sottili (giunto orizzontale ≥ 0,5 mm e ≤ 3 mm)",
+            "latex": "\\mathrm{Malta\\ per\\ strati\\ sottili}\\;(\\mathrm{giunto\\ orizzontale}\\ge0{,}5\\;\\mathrm{mm}\\;\\mathrm{e}\\le3\\;\\mathrm{mm})"
+          },
+          {
+            "text": "Malta alleggerita"
+          }
+        ]
+      ],
       "rows": [
         [
           {
-            "text": "Elementi per muratura f vk0 (N/mm2 ) Malta ordinaria di classe di resistenza data Malta per strati sottili (giunto orizzontale ǃ 0,5 mm e ǂ 3 mm) Malta alleggerita"
+            "text": "Laterizio"
+          },
+          {
+            "text": "M10 - M20  0,30\nM2,5 - M9  0,20\nM1 - M2  0,10",
+            "latex": "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}30\\\\\\mathrm{M2{,}5-M9}\\quad0{,}20\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}"
+          },
+          {
+            "text": "0,30*",
+            "latex": "0{,}30^{*}"
+          },
+          {
+            "text": "0,15",
+            "latex": "0{,}15"
           }
         ],
         [
           {
-            "text": "Laterizio M10 - M20 0,30"
+            "text": "Silicato di calcio"
+          },
+          {
+            "text": "M10 - M20  0,20\nM2,5 - M9  0,15\nM1 - M2  0,10",
+            "latex": "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}20\\\\\\mathrm{M2{,}5-M9}\\quad0{,}15\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}"
+          },
+          {
+            "text": "0,20**",
+            "latex": "0{,}20^{**}"
+          },
+          {
+            "text": "0,15",
+            "latex": "0{,}15"
           }
         ],
         [
           {
-            "text": "0,30 * 0,15M2,5 - M9 0,20 M1 - M2 0,10 Silicato di calcio M10 - M20 0,20"
-          }
-        ],
-        [
+            "text": "Calcestruzzo vibrocompresso\nCalcestruzzo aerato autoclavato\nPietra artificiale e pietra naturale a massello"
+          },
           {
-            "text": "0,20 ** 0,15M2,5 - M9 0,15 M1 - M2 0,10 Calcestruzzo vibrocompresso Calcestruzzo areato autoclavato Pietra artificiale e pietra naturale a massello M10 - M20 M2,5 - M9 M1 - M2 0,20 0,15 0,10 0,20 ** 0,15"
-          }
-        ],
-        [
+            "text": "M10 - M20  0,20\nM2,5 - M9  0,15\nM1 - M2  0,10",
+            "latex": "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}20\\\\\\mathrm{M2{,}5-M9}\\quad0{,}15\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}"
+          },
           {
-            "text": "* valore valido per malte di classe M10 o superiore e resistenza dei blocchi f bkǃ 5.0 N/mm2 ** valore valido per malte di classe M5 o superiore e resistenza dei blocchi f bkǃ 3.0 N/mm2"
+            "text": "0,20**",
+            "latex": "0{,}20^{**}"
+          },
+          {
+            "text": "0,15",
+            "latex": "0{,}15"
           }
         ]
       ],
       "notes": [
-        "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-        "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione."
+        "* valore valido per malte di classe M10 o superiore e resistenza dei blocchi fbk ≥ 5.0 N/mm²",
+        "** valore valido per malte di classe M5 o superiore e resistenza dei blocchi fbk ≥ 3.0 N/mm²",
+        "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
       ]
     }
   ],

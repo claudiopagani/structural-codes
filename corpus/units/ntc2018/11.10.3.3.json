@@ -58,7 +58,7 @@
       "origin": "official",
       "text": {
         "raw": "In presenza di tensioni di compressione, la resistenza caratteristica a taglio della muratura, fvk \n, è definita come resistenza\nall’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la rela-\nzione",
-        "normalized": "In presenza di tensioni di compressione, la resistenza caratteristica a taglio della muratura, fvk , è definita come resistenza all’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la relazione",
+        "normalized": "In presenza di tensioni di compressione, la resistenza caratteristica a taglio della muratura, fvk, è definita come resistenza all’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la relazione",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
@@ -72,7 +72,7 @@
           },
           {
             "kind": "text",
-            "value": " , è definita come resistenza all’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la relazione"
+            "value": ", è definita come resistenza all’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la relazione"
           }
         ]
       },
@@ -101,10 +101,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "72a2f9c807907cfa84192e5c960bffb1e439c642aa72f00b6c86557232ea2ec0",
-        "normalizedSha256": "ca20496fd7f7d16c97ab2a81d05e19f553aa2c2e7ed61c63e36e926e2324dbc4"
+        "normalizedSha256": "5351ce4f413681b8e4312cf76f3fa426944b1734355d484a87b063ca91b46daa"
       }
     },
     {
@@ -153,12 +158,12 @@
           },
           {
             "kind": "math",
-            "value": "fvk",
-            "latex": "f_{vk}"
+            "value": "fvk0",
+            "latex": "f_{vk0}"
           },
           {
             "kind": "text",
-            "value": "0 è la resistenza caratteristica a taglio in assenza di carichi verticali;"
+            "value": " è la resistenza caratteristica a taglio in assenza di carichi verticali;"
           }
         ]
       },
@@ -182,6 +187,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "2c8139b71ac4864005246c5a74c30d1d72088a394893c0b40285729ea0c9f904",
@@ -194,8 +204,19 @@
       "origin": "official",
       "text": {
         "raw": "Vn è la tensione normale media dovuta ai carichi verticali agenti nella sezione di verifica.",
-        "normalized": "Vn è la tensione normale media dovuta ai carichi verticali agenti nella sezione di verifica.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "σn è la tensione normale media dovuta ai carichi verticali agenti nella sezione di verifica.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "σn",
+            "latex": "\\sigma_n"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione normale media dovuta ai carichi verticali agenti nella sezione di verifica."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -207,9 +228,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "0d7ca1b37a84f9637013cca2959b34d2c4f6b3e82909c9d26267186a938c6567",
-        "normalizedSha256": "0d7ca1b37a84f9637013cca2959b34d2c4f6b3e82909c9d26267186a938c6567"
+        "normalizedSha256": "bd7900d355f5da2a53ea71d131ffa60ce49a4d1a7e7f3a49adfb1c04bf416212"
       }
     },
     {
@@ -302,12 +329,12 @@
         "inline": [
           {
             "kind": "math",
-            "value": "fvk",
-            "latex": "f_{vk}"
+            "value": "fvk,lim",
+            "latex": "f_{vk,\\lim}"
           },
           {
             "kind": "text",
-            "value": ",lim valore massimo della resistenza caratteristica a taglio che può essere impiegata nel calcolo;"
+            "value": " valore massimo della resistenza caratteristica a taglio che può essere impiegata nel calcolo;"
           }
         ]
       },
@@ -321,7 +348,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "3af116f6c646fa7ca67ceb172abe9859384990fc4d9ff2b721c92aad4543abff",
         "normalizedSha256": "3af116f6c646fa7ca67ceb172abe9859384990fc4d9ff2b721c92aad4543abff"
       }
@@ -392,8 +425,23 @@
       "origin": "official",
       "text": {
         "raw": "ad eccezione degli elementi pieni in calcestruzzo aerato autoclavato e di tutti gli elementi caratterizzati da una resistenza a tra-\nzione (misurata in direzione orizzontale parallelamente al piano di posa) maggiore o uguale a 0,2 fb , per i quali si pone:",
-        "normalized": "ad eccezione degli elementi pieni in calcestruzzo aerato autoclavato e di tutti gli elementi caratterizzati da una resistenza a trazione (misurata in direzione orizzontale parallelamente al piano di posa) maggiore o uguale a 0,2 fb , per i quali si pone:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "ad eccezione degli elementi pieni in calcestruzzo aerato autoclavato e di tutti gli elementi caratterizzati da una resistenza a trazione (misurata in direzione orizzontale parallelamente al piano di posa) maggiore o uguale a 0,2 fb, per i quali si pone:",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "ad eccezione degli elementi pieni in calcestruzzo aerato autoclavato e di tutti gli elementi caratterizzati da una resistenza a trazione (misurata in direzione orizzontale parallelamente al piano di posa) maggiore o uguale a "
+          },
+          {
+            "kind": "math",
+            "value": "0,2 fb",
+            "latex": "0{,}2f_b"
+          },
+          {
+            "kind": "text",
+            "value": ", per i quali si pone:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -420,10 +468,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "8c5d379afa53b8f65e1a3c79337aa40f5c2d4cd46c4454ce2362ac95adb86443",
-        "normalizedSha256": "c450b80357ee51d35cc87b2fffbe57e09f19ccbc3247abba66405f7fea59cb58"
+        "normalizedSha256": "4788a76e095767890c51e4b8f114f3d0c8a04a27d25b0d51e91fa41c11e0a69b"
       }
     },
     {
@@ -468,30 +521,39 @@
       "origin": "official",
       "text": {
         "raw": "dove fb è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI\nEN 771. I valori di fvk,lim sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzonta-\nli riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una\ndell’altra, si adotta fvk,lim = 0,045 fb \n.",
-        "normalized": "dove fb è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI EN 771. I valori di fvk,lim sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una dell’altra, si adotta fvk,lim = 0,045 fb .",
+        "normalized": "dove fb è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI EN 771. I valori di fvk,lim sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una dell’altra, si adotta fvk,lim = 0,045 fb.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove fb è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI EN 771. I valori di "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "fvk",
-            "latex": "f_{vk}"
+            "value": "fb",
+            "latex": "f_b"
           },
           {
             "kind": "text",
-            "value": ",lim sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una dell’altra, si adotta "
+            "value": " è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI EN 771. I valori di "
           },
           {
             "kind": "math",
-            "value": "fvk",
-            "latex": "f_{vk}"
+            "value": "fvk,lim",
+            "latex": "f_{vk,\\lim}"
           },
           {
             "kind": "text",
-            "value": ",lim = 0,045 fb ."
+            "value": " sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una dell’altra, si adotta "
+          },
+          {
+            "kind": "math",
+            "value": "fvk,lim = 0,045 fb",
+            "latex": "f_{vk,\\lim}=0{,}045f_b"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -520,10 +582,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "34d37e96aa3dba5314c8c55722efa2deec41d0121a52e423002cb3acc06afcd9",
-        "normalizedSha256": "5b8b117dbb9c20b0bb22d6379dd65bfcab86eb31597f939bf0db6924bd701f7e"
+        "normalizedSha256": "04fee87871ca0d3c726a68b9c9ee91fac2c4a6fd9393b7fa9a2c376e1e6420f5"
       }
     }
   ],

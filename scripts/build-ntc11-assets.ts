@@ -85,8 +85,8 @@ const formulas: FormulaDef[] = [
     { number: "11.3.4", unit: "11.3.2.10.1.3", page: 327, marker: "3.4", latex: "\\bar{x}+ks\\le C_v" },
     { number: "11.3.5", unit: "11.3.2.10.4", page: 329, marker: "3.5", latex: "\\tau_m\\ge0{,}098(80-1{,}2\\varnothing)" },
     { number: "11.3.6", unit: "11.3.2.10.4", page: 329, marker: "3.6", latex: "\\tau_r\\ge0{,}098(130-1{,}9\\varnothing)" },
-    { number: "11.7.1", unit: "11.7.1.1", page: 350, marker: "7.1", latex: "k_h=\\min\\left\\{\\left(\\frac{150}{h}\\right)^{0{,}2},1{,}3\\right\\}" },
-    { number: "11.7.2", unit: "11.7.1.1", page: 350, marker: "7.2", latex: "k_h=\\min\\left\\{\\left(\\frac{600}{h}\\right)^{0{,}1},1{,}1\\right\\}" },
+    { number: "11.7.1", unit: "11.7.1.1", page: 350, marker: "7.1", latex: "k_h=\\min\\left\\{\\left[\\left(\\frac{150}{h}\\right)^{0{,}2};1{,}3\\right]\\right\\}" },
+    { number: "11.7.2", unit: "11.7.1.1", page: 350, marker: "7.2", latex: "k_h=\\min\\left\\{\\left[\\left(\\frac{600}{h}\\right)^{0{,}1};1{,}1\\right]\\right\\}" },
     { number: "11.9.1", unit: "11.9.4", page: 360, marker: "9.1", latex: "\\xi_e<15\\%" },
     { number: "11.9.2", unit: "11.9.4", page: 360, marker: "9.2", latex: "\\left|K_e-K_{in}\\right|/K_{in}<20\\%" },
     { number: "11.9.3", unit: "11.9.4", page: 360, marker: "9.3", latex: "\\left|K_{e,(i)}-K_{e,(3)}\\right|/K_{e,(3)}\\le10\\%" },
@@ -94,9 +94,9 @@ const formulas: FormulaDef[] = [
     { number: "11.9.5", unit: "11.9.5", page: 361, marker: "9.5", latex: "\\left|K_{2,(i)}-K_{2,(3)}\\right|/K_{2,(3)}\\le10\\%" },
     { number: "11.9.6", unit: "11.9.5", page: 361, marker: "9.6", latex: "\\left|\\xi_{e,(i)}-\\xi_{e,(3)}\\right|/\\xi_{e,(3)}\\le10\\%" },
     { number: "11.9.7", unit: "11.9.6", page: 362, marker: "9.7", latex: "\\left|E_{d,(i)}-E_{d,(3)}\\right|/E_{d,(3)}\\le10\\%" },
-    { number: "11.9.8", unit: "11.9.6", page: 362, marker: "9.8", latex: "\\gamma_v=(1+t_d)\\,(1{,}5)^\\alpha" },
+    { number: "11.9.8", unit: "11.9.6", page: 362, marker: "9.8", latex: "\\gamma_v=(1+t_d)\\cdot(1{,}5)^\\alpha" },
     { number: "11.9.9", unit: "11.9.8", page: 363, marker: "9.9", latex: "\\left|f_{(i)}-f_{(3)}\\right|/f_{(3)}\\le0{,}25" },
-    { number: "11.10.1", unit: "11.10.1.1.1", page: 365, marker: "10.1", latex: "\\frac{f_1+\\cdots+f_n}{n}\\ge f_{bm}" },
+    { number: "11.10.1", unit: "11.10.1.1.1", page: 365, marker: "10.1", latex: "\\frac{f_1+f_2+\\cdots+f_n}{n}\\ge f_{bm}" },
     { number: "11.10.2", unit: "11.10.1.1.1", page: 365, marker: "10.2", latex: "f_1\\ge0{,}80f_{bm}" },
     { number: "11.10.3", unit: "11.10.3.1.2", page: 368, marker: "10.3", latex: "f_{bk}=0{,}75f_{bm}" },
     { number: "11.10.4", unit: "11.10.3.3", page: 369, marker: "10.4", latex: "f_{vk}=f_{vk0}+0{,}4\\sigma_n" },
@@ -104,7 +104,7 @@ const formulas: FormulaDef[] = [
     { number: "11.10.6", unit: "11.10.3.3", page: 369, marker: "10.6", latex: "f_{vk,\\lim}=0{,}065f_b" },
     { number: "11.10.7", unit: "11.10.3.3", page: 369, marker: "10.7", latex: "f_{vk,\\lim}=0{,}10f_b" },
     { number: "11.10.8", unit: "11.10.3.4", page: 369, marker: "10.8", latex: "E=1000f_k" },
-    { number: "11.10.9", unit: "11.10.3.4", page: 369, marker: "10.9", latex: "G=0{,}4E" },
+    { number: "11.10.9", unit: "11.10.3.4", page: 369, marker: "10.9", latex: "G=0.4E" },
 ];
 
 const tables: TableDef[] = [
@@ -479,6 +479,213 @@ const verifiedTables: Record<string, any> = {
             [{ text: "HV" }, { text: "10.9", latex: "10.9" }, { text: "UNI EN 14399-4" }, { text: "10", latex: "10" }, { text: "UNI EN 14399-4" }],
         ],
     },
+    "11.7.I": {
+        caption: "Tab. 11.7.I – Profilo resistente per materiali e prodotti a base di legno",
+        columnCount: 6,
+        headers: [[
+            { text: "Resistenze caratteristiche", colSpan: 2 },
+            { text: "Moduli elastici", colSpan: 2 },
+            { text: "Massa volumica", colSpan: 2 },
+        ]],
+        rows: [
+            [
+                { text: "Flessione" }, { text: "fm,k", latex: "f_{m,k}" },
+                { text: "Modulo elastico parallelo medio **" }, { text: "E0,mean", latex: "E_{0,\\mathrm{mean}}" },
+                { text: "Massa volumica caratteristica" }, { text: "ρk", latex: "\\rho_k" },
+            ],
+            [
+                { text: "Trazione parallela" }, { text: "ft,0,k", latex: "f_{t,0,k}" },
+                { text: "Modulo elastico parallelo caratteristico" }, { text: "E0,05", latex: "E_{0,05}" },
+                { text: "Massa volumica media *,**" }, { text: "ρmean", latex: "\\rho_{\\mathrm{mean}}" },
+            ],
+            [
+                { text: "Trazione perpendicolare" }, { text: "ft,90,k", latex: "f_{t,90,k}" },
+                { text: "Modulo elastico perpendicolare medio **" }, { text: "E90,mean", latex: "E_{90,\\mathrm{mean}}" },
+                { text: "" }, { text: "" },
+            ],
+            [
+                { text: "Compressione parallela" }, { text: "fc,0,k", latex: "f_{c,0,k}" },
+                { text: "Modulo elastico tangenziale medio **" }, { text: "Gmean", latex: "G_{\\mathrm{mean}}" },
+                { text: "" }, { text: "" },
+            ],
+            [
+                { text: "Compressione perpendicolare" }, { text: "fc,90,k", latex: "f_{c,90,k}" },
+                { text: "" }, { text: "" }, { text: "" }, { text: "" },
+            ],
+            [
+                { text: "Taglio" }, { text: "fv,k", latex: "f_{v,k}" },
+                { text: "" }, { text: "" }, { text: "" }, { text: "" },
+            ],
+        ],
+        notes: [
+            "* La massa volumica media può non essere dichiarata.",
+            "** Il pedice mean può essere abbreviato con m.",
+        ],
+    },
+    "11.9.I": {
+        caption: "Tab. 11.9.I",
+        columnCount: 5,
+        headers: [["", "Fornitura", "Invecchiamento", "Temperatura", "Frequenza di prova"].map((text) => ({ text }))],
+        rows: [
+            ["K_e", "\\pm15\\%", "\\pm20\\%", "\\pm40\\%", "\\pm10\\%"],
+            ["\\xi_e", "\\pm15\\%", "\\pm15\\%", "\\pm15\\%", "\\pm10\\%"],
+        ].map((row) => row.map((latex) => ({ text: latex.replaceAll("\\pm", "±").replaceAll("\\%", "%"), latex }))),
+    },
+    "11.9.II": {
+        caption: "Tab. 11.9.II",
+        columnCount: 5,
+        headers: [[
+            { text: "" }, { text: "Fornitura" }, { text: "Invecchiamento" }, { text: "Temperatura" },
+            { text: "Frequenza di prova (1)", latex: "\\mathrm{Frequenza\\ di\\ prova}^{(1)}" },
+        ]],
+        rows: [
+            ["K_2", "\\pm15\\%", "\\pm20\\%", "\\pm20\\%", "\\pm10\\%"],
+            ["K_{sec}", "\\pm15\\%", "\\pm20\\%", "\\pm40\\%", "\\pm10\\%"],
+            ["\\xi_e", "\\pm10\\%", "\\pm15\\%", "\\pm15\\%", "\\pm10\\%"],
+        ].map((row) => row.map((latex) => ({ text: latex.replaceAll("\\pm", "±").replaceAll("\\%", "%"), latex }))),
+        notes: ["(1) Valori ottenuti o dichiarati con riferimento alle stesse frequenze delle prove di qualificazione."],
+    },
+    "11.9.III": {
+        caption: "Tab. 11.9.III",
+        columnCount: 5,
+        headers: [["", "Fornitura", "Invecchiamento", "Temperatura", "Frequenza di prova"].map((text) => ({ text }))],
+        rows: [
+            ["F_{max}", "\\pm15\\%", "\\pm5\\%", "\\pm5\\%", "\\pm10\\%"],
+            ["E_d", "-15\\%", "-5\\%", "-5\\%", "\\pm10\\%"],
+        ].map((row) => row.map((latex) => ({ text: latex.replaceAll("\\pm", "±").replaceAll("\\%", "%"), latex }))),
+    },
+    "11.9.IV": {
+        caption: "Tab. 11.9.IV",
+        columnCount: 5,
+        headers: [["", "Fornitura", "Invecchiamento", "Temperatura", "Frequenza di prova"].map((text) => ({ text }))],
+        rows: [
+            ["K_e", "\\pm20\\%", "\\pm20\\%", "\\pm20\\%", "\\pm20\\%"],
+            ["K_v", "-30\\%", "-", "-", "-"],
+            ["\\xi_e", "\\pm20\\%", "\\pm20\\%", "\\pm20\\%", "\\pm20\\%"],
+        ].map((row) => row.map((latex) => ({ text: latex.replaceAll("\\pm", "±").replaceAll("\\%", "%"), latex }))),
+    },
+    "11.10.I": {
+        caption: "Tab. 11.10.I",
+        columnCount: 3,
+        headers: [[
+            { text: "Specifica Tecnica Europea di riferimento" }, { text: "Categoria" },
+            { text: "Sistema di Valutazione e Verifica della Costanza della Prestazione" },
+        ]],
+        rows: [
+            [
+                { text: "Specifica per elementi per muratura - Elementi per muratura di laterizio, silicato di calcio, in calcestruzzo vibrocompresso (aggregati pesanti e leggeri), calcestruzzo aerato autoclavato, pietra agglomerata, pietra naturale UNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6", rowSpan: 2 },
+                { text: "Categoria I" }, { text: "2+", latex: "2+" },
+            ],
+            [{ text: "Categoria II" }, { text: "4", latex: "4" }],
+        ],
+    },
+    "11.10.II": {
+        caption: "Tab. 11.10.II - Classi di malte a prestazione garantita",
+        columnCount: 7,
+        headers: [["Classe", "M 2,5", "M 5", "M 10", "M 15", "M 20", "M d"].map((text) => ({ text }))],
+        rows: [[
+            { text: "Resistenza a compressione N/mm²", latex: "\\mathrm{Resistenza\\ a\\ compressione}\\;[\\mathrm{N/mm^2}]" },
+            ...["2{,}5", "5", "10", "15", "20", "d"].map((latex) => ({ text: latex.replace("{,}", ","), latex })),
+        ]],
+        notes: ["d è una resistenza a compressione maggiore di 25 N/mm² dichiarata dal fabbricante"],
+    },
+    "11.10.III": {
+        caption: "Tab. 11.10.III",
+        columnCount: 3,
+        headers: [[
+            { text: "Specifica Tecnica Europea di Riferimento" }, { text: "Uso Previsto" },
+            { text: "Sistema di Valutazione e Verifica della Costanza della Prestazione" },
+        ]],
+        rows: [[{ text: "Malta per murature UNI EN 998-2" }, { text: "Usi strutturali" }, { text: "2+", latex: "2+" }]],
+    },
+    "11.10.IV": {
+        caption: "Tab. 11.10.IV",
+        columnCount: 3,
+        headers: [[
+            { text: "Specifica Tecnica Europea di Riferimento" }, { text: "Uso Previsto" },
+            { text: "Sistema di Valutazione e Verifica della Costanza della Prestazione" },
+        ]],
+        rows: [[{ text: "Malta per murature UNI EN 998-2" }, { text: "Usi strutturali e non" }, { text: "4", latex: "4" }]],
+    },
+    "11.10.V": {
+        caption: "Tab. 11.10.V - Corrispondenza tra classi di resistenza e composizione in volume delle malte",
+        columnCount: 7,
+        headers: [
+            [{ text: "Classe", rowSpan: 2 }, { text: "Tipo di malta", rowSpan: 2 }, { text: "Composizione", colSpan: 5 }],
+            ["Cemento", "Calce aerea", "Calce idraulica", "Sabbia", "Pozzolana"].map((text) => ({ text })),
+        ],
+        rows: [
+            ["M 2,5", "Idraulica", "-", "-", "1", "3", "-"],
+            ["M 2,5", "Pozzolanica", "-", "1", "-", "-", "3"],
+            ["M 2,5", "Bastarda", "1", "-", "2", "9", "-"],
+            ["M 5", "Bastarda", "1", "-", "1", "5", "-"],
+            ["M 8", "Cementizia", "2", "-", "1", "8", "-"],
+            ["M 12", "Cementizia", "1", "-", "-", "3", "-"],
+        ].map((row) => row.map((text, index) => ({ text, ...(index > 1 ? { latex: text } : {}) }))),
+    },
+    "11.10.VI": {
+        caption: "Tab. 11.10.VI - Valori di fk per murature in elementi artificiali pieni e semipieni (valori in N/mm²)",
+        columnCount: 5,
+        headers: [
+            [{ text: "Resistenza caratteristica a compressione fbk dell’elemento N/mm²", latex: "\\mathrm{Resistenza\\ caratteristica\\ a\\ compressione}\\;f_{bk}\\;[\\mathrm{N/mm^2}]", rowSpan: 2 }, { text: "Tipo di malta", colSpan: 4 }],
+            ["M15", "M10", "M5", "M2,5"].map((text) => ({ text })),
+        ],
+        rows: [
+            ["2,0", "1,2", "1,2", "1,2", "1,2"], ["3,0", "2,2", "2,2", "2,2", "2,0"],
+            ["5,0", "3,5", "3,4", "3,3", "3,0"], ["7,5", "5,0", "4,5", "4,1", "3,5"],
+            ["10,0", "6,2", "5,3", "4,7", "4,1"], ["15,0", "8,2", "6,7", "6,0", "5,1"],
+            ["20,0", "9,7", "8,0", "7,0", "6,1"], ["30,0", "12,0", "10,0", "8,6", "7,2"],
+            ["40,0", "14,3", "12,0", "10,4", "-"],
+        ].map((row) => row.map((text) => ({ text, latex: text.replace(",", "{,}") }))),
+    },
+    "11.10.VII": {
+        caption: "Tab. 11.10.VII - Valori di fk per murature in elementi naturali di pietra squadrata (valori in N/mm²)",
+        columnCount: 5,
+        headers: [
+            [{ text: "Resistenza caratteristica a compressione fbk dell’elemento", latex: "\\mathrm{Resistenza\\ caratteristica\\ a\\ compressione}\\;f_{bk}\\;\\mathrm{dell'elemento}", rowSpan: 2 }, { text: "Tipo di malta", colSpan: 4 }],
+            ["M15", "M10", "M5", "M2,5"].map((text) => ({ text })),
+        ],
+        rows: [
+            ["2,0", "1,0", "1,0", "1,0", "1,0"], ["3,0", "2,2", "2,2", "2,2", "2,0"],
+            ["5,0", "3,5", "3,4", "3,3", "3,0"], ["7,5", "5,0", "4,5", "4,1", "3,5"],
+            ["10,0", "6,2", "5,3", "4,7", "4,1"], ["15,0", "8,2", "6,7", "6,0", "5,1"],
+            ["20,0", "9,7", "8,0", "7,0", "6,1"], ["30,0", "12,0", "10,0", "8,6", "7,2"],
+            ["≥ 40,0", "14,3", "12,0", "10,4", "-"],
+        ].map((row) => row.map((text) => ({ text, latex: text.replace("≥ ", "\\ge").replace(",", "{,}") }))),
+    },
+    "11.10.VIII": {
+        caption: "Tab. 11.10.VIII - Resistenza caratteristica a taglio in assenza di tensioni normali fvk0 (valori in N/mm²)",
+        columnCount: 4,
+        headers: [
+            [{ text: "Elementi per muratura", rowSpan: 2 }, { text: "fvk0 (N/mm²)", latex: "f_{vk0}\\;[\\mathrm{N/mm^2}]", colSpan: 3 }],
+            [
+                { text: "Malta ordinaria di classe di resistenza data" },
+                { text: "Malta per strati sottili (giunto orizzontale ≥ 0,5 mm e ≤ 3 mm)", latex: "\\mathrm{Malta\\ per\\ strati\\ sottili}\\;(\\mathrm{giunto\\ orizzontale}\\ge0{,}5\\;\\mathrm{mm}\\;\\mathrm{e}\\le3\\;\\mathrm{mm})" },
+                { text: "Malta alleggerita" },
+            ],
+        ],
+        rows: [
+            [
+                { text: "Laterizio" },
+                { text: "M10 - M20  0,30\nM2,5 - M9  0,20\nM1 - M2  0,10", latex: "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}30\\\\\\mathrm{M2{,}5-M9}\\quad0{,}20\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}" },
+                { text: "0,30*", latex: "0{,}30^{*}" }, { text: "0,15", latex: "0{,}15" },
+            ],
+            [
+                { text: "Silicato di calcio" },
+                { text: "M10 - M20  0,20\nM2,5 - M9  0,15\nM1 - M2  0,10", latex: "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}20\\\\\\mathrm{M2{,}5-M9}\\quad0{,}15\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}" },
+                { text: "0,20**", latex: "0{,}20^{**}" }, { text: "0,15", latex: "0{,}15" },
+            ],
+            [
+                { text: "Calcestruzzo vibrocompresso\nCalcestruzzo aerato autoclavato\nPietra artificiale e pietra naturale a massello" },
+                { text: "M10 - M20  0,20\nM2,5 - M9  0,15\nM1 - M2  0,10", latex: "\\begin{gathered}\\mathrm{M10-M20}\\quad0{,}20\\\\\\mathrm{M2{,}5-M9}\\quad0{,}15\\\\\\mathrm{M1-M2}\\quad0{,}10\\end{gathered}" },
+                { text: "0,20**", latex: "0{,}20^{**}" }, { text: "0,15", latex: "0{,}15" },
+            ],
+        ],
+        notes: [
+            "* valore valido per malte di classe M10 o superiore e resistenza dei blocchi fbk ≥ 5.0 N/mm²",
+            "** valore valido per malte di classe M5 o superiore e resistenza dei blocchi fbk ≥ 3.0 N/mm²",
+        ],
+    },
 };
 
 const figures = [
@@ -552,6 +759,10 @@ for (const name of fileNames) {
 }
 
 const formulaManifest: any[] = [];
+const preservedFormulaLeads = new Map([
+    ["11.10.8", "– modulo di elasticità normale secante"],
+    ["11.10.9", "– modulo di elasticità tangenziale secante"],
+]);
 for (const definition of formulas) {
     const unit = units.get(definition.unit);
     if (unit === undefined) throw new Error(`Unità mancante per formula ${definition.number}`);
@@ -561,8 +772,22 @@ for (const definition of formulas) {
     const sourceBlock = unit.blocks[index];
     const id = assetId("formula", definition.number);
     if (!unit.assets.formulaIds.includes(id)) unit.assets.formulaIds.push(id);
-    const ref = { blockId: sourceBlock.blockId, kind: "formula-ref", origin: "official", assetId: id, evidence: refEvidence(sourceBlock) };
-    if (blockText(sourceBlock).length <= 120 || /^h \[|^,lim /u.test(blockText(sourceBlock))) {
+    const preservedLead = preservedFormulaLeads.get(definition.number);
+    const ref = { blockId: preservedLead === undefined ? sourceBlock.blockId : `${sourceBlock.blockId}-formula`, kind: "formula-ref", origin: "official", assetId: id, evidence: refEvidence(sourceBlock) };
+    if (preservedLead !== undefined) {
+        sourceBlock.text.normalized = preservedLead;
+        sourceBlock.text.inline = [{ kind: "text", value: preservedLead }];
+        sourceBlock.evidence.normalizedSha256 = sha256(preservedLead);
+        sourceBlock.evidence.transformations = [
+            ...(sourceBlock.evidence.transformations ?? []),
+            {
+                operation: "manual-correction",
+                ruleVersion: profile,
+                note: "Separata la descrizione della voce dalla formula display dopo confronto con il render ufficiale.",
+            },
+        ];
+        unit.blocks.splice(index + 1, 0, ref);
+    } else if (blockText(sourceBlock).length <= 120 || /^h \[|^,lim /u.test(blockText(sourceBlock))) {
         unit.blocks[index] = ref;
     } else if (!unit.blocks.some((block: any) => block.assetId === id)) {
         unit.blocks.splice(index + 1, 0, ref);
@@ -612,9 +837,12 @@ function patchVerifiedText(
     prefix: string,
     normalized: string,
     tokens: VerifiedInlineToken[],
+    occurrence = 0,
 ): void {
     const unit = units.get(unitNumber);
-    const block = unit?.blocks.find((candidate: any) => candidate.evidence.pdfPage === page && blockText(candidate).startsWith(prefix));
+    const block = unit?.blocks.filter(
+        (candidate: any) => candidate.evidence.pdfPage === page && blockText(candidate).startsWith(prefix),
+    )[occurrence];
     if (block === undefined) throw new Error(`Blocco verificato non trovato: ${unitNumber} p.${page} / ${prefix}`);
     block.text.normalized = normalized;
     block.text.inline = verifiedInline(normalized, tokens);
@@ -635,6 +863,16 @@ function removeVerifiedTableResidues(unitNumber: string, page: number, prefixes:
     if (unit === undefined) throw new Error(`Unità mancante per pulizia tabella: ${unitNumber}`);
     unit.blocks = unit.blocks.filter((block: any) => {
         if (block.kind !== "paragraph" || block.evidence.pdfPage !== page) return true;
+        return !prefixes.some((prefix) => blockText(block).startsWith(prefix));
+    });
+    dirtyUnits.add(unitNumber);
+}
+
+function removeVerifiedOcrResidues(unitNumber: string, page: number, prefixes: string[]): void {
+    const unit = units.get(unitNumber);
+    if (unit === undefined) throw new Error("Unità mancante per pulizia OCR: " + unitNumber);
+    unit.blocks = unit.blocks.filter((block: any) => {
+        if (!["paragraph", "list-item"].includes(block.kind) || block.evidence.pdfPage !== page) return true;
         return !prefixes.some((prefix) => blockText(block).startsWith(prefix));
     });
     dirtyUnits.add(unitNumber);
@@ -1055,6 +1293,287 @@ patchVerifiedText("11.3.4.11.3", 347, "- Elementi di Carpenteria", blockText(uni
 patchVerifiedText("11.3.4.11.3", 347, "- Lamiere grecate", blockText(units.get("11.3.4.11.3").blocks.find((block: any) => block.evidence.pdfPage === 347 && blockText(block).startsWith("- Lamiere grecate"))), [{ value: "3 prove ogni 15 tonnellate", latex: "3\\;\\mathrm{prove\\ ogni}\\;15\\;\\mathrm{t}" }, { value: "0.5 tonnellate", latex: "0.5\\;\\mathrm{t}" }]);
 patchVerifiedText("11.3.4.11.3", 347, "- Bulloni e chiodi", blockText(units.get("11.3.4.11.3").blocks.find((block: any) => block.evidence.pdfPage === 347 && blockText(block).startsWith("- Bulloni e chiodi"))), [{ value: "3 campioni ogni 1500 pezzi", latex: "3\\;\\mathrm{campioni\\ ogni}\\;1500\\;\\mathrm{pezzi}" }, { value: "100", latex: "100" }]);
 patchVerifiedText("11.3.4.11.3", 347, "- Giunzioni meccaniche", blockText(units.get("11.3.4.11.3").blocks.find((block: any) => block.evidence.pdfPage === 347 && blockText(block).startsWith("- Giunzioni meccaniche"))), [{ value: "3 campioni ogni 100 pezzi", latex: "3\\;\\mathrm{campioni\\ ogni}\\;100\\;\\mathrm{pezzi}" }, { value: "10", latex: "10" }]);
+
+removeVerifiedTableResidues("11.7.1.1", 349, ["Flessione fm,k"]);
+removeVerifiedOcrResidues("11.7.1.1", 350, ["°", "h 150 mink", "h 600 mink"]);
+
+patchVerifiedText("11.7.1.1", 349, "Si definiscono valori caratteristici", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 349 && blockText(block).startsWith("Si definiscono valori caratteristici"))), [
+    { value: "5%", latex: "5\\%" }, { value: "300 secondi", latex: "300\\;\\mathrm{s}" },
+    { value: "20 ±2 °C", latex: "20\\pm2\\;{}^\\circ\\mathrm{C}" }, { value: "65 ± 5%", latex: "65\\pm5\\%" },
+]);
+patchVerifiedText("11.7.1.1", 349, "Per il modulo elastico", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 349 && blockText(block).startsWith("Per il modulo elastico"))), [{ value: "5%", latex: "5\\%" }]);
+patchVerifiedText("11.7.1.1", 349, "Si definisce massa volumica", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 349 && blockText(block).startsWith("Si definisce massa volumica"))), [
+    { value: "5%", latex: "5\\%" }, { value: "20 ± 2 °C", latex: "20\\pm2\\;{}^\\circ\\mathrm{C}" }, { value: "65 ± 5%", latex: "65\\pm5\\%" },
+]);
+patchVerifiedText("11.7.1.1", 350, "Per il legno massiccio", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 350 && blockText(block).startsWith("Per il legno massiccio"))), [
+    { value: "150 mm", latex: "150\\;\\mathrm{mm}" }, { value: "150 mm", latex: "150\\;\\mathrm{mm}" },
+]);
+patchVerifiedText("11.7.1.1", 350, "Pertanto, per elementi", "Pertanto, per elementi di legno massiccio sottoposti a flessione o a trazione parallela alla fibratura che presentino rispettivamente una altezza o il lato maggiore della sezione trasversale inferiore a 150 mm, i valori caratteristici fm,k e ft,0,k, indicati nei profili resistenti, possono essere incrementati tramite il coefficiente moltiplicativo kh, così definito:", [
+    { value: "150 mm", latex: "150\\;\\mathrm{mm}" }, { value: "fm,k", latex: "f_{m,k}" },
+    { value: "ft,0,k", latex: "f_{t,0,k}" }, { value: "kh", latex: "k_h" },
+]);
+patchVerifiedText("11.7.1.1", 350, "essendo h", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 350 && blockText(block).startsWith("essendo h"))), [{ value: "h", latex: "h" }]);
+patchVerifiedText("11.7.1.1", 350, "Per il legno lamellare", blockText(units.get("11.7.1.1").blocks.find((block: any) => block.evidence.pdfPage === 350 && blockText(block).startsWith("Per il legno lamellare"))), [
+    { value: "600 mm", latex: "600\\;\\mathrm{mm}" }, { value: "600 mm", latex: "600\\;\\mathrm{mm}" },
+]);
+patchVerifiedText("11.7.1.1", 350, "Di conseguenza", "Di conseguenza, per elementi di legno lamellare sottoposti a flessione o a trazione parallela alla fibratura che presentino rispettivamente una altezza o il lato maggiore della sezione trasversale inferiore a 600 mm, i valori caratteristici fm,k e ft,0,k, indicati nei profili resistenti, possono essere incrementati tramite il coefficiente moltiplicativo kh, così definito:", [
+    { value: "600 mm", latex: "600\\;\\mathrm{mm}" }, { value: "fm,k", latex: "f_{m,k}" },
+    { value: "ft,0,k", latex: "f_{t,0,k}" }, { value: "kh", latex: "k_h" },
+]);
+patchVerifiedText("11.7.1.1", 350, "essendo h", blockText(units.get("11.7.1.1").blocks.filter((block: any) => block.evidence.pdfPage === 350 && blockText(block).startsWith("essendo h"))[1]), [{ value: "h", latex: "h" }], 1);
+patchVerifiedText("11.7.5", 351, "Per la valutazione", blockText(units.get("11.7.5").blocks.find((block: any) => block.evidence.pdfPage === 351 && blockText(block).startsWith("Per la valutazione"))), [{ value: "80 mm", latex: "80\\;\\mathrm{mm}" }]);
+patchVerifiedText("11.7.10.1.1", 353, "I produttori, i successivi", blockText(units.get("11.7.10.1.1").blocks.find((block: any) => block.evidence.pdfPage === 353 && blockText(block).startsWith("I produttori, i successivi"))), [{ value: "10 anni", latex: "10\\;\\mathrm{anni}" }]);
+patchVerifiedText("11.7.10.2", 354, "Il prelievo potrà", blockText(units.get("11.7.10.2").blocks.find((block: any) => block.evidence.pdfPage === 354 && blockText(block).startsWith("Il prelievo potrà"))), [{ value: "trenta giorni", latex: "30\\;\\mathrm{giorni}" }]);
+patchVerifiedText("11.7.10.2", 354, "Per gli elementi di legno massiccio", blockText(units.get("11.7.10.2").blocks.find((block: any) => block.evidence.pdfPage === 354 && blockText(block).startsWith("Per gli elementi di legno massiccio"))), [{ value: "cinque per cento", latex: "5\\%" }]);
+patchVerifiedText("11.7.10.2", 354, "Per gli elementi di legno lamellare", blockText(units.get("11.7.10.2").blocks.find((block: any) => block.evidence.pdfPage === 354 && blockText(block).startsWith("Per gli elementi di legno lamellare"))), [{ value: "5%", latex: "5\\%" }]);
+patchVerifiedText("11.7.10.2", 354, "Per gli altri elementi giuntati", blockText(units.get("11.7.10.2").blocks.find((block: any) => block.evidence.pdfPage === 354 && blockText(block).startsWith("Per gli altri elementi giuntati"))), [{ value: "5%", latex: "5\\%" }]);
+patchVerifiedText("11.7.10.2", 354, "Infine, su almeno", blockText(units.get("11.7.10.2").blocks.find((block: any) => block.evidence.pdfPage === 354 && blockText(block).startsWith("Infine, su almeno"))), [{ value: "5%", latex: "5\\%" }]);
+
+patchVerifiedText("11.8.3.1", 356, "Il tecnico suddetto", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Il tecnico suddetto"))), [{ value: "dieci anni", latex: "10\\;\\mathrm{anni}" }]);
+patchVerifiedText("11.8.3.1", 356, "Le prove di stabilimento", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Le prove di stabilimento"))), [{ value: "28 giorni", latex: "28\\;\\mathrm{giorni}" }]);
+patchVerifiedText("11.8.3.1", 356, "Inoltre dovranno eseguirsi", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Inoltre dovranno eseguirsi"))), [
+    { value: "28 giorni", latex: "28\\;\\mathrm{giorni}" }, { value: "un prelievo ogni cinque giorni", latex: "1\\;\\mathrm{prelievo\\ ogni}\\;5\\;\\mathrm{giorni}" },
+    { value: "tre prelievi", latex: "3\\;\\mathrm{prelievi}" },
+]);
+patchVerifiedText("11.8.3.1", 356, "La prova di piegatura", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("La prova di piegatura"))), [
+    { value: "tre campioni ogni 90 tonnellate", latex: "3\\;\\mathrm{campioni\\ ogni}\\;90\\;\\mathrm{t}" }, { value: "1 volta al mese", latex: "1\\;\\mathrm{volta\\ al\\ mese}" },
+]);
+patchVerifiedText("11.8.3.1", 356, "Le prove sulle saldature", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Le prove sulle saldature"))), [{ value: "due anni", latex: "2\\;\\mathrm{anni}" }]);
+patchVerifiedText("11.8.3.1", 356, "A valle dell’operazione", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("A valle dell’operazione"))), [{ value: "tre campioni ogni 10 rotoli", latex: "3\\;\\mathrm{campioni\\ ogni}\\;10\\;\\mathrm{rotoli}" }]);
+patchVerifiedText("11.8.3.1", 356, "Il Direttore tecnico di stabilimento curerà", blockText(units.get("11.8.3.1").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Il Direttore tecnico di stabilimento curerà"))), [{ value: "dieci anni", latex: "10\\;\\mathrm{anni}" }]);
+patchVerifiedText("11.8.3.4", 356, "Inoltre, per manufatti", blockText(units.get("11.8.3.4").blocks.find((block: any) => block.evidence.pdfPage === 356 && blockText(block).startsWith("Inoltre, per manufatti"))), [{ value: "8 kN", latex: "8\\;\\mathrm{kN}" }]);
+
+patchVerifiedText("11.9", 358, "Tutti i dispositivi", blockText(units.get("11.9").blocks.find((block: any) => block.evidence.pdfPage === 358 && blockText(block).startsWith("Tutti i dispositivi"))), [
+    { value: "10 anni", latex: "10\\;\\mathrm{anni}" }, { value: "–15 °C", latex: "-15\\;{}^\\circ\\mathrm{C}" }, { value: "+45 °C", latex: "+45\\;{}^\\circ\\mathrm{C}" },
+]);
+patchVerifiedText("11.9", 358, "Nei casi in cui si applica", "Nei casi in cui si applica la norma europea armonizzata UNI EN 15129, le grandezze di riferimento ivi citate andranno desunte da quanto prescritto nelle presenti Norme Tecniche per le Costruzioni; in particolare si intende per dbd lo spostamento valutato per un terremoto riferito allo SLV, e per γx · dbd lo spostamento valutato per un terremoto riferito allo SLC (dpd e γx sono i simboli utilizzati nella UNI EN 15129 rispettivamente per lo spostamento di progetto di un dispositivo e per il fattore di amplificazione di al § 4.1.2 della stessa UNI EN 15129).", [
+    { value: "dbd", latex: "d_{bd}" }, { value: "γx · dbd", latex: "\\gamma_x\\cdot d_{bd}" },
+    { value: "dpd", latex: "d_{pd}" }, { value: "γx", latex: "\\gamma_x" },
+]);
+
+removeVerifiedTableResidues("11.9.5", 361, ["K 2", "K sec", "Βe", "(1) Valori ottenuti"]);
+removeVerifiedTableResidues("11.9.6", 362, ["Fornitura Invecchiamento", "F max", "Ed -15%"]);
+removeVerifiedTableResidues("11.9.7", 363, ["Fornitura Invecchiamento"]);
+removeVerifiedOcrResidues("11.9.5", 361, ["-F1", "-d 1"]);
+removeVerifiedOcrResidues("11.9.6", 362, ["confronti delle azioni verticali."]);
+removeVerifiedOcrResidues("11.9.3", 359, ["Fabbrica (Factory Production Control tests)."]);
+
+patchVerifiedText("11.9.1", 359, "DISPOSITIVI DI VINCOLO TEMPORANEO", "DISPOSITIVI DI VINCOLO TEMPORANEO: questi dispositivi sono utilizzati per obbligare i movimenti in uno o più direzioni secondo modalità differenziate a seconda del tipo e dell’entità dell’azione. Si distinguono in:", []);
+patchVerifiedText("11.9.1", 359, "D ISPOSITIVI DIPENDENTI", "DISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO, a loro volta suddivisi in: Dispositivi a comportamento lineare o “Lineari”: caratterizzati da un legame forza-spostamento sostanzialmente lineare, fino ad un dato livello di spostamento, con comportamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dalla velocità; nella fase di scarico non devono mostrare spostamenti residui significativi.", []);
+patchVerifiedText("11.9.1", 359, "DISPOSITIVI costituti", "DISPOSITIVI COSTITUITI DA UNA COMBINAZIONE DELLE PRECEDENTI CATEGORIE.", []);
+patchVerifiedText("11.9.3", 359, "Per i dispositivi rientranti", "Per i dispositivi rientranti nel campo di applicazione della norma europea armonizzata UNI EN 15129, le metodologie per le prove di accettazione ed i relativi criteri di valutazione, ove non diversamente specificato nel seguito, sono quelli indicati, per ciascun tipo di dispositivo, nella suddetta norma europea armonizzata con riferimento alle prove di Controllo di Produzione in Fabbrica (Factory Production Control tests). Il numero dei dispositivi da sottoporre a prove di accettazione è di seguito specificato per ciascun tipo di dispositivo.", []);
+
+patchVerifiedText("11.9.4", 360, "Il comportamento dei dispositivi", "Il comportamento dei dispositivi a comportamento lineare è definito tramite la rigidezza equivalente Ke e il coefficiente di smorzamento viscoso equivalente ξe, che devono rispettare le limitazioni", [
+    { value: "Ke", latex: "K_e" }, { value: "ξe", latex: "\\xi_e" },
+]);
+patchVerifiedText("11.9.4", 360, "essendo Kin", "essendo Kin la rigidezza iniziale valutata come rigidezza secante tra i valori corrispondenti al 10% ed il 20% della forza di progetto.", [
+    { value: "Kin", latex: "K_{in}" }, { value: "10%", latex: "10\\%" }, { value: "20%", latex: "20\\%" },
+]);
+patchVerifiedText("11.9.4", 360, "dove il pedice", "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).", [
+    { value: "(3)", latex: "(3)" }, { value: "(i)", latex: "(i)" }, { value: "(i ≥ 2)", latex: "(i\\ge2)" },
+]);
+patchVerifiedText("11.9.4", 360, "Le variazioni devono", "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.", [{ value: "3°", latex: "3^\\circ" }]);
+patchVerifiedText("11.9.4.1", 360, "Le prove di accettazione", blockText(units.get("11.9.4.1").blocks.find((block: any) => block.evidence.pdfPage === 360 && blockText(block).startsWith("Le prove di accettazione"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+patchVerifiedText("11.9.4.1", 360, "Su almeno un dispositivo", "Su almeno un dispositivo verrà anche condotta una prova “quasi statica”, imponendo almeno 5 cicli completi di deformazioni alternate, con ampiezza massima pari a ± d2.", [
+    { value: "5 cicli", latex: "5\\;\\mathrm{cicli}" }, { value: "± d2", latex: "\\pm d_2" },
+]);
+
+patchVerifiedText("11.9.5", 361, "Il loro comportamento", "Il loro comportamento è individuato dalla curva caratteristica che lega la forza trasmessa dal dispositivo al corrispondente spostamento; tali curve caratteristiche sono, in generale, schematizzabili con delle relazioni bilineari definite imponendo il passaggio per il punto di coordinate (F1, d1), corrispondente al limite teorico del comportamento elastico lineare del dispositivo, e per il punto di coordinate (F2, d2), corrispondente alla condizione di progetto allo SLC.", [
+    { value: "(F1, d1)", latex: "(F_1,d_1)" }, { value: "(F2, d2)", latex: "(F_2,d_2)" },
+]);
+patchVerifiedText("11.9.5", 361, "d el =", "del = spostamento nel primo ramo di carico in una prova sperimentale entro il quale il comportamento è sostanzialmente lineare. In generale può assumersi un valore pari a d2/20;", [
+    { value: "del", latex: "d_{el}" }, { value: "d2/20", latex: "d_2/20" },
+]);
+patchVerifiedText("11.9.5", 361, "Fel =", "Fel = Forza corrispondente a del, nel ramo di carico iniziale sperimentale.", [
+    { value: "Fel", latex: "F_{el}" }, { value: "del", latex: "d_{el}" },
+]);
+patchVerifiedText("11.9.5", 361, "d 1 =", "d1 = ascissa del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente i punti (d2/4, F(d2/4)) e (d2, F2) nel terzo ciclo della prova sperimentale;", [
+    { value: "d1", latex: "d_1" }, { value: "(del, Fel)", latex: "(d_{el},F_{el})" }, { value: "(d2/4, F(d2/4))", latex: "(d_2/4,F(d_2/4))" }, { value: "(d2, F2)", latex: "(d_2,F_2)" },
+]);
+patchVerifiedText("11.9.5", 361, "F1 =", "F1 = ordinata del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente i punti (d2/4, F(d2/4)) e (d2, F2) nel terzo ciclo della prova sperimentale;", [
+    { value: "F1", latex: "F_1" }, { value: "(del, Fel)", latex: "(d_{el},F_{el})" }, { value: "(d2/4, F(d2/4))", latex: "(d_2/4,F(d_2/4))" }, { value: "(d2, F2)", latex: "(d_2,F_2)" },
+]);
+patchVerifiedText("11.9.5", 361, "d 2 =", "d2 = spostamento massimo di progetto del dispositivo corrispondente allo SLC;", [{ value: "d2", latex: "d_2" }]);
+patchVerifiedText("11.9.5", 361, "F2 =", "F2 = forza corrispondente allo spostamento d2, ottenuta al terzo ciclo sperimentale.", [
+    { value: "F2", latex: "F_2" }, { value: "d2", latex: "d_2" },
+]);
+patchVerifiedText("11.9.5", 361, "Le rigidezze elastica", "Le rigidezze elastica e post-elastica, rispettivamente del primo ramo e del secondo ramo, vengono definite come: K1 = F1/d1; K2 = (F2−F1)/(d2−d1), mentre la rigidezza secante è data da Ksec = F2/d2 e lo smorzamento equivalente è ξe = Ed/(2π F2 d2) essendo Ed l’area del ciclo d’isteresi.", [
+    { value: "K1 = F1/d1", latex: "K_1=F_1/d_1" }, { value: "K2 = (F2−F1)/(d2−d1)", latex: "K_2=(F_2-F_1)/(d_2-d_1)" },
+    { value: "Ksec = F2/d2", latex: "K_{sec}=F_2/d_2" }, { value: "ξe = Ed/(2π F2 d2)", latex: "\\xi_e=E_d/(2\\pi F_2d_2)" }, { value: "Ed", latex: "E_d" },
+]);
+patchVerifiedText("11.9.5", 361, "dove il pedice", "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).", [
+    { value: "(3)", latex: "(3)" }, { value: "(i)", latex: "(i)" }, { value: "(i ≥ 2)", latex: "(i\\ge2)" },
+]);
+patchVerifiedText("11.9.5", 361, "Il ciclo teorico", blockText(units.get("11.9.5").blocks.find((block: any) => block.evidence.pdfPage === 361 && blockText(block).startsWith("Il ciclo teorico"))), [{ value: "10%", latex: "10\\%" }]);
+patchVerifiedText("11.9.5", 361, "Le variazioni devono", "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.", [{ value: "3°", latex: "3^\\circ" }]);
+patchVerifiedText("11.9.5", 362, "Quando il rapporto", "Quando il rapporto d’incrudimento risulta K2/K1 ≤ 0,05, il limite su K2 viene sostituito dal limite sulla variazione di K2/K1 che deve differire meno di 0,01 dal valore di progetto.", [
+    { value: "K2/K1 ≤ 0,05", latex: "K_2/K_1\\le0{,}05" }, { value: "K2", latex: "K_2" }, { value: "K2/K1", latex: "K_2/K_1" }, { value: "0,01", latex: "0{,}01" },
+]);
+
+patchVerifiedText("11.9.6", 362, "I dispositivi a comportamento viscoso", "I dispositivi a comportamento viscoso trasmettono, in generale, soltanto azioni orizzontali ed hanno rigidezza trascurabile nei confronti delle azioni verticali. Essi sono caratterizzati da un valore della forza proporzionale a vα, e pertanto non contribuiscono significativamente alla rigidezza del sistema. La relazione forza spostamento di un dispositivo viscoso, per una legge sinusoidale dello spostamento, è riportata in Fig. 11.9.2. La forma del ciclo è ellittica per α = 1.", [
+    { value: "vα", latex: "v^\\alpha" }, { value: "α = 1", latex: "\\alpha=1" },
+]);
+patchVerifiedText("11.9.6", 362, "Il loro comportamento", "Il loro comportamento è caratterizzato dalla massima forza sviluppata Fmax e dall’energia dissipata Ed in un ciclo, per una prefissata ampiezza e frequenza, ossia dalle costanti C e α.", [
+    { value: "Fmax", latex: "F_{max}" }, { value: "Ed", latex: "E_d" }, { value: "C", latex: "C" }, { value: "α", latex: "\\alpha" },
+]);
+patchVerifiedText("11.9.6", 362, "Per assicurare", "Per assicurare un comportamento ciclico stabile, le variazioni dell’energia dissipata Ed in una serie di cicli di carico riferiti a stessa velocità e spostamento massimi devono essere limitate nel modo seguente:", [{ value: "Ed", latex: "E_d" }]);
+patchVerifiedText("11.9.6", 362, "dove il pedice", "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).", [
+    { value: "(3)", latex: "(3)" }, { value: "(i)", latex: "(i)" }, { value: "(i ≥ 2)", latex: "(i\\ge2)" },
+]);
+patchVerifiedText("11.9.6", 362, "Per tener conto", "Per tener conto di possibili valori di velocità superiori a quelli di progetto, la forza massima di progetto del dispositivo va amplificata con un fattore di affidabilità γv dato da", [{ value: "γv", latex: "\\gamma_v" }]);
+patchVerifiedText("11.9.6", 362, "in cui td", "in cui td è la tolleranza sulla forza di progetto fornita dal fabbricante, comprensiva della variabilità per effetto della temperatura, e α è l’esponente della legge costitutiva.", [
+    { value: "td", latex: "t_d" }, { value: "α", latex: "\\alpha" },
+]);
+patchVerifiedText("11.9.6", 362, "Il dispositivo deve possedere", blockText(units.get("11.9.6").blocks.find((block: any) => block.evidence.pdfPage === 362 && blockText(block).startsWith("Il dispositivo deve possedere"))), [{ value: "2 gradi sessagesimali", latex: "2^\\circ" }]);
+patchVerifiedText("11.9.6.1", 362, "Le prove di accettazione", blockText(units.get("11.9.6.1").blocks.find((block: any) => block.evidence.pdfPage === 362 && blockText(block).startsWith("Le prove di accettazione"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+
+patchVerifiedText("11.9.7", 363, "Le piastre di acciaio", blockText(units.get("11.9.7").blocks.find((block: any) => block.evidence.pdfPage === 363 && blockText(block).startsWith("Le piastre di acciaio"))), [
+    { value: "18%", latex: "18\\%" }, { value: "2 mm", latex: "2\\;\\mathrm{mm}" }, { value: "20 mm", latex: "20\\;\\mathrm{mm}" },
+]);
+patchVerifiedText("11.9.7", 363, "S1 fattore", "S1 fattore di forma primario, rapporto tra la superficie A’ comune al singolo strato di elastomero ed alla singola piastra d’acciaio, depurata degli eventuali fori (se non riempiti successivamente), e la superficie laterale libera L del singolo strato di elastomero, maggiorata della superficie laterale degli eventuali fori (se non riempiti successivamente) ossia S1 = A’/L;", [
+    { value: "S1", latex: "S_1" }, { value: "A’", latex: "A'" }, { value: "L", latex: "L" }, { value: "S1 = A’/L", latex: "S_1=A'/L" },
+]);
+patchVerifiedText("11.9.7", 363, "S2 fattore", "S2 fattore di forma secondario, rapporto tra la dimensione in pianta D della singola piastra in acciaio, parallelamente all’azione orizzontale agente, e lo spessore totale te degli strati di elastomero ossia S2 = D/te.", [
+    { value: "S2", latex: "S_2" }, { value: "D", latex: "D" }, { value: "te", latex: "t_e" }, { value: "S2 = D/te", latex: "S_2=D/t_e" },
+]);
+patchVerifiedText("11.9.7", 363, "Gli isolatori in materiale", "Gli isolatori in materiale elastomerico ed acciaio sono individuati attraverso le loro curve caratteristiche forza-spostamento, generalmente non lineari, tramite i due parametri sintetici: la rigidezza equivalente Ke, il coefficiente di smorzamento viscoso equivalente ξe.", [
+    { value: "Ke", latex: "K_e" }, { value: "ξe", latex: "\\xi_e" },
+]);
+patchVerifiedText("11.9.7", 363, "La rigidezza equivalente", "La rigidezza equivalente Ke, relativa ad un ciclo di carico, è definita come rapporto tra la forza F corrispondente allo spostamento massimo d raggiunto in quel ciclo e lo stesso spostamento (Ke = F/d) e si valuta come prodotto del modulo dinamico equivalente a taglio Gdin per A/te.", [
+    { value: "Ke", latex: "K_e" }, { value: "F", latex: "F" }, { value: "d", latex: "d" }, { value: "(Ke = F/d)", latex: "(K_e=F/d)" }, { value: "Gdin", latex: "G_{din}" }, { value: "A/te", latex: "A/t_e" },
+]);
+patchVerifiedText("11.9.7", 363, "Il coefficiente", "Il coefficiente di smorzamento viscoso equivalente ξe si definisce come rapporto tra l’energia dissipata in un ciclo completo di carico Ed e 2πFd, ossia ξe = Ed/(2πFd).", [
+    { value: "ξe", latex: "\\xi_e" }, { value: "Ed", latex: "E_d" }, { value: "2πFd", latex: "2\\pi Fd" }, { value: "ξe = Ed/(2πFd)", latex: "\\xi_e=E_d/(2\\pi Fd)" },
+]);
+patchVerifiedText("11.9.7", 363, "La rigidezza verticale", "La rigidezza verticale Kv è definita come rapporto tra la forza verticale di progetto Fv e lo spostamento verticale dv (Kv = Fv/dv).", [
+    { value: "Kv", latex: "K_v" }, { value: "Fv", latex: "F_v" }, { value: "dv", latex: "d_v" }, { value: "(Kv = Fv/dv)", latex: "(K_v=F_v/d_v)" },
+]);
+patchVerifiedText("11.9.7", 363, "Le variazioni devono", "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova. Le frequenze di prova per valutare le variazioni delle caratteristiche meccaniche sono 0,1 Hz e 0,5 Hz.", [
+    { value: "3°", latex: "3^\\circ" }, { value: "0,1 Hz", latex: "0{,}1\\;\\mathrm{Hz}" }, { value: "0,5 Hz", latex: "0{,}5\\;\\mathrm{Hz}" },
+]);
+patchVerifiedText("11.9.7", 363, "Le variazioni dovute", blockText(units.get("11.9.7").blocks.find((block: any) => block.evidence.pdfPage === 363 && blockText(block).startsWith("Le variazioni dovute"))), [{ value: "15%", latex: "15\\%" }]);
+patchVerifiedText("11.9.7.1", 363, "Le prove di accettazione", blockText(units.get("11.9.7.1").blocks.find((block: any) => block.evidence.pdfPage === 363 && blockText(block).startsWith("Le prove di accettazione"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+
+patchVerifiedText("11.9.8", 363, "Gli isolatori a scorrimento", "Gli isolatori a scorrimento devono essere in grado di sopportare, sotto spostamento massimo impresso pari a d2, almeno 5 cicli di carico e scarico. I cicli si riterranno favorevolmente sopportati se il coefficiente d’attrito (f), nei cicli successivi al primo, non varierà di più del 25% rispetto alle caratteristiche riscontrate durante il terzo ciclo, ossia", [
+    { value: "d2", latex: "d_2" }, { value: "5 cicli", latex: "5\\;\\mathrm{cicli}" }, { value: "(f)", latex: "(f)" }, { value: "25%", latex: "25\\%" },
+]);
+patchVerifiedText("11.9.8", 363, "avendo contrassegnato", "avendo contrassegnato con il pedice “(i)” le caratteristiche valutate all’i-esimo ciclo e con il pedice “(3)” le caratteristiche valutate al terzo ciclo. Detto ddc lo spostamento massimo di progetto del centro di rigidezza del sistema d’isolamento, corrispondente allo SLC, qualora l’incremento della forza nel sistema di isolamento per spostamenti tra 0,5 ddc e ddc sia inferiore all’1,25% del peso totale della sovrastruttura, gli isolatori a scorrimento debbono essere in grado di garantire la loro funzione di appoggio fino a spostamenti pari ad 1,25 d2.", [
+    { value: "(i)", latex: "(i)" }, { value: "(3)", latex: "(3)" }, { value: "ddc", latex: "d_{dc}" },
+    { value: "0,5 ddc", latex: "0{,}5d_{dc}" }, { value: "ddc", latex: "d_{dc}" }, { value: "1,25%", latex: "1{,}25\\%" }, { value: "1,25 d2", latex: "1{,}25d_2" },
+]);
+patchVerifiedText("11.9.8.1", 363, "Le prove di accettazione", blockText(units.get("11.9.8.1").blocks.find((block: any) => block.evidence.pdfPage === 363 && blockText(block).startsWith("Le prove di accettazione"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+patchVerifiedText("11.9.8.1", 364, "Qualora gli isolatori", "Qualora gli isolatori fossero dotati di elementi o meccanismi supplementari atti a migliorarne le prestazioni sismiche, su almeno un dispositivo completo di tali parti supplementari verrà anche condotta una prova “quasi statica”, imponendo almeno 5 cicli completi di deformazioni alternate, con ampiezza massima pari a ± d2. Il dispositivo non potrà essere utilizzato nella costruzione, a meno che il suo perfetto funzionamento non sia ripristinabile con la sostituzione degli elementi base.", [
+    { value: "5 cicli", latex: "5\\;\\mathrm{cicli}" }, { value: "± d2", latex: "\\pm d_2" },
+]);
+
+patchVerifiedText("11.9.9.1", 364, "Le prove di accettazione", blockText(units.get("11.9.9.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Le prove di accettazione"))), [{ value: "±10%", latex: "\\pm10\\%" }]);
+patchVerifiedText("11.9.9.1", 364, "ȡ misura", "– misura della geometria esterna, con tolleranza di ±10% sugli spessori e ±5% sulle lunghezze, per i componenti determinanti ai fini del comportamento.", [
+    { value: "±10%", latex: "\\pm10\\%" }, { value: "±5%", latex: "\\pm5\\%" },
+]);
+patchVerifiedText("11.9.9.1", 364, "ȡ Valutazione della capacità", "– Valutazione della capacità di sostenere almeno 3 cicli monotonici con carico massimo impresso pari al valore di progetto di servizio, con una tolleranza del +10%, in assenza di snervamenti o rotture.", [
+    { value: "3 cicli", latex: "3\\;\\mathrm{cicli}" }, { value: "+10%", latex: "+10\\%" },
+]);
+patchVerifiedText("11.9.9.1", 364, "ȡ Valutazione della forza", "– Valutazione della forza di rilascio, sottoponendo il campione ad un carico monotonico sino al raggiungimento della rottura del fusibile (forza di rilascio). La tolleranza, rispetto al valore di progetto, deve essere definita dal progettista e, in assenza di tale valutazione, è pari a ±15%.", [{ value: "±15%", latex: "\\pm15\\%" }]);
+for (const prefix of ["– misura", "– Valutazione della capacità", "– Valutazione della forza"]) {
+    const block = units.get("11.9.9.1").blocks.find((candidate: any) => candidate.evidence.pdfPage === 364 && blockText(candidate).startsWith(prefix));
+    if (block === undefined) throw new Error(`Voce elenco verificata non trovata: ${prefix}`);
+    block.kind = "list-item";
+}
+patchVerifiedText("11.9.9.1", 364, "Le prove di accettazione devono", blockText(units.get("11.9.9.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Le prove di accettazione devono"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+
+patchVerifiedText("11.9.10", 364, "La corsa disponibile", blockText(units.get("11.9.10").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("La corsa disponibile"))), [
+    { value: "±50 mm", latex: "\\pm50\\;\\mathrm{mm}" }, { value: "±25 mm", latex: "\\pm25\\;\\mathrm{mm}" },
+]);
+patchVerifiedText("11.9.10", 364, "Il dispositivo deve possedere", blockText(units.get("11.9.10").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Il dispositivo deve possedere"))), [{ value: "2 gradi", latex: "2^\\circ" }]);
+patchVerifiedText("11.9.10", 364, "Il fattore di sicurezza", blockText(units.get("11.9.10").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Il fattore di sicurezza"))), [
+    { value: "1,5", latex: "1{,}5" }, { value: "110%", latex: "110\\%" }, { value: "1,1", latex: "1{,}1" },
+]);
+patchVerifiedText("11.9.10", 364, "La velocità di attivazione", blockText(units.get("11.9.10").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("La velocità di attivazione"))), [
+    { value: "0,5 mm/s", latex: "0{,}5\\;\\mathrm{mm/s}" }, { value: "5 mm/s", latex: "5\\;\\mathrm{mm/s}" }, { value: "0,01 mm/s", latex: "0{,}01\\;\\mathrm{mm/s}" },
+]);
+patchVerifiedText("11.9.10.1", 364, "Le prove di accettazione", blockText(units.get("11.9.10.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Le prove di accettazione"))), [
+    { value: "20%", latex: "20\\%" }, { value: "4", latex: "4" },
+]);
+patchVerifiedText("11.9.10.1", 364, "Per le prove di accettazione", blockText(units.get("11.9.10.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("Per le prove di accettazione"))), [{ value: "1,5 volte", latex: "1{,}5\\;\\mathrm{volte}" }]);
+patchVerifiedText("11.9.10.1", 364, "a) Raggiungimento", blockText(units.get("11.9.10.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("a) Raggiungimento"))), [
+    { value: "0,5 secondi", latex: "0{,}5\\;\\mathrm{s}" }, { value: "5 secondi", latex: "5\\;\\mathrm{s}" },
+]);
+patchVerifiedText("11.9.10.1", 364, "b) Inversione", blockText(units.get("11.9.10.1").blocks.find((block: any) => block.evidence.pdfPage === 364 && blockText(block).startsWith("b) Inversione"))), [
+    { value: "1 secondo", latex: "1\\;\\mathrm{s}" }, { value: "5 secondi", latex: "5\\;\\mathrm{s}" },
+]);
+
+removeVerifiedTableResidues("11.10.1", 365, ["Specifica Tecnica Europea", "Categoria II"]);
+removeVerifiedTableResidues("11.10.2.1", 366, ["Classe M 2,5", "Resistenza a compressione N/mm2", "d è una resistenza", "Specifica Tecnica Europea"]);
+removeVerifiedTableResidues("11.10.2.2", 366, ["Specifica Tecnica Europea"]);
+removeVerifiedTableResidues("11.10.3.1.2", 368, ["Resistenza caratteristica a compressione fbk"]);
+removeVerifiedTableResidues("11.10.3.2.2", 368, ["Elementi per muratura", "Laterizio M10", "0,30 *", "0,20 **", "* valore valido"]);
+removeVerifiedOcrResidues("11.10.1.1.1", 365, ["menti con"]);
+
+patchVerifiedText("11.10.1", 365, "Come più precisamente", blockText(units.get("11.10.1").blocks.find((block: any) => block.evidence.pdfPage === 365 && blockText(block).startsWith("Come più precisamente"))), [{ value: "5%", latex: "5\\%" }]);
+patchVerifiedText("11.10.1", 365, "L’uso di elementi", "L’uso di elementi per muratura portante di Categoria I e II è subordinato all’adozione, nella valutazione della resistenza di progetto, del corrispondente coefficiente di sicurezza γM riportato nel relativo paragrafo 4.5.6.", [{ value: "γM", latex: "\\gamma_M" }]);
+
+patchVerifiedText("11.10.1.1.1", 365, "Il controllo di accettazione", "Il controllo di accettazione in cantiere ha lo scopo di accertare se gli elementi da mettere in opera abbiano le caratteristiche dichiarate dal fabbricante. Nel caso in cui il fabbricante abbia dichiarato la resistenza media, il controllo sarà effettuato su almeno un campione per ogni 350 m³ di fornitura per elementi di Categoria II, e per ogni 650 m³ per elementi di Categoria I. Ogni campione sarà costituito da n elementi (n ≥ 6) da sottoporre a prova di compressione. Per ogni campione siano f1, f2, …, fn le resistenze a compressione degli elementi con f1 < f2 < … < fn; il controllo sul campione si considera positivo se risultino verificate entrambe le disuguaglianze:", [
+    { value: "350 m³", latex: "350\\;\\mathrm{m^3}" }, { value: "650 m³", latex: "650\\;\\mathrm{m^3}" }, { value: "n", latex: "n" }, { value: "(n ≥ 6)", latex: "(n\\ge6)" },
+    { value: "f1, f2, …, fn", latex: "f_1,f_2,\\ldots,f_n" }, { value: "f1 < f2 < … < fn", latex: "f_1<f_2<\\ldots<f_n" },
+]);
+patchVerifiedText("11.10.1.1.1", 365, "Nel caso in cui il fabbricante", "Nel caso in cui il fabbricante non abbia dichiarato la resistenza media ma abbia dichiarato la sola resistenza caratteristica, il controllo di accettazione in cantiere sarà effettuato su almeno un campione per ogni 350 m³ di fornitura per elementi di Categoria II, innalzabili a 650 m³ per elementi di Categoria I. Per ogni campione, siano f1, f2, …, f6 le resistenze a compressione dei sei elementi con f1 < f2 < … < f6; il controllo si considera effettuato con esito positivo se risulta verificata la seguente disuguaglianza: f1 ≥ fbk, dove fbk è la resistenza caratteristica a compressione dichiarata dal fabbricante.", [
+    { value: "350 m³", latex: "350\\;\\mathrm{m^3}" }, { value: "650 m³", latex: "650\\;\\mathrm{m^3}" }, { value: "f1, f2, …, f6", latex: "f_1,f_2,\\ldots,f_6" },
+    { value: "f1 < f2 < … < f6", latex: "f_1<f_2<\\ldots<f_6" }, { value: "f1 ≥ fbk", latex: "f_1\\ge f_{bk}" }, { value: "fbk", latex: "f_{bk}" },
+]);
+
+patchVerifiedText("11.10.2", 366, "Le prestazioni meccaniche", "Le prestazioni meccaniche di una malta sono definite mediante la sua resistenza media a compressione fm.", [{ value: "fm", latex: "f_m" }]);
+patchVerifiedText("11.10.2", 366, "La classe di una malta", "La classe di una malta è definita da una sigla costituita dalla lettera M seguita da un numero che indica la resistenza fm espressa in N/mm² secondo la Tab. 11.10.II. Per l’impiego in muratura portante non sono ammesse malte con resistenza fm < 2,5 N/mm².", [
+    { value: "fm", latex: "f_m" }, { value: "N/mm²", latex: "\\mathrm{N/mm^2}" }, { value: "fm < 2,5 N/mm²", latex: "f_m<2{,}5\\;\\mathrm{N/mm^2}" },
+]);
+patchVerifiedText("11.10.2.4", 367, "Il prelievo potrà", "Il prelievo potrà anche essere eseguito dallo stesso laboratorio incaricato della esecuzione delle prove. I laboratori devono conservare i campioni sottoposti a prova per almeno trenta giorni dopo l’emissione dei certificati di prova, in modo da consentirne l’identificabilità e la rintracciabilità.", [{ value: "trenta giorni", latex: "30\\;\\mathrm{giorni}" }]);
+patchVerifiedText("11.10.2.4", 367, "Il controllo di accettazione", "Il controllo di accettazione va eseguito su miscele omogenee e prevede il campionamento di almeno 3 provini prismatici 40 × 40 × 160 mm ogni 350 m³ di muratura realizzata con la stessa miscela nel caso di malte a composizione prescritta o prodotte in cantiere, oppure ogni 700 m³ di muratura realizzata con la stessa miscela nel caso di malte a prestazione garantita, da sottoporre a flessione, e quindi a compressione sulle 6 metà risultanti, secondo quanto indicato nella norma UNI EN 1015-11:2007. Il valore medio delle resistenze a compressione misurate deve risultare maggiore o uguale del valore di progetto.", [
+    { value: "3 provini", latex: "3\\;\\mathrm{provini}" }, { value: "40 × 40 × 160 mm", latex: "40\\times40\\times160\\;\\mathrm{mm}" },
+    { value: "350 m³", latex: "350\\;\\mathrm{m^3}" }, { value: "700 m³", latex: "700\\;\\mathrm{m^3}" }, { value: "6", latex: "6" },
+]);
+
+patchVerifiedText("11.10.3.1.1", 367, "La resistenza caratteristica", "La resistenza caratteristica sperimentale a compressione si determina su n muretti (n ≥ 6), secondo la procedura descritta nella norma UNI EN 1052-1:2001.", [
+    { value: "n", latex: "n" }, { value: "(n ≥ 6)", latex: "(n\\ge6)" },
+]);
+patchVerifiedText("11.10.3.1.1", 367, "– malta:", "– malta: n. 3 provini prismatici 40 × 40 × 160 mm da sottoporre a flessione, e quindi a compressione sulle 6 metà risultanti, secondo la norma UNI EN 1015-11:2007;", [
+    { value: "3 provini", latex: "3\\;\\mathrm{provini}" }, { value: "40 × 40 × 160 mm", latex: "40\\times40\\times160\\;\\mathrm{mm}" }, { value: "6", latex: "6" },
+]);
+patchVerifiedText("11.10.3.1.1", 367, "– elementi resistenti:", blockText(units.get("11.10.3.1.1").blocks.find((block: any) => block.evidence.pdfPage === 367 && blockText(block).startsWith("– elementi resistenti:"))), [{ value: "10 elementi", latex: "10\\;\\mathrm{elementi}" }]);
+patchVerifiedText("11.10.3.1.2", 367, "In sede di progetto", "In sede di progetto, per le murature formate da elementi artificiali pieni o semipieni il valore della resistenza caratteristica a compressione della muratura fk può essere dedotto dalla resistenza caratteristica a compressione degli elementi e dalla classe di appartenenza della malta tramite la Tab. 11.10.VI. Ai fini dell’uso di tale tabella, nel caso la resistenza a compressione degli elementi sia dichiarata mediante il suo valore medio fbm, in assenza di una determinazione sperimentale diretta, la resistenza caratteristica dell’elemento fbk può essere stimata mediante la relazione fbk = 0,8 fbm. La validità della tabella è limitata a quelle murature aventi giunti orizzontali e verticali riempiti di malta e di spessore compreso tra 5 e 15 mm. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni.", [
+    { value: "fk", latex: "f_k" }, { value: "fbm", latex: "f_{bm}" }, { value: "fbk", latex: "f_{bk}" }, { value: "fbk = 0,8 fbm", latex: "f_{bk}=0{,}8f_{bm}" }, { value: "5 e 15 mm", latex: "5\\text{ e }15\\;\\mathrm{mm}" },
+]);
+patchVerifiedText("11.10.3.1.2", 368, "Nel caso di murature", "Nel caso di murature costituite da elementi naturali si assume convenzionalmente la resistenza caratteristica a compressione dell’elemento fbk pari a:", [{ value: "fbk", latex: "f_{bk}" }]);
+patchVerifiedText("11.10.3.1.2", 368, "dove fbm", "dove fbm rappresenta la resistenza media a compressione degli elementi in pietra squadrata.", [{ value: "fbm", latex: "f_{bm}" }]);
+patchVerifiedText("11.10.3.1.2", 368, "Il valore della resistenza", "Il valore della resistenza caratteristica a compressione della muratura fk può essere dedotto dalla resistenza caratteristica a compressione degli elementi fbk e dalla classe di appartenenza della malta tramite la seguente Tab. 11.10.VII.", [
+    { value: "fk", latex: "f_k" }, { value: "fbk", latex: "f_{bk}" },
+]);
+patchVerifiedText("11.10.3.1.2", 368, "In alternativa alla determinazione", "In alternativa alla determinazione sperimentale della resistenza a compressione, per la stima della resistenza caratteristica a compressione della muratura in elementi artificiali e naturali, è anche possibile fare riferimento a quanto riportato al § 3.6 della norma UNI EN 1996-1-1:2013, integrata dalla relativa Appendice Nazionale. Per la determinazione della resistenza normalizzata del blocco fb a cui queste norme si riferiscono, qualora essa non sia dichiarata dal fabbricante, si utilizzano i fattori di conversione della resistenza alla compressione media del blocco contenuti nella appendice A della UNI EN 772-1.", [{ value: "fb", latex: "f_b" }]);
+patchVerifiedText("11.10.3.2.1", 368, "La resistenza caratteristica", "La resistenza caratteristica sperimentale a taglio si determina su n campioni (n ≥ 6), seguendo sia, per la confezione che per la prova, le modalità indicate nella norma UNI EN 1052-3:2007 e, per quanto applicabile, UNI EN 1052-4:2001. In alternativa, la resistenza caratteristica a taglio può essere valutata con prove di compressione diagonale su n campioni di muratura (n ≥ 6) seguendo, sia per la confezione che per la prova, le modalità indicate in normative di comprovata validità.", [
+    { value: "n", latex: "n" }, { value: "(n ≥ 6)", latex: "(n\\ge6)" }, { value: "n", latex: "n" }, { value: "(n ≥ 6)", latex: "(n\\ge6)" },
+]);
+patchVerifiedText("11.10.3.2.2", 368, "In sede di progetto", "In sede di progetto, per le murature formate da elementi artificiali oppure in pietra naturale squadrata, il valore di fvk0, in alternativa alla determinazione sperimentale, può essere dedotto dalla Tab. 11.10.VIII. Per valori non contemplati in tabella è ammessa l’interpolazione lineare; in nessun caso sono ammesse estrapolazioni. Per caratteristiche dei materiali (resistenza della malta o resistenza dei blocchi) diverse da quelle contemplate in tabella, è necessario ricorrere alla determinazione sperimentale.", [{ value: "fvk0", latex: "f_{vk0}" }]);
+patchVerifiedText("11.10.3.2.2", 369, "I valori in tabella", "I valori in tabella possono essere direttamente utilizzati nel caso di giunti orizzontali e verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una con l’altra, i valori della tabella vanno dimezzati. Per la stima della resistenza a taglio della muratura con letto di malta interrotto, nella quale gli elementi di muratura sono disposti su due o più strisce uguali di malta ordinaria riempiti, i valori di fvk0 relativi al letto pieno vanno opportunamente ridotti secondo quanto indicato nella norma UNI EN 1996-1-1 integrata dalla relativa Appendice Nazionale.", [{ value: "fvk0", latex: "f_{vk0}" }]);
+
+patchVerifiedText("11.10.3.3", 369, "In presenza di tensioni", "In presenza di tensioni di compressione, la resistenza caratteristica a taglio della muratura, fvk, è definita come resistenza all’effetto combinato delle forze orizzontali e dei carichi verticali agenti nel piano del muro e può essere ricavata tramite la relazione", [{ value: "fvk", latex: "f_{vk}" }]);
+patchVerifiedText("11.10.3.3", 369, "dove:", "dove: fvk0 è la resistenza caratteristica a taglio in assenza di carichi verticali;", [{ value: "fvk0", latex: "f_{vk0}" }]);
+patchVerifiedText("11.10.3.3", 369, "Vn", "σn è la tensione normale media dovuta ai carichi verticali agenti nella sezione di verifica.", [{ value: "σn", latex: "\\sigma_n" }]);
+patchVerifiedText("11.10.3.3", 369, "fvk,lim valore", "fvk,lim valore massimo della resistenza caratteristica a taglio che può essere impiegata nel calcolo;", [{ value: "fvk,lim", latex: "f_{vk,\\lim}" }]);
+patchVerifiedText("11.10.3.3", 369, "ad eccezione degli elementi", "ad eccezione degli elementi pieni in calcestruzzo aerato autoclavato e di tutti gli elementi caratterizzati da una resistenza a trazione (misurata in direzione orizzontale parallelamente al piano di posa) maggiore o uguale a 0,2 fb, per i quali si pone:", [{ value: "0,2 fb", latex: "0{,}2f_b" }]);
+patchVerifiedText("11.10.3.3", 369, "dove fb", "dove fb è la resistenza normalizzata a compressione verticale dei blocchi valutata secondo le norme armonizzate della serie UNI EN 771. I valori di fvk,lim sopra riportati sono relativi a muratura con giunti verticali riempiti di malta. Nel caso di giunti orizzontali riempiti di malta e giunti verticali non riempiti, ma con le facce adiacenti degli elementi di muratura poste in contatto l’una dell’altra, si adotta fvk,lim = 0,045 fb.", [
+    { value: "fb", latex: "f_b" }, { value: "fvk,lim", latex: "f_{vk,\\lim}" }, { value: "fvk,lim = 0,045 fb", latex: "f_{vk,\\lim}=0{,}045f_b" },
+]);
+patchVerifiedText("11.10.3.4", 369, "Il modulo di elasticità", "Il modulo di elasticità normale secante della muratura è valutato sperimentalmente su n muretti (n ≥ 6), seguendo sia per la confezione che per la prova le modalità indicate nella norma UNI EN 1052-1:2001.", [
+    { value: "n", latex: "n" }, { value: "(n ≥ 6)", latex: "(n\\ge6)" },
+]);
 
 const figureManifest: any[] = [];
 await mkdir(figureDir, { recursive: true });

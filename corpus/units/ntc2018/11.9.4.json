@@ -63,8 +63,32 @@
       "origin": "official",
       "text": {
         "raw": "Il comportamento dei dispositivi a comportamento lineare è definito tramite la rigidezza equivalente Ke e il coefficiente di smor-\nzamento viscoso equivalente Βe \n, che devono rispettare le limitazioni",
-        "normalized": "Il comportamento dei dispositivi a comportamento lineare è definito tramite la rigidezza equivalente Ke e il coefficiente di smorzamento viscoso equivalente Βe , che devono rispettare le limitazioni",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il comportamento dei dispositivi a comportamento lineare è definito tramite la rigidezza equivalente Ke e il coefficiente di smorzamento viscoso equivalente ξe, che devono rispettare le limitazioni",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il comportamento dei dispositivi a comportamento lineare è definito tramite la rigidezza equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "Ke",
+            "latex": "K_e"
+          },
+          {
+            "kind": "text",
+            "value": " e il coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξe",
+            "latex": "\\xi_e"
+          },
+          {
+            "kind": "text",
+            "value": ", che devono rispettare le limitazioni"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -91,10 +115,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b65cfe1972f42399e373bdb7061dbdb807cb7e1cf8795e6435652c537bd654c7",
-        "normalizedSha256": "61eed27a413b6e6302df99b3d7b6b9914bc5ca94e70b7edcaac62d97883fab76"
+        "normalizedSha256": "9d5b56ce5c6c0155917e2d6d6ff1909f332bc4f66848db89470665533ee9785d"
       }
     },
     {
@@ -171,7 +200,40 @@
       "text": {
         "raw": "essendo Kin la rigidezza iniziale valutata come rigidezza secante tra i valori corrispondenti al 10% ed il 20% della forza di proget-\nto.",
         "normalized": "essendo Kin la rigidezza iniziale valutata come rigidezza secante tra i valori corrispondenti al 10% ed il 20% della forza di progetto.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "essendo "
+          },
+          {
+            "kind": "math",
+            "value": "Kin",
+            "latex": "K_{in}"
+          },
+          {
+            "kind": "text",
+            "value": " la rigidezza iniziale valutata come rigidezza secante tra i valori corrispondenti al "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " ed il "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della forza di progetto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -198,6 +260,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "d32a4363a91388ba8c1bc37bdbe60d84571762a825f7d0976a4f3fa5d7f034fa",
@@ -322,8 +389,41 @@
       "origin": "official",
       "text": {
         "raw": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-\nesimo ciclo, escluso il primo (i ǃ 2).",
-        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’iesimo ciclo, escluso il primo (i ǃ 2).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(3)",
+            "latex": "(3)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(i)",
+            "latex": "(i)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo "
+          },
+          {
+            "kind": "math",
+            "value": "(i ≥ 2)",
+            "latex": "(i\\ge2)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -350,10 +450,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "1de4fcf82833d7cd2bc199be8f95e3980a17d48f7f16f4708ec4ead8067d72f8",
-        "normalizedSha256": "828e246086cac1ce905a677d01159b09cec77dc56d6d67b134ca3ce85918447f"
+        "normalizedSha256": "a2e411c0475fbdbfc0c1349a62bc8121bc6fa66de04de6ce21ebd7a625850fb3"
       }
     },
     {
@@ -398,7 +503,22 @@
       "text": {
         "raw": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.",
         "normalized": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le variazioni devono essere valutate con riferimento al "
+          },
+          {
+            "kind": "math",
+            "value": "3°",
+            "latex": "3^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " ciclo di prova."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -410,7 +530,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "5ce0060b2e375359f26adc0a77458e640757ff6221836ce56e516ae2e68924d0",
         "normalizedSha256": "5ce0060b2e375359f26adc0a77458e640757ff6221836ce56e516ae2e68924d0"
       }

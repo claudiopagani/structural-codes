@@ -143,8 +143,32 @@
       "origin": "official",
       "text": {
         "raw": "Il loro comportamento è individuato dalla curva caratteristica che lega la forza trasmessa dal dispositivo al corrispondente spo-\nstamento; tali curve caratteristiche sono, in generale, schematizzabili con delle relazioni bilineari definite imponendo il passaggio\nper il punto di coordinate (F1, d 1 \n), corrispondente al limite teorico del comportamento elastico lineare del dispositivo, e per il\npunto di coordinate (F2 \n, d 2 \n), corrispondente alla condizione di progetto allo SLC.",
-        "normalized": "Il loro comportamento è individuato dalla curva caratteristica che lega la forza trasmessa dal dispositivo al corrispondente spostamento; tali curve caratteristiche sono, in generale, schematizzabili con delle relazioni bilineari definite imponendo il passaggio per il punto di coordinate (F1, d 1 ), corrispondente al limite teorico del comportamento elastico lineare del dispositivo, e per il punto di coordinate (F2 , d 2 ), corrispondente alla condizione di progetto allo SLC.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il loro comportamento è individuato dalla curva caratteristica che lega la forza trasmessa dal dispositivo al corrispondente spostamento; tali curve caratteristiche sono, in generale, schematizzabili con delle relazioni bilineari definite imponendo il passaggio per il punto di coordinate (F1, d1), corrispondente al limite teorico del comportamento elastico lineare del dispositivo, e per il punto di coordinate (F2, d2), corrispondente alla condizione di progetto allo SLC.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il loro comportamento è individuato dalla curva caratteristica che lega la forza trasmessa dal dispositivo al corrispondente spostamento; tali curve caratteristiche sono, in generale, schematizzabili con delle relazioni bilineari definite imponendo il passaggio per il punto di coordinate "
+          },
+          {
+            "kind": "math",
+            "value": "(F1, d1)",
+            "latex": "(F_1,d_1)"
+          },
+          {
+            "kind": "text",
+            "value": ", corrispondente al limite teorico del comportamento elastico lineare del dispositivo, e per il punto di coordinate "
+          },
+          {
+            "kind": "math",
+            "value": "(F2, d2)",
+            "latex": "(F_2,d_2)"
+          },
+          {
+            "kind": "text",
+            "value": ", corrispondente alla condizione di progetto allo SLC."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -171,10 +195,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "2b7a876099fb8743a6e5c50e807d52405167395f69f32b82cfdfaff5494ba73c",
-        "normalizedSha256": "a0d33856fc19996b7d33c676d909043c25fdcb7787773fafed9394e9dcfe87a2"
+        "normalizedSha256": "d9212ba486fcbe20133edce9d692100bd91156556e9e5f80ac63f963e0791a2f"
       }
     },
     {
@@ -233,8 +262,28 @@
       "origin": "official",
       "text": {
         "raw": "d el = spostamento nel primo ramo di carico in una prova sperimentale entro il quale il comportamento è sostanzialmente linea-\nre. In generale può assumersi un valore pari a d2 \n/20;",
-        "normalized": "d el = spostamento nel primo ramo di carico in una prova sperimentale entro il quale il comportamento è sostanzialmente lineare. In generale può assumersi un valore pari a d2 /20;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "del = spostamento nel primo ramo di carico in una prova sperimentale entro il quale il comportamento è sostanzialmente lineare. In generale può assumersi un valore pari a d2/20;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "del",
+            "latex": "d_{el}"
+          },
+          {
+            "kind": "text",
+            "value": " = spostamento nel primo ramo di carico in una prova sperimentale entro il quale il comportamento è sostanzialmente lineare. In generale può assumersi un valore pari a "
+          },
+          {
+            "kind": "math",
+            "value": "d2/20",
+            "latex": "d_2/20"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -261,10 +310,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "005f78339badb008886336f669ff241c2f0be9da47d056a8d73fd9054b04bc5a",
-        "normalizedSha256": "202a9c89aa79c00825da44c94aafc2fa52a8cb751200e643ad10143933805078"
+        "normalizedSha256": "c672e2c660412548c9199ddc32b0db13f3e343c81a77eaffdbcf2b378bae84fc"
       }
     },
     {
@@ -273,8 +327,28 @@
       "origin": "official",
       "text": {
         "raw": "Fel = Forza corrispondente a d el, nel ramo di carico iniziale sperimentale.",
-        "normalized": "Fel = Forza corrispondente a d el, nel ramo di carico iniziale sperimentale.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Fel = Forza corrispondente a del, nel ramo di carico iniziale sperimentale.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Fel",
+            "latex": "F_{el}"
+          },
+          {
+            "kind": "text",
+            "value": " = Forza corrispondente a "
+          },
+          {
+            "kind": "math",
+            "value": "del",
+            "latex": "d_{el}"
+          },
+          {
+            "kind": "text",
+            "value": ", nel ramo di carico iniziale sperimentale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -286,9 +360,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "0492e7da15d726b36739e24e3e59e46309b35510acc0ec653b9e966ed3077314",
-        "normalizedSha256": "0492e7da15d726b36739e24e3e59e46309b35510acc0ec653b9e966ed3077314"
+        "normalizedSha256": "25ac9da460acca7e594362e96c4ba1a500516ee537eb0b583fdaa8e9f9e643de"
       }
     },
     {
@@ -297,8 +377,46 @@
       "origin": "official",
       "text": {
         "raw": "d 1 = ascissa del punto d’intersezione della linea retta congiungente l’origine con il punto (del , Fel \n) e la linea retta congiungente i\npunti (d2 \n/4, F(d2/4)) e (d 2 \n, F2) nel terzo ciclo della prova sperimentale;",
-        "normalized": "d 1 = ascissa del punto d’intersezione della linea retta congiungente l’origine con il punto (del , Fel ) e la linea retta congiungente i punti (d2 /4, F(d2/4)) e (d 2 , F2) nel terzo ciclo della prova sperimentale;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "d1 = ascissa del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente i punti (d2/4, F(d2/4)) e (d2, F2) nel terzo ciclo della prova sperimentale;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "d1",
+            "latex": "d_1"
+          },
+          {
+            "kind": "text",
+            "value": " = ascissa del punto d’intersezione della linea retta congiungente l’origine con il punto "
+          },
+          {
+            "kind": "math",
+            "value": "(del, Fel)",
+            "latex": "(d_{el},F_{el})"
+          },
+          {
+            "kind": "text",
+            "value": " e la linea retta congiungente i punti "
+          },
+          {
+            "kind": "math",
+            "value": "(d2/4, F(d2/4))",
+            "latex": "(d_2/4,F(d_2/4))"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "(d2, F2)",
+            "latex": "(d_2,F_2)"
+          },
+          {
+            "kind": "text",
+            "value": " nel terzo ciclo della prova sperimentale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -320,10 +438,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "b74db6a1691ea92607c73fdadfb0795ff86203b1340660fa65157470d0567b69",
-        "normalizedSha256": "24e796a3c4f5a151b7cd40c64dbb17f5db20ec6bfd7bf01412a6e5be547b31ee"
+        "normalizedSha256": "79b0fd4092d83b6a75a72c391e59a90640aed506d37bb84c9d5f7b242a15dd9f"
       }
     },
     {
@@ -332,8 +455,46 @@
       "origin": "official",
       "text": {
         "raw": "F1 = ordinata del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente\ni punti (d 2/4, F(d 2 \n/4)) e (d 2, F2 \n) nel terzo ciclo della prova sperimentale;",
-        "normalized": "F1 = ordinata del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente i punti (d 2/4, F(d 2 /4)) e (d 2, F2 ) nel terzo ciclo della prova sperimentale;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "F1 = ordinata del punto d’intersezione della linea retta congiungente l’origine con il punto (del, Fel) e la linea retta congiungente i punti (d2/4, F(d2/4)) e (d2, F2) nel terzo ciclo della prova sperimentale;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "F1",
+            "latex": "F_1"
+          },
+          {
+            "kind": "text",
+            "value": " = ordinata del punto d’intersezione della linea retta congiungente l’origine con il punto "
+          },
+          {
+            "kind": "math",
+            "value": "(del, Fel)",
+            "latex": "(d_{el},F_{el})"
+          },
+          {
+            "kind": "text",
+            "value": " e la linea retta congiungente i punti "
+          },
+          {
+            "kind": "math",
+            "value": "(d2/4, F(d2/4))",
+            "latex": "(d_2/4,F(d_2/4))"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "(d2, F2)",
+            "latex": "(d_2,F_2)"
+          },
+          {
+            "kind": "text",
+            "value": " nel terzo ciclo della prova sperimentale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -355,10 +516,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "00f1d34e4f595dcdd28d05354bc25c800a801ac37878f5178bff37706f733c99",
-        "normalizedSha256": "ac05ff8488edf990ad91cdd07b6158b621d3869ccb5509c15a9d53bd18f21a0f"
+        "normalizedSha256": "50a33bfc3c0ec4713de62bfb69a9010af216f528eb253888aeabca9f4aabd8f4"
       }
     },
     {
@@ -367,8 +533,19 @@
       "origin": "official",
       "text": {
         "raw": "d 2 = spostamento massimo di progetto del dispositivo corrispondente allo SLC;",
-        "normalized": "d 2 = spostamento massimo di progetto del dispositivo corrispondente allo SLC;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "d2 = spostamento massimo di progetto del dispositivo corrispondente allo SLC;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "d2",
+            "latex": "d_2"
+          },
+          {
+            "kind": "text",
+            "value": " = spostamento massimo di progetto del dispositivo corrispondente allo SLC;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -380,9 +557,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "16cf2bb54339cebd49a1946c895dc48c9c3f19c439f9c72e292e3b2749ea58ea",
-        "normalizedSha256": "16cf2bb54339cebd49a1946c895dc48c9c3f19c439f9c72e292e3b2749ea58ea"
+        "normalizedSha256": "4d17c42b895023efd71fad000914cddeea3681e1d44537bce7a57cc8df4f070f"
       }
     },
     {
@@ -391,8 +574,28 @@
       "origin": "official",
       "text": {
         "raw": "F2 = forza corrispondente allo spostamento d 2, ottenuta al terzo ciclo sperimentale.",
-        "normalized": "F2 = forza corrispondente allo spostamento d 2, ottenuta al terzo ciclo sperimentale.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "F2 = forza corrispondente allo spostamento d2, ottenuta al terzo ciclo sperimentale.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "F2",
+            "latex": "F_2"
+          },
+          {
+            "kind": "text",
+            "value": " = forza corrispondente allo spostamento "
+          },
+          {
+            "kind": "math",
+            "value": "d2",
+            "latex": "d_2"
+          },
+          {
+            "kind": "text",
+            "value": ", ottenuta al terzo ciclo sperimentale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -404,9 +607,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "92a0af44dc7e01dd10562bd5aa223d7b5c3ae99d6a736409f3d493a50e1163c4",
-        "normalizedSha256": "92a0af44dc7e01dd10562bd5aa223d7b5c3ae99d6a736409f3d493a50e1163c4"
+        "normalizedSha256": "4c4d28d73ae94042b7c1b6a8793542917bb017374bfa128e3ffbb8ff8f94df33"
       }
     },
     {
@@ -415,8 +624,59 @@
       "origin": "official",
       "text": {
         "raw": "Le rigidezze elastica e post-elastica, rispettivamente del primo ramo e del secondo ramo, vengono definite come: K1 = F 1 \n/d 1 ; K 2 =\n(F2 ",
-        "normalized": "Le rigidezze elastica e post-elastica, rispettivamente del primo ramo e del secondo ramo, vengono definite come: K1 = F 1 /d 1 ; K 2 = (F2",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Le rigidezze elastica e post-elastica, rispettivamente del primo ramo e del secondo ramo, vengono definite come: K1 = F1/d1; K2 = (F2−F1)/(d2−d1), mentre la rigidezza secante è data da Ksec = F2/d2 e lo smorzamento equivalente è ξe = Ed/(2π F2 d2) essendo Ed l’area del ciclo d’isteresi.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le rigidezze elastica e post-elastica, rispettivamente del primo ramo e del secondo ramo, vengono definite come: "
+          },
+          {
+            "kind": "math",
+            "value": "K1 = F1/d1",
+            "latex": "K_1=F_1/d_1"
+          },
+          {
+            "kind": "text",
+            "value": "; "
+          },
+          {
+            "kind": "math",
+            "value": "K2 = (F2−F1)/(d2−d1)",
+            "latex": "K_2=(F_2-F_1)/(d_2-d_1)"
+          },
+          {
+            "kind": "text",
+            "value": ", mentre la rigidezza secante è data da "
+          },
+          {
+            "kind": "math",
+            "value": "Ksec = F2/d2",
+            "latex": "K_{sec}=F_2/d_2"
+          },
+          {
+            "kind": "text",
+            "value": " e lo smorzamento equivalente è "
+          },
+          {
+            "kind": "math",
+            "value": "ξe = Ed/(2π F2 d2)",
+            "latex": "\\xi_e=E_d/(2\\pi F_2d_2)"
+          },
+          {
+            "kind": "text",
+            "value": " essendo "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " l’area del ciclo d’isteresi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -438,89 +698,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "a24e76df00ab6a6bc97f21d44d593df5e8f5a8deb95882927bccddfea9b59a12",
-        "normalizedSha256": "3cc2c01fd66833794ae742ee6abd57090a6c5a889b97b7ba251dbd2be4e55d86"
+        "normalizedSha256": "bed99a2ac2bc2693767b231f44382f826264474a90ac8656cb3464c414ee2404"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-013",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "-F1 \n)/(d 2 ",
-        "normalized": "-F1 )/(d 2",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "7bb05672bca97e571c1d8de0b65b21487e2b2c0c279d0f5dfc53b74fb7fe3228",
-        "normalizedSha256": "62336387566905be2fa4afc3719f13b342443ccfcd7ee0e3af67a11278f1da8e"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-014",
-      "kind": "list-item",
-      "origin": "official",
-      "text": {
-        "raw": "-d 1 \n), mentre la rigidezza secante è data da Ksec = F2/d 2 e lo smorzamento equivalente è Βe = E d/(2Δ F2 d 2) essendo Ed\nl’area del ciclo d’isteresi.",
-        "normalized": "-d 1 ), mentre la rigidezza secante è data da Ksec = F2/d 2 e lo smorzamento equivalente è Βe = E d/(2Δ F2 d 2) essendo Ed l’area del ciclo d’isteresi.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo presenti nel layer testuale PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "ef994a3007945c46c5c435dc53ad35a4ee6aea2d9c84ef950a90c5a00b3d485e",
-        "normalizedSha256": "11b2404cb9f5556fbb01053c978ba20c7b0c5f2b00ccfdbeceacaa9bd2174978"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-015",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -560,7 +750,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-016",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-014",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.9.5",
@@ -596,7 +786,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-017",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-015",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.9.6",
@@ -632,13 +822,46 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-018",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-016",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-\nesimo ciclo, escluso il primo (iǃ2).",
-        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’iesimo ciclo, escluso il primo (iǃ2).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(3)",
+            "latex": "(3)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(i)",
+            "latex": "(i)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo "
+          },
+          {
+            "kind": "math",
+            "value": "(i ≥ 2)",
+            "latex": "(i\\ge2)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -665,20 +888,40 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "e976ac4ad9a7991a0feac0975029da1c41868f8f24c83f4d828d147cd995b0e3",
-        "normalizedSha256": "c0db312899976b364ef3cc06dba700e0706077e5ccfb36a45ff7870c6435f761"
+        "normalizedSha256": "a2e411c0475fbdbfc0c1349a62bc8121bc6fa66de04de6ce21ebd7a625850fb3"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-019",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-017",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Il ciclo teorico che eventualmente si assume per l’esecuzione delle analisi non lineari per la progettazione della struttura, comple-\ntato dei rami di scarico e ricarico coerenti con il comportamento reale, deve essere tale che l’energia dissipata in un ciclo non dif-\nferisca di più del 10% dall’energia dissipata nel terzo ciclo di carico della prova sperimentale.",
         "normalized": "Il ciclo teorico che eventualmente si assume per l’esecuzione delle analisi non lineari per la progettazione della struttura, completato dei rami di scarico e ricarico coerenti con il comportamento reale, deve essere tale che l’energia dissipata in un ciclo non differisca di più del 10% dall’energia dissipata nel terzo ciclo di carico della prova sperimentale.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il ciclo teorico che eventualmente si assume per l’esecuzione delle analisi non lineari per la progettazione della struttura, completato dei rami di scarico e ricarico coerenti con il comportamento reale, deve essere tale che l’energia dissipata in un ciclo non differisca di più del "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dall’energia dissipata nel terzo ciclo di carico della prova sperimentale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -705,6 +948,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "770192e988703313ff2840dd959c55a9b9bf1d1256673925b421e96b61fd2635",
@@ -712,7 +960,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-020",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -752,13 +1000,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-021",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-019",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.",
         "normalized": "Le variazioni devono essere valutate con riferimento al 3° ciclo di prova.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le variazioni devono essere valutate con riferimento al "
+          },
+          {
+            "kind": "math",
+            "value": "3°",
+            "latex": "3^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " ciclo di prova."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -770,13 +1033,19 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          }
+        ],
         "rawSha256": "5ce0060b2e375359f26adc0a77458e640757ff6221836ce56e516ae2e68924d0",
         "normalizedSha256": "5ce0060b2e375359f26adc0a77458e640757ff6221836ce56e516ae2e68924d0"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-022",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-020",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.9.ii",
@@ -812,109 +1081,55 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-023",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "K 2 ±15% ±20% ±20% ±10%",
-        "normalized": "K 2 ±15% ±20% ±20% ±10%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "41d2169c978deaa992df34b8554e576ef4a2eb1127fe3ec4277eeb5cf7f8d459",
-        "normalizedSha256": "41d2169c978deaa992df34b8554e576ef4a2eb1127fe3ec4277eeb5cf7f8d459"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-024",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "K sec ±15% ±20% ±40% ±10%",
-        "normalized": "K sec ±15% ±20% ±40% ±10%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "0a91ac2850691ea0c52013ba00c4af9fc115c1af3437df0c891fd00bc8dbb3d0",
-        "normalizedSha256": "0a91ac2850691ea0c52013ba00c4af9fc115c1af3437df0c891fd00bc8dbb3d0"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-025",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Βe ±10% ±15% ±15% ±10%",
-        "normalized": "Βe ±10% ±15% ±15% ±10%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "31fbdd2065938d6952417f7c2fbb358d0187edb78ba8676030c9432d243fde75",
-        "normalizedSha256": "31fbdd2065938d6952417f7c2fbb358d0187edb78ba8676030c9432d243fde75"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-026",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "(1) Valori ottenuti o dichiarati con riferimento alle stesse frequenze delle prove di qualificazione.",
-        "normalized": "(1) Valori ottenuti o dichiarati con riferimento alle stesse frequenze delle prove di qualificazione.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 361,
-        "printedPage": "357",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "94c356a66182c06d60aa28990813fc41b0c3352fabbd79f6a3bf47f37fb67f29",
-        "normalizedSha256": "94c356a66182c06d60aa28990813fc41b0c3352fabbd79f6a3bf47f37fb67f29"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-027",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.5#block-021",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Quando il rapporto d’incrudimento risulta K2/K1 ǂ 0,05, il limite su K2 viene sostituito dal limite sulla variazione di K2 \n/K1 che de-\nve differire meno di 0,01 dal valore di progetto.",
-        "normalized": "Quando il rapporto d’incrudimento risulta K2/K1 ǂ 0,05, il limite su K2 viene sostituito dal limite sulla variazione di K2 /K1 che deve differire meno di 0,01 dal valore di progetto.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Quando il rapporto d’incrudimento risulta K2/K1 ≤ 0,05, il limite su K2 viene sostituito dal limite sulla variazione di K2/K1 che deve differire meno di 0,01 dal valore di progetto.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Quando il rapporto d’incrudimento risulta "
+          },
+          {
+            "kind": "math",
+            "value": "K2/K1 ≤ 0,05",
+            "latex": "K_2/K_1\\le0{,}05"
+          },
+          {
+            "kind": "text",
+            "value": ", il limite su "
+          },
+          {
+            "kind": "math",
+            "value": "K2",
+            "latex": "K_2"
+          },
+          {
+            "kind": "text",
+            "value": " viene sostituito dal limite sulla variazione di "
+          },
+          {
+            "kind": "math",
+            "value": "K2/K1",
+            "latex": "K_2/K_1"
+          },
+          {
+            "kind": "text",
+            "value": " che deve differire meno di "
+          },
+          {
+            "kind": "math",
+            "value": "0,01",
+            "latex": "0{,}01"
+          },
+          {
+            "kind": "text",
+            "value": " dal valore di progetto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -941,10 +1156,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f2815d4041e65210b164e1f5918aaafad94713be801434e9dd366f9272be53f9",
-        "normalizedSha256": "ea5a73d1b50335042b89d4559b1beabcbf97aa65fe7cc3c9b7aab76958ed19d0"
+        "normalizedSha256": "af631589a328c728e3fb87cdeb323a97cd7a8cdc138d0daa77c92c341ca4e0d3"
       }
     }
   ],

@@ -103,7 +103,40 @@
       "text": {
         "raw": "Tutti i dispositivi devono avere una vita di servizio maggiore di 10 anni nel campo di temperatura di riferimento indicato nelle\nspecifiche tecniche applicabili a ciascun dispositivo. In assenza di indicazioni riportate nelle suddette specifiche tecniche il campo\ndi temperatura di riferimento deve essere almeno compreso fra –15 °C e +45 °C. Per opere particolari, per le quali le temperature\nprevedibili non rientrano nel suddetto intervallo, potrà farsi riferimento a campi di temperatura diversi da quello sopra citato;\nper dispositivi operanti in luoghi protetti, si può assumere un campo di temperatura ridotto in relazione ai valori estremi di tem-\nperatura ambientale.",
         "normalized": "Tutti i dispositivi devono avere una vita di servizio maggiore di 10 anni nel campo di temperatura di riferimento indicato nelle specifiche tecniche applicabili a ciascun dispositivo. In assenza di indicazioni riportate nelle suddette specifiche tecniche il campo di temperatura di riferimento deve essere almeno compreso fra –15 °C e +45 °C. Per opere particolari, per le quali le temperature prevedibili non rientrano nel suddetto intervallo, potrà farsi riferimento a campi di temperatura diversi da quello sopra citato; per dispositivi operanti in luoghi protetti, si può assumere un campo di temperatura ridotto in relazione ai valori estremi di temperatura ambientale.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Tutti i dispositivi devono avere una vita di servizio maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "10 anni",
+            "latex": "10\\;\\mathrm{anni}"
+          },
+          {
+            "kind": "text",
+            "value": " nel campo di temperatura di riferimento indicato nelle specifiche tecniche applicabili a ciascun dispositivo. In assenza di indicazioni riportate nelle suddette specifiche tecniche il campo di temperatura di riferimento deve essere almeno compreso fra "
+          },
+          {
+            "kind": "math",
+            "value": "–15 °C",
+            "latex": "-15\\;{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "+45 °C",
+            "latex": "+45\\;{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": ". Per opere particolari, per le quali le temperature prevedibili non rientrano nel suddetto intervallo, potrà farsi riferimento a campi di temperatura diversi da quello sopra citato; per dispositivi operanti in luoghi protetti, si può assumere un campo di temperatura ridotto in relazione ai valori estremi di temperatura ambientale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -130,6 +163,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "8c58f1a52f2769e7568ba384e1950fa0619809ffb534887a0fb4157cab1cb190",
@@ -177,8 +215,50 @@
       "origin": "official",
       "text": {
         "raw": "Nei casi in cui si applica la norma europea armonizzata UNI EN 15129, le grandezze di riferimento ivi citate andranno desunte da\nquanto prescritto nelle presenti Norme Tecniche per le Costruzioni; in particolare si intende per dbd lo spostamento valutato per un\nterremoto riferito allo SLV, e per Jxȉ d bd lo spostamento valutato per un terremoto riferito allo SLC (d bd e Jx ȉsono i simboli utilizzati nella\nUNI EN 15129 rispettivamente per lo spostamento di progetto di un dispositivo e per il fattore di amplificazione di al § 4.1.2 della stessa\nUNI EN 15129).",
-        "normalized": "Nei casi in cui si applica la norma europea armonizzata UNI EN 15129, le grandezze di riferimento ivi citate andranno desunte da quanto prescritto nelle presenti Norme Tecniche per le Costruzioni; in particolare si intende per dbd lo spostamento valutato per un terremoto riferito allo SLV, e per Jxȉ d bd lo spostamento valutato per un terremoto riferito allo SLC (d bd e Jx ȉsono i simboli utilizzati nella UNI EN 15129 rispettivamente per lo spostamento di progetto di un dispositivo e per il fattore di amplificazione di al § 4.1.2 della stessa UNI EN 15129).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Nei casi in cui si applica la norma europea armonizzata UNI EN 15129, le grandezze di riferimento ivi citate andranno desunte da quanto prescritto nelle presenti Norme Tecniche per le Costruzioni; in particolare si intende per dbd lo spostamento valutato per un terremoto riferito allo SLV, e per γx · dbd lo spostamento valutato per un terremoto riferito allo SLC (dpd e γx sono i simboli utilizzati nella UNI EN 15129 rispettivamente per lo spostamento di progetto di un dispositivo e per il fattore di amplificazione di al § 4.1.2 della stessa UNI EN 15129).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei casi in cui si applica la norma europea armonizzata UNI EN 15129, le grandezze di riferimento ivi citate andranno desunte da quanto prescritto nelle presenti Norme Tecniche per le Costruzioni; in particolare si intende per "
+          },
+          {
+            "kind": "math",
+            "value": "dbd",
+            "latex": "d_{bd}"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento valutato per un terremoto riferito allo SLV, e per "
+          },
+          {
+            "kind": "math",
+            "value": "γx · dbd",
+            "latex": "\\gamma_x\\cdot d_{bd}"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento valutato per un terremoto riferito allo SLC ("
+          },
+          {
+            "kind": "math",
+            "value": "dpd",
+            "latex": "d_{pd}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "γx",
+            "latex": "\\gamma_x"
+          },
+          {
+            "kind": "text",
+            "value": " sono i simboli utilizzati nella UNI EN 15129 rispettivamente per lo spostamento di progetto di un dispositivo e per il fattore di amplificazione di al § 4.1.2 della stessa UNI EN 15129)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -200,10 +280,15 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "2c037fa73560b4bb7635eaf2ddb9ef0db85a9987dcc21f73b84bd857ce06744c",
-        "normalizedSha256": "75a5c2a5bbd8222df49909a92722c48e9bd9835ff4139a76eef3000a911d8943"
+        "normalizedSha256": "63cea08743e4bf7de3ca9f0e3d2bfdff57fd9eed23e9e3e75942c80fc8b88c8f"
       }
     }
   ],

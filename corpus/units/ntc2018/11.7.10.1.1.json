@@ -330,7 +330,22 @@
       "text": {
         "raw": "I produttori, i successivi intermediari e gli utilizzatori finali devono assicurare una corretta archiviazione della documentazione\ndi accompagnamento dei materiali garantendone la disponibilità per almeno 10 anni e devono mantenere evidenti le marchiature\no etichette di riconoscimento per la rintracciabilità del prodotto.",
         "normalized": "I produttori, i successivi intermediari e gli utilizzatori finali devono assicurare una corretta archiviazione della documentazione di accompagnamento dei materiali garantendone la disponibilità per almeno 10 anni e devono mantenere evidenti le marchiature o etichette di riconoscimento per la rintracciabilità del prodotto.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I produttori, i successivi intermediari e gli utilizzatori finali devono assicurare una corretta archiviazione della documentazione di accompagnamento dei materiali garantendone la disponibilità per almeno "
+          },
+          {
+            "kind": "math",
+            "value": "10 anni",
+            "latex": "10\\;\\mathrm{anni}"
+          },
+          {
+            "kind": "text",
+            "value": " e devono mantenere evidenti le marchiature o etichette di riconoscimento per la rintracciabilità del prodotto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -352,6 +367,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f43b8df388efc772dfba6b6fe2507d179544d444d01c580bae9d4b1bffce09d6",

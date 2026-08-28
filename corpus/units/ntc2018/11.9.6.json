@@ -63,32 +63,32 @@
       "origin": "official",
       "text": {
         "raw": "I dispositivi a comportamento viscoso trasmettono, in generale, soltanto azioni orizzontali ed hanno rigidezza trascurabile nei",
-        "normalized": "I dispositivi a comportamento viscoso trasmettono, in generale, soltanto azioni orizzontali ed hanno rigidezza trascurabile nei",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 362,
-        "printedPage": "358",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "163b2b570b529731f72241a48898b11ae2a9aca20c530eee67e7115eed4788ca",
-        "normalizedSha256": "163b2b570b529731f72241a48898b11ae2a9aca20c530eee67e7115eed4788ca"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-002",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "confronti delle azioni verticali. Essi sono caratterizzati da un valore della forza proporzionale a v΅\n, e pertanto non contribuiscono\nsignificativamente alla rigidezza del sistema. La relazione forza spostamento di un dispositivo viscoso, per una legge sinusoidale\ndello spostamento, è riportata in Fig. 11.9.2. La forma del ciclo è ellittica per ΅=1.",
-        "normalized": "confronti delle azioni verticali. Essi sono caratterizzati da un valore della forza proporzionale a v΅ , e pertanto non contribuiscono significativamente alla rigidezza del sistema. La relazione forza spostamento di un dispositivo viscoso, per una legge sinusoidale dello spostamento, è riportata in Fig. 11.9.2. La forma del ciclo è ellittica per ΅=1.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "I dispositivi a comportamento viscoso trasmettono, in generale, soltanto azioni orizzontali ed hanno rigidezza trascurabile nei confronti delle azioni verticali. Essi sono caratterizzati da un valore della forza proporzionale a vα, e pertanto non contribuiscono significativamente alla rigidezza del sistema. La relazione forza spostamento di un dispositivo viscoso, per una legge sinusoidale dello spostamento, è riportata in Fig. 11.9.2. La forma del ciclo è ellittica per α = 1.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I dispositivi a comportamento viscoso trasmettono, in generale, soltanto azioni orizzontali ed hanno rigidezza trascurabile nei confronti delle azioni verticali. Essi sono caratterizzati da un valore della forza proporzionale a "
+          },
+          {
+            "kind": "math",
+            "value": "vα",
+            "latex": "v^\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": ", e pertanto non contribuiscono significativamente alla rigidezza del sistema. La relazione forza spostamento di un dispositivo viscoso, per una legge sinusoidale dello spostamento, è riportata in Fig. 11.9.2. La forma del ciclo è ellittica per "
+          },
+          {
+            "kind": "math",
+            "value": "α = 1",
+            "latex": "\\alpha=1"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -102,28 +102,65 @@
         },
         "transformations": [
           {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
-        "rawSha256": "3c3e47ef2af7410d28f448524cfc8c88e0f37a8cfe6f87433820c912972e8942",
-        "normalizedSha256": "28bfe49fd0ef353114284eaf4478c096799cc778ec2c27bff95cb5917cbfd927"
+        "rawSha256": "163b2b570b529731f72241a48898b11ae2a9aca20c530eee67e7115eed4788ca",
+        "normalizedSha256": "843f8f94a8d6b263ee0d22b08544c683cf342252aafe67d082ce0d0600853d6b"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-003",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-002",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Il loro comportamento è caratterizzato dalla massima forza sviluppata Fmax e dall’energia dissipata Ed in un ciclo, per una prefis-\nsata ampiezza e frequenza, ossia dalle costanti C e ΅.",
-        "normalized": "Il loro comportamento è caratterizzato dalla massima forza sviluppata Fmax e dall’energia dissipata Ed in un ciclo, per una prefissata ampiezza e frequenza, ossia dalle costanti C e ΅.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Il loro comportamento è caratterizzato dalla massima forza sviluppata Fmax e dall’energia dissipata Ed in un ciclo, per una prefissata ampiezza e frequenza, ossia dalle costanti C e α.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il loro comportamento è caratterizzato dalla massima forza sviluppata "
+          },
+          {
+            "kind": "math",
+            "value": "Fmax",
+            "latex": "F_{max}"
+          },
+          {
+            "kind": "text",
+            "value": " e dall’energia dissipata "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " in un ciclo, per una prefissata ampiezza e frequenza, ossia dalle costanti "
+          },
+          {
+            "kind": "math",
+            "value": "C",
+            "latex": "C"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -150,20 +187,40 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "e4be610b1be4151de7213ef2755502e11fba7bd70e4ca0d6c0089076e4ac02c7",
-        "normalizedSha256": "5ec8e8ea057f8315cbcdf202b5f04ea91daf2c8e01a3e3c1abe7a55081b99982"
+        "normalizedSha256": "9baa47ed3a3d4283333c5b38f66daa2b5ae32ba0c23c04765a2c29ba8c321913"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-004",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-003",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per assicurare un comportamento ciclico stabile, le variazioni dell’energia dissipata Ed in una serie di cicli di carico riferiti a stessa\nvelocità e spostamento massimi devono essere limitate nel modo seguente:",
         "normalized": "Per assicurare un comportamento ciclico stabile, le variazioni dell’energia dissipata Ed in una serie di cicli di carico riferiti a stessa velocità e spostamento massimi devono essere limitate nel modo seguente:",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per assicurare un comportamento ciclico stabile, le variazioni dell’energia dissipata "
+          },
+          {
+            "kind": "math",
+            "value": "Ed",
+            "latex": "E_d"
+          },
+          {
+            "kind": "text",
+            "value": " in una serie di cicli di carico riferiti a stessa velocità e spostamento massimi devono essere limitate nel modo seguente:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -185,6 +242,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "8cc7eb41a490b567d8fa6a72bb1bdfa2ea96d7deedf15d08927ac7ec06d343ab",
@@ -192,7 +254,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-005",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-004",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.9.7",
@@ -228,13 +290,46 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-006",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-\nesimo ciclo, escluso il primo (iǃ2). ",
-        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’iesimo ciclo, escluso il primo (iǃ2).",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "dove il pedice “(3)” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “(i)” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo (i ≥ 2).",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(3)",
+            "latex": "(3)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità determinate nel terzo ciclo di carico ed il pedice “"
+          },
+          {
+            "kind": "math",
+            "value": "(i)",
+            "latex": "(i)"
+          },
+          {
+            "kind": "text",
+            "value": "” si riferisce a quantità relative all’i-esimo ciclo, escluso il primo "
+          },
+          {
+            "kind": "math",
+            "value": "(i ≥ 2)",
+            "latex": "(i\\ge2)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -261,14 +356,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "964ef272deca9775884e632ca37a79e01772fc6a51bfbdd1fa68a5b59a5df944",
-        "normalizedSha256": "c0db312899976b364ef3cc06dba700e0706077e5ccfb36a45ff7870c6435f761"
+        "normalizedSha256": "a2e411c0475fbdbfc0c1349a62bc8121bc6fa66de04de6ce21ebd7a625850fb3"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-007",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-006",
       "kind": "figure-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:figure:ntc2018:11.9.2",
@@ -294,7 +394,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-008",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -334,7 +434,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-009",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-008",
       "kind": "table-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:table:ntc2018:11.9.iii",
@@ -360,85 +460,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-010",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Fornitura Invecchiamento Temperatura Frequenza di prova",
-        "normalized": "Fornitura Invecchiamento Temperatura Frequenza di prova",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 362,
-        "printedPage": "358",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "b7cbc320d5207532446ec86622f97d7ede6515efbd2d70c412f81dd509edf5f9",
-        "normalizedSha256": "b7cbc320d5207532446ec86622f97d7ede6515efbd2d70c412f81dd509edf5f9"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-011",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "F max ±15% ±5% ±5% ±10%",
-        "normalized": "F max ±15% ±5% ±5% ±10%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 362,
-        "printedPage": "358",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "a05c881389d40b1531a6d23461eea61cc2b1c5fa68b9af2127261db4707e616f",
-        "normalizedSha256": "a05c881389d40b1531a6d23461eea61cc2b1c5fa68b9af2127261db4707e616f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-012",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Ed -15% -5% -5% ±10%",
-        "normalized": "Ed -15% -5% -5% ±10%",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 362,
-        "printedPage": "358",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "57ac1a2c18970de7c7bf855c232aa2a890277bfa2fd6f3778f62031d62ef4f8d",
-        "normalizedSha256": "57ac1a2c18970de7c7bf855c232aa2a890277bfa2fd6f3778f62031d62ef4f8d"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-013",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Per tener conto di possibili valori di velocità superiori a quelli di progetto, la forza massima di progetto del dispositivo va ampli-\nficata con un fattore di affidabilità ·v dato da",
-        "normalized": "Per tener conto di possibili valori di velocità superiori a quelli di progetto, la forza massima di progetto del dispositivo va amplificata con un fattore di affidabilità ·v dato da",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "Per tener conto di possibili valori di velocità superiori a quelli di progetto, la forza massima di progetto del dispositivo va amplificata con un fattore di affidabilità γv dato da",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per tener conto di possibili valori di velocità superiori a quelli di progetto, la forza massima di progetto del dispositivo va amplificata con un fattore di affidabilità "
+          },
+          {
+            "kind": "math",
+            "value": "γv",
+            "latex": "\\gamma_v"
+          },
+          {
+            "kind": "text",
+            "value": " dato da"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -465,14 +508,19 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "9bcc14451be73462b31af512c2c32b54cc8f09132f390cd9621910b8eafb327c",
-        "normalizedSha256": "d226eaea154c4d6b5527056da9d48c1b138899affa1c2e582dc7cb9f58dec805"
+        "normalizedSha256": "30f32042c624b303bb592312a9f89db8aab5a664b99a0761a253a061b1c985c2"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-014",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-010",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:ntc2018:11.9.8",
@@ -508,13 +556,37 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-015",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-011",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "in cui td è la tolleranza sulla forza di progetto fornita dal fabbricante, comprensiva della variabilità per effetto della temperatura, e\n΅ è l’esponente delle legge costitutiva.",
-        "normalized": "in cui td è la tolleranza sulla forza di progetto fornita dal fabbricante, comprensiva della variabilità per effetto della temperatura, e ΅ è l’esponente delle legge costitutiva.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "in cui td è la tolleranza sulla forza di progetto fornita dal fabbricante, comprensiva della variabilità per effetto della temperatura, e α è l’esponente della legge costitutiva.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "in cui "
+          },
+          {
+            "kind": "math",
+            "value": "td",
+            "latex": "t_d"
+          },
+          {
+            "kind": "text",
+            "value": " è la tolleranza sulla forza di progetto fornita dal fabbricante, comprensiva della variabilità per effetto della temperatura, e "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": " è l’esponente della legge costitutiva."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -536,20 +608,40 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "f8b6b49678beec8af1ed62598275bcd77af3389b17fd635034a5c07bf7b85bba",
-        "normalizedSha256": "883849f95263ee82fca87baec35fa5bfe326f17ef0ed70195fb4cad492f20943"
+        "normalizedSha256": "c06cd804fc16ff89d41853f819a04234fad4e62db52507aec6d8cd4c31de8e8b"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-016",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Il dispositivo deve possedere due cerniere sferiche alle estremità onde evitare effetti di trafilamento e deterioramento delle guar-\nnizioni, e la capacità rotazionale deve essere valutata tenendo conto dei carichi che interesseranno la struttura nel corso della vita,\ndegli effetti del sisma e dei disallineamenti di montaggio. In ogni caso la rotazione consentita dalle cerniere non deve essere infe-\nriore ai 2 gradi sessagesimali.",
         "normalized": "Il dispositivo deve possedere due cerniere sferiche alle estremità onde evitare effetti di trafilamento e deterioramento delle guarnizioni, e la capacità rotazionale deve essere valutata tenendo conto dei carichi che interesseranno la struttura nel corso della vita, degli effetti del sisma e dei disallineamenti di montaggio. In ogni caso la rotazione consentita dalle cerniere non deve essere inferiore ai 2 gradi sessagesimali.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il dispositivo deve possedere due cerniere sferiche alle estremità onde evitare effetti di trafilamento e deterioramento delle guarnizioni, e la capacità rotazionale deve essere valutata tenendo conto dei carichi che interesseranno la struttura nel corso della vita, degli effetti del sisma e dei disallineamenti di montaggio. In ogni caso la rotazione consentita dalle cerniere non deve essere inferiore ai "
+          },
+          {
+            "kind": "math",
+            "value": "2 gradi sessagesimali",
+            "latex": "2^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -576,6 +668,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
           }
         ],
         "rawSha256": "c3b3fe14e140ecca2560378eeaf3ee6e7e1291af2b625e7d49391f5c34d9aa37",
@@ -583,7 +680,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-017",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.6#block-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
