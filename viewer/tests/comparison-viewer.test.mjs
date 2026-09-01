@@ -81,6 +81,7 @@ test("l’indice segue lo scroll e la lettura mantiene l’intero documento in c
   assert.match(styles, /\.scv-chapter-heading/);
   assert.match(styles, /\.scv-unit-depth-1 h2 \{[^}]*font-size: 18px/);
   assert.match(styles, /\.scv-unit-depth-2 h2 \{[^}]*padding-left: 0;[^}]*border-left: 0;[^}]*font-size: 14px/);
+  assert.match(styles, /\.scv-block p \{[^}]*text-align: justify/);
   assert.match(styles, /\.scv-root \.table-asset table \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 13px/);
   assert.match(styles, /\.scv-root \.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /\.scv-root \.table-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 12px/);
@@ -138,6 +139,7 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(styles, /\.scv-root \.formula-scroll \.katex-display \{[^}]*margin:\s*\.5em 0/);
   assert.match(legacyStyles, /\.formula-scroll \{[^}]*font-size:\s*0\.8rem/);
   assert.match(legacyStyles, /\.formula-scroll \.katex-display \{[^}]*margin:\s*0\.5em 0/);
+  assert.match(legacyStyles, /\.text-block p \{[^}]*text-align: justify/);
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
