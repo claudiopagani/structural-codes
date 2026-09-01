@@ -85,6 +85,7 @@ test("l’indice segue lo scroll e la lettura mantiene l’intero documento in c
   assert.match(styles, /\.scv-root \.table-asset table \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-base-font-size\)/);
   assert.match(styles, /\.scv-root \.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /\.scv-root \.table-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-font-size-12\)/);
+  assert.match(styles, /\.scv-root \.figure-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-font-size-12\)/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-font-size-12\)/);
   assert.doesNotMatch(source, /Dettagli/);
   assert.doesNotMatch(source, /maxContinuousChapter/);
@@ -182,6 +183,7 @@ test("la scala tipografica del contenuto deriva dalla dimensione base", async ()
   assert.match(legacyStyles, /\.normative-copy \{[^}]*--legacy-base-font-size:\s*20px/isu);
   assert.match(legacyStyles, /\.text-block p \{[^}]*font-size:\s*var\(--legacy-base-font-size\)/);
   assert.match(legacyStyles, /\.table-asset table \{[^}]*font-size:\s*var\(--legacy-font-size-12\)/);
+  assert.match(legacyStyles, /\.figure-asset figcaption \{[^}]*font-size:\s*var\(--legacy-font-size-11\)/);
 });
 
 test("riconosce le didascalie costituite dal solo numero ufficiale", () => {
