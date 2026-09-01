@@ -105,7 +105,7 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
   if (formula) return (
-    <figure className="formula-asset"><div className="formula-row"><div className={`formula-scroll ${formula.latex.length > 52 ? "formula-scroll-long" : ""}`} dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div>{!formula.officialNumber && <figcaption><span>Formula non numerata</span></figcaption>}</figure>
+    <figure className="formula-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div></figure>
   );
   const table = assets.tables[block.assetId];
   if (table) {

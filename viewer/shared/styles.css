@@ -120,10 +120,11 @@
 
 .scv-root .inline-math { display: inline-block; margin-inline: .035em; color: #202733; font-size: 1em; white-space: nowrap; }
 .scv-root .formula-asset, .scv-root .table-asset, .scv-root .figure-asset { margin: 7px 0 9px; padding: 8px; overflow: hidden; background: #fff; border: 1px solid #dfe3ec; border-radius: 3px; box-shadow: none; }
+.scv-root .formula-asset { padding: 4px 8px 3px; }
 .scv-root .formula-row { display: flex; align-items: center; gap: 14px; }
 .scv-root .formula-scroll, .scv-root .table-scroll { max-width: 100%; overflow-x: auto; }
-.scv-root .formula-scroll { flex: 1 1 auto; min-width: 0; padding: 3px; font-size: .8rem; }
-.scv-root .formula-scroll.formula-scroll-long { font-size: .62rem; }
+.scv-root .formula-scroll { flex: 1 1 auto; min-width: 0; padding: 2px 0 4px; font-size: .8rem; }
+.scv-root .formula-scroll .katex-display { margin: .5em 0; }
 .scv-root .formula-number { flex: 0 0 auto; margin-left: auto; color: var(--scv-primary-dark); font-family: "Tinos", serif; font-size: 12px; font-variant-numeric: lining-nums; white-space: nowrap; }
 .scv-root .formula-asset figcaption, .scv-root .table-asset figcaption, .scv-root .figure-asset figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 5px; color: #687284; font-size: 8px; }
 .scv-root .table-asset figcaption { display: block; margin-bottom: 7px; }

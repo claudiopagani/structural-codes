@@ -112,13 +112,15 @@ test("il PDF resta solo nel wrapper locale e viene caricato on demand", async ()
 });
 
 test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", async () => {
-  const [component, styles] = await Promise.all([
+  const [component, styles, legacyStyles] = await Promise.all([
     readFile(new URL("../shared/CorpusContent.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
   ]);
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
-  assert.match(component, /formula-scroll-long/);
+  assert.match(component, /className="formula-scroll"/);
+  assert.doesNotMatch(component, /Formula non numerata/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /inline\.length === 2 && inline\.at\(-1\)\?\.kind === "math"/);
@@ -130,7 +132,10 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(styles, /font-family:\s*"Tinos"/);
   assert.match(styles, /font-variant-numeric:\s*lining-nums/);
   assert.match(styles, /\.scv-root \.formula-number/);
-  assert.match(styles, /\.scv-root \.formula-scroll\.formula-scroll-long/);
+  assert.match(styles, /\.scv-root \.formula-scroll \{[^}]*font-size:\s*\.8rem/);
+  assert.match(styles, /\.scv-root \.formula-scroll \.katex-display \{[^}]*margin:\s*\.5em 0/);
+  assert.match(legacyStyles, /\.formula-scroll \{[^}]*font-size:\s*0\.8rem/);
+  assert.match(legacyStyles, /\.formula-scroll \.katex-display \{[^}]*margin:\s*0\.5em 0/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
 });

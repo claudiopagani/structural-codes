@@ -708,7 +708,7 @@ summary:focus-visible {
 }
 
 .formula-asset {
-  padding: 20px 22px 14px;
+  padding: 4px 8px 3px;
   overflow: hidden;
   background: #f5f2e9;
   border: 1px solid #d9d2c3;
@@ -730,13 +730,13 @@ summary:focus-visible {
 .formula-scroll {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 7px 0 12px;
+  padding: 2px 0 4px;
   color: #18241c;
-  font-size: 1.08rem;
+  font-size: 0.8rem;
 }
 
-.formula-scroll.formula-scroll-long {
-  font-size: 0.72rem;
+.formula-scroll .katex-display {
+  margin: 0.5em 0;
 }
 
 .formula-number {
@@ -1469,11 +1469,7 @@ summary:focus-visible {
   }
 
   .formula-asset {
-    padding: 14px 12px 10px;
-  }
-
-  .formula-scroll {
-    font-size: 0.92rem;
+    padding: 4px 8px 3px;
   }
 
   .formula-asset figcaption,
@@ -1834,12 +1830,12 @@ summary:focus-visible {
 }
 
 .comparison-text-pane .formula-scroll {
-  padding: 3px;
-  font-size: 0.78rem;
+  padding: 2px 0 4px;
+  font-size: 0.8rem;
 }
 
-.comparison-text-pane .formula-scroll.formula-scroll-long {
-  font-size: 0.62rem;
+.comparison-text-pane .formula-scroll .katex-display {
+  margin: 0.5em 0;
 }
 
 .comparison-text-pane .formula-asset figcaption,
