@@ -41,10 +41,11 @@ La ricerca è sempre visibile ma carica `search-index.json` soltanto con almeno
 due caratteri. Manifest, indice documento, chunk e relazioni restano separati.
 Le figure sono lazy e il package shared non importa `pdfjs-dist`, non conosce
 `/api/source-pdf` e non dipende da Vinext o Cloudflare. React e ReactDOM sono
-peer dependencies React 19. Nell’indice della consultazione comparata ogni
-colonna segue la selezione corrente: capitolo → paragrafi → sottoparagrafi →
-dettagli. I capitoli entro la soglia di caricamento sono continui; quelli più
-grandi caricano il testo in continuità quando si seleziona il singolo paragrafo.
+peer dependencies React 19. Nell’indice della consultazione comparata le tre
+righe seguono la selezione corrente: capitolo → paragrafi → sottoparagrafi. Il
+documento attivo viene caricato e reso in un unico flusso dall’inizio alla
+fine; lo scroll aggiorna i tre livelli evidenziati e i click nell’indice portano
+al relativo riferimento.
 
 ## Artefatti
 

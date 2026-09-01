@@ -25,9 +25,7 @@ const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
   { id: "circ", label: "Solo Circolare 7/2019" },
 ];
-const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi", "Dettagli"];
-const maxContinuousChapterBytes = 2_500_000;
-const maxContinuousChapterUnits = 220;
+const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi"];
 
 export interface AuxiliaryPanelContext {
   mode: ViewerMode;
@@ -59,10 +57,6 @@ function depth(unit: UnitSummary | CorpusUnit) {
 
 function ancestorIdAtDepth(unit: UnitSummary | CorpusUnit, targetDepth: number) {
   return depth(unit) === targetDepth ? unit.id : unit.hierarchy.ancestorIds[targetDepth] ?? null;
-}
-
-function containsUnit(unit: UnitSummary, ancestorId: string) {
-  return unit.id === ancestorId || unit.hierarchy.ancestorIds.includes(ancestorId);
 }
 
 function normalizedQuery(value: string) {
@@ -110,9 +104,8 @@ export function NormativeViewer({
 }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
   const [index, setIndex] = useState<DocumentIndex | null>(null);
-  const [chunk, setChunk] = useState<CorpusChunk | null>(null);
-  const [scopeRecords, setScopeRecords] = useState<UnitRecord[]>([]);
-  const [loadedScopeKey, setLoadedScopeKey] = useState("");
+  const [documentRecords, setDocumentRecords] = useState<UnitRecord[]>([]);
+  const [loadedDocumentKey, setLoadedDocumentKey] = useState("");
   const [mode, setMode] = useState<ViewerMode>(defaultMode);
   const [activeUnitId, setActiveUnitId] = useState<string | null>(null);
   const [relations, setRelations] = useState<RelationEdge[]>([]);
@@ -126,6 +119,9 @@ export function NormativeViewer({
   const settingsButtonRef = useRef<HTMLButtonElement>(null);
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const requestedIdRef = useRef<string | null>(null);
+  const scrollRequestRef = useRef<string | null>(null);
+  const activeIdRef = useRef<string | null>(null);
+  const textPaneRef = useRef<HTMLElement>(null);
   const deferredQuery = normalizedQuery(query);
   const hasAuxiliary = Boolean(auxiliaryPanel);
 
@@ -149,9 +145,10 @@ export function NormativeViewer({
       if (cancelled) return;
       setIndex(loaded);
       const requested = loaded.units.find((unit) => unit.id === requestedIdRef.current);
-      const initial = requested ?? loaded.units.find((unit) => unit.numbering.official === (documentId === "ntc2018" ? "4.1" : "C4.1")) ?? loaded.units[0];
+      const initial = requested ?? loaded.units.find((unit) => depth(unit) === 0) ?? loaded.units[0];
       if (initial) {
         requestedIdRef.current = initial.id;
+        scrollRequestRef.current = initial.id;
         setActiveUnitId(initial.id);
         updateDeepLink(mode, initial.id, defaultMode);
       }
@@ -165,59 +162,34 @@ export function NormativeViewer({
   const activeParagraphId = activeSummary && depth(activeSummary) >= 1 ? ancestorIdAtDepth(activeSummary, 1) : null;
   const activeSubparagraphId = activeSummary && depth(activeSummary) >= 2 ? ancestorIdAtDepth(activeSummary, 2) : null;
 
-  const scope = useMemo(() => {
-    if (!index || !activeSummary || !activeChapterId) {
-      return { mode: "paragraph" as const, summaries: [] as UnitSummary[], chapterId: null as string | null, paragraphId: null as string | null };
-    }
-    const chapterSummaries = index.units.filter((unit) => containsUnit(unit, activeChapterId));
-    const chunkBytes = new Map((manifest?.chunks ?? []).map((entry) => [entry.path, entry.bytes]));
-    const chapterBytes = [...new Set(chapterSummaries.map((unit) => unit.chunkPath))].reduce((total, path) => total + (chunkBytes.get(path) ?? 0), 0);
-    const chapterCanBeContinuous = chapterSummaries.length <= maxContinuousChapterUnits && chapterBytes <= maxContinuousChapterBytes;
-    if (depth(activeSummary) === 0 && chapterCanBeContinuous) {
-      return { mode: "chapter" as const, summaries: chapterSummaries, chapterId: activeChapterId, paragraphId: null };
-    }
-    if (depth(activeSummary) === 0) {
-      const paragraphSummaries = index.units.filter((unit) => unit.hierarchy.parentId === activeChapterId && depth(unit) === 1);
-      const chapter = index.units.find((unit) => unit.id === activeChapterId);
-      return { mode: "paragraph" as const, summaries: [chapter, ...paragraphSummaries].filter(Boolean) as UnitSummary[], chapterId: activeChapterId, paragraphId: null };
-    }
-    const paragraphId = activeParagraphId ?? activeChapterId;
-    return { mode: "paragraph" as const, summaries: index.units.filter((unit) => containsUnit(unit, paragraphId)), chapterId: activeChapterId, paragraphId };
-  }, [activeChapterId, activeParagraphId, activeSummary, index, manifest]);
-
-  const scopePaths = useMemo(() => [...new Set(scope.summaries.map((unit) => unit.chunkPath))], [scope.summaries]);
-  const scopeKey = useMemo(() => scope.summaries.map((unit) => unit.id).join("|"), [scope.summaries]);
-  const scopeLoading = scope.summaries.length > 0 && loadedScopeKey !== scopeKey;
+  const documentChunkPaths = useMemo(
+    () => manifest?.chunks.filter((entry) => entry.document === documentId).map((entry) => entry.path) ?? [],
+    [documentId, manifest],
+  );
+  const documentKey = `${documentId}:${index?.units.length ?? 0}:${documentChunkPaths.join("|")}`;
+  const documentLoading = Boolean(index) && (documentRecords.length === 0 || loadedDocumentKey !== documentKey);
 
   useEffect(() => {
-    if (!activeSummary) return;
+    if (!index || documentChunkPaths.length === 0) return;
     let cancelled = false;
-    loadChunk(activeSummary.chunkPath, dataBaseUrl).then((loaded) => {
-      if (!cancelled) setChunk(loaded);
-    }).catch(() => setLoadError(true));
-    return () => { cancelled = true; };
-  }, [activeSummary, dataBaseUrl]);
-
-  useEffect(() => {
-    if (!scope.summaries.length) return;
-    let cancelled = false;
-    Promise.all(scopePaths.map(async (path) => [path, await loadChunk(path, dataBaseUrl)] as const)).then((loadedChunks) => {
+    Promise.all(documentChunkPaths.map(async (path) => [path, await loadChunk(path, dataBaseUrl)] as const)).then((loadedChunks) => {
       if (cancelled) return;
       const chunks = new Map(loadedChunks);
-      const records = scope.summaries.flatMap((summary) => {
+      const records = index.units.flatMap((summary) => {
         const loadedChunk = chunks.get(summary.chunkPath);
         const unit = loadedChunk?.units.find((candidate) => candidate.id === summary.id);
         return loadedChunk && unit ? [{ summary, unit, chunk: loadedChunk }] : [];
       });
-      setScopeRecords(records);
-      setLoadedScopeKey(scopeKey);
+      setDocumentRecords(records);
+      setLoadedDocumentKey(documentKey);
     }).catch(() => {
-      if (!cancelled) {
-        setLoadError(true);
-      }
+      if (!cancelled) setLoadError(true);
     });
     return () => { cancelled = true; };
-  }, [dataBaseUrl, scope.summaries, scopeKey, scopePaths]);
+  }, [dataBaseUrl, documentChunkPaths, documentKey, index]);
+
+  const activeRecord = documentRecords.find(({ unit }) => unit.id === activeUnitId) ?? null;
+  const chunk = activeRecord?.chunk ?? null;
 
   useEffect(() => {
     if (!manifest || mode !== "combined") return;
@@ -229,9 +201,9 @@ export function NormativeViewer({
   }, [dataBaseUrl, manifest, mode]);
 
   useEffect(() => {
-    if (mode !== "combined" || scopeRecords.length === 0 || relations.length === 0) return;
+    if (mode !== "combined" || documentRecords.length === 0 || relations.length === 0) return;
     let cancelled = false;
-    const targetIds = new Set(scopeRecords.map(({ unit }) => unit.id));
+    const targetIds = new Set(documentRecords.map(({ unit }) => unit.id));
     const incoming = relations.filter((edge) => targetIds.has(edge.targetUnitId));
     Promise.all([...new Set(incoming.map((edge) => edge.sourceChunkPath))].map(async (path) => [path, await loadChunk(path, dataBaseUrl)] as const)).then((loadedChunks) => {
       if (cancelled) return;
@@ -249,7 +221,7 @@ export function NormativeViewer({
       setRelatedByTarget(grouped);
     }).catch(() => { if (!cancelled) setLoadError(true); });
     return () => { cancelled = true; };
-  }, [dataBaseUrl, mode, relations, scopeRecords]);
+  }, [dataBaseUrl, documentRecords, mode, relations]);
 
   useEffect(() => {
     if (!manifest || deferredQuery.length < 2 || searchIndex) return;
@@ -273,21 +245,13 @@ export function NormativeViewer({
     else settingsButtonRef.current?.focus();
   }, [settingsOpen]);
 
-  const hierarchy = useMemo(() => {
-    if (!index) return [[], [], [], []] as UnitSummary[][];
-    const chapters = index.units.filter((unit) => depth(unit) === 0);
-    const paragraphs = activeChapterId ? index.units.filter((unit) => depth(unit) === 1 && unit.hierarchy.parentId === activeChapterId) : [];
-    const subparagraphs = activeParagraphId ? index.units.filter((unit) => depth(unit) === 2 && unit.hierarchy.parentId === activeParagraphId) : [];
-    const detailsAnchor = activeSubparagraphId ?? activeParagraphId;
-    const details = detailsAnchor ? index.units.filter((unit) => depth(unit) >= 3 && unit.hierarchy.ancestorIds.includes(detailsAnchor)) : [];
-    return [chapters, paragraphs, subparagraphs, details];
-  }, [activeChapterId, activeParagraphId, activeSubparagraphId, index]);
+  const chapters = index?.units.filter((unit) => depth(unit) === 0) ?? [];
+  const paragraphs = activeChapterId ? index?.units.filter((unit) => depth(unit) === 1 && unit.hierarchy.parentId === activeChapterId) ?? [] : [];
+  const subparagraphs = activeParagraphId ? index?.units.filter((unit) => depth(unit) === 2 && unit.hierarchy.parentId === activeParagraphId) ?? [] : [];
+  const hierarchy: UnitSummary[][] = [chapters, paragraphs, subparagraphs];
 
-  const pageBounds = useMemo(() => {
-    if (!scopeRecords.length) return { from: 1, to: 1 };
-    const pages = scopeRecords.flatMap(({ unit, chunk: loadedChunk }) => evidencePages(unit, loadedChunk));
-    return pages.length > 0 ? { from: Math.min(...pages), to: Math.max(...pages) } : { from: 1, to: 1 };
-  }, [scopeRecords]);
+  const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
+  const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
 
   const searchResults = useMemo(() => {
     if (!searchIndex || deferredQuery.length < 2) return [];
@@ -300,22 +264,68 @@ export function NormativeViewer({
 
   function selectUnit(unit: UnitSummary) {
     requestedIdRef.current = unit.id;
+    scrollRequestRef.current = unit.id;
     setActiveUnitId(unit.id);
     updateDeepLink(mode, unit.id, defaultMode);
+    if (activeUnitId === unit.id && documentRecords.length > 0) {
+      requestAnimationFrame(() => textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(unit.id)}"]`)?.scrollIntoView({ block: "start" }));
+    }
   }
 
   useEffect(() => {
-    if (scopeLoading || !activeUnitId || scopeRecords.length === 0) return;
-    requestAnimationFrame(() => window.document.querySelector(`[data-scv-text-unit="${CSS.escape(activeUnitId)}"]`)?.scrollIntoView({ block: "start" }));
-  }, [activeUnitId, scopeLoading, scopeRecords]);
+    if (!scrollRequestRef.current || documentLoading || documentRecords.length === 0) return;
+    const targetId = scrollRequestRef.current;
+    const target = textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(targetId)}"]`);
+    if (!target) return;
+    scrollRequestRef.current = null;
+    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+  }, [activeUnitId, documentLoading, documentRecords]);
+
+  useEffect(() => {
+    activeIdRef.current = activeUnitId;
+  }, [activeUnitId]);
+
+  useEffect(() => {
+    const root = textPaneRef.current;
+    if (!root || documentLoading || documentRecords.length === 0) return;
+    const elements = [...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")];
+    if (elements.length === 0) return;
+    let frame: number | null = null;
+    const updateFromScroll = () => {
+      frame = null;
+      const rootRect = root.getBoundingClientRect();
+      const marker = rootRect.top + Math.min(rootRect.height * 0.28, 220);
+      let candidate: HTMLElement | null = null;
+      for (const element of elements) {
+        const elementRect = element.getBoundingClientRect();
+        if (elementRect.top <= marker && elementRect.bottom > rootRect.top) candidate = element;
+        else if (elementRect.top > marker) break;
+      }
+      const nextId = candidate?.dataset.scvTextUnit;
+      if (!nextId || nextId === activeIdRef.current) return;
+      activeIdRef.current = nextId;
+      requestedIdRef.current = nextId;
+      setActiveUnitId(nextId);
+      updateDeepLink(mode, nextId, defaultMode);
+    };
+    const onScroll = () => {
+      if (frame === null) frame = requestAnimationFrame(updateFromScroll);
+    };
+    root.addEventListener("scroll", onScroll, { passive: true });
+    frame = requestAnimationFrame(updateFromScroll);
+    return () => {
+      root.removeEventListener("scroll", onScroll);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, [defaultMode, documentLoading, documentRecords, mode]);
 
   function changeMode(nextMode: ViewerMode, preferredUnitId: string | null = null) {
     const keepCurrent = activeSummary && (nextMode === "combined" ? activeSummary.document === "ntc2018" : activeSummary.document === documentForMode(nextMode));
     requestedIdRef.current = preferredUnitId ?? (keepCurrent ? activeSummary?.id ?? null : null);
     setMode(nextMode);
     setIndex(null);
-    setChunk(null);
-    setScopeRecords([]);
+    setDocumentRecords([]);
+    setLoadedDocumentKey("");
     setRelatedByTarget(new Map());
     setSettingsOpen(false);
   }
@@ -347,15 +357,15 @@ export function NormativeViewer({
       ? auxiliaryPanel({ mode, documentId, manifest, chunk, pageBounds })
       : auxiliaryPanel;
   const analyticalUrl = analyticalHref ? (typeof analyticalHref === "function" ? analyticalHref(mode, activeUnitId) : analyticalHref) : null;
-  const scopeNote = scope.mode === "chapter"
-    ? `Continuità capitolo ${activeSummary?.numbering.official ?? ""} · ${scope.summaries.length} unità · ${scopePaths.length} chunk`
-    : scope.paragraphId
-      ? `Continuità paragrafo ${index?.units.find((unit) => unit.id === scope.paragraphId)?.numbering.official ?? ""} · ${scope.summaries.length} unità · ${scopePaths.length} chunk`
-      : `Capitolo ${activeSummary?.numbering.official ?? ""} · continuità ridotta ai paragrafi per la dimensione del capitolo`;
+  const documentNote = documentId === "ntc2018"
+    ? `Documento continuo · NTC 2018 · ${documentRecords.length} unità · ${documentChunkPaths.length} chunk`
+    : `Documento continuo · Circolare 7/2019 · ${documentRecords.length} unità · ${documentChunkPaths.length} chunk`;
 
   function renderRecord({ unit, chunk: unitChunk }: UnitRecord) {
+    const isChapter = depth(unit) === 0;
+
     return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} key={unit.id}>
-      <h2><span>{unit.numbering.official}</span>{unit.title}</h2>
+      {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span>{unit.title}</h2>}
       <div className="scv-unit-blocks">{unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`} key={block.blockId}><BlockContent block={block} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>
       {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span>{relatedUnit.numbering.official}</span>{relatedUnit.title}</h3></header><div className="scv-unit-blocks">{relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`} key={block.blockId}><BlockContent block={block} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div></section>)}
     </section>;
@@ -378,14 +388,17 @@ export function NormativeViewer({
         </div>}
       </div>
       <div className="scv-index-grid">
-        {hierarchy.map((level, levelIndex) => <section className="scv-index-cell" key={levelIndex}><header><span>{hierarchyLabels[levelIndex]}</span><b>{level.length}</b></header><div className="scv-index-list">{!index ? <LoadingRows /> : level.map((unit) => <button type="button" key={unit.id} data-index-unit={unit.id} className={activeUnitId === unit.id ? "active" : ""} onClick={() => selectUnit(unit)} title={`${unit.numbering.official} ${unit.title}`} aria-current={activeUnitId === unit.id ? "page" : undefined}><strong>{unit.numbering.official}</strong><span>{unit.title}</span></button>)}</div></section>)}
+        {hierarchy.map((level, levelIndex) => {
+          const activeLevelId = [activeChapterId, activeParagraphId, activeSubparagraphId][levelIndex];
+          return <section className="scv-index-cell" key={levelIndex}><header><span>{hierarchyLabels[levelIndex]}</span><b>{level.length}</b></header><div className="scv-index-list">{!index ? <LoadingRows /> : level.length === 0 ? <p className="scv-index-empty">Seleziona il livello superiore.</p> : level.map((unit) => <button type="button" key={unit.id} data-index-unit={unit.id} className={activeLevelId === unit.id ? "active" : ""} onClick={() => selectUnit(unit)} title={`${unit.numbering.official} ${unit.title}`} aria-current={activeLevelId === unit.id ? "page" : undefined}><strong>{unit.numbering.official}</strong><span>{unit.title}</span></button>)}</div></section>;
+        })}
       </div>
     </aside>
 
-    <article className="scv-text-pane" aria-label="Corpus JSON">
-      {scopeLoading || scope.summaries.length === 0 || scopeRecords.length === 0 ? <LoadingPanel label="Caricamento della continuità normativa…" /> : <div className="scv-text-flow"><p className="scv-chunk-note">{scopeNote} · structural-codes {scopeRecords[0].chunk.structuralCodesVersion}</p>
-        {scopeRecords.map(renderRecord)}
-        <div className="scv-end-note">Fine della continuità caricata.</div>
+    <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON">
+      {documentLoading || documentRecords.length === 0 ? <LoadingPanel label="Caricamento del documento completo…" /> : <div className="scv-text-flow"><p className="scv-chunk-note">{documentNote} · structural-codes {documentRecords[0].chunk.structuralCodesVersion}</p>
+        {documentRecords.map(renderRecord)}
+        <div className="scv-end-note">Fine del documento.</div>
       </div>}
     </article>
 

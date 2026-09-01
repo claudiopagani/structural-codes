@@ -36,13 +36,14 @@ test("rifiuta richieste PDF per documenti non registrati", async () => {
   assert.equal(response.status, 400);
 });
 
-test("la selezione dall'indice usa il DOM globale e preserva il deep-link", async () => {
+test("la selezione dall'indice usa il pannello testo e preserva il deep-link", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /function selectUnit\(unit: UnitSummary\)/);
-  assert.match(source, /window\.document\.querySelector/);
+  assert.match(source, /textPaneRef\.current\?\.querySelector/);
   assert.match(source, /data-index-unit=/);
   assert.match(source, /updateDeepLink\(mode, unit\.id, defaultMode\)/);
-  assert.doesNotMatch(source, /const document = documentForMode/);
+  assert.match(source, /scrollRequestRef\.current = unit\.id/);
+  assert.doesNotMatch(source, /window\.document\.querySelector/);
 });
 
 test("combined è il default e le relazioni restano esplicite", async () => {
@@ -58,15 +59,32 @@ test("combined è il default e le relazioni restano esplicite", async () => {
   assert.match(source, /const renderAuxiliary: ReactNode = !manifest/);
 });
 
-test("l’indice segue capitolo, paragrafo e sottoparagrafo e la lettura aggrega la continuità", async () => {
-  const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
+test("l’indice segue lo scroll e la lettura mantiene l’intero documento in continuità", async () => {
+  const [source, styles] = await Promise.all([
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
   assert.match(source, /unit\.hierarchy\.parentId === activeChapterId/);
   assert.match(source, /unit\.hierarchy\.parentId === activeParagraphId/);
-  assert.match(source, /const detailsAnchor = activeSubparagraphId \?\? activeParagraphId/);
-  assert.match(source, /maxContinuousChapterBytes/);
-  assert.match(source, /scopeRecords\.map\(renderRecord\)/);
-  assert.match(source, /scope\.mode === "chapter"/);
-  assert.match(source, /Fine della continuità caricata/);
+  assert.match(source, /const documentChunkPaths = useMemo/);
+  assert.match(source, /Promise\.all\(documentChunkPaths\.map/);
+  assert.match(source, /root\.addEventListener\("scroll"/);
+  assert.match(source, /setActiveUnitId\(nextId\)/);
+  assert.match(source, /documentRecords\.map\(renderRecord\)/);
+  assert.match(source, /const activeLevelId = \[activeChapterId, activeParagraphId, activeSubparagraphId\]/);
+  assert.match(source, /scv-chapter-heading/);
+  assert.match(source, /scv-chapter-badge-label/);
+  assert.match(source, /Fine del documento/);
+  assert.match(styles, /\.scv-index-grid \{[^}]*grid-template-columns: minmax\(0, 1fr\);[^}]*grid-template-rows: repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /\.scv-index-list \{[^}]*overflow: auto/);
+  assert.match(styles, /\.scv-chapter-heading/);
+  assert.match(styles, /\.scv-unit-depth-1 h2 \{[^}]*font-size: 18px/);
+  assert.match(styles, /\.scv-unit-depth-2 h2 \{[^}]*padding-left: 0;[^}]*border-left: 0;[^}]*font-size: 14px/);
+  assert.match(styles, /\.scv-root \.table-asset table \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 13px/);
+  assert.match(styles, /\.scv-root \.table-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 12px/);
+  assert.match(styles, /\.scv-root \.table-notes \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 12px/);
+  assert.doesNotMatch(source, /Dettagli/);
+  assert.doesNotMatch(source, /maxContinuousChapter/);
 });
 
 test("ricerca, settings e lazy loading sono nel layer shared", async () => {
