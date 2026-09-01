@@ -332,6 +332,25 @@ async function fixInlineMath(): Promise<void> {
     ]);
     await writeUnit("4.1.1.1", unit4111);
 
+    const concreteCompression = await readUnit("4.1.2.1.1.1");
+    updateText(findBlock(concreteCompression, "4.1.2.1.1.1", "editorial-006"), [
+        math("fck", "f_{ck}"),
+        text(" è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni."),
+    ]);
+    await writeUnit("4.1.2.1.1.1", concreteCompression);
+
+    const concreteTension = await readUnit("4.1.2.1.1.2");
+    updateText(findBlock(concreteTension, "4.1.2.1.1.2", "editorial-005"), [
+        math("fctk", "f_{ctk}"),
+        text(" è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2)."),
+    ]);
+    updateText(findBlock(concreteTension, "4.1.2.1.1.2", "editorial-007"), [
+        text("Nel caso di elementi piani (solette, pareti, …) gettati in opera con calcestruzzi ordinari e con spessori minori di 50 mm, la resistenza di progetto a trazione va ridotta a "),
+        math("0,80fctd", "0{,}80f_{ctd}"),
+        text("."),
+    ]);
+    await writeUnit("4.1.2.1.1.2", concreteTension);
+
     const unitSteel = await readUnit("4.1.2.1.1.3");
     updateText(findBlock(unitSteel, "4.1.2.1.1.3", "editorial-005"), [
         math("fyk", "f_{yk}"), text(" per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da "),

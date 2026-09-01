@@ -348,8 +348,19 @@
       "origin": "official",
       "text": {
         "raw": "f ck è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni.",
-        "normalized": "f ck è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalized": "fck è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -367,9 +378,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "ce0f7a50929617bb77433017612667930d558b7170878f997049deec94e6e7cd",
-        "normalizedSha256": "ce0f7a50929617bb77433017612667930d558b7170878f997049deec94e6e7cd"
+        "normalizedSha256": "35fbfe13d3b22fcbeeb270a3c96094068c4caa300939dff04db7227c8adb861f"
       }
     },
     {

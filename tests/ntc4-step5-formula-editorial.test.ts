@@ -64,7 +64,7 @@ test("NTC pagine 72–81 colloca ogni formula una sola volta nel corpus", async 
 });
 
 test("NTC pagine 72–81 usa segmenti matematici completi e non marca lettere discorsive", async () => {
-    const units = ["4.1", "4.1.1", "4.1.1.1", "4.1.2.1.1.3", "4.1.2.1.1.4", "4.1.2.1.2.1", "4.1.2.1.2.2", "4.1.2.2.2", "4.1.2.2.4", "4.1.2.2.4.5"];
+    const units = ["4.1", "4.1.1", "4.1.1.1", "4.1.2.1.1.1", "4.1.2.1.1.2", "4.1.2.1.1.3", "4.1.2.1.1.4", "4.1.2.1.2.1", "4.1.2.1.2.2", "4.1.2.2.2", "4.1.2.2.4", "4.1.2.2.4.5"];
     for (const number of units) {
         const unit = await json("corpus/units/ntc2018/" + number + ".json");
         for (const block of unit.blocks) {
@@ -87,6 +87,24 @@ test("NTC pagine 72–81 usa segmenti matematici completi e non marca lettere di
     assert.equal(analysis.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-005")).text.inline, undefined);
     const deformation = await json("corpus/units/ntc2018/4.1.2.2.2.json");
     assert.equal(deformation.blocks[1].text.inline, undefined);
+
+    const compression = await json("corpus/units/ntc2018/4.1.2.1.1.1.json");
+    const fck = compression.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-006"));
+    assert.deepEqual(fck.text.inline.filter((segment: { kind: string }) => segment.kind === "math"), [
+        { kind: "math", value: "fck", latex: "f_{ck}" },
+    ]);
+
+    const tension = await json("corpus/units/ntc2018/4.1.2.1.1.2.json");
+    const fctk = tension.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-005"));
+    const reduction = tension.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-007"));
+    assert.deepEqual(fctk.text.inline.filter((segment: { kind: string }) => segment.kind === "math"), [
+        { kind: "math", value: "fctk", latex: "f_{ctk}" },
+    ]);
+    assert.deepEqual(reduction.text.inline.filter((segment: { kind: string }) => segment.kind === "math"), [
+        { kind: "math", value: "0,80fctd", latex: "0{,}80f_{ctd}" },
+    ]);
+    assert.equal(compression.blocks.some((block: { text?: { normalized: string } }) => /f ck/u.test(block.text?.normalized ?? "")), false);
+    assert.equal(tension.blocks.some((block: { text?: { normalized: string } }) => /f ctk/u.test(block.text?.normalized ?? "")), false);
 });
 
 test("NTC Tabelle 4.1.I–IV conserva titoli, griglie e matematica delle celle", async () => {

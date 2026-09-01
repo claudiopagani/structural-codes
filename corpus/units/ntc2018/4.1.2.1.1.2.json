@@ -276,8 +276,19 @@
       "origin": "official",
       "text": {
         "raw": "f ctk è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2).",
-        "normalized": "f ctk è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2).",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalized": "fctk è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2).",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "fctk",
+            "latex": "f_{ctk}"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -295,9 +306,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "93ee32f3de3a2b44c8d31781ac0c21d5bd9b580f9c208c80247975b584c9fafd",
-        "normalizedSha256": "93ee32f3de3a2b44c8d31781ac0c21d5bd9b580f9c208c80247975b584c9fafd"
+        "normalizedSha256": "a5362767948222eba4a04971ae6514eb50bc521e31cb38c359f6a49cad9d25c5"
       }
     },
     {
@@ -383,7 +400,22 @@
       "text": {
         "raw": "Nel caso di elementi piani (solette, pareti, …) gettati in opera con calcestruzzi ordinari e con spessori minori di 50 mm, la resi-\nstenza di progetto a trazione va ridotta a 0,80fctd.",
         "normalized": "Nel caso di elementi piani (solette, pareti, …) gettati in opera con calcestruzzi ordinari e con spessori minori di 50 mm, la resistenza di progetto a trazione va ridotta a 0,80fctd.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nel caso di elementi piani (solette, pareti, …) gettati in opera con calcestruzzi ordinari e con spessori minori di 50 mm, la resistenza di progetto a trazione va ridotta a "
+          },
+          {
+            "kind": "math",
+            "value": "0,80fctd",
+            "latex": "0{,}80f_{ctd}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -418,11 +450,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -431,6 +458,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
         "rawSha256": "e50f47022ba4eefd06852494ed7a0b6410e1221a3c6a92f81d433411595c253f",
