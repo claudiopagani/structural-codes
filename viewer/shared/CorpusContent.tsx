@@ -122,6 +122,7 @@ function comparableTitle(value: string) {
 }
 
 export function isRepeatedUnitTitle(unit: CorpusUnit, block: CorpusUnit["blocks"][number]) {
+  if (unit.titleBlockId && block.blockId === unit.titleBlockId) return true;
   if (block.kind !== "heading" || !block.text) return false;
   const renderedHeading = comparableTitle(block.text.normalized);
   return renderedHeading === comparableTitle(unit.title) || renderedHeading === comparableTitle(`${unit.numbering.official} ${unit.title}`);

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { isEditorialTableNote, visibleTableNotes } from "../app/tableNotes.mjs";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
@@ -143,6 +143,30 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
+});
+
+test("i renderer escludono il blocco titolo strutturale senza perdere i sottotitoli", async () => {
+  const [content, sharedViewer, legacyViewer, dataTypes] = await Promise.all([
+    readFile(new URL("../shared/CorpusContent.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/CorpusViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/corpusData.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(dataTypes, /titleBlockId\?: string/);
+  assert.match(content, /unit\.titleBlockId && block\.blockId === unit\.titleBlockId/);
+  assert.match(sharedViewer, /unit\.blocks\.filter\(\(block\) => !isRepeatedUnitTitle\(unit, block\)\)/);
+  assert.match(legacyViewer, /isRepeatedUnitTitle/);
+  assert.match(legacyViewer, /unit\.blocks\.filter\(\(block\) => !isRepeatedUnitTitle\(unit, block\)\)/);
+});
+
+test("C4, C6 e C7 dichiarano il blocco titolo strutturale in testa a ogni unità", async () => {
+  const unitsDirectory = new URL("../../corpus/units/circ2019/", import.meta.url);
+  const files = (await readdir(unitsDirectory)).filter((file) => file.endsWith(".json"));
+  const units = await Promise.all(files.map(async (file) => JSON.parse(await readFile(new URL(file, unitsDirectory), "utf8"))));
+  const selected = units.filter((unit) => /^(C4|C6|C7)(?:\.|$)/.test(unit.numbering.official));
+  assert.equal(selected.length, 372);
+  assert.ok(selected.every((unit) => unit.titleBlockId));
+  assert.ok(selected.every((unit) => unit.blocks[0]?.blockId === unit.titleBlockId));
 });
 
 test("la scala tipografica del contenuto deriva dalla dimensione base", async () => {

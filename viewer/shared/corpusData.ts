@@ -63,6 +63,7 @@ export interface CorpusUnit {
   kind: string;
   numbering: { official: string; sortKey: string };
   title: string;
+  titleBlockId?: string;
   hierarchy: { parentId: string | null; ancestorIds: string[]; position: number };
   validity: { from: string | null; to: string | null; status: string; asOf: string };
   blocks: CorpusBlock[];

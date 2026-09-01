@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { BlockContent, hasOfficialListMarker } from "../shared/CorpusContent";
+import { BlockContent, hasOfficialListMarker, isRepeatedUnitTitle } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -477,7 +477,7 @@ function UnitHeader({ unit, documentLabel, showRaw, onToggleRaw }: { unit: Corpu
 function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUnit; assets: AssetBundle; showRaw: boolean; compact?: boolean }) {
   return (
     <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-      {unit.blocks.map((block, index) => (
+      {unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block, index) => (
         <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
           <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
           <div>
