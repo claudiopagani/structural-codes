@@ -51,6 +51,7 @@ test("C4.1 contiene le formule verificate e i gruppi non numerati", async () => 
     );
 
     assert.equal(formulas.length, 26);
+    assert.equal(byNumber.get("C4.1.1"), "\\overline{M}_{Ed}\\le M_{Rd}");
     assert.equal(byNumber.get("C4.1.3"), "\\zeta=1-c\\beta^2");
     assert.equal(
         byNumber.get("C4.1.5 e 4.1.14"),
@@ -60,12 +61,74 @@ test("C4.1 contiene le formule verificate e i gruppi non numerati", async () => 
     assert.match(byNumber.get("C4.1.16") ?? "", /^E_\{lcm\}=22000/u);
     assert.match(byNumber.get("C4.1.17") ?? "", /0\{,\}15/u);
     assert.equal(
+        byNumber.get("C4.1.18"),
+        "V_{Ed}\\le0{,}5\\eta_1b_wd\\nu_lf_{lcd}",
+    );
+    assert.equal(
+        byNumber.get("C4.1.19"),
+        "\\nu_l=0{,}5\\eta_1\\left(1-\\frac{f_{lck}}{250}\\right)",
+    );
+    assert.equal(
         formulas.filter(
             ({ officialNumber }: { officialNumber: string | null }) =>
                 officialNumber === null,
         ).length,
         6,
     );
+});
+
+test("C4.1 pagine 94-99 conserva prodotti e disuguaglianze inline complete", async () => {
+    const ids = [
+        "c4.1.2.3.6",
+        "c4.1.9.1.1",
+        "c4.1.9.1.3",
+        "c4.1.12.1.3.2.1",
+    ];
+    const units = await Promise.all(
+        ids.map((id) => json(`corpus/units/circ2019/${id}.json`)),
+    );
+    const math = units.flatMap((unit) =>
+        unit.blocks.flatMap(({ text }: { text?: { inline?: Array<{ kind: string; value: string; latex?: string }> } }) =>
+            (text?.inline ?? []).filter(({ kind }) => kind === "math"),
+        ),
+    );
+    assert.equal(
+        math.filter(({ value }) => ["=", "<", "≤"].includes(value)).length,
+        0,
+    );
+    const latex = math.map((item) => item.latex);
+    for (const expected of [
+        "\\nu\\cdot f_{cd}",
+        "\\nu=0{,}5",
+        "0{,}6+0{,}625\\cdot h",
+        "h\\le0{,}32\\,\\mathrm{m}",
+        "<0{,}4\\,\\mathrm{mm/m}",
+        "\\le0{,}02",
+        "\\le0{,}2f_{cd}",
+    ]) assert.ok(latex.includes(expected), expected);
+});
+
+test("C4.1 pagine 84-93 non frammenta uguaglianze e simboli inline", async () => {
+    const ids = ["c4.1", "c4.1.2.2.2", "c4.1.2.2.4.5", "c4.1.2.2.5"];
+    const units = await Promise.all(
+        ids.map((id) => json(`corpus/units/circ2019/${id}.json`)),
+    );
+    const math = units.flatMap((unit) =>
+        unit.blocks.flatMap(({ text }: { text?: { inline?: Array<{ kind: string; value: string; latex?: string }> } }) =>
+            (text?.inline ?? []).filter(({ kind }) => kind === "math"),
+        ),
+    );
+    assert.equal(math.filter(({ value }) => value === "=").length, 0);
+    const latex = math.map((item) => item.latex);
+    for (const expected of [
+        "\\gamma_c",
+        "\\alpha_{cc}",
+        "\\rho=1{,}5\\%",
+        "k_t=0{,}6",
+        "k_1=0{,}8",
+        "k_3=3{,}4",
+        "n=15",
+    ]) assert.ok(latex.includes(expected), expected);
 });
 
 test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {

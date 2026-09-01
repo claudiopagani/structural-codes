@@ -14,10 +14,15 @@ const sha256 = (value: string): string =>
     createHash("sha256").update(value, "utf8").digest("hex");
 
 const mathTerms: Array<[string, string]> = [
-    ["a_max=S_s·a_g", "a_{max}=S_s\\,a_g"],
+    ["a_max=S_s·a_g", "a_{max}=S_s\\cdot a_g"],
+    ["CRR = τ_f/σ’_v0", "CRR=\\tau_f/\\sigma'_{v0}"],
+    ["CSR = τ_media/σ’_v0", "CSR=\\tau_{media}/\\sigma'_{v0}"],
+    ["F_S=τ_s/τ_m", "F_S=\\tau_s/\\tau_m"],
+    ["a_max>0.15·g", "a_{max}>0.15\\cdot g"],
     ["a_max", "a_{max}"],
     ["a_g", "a_g"],
     ["S_s", "S_s"],
+    ["S_S", "S_S"],
     ["S_T", "S_T"],
     ["S_e", "S_e"],
     ["CRR", "CRR"],
@@ -28,24 +33,49 @@ const mathTerms: Array<[string, string]> = [
     ["σ’_v0", "\\sigma'_{v0}"],
     ["I_L", "I_L"],
     ["V_s", "V_s"],
-    ["a_max>0.15g", "a_{max}>0{,}15g"],
     ["Δu", "\\Delta u"],
     ["σ’_v", "\\sigma'_v"],
-    ["C_αu", "C_{\\alpha u}"],
-    ["k_h,eq", "k_{h,eq}"],
+    ["δ_cu", "\\delta_{cu}"],
+    ["k_heq", "k_{heq}"],
     ["β_s", "\\beta_s"],
     ["β_m<1", "\\beta_m<1"],
     ["β_m", "\\beta_m"],
     ["γ_R", "\\gamma_R"],
-    ["k_hE", "k_{hE}"],
+    ["K_h", "K_h"],
     ["a_h", "a_h"],
-    ["1.20", "1{,}20"],
-    ["2.3", "2{,}3"],
-    ["1.8", "1{,}8"],
+    ["β = 1", "\\beta=1"],
+    ["β<1", "\\beta<1"],
+    ["1.20", "1.20"],
+    ["2.3", "2.3"],
+    ["1.8", "1.8"],
+    ["1.00", "1.00"],
+    ["0,1g", "0{,}1g"],
     ["0,18g", "0{,}18g"],
+    ["50%", "50\\%"],
     ["30%", "30\\%"],
-    ["800 m/s", "800\\,m/s"],
+    ["800 m/s", "800\\,\\mathrm{m/s}"],
+    ["1-2%", "1\\text{-}2\\%"],
+    ["FS", "FS"],
+    ["S", "S"],
+    ["β", "\\beta"],
+    ["α", "\\alpha"],
 ];
+
+function termIndex(text: string, value: string, from: number): number {
+    let index = text.indexOf(value, from);
+    while (index >= 0) {
+        const before = text[index - 1] ?? "";
+        const after = text[index + value.length] ?? "";
+        const afterNext = text[index + value.length + 1] ?? "";
+        const embeddedSingleSymbol = value.length === 1 &&
+            (/^[\p{L}\p{N}_]$/u.test(before) || /^[\p{L}\p{N}_]$/u.test(after));
+        const embeddedDecimal = /^\d+\.\d+$/u.test(value) &&
+            (/[\d.]$/u.test(before) || (after === "." && /^\d$/u.test(afterNext)));
+        if (!embeddedSingleSymbol && !embeddedDecimal) return index;
+        index = text.indexOf(value, index + 1);
+    }
+    return -1;
+}
 
 function inline(text: string): any[] | undefined {
     const terms = mathTerms
@@ -57,7 +87,7 @@ function inline(text: string): any[] | undefined {
     while (cursor < text.length) {
         let next: { index: number; value: string; latex: string } | undefined;
         for (const [value, latex] of terms) {
-            const index = text.indexOf(value, cursor);
+            const index = termIndex(text, value, cursor);
             if (index >= 0 && (!next || index < next.index || (index === next.index && value.length > next.value.length))) {
                 next = { index, value, latex };
             }
@@ -70,7 +100,8 @@ function inline(text: string): any[] | undefined {
         result.push({ kind: "math", value: next.value, latex: next.latex });
         cursor = next.index + next.value.length;
     }
-    return result.filter(({ value }) => value);
+    const cleaned = result.filter(({ value }) => value);
+    return cleaned.some(({ kind }) => kind === "math") ? cleaned : undefined;
 }
 
 function evidence(page: number, text: string): any {
@@ -203,7 +234,7 @@ const units: Unit[] = [
             p(247, `Se la condizione relativa alla severità della azione sismica non è soddisfatta (e cioè se le accelerazioni massime attese al piano campagna in campo libero sono superiori a 0,1g), le NTC prescrivono degli approfondimenti delle indagini geotecniche finalizzati a verificare il manifestarsi o meno delle altre tre condizioni.`),
             p(247, `Nei metodi di analisi avanzata si deve tenere conto della natura polifase dei terreni, considerando l’accoppiamento tra fase solida e fase fluida, e si deve descrivere adeguatamente il comportamento meccanico delle terre in condizioni cicliche.`),
             p(247, `Le metodologie di carattere semi-empirico permettono sia verifiche di tipo puntuale, sia verifiche di tipo globale.`),
-            p(247, `Nelle analisi puntuali, la sicurezza alla liquefazione è valutata localmente, a diverse profondità, calcolando il rapporto tra la resistenza ciclica alla liquefazione, CRR = τ_f/σ’_v0 e la sollecitazione ciclica indotta dall’azione sismica, CSR = τ_media/σ’_v0, in cui con σ’_v0 si intende la tensione efficace verticale agente alla profondità considerata prima dell’evento sismico. La sollecitazione ciclica è correlata alla massima tensione tangenziale indotta dall’azione sismica alla profondità considerata, τ_max che può essere determinata direttamente, da analisi di risposta sismica locale, o indirettamente, da relazioni empiriche, in funzione dei caratteri del moto sismico atteso al sito. La resistenza ciclica alla liquefazione, CRR, può essere valutata da prove cicliche di laboratorio o da correlazioni empiriche basate su risultati di prove e misure in sito. La verifica è effettuata utilizzando abachi di letteratura che riportano, in ordinata, la sollecitazione ciclica CSR e in ascissa una proprietà del terreno stimata dalle prove in sito (ad esempio da prove penetrometriche che statiche o dinamiche o da misure in sito della velocità di propagazione delle onde di taglio Vs). Negli abachi, una curva separa gli stati per i quali nel passato si è osservata la liquefazione da quelli per i quali la liquefazione non è avvenuta.`),
+            p(247, `Nelle analisi puntuali, la sicurezza alla liquefazione è valutata localmente, a diverse profondità, calcolando il rapporto tra la resistenza ciclica alla liquefazione, CRR = τ_f/σ’_v0 e la sollecitazione ciclica indotta dall’azione sismica, CSR = τ_media/σ’_v0, in cui con σ’_v0 si intende la tensione efficace verticale agente alla profondità considerata prima dell’evento sismico. La sollecitazione ciclica è correlata alla massima tensione tangenziale indotta dall’azione sismica alla profondità considerata, τ_max che può essere determinata direttamente, da analisi di risposta sismica locale, o indirettamente, da relazioni empiriche, in funzione dei caratteri del moto sismico atteso al sito. La resistenza ciclica alla liquefazione, CRR, può essere valutata da prove cicliche di laboratorio o da correlazioni empiriche basate su risultati di prove e misure in sito. La verifica è effettuata utilizzando abachi di letteratura che riportano, in ordinata, la sollecitazione ciclica CSR e in ascissa una proprietà del terreno stimata dalle prove in sito (ad esempio da prove penetrometriche che statiche o dinamiche o da misure in sito della velocità di propagazione delle onde di taglio V_s). Negli abachi, una curva separa gli stati per i quali nel passato si è osservata la liquefazione da quelli per i quali la liquefazione non è avvenuta.`),
             p(247, `Nelle verifiche globali, si valutano preliminarmente i profili della sollecitazione e della resistenza ciclica, CSR e CRR, e si valuta, per l’intervallo di profondità in esame, il potenziale di liquefazione, I_L, funzione dell’area racchiusa tra i due profili. La suscettibilità nei confronti della liquefazione, valutata in base ai valori assunti dal potenziale di liquefazione, è così riferita ad uno spessore finito di terreno piuttosto che al singolo punto.`),
             p(247, `Tali procedure sono valide per piano di campagna sub-orizzontale. In caso contrario, la verifica deve essere eseguita con studi specifici.`),
             p(247, `Se le verifiche semplificate sono effettuate contemporaneamente con più metodi, si deve adottare quella più cautelativa, a meno di non giustificare adeguatamente una scelta diversa.`),
@@ -221,10 +252,10 @@ const units: Unit[] = [
             li(247, `metodi degli spostamenti (analisi dinamica semplificata)`),
             li(247, `metodi di analisi dinamica avanzata`),
             p(248, `Per i pendii naturali le verifiche di sicurezza devono essere effettuate utilizzando i valori caratteristici dei parametri di resistenza dei terreni e delle azioni. In altre parole, tutti i coefficienti parziali sono assunti unitari.`),
-            p(248, `Nei metodi pseudostatici la condizione di stato limite ultimo viene riferita al cinematismo di collasso critico, caratterizzato dal più basso valore del coefficiente di sicurezza, FS, definito come rapporto tra resistenza al taglio disponibile e sforzo di taglio mobilitato lungo la superficie di scorrimento (effettiva o potenziale) (F_s=τ_s/τ_m).`),
+            p(248, `Nei metodi pseudostatici la condizione di stato limite ultimo viene riferita al cinematismo di collasso critico, caratterizzato dal più basso valore del coefficiente di sicurezza, FS, definito come rapporto tra resistenza al taglio disponibile e sforzo di taglio mobilitato lungo la superficie di scorrimento (effettiva o potenziale) (F_S=τ_s/τ_m).`),
             p(248, `Nei pendii interessati da frane attive o quiescenti, che possono essere riattivate in occasione del sisma, le analisi in termini di tensioni efficaci risultano più appropriate rispetto a quelle in tensioni totali. In tal caso, particolare riguardo deve essere posto nella scelta delle caratteristiche di resistenza dei materiali, facendo riferimento alla resistenza al taglio a grandi deformazioni, in dipendenza dell’entità dei movimenti e della natura dei terreni.`),
-            p(248, `In terreni saturi e per valori di a_max>0.15g, nell’analisi statica delle condizioni successive al sisma, si deve considerare la riduzione della resistenza al taglio indotta da condizioni di carico ciclico a causa dell’incremento delle pressioni interstiziali e della degradazione dei parametri di resistenza. In assenza di specifiche prove di laboratorio eseguite in condizioni cicliche, l’incremento delle pressioni interstiziali, Δu, per le analisi in tensioni efficaci, e il coefficiente di riduzione della resistenza non drenata, C_αu, per le analisi in tensioni totali, possono essere stimati facendo ricorso all’uso di relazioni empiriche.`),
-            p(248, `Nelle analisi condotte con i metodi pseudostatici, il campo di accelerazione all’interno del pendio è assunto uniforme e le componenti orizzontale e verticale delle forze di inerzia sono applicate nel baricentro della massa potenzialmente in frana, nei metodi globali, o nei baricentri delle singole strisce, nei metodi delle strisce. Per tener conto dei fenomeni di amplificazione del moto sismico all’interno del pendio, il valore dell’accelerazione orizzontale massima su sito di riferimento rigido, a_g, può essere moltiplicato per un coefficiente S che comprende l’effetto dell’amplificazione stratigrafica, S_s, e dell’amplificazione topografica S_T. In alternativa, la variabilità spaziale dell’azione sismica può essere introdotta valutando un coefficiente sismico orizzontale equivalente, k_h,eq, mediante un’analisi della risposta sismica locale.`),
+            p(248, `In terreni saturi e per valori di a_max>0.15·g, nell’analisi statica delle condizioni successive al sisma, si deve considerare la riduzione della resistenza al taglio indotta da condizioni di carico ciclico a causa dell’incremento delle pressioni interstiziali e della degradazione dei parametri di resistenza. In assenza di specifiche prove di laboratorio eseguite in condizioni cicliche, l’incremento delle pressioni interstiziali, Δu, per le analisi in tensioni efficaci, e il coefficiente di riduzione della resistenza non drenata, δ_cu, per le analisi in tensioni totali, possono essere stimati facendo ricorso all’uso di relazioni empiriche.`),
+            p(248, `Nelle analisi condotte con i metodi pseudostatici, il campo di accelerazione all’interno del pendio è assunto uniforme e le componenti orizzontale e verticale delle forze di inerzia sono applicate nel baricentro della massa potenzialmente in frana, nei metodi globali, o nei baricentri delle singole strisce, nei metodi delle strisce. Per tener conto dei fenomeni di amplificazione del moto sismico all’interno del pendio, il valore dell’accelerazione orizzontale massima su sito di riferimento rigido, a_g, può essere moltiplicato per un coefficiente S che comprende l’effetto dell’amplificazione stratigrafica, S_S, e dell’amplificazione topografica S_T. In alternativa, la variabilità spaziale dell’azione sismica può essere introdotta valutando un coefficiente sismico orizzontale equivalente, k_heq, mediante un’analisi della risposta sismica locale.`),
             p(248, `Nelle verifiche pseudostatiche allo SLV dei pendii si utilizzano i coefficienti β_s dell’accelerazione massima attesa al sito riportati in Tabella 7.11.I delle NTC. Tali coefficienti derivano da valutazioni sulla duttilità del meccanismo di rottura per scorrimento dei pendii di terra. Nel caso dei pendii di roccia, soprattutto per i meccanismi di rottura per crollo e per ribaltamento, decisamente più fragili di quello per scorrimento, si dovrebbero utilizzare valori di β_s più elevati, al limite unitari.`),
             p(248, `La norma non fissa esplicitamente i valori di β_s per le verifiche allo SLD. Per queste verifiche il coefficiente β_s potrebbe essere unitario, nel caso in cui non si accettassero spostamenti residui, o compreso tra 1 e quello fissato per le verifiche allo SLV, in funzione dello spostamento massimo ritenuto accettabile per lo stato limite SLD in cinematismi di rottura per scorrimento. Per la valutazione di β_s per questo stato limite si può fare riferimento alla Fig. 7.11.3 delle NTC. Per la definizione dello spostamento ammissibile si può fare riferimento alle indicazioni riportate di seguito, nell’illustrazione del metodo degli spostamenti.`),
             p(248, `I metodi degli spostamenti consentono di valutare gli effetti della storia delle accelerazioni. In essi l’azione sismica è definita da una funzione temporale (ad es., un accelerogramma), e la risposta del pendio all’azione sismica è valutata in termini di spostamenti accumulati, eseguendo la doppia integrazione nel tempo dell’equazione del moto relativo tra massa potenzialmente instabile e terreno stabile.`),
@@ -289,7 +320,7 @@ const units: Unit[] = [
             p(250, `L’azione del sisma si traduce in accelerazioni nella parte di sottosuolo che interagisce con l’opera e in variazioni delle sollecitazioni normali, di taglio e dei momenti flettenti sulla fondazione, per l’azione delle forze d’inerzia generate nella struttura in elevazione (effetto inerziale). Nella valutazione delle azioni di progetto agenti sulle fondazioni, nelle verifiche SLV, si deve tenere conto anche di quanto previsto al §7.2.5.`),
             p(250, `Le verifiche a scorrimento e a ribaltamento si eseguono utilizzando gli usuali metodi già previsti per le verifiche sotto azioni statiche.`),
             p(250, `Nelle verifiche a carico limite, le NTC consentono di trascurare le azioni inerziali agenti nel volume di terreno sottostante la fondazione. In tal caso l’effetto dell’azione sismica si traduce nella sola variazione delle azioni di progetto in fondazione rispetto a quelle valutate nelle combinazioni statiche. La verifica viene condotta con le usuali formule del carico limite tenendo conto dell’eccentricità e dell’inclinazione, rispetto alla verticale, del carico agente sul piano di posa. In tal caso si adotta un coefficiente γ_R a carico limite pari a 2.3.`),
-            p(250, `Nel caso in cui si considerino esplicitamente le azioni inerziali nel volume di terreno al di sotto della fondazione, le NTC consentono di utilizzare un coefficiente γ_R a carico limite più basso e pari a 1.8. In tal caso, le accelerazioni nel volume di sottosuolo interessato dai cinematismi di rottura modificano i coefficienti di capacità portante in funzione del coefficiente sismico pseudo-statico k_hE che simula l’azione sismica in tale volume di terreno. La scelta del valore di k_hE è nella responsabilità del progettista e dovrebbe tenere conto del livello di spostamenti permanenti che si ritiene di accettare in occasione dell’evento sismico, considerando anche che le azioni inerziali sulla struttura in elevazione e quelle sul volume di terreno sottostante la fondazione potrebbero non essere sincrone.`),
+            p(250, `Nel caso in cui si considerino esplicitamente le azioni inerziali nel volume di terreno al di sotto della fondazione, le NTC consentono di utilizzare un coefficiente γ_R a carico limite più basso e pari a 1.8. In tal caso, le accelerazioni nel volume di sottosuolo interessato dai cinematismi di rottura modificano i coefficienti di capacità portante in funzione del coefficiente sismico pseudo-statico K_h che simula l’azione sismica in tale volume di terreno. La scelta del valore di K_h è nella responsabilità del progettista e dovrebbe tenere conto del livello di spostamenti permanenti che si ritiene di accettare in occasione dell’evento sismico, considerando anche che le azioni inerziali sulla struttura in elevazione e quelle sul volume di terreno sottostante la fondazione potrebbero non essere sincrone.`),
             p(250, `L’analisi sismica delle fondazioni (sia SLV sia SLD) con il metodo degli spostamenti si esegue utilizzando i valori caratteristici delle azioni statiche e delle resistenze. In questo caso, il risultato dell’analisi è uno spostamento permanente, che si genera quando l’accelerazione massima al sito è superiore o uguale all’accelerazione critica del sistema. La verifica consiste nel confrontare lo spostamento calcolato con uno spostamento limite scelto dal progettista per l’opera in esame. Nel caso in cui si applichi il metodo degli spostamenti si deve fare riferimento ad almeno 7 accelerogrammi scelti in accordo con quanto riportato al §3.2.3.6 delle NTC.`),
             p(250, `In considerazione del fatto che non è consolidato in ambito tecnico l’uso di procedimenti per la valutazione degli spostamenti permanenti delle fondazioni superficiali prodotti da azioni sismiche, le NTC richiedono, anche per le verifiche SLD, che il progettista, in alternativa al calcolo degli spostamenti, effettui le stesse verifiche in fondazione con gli stessi valori dei coefficienti di sicurezza riportati in Tab. 7.11.II. Tali verifiche potrebbero essere anche più gravose di quelle allo SLV, in quanto in alcuni casi lo spettro elastico SLD può superare quello SLV e dare luogo a sollecitazioni di taglio e flettenti in fondazione maggiori di quelle allo SLV.`),
         ],
@@ -348,12 +379,28 @@ const units: Unit[] = [
 
 const outputDirectory = join(root, "corpus", "units", "circ2019");
 await mkdir(outputDirectory, { recursive: true });
+const pages244To246Only = process.argv.includes("--pages-244-246");
+const pages247To252Only = process.argv.includes("--pages-247-252");
+const scopedNumbers = new Set([
+    "C7.11", "C7.11.1", "C7.11.2", "C7.11.3", "C7.11.3.1", "C7.11.3.1.1",
+    "C7.11.3.1.2", "C7.11.3.1.2.1", "C7.11.3.1.2.2", "C7.11.3.1.2.3",
+]);
+const scoped247To252Numbers = new Set([
+    "C7.11.3.1.2.3", "C7.11.3.4", "C7.11.3.5", "C7.11.4", "C7.11.5",
+    "C7.11.5.1", "C7.11.5.1.1", "C7.11.5.3", "C7.11.5.3.1", "C7.11.5.3.2",
+    "C7.11.6", "C7.11.6.2", "C7.11.6.3",
+]);
+const unitsToWrite = pages244To246Only
+    ? units.filter(({ number }) => scopedNumbers.has(number))
+    : pages247To252Only
+      ? units.filter(({ number }) => scoped247To252Numbers.has(number))
+      : units;
 const knownNtcNumbers = new Set(
     (await readdir(join(root, "corpus", "units", "ntc2018")))
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -5)),
 );
-for (const unit of units) {
+for (const unit of unitsToWrite) {
     const id = unitId(unit.number);
     const lower = unit.number.toLowerCase();
     const numberParts = unit.number.slice(1).split(".").map(Number);
@@ -378,7 +425,8 @@ for (const unit of units) {
             evidence: evidence(block.page, block.text),
         };
     });
-    const relation = hasNtcTarget ? [{
+    const includeRelations = hasNtcTarget && !pages244To246Only && !pages247To252Only;
+    const relation = includeRelations ? [{
         relationId: `${id}#relation-001`, type: "clarifies",
         targetUnitId: `urn:structural-codes:it:unit:ntc2018:${unit.number.slice(1)}`,
         basis: "editorial", evidenceBlockIds: [`${id}#block-heading`],
@@ -398,7 +446,7 @@ for (const unit of units) {
     const issues = [sourceIssue, missingLayerIssue, ...(unit.number === "C7.11.2" ? [{
         issueId: "circ2019-c7-11-2-truncated-source-paragraph", type: "normalization-review", severity: "blocking",
         note: "Il capoverso della fonte termina visibilmente con «per tenere» prima del cambio di pagina; non è stato completato per plausibilità.",
-    }] : []), ...(hasNtcTarget ? [{
+    }] : []), ...(includeRelations ? [{
         issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`, type: "relation-review", severity: "blocking",
         note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
     }] : [])];
@@ -415,4 +463,4 @@ for (const unit of units) {
     };
     await writeFile(join(outputDirectory, `${lower}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
-console.log(`circ711-step1: generated ${units.length} units`);
+console.log(`circ711-step1: generated ${unitsToWrite.length}${pages244To246Only ? " units for PDF pages 244-246" : pages247To252Only ? " units for PDF pages 247-252" : " units"}`);

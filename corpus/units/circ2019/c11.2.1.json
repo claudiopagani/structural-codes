@@ -92,8 +92,37 @@
       "origin": "official",
       "text": {
         "raw": "Per quanto attiene la classe di resistenza, la stessa è individuata esclusivamente dai valori caratteristici delle resistenze cilindrica\nf ck e cubica Rck a compressione uniassiale, misurate su provini normalizzati e cioè rispettivamente su cilindri di diametro 150 mm",
-        "normalized": "Per quanto attiene la classe di resistenza, la stessa è individuata esclusivamente dai valori caratteristici delle resistenze cilindrica f ck e cubica Rck a compressione uniassiale, misurate su provini normalizzati e cioè rispettivamente su cilindri di diametro 150 mm",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "Per quanto attiene la classe di resistenza, la stessa è individuata esclusivamente dai valori caratteristici delle resistenze cilindrica fck e cubica Rck a compressione uniassiale, misurate su provini normalizzati e cioè rispettivamente su cilindri di diametro 150 mm",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per quanto attiene la classe di resistenza, la stessa è individuata esclusivamente dai valori caratteristici delle resistenze cilindrica "
+          },
+          {
+            "kind": "math",
+            "value": "fck",
+            "latex": "f_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " e cubica "
+          },
+          {
+            "kind": "math",
+            "value": "Rck",
+            "latex": "R_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " a compressione uniassiale, misurate su provini normalizzati e cioè rispettivamente su cilindri di diametro "
+          },
+          {
+            "kind": "math",
+            "value": "150 mm",
+            "latex": "150\\,\\mathrm{mm}"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -115,10 +144,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "a12147780a43f5b73ec32877d96b7816772eff5ff448d7907c514b096e29dde5",
-        "normalizedSha256": "bc78d127e1d3e9f4299845c690c411111f238a52e901644a54a7b48b074c059c"
+        "normalizedSha256": "089b3b65c93dba91ef2d27aba7c24e6da53a6195c799ed60adf632219935bb44"
       }
     },
     {
@@ -128,7 +162,31 @@
       "text": {
         "raw": "e di altezza 300 mm e su cubi di spigolo 150 mm.",
         "normalized": "e di altezza 300 mm e su cubi di spigolo 150 mm.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "e di altezza "
+          },
+          {
+            "kind": "math",
+            "value": "300 mm",
+            "latex": "300\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " e su cubi di spigolo "
+          },
+          {
+            "kind": "math",
+            "value": "150 mm",
+            "latex": "150\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -140,7 +198,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "6f03c18fec3a9d05fefb0f85eae74f51e05a9287ab1e043d4e18c73a4bdea3b7",
         "normalizedSha256": "6f03c18fec3a9d05fefb0f85eae74f51e05a9287ab1e043d4e18c73a4bdea3b7"
       }

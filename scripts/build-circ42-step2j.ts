@@ -58,14 +58,14 @@ function formulaBlock(suffix: string, formula: FormulaRow): GeneratedBlock {
 }
 
 const formulaRows: FormulaRow[] = [
-    { number: "C4.2.85", page: 122, latex: "I_{\\mathrm{st}}\\ge\\frac{\\sigma_m}{E}\\left(\\frac{b}{\\pi}\\right)^4\\left(1+300\\frac{w_0}{b}\\,u\\right)", raw: "I_st ≥ (σ_m/E) · (b/π)^4 · (1 + 300 w_0/b · u) [C4.2.85]", region: reg(145, 535, 325, 45) },
-    { number: "C4.2.86", page: 122, latex: "\\sigma_m=\\frac{\\sigma_{\\mathrm{cr,c}}}{\\sigma_{\\mathrm{cr,p}}}\\left(\\frac{N_{\\mathrm{Ed}}}{b}\\right)\\left(\\frac{1}{a_1}+\\frac{1}{a_2}\\right)", raw: "σ_m = (σ_cr,c/σ_cr,p) · (N_Ed/b) · (1/a_1 + 1/a_2) [C4.2.86]", region: reg(145, 595, 325, 45) },
-    { number: "C4.2.87", page: 122, latex: "u=\\frac{\\pi^2 E e_{\\max}\\,\\gamma_{M1}}{300\\,b\\,f_y}", raw: "u = (π^2 · E · e_max · γ_M1)/(300 · b · f_y) [C4.2.87]", region: reg(145, 635, 325, 45) },
-    { number: "C4.2.88", page: 122, latex: "N_d\\ge N_d^*=0{,}5\\,\\sigma_{\\max}\\,A_{c,\\mathrm{eff}}", raw: "N_d ≥ N_d* = 0,5 · σ_max · A_c,eff [C4.2.88]", region: reg(145, 690, 325, 45) },
-    { number: "C4.2.89", page: 123, latex: "\\Delta N_{\\mathrm{st}}=\\frac{\\sigma_m b^2}{\\pi^2}", raw: "ΔN_st = σ_m · b^2/π^2 [C4.2.89]", region: reg(145, 145, 325, 45) },
-    { number: "C4.2.90", page: 123, latex: "q=\\frac{\\pi}{4}\\,\\sigma_m\\left(w_0+w_{\\mathrm{el}}\\right)", raw: "q = (π/4) · σ_m · (w_0 + w_el) [C4.2.90]", region: reg(145, 205, 325, 45) },
-    { number: "C4.2.91", page: 123, latex: "\\frac{I_T}{I_p}\\ge 5{,}3\\,\\frac{f_y}{E}", raw: "I_T/I_p ≥ 5,3 · f_y/E [C4.2.91]", region: reg(145, 270, 325, 55) },
-    { number: "C4.2.92", page: 123, latex: "\\sigma_{\\mathrm{cr}}\\ge 6\\,f_y", raw: "σ_cr ≥ 6 · f_y [C4.2.92]", region: reg(145, 335, 325, 45) },
+    { number: "C4.2.85", page: 122, latex: "I_{\\mathrm{st}}\\ge\\frac{\\sigma_m}{E}\\cdot\\left(\\frac{b}{\\pi}\\right)^4\\cdot\\left(1+300\\frac{w_0}{b}\\cdot u\\right)", raw: "I_st ≥ (σ_m/E) · (b/π)^4 · (1 + 300 w_0/b · u) [C4.2.85]", region: reg(145, 535, 325, 45) },
+    { number: "C4.2.86", page: 122, latex: "\\sigma_m=\\frac{\\sigma_{\\mathrm{cr,c}}}{\\sigma_{\\mathrm{cr,p}}}\\cdot\\left(\\frac{N_{\\mathrm{Ed}}}{b}\\right)\\cdot\\left(\\frac{1}{a_1}+\\frac{1}{a_2}\\right)", raw: "σ_m = (σ_cr,c/σ_cr,p) · (N_Ed/b) · (1/a_1 + 1/a_2) [C4.2.86]", region: reg(145, 595, 325, 45) },
+    { number: "C4.2.87", page: 122, latex: "u=\\frac{\\pi^2\\cdot E\\cdot e_{\\max}\\cdot\\gamma_{M1}}{300\\cdot b\\cdot f_y}", raw: "u = (π^2 · E · e_max · γ_M1)/(300 · b · f_y) [C4.2.87]", region: reg(145, 635, 325, 45) },
+    { number: "C4.2.88", page: 122, latex: "N_d\\ge N_d^*=0{,}5\\cdot\\sigma_{\\max}\\cdot A_{c,\\mathrm{eff}}", raw: "N_d ≥ N_d* = 0,5 · σ_max · A_c,eff [C4.2.88]", region: reg(145, 690, 325, 45) },
+    { number: "C4.2.89", page: 123, latex: "\\Delta N_{\\mathrm{st}}=\\frac{\\sigma_m\\cdot b^2}{\\pi^2}", raw: "ΔN_st = σ_m · b^2/π^2 [C4.2.89]", region: reg(145, 145, 325, 45) },
+    { number: "C4.2.90", page: 123, latex: "q=\\frac{\\pi}{4}\\cdot\\sigma_m\\cdot\\left(w_0+w_{\\mathrm{el}}\\right)", raw: "q = (π/4) · σ_m · (w_0 + w_el) [C4.2.90]", region: reg(145, 205, 325, 45) },
+    { number: "C4.2.91", page: 123, latex: "\\frac{I_T}{I_p}\\ge 5{,}3\\cdot\\frac{f_y}{E}", raw: "I_T/I_p ≥ 5,3 · f_y/E [C4.2.91]", region: reg(145, 270, 325, 55) },
+    { number: "C4.2.92", page: 123, latex: "\\sigma_{\\mathrm{cr}}\\ge 6\\cdot f_y", raw: "σ_cr ≥ 6 · f_y [C4.2.92]", region: reg(145, 335, 325, 45) },
 ];
 
 const byNumber = new Map(formulaRows.map((formula) => [formula.number, formula]));

@@ -64,8 +64,30 @@ test("C3 step 3 trascrive tutte le formule display", async () => {
         "c_p=\\begin{cases}2{,}4&\\text{per torri con elementi tubolari a sezione circolare}\\\\2{,}8&\\text{per torri con elementi aventi sezione di forma diversa dalla circolare}\\end{cases}",
     );
     assert.equal(
+        byId.get("c3.3.5"),
+        "c_{pe0}(\\alpha_p)=\\begin{cases}1-(1-c_{pm})\\sin^2\\left(\\dfrac{\\pi\\alpha_p}{2\\alpha_m}\\right)&\\text{per }0^\\circ\\le\\alpha_p\\le\\alpha_m\\\\c_{pb}-(c_{pb}-c_{pm})\\cos^2\\left[\\dfrac{\\pi}{2}\\dfrac{\\alpha_p-\\alpha_m}{\\alpha_b-\\alpha_m}\\right]&\\text{per }\\alpha_m\\le\\alpha_p\\le\\alpha_b\\\\c_{pb}&\\text{per }\\alpha_b\\le\\alpha_p\\le180^\\circ\\end{cases}",
+    );
+    assert.equal(
+        byId.get("c3.3.6"),
+        "\\psi_{\\lambda\\alpha}=\\begin{cases}1&\\text{per }0^\\circ\\le\\alpha_p\\le\\alpha_m\\\\\\psi_\\lambda+(1-\\psi_\\lambda)\\cos\\left[\\dfrac{\\pi}{2}\\left(\\dfrac{\\alpha_p-\\alpha_m}{\\alpha_b-\\alpha_m}\\right)\\right]&\\text{per }\\alpha_m\\le\\alpha_p\\le\\alpha_b\\\\\\psi_\\lambda&\\text{per }\\alpha_b\\le\\alpha_p\\le180^\\circ\\end{cases}",
+    );
+    assert.equal(
+        byId.get("c3.3.8"),
+        "c_p=\\begin{cases}2-\\dfrac{4}{3}\\varphi&\\text{per }0\\le\\varphi<0{,}3\\\\1{,}6&\\text{per }0{,}3\\le\\varphi\\le0{,}8\\\\2{,}4-\\varphi&\\text{per }0{,}8<\\varphi\\le1\\end{cases}",
+    );
+    assert.equal(
         byId.get("c3.4.1"),
         "q_{sn}=q_{sk}\\left\\{\\frac{1-v\\dfrac{\\sqrt{6}}{\\pi}\\left[\\ln\\left(-\\ln(1-P_n)\\right)+0{,}57722\\right]}{1-2{,}5923v}\\right\\}",
+    );
+    assert.equal(byId.get("c3.3.9"), "n_s=\\frac{St\\cdot v_m}{b}");
+    assert.equal(byId.get("c3.3.10"), "v_{cr,i}=\\frac{n_i\\cdot b}{St}");
+    assert.equal(
+        byId.get("c3.3.12"),
+        "Sc=\\frac{4\\pi\\cdot m\\cdot\\xi}{\\rho\\cdot b^2}",
+    );
+    assert.equal(
+        byId.get("c3.4.4"),
+        "C_{e,F}=\\begin{cases}1{,}0&\\text{per }L_c<50\\,\\mathrm{m}\\\\1{,}25-0{,}25e^{-(L_c-50\\,\\mathrm{m})/(200\\,\\mathrm{m})}&\\end{cases}",
     );
     assert.equal(
         byId.get("c3.4.5"),
@@ -201,4 +223,49 @@ test("C3 step 3 non conserva rumore nel testo normalizzato", async () => {
     );
     assert.doesNotMatch(normalized, /[ᡩᡱᡦ㍥㐢㎘‡]/u);
     assert.doesNotMatch(normalized, /(?:"C3\.|#[ \n])/u);
+});
+
+test("C3 step 3 mantiene c_p come espressione inline unica", async () => {
+    const unit = await json("corpus/units/circ2019/c3.3.8.6.json");
+    const block = unit.blocks.find(({ blockId }: { blockId: string }) =>
+        blockId.endsWith("#block-editorial-001"),
+    );
+    assert.ok(block);
+    const math = block.text.inline.filter(
+        ({ kind }: { kind: string }) => kind === "math",
+    );
+    assert.deepEqual(math, [{ kind: "math", value: "cp", latex: "c_p" }]);
+});
+
+test("C3 step 3 conserva prodotti, testo e separazione dei gruppi di formula", async () => {
+    const manifest = await json("corpus/assets/circ2019/core-editorial.json");
+    const latex = new Map<string, string>(
+        manifest.formulas.map(({ id, latex }: { id: string; latex: string }) => [
+            id.split(":").at(-1),
+            latex,
+        ] as [string, string]),
+    );
+    const formula = (id: string): string => {
+        const value = latex.get(id);
+        assert.ok(value, id);
+        return value;
+    };
+    assert.match(formula("c3.4.3.3.1.unnumbered-1"), /\\text\{per \}/u);
+    assert.match(formula("c3.4.3.3.2.unnumbered-1"), /assumendo che/u);
+    assert.equal(
+        latex.get("c3.4.3.3.2.unnumbered-2"),
+        "\\begin{aligned}\\text{per }\\alpha\\le15^\\circ,&\\quad\\mu_s=0\\\\\\text{per }\\alpha>15^\\circ,&\\quad\\mu_s\\text{ è calcolato in ragione del }50\\%\\text{ del}\\\\&\\quad\\text{carico totale massimo insistente sulla falda}\\\\&\\quad\\text{della copertura superiore, valutato con riferimento}\\\\&\\quad\\text{al valore del coefficiente di forma appropriato}\\\\&\\quad\\text{per detta falda.}\\end{aligned}",
+    );
+    assert.match(formula("c3.4.3.3.4.unnumbered-1"), /con la limitazione/u);
+    assert.match(formula("c3.4.3.3.4.unnumbered-2"), /con la limitazione/u);
+
+    const snow = await json("corpus/units/circ2019/c3.4.2.json");
+    const overhang = await json("corpus/units/circ2019/c3.4.3.3.5.json");
+    const allLatex = [snow, overhang].flatMap((unit) =>
+        unit.blocks.flatMap(({ text }: { text?: { inline?: Array<{ latex?: string }> } }) =>
+            (text?.inline ?? []).map(({ latex }) => latex).filter(Boolean),
+        ),
+    );
+    assert.ok(allLatex.includes("\\frac{1}{n}"));
+    assert.ok(allLatex.includes("k=\\frac{3}{d}"));
 });

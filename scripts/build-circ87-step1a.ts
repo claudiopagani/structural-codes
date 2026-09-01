@@ -46,10 +46,12 @@ function printedPage(page: number): string {
 }
 
 const mathMap: Record<string, string> = {
+  "γ_M=2": "\\gamma_M=2",
   "γ_M": "\\gamma_M",
   "α_0": "\\alpha_0",
   "α": "\\alpha",
   "d_C": "d_C",
+  "d_C0": "d_{C0}",
   "d_0": "d_0",
   "d_{SLV}": "d_{SLV}",
   "d_{SLC}": "d_{SLC}",
@@ -70,14 +72,23 @@ const mathMap: Record<string, string> = {
   "f_{v0}": "f_{v0}",
   "f_b": "f_b",
   "e*": "e^*",
+  "α=0": "\\alpha=0",
+  "α-d_C": "\\alpha-d_C",
+  "α(d)": "\\alpha(d)",
+  "n=h/h_b": "n=h/h_b",
+  "φ=h_b/l": "\\varphi=h_b/l",
+  "0,577": "0{,}577",
   "δ_{P_y,k}": "\\delta_{P_y,k}",
   "δ_{F,k}": "\\delta_{F,k}",
   "δ_{PQ_x,k}": "\\delta_{PQ_x,k}",
   "δ_{Cx}": "\\delta_{Cx}",
+  "δ_Cx": "\\delta_{Cx}",
   "P_k": "P_k",
   "Q_k": "Q_k",
   "F_k": "F_k",
   "L_i": "L_i",
+  "h_b": "h_b",
+  "t_s": "t_s",
   "u_i": "u_i",
   "u_j": "u_j",
   "u_0": "u_0",
@@ -102,10 +113,8 @@ const mathMap: Record<string, string> = {
   "N": "N",
   "m": "m",
   "n": "n",
-  "E": "E",
   "G": "G",
   "W": "W",
-  "L": "L",
   "w": "w",
 };
 function escapeRegExp(value: string): string {
@@ -118,10 +127,8 @@ const inlinePattern = new RegExp(
     "(?<![\\p{L}\\p{N}_])N(?![\\p{L}\\p{N}_])",
     "(?<![\\p{L}\\p{N}_])m(?![\\p{L}\\p{N}_])",
     "(?<![\\p{L}\\p{N}_])n(?![\\p{L}\\p{N}_])",
-    "(?<![\\p{L}\\p{N}_])E(?![\\p{L}\\p{N}_])",
     "(?<![\\p{L}\\p{N}_])G(?![\\p{L}\\p{N}_])",
     "(?<![\\p{L}\\p{N}_])W(?![\\p{L}\\p{N}_])",
-    "(?<![\\p{L}\\p{N}_])L(?![\\p{L}\\p{N}_])",
     "(?<![\\p{L}\\p{N}_])w(?![\\p{L}\\p{N}_])",
   ]).join("|"), "gu");
 function inline(text: string): Inline[] | undefined {
@@ -136,6 +143,28 @@ function inline(text: string): Inline[] | undefined {
   }
   if (last < text.length) result.push({ kind: "text", value: text.slice(last) });
   return result.some((part) => part.kind === "math") ? result : undefined;
+}
+function inlineTerms(text: string, terms: Array<[string, string]>): Inline[] {
+  const segments: Inline[] = [];
+  let cursor = 0;
+  while (cursor < text.length) {
+    let next: { index: number; value: string; latex: string } | undefined;
+    for (const [value, latex] of terms) {
+      let index = text.indexOf(value, cursor);
+      while (index >= 0 && value.length === 1 && /[A-Za-z]/u.test(value)) {
+        const before = index > 0 ? text[index - 1]! : "";
+        const after = text[index + 1] ?? "";
+        if (!/[\p{L}\p{N}_]/u.test(before) && !/[\p{L}\p{N}_]/u.test(after)) break;
+        index = text.indexOf(value, index + 1);
+      }
+      if (index >= 0 && (!next || index < next.index || (index === next.index && value.length > next.value.length))) next = { index, value, latex };
+    }
+    if (!next) { segments.push({ kind: "text", value: text.slice(cursor) }); break; }
+    if (next.index > cursor) segments.push({ kind: "text", value: text.slice(cursor, next.index) });
+    segments.push({ kind: "math", value: next.value, latex: next.latex });
+    cursor = next.index + next.value.length;
+  }
+  return segments.filter(({ value }) => value.length > 0);
 }
 function transformations(rawText: string, normalized: string) {
   return [
@@ -195,13 +224,19 @@ let currentUnit = "";
 function addText(blocks: Block[], ranges: Range[], normalized: string, kind: "heading" | "paragraph" | "list-item" = "paragraph") {
   const blockId = currentUnit + "#block-" + (blocks.length === 0 ? "heading" : String(blocks.length).padStart(3, "0"));
   const text: Record<string, unknown> = { raw: raw(ranges), normalized, normalizationVersion: VERSION };
-  const segments = inline(normalized);
+  const segments = kind === "heading" ? undefined : inline(normalized);
   if (segments) text.inline = segments;
   blocks.push({ blockId, kind, origin: "official", text, evidence: evidence(ranges, normalized) });
   return blockId;
 }
 function addProse(blocks: Block[], ranges: Range[], kind: "paragraph" | "list-item" = "paragraph") {
   return addText(blocks, ranges, clean(ranges), kind);
+}
+function setLastInlineTerms(blocks: Block[], terms: Array<[string, string]>) {
+  const block = blocks[blocks.length - 1];
+  if (!block?.text) throw new Error("Blocco mancante per la matematica inline");
+  const text = block.text as Record<string, unknown>;
+  text.inline = inlineTerms(text.normalized as string, terms);
 }
 function addFormulaRef(blocks: Block[], ranges: Range[], official: string) {
   const id = formulaId(official);
@@ -366,21 +401,26 @@ makeUnit("C8.7.1.2.1.1", "Analisi con approccio cinematico lineare", "C8.7.1.2.1
   addText(blocks, r(273, 34, 36), "L_i è il lavoro totale di eventuali forze interne (allungamento di una catena; scorrimento con attrito in presenza di ammorsamento tra i blocchi del meccanismo, dovuto a moti relativi traslazionali o torsionali; deformazione nel piano di solai o coperture collegate ma non rigide).");
   addProse(blocks, r(273, 37, 45));
   addText(blocks, r(273, 46, 52), "Un caso particolarmente significativo è quello di una parete che, pur essendo collegata alle pareti di spina ortogonali attraverso un ammorsamento murario parzialmente efficace, ribalta fuori dal proprio piano medio (ribaltamento semplice). A meno che non sia già in atto un distacco evidente dalle pareti ortogonali o che queste non siano totalmente prive di ammorsamento, tale meccanismo può considerare il contributo stabilizzante esercitato dalle pareti ortogonali attraverso resistenze attritive. La risultante della forza attritiva che può svilupparsi lungo l’altezza h dell’ammorsamento con una parete ortogonale (lesione verticale a pettine, ipotizzando caratteristiche di ammorsamento pressoché uniformi) può essere ricavata in modo approssimato dalla seguente espressione:");
+  setLastInlineTerms(blocks, [["h", "h"]]);
   addFormulaRef(blocks, r(273, 53, 54), "C8.7.1.2");
   addText(blocks, r(273, 55), "dove:");
   addText(blocks, r(273, 56, 57), "n è il numero dei filari interessati dalla lesione verticale (n=h/h_b, dove h_b è l’altezza media degli elementi costituenti la muratura);");
   addText(blocks, r(273, 58), "l è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;");
+  setLastInlineTerms(blocks, [["l", "l"]]);
   addText(blocks, r(273, 59, 61), "φ è il coefficiente di ammorsamento, così definito φ=h_b/l; tale parametro è analogamente definito per il criterio di resistenza a taglio per fessurazione diagonale, con rottura “a scaletta” nei giunti di malta, nell’equazione [C8.7.1.17];");
   addText(blocks, r(273, 62), "μ è il coefficiente d’attrito; un valore di riferimento è 0,577, identico a quello indicato per l’equazione [C8.7.1.17];");
   addText(blocks, r(273, 63), "t_s è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);");
   addText(blocks, r(273, 64), "w è il peso specifico della muratura (valori sono suggeriti nella Tabella C8.5.I).");
   addProse(blocks, r(273, 65, 67));
+  setLastInlineTerms(blocks, [["1/3h", "\\frac{1}{3}h"], ["h", "h"], ["α_0", "\\alpha_0"]]);
   addProse(blocks, r(274, 3, 7));
 }, [F11, F12]);
 
 makeUnit("C8.7.1.2.1.2", "Analisi con approccio cinematico non lineare", "C8.7.1.2.1", ["C8", "C8.7", "C8.7.1", "C8.7.1.2", "C8.7.1.2.1"], 2, (blocks) => {
   addText(blocks, r(274, 9, 15), "L’analisi con approccio cinematico non lineare (o cinematica non lineare) richiede la valutazione del moltiplicatore α non solo per la configurazione iniziale della catena cinematica ma anche per configurazioni variate, rappresentative dell’evoluzione del cinematismo e descritte dallo spostamento orizzontale d_C di un punto C di controllo del sistema, scelto a piacere. In generale il moltiplicatore α si riduce progressivamente, fino ad annullarsi in corrispondenza dello spostamento d_C0.");
+  setLastInlineTerms(blocks, [["d_C0", "d_{C0}"], ["d_C", "d_C"], ["α", "\\alpha"], ["C", "C"]]);
   addText(blocks, r(274, 16, 19), "La curva α-d_C, ottenuta attraverso l’analisi cinematica non lineare, rappresenta (a meno dell’accelerazione di gravità g) la curva forza reattiva-spostamento, o curva di spinta, del meccanismo locale. Per la sua determinazione è necessario considerare se, con l’evolversi del cinematismo, le forze interne ed esterne si modificano o si mantengono costanti.");
+  setLastInlineTerms(blocks, [["α-d_C", "\\alpha-d_C"], ["g", "g"]]);
 });
 
 makeUnit("C8.7.1.2.1.3", "Definizione dell’oscillatore non lineare equivalente", "C8.7.1.2.1", ["C8", "C8.7", "C8.7.1", "C8.7.1.2", "C8.7.1.2.1"], 3, (blocks) => {
@@ -402,9 +442,9 @@ makeUnit("C8.7.1.2.1.3", "Definizione dell’oscillatore non lineare equivalente
 
 const formulas = [
   { id: F11, unitId: unitId("C8.7.1.2.1.1"), officialNumber: "C8.7.1.1", pdfPage: 273, latex: "\\alpha_0=\\frac{\\sum_{k=1}^{N}P_k\\delta_{P_y,k}-\\sum_{k=1}^{m}F_k\\delta_{F,k}+L_i}{\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,k}}" },
-  { id: F12, unitId: unitId("C8.7.1.2.1.1"), officialNumber: "C8.7.1.2", pdfPage: 273, latex: "F=0.4\\,n(n+1)\\,\\varphi\\,\\mu\\,l^2\\,t_s\\,W" },
+  { id: F12, unitId: unitId("C8.7.1.2.1.1"), officialNumber: "C8.7.1.2", pdfPage: 273, latex: "F=0.4\\,n(n+1)\\,\\Phi\\,\\mu\\,l^2\\,t_s\\,W" },
   { id: F13, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.3", pdfPage: 274, latex: "a=\\frac{\\alpha(d_C)g}{e^*FC}" },
-  { id: F14, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.4", pdfPage: 274, latex: "d=d_C\\frac{\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,k}^{2}}{\\delta_{Cx}\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,k}}" },
+  { id: F14, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.4", pdfPage: 274, latex: "d=d_C\\frac{\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,K}^{2}}{\\delta_{Cx}\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,K}}" },
   { id: F15, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.5", pdfPage: 274, latex: "e^*=\\frac{\\left[\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,k}\\right]^2}{\\left[\\sum_{k=1}^{N}(P_k+Q_k)\\right]\\left[\\sum_{k=1}^{N}(P_k+Q_k)\\delta_{PQ_x,k}^{2}\\right]}" },
   { id: F16, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.6", pdfPage: 274, latex: "a=\\frac{4\\pi^2}{T_0^2}d" },
   { id: F17, unitId: unitId("C8.7.1.2.1.3"), officialNumber: "C8.7.1.7", pdfPage: 274, latex: "T_0=\\kappa\\lambda L\\sqrt{\\frac{W}{Eg}}" },

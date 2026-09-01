@@ -74,7 +74,7 @@ function normalizeExtracted(value: string): string {
         .replace(/\bE\s+d\b/gu, "E_d")
         .replace(/\bR\s+d\b/gu, "R_d")
         .replace(/\bR\s*ad\b/gu, "R_{ad}")
-        .replace(/\bRd\/Ed\b/gu, "R_d/E_d")
+        .replace(/\bRd\/Ed\b/gu, "Rd/Ed")
         .replace(/\s+/gu, " ")
         .trim();
     return result;
@@ -116,12 +116,12 @@ const manual = (kind: BlockKind, page: number, text: string): BlockSpec => ({ ki
 
 const inlineTerms: Array<[string, string]> = [
     ["b÷2b", "b\\div 2b"],
-    ["0.5b÷b", "0{,}5b\\div b"],
-    ["A2+M2+R2", "A_2+M_2+R_2"],
-    ["A2+M2+R1", "A_2+M_2+R_1"],
-    ["A2+M2+R3", "A_2+M_2+R_3"],
-    ["A1+M1+R1", "A_1+M_1+R_1"],
-    ["A1+M1+R3", "A_1+M_1+R_3"],
+    ["0.5b÷b", "0.5b\\div b"],
+    ["A2+M2+R2", "A2+M2+R2"],
+    ["A2+M2+R1", "A2+M2+R1"],
+    ["A2+M2+R3", "A2+M2+R3"],
+    ["A1+M1+R1", "A1+M1+R1"],
+    ["A1+M1+R3", "A1+M1+R3"],
     ["γ_G1", "\\gamma_{G1}"],
     ["γ_G2", "\\gamma_{G2}"],
     ["γ_Q", "\\gamma_Q"],
@@ -130,7 +130,7 @@ const inlineTerms: Array<[string, string]> = [
     ["γ_cu", "\\gamma_{cu}"],
     ["γ_R", "\\gamma_R"],
     ["E_d ≤ R_d", "E_d\\le R_d"],
-    ["R_d/E_d", "R_d/E_d"],
+    ["Rd/Ed", "Rd/Ed"],
     ["E_d", "E_d"],
     ["R_d", "R_d"],
     ["R_{ad}", "R_{ad}"],

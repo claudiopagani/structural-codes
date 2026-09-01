@@ -206,7 +206,9 @@ test("C3.3.8.1.3 conserva il raw completo dei capoversi", async () => {
 
 test("C3 step 2 rende in LaTeX grandezze, angoli e formule inline", async () => {
     const units = await Promise.all(
-        unitIds.map((id) => json(`corpus/units/circ2019/${id}.json`)),
+        ["c3.3.4", ...unitIds].map((id) =>
+            json(`corpus/units/circ2019/${id}.json`),
+        ),
     );
     const latex = units.flatMap((unit) =>
         unit.blocks.flatMap(
@@ -234,6 +236,9 @@ test("C3 step 2 rende in LaTeX grandezze, angoli e formule inline", async () => 
     ]) {
         assert.ok(latex.includes(expected), expected);
     }
+    assert.ok(latex.includes("c_p"));
+    assert.ok(!latex.includes("c"));
+    assert.ok(!latex.includes("p"));
 });
 
 test("ogni asset revisionato di C3 step 2 compare una sola volta", async () => {

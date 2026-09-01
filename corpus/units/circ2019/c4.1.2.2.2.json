@@ -1067,7 +1067,7 @@
       "text": {
         "raw": "I valori da attribuire a K nel caso di calcestruzzo molto sollecitato (\u0012=1,5%) o poco sollecitato (\u0012=0,5%) sono riportati in Tabella",
         "normalized": "I valori di K per calcestruzzo molto sollecitato (ρ = 1,5%) o poco sollecitato (ρ = 0,5%) sono riportati nella Tabella C4.1.I, insieme ai valori limite di l/h calcolati assumendo fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -1075,39 +1075,21 @@
           },
           {
             "kind": "math",
-            "value": "ρ",
-            "latex": "\\rho"
+            "value": "ρ = 1,5%",
+            "latex": "\\rho=1{,}5\\%"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": ") o poco sollecitato ("
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "ρ = 0,5%",
+            "latex": "\\rho=0{,}5\\%"
           },
           {
             "kind": "text",
-            "value": " 1,5%) o poco sollecitato ("
-          },
-          {
-            "kind": "math",
-            "value": "ρ",
-            "latex": "\\rho"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,5%) sono riportati nella Tabella C4.1.I, insieme ai valori limite di "
+            "value": ") sono riportati nella Tabella C4.1.I, insieme ai valori limite di "
           },
           {
             "kind": "math",
@@ -1120,57 +1102,21 @@
           },
           {
             "kind": "math",
-            "value": "fck",
-            "latex": "f_{ck}"
+            "value": "fck = 30 MPa",
+            "latex": "f_{ck}=30\\,\\mathrm{MPa}"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "[500 As,eff/(fyk As,calc)] = 1",
+            "latex": "\\left[\\frac{500A_{s,eff}}{f_{yk}A_{s,calc}}\\right]=1"
           },
           {
             "kind": "text",
-            "value": " 30 MPa e [500 "
-          },
-          {
-            "kind": "math",
-            "value": "As,eff",
-            "latex": "A_{s,eff}"
-          },
-          {
-            "kind": "text",
-            "value": "/("
-          },
-          {
-            "kind": "math",
-            "value": "fyk",
-            "latex": "f_{yk}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "As,calc",
-            "latex": "A_{s,calc}"
-          },
-          {
-            "kind": "text",
-            "value": ")] "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1."
+            "value": "."
           }
         ]
       },
@@ -1220,6 +1166,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le uguaglianze e le frazioni inline della nota alla Tabella C4.1.I."
           }
         ],
         "rawSha256": "531398a825f31f9e3268f11ef482d27ccc341a356893ae38dea8bc7a6266bec2",

@@ -16,8 +16,9 @@ const sha256 = (value: string): string =>
     createHash("sha256").update(value, "utf8").digest("hex");
 
 const mathTerms: Array<[string, string]> = [
-    ["1.25% x (1-ν)", "1{,}25\\%\\,x\\,(1-\\nu)"],
-    ["2.0% x (1-ν)", "2{,}0\\%\\,x\\,(1-\\nu)"],
+    ["1.25% x (1-ν)", "1.25\\%\\times(1-\\nu)"],
+    ["2.0% x (1-ν)", "2.0\\%\\times(1-\\nu)"],
+    ["1.5% x (1-ν)", "1.5\\%\\times(1-\\nu)"],
     ["ν = σ_0/f_d=N/(A f_d)", "\\nu=\\frac{\\sigma_0}{f_d}=\\frac{N}{A f_d}"],
     ["ν = σ_0/f_d", "\\nu=\\frac{\\sigma_0}{f_d}"],
     ["L_zd-sez", "L_{zd-sez}"],
@@ -26,18 +27,20 @@ const mathTerms: Array<[string, string]> = [
     ["q*≤4", "q^*\\le4"],
     ["q*=4", "q^*=4"],
     ["q*=3", "q^*=3"],
-    ["1.0%", "1{,}0\\%"],
-    ["1.6%", "1{,}6\\%"],
-    ["1.2%", "1{,}2\\%"],
-    ["0.5%", "0{,}5\\%"],
-    ["0,075 g", "0{,}075g"],
+    ["1.0%", "1.0\\%"],
+    ["1.6%", "1.6\\%"],
+    ["1.2%", "1.2\\%"],
+    ["0.5%", "0.5\\%"],
+    ["0,075 g", "0{,}075\\,g"],
     ["55%", "55\\%"],
     ["45%", "45\\%"],
     ["80%", "80\\%"],
     ["3/4", "\\frac{3}{4}"],
     ["2/3", "\\frac{2}{3}"],
-    ["ν > 0.2", "\\nu>0{,}2"],
-    ["ν ≤ 0.2", "\\nu\\le0{,}2"],
+    ["ν > 0.2", "\\nu>0.2"],
+    ["ν ≤ 0.2", "\\nu\\le0.2"],
+    ["0.2", "0.2"],
+    ["0,2", "0{,}2"],
     ["f_vd", "f_{vd}"],
     ["f_yd", "f_{yd}"],
     ["f_bd", "f_{bd}"],
@@ -204,7 +207,7 @@ const units: Unit[] = [
         title: "Pressoflessione nel piano",
         page: 233,
         blocks: [
-            p(233, "Si sottolinea che la capacità di spostamento ultimo allo SLC pari a 1.0% è coerente con rotture per pressoflessione caratterizzate da bassi valori dello sforzo di compressione medio normalizzato ν = σ_0/f_d. Per valori di ν > 0.2 è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a 1.25% x (1-ν) e, comunque, non inferiore allo spostamento al limite elastico del pannello."),
+            p(233, "Si sottolinea che la capacità di spostamento ultimo allo SLC pari a 1.0% è coerente con rotture per pressoflessione caratterizzate da bassi valori dello sforzo di compressione medio normalizzato ν = σ_0/f_d. In particolare tale valore è coerente con i risultati sperimentali ottenuti per ν ≤ 0.2; per ν > 0.2 è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a 1.25% x (1-ν) e, comunque, non inferiore allo spostamento al limite elastico del pannello."),
         ],
     },
     {
@@ -230,7 +233,7 @@ const units: Unit[] = [
         title: "Pressoflessione nel piano",
         page: 233,
         blocks: [
-            p(233, "Si sottolinea che la capacità di spostamento ultimo allo SLC pari a 1.6% è coerente con rotture per pressoflessione caratterizzate da bassi valori dello sforzo di compressione medio normalizzato ν = σ_0/f_d. Per valori di ν > 0.2 è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a 2.0% x (1-ν) e, comunque, non inferiore allo spostamento al limite elastico del pannello."),
+            p(233, "Si sottolinea che la capacità di spostamento ultimo allo SLC pari a 1.6% è coerente con rotture per pressoflessione caratterizzate da bassi valori dello sforzo di compressione medio normalizzato ν = σ_0/f_d. Per valori di ν superiori a 0.2 è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a 2.0% x (1-ν) e, comunque, non inferiore allo spostamento al limite elastico del pannello."),
         ],
     },
     {
@@ -252,6 +255,7 @@ const units: Unit[] = [
             li(233, "1.2% dell’altezza del pannello (rottura per pressoflessione con ν ≤ 0.2);"),
             li(233, "0.5% dell’altezza del pannello (rottura per taglio);"),
             p(233, "in cui ν è lo sforzo assiale medio normalizzato ν = σ_0/f_d=N/(A f_d) ed A è l’area lorda della sezione normale del setto murario comprensiva degli elementi di confinamento in c.a."),
+            p(234, "Per valori di ν superiori a 0,2, nel caso di rottura per pressoflessione, è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite, si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a 1.5% x (1-ν) e, comunque, non inferiore allo spostamento al limite elastico del pannello."),
         ],
     },
     {
@@ -302,6 +306,7 @@ const knownNtcNumbers = new Set(
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -5)),
 );
+const pages232To235Only = process.argv.includes("--pages-232-235");
 for (const unit of units) {
     const id = unitId(unit.number);
     const lower = unit.number.toLowerCase();
@@ -313,6 +318,7 @@ for (const unit of units) {
         .slice(1)
         .map((_, index) => unitId(lower.split(".").slice(0, index + 1).join(".")));
     const hasNtcTarget = knownNtcNumbers.has(unit.number.slice(1));
+    const includeRelations = hasNtcTarget && !pages232To235Only;
     const specs = [{ kind: "heading" as const, page: unit.page, text: `${unit.number} ${unit.title}` }, ...unit.blocks];
     const blocks = specs.map((block, index) => {
         const blockId = index === 0 ? "block-heading" : `block-editorial-${String(index).padStart(3, "0")}`;
@@ -339,7 +345,7 @@ for (const unit of units) {
             evidence: evidence(block.page, block.text),
         };
     });
-    const relation = hasNtcTarget
+    const relation = includeRelations
         ? [{
               relationId: `${id}#relation-001`,
               type: "clarifies",
@@ -396,7 +402,7 @@ for (const unit of units) {
                     severity: "blocking",
                     note: "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF.",
                 },
-                ...(hasNtcTarget
+                ...(includeRelations
                     ? [{
                           issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`,
                           type: "relation-review",

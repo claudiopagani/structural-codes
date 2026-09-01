@@ -445,7 +445,7 @@
       "text": {
         "raw": "P n è la probabilità annuale di superamento (approssimativamente equivalente a 1/ n, dove n è il corrispondente periodo di\nritorno espresso in anni;",
         "normalized": "Pn è la probabilità annuale di superamento (approssimativamente equivalente a 1/n, dove n è il corrispondente periodo di ritorno espresso in anni;",
-        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -459,7 +459,7 @@
           {
             "kind": "math",
             "value": "1/n",
-            "latex": "1/n"
+            "latex": "\\frac{1}{n}"
           },
           {
             "kind": "text",
@@ -507,6 +507,11 @@
             "operation": "normalize-whitespace",
             "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Uniformati gli spazi attorno agli indici e all’operatore di divisione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Resa come frazione l'espressione inline 1/n mostrata nella fonte."
           }
         ],
         "rawSha256": "20595861f88e4b9cf2b32df76860f3bb828944455c7aeb7f7e45071b40988bb7",

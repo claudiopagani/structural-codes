@@ -93,7 +93,7 @@
       "text": {
         "raw": "la tensione massima 1s agente nella generica piastra in acciaio sia non maggiore di",
         "normalized": "la tensione massima σ_s agente nella generica piastra in acciaio sia non maggiore di",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -125,6 +125,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "b4cf8121f2ee982e6f740a935fb203b1c1da20283129a3270264b293b5212d18",
@@ -244,9 +249,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Il carico massimo verticale agente sul singolo isolatore dovrà essere inferiore al carico critico Vcr diviso per un coefficiente di",
-        "normalized": "Il carico massimo verticale agente sul singolo isolatore dovrà essere inferiore al carico critico V_cr diviso per un coefficiente di",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "raw": "Il carico massimo verticale agente sul singolo isolatore dovrà essere inferiore al carico critico Vcr diviso per un coefficiente di\nsicurezza 2,0.",
+        "normalized": "Il carico massimo verticale agente sul singolo isolatore dovrà essere inferiore al carico critico V_cr diviso per un coefficiente di sicurezza 2,0.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -259,7 +264,16 @@
           },
           {
             "kind": "text",
-            "value": " diviso per un coefficiente di"
+            "value": " diviso per un coefficiente di sicurezza "
+          },
+          {
+            "kind": "math",
+            "value": "2,0",
+            "latex": "2{,}0"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -278,38 +292,24 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Ricongiunti blocchi creati da ritorni a capo tipografici che interrompevano un’unica espressione matematica."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
-        "rawSha256": "06e95ea90b914b6726385a1b40c7987bd0df56480057f9bb5da070c96fa913fb",
-        "normalizedSha256": "c56d3500d79bbb2a2801ebd3a184e92b74381d6eeec3da313809ce5853d9b54b"
+        "rawSha256": "eaeb8d781b0a5dbc6205606639dafcc97ec62a034412817094f8a6665f32719d",
+        "normalizedSha256": "4f68a18a4953650599c01b82786b9017807b16f4ba248908f591de7d4e9bb96c"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "sicurezza 2,0.",
-        "normalized": "sicurezza 2,0.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 339,
-        "printedPage": "335",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "c287c8a8d792951ae1b9349210c442aabcf30c57c97d508b18ea8647e25f7f59",
-        "normalizedSha256": "c287c8a8d792951ae1b9349210c442aabcf30c57c97d508b18ea8647e25f7f59"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -333,27 +333,18 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-009",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "t1 e t2 sono gli spessori dei due strati di elastomero direttamente a contatto con la piastra ts è il suo spessore (ts \u001e",
-        "normalized": "t_1 e t_2 sono gli spessori dei due strati di elastomero direttamente a contatto con la piastra; t_s è il suo spessore (t_s ≥",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "raw": "t1 e t2 sono gli spessori dei due strati di elastomero direttamente a contatto con la piastra ts è il suo spessore (ts \u001e\n2mm), deve risultare inferiore alla tensione di snervamento dell’acciaio f yk.",
+        "normalized": "t_1 e t_2 sono gli spessori dei due strati di elastomero direttamente a contatto con la piastra; t_s è il suo spessore (t_s ≥ 2 mm), deve risultare inferiore alla tensione di snervamento dell’acciaio f_yk.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "t_1",
-            "latex": "t_1"
-          },
-          {
-            "kind": "text",
-            "value": " e "
-          },
-          {
-            "kind": "math",
-            "value": "t_2",
-            "latex": "t_2"
+            "value": "t_1 e t_2",
+            "latex": "t_1\\text{ e }t_2"
           },
           {
             "kind": "text",
@@ -366,12 +357,25 @@
           },
           {
             "kind": "text",
-            "value": " è il suo spessore (t_s "
+            "value": " è il suo spessore ("
           },
           {
             "kind": "math",
-            "value": "≥",
-            "latex": "\\ge"
+            "value": "t_s ≥ 2 mm",
+            "latex": "t_s\\ge2\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": "), deve risultare inferiore alla tensione di snervamento dell’acciaio "
+          },
+          {
+            "kind": "math",
+            "value": "f_yk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -400,65 +404,30 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
-          }
-        ],
-        "rawSha256": "9d6b3a6119b785a9139a3c4ae8167cbc6302d20f50fa0cb73779cb2e3ba3b332",
-        "normalizedSha256": "98dca98b80fba08c3c540cef0a6870b22d1476f703d113b89aa5e4e7108638b4"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-010",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "2mm), deve risultare inferiore alla tensione di snervamento dell’acciaio f yk.",
-        "normalized": "2 mm), deve risultare inferiore alla tensione di snervamento dell’acciaio f_yk.",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "2 mm), deve risultare inferiore alla tensione di snervamento dell’acciaio "
           },
-          {
-            "kind": "math",
-            "value": "f_yk",
-            "latex": "f_{yk}"
-          },
-          {
-            "kind": "text",
-            "value": "."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 339,
-        "printedPage": "335",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.2.0",
-            "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Ricongiunti blocchi creati da ritorni a capo tipografici che interrompevano un’unica espressione matematica."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
-        "rawSha256": "c7d9a01e4b4bffecfba7030f1d129f6e12e78c7496bc5c4b524991de08ff58b8",
-        "normalizedSha256": "1ba43572c5ca32020b81d78bdee2af7702e3bf2221f5d2a898499b56dd456dd7"
+        "rawSha256": "1d08a85118cdabff6561632662a37f3cf425d0a2c99e6e2eac20c9a4ea985638",
+        "normalizedSha256": "c8bc2e778171aa8c87ed1c8b3c77792750ee9c71c01b1d860193fddc8712db32"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-011",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": ".* è il valore massimo della deformazione di taglio raggiunto nelle prove di qualificazione relative all’efficacia dell’aderenza\nelastomero-acciaio, senza segni di rottura.",
         "normalized": "γ^* è il valore massimo della deformazione di taglio raggiunto nelle prove di qualificazione relative all’efficacia dell’aderenza elastomero-acciaio, senza segni di rottura.",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -496,6 +465,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "e616fe2ce207c1b1f1a0bc1b244bacaa795fff1f79420d51c2072d1153fd5d3d",
@@ -503,13 +477,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-012",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-010",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Ar è l’ area ridotta efficace dell’isolatore calcolata come:",
         "normalized": "A_r è l’area ridotta efficace dell’isolatore calcolata come:",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -537,6 +511,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "db2397019bf381ca78cccedf9d609fe359cc806c7fb604ef34ab3df3117ff681",
@@ -544,7 +523,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-013",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-011",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.d",
@@ -580,7 +559,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-014",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -620,7 +599,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-015",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-013",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.e",
@@ -656,13 +635,33 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-016",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-014",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Ar = min [(bx - d rftx - d Ex)\u0006(b y - d rfty - 0,3dEy) , (bx - d rftx - 0,3d Ex)\u0006(b y - d rfty - d Ey)] per isolatori rettangolari di lati bx e by e per",
-        "normalized": "per isolatori rettangolari di lati b_x e b_y e per",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0"
+        "raw": "Ar = min [(bx - d rftx - d Ex)\u0006(b y - d rfty - 0,3dEy) , (bx - d rftx - 0,3d Ex)\u0006(b y - d rfty - d Ey)] per isolatori rettangolari di lati bx e by e per\nuno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dalla azione sismica agente\nnelle direzioni x ed y (dEx,d Ey)",
+        "normalized": "per isolatori rettangolari di lati b_x e b_y e per uno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dall’azione sismica agente nelle direzioni x ed y (d_{Ex}, d_{Ey})",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "per isolatori rettangolari di lati "
+          },
+          {
+            "kind": "math",
+            "value": "b_x e b_y",
+            "latex": "b_x\\text{ e }b_y"
+          },
+          {
+            "kind": "text",
+            "value": " e per uno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dall’azione sismica agente nelle direzioni x ed y "
+          },
+          {
+            "kind": "math",
+            "value": "(d_{Ex}, d_{Ey})",
+            "latex": "(d_{Ex},d_{Ey})"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -689,84 +688,30 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
-          }
-        ],
-        "rawSha256": "476a2d5c7d15a832e45673c4dd929d40311b8f623596ebf58ee26ca65ecdd3f9",
-        "normalizedSha256": "61160977d5b46636ed5c78cfd36dde916d81b6a556e87e82d06b4c918f7c412f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-017",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "uno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dalla azione sismica agente\nnelle direzioni x ed y (dEx,d Ey)",
-        "normalized": "uno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dall’azione sismica agente nelle direzioni x ed y (d_{Ex}, d_{Ey})",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "uno spostamento relativo tra le due facce (superiore e inferiore) degli isolatori, prodotti dall’azione sismica agente nelle direzioni x ed y ("
-          },
-          {
-            "kind": "math",
-            "value": "d_{Ex}",
-            "latex": "d_{Ex}"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "d_{Ey}",
-            "latex": "d_{Ey}"
-          },
-          {
-            "kind": "text",
-            "value": ")"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 339,
-        "printedPage": "335",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Ricongiunti blocchi creati da ritorni a capo tipografici che interrompevano un’unica espressione matematica."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.2.0",
-            "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
-        "rawSha256": "d8344d1e7907141bf214f9ba60165705c5bae709830900ae77553fea388df945",
-        "normalizedSha256": "98b320c34b4c0d9f031c4cc261ff91b80339c5449ca5fc14946f2c59fc88f222"
+        "rawSha256": "fc1ef9d22879a9371f47a57fcb49b461e9db67f2da14c0a7f9212f8ef166a9a7",
+        "normalizedSha256": "0dd1064341265a65f44ae1e0df4488456409b41da5470b060adcf1a4dfdf28dc"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-018",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-015",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Vcr è il carico critico calcolato come:",
         "normalized": "V_cr è il carico critico calcolato come:",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -794,6 +739,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "3cde12fbcacb456e9f7ccc9d15a8b66df4ac80582ac6d3368ff130ace14b6ebf",
@@ -801,7 +751,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-019",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-016",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.f",
@@ -827,7 +777,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-020",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-017",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -857,40 +807,22 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-021",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-018",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "bmin= min(b x, by) per isolatori rettangolari",
         "normalized": "b_min = min(b_x, b_y) per isolatori rettangolari",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "b_min",
-            "latex": "b_{\\min}"
+            "value": "b_min = min(b_x, b_y)",
+            "latex": "b_{\\min}=\\min(b_x,b_y)"
           },
           {
             "kind": "text",
-            "value": " = min("
-          },
-          {
-            "kind": "math",
-            "value": "b_x",
-            "latex": "b_x"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "b_y",
-            "latex": "b_y"
-          },
-          {
-            "kind": "text",
-            "value": ") per isolatori rettangolari"
+            "value": " per isolatori rettangolari"
           }
         ]
       },
@@ -909,6 +841,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "d04cb48b0f525286337569b70b37d703b480c103bfef4e18607baab7f220543f",
@@ -916,22 +853,22 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-022",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-019",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "bmin= D per isolatori circolari.",
         "normalized": "b_min = D per isolatori circolari.",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "b_min",
-            "latex": "b_{\\min}"
+            "value": "b_min = D",
+            "latex": "b_{\\min}=D"
           },
           {
             "kind": "text",
-            "value": " = D per isolatori circolari."
+            "value": " per isolatori circolari."
           }
         ]
       },
@@ -950,6 +887,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "656e82152a763f7351f078f4312993fe2f5439d85c89bb7be37b24be8059bec0",
@@ -957,7 +899,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-023",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-020",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.g",
@@ -983,7 +925,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-024",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-021",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1013,7 +955,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-025",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-022",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.h",
@@ -1039,7 +981,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-026",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-023",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1069,7 +1011,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-027",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-024",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.i",
@@ -1105,7 +1047,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-028",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-025",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1145,7 +1087,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-029",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-026",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1169,7 +1111,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-030",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-027",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.j",
@@ -1210,13 +1152,28 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-031",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-028",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "a 2 =(\u000fx \nb x\n2+ \u000fyb y\n2), con \u000fx ed \u000fy che rappresentano le rotazioni rispettivamente attorno alle direzioni x ed y nel caso di un\nisolatore rettangolare;",
         "normalized": "con α_x ed α_y che rappresentano le rotazioni rispettivamente attorno alle direzioni x ed y nel caso di un isolatore rettangolare;",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "con "
+          },
+          {
+            "kind": "math",
+            "value": "α_x ed α_y",
+            "latex": "\\alpha_x\\text{ ed }\\alpha_y"
+          },
+          {
+            "kind": "text",
+            "value": " che rappresentano le rotazioni rispettivamente attorno alle direzioni x ed y nel caso di un isolatore rettangolare;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1248,6 +1205,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "d13e5f296d0bec9c2a6baea9e35c8c456c0ac6a2c6fed39e57975d42d804ce5e",
@@ -1255,7 +1217,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-032",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-029",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.k",
@@ -1296,7 +1258,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-033",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-030",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1331,7 +1293,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-034",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-031",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.l",
@@ -1367,7 +1329,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-035",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-032",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1407,13 +1369,24 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-036",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-033",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "E c modulo di compressibilità assiale valutato (in MPa) come",
-        "normalized": "E c modulo di compressibilità assiale valutato (in MPa) come",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "E_c modulo di compressibilità assiale valutato (in MPa) come",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "E_c",
+            "latex": "E_c"
+          },
+          {
+            "kind": "text",
+            "value": " modulo di compressibilità assiale valutato (in MPa) come"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1425,13 +1398,19 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "77db2643da56b04408451c376f434b673b6d83a6c290634909790dcba8f7e7de",
-        "normalizedSha256": "77db2643da56b04408451c376f434b673b6d83a6c290634909790dcba8f7e7de"
+        "normalizedSha256": "9f09b1a0d31c563873033a51fe573785124cfe9ed8d4313b19aa4f25bc98c53c"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-037",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-034",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.m",
@@ -1467,7 +1446,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-038",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-035",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1491,13 +1470,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-039",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-036",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Gdin modulo di taglio dinamico dell’elastomero;",
         "normalized": "G_{din} modulo di taglio dinamico dell’elastomero;",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1525,6 +1504,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "e1d5f3efc5a632dd932eaf9d31e86b55460bb61559822369c3a34f0ee9343682",
@@ -1532,13 +1516,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-040",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-037",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "E b modulo di compressibilità volumetrica della gomma, da assumere pari a 2000 MPa in assenza di determinazione diretta;",
         "normalized": "E_b modulo di compressibilità volumetrica della gomma, da assumere pari a 2000 MPa in assenza di determinazione diretta;",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1547,7 +1531,16 @@
           },
           {
             "kind": "text",
-            "value": " modulo di compressibilità volumetrica della gomma, da assumere pari a 2000 MPa in assenza di determinazione diretta;"
+            "value": " modulo di compressibilità volumetrica della gomma, da assumere pari a "
+          },
+          {
+            "kind": "math",
+            "value": "2000 MPa",
+            "latex": "2000\\,\\mathrm{MPa}"
+          },
+          {
+            "kind": "text",
+            "value": " in assenza di determinazione diretta;"
           }
         ]
       },
@@ -1566,6 +1559,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "76e68e594f0bf7e4f17079c4dd4b4f48651d3a0a5881cd1428ef96ec754c6e95",
@@ -1573,31 +1571,31 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-041",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-038",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "d rftx,d rfty spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e",
-        "normalized": "d_{rftx}, d_{rfty} spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "raw": "d rftx,d rfty spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e\ntermiche (ridotte al 50%), ove rilevanti;",
+        "normalized": "d_{rftx}, d_{rfty} spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e termiche (ridotte al 50%), ove rilevanti;",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "d_{rftx}",
-            "latex": "d_{rftx}"
+            "value": "d_{rftx}, d_{rfty}",
+            "latex": "d_{rftx},d_{rfty}"
           },
           {
             "kind": "text",
-            "value": ", "
+            "value": " spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e termiche (ridotte al "
           },
           {
             "kind": "math",
-            "value": "d_{rfty}",
-            "latex": "d_{rfty}"
+            "value": "50%",
+            "latex": "50\\%"
           },
           {
             "kind": "text",
-            "value": " spostamenti relativi tra le due facce (superiore e inferiore) degli isolatori, prodotti dalle azioni di ritiro, fluage e"
+            "value": "), ove rilevanti;"
           }
         ]
       },
@@ -1616,38 +1614,24 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Ricongiunti blocchi creati da ritorni a capo tipografici che interrompevano un’unica espressione matematica."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
-        "rawSha256": "e017516fd49978f2cecfbe29bc78368d3d7d15f446970ffb9ba5855b7ed9f4d8",
-        "normalizedSha256": "cb63c30d8660fea20ab9be06927d60d4d8a33089a48a8e973999c47ba1cb6f65"
+        "rawSha256": "5f5faeaba6df289aaeba29c510c763b5e9cab51bccfe471ed1a80e4210cd3437",
+        "normalizedSha256": "cdef6e9f9787a7c119149fc78f3b869cb04302d7de9eb81fdd447a7f0963bce6"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-042",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "termiche (ridotte al 50%), ove rilevanti;",
-        "normalized": "termiche (ridotte al 50%), ove rilevanti;",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 340,
-        "printedPage": "336",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "794e2994680c675dcdc60f833d622aaf9b2a926a916a708628d49fff1b214d7f",
-        "normalizedSha256": "794e2994680c675dcdc60f833d622aaf9b2a926a916a708628d49fff1b214d7f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-043",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.9.7#block-039",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.n",

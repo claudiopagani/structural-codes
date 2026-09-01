@@ -116,13 +116,13 @@ function makeUnit(number: string, title: string, blocks: GeneratedBlock[], formu
 
 const formulaRows: FormulaRow[] = [
     { number: "C4.2.21", unit: "C4.2.4.1.3.1", page: 106, latex: "e_0=\\frac{L}{500}", raw: "e₀ = L/500 [C4.2.21]", region: reg(150, 250, 300, 80) },
-    { number: "C4.2.22", unit: "C4.2.4.1.3.1.1", page: 106, latex: "N_{C,Ed}=0{,}5\\,N_{Ed}+\\frac{M_{Ed}\\,h_0\\,A_C}{2\\,J_{eff}}", raw: "NC,Ed = 0,5 · NEd + MEd · h₀ · AC/(2 · Jeff) [C4.2.22]", region: reg(130, 485, 350, 95) },
-    { number: "C4.2.23", unit: "C4.2.4.1.3.1.1", page: 106, latex: "M_{Ed}=\\frac{N_{Ed}\\,e_0+M^I_{Ed}}{1-N_{Ed}/N_{cr}-N_{Ed}/S_V}", raw: "MEd = (NEd · e₀ + MᴵEd)/(1 − NEd/Ncr − NEd/SV) [C4.2.23]", region: reg(125, 635, 360, 100) },
-    { number: "C4.2.24", unit: "C4.2.4.1.3.1.2", page: 107, latex: "V_{Ed}=\\pi\\,\\frac{M_{Ed}}{L}", raw: "VEd = π · MEd/L [C4.2.24]", region: reg(125, 95, 360, 90) },
+    { number: "C4.2.22", unit: "C4.2.4.1.3.1.1", page: 106, latex: "N_{C,Ed}=0{,}5\\cdot N_{Ed}+\\frac{M_{Ed}\\cdot h_0\\cdot A_C}{2\\cdot J_{eff}}", raw: "NC,Ed = 0,5 · NEd + MEd · h₀ · AC/(2 · Jeff) [C4.2.22]", region: reg(130, 485, 350, 95) },
+    { number: "C4.2.23", unit: "C4.2.4.1.3.1.1", page: 106, latex: "M_{Ed}=\\frac{N_{Ed}\\cdot e_0+M^I_{Ed}}{1-N_{Ed}/N_{cr}-N_{Ed}/S_V}", raw: "MEd = (NEd · e₀ + MᴵEd)/(1 − NEd/Ncr − NEd/SV) [C4.2.23]", region: reg(125, 635, 360, 100) },
+    { number: "C4.2.24", unit: "C4.2.4.1.3.1.2", page: 107, latex: "V_{Ed}=\\pi\\cdot\\frac{M_{Ed}}{L}", raw: "VEd = π · MEd/L [C4.2.24]", region: reg(125, 95, 360, 90) },
     { number: "C4.2.25", unit: "C4.2.4.1.3.1.3", page: 107, latex: "\\frac{N_{c,Ed}}{N_{b,Rd}}\\le1{,}0", raw: "Nc,Ed/Nb,Rd ≤ 1,0 [C4.2.25]", region: reg(125, 215, 360, 90) },
-    { number: "C4.2.26", unit: "C4.2.4.1.3.1.3", page: 107, latex: "J_{eff}=0{,}5\\,h_0^2\\,A_C", raw: "Jeff = 0,5 · h₀² · AC [C4.2.26]", region: reg(125, 345, 360, 90) },
-    { number: "C4.2.27", unit: "C4.2.4.1.3.1.4", page: 108, latex: "J_{eff}=0{,}5\\,h_0^2\\,A_C+2\\,\\mu\\,J_C", raw: "Jeff = 0,5 · h₀² · AC + 2 · μ · JC [C4.2.27]", region: reg(125, 250, 360, 90) },
-    { number: "C4.2.28", unit: "C4.2.4.1.3.1.4", page: 108, latex: "\\lambda=\\frac{L}{i_0}=L\\sqrt{\\frac{2\\,A_C}{0{,}5\\,h_0^2\\,A_C+2\\,J_C}}", raw: "λ = L/i₀ = L √(2 · AC/(0,5 · h₀² · AC + 2 · JC)) [C4.2.28]", region: reg(125, 350, 360, 115) },
+    { number: "C4.2.26", unit: "C4.2.4.1.3.1.3", page: 107, latex: "J_{eff}=0{,}5\\cdot h_0^2\\cdot A_C", raw: "Jeff = 0,5 · h₀² · AC [C4.2.26]", region: reg(125, 345, 360, 90) },
+    { number: "C4.2.27", unit: "C4.2.4.1.3.1.4", page: 108, latex: "J_{eff}=0{,}5\\cdot h_0^2\\cdot A_C+2\\cdot\\mu\\cdot J_C", raw: "Jeff = 0,5 · h₀² · AC + 2 · μ · JC [C4.2.27]", region: reg(125, 250, 360, 90) },
+    { number: "C4.2.28", unit: "C4.2.4.1.3.1.4", page: 108, latex: "\\lambda=\\frac{L}{i_0}=L\\sqrt{\\frac{2\\cdot A_C}{0{,}5\\cdot h_0^2\\cdot A_C+2\\cdot J_C}}", raw: "λ = L/i₀ = L √(2 · AC/(0,5 · h₀² · AC + 2 · JC)) [C4.2.28]", region: reg(125, 350, 360, 115) },
     { number: "C4.2.29", unit: "C4.2.4.1.3.1.5", page: 108, latex: "i_y=\\frac{i_0}{1{,}15}", raw: "iy = i₀/1,15 [C4.2.29]", region: reg(125, 470, 360, 90) },
 ];
 

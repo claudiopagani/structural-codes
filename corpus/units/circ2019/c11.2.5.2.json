@@ -82,8 +82,32 @@
       "origin": "official",
       "text": {
         "raw": "superiore a 1500 m\n3 . Il controllo di Tipo B è costituito quindi da almeno 15 prelievi, ciascuno dei quali eseguito su 100 m3 di getto",
-        "normalized": "superiore a 1500 m 3 . Il controllo di Tipo B è costituito quindi da almeno 15 prelievi, ciascuno dei quali eseguito su 100 m3 di getto",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "superiore a 1500 m3. Il controllo di Tipo B è costituito quindi da almeno 15 prelievi, ciascuno dei quali eseguito su 100 m3 di getto",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1500 m3",
+            "latex": "1500\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": ". Il controllo di Tipo B è costituito quindi da almeno 15 prelievi, ciascuno dei quali eseguito su "
+          },
+          {
+            "kind": "math",
+            "value": "100 m3",
+            "latex": "100\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " di getto"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -105,10 +129,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "e1fd45da5503d0044843ff0bcc43d1e9b16d6093fc8a4d8512c463798b02962e",
-        "normalizedSha256": "1267f215b4dc736987a3e32cd08fce7d4ad51e588dce2f4950b4c194e88dc4f4"
+        "normalizedSha256": "7feadbd776181eddc5aec0a7a9baf73378e919147c82ede8523f5c87cd29ded7"
       }
     },
     {
@@ -172,24 +201,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-005",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "1) Rc,min \u0019\bÀck - 3,5",
-        "normalized": "Rc,min Àck - 3,5",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "Rc,min",
-            "latex": "R_{c,\\min}"
-          },
-          {
-            "kind": "text",
-            "value": " Àck - 3,5"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.2.a",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 320,
@@ -210,6 +224,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Due disuguaglianze consecutive conservate come unico gruppo display, inclusa la numerazione tipografica 1) e 2)."
           }
         ],
         "rawSha256": "7930f0b09efbf446b9f578b69edc56a6d5a9004e18bf17857141fe9b20745ffa",
@@ -221,18 +240,31 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "2) Rcm28 \u0019\bÀck + 1,48 *s",
-        "normalized": "Rcm28 Àck + 1,48 *s",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "raw": "con s = scarto quadratico medio.",
+        "normalized": "con s = scarto quadratico medio.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
+            "kind": "text",
+            "value": "con "
+          },
+          {
             "kind": "math",
-            "value": "Rcm28",
-            "latex": "R_{cm28}"
+            "value": "s",
+            "latex": "s"
           },
           {
             "kind": "text",
-            "value": " Àck + 1,48 *s"
+            "value": " = "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "carto quadratico medio."
           }
         ]
       },
@@ -248,18 +280,13 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
-        "rawSha256": "9cf66e69ce8ab5d052c3810c2ec434b3555b9e52c6cb460866f1baed41996689",
-        "normalizedSha256": "1db4fb306e01d7422c072cb21a3e6af120179e6268aa25ce132f2eb3332912e7"
+        "rawSha256": "ef027ec0df72fdb5cafda6257b16c4e7aa0cfef461d474933e195bbbe9daa6bf",
+        "normalizedSha256": "ef027ec0df72fdb5cafda6257b16c4e7aa0cfef461d474933e195bbbe9daa6bf"
       }
     },
     {
@@ -267,33 +294,24 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "con s = scarto quadratico medio.",
-        "normalized": "con s = scarto quadratico medio.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 320,
-        "printedPage": "316",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "ef027ec0df72fdb5cafda6257b16c4e7aa0cfef461d474933e195bbbe9daa6bf",
-        "normalizedSha256": "ef027ec0df72fdb5cafda6257b16c4e7aa0cfef461d474933e195bbbe9daa6bf"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-008",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
         "raw": "Qualora la quantità di miscela omogenea da impiegare nell’opera sia maggiore di 1500 m3 , ai fini del controllo si consiglia la\nseguente procedura:",
-        "normalized": "Qualora la quantità di miscela omogenea da impiegare nell’opera sia maggiore di 1500 m3 , ai fini del controllo si consiglia la seguente procedura:",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "Qualora la quantità di miscela omogenea da impiegare nell’opera sia maggiore di 1500 m3, ai fini del controllo si consiglia la seguente procedura:",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Qualora la quantità di miscela omogenea da impiegare nell’opera sia maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "1500 m3",
+            "latex": "1500\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": ", ai fini del controllo si consiglia la seguente procedura:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -315,14 +333,19 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "4378291c526ee737009f03e88f96320b1d9acdde8f20b996a55481b89bbf4048",
-        "normalizedSha256": "15c52b5a7a5eed17eb6915deda0ff4a04c5ad78db5e3af06bb32823dae9b07bc"
+        "normalizedSha256": "986104b8de89ee18f94c05c7133d4221c679326f51698197b8ecb0f7d714e684"
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-009",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-008",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -352,7 +375,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-010",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-009",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -382,7 +405,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-011",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-010",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -412,7 +435,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-012",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-011",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -447,7 +470,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-013",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -477,61 +500,26 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-014",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "I requisiti prestazionali più stringenti, adottati per i controlli di Tipo B, sono finalizzati a garantire la costanza prestazionale della\nmiscela. In tal senso viene anche precisato che non possono essere accettati calcestruzzi con coefficiente di variazione (s/Rm\n)",
-        "normalized": "I requisiti prestazionali più stringenti, adottati per i controlli di Tipo B, sono finalizzati a garantire la costanza prestazionale della miscela. In tal senso viene anche precisato che non possono essere accettati calcestruzzi con coefficiente di variazione (s/Rm )",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 320,
-        "printedPage": "316",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "5a676a9f2cb959da48b0f4e94e32675b337fd8597fd78a248097c31831514ed4",
-        "normalizedSha256": "be51569d3a95dbebaf610a34212848197456cd1811c0196510646af557bb4521"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-015",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "superiore a 0,3, dove s è lo scarto quadratico medio e R \nm è la resistenza media dei prelievi (N/mm2). Inoltre, la norma prevede che\ncon coefficiente di variazione superiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al §\n11.2.7.",
-        "normalized": "superiore a 0,3, dove s è lo scarto quadratico medio e R m è la resistenza media dei prelievi (N/mm2). Inoltre, la norma prevede che con coefficiente di variazione superiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al § 11.2.7.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "normalized": "I requisiti prestazionali più stringenti, adottati per i controlli di Tipo B, sono finalizzati a garantire la costanza prestazionale della miscela. In tal senso viene anche precisato che non possono essere accettati calcestruzzi con coefficiente di variazione (s/Rm)",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "superiore a 0,3, dove s è lo scarto quadratico medio e R m è la resistenza media dei prelievi ("
+            "value": "I requisiti prestazionali più stringenti, adottati per i controlli di Tipo B, sono finalizzati a garantire la costanza prestazionale della miscela. In tal senso viene anche precisato che non possono essere accettati calcestruzzi con coefficiente di variazione ("
           },
           {
             "kind": "math",
-            "value": "N/mm2",
-            "latex": "\\mathrm{N/mm^2}"
+            "value": "s/Rm",
+            "latex": "s/R_m"
           },
           {
             "kind": "text",
-            "value": "). Inoltre, la norma prevede che con coefficiente di variazione superiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al § 11.2.7."
+            "value": ")"
           }
         ]
       },
@@ -555,17 +543,138 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
+        "rawSha256": "5a676a9f2cb959da48b0f4e94e32675b337fd8597fd78a248097c31831514ed4",
+        "normalizedSha256": "a3bc890bfb202a648a110ea9fae18005a330c4be0a16d5ee427144f1a9dc5a6e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2#block-014",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "superiore a 0,3, dove s è lo scarto quadratico medio e R \nm è la resistenza media dei prelievi (N/mm2). Inoltre, la norma prevede che\ncon coefficiente di variazione superiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al §\n11.2.7.",
+        "normalized": "superiore a 0,3, dove s è lo scarto quadratico medio e Rm è la resistenza media dei prelievi (N/mm2). Inoltre, la norma prevede che con coefficiente di variazione superiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al § 11.2.7.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "uperiore a 0,3, dove "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " è lo "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "carto quadratico medio e "
+          },
+          {
+            "kind": "math",
+            "value": "Rm",
+            "latex": "R_m"
+          },
+          {
+            "kind": "text",
+            "value": " è la re"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "i"
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "tenza media dei prelievi ("
+          },
+          {
+            "kind": "math",
+            "value": "N/mm2",
+            "latex": "\\mathrm{N/mm^2}"
+          },
+          {
+            "kind": "text",
+            "value": "). Inoltre, la norma prevede che con coefficiente di variazione "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": "uperiore a 0,15 occorrono controlli più accurati, integrati con prove complementari di cui al § 11.2.7."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 320,
+        "printedPage": "316",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-profile-0.1.0",
+            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "e4d0117013b8c46ada2f13077c84f658e1f82432ea4c6f3281515dabcfedbdf3",
-        "normalizedSha256": "1d520b0dab51dbe33c38f87984701c61754efeaa0988b216abcb36004f254231"
+        "normalizedSha256": "2d75b61798680293485e34c018c4ec4c294082dbaaf6fae9476169e66e6d3233"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.2.a"
+    ],
     "tableIds": [],
     "figureIds": []
   },
@@ -584,6 +693,12 @@
         "type": "normalization-review",
         "severity": "blocking",
         "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "c11-2-5-2-formula-audit-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Gruppo di disuguaglianze trascritto dal PDF ufficiale; resta richiesta la revisione umana indipendente."
       }
     ]
   }

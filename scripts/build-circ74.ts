@@ -20,22 +20,46 @@ const mathTerms: Array<[string, string]> = [
     ["M_Ed/M_Rd", "M_{Ed}/M_{Rd}"],
     ["M_Ed", "M_{Ed}"],
     ["M_Rd", "M_{Rd}"],
+    ["M_i,d", "M_{i,d}"],
+    ["l_p", "l_p"],
     ["V_jbd", "V_{jbd}"],
-    ["α_j = 0,48 (f_ck / f_cd)", "\\alpha_j=0{,}48\\left(f_{ck}/f_{cd}\\right)"],
+    ["α_j = 0,48 (f_ck,c / f_ck)", "\\alpha_j=0{,}48\\left(f_{ck,c}/f_{ck}\\right)"],
     ["α_u/α_1", "\\alpha_u/\\alpha_1"],
     ["γ_Rd", "\\gamma_{Rd}"],
+    ["γ_C", "\\gamma_C"],
+    ["γ_S", "\\gamma_S"],
     ["μ_φ", "\\mu_\\phi"],
     ["q_0", "q_0"],
     ["r²/l_s² > 1", "r^2/l_s^2>1"],
     ["r²/l_s²", "r^2/l_s^2"],
     ["K_θ", "K_\\theta"],
+    ["l_s", "l_s"],
     ["T_θ", "T_\\theta"],
     ["Ω", "\\Omega"],
     ["θ ≤ 0,3", "\\theta\\le0{,}3"],
     ["d_r = d_Ee", "d_r=d_{Ee}"],
     ["0,0075h", "0{,}0075h"],
     ["0,0100h", "0{,}0100h"],
+    ["30%", "30\\%"],
+    ["15 cm", "15\\,\\mathrm{cm}"],
+    ["α", "\\alpha"],
+    ["q", "q"],
+    ["r", "r"],
+    ["K", "K"],
+    ["T", "T"],
 ];
+
+function findTerm(text: string, value: string, cursor: number): number {
+    let index = text.indexOf(value, cursor);
+    if (!/^[A-Za-z]$/.test(value)) return index;
+    while (index >= 0) {
+        const before = index > 0 ? text.charAt(index - 1) : "";
+        const after = index + 1 < text.length ? text.charAt(index + 1) : "";
+        if (!/[A-Za-z0-9_]/.test(before) && !/[A-Za-z0-9_]/.test(after)) return index;
+        index = text.indexOf(value, index + 1);
+    }
+    return -1;
+}
 
 function inline(text: string): any[] | undefined {
     const terms = mathTerms
@@ -47,7 +71,7 @@ function inline(text: string): any[] | undefined {
     while (cursor < text.length) {
         let next: { index: number; value: string; latex: string } | undefined;
         for (const [value, latex] of terms) {
-            const index = text.indexOf(value, cursor);
+            const index = findTerm(text, value, cursor);
             if (
                 index >= 0 &&
                 (!next ||
@@ -67,7 +91,8 @@ function inline(text: string): any[] | undefined {
         result.push({ kind: "math", value: next.value, latex: next.latex });
         cursor = next.index + next.value.length;
     }
-    return result.filter(({ value }) => value);
+    const filtered = result.filter(({ value }) => value);
+    return filtered.some(({ kind }) => kind === "math") ? filtered : undefined;
 }
 
 function evidence(page: number, text: string, region: any = null): any {
@@ -300,7 +325,7 @@ const units: Unit[] = [
             }),
             p(219, "Per la verifica della capacità del nodo, relativamente alla massima trazione diagonale nel calcestruzzo, le NTC forniscono due formulazioni alternative. Attraverso l’uso della [7.4.10] si garantisce che le tensioni all’interno del pannello nodale non superino la resistenza a trazione del calcestruzzo, garantendo l’integrità del nodo; attraverso la [7.4.11] e la [7.4.12] la capacità del nodo è affidata interamente alle armature orizzontali, accettando dunque la fessurazione del nodo. Nel primo caso la verifica dipende dalle dimensioni del pannello nodale; nel secondo caso la verifica risulta indipendente da esse. È sufficiente che la verifica risulti soddisfatta per uno dei due approcci."),
             p(219, "Per la verifica di capacità del nodo è consigliabile l’utilizzo, nelle due direzioni di verifica del pannello nodale, dello stesso approccio, tra i due consentiti dalla norma."),
-            p(219, "Nella valutazione di V_jbd, di cui alla Equazione [7.4.8], è possibile tenere direttamente conto del confinamento del calcestruzzo, così come indicato al § 4.1.2.1.2.1 delle NTC, ponendo α_j = 0,48 (f_ck / f_cd), avendo cura di considerare soltanto il volume di calcestruzzo effettivamente confinato."),
+            p(219, "Nella valutazione di V_jbd, di cui alla Equazione [7.4.8], è possibile tenere direttamente conto del confinamento del calcestruzzo, così come indicato al § 4.1.2.1.2.1 delle NTC, ponendo α_j = 0,48 (f_ck,c / f_ck), avendo cura di considerare soltanto il volume di calcestruzzo effettivamente confinato."),
         ],
     },
     {
@@ -468,12 +493,20 @@ const figures = [
 
 const outputDirectory = join(root, "corpus", "units", "circ2019");
 await mkdir(outputDirectory, { recursive: true });
+const pages214To216Only = process.argv.includes("--pages-214-216");
+const pages217To221Only = process.argv.includes("--pages-217-221");
+const currentStepOnly = pages214To216Only || pages217To221Only;
+const unitsToWrite = pages214To216Only
+    ? units.filter(({ page }) => page <= 216)
+    : pages217To221Only
+      ? units.filter(({ page }) => page >= 217 && page <= 221)
+      : units;
 const knownNtcNumbers = new Set(
     (await readdir(join(root, "corpus", "units", "ntc2018")))
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -5)),
 );
-for (const unit of units) {
+for (const unit of unitsToWrite) {
     const id = unitId(unit.number);
     const hasNtcTarget = knownNtcNumbers.has(unit.number.slice(1));
     const headingText = `${unit.number} ${unit.title}`;
@@ -659,11 +692,13 @@ const manifest = {
         sha256: "0".repeat(64),
     })),
 };
-await writeFile(
-    join(root, "corpus", "assets", "circ2019", "7.4.json"),
-    `${JSON.stringify(manifest, null, 2)}\n`,
-    "utf8",
-);
+if (!currentStepOnly) {
+    await writeFile(
+        join(root, "corpus", "assets", "circ2019", "7.4.json"),
+        `${JSON.stringify(manifest, null, 2)}\n`,
+        "utf8",
+    );
+}
 console.log(
-    `circ74: generated ${units.length} units, ${formulas.length} formulas and ${figures.length} figures`,
+    `circ74: generated ${unitsToWrite.length} units${pages214To216Only ? " for PDF pages 214-216" : pages217To221Only ? " for PDF pages 217-221" : `, ${formulas.length} formulas and ${figures.length} figures`}`,
 );

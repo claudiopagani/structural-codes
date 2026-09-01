@@ -115,12 +115,12 @@ function makeUnit(number: string, title: string, blocks: GeneratedBlock[], formu
 }
 
 const formulaRows: FormulaRow[] = [
-    { number: "C4.2.70", unit: "C4.2.4.1.3.4.5", page: 119, latex: "\\sigma_{\\mathrm{cr,c}}=\\frac{\\pi^2 E\\,t^2}{12(1-\\nu^2)a^2}", raw: "σ_cr,c = π² E · t²/[12(1 − ν²)a²] [C4.2.70]", region: reg(145, 265, 310, 75) },
-    { number: "C4.2.71", unit: "C4.2.4.1.3.4.5", page: 119, latex: "\\sigma_{\\mathrm{cr,c}}=\\sigma_{\\mathrm{cr,sl}}\\frac{b_c}{b_{\\mathrm{sl,1}}}", raw: "σ_cr,c = σ_cr,sl · b_c/b_sl,1 [C4.2.71]", region: reg(145, 355, 310, 65) },
-    { number: "C4.2.72", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\sigma_{\\mathrm{cr,sl}}=\\frac{\\pi^2 E\\,I_{\\mathrm{sl,1}}}{A_{\\mathrm{sl}}a^2}", raw: "σ_cr,sl = π² E · I_sl,1/(A_sl a²) [C4.2.72]", region: reg(145, 270, 310, 65) },
+    { number: "C4.2.70", unit: "C4.2.4.1.3.4.5", page: 119, latex: "\\sigma_{\\mathrm{cr,c}}=\\frac{\\pi^2 E\\cdot t^2}{12(1-\\nu^2)a^2}", raw: "σ_cr,c = π² E · t²/[12(1 − ν²)a²] [C4.2.70]", region: reg(145, 265, 310, 75) },
+    { number: "C4.2.71", unit: "C4.2.4.1.3.4.5", page: 119, latex: "\\sigma_{\\mathrm{cr,c}}=\\sigma_{\\mathrm{cr,sl}}\\cdot\\frac{b_c}{b_{\\mathrm{sl,1}}}", raw: "σ_cr,c = σ_cr,sl · b_c/b_sl,1 [C4.2.71]", region: reg(145, 355, 310, 65) },
+    { number: "C4.2.72", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\sigma_{\\mathrm{cr,sl}}=\\frac{\\pi^2 E\\cdot I_{\\mathrm{sl,1}}}{A_{\\mathrm{sl}}a^2}", raw: "σ_cr,sl = π² E · I_sl,1/(A_sl a²) [C4.2.72]", region: reg(145, 270, 310, 65) },
     { number: "C4.2.73", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\lambda_c=\\sqrt{\\frac{f_y}{\\sigma_{\\mathrm{cr,c}}}}", raw: "λ_c = √(f_y/σ_cr,c) [C4.2.73]", region: reg(145, 365, 310, 65) },
     { number: "C4.2.74", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\lambda_c=\\sqrt{\\frac{A_{\\mathrm{sl,1,eff}}f_y}{A_{\\mathrm{sl}}\\sigma_{\\mathrm{cr,c}}}}", raw: "λ_c = √(A_sl,1,eff f_y/(A_sl σ_cr,c)) [C4.2.74]", region: reg(145, 460, 310, 70) },
-    { number: "C4.2.75", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\alpha_e=\\alpha+\\frac{0{,}09\\,e}{i}", raw: "α_e = α + 0,09 · e/i [C4.2.75]", region: reg(145, 555, 310, 70) },
+    { number: "C4.2.75", unit: "C4.2.4.1.3.4.5", page: 120, latex: "\\alpha_e=\\alpha+\\frac{0{,}09\\cdot e}{i}", raw: "α_e = α + 0,09 · e/i [C4.2.75]", region: reg(145, 555, 310, 70) },
     { number: "C4.2.76", unit: "C4.2.4.1.3.4.5", page: 120, latex: "i=\\sqrt{\\frac{I_{\\mathrm{sl,1}}}{A_{\\mathrm{sl,1}}}}", raw: "i = √(I_sl,1/A_sl,1) [C4.2.76]", region: reg(145, 660, 310, 70) },
 ];
 

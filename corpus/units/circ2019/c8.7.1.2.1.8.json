@@ -37,31 +37,7 @@
       "text": {
         "raw": "C8.7.1.2.1.8 Verifica in spostamento allo SLV e allo SLC (analisi cinematica non lineare)",
         "normalized": "C8.7.1.2.1.8 Verifica in spostamento allo SLV e allo SLC (analisi cinematica non lineare)",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "C8.7.1.2.1.8 Verifica in spostamento allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " e allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
-          },
-          {
-            "kind": "text",
-            "value": " (analisi cinematica non lineare)"
-          }
-        ]
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -95,25 +71,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La verifica in spostamento si esegue calcolando l’accelerazione al suolo che produce una domanda di spostamento sul meccanismo locale pari a quella prima definita come corrispondente al raggiungimento dello "
+            "value": "La verifica in spostamento si esegue calcolando l’accelerazione al suolo che produce una domanda di spostamento sul meccanismo locale pari a quella prima definita come corrispondente al raggiungimento dello SLV o dello SLC. A tal fine è necessario valutare, a partire dalla curva di capacità "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "a(d)",
+            "latex": "a(d)"
           },
           {
             "kind": "text",
-            "value": " o dello "
-          },
-          {
-            "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
-          },
-          {
-            "kind": "text",
-            "value": ". A tal fine è necessario valutare, a partire dalla curva di capacità a(d), il periodo equivalente caratteristico dei due stati limite:"
+            "value": ", il periodo equivalente caratteristico dei due stati limite:"
           }
         ]
       },
@@ -286,44 +253,26 @@
       "origin": "official",
       "text": {
         "raw": "La domanda di spostamento sul meccanismo locale allo SLV corrisponde al valore massimo dello spostamento spettrale valutato\nnell’intervallo di periodi [T 0, T SLV]. Questo criterio deve essere seguito nel caso in cui siano stati selezionati accelerogrammi di\nsito o sia stata svolta un’analisi di risposta sismica locale (spettro di spostamento non strettamente crescente con il periodo T\nanche per bassi periodi), in quanto i picchi dello spettro sono spesso associati a impulsi particolarmente pericolosi.",
-        "normalized": "La domanda di spostamento sul meccanismo locale allo SLV corrisponde al valore massimo dello spostamento spettrale valutato nell’intervallo di periodi [T 0, T SLV]. Questo criterio deve essere seguito nel caso in cui siano stati selezionati accelerogrammi di sito o sia stata svolta un’analisi di risposta sismica locale (spettro di spostamento non strettamente crescente con il periodo T anche per bassi periodi), in quanto i picchi dello spettro sono spesso associati a impulsi particolarmente pericolosi.",
+        "normalized": "La domanda di spostamento sul meccanismo locale allo SLV corrisponde al valore massimo dello spostamento spettrale valutato nell’intervallo di periodi [T_0, T_{SLV}]. Questo criterio deve essere seguito nel caso in cui siano stati selezionati accelerogrammi di sito o sia stata svolta un’analisi di risposta sismica locale (spettro di spostamento non strettamente crescente con il periodo T anche per bassi periodi), in quanto i picchi dello spettro sono spesso associati a impulsi particolarmente pericolosi.",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La domanda di spostamento sul meccanismo locale allo "
+            "value": "La domanda di spostamento sul meccanismo locale allo SLV corrisponde al valore massimo dello spostamento spettrale valutato nell’intervallo di periodi ["
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "T_0",
+            "latex": "T_0"
           },
           {
             "kind": "text",
-            "value": " corrisponde al valore massimo dello spostamento spettrale valutato nell’intervallo di periodi ["
+            "value": ", "
           },
           {
             "kind": "math",
-            "value": "T",
-            "latex": "T"
-          },
-          {
-            "kind": "text",
-            "value": " 0, "
-          },
-          {
-            "kind": "math",
-            "value": "T",
-            "latex": "T"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "T_{SLV}",
+            "latex": "T_{SLV}"
           },
           {
             "kind": "text",
@@ -373,7 +322,7 @@
           }
         ],
         "rawSha256": "4cdf4c462e4e44237abb44b6145415c47bc79759b8e9125448cd5616be8634b1",
-        "normalizedSha256": "00ad9c55eace49809f27c8b8564c9cfd0e25682320be2c4024297ca74e60a336"
+        "normalizedSha256": "2e8d2d0ab56bef7a7ccbb2ece78b385c354e92c43d4a919dad21b8768e4eb97a"
       }
     },
     {
@@ -382,21 +331,21 @@
       "origin": "official",
       "text": {
         "raw": "Nel caso in cui il meccanismo locale che si sta verificando sia collocato a livello del suolo e la verifica sia effettuata tramite gli\nspettri di norma, la domanda di spostamento è quella calcolata attraverso lo spettro di risposta elastico in spostamento S De(T) (§\n3.2.3.2.3 delle NTC) per i valori caratteristici del periodo corrispondenti ai due stati limite.",
-        "normalized": "Nel caso in cui il meccanismo locale che si sta verificando sia collocato a livello del suolo e la verifica sia effettuata tramite gli spettri di norma, la domanda di spostamento è quella calcolata attraverso lo spettro di risposta elastico in spostamento S De(T) (§ 3.2.3.2.3 delle NTC) per i valori caratteristici del periodo corrispondenti ai due stati limite.",
+        "normalized": "Nel caso in cui il meccanismo locale che si sta verificando sia collocato a livello del suolo e la verifica sia effettuata tramite gli spettri di norma, la domanda di spostamento è quella calcolata attraverso lo spettro di risposta elastico in spostamento S_{De}(T) (§ 3.2.3.2.3 delle NTC) per i valori caratteristici del periodo corrispondenti ai due stati limite.",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso in cui il meccanismo locale che si sta verificando sia collocato a livello del suolo e la verifica sia effettuata tramite gli spettri di norma, la domanda di spostamento è quella calcolata attraverso lo spettro di risposta elastico in spostamento S De("
+            "value": "Nel caso in cui il meccanismo locale che si sta verificando sia collocato a livello del suolo e la verifica sia effettuata tramite gli spettri di norma, la domanda di spostamento è quella calcolata attraverso lo spettro di risposta elastico in spostamento "
           },
           {
             "kind": "math",
-            "value": "T",
-            "latex": "T"
+            "value": "S_{De}(T)",
+            "latex": "S_{De}(T)"
           },
           {
             "kind": "text",
-            "value": ") (§ 3.2.3.2.3 delle NTC) per i valori caratteristici del periodo corrispondenti ai due stati limite."
+            "value": " (§ 3.2.3.2.3 delle NTC) per i valori caratteristici del periodo corrispondenti ai due stati limite."
           }
         ]
       },
@@ -433,7 +382,7 @@
           }
         ],
         "rawSha256": "1a5defaf35d4dc7ed9f0d4623771ac29a1e461b2b4b274ce35bb4af1e2186236",
-        "normalizedSha256": "2b234b861465b9983d1513f613186e50b988c480a878da1d95239ac3c5b978c2"
+        "normalizedSha256": "0f869caec9e1e5ef72a3ef55aacde0756ea0a21ac539abf71705244dc415496a"
       }
     },
     {
@@ -443,7 +392,22 @@
       "text": {
         "raw": "Per meccanismi ad una quota z dell’edificio è necessario fare riferimento allo spettro in accelerazione alla quota z (v. formula\n[C7.2.5]), trasformato in spettro in spostamento sempre alla quota z moltiplicandolo per T2/4%2 . Per la verifica a stato limite ultimo\ndei meccanismi locali, considerato che i periodi di interesse dello spettro sono in genere lunghi, è sufficiente considerare il solo\nprimo modo di vibrazione, o comunque il primo tra quelli caratterizzati da spostamenti significativi nella zona dove si sviluppa il\nmeccanismo locale.",
         "normalized": "Per meccanismi ad una quota z dell’edificio è necessario fare riferimento allo spettro in accelerazione alla quota z (v. formula [C7.2.5]), trasformato in spettro in spostamento sempre alla quota z moltiplicandolo per T²/4π². Per la verifica a stato limite ultimo dei meccanismi locali, considerato che i periodi di interesse dello spettro sono in genere lunghi, è sufficiente considerare il solo primo modo di vibrazione, o comunque il primo tra quelli caratterizzati da spostamenti significativi nella zona dove si sviluppa il meccanismo locale.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per meccanismi ad una quota z dell’edificio è necessario fare riferimento allo spettro in accelerazione alla quota z (v. formula [C7.2.5]), trasformato in spettro in spostamento sempre alla quota z moltiplicandolo per "
+          },
+          {
+            "kind": "math",
+            "value": "T²/4π²",
+            "latex": "T^2/(4\\pi^2)"
+          },
+          {
+            "kind": "text",
+            "value": ". Per la verifica a stato limite ultimo dei meccanismi locali, considerato che i periodi di interesse dello spettro sono in genere lunghi, è sufficiente considerare il solo primo modo di vibrazione, o comunque il primo tra quelli caratterizzati da spostamenti significativi nella zona dove si sviluppa il meccanismo locale."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -501,16 +465,7 @@
           },
           {
             "kind": "text",
-            "value": ", è possibile riferirsi alle seguenti espressioni per lo "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": ":"
+            "value": ", è possibile riferirsi alle seguenti espressioni per lo SLV:"
           }
         ]
       },
@@ -597,71 +552,53 @@
       "origin": "official",
       "text": {
         "raw": "Dalla espressione [C8.7.1.12] è possibile calcolare l’accelerazione al suolo ag,SLV (nel caso in cui questa risulti minore di agSLD\ncalcolata al § C8.7.1.2.1.5, si assume quest’ultima anche per lo SLV). Per la verifica, agSLV deve essere confrontata con\nl’accelerazione di riferimento al suolo ag valutata per la probabilità di superamento dello SLV nella vita di riferimento, come\ndefinita al § 3.2 delle NTC.\nUn’espressione analoga alla [C8.7.1.12] consente di valutare la domanda di spostamento allo SLC e i corrispondenti valori di\nag,SLC.",
-        "normalized": "Dalla espressione [C8.7.1.12] è possibile calcolare l’accelerazione al suolo ag,SLV (nel caso in cui questa risulti minore di agSLD calcolata al § C8.7.1.2.1.5, si assume quest’ultima anche per lo SLV). Per la verifica, agSLV deve essere confrontata con l’accelerazione di riferimento al suolo ag valutata per la probabilità di superamento dello SLV nella vita di riferimento, come definita al § 3.2 delle NTC. Un’espressione analoga alla [C8.7.1.12] consente di valutare la domanda di spostamento allo SLC e i corrispondenti valori di ag,SLC.",
+        "normalized": "Dalla espressione [C8.7.1.12] è possibile calcolare l’accelerazione al suolo a_{g,SLV} (nel caso in cui questa risulti minore di a_{g,SLD} calcolata al § C8.7.1.2.1.5, si assume quest’ultima anche per lo SLV). Per la verifica, a_{g,SLV} deve essere confrontata con l’accelerazione di riferimento al suolo a_g valutata per la probabilità di superamento dello SLV nella vita di riferimento, come definita al § 3.2 delle NTC. Un’espressione analoga alla [C8.7.1.12] consente di valutare la domanda di spostamento allo SLC e i corrispondenti valori di a_{g,SLC}.",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Dalla espressione [C8.7.1.12] è possibile calcolare l’accelerazione al suolo ag,"
+            "value": "Dalla espressione [C8.7.1.12] è possibile calcolare l’accelerazione al suolo "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "a_{g,SLV}",
+            "latex": "a_{g,SLV}"
           },
           {
             "kind": "text",
-            "value": " (nel caso in cui questa risulti minore di ag"
+            "value": " (nel caso in cui questa risulti minore di "
           },
           {
             "kind": "math",
-            "value": "SLD",
-            "latex": "\\mathrm{SLD}"
+            "value": "a_{g,SLD}",
+            "latex": "a_{g,SLD}"
           },
           {
             "kind": "text",
-            "value": " calcolata al § C8.7.1.2.1.5, si assume quest’ultima anche per lo "
+            "value": " calcolata al § C8.7.1.2.1.5, si assume quest’ultima anche per lo SLV). Per la verifica, "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "a_{g,SLV}",
+            "latex": "a_{g,SLV}"
           },
           {
             "kind": "text",
-            "value": "). Per la verifica, ag"
+            "value": " deve essere confrontata con l’accelerazione di riferimento al suolo "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "a_g",
+            "latex": "a_g"
           },
           {
             "kind": "text",
-            "value": " deve essere confrontata con l’accelerazione di riferimento al suolo ag valutata per la probabilità di superamento dello "
+            "value": " valutata per la probabilità di superamento dello SLV nella vita di riferimento, come definita al § 3.2 delle NTC. Un’espressione analoga alla [C8.7.1.12] consente di valutare la domanda di spostamento allo SLC e i corrispondenti valori di "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " nella vita di riferimento, come definita al § 3.2 delle NTC. Un’espressione analoga alla [C8.7.1.12] consente di valutare la domanda di spostamento allo "
-          },
-          {
-            "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
-          },
-          {
-            "kind": "text",
-            "value": " e i corrispondenti valori di ag,"
-          },
-          {
-            "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "a_{g,SLC}",
+            "latex": "a_{g,SLC}"
           },
           {
             "kind": "text",
@@ -702,7 +639,7 @@
           }
         ],
         "rawSha256": "3ccd5edd4c156786bea76e423370a5bd26e30e600a4201b40ae8094921e5e663",
-        "normalizedSha256": "04352ebb3500e1517aaf7f65b5db720dc785d23affb7bf71345fddc7878a0e90"
+        "normalizedSha256": "e42a5c0276b1c1ee203a89c03c5778297a3305144d18b8489546093b0481974d"
       }
     },
     {
@@ -711,53 +648,62 @@
       "origin": "official",
       "text": {
         "raw": "Nel calcolo della domanda di spostamento allo stato limite ultimo è importante considerare l’effetto della dissipazione, sia nel\ncalcolo dello spettro in quota (non linearità della struttura principale), sia nella valutazione della domanda di spostamento (non\nlinearità del meccanismo locale). In assenza di valutazioni più accurate, lo smorzamento viscoso equivalente \n\u000e del meccanismo\nlocale può essere assunto complessivamente pari all’8% per lo SLV e al 10% per lo SLC. È inoltre opportuno che lo smorzamento\n\u000e1 e il periodo T 1 dell’edificio siano valutati considerando il livello di non linearità raggiunto dalla struttura principale in\ncorrispondenza dei valori ag,SLV e ag,SLC.",
-        "normalized": "Nel calcolo della domanda di spostamento allo stato limite ultimo è importante considerare l’effetto della dissipazione, sia nel calcolo dello spettro in quota (non linearità della struttura principale), sia nella valutazione della domanda di spostamento (non linearità del meccanismo locale). In assenza di valutazioni più accurate, lo smorzamento viscoso equivalente del meccanismo locale può essere assunto complessivamente pari all’8% per lo SLV e al 10% per lo SLC. È inoltre opportuno che lo smorzamento 1 e il periodo T 1 dell’edificio siano valutati considerando il livello di non linearità raggiunto dalla struttura principale in corrispondenza dei valori ag,SLV e ag,SLC.",
+        "normalized": "Nel calcolo della domanda di spostamento allo stato limite ultimo è importante considerare l’effetto della dissipazione, sia nel calcolo dello spettro in quota (non linearità della struttura principale), sia nella valutazione della domanda di spostamento (non linearità del meccanismo locale). In assenza di valutazioni più accurate, lo smorzamento viscoso equivalente ξ del meccanismo locale può essere assunto complessivamente pari all’8% per lo SLV e al 10% per lo SLC. È inoltre opportuno che lo smorzamento ξ_1 e il periodo T_1 dell’edificio siano valutati considerando il livello di non linearità raggiunto dalla struttura principale in corrispondenza dei valori a_{g,SLV} e a_{g,SLC}.",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nel calcolo della domanda di spostamento allo stato limite ultimo è importante considerare l’effetto della dissipazione, sia nel calcolo dello spettro in quota (non linearità della struttura principale), sia nella valutazione della domanda di spostamento (non linearità del meccanismo locale). In assenza di valutazioni più accurate, lo smorzamento viscoso equivalente del meccanismo locale può essere assunto complessivamente pari all’8% per lo "
+            "value": "Nel calcolo della domanda di spostamento allo stato limite ultimo è importante considerare l’effetto della dissipazione, sia nel calcolo dello spettro in quota (non linearità della struttura principale), sia nella valutazione della domanda di spostamento (non linearità del meccanismo locale). In assenza di valutazioni più accurate, lo smorzamento viscoso equivalente ξ del meccanismo locale può essere assunto complessivamente pari all’"
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "8%",
+            "latex": "8\\%"
           },
           {
             "kind": "text",
-            "value": " e al 10% per lo "
+            "value": " per lo SLV e al "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "10%",
+            "latex": "10\\%"
           },
           {
             "kind": "text",
-            "value": ". È inoltre opportuno che lo smorzamento 1 e il periodo "
+            "value": " per lo SLC. È inoltre opportuno che lo smorzamento "
           },
           {
             "kind": "math",
-            "value": "T",
-            "latex": "T"
+            "value": "ξ_1",
+            "latex": "\\xi_1"
           },
           {
             "kind": "text",
-            "value": " 1 dell’edificio siano valutati considerando il livello di non linearità raggiunto dalla struttura principale in corrispondenza dei valori ag,"
+            "value": " e il periodo "
           },
           {
             "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "value": "T_1",
+            "latex": "T_1"
           },
           {
             "kind": "text",
-            "value": " e ag,"
+            "value": " dell’edificio siano valutati considerando il livello di non linearità raggiunto dalla struttura principale in corrispondenza dei valori "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "a_{g,SLV}",
+            "latex": "a_{g,SLV}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "a_{g,SLC}",
+            "latex": "a_{g,SLC}"
           },
           {
             "kind": "text",
@@ -798,7 +744,7 @@
           }
         ],
         "rawSha256": "188ad08b0861ebfa2b3c4541fcb01af23118906ddfbb097086ad5fb24494f097",
-        "normalizedSha256": "4dba6d9b78c49e8945d1679907f0bc77df337dbccdbcd9e432b77c8ca00de3fb"
+        "normalizedSha256": "9c8ae285db0298381d90d6fe9c5e5d7bb1f52b6618d47a80c9ad9c84f0fdea9e"
       }
     }
   ],

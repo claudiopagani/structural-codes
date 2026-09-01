@@ -94,7 +94,22 @@
       "text": {
         "raw": "Il campionamento è costituito da un prelievo di 3 saggi ogni 30 t di acciaio impiegato della stessa classe proveniente dallo stesso\nstabilimento o Centro di trasformazione, anche se con forniture successive. I 3 saggi di cui sopra devono essere dello stesso\ndiametro, avendo cura di variare il diametro dei controlli successivi, nell’ambito della gamma impiegata.",
         "normalized": "Il campionamento è costituito da un prelievo di 3 saggi ogni 30 t di acciaio impiegato della stessa classe proveniente dallo stesso stabilimento o Centro di trasformazione, anche se con forniture successive. I 3 saggi di cui sopra devono essere dello stesso diametro, avendo cura di variare il diametro dei controlli successivi, nell’ambito della gamma impiegata.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il campionamento è costituito da un prelievo di 3 saggi ogni "
+          },
+          {
+            "kind": "math",
+            "value": "30 t",
+            "latex": "30\\,\\mathrm{t}"
+          },
+          {
+            "kind": "text",
+            "value": " di acciaio impiegato della stessa classe proveniente dallo stesso stabilimento o Centro di trasformazione, anche se con forniture successive. I 3 saggi di cui sopra devono essere dello stesso diametro, avendo cura di variare il diametro dei controlli successivi, nell’ambito della gamma impiegata."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -116,6 +131,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "274d00bc11f5006af0d1d03e78a3b84b3412cec8e9c1d9df45d9a98152f06cdb",
@@ -128,8 +148,32 @@
       "origin": "official",
       "text": {
         "raw": "Oltre alla verifica di quanto riportato nelle Tabelle 11.3.VII delle NTC e con riferimento al § 4.1.2.1.2.2 delle NTC, deve farsi\npresente, in merito al controllo del rapporto rottura/snervamento (f t \n/fy) che se il progettista ha adottato il modello costitutivo a)\ndella relativa Figura 4.1.3, utilizzando un valore del rapporto di sovraresistenza k = (ft \n/f y) k maggiore di 1,15, il Direttore dei lavori",
-        "normalized": "Oltre alla verifica di quanto riportato nelle Tabelle 11.3.VII delle NTC e con riferimento al § 4.1.2.1.2.2 delle NTC, deve farsi presente, in merito al controllo del rapporto rottura/snervamento (f t /fy) che se il progettista ha adottato il modello costitutivo a) della relativa Figura 4.1.3, utilizzando un valore del rapporto di sovraresistenza k = (ft /f y) k maggiore di 1,15, il Direttore dei lavori",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "Oltre alla verifica di quanto riportato nelle Tabelle 11.3.VII delle NTC e con riferimento al § 4.1.2.1.2.2 delle NTC, deve farsi presente, in merito al controllo del rapporto rottura/snervamento (ft/fy) che se il progettista ha adottato il modello costitutivo a) della relativa Figura 4.1.3, utilizzando un valore del rapporto di sovraresistenza k = (ft/fy)k maggiore di 1,15, il Direttore dei lavori",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Oltre alla verifica di quanto riportato nelle Tabelle 11.3.VII delle NTC e con riferimento al § 4.1.2.1.2.2 delle NTC, deve farsi presente, in merito al controllo del rapporto rottura/snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "(ft/fy)",
+            "latex": "(f_t/f_y)"
+          },
+          {
+            "kind": "text",
+            "value": " che se il progettista ha adottato il modello costitutivo a) della relativa Figura 4.1.3, utilizzando un valore del rapporto di sovraresistenza "
+          },
+          {
+            "kind": "math",
+            "value": "k = (ft/fy)k",
+            "latex": "k=\\left(f_t/f_y\\right)_k"
+          },
+          {
+            "kind": "text",
+            "value": " maggiore di 1,15, il Direttore dei lavori"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -151,10 +195,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "679d32b0b2dd124a738e187f8a7c6298dbfaa9a9116bf5f23e7c6f35a7b5c283",
-        "normalizedSha256": "e3e5eb7907a09eccac7dd027a1d5361f41d7d2fa4ba123e0d74875539ec7b58c"
+        "normalizedSha256": "b95d0c8355cf8cb08393d44b0026dacd745f93e9ed63cb1b2696d0460bdae935"
       }
     },
     {
@@ -163,8 +212,23 @@
       "origin": "official",
       "text": {
         "raw": "deve accertare, mediante le previste prove di accettazione in cantiere e, se necessario, anche mediante prove aggiuntive, che il\nvalore caratteristico del rapporto f t \n/f y risulti non inferiore a quello stabilito dal progettista.",
-        "normalized": "deve accertare, mediante le previste prove di accettazione in cantiere e, se necessario, anche mediante prove aggiuntive, che il valore caratteristico del rapporto f t /f y risulti non inferiore a quello stabilito dal progettista.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "deve accertare, mediante le previste prove di accettazione in cantiere e, se necessario, anche mediante prove aggiuntive, che il valore caratteristico del rapporto ft/fy risulti non inferiore a quello stabilito dal progettista.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "deve accertare, mediante le previste prove di accettazione in cantiere e, se necessario, anche mediante prove aggiuntive, che il valore caratteristico del rapporto "
+          },
+          {
+            "kind": "math",
+            "value": "ft/fy",
+            "latex": "f_t/f_y"
+          },
+          {
+            "kind": "text",
+            "value": " risulti non inferiore a quello stabilito dal progettista."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -186,10 +250,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "a6f3c728f38c5ce14b6cd3fe2d94c95bf85f4b70e241c166fbf2998daff8eee5",
-        "normalizedSha256": "d05973026de0f91054335edcbcf2f11e60ce30fc20e8901d631b1c8ac6008d8f"
+        "normalizedSha256": "8dcf8d1002d36babed03d5824f677f30ca96be0c2a0656486861476792f5291c"
       }
     },
     {
@@ -198,8 +267,50 @@
       "origin": "official",
       "text": {
         "raw": "È sempre opportuno che i diversi valori del rapporto snervamento/snervamento nominale (f y \n/f ynom), determinato sui singoli saggi,\nvengano riportati nei certificati rilasciati dai laboratori di cui all’art.59 del D.P.R. n. 380/2001, in relazione al comportamento\nstrutturale di progetto (non-dissipativo o dissipativo) e alla classe di acciaio utilizzata. Il Direttore dei lavori deve infatti\naccertare, mediante le previste prove di cantiere e, se necessario, anche mediante prove aggiuntive, che il valore del predetto\nrapporto snervamento/snervamento nominale (fy \n/f ynom) risulti sempre non minore di 0.94 (fy,min \u0019\bK~\u001a\by\u0016\u00162 ) e non maggiore di\n1,27 ( fy,max \"\b\u001aY~\by\u0016\u00162).",
-        "normalized": "È sempre opportuno che i diversi valori del rapporto snervamento/snervamento nominale (f y /f ynom), determinato sui singoli saggi, vengano riportati nei certificati rilasciati dai laboratori di cui all’art.59 del D.P.R. n. 380/2001, in relazione al comportamento strutturale di progetto (non-dissipativo o dissipativo) e alla classe di acciaio utilizzata. Il Direttore dei lavori deve infatti accertare, mediante le previste prove di cantiere e, se necessario, anche mediante prove aggiuntive, che il valore del predetto rapporto snervamento/snervamento nominale (fy /f ynom) risulti sempre non minore di 0.94 (fy,min K~y2 ) e non maggiore di 1,27 ( fy,max \"Y~y2).",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "È sempre opportuno che i diversi valori del rapporto snervamento/snervamento nominale (fy/fynom), determinato sui singoli saggi, vengano riportati nei certificati rilasciati dai laboratori di cui all’art.59 del D.P.R. n. 380/2001, in relazione al comportamento strutturale di progetto (non-dissipativo o dissipativo) e alla classe di acciaio utilizzata. Il Direttore dei lavori deve infatti accertare, mediante le previste prove di cantiere e, se necessario, anche mediante prove aggiuntive, che il valore del predetto rapporto snervamento/snervamento nominale (fy/fynom) risulti sempre non minore di 0.94 (fy,min ≥ 425 N/mm²) e non maggiore di 1,27 (fy,max ≤ 572 N/mm²).",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "È sempre opportuno che i diversi valori del rapporto snervamento/snervamento nominale "
+          },
+          {
+            "kind": "math",
+            "value": "(fy/fynom)",
+            "latex": "(f_y/f_{y,\\mathrm{nom}})"
+          },
+          {
+            "kind": "text",
+            "value": ", determinato sui singoli saggi, vengano riportati nei certificati rilasciati dai laboratori di cui all’art.59 del D.P.R. n. 380/2001, in relazione al comportamento strutturale di progetto (non-dissipativo o dissipativo) e alla classe di acciaio utilizzata. Il Direttore dei lavori deve infatti accertare, mediante le previste prove di cantiere e, se necessario, anche mediante prove aggiuntive, che il valore del predetto rapporto snervamento/snervamento nominale "
+          },
+          {
+            "kind": "math",
+            "value": "(fy/fynom)",
+            "latex": "(f_y/f_{y,\\mathrm{nom}})"
+          },
+          {
+            "kind": "text",
+            "value": " risulti sempre non minore di "
+          },
+          {
+            "kind": "math",
+            "value": "0.94 (fy,min ≥ 425 N/mm²)",
+            "latex": "0.94\\ \\left(f_{y,\\min}\\ge425\\,\\mathrm{N/mm^2}\\right)"
+          },
+          {
+            "kind": "text",
+            "value": " e non maggiore di "
+          },
+          {
+            "kind": "math",
+            "value": "1,27 (fy,max ≤ 572 N/mm²)",
+            "latex": "1{,}27\\ \\left(f_{y,\\max}\\le572\\,\\mathrm{N/mm^2}\\right)"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -226,10 +337,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "73a3e3adeab76012c03646b99c2ab771cac2dda3b155986cfed7daaf2aa17802",
-        "normalizedSha256": "6c5f6efaf8bc8bf6ae416a0c819e079fc3e0f2a2c6c597589d4e83443bb4bb2c"
+        "normalizedSha256": "1db085a99884ed362bf2631062017590c5451c903ceb07f50976f03d074044ea"
       }
     }
   ],

@@ -335,7 +335,7 @@
       "text": {
         "raw": "k è un coefficiente funzione della irregolarità della forma della neve, pari a k = 3/d, con k ≤ dγ, essendo d la profondità del manto nevoso sulla copertura in m (vedasi la Figura C.3.4.7).",
         "normalized": "k è un coefficiente funzione della irregolarità della forma della neve, pari a k = 3/d, con k ≤ dγ, essendo d la profondità del manto nevoso sulla copertura in m (vedasi la Figura C.3.4.7).",
-        "normalizationVersion": "circ34-editorial-profile-0.4.0",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -349,7 +349,7 @@
           {
             "kind": "math",
             "value": "k = 3/d",
-            "latex": "k = 3/d"
+            "latex": "k=\\frac{3}{d}"
           },
           {
             "kind": "text",
@@ -358,7 +358,7 @@
           {
             "kind": "math",
             "value": "k ≤ dγ",
-            "latex": "k \\le d\\gamma"
+            "latex": "k\\le d\\gamma"
           },
           {
             "kind": "text",
@@ -391,7 +391,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Resa come frazione l'espressione inline k=3/d e mantenuta integra la disuguaglianza seguente."
+          }
+        ],
         "rawSha256": "0ba38ecb2071d11120e2a1b775107c6dfb0a49edd343fac38a19ab270119c057",
         "normalizedSha256": "0ba38ecb2071d11120e2a1b775107c6dfb0a49edd343fac38a19ab270119c057"
       }

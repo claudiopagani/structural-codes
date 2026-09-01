@@ -65,8 +65,8 @@
       "origin": "official",
       "text": {
         "raw": "Nella formula [4.1.35] si intende con f’ cd la resistenza di progetto a compressione ridotta del calcestruzzo d’anima valutato come",
-        "normalized": "Nella formula [4.1.35] si intende con f’cd la resistenza di progetto a compressione ridotta del calcestruzzo d’anima, valutata come ν fcd, assumendo ν = 0,5.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Nella formula [4.1.35] si intende con f’cd la resistenza di progetto a compressione ridotta del calcestruzzo d’anima, valutata come ν·fcd, assumendo ν = 0,5.",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -83,17 +83,8 @@
           },
           {
             "kind": "math",
-            "value": "ν",
-            "latex": "\\nu"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "fcd",
-            "latex": "f_{cd}"
+            "value": "ν·fcd",
+            "latex": "\\nu\\cdot f_{cd}"
           },
           {
             "kind": "text",
@@ -101,21 +92,12 @@
           },
           {
             "kind": "math",
-            "value": "ν",
-            "latex": "\\nu"
+            "value": "ν = 0,5",
+            "latex": "\\nu=0{,}5"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,5."
+            "value": "."
           }
         ]
       },
@@ -165,10 +147,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposti il prodotto e l'uguaglianza della resistenza ridotta a torsione."
           }
         ],
         "rawSha256": "29b1f57432ceb4b7eeb778393ef9e76e6f4118dd72de90f8d8a1cf616b86a117",
-        "normalizedSha256": "fa97f5fcf3c197141f0d46b0fbe05c767454de6d220b2032154af91cb58f4bc7"
+        "normalizedSha256": "50be9277169e838e5c536cf28367bcbf8452e5649b62ded10b24b2ad13580243"
       }
     }
   ],

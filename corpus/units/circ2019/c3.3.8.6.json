@@ -95,8 +95,8 @@
       "origin": "official",
       "text": {
         "raw": "Salvo più approfondite determinazioni, possono essere assunti per i coefficienti c p i valori seguenti.",
-        "normalized": "Salvo più approfondite determinazioni, possono essere assunti per i coefficienti c p i valori seguenti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Salvo più approfondite determinazioni, possono essere assunti per i coefficienti cp i valori seguenti.",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -104,17 +104,8 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "cp",
+            "latex": "c_p"
           },
           {
             "kind": "text",
@@ -138,9 +129,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Riunito il simbolo c_p, frammentato dal layer PDF in due lettere matematiche indipendenti."
+          }
+        ],
         "rawSha256": "98b632d22ced1a4acf2ef46ab29989b67dec9c45192924c1dedc2a75d5382539",
-        "normalizedSha256": "98b632d22ced1a4acf2ef46ab29989b67dec9c45192924c1dedc2a75d5382539"
+        "normalizedSha256": "9b87f46d796e1dc5cf799dab6ba1526535b5f0a9d92f1c6572260afff09846b0"
       }
     }
   ],

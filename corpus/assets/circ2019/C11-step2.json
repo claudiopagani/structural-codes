@@ -12,7 +12,7 @@
       "unitId": "urn:structural-codes:it:unit:circ2019:c11.9.4",
       "officialNumber": null,
       "pdfPage": 338,
-      "latex": "\\xi_e=\\frac{E_d}{2\\pi Fd}=\\frac{E_d}{2\\pi K_e d^2}"
+      "latex": "\\xi_e=\\frac{E_d}{2\\pi F\\,d}=\\frac{E_d}{2\\pi K_e\\,d^2}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.a",
@@ -47,7 +47,7 @@
       "unitId": "urn:structural-codes:it:unit:circ2019:c11.9.7",
       "officialNumber": null,
       "pdfPage": 339,
-      "latex": "A_r=\\min\\left\\{(b_x-d_{rftx}-d_{Ex})(b_y-d_{rfty}-0{,}3d_{Ey}),\\,(b_x-d_{rftx}-0{,}3d_{Ex})(b_y-d_{rfty}-d_{Ey})\\right\\}"
+      "latex": "A_r=\\min\\left[(b_x-d_{rftx}-d_{Ex})(b_y-d_{rfty}-0{,}3d_{Ey}),\\,(b_x-d_{rftx}-0{,}3d_{Ex})(b_y-d_{rfty}-d_{Ey})\\right]"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.f",
@@ -82,7 +82,7 @@
       "unitId": "urn:structural-codes:it:unit:circ2019:c11.9.7",
       "officialNumber": null,
       "pdfPage": 340,
-      "latex": "a^2=\\alpha_x b_x^2+\\alpha_y b_y^2"
+      "latex": "a^2=(\\alpha_x b_x^2+\\alpha_y b_y^2)"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c11.9.7.k",
@@ -110,7 +110,7 @@
       "unitId": "urn:structural-codes:it:unit:circ2019:c11.9.7",
       "officialNumber": null,
       "pdfPage": 340,
-      "latex": "d_E=\\max\\left\\{\\left[(d_{Ex}+d_{rftx})^2+(0{,}3d_{Ey}+d_{rfty})^2\\right]^{1/2},\\,\\left[(0{,}3d_{Ex}+d_{rftx})^2+(d_{Ey}+d_{rfty})^2\\right]^{1/2}\\right\\}"
+      "latex": "d_E=\\operatorname{Max}\\left\\{\\left[(d_{Ex}+d_{rftx})^2+(0{,}3d_{Ey}+d_{rfty})^2\\right]^{1/2},\\,\\left[(0{,}3d_{Ex}+d_{rftx})^2+(d_{Ey}+d_{rfty})^2\\right]^{1/2}\\right\\}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c11.10.1.1.1.1.a",
@@ -131,7 +131,7 @@
       "unitId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1",
       "officialNumber": null,
       "pdfPage": 341,
-      "latex": "\\delta=\\frac{s}{f_{bm}}"
+      "latex": "\\delta=\\frac{s}{f_{bm}}\\quad=\\text{coefficiente di variazione};"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c11.10.1.1.1.1.d",
@@ -146,6 +146,27 @@
       "officialNumber": null,
       "pdfPage": 341,
       "latex": "\\overline{f}_{bk}=0{,}7\\,\\overline{f}_{bm}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.1.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1",
+      "officialNumber": null,
+      "pdfPage": 320,
+      "latex": "\\begin{aligned}\\text{1)}\\quad &R_{c,\\min}\\ge R_{ck}-3{,}5\\\\\\text{2)}\\quad &R_{cm28}\\ge R_{ck}+3{,}5\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.2.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c11.2.5.2",
+      "officialNumber": null,
+      "pdfPage": 320,
+      "latex": "\\begin{aligned}\\text{1)}\\quad &R_{c,\\min}\\ge R_{ck}-3{,}5\\\\\\text{2)}\\quad &R_{cm28}\\ge R_{ck}+1{,}48 * s\\end{aligned}"
+    },
+    {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c11.3.4.11.2.1.a",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.2.1",
+      "officialNumber": null,
+      "pdfPage": 332,
+      "latex": "\\begin{aligned}\\text{Acciai S 235 – S 275}\\qquad &t\\le8\\,\\mathrm{mm}\\qquad &&r/t\\ge1\\\\&8\\,\\mathrm{mm}<t\\le15\\,\\mathrm{mm}\\qquad &&r/t\\ge1{,}5\\\\\\text{Acciai S 355 – S 469}\\qquad &t\\le4\\,\\mathrm{mm}\\qquad &&r/t\\ge1\\\\&4\\,\\mathrm{mm}<t\\le15\\,\\mathrm{mm}\\qquad &&r/t\\ge1{,}5\\end{aligned}"
     }
   ],
   "tables": [

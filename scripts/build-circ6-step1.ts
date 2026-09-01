@@ -95,8 +95,8 @@ const cross = (kind: Exclude<BlockKind, "heading" | "table-ref">, parts: Part[],
 const ref = (parts: Part[], asset: string): BlockSpec => ({ kind: "table-ref", parts, asset });
 
 const inlineTerms: Array<[string, string]> = [
-    ["A2+M2+R2", "A_2+M_2+R_2"],
-    ["A1+M1+R1", "A_1+M_1+R_1"],
+    ["A2+M2+R2", "A2+M2+R2"],
+    ["A1+M1+R1", "A1+M1+R1"],
     ["γ_R", "\\gamma_R"],
 ];
 

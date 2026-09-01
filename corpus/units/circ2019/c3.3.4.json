@@ -94,8 +94,8 @@
       "origin": "official",
       "text": {
         "raw": "Le espressioni 3.3.2 delle NTC 2008 e [3.3.4] delle NTC 2018, sono sostanzialmente equivalenti; il coefficiente c p viene definito\ncoefficiente di pressione invece che coefficiente di forma (come nelle NTC 2008) ma il suo ruolo e valore, come indicato al § 3.3.8,\nrestano immutati.",
-        "normalized": "Le espressioni 3.3.2 delle NTC 2008 e [3.3.4] delle NTC 2018, sono sostanzialmente equivalenti; il coefficiente c p viene definito coefficiente di pressione invece che coefficiente di forma (come nelle NTC 2008) ma il suo ruolo e valore, come indicato al § 3.3.8, restano immutati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Le espressioni 3.3.2 delle NTC 2008 e [3.3.4] delle NTC 2018, sono sostanzialmente equivalenti; il coefficiente cp viene definito coefficiente di pressione invece che coefficiente di forma (come nelle NTC 2008) ma il suo ruolo e valore, come indicato al § 3.3.8, restano immutati.",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -103,17 +103,8 @@
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "p",
-            "latex": "p"
+            "value": "cp",
+            "latex": "c_p"
           },
           {
             "kind": "text",
@@ -167,10 +158,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Riunito il simbolo c_p, frammentato dal layer PDF in due lettere matematiche indipendenti."
           }
         ],
         "rawSha256": "d5786e9d41f36206033a5c77fafd9181b21acf854239128c2b86bb353b21fcd0",
-        "normalizedSha256": "6de1fc6928d5e5249c36f88259dfbbf4c4ed0e3ab78103608cd6067b18165764"
+        "normalizedSha256": "dea58c3225a3ec8319185fdb822ea025551890a15c82c9d9706f122ddfb8fbca"
       }
     }
   ],

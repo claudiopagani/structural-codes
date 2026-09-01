@@ -50,12 +50,12 @@ function formulaBlock(number: string, suffix: string, formula: FormulaRow): Gene
   return { blockId: uid(number) + "#block-" + suffix, kind: "formula-ref", origin: "official", assetId: formulaId(formula.number), evidence: evidence(formula.page, formula.raw, formula.raw, formula.region, true) };
 }
 
-const formula148: FormulaRow = { number: "C4.2.148", page: 144, latex: "F_{b,Rd}=\\frac{2{,}5\\,\\alpha_b\\,k_t\\,f_{tk}\\,d\\,t}{\\gamma_{M2}}", raw: "F_b,Rd = 2,5·α_b·k_t·f_tk·d·t/γ_M2 [C4.2.148]", region: reg(145, 485, 325, 45) };
-const formula149: FormulaRow = { number: "C4.2.149", page: 144, latex: "\\alpha_b=\\min\\left[1;\\frac{e_1}{3\\,d}\\right]", raw: "α_b = min[1; e_1/(3·d)] [C4.2.149]", region: reg(145, 535, 325, 45) };
-const formula150: FormulaRow = { number: "C4.2.150", page: 144, latex: "k_t=\\frac{0{,}8\\,t+1{,}5}{2{,}5}\\quad\\text{per }t\\le1{,}25\\,\\mathrm{mm}\\ ;\\quad k_t=1{,}0\\quad\\text{per }t>1{,}25\\,\\mathrm{mm}", raw: "k_t = (0,8·t+1,5)/2,5 per t ≤ 1,25 mm; k_t = 1,0 per t > 1,25 mm [C4.2.150]", region: reg(145, 570, 325, 55) };
-const formula151: FormulaRow = { number: "C4.2.151", page: 144, latex: "F_{n,Rd}=\\frac{\\beta\\,A_{net}\\,f_{tk}}{\\gamma_{M2}}", raw: "F_n,Rd = β·A_net·f_tk/γ_M2 [C4.2.151]", region: reg(145, 620, 325, 45) };
-const formula152: FormulaRow = { number: "C4.2.152", page: 144, latex: "\\beta=1+3\\,r\\left(\\frac{d_0}{u}-0{,}3\\right)\\le1", raw: "β = 1 + 3·r·(d_0/u − 0,3) ≤ 1 [C4.2.152]", region: reg(145, 665, 325, 45) };
-const formula153: FormulaRow = { number: "C4.2.153", page: 145, latex: "e_1\\ge d_0\\ ;\\quad p_1\\ge3{,}0\\,d_0\\ ;\\quad e_2\\ge1{,}5\\,d_0\\ ;\\quad p_2\\ge3{,}0\\,d_0", raw: "e_1 ≥ d_0; p_1 ≥ 3,0·d_0; e_2 ≥ 1,5·d_0; p_2 ≥ 3,0·d_0 [C4.2.153]", region: reg(145, 135, 325, 45) };
+const formula148: FormulaRow = { number: "C4.2.148", page: 144, latex: "F_{b,Rd}=\\frac{2{,}5\\cdot\\alpha_b\\cdot k_t\\cdot f_{tk}\\cdot d\\cdot t}{\\gamma_{M2}}", raw: "F_b,Rd = 2,5·α_b·k_t·f_tk·d·t/γ_M2 [C4.2.148]", region: reg(145, 485, 325, 45) };
+const formula149: FormulaRow = { number: "C4.2.149", page: 144, latex: "\\alpha_b=\\min\\left[1;\\frac{e_1}{3\\cdot d}\\right]", raw: "α_b = min[1; e_1/(3·d)] [C4.2.149]", region: reg(145, 535, 325, 45) };
+const formula150: FormulaRow = { number: "C4.2.150", page: 144, latex: "k_t=\\frac{0{,}8\\cdot t+1{,}5}{2{,}5}\\quad\\text{per }t\\le1{,}25\\,\\mathrm{mm}\\ ;\\quad k_t=1{,}0\\quad\\text{per }t>1{,}25\\,\\mathrm{mm}", raw: "k_t = (0,8·t+1,5)/2,5 per t ≤ 1,25 mm; k_t = 1,0 per t > 1,25 mm [C4.2.150]", region: reg(145, 570, 325, 55) };
+const formula151: FormulaRow = { number: "C4.2.151", page: 144, latex: "F_{n,Rd}=\\frac{\\beta\\cdot A_{net}\\cdot f_{tk}}{\\gamma_{M2}}", raw: "F_n,Rd = β·A_net·f_tk/γ_M2 [C4.2.151]", region: reg(145, 620, 325, 45) };
+const formula152: FormulaRow = { number: "C4.2.152", page: 144, latex: "\\beta=1+3\\cdot r\\cdot\\left(\\frac{d_0}{u}-0{,}3\\right)\\le1", raw: "β = 1 + 3·r·(d_0/u − 0,3) ≤ 1 [C4.2.152]", region: reg(145, 665, 325, 45) };
+const formula153: FormulaRow = { number: "C4.2.153", page: 145, latex: "e_1\\ge d_0\\ ;\\quad p_1\\ge3{,}0\\cdot d_0\\ ;\\quad e_2\\ge1{,}5\\cdot d_0\\ ;\\quad p_2\\ge3{,}0\\cdot d_0", raw: "e_1 ≥ d_0; p_1 ≥ 3,0·d_0; e_2 ≥ 1,5·d_0; p_2 ≥ 3,0·d_0 [C4.2.153]", region: reg(145, 135, 325, 45) };
 
 const unit74 = "C4.2.12.1.7.4";
 const unit741 = "C4.2.12.1.7.4.1";
@@ -75,7 +75,7 @@ const blocks741: GeneratedBlock[] = [
   formulaBlock(unit741, "formula-150", formula150),
   block(unit741, "p3", "paragraph", 144, "La resistenza a trazione della sezione netta è data da", [text("La resistenza a trazione della sezione netta è data da")], reg(73.9, 610, 450, 25)),
   formulaBlock(unit741, "formula-151", formula151),
-  block(unit741, "p4", "paragraph", 144, "in cui, detto r il rapporto tra il numero di bulloni nella sezione netta e il numero totale di bulloni impegnati ed u il minimo tra 2·e_2 e p_2, è", [text("in cui, detto "), math("r", "r"), text(" il rapporto tra il numero di bulloni nella sezione netta e il numero totale di bulloni impegnati ed "), math("u", "u"), text(" il minimo tra "), math("2·e_2", "2\\,e_2"), text(" e "), math("p_2", "p_2"), text(", è")], reg(73.9, 655, 450, 35)),
+  block(unit741, "p4", "paragraph", 144, "in cui, detto r il rapporto tra il numero di bulloni nella sezione netta e il numero totale di bulloni impegnati ed u il minimo tra 2·e_2 e p_2, è", [text("in cui, detto "), math("r", "r"), text(" il rapporto tra il numero di bulloni nella sezione netta e il numero totale di bulloni impegnati ed "), math("u", "u"), text(" il minimo tra "), math("2·e_2", "2\\cdot e_2"), text(" e "), math("p_2", "p_2"), text(", è")], reg(73.9, 655, 450, 35)),
   formulaBlock(unit741, "formula-152", formula152),
   block(unit741, "p5", "paragraph", 144, "Per il calcolo della resistenza a taglio dei bulloni si applicano le formule [4.2.63] e [4.2.64] di cui al § 4.2.8 delle NTC: con piccoli spessori di serraggio i piani di rescissione interessano sempre la parte filettata della vite.", [text("Per il calcolo della resistenza a taglio dei bulloni si applicano le formule [4.2.63] e [4.2.64] di cui al § 4.2.8 delle NTC: con piccoli spessori di serraggio i piani di rescissione interessano sempre la parte filettata della vite.")], reg(73.9, 715, 450, 45)),
 ];

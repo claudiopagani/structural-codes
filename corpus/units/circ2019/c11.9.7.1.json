@@ -65,7 +65,22 @@
       "text": {
         "raw": "Le prove di accettazione hanno la finalità di verificare la corrispondenza tra il comportamento dei dispositivi messi in opera e\nquelli su cui è stata condotta la caratterizzazione mediante le prove di qualificazione, verificandone la rispondenza progettuale. A\ntale scopo, tramite i test di accettazione, si determina il valore della rigidezza verticale e del modulo statico di taglio G, da\nconfrontare con i valori emersi nelle prove di qualificazione, al fine di poterne ritenere associabile la caratterizzazione compiuta\nin qualificazione.",
         "normalized": "Le prove di accettazione hanno la finalità di verificare la corrispondenza tra il comportamento dei dispositivi messi in opera e quelli su cui è stata condotta la caratterizzazione mediante le prove di qualificazione, verificandone la rispondenza progettuale. A tale scopo, tramite i test di accettazione, si determina il valore della rigidezza verticale e del modulo statico di taglio G, da confrontare con i valori emersi nelle prove di qualificazione, al fine di poterne ritenere associabile la caratterizzazione compiuta in qualificazione.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le prove di accettazione hanno la finalità di verificare la corrispondenza tra il comportamento dei dispositivi messi in opera e quelli su cui è stata condotta la caratterizzazione mediante le prove di qualificazione, verificandone la rispondenza progettuale. A tale scopo, tramite i test di accettazione, si determina il valore della rigidezza verticale e del modulo statico di taglio "
+          },
+          {
+            "kind": "math",
+            "value": "G",
+            "latex": "G"
+          },
+          {
+            "kind": "text",
+            "value": ", da confrontare con i valori emersi nelle prove di qualificazione, al fine di poterne ritenere associabile la caratterizzazione compiuta in qualificazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -87,6 +102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "324a91fc4d09d5d0ef15d82686c8a6e827243d63e7cb86b74d903b60a85d8dc2",
@@ -99,8 +119,32 @@
       "origin": "official",
       "text": {
         "raw": "In luogo del modulo di taglio statico G è auspicabile la determinazione del G din .",
-        "normalized": "In luogo del modulo di taglio statico G è auspicabile la determinazione del G din .",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "In luogo del modulo di taglio statico G è auspicabile la determinazione del Gdin.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "In luogo del modulo di taglio statico "
+          },
+          {
+            "kind": "math",
+            "value": "G",
+            "latex": "G"
+          },
+          {
+            "kind": "text",
+            "value": " è auspicabile la determinazione del "
+          },
+          {
+            "kind": "math",
+            "value": "Gdin",
+            "latex": "G_{din}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -112,9 +156,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "408d3479424e697019adb72473162cd67a83e00116f9b7ead9502186039cdaec",
-        "normalizedSha256": "408d3479424e697019adb72473162cd67a83e00116f9b7ead9502186039cdaec"
+        "normalizedSha256": "5dbf7c4a1e5acfaccb1d398468e7bc8fb8c117ce0435e007f450595ea6f6f269"
       }
     }
   ],

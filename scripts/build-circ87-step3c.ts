@@ -12,6 +12,8 @@ const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
 const CREATED_AT = "2026-08-09T12:00:00Z";
 const VERSION = "circ8-editorial-profile-0.2.0";
+const scopedFormulaAudit = process.argv.includes("--formulas-301-302");
+const scopedFormulaUnits = new Set(["C8.8.5.3", "C8.8.5.4", "C8.8.5.5"]);
 type Range = { page: number; start: number; end: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
 type Block = Record<string, unknown>;
@@ -62,6 +64,7 @@ function addText(blocks: Block[], rs: Range[], normalized: string, kind: "headin
 function addProse(blocks: Block[], rs: Range[], kind: "paragraph" | "list-item" = "paragraph") { return addText(blocks, rs, clean(rs), kind); }
 function addFormulaRef(blocks: Block[], rs: Range[], official: string) { const blockId = currentUnit + "#block-" + String(blocks.length).padStart(3, "0"); blocks.push({ blockId, kind: "formula-ref", origin: "official", assetId: formulaId(official), evidence: evidence(rs, `[${official}]`) }); return formulaId(official); }
 function makeUnit(official: string, title: string, parent: string, ancestors: string[], position: number, location: [number, number], build: (blocks: Block[]) => void, formulas: string[] = []) {
+  if (scopedFormulaAudit && !scopedFormulaUnits.has(official)) return;
   currentUnit = unitId(official);
   const blocks: Block[] = [];
   const headingBlockId = addText(blocks, [{ page: location[0], start: location[1], end: location[1] }], official + " " + title, "heading");
@@ -79,7 +82,7 @@ const formulas = [
   f("C8.8.5.1", "C8.8.5.3", 301, "\\begin{cases} S_{Di}(T)=S_{De}(T) & T\\ge T_C \\\\ S_{Di}(T)=\\dfrac{S_{De}(T)}{q}\\left[1+(q-1)\\dfrac{T_C}{T}\\right] & T<T_C \\end{cases}"),
   f(null, "C8.8.5.q", 301, "q=\\dfrac{mS_e(T)}{F_y}"),
   f("C8.8.5.2", "C8.8.5.4", 301, "\\theta_y(N)=\\phi_y(N)\\dfrac{L_s}{3}"),
-  f("C8.8.5.3", "C8.8.5.4", 301, "\\theta_u(N)=\\theta_y(N)+[\\phi_u(N)-\\phi_y(N)]L_p\\left(1-\\dfrac{0.5L_p}{L_s}\\right)"),
+  f("C8.8.5.3", "C8.8.5.4", 301, "\\theta_u(N)=\\theta_y(N)+[\\phi_u(N)-\\phi_y(N)]L_p\\left(1-\\dfrac{0{,}5L_p}{L_s}\\right)"),
   f("C8.8.5.4", "C8.8.5.4", 302, "\\theta_{SLC}=\\dfrac{1}{\\gamma_{el}}\\theta_u(N)"),
   f("C8.8.5.5", "C8.8.5.5", 302, "V_u=V_c+V_N+V_s\\quad V_c=0.8A_ck\\sqrt{f_c}\\quad V_N=N\\dfrac{h-x}{2L_s}\\quad V_s=\\dfrac{A_{sw}}{s}f_yz"),
 ];

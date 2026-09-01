@@ -31,12 +31,12 @@ const unit151 = "C4.2.12.1.5.1";
 const unit152 = "C4.2.12.1.5.2";
 const unit153 = "C4.2.12.1.5.3";
 const unit154 = "C4.2.12.1.5.4";
-const formula113: FormulaRow = { number: "C4.2.113", page: 139, latex: "N_{t,Rd}=\\frac{A\\,f_{myk}}{\\gamma_{M0}}", raw: "N_t,Rd = A·f_myk/γ_M0 [C4.2.113]", region: reg(145, 160, 325, 45) };
-const formula114: FormulaRow = { number: "C4.2.114", page: 139, latex: "N_{t,Rd}\\le F_{n,Rd}=\\frac{A_{net}\\,f_{tk}}{\\gamma_{M2}}", raw: "N_t,Rd ≤ F_n,Rd = A_net·f_tk/γ_M2 [C4.2.114]", region: reg(145, 250, 325, 45) };
-const formula115: FormulaRow = { number: "C4.2.115", page: 139, latex: "N_{c,Rd}=\\frac{A_{eff}\\,f_{yk}}{\\gamma_{M0}}", raw: "N_c,Rd = A_eff·f_yk/γ_M0 [C4.2.115]", region: reg(145, 350, 325, 45) };
-const formula116: FormulaRow = { number: "C4.2.116", page: 139, latex: "N_{c,Rd}=\\frac{A\\,f_{myk}}{\\gamma_{M0}}", raw: "N_c,Rd = A·f_myk/γ_M0 [C4.2.116]", region: reg(145, 400, 325, 45) };
-const formula117: FormulaRow = { number: "C4.2.117", page: 139, latex: "M_{c,Rd}=\\frac{W_{eff}\\,f_{yk}}{\\gamma_{M0}}", raw: "M_c,Rd = W_eff·f_yk/γ_M0 [C4.2.117]", region: reg(145, 490, 325, 45) };
-const formula118: FormulaRow = { number: "C4.2.118", page: 139, latex: "M_{c,Rd}=\\frac{W\\,f_{yk}}{\\gamma_{M0}}", raw: "M_c,Rd = W·f_yk/γ_M0 [C4.2.118]", region: reg(145, 545, 325, 45) };
+const formula113: FormulaRow = { number: "C4.2.113", page: 139, latex: "N_{t,Rd}=\\frac{A\\cdot f_{myk}}{\\gamma_{M0}}", raw: "N_t,Rd = A·f_myk/γ_M0 [C4.2.113]", region: reg(145, 160, 325, 45) };
+const formula114: FormulaRow = { number: "C4.2.114", page: 139, latex: "N_{t,Rd}\\le F_{n,Rd}=\\frac{A_{net}\\cdot f_{tk}}{\\gamma_{M2}}", raw: "N_t,Rd ≤ F_n,Rd = A_net·f_tk/γ_M2 [C4.2.114]", region: reg(145, 250, 325, 45) };
+const formula115: FormulaRow = { number: "C4.2.115", page: 139, latex: "N_{c,Rd}=\\frac{A_{eff}\\cdot f_{yk}}{\\gamma_{M0}}", raw: "N_c,Rd = A_eff·f_yk/γ_M0 [C4.2.115]", region: reg(145, 350, 325, 45) };
+const formula116: FormulaRow = { number: "C4.2.116", page: 139, latex: "N_{c,Rd}=\\frac{A\\cdot f_{myk}}{\\gamma_{M0}}", raw: "N_c,Rd = A·f_myk/γ_M0 [C4.2.116]", region: reg(145, 400, 325, 45) };
+const formula117: FormulaRow = { number: "C4.2.117", page: 139, latex: "M_{c,Rd}=\\frac{W_{eff}\\cdot f_{yk}}{\\gamma_{M0}}", raw: "M_c,Rd = W_eff·f_yk/γ_M0 [C4.2.117]", region: reg(145, 490, 325, 45) };
+const formula118: FormulaRow = { number: "C4.2.118", page: 139, latex: "M_{c,Rd}=\\frac{W\\cdot f_{yk}}{\\gamma_{M0}}", raw: "M_c,Rd = W·f_yk/γ_M0 [C4.2.118]", region: reg(145, 545, 325, 45) };
 const formula119: FormulaRow = { number: "C4.2.119", page: 139, latex: "\\frac{M_{y,Ed}+\\Delta M_{y,Ed}}{M_{cy,Rd}}+\\frac{M_{z,Ed}+\\Delta M_{z,Ed}}{M_{cz,Rd}}\\pm\\frac{N_{Ed}}{N_{c,Rd}}\\le1", raw: "(M_y,Ed+ΔM_y,Ed)/M_cy,Rd + (M_z,Ed+ΔM_z,Ed)/M_cz,Rd ± N_Ed/N_c,Rd ≤ 1 [C4.2.119]", region: reg(145, 625, 325, 65) };
 const formula120: FormulaRow = { number: "C4.2.120", page: 139, latex: "\\frac{M_{y,Ed}}{M_{cy,Rd}}+\\frac{M_{z,Ed}}{M_{cz,Rd}}\\pm\\frac{N_{Ed}}{N_{t,Rd}}\\le1", raw: "M_y,Ed/M_cy,Rd + M_z,Ed/M_cz,Rd ± N_Ed/N_t,Rd ≤ 1 [C4.2.120]", region: reg(145, 720, 325, 55) };
 

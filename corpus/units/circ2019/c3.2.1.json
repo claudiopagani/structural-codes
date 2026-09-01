@@ -783,7 +783,7 @@
       "origin": "official",
       "text": {
         "raw": "È immediato constatare (v. formula C.3.2.1) che, imponendo \u0003",
-        "normalized": "È immediato constatare (v. formula C.3.2.1) che, imponendo PVR = costante al variare di CU, si ottiene TR = CUVN/[-ln(1-PVR)] e dunque, a parità di VN, TR varia dello stesso fattore CU per cui viene moltiplicata VN per avere VR.",
+        "normalized": "È immediato constatare (v. formula C.3.2.1) che, imponendo PVR = costante al variare di CU, si ottiene [TR = -CU·VN/ln(1-PVR) = -CU·VN/costante] e dunque, a parità di VN, TR varia dello stesso fattore CU per cui viene moltiplicata VN per avere VR.",
         "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
@@ -792,21 +792,12 @@
           },
           {
             "kind": "math",
-            "value": "PVR",
-            "latex": "P_{VR}"
+            "value": "PVR = costante",
+            "latex": "P_{VR}=\\text{costante}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " costante al variare di "
+            "value": " al variare di "
           },
           {
             "kind": "math",
@@ -819,26 +810,8 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "CUVN/[-ln(1-PVR)]",
-            "latex": "\\frac{C_UV_N}{-\\ln(1-P_{VR})}"
+            "value": "[TR = -CU·VN/ln(1-PVR) = -CU·VN/costante]",
+            "latex": "\\left[T_R=-\\frac{C_U\\cdot V_N}{\\ln(1-P_{VR})}=-\\frac{C_U\\cdot V_N}{\\text{costante}}\\right]"
           },
           {
             "kind": "text",
@@ -942,10 +915,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Ripristinata la punteggiatura della numerazione ufficiale C.3.2 nel testo della fonte."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ripristinata integralmente la formula inline tra parentesi quadre e riunite le uguaglianze ai rispettivi membri."
           }
         ],
         "rawSha256": "89363998be764dac61a10ec206489c208a0938a2cbdd2ababd98c3a1e5188876",
-        "normalizedSha256": "781489c4a8b2866099a20777355ce2f3f8003cdc5b9897edbad1698af2080b66"
+        "normalizedSha256": "046478ffdf5cfe42cc90c01757a7ca8487a4d0df14f50e980a3ffe15bb88562b"
       }
     },
     {
@@ -955,7 +933,7 @@
       "text": {
         "raw": "Fissata la vita nominale VN della costruzione e valutato il periodo di ritorno T R,1 corrispondente a C U = 1, si ricava il TR",
         "normalized": "Fissata la vita nominale VN della costruzione e valutato il periodo di ritorno TR,1 corrispondente a CU = 1, si ricava il TR corrispondente al generico CU dal prodotto CU·TR,1. Al variare di CU, TR e VR variano con legge uguale.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -981,21 +959,12 @@
           },
           {
             "kind": "math",
-            "value": "CU",
-            "latex": "C_U"
+            "value": "CU = 1",
+            "latex": "C_U=1"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1, si ricava il "
+            "value": ", si ricava il "
           },
           {
             "kind": "math",
@@ -1099,6 +1068,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Riunita l'uguaglianza C_U=1 in un'unica espressione matematica inline."
           }
         ],
         "rawSha256": "ae101123d3d189811b5619c239dbe02b3e49d7d4ea36e44cae16d44b961be4cb",
@@ -1422,7 +1396,7 @@
       "text": {
         "raw": "In tal caso si ha \u000e \u000f",
         "normalized": "In tal caso si ha TR = -VN/ln(1-PVR/CU); detto TR,a il periodo di ritorno ottenuto con la strategia progettuale di norma e TR,b il periodo di ritorno ottenuto con la strategia progettuale appena illustrata, il rapporto R tra i due periodi di ritorno varrebbe:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ3-final-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -1430,48 +1404,12 @@
           },
           {
             "kind": "math",
-            "value": "TR",
-            "latex": "T_R"
+            "value": "TR = -VN/ln(1-PVR/CU)",
+            "latex": "T_R=-\\frac{V_N}{\\ln(1-P_{VR}/C_U)}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " -"
-          },
-          {
-            "kind": "math",
-            "value": "VN",
-            "latex": "V_N"
-          },
-          {
-            "kind": "text",
-            "value": "/ln(1-"
-          },
-          {
-            "kind": "math",
-            "value": "PVR",
-            "latex": "P_{VR}"
-          },
-          {
-            "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "CU",
-            "latex": "C_U"
-          },
-          {
-            "kind": "text",
-            "value": "); detto "
+            "value": "; detto "
           },
           {
             "kind": "math",
@@ -1539,6 +1477,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Ricomposta in un solo segmento la formula inline del periodo di ritorno."
           }
         ],
         "rawSha256": "944c4f34f3a435cf0802058942dc8f257cfc45b19895ea308ceb3235a085a5d3",
@@ -1871,16 +1814,16 @@
           },
           {
             "kind": "text",
-            "value": " suggeriti dalla strategia ipotizzata, basta imporre R "
+            "value": " suggeriti dalla strategia ipotizzata, basta imporre "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "R = 1",
+            "latex": "R=1"
           },
           {
             "kind": "text",
-            "value": " 1 nella formula C.3.2.2 ed indicare con "
+            "value": " nella formula C.3.2.2 ed indicare con "
           },
           {
             "kind": "math",
@@ -1953,6 +1896,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Ripristinata la punteggiatura della numerazione ufficiale C.3.2 nel testo della fonte."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ3-final-editorial-profile-0.1.0",
+            "note": "Riunita l'uguaglianza R=1 in un'unica espressione matematica inline."
           }
         ],
         "rawSha256": "5040711948136396a81c8a436e6eb37f9e4610bd722f7b6e747ec2afaa20f78d",

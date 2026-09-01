@@ -58,8 +58,32 @@
       "origin": "official",
       "text": {
         "raw": "La norma stabilisce, preliminarmente, i valori nominali della tensione di snervamento f y,nom e di rottura f t,nom che possono essere",
-        "normalized": "La norma stabilisce, preliminarmente, i valori nominali della tensione di snervamento f y,nom e di rottura f t,nom che possono essere",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "La norma stabilisce, preliminarmente, i valori nominali della tensione di snervamento fy,nom e di rottura ft,nom che possono essere",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La norma stabilisce, preliminarmente, i valori nominali della tensione di snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "fy,nom",
+            "latex": "f_{y,\\mathrm{nom}}"
+          },
+          {
+            "kind": "text",
+            "value": " e di rottura "
+          },
+          {
+            "kind": "math",
+            "value": "ft,nom",
+            "latex": "f_{t,\\mathrm{nom}}"
+          },
+          {
+            "kind": "text",
+            "value": " che possono essere"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -71,9 +95,15 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "6a1f4534600162fb03439cd4bcef166cf624b77e44ac752f192fcd7c25839349",
-        "normalizedSha256": "6a1f4534600162fb03439cd4bcef166cf624b77e44ac752f192fcd7c25839349"
+        "normalizedSha256": "a215a461343f5c9a4bfeb6bf28eab1025548719842800f43a78adcfc44c7b99c"
       }
     },
     {
@@ -106,8 +136,41 @@
       "origin": "official",
       "text": {
         "raw": "Vengono quindi fissati i requisiti che gli acciai devono possedere per rispondere alle attese previste nel calcolo. Nella Tabella\n11.3.1.b delle NTC si stabilisce infatti che i valori caratteristici con frattile 5%, f yk e f tk, ottenuti mediante prove su un numero",
-        "normalized": "Vengono quindi fissati i requisiti che gli acciai devono possedere per rispondere alle attese previste nel calcolo. Nella Tabella 11.3.1.b delle NTC si stabilisce infatti che i valori caratteristici con frattile 5%, f yk e f tk, ottenuti mediante prove su un numero",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "Vengono quindi fissati i requisiti che gli acciai devono possedere per rispondere alle attese previste nel calcolo. Nella Tabella 11.3.1.b delle NTC si stabilisce infatti che i valori caratteristici con frattile 5%, fyk e ftk, ottenuti mediante prove su un numero",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Vengono quindi fissati i requisiti che gli acciai devono possedere per rispondere alle attese previste nel calcolo. Nella Tabella 11.3.1.b delle NTC si stabilisce infatti che i valori caratteristici con frattile "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "ftk",
+            "latex": "f_{tk}"
+          },
+          {
+            "kind": "text",
+            "value": ", ottenuti mediante prove su un numero"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -129,10 +192,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "b4ec55c25ec4330c3a3b2fd107d761dcfe15ade6784434006e8d33c5f0594927",
-        "normalizedSha256": "082561de08c36ed2c0b0250c3cd00fe1c56355e80c42691ecab0bdaef55355bd"
+        "normalizedSha256": "1cc2b126e5414d53928dc92f2f0ef2cd9de6048c9d02e3d26e634c3143f56eae"
       }
     },
     {
@@ -142,25 +210,25 @@
       "text": {
         "raw": "significativo di saggi, non siano inferiori ai rispettivi valori nominali fissati, ovvero 450 N/mm² e 540 N/mm².",
         "normalized": "significativo di saggi, non siano inferiori ai rispettivi valori nominali fissati, ovvero 450 N/mm² e 540 N/mm².",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "significativo di saggi, non siano inferiori ai rispettivi valori nominali fissati, ovvero 450 "
+            "value": "significativo di saggi, non siano inferiori ai rispettivi valori nominali fissati, ovvero "
           },
           {
             "kind": "math",
-            "value": "N/mm²",
-            "latex": "\\mathrm{N/mm^2}"
+            "value": "450 N/mm²",
+            "latex": "450\\,\\mathrm{N/mm^2}"
           },
           {
             "kind": "text",
-            "value": " e 540 "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "N/mm²",
-            "latex": "\\mathrm{N/mm^2}"
+            "value": "540 N/mm²",
+            "latex": "540\\,\\mathrm{N/mm^2}"
           },
           {
             "kind": "text",
@@ -178,7 +246,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "ea07cdb003fb1b1d5826b7ed28899102b7c2c81d13243e63965912bd9b9d9c41",
         "normalizedSha256": "ea07cdb003fb1b1d5826b7ed28899102b7c2c81d13243e63965912bd9b9d9c41"
       }
@@ -213,8 +287,32 @@
       "origin": "official",
       "text": {
         "raw": "- il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di snervamento effettiva, riscontrata sulla\nbarra, ed il valore nominale (f y/f y nom) k non sia superiore a 1,25;",
-        "normalized": "il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di snervamento effettiva, riscontrata sulla barra, ed il valore nominale (f y/f y nom) k non sia superiore a 1,25;",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di snervamento effettiva, riscontrata sulla barra, ed il valore nominale (fy/fy,nom)k non sia superiore a 1,25;",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "il valore caratteristico con frattile "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del rapporto fra il valore della tensione di snervamento effettiva, riscontrata sulla barra, ed il valore nominale "
+          },
+          {
+            "kind": "math",
+            "value": "(fy/fy,nom)k",
+            "latex": "\\left(f_y/f_{y,\\mathrm{nom}}\\right)_k"
+          },
+          {
+            "kind": "text",
+            "value": " non sia superiore a 1,25;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -236,10 +334,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "1e3d68380b3501d9f9023ede66717b56fd44ec4c852314a6c8af830e06e7e391",
-        "normalizedSha256": "d62452843d0274ac3d9749d8c454b7af32877adab33bad931a49d1fb7424b274"
+        "normalizedSha256": "c7f0282486fa0523a003639d1641761e5ad6542e6211acdc2c6295654c535efa"
       }
     },
     {
@@ -248,8 +351,32 @@
       "origin": "official",
       "text": {
         "raw": "- il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di rottura e la tensione di snervamento\n(f t \n/f y) k sia compreso fra 1,15 e 1,35;",
-        "normalized": "il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di rottura e la tensione di snervamento (f t /f y) k sia compreso fra 1,15 e 1,35;",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "il valore caratteristico con frattile 10% del rapporto fra il valore della tensione di rottura e la tensione di snervamento (ft/fy)k sia compreso fra 1,15 e 1,35;",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "il valore caratteristico con frattile "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " del rapporto fra il valore della tensione di rottura e la tensione di snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "(ft/fy)k",
+            "latex": "\\left(f_t/f_y\\right)_k"
+          },
+          {
+            "kind": "text",
+            "value": " sia compreso fra 1,15 e 1,35;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -271,10 +398,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "79046f079c3d9a9871e9cbc6206971d6b6ce1c5429d41f94f2dfe089fa46e643",
-        "normalizedSha256": "815814ca28b53154cb79add1e11ab347a83216be8193500f0ac3e55174b83383"
+        "normalizedSha256": "29bb9dc87a94119e1115b89560698bd8d2772e58a84d45721ec9d5ab6f633257"
       }
     },
     {
@@ -283,8 +415,41 @@
       "origin": "official",
       "text": {
         "raw": "- il valore caratteristico con frattile 10% dell’allungamento al massimo sforzo (A gt \n) k non sia inferiore al 7,5%.",
-        "normalized": "il valore caratteristico con frattile 10% dell’allungamento al massimo sforzo (A gt ) k non sia inferiore al 7,5%.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "il valore caratteristico con frattile 10% dell’allungamento al massimo sforzo (Agt)k non sia inferiore al 7,5%.",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "il valore caratteristico con frattile "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " dell’allungamento al massimo sforzo "
+          },
+          {
+            "kind": "math",
+            "value": "(Agt)k",
+            "latex": "(A_{gt})_k"
+          },
+          {
+            "kind": "text",
+            "value": " non sia inferiore al "
+          },
+          {
+            "kind": "math",
+            "value": "7,5%",
+            "latex": "7{,}5\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -306,10 +471,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "8217e8a6c7f5d40d565240dbb151c9283b6e5fb1adc837675f70359d22b6ea3a",
-        "normalizedSha256": "f7273e829fbaa6c114b35fe7114fd3c8ec62469d1b8137fa4d5710950de0efef"
+        "normalizedSha256": "fc0f075871547c218515efdfa524ece7db5ef6cfea1dea8e87b1ed3339a171de"
       }
     },
     {
@@ -378,7 +548,22 @@
       "text": {
         "raw": "Al fine di garantire l’idoneità alla piegatura e, quindi, la necessaria lavorabilità agli acciai da c.a. la norma stabilisce che le barre\ndebbano essere piegate a 90° e poi raddrizzate, con opportuni raggi di curvatura stabiliti in base al diametro della barra stessa,\nsenza che, dopo la prova, le barre mostrino rotture o incrinature visibili “ad una persona con visione normale o corretta”.",
         "normalized": "Al fine di garantire l’idoneità alla piegatura e, quindi, la necessaria lavorabilità agli acciai da c.a. la norma stabilisce che le barre debbano essere piegate a 90° e poi raddrizzate, con opportuni raggi di curvatura stabiliti in base al diametro della barra stessa, senza che, dopo la prova, le barre mostrino rotture o incrinature visibili “ad una persona con visione normale o corretta”.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Al fine di garantire l’idoneità alla piegatura e, quindi, la necessaria lavorabilità agli acciai da c.a. la norma stabilisce che le barre debbano essere piegate a "
+          },
+          {
+            "kind": "math",
+            "value": "90°",
+            "latex": "90^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": " e poi raddrizzate, con opportuni raggi di curvatura stabiliti in base al diametro della barra stessa, senza che, dopo la prova, le barre mostrino rotture o incrinature visibili “ad una persona con visione normale o corretta”."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -400,6 +585,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "8cb3b884161edbf7405157aa252ecc52272be44eb83edb94fad5adae5c707a6f",

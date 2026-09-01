@@ -46,18 +46,19 @@ function transformations(): any[] {
 }
 
 const mathTerms: Array<[string, string]> = [
-    ["Δφ_fat", "\\Delta\\varphi_{\\mathrm{fat}}"], ["ΔT_exp,d", "\\Delta T_{\\mathrm{exp,d}}"], ["ΔT_con,d", "\\Delta T_{\\mathrm{con,d}}"],
-    ["ΔT_exp,k", "\\Delta T_{\\mathrm{exp,k}}"], ["ΔT_con,k", "\\Delta T_{\\mathrm{con,k}}"], ["T_e,max", "T_{\\mathrm{e,max}}"], ["T_e,min", "T_{\\mathrm{e,min}}"],
-    ["Q_{sv1}", "Q_{\\mathrm{sv1}}"], ["Q_{sv2}", "Q_{\\mathrm{sv2}}"], ["Q_{1k}", "Q_{1k}"], ["γ_Q", "\\gamma_Q"], ["T_r", "T_r"],
-    ["1/T_r", "1/T_r"], ["ΔT_0", "\\Delta T_0"], ["ΔT_exp", "\\Delta T_{\\mathrm{exp}}"], ["ΔT_con", "\\Delta T_{\\mathrm{con}}"],
+    ["Δφ_fat", "\\Delta\\varphi_{\\mathrm{fat}}"], ["ΔT_exp,d", "\\Delta T_{exp,d}"], ["ΔT_con,d", "\\Delta T_{con,d}"],
+    ["ΔT_exp,k", "\\Delta T_{exp,k}"], ["ΔT_con,k", "\\Delta T_{con,k}"], ["T_e,max", "T_{e,max}"], ["T_e,min", "T_{e,min}"],
+    ["Q_{sv1}", "Q_{sv1}"], ["Q_{sv2}", "Q_{sv2}"], ["Q_{1k}", "Q_{1k}"], ["γ_Q", "\\gamma_Q"], ["T_r", "T_r"],
+    ["1/T_r", "1/T_r"], ["ΔT_0", "\\Delta T_0"], ["ΔT_exp", "\\Delta T_{exp}"], ["ΔT_con", "\\Delta T_{con}"],
     ["σ_max", "\\sigma_{\\max}"], ["σ_min", "\\sigma_{\\min}"], ["Δσ", "\\Delta\\sigma"], ["q_8", "q_8"], ["q_1", "q_1"],
     ["V_N", "V_N"], ["C_U", "C_U"], ["V_R", "V_R"], ["6÷7", "6\\div 7"], ["q_{f,r}", "q_{f,r}"],
-    ["Q_sv1", "Q_{\\mathrm{sv1}}"], ["Q_sv2", "Q_{\\mathrm{sv2}}"], ["L", "L"], ["q", "q"], ["d", "d"], ["T_0", "T_0"],
+    ["Q_sv1", "Q_{sv1}"], ["Q_sv2", "Q_{sv2}"], ["L", "L"], ["q", "q"], ["d", "d"], ["T_0", "T_0"],
 ];
 
 function isBoundary(text: string, index: number, length: number): boolean {
     const before = index > 0 ? text[index - 1] ?? "" : "";
     const after = index + length < text.length ? text[index + length] ?? "" : "";
+    if (/[’']/u.test(before) || /[’']/u.test(after)) return false;
     return !/[A-Za-zÀ-ÿ0-9_]/u.test(before) && !/[A-Za-zÀ-ÿ0-9_]/u.test(after);
 }
 
@@ -426,13 +427,13 @@ const tableAsset = {
 
 const formulas = [
     formulaMeta("1.1", "C5.1.4.3", 171, "\\Delta\\sigma=\\sigma_{\\max}-\\sigma_{\\min}"),
-    formulaMeta("1.2", "C5.1.4.3", 172, "\\Delta\\varphi_{\\mathrm{fat}}=1{,}30\\left(1-\\frac{d}{26}\\right)\\ge 1{,}0"),
-    formulaMeta("1.3", "C5.1.4.5", 172, "\\Delta T_{\\mathrm{exp,d}}=\\Delta T_{\\mathrm{exp}}+\\Delta T_0"),
-    formulaMeta("1.4", "C5.1.4.5", 172, "\\Delta T_{\\mathrm{con,d}}=\\Delta T_{\\mathrm{con}}+\\Delta T_0"),
-    formulaMeta("1.5", "C5.1.4.5", 172, "\\Delta T_{\\mathrm{exp}}=+T_{\\mathrm{e,max}}-T_0"),
-    formulaMeta("1.6", "C5.1.4.5", 172, "\\Delta T_{\\mathrm{con}}=-T_{\\mathrm{e,min}}+T_0"),
-    formulaMeta("1.7", "C5.1.4.5", 173, "\\Delta T_{\\mathrm{exp,k}}=\\Delta T_{\\mathrm{exp}}"),
-    formulaMeta("1.8", "C5.1.4.5", 173, "\\Delta T_{\\mathrm{con,k}}=\\Delta T_{\\mathrm{con}}"),
+    formulaMeta("1.2", "C5.1.4.3", 172, "\\Delta\\varphi_{\\mathrm{fat}}=1{,}30\\cdot\\left(1-\\frac{d}{26}\\right)\\ge 1{,}0"),
+    formulaMeta("1.3", "C5.1.4.5", 172, "\\Delta T_{exp,d}=\\Delta T_{exp}+\\Delta T_0"),
+    formulaMeta("1.4", "C5.1.4.5", 172, "\\Delta T_{con,d}=\\Delta T_{con}+\\Delta T_0"),
+    formulaMeta("1.5", "C5.1.4.5", 172, "\\Delta T_{exp}=+T_{e,max}-T_0"),
+    formulaMeta("1.6", "C5.1.4.5", 172, "\\Delta T_{con}=-T_{e,min}+T_0"),
+    formulaMeta("1.7", "C5.1.4.5", 173, "\\Delta T_{exp,k}=\\Delta T_{exp}"),
+    formulaMeta("1.8", "C5.1.4.5", 173, "\\Delta T_{con,k}=\\Delta T_{con}"),
     formulaMeta("1.9", "C5.1.8", 173, "2{,}50\\,\\mathrm{kN/m^2}\\le q_{f,r}=2{,}0+\\frac{120}{L+30}\\le 5{,}00\\,\\mathrm{kN/m^2}"),
 ];
 

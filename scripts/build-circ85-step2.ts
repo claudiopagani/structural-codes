@@ -12,6 +12,10 @@ const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
 const CREATED_AT = "2026-08-09T12:00:00Z";
 const VERSION = "circ8-editorial-profile-0.2.0";
+const scopedPages265To266 = process.argv.includes("--pages-265-266");
+const scopedPages267To269 = process.argv.includes("--pages-267-269");
+const scopedUnits265To266 = new Set(["C8.5.4", "C8.5.4.1"]);
+const scopedUnits267To269 = new Set(["C8.5.4.2", "C8.5.4.3", "C8.5.5", "C8.5.5.1", "C8.5.5.2"]);
 
 type Range = { page: number; start: number; end: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -43,6 +47,10 @@ function sha256(value: string): string {
 }
 
 const mathMap: Record<string, string> = {
+  "FC=1,35": "\\mathrm{FC}=1{,}35",
+  "FC=1,2": "\\mathrm{FC}=1{,}2",
+  "FC=1": "\\mathrm{FC}=1",
+  "f = 1,25 f_k": "f=1{,}25f_k",
   "μ’’": "\\mu''",
   "μ’": "\\mu'",
   "σ’²": "\\sigma'^2",
@@ -63,8 +71,8 @@ const mathMap: Record<string, string> = {
   "95%": "95\\%",
   "FC": "\\mathrm{FC}",
   "κ": "\\kappa",
-  "q = 2,0 α_u/α_1": "q=2,0\\,\\alpha_u/\\alpha_1",
-  "q = 1,75 α_u/α_1": "q=1,75\\,\\alpha_u/\\alpha_1",
+  "q = 2,0 α_u/α_1": "q=2{,}0\\,\\alpha_u/\\alpha_1",
+  "q = 1,75 α_u/α_1": "q=1{,}75\\,\\alpha_u/\\alpha_1",
   "q": "q",
   "E": "E",
   "G": "G",
@@ -73,7 +81,7 @@ const mathMap: Record<string, string> = {
   "X": "X",
 };
 
-const inlinePattern = /q = 2,0 α_u\/α_1|q = 1,75 α_u\/α_1|μ’’|σ’²|α_u\/α_1|μ’|σ’|X̄|α_u|α_1|fᵥ₀|τ₀|f_k|f_b|f_m|f_g|N\/mm²|m²|>15%|95%|FC|κ|(?<![\p{L}\p{N}_])q(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])E(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])G(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])f(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])n(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])X(?![\p{L}\p{N}_])/gu;
+const inlinePattern = /q = 2,0 α_u\/α_1|q = 1,75 α_u\/α_1|FC=1,35|FC=1,2|FC=1|f = 1,25 f_k|μ’’|σ’²|α_u\/α_1|μ’|σ’|X̄|α_u|α_1|fᵥ₀|τ₀|f_k|f_b|f_m|f_g|N\/mm²|m²|>15%|95%|FC|κ|(?<![\p{L}\p{N}_])q(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])E(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])G(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])f(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])n(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])X(?![\p{L}\p{N}_])/gu;
 
 function inline(text: string): Inline[] | undefined {
   const result: Inline[] = [];
@@ -185,7 +193,7 @@ function addText(blocks: Block[], ranges: Range[], normalized: string, kind: "he
     normalized,
     normalizationVersion: VERSION,
   };
-  const segments = inline(normalized);
+  const segments = kind === "heading" ? undefined : inline(normalized);
   if (segments) text.inline = segments;
   blocks.push({
     blockId,
@@ -210,6 +218,8 @@ function addAssetRef(blocks: Block[], ranges: Range[], kind: "formula-ref" | "ta
 }
 
 function makeUnit(official: string, title: string, parentOfficial: string, ancestors: string[], position: number, build: (blocks: Block[]) => void, formulaIds: string[] = [], tableIds: string[] = []) {
+  if (scopedPages265To266 && !scopedUnits265To266.has(official)) return;
+  if (scopedPages267To269 && !scopedUnits267To269.has(official)) return;
   currentUnitId = unitId(official);
   const blocks: Block[] = [];
   const headingBlockId = addText(blocks, headingRanges[official]!, official + " " + title, "heading");
@@ -292,8 +302,8 @@ const T5 = assetId("table", "C8.5.V");
 const T6 = assetId("table", "C8.5.VI");
 
 const formulas = [
-  { id: F41, unitId: unitId("C8.5.4.1"), officialNumber: "C8.5.4.1", pdfPage: 266, latex: "\\mu'=\\frac{1}{2}\\left(X_{min}+X_{max}\\right)" },
-  { id: F42, unitId: unitId("C8.5.4.1"), officialNumber: "C8.5.4.2", pdfPage: 266, latex: "\\sigma'=\\frac{1}{2}\\left(X_{max}-X_{min}\\right)" },
+  { id: F41, unitId: unitId("C8.5.4.1"), officialNumber: "C8.5.4.1", pdfPage: 266, latex: "\\mu'=\\frac{1}{2}\\left(X_{\\min}+X_{\\max}\\right)" },
+  { id: F42, unitId: unitId("C8.5.4.1"), officialNumber: "C8.5.4.2", pdfPage: 266, latex: "\\sigma'=\\frac{1}{2}\\left(X_{\\max}-X_{\\min}\\right)" },
   { id: F43, unitId: unitId("C8.5.4.1"), officialNumber: "C8.5.4.3", pdfPage: 266, latex: "\\mu''=\\frac{n\\bar{X}+\\kappa\\mu'}{n+\\kappa}" },
 ];
 
@@ -333,7 +343,7 @@ const table4 = {
     cell("Dettagli strutturali"),
     cell("Proprietà dei materiali"),
     cell("Metodi di analisi"),
-    cell("FC (*)"),
+    cell("FC (*)", "\\mathrm{FC}\\,\\text{(*)}"),
   ]],
   rows: [
     [
@@ -342,21 +352,21 @@ const table4 = {
       cell("Progetto simulato in accordo alle norme dell’epoca e indagini limitate in situ"),
       cell("Valori usuali per la pratica costruttiva dell’epoca e prove limitate in situ"),
       cell("Analisi lineare statica o dinamica"),
-      cell("1,35"),
+      cell("1,35", "1{,}35"),
     ],
     [
       cell("LC2"),
       cell("Elaborati progettuali incompleti con indagini limitate in situ; in alternativa indagini estese in situ"),
       cell("Dalle specifiche originali di progetto o dai certificati di prova originali, con prove limitate in situ; in alternativa da prove estese in situ"),
       cell("Tutti"),
-      cell("1,20"),
+      cell("1,20", "1{,}20"),
     ],
     [
       cell("LC3"),
       cell("Elaborati progettuali completi con indagini limitate in situ; in alternativa indagini esaustive in situ"),
       cell("Dai certificati di prova originali o dalle specifiche originali di progetto, con prove estese in situ; in alternativa da prove esaustive in situ"),
       cell("Tutti"),
-      cell("1,00"),
+      cell("1,00", "1{,}00"),
     ],
   ],
   notes: [],

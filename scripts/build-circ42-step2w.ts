@@ -58,9 +58,9 @@ function figureBlock(suffix: string, asset: string, page: number, caption: strin
   return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) };
 }
 
-const formula121: FormulaRow = { number: "C4.2.121", page: 140, latex: "V_{b,Rd}=\\frac{h_w\\,t\\,f_{bv}}{\\gamma_{M0}\\,\\sin\\phi}", raw: "V_b,Rd = h_w·t·f_bv/(γ_M0·sin φ) [C4.2.121]", region: reg(145, 150, 325, 45) };
-const formula122: FormulaRow = { number: "C4.2.122", page: 140, latex: "f_{bv}=f_{yk}\\,\\chi(\\lambda_w)", raw: "f_bv = f_yk·χ(λ_w) [C4.2.122]", region: reg(145, 215, 325, 45) };
-const formula123: FormulaRow = { number: "C4.2.123", page: 140, latex: "\\lambda_w=0{,}346\\,\\frac{s_w}{t}\\sqrt{\\frac{f_{yk}}{E}}", raw: "λ_w = 0,346·(s_w/t)·√(f_yk/E) [C4.2.123]", region: reg(145, 270, 325, 45) };
+const formula121: FormulaRow = { number: "C4.2.121", page: 140, latex: "V_{b,Rd}=\\frac{h_w\\cdot t\\cdot f_{bv}}{\\gamma_{M0}\\cdot\\sin\\phi}", raw: "V_b,Rd = h_w·t·f_bv/(γ_M0·sin φ) [C4.2.121]", region: reg(145, 150, 325, 45) };
+const formula122: FormulaRow = { number: "C4.2.122", page: 140, latex: "f_{bv}=f_{yk}\\cdot\\chi(\\lambda_w)", raw: "f_bv = f_yk·χ(λ_w) [C4.2.122]", region: reg(145, 215, 325, 45) };
+const formula123: FormulaRow = { number: "C4.2.123", page: 140, latex: "\\lambda_w=0{,}346\\cdot\\frac{s_w}{t}\\cdot\\sqrt{\\frac{f_{yk}}{E}}", raw: "λ_w = 0,346·(s_w/t)·√(f_yk/E) [C4.2.123]", region: reg(145, 270, 325, 45) };
 const formula124: FormulaRow = { number: "C4.2.124", page: 140, latex: "\\begin{aligned}\\chi&=0{,}58&&\\text{per }\\lambda_w\\le0{,}83\\\\\\chi&=\\frac{0{,}48}{\\lambda_w}&&\\text{per }\\lambda_w>0{,}83\\end{aligned}", raw: "χ = 0,58 per λ_w ≤ 0,83; χ = 0,48/λ_w per λ_w > 0,83 [C4.2.124]", region: reg(145, 425, 325, 60) };
 const formula125: FormulaRow = { number: "C4.2.125", page: 140, latex: "\\begin{aligned}\\chi&=0{,}58&&\\text{per }\\lambda_w\\le0{,}83\\\\\\chi&=\\frac{0{,}48}{\\lambda_w}&&\\text{per }0{,}83<\\lambda_w<1{,}40\\\\\\chi&=\\frac{0{,}67}{\\lambda_w^2}&&\\text{per }\\lambda_w\\ge1{,}40\\end{aligned}", raw: "χ = 0,58 per λ_w ≤ 0,83; χ = 0,48/λ_w per 0,83 < λ_w < 1,40; χ = 0,67/λ_w² per λ_w ≥ 1,40 [C4.2.125]", region: reg(145, 500, 325, 80) };
 

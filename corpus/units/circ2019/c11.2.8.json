@@ -163,7 +163,22 @@
       "text": {
         "raw": "Si precisa, inoltre, che gli impianti di produzione industrializzata appartenenti al costruttore nell’ambito di uno specifico cantiere,\nper i quali non è richiesta la suddetta certificazione del controllo del processo di fabbrica, a condizione che il sistema di gestione\ndella qualità del costruttore - predisposto in coerenza con la norma UNI EN ISO 9001 e certificato da un organismo accreditato -\npreveda l’esistenza e l’applicazione di un sistema di controllo della produzione dell’impianto, sono quelli predisposti nell’ambito\ndi uno specifico cantiere destinato alla realizzazione di un’opera nella quale viene impiegato un volume di calcestruzzo\nstrutturale superiore a 1500 m³.",
         "normalized": "Si precisa, inoltre, che gli impianti di produzione industrializzata appartenenti al costruttore nell’ambito di uno specifico cantiere, per i quali non è richiesta la suddetta certificazione del controllo del processo di fabbrica, a condizione che il sistema di gestione della qualità del costruttore - predisposto in coerenza con la norma UNI EN ISO 9001 e certificato da un organismo accreditato preveda l’esistenza e l’applicazione di un sistema di controllo della produzione dell’impianto, sono quelli predisposti nell’ambito di uno specifico cantiere destinato alla realizzazione di un’opera nella quale viene impiegato un volume di calcestruzzo strutturale superiore a 1500 m³.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si precisa, inoltre, che gli impianti di produzione industrializzata appartenenti al costruttore nell’ambito di uno specifico cantiere, per i quali non è richiesta la suddetta certificazione del controllo del processo di fabbrica, a condizione che il sistema di gestione della qualità del costruttore - predisposto in coerenza con la norma UNI EN ISO 9001 e certificato da un organismo accreditato preveda l’esistenza e l’applicazione di un sistema di controllo della produzione dell’impianto, sono quelli predisposti nell’ambito di uno specifico cantiere destinato alla realizzazione di un’opera nella quale viene impiegato un volume di calcestruzzo strutturale superiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1500 m³",
+            "latex": "1500\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -190,6 +205,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "8096e62a6613f45af954e93a82d770cb656b0b061d492ba622d1228182b4fb2d",
@@ -203,7 +223,22 @@
       "text": {
         "raw": "Nei cantieri di opere che prevedono una quantità di calcestruzzo inferiore a 1.500 m³, restano nella responsabilità del Costruttore\ne del Direttore dei lavori, ciascuno per le proprie competenze, tutte le procedure di confezionamento e messa in opera del\ncalcestruzzo.",
         "normalized": "Nei cantieri di opere che prevedono una quantità di calcestruzzo inferiore a 1.500 m³, restano nella responsabilità del Costruttore e del Direttore dei lavori, ciascuno per le proprie competenze, tutte le procedure di confezionamento e messa in opera del calcestruzzo.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nei cantieri di opere che prevedono una quantità di calcestruzzo inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "1.500 m³",
+            "latex": "1{.}500\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": ", restano nella responsabilità del Costruttore e del Direttore dei lavori, ciascuno per le proprie competenze, tutte le procedure di confezionamento e messa in opera del calcestruzzo."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -225,6 +260,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "bbf25ebc5d60aa1eadb1e9731c1684cae85aa6ca4874fa56b6b1bb6973c6d9c5",

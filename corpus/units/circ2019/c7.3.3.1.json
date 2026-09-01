@@ -35,7 +35,13 @@
       "text": {
         "raw": "C7.3.3.1 ANALISI LINEARE DINAMICA⁸",
         "normalized": "C7.3.3.1 ANALISI LINEARE DINAMICA⁸",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C7.3.3.1 ANALISI LINEARE DINAMICA⁸"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -69,7 +75,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "L’analisi lineare dinamica, così come presentata nelle NTC, avviene in tre passi fondamentali: 1) determinazione dei modi di vibrare “naturali” della struttura (analisi modale); 2) calcolo degli effetti dell’azione sismica, rappresentati dallo spettro di risposta di progetto, per ciascuno dei modi di vibrare individuati; 3) combinazione degli effetti relativi a ciascun modo di vibrare per valutare la risposta complessiva. L’analisi modale consiste nella soluzione delle equazioni del moto della struttura, considerata elastica, in condizioni di oscillazioni libere (assenza di forzante esterna) e nella individuazione di particolari configurazioni deformate che costituiscono i modi naturali di vibrare di una costruzione. Questi modi di vibrare sono una caratteristica propria della struttura, in quanto sono individuati in assenza di forzante, e sono caratterizzati da un periodo proprio di oscillazione T e da un fattore di smorzamento convenzionale "
+            "value": "L’analisi lineare dinamica, così come presentata nelle NTC, avviene in tre passi fondamentali: 1) determinazione dei modi di vibrare “naturali” della struttura (analisi modale); 2) calcolo degli effetti dell’azione sismica, rappresentati dallo spettro di risposta di progetto, per ciascuno dei modi di vibrare individuati; 3) combinazione degli effetti relativi a ciascun modo di vibrare per valutare la risposta complessiva. L’analisi modale consiste nella soluzione delle equazioni del moto della struttura, considerata elastica, in condizioni di oscillazioni libere (assenza di forzante esterna) e nella individuazione di particolari configurazioni deformate che costituiscono i modi naturali di vibrare di una costruzione. Questi modi di vibrare sono una caratteristica propria della struttura, in quanto sono individuati in assenza di forzante, e sono caratterizzati da un periodo proprio di oscillazione "
+          },
+          {
+            "kind": "math",
+            "value": "T",
+            "latex": "T"
+          },
+          {
+            "kind": "text",
+            "value": " e da un fattore di smorzamento convenzionale "
           },
           {
             "kind": "math",
@@ -82,17 +97,8 @@
           },
           {
             "kind": "math",
-            "value": "ξ",
-            "latex": "\\xi"
-          },
-          {
-            "kind": "text",
-            "value": " = "
-          },
-          {
-            "kind": "math",
-            "value": "5%",
-            "latex": "5\\%"
+            "value": "ξ = 5%",
+            "latex": "\\xi=5\\%"
           },
           {
             "kind": "text",
@@ -114,7 +120,25 @@
           },
           {
             "kind": "text",
-            "value": ", trascurando solo i modi di vibrare meno significativi in termini di massa partecipante. L’utilizzo dello spettro di risposta consente di calcolare gli effetti massimi del terremoto sulla costruzione associati a ciascun modo di vibrare. Tuttavia, poiché durante il terremoto gli effetti massimi associati ad un modo di vibrare non si verificano generalmente nello stesso istante in cui sono massimi quelli associati ad un altro modo di vibrare, tali effetti non possono essere combinati tra di loro mediante una semplice somma ma con specifiche regole di combinazione, di natura probabilistica, che tengono conto di questo sfasamento temporale. La regola di combinazione imposta dalla norma è la regola di combinazione quadratica completa CQC (Complete Quadratic Combination): tale regola porta in conto anche l’eventuale correlazione tra i modi, attraverso il fattore ρ_ij. Essa degenera nella più semplice regola SRSS (Square Root of Sum of Squares), valida nell’ipotesi in cui i contributi massimi dei singoli modi non siano correlati e non si verifichino contemporaneamente. La SRSS può essere utilizzata, ove ritenuto necessario, come riferimento per il controllo dei risultati, tenendo presente che, in assenza di correlazione, la CQC degenera nella SRSS e che, in generale, quando il periodo di vibrazione di ciascun modo differisce di più del 10% da quello degli altri modi, le differenze tra le due regole diventano trascurabili."
+            "value": ", trascurando solo i modi di vibrare meno significativi in termini di massa partecipante. L’utilizzo dello spettro di risposta consente di calcolare gli effetti massimi del terremoto sulla costruzione associati a ciascun modo di vibrare. Tuttavia, poiché durante il terremoto gli effetti massimi associati ad un modo di vibrare non si verificano generalmente nello stesso istante in cui sono massimi quelli associati ad un altro modo di vibrare, tali effetti non possono essere combinati tra di loro mediante una semplice somma ma con specifiche regole di combinazione, di natura probabilistica, che tengono conto di questo sfasamento temporale. La regola di combinazione imposta dalla norma è la regola di combinazione quadratica completa CQC (Complete Quadratic Combination): tale regola porta in conto anche l’eventuale correlazione tra i modi, attraverso il fattore "
+          },
+          {
+            "kind": "math",
+            "value": "ρ_ij",
+            "latex": "\\rho_{ij}"
+          },
+          {
+            "kind": "text",
+            "value": ". Essa degenera nella più semplice regola SRSS (Square Root of Sum of Squares), valida nell’ipotesi in cui i contributi massimi dei singoli modi non siano correlati e non si verifichino contemporaneamente. La SRSS può essere utilizzata, ove ritenuto necessario, come riferimento per il controllo dei risultati, tenendo presente che, in assenza di correlazione, la CQC degenera nella SRSS e che, in generale, quando il periodo di vibrazione di ciascun modo differisce di più del "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " da quello degli altri modi, le differenze tra le due regole diventano trascurabili."
           }
         ]
       },

@@ -64,6 +64,14 @@ test("C4.4 conserva la sequenza di prosa, formule, figura e matematica inline", 
     assert.equal(assets.formulas.length, 3);
     assert.equal(assets.figures.length, 1);
     assert.equal(assets.tables.length, 0);
+    assert.deepEqual(
+        assets.formulas.map((formula: { officialNumber: string; latex: string }) => [formula.officialNumber, formula.latex]),
+        [
+            ["C4.4.1", "u_{fin}=u_{inst}+u_{dif}"],
+            ["C4.4.2", "u_{net}=u_1+u_2-u_0"],
+            ["C4.4.3", "u_{tot,fin}=u_{1,inst}(1+k_{def})+u_{21,inst}(1+\\psi_{21}k_{def})+\\sum(i=2\\ldots n)[u_{2i,inst}(\\psi_{0i}+\\psi_{2i}k_{def})]"],
+        ],
+    );
     assert.deepEqual(unit.blocks[1].text.inline.slice(1, 2), [
         { kind: "math", value: "uinst", latex: "u_{inst}" },
     ]);

@@ -42,7 +42,7 @@ const tableXIXRegion = reg(70, 330, 455, 400);
 const figure25 = figureId("C4.2.25");
 const figure25Region = reg(170, 225, 270, 75);
 const formula102: FormulaRow = { number: "C4.2.102", page: 135, latex: "0{,}2\\le\\frac{c}{b}\\le0{,}6\\qquad0{,}1\\le\\frac{d}{b}\\le0{,}3", raw: "0,2 ≤ c/b ≤ 0,6    0,1 ≤ d/b ≤ 0,3 [C4.2.102]", region: reg(180, 740, 280, 45) };
-const formula103: FormulaRow = { number: "C4.2.103", page: 136, latex: "u=2\\,\\frac{\\sigma_a^2\\,b_s^4}{E^2\\,t^2\\,z}", raw: "u = 2 · σ_a² · b_s⁴/(E² · t² · z) [C4.2.103]", region: reg(175, 180, 250, 45) };
+const formula103: FormulaRow = { number: "C4.2.103", page: 136, latex: "u=2\\cdot\\frac{\\sigma_a^2\\cdot b_s^4}{E^2\\cdot t^2\\cdot z}", raw: "u = 2 · σ_a² · b_s⁴/(E² · t² · z) [C4.2.103]", region: reg(175, 180, 250, 45) };
 
 const tableXIX = {
     id: tableXIXId,
@@ -78,7 +78,7 @@ const blocks21213: GeneratedBlock[] = [
     formulaBlock(unit21213, "formula-103", formula103),
     block(unit21213, "p3", "paragraph", 136, "dove u è la massima inflessione trasversale verso l’asse neutro dell’ala, z è la distanza nominale dell’ala dall’asse neutro, t è lo spessore della membratura, b_s è la metà della distanza tra le anime (per sezioni a cassone o sezioni ad U) o la lunghezza della parte a sbalzo, σ_a è la tensione normale media nelle ali calcolata con riferimento all’area lorda.", [text("dove "), math("u", "u"), text(" è la massima inflessione trasversale verso l’asse neutro dell’ala, "), math("z", "z"), text(" è la distanza nominale dell’ala dall’asse neutro, "), math("t", "t"), text(" è lo spessore della membratura, "), math("b_s", "b_s"), text(" è la metà della distanza tra le anime (per sezioni a cassone o sezioni ad U) o la lunghezza della parte a sbalzo, "), math("σ_a", "\\sigma_a"), text(" è la tensione normale media nelle ali calcolata con riferimento all’area lorda.")], reg(73.9, 210, 450, 50)),
     figureBlock(unit21213, "figure-25", figure25, 136, "Figura C4.2.25 – Incurvamento delle piattabande", figure25Region),
-    block(unit21213, "p4", "paragraph", 136, "Bisogna tener conto di questo fenomeno nel calcolo della resistenza flessionale quando u ≥ 0,05·h, essendo h l’altezza della trave.", [text("Bisogna tener conto di questo fenomeno nel calcolo della resistenza flessionale quando "), math("u ≥ 0,05·h", "u\\ge0{,}05\\,h"), text(", essendo "), math("h", "h"), text(" l’altezza della trave.")], reg(73.9, 315, 450, 30)),
+    block(unit21213, "p4", "paragraph", 136, "Bisogna tener conto di questo fenomeno nel calcolo della resistenza flessionale quando u ≥ 0,05·h, essendo h l’altezza della trave.", [text("Bisogna tener conto di questo fenomeno nel calcolo della resistenza flessionale quando "), math("u ≥ 0,05·h", "u\\ge0{,}05\\cdot h"), text(", essendo "), math("h", "h"), text(" l’altezza della trave.")], reg(73.9, 315, 450, 30)),
 ];
 
 function makeUnit(number: string, title: string, parent: string, ancestors: string[], position: number, blocks: GeneratedBlock[], formulaIds: string[], tableIds: string[], figureIds: string[], issueSuffix: string) {

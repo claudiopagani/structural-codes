@@ -65,7 +65,22 @@
       "text": {
         "raw": "Ai fini di un efficace controllo di accettazione di Tipo A, è necessario che il numero dei provini prelevati e provati sia non\ninferiore a sei, quindi tre prelievi, anche per getti di calcestruzzo di quantità inferiore a 100 m3 di miscela omogenea.",
         "normalized": "Ai fini di un efficace controllo di accettazione di Tipo A, è necessario che il numero dei provini prelevati e provati sia non inferiore a sei, quindi tre prelievi, anche per getti di calcestruzzo di quantità inferiore a 100 m3 di miscela omogenea.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini di un efficace controllo di accettazione di Tipo A, è necessario che il numero dei provini prelevati e provati sia non inferiore a sei, quindi tre prelievi, anche per getti di calcestruzzo di quantità inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "100 m3",
+            "latex": "100\\,\\mathrm{m^3}"
+          },
+          {
+            "kind": "text",
+            "value": " di miscela omogenea."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -87,6 +102,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "a9071399760c3e0c8024fd5327d9f24f04a53c9c88d8c4501ad7ec9b22c407b5",
@@ -100,7 +120,22 @@
       "text": {
         "raw": "Premesso che Rc è il valore di resistenza di prelievo, ovvero il valore medio fra i valori di resistenza dei due provini di uno stesso\nprelievo, il Controllo di Tipo A è ritenuto accettabile se, per un numero di prelievi uguale a 3, sono verificate entrambe le\ndisuguaglianze:",
         "normalized": "Premesso che Rc è il valore di resistenza di prelievo, ovvero il valore medio fra i valori di resistenza dei due provini di uno stesso prelievo, il Controllo di Tipo A è ritenuto accettabile se, per un numero di prelievi uguale a 3, sono verificate entrambe le disuguaglianze:",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Premesso che "
+          },
+          {
+            "kind": "math",
+            "value": "Rc",
+            "latex": "R_c"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore di resistenza di prelievo, ovvero il valore medio fra i valori di resistenza dei due provini di uno stesso prelievo, il Controllo di Tipo A è ritenuto accettabile se, per un numero di prelievi uguale a 3, sono verificate entrambe le disuguaglianze:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -122,6 +157,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "0ce7c3cb4a1d9f8a6b83fe853b3b9d5571edec1ef63667f7cca825ffa7cb5785",
@@ -130,24 +170,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-003",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "1) Rc,min \u0019\bÀck - 3,5",
-        "normalized": "Rc,min Àck - 3,5",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "Rc,min",
-            "latex": "R_{c,\\min}"
-          },
-          {
-            "kind": "text",
-            "value": " Àck - 3,5"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.1.a",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 320,
@@ -168,6 +193,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Due disuguaglianze consecutive conservate come unico gruppo display, inclusa la numerazione tipografica 1) e 2)."
           }
         ],
         "rawSha256": "7930f0b09efbf446b9f578b69edc56a6d5a9004e18bf17857141fe9b20745ffa",
@@ -176,52 +206,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-004",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "2) Rcm28 \u0019\bÀck + 3,5",
-        "normalized": "Rcm28 Àck + 3,5",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "Rcm28",
-            "latex": "R_{cm28}"
-          },
-          {
-            "kind": "text",
-            "value": " Àck + 3,5"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 320,
-        "printedPage": "316",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "bdd48c4f760565c492baf1a3bcb703936e9d4b4846ed04079d83e22afab71595",
-        "normalizedSha256": "828dd0af3e6b0cb46a5df66a2681c8dde1185f44dd57d16475c6ab679b8f58b1"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -245,13 +229,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-006",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-005",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "- Rc,min è il valore di resistenza di prelievo Rc minore fra i tre prelievi;",
         "normalized": "Rc,min è il valore di resistenza di prelievo Rc minore fra i tre prelievi;",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -260,7 +244,16 @@
           },
           {
             "kind": "text",
-            "value": " è il valore di resistenza di prelievo Rc minore fra i tre prelievi;"
+            "value": " è il valore di resistenza di prelievo "
+          },
+          {
+            "kind": "math",
+            "value": "Rc",
+            "latex": "R_c"
+          },
+          {
+            "kind": "text",
+            "value": " minore fra i tre prelievi;"
           }
         ]
       },
@@ -279,6 +272,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "f640306e63293d1a9bd973e0c2987a7ccf480d6ff37a7d3d4db2c8e0ce624a92",
@@ -286,13 +284,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-007",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-006",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "- Rcm28 è il valore medio fra i tre valori di resistenza di prelievo; il termine 28 indica che i valori considerati sono quelli\nottenuti da prove sui provini eseguite a 28 giorni di stagionatura;",
         "normalized": "Rcm28 è il valore medio fra i tre valori di resistenza di prelievo; il termine 28 indica che i valori considerati sono quelli ottenuti da prove sui provini eseguite a 28 giorni di stagionatura;",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -325,6 +323,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "03c73a74e1c2a36d7cece97a4de4e03d3519690a43e1624b4c620dffae5d29d7",
@@ -332,13 +335,24 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-008",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.2.5.1#block-007",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "- Rck è il valore caratteristico di resistenza di progetto.",
         "normalized": "Rck è il valore caratteristico di resistenza di progetto.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "Rck",
+            "latex": "R_{ck}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore caratteristico di resistenza di progetto."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -355,6 +369,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "92f5aabe7da58a2ff4708a9fdad60a03b3df48ff4431c37b32392e3f4d8781b8",
@@ -365,7 +384,9 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c11.2.5.1.a"
+    ],
     "tableIds": [],
     "figureIds": []
   },
@@ -384,6 +405,12 @@
         "type": "normalization-review",
         "severity": "blocking",
         "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
+      },
+      {
+        "issueId": "c11-2-5-1-formula-audit-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Gruppo di disuguaglianze trascritto dal PDF ufficiale; resta richiesta la revisione umana indipendente."
       }
     ]
   }

@@ -439,12 +439,12 @@
       "text": {
         "raw": "s è la tensione nell’armatura tesa considerando la sezione fessurata;\n\u000fe è il rapporto Es/Ecm;\n\u0012eff è pari a \u0017 \u0015\u0011\u0007--\nkt è un fattore dipendente dalla durata del carico e vale:",
         "normalized": "σs è la tensione nell'armatura tesa, calcolata considerando la sezione fessurata; αe è il rapporto Es/Ecm; ρeff = As/Ac,eff, dove Ac,eff è l'area efficace di calcestruzzo teso attorno all'armatura, di altezza hc,eff = min[2,5(h-d), (h-x)/3, h/2] (vedere Figura C4.1.10); in trazione, le due aree efficaci all'estradosso e all'intradosso sono considerate separatamente; kt è un fattore dipendente dalla durata del carico e vale:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
             "value": "σs",
-            "latex": "\\sigma_{s}"
+            "latex": "\\sigma_s"
           },
           {
             "kind": "text",
@@ -453,7 +453,7 @@
           {
             "kind": "math",
             "value": "αe",
-            "latex": "\\alpha_{e}"
+            "latex": "\\alpha_e"
           },
           {
             "kind": "text",
@@ -461,17 +461,8 @@
           },
           {
             "kind": "math",
-            "value": "Es",
-            "latex": "E_s"
-          },
-          {
-            "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "Ecm",
-            "latex": "E_{cm}"
+            "value": "Es/Ecm",
+            "latex": "E_s/E_{cm}"
           },
           {
             "kind": "text",
@@ -479,35 +470,8 @@
           },
           {
             "kind": "math",
-            "value": "ρeff",
-            "latex": "\\rho_{eff}"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "As",
-            "latex": "A_s"
-          },
-          {
-            "kind": "text",
-            "value": "/"
-          },
-          {
-            "kind": "math",
-            "value": "Ac,eff",
-            "latex": "A_{c,eff}"
+            "value": "ρeff = As/Ac,eff",
+            "latex": "\\rho_{eff}=A_s/A_{c,eff}"
           },
           {
             "kind": "text",
@@ -524,48 +488,21 @@
           },
           {
             "kind": "math",
-            "value": "hc,eff",
-            "latex": "h_{c,eff}"
+            "value": "hc,eff = min[2,5(h-d), (h-x)/3, h/2]",
+            "latex": "h_{c,eff}=\\min\\left[2{,}5(h-d),\\frac{h-x}{3},\\frac{h}{2}\\right]"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " (vedere Figura C4.1.10); in trazione, le due aree efficaci all'estradosso e all'intradosso sono considerate separatamente; "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "kt",
+            "latex": "k_t"
           },
           {
             "kind": "text",
-            "value": " min[2,5("
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": "-d), ("
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": "-x)/3, "
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": "/2] (vedere Figura C4.1.10); in trazione, le due aree efficaci all'estradosso e all'intradosso sono considerate separatamente; kt è un fattore dipendente dalla durata del carico e vale:"
+            "value": " è un fattore dipendente dalla durata del carico e vale:"
           }
         ]
       },
@@ -615,6 +552,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
           }
         ],
         "rawSha256": "c2efc4cb8907b6fbe4f2b6583da8597c00d69e7bd9fea81f5446c209bcf0c458",
@@ -628,29 +570,25 @@
       "text": {
         "raw": "kt = 0,6 per carichi di breve durata,\nkt = 0,4 per carichi di lunga durata. \u0002",
         "normalized": "kt = 0,6 per carichi di breve durata, kt = 0,4 per carichi di lunga durata.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "kt = 0,6",
+            "latex": "k_t=0{,}6"
+          },
+          {
             "kind": "text",
-            "value": "kt "
+            "value": " per carichi di breve durata, "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "kt = 0,4",
+            "latex": "k_t=0{,}4"
           },
           {
             "kind": "text",
-            "value": " 0,6 per carichi di breve durata, kt "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,4 per carichi di lunga durata."
+            "value": " per carichi di lunga durata."
           }
         ]
       },
@@ -700,6 +638,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due uguaglianze del fattore k_t."
           }
         ],
         "rawSha256": "9749d7cff8dc042ed9eb55abe167a43f1300037e488c1913a7e6711ce55ca519",
@@ -987,7 +930,7 @@
       "text": {
         "raw": "c è il ricoprimento dell’armatura;\nk 1 = 0,8 per barre ad aderenza migliorata,\nk 2 = 0,5 nel caso di flessione,",
         "normalized": "c è il ricoprimento dell'armatura; k1 = 0,8 per barre ad aderenza migliorata e k1 = 1,6 per barre lisce; k2 = 0,5 nel caso di flessione e k2 = 1,0 nel caso di trazione semplice.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1000,75 +943,39 @@
           },
           {
             "kind": "math",
-            "value": "k1",
-            "latex": "k_1"
+            "value": "k1 = 0,8",
+            "latex": "k_1=0{,}8"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " per barre ad aderenza migliorata e "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "k1 = 1,6",
+            "latex": "k_1=1{,}6"
           },
           {
             "kind": "text",
-            "value": " 0,8 per barre ad aderenza migliorata e "
+            "value": " per barre lisce; "
           },
           {
             "kind": "math",
-            "value": "k1",
-            "latex": "k_1"
+            "value": "k2 = 0,5",
+            "latex": "k_2=0{,}5"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": " nel caso di flessione e "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "k2 = 1,0",
+            "latex": "k_2=1{,}0"
           },
           {
             "kind": "text",
-            "value": " 1,6 per barre lisce; "
-          },
-          {
-            "kind": "math",
-            "value": "k2",
-            "latex": "k_2"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,5 nel caso di flessione e "
-          },
-          {
-            "kind": "math",
-            "value": "k2",
-            "latex": "k_2"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 1,0 nel caso di trazione semplice."
+            "value": " nel caso di trazione semplice."
           }
         ]
       },
@@ -1118,6 +1025,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le quattro uguaglianze dei coefficienti k_1 e k_2."
           }
         ],
         "rawSha256": "77c26cf0bd6c5283d51dc1a55e573f8c0745840745578132d640bd495ce42e11",
@@ -1320,43 +1232,25 @@
       "text": {
         "raw": "k 3 = 3,4\nk 4 = 0,425.",
         "normalized": "k3 = 3,4; k4 = 0,425.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
-            "value": "k3",
-            "latex": "k_3"
+            "value": "k3 = 3,4",
+            "latex": "k_3=3{,}4"
           },
           {
             "kind": "text",
-            "value": " "
+            "value": "; "
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "k4 = 0,425",
+            "latex": "k_4=0{,}425"
           },
           {
             "kind": "text",
-            "value": " 3,4; "
-          },
-          {
-            "kind": "math",
-            "value": "k4",
-            "latex": "k_4"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "=",
-            "latex": "="
-          },
-          {
-            "kind": "text",
-            "value": " 0,425."
+            "value": "."
           }
         ]
       },
@@ -1406,6 +1300,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le uguaglianze dei coefficienti k_3 e k_4."
           }
         ],
         "rawSha256": "3e361821a0a3c0efb3b80a2f911a10cda7e3a916716ec1c610c1ef82c6a6fe92",

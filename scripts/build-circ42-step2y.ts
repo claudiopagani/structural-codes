@@ -57,13 +57,13 @@ function figureBlock(number: string, suffix: string, asset: string, page: number
   return { blockId: uid(number) + "#block-" + suffix, kind: "figure-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) };
 }
 
-const formula126: FormulaRow = { number: "C4.2.126", page: 142, latex: "d_s=0{,}7\\,d_w-1{,}5\\,\\sum t\\ge0{,}55\\,d_w", raw: "d_s = 0,7·d_w − 1,5·Σt ≥ 0,55·d_w [C4.2.126]", region: reg(145, 180, 325, 45) };
-const formula127: FormulaRow = { number: "C4.2.127", page: 142, latex: "F_{b,Rd}=\\frac{\\alpha\\,f_{tk}\\,d\\,t}{\\gamma_{M2}}", raw: "F_b,Rd = α·f_tk·d·t/γ_M2 [C4.2.127]", region: reg(145, 585, 325, 45) };
-const formula128: FormulaRow = { number: "C4.2.128", page: 142, latex: "\\begin{aligned}\\alpha&=3{,}6\\,\\sqrt{\\frac{t}{d}}\\le2{,}1&&\\text{per }t_1=t\\\\\\alpha&=2{,}1&&\\text{per }t_1\\ge2{,}5\\,t\\end{aligned}", raw: "α = 3,6·√(t/d) ≤ 2,1 per t_1 = t; α = 2,1 per t_1 ≥ 2,5·t [C4.2.128]", region: reg(145, 630, 325, 65) };
-const formula129: FormulaRow = { number: "C4.2.129", page: 142, latex: "F_{t,Rd}=\\frac{f_{tk}\\,e_1\\,t}{1{,}2\\,\\gamma_{M2}}", raw: "F_t,Rd = f_tk·e_1·t/(1,2·γ_M2) [C4.2.129]", region: reg(145, 700, 325, 45) };
-const formula130: FormulaRow = { number: "C4.2.130", page: 143, latex: "F_{n,Rd}=\\frac{A_{net}\\,f_{tk}}{\\gamma_{M2}}", raw: "F_n,Rd = A_net·f_tk/γ_M2 [C4.2.130]", region: reg(145, 90, 325, 45) };
+const formula126: FormulaRow = { number: "C4.2.126", page: 142, latex: "d_s=0{,}7\\cdot d_w-1{,}5\\cdot\\sum t\\ge0{,}55\\cdot d_w", raw: "d_s = 0,7·d_w − 1,5·Σt ≥ 0,55·d_w [C4.2.126]", region: reg(145, 180, 325, 45) };
+const formula127: FormulaRow = { number: "C4.2.127", page: 142, latex: "F_{b,Rd}=\\frac{\\alpha\\cdot f_{tk}\\cdot d\\cdot t}{\\gamma_{M2}}", raw: "F_b,Rd = α·f_tk·d·t/γ_M2 [C4.2.127]", region: reg(145, 585, 325, 45) };
+const formula128: FormulaRow = { number: "C4.2.128", page: 142, latex: "\\begin{aligned}\\alpha&=3{,}6\\cdot\\sqrt{\\frac{t}{d}}\\le2{,}1&&\\text{per }t_1=t\\\\\\alpha&=2{,}1&&\\text{per }t_1\\ge2{,}5\\cdot t\\end{aligned}", raw: "α = 3,6·√(t/d) ≤ 2,1 per t_1 = t; α = 2,1 per t_1 ≥ 2,5·t [C4.2.128]", region: reg(145, 630, 325, 65) };
+const formula129: FormulaRow = { number: "C4.2.129", page: 142, latex: "F_{t,Rd}=\\frac{f_{tk}\\cdot e_1\\cdot t}{1{,}2\\cdot\\gamma_{M2}}", raw: "F_t,Rd = f_tk·e_1·t/(1,2·γ_M2) [C4.2.129]", region: reg(145, 700, 325, 45) };
+const formula130: FormulaRow = { number: "C4.2.130", page: 143, latex: "F_{n,Rd}=\\frac{A_{net}\\cdot f_{tk}}{\\gamma_{M2}}", raw: "F_n,Rd = A_net·f_tk/γ_M2 [C4.2.130]", region: reg(145, 90, 325, 45) };
 const formula131: FormulaRow = { number: "C4.2.131", page: 143, latex: "\\frac{1}{10}\\text{''}\\;(\\phi2{,}6\\,\\mathrm{mm})\\le d\\le\\frac{1}{4}\\text{''}\\;(\\phi6{,}4\\,\\mathrm{mm})", raw: "1/10\" (φ2,6 mm) ≤ d ≤ 1/4\" (φ6,4 mm) [C4.2.131]", region: reg(145, 145, 325, 45) };
-const formula132: FormulaRow = { number: "C4.2.132", page: 143, latex: "e_1\\ge1{,}5\\,d\\ ;\\quad p_1\\ge3\\,d\\ ;\\quad e_2\\ge1{,}5\\,d\\ ;\\quad p_2\\ge3\\,d", raw: "e_1 ≥ 1,5·d; p_1 ≥ 3·d; e_2 ≥ 1,5·d; p_2 ≥ 3·d [C4.2.132]", region: reg(145, 205, 325, 45) };
+const formula132: FormulaRow = { number: "C4.2.132", page: 143, latex: "e_1\\ge1{,}5\\cdot d\\ ;\\quad p_1\\ge3\\cdot d\\ ;\\quad e_2\\ge1{,}5\\cdot d\\ ;\\quad p_2\\ge3\\cdot d", raw: "e_1 ≥ 1,5·d; p_1 ≥ 3·d; e_2 ≥ 1,5·d; p_2 ≥ 3·d [C4.2.132]", region: reg(145, 205, 325, 45) };
 
 const figure34 = figureId("C4.2.34");
 const figure35 = figureId("C4.2.35");

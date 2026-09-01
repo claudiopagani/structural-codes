@@ -112,18 +112,7 @@
       "text": {
         "raw": "I modelli di capacità degli elementi in muratura sono differenziati in funzione della loro geometria, condizioni al contorno, ruolo\nstrutturale e tipologia muraria. In alcune situazioni è possibile fare riferimento ad elementi maschio (ad asse verticale) ed\nelementi fascia (ad asse orizzontale), per i quali sono meglio note e più facilmente definibili le capacità in resistenza e in\ndeformazione. Per questi elementi, nel caso di analisi non lineare, è possibile utilizzare un modello bilineare taglio-spostamento,\nin cui la resistenza è calcolata come la minore tra quelle relative ai diversi possibili meccanismi di rottura e la capacità di\nspostamento è valutata di conseguenza, attraverso una deformazione angolare limite di elemento.",
         "normalized": "I modelli di capacità degli elementi in muratura sono differenziati in funzione della loro geometria, condizioni al contorno, ruolo strutturale e tipologia muraria. In alcune situazioni è possibile fare riferimento ad elementi maschio (ad asse verticale) ed elementi fascia (ad asse orizzontale), per i quali sono meglio note e più facilmente definibili le capacità in resistenza e in deformazione. Per questi elementi, nel caso di analisi non lineare, è possibile utilizzare un modello bilineare taglio-spostamento, in cui la resistenza è calcolata come la minore tra quelle relative ai diversi possibili meccanismi di rottura e la capacità di spostamento è valutata di conseguenza, attraverso una deformazione angolare limite di elemento.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "I",
-            "latex": "I"
-          },
-          {
-            "kind": "text",
-            "value": " modelli di capacità degli elementi in muratura sono differenziati in funzione della loro geometria, condizioni al contorno, ruolo strutturale e tipologia muraria. In alcune situazioni è possibile fare riferimento ad elementi maschio (ad asse verticale) ed elementi fascia (ad asse orizzontale), per i quali sono meglio note e più facilmente definibili le capacità in resistenza e in deformazione. Per questi elementi, nel caso di analisi non lineare, è possibile utilizzare un modello bilineare taglio-spostamento, in cui la resistenza è calcolata come la minore tra quelle relative ai diversi possibili meccanismi di rottura e la capacità di spostamento è valutata di conseguenza, attraverso una deformazione angolare limite di elemento."
-          }
-        ]
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -318,22 +307,7 @@
       "text": {
         "raw": "Per la verifica a pressoflessione si rimanda al § 7.8.2.2.1 delle NTC, precisando che lo spostamento ultimo è valutato in base alla\nrotazione della corda nelle due sezioni di estremità i e j del maschio data dalle formule [C8.7.1.13].",
         "normalized": "Per la verifica a pressoflessione si rimanda al § 7.8.2.2.1 delle NTC, precisando che lo spostamento ultimo è valutato in base alla rotazione della corda nelle due sezioni di estremità i e j del maschio data dalle formule [C8.7.1.13].",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Per la verifica a pressoflessione si rimanda al § 7.8.2.2.1 delle "
-          },
-          {
-            "kind": "math",
-            "value": "NTC",
-            "latex": "\\mathrm{NTC}"
-          },
-          {
-            "kind": "text",
-            "value": ", precisando che lo spostamento ultimo è valutato in base alla rotazione della corda nelle due sezioni di estremità i e j del maschio data dalle formule [C8.7.1.13]."
-          }
-        ]
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -427,30 +401,75 @@
           },
           {
             "kind": "math",
-            "value": "φ",
-            "latex": "\\varphi"
+            "value": "φ_i",
+            "latex": "\\varphi_i"
           },
           {
             "kind": "text",
-            "value": "_i e "
+            "value": " e "
           },
           {
             "kind": "math",
-            "value": "φ",
-            "latex": "\\varphi"
+            "value": "φ_j",
+            "latex": "\\varphi_j"
           },
           {
             "kind": "text",
-            "value": "_j sono le rotazioni, u_j e u_i sono gli spostamenti orizzontali, u_0 è lo spostamento orizzontale del punto di flesso, h_i e h_j sono le luci di taglio (essendo h=h_i+h_j l’altezza dell’elemento). Lo spostamento ultimo a "
+            "value": " sono le rotazioni, "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "u_j",
+            "latex": "u_j"
           },
           {
             "kind": "text",
-            "value": " è definito in corrispondenza di una rotazione della corda pari a 0,01."
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "u_i",
+            "latex": "u_i"
+          },
+          {
+            "kind": "text",
+            "value": " sono gli spostamenti orizzontali, "
+          },
+          {
+            "kind": "math",
+            "value": "u_0",
+            "latex": "u_0"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spostamento orizzontale del punto di flesso, "
+          },
+          {
+            "kind": "math",
+            "value": "h_i",
+            "latex": "h_i"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "h_j",
+            "latex": "h_j"
+          },
+          {
+            "kind": "text",
+            "value": " sono le luci di taglio (essendo "
+          },
+          {
+            "kind": "math",
+            "value": "h=h_i+h_j",
+            "latex": "h=h_i+h_j"
+          },
+          {
+            "kind": "text",
+            "value": " l’altezza dell’elemento). Lo spostamento ultimo a SLC è definito in corrispondenza di una rotazione della corda pari a 0,01."
           }
         ]
       },
@@ -496,21 +515,30 @@
       "origin": "official",
       "text": {
         "raw": "Il criterio di resistenza per la verifica a taglio scorrimento, da valutare nelle sezioni soggette a momento massimo (solitamente le\ndue sezioni di estremità del pannello), è quello indicato al § 7.8.2.2.2 delle NTC, utilizzando i valori di f v0 indicati in tabella 8.5.1,\ncon la precisazione che la limitazione f v,lim relativa alla rottura dei blocchi è fornita dalla seguente relazione, ricavata per blocchi\ndi forma standard: ",
-        "normalized": "Il criterio di resistenza per la verifica a taglio scorrimento, da valutare nelle sezioni soggette a momento massimo (solitamente le due sezioni di estremità del pannello), è quello indicato al § 7.8.2.2.2 delle NTC, utilizzando i valori di f v0 indicati in tabella 8.5.1, con la precisazione che la limitazione f v,lim relativa alla rottura dei blocchi è fornita dalla seguente relazione, ricavata per blocchi di forma standard:",
+        "normalized": "Il criterio di resistenza per la verifica a taglio scorrimento, da valutare nelle sezioni soggette a momento massimo (solitamente le due sezioni di estremità del pannello), è quello indicato al § 7.8.2.2.2 delle NTC, utilizzando i valori di f_{v0} indicati in tabella 8.5.1, con la precisazione che la limitazione f_{v,lim} relativa alla rottura dei blocchi è fornita dalla seguente relazione, ricavata per blocchi di forma standard:",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Il criterio di resistenza per la verifica a taglio scorrimento, da valutare nelle sezioni soggette a momento massimo (solitamente le due sezioni di estremità del pannello), è quello indicato al § 7.8.2.2.2 delle "
+            "value": "Il criterio di resistenza per la verifica a taglio scorrimento, da valutare nelle sezioni soggette a momento massimo (solitamente le due sezioni di estremità del pannello), è quello indicato al § 7.8.2.2.2 delle NTC, utilizzando i valori di "
           },
           {
             "kind": "math",
-            "value": "NTC",
-            "latex": "\\mathrm{NTC}"
+            "value": "f_{v0}",
+            "latex": "f_{v0}"
           },
           {
             "kind": "text",
-            "value": ", utilizzando i valori di f v0 indicati in tabella 8.5.1, con la precisazione che la limitazione f v,lim relativa alla rottura dei blocchi è fornita dalla seguente relazione, ricavata per blocchi di forma standard:"
+            "value": " indicati in tabella 8.5.1, con la precisazione che la limitazione "
+          },
+          {
+            "kind": "math",
+            "value": "f_{v,lim}",
+            "latex": "f_{v,lim}"
+          },
+          {
+            "kind": "text",
+            "value": " relativa alla rottura dei blocchi è fornita dalla seguente relazione, ricavata per blocchi di forma standard:"
           }
         ]
       },
@@ -547,7 +575,7 @@
           }
         ],
         "rawSha256": "a56bd05e481edba1305efdc4f1085114d5b5bacd29acdd28a8b846795aa0c012",
-        "normalizedSha256": "e59e1e0b53d16f13d56857e5c23a3f8fbd96228d4c11b35d05c4ce75e9e82c29"
+        "normalizedSha256": "90b8b91559dd210820fea47f24f3f919e2c1697272e0280d9ccc23e8a1391ee7"
       }
     },
     {
@@ -597,21 +625,21 @@
       "origin": "official",
       "text": {
         "raw": "dove f b è la resistenza a compressione del blocco, normalizzata. Lo spostamento ultimo a SLC è definito in corrispondenza di una\nrotazione della corda, calcolata come sopra per la sezione di estremità di verifica, pari a 0.005.",
-        "normalized": "dove f b è la resistenza a compressione del blocco, normalizzata. Lo spostamento ultimo a SLC è definito in corrispondenza di una rotazione della corda, calcolata come sopra per la sezione di estremità di verifica, pari a 0.005.",
+        "normalized": "dove f_b è la resistenza a compressione del blocco, normalizzata. Lo spostamento ultimo a SLC è definito in corrispondenza di una rotazione della corda, calcolata come sopra per la sezione di estremità di verifica, pari a 0.005.",
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove f b è la resistenza a compressione del blocco, normalizzata. Lo spostamento ultimo a "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "f_b",
+            "latex": "f_b"
           },
           {
             "kind": "text",
-            "value": " è definito in corrispondenza di una rotazione della corda, calcolata come sopra per la sezione di estremità di verifica, pari a 0.005."
+            "value": " è la resistenza a compressione del blocco, normalizzata. Lo spostamento ultimo a SLC è definito in corrispondenza di una rotazione della corda, calcolata come sopra per la sezione di estremità di verifica, pari a 0.005."
           }
         ]
       },
@@ -648,7 +676,7 @@
           }
         ],
         "rawSha256": "2d1de752dc8b08019f05fec22de00e3de1d33fa03d3f4104b6df20159dd1a58d",
-        "normalizedSha256": "96eaad903ca9bd542560323c43791ee6ed7e3754a748855adb8d654fa3def8b3"
+        "normalizedSha256": "760c3148a4c48b8b561be6202b32f3e6260ae7bc88ef7f1b89f67dcbc2919fa1"
       }
     },
     {
@@ -798,22 +826,7 @@
       "text": {
         "raw": "Per le valutazioni relative alla pressoflessione nelle fasce, un aspetto critico della modellazione è la valutazione dell’azione\nassiale, influenzata dall’interazione con i diaframmi orizzontali (in taluni modelli assunti rigidi) e dall’interazione cinematica tra\nrotazione e deformazione assiale nelle fasce stesse (trascurata nei modelli a trave). Nel caso in cui siano presenti elementi\norizzontali dotati di resistenza a trazione (catene, cordoli), accoppiati alla fascia, si può fare utile riferimento al § 7.8.2.2.4 delle\nNTC.",
         "normalized": "Per le valutazioni relative alla pressoflessione nelle fasce, un aspetto critico della modellazione è la valutazione dell’azione assiale, influenzata dall’interazione con i diaframmi orizzontali (in taluni modelli assunti rigidi) e dall’interazione cinematica tra rotazione e deformazione assiale nelle fasce stesse (trascurata nei modelli a trave). Nel caso in cui siano presenti elementi orizzontali dotati di resistenza a trazione (catene, cordoli), accoppiati alla fascia, si può fare utile riferimento al § 7.8.2.2.4 delle NTC.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Per le valutazioni relative alla pressoflessione nelle fasce, un aspetto critico della modellazione è la valutazione dell’azione assiale, influenzata dall’interazione con i diaframmi orizzontali (in taluni modelli assunti rigidi) e dall’interazione cinematica tra rotazione e deformazione assiale nelle fasce stesse (trascurata nei modelli a trave). Nel caso in cui siano presenti elementi orizzontali dotati di resistenza a trazione (catene, cordoli), accoppiati alla fascia, si può fare utile riferimento al § 7.8.2.2.4 delle "
-          },
-          {
-            "kind": "math",
-            "value": "NTC",
-            "latex": "\\mathrm{NTC}"
-          },
-          {
-            "kind": "text",
-            "value": "."
-          }
-        ]
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -871,16 +884,7 @@
           },
           {
             "kind": "text",
-            "value": ") che si genera nelle sezioni di estremità per effetto dell’ingranamento con le porzioni di muratura adiacenti. "
-          },
-          {
-            "kind": "math",
-            "value": "I",
-            "latex": "I"
-          },
-          {
-            "kind": "text",
-            "value": " meccanismi di rottura possono coinvolgere la resistenza per trazione dei blocchi "
+            "value": ") che si genera nelle sezioni di estremità per effetto dell’ingranamento con le porzioni di muratura adiacenti. I meccanismi di rottura possono coinvolgere la resistenza per trazione dei blocchi "
           },
           {
             "kind": "math",
@@ -1086,34 +1090,43 @@
           },
           {
             "kind": "text",
-            "value": " agente nei maschi adiacenti. Stimata la resistenza a trazione della fascia f_{ft}, il dominio di resistenza a pressoflessione "
+            "value": " agente nei maschi adiacenti. Stimata la resistenza a trazione della fascia "
           },
           {
             "kind": "math",
-            "value": "M",
-            "latex": "M"
+            "value": "f_{ft}",
+            "latex": "f_{ft}"
           },
           {
             "kind": "text",
-            "value": "-"
+            "value": ", il dominio di resistenza a pressoflessione "
           },
           {
             "kind": "math",
-            "value": "N",
-            "latex": "N"
+            "value": "M-N",
+            "latex": "M-N"
           },
           {
             "kind": "text",
-            "value": " può essere calcolato ipotizzando la conservazione della sezione piana e un legame tensione-deformazione elastoplastico a compressione ed elasto-fragile a trazione, nel caso di rottura dei blocchi, elastoplastico, eventualmente a duttilità controllata, nel caso di rottura per scorrimento dei giunti. Per la resistenza a compressione occorre valutare quella in direzione orizzontale f_h, usualmente inferiore a quella in direzione verticale. Considerato che per le fasce il modello globale non è usualmente in grado di valutare in modo affidabile l’azione assiale orizzontale, la resistenza per pressoflessione può essere calcolata in via cautelativa assumendo "
+            "value": " può essere calcolato ipotizzando la conservazione della sezione piana e un legame tensione-deformazione elastoplastico a compressione ed elasto-fragile a trazione, nel caso di rottura dei blocchi, elastoplastico, eventualmente a duttilità controllata, nel caso di rottura per scorrimento dei giunti. Per la resistenza a compressione occorre valutare quella in direzione orizzontale "
           },
           {
             "kind": "math",
-            "value": "N",
-            "latex": "N"
+            "value": "f_h",
+            "latex": "f_h"
           },
           {
             "kind": "text",
-            "value": "=0."
+            "value": ", usualmente inferiore a quella in direzione verticale. Considerato che per le fasce il modello globale non è usualmente in grado di valutare in modo affidabile l’azione assiale orizzontale, la resistenza per pressoflessione può essere calcolata in via cautelativa assumendo "
+          },
+          {
+            "kind": "math",
+            "value": "N=0",
+            "latex": "N=0"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -1164,16 +1177,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Lo spostamento ultimo a "
+            "value": "Lo spostamento ultimo a SLC è valutato calcolando la deformazione angolare nelle due sezioni di estremità del pannello secondo la [C8.7.1.13], eventualmente assumendo che il punto di flesso sia a metà dell’elemento; la soglia limite è pari a "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "0,02",
+            "latex": "0{,}02"
           },
           {
             "kind": "text",
-            "value": " è valutato calcolando la deformazione angolare nelle due sezioni di estremità del pannello secondo la [C8.7.1.13], eventualmente assumendo che il punto di flesso sia a metà dell’elemento; la soglia limite è pari a 0,02, in presenza di elemento orizzontale resistente a trazione accoppiato alla fascia, 0,015 negli altri casi."
+            "value": ", in presenza di elemento orizzontale resistente a trazione accoppiato alla fascia, "
+          },
+          {
+            "kind": "math",
+            "value": "0,015",
+            "latex": "0{,}015"
+          },
+          {
+            "kind": "text",
+            "value": " negli altri casi."
           }
         ]
       },
@@ -1249,8 +1271,23 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 le murature a tessitura irregolare, con rottura per trazione diagonale governata dal parametro F0;",
-        "normalized": "- le murature a tessitura irregolare, con rottura per trazione diagonale governata dal parametro F0;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "- le murature a tessitura irregolare, con rottura per trazione diagonale governata dal parametro τ_0;",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- le murature a tessitura irregolare, con rottura per trazione diagonale governata dal parametro "
+          },
+          {
+            "kind": "math",
+            "value": "τ_0",
+            "latex": "\\tau_0"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1280,7 +1317,7 @@
           }
         ],
         "rawSha256": "63e6904f7820ad3b4adeee11bce217499671322cadbb9c52f11c27af5525c5e9",
-        "normalizedSha256": "7bed9d34e0ac6209074e87d60bb07ef8712e2957dce86b473f71abf6a9e8b1a3"
+        "normalizedSha256": "30b2a35891ecd06aa765c5b643941f96422a779810f59226697c60e1bb710d31"
       }
     },
     {
@@ -1289,8 +1326,32 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 le murature a tessitura regolare, per le quali la fessurazione può essere “a scaletta”, ossia con andamento diagonale\nattraverso i giunti di malta (governata dal parametro di resistenza fv0, associato idealmente alla crisi dei giunti), oppure\ndiagonale attraverso gli inerti della muratura (governata dal parametro di resistenza fv,lim).",
-        "normalized": "- le murature a tessitura regolare, per le quali la fessurazione può essere “a scaletta”, ossia con andamento diagonale attraverso i giunti di malta (governata dal parametro di resistenza fv0, associato idealmente alla crisi dei giunti), oppure diagonale attraverso gli inerti della muratura (governata dal parametro di resistenza fv,lim).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "- le murature a tessitura regolare, per le quali la fessurazione può essere “a scaletta”, ossia con andamento diagonale attraverso i giunti di malta (governata dal parametro di resistenza f_{v0}, associato idealmente alla crisi dei giunti), oppure diagonale attraverso gli inerti della muratura (governata dal parametro di resistenza f_{v,lim}).",
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- le murature a tessitura regolare, per le quali la fessurazione può essere “a scaletta”, ossia con andamento diagonale attraverso i giunti di malta (governata dal parametro di resistenza "
+          },
+          {
+            "kind": "math",
+            "value": "f_{v0}",
+            "latex": "f_{v0}"
+          },
+          {
+            "kind": "text",
+            "value": ", associato idealmente alla crisi dei giunti), oppure diagonale attraverso gli inerti della muratura (governata dal parametro di resistenza "
+          },
+          {
+            "kind": "math",
+            "value": "f_{v,lim}",
+            "latex": "f_{v,lim}"
+          },
+          {
+            "kind": "text",
+            "value": ")."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1325,7 +1386,7 @@
           }
         ],
         "rawSha256": "2f1d79a8a738ac7ae89fa2f65bd7dae6a456d00719527738ae6189d78cf26d3e",
-        "normalizedSha256": "970d3c3dc5127ee07cf3c23fef0407ae686e08bdd5d0fa8d57940af4bf2eda44"
+        "normalizedSha256": "62c727b13662351e7bf8dc83887f80b27bd6f5a9b2b721c8deac741b856d7779"
       }
     },
     {
@@ -1339,16 +1400,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "La Tabella C8.5."
-          },
-          {
-            "kind": "math",
-            "value": "I",
-            "latex": "I"
-          },
-          {
-            "kind": "text",
-            "value": ", fornendo valori di riferimento per "
+            "value": "La Tabella C8.5.I, fornendo valori di riferimento per "
           },
           {
             "kind": "math",
@@ -1514,7 +1566,18 @@
       "text": {
         "raw": "l è la lunghezza del pannello",
         "normalized": "l è la lunghezza del pannello;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "l",
+            "latex": "l"
+          },
+          {
+            "kind": "text",
+            "value": " è la lunghezza del pannello;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1549,7 +1612,18 @@
       "text": {
         "raw": "t è lo spessore del pannello",
         "normalized": "t è lo spessore del pannello;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t",
+            "latex": "t"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore del pannello;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1593,7 +1667,25 @@
           },
           {
             "kind": "text",
-            "value": " è la tensione normale media, riferita all’area totale della sezione (= P/lt, con P forza assiale agente, positiva se di compressione);"
+            "value": " è la tensione normale media, riferita all’area totale della sezione (= "
+          },
+          {
+            "kind": "math",
+            "value": "P/lt",
+            "latex": "P/(lt)"
+          },
+          {
+            "kind": "text",
+            "value": ", con "
+          },
+          {
+            "kind": "math",
+            "value": "P",
+            "latex": "P"
+          },
+          {
+            "kind": "text",
+            "value": " forza assiale agente, positiva se di compressione);"
           }
         ]
       },
@@ -1658,7 +1750,16 @@
           },
           {
             "kind": "text",
-            "value": " sono, rispettivamente, i valori di calcolo della resistenza a trazione per fessurazione diagonale e della corrispondente resistenza a taglio di riferimento della muratura (f_t = 1,5"
+            "value": " sono, rispettivamente, i valori di calcolo della resistenza a trazione per fessurazione diagonale e della corrispondente resistenza a taglio di riferimento della muratura ("
+          },
+          {
+            "kind": "math",
+            "value": "f_t",
+            "latex": "f_t"
+          },
+          {
+            "kind": "text",
+            "value": " = 1,5"
           },
           {
             "kind": "math",
@@ -1667,7 +1768,25 @@
           },
           {
             "kind": "text",
-            "value": "); nel caso in cui tale parametro sia desunto da prove di compressione diagonale, la resistenza a trazione per fessurazione diagonale f_t si assume pari al carico diagonale di rottura diviso per due volte la sezione media del pannello sperimentato valutata come t(l+h)/2, con t, l e h rispettivamente spessore, base e altezza del pannello."
+            "value": "); nel caso in cui tale parametro sia desunto da prove di compressione diagonale, la resistenza a trazione per fessurazione diagonale "
+          },
+          {
+            "kind": "math",
+            "value": "f_t",
+            "latex": "f_t"
+          },
+          {
+            "kind": "text",
+            "value": " si assume pari al carico diagonale di rottura diviso per due volte la sezione media del pannello sperimentato valutata come "
+          },
+          {
+            "kind": "math",
+            "value": "t(l+h)/2",
+            "latex": "t(l+h)/2"
+          },
+          {
+            "kind": "text",
+            "value": ", con t, l e h rispettivamente spessore, base e altezza del pannello."
           }
         ]
       },
@@ -1714,7 +1833,36 @@
       "text": {
         "raw": "b è un coefficiente correttivo legato alla distribuzione degli sforzi sulla sezione, dipendente dalla snellezza della parete.\nSi può assumere b = h/l, comunque non superiore a 1,5 e non inferiore a 1, dove h è l'altezza del pannello.",
         "normalized": "b è un coefficiente correttivo legato alla distribuzione degli sforzi sulla sezione, dipendente dalla snellezza della parete. Si può assumere b = h/l, comunque non superiore a 1,5 e non inferiore a 1, dove h è l’altezza del pannello.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "b",
+            "latex": "b"
+          },
+          {
+            "kind": "text",
+            "value": " è un coefficiente correttivo legato alla distribuzione degli sforzi sulla sezione, dipendente dalla snellezza della parete. Si può assumere "
+          },
+          {
+            "kind": "math",
+            "value": "b = h/l",
+            "latex": "b=h/l"
+          },
+          {
+            "kind": "text",
+            "value": ", comunque non superiore a 1,5 e non inferiore a 1, dove "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altezza del pannello."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1763,16 +1911,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nel caso dei maschi la soglia limite della deformazione angolare a "
+            "value": "Nel caso dei maschi la soglia limite della deformazione angolare a SLC è pari a "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "0,005",
+            "latex": "0{,}005"
           },
           {
             "kind": "text",
-            "value": " è pari a 0,005 e, in assenza di più precise formulazioni, la deformazione angolare rappresentativa di un pannello soggetto a taglio per fessurazione diagonale può essere valutata a partire dai valori della rotazione della corda nei due estremi i e j (v. formula [C8.7.1.13])."
+            "value": " e, in assenza di più precise formulazioni, la deformazione angolare rappresentativa di un pannello soggetto a taglio per fessurazione diagonale può essere valutata a partire dai valori della rotazione della corda nei due estremi i e j (v. formula [C8.7.1.13])."
           }
         ]
       },
@@ -1883,16 +2031,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Raggiunto, allo "
+            "value": "Raggiunto, allo SLC, il valore limite della deformazione angolare sopra indicato per i maschi, la presenza di un architrave efficace consente di mantenere una resistenza a taglio residua anche per valori di deformazione angolare superiori a "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "0,015",
+            "latex": "0{,}015"
           },
           {
             "kind": "text",
-            "value": ", il valore limite della deformazione angolare sopra indicato per i maschi, la presenza di un architrave efficace consente di mantenere una resistenza a taglio residua anche per valori di deformazione angolare superiori a 0,015."
+            "value": "."
           }
         ]
       },
@@ -1984,7 +2132,22 @@
       "text": {
         "raw": "- architrave in calcestruzzo armato o in profilato d’acciaio, purché appoggiato per una significativa estensione nella muratura: 60%;",
         "normalized": "- architrave in calcestruzzo armato o in profilato d’acciaio, purché appoggiato per una significativa estensione nella muratura: 60%;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- architrave in calcestruzzo armato o in profilato d’acciaio, purché appoggiato per una significativa estensione nella muratura: "
+          },
+          {
+            "kind": "math",
+            "value": "60%",
+            "latex": "60\\%"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2019,7 +2182,22 @@
       "text": {
         "raw": "- architrave in legno, di buone caratteristiche e ben ammorsato: 40%;",
         "normalized": "- architrave in legno, di buone caratteristiche e ben ammorsato: 40%;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- architrave in legno, di buone caratteristiche e ben ammorsato: "
+          },
+          {
+            "kind": "math",
+            "value": "40%",
+            "latex": "40\\%"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2054,7 +2232,22 @@
       "text": {
         "raw": "- arco in muratura: 10%.",
         "normalized": "- arco in muratura: 10%.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "- arco in muratura: "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2089,7 +2282,31 @@
       "text": {
         "raw": "Il contributo della resistenza residua può eventualmente essere messo in conto attraverso un legame costitutivo multilineare, che simula la riduzione di resistenza in corrispondenza di una deformazione angolare pari a 0,005, o ancora con un modello bilineare ma assegnando alla fascia direttamente una resistenza pari a quella residua e assumendo un valore di deformazione angolare ultimo pari a 0,015.",
         "normalized": "Il contributo della resistenza residua può eventualmente essere messo in conto attraverso un legame costitutivo multilineare, che simula la riduzione di resistenza in corrispondenza di una deformazione angolare pari a 0,005, o ancora con un modello bilineare ma assegnando alla fascia direttamente una resistenza pari a quella residua e assumendo un valore di deformazione angolare ultimo pari a 0,015.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il contributo della resistenza residua può eventualmente essere messo in conto attraverso un legame costitutivo multilineare, che simula la riduzione di resistenza in corrispondenza di una deformazione angolare pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,005",
+            "latex": "0{,}005"
+          },
+          {
+            "kind": "text",
+            "value": ", o ancora con un modello bilineare ma assegnando alla fascia direttamente una resistenza pari a quella residua e assumendo un valore di deformazione angolare ultimo pari a "
+          },
+          {
+            "kind": "math",
+            "value": "0,015",
+            "latex": "0{,}015"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2194,16 +2411,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "dove f̃_{v0d} è la resistenza equivalente a taglio della muratura e "
+            "value": "dove "
           },
           {
             "kind": "math",
-            "value": "μ",
-            "latex": "\\mu"
+            "value": "f̃_{v0d}",
+            "latex": "\\widetilde{f}_{v0d}"
           },
           {
             "kind": "text",
-            "value": "̃ è un coefficiente di attrito equivalente, funzione dei parametri di resistenza locale del giunto (coesione, assunta convenzionalmente pari alla resistenza a taglio della muratura in assenza di tensioni normali "
+            "value": " è la resistenza equivalente a taglio della muratura e "
+          },
+          {
+            "kind": "math",
+            "value": "μ̃",
+            "latex": "\\widetilde{\\mu}"
+          },
+          {
+            "kind": "text",
+            "value": " è un coefficiente di attrito equivalente, funzione dei parametri di resistenza locale del giunto (coesione, assunta convenzionalmente pari alla resistenza a taglio della muratura in assenza di tensioni normali "
           },
           {
             "kind": "math",
@@ -2280,16 +2506,52 @@
           },
           {
             "kind": "text",
-            "value": " può essere assunto pari a 0,577 (corrispondente ad un angolo di attrito di 30°); ciò porta a valori del coefficiente di attrito equivalente "
+            "value": " può essere assunto pari a "
           },
           {
             "kind": "math",
-            "value": "μ",
-            "latex": "\\mu"
+            "value": "0,577",
+            "latex": "0{,}577"
           },
           {
             "kind": "text",
-            "value": "̃ variabili da circa 0,4 (per murature con buona tessitura) a 0,2 (per murature con blocchi scarsamente ammorsati). Si noti, a titolo di esempio, che questo criterio di resistenza è in grado di distinguere la diversa vulnerabilità, a parità di malta e di mattoni, di un paramento costruito con mattoni disposti “per lungo” o “di lista”, in quanto presenta normalmente una diversa inclinazione della fessura a scaletta."
+            "value": " (corrispondente ad un angolo di attrito di "
+          },
+          {
+            "kind": "math",
+            "value": "30°",
+            "latex": "30^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": "); ciò porta a valori del coefficiente di attrito equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "μ̃",
+            "latex": "\\widetilde{\\mu}"
+          },
+          {
+            "kind": "text",
+            "value": " variabili da circa "
+          },
+          {
+            "kind": "math",
+            "value": "0,4",
+            "latex": "0{,}4"
+          },
+          {
+            "kind": "text",
+            "value": " (per murature con buona tessitura) a "
+          },
+          {
+            "kind": "math",
+            "value": "0,2",
+            "latex": "0{,}2"
+          },
+          {
+            "kind": "text",
+            "value": " (per murature con blocchi scarsamente ammorsati). Si noti, a titolo di esempio, che questo criterio di resistenza è in grado di distinguere la diversa vulnerabilità, a parità di malta e di mattoni, di un paramento costruito con mattoni disposti “per lungo” o “di lista”, in quanto presenta normalmente una diversa inclinazione della fessura a scaletta."
           }
         ]
       },
@@ -2425,7 +2687,25 @@
           },
           {
             "kind": "text",
-            "value": " può essere ricavata da dati di letteratura o attraverso prove di caratterizzazione diretta in laboratorio su campioni prelevati in sito, eventualmente stimandola a partire dalla resistenza a compressione del blocco f_b, come f_{bt}=0,1f_b."
+            "value": " può essere ricavata da dati di letteratura o attraverso prove di caratterizzazione diretta in laboratorio su campioni prelevati in sito, eventualmente stimandola a partire dalla resistenza a compressione del blocco "
+          },
+          {
+            "kind": "math",
+            "value": "f_b",
+            "latex": "f_b"
+          },
+          {
+            "kind": "text",
+            "value": ", come "
+          },
+          {
+            "kind": "math",
+            "value": "f_{bt}=0,1f_b",
+            "latex": "f_{bt}=0{,}1f_b"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -2466,25 +2746,25 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Lo spostamento ultimo a "
+            "value": "Lo spostamento ultimo a SLC è definito valutando la deformazione angolare rappresentativa come nel caso della rottura a taglio per trazione diagonale e assumendo per le tipologie murarie riportate in Tabella C8.5.I una soglia limite pari a "
           },
           {
             "kind": "math",
-            "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "value": "0,005",
+            "latex": "0{,}005"
           },
           {
             "kind": "text",
-            "value": " è definito valutando la deformazione angolare rappresentativa come nel caso della rottura a taglio per trazione diagonale e assumendo per le tipologie murarie riportate in Tabella C8.5."
+            "value": ". Nel caso invece di murature di tipologia moderna, ovvero costituite da blocchi forati, la soglia limite è pari a "
           },
           {
             "kind": "math",
-            "value": "I",
-            "latex": "I"
+            "value": "0,004",
+            "latex": "0{,}004"
           },
           {
             "kind": "text",
-            "value": " una soglia limite pari a 0,005. Nel caso invece di murature di tipologia moderna, ovvero costituite da blocchi forati, la soglia limite è pari a 0,004."
+            "value": "."
           }
         ]
       },

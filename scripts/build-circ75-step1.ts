@@ -24,13 +24,28 @@ const mathTerms: Array<[string, string]> = [
     ["α_u/α_1", "\\alpha_u/\\alpha_1"],
     ["q_0", "q_0"],
     ["A_VC", "A_{VC}"],
+    ["σ", "\\sigma"],
     ["f_y", "f_y"],
     ["h_b", "h_b"],
     ["A+", "A^{+}"],
     ["A-", "A^{-}"],
-    ["z è", "z"],
+    ["z", "z"],
+    ["1,6", "1{,}6"],
+    ["1,2", "1{,}2"],
     ["H", "H"],
 ];
+
+function findTerm(text: string, value: string, cursor: number): number {
+    let index = text.indexOf(value, cursor);
+    if (!/^[A-Za-z]$/.test(value)) return index;
+    while (index >= 0) {
+        const before = index > 0 ? text.charAt(index - 1) : "";
+        const after = index + 1 < text.length ? text.charAt(index + 1) : "";
+        if (!/[A-Za-z0-9_]/.test(before) && !/[A-Za-z0-9_]/.test(after)) return index;
+        index = text.indexOf(value, index + 1);
+    }
+    return -1;
+}
 
 function inline(text: string): any[] | undefined {
     const terms = mathTerms
@@ -42,7 +57,7 @@ function inline(text: string): any[] | undefined {
     while (cursor < text.length) {
         let next: { index: number; value: string; latex: string } | undefined;
         for (const [value, latex] of terms) {
-            const index = text.indexOf(value, cursor);
+            const index = findTerm(text, value, cursor);
             if (
                 index >= 0 &&
                 (!next ||
@@ -62,7 +77,8 @@ function inline(text: string): any[] | undefined {
         result.push({ kind: "math", value: next.value, latex: next.latex });
         cursor = next.index + next.value.length;
     }
-    return result.filter(({ value }) => value);
+    const filtered = result.filter(({ value }) => value);
+    return filtered.some(({ kind }) => kind === "math") ? filtered : undefined;
 }
 
 function evidence(page: number, text: string, region: any = null): any {
@@ -215,13 +231,13 @@ const formulas = [
         number: "C7.5.1",
         unit: "C7.5.4.4",
         page: 222,
-        latex: "V_{WP,Ed,U}=\\gamma_{ov}\\,\\frac{\\sum M_{b,pl,Rd}}{Z}\\left(1-\\frac{z}{H-h_b}\\right)",
+        latex: "V_{WP,Ed,U}=\\gamma_{ov}\\cdot\\frac{\\sum M_{b,pl,Rd}}{Z}\\left(1-\\frac{z}{H-h_b}\\right)",
     },
     {
         number: "C7.5.2",
         unit: "C7.5.4.4",
         page: 223,
-        latex: "V_{WP,Rd}\\ge\\frac{f_y}{\\sqrt{3}}\\,A_{VC}\\sqrt{1-\\left(\\frac{\\sigma}{f_y}\\right)^2}",
+        latex: "V_{WP,Rd}\\ge\\frac{f_y}{\\sqrt{3}}\\cdot A_{VC}\\cdot\\sqrt{1-\\left(\\frac{\\sigma}{f_y}\\right)^2}",
     },
     {
         number: "C7.5.3",

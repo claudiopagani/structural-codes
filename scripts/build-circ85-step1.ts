@@ -43,6 +43,7 @@ function sha256(value: string): string {
 
 const mathMap: Record<string, string> = {
   "N/mm²": "\\mathrm{N/mm^2}",
+  "50%": "50\\%",
   "> 70 cm": ">70\\,\\mathrm{cm}",
   "≤40%": "\\le40\\%",
   "γ_M": "\\gamma_M",
@@ -55,7 +56,7 @@ const mathMap: Record<string, string> = {
   "w": "w",
 };
 
-const inlinePattern = /N\/mm²|> 70 cm|≤40%|γ_M|f_m|fᵥ₀|τ₀|(?<![\p{L}\p{N}_])f(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])E(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])G(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])w(?![\p{L}\p{N}_])/gu;
+const inlinePattern = /N\/mm²|> 70 cm|≤40%|50%|γ_M|f_m|fᵥ₀|τ₀|(?<![\p{L}\p{N}_])f(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])E(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])G(?![\p{L}\p{N}_])|(?<![\p{L}\p{N}_])w(?![\p{L}\p{N}_])/gu;
 
 function inline(text: string): Inline[] | undefined {
   const result: Inline[] = [];
@@ -244,6 +245,12 @@ function makeUnit(official: string, title: string, parentOfficial: string, ances
           severity: "blocking",
           note: "Le tabelle devono essere sottoposte a verifica umana cella per cella e nel loro punto del flusso editoriale.",
         }] : []),
+        ...(official === "C8.5.3.1" ? [{
+          issueId: "circ2019-c8.5.3.1-table-note-math",
+          type: "asset-review",
+          severity: "blocking",
+          note: "La nota (***) della Tabella C8.5.II contiene f_m elevato a 0,35; lo schema corrente ammette soltanto stringhe nelle note e non consente ancora un segmento matematico LaTeX autorevole.",
+        }] : []),
       ],
     },
   };
@@ -296,7 +303,7 @@ const tableI = {
     [cell("Muratura in pietrame disordinata (ciottoli, pietre erratiche e irregolari)"), cell("1,0-2,0"), cell("0,018-0,032"), cell("-"), cell("690-1050"), cell("230-350"), cell("19")],
     [cell("Muratura a conci sbozzati, con paramenti di spessore disomogeneo (*)"), cell("2,0"), cell("0,035-0,051"), cell("-"), cell("1020-1440"), cell("340-480"), cell("20")],
     [cell("Muratura in pietre a spacco con buona tessitura"), cell("2,6-3,8"), cell("0,056-0,074"), cell("-"), cell("1500-1980"), cell("500-660"), cell("21")],
-    [cell("Muratura irregolare di pietra tenera (tufo, calcarenite, ecc.,)"), cell("1,4-2,2"), cell("0,028-0,042"), cell("-"), cell("900-1260"), cell("300-420"), cell("13 ÷ 16(**)", undefined, { rowSpan: 2 })],
+    [cell("Muratura irregolare di pietra tenera (tufo, calcarenite, ecc.,)"), cell("1,4-2,2"), cell("0,028-0,042"), cell("-"), cell("900-1260"), cell("300-420"), cell("13 ÷ 16(**)", "13\\div16\\,\\text{(**)}", { rowSpan: 2 })],
     [cell("Muratura a conci regolari di pietra tenera (tufo, calcarenite, ecc.,) (**)"), cell("2,0-3,2"), cell("0,04-0,08"), cell("0,10-0,19"), cell("1200-1620"), cell("400-500")],
     [cell("Muratura a blocchi lapidei squadrati"), cell("5,8-8,2"), cell("0,09-0,12"), cell("0,18-0,28"), cell("2400-3300"), cell("800-1100"), cell("22")],
     [cell("Muratura in mattoni pieni e malta di calce (***)"), cell("2,6-4,3"), cell("0,05-0,13"), cell("0,13-0,27"), cell("1200-1800"), cell("400-600"), cell("18")],

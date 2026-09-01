@@ -154,7 +154,22 @@
       "text": {
         "raw": "Molti degli isolatori attualmente in commercio, anche a comportamento sostanzialmente lineare, garantiscono rapporti di smorzamento del sistema d’isolamento superiori al 5%. Per modificare e migliorare le caratteristiche del sistema d’isolamento, in termini di capacità dissipative e/o ricentranti, si possono utilizzare “dispositivi ausiliari” con opportuno comportamento meccanico.",
         "normalized": "Molti degli isolatori attualmente in commercio, anche a comportamento sostanzialmente lineare, garantiscono rapporti di smorzamento del sistema d’isolamento superiori al 5%. Per modificare e migliorare le caratteristiche del sistema d’isolamento, in termini di capacità dissipative e/o ricentranti, si possono utilizzare “dispositivi ausiliari” con opportuno comportamento meccanico.",
-        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Molti degli isolatori attualmente in commercio, anche a comportamento sostanzialmente lineare, garantiscono rapporti di smorzamento del sistema d’isolamento superiori al "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". Per modificare e migliorare le caratteristiche del sistema d’isolamento, in termini di capacità dissipative e/o ricentranti, si possono utilizzare “dispositivi ausiliari” con opportuno comportamento meccanico."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -239,8 +254,8 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_is risulta ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_is>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;",
-        "normalized": "a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_is risulta ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_is>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;",
+        "raw": "a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_IS risulta T_IS ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_IS>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;",
+        "normalized": "a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_IS risulta T_IS ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_IS>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;",
         "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0",
         "inline": [
           {
@@ -249,17 +264,17 @@
           },
           {
             "kind": "math",
-            "value": "T_is",
-            "latex": "T_{is}"
+            "value": "T_IS",
+            "latex": "T_{IS}"
           },
           {
             "kind": "text",
-            "value": " risulta ≥ 3·"
+            "value": " risulta "
           },
           {
             "kind": "math",
-            "value": "T_bf",
-            "latex": "T_{bf}"
+            "value": "T_IS ≥ 3·T_bf",
+            "latex": "T_{IS}\\ge3\\cdot T_{bf}"
           },
           {
             "kind": "text",
@@ -267,8 +282,8 @@
           },
           {
             "kind": "math",
-            "value": "T_is>2,0 s",
-            "latex": "T_{is}>2{,}0\\,s"
+            "value": "T_IS>2,0 s",
+            "latex": "T_{IS}>2{,}0\\,\\mathrm{s}"
           },
           {
             "kind": "text",
@@ -287,8 +302,8 @@
           "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
         },
         "transformations": [],
-        "rawSha256": "a70eb5b8a69840df51062a2a415341087c0a4320582cad942203249bfbee3e2a",
-        "normalizedSha256": "a70eb5b8a69840df51062a2a415341087c0a4320582cad942203249bfbee3e2a"
+        "rawSha256": "7c974f39df8fb2ed1261d39beceb411e7aee77edd00763952b71f43af5737652",
+        "normalizedSha256": "7c974f39df8fb2ed1261d39beceb411e7aee77edd00763952b71f43af5737652"
       }
     },
     {

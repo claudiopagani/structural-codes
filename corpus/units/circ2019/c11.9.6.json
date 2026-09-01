@@ -93,7 +93,22 @@
       "text": {
         "raw": "L’obbligo di disporre le cerniere sferiche alle due estremità del dispositivo trova giustificazione nell’esigenza di scongiurare che\neventuali disallineamenti diano luogo, durante i movimenti causati da un evento sismico, alla nascita di sforzi parassiti che\ndanneggino il dispositivo viscoso compromettendone il funzionamento. La capacità di rotazione delle cerniere sferiche necessaria\ndovrà essere determinata dal progettista, in relazione agli effetti sia delle azioni di servizio, sia dei movimenti dovuti al\nterremoto, sia, infine, a possibili imperfezioni nell’installazione. In ogni caso è consigliabile che la capacità di rotazione sia non\ninferiore a ±2°.",
         "normalized": "L’obbligo di disporre le cerniere sferiche alle due estremità del dispositivo trova giustificazione nell’esigenza di scongiurare che eventuali disallineamenti diano luogo, durante i movimenti causati da un evento sismico, alla nascita di sforzi parassiti che danneggino il dispositivo viscoso compromettendone il funzionamento. La capacità di rotazione delle cerniere sferiche necessaria dovrà essere determinata dal progettista, in relazione agli effetti sia delle azioni di servizio, sia dei movimenti dovuti al terremoto, sia, infine, a possibili imperfezioni nell’installazione. In ogni caso è consigliabile che la capacità di rotazione sia non inferiore a ±2°.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’obbligo di disporre le cerniere sferiche alle due estremità del dispositivo trova giustificazione nell’esigenza di scongiurare che eventuali disallineamenti diano luogo, durante i movimenti causati da un evento sismico, alla nascita di sforzi parassiti che danneggino il dispositivo viscoso compromettendone il funzionamento. La capacità di rotazione delle cerniere sferiche necessaria dovrà essere determinata dal progettista, in relazione agli effetti sia delle azioni di servizio, sia dei movimenti dovuti al terremoto, sia, infine, a possibili imperfezioni nell’installazione. In ogni caso è consigliabile che la capacità di rotazione sia non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "±2°",
+            "latex": "\\pm2^\\circ"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -115,6 +130,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "2b5858eeed4cfbf8fe5f2489f9915c6c2dfb6cd71923781a18865c8ac641b42f",

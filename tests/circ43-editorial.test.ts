@@ -44,6 +44,15 @@ test("C4.3 mantiene ordine asset, formule numerate e matematica inline", async (
     assert.equal(assets.tables.length, 2);
     assert.equal(assets.figures.length, 9);
     assert.equal(assets.formulas[1].latex, "\\frac{F_l^2}{P_{l,Rd}^2}+\\frac{F_t^2}{P_{t,Rd}^2}\\le1,0");
+    const byNumber = new Map<string, string>(assets.formulas.map(
+        (formula: { officialNumber: string; latex: string }) =>
+            [formula.officialNumber, formula.latex] as [string, string],
+    ));
+    assert.match(byNumber.get("C4.3.1") ?? "", /\\cdot\\eta/u);
+    assert.match(byNumber.get("C4.3.5") ?? "", /\\eta\\times F_\{cf\}/u);
+    assert.match(byNumber.get("C4.3.7") ?? "", /\\Delta x\\cdot h_f/u);
+    assert.match(byNumber.get("C4.3.10") ?? "", /\\chi_\{LT\}\\cdot M_\{Rd\}/u);
+    assert.match(byNumber.get("C4.3.13") ?? "", /E_a\\cdot t_w\^3/u);
     const inline = unit.blocks.find((block: { text?: { inline?: Array<{ kind: string }> } }) =>
         block.text?.inline?.some((segment) => segment.kind === "math"));
     assert.ok(inline);

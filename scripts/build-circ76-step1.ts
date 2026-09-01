@@ -54,8 +54,26 @@ const mathTerms: Array<[string, string]> = [
     ["e ≤ M_l,Rd/V_l,Rd", "e\\le M_{l,Rd}/V_{l,Rd}"],
 ];
 
-function inline(text: string): any[] | undefined {
-    const terms = mathTerms
+const pages225To226MathTerms: Array<[string, string]> = [
+    ["30 mm", "30\\,\\mathrm{mm}"],
+    ["l", "l"],
+];
+
+function findTerm(text: string, value: string, cursor: number): number {
+    let index = text.indexOf(value, cursor);
+    if (!/^[A-Za-z]$/.test(value)) return index;
+    while (index >= 0) {
+        const before = index > 0 ? text.charAt(index - 1) : "";
+        const after = index + 1 < text.length ? text.charAt(index + 1) : "";
+        if (!/[A-Za-z0-9_’']/.test(before) && !/[A-Za-z0-9_’']/.test(after)) return index;
+        index = text.indexOf(value, index + 1);
+    }
+    return -1;
+}
+
+function inline(text: string, page: number): any[] | undefined {
+    const candidates = page <= 226 ? [...mathTerms, ...pages225To226MathTerms] : mathTerms;
+    const terms = candidates
         .filter(([value]) => text.includes(value))
         .sort((left, right) => right[0].length - left[0].length);
     if (terms.length === 0) return undefined;
@@ -64,7 +82,7 @@ function inline(text: string): any[] | undefined {
     while (cursor < text.length) {
         let next: { index: number; value: string; latex: string } | undefined;
         for (const [value, latex] of terms) {
-            const index = text.indexOf(value, cursor);
+            const index = findTerm(text, value, cursor);
             if (
                 index >= 0 &&
                 (!next ||
@@ -84,7 +102,8 @@ function inline(text: string): any[] | undefined {
         result.push({ kind: "math", value: next.value, latex: next.latex });
         cursor = next.index + next.value.length;
     }
-    return result.filter(({ value }) => value);
+    const filtered = result.filter(({ value }) => value);
+    return filtered.some(({ kind }) => kind === "math") ? filtered : undefined;
 }
 
 function evidence(page: number, text: string, region: any = null): any {
@@ -265,20 +284,20 @@ const units: Unit[] = [
 ];
 
 const formulas = [
-    ["C7.6.1", "C7.6.4.5.1", 226, "F_{Rd,1}=d_{eff}\\,b_b\\,f_{cd}"],
-    ["C7.6.2", "C7.6.4.5.1", 226, "A_r\\ge0{,}25\\,d_{eff}\\,b_b\\,\\frac{0{,}15l-b_b}{0{,}15l}\\,\\frac{f_{cd}}{f_{yd,T}}"],
-    ["C7.6.3", "C7.6.4.5.1", 226, "F_{Rd,2}=0{,}7\\,h_c\\,d_{eff}\\,f_{cd}"],
-    ["C7.6.4", "C7.6.4.5.1", 226, "A_T\\ge\\frac{F_{Rd,2}}{2\\,f_{yd,T}}"],
-    ["C7.6.5", "C7.6.4.5.1", 227, "F_{c,max}=F_{Rd,1}+F_{Rd,2}=(0{,}7\\,h_c+b_b)\\,d_{eff}\\,f_{cd}"],
-    ["C7.6.6", "C7.6.4.5.1", 227, "F_{c,max}=F_{Rd,1}+F_{Rd,2}-2\\,F_{b,yd}"],
-    ["C7.6.7", "C7.6.4.5.2", 228, "F_{Rd,3}=n\\,P_{Rd}"],
-    ["C7.6.8", "C7.6.4.5.2", 228, "F_{c,max}=F_{Rd,1}+F_{Rd,2}+F_{Rd,3}=n\\,P_{Rd}+(0{,}7\\,h_c+b_b)\\,d_{eff}\\,f_{cd}"],
-    ["C7.6.9", "C7.6.4.5.2", 228, "F_{c,max}=F_{Rd,1}+F_{Rd,2}+F_{Rd,3}-2\\,F_{b,yd}=n\\,P_{Rd}+(0{,}7\\,h_c+b_b)\\,d_{eff}\\,f_{cd}-A_{s,l,totale}\\,f_{yd}"],
-    ["C7.6.10", "C7.6.4.5.2", 228, "F_{sc}=b^+_{eff}\\,d_{eff}\\,(0{,}85\\,f_{ck}/\\gamma_c)"],
-    ["C7.6.11", "C7.6.4.5.2", 228, "F_{st}=A_{s,l,totale}\\,f_{yd}"],
-    ["C7.6.12", "C7.6.4.5.2", 229, "V_{wp,c,Rd}=0{,}85\\,\\nu\\,A_c\\,f_{cd}\\,\\sin(\\theta)"],
-    ["C7.6.13", "C7.6.4.5.2", 229, "A_c=0{,}8\\,(b_c-t_w)\\,(h-2t_f)\\cos(\\theta),\\quad \\theta=\\arctan\\left(\\frac{h-2t_f}{z}\\right)"],
-    ["C7.6.14", "C7.6.4.5.2", 229, "\\nu=0{,}55\\left(1+2\\frac{N_{Ed}}{N_{pl,Rd}}\\right)\\le1"],
+    ["C7.6.1", "C7.6.4.5.1", 226, "F_{Rd,1}=d_{eff}\\cdot b_b\\cdot f_{cd}"],
+    ["C7.6.2", "C7.6.4.5.1", 226, "A_r\\ge0{,}25\\cdot d_{eff}\\cdot b_b\\cdot\\frac{0{,}15l-b_b}{0{,}15l}\\cdot\\frac{f_{cd}}{f_{yd,T}}"],
+    ["C7.6.3", "C7.6.4.5.1", 226, "F_{Rd,2}=0{,}7\\cdot h_c\\cdot d_{eff}\\cdot f_{cd}"],
+    ["C7.6.4", "C7.6.4.5.1", 226, "A_T\\ge\\frac{F_{Rd,2}}{2\\cdot f_{yd,T}}"],
+    ["C7.6.5", "C7.6.4.5.1", 227, "F_{c,max}=F_{Rd,1}+F_{Rd,2}=(0{,}7h_c+b_b)\\cdot d_{eff}\\cdot f_{cd}"],
+    ["C7.6.6", "C7.6.4.5.1", 227, "F_{c,max}=F_{Rd,1}+F_{Rd,2}-2\\cdot F_{b,yd}"],
+    ["C7.6.7", "C7.6.4.5.1", 228, "F_{Rd,3}=n\\cdot P_{Rd}"],
+    ["C7.6.8", "C7.6.4.5.1", 228, "F_{c,max}=F_{Rd,1}+F_{Rd,2}+F_{Rd,3}=n\\cdot P_{Rd}+(0{,}7\\cdot h_c+b_b)\\cdot d_{eff}\\cdot f_{cd}"],
+    ["C7.6.9", "C7.6.4.5.1", 228, "F_{c,max}=F_{Rd,1}+F_{Rd,2}+F_{Rd,3}-2\\cdot F_{b,yd}=n\\cdot P_{Rd}+(0{,}7\\cdot h_c+b_b)\\cdot d_{eff}\\cdot f_{cd}-A_{s,l,totale}\\cdot f_{yd}"],
+    ["C7.6.10", "C7.6.4.5.1", 228, "F_{sc}=b^+_{eff}\\cdot d_{eff}\\cdot(0{,}85\\cdot f_{ck}/\\gamma_c)"],
+    ["C7.6.11", "C7.6.4.5.1", 228, "F_{st}=A_{s,l,totale}\\cdot f_{yd}"],
+    ["C7.6.12", "C7.6.4.5.2", 229, "V_{wp,c,Rd}=0{,}85\\cdot\\nu\\cdot A_c\\cdot f_{cd}\\cdot\\operatorname{sen}(\\vartheta)"],
+    ["C7.6.13", "C7.6.4.5.2", 229, "A_c=0{,}8\\cdot(b_c-t_w)\\cdot(h-2\\cdot t_f)\\cos(\\vartheta)\\quad\\text{con}\\quad\\vartheta=\\arctan\\left(\\frac{h-2\\cdot t_f}{z}\\right)"],
+    ["C7.6.14", "C7.6.4.5.2", 229, "\\nu=0{,}55\\cdot\\left(1+2\\cdot\\left(\\frac{N_{Ed}}{N_{pl,Rd}}\\right)\\right)\\le1"],
 ] as const;
 
 const figures = [
@@ -292,12 +311,20 @@ const figures = [
 
 const outputDirectory = join(root, "corpus", "units", "circ2019");
 await mkdir(outputDirectory, { recursive: true });
+const pages225To226Only = process.argv.includes("--pages-225-226");
+const pages227To230Only = process.argv.includes("--pages-227-230");
+const pages227To230Units = new Set(["C7.6.4.5.1", "C7.6.4.5.2", "C7.6.7", "C7.6.8"]);
+const unitsToWrite = pages225To226Only
+    ? units.filter(({ page }) => page <= 225)
+    : pages227To230Only
+      ? units.filter(({ number }) => pages227To230Units.has(number))
+      : units;
 const knownNtcNumbers = new Set(
     (await readdir(join(root, "corpus", "units", "ntc2018")))
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -5)),
 );
-for (const unit of units) {
+for (const unit of unitsToWrite) {
     const id = unitId(unit.number);
     const lower = unit.number.toLowerCase();
     const numberParts = unit.number.slice(1).split(".").map(Number);
@@ -308,6 +335,7 @@ for (const unit of units) {
         .slice(1)
         .map((_, index) => unitId(lower.split(".").slice(0, index + 1).join(".")));
     const hasNtcTarget = knownNtcNumbers.has(unit.number.slice(1));
+    const includeRelations = hasNtcTarget;
     const specs = [{ kind: "heading" as const, page: unit.page, text: `${unit.number} ${unit.title}` }, ...unit.blocks];
     const blocks = specs.map((block, index) => {
         const blockId = index === 0 ? "block-heading" : `block-editorial-${String(index).padStart(3, "0")}`;
@@ -320,7 +348,7 @@ for (const unit of units) {
                 evidence: evidence(block.page, block.label, block.region ?? null),
             };
         }
-        const segments = inline(block.text);
+        const segments = inline(block.text, block.page);
         return {
             blockId: `${id}#${blockId}`,
             kind: block.kind,
@@ -334,7 +362,7 @@ for (const unit of units) {
             evidence: evidence(block.page, block.text),
         };
     });
-    const relation = hasNtcTarget
+    const relation = includeRelations
         ? [{
               relationId: `${id}#relation-001`,
               type: "clarifies",
@@ -391,7 +419,7 @@ for (const unit of units) {
                     severity: "blocking",
                     note: "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF.",
                 },
-                ...(hasNtcTarget
+                ...(includeRelations
                     ? [{
                           issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`,
                           type: "relation-review",
@@ -440,4 +468,4 @@ const manifest = {
     })),
 };
 await writeFile(join(root, "corpus", "assets", "circ2019", "7.6.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-console.log(`circ76-step1: generated ${units.length} units, ${formulas.length} formulas and ${figures.length} figures`);
+console.log(`circ76-step1: generated ${unitsToWrite.length}${pages225To226Only ? " units for PDF pages 224-226" : pages227To230Only ? " units for PDF pages 227-230" : ` units, ${formulas.length} formulas and ${figures.length} figures`}`);

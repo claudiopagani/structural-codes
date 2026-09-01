@@ -503,7 +503,7 @@
       "text": {
         "raw": "Il valore della dilatazione per umidità misurata secondo quanto stabilito dalle UNI 9730-3, deve essere < 0.4 mm/m.",
         "normalized": "Il valore della dilatazione per umidità, misurata secondo quanto stabilito dalla UNI 9730-3, deve essere < 0,4 mm/m.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -511,12 +511,12 @@
           },
           {
             "kind": "math",
-            "value": "<",
-            "latex": "<"
+            "value": "< 0,4 mm/m",
+            "latex": "<0{,}4\\,\\mathrm{mm/m}"
           },
           {
             "kind": "text",
-            "value": " 0,4 mm/m."
+            "value": "."
           }
         ]
       },
@@ -566,6 +566,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunita la disuguaglianza con valore e unità di misura."
           }
         ],
         "rawSha256": "a4f37bffc226a8e0331109453cf0c72b104dcb24b32984c7dd40d8f51eff635b",

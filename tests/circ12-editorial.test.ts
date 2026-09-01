@@ -40,15 +40,20 @@ test("C1 conserva i capoversi reali e ricostruisce gli elenchi", async () => {
     );
 });
 
-test("C1 usa LaTeX inline per i rapporti di sicurezza", async () => {
+test("C1 usa LaTeX inline per tutte le espressioni matematiche", async () => {
     const c11 = await json("corpus/units/circ2019/c1.1.json");
     const math = c11.blocks.flatMap(
         ({ text }: { text?: { inline?: Array<{ latex?: string }> } }) =>
             text?.inline?.flatMap((segment) => segment.latex ?? []) ?? [],
     );
 
-    assert.ok(math.includes("\\zeta_E"));
-    assert.ok(math.includes("\\zeta_{V,i}"));
+    assert.deepEqual(math, [
+        "2^\\circ",
+        "0{,}5\\text{-}2{,}0",
+        "30\\%",
+        "\\zeta_E",
+        "\\zeta_{V,i}",
+    ]);
     assert.ok(!math.includes("/"));
 });
 
@@ -114,7 +119,7 @@ test("C2.4.I è ritrascritta con valori e simboli matematici esatti", async () =
     );
 });
 
-test("C2 rende in LaTeX le grandezze senza falsi positivi discorsivi", async () => {
+test("C2 rende in LaTeX tutte le grandezze inline nell'ordine ufficiale", async () => {
     const c241 = await json("corpus/units/circ2019/c2.4.1.json");
     const c243 = await json("corpus/units/circ2019/c2.4.3.json");
     const c25 = await json("corpus/units/circ2019/c2.5.json");
@@ -125,17 +130,35 @@ test("C2 rende in LaTeX le grandezze senza falsi positivi discorsivi", async () 
         ),
     );
 
-    for (const expected of [
+    assert.deepEqual(latex, [
+        "V_N",
+        "V_N",
         "V_N",
         "\\gamma_F",
+        "V_N",
+        "V_N",
+        "V_N \\ge 50",
+        "V_N \\ge 100",
+        "V_R",
+        "V_N",
+        "C_U",
         "V_R = V_N \\cdot C_U",
         "P_{VR}",
         "T_R",
+        "V_R",
+        "V_N",
+        "V_N",
+        "V_R",
+        "C_U",
+        "C_U > 2",
+        "C_U = 2{,}5",
+        "C_U = 2",
         "G_k",
         "Q_{kj}",
         "G_2",
-    ]) {
-        assert.ok(latex.includes(expected), expected);
-    }
+        "G_2",
+        "G_2",
+        "\\gamma_F",
+    ]);
     assert.ok(!latex.includes("/"));
 });

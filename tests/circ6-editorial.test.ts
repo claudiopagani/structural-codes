@@ -63,6 +63,9 @@ test("Circolare capitolo 6: capoversi, elenchi e matematica inline", async () =>
     assert.equal(c65312.blocks.some((block: any) => block.text?.inline?.some((segment: any) => segment.latex === "E_d\\le R_d")), true);
     assert.equal(c65312.blocks.some((block: any) => block.text?.inline?.some((segment: any) => segment.latex === "\\gamma_{\\varphi'}")), true);
     assert.equal(c6811.blocks.some((block: any) => block.text?.inline?.some((segment: any) => segment.latex === "15\\,\\mu\\mathrm{m}")), true);
+    const c6862 = JSON.parse(await readFile(join(unitDir, "c6.8.6.2.json"), "utf8"));
+    assert.equal(c6862.blocks.some((block: any) => block.text?.inline?.some((segment: any) => segment.value === "Rd/Ed" && segment.latex === "Rd/Ed")), true);
+    assert.equal(c6862.blocks.some((block: any) => block.text?.inline?.some((segment: any) => /R_d|E_d/u.test(segment.latex ?? ""))), false);
     assert.equal(c641.workflow.openIssues.some((issue: any) => issue.type === "missing-region"), true);
 });
 
@@ -71,4 +74,26 @@ test("Circolare capitolo 6: lo step 2 non introduce asset display", async () => 
     assert.deepEqual(manifest.formulas, []);
     assert.deepEqual(manifest.tables, []);
     assert.deepEqual(manifest.figures, []);
+});
+
+test("Circolare C6 conserva le combinazioni A/M/R senza pedici inventati", async () => {
+    const units = await Promise.all([
+        "c6.2.4.1.json", "c6.4.2.1.json", "c6.5.3.1.1.json",
+        "c6.5.3.1.2.json", "c6.6.2.json",
+    ].map(async (name) => JSON.parse(await readFile(join(unitDir, name), "utf8"))));
+    const segments = units.flatMap((unit: any) => unit.blocks)
+        .flatMap((block: any) => block.text?.inline ?? [])
+        .filter((segment: any) => segment.kind === "math")
+        .map((segment: any) => [segment.value, segment.latex]);
+    assert.equal(segments.some(([value, latex]: string[]) => value === "A2+M2+R2" && latex === "A2+M2+R2"), true);
+    assert.equal(segments.some(([value, latex]: string[]) => value === "A1+M1+R1" && latex === "A1+M1+R1"), true);
+    assert.equal(segments.some(([value, latex]: string[]) => value === "A1+M1+R3" && latex === "A1+M1+R3"), true);
+    assert.equal(segments.some((segment: string[]) => /A_[12]|M_[12]|R_[12]/u.test(segment[1] ?? "")), false);
+});
+
+test("Circolare C6 conserva il punto decimale ufficiale in 0.5b÷b", async () => {
+    const unit = JSON.parse(await readFile(join(unitDir, "c6.4.1.json"), "utf8"));
+    const segment = unit.blocks.flatMap((block: any) => block.text?.inline ?? [])
+        .find((candidate: any) => candidate.value === "0.5b÷b");
+    assert.equal(segment?.latex, "0.5b\\div b");
 });

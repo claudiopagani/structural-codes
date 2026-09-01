@@ -61,7 +61,22 @@
       "text": {
         "raw": "Si definisce resistenza caratteristica quella resistenza al di sotto della quale ci si può attendere di trovare il 5% della popolazione di\ntutte le misure di resistenza. La resistenza di rottura a compressione di un singolo elemento è data dalla seguente espressione:",
         "normalized": "Si definisce resistenza caratteristica quella resistenza al di sotto della quale ci si può attendere di trovare il 5% della popolazione di tutte le misure di resistenza. La resistenza di rottura a compressione di un singolo elemento è data dalla seguente espressione:",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Si definisce resistenza caratteristica quella resistenza al di sotto della quale ci si può attendere di trovare il "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": " della popolazione di tutte le misure di resistenza. La resistenza di rottura a compressione di un singolo elemento è data dalla seguente espressione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -83,6 +98,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "8e91a3a984280970ad50562bc45f2bcbf0419bf6ee8a263c417e3d55c4c1fcdb",
@@ -411,6 +431,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Formula in display trascritta dal render ufficiale; revisione umana indipendente ancora obbligatoria."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Definizione testuale del coefficiente di variazione ricongiunta alla formula sulla stessa riga come nella fonte."
           }
         ],
         "rawSha256": "0271b855535f51b7080f97ebe5077b800b558d9d80c45097a1a2df82babf149d",
@@ -419,51 +444,6 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-011",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Â\b\b = coefficiente di variazione;",
-        "normalized": "= coefficiente di variazione;",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 341,
-        "printedPage": "337",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.2.0",
-            "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.2.0",
-            "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
-          }
-        ],
-        "rawSha256": "0271b855535f51b7080f97ebe5077b800b558d9d80c45097a1a2df82babf149d",
-        "normalizedSha256": "dc76715c3769f730cf9cf1e1be37e1285ceafdb299225ce980375abb5449d2f7"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-012",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -504,7 +484,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-013",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-012",
       "kind": "formula-ref",
       "origin": "official",
       "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.10.1.1.1.1.d",
@@ -530,13 +510,13 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-014",
+      "blockId": "urn:structural-codes:it:unit:circ2019:c11.10.1.1.1.1#block-013",
       "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "Il valore della f bk \u000f\u0004\u000f\b<\b \u0015\u0015\u0006\u0007\u0007 \u0013\u0010 \u0006\b\u000e\u0006\bÂ\bÃ\b\u001bX~",
         "normalized": "Il valore della f_bk non è accettabile se δ > 0.2",
-        "normalizationVersion": "circ11-editorial-profile-0.2.0",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -553,21 +533,8 @@
           },
           {
             "kind": "math",
-            "value": "δ",
-            "latex": "\\delta"
-          },
-          {
-            "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": ">",
-            "latex": ">"
-          },
-          {
-            "kind": "text",
-            "value": " 0.2"
+            "value": "δ > 0.2",
+            "latex": "\\delta>0.2"
           }
         ]
       },
@@ -596,6 +563,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
             "note": "Ripristinati dal render ufficiale simboli, spaziatura e notazione matematica inline."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "e85556a8ac3212176c23c3effb2f1ea44f8d51624aba0a875a7e83ec27d2e948",

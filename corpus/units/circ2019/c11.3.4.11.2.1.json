@@ -200,8 +200,32 @@
       "origin": "official",
       "text": {
         "raw": "Per gli acciai da qualificare secondo il punto B del § 11.1 delle NTC, si possono assumere nei calcoli i valori nominali delle\ntensioni caratteristiche di snervamento f yk e rottura f tk riportati nella seguente tabella C11.3.4.11.2.I. Tali acciai potranno essere",
-        "normalized": "Per gli acciai da qualificare secondo il punto B del § 11.1 delle NTC, si possono assumere nei calcoli i valori nominali delle tensioni caratteristiche di snervamento f yk e rottura f tk riportati nella seguente tabella C11.3.4.11.2.I. Tali acciai potranno essere",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalized": "Per gli acciai da qualificare secondo il punto B del § 11.1 delle NTC, si possono assumere nei calcoli i valori nominali delle tensioni caratteristiche di snervamento fyk e rottura ftk riportati nella seguente tabella C11.3.4.11.2.I. Tali acciai potranno essere",
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per gli acciai da qualificare secondo il punto B del § 11.1 delle NTC, si possono assumere nei calcoli i valori nominali delle tensioni caratteristiche di snervamento "
+          },
+          {
+            "kind": "math",
+            "value": "fyk",
+            "latex": "f_{yk}"
+          },
+          {
+            "kind": "text",
+            "value": " e rottura "
+          },
+          {
+            "kind": "math",
+            "value": "ftk",
+            "latex": "f_{tk}"
+          },
+          {
+            "kind": "text",
+            "value": " riportati nella seguente tabella C11.3.4.11.2.I. Tali acciai potranno essere"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -223,10 +247,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "71eae8a5d71a2ecbb98b6305ff45b4dfb1eca8a23a5ae193b25f068e8cfac7f6",
-        "normalizedSha256": "56a226603ba1cebaef570c7ff40e837b22baab8d313d27110bfa99ada5210681"
+        "normalizedSha256": "c11a5a05ad1e95be0e149c275f600b4a151b2b7639acdb4008bcbd1bd86b0bb7"
       }
     },
     {
@@ -236,7 +265,22 @@
       "text": {
         "raw": "impiegati nella gamma di spessori da 0,6 a 15 mm compresi.",
         "normalized": "impiegati nella gamma di spessori da 0,6 a 15 mm compresi.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "impiegati nella gamma di spessori da "
+          },
+          {
+            "kind": "math",
+            "value": "0,6 a 15 mm",
+            "latex": "0{,}6\\text{ a }15\\,\\mathrm{mm}"
+          },
+          {
+            "kind": "text",
+            "value": " compresi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -248,7 +292,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
+          }
+        ],
         "rawSha256": "c344748103d4aaad18f0177b4ea5813c29f250b35aa896743499ffc313fe7173",
         "normalizedSha256": "c344748103d4aaad18f0177b4ea5813c29f250b35aa896743499ffc313fe7173"
       }
@@ -305,28 +355,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.2.1#block-009",
-      "kind": "paragraph",
+      "kind": "formula-ref",
       "origin": "official",
-      "text": {
-        "raw": "Acciai S 235 – S 275 \u0007\b\"\b\\\b\u0016\u0016\b r/t \u001e 1",
-        "normalized": "Acciai S 235 – S 275 \"\\ r/t 1",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Acciai S 235 – S 275 \"\\ "
-          },
-          {
-            "kind": "math",
-            "value": "r/t",
-            "latex": "r/t"
-          },
-          {
-            "kind": "text",
-            "value": " 1"
-          }
-        ]
-      },
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c11.3.4.11.2.1.a",
       "evidence": {
         "sourceId": "circ-7-2019",
         "pdfPage": 332,
@@ -347,167 +378,24 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Quattro limitazioni consecutive su spessore e rapporto r/t conservate come unico gruppo display."
           }
         ],
         "rawSha256": "7612493cb78ece50ac2f36d746cfed363ff6972b1621fdc02af13efc8c48e9cf",
         "normalizedSha256": "a0f3d1b39149f81d6893a4536967302ccbbf1197039b9361878c7c239d32ab85"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.2.1#block-010",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "8 mm $ \u0007\b\"\b\u001f\u001a\b\u0016\u0016\b r/t \u001e 1,5.",
-        "normalized": "8 mm $ \" r/t 1,5.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "8 mm $ \" "
-          },
-          {
-            "kind": "math",
-            "value": "r/t",
-            "latex": "r/t"
-          },
-          {
-            "kind": "text",
-            "value": " 1,5."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 332,
-        "printedPage": "328",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "6221f867231e9eae4a930df083e4de39f49b36b55ee84385fcb350ceb0d42465",
-        "normalizedSha256": "4e43f48dfdaed24ed2b26c8358f89b45081a84a540fb06d46f122d78ba7a81d3"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.2.1#block-011",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "Acciai S 355 – S 469 \u0007\b\"\bK\b\u0016\u0016\b r/t \u001e 1",
-        "normalized": "Acciai S 355 – S 469 \"K r/t 1",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Acciai S 355 – S 469 \"K "
-          },
-          {
-            "kind": "math",
-            "value": "r/t",
-            "latex": "r/t"
-          },
-          {
-            "kind": "text",
-            "value": " 1"
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 332,
-        "printedPage": "328",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "2737881e7fab7df816551653a69b06dd756f3eaeef6a3ab19e0ca54a0675004e",
-        "normalizedSha256": "ee6f683d355aea9411bb28b7df67555e085c2bf3e5b576fa9dd58508d9f4d3ab"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c11.3.4.11.2.1#block-012",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "4 mm $ \u0007\b\"\b\u001f\u001a\b\u0016\u0016\b r/t \u001e 1,5.",
-        "normalized": "4 mm $ \" r/t 1,5.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "4 mm $ \" "
-          },
-          {
-            "kind": "math",
-            "value": "r/t",
-            "latex": "r/t"
-          },
-          {
-            "kind": "text",
-            "value": " 1,5."
-          }
-        ]
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 332,
-        "printedPage": "328",
-        "region": null,
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Rimossi dal testo normalizzato i caratteri di controllo del layer PDF; il raw resta conservato."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ11-editorial-profile-0.1.0",
-            "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
-          }
-        ],
-        "rawSha256": "d297a279e05e8aac365c08bfaa45a9624efbdf9593498b108c4ba7f9263792cc",
-        "normalizedSha256": "4dcc64bfe87d85a3d92e4468780bc5be0b2c137b69b28bd5aebfdc9265d34744"
       }
     }
   ],
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [],
+    "formulaIds": [
+      "urn:structural-codes:it:asset:formula:circ2019:c11.3.4.11.2.1.a"
+    ],
     "tableIds": [
       "urn:structural-codes:it:asset:table:circ2019:c11.3.4.11.2.i"
     ],
@@ -534,6 +422,12 @@
         "type": "asset-review",
         "severity": "blocking",
         "note": "Verificare cella per cella la tabella C11.3.4.11.2.I nel PDF ufficiale."
+      },
+      {
+        "issueId": "c11-3-4-11-2-1-formula-audit-review",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "Gruppo di disuguaglianze trascritto dal PDF ufficiale; resta richiesta la revisione umana indipendente."
       }
     ]
   }

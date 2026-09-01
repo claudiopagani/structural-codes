@@ -174,6 +174,20 @@ test("C3 step 1 rende in LaTeX grandezze, pedici e disuguaglianze inline", async
     ]) {
         assert.ok(latex.includes(expected), expected);
     }
+    assert.ok(!latex.some((value) => /^(?:=|<|>)$/u.test(value)));
+    for (const expected of [
+        "a_g =",
+        "F_0 =",
+        "T_C^* =",
+        "P_{VR}=\\text{costante}",
+        "\\left[T_R=-\\frac{C_U\\cdot V_N}{\\ln(1-P_{VR})}=-\\frac{C_U\\cdot V_N}{\\text{costante}}\\right]",
+        "C_U=1",
+        "T_R=-\\frac{V_N}{\\ln(1-P_{VR}/C_U)}",
+        "R=1",
+        "t_1<t<t_2",
+    ]) {
+        assert.ok(latex.includes(expected), expected);
+    }
 });
 
 test("ogni asset revisionato di C3 step 1 compare una sola volta", async () => {

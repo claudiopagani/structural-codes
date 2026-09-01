@@ -93,7 +93,22 @@
       "text": {
         "raw": "Al riguardo occorre precisare che secondo le dizioni comunemente adottate nel settore della tecnologia delle costruzioni, un\ncalcestruzzo fibrorinforzato ad uso strutturale, per essere definito tale, deve essere caratterizzato da un dosaggio minimo delle\nfibre al suo interno. Le norme CNR-DT 204/2006 “Istruzioni per la progettazione, l’esecuzione ed il controllo di strutture di calcestruzzo\nfibrorinforzato”, indicano che “per impieghi strutturali deve essere garantito un dosaggio minimo di fibre” e quantificano tale dosaggio\ncome “non inferiore allo 0.3% in volume”.",
         "normalized": "Al riguardo occorre precisare che secondo le dizioni comunemente adottate nel settore della tecnologia delle costruzioni, un calcestruzzo fibrorinforzato ad uso strutturale, per essere definito tale, deve essere caratterizzato da un dosaggio minimo delle fibre al suo interno. Le norme CNR-DT 204/2006 “Istruzioni per la progettazione, l’esecuzione ed il controllo di strutture di calcestruzzo fibrorinforzato”, indicano che “per impieghi strutturali deve essere garantito un dosaggio minimo di fibre” e quantificano tale dosaggio come “non inferiore allo 0.3% in volume”.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Al riguardo occorre precisare che secondo le dizioni comunemente adottate nel settore della tecnologia delle costruzioni, un calcestruzzo fibrorinforzato ad uso strutturale, per essere definito tale, deve essere caratterizzato da un dosaggio minimo delle fibre al suo interno. Le norme CNR-DT 204/2006 “Istruzioni per la progettazione, l’esecuzione ed il controllo di strutture di calcestruzzo fibrorinforzato”, indicano che “per impieghi strutturali deve essere garantito un dosaggio minimo di fibre” e quantificano tale dosaggio come “non inferiore allo "
+          },
+          {
+            "kind": "math",
+            "value": "0.3%",
+            "latex": "0.3\\%"
+          },
+          {
+            "kind": "text",
+            "value": " in volume”."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -115,6 +130,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "6469371813a39042fb8d1841f884bc320844d96d1ed665efb4ef25120d4dcbb7",

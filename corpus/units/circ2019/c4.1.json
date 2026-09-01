@@ -276,21 +276,48 @@
       "origin": "official",
       "text": {
         "raw": "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo .c resta fissato a 1,5, in\naccordo con la UNI EN 1992; il coefficiente \u000fcc resta fissato a 0,85, a differenza di quello proposto dalla UNI EN 1992.",
-        "normalized": "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo.c resta fissato a 1,5, in accordo con la UNI EN 1992; il coefficiente cc resta fissato a 0,85, a differenza di quello proposto dalla UNI EN 1992.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo γc resta fissato a 1,5, in accordo con la UNI EN 1992; il coefficiente αcc resta fissato a 0,85, a differenza di quello proposto dalla UNI EN 1992.",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo."
+            "value": "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo "
           },
           {
             "kind": "math",
-            "value": "c",
-            "latex": "c"
+            "value": "γc",
+            "latex": "\\gamma_c"
           },
           {
             "kind": "text",
-            "value": " resta fissato a 1,5, in accordo con la UNI EN 1992; il coefficiente cc resta fissato a 0,85, a differenza di quello proposto dalla UNI EN 1992."
+            "value": " resta fissato a "
+          },
+          {
+            "kind": "math",
+            "value": "1,5",
+            "latex": "1{,}5"
+          },
+          {
+            "kind": "text",
+            "value": ", in accordo con la UNI EN 1992; il coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "αcc",
+            "latex": "\\alpha_{cc}"
+          },
+          {
+            "kind": "text",
+            "value": " resta fissato a "
+          },
+          {
+            "kind": "math",
+            "value": "0,85",
+            "latex": "0{,}85"
+          },
+          {
+            "kind": "text",
+            "value": ", a differenza di quello proposto dalla UNI EN 1992."
           }
         ]
       },
@@ -340,10 +367,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ripristinati i simboli gamma_c e alpha_cc corrotti dal layer PDF."
           }
         ],
         "rawSha256": "b1280715cc2a4a9830a63b45e814131601b4aa2984069bd948b32061b9d0d269",
-        "normalizedSha256": "fb56cb3541628eb13ee8ce1b3ff0a1ab494566f5060b386a4e6fc63de7b04929"
+        "normalizedSha256": "c975d7ee395812ef75048494369797af19eeb5a46786a2dfe43bb56bd9f419db"
       }
     },
     {

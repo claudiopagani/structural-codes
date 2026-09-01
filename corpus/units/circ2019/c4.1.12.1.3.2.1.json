@@ -376,7 +376,7 @@
       "text": {
         "raw": "d l’altezza utile della sezione (in mm);\n\u0012l=Asl/(bw d) il rapporto geometrico di armatura longitudinale (\"\b0,02);\ncp= NEd/Ac la tensione media di compressione nella sezione (\"\b0,2 fcd);\nbw la larghezza minima della sezione (in mm).",
         "normalized": "d è l’altezza utile della sezione, in mm; ρl = Asl/(bw d) è il rapporto geometrico di armatura longitudinale (≤ 0,02); σcp = NEd/Ac è la tensione media di compressione nella sezione (≤ 0,2 fcd); bw è la larghezza minima della sezione, in mm.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -398,12 +398,12 @@
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
+            "value": "≤ 0,02",
+            "latex": "\\le0{,}02"
           },
           {
             "kind": "text",
-            "value": " 0,02); "
+            "value": "); "
           },
           {
             "kind": "math",
@@ -416,17 +416,8 @@
           },
           {
             "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 0,2 "
-          },
-          {
-            "kind": "math",
-            "value": "fcd",
-            "latex": "f_{cd}"
+            "value": "≤ 0,2 fcd",
+            "latex": "\\le0{,}2f_{cd}"
           },
           {
             "kind": "text",
@@ -489,6 +480,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due limitazioni parentetiche con i rispettivi valori e simboli."
           }
         ],
         "rawSha256": "f836f89854475500f5338aa7f9bc535a98b1b913fa1b6741a806eb3a2d9af843",

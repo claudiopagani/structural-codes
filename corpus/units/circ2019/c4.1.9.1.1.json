@@ -157,7 +157,7 @@
       "text": {
         "raw": "\u0003\u0002 le pareti esterne sia orizzontali che verticali devono avere uno spessore minimo di 8 mm. Le pareti interne sia orizzontali",
         "normalized": "le pareti esterne, sia orizzontali che verticali, devono avere uno spessore minimo di 8 mm. Le pareti interne, sia orizzontali che verticali, devono avere uno spessore minimo di 7 mm. Tutte le intersezioni dovranno essere raccordate con raggio di curvatura, al netto delle tolleranze, maggiore di 3 mm. Il rapporto tra l’area complessiva dei fori e l’area lorda delimitata dal perimetro della sezione dei blocchi non deve risultare maggiore di 0,6 + 0,625·h (dove h è l’altezza del blocco in metri, h ≤ 0,32 m).",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -166,7 +166,7 @@
           {
             "kind": "math",
             "value": "0,6 + 0,625·h",
-            "latex": "0{,}6+0{,}625h"
+            "latex": "0{,}6+0{,}625\\cdot h"
           },
           {
             "kind": "text",
@@ -183,21 +183,12 @@
           },
           {
             "kind": "math",
-            "value": "h",
-            "latex": "h"
+            "value": "h ≤ 0,32 m",
+            "latex": "h\\le0{,}32\\,\\mathrm{m}"
           },
           {
             "kind": "text",
-            "value": " "
-          },
-          {
-            "kind": "math",
-            "value": "≤",
-            "latex": "\\le"
-          },
-          {
-            "kind": "text",
-            "value": " 0,32 m)."
+            "value": ")."
           }
         ]
       },
@@ -247,6 +238,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ripristinati il prodotto e la disuguaglianza completa dei limiti geometrici dei blocchi."
           }
         ],
         "rawSha256": "1b1531e98b7cea741ed0e19353e4a22e0ff1696f5234ca3da5102667337c1d8d",

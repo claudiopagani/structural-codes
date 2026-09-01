@@ -273,20 +273,29 @@
       "text": {
         "raw": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di\nomogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n = 15.\u0002",
         "normalized": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di omogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n = 15.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nei casi in cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di omogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a n "
+            "value": "Nei casi i"
           },
           {
             "kind": "math",
-            "value": "=",
-            "latex": "="
+            "value": "n",
+            "latex": "n"
           },
           {
             "kind": "text",
-            "value": " 15."
+            "value": " cui si ritenga possibile effettuare un’unica verifica indipendente dal tempo, si può assumere un coefficiente di omogeneizzazione n fra i moduli di elasticità di acciaio e calcestruzzo, pari a "
+          },
+          {
+            "kind": "math",
+            "value": "n = 15",
+            "latex": "n=15"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -336,6 +345,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunita l'uguaglianza del coefficiente di omogeneizzazione."
           }
         ],
         "rawSha256": "88bb0c55193751678267a2b8ad7e67f2f26cbbd4206e5e81dc02acb3bb34a98f",

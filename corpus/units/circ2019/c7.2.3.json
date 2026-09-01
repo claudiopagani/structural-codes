@@ -461,7 +461,16 @@
           },
           {
             "kind": "text",
-            "value": " al variare del periodo proprio T_a, a un generico piano della costruzione, costituisce lo spettro di risposta di quel piano."
+            "value": " al variare del periodo proprio "
+          },
+          {
+            "kind": "math",
+            "value": "T_a",
+            "latex": "T_a"
+          },
+          {
+            "kind": "text",
+            "value": ", a un generico piano della costruzione, costituisce lo spettro di risposta di quel piano."
           }
         ]
       },
@@ -831,7 +840,25 @@
           },
           {
             "kind": "text",
-            "value": "_a dell’elemento e del rapporto tra il periodo dell’elemento T_a e il periodo del modo i-esimo della struttura T_i, e vale:"
+            "value": "_a dell’elemento e del rapporto tra il periodo dell’elemento "
+          },
+          {
+            "kind": "math",
+            "value": "T_a",
+            "latex": "T_a"
+          },
+          {
+            "kind": "text",
+            "value": " e il periodo del modo i-esimo della struttura "
+          },
+          {
+            "kind": "math",
+            "value": "T_i",
+            "latex": "T_i"
+          },
+          {
+            "kind": "text",
+            "value": ", e vale:"
           }
         ]
       },
@@ -893,7 +920,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "L’eq. C7.2.3 rappresenta la risposta del singolo elemento non strutturale di periodo T_a, posto al piano j-esimo, per effetto del modo di vibrare i-esimo della struttura e tiene conto attraverso il coefficiente β (variabile tra "
+            "value": "L’eq. C7.2.3 rappresenta la risposta del singolo elemento non strutturale di periodo "
+          },
+          {
+            "kind": "math",
+            "value": "T_a",
+            "latex": "T_a"
+          },
+          {
+            "kind": "text",
+            "value": ", posto al piano j-esimo, per effetto del modo di vibrare i-esimo della struttura e tiene conto attraverso il coefficiente β (variabile tra "
           },
           {
             "kind": "math",
@@ -1141,22 +1177,22 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione S_eZ(T,ξ,z) ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione.",
-        "normalized": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione S_eZ(T,ξ,z) ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione.",
+        "raw": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione S_{eZ}(T,ξ,z) ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione.",
+        "normalized": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione S_{eZ}(T,ξ,z) ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione.",
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione S_eZ(T,"
+            "value": "La formulazione analitica semplificata consente di valutare lo spettro di accelerazione "
           },
           {
             "kind": "math",
-            "value": "ξ",
-            "latex": "\\xi"
+            "value": "S_{eZ}(T,ξ,z)",
+            "latex": "S_{eZ}(T,\\xi,z)"
           },
           {
             "kind": "text",
-            "value": ",z) ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione."
+            "value": " ad una quota z significativa per l’elemento non strutturale, l’impianto o il meccanismo locale in esame; la formulazione è basata sulle proprietà dinamiche della struttura principale e sui valori dello spettro di risposta alla base dell’edificio calcolati in corrispondenza dei periodi propri della costruzione."
           }
         ]
       },
@@ -1177,8 +1213,8 @@
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
         "transformations": [],
-        "rawSha256": "2c731bcafa3507a591571a257980824fbac46697d71b9f9cb454e37aaecb5abb",
-        "normalizedSha256": "2c731bcafa3507a591571a257980824fbac46697d71b9f9cb454e37aaecb5abb"
+        "rawSha256": "60dc8b3da96f3ca6257d1163724978cbddf834fceaa1fbe67a948ae6f94910b6",
+        "normalizedSha256": "60dc8b3da96f3ca6257d1163724978cbddf834fceaa1fbe67a948ae6f94910b6"
       }
     },
     {
@@ -1374,13 +1410,27 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "S_eZ,k è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio T_k e smorzamento viscoso equivalente ξ_k (in percentuale);",
-        "normalized": "S_eZ,k è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio T_k e smorzamento viscoso equivalente ξ_k (in percentuale);",
+        "raw": "S_{eZ,k} è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio T_k e smorzamento viscoso equivalente ξ_k (in percentuale);",
+        "normalized": "S_{eZ,k} è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio T_k e smorzamento viscoso equivalente ξ_k (in percentuale);",
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "S_{eZ,k}",
+            "latex": "S_{eZ,k}"
+          },
+          {
             "kind": "text",
-            "value": "S_eZ,k è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio T_k e smorzamento viscoso equivalente "
+            "value": " è il contributo allo spettro di risposta di piano fornito dal k-esimo modo della struttura principale, di periodo proprio "
+          },
+          {
+            "kind": "math",
+            "value": "T_k",
+            "latex": "T_k"
+          },
+          {
+            "kind": "text",
+            "value": " e smorzamento viscoso equivalente "
           },
           {
             "kind": "math",
@@ -1410,8 +1460,8 @@
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
         "transformations": [],
-        "rawSha256": "0e49499b941ff91249dbd103e7ca08acd9c17ebb79098451a8e5b178f597638e",
-        "normalizedSha256": "0e49499b941ff91249dbd103e7ca08acd9c17ebb79098451a8e5b178f597638e"
+        "rawSha256": "5768249ca8c54f3eab018f075965229e35d33302bb5a5bd3ece2d4ae6cbd934a",
+        "normalizedSha256": "5768249ca8c54f3eab018f075965229e35d33302bb5a5bd3ece2d4ae6cbd934a"
       }
     },
     {
@@ -1623,9 +1673,20 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "a_Z,k è il contributo del k-esimo modo alla accelerazione massima di piano.",
-        "normalized": "a_Z,k è il contributo del k-esimo modo alla accelerazione massima di piano.",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "raw": "a_{Z,k} è il contributo del k-esimo modo alla accelerazione massima di piano.",
+        "normalized": "a_{Z,k} è il contributo del k-esimo modo alla accelerazione massima di piano.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "a_{Z,k}",
+            "latex": "a_{Z,k}"
+          },
+          {
+            "kind": "text",
+            "value": " è il contributo del k-esimo modo alla accelerazione massima di piano."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1644,8 +1705,8 @@
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
         "transformations": [],
-        "rawSha256": "2fc4101b4be1ba9f78237d42cee3b7668e12c8def2ff439a9de35c2a9a1ce0c0",
-        "normalizedSha256": "2fc4101b4be1ba9f78237d42cee3b7668e12c8def2ff439a9de35c2a9a1ce0c0"
+        "rawSha256": "6f5a4ea094145ca851508dd26adeac437e5818ea9a321c8febc6ff82a063a46b",
+        "normalizedSha256": "6f5a4ea094145ca851508dd26adeac437e5818ea9a321c8febc6ff82a063a46b"
       }
     },
     {
@@ -1711,7 +1772,22 @@
       "text": {
         "raw": "mentre il contributo al picco di accelerazione spettrale in corrispondenza del periodo T_k fornito dal k-esimo modo, vale:",
         "normalized": "mentre il contributo al picco di accelerazione spettrale in corrispondenza del periodo T_k fornito dal k-esimo modo, vale:",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "mentre il contributo al picco di accelerazione spettrale in corrispondenza del periodo "
+          },
+          {
+            "kind": "math",
+            "value": "T_k",
+            "latex": "T_k"
+          },
+          {
+            "kind": "text",
+            "value": " fornito dal k-esimo modo, vale:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1767,7 +1843,31 @@
       "text": {
         "raw": "Nella verifica di meccanismi locali in edifici multipiano è, in genere, sufficiente riferirsi al solo primo modo di vibrare nella direzione di verifica, in quanto è quello che induce la domanda di spostamento più significativa; nel caso in cui si stia eseguendo una verifica globale dell’edificio principale attraverso un’analisi statica non lineare, per il periodo T_1 può essere assunto il periodo elastico T*, dato dalla formula [C7.3.6] riportata nel § C7.3.4.2.",
         "normalized": "Nella verifica di meccanismi locali in edifici multipiano è, in genere, sufficiente riferirsi al solo primo modo di vibrare nella direzione di verifica, in quanto è quello che induce la domanda di spostamento più significativa; nel caso in cui si stia eseguendo una verifica globale dell’edificio principale attraverso un’analisi statica non lineare, per il periodo T_1 può essere assunto il periodo elastico T*, dato dalla formula [C7.3.6] riportata nel § C7.3.4.2.",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Nella verifica di meccanismi locali in edifici multipiano è, in genere, sufficiente riferirsi al solo primo modo di vibrare nella direzione di verifica, in quanto è quello che induce la domanda di spostamento più significativa; nel caso in cui si stia eseguendo una verifica globale dell’edificio principale attraverso un’analisi statica non lineare, per il periodo "
+          },
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " può essere assunto il periodo elastico "
+          },
+          {
+            "kind": "math",
+            "value": "T*",
+            "latex": "T^*"
+          },
+          {
+            "kind": "text",
+            "value": ", dato dalla formula [C7.3.6] riportata nel § C7.3.4.2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1797,7 +1897,22 @@
       "text": {
         "raw": "Una valutazione più accurata di T_1 richiederebbe la stima del periodo secante del sistema bilineare, in corrispondenza della domanda di spostamento (v. equazione [C7.3.7] o [C7.3.8]) prodotta dall’accelerazione al suolo che porta allo stato limite il meccanismo locale (proprio elemento), per il quale si tiene conto dello stato di danneggiamento della struttura principale, al raggiungimento dello stato limite da parte del meccanismo locale).",
         "normalized": "Una valutazione più accurata di T_1 richiederebbe la stima del periodo secante del sistema bilineare, in corrispondenza della domanda di spostamento (v. equazione [C7.3.7] o [C7.3.8]) prodotta dall’accelerazione al suolo che porta allo stato limite il meccanismo locale (proprio elemento), per il quale si tiene conto dello stato di danneggiamento della struttura principale, al raggiungimento dello stato limite da parte del meccanismo locale).",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Una valutazione più accurata di "
+          },
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " richiederebbe la stima del periodo secante del sistema bilineare, in corrispondenza della domanda di spostamento (v. equazione [C7.3.7] o [C7.3.8]) prodotta dall’accelerazione al suolo che porta allo stato limite il meccanismo locale (proprio elemento), per il quale si tiene conto dello stato di danneggiamento della struttura principale, al raggiungimento dello stato limite da parte del meccanismo locale)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1831,7 +1946,16 @@
         "inline": [
           {
             "kind": "text",
-            "value": "In assenza di tali valutazioni, il periodo T_1 può essere stimato con la formula [7.3.6] del "
+            "value": "In assenza di tali valutazioni, il periodo "
+          },
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " può essere stimato con la formula [7.3.6] del "
           },
           {
             "kind": "math",
@@ -1971,7 +2095,16 @@
           },
           {
             "kind": "text",
-            "value": " e l’incremento del periodo equivalente T_k."
+            "value": " e l’incremento del periodo equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "T_k",
+            "latex": "T_k"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -2132,13 +2265,27 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "α è il rapporto tra l’accelerazione massima del terreno agS su sottosuolo tipo A da considerare nello stato limite in esame (si veda § 3.2.3.2.1) e l’accelerazione di gravità g;",
-        "normalized": "α è il rapporto tra l’accelerazione massima del terreno agS su sottosuolo tipo A da considerare nello stato limite in esame (si veda § 3.2.3.2.1) e l’accelerazione di gravità g;",
+        "raw": "α è il rapporto tra l’accelerazione massima del terreno a_gS su sottosuolo tipo A da considerare nello stato limite in esame (si veda § 3.2.3.2.1) e l’accelerazione di gravità g;",
+        "normalized": "α è il rapporto tra l’accelerazione massima del terreno a_gS su sottosuolo tipo A da considerare nello stato limite in esame (si veda § 3.2.3.2.1) e l’accelerazione di gravità g;",
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
             "kind": "text",
-            "value": "α è il rapporto tra l’accelerazione massima del terreno agS su sottosuolo tipo A da considerare nello stato limite in esame (si veda "
+            "value": " è il rapporto tra l’accelerazione massima del terreno "
+          },
+          {
+            "kind": "math",
+            "value": "a_gS",
+            "latex": "a_gS"
+          },
+          {
+            "kind": "text",
+            "value": " su sottosuolo tipo A da considerare nello stato limite in esame (si veda "
           },
           {
             "kind": "math",
@@ -2168,8 +2315,8 @@
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
         "transformations": [],
-        "rawSha256": "c8d3362b3d24fee876ece768cd30eae82e334178abfee60921211db63b5ccf35",
-        "normalizedSha256": "c8d3362b3d24fee876ece768cd30eae82e334178abfee60921211db63b5ccf35"
+        "rawSha256": "05627f24d2dc35371557e11212284f24304aa41a7e1bd138632f3003299d7584",
+        "normalizedSha256": "05627f24d2dc35371557e11212284f24304aa41a7e1bd138632f3003299d7584"
       }
     },
     {
@@ -2224,7 +2371,18 @@
       "text": {
         "raw": "T_a è il periodo fondamentale di vibrazione dell’elemento non strutturale;",
         "normalized": "T_a è il periodo fondamentale di vibrazione dell’elemento non strutturale;",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "T_a",
+            "latex": "T_a"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo fondamentale di vibrazione dell’elemento non strutturale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2254,7 +2412,18 @@
       "text": {
         "raw": "T_1 è il periodo fondamentale di vibrazione della costruzione nella direzione considerata;",
         "normalized": "T_1 è il periodo fondamentale di vibrazione della costruzione nella direzione considerata;",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "T_1",
+            "latex": "T_1"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo fondamentale di vibrazione della costruzione nella direzione considerata;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2344,7 +2513,18 @@
       "text": {
         "raw": "a, b, a_p sono parametri definiti in accordo con il periodo fondamentale di vibrazione della costruzione (si vedano Fig. C7.2.4 e Tabella C7.2.II).",
         "normalized": "a, b, a_p sono parametri definiti in accordo con il periodo fondamentale di vibrazione della costruzione (si vedano Fig. C7.2.4 e Tabella C7.2.II).",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "a, b, a_p",
+            "latex": "a,b,a_p"
+          },
+          {
+            "kind": "text",
+            "value": " sono parametri definiti in accordo con il periodo fondamentale di vibrazione della costruzione (si vedano Fig. C7.2.4 e Tabella C7.2.II)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2374,7 +2554,22 @@
       "text": {
         "raw": "Per le strutture con isolamento sismico si assume sempre z = 0.",
         "normalized": "Per le strutture con isolamento sismico si assume sempre z = 0.",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le strutture con isolamento sismico si assume sempre "
+          },
+          {
+            "kind": "math",
+            "value": "z = 0",
+            "latex": "z=0"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",

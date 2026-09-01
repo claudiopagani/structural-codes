@@ -1693,7 +1693,16 @@
           },
           {
             "kind": "text",
-            "value": "), in quest’ultimo caso in misura ridotta del 50%."
+            "value": "), in quest’ultimo caso in misura ridotta del "
+          },
+          {
+            "kind": "math",
+            "value": "50%",
+            "latex": "50\\%"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -2282,6 +2291,12 @@
         "type": "asset-review",
         "severity": "blocking",
         "note": "Le tabelle devono essere sottoposte a verifica umana cella per cella e nel loro punto del flusso editoriale."
+      },
+      {
+        "issueId": "circ2019-c8.5.3.1-table-note-math",
+        "type": "asset-review",
+        "severity": "blocking",
+        "note": "La nota (***) della Tabella C8.5.II contiene f_m elevato a 0,35; lo schema corrente ammette soltanto stringhe nelle note e non consente ancora un segmento matematico LaTeX autorevole."
       }
     ]
   }

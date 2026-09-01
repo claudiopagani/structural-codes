@@ -29,15 +29,40 @@ const fig = (page: number, number: string, region: Region): AssetSpec => ({ kind
 const reg = (x: number, y: number, width: number, height: number): Region => ({ coordinateSystem: "pdf-points-top-left", x, y, width, height });
 
 const mathTerms: Array<[string, string]> = [
+    ["S_e,SLV(T_1)", "S_{e,SLV}(T_1)"], ["S_e,SLD(T_1)", "S_{e,SLD}(T_1)"],
+    ["F*_{bu} = F_{bu}/Γ", "F_{bu}^*=F_{bu}/\\Gamma"], ["≤0,15F*_{bu}", "\\le0{,}15F_{bu}^*"],
+    ["q* = S_e(T*)m*/F*_y", "q^*=S_e(T^*)m^*/F_y^*"], ["d*_{max} = d*_{e,max}", "d_{max}^*=d_{e,max}^*"],
+    ["(F*_{max},d*_{max})", "(F_{max}^*,d_{max}^*)"], ["d*_{max}^{(1)}", "d_{max}^{*(1)}"], ["d*_{max}^{(0)}", "d_{max}^{*(0)}"],
+    ["F*_y-d*_{max}", "F_y^*-d_{max}^*"], ["F*-d*", "F^*-d^*"], ["F_b-d_c", "F_b-d_c"],
+    ["m* = Φ Mτ", "m^*=\\Phi M\\tau"], ["d_c = 1", "d_c=1"], ["T* ≥ T_C", "T^*\\ge T_C"], ["T* < T_C", "T^*<T_C"],
+    ["q* ≤ 1", "q^*\\le1"], ["ξ = 5%", "\\xi=5\\%"], ["T_1 < 2T_C", "T_1<2T_C"],
+    ["d_r = d_{r,E}", "d_r=d_{r,E}"], ["0,6F*_{bu}", "0{,}6F_{bu}^*"],
+    ["F*_{bu}", "F_{bu}^*"], ["F*_y", "F_y^*"], ["F_bu", "F_{bu}"], ["d*_u", "d_u^*"], ["d*_{max}", "d_{max}^*"], ["m*", "m^*"], ["k*", "k^*"], ["q*", "q^*"],
+    ["F*", "F^*"], ["d*", "d^*"], ["q’", "q'"],
+    ["S_{De}", "S_{De}"], ["S_e", "S_e"], ["ξ_eq", "\\xi_{eq}"], ["ρ_ij", "\\rho_{ij}"],
+    ["k = 0,66", "k=0{,}66"], ["k = 0,33", "k=0{,}33"], ["k = 1", "k=1"],
     ["q'", "q'"], ["q_ND", "q_{ND}"], ["S_e,SLV", "S_{e,SLV}"], ["S_e,SLD", "S_{e,SLD}"],
     ["T_1", "T_1"], ["T_C", "T_C"], ["T^*", "T^*"], ["d_{r,E}", "d_{r,E}"], ["d_r", "d_r"], ["d^*", "d^*"], ["F_a", "F_a"], ["F^*", "F^*"],
     ["F_b", "F_b"], ["d_c", "d_c"], ["ξ", "\\xi"], ["Γ", "\\Gamma"], ["φ", "\\phi"],
     ["γ_Rd", "\\gamma_{Rd}"], ["α_f", "\\alpha_f"], ["0,0075h", "0{,}0075h"], ["0,0100h", "0{,}0100h"],
-    ["500 mm", "500\\,\\mathrm{mm}"], ["50%", "50\\%"], ["85%", "85\\%"], ["5%", "5\\%"],
+    ["500 mm", "500\\,\\mathrm{mm}"], ["50%", "50\\%"], ["85%", "85\\%"], ["10%", "10\\%"], ["5%", "5\\%"],
+    ["C_1", "C_1"], ["A_c", "A_c"], ["f_cd", "f_{cd}"], ["λ", "\\lambda"], ["τ", "\\tau"],
+    ["N", "N"], ["q", "q"], ["T", "T"], ["H", "H"], ["M", "M"], ["k", "k"],
     ["§ 7.2.6", "\\S 7.2.6"], ["§ 7.3.3", "\\S 7.3.3"], ["§ 7.3.5", "\\S 7.3.5"],
     ["§ 7.3.6", "\\S 7.3.6"], ["§ C3.2.3.6", "\\S C3.2.3.6"], ["§ 3.2.3.6", "\\S 3.2.3.6"],
     ["§ 3.2.3.2.3", "\\S 3.2.3.2.3"], ["§ 3.2.4", "\\S 3.2.4"], ["§ 7.10.6.2.2", "\\S 7.10.6.2.2"],
 ];
+function findTerm(text: string, value: string, cursor: number): number {
+    let index = text.indexOf(value, cursor);
+    if (!/^[A-Za-z]$/.test(value)) return index;
+    while (index >= 0) {
+        const before = index > 0 ? text.charAt(index - 1) : "";
+        const after = index + 1 < text.length ? text.charAt(index + 1) : "";
+        if (!/[A-Za-z0-9_]/.test(before) && !/[A-Za-z0-9_]/.test(after)) return index;
+        index = text.indexOf(value, index + 1);
+    }
+    return -1;
+}
 function inline(text: string): any[] | undefined {
     const terms = mathTerms.filter(([value]) => text.includes(value)).sort((a, b) => b[0].length - a[0].length);
     if (!terms.length) return undefined;
@@ -46,7 +71,7 @@ function inline(text: string): any[] | undefined {
     while (cursor < text.length) {
         let next: { index: number; value: string; latex: string } | undefined;
         for (const [value, latex] of terms) {
-            const index = text.indexOf(value, cursor);
+            const index = findTerm(text, value, cursor);
             if (index >= 0 && (!next || index < next.index || (index === next.index && value.length > next.value.length))) next = { index, value, latex };
         }
         if (!next) { result.push({ kind: "text", value: text.slice(cursor) }); break; }
@@ -155,7 +180,7 @@ const c7342: Spec[] = [
     p(210, "Alla curva di capacità del sistema equivalente si sostituisce una curva bilineare avente un primo tratto elastico ed un secondo tratto perfettamente plastico (si veda Figura C7.3.1). Detta F_bu la resistenza massima del sistema strutturale reale ed F*_{bu} = F_{bu}/Γ la resistenza massima del sistema equivalente, il tratto elastico si individua imponendone il passaggio per il punto 0,6F*_{bu} della curva di capacità del sistema equivalente, la forza di plasticizzazione F*_y si individua imponendo l’uguaglianza delle aree sottese dalla curva bilineare e dalla curva di capacità per lo spostamento massimo d*_u corrispondente ad una riduzione di resistenza ≤0,15F*_{bu}."),
     p(210, "Il periodo elastico del sistema bilineare è dato dall’espressione:"),
     f(210, "C7.3.6"),
-    p(210, "dove m* = φ Mτ e k* è la rigidezza del tratto elastico della bilineare."),
+    p(210, "dove m* = Φ Mτ e k* è la rigidezza del tratto elastico della bilineare."),
     p(210, "Nel caso in cui T* ≥ T_C la domanda in spostamento per il sistema anelastico è assunta uguale a quella di un sistema elastico di pari periodo (v. § 3.2.3.2.3 delle NTC e Figura C7.3.2a):"),
     f(210, "C7.3.7"),
     p(210, "Nel caso in cui T* < T_C la domanda in spostamento per il sistema anelastico è maggiore di quella di un sistema elastico di pari periodo (v. Figura C7.3.2b) e si ottiene da quest’ultima mediante l’espressione:"),
@@ -266,10 +291,11 @@ const figures = [
 async function appendC726() {
     const path = join(unitsPath, "c7.2.6.json");
     const unit = JSON.parse(await readFile(path, "utf8"));
-    if (unit.blocks.some((candidate: { assetId?: string }) => candidate.assetId === aid("figure", "C7.2.5"))) return;
     const id = uid("C7.2.6");
-    const extra = c726Continuation.map((spec, index) => block(id, spec, unit.blocks.length + index));
-    unit.blocks.push(...extra);
+    const existingStart = unit.blocks.findIndex((candidate: { evidence?: { pdfPage?: number } }) => candidate.evidence?.pdfPage === 207);
+    const start = existingStart >= 0 ? existingStart : unit.blocks.length;
+    const extra = c726Continuation.map((spec, index) => block(id, spec, start + index));
+    unit.blocks.splice(start, unit.blocks.length - start, ...extra);
     unit.assets.figureIds = [...new Set([...unit.assets.figureIds, aid("figure", "C7.2.5")])];
     await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
 }

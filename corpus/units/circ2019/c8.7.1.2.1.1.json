@@ -70,13 +70,8 @@
         "normalizationVersion": "circ8-editorial-profile-0.2.0",
         "inline": [
           {
-            "kind": "math",
-            "value": "L",
-            "latex": "L"
-          },
-          {
             "kind": "text",
-            "value": "’analisi con approccio cinematico lineare (o cinematica lineare) richiede il calcolo del solo moltiplicatore di attivazione del meccanismo "
+            "value": "L’analisi con approccio cinematico lineare (o cinematica lineare) richiede il calcolo del solo moltiplicatore di attivazione del meccanismo "
           },
           {
             "kind": "math",
@@ -145,16 +140,7 @@
         "inline": [
           {
             "kind": "text",
-            "value": "A titolo indicativo, è necessario individuare preliminarmente l’entità ed il punto di applicazione dei pesi propri e di quelli portati da ciascun blocco o elemento della catena cinematica, l’entità delle forze esterne applicate e attritive, nonché di quelle interne agenti negli elementi elastici. "
-          },
-          {
-            "kind": "math",
-            "value": "L",
-            "latex": "L"
-          },
-          {
-            "kind": "text",
-            "value": "’azione sismica può essere rappresentata da un sistema di forze orizzontali, proporzionali ai pesi attraverso un coefficiente "
+            "value": "A titolo indicativo, è necessario individuare preliminarmente l’entità ed il punto di applicazione dei pesi propri e di quelli portati da ciascun blocco o elemento della catena cinematica, l’entità delle forze esterne applicate e attritive, nonché di quelle interne agenti negli elementi elastici. L’azione sismica può essere rappresentata da un sistema di forze orizzontali, proporzionali ai pesi attraverso un coefficiente "
           },
           {
             "kind": "math",
@@ -890,7 +876,22 @@
       "text": {
         "raw": "Un caso particolarmente significativo è quello di una parete che, pur essendo collegata alle pareti di spina ortogonali attraverso\nun ammorsamento murario parzialmente efficace, ribalta fuori dal proprio piano medio (ribaltamento semplice). A meno che non\nsia già in atto un distacco evidente dalle pareti ortogonali o che queste non siano totalmente prive di ammorsamento, tale\nmeccanismo può considerare il contributo stabilizzante esercitato dalle pareti ortogonali attraverso resistenze attritive. La\nrisultante della forza attritiva che può svilupparsi lungo l’altezza h dell’ammorsamento con una parete ortogonale (lesione\nverticale a pettine, ipotizzando caratteristiche di ammorsamento pressoché uniformi) può essere ricavata in modo approssimato\ndalla seguente espressione: ",
         "normalized": "Un caso particolarmente significativo è quello di una parete che, pur essendo collegata alle pareti di spina ortogonali attraverso un ammorsamento murario parzialmente efficace, ribalta fuori dal proprio piano medio (ribaltamento semplice). A meno che non sia già in atto un distacco evidente dalle pareti ortogonali o che queste non siano totalmente prive di ammorsamento, tale meccanismo può considerare il contributo stabilizzante esercitato dalle pareti ortogonali attraverso resistenze attritive. La risultante della forza attritiva che può svilupparsi lungo l’altezza h dell’ammorsamento con una parete ortogonale (lesione verticale a pettine, ipotizzando caratteristiche di ammorsamento pressoché uniformi) può essere ricavata in modo approssimato dalla seguente espressione:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Un caso particolarmente significativo è quello di una parete che, pur essendo collegata alle pareti di spina ortogonali attraverso un ammorsamento murario parzialmente efficace, ribalta fuori dal proprio piano medio (ribaltamento semplice). A meno che non sia già in atto un distacco evidente dalle pareti ortogonali o che queste non siano totalmente prive di ammorsamento, tale meccanismo può considerare il contributo stabilizzante esercitato dalle pareti ortogonali attraverso resistenze attritive. La risultante della forza attritiva che può svilupparsi lungo l’altezza "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " dell’ammorsamento con una parete ortogonale (lesione verticale a pettine, ipotizzando caratteristiche di ammorsamento pressoché uniformi) può essere ricavata in modo approssimato dalla seguente espressione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1019,12 +1020,21 @@
           },
           {
             "kind": "math",
-            "value": "n",
-            "latex": "n"
+            "value": "n=h/h_b",
+            "latex": "n=h/h_b"
           },
           {
             "kind": "text",
-            "value": "=h/h_b, dove h_b è l’altezza media degli elementi costituenti la muratura);"
+            "value": ", dove "
+          },
+          {
+            "kind": "math",
+            "value": "h_b",
+            "latex": "h_b"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altezza media degli elementi costituenti la muratura);"
           }
         ]
       },
@@ -1071,7 +1081,18 @@
       "text": {
         "raw": "l è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;",
         "normalized": "l è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "l",
+            "latex": "l"
+          },
+          {
+            "kind": "text",
+            "value": " è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1114,12 +1135,12 @@
           },
           {
             "kind": "math",
-            "value": "φ",
-            "latex": "\\varphi"
+            "value": "φ=h_b/l",
+            "latex": "\\varphi=h_b/l"
           },
           {
             "kind": "text",
-            "value": "=h_b/l; tale parametro è analogamente definito per il criterio di resistenza a taglio per fessurazione diagonale, con rottura “a scaletta” nei giunti di malta, nell’equazione [C8.7.1.17];"
+            "value": "; tale parametro è analogamente definito per il criterio di resistenza a taglio per fessurazione diagonale, con rottura “a scaletta” nei giunti di malta, nell’equazione [C8.7.1.17];"
           }
         ]
       },
@@ -1175,7 +1196,16 @@
           },
           {
             "kind": "text",
-            "value": " è il coefficiente d’attrito; un valore di riferimento è 0,577, identico a quello indicato per l’equazione [C8.7.1.17];"
+            "value": " è il coefficiente d’attrito; un valore di riferimento è "
+          },
+          {
+            "kind": "math",
+            "value": "0,577",
+            "latex": "0{,}577"
+          },
+          {
+            "kind": "text",
+            "value": ", identico a quello indicato per l’equazione [C8.7.1.17];"
           }
         ]
       },
@@ -1212,7 +1242,18 @@
       "text": {
         "raw": "t S è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);",
         "normalized": "t_s è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "t_s",
+            "latex": "t_s"
+          },
+          {
+            "kind": "text",
+            "value": " è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1288,7 +1329,31 @@
       "text": {
         "raw": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della\ncerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore \n\u000f9.",
         "normalized": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore 9.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il punto di applicazione di questa resistenza può essere assunto a quota "
+          },
+          {
+            "kind": "math",
+            "value": "1/3h",
+            "latex": "\\frac{1}{3}h"
+          },
+          {
+            "kind": "text",
+            "value": "; si ricorda che l’altezza "
+          },
+          {
+            "kind": "math",
+            "value": "h",
+            "latex": "h"
+          },
+          {
+            "kind": "text",
+            "value": " (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore 9."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1333,22 +1398,7 @@
       "text": {
         "raw": "Si fa inoltre presente che la [C8.7.1.2] non considera il contributo di eventuali carichi applicati in sommità ai muri ortogonali a\nquello in esame, quali parapetti o solai e coperture, i quali incrementano lo stato di sollecitazione verticale sulle superfici di\nammorsamento (ciò avviene in misura ridotta anche nel caso di lesione verticale “a pettine”, a seguito della diffusione delle\ntensioni nella muratura). L’entità di questa resistenza aggiuntiva può essere stimata e il suo punto di applicazione, in genere, può\nessere assunto a quota 1/2h.",
         "normalized": "Si fa inoltre presente che la [C8.7.1.2] non considera il contributo di eventuali carichi applicati in sommità ai muri ortogonali a quello in esame, quali parapetti o solai e coperture, i quali incrementano lo stato di sollecitazione verticale sulle superfici di ammorsamento (ciò avviene in misura ridotta anche nel caso di lesione verticale “a pettine”, a seguito della diffusione delle tensioni nella muratura). L’entità di questa resistenza aggiuntiva può essere stimata e il suo punto di applicazione, in genere, può essere assunto a quota 1/2h.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "Si fa inoltre presente che la [C8.7.1.2] non considera il contributo di eventuali carichi applicati in sommità ai muri ortogonali a quello in esame, quali parapetti o solai e coperture, i quali incrementano lo stato di sollecitazione verticale sulle superfici di ammorsamento (ciò avviene in misura ridotta anche nel caso di lesione verticale “a pettine”, a seguito della diffusione delle tensioni nella muratura). "
-          },
-          {
-            "kind": "math",
-            "value": "L",
-            "latex": "L"
-          },
-          {
-            "kind": "text",
-            "value": "’entità di questa resistenza aggiuntiva può essere stimata e il suo punto di applicazione, in genere, può essere assunto a quota 1/2h."
-          }
-        ]
+        "normalizationVersion": "circ8-editorial-profile-0.2.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",

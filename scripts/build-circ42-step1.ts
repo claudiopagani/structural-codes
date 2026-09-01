@@ -135,27 +135,27 @@ const tI = tableId("C4.2.I");
 const g = (number: string) => figureId(number);
 
 const formulaRows: FormulaRow[] = [
-    { number: "C4.2.1", unit: "C4.2.3.1", page: 101, latex: "\\bar{k}=\\sqrt{\\frac{f_{yk}}{\\gamma_{M0}\\,\\sigma_{c,Ed}}}", raw: "k̄ = √(fyk/(γM0·σc,Ed)) [C4.2.1]", region: reg(120, 130, 360, 100) },
+    { number: "C4.2.1", unit: "C4.2.3.1", page: 101, latex: "\\bar{k}=\\sqrt{\\frac{f_{yk}}{\\gamma_{M0}\\cdot\\sigma_{c,Ed}}}", raw: "k̄ = √(fyk/(γM0·σc,Ed)) [C4.2.1]", region: reg(120, 130, 360, 100) },
     { number: "C4.2.2", unit: "C4.2.3.3", page: 101, latex: "M_{pl,Rd}=\\frac{W_{pl}f_{yk}}{\\gamma_{M0}}", raw: "Mpl,Rd = Wpl·fyk/γM0 [C4.2.2]", region: reg(140, 260, 320, 100) },
-    { number: "C4.2.3", unit: "C4.2.3.3", page: 101, latex: "a^*=\\max\\left(2d;L_{0{,}8M_{pl,Rd}}\\right)", raw: "a* = max(2d; L0,8Mpl,Rd) [C4.2.3]", region: reg(120, 500, 360, 100) },
-    { number: "C4.2.4", unit: "C4.2.3.3", page: 101, latex: "\\frac{Af_{yk}}{\\gamma_{M0}}\\le\\frac{0{,}9A_{net}f_{tk}}{\\gamma_{M2}}", raw: "A·fyk/γM0 ≤ 0,9·Anet·ftk/γM2 [C4.2.4]", region: reg(110, 610, 380, 100) },
-    { number: "C4.2.5", unit: "C4.2.3.4", page: 102, latex: "\\alpha_{cr}=\\frac{h\\,H_{Ed}}{\\delta\\,V_{Ed}}", raw: "αcr = h·HEd/(δ·VEd) [C4.2.5]", region: reg(130, 270, 340, 100) },
-    { number: "C4.2.6", unit: "C4.2.3.4", page: 102, latex: "\\bar{\\lambda}\\le0{,}3\\sqrt{\\frac{Af_{yk}}{N_{Ed}}}", raw: "λ̄ ≤ 0,3·√(A·fyk/NEd) [C4.2.6]", region: reg(120, 490, 350, 100) },
+    { number: "C4.2.3", unit: "C4.2.3.3", page: 101, latex: "a^*=\\max\\left(2d;L_{0{,}8M_p}\\right)", raw: "a* = max(2d; L0,8Mp) [C4.2.3]", region: reg(120, 500, 360, 100) },
+    { number: "C4.2.4", unit: "C4.2.3.3", page: 101, latex: "\\frac{A\\cdot f_{yk}}{\\gamma_{M0}}\\le\\frac{0{,}9\\cdot A_{net}\\cdot f_{tk}}{\\gamma_{M2}}", raw: "A·fyk/γM0 ≤ 0,9·Anet·ftk/γM2 [C4.2.4]", region: reg(110, 610, 380, 100) },
+    { number: "C4.2.5", unit: "C4.2.3.4", page: 102, latex: "\\alpha_{cr}=\\frac{h\\cdot H_{Ed}}{\\delta\\cdot V_{Ed}}", raw: "αcr = h·HEd/(δ·VEd) [C4.2.5]", region: reg(130, 270, 340, 100) },
+    { number: "C4.2.6", unit: "C4.2.3.4", page: 102, latex: "\\bar{\\lambda}\\le0{,}3\\cdot\\sqrt{\\frac{A\\cdot f_{yk}}{N_{Ed}}}", raw: "λ̄ ≤ 0,3·√(A·fyk/NEd) [C4.2.6]", region: reg(120, 490, 350, 100) },
     { number: "C4.2.7", unit: "C4.2.3.5", page: 102, latex: "\\phi=\\alpha_h\\alpha_m\\phi_0", raw: "φ = αh·αm·φ0 [C4.2.7]", region: reg(110, 640, 370, 100) },
     { number: "C4.2.8", unit: "C4.2.3.5", page: 102, latex: "\\frac{2}{3}\\le\\alpha_h=\\frac{2}{\\sqrt{h}}\\le1{,}0\\quad\\text{e da}\\quad\\alpha_m=\\sqrt{\\frac{1}{2}\\left(1+\\frac{1}{m}\\right)}", raw: "2/3 ≤ αh = 2/√h ≤ 1,0 e da αm = √(1/2(1+1/m)) [C4.2.8]", region: reg(110, 680, 370, 100) },
-    { number: "C4.2.9", unit: "C4.2.3.5", page: 103, latex: "H_{Ed}\\ge0{,}15\\,V_{Ed}", raw: "HEd ≥ 0,15·VEd [C4.2.9]", region: reg(110, 250, 380, 100) },
-    { number: "C4.2.10", unit: "C4.2.3.5", page: 103, latex: "\\bar{\\lambda}\\ge0{,}5\\sqrt{\\frac{Af_y}{N_{Ed}}}", raw: "λ̄ ≥ 0,5·√(A·fy/NEd) [C4.2.10]", region: reg(110, 460, 380, 100) },
-    { number: "C4.2.11", unit: "C4.2.3.5", page: 103, latex: "F_h=\\phi\\,N_{Ed}", raw: "Fh = φ·NEd [C4.2.11]", region: reg(110, 530, 380, 100) },
-    { number: "C4.2.12", unit: "C4.2.3.5", page: 103, latex: "q_h=\\frac{8\\,e_{0,d}N_{Ed}}{L^2}", raw: "qh = 8·e0,d·NEd/L² [C4.2.12]", region: reg(110, 570, 380, 100) },
-    { number: "C4.2.13", unit: "C4.2.3.5", page: 104, latex: "e_0=\\alpha_m\\,\\frac{L}{500}", raw: "e0 = αm·L/500 [C4.2.13]", region: reg(110, 110, 380, 100) },
+    { number: "C4.2.9", unit: "C4.2.3.5", page: 103, latex: "H_{Ed}\\ge0{,}15\\cdot V_{Ed}", raw: "HEd ≥ 0,15·VEd [C4.2.9]", region: reg(110, 250, 380, 100) },
+    { number: "C4.2.10", unit: "C4.2.3.5", page: 103, latex: "\\bar{\\lambda}\\ge0{,}5\\cdot\\sqrt{\\frac{A\\cdot f_y}{N_{Ed}}}", raw: "λ̄ ≥ 0,5·√(A·fy/NEd) [C4.2.10]", region: reg(110, 460, 380, 100) },
+    { number: "C4.2.11", unit: "C4.2.3.5", page: 103, latex: "F_h=\\phi\\cdot N_{Ed}", raw: "Fh = φ·NEd [C4.2.11]", region: reg(110, 530, 380, 100) },
+    { number: "C4.2.12", unit: "C4.2.3.5", page: 103, latex: "q_h=\\frac{8\\cdot e_{0,d}\\cdot N_{Ed}}{L^2}", raw: "qh = 8·e0,d·NEd/L² [C4.2.12]", region: reg(110, 570, 380, 100) },
+    { number: "C4.2.13", unit: "C4.2.3.5", page: 104, latex: "e_0=\\alpha_m\\cdot\\frac{L}{500}", raw: "e0 = αm·L/500 [C4.2.13]", region: reg(110, 110, 380, 100) },
     { number: "C4.2.14", unit: "C4.2.3.5", page: 104, latex: "\\alpha_m=\\sqrt{\\frac{1}{2}\\left(1+\\frac{1}{m}\\right)}", raw: "αm = √(1/2(1+1/m)) [C4.2.14]", region: reg(110, 155, 380, 100) },
     { number: "C4.2.15", unit: "C4.2.3.5", page: 104, latex: "q_d=\\frac{8\\left(e_0+\\delta_q\\right)N_{Ed}}{L^2}", raw: "qd = 8(e0+δq)NEd/L² [C4.2.15]", region: reg(110, 340, 390, 100) },
     { number: "C4.2.16", unit: "C4.2.3.5", page: 104, latex: "N_{Ed}=\\frac{M_{Ed}}{h}", raw: "NEd = MEd/h [C4.2.16]", region: reg(110, 440, 380, 100) },
-    { number: "C4.2.17", unit: "C4.2.3.5", page: 104, latex: "F_d=\\alpha_m\\phi_0=\\frac{\\alpha_mN_{Ed}}{100}", raw: "Fd = αm·φ0 = αm·NEd/100 [C4.2.17]", region: reg(110, 620, 380, 100) },
+    { number: "C4.2.17", unit: "C4.2.3.5", page: 104, latex: "F_d=\\alpha_m\\cdot\\phi_0=\\frac{\\alpha_m\\cdot N_{Ed}}{100}", raw: "Fd = αm·φ0 = αm·NEd/100 [C4.2.17]", region: reg(110, 620, 380, 100) },
     { number: "C4.2.18", unit: "C4.2.3.6", page: 105, latex: "\\beta=\\frac{\\alpha_{cr}}{\\alpha_{cr}-1}", raw: "β = αcr/(αcr−1) [C4.2.18]", region: reg(110, 400, 380, 100) },
-    { number: "C4.2.19", unit: "C4.2.3.7", page: 105, latex: "\\frac{h}{t_f}\\le40\\,\\varepsilon", raw: "h/tf ≤ 40·ε [C4.2.19]", region: reg(110, 530, 380, 100) },
+    { number: "C4.2.19", unit: "C4.2.3.7", page: 105, latex: "\\frac{h}{t_f}\\le40\\cdot\\varepsilon", raw: "h/tf ≤ 40·ε [C4.2.19]", region: reg(110, 530, 380, 100) },
     { number: "C4.2.3.7-epsilon", unit: "C4.2.3.7", page: 105, latex: "\\varepsilon=\\sqrt{\\frac{235\\,\\mathrm{MPa}}{f_{yk}}}", raw: "ε = √(235 MPa/fyk)", region: reg(110, 565, 380, 80) },
-    { number: "C4.2.20", unit: "C4.2.3.7", page: 105, latex: "L_s=\\begin{cases}35\\,\\varepsilon\\,i_z & \\text{per }0{,}625\\le\\psi\\le1{,}0\\\\(60-40\\,\\psi)\\,\\varepsilon\\,i_z & \\text{per }-1\\le\\psi<0{,}625\\end{cases}", raw: "Ls = 35·ε·iz per 0,625 ≤ ψ ≤ 1,0; Ls = (60−40·ψ)·ε·iz per −1 ≤ ψ < 0,625 [C4.2.20]", region: reg(110, 620, 380, 100) },
+    { number: "C4.2.20", unit: "C4.2.3.7", page: 105, latex: "L_s=\\begin{cases}35\\cdot\\varepsilon\\cdot i_z & \\text{per }0{,}625\\le\\psi\\le1{,}0\\\\(60-40\\cdot\\psi)\\cdot\\varepsilon\\cdot i_z & \\text{per }-1\\le\\psi<0{,}625\\end{cases}", raw: "Ls = 35·ε·iz per 0,625 ≤ ψ ≤ 1,0; Ls = (60−40·ψ)·ε·iz per −1 ≤ ψ < 0,625 [C4.2.20]", region: reg(110, 620, 380, 100) },
     { number: "C4.2.3.7-psi", unit: "C4.2.3.7", page: 105, latex: "\\psi=\\frac{M_{Ed,min}}{M_{pl,Rd}}", raw: "ψ = MEd,min/Mpl,Rd", region: reg(110, 700, 380, 80) },
 ];
 
@@ -338,7 +338,7 @@ if (redistribution?.text) {
     if (formulaPart > 0) {
         const previous = redistribution.text.inline[formulaPart - 1]!;
         previous.value = previous.value.replace("0,15 ", "");
-        redistribution.text.inline[formulaPart] = { kind: "math", value: "0,15·Mpl,Rd", latex: "0{,}15\\,M_{pl,Rd}" };
+        redistribution.text.inline[formulaPart] = { kind: "math", value: "0,15·Mpl,Rd", latex: "0{,}15\\cdot M_{pl,Rd}" };
     }
     redistribution.evidence.rawSha256 = hash(redistribution.text.raw);
     redistribution.evidence.normalizedSha256 = hash(redistribution.text.normalized);
@@ -370,7 +370,7 @@ if (localImperfection?.text) {
     if (index > 0) {
         const previous = localImperfection.text.inline[index - 1]!;
         previous.value = previous.value.slice(0, -4);
-        localImperfection.text.inline[index] = { kind: "math", value: "0,5·e0", latex: "0{,}5\\,e_0" };
+        localImperfection.text.inline[index] = { kind: "math", value: "0,5·e0", latex: "0{,}5\\cdot e_0" };
     }
 }
 

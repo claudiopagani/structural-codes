@@ -16,10 +16,10 @@ const sha256 = (value: string): string =>
     createHash("sha256").update(value, "utf8").digest("hex");
 
 const mathTerms: Array<[string, string]> = [
-    ["T_is ≥ 3·T_bf", "T_{is}\\ge3\\,T_{bf}"],
-    ["T_is>2,0 s", "T_{is}>2{,}0\\,s"],
+    ["T_IS ≥ 3·T_bf", "T_{IS}\\ge3\\cdot T_{bf}"],
+    ["T_IS>2,0 s", "T_{IS}>2{,}0\\,\\mathrm{s}"],
     ["T_bf", "T_{bf}"],
-    ["T_is", "T_{is}"],
+    ["T_IS", "T_{IS}"],
     ["d_dc", "d_{dc}"],
     ["K_esi,min", "K_{esi,min}"],
     ["K_esi", "K_{esi}"],
@@ -44,6 +44,7 @@ const mathTerms: Array<[string, string]> = [
     ["2/3", "\\frac{2}{3}"],
     ["0,05 s", "0{,}05\\,s"],
     ["1,5", "1{,}5"],
+    ["5%", "5\\%"],
 ];
 
 function inline(text: string): any[] | undefined {
@@ -139,7 +140,7 @@ const units: Unit[] = [
             p(235, `Molti degli isolatori attualmente in commercio, anche a comportamento sostanzialmente lineare, garantiscono rapporti di smorzamento del sistema d’isolamento superiori al 5%. Per modificare e migliorare le caratteristiche del sistema d’isolamento, in termini di capacità dissipative e/o ricentranti, si possono utilizzare “dispositivi ausiliari” con opportuno comportamento meccanico.`),
             p(236, `Gli effetti dell’isolamento su una struttura possono essere ben interpretati facendo riferimento a forme tipiche degli spettri di risposta elastici in accelerazioni e in spostamenti, per diversi rapporti di smorzamento (Figura C7.10.1).`),
             p(236, `Considerando una porzione di struttura che, a base fissa, avrebbe un periodo fondamentale di oscillazione T_bf in una data direzione, l’isolamento alla base di questa porzione deve produrre uno dei seguenti effetti:`),
-            li(236, `a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_is risulta ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_is>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;`),
+            li(236, `a) l’incremento del periodo grazie all’adozione di dispositivi con comportamento d’insieme approssimativamente lineare. Si ottiene un buon “disaccoppiamento” quando il periodo della struttura isolata T_IS risulta T_IS ≥ 3·T_bf. Maggiore è l’incremento di periodo (generalmente T_IS>2,0 s) maggiore è la riduzione delle accelerazioni sulla sovrastruttura (spettro in accelerazioni) e l’incremento degli spostamenti (spettro in spostamenti), che si concentrano essenzialmente nel sistema di isolamento;`),
             li(236, `b) la limitazione della forza trasmessa alla sottostruttura, grazie all’adozione di dispositivi con comportamento d’insieme non lineare, caratterizzato da basso incrudimento ovvero incrementi minimi o nulli della forza per grandi spostamenti. In questo modo si limitano le forze d’inerzia, quindi l’accelerazione, sulla sovrastruttura, ancora a scapito di un sensibile incremento degli spostamenti nel sistema di isolamento.`),
             p(236, `Oltre che nei due modi detti, l’isolamento si può conseguire utilizzando dispositivi che garantiscano al sistema un comportamento d’insieme intermedio tra i due.`),
             p(236, `La dissipazione di energia, dovuta agli isolatori e/o ad eventuali dispositivi ausiliari determina sempre una riduzione degli spostamenti nel sistema di isolamento. Essa è particolarmente utile in siti caratterizzati da elevata sismicità e/o nel caso di sottosuoli con caratteristiche meccaniche scadenti (tipo C, D, E), cioè nei casi in cui gli spettri di risposta possono presentare spostamenti elevati ed accelerazioni significative anche su periodi di oscillazione elevati.`),
@@ -205,7 +206,7 @@ const units: Unit[] = [
             p(239, `Per i dispositivi dipendenti dagli spostamenti i parametri fondamentali sono la rigidezza k_d e la resistenza F_dy, la duttilità μ_c e il rapporto tra la rigidezza del sistema dissipativo k_c e quella della struttura k_s, mentre per i dispositivi dipendenti dalla velocità sono la costante di smorzamento e l’eventuale rigidezza.`),
             figure(239, "C7.10.2b", "C7.10.2", { x: 180, y: 280, width: 270, height: 180 }),
             p(239, `La rigidezza del sistema dissipativo deriva dalla combinazione delle rigidezze dei singoli componenti, ossia del dispositivo dissipativo e della struttura, generalmente metallica, di supporto.`),
-            p(239, `Indicando con: k_c la rigidezza del sistema dissipativo, k_a la rigidezza del telaio, k_d la rigidezza del dispositivo e k_s la rigidezza del supporto metallico e, con riferimento alla Figura C7.10.2, si ha:`),
+            p(239, `Indicando con: k_c la rigidezza del sistema dissipativo, k_s la rigidezza del telaio, k_d la rigidezza del dispositivo e k_a la rigidezza del supporto metallico e, con riferimento alla Figura C7.10.2, si ha:`),
             formula(239, "C7.10.1"),
             formula(239, "C7.10.2"),
             p(239, `In generale il sistema di supporto deve possedere un’elevata rigidezza, rigidezza assiale se si tratta di controventi, necessaria per concentrare le deformazioni indotte dal sisma nei dispositivi e per garantire una significativa dissipazione d’energia per piccoli spostamenti.`),
@@ -392,14 +393,14 @@ const units: Unit[] = [
 ];
 
 const formulas = [
-    ["C7.10.1", "C7.10.4.1", 239, "k_c=\\frac{1}{\\frac{1}{k_d}+\\frac{1}{k_a}}"],
-    ["C7.10.2", "C7.10.4.1", 239, "k_{TOT}=k_s+k_c"],
+    ["C7.10.1", "C7.10.4.1", 239, "k_C=\\frac{1}{\\frac{1}{k_d}+\\frac{1}{k_a}}"],
+    ["C7.10.2", "C7.10.4.1", 239, "k_{\\mathrm{TOT}}=k_s+k_c"],
     ["C7.10.3", "C7.10.5.3.1", 242, "T_{is}=2\\pi\\sqrt{M/K_{esi}}"],
-    ["C7.10.4", "C7.10.5.3.1", 242, "d_{dc}=\\frac{M\\,\\cdot\\,S_e(T_{is},\\xi_{esi})}{K_{esi,min}}"],
+    ["C7.10.4", "C7.10.5.3.1", 242, "d_{dc}=\\frac{M\\cdot S_e(T_{is},\\xi_{esi})}{K_{esi,min}}"],
     ["C7.10.5", "C7.10.5.3.2", 242, "C=\\alpha M+\\beta K"],
-    ["C7.10.6", "C7.10.5.3.2", 242, "\\alpha=4\\pi\\frac{\\xi_2T_2-\\xi_1T_1}{T_2^2-T_1^2}"],
-    ["C7.10.7", "C7.10.5.3.2", 242, "\\beta=\\left[\\frac{T_1T_2}{\\pi}\\right]\\left[\\frac{\\xi_1T_2-\\xi_2T_1}{T_2^2-T_1^2}\\right]"],
-    ["C7.10.8", "C7.10.5.3.2", 243, "\\xi_i=0.5\\left[\\frac{\\alpha T_i}{2\\pi}+\\frac{2\\pi\\beta}{T_i}\\right]"],
+    ["C7.10.6", "C7.10.5.3.2", 242, "\\alpha=4\\pi(\\xi_2T_2-\\xi_1T_1)/(T_2^2-T_1^2)"],
+    ["C7.10.7", "C7.10.5.3.2", 242, "\\beta=[(T_1T_2)/\\pi][(\\xi_1T_2-\\xi_2T_1)/(T_2^2-T_1^2)]"],
+    ["C7.10.8", "C7.10.5.3.2", 243, "\\xi_i=0.5[(\\alpha T_i)/(2\\pi)+(2\\pi\\beta)/(T_i)]"],
 ] as const;
 
 const figures = [
@@ -410,12 +411,19 @@ const figures = [
 
 const outputDirectory = join(root, "corpus", "units", "circ2019");
 await mkdir(outputDirectory, { recursive: true });
+const pages235To236Only = process.argv.includes("--pages-235-236");
+const pages237To244Only = process.argv.includes("--pages-237-244");
+const unitsToWrite = pages235To236Only
+    ? units.filter(({ number }) => number === "C7.10" || number === "C7.10.1")
+    : pages237To244Only
+      ? units.filter(({ number }) => number !== "C7.10")
+    : units;
 const knownNtcNumbers = new Set(
     (await readdir(join(root, "corpus", "units", "ntc2018")))
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -5)),
 );
-for (const unit of units) {
+for (const unit of unitsToWrite) {
     const id = unitId(unit.number);
     const lower = unit.number.toLowerCase();
     const numberParts = unit.number.slice(1).split(".").map(Number);
@@ -426,6 +434,7 @@ for (const unit of units) {
         .slice(1)
         .map((_, index) => unitId(lower.split(".").slice(0, index + 1).join(".")));
     const hasNtcTarget = knownNtcNumbers.has(unit.number.slice(1));
+    const includeRelations = hasNtcTarget && !pages235To236Only && !pages237To244Only;
     const specs = [{ kind: "heading" as const, page: unit.page, text: `${unit.number} ${unit.title}` }, ...unit.blocks];
     const blocks = specs.map((block, index) => {
         const blockId = index === 0 ? "block-heading" : `block-editorial-${String(index).padStart(3, "0")}`;
@@ -452,7 +461,7 @@ for (const unit of units) {
             evidence: evidence(block.page, block.text),
         };
     });
-    const relation = hasNtcTarget
+    const relation = includeRelations
         ? [{
               relationId: `${id}#relation-001`,
               type: "clarifies",
@@ -514,7 +523,7 @@ for (const unit of units) {
                           note: "La fonte ufficiale usa il numero Figura C7.10.2 per due figure graficamente distinte; gli asset sono mantenuti separati senza correggere la numerazione della fonte.",
                       }]
                     : []),
-                ...(hasNtcTarget
+                ...(includeRelations
                     ? [{
                           issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`,
                           type: "relation-review",
@@ -562,5 +571,7 @@ const manifest = {
         sha256: "0".repeat(64),
     })),
 };
-await writeFile(join(root, "corpus", "assets", "circ2019", "7.10.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-console.log(`circ710-step1: generated ${units.length} units, ${formulas.length} formulas and ${figures.length} figures`);
+if (!pages235To236Only) {
+    await writeFile(join(root, "corpus", "assets", "circ2019", "7.10.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+}
+console.log(`circ710-step1: generated ${unitsToWrite.length}${pages235To236Only ? " units for PDF pages 235-236" : pages237To244Only ? ` units for PDF pages 237-244, ${formulas.length} formulas and ${figures.length} figures` : ` units, ${formulas.length} formulas and ${figures.length} figures`}`);

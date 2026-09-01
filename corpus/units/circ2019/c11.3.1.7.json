@@ -199,7 +199,31 @@
       "text": {
         "raw": "- La necessaria attenzione deve essere posta anche alle condizioni ambientali e di temperatura (adeguati accorgimenti nelle\nlavorazioni al di sotto di 5°C, limitazioni alla lavorazione a – 5 °C).",
         "normalized": "La necessaria attenzione deve essere posta anche alle condizioni ambientali e di temperatura (adeguati accorgimenti nelle lavorazioni al di sotto di 5°C, limitazioni alla lavorazione a – 5 °C).",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-formula-audit-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La necessaria attenzione deve essere posta anche alle condizioni ambientali e di temperatura (adeguati accorgimenti nelle lavorazioni al di sotto di "
+          },
+          {
+            "kind": "math",
+            "value": "5°C",
+            "latex": "5\\,{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": ", limitazioni alla lavorazione a "
+          },
+          {
+            "kind": "math",
+            "value": "– 5 °C",
+            "latex": "-5\\,{}^\\circ\\mathrm{C}"
+          },
+          {
+            "kind": "text",
+            "value": ")."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -221,6 +245,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-formula-audit-0.1.0",
+            "note": "Notazione matematica inline ricostruita mediante confronto con il render ufficiale ad alta risoluzione."
           }
         ],
         "rawSha256": "10d03604ec77418d6150e89bc56eb874c1a7b08f2f62a6e79bab4def61c6fbc1",
