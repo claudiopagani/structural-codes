@@ -79,13 +79,13 @@ test("l’indice segue lo scroll e la lettura mantiene l’intero documento in c
   assert.match(styles, /\.scv-index-grid \{[^}]*grid-template-columns: minmax\(0, 1fr\);[^}]*grid-template-rows: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(styles, /\.scv-index-list \{[^}]*overflow: auto/);
   assert.match(styles, /\.scv-chapter-heading/);
-  assert.match(styles, /\.scv-unit-depth-1 h2 \{[^}]*font-size: 18px/);
-  assert.match(styles, /\.scv-unit-depth-2 h2 \{[^}]*padding-left: 0;[^}]*border-left: 0;[^}]*font-size: 14px/);
+  assert.match(styles, /\.scv-unit-depth-1 h2 \{[^}]*font-size: var\(--scv-font-size-18\)/);
+  assert.match(styles, /\.scv-unit-depth-2 h2 \{[^}]*padding-left: 0;[^}]*border-left: 0;[^}]*font-size: var\(--scv-font-size-14\)/);
   assert.match(styles, /\.scv-block p \{[^}]*text-align: justify/);
-  assert.match(styles, /\.scv-root \.table-asset table \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 13px/);
+  assert.match(styles, /\.scv-root \.table-asset table \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-base-font-size\)/);
   assert.match(styles, /\.scv-root \.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
-  assert.match(styles, /\.scv-root \.table-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 12px/);
-  assert.match(styles, /\.scv-root \.table-notes \{[^}]*font-family: "Tinos", serif;[^}]*font-size: 12px/);
+  assert.match(styles, /\.scv-root \.table-asset figcaption \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-font-size-12\)/);
+  assert.match(styles, /\.scv-root \.table-notes \{[^}]*font-family: "Tinos", serif;[^}]*font-size: var\(--scv-font-size-12\)/);
   assert.doesNotMatch(source, /Dettagli/);
   assert.doesNotMatch(source, /maxContinuousChapter/);
 });
@@ -135,14 +135,29 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(styles, /font-family:\s*"Tinos"/);
   assert.match(styles, /font-variant-numeric:\s*lining-nums/);
   assert.match(styles, /\.scv-root \.formula-number/);
-  assert.match(styles, /\.scv-root \.formula-scroll \{[^}]*font-size:\s*\.8rem/);
+  assert.match(styles, /\.scv-root \.formula-scroll \{[^}]*font-size:\s*calc\(var\(--scv-base-font-size\)/);
   assert.match(styles, /\.scv-root \.formula-scroll \.katex-display \{[^}]*margin:\s*\.5em 0/);
-  assert.match(legacyStyles, /\.formula-scroll \{[^}]*font-size:\s*0\.8rem/);
+  assert.match(legacyStyles, /\.formula-scroll \{[^}]*font-size:\s*calc\(var\(--legacy-base-font-size\)/);
   assert.match(legacyStyles, /\.formula-scroll \.katex-display \{[^}]*margin:\s*0\.5em 0/);
   assert.match(legacyStyles, /\.text-block p \{[^}]*text-align: justify/);
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
+});
+
+test("la scala tipografica del contenuto deriva dalla dimensione base", async () => {
+  const [sharedStyles, legacyStyles] = await Promise.all([
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(sharedStyles, /\.scv-root \{[^}]*--scv-base-font-size:\s*15px/isu);
+  assert.match(sharedStyles, /--scv-font-size-12:\s*calc\(var\(--scv-base-font-size\)/);
+  assert.match(sharedStyles, /\.scv-block p \{[^}]*font-size:\s*var\(--scv-base-font-size\)/);
+  assert.match(sharedStyles, /\.scv-root \.formula-scroll \{[^}]*font-size:\s*calc\(var\(--scv-base-font-size\)/);
+  assert.match(sharedStyles, /\.scv-root \.table-asset table \{[^}]*font-size:\s*var\(--scv-base-font-size\)/);
+  assert.match(legacyStyles, /\.normative-copy \{[^}]*--legacy-base-font-size:\s*20px/isu);
+  assert.match(legacyStyles, /\.text-block p \{[^}]*font-size:\s*var\(--legacy-base-font-size\)/);
+  assert.match(legacyStyles, /\.table-asset table \{[^}]*font-size:\s*var\(--legacy-font-size-12\)/);
 });
 
 test("riconosce le didascalie costituite dal solo numero ufficiale", () => {

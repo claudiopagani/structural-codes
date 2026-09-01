@@ -576,6 +576,13 @@ summary:focus-visible {
 }
 
 .normative-copy {
+  /* This legacy renderer keeps its own base, but every content size derives from it. */
+  --legacy-base-font-size: 20px;
+  --legacy-font-size-10: calc(var(--legacy-base-font-size) * 0.5556);
+  --legacy-font-size-11: calc(var(--legacy-base-font-size) * 0.6111);
+  --legacy-font-size-12: calc(var(--legacy-base-font-size) * 0.6667);
+  --legacy-font-size-13: calc(var(--legacy-base-font-size) * 0.7222);
+  --legacy-font-size-16: calc(var(--legacy-base-font-size) * 0.8889);
   padding: 10px 0 100px;
 }
 
@@ -613,7 +620,7 @@ summary:focus-visible {
   margin: 10px 0 0;
   color: #263129;
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: var(--legacy-base-font-size);
   line-height: 1.72;
   text-align: justify;
   white-space: pre-wrap;
@@ -633,7 +640,7 @@ summary:focus-visible {
 
 .heading-block p {
   color: var(--green-deep);
-  font-size: 20px;
+  font-size: calc(var(--legacy-base-font-size) * 1.1111);
   font-weight: 650;
   line-height: 1.35;
 }
@@ -733,7 +740,7 @@ summary:focus-visible {
   min-width: 0;
   padding: 2px 0 4px;
   color: #18241c;
-  font-size: 0.8rem;
+  font-size: calc(var(--legacy-base-font-size) * 0.7111);
 }
 
 .formula-scroll .katex-display {
@@ -745,7 +752,7 @@ summary:focus-visible {
   margin-left: auto;
   color: #39443d;
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: var(--legacy-font-size-12);
   white-space: nowrap;
 }
 
@@ -758,7 +765,7 @@ summary:focus-visible {
   gap: 16px;
   color: #5d655f;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: var(--legacy-font-size-11);
 }
 
 .table-asset figcaption {
@@ -773,7 +780,7 @@ summary:focus-visible {
   border-collapse: collapse;
   color: #263129;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: var(--legacy-font-size-12);
   line-height: 1.42;
 }
 
@@ -815,7 +822,7 @@ summary:focus-visible {
   margin: 10px 0 0;
   padding-left: 18px;
   color: #626a64;
-  font-size: 10px;
+  font-size: var(--legacy-font-size-10);
   line-height: 1.5;
 }
 
@@ -838,7 +845,7 @@ summary:focus-visible {
   padding: 14px;
   color: #7d2e22 !important;
   font-family: var(--sans) !important;
-  font-size: 13px !important;
+  font-size: var(--legacy-font-size-13) !important;
   background: #fff0ec;
   border: 1px solid #e1b3a9;
 }
@@ -846,7 +853,7 @@ summary:focus-visible {
 .transformations {
   margin-top: 18px;
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: var(--legacy-font-size-11);
 }
 
 .transformations summary {
@@ -1470,7 +1477,7 @@ summary:focus-visible {
   }
 
   .text-block p {
-    font-size: 16px;
+    font-size: var(--legacy-font-size-16);
   }
 
   .formula-asset {
