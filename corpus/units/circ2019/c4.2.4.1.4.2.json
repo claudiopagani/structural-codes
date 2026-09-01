@@ -190,9 +190,9 @@
         "printedPage": "120",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 170,
+          "x": 173,
           "y": 175,
-          "width": 270,
+          "width": 222.25,
           "height": 141.75
         },
         "extraction": {
@@ -215,6 +215,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-caption-crop-0.1.0",
             "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-horizontal-center-0.1.0",
+            "note": "Margini bianchi asimmetrici ridotti; il crop è centrato sul contenuto verificato nel render ufficiale."
           }
         ],
         "rawSha256": "4e248b753787e77666cec93a7c0a38d5b3f62476b1b4344c63baf3b6f5b03587",

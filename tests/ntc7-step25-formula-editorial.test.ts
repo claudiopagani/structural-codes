@@ -164,9 +164,9 @@ test("NTC pagine 270–271 conserva figura e continuazione del modello struttura
     assert.equal(figure.caption, "Fig. 7.9.1 – Ponte obliquo");
     assert.deepEqual(figure.region, {
         coordinateSystem: "pdf-points-top-left",
-        x: 245,
+        x: 247,
         y: 630,
-        width: 190,
+        width: 102,
         height: 88.75,
     });
     const bytes = await readFile(join(root, "corpus/assets", figure.imagePath));
