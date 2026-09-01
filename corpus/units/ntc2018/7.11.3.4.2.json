@@ -377,7 +377,7 @@
           "x": 150,
           "y": 440,
           "width": 300,
-          "height": 290
+          "height": 267.0
         },
         "extraction": {
           "method": "manual-transcription",
@@ -389,6 +389,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc77-78-editorial-profile-0.1.0",
             "note": "Ripristinati numerazione, glifi, simboli e matematica verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "f1039b415c50390b75382db349931122e2c3496a443de9fd7d3749cf47757fe3",

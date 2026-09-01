@@ -2636,14 +2636,20 @@
           "x": 190,
           "y": 435,
           "width": 220,
-          "height": 150
+          "height": 131.712
         },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "40cc9faf1f5f30ed20ba6ee2ab9bdad9ca0e988cdab53d5f75afe5c9c863172a",
         "normalizedSha256": "40cc9faf1f5f30ed20ba6ee2ab9bdad9ca0e988cdab53d5f75afe5c9c863172a"
       }
@@ -2688,14 +2694,20 @@
           "x": 74,
           "y": 100,
           "width": 450,
-          "height": 240
+          "height": 220.08
         },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "e2cd78538d76a61d018680f7138103406f4a1f33a5d9dddcae7548d63a36d811",
         "normalizedSha256": "e2cd78538d76a61d018680f7138103406f4a1f33a5d9dddcae7548d63a36d811"
       }

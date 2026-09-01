@@ -314,7 +314,7 @@
           "x": 75,
           "y": 320,
           "width": 400,
-          "height": 118
+          "height": 104.0
         },
         "extraction": {
           "method": "manual-transcription",
@@ -326,6 +326,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Ritaglio ottenuto dalla pagina ufficiale e controllato visivamente."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "5390c0764f0abc026e1ea026bfa9214f7c36162f811582058e0fb4d0e4bc0812",

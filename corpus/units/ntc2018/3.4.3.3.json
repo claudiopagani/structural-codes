@@ -133,7 +133,7 @@
           "x": 79,
           "y": 315,
           "width": 325,
-          "height": 115
+          "height": 102.667
         },
         "extraction": {
           "method": "manual-transcription",
@@ -145,6 +145,11 @@
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Ritaglio ad alta risoluzione ricavato dalla figura completa e dalla didascalia nella fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "a41cebc3c04e10001bcecd6fd9c717e7a5ea68f522dd8bf8489bc32fbc438120",

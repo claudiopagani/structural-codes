@@ -160,8 +160,8 @@ test("NTC 4.2.4.1.4 mantiene l’ordine PDF e i due capoversi omessi", async () 
 test("NTC pagine 110–111 usa i due crop ufficiali con hash verificabile", async () => {
     const { figures } = await stepAssets();
     const expected = new Map([
-        ["4.2.3", "ce801e5da49414dccea38fccb24c8b0e201713ba0e08a22f9f2441ae35133e50"],
-        ["4.2.4", "19818cd8d7daa70248d700d929acc85d74e63aca8bcb7c01ad95b9a468eb966e"],
+        ["4.2.3", "58ecada93772a7bf04cde0d097604b54b720ac1225cead05a47eed2d9b8929ff"],
+        ["4.2.4", "05605c50e1cbc4addd0e529e1ac610f922069579b342476c86afbe80e9d8d9b3"],
     ]);
     assert.deepEqual(figures.map((figure: { officialNumber: string }) => figure.officialNumber).sort(), [...expected.keys()].sort());
     for (const figure of figures as Array<{ officialNumber: string; imagePath: string; sha256: string }>) {

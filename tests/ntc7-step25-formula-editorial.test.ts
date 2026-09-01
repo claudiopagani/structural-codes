@@ -167,7 +167,7 @@ test("NTC pagine 270–271 conserva figura e continuazione del modello struttura
         x: 245,
         y: 630,
         width: 190,
-        height: 110,
+        height: 88.75,
     });
     const bytes = await readFile(join(root, "corpus/assets", figure.imagePath));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), figure.sha256);

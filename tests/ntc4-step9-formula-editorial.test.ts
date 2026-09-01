@@ -119,10 +119,10 @@ test("NTC pagine 112–121 conserva struttura e matematica delle sette tabelle",
 test("NTC pagine 114–121 usa i quattro crop ufficiali con hash verificabile", async () => {
     const { figures } = await stepAssets();
     const expected = new Map([
-        ["4.2.5", "ad181b9eae35719a950ed534c6a651efa1beb0c9808c3fcc55ffc9f1ec6409d2"],
-        ["4.2.6", "a5fa5de86131b29078e9e35fc50aa202de1a9f73af95f9949d7fe551ce33a252"],
-        ["4.2.7", "caa21ae3f40e8cc78e6c541c8c2382c7322fcbc48f5f3570759251ed9fae84e9"],
-        ["4.3.1", "ee758d186e9995630db6c7dc4733a9ac504200b62f1d143ae355156d658ed8b5"],
+        ["4.2.5", "ba5ae85d0891692f10f89cfc42dcf87bbadd9c4f4f7905be874a0b143a26652b"],
+        ["4.2.6", "98945fd5029ab66de03768940c6d3c4ae808dea757cdcd0f8bcc5b9ce9d4b55f"],
+        ["4.2.7", "b7973db1ca9eb6e796638fe9c2b46272db9e82b54db5bd44b1d2318c1040b968"],
+        ["4.3.1", "faddd29969857ee12c13e9fa1135c5054c07f720a5da828ba65fcc1fc6357435"],
     ]);
     assert.deepEqual(figures.map((figure: { officialNumber: string }) => figure.officialNumber).sort(), [...expected.keys()].sort());
     for (const figure of figures as Array<{ officialNumber: string; imagePath: string; sha256: string }>) {

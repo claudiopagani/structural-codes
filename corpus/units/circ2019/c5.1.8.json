@@ -371,7 +371,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ5-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "ba07c251b8f8a3718cc1a3adb587c819e464f794b373740f68448852396ea321",
         "normalizedSha256": "ba07c251b8f8a3718cc1a3adb587c819e464f794b373740f68448852396ea321"
       }

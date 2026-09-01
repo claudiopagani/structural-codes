@@ -232,7 +232,7 @@
           "x": 100,
           "y": 580,
           "width": 400,
-          "height": 150
+          "height": 99.0
         },
         "extraction": {
           "method": "manual-transcription",
@@ -249,6 +249,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "dfb7a999bb0378ed1b7d163f3c61f744c1618c1891dae276fcf7aa1b2ca8cfc0",

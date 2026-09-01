@@ -566,14 +566,20 @@
           "x": 70,
           "y": 75,
           "width": 470,
-          "height": 335
+          "height": 325.015
         },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-manual-asset-transcription",
           "toolVersion": "ntc75-editorial-profile-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "204543ee97dc97fb298815f20fee213c270a74420c2b4d41ea2fa6fd635ebac6",
         "normalizedSha256": "204543ee97dc97fb298815f20fee213c270a74420c2b4d41ea2fa6fd635ebac6"
       }

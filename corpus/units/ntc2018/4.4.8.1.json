@@ -238,7 +238,13 @@
           "tool": "codex-source-transcription",
           "toolVersion": "ntc44-editorial-profile-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "738445a430ec7701e51abc7d77bf34ba6f64d1e9c58be0bb13f234a571f65708",
         "normalizedSha256": "738445a430ec7701e51abc7d77bf34ba6f64d1e9c58be0bb13f234a571f65708"
       }

@@ -99,8 +99,8 @@ test("NTC pagine 359–368 conserva i due crop ufficiali e colloca 26 asset una 
         (figure: { pdfPage: number }) => figure.pdfPage >= 359 && figure.pdfPage <= 368,
     );
     assert.deepEqual(figures.map((figure: { officialNumber: string; sha256: string }) => [figure.officialNumber, figure.sha256]), [
-        ["11.9.1", "744ad45985ee23d83a8b4c4648da3c11b7836a58211634b49c5ec7f2f2c606e1"],
-        ["11.9.2", "b95cf748fcc92fb1e09c2120ffb6cc20fd11cc92c3a0900029d6992a17e0bcef"],
+        ["11.9.1", "f6e4e3af58a3b4da28e046de2a856d1d5fac4c7aa3a4665058b8159953df8dbd"],
+        ["11.9.2", "4ba8bbe4351d32cb9b3594e5d4d05a962241d883d19bacdd3e43b007077f9816"],
     ]);
     const units = await Promise.all(numbers.map((number) => json(`corpus/units/ntc2018/${number}.json`)));
     const references = units.flatMap((unit) => unit.blocks.filter(

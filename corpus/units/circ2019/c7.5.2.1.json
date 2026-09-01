@@ -186,14 +186,20 @@
           "x": 65,
           "y": 225,
           "width": 460,
-          "height": 115
+          "height": 78.466
         },
         "extraction": {
           "method": "manual-transcription",
           "tool": "poppler-pdf-crop",
           "toolVersion": "circ75-step1-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          }
+        ],
         "rawSha256": "8358c21fc1c18b5bd06da7b1155055b47e23f6e1c3641df5f9ff9d458bdd7348",
         "normalizedSha256": "8358c21fc1c18b5bd06da7b1155055b47e23f6e1c3641df5f9ff9d458bdd7348"
       }
