@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import katex from "katex";
 import type { AssetBundle, CorpusBlock, TableCell, CorpusUnit } from "./corpusData";
+import { visibleTableCaption, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
 const editorialTableNotePatterns = [
   /^\s*\[(?:TABELLA|ASSET)_[^\]]+\]/iu,
@@ -26,20 +27,6 @@ function visibleTableNotes(notes: string[]) {
 
 function tableColumnCount(headers: TableCell[][], rows: TableCell[][]) {
   return Math.max(0, ...[...headers, ...rows].map((row) => row.reduce((count, cell) => count + (cell.colSpan ?? 1), 0)));
-}
-
-function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
-}
-
-export function visibleTableCaption(officialNumber: string | null, caption: string | null) {
-  if (!caption || !officialNumber) return caption;
-  return caption.replace(new RegExp(`^\\s*Tab\\.\\s*${escapeRegExp(officialNumber)}(?:\\s*\\))?(?:\\s*[–—-])?\\s*`, "iu"), "").trim();
-}
-
-export function visibleTableNumberSuffix(officialNumber: string | null, caption: string | null) {
-  if (!caption || !officialNumber) return "";
-  return new RegExp(`^\\s*Tab\\.\\s*${escapeRegExp(officialNumber)}\\s*\\)`, "iu").test(caption) ? ")" : "";
 }
 
 function latexMarkup(latex: string, displayMode: boolean) {
