@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -76,4 +77,23 @@ test("NTC Tabelle 3.3.I–III e 3.4.I–II conservano griglia e matematica uffic
     assert.deepEqual(unit337.assets.tableIds, [tableId("3.3.II"), tableId("3.3.III")]);
     const unit3431 = await json("corpus/units/ntc2018/3.4.3.1.json");
     assert.deepEqual(unit3431.assets.tableIds, [tableId("3.4.II")]);
+});
+
+test("NTC Figure 3.3.1–3.5.2 sono crop ufficiali univoci con hash verificato", async () => {
+    const manifest = await json("corpus/assets/ntc2018/core-figure-placeholders.json");
+    const expected = ["3.3.1", "3.3.2", "3.3.3", "3.4.1", "3.4.2", "3.4.3", "3.5.1", "3.5.2"];
+    const figures = manifest.figures.filter((figure: { officialNumber: string }) => expected.includes(figure.officialNumber));
+    assert.deepEqual(figures.map((figure: { officialNumber: string }) => figure.officialNumber), expected);
+    for (const figure of figures) {
+        assert.doesNotMatch(figure.imagePath, /placeholder/);
+        const image = await readFile(join(root, "corpus/assets", figure.imagePath));
+        assert.equal(createHash("sha256").update(image).digest("hex"), figure.sha256, figure.officialNumber);
+        assert.equal(figure.region.height > 50, true, figure.officialNumber);
+    }
+    const units = await Promise.all(["3.3.1", "3.3.7", "3.4.2", "3.4.3.2", "3.4.3.3", "3.5.2", "3.5.4"]
+        .map((number) => json(`corpus/units/ntc2018/${number}.json`)));
+    const refs = units.flatMap((unit) => unit.blocks.filter((block: { kind: string }) => block.kind === "figure-ref"));
+    assert.equal(refs.length, expected.length);
+    assert.equal(new Set(refs.map((block: { assetId: string }) => block.assetId)).size, expected.length);
+    for (const block of refs) assert.equal(block.evidence.extraction.tool, "poppler-pdf-crop");
 });

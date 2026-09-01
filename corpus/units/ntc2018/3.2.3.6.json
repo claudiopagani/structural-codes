@@ -125,12 +125,21 @@
       "origin": "official",
       "text": {
         "raw": "La durata delle storie temporali artificiali del moto del terreno deve essere stabilita sulla base della magnitudo e degli altri para-\nmetri fisici che determinano la scelta del valore di a g e di SS \n. In assenza di studi specifici, la parte pseudo-stazionaria\ndell’accelerogramma associato alla storia deve avere durata di 10 s e deve essere preceduta e seguita da tratti di ampiezza cre-\nscente da zero e decrescente a zero, in modo che la durata complessiva dell’accelerogramma sia non inferiore a 25 s.",
-        "normalized": "La durata delle storie temporali artificiali del moto del terreno deve essere stabilita sulla base della magnitudo e degli altri parametri fisici che determinano la scelta del valore di a g e di SS . In assenza di studi specifici, la parte pseudo-stazionaria dell’accelerogramma associato alla storia deve avere durata di 10 s e deve essere preceduta e seguita da tratti di ampiezza crescente da zero e decrescente a zero, in modo che la durata complessiva dell’accelerogramma sia non inferiore a 25 s.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La durata delle storie temporali artificiali del moto del terreno deve essere stabilita sulla base della magnitudo e degli altri parametri fisici che determinano la scelta del valore di ag e di SS. In assenza di studi specifici, la parte pseudo-stazionaria dell’accelerogramma associato alla storia deve avere durata di 10 s e deve essere preceduta e seguita da tratti di ampiezza crescente da zero e decrescente a zero, in modo che la durata complessiva dell’accelerogramma sia non inferiore a 25 s.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "La durata delle storie temporali artificiali del moto del terreno deve essere stabilita sulla base della magnitudo e degli altri parametri fisici che determinano la scelta del valore di a g e di "
+            "value": "La durata delle storie temporali artificiali del moto del terreno deve essere stabilita sulla base della magnitudo e degli altri parametri fisici che determinano la scelta del valore di "
+          },
+          {
+            "kind": "math",
+            "value": "ag",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": " e di "
           },
           {
             "kind": "math",
@@ -139,7 +148,25 @@
           },
           {
             "kind": "text",
-            "value": " . In assenza di studi specifici, la parte pseudo-stazionaria dell’accelerogramma associato alla storia deve avere durata di 10 s e deve essere preceduta e seguita da tratti di ampiezza crescente da zero e decrescente a zero, in modo che la durata complessiva dell’accelerogramma sia non inferiore a 25 s."
+            "value": ". In assenza di studi specifici, la parte pseudo-stazionaria dell’accelerogramma associato alla storia deve avere durata di "
+          },
+          {
+            "kind": "math",
+            "value": "10 s",
+            "latex": "10\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": " e deve essere preceduta e seguita da tratti di ampiezza crescente da zero e decrescente a zero, in modo che la durata complessiva dell’accelerogramma sia non inferiore a "
+          },
+          {
+            "kind": "math",
+            "value": "25 s",
+            "latex": "25\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -176,11 +203,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -189,10 +211,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinati dal render ufficiale ξ, pedici, intervalli, periodi, percentuali e unità di misura come segmenti matematici inline."
           }
         ],
         "rawSha256": "db5523aa8ce9f70e4815ff6e9b4f8f9ff48380f25669e0d576f3f280aade826b",
-        "normalizedSha256": "5dfc060b3dabc21aa864635fb8addfb8d3b266100f422e3244a17befd727fa26"
+        "normalizedSha256": "a97ae7a5f861bc259fd9e530bb859e56e95302b659c36226f02b3d3f1a380a0d"
       }
     },
     {
@@ -201,8 +228,95 @@
       "origin": "official",
       "text": {
         "raw": "Gli accelerogrammi artificiali devono avere uno spettro di risposta elastico coerente con lo spettro di risposta adottato nella pro-\ngettazione. La coerenza con lo spettro di risposta elastico è da verificare in base alla media delle ordinate spettrali ottenute con i\ndiversi accelerogrammi, per un coefficiente di smorzamento viscoso equivalente Β del 5%. L'ordinata spettrale media non deve\npresentare uno scarto in difetto superiore al 10%, rispetto alla corrispondente componente dello spettro elastico, in alcun punto\ndel maggiore tra gli intervalli 0,15s ÷ 2,0s e 0,15s ÷ 2T, in cui T è il periodo proprio di vibrazione della struttura in campo elastico,\nper le verifiche agli stati limite ultimi, e 0,15 s ÷ 1,5 T, per le verifiche agli stati limite di esercizio. Nel caso di costruzioni con iso-\nlamento sismico, il limite superiore dell’intervallo di coerenza è assunto pari a 1,2 Tis, essendo Tis il periodo equivalente della\nstruttura isolata, valutato per gli spostamenti del sistema d’isolamento prodotti dallo stato limite in esame.",
-        "normalized": "Gli accelerogrammi artificiali devono avere uno spettro di risposta elastico coerente con lo spettro di risposta adottato nella progettazione. La coerenza con lo spettro di risposta elastico è da verificare in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi, per un coefficiente di smorzamento viscoso equivalente Β del 5%. L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al 10%, rispetto alla corrispondente componente dello spettro elastico, in alcun punto del maggiore tra gli intervalli 0,15s ÷ 2,0s e 0,15s ÷ 2T, in cui T è il periodo proprio di vibrazione della struttura in campo elastico, per le verifiche agli stati limite ultimi, e 0,15 s ÷ 1,5 T, per le verifiche agli stati limite di esercizio. Nel caso di costruzioni con isolamento sismico, il limite superiore dell’intervallo di coerenza è assunto pari a 1,2 Tis, essendo Tis il periodo equivalente della struttura isolata, valutato per gli spostamenti del sistema d’isolamento prodotti dallo stato limite in esame.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Gli accelerogrammi artificiali devono avere uno spettro di risposta elastico coerente con lo spettro di risposta adottato nella progettazione. La coerenza con lo spettro di risposta elastico è da verificare in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi, per un coefficiente di smorzamento viscoso equivalente ξ del 5%. L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al 10%, rispetto alla corrispondente componente dello spettro elastico, in alcun punto del maggiore tra gli intervalli 0,15 s ÷ 2,0 s e 0,15 s ÷ 2T, in cui T è il periodo proprio di vibrazione della struttura in campo elastico, per le verifiche agli stati limite ultimi, e 0,15 s ÷ 1,5 T, per le verifiche agli stati limite di esercizio. Nel caso di costruzioni con isolamento sismico, il limite superiore dell’intervallo di coerenza è assunto pari a 1,2 Tis, essendo Tis il periodo equivalente della struttura isolata, valutato per gli spostamenti del sistema d’isolamento prodotti dallo stato limite in esame.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Gli accelerogrammi artificiali devono avere uno spettro di risposta elastico coerente con lo spettro di risposta adottato nella progettazione. La coerenza con lo spettro di risposta elastico è da verificare in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi, per un coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " del "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", rispetto alla corrispondente componente dello spettro elastico, in alcun punto del maggiore tra gli intervalli "
+          },
+          {
+            "kind": "math",
+            "value": "0,15 s ÷ 2,0 s",
+            "latex": "0{,}15\\,\\mathrm{s}\\div2{,}0\\,\\mathrm{s}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "0,15 s ÷ 2T",
+            "latex": "0{,}15\\,\\mathrm{s}\\div2T"
+          },
+          {
+            "kind": "text",
+            "value": ", in cui "
+          },
+          {
+            "kind": "math",
+            "value": "T",
+            "latex": "T"
+          },
+          {
+            "kind": "text",
+            "value": " è il periodo proprio di vibrazione della struttura in campo elastico, per le verifiche agli stati limite ultimi, e "
+          },
+          {
+            "kind": "math",
+            "value": "0,15 s ÷ 1,5 T",
+            "latex": "0{,}15\\,\\mathrm{s}\\div1{,}5T"
+          },
+          {
+            "kind": "text",
+            "value": ", per le verifiche agli stati limite di esercizio. Nel caso di costruzioni con isolamento sismico, il limite superiore dell’intervallo di coerenza è assunto pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,2 Tis",
+            "latex": "1{,}2T_{is}"
+          },
+          {
+            "kind": "text",
+            "value": ", essendo "
+          },
+          {
+            "kind": "math",
+            "value": "Tis",
+            "latex": "T_{is}"
+          },
+          {
+            "kind": "text",
+            "value": " il periodo equivalente della struttura isolata, valutato per gli spostamenti del sistema d’isolamento prodotti dallo stato limite in esame."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -237,11 +351,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -250,10 +359,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinati dal render ufficiale ξ, pedici, intervalli, periodi, percentuali e unità di misura come segmenti matematici inline."
           }
         ],
         "rawSha256": "20b6e1c743c605108fc64a350ab4564574b02038264b8756408d2cd2ff5316cb",
-        "normalizedSha256": "11a655ea71ffd2b9480f0dc4f6edc40dbbf075de90ee126e6d4d180bb6b4874e"
+        "normalizedSha256": "a044ec78d23e7d8b995cea2b747962c6345a653c0f51f939808eb0cfee7b9de4"
       }
     },
     {
@@ -293,7 +407,22 @@
       "text": {
         "raw": "L’uso di storie temporali del moto del terreno generate mediante simulazione del meccanismo di sorgente e della propagazione è\nammesso a condizione che siano adeguatamente giustificate le ipotesi relative alle caratteristiche sismogenetiche della sorgente e\ndel mezzo di propagazione e che, negli intervalli di periodo sopraindicati, l’ordinata spettrale media non presenti uno scarto in\ndifetto superiore al 20% rispetto alla corrispondente componente dello spettro elastico.",
         "normalized": "L’uso di storie temporali del moto del terreno generate mediante simulazione del meccanismo di sorgente e della propagazione è ammesso a condizione che siano adeguatamente giustificate le ipotesi relative alle caratteristiche sismogenetiche della sorgente e del mezzo di propagazione e che, negli intervalli di periodo sopraindicati, l’ordinata spettrale media non presenti uno scarto in difetto superiore al 20% rispetto alla corrispondente componente dello spettro elastico.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’uso di storie temporali del moto del terreno generate mediante simulazione del meccanismo di sorgente e della propagazione è ammesso a condizione che siano adeguatamente giustificate le ipotesi relative alle caratteristiche sismogenetiche della sorgente e del mezzo di propagazione e che, negli intervalli di periodo sopraindicati, l’ordinata spettrale media non presenti uno scarto in difetto superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "20%",
+            "latex": "20\\%"
+          },
+          {
+            "kind": "text",
+            "value": " rispetto alla corrispondente componente dello spettro elastico."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -328,11 +457,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -341,6 +465,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinati dal render ufficiale ξ, pedici, intervalli, periodi, percentuali e unità di misura come segmenti matematici inline."
           }
         ],
         "rawSha256": "cd0ec4af62e9bc75286e88b267bddab2f3042070d99617ab2fdaccac4b0d008f",
@@ -414,8 +543,50 @@
       "origin": "official",
       "text": {
         "raw": "Le storie temporali del moto del terreno registrate devono essere selezionate e scalate in modo tale che i relativi spettri di risposta\napprossimino gli spettri di risposta elastici nel campo dei periodi propri di vibrazione di interesse per il problema in esame. Nello\nspecifico la compatibilità con lo spettro di risposta elastico deve essere verificata in base alla media delle ordinate spettrali ottenute\ncon i diversi accelerogrammi associati alle storie per un coefficiente di smorzamento viscoso equivalente Β del 5%. L'ordinata spet-\ntrale media non deve presentare uno scarto in difetto superiore al 10% ed uno scarto in eccesso superiore al 30%, rispetto alla corri-\nspondente componente dello spettro elastico in alcun punto dell’intervallo dei periodi propri di vibrazione di interesse per l’opera\nin esame per i diversi stati limite.",
-        "normalized": "Le storie temporali del moto del terreno registrate devono essere selezionate e scalate in modo tale che i relativi spettri di risposta approssimino gli spettri di risposta elastici nel campo dei periodi propri di vibrazione di interesse per il problema in esame. Nello specifico la compatibilità con lo spettro di risposta elastico deve essere verificata in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi associati alle storie per un coefficiente di smorzamento viscoso equivalente Β del 5%. L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al 10% ed uno scarto in eccesso superiore al 30%, rispetto alla corrispondente componente dello spettro elastico in alcun punto dell’intervallo dei periodi propri di vibrazione di interesse per l’opera in esame per i diversi stati limite.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Le storie temporali del moto del terreno registrate devono essere selezionate e scalate in modo tale che i relativi spettri di risposta approssimino gli spettri di risposta elastici nel campo dei periodi propri di vibrazione di interesse per il problema in esame. Nello specifico la compatibilità con lo spettro di risposta elastico deve essere verificata in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi associati alle storie per un coefficiente di smorzamento viscoso equivalente ξ del 5%. L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al 10% ed uno scarto in eccesso superiore al 30%, rispetto alla corrispondente componente dello spettro elastico in alcun punto dell’intervallo dei periodi propri di vibrazione di interesse per l’opera in esame per i diversi stati limite.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Le storie temporali del moto del terreno registrate devono essere selezionate e scalate in modo tale che i relativi spettri di risposta approssimino gli spettri di risposta elastici nel campo dei periodi propri di vibrazione di interesse per il problema in esame. Nello specifico la compatibilità con lo spettro di risposta elastico deve essere verificata in base alla media delle ordinate spettrali ottenute con i diversi accelerogrammi associati alle storie per un coefficiente di smorzamento viscoso equivalente "
+          },
+          {
+            "kind": "math",
+            "value": "ξ",
+            "latex": "\\xi"
+          },
+          {
+            "kind": "text",
+            "value": " del "
+          },
+          {
+            "kind": "math",
+            "value": "5%",
+            "latex": "5\\%"
+          },
+          {
+            "kind": "text",
+            "value": ". L'ordinata spettrale media non deve presentare uno scarto in difetto superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "10%",
+            "latex": "10\\%"
+          },
+          {
+            "kind": "text",
+            "value": " ed uno scarto in eccesso superiore al "
+          },
+          {
+            "kind": "math",
+            "value": "30%",
+            "latex": "30\\%"
+          },
+          {
+            "kind": "text",
+            "value": ", rispetto alla corrispondente componente dello spettro elastico in alcun punto dell’intervallo dei periodi propri di vibrazione di interesse per l’opera in esame per i diversi stati limite."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -450,11 +621,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -463,10 +629,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinati dal render ufficiale ξ, pedici, intervalli, periodi, percentuali e unità di misura come segmenti matematici inline."
           }
         ],
         "rawSha256": "57e4f11f19f0cb719b7490b18b5d46dbd859869db574c6cccd8f9dcedb256cc9",
-        "normalizedSha256": "2dca1ceced41ef61ed07a600e08887a24dd316b323136f48900f97e45eceaa87"
+        "normalizedSha256": "b1d43befaf4496048720192078d7c49403a13b5bbfddafa4254e3c16968ade4a"
       }
     }
   ],

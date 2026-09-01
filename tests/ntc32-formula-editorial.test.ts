@@ -67,3 +67,18 @@ test("NTC Tabelle 3.2.I–VII conservano struttura e matematica ufficiali", asyn
     const unit32321 = await json("corpus/units/ntc2018/3.2.3.2.1.json");
     assert.deepEqual(unit32321.assets.tableIds, [tableId("3.2.IV"), tableId("3.2.V")]);
 });
+
+test("NTC 3.2.3.6 rende ξ, intervalli, periodi e percentuali come matematica inline", async () => {
+    const unit = await json("corpus/units/ntc2018/3.2.3.6.json");
+    const blocks = unit.blocks.filter((block: { text?: { inline?: unknown[] } }) => block.text?.inline);
+    for (const block of blocks) {
+        assert.equal(block.text.inline.map((segment: { value: string }) => segment.value).join(""), block.text.normalized);
+    }
+    const latex = blocks.flatMap((block: { text: { inline: Array<{ kind: string; latex?: string }> } }) => block.text.inline)
+        .filter((segment: { kind: string }) => segment.kind === "math")
+        .map((segment: { latex: string }) => segment.latex);
+    for (const expected of ["a_g", "S_S", "\\xi", "0{,}15\\,\\mathrm{s}\\div2{,}0\\,\\mathrm{s}", "T_{is}", "30\\%"] ) {
+        assert.equal(latex.includes(expected), true, expected);
+    }
+    assert.doesNotMatch(blocks.map((block: { text: { normalized: string } }) => block.text.normalized).join(" "), /Β|0,15s/);
+});
