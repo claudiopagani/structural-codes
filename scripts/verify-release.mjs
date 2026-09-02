@@ -8,11 +8,20 @@ const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 const packageManifest = JSON.parse(
   await readFile(join(repositoryRoot, "package.json"), "utf8"),
 );
-const temporaryRoot = await mkdtemp(join(tmpdir(), "structural-codes-release-"));
+const sourceCorpusManifest = JSON.parse(
+  await readFile(join(repositoryRoot, "corpus", "manifest.json"), "utf8"),
+);
 
 function fail(message) {
   throw new Error(`release package: ${message}`);
 }
+
+const sourceCorpusManifestStatus = sourceCorpusManifest.status;
+if (typeof sourceCorpusManifestStatus !== "string") {
+  fail("corpus/manifest.json sorgente privo di uno status stringa");
+}
+
+const temporaryRoot = await mkdtemp(join(tmpdir(), "structural-codes-release-"));
 
 function run(command, arguments_, options = {}) {
   const result = spawnSync(command, arguments_, {
@@ -174,7 +183,7 @@ import registry from "structural-codes/sources/registry" with { type: "json" };
 import integration from "structural-codes/integration/structural-checks-ts" with { type: "json" };
 
 assert.equal(CANONICAL_UNIT_SCHEMA_VERSION, "2.0.0-alpha.2");
-assert.equal(corpusManifest.status, "canonical-extracted-not-reviewed");
+assert.equal(corpusManifest.status, ${JSON.stringify(sourceCorpusManifestStatus)});
 assert.equal(documentIdFromUnitId(ntcUnit.id), "ntc2018");
 assert.equal(createUnitIndex([ntcUnit, circUnit]).size, 2);
 assert.equal(compareCanonicalUnits(ntcUnit, ntcUnit), 0);
