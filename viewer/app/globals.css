@@ -676,6 +676,41 @@ summary:focus-visible {
   content: none;
 }
 
+.list-item-block.list-item-without-marker {
+  padding-left: 0;
+}
+
+.list-item-block.list-item-without-marker p::before {
+  content: none;
+}
+
+.list-item-block.list-item-with-leading-symbol p {
+  padding-left: 40px;
+}
+
+.list-item-block.list-item-with-leading-symbol p > .inline-math:first-child {
+  display: inline-block;
+  width: 40px;
+  margin-left: -40px;
+  margin-right: 0;
+  vertical-align: top;
+}
+
+.text-block.block-with-leading-label p {
+  display: grid;
+  grid-template-columns: 4.5em minmax(0, 1fr);
+  column-gap: 0.35em;
+  padding-left: 0;
+}
+
+.text-block.block-with-leading-label .leading-label {
+  white-space: nowrap;
+}
+
+.text-block.block-with-leading-label .leading-label-description {
+  min-width: 0;
+}
+
 .list-item-block.list-item-with-trailing-siglum p {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 96px;
@@ -689,8 +724,15 @@ summary:focus-visible {
 
 .list-item-block.list-item-with-trailing-symbol p {
   display: grid;
-  grid-template-columns: 250px auto;
-  column-gap: 8px;
+  grid-template-columns: 14px 18.8em 54px;
+  column-gap: 4px;
+  justify-content: start;
+  padding-left: 0;
+}
+
+.list-item-block.list-item-with-trailing-symbol p::before {
+  position: static;
+  left: auto;
 }
 
 .list-item-block.list-item-with-trailing-symbol p .inline-math {
@@ -808,6 +850,22 @@ summary:focus-visible {
 
 .table-asset td {
   background: #fbfaf6;
+}
+
+.table-asset .table-cell-align-left {
+  text-align: left;
+}
+
+.table-asset .table-cell-align-center {
+  text-align: center;
+}
+
+.table-asset .table-cell-align-right {
+  text-align: right;
+}
+
+.table-asset .table-cell-no-wrap {
+  white-space: nowrap;
 }
 
 .table-asset tbody tr:nth-child(even) td {

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { BlockContent, hasOfficialListMarker, isRepeatedUnitTitle } from "../shared/CorpusContent";
+import { BlockContent, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, isRepeatedUnitTitle } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -478,7 +478,7 @@ function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUn
   return (
     <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
       {unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block, index) => (
-        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
           <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
           <div>
             <span className="block-kind">{displayLabel(block.kind)}</span>

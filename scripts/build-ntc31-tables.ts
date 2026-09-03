@@ -4,11 +4,12 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const manifestPath = `${repoRoot}/corpus/assets/ntc2018/core-tables.json`;
 
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; strong?: boolean };
+type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean };
 
-const text = (value: string, span: Pick<Cell, "colSpan" | "rowSpan" | "strong"> = {}): Cell => ({ text: value, ...span });
-const math = (value: string, latex: string, span: Pick<Cell, "colSpan" | "rowSpan" | "strong"> = {}): Cell => ({ text: value, latex, ...span });
-const value = (display: string, latex = display, span: Pick<Cell, "colSpan" | "rowSpan" | "strong"> = {}): Cell => math(display, latex, span);
+type CellOptions = Pick<Cell, "colSpan" | "rowSpan" | "strong" | "align" | "noWrap">;
+const text = (value: string, span: CellOptions = {}): Cell => ({ text: value, ...span });
+const math = (value: string, latex: string, span: CellOptions = {}): Cell => ({ text: value, latex, ...span });
+const value = (display: string, latex = display, span: CellOptions = {}): Cell => math(display, latex, span);
 
 const tables: Array<{
     id: string;
@@ -108,13 +109,13 @@ const tables: Array<{
             [text("Scale comuni, balconi e ballatoi"), text("Secondo categoria d’uso servita", { colSpan: 3 })],
 
             [text("E", { rowSpan: 3 }), text("Aree per immagazzinamento e uso commerciale ed uso industriale", { colSpan: 4, strong: true })],
-            [text("Cat. E1 Aree per accumulo di merci e relative aree d’accesso, quali biblioteche, archivi, magazzini, depositi, laboratori manifatturieri"), value("≥ 6,00", "\\ge6{,}00"), value("7,00"), value("1,00*")],
+            [text("Cat. E1 Aree per accumulo di merci e relative aree d’accesso, quali biblioteche, archivi, magazzini, depositi, laboratori manifatturieri"), value("≥ 6,00", "\\ge6{,}00"), value("7,00"), value("1,00*", "1{,}00^{*}")],
             [text("Cat. E2 Ambienti ad uso industriale"), text("da valutarsi caso per caso", { colSpan: 3 })],
 
             [text("F-G", { rowSpan: 4 }), text("Rimesse e aree per traffico di veicoli (esclusi i ponti)", { colSpan: 4, strong: true })],
-            [text("Cat. F Rimesse, aree per traffico, parcheggio e sosta di veicoli leggeri (peso a pieno carico fino a 30 kN)"), value("2,50"), value("2 x 10,00", "2\\times10{,}00"), value("1,00**")],
+            [text("Cat. F Rimesse, aree per traffico, parcheggio e sosta di veicoli leggeri (peso a pieno carico fino a 30 kN)"), value("2,50"), value("2 x 10,00", "2\\times10{,}00"), value("1,00**", "1{,}00^{**}")],
             [text("Cat. G Aree per traffico e parcheggio di veicoli medi (peso a pieno carico compreso fra 30 kN e 160 kN), quali rampe d’accesso, zone di carico e scarico merci.", { rowSpan: 2 }), text("da valutarsi caso per caso e comunque non minori di", { colSpan: 3 })],
-            [value("5,00"), value("2 x 50,00", "2\\times50{,}00"), value("1,00**")],
+            [value("5,00"), value("2 x 50,00", "2\\times50{,}00"), value("1,00**", "1{,}00^{**}")],
 
             [text("H-I-K", { rowSpan: 4 }), text("Coperture", { colSpan: 4, strong: true })],
             [text("Cat. H Coperture accessibili per sola manutenzione e riparazione"), value("0,50"), value("1,20"), value("1,00")],
@@ -129,10 +130,56 @@ const tables: Array<{
     },
 ];
 
-const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-for (const table of tables) {
-    manifest.tables = manifest.tables.filter((candidate: { id: string }) => candidate.id !== table.id);
-    manifest.tables.push(table);
+function applyPresentation(table: (typeof tables)[number]) {
+    const occupied: number[] = [];
+    for (const row of [...table.headers, ...table.rows]) {
+        for (let column = 0; column < occupied.length; column += 1) {
+            if ((occupied[column] ?? 0) > 0) occupied[column] = (occupied[column] ?? 0) - 1;
+        }
+
+        let column = 0;
+        for (const cell of row) {
+            while ((occupied[column] ?? 0) > 0) column += 1;
+            const span = cell.colSpan ?? 1;
+
+            if (table.officialNumber === "3.1.I" && column === 1) {
+                cell.align = "center";
+            }
+            if (table.officialNumber === "3.1.II") {
+                if (column === 0) {
+                    cell.align = "center";
+                    cell.noWrap = true;
+                } else if (column >= 2) {
+                    cell.align = "center";
+                }
+            }
+
+            const rowSpan = cell.rowSpan ?? 1;
+            for (let offset = 0; offset < span; offset += 1) {
+                occupied[column + offset] = Math.max(occupied[column + offset] ?? 0, rowSpan);
+            }
+            column += span;
+        }
+    }
 }
+
+tables.forEach(applyPresentation);
+
+const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const generatedIds = new Set(tables.map((table) => table.id));
+const mergedTables: typeof manifest.tables = [];
+let inserted = false;
+for (const candidate of manifest.tables) {
+    if (generatedIds.has(candidate.id)) {
+        if (!inserted) {
+            mergedTables.push(...tables);
+            inserted = true;
+        }
+        continue;
+    }
+    mergedTables.push(candidate);
+}
+if (!inserted) mergedTables.push(...tables);
+manifest.tables = mergedTables;
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log("ntc31-tables: rebuilt Tabella 3.1.I (PDF 46) e Tabella 3.1.II (PDF 47–48)");

@@ -127,10 +127,15 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.doesNotMatch(component, /Formula non numerata/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
+  assert.match(component, /table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption/);
   assert.match(component, /inline\.length === 2 && inline\.at\(-1\)\?\.kind === "math"/);
-  assert.match(component, /caption && <span> — \{caption\}<\/span>/);
+  assert.match(component, /caption && <span> — \{table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption\}<\/span>/);
   assert.match(component, /table-scroll-compact/);
   assert.match(component, /hasOfficialListMarker/);
+  assert.match(component, /hasLeadingEmphasisLabel/);
+  assert.match(component, /block-with-leading-label/);
+  assert.match(component, /leading-label-description/);
+  assert.match(component, /cell\.inline/);
   assert.match(component, /loading="lazy"/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);
   assert.match(styles, /font-family:\s*"Tinos"/);
@@ -143,6 +148,10 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(legacyStyles, /\.text-block p \{[^}]*text-align: justify/);
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /list-item-with-official-marker/);
+  assert.match(styles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(styles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(legacyStyles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
 });
 

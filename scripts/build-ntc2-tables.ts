@@ -4,10 +4,14 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const manifestPath = `${repoRoot}/corpus/assets/ntc2018/core-tables.json`;
 
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; align?: "left" | "center" | "right" };
+type CaptionSegment =
+    | { kind: "text"; value: string }
+    | { kind: "math"; value: string; latex: string };
 
-const text = (value: string, span: Pick<Cell, "colSpan" | "rowSpan"> = {}): Cell => ({ text: value, ...span });
-const math = (value: string, latex: string, span: Pick<Cell, "colSpan" | "rowSpan"> = {}): Cell => ({ text: value, latex, ...span });
+type CellOptions = Pick<Cell, "colSpan" | "rowSpan" | "align">;
+const text = (value: string, span: CellOptions = {}): Cell => ({ text: value, ...span });
+const math = (value: string, latex: string, span: CellOptions = {}): Cell => ({ text: value, latex, ...span });
 
 const tables: Array<{
     id: string;
@@ -15,6 +19,7 @@ const tables: Array<{
     officialNumber: string;
     pdfPage: number;
     caption: string;
+    captionInline?: CaptionSegment[];
     columnCount: number;
     headers: Cell[][];
     rows: Cell[][];
@@ -26,11 +31,12 @@ const tables: Array<{
         officialNumber: "2.4.I",
         pdfPage: 40,
         caption: "Tabella 2.4.I - Valori minimi della Vita nominale VN di progetto per i diversi tipi di costruzioni",
+        captionInline: [{ kind: "text", value: "Valori minimi della Vita nominale " }, { kind: "math", value: "VN", latex: "V_N" }, { kind: "text", value: " di progetto per i diversi tipi di costruzioni" }],
         columnCount: 3,
         headers: [
             [
                 text("TIPI DI COSTRUZIONI", { colSpan: 2 }),
-                math("Valori minimi di VN (anni)", "\\text{Valori minimi di }V_N\\text{ (anni)}"),
+                math("Valori minimi\ndi VN (anni)", "\\text{Valori minimi}\\\\\\text{di }V_N\\text{ (anni)}"),
             ],
         ],
         rows: [
@@ -46,6 +52,7 @@ const tables: Array<{
         officialNumber: "2.4.II",
         pdfPage: 41,
         caption: "Tabella 2.4.II - Valori del coefficiente d’uso CU",
+        captionInline: [{ kind: "text", value: "Valori del coefficiente d’uso " }, { kind: "math", value: "CU", latex: "C_U" }],
         columnCount: 5,
         headers: [
             [text("CLASSE D’USO"), text("I"), text("II"), text("III"), text("IV")],
@@ -116,7 +123,7 @@ const tables: Array<{
         rows: [
             [math("Carichi permanenti G1", "\\text{Carichi permanenti }G_1", { rowSpan: 2 }), text("Favorevoli"), math("γG1", "\\gamma_{G1}", { rowSpan: 2 }), text("0,9"), text("1,0"), text("1,0")],
             [text("Sfavorevoli"), text("1,1"), text("1,3"), text("1,0")],
-            [math("Carichi permanenti non strutturali G2(1)", "\\text{Carichi permanenti non strutturali }G_2(1)", { rowSpan: 2 }), text("Favorevoli"), math("γG2", "\\gamma_{G2}", { rowSpan: 2 }), text("0,8"), text("0,8"), text("0,8")],
+            [math("Carichi permanenti non strutturali G2(1)", "\\text{Carichi permanenti non strutturali }G_2^{(1)}", { rowSpan: 2 }), text("Favorevoli"), math("γG2", "\\gamma_{G2}", { rowSpan: 2 }), text("0,8"), text("0,8"), text("0,8")],
             [text("Sfavorevoli"), text("1,5"), text("1,5"), text("1,3")],
             [math("Azioni variabili Q", "\\text{Azioni variabili }Q", { rowSpan: 2 }), text("Favorevoli"), math("γQi", "\\gamma_{Qi}", { rowSpan: 2 }), text("0,0"), text("0,0"), text("0,0")],
             [text("Sfavorevoli"), text("1,5"), text("1,5"), text("1,3")],
@@ -127,10 +134,57 @@ const tables: Array<{
     },
 ];
 
-const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-for (const table of tables) {
-    manifest.tables = manifest.tables.filter((candidate: { id: string }) => candidate.id !== table.id);
-    manifest.tables.push(table);
+function applyPresentation(table: (typeof tables)[number]) {
+    const occupied: number[] = [];
+    for (const row of [...table.headers, ...table.rows]) {
+        for (let column = 0; column < occupied.length; column += 1) {
+            if ((occupied[column] ?? 0) > 0) occupied[column] = (occupied[column] ?? 0) - 1;
+        }
+
+        let column = 0;
+        for (const cell of row) {
+            while ((occupied[column] ?? 0) > 0) column += 1;
+
+            if (table.officialNumber === "2.4.I" && column === 2) {
+                cell.align = "center";
+            }
+            if (table.officialNumber === "2.4.II") {
+                cell.align = column === 0 ? "left" : "center";
+            }
+            if (table.officialNumber === "2.5.I" && column >= 1) {
+                cell.align = "center";
+            }
+            if (table.officialNumber === "2.6.I") {
+                cell.align = column === 0 ? "left" : "center";
+            }
+
+            const span = cell.colSpan ?? 1;
+            const rowSpan = cell.rowSpan ?? 1;
+            for (let offset = 0; offset < span; offset += 1) {
+                occupied[column + offset] = Math.max(occupied[column + offset] ?? 0, rowSpan);
+            }
+            column += span;
+        }
+    }
 }
+
+tables.forEach(applyPresentation);
+
+const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const generatedIds = new Set(tables.map((table) => table.id));
+const mergedTables: typeof manifest.tables = [];
+let inserted = false;
+for (const candidate of manifest.tables) {
+    if (generatedIds.has(candidate.id)) {
+        if (!inserted) {
+            mergedTables.push(...tables);
+            inserted = true;
+        }
+        continue;
+    }
+    mergedTables.push(candidate);
+}
+if (!inserted) mergedTables.push(...tables);
+manifest.tables = mergedTables;
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log("ntc2-tables: rebuilt 2.4.I (PDF 40), 2.4.II (PDF 41), 2.5.I (PDF 42–43) e 2.6.I (PDF 44)");

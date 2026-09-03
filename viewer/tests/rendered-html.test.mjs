@@ -40,7 +40,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
   assert.equal(manifest.schemaVersion, "2.0.0-alpha.2");
   assert.equal(manifest.stats.units, 1745);
-  assert.equal(manifest.stats.blocks, 10895);
+  assert.equal(manifest.stats.blocks, 10897);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
   assert.equal(manifest.stats.reviewedUnits, 26);

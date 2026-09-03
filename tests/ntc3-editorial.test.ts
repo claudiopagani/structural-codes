@@ -6,6 +6,8 @@ import test from "node:test";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 
+type TableCell = { text: string; latex?: string; colSpan?: number; align?: string; noWrap?: boolean };
+
 test("NTC Tabella 3.1.II conserva la griglia completa e la continuazione di pagina", async () => {
     const manifest = JSON.parse(await readFile(join(root, "corpus/assets/ntc2018/core-tables.json"), "utf8"));
     const table = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.1.II");
@@ -36,4 +38,25 @@ test("NTC Tabella 3.1.II conserva la griglia completa e la continuazione di pagi
     assert.equal(unit.blocks[5].text.normalized.startsWith("I valori nominali"), true);
     assert.equal(unit.blocks[6].kind, "table-ref");
     assert.equal(unit.blocks.some((block: { text?: { normalized?: string } }) => block.text?.normalized?.includes("B Uffici")), false);
+});
+
+test("NTC Tabelle 3.1.I–II conservano gli allineamenti editoriali delle celle", async () => {
+    const manifest = JSON.parse(await readFile(join(root, "corpus/assets/ntc2018/core-tables.json"), "utf8"));
+    const tableI = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.1.I") as { headers: TableCell[][]; rows: TableCell[][] };
+    const tableII = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.1.II") as { headers: TableCell[][]; rows: TableCell[][] };
+    assert.ok(tableI);
+    assert.ok(tableII);
+    assert.equal(tableI.headers[0]![1]!.align, "center");
+    assert.equal(tableI.rows.flat().filter((cell) => /^\d/u.test(cell.text)).every((cell) => cell.align === "center"), true);
+
+    assert.equal(tableII.headers[0]!.slice(2).every((cell) => cell.align === "center"), true);
+    for (const category of ["A", "B", "C", "D", "E", "F-G", "H-I-K"]) {
+        const cell = tableII.rows.flat().find((candidate) => candidate.text === category);
+        assert.ok(cell, category);
+        assert.equal(cell.align, "center", category);
+        assert.equal(cell.noWrap, true, category);
+    }
+    assert.equal(tableII.rows.flat().filter((cell) => cell.latex).every((cell) => cell.align === "center"), true);
+    assert.equal(tableII.rows.flat().filter((cell) => cell.colSpan === 3).every((cell) => cell.align === "center"), true);
+    assert.equal(tableII.rows.flat().filter((cell) => /\*{1,2}$/u.test(cell.text)).every((cell) => cell.latex?.includes("^{")), true);
 });

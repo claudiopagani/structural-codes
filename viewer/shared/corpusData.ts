@@ -1,5 +1,10 @@
 export type DocumentId = "ntc2018" | "circ2019";
 export type ViewerMode = "ntc" | "circ" | "combined";
+export type InlineSegment =
+  | { kind: "text"; value: string }
+  | { kind: "em"; value: string }
+  | { kind: "strong"; value: string }
+  | { kind: "math"; value: string; latex: string };
 
 export interface Evidence {
   sourceId: string;
@@ -15,28 +20,25 @@ export interface CorpusBlock {
   blockId: string;
   kind: string;
   origin: string;
+  listMarker?: "dash" | "none";
   text?: {
     raw: string;
     normalized: string;
     normalizationVersion: string;
-    inline?: Array<
-      | { kind: "text"; value: string }
-      | { kind: "em"; value: string }
-      | { kind: "strong"; value: string }
-      | { kind: "math"; value: string; latex: string }
-    >;
+    inline?: InlineSegment[];
   };
   assetId?: string;
   evidence?: Evidence;
 }
 
 export interface FormulaAsset { id: string; officialNumber: string | null; pdfPage: number; latex: string; }
-export interface TableCell { text: string; latex?: string; colSpan?: number; rowSpan?: number; strong?: boolean; }
+export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; }
 export interface TableAsset {
   id: string;
   officialNumber: string | null;
   pdfPage: number;
   caption: string | null;
+  captionInline?: InlineSegment[];
   headers: TableCell[][];
   rows: TableCell[][];
   notes: string[];

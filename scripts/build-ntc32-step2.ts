@@ -17,6 +17,8 @@ type Region = {
 
 type InlineSegment =
     | { kind: "text"; value: string }
+    | { kind: "em"; value: string }
+    | { kind: "strong"; value: string }
     | { kind: "math"; value: string; latex: string };
 
 type EvidenceItem = {
@@ -28,7 +30,7 @@ type EvidenceItem = {
 
 type PageEvidence = { textItems: EvidenceItem[] };
 
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type Cell = { text: string; latex?: string; inline?: InlineSegment[]; strong?: boolean; colSpan?: number; rowSpan?: number; align?: "left" | "center" | "right"; noWrap?: boolean };
 type Transformation = { operation: string; ruleVersion: string; note: string };
 type UnitBlock = {
     blockId: string;
@@ -65,9 +67,12 @@ const region = (x: number, y: number, width: number, height: number): Region => 
     height,
 });
 const text = (value: string): InlineSegment => ({ kind: "text", value });
+const em = (value: string): InlineSegment => ({ kind: "em", value });
+const strong = (value: string): InlineSegment => ({ kind: "strong", value });
 const math = (value: string, latex = value): InlineSegment => ({ kind: "math", value, latex });
-const cell = (value: string, span: Pick<Cell, "colSpan" | "rowSpan"> = {}): Cell => ({ text: value, ...span });
-const mathCell = (value: string, latex: string, span: Pick<Cell, "colSpan" | "rowSpan"> = {}): Cell => ({ text: value, latex, ...span });
+const cell = (value: string, span: Pick<Cell, "colSpan" | "rowSpan" | "align" | "strong" | "noWrap"> = {}): Cell => ({ text: value, ...span });
+const inlineCell = (value: string, inline: InlineSegment[], span: Pick<Cell, "colSpan" | "rowSpan" | "align" | "strong" | "noWrap"> = {}): Cell => ({ text: value, inline, ...span });
+const mathCell = (value: string, latex: string, span: Pick<Cell, "colSpan" | "rowSpan" | "align" | "strong" | "noWrap"> = {}): Cell => ({ text: value, latex, ...span });
 
 const pageCache = new Map<number, PageEvidence>();
 async function pageEvidence(page: number): Promise<PageEvidence> {
@@ -137,6 +142,7 @@ async function textBlock(
         blockId: `${uid(unit)}#block-${suffix}`,
         kind,
         origin: "official",
+        ...(kind === "list-item" ? { listMarker: "none" } : {}),
         text: {
             raw,
             normalized,
@@ -215,6 +221,13 @@ function updateExistingText(block: UnitBlock, value: string | InlineSegment[]): 
     return block;
 }
 
+function emphasizeLeadingLabel(block: UnitBlock): UnitBlock {
+    if (!block.text) throw new Error("Blocco testuale privo di payload: " + block.blockId);
+    const separator = block.text.normalized.indexOf(":");
+    if (separator < 1) throw new Error("Etichetta senza due punti: " + block.blockId);
+    return updateExistingText(block, [strong(block.text.normalized.slice(0, separator + 1)), text(block.text.normalized.slice(separator + 1))]);
+}
+
 function existingBlock(unit: CanonicalUnit, index: number): UnitBlock {
     const block = unit.blocks[index];
     if (!block) throw new Error("Blocco mancante all’indice " + index);
@@ -237,6 +250,10 @@ async function writeUnit(unit: string, record: CanonicalUnit): Promise<void> {
 
 async function rebuildUnit321(): Promise<void> {
     const unit = await readUnit("3.2.1");
+    emphasizeLeadingLabel(existingBlock(unit, 3));
+    emphasizeLeadingLabel(existingBlock(unit, 4));
+    emphasizeLeadingLabel(existingBlock(unit, 6));
+    emphasizeLeadingLabel(existingBlock(unit, 7));
     updateExistingText(existingBlock(unit, 8), [
         text("Le probabilità di superamento nel periodo di riferimento "),
         math("PVR", "P_{VR}"),
@@ -278,13 +295,12 @@ async function rebuildUnit322(): Promise<void> {
         math("VS,eq", "V_{S,eq}"),
         text(" (in m/s), definita dall’espressione:"),
     ]);
-    updateExistingText(existingBlock(unit, 7), [
-        math("hi", "h_i"), text(" spessore dell’i-esimo strato; "),
-        math("VS,i", "V_{S,i}"), text(" velocità delle onde di taglio nell’i-esimo strato; "),
-        math("N", "N"), text(" numero di strati; "),
-        math("H", "H"), text(" profondità del substrato, definito come quella formazione costituita da roccia o terreno molto rigido, caratterizzata da "),
-        math("VS", "V_S"), text(" non inferiore a 800 m/s."),
-    ]);
+    const definitions = [
+        await textBlock("3.2.2", "editorial-007", "list-item", 50, region(77, 429, 126, 9), [math("hi", "h_i"), text(" spessore dell’i-esimo strato;")]),
+        await textBlock("3.2.2", "editorial-008", "list-item", 50, region(77, 438, 190, 9), [math("VS,i", "V_{S,i}"), text(" velocità delle onde di taglio nell’i-esimo strato;")]),
+        await textBlock("3.2.2", "editorial-009", "list-item", 50, region(77, 447, 100, 9), [math("N", "N"), text(" numero di strati;")]),
+        await textBlock("3.2.2", "editorial-010", "list-item", 50, region(77, 457, 445, 19), [math("H", "H"), text(" profondità del substrato, definito come quella formazione costituita da roccia o terreno molto rigido, caratterizzata da "), math("VS", "V_S"), text(" non inferiore a 800 m/s.")]),
+    ];
     updateExistingText(existingBlock(unit, 9), [
         text("Per depositi con profondità "), math("H", "H"),
         text(" del substrato superiore a 30 m, la velocità equivalente delle onde di taglio "), math("VS,eq", "V_{S,eq}"),
@@ -294,7 +310,9 @@ async function rebuildUnit322(): Promise<void> {
     ]);
 
     unit.blocks = [
-        ...unit.blocks.slice(0, 11),
+        ...unit.blocks.slice(0, 6),
+        await textBlock("3.2.2", "editorial-006", "paragraph", 50, region(77, 419, 26, 9), "con:"),
+        ...definitions,
         await assetRef("3.2.2", "editorial-011", "table-ref", tableId("3.2.II"), 50, region(75, 557, 445, 181), tableId("3.2.II")),
         { ...textBlockStartingWith(unit, "Per queste cinque categorie di sottosuolo"), blockId: `${uid("3.2.2")}#block-editorial-012` },
         { ...textBlockStartingWith(unit, "Per qualsiasi condizione di sottosuolo"), blockId: `${uid("3.2.2")}#block-editorial-013` },
@@ -377,12 +395,12 @@ async function rebuildUnit32321(): Promise<void> {
         ]),
         await textBlock("3.2.3.2.1", "editorial-021", "heading", 52, region(73, 520, 180, 12), "Amplificazione stratigrafica"),
         await textBlock("3.2.3.2.1", "editorial-022", "paragraph", 52, region(73, 532, 260, 13), [
-            text("Per sottosuolo di categoria A i coefficienti "), math("SS", "S_S"), text(" e "), math("CC", "C_C"), text(" valgono 1."),
+            text("Per sottosuolo di categoria "), strong("A"), text(" i coefficienti "), math("SS", "S_S"), text(" e "), math("CC", "C_C"), text(" valgono 1."),
         ]),
         await textBlock("3.2.3.2.1", "editorial-023", "paragraph", 52, region(73, 545, 447, 45), [
-            text("Per le categorie di sottosuolo B, C, D ed E i coefficienti "), math("SS", "S_S"), text(" e "), math("CC", "C_C"),
+            text("Per le categorie di sottosuolo "), strong("B"), text(", "), strong("C"), text(", "), strong("D"), text(" ed "), strong("E"), text(" i coefficienti "), math("SS", "S_S"), text(" e "), math("CC", "C_C"),
             text(" possono essere calcolati, in funzione dei valori di "), math("Fo", "F_o"), text(" e "), math("TC*", "T_C^*"),
-            text(" relativi al sottosuolo di categoria A, mediante le espressioni fornite nella Tab. 3.2.IV, nelle quali "),
+            text(" relativi al sottosuolo di categoria "), strong("A"), text(", mediante le espressioni fornite nella Tab. 3.2.IV, nelle quali "),
             math("g = 9,81 m/s²", "g=9{,}81\\,\\mathrm{m/s^2}"), text(" è l’accelerazione di gravità e "), math("TC*", "T_C^*"), text(" è espresso in secondi."),
         ]),
         await assetRef("3.2.3.2.1", "editorial-024", "table-ref", tableId("3.2.IV"), 52, region(73, 580, 375, 145), tableId("3.2.IV")),
@@ -483,13 +501,14 @@ const tables = [
     {
         id: tableId("3.2.I"), unitId: uid("3.2.1"), officialNumber: "3.2.I", pdfPage: 50,
         caption: "Tabella 3.2.I - Probabilità di superamento PVR in funzione dello stato limite considerato",
+        captionInline: [text("Probabilità di superamento "), math("PVR", "P_{VR}"), text(" in funzione dello stato limite considerato")],
         columnCount: 3,
-        headers: [[cell("Stati Limite", { colSpan: 2 }), mathCell("PVR: Probabilità di superamento nel periodo di riferimento VR", "P_{VR}:\\text{ Probabilità di superamento nel periodo di riferimento }V_R")]],
+        headers: [[cell("Stati Limite"), mathCell("PVR: Probabilità di superamento nel periodo di riferimento VR", "P_{VR}:\\text{ Probabilità di superamento nel periodo di riferimento }V_R", { colSpan: 2, align: "center" })]],
         rows: [
-            [cell("Stati limite di esercizio", { rowSpan: 2 }), cell("SLO"), mathCell("81%", "81\\%")],
-            [cell("SLD"), mathCell("63%", "63\\%")],
-            [cell("Stati limite ultimi", { rowSpan: 2 }), cell("SLV"), mathCell("10%", "10\\%")],
-            [cell("SLC"), mathCell("5%", "5\\%")],
+            [cell("Stati limite di esercizio", { rowSpan: 2 }), cell("SLO", { align: "center", noWrap: true }), mathCell("81%", "81\\%", { align: "center" })],
+            [cell("SLD", { align: "center", noWrap: true }), mathCell("63%", "63\\%", { align: "center" })],
+            [cell("Stati limite ultimi", { rowSpan: 2 }), cell("SLV", { align: "center", noWrap: true }), mathCell("10%", "10\\%", { align: "center" })],
+            [cell("SLC", { align: "center", noWrap: true }), mathCell("5%", "5\\%", { align: "center" })],
         ],
         notes: [],
     },
@@ -499,11 +518,11 @@ const tables = [
         columnCount: 2,
         headers: [[cell("Categoria"), cell("Caratteristiche della superficie topografica")]],
         rows: [
-            [cell("A"), cell("Ammassi rocciosi affioranti o terreni molto rigidi caratterizzati da valori di velocità delle onde di taglio superiori a 800 m/s, eventualmente comprendenti in superficie terreni di caratteristiche meccaniche più scadenti con spessore massimo pari a 3 m.")],
-            [cell("B"), cell("Rocce tenere e depositi di terreni a grana grossa molto addensati o terreni a grana fina molto consistenti, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 360 m/s e 800 m/s.")],
-            [cell("C"), cell("Depositi di terreni a grana grossa mediamente addensati o terreni a grana fina mediamente consistenti con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 180 m/s e 360 m/s.")],
-            [cell("D"), cell("Depositi di terreni a grana grossa scarsamente addensati o di terreni a grana fina scarsamente consistenti, con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 100 e 180 m/s.")],
-            [cell("E"), cell("Terreni con caratteristiche e valori di velocità equivalente riconducibili a quelle definite per le categorie C o D, con profondità del substrato non superiore a 30 m.")],
+            [cell("A"), inlineCell("Ammassi rocciosi affioranti o terreni molto rigidi caratterizzati da valori di velocità delle onde di taglio superiori a 800 m/s, eventualmente comprendenti in superficie terreni di caratteristiche meccaniche più scadenti con spessore massimo pari a 3 m.", [em("Ammassi rocciosi affioranti o terreni molto rigidi"), text(" caratterizzati da valori di velocità delle onde di taglio superiori a 800 m/s, eventualmente comprendenti in superficie terreni di caratteristiche meccaniche più scadenti con spessore massimo pari a 3 m.")])],
+            [cell("B"), inlineCell("Rocce tenere e depositi di terreni a grana grossa molto addensati o terreni a grana fina molto consistenti, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 360 m/s e 800 m/s.", [em("Rocce tenere e depositi di terreni a grana grossa molto addensati o terreni a grana fina molto consistenti"), text(", caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 360 m/s e 800 m/s.")])],
+            [cell("C"), inlineCell("Depositi di terreni a grana grossa mediamente addensati o terreni a grana fina mediamente consistenti con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 180 m/s e 360 m/s.", [em("Depositi di terreni a grana grossa mediamente addensati o terreni a grana fina mediamente consistenti"), text(" con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 180 m/s e 360 m/s.")])],
+            [cell("D"), inlineCell("Depositi di terreni a grana grossa scarsamente addensati o di terreni a grana fina scarsamente consistenti, con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 100 e 180 m/s.", [em("Depositi di terreni a grana grossa scarsamente addensati o di terreni a grana fina scarsamente consistenti"), text(", con profondità del substrato superiori a 30 m, caratterizzati da un miglioramento delle proprietà meccaniche con la profondità e da valori di velocità equivalente compresi tra 100 e 180 m/s.")])],
+            [cell("E"), inlineCell("Terreni con caratteristiche e valori di velocità equivalente riconducibili a quelle definite per le categorie C o D, con profondità del substrato non superiore a 30 m.", [em("Terreni con caratteristiche e valori di velocità equivalente riconducibili a quelle definite per le categorie C o D"), text(", con profondità del substrato non superiore a 30 m.")])],
         ],
         notes: [],
     },
@@ -513,30 +532,32 @@ const tables = [
         columnCount: 2,
         headers: [[cell("Categoria"), cell("Caratteristiche della superficie topografica")]],
         rows: [
-            [cell("T1"), cell("Superficie pianeggiante, pendii e rilievi isolati con inclinazione media i ≤ 15°")],
-            [cell("T2"), cell("Pendii con inclinazione media i > 15°")],
-            [cell("T3"), cell("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media 15° ≤ i ≤ 30°")],
-            [cell("T4"), cell("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media i > 30°")],
+            [cell("T1"), inlineCell("Superficie pianeggiante, pendii e rilievi isolati con inclinazione media i ≤ 15°", [text("Superficie pianeggiante, pendii e rilievi isolati con inclinazione media "), math("i ≤ 15°", "i\\le15^\\circ")])],
+            [cell("T2"), inlineCell("Pendii con inclinazione media i > 15°", [text("Pendii con inclinazione media "), math("i > 15°", "i>15^\\circ")])],
+            [cell("T3"), inlineCell("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media 15° ≤ i ≤ 30°", [text("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media "), math("15° ≤ i ≤ 30°", "15^\\circ\\le i\\le30^\\circ")])],
+            [cell("T4"), inlineCell("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media i > 30°", [text("Rilievi con larghezza in cresta molto minore che alla base e inclinazione media "), math("i > 30°", "i>30^\\circ")])],
         ],
         notes: [],
     },
     {
         id: tableId("3.2.IV"), unitId: uid("3.2.3.2.1"), officialNumber: "3.2.IV", pdfPage: 52,
         caption: "Tabella 3.2.IV - Espressioni di SS e di CC",
+        captionInline: [text("Espressioni di "), math("SS", "S_S"), text(" e di "), math("CC", "C_C")],
         columnCount: 3,
         headers: [[cell("Categoria sottosuolo"), mathCell("SS", "S_S"), mathCell("CC", "C_C")]],
         rows: [
-            [cell("A"), mathCell("1,00", "1{,}00"), mathCell("1,00", "1{,}00")],
-            [cell("B"), mathCell("1,00 ≤ 1,40 − 0,40 · Fo · ag/g ≤ 1,20", "1{,}00\\le1{,}40-0{,}40\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}20"), mathCell("1,10 · (TC*)^-0,20", "1{,}10\\cdot(T_C^*)^{-0{,}20}")],
-            [cell("C"), mathCell("1,00 ≤ 1,70 − 0,60 · Fo · ag/g ≤ 1,50", "1{,}00\\le1{,}70-0{,}60\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}50"), mathCell("1,05 · (TC*)^-0,33", "1{,}05\\cdot(T_C^*)^{-0{,}33}")],
-            [cell("D"), mathCell("0,90 ≤ 2,40 − 1,50 · Fo · ag/g ≤ 1,80", "0{,}90\\le2{,}40-1{,}50\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}80"), mathCell("1,25 · (TC*)^-0,50", "1{,}25\\cdot(T_C^*)^{-0{,}50}")],
-            [cell("E"), mathCell("1,00 ≤ 2,00 − 1,10 · Fo · ag/g ≤ 1,60", "1{,}00\\le2{,}00-1{,}10\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}60"), mathCell("1,15 · (TC*)^-0,40", "1{,}15\\cdot(T_C^*)^{-0{,}40}")],
+            [cell("A", { strong: true }), mathCell("1,00", "1{,}00"), mathCell("1,00", "1{,}00")],
+            [cell("B", { strong: true }), mathCell("1,00 ≤ 1,40 − 0,40 · Fo · ag/g ≤ 1,20", "1{,}00\\le1{,}40-0{,}40\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}20"), mathCell("1,10 · (TC*)^-0,20", "1{,}10\\cdot(T_C^*)^{-0{,}20}")],
+            [cell("C", { strong: true }), mathCell("1,00 ≤ 1,70 − 0,60 · Fo · ag/g ≤ 1,50", "1{,}00\\le1{,}70-0{,}60\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}50"), mathCell("1,05 · (TC*)^-0,33", "1{,}05\\cdot(T_C^*)^{-0{,}33}")],
+            [cell("D", { strong: true }), mathCell("0,90 ≤ 2,40 − 1,50 · Fo · ag/g ≤ 1,80", "0{,}90\\le2{,}40-1{,}50\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}80"), mathCell("1,25 · (TC*)^-0,50", "1{,}25\\cdot(T_C^*)^{-0{,}50}")],
+            [cell("E", { strong: true }), mathCell("1,00 ≤ 2,00 − 1,10 · Fo · ag/g ≤ 1,60", "1{,}00\\le2{,}00-1{,}10\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}60"), mathCell("1,15 · (TC*)^-0,40", "1{,}15\\cdot(T_C^*)^{-0{,}40}")],
         ],
         notes: [],
     },
     {
         id: tableId("3.2.V"), unitId: uid("3.2.3.2.1"), officialNumber: "3.2.V", pdfPage: 53,
         caption: "Tabella 3.2.V - Valori massimi del coefficiente di amplificazione topografica ST",
+        captionInline: [text("Valori massimi del coefficiente di amplificazione topografica "), math("ST", "S_T")],
         columnCount: 3,
         headers: [[cell("Categoria topografica"), cell("Ubicazione dell’opera o dell’intervento"), mathCell("ST", "S_T")]],
         rows: [
@@ -552,28 +573,41 @@ const tables = [
         caption: "Tabella 3.2.VI - Valori dei parametri dello spettro di risposta elastico della componente verticale",
         columnCount: 5,
         headers: [[cell("Categoria di sottosuolo"), mathCell("SS", "S_S"), mathCell("TB", "T_B"), mathCell("TC", "T_C"), mathCell("TD", "T_D")]],
-        rows: [[cell("A, B, C, D, E"), mathCell("1,0", "1{,}0"), mathCell("0,05 s", "0{,}05\\,\\mathrm{s}"), mathCell("0,15 s", "0{,}15\\,\\mathrm{s}"), mathCell("1,0 s", "1{,}0\\,\\mathrm{s}")]],
+        rows: [[cell("A, B, C, D, E", { strong: true }), mathCell("1,0", "1{,}0"), mathCell("0,05 s", "0{,}05\\,\\mathrm{s}"), mathCell("0,15 s", "0{,}15\\,\\mathrm{s}"), mathCell("1,0 s", "1{,}0\\,\\mathrm{s}")]],
         notes: [],
     },
     {
         id: tableId("3.2.VII"), unitId: uid("3.2.3.2.3"), officialNumber: "3.2.VII", pdfPage: 53,
         caption: "Tabella 3.2.VII - Valori dei parametri TE e TF",
+        captionInline: [text("Valori dei parametri "), math("TE", "T_E"), text(" e "), math("TF", "T_F")],
         columnCount: 3,
         headers: [[cell("Categoria sottosuolo"), mathCell("TE [s]", "T_E\\,[\\mathrm{s}]"), mathCell("TF [s]", "T_F\\,[\\mathrm{s}]")]],
         rows: [
-            [cell("A"), mathCell("4,5", "4{,}5"), mathCell("10,0", "10{,}0")],
-            [cell("B"), mathCell("5,0", "5{,}0"), mathCell("10,0", "10{,}0")],
-            [cell("C, D, E"), mathCell("6,0", "6{,}0"), mathCell("10,0", "10{,}0")],
+            [cell("A", { strong: true }), mathCell("4,5", "4{,}5"), mathCell("10,0", "10{,}0")],
+            [cell("B", { strong: true }), mathCell("5,0", "5{,}0"), mathCell("10,0", "10{,}0")],
+            [cell("C, D, E", { strong: true }), mathCell("6,0", "6{,}0"), mathCell("10,0", "10{,}0")],
         ],
         notes: [],
     },
 ];
 
+const centeredTables = new Set(["3.2.IV", "3.2.V", "3.2.VI", "3.2.VII"]);
+for (const table of tables) {
+    if (!centeredTables.has(table.officialNumber)) continue;
+    for (const row of [...table.headers, ...table.rows]) {
+        for (const tableCell of row) tableCell.align = "center";
+    }
+}
+
 async function rebuildTables(): Promise<void> {
     const manifest = JSON.parse(await readFile(tableManifestPath, "utf8"));
-    const replacementIds = new Set(tables.map((table) => table.id));
-    manifest.tables = manifest.tables.filter((table: { id: string }) => !replacementIds.has(table.id));
-    manifest.tables.push(...tables);
+    const replacements = new Map(tables.map((table) => [table.id, table]));
+    const existingIds = new Set<string>();
+    manifest.tables = manifest.tables.map((table: { id: string }) => {
+        existingIds.add(table.id);
+        return replacements.get(table.id) ?? table;
+    });
+    manifest.tables.push(...tables.filter((table) => !existingIds.has(table.id)));
     await writeFile(tableManifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 }
 

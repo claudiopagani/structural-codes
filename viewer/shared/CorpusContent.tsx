@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import katex from "katex";
-import type { AssetBundle, CorpusBlock, TableCell, CorpusUnit } from "./corpusData";
+import type { AssetBundle, CorpusBlock, InlineSegment, TableCell, CorpusUnit } from "./corpusData";
 import { visibleTableCaption, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
 const editorialTableNotePatterns = [
@@ -34,12 +34,35 @@ function latexMarkup(latex: string, displayMode: boolean) {
 }
 
 function MathCell({ cell }: { cell: TableCell }) {
+  if (cell.inline) return <>{renderInlineSegments(cell.inline)}</>;
   if (!cell.latex) return cell.text;
   return <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />;
 }
 
+function tableCellClass(cell: TableCell) {
+  return [
+    cell.strong ? "table-cell-strong" : "",
+    cell.align ? `table-cell-align-${cell.align}` : "",
+    cell.noWrap ? "table-cell-no-wrap" : "",
+  ].filter(Boolean).join(" ") || undefined;
+}
+
 export function hasOfficialListMarker(block: CorpusBlock) {
   return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])/iu.test(block.text?.normalized ?? "");
+}
+
+export function hasNoListMarker(block: CorpusBlock) {
+  return block.kind === "list-item" && block.listMarker === "none";
+}
+
+export function hasLeadingMath(block: CorpusBlock) {
+  const inline = block.text?.inline;
+  return block.kind === "list-item" && block.listMarker === "none" && inline?.[0]?.kind === "math";
+}
+
+export function hasLeadingEmphasisLabel(block: CorpusBlock) {
+  const inline = block.text?.inline;
+  return block.kind === "paragraph" && inline?.[0]?.kind === "em" && /^\s*:/u.test(inline[1]?.kind === "text" ? inline[1].value : "");
 }
 
 export function hasTrailingStrong(block: CorpusBlock) {
@@ -59,35 +82,46 @@ export interface BlockContentProps {
   assetsBaseUrl?: string;
 }
 
+type InlineSegments = InlineSegment[];
+
+function renderInlineSegments(inline: InlineSegments) {
+  const nodes: Array<React.ReactNode> = [];
+  inline.forEach((segment, index) => {
+    if (segment.kind === "math") {
+      nodes.push(<span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />);
+      return;
+    }
+    if (segment.kind === "em") {
+      nodes.push(<em key={`em-${index}`}>{segment.value}</em>);
+      return;
+    }
+    if (segment.kind === "strong") {
+      nodes.push(<strong key={`strong-${index}`}>{segment.value}</strong>);
+      return;
+    }
+    const previous = inline[index - 1];
+    const leading = segment.value.match(/^[,.;:!?»)\]—-]+/u)?.[0] ?? "";
+    if (leading && previous?.kind === "math") {
+      nodes[nodes.length - 1] = <span className="inline-keep-punct" key={`keep-${index}`}>{nodes[nodes.length - 1]}{leading}</span>;
+      const rest = segment.value.slice(leading.length);
+      if (rest) nodes.push(<span key={`text-${index}`}>{rest}</span>);
+      return;
+    }
+    nodes.push(<span key={`text-${index}`}>{segment.value}</span>);
+  });
+  return nodes;
+}
+
 export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "/assets" }: BlockContentProps) {
   if (block.text) {
     if (showRaw || !block.text.inline) return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
     const inline = block.text.inline;
-    const nodes: Array<React.ReactNode> = [];
-    inline.forEach((segment, index) => {
-      if (segment.kind === "math") {
-        nodes.push(<span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />);
-        return;
-      }
-      if (segment.kind === "em") {
-        nodes.push(<em key={`em-${index}`}>{segment.value}</em>);
-        return;
-      }
-      if (segment.kind === "strong") {
-        nodes.push(<strong key={`strong-${index}`}>{segment.value}</strong>);
-        return;
-      }
-      const previous = inline[index - 1];
-      const leading = segment.value.match(/^[,.;:!?»)\]—-]+/u)?.[0] ?? "";
-      if (leading && previous?.kind === "math") {
-        nodes[nodes.length - 1] = <span className="inline-keep-punct" key={`keep-${index}`}>{nodes[nodes.length - 1]}{leading}</span>;
-        const rest = segment.value.slice(leading.length);
-        if (rest) nodes.push(<span key={`text-${index}`}>{rest}</span>);
-        return;
-      }
-      nodes.push(<span key={`text-${index}`}>{segment.value}</span>);
-    });
-    return <p>{nodes}</p>;
+    if (hasLeadingEmphasisLabel(block)) {
+      const label = inline[0];
+      const description = inline.slice(1).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s*:\s*/u, "") } : segment);
+      return <p><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description)}</span></p>;
+    }
+    return <p>{renderInlineSegments(inline)}</p>;
   }
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
@@ -102,8 +136,8 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
     const compactTable = tableColumnCount(table.headers, table.rows) <= 4;
     return (
       <figure className="table-asset">
-        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : "Tabella non numerata"}</strong>{caption && <span> — {caption}</span>}</figcaption>
-        <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={cell.strong ? "table-cell-strong" : undefined} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={cell.strong ? "table-cell-strong" : undefined} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
+        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : "Tabella non numerata"}</strong>{caption && <span> — {table.captionInline ? renderInlineSegments(table.captionInline) : caption}</span>}</figcaption>
+        <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>
     );
@@ -130,7 +164,7 @@ export function isRepeatedUnitTitle(unit: CorpusUnit, block: CorpusUnit["blocks"
 
 export function UnitBlocks({ unit, assets, showRaw = false, compact = false, assetsBaseUrl = "/assets" }: { unit: CorpusUnit; assets: AssetBundle; showRaw?: boolean; compact?: boolean; assetsBaseUrl?: string }) {
   return <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
+    {unit.blocks.map((block, index) => <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
       <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
       <div><span className="block-kind">{block.kind}</span><BlockContent block={block} assets={assets} showRaw={showRaw} assetsBaseUrl={assetsBaseUrl} />
         {block.evidence?.transformations && block.evidence.transformations.length > 0 && <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}

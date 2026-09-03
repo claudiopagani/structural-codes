@@ -328,26 +328,23 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2#block-editorial-004",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2#block-editorial-004-a",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
-        "raw": "a g accelerazione orizzontale massima al sito;\nFo valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale;\n*\nC\nT valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione\norizzontale.",
-        "normalized": "a g accelerazione orizzontale massima al sito; Fo valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale; * C T valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione orizzontale.",
+        "raw": "a g accelerazione orizzontale massima al sito;",
+        "normalized": "a_g accelerazione orizzontale massima al sito;",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "a g accelerazione orizzontale massima al sito; "
-          },
-          {
             "kind": "math",
-            "value": "Fo",
-            "latex": "F_0"
+            "value": "a_g",
+            "latex": "a_g"
           },
           {
             "kind": "text",
-            "value": " valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale; * C T valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione orizzontale."
+            "value": " accelerazione orizzontale massima al sito;"
           }
         ]
       },
@@ -397,10 +394,171 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la prima voce dell’elenco tipografico e ricostruito il simbolo a_g come matematica inline."
           }
         ],
-        "rawSha256": "dd0828ad5bf7b063925e146deb62616ea3d8930b76aacbfedf4e89adff5c51bb",
-        "normalizedSha256": "60727cf6e320cf06c4c522aac2ab43fa86daaab8ea7a2b2975457cb96ac01391"
+        "rawSha256": "b0309f55c085f3bf51a9eb86eb8f69e5ca5241d242cf9d72911ac08f903603d2",
+        "normalizedSha256": "7240ef5e53c1e460b5979390cf0ad7fda45b8221438eb6be91d2dab207f6111f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2#block-editorial-004-b",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "Fo valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale;",
+        "normalized": "F_0 valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale;",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "F_0",
+            "latex": "F_0"
+          },
+          {
+            "kind": "text",
+            "value": " valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 49,
+        "printedPage": "45",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.402,
+          "y": 249.662,
+          "width": 446.647,
+          "height": 207.211
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la seconda voce dell’elenco tipografico e ricostruito il simbolo F_0 come matematica inline."
+          }
+        ],
+        "rawSha256": "fa255dc4e1ec496a3a000117f1fa7592fc875e669459e8bd34a062650434b3ec",
+        "normalizedSha256": "9ebd291089c1ae5216c24aa8cf81d6897de7093e1bc831e0d5ad06f5c3f80ef5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.2#block-editorial-004-c",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "*\nC\nT valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione\norizzontale.",
+        "normalized": "T_C^* valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione orizzontale.",
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "T_C^*",
+            "latex": "T_C^*"
+          },
+          {
+            "kind": "text",
+            "value": " valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione orizzontale."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 49,
+        "printedPage": "45",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 74.402,
+          "y": 249.662,
+          "width": 446.647,
+          "height": 207.211
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Separata la terza voce dell’elenco tipografico e ricostruito il simbolo T_C^* come matematica inline."
+          }
+        ],
+        "rawSha256": "29ee99dd56ff55f7a72fd4c844ca8ea4f061efc801060cff18f34779d028ee3a",
+        "normalizedSha256": "427cd3662d4adc3204c04a49be489d7dfe586fc1acff50ff30753f90acedf5b1"
       }
     },
     {
@@ -409,21 +567,39 @@
       "origin": "official",
       "text": {
         "raw": "Per i valori di a g \n, Fo e *\nC\nT , necessari per la determinazione delle azioni sismiche, si fa riferimento agli Allegati A e B al Decreto del\nMinistro delle Infrastrutture 14 gennaio 2008, pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008, n.29, ed eventuali\nsuccessivi aggiornamenti.",
-        "normalized": "Per i valori di a g , Fo e * C T, necessari per la determinazione delle azioni sismiche, si fa riferimento agli Allegati A e B al Decreto del Ministro delle Infrastrutture 14 gennaio 2008, pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008, n.29, ed eventuali successivi aggiornamenti.",
+        "normalized": "Per i valori di a_g, F_0 e T_C^*, necessari per la determinazione delle azioni sismiche, si fa riferimento agli Allegati A e B al Decreto del Ministro delle Infrastrutture 14 gennaio 2008, pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008, n.29, ed eventuali successivi aggiornamenti.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Per i valori di a g , "
+            "value": "Per i valori di "
           },
           {
             "kind": "math",
-            "value": "Fo",
+            "value": "a_g",
+            "latex": "a_g"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "F_0",
             "latex": "F_0"
           },
           {
             "kind": "text",
-            "value": " e * C T, necessari per la determinazione delle azioni sismiche, si fa riferimento agli Allegati A e B al Decreto del Ministro delle Infrastrutture 14 gennaio 2008, pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008, n.29, ed eventuali successivi aggiornamenti."
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "T_C^*",
+            "latex": "T_C^*"
+          },
+          {
+            "kind": "text",
+            "value": ", necessari per la determinazione delle azioni sismiche, si fa riferimento agli Allegati A e B al Decreto del Ministro delle Infrastrutture 14 gennaio 2008, pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008, n.29, ed eventuali successivi aggiornamenti."
           }
         ]
       },
@@ -476,7 +652,7 @@
           }
         ],
         "rawSha256": "4dd1522c47fe9892360edeaa4ac406098c5120f20dbf42aa10065ab23288a826",
-        "normalizedSha256": "a55078784078f54cc16f8b287ec7e8f041cb91905e2377fe477f522298dba4a2"
+        "normalizedSha256": "e6b5027d078443eb20e853cd39b2294faf2b0dda324b07ef3e35800af65021a7"
       }
     }
   ],

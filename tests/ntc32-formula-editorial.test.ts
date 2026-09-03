@@ -5,8 +5,11 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const unitIds = ["3.2.1", "3.2.2", "3.2.3.2.1", "3.2.3.2.2", "3.2.3.2.3", "3.2.3.3"];
+const unitIds = ["3.2.1", "3.2.2", "3.2.3.2.1", "3.2.3.2.2", "3.2.3.2.3", "3.2.3.3", "3.2.3.5"];
 type Formula = { officialNumber: string; latex: string };
+type Inline = { value: string; latex?: string };
+type TableInline = { kind: string; value: string; latex?: string };
+type TableCell = { text: string; latex?: string; inline?: TableInline[]; strong?: boolean; colSpan?: number; rowSpan?: number; align?: string; noWrap?: boolean };
 const formulaId = (number: string) => `urn:structural-codes:it:asset:formula:ntc2018:${number}`;
 const tableId = (number: string) => `urn:structural-codes:it:asset:table:ntc2018:${number.toLowerCase()}`;
 
@@ -52,6 +55,23 @@ test("NTC 3.2 colloca ogni formula una sola volta e rimuove il testo estratto co
     );
 });
 
+test("NTC § 3.2 trascrive i tre parametri come elenco senza simboli puntati", async () => {
+    const unit = await json("corpus/units/ntc2018/3.2.json");
+    const definitions = unit.blocks.slice(4, 7);
+    assert.deepEqual(definitions.map((block: { kind: string; listMarker?: string }) => [block.kind, block.listMarker]), [
+        ["list-item", "none"],
+        ["list-item", "none"],
+        ["list-item", "none"],
+    ]);
+    assert.deepEqual(definitions.map((block: { text: { normalized: string; inline?: Array<{ value: string; latex?: string }> } }) => block.text.normalized), [
+        "a_g accelerazione orizzontale massima al sito;",
+        "F_0 valore massimo del fattore di amplificazione dello spettro in accelerazione orizzontale;",
+        "T_C^* valore di riferimento per la determinazione del periodo di inizio del tratto a velocità costante dello spettro in accelerazione orizzontale.",
+    ]);
+    assert.deepEqual(definitions.flatMap((block: { text: { inline?: Inline[] } }) => block.text.inline ?? []).flatMap((segment: Inline) => segment.latex ? [segment.latex] : []), ["a_g", "F_0", "T_C^*"]);
+    assert.equal(unit.blocks[7].text.normalized.includes("a_g, F_0 e T_C^*"), true);
+});
+
 test("NTC Tabelle 3.2.I–VII conservano struttura e matematica ufficiali", async () => {
     const manifest = await json("corpus/assets/ntc2018/core-tables.json");
     const tables = manifest.tables.filter((table: { officialNumber: string | null }) => /^3\.2\.(?:I|II|III|IV|V|VI|VII)$/.test(table.officialNumber ?? ""));
@@ -66,6 +86,78 @@ test("NTC Tabelle 3.2.I–VII conservano struttura e matematica ufficiali", asyn
     assert.deepEqual(unit322.assets.tableIds, [tableId("3.2.II"), tableId("3.2.III")]);
     const unit32321 = await json("corpus/units/ntc2018/3.2.3.2.1.json");
     assert.deepEqual(unit32321.assets.tableIds, [tableId("3.2.IV"), tableId("3.2.V")]);
+});
+
+test("NTC 3.2 conserva grassetti, elenco delle definizioni e corsivi matematici nelle tabelle", async () => {
+    const manifest = await json("corpus/assets/ntc2018/core-tables.json");
+    const tableI = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.I") as { headers: TableCell[][]; rows: TableCell[][]; captionInline?: TableInline[] };
+    const tableII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.II") as { rows: TableCell[][] };
+    const tableIII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.III") as { rows: TableCell[][] };
+    assert.equal(tableI.headers[0]![0]!.colSpan, undefined);
+    assert.equal(tableI.headers[0]![1]!.colSpan, 2);
+    const sloColumn = tableI.rows.flat().filter((cell) => ["SLO", "SLD", "SLV", "SLC"].includes(cell.text));
+    assert.equal(sloColumn.every((cell) => cell.align === "center" && cell.noWrap === true), true);
+    assert.equal(tableII.rows.every((row) => row[1]?.inline?.[0]?.kind === "em" && row[1]?.inline?.[1]?.kind === "text"), true);
+    assert.equal(tableI.captionInline?.find((segment) => segment.kind === "math")?.latex, "P_{VR}");
+    const captionMath = (officialNumber: string) => (manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === officialNumber) as { captionInline?: TableInline[] }).captionInline?.find((segment) => segment.kind === "math")?.latex;
+    assert.equal(captionMath("2.4.I"), "V_N");
+    assert.equal(captionMath("2.4.II"), "C_U");
+    assert.equal(captionMath("3.2.IV"), "S_S");
+    assert.equal(captionMath("3.2.V"), "S_T");
+    assert.deepEqual(
+        (manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.VII") as { captionInline?: TableInline[] }).captionInline?.filter((segment) => segment.kind === "math").map((segment) => segment.latex),
+        ["T_E", "T_F"],
+    );
+    assert.equal(tableII.rows.every((row) => row[1]?.inline?.length === 2), true);
+    assert.deepEqual(tableII.rows.map((row) => row[1]?.inline?.[0]?.value), [
+        "Ammassi rocciosi affioranti o terreni molto rigidi",
+        "Rocce tenere e depositi di terreni a grana grossa molto addensati o terreni a grana fina molto consistenti",
+        "Depositi di terreni a grana grossa mediamente addensati o terreni a grana fina mediamente consistenti",
+        "Depositi di terreni a grana grossa scarsamente addensati o di terreni a grana fina scarsamente consistenti",
+        "Terreni con caratteristiche e valori di velocità equivalente riconducibili a quelle definite per le categorie C o D",
+    ]);
+    const topographicMath = tableIII.rows.flat().map((cell) => cell.inline?.find((segment) => segment.kind === "math")).filter(Boolean) as TableInline[];
+    assert.equal(topographicMath.length, 4);
+    assert.equal(topographicMath.every((segment) => segment.value.includes("i") && segment.latex?.includes("i")), true);
+
+    const unit321 = await json("corpus/units/ntc2018/3.2.1.json");
+    const labels = unit321.blocks.filter((block: { kind: string }) => block.kind === "list-item").map((block: { text: { inline?: Array<{ kind: string }> } }) => block.text.inline?.[0]?.kind);
+    assert.deepEqual(labels, ["strong", "strong", "strong", "strong"]);
+
+    const unit322 = await json("corpus/units/ntc2018/3.2.2.json");
+    const definitionItems = unit322.blocks.filter((block: { blockId: string }) => /#block-editorial-00[7-9]|#block-editorial-010$/u.test(block.blockId));
+    assert.deepEqual(definitionItems.map((block: { kind: string; listMarker?: string }) => [block.kind, block.listMarker]), [
+        ["list-item", "none"], ["list-item", "none"], ["list-item", "none"], ["list-item", "none"],
+    ]);
+
+    for (const officialNumber of ["3.2.IV", "3.2.V", "3.2.VI", "3.2.VII"]) {
+        const table = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === officialNumber) as { headers: TableCell[][]; rows: TableCell[][] };
+        assert.equal([...table.headers.flat(), ...table.rows.flat()].every((cell) => cell.align === "center"), true, officialNumber);
+    }
+    const tableVI = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.2.VI") as { rows: TableCell[][] };
+    const tableVII = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.2.VII") as { rows: TableCell[][] };
+    const tableIV = manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.2.IV") as { rows: TableCell[][] };
+    assert.equal(tableIV.rows.every((row) => row[0]?.strong === true), true);
+    assert.equal(tableVI.rows[0]![0]!.strong, true);
+    assert.equal(tableVII.rows.every((row) => row[0]?.strong === true), true);
+
+    const unit32321 = await json("corpus/units/ntc2018/3.2.3.2.1.json");
+    const stratigraphic = unit32321.blocks.filter((block: { blockId: string }) => /#block-editorial-02[23]$/u.test(block.blockId));
+    assert.deepEqual(stratigraphic.flatMap((block: { text: { inline?: Array<{ kind: string; value: string }> } }) => block.text.inline?.filter((segment) => segment.kind === "strong").map((segment) => segment.value) ?? []), ["A", "B", "C", "D", "E", "A"]);
+});
+
+test("NTC § 3.2.3.5 conserva il titolo completo e la matematica inline", async () => {
+    const unit = await json("corpus/units/ntc2018/3.2.3.5.json");
+    const expectedTitle = "SPETTRI DI RISPOSTA DI PROGETTO PER GLI STATI LIMITE DI DANNO (SLD), DI SALVAGUARDIA DELLA VITA (SLV) E DI PREVENZIONE DEL COLLASSO (SLC)";
+    assert.equal(unit.title, expectedTitle);
+    assert.equal(unit.blocks[0].text.normalized, `3.2.3.5 ${expectedTitle}`);
+    const math = unit.blocks.slice(1).flatMap((block: { text: { inline?: Array<{ kind: string; latex?: string }> } }) => block.text.inline ?? []).filter((segment: { kind: string }) => segment.kind === "math");
+    assert.equal(math.some((segment: { latex?: string }) => segment.latex === "S_d(T)"), true);
+    assert.equal(math.some((segment: { latex?: string }) => segment.latex === "q"), true);
+    assert.equal(math.some((segment: { latex?: string }) => segment.latex === "S_d(T)\\ge0{,}2a_g"), true);
+    for (const block of unit.blocks.slice(1)) {
+        assert.equal(block.text.inline.map((segment: { value: string }) => segment.value).join(""), block.text.normalized);
+    }
 });
 
 test("NTC 3.2.3.6 rende ξ, intervalli, periodi e percentuali come matematica inline", async () => {

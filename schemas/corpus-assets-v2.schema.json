@@ -142,6 +142,83 @@
         }
       }
     },
+    "inlineSegment": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "text"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "em"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "strong"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "latex"
+          ],
+          "properties": {
+            "kind": {
+              "const": "math"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "latex": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
     "formula": {
       "allOf": [
         {
@@ -197,6 +274,13 @@
           "type": "string",
           "minLength": 1
         },
+        "inline": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/inlineSegment"
+          }
+        },
         "colSpan": {
           "type": "integer",
           "minimum": 1,
@@ -208,6 +292,18 @@
           "default": 1
         },
         "strong": {
+          "type": "boolean",
+          "default": false
+        },
+        "align": {
+          "type": "string",
+          "enum": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        "noWrap": {
           "type": "boolean",
           "default": false
         }
@@ -262,6 +358,13 @@
                 "string",
                 "null"
               ]
+            },
+            "captionInline": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/inlineSegment"
+              }
             },
             "columnCount": {
               "type": "integer",
