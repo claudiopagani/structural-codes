@@ -21,6 +21,7 @@ type Transformation = { operation: string; ruleVersion: string; note: string };
 type UnitBlock = {
     blockId: string;
     kind: string;
+    listMarker?: "dash" | "none";
     assetId?: string;
     text?: {
         raw: string;
@@ -51,7 +52,14 @@ type EvidenceItem = {
     region: Region;
 };
 type PageEvidence = { textItems: EvidenceItem[] };
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type Cell = {
+    text: string;
+    latex?: string;
+    inline?: InlineSegment[];
+    colSpan?: number;
+    rowSpan?: number;
+    align?: "left" | "center" | "right";
+};
 
 const sha256 = (value: string): string => createHash("sha256").update(value, "utf8").digest("hex");
 const region = (x: number, y: number, width: number, height: number): Region => ({
@@ -63,8 +71,9 @@ const region = (x: number, y: number, width: number, height: number): Region => 
 });
 const text = (value: string): InlineSegment => ({ kind: "text", value });
 const math = (value: string, latex = value): InlineSegment => ({ kind: "math", value, latex });
-const cell = (value: string): Cell => ({ text: value });
-const mathCell = (value: string, latex: string): Cell => ({ text: value, latex });
+const cell = (value: string, options: Omit<Cell, "text" | "latex" | "inline"> = {}): Cell => ({ text: value, ...options });
+const mathCell = (value: string, latex: string, options: Omit<Cell, "text" | "latex" | "inline"> = {}): Cell => ({ text: value, latex, ...options });
+const inlineCell = (value: string, inline: InlineSegment[], options: Omit<Cell, "text" | "latex" | "inline"> = {}): Cell => ({ text: value, inline, ...options });
 const uid = (unit: string): string => "urn:structural-codes:it:unit:ntc2018:" + unit;
 const formulaId = (number: string): string => "urn:structural-codes:it:asset:formula:ntc2018:" + number;
 const tableId = (number: string): string => "urn:structural-codes:it:asset:table:ntc2018:" + number.toLowerCase();
@@ -128,6 +137,7 @@ async function textBlock(
     page: number,
     target: Region,
     value: string | InlineSegment[],
+    listMarker?: "dash" | "none",
 ): Promise<UnitBlock> {
     const inline = typeof value === "string" ? undefined : value;
     const normalized = typeof value === "string" ? value : value.map((segment) => segment.value).join("");
@@ -136,6 +146,7 @@ async function textBlock(
         blockId: uid(unit) + "#block-" + suffix,
         kind,
         origin: "official",
+        ...(listMarker ? { listMarker } : {}),
         text: {
             raw,
             normalized,
@@ -312,20 +323,39 @@ async function fixExistingWindUnits(): Promise<void> {
         math("vb", "v_b"),
         text(" è data dall’espressione:"),
     ]);
-    updateText(block(unit331, "3.3.1", "editorial-004"), [
+    const vb0Definition = await textBlock("3.3.1", "editorial-004", "list-item", 56, region(71.85, 257.5, 451.7, 21.8), [
         math("Vb,0", "V_{b,0}"),
-        text(" è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "),
+        text(" è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);"),
+    ], "none");
+    const caDefinition = await textBlock("3.3.1", "editorial-004-b", "list-item", 56, region(71.85, 279.5, 451.7, 13.2), [
         math("ca", "c_a"),
         text(" è il coefficiente di altitudine fornito dalla relazione:"),
-    ]);
-    updateText(block(unit331, "3.3.1", "editorial-007"), [
-        math("a0", "a_0"),
-        text(", "),
-        math("ks", "k_s"),
-        text(" sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "),
+    ], "none");
+    const a0Definition = await textBlock("3.3.1", "editorial-007", "list-item", 56, region(71.85, 361.5, 451.7, 11.5), [
+        math("a0, ks", "a_0,\\,k_s"),
+        text(" sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);"),
+    ], "none");
+    const asDefinition = await textBlock("3.3.1", "editorial-007-b", "list-item", 56, region(71.85, 372.9, 451.7, 11.5), [
         math("as", "a_s"),
         text(" è l’altitudine sul livello del mare del sito ove sorge la costruzione."),
-    ]);
+    ], "none");
+    updateText(block(unit331, "3.3.1", "editorial-006"), "dove:");
+    unit331.blocks = [
+        block(unit331, "3.3.1", "heading"),
+        block(unit331, "3.3.1", "editorial-001"),
+        block(unit331, "3.3.1", "editorial-002"),
+        block(unit331, "3.3.1", "editorial-003"),
+        vb0Definition,
+        caDefinition,
+        block(unit331, "3.3.1", "editorial-005"),
+        block(unit331, "3.3.1", "editorial-006"),
+        a0Definition,
+        asDefinition,
+        block(unit331, "3.3.1", "editorial-008"),
+        block(unit331, "3.3.1", "editorial-009"),
+        block(unit331, "3.3.1", "editorial-010"),
+        block(unit331, "3.3.1", "editorial-011"),
+    ];
     await writeUnit("3.3.1", unit331);
 
     const unit332 = await readUnit("3.3.2");
@@ -336,15 +366,17 @@ async function fixExistingWindUnits(): Promise<void> {
         math("TR", "T_R"),
         text(". Tale velocità è definita dalla relazione:"),
     ]);
-    updateText(block(unit332, "3.3.2", "editorial-003"), [
-        text("dove "),
+    updateText(block(unit332, "3.3.2", "editorial-003"), "dove");
+    const vbDefinition = await textBlock("3.3.2", "editorial-003-a", "list-item", 57, region(70.56, 347.5, 454.3, 12), [
         math("vb", "v_b"),
-        text(" è la velocità base di riferimento, di cui al § 3.3.1; "),
+        text(" è la velocità base di riferimento, di cui al § 3.3.1;"),
+    ], "none");
+    const crDefinition = await textBlock("3.3.2", "editorial-003-b", "list-item", 57, region(70.56, 360.8, 454.3, 12), [
         math("cr", "c_r"),
         text(" è il coefficiente di ritorno, funzione del periodo di ritorno di progetto "),
         math("TR", "T_R"),
         text("."),
-    ]);
+    ], "none");
     updateText(block(unit332, "3.3.2", "editorial-006"), [
         text("dove "),
         math("TR", "T_R"),
@@ -367,25 +399,68 @@ async function fixExistingWindUnits(): Promise<void> {
         math("TR ≥ 10 anni", "T_R\\ge10\\,\\text{anni}"),
         text(";"),
     ]);
+    unit332.blocks = [
+        block(unit332, "3.3.2", "heading"),
+        block(unit332, "3.3.2", "editorial-001"),
+        block(unit332, "3.3.2", "editorial-002"),
+        block(unit332, "3.3.2", "editorial-003"),
+        vbDefinition,
+        crDefinition,
+        block(unit332, "3.3.2", "editorial-004"),
+        block(unit332, "3.3.2", "editorial-005"),
+        block(unit332, "3.3.2", "editorial-006"),
+        block(unit332, "3.3.2", "editorial-007"),
+        block(unit332, "3.3.2", "editorial-008"),
+        block(unit332, "3.3.2", "editorial-009"),
+    ];
     await writeUnit("3.3.2", unit332);
 
     const unit334 = await readUnit("3.3.4");
-    updateText(block(unit334, "3.3.4", "editorial-003"), [
-        text("dove "),
-        math("qr", "q_r"), text(" è la pressione cinetica di riferimento di cui al § 3.3.6; "),
-        math("ce", "c_e"), text(" è il coefficiente di esposizione di cui al § 3.3.7; "),
-        math("cp", "c_p"), text(" è il coefficiente di pressione di cui al § 3.3.8; "),
+    updateText(block(unit334, "3.3.4", "editorial-003"), "dove");
+    const qrDefinition = await textBlock("3.3.4", "editorial-003-a", "list-item", 58, region(72.74, 148.8, 297.2, 11.5), [
+        math("qr", "q_r"), text(" è la pressione cinetica di riferimento di cui al § 3.3.6;"),
+    ], "none");
+    const ceDefinition = await textBlock("3.3.4", "editorial-003-b", "list-item", 58, region(72.74, 162.1, 297.2, 11.5), [
+        math("ce", "c_e"), text(" è il coefficiente di esposizione di cui al § 3.3.7;"),
+    ], "none");
+    const cpDefinition = await textBlock("3.3.4", "editorial-003-c", "list-item", 58, region(72.74, 175.5, 297.2, 11.5), [
+        math("cp", "c_p"), text(" è il coefficiente di pressione di cui al § 3.3.8;"),
+    ], "none");
+    const cdDefinition = await textBlock("3.3.4", "editorial-003-d", "list-item", 58, region(72.74, 188.8, 297.2, 11.5), [
         math("cd", "c_d"), text(" è il coefficiente dinamico di cui al § 3.3.9."),
-    ]);
+    ], "none");
+    unit334.blocks = [
+        block(unit334, "3.3.4", "heading"),
+        block(unit334, "3.3.4", "editorial-001"),
+        block(unit334, "3.3.4", "editorial-002"),
+        block(unit334, "3.3.4", "editorial-003"),
+        qrDefinition,
+        ceDefinition,
+        cpDefinition,
+        cdDefinition,
+    ];
     await writeUnit("3.3.4", unit334);
 
     const unit335 = await readUnit("3.3.5");
-    updateText(block(unit335, "3.3.5", "editorial-003"), [
-        text("dove "),
-        math("qr", "q_r"), text(" è la pressione cinetica di riferimento di cui al § 3.3.6; "),
-        math("ce", "c_e"), text(" è il coefficiente di esposizione di cui al § 3.3.7; "),
+    updateText(block(unit335, "3.3.5", "editorial-003"), "dove");
+    const qrTangentDefinition = await textBlock("3.3.5", "editorial-003-a", "list-item", 58, region(72.74, 260.2, 339.1, 11.5), [
+        math("qr", "q_r"), text(" è la pressione cinetica di riferimento di cui al § 3.3.6;"),
+    ], "none");
+    const ceTangentDefinition = await textBlock("3.3.5", "editorial-003-b", "list-item", 58, region(72.74, 273.5, 339.1, 11.5), [
+        math("ce", "c_e"), text(" è il coefficiente di esposizione di cui al § 3.3.7;"),
+    ], "none");
+    const cfTangentDefinition = await textBlock("3.3.5", "editorial-003-c", "list-item", 58, region(72.74, 286.8, 339.1, 11.5), [
         math("cf", "c_f"), text(" è il coefficiente d’attrito di cui al § 3.3.8."),
-    ]);
+    ], "none");
+    unit335.blocks = [
+        block(unit335, "3.3.5", "heading"),
+        block(unit335, "3.3.5", "editorial-001"),
+        block(unit335, "3.3.5", "editorial-002"),
+        block(unit335, "3.3.5", "editorial-003"),
+        qrTangentDefinition,
+        ceTangentDefinition,
+        cfTangentDefinition,
+    ];
     await writeUnit("3.3.5", unit335);
 
     const unit336 = await readUnit("3.3.6");
@@ -394,18 +469,29 @@ async function fixExistingWindUnits(): Promise<void> {
         math("qr", "q_r"),
         text(" è data dall’espressione:"),
     ]);
-    updateText(block(unit336, "3.3.6", "editorial-003"), [
-        text("dove "),
-        math("vr", "v_r"), text(" è la velocità di riferimento del vento di cui al § 3.3.2; "),
+    updateText(block(unit336, "3.3.6", "editorial-003"), "dove");
+    const vrDefinition = await textBlock("3.3.6", "editorial-003-a", "list-item", 58, region(72.74, 366.5, 297.1, 11.5), [
+        math("vr", "v_r"), text(" è la velocità di riferimento del vento di cui al § 3.3.2;"),
+    ], "none");
+    const rhoDefinition = await textBlock("3.3.6", "editorial-003-b", "list-item", 58, region(72.74, 379.7, 297.1, 11.5), [
         math("ρ", "\\rho"), text(" è la densità dell’aria assunta convenzionalmente costante e pari a "),
         math("1,25 kg/m³", "1{,}25\\,\\mathrm{kg/m^3}"), text("."),
-    ]);
+    ], "none");
     updateText(block(unit336, "3.3.6", "editorial-004"), [
         text("Esprimendo "),
         math("ρ", "\\rho"), text(" in "), math("kg/m³", "\\mathrm{kg/m^3}"),
         text(" e "), math("vr", "v_r"), text(" in "), math("m/s", "\\mathrm{m/s}"),
         text(", "), math("qr", "q_r"), text(" risulta espresso in "), math("N/m²", "\\mathrm{N/m^2}"), text("."),
     ]);
+    unit336.blocks = [
+        block(unit336, "3.3.6", "heading"),
+        block(unit336, "3.3.6", "editorial-001"),
+        block(unit336, "3.3.6", "editorial-002"),
+        block(unit336, "3.3.6", "editorial-003"),
+        vrDefinition,
+        rhoDefinition,
+        block(unit336, "3.3.6", "editorial-004"),
+    ];
     await writeUnit("3.3.6", unit336);
 }
 
@@ -421,12 +507,14 @@ async function rebuildUnit337(): Promise<void> {
         math("z = 200 m", "z=200\\,\\mathrm{m}"),
         text(", esso è dato dalla formula:"),
     ]);
-    updateText(block(unit, number, "editorial-003"), [
-        text("dove "),
-        math("kr", "k_r"), text(", "), math("z0", "z_0"), text(", "), math("zmin", "z_{min}"),
-        text(" sono assegnati in Tab. 3.3.II in funzione della categoria di esposizione del sito ove sorge la costruzione; "),
+    updateText(block(unit, number, "editorial-003"), "dove");
+    const roughnessParameters = await textBlock(number, "editorial-003-a", "list-item", 58, region(72.74, 517.5, 450.7, 11.5), [
+        math("kr, z0, zmin", "k_r,\\,z_0,\\,z_{min}"),
+        text(" sono assegnati in Tab. 3.3.II in funzione della categoria di esposizione del sito ove sorge la costruzione;"),
+    ], "none");
+    const topographyCoefficient = await textBlock(number, "editorial-003-b", "list-item", 58, region(72.74, 531.7, 450.7, 11.5), [
         math("ct", "c_t"), text(" è il coefficiente di topografia."),
-    ]);
+    ], "none");
     updateText(block(unit, number, "editorial-005"), [
         text("La categoria di esposizione è assegnata nella Fig. 3.3.2 in funzione della posizione geografica del sito ove sorge la costruzione e della classe di rugosità del terreno definita in Tab. 3.3.III. Nelle fasce entro "),
         math("40 km", "40\\,\\mathrm{km}"),
@@ -445,24 +533,18 @@ async function rebuildUnit337(): Promise<void> {
         text(" può essere ricavato da dati suffragati da opportuna documentazione."),
     ]);
     const table = await assetRef(number, "editorial-008", "table-ref", tableId("3.3.III"), 59, region(65, 97, 310, 158));
-    const explanatory = await textBlock(number, "editorial-009", "paragraph", 59, region(72, 257, 303, 70), [
-        text("L’assegnazione della classe di rugosità non dipende dalla conformazione orografica e topografica del terreno. Si può assumere che il sito appartenga alla Classe A o B, purché la costruzione si trovi nell’area relativa per non meno di "),
-        math("1 km", "1\\,\\mathrm{km}"),
-        text(" e comunque per non meno di 20 volte l’altezza della costruzione, per tutti i settori di provenienza del vento ampi almeno "),
-        math("30°", "30^\\circ"),
-        text(". Si deve assumere che il sito appartenga alla Classe D, qualora la costruzione sorga nelle aree indicate con le lettere a) o b), oppure entro un raggio di "),
-        math("1 km", "1\\,\\mathrm{km}"),
-        text(" da essa vi sia un settore ampio "),
-        math("30°", "30^\\circ"),
-        text(", dove il "),
-        math("90%", "90\\%"),
-        text(" del terreno sia del tipo indicato con la lettera c). Laddove sussistano dubbi sulla scelta della classe di rugosità, si deve assegnare la classe più sfavorevole (l’azione del vento è in genere minima in Classe A e massima in Classe D)."),
-    ]);
     unit.blocks = [
         block(unit, number, "heading"),
-        ...["editorial-001", "editorial-002", "editorial-003", "editorial-004", "editorial-005", "editorial-006", "editorial-007"].map((suffix) => block(unit, number, suffix)),
+        block(unit, number, "editorial-001"),
+        block(unit, number, "editorial-002"),
+        block(unit, number, "editorial-003"),
+        roughnessParameters,
+        topographyCoefficient,
+        block(unit, number, "editorial-004"),
+        block(unit, number, "editorial-005"),
+        block(unit, number, "editorial-006"),
+        block(unit, number, "editorial-007"),
         table,
-        explanatory,
         asset(unit, "urn:structural-codes:it:asset:figure:ntc2018:3.3.2"),
         asset(unit, "urn:structural-codes:it:asset:figure:ntc2018:3.3.3"),
     ];
@@ -691,18 +773,19 @@ const tables = [
         officialNumber: "3.3.I",
         pdfPage: 56,
         caption: "Tabella 3.3.I - Valori dei parametri vb,0, a0, ks",
+        captionInline: [text("Valori dei parametri "), math("vb,0", "v_{b,0}"), text(", "), math("a0", "a_0"), text(", "), math("ks", "k_s")],
         columnCount: 5,
-        headers: [[cell("Zona"), cell("Descrizione"), mathCell("vb,0 [m/s]", "v_{b,0}\\,[\\mathrm{m/s}]"), mathCell("a0 [m]", "a_0\\,[\\mathrm{m}]"), mathCell("ks", "k_s")]],
+        headers: [[cell("Zona", { align: "center" }), cell("Descrizione"), mathCell("vb,0 [m/s]", "v_{b,0}\\,[\\mathrm{m/s}]", { align: "center" }), mathCell("a0 [m]", "a_0\\,[\\mathrm{m}]", { align: "center" }), mathCell("ks", "k_s", { align: "center" })]],
         rows: [
-            [cell("1"), cell("Valle d’Aosta, Piemonte, Lombardia, Trentino Alto Adige, Veneto, Friuli Venezia Giulia (con l’eccezione della provincia di Trieste)"), cell("25"), cell("1000"), mathCell("0,40", "0{,}40")],
-            [cell("2"), cell("Emilia Romagna"), cell("25"), cell("750"), mathCell("0,45", "0{,}45")],
-            [cell("3"), cell("Toscana, Marche, Umbria, Lazio, Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria (esclusa la provincia di Reggio Calabria)"), cell("27"), cell("500"), mathCell("0,37", "0{,}37")],
-            [cell("4"), cell("Sicilia e provincia di Reggio Calabria"), cell("28"), cell("500"), mathCell("0,36", "0{,}36")],
-            [cell("5"), cell("Sardegna (zona a oriente della retta congiungente Capo Teulada con l’Isola di Maddalena)"), cell("28"), cell("750"), mathCell("0,40", "0{,}40")],
-            [cell("6"), cell("Sardegna (zona a occidente della retta congiungente Capo Teulada con l’Isola di Maddalena)"), cell("28"), cell("500"), mathCell("0,36", "0{,}36")],
-            [cell("7"), cell("Liguria"), cell("28"), cell("1000"), mathCell("0,54", "0{,}54")],
-            [cell("8"), cell("Provincia di Trieste"), cell("30"), cell("1500"), mathCell("0,50", "0{,}50")],
-            [cell("9"), cell("Isole (con l’eccezione di Sicilia e Sardegna) e mare aperto"), cell("31"), cell("500"), mathCell("0,32", "0{,}32")],
+            [cell("1", { align: "center" }), cell("Valle d’Aosta, Piemonte, Lombardia, Trentino Alto Adige, Veneto, Friuli Venezia Giulia (con l’eccezione della provincia di Trieste)"), cell("25", { align: "center" }), cell("1000", { align: "center" }), mathCell("0,40", "0{,}40", { align: "center" })],
+            [cell("2", { align: "center" }), cell("Emilia Romagna"), cell("25", { align: "center" }), cell("750", { align: "center" }), mathCell("0,45", "0{,}45", { align: "center" })],
+            [cell("3", { align: "center" }), cell("Toscana, Marche, Umbria, Lazio, Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria (esclusa la provincia di Reggio Calabria)"), cell("27", { align: "center" }), cell("500", { align: "center" }), mathCell("0,37", "0{,}37", { align: "center" })],
+            [cell("4", { align: "center" }), cell("Sicilia e provincia di Reggio Calabria"), cell("28", { align: "center" }), cell("500", { align: "center" }), mathCell("0,36", "0{,}36", { align: "center" })],
+            [cell("5", { align: "center" }), cell("Sardegna (zona a oriente della retta congiungente Capo Teulada con l’Isola di Maddalena)"), cell("28", { align: "center" }), cell("750", { align: "center" }), mathCell("0,40", "0{,}40", { align: "center" })],
+            [cell("6", { align: "center" }), cell("Sardegna (zona a occidente della retta congiungente Capo Teulada con l’Isola di Maddalena)"), cell("28", { align: "center" }), cell("500", { align: "center" }), mathCell("0,36", "0{,}36", { align: "center" })],
+            [cell("7", { align: "center" }), cell("Liguria"), cell("28", { align: "center" }), cell("1000", { align: "center" }), mathCell("0,54", "0{,}54", { align: "center" })],
+            [cell("8", { align: "center" }), cell("Provincia di Trieste"), cell("30", { align: "center" }), cell("1500", { align: "center" }), mathCell("0,50", "0{,}50", { align: "center" })],
+            [cell("9", { align: "center" }), cell("Isole (con l’eccezione di Sicilia e Sardegna) e mare aperto"), cell("31", { align: "center" }), cell("500", { align: "center" }), mathCell("0,32", "0{,}32", { align: "center" })],
         ],
         notes: [],
     },
@@ -713,13 +796,13 @@ const tables = [
         pdfPage: 58,
         caption: "Tabella 3.3.II - Parametri per la definizione del coefficiente di esposizione",
         columnCount: 4,
-        headers: [[cell("Categoria di esposizione del sito"), mathCell("Kr", "K_r"), mathCell("z0 [m]", "z_0\\,[\\mathrm{m}]"), mathCell("zmin [m]", "z_{min}\\,[\\mathrm{m}]")]],
+        headers: [[cell("Categoria di esposizione del sito", { align: "center" }), mathCell("Kr", "K_r", { align: "center" }), mathCell("z0 [m]", "z_0\\,[\\mathrm{m}]", { align: "center" }), mathCell("zmin [m]", "z_{min}\\,[\\mathrm{m}]", { align: "center" })]],
         rows: [
-            [cell("I"), mathCell("0,17", "0{,}17"), mathCell("0,01", "0{,}01"), cell("2")],
-            [cell("II"), mathCell("0,19", "0{,}19"), mathCell("0,05", "0{,}05"), cell("4")],
-            [cell("III"), mathCell("0,20", "0{,}20"), mathCell("0,10", "0{,}10"), cell("5")],
-            [cell("IV"), mathCell("0,22", "0{,}22"), mathCell("0,30", "0{,}30"), cell("8")],
-            [cell("V"), mathCell("0,23", "0{,}23"), mathCell("0,70", "0{,}70"), cell("12")],
+            [cell("I", { align: "center" }), mathCell("0,17", "0{,}17", { align: "center" }), mathCell("0,01", "0{,}01", { align: "center" }), cell("2", { align: "center" })],
+            [cell("II", { align: "center" }), mathCell("0,19", "0{,}19", { align: "center" }), mathCell("0,05", "0{,}05", { align: "center" }), cell("4", { align: "center" })],
+            [cell("III", { align: "center" }), mathCell("0,20", "0{,}20", { align: "center" }), mathCell("0,10", "0{,}10", { align: "center" }), cell("5", { align: "center" })],
+            [cell("IV", { align: "center" }), mathCell("0,22", "0{,}22", { align: "center" }), mathCell("0,30", "0{,}30", { align: "center" }), cell("8", { align: "center" })],
+            [cell("V", { align: "center" }), mathCell("0,23", "0{,}23", { align: "center" }), mathCell("0,70", "0{,}70", { align: "center" }), cell("12", { align: "center" })],
         ],
         notes: [],
     },
@@ -730,12 +813,25 @@ const tables = [
         pdfPage: 59,
         caption: "Tabella 3.3.III - Classi di rugosità del terreno",
         columnCount: 2,
-        headers: [[cell("Classe di rugosità del terreno"), cell("Descrizione")]],
+        headers: [[cell("Classe di rugosità del terreno", { align: "center" }), cell("Descrizione")]],
         rows: [
-            [cell("A"), cell("Aree urbane in cui almeno il 15% della superficie sia coperto da edifici la cui altezza media superi i 15 m")],
-            [cell("B"), cell("Aree urbane (non di classe A), suburbane, industriali e boschive")],
-            [cell("C"), cell("Aree con ostacoli diffusi (alberi, case, muri, recinzioni,....); aree con rugosità non riconducibile alle classi A, B, D")],
-            [cell("D"), cell("a) Mare e relativa fascia costiera (entro 2 km dalla costa); b) Lago (con larghezza massima pari ad almeno 1 km) e relativa fascia costiera (entro 1 km dalla costa) c) Aree prive di ostacoli o con al più rari ostacoli isolati (aperta campagna, aeroporti, aree agricole, pascoli, zone paludose o sabbiose, superfici innevate o ghiacciate, ....)")],
+            [cell("A", { align: "center" }), cell("Aree urbane in cui almeno il 15% della superficie sia coperto da edifici la cui altezza media superi i 15 m")],
+            [cell("B", { align: "center" }), cell("Aree urbane (non di classe A), suburbane, industriali e boschive")],
+            [cell("C", { align: "center" }), cell("Aree con ostacoli diffusi (alberi, case, muri, recinzioni,....); aree con rugosità non riconducibile alle classi A, B, D")],
+            [cell("D", { align: "center" }), cell("a) Mare e relativa fascia costiera (entro 2 km dalla costa); b) Lago (con larghezza massima pari ad almeno 1 km) e relativa fascia costiera (entro 1 km dalla costa) c) Aree prive di ostacoli o con al più rari ostacoli isolati (aperta campagna, aeroporti, aree agricole, pascoli, zone paludose o sabbiose, superfici innevate o ghiacciate, ....)")],
+            [inlineCell("L’assegnazione della classe di rugosità non dipende dalla conformazione orografica e topografica del terreno. Si può assumere che il sito appartenga alla Classe A o B, purché la costruzione si trovi nell’area relativa per non meno di 1 km e comunque per non meno di 20 volte l’altezza della costruzione, per tutti i settori di provenienza del vento ampi almeno 30°. Si deve assumere che il sito appartenga alla Classe D, qualora la costruzione sorga nelle aree indicate con le lettere a) o b), oppure entro un raggio di 1 km da essa vi sia un settore ampio 30°, dove il 90% del terreno sia del tipo indicato con la lettera c). Laddove sussistessero dubbi sulla scelta della classe di rugosità, si deve assegnare la classe più sfavorevole (l’azione del vento è in genere minima in Classe A e massima in Classe D).", [
+                text("L’assegnazione della classe di rugosità non dipende dalla conformazione orografica e topografica del terreno. Si può assumere che il sito appartenga alla Classe A o B, purché la costruzione si trovi nell’area relativa per non meno di "),
+                math("1 km", "1\\,\\mathrm{km}"),
+                text(" e comunque per non meno di 20 volte l’altezza della costruzione, per tutti i settori di provenienza del vento ampi almeno "),
+                math("30°", "30^\\circ"),
+                text(". Si deve assumere che il sito appartenga alla Classe D, qualora la costruzione sorga nelle aree indicate con le lettere a) o b), oppure entro un raggio di "),
+                math("1 km", "1\\,\\mathrm{km}"),
+                text(" da essa vi sia un settore ampio "),
+                math("30°", "30^\\circ"),
+                text(", dove il "),
+                math("90%", "90\\%"),
+                text(" del terreno sia del tipo indicato con la lettera c). Laddove sussistessero dubbi sulla scelta della classe di rugosità, si deve assegnare la classe più sfavorevole (l’azione del vento è in genere minima in Classe A e massima in Classe D)."),
+            ], { colSpan: 2 })],
         ],
         notes: [],
     },
@@ -769,9 +865,15 @@ const tables = [
 
 async function rebuildTables(): Promise<void> {
     const manifest = JSON.parse(await readFile(tableManifestPath, "utf8"));
-    const ids = new Set(tables.map((table) => table.id));
-    manifest.tables = manifest.tables.filter((table: { id: string }) => !ids.has(table.id));
-    manifest.tables.push(...tables);
+    const replacements = new Map(tables.map((table) => [table.id, table]));
+    const replaced = new Set<string>();
+    manifest.tables = manifest.tables.map((table: { id: string }) => {
+        const replacement = replacements.get(table.id);
+        if (!replacement) return table;
+        replaced.add(table.id);
+        return replacement;
+    });
+    manifest.tables.push(...tables.filter((table) => !replaced.has(table.id)));
     await writeFile(tableManifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 }
 

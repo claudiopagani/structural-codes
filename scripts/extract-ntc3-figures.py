@@ -37,6 +37,13 @@ FIGURES = {
         "region": (70, 90, 350, 185),
         "filename": "fig3.3.3.png",
         "alt": "Grafico del coefficiente di esposizione in funzione dell'altezza per le categorie I-V.",
+        "captionInline": [
+            {"kind": "text", "value": "Andamento del coefficiente di esposizione "},
+            {"kind": "math", "value": "ce", "latex": "c_e"},
+            {"kind": "text", "value": " in funzione dell’altezza sul suolo (per "},
+            {"kind": "math", "value": "ct = 1", "latex": "c_t=1"},
+            {"kind": "text", "value": ")"},
+        ],
     },
     "3.4.1": {
         "unit": "3.4.2",
@@ -159,6 +166,10 @@ def main() -> None:
         figure["imagePath"] = f"figures/ntc2018/{definition['filename']}"
         figure["region"] = region_record(definition["region"])
         figure["sha256"] = sha256(target)
+        if "captionInline" in definition:
+            figure["captionInline"] = definition["captionInline"]
+        else:
+            figure.pop("captionInline", None)
 
         figure_ids_by_unit.setdefault(definition["unit"], set()).add(figure["id"])
         print(f"{official_number}: {rendered} -> {target}")

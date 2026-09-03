@@ -126,8 +126,10 @@
 .scv-block-list-item.list-item-with-official-marker p::before { content: none; }
 .scv-block-list-item.list-item-without-marker { padding-left: 0; }
 .scv-block-list-item.list-item-without-marker p::before { content: none; }
-.scv-block-list-item.list-item-with-leading-symbol p { padding-left: 40px; }
-.scv-block-list-item.list-item-with-leading-symbol p > .inline-math:first-child { display: inline-block; width: 40px; margin-left: -40px; margin-right: 0; vertical-align: top; }
+.scv-block-list-item.list-item-with-leading-symbol p { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 0.35em; padding-left: 0; }
+.scv-block-list-item.list-item-with-leading-symbol p > .inline-math:first-child { display: inline-block; width: auto; margin-left: 0; margin-right: 0; vertical-align: top; }
+.scv-block-list-item.list-item-with-leading-symbol .leading-math-label { white-space: nowrap; }
+.scv-block-list-item.list-item-with-leading-symbol .leading-math-description { min-width: 0; }
 .scv-block.block-with-leading-label p { display: grid; grid-template-columns: 4.5em minmax(0, 1fr); column-gap: 0.35em; padding-left: 0; }
 .scv-block.block-with-leading-label .leading-label { white-space: nowrap; }
 .scv-block.block-with-leading-label .leading-label-description { min-width: 0; }

@@ -33,7 +33,7 @@ test("tutto il LaTeX NTC compila nel renderer rigoroso del viewer", async () => 
   const files = [...await jsonFiles(unitDir), ...await jsonFiles(assetDir)];
   const entries = [];
   for (const file of files) entries.push(...latexEntries(JSON.parse(await readFile(file, "utf8")), file));
-  assert.equal(entries.length, 5734);
+  assert.equal(entries.length, 5736);
   for (const entry of entries) {
     assert.doesNotThrow(
       () => katex.renderToString(entry.latex, { throwOnError: true, strict: "error", output: "html" }),

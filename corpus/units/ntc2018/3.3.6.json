@@ -202,41 +202,8 @@
       "origin": "official",
       "text": {
         "raw": "dove\nv r è la velocità di riferimento del vento di cui al § 3.3.2;\nU è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
-        "normalized": "dove vr è la velocità di riferimento del vento di cui al § 3.3.2; ρ è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
-        "normalizationVersion": "core-editorial-profile-0.1.1",
-        "inline": [
-          {
-            "kind": "text",
-            "value": "dove "
-          },
-          {
-            "kind": "math",
-            "value": "vr",
-            "latex": "v_r"
-          },
-          {
-            "kind": "text",
-            "value": " è la velocità di riferimento del vento di cui al § 3.3.2; "
-          },
-          {
-            "kind": "math",
-            "value": "ρ",
-            "latex": "\\rho"
-          },
-          {
-            "kind": "text",
-            "value": " è la densità dell’aria assunta convenzionalmente costante e pari a "
-          },
-          {
-            "kind": "math",
-            "value": "1,25 kg/m³",
-            "latex": "1{,}25\\,\\mathrm{kg/m^3}"
-          },
-          {
-            "kind": "text",
-            "value": "."
-          }
-        ]
+        "normalized": "dove",
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -287,7 +254,142 @@
           }
         ],
         "rawSha256": "ad1e8d208a08e34addb4288dc9e23fb13c0be1f49bee09550cda75f36a2f1083",
-        "normalizedSha256": "84fe8a6567cb690cc86d80ed66ce033d70b8ac25091035b0ef7541e6877f4ddc"
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.6#block-editorial-003-a",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "v r è la velocità di riferimento del vento di cui al § 3.3.2;",
+        "normalized": "vr è la velocità di riferimento del vento di cui al § 3.3.2;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "vr",
+            "latex": "v_r"
+          },
+          {
+            "kind": "text",
+            "value": " è la velocità di riferimento del vento di cui al § 3.3.2;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 58,
+        "printedPage": "54",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 72.74,
+          "y": 366.5,
+          "width": 297.1,
+          "height": 11.5
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "fe8e0081ac17c627e317fe9457a7b8c74335047790673cbd10d81d803ec9b2bf",
+        "normalizedSha256": "bdb1642ac054d02f3d52e3324b4bad9989aeda5f14f07e1204c373b4991c4612"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.6#block-editorial-003-b",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "U è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
+        "normalized": "ρ è la densità dell’aria assunta convenzionalmente costante e pari a 1,25 kg/m³.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ρ",
+            "latex": "\\rho"
+          },
+          {
+            "kind": "text",
+            "value": " è la densità dell’aria assunta convenzionalmente costante e pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,25 kg/m³",
+            "latex": "1{,}25\\,\\mathrm{kg/m^3}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 58,
+        "printedPage": "54",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 72.74,
+          "y": 379.7,
+          "width": 297.1,
+          "height": 11.5
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "c433e310415662eb2f49ad1699d53759af4e09de2690e2614f984ce260dd972c",
+        "normalizedSha256": "bfe1ceb028594c495014625cbe889d8611a6ee6abd23f20ee4c49eb5a5a82191"
       }
     },
     {

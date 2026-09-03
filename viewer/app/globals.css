@@ -685,15 +685,26 @@ summary:focus-visible {
 }
 
 .list-item-block.list-item-with-leading-symbol p {
-  padding-left: 40px;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.35em;
+  padding-left: 0;
 }
 
 .list-item-block.list-item-with-leading-symbol p > .inline-math:first-child {
   display: inline-block;
-  width: 40px;
-  margin-left: -40px;
+  width: auto;
+  margin-left: 0;
   margin-right: 0;
   vertical-align: top;
+}
+
+.list-item-block.list-item-with-leading-symbol .leading-math-label {
+  white-space: nowrap;
+}
+
+.list-item-block.list-item-with-leading-symbol .leading-math-description {
+  min-width: 0;
 }
 
 .text-block.block-with-leading-label p {

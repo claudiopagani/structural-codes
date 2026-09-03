@@ -258,11 +258,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
-        "raw": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la co-\nstruzione (Fig. 3.3.1);\nc a è il coefficiente di altitudine fornito dalla relazione:a s 0\ns\na s 0 s\n0\nc 1 per a a\na\nc 1 k 1 per a a 1500 m\na d\n§ ·\n\u000e \u0010 \u001f d¨ ¸\n© ¹ [3.3.1.b]",
-        "normalized": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); ca è il coefficiente di altitudine fornito dalla relazione:",
+        "raw": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la co-\nstruzione (Fig. 3.3.1);",
+        "normalized": "Vb,0 è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);",
         "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
@@ -272,8 +273,62 @@
           },
           {
             "kind": "text",
-            "value": " è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "
+            "value": " è la velocità base di riferimento al livello del mare, assegnata nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 56,
+        "printedPage": "52",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 71.85,
+          "y": 257.5,
+          "width": 451.7,
+          "height": 21.8
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "f2f64140747f3d9edf4458b6a728d47573e4f3a15570593705eacfe8f77322ec",
+        "normalizedSha256": "802a69ba0d26c9c0bf3b3a4c77f2b1796c1f512e161fa3b1bbc423b8006c2e6e"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.1#block-editorial-004-b",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "c a è il coefficiente di altitudine fornito dalla relazione:",
+        "normalized": "ca è il coefficiente di altitudine fornito dalla relazione:",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
           {
             "kind": "math",
             "value": "ca",
@@ -292,9 +347,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 71.85,
-          "y": 205.253,
-          "width": 451.691,
-          "height": 425.212
+          "y": 279.5,
+          "width": 451.7,
+          "height": 13.2
         },
         "extraction": {
           "method": "pdf-text",
@@ -303,38 +358,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.1",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "5ba88430ff9052772012ee82b2b7dd23ae92159053b14ea791480ed437beff41",
-        "normalizedSha256": "527c6120aba33147d070806e1082c4c1a7d51221553483113e37c09a57ece985"
+        "rawSha256": "aa4e84cf8545957162ebb14f8acf64c2835228c7c8873500b2c89a47f7b7b1fa",
+        "normalizedSha256": "c3d152914c8d317e407db6d8c669c59e6992433e90c2d673f38cc7d6f77c7c23"
       }
     },
     {
@@ -376,66 +421,7 @@
       "text": {
         "raw": "dove:",
         "normalized": "dove:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 56,
-        "printedPage": "52",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 71.85,
-          "y": 205.253,
-          "width": 451.691,
-          "height": 425.212
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
-        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.1#block-editorial-007",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "a 0 \n, ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);\nas è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
-        "normalized": "a0, ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); as è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
-        "normalizationVersion": "core-editorial-profile-0.1.1",
-        "inline": [
-          {
-            "kind": "math",
-            "value": "a0",
-            "latex": "a_0"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "ks",
-            "latex": "k_s"
-          },
-          {
-            "kind": "text",
-            "value": " sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1); "
-          },
-          {
-            "kind": "math",
-            "value": "as",
-            "latex": "a_s"
-          },
-          {
-            "kind": "text",
-            "value": " è l’altitudine sul livello del mare del sito ove sorge la costruzione."
-          }
-        ]
+        "normalizationVersion": "core-editorial-profile-0.1.1"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -455,38 +441,118 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
-        "rawSha256": "175c2e403d41bc232f94e59283df016c5faf463c166676019f0a50a2ac784207",
-        "normalizedSha256": "ad3519c3ccba79ea7faf9faf659c31a401cddcda395c0483d18814e2ba6d0f5e"
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.1#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "a 0 , ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);",
+        "normalized": "a0, ks sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "a0, ks",
+            "latex": "a_0,\\,k_s"
+          },
+          {
+            "kind": "text",
+            "value": " sono parametri forniti nella Tab. 3.3.I in funzione della zona in cui sorge la costruzione (Fig. 3.3.1);"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 56,
+        "printedPage": "52",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 71.85,
+          "y": 361.5,
+          "width": 451.7,
+          "height": 11.5
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "d1f24375701e0475afdeff557120d634436083f4dfc11d92e66804f1be492130",
+        "normalizedSha256": "12d259df62c2a72fa695c3de181eb4196f85531c07b79c4582ad943057794f48"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.3.1#block-editorial-007-b",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "as è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
+        "normalized": "as è l’altitudine sul livello del mare del sito ove sorge la costruzione.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "as",
+            "latex": "a_s"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altitudine sul livello del mare del sito ove sorge la costruzione."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 56,
+        "printedPage": "52",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 71.85,
+          "y": 372.9,
+          "width": 451.7,
+          "height": 11.5
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "af386f0893656fde3903ab34126464345ecbd36e283dee62069b7da88e30963a",
+        "normalizedSha256": "af386f0893656fde3903ab34126464345ecbd36e283dee62069b7da88e30963a"
       }
     },
     {

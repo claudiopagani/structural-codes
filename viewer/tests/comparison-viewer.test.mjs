@@ -149,8 +149,10 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.match(styles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(styles, /leading-math-description/);
   assert.match(styles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
   assert.match(legacyStyles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(legacyStyles, /leading-math-description/);
   assert.match(legacyStyles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
 });

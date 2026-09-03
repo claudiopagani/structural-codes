@@ -121,6 +121,10 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
       const description = inline.slice(1).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s*:\s*/u, "") } : segment);
       return <p><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description)}</span></p>;
     }
+    if (hasLeadingMath(block)) {
+      const [label, ...description] = inline;
+      return <p><span className="leading-math-label">{renderInlineSegments([label])}</span><span className="leading-math-description">{renderInlineSegments(description)}</span></p>;
+    }
     return <p>{renderInlineSegments(inline)}</p>;
   }
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
@@ -146,7 +150,7 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
   if (figure) {
     const width = Math.max(1, Math.round(figure.region?.width ?? 800));
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
-    return <figure className="figure-asset"><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} /><figcaption><span>{figure.caption}</span></figcaption></figure>;
+    return <figure className="figure-asset"><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} /><figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }

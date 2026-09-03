@@ -6,7 +6,8 @@ import test from "node:test";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 
-type TableCell = { text: string; latex?: string; colSpan?: number; align?: string; noWrap?: boolean };
+type TableInline = { kind: string; value: string; latex?: string };
+type TableCell = { text: string; latex?: string; inline?: TableInline[]; colSpan?: number; align?: string; noWrap?: boolean };
 
 test("NTC Tabella 3.1.II conserva la griglia completa e la continuazione di pagina", async () => {
     const manifest = JSON.parse(await readFile(join(root, "corpus/assets/ntc2018/core-tables.json"), "utf8"));
@@ -59,4 +60,46 @@ test("NTC Tabelle 3.1.I–II conservano gli allineamenti editoriali delle celle"
     assert.equal(tableII.rows.flat().filter((cell) => cell.latex).every((cell) => cell.align === "center"), true);
     assert.equal(tableII.rows.flat().filter((cell) => cell.colSpan === 3).every((cell) => cell.align === "center"), true);
     assert.equal(tableII.rows.flat().filter((cell) => /\*{1,2}$/u.test(cell.text)).every((cell) => cell.latex?.includes("^{")), true);
+});
+
+test("NTC §3.3 conserva elenchi di definizioni, tabelle centrate e matematica nelle didascalie", async () => {
+    const assets = JSON.parse(await readFile(join(root, "corpus/assets/ntc2018/core-tables.json"), "utf8"));
+    const tableI = assets.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.3.I") as { headers: TableCell[][]; rows: TableCell[][]; captionInline?: TableInline[] };
+    const tableII = assets.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.3.II") as { headers: TableCell[][]; rows: TableCell[][] };
+    const tableIII = assets.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.3.III") as { headers: TableCell[][]; rows: TableCell[][] };
+    assert.ok(tableI);
+    assert.ok(tableII);
+    assert.ok(tableIII);
+
+    assert.deepEqual(
+        tableI.captionInline?.filter((segment) => segment.kind === "math").map((segment) => segment.latex),
+        ["v_{b,0}", "a_0", "k_s"],
+    );
+    for (const row of [...tableI.headers, ...tableI.rows]) {
+        for (const index of [0, 2, 3, 4]) assert.equal(row[index]?.align, "center");
+    }
+    assert.equal([...tableII.headers, ...tableII.rows].flat().every((cell) => cell.align === "center"), true);
+    assert.equal([...tableIII.headers, ...tableIII.rows.slice(0, 4)].every((row) => row[0]?.align === "center"), true);
+    const noteRow = tableIII.rows.find((row) => row[0]?.colSpan === 2);
+    assert.ok(noteRow);
+    assert.equal(noteRow[0]!.inline?.some((segment) => segment.latex === "1\\,\\mathrm{km}"), true);
+
+    const expectedLabels: Record<string, string[]> = {
+        "3.3.1": ["V_{b,0}", "c_a", "a_0,\\,k_s", "a_s"],
+        "3.3.2": ["v_b", "c_r"],
+        "3.3.4": ["q_r", "c_e", "c_p", "c_d"],
+        "3.3.5": ["q_r", "c_e", "c_f"],
+        "3.3.6": ["v_r", "\\rho"],
+        "3.3.7": ["k_r,\\,z_0,\\,z_{min}", "c_t"],
+    };
+    for (const [unitId, labels] of Object.entries(expectedLabels)) {
+        const unit = JSON.parse(await readFile(join(root, `corpus/units/ntc2018/${unitId}.json`), "utf8"));
+        const definitions = unit.blocks.filter((block: { kind: string; listMarker?: string }) => block.kind === "list-item" && block.listMarker === "none");
+        assert.deepEqual(definitions.map((block: { text: { inline?: TableInline[] } }) => block.text.inline?.[0]?.latex), labels, unitId);
+        assert.equal(definitions.every((block: { text: { normalized: string; inline?: TableInline[] } }) => block.text.inline?.map((segment) => segment.value).join("") === block.text.normalized), true, unitId);
+    }
+
+    const figures = JSON.parse(await readFile(join(root, "corpus/assets/ntc2018/core-figure-placeholders.json"), "utf8"));
+    const figure = figures.figures.find((candidate: { officialNumber: string }) => candidate.officialNumber === "3.3.3") as { captionInline?: TableInline[] };
+    assert.deepEqual(figure.captionInline?.filter((segment) => segment.kind === "math").map((segment) => segment.latex), ["c_e", "c_t=1"]);
 });

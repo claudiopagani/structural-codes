@@ -48,6 +48,7 @@ export interface FigureAsset {
   officialNumber: string;
   pdfPage: number;
   caption: string;
+  captionInline?: InlineSegment[];
   alt: string;
   imagePath: string;
   region?: { width: number; height: number };
