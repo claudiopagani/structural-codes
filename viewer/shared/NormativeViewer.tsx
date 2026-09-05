@@ -27,6 +27,12 @@ const modeOptions: Array<{ id: ViewerMode; label: string }> = [
 ];
 const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi"];
 
+function ModeSegmentedControl({ mode, onChange }: { mode: ViewerMode; onChange: (nextMode: ViewerMode) => void }) {
+  return <div className="scv-mode-switch" role="group" aria-label="Modalità documento">
+    {modeOptions.map((option) => <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => onChange(option.id)} aria-label={option.label} aria-pressed={mode === option.id} title={option.label}><span>{option.id === "ntc" ? <>NTC<br />2018</> : option.id === "circ" ? <>CIRC.<br />2019</> : <>NTC<br />CIRC.</>}</span></button>)}
+  </div>;
+}
+
 function scvBlockClass(block: CorpusUnit["blocks"][number]) {
   return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`;
 }
@@ -62,6 +68,13 @@ interface UnitRecord { summary: UnitSummary; unit: CorpusUnit; chunk: CorpusChun
 
 function depth(unit: UnitSummary | CorpusUnit) {
   return unit.hierarchy.ancestorIds.length;
+}
+
+function hasUnitContent(unit: CorpusUnit) {
+  return unit.blocks.some((block) => {
+    if (block.kind === "heading" || block.blockId === unit.titleBlockId) return false;
+    return Boolean(block.assetId || block.text?.normalized?.trim());
+  });
 }
 
 function ancestorIdAtDepth(unit: UnitSummary | CorpusUnit, targetDepth: number) {
@@ -132,6 +145,7 @@ export function NormativeViewer({
   const textPaneRef = useRef<HTMLElement>(null);
   const deferredQuery = normalizedQuery(query);
   const hasAuxiliary = Boolean(auxiliaryPanel);
+  const auxiliaryAvailable = hasAuxiliary && mode !== "combined";
 
   useEffect(() => {
     loadManifest(dataBaseUrl).then((loaded) => {
@@ -359,7 +373,7 @@ export function NormativeViewer({
     if (searchResults[0]) selectSearchResult(searchResults[0]);
   }
 
-  const renderAuxiliary: ReactNode = !manifest
+  const renderAuxiliary: ReactNode = !manifest || !auxiliaryAvailable
     ? null
     : typeof auxiliaryPanel === "function"
       ? auxiliaryPanel({ mode, documentId, manifest, chunk, pageBounds })
@@ -370,23 +384,23 @@ export function NormativeViewer({
 
   function renderRecord({ unit, chunk: unitChunk }: UnitRecord) {
     const isChapter = depth(unit) === 0;
+    const relatedRecords = mode === "combined"
+      ? (relatedByTarget.get(unit.id) ?? []).filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit))
+      : [];
+    if (mode === "combined" && !hasUnitContent(unit) && relatedRecords.length === 0) return null;
 
     return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} key={unit.id}>
       {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unit.title}</span></h2>}
       <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} />
-      {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></section>)}
+      {relatedRecords.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></section>)}
     </section>;
   }
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${auxiliaryVisible ? "scv-has-auxiliary" : ""} ${className ?? ""}`}>
+  return <div className={`scv-root ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`}>
     <aside className="scv-index-pane" aria-label="Indice gerarchico">
       <div className="scv-search-toolbar">
-        <div className="scv-mode-controls" aria-label="Modalità documento">
-          <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={() => setSettingsOpen(true)} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
-          {modeOptions.map((option) => <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => changeMode(option.id)} aria-label={option.label} aria-pressed={mode === option.id} title={option.label}><span>{option.id === "ntc" ? "NTC" : option.id === "circ" ? "Circ." : "Integrata"}</span></button>)}
-        </div>
         <div className="scv-search-box">
           <form className="scv-search-form" role="search" onSubmit={submitSearch}>
             <span aria-hidden="true">⌕</span>
@@ -398,6 +412,8 @@ export function NormativeViewer({
             {!searchIndex ? <p className="scv-search-status">Caricamento indice di ricerca…</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" key={result.id} onClick={() => selectSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small>{snippet(result.text || result.title)}</small></button>)}
           </div>}
         </div>
+        <ModeSegmentedControl mode={mode} onChange={changeMode} />
+        <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={() => setSettingsOpen(true)} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
       </div>
       <div className="scv-index-grid">
         {hierarchy.map((level, levelIndex) => {
@@ -414,9 +430,9 @@ export function NormativeViewer({
       </div>}
     </article>
 
-    {auxiliaryVisible && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
+    {auxiliaryVisible && auxiliaryAvailable && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
 
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible} disabled={!hasAuxiliary} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
+    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
   </div>;
 }
 

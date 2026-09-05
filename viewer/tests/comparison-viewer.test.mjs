@@ -50,8 +50,15 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.match(source, /Solo NTC 2018/);
   assert.match(source, /Solo Circolare 7\/2019/);
   assert.match(source, /NTC 2018 \+ Circolare 7\/2019/);
+  assert.match(source, /<>NTC<br \/>2018<\/>/);
+  assert.match(source, /<>CIRC\.<br \/>2019<\/>/);
+  assert.match(source, /<>NTC<br \/>CIRC\.<\/>/);
+  assert.match(source, /function ModeSegmentedControl\(/);
+  assert.match(source, /className="scv-mode-switch" role="group"/);
+  assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{changeMode\} \/>/);
   assert.match(source, /Mostra PDF ufficiale/);
-  assert.match(source, /disabled={!hasAuxiliary}/);
+  assert.match(source, /const auxiliaryAvailable = hasAuxiliary && mode !== "combined"/);
+  assert.match(source, /disabled={!auxiliaryAvailable}/);
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
 
@@ -61,6 +68,9 @@ test("combined carica solo relazioni esplicite della Circolare", async () => {
   assert.match(source, /sourceUnitId === resultId/);
   assert.match(source, /setRelatedByTarget\(new Map\(\)\)/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
+  assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
+  assert.match(source, /if \(mode === "combined" && !hasUnitContent\(unit\) && relatedRecords\.length === 0\) return null/);
+  assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
   assert.doesNotMatch(source, /Collegamento editoriale da revisionare|Provenienza: Circolare 7\/2019|same-numbering/);
 });
 
@@ -95,6 +105,8 @@ test("il PDF resta locale/debug, viene caricato on demand e segue la pagina evid
   assert.match(wrapper, /source-pdf\?document=/);
   assert.match(wrapper, /scrollIntoView\(\{ block: "start" \}\)/);
   assert.match(wrapper, /data-pdf-page=\{pageNumber\}/);
+  assert.match(shared, /const auxiliaryAvailable = hasAuxiliary && mode !== "combined"/);
+  assert.match(shared, /auxiliaryVisible && auxiliaryAvailable && renderAuxiliary/);
   assert.match(official, /request\.headers\.get\("range"\)/);
   assert.match(official, /Documento non valido/);
   assert.match(comparison, /process\.env\.NODE_ENV !== "production"/);
@@ -121,7 +133,27 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.formula-number/);
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
+  assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
+  assert.match(styles, /--scv-index-width: clamp\(360px, 37vw, 480px\)/);
+  assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\)/);
+  assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) minmax\(320px, \.8fr\)/);
+  assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 36px 55vh/);
+  assert.match(styles, /aspect-ratio: 1/);
+  assert.match(styles, /\.scv-root \.scv-settings-button, \.scv-root \.scv-mode-button \{[^}]*font-weight: 900[^}]*background: var\(--scv-primary-soft\)/);
+  assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: "Segoe UI"[^}]*font-size: 8px[^}]*font-weight: 700/);
+  assert.match(styles, /\.scv-root \.scv-mode-button span \{[^}]*transform: scaleY\(1\.35\)/);
+  assert.match(styles, /\.scv-root \.scv-settings-button \{[^}]*font-size: 16px/);
+  assert.match(styles, /\.scv-root \.inline-math \{[^}]*font-size: 1\.04em/);
+  assert.match(styles, /\.scv-root \.inline-math \.katex \{[^}]*font-size: 1em/);
+  assert.match(styles, /\.scv-root \.figure-asset img \{[^}]*width: min\(100%, 760px\)[^}]*height: auto[^}]*max-height: min\(600px, 70vh\)/);
   assert.doesNotMatch(styles, /legacy-base-font-size|comparison-shell/);
+});
+
+test("i blocchi Circolare composti solo dal titolo non entrano nel comparato", async () => {
+  const unitsDirectory = new URL("../../corpus/units/circ2019/", import.meta.url);
+  const [c3, c31] = await Promise.all(["c3.json", "c3.1.json"].map(async (file) => JSON.parse(await readFile(new URL(file, unitsDirectory), "utf8"))));
+  assert.ok(c3.blocks.every((block) => block.kind === "heading"));
+  assert.ok(c31.blocks.every((block) => block.kind === "heading"));
 });
 
 test("le unità Circolare C4, C6 e C7 dichiarano il titolo strutturale", async () => {
