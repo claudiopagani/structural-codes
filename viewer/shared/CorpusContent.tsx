@@ -99,35 +99,33 @@ export function hasLeadingEmphasisLabel(block: CorpusBlock) {
   );
 }
 
-export function leadingLabelKind(block: CorpusBlock, showRaw = false): "math" | "emphasis" | null {
-  if (showRaw) return null;
+export function leadingLabelKind(block: CorpusBlock): "math" | "emphasis" | null {
   if (hasLeadingMath(block)) return "math";
   if (hasLeadingEmphasisLabel(block)) return "emphasis";
   return null;
 }
 
 export type CorpusBlockGroup =
-  | { kind: "label-list"; blocks: CorpusBlock[]; startIndex: number }
+  | { kind: "label-list"; blocks: CorpusBlock[] }
   | { kind: "block"; block: CorpusBlock; index: number };
 
-export function groupAlignedLabelBlocks(blocks: CorpusBlock[], showRaw = false): CorpusBlockGroup[] {
+export function groupAlignedLabelBlocks(blocks: CorpusBlock[]): CorpusBlockGroup[] {
   const groups: CorpusBlockGroup[] = [];
   let index = 0;
   while (index < blocks.length) {
-    const labelKind = leadingLabelKind(blocks[index], showRaw);
+    const labelKind = leadingLabelKind(blocks[index]);
     if (!labelKind) {
       groups.push({ kind: "block", block: blocks[index], index });
       index += 1;
       continue;
     }
-    const startIndex = index;
     const labelBlocks = [blocks[index]];
     index += 1;
-    while (index < blocks.length && leadingLabelKind(blocks[index], showRaw) === labelKind) {
+    while (index < blocks.length && leadingLabelKind(blocks[index]) === labelKind) {
       labelBlocks.push(blocks[index]);
       index += 1;
     }
-    groups.push({ kind: "label-list", blocks: labelBlocks, startIndex });
+    groups.push({ kind: "label-list", blocks: labelBlocks });
   }
   return groups;
 }
@@ -145,7 +143,6 @@ export function hasTrailingMath(block: CorpusBlock) {
 export interface BlockContentProps {
   block: CorpusBlock;
   assets: AssetBundle | null;
-  showRaw?: boolean;
   assetsBaseUrl?: string;
   aligned?: boolean;
 }
@@ -211,9 +208,8 @@ function renderAlphabeticListContent(block: CorpusBlock) {
   return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(description)}</span></>;
 }
 
-export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "/assets", aligned = false }: BlockContentProps) {
+export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned = false }: BlockContentProps) {
   if (block.text) {
-    if (showRaw) return <p>{block.text.raw}</p>;
     const alphabeticListContent = renderAlphabeticListContent(block);
     if (alphabeticListContent) return <p>{alphabeticListContent}</p>;
     if (!block.text.inline) return <p>{block.text.normalized}</p>;
@@ -251,15 +247,12 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
 
-export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets", variant = "scv", startIndex = 0 }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string; variant?: "scv" | "legacy"; startIndex?: number }) {
-  const rootClass = variant === "legacy" ? "label-list" : "scv-label-list";
+export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets" }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string }) {
+  const rootClass = "scv-label-list";
   return <div className={rootClass}>
-    {blocks.map((block, index) => <div className={`${rootClass}-row`} key={block.blockId}>
-      {variant === "legacy" && <div className="block-gutter"><span>{String(startIndex + index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>}
+    {blocks.map((block) => <div className={`${rootClass}-row`} key={block.blockId}>
       <div className={`${rootClass}-content`}>
-        {variant === "legacy" && <span className="block-kind">{block.kind}</span>}
         <BlockContent block={block} assets={assets} assetsBaseUrl={assetsBaseUrl} aligned />
-        {variant === "legacy" && block.evidence?.transformations && block.evidence.transformations.length > 0 && <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}
       </div>
     </div>)}
   </div>;
@@ -274,18 +267,4 @@ export function isRepeatedUnitTitle(unit: CorpusUnit, block: CorpusUnit["blocks"
   if (block.kind !== "heading" || !block.text) return false;
   const renderedHeading = comparableTitle(block.text.normalized);
   return renderedHeading === comparableTitle(unit.title) || renderedHeading === comparableTitle(`${unit.numbering.official} ${unit.title}`);
-}
-
-export function UnitBlocks({ unit, assets, showRaw = false, compact = false, assetsBaseUrl = "/assets" }: { unit: CorpusUnit; assets: AssetBundle; showRaw?: boolean; compact?: boolean; assetsBaseUrl?: string }) {
-  const blocks = unit.blocks;
-  return <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-    {groupAlignedLabelBlocks(blocks, showRaw).map((group) => group.kind === "label-list"
-      ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} variant="legacy" startIndex={group.startIndex} key={group.blocks[0].blockId} />
-      : <section className={`text-block ${group.block.kind === "heading" ? "heading-block" : ""} ${group.block.kind === "list-item" ? "list-item-block" : ""} ${listMarkerClass(group.block)} ${listLevelClass(group.block)} ${hasOfficialListMarker(group.block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(group.block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(group.block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(group.block) ? "list-item-without-marker" : ""} ${hasLeadingMath(group.block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(group.block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingStrong(group.block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(group.block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${indentLevelClass(group.block)} ${group.block.assetId ? "asset-block" : ""}`} key={group.block.blockId}>
-        <div className="block-gutter"><span>{String(group.index + 1).padStart(2, "0")}</span>{group.block.evidence && <span title="Pagina PDF">p.{group.block.evidence.pdfPage}</span>}</div>
-        <div><span className="block-kind">{group.block.kind}</span><BlockContent block={group.block} assets={assets} showRaw={showRaw} assetsBaseUrl={assetsBaseUrl} />
-          {group.block.evidence?.transformations && group.block.evidence.transformations.length > 0 && <details className="transformations"><summary>{group.block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{group.block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}
-        </div>
-      </section>)}
-  </div>;
 }

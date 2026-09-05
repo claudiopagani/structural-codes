@@ -21,9 +21,9 @@ import {
 import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "./CorpusContent";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
-  { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
   { id: "ntc", label: "Solo NTC 2018" },
   { id: "circ", label: "Solo Circolare 7/2019" },
+  { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
 ];
 const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi"];
 
@@ -54,7 +54,6 @@ export interface NormativeViewerProps {
   auxiliaryPanel?: AuxiliaryPanel;
   auxiliaryPanelLabel?: string;
   auxiliaryPanelDefaultVisible?: boolean;
-  analyticalHref?: string | ((mode: ViewerMode, unitId: string | null) => string);
   className?: string;
 }
 
@@ -109,7 +108,6 @@ export function NormativeViewer({
   auxiliaryPanel,
   auxiliaryPanelLabel = "PDF ufficiale",
   auxiliaryPanelDefaultVisible = false,
-  analyticalHref,
   className,
 }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
@@ -366,7 +364,6 @@ export function NormativeViewer({
     : typeof auxiliaryPanel === "function"
       ? auxiliaryPanel({ mode, documentId, manifest, chunk, pageBounds })
       : auxiliaryPanel;
-  const analyticalUrl = analyticalHref ? (typeof analyticalHref === "function" ? analyticalHref(mode, activeUnitId) : analyticalHref) : null;
   const documentNote = documentId === "ntc2018"
     ? `Documento continuo · NTC 2018 · ${documentRecords.length} unità · ${documentChunkPaths.length} chunk`
     : `Documento continuo · Circolare 7/2019 · ${documentRecords.length} unità · ${documentChunkPaths.length} chunk`;
@@ -386,16 +383,21 @@ export function NormativeViewer({
   return <div className={`scv-root ${auxiliaryVisible ? "scv-has-auxiliary" : ""} ${className ?? ""}`}>
     <aside className="scv-index-pane" aria-label="Indice gerarchico">
       <div className="scv-search-toolbar">
-        <form className="scv-search-form" role="search" onSubmit={submitSearch}>
-          <span aria-hidden="true">⌕</span>
-          <input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cerca nella normativa…" aria-label="Cerca nella normativa" />
-          {query && <button type="button" className="scv-clear-search" onClick={() => setQuery("")} aria-label="Cancella ricerca">×</button>}
-          <kbd>/</kbd>
-        </form>
-        <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={() => setSettingsOpen(true)} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
-        {deferredQuery.length >= 2 && <div className="scv-search-results" role="listbox" aria-label="Risultati ricerca">
-          {!searchIndex ? <p className="scv-search-status">Caricamento indice di ricerca…</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" key={result.id} onClick={() => selectSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small>{snippet(result.text || result.title)}</small></button>)}
-        </div>}
+        <div className="scv-mode-controls" aria-label="Modalità documento">
+          <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={() => setSettingsOpen(true)} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
+          {modeOptions.map((option) => <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => changeMode(option.id)} aria-label={option.label} aria-pressed={mode === option.id} title={option.label}><span>{option.id === "ntc" ? "NTC" : option.id === "circ" ? "Circ." : "Integrata"}</span></button>)}
+        </div>
+        <div className="scv-search-box">
+          <form className="scv-search-form" role="search" onSubmit={submitSearch}>
+            <span aria-hidden="true">⌕</span>
+            <input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Cerca nella normativa…" aria-label="Cerca nella normativa" />
+            {query && <button type="button" className="scv-clear-search" onClick={() => setQuery("")} aria-label="Cancella ricerca">×</button>}
+            <kbd>/</kbd>
+          </form>
+          {deferredQuery.length >= 2 && <div className="scv-search-results" role="listbox" aria-label="Risultati ricerca">
+            {!searchIndex ? <p className="scv-search-status">Caricamento indice di ricerca…</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" key={result.id} onClick={() => selectSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small>{snippet(result.text || result.title)}</small></button>)}
+          </div>}
+        </div>
       </div>
       <div className="scv-index-grid">
         {hierarchy.map((level, levelIndex) => {
@@ -414,7 +416,7 @@ export function NormativeViewer({
 
     {auxiliaryVisible && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
 
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><fieldset><legend>Visualizzazione</legend>{modeOptions.map((option) => <label key={option.id}><input type="radio" name="scv-mode" value={option.id} checked={mode === option.id} onChange={() => changeMode(option.id)} />{option.label}</label>)}</fieldset>{hasAuxiliary && <label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra {auxiliaryPanelLabel.toLowerCase()}</label>}{analyticalUrl && <a className="scv-analytical-link" href={analyticalUrl}>Apri viewer analitico</a>}</section></div>}
+    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible} disabled={!hasAuxiliary} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
   </div>;
 }
 

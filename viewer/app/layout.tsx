@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import "../shared/styles.css";
 
 const title = "Structural Codes — Corpus normativo verificabile";

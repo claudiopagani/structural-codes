@@ -31,11 +31,6 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {"access": "public"},
-  "allowScripts": {
-    "esbuild@0.28.1": true,
-    "unrs-resolver@1.11.1": true,
-    "workerd@1.20260820.1": true
-  },
   "scripts": {
     "sync:corpus": "node scripts/sync-corpus.mjs",
     "build:library": "node scripts/build-library.mjs",
@@ -63,8 +58,6 @@
     "pdfjs-dist": "6.2.108",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "@cloudflare/vite-plugin": "1.53.1",
-    "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -73,11 +66,9 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.3.2",
     "react-server-dom-webpack": "19.2.8",
-    "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.8",
-    "vite": "8.1.5",
-    "wrangler": "4.125.0"
+    "vite": "8.1.5"
   },
   "type": "module"
 }

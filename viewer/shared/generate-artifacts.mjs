@@ -74,7 +74,6 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const assetManifestDirectory = join(sourceRoot, "corpus", "assets");
   const sourceRegistryFile = join(sourceRoot, "sources", "registry", "sources.v2.json");
   const packageFile = join(sourceRoot, "package.json");
-  const legacyOutput = join(dirname(outputDirectory), "corpus.json");
   const figureOutput = assetOutputDirectory;
   const [corpusManifest, sourceRegistry, packageManifest] = await Promise.all([json(corpusManifestFile), json(sourceRegistryFile), json(packageFile)]);
   const assetManifestFiles = (await readdir(assetManifestDirectory, { recursive: true })).filter((file) => file.endsWith(".json")).sort((left, right) => left.localeCompare(right, "it", { numeric: true }));
@@ -83,7 +82,7 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const assetsById = Object.fromEntries(Object.entries(assetCollections).map(([kind, assets]) => [kind, new Map(assets.map((asset) => [asset.id, asset]))]));
   const unitsByDocument = Object.fromEntries(await Promise.all(documentOrder.map(async (document) => [document, await loadUnits(corpusRoot, document)])));
   const allUnits = documentOrder.flatMap((document) => unitsByDocument[document].map((unit) => publicUnit(document, unit)));
-  await Promise.all([rm(outputDirectory, { recursive: true, force: true }), rm(legacyOutput, { force: true }), rm(figureOutput, { recursive: true, force: true })]);
+  await Promise.all([rm(outputDirectory, { recursive: true, force: true }), rm(figureOutput, { recursive: true, force: true })]);
   const chunkPathByUnit = new Map();
   const documentIndexes = {};
   const chunkInventory = [];

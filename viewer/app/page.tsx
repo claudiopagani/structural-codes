@@ -1,5 +1,5 @@
-import { CorpusViewer } from "./CorpusViewer";
+import { ComparisonViewer } from "./ComparisonViewer";
 
 export default function Home() {
-  return <CorpusViewer />;
+  return <ComparisonViewer />;
 }

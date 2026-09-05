@@ -131,15 +131,15 @@ npm run review:diff -- --unit corpus/units/ntc2018/4.1.json
 
 ## Viewer per la community review
 
-Il viewer offre tre modalità: NTC 2018, Circolare 7/2019 e NTC 2018 +
-Circolare. La vista combinata usa soltanto le relazioni esplicite del corpus,
+Il viewer comparato offre tre modalità: NTC 2018, Circolare 7/2019 e NTC 2018 + Circolare. La vista combinata usa soltanto le relazioni esplicite del corpus,
 supporta 0..n unità della Circolare e marca i collegamenti non revisionati.
 
 Gli artefatti web sono statici e rigenerabili: un manifest iniziale piccolo,
 indici per documento, 153 chunk per sezione significativa, relazioni esplicite
-e un indice di ricerca caricato soltanto quando serve. PDF.js e il PDF ufficiale
-vengono caricati solo su richiesta nella lettura comparata. Un'app OCFEM che non
-entra nel viewer non deve scaricare alcun corpus normativo.
+e un indice di ricerca caricato soltanto quando serve. Sul web mostra indice e
+testo; in locale/debug può aggiungere il PDF ufficiale sincronizzato, caricato
+solo su richiesta. Un'app OCFEM che non entra nel viewer non deve scaricare alcun
+corpus normativo.
 
 ```bash
 npm ci

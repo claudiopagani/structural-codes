@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { PDFDocumentProxy, RenderTask } from "pdfjs-dist";
-import type { AuxiliaryPanelContext } from "../../shared/NormativeViewer";
+import type { AuxiliaryPanelContext } from "../shared/NormativeViewer";
 
 export function OfficialPdfPanel({ context }: { context: AuxiliaryPanelContext }) {
+  const panelRef = useRef<HTMLDivElement>(null);
   const [requested, setRequested] = useState(false);
   const [pdfDocument, setPdfDocument] = useState<PDFDocumentProxy | null>(null);
   const [error, setError] = useState(false);
@@ -29,8 +30,14 @@ export function OfficialPdfPanel({ context }: { context: AuxiliaryPanelContext }
     };
   }, [context.documentId, requested]);
 
+  useEffect(() => {
+    if (!requested || !pdfDocument) return;
+    panelRef.current?.querySelector<HTMLElement>(`[data-pdf-page="${context.pageBounds.from}"]`)
+      ?.scrollIntoView({ block: "start" });
+  }, [context.pageBounds.from, context.pageBounds.to, pdfDocument, requested]);
+
   const source = context.manifest.documents[context.documentId];
-  return <div className="scv-pdf-panel">
+  return <div className="scv-pdf-panel" ref={panelRef}>
     <div className="scv-pdf-status"><strong>{source.shortLabel}</strong><span>pagine {context.pageBounds.from}–{context.pageBounds.to}</span><a href={source.sourceUrl} target="_blank" rel="noreferrer">originale ↗</a></div>
     {!requested ? <div className="scv-pdf-consent"><strong>Fonte ufficiale su richiesta</strong><p>PDF.js e il PDF non vengono caricati finché non avvii il confronto.</p><button type="button" onClick={() => setRequested(true)}>Apri PDF ufficiale</button></div> : error ? <div className="scv-pdf-error"><strong>Anteprima PDF non disponibile.</strong><span>Usa il collegamento alla fonte ufficiale.</span></div> : !pdfDocument ? <LoadingPanel label="Apertura del PDF ufficiale…" /> : <div className="scv-pdf-pages">{Array.from({ length: context.pageBounds.to - context.pageBounds.from + 1 }, (_, index) => context.pageBounds.from + index).map((page) => <PdfPage pdfDocument={pdfDocument} pageNumber={page} key={`${context.documentId}-${page}`} />)}</div>}
   </div>;

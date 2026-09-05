@@ -6,12 +6,8 @@ import test from "node:test";
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
+  const { default: handler } = await import(workerUrl.href);
+  return handler(new Request("http://localhost/", { headers: { accept: "text/html" } }));
 }
 
 async function dataJson(path) {
@@ -20,7 +16,7 @@ async function dataJson(path) {
   );
 }
 
-test("renderizza le tre modalità e distingue release da validazione", async () => {
+test("renderizza il viewer comparato come unica superficie applicativa", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/iu);
@@ -28,10 +24,11 @@ test("renderizza le tre modalità e distingue release da validazione", async () 
   assert.match(html, /<title>Structural Codes — Corpus normativo verificabile<\/title>/iu);
   assert.match(html, /NTC 2018 \+ Circolare/);
   assert.match(html, /Circolare 7\/2019/);
-  assert.match(html, /Prerelease alpha · corpus non validato/);
-  assert.match(html, /pubblicazione npm non equivale a validazione normativa/iu);
-  assert.match(html, /Piano di chiusura/);
-  assert.doesNotMatch(html, /Accetta il blocco|Richiede correzione/);
+  assert.match(html, /Solo NTC 2018/);
+  assert.match(html, /Solo Circolare 7\/2019/);
+  assert.match(html, /NTC 2018 \+ Circolare 7\/2019/);
+  assert.match(html, /class=\"scv-mode-button/);
+  assert.doesNotMatch(html, /Piano di chiusura|Lettura comparata|Accetta il blocco|Richiede correzione/);
 });
 
 test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", async () => {
@@ -141,5 +138,4 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
     assert.equal(createHash("sha256").update(image).digest("hex"), figure.sha256);
   }
 
-  await assert.rejects(readFile(new URL("../public/data/corpus.json", import.meta.url)));
 });

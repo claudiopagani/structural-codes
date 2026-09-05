@@ -1,16 +1,14 @@
 # structural-codes-viewer
 
-`structural-codes-viewer` è la reference UI React per consultare il corpus
-`structural-codes`. Il sottoprogetto contiene anche il consumer standalone
-locale usato per la revisione editoriale.
+`structural-codes-viewer` è la UI React per consultare il corpus
+`structural-codes`. Il progetto espone un solo viewer comparato.
 
 - `structural-codes` contiene corpus, schema, provenance e relazioni canoniche;
 - `structural-codes-viewer` contiene UI React, client lazy degli artefatti e
   generatore deterministico;
-- il viewer standalone Vinext/Vite è un consumer locale della stessa UI e può
-  aggiungere il PDF ufficiale tramite `OfficialPdfPanel`;
-- un futuro `ocfem-website` consumerà la stessa UI senza Vinext, Cloudflare o
-  PDF.js.
+- il viewer standalone usa Vinext/Vite e può aggiungere il PDF ufficiale solo
+  in locale o in debug tramite `OfficialPdfPanel`;
+- il build web di produzione espone soltanto indice e testo.
 
 ## Uso React
 
@@ -40,7 +38,7 @@ API intenzionale:
 La ricerca è sempre visibile ma carica `search-index.json` soltanto con almeno
 due caratteri. Manifest, indice documento, chunk e relazioni restano separati.
 Le figure sono lazy e il package shared non importa `pdfjs-dist`, non conosce
-`/api/source-pdf` e non dipende da Vinext o Cloudflare. React e ReactDOM sono
+`/api/source-pdf` e non dipende da servizi di hosting. React e ReactDOM sono
 peer dependencies React 19. Nell’indice della consultazione comparata le tre
 righe seguono la selezione corrente: capitolo → paragrafi → sottoparagrafi. Il
 documento attivo viene caricato e reso in un unico flusso dall’inizio alla
@@ -83,9 +81,11 @@ npm run build
 npm test
 ```
 
-La route `/consultazione` usa `NormativeViewer` e compone il pannello PDF
-locale opzionale. PDF.js e il file PDF vengono caricati solo dopo l’azione
-esplicita “Apri PDF ufficiale”; il PDF non entra nel package shared.
+La route `/` usa il viewer comparato. In locale o debug il pannello PDF è
+opzionale e sincronizzato alla prima pagina evidence
+dell’unità attiva; PDF.js e il file PDF vengono caricati solo dopo l’azione
+esplicita “Apri PDF ufficiale”. Nel build web di produzione il pannello non è
+presente.
 
 ## Package
 
@@ -99,5 +99,5 @@ npm publish --access public
 ```
 
 Il tarball contiene soltanto `package-dist/`, CSS, README e metadati del
-package; non contiene app standalone, worker Cloudflare, test, cache, corpus
+package; non contiene app standalone, route locale, test, cache, corpus
 completo o `pdfjs-dist`.
