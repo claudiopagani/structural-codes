@@ -571,12 +571,29 @@ async function fixUnit338(): Promise<void> {
 async function fixUnit341(): Promise<void> {
     const number = "3.4.1";
     const unit = await readUnit(number);
-    updateText(block(unit, number, "editorial-004"), [
+    const qskDefinition = await textBlock(number, "editorial-004", "list-item", 61, region(75.8, 167.0, 260, 9), [
         math("qsk", "q_{sk}"), text(" è il valore di riferimento del carico della neve al suolo, di cui al § 3.4.2; "),
+    ], "none");
+    const muiDefinition = await textBlock(number, "editorial-004-b", "list-item", 61, region(75.8, 181.0, 220, 9), [
         math("μi", "\\mu_i"), text(" è il coefficiente di forma della copertura, di cui al § 3.4.3; "),
+    ], "none");
+    const ceDefinition = await textBlock(number, "editorial-004-c", "list-item", 61, region(75.8, 195.0, 190, 9), [
         math("CE", "C_E"), text(" è il coefficiente di esposizione di cui al § 3.4.4; "),
+    ], "none");
+    const ctDefinition = await textBlock(number, "editorial-004-d", "list-item", 61, region(75.8, 209.0, 170, 9), [
         math("Ct", "C_t"), text(" è il coefficiente termico di cui al § 3.4.5."),
-    ]);
+    ], "none");
+    unit.blocks = [
+        block(unit, number, "heading"),
+        block(unit, number, "editorial-001"),
+        block(unit, number, "editorial-002"),
+        block(unit, number, "editorial-003"),
+        qskDefinition,
+        muiDefinition,
+        ceDefinition,
+        ctDefinition,
+        block(unit, number, "editorial-005"),
+    ];
     await writeUnit(number, unit);
 }
 
@@ -857,8 +874,8 @@ const tables = [
         pdfPage: 62,
         caption: "Tabella 3.4.II - Valori del coefficiente di forma",
         columnCount: 4,
-        headers: [[cell("Coefficiente di forma"), mathCell("0° ≤ α ≤ 30°", "0^\\circ\\le\\alpha\\le30^\\circ"), mathCell("30° < α < 60°", "30^\\circ<\\alpha<60^\\circ"), mathCell("α ≥ 60°", "\\alpha\\ge60^\\circ")]],
-        rows: [[mathCell("μ1", "\\mu_1"), mathCell("0,8", "0{,}8"), mathCell("0,8 · (60 − α) / 30", "0{,}8\\cdot\\frac{60-\\alpha}{30}"), mathCell("0,0", "0{,}0")]],
+        headers: [[cell("Coefficiente di forma", { align: "center" }), mathCell("0° ≤ α ≤ 30°", "0^\\circ\\le\\alpha\\le30^\\circ", { align: "center" }), mathCell("30° < α < 60°", "30^\\circ<\\alpha<60^\\circ", { align: "center" }), mathCell("α ≥ 60°", "\\alpha\\ge60^\\circ", { align: "center" })]],
+        rows: [[mathCell("μ1", "\\mu_1", { align: "center" }), mathCell("0,8", "0{,}8", { align: "center" }), mathCell("0,8 · (60 − α) / 30", "0{,}8\\cdot\\dfrac{60-\\alpha}{30}", { align: "center" }), mathCell("0,0", "0{,}0", { align: "center" })]],
         notes: [],
     },
 ];

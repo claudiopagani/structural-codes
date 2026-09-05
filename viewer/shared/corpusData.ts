@@ -20,7 +20,8 @@ export interface CorpusBlock {
   blockId: string;
   kind: string;
   origin: string;
-  listMarker?: "dash" | "none";
+  listMarker?: "bullet" | "dash" | "none";
+  listLevel?: number;
   text?: {
     raw: string;
     normalized: string;

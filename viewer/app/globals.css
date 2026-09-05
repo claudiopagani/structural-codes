@@ -668,6 +668,14 @@ summary:focus-visible {
   font-weight: 700;
 }
 
+.list-item-block.list-item-with-bullet p::before {
+  content: "•";
+}
+
+.list-item-block.list-item-level-1 {
+  padding-left: 12px;
+}
+
 .list-item-block.list-item-with-official-marker p {
   padding-left: 0;
 }
@@ -684,7 +692,55 @@ summary:focus-visible {
   content: none;
 }
 
-.list-item-block.list-item-with-leading-symbol p {
+.label-list {
+  display: grid;
+  grid-template-columns: 54px max-content minmax(0, 1fr);
+  column-gap: 0;
+  align-items: start;
+  margin-bottom: 9px;
+}
+
+.label-list-row, .label-list-content {
+  display: contents;
+}
+
+.label-list .block-gutter {
+  grid-column: 1;
+  box-sizing: border-box;
+  padding-right: 20px;
+}
+
+.label-list .block-kind {
+  display: none;
+}
+
+.label-list-content > span {
+  display: block;
+  margin: 5px 0 0;
+  padding-right: 0.35em;
+  color: #263129;
+  font-family: var(--serif);
+  font-size: var(--legacy-base-font-size);
+  line-height: 1.72;
+  text-align: left;
+}
+
+.label-list-content > .leading-label-description, .label-list-content > .leading-math-description {
+  grid-column: 3;
+  min-width: 0;
+  text-align: justify;
+}
+
+.label-list-content > .leading-label, .label-list-content > .leading-math-label {
+  grid-column: 2;
+  white-space: nowrap;
+}
+
+.label-list-content > .transformations {
+  grid-column: 1 / -1;
+}
+
+.list-item-block.list-item-with-leading-symbol p, .text-block.block-with-leading-label p {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   column-gap: 0.35em;
@@ -699,26 +755,11 @@ summary:focus-visible {
   vertical-align: top;
 }
 
-.list-item-block.list-item-with-leading-symbol .leading-math-label {
+.list-item-block.list-item-with-leading-symbol .leading-math-label, .text-block.block-with-leading-label .leading-label {
   white-space: nowrap;
 }
 
-.list-item-block.list-item-with-leading-symbol .leading-math-description {
-  min-width: 0;
-}
-
-.text-block.block-with-leading-label p {
-  display: grid;
-  grid-template-columns: 4.5em minmax(0, 1fr);
-  column-gap: 0.35em;
-  padding-left: 0;
-}
-
-.text-block.block-with-leading-label .leading-label {
-  white-space: nowrap;
-}
-
-.text-block.block-with-leading-label .leading-label-description {
+.list-item-block.list-item-with-leading-symbol .leading-math-description, .text-block.block-with-leading-label .leading-label-description {
   min-width: 0;
 }
 
@@ -876,6 +917,21 @@ summary:focus-visible {
 }
 
 .table-asset .table-cell-no-wrap {
+  white-space: nowrap;
+}
+
+.table-asset .table-cell-multiline {
+  white-space: pre-line;
+}
+
+.table-asset-3-5-iv table {
+  table-layout: fixed;
+}
+
+.table-asset-3-5-iv th:first-child,
+.table-asset-3-5-iv td:first-child {
+  width: 6.25em;
+  min-width: 6.25em;
   white-space: nowrap;
 }
 

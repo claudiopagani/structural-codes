@@ -144,6 +144,12 @@ test("NTC 3.2 conserva grassetti, elenco delle definizioni e corsivi matematici 
     const unit32321 = await json("corpus/units/ntc2018/3.2.3.2.1.json");
     const stratigraphic = unit32321.blocks.filter((block: { blockId: string }) => /#block-editorial-02[23]$/u.test(block.blockId));
     assert.deepEqual(stratigraphic.flatMap((block: { text: { inline?: Array<{ kind: string; value: string }> } }) => block.text.inline?.filter((segment) => segment.kind === "strong").map((segment) => segment.value) ?? []), ["A", "B", "C", "D", "E", "A"]);
+
+    const beforeStratigraphic = unit32321.blocks.find((block: { blockId: string }) => block.blockId.endsWith("#block-editorial-020"));
+    assert.equal(beforeStratigraphic?.text.inline?.some((segment: { kind: string; value: string }) => segment.kind === "strong" && segment.value === "A"), true);
+
+    const unit3234 = await json("corpus/units/ntc2018/3.2.3.4.json");
+    assert.equal(unit3234.blocks[1]!.text.inline?.some((segment: { kind: string; latex?: string }) => segment.kind === "math" && segment.latex === "S_d(T)"), true);
 });
 
 test("NTC § 3.2.3.5 conserva il titolo completo e la matematica inline", async () => {

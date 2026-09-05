@@ -19,8 +19,8 @@ const unitNumbers = [
     "3.3.8", "3.4.1", "3.4.2", "3.4.3.1", "3.4.4", "3.4.5", "3.5.2", "3.5.3",
 ];
 type Formula = { officialNumber: string; latex: string };
-type TableCell = { text: string; latex?: string };
-type Table = { officialNumber: string; columnCount: number; rows: TableCell[][] };
+type TableCell = { text: string; latex?: string; align?: string };
+type Table = { officialNumber: string; columnCount: number; headers: TableCell[][]; rows: TableCell[][] };
 
 async function json(path: string) {
     return JSON.parse(await readFile(join(root, path), "utf8"));
@@ -72,11 +72,19 @@ test("NTC Tabelle 3.3.I–III e 3.4.I–II conservano griglia e matematica uffic
     assert.equal(byNumber.get("3.3.III")!.rows[3]![1]!.text.includes("a) Mare"), true);
     assert.equal(byNumber.get("3.4.I")!.rows[2]![2]!.latex, "1{,}1");
     assert.equal(byNumber.get("3.4.II")!.columnCount, 4);
-    assert.equal(byNumber.get("3.4.II")!.rows[0]![2]!.latex, "0{,}8\\cdot\\frac{60-\\alpha}{30}");
+    assert.equal(byNumber.get("3.4.II")!.rows[0]![2]!.latex, "0{,}8\\cdot\\dfrac{60-\\alpha}{30}");
+    assert.equal([...byNumber.get("3.4.II")!.headers.flat(), ...byNumber.get("3.4.II")!.rows.flat()].every((cell) => cell.align === "center"), true);
     const unit337 = await json("corpus/units/ntc2018/3.3.7.json");
     assert.deepEqual(unit337.assets.tableIds, [tableId("3.3.II"), tableId("3.3.III")]);
     const unit3431 = await json("corpus/units/ntc2018/3.4.3.1.json");
     assert.deepEqual(unit3431.assets.tableIds, [tableId("3.4.II")]);
+    const unit341 = await json("corpus/units/ntc2018/3.4.1.json");
+    assert.deepEqual(
+        unit341.blocks
+            .filter((block: { kind: string; listMarker?: string }) => block.kind === "list-item" && block.listMarker === "none")
+            .map((block: { text?: { inline?: Array<{ latex?: string }> } }) => block.text?.inline?.[0]?.latex),
+        ["q_{sk}", "\\mu_i", "C_E", "C_t"],
+    );
 });
 
 test("NTC Figure 3.3.1–3.5.2 sono crop ufficiali univoci con hash verificato", async () => {

@@ -18,7 +18,7 @@ import {
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
-import { BlockContent, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, hasTrailingStrong, isRepeatedUnitTitle } from "./CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, hasTrailingStrong, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "./CorpusContent";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
@@ -26,6 +26,16 @@ const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "circ", label: "Solo Circolare 7/2019" },
 ];
 const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi"];
+
+function scvBlockClass(block: CorpusUnit["blocks"][number]) {
+  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`;
+}
+
+function ScvBlockFlow({ blocks, assets, assetsBaseUrl }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string }) {
+  return <div className="scv-unit-blocks">{groupAlignedLabelBlocks(blocks).map((group) => group.kind === "label-list"
+    ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} key={group.blocks[0].blockId} />
+    : <div className={scvBlockClass(group.block)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>;
+}
 
 export interface AuxiliaryPanelContext {
   mode: ViewerMode;
@@ -366,8 +376,8 @@ export function NormativeViewer({
 
     return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} key={unit.id}>
       {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span>{unit.title}</h2>}
-      <div className="scv-unit-blocks">{unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`} key={block.blockId}><BlockContent block={block} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>
-      {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span>{relatedUnit.numbering.official}</span>{relatedUnit.title}</h3></header><div className="scv-unit-blocks">{relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block)).map((block) => <div className={`scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`} key={block.blockId}><BlockContent block={block} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div></section>)}
+      <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={unitChunk.assets} assetsBaseUrl={assetsBaseUrl} />
+      {mode === "combined" && (relatedByTarget.get(unit.id) ?? []).map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span>{relatedUnit.numbering.official}</span>{relatedUnit.title}</h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></section>)}
     </section>;
   }
 

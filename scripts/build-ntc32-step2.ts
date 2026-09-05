@@ -389,7 +389,9 @@ async function rebuildUnit32321(): Promise<void> {
         await assetRef("3.2.3.2.1", "editorial-018", "formula-ref", formulaId("3.2.7"), 52, region(180, 390, 205, 21), formulaId("3.2.7")),
         await textBlock("3.2.3.2.1", "editorial-019", "paragraph", 52, region(73, 407, 447, 70), "Per categorie speciali di sottosuolo, per determinati sistemi geotecnici o se si intenda aumentare il grado di accuratezza nella previsione dei fenomeni di amplificazione, le azioni sismiche da considerare nella progettazione possono essere determinate mediante più rigorose analisi di risposta sismica locale. Queste analisi presuppongono un’adeguata conoscenza delle proprietà geotecniche dei terreni e, in particolare, delle relazioni sforzi-deformazioni in campo ciclico, da determinare mediante specifiche indagini e prove."),
         await textBlock("3.2.3.2.1", "editorial-020", "paragraph", 52, region(73, 475, 447, 44), [
-            text("In mancanza di tali determinazioni, per le componenti orizzontali del moto e per le categorie di sottosuolo di fondazione definite nel § 3.2.2, la forma spettrale su sottosuolo di categoria A è modificata attraverso il coefficiente stratigrafico "),
+            text("In mancanza di tali determinazioni, per le componenti orizzontali del moto e per le categorie di sottosuolo di fondazione definite nel § 3.2.2, la forma spettrale su sottosuolo di categoria "),
+            strong("A"),
+            text(" è modificata attraverso il coefficiente stratigrafico "),
             math("SS", "S_S"), text(", il coefficiente topografico "), math("ST", "S_T"), text(" e il coefficiente "), math("CC", "C_C"),
             text(" che modifica il valore del periodo "), math("TC", "T_C"), text("."),
         ]),
@@ -495,6 +497,18 @@ async function rebuildUnit3233(): Promise<void> {
     ];
     unit.assets.formulaIds = [formulaId("3.2.12")];
     await writeUnit("3.2.3.3", unit);
+}
+
+async function fixUnit3234(): Promise<void> {
+    const unit = await readUnit("3.2.3.4");
+    updateExistingText(existingBlock(unit, 1), [
+        text("Per lo stato limite di operatività lo spettro di risposta di progetto "),
+        math("Sd(T)", "S_d(T)"),
+        text(" da utilizzare, sia per le componenti orizzontali che per la componente verticale, è lo spettro di risposta elastico corrispondente, riferito alla probabilità di superamento nel periodo di riferimento "),
+        math("PVR", "P_{VR}"),
+        text(" considerata (v. §§ 2.4 e 3.2.1)."),
+    ]);
+    await writeUnit("3.2.3.4", unit);
 }
 
 const tables = [
@@ -617,5 +631,6 @@ await rebuildUnit32321();
 await rebuildUnit32322();
 await rebuildUnit323223();
 await rebuildUnit3233();
+await fixUnit3234();
 await rebuildTables();
 console.log("ntc32-step2: rebuilt NTC 3.2 formula flow and Tables 3.2.I–VII for PDF pages 49–54");

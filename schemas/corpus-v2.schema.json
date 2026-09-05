@@ -582,9 +582,14 @@
                 "listMarker": {
                     "type": "string",
                     "enum": [
+                        "bullet",
                         "dash",
                         "none"
                     ]
+                },
+                "listLevel": {
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "text": {
                     "$ref": "#/$defs/textPayload"

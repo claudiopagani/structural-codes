@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { BlockContent, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, isRepeatedUnitTitle } from "../shared/CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -474,25 +474,30 @@ function UnitHeader({ unit, documentLabel, showRaw, onToggleRaw }: { unit: Corpu
   );
 }
 
+function legacyBlockClass(block: CorpusUnit["blocks"][number], showRaw: boolean) {
+  return `text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`;
+}
+
 function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUnit; assets: AssetBundle; showRaw: boolean; compact?: boolean }) {
+  const blocks = unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block));
   return (
     <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
-      {unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block)).map((block, index) => (
-        <section className={`text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`} key={block.blockId}>
-          <div className="block-gutter"><span>{String(index + 1).padStart(2, "0")}</span>{block.evidence && <span title="Pagina PDF">p.{block.evidence.pdfPage}</span>}</div>
-          <div>
-            <span className="block-kind">{displayLabel(block.kind)}</span>
-            <BlockContent block={block} assets={assets} showRaw={showRaw} />
-            {block.evidence?.transformations && block.evidence.transformations.length > 0 && (
-              <details className="transformations"><summary>{block.evidence.transformations.length} trasformazioni tracciate</summary><ul>
-                {block.evidence.transformations.map((transformation, transformationIndex) => (
-                  <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>
-                ))}
-              </ul></details>
-            )}
-          </div>
-        </section>
-      ))}
+      {groupAlignedLabelBlocks(blocks, showRaw).map((group) => group.kind === "label-list"
+        ? <AlignedLabelList blocks={group.blocks} assets={assets} variant="legacy" startIndex={group.startIndex} key={group.blocks[0].blockId} />
+        : <section className={legacyBlockClass(group.block, showRaw)} key={group.block.blockId}>
+            <div className="block-gutter"><span>{String(group.index + 1).padStart(2, "0")}</span>{group.block.evidence && <span title="Pagina PDF">p.{group.block.evidence.pdfPage}</span>}</div>
+            <div>
+              <span className="block-kind">{displayLabel(group.block.kind)}</span>
+              <BlockContent block={group.block} assets={assets} showRaw={showRaw} />
+              {group.block.evidence?.transformations && group.block.evidence.transformations.length > 0 && (
+                <details className="transformations"><summary>{group.block.evidence.transformations.length} trasformazioni tracciate</summary><ul>
+                  {group.block.evidence.transformations.map((transformation, transformationIndex) => (
+                    <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>
+                  ))}
+                </ul></details>
+              )}
+            </div>
+          </section>)}
     </div>
   );
 }

@@ -116,10 +116,12 @@ test("il PDF resta solo nel wrapper locale e viene caricato on demand", async ()
 });
 
 test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", async () => {
-  const [component, styles, legacyStyles] = await Promise.all([
+  const [component, styles, legacyStyles, sharedViewer, legacyViewer] = await Promise.all([
     readFile(new URL("../shared/CorpusContent.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/CorpusViewer.tsx", import.meta.url), "utf8"),
   ]);
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
@@ -127,6 +129,7 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.doesNotMatch(component, /Formula non numerata/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
+  assert.match(component, /tableAssetClass/);
   assert.match(component, /table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption/);
   assert.match(component, /inline\.length === 2 && inline\.at\(-1\)\?\.kind === "math"/);
   assert.match(component, /caption && <span> — \{table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption\}<\/span>/);
@@ -147,13 +150,32 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(legacyStyles, /\.formula-scroll \.katex-display \{[^}]*margin:\s*0\.5em 0/);
   assert.match(legacyStyles, /\.text-block p \{[^}]*text-align: justify/);
   assert.match(legacyStyles, /\.table-asset table \.table-math \.katex \{[^}]*font-size: 1em/);
+  assert.match(component, /leadingLabelKind/);
+  assert.match(component, /groupAlignedLabelBlocks/);
+  assert.match(sharedViewer, /<AlignedLabelList/);
+  assert.match(legacyViewer, /<AlignedLabelList/);
   assert.match(styles, /list-item-with-official-marker/);
   assert.match(styles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(styles, /\.scv-label-list \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(styles, /\.scv-label-list-row, \.scv-label-list-content \{[^}]*display:\s*contents/);
   assert.match(styles, /leading-math-description/);
-  assert.match(styles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
+  assert.match(styles, /list-item-with-bullet/);
+  assert.match(styles, /list-item-level-1/);
+  assert.match(styles, /table-cell-multiline/);
+  assert.match(styles, /table-asset-3-5-iv table \{[^}]*table-layout:\s*fixed/);
+  assert.match(styles, /table-asset-3-5-iv th:first-child[^}]*width:\s*6\.25em/);
+  assert.match(styles, /block-with-leading-label p \{[^}]*grid-template-columns: max-content minmax\(0, 1fr\)/);
   assert.match(legacyStyles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
+  assert.match(legacyStyles, /\.label-list \{[^}]*grid-template-columns:\s*54px max-content minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /\.label-list-row, \.label-list-content \{[^}]*display:\s*contents/);
   assert.match(legacyStyles, /leading-math-description/);
-  assert.match(legacyStyles, /block-with-leading-label p \{[^}]*grid-template-columns: 4\.5em minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /list-item-with-bullet/);
+  assert.match(legacyStyles, /list-item-level-1/);
+  assert.match(legacyStyles, /text-block\.block-with-leading-label p \{[^}]*grid-template-columns: max-content minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /table-asset-3-5-iv table \{[^}]*table-layout:\s*fixed/);
+  assert.match(legacyStyles, /table-asset-3-5-iv th:first-child,[^}]*table-asset-3-5-iv td:first-child[^}]*width:\s*6\.25em/s);
+  assert.doesNotMatch(styles, /grid-template-columns:\s*6\.5em/);
+  assert.doesNotMatch(legacyStyles, /grid-template-columns:\s*6\.5em/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
 });
 

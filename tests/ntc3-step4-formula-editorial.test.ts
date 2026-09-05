@@ -13,7 +13,7 @@ const unitNumbers = [
     "3.6.2.2", "3.6.2.3", "3.6.3.2", "3.6.3.3.1", "3.6.3.3.2", "3.6.3.4",
 ];
 type Formula = { officialNumber: string; latex: string };
-type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; align?: string };
 type Table = { officialNumber: string; columnCount: number; headers: TableCell[][]; rows: TableCell[][] };
 
 async function json(path: string) {
@@ -62,13 +62,27 @@ test("NTC Tabelle 3.5.I–IV e 3.6.I–III conservano griglia, celle unite e mat
     assert.equal(byNumber.get("3.5.I")!.columnCount, 4);
     assert.equal(byNumber.get("3.5.I")!.headers[0]![2]!.colSpan, 2);
     assert.equal(byNumber.get("3.5.I")!.rows[0]![0]!.rowSpan, 3);
+    assert.equal(byNumber.get("3.5.I")!.headers[1]![0]!.text, "superfici esposte\na Nord-Est");
+    assert.equal(byNumber.get("3.5.I")!.headers[1]![1]!.text, "superfici esposte a Sud-Ovest\nod orizzontali");
+    assert.equal(byNumber.get("3.5.I")!.rows.every((row) => row.slice(-2).every((cell) => cell.align === "center")), true);
     assert.equal(byNumber.get("3.5.II")!.rows[2]![1]!.latex, "\\pm25\\,{}^\\circ\\mathrm{C}");
+    assert.equal(byNumber.get("3.5.II")!.headers[0]![1]!.align, "center");
+    assert.equal(byNumber.get("3.5.II")!.rows.every((row) => row[1]!.align === "center"), true);
     assert.equal(byNumber.get("3.5.III")!.rows[7]![1]!.latex, "30\\div70");
+    assert.equal(byNumber.get("3.5.III")!.headers[0]![1]!.align, "center");
+    assert.equal(byNumber.get("3.5.III")!.rows.every((row) => row[1]!.align === "center"), true);
     assert.equal(byNumber.get("3.5.IV")!.rows.length, 5);
     assert.equal(byNumber.get("3.6.I")!.rows[2]![1]!.text, "Effetti generalizzati sulle strutture");
     assert.equal(byNumber.get("3.6.II")!.columnCount, 2);
     assert.equal(byNumber.get("3.6.III")!.rows[3]![0]!.rowSpan, 2);
     assert.equal(byNumber.get("3.6.III")!.headers[0]![2]!.latex, "F_{d,x}\\,[\\mathrm{kN}]");
+    for (const officialNumber of ["3.6.I", "3.6.II"]) {
+        const table = byNumber.get(officialNumber)!;
+        assert.equal(table.headers[0]![0]!.align, "center", officialNumber);
+        assert.equal(table.rows.every((row) => row[0]!.align === "center"), true, officialNumber);
+    }
+    assert.equal(byNumber.get("3.6.III")!.headers[0]![2]!.align, "center");
+    assert.equal(byNumber.get("3.6.III")!.rows.every((row) => row.at(-1)!.align === "center"), true);
     const tableRefs: Array<[string, string]> = [
         ["3.5.4", "3.5.I"], ["3.5.5", "3.5.II"], ["3.5.7", "3.5.III"], ["3.6.1.2", "3.5.IV"],
         ["3.6.2.2", "3.6.I"], ["3.6.3.2", "3.6.II"], ["3.6.3.3.1", "3.6.III"],
@@ -78,4 +92,39 @@ test("NTC Tabelle 3.5.I–IV e 3.6.I–III conservano griglia, celle unite e mat
         return [record.assets.tableIds, tableId(table)];
     }));
     for (const [tableIds, expectedId] of refs) assert.deepEqual(tableIds, [expectedId]);
+});
+
+test("NTC § 3.6.1.5.1 e § 3.6.3.4 conservano corsivi e nesting delle liste", async () => {
+    const fireCurves = await json("corpus/units/ntc2018/3.6.1.5.1.json");
+    const curveBlocks = ["editorial-007", "editorial-009"].map((suffix) => fireCurves.blocks.find((candidate: { blockId: string }) => candidate.blockId.endsWith("#block-" + suffix)));
+    assert.deepEqual(curveBlocks.map((candidate) => candidate.text.inline.filter((segment: { kind: string }) => segment.kind === "em").map((segment: { value: string }) => segment.value)), [
+        ["curva nominale degli idrocarburi"], ["curva nominale esterna"],
+    ]);
+
+    const impacts = await json("corpus/units/ntc2018/3.6.3.4.json");
+    const nested = impacts.blocks.filter((candidate: { blockId: string }) => /#block-editorial-00[5-9]|#block-editorial-010|#block-editorial-011$/u.test(candidate.blockId));
+    assert.deepEqual(nested.map((candidate: { listMarker?: string; listLevel?: number }) => [candidate.listMarker, candidate.listLevel]), [
+        ["bullet", 0], ["dash", 1], ["dash", 1], ["bullet", 0], ["dash", 1], ["dash", 1], ["bullet", 0],
+    ]);
+});
+
+test("NTC § 3.6.1.1 conserva corsivi, label e allineamento degli elenchi", async () => {
+    const unit = await json("corpus/units/ntc2018/3.6.1.1.json");
+    const block = (suffix: string) => unit.blocks.find((candidate: { blockId: string }) => candidate.blockId.endsWith("#block-" + suffix));
+    assert.deepEqual(
+        ["editorial-004", "editorial-004-b", "editorial-015", "editorial-016", "editorial-017", "editorial-018"].map((suffix) => [block(suffix).kind, block(suffix).listMarker]),
+        [["list-item", "none"], ["list-item", "none"], ["list-item", "none"], ["list-item", "none"], ["list-item", "none"], ["list-item", "none"]],
+    );
+    assert.deepEqual(
+        ["editorial-004", "editorial-004-b"].map((suffix) => block(suffix).text.inline[0].value),
+        ["nominale", "naturale"],
+    );
+    assert.deepEqual(
+        ["editorial-001", "editorial-002", "editorial-005", "editorial-006", "editorial-007", "editorial-008", "editorial-009", "editorial-010", "editorial-011", "editorial-019"].map((suffix) => block(suffix).text.inline.filter((segment: { kind: string }) => segment.kind === "em").map((segment: { value: string }) => segment.value)),
+        [["incendio"], ["incendio convenzionale di progetto", "curva di incendio"], ["capacità di compartimentazione"], ["capacità portante in caso di incendio"], ["resistenza al fuoco"], ["compartimento antincendio"], ["carico di incendio"], ["carico d’incendio specifico"], ["carico di incendio specifico di progetto"], ["incendio localizzato"]],
+    );
+    assert.deepEqual(
+        ["editorial-015", "editorial-016", "editorial-017", "editorial-018"].map((suffix) => block(suffix).text.inline[0].latex),
+        ["q_f", "\\delta_{q1}\\ge1{,}00", "\\delta_{q2}\\ge0{,}80", "\\delta_n=\\prod_{i=1}^{10}\\delta_{ni}\\ge0{,}20"],
+    );
 });

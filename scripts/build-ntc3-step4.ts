@@ -16,11 +16,14 @@ type Region = {
 };
 type InlineSegment =
     | { kind: "text"; value: string }
+    | { kind: "em"; value: string }
     | { kind: "math"; value: string; latex: string };
 type Transformation = { operation: string; ruleVersion: string; note: string };
 type UnitBlock = {
     blockId: string;
     kind: string;
+    listMarker?: "bullet" | "dash" | "none";
+    listLevel?: number;
     assetId?: string;
     text?: {
         raw: string;
@@ -51,7 +54,7 @@ type EvidenceItem = {
     region: Region;
 };
 type PageEvidence = { textItems: EvidenceItem[] };
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; align?: "left" | "center" | "right" };
 
 const sha256 = (value: string): string => createHash("sha256").update(value, "utf8").digest("hex");
 const region = (x: number, y: number, width: number, height: number): Region => ({
@@ -62,6 +65,7 @@ const region = (x: number, y: number, width: number, height: number): Region => 
     height,
 });
 const text = (value: string): InlineSegment => ({ kind: "text", value });
+const em = (value: string): InlineSegment => ({ kind: "em", value });
 const math = (value: string, latex = value): InlineSegment => ({ kind: "math", value, latex });
 const cell = (value: string, extra: Partial<Cell> = {}): Cell => ({ text: value, ...extra });
 const mathCell = (value: string, latex: string, extra: Partial<Cell> = {}): Cell => ({ text: value, latex, ...extra });
@@ -128,6 +132,8 @@ async function textBlock(
     page: number,
     target: Region,
     value: string | InlineSegment[],
+    listMarker?: "bullet" | "dash" | "none",
+    listLevel?: number,
 ): Promise<UnitBlock> {
     const inline = typeof value === "string" ? undefined : value;
     const normalized = typeof value === "string" ? value : value.map((segment) => segment.value).join("");
@@ -136,6 +142,8 @@ async function textBlock(
         blockId: uid(unit) + "#block-" + suffix,
         kind,
         origin: "official",
+        ...(listMarker ? { listMarker } : {}),
+        ...(listLevel !== undefined ? { listLevel } : {}),
         text: {
             raw,
             normalized,
@@ -299,31 +307,72 @@ async function fixThermalUnits(): Promise<void> {
 async function rebuildFireDefinitions(): Promise<void> {
     const number = "3.6.1.1";
     const unit = await readUnit(number);
+    const openingBlocks = unit.blocks.slice(0, 4);
+    const firstOpeningBlock = openingBlocks[1];
+    const secondOpeningBlock = openingBlocks[2];
+    if (!firstOpeningBlock || !secondOpeningBlock) throw new Error(`Blocchi introduttivi mancanti per ${number}`);
+    updateText(firstOpeningBlock, [
+        text("Per "), em("incendio"), text(", si intende la combustione autoalimentata ed incontrollata di materiali combustibili presenti in un compartimento."),
+    ]);
+    updateText(secondOpeningBlock, [
+        text("Ai fini della presente norma si fa riferimento ad un "), em("incendio convenzionale di progetto"),
+        text(" definito attraverso una "), em("curva di incendio"),
+        text(" che rappresenta l’andamento, in funzione del tempo, della temperatura media dei gas di combustione nell’intorno della superficie degli elementi strutturali."),
+    ]);
     unit.blocks = [
-        ...unit.blocks.slice(0, 12),
+        ...openingBlocks,
+        await textBlock(number, "editorial-004", "list-item", 66, region(78, 490, 440, 10), [
+            em("nominale"), text(": curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale;"),
+        ], "none"),
+        await textBlock(number, "editorial-004-b", "list-item", 66, region(78, 503, 440, 22), [
+            em("naturale"), text(": curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del compartimento."),
+        ], "none"),
+        await textBlock(number, "editorial-005", "paragraph", 66, region(78, 526, 441, 30), [
+            text("La "), em("capacità di compartimentazione"), text(" in caso di incendio è l’attitudine di un elemento costruttivo a conservare, sotto l’azione del fuoco, oltre alla propria stabilità, un sufficiente isolamento termico ed una sufficiente tenuta ai fumi ed ai gas caldi della combustione, nonché tutte le altre prestazioni se richieste."),
+        ]),
+        await textBlock(number, "editorial-006", "paragraph", 66, region(78, 560, 441, 22), [
+            text("La "), em("capacità portante in caso di incendio"), text(" è l’attitudine di una struttura, di una parte della struttura o di un elemento strutturale a conservare una sufficiente resistenza meccanica sotto l’azione del fuoco con riferimento alle altre azioni agenti."),
+        ]),
+        await textBlock(number, "editorial-007", "paragraph", 66, region(78, 583, 441, 29), [
+            text("La "), em("resistenza al fuoco"), text(" riguarda la capacità portante in caso di incendio per una struttura, per una parte della struttura o per un elemento strutturale nonché la capacità di compartimentazione rispetto all’incendio per gli elementi di separazione sia strutturali, come muri e solai, sia non strutturali, come porte e tramezzi."),
+        ]),
+        await textBlock(number, "editorial-008", "paragraph", 66, region(78, 617, 441, 21), [
+            text("Per "), em("compartimento antincendio"), text(" si intende una parte della costruzione delimitata da elementi costruttivi idonei a garantire, sotto l’azione del fuoco e per un dato intervallo di tempo, la capacità di compartimentazione."),
+        ]),
+        await textBlock(number, "editorial-009", "paragraph", 66, region(78, 640, 441, 19), [
+            text("Per "), em("carico di incendio"), text(" si intende il potenziale termico netto della totalità dei materiali combustibili contenuti in uno spazio, corretto in base ai parametri indicativi della partecipazione alla combustione dei singoli materiali."),
+        ]),
+        await textBlock(number, "editorial-010", "paragraph", 66, region(78, 664, 441, 9), [
+            text("Per "), em("carico d’incendio specifico"), text(" si intende il carico di incendio riferito all’unità di superficie lorda."),
+        ]),
+        await textBlock(number, "editorial-011", "paragraph", 66, region(78, 677, 441, 20), [
+            text("Per "), em("carico di incendio specifico di progetto"), text(" si intende il carico di incendio specifico corretto in base ai parametri indicatori del rischio di incendio del compartimento e dei fattori relativi alle misure di protezione presenti."),
+        ]),
         await textBlock(number, "editorial-012", "paragraph", 66, region(78, 690, 440, 16), [
             text("I valori del carico d’incendio specifico di progetto ("), math("qf,d", "q_{f,d}"),
             text(") sono determinati mediante la relazione:"),
         ]),
         await assetRef(number, "editorial-013", "formula-ref", formulaId("3.6.1"), 66, region(155, 704, 220, 22)),
         await textBlock(number, "editorial-014", "paragraph", 67, region(83, 92, 45, 10), "dove:"),
-        await textBlock(number, "editorial-015", "paragraph", 67, region(83, 99, 430, 14), [
+        await textBlock(number, "editorial-015", "list-item", 67, region(83, 99, 430, 14), [
             math("qf", "q_f"), text(" è il valore nominale del carico d’incendio ["), math("MJ/m²", "\\mathrm{MJ/m^2}"), text("]."),
-        ]),
-        await textBlock(number, "editorial-016", "paragraph", 67, region(83, 113, 430, 22), [
+        ], "none"),
+        await textBlock(number, "editorial-016", "list-item", 67, region(83, 113, 430, 22), [
             math("δq1 ≥ 1,00", "\\delta_{q1}\\ge1{,}00"), text(" è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento"),
-        ]),
-        await textBlock(number, "editorial-017", "paragraph", 67, region(83, 136, 430, 22), [
+        ], "none"),
+        await textBlock(number, "editorial-017", "list-item", 67, region(83, 136, 430, 22), [
             math("δq2 ≥ 0,80", "\\delta_{q2}\\ge0{,}80"), text(" è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento"),
-        ]),
-        await textBlock(number, "editorial-018", "paragraph", 67, region(83, 158, 430, 28), [
+        ], "none"),
+        await textBlock(number, "editorial-018", "list-item", 67, region(83, 158, 430, 28), [
             math("δn = ∏i=1^10 δni ≥ 0,20", "\\delta_n=\\prod_{i=1}^{10}\\delta_{ni}\\ge0{,}20"),
             text(" è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)"),
-        ]),
+        ], "none"),
         await textBlock(number, "editorial-019", "paragraph", 67, region(83, 202, 430, 48), [
             text("Qualora nel compartimento siano presenti elevate dissimmetrie nella distribuzione dei materiali combustibili il valore nominale "),
             math("qf", "q_f"),
-            text(" del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii."),
+            text(" del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’"),
+            em("incendio localizzato"),
+            text(", valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii."),
         ]),
         await textBlock(number, "editorial-020", "paragraph", 67, region(83, 256, 430, 28), "Per incendio localizzato deve intendersi un focolaio d’incendio che interessa una zona limitata del compartimento antincendio, con sviluppo di calore concentrato in prossimità degli elementi strutturali posti superiormente al focolaio o immediatamente adiacenti."),
         await textBlock(number, "editorial-021", "paragraph", 67, region(83, 289, 430, 22), "Nel caso di presenza di elementi strutturali lignei è possibile considerare solo una quota parte del loro contributo alla determinazione del carico di incendio, da definire con riferimento a riconosciute normative o documenti di comprovata validità."),
@@ -357,9 +406,15 @@ async function rebuildFireCurves(): Promise<void> {
             text("dove "), math("θg", "\\theta_g"), text(" è la temperatura dei gas caldi, espressa in "), math("°C", "{}^\\circ\\mathrm{C}"),
             text(", e "), math("t"), text(" è il tempo espresso in minuti primi."),
         ]),
-        await textBlock(number, "editorial-007", "paragraph", 68, region(81, 276, 434, 19), "Nel caso di incendi di quantità rilevanti di idrocarburi o altre sostanze con equivalente velocità di rilascio termico, la curva di incendio nominale standard può essere sostituita con la curva nominale degli idrocarburi seguente:"),
+        await textBlock(number, "editorial-007", "paragraph", 68, region(81, 276, 434, 19), [
+            text("Nel caso di incendi di quantità rilevanti di idrocarburi o altre sostanze con equivalente velocità di rilascio termico, la curva di incendio nominale standard può essere sostituita con la "),
+            em("curva nominale degli idrocarburi"), text(" seguente:"),
+        ]),
         await assetRef(number, "editorial-008", "formula-ref", formulaId("3.6.3"), 68, region(125, 296, 245, 18)),
-        await textBlock(number, "editorial-009", "paragraph", 68, region(81, 314, 434, 18), "Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la curva di incendio nominale standard può essere sostituita con la curva nominale esterna seguente:"),
+        await textBlock(number, "editorial-009", "paragraph", 68, region(81, 314, 434, 18), [
+            text("Nel caso di incendi sviluppatisi all’interno del compartimento, ma che coinvolgono strutture poste all’esterno, per queste ultime la curva di incendio nominale standard può essere sostituita con la "),
+            em("curva nominale esterna"), text(" seguente:"),
+        ]),
         await assetRef(number, "editorial-010", "formula-ref", formulaId("3.6.4"), 68, region(125, 334, 245, 18)),
         await textBlock(number, "editorial-011", "paragraph", 68, region(81, 352, 434, 13), "Gli incendi convenzionali di progetto vengono generalmente applicati ad un compartimento dell’edificio alla volta."),
         await textBlock(number, "editorial-012", "paragraph", 68, region(81, 365, 434, 17), "Sono ammesse altresì specifiche curve nominali, per descrivere particolari scenari di incendio (tunnel curve, slow heating curve, ecc.), purché di comprovata validità."),
@@ -501,13 +556,13 @@ async function rebuildImpactUnits(): Promise<void> {
             text("In mancanza di specifiche analisi di rischio possono assumersi le seguenti azioni statiche equivalenti, in funzione della distanza "),
             math("d"), text(" degli elementi esposti dall’asse del binario:"),
         ]),
-        await textBlock("3.6.3.4", "editorial-005", "list-item", 71, region(83, 294, 430, 12), [text("per "), math("d ≤ 5 m", "d\\le5\\,\\mathrm{m}"), text(":"),]),
-        await textBlock("3.6.3.4", "editorial-006", "list-item", 71, region(95, 305, 420, 13), [math("4000 kN", "4000\\,\\mathrm{kN}"), text(" in direzione parallela alla direzione di marcia dei convogli ferroviari;"),]),
-        await textBlock("3.6.3.4", "editorial-007", "list-item", 71, region(95, 318, 420, 13), [math("1500 kN", "1500\\,\\mathrm{kN}"), text(" in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"),]),
-        await textBlock("3.6.3.4", "editorial-008", "list-item", 71, region(83, 332, 430, 12), [text("per "), math("5 m < d ≤ 15 m", "5\\,\\mathrm{m}<d\\le15\\,\\mathrm{m}"), text(":"),]),
-        await textBlock("3.6.3.4", "editorial-009", "list-item", 71, region(95, 342, 420, 13), [math("2000 kN", "2000\\,\\mathrm{kN}"), text(" in direzione parallela alla direzione di marcia dei convogli ferroviari;"),]),
-        await textBlock("3.6.3.4", "editorial-010", "list-item", 71, region(95, 356, 420, 13), [math("750 kN", "750\\,\\mathrm{kN}"), text(" in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"),]),
-        await textBlock("3.6.3.4", "editorial-011", "list-item", 71, region(83, 369, 430, 13), [text("per "), math("d > 15 m", "d>15\\,\\mathrm{m}"), text(" pari a zero in entrambe le direzioni."),]),
+        await textBlock("3.6.3.4", "editorial-005", "list-item", 71, region(83, 294, 430, 12), [text("per "), math("d ≤ 5 m", "d\\le5\\,\\mathrm{m}"), text(":"),], "bullet", 0),
+        await textBlock("3.6.3.4", "editorial-006", "list-item", 71, region(95, 305, 420, 13), [math("4000 kN", "4000\\,\\mathrm{kN}"), text(" in direzione parallela alla direzione di marcia dei convogli ferroviari;"),], "dash", 1),
+        await textBlock("3.6.3.4", "editorial-007", "list-item", 71, region(95, 318, 420, 13), [math("1500 kN", "1500\\,\\mathrm{kN}"), text(" in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"),], "dash", 1),
+        await textBlock("3.6.3.4", "editorial-008", "list-item", 71, region(83, 332, 430, 12), [text("per "), math("5 m < d ≤ 15 m", "5\\,\\mathrm{m}<d\\le15\\,\\mathrm{m}"), text(":"),], "bullet", 0),
+        await textBlock("3.6.3.4", "editorial-009", "list-item", 71, region(95, 342, 420, 13), [math("2000 kN", "2000\\,\\mathrm{kN}"), text(" in direzione parallela alla direzione di marcia dei convogli ferroviari;"),], "dash", 1),
+        await textBlock("3.6.3.4", "editorial-010", "list-item", 71, region(95, 356, 420, 13), [math("750 kN", "750\\,\\mathrm{kN}"), text(" in direzione perpendicolare alla direzione di marcia dei convogli ferroviari;"),], "dash", 1),
+        await textBlock("3.6.3.4", "editorial-011", "list-item", 71, region(83, 369, 430, 13), [text("per "), math("d > 15 m", "d>15\\,\\mathrm{m}"), text(" pari a zero in entrambe le direzioni."),], "bullet", 0),
         await textBlock("3.6.3.4", "editorial-012", "paragraph", 71, region(72, 382, 450, 14), [
             text("Queste forze dovranno essere applicate a "), math("1,80 m", "1{,}80\\,\\mathrm{m}"), text(" dal piano del ferro e non dovranno essere considerate agenti simultaneamente."),
         ]),
@@ -521,35 +576,35 @@ const tables = [
         caption: "Tabella 3.5.I - Contributo dell’irraggiamento solare", columnCount: 4,
         headers: [
             [cell("Stagione", { rowSpan: 2 }), cell("Natura della superficie", { rowSpan: 2 }), cell("Incremento di Temperatura", { colSpan: 2 })],
-            [cell("superfici esposte a Nord-Est"), cell("superfici esposte a Sud-Ovest od orizzontali")],
+            [cell("superfici esposte\na Nord-Est"), cell("superfici esposte a Sud-Ovest\nod orizzontali")],
         ],
         rows: [
-            [cell("Estate", { rowSpan: 3 }), cell("Superficie riflettente"), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}"), mathCell("18 °C", "18\\,{}^\\circ\\mathrm{C}")],
-            [cell("Superficie chiara"), mathCell("2 °C", "2\\,{}^\\circ\\mathrm{C}"), mathCell("30 °C", "30\\,{}^\\circ\\mathrm{C}")],
-            [cell("Superficie scura"), mathCell("4 °C", "4\\,{}^\\circ\\mathrm{C}"), mathCell("42 °C", "42\\,{}^\\circ\\mathrm{C}")],
-            [cell("Inverno", { colSpan: 2 }), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}"), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}")],
+            [cell("Estate", { rowSpan: 3 }), cell("Superficie riflettente"), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}", { align: "center" }), mathCell("18 °C", "18\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Superficie chiara"), mathCell("2 °C", "2\\,{}^\\circ\\mathrm{C}", { align: "center" }), mathCell("30 °C", "30\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Superficie scura"), mathCell("4 °C", "4\\,{}^\\circ\\mathrm{C}", { align: "center" }), mathCell("42 °C", "42\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Inverno", { colSpan: 2 }), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}", { align: "center" }), mathCell("0 °C", "0\\,{}^\\circ\\mathrm{C}", { align: "center" })],
         ], notes: [],
     },
     {
         id: tableId("3.5.II"), unitId: uid("3.5.5"), officialNumber: "3.5.II", pdfPage: 65,
         caption: "Tabella 3.5.II - Valori di ΔTu per gli edifici", columnCount: 2,
-        headers: [[cell("Tipo di struttura"), mathCell("ΔTu", "\\Delta T_u")]],
+        headers: [[cell("Tipo di struttura"), mathCell("ΔTu", "\\Delta T_u", { align: "center" })]],
         rows: [
-            [cell("Strutture in c.a. e c.a.p. esposte"), mathCell("± 15 °C", "\\pm15\\,{}^\\circ\\mathrm{C}")],
-            [cell("Strutture in c.a. e c.a.p. protette"), mathCell("± 10 °C", "\\pm10\\,{}^\\circ\\mathrm{C}")],
-            [cell("Strutture in acciaio esposte"), mathCell("± 25 °C", "\\pm25\\,{}^\\circ\\mathrm{C}")],
-            [cell("Strutture in acciaio protette"), mathCell("± 15 °C", "\\pm15\\,{}^\\circ\\mathrm{C}")],
+            [cell("Strutture in c.a. e c.a.p. esposte"), mathCell("± 15 °C", "\\pm15\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Strutture in c.a. e c.a.p. protette"), mathCell("± 10 °C", "\\pm10\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Strutture in acciaio esposte"), mathCell("± 25 °C", "\\pm25\\,{}^\\circ\\mathrm{C}", { align: "center" })],
+            [cell("Strutture in acciaio protette"), mathCell("± 15 °C", "\\pm15\\,{}^\\circ\\mathrm{C}", { align: "center" })],
         ], notes: [],
     },
     {
         id: tableId("3.5.III"), unitId: uid("3.5.7"), officialNumber: "3.5.III", pdfPage: 66,
         caption: "Tabella 3.5.III - Coefficienti di dilatazione termica a temperatura ambiente", columnCount: 2,
-        headers: [[cell("Materiale"), mathCell("αT [10⁻⁶/°C]", "\\alpha_T\\,[10^{-6}/{}^\\circ\\mathrm{C}]")]],
+        headers: [[cell("Materiale"), mathCell("αT [10⁻⁶/°C]", "\\alpha_T\\,[10^{-6}/{}^\\circ\\mathrm{C}]", { align: "center" })]],
         rows: [
-            [cell("Alluminio"), cell("24")], [cell("Acciaio da carpenteria"), cell("12")],
-            [cell("Calcestruzzo strutturale"), cell("10")], [cell("Strutture miste acciaio-calcestruzzo"), cell("12")],
-            [cell("Calcestruzzo alleggerito"), cell("7")], [cell("Muratura"), mathCell("6 ÷ 10", "6\\div10")],
-            [cell("Legno (parallelo alle fibre)"), cell("5")], [cell("Legno (ortogonale alle fibre)"), mathCell("30 ÷ 70", "30\\div70")],
+            [cell("Alluminio"), cell("24", { align: "center" })], [cell("Acciaio da carpenteria"), cell("12", { align: "center" })],
+            [cell("Calcestruzzo strutturale"), cell("10", { align: "center" })], [cell("Strutture miste acciaio-calcestruzzo"), cell("12", { align: "center" })],
+            [cell("Calcestruzzo alleggerito"), cell("7", { align: "center" })], [cell("Muratura"), mathCell("6 ÷ 10", "6\\div10", { align: "center" })],
+            [cell("Legno (parallelo alle fibre)"), cell("5", { align: "center" })], [cell("Legno (ortogonale alle fibre)"), mathCell("30 ÷ 70", "30\\div70", { align: "center" })],
         ], notes: [],
     },
     {
@@ -566,34 +621,38 @@ const tables = [
     {
         id: tableId("3.6.I"), unitId: uid("3.6.2.2"), officialNumber: "3.6.I", pdfPage: 69,
         caption: "Tabella 3.6.I - Categorie di azione dovute alle esplosioni", columnCount: 2,
-        headers: [[cell("Categoria di azione"), cell("Possibili effetti")]],
-        rows: [[cell("1"), cell("Effetti trascurabili sulle strutture")], [cell("2"), cell("Effetti localizzati su parte delle strutture")], [cell("3"), cell("Effetti generalizzati sulle strutture")]], notes: [],
+        headers: [[cell("Categoria di azione", { align: "center" }), cell("Possibili effetti")]],
+        rows: [[cell("1", { align: "center" }), cell("Effetti trascurabili sulle strutture")], [cell("2", { align: "center" }), cell("Effetti localizzati su parte delle strutture")], [cell("3", { align: "center" }), cell("Effetti generalizzati sulle strutture")]], notes: [],
     },
     {
         id: tableId("3.6.II"), unitId: uid("3.6.3.2"), officialNumber: "3.6.II", pdfPage: 70,
         caption: "Tabella 3.6.II - Categorie di azione", columnCount: 2,
-        headers: [[cell("Categoria di azione"), cell("Possibili effetti")]],
-        rows: [[cell("1"), cell("Effetti trascurabili sulle strutture")], [cell("2"), cell("Effetti localizzati su parte delle strutture")], [cell("3"), cell("Effetti generalizzati sulle strutture")]], notes: [],
+        headers: [[cell("Categoria di azione", { align: "center" }), cell("Possibili effetti")]],
+        rows: [[cell("1", { align: "center" }), cell("Effetti trascurabili sulle strutture")], [cell("2", { align: "center" }), cell("Effetti localizzati su parte delle strutture")], [cell("3", { align: "center" }), cell("Effetti generalizzati sulle strutture")]], notes: [],
     },
     {
         id: tableId("3.6.III"), unitId: uid("3.6.3.3.1"), officialNumber: "3.6.III", pdfPage: 70,
         caption: "Tabella 3.6.III - Forze statiche equivalenti agli urti di veicoli", columnCount: 3,
-        headers: [[cell("Tipo di strada"), cell("Tipo di veicolo"), mathCell("Forza Fd,x [kN]", "F_{d,x}\\,[\\mathrm{kN}]")]],
+        headers: [[cell("Tipo di strada"), cell("Tipo di veicolo"), mathCell("Forza Fd,x [kN]", "F_{d,x}\\,[\\mathrm{kN}]", { align: "center" })]],
         rows: [
-            [cell("Autostrade, strade extraurbane"), cell("-"), cell("1000")],
-            [cell("Strade locali"), cell("-"), cell("750")],
-            [cell("Strade urbane"), cell("-"), cell("500")],
-            [cell("Aree di parcheggio e autorimesse", { rowSpan: 2 }), cell("Automobili"), cell("50")],
-            [cell("Veicoli destinati al trasporto di merci, aventi massa massima superiore a 3,5 t"), cell("150")],
+            [cell("Autostrade, strade extraurbane"), cell("-"), cell("1000", { align: "center" })],
+            [cell("Strade locali"), cell("-"), cell("750", { align: "center" })],
+            [cell("Strade urbane"), cell("-"), cell("500", { align: "center" })],
+            [cell("Aree di parcheggio e autorimesse", { rowSpan: 2 }), cell("Automobili"), cell("50", { align: "center" })],
+            [cell("Veicoli destinati al trasporto di merci, aventi massa massima superiore a 3,5 t"), cell("150", { align: "center" })],
         ], notes: [],
     },
 ];
 
 async function rebuildTables(): Promise<void> {
     const manifest = JSON.parse(await readFile(tableManifestPath, "utf8"));
-    const ids = new Set(tables.map((table) => table.id));
-    manifest.tables = manifest.tables.filter((table: { id: string }) => !ids.has(table.id));
-    manifest.tables.push(...tables);
+    const replacements = new Map(tables.map((table) => [table.id, table]));
+    const existingIds = new Set<string>();
+    manifest.tables = manifest.tables.map((table: { id: string }) => {
+        existingIds.add(table.id);
+        return replacements.get(table.id) ?? table;
+    });
+    manifest.tables.push(...tables.filter((table) => !existingIds.has(table.id)));
     await writeFile(tableManifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 }
 

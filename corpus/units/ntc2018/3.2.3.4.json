@@ -96,11 +96,20 @@
       "text": {
         "raw": "Per lo stato limite di operatività lo spettro di risposta di progetto S d(T) da utilizzare, sia per le componenti orizzontali che per la\ncomponente verticale, è lo spettro di risposta elastico corrispondente, riferito alla probabilità di superamento nel periodo di rife-\nrimento P VR considerata (v. §§ 2.4 e 3.2.1).",
         "normalized": "Per lo stato limite di operatività lo spettro di risposta di progetto Sd(T) da utilizzare, sia per le componenti orizzontali che per la componente verticale, è lo spettro di risposta elastico corrispondente, riferito alla probabilità di superamento nel periodo di riferimento PVR considerata (v. §§ 2.4 e 3.2.1).",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
         "inline": [
           {
             "kind": "text",
-            "value": "Per lo stato limite di operatività lo spettro di risposta di progetto Sd(T) da utilizzare, sia per le componenti orizzontali che per la componente verticale, è lo spettro di risposta elastico corrispondente, riferito alla probabilità di superamento nel periodo di riferimento "
+            "value": "Per lo stato limite di operatività lo spettro di risposta di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "Sd(T)",
+            "latex": "S_d(T)"
+          },
+          {
+            "kind": "text",
+            "value": " da utilizzare, sia per le componenti orizzontali che per la componente verticale, è lo spettro di risposta elastico corrispondente, riferito alla probabilità di superamento nel periodo di riferimento "
           },
           {
             "kind": "math",
@@ -146,11 +155,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -159,6 +163,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "924f605ca53c3285f4cb169e5d678f609787083e2301c7bdeccf5e2b7a233e38",

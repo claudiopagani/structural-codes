@@ -96,7 +96,21 @@
       "text": {
         "raw": "Per incendio, si intende la combustione autoalimentata ed incontrollata di materiali combustibili presenti in un compartimento.",
         "normalized": "Per incendio, si intende la combustione autoalimentata ed incontrollata di materiali combustibili presenti in un compartimento.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "em",
+            "value": "incendio"
+          },
+          {
+            "kind": "text",
+            "value": ", si intende la combustione autoalimentata ed incontrollata di materiali combustibili presenti in un compartimento."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -114,7 +128,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
+          }
+        ],
         "rawSha256": "72a69bf3e819d35804df255130f55cb9a16da44b9006b7d3feb23758356ddc50",
         "normalizedSha256": "72a69bf3e819d35804df255130f55cb9a16da44b9006b7d3feb23758356ddc50"
       }
@@ -126,7 +146,29 @@
       "text": {
         "raw": "Ai fini della presente norma si fa riferimento ad un incendio convenzionale di progetto definito attraverso una curva di incendio che\nrappresenta l’andamento, in funzione del tempo, della temperatura media dei gas di combustione nell’intorno della superficie\ndegli elementi strutturali.",
         "normalized": "Ai fini della presente norma si fa riferimento ad un incendio convenzionale di progetto definito attraverso una curva di incendio che rappresenta l’andamento, in funzione del tempo, della temperatura media dei gas di combustione nell’intorno della superficie degli elementi strutturali.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della presente norma si fa riferimento ad un "
+          },
+          {
+            "kind": "em",
+            "value": "incendio convenzionale di progetto"
+          },
+          {
+            "kind": "text",
+            "value": " definito attraverso una "
+          },
+          {
+            "kind": "em",
+            "value": "curva di incendio"
+          },
+          {
+            "kind": "text",
+            "value": " che rappresenta l’andamento, in funzione del tempo, della temperatura media dei gas di combustione nell’intorno della superficie degli elementi strutturali."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -161,11 +203,6 @@
             "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione."
@@ -174,6 +211,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "d3547089756bcea63a10bd7403329ced165a0e872dd6608deba6573e40ebf41c",
@@ -212,12 +254,23 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
-        "raw": "nominale: curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale;\nnaturale: curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del\ncompartimento.",
-        "normalized": "nominale: curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale; naturale: curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del compartimento.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "nominale: curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale;",
+        "normalized": "nominale: curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale;",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "nominale"
+          },
+          {
+            "kind": "text",
+            "value": ": curva adottata per la classificazione delle costruzioni e per le verifiche di resistenza al fuoco di tipo convenzionale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -225,10 +278,51 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 490,
+          "width": 440,
+          "height": 10
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [],
+        "rawSha256": "ffd04a20a2248f84a917335ff3e371abdb103364a395603c85c5128c84744f3d",
+        "normalizedSha256": "ffd04a20a2248f84a917335ff3e371abdb103364a395603c85c5128c84744f3d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-004-b",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "naturale: curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del\ncompartimento.",
+        "normalized": "naturale: curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del compartimento.",
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "naturale"
+          },
+          {
+            "kind": "text",
+            "value": ": curva determinata in base a modelli d’incendio e a parametri fisici che definiscono le variabili di stato all’interno del compartimento."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 66,
+        "printedPage": "62",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 78,
+          "y": 503,
+          "width": 440,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -237,38 +331,28 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "79e3d1df92289f4457041a8c635c928e370572a619a03fa6ad9de77e63c09ef2",
-        "normalizedSha256": "31cfcbd448e02322663b4d3554cc76d9406663a483da8b8f72c47abb59b7e3fc"
+        "rawSha256": "dfcf28dcb5531ce1757e44e953be0be0d50d5d32144a7a50c3777ebf6706830c",
+        "normalizedSha256": "cb2f12049bcac78893a359cf7eedd0b979507cee31e3d43ea7424dd565c10a49"
       }
     },
     {
@@ -278,7 +362,21 @@
       "text": {
         "raw": "La capacità di compartimentazione in caso di incendio è l’attitudine di un elemento costruttivo a conservare, sotto l’azione del fuoco,\noltre alla propria stabilità, un sufficiente isolamento termico ed una sufficiente tenuta ai fumi ed ai gas caldi della combustione,\nnonché tutte le altre prestazioni se richieste.",
         "normalized": "La capacità di compartimentazione in caso di incendio è l’attitudine di un elemento costruttivo a conservare, sotto l’azione del fuoco, oltre alla propria stabilità, un sufficiente isolamento termico ed una sufficiente tenuta ai fumi ed ai gas caldi della combustione, nonché tutte le altre prestazioni se richieste.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La "
+          },
+          {
+            "kind": "em",
+            "value": "capacità di compartimentazione"
+          },
+          {
+            "kind": "text",
+            "value": " in caso di incendio è l’attitudine di un elemento costruttivo a conservare, sotto l’azione del fuoco, oltre alla propria stabilità, un sufficiente isolamento termico ed una sufficiente tenuta ai fumi ed ai gas caldi della combustione, nonché tutte le altre prestazioni se richieste."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -286,10 +384,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 526,
+          "width": 441,
+          "height": 30
         },
         "extraction": {
           "method": "pdf-text",
@@ -298,33 +396,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -339,7 +427,21 @@
       "text": {
         "raw": "La capacità portante in caso di incendio è l’attitudine di una struttura, di una parte della struttura o di un elemento strutturale a con-\nservare una sufficiente resistenza meccanica sotto l’azione del fuoco con riferimento alle altre azioni agenti.",
         "normalized": "La capacità portante in caso di incendio è l’attitudine di una struttura, di una parte della struttura o di un elemento strutturale a conservare una sufficiente resistenza meccanica sotto l’azione del fuoco con riferimento alle altre azioni agenti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La "
+          },
+          {
+            "kind": "em",
+            "value": "capacità portante in caso di incendio"
+          },
+          {
+            "kind": "text",
+            "value": " è l’attitudine di una struttura, di una parte della struttura o di un elemento strutturale a conservare una sufficiente resistenza meccanica sotto l’azione del fuoco con riferimento alle altre azioni agenti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -347,10 +449,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 560,
+          "width": 441,
+          "height": 22
         },
         "extraction": {
           "method": "pdf-text",
@@ -359,33 +461,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -400,7 +492,21 @@
       "text": {
         "raw": "La resistenza al fuoco riguarda la capacità portante in caso di incendio per una struttura, per una parte della struttura o per un e-\nlemento strutturale nonché la capacità di compartimentazione rispetto all’incendio per gli elementi di separazione sia strutturali,\ncome muri e solai, sia non strutturali , come porte e tramezzi.",
         "normalized": "La resistenza al fuoco riguarda la capacità portante in caso di incendio per una struttura, per una parte della struttura o per un elemento strutturale nonché la capacità di compartimentazione rispetto all’incendio per gli elementi di separazione sia strutturali, come muri e solai, sia non strutturali, come porte e tramezzi.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La "
+          },
+          {
+            "kind": "em",
+            "value": "resistenza al fuoco"
+          },
+          {
+            "kind": "text",
+            "value": " riguarda la capacità portante in caso di incendio per una struttura, per una parte della struttura o per un elemento strutturale nonché la capacità di compartimentazione rispetto all’incendio per gli elementi di separazione sia strutturali, come muri e solai, sia non strutturali, come porte e tramezzi."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -408,10 +514,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 583,
+          "width": 441,
+          "height": 29
         },
         "extraction": {
           "method": "pdf-text",
@@ -420,33 +526,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -461,7 +557,21 @@
       "text": {
         "raw": "Per compartimento antincendio si intende una parte della costruzione delimitata da elementi costruttivi idonei a garantire, sotto\nl’azione del fuoco e per un dato intervallo di tempo, la capacità di compartimentazione.",
         "normalized": "Per compartimento antincendio si intende una parte della costruzione delimitata da elementi costruttivi idonei a garantire, sotto l’azione del fuoco e per un dato intervallo di tempo, la capacità di compartimentazione.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "em",
+            "value": "compartimento antincendio"
+          },
+          {
+            "kind": "text",
+            "value": " si intende una parte della costruzione delimitata da elementi costruttivi idonei a garantire, sotto l’azione del fuoco e per un dato intervallo di tempo, la capacità di compartimentazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -469,10 +579,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 617,
+          "width": 441,
+          "height": 21
         },
         "extraction": {
           "method": "pdf-text",
@@ -481,33 +591,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -522,7 +622,21 @@
       "text": {
         "raw": "Per carico di incendio si intende il potenziale termico netto della totalità dei materiali combustibili contenuti in uno spazio, corretto\nin base ai parametri indicativi della partecipazione alla combustione dei singoli materiali.",
         "normalized": "Per carico di incendio si intende il potenziale termico netto della totalità dei materiali combustibili contenuti in uno spazio, corretto in base ai parametri indicativi della partecipazione alla combustione dei singoli materiali.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "em",
+            "value": "carico di incendio"
+          },
+          {
+            "kind": "text",
+            "value": " si intende il potenziale termico netto della totalità dei materiali combustibili contenuti in uno spazio, corretto in base ai parametri indicativi della partecipazione alla combustione dei singoli materiali."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -530,10 +644,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 640,
+          "width": 441,
+          "height": 19
         },
         "extraction": {
           "method": "pdf-text",
@@ -542,33 +656,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -583,7 +687,21 @@
       "text": {
         "raw": "Per carico d’incendio specifico si intende il carico di incendio riferito all’unità di superficie lorda.",
         "normalized": "Per carico d’incendio specifico si intende il carico di incendio riferito all’unità di superficie lorda.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "em",
+            "value": "carico d’incendio specifico"
+          },
+          {
+            "kind": "text",
+            "value": " si intende il carico di incendio riferito all’unità di superficie lorda."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -591,10 +709,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 664,
+          "width": 441,
+          "height": 9
         },
         "extraction": {
           "method": "pdf-text",
@@ -613,7 +731,21 @@
       "text": {
         "raw": "Per carico di incendio specifico di progetto si intende il carico di incendio specifico corretto in base ai parametri indicatori del rischio\ndi incendio del compartimento e dei fattori relativi alle misure di protezione presenti.",
         "normalized": "Per carico di incendio specifico di progetto si intende il carico di incendio specifico corretto in base ai parametri indicatori del rischio di incendio del compartimento e dei fattori relativi alle misure di protezione presenti.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.1",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per "
+          },
+          {
+            "kind": "em",
+            "value": "carico di incendio specifico di progetto"
+          },
+          {
+            "kind": "text",
+            "value": " si intende il carico di incendio specifico corretto in base ai parametri indicatori del rischio di incendio del compartimento e dei fattori relativi alle misure di protezione presenti."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -621,10 +753,10 @@
         "printedPage": "62",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 78.479,
-          "y": 431.134,
-          "width": 440.664,
-          "height": 292.392
+          "x": 78,
+          "y": 677,
+          "width": 441,
+          "height": 20
         },
         "extraction": {
           "method": "pdf-text",
@@ -633,33 +765,23 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Rimosse le andate a capo di impaginazione senza creare nuovi capoversi."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Separati i blocchi editoriali e ripristinati pedici, apici, operatori, unità e punteggiatura verificati sul render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
+            "ruleVersion": "core-editorial-profile-0.1.1",
+            "note": "Uniformati gli spazi dopo la separazione di prosa, formule e tabelle."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
+            "ruleVersion": "core-editorial-profile-0.1.1",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
@@ -818,8 +940,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-015",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "q f è il valore nominale del carico d’incendio [MJ/m2 ].",
         "normalized": "qf è il valore nominale del carico d’incendio [MJ/m²].",
@@ -889,8 +1012,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-016",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "Έq1 ǃ 1,00 è un fattore che tiene conto del rischio di incendio in relazione\nalla superficie del compartimento",
         "normalized": "δq1 ≥ 1,00 è un fattore che tiene conto del rischio di incendio in relazione alla superficie del compartimento",
@@ -951,8 +1075,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-017",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "Έq2ǃ 0,80 è un fattore che tiene conto del rischio di incendio in relazione\nal tipo di attività svolta nel compartimento",
         "normalized": "δq2 ≥ 0,80 è un fattore che tiene conto del rischio di incendio in relazione al tipo di attività svolta nel compartimento",
@@ -1013,8 +1138,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:3.6.1.1#block-editorial-018",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": " tGG10\n1i\nnin 20,0 è un fattore che tiene conto delle differenti misure di protezione\ndall’incendio (sistemi automatici di estinzione, rivelatori, rete\nidranti, squadre antincendio, ecc.)",
         "normalized": "δn = ∏i=1^10 δni ≥ 0,20 è un fattore che tiene conto delle differenti misure di protezione dall’incendio (sistemi automatici di estinzione, rivelatori, rete idranti, squadre antincendio, ecc.)",
@@ -1093,7 +1219,15 @@
           },
           {
             "kind": "text",
-            "value": " del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’incendio localizzato, valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii."
+            "value": " del carico d’incendio è calcolato anche con riferimento all’effettiva distribuzione dello stesso. Per distribuzioni molto concentrate del materiale combustibile si può fare riferimento all’"
+          },
+          {
+            "kind": "em",
+            "value": "incendio localizzato"
+          },
+          {
+            "kind": "text",
+            "value": ", valutando, in ogni caso, se si hanno le condizioni per lo sviluppo di un incendio generalizzato. Le indicazioni per il calcolo del carico di incendio specifico di progetto sono fornite nel decreto del Ministro dell’Interno 9 marzo 2007 e ss.mm.ii."
           }
         ]
       },
