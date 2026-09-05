@@ -64,6 +64,67 @@ function updateText(target: Block, value: string | Segment[]): void {
     ];
 }
 
+function makeTextBlock(base: Block, suffix: string, kind: string, raw: string, value: string): Block {
+    const evidence = JSON.parse(JSON.stringify(base.evidence)) as Block["evidence"];
+    evidence.rawSha256 = sha256(raw);
+    evidence.normalizedSha256 = sha256(value);
+    evidence.transformations = [
+        ...(evidence.transformations ?? []).filter((item) => item.ruleVersion !== profile),
+        {
+            operation: "manual-correction",
+            ruleVersion: profile,
+            note: "Separata la voce dell’elenco dal paragrafo successivo confrontando direttamente il render della fonte ufficiale.",
+        },
+    ];
+    return {
+        blockId: base.blockId.replace(/#block-[a-z0-9-]+$/u, "#block-" + suffix),
+        kind,
+        origin: "official",
+        text: { raw, normalized: value, normalizationVersion: profile },
+        evidence,
+    };
+}
+
+function splitControlledSeriesDescription(unit: Unit): void {
+    const base = findBlock(unit, "4.1.10.1", "editorial-003");
+    const continuation = unit.blocks.find((block) => block.blockId.endsWith("#block-editorial-003-1"));
+    const raw = base.text?.raw.split("\n") ?? [];
+    const listRaw = raw[0] ?? "– serie controllata";
+    const paragraphRaw = raw.length > 1 ? raw.slice(1).join("\n") : continuation?.text?.raw ?? "";
+    const paragraphText = "I componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati attraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in serie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel § 11.8.";
+    const replacement = [
+        makeTextBlock(base, "editorial-003", "list-item", listRaw, "serie controllata"),
+        makeTextBlock(base, "editorial-003-1", "paragraph", paragraphRaw, paragraphText),
+    ];
+    const index = unit.blocks.findIndex((block) => block.blockId.endsWith("#block-editorial-003"));
+    if (index < 0) throw new Error("Blocco mancante: editorial-003");
+    unit.blocks.splice(index, continuation ? 2 : 1, ...replacement);
+}
+
+function mergeListContinuation(target: Block, continuation: Block, normalized: string): void {
+    if (!target.text || !continuation.text) throw new Error("Testo mancante nella continuazione dell’elenco");
+    const raw = target.text.raw + "\n" + continuation.text.raw;
+    target.text.raw = raw;
+    target.text.normalized = normalized;
+    target.text.normalizationVersion = profile;
+    delete target.text.inline;
+    target.evidence.rawSha256 = sha256(raw);
+    target.evidence.normalizedSha256 = sha256(normalized);
+    target.evidence.transformations = [
+        ...(target.evidence.transformations ?? []).filter((item) => item.ruleVersion !== profile),
+        {
+            operation: "join-line-wrap",
+            ruleVersion: profile,
+            note: "Ricomposta la continuazione tipografica nella seconda voce dell’elenco di § 4.1.10.2.",
+        },
+        {
+            operation: "manual-correction",
+            ruleVersion: profile,
+            note: "Ricomposta la voce dell’elenco confrontando direttamente il render della fonte ufficiale.",
+        },
+    ];
+}
+
 const pageCache = new Map<number, PageEvidence>();
 async function pageEvidence(page: number): Promise<PageEvidence> {
     const cached = pageCache.get(page);
@@ -201,10 +262,23 @@ async function fixInlineMath(): Promise<void> {
     await patchUnit("4.1.10", {
         "editorial-002": "Rientrano nel campo di applicazione delle presenti norme i componenti prodotti in stabilimenti permanenti o in impianti temporanei allestiti per uno specifico cantiere, oppure realizzati a piè d’opera.",
     });
+    const controlledSeriesUnit = await readUnit("4.1.10.1");
+    splitControlledSeriesDescription(controlledSeriesUnit);
+    await writeUnit("4.1.10.1", controlledSeriesUnit);
     await patchUnit("4.1.10.1", {
         "editorial-001": "Per gli elementi strutturali prefabbricati qui disciplinati, quando non soggetti a Dichiarazione di Prestazione e conseguente Marcatura CE secondo una specifica tecnica armonizzata elaborata ai sensi del Regolamento UE 305/2011 e i cui riferimenti sono pubblicati sulla Gazzetta Ufficiale dell’Unione Europea, sono previste due categorie di produzione:",
-        "editorial-003": "serie controllata I componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati attraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in serie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel § 11.8.",
     });
+    const seriesUnit = await readUnit("4.1.10.2");
+    const secondBullet = findBlock(seriesUnit, "4.1.10.2", "editorial-003");
+    const continuation = seriesUnit.blocks.find((block) => block.blockId.endsWith("#block-editorial-004"));
+    const seriesText = "i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n. 64;";
+    if (continuation) {
+        mergeListContinuation(secondBullet, continuation, seriesText);
+        seriesUnit.blocks = seriesUnit.blocks.filter((block) => block !== continuation);
+    } else {
+        updateText(secondBullet, seriesText);
+    }
+    await writeUnit("4.1.10.2", seriesUnit);
     await patchUnit("4.1.10.2.2", {
         "editorial-004": [text("i componenti realizzati con l’impiego di calcestruzzi speciali o di classe "), math("> C 45/55", ">\\mathrm{C}\\,45/55"), text(";")],
     });

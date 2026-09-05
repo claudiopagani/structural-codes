@@ -22,6 +22,7 @@ export interface CorpusBlock {
   origin: string;
   listMarker?: "bullet" | "dash" | "none";
   listLevel?: number;
+  indentLevel?: number;
   text?: {
     raw: string;
     normalized: string;
@@ -39,6 +40,7 @@ export interface TableAsset {
   officialNumber: string | null;
   pdfPage: number;
   caption: string | null;
+  hideLabel?: boolean;
   captionInline?: InlineSegment[];
   headers: TableCell[][];
   rows: TableCell[][];

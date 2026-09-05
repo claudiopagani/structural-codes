@@ -40,12 +40,12 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
   assert.equal(manifest.schemaVersion, "2.0.0-alpha.2");
   assert.equal(manifest.stats.units, 1745);
-  assert.equal(manifest.stats.blocks, 10915);
+  assert.equal(manifest.stats.blocks, 10951);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 103);
+  assert.equal(manifest.stats.reviewedUnits, 104);
   assert.equal(manifest.stats.assetUnits, 436);
-  assert.equal(manifest.stats.formulas, 891);
+  assert.equal(manifest.stats.formulas, 889);
   assert.equal(manifest.stats.tables, 219);
   assert.equal(manifest.stats.figures, 205);
   assert.ok(Buffer.byteLength(JSON.stringify(manifest)) < 75_000);
@@ -105,8 +105,9 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
       "urn:structural-codes:it:unit:ntc2018:2.6",
       "urn:structural-codes:it:unit:ntc2018:2.6.1",
       "urn:structural-codes:it:unit:ntc2018:2.6.2",
+      "urn:structural-codes:it:unit:ntc2018:4.1",
     ].concat(units.filter((unit) => unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3")).map((unit) => unit.id));
-  assert.equal(expectedReviewedUnitIds.length, 103);
+  assert.equal(expectedReviewedUnitIds.length, 104);
   assert.deepEqual(
     units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
     expectedReviewedUnitIds.sort(),
@@ -120,7 +121,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   }
   assert.deepEqual(
     Object.fromEntries(Object.entries(assets).map(([kind, values]) => [kind, values.size])),
-    { formulas: 891, tables: 219, figures: 205 },
+    { formulas: 889, tables: 219, figures: 205 },
   );
 
   const relations = await dataJson(manifest.relationsPath);

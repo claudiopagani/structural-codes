@@ -95,3 +95,23 @@ test("NTC pagine 92–101 usa segmenti matematici completi e il glifo vartheta u
     assert.equal(classification.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-001")).text.inline[1].latex, "C_{\\vartheta}");
     assert.equal(classification.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-003")).text.inline[1].latex, "\\vartheta_r");
 });
+
+test("NTC §4.1.10.2 ricompone la continuazione della seconda voce", async () => {
+    const unit = await json("corpus/units/ntc2018/4.1.10.2.json");
+    const second = unit.blocks.find((block: { blockId: string }) => block.blockId.endsWith("#block-editorial-003"));
+    assert.equal(second.kind, "list-item");
+    assert.equal(second.text.normalized, "i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n. 64;");
+    assert.equal(second.text.raw.endsWith("n.\n64;"), true);
+    assert.equal(unit.blocks.some((block: { blockId: string }) => block.blockId.endsWith("#block-editorial-004")), false);
+});
+
+test("NTC §4.1.10.1 separa serie controllata dal paragrafo successivo", async () => {
+    const unit = await json("corpus/units/ntc2018/4.1.10.1.json");
+    const controlledSeries = unit.blocks.find((block: { blockId: string }) => block.blockId.endsWith("#block-editorial-003"));
+    const paragraph = unit.blocks.find((block: { blockId: string }) => block.blockId.endsWith("#block-editorial-003-1"));
+    assert.equal(controlledSeries.kind, "list-item");
+    assert.equal(controlledSeries.text.normalized, "serie controllata");
+    assert.equal(paragraph.kind, "paragraph");
+    assert.equal(paragraph.text.normalized.startsWith("I componenti per i quali non sia applicabile"), true);
+    assert.equal(unit.blocks.indexOf(paragraph), unit.blocks.indexOf(controlledSeries) + 1);
+});

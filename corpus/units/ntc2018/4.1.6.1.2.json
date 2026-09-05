@@ -186,9 +186,10 @@
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.6.1.2#block-editorial-004",
       "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
-        "raw": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento)\nN Ed è la forza di compressione assiale di progetto\nA c è l’area di calcestruzzo.",
-        "normalized": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento); NEd è la forza di compressione assiale di progetto; Ac è l’area di calcestruzzo.",
+        "raw": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento)",
+        "normalized": "fyd è la resistenza di progetto dell’armatura (riferita allo snervamento)",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
@@ -198,8 +199,72 @@
           },
           {
             "kind": "text",
-            "value": " è la resistenza di progetto dell’armatura (riferita allo snervamento); "
+            "value": " è la resistenza di progetto dell’armatura (riferita allo snervamento)"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 89,
+        "printedPage": "85",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 341.848,
+          "width": 428.65,
+          "height": 128.845
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "e6cf09c51e632179fd58f6fc22ab4ff276c8c6bf9e0f5c09da35c53aac386ef0",
+        "normalizedSha256": "e6cf09c51e632179fd58f6fc22ab4ff276c8c6bf9e0f5c09da35c53aac386ef0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.6.1.2#block-editorial-004-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "N Ed è la forza di compressione assiale di progetto",
+        "normalized": "NEd è la forza di compressione assiale di progetto",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "NEd",
@@ -207,8 +272,72 @@
           },
           {
             "kind": "text",
-            "value": " è la forza di compressione assiale di progetto; "
+            "value": " è la forza di compressione assiale di progetto"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 89,
+        "printedPage": "85",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 341.848,
+          "width": 428.65,
+          "height": 128.845
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "e52922c04c3cd19d4de31581f3fe5b0466f4c1a17103d851211c3a1188c48250",
+        "normalizedSha256": "c6eb2206ac0eb0d8f765747b9d4da3453922cf9429c5ebc2df0149425d4c9a03"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.6.1.2#block-editorial-004-2",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "A c è l’area di calcestruzzo.",
+        "normalized": "Ac è l’area di calcestruzzo.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "Ac",
@@ -265,11 +394,11 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "19f78cab4ef20c4f967a878fca556cb0c1061b7c4b0104766d2d784a67bf880b",
-        "normalizedSha256": "0f4ecdfa62f699b3d4d7e0b97605a228c1e787150cb3641f1ecf2dac41ae658b"
+        "rawSha256": "b95b43ca1ad3768458ab50ca8d1c7aa853c5b586148f1c328f39fda45524bac9",
+        "normalizedSha256": "92adde56d42a3ae22faa98789fbec3ef53a8c41cdacedf597af1915c69631948"
       }
     },
     {

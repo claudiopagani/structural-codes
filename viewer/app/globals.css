@@ -520,7 +520,7 @@ summary:focus-visible {
 
 .article-title-row {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   align-items: baseline;
   gap: 16px;
 }
@@ -533,6 +533,7 @@ summary:focus-visible {
 }
 
 .article-header h1 {
+  min-width: 0;
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(29px, 3vw, 48px);
@@ -690,6 +691,54 @@ summary:focus-visible {
 
 .list-item-block.list-item-without-marker p::before {
   content: none;
+}
+
+.list-item-block.list-item-with-simple-dash,
+.list-item-block.list-item-with-alphabetic-marker {
+  --legacy-list-marker-width: 1.35em;
+  padding-left: 0;
+}
+
+.list-item-block.list-item-with-simple-dash.list-item-level-1,
+.list-item-block.list-item-with-alphabetic-marker.list-item-level-1 {
+  padding-left: var(--legacy-list-marker-width);
+}
+
+.list-item-block.list-item-with-simple-dash p {
+  padding-left: var(--legacy-list-marker-width);
+  text-align: left;
+}
+.list-item-block.list-item-with-alphabetic-marker p {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.35em;
+  padding-left: 0;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  text-indent: 0;
+}
+
+.list-item-block.list-item-with-simple-dash p::before,
+.list-item-block.list-item-with-alphabetic-marker p::before {
+  left: 0;
+}
+
+.list-item-block.list-item-with-simple-dash p .inline-math,
+.list-item-block.list-item-with-alphabetic-marker p .inline-math {
+  text-indent: 0;
+}
+
+.list-item-block.list-item-with-simple-dash.list-item-with-official-marker p {
+  text-indent: calc(-1 * var(--legacy-list-marker-width));
+}
+.list-item-block.list-item-with-alphabetic-marker p .list-marker-label { white-space: nowrap; }
+.list-item-block.list-item-with-alphabetic-marker p .list-description { display: block; min-width: 0; overflow-wrap: break-word; }
+.list-item-block.list-item-with-alphabetic-marker > div:last-child { min-width: 0; }
+
+.text-block.block-indent-1 > div:last-child {
+  margin-left: 34px;
 }
 
 .label-list {

@@ -392,14 +392,72 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove\nΗc = ·P P / A 0 è la pressione agente sull’impronta caricata di area A0 \n;\nP è la forza iniziale di tesatura nel cavo (·P =1,2);\nf cd = fckj / ·c è la resistenza cilindrica del calcestruzzo all’atto della precompressione;\nc ǂ 3 è un fattore di sovraresistenza che dipende da:",
-        "normalized": "dove σc = γP P/A0 è la pressione agente sull’impronta caricata di area A0; P è la forza iniziale di tesatura nel cavo (γP = 1,2); fcd = fckj/γc è la resistenza cilindrica del calcestruzzo all’atto della precompressione; c ≤ 3 è un fattore di sovraresistenza che dipende da:",
+        "raw": "dove",
+        "normalized": "dove",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 119.808,
+          "width": 428.606,
+          "height": 214.377
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-007-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "Ηc = ·P P / A 0 è la pressione agente sull’impronta caricata di area A0 \n;",
+        "normalized": "σc = γP P/A0 è la pressione agente sull’impronta caricata di area A0;",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove "
-          },
           {
             "kind": "math",
             "value": "σc = γP P/A0",
@@ -416,8 +474,72 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 119.808,
+          "width": 428.606,
+          "height": 214.377
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "3fa67046e4621ee5beaf31145add9c6cad30969e97532c1e06b830f7a60c116e",
+        "normalizedSha256": "3c79e856d3bcc2156bf6bfc72c6ea1ed6f440c319108cd88e24031862749bc8d"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-007-2",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "P è la forza iniziale di tesatura nel cavo (·P =1,2);",
+        "normalized": "P è la forza iniziale di tesatura nel cavo (γP = 1,2);",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "P",
@@ -434,8 +556,72 @@
           },
           {
             "kind": "text",
-            "value": "); "
+            "value": ");"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 119.808,
+          "width": 428.606,
+          "height": 214.377
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "484c2f12ae5a927ae81b09562b880cd003e0a8f3b3c4d0a1bbdbd6c413628120",
+        "normalizedSha256": "83e7aed4493e8fc4183d6c79db84cf115f0f8f0919f35dde4579447c79c73ef4"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-007-3",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "f cd = fckj / ·c è la resistenza cilindrica del calcestruzzo all’atto della precompressione;",
+        "normalized": "fcd = fckj/γc è la resistenza cilindrica del calcestruzzo all’atto della precompressione;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "fcd = fckj/γc",
@@ -443,8 +629,72 @@
           },
           {
             "kind": "text",
-            "value": " è la resistenza cilindrica del calcestruzzo all’atto della precompressione; "
+            "value": " è la resistenza cilindrica del calcestruzzo all’atto della precompressione;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 119.808,
+          "width": 428.606,
+          "height": 214.377
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "a301e55f66501120e34536d0c62cb48e2d3e9e07ba583af01e9978d0942a6521",
+        "normalizedSha256": "ab6c5164836cb1239997ece554741d6bc88354ab16b7d2f14bab09823526d533"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-007-4",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "c ǂ 3 è un fattore di sovraresistenza che dipende da:",
+        "normalized": "c ≤ 3 è un fattore di sovraresistenza che dipende da:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "c ≤ 3",
@@ -501,11 +751,11 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "23fa7c3cd945b639c6db7d0223d898abdfb5919596b57efcf2cb916632c33ff1",
-        "normalizedSha256": "e743170f251ab305c7d786601352cd7aa9624dfd0170a2db1a476828a8bad088"
+        "rawSha256": "aec7793251682a20b44739444f768e55f2518e239f94a5638c73f6b75fdfa5c6",
+        "normalizedSha256": "813d8c5aba25961e0825269151ffea9655d3444b4cad9a600f6231f38b943240"
       }
     },
     {
@@ -557,7 +807,9 @@
         ],
         "rawSha256": "aeead060b06e55d50ec9e21f5df6283410489ebaf0047dc69ffc8b6420faec70",
         "normalizedSha256": "0d1752d2ca8b99d923b9c103f0f6006cf6c22322696fbea9c49ff5325b3b3ed1"
-      }
+      },
+      "listMarker": "none",
+      "indentLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-009",
@@ -587,7 +839,9 @@
         "transformations": [],
         "rawSha256": "7942aa4885ff80bfc17399bc4e1a4bb49bb4349ba734a1c9174b09fa73048f68",
         "normalizedSha256": "7942aa4885ff80bfc17399bc4e1a4bb49bb4349ba734a1c9174b09fa73048f68"
-      }
+      },
+      "listMarker": "none",
+      "indentLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-010",
@@ -617,7 +871,9 @@
         "transformations": [],
         "rawSha256": "07228fb3f24ca05835c1c25ef49607121865d106c582b2dd55663285d2062622",
         "normalizedSha256": "07228fb3f24ca05835c1c25ef49607121865d106c582b2dd55663285d2062622"
-      }
+      },
+      "listMarker": "none",
+      "indentLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.8.1.4#block-editorial-011",

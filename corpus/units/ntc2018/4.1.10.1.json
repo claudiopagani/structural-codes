@@ -216,8 +216,8 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– serie controllata\nI componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati at-\ntraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in\nserie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel\n§ 11.8.",
-        "normalized": "serie controllata I componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati attraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in serie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel § 11.8.",
+        "raw": "– serie controllata",
+        "normalized": "serie controllata",
         "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -265,11 +265,72 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Separata la voce dell’elenco dal paragrafo successivo confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "467a6cde5d96f71607d222c63ef4793db1d4a81e6fc1f00ef7c7f8592741fe32",
-        "normalizedSha256": "28577486b90bd4e2e2fda75bcd9ea94af7978278157df6ec7a8765711810153c"
+        "rawSha256": "c58888be9e8425fbda6e6a49fb85d9b7c9abff6f14886e821e6772b4a4cc95fb",
+        "normalizedSha256": "6a96ebace6814edf49cc7b75328af0f11aaf098a644b18bed7ec6929ab1b62b0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.10.1#block-editorial-003-1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "I componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati at-\ntraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in\nserie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel\n§ 11.8.",
+        "normalized": "I componenti per i quali non sia applicabile la marcatura CE, ai sensi del Regolamento UE 305/2011, devono essere realizzati attraverso processi sottoposti ad un sistema di controllo della produzione ed i produttori di componenti in serie dichiarata ed in serie controllata, devono altresì provvedere alla preventiva qualificazione del sistema di produzione, con le modalità indicate nel § 11.8.",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 93,
+        "printedPage": "89",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.947,
+          "y": 110.688,
+          "width": 428.64,
+          "height": 90.628
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Separata la voce dell’elenco dal paragrafo successivo confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "2fa1e344705b90cf9412dd739b097f6dae0120e6c66880dacd02fdfa3c2b1cfc",
+        "normalizedSha256": "c3bc3f8eb4461030892bc1589cd3592c947b0c2b735000590efbe41dc4b173e4"
       }
     }
   ],

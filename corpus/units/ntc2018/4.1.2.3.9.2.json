@@ -837,7 +837,8 @@
         ],
         "rawSha256": "766a345daf72d2d0c8ec00b6e67b3e7f99e68694bbb83d0e73d94c8085ea20e3",
         "normalizedSha256": "d8262253c3dea25f03db95e55425e1786540c2c554ac7137fa262f76467ff3d7"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.2#block-editorial-017",
@@ -846,7 +847,18 @@
       "text": {
         "raw": "n è il numero di piani;",
         "normalized": "n è il numero di piani;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero di piani;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -864,10 +876,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "290f4647036b7319c8db39449fc3ac254c8004c4c8ed8dac1b609803841d6f11",
         "normalizedSha256": "290f4647036b7319c8db39449fc3ac254c8004c4c8ed8dac1b609803841d6f11"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.2#block-editorial-018",
@@ -876,7 +895,18 @@
       "text": {
         "raw": "L è l’altezza totale dell’edificio sopra il vincolo ad incastro di base;",
         "normalized": "L è l’altezza totale dell’edificio sopra il vincolo ad incastro di base;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "L",
+            "latex": "L"
+          },
+          {
+            "kind": "text",
+            "value": " è l’altezza totale dell’edificio sopra il vincolo ad incastro di base;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -894,10 +924,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "b61dae3159318430fe3c04f0ba59ffbd692d6fe17fe00155c7b78d5c941b1fe5",
         "normalizedSha256": "b61dae3159318430fe3c04f0ba59ffbd692d6fe17fe00155c7b78d5c941b1fe5"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.2#block-editorial-019",
@@ -944,7 +981,8 @@
         ],
         "rawSha256": "3b9734519a693681a0016ba2c72dcf761ce2802915460ad42e1236ee012d0e9f",
         "normalizedSha256": "846b666a8f46d9c80bcfd297ece003e51cafe13ea23b265995f85bdb8869ac47"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.9.2#block-editorial-020",
@@ -991,7 +1029,8 @@
         ],
         "rawSha256": "bdc54cb4f5188077c4e357f682da58d84c2dc352bb22426e538047c2e3352cea",
         "normalizedSha256": "3cf834675b5c80eaaf7b579666b69e4a1d5ee0530c7c4412638e380ffbb766d2"
-      }
+      },
+      "listMarker": "none"
     }
   ],
   "citations": [],

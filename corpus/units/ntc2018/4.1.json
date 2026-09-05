@@ -244,9 +244,9 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– calcestruzzo a bassa percentuale di armatura o non armato\ncon riferimento a calcestruzzi di peso normale e con esclusione di quelle opere per le quali vige una regolamentazione apposita a\ncarattere particolare.",
-        "normalized": "calcestruzzo a bassa percentuale di armatura o non armato con riferimento a calcestruzzi di peso normale e con esclusione di quelle opere per le quali vige una regolamentazione apposita a carattere particolare.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "raw": "– calcestruzzo a bassa percentuale di armatura o non armato",
+        "normalized": "calcestruzzo a bassa percentuale di armatura o non armato",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -255,9 +255,9 @@
         "region": {
           "coordinateSystem": "pdf-points-top-left",
           "x": 75.113,
-          "y": 117.795,
-          "width": 445.828,
-          "height": 519.476
+          "y": 151.019,
+          "width": 211.692,
+          "height": 7.775
         },
         "extraction": {
           "method": "pdf-text",
@@ -266,38 +266,79 @@
         },
         "transformations": [
           {
-            "operation": "remove-control-character",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
-          },
-          {
             "operation": "join-line-wrap",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo tipografiche e ricomposte le sillabazioni verificate sul PDF."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli e segmenti matematici confrontando direttamente il render ufficiale."
           },
           {
             "operation": "normalize-whitespace",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la separazione dei capoversi e delle formule."
           },
           {
             "operation": "unicode-nfc",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
           }
         ],
-        "rawSha256": "ac7877dcfbfa02c99e990e32c6b5349cbbe0a9c5ba3aabc901b857c74366ae14",
-        "normalizedSha256": "a9c157db5b1168558a90eaa4518c5d92ce19121c36da01db197c3aedfcc73a6b"
+        "rawSha256": "3428a8998c134c2fedf4a55b3e1b19995fab5bfda836218b8a5fbd7286237fc6",
+        "normalizedSha256": "7c53dba2dffecacbba23645bfe140d4e00b25b08e77d99f4ea28db4afb3e8a2a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1#block-editorial-004-continuation",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "con riferimento a calcestruzzi di peso normale e con esclusione di quelle opere per le quali vige una regolamentazione apposita a\ncarattere particolare.",
+        "normalized": "con riferimento a calcestruzzi di peso normale e con esclusione di quelle opere per le quali vige una regolamentazione apposita a carattere particolare.",
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 74,
+        "printedPage": "70",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75.113,
+          "y": 164.081,
+          "width": 445.773,
+          "height": 19.294
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo tipografiche e ricomposte le sillabazioni verificate sul PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli e segmenti matematici confrontando direttamente il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la separazione dei capoversi e delle formule."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "9816d199cffe0b3235d2b2f8c18b6f7630d27ed892525768ffdcfbeb6b482b58",
+        "normalizedSha256": "500fd3ce1b3a61f0add5083fee76f398a510359009b8a4e0b8f3015c01874ed6"
       }
     },
     {
@@ -838,27 +879,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "migration:core-concrete:v1",
       "kind": "script",
       "toolVersion": "core-concrete-migration-0.1.0"
     },
     "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-4-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-4-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono separate, trascritte e collocate nel punto normativo originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
+        "reviewId": "ntc2018-4-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:001",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-09-05T12:00:00Z",
+        "result": "accepted",
+        "note": "Paragrafo 4.1 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

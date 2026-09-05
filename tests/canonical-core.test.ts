@@ -86,7 +86,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        10915,
+        10951,
     );
 });
 
@@ -117,6 +117,7 @@ const sourceCheckedUnitIds = new Set([
     "urn:structural-codes:it:unit:ntc2018:2.6",
     "urn:structural-codes:it:unit:ntc2018:2.6.1",
     "urn:structural-codes:it:unit:ntc2018:2.6.2",
+    "urn:structural-codes:it:unit:ntc2018:4.1",
 ]);
 
 function isSourceChecked(unit: CanonicalUnit) {
@@ -222,7 +223,7 @@ test("NTC 4.1 conserva il testo ricomposto e risolve gli asset", async () => {
         }
     }
 
-    assert.equal(manifest.formulas.length, 73);
+    assert.equal(manifest.formulas.length, 71);
     assert.equal(manifest.tables.length, 5);
     assert.equal(manifest.figures.length, 4);
 

@@ -591,6 +591,10 @@
                     "type": "integer",
                     "minimum": 0
                 },
+                "indentLevel": {
+                    "type": "integer",
+                    "minimum": 1
+                },
                 "text": {
                     "$ref": "#/$defs/textPayload"
                 },
@@ -627,6 +631,10 @@
                 },
                 "assetId": {
                     "$ref": "#/$defs/assetId"
+                },
+                "indentLevel": {
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "evidence": {
                     "$ref": "#/$defs/evidence"

@@ -16,6 +16,7 @@ type Region = {
 };
 type Segment =
     | { kind: "text"; value: string }
+    | { kind: "em"; value: string }
     | { kind: "math"; value: string; latex: string };
 type Transformation = { operation: string; ruleVersion: string; note: string };
 type Block = {
@@ -43,13 +44,14 @@ type Unit = {
 };
 type EvidenceItem = { sequence: number; text: string; hasEol: boolean; region: Region };
 type PageEvidence = { textItems: EvidenceItem[] };
-type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; align?: "left" | "center" | "right"; noWrap?: boolean };
 
 const sha256 = (value: string) => createHash("sha256").update(value, "utf8").digest("hex");
 const uid = (number: string) => "urn:structural-codes:it:unit:ntc2018:" + number;
 const formulaId = (number: string) => "urn:structural-codes:it:asset:formula:ntc2018:" + number;
 const tableId = (number: string) => "urn:structural-codes:it:asset:table:ntc2018:" + number.toLowerCase();
 const text = (value: string): Segment => ({ kind: "text", value });
+const em = (value: string): Segment => ({ kind: "em", value });
 const math = (value: string, latex = value): Segment => ({ kind: "math", value, latex });
 const cell = (value: string, extra: Partial<TableCell> = {}): TableCell => ({ text: value, ...extra });
 const mathCell = (value: string, latex: string, extra: Partial<TableCell> = {}): TableCell => ({ text: value, latex, ...extra });
@@ -76,18 +78,18 @@ function findBlock(unit: Unit, number: string, suffix: string): Block {
     return found;
 }
 
-function correctionTransformations(existing: Transformation[] = []): Transformation[] {
+function correctionTransformations(existing: Transformation[] = [], note = "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."): Transformation[] {
     return [
         ...existing.filter((item) => item.operation !== "manual-correction"),
         {
             operation: "manual-correction",
             ruleVersion: profile,
-            note: "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale.",
+            note,
         },
     ];
 }
 
-function updateText(target: Block, value: string | Segment[]): void {
+function updateText(target: Block, value: string | Segment[], manualNote?: string): void {
     if (!target.text) throw new Error("Payload testuale mancante: " + target.blockId);
     const normalized = typeof value === "string" ? value : value.map((segment) => segment.value).join("");
     target.text.normalized = normalized;
@@ -95,7 +97,7 @@ function updateText(target: Block, value: string | Segment[]): void {
     if (typeof value === "string") delete target.text.inline;
     else target.text.inline = value;
     target.evidence.normalizedSha256 = sha256(normalized);
-    target.evidence.transformations = correctionTransformations(target.evidence.transformations);
+    target.evidence.transformations = correctionTransformations(target.evidence.transformations, manualNote);
 }
 
 const pageCache = new Map<number, PageEvidence>();
@@ -237,18 +239,18 @@ const tables = [
     {
         id: tableId("4.1.I"), unitId: uid("4.1"), officialNumber: "4.1.I", pdfPage: 74,
         caption: "Classi di resistenza", columnCount: 1,
-        headers: [[cell("Classe di resistenza")]],
-        rows: ["C8/10", "C12/15", "C16/20", "C20/25", "C25/30", "C30/37", "C35/45", "C40/50", "C45/55", "C50/60", "C55/67", "C60/75", "C70/85", "C80/95", "C90/105"].map((value) => [cell(value)]),
+        headers: [[cell("Classe di resistenza", { align: "center" })]],
+        rows: ["C8/10", "C12/15", "C16/20", "C20/25", "C25/30", "C30/37", "C35/45", "C40/50", "C45/55", "C50/60", "C55/67", "C60/75", "C70/85", "C80/95", "C90/105"].map((value) => [cell(value, { align: "center" })]),
         notes: [],
     },
     {
         id: tableId("4.1.II"), unitId: uid("4.1"), officialNumber: "4.1.II", pdfPage: 74,
         caption: "Impiego delle diverse classi di resistenza", columnCount: 2,
-        headers: [[cell("Strutture di destinazione"), cell("Classe di resistenza minima")]],
+        headers: [[cell("Strutture di destinazione"), cell("Classe di resistenza minima", { align: "center" })]],
         rows: [
-            [cell("Per strutture non armate o a bassa percentuale di armatura (§ 4.1.11)"), cell("C8/10")],
-            [cell("Per strutture semplicemente armate"), cell("C16/20")],
-            [cell("Per strutture precompresse"), cell("C28/35")],
+            [cell("Per strutture non armate o a bassa percentuale di armatura (§ 4.1.11)"), cell("C8/10", { align: "center" })],
+            [cell("Per strutture semplicemente armate"), cell("C16/20", { align: "center" })],
+            [cell("Per strutture precompresse"), cell("C28/35", { align: "center" })],
         ],
         notes: [],
     },
@@ -267,19 +269,19 @@ const tables = [
         id: tableId("4.1.IV"), unitId: uid("4.1.2.2.4.4"), officialNumber: "4.1.IV", pdfPage: 80,
         caption: "Criteri di scelta dello stato limite di fessurazione", columnCount: 7,
         headers: [
-            [cell("Gruppi di Esigenze", { rowSpan: 3 }), cell("Condizioni ambientali", { rowSpan: 3 }), cell("Combinazione di azioni", { rowSpan: 3 }), cell("Armatura", { colSpan: 4 })],
-            [cell("Sensibile", { colSpan: 2 }), cell("Poco sensibile", { colSpan: 2 })],
-            [cell("Stato limite"), mathCell("wₖ", "w_k"), cell("Stato limite"), mathCell("wₖ", "w_k")],
+            [cell("Gruppi di Esigenze", { rowSpan: 3, align: "center" }), cell("Condizioni ambientali", { rowSpan: 3, align: "center" }), cell("Combinazione di azioni", { rowSpan: 3, align: "center" }), cell("Armatura", { colSpan: 4, noWrap: true })],
+            [cell("Sensibile", { colSpan: 2, noWrap: true }), cell("Poco sensibile", { colSpan: 2, noWrap: true })],
+            [cell("Stato limite", { noWrap: true }), mathCell("wₖ", "w_k", { noWrap: true }), cell("Stato limite", { noWrap: true }), mathCell("wₖ", "w_k", { noWrap: true })],
         ],
         rows: [
-            [cell("A", { rowSpan: 2 }), cell("Ordinarie", { rowSpan: 2 }), cell("frequente"), cell("apertura fessure"), mathCell("≤ w₂", "\\le w_2"), cell("apertura fessure"), mathCell("≤ w₃", "\\le w_3")],
-            [cell("quasi permanente"), cell("apertura fessure"), mathCell("≤ w₁", "\\le w_1"), cell("apertura fessure"), mathCell("≤ w₂", "\\le w_2")],
-            [cell("B", { rowSpan: 2 }), cell("Aggressive", { rowSpan: 2 }), cell("frequente"), cell("apertura fessure"), mathCell("≤ w₁", "\\le w_1"), cell("apertura fessure"), mathCell("≤ w₂", "\\le w_2")],
-            [cell("quasi permanente"), cell("decompressione"), cell("—"), cell("apertura fessure"), mathCell("≤ w₁", "\\le w_1")],
-            [cell("C", { rowSpan: 2 }), cell("Molto aggressive", { rowSpan: 2 }), cell("frequente"), cell("formazione fessure"), cell("—"), cell("apertura fessure"), mathCell("≤ w₁", "\\le w_1")],
-            [cell("quasi permanente"), cell("decompressione"), cell("—"), cell("apertura fessure"), mathCell("≤ w₁", "\\le w_1")],
+            [cell("A", { rowSpan: 2, align: "center" }), cell("Ordinarie", { rowSpan: 2, align: "center" }), cell("frequente"), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₂", "\\le w_2", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₃", "\\le w_3", { noWrap: true })],
+            [cell("quasi permanente"), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₁", "\\le w_1", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₂", "\\le w_2", { noWrap: true })],
+            [cell("B", { rowSpan: 2, align: "center" }), cell("Aggressive", { rowSpan: 2, align: "center" }), cell("frequente"), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₁", "\\le w_1", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₂", "\\le w_2", { noWrap: true })],
+            [cell("quasi permanente"), cell("decompressione", { noWrap: true }), cell("—", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₁", "\\le w_1", { noWrap: true })],
+            [cell("C", { rowSpan: 2, align: "center" }), cell("Molto\naggressive", { rowSpan: 2, align: "center" }), cell("frequente"), cell("formazione fessure", { noWrap: true }), cell("—", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₁", "\\le w_1", { noWrap: true })],
+            [cell("quasi permanente"), cell("decompressione", { noWrap: true }), cell("—", { noWrap: true }), cell("apertura fessure", { noWrap: true }), mathCell("≤ w₁", "\\le w_1", { noWrap: true })],
         ],
-        notes: ["w₁, w₂, w₃ sono definiti al § 4.1.2.2.4, il valore wₖ è definito al § 4.1.2.2.4.5."],
+        notes: [],
     },
 ];
 
@@ -302,6 +304,24 @@ async function rebuildAssets(): Promise<void> {
 
 async function fixInlineMath(): Promise<void> {
     const unit41 = await readUnit("4.1");
+    const thirdBullet = await textBlock(
+        "4.1",
+        "editorial-004",
+        74,
+        region(75.113, 151.019, 211.692, 7.775),
+        "calcestruzzo a bassa percentuale di armatura o non armato",
+    );
+    thirdBullet.kind = "list-item";
+    const continuation = await textBlock(
+        "4.1",
+        "editorial-004-continuation",
+        74,
+        region(75.113, 164.081, 445.773, 19.294),
+        "con riferimento a calcestruzzi di peso normale e con esclusione di quelle opere per le quali vige una regolamentazione apposita a carattere particolare.",
+    );
+    unit41.blocks = unit41.blocks
+        .filter((block) => block.blockId !== continuation.blockId)
+        .flatMap((block) => block.blockId === thirdBullet.blockId ? [thirdBullet, continuation] : [block]);
     for (const suffix of ["editorial-011", "editorial-013", "editorial-014"]) {
         const target = findBlock(unit41, "4.1", suffix);
         updateText(target, target.text!.normalized);
@@ -333,6 +353,9 @@ async function fixInlineMath(): Promise<void> {
     await writeUnit("4.1.1.1", unit4111);
 
     const concreteCompression = await readUnit("4.1.2.1.1.1");
+    for (const suffix of ["editorial-004", "editorial-005", "editorial-006"]) {
+        findBlock(concreteCompression, "4.1.2.1.1.1", suffix).listMarker = "none";
+    }
     updateText(findBlock(concreteCompression, "4.1.2.1.1.1", "editorial-006"), [
         math("fck", "f_{ck}"),
         text(" è la resistenza caratteristica cilindrica a compressione del calcestruzzo a 28 giorni."),
@@ -340,6 +363,9 @@ async function fixInlineMath(): Promise<void> {
     await writeUnit("4.1.2.1.1.1", concreteCompression);
 
     const concreteTension = await readUnit("4.1.2.1.1.2");
+    for (const suffix of ["editorial-004", "editorial-005"]) {
+        findBlock(concreteTension, "4.1.2.1.1.2", suffix).listMarker = "none";
+    }
     updateText(findBlock(concreteTension, "4.1.2.1.1.2", "editorial-005"), [
         math("fctk", "f_{ctk}"),
         text(" è la resistenza caratteristica a trazione del calcestruzzo (§ 11.2.10.2)."),
@@ -352,12 +378,29 @@ async function fixInlineMath(): Promise<void> {
     await writeUnit("4.1.2.1.1.2", concreteTension);
 
     const unitSteel = await readUnit("4.1.2.1.1.3");
+    for (const suffix of ["editorial-004", "editorial-005"]) {
+        findBlock(unitSteel, "4.1.2.1.1.3", suffix).listMarker = "none";
+    }
     updateText(findBlock(unitSteel, "4.1.2.1.1.3", "editorial-005"), [
         math("fyk", "f_{yk}"), text(" per armatura ordinaria è la tensione caratteristica di snervamento dell’acciaio (§ 11.3.2), per armature da precompressione è la tensione convenzionale caratteristica di snervamento data, a seconda del tipo di prodotto, da "),
         math("fpyk", "f_{pyk}"), text(" (barre), "), math("fp(0,1)k", "f_{p(0{,}1)k}"), text(" (fili), "),
         math("fp(1)k", "f_{p(1)k}"), text(" (trefoli e trecce); si veda in proposito la Tab. 11.3.VIII."),
     ]);
     await writeUnit("4.1.2.1.1.3", unitSteel);
+
+    const materialDiagrams = await readUnit("4.1.2.1.2");
+    materialDiagrams.title = "Diagrammi di progetto dei materiali";
+    const materialTitle = findBlock(materialDiagrams, "4.1.2.1.2", "heading");
+    updateText(materialTitle, "4.1.2.1.2 Diagrammi di progetto dei materiali");
+    materialTitle.evidence.transformations = [
+        ...(materialTitle.evidence.transformations ?? []).filter((item) => item.operation !== "manual-correction"),
+        {
+            operation: "manual-correction",
+            ruleVersion: profile,
+            note: "Rimosso l’apice spurio dal titolo confrontando direttamente il render della fonte ufficiale.",
+        },
+    ];
+    await writeUnit("4.1.2.1.2", materialDiagrams);
 
     const concrete = await readUnit("4.1.2.1.2.1");
     updateText(findBlock(concrete, "4.1.2.1.2.1", "editorial-003"), [text("In Fig. 4.1.1 sono rappresentati i modelli "), math("σ-ε", "\\sigma-\\varepsilon"), text(" per il calcestruzzo:")]);
@@ -388,6 +431,9 @@ async function fixInlineMath(): Promise<void> {
     updateText(findBlock(concrete, "4.1.2.1.2.1", "editorial-034"), [text("dove: "), math("Ast", "A_{st}"), text(" è l’area della sezione della staffa, "), math("D0", "D_0"), text(" è il diametro del nucleo confinato (con riferimento alla linea media delle staffe).")]);
     updateText(findBlock(concrete, "4.1.2.1.2.1", "editorial-041"), [text("dove: "), math("n"), text(" è il numero totale di barre longitudinali contenute lateralmente da staffe o legature, "), math("bi", "b_i"), text(" è la distanza tra barre consecutive contenute.")]);
     updateText(findBlock(concrete, "4.1.2.1.2.1", "editorial-045"), [text("dove: "), math("β = 2", "\\beta=2"), text(" per staffe circolari singole, "), math("β = 1", "\\beta=1"), text(" per staffa a spirale.")]);
+    for (const suffix of ["editorial-027", "editorial-028", "editorial-029", "editorial-030", "editorial-031", "editorial-033", "editorial-034", "editorial-039", "editorial-040", "editorial-041", "editorial-043", "editorial-044", "editorial-045"]) {
+        findBlock(concrete, "4.1.2.1.2.1", suffix).indentLevel = 1;
+    }
     await writeUnit("4.1.2.1.2.1", concrete);
 
     const reinforcing = await readUnit("4.1.2.1.2.2");
@@ -409,6 +455,19 @@ async function fixInlineMath(): Promise<void> {
     const crackingBlock = findBlock(cracking, "4.1.2.2.4", "editorial-006");
     updateText(crackingBlock, crackingBlock.text!.normalized);
     await writeUnit("4.1.2.2.4", cracking);
+
+    const environmental = await readUnit("4.1.2.2.4.2");
+    const environmentalBlock = findBlock(environmental, "4.1.2.2.4.2", "editorial-001");
+    const italicPhrase = "Linee Guida per il calcestruzzo strutturale";
+    const environmentalText = environmentalBlock.text!.normalized;
+    const italicIndex = environmentalText.indexOf(italicPhrase);
+    if (italicIndex < 0) throw new Error("Frase da corsivizzare mancante in 4.1.2.2.4.2");
+    updateText(environmentalBlock, [
+        text(environmentalText.slice(0, italicIndex)),
+        em(italicPhrase),
+        text(environmentalText.slice(italicIndex + italicPhrase.length)),
+    ], "Ripristinato il corsivo della fonte nella segmentazione inline confrontando direttamente il render ufficiale.");
+    await writeUnit("4.1.2.2.4.2", environmental);
 
     const crackWidth = await readUnit("4.1.2.2.4.5");
     updateText(findBlock(crackWidth, "4.1.2.2.4.5", "editorial-004"), [

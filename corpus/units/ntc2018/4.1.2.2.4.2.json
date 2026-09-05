@@ -67,7 +67,21 @@
       "text": {
         "raw": "Ai fini della protezione contro la corrosione delle armature metalliche e della protezione contro il degrado del calcestruzzo, le\ncondizioni ambientali possono essere suddivise in ordinarie, aggressive e molto aggressive in relazione a quanto indicato nella\nTab. 4.1.III con riferimento alle classi di esposizione definite nelle Linee Guida per il calcestruzzo strutturale emesse dal Servizio\nTecnico Centrale del Consiglio Superiore dei Lavori Pubblici nonché nella UNI EN 206:2016 .",
         "normalized": "Ai fini della protezione contro la corrosione delle armature metalliche e della protezione contro il degrado del calcestruzzo, le condizioni ambientali possono essere suddivise in ordinarie, aggressive e molto aggressive in relazione a quanto indicato nella Tab. 4.1.III con riferimento alle classi di esposizione definite nelle Linee Guida per il calcestruzzo strutturale emesse dal Servizio Tecnico Centrale del Consiglio Superiore dei Lavori Pubblici nonché nella UNI EN 206:2016.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "normalizationVersion": "ntc4-step5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della protezione contro la corrosione delle armature metalliche e della protezione contro il degrado del calcestruzzo, le condizioni ambientali possono essere suddivise in ordinarie, aggressive e molto aggressive in relazione a quanto indicato nella Tab. 4.1.III con riferimento alle classi di esposizione definite nelle "
+          },
+          {
+            "kind": "em",
+            "value": "Linee Guida per il calcestruzzo strutturale"
+          },
+          {
+            "kind": "text",
+            "value": " emesse dal Servizio Tecnico Centrale del Consiglio Superiore dei Lavori Pubblici nonché nella UNI EN 206:2016."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -102,11 +116,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -115,6 +124,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step5-editorial-profile-0.1.0",
+            "note": "Ripristinato il corsivo della fonte nella segmentazione inline confrontando direttamente il render ufficiale."
           }
         ],
         "rawSha256": "73459f2f5571c2158dfd6bfa20fc2c9a768bf754ab6db31f7a8aa33e07c19b6a",

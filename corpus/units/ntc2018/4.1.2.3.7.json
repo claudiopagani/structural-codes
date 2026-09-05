@@ -383,8 +383,8 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– resistenza dei nodi (R n)\nDeve risultare la seguente gerarchia delle resistenze Rs < (Rn , Rb , Rc)\nPer la valutazione della resistenza dei puntoni di calcestruzzo, si terrà conto della presenza di stati di sforzo pluriassiali.",
-        "normalized": "resistenza dei nodi (Rn) Deve risultare la seguente gerarchia delle resistenze Rs < (Rn, Rb, Rc) Per la valutazione della resistenza dei puntoni di calcestruzzo, si terrà conto della presenza di stati di sforzo pluriassiali.",
+        "raw": "– resistenza dei nodi (R n)",
+        "normalized": "resistenza dei nodi (Rn)",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
@@ -398,16 +398,7 @@
           },
           {
             "kind": "text",
-            "value": ") Deve risultare la seguente gerarchia delle resistenze "
-          },
-          {
-            "kind": "math",
-            "value": "Rs < (Rn, Rb, Rc)",
-            "latex": "R_s<(R_n,R_b,R_c)"
-          },
-          {
-            "kind": "text",
-            "value": " Per la valutazione della resistenza dei puntoni di calcestruzzo, si terrà conto della presenza di stati di sforzo pluriassiali."
+            "value": ")"
           }
         ]
       },
@@ -456,11 +447,144 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "ebeb400e104555a9e576c096faadcee9ecacf445e8c78966b60a802db6224f8a",
-        "normalizedSha256": "cedab51d1a2364368bc2ed761c67e5e0f81afe629be49d0eeb857afc91aed274"
+        "rawSha256": "c4fe48ef3bb7fbe6646b9a7889fa7c711d923607cc1e6f2e431fd836f242bb4f",
+        "normalizedSha256": "019dece0325baa6bc23f4ea0b9e97426570b1dd90c2dff6b2ca5d227bf8411e0"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.7#block-editorial-006-1",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Deve risultare la seguente gerarchia delle resistenze Rs < (Rn, Rb, Rc)",
+        "normalized": "Deve risultare la seguente gerarchia delle resistenze Rs < (Rn, Rb, Rc)",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Deve risultare la seguente gerarchia delle resistenze "
+          },
+          {
+            "kind": "math",
+            "value": "Rs < (Rn, Rb, Rc)",
+            "latex": "R_s<(R_n,R_b,R_c)"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.952,
+          "y": 403.898,
+          "width": 428.619,
+          "height": 190.745
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "1cd109d8afbba4880ca31e2aa1e9ce2a75e3408696403cc4146d55623a512cb9",
+        "normalizedSha256": "1cd109d8afbba4880ca31e2aa1e9ce2a75e3408696403cc4146d55623a512cb9"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.7#block-editorial-006-2",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Per la valutazione della resistenza dei puntoni di calcestruzzo, si terrà conto della presenza di stati di sforzo pluriassiali.",
+        "normalized": "Per la valutazione della resistenza dei puntoni di calcestruzzo, si terrà conto della presenza di stati di sforzo pluriassiali.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 86,
+        "printedPage": "82",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.952,
+          "y": 403.898,
+          "width": 428.619,
+          "height": 190.745
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "1956cac03ff5245b76504f464ae14ed36ab2b2aa5e6665a34e84347015fd698e",
+        "normalizedSha256": "1956cac03ff5245b76504f464ae14ed36ab2b2aa5e6665a34e84347015fd698e"
       }
     },
     {

@@ -246,13 +246,6 @@
       "latex": "\\omega_t=A_t\\cdot f_{yd}/N_{Rcd}"
     },
     {
-      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.4.2:n-rcd",
-      "unitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2",
-      "officialNumber": null,
-      "pdfPage": 82,
-      "latex": "N_{Rcd}=A_c\\cdot f_{cd}"
-    },
-    {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.4.2:phi-yd",
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2",
       "officialNumber": null,
@@ -279,13 +272,6 @@
       "officialNumber": "4.1.24",
       "pdfPage": 83,
       "latex": "V_{Rd}=0{,}7\\cdot b_w\\cdot d\\,(f_{ctd}^2+\\sigma_{cp}\\cdot f_{ctd})^{1/2}"
-    },
-    {
-      "id": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.5.1:parameters",
-      "unitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.5.1",
-      "officialNumber": null,
-      "pdfPage": 83,
-      "latex": "k=1+(200/d)^{1/2}\\le2,\\qquad \\nu_{\\min}=0{,}035k^{3/2}f_{ck}^{1/2}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.1.25",
@@ -355,7 +341,7 @@
       "unitId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.5.3",
       "officialNumber": "4.1.33",
       "pdfPage": 85,
-      "latex": "V_{Ed}\\le0{,}5b_wd\\nu f_{cd}"
+      "latex": "V_{Ed}\\le 0{,}5\\,b_w\\,d\\,\\nu\\,f_{cd}"
     },
     {
       "id": "urn:structural-codes:it:asset:formula:ntc2018:4.1.34",
@@ -530,84 +516,100 @@
       "headers": [
         [
           {
-            "text": "Classe di resistenza"
+            "text": "Classe di resistenza",
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "C8/10"
+            "text": "C8/10",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C12/15"
+            "text": "C12/15",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C16/20"
+            "text": "C16/20",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C20/25"
+            "text": "C20/25",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C25/30"
+            "text": "C25/30",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C30/37"
+            "text": "C30/37",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C35/45"
+            "text": "C35/45",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C40/50"
+            "text": "C40/50",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C45/55"
+            "text": "C45/55",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C50/60"
+            "text": "C50/60",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C55/67"
+            "text": "C55/67",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C60/75"
+            "text": "C60/75",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C70/85"
+            "text": "C70/85",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C80/95"
+            "text": "C80/95",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "C90/105"
+            "text": "C90/105",
+            "align": "center"
           }
         ]
       ],
@@ -626,7 +628,8 @@
             "text": "Strutture di destinazione"
           },
           {
-            "text": "Classe di resistenza minima"
+            "text": "Classe di resistenza minima",
+            "align": "center"
           }
         ]
       ],
@@ -636,7 +639,8 @@
             "text": "Per strutture non armate o a bassa percentuale di armatura (§ 4.1.11)"
           },
           {
-            "text": "C8/10"
+            "text": "C8/10",
+            "align": "center"
           }
         ],
         [
@@ -644,7 +648,8 @@
             "text": "Per strutture semplicemente armate"
           },
           {
-            "text": "C16/20"
+            "text": "C16/20",
+            "align": "center"
           }
         ],
         [
@@ -652,7 +657,8 @@
             "text": "Per strutture precompresse"
           },
           {
-            "text": "C28/35"
+            "text": "C28/35",
+            "align": "center"
           }
         ]
       ],
@@ -714,45 +720,55 @@
         [
           {
             "text": "Gruppi di Esigenze",
-            "rowSpan": 3
+            "rowSpan": 3,
+            "align": "center"
           },
           {
             "text": "Condizioni ambientali",
-            "rowSpan": 3
+            "rowSpan": 3,
+            "align": "center"
           },
           {
             "text": "Combinazione di azioni",
-            "rowSpan": 3
+            "rowSpan": 3,
+            "align": "center"
           },
           {
             "text": "Armatura",
-            "colSpan": 4
+            "colSpan": 4,
+            "noWrap": true
           }
         ],
         [
           {
             "text": "Sensibile",
-            "colSpan": 2
+            "colSpan": 2,
+            "noWrap": true
           },
           {
             "text": "Poco sensibile",
-            "colSpan": 2
+            "colSpan": 2,
+            "noWrap": true
           }
         ],
         [
           {
-            "text": "Stato limite"
+            "text": "Stato limite",
+            "noWrap": true
           },
           {
             "text": "wₖ",
-            "latex": "w_k"
+            "latex": "w_k",
+            "noWrap": true
           },
           {
-            "text": "Stato limite"
+            "text": "Stato limite",
+            "noWrap": true
           },
           {
             "text": "wₖ",
-            "latex": "w_k"
+            "latex": "w_k",
+            "noWrap": true
           }
         ]
       ],
@@ -760,28 +776,34 @@
         [
           {
             "text": "A",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
             "text": "Ordinarie",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
             "text": "frequente"
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₂",
-            "latex": "\\le w_2"
+            "latex": "\\le w_2",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₃",
-            "latex": "\\le w_3"
+            "latex": "\\le w_3",
+            "noWrap": true
           }
         ],
         [
@@ -789,45 +811,55 @@
             "text": "quasi permanente"
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₁",
-            "latex": "\\le w_1"
+            "latex": "\\le w_1",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₂",
-            "latex": "\\le w_2"
+            "latex": "\\le w_2",
+            "noWrap": true
           }
         ],
         [
           {
             "text": "B",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
             "text": "Aggressive",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
             "text": "frequente"
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₁",
-            "latex": "\\le w_1"
+            "latex": "\\le w_1",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₂",
-            "latex": "\\le w_2"
+            "latex": "\\le w_2",
+            "noWrap": true
           }
         ],
         [
@@ -835,43 +867,53 @@
             "text": "quasi permanente"
           },
           {
-            "text": "decompressione"
+            "text": "decompressione",
+            "noWrap": true
           },
           {
-            "text": "—"
+            "text": "—",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₁",
-            "latex": "\\le w_1"
+            "latex": "\\le w_1",
+            "noWrap": true
           }
         ],
         [
           {
             "text": "C",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
-            "text": "Molto aggressive",
-            "rowSpan": 2
+            "text": "Molto\naggressive",
+            "rowSpan": 2,
+            "align": "center"
           },
           {
             "text": "frequente"
           },
           {
-            "text": "formazione fessure"
+            "text": "formazione fessure",
+            "noWrap": true
           },
           {
-            "text": "—"
+            "text": "—",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₁",
-            "latex": "\\le w_1"
+            "latex": "\\le w_1",
+            "noWrap": true
           }
         ],
         [
@@ -879,23 +921,25 @@
             "text": "quasi permanente"
           },
           {
-            "text": "decompressione"
+            "text": "decompressione",
+            "noWrap": true
           },
           {
-            "text": "—"
+            "text": "—",
+            "noWrap": true
           },
           {
-            "text": "apertura fessure"
+            "text": "apertura fessure",
+            "noWrap": true
           },
           {
             "text": "≤ w₁",
-            "latex": "\\le w_1"
+            "latex": "\\le w_1",
+            "noWrap": true
           }
         ]
       ],
-      "notes": [
-        "w₁, w₂, w₃ sono definiti al § 4.1.2.2.4, il valore wₖ è definito al § 4.1.2.2.4.5."
-      ]
+      "notes": []
     },
     {
       "id": "urn:structural-codes:it:asset:table:ntc2018:4.1.2.3.4.2:alpha",
@@ -908,16 +952,20 @@
         [
           {
             "text": "Nₑd/Nᵣcd",
-            "latex": "N_{Ed}/N_{Rcd}"
+            "latex": "N_{Ed}/N_{Rcd}",
+            "align": "center"
           },
           {
-            "text": "0,1"
+            "text": "0,1",
+            "align": "center"
           },
           {
-            "text": "0,7"
+            "text": "0,7",
+            "align": "center"
           },
           {
-            "text": "1,0"
+            "text": "1,0",
+            "align": "center"
           }
         ]
       ],
@@ -925,20 +973,25 @@
         [
           {
             "text": "α",
-            "latex": "\\alpha"
+            "latex": "\\alpha",
+            "align": "center"
           },
           {
-            "text": "1,0"
+            "text": "1,0",
+            "align": "center"
           },
           {
-            "text": "1,5"
+            "text": "1,5",
+            "align": "center"
           },
           {
-            "text": "2,0"
+            "text": "2,0",
+            "align": "center"
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "hideLabel": true
     }
   ],
   "figures": [

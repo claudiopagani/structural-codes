@@ -57,6 +57,18 @@ export function hasOfficialListMarker(block: CorpusBlock) {
   return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])/iu.test(block.text?.normalized ?? "");
 }
 
+export function hasAlphabeticListMarker(block: CorpusBlock) {
+  return block.kind === "list-item" && /^\s*\(?[a-z]+[.)]/iu.test(block.text?.normalized ?? "");
+}
+
+export function hasSimpleDashMarker(block: CorpusBlock) {
+  if (block.kind !== "list-item" || block.listMarker === "none" || block.listMarker === "bullet") return false;
+  return Boolean(block.text?.normalized?.trim())
+    && !hasTrailingStrong(block)
+    && !hasTrailingMath(block)
+    && (block.listMarker === "dash" || !hasOfficialListMarker(block));
+}
+
 export function hasNoListMarker(block: CorpusBlock) {
   return block.kind === "list-item" && block.listMarker === "none";
 }
@@ -67,6 +79,10 @@ export function listMarkerClass(block: CorpusBlock) {
 
 export function listLevelClass(block: CorpusBlock) {
   return block.kind === "list-item" && (block.listLevel ?? 0) > 0 ? `list-item-level-${block.listLevel}` : "";
+}
+
+export function indentLevelClass(block: CorpusBlock) {
+  return block.indentLevel && block.indentLevel > 0 ? `block-indent-${block.indentLevel}` : "";
 }
 
 export function hasLeadingMath(block: CorpusBlock) {
@@ -179,9 +195,28 @@ function renderLeadingLabelContent(block: CorpusBlock) {
   return null;
 }
 
+function renderAlphabeticListContent(block: CorpusBlock) {
+  if (!hasAlphabeticListMarker(block)) return null;
+  const inline = block.text?.inline;
+  const normalized = block.text?.normalized;
+  const first = inline?.[0];
+  const source = first?.kind === "text" ? first.value : normalized;
+  if (!source) return null;
+  const match = source.match(/^(\s*\(?[a-z]+[.)])\s*/iu);
+  if (!match) return null;
+  if (!inline || first?.kind !== "text") {
+    return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized?.slice(match[0].length)}</span></>;
+  }
+  const description = [{ ...first, value: first.value.slice(match[0].length) }, ...inline.slice(1)];
+  return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(description)}</span></>;
+}
+
 export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "/assets", aligned = false }: BlockContentProps) {
   if (block.text) {
-    if (showRaw || !block.text.inline) return <p>{showRaw ? block.text.raw : block.text.normalized}</p>;
+    if (showRaw) return <p>{block.text.raw}</p>;
+    const alphabeticListContent = renderAlphabeticListContent(block);
+    if (alphabeticListContent) return <p>{alphabeticListContent}</p>;
+    if (!block.text.inline) return <p>{block.text.normalized}</p>;
     const inline = block.text.inline;
     const leadingLabelContent = renderLeadingLabelContent(block);
     if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : <p>{leadingLabelContent}</p>;
@@ -197,10 +232,11 @@ export function BlockContent({ block, assets, showRaw = false, assetsBaseUrl = "
     const notes = visibleTableNotes(table.notes);
     const caption = visibleTableCaption(table.officialNumber, table.caption);
     const numberSuffix = visibleTableNumberSuffix(table.officialNumber, table.caption);
+    const label = table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : table.hideLabel ? null : "Tabella non numerata";
     const compactTable = tableColumnCount(table.headers, table.rows) <= 4;
     return (
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
-        <figcaption><strong>{table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : "Tabella non numerata"}</strong>{caption && <span> — {table.captionInline ? renderInlineSegments(table.captionInline) : caption}</span>}</figcaption>
+        {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{table.captionInline ? renderInlineSegments(table.captionInline) : caption}</span>}</figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>
@@ -245,7 +281,7 @@ export function UnitBlocks({ unit, assets, showRaw = false, compact = false, ass
   return <div className={`normative-copy ${compact ? "normative-copy-compact" : ""}`}>
     {groupAlignedLabelBlocks(blocks, showRaw).map((group) => group.kind === "label-list"
       ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} variant="legacy" startIndex={group.startIndex} key={group.blocks[0].blockId} />
-      : <section className={`text-block ${group.block.kind === "heading" ? "heading-block" : ""} ${group.block.kind === "list-item" ? "list-item-block" : ""} ${hasOfficialListMarker(group.block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(group.block) ? "list-item-without-marker" : ""} ${hasLeadingMath(group.block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(group.block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingStrong(group.block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(group.block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${group.block.assetId ? "asset-block" : ""}`} key={group.block.blockId}>
+      : <section className={`text-block ${group.block.kind === "heading" ? "heading-block" : ""} ${group.block.kind === "list-item" ? "list-item-block" : ""} ${listMarkerClass(group.block)} ${listLevelClass(group.block)} ${hasOfficialListMarker(group.block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(group.block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(group.block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(group.block) ? "list-item-without-marker" : ""} ${hasLeadingMath(group.block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(group.block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingStrong(group.block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(group.block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${indentLevelClass(group.block)} ${group.block.assetId ? "asset-block" : ""}`} key={group.block.blockId}>
         <div className="block-gutter"><span>{String(group.index + 1).padStart(2, "0")}</span>{group.block.evidence && <span title="Pagina PDF">p.{group.block.evidence.pdfPage}</span>}</div>
         <div><span className="block-kind">{group.block.kind}</span><BlockContent block={group.block} assets={assets} showRaw={showRaw} assetsBaseUrl={assetsBaseUrl} />
           {group.block.evidence?.transformations && group.block.evidence.transformations.length > 0 && <details className="transformations"><summary>{group.block.evidence.transformations.length} trasformazioni tracciate</summary><ul>{group.block.evidence.transformations.map((transformation, transformationIndex) => <li key={`${transformation.operation}-${transformationIndex}`}><strong>{transformation.operation}</strong>{transformation.note}</li>)}</ul></details>}

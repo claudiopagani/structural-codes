@@ -54,7 +54,7 @@ test("combined è il default e le relazioni restano esplicite", async () => {
   assert.match(source, /sourceUnitId === resultId/);
   assert.doesNotMatch(source, /Collegamento editoriale da revisionare/);
   assert.doesNotMatch(source, /Provenienza: Circolare 7\/2019/);
-  assert.match(source, /<h3><span>\{relatedUnit\.numbering\.official\}<\/span>\{relatedUnit\.title\}<\/h3>/);
+  assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
   assert.doesNotMatch(source, /<span>Circolare 7\/2019 —/);
   assert.match(source, /setRelatedByTarget\(new Map\(\)\)/);
   assert.match(source, /const renderAuxiliary: ReactNode = !manifest/);
@@ -132,9 +132,13 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(component, /tableAssetClass/);
   assert.match(component, /table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption/);
   assert.match(component, /inline\.length === 2 && inline\.at\(-1\)\?\.kind === "math"/);
-  assert.match(component, /caption && <span> — \{table\.captionInline \? renderInlineSegments\(table\.captionInline\) : caption\}<\/span>/);
+  assert.match(component, /\(label \|\| caption\) && <figcaption>/);
   assert.match(component, /table-scroll-compact/);
   assert.match(component, /hasOfficialListMarker/);
+  assert.match(component, /hasAlphabeticListMarker/);
+  assert.match(component, /hasSimpleDashMarker/);
+  assert.match(component, /!hasTrailingStrong\(block\)/);
+  assert.match(component, /!hasTrailingMath\(block\)/);
   assert.match(component, /hasLeadingEmphasisLabel/);
   assert.match(component, /block-with-leading-label/);
   assert.match(component, /leading-label-description/);
@@ -153,8 +157,22 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(component, /leadingLabelKind/);
   assert.match(component, /groupAlignedLabelBlocks/);
   assert.match(sharedViewer, /<AlignedLabelList/);
+  assert.match(sharedViewer, /hasAlphabeticListMarker/);
+  assert.match(sharedViewer, /hasSimpleDashMarker/);
+  assert.match(sharedViewer, /scv-unit-title/);
+  assert.match(sharedViewer, /scv-related-title/);
   assert.match(legacyViewer, /<AlignedLabelList/);
+  assert.match(legacyViewer, /hasAlphabeticListMarker/);
+  assert.match(legacyViewer, /hasSimpleDashMarker/);
+  assert.match(legacyViewer, /hasTrailingStrong/);
   assert.match(styles, /list-item-with-official-marker/);
+  assert.match(styles, /list-item-with-alphabetic-marker/);
+  assert.match(styles, /list-item-with-simple-dash/);
+  assert.match(styles, /\.scv-unit h2 \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(styles, /\.scv-unit h2 > \.scv-unit-title \{[^}]*min-width:\s*0/);
+  assert.match(styles, /\.scv-related-unit > header h3 \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(styles, /text-indent:\s*calc\(-1 \* var\(--scv-list-marker-width\)\)/);
+  assert.match(styles, /list-item-with-alphabetic-marker p \.inline-math/);
   assert.match(styles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
   assert.match(styles, /\.scv-label-list \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
   assert.match(component, /block\.kind === "list-item" && block\.listMarker === "none"/);
@@ -171,6 +189,11 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(legacyStyles, /\.label-list-row, \.label-list-content \{[^}]*display:\s*contents/);
   assert.match(legacyStyles, /leading-math-description/);
   assert.match(legacyStyles, /list-item-with-bullet/);
+  assert.match(legacyStyles, /list-item-with-alphabetic-marker/);
+  assert.match(legacyStyles, /list-item-with-simple-dash/);
+  assert.match(legacyStyles, /\.article-title-row \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /text-indent:\s*calc\(-1 \* var\(--legacy-list-marker-width\)\)/);
+  assert.match(legacyStyles, /list-item-with-alphabetic-marker p \.inline-math/);
   assert.match(legacyStyles, /list-item-level-1/);
   assert.match(legacyStyles, /text-block\.block-with-leading-label p \{[^}]*grid-template-columns: max-content minmax\(0, 1fr\)/);
   assert.match(legacyStyles, /table-asset-3-5-iv table \{[^}]*table-layout:\s*fixed/);
@@ -178,6 +201,28 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.doesNotMatch(styles, /grid-template-columns:\s*6\.5em/);
   assert.doesNotMatch(legacyStyles, /grid-template-columns:\s*6\.5em/);
   assert.doesNotMatch(styles, /\.scv-root\s*\{[^}]*Georgia/isu);
+});
+
+test("gli elenchi alfabetici separano il label dalla descrizione e gli elenchi innestati usano il livello", async () => {
+  const [unit, component, styles, legacyStyles] = await Promise.all([
+    readFile(new URL("../../corpus/units/ntc2018/2.5.1.3.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../shared/CorpusContent.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
+  const items = unit.blocks.filter((block) => block.kind === "list-item");
+  assert.match(component, /renderAlphabeticListContent/);
+  assert.match(component, /list-marker-label/);
+  assert.match(component, /list-description/);
+  assert.match(component, /if \(!block\.text\.inline\) return <p>\{block\.text\.normalized\}<\/p>/);
+  assert.equal(items.filter((block) => block.listLevel === 0).length, 4);
+  assert.equal(items.filter((block) => block.listMarker === "dash" && block.listLevel === 1).length, 11);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-alphabetic-marker p \{[\s\S]*?display:\s*grid[\s\S]*?grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(legacyStyles, /\.list-item-block\.list-item-with-alphabetic-marker p \{[\s\S]*?display:\s*grid[\s\S]*?grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-alphabetic-marker p \{[\s\S]*?column-gap:\s*0\.35em/);
+  assert.match(legacyStyles, /\.list-item-block\.list-item-with-alphabetic-marker p \{[\s\S]*?column-gap:\s*0\.35em/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-simple-dash\.list-item-level-1,[\s\S]*?padding-left:\s*var\(--scv-list-marker-width\)/);
+  assert.match(legacyStyles, /\.list-item-block\.list-item-with-simple-dash\.list-item-level-1,[\s\S]*?padding-left:\s*var\(--legacy-list-marker-width\)/);
 });
 
 test("i renderer escludono il blocco titolo strutturale senza perdere i sottotitoli", async () => {

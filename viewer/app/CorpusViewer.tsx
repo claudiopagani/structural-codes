@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasTrailingMath, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "../shared/CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "../shared/CorpusContent";
 import {
   documentForMode,
   loadChunk,
@@ -475,7 +475,7 @@ function UnitHeader({ unit, documentLabel, showRaw, onToggleRaw }: { unit: Corpu
 }
 
 function legacyBlockClass(block: CorpusUnit["blocks"][number], showRaw: boolean) {
-  return `text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`;
+  return `text-block ${block.kind === "heading" ? "heading-block" : ""} ${block.kind === "list-item" ? "list-item-block" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${hasLeadingMath(block) && !showRaw ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) && !showRaw ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) && !showRaw ? "list-item-with-trailing-symbol" : ""} ${block.assetId ? "asset-block" : ""}`;
 }
 
 function UnitBlocks({ unit, assets, showRaw, compact = false }: { unit: CorpusUnit; assets: AssetBundle; showRaw: boolean; compact?: boolean }) {

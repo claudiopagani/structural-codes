@@ -6,8 +6,8 @@ import test from "node:test";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const formulaId = (number: string) => "urn:structural-codes:it:asset:formula:ntc2018:" + number;
-type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
-type Table = { officialNumber: string; caption: string; headers: TableCell[][]; rows: TableCell[][] };
+type TableCell = { text: string; latex?: string; colSpan?: number; rowSpan?: number; align?: string; noWrap?: boolean };
+type Table = { officialNumber: string; caption: string; headers: TableCell[][]; rows: TableCell[][]; notes?: unknown[] };
 const expected = new Map<string, string>([
     [formulaId("4.1.1"), "\\delta\\ge0{,}44+1{,}25\\cdot(0{,}6+0{,}0014/\\varepsilon_{cu})x/d\\qquad\\text{per }f_{ck}\\le50\\,\\mathrm{MPa}"],
     [formulaId("4.1.2"), "\\delta\\ge0{,}54+1{,}25\\cdot(0{,}6+0{,}0014/\\varepsilon_{cu})x/d\\qquad\\text{per }f_{ck}>50\\,\\mathrm{MPa}"],
@@ -107,6 +107,41 @@ test("NTC pagine 72–81 usa segmenti matematici completi e non marca lettere di
     assert.equal(tension.blocks.some((block: { text?: { normalized: string } }) => /f ctk/u.test(block.text?.normalized ?? "")), false);
 });
 
+test("NTC §4.1 conserva continuazione, elenchi con label e titolo corretti", async () => {
+    const unit41 = await json("corpus/units/ntc2018/4.1.json");
+    const thirdBullet = unit41.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-004"));
+    const continuation = unit41.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-004-continuation"));
+    assert.equal(thirdBullet.kind, "list-item");
+    assert.equal(thirdBullet.text.normalized, "calcestruzzo a bassa percentuale di armatura o non armato");
+    assert.equal(continuation.kind, "paragraph");
+    assert.equal(continuation.text.normalized.startsWith("con riferimento a calcestruzzi di peso normale"), true);
+
+    for (const number of ["4.1.2.1.1.1", "4.1.2.1.1.2", "4.1.2.1.1.3"]) {
+        const unit = await json("corpus/units/ntc2018/" + number + ".json");
+        const items = unit.blocks.filter((block: { kind: string }) => block.kind === "list-item");
+        assert.ok(items.length > 0, number);
+        assert.equal(items.every((block: { listMarker: string }) => block.listMarker === "none"), true, number);
+    }
+
+    const diagrams = await json("corpus/units/ntc2018/4.1.2.1.2.json");
+    assert.equal(diagrams.title, "Diagrammi di progetto dei materiali");
+    assert.equal(/[‘’']/u.test(diagrams.blocks.find((block: { kind: string }) => block.kind === "heading").text.normalized), false);
+});
+
+test("NTC §4.1.2.1.2.1 evidenzia i casi di confinamento e conserva il corsivo della fonte", async () => {
+    const confined = await json("corpus/units/ntc2018/4.1.2.1.2.1.json");
+    const indented = new Set(["027", "028", "029", "030", "031", "033", "034", "039", "040", "041", "043", "044", "045"]);
+    for (const suffix of indented) {
+        const block = confined.blocks.find((candidate: { blockId: string }) => candidate.blockId.endsWith("editorial-" + suffix));
+        assert.equal(block.indentLevel, 1, suffix);
+    }
+    const environmental = await json("corpus/units/ntc2018/4.1.2.2.4.2.json");
+    const inline = environmental.blocks.find((block: { blockId: string }) => block.blockId.endsWith("editorial-001")).text.inline;
+    assert.deepEqual(inline.filter((segment: { kind: string }) => segment.kind === "em"), [
+        { kind: "em", value: "Linee Guida per il calcestruzzo strutturale" },
+    ]);
+});
+
 test("NTC Tabelle 4.1.I–IV conserva titoli, griglie e matematica delle celle", async () => {
     const manifest = await json("corpus/assets/ntc2018/4.1.json");
     const tables = manifest.tables.filter((table: { officialNumber: string | null }) => typeof table.officialNumber === "string" && ["4.1.I", "4.1.II", "4.1.III", "4.1.IV"].includes(table.officialNumber)) as Table[];
@@ -125,4 +160,17 @@ test("NTC Tabelle 4.1.I–IV conserva titoli, griglie e matematica delle celle",
     assert.equal(get("4.1.IV").headers[2]![1]!.latex, "w_k");
     assert.equal(get("4.1.IV").rows[0]![4]!.latex, "\\le w_2");
     assert.equal(get("4.1.IV").rows[5]!.at(-1)!.latex, "\\le w_1");
+    assert.equal(get("4.1.I").headers.flat().every((cell) => cell.align === "center"), true);
+    assert.equal(get("4.1.I").rows.flat().every((cell) => cell.align === "center"), true);
+    assert.equal(get("4.1.II").headers[0]![1]!.align, "center");
+    assert.equal(get("4.1.II").rows.every((row) => row[1]!.align === "center"), true);
+    assert.equal(get("4.1.IV").headers[0]![0]!.align, "center");
+    assert.deepEqual(get("4.1.IV").notes, []);
+    assert.equal(get("4.1.IV").rows.filter((row) => ["A", "B", "C"].includes(row[0]!.text)).every((row) => row[0]!.align === "center"), true);
+    assert.equal(get("4.1.IV").rows[4]![1]!.text, "Molto\naggressive");
+    assert.equal(get("4.1.IV").rows[4]![1]!.align, "center");
+    assert.equal(get("4.1.IV").headers[0]![3]!.noWrap, true);
+    assert.equal(get("4.1.IV").headers[1]!.every((cell) => cell.noWrap === true), true);
+    assert.equal(get("4.1.IV").headers[2]!.every((cell) => cell.noWrap === true), true);
+    assert.equal(get("4.1.IV").rows.every((row) => row.slice(row.length === 7 ? 3 : 1).every((cell) => cell.noWrap === true)), true);
 });

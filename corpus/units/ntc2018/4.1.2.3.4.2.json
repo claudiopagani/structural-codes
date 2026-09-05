@@ -308,14 +308,72 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove\nM Rd è il valore di progetto del momento resistente corrispondente a NEd;\nN Ed è il valore di progetto dello sforzo normale sollecitante;\nM Ed è il valore di progetto del momento di domanda;\nμI è il valore di progetto della duttilità di curvatura corrispondente a NEd;\nPEd è la domanda in termini di duttilità di curvatura.",
-        "normalized": "dove MRd è il valore di progetto del momento resistente corrispondente a NEd; NEd è il valore di progetto dello sforzo normale sollecitante; MEd è il valore di progetto del momento di domanda; μφ è il valore di progetto della duttilità di curvatura corrispondente a NEd; μEd è la domanda in termini di duttilità di curvatura.",
+        "raw": "dove",
+        "normalized": "dove",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-006-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "MRd è il valore di progetto del momento resistente corrispondente a NEd;",
+        "normalized": "MRd è il valore di progetto del momento resistente corrispondente a NEd;",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove "
-          },
           {
             "kind": "math",
             "value": "MRd",
@@ -332,8 +390,72 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "15668360f1445f8919257c15c5b7a7da3432665f5bfc1fab4105a8eceb556189",
+        "normalizedSha256": "15668360f1445f8919257c15c5b7a7da3432665f5bfc1fab4105a8eceb556189"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-006-2",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "NEd è il valore di progetto dello sforzo normale sollecitante;",
+        "normalized": "NEd è il valore di progetto dello sforzo normale sollecitante;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "NEd",
@@ -341,8 +463,72 @@
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto dello sforzo normale sollecitante; "
+            "value": " è il valore di progetto dello sforzo normale sollecitante;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "38ceefa7ea1f59992c52c760e377c65fa61c9cae294a1de4e122ffb51c125ba1",
+        "normalizedSha256": "38ceefa7ea1f59992c52c760e377c65fa61c9cae294a1de4e122ffb51c125ba1"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-006-3",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "MEd è il valore di progetto del momento di domanda;",
+        "normalized": "MEd è il valore di progetto del momento di domanda;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "MEd",
@@ -350,8 +536,72 @@
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto del momento di domanda; "
+            "value": " è il valore di progetto del momento di domanda;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "f4e71fc358524cc006012a63bb049c27c8b0c660f4fb81e45181080c5c83c4d5",
+        "normalizedSha256": "f4e71fc358524cc006012a63bb049c27c8b0c660f4fb81e45181080c5c83c4d5"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-006-4",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "μφ è il valore di progetto della duttilità di curvatura corrispondente a NEd;",
+        "normalized": "μφ è il valore di progetto della duttilità di curvatura corrispondente a NEd;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "μφ",
@@ -368,8 +618,72 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "72ac285f8cc96bde260b03761377c39ce40fd0c46d0f26ff99a5994ec2cdd09a",
+        "normalizedSha256": "72ac285f8cc96bde260b03761377c39ce40fd0c46d0f26ff99a5994ec2cdd09a"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-006-5",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "μEd è la domanda in termini di duttilità di curvatura.",
+        "normalized": "μEd è la domanda in termini di duttilità di curvatura.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "μEd",
@@ -426,11 +740,11 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "b0f5f31e5ad1c39331964200e2ec207eddca3bbc2ee04a2917e599b6067ae977",
-        "normalizedSha256": "3e1b7f91a30aab0edd4b018f0c002dd2f29d5480e8e3132af700b504fa93d6c1"
+        "rawSha256": "ad33a0f34eec3844c2652e713583c7cdd15b1659573380a868be9420d2007bd2",
+        "normalizedSha256": "ad33a0f34eec3844c2652e713583c7cdd15b1659573380a868be9420d2007bd2"
       }
     },
     {
@@ -603,27 +917,76 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove\nM Eyd\n, M Ezd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z;\nM Ryd\n, M Rzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente\nattorno agli assi y e z.",
-        "normalized": "dove MEyd, MEzd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z; MRyd, MRzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente attorno agli assi y e z.",
+        "raw": "dove",
+        "normalized": "dove",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87",
+        "normalizedSha256": "184c926681179fdf70982eef602f81688f7c74d37fe7f43f024544da28aa3c87"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-010-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "MEyd, MEzd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z;",
+        "normalized": "MEyd, MEzd sono i valori di progetto delle due componenti di flessione retta della sollecitazione attorno agli assi y e z;",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "dove "
-          },
-          {
             "kind": "math",
-            "value": "MEyd",
-            "latex": "M_{Eyd}"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "MEzd",
-            "latex": "M_{Ezd}"
+            "value": "MEyd, MEzd",
+            "latex": "M_{Eyd},\\,M_{Ezd}"
           },
           {
             "kind": "text",
@@ -645,21 +1008,76 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "ba4f9e359774a5abf7a00fb1a42d1d44f7993d663e18835b86f7330e74355b00",
+        "normalizedSha256": "ba4f9e359774a5abf7a00fb1a42d1d44f7993d663e18835b86f7330e74355b00"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-010-2",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "MRyd, MRzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente attorno agli assi y e z.",
+        "normalized": "MRyd, MRzd sono i valori di progetto dei momenti resistenti di pressoflessione retta corrispondenti a NEd valutati separatamente attorno agli assi y e z.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
-            "value": "MRyd",
-            "latex": "M_{Ryd}"
-          },
-          {
-            "kind": "text",
-            "value": ", "
-          },
-          {
-            "kind": "math",
-            "value": "MRzd",
-            "latex": "M_{Rzd}"
+            "value": "MRyd, MRzd",
+            "latex": "M_{Ryd},\\,M_{Rzd}"
           },
           {
             "kind": "text",
@@ -739,11 +1157,11 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "0162ad6dccfdd9894625f8d08618af66b16a35f1514a9b85d393a05106b1f783",
-        "normalizedSha256": "7afeca359135390c5c102f6f7a1d3a7c8506f34ebd8ed57106a5c936b5c137ac"
+        "rawSha256": "59d3dab99309b2ff73219c69f2ca884f9325bcb26f8f82cb9f78a7acfc4b1f5e",
+        "normalizedSha256": "59d3dab99309b2ff73219c69f2ca884f9325bcb26f8f82cb9f78a7acfc4b1f5e"
       }
     },
     {
@@ -888,9 +1306,8 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-014",
-      "kind": "formula-ref",
+      "kind": "paragraph",
       "origin": "official",
-      "assetId": "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.4.2:n-rcd",
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
         "pdfPage": 82,
@@ -910,12 +1327,32 @@
         "transformations": [
           {
             "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricondotta la relazione a un paragrafo con formula inline, come nella fonte ufficiale."
           }
         ],
-        "rawSha256": "7d4e94d5fdb3691645166362b2e541387999db08d5f46b8ba360b576e159e6cd",
-        "normalizedSha256": "58527107e6a21003b2474158aaa18e7d8b8627a979170b07418a24fe31ace11c"
+        "rawSha256": "2de0c0fe20b1c7adb993460dfbe7ca0f23f98706c7ff368b658bfa0217e55a9f",
+        "normalizedSha256": "2de0c0fe20b1c7adb993460dfbe7ca0f23f98706c7ff368b658bfa0217e55a9f"
+      },
+      "text": {
+        "raw": "con NRcd = Ac · fcd.",
+        "normalized": "con NRcd = Ac · fcd.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "con "
+          },
+          {
+            "kind": "math",
+            "value": "NRcd = Ac · fcd",
+            "latex": "N_{Rcd}=A_c\\cdot f_{cd}"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       }
     },
     {
@@ -980,6 +1417,68 @@
       }
     },
     {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-015-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "dash",
+      "text": {
+        "raw": "- per sezioni rettangolari:",
+        "normalized": "per sezioni rettangolari:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 82,
+        "printedPage": "78",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.946,
+          "y": 108.999,
+          "width": 428.673,
+          "height": 540.917
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "5e1d49cb39c69b6ade4acbe73212dcbb90d7f030a288832381780c3f924ab262",
+        "normalizedSha256": "1f6459accfbb20f1bd5569ef2b129cd3e32c0466395fa5e7c679f46568d06334"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-016",
       "kind": "table-ref",
       "origin": "official",
@@ -1009,7 +1508,8 @@
         ],
         "rawSha256": "7d4e94d5fdb3691645166362b2e541387999db08d5f46b8ba360b576e159e6cd",
         "normalizedSha256": "58527107e6a21003b2474158aaa18e7d8b8627a979170b07418a24fe31ace11c"
-      }
+      },
+      "indentLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-017",
@@ -1060,7 +1560,8 @@
         ],
         "rawSha256": "9094a5d7e4a9f169a4e046a82014f7aade8d333b461a42b4c7122beea2b8fd2f",
         "normalizedSha256": "eb42d95bdb35c7eec4f2723a936534d764f35915fe6be7add12ae45a1c46071e"
-      }
+      },
+      "indentLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-018",
@@ -1136,7 +1637,8 @@
         ],
         "rawSha256": "e5bed75331bfd5f52d400b3322c0af5ff6f2c025bfff8d77819ba9148d58bfe1",
         "normalizedSha256": "6166d1f554ffd062eb0a7bcd6936639feb9d5aebfbd08a2b51828dd7033cbb27"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-019",
@@ -1260,14 +1762,72 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove:cIyd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in cor-\nrispondenza della deformazione di picco (İc2 se si usa il modello parabola-rettangolo oppure İc3 se si usa il modello triangolo-\nrettangolo) del calcestruzzo compresso;\nM Rd è il momento resistente della sezione allo SLU;\nM’ yd è il momento corrispondente a cIyd e può essere assunto come momento resistente massimo della sezione in campo sostan-\nzialmente elastico.",
-        "normalized": "dove: φ'yd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco (εc2 se si usa il modello parabola-rettangolo oppure εc3 se si usa il modello triangolo-rettangolo) del calcestruzzo compresso; MRd è il momento resistente della sezione allo SLU; M’yd è il momento corrispondente a φ'yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico.",
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 83,
+        "printedPage": "79",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.947,
+          "y": 98.884,
+          "width": 428.666,
+          "height": 168.309
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-021-1",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "\n",
+        "normalized": "φ'yd è la minore tra la curvatura calcolata in corrispondenza dello snervamento dell’armatura tesa e la curvatura calcolata in corrispondenza della deformazione di picco (εc2 se si usa il modello parabola-rettangolo oppure εc3 se si usa il modello triangolo-rettangolo) del calcestruzzo compresso;",
         "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove: "
-          },
           {
             "kind": "math",
             "value": "φ'yd",
@@ -1293,8 +1853,72 @@
           },
           {
             "kind": "text",
-            "value": " se si usa il modello triangolo-rettangolo) del calcestruzzo compresso; "
+            "value": " se si usa il modello triangolo-rettangolo) del calcestruzzo compresso;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 83,
+        "printedPage": "79",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.947,
+          "y": 98.884,
+          "width": 428.666,
+          "height": 168.309
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "normalizedSha256": "917e8914936c43d0de8cc9f63bcb691db59a184b94bd84770c1d3b5f7bb8ecd6"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-021-2",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "MRd è il momento resistente della sezione allo SLU;",
+        "normalized": "MRd è il momento resistente della sezione allo SLU;",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "MRd",
@@ -1302,11 +1926,75 @@
           },
           {
             "kind": "text",
-            "value": " è il momento resistente della sezione allo SLU; "
+            "value": " è il momento resistente della sezione allo SLU;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 83,
+        "printedPage": "79",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.947,
+          "y": 98.884,
+          "width": 428.666,
+          "height": 168.309
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi caratteri di controllo C0 privi di resa visuale."
           },
           {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Unite le parole divise a fine riga dal trattino tipografico del PDF."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc41-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
+          }
+        ],
+        "rawSha256": "095bdab9273625658bc8df06afcf7abaa3eca392d1c1cbcbd7655d785ee6c636",
+        "normalizedSha256": "095bdab9273625658bc8df06afcf7abaa3eca392d1c1cbcbd7655d785ee6c636"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2#block-editorial-021-3",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
+        "raw": "M'yd è il momento corrispondente a φ'yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico.",
+        "normalized": "M'yd è il momento corrispondente a φ'yd e può essere assunto come momento resistente massimo della sezione in campo sostanzialmente elastico.",
+        "normalizationVersion": "ntc4-step6-editorial-profile-0.1.0",
+        "inline": [
+          {
             "kind": "math",
-            "value": "M’yd",
+            "value": "M'yd",
             "latex": "M'_{yd}"
           },
           {
@@ -1369,11 +2057,11 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc4-step6-editorial-profile-0.1.0",
-            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
+            "note": "Ricostruita la struttura dell’elenco confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "fcd0496b0835a67d411bc0cd9af9f0309b98fefc721d3ff0acb61ade0b43913f",
-        "normalizedSha256": "dbfa7d68fc32bf3a2f57bfa66afafe39823fa936b09671c86ee186e8725606fe"
+        "rawSha256": "c4a95178376d55fdbcf7e231aa4d2a30c6fbf12c65814c4dc3df8bb703755691",
+        "normalizedSha256": "c4a95178376d55fdbcf7e231aa4d2a30c6fbf12c65814c4dc3df8bb703755691"
       }
     }
   ],
@@ -1386,7 +2074,6 @@
       "urn:structural-codes:it:asset:formula:ntc2018:4.1.19",
       "urn:structural-codes:it:asset:formula:ntc2018:4.1.20",
       "urn:structural-codes:it:asset:formula:ntc2018:4.1.21",
-      "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.4.2:n-rcd",
       "urn:structural-codes:it:asset:formula:ntc2018:4.1.2.3.4.2:phi-yd"
     ],
     "tableIds": [

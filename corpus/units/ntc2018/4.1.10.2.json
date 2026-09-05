@@ -185,9 +185,9 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n.",
-        "normalized": "i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n.",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
+        "raw": "– i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n.\n64;",
+        "normalized": "i componenti per i quali è stata rilasciata la certificazione di idoneità ai sensi degli articoli 1 e 7 della legge 2 febbraio 1974 n. 64;",
+        "normalizationVersion": "ntc4-step7-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -222,11 +222,6 @@
             "note": "Rimossi solo gli a capo introdotti dall’impaginazione; i capoversi e gli elenchi restano blocchi distinti."
           },
           {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Corretti glifi greci e simboli matematici verificati sul render ufficiale."
-          },
-          {
             "operation": "normalize-whitespace",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
@@ -235,40 +230,20 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ricomposta la continuazione tipografica nella seconda voce dell’elenco di § 4.1.10.2."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc4-step7-editorial-profile-0.1.0",
+            "note": "Ripristinata la segmentazione matematica confrontando direttamente il render della fonte ufficiale."
           }
         ],
-        "rawSha256": "b0182a52eae2c098fb6a1aca75a8c88ef55022e8053354aa8ba5ec4972e3933e",
-        "normalizedSha256": "5339329e0ce0b59fa31a0b7a37b75b0c15732d2c595a734b9faec48328fb162f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:4.1.10.2#block-editorial-004",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "64;",
-        "normalized": "64;",
-        "normalizationVersion": "ntc41-editorial-profile-0.2.0"
-      },
-      "evidence": {
-        "sourceId": "gu-so8-2018-ntc",
-        "pdfPage": 93,
-        "printedPage": "89",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 82.954,
-          "y": 228.168,
-          "width": 428.574,
-          "height": 55.283
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [],
-        "rawSha256": "4fd1abefe17e8f726412764f8ea158217714ff017fc1cc5cdd00d96bf446fc3d",
-        "normalizedSha256": "4fd1abefe17e8f726412764f8ea158217714ff017fc1cc5cdd00d96bf446fc3d"
+        "rawSha256": "44d03db6797b2ae8caaf9013431ab87409f4912df384283fa70fb31649e8fc7f",
+        "normalizedSha256": "e3f90c6f2420dd8430e413c91a9c4e5fc7496bb9813ad873a314ab99519154b7"
       }
     },
     {

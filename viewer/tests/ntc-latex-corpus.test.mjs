@@ -33,7 +33,7 @@ test("tutto il LaTeX NTC compila nel renderer rigoroso del viewer", async () => 
   const files = [...await jsonFiles(unitDir), ...await jsonFiles(assetDir)];
   const entries = [];
   for (const file of files) entries.push(...latexEntries(JSON.parse(await readFile(file, "utf8")), file));
-  assert.equal(entries.length, 5737);
+  assert.equal(entries.length, 5741);
   for (const entry of entries) {
     assert.doesNotThrow(
       () => katex.renderToString(entry.latex, { throwOnError: true, strict: "error", output: "html" }),
@@ -53,7 +53,7 @@ test("ogni formula NTC dichiarata compare una sola volta nel flusso", async () =
     const unit = JSON.parse(await readFile(file, "utf8"));
     refs.push(...unit.blocks.filter((block) => block.kind === "formula-ref").map((block) => block.assetId));
   }
-  assert.equal(formulaIds.length, 517);
+  assert.equal(formulaIds.length, 515);
   assert.equal(new Set(formulaIds).size, formulaIds.length);
   assert.deepEqual(refs.toSorted(), formulaIds.toSorted());
 });
