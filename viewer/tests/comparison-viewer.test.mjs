@@ -157,6 +157,7 @@ test("renderer condiviso conserva formule, tabelle, figure lazy e numerazione", 
   assert.match(styles, /list-item-with-official-marker/);
   assert.match(styles, /list-item-with-leading-symbol p > \.inline-math:first-child/);
   assert.match(styles, /\.scv-label-list \{[^}]*grid-template-columns:\s*max-content minmax\(0, 1fr\)/);
+  assert.match(component, /block\.kind === "list-item" && block\.listMarker === "none"/);
   assert.match(styles, /\.scv-label-list-row, \.scv-label-list-content \{[^}]*display:\s*contents/);
   assert.match(styles, /leading-math-description/);
   assert.match(styles, /list-item-with-bullet/);

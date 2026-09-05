@@ -119,11 +119,15 @@ const sourceCheckedUnitIds = new Set([
     "urn:structural-codes:it:unit:ntc2018:2.6.2",
 ]);
 
+function isSourceChecked(unit: CanonicalUnit) {
+    return sourceCheckedUnitIds.has(unit.id) || unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3");
+}
+
 test("le unità verificate sono source-checked, le altre restano estratte e bloccate dalla review", async () => {
     const units = await loadUnits();
 
     for (const unit of units) {
-        if (sourceCheckedUnitIds.has(unit.id)) {
+        if (isSourceChecked(unit)) {
             assert.equal(unit.workflow.status, "source-checked", unit.id);
             assert.equal(
                 unit.workflow.openIssues.some(

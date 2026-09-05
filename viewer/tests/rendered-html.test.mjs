@@ -43,7 +43,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.stats.blocks, 10915);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 26);
+  assert.equal(manifest.stats.reviewedUnits, 103);
   assert.equal(manifest.stats.assetUnits, 436);
   assert.equal(manifest.stats.formulas, 891);
   assert.equal(manifest.stats.tables, 219);
@@ -78,9 +78,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
     units.every((unit) => unit.workflow.status === "extracted" || unit.workflow.status === "source-checked"),
     true,
   );
-  assert.deepEqual(
-    units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
-    [
+  const expectedReviewedUnitIds = [
       "urn:structural-codes:it:unit:ntc2018:1",
       "urn:structural-codes:it:unit:ntc2018:1.1",
       "urn:structural-codes:it:unit:ntc2018:2",
@@ -107,7 +105,11 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
       "urn:structural-codes:it:unit:ntc2018:2.6",
       "urn:structural-codes:it:unit:ntc2018:2.6.1",
       "urn:structural-codes:it:unit:ntc2018:2.6.2",
-    ],
+    ].concat(units.filter((unit) => unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3")).map((unit) => unit.id));
+  assert.equal(expectedReviewedUnitIds.length, 103);
+  assert.deepEqual(
+    units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
+    expectedReviewedUnitIds.sort(),
   );
 
   const assets = { formulas: new Map(), tables: new Map(), figures: new Map() };

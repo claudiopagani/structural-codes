@@ -76,7 +76,11 @@ export function hasLeadingMath(block: CorpusBlock) {
 
 export function hasLeadingEmphasisLabel(block: CorpusBlock) {
   const inline = block.text?.inline;
-  return (block.kind === "paragraph" || block.kind === "list-item") && inline?.[0]?.kind === "em" && /^\s*:/u.test(inline[1]?.kind === "text" ? inline[1].value : "");
+  return (
+    (block.kind === "paragraph" || (block.kind === "list-item" && block.listMarker === "none")) &&
+    inline?.[0]?.kind === "em" &&
+    /^\s*:/u.test(inline[1]?.kind === "text" ? inline[1].value : "")
+  );
 }
 
 export function leadingLabelKind(block: CorpusBlock, showRaw = false): "math" | "emphasis" | null {

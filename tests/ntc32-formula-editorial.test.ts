@@ -80,7 +80,7 @@ test("NTC Tabelle 3.2.I–VII conservano struttura e matematica ufficiali", asyn
     assert.equal(tableIV.columnCount, 3);
     assert.equal(tableIV.rows.length, 5);
     assert.equal(tableIV.headers[0][1].latex, "S_S");
-    assert.equal(tableIV.rows[1][1].latex, "1{,}00\\le1{,}40-0{,}40\\cdot F_o\\cdot\\frac{a_g}{g}\\le1{,}20");
+    assert.equal(tableIV.rows[1][1].latex, "1{,}00\\le1{,}40-0{,}40\\cdot F_o\\cdot\\dfrac{a_g}{g}\\le1{,}20");
     assert.equal(tableIV.rows[4][2].latex, "1{,}15\\cdot(T_C^*)^{-0{,}40}");
     const unit322 = await json("corpus/units/ntc2018/3.2.2.json");
     assert.deepEqual(unit322.assets.tableIds, [tableId("3.2.II"), tableId("3.2.III")]);
@@ -91,13 +91,19 @@ test("NTC Tabelle 3.2.I–VII conservano struttura e matematica ufficiali", asyn
 test("NTC 3.2 conserva grassetti, elenco delle definizioni e corsivi matematici nelle tabelle", async () => {
     const manifest = await json("corpus/assets/ntc2018/core-tables.json");
     const tableI = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.I") as { headers: TableCell[][]; rows: TableCell[][]; captionInline?: TableInline[] };
-    const tableII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.II") as { rows: TableCell[][] };
-    const tableIII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.III") as { rows: TableCell[][] };
+    const tableII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.II") as { headers: TableCell[][]; rows: TableCell[][] };
+    const tableIII = manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === "3.2.III") as { headers: TableCell[][]; rows: TableCell[][] };
     assert.equal(tableI.headers[0]![0]!.colSpan, undefined);
     assert.equal(tableI.headers[0]![1]!.colSpan, 2);
     const sloColumn = tableI.rows.flat().filter((cell) => ["SLO", "SLD", "SLV", "SLC"].includes(cell.text));
     assert.equal(sloColumn.every((cell) => cell.align === "center" && cell.noWrap === true), true);
     assert.equal(tableII.rows.every((row) => row[1]?.inline?.[0]?.kind === "em" && row[1]?.inline?.[1]?.kind === "text"), true);
+    for (const table of [tableII, tableIII]) {
+        assert.equal(
+            [...table.headers.map((row) => row[0]), ...table.rows.map((row) => row[0])].every((cell) => cell?.align === "center"),
+            true,
+        );
+    }
     assert.equal(tableI.captionInline?.find((segment) => segment.kind === "math")?.latex, "P_{VR}");
     const captionMath = (officialNumber: string) => (manifest.tables.find((table: { officialNumber: string }) => table.officialNumber === officialNumber) as { captionInline?: TableInline[] }).captionInline?.find((segment) => segment.kind === "math")?.latex;
     assert.equal(captionMath("2.4.I"), "V_N");
