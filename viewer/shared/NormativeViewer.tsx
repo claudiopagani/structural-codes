@@ -65,6 +65,13 @@ export interface NormativeViewerProps {
 
 interface RelatedRecord { edge: RelationEdge; unit: CorpusUnit; chunk: CorpusChunk; }
 interface UnitRecord { summary: UnitSummary; unit: CorpusUnit; chunk: CorpusChunk; }
+interface DisplayIndexEntry extends UnitRecord {
+  source: DocumentId;
+  baseNumber: string;
+  displayNumber: string;
+  level: number;
+  parentBaseNumber: string | null;
+}
 
 function depth(unit: UnitSummary | CorpusUnit) {
   return unit.hierarchy.ancestorIds.length;
@@ -77,12 +84,26 @@ function hasUnitContent(unit: CorpusUnit) {
   });
 }
 
-function ancestorIdAtDepth(unit: UnitSummary | CorpusUnit, targetDepth: number) {
-  return depth(unit) === targetDepth ? unit.id : unit.hierarchy.ancestorIds[targetDepth] ?? null;
+function baseNumbering(value: string) {
+  return value.replace(/^C/iu, "");
+}
+
+function parentNumbering(value: string) {
+  const parts = value.split(".");
+  parts.pop();
+  return parts.join(".") || null;
 }
 
 function normalizedQuery(value: string) {
   return value.normalize("NFKC").trim().toLocaleLowerCase("it");
+}
+
+function scrollTextUnit(root: HTMLElement | null, unitId: string) {
+  const target = root?.querySelector<HTMLElement>(`[data-scv-text-unit="${CSS.escape(unitId)}"]`);
+  if (!root || !target) return;
+  const rootRect = root.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  root.scrollTo({ top: Math.max(0, root.scrollTop + targetRect.top - rootRect.top - 14), behavior: "auto" });
 }
 
 function updateDeepLink(mode: ViewerMode, unitId: string, defaultMode: ViewerMode) {
@@ -114,6 +135,110 @@ function relationTargets(resultId: string, relations: RelationEdge[]) {
     .sort((left, right) => left.targetUnitId.localeCompare(right.targetUnitId, "it", { numeric: true }));
 }
 
+interface ScrollMarker {
+  id: string;
+  label: string;
+  level: "chapter" | "paragraph";
+}
+
+interface PositionedScrollMarker extends ScrollMarker {
+  top: number;
+}
+
+interface ScrollMetrics {
+  scrollTop: number;
+  scrollHeight: number;
+  clientHeight: number;
+  markers: PositionedScrollMarker[];
+}
+
+function DocumentScrollbar({
+  rootRef,
+  markers,
+  activeId,
+  onSelect,
+}: {
+  rootRef: React.RefObject<HTMLElement | null>;
+  markers: ScrollMarker[];
+  activeId: string | null;
+  onSelect: (id: string) => void;
+}) {
+  const [metrics, setMetrics] = useState<ScrollMetrics>({ scrollTop: 0, scrollHeight: 1, clientHeight: 1, markers: [] });
+  const dragRef = useRef<{ pointerId: number; startY: number; startTop: number } | null>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    let frame: number | null = null;
+    const measure = () => {
+      frame = null;
+      const rootRect = root.getBoundingClientRect();
+      const elements = new Map([...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")].map((element) => [element.dataset.scvTextUnit, element]));
+      const positioned = markers.flatMap((marker) => {
+        const element = elements.get(marker.id);
+        if (!element) return [];
+        return [{ ...marker, top: Math.max(0, element.getBoundingClientRect().top - rootRect.top + root.scrollTop) }];
+      });
+      setMetrics({ scrollTop: root.scrollTop, scrollHeight: Math.max(1, root.scrollHeight), clientHeight: Math.max(1, root.clientHeight), markers: positioned });
+    };
+    const schedule = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(measure);
+    };
+    const onScroll = () => schedule();
+    measure();
+    root.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", schedule);
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(schedule);
+    observer?.observe(root);
+    const flow = root.querySelector<HTMLElement>(".scv-text-flow");
+    if (flow) observer?.observe(flow);
+    return () => {
+      root.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", schedule);
+      observer?.disconnect();
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [markers, rootRef]);
+
+  if (markers.length === 0 || metrics.scrollHeight <= metrics.clientHeight) return null;
+  const scrollRange = Math.max(1, metrics.scrollHeight - metrics.clientHeight);
+  const thumbHeight = Math.max(9, Math.min(100, (metrics.clientHeight / metrics.scrollHeight) * 100));
+  const thumbTop = Math.min(100 - thumbHeight, (metrics.scrollTop / scrollRange) * (100 - thumbHeight));
+  const jumpTo = (event: React.MouseEvent<HTMLDivElement>) => {
+    const root = rootRef.current;
+    if (!root) return;
+    const trackRect = event.currentTarget.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (event.clientY - trackRect.top) / trackRect.height));
+    root.scrollTop = ratio * scrollRange;
+  };
+  const startDrag = (event: React.PointerEvent<HTMLSpanElement>) => {
+    const root = rootRef.current;
+    if (!root) return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    dragRef.current = { pointerId: event.pointerId, startY: event.clientY, startTop: root.scrollTop };
+    event.preventDefault();
+  };
+  const moveDrag = (event: React.PointerEvent<HTMLSpanElement>) => {
+    const root = rootRef.current;
+    const drag = dragRef.current;
+    if (!root || !drag || drag.pointerId !== event.pointerId) return;
+    const trackHeight = event.currentTarget.parentElement?.getBoundingClientRect().height ?? 1;
+    const thumbHeightPx = trackHeight * (thumbHeight / 100);
+    root.scrollTop = Math.max(0, Math.min(scrollRange, drag.startTop + ((event.clientY - drag.startY) * scrollRange) / Math.max(1, trackHeight - thumbHeightPx)));
+  };
+  const stopDrag = (event: React.PointerEvent<HTMLSpanElement>) => {
+    if (dragRef.current?.pointerId === event.pointerId) dragRef.current = null;
+  };
+
+  return <div className="scv-scroll-rail" aria-label="Navigazione documento">
+    <div className="scv-scroll-track" role="presentation" onClick={jumpTo}>
+      <span className="scv-scroll-thumb" style={{ top: `${thumbTop}%`, height: `${thumbHeight}%` }} onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag} onClick={(event) => event.stopPropagation()} />
+    </div>
+    {metrics.markers.map((marker) => <button type="button" key={marker.id} className={`scv-scroll-marker ${marker.level} ${marker.id === activeId ? "active" : ""}`} style={{ top: `${Math.min(100, (marker.top / metrics.scrollHeight) * 100)}%` }} onClick={() => onSelect(marker.id)} aria-label={`Vai a ${marker.label}`} title={marker.label}><span className="scv-scroll-marker-label">{marker.label}</span></button>)}
+  </div>;
+}
+
 export function NormativeViewer({
   defaultMode = "combined",
   dataBaseUrl = "/data/codes",
@@ -127,6 +252,9 @@ export function NormativeViewer({
   const [index, setIndex] = useState<DocumentIndex | null>(null);
   const [documentRecords, setDocumentRecords] = useState<UnitRecord[]>([]);
   const [loadedDocumentKey, setLoadedDocumentKey] = useState("");
+  const [circIndex, setCircIndex] = useState<DocumentIndex | null>(null);
+  const [circRecords, setCircRecords] = useState<UnitRecord[]>([]);
+  const [loadedCircDocumentKey, setLoadedCircDocumentKey] = useState("");
   const [mode, setMode] = useState<ViewerMode>(defaultMode);
   const [activeUnitId, setActiveUnitId] = useState<string | null>(null);
   const [relations, setRelations] = useState<RelationEdge[]>([]);
@@ -135,6 +263,7 @@ export function NormativeViewer({
   const [query, setQuery] = useState("");
   const [loadError, setLoadError] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
   const searchRef = useRef<HTMLInputElement>(null);
   const settingsButtonRef = useRef<HTMLButtonElement>(null);
@@ -146,6 +275,26 @@ export function NormativeViewer({
   const deferredQuery = normalizedQuery(query);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && mode !== "combined";
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      try {
+        setDarkMode(window.localStorage.getItem("scv-theme") === "dark");
+      } catch {
+        setDarkMode(false);
+      }
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (darkMode === null) return;
+    try {
+      window.localStorage.setItem("scv-theme", darkMode ? "dark" : "light");
+    } catch {
+      // Storage can be unavailable in private or embedded browsing contexts.
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     loadManifest(dataBaseUrl).then((loaded) => {
@@ -178,18 +327,20 @@ export function NormativeViewer({
     return () => { cancelled = true; };
   }, [dataBaseUrl, defaultMode, documentId, manifest, mode]);
 
-  const activeSummary = index?.units.find((unit) => unit.id === activeUnitId) ?? null;
-
-  const activeChapterId = activeSummary ? ancestorIdAtDepth(activeSummary, 0) : null;
-  const activeParagraphId = activeSummary && depth(activeSummary) >= 1 ? ancestorIdAtDepth(activeSummary, 1) : null;
-  const activeSubparagraphId = activeSummary && depth(activeSummary) >= 2 ? ancestorIdAtDepth(activeSummary, 2) : null;
+  useEffect(() => {
+    if (!manifest || mode !== "combined") return;
+    let cancelled = false;
+    loadDocumentIndex(manifest, "circ2019", dataBaseUrl).then((loaded) => {
+      if (!cancelled) setCircIndex(loaded);
+    }).catch(() => setLoadError(true));
+    return () => { cancelled = true; };
+  }, [dataBaseUrl, manifest, mode]);
 
   const documentChunkPaths = useMemo(
     () => manifest?.chunks.filter((entry) => entry.document === documentId).map((entry) => entry.path) ?? [],
     [documentId, manifest],
   );
   const documentKey = `${documentId}:${index?.units.length ?? 0}:${documentChunkPaths.join("|")}`;
-  const documentLoading = Boolean(index) && (documentRecords.length === 0 || loadedDocumentKey !== documentKey);
 
   useEffect(() => {
     if (!index || documentChunkPaths.length === 0) return;
@@ -210,8 +361,32 @@ export function NormativeViewer({
     return () => { cancelled = true; };
   }, [dataBaseUrl, documentChunkPaths, documentKey, index]);
 
-  const activeRecord = documentRecords.find(({ unit }) => unit.id === activeUnitId) ?? null;
-  const chunk = activeRecord?.chunk ?? null;
+  const circChunkPaths = useMemo(
+    () => manifest?.chunks.filter((entry) => entry.document === "circ2019").map((entry) => entry.path) ?? [],
+    [manifest],
+  );
+  const circDocumentKey = `circ2019:${circIndex?.units.length ?? 0}:${circChunkPaths.join("|")}`;
+  const comparisonLoading = mode === "combined" && Boolean(circIndex) && (circRecords.length === 0 || loadedCircDocumentKey !== circDocumentKey);
+  const documentLoading = Boolean(index) && (documentRecords.length === 0 || loadedDocumentKey !== documentKey || comparisonLoading);
+
+  useEffect(() => {
+    if (mode !== "combined" || !circIndex || circChunkPaths.length === 0) return;
+    let cancelled = false;
+    Promise.all(circChunkPaths.map(async (path) => [path, await loadChunk(path, dataBaseUrl)] as const)).then((loadedChunks) => {
+      if (cancelled) return;
+      const chunks = new Map(loadedChunks);
+      const records = circIndex.units.flatMap((summary) => {
+        const loadedChunk = chunks.get(summary.chunkPath);
+        const unit = loadedChunk?.units.find((candidate) => candidate.id === summary.id);
+        return loadedChunk && unit ? [{ summary, unit, chunk: loadedChunk }] : [];
+      });
+      setCircRecords(records);
+      setLoadedCircDocumentKey(circDocumentKey);
+    }).catch(() => {
+      if (!cancelled) setLoadError(true);
+    });
+    return () => { cancelled = true; };
+  }, [circChunkPaths, circDocumentKey, circIndex, dataBaseUrl, mode]);
 
   useEffect(() => {
     if (!manifest || mode !== "combined") return;
@@ -267,10 +442,61 @@ export function NormativeViewer({
     else settingsButtonRef.current?.focus();
   }, [settingsOpen]);
 
-  const chapters = index?.units.filter((unit) => depth(unit) === 0) ?? [];
-  const paragraphs = activeChapterId ? index?.units.filter((unit) => depth(unit) === 1 && unit.hierarchy.parentId === activeChapterId) ?? [] : [];
-  const subparagraphs = activeParagraphId ? index?.units.filter((unit) => depth(unit) === 2 && unit.hierarchy.parentId === activeParagraphId) ?? [] : [];
-  const hierarchy: UnitSummary[][] = [chapters, paragraphs, subparagraphs];
+  const displayEntries = useMemo<DisplayIndexEntry[]>(() => {
+    const relatedSourceIds = new Set([...relatedByTarget.values()].flat().map(({ unit }) => unit.id));
+    // The NTC hierarchy remains the index backbone even when a chapter record
+    // is only structural. Empty structural records are filtered from the
+    // combined text flow below, but keeping them here preserves navigation to
+    // chapters such as 2, 3, 7, 8, 9 and 10.
+    const primaryRecords = documentRecords;
+    const primaryNumbers = new Set(primaryRecords.map(({ summary }) => baseNumbering(summary.numbering.official)));
+    const fallbackRecords = mode !== "combined"
+      ? []
+      : circRecords.filter(({ unit, summary }) => hasUnitContent(unit)
+        && !primaryNumbers.has(baseNumbering(summary.numbering.official))
+        && !relatedSourceIds.has(unit.id));
+    const makeEntry = (record: UnitRecord, source: DocumentId): DisplayIndexEntry => {
+      const rawNumber = record.summary.numbering.official;
+      const displayNumber = source === "circ2019" && !/^C/iu.test(rawNumber) ? `C${rawNumber}` : rawNumber;
+      const baseNumber = baseNumbering(displayNumber);
+      return {
+        ...record,
+        source,
+        baseNumber,
+        displayNumber,
+        level: depth(record.summary),
+        parentBaseNumber: parentNumbering(baseNumber),
+      };
+    };
+    return [...primaryRecords.map((record) => makeEntry(record, record.unit.document)), ...fallbackRecords.map((record) => makeEntry(record, "circ2019"))]
+      .sort((left, right) => left.summary.numbering.sortKey.localeCompare(right.summary.numbering.sortKey, "it", { numeric: true }));
+  }, [circRecords, documentRecords, mode, relatedByTarget]);
+
+  const activeEntry = displayEntries.find(({ unit }) => unit.id === activeUnitId) ?? null;
+  const activeSummary = activeEntry?.summary ?? null;
+  const activeNumberParts = activeEntry?.baseNumber.split(".") ?? [];
+  const activeChapterNumber = activeNumberParts[0] ?? null;
+  const activeParagraphNumber = activeNumberParts.length >= 2 ? activeNumberParts.slice(0, 2).join(".") : null;
+  const activeSubparagraphNumber = activeNumberParts.length >= 3 ? activeNumberParts.slice(0, 3).join(".") : null;
+  const chapters = displayEntries.filter(({ level }) => level === 0);
+  const paragraphs = activeChapterNumber ? displayEntries.filter(({ level, parentBaseNumber }) => level === 1 && parentBaseNumber === activeChapterNumber) : [];
+  const subparagraphs = activeParagraphNumber ? displayEntries.filter(({ level, parentBaseNumber }) => level === 2 && parentBaseNumber === activeParagraphNumber) : [];
+  const hierarchy: DisplayIndexEntry[][] = [chapters, paragraphs, subparagraphs];
+  const activeLevelIds = [
+    chapters.find(({ baseNumber }) => baseNumber === activeChapterNumber)?.unit.id ?? null,
+    paragraphs.find(({ baseNumber }) => baseNumber === activeParagraphNumber)?.unit.id ?? null,
+    subparagraphs.find(({ baseNumber }) => baseNumber === activeSubparagraphNumber)?.unit.id ?? null,
+  ];
+
+  const scrollbarMarkers = useMemo(() => displayEntries.flatMap(({ unit, displayNumber, level }) => {
+    if (level > 1) return [];
+    return [{ id: unit.id, label: displayNumber, level: level === 0 ? "chapter" as const : "paragraph" as const }];
+  }), [displayEntries]);
+
+  const renderEntries = displayEntries;
+  const renderRecords = renderEntries.map(({ summary, unit, chunk }) => ({ summary, unit, chunk }));
+  const activeRecord = activeEntry ? { summary: activeEntry.summary, unit: activeEntry.unit, chunk: activeEntry.chunk } : null;
+  const chunk = activeRecord?.chunk ?? null;
 
   const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
   const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
@@ -285,23 +511,41 @@ export function NormativeViewer({
   }, [deferredQuery, mode, searchIndex]);
 
   function selectUnit(unit: UnitSummary) {
+    const requestedEntry = displayEntries.find(({ unit: candidate }) => candidate.id === unit.id);
+    const directTarget = renderRecords.some(({ unit: candidate }) => candidate.id === unit.id) ? unit.id : null;
+    const descendantTarget = requestedEntry
+      ? renderEntries.find(({ baseNumber }) => baseNumber.startsWith(`${requestedEntry.baseNumber}.`))?.unit.id ?? null
+      : null;
+    const targetId = directTarget ?? descendantTarget ?? unit.id;
     requestedIdRef.current = unit.id;
-    scrollRequestRef.current = unit.id;
+    scrollRequestRef.current = targetId;
     setActiveUnitId(unit.id);
     updateDeepLink(mode, unit.id, defaultMode);
-    if (activeUnitId === unit.id && documentRecords.length > 0) {
-      requestAnimationFrame(() => textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(unit.id)}"]`)?.scrollIntoView({ block: "start" }));
+    if (activeUnitId === unit.id && displayEntries.length > 0) {
+      requestAnimationFrame(() => scrollTextUnit(textPaneRef.current, targetId));
     }
+  }
+
+  function selectScrollMarker(unitId: string) {
+    const entry = displayEntries.find(({ unit }) => unit.id === unitId);
+    if (entry) selectUnit(entry.summary);
   }
 
   useEffect(() => {
     if (!scrollRequestRef.current || documentLoading || documentRecords.length === 0) return;
     const targetId = scrollRequestRef.current;
-    const target = textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(targetId)}"]`);
+    const directTarget = textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(targetId)}"]`);
+    const requestedEntry = displayEntries.find(({ unit }) => unit.id === targetId);
+    const resolvedTargetId = directTarget
+      ? targetId
+      : requestedEntry
+        ? renderEntries.find(({ baseNumber }) => baseNumber.startsWith(`${requestedEntry.baseNumber}.`))?.unit.id ?? null
+        : null;
+    const target = resolvedTargetId ? textPaneRef.current?.querySelector(`[data-scv-text-unit="${CSS.escape(resolvedTargetId)}"]`) : null;
     if (!target) return;
     scrollRequestRef.current = null;
-    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
-  }, [activeUnitId, documentLoading, documentRecords]);
+    requestAnimationFrame(() => scrollTextUnit(textPaneRef.current, resolvedTargetId ?? targetId));
+  }, [activeUnitId, documentLoading, displayEntries, documentRecords.length, renderEntries]);
 
   useEffect(() => {
     activeIdRef.current = activeUnitId;
@@ -339,7 +583,7 @@ export function NormativeViewer({
       root.removeEventListener("scroll", onScroll);
       if (frame !== null) cancelAnimationFrame(frame);
     };
-  }, [defaultMode, documentLoading, documentRecords, mode]);
+  }, [defaultMode, documentLoading, displayEntries, documentRecords.length, mode]);
 
   function changeMode(nextMode: ViewerMode, preferredUnitId: string | null = null) {
     const keepCurrent = activeSummary && (nextMode === "combined" ? activeSummary.document === "ntc2018" : activeSummary.document === documentForMode(nextMode));
@@ -348,12 +592,20 @@ export function NormativeViewer({
     setIndex(null);
     setDocumentRecords([]);
     setLoadedDocumentKey("");
+    setCircIndex(null);
+    setCircRecords([]);
+    setLoadedCircDocumentKey("");
     setRelatedByTarget(new Map());
     setSettingsOpen(false);
   }
 
   function selectSearchResult(result: SearchIndex["units"][number]) {
     setQuery("");
+    const displayEntry = displayEntries.find(({ unit }) => unit.id === result.id);
+    if (displayEntry) {
+      selectUnit(displayEntry.summary);
+      return;
+    }
     if (result.document === "ntc2018" && index) {
       const summary = index.units.find((unit) => unit.id === result.id);
       if (summary) selectUnit(summary);
@@ -387,7 +639,12 @@ export function NormativeViewer({
     const relatedRecords = mode === "combined"
       ? (relatedByTarget.get(unit.id) ?? []).filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit))
       : [];
-    if (mode === "combined" && !hasUnitContent(unit) && relatedRecords.length === 0) return null;
+    const keepNtcChapterMarker = mode === "combined"
+      && unit.document === "ntc2018"
+      && isChapter;
+    if (mode === "combined" && !hasUnitContent(unit) && relatedRecords.length === 0 && !keepNtcChapterMarker) {
+      return <span className="scv-structural-anchor" data-scv-text-unit={unit.id} aria-hidden="true" key={unit.id} />;
+    }
 
     return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} key={unit.id}>
       {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unit.title}</span></h2>}
@@ -398,7 +655,7 @@ export function NormativeViewer({
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`}>
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`}>
     <aside className="scv-index-pane" aria-label="Indice gerarchico">
       <div className="scv-search-toolbar">
         <div className="scv-search-box">
@@ -417,22 +674,25 @@ export function NormativeViewer({
       </div>
       <div className="scv-index-grid">
         {hierarchy.map((level, levelIndex) => {
-          const activeLevelId = [activeChapterId, activeParagraphId, activeSubparagraphId][levelIndex];
-          return <section className="scv-index-cell" key={levelIndex}><header><span>{hierarchyLabels[levelIndex]}</span><b>{level.length}</b></header><div className="scv-index-list">{!index ? <LoadingRows /> : level.length === 0 ? <p className="scv-index-empty">Seleziona il livello superiore.</p> : level.map((unit) => <button type="button" key={unit.id} data-index-unit={unit.id} className={activeLevelId === unit.id ? "active" : ""} onClick={() => selectUnit(unit)} title={`${unit.numbering.official} ${unit.title}`} aria-current={activeLevelId === unit.id ? "page" : undefined}><strong>{unit.numbering.official}</strong><span>{unit.title}</span></button>)}</div></section>;
+          const activeLevelId = activeLevelIds[levelIndex];
+          return <section className="scv-index-cell" key={levelIndex}><header><span>{hierarchyLabels[levelIndex]}</span><b>{level.length}</b></header><div className="scv-index-list">{!index ? <LoadingRows /> : level.length === 0 ? <p className="scv-index-empty">Seleziona il livello superiore.</p> : level.map((entry) => <button type="button" key={entry.unit.id} data-index-unit={entry.unit.id} className={activeLevelId === entry.unit.id ? "active" : ""} onClick={() => selectUnit(entry.summary)} title={`${entry.displayNumber} ${entry.unit.title}`} aria-current={activeLevelId === entry.unit.id ? "page" : undefined}><strong>{entry.displayNumber}</strong><span>{entry.unit.title}</span></button>)}</div></section>;
         })}
       </div>
     </aside>
 
-    <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON">
-      {documentLoading || documentRecords.length === 0 ? <LoadingPanel label="Caricamento del documento completo…" /> : <div className="scv-text-flow"><p className="scv-chunk-note">{documentNote} · structural-codes {documentRecords[0].chunk.structuralCodesVersion}</p>
-        {documentRecords.map(renderRecord)}
-        <div className="scv-end-note">Fine del documento.</div>
-      </div>}
-    </article>
+    <div className="scv-text-pane-shell">
+      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON">
+        {documentLoading || documentRecords.length === 0 ? <LoadingPanel label="Caricamento del documento completo…" /> : <div className="scv-text-flow"><p className="scv-chunk-note">{documentNote} · structural-codes {documentRecords[0].chunk.structuralCodesVersion}</p>
+          {renderRecords.map(renderRecord)}
+          <div className="scv-end-note">Fine del documento.</div>
+        </div>}
+      </article>
+      <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
+    </div>
 
     {auxiliaryVisible && auxiliaryAvailable && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
 
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
+    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
   </div>;
 }
 

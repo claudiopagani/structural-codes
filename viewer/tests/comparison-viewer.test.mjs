@@ -35,10 +35,12 @@ test("il build web non serve il PDF ufficiale", async () => {
 test("la selezione dall'indice usa il pannello testo e preserva il deep-link", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /function selectUnit\(unit: UnitSummary\)/);
+  assert.match(source, /function scrollTextUnit\(root: HTMLElement \| null, unitId: string\)/);
+  assert.match(source, /root\.scrollTo\(\{ top:/);
   assert.match(source, /textPaneRef\.current\?\.querySelector/);
   assert.match(source, /data-index-unit=/);
   assert.match(source, /updateDeepLink\(mode, unit\.id, defaultMode\)/);
-  assert.match(source, /scrollRequestRef\.current = unit\.id/);
+  assert.match(source, /scrollRequestRef\.current = targetId/);
   assert.doesNotMatch(source, /window\.document\.querySelector/);
 });
 
@@ -57,24 +59,33 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.match(source, /className="scv-mode-switch" role="group"/);
   assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{changeMode\} \/>/);
   assert.match(source, /Mostra PDF ufficiale/);
+  assert.match(source, /const \[darkMode, setDarkMode\] = useState<boolean \| null>\(null\)/);
+  assert.match(source, /localStorage\.getItem\("scv-theme"\)/);
+  assert.match(source, /className=\{`scv-root \$\{darkMode \? "scv-dark"/);
+  assert.match(source, /Modalità scura/);
   assert.match(source, /const auxiliaryAvailable = hasAuxiliary && mode !== "combined"/);
   assert.match(source, /disabled={!auxiliaryAvailable}/);
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
 
-test("combined carica solo relazioni esplicite della Circolare", async () => {
+test("combined usa le NTC come base e aggiunge i soli contenuti Circolare mancanti", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /loadRelations\(manifest, dataBaseUrl\)/);
+  assert.match(source, /loadDocumentIndex\(manifest, "circ2019", dataBaseUrl\)/);
+  assert.match(source, /const \[circRecords, setCircRecords\]/);
+  assert.match(source, /function baseNumbering\(value: string\)/);
+  assert.match(source, /!primaryNumbers\.has\(baseNumbering\(summary\.numbering\.official\)\)/);
   assert.match(source, /sourceUnitId === resultId/);
   assert.match(source, /setRelatedByTarget\(new Map\(\)\)/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
   assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
-  assert.match(source, /if \(mode === "combined" && !hasUnitContent\(unit\) && relatedRecords\.length === 0\) return null/);
+  assert.match(source, /const keepNtcChapterMarker = mode === "combined"[\s\S]*unit\.document === "ntc2018"[\s\S]*isChapter/);
+  assert.match(source, /className="scv-structural-anchor"/);
   assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
   assert.doesNotMatch(source, /Collegamento editoriale da revisionare|Provenienza: Circolare 7\/2019|same-numbering/);
 });
 
-test("l'indice segue lo scroll e il testo resta un flusso continuo", async () => {
+test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () => {
   const [source, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
@@ -83,10 +94,18 @@ test("l'indice segue lo scroll e il testo resta un flusso continuo", async () =>
   assert.match(source, /Promise\.all\(documentChunkPaths\.map/);
   assert.match(source, /root\.addEventListener\("scroll"/);
   assert.match(source, /setActiveUnitId\(nextId\)/);
-  assert.match(source, /documentRecords\.map\(renderRecord\)/);
-  assert.match(source, /const activeLevelId = \[activeChapterId, activeParagraphId, activeSubparagraphId\]/);
+  assert.match(source, /renderRecords\.map\(renderRecord\)/);
+  assert.match(source, /const activeLevelId = activeLevelIds\[levelIndex\]/);
+  assert.match(source, /function DocumentScrollbar\(/);
+  assert.match(source, /const scrollbarMarkers = useMemo/);
+  assert.match(source, /className=\{`scv-scroll-marker/);
+  assert.match(source, /<DocumentScrollbar rootRef=\{textPaneRef\}/);
+  assert.match(source, /className="scv-text-pane-shell"/);
+  assert.match(source, /const displayEntries = useMemo/);
   assert.match(styles, /\.scv-index-grid \{[^}]*grid-template-columns: minmax\(0, 1fr\);[^}]*grid-template-rows: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(styles, /\.scv-index-list \{[^}]*overflow: auto/);
+  assert.match(styles, /\.scv-scroll-rail/);
+  assert.match(styles, /\.scv-scroll-marker\.paragraph/);
   assert.match(styles, /\.scv-chapter-heading/);
   assert.match(styles, /\.scv-block p \{[^}]*text-align: justify/);
   assert.match(source, /Fine del documento/);
@@ -121,6 +140,13 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
   assert.match(component, /className="formula-scroll"/);
+  assert.match(component, /function CopyAssetButton\(/);
+  assert.match(component, /new ClipboardItem/);
+  assert.match(component, /formulaImageBlob/);
+  assert.match(component, /copyFormulaMarkupAsImage/);
+  assert.match(component, /clipboard\.write/);
+  assert.match(component, /className="formula-asset scv-copyable-asset"/);
+  assert.match(component, /className="figure-asset scv-copyable-asset"/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /tableAssetClass/);
@@ -137,12 +163,14 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /--scv-index-width: clamp\(360px, 37vw, 480px\)/);
   assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\)/);
   assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) minmax\(320px, \.8fr\)/);
-  assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 36px 55vh/);
+  assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
   assert.match(styles, /\.scv-root \.scv-settings-button, \.scv-root \.scv-mode-button \{[^}]*font-weight: 900[^}]*background: var\(--scv-primary-soft\)/);
   assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: "Segoe UI"[^}]*font-size: 8px[^}]*font-weight: 700/);
   assert.match(styles, /\.scv-root \.scv-mode-button span \{[^}]*transform: scaleY\(1\.35\)/);
   assert.match(styles, /\.scv-root \.scv-settings-button \{[^}]*font-size: 16px/);
+  assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset/);
+  assert.match(styles, /\.scv-root\.scv-dark/);
   assert.match(styles, /\.scv-root \.inline-math \{[^}]*font-size: 1\.04em/);
   assert.match(styles, /\.scv-root \.inline-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /\.scv-root \.figure-asset img \{[^}]*width: min\(100%, 760px\)[^}]*height: auto[^}]*max-height: min\(600px, 70vh\)/);
