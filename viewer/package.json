@@ -31,6 +31,9 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {"access": "public"},
+  "allowScripts": {
+    "unrs-resolver@1.11.1": true
+  },
   "scripts": {
     "sync:corpus": "node scripts/sync-corpus.mjs",
     "build:library": "node scripts/build-library.mjs",
