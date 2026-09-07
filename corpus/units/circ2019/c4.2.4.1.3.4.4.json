@@ -41,7 +41,7 @@
         "normalizationVersion": "circ42-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
+            "kind": "em",
             "value": "C4.2.4.1.3.4.4. Pannelli con irrigiditori longitudinali"
           }
         ]
@@ -72,6 +72,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del sottotitolo ufficiale."
           }
         ],
         "rawSha256": "beb8889ef655f320c42db72f62acd243ce8efbff6c5dde9c6821f6d3c901988b",
@@ -427,7 +432,7 @@
           "x": 120,
           "y": 620,
           "width": 360,
-          "height": 97.0
+          "height": 97
         },
         "extraction": {
           "method": "manual-transcription",

@@ -447,7 +447,8 @@
         ],
         "rawSha256": "2a64af9196932f477516d07a76d0851685d20fab2e83a6a38061b5ba4407a148",
         "normalizedSha256": "2a64af9196932f477516d07a76d0851685d20fab2e83a6a38061b5ba4407a148"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2#block-li2",
@@ -494,7 +495,8 @@
         ],
         "rawSha256": "f9978196f22da71e3a7ddd8831794c690acb1809b036cfc1514fe1078435cfd2",
         "normalizedSha256": "f9978196f22da71e3a7ddd8831794c690acb1809b036cfc1514fe1078435cfd2"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2#block-li3",
@@ -541,7 +543,8 @@
         ],
         "rawSha256": "61f93ee74dc885b2276a507f945cdd1ea49cc8bf979fd00de7cae59a3af53623",
         "normalizedSha256": "61f93ee74dc885b2276a507f945cdd1ea49cc8bf979fd00de7cae59a3af53623"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2#block-p8",
@@ -554,7 +557,15 @@
         "inline": [
           {
             "kind": "text",
-            "value": "E’ pertanto compito del progettista individuare, definire e specificare i contenuti delle suddette informazioni e riportarne i riferimenti nel documento specifico che la norma UNI EN 1090-2 definisce “Specifica di esecuzione”."
+            "value": "E’ pertanto compito del progettista individuare, definire e specificare i contenuti delle suddette informazioni e riportarne i riferimenti nel documento specifico che la norma UNI EN 1090-2 definisce “"
+          },
+          {
+            "kind": "em",
+            "value": "Specifica di esecuzione"
+          },
+          {
+            "kind": "text",
+            "value": "”."
           }
         ]
       },
@@ -584,6 +595,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo della denominazione ufficiale del documento UNI EN 1090-2."
           }
         ],
         "rawSha256": "afea15d784a99c633e9056fdfbbc76785bf7e32304a4dd210b27b46d7ea71685",

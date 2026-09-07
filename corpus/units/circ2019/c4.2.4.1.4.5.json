@@ -39,7 +39,7 @@
         "normalizationVersion": "circ42-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
+            "kind": "em",
             "value": "C4.2.4.1.4.5. Metodi di verifica"
           }
         ]
@@ -70,6 +70,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del sottotitolo ufficiale."
           }
         ],
         "rawSha256": "1ddfd78673f27d7822830f52861389e882b4396849da032394d582022363cd7d",
@@ -87,7 +92,23 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle verifiche a fatica le tensioni da considerare devono essere coerenti con quelle alle quali è riferita la curva S-N del dettaglio. Di solito, le curve S-N dei dettagli costruttivi riportate nelle normative sono riferite alle tensioni nominali e pertanto ad esse si deve generalmente far riferimento. Per dettagli costruttivi particolarmente complessi o innovativi, per i quali si proceda ad uno studio ad hoc, potrebbe essere necessario riferirsi alle tensioni di picco, misurate o determinate con specifici protocolli sperimentali. In questo caso, le tensioni devono essere calcolate per via teorica o numerica con le stesse modalità adottate sperimentalmente."
+            "value": "Nelle verifiche a fatica le tensioni da considerare devono essere coerenti con quelle alle quali è riferita la curva S-N del dettaglio. Di solito, le curve S-N dei dettagli costruttivi riportate nelle normative sono riferite alle "
+          },
+          {
+            "kind": "em",
+            "value": "tensioni nominali"
+          },
+          {
+            "kind": "text",
+            "value": " e pertanto ad esse si deve generalmente far riferimento. Per dettagli costruttivi particolarmente complessi o innovativi, per i quali si proceda ad uno studio ad hoc, potrebbe essere necessario riferirsi alle "
+          },
+          {
+            "kind": "em",
+            "value": "tensioni di picco"
+          },
+          {
+            "kind": "text",
+            "value": ", misurate o determinate con specifici protocolli sperimentali. In questo caso, le tensioni devono essere calcolate per via teorica o numerica con le stesse modalità adottate sperimentalmente."
           }
         ]
       },
@@ -117,6 +138,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo delle categorie di tensione."
           }
         ],
         "rawSha256": "d136e914d0d4c92a8d404cb86bc88972530992ac1d976896bf1df5af97381020",
@@ -181,7 +207,15 @@
         "inline": [
           {
             "kind": "text",
-            "value": "Per i dettagli costruttivi dei quali non sia nota la curva di resistenza a fatica le escursioni tensionali potranno riferirsi alle tensioni geometriche o di picco, cioè alle tensioni principali nel metallo base in prossimità della potenziale lesione, secondo le modalità e le limitazioni specifiche del metodo, nell’ambito della meccanica della frattura."
+            "value": "Per i dettagli costruttivi dei quali non sia nota la curva di resistenza a fatica le escursioni tensionali potranno riferirsi alle tensioni "
+          },
+          {
+            "kind": "em",
+            "value": "geometriche o di picco"
+          },
+          {
+            "kind": "text",
+            "value": ", cioè alle tensioni principali nel metallo base in prossimità della potenziale lesione, secondo le modalità e le limitazioni specifiche del metodo, nell’ambito della meccanica della frattura."
           }
         ]
       },
@@ -211,6 +245,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo delle categorie di tensione."
           }
         ],
         "rawSha256": "f972ecccfec53922ba0c79ff00f9cafcb06fdccb11905ae05df4ef483a605f57",

@@ -41,7 +41,7 @@
         "normalizationVersion": "circ42-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "text",
+            "kind": "em",
             "value": "C4.2.4.1.3.3.1. Metodo A"
           }
         ]
@@ -72,6 +72,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ42-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del sottotitolo ufficiale."
           }
         ],
         "rawSha256": "801fbfe4942a4f4f123b38b4cd86823cf2dff07a9e180af9e8dfd4d30d47b85a",
@@ -238,7 +243,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.3.1#block-def-chimin",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "χmin è il minimo fattore χ relativo all’inflessione intorno agli assi principali di inerzia;",
@@ -286,11 +291,12 @@
         ],
         "rawSha256": "592dbbb522740b0900727f828c92d24663b9d73d00fbc2680cc30d79dd0c8a3a",
         "normalizedSha256": "592dbbb522740b0900727f828c92d24663b9d73d00fbc2680cc30d79dd0c8a3a"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.3.1#block-def-w",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Wy e Wz sono i moduli resistenti elastici per le sezioni di classe 3 e i moduli resistenti plastici per le sezioni di classe 1 e 2,",
@@ -347,11 +353,12 @@
         ],
         "rawSha256": "47140bab94f45c924aa0da4150a87514f2aefc9fc89a01a815c73139542a644f",
         "normalizedSha256": "47140bab94f45c924aa0da4150a87514f2aefc9fc89a01a815c73139542a644f"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.3.1#block-def-ncr",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Ncr,y e Ncr,z sono i carichi critici euleriani relativi all’inflessione intorno agli assi principali di inerzia;",
@@ -408,11 +415,12 @@
         ],
         "rawSha256": "a1217caab33a9bf5c5f71a1f92f71f4d73ab53c997678458e7fc20eb6e7e7d7d",
         "normalizedSha256": "a1217caab33a9bf5c5f71a1f92f71f4d73ab53c997678458e7fc20eb6e7e7d7d"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.3.1#block-def-meq",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Myeq,Ed e Mzeq,Ed sono i valori equivalenti dei momenti flettenti da considerare nella verifica.",
@@ -469,7 +477,8 @@
         ],
         "rawSha256": "5c8e904f16d7863967bb4ec920acf67e2b942c772b13347765dfddb2c87acb48",
         "normalizedSha256": "5c8e904f16d7863967bb4ec920acf67e2b942c772b13347765dfddb2c87acb48"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.3.1#block-p2",
@@ -791,7 +800,7 @@
           "x": 205,
           "y": 145,
           "width": 205,
-          "height": 34.0
+          "height": 34
         },
         "extraction": {
           "method": "manual-transcription",
