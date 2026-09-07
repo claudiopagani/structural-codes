@@ -263,7 +263,7 @@ export function hasLeadingEmphasisLabel(block: CorpusBlock) {
   const inline = block.text?.inline;
   return (
     (block.kind === "paragraph" || (block.kind === "list-item" && block.listMarker === "none")) &&
-    inline?.[0]?.kind === "em" &&
+    (inline?.[0]?.kind === "em" || inline?.[0]?.kind === "underline") &&
     /^\s*:/u.test(inline[1]?.kind === "text" ? inline[1].value : "")
   );
 }
@@ -329,6 +329,10 @@ function renderInlineSegments(inline: InlineSegments) {
       nodes.push(<em key={`em-${index}`}>{segment.value}</em>);
       return;
     }
+    if (segment.kind === "underline") {
+      nodes.push(<u key={`underline-${index}`}>{segment.value}</u>);
+      return;
+    }
     if (segment.kind === "strong") {
       nodes.push(<strong key={`strong-${index}`}>{segment.value}</strong>);
       return;
@@ -352,7 +356,7 @@ function renderLeadingLabelContent(block: CorpusBlock) {
   if (hasLeadingEmphasisLabel(block)) {
     const label = inline[0];
     const description = inline.slice(1).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s*:\s*/u, "") } : segment);
-    return <><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description)}</span></>;
+    return <><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.kind === "underline" ? <><u>{label.value}</u></> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description)}</span></>;
   }
   if (hasLeadingMath(block)) {
     const [label, ...description] = inline;

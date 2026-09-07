@@ -152,6 +152,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /tableAssetClass/);
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /groupAlignedLabelBlocks/);
+  assert.match(component, /nodes\.push\(<u key=\{`underline-\$\{index\}`\}>\{segment\.value\}<\/u>\)/);
   assert.match(component, /loading="lazy"/);
   assert.doesNotMatch(component, /variant: "scv" \| "legacy"|UnitBlocks|normative-copy/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);

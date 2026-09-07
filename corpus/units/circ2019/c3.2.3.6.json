@@ -392,7 +392,8 @@
         ],
         "rawSha256": "2f2e80761449428c5b2611e94847bb8a0d3bde40aa01de4e8be270a07a14c725",
         "normalizedSha256": "27df5daff8378458ebd8100727eade23473d1909664cdf6a8154e95f6a0ecaa6"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.3.6#block-editorial-006",
@@ -453,7 +454,8 @@
         ],
         "rawSha256": "ceba4d40b0c543914a25d1c6b8189eb4a72f3fc60ad02a3aac0bf3830223b7f3",
         "normalizedSha256": "f94bfbba200aa082da1cc0f8b59c7666d2d4a05d8465978744d9b096c0dfc454"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.3.6#block-editorial-007",
@@ -462,7 +464,22 @@
       "text": {
         "raw": "3.\u0002 le coppie di registrazioni, nel numero indicato dalla norma, devono essere selezionate e scalate in modo tale che lo spettro",
         "normalized": "3. Le coppie di registrazioni, nel numero indicato dalla norma, devono essere selezionate e scalate in modo tale che lo spettro medio SRSS approssimi, secondo i criteri di coerenza spettrale di norma, lo “spettro di riferimento”, dato dal prodotto dello spettro elastico di progetto per un opportuno coefficiente α.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "3. Le coppie di registrazioni, nel numero indicato dalla norma, devono essere selezionate e scalate in modo tale che lo spettro medio SRSS approssimi, secondo i criteri di coerenza spettrale di norma, lo “spettro di riferimento”, dato dal prodotto dello spettro elastico di progetto per un opportuno coefficiente "
+          },
+          {
+            "kind": "math",
+            "value": "α",
+            "latex": "\\alpha"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -514,7 +531,8 @@
         ],
         "rawSha256": "3db906fa3f207cdd78ee2dec1b2db3d7d713f6229b5ed28df0ed97ccdca73e22",
         "normalizedSha256": "54afb99ab81111ad403a345e65bb87501c08ea9af93c43431242f462daf65874"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.3.6#block-editorial-008",
@@ -748,7 +766,31 @@
       "text": {
         "raw": "dove t1 e t2 rappresentano gli estremi dell’intervallo temporale considerato, che può essere assunto corrispondente alla fase",
         "normalized": "dove t1 e t2 rappresentano gli estremi dell’intervallo temporale considerato, che può essere assunto corrispondente alla fase intensa del sisma.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "t1",
+            "latex": "t_1"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "math",
+            "value": "t2",
+            "latex": "t_2"
+          },
+          {
+            "kind": "text",
+            "value": " rappresentano gli estremi dell’intervallo temporale considerato, che può essere assunto corrispondente alla fase intensa del sisma."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",

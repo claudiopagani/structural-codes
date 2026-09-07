@@ -284,7 +284,8 @@
         ],
         "rawSha256": "2337ba5b9b0943bbcd09c8797b470a9351172b79b5f5c976bf72f81c1bda885b",
         "normalizedSha256": "d7eda9c6ccb53b5deca54d5dd178ac98dfface4d0e1ceea792d8d814b8a7e33f"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8#block-editorial-004",
@@ -378,7 +379,8 @@
         ],
         "rawSha256": "0dc2e5e1d16ab650c45684b2dc4df66a457e5a8c138773cdf5fdf89b264394b3",
         "normalizedSha256": "d69154b9de550a9689e036f74297648bec583a44a5a4b86474d596fa0ad538d1"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8#block-editorial-005",
@@ -463,7 +465,8 @@
         ],
         "rawSha256": "d94ed9d4eb3a7265a2f90bb03a86ad99939ab895e74c02305db233b429b037d6",
         "normalizedSha256": "7612ffaa35781536792ea79a61901f5e062e6a18432971b23ea5fe614d8fb932"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.3.8#block-editorial-006",
@@ -610,7 +613,18 @@
       "text": {
         "raw": "A è l’area di incidenza della pressione del vento.",
         "normalized": "A è l’area di incidenza della pressione del vento.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "A",
+            "latex": "A"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area di incidenza della pressione del vento."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",

@@ -503,6 +503,23 @@
                     ],
                     "properties": {
                         "kind": {
+                            "const": "underline"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
+                        "value"
+                    ],
+                    "properties": {
+                        "kind": {
                             "const": "em"
                         },
                         "value": {

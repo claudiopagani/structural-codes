@@ -9,6 +9,9 @@ import { sourceRegistryV2Schema } from "../src/schema/source-registry-v2.schema.
 const schemaFile = fileURLToPath(
     new URL("../schemas/corpus-v2.schema.json", import.meta.url),
 );
+const assetSchemaFile = fileURLToPath(
+    new URL("../schemas/corpus-assets-v2.schema.json", import.meta.url),
+);
 const validFixtureFile = fileURLToPath(
     new URL(
         "../fixtures/corpus-v2/ntc2018-3.3.7.metadata.valid.json",
@@ -32,6 +35,16 @@ async function compileValidator() {
     return ajv.compile(schema);
 }
 
+async function compileAssetValidator() {
+    const { Ajv2020 } = await import("ajv/dist/2020.js");
+    const addFormatsModule = await import("ajv-formats");
+    const addFormats = addFormatsModule.default as unknown as FormatsPlugin;
+    const ajv = new Ajv2020({ allErrors: true, strict: true });
+    addFormats(ajv);
+    const schema = JSON.parse(await readFile(assetSchemaFile, "utf8")) as object;
+    return ajv.compile(schema);
+}
+
 async function fixture(file: string): Promise<unknown> {
     return JSON.parse(await readFile(file, "utf8")) as unknown;
 }
@@ -48,6 +61,28 @@ test("la fixture NTC reale supera schema e vincoli semantici", async () => {
 test("lo schema rifiuta un blocco ufficiale senza evidence", async () => {
     const validate = await compileValidator();
     assert.equal(validate(await fixture(invalidFixtureFile)), false);
+});
+
+test("gli schemi canonici ammettono il segmento inline sottolineato", async () => {
+    const [validateUnit, validateAssets, unit, assets] = await Promise.all([
+        compileValidator(),
+        compileAssetValidator(),
+        fixture(validFixtureFile),
+        fixture(fileURLToPath(new URL("../corpus/assets/circ2019/core-tables.json", import.meta.url))),
+    ]);
+    const styledUnit = structuredClone(unit) as {
+        blocks: Array<{ text?: { inline?: Array<{ kind: string; value: string }> } }>;
+    };
+    styledUnit.blocks[0]!.text!.inline = [{ kind: "underline", value: "NTC" }];
+    assert.equal(validateUnit(styledUnit), true, JSON.stringify(validateUnit.errors));
+
+    const styledAssets = structuredClone(assets) as {
+        tables: Array<{ officialNumber: string; caption: string; captionInline?: Array<{ kind: string; value: string }> }>;
+    };
+    const table = styledAssets.tables.find(({ officialNumber }) => officialNumber === "C3.4.I");
+    assert.ok(table);
+    table.captionInline = [{ kind: "underline", value: table.caption }];
+    assert.equal(validateAssets(styledAssets), true, JSON.stringify(validateAssets.errors));
 });
 
 test("il validatore semantico rifiuta hash e sourceId non coerenti", async () => {

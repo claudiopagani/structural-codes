@@ -3,6 +3,7 @@ export type ViewerMode = "ntc" | "circ" | "combined";
 export type InlineSegment =
   | { kind: "text"; value: string }
   | { kind: "em"; value: string }
+  | { kind: "underline"; value: string }
   | { kind: "strong"; value: string }
   | { kind: "math"; value: string; latex: string };
 
