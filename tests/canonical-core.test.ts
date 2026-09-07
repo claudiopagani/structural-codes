@@ -40,6 +40,9 @@ const manifestFile = fileURLToPath(
 const ntc41AssetFile = fileURLToPath(
     new URL("../corpus/assets/ntc2018/4.1.json", import.meta.url),
 );
+const circ2019TablesFile = fileURLToPath(
+    new URL("../corpus/assets/circ2019/core-tables.json", import.meta.url),
+);
 
 async function loadUnits(): Promise<CanonicalUnit[]> {
     const documents = await readdir(corpusDirectory, { withFileTypes: true });
@@ -86,7 +89,7 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        10951,
+        10950,
     );
 });
 
@@ -295,4 +298,87 @@ test("NTC 4.1 conserva il testo ricomposto e risolve gli asset", async () => {
             .digest("hex");
         assert.equal(digest, figure.sha256, figure.id);
     }
+});
+
+test("Circolare C2 conserva le formattazioni editoriali richieste", async () => {
+    type Segment = { kind: string; value: string };
+    type StyledBlock = {
+        kind: string;
+        text?: { normalized: string; inline?: Segment[] };
+    };
+    type StyledUnit = { blocks: StyledBlock[] };
+    type TableCell = { align?: string };
+    type TableAsset = {
+        officialNumber: string;
+        headers: TableCell[][];
+        rows: TableCell[][];
+    };
+
+    const readCircUnit = async (officialNumber: string) => {
+        const file = new URL(
+            `../corpus/units/circ2019/${officialNumber}.json`,
+            import.meta.url,
+        );
+        return JSON.parse(await readFile(file, "utf8")) as StyledUnit;
+    };
+    const units = await Promise.all(
+        ["c2.1", "c2.2.5", "c2.4.2", "c2.6.1"].map(readCircUnit),
+    );
+    const [c21, c225, c242, c261] = units;
+    assert.ok(c21);
+    assert.ok(c225);
+    assert.ok(c242);
+    assert.ok(c261);
+
+    const robustezza = c21.blocks.find(
+        ({ text }) => text?.normalized === "robustezza.",
+    );
+    assert.ok(robustezza);
+    assert.equal(robustezza.kind, "list-item");
+    assert.equal((robustezza as StyledUnit["blocks"][number] & { listMarker?: string }).listMarker, "dash");
+
+    const emValues = (unit: StyledUnit) =>
+        unit.blocks
+            .flatMap(({ text }) => text?.inline ?? [])
+            .filter(({ kind }) => kind === "em")
+            .map(({ value }) => value);
+    assert.deepEqual(emValues(c225), [
+        "capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti",
+    ]);
+    assert.deepEqual(emValues(c242), [
+        "Valutazione e riduzione del rischio sismico del patrimonio culturale con riferimento alle norme tecniche per le costruzioni di cui al decreto ministeriale 14 gennaio 2008",
+    ]);
+
+    const strongCounts = new Map<string, number>();
+    for (const segment of c261.blocks.flatMap(
+        ({ text }) => text?.inline ?? [],
+    )) {
+        if (segment.kind === "strong") {
+            strongCounts.set(
+                segment.value,
+                (strongCounts.get(segment.value) ?? 0) + 1,
+            );
+        }
+    }
+    assert.deepEqual(Object.fromEntries(strongCounts), {
+        EQU: 2,
+        STR: 3,
+        GEO: 4,
+        UPL: 1,
+        HYD: 1,
+    });
+
+    const tables = JSON.parse(
+        await readFile(circ2019TablesFile, "utf8"),
+    ) as { tables: TableAsset[] };
+    const table = tables.tables.find(
+        ({ officialNumber }) => officialNumber === "C2.4.I",
+    );
+    assert.ok(table);
+    assert.equal(
+        [...table.headers.flat(), ...table.rows.flat()].every(
+            ({ align }) => align === "center",
+        ),
+        true,
+    );
 });
