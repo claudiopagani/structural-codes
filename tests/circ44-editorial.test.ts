@@ -92,3 +92,32 @@ test("C4.4.15 conserva raw corrotto, ricostruzione visiva e issue bloccante", as
         ),
     );
 });
+
+test("C4.4 conserva marker coerenti per elenchi descrittivi e alfabetici", async () => {
+    for (const name of ["c4.4.5", "c4.4.7", "c4.4.8.1.9", "c4.4.12", "c4.4.14", "c4.4.15", "c4.4.16.1", "c4.4.16.2"]) {
+        const unit = await json(`corpus/units/circ2019/${name}.json`);
+        assert.ok(unit.blocks.filter((block: { kind: string }) => block.kind === "list-item").every((block: { listMarker?: string }) => block.listMarker === "dash"), name);
+    }
+    const plan = await json("corpus/units/circ2019/c4.4.16.json");
+    assert.ok(plan.blocks.filter((block: { kind: string }) => block.kind === "list-item").every((block: { listMarker?: string }) => block.listMarker === "none"));
+});
+
+test("C4.4.7 rende in LaTeX le definizioni u con pedice", async () => {
+    const serviceability = await json("corpus/units/circ2019/c4.4.7.json");
+    const expected = new Map([["u0", "u_0"], ["u1", "u_1"], ["u2", "u_2"]]);
+    for (const block of serviceability.blocks.filter((block: { kind: string }) => block.kind === "list-item")) {
+        const first = block.text?.inline?.[0];
+        if (!first || !expected.has(first.value)) continue;
+        assert.equal(first.kind, "math");
+        assert.equal(first.latex, expected.get(first.value));
+    }
+});
+
+test("La didascalia C4.4.1 distingue etichetta e descrizione", async () => {
+    const manifest = await json("corpus/assets/circ2019/C4.4-step1.json");
+    const figure = manifest.figures[0];
+    assert.ok(figure.captionInline);
+    assert.equal(figure.captionInline.map(({ value }: { value: string }) => value).join(""), figure.caption);
+    assert.equal(figure.captionInline[0]?.kind, "strong");
+    assert.ok(figure.captionInline.slice(1).every((segment: { kind: string }) => segment.kind === "em"));
+});

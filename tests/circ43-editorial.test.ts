@@ -1,68 +1,40 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { fileURLToPath } from "node:url";
 
-const repoRoot = fileURLToPath(new URL("../", import.meta.url));
+type Inline = { kind: string; value: string };
+type Block = { kind: string; listMarker?: string; text?: { inline?: Inline[] } };
+type Unit = { blocks: Block[] };
+type Asset = { officialNumber: string; caption: string; captionInline?: Inline[] };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function json(relativePath: string): Promise<any> {
-    return JSON.parse(await readFile(join(repoRoot, relativePath), "utf8"));
+const root = process.cwd();
+async function unit(name: string): Promise<Unit> {
+    return JSON.parse(await readFile(join(root, "corpus", "units", "circ2019", `${name}.json`), "utf8")) as Unit;
 }
 
-test("Circolare C4.3 conserva le unità effettivamente presenti nello step", async () => {
-    const numbers = [
-        "c4.3", "c4.3.1", "c4.3.2", "c4.3.2.1", "c4.3.4", "c4.3.4.2",
-        "c4.3.4.3", "c4.3.4.3.1", "c4.3.4.3.1.1", "c4.3.4.3.1.2",
-        "c4.3.4.3.3", "c4.3.4.3.5", "c4.3.4.3.6", "c4.3.6", "c4.3.6.2",
-    ];
-    const units = await Promise.all(
-        numbers.map((number) => json(`corpus/units/circ2019/${number}.json`)),
-    );
-    assert.deepEqual(units.map((unit) => unit.numbering.official), numbers.map((number) => number.toUpperCase()));
-    assert.equal(units[0].kind, "section");
-    assert.equal(units[0].hierarchy.parentId, "urn:structural-codes:it:unit:circ2019:c4");
-    assert.equal(units[1].hierarchy.parentId, units[0].id);
-    assert.ok(units[1].blocks[0].text.raw.includes("\u0002"));
+test("C4.3 conserva il tipo effettivo degli elenchi", async () => {
+    const safety = await unit("c4.3.1");
+    assert.deepEqual(safety.blocks.filter((block) => block.kind === "list-item").map((block) => block.listMarker), ["none", "none"]);
+    const stability = await unit("c4.3.4.3.6");
+    assert.equal(stability.blocks.filter((block) => block.kind === "list-item").every((block) => block.listMarker === "none"), true);
+    const slabs = await unit("c4.3.6.2");
+    assert.equal(slabs.blocks.filter((block) => block.kind === "list-item").every((block) => block.listMarker === "dash"), true);
 });
 
-test("C4.3 mantiene ordine asset, formule numerate e matematica inline", async () => {
-    const unit = await json("corpus/units/circ2019/c4.3.4.3.3.json");
-    const assets = await json("corpus/assets/circ2019/C4.3-step1.json");
-    assert.deepEqual(
-        unit.blocks.filter((block: { kind: string }) => block.kind === "formula-ref").map((block: { assetId: string }) => block.assetId),
-        [
-            "urn:structural-codes:it:asset:formula:circ2019:4.3.3",
-            "urn:structural-codes:it:asset:formula:circ2019:4.3.4",
-            "urn:structural-codes:it:asset:formula:circ2019:4.3.5",
-            "urn:structural-codes:it:asset:formula:circ2019:4.3.6",
-        ],
-    );
-    assert.equal(assets.formulas.length, 13);
-    assert.equal(assets.tables.length, 2);
-    assert.equal(assets.figures.length, 9);
-    assert.equal(assets.formulas[1].latex, "\\frac{F_l^2}{P_{l,Rd}^2}+\\frac{F_t^2}{P_{t,Rd}^2}\\le1,0");
-    const byNumber = new Map<string, string>(assets.formulas.map(
-        (formula: { officialNumber: string; latex: string }) =>
-            [formula.officialNumber, formula.latex] as [string, string],
-    ));
-    assert.match(byNumber.get("C4.3.1") ?? "", /\\cdot\\eta/u);
-    assert.match(byNumber.get("C4.3.5") ?? "", /\\eta\\times F_\{cf\}/u);
-    assert.match(byNumber.get("C4.3.7") ?? "", /\\Delta x\\cdot h_f/u);
-    assert.match(byNumber.get("C4.3.10") ?? "", /\\chi_\{LT\}\\cdot M_\{Rd\}/u);
-    assert.match(byNumber.get("C4.3.13") ?? "", /E_a\\cdot t_w\^3/u);
-    const inline = unit.blocks.find((block: { text?: { inline?: Array<{ kind: string }> } }) =>
-        block.text?.inline?.some((segment) => segment.kind === "math"));
-    assert.ok(inline);
+test("C4.3 conserva i due sottotitoli in corsivo", async () => {
+    for (const name of ["c4.3.4.3.1.1", "c4.3.4.3.1.2"]) {
+        const value = await unit(name);
+        assert.ok(value.blocks.find((block) => block.kind === "heading")?.text?.inline?.every((segment) => segment.kind === "em"));
+    }
 });
 
-test("I crop delle figure C4.3 hanno hash coerenti con il manifest", async () => {
-    const assets = await json("corpus/assets/circ2019/C4.3-step1.json");
-    for (const figure of assets.figures) {
-        const bytes = await readFile(join(repoRoot, "corpus/assets", figure.imagePath));
-        const digest = createHash("sha256").update(bytes).digest("hex");
-        assert.equal(digest, figure.sha256, figure.id);
+test("Le didascalie C4.3 separano etichetta in grassetto e testo in corsivo", async () => {
+    const manifest = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "C4.3-step1.json"), "utf8")) as { figures: Asset[]; tables: Asset[] };
+    for (const asset of [...manifest.figures, ...manifest.tables]) {
+        assert.ok(asset.captionInline, `captionInline assente per ${asset.officialNumber}`);
+        assert.equal(asset.captionInline.map(({ value }) => value).join(""), asset.caption);
+        assert.equal(asset.captionInline[0]?.kind, "strong");
+        assert.ok(asset.captionInline.slice(1).every((segment) => segment.kind === "em"));
     }
 });

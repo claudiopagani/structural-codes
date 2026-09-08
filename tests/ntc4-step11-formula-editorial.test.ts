@@ -81,7 +81,24 @@ test("NTC pagine 132–141 colloca ogni formula una volta e conserva gli inline"
     const deformation = await json("corpus/units/ntc2018/4.3.6.3.2.json");
     assert.deepEqual(deformation.blocks[1].text.inline.filter((segment: { kind: string }) => segment.kind === "math").map((segment: { latex: string }) => segment.latex), ["0{,}5\\,\\mathrm{mm}", "1{,}2", "30\\%", "\\tau_{u,Rd}"]);
     const bending = await json("corpus/units/ntc2018/4.4.8.1.6.json");
-    assert.deepEqual(bending.blocks.filter((block: { kind: string }) => block.kind === "list-item").flatMap((block: { text: { inline: Array<{ kind: string; latex: string }> } }) => block.text.inline.filter((segment) => segment.kind === "math").map((segment) => segment.latex)), ["k_m=0{,}7", "k_m=1{,}0"]);
+  assert.deepEqual(
+    bending.blocks
+      .filter((block: { kind: string }) => block.kind === "list-item")
+      .flatMap((block: { text: { inline: Array<{ kind: string; latex: string }> } }) =>
+        block.text.inline.filter((segment) => segment.kind === "math").map((segment) => segment.latex),
+      ),
+    [
+      "\\sigma_{m,y,d}",
+      "\\sigma_{m,z,d}",
+      "xz",
+      "xy",
+      "f_{m,y,d}",
+      "f_{m,z,d}",
+      "k_h",
+      "k_m=0{,}7",
+      "k_m=1{,}0",
+    ],
+  );
 });
 
 test("NTC pagine 132–141 conserva le cinque tabelle e la matematica nelle intestazioni", async () => {

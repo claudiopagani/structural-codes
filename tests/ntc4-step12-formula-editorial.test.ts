@@ -78,7 +78,24 @@ test("NTC pagine 142–151 colloca ogni formula una volta e conserva gli inline"
     }
 
     const torsion = await json("corpus/units/ntc2018/4.4.8.1.10.json");
-    assert.deepEqual(torsion.blocks.filter((block: { kind: string }) => block.kind === "list-item").flatMap((block: { text: { inline: Array<{ kind: string; latex: string }> } }) => block.text.inline.filter((segment) => segment.kind === "math").map((segment) => segment.latex)), ["k_{\\mathrm{sh}}=1{,}2", "k_{\\mathrm{sh}}=1+0{,}15h/b\\le2", "b", "h", "b\\le h", "k_{\\mathrm{sh}}=1"]);
+  assert.deepEqual(
+    torsion.blocks
+      .filter((block: { kind: string }) => block.kind === "list-item")
+      .flatMap((block: { text: { inline: Array<{ kind: string; latex: string }> } }) =>
+        block.text.inline.filter((segment) => segment.kind === "math").map((segment) => segment.latex),
+      ),
+    [
+      "\\tau_{\\mathrm{tor},d}",
+      "k_{\\mathrm{sh}}",
+      "f_{v,d}",
+      "k_{\\mathrm{sh}}=1{,}2",
+      "k_{\\mathrm{sh}}=1+0{,}15h/b\\le2",
+      "b",
+      "h",
+      "b\\le h",
+      "k_{\\mathrm{sh}}=1",
+    ],
+  );
 
     const stabilityBeam = await json("corpus/units/ntc2018/4.4.8.2.1.json");
     const lambdaBeam = stabilityBeam.blocks.find((block: { text?: { normalized?: string } }) => block.text?.normalized?.startsWith("λrel,m ="));
