@@ -121,7 +121,13 @@
       "text": {
         "raw": "Tipo di analisi svolta",
         "normalized": "Tipo di analisi svolta",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Tipo di analisi svolta"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -139,7 +145,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "8d7264550b2db267ee3646a157b6e0f736ff2edaa095c50e91492a4d1472e77a",
         "normalizedSha256": "8d7264550b2db267ee3646a157b6e0f736ff2edaa095c50e91492a4d1472e77a"
       }
@@ -180,8 +192,14 @@
       "origin": "official",
       "text": {
         "raw": "- dichiarare il tipo di analisi strutturale condotta (di tipo statico o dinamico, lineare o non lineare) e le sue motivazioni;",
-        "normalized": "- dichiarare il tipo di analisi strutturale condotta (di tipo statico o dinamico, lineare o non lineare) e le sue motivazioni;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "dichiarare il tipo di analisi strutturale condotta (di tipo statico o dinamico, lineare o non lineare) e le sue motivazioni;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dichiarare il tipo di analisi strutturale condotta (di tipo statico o dinamico, lineare o non lineare) e le sue motivazioni;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -199,10 +217,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "f64bb2206ec7d828b44b9e848d5a515955e3985c895767416c947ea04001f3b3",
-        "normalizedSha256": "f64bb2206ec7d828b44b9e848d5a515955e3985c895767416c947ea04001f3b3"
-      }
+        "normalizedSha256": "c4715daad9bdb2d3b5780e5617bc3289411b6479aa4537502adc538cc4ec5d7b"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-005",
@@ -210,8 +235,14 @@
       "origin": "official",
       "text": {
         "raw": "- indicare il metodo adottato per la risoluzione del problema strutturale e le metodologie seguite per la verifica o per il proget-\nto-verifica delle sezioni.",
-        "normalized": "- indicare il metodo adottato per la risoluzione del problema strutturale e le metodologie seguite per la verifica o per il progetto-verifica delle sezioni.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "indicare il metodo adottato per la risoluzione del problema strutturale e le metodologie seguite per la verifica o per il progetto-verifica delle sezioni.",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "indicare il metodo adottato per la risoluzione del problema strutturale e le metodologie seguite per la verifica o per il progetto-verifica delle sezioni."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -244,11 +275,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "14771ff51d14bcbf7b48a893058d98491fe1535014c06f36ce92306981540823",
-        "normalizedSha256": "e6c69e2ae63b1f3bd52554617d1e9580669ea2922548889fa68d57921063d989"
-      }
+        "normalizedSha256": "dd2a5a7d8adecead8f0acce3fc637130cc51ec8538989e84d1807543e52b67ac"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-006",
@@ -256,8 +293,14 @@
       "origin": "official",
       "text": {
         "raw": "- indicare chiaramente le combinazioni di carico adottate e, nel caso di calcoli non lineari, i percorsi di carico seguiti. In ogni\ncaso va motivato lâ€™impiego delle combinazioni o dei percorsi di carico adottati, in specie con riguardo alla effettiva esaustivitÃ \ndelle configurazioni studiate per la struttura in esame.",
-        "normalized": "- indicare chiaramente le combinazioni di carico adottate e, nel caso di calcoli non lineari, i percorsi di carico seguiti. In ogni caso va motivato l’impiego delle combinazioni o dei percorsi di carico adottati, in specie con riguardo alla effettiva esaustività delle configurazioni studiate per la struttura in esame.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "indicare chiaramente le combinazioni di carico adottate e, nel caso di calcoli non lineari, i percorsi di carico seguiti. In ogni caso va motivato l’impiego delle combinazioni o dei percorsi di carico adottati, in specie con riguardo alla effettiva esaustività delle configurazioni studiate per la struttura in esame.",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "indicare chiaramente le combinazioni di carico adottate e, nel caso di calcoli non lineari, i percorsi di carico seguiti. In ogni caso va motivato l’impiego delle combinazioni o dei percorsi di carico adottati, in specie con riguardo alla effettiva esaustività delle configurazioni studiate per la struttura in esame."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -285,11 +328,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "5579ccc1a7a0efeb5bb4e7cbb7bb9946388ce9fb07188f9e7ee1815810e23eda",
-        "normalizedSha256": "fd9e71caa724699e059f5f54c2f635b44491afdefd7381ca367f7620b005f25c"
-      }
+        "normalizedSha256": "d165ff6df462dbec28dd417b155a34383c3e0e869b4f43e2de50157ffb7500c4"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-007",
@@ -298,7 +347,13 @@
       "text": {
         "raw": "Origine e Caratteristiche dei Codici di Calcolo",
         "normalized": "Origine e Caratteristiche dei Codici di Calcolo",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Origine e Caratteristiche dei Codici di Calcolo"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -316,7 +371,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "1492cb60b7797f46abe13f921175dab4506d3b0a6ba03e7b5497b837072f42ed",
         "normalizedSha256": "1492cb60b7797f46abe13f921175dab4506d3b0a6ba03e7b5497b837072f42ed"
       }
@@ -364,7 +425,13 @@
       "text": {
         "raw": "ModalitÃ  di presentazione dei risultati.",
         "normalized": "Modalità di presentazione dei risultati.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Modalità di presentazione dei risultati."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -387,6 +454,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "0ad817fc13c116385cb212361fd5a406deaf4a59407314cbefe3066491fa6541",
@@ -445,8 +517,14 @@
       "origin": "official",
       "text": {
         "raw": "- descrizione dellâ€™opera e della tipologia strutturale;",
-        "normalized": "- descrizione dell’opera e della tipologia strutturale;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "descrizione dell’opera e della tipologia strutturale;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "descrizione dell’opera e della tipologia strutturale;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -469,11 +547,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "2b33d29576d28891fa958b5781ed5da6b625d45aabfb2cdabb1b0ea86e41b1f7",
-        "normalizedSha256": "221dab66b3c8ede3faf19906fec8d07dfe2f2c15ed427568a71fa2453eba4956"
-      }
+        "normalizedSha256": "3b1fcc3d61eb269b63dd713a1848b4167335acb54f01094604aec757f6af0b77"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-012",
@@ -481,8 +565,14 @@
       "origin": "official",
       "text": {
         "raw": "- inquadramento normativo dellâ€™intervento;",
-        "normalized": "- inquadramento normativo dell’intervento;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "inquadramento normativo dell’intervento;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "inquadramento normativo dell’intervento;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -505,11 +595,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "baedd7659fbb2d0c2f0951689b9f5342bca6c7ee210438e211f71bf962d19e1e",
-        "normalizedSha256": "96ccd19c81de1aec04ddbf7913a3517da4e8b30baad8448556c7348d68f0f1bc"
-      }
+        "normalizedSha256": "2b027d25b7f44bb5c566c394d03a64630951f253a9b8325dc9cd14d50067e4cc"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-013",
@@ -517,8 +613,14 @@
       "origin": "official",
       "text": {
         "raw": "- definizione dei parametri di progetto;",
-        "normalized": "- definizione dei parametri di progetto;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "definizione dei parametri di progetto;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "definizione dei parametri di progetto;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -536,10 +638,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "cfed4f19ec04ec12248938eeb87381018db802964d3e1212c29e3ebbd687ed03",
-        "normalizedSha256": "cfed4f19ec04ec12248938eeb87381018db802964d3e1212c29e3ebbd687ed03"
-      }
+        "normalizedSha256": "9b4d0dd66e95aef9174895fc553a9b675993cec006ceb8819ec98ff1aaccbd1c"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-014",
@@ -547,8 +656,14 @@
       "origin": "official",
       "text": {
         "raw": "- descrizione dei materiali adottati e loro caratteristiche meccaniche;",
-        "normalized": "- descrizione dei materiali adottati e loro caratteristiche meccaniche;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "descrizione dei materiali adottati e loro caratteristiche meccaniche;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "descrizione dei materiali adottati e loro caratteristiche meccaniche;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -566,10 +681,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "c2c3a32794585287d0368414eabdadb42a23a5ce25bed89c2626379bea129c4c",
-        "normalizedSha256": "c2c3a32794585287d0368414eabdadb42a23a5ce25bed89c2626379bea129c4c"
-      }
+        "normalizedSha256": "2aea71d2ede5cbac82145398245ac9411ced9c170b43e2b9e8483c2de6b9c959"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-015",
@@ -577,8 +699,14 @@
       "origin": "official",
       "text": {
         "raw": "- criteri di progettazione e modellazione;",
-        "normalized": "- criteri di progettazione e modellazione;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "criteri di progettazione e modellazione;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "criteri di progettazione e modellazione;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -596,10 +724,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "8c6116c7aa4522b98d371af5fcff95649425213e78cd67a72a418ae9e2a80f55",
-        "normalizedSha256": "8c6116c7aa4522b98d371af5fcff95649425213e78cd67a72a418ae9e2a80f55"
-      }
+        "normalizedSha256": "2b7a60ac441bcfcd272dd933e83221cad88f089a82ee8527a947950b5434d257"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-016",
@@ -607,8 +742,14 @@
       "origin": "official",
       "text": {
         "raw": "- combinazione delle azioni;",
-        "normalized": "- combinazione delle azioni;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "combinazione delle azioni;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "combinazione delle azioni;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -626,10 +767,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "b1d08e1d8599d26359291299d4a1d5ed78d7422ab09cda92e4c830ba04dac31b",
-        "normalizedSha256": "b1d08e1d8599d26359291299d4a1d5ed78d7422ab09cda92e4c830ba04dac31b"
-      }
+        "normalizedSha256": "75708dd36f9c7bd1306a754e1a81ec384f44ae578d04241e8c17fc01ba85f411"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-017",
@@ -637,8 +785,14 @@
       "origin": "official",
       "text": {
         "raw": "- codice di calcolo impiegato;",
-        "normalized": "- codice di calcolo impiegato;",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "codice di calcolo impiegato;",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "codice di calcolo impiegato;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -656,10 +810,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "208939ac73e3481918123e24dcd48c3c3dffcab8b276edbdceff341c964d0ab4",
-        "normalizedSha256": "208939ac73e3481918123e24dcd48c3c3dffcab8b276edbdceff341c964d0ab4"
-      }
+        "normalizedSha256": "7b2d94756148d856dd34f36fb9473a8f6d2755d314d6523ceca485dd20e2afa8"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-018",
@@ -667,8 +828,14 @@
       "origin": "official",
       "text": {
         "raw": "- rispetto delle verifiche per gli stati limite considerati.",
-        "normalized": "- rispetto delle verifiche per gli stati limite considerati.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalized": "rispetto delle verifiche per gli stati limite considerati.",
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "rispetto delle verifiche per gli stati limite considerati."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -686,10 +853,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "49adc80428d638554a1278fe093131ac24775a021a2f5d2157b1b3f98236eb31",
-        "normalizedSha256": "49adc80428d638554a1278fe093131ac24775a021a2f5d2157b1b3f98236eb31"
-      }
+        "normalizedSha256": "3d488c79b92c4209460f5ab0a78cfa0fa063dd9109ce7bcfdb951ff4a444a804"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:10.2.1#block-019",
@@ -826,7 +1000,13 @@
       "text": {
         "raw": "Informazioni generali sullâ€™elaborazione.",
         "normalized": "Informazioni generali sull’elaborazione.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Informazioni generali sull’elaborazione."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -849,6 +1029,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "e54a9229c719df9a978dcd8384a45755cb74328802752041b19272d1890e7f15",
@@ -898,7 +1083,13 @@
       "text": {
         "raw": "Giudizio motivato di accettabilitÃ  dei risultati.",
         "normalized": "Giudizio motivato di accettabilità dei risultati.",
-        "normalizationVersion": "ntc10-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc10-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Giudizio motivato di accettabilità dei risultati."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -921,6 +1112,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc10-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi e glifi ambigui verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc10-c10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "e2ee37f95c789a841d69ca6f1c3b22293907b0eca86733fa2f091a3fd0e5d2ad",

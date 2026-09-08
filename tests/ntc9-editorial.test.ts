@@ -50,29 +50,16 @@ test("NTC 9 conserva testo significativo, elenchi e matematica inline", async ()
     assert.match(text91, /certificato di collaudo/u);
     assert.match(text91, /registro delle non-conformità/u);
 
+    const list91 = unit91.blocks.filter((block: { kind: string }) => block.kind === "list-item");
     assert.deepEqual(
-        unit91.blocks
-            .filter((block: { kind: string }) => block.kind === "list-item")
-            .map((block: { text: { normalized: string } }) =>
-                block.text.normalized.slice(0, block.text.normalized.indexOf(" ")),
-            ),
-        [
-            "a)",
-            "b)",
-            "c)",
-            "-",
-            "-",
-            "d)",
-            "e)",
-            "f)",
-            "g)",
-            "h)",
-            "i)",
-            "-",
-            "-",
-            "-",
-        ],
+        list91.filter((block: { listMarker?: string }) => block.listMarker === "none")
+            .map((block: { text: { normalized: string } }) => block.text.normalized.slice(0, 2)),
+        ["a)", "b)", "c)", "d)", "e)", "f)", "g)", "h)", "i)"],
     );
+    const dashes = list91.filter((block: { listMarker?: string }) => block.listMarker === "dash");
+    assert.equal(dashes.length, 5);
+    assert.equal(dashes.every((block: { listLevel?: number; text: { normalized: string } }) =>
+        block.listLevel === 1 && !block.text.normalized.startsWith("- ")), true);
 
     for (const unit of [unit922, unit923]) {
         const mathSegments = unit.blocks.flatMap(

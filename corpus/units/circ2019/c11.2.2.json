@@ -58,7 +58,21 @@
       "text": {
         "raw": "Il §11.2.2 delle vigenti NTC, in merito alle prove di accettazione in cantiere sul calcestruzzo, stabilisce che “Le prove di accettazione\ne le eventuali prove complementari, compresi i carotaggi di cui al punto 11.2.6, devono essere eseguite e certificate dai laboratori di cui all’art.\n59 del D.P.R. n. 380/2001”.",
         "normalized": "Il §11.2.2 delle vigenti NTC, in merito alle prove di accettazione in cantiere sul calcestruzzo, stabilisce che “Le prove di accettazione e le eventuali prove complementari, compresi i carotaggi di cui al punto 11.2.6, devono essere eseguite e certificate dai laboratori di cui all’art. 59 del D.P.R. n. 380/2001”.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il §11.2.2 delle vigenti NTC, in merito alle prove di accettazione in cantiere sul calcestruzzo, stabilisce che "
+          },
+          {
+            "kind": "em",
+            "value": "“Le prove di accettazione e le eventuali prove complementari, compresi i carotaggi di cui al punto 11.2.6, devono essere eseguite e certificate dai laboratori di cui all’art. 59 del D.P.R. n. 380/2001”"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -80,6 +94,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-2-c11-2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "ae453e70a58e9e00882a38a050758d035abb210312e006b9f93c35f40335ad04",

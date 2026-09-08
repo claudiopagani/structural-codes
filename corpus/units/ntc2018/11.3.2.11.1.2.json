@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.2.11.1.2 Prove di verifica della qualità",
         "normalized": "11.3.2.11.1.2 Prove di verifica della qualità",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.2.11.1.2 Prove di verifica della qualità"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "76fbb6756be99aeae44aaa9b69698c0a7dc322c13c17a184a4afb5d8e3e39b6f",
         "normalizedSha256": "76fbb6756be99aeae44aaa9b69698c0a7dc322c13c17a184a4afb5d8e3e39b6f"
       }

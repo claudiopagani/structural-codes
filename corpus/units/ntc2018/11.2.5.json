@@ -103,8 +103,14 @@
       "origin": "official",
       "text": {
         "raw": "– controllo di tipo A di cui al § 11.2.5.1;",
-        "normalized": "– controllo di tipo A di cui al § 11.2.5.1;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "controllo di tipo A di cui al § 11.2.5.1;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "controllo di tipo A di cui al § 11.2.5.1;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -116,10 +122,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-2-c11-2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "f7f6ba5d0fc23c2516b87e376cebcd4c9e472f117a424ad7c8f3031fe54db0ce",
-        "normalizedSha256": "f7f6ba5d0fc23c2516b87e376cebcd4c9e472f117a424ad7c8f3031fe54db0ce"
-      }
+        "normalizedSha256": "2c9f7071be591c5983e323126abe77805e522594663a7ca45aa1d8c9015c2652"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.5#block-003",
@@ -127,8 +140,14 @@
       "origin": "official",
       "text": {
         "raw": "– controllo di tipo B di cui al § 11.2.5.2.",
-        "normalized": "– controllo di tipo B di cui al § 11.2.5.2.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "controllo di tipo B di cui al § 11.2.5.2.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "controllo di tipo B di cui al § 11.2.5.2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -140,10 +159,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-2-c11-2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "445a9de2d1dd4035165bca25764bdfbf9891e168e3f35aae48ebc16b1877fefc",
-        "normalizedSha256": "445a9de2d1dd4035165bca25764bdfbf9891e168e3f35aae48ebc16b1877fefc"
-      }
+        "normalizedSha256": "7030d0a262ed76165af205293e27c3a3dc87afa63d57a0a9cd46127c3e4f1909"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.2.5#block-004",

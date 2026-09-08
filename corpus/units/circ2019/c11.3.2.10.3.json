@@ -119,7 +119,21 @@
       "text": {
         "raw": "L’annotazione circa l’effettuazione dei controlli di competenza “prima dell’invio in cantiere” discende dalla ovvia necessità di poter\nutilmente intervenire, in caso di esiti negativi delle prove, sulla singola fornitura prima che il materiale sia effettivamente\nimpiegato e posto in opera.",
         "normalized": "L’annotazione circa l’effettuazione dei controlli di competenza “prima dell’invio in cantiere” discende dalla ovvia necessità di poter utilmente intervenire, in caso di esiti negativi delle prove, sulla singola fornitura prima che il materiale sia effettivamente impiegato e posto in opera.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’annotazione circa l’effettuazione dei controlli di competenza "
+          },
+          {
+            "kind": "em",
+            "value": "“prima dell’invio in cantiere”"
+          },
+          {
+            "kind": "text",
+            "value": " discende dalla ovvia necessità di poter utilmente intervenire, in caso di esiti negativi delle prove, sulla singola fornitura prima che il materiale sia effettivamente impiegato e posto in opera."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -141,6 +155,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "59f880df5461fa2a4aba1cb2ea3538fe45fa362f425dd348039c786489d50cd0",

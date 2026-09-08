@@ -54,14 +54,17 @@ test("Circolare C9 conserva testo significativo, elenchi e matematica inline", a
     assert.match(unit92.blocks.map((block: { text: { normalized: string } }) => block.text.normalized).join(" "), /corrispondenza fra comportamento teorico e sperimentale/u);
     assert.match(unit924.blocks[1].text.normalized, /completa separazione tra sottostruttura e sovrastruttura/u);
 
+    const list91 = unit91.blocks.filter((block: { kind: string }) => block.kind === "list-item");
     assert.deepEqual(
-        unit91.blocks
-            .filter((block: { kind: string }) => block.kind === "list-item")
-            .map((block: { text: { normalized: string } }) =>
-                block.text.normalized.slice(0, block.text.normalized.indexOf(" ")),
-            ),
-        ["-", "-", "a)", "b)", "c)", "-", "-", "-", "-", "d)", "-", "-", "-", "e)", "f)", "g)", "h)", "i)", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
+        list91.filter((block: { listMarker?: string }) => block.listMarker === "none")
+            .map((block: { text: { normalized: string } }) => block.text.normalized.slice(0, 2)),
+        ["a)", "b)", "c)", "d)", "e)", "f)", "g)", "h)", "i)"],
     );
+    const dashes = list91.filter((block: { listMarker?: string }) => block.listMarker === "dash");
+    assert.equal(dashes.length, 18);
+    assert.equal(dashes.filter((block: { listLevel?: number }) => block.listLevel === 1).length, 7);
+    assert.equal(dashes.every((block: { text: { normalized: string } }) =>
+        !block.text.normalized.startsWith("- ")), true);
 
     const mathSegments = [unit922, unit923].flatMap((unit) =>
         unit.blocks.flatMap(

@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.3.5.2.1 Prove di qualificazione",
         "normalized": "11.3.3.5.2.1 Prove di qualificazione",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.3.5.2.1 Prove di qualificazione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "a1e1094495df8058aee6fe1c4500b364c97ebd42ede805c6024e5f7f9a1a6fba",
         "normalizedSha256": "a1e1094495df8058aee6fe1c4500b364c97ebd42ede805c6024e5f7f9a1a6fba"
       }
@@ -645,12 +657,12 @@
       "origin": "official",
       "text": {
         "raw": "- la caduta per rilassamento r, su saggi provenienti da 4 lotti, in numero di 3 saggi per ogni lotto.",
-        "normalized": "- la caduta per rilassamento r, su saggi provenienti da 4 lotti, in numero di 3 saggi per ogni lotto.",
+        "normalized": "la caduta per rilassamento r, su saggi provenienti da 4 lotti, in numero di 3 saggi per ogni lotto.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la caduta pe"
+            "value": "la caduta pe"
           },
           {
             "kind": "math",
@@ -696,11 +708,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "e2442d0a6c7dd0e4978ef9a0b713da30792128a9e1d03680527b276d977aa7d5",
-        "normalizedSha256": "e2442d0a6c7dd0e4978ef9a0b713da30792128a9e1d03680527b276d977aa7d5"
-      }
+        "normalizedSha256": "7a5846e3bbb4ed8b8356517edc098952a0d5f56c1a283c883ec72aefa26ad08b"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-010",
@@ -708,12 +726,12 @@
       "origin": "official",
       "text": {
         "raw": "- il limite di fatica L sotto carico assiale, con la procedura indicata al punto 6.8.4 della norma UNI EN 1992-1-1:2005.",
-        "normalized": "- il limite di fatica L sotto carico assiale, con la procedura indicata al punto 6.8.4 della norma UNI EN 1992-1-1:2005.",
+        "normalized": "il limite di fatica L sotto carico assiale, con la procedura indicata al punto 6.8.4 della norma UNI EN 1992-1-1:2005.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- il limite di fatica "
+            "value": "il limite di fatica "
           },
           {
             "kind": "math",
@@ -741,11 +759,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "69c9573140ce27ad6629544091d0a9a59126d1989781972a7ced9505c5d55e3a",
-        "normalizedSha256": "69c9573140ce27ad6629544091d0a9a59126d1989781972a7ced9505c5d55e3a"
-      }
+        "normalizedSha256": "561c8074b60b4ff661ad8297c6747a7afdc7fc343e098af31642537a091e6f9a"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-011",
@@ -753,12 +777,12 @@
       "origin": "official",
       "text": {
         "raw": "- la grandezza D, per i trefoli di diametro maggiore o uguale a 12,5 mm, su saggi provenienti da 5 lotti. Per ciascun lotto il nu-\nmero di saggi è indicato nella UNI EN ISO 15630-3:2010. Il risultato dovrà essere confrontato con il limite specificato al §\n11.3.3.5.2.3.",
-        "normalized": "- la grandezza D, per i trefoli di diametro maggiore o uguale a 12,5 mm, su saggi provenienti da 5 lotti. Per ciascun lotto il numero di saggi è indicato nella UNI EN ISO 15630-3:2010. Il risultato dovrà essere confrontato con il limite specificato al § 11.3.3.5.2.3.",
+        "normalized": "la grandezza D, per i trefoli di diametro maggiore o uguale a 12,5 mm, su saggi provenienti da 5 lotti. Per ciascun lotto il numero di saggi è indicato nella UNI EN ISO 15630-3:2010. Il risultato dovrà essere confrontato con il limite specificato al § 11.3.3.5.2.3.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la grandezza "
+            "value": "la grandezza "
           },
           {
             "kind": "math",
@@ -819,11 +843,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "6db072441d98073acc110ef730dd4861503f65ed070933c1177a4f6ea79829d6",
-        "normalizedSha256": "66a26e4fd36c5ae5936a3c872cade72056bea03b600a03ee9a4d348d790f3b5e"
-      }
+        "normalizedSha256": "eeed04027954914a0ace8642ba3b879ebd1d8c297896b78d9a4260a8c778d99c"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-012",
@@ -831,12 +861,12 @@
       "origin": "official",
       "text": {
         "raw": "- la durata di vita a rottura t con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione A,\neffettuate su 3 lotti in numero di 6 per lotto. Il diametro nominale dei lotti scelti deve essere possibilmente diverso. In ogni caso\nper almeno uno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della\nqualificazione e presenti all’atto del controllo. Il risultato dovrà essere confrontato con i limiti specificati al § 11.3.3.5.2.3.",
-        "normalized": "- la durata di vita a rottura t con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione A, effettuate su 3 lotti in numero di 6 per lotto. Il diametro nominale dei lotti scelti deve essere possibilmente diverso. In ogni caso per almeno uno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della qualificazione e presenti all’atto del controllo. Il risultato dovrà essere confrontato con i limiti specificati al § 11.3.3.5.2.3.",
+        "normalized": "la durata di vita a rottura t con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione A, effettuate su 3 lotti in numero di 6 per lotto. Il diametro nominale dei lotti scelti deve essere possibilmente diverso. In ogni caso per almeno uno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della qualificazione e presenti all’atto del controllo. Il risultato dovrà essere confrontato con i limiti specificati al § 11.3.3.5.2.3.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la dura"
+            "value": "la dura"
           },
           {
             "kind": "math",
@@ -892,11 +922,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "191211b9eda8aae07b51dfa9d1707a33721b17e1a9de8a7104ef43722c35c39c",
-        "normalizedSha256": "3d0d5a195b313e546c2762ee522aad093c7f5f7148c860c4af228eb3227faade"
-      }
+        "normalizedSha256": "3feb4c075516103c7cb7878804c2a732023db336baae47e838574d0acd774ac9"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-013",
@@ -904,12 +940,12 @@
       "origin": "official",
       "text": {
         "raw": "- la durata di vita a rottura t2 con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione\nB, effettuate su 2 lotti in numero di 1 per lotto. Il diametro nominale dei 2 lotti scelti deve essere diverso. In ogni caso per almeno\nuno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della qualificazione e\npresenti all’atto del controllo. Il risultato ottenuto dal test non dovrà essere inferiore alle 2000 ore.",
-        "normalized": "- la durata di vita a rottura t2 con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione B, effettuate su 2 lotti in numero di 1 per lotto. Il diametro nominale dei 2 lotti scelti deve essere diverso. In ogni caso per almeno uno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della qualificazione e presenti all’atto del controllo. Il risultato ottenuto dal test non dovrà essere inferiore alle 2000 ore.",
+        "normalized": "la durata di vita a rottura t2 con delle prove di corrosione sotto tensione, secondo norma UNI EN ISO 15630-3:2010 soluzione B, effettuate su 2 lotti in numero di 1 per lotto. Il diametro nominale dei 2 lotti scelti deve essere diverso. In ogni caso per almeno uno dei lotti il diametro deve essere il più piccolo tra quelli appartenenti alla gamma di produzione oggetto della qualificazione e presenti all’atto del controllo. Il risultato ottenuto dal test non dovrà essere inferiore alle 2000 ore.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la durata di vita a rottura "
+            "value": "la durata di vita a rottura "
           },
           {
             "kind": "math",
@@ -983,11 +1019,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "75abdf131ceffbb658d01f49d617c6a6dc15a41c0d3b54b6f1394fad83b9f0ee",
-        "normalizedSha256": "34ce7495d8b751593c2e16e7d8d8c7bae76fa7e599b1f29b7d939632f0d48b8a"
-      }
+        "normalizedSha256": "51c5ad1d335db8714288befc238388885377eb34a0b36652d8b42571a7228162"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-014",
@@ -1106,8 +1148,14 @@
       "origin": "official",
       "text": {
         "raw": "- del minimo valore del rapporto tra il diametro del filo centrale e quello dei fili periferici su un saggio per lotto di trefoli;",
-        "normalized": "- del minimo valore del rapporto tra il diametro del filo centrale e quello dei fili periferici su un saggio per lotto di trefoli;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "del minimo valore del rapporto tra il diametro del filo centrale e quello dei fili periferici su un saggio per lotto di trefoli;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "del minimo valore del rapporto tra il diametro del filo centrale e quello dei fili periferici su un saggio per lotto di trefoli;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1119,10 +1167,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "7645ba4ba54ebfb8ce9f9da73d872900e9d384774504e074d0b9d55b6aeb8a06",
-        "normalizedSha256": "7645ba4ba54ebfb8ce9f9da73d872900e9d384774504e074d0b9d55b6aeb8a06"
-      }
+        "normalizedSha256": "75157592e2d6085878f1f1ac8efe83cb0a04239d4efd65ca51a316a8a4877e5a"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-017",
@@ -1130,8 +1185,14 @@
       "origin": "official",
       "text": {
         "raw": "- del passo di avvolgimento, su un saggio per lotto di trecce e di trefoli;",
-        "normalized": "- del passo di avvolgimento, su un saggio per lotto di trecce e di trefoli;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "del passo di avvolgimento, su un saggio per lotto di trecce e di trefoli;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "del passo di avvolgimento, su un saggio per lotto di trecce e di trefoli;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1143,10 +1204,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "8bc0b75fd62fd4d690c9a6f6767964b3d047485b8b0f9a71700b5a3cfa85f3fd",
-        "normalizedSha256": "8bc0b75fd62fd4d690c9a6f6767964b3d047485b8b0f9a71700b5a3cfa85f3fd"
-      }
+        "normalizedSha256": "2d28d95eb6addecf037f3e6f99507156e0790ffe6e10dc2238c65dede74753c1"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-018",
@@ -1154,8 +1222,14 @@
       "origin": "official",
       "text": {
         "raw": "- del comportamento al piegamento del filo centrale di un saggio per lotto di trefoli;",
-        "normalized": "- del comportamento al piegamento del filo centrale di un saggio per lotto di trefoli;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "del comportamento al piegamento del filo centrale di un saggio per lotto di trefoli;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "del comportamento al piegamento del filo centrale di un saggio per lotto di trefoli;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1167,10 +1241,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "882d30839e68af935a203be6981c64d9b7d54728fca87d92157d5074168d214f",
-        "normalizedSha256": "882d30839e68af935a203be6981c64d9b7d54728fca87d92157d5074168d214f"
-      }
+        "normalizedSha256": "aea65ac06f52a6dd25a9b36126f1fca9e618152071352ab9df4e588c8abc23a8"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-019",
@@ -1178,12 +1259,12 @@
       "origin": "official",
       "text": {
         "raw": "- del coefficiente di strizione a rottura Z su un saggio per ogni lotto nel caso delle trecce e dei trefoli;",
-        "normalized": "- del coefficiente di strizione a rottura Z su un saggio per ogni lotto nel caso delle trecce e dei trefoli;",
+        "normalized": "del coefficiente di strizione a rottura Z su un saggio per ogni lotto nel caso delle trecce e dei trefoli;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- del coefficiente di strizione a rottura "
+            "value": "del coefficiente di strizione a rottura "
           },
           {
             "kind": "math",
@@ -1211,11 +1292,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "5061650fe7fd09fd5089d26325671ced93cbf1dd4b8d9b4d0e2ce2244458ffa5",
-        "normalizedSha256": "5061650fe7fd09fd5089d26325671ced93cbf1dd4b8d9b4d0e2ce2244458ffa5"
-      }
+        "normalizedSha256": "1e2fc2fd43f06b4d32dce92ee541c3fa1626b98d40e6e381c8f1c76f9f23a074"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-020",
@@ -1223,8 +1310,14 @@
       "origin": "official",
       "text": {
         "raw": "- delle profondità delle impronte per i prodotti improntati;",
-        "normalized": "- delle profondità delle impronte per i prodotti improntati;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "delle profondità delle impronte per i prodotti improntati;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "delle profondità delle impronte per i prodotti improntati;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -1236,10 +1329,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "3512a5f0a342a853a5bf729f6449ce4fbe2207990442f7db4989e37da9fa17dc",
-        "normalizedSha256": "3512a5f0a342a853a5bf729f6449ce4fbe2207990442f7db4989e37da9fa17dc"
-      }
+        "normalizedSha256": "6c40059667350df9e9bcccec8f00233656b676f351f4a076ae7b666e24a2af50"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.2.1#block-021",

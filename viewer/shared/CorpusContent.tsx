@@ -227,7 +227,7 @@ export function hasOfficialListMarker(block: CorpusBlock) {
 }
 
 export function hasAlphabeticListMarker(block: CorpusBlock) {
-  return block.kind === "list-item" && /^\s*\(?[a-z]+[.)]/iu.test(block.text?.normalized ?? "");
+  return block.kind === "list-item" && /^\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)])/iu.test(block.text?.normalized ?? "");
 }
 
 export function hasSimpleDashMarker(block: CorpusBlock) {
@@ -376,7 +376,7 @@ function renderAlphabeticListContent(block: CorpusBlock) {
   const first = inline?.[0];
   const source = first?.kind === "text" ? first.value : normalized;
   if (!source) return null;
-  const match = source.match(/^(\s*\(?[a-z]+[.)])\s*/iu);
+  const match = source.match(/^(\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)]))\s*/iu);
   if (!match) return null;
   if (!inline || first?.kind !== "text") {
     return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized?.slice(match[0].length)}</span></>;

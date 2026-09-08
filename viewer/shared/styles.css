@@ -141,6 +141,7 @@ body { margin: 0; }
 .scv-block-heading, .scv-block-list-item, .scv-block-formula-ref, .scv-block-table-ref, .scv-block-figure-ref { display: block; }
 .scv-block-heading p { display: block; margin: 8px 0 4px; font-weight: 700; }
 .scv-block-heading p:has(em > u) { font-weight: 400; }
+.scv-block-heading p:has(> em:only-child) { font-weight: 400; }
 .scv-block-list-item { padding-left: 11px; }
 .scv-block-list-item p::before { margin-right: 5px; color: var(--scv-primary); content: "–"; font-weight: 700; }
 .scv-block-list-item.list-item-with-bullet p::before { content: "•"; }

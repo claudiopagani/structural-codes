@@ -60,22 +60,14 @@ test("Circolare C10 conserva testo introduttivo, sottotitoli, elenchi e matemati
             "Relazioni specialistiche",
         ],
     );
-    assert.deepEqual(
-        unit101.blocks.filter((block: { kind: string }) => block.kind === "list-item").map(
-            (block: { text: { normalized: string } }) => block.text.normalized.slice(0, block.text.normalized.indexOf(" ")),
-        ),
-        [
-            "-", "-", "-", "1)", "2)", "3)", "4)", "5)",
-            ...Array.from({ length: 17 }, () => "-"),
-            "1)", "2)", "3)",
-        ],
-    );
-    assert.deepEqual(
-        unit1021.blocks.filter((block: { kind: string }) => block.kind === "list-item").map(
-            (block: { text: { normalized: string } }) => block.text.normalized.slice(0, block.text.normalized.indexOf(" ")),
-        ),
-        ["a)", "a.1)", "a.2)", "a.3)", "a.4)", "a.5)", "b)", "b.1)", "b.2)", "-", "-", "-", "b.3)", "b.4)"],
-    );
+    const c101Lists = unit101.blocks.filter((block: { kind: string }) => block.kind === "list-item");
+    assert.equal(c101Lists.filter((block: { listMarker?: string }) => block.listMarker === "dash").length, 20);
+    assert.equal(c101Lists.filter((block: { listMarker?: string }) => block.listMarker === "none").length, 8);
+    assert.ok(c101Lists.every((block: { text: { normalized: string } }) => !block.text.normalized.startsWith("-")));
+    const c1021Lists = unit1021.blocks.filter((block: { kind: string }) => block.kind === "list-item");
+    assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "none" && block.listLevel === undefined).length, 2);
+    assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "none" && block.listLevel === 1).length, 9);
+    assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "dash" && block.listLevel === 2).length, 3);
 
     const inline = unit101.blocks[30].text.inline;
     assert.deepEqual(inline, [

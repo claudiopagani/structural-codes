@@ -37,7 +37,17 @@
       "text": {
         "raw": "C11.3.3.5.2.1 Prove di qualificazione",
         "normalized": "C11.3.3.5.2.1 Prove di qualificazione",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C11.3.3.5.2.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Prove di qualificazione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -49,7 +59,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "4916f0f48faad20cb356f455e7b591836476cc1eecd005f8e87184f9590f85ca",
         "normalizedSha256": "4916f0f48faad20cb356f455e7b591836476cc1eecd005f8e87184f9590f85ca"
       }

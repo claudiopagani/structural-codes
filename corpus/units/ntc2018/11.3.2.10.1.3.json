@@ -37,7 +37,17 @@
       "text": {
         "raw": "11.3.2.10.1.3 Procedura di valutazione",
         "normalized": "11.3.2.10.1.3 Procedura di valutazione",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "11.3.2.10.1.3 "
+          },
+          {
+            "kind": "em",
+            "value": "Procedura di valutazione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +59,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "5330b8906edcaaca98da220b7124969639e3fff9816080266df8955d38af63df",
         "normalizedSha256": "5330b8906edcaaca98da220b7124969639e3fff9816080266df8955d38af63df"
       }
@@ -64,8 +80,12 @@
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
+            "kind": "em",
+            "value": "Valutazione dei risultati"
+          },
+          {
             "kind": "text",
-            "value": "Valutazione dei risultati Le grandezze caratteristiche "
+            "value": " Le grandezze caratteristiche "
           },
           {
             "kind": "math",
@@ -130,6 +150,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "c9d7dfc9b0d33e5b9440e1b1dcbf8e4b9bd097e689d897e53b8a317404a90e09",

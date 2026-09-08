@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.3.5.2.4 Controlli su singoli lotti di produzione",
         "normalized": "11.3.3.5.2.4 Controlli su singoli lotti di produzione",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.3.5.2.4 Controlli su singoli lotti di produzione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "99ebaf0526eb4f3efccebe387ff019809dbefe878cafd55b187a1585f627e21a",
         "normalizedSha256": "99ebaf0526eb4f3efccebe387ff019809dbefe878cafd55b187a1585f627e21a"
       }

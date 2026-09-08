@@ -77,12 +77,12 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.1.1#block-002",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.1.1#block-002a",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "ȭ in stabilimento di produzione, da eseguirsi sui lotti di produzione;\nȭ nei centri di trasformazione;\nȭ di accettazione in cantiere.",
-        "normalized": "ȭ in stabilimento di produzione, da eseguirsi sui lotti di produzione; ȭ nei centri di trasformazione; ȭ di accettazione in cantiere.",
+        "raw": "in stabilimento di produzione, da eseguirsi sui lotti di produzione;",
+        "normalized": "in stabilimento di produzione, da eseguirsi sui lotti di produzione;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -97,19 +97,77 @@
         },
         "transformations": [
           {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Separate le tre forme di controllo, stampate come elenco nella fonte ufficiale."
           }
         ],
-        "rawSha256": "d05b6c31c38574bd5a9ce1cdc284de095746403800e59b57c7741efa72fa66c0",
-        "normalizedSha256": "76a2c453c0c91c8826403565bcce02b68db55ba359215ce17e2d02870dd07c55"
-      }
+        "rawSha256": "6bdc9f93bd0dfadb73818fe2a1f590607d018de3294cb035ed54f90858d9d21b",
+        "normalizedSha256": "6bdc9f93bd0dfadb73818fe2a1f590607d018de3294cb035ed54f90858d9d21b"
+      },
+      "listMarker": "dash"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.1.1#block-002b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "nei centri di trasformazione;",
+        "normalized": "nei centri di trasformazione;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 319,
+        "printedPage": "315",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Separate le tre forme di controllo, stampate come elenco nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "a6fa46d917a29ed39b571a48cc70f8ae98d0302e5748f7fb9f16c63cb1d03f9c",
+        "normalizedSha256": "a6fa46d917a29ed39b571a48cc70f8ae98d0302e5748f7fb9f16c63cb1d03f9c"
+      },
+      "listMarker": "dash"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.1.1#block-002c",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "di accettazione in cantiere.",
+        "normalized": "di accettazione in cantiere.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 319,
+        "printedPage": "315",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Separate le tre forme di controllo, stampate come elenco nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "0b970b36aefc6b447bc511645f127c8f9aedb2aab9974deeb1cc543487d90ca3",
+        "normalizedSha256": "0b970b36aefc6b447bc511645f127c8f9aedb2aab9974deeb1cc543487d90ca3"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.1.1#block-003",
@@ -118,7 +176,21 @@
       "text": {
         "raw": "A tale riguardo il Lotto di produzione si riferisce a produzione continua, ordinata cronologicamente mediante apposizione di con-\ntrassegni al prodotto finito (rotolo finito, bobina di trefolo, fascio di barre, ecc.). Un lotto di produzione deve avere valori delle\ngrandezze nominali omogenee (dimensionali, meccaniche, di formazione) e può essere compreso tra 30 e 120 tonnellate.",
         "normalized": "A tale riguardo il Lotto di produzione si riferisce a produzione continua, ordinata cronologicamente mediante apposizione di contrassegni al prodotto finito (rotolo finito, bobina di trefolo, fascio di barre, ecc.). Un lotto di produzione deve avere valori delle grandezze nominali omogenee (dimensionali, meccaniche, di formazione) e può essere compreso tra 30 e 120 tonnellate.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "A tale riguardo il "
+          },
+          {
+            "kind": "em",
+            "value": "Lotto di produzione"
+          },
+          {
+            "kind": "text",
+            "value": " si riferisce a produzione continua, ordinata cronologicamente mediante apposizione di contrassegni al prodotto finito (rotolo finito, bobina di trefolo, fascio di barre, ecc.). Un lotto di produzione deve avere valori delle grandezze nominali omogenee (dimensionali, meccaniche, di formazione) e può essere compreso tra 30 e 120 tonnellate."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -145,6 +217,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step1-c11-3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "e1ea57e4d4ecf0a4fb4e0fcd480426f8dc79707299991ba29e2105d8bf871270",
