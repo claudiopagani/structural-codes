@@ -117,10 +117,17 @@ const unit = {
         status: "extracted",
         createdBy: { actorId: "codex:circ42-step2j", kind: "automated-agent", toolVersion: profile },
         createdAt,
-        reviews: [],
+        reviews: [{
+            reviewId: "circ2019-c4-2-4-1-3-4-8-formula-confirmation-01",
+            type: "technical",
+            reviewer: { actorId: "reviewer:human:user-confirmation", kind: "human" },
+            reviewedAt: "2026-09-08T00:00:00Z",
+            result: "accepted",
+            note: "Confermate da revisore umano le formule C4.2.85–C4.2.92. Il testo ufficiale «i cui I_T» è conservato come refuso della fonte.",
+        }],
         openIssues: [
             { issueId: "circ2019-C4-2-4-1-3-4-8-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-            { issueId: "circ2019-C4-2-4-1-3-4-8-formula-review", type: "other", severity: "blocking", note: "Le formule C4.2.85–C4.2.92 richiedono revisione umana indipendente dei glifi e della notazione." },
+            { issueId: "circ2019-C4-2-4-1-3-4-8-source-typo", type: "other", severity: "warning", note: "La Circolare stampa «i cui I_T»; il testo è conservato fedelmente. Il refuso è stato confermato nella revisione umana delle formule C4.2.85–C4.2.92." },
         ],
     },
 };

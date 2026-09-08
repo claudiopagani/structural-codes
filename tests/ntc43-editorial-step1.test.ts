@@ -13,3 +13,11 @@ test("NTC 4.3 pp. 119-127 conserva marker, enfasi e didascalie", async () => {
     const manifest = await read("corpus/assets/ntc2018/4.3-step2.json");
     assert.ok(manifest.figures.filter((figure: { pdfPage: number }) => figure.pdfPage <= 127).every((figure: { caption: string; captionInline?: Array<{ kind: string; value: string }> }) => figure.captionInline?.[0]?.kind === "strong" && figure.captionInline.map((part) => part.value).join("") === figure.caption));
 });
+
+test("NTC 4.3.5.5.1 conserva il refuso ufficiale e la didascalia confermata", async () => {
+    const unit = await read("corpus/units/ntc2018/4.3.5.5.1.json");
+    const reference = unit.blocks.find((block: { text?: { normalized?: string } }) => block.text?.normalized?.includes("vedi Fig. 4.3.-9"));
+    assert.ok(reference);
+    assert.ok(unit.workflow.openIssues.some((issue: { issueId: string; severity: string }) => issue.issueId.endsWith("-source-typo") && issue.severity === "warning"));
+    assert.ok(unit.workflow.reviews.some((review: { reviewId: string; result: string }) => review.reviewId.endsWith("-figure-typo-confirmation-01") && review.result === "accepted"));
+});

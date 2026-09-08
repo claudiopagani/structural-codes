@@ -873,7 +873,7 @@
           "x": 82,
           "y": 198,
           "width": 440,
-          "height": 110.0
+          "height": 120
         },
         "extraction": {
           "method": "manual-transcription",
@@ -890,11 +890,6 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc43-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "figure-caption-crop-0.1.0",
-            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "b0eea4fc767e3b20568648085cd523de898117e74a84089b8af110f2d541f5d4",
@@ -919,7 +914,19 @@
       "toolVersion": "ntc43-editorial-profile-0.1.0"
     },
     "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
+    "reviews": [
+      {
+        "reviewId": "ntc2018-4-3-5-5-1-figure-typo-confirmation-01",
+        "type": "editorial",
+        "reviewer": {
+          "actorId": "reviewer:human:user-confirmation",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-09-08T00:00:00Z",
+        "result": "accepted",
+        "note": "Confermata da revisore umano la didascalia «Fig. 4.3.9»; nel capoverso resta fedelmente «Fig. 4.3.-9», refuso della fonte."
+      }
+    ],
     "openIssues": [
       {
         "issueId": "ntc2018-4-3-5-5-1-source-review",
@@ -936,8 +943,8 @@
       {
         "issueId": "ntc2018-4-3-5-5-1-source-typo",
         "type": "other",
-        "severity": "blocking",
-        "note": "La fonte stampa «Fig. 4.3.-9» nel capoverso, mentre la didascalia e il riferimento successivo stampano «Fig. 4.3.9»; mantenere l’anomalia per revisione umana."
+        "severity": "warning",
+        "note": "La fonte stampa «Fig. 4.3.-9» nel capoverso, mentre la didascalia e il riferimento successivo stampano «Fig. 4.3.9»; refuso confermato da revisore umano e conservato fedelmente."
       }
     ]
   }

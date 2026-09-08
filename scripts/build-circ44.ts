@@ -629,14 +629,14 @@ for (const unit of units) {
             note: "Formule e figura sono state collocate nel flusso originario e trascritte dal render ufficiale; resta obbligatoria la verifica umana degli asset.",
         });
     }
-    if (unit.number === "C4.4.15") {
-        openIssues.push({
-            issueId: issuePrefix + "-raw-glyph-corruption",
-            type: "ambiguous-source",
-            severity: "blocking",
-            note: "Il layer testuale estratto della frase sulle viti alle righe 9–10 di pagina PDF 162 contiene glifi di controllo; il testo normalizzato è stato ricostruito dal render ad alta scala.",
-        });
-    }
+    const reviews = unit.number === "C4.4.15" ? [{
+        reviewId: "circ2019-c4-4-15-glyph-confirmation-01",
+        type: "editorial",
+        reviewer: { actorId: "reviewer:human:user-confirmation", kind: "human" },
+        reviewedAt: "2026-09-08T00:00:00Z",
+        result: "accepted",
+        note: "Confermata da revisore umano la ricostruzione visiva del passaggio sulle viti a pagina PDF 162: «d ≤ 6 mm» e «d>6 mm». Il raw con glifi di controllo resta conservato.",
+    }] : [];
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
         schemaVersion: "2.0.0-alpha.2",
@@ -662,7 +662,7 @@ for (const unit of units) {
             status: "extracted",
             createdBy: { actorId: "codex:circ44-step1", kind: "automated-agent", toolVersion: profile },
             createdAt,
-            reviews: [],
+        reviews,
             openIssues,
         },
     };

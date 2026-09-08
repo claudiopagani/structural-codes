@@ -365,3 +365,12 @@ test("C4.2 pagine 144-146 conserva i prodotti inline", async () => {
         assert.equal(part.latex?.match(/\\cdot/gu)?.length ?? 0, part.value.match(/·/gu)?.length ?? 0);
     }
 });
+
+test("C4.2.85-C4.2.92 conserva il refuso confermato senza alterare il testo ufficiale", async () => {
+    const unit = await json("corpus/units/circ2019/c4.2.4.1.3.4.8.json");
+    const definition = unit.blocks.find(({ text }: { text?: { normalized?: string } }) => text?.normalized?.startsWith("i cui I_T"));
+    assert.ok(definition);
+    assert.equal(unit.workflow.openIssues.some((issue: { issueId: string }) => issue.issueId.endsWith("-formula-review")), false);
+    assert.ok(unit.workflow.openIssues.some((issue: { issueId: string; severity: string }) => issue.issueId.endsWith("-source-typo") && issue.severity === "warning"));
+    assert.ok(unit.workflow.reviews.some((review: { reviewId: string; result: string }) => review.reviewId.endsWith("-formula-confirmation-01") && review.result === "accepted"));
+});

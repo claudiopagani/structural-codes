@@ -1076,19 +1076,25 @@
       "toolVersion": "circ44-editorial-profile-0.1.0"
     },
     "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
+    "reviews": [
+      {
+        "reviewId": "circ2019-c4-4-15-glyph-confirmation-01",
+        "type": "editorial",
+        "reviewer": {
+          "actorId": "reviewer:human:user-confirmation",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-09-08T00:00:00Z",
+        "result": "accepted",
+        "note": "Confermata da revisore umano la ricostruzione visiva del passaggio sulle viti a pagina PDF 162: «d ≤ 6 mm» e «d>6 mm». Il raw con glifi di controllo resta conservato."
+      }
+    ],
     "openIssues": [
       {
         "issueId": "circ2019-c4-4-15-source-review",
         "type": "normalization-review",
         "severity": "blocking",
         "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      },
-      {
-        "issueId": "circ2019-c4-4-15-raw-glyph-corruption",
-        "type": "ambiguous-source",
-        "severity": "blocking",
-        "note": "Il layer testuale estratto della frase sulle viti alle righe 9–10 di pagina PDF 162 contiene glifi di controllo; il testo normalizzato è stato ricostruito dal render ad alta scala."
       }
     ]
   }
