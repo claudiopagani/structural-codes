@@ -93,6 +93,22 @@ dell’unità attiva; PDF.js e il file PDF vengono caricati solo dopo l’azione
 esplicita “Apri PDF ufficiale”. Nel build web di produzione il pannello non è
 presente.
 
+### Baseline prestazionale
+
+La baseline browser ripetibile usa il build production e Chrome DevTools
+Protocol senza dipendenze aggiuntive. Ogni modalità viene aperta in un contesto
+isolato con cache HTTP disabilitata e rete Fast 4G simulata (150 ms, 1,6 Mbps in
+download, 750 Kbps in upload):
+
+```bash
+npm run performance:baseline
+```
+
+Il risultato machine-readable viene scritto in
+`reports/performance-baseline.json`. È possibile scegliere browser, URL di un
+server già avviato o destinazione con `SCV_CHROMIUM_PATH`, `SCV_BASE_URL` e
+`SCV_BASELINE_OUTPUT`.
+
 ## Package
 
 La prerelease non viene pubblicata da questo repository. Per una futura
