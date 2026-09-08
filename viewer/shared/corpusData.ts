@@ -164,6 +164,13 @@ export interface SearchIndex {
   units: Array<{ id: string; document: DocumentId; numbering: string; title: string; chunkPath: string; text: string }>;
 }
 
+export interface DocumentLookup {
+  unitById: Map<string, UnitSummary>;
+  unitsByChunkPath: Map<string, UnitSummary[]>;
+  chunkPaths: string[];
+  chunkIndexByPath: Map<string, number>;
+}
+
 const jsonCache = new Map<string, Promise<unknown>>();
 
 function basePath(dataBaseUrl: string) {
@@ -183,8 +190,50 @@ async function fetchJson<T>(path: string): Promise<T> {
       return response.json();
     });
     jsonCache.set(path, pending);
+    pending.catch(() => {
+      if (jsonCache.get(path) === pending) jsonCache.delete(path);
+    });
   }
   return pending as Promise<T>;
+}
+
+export function createDocumentLookup(index: DocumentIndex): DocumentLookup {
+  const unitById = new Map<string, UnitSummary>();
+  const unitsByChunkPath = new Map<string, UnitSummary[]>();
+  for (const unit of index.units) {
+    unitById.set(unit.id, unit);
+    const chunkUnits = unitsByChunkPath.get(unit.chunkPath) ?? [];
+    chunkUnits.push(unit);
+    unitsByChunkPath.set(unit.chunkPath, chunkUnits);
+  }
+  const chunkPaths = [...unitsByChunkPath.keys()];
+  return {
+    unitById,
+    unitsByChunkPath,
+    chunkPaths,
+    chunkIndexByPath: new Map(chunkPaths.map((path, position) => [path, position])),
+  };
+}
+
+export function initialUnitForIndex(index: DocumentIndex, requestedUnitId: string | null) {
+  return index.units.find((unit) => unit.id === requestedUnitId)
+    ?? index.units.find((unit) => unit.hierarchy.ancestorIds.length === 0)
+    ?? index.units[0]
+    ?? null;
+}
+
+export function adjacentChunkPaths(lookup: DocumentLookup, chunkPath: string) {
+  const position = lookup.chunkIndexByPath.get(chunkPath);
+  if (position === undefined) return { previous: null, next: null };
+  return {
+    previous: lookup.chunkPaths[position - 1] ?? null,
+    next: lookup.chunkPaths[position + 1] ?? null,
+  };
+}
+
+/** Read-only instrumentation used by diagnostics and tests. */
+export function cachedJsonPaths() {
+  return [...jsonCache.keys()];
 }
 
 export function documentForMode(mode: ViewerMode): DocumentId {

@@ -35,8 +35,15 @@ function tableAssetClass(officialNumber: string | null) {
   return suffix ? `table-asset-${suffix}` : "";
 }
 
+const latexMarkupCache = new Map<string, { __html: string }>();
+
 function latexMarkup(latex: string, displayMode: boolean) {
-  return { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
+  const key = `${displayMode ? "display" : "inline"}:${latex}`;
+  const cached = latexMarkupCache.get(key);
+  if (cached) return cached;
+  const markup = { __html: katex.renderToString(latex, { displayMode, throwOnError: false, strict: "warn", output: "html" }) };
+  latexMarkupCache.set(key, markup);
+  return markup;
 }
 
 type CopyAssetKind = "formula" | "figure";

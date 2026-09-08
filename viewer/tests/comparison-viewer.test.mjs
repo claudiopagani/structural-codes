@@ -34,13 +34,13 @@ test("il build web non serve il PDF ufficiale", async () => {
 
 test("la selezione dall'indice usa il pannello testo e preserva il deep-link", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
-  assert.match(source, /function selectUnit\(unit: UnitSummary\)/);
+  assert.match(source, /const selectUnit = useCallback\(\(unit: UnitSummary\)/);
   assert.match(source, /function scrollTextUnit\(root: HTMLElement \| null, unitId: string\)/);
   assert.match(source, /root\.scrollTo\(\{ top:/);
-  assert.match(source, /textPaneRef\.current\?\.querySelector/);
+  assert.match(source, /scrollTextUnit\(textPaneRef\.current, unit\.id\)/);
   assert.match(source, /data-index-unit=/);
-  assert.match(source, /updateDeepLink\(mode, unit\.id, defaultMode\)/);
-  assert.match(source, /scrollRequestRef\.current = targetId/);
+  assert.match(source, /updateDeepLink\(navigationRef\.current\.mode, unit\.id, defaultMode\)/);
+  assert.match(source, /scrollRequestRef\.current = summary\.id/);
   assert.doesNotMatch(source, /window\.document\.querySelector/);
 });
 
@@ -57,7 +57,7 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.match(source, /<>NTC<br \/>CIRC\.<\/>/);
   assert.match(source, /function ModeSegmentedControl\(/);
   assert.match(source, /className="scv-mode-switch" role="group"/);
-  assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{changeMode\} \/>/);
+  assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{onModeChange\} \/>/);
   assert.match(source, /Mostra PDF ufficiale/);
   assert.match(source, /const \[darkMode, setDarkMode\] = useState<boolean \| null>\(null\)/);
   assert.match(source, /localStorage\.getItem\("scv-theme"\)/);
@@ -72,11 +72,11 @@ test("combined usa le NTC come base e aggiunge i soli contenuti Circolare mancan
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /loadRelations\(manifest, dataBaseUrl\)/);
   assert.match(source, /loadDocumentIndex\(manifest, "circ2019", dataBaseUrl\)/);
-  assert.match(source, /const \[circRecords, setCircRecords\]/);
+  assert.match(source, /const circRecords = useMemo/);
   assert.match(source, /function baseNumbering\(value: string\)/);
   assert.match(source, /!primaryNumbers\.has\(baseNumbering\(summary\.numbering\.official\)\)/);
   assert.match(source, /sourceUnitId === resultId/);
-  assert.match(source, /setRelatedByTarget\(new Map\(\)\)/);
+  assert.match(source, /const relatedByTarget = useMemo/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
   assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
   assert.match(source, /const keepNtcChapterMarker = mode === "combined"[\s\S]*unit\.document === "ntc2018"[\s\S]*isChapter/);
@@ -90,18 +90,19 @@ test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () =
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
   ]);
-  assert.match(source, /const documentChunkPaths = useMemo/);
-  assert.match(source, /Promise\.all\(documentChunkPaths\.map/);
+  assert.match(source, /const primaryRenderedPaths = useMemo/);
+  assert.doesNotMatch(source, /Promise\.all\(documentChunkPaths\.map|manifest\?\.chunks\.filter/);
+  assert.match(source, /new IntersectionObserver/);
   assert.match(source, /root\.addEventListener\("scroll"/);
   assert.match(source, /setActiveUnitId\(nextId\)/);
-  assert.match(source, /renderRecords\.map\(renderRecord\)/);
+  assert.match(source, /records\.map\(\(record\) => <MemoizedUnit/);
   assert.match(source, /const activeLevelId = activeLevelIds\[levelIndex\]/);
-  assert.match(source, /function DocumentScrollbar\(/);
+  assert.match(source, /const DocumentScrollbar = memo/);
   assert.match(source, /const scrollbarMarkers = useMemo/);
   assert.match(source, /className=\{`scv-scroll-marker/);
   assert.match(source, /<DocumentScrollbar rootRef=\{textPaneRef\}/);
   assert.match(source, /className="scv-text-pane-shell"/);
-  assert.match(source, /const displayEntries = useMemo/);
+  assert.match(source, /const navigationEntries = useMemo/);
   assert.match(styles, /\.scv-index-grid \{[^}]*grid-template-columns: minmax\(0, 1fr\);[^}]*grid-template-rows: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(styles, /\.scv-index-list \{[^}]*overflow: auto/);
   assert.match(styles, /\.scv-scroll-rail/);

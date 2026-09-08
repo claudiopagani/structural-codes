@@ -37,13 +37,19 @@ API intenzionale:
 
 La ricerca è sempre visibile ma carica `search-index.json` soltanto con almeno
 due caratteri. Manifest, indice documento, chunk e relazioni restano separati.
+All'apertura il client carica il manifest, l'indice del documento e il solo
+chunk dell'unità iniziale; i chunk adiacenti vengono messi in cache durante i
+periodi idle e montati soltanto quando la navigazione o lo scroll li richiede.
+La cache JSON di sessione deduplica richieste e parsing per URL.
 Le figure sono lazy e il package shared non importa `pdfjs-dist`, non conosce
 `/api/source-pdf` e non dipende da servizi di hosting. React e ReactDOM sono
 peer dependencies React 19. Nell’indice della consultazione comparata le tre
 righe seguono la selezione corrente: capitolo → paragrafi → sottoparagrafi. Il
-documento attivo viene caricato e reso in un unico flusso dall’inizio alla
-fine; lo scroll aggiorna i tre livelli evidenziati e i click nell’indice portano
-al relativo riferimento.
+documento attivo conserva un unico flusso continuo, popolato progressivamente
+per chunk; lo scroll aggiorna i tre livelli evidenziati e i click nell’indice
+portano al relativo riferimento. In modalità combinata, i chunk della Circolare
+sono caricati solo per le relazioni e i supplementi appartenenti alla finestra
+NTC effettivamente resa.
 
 ## Artefatti
 
