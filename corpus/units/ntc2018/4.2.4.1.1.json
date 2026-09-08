@@ -36,11 +36,15 @@
       "text": {
         "raw": "4.2.4.1.1 Resistenza di progetto",
         "normalized": "4.2.4.1.1 Resistenza di progetto",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.1 Resistenza di progetto"
+            "value": "4.2.4.1.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Resistenza di progetto"
           }
         ]
       },
@@ -60,7 +64,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
+          }
+        ],
         "rawSha256": "0ca0dc8743718b52c0f6a24524b76ffe97b8e956443dd9e31b8e4af73f5f3cf3",
         "normalizedSha256": "0ca0dc8743718b52c0f6a24524b76ffe97b8e956443dd9e31b8e4af73f5f3cf3"
       }
@@ -185,7 +195,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.1#block-editorial-003",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Rk è il valore caratteristico della resistenza (trazione, compressione, flessione, taglio e torsione ) della membratura, determinata\ndai valori caratteristici delle resistenze dei materiali fyk e dalle caratteristiche geometriche degli elementi strutturali, dipen-\ndenti dalla classe della sezione.",
@@ -257,11 +267,12 @@
         ],
         "rawSha256": "d794f0d1cf77931a53d9611edcad9adb8f00b501b4c35f75e7d5e4d32ccf886c",
         "normalizedSha256": "2f33983ff51892e9c52eba5688f15f7abdeed7770eb1912b02de74751b2395b2"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "γM è il fattore parziale globale relativo al modello di resistenza adottato.",
@@ -298,7 +309,8 @@
         "transformations": [],
         "rawSha256": "fba0fa8d29000f54ee5d72b664157be67c8146ad46c8e1aeb136b224f4310852",
         "normalizedSha256": "fba0fa8d29000f54ee5d72b664157be67c8146ad46c8e1aeb136b224f4310852"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.1#block-editorial-005",

@@ -82,11 +82,27 @@
       "text": {
         "raw": "Le unioni realizzate con bulloni si distinguono in “non precaricate” e “precaricate”.",
         "normalized": "Le unioni realizzate con bulloni si distinguono in “non precaricate” e “precaricate”.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step4-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le unioni realizzate con bulloni si distinguono in “non precaricate” e “precaricate”."
+            "value": "Le unioni realizzate con bulloni si distinguono in "
+          },
+          {
+            "kind": "em",
+            "value": "“non precaricate”"
+          },
+          {
+            "kind": "text",
+            "value": " e "
+          },
+          {
+            "kind": "em",
+            "value": "“precaricate”"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -106,7 +122,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step4-0.1.0",
+            "note": "Conservati i termini qualificanti in corsivo."
+          }
+        ],
         "rawSha256": "4162909e8e22f8fbdfc24a704603d176220f6fa2baa2f463040cc40bef17b19f",
         "normalizedSha256": "4162909e8e22f8fbdfc24a704603d176220f6fa2baa2f463040cc40bef17b19f"
       }
@@ -118,11 +140,19 @@
       "text": {
         "raw": "Le unioni realizzate con chiodi si considerano sempre “non precaricate” e i chiodi devono essere preferibilmente impegnati a taglio.",
         "normalized": "Le unioni realizzate con chiodi si considerano sempre “non precaricate” e i chiodi devono essere preferibilmente impegnati a taglio.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step4-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Le unioni realizzate con chiodi si considerano sempre “non precaricate” e i chiodi devono essere preferibilmente impegnati a taglio."
+            "value": "Le unioni realizzate con chiodi si considerano sempre "
+          },
+          {
+            "kind": "em",
+            "value": "“non precaricate”"
+          },
+          {
+            "kind": "text",
+            "value": " e i chiodi devono essere preferibilmente impegnati a taglio."
           }
         ]
       },
@@ -162,6 +192,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step4-0.1.0",
+            "note": "Conservato il termine qualificante in corsivo."
           }
         ],
         "rawSha256": "0dbd757724c647fb5b9d6198ee521c5850c8e63eae8b7f649135914167479802",

@@ -36,11 +36,15 @@
       "text": {
         "raw": "4.2.4.1.2 Resistenza delle membrature",
         "normalized": "4.2.4.1.2 Resistenza delle membrature",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2 Resistenza delle membrature"
+            "value": "4.2.4.1.2 "
+          },
+          {
+            "kind": "em",
+            "value": "Resistenza delle membrature"
           }
         ]
       },
@@ -60,7 +64,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
+          }
+        ],
         "rawSha256": "a1de2cec73f87815e0f1f440d53c3c6dfb6f84bd42082925786acd54464019b9",
         "normalizedSha256": "a1de2cec73f87815e0f1f440d53c3c6dfb6f84bd42082925786acd54464019b9"
       }
@@ -228,17 +238,13 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "dove:\nσx,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura;\nσz,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura;\nτEd è il valore di progetto della tensione tangenziale nel punto in esame, agente nel piano della sezione della membratura.",
-        "normalized": "dove: σx,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura; σz,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura; τEd è il valore di progetto della tensione tangenziale nel punto in esame, agente nel piano della sezione della membratura.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "σx,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura;",
+        "normalized": "σx,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura;",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove: "
-          },
           {
             "kind": "math",
             "value": "σx,Ed",
@@ -246,8 +252,62 @@
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura; "
+            "value": " è il valore di progetto della tensione normale nel punto in esame, agente in direzione parallela all’asse della membratura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 101,
+        "printedPage": "97",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 817,
+          "width": 428.6,
+          "height": 30
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» secondo il PDF."
+          }
+        ],
+        "rawSha256": "94f7459a25cf6d0ffcf3578872dc88b81a5443f1c289eee9c34039889e7927e0",
+        "normalizedSha256": "94f7459a25cf6d0ffcf3578872dc88b81a5443f1c289eee9c34039889e7927e0"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2#block-editorial-004-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "σz,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura;",
+        "normalized": "σz,Ed è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura;",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "σz,Ed",
@@ -255,8 +315,62 @@
           },
           {
             "kind": "text",
-            "value": " è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura; "
+            "value": " è il valore di progetto della tensione normale nel punto in esame, agente in direzione ortogonale all’asse della membratura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 101,
+        "printedPage": "97",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 817,
+          "width": 428.6,
+          "height": 30
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» secondo il PDF."
+          }
+        ],
+        "rawSha256": "6eaf7250a4ed38b0d604f68f17b7d98f02021c5566e05a95dc3192d4303aa170",
+        "normalizedSha256": "6eaf7250a4ed38b0d604f68f17b7d98f02021c5566e05a95dc3192d4303aa170"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2#block-editorial-004-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "τEd è il valore di progetto della tensione tangenziale nel punto in esame, agente nel piano della sezione della membratura.",
+        "normalized": "τEd è il valore di progetto della tensione tangenziale nel punto in esame, agente nel piano della sezione della membratura.",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "τEd",
@@ -299,11 +413,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» secondo il PDF."
           }
         ],
-        "rawSha256": "aa6ca422e375e3a544ba87b768873468b0fdcf970f86b13d4f0b25d7aa91296f",
-        "normalizedSha256": "de26458848ec74328cee80d31b262c456e98f08e6f165ddf461c06ac068b64dc"
-      }
+        "rawSha256": "3b01e6221cd886150f6017f9effe9fa2f05ca1b62ede9f101a1666faff839ea2",
+        "normalizedSha256": "3b01e6221cd886150f6017f9effe9fa2f05ca1b62ede9f101a1666faff839ea2"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2#block-editorial-005",

@@ -37,7 +37,17 @@
       "text": {
         "raw": "C4.1.12.1.2.1 Verifiche di deformabilità",
         "normalized": "C4.1.12.1.2.1 Verifiche di deformabilità",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.2.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Verifiche di deformabilità"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,7 +65,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
+          }
+        ],
         "rawSha256": "ac761904c8d4c84801c323d5b561c713012c98c483d521f93d1aee8f5708d94a",
         "normalizedSha256": "ac761904c8d4c84801c323d5b561c713012c98c483d521f93d1aee8f5708d94a"
       }

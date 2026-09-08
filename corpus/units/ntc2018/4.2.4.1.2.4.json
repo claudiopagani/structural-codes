@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.4 Taglio",
         "normalized": "4.2.4.1.2.4 Taglio",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.4 Taglio"
+            "value": "4.2.4.1.2.4 "
+          },
+          {
+            "kind": "em",
+            "value": "Taglio"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "3574f7629c01b11625f5d89b9c5af7db47e93efe73d2abecbdb16a9d1cb0d1b4",
@@ -706,17 +715,13 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "dove:\nA è l’area lorda della sezione del profilo,\nb è la larghezza delle ali per i profilati e la larghezza per le sezioni cave,\nhw è l’altezza dell’anima,\nh è l’altezza delle sezioni cave,\nr è il raggio di raccordo tra anima ed ala,\ntf è lo spessore delle ali,\ntw è lo spessore dell’anima.",
-        "normalized": "dove: A è l’area lorda della sezione del profilo, b è la larghezza delle ali per i profilati e la larghezza per le sezioni cave, hw è l’altezza dell’anima, h è l’altezza delle sezioni cave, r è il raggio di raccordo tra anima ed ala, tf è lo spessore delle ali, tw è lo spessore dell’anima.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "A è l’area lorda della sezione del profilo,",
+        "normalized": "A è l’area lorda della sezione del profilo,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove: "
-          },
           {
             "kind": "math",
             "value": "A",
@@ -724,8 +729,62 @@
           },
           {
             "kind": "text",
-            "value": " è l’area lorda della sezione del profilo, "
+            "value": " è l’area lorda della sezione del profilo,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "ea4f4e22856fb6487df3d1bfb596d975430bb91cae61fabb5f090a9028c4c465",
+        "normalizedSha256": "ea4f4e22856fb6487df3d1bfb596d975430bb91cae61fabb5f090a9028c4c465"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b è la larghezza delle ali per i profilati e la larghezza per le sezioni cave,",
+        "normalized": "b è la larghezza delle ali per i profilati e la larghezza per le sezioni cave,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "b",
@@ -733,8 +792,62 @@
           },
           {
             "kind": "text",
-            "value": " è la larghezza delle ali per i profilati e la larghezza per le sezioni cave, "
+            "value": " è la larghezza delle ali per i profilati e la larghezza per le sezioni cave,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "6099cf3834d13274fc9c0657c344c03f47daf539a06fc82f64b0247dd63bda7a",
+        "normalizedSha256": "6099cf3834d13274fc9c0657c344c03f47daf539a06fc82f64b0247dd63bda7a"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "hw è l’altezza dell’anima,",
+        "normalized": "hw è l’altezza dell’anima,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "hw",
@@ -742,8 +855,62 @@
           },
           {
             "kind": "text",
-            "value": " è l’altezza dell’anima, "
+            "value": " è l’altezza dell’anima,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "691d8b6143ad751f9c9aa726a79dca75022d021e94d3a584f0667c361006f324",
+        "normalizedSha256": "691d8b6143ad751f9c9aa726a79dca75022d021e94d3a584f0667c361006f324"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-4",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "h è l’altezza delle sezioni cave,",
+        "normalized": "h è l’altezza delle sezioni cave,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "h",
@@ -751,8 +918,62 @@
           },
           {
             "kind": "text",
-            "value": " è l’altezza delle sezioni cave, "
+            "value": " è l’altezza delle sezioni cave,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "9055c2e8d30220cdda60c575bcd91b85002aaacd123094be256b8c9eb34e4814",
+        "normalizedSha256": "9055c2e8d30220cdda60c575bcd91b85002aaacd123094be256b8c9eb34e4814"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-5",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "r è il raggio di raccordo tra anima ed ala,",
+        "normalized": "r è il raggio di raccordo tra anima ed ala,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "r",
@@ -760,8 +981,62 @@
           },
           {
             "kind": "text",
-            "value": " è il raggio di raccordo tra anima ed ala, "
+            "value": " è il raggio di raccordo tra anima ed ala,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "8cd24ee0ed3737aa14c0482be4c22c484197c62c4ee5793b28576565f3d3fa3a",
+        "normalizedSha256": "8cd24ee0ed3737aa14c0482be4c22c484197c62c4ee5793b28576565f3d3fa3a"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-6",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "tf è lo spessore delle ali,",
+        "normalized": "tf è lo spessore delle ali,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "tf",
@@ -769,8 +1044,62 @@
           },
           {
             "kind": "text",
-            "value": " è lo spessore delle ali, "
+            "value": " è lo spessore delle ali,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 103,
+        "printedPage": "99",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 578,
+          "width": 428.6,
+          "height": 58
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "3c6d406077d76c1aee0a4703d2e0c72d5c7cf52691e3a557746a8d2ad281205f",
+        "normalizedSha256": "3c6d406077d76c1aee0a4703d2e0c72d5c7cf52691e3a557746a8d2ad281205f"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-009-7",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "tw è lo spessore dell’anima.",
+        "normalized": "tw è lo spessore dell’anima.",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "tw",
@@ -813,11 +1142,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le sette definizioni geometriche stampate su righe distinte."
           }
         ],
-        "rawSha256": "0e70895660997a9d0392ed46311932ee7d9a59013201520fb40b8f1e05a727f9",
-        "normalizedSha256": "bef71433981b1e5b2dc77698dbe8e3a33a7d709dc4f5adf6855c9e4319ffe8a2"
-      }
+        "rawSha256": "4e8c901b754ad86dfcdf8b1bd74819344e5a13785b5c4fb9f70e57ae19ab4c22",
+        "normalizedSha256": "4e8c901b754ad86dfcdf8b1bd74819344e5a13785b5c4fb9f70e57ae19ab4c22"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.4#block-editorial-010",

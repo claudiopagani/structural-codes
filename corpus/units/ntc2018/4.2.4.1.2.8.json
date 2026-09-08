@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.8 Presso o tenso flessione biassiale",
         "normalized": "4.2.4.1.2.8 Presso o tenso flessione biassiale",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.8 Presso o tenso flessione biassiale"
+            "value": "4.2.4.1.2.8 "
+          },
+          {
+            "kind": "em",
+            "value": "Presso o tenso flessione biassiale"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "f63f46ca2cd9801fd94a15d23ff810b1f6384cd05c3621722ddbd05ec4ef01e4",

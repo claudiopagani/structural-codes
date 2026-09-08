@@ -163,7 +163,7 @@
           "x": 75,
           "y": 450,
           "width": 440,
-          "height": 58.0
+          "height": 58
         },
         "extraction": {
           "method": "manual-transcription",
@@ -196,14 +196,67 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "essendo: δC la monta iniziale della trave, δ1 lo spostamento elastico dovuto ai carichi permanenti, δ2 lo spostamento elastico dovuto ai carichi variabili, δmax lo spostamento nello stato finale, depurato della monta iniziale = δtot − δC.",
-        "normalized": "essendo: δC la monta iniziale della trave, δ1 lo spostamento elastico dovuto ai carichi permanenti, δ2 lo spostamento elastico dovuto ai carichi variabili, δmax lo spostamento nello stato finale, depurato della monta iniziale = δtot − δC.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "essendo:",
+        "normalized": "essendo:",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "essendo: "
+            "value": "essendo:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 110,
+        "printedPage": "106",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 650,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe del capoverso e normalizza gli spazi."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Separate le definizioni allineate degli spostamenti verticali."
+          }
+        ],
+        "rawSha256": "b94af79d7c564513470499e9cfd069e0fa86a9b1387ff3c16d39c7cf630db40f",
+        "normalizedSha256": "b94af79d7c564513470499e9cfd069e0fa86a9b1387ff3c16d39c7cf630db40f"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.2.1#block-p2-definition-1",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "δC la monta iniziale della trave,",
+        "normalized": "δC la monta iniziale della trave,",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "δC",
@@ -211,8 +264,67 @@
           },
           {
             "kind": "text",
-            "value": " la monta iniziale della trave, "
+            "value": " la monta iniziale della trave,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 110,
+        "printedPage": "106",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 650,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe del capoverso e normalizza gli spazi."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Separate le definizioni allineate degli spostamenti verticali."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Resi espliciti i simboli delle definizioni di spostamento."
+          }
+        ],
+        "rawSha256": "f31af73ecf2930060d4dbaf83b4c15d1781674c1056a0d8af7e94e0a6b21a50f",
+        "normalizedSha256": "f31af73ecf2930060d4dbaf83b4c15d1781674c1056a0d8af7e94e0a6b21a50f"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.2.1#block-p2-definition-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "δ1 lo spostamento elastico dovuto ai carichi permanenti,",
+        "normalized": "δ1 lo spostamento elastico dovuto ai carichi permanenti,",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "δ1",
@@ -220,8 +332,67 @@
           },
           {
             "kind": "text",
-            "value": " lo spostamento elastico dovuto ai carichi permanenti, "
+            "value": " lo spostamento elastico dovuto ai carichi permanenti,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 110,
+        "printedPage": "106",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 650,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe del capoverso e normalizza gli spazi."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Separate le definizioni allineate degli spostamenti verticali."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Resi espliciti i simboli delle definizioni di spostamento."
+          }
+        ],
+        "rawSha256": "a71e498c1206f11a29a87fdaa2d7ce9aa7b15fd8b058aaad1646788cbacc8c96",
+        "normalizedSha256": "a71e498c1206f11a29a87fdaa2d7ce9aa7b15fd8b058aaad1646788cbacc8c96"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.2.1#block-p2-definition-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "δ2 lo spostamento elastico dovuto ai carichi variabili,",
+        "normalized": "δ2 lo spostamento elastico dovuto ai carichi variabili,",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "δ2",
@@ -229,8 +400,67 @@
           },
           {
             "kind": "text",
-            "value": " lo spostamento elastico dovuto ai carichi variabili, "
+            "value": " lo spostamento elastico dovuto ai carichi variabili,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 110,
+        "printedPage": "106",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 650,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe del capoverso e normalizza gli spazi."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Separate le definizioni allineate degli spostamenti verticali."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Resi espliciti i simboli delle definizioni di spostamento."
+          }
+        ],
+        "rawSha256": "37019252cb9eea90b2958dc23b3b158c563051872ea0b9aecff768a7f637eadf",
+        "normalizedSha256": "37019252cb9eea90b2958dc23b3b158c563051872ea0b9aecff768a7f637eadf"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.2.1#block-p2-definition-4",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "δmax lo spostamento nello stato finale, depurato della monta iniziale = δtot − δC.",
+        "normalized": "δmax lo spostamento nello stato finale, depurato della monta iniziale = δtot − δC.",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "δmax",
@@ -282,11 +512,22 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Separate le definizioni allineate degli spostamenti verticali."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Resi espliciti i simboli delle definizioni di spostamento."
           }
         ],
-        "rawSha256": "7935a1b7501acb835fbe2439ba6c8386c9d14f34a244da062d42ab1a7996c41a",
-        "normalizedSha256": "7935a1b7501acb835fbe2439ba6c8386c9d14f34a244da062d42ab1a7996c41a"
-      }
+        "rawSha256": "fdb4f28d9a6fcb6d885d9c7a6061f4ffdebe7c0c2914a23f846996febe8bf3bc",
+        "normalizedSha256": "fdb4f28d9a6fcb6d885d9c7a6061f4ffdebe7c0c2914a23f846996febe8bf3bc"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.2.1#block-p3",

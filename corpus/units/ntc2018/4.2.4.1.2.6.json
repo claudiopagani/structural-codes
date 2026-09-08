@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.6 Flessione e taglio",
         "normalized": "4.2.4.1.2.6 Flessione e taglio",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.6 Flessione e taglio"
+            "value": "4.2.4.1.2.6 "
+          },
+          {
+            "kind": "em",
+            "value": "Flessione e taglio"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "245aeb11158af5e1741e3d02deef7b6835c3d31dcc95bd6dde8ee1606b178cc6",
@@ -187,11 +196,29 @@
       "text": {
         "raw": "si può trascurare l’influenza del taglio sulla resistenza a flessione, eccetto nei casi in cui l’instabilità per taglio riduca la resistenza a flessione della sezione. Se il taglio di progetto VEd è superiore a metà della resistenza di progetto a taglio Vc,Rd bisogna tener conto dell’influenza del taglio sulla resistenza a flessione.",
         "normalized": "si può trascurare l’influenza del taglio sulla resistenza a flessione, eccetto nei casi in cui l’instabilità per taglio riduca la resistenza a flessione della sezione. Se il taglio di progetto VEd è superiore a metà della resistenza di progetto a taglio Vc,Rd bisogna tener conto dell’influenza del taglio sulla resistenza a flessione.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "si può trascurare l’influenza del taglio sulla resistenza a flessione, eccetto nei casi in cui l’instabilità per taglio riduca la resistenza a flessione della sezione. Se il taglio di progetto VEd è superiore a metà della resistenza di progetto a taglio Vc,Rd bisogna tener conto dell’influenza del taglio sulla resistenza a flessione."
+            "value": "si può trascurare l’influenza del taglio sulla resistenza a flessione, eccetto nei casi in cui l’instabilità per taglio riduca la resistenza a flessione della sezione. Se il taglio di progetto "
+          },
+          {
+            "kind": "math",
+            "value": "VEd",
+            "latex": "V_{Ed}"
+          },
+          {
+            "kind": "text",
+            "value": " è superiore a metà della resistenza di progetto a taglio "
+          },
+          {
+            "kind": "math",
+            "value": "Vc,Rd",
+            "latex": "V_{c,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " bisogna tener conto dell’influenza del taglio sulla resistenza a flessione."
           }
         ]
       },
@@ -226,6 +253,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinati i pedici delle azioni di taglio nella prosa."
           }
         ],
         "rawSha256": "250b9ce999717b3363c9f02fc8ca630452054a4e61173d06b1eea9bf4893ecd1",

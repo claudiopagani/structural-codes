@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import katex from "katex";
 import type { AssetBundle, CorpusBlock, InlineSegment, TableCell, CorpusUnit } from "./corpusData";
-import { visibleTableCaption, visibleTableNumberSuffix } from "./tableCaptions.mjs";
+import { visibleTableCaption, visibleTableCaptionInline, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
 const editorialTableNotePatterns = [
   /^\s*\[(?:TABELLA|ASSET)_[^\]]+\]/iu,
@@ -333,6 +333,10 @@ function renderInlineSegments(inline: InlineSegments) {
       nodes.push(<u key={`underline-${index}`}>{segment.value}</u>);
       return;
     }
+    if (segment.kind === "em-underline") {
+      nodes.push(<em key={`em-underline-${index}`}><u>{segment.value}</u></em>);
+      return;
+    }
     if (segment.kind === "strong") {
       nodes.push(<strong key={`strong-${index}`}>{segment.value}</strong>);
       return;
@@ -400,12 +404,13 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   if (table) {
     const notes = visibleTableNotes(table.notes);
     const caption = visibleTableCaption(table.officialNumber, table.caption);
+    const captionInline = visibleTableCaptionInline(table.officialNumber, table.caption, table.captionInline);
     const numberSuffix = visibleTableNumberSuffix(table.officialNumber, table.caption);
     const label = table.officialNumber ? `Tab. ${table.officialNumber}${numberSuffix}` : table.hideLabel ? null : "Tabella non numerata";
     const compactTable = tableColumnCount(table.headers, table.rows) <= 4;
     return (
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
-        {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{table.captionInline ? renderInlineSegments(table.captionInline) : caption}</span>}</figcaption>}
+        {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
       </figure>

@@ -18,16 +18,53 @@
       "headers": [
         [
           {
-            "text": "Sistema strutturale"
+            "text": "Sistema strutturale",
+            "rowSpan": 2
           },
           {
-            "text": "K"
+            "text": "K",
+            "rowSpan": 2,
+            "inline": [
+              {
+                "kind": "math",
+                "value": "K",
+                "latex": "K"
+              }
+            ]
           },
           {
-            "text": "Calcestruzzo molto sollecitato ρ = 1,5%"
+            "text": "Calcestruzzo",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "molto sollecitato ρ = 1,5%",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "molto sollecitato "
+              },
+              {
+                "kind": "math",
+                "value": "ρ = 1,5%",
+                "latex": "\\rho=1{,}5\\%"
+              }
+            ]
           },
           {
-            "text": "Calcestruzzo poco sollecitato ρ = 0,5%"
+            "text": "poco sollecitato ρ = 0,5%",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "poco sollecitato "
+              },
+              {
+                "kind": "math",
+                "value": "ρ = 0,5%",
+                "latex": "\\rho=0{,}5\\%"
+              }
+            ]
           }
         ]
       ],
@@ -106,6 +143,34 @@
       "notes": [
         "Le snellezze limite sono valutate ponendo, nella formula C4.1.4, fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
         "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore."
+      ],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.I"
+        },
+        {
+          "kind": "em",
+          "value": " – Valori di "
+        },
+        {
+          "kind": "math",
+          "value": "K",
+          "latex": "K"
+        },
+        {
+          "kind": "em",
+          "value": " e snellezze "
+        },
+        {
+          "kind": "math",
+          "value": "l/h",
+          "latex": "\\frac{l}{h}"
+        },
+        {
+          "kind": "em",
+          "value": " limite per elementi inflessi di c.a. in assenza di compressione assiale"
+        }
       ]
     },
     {
@@ -118,16 +183,72 @@
       "headers": [
         [
           {
-            "text": "Tensione nell’acciaio σs [MPa]"
+            "text": "Tensione nell’acciaio"
           },
           {
-            "text": "Diametro massimo φ delle barre per w3 = 0,4 mm"
+            "text": "Diametro massimo φ delle barre (mm)",
+            "colSpan": 3,
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Diametro massimo "
+              },
+              {
+                "kind": "math",
+                "value": "φ",
+                "latex": "\\phi"
+              },
+              {
+                "kind": "text",
+                "value": " delle barre (mm)"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "text": "σs [MPa]",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "σs",
+                "latex": "\\sigma_s"
+              },
+              {
+                "kind": "text",
+                "value": " [MPa]"
+              }
+            ]
           },
           {
-            "text": "Diametro massimo φ delle barre per w2 = 0,3 mm"
+            "text": "w3 = 0,4 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w3 = 0,4 mm",
+                "latex": "w_3=0{,}4\\,\\mathrm{mm}"
+              }
+            ]
           },
           {
-            "text": "Diametro massimo φ delle barre per w1 = 0,2 mm"
+            "text": "w2 = 0,3 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w2 = 0,3 mm",
+                "latex": "w_2=0{,}3\\,\\mathrm{mm}"
+              }
+            ]
+          },
+          {
+            "text": "w1 = 0,2 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w1 = 0,2 mm",
+                "latex": "w_1=0{,}2\\,\\mathrm{mm}"
+              }
+            ]
           }
         ]
       ],
@@ -217,7 +338,17 @@
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.II"
+        },
+        {
+          "kind": "em",
+          "value": " – Diametri massimi delle barre per il controllo di fessurazione"
+        }
+      ]
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c4.1.iii",
@@ -229,16 +360,57 @@
       "headers": [
         [
           {
-            "text": "Tensione nell’acciaio σs [MPa]"
+            "text": "Tensione nell’acciaio"
           },
           {
-            "text": "Spaziatura massima s delle barre per w3 = 0,4 mm"
+            "text": "Spaziatura massima delle barre (mm)",
+            "colSpan": 3
+          }
+        ],
+        [
+          {
+            "text": "σs [MPa]",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "σs",
+                "latex": "\\sigma_s"
+              },
+              {
+                "kind": "text",
+                "value": " [MPa]"
+              }
+            ]
           },
           {
-            "text": "Spaziatura massima s delle barre per w2 = 0,3 mm"
+            "text": "w3 = 0,4 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w3 = 0,4 mm",
+                "latex": "w_3=0{,}4\\,\\mathrm{mm}"
+              }
+            ]
           },
           {
-            "text": "Spaziatura massima s delle barre per w1 = 0,2 mm"
+            "text": "w2 = 0,3 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w2 = 0,3 mm",
+                "latex": "w_2=0{,}3\\,\\mathrm{mm}"
+              }
+            ]
+          },
+          {
+            "text": "w1 = 0,2 mm",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "w1 = 0,2 mm",
+                "latex": "w_1=0{,}2\\,\\mathrm{mm}"
+              }
+            ]
           }
         ]
       ],
@@ -328,7 +500,17 @@
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.III"
+        },
+        {
+          "kind": "em",
+          "value": " – Spaziatura massima delle barre per il controllo di fessurazione"
+        }
+      ]
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c4.1.iv",
@@ -340,37 +522,129 @@
       "headers": [
         [
           {
-            "text": "Cmin"
+            "text": "",
+            "colSpan": 3
           },
           {
-            "text": "C0"
+            "text": "barre da c.a.\nelementi a piastra",
+            "colSpan": 2
           },
           {
-            "text": "Ambiente"
+            "text": "barre da c.a.\naltri elementi",
+            "colSpan": 2
           },
           {
-            "text": "Barre da c.a., elementi a piastra, C ≥ C0"
+            "text": "cavi da c.a.p.\nelementi a piastra",
+            "colSpan": 2
           },
           {
-            "text": "Barre da c.a., elementi a piastra, Cmin ≤ C < C0"
+            "text": "cavi da c.a.p.\naltri elementi",
+            "colSpan": 2
+          }
+        ],
+        [
+          {
+            "text": "Cmin",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "Cmin",
+                "latex": "C_{min}"
+              }
+            ]
           },
           {
-            "text": "Barre da c.a., altri elementi, C ≥ C0"
+            "text": "C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "C0",
+                "latex": "C_0"
+              }
+            ]
           },
           {
-            "text": "Barre da c.a., altri elementi, Cmin ≤ C < C0"
+            "text": "ambiente"
           },
           {
-            "text": "Cavi da c.a.p., elementi a piastra, C ≥ C0"
+            "text": "C≥C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "C≥C0",
+                "latex": "C\\ge C_0"
+              }
+            ]
           },
           {
-            "text": "Cavi da c.a.p., elementi a piastra, Cmin ≤ C < C0"
+            "text": "Cmin≤C<C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "Cmin≤C<C0",
+                "latex": "C_{min}\\le C<C_0"
+              }
+            ]
           },
           {
-            "text": "Cavi da c.a.p., altri elementi, C ≥ C0"
+            "text": "C≥C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "C≥C0",
+                "latex": "C\\ge C_0"
+              }
+            ]
           },
           {
-            "text": "Cavi da c.a.p., altri elementi, Cmin ≤ C < C0"
+            "text": "Cmin≤C<C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "Cmin≤C<C0",
+                "latex": "C_{min}\\le C<C_0"
+              }
+            ]
+          },
+          {
+            "text": "C≥C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "C≥C0",
+                "latex": "C\\ge C_0"
+              }
+            ]
+          },
+          {
+            "text": "Cmin≤C<C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "Cmin≤C<C0",
+                "latex": "C_{min}\\le C<C_0"
+              }
+            ]
+          },
+          {
+            "text": "C≥C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "C≥C0",
+                "latex": "C\\ge C_0"
+              }
+            ]
+          },
+          {
+            "text": "Cmin≤C<C0",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "Cmin≤C<C0",
+                "latex": "C_{min}\\le C<C_0"
+              }
+            ]
           }
         ]
       ],
@@ -481,7 +755,17 @@
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.IV"
+        },
+        {
+          "kind": "em",
+          "value": " – Copriferri minimi in mm"
+        }
+      ]
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c4.1.v",
@@ -496,10 +780,58 @@
             "text": "Classe di resistenza a compressione"
           },
           {
-            "text": "Resistenza caratteristica cilindrica minima flck [N/mm²]"
+            "text": "Resistenza caratteristica cilindrica minima flck [N/mm²]",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Resistenza caratteristica cilindrica minima "
+              },
+              {
+                "kind": "math",
+                "value": "flck",
+                "latex": "f_{lck}"
+              },
+              {
+                "kind": "text",
+                "value": " ["
+              },
+              {
+                "kind": "math",
+                "value": "N/mm²",
+                "latex": "\\mathrm{N/mm^2}"
+              },
+              {
+                "kind": "text",
+                "value": "]"
+              }
+            ]
           },
           {
-            "text": "Resistenza caratteristica cubica minima Rlck [N/mm²]"
+            "text": "Resistenza caratteristica cubica minima Rlck [N/mm²]",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Resistenza caratteristica cubica minima "
+              },
+              {
+                "kind": "math",
+                "value": "Rlck",
+                "latex": "R_{lck}"
+              },
+              {
+                "kind": "text",
+                "value": " ["
+              },
+              {
+                "kind": "math",
+                "value": "N/mm²",
+                "latex": "\\mathrm{N/mm^2}"
+              },
+              {
+                "kind": "text",
+                "value": "]"
+              }
+            ]
           }
         ]
       ],
@@ -604,7 +936,17 @@
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.V"
+        },
+        {
+          "kind": "em",
+          "value": " – Classi di resistenza a compressione per il calcestruzzo leggero strutturale"
+        }
+      ]
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c4.1.vi",
@@ -641,25 +983,82 @@
       "rows": [
         [
           {
-            "text": "Intervallo di massa per unità di volume [kg/m³]"
+            "text": "Intervallo di massa per unità di volume [kg/m³]",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Intervallo di massa per unità di volume ["
+              },
+              {
+                "kind": "math",
+                "value": "kg/m³",
+                "latex": "\\mathrm{kg/m^3}"
+              },
+              {
+                "kind": "text",
+                "value": "]"
+              }
+            ]
           },
           {
-            "text": "1400 < ρ ≤ 1500"
+            "text": "1400<ρ≤1500",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1400<ρ≤1500",
+                "latex": "1400<\\rho\\le1500"
+              }
+            ]
           },
           {
-            "text": "1500 < ρ ≤ 1600"
+            "text": "1500<ρ≤1600",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1500<ρ≤1600",
+                "latex": "1500<\\rho\\le1600"
+              }
+            ]
           },
           {
-            "text": "1600 < ρ ≤ 1700"
+            "text": "1600<ρ≤1700",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1600<ρ≤1700",
+                "latex": "1600<\\rho\\le1700"
+              }
+            ]
           },
           {
-            "text": "1700 < ρ ≤ 1800"
+            "text": "1700<ρ≤1800",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1700<ρ≤1800",
+                "latex": "1700<\\rho\\le1800"
+              }
+            ]
           },
           {
-            "text": "1800 < ρ ≤ 1900"
+            "text": "1800<ρ≤1900",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1800<ρ≤1900",
+                "latex": "1800<\\rho\\le1900"
+              }
+            ]
           },
           {
-            "text": "1900 < ρ ≤ 2000"
+            "text": "1900<ρ≤2000",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "1900<ρ≤2000",
+                "latex": "1900<\\rho\\le2000"
+              }
+            ]
           }
         ],
         [
@@ -709,7 +1108,17 @@
           }
         ]
       ],
-      "notes": []
+      "notes": [],
+      "captionInline": [
+        {
+          "kind": "strong",
+          "value": "Tabella C4.1.VI"
+        },
+        {
+          "kind": "em",
+          "value": " – Classi di massa per unità di volume del calcestruzzo di aggregati leggeri ammesse per l’impiego strutturale"
+        }
+      ]
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c2.4.i",

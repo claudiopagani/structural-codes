@@ -9,10 +9,47 @@ type TableSeed = {
     unit: string;
     page: number;
     caption: string;
-    headers: string[];
-    rows: string[][];
+    headers: TableCell[][] | string[];
+    rows: TableCell[][] | string[][];
     notes?: string[];
 };
+
+type TableCell = {
+    text: string;
+    latex?: string;
+    inline?: Array<{ kind: "text" | "math"; value: string; latex?: string }>;
+    colSpan?: number;
+    rowSpan?: number;
+};
+
+const cell = (text: string, properties: Omit<TableCell, "text"> = {}): TableCell => ({ text, ...properties });
+
+const inline = (
+    text: string,
+    ...parts: Array<{ value: string; latex: string }>
+): TableCell["inline"] => {
+    const segments: NonNullable<TableCell["inline"]> = [];
+    let cursor = 0;
+    for (const part of parts) {
+        const index = text.indexOf(part.value, cursor);
+        if (index < 0) throw new Error(`Segmento ${part.value} assente da ${text}`);
+        if (index > cursor) segments.push({ kind: "text", value: text.slice(cursor, index) });
+        segments.push({ kind: "math", value: part.value, latex: part.latex });
+        cursor = index + part.value.length;
+    }
+    if (cursor < text.length) segments.push({ kind: "text", value: text.slice(cursor) });
+    return segments;
+};
+
+function materializeHeaders(headers: TableSeed["headers"]): TableCell[][] {
+    if (Array.isArray(headers[0])) return headers as TableCell[][];
+    return [(headers as string[]).map((value) => cell(value))];
+}
+
+function materializeRows(rows: TableSeed["rows"]): TableCell[][] {
+    if (typeof rows[0]?.[0] !== "string") return rows as TableCell[][];
+    return (rows as string[][]).map((row) => row.map((value) => cell(value)));
+}
 
 const seeds: TableSeed[] = [
     {
@@ -21,10 +58,19 @@ const seeds: TableSeed[] = [
         page: 90,
         caption: "Tabella C4.1.I – Valori di K e snellezze l/h limite per elementi inflessi di c.a. in assenza di compressione assiale",
         headers: [
-            "Sistema strutturale",
-            "K",
-            "Calcestruzzo molto sollecitato ρ = 1,5%",
-            "Calcestruzzo poco sollecitato ρ = 0,5%",
+            [
+                cell("Sistema strutturale", { rowSpan: 2 }),
+                cell("K", { rowSpan: 2, inline: inline("K", { value: "K", latex: "K" }) }),
+                cell("Calcestruzzo", { colSpan: 2 }),
+            ],
+            [
+                cell("molto sollecitato ρ = 1,5%", {
+                    inline: inline("molto sollecitato ρ = 1,5%", { value: "ρ = 1,5%", latex: "\\rho=1{,}5\\%" }),
+                }),
+                cell("poco sollecitato ρ = 0,5%", {
+                    inline: inline("poco sollecitato ρ = 0,5%", { value: "ρ = 0,5%", latex: "\\rho=0{,}5\\%" }),
+                }),
+            ],
         ],
         rows: [
             ["Travi semplicemente appoggiate, piastre incernierate mono o bidirezionali", "1,0", "14", "20"],
@@ -44,10 +90,19 @@ const seeds: TableSeed[] = [
         page: 93,
         caption: "Tabella C4.1.II – Diametri massimi delle barre per il controllo di fessurazione",
         headers: [
-            "Tensione nell’acciaio σs [MPa]",
-            "Diametro massimo φ delle barre per w3 = 0,4 mm",
-            "Diametro massimo φ delle barre per w2 = 0,3 mm",
-            "Diametro massimo φ delle barre per w1 = 0,2 mm",
+            [
+                cell("Tensione nell’acciaio"),
+                cell("Diametro massimo φ delle barre (mm)", {
+                    colSpan: 3,
+                    inline: inline("Diametro massimo φ delle barre (mm)", { value: "φ", latex: "\\phi" }),
+                }),
+            ],
+            [
+                cell("σs [MPa]", { inline: inline("σs [MPa]", { value: "σs", latex: "\\sigma_s" }) }),
+                cell("w3 = 0,4 mm", { inline: inline("w3 = 0,4 mm", { value: "w3 = 0,4 mm", latex: "w_3=0{,}4\\,\\mathrm{mm}" }) }),
+                cell("w2 = 0,3 mm", { inline: inline("w2 = 0,3 mm", { value: "w2 = 0,3 mm", latex: "w_2=0{,}3\\,\\mathrm{mm}" }) }),
+                cell("w1 = 0,2 mm", { inline: inline("w1 = 0,2 mm", { value: "w1 = 0,2 mm", latex: "w_1=0{,}2\\,\\mathrm{mm}" }) }),
+            ],
         ],
         rows: [
             ["160", "40", "32", "25"],
@@ -64,10 +119,16 @@ const seeds: TableSeed[] = [
         page: 93,
         caption: "Tabella C4.1.III – Spaziatura massima delle barre per il controllo di fessurazione",
         headers: [
-            "Tensione nell’acciaio σs [MPa]",
-            "Spaziatura massima s delle barre per w3 = 0,4 mm",
-            "Spaziatura massima s delle barre per w2 = 0,3 mm",
-            "Spaziatura massima s delle barre per w1 = 0,2 mm",
+            [
+                cell("Tensione nell’acciaio"),
+                cell("Spaziatura massima delle barre (mm)", { colSpan: 3 }),
+            ],
+            [
+                cell("σs [MPa]", { inline: inline("σs [MPa]", { value: "σs", latex: "\\sigma_s" }) }),
+                cell("w3 = 0,4 mm", { inline: inline("w3 = 0,4 mm", { value: "w3 = 0,4 mm", latex: "w_3=0{,}4\\,\\mathrm{mm}" }) }),
+                cell("w2 = 0,3 mm", { inline: inline("w2 = 0,3 mm", { value: "w2 = 0,3 mm", latex: "w_2=0{,}3\\,\\mathrm{mm}" }) }),
+                cell("w1 = 0,2 mm", { inline: inline("w1 = 0,2 mm", { value: "w1 = 0,2 mm", latex: "w_1=0{,}2\\,\\mathrm{mm}" }) }),
+            ],
         ],
         rows: [
             ["160", "300", "300", "200"],
@@ -84,17 +145,22 @@ const seeds: TableSeed[] = [
         page: 94,
         caption: "Tabella C4.1.IV – Copriferri minimi in mm",
         headers: [
-            "Cmin",
-            "C0",
-            "Ambiente",
-            "Barre da c.a., elementi a piastra, C ≥ C0",
-            "Barre da c.a., elementi a piastra, Cmin ≤ C < C0",
-            "Barre da c.a., altri elementi, C ≥ C0",
-            "Barre da c.a., altri elementi, Cmin ≤ C < C0",
-            "Cavi da c.a.p., elementi a piastra, C ≥ C0",
-            "Cavi da c.a.p., elementi a piastra, Cmin ≤ C < C0",
-            "Cavi da c.a.p., altri elementi, C ≥ C0",
-            "Cavi da c.a.p., altri elementi, Cmin ≤ C < C0",
+            [
+                cell("", { colSpan: 3 }),
+                cell("barre da c.a.\nelementi a piastra", { colSpan: 2 }),
+                cell("barre da c.a.\naltri elementi", { colSpan: 2 }),
+                cell("cavi da c.a.p.\nelementi a piastra", { colSpan: 2 }),
+                cell("cavi da c.a.p.\naltri elementi", { colSpan: 2 }),
+            ],
+            [
+                cell("Cmin", { inline: inline("Cmin", { value: "Cmin", latex: "C_{min}" }) }),
+                cell("C0", { inline: inline("C0", { value: "C0", latex: "C_0" }) }),
+                cell("ambiente"),
+                ...Array.from({ length: 4 }, () => [
+                    cell("C≥C0", { inline: inline("C≥C0", { value: "C≥C0", latex: "C\\ge C_0" }) }),
+                    cell("Cmin≤C<C0", { inline: inline("Cmin≤C<C0", { value: "Cmin≤C<C0", latex: "C_{min}\\le C<C_0" }) }),
+                ]).flat(),
+            ],
         ],
         rows: [
             ["C25/30", "C35/45", "ordinario", "15", "20", "20", "25", "25", "30", "30", "35"],
@@ -107,11 +173,15 @@ const seeds: TableSeed[] = [
         unit: "c4.1.12",
         page: 96,
         caption: "Tabella C4.1.V – Classi di resistenza a compressione per il calcestruzzo leggero strutturale",
-        headers: [
-            "Classe di resistenza a compressione",
-            "Resistenza caratteristica cilindrica minima flck [N/mm²]",
-            "Resistenza caratteristica cubica minima Rlck [N/mm²]",
-        ],
+        headers: [[
+            cell("Classe di resistenza a compressione"),
+            cell("Resistenza caratteristica cilindrica minima flck [N/mm²]", {
+                inline: inline("Resistenza caratteristica cilindrica minima flck [N/mm²]", { value: "flck", latex: "f_{lck}" }, { value: "N/mm²", latex: "\\mathrm{N/mm^2}" }),
+            }),
+            cell("Resistenza caratteristica cubica minima Rlck [N/mm²]", {
+                inline: inline("Resistenza caratteristica cubica minima Rlck [N/mm²]", { value: "Rlck", latex: "R_{lck}" }, { value: "N/mm²", latex: "\\mathrm{N/mm^2}" }),
+            }),
+        ]],
         rows: [
             ["LC 16/18", "16", "18"],
             ["LC 20/22", "20", "22"],
@@ -129,33 +199,39 @@ const seeds: TableSeed[] = [
         unit: "c4.1.12",
         page: 96,
         caption: "Tabella C4.1.VI – Classi di massa per unità di volume del calcestruzzo di aggregati leggeri ammesse per l’impiego strutturale",
-        headers: ["Classe di massa per unità di volume", "D1,5", "D1,6", "D1,7", "D1,8", "D1,9", "D2,0"],
+        headers: [[cell("Classe di massa per unità di volume"), cell("D1,5"), cell("D1,6"), cell("D1,7"), cell("D1,8"), cell("D1,9"), cell("D2,0")]],
         rows: [
-            ["Intervallo di massa per unità di volume [kg/m³]", "1400 < ρ ≤ 1500", "1500 < ρ ≤ 1600", "1600 < ρ ≤ 1700", "1700 < ρ ≤ 1800", "1800 < ρ ≤ 1900", "1900 < ρ ≤ 2000"],
-            ["Massa per unità di volume calcestruzzo non armato [kg/m³]", "1550", "1650", "1750", "1850", "1950", "2050"],
-            ["Massa per unità di volume calcestruzzo armato [kg/m³]", "1650", "1750", "1850", "1950", "2050", "2150"],
+            [
+                cell("Intervallo di massa per unità di volume [kg/m³]", { inline: inline("Intervallo di massa per unità di volume [kg/m³]", { value: "kg/m³", latex: "\\mathrm{kg/m^3}" }) }),
+                ...["1400<ρ≤1500", "1500<ρ≤1600", "1600<ρ≤1700", "1700<ρ≤1800", "1800<ρ≤1900", "1900<ρ≤2000"].map((value) => cell(value, { inline: inline(value, { value, latex: value.replace("ρ", "\\rho").replaceAll("<", "<").replace("≤", "\\le") }) })),
+            ],
+            ["Massa per unità di volume calcestruzzo non armato [kg/m³]", "1550", "1650", "1750", "1850", "1950", "2050"].map((value) => cell(value)),
+            ["Massa per unità di volume calcestruzzo armato [kg/m³]", "1650", "1750", "1850", "1950", "2050", "2150"].map((value) => cell(value)),
         ],
     },
 ];
-
-const cell = (text: string) => ({ text });
 
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
 manifest.tables = manifest.tables.filter(
     (table: { officialNumber?: string }) => !table.officialNumber?.startsWith("C4.1."),
 );
-manifest.tables.push(
-    ...seeds.map((seed) => ({
-        id: `urn:structural-codes:it:asset:table:circ2019:${seed.number.toLowerCase()}`,
-        unitId: `urn:structural-codes:it:unit:circ2019:${seed.unit}`,
-        officialNumber: seed.number,
-        pdfPage: seed.page,
-        caption: seed.caption,
-        columnCount: seed.headers.length,
-        headers: [seed.headers.map(cell)],
-        rows: seed.rows.map((row) => row.map(cell)),
-        notes: seed.notes ?? [],
-    })),
+manifest.tables.splice(
+    0,
+    0,
+    ...seeds.map((seed) => {
+        const headers = materializeHeaders(seed.headers);
+        return {
+            id: `urn:structural-codes:it:asset:table:circ2019:${seed.number.toLowerCase()}`,
+            unitId: `urn:structural-codes:it:unit:circ2019:${seed.unit}`,
+            officialNumber: seed.number,
+            pdfPage: seed.page,
+            caption: seed.caption,
+            columnCount: Math.max(...headers.map((row) => row.reduce((count, item) => count + (item.colSpan ?? 1), 0))),
+            headers,
+            rows: materializeRows(seed.rows),
+            notes: seed.notes ?? [],
+        };
+    }),
 );
 
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");

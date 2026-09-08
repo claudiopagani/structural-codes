@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.9 Flessione, taglio e sforzo assiale",
         "normalized": "4.2.4.1.2.9 Flessione, taglio e sforzo assiale",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.9 Flessione, taglio e sforzo assiale"
+            "value": "4.2.4.1.2.9 "
+          },
+          {
+            "kind": "em",
+            "value": "Flessione, taglio e sforzo assiale"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "670ce2d01e7a5dfeb0a358efb039cb60fcc693d9aa1d18c462385edeb2b04c77",

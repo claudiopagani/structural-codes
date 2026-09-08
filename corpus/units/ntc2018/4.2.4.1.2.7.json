@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.7 Presso o tenso-flessione retta",
         "normalized": "4.2.4.1.2.7 Presso o tenso-flessione retta",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.7 Presso o tenso-flessione retta"
+            "value": "4.2.4.1.2.7 "
+          },
+          {
+            "kind": "em",
+            "value": "Presso o tenso-flessione retta"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "cbc0a8905be44ffc869caa8edda89754a0327291229e666efc8d76fbb5321dea",
@@ -407,12 +416,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-006",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "Mpl,y,Rd il momento resistente plastico di progetto a flessione semplice nel piano dell’anima, Mpl,z,Rd il momento resistente plastico di progetto a flessione semplice nel piano delle ali,",
-        "normalized": "Mpl,y,Rd il momento resistente plastico di progetto a flessione semplice nel piano dell’anima, Mpl,z,Rd il momento resistente plastico di progetto a flessione semplice nel piano delle ali,",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "Mpl,y,Rd il momento resistente plastico di progetto a flessione semplice nel piano dell’anima,",
+        "normalized": "Mpl,y,Rd il momento resistente plastico di progetto a flessione semplice nel piano dell’anima,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -421,8 +430,62 @@
           },
           {
             "kind": "text",
-            "value": " il momento resistente plastico di progetto a flessione semplice nel piano dell’anima, "
+            "value": " il momento resistente plastico di progetto a flessione semplice nel piano dell’anima,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 938,
+          "width": 428.6,
+          "height": 27.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le due definizioni dei momenti plastici allineate nella fonte."
+          }
+        ],
+        "rawSha256": "dfa6a8f014d789ea3f69bda335449b9caa6947f8e86f37dc47470910a5e46f52",
+        "normalizedSha256": "dfa6a8f014d789ea3f69bda335449b9caa6947f8e86f37dc47470910a5e46f52"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-006-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "Mpl,z,Rd il momento resistente plastico di progetto a flessione semplice nel piano delle ali,",
+        "normalized": "Mpl,z,Rd il momento resistente plastico di progetto a flessione semplice nel piano delle ali,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "Mpl,z,Rd",
@@ -465,11 +528,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le due definizioni dei momenti plastici allineate nella fonte."
           }
         ],
-        "rawSha256": "8d80658492a73d10a4f362c0192ac01063f9f5c609f81d24ab3b2fd4f8146e1b",
-        "normalizedSha256": "8d80658492a73d10a4f362c0192ac01063f9f5c609f81d24ab3b2fd4f8146e1b"
-      }
+        "rawSha256": "2a2461043b5838da494bc6ac925bc049472effff308bf7ca25503a2ebddf9945",
+        "normalizedSha256": "2a2461043b5838da494bc6ac925bc049472effff308bf7ca25503a2ebddf9945"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-007",
@@ -583,17 +652,13 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-008",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "dove:\nA è l’area lorda della sezione,\nb è la larghezza delle ali,\ntf è lo spessore delle ali.",
-        "normalized": "dove: A è l’area lorda della sezione, b è la larghezza delle ali, tf è lo spessore delle ali.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "A è l’area lorda della sezione,",
+        "normalized": "A è l’area lorda della sezione,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
-          {
-            "kind": "text",
-            "value": "dove: "
-          },
           {
             "kind": "math",
             "value": "A",
@@ -601,8 +666,62 @@
           },
           {
             "kind": "text",
-            "value": " è l’area lorda della sezione, "
+            "value": " è l’area lorda della sezione,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 1045,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni geometriche allineate nella fonte."
+          }
+        ],
+        "rawSha256": "c934aef2a1cde3f785bcb35aa4191e13de9fc0d577fd7a0f9f0eed98c4a23887",
+        "normalizedSha256": "c934aef2a1cde3f785bcb35aa4191e13de9fc0d577fd7a0f9f0eed98c4a23887"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-008-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "b è la larghezza delle ali,",
+        "normalized": "b è la larghezza delle ali,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "b",
@@ -610,8 +729,62 @@
           },
           {
             "kind": "text",
-            "value": " è la larghezza delle ali, "
+            "value": " è la larghezza delle ali,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 104,
+        "printedPage": "100",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 1045,
+          "width": 428.6,
+          "height": 37.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni geometriche allineate nella fonte."
+          }
+        ],
+        "rawSha256": "e58117fa7ff4a16dccdb518f56b5cbdfd2e55405f9399dfd9f1b3f4339b2a9fc",
+        "normalizedSha256": "e58117fa7ff4a16dccdb518f56b5cbdfd2e55405f9399dfd9f1b3f4339b2a9fc"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-008-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "tf è lo spessore delle ali.",
+        "normalized": "tf è lo spessore delle ali.",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "tf",
@@ -654,11 +827,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le tre definizioni geometriche allineate nella fonte."
           }
         ],
-        "rawSha256": "73f5afcdc3a62b5bcd610b0c230c33eeb77299b23541c697ba367476e0879272",
-        "normalizedSha256": "8ad16a0deb15feb75a6fa264637c62a86a2d5e7f1c7dc335789c35f0132b0953"
-      }
+        "rawSha256": "a77c9950d12f4296bff92c59859b12e4129df39b518b682124c9060706308b96",
+        "normalizedSha256": "a77c9950d12f4296bff92c59859b12e4129df39b518b682124c9060706308b96"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.7#block-editorial-009",

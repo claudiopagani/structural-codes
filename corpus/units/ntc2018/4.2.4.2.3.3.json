@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.2.3.3 Oscillazioni prodotte dal vento",
         "normalized": "4.2.4.2.3.3 Oscillazioni prodotte dal vento",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step3-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.2.3.3 Oscillazioni prodotte dal vento"
+            "value": "4.2.4.2.3.3 "
+          },
+          {
+            "kind": "em",
+            "value": "Oscillazioni prodotte dal vento"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step3-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "086bbc366de1383cbc574403f926cb2e271e3e8a16746864dfd351f52d40eaed",

@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.2 Compressione",
         "normalized": "4.2.4.1.2.2 Compressione",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.2 Compressione"
+            "value": "4.2.4.1.2.2 "
+          },
+          {
+            "kind": "em",
+            "value": "Compressione"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "cd9643ffb5e0d2533be733efc5bafb74cb54a8496df2ed2a0e0c6c9adb097ba8",

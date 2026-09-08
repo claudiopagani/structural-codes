@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.5 Torsione",
         "normalized": "4.2.4.1.2.5 Torsione",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.5 Torsione"
+            "value": "4.2.4.1.2.5 "
+          },
+          {
+            "kind": "em",
+            "value": "Torsione"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "2dc30ddd5164251c1ca294a00d3046dd1ca1666045badff76c091ae5483b6216",

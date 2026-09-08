@@ -93,11 +93,29 @@
       "text": {
         "raw": "La resistenza di progetto, per unità di lunghezza, dei cordoni d’angolo si determina con riferimento all’altezza di gola “a”, cioè all’altezza “a” del triangolo inscritto nella sezione trasversale del cordone stesso (Fig. 4.2.6).",
         "normalized": "La resistenza di progetto, per unità di lunghezza, dei cordoni d’angolo si determina con riferimento all’altezza di gola “a”, cioè all’altezza “a” del triangolo inscritto nella sezione trasversale del cordone stesso (Fig. 4.2.6).",
-        "normalizationVersion": "ntc42-editorial-profile-0.2.0",
+        "normalizationVersion": "ntc42-formatting-step4-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La resistenza di progetto, per unità di lunghezza, dei cordoni d’angolo si determina con riferimento all’altezza di gola “a”, cioè all’altezza “a” del triangolo inscritto nella sezione trasversale del cordone stesso (Fig. 4.2.6)."
+            "value": "La resistenza di progetto, per unità di lunghezza, dei cordoni d’angolo si determina con riferimento all’altezza di gola “"
+          },
+          {
+            "kind": "math",
+            "value": "a",
+            "latex": "a"
+          },
+          {
+            "kind": "text",
+            "value": "”, cioè all’altezza “"
+          },
+          {
+            "kind": "math",
+            "value": "a",
+            "latex": "a"
+          },
+          {
+            "kind": "text",
+            "value": "” del triangolo inscritto nella sezione trasversale del cordone stesso (Fig. 4.2.6)."
           }
         ]
       },
@@ -137,6 +155,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step4-0.1.0",
+            "note": "Resa matematica l’altezza di gola citata nella prosa."
           }
         ],
         "rawSha256": "809bb200090390a64e7cb19864e8a0fb1fcfe8082bdc3b945b0df3bc690d807e",

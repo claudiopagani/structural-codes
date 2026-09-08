@@ -66,7 +66,29 @@
       "text": {
         "raw": "I blocchi di laterizio sia collaboranti che non collaboranti devono avere le seguenti caratteristiche minime:",
         "normalized": "I blocchi di laterizio sia collaboranti che non collaboranti devono avere le seguenti caratteristiche minime:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "I blocchi di laterizio sia "
+          },
+          {
+            "kind": "em",
+            "value": "collaboranti"
+          },
+          {
+            "kind": "text",
+            "value": " che "
+          },
+          {
+            "kind": "em",
+            "value": "non collaboranti"
+          },
+          {
+            "kind": "text",
+            "value": " devono avere le seguenti caratteristiche minime:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -84,7 +106,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo delle due qualificazioni dei blocchi e i trattini dell’elenco."
+          }
+        ],
         "rawSha256": "15a7579359ee0e388ecb0ab28d34a6c0f0b24f4a62c01aeb7368acc076fe4df1",
         "normalizedSha256": "15a7579359ee0e388ecb0ab28d34a6c0f0b24f4a62c01aeb7368acc076fe4df1"
       }
@@ -148,7 +176,8 @@
         ],
         "rawSha256": "2871ed25a645dc20fc72d50dda87e0c426c7440ef50f7e58f31fc9048a7bc0cc",
         "normalizedSha256": "9b293646c46b935b2824f2c84f56a4826f271ba4667b6f3c219bbad5216ba3a5"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.9.1.1#block-editorial-003",
@@ -247,7 +276,8 @@
         ],
         "rawSha256": "1b1531e98b7cea741ed0e19353e4a22e0ff1696f5234ca3da5102667337c1d8d",
         "normalizedSha256": "26fb2c62c578bb51225c13db963ddc13a62388f8ea29f5203e4431b24bb3547f"
-      }
+      },
+      "listMarker": "dash"
     }
   ],
   "citations": [],

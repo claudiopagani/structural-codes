@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.3 Flessione monoassiale (retta)",
         "normalized": "4.2.4.1.2.3 Flessione monoassiale (retta)",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.3 Flessione monoassiale (retta)"
+            "value": "4.2.4.1.2.3 "
+          },
+          {
+            "kind": "em",
+            "value": "Flessione monoassiale (retta)"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "348303ff3d6df622d48ea8b5f8b2fc382080d5ef0fdbf6e6e71a56a1e9e64649",
@@ -166,11 +175,20 @@
       "text": {
         "raw": "dove la resistenza di progetto a flessione retta della sezione Mc,Rd si valuta tenendo conto della presenza di eventuali fori in zona\ntesa per collegamenti bullonati o chiodati.",
         "normalized": "dove la resistenza di progetto a flessione retta della sezione Mc,Rd si valuta tenendo conto della presenza di eventuali fori in zona tesa per collegamenti bullonati o chiodati.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove la resistenza di progetto a flessione retta della sezione Mc,Rd si valuta tenendo conto della presenza di eventuali fori in zona tesa per collegamenti bullonati o chiodati."
+            "value": "dove la resistenza di progetto a flessione retta della sezione "
+          },
+          {
+            "kind": "math",
+            "value": "Mc,Rd",
+            "latex": "M_{c,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " si valuta tenendo conto della presenza di eventuali fori in zona tesa per collegamenti bullonati o chiodati."
           }
         ]
       },
@@ -205,6 +223,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinato il pedice della resistenza a flessione nella prosa."
           }
         ],
         "rawSha256": "158d89ad3d8ca5754d793887560e7c2468e50bccbe924866f7de5c187b955beb",
@@ -218,11 +241,20 @@
       "text": {
         "raw": "La resistenza di progetto a flessione retta della sezione Mc,Rd vale:",
         "normalized": "La resistenza di progetto a flessione retta della sezione Mc,Rd vale:",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "La resistenza di progetto a flessione retta della sezione Mc,Rd vale:"
+            "value": "La resistenza di progetto a flessione retta della sezione "
+          },
+          {
+            "kind": "math",
+            "value": "Mc,Rd",
+            "latex": "M_{c,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " vale:"
           }
         ]
       },
@@ -242,7 +274,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinato il pedice della resistenza a flessione nella prosa."
+          }
+        ],
         "rawSha256": "4e0b9b46fbb87a7081c234fec6d34a75e08982e0f492a2e47ae06f6abb130532",
         "normalizedSha256": "4e0b9b46fbb87a7081c234fec6d34a75e08982e0f492a2e47ae06f6abb130532"
       }
@@ -410,11 +448,29 @@
       "text": {
         "raw": "per le sezioni di classe 3, Wel,min è il modulo resistente elastico minimo della sezione in acciaio; per le sezioni di classe 4, invece, il\nmodulo Weff,min è calcolato eliminando le parti della sezione inattive a causa dei fenomeni di instabilità locali, secondo il procedimen-\nto esposto in UNI EN1993-1-5, e scegliendo il minore tra i moduli così ottenuti.",
         "normalized": "per le sezioni di classe 3, Wel,min è il modulo resistente elastico minimo della sezione in acciaio; per le sezioni di classe 4, invece, il modulo Weff,min è calcolato eliminando le parti della sezione inattive a causa dei fenomeni di instabilità locali, secondo il procedimento esposto in UNI EN1993-1-5, e scegliendo il minore tra i moduli così ottenuti.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "per le sezioni di classe 3, Wel,min è il modulo resistente elastico minimo della sezione in acciaio; per le sezioni di classe 4, invece, il modulo Weff,min è calcolato eliminando le parti della sezione inattive a causa dei fenomeni di instabilità locali, secondo il procedimento esposto in UNI EN1993-1-5, e scegliendo il minore tra i moduli così ottenuti."
+            "value": "per le sezioni di classe 3, "
+          },
+          {
+            "kind": "math",
+            "value": "Wel,min",
+            "latex": "W_{el,min}"
+          },
+          {
+            "kind": "text",
+            "value": " è il modulo resistente elastico minimo della sezione in acciaio; per le sezioni di classe 4, invece, il modulo "
+          },
+          {
+            "kind": "math",
+            "value": "Weff,min",
+            "latex": "W_{eff,min}"
+          },
+          {
+            "kind": "text",
+            "value": " è calcolato eliminando le parti della sezione inattive a causa dei fenomeni di instabilità locali, secondo il procedimento esposto in UNI EN1993-1-5, e scegliendo il minore tra i moduli così ottenuti."
           }
         ]
       },
@@ -454,6 +510,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinati i pedici dei moduli resistenti efficaci."
           }
         ],
         "rawSha256": "6520314a90a6338fcef00aff17a8fb61fae4642767bed8ce77a8bfd4bb25755a",
@@ -597,11 +658,38 @@
       "text": {
         "raw": "dove Af è l’area lorda della piattabanda tesa, Af,net è l’area della piattabanda al netto dei fori e ftk è la resistenza ultima dell’acciaio.",
         "normalized": "dove Af è l’area lorda della piattabanda tesa, Af,net è l’area della piattabanda al netto dei fori e ftk è la resistenza ultima dell’acciaio.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove Af è l’area lorda della piattabanda tesa, Af,net è l’area della piattabanda al netto dei fori e ftk è la resistenza ultima dell’acciaio."
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "Af",
+            "latex": "A_f"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area lorda della piattabanda tesa, "
+          },
+          {
+            "kind": "math",
+            "value": "Af,net",
+            "latex": "A_{f,net}"
+          },
+          {
+            "kind": "text",
+            "value": " è l’area della piattabanda al netto dei fori e "
+          },
+          {
+            "kind": "math",
+            "value": "ftk",
+            "latex": "f_{tk}"
+          },
+          {
+            "kind": "text",
+            "value": " è la resistenza ultima dell’acciaio."
           }
         ]
       },
@@ -636,6 +724,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinati i simboli delle piattabande e della resistenza ultima."
           }
         ],
         "rawSha256": "ec922bc0a3c9c890fd006684ae12907ed9ce388a59cea5fd18484f04c71a75b7",

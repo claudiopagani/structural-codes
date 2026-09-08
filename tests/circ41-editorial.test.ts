@@ -105,6 +105,7 @@ test("C4.1 pagine 94-99 conserva prodotti e disuguaglianze inline complete", asy
         "<0{,}4\\,\\mathrm{mm/m}",
         "\\le0{,}02",
         "\\le0{,}2f_{cd}",
+        "\\times",
     ]) assert.ok(latex.includes(expected), expected);
 });
 
@@ -129,6 +130,49 @@ test("C4.1 pagine 84-93 non frammenta uguaglianze e simboli inline", async () =>
         "k_3=3{,}4",
         "n=15",
     ]) assert.ok(latex.includes(expected), expected);
+});
+
+test("C4.1 pagine 85-93 conserva liste, definizioni allineate e stili editoriali", async () => {
+    const [analysis, crack, concrete] = await Promise.all([
+        json("corpus/units/circ2019/c4.1.1.1.json"),
+        json("corpus/units/circ2019/c4.1.2.2.4.5.json"),
+        json("corpus/units/circ2019/c4.1.json"),
+    ]);
+    assert.deepEqual(
+        analysis.blocks.filter(({ kind }: { kind: string }) => kind === "list-item").map(({ listMarker }: { listMarker?: string }) => listMarker),
+        ["dash", "dash", "dash", "dash", "dash"],
+    );
+    const headings = crack.blocks.filter(({ kind }: { kind: string }) => kind === "heading");
+    for (const heading of headings.slice(1)) {
+        assert.deepEqual(heading.text.inline, [{ kind: "em-underline", value: heading.text.normalized }]);
+    }
+    const labels = crack.blocks.filter(({ kind, listMarker }: { kind: string; listMarker?: string }) => kind === "list-item" && listMarker === "none");
+    assert.equal(labels.length >= 14, true);
+    assert.equal(labels.some(({ text }: { text: { inline?: Array<{ kind: string; latex?: string }> } }) => text.inline?.some(({ latex }) => latex === "A_{c,eff}")), true);
+    assert.equal(
+        concrete.blocks.some(({ text }: { text?: { inline?: Array<{ latex?: string }> } }) => text?.inline?.some(({ latex }) => latex === "\\gamma_s")),
+        true,
+    );
+});
+
+test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", async () => {
+    const [figures, tables] = await Promise.all([
+        json("corpus/assets/circ2019/core-figure-placeholders.json"),
+        json("corpus/assets/circ2019/core-tables.json"),
+    ]);
+    const figure = figures.figures.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.11");
+    assert.equal(figure.captionInline[0].kind, "strong");
+    assert.deepEqual(
+        figure.captionInline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
+        ["w"],
+    );
+    const table = tables.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.I");
+    assert.equal(table.headers.length, 2);
+    assert.equal(table.headers[0][2].colSpan, 2);
+    assert.deepEqual(
+        table.captionInline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
+        ["K", "\\frac{l}{h}"],
+    );
 });
 
 test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
@@ -156,6 +200,68 @@ test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
     );
     assert.equal(tableVI.columnCount, 7);
     assert.equal(tableVI.rows.length, 3);
+});
+
+test("C4.1 pagine 94-99 conserva elenchi, definizioni e corsivi della fonte", async () => {
+    const [slabs, blocks, tension, strains, shear] = await Promise.all([
+        json("corpus/units/circ2019/c4.1.9.json"),
+        json("corpus/units/circ2019/c4.1.9.1.1.json"),
+        json("corpus/units/circ2019/c4.1.12.1.1.1.json"),
+        json("corpus/units/circ2019/c4.1.12.1.3.1.json"),
+        json("corpus/units/circ2019/c4.1.12.1.3.2.1.json"),
+    ]);
+    assert.deepEqual(
+        slabs.blocks.filter(({ kind }: { kind: string }) => kind === "list-item").map(({ text }: { text: { normalized: string } }) => text.normalized.slice(0, 2)),
+        ["1)", "2)"],
+    );
+    assert.equal(
+        slabs.blocks.some(({ text }: { text?: { inline?: Array<{ kind: string; value: string }> } }) => text?.inline?.some(({ kind, value }) => kind === "em" && value === "rigidezza nel piano")),
+        true,
+    );
+    assert.deepEqual(
+        blocks.blocks.filter(({ kind }: { kind: string }) => kind === "list-item").map(({ listMarker }: { listMarker?: string }) => listMarker),
+        ["dash", "dash"],
+    );
+    assert.equal(
+        tension.blocks.filter(({ kind, listMarker }: { kind: string; listMarker?: string }) => kind === "list-item" && listMarker === "none").length,
+        3,
+    );
+    assert.equal(
+        tension.blocks.filter(({ kind, listMarker }: { kind: string; listMarker?: string }) => kind === "list-item" && listMarker === "dash").length,
+        2,
+    );
+    assert.deepEqual(
+        strains.blocks.filter(({ kind }: { kind: string }) => kind === "list-item").map(({ listMarker }: { listMarker?: string }) => listMarker),
+        ["dash", "dash"],
+    );
+    assert.equal(
+        shear.blocks.filter(({ kind, listMarker }: { kind: string; listMarker?: string }) => kind === "list-item" && listMarker === "none").length,
+        4,
+    );
+    const heading = shear.blocks.find(({ kind }: { kind: string }) => kind === "heading");
+    assert.deepEqual(heading.text.inline, [
+        { kind: "text", value: "C4.1.12.1.3.2.1 " },
+        { kind: "em", value: "Elementi senza armature trasversali resistenti al taglio" },
+    ]);
+});
+
+test("Le didascalie e le intestazioni finali C4.1 mantengono gerarchia e matematica", async () => {
+    const [figures, tables] = await Promise.all([
+        json("corpus/assets/circ2019/core-figure-placeholders.json"),
+        json("corpus/assets/circ2019/core-tables.json"),
+    ]);
+    const figure = figures.figures.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.13");
+    assert.deepEqual(
+        figure.captionInline.map(({ kind, latex }: { kind: string; latex?: string }) => [kind, latex]),
+        [["strong", undefined], ["em", undefined], ["math", "\\sigma-\\varepsilon"], ["em", undefined]],
+    );
+    const table = tables.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.IV");
+    assert.equal(table.headers.length, 2);
+    assert.equal(table.headers[0][0].colSpan, 3);
+    assert.deepEqual(
+        table.headers[1].slice(3).map(({ inline }: { inline?: Array<{ latex: string }> }) => inline?.[0]?.latex),
+        ["C\\ge C_0", "C_{min}\\le C<C_0", "C\\ge C_0", "C_{min}\\le C<C_0", "C\\ge C_0", "C_{min}\\le C<C_0", "C\\ge C_0", "C_{min}\\le C<C_0"],
+    );
 });
 
 test("ogni asset C4.1 compare una sola volta nel flusso editoriale", async () => {

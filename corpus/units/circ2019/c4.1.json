@@ -506,8 +506,32 @@
       "origin": "official",
       "text": {
         "raw": "Il coefficiente parziale di sicurezza per l’acciaio da armatura .s rimane, per tutti i tipi, pari a 1,15.",
-        "normalized": "Il coefficiente parziale di sicurezza per l’acciaio da armatura.s rimane, per tutti i tipi, pari a 1,15.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalized": "Il coefficiente parziale di sicurezza per l’acciaio da armatura γs rimane, per tutti i tipi, pari a 1,15.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il coefficiente parziale di sicurezza per l’acciaio da armatura "
+          },
+          {
+            "kind": "math",
+            "value": "γs",
+            "latex": "\\gamma_s"
+          },
+          {
+            "kind": "text",
+            "value": " rimane, per tutti i tipi, pari a "
+          },
+          {
+            "kind": "math",
+            "value": "1,15",
+            "latex": "1{,}15"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -555,10 +579,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Ripristinati il simbolo gamma_s e il valore del coefficiente di sicurezza dall’evidence visiva."
           }
         ],
         "rawSha256": "4253a173c6f2735064d14be8863ca61e8f590ca92dd623eb4a36558585088a6e",
-        "normalizedSha256": "f1177a0d8ad5e3dc3c74282fb46af41062b6a6c6865da40438a7cc58842b4663"
+        "normalizedSha256": "e7e61c3d1dd02719681e7118b260e0093c1ba3e5950411406dee8756a4c0153a"
       }
     },
     {

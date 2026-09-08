@@ -38,7 +38,17 @@
       "text": {
         "raw": "C4.1.12.1.3.2.1. Elementi senza armature trasversali resistenti al taglio",
         "normalized": "C4.1.12.1.3.2.1 Elementi senza armature trasversali resistenti al taglio",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.3.2.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Elementi senza armature trasversali resistenti al taglio"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -86,6 +96,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
           }
         ],
         "rawSha256": "a64a676e45aa52667948703754d576eedeb6b1e0336fc5df96fd4f1fc64c5f39",
@@ -371,12 +386,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1#block-editorial-007",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "d l’altezza utile della sezione (in mm);\n\u0012l=Asl/(bw d) il rapporto geometrico di armatura longitudinale (\"\b0,02);\ncp= NEd/Ac la tensione media di compressione nella sezione (\"\b0,2 fcd);\nbw la larghezza minima della sezione (in mm).",
-        "normalized": "d è l’altezza utile della sezione, in mm; ρl = Asl/(bw d) è il rapporto geometrico di armatura longitudinale (≤ 0,02); σcp = NEd/Ac è la tensione media di compressione nella sezione (≤ 0,2 fcd); bw è la larghezza minima della sezione, in mm.",
-        "normalizationVersion": "circ41-formula-audit-0.1.0",
+        "raw": "d l’altezza utile della sezione (in mm);",
+        "normalized": "d è l’altezza utile della sezione (in mm);",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -385,52 +400,7 @@
           },
           {
             "kind": "text",
-            "value": " è l’altezza utile della sezione, in mm; "
-          },
-          {
-            "kind": "math",
-            "value": "ρl = Asl/(bw d)",
-            "latex": "\\rho_l=\\frac{A_{sl}}{b_wd}"
-          },
-          {
-            "kind": "text",
-            "value": " è il rapporto geometrico di armatura longitudinale ("
-          },
-          {
-            "kind": "math",
-            "value": "≤ 0,02",
-            "latex": "\\le0{,}02"
-          },
-          {
-            "kind": "text",
-            "value": "); "
-          },
-          {
-            "kind": "math",
-            "value": "σcp = NEd/Ac",
-            "latex": "\\sigma_{cp}=\\frac{N_{Ed}}{A_c}"
-          },
-          {
-            "kind": "text",
-            "value": " è la tensione media di compressione nella sezione ("
-          },
-          {
-            "kind": "math",
-            "value": "≤ 0,2 fcd",
-            "latex": "\\le0{,}2f_{cd}"
-          },
-          {
-            "kind": "text",
-            "value": "); "
-          },
-          {
-            "kind": "math",
-            "value": "bw",
-            "latex": "b_w"
-          },
-          {
-            "kind": "text",
-            "value": " è la larghezza minima della sezione, in mm."
+            "value": " è l’altezza utile della sezione (in mm);"
           }
         ]
       },
@@ -485,11 +455,284 @@
             "operation": "manual-correction",
             "ruleVersion": "circ41-formula-audit-0.1.0",
             "note": "Riunite le due limitazioni parentetiche con i rispettivi valori e simboli."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le quattro definizioni allineate sotto la Formula C4.1.17."
           }
         ],
-        "rawSha256": "f836f89854475500f5338aa7f9bc535a98b1b913fa1b6741a806eb3a2d9af843",
-        "normalizedSha256": "6cd09e897f07ac70d4af33c836474bc1d17326c340535f3445dea5e50bca72dd"
-      }
+        "rawSha256": "1d087599e949216ae23d2abfff71ddf024140f4c61aa085d85e02360a516bc4b",
+        "normalizedSha256": "2f7f46dd4b13c3200f9446e3d47c6e5bea6f1b051d6f336fdf54992a7cf61c4c"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1#block-editorial-007-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "ρl = Asl/(bw d) il rapporto geometrico di armatura longitudinale (≤ 0,02);",
+        "normalized": "ρl = Asl/(bw d) è il rapporto geometrico di armatura longitudinale (≤ 0,02);",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "ρl = Asl/(bw d)",
+            "latex": "\\rho_l=A_{sl}/(b_w d)"
+          },
+          {
+            "kind": "text",
+            "value": " è il rapporto geometrico di armatura longitudinale ("
+          },
+          {
+            "kind": "math",
+            "value": "≤ 0,02",
+            "latex": "\\le0{,}02"
+          },
+          {
+            "kind": "text",
+            "value": ");"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 98,
+        "printedPage": "94",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 368.468,
+          "width": 447.502,
+          "height": 308.65
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due limitazioni parentetiche con i rispettivi valori e simboli."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le quattro definizioni allineate sotto la Formula C4.1.17."
+          }
+        ],
+        "rawSha256": "304796133707f7adad70cdd1ed66c4fd2627d3a112658586f0ff2105930af4d8",
+        "normalizedSha256": "277dff4977ff575ca0e2cbb5bc849c2acc11f02f0409df24997a3c728dac78a1"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1#block-editorial-007-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "σcp = NEd/Ac la tensione media di compressione nella sezione (≤ 0,2 fcd);",
+        "normalized": "σcp = NEd/Ac è la tensione media di compressione nella sezione (≤ 0,2 fcd);",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "σcp = NEd/Ac",
+            "latex": "\\sigma_{cp}=N_{Ed}/A_c"
+          },
+          {
+            "kind": "text",
+            "value": " è la tensione media di compressione nella sezione ("
+          },
+          {
+            "kind": "math",
+            "value": "≤ 0,2 fcd",
+            "latex": "\\le0{,}2f_{cd}"
+          },
+          {
+            "kind": "text",
+            "value": ");"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 98,
+        "printedPage": "94",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 368.468,
+          "width": 447.502,
+          "height": 308.65
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due limitazioni parentetiche con i rispettivi valori e simboli."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le quattro definizioni allineate sotto la Formula C4.1.17."
+          }
+        ],
+        "rawSha256": "c33a194c566a46b5b26efe77d2283e16afb70fa31678d30a8381948f2cdcfade",
+        "normalizedSha256": "51bd2e955ad334763c4d1586a295ab840339f73dc8ca5449cd8f5c54e41ee2d3"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1#block-editorial-007-4",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "bw la larghezza minima della sezione (in mm).",
+        "normalized": "bw è la larghezza minima della sezione (in mm).",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "bw",
+            "latex": "b_w"
+          },
+          {
+            "kind": "text",
+            "value": " è la larghezza minima della sezione (in mm)."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 98,
+        "printedPage": "94",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 368.468,
+          "width": 447.502,
+          "height": 308.65
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due limitazioni parentetiche con i rispettivi valori e simboli."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le quattro definizioni allineate sotto la Formula C4.1.17."
+          }
+        ],
+        "rawSha256": "b03b33c54348d3afe235fef50b3c5ced1406232f81adb5e27e8eee9b06846286",
+        "normalizedSha256": "7bf197ca5d1dc46542b0357ded555c2bb81c627d1e3015930fa420d208ca846b"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.2.1#block-editorial-008",

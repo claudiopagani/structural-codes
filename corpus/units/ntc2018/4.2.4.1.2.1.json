@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.2.1 Trazione",
         "normalized": "4.2.4.1.2.1 Trazione",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.2.1 Trazione"
+            "value": "4.2.4.1.2.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Trazione"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "2f38359a778c8cf8cb41d62c9529c4c6f959c8b500377d856727b36cd5e926c2",
@@ -166,11 +175,20 @@
       "text": {
         "raw": "dove la resistenza di progetto a trazione Nt,Rd di membrature con sezioni indebolite da fori per collegamenti bullonati o chiodati\ndeve essere assunta pari al minore dei valori seguenti:",
         "normalized": "dove la resistenza di progetto a trazione Nt,Rd di membrature con sezioni indebolite da fori per collegamenti bullonati o chiodati deve essere assunta pari al minore dei valori seguenti:",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove la resistenza di progetto a trazione Nt,Rd di membrature con sezioni indebolite da fori per collegamenti bullonati o chiodati deve essere assunta pari al minore dei valori seguenti:"
+            "value": "dove la resistenza di progetto a trazione "
+          },
+          {
+            "kind": "math",
+            "value": "Nt,Rd",
+            "latex": "N_{t,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " di membrature con sezioni indebolite da fori per collegamenti bullonati o chiodati deve essere assunta pari al minore dei valori seguenti:"
           }
         ]
       },
@@ -205,6 +223,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinato il pedice della resistenza a trazione nella prosa."
           }
         ],
         "rawSha256": "8ad9434c0bc2b9264190637beb2c322b22cfb01f383cd90c1d9bd7ccebdb2fb0",
@@ -213,16 +236,25 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.1#block-editorial-003",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "a)  la resistenza plastica di progetto della sezione lorda, A,",
         "normalized": "a)  la resistenza plastica di progetto della sezione lorda, A,",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "a)  la resistenza plastica di progetto della sezione lorda, A,"
+            "value": "a)  la resistenza plastica di progetto della sezione lorda, "
+          },
+          {
+            "kind": "math",
+            "value": "A",
+            "latex": "A"
+          },
+          {
+            "kind": "text",
+            "value": ","
           }
         ]
       },
@@ -242,7 +274,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservata la prima voce alfabetica e la sua grandezza matematica."
+          }
+        ],
         "rawSha256": "3dcdb8f6b938616a472394884f580e5cca6b3589e31d30f5cbd5d5218a12f528",
         "normalizedSha256": "3dcdb8f6b938616a472394884f580e5cca6b3589e31d30f5cbd5d5218a12f528"
       }
@@ -286,16 +324,25 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.2.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "b)  la resistenza di progetto a rottura della sezione netta, Anet, in corrispondenza dei fori per i collegamenti.",
         "normalized": "b)  la resistenza di progetto a rottura della sezione netta, Anet, in corrispondenza dei fori per i collegamenti.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "b)  la resistenza di progetto a rottura della sezione netta, Anet, in corrispondenza dei fori per i collegamenti."
+            "value": "b)  la resistenza di progetto a rottura della sezione netta, "
+          },
+          {
+            "kind": "math",
+            "value": "Anet",
+            "latex": "A_{net}"
+          },
+          {
+            "kind": "text",
+            "value": ", in corrispondenza dei fori per i collegamenti."
           }
         ]
       },
@@ -330,6 +377,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservata la seconda voce alfabetica e la sua grandezza matematica."
           }
         ],
         "rawSha256": "a77b700b1426933fd4df9ff19f3bc841bf71fe17b00972cac9888de66d409111",
@@ -380,11 +432,29 @@
       "text": {
         "raw": "Qualora il progetto preveda la gerarchia delle resistenze, come avviene in presenza di azioni sismiche, la resistenza di progetto\nplastica della sezione lorda, Npl,Rd, deve risultare minore della resistenza di progetto a rottura delle sezioni indebolite dai fori per\ni collegamenti, Nu,Rd:",
         "normalized": "Qualora il progetto preveda la gerarchia delle resistenze, come avviene in presenza di azioni sismiche, la resistenza di progetto plastica della sezione lorda, Npl,Rd, deve risultare minore della resistenza di progetto a rottura delle sezioni indebolite dai fori per i collegamenti, Nu,Rd:",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Qualora il progetto preveda la gerarchia delle resistenze, come avviene in presenza di azioni sismiche, la resistenza di progetto plastica della sezione lorda, Npl,Rd, deve risultare minore della resistenza di progetto a rottura delle sezioni indebolite dai fori per i collegamenti, Nu,Rd:"
+            "value": "Qualora il progetto preveda la gerarchia delle resistenze, come avviene in presenza di azioni sismiche, la resistenza di progetto plastica della sezione lorda, "
+          },
+          {
+            "kind": "math",
+            "value": "Npl,Rd",
+            "latex": "N_{pl,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ", deve risultare minore della resistenza di progetto a rottura delle sezioni indebolite dai fori per i collegamenti, "
+          },
+          {
+            "kind": "math",
+            "value": "Nu,Rd",
+            "latex": "N_{u,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": ":"
           }
         ]
       },
@@ -419,6 +489,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Ripristinati i pedici delle resistenze nella condizione gerarchica."
           }
         ],
         "rawSha256": "aa186b7f5c0710af2954f277ab8c2162f532f98e83572663a405fb2d0375a7b3",

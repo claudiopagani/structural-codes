@@ -242,12 +242,18 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.9#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "1)\u0002 le deformazioni risultino compatibili con le condizioni di esercizio del solaio e degli elementi costruttivi ed impiantistici ad\nesso collegati;\n2)\u0002 vi sia, in base alle resistenze meccaniche dei materiali, un rapporto adeguato tra la sezione delle armature di acciaio, la\nlarghezza delle nervature in calcestruzzo, il loro interasse e lo spessore della soletta di completamento in modo che sia\nassicurata la rigidezza nel piano e che sia evitato il pericolo di effetti secondari indesiderati.",
-        "normalized": "1) le deformazioni risultino compatibili con le condizioni di esercizio del solaio e degli elementi costruttivi ed impiantistici ad esso collegati; 2) vi sia, in base alle resistenze meccaniche dei materiali, un rapporto adeguato tra la sezione delle armature di acciaio, la larghezza delle nervature in calcestruzzo, il loro interasse e lo spessore della soletta di completamento in modo che sia assicurata la rigidezza nel piano e che sia evitato il pericolo di effetti secondari indesiderati.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "1) le deformazioni risultino compatibili con le condizioni di esercizio del solaio e degli elementi costruttivi ed impiantistici ad esso collegati;",
+        "normalized": "1) le deformazioni risultino compatibili con le condizioni di esercizio del solaio e degli elementi costruttivi ed impiantistici ad esso collegati;",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "1) le deformazioni risultino compatibili con le condizioni di esercizio del solaio e degli elementi costruttivi ed impiantistici ad esso collegati;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -295,11 +301,103 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le due voci numerate dopo l’introduzione, come nel PDF ufficiale."
           }
         ],
-        "rawSha256": "df0f7f92f40a8d83f5a0cec7d9627d5081e4a99d8ec57b83fcc6909ef51beb5c",
-        "normalizedSha256": "4a57cf1c8650dcc5db7758d001edc25a483c63a6171e73846d9bf1983462f859"
-      }
+        "rawSha256": "02ef77bd6595a95c7486e98d8069f3f6b08f97dca3e7a162bafa08549fbdbdf6",
+        "normalizedSha256": "02ef77bd6595a95c7486e98d8069f3f6b08f97dca3e7a162bafa08549fbdbdf6"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.9#block-editorial-004-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "2) vi sia, in base alle resistenze meccaniche dei materiali, un rapporto adeguato tra la sezione delle armature di acciaio, la larghezza delle nervature in calcestruzzo, il loro interasse e lo spessore della soletta di completamento in modo che sia assicurata la rigidezza nel piano e che sia evitato il pericolo di effetti secondari indesiderati.",
+        "normalized": "2) vi sia, in base alle resistenze meccaniche dei materiali, un rapporto adeguato tra la sezione delle armature di acciaio, la larghezza delle nervature in calcestruzzo, il loro interasse e lo spessore della soletta di completamento in modo che sia assicurata la rigidezza nel piano e che sia evitato il pericolo di effetti secondari indesiderati.",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "2) vi sia, in base alle resistenze meccaniche dei materiali, un rapporto adeguato tra la sezione delle armature di acciaio, la larghezza delle nervature in calcestruzzo, il loro interasse e lo spessore della soletta di completamento in modo che sia assicurata la "
+          },
+          {
+            "kind": "em",
+            "value": "rigidezza nel piano"
+          },
+          {
+            "kind": "text",
+            "value": " e che sia evitato il pericolo di effetti secondari indesiderati."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 95,
+        "printedPage": "91",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.902,
+          "y": 158.574,
+          "width": 447.475,
+          "height": 111.249
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le due voci numerate dopo l’introduzione, come nel PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo di «rigidezza nel piano» nella seconda voce numerata."
+          }
+        ],
+        "rawSha256": "af541da4478cb52c36a673481178c10f04df3bcbd8fcd49f010ab77ab7abfdd4",
+        "normalizedSha256": "af541da4478cb52c36a673481178c10f04df3bcbd8fcd49f010ab77ab7abfdd4"
+      },
+      "listMarker": "none"
     }
   ],
   "citations": [],

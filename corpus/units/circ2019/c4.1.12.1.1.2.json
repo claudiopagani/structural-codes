@@ -37,7 +37,17 @@
       "text": {
         "raw": "C4.1.12.1.1.2 Modulo di elasticità",
         "normalized": "C4.1.12.1.1.2 Modulo di elasticità",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.1.2 "
+          },
+          {
+            "kind": "em",
+            "value": "Modulo di elasticità"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,7 +65,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
+          }
+        ],
         "rawSha256": "c5030bc6a747ec8e61d983f0b2722dbfc8bf937e2afffe865a32cf8e4db7c2a9",
         "normalizedSha256": "c5030bc6a747ec8e61d983f0b2722dbfc8bf937e2afffe865a32cf8e4db7c2a9"
       }
@@ -185,7 +201,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.2#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "f lcm = valore della resistenza media cilindrica a compressione in N/mm2 ;",
@@ -258,11 +274,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservata la definizione allineata della grandezza dopo la formula."
           }
         ],
         "rawSha256": "8becabca14843e202fba953bfa1fdc3c382c692b5f314aba2107854676ece9c1",
         "normalizedSha256": "4d4ec683c44068211f6eb0d0cfb3ab3ee11858d64034dab9d5909c43daba7ca6"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.2#block-editorial-005",
@@ -359,7 +381,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.2#block-editorial-007",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "\u0012 = valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di",
@@ -423,11 +445,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservata la definizione allineata della grandezza dopo la formula."
           }
         ],
         "rawSha256": "dc44b989244824e1d701537dd574a1f3ff9c7090fc585feff9698acee21c0cb4",
         "normalizedSha256": "c08238f34105ec036b6eb59bdfe5e93aa8ec65d3fa913c85b2dedbb731d3c44a"
-      }
+      },
+      "listMarker": "none"
     }
   ],
   "citations": [],

@@ -37,11 +37,15 @@
       "text": {
         "raw": "4.2.4.1.3.1 Aste compresse",
         "normalized": "4.2.4.1.3.1 Aste compresse",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "4.2.4.1.3.1 Aste compresse"
+            "value": "4.2.4.1.3.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Aste compresse"
           }
         ]
       },
@@ -71,6 +75,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del titolo di sottolivello."
           }
         ],
         "rawSha256": "91bc0b94a46e8506aa8b0cc603a04812f2fb937062656686eb79174134de795e",
@@ -204,7 +213,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-p3",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "NEd è l’azione di compressione di progetto,",
@@ -241,11 +250,12 @@
         "transformations": [],
         "rawSha256": "52c3ae872bb3c775810d7b379eb5b1157cfff0703aff200596eb071c0521a40e",
         "normalizedSha256": "52c3ae872bb3c775810d7b379eb5b1157cfff0703aff200596eb071c0521a40e"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-p4",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Nb,Rd è la resistenza di progetto all’instabilità nell’asta compressa, data da",
@@ -282,7 +292,8 @@
         "transformations": [],
         "rawSha256": "a4980557a8ed98ed4cbd5125940f40fb776af8f0b7fdd5e5255798bddd076393",
         "normalizedSha256": "a4980557a8ed98ed4cbd5125940f40fb776af8f0b7fdd5e5255798bddd076393"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-formula-4-2-42",
@@ -848,10 +859,10 @@
       "text": {
         "raw": "Limitazioni della snellezza",
         "normalized": "Limitazioni della snellezza",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
-            "kind": "text",
+            "kind": "em",
             "value": "Limitazioni della snellezza"
           }
         ]
@@ -882,6 +893,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo non numerato."
           }
         ],
         "rawSha256": "50860102b651c3ffd93bb542248256e28ff7fbddbe0e501eb0d6566398cf948f",
@@ -1078,12 +1094,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-p13",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "l0 è la lunghezza d’inflessione nel piano considerato,\\ni è il raggio d’inerzia relativo.",
-        "normalized": "l0 è la lunghezza d’inflessione nel piano considerato, i è il raggio d’inerzia relativo.",
-        "normalizationVersion": "ntc42-editorial-profile-0.1.0",
+        "raw": "l0 è la lunghezza d’inflessione nel piano considerato,",
+        "normalized": "l0 è la lunghezza d’inflessione nel piano considerato,",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1092,8 +1108,62 @@
           },
           {
             "kind": "text",
-            "value": " è la lunghezza d’inflessione nel piano considerato, "
+            "value": " è la lunghezza d’inflessione nel piano considerato,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 106,
+        "printedPage": "102",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 690,
+          "width": 428.6,
+          "height": 17.6
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
           },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le due definizioni della snellezza stampate su righe distinte."
+          }
+        ],
+        "rawSha256": "1c84df858fb0efa9abbc9ea93c407f5d7e2608f8e9426ccadfc7149441efddf5",
+        "normalizedSha256": "1c84df858fb0efa9abbc9ea93c407f5d7e2608f8e9426ccadfc7149441efddf5"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-p13-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "i è il raggio d’inerzia relativo.",
+        "normalized": "i è il raggio d’inerzia relativo.",
+        "normalizationVersion": "ntc42-formatting-step2-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "i",
@@ -1136,11 +1206,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc42-formatting-step2-0.1.0",
+            "note": "Separate le due definizioni della snellezza stampate su righe distinte."
           }
         ],
-        "rawSha256": "f3da6793dc07bb1b0a9ac1df2077346f7d64f683bcde79b7ed63b55d4ada735c",
-        "normalizedSha256": "fe3ffb0ad48beb8883986e48b1e96632ba7f816d846ad80939de4330ffee6434"
-      }
+        "rawSha256": "863d4656c439c8883b04e40c48d4bbd1300a86913d3aeefba2e562112ea1295a",
+        "normalizedSha256": "863d4656c439c8883b04e40c48d4bbd1300a86913d3aeefba2e562112ea1295a"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:4.2.4.1.3.1#block-p14",

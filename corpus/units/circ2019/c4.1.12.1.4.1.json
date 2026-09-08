@@ -37,7 +37,17 @@
       "text": {
         "raw": "C4.1.12.1.4.1 Diametro massimo delle barre e dei trefoli",
         "normalized": "C4.1.12.1.4.1 Diametro massimo delle barre e dei trefoli",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.4.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Diametro massimo delle barre e dei trefoli"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,7 +65,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
+          }
+        ],
         "rawSha256": "81b531ae1eeee7f80883e98eba150db5581e9d04da95d3faca2267da5149a5b6",
         "normalizedSha256": "81b531ae1eeee7f80883e98eba150db5581e9d04da95d3faca2267da5149a5b6"
       }

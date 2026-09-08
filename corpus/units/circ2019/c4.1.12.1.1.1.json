@@ -37,7 +37,17 @@
       "text": {
         "raw": "C4.1.12.1.1.1 Resistenza a trazione",
         "normalized": "C4.1.12.1.1.1 Resistenza a trazione",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.1.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Resistenza a trazione"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,7 +65,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
+          }
+        ],
         "rawSha256": "d8c8566a9b53b392b29dfc6978900aa7d76f5da9413ada6b497f73d09f56ef0a",
         "normalizedSha256": "d8c8566a9b53b392b29dfc6978900aa7d76f5da9413ada6b497f73d09f56ef0a"
       }
@@ -249,12 +265,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-006",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "\u0012 = valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di\nf lck = valore della resistenza cilindrica caratteristica a compressione in N/mm2 .\nf lcm = valore della resistenza media cilindrica a compressione in N/mm2,.",
-        "normalized": "ρ è il valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza, in kg/m³; flck è il valore della resistenza cilindrica caratteristica a compressione, in N/mm²; flcm è il valore della resistenza media cilindrica a compressione, in N/mm².",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "ρ = valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza in kg/m³;",
+        "normalized": "ρ è il valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza, in kg/m³;",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -263,8 +279,77 @@
           },
           {
             "kind": "text",
-            "value": " è il valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza, in kg/m³; "
+            "value": " è il valore limite superiore della massa per unità di volume del calcestruzzo, per la classe di massa per unità di volume di appartenenza, in kg/m³;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 97,
+        "printedPage": "93",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.909,
+          "y": 97.895,
+          "width": 447.41,
+          "height": 223.745
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» dal PDF ufficiale."
+          }
+        ],
+        "rawSha256": "2ea364d5acb58f42df5fdfc1aba73366536a886ddea9321cb8787e017d1ce77a",
+        "normalizedSha256": "17e2bff5ceb00036df812ddd797bd751181646152f4a19205426687cfbf512cd"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-006-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "flck = valore della resistenza cilindrica caratteristica a compressione in N/mm²;",
+        "normalized": "flck è il valore della resistenza cilindrica caratteristica a compressione, in N/mm²;",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "flck",
@@ -281,8 +366,77 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 97,
+        "printedPage": "93",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.909,
+          "y": 97.895,
+          "width": 447.41,
+          "height": 223.745
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» dal PDF ufficiale."
+          }
+        ],
+        "rawSha256": "ef8f5ef9066d0bebc8e213a1a49dd023d7212d0efd7f96c56a9f57d012ecccac",
+        "normalizedSha256": "b26e3e339104c01b2d262f11a792a105200e973210c2321e46e62244ffbf4eee"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-006-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "flcm = valore della resistenza media cilindrica a compressione in N/mm².",
+        "normalized": "flcm è il valore della resistenza media cilindrica a compressione, in N/mm².",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "flcm",
@@ -349,11 +503,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate le tre definizioni allineate dopo «dove» dal PDF ufficiale."
           }
         ],
-        "rawSha256": "345c49a8c06007551211e3ddf3a43e76544fed72b2bd803de541f1131ed2d710",
-        "normalizedSha256": "48748f1edf322ea63af6bbef588d304c37a838dade2257c5be45fdfc3d50ef9b"
-      }
+        "rawSha256": "58eee441b84e99080274a6638752d35417487383c0bf3493517be268471e79f9",
+        "normalizedSha256": "4d4ec683c44068211f6eb0d0cfb3ab3ee11858d64034dab9d5909c43daba7ca6"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-007",
@@ -468,9 +628,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "I valori caratteristici della resistenza a trazione semplice, corrispondenti ai frattili 0,05 e 0,95, possono assumersi pari a:\u0003\u0002 frattile 5%:f lctk,0,05 = 0,7 f lctm [C4.1.14.a]",
-        "normalized": "I valori caratteristici della resistenza a trazione semplice, corrispondenti ai frattili 0,05 e 0,95, possono assumersi pari a. Frattile 5%:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "I valori caratteristici della resistenza a trazione semplice, corrispondenti ai frattili 0,05 e 0,95, possono assumersi pari a:",
+        "normalized": "I valori caratteristici della resistenza a trazione semplice, corrispondenti ai frattili 0,05 e 0,95, possono assumersi pari a:",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -518,11 +678,89 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate l’introduzione dai due frattili elencati nella fonte ufficiale."
           }
         ],
-        "rawSha256": "15fc4494cbafebcdff760fd0361c241af197baf973cc29bbcecbd6f90707b6ae",
-        "normalizedSha256": "1d14f001be10e6f11c0008b203c4b029f35b41dff0dc62cdf5609df0c0bbfe63"
+        "rawSha256": "364710ff54b2569bb6c97b9ceea6ff97f3b64cad88ddbad70ea1b57aa1fd8b1f",
+        "normalizedSha256": "364710ff54b2569bb6c97b9ceea6ff97f3b64cad88ddbad70ea1b57aa1fd8b1f"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-009-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "– frattile 5%:",
+        "normalized": "frattile 5%:",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "frattile 5%:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 97,
+        "printedPage": "93",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.909,
+          "y": 97.895,
+          "width": 447.41,
+          "height": 223.745
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Separate l’introduzione dai due frattili elencati nella fonte ufficiale."
+          }
+        ],
+        "rawSha256": "6f1e8240b43a8a51ad6fae0f1e1afe56688fa75edb84d3ba8e8d6879deaf0d76",
+        "normalizedSha256": "36fcb034edcace19e1d2a6fb3875d7e215a54056208f29e2dcce56ce136b8d32"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-010",
@@ -558,12 +796,18 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-011",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "\u0003\u0002 frattile 95%:flctk,0,95 = 1,3 f lctm [C4.1.14.b]",
-        "normalized": "Frattile 95%:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "– frattile 95%:",
+        "normalized": "frattile 95%:",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "frattile 95%:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -611,11 +855,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il secondo frattile come voce tratteggiata."
           }
         ],
-        "rawSha256": "9ec52a2302b3c67e9f946a538bf31a1ea023f7584afabb74485139e1ae2b8faa",
-        "normalizedSha256": "b79bd95042343a4573092018e6a8604e6aa23c6a6f14956a00af5d51b6d261d1"
-      }
+        "rawSha256": "50cb6e52d93d503d2c251912783a20bb41e35201912d9cba1c24ca869e89834e",
+        "normalizedSha256": "b702aa76491403ec17508c4574f7ba1787cd210867a116adba9e305bfa1a2fdf"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.1.1#block-editorial-012",

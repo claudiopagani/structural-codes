@@ -37,7 +37,17 @@
       "text": {
         "raw": "C4.1.12.1.3.1 Resistenza a sforzo normale e flessione (elementi monodimensionali)",
         "normalized": "C4.1.12.1.3.1 Resistenza a sforzo normale e flessione (elementi monodimensionali)",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C4.1.12.1.3.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Resistenza a sforzo normale e flessione (elementi monodimensionali)"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -55,7 +65,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il corsivo del sottotitolo numerato nella fonte ufficiale."
+          }
+        ],
         "rawSha256": "45631280f581e62403c1113cb600f1618dffc45a39944f829298852be3f60297",
         "normalizedSha256": "45631280f581e62403c1113cb600f1618dffc45a39944f829298852be3f60297"
       }
@@ -284,12 +300,18 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "\u0003\u0002 per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55 pari a:\n2c2 = 0,20%\n2c3 = 0,175%\n2cu = 1 0,35%, essendo 1 = 0,40+0,60 \u0012/2200",
-        "normalized": "Per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "– per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55 pari a:",
+        "normalized": "per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55 pari a:",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "per calcestruzzi di classe di resistenza inferiore o uguale a LC 50/55 pari a:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -337,11 +359,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il trattino e il minuscolo iniziale delle due classi di resistenza."
           }
         ],
-        "rawSha256": "2a63d16162834326b46d646791bd013d8948aa3f0c826962bce55f6822f7f557",
-        "normalizedSha256": "bed6b113a67f692d0a6e9cc2ba555ca53c8b73a23b53c30dc70c6ead4fe91070"
-      }
+        "rawSha256": "25510e0a9e35145246fddfbb67796eb8d935a12ec4eac17e479937b50fd3306f",
+        "normalizedSha256": "7a6d92c2404a8cf539e2912b9ef7f4292bfa79d5e2b377d10acfc08d62256cb8"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1#block-editorial-006",
@@ -377,12 +405,18 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1#block-editorial-007",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "\u0003\u0002 per calcestruzzi di classe di resistenza pari a LC 55/60 pari a:\n2c2 = 0,22%\n2c3 = 0,18%\n2cu = 1 0,31%",
-        "normalized": "Per calcestruzzi di classe di resistenza pari a LC 55/60:",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "raw": "– per calcestruzzi di classe di resistenza pari a LC 55/60 pari a:",
+        "normalized": "per calcestruzzi di classe di resistenza pari a LC 55/60 pari a:",
+        "normalizationVersion": "circ41-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "per calcestruzzi di classe di resistenza pari a LC 55/60 pari a:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -430,11 +464,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step2-editorial-0.1.0",
+            "note": "Conservato il trattino e il minuscolo iniziale delle due classi di resistenza."
           }
         ],
-        "rawSha256": "81509542a5a46347e50dc4d134aa0a6c9e19616ffe1eeb0d62550bdd98578d95",
-        "normalizedSha256": "aa8e874c4418ab33c52648300394b2757e304a4c996904b54f0aa3b2b524af00"
-      }
+        "rawSha256": "12a9150d31c0fbf5bb8a0328bbfbeb1f2f817083e87bff3745dd961e2a90e5d1",
+        "normalizedSha256": "42f1e946610af3ee16a2f5a97c10ccec792cb764a915f4c67ae9eeaf335cfa08"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.12.1.3.1#block-editorial-008",

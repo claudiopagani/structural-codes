@@ -67,7 +67,13 @@
       "text": {
         "raw": "Calcolo dell’ampiezza delle fessure",
         "normalized": "Calcolo dell’ampiezza delle fessure",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "em-underline",
+            "value": "Calcolo dell’ampiezza delle fessure"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -85,7 +91,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Conservati insieme corsivo e sottolineatura del sottotitolo non numerato."
+          }
+        ],
         "rawSha256": "88fd551625440d71a95706e058d033901108b07c190d9780ee805b470f4cbe25",
         "normalizedSha256": "88fd551625440d71a95706e058d033901108b07c190d9780ee805b470f4cbe25"
       }
@@ -230,12 +242,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "sm è la deformazione unitaria media delle barre d’armatura;\n0sm è la distanza media tra le fessure.",
-        "normalized": "εsm è la deformazione unitaria media delle barre d’armatura; Δsm è la distanza media tra le fessure.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "sm è la deformazione unitaria media delle barre d’armatura;",
+        "normalized": "εsm è la deformazione unitaria media delle barre d’armatura;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -244,8 +256,77 @@
           },
           {
             "kind": "text",
-            "value": " è la deformazione unitaria media delle barre d’armatura; "
+            "value": " è la deformazione unitaria media delle barre d’armatura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due definizioni allineate dopo «dove» sulla base del PDF renderizzato."
+          }
+        ],
+        "rawSha256": "3f885065c67c074bde041f0b8a914a2a4b8eb68f36135b5f16917d40cbbabdf5",
+        "normalizedSha256": "5b7f272689bd0f93e3da58c1c3f327bcceb3007c9d3969c90599b0db4616ad28"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-005-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "0sm è la distanza media tra le fessure.",
+        "normalized": "Δsm è la distanza media tra le fessure.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "Δsm",
@@ -303,11 +384,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due definizioni allineate dopo «dove» sulla base del PDF renderizzato."
           }
         ],
-        "rawSha256": "5aa9cdd6f9ea39e3b88836be44ce6677d74290f0ed5a3841f93d4846dfb32853",
-        "normalizedSha256": "512c0bd0e7a39a995358cf63bf0204d48689f86e448458d0310f5ef2d637e1c8"
-      }
+        "rawSha256": "2af32b6f264b16a198bd3de22a86d6a3f79843c48ebf2bd727579063920b918b",
+        "normalizedSha256": "6fcfca2e1517f7ef6342d4b894c2da41eeba9522cd3a0c4934a633373b2e85f9"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-006",
@@ -434,12 +521,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-009",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "s è la tensione nell’armatura tesa considerando la sezione fessurata;\n\u000fe è il rapporto Es/Ecm;\n\u0012eff è pari a \u0017 \u0015\u0011\u0007--\nkt è un fattore dipendente dalla durata del carico e vale:",
-        "normalized": "σs è la tensione nell'armatura tesa, calcolata considerando la sezione fessurata; αe è il rapporto Es/Ecm; ρeff = As/Ac,eff, dove Ac,eff è l'area efficace di calcestruzzo teso attorno all'armatura, di altezza hc,eff = min[2,5(h-d), (h-x)/3, h/2] (vedere Figura C4.1.10); in trazione, le due aree efficaci all'estradosso e all'intradosso sono considerate separatamente; kt è un fattore dipendente dalla durata del carico e vale:",
-        "normalizationVersion": "circ41-formula-audit-0.1.0",
+        "raw": "s è la tensione nell’armatura tesa considerando la sezione fessurata;",
+        "normalized": "σs è la tensione nell’armatura tesa considerando la sezione fessurata;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -448,8 +535,82 @@
           },
           {
             "kind": "text",
-            "value": " è la tensione nell'armatura tesa, calcolata considerando la sezione fessurata; "
+            "value": " è la tensione nell’armatura tesa considerando la sezione fessurata;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le cinque definizioni allineate dopo «in cui» e ripristinati i simboli dal render ufficiale."
+          }
+        ],
+        "rawSha256": "3f750a6b58ab8038cac0bbf7102f7df48c5d123e6b345b2b5296e0de11b3ae8d",
+        "normalizedSha256": "a19b46f462e4e72557e54e0af4f151cac8dec881b884f84f37740204f3c522f4"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-009-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u000fe è il rapporto Es/Ecm;",
+        "normalized": "αe è il rapporto Es/Ecm;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "αe",
@@ -466,17 +627,174 @@
           },
           {
             "kind": "text",
-            "value": "; "
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
           {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le cinque definizioni allineate dopo «in cui» e ripristinati i simboli dal render ufficiale."
+          }
+        ],
+        "rawSha256": "0aa68fc3c06ed9e6f2fb01fc7b1c9ee26fc985b92b4a32c6147bd35598f6e608",
+        "normalizedSha256": "b4236ee90ccdf294f36bb810513811f225c04f780c1c264330f9751427550003"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-009-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0012eff è pari a \u0017 \u0015\u0011\u0007--",
+        "normalized": "ρeff è pari a As/Ac,eff;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
+          {
             "kind": "math",
-            "value": "ρeff = As/Ac,eff",
-            "latex": "\\rho_{eff}=A_s/A_{c,eff}"
+            "value": "ρeff",
+            "latex": "\\rho_{eff}"
           },
           {
             "kind": "text",
-            "value": ", dove "
+            "value": " è pari a "
           },
+          {
+            "kind": "math",
+            "value": "As/Ac,eff",
+            "latex": "A_s/A_{c,eff}"
+          },
+          {
+            "kind": "text",
+            "value": ";"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le cinque definizioni allineate dopo «in cui» e ripristinati i simboli dal render ufficiale."
+          }
+        ],
+        "rawSha256": "2e3062b9685141f3da2f6b39e1bdcbf07ad9bd92b37b56212a71d113b2038d5e",
+        "normalizedSha256": "99651d783c832dd0cb44c8c452ad60c0e6e25ffeb0dcc64ba59f094e5869710e"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-009-4",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "\u0012eff è pari a \u0017 \u0015\u0011\u0007--",
+        "normalized": "Ac,eff è l’area efficace di calcestruzzo teso attorno all’armatura, di altezza hc,eff, dove hc,eff è il valore minore tra 2,5 (h–d), (h–x)/3 o h/2 (vedere Figura C4.1.10); nel caso di elementi in trazione, in cui esistono due aree efficaci, l’una all’estradosso e l’altra all’intradosso, entrambe le aree vanno considerate separatamente;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "Ac,eff",
@@ -484,17 +802,127 @@
           },
           {
             "kind": "text",
-            "value": " è l'area efficace di calcestruzzo teso attorno all'armatura, di altezza "
+            "value": " è l’area efficace di calcestruzzo teso attorno all’armatura, di altezza "
           },
           {
             "kind": "math",
-            "value": "hc,eff = min[2,5(h-d), (h-x)/3, h/2]",
-            "latex": "h_{c,eff}=\\min\\left[2{,}5(h-d),\\frac{h-x}{3},\\frac{h}{2}\\right]"
+            "value": "hc,eff",
+            "latex": "h_{c,eff}"
           },
           {
             "kind": "text",
-            "value": " (vedere Figura C4.1.10); in trazione, le due aree efficaci all'estradosso e all'intradosso sono considerate separatamente; "
+            "value": ", dove "
           },
+          {
+            "kind": "math",
+            "value": "hc,eff",
+            "latex": "h_{c,eff}"
+          },
+          {
+            "kind": "text",
+            "value": " è il valore minore tra "
+          },
+          {
+            "kind": "math",
+            "value": "2,5 (h–d)",
+            "latex": "2{,}5(h-d)"
+          },
+          {
+            "kind": "text",
+            "value": ", "
+          },
+          {
+            "kind": "math",
+            "value": "(h–x)/3",
+            "latex": "\\frac{h-x}{3}"
+          },
+          {
+            "kind": "text",
+            "value": " o "
+          },
+          {
+            "kind": "math",
+            "value": "h/2",
+            "latex": "\\frac{h}{2}"
+          },
+          {
+            "kind": "text",
+            "value": " (vedere Figura C4.1.10); nel caso di elementi in trazione, in cui esistono due aree efficaci, l’una all’estradosso e l’altra all’intradosso, entrambe le aree vanno considerate separatamente;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le cinque definizioni allineate dopo «in cui» e ripristinati i simboli dal render ufficiale."
+          }
+        ],
+        "rawSha256": "2e3062b9685141f3da2f6b39e1bdcbf07ad9bd92b37b56212a71d113b2038d5e",
+        "normalizedSha256": "039a45af4ad9e0f2087bee10d02051aedd868821bee372018a71f671c3b21acd"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-009-5",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "kt è un fattore dipendente dalla durata del carico e vale:",
+        "normalized": "kt è un fattore dipendente dalla durata del carico e vale:",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "kt",
@@ -557,20 +985,26 @@
             "operation": "manual-correction",
             "ruleVersion": "circ41-formula-audit-0.1.0",
             "note": "Ricomposte le definizioni matematiche complete della verifica di fessurazione."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le cinque definizioni allineate dopo «in cui» e ripristinati i simboli dal render ufficiale."
           }
         ],
-        "rawSha256": "c2efc4cb8907b6fbe4f2b6583da8597c00d69e7bd9fea81f5446c209bcf0c458",
-        "normalizedSha256": "9eb62a2e0f8bdefb341229ad82bfdfb1e22431778eac186732761094d5704b87"
-      }
+        "rawSha256": "ce6eeb0ea5e7be87c2f7fe7117a5d1285b8d5c1b81f501c97dac7d847ac398cd",
+        "normalizedSha256": "ce6eeb0ea5e7be87c2f7fe7117a5d1285b8d5c1b81f501c97dac7d847ac398cd"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-010",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "kt = 0,6 per carichi di breve durata,\nkt = 0,4 per carichi di lunga durata. \u0002",
-        "normalized": "kt = 0,6 per carichi di breve durata, kt = 0,4 per carichi di lunga durata.",
-        "normalizationVersion": "circ41-formula-audit-0.1.0",
+        "raw": "kt = 0,6 per carichi di breve durata,",
+        "normalized": "kt = 0,6 per carichi di breve durata,",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -579,8 +1013,82 @@
           },
           {
             "kind": "text",
-            "value": " per carichi di breve durata, "
+            "value": " per carichi di breve durata,"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 91,
+        "printedPage": "87",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 281.989,
+          "width": 449.296,
+          "height": 305.634
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le due uguaglianze del fattore k_t."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due righe del coefficiente k_t secondo il PDF."
+          }
+        ],
+        "rawSha256": "be502c8af799f6a1a7445237ad1974f20fd85d7a286b2dcb5de16871623423a0",
+        "normalizedSha256": "be502c8af799f6a1a7445237ad1974f20fd85d7a286b2dcb5de16871623423a0"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-010-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "kt = 0,4 per carichi di lunga durata. \u0002",
+        "normalized": "kt = 0,4 per carichi di lunga durata.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "kt = 0,4",
@@ -643,11 +1151,17 @@
             "operation": "manual-correction",
             "ruleVersion": "circ41-formula-audit-0.1.0",
             "note": "Riunite le due uguaglianze del fattore k_t."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due righe del coefficiente k_t secondo il PDF."
           }
         ],
-        "rawSha256": "9749d7cff8dc042ed9eb55abe167a43f1300037e488c1913a7e6711ce55ca519",
-        "normalizedSha256": "9340d1323e52167efcb9cfa85610beeb4d459ca7f0f44283975feb99edc16f60"
-      }
+        "rawSha256": "15efd1337fc7de106f10a2c8287ca46df0e7a85b7d8eeb59663d2f8397107a29",
+        "normalizedSha256": "df69a70e625eb5b0f1e68c4fa72e24a359d18abae30b8c9051b00cfc28588f2f"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-011",
@@ -692,12 +1206,12 @@
       "origin": "official",
       "text": {
         "raw": "Nei casi in cui l’armatura sia disposta con una spaziatura non superiore a 5(c + 4/2) (vedi Figura C4.1.11), la distanza media tra le\nfessure, 0sm, può essere valutata con l’espressione:0sm =(k \n3 c + k1 k2 k4 \u0007--\n4\n\u0012 )/1,7 [C4.1.7]",
-        "normalized": "Quando la spaziatura delle armature non supera 5(c + φ/2), la distanza media tra le fessure può essere valutata con l'espressione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Nei casi in cui l’armatura sia disposta con una spaziatura non superiore a 5(c + φ/2) (vedi Figura C4.1.11), la distanza media tra le fessure, Δsm, può essere valutata con l’espressione:",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Quando la spaziatura delle armature non supera "
+            "value": "Nei casi in cui l’armatura sia disposta con una spaziatura non superiore a "
           },
           {
             "kind": "math",
@@ -706,7 +1220,16 @@
           },
           {
             "kind": "text",
-            "value": ", la distanza media tra le fessure può essere valutata con l'espressione:"
+            "value": " (vedi Figura C4.1.11), la distanza media tra le fessure, "
+          },
+          {
+            "kind": "math",
+            "value": "Δsm",
+            "latex": "\\Delta_{sm}"
+          },
+          {
+            "kind": "text",
+            "value": ", può essere valutata con l’espressione:"
           }
         ]
       },
@@ -756,10 +1279,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Ripristinati l’incipit, il simbolo Delta_sm e la formula inline della distanza fra fessure."
           }
         ],
         "rawSha256": "9d99968ec28bdf92d3ef0c8e0d76b333329cb6c3cb0dfb2167983796b710d464",
-        "normalizedSha256": "8cd9045cc27c18a2d2075b455f9ae9ab1aa2bc74a17c879f411eb512798d479a"
+        "normalizedSha256": "03656d0d92b292280b0e7cea419f664559bd9d8ef4c973fe8595f6a43b256d7b"
       }
     },
     {
@@ -826,12 +1354,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-015",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "4\u0005\u0005 è il diametro delle barre. Se nella sezione considerata sono impiegate barre di diametro diverso, si raccomanda di adottare un\nopportuno diametro equivalente!\u00024\"# \u0002Se n1 è il numero di barre di diametro4 \u0002ed n2 è il numero di barre di diametro 4\u0007, si\nraccomanda di utilizzare l’espressione seguente:\u001b \u001b\n\u00072\n4 * 4\n4 \u0004 4 * 4 \u0005 \"C56(67#\u0005",
-        "normalized": "φ è il diametro delle barre; se sono impiegati diametri diversi, si adotta il diametro equivalente:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "φ è il diametro delle barre. Se nella sezione considerata sono impiegate barre di diametro diverso, si raccomanda di adottare un opportuno diametro equivalente, φeq. Se n1 è il numero di barre di diametro φ1 ed n2 è il numero di barre di diametro φ2, si raccomanda di utilizzare l’espressione seguente:",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -840,7 +1368,52 @@
           },
           {
             "kind": "text",
-            "value": " è il diametro delle barre; se sono impiegati diametri diversi, si adotta il diametro equivalente:"
+            "value": " è il diametro delle barre. Se nella sezione considerata sono impiegate barre di diametro diverso, si raccomanda di adottare un opportuno diametro equivalente, "
+          },
+          {
+            "kind": "math",
+            "value": "φeq",
+            "latex": "\\phi_{eq}"
+          },
+          {
+            "kind": "text",
+            "value": ". Se "
+          },
+          {
+            "kind": "math",
+            "value": "n1",
+            "latex": "n_1"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero di barre di diametro "
+          },
+          {
+            "kind": "math",
+            "value": "φ1",
+            "latex": "\\phi_1"
+          },
+          {
+            "kind": "text",
+            "value": " ed "
+          },
+          {
+            "kind": "math",
+            "value": "n2",
+            "latex": "n_2"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero di barre di diametro "
+          },
+          {
+            "kind": "math",
+            "value": "φ2",
+            "latex": "\\phi_2"
+          },
+          {
+            "kind": "text",
+            "value": ", si raccomanda di utilizzare l’espressione seguente:"
           }
         ]
       },
@@ -890,11 +1463,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Ripristinati i simboli e la definizione completa del diametro equivalente dal render ufficiale."
           }
         ],
         "rawSha256": "5e92a8d3240fd8993c1f8c489bf88620de9164ae0df53089dcc2d75851f22201",
-        "normalizedSha256": "b5840ad385096703e91f857e0cac2e5f5383a0b48ca510f636843d2284358895"
-      }
+        "normalizedSha256": "5b3ba1fcff585f2b93a9d4cab32c1725abb2b282e9b26a6598523a5b4b4a6363"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-016",
@@ -930,12 +1509,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-017",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "c è il ricoprimento dell’armatura;\nk 1 = 0,8 per barre ad aderenza migliorata,\nk 2 = 0,5 nel caso di flessione,",
-        "normalized": "c è il ricoprimento dell'armatura; k1 = 0,8 per barre ad aderenza migliorata e k1 = 1,6 per barre lisce; k2 = 0,5 nel caso di flessione e k2 = 1,0 nel caso di trazione semplice.",
-        "normalizationVersion": "circ41-formula-audit-0.1.0",
+        "raw": "c è il ricoprimento dell’armatura;",
+        "normalized": "c è il ricoprimento dell’armatura;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -944,8 +1523,82 @@
           },
           {
             "kind": "text",
-            "value": " è il ricoprimento dell'armatura; "
+            "value": " è il ricoprimento dell’armatura;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 92,
+        "printedPage": "88",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 163.668,
+          "width": 447.533,
+          "height": 549.144
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le quattro uguaglianze dei coefficienti k_1 e k_2."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le definizioni allineate dei coefficienti c, k_1 e k_2."
+          }
+        ],
+        "rawSha256": "978c9fbbe0705896b2f2cd1d3375fddf84aff3522365873279a1f305347d6fd2",
+        "normalizedSha256": "978c9fbbe0705896b2f2cd1d3375fddf84aff3522365873279a1f305347d6fd2"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-017-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "k 1 = 0,8 per barre ad aderenza migliorata,\nk 1 = 1,6 per barre lisce;",
+        "normalized": "k1 = 0,8 per barre ad aderenza migliorata, k1 = 1,6 per barre lisce;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k1 = 0,8",
@@ -953,7 +1606,7 @@
           },
           {
             "kind": "text",
-            "value": " per barre ad aderenza migliorata e "
+            "value": " per barre ad aderenza migliorata, "
           },
           {
             "kind": "math",
@@ -962,8 +1615,82 @@
           },
           {
             "kind": "text",
-            "value": " per barre lisce; "
+            "value": " per barre lisce;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 92,
+        "printedPage": "88",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 163.668,
+          "width": 447.533,
+          "height": 549.144
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le quattro uguaglianze dei coefficienti k_1 e k_2."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le definizioni allineate dei coefficienti c, k_1 e k_2."
+          }
+        ],
+        "rawSha256": "26f42307a48d3e80cb00d8f4ca609f8a47e5ffb477e65e7e73efe9c322cd7a6d",
+        "normalizedSha256": "d3f4dcf0c57b7852aeba96ee27f75400273b6b3d5e9fb866c10328d77a589020"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-017-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "k 2 = 0,5 nel caso di flessione,\nk 2 = 1,0 nel caso di trazione semplice.",
+        "normalized": "k2 = 0,5 nel caso di flessione, k2 = 1,0 nel caso di trazione semplice.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k2 = 0,5",
@@ -971,7 +1698,7 @@
           },
           {
             "kind": "text",
-            "value": " nel caso di flessione e "
+            "value": " nel caso di flessione, "
           },
           {
             "kind": "math",
@@ -1035,11 +1762,17 @@
             "operation": "manual-correction",
             "ruleVersion": "circ41-formula-audit-0.1.0",
             "note": "Riunite le quattro uguaglianze dei coefficienti k_1 e k_2."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le definizioni allineate dei coefficienti c, k_1 e k_2."
           }
         ],
-        "rawSha256": "77c26cf0bd6c5283d51dc1a55e573f8c0745840745578132d640bd495ce42e11",
-        "normalizedSha256": "78a0ab00a20fbc353861680e008a4a0a3c862b1224d220d58aefef018cf56a9e"
-      }
+        "rawSha256": "a6b1ca9174e9943f1ed9fadb1449abd2b9d37d0687e03b5e9a02c3a48e3424af",
+        "normalizedSha256": "85d94e5427dcd2597e4bf1e51994ba33aa2258d1adad00cc345d5fbbd7cae244"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-018",
@@ -1155,13 +1888,17 @@
       "origin": "official",
       "text": {
         "raw": "in cui 21 ed 22 sono rispettivamente la più grande e la più piccola deformazione di trazione alle estremità della sezione",
-        "normalized": "ε1 ed ε2 sono, rispettivamente, la maggiore e la minore deformazione di trazione alle estremità della sezione, calcolate considerando la sezione fessurata.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "in cui ε1 ed ε2 sono rispettivamente la più grande e la più piccola deformazione di trazione alle estremità della sezione considerata, calcolate considerando la sezione fessurata.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
+          {
+            "kind": "text",
+            "value": "in cui "
+          },
           {
             "kind": "math",
             "value": "ε1",
-            "latex": "\\varepsilon_{1}"
+            "latex": "\\varepsilon_1"
           },
           {
             "kind": "text",
@@ -1170,11 +1907,11 @@
           {
             "kind": "math",
             "value": "ε2",
-            "latex": "\\varepsilon_{2}"
+            "latex": "\\varepsilon_2"
           },
           {
             "kind": "text",
-            "value": " sono, rispettivamente, la maggiore e la minore deformazione di trazione alle estremità della sezione, calcolate considerando la sezione fessurata."
+            "value": " sono rispettivamente la più grande e la più piccola deformazione di trazione alle estremità della sezione considerata, calcolate considerando la sezione fessurata."
           }
         ]
       },
@@ -1224,30 +1961,105 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Ripristinata l’introduzione e i pedici della definizione delle deformazioni epsilon_1 ed epsilon_2."
           }
         ],
         "rawSha256": "6f0e10a090ba7bb730c5a86c0fe17a615639b3b211ea9cab060b402ee5ecc75c",
-        "normalizedSha256": "7bb405b6df823edf2a3be65b91374f23ffd7b27f053848daf2d350bbf39b8736"
+        "normalizedSha256": "d7dcab81fceee38a24be9f2c93de5534e3d9eaf0f0379e3bd77090e0ba8d290e"
       }
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-021",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "k 3 = 3,4\nk 4 = 0,425.",
-        "normalized": "k3 = 3,4; k4 = 0,425.",
-        "normalizationVersion": "circ41-formula-audit-0.1.0",
+        "raw": "k 3 = 3,4",
+        "normalized": "k3 = 3,4",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
             "value": "k3 = 3,4",
             "latex": "k_3=3{,}4"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 92,
+        "printedPage": "88",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 163.668,
+          "width": 447.533,
+          "height": 549.144
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
           },
           {
-            "kind": "text",
-            "value": "; "
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
           },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Riunite le uguaglianze dei coefficienti k_3 e k_4."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due righe dei coefficienti k_3 e k_4."
+          }
+        ],
+        "rawSha256": "0333f6bfd1d3b4880285ed011071d052eac151b3e76b95ebac4784301f38a0ed",
+        "normalizedSha256": "e87783626f5dc450238fbcfe0742986fa4d0c9d567e9e7e765a220601c806aa3"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-021-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "k 4 = 0,425.",
+        "normalized": "k4 = 0,425.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k4 = 0,425",
@@ -1310,11 +2122,17 @@
             "operation": "manual-correction",
             "ruleVersion": "circ41-formula-audit-0.1.0",
             "note": "Riunite le uguaglianze dei coefficienti k_3 e k_4."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le due righe dei coefficienti k_3 e k_4."
           }
         ],
-        "rawSha256": "3e361821a0a3c0efb3b80a2f911a10cda7e3a916716ec1c610c1ef82c6a6fe92",
-        "normalizedSha256": "da39901e432f05f04692c09f53a4041708ac7e919488fc8d7d4a5a89e9d2ebcd"
-      }
+        "rawSha256": "029d5f178d4d40ddd33c4804ff46d0c2f2099e8ed5a469fda03ee9d742d0eb87",
+        "normalizedSha256": "04c48cec1ca2094b4daadf1c8d03f331028aae12429357a5d45a8af8e41dab9e"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-022",
@@ -1322,12 +2140,12 @@
       "origin": "official",
       "text": {
         "raw": "Nelle zone in cui l’armatura è disposta con una spaziatura superiore a 5(c + 4+2) (vedi Figura C4.1.11), per la parte di estensione\n5(c + 4/2) nell’intorno delle barre la distanza media tra le fessure, 0sm, può essere valutata ancora con l’espressione C4.1.7:\nNella parte rimanente la distanza media tra le fessure, 0sm, può, invece, essere valutata con l’espressione:\n01-\u0004\u00059:;<\u0005\u0010h\u0005\u0003\u0005x\u0011\u0005 \"C56(6(9\u0005#\u0005",
-        "normalized": "Nelle zone in cui la spaziatura supera 5(c + φ/2), nella parte rimanente la distanza media tra le fessure può essere valutata con l'espressione:",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "Nelle zone in cui l’armatura è disposta con una spaziatura superiore a 5(c + φ/2) (vedi Figura C4.1.11), per la parte di estensione 5(c + φ/2) nell’intorno delle barre la distanza media tra le fessure, Δsm, può essere valutata ancora con l’espressione C4.1.7:",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Nelle zone in cui la spaziatura supera "
+            "value": "Nelle zone in cui l’armatura è disposta con una spaziatura superiore a "
           },
           {
             "kind": "math",
@@ -1336,7 +2154,25 @@
           },
           {
             "kind": "text",
-            "value": ", nella parte rimanente la distanza media tra le fessure può essere valutata con l'espressione:"
+            "value": " (vedi Figura C4.1.11), per la parte di estensione "
+          },
+          {
+            "kind": "math",
+            "value": "5(c + φ/2)",
+            "latex": "5\\left(c+\\frac{\\phi}{2}\\right)"
+          },
+          {
+            "kind": "text",
+            "value": " nell’intorno delle barre la distanza media tra le fessure, "
+          },
+          {
+            "kind": "math",
+            "value": "Δsm",
+            "latex": "\\Delta_{sm}"
+          },
+          {
+            "kind": "text",
+            "value": ", può essere valutata ancora con l’espressione C4.1.7:"
           }
         ]
       },
@@ -1386,10 +2222,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Ripristinati il riferimento alle barre e il simbolo Delta_sm nel passaggio alla seconda zona."
           }
         ],
         "rawSha256": "fbdb65828c4bc66dfcc740027f3f5db236775d7eae443771b672adf81928a631",
-        "normalizedSha256": "96a09c2b9e50e66df0cf1d4d4cf12ad75d7cf728bb3ed22ae0af7cf1d527b597"
+        "normalizedSha256": "8b8735e0dd40c43e927307d5eac5f717aa68b8e1b003ff76807a2a7de9d866db"
       }
     },
     {
@@ -1456,12 +2297,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-025",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "h ed x sono definite in Figura C4.1.10;\n(h – x) è la distanza tra l’asse neutro ed il lembo teso della membratura.Legenda:",
-        "normalized": "h ed x sono definiti nella Figura C4.1.10; (h - x) è la distanza tra l'asse neutro e il lembo teso della membratura.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "raw": "h ed x sono definite in Figura C4.1.10;",
+        "normalized": "h ed x sono definite in Figura C4.1.10;",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1479,16 +2320,7 @@
           },
           {
             "kind": "text",
-            "value": " sono definiti nella Figura C4.1.10; ("
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": " - x) è la distanza tra l'asse neutro e il lembo teso della membratura."
+            "value": " sono definite in Figura C4.1.10;"
           }
         ]
       },
@@ -1538,11 +2370,99 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le definizioni finali di h, x e della loro differenza."
           }
         ],
-        "rawSha256": "539b08277dddc02a22f4cec57d288d8c7e49c2b45644b79764e3a454b0f775b0",
-        "normalizedSha256": "51040a900ccd637525c0bac93b4cb980c2d79a033940d5a4ad6c9951ee419d3a"
-      }
+        "rawSha256": "ba0084b693d22728522b69545f00ff0f9386222267068aef9c20790a687077ed",
+        "normalizedSha256": "ba0084b693d22728522b69545f00ff0f9386222267068aef9c20790a687077ed"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-025-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "(h – x) è la distanza tra l’asse neutro ed il lembo teso della membratura.",
+        "normalized": "(h – x) è la distanza tra l’asse neutro ed il lembo teso della membratura.",
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "("
+          },
+          {
+            "kind": "math",
+            "value": "h – x",
+            "latex": "h-x"
+          },
+          {
+            "kind": "text",
+            "value": ") è la distanza tra l’asse neutro ed il lembo teso della membratura."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 92,
+        "printedPage": "88",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.905,
+          "y": 163.668,
+          "width": 447.533,
+          "height": 549.144
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Separate le definizioni finali di h, x e della loro differenza."
+          }
+        ],
+        "rawSha256": "e90018ae9b4ab059bbd7200bc851ced5da5b3ff6d93da6008e57447b2f855aff",
+        "normalizedSha256": "e90018ae9b4ab059bbd7200bc851ced5da5b3ff6d93da6008e57447b2f855aff"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.1.2.2.4.5#block-editorial-026",
@@ -1588,7 +2508,13 @@
       "text": {
         "raw": "Verifica della fessurazione senza calcolo diretto",
         "normalized": "Verifica della fessurazione senza calcolo diretto",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
+        "normalizationVersion": "circ41-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "em-underline",
+            "value": "Verifica della fessurazione senza calcolo diretto"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1606,7 +2532,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-step1-editorial-0.1.0",
+            "note": "Conservati insieme corsivo e sottolineatura del sottotitolo non numerato."
+          }
+        ],
         "rawSha256": "92199786dfe2bf933fc424c5813ece10cd5a617592e06c6a5e738736768696a7",
         "normalizedSha256": "92199786dfe2bf933fc424c5813ece10cd5a617592e06c6a5e738736768696a7"
       }

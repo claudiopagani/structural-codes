@@ -63,7 +63,7 @@ test("lo schema rifiuta un blocco ufficiale senza evidence", async () => {
     assert.equal(validate(await fixture(invalidFixtureFile)), false);
 });
 
-test("gli schemi canonici ammettono il segmento inline sottolineato", async () => {
+test("gli schemi canonici ammettono i segmenti inline sottolineati", async () => {
     const [validateUnit, validateAssets, unit, assets] = await Promise.all([
         compileValidator(),
         compileAssetValidator(),
@@ -75,6 +75,8 @@ test("gli schemi canonici ammettono il segmento inline sottolineato", async () =
     };
     styledUnit.blocks[0]!.text!.inline = [{ kind: "underline", value: "NTC" }];
     assert.equal(validateUnit(styledUnit), true, JSON.stringify(validateUnit.errors));
+    styledUnit.blocks[0]!.text!.inline = [{ kind: "em-underline", value: "NTC" }];
+    assert.equal(validateUnit(styledUnit), true, JSON.stringify(validateUnit.errors));
 
     const styledAssets = structuredClone(assets) as {
         tables: Array<{ officialNumber: string; caption: string; captionInline?: Array<{ kind: string; value: string }> }>;
@@ -82,6 +84,8 @@ test("gli schemi canonici ammettono il segmento inline sottolineato", async () =
     const table = styledAssets.tables.find(({ officialNumber }) => officialNumber === "C3.4.I");
     assert.ok(table);
     table.captionInline = [{ kind: "underline", value: table.caption }];
+    assert.equal(validateAssets(styledAssets), true, JSON.stringify(validateAssets.errors));
+    table.captionInline = [{ kind: "em-underline", value: table.caption }];
     assert.equal(validateAssets(styledAssets), true, JSON.stringify(validateAssets.errors));
 });
 
