@@ -82,7 +82,13 @@
       "text": {
         "raw": "L’elemento di connessione deve essere di lunghezza corta o limitata, perciò la sua luce massima deve rispettare le seguenti limitazioni:",
         "normalized": "L’elemento di connessione deve essere di lunghezza corta o limitata, perciò la sua luce massima deve rispettare le seguenti limitazioni:",
-        "normalizationVersion": "circ76-step1-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ76-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "L’elemento di connessione deve essere di lunghezza corta o limitata, perciò la sua luce massima deve rispettare le seguenti limitazioni:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -132,7 +138,8 @@
         "transformations": [],
         "rawSha256": "21a0c716c227814898222de859d73937cdda4b88fd469511824bb25a03b0449a",
         "normalizedSha256": "21a0c716c227814898222de859d73937cdda4b88fd469511824bb25a03b0449a"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.6.8#block-editorial-004",
@@ -167,7 +174,8 @@
         "transformations": [],
         "rawSha256": "83051edcaf897f537911aae685e477c662dd548c67ce3e8714be93c0e646376c",
         "normalizedSha256": "83051edcaf897f537911aae685e477c662dd548c67ce3e8714be93c0e646376c"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.6.8#block-editorial-005",
@@ -198,7 +206,16 @@
           },
           {
             "kind": "text",
-            "value": " sono, rispettivamente, il momento resistente ed il taglio resistente della sezione del profilo in acciaio nella zona del link, calcolati secondo le formule riportate nel §7.5.6 delle NTC, trascurando perciò il contributo della soletta."
+            "value": " sono, rispettivamente, il momento resistente ed il taglio resistente della sezione del profilo in acciaio nella zona del link, calcolati secondo le formule riportate nel "
+          },
+          {
+            "kind": "math",
+            "value": "§7.5.6",
+            "latex": "\\S 7.5.6"
+          },
+          {
+            "kind": "text",
+            "value": " delle NTC, trascurando perciò il contributo della soletta."
           }
         ]
       },

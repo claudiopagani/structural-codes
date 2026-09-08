@@ -106,7 +106,13 @@
       "text": {
         "raw": "La capacità di spostamento ai fini della verifica allo SLC, a meno di moti rigidi del pannello, può essere assunta pari a:",
         "normalized": "La capacità di spostamento ai fini della verifica allo SLC, a meno di moti rigidi del pannello, può essere assunta pari a:",
-        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ78-79-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "La capacità di spostamento ai fini della verifica allo SLC, a meno di moti rigidi del pannello, può essere assunta pari a:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -165,7 +171,8 @@
         "transformations": [],
         "rawSha256": "e4a0df61f8f2b681f2a66430b708ed979c32cbbb181cee9bc54eedaad13e5d69",
         "normalizedSha256": "e4a0df61f8f2b681f2a66430b708ed979c32cbbb181cee9bc54eedaad13e5d69"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.4#block-editorial-005",
@@ -200,7 +207,8 @@
         "transformations": [],
         "rawSha256": "e6480e4e16e2cafdaf4224e02340ddc09f38315b6d1b2138a09b0395583bc497",
         "normalizedSha256": "e6480e4e16e2cafdaf4224e02340ddc09f38315b6d1b2138a09b0395583bc497"
-      }
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.8.4#block-editorial-006",
@@ -213,21 +221,12 @@
         "inline": [
           {
             "kind": "text",
-            "value": "in cui "
-          },
-          {
-            "kind": "math",
-            "value": "ν",
-            "latex": "\\nu"
-          },
-          {
-            "kind": "text",
-            "value": " è lo sforzo assiale medio normalizzato "
+            "value": "in cui ν è lo sforzo assiale medio normalizzato "
           },
           {
             "kind": "math",
             "value": "ν = σ_0/f_d=N/(A f_d)",
-            "latex": "\\nu=\\frac{\\sigma_0}{f_d}=\\frac{N}{A f_d}"
+            "latex": "\\nu=\\sigma_0/f_d=N/(A f_d)"
           },
           {
             "kind": "text",
@@ -270,21 +269,21 @@
           },
           {
             "kind": "text",
-            "value": " superiori a "
+            "value": " superiori a 0,2, nel caso di rottura per pressoflessione, è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite, si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a "
           },
           {
             "kind": "math",
-            "value": "0,2",
-            "latex": "0{,}2"
+            "value": "1.5%",
+            "latex": "1.5\\%"
           },
           {
             "kind": "text",
-            "value": ", nel caso di rottura per pressoflessione, è opportuno assumere valori più cautelativi. In assenza di considerazioni più approfondite, si suggerisce di assumere che la capacità di spostamento ultima sia non superiore a "
+            "value": " x "
           },
           {
             "kind": "math",
-            "value": "1.5% x (1-ν)",
-            "latex": "1.5\\%\\times(1-\\nu)"
+            "value": "(1-ν)",
+            "latex": "(1-\\nu)"
           },
           {
             "kind": "text",
