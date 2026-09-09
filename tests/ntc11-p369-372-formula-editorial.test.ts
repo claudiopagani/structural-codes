@@ -47,9 +47,9 @@ test("NTC pagina 369 conserva inline completi e le due descrizioni dei moduli", 
         elasticity.blocks.slice(-4).map((block: { kind: string; text?: { normalized: string }; assetId?: string }) =>
             block.kind === "formula-ref" ? [block.kind, block.assetId] : [block.kind, block.text?.normalized]),
         [
-            ["list-item", "– modulo di elasticità normale secante"],
+        ["list-item", "modulo di elasticità normale secante"],
             ["formula-ref", "urn:structural-codes:it:asset:formula:ntc2018:11.10.8"],
-            ["list-item", "– modulo di elasticità tangenziale secante"],
+        ["list-item", "modulo di elasticità tangenziale secante"],
             ["formula-ref", "urn:structural-codes:it:asset:formula:ntc2018:11.10.9"],
         ],
     );

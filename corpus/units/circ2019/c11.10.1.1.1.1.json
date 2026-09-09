@@ -37,7 +37,17 @@
       "text": {
         "raw": "C11.10.1.1.1.1 Resistenza caratteristica a compressione degli elementi nella direzione dei carichi verticali",
         "normalized": "C11.10.1.1.1.1 Resistenza caratteristica a compressione degli elementi nella direzione dei carichi verticali",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C11.10.1.1.1.1 "
+          },
+          {
+            "kind": "em",
+            "value": "Resistenza caratteristica a compressione degli elementi nella direzione dei carichi verticali"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -49,7 +59,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-10-c11-10-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del sottotitolo non numerico, verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "bcc197fa496075d860bc05c6da3274cf00373696cb85620681dd5b61e36725a3",
         "normalizedSha256": "bcc197fa496075d860bc05c6da3274cf00373696cb85620681dd5b61e36725a3"
       }

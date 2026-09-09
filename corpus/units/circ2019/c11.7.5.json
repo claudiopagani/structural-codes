@@ -58,7 +58,21 @@
       "text": {
         "raw": "Ai pannelli in compensato di tavole, non compresi nel campo di applicazione della UNI EN 13986 o in assenza di altra specifica\nnorma armonizzata, si applica il caso C) di cui al §11.1 delle NTC. I Certificati di Valutazione Tecnica sono rilasciati sulla base dei\ncriteri contenuti nelle “Linee Guida per l’Impiego di prodotti, materiali e manufatti innovativi in legno per uso strutturale”.",
         "normalized": "Ai pannelli in compensato di tavole, non compresi nel campo di applicazione della UNI EN 13986 o in assenza di altra specifica norma armonizzata, si applica il caso C) di cui al §11.1 delle NTC. I Certificati di Valutazione Tecnica sono rilasciati sulla base dei criteri contenuti nelle “Linee Guida per l’Impiego di prodotti, materiali e manufatti innovativi in legno per uso strutturale”.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai pannelli in compensato di tavole, non compresi nel campo di applicazione della UNI EN 13986 o in assenza di altra specifica norma armonizzata, si applica il caso C) di cui al §11.1 delle NTC. I Certificati di Valutazione Tecnica sono rilasciati sulla base dei criteri contenuti nelle “"
+          },
+          {
+            "kind": "em",
+            "value": "Linee Guida per l’Impiego di prodotti, materiali e manufatti innovativi in legno per uso strutturale"
+          },
+          {
+            "kind": "text",
+            "value": "”."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -80,6 +94,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-6-7-c11-6-7-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del titolo citato, verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "d7dcd88ed96a6331d6aa0074493feb22f2691169cef1ad40c76db58ecc43eb54",
