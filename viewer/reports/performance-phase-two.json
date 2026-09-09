@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-09T03:21:11.468Z",
+  "environment": {
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700F",
+    "logicalCpuCount": 24,
+    "totalMemoryBytes": 17013882880,
+    "freeMemoryBytesAtStart": 5020000256,
+    "node": "v24.11.0",
+    "browser": "Chrome/152.0.7977.76",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "deviceScaleFactor": 1
+    },
+    "server": "vinext production build",
+    "baseUrl": "http://127.0.0.1:3000",
+    "network": {
+      "name": "Fast 4G",
+      "latencyMs": 150,
+      "downloadBytesPerSecond": 204800,
+      "uploadBytesPerSecond": 96000,
+      "packetLossPercent": 0
+    },
+    "cpuThrottlingRate": 1
+  },
+  "methodology": {
+    "runsPerScenario": 1,
+    "initialLoadBoundary": "viewer ready followed by 1500 ms with no in-flight network requests",
+    "transferredBytesSource": "Chrome DevTools Protocol Network.loadingFinished.encodedDataLength",
+    "clickBoundary": "HTMLElement.click() to first requestAnimationFrame where scrollTop reaches clamp(target.offsetTop - 14 px) (±1 px)",
+    "scrollBoundary": "120 requestAnimationFrame steps in the document pane",
+    "longTaskThresholdMs": 50
+  },
+  "scenarios": [
+    {
+      "mode": "ntc",
+      "url": "http://127.0.0.1:3000/?mode=ntc",
+      "cache": "cold; isolated browser context; HTTP cache disabled",
+      "initialLoad": {
+        "requestCount": 16,
+        "transferredBytes": 1554039,
+        "corpusJsonTransferredBytes": 731825,
+        "chunkRequestCount": 3,
+        "distinctChunkCount": 3,
+        "chunkTransferredBytes": 19419,
+        "circChunkCount": 0,
+        "duplicateChunkRequests": [],
+        "mountedChunkCount": 2,
+        "loadedRelatedChunkCount": 0,
+        "longTaskSupported": true
+      },
+      "interactions": {
+        "clickMountedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:ntc2018:1",
+          "durationMs": 12.4,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "clickUnloadedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:ntc2018:12",
+          "durationMs": 243.8,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "continuousScroll": {
+          "durationMs": 2017.2,
+          "frames": 120,
+          "longTasks": {
+            "count": 1,
+            "totalDurationMs": 54,
+            "maxDurationMs": 54
+          }
+        }
+      },
+      "anomalies": [
+        "1 Long Task durante lo scroll continuo"
+      ]
+    },
+    {
+      "mode": "circ",
+      "url": "http://127.0.0.1:3000/?mode=circ",
+      "cache": "cold; isolated browser context; HTTP cache disabled",
+      "initialLoad": {
+        "requestCount": 18,
+        "transferredBytes": 1619405,
+        "corpusJsonTransferredBytes": 737444,
+        "chunkRequestCount": 3,
+        "distinctChunkCount": 3,
+        "chunkTransferredBytes": 252311,
+        "circChunkCount": 3,
+        "duplicateChunkRequests": [],
+        "mountedChunkCount": 2,
+        "loadedRelatedChunkCount": 0,
+        "longTaskSupported": true
+      },
+      "interactions": {
+        "clickMountedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:circ2019:c1",
+          "durationMs": 10.5,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "clickUnloadedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:circ2019:c11",
+          "durationMs": 249.2,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "continuousScroll": {
+          "durationMs": 1999,
+          "frames": 120,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        }
+      },
+      "anomalies": []
+    },
+    {
+      "mode": "combined",
+      "url": "http://127.0.0.1:3000/?mode=combined",
+      "cache": "cold; isolated browser context; HTTP cache disabled",
+      "initialLoad": {
+        "requestCount": 23,
+        "transferredBytes": 2509429,
+        "corpusJsonTransferredBytes": 1627465,
+        "chunkRequestCount": 6,
+        "distinctChunkCount": 6,
+        "chunkTransferredBytes": 271730,
+        "circChunkCount": 3,
+        "duplicateChunkRequests": [],
+        "mountedChunkCount": 2,
+        "loadedRelatedChunkCount": 3,
+        "longTaskSupported": true
+      },
+      "interactions": {
+        "clickMountedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:ntc2018:1",
+          "durationMs": 12.1,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "clickUnloadedTarget": {
+          "targetUnitId": "urn:structural-codes:it:unit:ntc2018:12",
+          "durationMs": 240.1,
+          "reached": true,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        },
+        "continuousScroll": {
+          "durationMs": 2016.1,
+          "frames": 120,
+          "longTasks": {
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0
+          }
+        }
+      },
+      "anomalies": []
+    }
+  ]
+}

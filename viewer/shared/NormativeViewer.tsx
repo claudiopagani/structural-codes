@@ -10,7 +10,6 @@ import {
   loadDocumentIndex,
   loadManifest,
   loadRelations,
-  loadSearchIndex,
   type CorpusChunk,
   type CorpusManifest,
   type CorpusUnit,
@@ -18,11 +17,12 @@ import {
   type DocumentIndex,
   type DocumentLookup,
   type RelationEdge,
-  type SearchIndex,
+  type SearchResult,
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
 import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "./CorpusContent";
+import { useViewerSearch } from "./searchClient";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -64,6 +64,7 @@ export interface NormativeViewerProps {
   auxiliaryPanel?: AuxiliaryPanel;
   auxiliaryPanelLabel?: string;
   auxiliaryPanelDefaultVisible?: boolean;
+  searchMaxResults?: number;
   className?: string;
 }
 
@@ -124,10 +125,6 @@ function parentNumbering(value: string) {
   return parts.join(".") || null;
 }
 
-function normalizedQuery(value: string) {
-  return value.normalize("NFKC").trim().toLocaleLowerCase("it");
-}
-
 function findTextUnit(root: HTMLElement | null, unitId: string) {
   return root?.querySelector<HTMLElement>(`[data-scv-text-unit="${CSS.escape(unitId)}"]`) ?? null;
 }
@@ -155,11 +152,6 @@ function evidencePages(unit: CorpusUnit, chunk: CorpusChunk) {
     return asset?.pdfPage ? [asset.pdfPage] : [];
   });
   return [...new Set(pages)].sort((left, right) => left - right);
-}
-
-function snippet(value: string) {
-  const compact = value.replace(/\s+/gu, " ").trim();
-  return compact.length > 145 ? `${compact.slice(0, 142)}…` : compact;
 }
 
 function relationTargets(resultId: string, relations: RelationEdge[]) {
@@ -422,7 +414,21 @@ function useVisibleUnitObserver(rootRef: RefObject<HTMLElement | null>, records:
   }, [onVisible, records, rootRef]);
 }
 
-const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, deferredQuery, searchIndex, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, searchRef, settingsButtonRef, onOpenSettings }: {
+function HighlightedSnippet({ result }: { result: SearchResult }) {
+  const parts: ReactNode[] = [];
+  let offset = 0;
+  for (const [start, end] of result.highlights) {
+    const from = Math.max(offset, Math.min(result.snippet.length, start));
+    const to = Math.max(from, Math.min(result.snippet.length, end));
+    if (from > offset) parts.push(result.snippet.slice(offset, from));
+    if (to > from) parts.push(<mark key={`${from}:${to}`}>{result.snippet.slice(from, to)}</mark>);
+    offset = to;
+  }
+  if (offset < result.snippet.length) parts.push(result.snippet.slice(offset));
+  return <>{parts}</>;
+}
+
+const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, searchRef, settingsButtonRef, onOpenSettings }: {
   mode: ViewerMode;
   onModeChange: (mode: ViewerMode) => void;
   hierarchy: NavigationEntry[][];
@@ -430,11 +436,13 @@ const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierar
   indexReady: boolean;
   query: string;
   onQueryChange: (query: string) => void;
-  deferredQuery: string;
-  searchIndex: SearchIndex | null;
-  searchResults: SearchIndex["units"];
+  searchReady: boolean;
+  searchStatus: "idle" | "loading" | "ready" | "error";
+  searchSource: "exact" | "worker";
+  searchDurationMs: number | null;
+  searchResults: SearchResult[];
   onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onSearchResult: (result: SearchIndex["units"][number]) => void;
+  onSearchResult: (result: SearchResult) => void;
   onSelectUnit: (unit: UnitSummary) => void;
   searchRef: RefObject<HTMLInputElement | null>;
   settingsButtonRef: RefObject<HTMLButtonElement | null>;
@@ -449,8 +457,8 @@ const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierar
           {query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca">×</button>}
           <kbd>/</kbd>
         </form>
-        {deferredQuery.length >= 2 && <div className="scv-search-results" role="listbox" aria-label="Risultati ricerca">
-          {!searchIndex ? <p className="scv-search-status">Caricamento indice di ricerca…</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" key={result.id} onClick={() => onSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small>{snippet(result.text || result.title)}</small></button>)}
+        {searchReady && <div className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
+          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={result.id} onClick={() => onSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
         </div>}
       </div>
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
@@ -475,7 +483,7 @@ function scheduleIdle(callback: () => void) {
   return () => window.clearTimeout(id);
 }
 
-export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelDefaultVisible = false, className }: NormativeViewerProps) {
+export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelDefaultVisible = false, searchMaxResults = 12, className }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
   const [indexes, setIndexes] = useState<Map<DocumentId, DocumentIndex>>(new Map());
   const [loadedChunks, setLoadedChunks] = useState<Map<string, CorpusChunk>>(new Map());
@@ -486,7 +494,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [activeUnitId, setActiveUnitId] = useState<string | null>(null);
   const [relations, setRelations] = useState<RelationEdge[]>([]);
   const [relationsLoaded, setRelationsLoaded] = useState(false);
-  const [searchIndex, setSearchIndex] = useState<SearchIndex | null>(null);
   const [query, setQuery] = useState("");
   const [loadError, setLoadError] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -506,7 +513,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const textPaneRef = useRef<HTMLElement>(null);
   const documentId = documentForMode(mode);
   const documentIdRef = useRef(documentId);
-  const deferredQuery = normalizedQuery(query);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && mode !== "combined";
 
@@ -539,7 +545,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       setRequestedCircPaths(new Set());
       setRelations([]);
       setRelationsLoaded(false);
-      setSearchIndex(null);
       const url = new URL(window.location.href);
       const requestedMode = url.searchParams.get("mode");
       if (modeOptions.some((option) => option.id === requestedMode)) setMode(requestedMode as ViewerMode);
@@ -581,6 +586,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const circIndex = indexes.get("circ2019") ?? null;
   const lookup = useMemo(() => index ? createDocumentLookup(index) : null, [index]);
   const circLookup = useMemo(() => circIndex ? createDocumentLookup(circIndex) : null, [circIndex]);
+  const search = useViewerSearch({ query, mode, manifest, dataBaseUrl, lookup, circLookup, maxResults: searchMaxResults });
   const combinedPlan = useMemo(() => buildCombinedPlan(mode === "combined" ? index : null, mode === "combined" ? circIndex : null, relations), [circIndex, index, mode, relations]);
   const primaryRenderedPaths = useMemo(() => new Set(lookup?.chunkPaths.filter((path) => renderedChunkPaths.has(path)) ?? []), [lookup, renderedChunkPaths]);
 
@@ -813,15 +819,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const chunk = activeRecord?.chunk ?? null;
   const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
   const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
-  const searchResults = useMemo(() => {
-    if (!searchIndex || deferredQuery.length < 2) return [];
-    return searchIndex.units.filter((unit) => {
-      if (mode === "ntc" && unit.document !== "ntc2018") return false;
-      if (mode === "circ" && unit.document !== "circ2019") return false;
-      return `${unit.numbering} ${unit.title} ${unit.text}`.normalize("NFKC").toLocaleLowerCase("it").includes(deferredQuery);
-    }).slice(0, 12);
-  }, [deferredQuery, mode, searchIndex]);
-
   const changeMode = useCallback((nextMode: ViewerMode, preferredUnitId: string | null = null) => {
     if (nextMode === mode) return;
     const keepCurrent = activeSummary && (nextMode === "combined" || activeSummary.document === documentForMode(nextMode));
@@ -832,11 +829,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     setMode(nextMode);
     setSettingsOpen(false);
   }, [activeSummary, mode]);
-
-  useEffect(() => {
-    if (!manifest || deferredQuery.length < 2 || searchIndex) return;
-    loadSearchIndex(manifest, dataBaseUrl).then(setSearchIndex).catch(() => setLoadError(true));
-  }, [dataBaseUrl, deferredQuery, manifest, searchIndex]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -852,7 +844,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     else settingsButtonRef.current?.focus();
   }, [settingsOpen]);
 
-  const selectSearchResult = useCallback((result: SearchIndex["units"][number]) => {
+  const selectSearchResult = useCallback((result: SearchResult) => {
     setQuery("");
     const entry = navigationRef.current.entryById.get(result.id);
     if (entry) { selectUnit(entry.summary); return; }
@@ -868,8 +860,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const submitSearch = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (searchResults[0]) selectSearchResult(searchResults[0]);
-  }, [searchResults, selectSearchResult]);
+    if (search.results[0]) selectSearchResult(search.results[0]);
+  }, [search.results, selectSearchResult]);
 
   const primaryPathPositions = lookup?.chunkPaths.flatMap((path, position) => primaryRenderedPaths.has(path) ? [position] : []) ?? [];
   const hasPrevious = primaryPathPositions.length > 0 && Math.min(...primaryPathPositions) > 0;
@@ -879,8 +871,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0}>
-    <NavigationPane mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} deferredQuery={deferredQuery} searchIndex={searchIndex} searchResults={searchResults} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-search-error={search.errorMessage}>
+    <NavigationPane mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
     <div className="scv-text-pane-shell">
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON">
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}

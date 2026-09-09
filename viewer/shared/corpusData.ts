@@ -159,13 +159,43 @@ export interface RelationEdge extends Relation {
   targetChunkPath: string | null;
 }
 export interface RelationsIndex { formatVersion: 2; sourceOfTruth: "explicit-corpus-relations"; inferredRelationsIncluded: false; relations: RelationEdge[]; }
+export type SearchMatchKind = "number-exact" | "title" | "phrase" | "text";
+export interface SearchUnit {
+  id: string;
+  document: DocumentId;
+  numbering: string;
+  title: string;
+  titleNormalized: string;
+  chunkPath: string;
+  text: string;
+  textLength: number;
+}
 export interface SearchIndex {
-  formatVersion: 2;
-  units: Array<{ id: string; document: DocumentId; numbering: string; title: string; chunkPath: string; text: string }>;
+  formatVersion: 3;
+  normalization: string;
+  units: SearchUnit[];
+  references: Record<string, [number, number]>;
+  postings: Record<string, string>;
+}
+export interface SearchResult {
+  id: string;
+  document: DocumentId;
+  numbering: string;
+  title: string;
+  chunkPath: string;
+  snippet: string;
+  highlights: Array<[number, number]>;
+  score: number;
+  matchKind: SearchMatchKind;
+}
+export interface NormativeReference {
+  numbering: string;
+  documentHint: "circ2019" | null;
 }
 
 export interface DocumentLookup {
   unitById: Map<string, UnitSummary>;
+  unitByNumbering: Map<string, UnitSummary>;
   unitsByChunkPath: Map<string, UnitSummary[]>;
   chunkPaths: string[];
   chunkIndexByPath: Map<string, number>;
@@ -199,9 +229,11 @@ async function fetchJson<T>(path: string): Promise<T> {
 
 export function createDocumentLookup(index: DocumentIndex): DocumentLookup {
   const unitById = new Map<string, UnitSummary>();
+  const unitByNumbering = new Map<string, UnitSummary>();
   const unitsByChunkPath = new Map<string, UnitSummary[]>();
   for (const unit of index.units) {
     unitById.set(unit.id, unit);
+    unitByNumbering.set(unit.numbering.official.replace(/^C/iu, ""), unit);
     const chunkUnits = unitsByChunkPath.get(unit.chunkPath) ?? [];
     chunkUnits.push(unit);
     unitsByChunkPath.set(unit.chunkPath, chunkUnits);
@@ -209,10 +241,17 @@ export function createDocumentLookup(index: DocumentIndex): DocumentLookup {
   const chunkPaths = [...unitsByChunkPath.keys()];
   return {
     unitById,
+    unitByNumbering,
     unitsByChunkPath,
     chunkPaths,
     chunkIndexByPath: new Map(chunkPaths.map((path, position) => [path, position])),
   };
+}
+
+export function parseNormativeReference(value: string): NormativeReference | null {
+  const match = value.normalize("NFKC").trim().match(/^§?\s*(c)?\s*(\d+(?:\.\d+)*)\.?$/iu);
+  if (!match) return null;
+  return { numbering: match[2], documentHint: match[1] ? "circ2019" : null };
 }
 
 export function initialUnitForIndex(index: DocumentIndex, requestedUnitId: string | null) {

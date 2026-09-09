@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-09T03:22:08.513Z",
+  "environment": {
+    "os": "win32 10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700F",
+    "logicalCpuCount": 24,
+    "node": "v24.11.0"
+  },
+  "methodology": {
+    "iterations": 50,
+    "legacy": "full array filter with NFKC/lowercase normalization of every unit on every query",
+    "phaseTwo": "build-time normalized inverted index; persistent engine caches; result limit 12",
+    "note": "Engine timings exclude worker transport and lazy network download; full-text work executes outside the browser main thread."
+  },
+  "searchIndex": {
+    "bytes": 3679790,
+    "units": 1745,
+    "terms": 11200
+  },
+  "scenarios": [
+    {
+      "name": "exact-reference",
+      "query": "7.3.3.3",
+      "mode": "combined",
+      "limit": 12,
+      "legacyMainThreadScan": {
+        "firstRunMs": 6.894,
+        "medianMs": 4.329,
+        "p95Ms": 4.544,
+        "maxMs": 4.761
+      },
+      "phaseTwoEngine": {
+        "firstRunMs": 0.803,
+        "medianMs": 0.116,
+        "p95Ms": 0.163,
+        "maxMs": 0.395,
+        "execution": "main-thread O(1) document lookup in the viewer"
+      },
+      "medianSpeedup": 37.32
+    },
+    {
+      "name": "ranked-phrase",
+      "query": "azione sismica",
+      "mode": "combined",
+      "limit": 12,
+      "legacyMainThreadScan": {
+        "firstRunMs": 5.905,
+        "medianMs": 5.562,
+        "p95Ms": 6.29,
+        "maxMs": 7.227
+      },
+      "phaseTwoEngine": {
+        "firstRunMs": 15.863,
+        "medianMs": 3.104,
+        "p95Ms": 3.628,
+        "maxMs": 4.018,
+        "execution": "dedicated Web Worker"
+      },
+      "medianSpeedup": 1.79
+    },
+    {
+      "name": "common-term",
+      "query": "struttura",
+      "mode": "combined",
+      "limit": 12,
+      "legacyMainThreadScan": {
+        "firstRunMs": 5.563,
+        "medianMs": 4.974,
+        "p95Ms": 5.316,
+        "maxMs": 5.395
+      },
+      "phaseTwoEngine": {
+        "firstRunMs": 9.866,
+        "medianMs": 2.501,
+        "p95Ms": 3.038,
+        "maxMs": 3.857,
+        "execution": "dedicated Web Worker"
+      },
+      "medianSpeedup": 1.99
+    }
+  ]
+}

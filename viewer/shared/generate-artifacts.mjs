@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { copyFile, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { buildSearchIndexPayload } from "./searchEngine.js";
 
 const documentOrder = ["ntc2018", "circ2019"];
 const maxInitialChunkBytes = 1_500_000;
@@ -119,7 +120,7 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const ntcByNumber = new Map(unitsByDocument.ntc2018.map((unit) => [unit.numbering.official, unit]));
   const diagnostics = unitsByDocument.circ2019.flatMap((unit) => { const candidate = ntcByNumber.get(unit.numbering.official.replace(/^C/iu, "")); if (!candidate || unit.relations.some((relation) => relation.targetUnitId === candidate.id)) return []; return [{ kind: "suggested-relation", status: "diagnostic-only-not-canonical", reason: "same-numbering", sourceUnitId: unit.id, targetUnitId: candidate.id, sourceChunkPath: chunkPathByUnit.get(unit.id), targetChunkPath: chunkPathByUnit.get(candidate.id) }]; });
   const diagnosticsWritten = await writeJson(join(outputDirectory, "relation-diagnostics.json"), { formatVersion: 2, warning: "Suggerimenti diagnostici non revisionati: non sono usati dalla vista combinata.", suggestions: diagnostics });
-  const searchWritten = await writeJson(join(outputDirectory, "search-index.json"), { formatVersion: 2, normalization: "NFKC lowercase it-IT at query time", units: allUnits.map((unit) => ({ id: unit.id, document: unit.document, numbering: unit.numbering.official, title: unit.title, chunkPath: chunkPathByUnit.get(unit.id), text: unit.blocks.flatMap((block) => block.text?.normalized ? [block.text.normalized] : []).join(" ") })) });
+  const searchWritten = await writeJson(join(outputDirectory, "search-index.json"), buildSearchIndexPayload(allUnits.map((unit) => ({ id: unit.id, document: unit.document, numbering: unit.numbering.official, title: unit.title, chunkPath: chunkPathByUnit.get(unit.id), text: unit.blocks.flatMap((block) => block.text?.normalized ? [block.text.normalized] : []).join(" ") }))));
   const manifestationBySourceId = new Map(sourceRegistry.works.flatMap((work) => work.manifestations.map((manifestation) => [manifestation.sourceId, { manifestation, work }])));
   for (const document of documentOrder) {
     const manifestDocument = corpusManifest.documents[document];

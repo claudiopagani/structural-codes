@@ -109,6 +109,22 @@ Il risultato machine-readable viene scritto in
 server già avviato o destinazione con `SCV_CHROMIUM_PATH`, `SCV_BASE_URL` e
 `SCV_BASELINE_OUTPUT`.
 
+La ricerca testuale usa un Web Worker dedicato e scarica il relativo indice
+invertito soltanto dopo una query non numerica di almeno due caratteri. I
+riferimenti esatti (`7.3.3.3`, `§7.3.3.3`, `C7.3.3.2`) usano invece le mappe
+dei document index già caricati e non richiedono l’indice full-text. Il numero
+massimo di risultati si configura con la prop `searchMaxResults`.
+
+Il confronto ripetibile tra la precedente scansione lineare e il nuovo engine
+si esegue con:
+
+```bash
+npm run performance:search
+```
+
+Il report viene scritto in `reports/search-phase-two.json`; il numero di
+iterazioni può essere impostato con `SCV_SEARCH_BENCHMARK_RUNS`.
+
 ## Package
 
 La prerelease non viene pubblicata da questo repository. Per una futura
