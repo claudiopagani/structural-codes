@@ -50,12 +50,12 @@ test("click già montato precede lo stato React, mentre un target assente carica
   const selection = source.slice(selectStart, selectEnd);
   assert.ok(selection.indexOf("scrollTextUnit(textPaneRef.current, unit.id)") < selection.indexOf("setActiveUnitId(unit.id)"));
   assert.match(selection, /if \(present\) return;/);
-  assert.match(selection, /revealSummary\(unit, !nearMountedWindow\)/);
-  assert.match(source, /await mountPrimaryChunk\(summary\.chunkPath, replace\)/);
+  assert.match(selection, /revealSummary\(unit, !nearMountedWindow, generation\)/);
+  assert.match(source, /await mountPrimaryChunk\(summary\.chunkPath, replace, false, generation\)/);
   assert.match(source, /scrollRequestRef\.current = requestedTargetRef\.current/);
   assert.match(source, /loadChunk\(path, dataBaseUrl\)/);
-  assert.match(source, /const generation = replace \? \+\+mountGenerationRef\.current : mountGenerationRef\.current/);
-  assert.match(source, /generation !== mountGenerationRef\.current/);
+  assert.match(source, /const generation = \+\+navigationGenerationRef\.current/);
+  assert.match(source, /generation !== navigationGenerationRef\.current/);
   assert.match(source, /pendingScrollAnchorRef/);
   assert.match(source, /mountPrimaryChunk\(adjacent\.previous, false, true\)/);
 });

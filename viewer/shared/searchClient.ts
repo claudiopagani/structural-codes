@@ -86,9 +86,22 @@ export function useViewerSearch({ query, mode, manifest, dataBaseUrl, lookup, ci
       requestIdRef.current += 1;
       return;
     }
+    const scheduleFailure = (errorMessage: string) => {
+      const timer = window.setTimeout(() => {
+        setWorkerResponse({ query: debouncedQuery, mode, status: "error", results: [], durationMs: null, errorMessage });
+      }, 0);
+      return () => window.clearTimeout(timer);
+    };
     let worker = workerRef.current;
     if (!worker) {
-      worker = new Worker(new URL("./searchWorker.js", import.meta.url), { type: "module", name: "structural-codes-search" });
+      if (typeof Worker === "undefined") {
+        return scheduleFailure("Web Worker non disponibile in questo browser.");
+      }
+      try {
+        worker = new Worker(new URL("./searchWorker.js", import.meta.url), { type: "module", name: "structural-codes-search" });
+      } catch {
+        return scheduleFailure("Avvio del Web Worker non riuscito.");
+      }
       workerRef.current = worker;
     }
     const requestId = ++requestIdRef.current;
@@ -104,20 +117,30 @@ export function useViewerSearch({ query, mode, manifest, dataBaseUrl, lookup, ci
     };
     const onError = () => {
       if (requestId !== requestIdRef.current) return;
+      activeWorker.terminate();
+      if (workerRef.current === activeWorker) workerRef.current = null;
       setIndexRequested(true);
       setWorkerResponse({ query: debouncedQuery, mode, status: "error", results: [], durationMs: null, errorMessage: "Avvio del Web Worker non riuscito." });
     };
     activeWorker.addEventListener("message", onMessage);
     activeWorker.addEventListener("error", onError);
-    activeWorker.postMessage({
-      type: "search",
-      requestId,
-      indexUrl: new URL(resolveDataPath(manifest.searchIndexPath, dataBaseUrl), window.location.href).href,
-      query: debouncedQuery,
-      mode,
-      limit: maximum,
-    });
+    let postFailureCleanup: (() => void) | null = null;
+    try {
+      activeWorker.postMessage({
+        type: "search",
+        requestId,
+        indexUrl: new URL(resolveDataPath(manifest.searchIndexPath, dataBaseUrl), window.location.href).href,
+        query: debouncedQuery,
+        mode,
+        limit: maximum,
+      });
+    } catch {
+      activeWorker.terminate();
+      if (workerRef.current === activeWorker) workerRef.current = null;
+      postFailureCleanup = scheduleFailure("Invio della ricerca al Web Worker non riuscito.");
+    }
     return () => {
+      postFailureCleanup?.();
       activeWorker.removeEventListener("message", onMessage);
       activeWorker.removeEventListener("error", onError);
     };

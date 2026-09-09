@@ -32,6 +32,7 @@ import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
 import { BacklinkPanel, CitationActions, ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { citationForTarget, targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
+import { isChunkNearRenderedWindow, navigationChunkWindow } from "./chunkNavigation.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -166,10 +167,15 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
   return root?.querySelector<HTMLElement>(`[data-scv-text-unit="${CSS.escape(unitId)}"]`) ?? null;
 }
 
+function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
+  const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
+  root.scrollTo({ top: Math.max(0, top - 14), behavior: "auto" });
+}
+
 function scrollTextUnit(root: HTMLElement | null, unitId: string) {
   const target = findTextUnit(root, unitId);
   if (!root || !target) return false;
-  root.scrollTo({ top: Math.max(0, target.offsetTop - 14), behavior: "auto" });
+  scrollElementIntoPane(root, target);
   return true;
 }
 
@@ -184,7 +190,7 @@ function findViewerTarget(root: HTMLElement | null, target: ViewerTarget) {
 function scrollViewerTarget(root: HTMLElement | null, target: ViewerTarget) {
   const element = findViewerTarget(root, target);
   if (!root || !element) return false;
-  root.scrollTo({ top: Math.max(0, element.offsetTop - 14), behavior: "auto" });
+  scrollElementIntoPane(root, element);
   return true;
 }
 
@@ -274,6 +280,10 @@ function relationTargets(resultId: string, relations: RelationEdge[]) {
   return relations
     .filter((edge) => edge.sourceUnitId === resultId)
     .sort((left, right) => left.targetUnitId.localeCompare(right.targetUnitId, "it", { numeric: true }));
+}
+
+function matchingPrimarySummary(summary: UnitSummary, lookup: DocumentLookup) {
+  return lookup.unitByNumbering.get(baseNumbering(summary.numbering.official)) ?? null;
 }
 
 function recordsForPaths(index: DocumentIndex | null, lookup: DocumentLookup | null, paths: Set<string>, chunks: Map<string, CorpusChunk>) {
@@ -617,6 +627,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [backlinksOpen, setBacklinksOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [loadError, setLoadError] = useState(false);
+  const [contentLoadNotice, setContentLoadNotice] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
@@ -628,7 +639,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const scrollRequestRef = useRef<ViewerTarget | null>(null);
   const activeIdRef = useRef<string | null>(null);
   const manualTargetRef = useRef<{ id: string; expires: number } | null>(null);
-  const mountGenerationRef = useRef(0);
+  const navigationGenerationRef = useRef(0);
   const renderedChunkPathsRef = useRef<Set<string>>(new Set());
   const pendingScrollAnchorRef = useRef<{ id: string; top: number; generation: number } | null>(null);
   const initializedContextRef = useRef("");
@@ -641,6 +652,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const documentIdRef = useRef(documentId);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && mode !== "combined";
+
+  const reportChunkLoadFailure = useCallback((message = "Una parte del documento non è disponibile. Puoi continuare a consultare i contenuti già caricati.") => {
+    if (renderedChunkPathsRef.current.size === 0) setLoadError(true);
+    else setContentLoadNotice(message);
+  }, []);
 
   useEffect(() => {
     documentIdRef.current = documentId;
@@ -674,6 +690,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       relationsPromiseRef.current = null;
       setCrossReferenceIndex(null);
       crossReferencePromiseRef.current = null;
+      setContentLoadNotice(null);
       const url = new URL(window.location.href);
       const requestedMode = url.searchParams.get("mode");
       if (modeOptions.some((option) => option.id === requestedMode)) setMode(requestedMode as ViewerMode);
@@ -699,7 +716,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     let cancelled = false;
     loadDocumentIndex(manifest, "circ2019", dataBaseUrl).then((loaded) => {
       if (!cancelled) setIndexes((current) => new Map(current).set("circ2019", loaded));
-    }).catch(() => { if (!cancelled) setLoadError(true); });
+    }).catch(() => { if (!cancelled) setContentLoadNotice("L’indice della Circolare non è disponibile; la lettura NTC resta utilizzabile."); });
     return () => { cancelled = true; };
   }, [dataBaseUrl, indexes, manifest, mode]);
 
@@ -721,7 +738,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   useEffect(() => {
     if (mode !== "combined" || relationsLoaded) return;
-    void ensureRelations().catch(() => setLoadError(true));
+    void ensureRelations().catch(() => setContentLoadNotice("Le relazioni NTC–Circolare non sono temporaneamente disponibili."));
   }, [ensureRelations, mode, relationsLoaded]);
 
   const ensureCrossReferenceIndex = useCallback(async () => {
@@ -754,24 +771,37 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     return chunk;
   }, [dataBaseUrl]);
 
-  const mountPrimaryChunk = useCallback(async (path: string, replace: boolean, preserveAnchor = false) => {
-    const generation = replace ? ++mountGenerationRef.current : mountGenerationRef.current;
+  const preserveActiveScrollAnchor = useCallback((generation: number) => {
+    const root = textPaneRef.current;
+    const anchorId = activeIdRef.current;
+    const anchor = anchorId ? findTextUnit(root, anchorId) : null;
+    if (!root || !anchor || !anchorId) return;
+    pendingScrollAnchorRef.current = {
+      id: anchorId,
+      top: anchor.getBoundingClientRect().top - root.getBoundingClientRect().top,
+      generation,
+    };
+  }, []);
+
+  const mountPrimaryChunk = useCallback(async (path: string, replace: boolean, preserveAnchor = false, generation = navigationGenerationRef.current) => {
     const chunk = await rememberChunk(path);
-    if (generation !== mountGenerationRef.current || chunk.document !== documentIdRef.current) return;
+    if (generation !== navigationGenerationRef.current || chunk.document !== documentIdRef.current) return;
     const current = renderedChunkPathsRef.current;
     if (!replace && current.has(path)) return;
-    if (preserveAnchor) {
-      const root = textPaneRef.current;
-      const anchorId = activeIdRef.current;
-      const anchor = anchorId ? findTextUnit(root, anchorId) : null;
-      if (root && anchor && anchorId) {
-        pendingScrollAnchorRef.current = { id: anchorId, top: anchor.getBoundingClientRect().top - root.getBoundingClientRect().top, generation };
-      }
-    }
+    if (preserveAnchor) preserveActiveScrollAnchor(generation);
     const next = replace ? new Set([path]) : new Set(current).add(path);
     renderedChunkPathsRef.current = next;
     setRenderedChunkPaths(next);
-  }, [rememberChunk]);
+  }, [preserveActiveScrollAnchor, rememberChunk]);
+
+  const mountPrimaryWindow = useCallback(async (summary: UnitSummary, replace: boolean, generation: number) => {
+    await mountPrimaryChunk(summary.chunkPath, replace, false, generation);
+    if (!replace || generation !== navigationGenerationRef.current) return;
+    if (!lookup) return;
+    const window = navigationChunkWindow(lookup, summary.chunkPath);
+    if (window.previous) void mountPrimaryChunk(window.previous, false, true, generation).catch(() => reportChunkLoadFailure("Il chunk precedente non è disponibile; il target resta consultabile."));
+    if (window.next) void mountPrimaryChunk(window.next, false, false, generation).catch(() => reportChunkLoadFailure("Il chunk successivo non è disponibile; il target resta consultabile."));
+  }, [lookup, mountPrimaryChunk, reportChunkLoadFailure]);
 
   const requiredCombinedCircPaths = useMemo(() => {
     const paths = new Set(requestedCircPaths);
@@ -791,16 +821,18 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const missing = [...requiredCombinedCircPaths].filter((path) => !loadedChunks.has(path));
     if (missing.length === 0) return;
     let cancelled = false;
+    const generation = navigationGenerationRef.current;
     Promise.all(missing.map((path) => loadChunk(path, dataBaseUrl))).then((chunks) => {
       if (cancelled) return;
+      if (generation === navigationGenerationRef.current) preserveActiveScrollAnchor(generation);
       setLoadedChunks((current) => {
         const next = new Map(current);
         missing.forEach((path, position) => next.set(path, chunks[position]));
         return next;
       });
-    }).catch(() => { if (!cancelled) setLoadError(true); });
+    }).catch(() => { if (!cancelled) setContentLoadNotice("Alcuni contenuti correlati della Circolare non sono disponibili."); });
     return () => { cancelled = true; };
-  }, [dataBaseUrl, loadedChunks, mode, requiredCombinedCircPaths]);
+  }, [dataBaseUrl, loadedChunks, mode, preserveActiveScrollAnchor, requiredCombinedCircPaths]);
 
   const documentRecords = useMemo(() => recordsForPaths(index, lookup, primaryRenderedPaths, loadedChunks), [index, loadedChunks, lookup, primaryRenderedPaths]);
   const fallbackIds = useMemo(() => new Set(combinedPlan.fallbackSummaries.map((summary) => summary.id)), [combinedPlan.fallbackSummaries]);
@@ -834,10 +866,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const entryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.summary.id, entry])), [navigationEntries]);
   const recordById = useMemo(() => new Map(renderRecords.map((record) => [record.unit.id, record])), [renderRecords]);
 
-  const revealSummary = useCallback(async (summary: UnitSummary, replace = false) => {
+  const revealSummary = useCallback(async (summary: UnitSummary, replace = false, generation = navigationGenerationRef.current) => {
+    if (generation !== navigationGenerationRef.current) return;
     scrollRequestRef.current = requestedTargetRef.current?.unitId === summary.id ? requestedTargetRef.current : { kind: "unit", unitId: summary.id };
     if (summary.document === documentIdRef.current) {
-      await mountPrimaryChunk(summary.chunkPath, replace);
+      await mountPrimaryWindow(summary, replace, generation);
       return;
     }
     if (mode !== "combined" || !lookup) return;
@@ -846,15 +879,21 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       const target = lookup.unitById.get(explicitTarget.targetUnitId);
       if (target) {
         setRequestedCircPaths((current) => replace ? new Set([summary.chunkPath]) : new Set(current).add(summary.chunkPath));
-        await Promise.all([rememberChunk(summary.chunkPath), mountPrimaryChunk(target.chunkPath, replace)]);
+        await Promise.all([rememberChunk(summary.chunkPath), mountPrimaryWindow(target, replace, generation)]);
       }
+      return;
+    }
+    const matchingPrimary = matchingPrimarySummary(summary, lookup);
+    if (matchingPrimary) {
+      scrollRequestRef.current = { kind: "unit", unitId: matchingPrimary.id };
+      await mountPrimaryWindow(matchingPrimary, replace, generation);
       return;
     }
     const anchor = combinedPlan.primaryAnchorByFallbackId.get(summary.id);
     if (!anchor) return;
     setRequestedCircPaths((current) => replace ? new Set([summary.chunkPath]) : new Set(current).add(summary.chunkPath));
-    await Promise.all([rememberChunk(summary.chunkPath), mountPrimaryChunk(anchor.chunkPath, replace)]);
-  }, [combinedPlan.primaryAnchorByFallbackId, lookup, mode, mountPrimaryChunk, relations, rememberChunk]);
+    await Promise.all([rememberChunk(summary.chunkPath), mountPrimaryWindow(anchor, replace, generation)]);
+  }, [combinedPlan.primaryAnchorByFallbackId, lookup, mode, mountPrimaryWindow, relations, rememberChunk]);
 
   useEffect(() => {
     if (!index || !lookup) return;
@@ -867,8 +906,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       if (!circLookup || !relationsLoaded) return;
       const requestedCirc = circLookup.unitById.get(requestedId) ?? null;
       const explicitTarget = requestedCirc ? relationTargets(requestedCirc.id, relations)[0] : null;
-      initial = explicitTarget ? lookup.unitById.get(explicitTarget.targetUnitId) ?? null : requestedCirc;
-      revealInitial = requestedCirc;
+      const explicitPrimary = explicitTarget ? lookup.unitById.get(explicitTarget.targetUnitId) ?? null : null;
+      const matchingPrimary = requestedCirc ? matchingPrimarySummary(requestedCirc, lookup) : null;
+      initial = explicitPrimary ?? matchingPrimary ?? requestedCirc;
+      revealInitial = explicitPrimary || !matchingPrimary ? requestedCirc : matchingPrimary;
     }
     initial ??= initialUnitForIndex(index, requestedId);
     revealInitial ??= initial;
@@ -880,25 +921,27 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const requestedTarget = requestedTargetRef.current?.unitId === revealInitial.id ? requestedTargetRef.current : { kind: "unit" as const, unitId: initial.id };
     if (!historyNavigationRef.current) updateDeepLink(mode, requestedTarget, defaultMode);
     historyNavigationRef.current = false;
-    void revealSummary(revealInitial, primaryRenderedPaths.size === 0 || revealInitial.document !== documentId);
-  }, [circLookup, defaultMode, documentId, index, lookup, mode, modeRevision, primaryRenderedPaths.size, relations, relationsLoaded, revealSummary]);
+    const generation = ++navigationGenerationRef.current;
+    pendingScrollAnchorRef.current = null;
+    void revealSummary(revealInitial, primaryRenderedPaths.size === 0 || revealInitial.document !== documentId, generation).catch(() => reportChunkLoadFailure());
+  }, [circLookup, defaultMode, documentId, index, lookup, mode, modeRevision, primaryRenderedPaths.size, relations, relationsLoaded, reportChunkLoadFailure, revealSummary]);
 
   useEffect(() => {
-    if (!lookup || primaryRenderedPaths.size === 0) return;
-    const rendered = lookup.chunkPaths.filter((path) => primaryRenderedPaths.has(path));
+    if (!lookup || !activeUnitId) return;
+    const active = lookup.unitById.get(activeUnitId);
+    if (!active) return;
     const candidates = new Set<string>();
-    const previous = rendered[0] ? adjacentChunkPaths(lookup, rendered[0]).previous : null;
-    const next = rendered.at(-1) ? adjacentChunkPaths(lookup, rendered.at(-1)!).next : null;
+    const { previous, next } = adjacentChunkPaths(lookup, active.chunkPath);
     if (previous) candidates.add(previous);
     if (next) candidates.add(next);
     if (candidates.size === 0) return;
     return scheduleIdle(() => { for (const path of candidates) void loadChunk(path, dataBaseUrl).catch(() => undefined); });
-  }, [dataBaseUrl, lookup, primaryRenderedPaths]);
+  }, [activeUnitId, dataBaseUrl, lookup]);
 
   useLayoutEffect(() => {
     const root = textPaneRef.current;
     const pendingAnchor = pendingScrollAnchorRef.current;
-    if (root && pendingAnchor && pendingAnchor.generation === mountGenerationRef.current) {
+    if (root && pendingAnchor && pendingAnchor.generation === navigationGenerationRef.current) {
       const anchor = findTextUnit(root, pendingAnchor.id);
       if (anchor) {
         const nextTop = anchor.getBoundingClientRect().top - root.getBoundingClientRect().top;
@@ -908,10 +951,19 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     }
     const target = scrollRequestRef.current;
     if (!target || renderRecords.length === 0) return;
-    if (!scrollViewerTarget(root, target)) return;
+    if (!scrollViewerTarget(root, target)) {
+      if (target.kind === "unit") return;
+      const unitTarget = { kind: "unit" as const, unitId: target.unitId };
+      if (!scrollViewerTarget(root, unitTarget)) return;
+      scrollRequestRef.current = null;
+      requestedTargetRef.current = unitTarget;
+      updateDeepLink(mode, unitTarget, defaultMode);
+      setContentLoadNotice("Il blocco o asset richiesto non esiste; è stata aperta l’unità normativa corrispondente.");
+      return;
+    }
     scrollRequestRef.current = null;
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
-  }, [relatedByTarget, renderRecords]);
+  }, [defaultMode, mode, relatedByTarget, renderRecords]);
 
   const navigationRef = useRef({ entryById, lookup, mode, relations });
   useEffect(() => {
@@ -925,9 +977,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const chunkUnits = current.lookup.unitsByChunkPath.get(summary.chunkPath) ?? [];
     const position = chunkUnits.findIndex((unit) => unit.id === summary.id);
     const adjacent = adjacentChunkPaths(current.lookup, summary.chunkPath);
-    if (position <= 1 && adjacent.previous) void mountPrimaryChunk(adjacent.previous, false, true).catch(() => setLoadError(true));
-    if (position >= chunkUnits.length - 2 && adjacent.next) void mountPrimaryChunk(adjacent.next, false).catch(() => setLoadError(true));
-  }, [mountPrimaryChunk]);
+    if (position <= 1 && adjacent.previous) void mountPrimaryChunk(adjacent.previous, false, true).catch(() => reportChunkLoadFailure("Il chunk precedente non è disponibile; il resto del documento rimane consultabile."));
+    if (position >= chunkUnits.length - 2 && adjacent.next) void mountPrimaryChunk(adjacent.next, false).catch(() => reportChunkLoadFailure("Il chunk successivo non è disponibile; il resto del documento rimane consultabile."));
+  }, [mountPrimaryChunk, reportChunkLoadFailure]);
 
   const onVisibleUnit = useCallback((nextId: string) => {
     const guard = manualTargetRef.current;
@@ -946,6 +998,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   useVisibleUnitObserver(textPaneRef, renderRecords, onVisibleUnit);
 
   const selectUnit = useCallback((unit: UnitSummary) => {
+    const generation = ++navigationGenerationRef.current;
+    pendingScrollAnchorRef.current = null;
+    setContentLoadNotice(null);
     requestedIdRef.current = unit.id;
     requestedTargetRef.current = { kind: "unit", unitId: unit.id };
     manualTargetRef.current = { id: unit.id, expires: performance.now() + 500 };
@@ -955,13 +1010,14 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     updateDeepLink(navigationRef.current.mode, requestedTargetRef.current, defaultMode);
     if (present) return;
     const currentLookup = navigationRef.current.lookup;
-    const targetPosition = currentLookup?.chunkIndexByPath.get(unit.chunkPath);
-    const mountedPositions = currentLookup?.chunkPaths.flatMap((path, position) => primaryRenderedPaths.has(path) ? [position] : []) ?? [];
-    const nearMountedWindow = targetPosition !== undefined && mountedPositions.length > 0 && targetPosition >= Math.min(...mountedPositions) - 1 && targetPosition <= Math.max(...mountedPositions) + 1;
-    void revealSummary(unit, !nearMountedWindow).catch(() => setLoadError(true));
-  }, [defaultMode, primaryRenderedPaths, revealSummary]);
+    const nearMountedWindow = currentLookup ? isChunkNearRenderedWindow(currentLookup, unit.chunkPath, primaryRenderedPaths) : false;
+    void revealSummary(unit, !nearMountedWindow, generation).catch(() => reportChunkLoadFailure());
+  }, [defaultMode, primaryRenderedPaths, reportChunkLoadFailure, revealSummary]);
 
   const navigateViewerTarget = useCallback(async (target: ViewerTarget, action: "push" | "replace" | "none" = "push", forcedMode?: ViewerMode) => {
+    const generation = ++navigationGenerationRef.current;
+    pendingScrollAnchorRef.current = null;
+    setContentLoadNotice(null);
     const targetDocument = documentFromUnitId(target.unitId);
     const nextMode = forcedMode ?? (mode === "combined" || documentForMode(mode) === targetDocument ? mode : targetDocument === "ntc2018" ? "ntc" : "circ");
     requestedIdRef.current = target.unitId;
@@ -986,10 +1042,16 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     let targetIndex = indexes.get(targetDocument);
     if (!targetIndex) {
       targetIndex = await loadDocumentIndex(manifest, targetDocument, dataBaseUrl);
+      if (generation !== navigationGenerationRef.current) return;
       setIndexes((current) => current.has(targetDocument) ? current : new Map(current).set(targetDocument, targetIndex!));
     }
     const summary = targetIndex.units.find((unit) => unit.id === target.unitId);
-    if (!summary) return;
+    if (!summary) {
+      const fallbackId = activeIdRef.current;
+      if (fallbackId) updateDeepLink(mode, { kind: "unit", unitId: fallbackId }, defaultMode);
+      setContentLoadNotice("Il target richiesto non esiste nel documento corrente.");
+      return;
+    }
     let activeId = summary.id;
     if (mode === "combined" && summary.document === "circ2019") {
       const explicit = relationTargets(summary.id, relations)[0];
@@ -998,10 +1060,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     activeIdRef.current = activeId;
     setActiveUnitId(activeId);
     const currentLookup = navigationRef.current.lookup;
-    const targetPosition = summary.document === documentIdRef.current ? currentLookup?.chunkIndexByPath.get(summary.chunkPath) : undefined;
-    const mountedPositions = currentLookup?.chunkPaths.flatMap((path, position) => primaryRenderedPaths.has(path) ? [position] : []) ?? [];
-    const nearMountedWindow = targetPosition !== undefined && mountedPositions.length > 0 && targetPosition >= Math.min(...mountedPositions) - 1 && targetPosition <= Math.max(...mountedPositions) + 1;
-    await revealSummary(summary, summary.document === documentIdRef.current && !nearMountedWindow);
+    const nearMountedWindow = summary.document === documentIdRef.current && currentLookup ? isChunkNearRenderedWindow(currentLookup, summary.chunkPath, primaryRenderedPaths) : false;
+    if (generation !== navigationGenerationRef.current) return;
+    await revealSummary(summary, summary.document === documentIdRef.current && !nearMountedWindow, generation);
   }, [dataBaseUrl, defaultMode, indexes, manifest, mode, primaryRenderedPaths, relations, revealSummary]);
 
   useEffect(() => {
@@ -1012,11 +1073,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       const requestedMode = url.searchParams.get("mode");
       const nextMode = modeOptions.some((option) => option.id === requestedMode) ? requestedMode as ViewerMode : defaultMode;
       historyNavigationRef.current = true;
-      void navigateViewerTarget(target, "none", nextMode).catch(() => setLoadError(true));
+      void navigateViewerTarget(target, "none", nextMode).catch(() => reportChunkLoadFailure());
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
-  }, [defaultMode, navigateViewerTarget]);
+  }, [defaultMode, navigateViewerTarget, reportChunkLoadFailure]);
 
   const resolveReferenceElement = useCallback(async (element: HTMLElement) => {
     const descriptor = referenceDescriptor(element);
@@ -1167,17 +1228,20 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const selectTextualBacklink = useCallback((backlink: TextualBacklink) => {
     setBacklinksOpen(false);
-    void navigateViewerTarget({ kind: "block", unitId: backlink.sourceUnitId, blockId: backlink.sourceBlockId }, "push").catch(() => setLoadError(true));
-  }, [navigateViewerTarget]);
+    void navigateViewerTarget({ kind: "block", unitId: backlink.sourceUnitId, blockId: backlink.sourceBlockId }, "push").catch(() => reportChunkLoadFailure());
+  }, [navigateViewerTarget, reportChunkLoadFailure]);
 
   const selectEditorialBacklink = useCallback((edge: RelationEdge) => {
     if (!activeUnitId) return;
     setBacklinksOpen(false);
     const unitId = edge.sourceUnitId === activeUnitId ? edge.targetUnitId : edge.sourceUnitId;
-    void navigateViewerTarget({ kind: "unit", unitId }, "push").catch(() => setLoadError(true));
-  }, [activeUnitId, navigateViewerTarget]);
+    void navigateViewerTarget({ kind: "unit", unitId }, "push").catch(() => reportChunkLoadFailure());
+  }, [activeUnitId, navigateViewerTarget, reportChunkLoadFailure]);
   const changeMode = useCallback((nextMode: ViewerMode, preferredUnitId: string | null = null) => {
     if (nextMode === mode) return;
+    navigationGenerationRef.current += 1;
+    pendingScrollAnchorRef.current = null;
+    setContentLoadNotice(null);
     const keepCurrent = activeSummary && (nextMode === "combined" || activeSummary.document === documentForMode(nextMode));
     requestedIdRef.current = preferredUnitId ?? (keepCurrent ? activeSummary?.id ?? null : null);
     requestedTargetRef.current = requestedIdRef.current ? { kind: "unit", unitId: requestedIdRef.current } : null;
@@ -1237,6 +1301,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     <div className="scv-text-pane-shell">
       {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} onToggleBacklinks={toggleBacklinks} />}
       {backlinksOpen && <BacklinkPanel loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
+      {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
       </article>

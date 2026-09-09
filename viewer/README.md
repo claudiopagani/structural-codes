@@ -37,9 +37,11 @@ API intenzionale:
 
 La ricerca è sempre visibile ma carica `search-index.json` soltanto con almeno
 due caratteri. Manifest, indice documento, chunk e relazioni restano separati.
-All'apertura il client carica il manifest, l'indice del documento e il solo
-chunk dell'unità iniziale; i chunk adiacenti vengono messi in cache durante i
-periodi idle e montati soltanto quando la navigazione o lo scroll li richiede.
+All'apertura il client carica manifest e indice, monta per primo il chunk
+dell'unità iniziale e completa senza bloccare il salto una finestra massima
+`precedente + target + successivo`. Il prefetch idle resta centrato sul chunk
+attivo e lo scroll estende progressivamente la finestra senza scaricare il
+resto del documento.
 La cache JSON di sessione deduplica richieste e parsing per URL.
 Le figure sono lazy e il package shared non importa `pdfjs-dist`, non conosce
 `/api/source-pdf` e non dipende da servizi di hosting. React e ReactDOM sono
@@ -132,7 +134,8 @@ I riferimenti normativi affidabili nel testo sono pulsanti accessibili. Hover
 o focus caricano una sola volta il compatto `cross-reference-index.json` per
 mostrare titolo e snippet, senza scaricare il chunk del target. Il click usa lo
 stesso caricamento progressivo del viewer: se il target è già montato lo scroll
-è immediato; altrimenti viene richiesto soltanto il suo chunk. L'indice dei
+è immediato; altrimenti viene richiesto prima il suo chunk e subito dopo la
+finestra adiacente necessaria alla continuità di lettura. L'indice dei
 backlink e le relazioni editoriali sono caricati soltanto quando si apre il
 pannello “Richiami” e sono presentati in sezioni distinte.
 

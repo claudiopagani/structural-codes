@@ -233,6 +233,7 @@ body { margin: 0; }
 .scv-reference-preview > span { color: var(--scv-primary); font-size: var(--scv-font-size-8); font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
 .scv-reference-preview > strong { font-family: "Tinos", serif; font-size: var(--scv-font-size-14); line-height: 1.2; }
 .scv-reference-preview > small { color: var(--scv-ink-soft); font-family: "Tinos", serif; font-size: var(--scv-font-size-11); line-height: 1.35; }
+.scv-content-notice { position: absolute; z-index: 7; top: 50px; left: 18px; max-width: min(520px, calc(100% - 90px)); margin: 0; padding: 7px 9px; color: #713f12; font-size: var(--scv-font-size-9); background: #fff7d6; border: 1px solid #e8cf7a; border-radius: 5px; box-shadow: 0 4px 14px rgb(31 43 76 / 12%); }
 
 .scv-root .inline-math { display: inline-block; margin-inline: .035em; color: #202733; font-size: 1.04em; white-space: nowrap; }
 .scv-root .inline-math .katex { font-size: 1em; }
@@ -369,6 +370,7 @@ body { margin: 0; }
 .scv-root.scv-dark .scv-copy-asset { color: var(--scv-primary-dark); background: rgb(27 33 48 / 94%); border-color: #46516e; box-shadow: 0 2px 8px rgb(0 0 0 / 35%); }
 .scv-root.scv-dark .scv-citation-actions { background: rgb(27 33 48 / 94%); box-shadow: 0 3px 14px rgb(0 0 0 / 38%); }
 .scv-root.scv-dark .scv-backlink-panel, .scv-root.scv-dark .scv-reference-preview { box-shadow: 0 14px 36px rgb(0 0 0 / 48%); }
+.scv-root.scv-dark .scv-content-notice { color: #fde68a; background: #3a311d; border-color: #725f27; }
 .scv-root.scv-dark .scv-scroll-track { background: #2a3347; }
 .scv-root.scv-dark .scv-scroll-thumb { background: linear-gradient(180deg, #94aaff, #6478bd); }
 .scv-root.scv-dark .scv-scroll-marker { color: #d7def3; background: #27324b; border-color: #465577; }
