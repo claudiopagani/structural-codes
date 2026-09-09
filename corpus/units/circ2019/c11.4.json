@@ -92,7 +92,21 @@
       "text": {
         "raw": "Dette Linee Guida ETAG possono essere impiegate, ai sensi dell’articolo 66(3) del CPR, come Documenti per la Valutazione\nEuropea (EAD)fino all’eventuale emanazione, da parte dell’EOTA, degli EAD che sostituiranno, rispettivamente, le suddette\nLinee Guida ETAG 001 e/o ETAG 032.",
         "normalized": "Dette Linee Guida ETAG possono essere impiegate, ai sensi dell’articolo 66(3) del CPR, come Documenti per la Valutazione Europea (EAD)fino all’eventuale emanazione, da parte dell’EOTA, degli EAD che sostituiranno, rispettivamente, le suddette Linee Guida ETAG 001 e/o ETAG 032.",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Dette Linee Guida ETAG possono essere impiegate, ai sensi dell’articolo 66(3) del "
+          },
+          {
+            "kind": "em",
+            "value": "CPR"
+          },
+          {
+            "kind": "text",
+            "value": ", come Documenti per la Valutazione Europea (EAD)fino all’eventuale emanazione, da parte dell’EOTA, degli EAD che sostituiranno, rispettivamente, le suddette Linee Guida ETAG 001 e/o ETAG 032."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -114,6 +128,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, apostrofi, spaziatura, glifi e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-4-c11-4-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo di CPR verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "c41c7e5148cce1aa5c47fd7d3e5b64bd73dd8f9ac41b5b0eded3f49dba647a8b",

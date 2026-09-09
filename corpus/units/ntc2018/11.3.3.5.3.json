@@ -269,8 +269,14 @@
       "origin": "official",
       "text": {
         "raw": "- nessuno dei valori di tensione sopra indicati è inferiore al corrispondente valore caratteristico dichiarato dal fabbricante;",
-        "normalized": "- nessuno dei valori di tensione sopra indicati è inferiore al corrispondente valore caratteristico dichiarato dal fabbricante;",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalized": "nessuno dei valori di tensione sopra indicati è inferiore al corrispondente valore caratteristico dichiarato dal fabbricante;",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "nessuno dei valori di tensione sopra indicati è inferiore al corrispondente valore caratteristico dichiarato dal fabbricante;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -282,10 +288,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
         "rawSha256": "f4990cb05f757088d2781967933cc4bbc30f23bc3ca3c25391900af6383757ed",
-        "normalizedSha256": "f4990cb05f757088d2781967933cc4bbc30f23bc3ca3c25391900af6383757ed"
-      }
+        "normalizedSha256": "ad36a7f8307d40fa5ce2c1b43575a4b653511222d791a2d324d1da00f9de9720"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.3#block-007",
@@ -293,12 +306,12 @@
       "origin": "official",
       "text": {
         "raw": "- tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico f ptk corrispondente, incrementato del\n15%.",
-        "normalized": "- tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico fptk corrispondente, incrementato del 15%.",
+        "normalized": "tutti i valori di tensione al carico massimo fpt non superano il valore caratteristico fptk corrispondente, incrementato del 15%.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- tutti i valori di tensione al carico massimo "
+            "value": "tutti i valori di tensione al carico massimo "
           },
           {
             "kind": "math",
@@ -354,11 +367,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "2780a87d860bd83e7b99b636c6dd45b8ae62c8eec2705dbbcee7597522c3cf99",
-        "normalizedSha256": "29877044e388ac1af617171ed6af26d6d873fd8ffbe60200d4fdbb169eced545"
-      }
+        "normalizedSha256": "834190ada2183c50d4119c5a3a9b832867d704788b833e1faf14703da4e07716"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.3#block-008",
@@ -366,12 +385,12 @@
       "origin": "official",
       "text": {
         "raw": "- tutti i valori dell’allungamento totale percentuale al carico massimo Agt non sono inferiori al limite della Tab. 11.3.VIII;",
-        "normalized": "- tutti i valori dell’allungamento totale percentuale al carico massimo Agt non sono inferiori al limite della Tab. 11.3.VIII;",
+        "normalized": "tutti i valori dell’allungamento totale percentuale al carico massimo Agt non sono inferiori al limite della Tab. 11.3.VIII;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- tutti i valori dell’allungamento totale percentuale al carico massimo "
+            "value": "tutti i valori dell’allungamento totale percentuale al carico massimo "
           },
           {
             "kind": "math",
@@ -399,11 +418,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "ff1c9cfca7e9fa7e736fd12737e8d3ab6cc7dc9198bda4f7c020f7eb82881e76",
-        "normalizedSha256": "ff1c9cfca7e9fa7e736fd12737e8d3ab6cc7dc9198bda4f7c020f7eb82881e76"
-      }
+        "normalizedSha256": "9cac9bf10ade22ff2cd91d037abdc59122dc726d6a47437d772f5e1055f21cdd"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.3#block-009",
@@ -599,12 +624,12 @@
       "origin": "official",
       "text": {
         "raw": "- la media dei risultati ottenuti per le grandezze f pt \n, f py, f p(0,1) \n, f p(1) sugli ulteriori saggi è almeno uguale al valore caratteristico ga-\nrantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito del 1,5%.",
-        "normalized": "- la media dei risultati ottenuti per le grandezze fpt, fpy, fp(0,1), fp(1) sugli ulteriori saggi è almeno uguale al valore caratteristico garantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito dell’1,5%.",
+        "normalized": "la media dei risultati ottenuti per le grandezze fpt, fpy, fp(0,1), fp(1) sugli ulteriori saggi è almeno uguale al valore caratteristico garantito dal fabbricante e i singoli valori sono superiori allo stesso valore caratteristico garantito, diminuito dell’1,5%.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la media dei risultati ottenuti per le grandezze "
+            "value": "la media dei risultati ottenuti per le grandezze "
           },
           {
             "kind": "math",
@@ -683,11 +708,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "1ce494d2b864cb3494e4b801fd4d30a0fdf4fdc6d15065ee9e6abd8d5cf9606c",
-        "normalizedSha256": "630c9f4996057e67a683a29fb1ee9cd9f2ee10167f25f6a4b86a9d4201247a50"
-      }
+        "normalizedSha256": "350899d1367fb81fcf35130edbd3a88c04063a320ddb08099853cbf9ebd5dc1e"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.3#block-014",
@@ -695,12 +726,12 @@
       "origin": "official",
       "text": {
         "raw": "- la media dei risultati ottenuti per la grandezza f pt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico\nf ptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato del 1,5%.\nla media dei risultati ottenuti per la grandezza A gt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab.\n11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
-        "normalized": "- la media dei risultati ottenuti per la grandezza fpt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico fptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato dell’1,5%. La media dei risultati ottenuti per la grandezza Agt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab. 11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
+        "normalized": "la media dei risultati ottenuti per la grandezza fpt sui 10 ulteriori saggi è al massimo uguale a 1,15 volte il valore caratteristico fptk garantito dal fabbricante e i singoli valori sono inferiori allo stesso limite, incrementato dell’1,5%. La media dei risultati ottenuti per la grandezza Agt sui 10 ulteriori saggi è al minimo uguale al limite indicato nella Tab. 11.3.VIII e i singoli valori sono superiori allo stesso limite, diminuito del 5%.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- la media dei risultati ottenuti per la grandezza "
+            "value": "la media dei risultati ottenuti per la grandezza "
           },
           {
             "kind": "math",
@@ -801,11 +832,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "4242a656b945fad82dd6be44005a21f9d72647ea8f8dcb2dab656aa632927db3",
-        "normalizedSha256": "83e212ec33d4679507a293f7c5c206e8c63360f6aaec808556a53d401a3736eb"
-      }
+        "normalizedSha256": "4267a9e0fe9012de3e827d8d7f21559e20b0700b7a7f3914553e436f7add0ce8"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.3.5.3#block-015",

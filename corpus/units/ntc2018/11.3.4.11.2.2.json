@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.4.11.2.2 Centri di prelavorazione di componenti strutturali",
         "normalized": "11.3.4.11.2.2 Centri di prelavorazione di componenti strutturali",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.4.11.2.2 Centri di prelavorazione di componenti strutturali"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "bf94b5d5463c8c24e8c48faf2f646e6262710d413a6da916a9b88737bbd1b1fa",
         "normalizedSha256": "bf94b5d5463c8c24e8c48faf2f646e6262710d413a6da916a9b88737bbd1b1fa"
       }

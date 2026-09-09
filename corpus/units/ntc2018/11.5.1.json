@@ -88,7 +88,21 @@
       "text": {
         "raw": "Ai fini della qualificazione mediante Certificato di valutazione tecnica si applica la “Linea guida per la certificazione dell’idoneità tec-\nnica dei sistemi di precompressione a cavi post-tesi” approvata dal Consiglio Superiore dei Lavori Pubblici.",
         "normalized": "Ai fini della qualificazione mediante Certificato di valutazione tecnica si applica la “Linea guida per la certificazione dell’idoneità tecnica dei sistemi di precompressione a cavi post-tesi” approvata dal Consiglio Superiore dei Lavori Pubblici.",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ai fini della qualificazione mediante Certificato di valutazione tecnica si applica la “"
+          },
+          {
+            "kind": "em",
+            "value": "Linea guida per la certificazione dell’idoneità tecnica dei sistemi di precompressione a cavi post-tesi"
+          },
+          {
+            "kind": "text",
+            "value": "” approvata dal Consiglio Superiore dei Lavori Pubblici."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -115,6 +129,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-5-c11-5-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo del titolo della Linea guida verificato nel render della fonte ufficiale."
           }
         ],
         "rawSha256": "16752ad4e06d2a069423cc86e8c661a594d7ff9fc9d461a32929d5bf997b2fb3",

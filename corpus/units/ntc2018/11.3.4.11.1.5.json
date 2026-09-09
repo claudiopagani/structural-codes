@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.4.11.1.5 Controlli su singole colate",
         "normalized": "11.3.4.11.1.5 Controlli su singole colate",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.4.11.1.5 Controlli su singole colate"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "92c3ce538cc9fc5d0deb74a32e32aff1a724f858c23daaf3c98081a928de735d",
         "normalizedSha256": "92c3ce538cc9fc5d0deb74a32e32aff1a724f858c23daaf3c98081a928de735d"
       }

@@ -98,12 +98,12 @@
       "origin": "official",
       "text": {
         "raw": "– allungamento percentuale a rottura (valutato su base 00 A65,5L ,dove A 0 è l’area della sezione trasversale del saggio) ǃ 12;",
-        "normalized": "– allungamento percentuale a rottura (valutato su base L0 = 5,65 √A0, dove A0 è l’area della sezione trasversale del saggio) ≥ 12;",
+        "normalized": "allungamento percentuale a rottura (valutato su base L0 = 5,65 √A0, dove A0 è l’area della sezione trasversale del saggio) ≥ 12;",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– allungamento percentuale a rottura (valutato su base "
+            "value": "allungamento percentuale a rottura (valutato su base "
           },
           {
             "kind": "math",
@@ -149,24 +149,30 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
           }
         ],
         "rawSha256": "f03dd415cb7b6fa20cf2507240d153a77ed7726a7914cd5d2f05579a19f72ad0",
-        "normalizedSha256": "0d6583bb8ef975fbf1cd6c05cba4cd26dc038b2e889acdb3f014660d23665c19"
-      }
+        "normalizedSha256": "12bd0d6be2b82c18bfed3869bdc8a7a090bb43d19ddb1a2e41f22c1c9a6b8ccb"
+      },
+      "listMarker": "dash"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.7#block-003",
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "– rapporto ft / fy ǃ1,2.\nQuando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono es-\nsere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti:\nC ǂ 0,18%, Mn ǂ 0,9%, S ǂ 0,04%, P ǂ 0,05%\nPer essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
-        "normalized": "– rapporto ft/fy ≥ 1,2. Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: C ≤ 0,18%, Mn ≤ 0,9%, S ≤ 0,04%, P ≤ 0,05%. Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
+        "raw": "rapporto ft / fy ǃ1,2.",
+        "normalized": "rapporto ft/fy ≥ 1,2.",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "– rapporto "
+            "value": "rapporto "
           },
           {
             "kind": "math",
@@ -175,7 +181,63 @@
           },
           {
             "kind": "text",
-            "value": ". Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: "
+            "value": "."
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 343,
+        "printedPage": "339",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione."
+          }
+        ],
+        "rawSha256": "3febf7b00454a7c0d085bda109210e2d16d9df4c7b7683a1b3cd14fb7012080a",
+        "normalizedSha256": "479bc8335533c6932182d96494e7732ac552c3f08c6c6699a8a09ade1e5b8a05"
+      },
+      "listMarker": "dash"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.3.4.7#block-003-continuation",
+      "kind": "paragraph",
+      "origin": "official",
+      "text": {
+        "raw": "Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono es-\nsere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti:\nC ǂ 0,18%, Mn ǂ 0,9%, S ǂ 0,04%, P ǂ 0,05%\nPer essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
+        "normalized": "Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: C ≤ 0,18%, Mn ≤ 0,9%, S ≤ 0,04%, P ≤ 0,05%. Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie.",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Quando i connettori vengono uniti alle strutture con procedimenti di saldatura speciali, senza metallo d’apporto, essi devono essere fabbricati con acciai la cui composizione chimica soddisfi le limitazioni seguenti: "
           },
           {
             "kind": "math",
@@ -213,7 +275,8 @@
             "kind": "text",
             "value": ". Per essi si applica quanto riportato al § 11.3.4.10 per le officine per la produzione di elementi strutturali in serie."
           }
-        ]
+        ],
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -227,28 +290,13 @@
         },
         "transformations": [
           {
-            "operation": "join-line-wrap",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
-          },
-          {
             "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "ntc11-editorial-profile-0.1.0",
-            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Separato il capoverso successivo alla seconda voce dell’elenco."
           }
         ],
-        "rawSha256": "525450353ea4a9fd34e1dd4cd31b358caeb46aa4435c9273dac37448762ec26e",
-        "normalizedSha256": "cb10e709f3a324ebe31882487c290a11a3f3a09cf9d78378817c796d72813f9a"
+        "rawSha256": "95ba693b20952bae9b3ae86ebfcd48382c754c221e22bf0df0d745416834b4ec",
+        "normalizedSha256": "97a70c2ee9fb84e61c57667a282ab8270acd7aa5f09eb55707003bff4dcea81e"
       }
     }
   ],

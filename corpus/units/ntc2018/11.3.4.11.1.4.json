@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.4.11.1.4 Verifica periodica della qualità",
         "normalized": "11.3.4.11.1.4 Verifica periodica della qualità",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.4.11.1.4 Verifica periodica della qualità"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "aa720f1aa0462ebe83ba27a625517389dc8f44d403291cc4721a98012a17b45c",
         "normalizedSha256": "aa720f1aa0462ebe83ba27a625517389dc8f44d403291cc4721a98012a17b45c"
       }

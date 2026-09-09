@@ -37,7 +37,13 @@
       "text": {
         "raw": "11.3.4.11.2.1 Centri di produzione di lamiere grecate e profilati formati a freddo",
         "normalized": "11.3.4.11.2.1 Centri di produzione di lamiere grecate e profilati formati a freddo",
-        "normalizationVersion": "ntc11-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "11.3.4.11.2.1 Centri di produzione di lamiere grecate e profilati formati a freddo"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -49,7 +55,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-3-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          }
+        ],
         "rawSha256": "ff8d146cdd9da5f2d136da6c038420523ee2e80d8c5ebda38efe33cf322b62ab",
         "normalizedSha256": "ff8d146cdd9da5f2d136da6c038420523ee2e80d8c5ebda38efe33cf322b62ab"
       }
