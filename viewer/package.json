@@ -45,7 +45,7 @@
     "start": "vinext start",
     "performance:baseline": "npm run build && node scripts/performance-baseline.mjs",
     "performance:search": "npm run sync:corpus && node scripts/search-performance.mjs",
-    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/performance-phase-one.test.mjs tests/search-phase-two.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs",
+    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/performance-phase-one.test.mjs tests/search-phase-two.test.mjs tests/cross-reference-phase-three.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern package-dist --ignore-pattern .next --max-warnings 0",
     "check": "npm run lint && npm test"
   },

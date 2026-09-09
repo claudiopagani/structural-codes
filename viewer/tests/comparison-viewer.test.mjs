@@ -39,8 +39,8 @@ test("la selezione dall'indice usa il pannello testo e preserva il deep-link", a
   assert.match(source, /root\.scrollTo\(\{ top:/);
   assert.match(source, /scrollTextUnit\(textPaneRef\.current, unit\.id\)/);
   assert.match(source, /data-index-unit=/);
-  assert.match(source, /updateDeepLink\(navigationRef\.current\.mode, unit\.id, defaultMode\)/);
-  assert.match(source, /scrollRequestRef\.current = summary\.id/);
+  assert.match(source, /updateDeepLink\(navigationRef\.current\.mode, requestedTargetRef\.current, defaultMode\)/);
+  assert.match(source, /scrollRequestRef\.current = requestedTargetRef\.current/);
   assert.doesNotMatch(source, /window\.document\.querySelector/);
 });
 
@@ -153,8 +153,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /tableAssetClass/);
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /groupAlignedLabelBlocks/);
-  assert.match(component, /nodes\.push\(<u key=\{`underline-\$\{index\}`\}>\{segment\.value\}<\/u>\)/);
-  assert.match(component, /nodes\.push\(<em key=\{`em-underline-\$\{index\}`\}><u>\{segment\.value\}<\/u><\/em>\)/);
+  assert.match(component, /<u key=\{`underline-\$\{index\}`\}>\{renderReferenceText\(segment\.value/);
+  assert.match(component, /<em key=\{`em-underline-\$\{index\}`\}><u>\{renderReferenceText\(segment\.value/);
   assert.match(component, /loading="lazy"/);
   assert.doesNotMatch(component, /variant: "scv" \| "legacy"|UnitBlocks|normative-copy/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);

@@ -131,6 +131,7 @@ export interface CorpusManifest {
   relationsPath: string;
   relationDiagnosticsPath: string;
   searchIndexPath: string;
+  crossReferenceIndexPath: string;
   chunks: Array<{
     path: string;
     document: DocumentId;
@@ -191,6 +192,35 @@ export interface SearchResult {
 export interface NormativeReference {
   numbering: string;
   documentHint: "circ2019" | null;
+}
+export type CrossReferenceKind = "unit" | "formula" | "table" | "figure";
+export interface CrossReferenceUnit {
+  id: string;
+  document: DocumentId;
+  numbering: string;
+  title: string;
+  snippet: string;
+}
+export interface CrossReferenceAsset {
+  id: string;
+  kind: Exclude<CrossReferenceKind, "unit">;
+  unitId: string;
+  blockId: string;
+  officialNumber: string;
+  title?: string | null;
+  snippet?: string | null;
+}
+export interface TextualBacklink {
+  targetType: CrossReferenceKind;
+  targetId: string;
+  sourceUnitId: string;
+  sourceBlockId: string;
+}
+export interface CrossReferenceIndex {
+  formatVersion: 1;
+  units: CrossReferenceUnit[];
+  assets: CrossReferenceAsset[];
+  backlinks: TextualBacklink[];
 }
 
 export interface DocumentLookup {
@@ -292,4 +322,7 @@ export function loadRelations(manifest: CorpusManifest, dataBaseUrl = "/data/cod
 }
 export function loadSearchIndex(manifest: CorpusManifest, dataBaseUrl = "/data/codes") {
   return fetchJson<SearchIndex>(resolveDataPath(manifest.searchIndexPath, dataBaseUrl));
+}
+export function loadCrossReferenceIndex(manifest: CorpusManifest, dataBaseUrl = "/data/codes") {
+  return fetchJson<CrossReferenceIndex>(resolveDataPath(manifest.crossReferenceIndexPath, dataBaseUrl));
 }

@@ -7,22 +7,31 @@ import {
   documentForMode,
   initialUnitForIndex,
   loadChunk,
+  loadCrossReferenceIndex,
   loadDocumentIndex,
   loadManifest,
   loadRelations,
   type CorpusChunk,
   type CorpusManifest,
   type CorpusUnit,
+  type CrossReferenceAsset,
+  type CrossReferenceIndex,
+  type CrossReferenceKind,
+  type CrossReferenceUnit,
   type DocumentId,
   type DocumentIndex,
   type DocumentLookup,
   type RelationEdge,
   type SearchResult,
+  type TextualBacklink,
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
 import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass } from "./CorpusContent";
 import { useViewerSearch } from "./searchClient";
+import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
+import { BacklinkPanel, CitationActions, ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
+import { citationForTarget, targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -41,10 +50,18 @@ function scvBlockClass(block: CorpusUnit["blocks"][number]) {
   return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`;
 }
 
-const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string }) {
+function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {
+  if (!block.assetId) return undefined;
+  if (assets.formulas[block.assetId]) return "formula";
+  if (assets.tables[block.assetId]) return "table";
+  if (assets.figures[block.assetId]) return "figure";
+  return undefined;
+}
+
+const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId }) {
   return <div className="scv-unit-blocks">{groupAlignedLabelBlocks(blocks).map((group) => group.kind === "label-list"
-    ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} key={group.blocks[0].blockId} />
-    : <div className={scvBlockClass(group.block)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} /></div>)}</div>;
+    ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} key={group.blocks[0].blockId} />
+    : <div className={scvBlockClass(group.block)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /></div>)}</div>;
 });
 
 export interface AuxiliaryPanelContext {
@@ -82,6 +99,26 @@ interface CombinedPlan {
   fallbackSummaries: UnitSummary[];
   circPathsByPrimaryPath: Map<string, Set<string>>;
   primaryAnchorByFallbackId: Map<string, UnitSummary>;
+}
+interface CrossReferenceLookup {
+  unitById: Map<string, CrossReferenceUnit>;
+  unitByDocumentAndNumber: Map<string, CrossReferenceUnit>;
+  assetById: Map<string, CrossReferenceAsset>;
+  assetByDocumentKindAndNumber: Map<string, CrossReferenceAsset>;
+  backlinksByTarget: Map<string, TextualBacklink[]>;
+}
+interface ReferenceDescriptor {
+  kind: CrossReferenceKind;
+  number: string;
+  documentHint: DocumentId | null;
+  sourceUnitId: string;
+  sourceDocument: DocumentId;
+}
+type CitationSelection = ViewerTarget;
+interface ResolvedCrossReference {
+  targetType: CrossReferenceKind;
+  unit: CrossReferenceUnit;
+  asset?: CrossReferenceAsset;
 }
 
 const chunkUnitMaps = new WeakMap<CorpusChunk, Map<string, CorpusUnit>>();
@@ -136,12 +173,91 @@ function scrollTextUnit(root: HTMLElement | null, unitId: string) {
   return true;
 }
 
-function updateDeepLink(mode: ViewerMode, unitId: string, defaultMode: ViewerMode) {
-  const url = new URL(window.location.href);
-  if (mode === defaultMode) url.searchParams.delete("mode");
-  else url.searchParams.set("mode", mode);
-  url.searchParams.set("unit", unitId);
-  window.history.replaceState(null, "", url);
+function findViewerTarget(root: HTMLElement | null, target: ViewerTarget) {
+  if (!root) return null;
+  const unitId = CSS.escape(target.unitId);
+  if (target.kind === "unit") return root.querySelector<HTMLElement>(`[data-scv-text-unit="${unitId}"], [data-scv-related-unit="${unitId}"]`);
+  if (target.kind === "block") return root.querySelector<HTMLElement>(`[data-scv-source-unit-id="${unitId}"][data-scv-block-id="${CSS.escape(target.blockId)}"]`);
+  return root.querySelector<HTMLElement>(`[data-scv-source-unit-id="${unitId}"][data-scv-asset-id="${CSS.escape(target.assetId)}"]`);
+}
+
+function scrollViewerTarget(root: HTMLElement | null, target: ViewerTarget) {
+  const element = findViewerTarget(root, target);
+  if (!root || !element) return false;
+  root.scrollTo({ top: Math.max(0, element.offsetTop - 14), behavior: "auto" });
+  return true;
+}
+
+function updateDeepLink(mode: ViewerMode, target: ViewerTarget, defaultMode: ViewerMode, action: "push" | "replace" = "replace") {
+  const url = urlForViewerTarget(window.location.href, mode, defaultMode, target);
+  window.history[`${action}State`](null, "", url);
+}
+
+function documentFromUnitId(unitId: string): DocumentId {
+  return unitId.includes(":circ2019:") ? "circ2019" : "ntc2018";
+}
+
+function referenceDescriptor(element: HTMLElement): ReferenceDescriptor | null {
+  const kind = element.dataset.scvReferenceKind as CrossReferenceKind | undefined;
+  const number = element.dataset.scvReferenceNumber;
+  const sourceUnitId = element.dataset.scvSourceUnitId;
+  const sourceDocument = element.dataset.scvSourceDocument as DocumentId | undefined;
+  if (!kind || !number || !sourceUnitId || !sourceDocument) return null;
+  const hint = element.dataset.scvReferenceDocument;
+  return { kind, number, sourceUnitId, sourceDocument, documentHint: hint === "ntc2018" || hint === "circ2019" ? hint : null };
+}
+
+function citationSelectionFromElement(element: HTMLElement): CitationSelection | null {
+  const kind = element.dataset.scvCitationTarget;
+  const unitId = element.dataset.scvSourceUnitId;
+  if (!unitId) return null;
+  if (kind === "asset" && element.dataset.scvAssetId) {
+    const assetKind = element.dataset.scvAssetKind;
+    return { kind: "asset", unitId, assetId: element.dataset.scvAssetId, assetKind: assetKind === "formula" || assetKind === "table" || assetKind === "figure" ? assetKind : undefined };
+  }
+  if (kind === "block" && element.dataset.scvBlockId) return { kind: "block", unitId, blockId: element.dataset.scvBlockId };
+  if (kind === "unit") return { kind: "unit", unitId };
+  return null;
+}
+
+function viewerTargetForReference(reference: ResolvedCrossReference): ViewerTarget {
+  if (!reference.asset) return { kind: "unit", unitId: reference.unit.id };
+  return { kind: "asset", unitId: reference.unit.id, assetId: reference.asset.id, assetKind: reference.asset.kind };
+}
+
+function referenceLabel(reference: ResolvedCrossReference) {
+  const document = reference.unit.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019";
+  if (!reference.asset) return `${document} · § ${reference.unit.numbering}`;
+  const prefix = reference.asset.kind === "formula" ? "Formula" : reference.asset.kind === "table" ? "Tab." : "Fig.";
+  return `${document} · ${prefix} ${reference.asset.officialNumber}`;
+}
+
+async function writeTextClipboard(value: string) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const input = document.createElement("textarea");
+  input.value = value;
+  input.style.cssText = "position:fixed;left:-10000px;top:-10000px";
+  document.body.append(input);
+  try {
+    input.select();
+    if (!document.execCommand("copy")) throw new Error("Copia non consentita.");
+  } finally {
+    input.remove();
+  }
+}
+
+function copyableText(element: HTMLElement | null) {
+  if (!element) return "";
+  const clone = element.cloneNode(true) as HTMLElement;
+  clone.querySelectorAll("button").forEach((button) => button.replaceWith(button.textContent ?? ""));
+  return (clone.innerText || clone.textContent || "").replace(/\s+/gu, " ").trim();
+}
+
+function displayUnitNumber(unit: UnitSummary | CrossReferenceUnit) {
+  return typeof unit.numbering === "string" ? unit.numbering : unit.numbering.official;
 }
 
 function evidencePages(unit: CorpusUnit, chunk: CorpusChunk) {
@@ -222,10 +338,10 @@ const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, 
   if (mode === "combined" && !hasUnitContent(unit) && visibleRelated.length === 0 && !keepNtcChapterMarker) {
     return <span className="scv-structural-anchor" data-scv-text-unit={unit.id} data-scv-chunk-path={record.summary.chunkPath} aria-hidden="true" />;
   }
-  return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
+  return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
     {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unit.title}</span></h2>}
-    <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} />
-    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} /></section>)}
+    <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} />
+    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} /></section>)}
   </section>;
 }, (previous, next) => previous.record.unit === next.record.unit && previous.record.chunk === next.record.chunk && previous.mode === next.mode && previous.assetsBaseUrl === next.assetsBaseUrl && sameRelatedRecords(previous.relatedRecords, next.relatedRecords));
 
@@ -494,6 +610,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [activeUnitId, setActiveUnitId] = useState<string | null>(null);
   const [relations, setRelations] = useState<RelationEdge[]>([]);
   const [relationsLoaded, setRelationsLoaded] = useState(false);
+  const [crossReferenceIndex, setCrossReferenceIndex] = useState<CrossReferenceIndex | null>(null);
+  const [referencePreview, setReferencePreview] = useState<ReferencePreviewData | null>(null);
+  const [citationSelection, setCitationSelection] = useState<CitationSelection | null>(null);
+  const [clipboardStatus, setClipboardStatus] = useState<string | null>(null);
+  const [backlinksOpen, setBacklinksOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [loadError, setLoadError] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -503,13 +624,18 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const settingsButtonRef = useRef<HTMLButtonElement>(null);
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const requestedIdRef = useRef<string | null>(null);
-  const scrollRequestRef = useRef<string | null>(null);
+  const requestedTargetRef = useRef<ViewerTarget | null>(null);
+  const scrollRequestRef = useRef<ViewerTarget | null>(null);
   const activeIdRef = useRef<string | null>(null);
   const manualTargetRef = useRef<{ id: string; expires: number } | null>(null);
   const mountGenerationRef = useRef(0);
   const renderedChunkPathsRef = useRef<Set<string>>(new Set());
   const pendingScrollAnchorRef = useRef<{ id: string; top: number; generation: number } | null>(null);
   const initializedContextRef = useRef("");
+  const historyNavigationRef = useRef(false);
+  const crossReferencePromiseRef = useRef<Promise<CrossReferenceIndex> | null>(null);
+  const relationsPromiseRef = useRef<Promise<RelationEdge[]> | null>(null);
+  const clipboardTimerRef = useRef<number | null>(null);
   const textPaneRef = useRef<HTMLElement>(null);
   const documentId = documentForMode(mode);
   const documentIdRef = useRef(documentId);
@@ -545,10 +671,14 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       setRequestedCircPaths(new Set());
       setRelations([]);
       setRelationsLoaded(false);
+      relationsPromiseRef.current = null;
+      setCrossReferenceIndex(null);
+      crossReferencePromiseRef.current = null;
       const url = new URL(window.location.href);
       const requestedMode = url.searchParams.get("mode");
       if (modeOptions.some((option) => option.id === requestedMode)) setMode(requestedMode as ViewerMode);
-      requestedIdRef.current = url.searchParams.get("unit");
+      requestedTargetRef.current = targetFromUrl(url);
+      requestedIdRef.current = requestedTargetRef.current?.unitId ?? null;
       setActiveUnitId(requestedIdRef.current);
       setManifest(loaded);
     }).catch(() => { if (!cancelled) setLoadError(true); });
@@ -573,19 +703,47 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     return () => { cancelled = true; };
   }, [dataBaseUrl, indexes, manifest, mode]);
 
+  const ensureRelations = useCallback(async () => {
+    if (relationsLoaded) return relations;
+    if (!manifest) return [];
+    let pending = relationsPromiseRef.current;
+    if (!pending) {
+      pending = loadRelations(manifest, dataBaseUrl).then(({ relations: loadedRelations }) => {
+        setRelations(loadedRelations);
+        setRelationsLoaded(true);
+        return loadedRelations;
+      });
+      relationsPromiseRef.current = pending;
+      pending.catch(() => { if (relationsPromiseRef.current === pending) relationsPromiseRef.current = null; });
+    }
+    return pending;
+  }, [dataBaseUrl, manifest, relations, relationsLoaded]);
+
   useEffect(() => {
-    if (!manifest || mode !== "combined" || relationsLoaded) return;
-    let cancelled = false;
-    loadRelations(manifest, dataBaseUrl).then(({ relations: loadedRelations }) => {
-      if (!cancelled) { setRelations(loadedRelations); setRelationsLoaded(true); }
-    }).catch(() => { if (!cancelled) setLoadError(true); });
-    return () => { cancelled = true; };
-  }, [dataBaseUrl, manifest, mode, relationsLoaded]);
+    if (mode !== "combined" || relationsLoaded) return;
+    void ensureRelations().catch(() => setLoadError(true));
+  }, [ensureRelations, mode, relationsLoaded]);
+
+  const ensureCrossReferenceIndex = useCallback(async () => {
+    if (crossReferenceIndex) return crossReferenceIndex;
+    if (!manifest) throw new Error("Manifest non ancora disponibile.");
+    let pending = crossReferencePromiseRef.current;
+    if (!pending) {
+      pending = loadCrossReferenceIndex(manifest, dataBaseUrl).then((loaded) => {
+        setCrossReferenceIndex(loaded);
+        return loaded;
+      });
+      crossReferencePromiseRef.current = pending;
+      pending.catch(() => { if (crossReferencePromiseRef.current === pending) crossReferencePromiseRef.current = null; });
+    }
+    return pending;
+  }, [crossReferenceIndex, dataBaseUrl, manifest]);
 
   const index = indexes.get(documentId) ?? null;
   const circIndex = indexes.get("circ2019") ?? null;
   const lookup = useMemo(() => index ? createDocumentLookup(index) : null, [index]);
   const circLookup = useMemo(() => circIndex ? createDocumentLookup(circIndex) : null, [circIndex]);
+  const crossReferenceLookup = useMemo(() => crossReferenceIndex ? createCrossReferenceLookup(crossReferenceIndex) as CrossReferenceLookup : null, [crossReferenceIndex]);
   const search = useViewerSearch({ query, mode, manifest, dataBaseUrl, lookup, circLookup, maxResults: searchMaxResults });
   const combinedPlan = useMemo(() => buildCombinedPlan(mode === "combined" ? index : null, mode === "combined" ? circIndex : null, relations), [circIndex, index, mode, relations]);
   const primaryRenderedPaths = useMemo(() => new Set(lookup?.chunkPaths.filter((path) => renderedChunkPaths.has(path)) ?? []), [lookup, renderedChunkPaths]);
@@ -677,7 +835,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const recordById = useMemo(() => new Map(renderRecords.map((record) => [record.unit.id, record])), [renderRecords]);
 
   const revealSummary = useCallback(async (summary: UnitSummary, replace = false) => {
-    scrollRequestRef.current = summary.id;
+    scrollRequestRef.current = requestedTargetRef.current?.unitId === summary.id ? requestedTargetRef.current : { kind: "unit", unitId: summary.id };
     if (summary.document === documentIdRef.current) {
       await mountPrimaryChunk(summary.chunkPath, replace);
       return;
@@ -686,7 +844,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const explicitTarget = relationTargets(summary.id, relations)[0];
     if (explicitTarget) {
       const target = lookup.unitById.get(explicitTarget.targetUnitId);
-      if (target) { scrollRequestRef.current = target.id; await mountPrimaryChunk(target.chunkPath, replace); }
+      if (target) {
+        setRequestedCircPaths((current) => replace ? new Set([summary.chunkPath]) : new Set(current).add(summary.chunkPath));
+        await Promise.all([rememberChunk(summary.chunkPath), mountPrimaryChunk(target.chunkPath, replace)]);
+      }
       return;
     }
     const anchor = combinedPlan.primaryAnchorByFallbackId.get(summary.id);
@@ -701,20 +862,25 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     if (initializedContextRef.current === contextKey) return;
     const requestedId = requestedIdRef.current;
     let initial = requestedId ? lookup.unitById.get(requestedId) ?? null : null;
+    let revealInitial = initial;
     if (!initial && mode === "combined" && requestedId?.includes(":circ2019:")) {
       if (!circLookup || !relationsLoaded) return;
       const requestedCirc = circLookup.unitById.get(requestedId) ?? null;
       const explicitTarget = requestedCirc ? relationTargets(requestedCirc.id, relations)[0] : null;
       initial = explicitTarget ? lookup.unitById.get(explicitTarget.targetUnitId) ?? null : requestedCirc;
+      revealInitial = requestedCirc;
     }
     initial ??= initialUnitForIndex(index, requestedId);
-    if (!initial) return;
+    revealInitial ??= initial;
+    if (!initial || !revealInitial) return;
     initializedContextRef.current = contextKey;
     requestedIdRef.current = initial.id;
     activeIdRef.current = initial.id;
     setActiveUnitId(initial.id);
-    updateDeepLink(mode, initial.id, defaultMode);
-    void revealSummary(initial, primaryRenderedPaths.size === 0 || initial.document !== documentId);
+    const requestedTarget = requestedTargetRef.current?.unitId === revealInitial.id ? requestedTargetRef.current : { kind: "unit" as const, unitId: initial.id };
+    if (!historyNavigationRef.current) updateDeepLink(mode, requestedTarget, defaultMode);
+    historyNavigationRef.current = false;
+    void revealSummary(revealInitial, primaryRenderedPaths.size === 0 || revealInitial.document !== documentId);
   }, [circLookup, defaultMode, documentId, index, lookup, mode, modeRevision, primaryRenderedPaths.size, relations, relationsLoaded, revealSummary]);
 
   useEffect(() => {
@@ -740,12 +906,12 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       }
       pendingScrollAnchorRef.current = null;
     }
-    const targetId = scrollRequestRef.current;
-    if (!targetId || renderRecords.length === 0) return;
-    if (!scrollTextUnit(root, targetId)) return;
+    const target = scrollRequestRef.current;
+    if (!target || renderRecords.length === 0) return;
+    if (!scrollViewerTarget(root, target)) return;
     scrollRequestRef.current = null;
-    manualTargetRef.current = { id: targetId, expires: performance.now() + 500 };
-  }, [renderRecords]);
+    manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
+  }, [relatedByTarget, renderRecords]);
 
   const navigationRef = useRef({ entryById, lookup, mode, relations });
   useEffect(() => {
@@ -770,8 +936,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     if (nextId !== activeIdRef.current) {
       activeIdRef.current = nextId;
       requestedIdRef.current = nextId;
+      requestedTargetRef.current = { kind: "unit", unitId: nextId };
       setActiveUnitId(nextId);
-      updateDeepLink(navigationRef.current.mode, nextId, defaultMode);
+      updateDeepLink(navigationRef.current.mode, requestedTargetRef.current, defaultMode);
     }
     loadAdjacentAtUnit(nextId);
   }, [defaultMode, loadAdjacentAtUnit]);
@@ -780,11 +947,12 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const selectUnit = useCallback((unit: UnitSummary) => {
     requestedIdRef.current = unit.id;
+    requestedTargetRef.current = { kind: "unit", unitId: unit.id };
     manualTargetRef.current = { id: unit.id, expires: performance.now() + 500 };
     const present = scrollTextUnit(textPaneRef.current, unit.id);
     activeIdRef.current = unit.id;
     setActiveUnitId(unit.id);
-    updateDeepLink(navigationRef.current.mode, unit.id, defaultMode);
+    updateDeepLink(navigationRef.current.mode, requestedTargetRef.current, defaultMode);
     if (present) return;
     const currentLookup = navigationRef.current.lookup;
     const targetPosition = currentLookup?.chunkIndexByPath.get(unit.chunkPath);
@@ -792,6 +960,124 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const nearMountedWindow = targetPosition !== undefined && mountedPositions.length > 0 && targetPosition >= Math.min(...mountedPositions) - 1 && targetPosition <= Math.max(...mountedPositions) + 1;
     void revealSummary(unit, !nearMountedWindow).catch(() => setLoadError(true));
   }, [defaultMode, primaryRenderedPaths, revealSummary]);
+
+  const navigateViewerTarget = useCallback(async (target: ViewerTarget, action: "push" | "replace" | "none" = "push", forcedMode?: ViewerMode) => {
+    const targetDocument = documentFromUnitId(target.unitId);
+    const nextMode = forcedMode ?? (mode === "combined" || documentForMode(mode) === targetDocument ? mode : targetDocument === "ntc2018" ? "ntc" : "circ");
+    requestedIdRef.current = target.unitId;
+    requestedTargetRef.current = target;
+    scrollRequestRef.current = target;
+    manualTargetRef.current = { id: target.unitId, expires: performance.now() + 700 };
+    if (action !== "none") updateDeepLink(nextMode, target, defaultMode, action);
+    if (nextMode !== mode) {
+      historyNavigationRef.current = true;
+      initializedContextRef.current = "";
+      setRequestedCircPaths(new Set());
+      setModeRevision((revision) => revision + 1);
+      setMode(nextMode);
+      return;
+    }
+    if (targetDocument === documentIdRef.current) {
+      activeIdRef.current = target.unitId;
+      setActiveUnitId(target.unitId);
+    }
+    if (scrollViewerTarget(textPaneRef.current, target)) return;
+    if (!manifest) return;
+    let targetIndex = indexes.get(targetDocument);
+    if (!targetIndex) {
+      targetIndex = await loadDocumentIndex(manifest, targetDocument, dataBaseUrl);
+      setIndexes((current) => current.has(targetDocument) ? current : new Map(current).set(targetDocument, targetIndex!));
+    }
+    const summary = targetIndex.units.find((unit) => unit.id === target.unitId);
+    if (!summary) return;
+    let activeId = summary.id;
+    if (mode === "combined" && summary.document === "circ2019") {
+      const explicit = relationTargets(summary.id, relations)[0];
+      activeId = explicit?.targetUnitId ?? summary.id;
+    }
+    activeIdRef.current = activeId;
+    setActiveUnitId(activeId);
+    const currentLookup = navigationRef.current.lookup;
+    const targetPosition = summary.document === documentIdRef.current ? currentLookup?.chunkIndexByPath.get(summary.chunkPath) : undefined;
+    const mountedPositions = currentLookup?.chunkPaths.flatMap((path, position) => primaryRenderedPaths.has(path) ? [position] : []) ?? [];
+    const nearMountedWindow = targetPosition !== undefined && mountedPositions.length > 0 && targetPosition >= Math.min(...mountedPositions) - 1 && targetPosition <= Math.max(...mountedPositions) + 1;
+    await revealSummary(summary, summary.document === documentIdRef.current && !nearMountedWindow);
+  }, [dataBaseUrl, defaultMode, indexes, manifest, mode, primaryRenderedPaths, relations, revealSummary]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const url = new URL(window.location.href);
+      const target = targetFromUrl(url);
+      if (!target) return;
+      const requestedMode = url.searchParams.get("mode");
+      const nextMode = modeOptions.some((option) => option.id === requestedMode) ? requestedMode as ViewerMode : defaultMode;
+      historyNavigationRef.current = true;
+      void navigateViewerTarget(target, "none", nextMode).catch(() => setLoadError(true));
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [defaultMode, navigateViewerTarget]);
+
+  const resolveReferenceElement = useCallback(async (element: HTMLElement) => {
+    const descriptor = referenceDescriptor(element);
+    if (!descriptor) return null;
+    const loaded = await ensureCrossReferenceIndex();
+    const referenceLookup = crossReferenceLookup ?? createCrossReferenceLookup(loaded) as CrossReferenceLookup;
+    return resolveCrossReference(referenceLookup, descriptor, descriptor.sourceDocument) as ResolvedCrossReference | null;
+  }, [crossReferenceLookup, ensureCrossReferenceIndex]);
+
+  const showReferencePreview = useCallback((element: HTMLElement) => {
+    const bounds = element.getBoundingClientRect();
+    const left = Math.max(12, Math.min(window.innerWidth - 332, bounds.left));
+    const top = Math.min(window.innerHeight - 150, bounds.bottom + 7);
+    setReferencePreview({ label: element.textContent ?? "Riferimento", title: "", snippet: "", left, top, loading: true });
+    void resolveReferenceElement(element).then((reference) => {
+      if (!reference) {
+        element.dataset.scvReferenceResolved = "false";
+        setReferencePreview({ label: element.textContent ?? "Riferimento", title: "Target non disponibile", snippet: "Il riferimento non è stato reso cliccabile perché non è risolto dall’indice derivato.", left, top });
+        return;
+      }
+      element.dataset.scvReferenceResolved = "true";
+      setReferencePreview({ label: referenceLabel(reference), title: reference.asset?.title || reference.unit.title, snippet: reference.asset?.snippet || reference.unit.snippet, left, top });
+    }).catch(() => setReferencePreview(null));
+  }, [resolveReferenceElement]);
+
+  const activateReference = useCallback((element: HTMLElement) => {
+    void resolveReferenceElement(element).then((reference) => {
+      if (!reference) return;
+      setReferencePreview(null);
+      return navigateViewerTarget(viewerTargetForReference(reference), "push");
+    }).catch(() => setReferencePreview(null));
+  }, [navigateViewerTarget, resolveReferenceElement]);
+
+  const handleDocumentClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
+    if (element) {
+      activateReference(element);
+      return;
+    }
+    const citationElement = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-scv-citation-target]") : null;
+    if (citationElement) setCitationSelection(citationSelectionFromElement(citationElement));
+  }, [activateReference]);
+
+  const handleDocumentPointerOver = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
+    if (element && !element.contains(event.relatedTarget as Node | null)) showReferencePreview(element);
+  }, [showReferencePreview]);
+
+  const handleDocumentPointerOut = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
+    if (element && !element.contains(event.relatedTarget as Node | null) && document.activeElement !== element) setReferencePreview(null);
+  }, []);
+
+  const handleDocumentFocus = useCallback((event: React.FocusEvent<HTMLElement>) => {
+    const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
+    if (element) showReferencePreview(element);
+  }, [showReferencePreview]);
+
+  const handleDocumentBlur = useCallback((event: React.FocusEvent<HTMLElement>) => {
+    if (event.target instanceof Element && event.target.matches(".scv-cross-reference")) setReferencePreview(null);
+  }, []);
 
   const selectScrollMarker = useCallback((unitId: string) => {
     const entry = navigationRef.current.entryById.get(unitId);
@@ -819,12 +1105,87 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const chunk = activeRecord?.chunk ?? null;
   const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
   const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
+  const summaryById = useMemo(() => new Map([...indexes.values()].flatMap((documentIndex) => documentIndex.units).map((summary) => [summary.id, summary])), [indexes]);
+  const citationTarget = useMemo<ViewerTarget | null>(() => citationSelection ?? (activeUnitId ? { kind: "unit", unitId: activeUnitId } : null), [activeUnitId, citationSelection]);
+  const loadedCitationAsset = useMemo(() => {
+    if (citationTarget?.kind !== "asset") return null;
+    for (const loaded of loadedChunks.values()) {
+      const asset = loaded.assets.formulas[citationTarget.assetId] ?? loaded.assets.tables[citationTarget.assetId] ?? loaded.assets.figures[citationTarget.assetId];
+      if (asset) return asset;
+    }
+    return null;
+  }, [citationTarget, loadedChunks]);
+  const citationUnit = citationTarget ? summaryById.get(citationTarget.unitId) ?? crossReferenceLookup?.unitById.get(citationTarget.unitId) ?? null : null;
+  const citationAsset = citationTarget?.kind === "asset" ? crossReferenceLookup?.assetById.get(citationTarget.assetId) ?? null : null;
+  const loadedCitationAssetNumber = loadedCitationAsset && "officialNumber" in loadedCitationAsset ? loadedCitationAsset.officialNumber : null;
+  const citationAssetLabel = citationTarget?.kind === "asset"
+    ? `${citationTarget.assetKind === "formula" ? "Formula" : citationTarget.assetKind === "table" ? "Tab." : "Fig."} ${citationAsset?.officialNumber ?? loadedCitationAssetNumber ?? citationTarget.assetId}`
+    : citationTarget?.kind === "block" ? `blocco ${citationTarget.blockId}` : null;
+  const citationContextLabel = citationUnit ? `${citationUnit.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · ${citationAssetLabel ?? `§ ${displayUnitNumber(citationUnit)}`}` : "Contenuto corrente";
+  const citationLatex = citationTarget?.kind === "asset" && citationTarget.assetKind === "formula" && loadedCitationAsset && "latex" in loadedCitationAsset ? loadedCitationAsset.latex : null;
+  const textualBacklinkRecords = activeUnitId && crossReferenceLookup ? crossReferenceLookup.backlinksByTarget.get(`unit:${activeUnitId}`) ?? [] : [];
+  const textualBacklinks = textualBacklinkRecords.flatMap((backlink) => {
+    const source = summaryById.get(backlink.sourceUnitId) ?? crossReferenceLookup?.unitById.get(backlink.sourceUnitId);
+    return source ? [{ backlink, document: source.document, numbering: displayUnitNumber(source), title: source.title }] : [];
+  });
+  const editorialBacklinkRecords = activeUnitId ? relations.filter((edge) => edge.sourceUnitId === activeUnitId || edge.targetUnitId === activeUnitId) : [];
+  const editorialBacklinks = editorialBacklinkRecords.flatMap((edge) => {
+    const otherId = edge.sourceUnitId === activeUnitId ? edge.targetUnitId : edge.sourceUnitId;
+    const other = summaryById.get(otherId) ?? crossReferenceLookup?.unitById.get(otherId);
+    return other ? [{ edge, label: `${other.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} ${displayUnitNumber(other)}`, title: other.title }] : [];
+  });
+
+  const reportClipboardStatus = useCallback((message: string) => {
+    setClipboardStatus(message);
+    if (clipboardTimerRef.current !== null) window.clearTimeout(clipboardTimerRef.current);
+    clipboardTimerRef.current = window.setTimeout(() => setClipboardStatus(null), 1700);
+  }, []);
+
+  useEffect(() => () => {
+    if (clipboardTimerRef.current !== null) window.clearTimeout(clipboardTimerRef.current);
+  }, []);
+
+  const copyCitationValue = useCallback((kind: "text" | "link" | "citation" | "latex") => {
+    if (!citationTarget || !citationUnit) return;
+    const permalink = urlForViewerTarget(window.location.href, mode, defaultMode, citationTarget).href;
+    const documentLabel = citationUnit.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019";
+    const unitNumber = displayUnitNumber(citationUnit);
+    const element = findViewerTarget(textPaneRef.current, citationTarget);
+    const value = kind === "text" ? copyableText(element)
+      : kind === "link" ? permalink
+      : kind === "latex" ? citationLatex ?? ""
+      : citationForTarget({ documentLabel, unitNumber, targetLabel: citationAssetLabel, permalink });
+    if (!value) return;
+    void writeTextClipboard(value).then(() => reportClipboardStatus("Copiato negli appunti")).catch(() => reportClipboardStatus("Copia non disponibile"));
+  }, [citationAssetLabel, citationLatex, citationTarget, citationUnit, defaultMode, mode, reportClipboardStatus]);
+
+  const toggleBacklinks = useCallback(() => {
+    const opening = !backlinksOpen;
+    setBacklinksOpen(opening);
+    if (opening) void Promise.all([ensureCrossReferenceIndex(), ensureRelations()]).catch(() => setBacklinksOpen(false));
+  }, [backlinksOpen, ensureCrossReferenceIndex, ensureRelations]);
+
+  const selectTextualBacklink = useCallback((backlink: TextualBacklink) => {
+    setBacklinksOpen(false);
+    void navigateViewerTarget({ kind: "block", unitId: backlink.sourceUnitId, blockId: backlink.sourceBlockId }, "push").catch(() => setLoadError(true));
+  }, [navigateViewerTarget]);
+
+  const selectEditorialBacklink = useCallback((edge: RelationEdge) => {
+    if (!activeUnitId) return;
+    setBacklinksOpen(false);
+    const unitId = edge.sourceUnitId === activeUnitId ? edge.targetUnitId : edge.sourceUnitId;
+    void navigateViewerTarget({ kind: "unit", unitId }, "push").catch(() => setLoadError(true));
+  }, [activeUnitId, navigateViewerTarget]);
   const changeMode = useCallback((nextMode: ViewerMode, preferredUnitId: string | null = null) => {
     if (nextMode === mode) return;
     const keepCurrent = activeSummary && (nextMode === "combined" || activeSummary.document === documentForMode(nextMode));
     requestedIdRef.current = preferredUnitId ?? (keepCurrent ? activeSummary?.id ?? null : null);
+    requestedTargetRef.current = requestedIdRef.current ? { kind: "unit", unitId: requestedIdRef.current } : null;
     initializedContextRef.current = "";
     setRequestedCircPaths(new Set());
+    setCitationSelection(null);
+    setBacklinksOpen(false);
+    setReferencePreview(null);
     setModeRevision((revision) => revision + 1);
     setMode(nextMode);
     setSettingsOpen(false);
@@ -871,14 +1232,17 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-search-error={search.errorMessage}>
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
     <NavigationPane mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
     <div className="scv-text-pane-shell">
-      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON">
+      {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} onToggleBacklinks={toggleBacklinks} />}
+      {backlinksOpen && <BacklinkPanel loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
+      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
       </article>
       <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
     </div>
+    <ReferencePreview preview={referencePreview} />
     {auxiliaryVisible && auxiliaryAvailable && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
     {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
   </div>;

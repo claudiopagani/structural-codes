@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 import katex from "katex";
-import type { AssetBundle, CorpusBlock, InlineSegment, TableCell, CorpusUnit } from "./corpusData";
+import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableCell, CorpusUnit } from "./corpusData";
+import { findCrossReferences } from "./crossReferences.js";
 import { visibleTableCaption, visibleTableCaptionInline, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
 const editorialTableNotePatterns = [
@@ -321,11 +322,38 @@ export interface BlockContentProps {
   assets: AssetBundle | null;
   assetsBaseUrl?: string;
   aligned?: boolean;
+  sourceUnitId?: string;
+  sourceDocument?: DocumentId;
 }
 
 type InlineSegments = InlineSegment[];
+interface ReferenceContext { sourceUnitId: string; sourceDocument: DocumentId; }
 
-function renderInlineSegments(inline: InlineSegments) {
+function renderReferenceText(value: string, context: ReferenceContext | null, keyPrefix: string) {
+  if (!context) return value;
+  const references = findCrossReferences(value);
+  if (references.length === 0) return value;
+  const nodes: Array<React.ReactNode> = [];
+  let offset = 0;
+  for (const reference of references) {
+    if (reference.start > offset) nodes.push(value.slice(offset, reference.start));
+    nodes.push(<button
+      type="button"
+      className="scv-cross-reference"
+      data-scv-reference-kind={reference.kind}
+      data-scv-reference-number={reference.number}
+      data-scv-reference-document={reference.documentHint ?? ""}
+      data-scv-source-unit-id={context.sourceUnitId}
+      data-scv-source-document={context.sourceDocument}
+      key={`${keyPrefix}:${reference.start}:${reference.end}`}
+    >{value.slice(reference.start, reference.end)}</button>);
+    offset = reference.end;
+  }
+  if (offset < value.length) nodes.push(value.slice(offset));
+  return nodes;
+}
+
+function renderInlineSegments(inline: InlineSegments, context: ReferenceContext | null = null) {
   const nodes: Array<React.ReactNode> = [];
   inline.forEach((segment, index) => {
     if (segment.kind === "math") {
@@ -333,19 +361,19 @@ function renderInlineSegments(inline: InlineSegments) {
       return;
     }
     if (segment.kind === "em") {
-      nodes.push(<em key={`em-${index}`}>{segment.value}</em>);
+      nodes.push(<em key={`em-${index}`}>{renderReferenceText(segment.value, context, `em-${index}`)}</em>);
       return;
     }
     if (segment.kind === "underline") {
-      nodes.push(<u key={`underline-${index}`}>{segment.value}</u>);
+      nodes.push(<u key={`underline-${index}`}>{renderReferenceText(segment.value, context, `underline-${index}`)}</u>);
       return;
     }
     if (segment.kind === "em-underline") {
-      nodes.push(<em key={`em-underline-${index}`}><u>{segment.value}</u></em>);
+      nodes.push(<em key={`em-underline-${index}`}><u>{renderReferenceText(segment.value, context, `em-underline-${index}`)}</u></em>);
       return;
     }
     if (segment.kind === "strong") {
-      nodes.push(<strong key={`strong-${index}`}>{segment.value}</strong>);
+      nodes.push(<strong key={`strong-${index}`}>{renderReferenceText(segment.value, context, `strong-${index}`)}</strong>);
       return;
     }
     const previous = inline[index - 1];
@@ -353,30 +381,30 @@ function renderInlineSegments(inline: InlineSegments) {
     if (leading && previous?.kind === "math") {
       nodes[nodes.length - 1] = <span className="inline-keep-punct" key={`keep-${index}`}>{nodes[nodes.length - 1]}{leading}</span>;
       const rest = segment.value.slice(leading.length);
-      if (rest) nodes.push(<span key={`text-${index}`}>{rest}</span>);
+      if (rest) nodes.push(<span key={`text-${index}`}>{renderReferenceText(rest, context, `text-${index}`)}</span>);
       return;
     }
-    nodes.push(<span key={`text-${index}`}>{segment.value}</span>);
+    nodes.push(<span key={`text-${index}`}>{renderReferenceText(segment.value, context, `text-${index}`)}</span>);
   });
   return nodes;
 }
 
-function renderLeadingLabelContent(block: CorpusBlock) {
+function renderLeadingLabelContent(block: CorpusBlock, context: ReferenceContext | null) {
   const inline = block.text?.inline;
   if (!inline) return null;
   if (hasLeadingEmphasisLabel(block)) {
     const label = inline[0];
     const description = inline.slice(1).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s*:\s*/u, "") } : segment);
-    return <><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.kind === "underline" ? <><u>{label.value}</u></> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description)}</span></>;
+    return <><span className="leading-label">{label.kind === "em" ? <><em>{label.value}</em>:</> : label.kind === "underline" ? <><u>{label.value}</u></> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description, context)}</span></>;
   }
   if (hasLeadingMath(block)) {
     const [label, ...description] = inline;
-    return <><span className="leading-math-label">{renderInlineSegments([label])}</span><span className="leading-math-description">{renderInlineSegments(description)}</span></>;
+    return <><span className="leading-math-label">{renderInlineSegments([label], context)}</span><span className="leading-math-description">{renderInlineSegments(description, context)}</span></>;
   }
   return null;
 }
 
-function renderAlphabeticListContent(block: CorpusBlock) {
+function renderAlphabeticListContent(block: CorpusBlock, context: ReferenceContext | null) {
   if (!hasAlphabeticListMarker(block)) return null;
   const inline = block.text?.inline;
   const normalized = block.text?.normalized;
@@ -389,18 +417,19 @@ function renderAlphabeticListContent(block: CorpusBlock) {
     return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized?.slice(match[0].length)}</span></>;
   }
   const description = [{ ...first, value: first.value.slice(match[0].length) }, ...inline.slice(1)];
-  return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(description)}</span></>;
+  return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(description, context)}</span></>;
 }
 
-export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned = false }: BlockContentProps) {
+export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned = false, sourceUnitId, sourceDocument }: BlockContentProps) {
+  const referenceContext = sourceUnitId && sourceDocument ? { sourceUnitId, sourceDocument } : null;
   if (block.text) {
-    const alphabeticListContent = renderAlphabeticListContent(block);
+    const alphabeticListContent = renderAlphabeticListContent(block, referenceContext);
     if (alphabeticListContent) return <p>{alphabeticListContent}</p>;
-    if (!block.text.inline) return <p>{block.text.normalized}</p>;
+    if (!block.text.inline) return <p>{renderReferenceText(block.text.normalized, referenceContext, block.blockId)}</p>;
     const inline = block.text.inline;
-    const leadingLabelContent = renderLeadingLabelContent(block);
+    const leadingLabelContent = renderLeadingLabelContent(block, referenceContext);
     if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : <p>{leadingLabelContent}</p>;
-    return <p>{renderInlineSegments(inline)}</p>;
+    return <p>{renderInlineSegments(inline, referenceContext)}</p>;
   }
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
@@ -432,12 +461,12 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
 
-export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets" }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string }) {
+export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets", sourceUnitId, sourceDocument }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string; sourceUnitId?: string; sourceDocument?: DocumentId }) {
   const rootClass = "scv-label-list";
   return <div className={rootClass}>
-    {blocks.map((block) => <div className={`${rootClass}-row`} key={block.blockId}>
+    {blocks.map((block) => <div className={`${rootClass}-row`} data-scv-citation-target="block" data-scv-source-unit-id={sourceUnitId} data-scv-block-id={block.blockId} key={block.blockId}>
       <div className={`${rootClass}-content`}>
-        <BlockContent block={block} assets={assets} assetsBaseUrl={assetsBaseUrl} aligned />
+        <BlockContent block={block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} aligned />
       </div>
     </div>)}
   </div>;

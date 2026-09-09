@@ -139,6 +139,9 @@ body { margin: 0; }
 .scv-unit-blocks { display: block; }
 .scv-block { display: block; }
 .scv-block p { display: block; margin: 0 0 8px; color: #272c35; font-family: "Tinos", serif; font-size: var(--scv-base-font-size); line-height: 1.48; text-align: justify; }
+.scv-root .scv-cross-reference { display: inline; margin: 0; padding: 0 .08em; color: var(--scv-primary); font: inherit; font-weight: 700; line-height: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--scv-primary) 48%, transparent); text-decoration-thickness: 1px; text-underline-offset: .12em; background: transparent; border: 0; border-radius: 2px; cursor: pointer; }
+.scv-root .scv-cross-reference:hover, .scv-root .scv-cross-reference:focus-visible { color: #fff; text-decoration: none; background: var(--scv-primary); }
+.scv-root .scv-cross-reference[data-scv-reference-resolved="false"] { color: inherit; font-weight: inherit; text-decoration-style: dotted; cursor: help; }
 .scv-block-heading, .scv-block-list-item, .scv-block-formula-ref, .scv-block-table-ref, .scv-block-figure-ref { display: block; }
 .scv-block-heading p { display: block; margin: 8px 0 4px; font-weight: 700; }
 .scv-block-heading p:has(em > u) { font-weight: 400; }
@@ -209,6 +212,27 @@ body { margin: 0; }
 .scv-related-unit > header h3 > .scv-related-number { color: var(--scv-primary); font-family: "Tinos", serif; font-size: inherit; font-variant-numeric: lining-nums; font-weight: 700; white-space: nowrap; }
 .scv-related-unit > header h3 > .scv-related-title { min-width: 0; overflow-wrap: break-word; }
 .scv-end-note { margin-top: 34px; padding-top: 12px; color: #8991a0; font-family: "Tinos", serif; font-size: var(--scv-font-size-11); font-style: italic; border-top: 1px solid #e2e5ed; }
+
+.scv-citation-actions { position: absolute; z-index: 8; top: 7px; right: 50px; display: flex; max-width: calc(100% - 72px); align-items: center; gap: 3px; padding: 4px; color: var(--scv-ink-soft); background: rgb(255 255 255 / 94%); border: 1px solid var(--scv-line); border-radius: 6px; box-shadow: 0 3px 14px rgb(31 43 76 / 14%); backdrop-filter: blur(8px); }
+.scv-citation-context { overflow: hidden; max-width: 155px; padding: 0 5px; font-size: var(--scv-font-size-8); font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.scv-citation-actions button { padding: 4px 6px; color: var(--scv-primary-dark); font-size: var(--scv-font-size-8); font-weight: 800; white-space: nowrap; background: var(--scv-primary-soft); border: 0; border-radius: 4px; cursor: pointer; }
+.scv-citation-actions button:hover, .scv-citation-actions button:focus-visible, .scv-citation-actions button.active { color: #fff; background: var(--scv-primary); }
+.scv-backlink-panel { position: absolute; z-index: 9; top: 48px; right: 50px; width: min(390px, calc(100% - 70px)); max-height: min(68vh, 620px); overflow: auto; padding: 9px; color: var(--scv-ink); background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 7px; box-shadow: 0 14px 36px rgb(31 43 76 / 22%); }
+.scv-backlink-panel > header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 2px 3px 8px; border-bottom: 1px solid var(--scv-line); }
+.scv-backlink-panel > header strong { font-family: "Tinos", serif; font-size: var(--scv-font-size-14); }
+.scv-backlink-panel > header button { padding: 0 4px; color: var(--scv-ink-soft); font-size: 20px; background: transparent; border: 0; cursor: pointer; }
+.scv-backlink-panel section { padding: 8px 2px 2px; }
+.scv-backlink-panel h3 { margin: 0 0 5px; color: var(--scv-primary-dark); font-size: var(--scv-font-size-9); letter-spacing: .05em; text-transform: uppercase; }
+.scv-backlink-panel p { margin: 4px 0 8px; color: var(--scv-ink-soft); font-size: var(--scv-font-size-10); }
+.scv-backlink-panel ul { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; }
+.scv-backlink-panel li button { display: grid; width: 100%; gap: 2px; padding: 6px 7px; color: var(--scv-ink); text-align: left; background: transparent; border: 0; border-radius: 4px; cursor: pointer; }
+.scv-backlink-panel li button:hover, .scv-backlink-panel li button:focus-visible { background: var(--scv-primary-soft); }
+.scv-backlink-panel li span { color: var(--scv-primary); font-size: var(--scv-font-size-8); font-weight: 800; }
+.scv-backlink-panel li strong { overflow: hidden; font-family: "Tinos", serif; font-size: var(--scv-font-size-11); text-overflow: ellipsis; white-space: nowrap; }
+.scv-reference-preview { position: fixed; z-index: 100; display: grid; width: min(320px, calc(100vw - 24px)); gap: 4px; padding: 10px 11px; color: var(--scv-ink); background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 7px; box-shadow: 0 12px 32px rgb(27 37 68 / 25%); pointer-events: none; }
+.scv-reference-preview > span { color: var(--scv-primary); font-size: var(--scv-font-size-8); font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.scv-reference-preview > strong { font-family: "Tinos", serif; font-size: var(--scv-font-size-14); line-height: 1.2; }
+.scv-reference-preview > small { color: var(--scv-ink-soft); font-family: "Tinos", serif; font-size: var(--scv-font-size-11); line-height: 1.35; }
 
 .scv-root .inline-math { display: inline-block; margin-inline: .035em; color: #202733; font-size: 1.04em; white-space: nowrap; }
 .scv-root .inline-math .katex { font-size: 1em; }
@@ -343,6 +367,8 @@ body { margin: 0; }
 .scv-root.scv-dark .scv-dialog-backdrop { background: rgb(0 0 0 / 62%); }
 .scv-root.scv-dark .scv-dialog { background: #1b2130; box-shadow: 0 24px 70px rgb(0 0 0 / 52%); }
 .scv-root.scv-dark .scv-copy-asset { color: var(--scv-primary-dark); background: rgb(27 33 48 / 94%); border-color: #46516e; box-shadow: 0 2px 8px rgb(0 0 0 / 35%); }
+.scv-root.scv-dark .scv-citation-actions { background: rgb(27 33 48 / 94%); box-shadow: 0 3px 14px rgb(0 0 0 / 38%); }
+.scv-root.scv-dark .scv-backlink-panel, .scv-root.scv-dark .scv-reference-preview { box-shadow: 0 14px 36px rgb(0 0 0 / 48%); }
 .scv-root.scv-dark .scv-scroll-track { background: #2a3347; }
 .scv-root.scv-dark .scv-scroll-thumb { background: linear-gradient(180deg, #94aaff, #6478bd); }
 .scv-root.scv-dark .scv-scroll-marker { color: #d7def3; background: #27324b; border-color: #465577; }

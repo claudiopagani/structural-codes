@@ -61,6 +61,7 @@ manifest.json
 relations.json
 relation-diagnostics.json
 search-index.json
+cross-reference-index.json
 ntc2018/index.json
 ntc2018/chunks/*.json
 circ2019/index.json
@@ -124,6 +125,23 @@ npm run performance:search
 
 Il report viene scritto in `reports/search-phase-two.json`; il numero di
 iterazioni può essere impostato con `SCV_SEARCH_BENCHMARK_RUNS`.
+
+### Riferimenti, permalink e citazioni
+
+I riferimenti normativi affidabili nel testo sono pulsanti accessibili. Hover
+o focus caricano una sola volta il compatto `cross-reference-index.json` per
+mostrare titolo e snippet, senza scaricare il chunk del target. Il click usa lo
+stesso caricamento progressivo del viewer: se il target è già montato lo scroll
+è immediato; altrimenti viene richiesto soltanto il suo chunk. L'indice dei
+backlink e le relazioni editoriali sono caricati soltanto quando si apre il
+pannello “Richiami” e sono presentati in sezioni distinte.
+
+I permalink conservano `unit` e, quando presenti, `block`, `asset` e
+`assetKind` (`formula`, `table` o `figure`). La navigazione fra riferimenti usa
+la history del browser, quindi avanti e indietro ripristinano anche modalità e
+target. La barra contestuale permette di copiare testo, link e citazione; per
+una formula già caricata espone anche il LaTeX. Nessuno di questi strumenti
+carica l'indice full-text della ricerca.
 
 ## Package
 

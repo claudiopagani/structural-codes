@@ -52,6 +52,7 @@ test("click già montato precede lo stato React, mentre un target assente carica
   assert.match(selection, /if \(present\) return;/);
   assert.match(selection, /revealSummary\(unit, !nearMountedWindow\)/);
   assert.match(source, /await mountPrimaryChunk\(summary\.chunkPath, replace\)/);
+  assert.match(source, /scrollRequestRef\.current = requestedTargetRef\.current/);
   assert.match(source, /loadChunk\(path, dataBaseUrl\)/);
   assert.match(source, /const generation = replace \? \+\+mountGenerationRef\.current : mountGenerationRef\.current/);
   assert.match(source, /generation !== mountGenerationRef\.current/);
