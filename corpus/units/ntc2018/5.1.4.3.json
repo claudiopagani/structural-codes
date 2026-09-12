@@ -252,7 +252,7 @@
           {
             "kind": "math",
             "value": "Δσmax",
-            "latex": "\\Delta\\sigma_{\\max}"
+            "latex": "\\Delta\\sigma_{max}"
           },
           {
             "kind": "text",
@@ -306,6 +306,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinate le grandezze matematiche inline verificate nel render ufficiale."
           }
         ],
         "rawSha256": "f807a508fa12cf41c3e9a9752d90869f43ce4339e6cfaa6acd9816bfa097858d",
@@ -319,7 +324,13 @@
       "text": {
         "raw": "Modello di carico 1",
         "normalized": "Modello di carico 1",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Modello di carico 1"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -337,7 +348,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il titolo interno in corsivo verificato nel render ufficiale."
+          }
+        ],
         "rawSha256": "3b6cba8308456b45a673086ef89b73eb25c4e3940e925ee1b1ebd0b7d03a2125",
         "normalizedSha256": "3b6cba8308456b45a673086ef89b73eb25c4e3940e925ee1b1ebd0b7d03a2125"
       }
@@ -485,7 +502,13 @@
       "text": {
         "raw": "Modello di carico 2",
         "normalized": "Modello di carico 2",
-        "normalizationVersion": "ntc5-editorial-profile-0.1.0"
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "em",
+            "value": "Modello di carico 2"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "gu-so8-2018-ntc",
@@ -503,7 +526,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinato il titolo interno in corsivo verificato nel render ufficiale."
+          }
+        ],
         "rawSha256": "372bcf5114826e90ee4fc9a43f272ad428a754994f8ab2fbe6bc6fb3ee66c0d4",
         "normalizedSha256": "372bcf5114826e90ee4fc9a43f272ad428a754994f8ab2fbe6bc6fb3ee66c0d4"
       }
@@ -689,7 +718,7 @@
           {
             "kind": "math",
             "value": "D ≤ 1",
-            "latex": "D\\le1"
+            "latex": "D\\le 1"
           },
           {
             "kind": "text",
@@ -713,7 +742,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinata la verifica matematica inline verificata nel render ufficiale."
+          }
+        ],
         "rawSha256": "e00cf97dfafc0a6a566ad0d3bc8ddabc6ce27064936e0a8df9a87da037da7bdf",
         "normalizedSha256": "e00cf97dfafc0a6a566ad0d3bc8ddabc6ce27064936e0a8df9a87da037da7bdf"
       }
@@ -1213,6 +1248,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step2-editorial-formatting-0.1.0",
+            "note": "Ripristinata la lettera greca come matematica inline verificata nel render ufficiale."
           }
         ],
         "rawSha256": "0ff8a712ba2d94cd3717c72f0b68c936ee4face7f44f61cf26da2423669e5f58",

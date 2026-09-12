@@ -643,7 +643,22 @@
       "text": {
         "raw": "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo dei\ncoefficienti di danneggiamento equivalente, metodo 3. Per la determinazione dei coefficienti di danneggiamento equivalente, che\ndevono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI EN1992-2,\nUNI EN1993-2 ed UNI EN1994-2.",
         "normalized": "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo dei coefficienti di danneggiamento equivalente, metodo λ. Per la determinazione dei coefficienti di danneggiamento equivalente, che devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI EN 1992-2, UNI EN 1993-2 ed UNI EN 1994-2.",
-        "normalizationVersion": "circ5-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ5-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il modello di carico di fatica 3, considerato in asse alla corsia convenzionale, può essere utilizzato per le verifiche col metodo dei coefficienti di danneggiamento equivalente, metodo "
+          },
+          {
+            "kind": "math",
+            "value": "λ",
+            "latex": "\\lambda"
+          },
+          {
+            "kind": "text",
+            "value": ". Per la determinazione dei coefficienti di danneggiamento equivalente, che devono essere specificamente calibrati sul predetto modello di carico di fatica 3, si può far riferimento alle norme UNI EN 1992-2, UNI EN 1993-2 ed UNI EN 1994-2."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -675,6 +690,11 @@
             "operation": "normalize-whitespace",
             "ruleVersion": "circ5-manual-render-transcription-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-c5-step1-editorial-formatting-0.1.0",
+            "note": "Ripristinata la lettera greca come matematica inline verificata nel render ufficiale."
           }
         ],
         "rawSha256": "619ba11ec05b38dcef6995fdc86308a62c316dd44289f4ff5434ec90957af032",

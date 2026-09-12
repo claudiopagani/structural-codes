@@ -126,7 +126,22 @@
       "text": {
         "raw": "Per le verifiche col metodo dei coefficienti di danneggiamento equivalente, metodo 3, si può utilizzare il modello di carico LM71,\nassociato ad un appropriato coefficiente dinamico.",
         "normalized": "Per le verifiche col metodo dei coefficienti di danneggiamento equivalente, metodo λ, si può utilizzare il modello di carico LM71, associato ad un appropriato coefficiente dinamico.",
-        "normalizationVersion": "circ5-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ5-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Per le verifiche col metodo dei coefficienti di danneggiamento equivalente, metodo "
+          },
+          {
+            "kind": "math",
+            "value": "λ",
+            "latex": "\\lambda"
+          },
+          {
+            "kind": "text",
+            "value": ", si può utilizzare il modello di carico LM71, associato ad un appropriato coefficiente dinamico."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -158,6 +173,11 @@
             "operation": "normalize-whitespace",
             "ruleVersion": "circ5-manual-render-transcription-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-c5-step1-editorial-formatting-0.1.0",
+            "note": "Ripristinata la lettera greca come matematica inline verificata nel render ufficiale."
           }
         ],
         "rawSha256": "922f4324cd54f7f36528cfe0367c830e8a1705368fb35b247c74946260dc5f11",

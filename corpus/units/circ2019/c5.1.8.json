@@ -262,7 +262,16 @@
           },
           {
             "kind": "text",
-            "value": "=40 kN e "
+            "value": "="
+          },
+          {
+            "kind": "math",
+            "value": "40 kN",
+            "latex": "40\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": " e "
           },
           {
             "kind": "math",
@@ -271,7 +280,43 @@
           },
           {
             "kind": "text",
-            "value": "=80 kN, comprensivi degli effetti dinamici, con carreggiata di 1,3 m ed interasse 3,0 m. L’impronta di ciascuna ruota può essere considerata quadrata di lato 20 cm."
+            "value": "="
+          },
+          {
+            "kind": "math",
+            "value": "80 kN",
+            "latex": "80\\,\\mathrm{kN}"
+          },
+          {
+            "kind": "text",
+            "value": ", comprensivi degli effetti dinamici, con carreggiata di "
+          },
+          {
+            "kind": "math",
+            "value": "1,3 m",
+            "latex": "1{,}3\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": " ed interasse "
+          },
+          {
+            "kind": "math",
+            "value": "3,0 m",
+            "latex": "3{,}0\\,\\mathrm{m}"
+          },
+          {
+            "kind": "text",
+            "value": ". L’impronta di ciascuna ruota può essere considerata quadrata di lato "
+          },
+          {
+            "kind": "math",
+            "value": "20 cm",
+            "latex": "20\\,\\mathrm{cm}"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -305,6 +350,11 @@
             "operation": "normalize-whitespace",
             "ruleVersion": "circ5-manual-render-transcription-0.1.0",
             "note": "Uniformati gli spazi dopo la ricomposizione del testo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-c5-step1-editorial-formatting-0.1.0",
+            "note": "Ripristinate le grandezze matematiche inline verificate nel render ufficiale."
           }
         ],
         "rawSha256": "34d3c520e998c5a260c04d1c14cefa592d4b519ab714d74eddd3c39ae2ad99db",

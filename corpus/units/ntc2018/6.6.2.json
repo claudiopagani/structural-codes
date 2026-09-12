@@ -377,10 +377,17 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-c6-step1-editorial-formatting-0.1.0",
+            "note": "Ripristinati marcatore e rientro dell’elenco verificati nel render ufficiale."
+          }
+        ],
         "rawSha256": "d85d1d89db0978d210dd07fff2f15503796f50d058c5ad93375b8e3ba871ec7d",
         "normalizedSha256": "d85d1d89db0978d210dd07fff2f15503796f50d058c5ad93375b8e3ba871ec7d"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:6.6.2#block-editorial-008",
@@ -421,11 +428,17 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc6-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc6-c6-step1-editorial-formatting-0.1.0",
+            "note": "Ripristinati marcatore e rientro dell’elenco verificati nel render ufficiale."
           }
         ],
         "rawSha256": "1817b58c126208c98722f3ffa457f5285be41edc1d70da13c426a54407465914",
         "normalizedSha256": "0d48fbfcbce62e7e5d292be99d375050ea86e56ff6500dcda253115d0a698edb"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:6.6.2#block-editorial-009",
