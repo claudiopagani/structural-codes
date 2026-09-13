@@ -69,6 +69,12 @@ function format(block: Block & { text: NonNullable<Block["text"]> }, formats: Fo
     block.text.inline = inline(block.text.normalized, formats);
 }
 
+function formatEmWithMath(block: Block & { text: NonNullable<Block["text"]> }, maths: Format[]): void {
+    block.text.inline = inline(block.text.normalized, maths).map((segment) =>
+        segment.kind === "text" ? { kind: "em", value: segment.value } : segment,
+    );
+}
+
 async function save(path: string, value: unknown): Promise<void> {
     await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
@@ -344,6 +350,11 @@ async function updateUnits(): Promise<void> {
             { kind: "math", value: "ν = σ_0/f_d", latex: "\\nu=\\sigma_0/f_d" },
             { kind: "math", value: "ν ≤ 0.2", latex: "\\nu\\le0.2" },
             { kind: "math", value: "ν > 0.2", latex: "\\nu>0.2" },
+            {
+                kind: "math",
+                value: number === "c7.8.2.2.1" ? "1.25% x (1-ν)" : "2.0% x (1-ν)",
+                latex: number === "c7.8.2.2.1" ? "1.25\\%\\times(1-\\nu)" : "2.0\\%\\times(1-\\nu)",
+            },
         ]);
         await save(path, unit);
     }
@@ -373,8 +384,7 @@ async function updateUnits(): Promise<void> {
         format(findBlock(unit, "in cui ν è"), [{ kind: "math", value: "ν = σ_0/f_d=N/(A f_d)", latex: "\\nu=\\sigma_0/f_d=N/(A f_d)" }]);
         format(findBlock(unit, "Per valori di ν superiori"), [
             { kind: "math", value: "ν", latex: "\\nu" },
-            { kind: "math", value: "1.5%", latex: "1.5\\%" },
-            { kind: "math", value: "(1-ν)", latex: "(1-\\nu)" },
+            { kind: "math", value: "1.5% x (1-ν)", latex: "1.5\\%\\times(1-\\nu)" },
         ]);
         await save(path, unit);
     }
@@ -444,14 +454,13 @@ async function updateUnits(): Promise<void> {
     {
         const { path, unit } = await readUnit("c7.11.3.1.2.3");
         for (const block of unit.blocks.filter((candidate) => candidate.kind === "list-item")) block.listMarker = "dash";
-        format(findBlock(unit, "Nelle analisi semplificate"), [{ kind: "math", value: "1-2%", latex: "1\u20132\\%" }]);
+        format(findBlock(unit, "Nelle analisi semplificate"), [{ kind: "math", value: "1-2%", latex: "1\\text{-}2\\%" }]);
         await save(path, unit);
     }
 
     {
         const { path, unit } = await readUnit("c7.11.3.4");
-        format(findBlock(unit, "Se la condizione relativa"), [
-            { kind: "em", value: findBlock(unit, "Se la condizione relativa").text.normalized },
+        formatEmWithMath(findBlock(unit, "Se la condizione relativa"), [
             { kind: "math", value: "0,1g", latex: "0{,}1g" },
         ]);
         format(findBlock(unit, "Nelle analisi puntuali"), [

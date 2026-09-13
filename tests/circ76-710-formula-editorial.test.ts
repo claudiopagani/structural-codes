@@ -6,7 +6,7 @@ import test from "node:test";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const readJson = async (relativePath: string) => JSON.parse(await readFile(join(root, relativePath), "utf8"));
-type Segment = { kind: string; value: string; latex: string };
+type Segment = { kind: string; value: string; latex?: string };
 type Unit = { blocks: Array<{ kind?: string; text?: { normalized?: string; inline?: Segment[] }; evidence: { pdfPage: number } }> };
 const math = (unit: Unit): Segment[] =>
     unit.blocks.flatMap((block) => block.text?.inline ?? []).filter((segment) => segment.kind === "math");
@@ -36,6 +36,9 @@ test("C7.8 conserva punti decimali, moltiplicazioni e il capoverso matematico di
     const ordinary = await readJson("corpus/units/circ2019/c7.8.2.2.1.json") as Unit;
     assert.equal(math(ordinary).some(({ value, latex }) => value === "ν ≤ 0.2" && latex === "\\nu\\le0.2"), true);
     assert.equal(math(ordinary).some(({ value, latex }) => value === "1.25% x (1-ν)" && latex === "1.25\\%\\times(1-\\nu)"), true);
+
+    const reinforced = await readJson("corpus/units/circ2019/c7.8.3.2.1.json") as Unit;
+    assert.equal(math(reinforced).some(({ value, latex }) => value === "2.0% x (1-ν)" && latex === "2.0\\%\\times(1-\\nu)"), true);
 
     const confined = await readJson("corpus/units/circ2019/c7.8.4.json") as Unit;
     const continuation = confined.blocks.find(({ evidence }) => evidence.pdfPage === 234);
@@ -83,6 +86,8 @@ test("C7.11 pagine 247-252 conserva rapporti, glifi e punti decimali ufficiali",
     assert.equal(math(liquefaction).some(({ value, latex }) => value === "CSR = τ_media/σ’_v0" && latex === "CSR=\\tau_{media}/\\sigma'_{v0}"), true);
     assert.equal(math(liquefaction).some(({ value, latex }) => value === "V_s" && latex === "V_s"), true);
     assert.equal(math(liquefaction).some(({ value, latex }) => value === "0,1g" && latex === "0{,}1g"), true);
+    const threshold = liquefaction.blocks.find(({ text }) => text?.normalized?.startsWith("Se la condizione relativa"));
+    assert.equal(threshold?.text?.inline?.filter(({ kind }) => kind !== "math").every(({ kind }) => kind === "em"), true);
 
     const slopes = await readJson("corpus/units/circ2019/c7.11.3.5.json") as Unit;
     assert.equal(math(slopes).some(({ value, latex }) => value === "F_S=τ_s/τ_m" && latex === "F_S=\\tau_s/\\tau_m"), true);

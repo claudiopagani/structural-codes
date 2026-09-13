@@ -61,17 +61,22 @@ function evidence(source: string, normalized: string): any {
 }
 
 type MathTerm = { value: string; latex: string };
+type InlineTerm = ({ kind: "math" } & MathTerm) | { kind: "strong"; value: string };
 const gammaRd: MathTerm = { value: "γ_Rd", latex: "\\gamma_{Rd}" };
 const oneThree: MathTerm = { value: "1,3", latex: "1{,}3" };
 const oneOne: MathTerm = { value: "1,1", latex: "1{,}1" };
 
-function inlineSegments(text: string, terms: MathTerm[]): any[] | undefined {
-    const unique = [...new Map(terms.map((term) => [term.value, term])).values()];
+function inlineSegments(text: string, terms: MathTerm[], strongTerms: string[]): any[] | undefined {
+    const candidates: Array<[string, InlineTerm]> = [
+        ...terms.map((term): [string, InlineTerm] => [term.value, { kind: "math", ...term }]),
+        ...strongTerms.map((value): [string, InlineTerm] => [value, { kind: "strong", value }]),
+    ];
+    const unique = [...new Map<string, InlineTerm>(candidates).values()];
     if (!unique.some((term) => text.includes(term.value))) return undefined;
     const segments: any[] = [];
     let cursor = 0;
     while (cursor < text.length) {
-        let match: { index: number; term: MathTerm } | undefined;
+        let match: { index: number; term: (typeof unique)[number] } | undefined;
         for (const term of unique) {
             const index = text.indexOf(term.value, cursor);
             if (index >= 0 && (match === undefined || index < match.index)) match = { index, term };
@@ -81,7 +86,9 @@ function inlineSegments(text: string, terms: MathTerm[]): any[] | undefined {
             break;
         }
         if (match.index > cursor) segments.push({ kind: "text", value: text.slice(cursor, match.index) });
-        segments.push({ kind: "math", value: match.term.value, latex: match.term.latex });
+        segments.push(match.term.kind === "math"
+            ? { kind: "math", value: match.term.value, latex: match.term.latex }
+            : { kind: "strong", value: match.term.value });
         cursor = match.index + match.term.value.length;
     }
     return segments.filter(({ value }) => value.length > 0);
@@ -93,6 +100,7 @@ type TextSpec = {
     to?: number;
     normalized?: string;
     math?: MathTerm[];
+    strong?: string[];
 };
 type UnitSpec = {
     number: string;
@@ -120,7 +128,7 @@ const unitKind = (number: string): string => {
 function textBlock(unitId: string, blockId: string, spec: TextSpec): any {
     const source = raw(spec.from, spec.to);
     const normalized = spec.normalized ?? clean(source);
-    const inline = inlineSegments(normalized, spec.math ?? []);
+    const inline = inlineSegments(normalized, spec.math ?? [], spec.strong ?? []);
     return {
         blockId: `${unitId}#${blockId}`,
         kind: spec.kind,
@@ -139,18 +147,12 @@ const units: UnitSpec[] = [
         heading: h(9, "7.7 COSTRUZIONI DI LEGNO"),
         blocks: [
             { kind: "paragraph", from: 10 },
-            { kind: "list-item", from: 11, to: 12, normalized: "duttilità statica: si intende il rapporto tra lo spostamento ultimo e lo spostamento al limite del comportamento elastico, valutati con prove quasi-statiche in accordo alle pertinenti normative sui metodi di prova per le strutture di legno;" },
-            { kind: "list-item", from: 13, to: 14, normalized: "nodi semi-rigidi: giunzioni con deformabilità significativa, tale da dovere essere presa in considerazione nelle analisi strutturali e da valutarsi secondo documenti di comprovata validità;" },
-            { kind: "list-item", from: 15, to: 16, normalized: "nodi rigidi: giunzioni con deformabilità trascurabile ai fini del comportamento strutturale, da valutarsi secondo documenti di comprovata validità;" },
-            { kind: "list-item", from: 17, to: 18, normalized: "unioni con mezzi di unione a gambo cilindrico: unioni realizzate con mezzi meccanici a gambo cilindrico (chiodi, viti, spinotti, bulloni ecc.), sollecitati perpendicolarmente al loro asse;" },
-            { kind: "list-item", from: 19, to: 21, normalized: "nodi di carpenteria: collegamenti nei quali le azioni sono trasferite per mezzo di zone di contatto, e senza l’utilizzo di mezzi di unione meccanici; esempi di giunzioni di questo tipo sono: l’incastro a dente semplice, il giunto tenone-mortasa, il giunto a mezzo legno ed altri tipi frequentemente utilizzati nelle costruzioni tradizionali." },
+            { kind: "list-item", from: 11, to: 12, normalized: "duttilità statica: si intende il rapporto tra lo spostamento ultimo e lo spostamento al limite del comportamento elastico, valutati con prove quasi-statiche in accordo alle pertinenti normative sui metodi di prova per le strutture di legno;", strong: ["duttilità statica"] },
+            { kind: "list-item", from: 13, to: 14, normalized: "nodi semi-rigidi: giunzioni con deformabilità significativa, tale da dovere essere presa in considerazione nelle analisi strutturali e da valutarsi secondo documenti di comprovata validità;", strong: ["nodi semi-rigidi"] },
+            { kind: "list-item", from: 15, to: 16, normalized: "nodi rigidi: giunzioni con deformabilità trascurabile ai fini del comportamento strutturale, da valutarsi secondo documenti di comprovata validità;", strong: ["nodi rigidi"] },
+            { kind: "list-item", from: 17, to: 18, normalized: "unioni con mezzi di unione a gambo cilindrico: unioni realizzate con mezzi meccanici a gambo cilindrico (chiodi, viti, spinotti, bulloni ecc.), sollecitati perpendicolarmente al loro asse;", strong: ["unioni con mezzi di unione a gambo cilindrico"] },
+            { kind: "list-item", from: 19, to: 21, normalized: "nodi di carpenteria: collegamenti nei quali le azioni sono trasferite per mezzo di zone di contatto, e senza l’utilizzo di mezzi di unione meccanici; esempi di giunzioni di questo tipo sono: l’incastro a dente semplice, il giunto tenone-mortasa, il giunto a mezzo legno ed altri tipi frequentemente utilizzati nelle costruzioni tradizionali.", strong: ["nodi di carpenteria"] },
         ],
-        extraIssues: [{
-            issueId: "ntc2018-7-7-run-in-emphasis",
-            type: "other",
-            severity: "blocking",
-            note: "Le cinque definizioni sono stampate con l’etichetta iniziale in grassetto; lo schema inline v2 rappresenta solo segmenti text/math, quindi l’enfasi tipografica run-in non è conservabile come struttura distinta. Verificare la resa editoriale prima della pubblicazione.",
-        }],
     },
     {
         number: "7.7.1",
@@ -165,18 +167,6 @@ const units: UnitSpec[] = [
             { kind: "paragraph", from: 33, to: 38, math: [gammaRd, oneThree, oneOne], normalized: "Ai fini dell’applicazione dei criteri della progettazione in capacità, per assicurare la plasticizzazione delle zone dissipative (i collegamenti prescelti e/o gli elementi specificatamente progettati), queste devono possedere una capacità almeno pari alla domanda mentre le componenti non dissipative (gli altri collegamenti e gli elementi strutturali) adiacenti, debbono possedere una capacità pari alla capacità della zona dissipativa amplificata del fattore di sovraresistenza γ_Rd, di cui alla Tab. 7.2.I; valori inferiori del fattore di sovraresistenza ed in ogni caso maggiori o uguali a 1,3 per CD “A” e a 1,1 per CD “B” devono essere giustificati sulla base di idonee evidenze teorico-sperimentali." },
             { kind: "paragraph", from: 39, to: 40 },
             { kind: "paragraph", from: 41, to: 42 },
-        ],
-    },
-    {
-        number: "7.7.2",
-        title: "MATERIALI E PROPRIETÀ DELLE ZONE DISSIPATIVE",
-        heading: h(43, "7.7.2 MATERIALI E PROPRIETÀ DELLE ZONE DISSIPATIVE"),
-        blocks: [
-            { kind: "paragraph", from: 44, to: 45 },
-            { kind: "paragraph", from: 46, to: 47 },
-            { kind: "list-item", from: 48, to: 49 },
-            { kind: "list-item", from: 50, to: 51 },
-            { kind: "list-item", from: 52, to: 54 },
         ],
     },
 ];
