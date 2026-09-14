@@ -155,6 +155,33 @@ test("C4.1 pagine 85-93 conserva liste, definizioni allineate e stili editoriali
     );
 });
 
+test("C4.1.6 separa l’elenco labeled annidato di k_t e centra i numeri delle Tabelle II-IV", async () => {
+    const [unit, manifest] = await Promise.all([
+        json("corpus/units/circ2019/c4.1.2.2.4.5.json"),
+        json("corpus/assets/circ2019/core-tables.json"),
+    ]);
+    const block = (suffix: string) => unit.blocks.find(({ blockId }: { blockId: string }) => blockId.endsWith(suffix));
+    const topLabels = ["#block-editorial-009", "#block-editorial-009-2", "#block-editorial-009-3", "#block-editorial-009-4", "#block-editorial-009-5"];
+    assert.deepEqual(topLabels.map((suffix) => block(suffix)?.indentLevel ?? 0), [0, 0, 0, 0, 0]);
+    assert.deepEqual([block("#block-editorial-010"), block("#block-editorial-010-2")].map((item) => item?.indentLevel), [1, 1]);
+
+    const table = (officialNumber: string) => manifest.tables.find(({ officialNumber: number }: { officialNumber: string }) => number === officialNumber);
+    assert.deepEqual(table("C4.1.II").rows.flatMap((row: Array<{ align?: string }>) => row.map(({ align }) => align)), Array(24).fill("center"));
+    assert.deepEqual(table("C4.1.III").rows.flatMap((row: Array<{ align?: string }>) => row.map(({ align }) => align)), Array(24).fill("center"));
+    assert.deepEqual(table("C4.1.IV").rows.flatMap((row: Array<{ align?: string }>) => row.slice(3).map(({ align }) => align)), Array(24).fill("center"));
+    for (const number of ["C4.1.II", "C4.1.III", "C4.1.IV"]) {
+        assert.ok(table(number).headers.flat().some(({ inline }: { inline?: Array<{ kind: string; latex?: string }> }) => inline?.some(({ kind }) => kind === "math")), number);
+    }
+});
+
+test("C4.1.1.1 conserva il solo segno più nella ridistribuzione e Mi,j in LaTeX", async () => {
+    const unit = await json("corpus/units/circ2019/c4.1.1.1.json");
+    const block = unit.blocks.find(({ blockId }: { blockId: string }) => blockId.endsWith("#block-editorial-009"));
+    assert.equal(block.text.inline.find(({ value }: { value: string }) => value.includes("M̄i,j"))?.latex, "\\overline{M}_{i,j}=M_{i,j}+\\Delta M_{i,j}");
+    assert.equal(block.text.inline.find(({ value }: { value: string }) => value === "Mi,j")?.latex, "M_{i,j}");
+    assert.equal(block.text.normalized.includes("±"), false);
+});
+
 test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", async () => {
     const [figures, tables] = await Promise.all([
         json("corpus/assets/circ2019/core-figure-placeholders.json"),
@@ -173,6 +200,16 @@ test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", asyn
         table.captionInline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
         ["K", "l/h"],
     );
+    assert.deepEqual(table.rows.flatMap((row: Array<{ align?: string }>) => row.slice(1).map(({ align }) => align)), Array(15).fill("center"));
+    assert.equal(table.notesInline?.length, 3);
+    assert.deepEqual(
+        table.notesInline?.[0].filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
+        ["f_{ck}=30\\,\\mathrm{MPa}", "\\left[500A_{s,eff}/(f_{yk}A_{s,calc})\\right]=1"],
+    );
+    const tableUnit = await json("corpus/units/circ2019/c4.1.2.2.2.json");
+    assert.equal(tableUnit.blocks.some(({ text }: { text?: { normalized?: string } }) => text?.normalized === "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore."), false);
+    assert.equal(tableUnit.blocks.some(({ text }: { text?: { normalized?: string } }) => text?.normalized?.startsWith("I limiti per piastre non nervate sostenute da pilastri")), false);
+    assert.equal(table.notes?.[2], "I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza ha dimostrato che, comunque, tali limiti sono soddisfacenti.");
 });
 
 test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
@@ -200,6 +237,18 @@ test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
     );
     assert.equal(tableVI.columnCount, 7);
     assert.equal(tableVI.rows.length, 3);
+});
+
+test("le Tabelle C4.1.V e C4.1.VI centrano tutte le celle e riducono la riga degli intervalli di rho", async () => {
+    const manifest = await json("corpus/assets/circ2019/core-tables.json");
+    for (const officialNumber of ["C4.1.V", "C4.1.VI"]) {
+        const table = manifest.tables.find(({ officialNumber: number }: { officialNumber: string }) => number === officialNumber);
+        assert.ok(table);
+        assert.ok(table.headers.flat().every(({ align }: { align?: string }) => align === "center"));
+        assert.ok(table.rows.flat().every(({ align }: { align?: string }) => align === "center"));
+    }
+    const tableVI = manifest.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.VI");
+    assert.match(tableVI.rows[0][1].inline[0].latex, /\\rho/);
 });
 
 test("C4.1 pagine 94-99 conserva elenchi, definizioni e corsivi della fonte", async () => {

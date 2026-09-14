@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 import katex from "katex";
-import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableCell, CorpusUnit } from "./corpusData";
+import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableAsset, TableCell, CorpusUnit } from "./corpusData";
 import { findCrossReferences } from "./crossReferences.js";
 import { visibleTableCaption, visibleTableCaptionInline, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
@@ -23,8 +23,10 @@ const editorialTableNotePatterns = [
   /\bprima della pubblicazione\b/iu,
 ];
 
-function visibleTableNotes(notes: string[]) {
-  return notes.filter((note) => !editorialTableNotePatterns.some((pattern) => pattern.test(note)));
+function visibleTableNotes(table: TableAsset) {
+  return table.notes
+    .map((text, index) => ({ text, inline: table.notesInline?.[index] }))
+    .filter(({ text }) => !editorialTableNotePatterns.some((pattern) => pattern.test(text)));
 }
 
 function tableColumnCount(headers: TableCell[][], rows: TableCell[][]) {
@@ -302,8 +304,13 @@ export function groupAlignedLabelBlocks(blocks: CorpusBlock[]): CorpusBlockGroup
       continue;
     }
     const labelBlocks = [blocks[index]];
+    const indentLevel = blocks[index].indentLevel ?? 0;
     index += 1;
-    while (index < blocks.length && leadingLabelKind(blocks[index]) === labelKind) {
+    while (
+      index < blocks.length
+      && leadingLabelKind(blocks[index]) === labelKind
+      && (blocks[index].indentLevel ?? 0) === indentLevel
+    ) {
       labelBlocks.push(blocks[index]);
       index += 1;
     }
@@ -446,7 +453,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   );
   const table = assets.tables[block.assetId];
   if (table) {
-    const notes = visibleTableNotes(table.notes);
+    const notes = visibleTableNotes(table);
     const caption = visibleTableCaption(table.officialNumber, table.caption);
     const captionInline = visibleTableCaptionInline(table.officialNumber, table.caption, table.captionInline);
     const numberSuffix = visibleTableNumberSuffix(table.officialNumber, table.caption);
@@ -456,7 +463,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
         {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
-        {notes.length > 0 && <div className="table-notes"><span className="scv-note-rule" aria-hidden="true" />{notes.map((note) => <p key={note}>{note}</p>)}<span className="scv-note-rule" aria-hidden="true" /></div>}
+        {notes.length > 0 && <div className="table-notes"><span className="scv-note-rule" aria-hidden="true" />{notes.map(({ text, inline }) => <p key={text}>{inline ? renderInlineSegments(inline) : text}</p>)}<span className="scv-note-rule" aria-hidden="true" /></div>}
       </figure>
     );
   }
@@ -471,7 +478,8 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
 
 export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets", sourceUnitId, sourceDocument }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string; sourceUnitId?: string; sourceDocument?: DocumentId }) {
   const rootClass = "scv-label-list";
-  return <div className={rootClass}>
+  const indentLevel = blocks[0]?.indentLevel ?? 0;
+  return <div className={`${rootClass} ${indentLevel > 0 ? `block-indent-${indentLevel}` : ""}`}>
     {blocks.map((block) => <div className={`${rootClass}-row`} data-scv-citation-target="block" data-scv-source-unit-id={sourceUnitId} data-scv-block-id={block.blockId} key={block.blockId}>
       <div className={`${rootClass}-content`}>
         <BlockContent block={block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} aligned />

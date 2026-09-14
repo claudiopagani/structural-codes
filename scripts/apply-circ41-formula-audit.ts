@@ -86,6 +86,18 @@ async function replaceInline(
 }
 
 await replaceInline(
+    "c4.1.1.1",
+    "#block-editorial-009",
+    "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione M̄i,j = Mi,j + ΔMi,j e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo.",
+    [
+        { value: "δ", latex: "\\delta" },
+        { value: "M̄i,j = Mi,j + ΔMi,j", latex: "\\overline{M}_{i,j}=M_{i,j}+\\Delta M_{i,j}" },
+        { value: "Mi,j", latex: "M_{i,j}" },
+    ],
+    "Corretta la formula della ridistribuzione secondo il PDF: il momento dopo la ridistribuzione usa il solo segno più e il successivo M_i,j è una grandezza matematica autonoma.",
+);
+
+await replaceInline(
     "c4.1",
     "#block-editorial-004",
     "Per le verifiche allo Stato Limite Ultimo (SLU), il coefficiente parziale di sicurezza per il calcestruzzo γc resta fissato a 1,5, in accordo con la UNI EN 1992; il coefficiente αcc resta fissato a 0,85, a differenza di quello proposto dalla UNI EN 1992.",

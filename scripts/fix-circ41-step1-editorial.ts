@@ -130,6 +130,19 @@ async function updateUnits() {
     }
 
     {
+        const { path, unit } = await readUnit("c4.1.2.2.2");
+        for (const note of [
+            "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore.",
+            "I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza ha dimostrato che, comunque, tali limiti sono soddisfacenti.",
+        ]) {
+            const matches = unit.blocks.filter((block: Block) => block.text?.normalized === note);
+            assert(matches.length <= 1, "Nota duplicata di C4.1.I trovata più volte");
+            if (matches.length === 1) unit.blocks = unit.blocks.filter((block: Block) => block !== matches[0]);
+        }
+        await save(path, unit);
+    }
+
+    {
         const { path, unit } = await readUnit("c4.1.2.2.4.5");
         for (const heading of [
             "Calcolo dell’ampiezza delle fessure",
@@ -209,6 +222,18 @@ async function updateUnits() {
                 math: [{ value: "kt = 0,4", latex: "k_t=0{,}4" }],
             },
         ], "Separate le due righe del coefficiente k_t secondo il PDF.");
+
+        const nestedKt = unit.blocks.filter((block: Block) =>
+            block.kind === "list-item" && [
+                "kt = 0,6 per carichi di breve durata,",
+                "kt = 0,4 per carichi di lunga durata.",
+            ].includes(block.text?.normalized),
+        );
+        assert(nestedKt.length === 2, "Voci annidate di k_t non trovate in modo univoco");
+        for (const block of nestedKt) {
+            block.indentLevel = 1;
+            recordTransformation(block, "Rientrate le due alternative di k_t come elenco labeled annidato dopo la relativa definizione.");
+        }
 
         const diameter = textBlock(unit, "φ è il diametro delle barre");
         diameter.kind = "list-item";

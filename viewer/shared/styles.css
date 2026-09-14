@@ -196,6 +196,7 @@ body { margin: 0; }
 .scv-block-list-item.list-item-with-alphabetic-marker p .list-marker-label { white-space: nowrap; }
 .scv-block-list-item.list-item-with-alphabetic-marker p .list-description { display: block; min-width: 0; overflow-wrap: break-word; }
 .scv-block.block-indent-1 { margin-left: 2.5rem; }
+.scv-label-list.block-indent-1 { margin-left: 2.5rem; }
 .scv-label-list { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 0.35em; align-items: start; margin: 0 0 8px; }
 .scv-label-list-row, .scv-label-list-content { display: contents; }
 .scv-label-list-content > span { display: block; margin: 0 0 8px; color: #272c35; font-family: "Tinos", serif; font-size: var(--scv-base-font-size); line-height: 1.48; text-align: left; }
@@ -270,8 +271,10 @@ body { margin: 0; }
 .scv-root .table-asset-3-5-iv table { table-layout: fixed; }
 .scv-root .table-asset-3-5-iv th:first-child, .scv-root .table-asset-3-5-iv td:first-child { width: 6.25em; min-width: 6.25em; white-space: nowrap; }
 .scv-root .table-asset th { color: #fff; font-weight: 700; text-align: center; background: var(--scv-primary-dark); }
+.scv-root .table-asset th .katex { color: #fff; }
 .scv-root .table-asset td { background: #fbfcff; }
 .scv-root .table-asset tbody tr:nth-child(even) td { background: #f1f3f9; }
+.scv-root .table-asset-c4-1-vi tbody tr:first-child td { font-size: var(--scv-font-size-11); }
 .scv-root .table-notes { display: block; margin: 8px 0 0; padding: 0; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; }
 .scv-root .table-notes > .scv-note-rule { margin: 7px 0; }
 .scv-root .table-notes > p { margin: 0 0 4px; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; text-align: left; }

@@ -12,6 +12,10 @@ type TableSeed = {
     headers: TableCell[][] | string[];
     rows: TableCell[][] | string[][];
     notes?: string[];
+    notesInline?: Array<Array<{ kind: "text" | "math"; value: string; latex?: string }>>;
+    alignRightColumns?: boolean;
+    centerBodyColumns?: number[];
+    centerAllCells?: boolean;
 };
 
 type TableCell = {
@@ -20,6 +24,7 @@ type TableCell = {
     inline?: Array<{ kind: "text" | "math"; value: string; latex?: string }>;
     colSpan?: number;
     rowSpan?: number;
+    align?: "left" | "center" | "right";
 };
 
 const cell = (text: string, properties: Omit<TableCell, "text"> = {}): TableCell => ({ text, ...properties });
@@ -27,7 +32,7 @@ const cell = (text: string, properties: Omit<TableCell, "text"> = {}): TableCell
 const inline = (
     text: string,
     ...parts: Array<{ value: string; latex: string }>
-): TableCell["inline"] => {
+): NonNullable<TableCell["inline"]> => {
     const segments: NonNullable<TableCell["inline"]> = [];
     let cursor = 0;
     for (const part of parts) {
@@ -80,9 +85,20 @@ const seeds: TableSeed[] = [
             ["Mensole", "0,4", "6", "8"],
         ],
         notes: [
-            "Le snellezze limite sono valutate ponendo, nella formula C4.1.4, fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
+            "Note: Le snellezze limite sono state valutate ponendo, nella formula C4.1.4, fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
             "Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore.",
+            "I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza ha dimostrato che, comunque, tali limiti sono soddisfacenti.",
         ],
+        notesInline: [
+            inline(
+                "Note: Le snellezze limite sono state valutate ponendo, nella formula C4.1.4, fck = 30 MPa e [500 As,eff/(fyk As,calc)] = 1.",
+                { value: "fck = 30 MPa", latex: "f_{ck}=30\\,\\mathrm{MPa}" },
+                { value: "[500 As,eff/(fyk As,calc)] = 1", latex: "\\left[500A_{s,eff}/(f_{yk}A_{s,calc})\\right]=1" },
+            ),
+            inline("Per piastre bidirezionali si fa riferimento alla luce minore; per piastre non nervate si considera la luce maggiore."),
+            inline("I limiti per piastre non nervate sostenute da pilastri corrispondono ad una freccia in mezzeria maggiore di 1/250 della luce: l’esperienza ha dimostrato che, comunque, tali limiti sono soddisfacenti."),
+        ],
+        alignRightColumns: true,
     },
     {
         number: "C4.1.II",
@@ -112,6 +128,7 @@ const seeds: TableSeed[] = [
             ["320", "12", "10", "6"],
             ["360", "10", "8", "–"],
         ],
+        centerBodyColumns: [0, 1, 2, 3],
     },
     {
         number: "C4.1.III",
@@ -138,6 +155,7 @@ const seeds: TableSeed[] = [
             ["320", "150", "100", "–"],
             ["360", "100", "50", "–"],
         ],
+        centerBodyColumns: [0, 1, 2, 3],
     },
     {
         number: "C4.1.IV",
@@ -167,12 +185,14 @@ const seeds: TableSeed[] = [
             ["C30/37", "C40/50", "aggressivo", "25", "30", "30", "35", "35", "40", "40", "45"],
             ["C35/45", "C45/55", "molto aggressivo", "35", "40", "40", "45", "45", "50", "50", "50"],
         ],
+        centerBodyColumns: [3, 4, 5, 6, 7, 8, 9, 10],
     },
     {
         number: "C4.1.V",
         unit: "c4.1.12",
         page: 96,
         caption: "Tabella C4.1.V – Classi di resistenza a compressione per il calcestruzzo leggero strutturale",
+        centerAllCells: true,
         headers: [[
             cell("Classe di resistenza a compressione"),
             cell("Resistenza caratteristica cilindrica minima flck [N/mm²]", {
@@ -199,6 +219,7 @@ const seeds: TableSeed[] = [
         unit: "c4.1.12",
         page: 96,
         caption: "Tabella C4.1.VI – Classi di massa per unità di volume del calcestruzzo di aggregati leggeri ammesse per l’impiego strutturale",
+        centerAllCells: true,
         headers: [[cell("Classe di massa per unità di volume"), cell("D1,5"), cell("D1,6"), cell("D1,7"), cell("D1,8"), cell("D1,9"), cell("D2,0")]],
         rows: [
             [
@@ -219,7 +240,13 @@ manifest.tables.splice(
     0,
     0,
     ...seeds.map((seed) => {
-        const headers = materializeHeaders(seed.headers);
+        const headers = materializeHeaders(seed.headers).map((row) => row.map((item) =>
+            seed.centerAllCells ? { ...item, align: "center" as const } : item,
+        ));
+        const rows = materializeRows(seed.rows).map((row) => row.map((item, index) => {
+            const center = seed.centerAllCells || seed.centerBodyColumns?.includes(index) || (seed.alignRightColumns && index > 0);
+            return center ? { ...item, align: "center" as const } : item;
+        }));
         return {
             id: `urn:structural-codes:it:asset:table:circ2019:${seed.number.toLowerCase()}`,
             unitId: `urn:structural-codes:it:unit:circ2019:${seed.unit}`,
@@ -228,8 +255,9 @@ manifest.tables.splice(
             caption: seed.caption,
             columnCount: Math.max(...headers.map((row) => row.reduce((count, item) => count + (item.colSpan ?? 1), 0))),
             headers,
-            rows: materializeRows(seed.rows),
+            rows,
             notes: seed.notes ?? [],
+            ...(seed.notesInline ? { notesInline: seed.notesInline } : {}),
         };
     }),
 );

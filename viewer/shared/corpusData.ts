@@ -47,6 +47,7 @@ export interface TableAsset {
   headers: TableCell[][];
   rows: TableCell[][];
   notes: string[];
+  notesInline?: InlineSegment[][];
 }
 export interface FigureAsset {
   id: string;

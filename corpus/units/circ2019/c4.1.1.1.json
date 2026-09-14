@@ -555,8 +555,8 @@
       "origin": "official",
       "text": {
         "raw": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché",
-        "normalized": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione M̄i,j = Mi,j ± ΔMi,j e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo.",
-        "normalizationVersion": "core-editorial-profile-0.1.0",
+        "normalized": "La ridistribuzione dei momenti flettenti può effettuarsi, senza esplicite verifiche in merito alla duttilità delle membrature, purché il rapporto δ tra il momento dopo la ridistribuzione M̄i,j = Mi,j + ΔMi,j e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo.",
+        "normalizationVersion": "circ41-formula-audit-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -573,12 +573,21 @@
           },
           {
             "kind": "math",
-            "value": "M̄i,j = Mi,j ± ΔMi,j",
-            "latex": "\\overline{M}_{i,j}=M_{i,j}\\pm\\Delta M_{i,j}"
+            "value": "M̄i,j = Mi,j + ΔMi,j",
+            "latex": "\\overline{M}_{i,j}=M_{i,j}+\\Delta M_{i,j}"
           },
           {
             "kind": "text",
-            "value": " e il momento prima della ridistribuzione Mi,j soddisfi quanto riportato all’interno del testo normativo."
+            "value": " e il momento prima della ridistribuzione "
+          },
+          {
+            "kind": "math",
+            "value": "Mi,j",
+            "latex": "M_{i,j}"
+          },
+          {
+            "kind": "text",
+            "value": " soddisfi quanto riportato all’interno del testo normativo."
           }
         ]
       },
@@ -628,10 +637,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ41-formula-audit-0.1.0",
+            "note": "Corretta la formula della ridistribuzione secondo il PDF: il momento dopo la ridistribuzione usa il solo segno più e il successivo M_i,j è una grandezza matematica autonoma."
           }
         ],
         "rawSha256": "72c9f667017fa37be00680396e9bb83d841ab1dc81f5a1484abcf73c29c9693c",
-        "normalizedSha256": "b2c7e09b9dd5e36d3915be58a2ec35d9dc7dc7bae3a34b852a368aeb753628f2"
+        "normalizedSha256": "f137b8851cb6faf2817b69bbe5e1439114f69940d0b01059a146bb521f03bcd0"
       }
     },
     {

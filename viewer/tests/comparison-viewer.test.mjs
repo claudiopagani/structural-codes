@@ -159,6 +159,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /\[a-z0-9\]\+\[\.\)\]\)\\s\+/u);
   assert.match(component, /groupAlignedLabelBlocks/);
+  assert.match(component, /\(blocks\[index\]\.indentLevel \?\? 0\) === indentLevel/);
+  assert.match(component, /block-indent-\$\{indentLevel\}/);
   assert.match(component, /<u key=\{`underline-\$\{index\}`\}>\{renderReferenceText\(segment\.value/);
   assert.match(component, /<em key=\{`em-underline-\$\{index\}`\}><u>\{renderReferenceText\(segment\.value/);
   assert.match(component, /loading="lazy"/);
@@ -167,6 +169,9 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /font-family:\s*"Tinos"/);
   assert.match(styles, /\.scv-root \.formula-number/);
   assert.match(styles, /\.scv-root \.table-asset table/);
+  assert.match(styles, /\.scv-root \.table-asset th \.katex \{ color: #fff; \}/);
+  assert.match(styles, /\.scv-root \.table-asset-c4-1-vi tbody tr:first-child td \{ font-size: var\(--scv-font-size-11\); \}/);
+  assert.match(styles, /\.scv-label-list\.block-indent-1 \{ margin-left: 2\.5rem; \}/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*text-align: left/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
