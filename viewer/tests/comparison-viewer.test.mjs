@@ -170,7 +170,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.formula-number/);
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.table-asset th \.katex \{ color: #fff; \}/);
-  assert.match(styles, /\.scv-root \.table-asset-c4-1-vi tbody tr:first-child td \{ font-size: var\(--scv-font-size-11\); \}/);
+  assert.match(styles, /\.scv-root \.table-asset-c4-1-iv thead tr:nth-child\(2\) th:nth-child\(n \+ 4\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
+  assert.doesNotMatch(styles, /\.scv-root \.table-asset-c4-1-vi tbody tr:first-child td/);
   assert.match(styles, /\.scv-label-list\.block-indent-1 \{ margin-left: 2\.5rem; \}/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*text-align: left/);

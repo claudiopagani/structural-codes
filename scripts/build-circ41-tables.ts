@@ -46,6 +46,14 @@ const inline = (
     return segments;
 };
 
+const rhoRangeInline = (value: string) => inline(value, {
+    value,
+    latex: value
+        .replace("ρ", "\\rho")
+        .replace("<", "\\!<\\!")
+        .replace("≤", "\\!\\le\\!"),
+});
+
 function materializeHeaders(headers: TableSeed["headers"]): TableCell[][] {
     if (Array.isArray(headers[0])) return headers as TableCell[][];
     return [(headers as string[]).map((value) => cell(value))];
@@ -64,7 +72,7 @@ const seeds: TableSeed[] = [
         caption: "Tabella C4.1.I – Valori di K e snellezze l/h limite per elementi inflessi di c.a. in assenza di compressione assiale",
         headers: [
             [
-                cell("Sistema strutturale", { rowSpan: 2 }),
+                cell("Sistema\nstrutturale", { rowSpan: 2 }),
                 cell("K", { rowSpan: 2, inline: inline("K", { value: "K", latex: "K" }) }),
                 cell("Calcestruzzo", { colSpan: 2 }),
             ],
@@ -78,10 +86,10 @@ const seeds: TableSeed[] = [
             ],
         ],
         rows: [
-            ["Travi semplicemente appoggiate, piastre incernierate mono o bidirezionali", "1,0", "14", "20"],
-            ["Campate terminali di travi continue o piastre continue mono o bidirezionali, continue sul lato maggiore", "1,3", "18", "26"],
-            ["Campate intermedie di travi o piastre continue mono o bidirezionali", "1,5", "20", "30"],
-            ["Piastre non nervate sostenute da pilastri (snellezza relativa alla luce maggiore)", "1,2", "17", "24"],
+            ["Travi semplicemente appoggiate, piastre\nincernierate mono o bidirezionali", "1,0", "14", "20"],
+            ["Campate terminali di travi continue o piastre\ncontinue mono o bidirezionali,\ncontinue sul lato maggiore", "1,3", "18", "26"],
+            ["Campate intermedie di travi o piastre\ncontinue mono o bidirezionali", "1,5", "20", "30"],
+            ["Piastre non nervate sostenute da pilastri\n(snellezza relativa alla luce maggiore)", "1,2", "17", "24"],
             ["Mensole", "0,4", "6", "8"],
         ],
         notes: [
@@ -224,7 +232,7 @@ const seeds: TableSeed[] = [
         rows: [
             [
                 cell("Intervallo di massa per unità di volume [kg/m³]", { inline: inline("Intervallo di massa per unità di volume [kg/m³]", { value: "kg/m³", latex: "\\mathrm{kg/m^3}" }) }),
-                ...["1400<ρ≤1500", "1500<ρ≤1600", "1600<ρ≤1700", "1700<ρ≤1800", "1800<ρ≤1900", "1900<ρ≤2000"].map((value) => cell(value, { inline: inline(value, { value, latex: value.replace("ρ", "\\rho").replaceAll("<", "<").replace("≤", "\\le") }) })),
+                ...["1400<ρ≤1500", "1500<ρ≤1600", "1600<ρ≤1700", "1700<ρ≤1800", "1800<ρ≤1900", "1900<ρ≤2000"].map((value) => cell(value, { inline: rhoRangeInline(value) })),
             ],
             ["Massa per unità di volume calcestruzzo non armato [kg/m³]", "1550", "1650", "1750", "1850", "1950", "2050"].map((value) => cell(value)),
             ["Massa per unità di volume calcestruzzo armato [kg/m³]", "1650", "1750", "1850", "1950", "2050", "2150"].map((value) => cell(value)),

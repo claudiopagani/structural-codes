@@ -195,6 +195,17 @@ test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", asyn
     );
     const table = tables.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.I");
     assert.equal(table.headers.length, 2);
+    assert.equal(table.headers[0][0].text, "Sistema\nstrutturale");
+    assert.deepEqual(
+        table.rows.map((row: Array<{ text: string }>) => row[0]!.text),
+        [
+            "Travi semplicemente appoggiate, piastre\nincernierate mono o bidirezionali",
+            "Campate terminali di travi continue o piastre\ncontinue mono o bidirezionali,\ncontinue sul lato maggiore",
+            "Campate intermedie di travi o piastre\ncontinue mono o bidirezionali",
+            "Piastre non nervate sostenute da pilastri\n(snellezza relativa alla luce maggiore)",
+            "Mensole",
+        ],
+    );
     assert.equal(table.headers[0][2].colSpan, 2);
     assert.deepEqual(
         table.captionInline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
@@ -239,7 +250,7 @@ test("C4.1 contiene tutte le sei tabelle ritrascritte", async () => {
     assert.equal(tableVI.rows.length, 3);
 });
 
-test("le Tabelle C4.1.V e C4.1.VI centrano tutte le celle e riducono la riga degli intervalli di rho", async () => {
+test("le Tabelle C4.1.V e C4.1.VI centrano tutte le celle e compattano le disuguaglianze degli intervalli di rho", async () => {
     const manifest = await json("corpus/assets/circ2019/core-tables.json");
     for (const officialNumber of ["C4.1.V", "C4.1.VI"]) {
         const table = manifest.tables.find(({ officialNumber: number }: { officialNumber: string }) => number === officialNumber);
@@ -248,7 +259,7 @@ test("le Tabelle C4.1.V e C4.1.VI centrano tutte le celle e riducono la riga deg
         assert.ok(table.rows.flat().every(({ align }: { align?: string }) => align === "center"));
     }
     const tableVI = manifest.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.VI");
-    assert.match(tableVI.rows[0][1].inline[0].latex, /\\rho/);
+    assert.equal(tableVI.rows[0][1].inline[0].latex, "1400\\!<\\!\\rho\\!\\le\\!1500");
 });
 
 test("C4.1 pagine 94-99 conserva elenchi, definizioni e corsivi della fonte", async () => {
