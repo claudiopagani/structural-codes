@@ -158,7 +158,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "continuous-note-flow-0.1.0",
+            "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          }
+        ],
         "rawSha256": "fa38dd8170bb292d784d50eeae8a1b22407e720d8973fff40b6fb8123476b57c",
         "normalizedSha256": "fa38dd8170bb292d784d50eeae8a1b22407e720d8973fff40b6fb8123476b57c"
       }

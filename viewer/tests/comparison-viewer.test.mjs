@@ -152,6 +152,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /tableAssetClass/);
   assert.match(component, /<div className="table-notes">/);
+  assert.match(component, /className="scv-note-content"/);
+  assert.match(component, /className="scv-note-rule"/);
   assert.doesNotMatch(component, /<ul className="table-notes">/);
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /groupAlignedLabelBlocks/);
@@ -165,6 +167,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*text-align: left/);
+  assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /--scv-index-width: clamp\(360px, 37vw, 480px\)/);

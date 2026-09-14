@@ -423,13 +423,16 @@ function renderAlphabeticListContent(block: CorpusBlock, context: ReferenceConte
 export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned = false, sourceUnitId, sourceDocument }: BlockContentProps) {
   const referenceContext = sourceUnitId && sourceDocument ? { sourceUnitId, sourceDocument } : null;
   if (block.text) {
+    const textBlock = (content: React.ReactNode) => block.kind === "footnote"
+      ? <div className="scv-note-content"><span className="scv-note-rule" aria-hidden="true" /><p>{content}</p><span className="scv-note-rule" aria-hidden="true" /></div>
+      : <p>{content}</p>;
     const alphabeticListContent = renderAlphabeticListContent(block, referenceContext);
-    if (alphabeticListContent) return <p>{alphabeticListContent}</p>;
-    if (!block.text.inline) return <p>{renderReferenceText(block.text.normalized, referenceContext, block.blockId)}</p>;
+    if (alphabeticListContent) return textBlock(alphabeticListContent);
+    if (!block.text.inline) return textBlock(renderReferenceText(block.text.normalized, referenceContext, block.blockId));
     const inline = block.text.inline;
     const leadingLabelContent = renderLeadingLabelContent(block, referenceContext);
-    if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : <p>{leadingLabelContent}</p>;
-    return <p>{renderInlineSegments(inline, referenceContext)}</p>;
+    if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : textBlock(leadingLabelContent);
+    return textBlock(renderInlineSegments(inline, referenceContext));
   }
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
@@ -448,7 +451,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
         {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
-        {notes.length > 0 && <div className="table-notes">{notes.map((note) => <p key={note}>{note}</p>)}</div>}
+        {notes.length > 0 && <div className="table-notes"><span className="scv-note-rule" aria-hidden="true" />{notes.map((note) => <p key={note}>{note}</p>)}<span className="scv-note-rule" aria-hidden="true" /></div>}
       </figure>
     );
   }

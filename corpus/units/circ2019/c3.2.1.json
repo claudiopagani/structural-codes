@@ -1256,6 +1256,72 @@
       }
     },
     {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.1#block-editorial-026",
+      "kind": "footnote",
+      "origin": "official",
+      "text": {
+        "raw": "2 Si veda al riguardo EN-1998-1, § 2.1, punto 4.",
+        "normalized": "² Si veda al riguardo EN 1998-1, § 2.1, punto 4.",
+        "normalizationVersion": "core-editorial-profile-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 49,
+        "printedPage": "45",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 97.485,
+          "width": 449.339,
+          "height": 624.693
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimossi i caratteri di controllo privi di resa visuale."
+          },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "core-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "continuous-note-flow-0.1.0",
+            "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          }
+        ],
+        "rawSha256": "6e375eab85ce0efc7a1703a82ea6b97a18dc14dc65e00a79da64939db5cac5fe",
+        "normalizedSha256": "6799b0c2d590cd50dca425b9c001128c46e520bbc6b8875fb2705db612b35488"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.1#block-editorial-014",
       "kind": "paragraph",
       "origin": "official",
@@ -2283,67 +2349,6 @@
         ],
         "rawSha256": "3225061e4d18a4cccaea646874276bd76b290fdedca9e46966dbcad83b46680d",
         "normalizedSha256": "dd9912714e77d2a887cb8a53d113744d38384970de904e7996faf41b09e70e1f"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c3.2.1#block-editorial-026",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "2 Si veda al riguardo EN-1998-1, § 2.1, punto 4.",
-        "normalized": "² Si veda al riguardo EN 1998-1, § 2.1, punto 4.",
-        "normalizationVersion": "core-editorial-profile-0.1.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 49,
-        "printedPage": "45",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73.9,
-          "y": 97.485,
-          "width": 449.339,
-          "height": 624.693
-        },
-        "extraction": {
-          "method": "pdf-text",
-          "tool": "pdfjs-dist",
-          "toolVersion": "4.10.38"
-        },
-        "transformations": [
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimossi i caratteri di controllo privi di resa visuale."
-          },
-          {
-            "operation": "remove-discretionary-hyphen",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
-          },
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Ripristinati i caratteri italiani, greci e matematici riconoscibili nel layer ufficiale."
-          },
-          {
-            "operation": "normalize-whitespace",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Uniformati gli spazi dopo la ricomposizione."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "core-editorial-profile-0.1.0",
-            "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "6e375eab85ce0efc7a1703a82ea6b97a18dc14dc65e00a79da64939db5cac5fe",
-        "normalizedSha256": "6799b0c2d590cd50dca425b9c001128c46e520bbc6b8875fb2705db612b35488"
       }
     },
     {

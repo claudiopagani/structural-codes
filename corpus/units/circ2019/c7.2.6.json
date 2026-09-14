@@ -283,7 +283,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "continuous-note-flow-0.1.0",
+            "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          }
+        ],
         "rawSha256": "9a852632d13cae43cb39ef1d9b8a535ec14a7bc30a7c0c768790131f7bc4cf6f",
         "normalizedSha256": "9a852632d13cae43cb39ef1d9b8a535ec14a7bc30a7c0c768790131f7bc4cf6f"
       }
@@ -555,6 +561,42 @@
       }
     },
     {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.6#block-editorial-014",
+      "kind": "footnote",
+      "origin": "official",
+      "text": {
+        "raw": "Si specifica che l’eccentricità accidentale, oltre che per considerare le incertezze legate alla localizzazione delle masse, è una maniera indiretta per tener conto della variabilità spaziale del moto sismico. A rigore, infatti, si dovrebbe considerare una componente torsionale del trascinamento sismico, sia nelle analisi statiche, sia nelle analisi dinamiche; tradizionalmente, invece, l’azione sismica viene descritta esclusivamente attraverso le due componenti traslazionali orizzontali del moto, cui va aggiunta, ove significativa, la componente verticale.",
+        "normalized": "Si specifica che l’eccentricità accidentale, oltre che per considerare le incertezze legate alla localizzazione delle masse, è una maniera indiretta per tener conto della variabilità spaziale del moto sismico. A rigore, infatti, si dovrebbe considerare una componente torsionale del trascinamento sismico, sia nelle analisi statiche, sia nelle analisi dinamiche; tradizionalmente, invece, l’azione sismica viene descritta esclusivamente attraverso le due componenti traslazionali orizzontali del moto, cui va aggiunta, ove significativa, la componente verticale.",
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 207,
+        "printedPage": "203",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73.9,
+          "y": 55,
+          "width": 450,
+          "height": 730
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ7-manual-render-transcription-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "continuous-note-flow-0.1.0",
+            "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          }
+        ],
+        "rawSha256": "b775eafba00b13906a9bfc50d84d8a3e5726dbe46c4d51b7daa679ab1f660e36",
+        "normalizedSha256": "b775eafba00b13906a9bfc50d84d8a3e5726dbe46c4d51b7daa679ab1f660e36"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.6#block-editorial-013",
       "kind": "paragraph",
       "origin": "official",
@@ -597,36 +639,6 @@
         "transformations": [],
         "rawSha256": "07b85f31632d4eebdfde0e1e36e66a78cd8a4b817774e465c7f610108f6d52a5",
         "normalizedSha256": "07b85f31632d4eebdfde0e1e36e66a78cd8a4b817774e465c7f610108f6d52a5"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.6#block-editorial-014",
-      "kind": "footnote",
-      "origin": "official",
-      "text": {
-        "raw": "Si specifica che l’eccentricità accidentale, oltre che per considerare le incertezze legate alla localizzazione delle masse, è una maniera indiretta per tener conto della variabilità spaziale del moto sismico. A rigore, infatti, si dovrebbe considerare una componente torsionale del trascinamento sismico, sia nelle analisi statiche, sia nelle analisi dinamiche; tradizionalmente, invece, l’azione sismica viene descritta esclusivamente attraverso le due componenti traslazionali orizzontali del moto, cui va aggiunta, ove significativa, la componente verticale.",
-        "normalized": "Si specifica che l’eccentricità accidentale, oltre che per considerare le incertezze legate alla localizzazione delle masse, è una maniera indiretta per tener conto della variabilità spaziale del moto sismico. A rigore, infatti, si dovrebbe considerare una componente torsionale del trascinamento sismico, sia nelle analisi statiche, sia nelle analisi dinamiche; tradizionalmente, invece, l’azione sismica viene descritta esclusivamente attraverso le due componenti traslazionali orizzontali del moto, cui va aggiunta, ove significativa, la componente verticale.",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 207,
-        "printedPage": "203",
-        "region": {
-          "coordinateSystem": "pdf-points-top-left",
-          "x": 73.9,
-          "y": 55,
-          "width": 450,
-          "height": 730
-        },
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-render-transcription",
-          "toolVersion": "circ7-manual-render-transcription-0.2.0"
-        },
-        "transformations": [],
-        "rawSha256": "b775eafba00b13906a9bfc50d84d8a3e5726dbe46c4d51b7daa679ab1f660e36",
-        "normalizedSha256": "b775eafba00b13906a9bfc50d84d8a3e5726dbe46c4d51b7daa679ab1f660e36"
       }
     }
   ],
