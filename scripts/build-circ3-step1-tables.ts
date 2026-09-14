@@ -112,40 +112,40 @@ const tables = [
             [
                 text("SLE", { rowSpan: 2 }),
                 text("SLO"),
-                text("81,00%"),
-                text("68,80%"),
-                text("64,60%"),
-                math("0,60·VR", "0{,}60V_R"),
-                math("0,86·VR", "0{,}86V_R"),
-                math("0,96·VR", "0{,}96V_R"),
+                text("81,00 %"),
+                text("68,80 %"),
+                text("64,60 %"),
+                math("0,60·VR", "0{,}60\\cdot V_R"),
+                math("0,86·VR", "0{,}86\\cdot V_R"),
+                math("0,96·VR", "0{,}96\\cdot V_R"),
             ],
             [
                 text("SLD"),
-                text("63,00%"),
-                text("55,83%"),
-                text("53,08%"),
+                text("63,00 %"),
+                text("55,83 %"),
+                text("53,08 %"),
                 math("VR", "V_R"),
-                math("1,22·VR", "1{,}22V_R"),
-                math("1,32·VR", "1{,}32V_R"),
+                math("1,22·VR", "1{,}22\\cdot V_R"),
+                math("1,32·VR", "1{,}32\\cdot V_R"),
             ],
             [
                 text("SLU", { rowSpan: 2 }),
                 text("SLV"),
-                text("10,00%"),
-                text("9,83%"),
-                text("9,75%"),
-                math("9,50·VR", "9{,}50V_R"),
-                math("9,66·VR", "9{,}66V_R"),
-                math("9,75·VR", "9{,}75V_R"),
+                text("10,00 %"),
+                text("9,83 %"),
+                text("9,75 %"),
+                math("9,50·VR", "9{,}50\\cdot V_R"),
+                math("9,66·VR", "9{,}66\\cdot V_R"),
+                math("9,75·VR", "9{,}75\\cdot V_R"),
             ],
             [
                 text("SLC"),
-                text("5,00%"),
-                text("4,96%"),
-                text("4,94%"),
-                math("19,50·VR", "19{,}50V_R"),
-                math("19,66·VR", "19{,}66V_R"),
-                math("19,75·VR", "19{,}75V_R"),
+                text("5,00 %"),
+                text("4,96 %"),
+                text("4,94 %"),
+                math("19,50·VR", "19{,}50\\cdot V_R"),
+                math("19,66·VR", "19{,}66\\cdot V_R"),
+                math("19,75·VR", "19{,}75\\cdot V_R"),
             ],
         ],
         notes: [],
@@ -177,14 +177,14 @@ const tables = [
         ],
         rows: [
             [
-                math("h/d ≤ 1: cpe = 0,7 + 0,1·h/d", "h/d\\le1:\\quad c_{pe}=0{,}7+0{,}1h/d"),
-                math("h/d ≤ 0,5: cpe = −0,5 − 0,8·h/d", "h/d\\le0{,}5:\\quad c_{pe}=-0{,}5-0{,}8h/d"),
-                math("h/d ≤ 1: cpe = −0,3 − 0,2·h/d", "h/d\\le1:\\quad c_{pe}=-0{,}3-0{,}2h/d"),
+                math("h/d ≤ 1:\ncpe = 0,7 + 0,1·h/d", "\\begin{gathered}h/d\\le1:\\\\c_{pe}=0{,}7+0{,}1h/d\\end{gathered}"),
+                math("h/d ≤ 0,5:\ncpe = −0,5 − 0,8·h/d", "\\begin{gathered}h/d\\le0{,}5:\\\\c_{pe}=-0{,}5-0{,}8h/d\\end{gathered}"),
+                math("h/d ≤ 1:\ncpe = −0,3 − 0,2·h/d", "\\begin{gathered}h/d\\le1:\\\\c_{pe}=-0{,}3-0{,}2h/d\\end{gathered}"),
             ],
             [
-                math("h/d > 1: cpe = 0,8", "h/d>1:\\quad c_{pe}=0{,}8"),
-                math("h/d > 0,5: cpe = −0,9", "h/d>0{,}5:\\quad c_{pe}=-0{,}9"),
-                math("1 < h/d ≤ 5: cpe = −0,5 − 0,05·(h/d−1)", "1<h/d\\le5:\\quad c_{pe}=-0{,}5-0{,}05\\left(h/d-1\\right)"),
+                math("h/d > 1:\ncpe = 0,8", "\\begin{gathered}h/d>1:\\\\c_{pe}=0{,}8\\end{gathered}"),
+                math("h/d > 0,5:\ncpe = −0,9", "\\begin{gathered}h/d>0{,}5:\\\\c_{pe}=-0{,}9\\end{gathered}"),
+                math("1 < h/d ≤ 5:\ncpe = −0,5 − 0,05·(h/d−1)", "\\begin{gathered}1<h/d\\le5:\\\\c_{pe}=-0{,}5-0{,}05\\left(h/d-1\\right)\\end{gathered}"),
             ],
         ],
         notes: [],
@@ -271,12 +271,30 @@ const tables = [
     },
 ];
 
+type TableLike = { headers: Cell[][]; rows: Cell[][] };
+
+function setAlignment(table: TableLike, align: "left" | "center" | "right") {
+    for (const cell of [...table.headers.flat(), ...table.rows.flat()]) cell.align = align;
+}
+
+for (const table of tables) {
+    if (table.officialNumber === "C.3.2.II" || table.officialNumber === "C3.3.II") {
+        setAlignment(table, "center");
+    }
+}
+
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-const reviewed = new Set(tables.map(({ id }) => id));
-manifest.tables = manifest.tables.filter(
-    (candidate: { id: string }) => !reviewed.has(candidate.id),
-);
-manifest.tables.push(...tables);
+const generated = new Map(tables.map((table) => [table.id, table]));
+const existingIds = new Set<string>();
+manifest.tables = manifest.tables.map((candidate: { id: string; captionInline?: unknown }) => {
+    const replacement = generated.get(candidate.id);
+    if (!replacement) return candidate;
+    existingIds.add(candidate.id);
+    return candidate.captionInline === undefined
+        ? replacement
+        : { ...replacement, captionInline: candidate.captionInline };
+});
+manifest.tables.push(...tables.filter(({ id }) => !existingIds.has(id)));
 
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`circ3-step1-tables: rebuilt ${tables.length} tables`);

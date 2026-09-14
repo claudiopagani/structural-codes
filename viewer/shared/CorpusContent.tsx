@@ -36,6 +36,11 @@ function tableAssetClass(officialNumber: string | null) {
   return suffix ? `table-asset-${suffix}` : "";
 }
 
+function figureAssetClass(officialNumber: string | null) {
+  const suffix = officialNumber?.toLowerCase().replace(/[^a-z0-9]+/gu, "-").replace(/^-|-$/gu, "");
+  return suffix ? `figure-asset-${suffix}` : "";
+}
+
 const latexMarkupCache = new Map<string, { __html: string }>();
 
 function latexMarkup(latex: string, displayMode: boolean) {
@@ -231,11 +236,11 @@ function tableCellClass(cell: TableCell) {
 }
 
 export function hasOfficialListMarker(block: CorpusBlock) {
-  return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])/iu.test(block.text?.normalized ?? "");
+  return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])\s+/iu.test(block.text?.normalized ?? "");
 }
 
 export function hasAlphabeticListMarker(block: CorpusBlock) {
-  return block.kind === "list-item" && /^\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)])/iu.test(block.text?.normalized ?? "");
+  return block.kind === "list-item" && /^\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)])\s+/iu.test(block.text?.normalized ?? "");
 }
 
 export function hasSimpleDashMarker(block: CorpusBlock) {
@@ -411,7 +416,7 @@ function renderAlphabeticListContent(block: CorpusBlock, context: ReferenceConte
   const first = inline?.[0];
   const source = first?.kind === "text" ? first.value : normalized;
   if (!source) return null;
-  const match = source.match(/^(\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)]))\s*/iu);
+  const match = source.match(/^(\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)])\s+)/iu);
   if (!match) return null;
   if (!inline || first?.kind !== "text") {
     return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized?.slice(match[0].length)}</span></>;
@@ -459,7 +464,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   if (figure) {
     const width = Math.max(1, Math.round(figure.region?.width ?? 800));
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
-    return <figure className="figure-asset scv-copyable-asset"><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} /><figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption><CopyAssetButton kind="figure" /></figure>;
+    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} /><figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption><CopyAssetButton kind="figure" /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }

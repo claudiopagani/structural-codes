@@ -16,6 +16,7 @@ type Cell = {
     latex?: string;
     colSpan?: number;
     rowSpan?: number;
+    align?: "left" | "center" | "right";
 };
 
 type TableAsset = {
@@ -29,6 +30,8 @@ type TableAsset = {
     rows: Cell[][];
     notes?: string[];
 };
+
+type ManifestTable = TableAsset & { captionInline?: unknown };
 
 const math = (text: string, latex: string): Cell => ({ text, latex });
 const text = (value: string): Cell => ({ text: value });
@@ -133,14 +136,34 @@ const tables: TableAsset[] = [
 ];
 
 const manifest = JSON.parse(await readFile(output, "utf8")) as {
-    tables: TableAsset[];
+    tables: ManifestTable[];
 };
-const reviewed = new Set(tables.map(({ officialNumber }) => officialNumber));
-manifest.tables = [
-    ...manifest.tables.filter(
-        ({ officialNumber }) => !reviewed.has(officialNumber),
-    ),
-    ...tables,
-];
+
+function setAlignment(table: TableAsset, align: "left" | "center" | "right") {
+    for (const cell of [...table.headers.flat(), ...table.rows.flat()]) cell.align = align;
+}
+
+for (const table of tables) {
+    if (table.officialNumber === "C3.3.XVIII") setAlignment(table, "center");
+    if (table.officialNumber === "C3.3.XIX") {
+        for (const row of [...table.headers, ...table.rows]) {
+            if (row[0]) row[0].align = "left";
+            if (row[1]) row[1].align = "center";
+        }
+    }
+    if (table.officialNumber === "C3.4.I") setAlignment(table, "center");
+}
+
+const generated = new Map(tables.map((table) => [table.id, table]));
+const existingIds = new Set<string>();
+manifest.tables = manifest.tables.map((candidate) => {
+    const replacement = generated.get(candidate.id);
+    if (!replacement) return candidate;
+    existingIds.add(candidate.id);
+    return candidate.captionInline === undefined
+        ? replacement
+        : { ...replacement, captionInline: candidate.captionInline };
+});
+manifest.tables.push(...tables.filter(({ id }) => !existingIds.has(id)));
 await writeFile(output, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`circ3-step3-tables: rebuilt ${tables.length} tables`);

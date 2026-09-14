@@ -46,6 +46,14 @@ test("C3 step 1 usa dieci ritagli ufficiali integri", async () => {
             figure.officialNumber,
         );
     }
+    const figure33 = figures.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C3.3.3");
+    assert.deepEqual(figure33?.region, {
+        coordinateSystem: "pdf-points-top-left",
+        x: 80,
+        y: 490,
+        width: 440,
+        height: 125,
+    });
 });
 
 test("C3 step 1 contiene le otto formule verificate", async () => {
@@ -102,6 +110,23 @@ test("C3 step 1 ricostruisce le quattro tabelle e le celle estese", async () => 
             row.filter((cell) => cell.align).map((cell) => cell.align),
         ),
         ["center", "center", "center", "center", "center", "center", "center", "center"],
+    );
+    assert.ok(
+        [...tables[1].headers, ...tables[1].rows]
+            .flat()
+            .every((cell: { align?: string }) => cell.align === "center"),
+    );
+    assert.deepEqual(
+        tables[1].rows[0].slice(2, 5).map((cell: { text: string }) => cell.text),
+        ["81,00 %", "68,80 %", "64,60 %"],
+    );
+    assert.match(tables[1].rows[0][5].latex, /\\cdot/u);
+    assert.match(tables[2].rows[0][0].text, /:\n/u);
+    assert.match(tables[2].rows[0][0].latex, /\\begin\{gathered\}/u);
+    assert.ok(
+        [...tables[3].headers, ...tables[3].rows]
+            .flat()
+            .every((cell: { align?: string }) => cell.align === "center"),
     );
     assert.equal(tables[1].headers[0][0].colSpan, 2);
     assert.equal(tables[3].rows[0][5].colSpan, 2);

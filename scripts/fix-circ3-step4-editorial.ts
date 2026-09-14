@@ -7,6 +7,7 @@ type InlineSegment = { kind: InlineKind; value: string; latex?: string };
 type TextBlock = {
     blockId: string;
     kind: string;
+    assetId?: string;
     listMarker?: "bullet" | "dash" | "none";
     text?: { normalized: string; inline?: InlineSegment[] };
 };
@@ -103,11 +104,41 @@ function blockStartingWith(unit: Unit, prefix: string) {
     return block;
 }
 
-async function setMarkers(name: string, markers: Array<"dash" | "none">) {
+async function setMarkers(
+    name: string,
+    markers: Array<"dash" | "none">,
+    predicate: (block: TextBlock) => boolean = () => true,
+) {
     const { path, unit } = await readUnit(name);
-    const items = unit.blocks.filter(({ kind }) => kind === "list-item");
+    const items = unit.blocks.filter(
+        (block) => block.kind === "list-item" && predicate(block),
+    );
     assert(items.length === markers.length, `Numero di voci inatteso in ${name}`);
     items.forEach((item, index) => { item.listMarker = markers[index]; });
+    await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
+}
+
+async function markDefinitionsAsAlignedList(
+    name: string,
+    formulaSuffix: string,
+    prefixes: string[],
+) {
+    const { path, unit } = await readUnit(name);
+    const formulaIndex = unit.blocks.findIndex(
+        (block) => block.assetId?.endsWith(formulaSuffix),
+    );
+    assert(formulaIndex >= 0, `Formula ${formulaSuffix} assente in ${name}`);
+    const definitions = prefixes.map((prefix) => {
+        const block = unit.blocks.slice(formulaIndex + 1).find(
+            (candidate) => candidate.text?.normalized?.startsWith(prefix),
+        );
+        assert(block, `Definizione assente dopo ${formulaSuffix}: ${prefix}`);
+        return block;
+    });
+    for (const block of definitions) {
+        block.kind = "list-item";
+        block.listMarker = "none";
+    }
     await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
 }
 
@@ -202,10 +233,29 @@ async function updateCaptions() {
     await writeFile(tablesPath, `${JSON.stringify(tablesManifest, null, 2)}\n`, "utf8");
 }
 
-await setMarkers("c3.3.11", ["dash", "dash", "dash"]);
+await setMarkers(
+    "c3.3.11",
+    ["dash", "dash", "dash"],
+    (block) => block.text?.normalized?.startsWith("se ") && block.text.normalized.includes("Sc") ? true : false,
+);
 await setMarkers("c3.4.3", ["dash", "dash", "dash", "dash", "dash", "dash"]);
 await setMarkers("c3.4.3.2", ["dash", "dash"]);
 await setMarkers("c3.4.3.3.2", ["dash", "dash"]);
+await markDefinitionsAsAlignedList(
+    "c3.4.2",
+    ":c3.4.1",
+    ["qsk è il valore", "qsn è il carico", "Pn è la probabilità", "v è il coefficiente"],
+);
+await markDefinitionsAsAlignedList(
+    "c3.4.3.3.5",
+    ":c3.4.6",
+    ["qse è il carico", "qs è il carico", "γ è il peso", "k è un coefficiente"],
+);
+await markDefinitionsAsAlignedList(
+    "c3.4.3.3.6",
+    ":c3.4.7",
+    ["qs è il carico", "b è la distanza", "α angolo"],
+);
 await setMarkers("c3.6.1.1", ["dash", "dash"]);
 await setMarkers("c3.6.1.2", ["dash", "dash"]);
 await setMarkers("c3.6.1.5.1", ["dash", "dash"]);

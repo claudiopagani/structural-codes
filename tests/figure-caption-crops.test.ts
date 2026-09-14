@@ -20,8 +20,8 @@ test("le didascalie rasterizzate delle figure restano fuori dal PNG", async () =
             height: 107.054,
         }],
         ["C3.3.3", {
-            sha256: "228bda5a4bf4ced0286e6003d4ec3f63c4f043db9a2983a673e59900d280422c",
-            height: 114.261,
+            sha256: "8bef9e477bed98901019168a2e6c3a9868d847cb5a6976d94cf86a6e73b977f9",
+            height: 125,
         }],
         ["C4.1.10", {
             sha256: "c87459f9069447c251b1949d22b62b1c3cd961f35b118e9eb4b13a65dc0d11df",

@@ -9,9 +9,10 @@ type Cell = {
     latex?: string;
     colSpan?: number;
     rowSpan?: number;
+    align?: "left" | "center" | "right";
 };
 
-type Span = Pick<Cell, "colSpan" | "rowSpan">;
+type Span = Pick<Cell, "colSpan" | "rowSpan" | "align">;
 
 const text = (value: string, span: Span = {}): Cell => ({
     text: value,
@@ -94,7 +95,7 @@ const tables = [
                 value("±0,2", { colSpan: 2 }),
             ],
             [
-                text("Con parapetti", { rowSpan: 3 }),
+                text("Con\nparapetti", { rowSpan: 3 }),
                 math("hp/h = 0,025", "h_p/h=0{,}025"),
                 value("−1,6"),
                 value("−2,2"),
@@ -123,7 +124,7 @@ const tables = [
                 value("−1,2"),
             ],
             [
-                text("Raccordi curvi", { rowSpan: 3 }),
+                text("Raccordi\ncurvi", { rowSpan: 3 }),
                 math("r/h = 0,05", "r/h=0{,}05"),
                 value("−1,0"),
                 value("−1,5"),
@@ -149,7 +150,7 @@ const tables = [
                 value("−0,3", { colSpan: 2 }),
             ],
             [
-                text("Raccordi piani", { rowSpan: 3 }),
+                text("Raccordi\npiani", { rowSpan: 3 }),
                 math("α = 30°", "\\alpha=30^\\circ"),
                 value("−1,0"),
                 value("−1,5"),
@@ -606,8 +607,8 @@ const tables = [
         headers: [
             [
                 math(
-                    "α0 per Θ=0°; α90 per Θ=90°",
-                    "\\alpha_0\\text{ per }\\Theta=0^\\circ;\\ \\alpha_{90}\\text{ per }\\Theta=90^\\circ",
+                    "α0 per\nΘ=0°\nα90 per\nΘ=90°",
+                    "\\begin{gathered}\\alpha_0\\ \\text{per}\\\\\\Theta=0^\\circ\\\\\\alpha_{90}\\ \\text{per}\\\\\\Theta=90^\\circ\\end{gathered}",
                     { rowSpan: 3 },
                 ),
                 math(
@@ -675,12 +676,11 @@ const tables = [
         rows: [
             [
                 text("Valori positivi"),
-                math("Tutti i valori di φ", "\\text{Tutti i valori di }\\phi", {
-                    colSpan: 2,
-                }),
+                math("Tutti i valori di φ", "\\text{Tutti i valori di }\\phi"),
                 math(
                     "cF = +0,2 + 0,7·|α|/30",
                     "c_F=+0{,}2+0{,}7|\\alpha|/30",
+                    { colSpan: 2 },
                 ),
             ],
             [
@@ -738,13 +738,88 @@ const tables = [
     },
 ];
 
+type TableLike = { officialNumber: string; headers: Cell[][]; rows: Cell[][] };
+
+function setAlignment(table: TableLike, align: "left" | "center" | "right") {
+    for (const cell of [...table.headers.flat(), ...table.rows.flat()]) cell.align = align;
+}
+
+function setColumnAlignment(table: TableLike, column: number, align: "left" | "center" | "right") {
+    const processRows = (rows: Cell[][]) => {
+        const occupied: number[] = [];
+        for (const row of rows) {
+            let logicalColumn = 0;
+            for (const cell of row) {
+                while ((occupied[logicalColumn] ?? 0) > 0) logicalColumn += 1;
+                const span = cell.colSpan ?? 1;
+                if (column >= logicalColumn && column < logicalColumn + span) cell.align = align;
+                const rowSpan = cell.rowSpan ?? 1;
+                for (let index = logicalColumn; index < logicalColumn + span; index += 1) {
+                    occupied[index] = Math.max(occupied[index] ?? 0, rowSpan);
+                }
+                logicalColumn += span;
+            }
+            for (let index = 0; index < occupied.length; index += 1) {
+                const remaining = occupied[index] ?? 0;
+                if (remaining > 1) occupied[index] = remaining - 1;
+                else if (remaining === 1) occupied[index] = 0;
+            }
+        }
+    };
+    processRows(table.headers);
+    processRows(table.rows);
+}
+
+function setLogicalColumnAlignments(table: TableLike, alignments: Array<"left" | "center" | "right">) {
+    alignments.forEach((align, column) => setColumnAlignment(table, column, align));
+}
+
+const centeredTables = new Set([
+    "C3.3.IV",
+    "C3.3.VII",
+    "C3.3.VIII",
+    "C3.3.XI",
+    "C3.3.XII",
+    "C3.3.XIV",
+    "C3.3.XV",
+    "C3.3.XVII",
+]);
+for (const table of tables as TableLike[]) {
+    if (centeredTables.has(table.officialNumber)) setAlignment(table, "center");
+    if (table.officialNumber === "C3.3.IX" || table.officialNumber === "C3.3.XIII") {
+        setLogicalColumnAlignments(table, ["center", "left"]);
+    }
+    if (table.officialNumber === "C3.3.X") {
+        setLogicalColumnAlignments(table, ["left", "center", "left"]);
+    }
+}
+
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-const reviewed = new Set(tables.map(({ officialNumber }) => officialNumber));
-manifest.tables = manifest.tables.filter(
-    (candidate: { officialNumber?: string }) =>
-        !candidate.officialNumber || !reviewed.has(candidate.officialNumber),
-);
-manifest.tables.push(...tables);
+const generated = new Map(tables.map((table) => [table.id, table]));
+const existingIds = new Set<string>();
+const requestedNumbers = new Set([
+    "C3.3.IV",
+    "C3.3.VII",
+    "C3.3.VIII",
+    "C3.3.IX",
+    "C3.3.X",
+    "C3.3.XI",
+    "C3.3.XII",
+    "C3.3.XIII",
+    "C3.3.XIV",
+    "C3.3.XV",
+    "C3.3.XVI",
+    "C3.3.XVII",
+]);
+manifest.tables = manifest.tables.map((candidate: { id: string; captionInline?: unknown; officialNumber?: string }) => {
+    const replacement = generated.get(candidate.id);
+    if (!replacement || !requestedNumbers.has(candidate.officialNumber ?? "")) return candidate;
+    existingIds.add(candidate.id);
+    return candidate.captionInline === undefined
+        ? replacement
+        : { ...replacement, captionInline: candidate.captionInline };
+});
+manifest.tables.push(...tables.filter(({ id, officialNumber }) => requestedNumbers.has(officialNumber) && !existingIds.has(id)));
 
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`circ3-step2-tables: rebuilt ${tables.length} tables`);

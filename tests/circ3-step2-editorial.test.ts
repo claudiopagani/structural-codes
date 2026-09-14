@@ -80,6 +80,17 @@ test("C3 step 2 usa ventuno ritagli ufficiali integri", async () => {
         figure8?.caption,
         "Figura C3.3.8 – Coperture a semplice falda: valori del coefficiente cpe; vento perpendicolare alla direzione del colmo",
     );
+    const figure6 = figures.find(
+        ({ officialNumber }: { officialNumber: string }) =>
+            officialNumber === "C3.3.6",
+    );
+    assert.deepEqual(figure6?.region, {
+        coordinateSystem: "pdf-points-top-left",
+        x: 170,
+        y: 390,
+        width: 262,
+        height: 225,
+    });
 });
 
 test("C3 step 2 ricostruisce le quindici tabelle ufficiali", async () => {
@@ -128,6 +139,32 @@ test("C3 step 2 ricostruisce le quindici tabelle ufficiali", async () => {
             ["3", "Altri campi", "0,7", "0,7"],
         ],
     );
+    const centered = ["C3.3.IV", "C3.3.VII", "C3.3.VIII", "C3.3.XI", "C3.3.XII", "C3.3.XIV", "C3.3.XV", "C3.3.XVII"];
+    for (const number of centered) {
+        const table = tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === number);
+        assert.ok([...table.headers, ...table.rows].flat().every((cell: { align?: string }) => cell.align === "center"), number);
+    }
+    const iv = tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C3.3.IV");
+    assert.equal(iv.rows[1][0].text, "Con\nparapetti");
+    assert.equal(iv.rows[4][0].text, "Raccordi\ncurvi");
+    const ix = tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C3.3.IX");
+    assert.ok(ix.rows.every((row: Array<{ align?: string }>) => row[0]?.align === "center" && row[1]?.align === "left"));
+    const x = tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C3.3.X");
+    assert.deepEqual(
+        x.rows.map((row: Array<{ align?: string }>) => row.map(({ align }) => align)),
+        [
+            ["left", "center", "left"],
+            ["center", "left"],
+            ["center", "left"],
+            ["center", "left"],
+            ["left", "center", "left"],
+            ["center", "left"],
+            ["center", "left"],
+        ],
+    );
+    const xvi = tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C3.3.XVI");
+    assert.equal(xvi.rows[0][1].colSpan, undefined);
+    assert.equal(xvi.rows[0][2].colSpan, 2);
 });
 
 test("C3 step 2 conserva l'ordine editoriale di testo, figure e tabelle", async () => {

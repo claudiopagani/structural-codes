@@ -32,7 +32,7 @@ FIGURES = {
     "C3.3.6": {
         "unit": "c3.3.8.1.2",
         "page": 58,
-        "bbox": (170, 390, 432, 595),
+        "bbox": (170, 390, 432, 615),
         "caption": (
             "Figura C3.3.6 – a) Suddivisione delle coperture piane in zone "
             "di uguale pressione; b) Altezza di riferimento per coperture "

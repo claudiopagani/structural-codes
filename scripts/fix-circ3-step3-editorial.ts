@@ -4,7 +4,13 @@ import { fileURLToPath } from "node:url";
 
 type InlineKind = "text" | "em" | "strong" | "math";
 type InlineSegment = { kind: InlineKind; value: string; latex?: string };
-type TextBlock = { kind: string; listMarker?: "bullet" | "dash" | "none" };
+type TextBlock = {
+    kind: string;
+    assetId?: string;
+    listMarker?: "bullet" | "dash" | "none";
+    indentLevel?: number;
+    text?: { normalized?: string };
+};
 type Unit = { blocks: TextBlock[] };
 type Asset = { officialNumber: string; caption: string; captionInline?: InlineSegment[] };
 
@@ -28,6 +34,41 @@ async function updateListMarkers(name: string, markers: Array<"dash" | "none">) 
     items.forEach((item, index) => {
         item.listMarker = markers[index];
     });
+    await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
+}
+
+async function indentNumberedSublist() {
+    const { path, unit } = await readUnit("c3.3.8.3");
+    const numbered = unit.blocks.filter(
+        (block) => block.kind === "list-item" && /^\s*[12]\.\s/u.test(block.text?.normalized ?? ""),
+    );
+    assert(numbered.length === 2, "Elenco numerato inatteso in c3.3.8.3");
+    for (const block of numbered) block.indentLevel = 1;
+    await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
+}
+
+async function markC339DefinitionsAsAlignedList() {
+    const { path, unit } = await readUnit("c3.3.11");
+    const formulaIndex = unit.blocks.findIndex(
+        (block) => block.assetId?.endsWith(":c3.3.9"),
+    );
+    assert(formulaIndex >= 0, "Formula C3.3.9 assente in c3.3.11");
+    const prefixes = [
+        "b è la dimensione di riferimento",
+        "vm è la velocità media",
+        "St è il numero di Strouhal",
+    ];
+    const definitions = prefixes.map((prefix) => {
+        const block = unit.blocks.slice(formulaIndex + 1).find(
+            (candidate) => candidate.text?.normalized?.startsWith(prefix),
+        );
+        assert(block, `Definizione assente dopo C3.3.9: ${prefix}`);
+        return block;
+    });
+    for (const block of definitions) {
+        block.kind = "list-item";
+        block.listMarker = "none";
+    }
     await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
 }
 
@@ -108,4 +149,6 @@ await updateListMarkers("c3.3.8.1.6", ["dash", "dash", "dash", "dash"]);
 await updateListMarkers("c3.3.8.1.7", ["dash", "dash", "dash", "dash", "dash"]);
 await updateListMarkers("c3.3.8.2", ["dash", "dash"]);
 await updateListMarkers("c3.3.8.3", ["dash", "dash", "none", "none"]);
+await indentNumberedSublist();
+await markC339DefinitionsAsAlignedList();
 await updateAssets();

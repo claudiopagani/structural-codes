@@ -24,6 +24,15 @@ test("riconosce riferimenti a unità, formule, tabelle e figure senza sovrapposi
     { number: "3.2", documentHint: null },
     { number: "7.3", documentHint: "circ2019" },
   ]);
+  assert.deepEqual(findCrossReferences("Vedere al paragrafo C.7.11.3.1.2.2.").map(({ text, number, documentHint }) => ({ text, number, documentHint })), [
+    { text: "C.7.11.3.1.2.2", number: "7.11.3.1.2.2", documentHint: "circ2019" },
+  ]);
+  assert.deepEqual(findCrossReferences("espressione C.3.4.1.").map(({ text, kind, number, documentHint }) => ({ text, kind, number, documentHint })), [
+    { text: "C.3.4.1", kind: "unit", number: "3.4.1", documentHint: "circ2019" },
+  ]);
+  assert.deepEqual(findCrossReferences("vedasi la Figura C.3.4.7.").map(({ text, kind, number, documentHint }) => ({ text, kind, number, documentHint })), [
+    { text: "Figura C.3.4.7", kind: "figure", number: "3.4.7", documentHint: "circ2019" },
+  ]);
 });
 
 test("l'indice derivato risolve target e backlink senza caricare chunk", async () => {

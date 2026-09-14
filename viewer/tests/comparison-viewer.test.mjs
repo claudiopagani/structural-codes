@@ -147,15 +147,17 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /copyFormulaMarkupAsImage/);
   assert.match(component, /clipboard\.write/);
   assert.match(component, /className="formula-asset scv-copyable-asset"/);
-  assert.match(component, /className="figure-asset scv-copyable-asset"/);
+  assert.match(component, /className=\{`figure-asset \$\{figureAssetClass\(figure\.officialNumber\)\} scv-copyable-asset`\}/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /tableAssetClass/);
+  assert.match(component, /figureAssetClass/);
   assert.match(component, /<div className="table-notes">/);
   assert.match(component, /className="scv-note-content"/);
   assert.match(component, /className="scv-note-rule"/);
   assert.doesNotMatch(component, /<ul className="table-notes">/);
   assert.match(component, /hasAlphabeticListMarker/);
+  assert.match(component, /\[a-z0-9\]\+\[\.\)\]\)\\s\+/u);
   assert.match(component, /groupAlignedLabelBlocks/);
   assert.match(component, /<u key=\{`underline-\$\{index\}`\}>\{renderReferenceText\(segment\.value/);
   assert.match(component, /<em key=\{`em-underline-\$\{index\}`\}><u>\{renderReferenceText\(segment\.value/);
@@ -184,6 +186,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.inline-math \{[^}]*font-size: 1\.04em/);
   assert.match(styles, /\.scv-root \.inline-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /\.scv-root \.figure-asset img \{[^}]*width: min\(100%, 760px\)[^}]*height: auto[^}]*max-height: min\(600px, 70vh\)/);
+  assert.match(styles, /\.scv-root \.figure-asset-c3-3-28 img \{[^}]*width: min\(50%, 380px\)/);
   assert.doesNotMatch(styles, /legacy-base-font-size|comparison-shell/);
 });
 

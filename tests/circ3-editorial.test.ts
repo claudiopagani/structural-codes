@@ -10,6 +10,7 @@ type InlineSegment = { kind: string; value: string; latex?: string };
 type TextBlock = {
     kind: string;
     listMarker?: string;
+    indentLevel?: number;
     text?: { normalized: string; inline?: InlineSegment[] };
 };
 type Unit = { blocks: TextBlock[] };
@@ -211,6 +212,11 @@ test("C3.3 successivo conserva livelli di elenco e caption delle tettoie", async
         round.blocks.filter(({ kind }) => kind === "list-item").map(({ listMarker }) => listMarker),
         ["dash", "dash", "none", "none"],
     );
+    assert.ok(
+        round.blocks
+            .filter(({ text }) => /^\s*[12]\.\s/u.test(text?.normalized ?? ""))
+            .every(({ indentLevel }) => indentLevel === 1),
+    );
 
     const figures = JSON.parse(
         await readFile(
@@ -276,6 +282,28 @@ test("C3.4 e C3.6 mantengono marcatori, enfasi e sottolineature verificate sul P
         kindsForValue(blockStartingWith(curves, "Si evidenzia infine"), "“tunnel curve”"),
         ["em"],
     );
+});
+
+test("C3.4 allinea le definizioni dopo le formule e C3.6.1.2 conserva i decreti come elenco", async () => {
+    for (const [name, prefixes] of [
+        ["c3.4.2", ["qsk è il valore", "qsn è il carico", "Pn è la probabilità", "v è il coefficiente"]],
+        ["c3.4.3.3.5", ["qse è il carico", "qs è il carico", "γ è il peso", "k è un coefficiente"]],
+        ["c3.4.3.3.6", ["qs è il carico", "b è la distanza", "α angolo"]],
+    ] as Array<[string, string[]]>) {
+        const unit = await readUnit(name);
+        for (const prefix of prefixes) {
+            const block = blockStartingWith(unit, prefix);
+            assert.equal(block.kind, "list-item");
+            assert.equal(block.listMarker, "none");
+            assert.equal(block.text?.inline?.[0]?.kind, "math");
+        }
+    }
+    const fire = await readUnit("c3.6.1.2");
+    const decrees = fire.blocks.filter(({ text }) => text?.normalized.startsWith("D.M."));
+    assert.deepEqual(decrees.map(({ kind, listMarker }) => ({ kind, listMarker })), [
+        { kind: "list-item", listMarker: "dash" },
+        { kind: "list-item", listMarker: "dash" },
+    ]);
 });
 
 test("Le caption C3.4 riproducono label, corsivo e matematica", async () => {

@@ -120,8 +120,8 @@ test("C3 step 3 trascrive tutte le formule display", async () => {
 
 test("C3 step 3 ricostruisce le tre tabelle ufficiali", async () => {
     const manifest = await json("corpus/assets/circ2019/core-tables.json");
-    type TableCell = { text: string; latex?: string };
-    type TableAsset = { officialNumber: string; rows: TableCell[][] };
+    type TableCell = { text: string; latex?: string; align?: string };
+    type TableAsset = { officialNumber: string; headers: TableCell[][]; rows: TableCell[][] };
     const byNumber = new Map<string, TableAsset>(
         manifest.tables.map(
             (table: TableAsset) => [
@@ -155,6 +155,19 @@ test("C3 step 3 ricostruisce le tre tabelle ufficiali", async () => {
         tableC34I.rows[1]?.[1]?.latex,
         "0{,}8+0{,}8\\alpha/30",
     );
+    assert.ok(
+        [...tableXVIII.headers, ...tableXVIII.rows]
+            .flat()
+            .every((cell: TableCell & { align?: string }) => cell.align === "center"),
+    );
+    assert.ok(
+        [...tableC34I.headers, ...tableC34I.rows]
+            .flat()
+            .every((cell: TableCell & { align?: string }) => cell.align === "center"),
+    );
+    assert.equal(tableXIX.headers[0]?.[0]?.align, "left");
+    assert.equal(tableXIX.headers[0]?.[1]?.align, "center");
+    assert.ok(tableXIX.rows.every((row: Array<TableCell & { align?: string }>) => row[0]?.align === "left" && row[1]?.align === "center"));
 });
 
 test("ogni asset di C3 step 3 compare una sola volta", async () => {
@@ -235,6 +248,21 @@ test("C3 step 3 mantiene c_p come espressione inline unica", async () => {
         ({ kind }: { kind: string }) => kind === "math",
     );
     assert.deepEqual(math, [{ kind: "math", value: "cp", latex: "c_p" }]);
+});
+
+test("C3.3.8.3 rientra l'elenco numerato e C3.3.9 allinea le definizioni", async () => {
+    const round = await json("corpus/units/circ2019/c3.3.8.3.json");
+    const numbered = round.blocks.filter((block: { text?: { normalized?: string } }) => /^\s*[12]\.\s/u.test(block.text?.normalized ?? ""));
+    assert.equal(numbered.length, 2);
+    assert.ok(numbered.every((block: { indentLevel?: number }) => block.indentLevel === 1));
+
+    const wind = await json("corpus/units/circ2019/c3.3.11.json");
+    for (const prefix of ["b è la dimensione", "vm è la velocità", "St è il numero"]) {
+        const block = wind.blocks.find((candidate: { text?: { normalized?: string } }) => candidate.text?.normalized?.startsWith(prefix));
+        assert.ok(block);
+        assert.equal(block.kind, "list-item");
+        assert.equal(block.listMarker, "none");
+    }
 });
 
 test("C3 step 3 conserva prodotti, testo e separazione dei gruppi di formula", async () => {

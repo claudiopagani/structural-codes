@@ -90,7 +90,7 @@ FIGURES = {
     "C3.3.3": {
         "unit": "c3.3.8.1.1",
         "page": 56,
-        "bbox": (80, 490, 520, 675),
+        "bbox": (80, 490, 520, 615),
         "caption": (
             "Figura C3.3.3 – a) Schema planimetrico di riferimento; "
             "b) Suddivisione delle pareti verticali di edificio a pianta "
