@@ -249,7 +249,7 @@
           {
             "kind": "math",
             "value": "1/(1+kdef)",
-            "latex": "\\frac{1}{1+k_{\\mathrm{def}}}"
+            "latex": "1/(1+k_{\\mathrm{def}})"
           },
           {
             "kind": "text",
@@ -273,7 +273,13 @@
           "tool": "pdftotext",
           "toolVersion": "24.08.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
+          }
+        ],
         "rawSha256": "bb8050419f8595a3f0b80645c61f930af764e00e097105a27c5be91bd330aca3",
         "normalizedSha256": "bb8050419f8595a3f0b80645c61f930af764e00e097105a27c5be91bd330aca3"
       }

@@ -97,6 +97,12 @@ test("C3 step 1 ricostruisce le quattro tabelle e le celle estese", async () => 
         [4, 4, 2, 3],
     );
     assert.equal(tables[0].rows[0][0].rowSpan, 2);
+    assert.deepEqual(
+        tables[0].rows.flatMap((row: Array<{ align?: string }>) =>
+            row.filter((cell) => cell.align).map((cell) => cell.align),
+        ),
+        ["center", "center", "center", "center", "center", "center", "center", "center"],
+    );
     assert.equal(tables[1].headers[0][0].colSpan, 2);
     assert.equal(tables[3].rows[0][5].colSpan, 2);
     assert.equal(tables[3].rows[2][7].text, "+1,0");
@@ -180,9 +186,9 @@ test("C3 step 1 rende in LaTeX grandezze, pedici e disuguaglianze inline", async
         "F_0 =",
         "T_C^* =",
         "P_{VR}=\\text{costante}",
-        "\\left[T_R=-\\frac{C_U\\cdot V_N}{\\ln(1-P_{VR})}=-\\frac{C_U\\cdot V_N}{\\text{costante}}\\right]",
+        "\\left[T_R=-C_U\\cdot V_N/\\ln(1-P_{VR})=-C_U\\cdot V_N/\\text{costante}\\right]",
         "C_U=1",
-        "T_R=-\\frac{V_N}{\\ln(1-P_{VR}/C_U)}",
+        "T_R=-V_N/\\ln(1-P_{VR}/C_U)",
         "R=1",
         "t_1<t<t_2",
     ]) {

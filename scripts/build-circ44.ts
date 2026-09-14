@@ -486,7 +486,7 @@ const inlineTerms: Array<[string, string]> = [
     ["F_d", "F_d"],
     ["d ≤ 6 mm", "d\\le6\\,\\mathrm{mm}"],
     ["d>6 mm", "d>6\\,\\mathrm{mm}"],
-    ["1/(1+kdef)", "\\frac{1}{1+k_{def}}"],
+    ["1/(1+kdef)", "1/(1+k_{def})"],
     ["0/+0,1 mm", "0/+0{,}1\\,\\mathrm{mm}"],
     ["50%", "50\\%"],
     ["30°", "30^\\circ"],

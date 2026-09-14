@@ -204,19 +204,19 @@ const tables = [
                 math("−60° ≤ α ≤ −15°", "-60^\\circ\\le\\alpha\\le-15^\\circ"),
                 math(
                     "cpe = −0,5 − (α+60)/90",
-                    "c_{pe}=-0{,}5-\\frac{\\alpha+60}{90}",
+                    "c_{pe}=-0{,}5-(\\alpha+60)/90",
                 ),
                 math("45° ≤ α ≤ 75°", "45^\\circ\\le\\alpha\\le75^\\circ"),
                 math(
                     "cpe = +0,6 + (α−45)/150",
-                    "c_{pe}=+0{,}6+\\frac{\\alpha-45}{150}",
+                    "c_{pe}=+0{,}6+(\\alpha-45)/150",
                 ),
             ],
             [
                 math("−15° ≤ α ≤ 30°", "-15^\\circ\\le\\alpha\\le30^\\circ"),
                 math(
                     "cpe = −1,0 + (α+15)/75",
-                    "c_{pe}=-1{,}0+\\frac{\\alpha+15}{75}",
+                    "c_{pe}=-1{,}0+(\\alpha+15)/75",
                 ),
                 text("", { colSpan: 2 }),
             ],
@@ -224,7 +224,7 @@ const tables = [
                 math("30° ≤ α ≤ 45°", "30^\\circ\\le\\alpha\\le45^\\circ"),
                 math(
                     "cpe = −0,4 + (α−30)/37,5",
-                    "c_{pe}=-0{,}4+\\frac{\\alpha-30}{37{,}5}",
+                    "c_{pe}=-0{,}4+(\\alpha-30)/37{,}5",
                 ),
                 text("", { colSpan: 2 }),
             ],
@@ -264,14 +264,14 @@ const tables = [
                 math("15° ≤ α ≤ 45°", "15^\\circ\\le\\alpha\\le45^\\circ"),
                 math(
                     "cpe,B = −0,7 − (α−15)/150",
-                    "c_{pe,B}=-0{,}7-\\frac{\\alpha-15}{150}",
+                    "c_{pe,B}=-0{,}7-(\\alpha-15)/150",
                 ),
             ],
             [
                 math("45° < α", "45^\\circ<\\alpha"),
                 math(
                     "cpe,B = −0,9 + (α−45)/75",
-                    "c_{pe,B}=-0{,}9+\\frac{\\alpha-45}{75}",
+                    "c_{pe,B}=-0{,}9+(\\alpha-45)/75",
                 ),
             ],
         ],
@@ -417,7 +417,7 @@ const tables = [
                 math("−75° ≤ α ≤ −15°", "-75^\\circ\\le\\alpha\\le-15^\\circ"),
                 math(
                     "cpe = −0,85 + (α+60)/180",
-                    "c_{pe}=-0{,}85+\\frac{\\alpha+60}{180}",
+                    "c_{pe}=-0{,}85+(\\alpha+60)/180",
                 ),
             ],
             [
@@ -428,7 +428,7 @@ const tables = [
                 math("15° ≤ α ≤ 45°", "15^\\circ\\le\\alpha\\le45^\\circ"),
                 math(
                     "cpe = −0,6 + (α−15)/100",
-                    "c_{pe}=-0{,}6+\\frac{\\alpha-15}{100}",
+                    "c_{pe}=-0{,}6+(\\alpha-15)/100",
                 ),
             ],
             [
@@ -485,7 +485,7 @@ const tables = [
                 math("−30° ≤ α ≤ 10°", "-30^\\circ\\le\\alpha\\le10^\\circ"),
                 math(
                     "cpe,B = −0,9 + (α+30)/100",
-                    "c_{pe,B}=-0{,}9+\\frac{\\alpha+30}{100}",
+                    "c_{pe,B}=-0{,}9+(\\alpha+30)/100",
                 ),
             ],
             [
@@ -583,7 +583,7 @@ const tables = [
                 math("45° ≤ α ≤ 60°", "45^\\circ\\le\\alpha\\le60^\\circ"),
                 math(
                     "cpe = −1,0 + (α−45)/37,5",
-                    "c_{pe}=-1{,}0+\\frac{\\alpha-45}{37{,}5}",
+                    "c_{pe}=-1{,}0+(\\alpha-45)/37{,}5",
                 ),
             ],
             [
@@ -680,7 +680,7 @@ const tables = [
                 }),
                 math(
                     "cF = +0,2 + 0,7·|α|/30",
-                    "c_F=+0{,}2+0{,}7\\frac{|\\alpha|}{30}",
+                    "c_F=+0{,}2+0{,}7|\\alpha|/30",
                 ),
             ],
             [

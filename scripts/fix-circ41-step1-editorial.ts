@@ -186,8 +186,8 @@ async function updateUnits() {
                     { value: "hc,eff", latex: "h_{c,eff}" },
                     { value: "hc,eff", latex: "h_{c,eff}" },
                     { value: "2,5 (h–d)", latex: "2{,}5(h-d)" },
-                    { value: "(h–x)/3", latex: "\\frac{h-x}{3}" },
-                    { value: "h/2", latex: "\\frac{h}{2}" },
+                    { value: "(h–x)/3", latex: "(h-x)/3" },
+                    { value: "h/2", latex: "h/2" },
                 ],
             },
             {
@@ -280,7 +280,7 @@ async function updateUnits() {
             spacing,
             "Nei casi in cui l’armatura sia disposta con una spaziatura non superiore a 5(c + φ/2) (vedi Figura C4.1.11), la distanza media tra le fessure, Δsm, può essere valutata con l’espressione:",
             [
-                { value: "5(c + φ/2)", latex: "5\\left(c+\\frac{\\phi}{2}\\right)" },
+                { value: "5(c + φ/2)", latex: "5\\left(c+\\phi/2\\right)" },
                 { value: "Δsm", latex: "\\Delta_{sm}" },
             ],
             "Ripristinati l’incipit, il simbolo Delta_sm e la formula inline della distanza fra fessure.",
@@ -291,8 +291,8 @@ async function updateUnits() {
             wideSpacing,
             "Nelle zone in cui l’armatura è disposta con una spaziatura superiore a 5(c + φ/2) (vedi Figura C4.1.11), per la parte di estensione 5(c + φ/2) nell’intorno delle barre la distanza media tra le fessure, Δsm, può essere valutata ancora con l’espressione C4.1.7:",
             [
-                { value: "5(c + φ/2)", latex: "5\\left(c+\\frac{\\phi}{2}\\right)" },
-                { value: "5(c + φ/2)", latex: "5\\left(c+\\frac{\\phi}{2}\\right)" },
+                { value: "5(c + φ/2)", latex: "5\\left(c+\\phi/2\\right)" },
+                { value: "5(c + φ/2)", latex: "5\\left(c+\\phi/2\\right)" },
                 { value: "Δsm", latex: "\\Delta_{sm}" },
             ],
             "Ripristinati il riferimento alle barre e il simbolo Delta_sm nel passaggio alla seconda zona.",
@@ -348,7 +348,7 @@ async function updateCaptions() {
             number === "C4.1.I"
                 ? [
                     { value: "K", latex: "K" },
-                    { value: "l/h", latex: "\\frac{l}{h}" },
+                    { value: "l/h", latex: "l/h" },
                 ]
                 : [],
         );

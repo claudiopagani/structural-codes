@@ -119,8 +119,8 @@ test("NTC pagine 232–241 usa inline completi senza q discorsive", async () => 
     for (const context of qContexts) {
         assert.match(context, /(^|[^\p{L}\p{N}_])q([^\p{L}\p{N}_]|$)/u);
     }
-    assert.equal(math.get("7.4.4.5:block-editorial-001:l_w/b_w > 4"), "\\frac{l_w}{b_w}>4");
-    assert.equal(math.get("7.4.4.5.1:block-editorial-033:α_s = M_Ed/(V_Ed·l_w)"), "\\alpha_s=\\frac{M_{Ed}}{V_{Ed}\\cdot l_w}");
+    assert.equal(math.get("7.4.4.5:block-editorial-001:l_w/b_w > 4"), "l_w/b_w>4");
+    assert.equal(math.get("7.4.4.5.1:block-editorial-033:α_s = M_Ed/(V_Ed·l_w)"), "\\alpha_s=M_{Ed}/(V_{Ed}\\cdot l_w)");
     assert.equal(math.get("7.4.4.5.1:block-editorial-047:V_id>V_Ed/2"), "V_{id}>V_{Ed}/2");
     assert.equal(math.get("7.4.4.5.2:block-editorial-001:M_Ed/M_Rd"), "M_{Ed}/M_{Rd}");
     assert.equal(math.get("7.4.4.5.2:block-editorial-006:l_c ≥ max(0,20·l_w, 1,5·b_w)"), "l_c\\ge\\max(0{,}20\\cdot l_w,1{,}5\\cdot b_w)");

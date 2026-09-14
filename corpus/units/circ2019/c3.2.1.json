@@ -917,7 +917,7 @@
           {
             "kind": "math",
             "value": "[TR = -CU·VN/ln(1-PVR) = -CU·VN/costante]",
-            "latex": "\\left[T_R=-\\frac{C_U\\cdot V_N}{\\ln(1-P_{VR})}=-\\frac{C_U\\cdot V_N}{\\text{costante}}\\right]"
+            "latex": "\\left[T_R=-C_U\\cdot V_N/\\ln(1-P_{VR})=-C_U\\cdot V_N/\\text{costante}\\right]"
           },
           {
             "kind": "text",
@@ -1026,6 +1026,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Ripristinata integralmente la formula inline tra parentesi quadre e riunite le uguaglianze ai rispettivi membri."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "89363998be764dac61a10ec206489c208a0938a2cbdd2ababd98c3a1e5188876",
@@ -1519,7 +1524,7 @@
           {
             "kind": "math",
             "value": "TR = -VN/ln(1-PVR/CU)",
-            "latex": "T_R=-\\frac{V_N}{\\ln(1-P_{VR}/C_U)}"
+            "latex": "T_R=-V_N/\\ln(1-P_{VR}/C_U)"
           },
           {
             "kind": "text",
@@ -1596,6 +1601,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Ricomposta in un solo segmento la formula inline del periodo di ritorno."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "944c4f34f3a435cf0802058942dc8f257cfc45b19895ea308ceb3235a085a5d3",

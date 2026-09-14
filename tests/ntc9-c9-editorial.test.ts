@@ -45,6 +45,6 @@ test("C9 conserva livelli degli elenchi, corsivi e formule inline", async () => 
     for (const name of ["c9.2.2", "c9.2.3"]) {
         const record = await unit("circ2019", name);
         assert.ok(record.blocks.some((block) => block.text?.inline?.some((segment) => segment.kind === "math" && segment.value === "15%" && segment.latex === "15\\%")), name);
-        assert.ok(record.blocks.some((block) => block.text?.inline?.some((segment) => segment.kind === "math" && segment.value === "1/5" && segment.latex === "\\frac{1}{5}")), name);
+        assert.ok(record.blocks.some((block) => block.text?.inline?.some((segment) => segment.kind === "math" && segment.value === "1/5" && segment.latex === "1/5")), name);
     }
 });

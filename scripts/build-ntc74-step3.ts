@@ -31,12 +31,12 @@ type Unit = {
 const f = (number: string): string => aid("formula", number);
 
 const step22MathTerms: Array<[string, string]> = [
-    ["ν_d = N_Ed/(A_c·f_cd)", "\\nu_d=\\frac{N_{Ed}}{A_c\\cdot f_{cd}}"],
-    ["ω_v = ρ_v·f_yd,v/f_cd", "\\omega_v=\\rho_v\\cdot\\frac{f_{yd,v}}{f_{cd}}"],
+    ["ν_d = N_Ed/(A_c·f_cd)", "\\nu_d=N_{Ed}/(A_c\\cdot f_{cd})"],
+    ["ω_v = ρ_v·f_yd,v/f_cd", "\\omega_v=\\rho_v\\cdot f_{yd,v}/f_{cd}"],
     ["α = α_n·α_s", "\\alpha=\\alpha_n\\cdot\\alpha_s"],
     ["ρ ≥ 0,5%", "\\rho\\ge0{,}5\\%"],
-    ["½h_w", "\\frac{1}{2}h_w"],
-    ["½l_w", "\\frac{1}{2}l_w"],
+    ["½h_w", "1/2h_w"],
+    ["½l_w", "1/2l_w"],
     ["ω_wd", "\\omega_{wd}"],
     ["ω_v", "\\omega_v"],
     ["μ_φ", "\\mu_\\phi"],
@@ -60,7 +60,7 @@ const step22MathTerms: Array<[string, string]> = [
     ["0,12", "0{,}12"],
     ["0,2%", "0{,}2\\%"],
     ["0,5%", "0{,}5\\%"],
-    ["1/10", "\\frac{1}{10}"],
+    ["1/10", "1/10"],
     ["30 cm", "30\\,\\mathrm{cm}"],
     ["15 cm", "15\\,\\mathrm{cm}"],
 ];
@@ -553,7 +553,7 @@ const units: Unit[] = [
                 norm: "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad 1/10 dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a 30 cm, devono essere collegate con legature, in ragione di almeno 9 legature ogni metro quadrato.",
                 inline: inline(
                     "Le armature, sia orizzontali sia verticali, devono avere diametro non superiore ad 1/10 dello spessore della parete, devono essere disposte su entrambe le facce della parete, ad un passo non superiore a 30 cm, devono essere collegate con legature, in ragione di almeno 9 legature ogni metro quadrato.",
-                    [["1/10", "\\frac{1}{10}"], ["30 cm", "30\\,\\mathrm{cm}"], ["9", "9"]],
+                    [["1/10", "1/10"], ["30 cm", "30\\,\\mathrm{cm}"], ["9", "9"]],
                 ),
             },
             { kind: "heading", page: 242, from: 63 },

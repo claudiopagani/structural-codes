@@ -315,7 +315,7 @@ await replaceInlineFormula(
         { kind: "text", value: " al variare di " },
         { kind: "math", value: "CU", latex: "C_U" },
         { kind: "text", value: ", si ottiene " },
-        { kind: "math", value: "[TR = -CU·VN/ln(1-PVR) = -CU·VN/costante]", latex: "\\left[T_R=-\\frac{C_U\\cdot V_N}{\\ln(1-P_{VR})}=-\\frac{C_U\\cdot V_N}{\\text{costante}}\\right]" },
+        { kind: "math", value: "[TR = -CU·VN/ln(1-PVR) = -CU·VN/costante]", latex: "\\left[T_R=-C_U\\cdot V_N/\\ln(1-P_{VR})=-C_U\\cdot V_N/\\text{costante}\\right]" },
         { kind: "text", value: " e dunque, a parità di " },
         { kind: "math", value: "VN", latex: "V_N" },
         { kind: "text", value: ", " },
@@ -365,7 +365,7 @@ await replaceInlineFormula(
     "In tal caso si ha TR = -VN/ln(1-PVR/CU); detto TR,a il periodo di ritorno ottenuto con la strategia progettuale di norma e TR,b il periodo di ritorno ottenuto con la strategia progettuale appena illustrata, il rapporto R tra i due periodi di ritorno varrebbe:",
     [
         { kind: "text", value: "In tal caso si ha " },
-        { kind: "math", value: "TR = -VN/ln(1-PVR/CU)", latex: "T_R=-\\frac{V_N}{\\ln(1-P_{VR}/C_U)}" },
+        { kind: "math", value: "TR = -VN/ln(1-PVR/CU)", latex: "T_R=-V_N/\\ln(1-P_{VR}/C_U)" },
         { kind: "text", value: "; detto " },
         { kind: "math", value: "TR,a", latex: "T_{R,a}" },
         { kind: "text", value: " il periodo di ritorno ottenuto con la strategia progettuale di norma e " },
@@ -446,7 +446,7 @@ await replaceInlineFormula(
     [
         { kind: "math", value: "Pn", latex: "P_n" },
         { kind: "text", value: " è la probabilità annuale di superamento (approssimativamente equivalente a " },
-        { kind: "math", value: "1/n", latex: "\\frac{1}{n}" },
+        { kind: "math", value: "1/n", latex: "1/n" },
         { kind: "text", value: ", dove " },
         { kind: "math", value: "n", latex: "n" },
         { kind: "text", value: " è il corrispondente periodo di ritorno espresso in anni;" },
@@ -461,7 +461,7 @@ await replaceInlineFormula(
     [
         { kind: "math", value: "k", latex: "k" },
         { kind: "text", value: " è un coefficiente funzione della irregolarità della forma della neve, pari a " },
-        { kind: "math", value: "k = 3/d", latex: "k=\\frac{3}{d}" },
+        { kind: "math", value: "k = 3/d", latex: "k=3/d" },
         { kind: "text", value: ", con " },
         { kind: "math", value: "k ≤ dγ", latex: "k\\le d\\gamma" },
         { kind: "text", value: ", essendo " },

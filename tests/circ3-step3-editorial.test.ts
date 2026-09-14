@@ -266,6 +266,6 @@ test("C3 step 3 conserva prodotti, testo e separazione dei gruppi di formula", a
             (text?.inline ?? []).map(({ latex }) => latex).filter(Boolean),
         ),
     );
-    assert.ok(allLatex.includes("\\frac{1}{n}"));
-    assert.ok(allLatex.includes("k=\\frac{3}{d}"));
+    assert.ok(allLatex.includes("1/n"));
+    assert.ok(allLatex.includes("k=3/d"));
 });

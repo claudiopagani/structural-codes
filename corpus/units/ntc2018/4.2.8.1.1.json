@@ -1118,7 +1118,7 @@
           {
             "kind": "math",
             "value": "(p1/t) < [9(235/fy)0,5]",
-            "latex": "\\left(\\frac{p_1}{t}\\right)<\\left[9\\left(\\frac{235}{f_y}\\right)^{0{,}5}\\right]"
+            "latex": "\\left(p_1/t\\right)<\\left[9\\left(235/f_y\\right)^{0{,}5}\\right]"
           },
           {
             "kind": "text",
@@ -1175,6 +1175,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "3b213812df297cb556a22358cca46af8e0c43b940c0742ffb4dfbec5d7d5ae0e",
@@ -2990,7 +2995,7 @@
           {
             "kind": "math",
             "value": "Ft,Ed/Ft,Rd ≤ 1",
-            "latex": "\\frac{F_{t,Ed}}{F_{t,Rd}}\\le1"
+            "latex": "F_{t,Ed}/F_{t,Rd}\\le1"
           },
           {
             "kind": "text",
@@ -3070,6 +3075,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc42-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "bcac6595a24f772f127054198e7ab674a9d8a74707530f6e43a1792e586a45b4",

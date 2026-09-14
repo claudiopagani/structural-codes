@@ -108,7 +108,7 @@ const mathTerms: MathTerm[] = [
     ["γτR=1,25", "\\gamma_{\\tau_R}=1{,}25"],
     ["γE = γF", "\\gamma_E=\\gamma_F"],
     ["γF Fk", "\\gamma_F F_k"],
-    ["Xk /γM", "\\frac{X_k}{\\gamma_M}"],
+    ["Xk /γM", "X_k/\\gamma_M"],
     ["A2+M2+R2", "\\mathrm{A2+M2+R2}"],
     ["A1+M1+R3", "\\mathrm{A1+M1+R3}"],
     ["γR = 3", "\\gamma_R=3"],

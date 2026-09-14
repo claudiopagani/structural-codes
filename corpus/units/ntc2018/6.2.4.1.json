@@ -413,7 +413,7 @@
           {
             "kind": "math",
             "value": "Xk /γM",
-            "latex": "\\frac{X_k}{\\gamma_M}"
+            "latex": "X_k/(\\gamma_M)"
           },
           {
             "kind": "text",
@@ -478,6 +478,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc6-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "713ffbb132caf426394b52e86e99e08cde69814f8af2c8d418744442b706074b",

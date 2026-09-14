@@ -105,9 +105,9 @@ await replaceInline(
     [
         { value: "ρ = 1,5%", latex: "\\rho=1{,}5\\%" },
         { value: "ρ = 0,5%", latex: "\\rho=0{,}5\\%" },
-        { value: "l/h", latex: "\\frac{l}{h}" },
+        { value: "l/h", latex: "l/h" },
         { value: "fck = 30 MPa", latex: "f_{ck}=30\\,\\mathrm{MPa}" },
-        { value: "[500 As,eff/(fyk As,calc)] = 1", latex: "\\left[\\frac{500A_{s,eff}}{f_{yk}A_{s,calc}}\\right]=1" },
+        { value: "[500 As,eff/(fyk As,calc)] = 1", latex: "\\left[500A_{s,eff}/(f_{yk}A_{s,calc})\\right]=1" },
     ],
     "Riunite le uguaglianze e le frazioni inline della nota alla Tabella C4.1.I.",
 );
@@ -122,7 +122,7 @@ await replaceInline(
         { value: "Es/Ecm", latex: "E_s/E_{cm}" },
         { value: "ρeff = As/Ac,eff", latex: "\\rho_{eff}=A_s/A_{c,eff}" },
         { value: "Ac,eff", latex: "A_{c,eff}" },
-        { value: "hc,eff = min[2,5(h-d), (h-x)/3, h/2]", latex: "h_{c,eff}=\\min\\left[2{,}5(h-d),\\frac{h-x}{3},\\frac{h}{2}\\right]" },
+        { value: "hc,eff = min[2,5(h-d), (h-x)/3, h/2]", latex: "h_{c,eff}=\\min\\left[2{,}5(h-d),(h-x)/3,h/2\\right]" },
         { value: "kt", latex: "k_t" },
     ],
     "Ricomposte le definizioni matematiche complete della verifica di fessurazione.",
@@ -215,9 +215,9 @@ await replaceInline(
     "d è l’altezza utile della sezione, in mm; ρl = Asl/(bw d) è il rapporto geometrico di armatura longitudinale (≤ 0,02); σcp = NEd/Ac è la tensione media di compressione nella sezione (≤ 0,2 fcd); bw è la larghezza minima della sezione, in mm.",
     [
         { value: "d", latex: "d" },
-        { value: "ρl = Asl/(bw d)", latex: "\\rho_l=\\frac{A_{sl}}{b_wd}" },
+        { value: "ρl = Asl/(bw d)", latex: "\\rho_l=A_{sl}/(b_wd)" },
         { value: "≤ 0,02", latex: "\\le0{,}02" },
-        { value: "σcp = NEd/Ac", latex: "\\sigma_{cp}=\\frac{N_{Ed}}{A_c}" },
+        { value: "σcp = NEd/Ac", latex: "\\sigma_{cp}=N_{Ed}/A_c" },
         { value: "≤ 0,2 fcd", latex: "\\le0{,}2f_{cd}" },
         { value: "bw", latex: "b_w" },
     ],

@@ -523,7 +523,7 @@
           {
             "kind": "math",
             "value": "Ω_i = (M_{pl,Rd,i} − M_{Ed,G,i}) / M_{Ed,E,i}",
-            "latex": "\\Omega_i=\\frac{M_{pl,Rd,i}-M_{Ed,G,i}}{M_{Ed,E,i}}"
+            "latex": "\\Omega_i=(M_{pl,Rd,i}-M_{Ed,G,i})/M_{Ed,E,i}"
           },
           {
             "kind": "text",
@@ -588,6 +588,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc75-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "c9165d733ff250e47bd43a54e1d00494c9d8ae97fb36a3ae0f8cf2d67e7cebd2",

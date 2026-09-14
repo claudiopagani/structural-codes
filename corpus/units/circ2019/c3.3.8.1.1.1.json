@@ -553,7 +553,7 @@
           {
             "kind": "math",
             "value": "h/d",
-            "latex": "\\frac{h}{d}"
+            "latex": "h/d"
           },
           {
             "kind": "text",
@@ -607,6 +607,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "0644261b0e44a8bbe22ccee425ba351ec5faeddca00bfa4ba306267781bc2da9",

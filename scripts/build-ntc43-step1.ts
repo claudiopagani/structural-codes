@@ -584,7 +584,7 @@ const units = [
             { kind: "text", value: "dove " },
             { kind: "math", value: "b_0", latex: "b_0" },
             { kind: "text", value: " è la distanza tra gli assi dei connettori e " },
-            { kind: "math", value: "b_ei = min (L_e/8, b_i)", latex: "b_{ei}=\\min\\left(\\frac{L_e}{8},b_i\\right)" },
+            { kind: "math", value: "b_ei = min (L_e/8, b_i)", latex: "b_{ei}=\\min\\left(L_e/8,b_i\\right)" },
             { kind: "text", value: " è il valore della larghezza collaborante da ciascun lato della sezione composta (vedi fig. 4.3.1)." },
         ]),
         assetRef("4.3.2.3", "figure-001", "figure-ref", figureId("4.3.1"), 121, p121.figure1),

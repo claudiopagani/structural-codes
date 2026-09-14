@@ -701,7 +701,7 @@
           {
             "kind": "math",
             "value": "b/300",
-            "latex": "\\frac{b}{300}"
+            "latex": "b/300"
           },
           {
             "kind": "text",
@@ -735,6 +735,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "1d4eeb6907847cb72ccd938a5652927c895b1804a37ee246b45a6998ae924de1",

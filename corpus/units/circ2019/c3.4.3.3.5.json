@@ -349,7 +349,7 @@
           {
             "kind": "math",
             "value": "k = 3/d",
-            "latex": "k=\\frac{3}{d}"
+            "latex": "k=3/d"
           },
           {
             "kind": "text",
@@ -396,6 +396,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Resa come frazione l'espressione inline k=3/d e mantenuta integra la disuguaglianza seguente."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "0ba38ecb2071d11120e2a1b775107c6dfb0a49edd343fac38a19ab270119c057",

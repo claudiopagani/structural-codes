@@ -72,7 +72,7 @@ test("NTC pagine 192–201 segmenta gli inline completi senza preposizioni o tit
     assert.ok((await math("6.3.4")).some((segment: any) => segment.latex === "\\tau_f"));
     assert.ok((await math("6.4.3.1.1")).some((segment: any) => segment.value === "ξ" && segment.latex === "\\xi"));
     assert.ok((await math("6.4.3.7.1")).some((segment: any) => segment.value === "d ≥ 80 cm" && segment.latex === "d\\ge 80\\,\\mathrm{cm}"));
-    assert.ok((await math("6.4.3.7.2")).some((segment: any) => segment.value === "5 + n/500" && segment.latex === "5+\\frac{n}{500}"));
+    assert.ok((await math("6.4.3.7.2")).some((segment: any) => segment.value === "5 + n/500" && segment.latex === "5+n/500"));
     assert.ok((await math("6.5.2.2")).some((segment: any) => segment.value === "k < 10^{-6} m/s" && segment.latex === "k<10^{-6}\\,\\mathrm{m/s}"));
     assert.ok((await math("6.5.3.1.2")).some((segment: any) => segment.value === "δ > φ′/2" && segment.latex === "\\delta>\\varphi'/2"));
 });

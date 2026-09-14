@@ -171,7 +171,7 @@ test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", asyn
     assert.equal(table.headers[0][2].colSpan, 2);
     assert.deepEqual(
         table.captionInline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
-        ["K", "\\frac{l}{h}"],
+        ["K", "l/h"],
     );
 });
 

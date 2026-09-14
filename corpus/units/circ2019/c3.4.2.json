@@ -459,7 +459,7 @@
           {
             "kind": "math",
             "value": "1/n",
-            "latex": "\\frac{1}{n}"
+            "latex": "1/n"
           },
           {
             "kind": "text",
@@ -512,6 +512,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ3-final-editorial-profile-0.1.0",
             "note": "Resa come frazione l'espressione inline 1/n mostrata nella fonte."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "20595861f88e4b9cf2b32df76860f3bb828944455c7aeb7f7e45071b40988bb7",
@@ -604,7 +609,7 @@
           {
             "kind": "math",
             "value": "qsn/qsk",
-            "latex": "\\frac{q_{sn}}{q_{sk}}"
+            "latex": "q_{sn}/q_{sk}"
           },
           {
             "kind": "text",
@@ -653,6 +658,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ34-editorial-profile-0.4.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "efa96936d483990cef15784c0a8b4b8379bb9d07ca5b84c08f599d639cb82eaf",

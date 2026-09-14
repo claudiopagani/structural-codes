@@ -260,7 +260,7 @@
           {
             "kind": "math",
             "value": "b_ei = min (L_e/8, b_i)",
-            "latex": "b_{ei}=\\min\\left(\\frac{L_e}{8},b_i\\right)"
+            "latex": "b_{ei}=\\min\\left(L_e/8,b_i\\right)"
           },
           {
             "kind": "text",
@@ -304,6 +304,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc43-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "13098253b1f1f68dfafa766b49f94969802b8068afec5df7f575ac9e45d869c6",

@@ -448,7 +448,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
         {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
-        {notes.length > 0 && <ul className="table-notes">{notes.map((note) => <li key={note}>{note}</li>)}</ul>}
+        {notes.length > 0 && <div className="table-notes">{notes.map((note) => <p key={note}>{note}</p>)}</div>}
       </figure>
     );
   }

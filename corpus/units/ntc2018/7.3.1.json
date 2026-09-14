@@ -1741,7 +1741,7 @@
           {
             "kind": "math",
             "value": "1/(1−θ)",
-            "latex": "\\frac{1}{1-\\theta}"
+            "latex": "1/(1-\\theta)"
           },
           {
             "kind": "text",
@@ -1794,6 +1794,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc7-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "e795c5616bbfcd061037eed6383217bdb4be87f8a3eb19c881acdd4894e279c5",

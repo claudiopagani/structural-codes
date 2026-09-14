@@ -1073,7 +1073,7 @@
           {
             "kind": "math",
             "value": "1/(1+kdef)",
-            "latex": "\\frac{1}{1+k_{def}}"
+            "latex": "1/(1+k_{def})"
           },
           {
             "kind": "text",
@@ -1096,6 +1096,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
             "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "66c19d67ce339d2512464d03c98c6a75ebdb3811f64390411e42b6db0bbdd027",

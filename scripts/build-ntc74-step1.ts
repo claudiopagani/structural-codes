@@ -333,7 +333,7 @@ const units: UnitSpec[] = [
                 normalized:
                     "lₛ² = per ogni piano, è il rapporto fra il momento d’inerzia polare della massa del piano rispetto ad un asse verticale passante per il centro di massa del piano e la massa stessa del piano; nel caso di piano a pianta rettangolare lₛ² = (L² + B²)/12, essendo L e B le dimensioni in pianta del piano.",
                 math: [
-                    m("lₛ² = (L² + B²)/12", "l_s^2=\\frac{L^2+B^2}{12}"),
+                    m("lₛ² = (L² + B²)/12", "l_s^2=(L^2+B^2)/12"),
                     m("lₛ²", "l_s^2"),
                     m("L", "L"),
                     m("B", "B"),
@@ -826,7 +826,7 @@ const units: UnitSpec[] = [
                 to: 50,
                 normalized:
                     "interamente confinati: quando in ognuna delle quattro facce verticali si innesta una trave; il confinamento si considera realizzato quando, su ogni faccia del nodo, la sezione della trave copre per almeno i 3/4 la larghezza del pilastro e, su entrambe le coppie di facce opposte del nodo, le sezioni delle travi si ricoprono per almeno i 3/4 dell’altezza;",
-                math: [m("3/4", "\\frac{3}{4}")],
+                math: [m("3/4", "3/4")],
             },
             {
                 kind: "list-item",

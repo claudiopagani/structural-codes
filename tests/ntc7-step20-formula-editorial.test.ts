@@ -87,11 +87,11 @@ test("NTC pagine 222–231 usa inline completi senza acronimi o lettere discorsi
     assert.ok(has("7.3.1", "d_{Er}", "d_{Er}"));
     assert.ok(has("7.3.3.2", "T_1 < 2T_C", "T_1<2T_C"));
     assert.ok(has("7.3.3.3", "μ_d ≤ 5q − 4", "\\mu_d\\le5q-4"));
-    assert.ok(has("7.3.6.1", "2/3", "\\frac{2}{3}"));
+    assert.ok(has("7.3.6.1", "2/3", "2/3"));
     assert.ok(has("7.3.6.1", "0,005 h", "0{,}005h"));
     assert.ok(has("7.3.6.1", "q ≤ 1,5", "q\\le1{,}5"));
-    assert.ok(has("7.4.3.1", "r²/lₛ² ≥ 1", "\\frac{r^2}{l_s^2}\\ge 1"));
-    assert.ok(has("7.4.3.1", "lₛ² = (L² + B²)/12", "l_s^2=\\frac{L^2+B^2}{12}"));
+    assert.ok(has("7.4.3.1", "r²/lₛ² ≥ 1", "r^2/l_s^2\\ge 1"));
+    assert.ok(has("7.4.3.1", "lₛ² = (L² + B²)/12", "l_s^2=(L^2+B^2)/12"));
     for (const ratio of ["1,0", "1,1", "1,2", "1,3"]) assert.ok(mathByUnit.get("7.4.3.2")?.some((segment) => segment.value === `αᵤ/α₁ = ${ratio}`));
     assert.ok(has("7.4.4.1.1", "ctgθ = 1", "\\operatorname{ctg}\\theta=1"));
     assert.ok(has("7.4.4.1.2", "μ_φ = 2μ_d - 1", "\\mu_\\phi=2\\mu_d-1"));

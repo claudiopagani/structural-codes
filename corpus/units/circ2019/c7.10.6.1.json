@@ -101,7 +101,7 @@
           {
             "kind": "math",
             "value": "2/3",
-            "latex": "\\frac{2}{3}"
+            "latex": "2/3"
           },
           {
             "kind": "text",
@@ -119,7 +119,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
+          }
+        ],
         "rawSha256": "5e31b828c657dbbbf259f7dd455798ad4b9681ac2ee63766b88291109571bd88",
         "normalizedSha256": "5e31b828c657dbbbf259f7dd455798ad4b9681ac2ee63766b88291109571bd88"
       }

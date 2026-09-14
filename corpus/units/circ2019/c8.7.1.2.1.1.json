@@ -1338,7 +1338,7 @@
           {
             "kind": "math",
             "value": "1/3h",
-            "latex": "\\frac{1}{3}h"
+            "latex": "1/3h"
           },
           {
             "kind": "text",
@@ -1385,6 +1385,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "cd1faae3c64981011f63af059a40e581de469155ae811bca07a32cef2fc5592a",

@@ -345,7 +345,7 @@
           {
             "kind": "math",
             "value": "0,85 f_ck/γ_c",
-            "latex": "0,85\\frac{f_{ck}}{\\gamma_c}"
+            "latex": "0,85f_{ck}/(\\gamma_c)"
           },
           {
             "kind": "text",
@@ -379,6 +379,11 @@
             "operation": "manual-correction",
             "ruleVersion": "circ43-editorial-profile-0.1.0",
             "note": "Ripristinati accenti, glifi matematici, sillabazioni e notazione confrontati con il render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "32f76da12ee745409959552718cfdfb65939f1eb0b2c00d8d60dcedeadb6cb21",

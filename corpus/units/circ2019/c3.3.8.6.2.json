@@ -202,7 +202,7 @@
           {
             "kind": "math",
             "value": "d/h ≥ 5",
-            "latex": "\\frac{d}{h}\\ge5"
+            "latex": "d/h\\ge5"
           },
           {
             "kind": "text",
@@ -261,6 +261,11 @@
             "operation": "manual-correction",
             "ruleVersion": "core-editorial-profile-0.1.0",
             "note": "Ricostruzione editoriale verificata mediante confronto integrale con il render della pagina ufficiale; il raw del layer PDF è preservato anche quando incompleto o corrotto."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "68388f30de6a78912dfb65ca519fb51338c53f3b62a93bfe16b0fd4e5c2f491a",
@@ -283,7 +288,7 @@
           {
             "kind": "math",
             "value": "2 < d/h < 5",
-            "latex": "2<\\frac{d}{h}<5"
+            "latex": "2<d/h<5"
           },
           {
             "kind": "text",
@@ -307,7 +312,13 @@
           "tool": "pdfjs-dist",
           "toolVersion": "4.10.38"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
+          }
+        ],
         "rawSha256": "0bf390229e4c3c1fb230b0a5e3df43fa64ff9d450e77235c9ae0991c8b842ae4",
         "normalizedSha256": "0bf390229e4c3c1fb230b0a5e3df43fa64ff9d450e77235c9ae0991c8b842ae4"
       }

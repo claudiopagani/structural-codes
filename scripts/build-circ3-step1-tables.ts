@@ -9,17 +9,18 @@ type Cell = {
     latex?: string;
     colSpan?: number;
     rowSpan?: number;
+    align?: "left" | "center" | "right";
 };
 
 const text = (
     value: string,
-    span: Pick<Cell, "colSpan" | "rowSpan"> = {},
+    span: Pick<Cell, "colSpan" | "rowSpan" | "align"> = {},
 ): Cell => ({ text: value, ...span });
 
 const math = (
     value: string,
     latex: string,
-    span: Pick<Cell, "colSpan" | "rowSpan"> = {},
+    span: Pick<Cell, "colSpan" | "rowSpan" | "align"> = {},
 ): Cell => ({ text: value, latex, ...span });
 
 const tables = [
@@ -42,28 +43,41 @@ const tables = [
         rows: [
             [
                 text("Stati Limite di Esercizio (SLE)", { rowSpan: 2 }),
-                text("SLO"),
+                text("SLO", { align: "center" }),
                 math(
                     "(¹) 30 anni ≤ TR = 0,60·VR",
                     "^{(1)}30\\,\\text{anni}\\le T_R=0{,}60V_R",
+                    { align: "center" },
                 ),
             ],
-            [text("SLD"), math("TR = VR", "T_R=V_R")],
             [
-                text("Stati Limite Ultimi (SLU)", { rowSpan: 2 }),
-                text("SLV"),
-                math("TR = 9,50·VR", "T_R=9{,}50V_R"),
+                text("SLD", { align: "center" }),
+                math("TR = VR", "T_R=V_R", { align: "center" }),
             ],
             [
-                text("SLC"),
+                text("Stati Limite Ultimi (SLU)", { rowSpan: 2 }),
+                text("SLV", { align: "center" }),
+                math("TR = 9,50·VR", "T_R=9{,}50V_R", { align: "center" }),
+            ],
+            [
+                text("SLC", { align: "center" }),
                 math(
                     "TR = 19,50·VR ≤ 2475 anni (¹)",
                     "T_R=19{,}50V_R\\le2475\\,\\text{anni}^{(1)}",
+                    { align: "center" },
                 ),
             ],
         ],
         notes: [
             "¹ I limiti inferiore e superiore di TR fissati nell’allegato A al Decreto del Ministro delle Infrastrutture 14 gennaio 2008 pubblicato nel S.O. alla Gazzetta Ufficiale del 4 febbraio 2008 ed eventuali successivi aggiornamenti sono dovuti all’intervallo di riferimento della pericolosità sismica oggi disponibile; per opere speciali possono considerarsi azioni sismiche riferite a TR più elevati.",
+        ],
+        captionInline: [
+            { kind: "strong", value: "Tabella C.3.2.I" },
+            { kind: "text", value: " – " },
+            { kind: "em", value: "Valori di " },
+            { kind: "math", value: "TR", latex: "T_R" },
+            { kind: "em", value: " espressi in funzione di " },
+            { kind: "math", value: "VR", latex: "V_R" },
         ],
     },
     {
@@ -135,6 +149,16 @@ const tables = [
             ],
         ],
         notes: [],
+        captionInline: [
+            { kind: "strong", value: "Tabella C.3.2.II" },
+            { kind: "text", value: " – " },
+            { kind: "em", value: "Valori di " },
+            { kind: "math", value: "P*VR", latex: "P^*_{VR}" },
+            { kind: "em", value: " e " },
+            { kind: "math", value: "TR", latex: "T_R" },
+            { kind: "em", value: " al variare di " },
+            { kind: "math", value: "CU", latex: "C_U" },
+        ],
     },
     {
         id: "urn:structural-codes:it:asset:table:circ2019:c3.3.i",
@@ -153,17 +177,23 @@ const tables = [
         ],
         rows: [
             [
-                math("h/d ≤ 1: cpe = 0,7 + 0,1·h/d", "\\frac{h}{d}\\le1:\\quad c_{pe}=0{,}7+0{,}1\\frac{h}{d}"),
-                math("h/d ≤ 0,5: cpe = −0,5 − 0,8·h/d", "\\frac{h}{d}\\le0{,}5:\\quad c_{pe}=-0{,}5-0{,}8\\frac{h}{d}"),
-                math("h/d ≤ 1: cpe = −0,3 − 0,2·h/d", "\\frac{h}{d}\\le1:\\quad c_{pe}=-0{,}3-0{,}2\\frac{h}{d}"),
+                math("h/d ≤ 1: cpe = 0,7 + 0,1·h/d", "h/d\\le1:\\quad c_{pe}=0{,}7+0{,}1h/d"),
+                math("h/d ≤ 0,5: cpe = −0,5 − 0,8·h/d", "h/d\\le0{,}5:\\quad c_{pe}=-0{,}5-0{,}8h/d"),
+                math("h/d ≤ 1: cpe = −0,3 − 0,2·h/d", "h/d\\le1:\\quad c_{pe}=-0{,}3-0{,}2h/d"),
             ],
             [
-                math("h/d > 1: cpe = 0,8", "\\frac{h}{d}>1:\\quad c_{pe}=0{,}8"),
-                math("h/d > 0,5: cpe = −0,9", "\\frac{h}{d}>0{,}5:\\quad c_{pe}=-0{,}9"),
-                math("1 < h/d ≤ 5: cpe = −0,5 − 0,05·(h/d−1)", "1<\\frac{h}{d}\\le5:\\quad c_{pe}=-0{,}5-0{,}05\\left(\\frac{h}{d}-1\\right)"),
+                math("h/d > 1: cpe = 0,8", "h/d>1:\\quad c_{pe}=0{,}8"),
+                math("h/d > 0,5: cpe = −0,9", "h/d>0{,}5:\\quad c_{pe}=-0{,}9"),
+                math("1 < h/d ≤ 5: cpe = −0,5 − 0,05·(h/d−1)", "1<h/d\\le5:\\quad c_{pe}=-0{,}5-0{,}05\\left(h/d-1\\right)"),
             ],
         ],
         notes: [],
+        captionInline: [
+            { kind: "strong", value: "Tabella C3.3.I" },
+            { kind: "em", value: " – Edifici a pianta rettangolare: " },
+            { kind: "math", value: "cpe", latex: "c_{pe}" },
+            { kind: "em", value: " per facce sopravento, sottovento e laterali" },
+        ],
     },
     {
         id: "urn:structural-codes:it:asset:table:circ2019:c3.3.ii",
@@ -183,7 +213,7 @@ const tables = [
                 text("E", { colSpan: 2 }),
             ],
             [
-                math("h/d", "\\frac{h}{d}"),
+                math("h/d", "h/d"),
                 math("cpe,10", "c_{pe,10}"),
                 math("cpe,1", "c_{pe,1}"),
                 math("cpe,10", "c_{pe,10}"),
@@ -232,6 +262,12 @@ const tables = [
             ],
         ],
         notes: [],
+        captionInline: [
+            { kind: "strong", value: "Tabella C3.3.II" },
+            { kind: "em", value: " – Edifici a pianta rettangolare: " },
+            { kind: "math", value: "cpe", latex: "c_{pe}" },
+            { kind: "em", value: " per facce sopravento, sottovento e laterali" },
+        ],
     },
 ];
 

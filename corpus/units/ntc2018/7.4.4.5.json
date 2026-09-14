@@ -107,7 +107,7 @@
           {
             "kind": "math",
             "value": "l_w/b_w > 4",
-            "latex": "\\frac{l_w}{b_w}>4"
+            "latex": "l_w/b_w>4"
           },
           {
             "kind": "text",
@@ -116,7 +116,7 @@
           {
             "kind": "math",
             "value": "l_w/b_w ≤ 4",
-            "latex": "\\frac{l_w}{b_w}\\le4"
+            "latex": "l_w/b_w\\le4"
           },
           {
             "kind": "text",
@@ -125,7 +125,7 @@
           {
             "kind": "math",
             "value": "h_w/l_w > 2",
-            "latex": "\\frac{h_w}{l_w}>2"
+            "latex": "h_w/l_w>2"
           },
           {
             "kind": "text",
@@ -172,6 +172,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc74-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "inline-fraction-layout-0.1.0",
+            "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
           }
         ],
         "rawSha256": "d1e1336853cd57a25970cfecf8ed6932308738d343f71e261fa3c737070618d0",

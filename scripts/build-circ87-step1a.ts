@@ -412,7 +412,7 @@ makeUnit("C8.7.1.2.1.1", "Analisi con approccio cinematico lineare", "C8.7.1.2.1
   addText(blocks, r(273, 63), "t_s è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);");
   addText(blocks, r(273, 64), "w è il peso specifico della muratura (valori sono suggeriti nella Tabella C8.5.I).");
   addProse(blocks, r(273, 65, 67));
-  setLastInlineTerms(blocks, [["1/3h", "\\frac{1}{3}h"], ["h", "h"], ["α_0", "\\alpha_0"]]);
+  setLastInlineTerms(blocks, [["1/3h", "1/3h"], ["h", "h"], ["α_0", "\\alpha_0"]]);
   addProse(blocks, r(274, 3, 7));
 }, [F11, F12]);
 

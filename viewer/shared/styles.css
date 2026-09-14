@@ -269,7 +269,9 @@ body { margin: 0; }
 .scv-root .table-asset th { color: #fff; font-weight: 700; text-align: center; background: var(--scv-primary-dark); }
 .scv-root .table-asset td { background: #fbfcff; }
 .scv-root .table-asset tbody tr:nth-child(even) td { background: #f1f3f9; }
-.scv-root .table-notes { margin: 8px 0 0; padding-left: 17px; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; }
+.scv-root .table-notes { margin: 8px 0 0; padding: 0; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; }
+.scv-root .table-notes > p { margin: 0 0 4px; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; text-align: left; }
+.scv-root .table-notes > p:last-child { margin-bottom: 0; }
 .scv-root .figure-asset img { display: block; width: min(100%, 760px); height: auto; max-width: 100%; max-height: min(600px, 70vh); margin-inline: auto; object-fit: contain; }
 .scv-root .figure-asset figcaption { padding-top: 7px; border-top: 1px solid #dfe3ec; }
 .scv-root .asset-missing { padding: 12px; color: #8b342a !important; font-family: ui-sans-serif, sans-serif !important; font-size: var(--scv-font-size-11) !important; background: #fff2ef; }

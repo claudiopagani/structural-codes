@@ -232,7 +232,7 @@ test("C3.3 successivo conserva livelli di elenco e caption delle tettoie", async
     assert.ok(parameters);
     assert.deepEqual(
         parameters.captionInline?.filter(({ kind }) => kind === "math").map(({ latex }) => latex),
-        ["c_{pm}", "c_{pb}", "\\alpha_m", "\\alpha_b", "\\frac{k}{b}\\le0{,}5\\cdot10^{-3}"],
+        ["c_{pm}", "c_{pb}", "\\alpha_m", "\\alpha_b", "k/b\\le0{,}5\\cdot10^{-3}"],
     );
 });
 

@@ -91,7 +91,7 @@ async function updateAssets() {
                 ["cpb", "c_{pb}"],
                 ["αm", "\\alpha_m"],
                 ["αb", "\\alpha_b"],
-                ["k/b ≤ 0,5·10⁻³", "\\frac{k}{b}\\le0{,}5\\cdot10^{-3}"],
+                ["k/b ≤ 0,5·10⁻³", "k/b\\le0{,}5\\cdot10^{-3}"],
             ],
         ],
         ["C3.3.XIX", []],

@@ -134,15 +134,15 @@ test("NTC pagine 242–251 conserva inline completi e confini dei simboli", asyn
         }
     }
     for (const required of [
-        "\\nu_d=\\frac{N_{Ed}}{A_c\\cdot f_{cd}}",
-        "\\omega_v=\\rho_v\\cdot\\frac{f_{yd,v}}{f_{cd}}",
+        "\\nu_d=N_{Ed}/(A_c\\cdot f_{cd})",
+        "\\omega_v=\\rho_v\\cdot f_{yd,v}/f_{cd}",
         "50\\%",
         "\\alpha_u/\\alpha_1=1{,}3",
         "\\gamma_{M2}",
         "1{,}3\\le\\overline{\\lambda}\\le2",
-        "\\frac{N_{Ed}}{N_{pl,Rd}}<0{,}15",
-        "R=\\frac{N_{Ed}t_w(d-2t_f)}{V_{Ed}A}",
-        "\\frac{A_{st}f_y}{4}",
+        "N_{Ed}/N_{pl,Rd}<0{,}15",
+        "R=N_{Ed}t_w(d-2t_f)/(V_{Ed}A)",
+        "A_{st}f_y/4",
     ]) {
         assert.ok(latex.has(required), required);
     }

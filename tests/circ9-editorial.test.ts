@@ -74,9 +74,9 @@ test("Circolare C9 conserva testo significativo, elenchi e matematica inline", a
     );
     assert.deepEqual(mathSegments, [
         { kind: "math", value: "15%", latex: "15\\%" },
-        { kind: "math", value: "1/5", latex: "\\frac{1}{5}" },
+        { kind: "math", value: "1/5", latex: "1/5" },
         { kind: "math", value: "15%", latex: "15\\%" },
-        { kind: "math", value: "1/5", latex: "\\frac{1}{5}" },
+        { kind: "math", value: "1/5", latex: "1/5" },
     ]);
 });
 
