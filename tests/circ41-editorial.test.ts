@@ -197,6 +197,10 @@ test("Le didascalie e le intestazioni C4.1 distinguono stili e matematica", asyn
     assert.equal(table.headers.length, 2);
     assert.equal(table.headers[0][0].text, "Sistema\nstrutturale");
     assert.deepEqual(
+        table.headers[1].map((cell: { text: string }) => cell.text),
+        ["molto sollecitato\nρ = 1,5%", "poco sollecitato\nρ = 0,5%"],
+    );
+    assert.deepEqual(
         table.rows.map((row: Array<{ text: string }>) => row[0]!.text),
         [
             "Travi semplicemente appoggiate, piastre\nincernierate mono o bidirezionali",
@@ -260,6 +264,8 @@ test("le Tabelle C4.1.V e C4.1.VI centrano tutte le celle e compattano le disugu
     }
     const tableVI = manifest.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "C4.1.VI");
     assert.equal(tableVI.rows[0][1].inline[0].latex, "1400\\!<\\!\\rho\\!\\le\\!1500");
+    assert.equal(tableVI.rows[0][0].text, "Intervallo di massa per unità di volume [kg/m³]");
+    assert.equal(tableVI.rows[0][0].inline[1].latex, "\\left[\\mathrm{kg/m^3}\\right]");
 });
 
 test("C4.1 pagine 94-99 conserva elenchi, definizioni e corsivi della fonte", async () => {

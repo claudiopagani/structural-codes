@@ -77,11 +77,11 @@ const seeds: TableSeed[] = [
                 cell("Calcestruzzo", { colSpan: 2 }),
             ],
             [
-                cell("molto sollecitato ρ = 1,5%", {
-                    inline: inline("molto sollecitato ρ = 1,5%", { value: "ρ = 1,5%", latex: "\\rho=1{,}5\\%" }),
+                cell("molto sollecitato\nρ = 1,5%", {
+                    inline: inline("molto sollecitato\nρ = 1,5%", { value: "ρ = 1,5%", latex: "\\rho=1{,}5\\%" }),
                 }),
-                cell("poco sollecitato ρ = 0,5%", {
-                    inline: inline("poco sollecitato ρ = 0,5%", { value: "ρ = 0,5%", latex: "\\rho=0{,}5\\%" }),
+                cell("poco sollecitato\nρ = 0,5%", {
+                    inline: inline("poco sollecitato\nρ = 0,5%", { value: "ρ = 0,5%", latex: "\\rho=0{,}5\\%" }),
                 }),
             ],
         ],
@@ -231,7 +231,7 @@ const seeds: TableSeed[] = [
         headers: [[cell("Classe di massa per unità di volume"), cell("D1,5"), cell("D1,6"), cell("D1,7"), cell("D1,8"), cell("D1,9"), cell("D2,0")]],
         rows: [
             [
-                cell("Intervallo di massa per unità di volume [kg/m³]", { inline: inline("Intervallo di massa per unità di volume [kg/m³]", { value: "kg/m³", latex: "\\mathrm{kg/m^3}" }) }),
+                cell("Intervallo di massa per unità di volume [kg/m³]", { inline: inline("Intervallo di massa per unità di volume [kg/m³]", { value: "[kg/m³]", latex: "\\left[\\mathrm{kg/m^3}\\right]" }) }),
                 ...["1400<ρ≤1500", "1500<ρ≤1600", "1600<ρ≤1700", "1700<ρ≤1800", "1800<ρ≤1900", "1900<ρ≤2000"].map((value) => cell(value, { inline: rhoRangeInline(value) })),
             ],
             ["Massa per unità di volume calcestruzzo non armato [kg/m³]", "1550", "1650", "1750", "1850", "1950", "2050"].map((value) => cell(value)),
