@@ -31,15 +31,32 @@ test("NTC 4.2 pagine 95-100 conserva corsivi e liste ufficiali", async () => {
         "stato limite di plasticizzazioni locali",
         "stato limite di scorrimento dei collegamenti ad attrito con bulloni ad alta resistenza",
     ]);
-    const classLabels = classification.blocks
-        .filter(({ text }: { text?: { normalized?: string } }) => text?.normalized?.startsWith("classe "))
-        .map(({ text }: { text: { inline: Array<{ kind: string; value: string }> } }) => text.inline[0]);
-    assert.deepEqual(classLabels, [
-        { kind: "em", value: "classe 1" },
-        { kind: "em", value: "classe 2" },
-        { kind: "em", value: "classe 3" },
-        { kind: "em", value: "classe 4" },
-    ]);
+    const classItems = classification.blocks.filter(({ text }: { text?: { normalized?: string } }) => text?.normalized?.startsWith("classe "));
+    assert.deepEqual(
+        classItems.map(({ kind, text }: { kind: string; text: { inline: Array<{ kind: string; value: string }> } }) => [kind, text.inline[0], text.inline[1]?.value.slice(0, 1)]),
+        [
+            ["list-item", { kind: "em", value: "classe 1" }, ":"],
+            ["list-item", { kind: "em", value: "classe 2" }, ":"],
+            ["list-item", { kind: "em", value: "classe 3" }, ":"],
+            ["list-item", { kind: "em", value: "classe 4" }, ":"],
+        ],
+    );
+    // L'elenco etichettato resta nell'ordine della fonte, subito dopo la
+    // formula [4.2.0] e i due capoversi che la commentano e introducono le classi.
+    const formulaIndex = classification.blocks.findIndex(({ blockId }: { blockId: string }) => blockId.endsWith("block-editorial-002"));
+    assert.equal(classification.blocks[formulaIndex].kind, "formula-ref");
+    const introIndex = classification.blocks.findIndex(({ blockId }: { blockId: string }) => blockId.endsWith("block-editorial-004"));
+    assert.equal(classification.blocks[introIndex].text.normalized.endsWith("seguenti classi di sezioni:"), true);
+    assert.deepEqual(
+        classification.blocks.slice(introIndex + 1, introIndex + 5).map(({ kind, text }: { kind: string; text: { normalized: string } }) => [kind, text.normalized.split(":")[0]]),
+        [
+            ["list-item", "classe 1"],
+            ["list-item", "classe 2"],
+            ["list-item", "classe 3"],
+            ["list-item", "classe 4"],
+        ],
+    );
+
     assert.ok(classification.blocks.some(({ text }: { text?: { inline?: Array<{ kind: string; value: string }> } }) => text?.inline?.some(({ kind, value }) => kind === "em" && value === "sezione efficace")));
     for (const unit of [capacity, global]) {
         const labels = unit.blocks
@@ -63,6 +80,33 @@ test("NTC 4.2 pagine 95-100 struttura le didascalie delle tabelle", async () => 
         assert.equal(table.captionInline[0].value, `Tab. ${table.officialNumber}`, table.officialNumber);
         assert.equal(table.captionInline[1].kind, "em", table.officialNumber);
         assert.equal(table.captionInline.map(({ value }: { value: string }) => value).join(""), table.caption, table.officialNumber);
+    }
+});
+
+test("NTC 4.2.I e 4.2.II centrano le colonne 2-5 e lasciano a sinistra la prima colonna", async () => {
+    const step1 = await json("corpus/assets/ntc2018/4.2-step1.json");
+    const tables = step1.tables.filter(({ officialNumber }: { officialNumber: string }) => ["4.2.I", "4.2.II"].includes(officialNumber));
+    assert.equal(tables.length, 2);
+    for (const table of tables) {
+        let widestRow = 0;
+        for (const row of [...table.headers, ...table.rows]) {
+            let column = 1;
+            for (const cell of row) {
+                const span = cell.colSpan ?? 1;
+                const label = `${table.officialNumber} ${cell.text}`;
+                if (column === 1) {
+                    assert.equal(cell.align, undefined, label);
+                } else if (cell.text.trim() === "") {
+                    // Le righe di gruppo (UNI EN ...) non hanno celle di valore.
+                    assert.equal(cell.align, undefined, label);
+                } else {
+                    assert.equal(cell.align, "center", label);
+                }
+                column += span;
+            }
+            widestRow = Math.max(widestRow, column - 1);
+        }
+        assert.equal(widestRow, table.columnCount, table.officialNumber);
     }
 });
 
