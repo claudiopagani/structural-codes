@@ -50,7 +50,8 @@ export class LocalChatTransport implements ChatTransport {
       }
       // Structural boundary check; canonical verification remains exclusively server-side.
       if (!object(result) || result.ok !== true || !isChatNTCResponse(result.response)
-        || !object(result.validation) || result.validation.valid !== true || result.validation.scope !== "integrity-provenance-claim-coverage"
+        || !object(result.validation) || result.validation.valid !== true
+        || !["integrity-provenance-claim-coverage", "integrity-provenance-reference-resolution"].includes(String(result.validation.scope))
         || !object(result.evidence) || result.evidence.packageId !== result.response.evidencePackageId
         || typeof result.evidence.corpusFingerprint !== "string" || typeof result.evidence.artifactFingerprint !== "string"
         || (result.evidence.structuralCodesVersion !== undefined && typeof result.evidence.structuralCodesVersion !== "string")
@@ -60,9 +61,11 @@ export class LocalChatTransport implements ChatTransport {
         || (result.generation.model !== undefined && result.generation.model !== null && typeof result.generation.model !== "string")
         || !["generated", "abstained"].includes(String(result.generation.outcome))) throw new ChatTransportError("INVALID_RESULT", "La risposta ricevuta non ha un formato validato riconoscibile.");
       const answer = result.response;
-      const declared = new Map(answer.claims.flatMap((claim) => claim.citations).map((citation) => [citation.evidenceId, citation]));
-      if (result.citations.length !== answer.usedEvidenceIds.length || result.citations.some((citation, index) => {
-        if (!object(citation) || citation.evidenceId !== answer.usedEvidenceIds[index]) return true;
+      const references = answer.formatVersion === 3 ? answer.verifiedReferences
+        : answer.usedEvidenceIds.map((id) => answer.claims.flatMap((claim) => claim.citations).find((citation) => citation.evidenceId === id)!);
+      const declared = new Map(references.map((citation) => [citation.evidenceId, citation]));
+      if (result.citations.length !== references.length || result.citations.some((citation, index) => {
+        if (!object(citation) || citation.evidenceId !== references[index].evidenceId) return true;
         const source = declared.get(citation.evidenceId as string);
         return !source || Object.keys(citation).length !== Object.keys(source).length
           || Object.entries(source).some(([key, value]) => citation[key] !== value);

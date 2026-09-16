@@ -17,8 +17,11 @@ export interface ChatNTCGenerationInput {
   evidence: ChatNTCEvidencePackage;
   directives: ChatNTCDirectives;
   outputSchema: typeof CHATNTC_RESPONSE_JSON_SCHEMA;
-  /** One bounded validation repair. It contains no previous answer text. */
-  repair?: { issues: Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference">[] };
+  /** One bounded repair, only for references that could not be verified. */
+  repair?: {
+    issues: Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference">[];
+    previousOutput: ChatNTCProviderOutput;
+  };
   signal?: AbortSignal;
 }
 

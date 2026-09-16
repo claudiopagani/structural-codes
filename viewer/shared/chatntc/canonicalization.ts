@@ -2,26 +2,27 @@ import { findCrossReferences } from "../crossReferences.js";
 import { citationForEvidence, evidenceUnits, stableJson } from "./evidence.js";
 import { chatNTCIssueCategory } from "./issueCategories.js";
 import type {
-  ChatNTCCanonicalizationResult, ChatNTCCitation, ChatNTCClaim, ChatNTCClassification, ChatNTCEvidencePackage,
+  ChatNTCCanonicalizationResult, ChatNTCCitation, ChatNTCClassification, ChatNTCEvidencePackage,
   ChatNTCProviderOutput, ChatNTCRepository, ChatNTCTarget, ChatNTCValidationIssue,
 } from "./types.js";
 
+interface TextualReference { text: string; path: string }
+
 /**
- * Converts minimal provider bookkeeping into the rich public response.
- * It only associates explicit, unambiguous references with already-selected evidence.
+ * Converts a small provider response into the rich public response. Explicit references in
+ * prose and in references[] are resolved against the repository; provider metadata is never trusted.
  */
 export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput, evidence: ChatNTCEvidencePackage,
   repository: ChatNTCRepository): Promise<ChatNTCCanonicalizationResult> {
   const issueMap = new Map<string, ChatNTCValidationIssue>();
   const selected = evidenceUnits(evidence);
-  const evidenceIds = new Set(selected.flatMap((unit) => [unit.evidenceId, ...unit.blocks.map((block) => block.evidenceId)]));
-  const answerEvidenceIds = new Set<string>();
+  const citations = new Map<string, ChatNTCCitation>();
   let normalized = false;
 
   function add(code: string, path: string, message: string, details: Pick<ChatNTCValidationIssue, "reference" | "targets"> = {}) {
     const issue = { code, path, message, category: chatNTCIssueCategory(code), ...details };
-    const targetKey = stableJson(details.targets ?? []);
-    issueMap.set(`${code}\u0000${path}\u0000${details.reference ?? ""}\u0000${targetKey}`, issue);
+    const key = `${code}\u0000${path}\u0000${details.reference ?? ""}\u0000${stableJson(details.targets ?? [])}`;
+    issueMap.set(key, issue);
   }
 
   function selectedIdsForTargets(targets: ChatNTCTarget[]): string[] {
@@ -37,66 +38,89 @@ export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput,
     return [...ids];
   }
 
-  async function associateMentions(value: string, path: string, destination: Set<string>) {
-    const seen = new Set<string>();
-    for (const reference of findCrossReferences(value)) {
-      const targets = await repository.resolveExact(reference.text);
-      const canonicalTargets = (targets ?? []).map(({ unitId, blockId, assetId }) => ({ unitId,
-        ...(blockId ? { blockId } : {}), ...(assetId ? { assetId } : {}) }));
-      const mentionKey = `${reference.kind}:${reference.number}:${stableJson(canonicalTargets)}`;
-      if (seen.has(mentionKey)) { normalized = true; continue; }
-      seen.add(mentionKey);
-      if (!targets?.length) {
-        add("unresolved-reference", path, `Riferimento normativo non risolvibile: ${reference.text}`, { reference: reference.text });
-        continue;
-      }
-      const ids = selectedIdsForTargets(canonicalTargets);
-      if (ids.length === 0) {
-        add("unselected-canonical-reference", path, `Riferimento canonico reale non incluso nell'evidence: ${reference.text}`,
-          { reference: reference.text, targets: canonicalTargets });
-      } else if (ids.length === 1) {
-        if (!destination.has(ids[0])) normalized = true;
-        destination.add(ids[0]);
-      } else {
-        add("ambiguous-reference", path, `Riferimento canonico ambiguo: ${reference.text}`,
-          { reference: reference.text, targets: canonicalTargets });
-      }
+  for (const reference of textualReferences(output)) {
+    const targets = await repository.resolveExact(reference.text);
+    const canonicalTargets = (targets ?? []).map(({ unitId, blockId, assetId }) => ({ unitId,
+      ...(blockId ? { blockId } : {}), ...(assetId ? { assetId } : {}) }));
+    if (!targets?.length) {
+      add("unresolved-reference", reference.path, `Riferimento normativo non risolvibile: ${reference.text}`,
+        { reference: reference.text });
+      continue;
     }
+    if (targets.length > 1) {
+      add("ambiguous-reference", reference.path, `Riferimento normativo ambiguo: ${reference.text}`,
+        { reference: reference.text, targets: canonicalTargets });
+      continue;
+    }
+    const ids = selectedIdsForTargets(canonicalTargets);
+    if (ids.length === 0) {
+      add("unselected-canonical-reference", reference.path,
+        `Riferimento canonico reale non incluso nel contesto iniziale: ${reference.text}`,
+        { reference: reference.text, targets: canonicalTargets });
+      continue;
+    }
+    if (ids.length > 1) {
+      add("ambiguous-reference", reference.path, `Riferimento associato a più passaggi canonici: ${reference.text}`,
+        { reference: reference.text, targets: canonicalTargets });
+      continue;
+    }
+    const citation = citationForEvidence(evidence, ids[0]);
+    const key = stableJson({ unitId: citation.unitId, blockId: citation.blockId, assetId: citation.assetId });
+    if (citations.has(key)) normalized = true;
+    else citations.set(key, citation);
   }
 
-  const claims: ChatNTCClaim[] = [];
-  for (const [position, claim] of output.claims.entries()) {
-    const path = `response.claims[${position}]`;
-    const ids = new Set<string>();
-    for (const evidenceId of claim.evidenceIds) {
-      if (!evidenceIds.has(evidenceId)) add("evidence-not-selected", `${path}.evidenceIds`, "Evidence ID non incluso nel pacchetto.");
-      else if (ids.has(evidenceId)) normalized = true;
-      else ids.add(evidenceId);
-    }
-    await associateMentions(claim.text, path, ids);
-    const citations: ChatNTCCitation[] = [...ids].map((id) => citationForEvidence(evidence, id));
-    claims.push({ id: claim.id, text: claim.text, classification: claim.classification, citations });
-  }
-  await associateMentions(output.answer, "response.answer", answerEvidenceIds);
-  const usedEvidenceIds = [...new Set([...claims.flatMap((claim) => claim.citations.map((citation) => citation.evidenceId)), ...answerEvidenceIds])];
-  const classification = canonicalClassification(output.status, output.classification, claims.map((claim) => claim.classification), usedEvidenceIds.length);
-  if (classification !== output.classification) normalized = true;
+  const verifiedReferences = [...citations.values()];
+  const classification = canonicalClassification(output.status, output.classification, verifiedReferences.length);
+  const needsMoreEvidence = output.status !== "answered";
+  const answerMarkdown = normalizeVisibleAnswer(output.answerMarkdown);
+  if (classification !== output.classification || needsMoreEvidence !== output.needsMoreEvidence
+    || answerMarkdown !== output.answerMarkdown) normalized = true;
   return {
     response: {
-      formatVersion: 2, evidencePackageId: output.evidencePackageId, answer: output.answer, classification, status: output.status,
-      claims, usedEvidenceIds, warnings: output.warnings, needsMoreEvidence: output.needsMoreEvidence,
+      formatVersion: 3, evidencePackageId: output.evidencePackageId, answerMarkdown,
+      classification, status: output.status, verifiedReferences, warnings: [], needsMoreEvidence,
       externalResearchSuggested: output.externalResearchSuggested,
     },
     issues: [...issueMap.values()], normalized,
   };
 }
 
+function normalizeVisibleAnswer(value: string): string {
+  return value
+    .replace(/Evidence Package/giu, "fonti normative")
+    .replace(/selected evidence/giu, "fonti selezionate")
+    .replace(/claim coverage/giu, "copertura delle fonti")
+    .replace(/source-checked|double-reviewed/giu, "stato editoriale")
+    .replace(/corpus fingerprint/giu, "versione delle fonti")
+    .replace(/\b(?:unitId|blockId|assetId|retrieval|validator|package|block)\b/giu, "dato interno")
+    .replace(/\bevidence\b/giu, "fonti")
+    .replace(/blocchi omessi dal budget/giu, "contenuto non incluso")
+    .replace(/[ \t]{2,}/gu, " ")
+    .trim();
+}
+
+function textualReferences(output: ChatNTCProviderOutput): TextualReference[] {
+  const values: TextualReference[] = findCrossReferences(output.answerMarkdown)
+    .map((reference) => ({ text: reference.text, path: "response.answerMarkdown" }));
+  for (const [position, declared] of output.references.entries()) {
+    const found = findCrossReferences(declared);
+    if (found.length) values.push(...found.map((reference) => ({ text: reference.text, path: `response.references[${position}]` })));
+    else values.push({ text: declared, path: `response.references[${position}]` });
+  }
+  const seen = new Set<string>();
+  return values.filter((reference) => {
+    const key = `${reference.path.startsWith("response.answer") ? "answer" : "declared"}\u0000${reference.text.trim().toUpperCase()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function canonicalClassification(status: ChatNTCProviderOutput["status"], declared: ChatNTCClassification,
-  claims: ChatNTCClassification[], usedCount: number): ChatNTCClassification {
-  if (status === "abstained") return "no-direct-reference";
-  if (claims.includes("interpretation")) return "interpretation";
-  if (claims.includes("combined-reference") || usedCount > 1) return "combined-reference";
-  if (claims.includes("no-direct-reference")) return "no-direct-reference";
-  if (claims.includes("direct-reference")) return "direct-reference";
-  return declared;
+  referenceCount: number): ChatNTCClassification {
+  if (status === "abstained" || referenceCount === 0) return "no-direct-reference";
+  if (declared === "interpretation" || declared === "no-direct-reference") return declared;
+  if (referenceCount > 1) return "combined-reference";
+  return "direct-reference";
 }

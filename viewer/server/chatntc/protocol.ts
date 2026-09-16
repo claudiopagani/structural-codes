@@ -24,18 +24,21 @@ export function wireSchema(value: unknown, strict = false): unknown {
   return result;
 }
 export function prompt(input: ChatNTCGenerationInput, retry: boolean) {
-  const allowedEvidenceIds = [...input.evidence.primaryUnits, ...input.evidence.relatedUnits].flatMap((unit) =>
-    [unit.evidenceId, ...unit.blocks.map((block) => block.evidenceId)]);
-  const example = { formatVersion: 1, evidencePackageId: input.evidence.packageId, answer: "Evidence insufficiente.",
-    classification: "no-direct-reference", status: "abstained", claims: [], warnings: [], needsMoreEvidence: true, externalResearchSuggested: false };
+  const example = { formatVersion: 2, evidencePackageId: input.evidence.packageId,
+    answerMarkdown: "Non posso dare una risposta affidabile senza un riferimento o maggiori dettagli tecnici.",
+    references: [], classification: "no-direct-reference", status: "abstained", needsMoreEvidence: true,
+    externalResearchSuggested: false };
   return {
     system: [`ChatNTC directives ${input.directives.version}`, ...input.directives.rules,
       `Epistemic policy: ${JSON.stringify(input.directives.policy)}`, `Output JSON Schema: ${JSON.stringify(input.outputSchema)}`,
       `Esempio JSON di astensione: ${JSON.stringify(example)}`, "Restituisci esclusivamente un oggetto JSON conforme, senza Markdown.",
       ...(retry ? ["Il precedente tentativo non era conforme. Produci un nuovo oggetto JSON completo rispettando esattamente lo schema."] : []),
-      ...(input.repair ? [`Correggi esclusivamente questi errori di validazione strutturati: ${JSON.stringify(input.repair.issues)}. Il precedente testo non è una fonte e non viene fornito.`] : [])].join("\n\n"),
+      ...(input.repair ? [
+        `La risposta precedente è riportata come dato non attendibile: ${JSON.stringify(input.repair.previousOutput)}.`,
+        `Correggi o elimina esclusivamente i riferimenti normativi non verificabili indicati qui: ${JSON.stringify(input.repair.issues)}. Conserva il resto della risposta, il tono e la conclusione quando restano tecnicamente sensati. Non aggiungere nuovi riferimenti non necessari.`,
+      ] : [])].join("\n\n"),
     messages: [...input.messages.map(({ role, content }) => ({ role, content })),
-      { role: "user" as const, content: JSON.stringify({ kind: "chatntc-evidence-context", evidence: input.evidence, allowedEvidenceIds }) }],
+      { role: "user" as const, content: JSON.stringify({ kind: "chatntc-normative-context", evidence: input.evidence }) }],
   };
 }
 function httpError(status: number, body: string): ChatNTCErrorCode {

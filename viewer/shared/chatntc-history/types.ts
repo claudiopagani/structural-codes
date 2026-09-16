@@ -11,7 +11,7 @@ export interface ChatHistoryUserMessage {
 /** A compact historical snapshot of a server-validated result, not fresh normative evidence. */
 export interface ChatHistoryAssistantMessage {
   id: string; role: "assistant"; turnId: string; content: string; timestamp: string;
-  answer: Omit<ChatNTCResponse, "answer">;
+  answer: ChatHistoryAnswer;
   provenance: {
     provider: string | null; model: string | null;
     structuralCodesVersion: string | null; corpusFingerprint: string; artifactFingerprint: string;
@@ -21,6 +21,8 @@ export interface ChatHistoryAssistantMessage {
   evidenceWarnings: ChatResult["evidence"]["warnings"];
   evidenceReduced: boolean;
 }
+type StoredResponse<T> = T extends { formatVersion: 3 } ? Omit<T, "answerMarkdown"> : Omit<T, "answer">;
+export type ChatHistoryAnswer = StoredResponse<ChatNTCResponse>;
 export type ChatHistoryMessage = ChatHistoryUserMessage | ChatHistoryAssistantMessage;
 export interface ChatConversation {
   id: string; schemaVersion: typeof CHAT_HISTORY_SCHEMA_VERSION; revision: number;

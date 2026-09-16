@@ -6,22 +6,14 @@ const nonEmptyString = { type: "string", pattern: "\\S" } as const;
 /** Minimal provider wire schema. Canonical citation metadata is reconstructed server-side. */
 export const CHATNTC_RESPONSE_JSON_SCHEMA = {
   $schema: "http://json-schema.org/draft-07/schema#",
-  title: "ChatNTCProviderOutput v1",
+  title: "ChatNTCProviderOutput v2",
   type: "object", additionalProperties: false,
-  required: ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "warnings", "needsMoreEvidence", "externalResearchSuggested"],
+  required: ["formatVersion", "evidencePackageId", "answerMarkdown", "references", "classification", "status", "needsMoreEvidence", "externalResearchSuggested"],
   properties: {
-    formatVersion: { const: 1 }, evidencePackageId: nonEmptyString, answer: nonEmptyString,
+    formatVersion: { const: 2 }, evidencePackageId: nonEmptyString, answerMarkdown: nonEmptyString,
+    references: { type: "array", maxItems: 24, items: nonEmptyString },
     classification: { enum: classifications },
     status: { enum: ["answered", "partial", "abstained"] },
-    claims: { type: "array", items: {
-      type: "object", additionalProperties: false,
-      required: ["id", "text", "classification", "evidenceIds"],
-      properties: {
-        id: nonEmptyString, text: nonEmptyString, classification: { enum: classifications },
-        evidenceIds: { type: "array", items: nonEmptyString },
-      },
-    } },
-    warnings: { type: "array", items: nonEmptyString },
     needsMoreEvidence: { type: "boolean" }, externalResearchSuggested: { type: "boolean" },
   },
 } as const;
@@ -33,13 +25,11 @@ const keys = (value: Record<string, unknown>, allowed: string[]) => Object.keys(
 const classification = (value: unknown) => typeof value === "string" && (classifications as readonly string[]).includes(value);
 
 export function isChatNTCProviderOutput(value: unknown): value is ChatNTCProviderOutput {
-  return object(value) && keys(value, ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
-    && value.formatVersion === 1 && text(value.evidencePackageId) && text(value.answer)
+  return object(value) && keys(value, ["formatVersion", "evidencePackageId", "answerMarkdown", "references", "classification", "status", "needsMoreEvidence", "externalResearchSuggested"])
+    && value.formatVersion === 2 && text(value.evidencePackageId) && text(value.answerMarkdown)
+    && strings(value.references) && value.references.length <= 24
     && classification(value.classification) && ["answered", "partial", "abstained"].includes(String(value.status))
-    && strings(value.warnings) && typeof value.needsMoreEvidence === "boolean" && typeof value.externalResearchSuggested === "boolean"
-    && Array.isArray(value.claims) && value.claims.every((claim) => object(claim)
-      && keys(claim, ["id", "text", "classification", "evidenceIds"]) && text(claim.id) && text(claim.text)
-      && classification(claim.classification) && strings(claim.evidenceIds));
+    && typeof value.needsMoreEvidence === "boolean" && typeof value.externalResearchSuggested === "boolean";
 }
 
 function isCitation(value: unknown): value is ChatNTCCitation {
@@ -53,6 +43,13 @@ function isCitation(value: unknown): value is ChatNTCCitation {
 
 /** Same structural check used in STEP 1, now reusable by adapters without running retrieval. */
 export function isChatNTCResponse(value: unknown): value is ChatNTCResponse {
+  if (object(value) && value.formatVersion === 3) {
+    return keys(value, ["formatVersion", "evidencePackageId", "answerMarkdown", "classification", "status", "verifiedReferences", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
+      && text(value.evidencePackageId) && text(value.answerMarkdown) && classification(value.classification)
+      && ["answered", "partial", "abstained"].includes(String(value.status))
+      && Array.isArray(value.verifiedReferences) && value.verifiedReferences.every(isCitation)
+      && strings(value.warnings) && typeof value.needsMoreEvidence === "boolean" && typeof value.externalResearchSuggested === "boolean";
+  }
   return object(value) && keys(value, ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "usedEvidenceIds", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
     && (value.formatVersion === 1 ? value.status === undefined
       : value.formatVersion === 2 && ["answered", "partial", "abstained"].includes(String(value.status)))

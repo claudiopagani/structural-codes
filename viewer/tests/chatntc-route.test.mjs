@@ -41,12 +41,10 @@ test("route Vinext local/debug esegue l'intera pipeline con fetch DeepSeek simul
     assert.equal(init.headers.authorization, `Bearer ${key}`);
     assert.equal(init.body.includes(key), false);
     const context = JSON.parse(JSON.parse(init.body).messages.at(-1).content);
-    const evidenceId = context.allowedEvidenceIds[0];
     return Response.json({ choices: [{ finish_reason: "stop", message: { role: "assistant", content: JSON.stringify({
-      formatVersion: 1, evidencePackageId: context.evidence.packageId,
-      answer: "Riferimento individuato nel corpus.", classification: "direct-reference", status: "answered",
-      claims: [{ id: "c1", text: "Riferimento individuato nel corpus.", classification: "direct-reference", evidenceIds: [evidenceId] }],
-      warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
+      formatVersion: 2, evidencePackageId: context.evidence.packageId,
+      answerMarkdown: "Il §7.3.6.1 è il riferimento pertinente.", references: ["NTC 2018 §7.3.6.1"],
+      classification: "direct-reference", status: "answered", needsMoreEvidence: false, externalResearchSuggested: false,
     }) } }] });
   });
   await withEnvironment({ CHATNTC_ENABLED: "true", CHATNTC_DEBUG: "true" }, async () => {
@@ -65,16 +63,17 @@ test("route Vinext local/debug esegue l'intera pipeline con fetch DeepSeek simul
   });
 });
 
-test("route compilata blocca output inventato e restituisce astensione senza provider", async (t) => {
+test("route compilata blocca un output non separabile e consente una risposta generale", async (t) => {
   let calls = 0;
   t.mock.method(globalThis, "fetch", async (_url, init) => {
     calls += 1;
     const context = JSON.parse(JSON.parse(init.body).messages.at(-1).content);
+    const general = context.evidence.question === "7.99.4";
     return Response.json({ choices: [{ finish_reason: "stop", message: { role: "assistant", content: JSON.stringify({
-      formatVersion: 1, evidencePackageId: context.evidence.packageId,
-      answer: "NTC 2018 §7.99.4", classification: "direct-reference", status: "answered",
-      claims: [{ id: "c1", text: "Riferimento fixture.", classification: "direct-reference", evidenceIds: [context.allowedEvidenceIds[0]] }],
-      warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
+      formatVersion: 2, evidencePackageId: context.evidence.packageId,
+      answerMarkdown: general ? "Non posso attribuire una prescrizione a quel numero, ma posso aiutarti a chiarire il tema tecnico." : "NTC 2018 §7.99.4",
+      references: general ? [] : ["§7.99.4"], classification: general ? "no-direct-reference" : "direct-reference",
+      status: "answered", needsMoreEvidence: false, externalResearchSuggested: false,
     }) } }] });
   });
   await withEnvironment({ CHATNTC_ENABLED: "true", CHATNTC_DEBUG: "true" }, async () => {
@@ -90,8 +89,8 @@ test("route compilata blocca output inventato e restituisce astensione senza pro
     const abstention = await response.json();
     assert.equal(abstention.response.classification, "no-direct-reference");
     assert.equal(abstention.validation.valid, true);
-    assert.equal(abstention.generation.provider, null);
-    assert.equal(calls, 1);
+    assert.equal(abstention.generation.provider, "deepseek");
+    assert.equal(calls, 3);
   });
 });
 

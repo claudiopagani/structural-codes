@@ -55,16 +55,25 @@ test("create, persistent messages/citations/provenance, simulated reload and act
   assert.deepEqual(turnsFromHistory(saved.messages)[0].result, result);
 });
 
-test("history schema v2 ripristina sia answer wire v1 esistenti sia nuove answer wire v2", async (t) => {
+test("history schema v2 ripristina answer wire v1/v2 e risposta canonica v3", async (t) => {
   const { store } = setup(t);
   const responseV2 = { ...response, formatVersion: 2, status: "answered" };
   const turnsV2 = [{ ...turns[0], id: "turn-v2", result: { ...result, response: responseV2 } }];
   const messagesV2 = historyMessages(turnsV2);
-  const created = await store.createConversation({ title: "Wire compatibile", messages: [...messages, ...messagesV2] });
+  const responseV3 = { formatVersion: 3, evidencePackageId: "package", answerMarkdown: "Risposta canonica v3.",
+    classification: "direct-reference", status: "answered", verifiedReferences: [citation], warnings: [],
+    needsMoreEvidence: false, externalResearchSuggested: false };
+  const resultV3 = { ...result, response: responseV3, validation: { valid: true,
+    scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } };
+  const messagesV3 = historyMessages([{ ...turns[0], id: "turn-v3", result: resultV3 }]);
+  const created = await store.createConversation({ title: "Wire compatibile", messages: [...messages, ...messagesV2, ...messagesV3] });
   const restored = turnsFromHistory(created.messages);
   assert.equal(restored[0].result.response.formatVersion, 1);
   assert.equal(restored[1].result.response.formatVersion, 2);
   assert.equal(restored[1].result.response.status, "answered");
+  assert.equal(restored[2].result.response.formatVersion, 3);
+  assert.equal(restored[2].result.response.answerMarkdown, "Risposta canonica v3.");
+  assert.deepEqual(restored[2].result.response.verifiedReferences, [citation]);
 });
 
 test("two independent conversations, updatedAt ordering and rename without replacing messages", async (t) => {

@@ -31,22 +31,29 @@ export function readConversation(value: unknown): ChatConversation {
       if (message.status === "complete" && value.messages[i + 1]?.role !== "assistant") return invalid();
     } else if (message.role === "assistant") {
       const previous = value.messages[i - 1];
+      const hydrated = object(message.answer) && message.answer.formatVersion === 3
+        ? { ...message.answer, answerMarkdown: message.content }
+        : object(message.answer) ? { ...message.answer, answer: message.content } : null;
       if (!keys(message, ["id", "role", "turnId", "content", "timestamp", "answer", "provenance", "evidenceWarnings", "evidenceReduced"])
         || previous?.role !== "user" || previous.id !== message.turnId || previous.status !== "complete"
-        || !object(message.answer) || "answer" in message.answer || !isChatNTCResponse({ ...message.answer, answer: message.content })) return invalid();
+        || !object(message.answer) || "answer" in message.answer || "answerMarkdown" in message.answer
+        || !hydrated || !isChatNTCResponse(hydrated)) return invalid();
       // The core response guard rejects unknown fields in claims and citations as well.
       const p = message.provenance;
       if (!object(p) || !keys(p, ["provider", "model", "structuralCodesVersion", "corpusFingerprint", "artifactFingerprint", "policyVersion", "outcome", "validation"])
         || !nullableText(p.provider) || !nullableText(p.model) || !nullableText(p.structuralCodesVersion)
         || !text(p.corpusFingerprint) || !text(p.artifactFingerprint) || !text(p.policyVersion)
         || !["generated", "abstained"].includes(String(p.outcome)) || !object(p.validation)
-        || !keys(p.validation, ["valid", "scope"]) || p.validation.valid !== true || p.validation.scope !== "integrity-provenance-claim-coverage"
+        || !keys(p.validation, ["valid", "scope", "stage"]) || p.validation.valid !== true
+        || !["integrity-provenance-claim-coverage", "integrity-provenance-reference-resolution"].includes(String(p.validation.scope))
+        || (p.validation.stage !== undefined && !["GENERATED", "NORMALIZED", "EXPANDED", "REPAIRED", "PARTIALLY_SANITIZED", "HARD_REJECTED"].includes(String(p.validation.stage)))
         || typeof message.evidenceReduced !== "boolean" || !Array.isArray(message.evidenceWarnings)
         || !message.evidenceWarnings.every((w) => object(w) && keys(w, ["code", "unitId"]) && text(w.code) && optionalText(w.unitId))) return invalid();
-      const answer = { ...message.answer, answer: message.content };
-      if (!isChatNTCResponse(answer)) return invalid();
-      const cited = new Set(answer.claims.flatMap((claim) => claim.citations.map((citation) => citation.evidenceId)));
-      if (cited.size !== answer.usedEvidenceIds.length || answer.usedEvidenceIds.some((id) => !cited.has(id))) return invalid();
+      if (!isChatNTCResponse(hydrated)) return invalid();
+      if (hydrated.formatVersion !== 3) {
+        const cited = new Set(hydrated.claims.flatMap((claim) => claim.citations.map((citation) => citation.evidenceId)));
+        if (cited.size !== hydrated.usedEvidenceIds.length || hydrated.usedEvidenceIds.some((id) => !cited.has(id))) return invalid();
+      }
     } else return invalid();
   }
   return structuredClone(value) as unknown as ChatConversation;

@@ -27,11 +27,9 @@ const request = (value = { question }, options = {}) => new Request("http://loca
 const mockEnvelope = (value, options = {}) => Response.json({ choices: [{ index: 0, finish_reason: "stop", message: { role: "assistant", content: JSON.stringify(value) }, ...options }] });
 
 function validResponse(input) {
-  const evidenceId = input.evidence.primaryUnits[0].evidenceId;
-  return { formatVersion: 1, evidencePackageId: input.evidence.packageId,
-    answer: "Riferimento individuato nel corpus fornito.", classification: "direct-reference", status: "answered",
-    claims: [{ id: "claim-1", text: "Riferimento individuato nel corpus fornito.", classification: "direct-reference", evidenceIds: [evidenceId] }],
-    warnings: [], needsMoreEvidence: false, externalResearchSuggested: false };
+  return { formatVersion: 2, evidencePackageId: input.evidence.packageId,
+    answerMarkdown: "Il §7.3.6.1 è il riferimento pertinente.", references: ["NTC 2018 §7.3.6.1"],
+    classification: "direct-reference", status: "answered", needsMoreEvidence: false, externalResearchSuggested: false };
 }
 
 function providerOutput(input, overrides = {}) {
@@ -79,7 +77,7 @@ test("DeepSeek: endpoint, auth server-side, messages, direttive e JSON request c
     assert.deepEqual(body.messages.slice(1, -1), input.messages);
     const context = JSON.parse(body.messages.at(-1).content);
     assert.deepEqual(context.evidence, input.evidence);
-    assert.ok(context.allowedEvidenceIds.length > 1);
+    assert.equal(context.kind, "chatntc-normative-context");
     assert.equal(init.body.includes(key), false);
     return mockEnvelope(validResponse(input));
   });
@@ -94,8 +92,8 @@ test("DeepSeek: endpoint, auth server-side, messages, direttive e JSON request c
 test("schema JSON condiviso e guard runtime concordano sul contratto strutturale", async () => {
   const validate = new Ajv({ allErrors: true }).compile(CHATNTC_RESPONSE_JSON_SCHEMA);
   const valid = validResponse(await generationInput());
-  for (const value of [valid, null, [], {}, { ...valid, unexpected: true }, { ...valid, warnings: [""] },
-    { ...valid, classification: "invented" }, { ...valid, claims: [null] }, { ...valid, needsMoreEvidence: "yes" }]) {
+  for (const value of [valid, null, [], {}, { ...valid, unexpected: true }, { ...valid, references: [""] },
+    { ...valid, classification: "invented" }, { ...valid, answerMarkdown: "" }, { ...valid, needsMoreEvidence: "yes" }]) {
     assert.equal(Boolean(validate(value)), isChatNTCProviderOutput(value), JSON.stringify(validate.errors));
   }
 });
@@ -121,7 +119,7 @@ for (const [name, fetchImpl, code] of [
 
 test("chiave eventualmente riflessa dal provider non può raggiungere il client", async () => {
   const input = await generationInput();
-  const value = { ...validResponse(input), answer: key };
+  const value = { ...validResponse(input), answerMarkdown: key };
   const adapter = new DeepSeekAdapter({ apiKey: key }, async () => mockEnvelope(value));
   await rejectsCode(adapter.generate(input), "INVALID_PROVIDER_RESPONSE");
   const escaped = new DeepSeekAdapter({ apiKey: key }, async () => new Response(JSON.stringify({ choices: [{ finish_reason: "stop", message: { role: "assistant", content: JSON.stringify(value).replace(key, key.split("").map((character) => `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`).join("")) } }] })));
@@ -176,7 +174,7 @@ test("pipeline end-to-end: retrieval reale, mock DeepSeek, risposta e citazioni 
   assert.equal(calls, 1);
   assert.equal(result.ok, true);
   assert.equal(result.validation.valid, true);
-  assert.deepEqual(result.citations, result.response.claims.flatMap((claim) => claim.citations));
+  assert.deepEqual(result.citations, result.response.verifiedReferences);
   assert.equal(result.generation.provider, "deepseek");
   assert.equal(result.generation.model, "deepseek-flash");
   assert.equal(result.evidence.structuralCodesVersion, (await repository().identity()).version);
@@ -219,84 +217,139 @@ test("field test pareti: bookkeeping canonico associa 7.4.6.2.1, 7.4.2.1 e C7.2.
   const query = "Nel caso di pareti accoppiate, ai sensi del § 7.4.6.2.1 delle NTC 2018, la verifica di duttilità è richiesta anche per le fasce di piano oppure può essere omessa applicando la combinazione sismica prevista al § 7.4.2.1?";
   const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     calls += 1;
-    return providerOutput(input, { answer: "Ai sensi del § 7.4.6.2.1 e del § 7.4.2.1, letti con C7.2.2, la conclusione è interpretativa; il § 7.4.2.1 resta parte del quadro.",
-      classification: "combined-reference", claims: [{ id: "c1", text: "Dalla lettura del § 7.4.6.2.1, del § 7.4.2.1 e di C7.2.2 consegue una conclusione progettuale.", classification: "interpretation", evidenceIds: [] }] });
+    return providerOutput(input, { answerMarkdown: "Non automaticamente. Il § 7.4.6.2.1 e il § 7.4.2.1 vanno letti insieme a C7.2.2 per distinguere le verifiche delle fasce.",
+      references: ["NTC 2018 §7.4.6.2.1", "NTC 2018 §7.4.2.1", "C7.2.2"], classification: "interpretation" });
   }) });
   assert.equal(calls, 1);
   assert.equal(result.response.classification, "interpretation");
   assert.deepEqual(new Set(result.citations.map((citation) => citation.numbering)), new Set(["7.4.6.2.1", "7.4.2.1", "C7.2.2"]));
-  assert.equal(result.validation.accounting, "normalized");
+  assert.notEqual(result.validation.stage, "REPAIRED");
 });
 
-test("field test q²: discovery 7.3.4 e formula 7.3.8 espandono e rigenerano una sola volta", async () => {
+test("field test q²: discovery 7.3.4 e formula 7.3.8 espandono senza rigenerare", async () => {
   let calls = 0;
   const query = "Al § 7.3.6.1, per la verifica di rigidezza, la norma richiede che q·dr sia inferiore a un limite funzione dell’altezza interpiano. Ma dr, ai sensi del § 7.3.3.3, deriva già dallo spostamento dell’analisi lineare moltiplicato per un fattore di duttilità che può essere pari a q. Quindi lo spostamento ottenuto dal modello deve essere moltiplicato per q²?";
   const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     calls += 1;
-    if (calls === 2) {
-      assert.ok(input.repair.issues.some((issue) => issue.code === "unselected-canonical-reference" && issue.reference === "§ 7.3.4"));
-      assert.ok(input.evidence.primaryUnits.some((unit) => unit.numbering === "7.3.4"));
-      assert.ok([...input.evidence.primaryUnits, ...input.evidence.relatedUnits].some((unit) => unit.blocks.some((block) => block.assetId?.endsWith("7.3.3.3-7.3.8"))));
-    }
-    return providerOutput(input, { answer: "Il § 7.3.3.3, la formula [7.3.8] e il § 7.3.4 richiedono una lettura coordinata.",
-      classification: "combined-reference", claims: [{ id: "c1", text: "Il § 7.3.3.3 sostiene una conclusione interpretativa.", classification: "interpretation", evidenceIds: [] }] });
+    return providerOutput(input, { answerMarkdown: "No: non devi moltiplicare automaticamente lo spostamento del modello per q². Il § 7.3.3.3 e le formule [7.3.8] e [7.3.9] definiscono il passaggio dallo spostamento elastico. La verifica del § 7.3.6.1 non introduce automaticamente un secondo fattore q; il § 7.3.4 completa il quadro.",
+      references: ["NTC 2018 §7.3.3.3", "NTC 2018 §7.3.6.1", "formula [7.3.8]", "formula [7.3.9]", "NTC 2018 §7.3.4"], classification: "interpretation" });
   }) });
-  assert.equal(calls, 2);
+  assert.equal(calls, 1);
   assert.equal(result.response.classification, "interpretation");
-  assert.equal(result.validation.accounting, "expanded-and-regenerated");
+  assert.equal(result.validation.stage, "EXPANDED");
+  assert.ok(result.citations.some((citation) => citation.assetId?.endsWith("7.3.3.3-7.3.8")));
+  assert.ok(result.citations.some((citation) => citation.assetId?.endsWith("7.3.3.3-7.3.9")));
+  assert.match(result.response.answerMarkdown, /^No:/u);
+  assert.doesNotMatch(result.response.answerMarkdown, /evidence|source-checked|unitId|retrieval|validator/iu);
 });
 
-test("pipeline: un solo retry espande evidence per un riferimento canonico reale", async () => {
+test("field test sistema a pareti: riferimenti post-hoc reali e tabella arrivano all'utente", async () => {
+  let calls = 0;
+  const query = "In un edificio in c.a. con pareti principali ed elementi secondari, quali verifiche aggiuntive devo considerare?";
+  const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls += 1;
+    return providerOutput(input, { answerMarkdown: "Il punto chiave è separare il sistema resistente principale dagli elementi secondari. Vanno coordinati il §7.2.3, il §7.2.5, il §7.3.6.1 e il §7.4.4.1.2; la Tab.7.2.I completa il quadro delle verifiche.",
+      references: ["NTC 2018 §7.2.3", "NTC 2018 §7.2.5", "NTC 2018 §7.3.6.1", "NTC 2018 §7.4.4.1.2", "Tab.7.2.I"],
+      classification: "combined-reference" });
+  }) });
+  assert.equal(calls, 1);
+  assert.equal(result.validation.stage, "EXPANDED");
+  assert.deepEqual(new Set(result.citations.map((citation) => citation.assetNumber ?? citation.numbering)),
+    new Set(["7.2.3", "7.2.5", "7.3.6.1", "7.4.4.1.2", "7.2.I"]));
+});
+
+test("field test non dissipativo: §4.1.2.3.4.2 viene risolto post-hoc senza bloccare", async () => {
+  let calls = 0;
+  const result = await runChatNTC({ question: "Quali regole restano applicabili al comportamento non dissipativo?" }, {
+    repository: repository(), provider: () => mockedProvider(async (input) => {
+      calls += 1;
+      return providerOutput(input, { answerMarkdown: "Non tutte le regole della progettazione dissipativa si trasferiscono automaticamente. Il §4.1.2.3.4.2 resta un riferimento utile per la verifica degli elementi in calcestruzzo armato.",
+        references: ["NTC 2018 §4.1.2.3.4.2"], classification: "interpretation" });
+    }),
+  });
+  assert.equal(calls, 1);
+  assert.ok(result.citations.some((citation) => citation.numbering === "4.1.2.3.4.2"));
+  assert.notEqual(result.validation.stage, "REPAIRED");
+});
+
+test("formula inesistente non diventa un riferimento verificato e non elimina la parte generale", async () => {
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls += 1;
+    return { ...validResponse(input), answerMarkdown: "La formula [7.99.99] imporrebbe il controllo. Dal punto di vista progettuale resta utile una verifica di sensibilità.",
+      references: ["formula [7.99.99]"] };
+  }) });
+  assert.equal(calls, 2);
+  assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.99/u);
+  assert.match(result.response.answerMarkdown, /verifica di sensibilità/u);
+  assert.equal(result.citations.some((citation) => citation.assetNumber === "7.99.99"), false);
+});
+
+test("classification mismatch e lessico backend sono normalizzati senza repair", async () => {
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls += 1;
+    return { ...validResponse(input), classification: "combined-reference",
+      answerMarkdown: "L'Evidence Package e il retrieval indicano il §7.3.6.1." };
+  }) });
+  assert.equal(calls, 1);
+  assert.equal(result.response.classification, "direct-reference");
+  assert.doesNotMatch(result.response.answerMarkdown, /evidence|package|retrieval/iu);
+  assert.equal(result.validation.stage, "NORMALIZED");
+});
+
+test("pipeline: espande deterministicamente un riferimento canonico reale senza retry", async () => {
   const inputs = [];
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     inputs.push(structuredClone(input));
-    if (inputs.length === 1) return { ...validResponse(input), answer: "La lettura va coordinata con §4.1." };
-    assert.ok(input.repair?.issues.some((issue) => issue.code === "unselected-canonical-reference"));
-    assert.equal(JSON.stringify(input).includes("La lettura va coordinata"), false);
-    assert.ok(input.evidence.primaryUnits.some((unit) => unit.numbering === "4.1"));
-    return validResponse(input);
+    return { ...validResponse(input), answerMarkdown: "La lettura va coordinata con §4.1.", references: ["NTC 2018 §4.1"] };
   }) });
-  assert.equal(inputs.length, 2);
+  assert.equal(inputs.length, 1);
   assert.equal(result.validation.valid, true);
+  assert.equal(result.validation.stage, "EXPANDED");
+  assert.ok(result.citations.some((citation) => citation.numbering === "4.1"));
 });
 
-test("pipeline: il validation repair non supera mai un retry", async () => {
+test("pipeline: un solo repair e sanitizzazione conservativa preservano il contenuto generale", async () => {
   let calls = 0;
-  await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     calls += 1;
-    return { ...validResponse(input), answer: calls === 1 ? "La lettura va coordinata con §4.1." : "Secondo tentativo ancora invalido §7.99.4." };
-  }) }), "CITATION_VALIDATION_FAILED");
+    if (calls === 2) assert.ok(input.repair?.previousOutput.answerMarkdown.includes("§7.99.4"));
+    return { ...validResponse(input), answerMarkdown: "Come prescritto dal §7.99.4, il modello va modificato. Il controllo di sensibilità resta comunque utile.", references: ["§7.99.4"] };
+  }) });
   assert.equal(calls, 2);
+  assert.equal(result.validation.stage, "PARTIALLY_SANITIZED");
+  assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.4/u);
+  assert.match(result.response.answerMarkdown, /controllo di sensibilità/u);
 });
 
-test("pipeline: riferimenti inventati e identity canoniche errate non attivano retry", async () => {
+test("pipeline: un riferimento inventato attiva un solo repair mirato", async () => {
   let calls = 0;
-  await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     calls += 1;
-    return { ...validResponse(input), answer: "Fonte inventata §7.99.4." };
-  }) }), "CITATION_VALIDATION_FAILED");
-  assert.equal(calls, 1);
+    return calls === 1 ? { ...validResponse(input), answerMarkdown: "Fonte inventata §7.99.4.", references: ["§7.99.4"] }
+      : { ...validResponse(input), answerMarkdown: "Il §7.3.6.1 è il riferimento verificabile.", references: ["§7.3.6.1"] };
+  }) });
+  assert.equal(calls, 2);
+  assert.equal(result.validation.stage, "REPAIRED");
+  assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.3.6.1"]);
 });
 
 test("pipeline: no-direct-reference answered resta una risposta generata", async () => {
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     const response = validResponse(input);
+    response.answerMarkdown = "Dal punto di vista progettuale conviene controllare la sensibilità del modello.";
+    response.references = [];
     response.classification = "no-direct-reference";
-    response.claims[0].classification = "no-direct-reference";
     return response;
   }) });
   assert.equal(result.response.status, "answered");
   assert.equal(result.response.classification, "no-direct-reference");
   assert.equal(result.generation.outcome, "generated");
-  assert.equal(result.citations.length, 1);
+  assert.equal(result.citations.length, 0);
 });
 
-test("pipeline respinge hallucination, output mock malformato e alterazioni del pacchetto", async () => {
-  await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    const response = validResponse(input);
-    response.claims[0].evidenceIds = ["urn:structural-codes:it:evidence:invented"];
-    return response;
-  }) }), "CITATION_VALIDATION_FAILED");
+test("pipeline respinge output mock malformato e alterazioni del pacchetto", async () => {
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async () => ({ answer: "incomplete" })) }), "INVALID_RESPONSE_SCHEMA");
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     const response = validResponse(input);
@@ -305,18 +358,20 @@ test("pipeline respinge hallucination, output mock malformato e alterazioni del 
   }) }), "CITATION_VALIDATION_FAILED");
 });
 
-test("no evidence: astensione deterministica validata, provider e chiave non necessari", async () => {
-  let configured = false;
+test("assenza di fonti iniziali: il provider può dare una risposta tecnica generale", async () => {
+  let calls = 0;
   const repo = repository();
   let identities = 0;
   const observed = { ...repo, identity: async () => { identities += 1; return repo.identity(); } };
-  const result = await runChatNTC({ question: "7.99.4" }, { repository: observed, provider: () => { configured = true; throw new Error("not configured"); } });
-  assert.equal(configured, false);
+  const result = await runChatNTC({ question: "Quale controllo di sensibilità conviene eseguire?" }, { repository: observed,
+    provider: () => mockedProvider(async (input) => { calls += 1; return { ...validResponse(input),
+      answerMarkdown: "Conviene confrontare almeno due ipotesi ragionevoli di rigidezza.", references: [], classification: "no-direct-reference" }; }) });
+  assert.equal(calls, 1);
   assert.ok(identities >= 2); // retrieval AND mandatory validation, even on abstention
   assert.equal(result.response.classification, "no-direct-reference");
-  assert.equal(result.response.needsMoreEvidence, true);
+  assert.equal(result.response.needsMoreEvidence, false);
   assert.deepEqual(result.citations, []);
-  assert.equal(result.generation.provider, null);
+  assert.equal(result.generation.provider, "fixture");
   assert.equal(result.validation.valid, true);
 });
 
@@ -327,7 +382,8 @@ test("errori retrieval e validazione repository rimangono sanitizzati", async ()
   await rejectsCode(runChatNTC({ question: "7.99.4" }, { repository: { ...repo, identity: async () => {
     if (++identities > 1) throw new Error(key);
     return repo.identity();
-  } }, provider: () => mockedProvider() }), "VALIDATION_FAILED");
+  } }, provider: () => mockedProvider(async (input) => ({ ...validResponse(input), answerMarkdown: "Controlla la sensibilità del modello.",
+    references: [], classification: "no-direct-reference" })) }), "VALIDATION_FAILED");
 });
 
 test("HTTP: domanda e storico minimo sono transitori, senza system role dal client", async () => {
@@ -392,7 +448,7 @@ test("HTTP mappa errori distinti senza restituire output o citazioni non validat
     [() => configuredProvider({ CHATNTC_PROVIDER: "deepseek" }), 503, "API_KEY_MISSING"],
     [() => mockedProvider(async () => { throw new ChatNTCServerError("PROVIDER_TIMEOUT"); }), 504, "PROVIDER_TIMEOUT"],
     [() => mockedProvider(async () => { throw new Error(key); }), 502, "PROVIDER_ERROR"],
-    [() => mockedProvider(async (input) => ({ ...validResponse(input), answer: "NTC 2018 §7.99.4" })), 502, "CITATION_VALIDATION_FAILED"],
+    [() => mockedProvider(async (input) => ({ ...validResponse(input), answerMarkdown: "NTC 2018 §7.99.4", references: ["§7.99.4"] })), 502, "CITATION_VALIDATION_FAILED"],
   ]) {
     const response = await handler({ provider })(request());
     assert.equal(response.status, status);
@@ -403,18 +459,18 @@ test("HTTP mappa errori distinti senza restituire output o citazioni non validat
     assert.equal(body.citations, undefined);
     assert.equal(raw.includes(key), false);
     if (code === "CITATION_VALIDATION_FAILED") {
-      assert.ok(body.error.diagnostics.some((issue) => issue.code === "unresolved-reference" && issue.path === "response.answer"));
+      assert.ok(body.error.diagnostics.some((issue) => issue.code === "unresolved-reference" && issue.path === "response.answerMarkdown"));
       assert.equal(body.error.diagnostics.some((issue) => "stack" in issue), false);
     } else assert.equal(body.error.diagnostics, undefined);
   }
 });
 
 test("diagnostica validator è disponibile solo quando publicError è in debug", () => {
-  const error = new ChatNTCServerError("CITATION_VALIDATION_FAILED", [{ code: "unresolved-reference", path: "response.answer", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
+  const error = new ChatNTCServerError("CITATION_VALIDATION_FAILED", [{ code: "unresolved-reference", path: "response.answerMarkdown", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
   assert.equal(publicError(error, false).body.error.diagnostics, undefined);
   assert.equal(publicError(error, false).body.error.accounting, undefined);
   assert.equal(publicError(error, true).body.error.accounting, "hard-rejected");
-  assert.deepEqual(publicError(error, true).body.error.diagnostics, [{ code: "unresolved-reference", path: "response.answer", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
+  assert.deepEqual(publicError(error, true).body.error.diagnostics, [{ code: "unresolved-reference", path: "response.answerMarkdown", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
 });
 
 test("server-only impedisce l'import dell'adapter in condizioni client/Node ordinarie", () => {
@@ -500,14 +556,13 @@ for (const [id, Adapter] of Object.entries(adapters)) {
       assert.equal(new URL(url).search, "");
       const context = contextFor(id, body);
       assert.equal(context.evidence.question, question);
-      assert.ok(context.allowedEvidenceIds.length);
       if (id === "openai") { assert.equal(body.store, false); assert.equal(body.text.format.strict, true); assert.equal(body.text.format.type, "json_schema");
-        const schema = body.text.format.schema; assert.deepEqual(schema.properties.claims.items.required,
-          ["id", "text", "classification", "evidenceIds"]); }
+        const schema = body.text.format.schema; assert.deepEqual(schema.required,
+          ["formatVersion", "evidencePackageId", "answerMarkdown", "references", "classification", "status", "needsMoreEvidence", "externalResearchSuggested"]); }
       if (id === "anthropic") { assert.equal(headers.get("anthropic-version"), "2023-06-01"); assert.equal(body.output_config.format.type, "json_schema"); assert.ok(body.system.includes(CHATNTC_DIRECTIVES.rules[0])); }
       if (id === "gemini") { assert.equal(body.generationConfig.responseFormat.text.mimeType, "application/json"); assert.ok(body.systemInstruction.parts[0].text.includes(CHATNTC_DIRECTIVES.rules[0])); }
       const answer = validResponse({ evidence: context.evidence });
-      if (hallucinate) answer.claims[0].evidenceIds = ["urn:structural-codes:it:evidence:invented"];
+      if (hallucinate) { answer.answerMarkdown = "Secondo il §7.99.4."; answer.references = ["§7.99.4"]; }
       return Response.json(envelopeFor(id, answer));
     }, selection, apiKey) });
     const headers = { "content-type": "application/json", origin: "http://localhost:3000", "x-chatntc-provider": id,
@@ -523,7 +578,7 @@ for (const [id, Adapter] of Object.entries(adapters)) {
     assert.equal(invalid.status, 502);
     const rejected = await invalid.json();
     assert.equal(rejected.error.category, "citation_validation_failed"); assert.equal(rejected.response, undefined);
-    assert.equal(calls, 2, "no retry after citation validation failure");
+    assert.equal(calls, 3, "one normal call plus one bounded repair for the invalid response");
   });
 
   test(`${id}: errori normalizzati, mai dettagli upstream e mai retry HTTP`, async () => {
@@ -567,12 +622,15 @@ for (const [id, Adapter] of Object.entries(adapters)) {
     assert.equal(nativeCalls, id === "deepseek" ? 2 : 1);
   });
 
-  test(`${id}: chiave riflessa respinta e assenza evidence senza chiamata AI`, async () => {
+  test(`${id}: chiave riflessa respinta e risposta generale anche senza fonti iniziali`, async () => {
     const input = await generationInput();
-    const echo = new Adapter({ apiKey: key }, async () => Response.json(envelopeFor(id, { ...validResponse(input), answer: key })));
+    const echo = new Adapter({ apiKey: key }, async () => Response.json(envelopeFor(id, { ...validResponse(input), answerMarkdown: key })));
     await rejectsCode(echo.generate(input), "INVALID_PROVIDER_RESPONSE");
-    const abstention = await runChatNTC({ question: "7.99.4" }, { repository: repository(), provider: () => { assert.fail("No provider without evidence"); } });
-    assert.equal(abstention.response.classification, "no-direct-reference"); assert.deepEqual(abstention.citations, []);
+    let calls = 0;
+    const general = await runChatNTC({ question: "Quale controllo di sensibilità conviene eseguire?" }, { repository: repository(),
+      provider: () => mockedProvider(async (context) => { calls += 1; return { ...validResponse(context),
+        answerMarkdown: "Confronta ipotesi alternative di rigidezza.", references: [], classification: "no-direct-reference" }; }) });
+    assert.equal(calls, 1); assert.equal(general.response.classification, "no-direct-reference"); assert.deepEqual(general.citations, []);
   });
 }
 

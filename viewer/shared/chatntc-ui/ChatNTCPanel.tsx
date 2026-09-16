@@ -13,13 +13,16 @@ export const CHATNTC_CLASSIFICATION_LABELS: Record<ChatNTCClassification, string
 };
 const warningLabels: Record<ChatNTCWarning["code"], string> = {
   "no-evidence": "Non è stato trovato contenuto normativo sufficiente.",
-  "evidence-reduced": "Evidence parziale: è stata selezionata una parte del contenuto disponibile.",
+  "evidence-reduced": "Fonti parziali: è stata selezionata una parte del contenuto disponibile.",
   "unreviewed-evidence": "Fonti non ancora revisionate integralmente.",
   "blocking-issues": "Sono presenti questioni editoriali aperte nelle fonti.",
   "proposed-relation": "Una relazione tra fonti è proposta e attende conferma.",
   "figure-metadata-only": "Per le figure sono disponibili soltanto i metadati.",
   "unresolved-reference": "Un riferimento della domanda non è stato risolto.",
 };
+
+const answerText = (response: ChatResult["response"]) => response.formatVersion === 3
+  ? response.answerMarkdown : response.answer;
 
 export interface ChatNTCTurn {
   id: string; question: string; timestamp: string; answeredAt?: string; context?: ChatNTCRetrievalContext; result?: ChatResult;
@@ -33,7 +36,7 @@ function recentHistory(turns: ChatNTCTurn[]): ChatNTCMessage[] {
   for (const turn of [...turns].reverse()) {
     if (!turn.result || turn.status !== "complete") continue;
     const question = turn.context ? `${turn.question}\nContesto: ${contextLabel(turn.context)}.` : turn.question;
-    const answer = turn.result.response.answer;
+    const answer = answerText(turn.result.response);
     if (question.length > 2000 || answer.length > 2000 || length + question.length + answer.length > 8000) break;
     pairs.unshift([{ role: "user", content: question }, { role: "assistant", content: answer }]);
     length += question.length + answer.length;
@@ -48,7 +51,12 @@ function contextLabel(context: ChatNTCRetrievalContext) {
 function citationLabel(citation: ChatNTCCitation) {
   const label = contextLabel({ ...citation, documentId: citation.document });
   const target = viewerTargetForCitation(citation);
-  if (target.kind === "asset") return `${label} · ${target.assetKind === "formula" ? "Formula" : target.assetKind === "table" ? "Tabella" : target.assetKind === "figure" ? "Figura" : "Asset"}${citation.assetNumber ? ` ${citation.assetNumber}` : " non numerato"}`;
+  if (target.kind === "asset") {
+    if (target.assetKind === "formula") return citation.assetNumber ? `Formula [${citation.assetNumber}]` : "Formula non numerata";
+    if (target.assetKind === "table") return citation.assetNumber ? `Tab.${citation.assetNumber}` : "Tabella non numerata";
+    if (target.assetKind === "figure") return citation.assetNumber ? `Fig. ${citation.assetNumber}` : "Figura non numerata";
+    return `${label} · asset`;
+  }
   return target.kind === "block" ? `${label} · passaggio` : label;
 }
 
@@ -138,7 +146,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
         {turn.error && <p className="scv-chat-error" role="alert">{turn.error}</p>}
         {turn.result && <article className="scv-chat-answer" aria-label="Risposta ChatNTC">
           <span className="scv-chat-classification" data-classification={turn.result.response.classification}>{CHATNTC_CLASSIFICATION_LABELS[turn.result.response.classification]}</span>
-          <p>{turn.result.response.answer}</p>
+          <p>{answerText(turn.result.response)}</p>
           {currentCorpusFingerprint && turn.result.evidence.corpusFingerprint !== currentCorpusFingerprint && <p className="scv-chat-corpus-warning">Questa risposta è stata generata con una versione diversa del corpus.</p>}
           {historyEnabled && <details className="scv-chat-warnings"><summary>Versione e provenienza della risposta</summary><dl className="scv-chat-provenance">
             <dt>Generata il</dt><dd>{turn.answeredAt ? new Date(turn.answeredAt).toLocaleString("it-IT") : "Data non disponibile"}</dd>
@@ -146,7 +154,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
             <dt>structural-codes</dt><dd>{turn.result.evidence.structuralCodesVersion ?? "Versione non disponibile"}</dd>
             <dt>Fingerprint corpus</dt><dd>{turn.result.evidence.corpusFingerprint}</dd>
           </dl></details>}
-          {turn.result.citations.length > 0 && <nav className="scv-chat-citations" aria-label="Citazioni normative"><strong>Fonti della risposta</strong><ul>{turn.result.citations.map((citation) => {
+          {turn.result.citations.length > 0 && <nav className="scv-chat-citations" aria-label="Riferimenti normativi verificati"><strong>Riferimenti verificati</strong><ul>{turn.result.citations.map((citation) => {
             const target = viewerTargetForCitation(citation);
             return <li key={citation.evidenceId}><a href={hrefForTarget(target)} onClick={(event) => {
               if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

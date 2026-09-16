@@ -1,4 +1,4 @@
-import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCResponse, ChatNTCRetrievalContext } from "../chatntc/types.js";
+import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCProcessingStage, ChatNTCResponse, ChatNTCRetrievalContext } from "../chatntc/types.js";
 import type { ChatNTCMessage } from "../chatntc/provider.js";
 
 /** Transient input. Context contains identifiers only, never a browser-supplied corpus chunk. */
@@ -20,7 +20,8 @@ export interface ChatResult {
     policyVersion: string; reduced: boolean; warnings: ChatNTCEvidencePackage["warnings"];
   };
   generation: { provider: string | null; model?: string | null; outcome: "generated" | "abstained" };
-  validation: { valid: true; scope: "integrity-provenance-claim-coverage"; accounting?: "normalized" | "expanded-and-regenerated" };
+  validation: { valid: true; scope: "integrity-provenance-claim-coverage" | "integrity-provenance-reference-resolution";
+    stage?: ChatNTCProcessingStage };
 }
 
 export interface ChatTransport {

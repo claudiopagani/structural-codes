@@ -130,7 +130,7 @@ export interface ChatNTCWarning {
 export interface ChatNTCEvidencePackage {
   formatVersion: 1;
   packageId: string;
-  policyVersion: "chatntc-epistemic-v1";
+  policyVersion: "chatntc-epistemic-v2";
   question: string;
   corpus: ChatNTCCorpusIdentity;
   primaryUnits: ChatNTCEvidenceUnit[];
@@ -161,29 +161,20 @@ export interface ChatNTCClaim {
   citations: ChatNTCCitation[];
 }
 
-export interface ChatNTCProviderClaim {
-  id: string;
-  text: string;
-  classification: ChatNTCClassification;
-  /** Selected evidence IDs only; canonical citation metadata is server-owned. */
-  evidenceIds: string[];
-}
-
-/** Minimal provider wire output. It is never returned directly to the UI. */
+/** Minimal provider wire output. References are textual; canonical metadata is server-owned. */
 export interface ChatNTCProviderOutput {
-  formatVersion: 1;
+  formatVersion: 2;
   evidencePackageId: string;
-  answer: string;
+  answerMarkdown: string;
+  references: string[];
   classification: ChatNTCClassification;
   status: ChatNTCAnswerStatus;
-  claims: ChatNTCProviderClaim[];
-  warnings: string[];
   needsMoreEvidence: boolean;
   externalResearchSuggested: boolean;
 }
 
-/** Future provider output. No SDK types, URLs supplied by a model, or HTTP envelopes. */
-interface ChatNTCResponseBody {
+/** Historical public response retained for saved v1/v2 conversations. */
+export interface ChatNTCLegacyResponseBody {
   evidencePackageId: string;
   answer: string;
   classification: ChatNTCClassification;
@@ -195,10 +186,27 @@ interface ChatNTCResponseBody {
 }
 
 /** v1 remains readable for saved history; providers generate the semantically explicit v2. */
-export type ChatNTCResponse = ChatNTCResponseBody & (
+export type ChatNTCLegacyResponse = ChatNTCLegacyResponseBody & (
   | { formatVersion: 1; status?: never }
   | { formatVersion: 2; status: ChatNTCAnswerStatus }
 );
+
+/** Rich response produced by the server and consumed by current UI clients. */
+export interface CanonicalChatNTCResponse {
+  formatVersion: 3;
+  evidencePackageId: string;
+  answerMarkdown: string;
+  classification: ChatNTCClassification;
+  status: ChatNTCAnswerStatus;
+  verifiedReferences: ChatNTCCitation[];
+  warnings: string[];
+  needsMoreEvidence: boolean;
+  externalResearchSuggested: boolean;
+}
+
+export type ChatNTCResponse = ChatNTCLegacyResponse | CanonicalChatNTCResponse;
+export type ChatNTCProcessingStage = "GENERATED" | "NORMALIZED" | "EXPANDED" | "REPAIRED"
+  | "PARTIALLY_SANITIZED" | "HARD_REJECTED";
 
 export interface ChatNTCValidationIssue {
   code: string; path: string; message: string;
@@ -209,7 +217,7 @@ export interface ChatNTCValidationIssue {
 export interface ChatNTCValidationResult { valid: boolean; issues: ChatNTCValidationIssue[]; }
 
 export interface ChatNTCCanonicalizationResult {
-  response: ChatNTCResponse;
+  response: CanonicalChatNTCResponse;
   issues: ChatNTCValidationIssue[];
   normalized: boolean;
 }

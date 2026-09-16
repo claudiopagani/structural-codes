@@ -30,6 +30,15 @@ function result(classification = "direct-reference") {
     evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
     generation: { provider: "mock", model: "mock-model", outcome: citations.length ? "generated" : "abstained" }, validation: { valid: true, scope: "integrity-provenance-claim-coverage" } };
 }
+function resultV3(references = [citation]) {
+  return { ok: true, response: { formatVersion: 3, evidencePackageId: "fixture-package",
+    answerMarkdown: "No: il punto chiave è distinguere gli spostamenti.", classification: references.length > 1 ? "combined-reference" : references.length ? "direct-reference" : "no-direct-reference",
+    status: "answered", verifiedReferences: references, warnings: [], needsMoreEvidence: false, externalResearchSuggested: false },
+    citations: references, evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1",
+      corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v2", reduced: false, warnings: [] },
+    generation: { provider: "mock", model: "mock-model", outcome: "generated" },
+    validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } };
+}
 const rootElement = document.querySelector("#test");
 let root;
 const calls = [];
@@ -73,6 +82,19 @@ test("invio generico, risposta, classificazione e click citazione usano target/p
   assert.deepEqual(targetFromUrl(new URL(link.href)), { kind: "unit", unitId });
   await click(link);
   assert.deepEqual(navigate, [{ kind: "unit", unitId }]);
+});
+
+test("risposta canonica v3 mostra answerMarkdown e riferimenti verificati", async () => {
+  const assetId = "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.3-7.3.8";
+  const formula = { ...citation, evidenceId: "formula-block", blockId: "formula-block", assetId, assetNumber: "7.3.8" };
+  const reply = resultV3([citation, formula]);
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
+  await submit();
+  assert.match(rootElement.querySelector(".scv-chat-answer > p").textContent, /^No:/u);
+  assert.equal(rootElement.querySelector(".scv-chat-citations strong").textContent, "Riferimenti verificati");
+  assert.deepEqual([...rootElement.querySelectorAll(".scv-chat-citations a")].map((link) => link.textContent),
+    ["NTC 2018 §7.3.6.1", "Formula [7.3.8]"]);
+  assert.deepEqual(await new LocalChatTransport(async () => Response.json(reply)).send({ question: "Test" }), reply);
 });
 
 for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABELS)) test(`classificazione ${classification} visibile e discreta`, async () => {

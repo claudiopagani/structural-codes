@@ -92,6 +92,7 @@ test("exact NTC, §, Circolare e asset usano lookup esistenti senza full-text", 
     const evidence = await retrieveChatNTCEvidence(repository, query, isolated);
     assert.ok(evidence.primaryUnits[0].blocks.some((block) => block.assetId === aid(kind)));
   }
+  assert.equal((await repository.resolveExact("Tab.7.3.I"))[0].assetId, aid("table"));
   assert.equal(calls.includes("search"), false);
   assert.equal(calls.some((call) => call.includes("circ2019/chunks")), false);
 });
@@ -311,39 +312,37 @@ test("tutti i riferimenti espliciti correnti precedono ranking e budget delle un
 });
 
 function providerOutput(evidence, overrides = {}) {
-  return { formatVersion: 1, evidencePackageId: evidence.packageId, answer: "Risposta fixture.", classification: "direct-reference", status: "answered",
-    claims: [{ id: "claim-1", text: "Claim fixture.", classification: "direct-reference", evidenceIds: [evidence.primaryUnits[0].evidenceId] }],
-    warnings: [], needsMoreEvidence: false, externalResearchSuggested: false, ...overrides };
+  return { formatVersion: 2, evidencePackageId: evidence.packageId, answerMarkdown: "Risposta fixture.", references: [],
+    classification: "direct-reference", status: "answered", needsMoreEvidence: false, externalResearchSuggested: false, ...overrides };
 }
 
 test("canonicalizzazione associa riferimenti espliciti già selezionati senza metadata duplicati", async () => {
   const { evidence, repository } = await context("Consulta §7.3.6.1 e §8.1.1", { ...isolated, maxPrimaryUnits: 2 });
-  const output = providerOutput(evidence, { answer: "Ai sensi del §7.3.6.1 e del §8.1.1 si ricava la conclusione.",
-    claims: [{ id: "claim-1", text: "Il §8.1.1 completa il quadro.", classification: "direct-reference", evidenceIds: [] }] });
+  const output = providerOutput(evidence, { answerMarkdown: "Ai sensi del §7.3.6.1 e del §8.1.1 si ricava la conclusione.",
+    references: ["NTC 2018 §7.3.6.1", "NTC 2018 §8.1.1"] });
   const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
   assert.deepEqual(canonical.issues, []);
   assert.equal(canonical.normalized, true);
   assert.equal(canonical.response.classification, "combined-reference");
-  assert.deepEqual(new Set(canonical.response.usedEvidenceIds), new Set([NTC, OTHER]));
+  assert.deepEqual(new Set(canonical.response.verifiedReferences.map((reference) => reference.evidenceId)), new Set([NTC, OTHER]));
   assert.deepEqual(await validateChatNTCResponse(canonical.response, evidence, repository), { valid: true, issues: [] });
 });
 
-test("canonicalizzazione deriva interpretation e ricostruisce usedEvidenceIds", async () => {
+test("canonicalizzazione deriva metadata senza claims o usedEvidenceIds", async () => {
   const { evidence, repository } = await context();
-  const output = providerOutput(evidence, { classification: "combined-reference",
-    claims: [{ id: "claim-1", text: "Dal §7.3.6.1 si propone una lettura.", classification: "interpretation", evidenceIds: [] }] });
+  const output = providerOutput(evidence, { classification: "interpretation",
+    answerMarkdown: "Dal §7.3.6.1 si propone una lettura progettuale." });
   const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
   assert.equal(canonical.response.classification, "interpretation");
-  assert.deepEqual(canonical.response.usedEvidenceIds, [NTC]);
+  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.evidenceId), [NTC]);
   assert.equal((await validateChatNTCResponse(canonical.response, evidence, repository)).valid, true);
 });
 
-test("canonicalizzazione non accetta riferimenti o evidence ID inventati", async () => {
+test("canonicalizzazione segnala riferimenti inventati", async () => {
   const { evidence, repository } = await context();
   for (const output of [
-    providerOutput(evidence, { answer: "Riferimento §7.99.4." }),
-    providerOutput(evidence, { answer: "Riferimento formula [7.99.99]." }),
-    providerOutput(evidence, { claims: [{ id: "claim-1", text: "Claim.", classification: "direct-reference", evidenceIds: ["urn:invented"] }] }),
+    providerOutput(evidence, { answerMarkdown: "Riferimento §7.99.4." }),
+    providerOutput(evidence, { answerMarkdown: "Riferimento formula [7.99.99]." }),
   ]) {
     const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
     assert.ok(canonical.issues.some((issue) => issue.category === "integrity"), JSON.stringify(canonical));
@@ -352,12 +351,21 @@ test("canonicalizzazione non accetta riferimenti o evidence ID inventati", async
 
 test("canonicalizzazione deduplica occorrenze e citation canoniche ripetute", async () => {
   const { evidence, repository } = await context();
-  const output = providerOutput(evidence, { answer: "§7.3.6.1 si coordina con §7.3.6.1.",
-    claims: [{ id: "claim-1", text: "§7.3.6.1.", classification: "direct-reference", evidenceIds: [NTC, NTC] }] });
+  const output = providerOutput(evidence, { answerMarkdown: "§7.3.6.1 si coordina con §7.3.6.1.",
+    references: ["§7.3.6.1", "§7.3.6.1"] });
   const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
   assert.deepEqual(canonical.issues, []);
-  assert.deepEqual(canonical.response.usedEvidenceIds, [NTC]);
-  assert.equal(canonical.response.claims[0].citations.length, 1);
+  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.evidenceId), [NTC]);
+});
+
+test("risposta progettuale generale è valida senza claims né riferimenti normativi", async () => {
+  const { evidence, repository } = await context();
+  const canonical = await canonicalizeChatNTCResponse(providerOutput(evidence, {
+    answerMarkdown: "Dal punto di vista progettuale conviene controllare la sensibilità del modello.",
+    classification: "no-direct-reference",
+  }), evidence, repository);
+  assert.deepEqual(canonical.response.verifiedReferences, []);
+  assert.deepEqual(await validateChatNTCResponse(canonical.response, evidence, repository), { valid: true, issues: [] });
 });
 
 test("pacchetto alterato viene confrontato con corpus e fingerprint", async () => {

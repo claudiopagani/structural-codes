@@ -8,7 +8,8 @@ import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCRepository,
 
 /**
  * The package is supplied by the application, never by the provider. Provider output is unknown.
- * Integrity and declared claim coverage only: success does NOT establish semantic support.
+ * Current v3 responses are checked for package/corpus integrity and canonical references only.
+ * Legacy claim accounting remains readable for saved v1/v2 responses. Success does NOT establish semantic support.
  * Repository I/O failures reject the promise, never turn into successful validation.
  */
 export async function validateChatNTCResponse(response: unknown, evidence: ChatNTCEvidencePackage, repository: ChatNTCRepository): Promise<ChatNTCValidationResult> {
@@ -74,6 +75,46 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
   }
   const characters = selected.reduce((sum, unit) => sum + JSON.stringify(unit).length, 0);
   if (characters !== evidence.retrieval.evidenceCharacters || characters > evidence.retrieval.options.maxEvidenceCharacters) add("evidence-budget", "evidence.retrieval", "Budget evidence incoerente.");
+
+  if (response.formatVersion === 3) {
+    const canonicalReferences: ChatNTCCitation[] = [];
+    for (const [position, citation] of response.verifiedReferences.entries()) {
+      const path = `response.verifiedReferences[${position}]`;
+      const initialIssues = issues.length;
+      const record = await getUnit(citation.unitId);
+      if (!record) add("unknown-unit", path, "Unità citata assente dal corpus.");
+      else {
+        if (citation.document !== record.unit.document || citation.numbering !== record.unit.numbering.official) {
+          add("citation-identity-mismatch", path, "Documento o numbering non corrispondono all'ID canonico.");
+        }
+        const block = citation.blockId ? record.unit.blocks.find((entry) => entry.blockId === citation.blockId) : undefined;
+        if (citation.blockId && !block) add("unknown-block", path, "Blocco citato assente dall'unità.");
+        if (citation.assetId) {
+          const asset = record.assets.formulas[citation.assetId] ?? record.assets.tables[citation.assetId] ?? record.assets.figures[citation.assetId];
+          if (!asset || !record.unit.blocks.some((entry) => entry.assetId === citation.assetId)) add("unknown-asset", path, "Asset citato assente dall'unità.");
+          if (!block || block.assetId !== citation.assetId) add("asset-block-mismatch", path, "Asset e blocco citati non corrispondono.");
+          if (asset && citation.assetNumber !== asset.officialNumber) add("asset-number-mismatch", path, "Numero ufficiale dell'asset non corrispondente.");
+        } else if (citation.assetNumber !== undefined) add("asset-number-without-asset", path, "Numero asset privo di assetId.");
+      }
+      if (!evidenceIds.has(citation.evidenceId)) add("evidence-not-selected", path, "Riferimento non incluso nel contesto canonico espanso.");
+      else if (stableJson(citation) !== stableJson(citationForEvidence(evidence, citation.evidenceId))) {
+        add("citation-target-mismatch", path, "Il riferimento non coincide con il target canonico.");
+      }
+      if (issues.length === initialIssues) canonicalReferences.push(citation);
+    }
+    for (const reference of findCrossReferences(response.answerMarkdown)) {
+      const targets = await repository.resolveExact(reference.text);
+      if (!targets?.length) {
+        add("unresolved-reference", "response.answerMarkdown", `Riferimento normativo non risolvibile: ${reference.text}`, { reference: reference.text });
+        continue;
+      }
+      const matched = canonicalReferences.some((citation) => targets.some((target) => citation.unitId === target.unitId
+        && (!target.blockId || citation.blockId === target.blockId) && (!target.assetId || citation.assetId === target.assetId)));
+      if (!matched) add("canonical-reference-missing", "response.verifiedReferences",
+        `Riferimento testuale privo del corrispondente riferimento canonico: ${reference.text}`, { reference: reference.text });
+    }
+    return finish();
+  }
 
   const used = new Set<string>();
   const validCitations: ChatNTCCitation[] = [];

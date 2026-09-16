@@ -1,14 +1,15 @@
 export const CHATNTC_EPISTEMIC_POLICY = Object.freeze({
-  version: "chatntc-epistemic-v1" as const,
+  version: "chatntc-epistemic-v2" as const,
   normativeSource: "structural-codes" as const,
   officialPdfIsEditorialAuthority: true,
   modelMemoryIsNormativeSource: false,
+  generalEngineeringKnowledgeAllowed: true,
   preserveDocumentDistinction: true,
   interpretationIsPrescription: false,
   abstentionOnInsufficientEvidence: true,
   inventedCitationsAllowed: false,
-  citationScope: "selected-evidence-only" as const,
-  validationScope: "integrity-provenance-claim-coverage" as const,
+  citationScope: "canonical-corpus-references" as const,
+  validationScope: "integrity-provenance-reference-resolution" as const,
   semanticEntailmentVerified: false,
   externalSourcesEnabled: false,
 });

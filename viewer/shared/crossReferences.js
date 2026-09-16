@@ -1,7 +1,7 @@
 const unitPattern = /(^|[^\p{L}\p{N}])(§\s*C?\.?\d+(?:\.\d+)+|C\.?\d+(?:\.\d+)+|\d+(?:\.\d+){2,})/giu;
 const assetPatterns = [
-  { kind: "table", pattern: /\b(?:Tab\.?|Tabella)\s+((?:C(?:\.)?)?\d+(?:\.\d+)*(?:\.[IVXLCDM]+)?)/giu },
-  { kind: "figure", pattern: /\b(?:Fig\.?|Figura)\s+((?:C(?:\.)?)?\d+(?:\.\d+)+)/giu },
+  { kind: "table", pattern: /\b(?:Tab\.\s*|Tab\s+|Tabella\s+)((?:C(?:\.)?)?\d+(?:\.\d+)*(?:\.[IVXLCDM]+)?)/giu },
+  { kind: "figure", pattern: /\b(?:Fig\.\s*|Fig\s+|Figura\s+)((?:C(?:\.)?)?\d+(?:\.\d+)+)/giu },
   { kind: "formula", pattern: /\b(?:formula|equazione|relazione)\s+(?:n\.?\s*)?\[?((?:C(?:\.)?)?\d+(?:\.\d+)+)\]?/giu },
   { kind: "formula", pattern: /\[((?:C(?:\.)?)?\d+(?:\.\d+)+)\]/giu },
 ];
