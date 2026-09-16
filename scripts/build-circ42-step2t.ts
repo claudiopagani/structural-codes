@@ -35,14 +35,14 @@ function evidence(page: number, raw: string, normalized: string, region: Region,
 function block(unitNumber: string, suffix: string, kind: Exclude<BlockKind, "formula-ref" | "table-ref" | "figure-ref">, page: number, normalized: string, inline: Inline[], region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind, origin: "official", text: { raw: normalized, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, normalized, normalized, region) }; }
 function formulaBlock(unitNumber: string, suffix: string, formula: FormulaRow): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "formula-ref", origin: "official", assetId: formulaId(formula.number), evidence: evidence(formula.page, formula.raw, formula.raw, formula.region, true) }; }
 function tableBlock(unitNumber: string, suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "table-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) }; }
-function figureBlock(unitNumber: string, suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) }; }
+function figureBlock(unitNumber: string, suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock { const record = evidence(page, caption, caption, region, true); record.transformations.push({ operation: "manual-correction", ruleVersion: "figure-caption-crop-0.1.0", note: "Esclusa dal ritaglio raster la didascalia, resa separatamente dal viewer." }); return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: record }; }
 
 const unit21212 = "C4.2.12.1.2";
 const unit21213 = "C4.2.12.1.3";
 const tableXIXId = tableId("C4.2.XIX");
 const tableXIXRegion = reg(70, 330, 455, 400);
 const figure25 = figureId("C4.2.25");
-const figure25Region = reg(170, 225, 270, 75);
+const figure25Region = reg(170, 225, 270, 58);
 const formula102: FormulaRow = { number: "C4.2.102", page: 135, latex: "0{,}2\\le\\frac{c}{b}\\le0{,}6\\qquad0{,}1\\le\\frac{d}{b}\\le0{,}3", raw: "0,2 ≤ c/b ≤ 0,6    0,1 ≤ d/b ≤ 0,3 [C4.2.102]", region: reg(180, 740, 280, 45) };
 const formula103: FormulaRow = { number: "C4.2.103", page: 136, latex: "u=2\\cdot\\frac{\\sigma_a^2\\cdot b_s^4}{E^2\\cdot t^2\\cdot z}", raw: "u = 2 · σ_a² · b_s⁴/(E² · t² · z) [C4.2.103]", region: reg(175, 180, 250, 45) };
 
@@ -92,7 +92,7 @@ function makeUnit(number: string, title: string, parent: string, ancestors: stri
 
 const unit21212Record = makeUnit(unit21212, "Valori limite dei rapporti larghezza - spessore", uid("C4.2.12.1"), [uid("C4.2"), uid("C4.2.12"), uid("C4.2.12.1")], 2, blocks21212, [formulaId(formula102.number)], [tableXIXId], [], "C4-2-12-1-2");
 const unit21213Record = makeUnit(unit21213, "Inflessione trasversale delle ali", uid("C4.2.12.1"), [uid("C4.2"), uid("C4.2.12"), uid("C4.2.12.1")], 3, blocks21213, [formulaId(formula103.number)], [], [figure25], "C4-2-12-1-3");
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2t", sourceId, status: "transcribed-unreviewed", formulas: [{ id: formulaId(formula102.number), unitId: uid(unit21212), officialNumber: formula102.number, pdfPage: formula102.page, latex: formula102.latex }, { id: formulaId(formula103.number), unitId: uid(unit21213), officialNumber: formula103.number, pdfPage: formula103.page, latex: formula103.latex }], tables: [tableXIX], figures: [{ id: figure25, unitId: uid(unit21213), officialNumber: "C4.2.25", pdfPage: 136, caption: "Figura C4.2.25 – Incurvamento delle piattabande", alt: "Incurvamento delle piattabande", imagePath: "figures/circ2019/figc4.2.25.png", region: figure25Region, sha256: "6b41dac2769a5e671c56bfec375f0110c8ade41d7334a5dfaa96a74543185c83" }] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2t", sourceId, status: "transcribed-unreviewed", formulas: [{ id: formulaId(formula102.number), unitId: uid(unit21212), officialNumber: formula102.number, pdfPage: formula102.page, latex: formula102.latex }, { id: formulaId(formula103.number), unitId: uid(unit21213), officialNumber: formula103.number, pdfPage: formula103.page, latex: formula103.latex }], tables: [tableXIX], figures: [{ id: figure25, unitId: uid(unit21213), officialNumber: "C4.2.25", pdfPage: 136, caption: "Figura C4.2.25 – Incurvamento delle piattabande", alt: "Incurvamento delle piattabande", imagePath: "figures/circ2019/figc4.2.25.png", region: figure25Region, sha256: "9ddff3f330cf91dfb9be1486b406f770050d01cf85ce325f60c0b4a137f82dd8" }] };
 (manifest.figures[0] as Record<string, unknown>).captionInline = [{ kind: "strong", value: "Figura C4.2.25" }, { kind: "em", value: " – Incurvamento delle piattabande" }];
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
@@ -106,6 +106,6 @@ await Promise.all([
     copyFile(join(evidenceRenderDirectory, "page-0135-x82-y511-w156-h42@4x.png"), join(figureDirectory, "table-c4.2-xix-3.png")),
     copyFile(join(evidenceRenderDirectory, "page-0135-x82-y556-w156-h46@4x.png"), join(figureDirectory, "table-c4.2-xix-4.png")),
     copyFile(join(evidenceRenderDirectory, "page-0135-x82-y606-w156-h38@4x.png"), join(figureDirectory, "table-c4.2-xix-5.png")),
-    copyFile(join(evidenceRenderDirectory, "page-0136-x170-y225-w270-h75@4x.png"), join(figureDirectory, "figc4.2.25.png")),
+    copyFile(join(evidenceRenderDirectory, "page-0136-x170-y225-w270-h58@4x.png"), join(figureDirectory, "figc4.2.25.png")),
 ]);
 console.log("Circolare C4.2 step2t: generate 2 unità, 2 formule, 1 tabella e 1 figura.");

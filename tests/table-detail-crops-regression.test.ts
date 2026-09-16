@@ -44,7 +44,11 @@ test("Tab. 4.2.VIII conserva griglia, testi verticali, coppie allineate e crop u
     const table = manifest.tables.find((candidate: any) => candidate.officialNumber === "4.2.VIII");
     assert.ok(table);
     assert.equal(table.columnCount, 7);
-    assert.deepEqual(table.columnWidths, [6, 33, 4, 24, 13, 10, 10]);
+    assert.deepEqual(table.columnWidths, [6, 31, 4, 23, 14, 11, 11]);
+    assert.equal(table.footerColumnCount, 6);
+    assert.deepEqual(table.footerColumnWidths, [28, 14.4, 14.4, 14.4, 14.4, 14.4]);
+    assert.equal(table.footerRows.length, 2);
+    assert.deepEqual(table.footerRows.map((row: any[]) => row.reduce((sum, cell) => sum + (cell.colSpan ?? 1), 0)), [6, 6]);
     assert.equal(table.headers[0][0].text, "Sezione trasversale");
     assert.equal(table.headers[0][3].text, "Curva di instabilità");
     assert.equal(table.headers[0][3].colSpan, 2);
@@ -82,10 +86,40 @@ test("C4.2.IX conserva una sola testata e la riga-titolo interna", async () => {
         ["Distribuzione delle tensioni", 3],
         ["Larghezza efficace del pannello", 3],
     ]);
-    assert.deepEqual(table.rows[4].map((cell: any) => [cell.text, cell.colSpan, cell.strong]), [
-        ["Distribuzione delle tensioni", 3, true],
-        ["Larghezza efficace del pannello", 3, true],
+    assert.deepEqual(table.rows[4].map((cell: any) => [cell.text, cell.colSpan, cell.strong, cell.header]), [
+        ["Distribuzione delle tensioni", 3, true, true],
+        ["Larghezza efficace del pannello", 3, true, true],
     ]);
+    assert.deepEqual(table.rows[6][0].image.region, {
+        coordinateSystem: "pdf-points-top-left", x: 95, y: 329, width: 150, height: 67,
+    });
+    await assertImageHash(table.rows[6][0].image);
+});
+
+test("Tab. 4.2.III-V conserva celle immagine normali, righe-titolo e piede indipendente", async () => {
+    const manifest = await json("corpus/assets/ntc2018/4.2-step3.json");
+    const byNumber = new Map(manifest.tables.map((table: any) => [table.officialNumber, table]));
+    const tableIII: any = byNumber.get("4.2.III");
+    const tableIV: any = byNumber.get("4.2.IV");
+    const tableV: any = byNumber.get("4.2.V");
+    assert.ok(tableIII && tableIV && tableV);
+
+    assert.equal(tableIII.headers[0][0].header, false);
+    assert.equal(tableIII.rows.length, 5);
+    assert.equal(tableIII.footerColumnCount, 7);
+    assert.deepEqual(tableIII.footerColumnWidths, [16, 14, 14, 14, 14, 14, 14]);
+    assert.match(tableIII.footerRows[0][0].latex, /\\sqrt\{\\frac\{235\}\{f_\{yk\}\}\}/u);
+    for (const rowIndex of [1, 2, 4]) {
+        assert.equal(tableIII.rows[rowIndex][3].text.split("\n").length, 2);
+        assert.ok(tableIII.rows[rowIndex][3].inline.some((segment: any) => segment.kind === "text" && segment.value.startsWith("\nquando ")));
+    }
+
+    assert.equal(tableIV.headers[1][0].header, false);
+    assert.deepEqual(tableIV.headers[2].map((cell: any) => [cell.text, cell.colSpan]), [["Profilati laminati a caldo e sezioni saldate", 7]]);
+    assert.equal(tableV.headers[1][0].header, false);
+    assert.equal(tableV.rows[2][0].header, true);
+    assert.equal(tableV.rows[4][0].header, true);
+    assert.equal(tableV.rows[4][1].header, true);
 });
 
 test("C4.2.XII.a-XVII mette ogni dettaglio nella seconda colonna visiva e usa KaTeX", async () => {
@@ -115,11 +149,29 @@ test("C4.2.XII.a-XVII mette ogni dettaglio nella seconda colonna visiva e usa Ka
                 assert.ok(cell.latex || cell.inline, `${number}: simbolo non reso in KaTeX in «${cell.text}»`);
             }
         }
+        if (["C4.2.XII.a", "C4.2.XII.c", "C4.2.XII.d", "C4.2.XIII"].includes(number)) {
+            for (const cell of table.rows.flat()) {
+                assert.equal(Boolean(cell.latex?.includes("\\text{")), false, `${number}: prosa lunga non spezzabile in KaTeX`);
+            }
+        }
     }
 
     assert.equal(images.length, 50);
     assert.equal(new Set(images.map((image) => image.imagePath)).size, 50);
+    for (const image of images.filter((image) => /table-c4\.2-xii-d-/u.test(image.imagePath))) assert.equal(image.region.width, 108);
+    for (const image of images.filter((image) => /table-c4\.2-xvii-/u.test(image.imagePath))) assert.equal(image.region.width, 110);
     await Promise.all(images.map(assertImageHash));
+});
+
+test("Tab. 4.2.XVI-XVII rende il momento di serraggio M con KaTeX", async () => {
+    const manifest = await json("corpus/assets/ntc2018/4.2-step5.json");
+    for (const number of ["4.2.XVI", "4.2.XVII"]) {
+        const table = manifest.tables.find((candidate: any) => candidate.officialNumber === number);
+        assert.ok(table, number);
+        const math = table.headers[0][0].inline?.find((segment: any) => segment.kind === "math");
+        assert.equal(math?.value, "M [N m]");
+        assert.equal(math?.latex, "M\\,[\\mathrm{N\\,m}]");
+    }
 });
 
 test("C4.2.XIX e C4.2.XX hanno crop puliti in prima colonna e tutte le celle centrate", async () => {

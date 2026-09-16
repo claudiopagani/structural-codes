@@ -49,9 +49,9 @@ export function projectEvidenceBlock(block: CorpusBlock, record: ChatNTCUnitReco
       const { id, officialNumber, pdfPage, latex } = formula;
       result.asset = { kind: "formula", data: { id, officialNumber, pdfPage, latex } };
     } else if (table) {
-      const { id, officialNumber, pdfPage, caption, columnCount, columnWidths, captionInline, notes, notesInline } = table;
-      result.asset = { kind: "table", data: { id, officialNumber, pdfPage, caption, columnCount, columnWidths, captionInline,
-        headers: table.headers.map((row) => row.map(cell)), rows: table.rows.map((row) => row.map(cell)), notes, notesInline } };
+      const { id, officialNumber, pdfPage, caption, columnCount, columnWidths, footerColumnCount, footerColumnWidths, captionInline, notes, notesInline } = table;
+      result.asset = { kind: "table", data: { id, officialNumber, pdfPage, caption, columnCount, columnWidths, footerColumnCount, footerColumnWidths, captionInline,
+        headers: table.headers.map((row) => row.map(cell)), rows: table.rows.map((row) => row.map(cell)), footerRows: table.footerRows?.map((row) => row.map(cell)), notes, notesInline } };
     } else {
       const { id, officialNumber, pdfPage, caption, captionInline, alt, imagePath, sha256 } = figure;
       result.asset = { kind: "figure", contentAvailability: "metadata-only",

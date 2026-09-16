@@ -84,7 +84,7 @@ const tableVIII = {
         { kind: "em", value: " – Curve d’instabilità per varie tipologie di sezioni e classi d’acciaio, per elementi compressi" },
     ],
     columnCount: 7,
-    columnWidths: [6, 33, 4, 24, 13, 10, 10],
+    columnWidths: [6, 31, 4, 23, 14, 11, 11],
     headers: [
         [
             c("Sezione trasversale", { colSpan: 2, rowSpan: 2, align: "center" }),
@@ -182,8 +182,12 @@ const tableVIII = {
             c("b", { latex: "b", align: "center" }),
             c("b", { latex: "b", align: "center" }),
         ],
+    ],
+    footerColumnCount: 6,
+    footerColumnWidths: [28, 14.4, 14.4, 14.4, 14.4, 14.4],
+    footerRows: [
         [
-            c("Curva di instabilità", { colSpan: 2 }),
+            c("Curva di instabilità"),
             c("a_0", { latex: "a_0", align: "center" }),
             c("a", { latex: "a", align: "center" }),
             c("b", { latex: "b", align: "center" }),
@@ -191,7 +195,7 @@ const tableVIII = {
             c("d", { latex: "d", align: "center" }),
         ],
         [
-            c("Fattore di imperfezione α", { latex: "\\text{Fattore di imperfezione }\\alpha", colSpan: 2 }),
+            c("Fattore di imperfezione α", { latex: "\\text{Fattore di imperfezione }\\alpha" }),
             c("0,13", { align: "center" }),
             c("0,21", { align: "center" }),
             c("0,34", { align: "center" }),

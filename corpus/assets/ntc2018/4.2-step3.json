@@ -53,6 +53,7 @@
             "text": "",
             "colSpan": 7,
             "align": "center",
+            "header": false,
             "image": {
               "imagePath": "figures/ntc2018/table4.2.iii-sections.png",
               "alt": "Parti interne compresse e assi di inflessione",
@@ -174,7 +175,7 @@
             "align": "center"
           },
           {
-            "text": "quando α > 0,5: c/t ≤ 396ε/(13α−1); quando α ≤ 0,5: c/t ≤ 36ε/α",
+            "text": "quando α > 0,5: c/t ≤ 396ε/(13α−1)\nquando α ≤ 0,5: c/t ≤ 36ε/α",
             "latex": "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}",
             "inline": [
               {
@@ -197,7 +198,7 @@
               },
               {
                 "kind": "text",
-                "value": "; quando "
+                "value": "\nquando "
               },
               {
                 "kind": "math",
@@ -236,7 +237,7 @@
             "align": "center"
           },
           {
-            "text": "quando α > 0,5: c/t ≤ 456ε/(13α−1); quando α ≤ 0,5: c/t ≤ 41,5ε/α",
+            "text": "quando α > 0,5: c/t ≤ 456ε/(13α−1)\nquando α ≤ 0,5: c/t ≤ 41,5ε/α",
             "latex": "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}",
             "inline": [
               {
@@ -259,7 +260,7 @@
               },
               {
                 "kind": "text",
-                "value": "; quando "
+                "value": "\nquando "
               },
               {
                 "kind": "math",
@@ -356,7 +357,7 @@
             "align": "center"
           },
           {
-            "text": "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ); quando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)",
+            "text": "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ)\nquando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)",
             "latex": "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}",
             "inline": [
               {
@@ -379,7 +380,7 @@
               },
               {
                 "kind": "text",
-                "value": "; quando "
+                "value": "\nquando "
               },
               {
                 "kind": "math",
@@ -399,11 +400,23 @@
             "colSpan": 2,
             "align": "center"
           }
-        ],
+        ]
+      ],
+      "footerColumnCount": 7,
+      "footerColumnWidths": [
+        16,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14
+      ],
+      "footerRows": [
         [
           {
             "text": "ε = √(235/fyk)",
-            "latex": "\\varepsilon=\\sqrt{235/f_{yk}}",
+            "latex": "\\varepsilon=\\sqrt{\\frac{235}{f_{yk}}}",
             "rowSpan": 2,
             "align": "center"
           },
@@ -531,6 +544,7 @@
             "text": "",
             "colSpan": 7,
             "align": "center",
+            "header": false,
             "image": {
               "imagePath": "figures/ntc2018/table4.2.iv-sections.png",
               "alt": "Piattabande esterne di profilati laminati a caldo e sezioni saldate",
@@ -547,14 +561,8 @@
         ],
         [
           {
-            "text": "Profilati laminati a caldo",
-            "colSpan": 3,
-            "align": "center",
-            "strong": true
-          },
-          {
-            "text": "Sezioni saldate",
-            "colSpan": 4,
+            "text": "Profilati laminati a caldo e sezioni saldate",
+            "colSpan": 7,
             "align": "center",
             "strong": true
           }
@@ -872,6 +880,7 @@
             "text": "",
             "colSpan": 7,
             "align": "center",
+            "header": false,
             "image": {
               "imagePath": "figures/ntc2018/table4.2.v-angle.png",
               "alt": "Sezione angolare con dimensioni b, h e t",
@@ -967,7 +976,8 @@
             "text": "Sezioni Tubolari",
             "colSpan": 7,
             "align": "center",
-            "strong": true
+            "strong": true,
+            "header": true
           }
         ],
         [
@@ -994,13 +1004,15 @@
             "text": "Classe",
             "colSpan": 1,
             "align": "center",
-            "strong": true
+            "strong": true,
+            "header": true
           },
           {
             "text": "Sezione inflessa e/o compressa",
             "colSpan": 6,
             "align": "center",
-            "strong": true
+            "strong": true,
+            "header": true
           }
         ],
         [

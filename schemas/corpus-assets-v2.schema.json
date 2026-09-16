@@ -450,6 +450,18 @@
                 "exclusiveMinimum": 0
               }
             },
+            "footerColumnCount": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "footerColumnWidths": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
             "headers": {
               "type": "array",
               "minItems": 0,
@@ -458,6 +470,13 @@
               }
             },
             "rows": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/tableRow"
+              }
+            },
+            "footerRows": {
               "type": "array",
               "minItems": 1,
               "items": {

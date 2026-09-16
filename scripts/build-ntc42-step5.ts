@@ -56,14 +56,14 @@ const tables = {
     xvi: {
         id: tid("4.2.xvi"), unitId: uid("4.2.8.1.1"), officialNumber: "4.2.XVI", pdfPage: 113, caption: "Coppie di serraggio per i bulloni 8.8", columnCount: 7,
         headers: [
-            [{ text: "Viti 8.8 – Momento di serraggio M [N m]", colSpan: 7 }],
+            [{ text: "Viti 8.8 – Momento di serraggio M [N m]", inline: [t("Viti 8.8 – Momento di serraggio "), m("M [N m]", "M\\,[\\mathrm{N\\,m}]")], colSpan: 7 }],
             [{ text: "Vite" }, { text: "k=0,10", latex: "k=0{,}10" }, { text: "k=0,12", latex: "k=0{,}12" }, { text: "k=0,14", latex: "k=0{,}14" }, { text: "k=0,16", latex: "k=0{,}16" }, { text: "Fp,C [kN]", latex: "F_{p,C}\\,[\\mathrm{kN}]" }, { text: "Ares [mm²]", latex: "A_{res}\\,[\\mathrm{mm^2}]" }],
         ], rows: [["M12", "56,6", "68,0", "79,3", "90,6", "47,2", "84,3"], ["M14", "90,2", "108", "126", "144", "64,4", "115"], ["M16", "141", "169", "197", "225", "87,9", "157"], ["M18", "194", "232", "271", "310", "108", "192"], ["M20", "274", "329", "384", "439", "137", "245"], ["M22", "373", "448", "523", "597", "170", "303"], ["M24", "474", "569", "664", "759", "198", "353"], ["M27", "694", "833", "972", "1110", "257", "459"], ["M30", "942", "1131", "1319", "1508", "314", "561"], ["M36", "1647", "1976", "2306", "2635", "457", "817"]].map((row) => row.map((text) => ({ text }))), notes: [],
     },
     xvii: {
         id: tid("4.2.xvii"), unitId: uid("4.2.8.1.1"), officialNumber: "4.2.XVII", pdfPage: 113, caption: "Coppie di serraggio per bulloni 10.9", columnCount: 7,
         headers: [
-            [{ text: "Viti 10.9 – Momento di serraggio M [N m]", colSpan: 7 }],
+            [{ text: "Viti 10.9 – Momento di serraggio M [N m]", inline: [t("Viti 10.9 – Momento di serraggio "), m("M [N m]", "M\\,[\\mathrm{N\\,m}]")], colSpan: 7 }],
             [{ text: "Vite" }, { text: "k=0,10", latex: "k=0{,}10" }, { text: "k=0,12", latex: "k=0{,}12" }, { text: "k=0,14", latex: "k=0{,}14" }, { text: "k=0,16", latex: "k=0{,}16" }, { text: "Fp,C [kN]", latex: "F_{p,C}\\,[\\mathrm{kN}]" }, { text: "Ares [mm²]", latex: "A_{res}\\,[\\mathrm{mm^2}]" }],
         ], rows: [["M12", "70,8", "85,0", "99,1", "113", "59,0", "84,3"].map((text) => ({ text })), ["M14", "113", "135", "158", "180", "80,5", "115"].map((text) => ({ text })), ["M16", "176", "211", "246", "281", "110", "157"].map((text) => ({ text })), ["M18", "242", "290", "339", "387", "134", "192"].map((text) => ({ text })), ["M20", "343", "412", "480", "549", "172", "245"].map((text) => ({ text })), ["M22", "467", "560", "653", "747", "212", "303"].map((text) => ({ text })), ["M24", "593", "712", "830", "949", "247", "353"].map((text) => ({ text })), ["M27", "868", "1041", "1215", "1388", "321", "459"].map((text) => ({ text })), ["M30", "1178", "1414", "1649", "1885", "393", "561"].map((text) => ({ text })), ["M36", "2059", "2471", "2882", "3294", "572", "817"].map((text) => ({ text }))], notes: [],
     },

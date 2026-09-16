@@ -320,7 +320,7 @@
           "x": 170,
           "y": 225,
           "width": 270,
-          "height": 75
+          "height": 58
         },
         "extraction": {
           "method": "manual-transcription",
@@ -337,6 +337,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-caption-crop-0.1.0",
+            "note": "Esclusa dal ritaglio raster la didascalia, resa separatamente dal viewer."
           }
         ],
         "rawSha256": "c5c3d56bad567d3eb1b338aac4b5d374d5fa38eeed7501f5330571b158f4261b",

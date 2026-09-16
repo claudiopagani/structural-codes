@@ -263,7 +263,7 @@ body { margin: 0; }
 .scv-root .table-asset figcaption { font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.35; }
 .scv-root .figure-asset figcaption { font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.35; }
 .scv-root .table-scroll-compact table { min-width: 100%; }
-.scv-root .table-asset th, .scv-root .table-asset td { padding: 4px 5px; vertical-align: middle; border: 1px solid #c7ccda; }
+.scv-root .table-asset th, .scv-root .table-asset td { min-width: 0; padding: 4px 5px; overflow-wrap: anywhere; vertical-align: middle; border: 1px solid #c7ccda; }
 .scv-root .table-asset .table-cell-strong { font-weight: 700; }
 .scv-root .table-asset .table-cell-align-left { text-align: left; }
 .scv-root .table-asset .table-cell-align-center { text-align: center; }
@@ -271,7 +271,8 @@ body { margin: 0; }
 .scv-root .table-asset .table-cell-no-wrap { white-space: nowrap; }
 .scv-root .table-asset .table-cell-vertical { width: 1.8em; min-width: 1.8em; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); }
 .scv-root .table-asset .table-cell-multiline { white-space: pre-line; }
-.scv-root .table-asset .table-cell-content { display: flex; flex-direction: column; align-items: inherit; gap: 4px; }
+.scv-root .table-asset .table-cell-content { display: flex; min-width: 0; flex-direction: column; align-items: inherit; gap: 4px; }
+.scv-root .table-asset .table-independent-footer { margin-top: -1px; table-layout: fixed; }
 .scv-root .table-asset .table-cell-image { display: block; width: auto; max-width: 100%; height: auto; margin: 0 auto; }
 .scv-root .table-asset-3-5-iv table { table-layout: fixed; }
 .scv-root .table-asset-3-5-iv th:first-child, .scv-root .table-asset-3-5-iv td:first-child { width: 6.25em; min-width: 6.25em; white-space: nowrap; }
@@ -292,7 +293,6 @@ body { margin: 0; }
 .scv-root .table-asset-c4-2-vi .table-math .katex { font-size: .82em; }
 .scv-root .table-asset-c4-2-vii tbody tr:nth-child(3) td { padding-block: 9px; }
 .scv-root .table-asset-c4-2-vii tbody tr:nth-child(3) .table-math .katex { font-size: 1.18em; }
-.scv-root .table-asset-c4-2-ix tbody tr:nth-child(5) td { color: #2a3039; font-weight: 700; background: #d1d1d1; }
 .scv-root .table-asset-c4-2-xi table { table-layout: fixed; min-width: 0; }
 .scv-root .table-asset-c4-2-xi th:nth-child(1), .scv-root .table-asset-c4-2-xi td:nth-child(1) { width: 12%; }
 .scv-root .table-asset-c4-2-xi th:nth-child(2), .scv-root .table-asset-c4-2-xi td:nth-child(2) { width: 22%; }
@@ -300,7 +300,7 @@ body { margin: 0; }
 .scv-root .table-asset-c4-2-xi th:nth-child(4), .scv-root .table-asset-c4-2-xi td:nth-child(4) { width: 36%; }
 .scv-root .table-asset-c4-2-xi tbody td:nth-child(4) .table-math { white-space: nowrap; }
 .scv-root .table-asset-c4-2-xi tbody td:nth-child(4) .table-math .katex { font-size: .86em; }
-.scv-root .table-asset-4-2-viii table { min-width: 840px; table-layout: fixed; }
+.scv-root .table-asset-4-2-viii table { min-width: 780px; table-layout: fixed; }
 .scv-root .table-asset-c4-2-xii-a table,
 .scv-root .table-asset-c4-2-xii-b table,
 .scv-root .table-asset-c4-2-xii-c table,

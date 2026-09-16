@@ -44,6 +44,8 @@ type TableAsset = Asset & {
     columnCount: number;
     headers: TableCell[][];
     rows: TableCell[][];
+    footerColumnCount?: number;
+    footerRows?: TableCell[][];
 };
 
 type FigureAsset = Asset & {
@@ -278,7 +280,10 @@ for (const record of validAssetRecords) {
     for (const table of record.value.tables) {
         validateTableRows(`${table.id} intestazione`, table.headers, table.columnCount);
         validateTableRows(`${table.id} corpo`, table.rows, table.columnCount);
-        for (const cell of [...table.headers, ...table.rows].flat()) {
+        if (table.footerRows) {
+            validateTableRows(`${table.id} piè di tabella`, table.footerRows, table.footerColumnCount ?? table.columnCount);
+        }
+        for (const cell of [...table.headers, ...table.rows, ...(table.footerRows ?? [])].flat()) {
             if (!cell.image) continue;
             manifestImagePaths.add(cell.image.imagePath);
             const imageFile = join(repoRoot, "corpus", "assets", cell.image.imagePath);

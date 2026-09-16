@@ -74,7 +74,9 @@ function tableBlock(number: string, suffix: string, page: number, asset: string,
 }
 
 function figureBlock(number: string, suffix: string, page: number, asset: string, caption: string, region: Region) {
-    return { blockId: `${uid(number)}#block-${suffix}`, kind: "figure-ref", origin: "official" as const, assetId: asset, evidence: evidence(page, caption, caption, region, true) };
+    const record = evidence(page, caption, caption, region, true);
+    record.transformations.push({ operation: "manual-correction", ruleVersion: "figure-caption-crop-0.1.0", note: "Esclusa dal ritaglio raster la didascalia, resa separatamente dal viewer." });
+    return { blockId: `${uid(number)}#block-${suffix}`, kind: "figure-ref", origin: "official" as const, assetId: asset, evidence: record };
 }
 
 function parent(number: string) {
@@ -205,7 +207,7 @@ const tableVI = {
 
 const figureNumber = "C4.2.11";
 const figureAssetId = figureId(figureNumber);
-const figureRegion = reg(205, 145, 205, 47);
+const figureRegion = reg(205, 145, 205, 31);
 
 const units = [
     makeUnit("C4.2.4.1.3.2", "Travi inflesse", [
@@ -276,7 +278,7 @@ const units = [
     ], ["C4.2.40", "C4.2.41", "C4.2.42"]),
 ];
 
-const figureSource = "page-0110-x205-y145-w205-h47@3x.png";
+const figureSource = "page-0110-x205-y145-w205-h31@3x.png";
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
     schemaVersion: "2.0.0-alpha.1",
@@ -296,7 +298,7 @@ const manifest = {
         alt: "Trave soggetta a momenti d’estremità con momenti Ma e Mb alle estremità",
         imagePath: "figures/circ2019/figc4.2.11.png",
         region: figureRegion,
-        sha256: "e270c68cd1a0160f4183624e40c0d4f175197270c137f689aba7fad01967e25f",
+        sha256: "41a4af3811cd99807771ea084b71af118c5fcd814308fab9d983688bf9032d09",
     }],
 };
 

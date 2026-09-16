@@ -137,7 +137,7 @@ const tableXIIa = {
             f("125\\n112(1)", "\\begin{gathered}125\\\\112^{(1)}\\end{gathered}"),
             c("Schema 5: lamiera tagliata, con bordo di taglio regolare e superficiale e frecce di sollecitazione."),
             c("5) Taglio a gas manuale o taglio a gas automatico con tracce del taglio regolari e superficiali e successiva eliminazione di tutti i difetti dei bordi"),
-            f("4) e 5) Angoli rientranti devono essere raccordati con pendenza ≤1:4, in caso contrario occorre impiegare opportuni fattori di concentrazione degli sforzi.\nNon sono ammesse riparazioni mediante saldatura", "\\begin{gathered}\\text{4) e 5) Angoli rientranti devono essere raccordati con pendenza }\\le1:4,\\\\\\text{in caso contrario occorre impiegare opportuni fattori di concentrazione degli sforzi.}\\\\\\text{Non sono ammesse riparazioni mediante saldatura}\\end{gathered}"),
+            c("4) e 5) Angoli rientranti devono essere raccordati con pendenza ≤1:4, in caso contrario occorre impiegare opportuni fattori di concentrazione degli sforzi.\nNon sono ammesse riparazioni mediante saldatura"),
         ],
     ],
     notes: [
@@ -181,7 +181,7 @@ const tableXIIc = {
         c("100"),
         c("Schema 15: bullone sollecitato a taglio su uno o due piani non interessanti la parte filettata, con frecce contrapposte."),
         c("15) Bulloni sollecitati a taglio su uno o due piani non interessanti la parte filettata.\n- Bulloni calibrati\n- Bulloni normali di grado 5.6, 8.8 e 10.9 e assenza di inversioni di carico"),
-        f("Δτ calcolati in riferimento all’area del gambo", "\\Delta\\tau\\text{ calcolati in riferimento all’area del gambo}"),
+        c("Δτ calcolati in riferimento all’area del gambo"),
     ]],
     notes: [],
 };
@@ -199,41 +199,41 @@ const tableXIId = {
             c("112"),
             c("Schema 8: giunto con coprigiunti doppi e bulloni, con frecce di sollecitazione."),
             c("8) Giunti bullonati con coprigiunti doppi e bulloni AR precaricati o bulloni precaricati iniettati"),
-            f("Δσ riferiti alla sezione lorda", "\\Delta\\sigma\\text{ riferiti alla sezione lorda}"),
+            c("Δσ riferiti alla sezione lorda"),
         ],
         [
             c("90", undefined, { rowSpan: 3 }),
             c("Schema 9: giunto con coprigiunti doppi e bulloni, con frecce di sollecitazione."),
             c("9) Giunti bullonati con coprigiunti doppi e bulloni calibrati o bulloni non precaricati iniettati"),
-            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+            c("Δσ riferiti alla sezione netta"),
         ],
         [
             c("Schema 10: giunto con coprigiunti singoli e bulloni, con frecce di sollecitazione."),
             c("10) Giunti bullonati con coprigiunti singoli e bulloni AR precaricati o bulloni precaricati iniettati"),
-            f("Δσ riferiti alla sezione lorda", "\\Delta\\sigma\\text{ riferiti alla sezione lorda}"),
+            c("Δσ riferiti alla sezione lorda"),
         ],
         [
             c("Schema 11: elemento strutturale forato soggetto a forza normale e momento flettente."),
             c("11) Elementi strutturali forati soggetti a forza normale e momento flettente"),
-            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+            c("Δσ riferiti alla sezione netta"),
         ],
         [
             c("80"),
             c("Schema 12: giunto bullonato con coprigiunti singoli e bulloni non precaricati."),
             c("12) Giunti bullonati con coprigiunti singoli e bulloni calibrati o bulloni non precaricati iniettati"),
-            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+            c("Δσ riferiti alla sezione netta"),
         ],
         [
             c("50"),
             c("Schema 13: giunto bullonato con coprigiunti singoli o doppi e bulloni con precarico."),
             c("13) Giunti bullonati con coprigiunti singoli o doppi con bulloni con precarico in fori di tolleranza normale. Assenza di inversioni del carico."),
-            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+            c("Δσ riferiti alla sezione netta"),
         ],
         [
             c("50"),
             c("Schema 14: bulloni e barre filettate soggetti a trazione."),
-            f("14) Bulloni e barre filettate soggetti a trazione. Per bulloni di diametro φ>30 mm, si deve adottare una classe ridotta del coefficiente k_s=(30/φ)^0,25", "\\begin{gathered}\\text{14) Bulloni e barre filettate soggetti a trazione. Per bulloni di diametro }\\phi>30\\,\\mathrm{mm},\\\\\\text{si deve adottare una classe ridotta del coefficiente }k_s=(30/\\phi)^{0{,}25}\\end{gathered}"),
-            f("Δσ riferiti alla sezione della parte filettata, considerando gli effetti dovuti all’effetto leva e alla flessione ulteriore. Per bulloni precaricati i Δσ possono essere ridotti.", "\\begin{gathered}\\Delta\\sigma\\text{ riferiti alla sezione della parte filettata, considerando gli effetti dovuti}\\\\\\text{all’effetto leva e alla flessione ulteriore. Per bulloni precaricati i }\\Delta\\sigma\\text{ possono essere ridotti.}\\end{gathered}"),
+            c("14) Bulloni e barre filettate soggetti a trazione. Per bulloni di diametro φ>30 mm, si deve adottare una classe ridotta del coefficiente k_s=(30/φ)^0,25"),
+            c("Δσ riferiti alla sezione della parte filettata, considerando gli effetti dovuti all’effetto leva e alla flessione ulteriore. Per bulloni precaricati i Δσ possono essere ridotti."),
         ],
     ],
     notes: [],
@@ -279,13 +279,13 @@ const tableXIII = {
             c("80"),
             c("Schema 8: saldatura longitudinale a tratti, con rapporto g/h ≤ 2,5."),
             c("8) Saldatura longitudinale a cordoni d’angolo a tratti"),
-            f("Δσ riferiti alle tensioni nella piattabanda", "\\Delta\\sigma\\text{ riferiti alle tensioni nella piattabanda}"),
+            c("Δσ riferiti alle tensioni nella piattabanda"),
         ],
         [
             c("71"),
             c("Schema 9: saldatura longitudinale con lunette di scarico."),
             c("9) Saldatura longitudinale a piena penetrazione, a cordoni d’angolo e a tratti, con lunette di scarico di altezza non maggiore di 60 mm. Per lunette di altezza maggiore vedere dettaglio 1) della tabella C4.2.XV"),
-            f("Δσ riferiti alle tensioni nella piattabanda", "\\Delta\\sigma\\text{ riferiti alle tensioni nella piattabanda}"),
+            c("Δσ riferiti alle tensioni nella piattabanda"),
         ],
         [
             c("125 (a)\n112 (b)\n90 (c)"),
@@ -553,6 +553,9 @@ const fatigueTables = [tableXIIa, tableXIIb, tableXIIc, tableXIId, tableXIII, ta
 for (const table of fatigueTables) Object.assign(table, { columnWidths: [8, 38, 26, 28] });
 
 const inlineMathTokens = [
+    ["k_s=(30/φ)^0,25", "k_s=(30/\\phi)^{0{,}25}"],
+    ["φ>30 mm", "\\phi>30\\,\\mathrm{mm}"],
+    ["≤1:4", "\\le1:4"],
     ["k_se = (1 + (6e/t₁)·(t₁^1,5/(t₁^1,5+t₂^1,5)))^-1", "k_{se}=\\left(1+\\frac{6e}{t_1}\\cdot\\frac{t_1^{1{,}5}}{t_1^{1{,}5}+t_2^{1{,}5}}\\right)^{-1}"],
     ["k_s = (25/t₁)^0,2", "k_s=(25/t_1)^{0{,}2}"],
     ["k_s = (25/t)^0,2", "k_s=(25/t)^{0{,}2}"],
@@ -651,13 +654,13 @@ setDiagramCells(tableXIIa, [
 setDiagramCells(tableXIIb, [diagram("figures/circ2019/table-c4.2-xii-b-6-7.png", "Schemi 6 e 7", "a1046fef0127d96955573f56d40e3e6dc0b6f572d730d183d21db91e609937db", reg(112, 337, 138, 34))]);
 setDiagramCells(tableXIIc, [diagram("figures/circ2019/table-c4.2-xii-c-15.png", "Schema 15", "2d55c90f93ccf9d748836a0430be69d1066406da3d76f0ca61007a5978f565bd", reg(112, 408, 138, 57))]);
 setDiagramCells(tableXIId, [
-    diagram("figures/circ2019/table-c4.2-xii-d-8.png", "Schema 8", "34426e12180201b040c31c3e1c65097a93d7dd8b6b745aeb45e085364fc6a253", reg(112, 505, 138, 38)),
-    diagram("figures/circ2019/table-c4.2-xii-d-9.png", "Schema 9", "13f8fd113ace36b94493ca20a538ffdf7160ba898adaf9d5f3d9bdafe03f9c03", reg(112, 546, 138, 39)),
-    diagram("figures/circ2019/table-c4.2-xii-d-10.png", "Schema 10", "7eebb95a0a020d332cb5f0e7a2ae5c736fc2d5885a5b27172eee1d0d92ff1872", reg(112, 588, 138, 57)),
-    diagram("figures/circ2019/table-c4.2-xii-d-11.png", "Schema 11", "20dd3d02746a923ee06bd4dbe3e775f568ffc67fd285ddc1fcf46f67e06e2255", reg(112, 648, 138, 50)),
-    diagram("figures/circ2019/table-c4.2-xii-d-12.png", "Schema 12", "8d474a585641183993f30e843de6017a334b364113fdd66c98db76494723508e", reg(112, 117, 138, 52)),
-    diagram("figures/circ2019/table-c4.2-xii-d-13.png", "Schema 13", "2d33e4629ca662ae5e9144db97267dec60825b79adf23ccaf801a3a162facba8", reg(112, 172, 138, 61)),
-    diagram("figures/circ2019/table-c4.2-xii-d-14.png", "Schema 14", "a79599f9cdd03d8b573b19da2a6c83737a458b41203fb69de9007e4a8a874045", reg(112, 236, 138, 67)),
+    diagram("figures/circ2019/table-c4.2-xii-d-8.png", "Schema 8", "a0660eacf14449dceb1825d35ed6f10e8276a75190eba881df0014bd484b8ee6", reg(112, 505, 108, 38)),
+    diagram("figures/circ2019/table-c4.2-xii-d-9.png", "Schema 9", "de6c8cc6cfc950ee6181152e2122accccf0c87fe2f70b497298c209e373e7c19", reg(112, 546, 108, 39)),
+    diagram("figures/circ2019/table-c4.2-xii-d-10.png", "Schema 10", "81677c66276741d03f8858c022cf8f70050666730d88f893ae7ecf69793abe77", reg(112, 588, 108, 57)),
+    diagram("figures/circ2019/table-c4.2-xii-d-11.png", "Schema 11", "3d6a69272fe8e9bdebde3c6e21884d233bafcf0115b51abd8a145edf9300637d", reg(112, 648, 108, 50)),
+    diagram("figures/circ2019/table-c4.2-xii-d-12.png", "Schema 12", "1bca938ef876d04a518a17ad0fe026fd0176d772b218b063541f710fc8593487", reg(112, 117, 108, 52)),
+    diagram("figures/circ2019/table-c4.2-xii-d-13.png", "Schema 13", "b7b431e4ec4c9841aa69d81d2ca6b73842397ded6dc2a14a7abdc0c6f7277571", reg(112, 172, 108, 61)),
+    diagram("figures/circ2019/table-c4.2-xii-d-14.png", "Schema 14", "9bd1057a4a095a94b261b94f8734f4d16543f72b269f54846ecf2057639071ad", reg(112, 236, 108, 67)),
 ], [1, 1, 0, 0, 1, 1, 1]);
 setDiagramCells(tableXIII, [
     diagram("figures/circ2019/table-c4.2-xiii-1-2.png", "Schemi 1 e 2", "7185700835088384ea03a11cf0a7df5a2af9690f1c1d29f1d3039c20bfd8ad5a", reg(112, 342, 138, 60)),
@@ -699,13 +702,13 @@ setDiagramCells(tableXVIa, [
 ]);
 setDiagramCells(tableXVIb, [diagram("figures/circ2019/table-c4.2-xvi-b-8-9.png", "Schemi 8 e 9", "b6de6a71d5bb407c4610605b8d3048fab85a143e4779c0ec50e383192406f21c", reg(112, 524, 140, 69))]);
 setDiagramCells(tableXVII, [
-    diagram("figures/circ2019/table-c4.2-xvii-1.png", "Schema 1", "931c50926d11d93beb080d492a686684a5a0d33823c78e684cb6c61872656d3c", reg(112, 633, 144, 56)),
-    diagram("figures/circ2019/table-c4.2-xvii-2.png", "Schema 2", "47f01ae6fc900935587ec0b043fdffe92c2a932fee89759d00b6f7db789ab570", reg(112, 117, 144, 48)),
-    diagram("figures/circ2019/table-c4.2-xvii-3.png", "Schema 3", "958bea2edef5a041743e4be859523a3d560fea3897d90bfc8cc7d66580d4d112", reg(112, 168, 144, 45)),
-    diagram("figures/circ2019/table-c4.2-xvii-4.png", "Schema 4", "2063b74cc7b38f775f39a5e57f3c3a74a70804e7ffd404b9f7604b468e5c5977", reg(112, 217, 144, 44)),
-    diagram("figures/circ2019/table-c4.2-xvii-5.png", "Schema 5", "8c12badea5f453e0afc9967c9f8102fef52327d001bee099433d295449d7b890", reg(112, 265, 144, 52)),
-    diagram("figures/circ2019/table-c4.2-xvii-6.png", "Schema 6", "732b9b1c39eed8d728cd254f56d7ad615b0769a1900cb410b018923b7e97f85c", reg(112, 321, 144, 55)),
-    diagram("figures/circ2019/table-c4.2-xvii-7.png", "Schema 7", "6832742c156e8866482f605ad6f61f1941cdd049003547d2510d28c67c5c182f", reg(112, 380, 144, 54)),
+    diagram("figures/circ2019/table-c4.2-xvii-1.png", "Schema 1", "08ec6f6113a8c2f58a1b82ec3636731e0bfbb43066406ab1cdfbaa49d5b30167", reg(112, 633, 110, 56)),
+    diagram("figures/circ2019/table-c4.2-xvii-2.png", "Schema 2", "beceba8673f7abb151b2276452d8f97da74b1e6d3035d5308d0a941935812337", reg(112, 117, 110, 48)),
+    diagram("figures/circ2019/table-c4.2-xvii-3.png", "Schema 3", "de1ad2d803175208329697facc001b1c628d6a385b946b52a787c9bc8a2908ae", reg(112, 168, 110, 45)),
+    diagram("figures/circ2019/table-c4.2-xvii-4.png", "Schema 4", "136d19caa2be48c60d0a6274c157965a211ca5d4b8c5568e4fbe2d6c192709e5", reg(112, 217, 110, 44)),
+    diagram("figures/circ2019/table-c4.2-xvii-5.png", "Schema 5", "1c6ceaecd3fc04e64ac45ec95c7f661a3f204e2b852f0c36a991ee63986567e6", reg(112, 265, 110, 52)),
+    diagram("figures/circ2019/table-c4.2-xvii-6.png", "Schema 6", "39666ede6b691e459f31f3bb26ca65ecccfa41eb8646c4ff428df665004f4f5f", reg(112, 321, 110, 55)),
+    diagram("figures/circ2019/table-c4.2-xvii-7.png", "Schema 7", "0599c522d2cef7a753d3618b6b13c2c589c7bea69d890dfb8d7f8df160577350", reg(112, 380, 110, 54)),
 ]);
 
 const tableFigureCopies = [
@@ -714,13 +717,13 @@ const tableFigureCopies = [
     ["page-0127-x112-y241-w138-h36@4x.png", "table-c4.2-xii-a-5.png"],
     ["page-0127-x112-y337-w138-h34@4x.png", "table-c4.2-xii-b-6-7.png"],
     ["page-0127-x112-y408-w138-h57@4x.png", "table-c4.2-xii-c-15.png"],
-    ["page-0127-x112-y505-w138-h38@4x.png", "table-c4.2-xii-d-8.png"],
-    ["page-0127-x112-y546-w138-h39@4x.png", "table-c4.2-xii-d-9.png"],
-    ["page-0127-x112-y588-w138-h57@4x.png", "table-c4.2-xii-d-10.png"],
-    ["page-0127-x112-y648-w138-h50@4x.png", "table-c4.2-xii-d-11.png"],
-    ["page-0128-x112-y117-w138-h52@4x.png", "table-c4.2-xii-d-12.png"],
-    ["page-0128-x112-y172-w138-h61@4x.png", "table-c4.2-xii-d-13.png"],
-    ["page-0128-x112-y236-w138-h67@4x.png", "table-c4.2-xii-d-14.png"],
+    ["page-0127-x112-y505-w108-h38@4x.png", "table-c4.2-xii-d-8.png"],
+    ["page-0127-x112-y546-w108-h39@4x.png", "table-c4.2-xii-d-9.png"],
+    ["page-0127-x112-y588-w108-h57@4x.png", "table-c4.2-xii-d-10.png"],
+    ["page-0127-x112-y648-w108-h50@4x.png", "table-c4.2-xii-d-11.png"],
+    ["page-0128-x112-y117-w108-h52@4x.png", "table-c4.2-xii-d-12.png"],
+    ["page-0128-x112-y172-w108-h61@4x.png", "table-c4.2-xii-d-13.png"],
+    ["page-0128-x112-y236-w108-h67@4x.png", "table-c4.2-xii-d-14.png"],
     ["page-0128-x112-y342-w138-h60@4x.png", "table-c4.2-xiii-1-2.png"],
     ["page-0128-x112-y405-w138-h64@4x.png", "table-c4.2-xiii-3-4.png"],
     ["page-0128-x112-y472-w138-h42@4x.png", "table-c4.2-xiii-5-6.png"],
@@ -752,13 +755,13 @@ const tableFigureCopies = [
     ["page-0132-x112-y324-w140-h113@4x.png", "table-c4.2-xvi-a-6.png"],
     ["page-0132-x112-y442-w140-h42@4x.png", "table-c4.2-xvi-a-7.png"],
     ["page-0132-x112-y524-w140-h69@4x.png", "table-c4.2-xvi-b-8-9.png"],
-    ["page-0132-x112-y633-w144-h56@4x.png", "table-c4.2-xvii-1.png"],
-    ["page-0133-x112-y117-w144-h48@4x.png", "table-c4.2-xvii-2.png"],
-    ["page-0133-x112-y168-w144-h45@4x.png", "table-c4.2-xvii-3.png"],
-    ["page-0133-x112-y217-w144-h44@4x.png", "table-c4.2-xvii-4.png"],
-    ["page-0133-x112-y265-w144-h52@4x.png", "table-c4.2-xvii-5.png"],
-    ["page-0133-x112-y321-w144-h55@4x.png", "table-c4.2-xvii-6.png"],
-    ["page-0133-x112-y380-w144-h54@4x.png", "table-c4.2-xvii-7.png"],
+    ["page-0132-x112-y633-w110-h56@4x.png", "table-c4.2-xvii-1.png"],
+    ["page-0133-x112-y117-w110-h48@4x.png", "table-c4.2-xvii-2.png"],
+    ["page-0133-x112-y168-w110-h45@4x.png", "table-c4.2-xvii-3.png"],
+    ["page-0133-x112-y217-w110-h44@4x.png", "table-c4.2-xvii-4.png"],
+    ["page-0133-x112-y265-w110-h52@4x.png", "table-c4.2-xvii-5.png"],
+    ["page-0133-x112-y321-w110-h55@4x.png", "table-c4.2-xvii-6.png"],
+    ["page-0133-x112-y380-w110-h54@4x.png", "table-c4.2-xvii-7.png"],
 ] as const;
 
 const blocks: GeneratedBlock[] = [

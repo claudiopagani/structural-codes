@@ -303,19 +303,19 @@ function tableImage(key: keyof typeof tableImageSpecs) {
 const tableIIICombinedClass1Inline: Inline[] = [
     text("quando "), math("α > 0,5", "\\alpha>0{,}5"), text(": "),
     math("c/t ≤ 396ε/(13α−1)", "c/t\\le\\frac{396\\varepsilon}{13\\alpha-1}"),
-    text("; quando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
+    text("\nquando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
     math("c/t ≤ 36ε/α", "c/t\\le\\frac{36\\varepsilon}{\\alpha}"),
 ];
 const tableIIICombinedClass2Inline: Inline[] = [
     text("quando "), math("α > 0,5", "\\alpha>0{,}5"), text(": "),
     math("c/t ≤ 456ε/(13α−1)", "c/t\\le\\frac{456\\varepsilon}{13\\alpha-1}"),
-    text("; quando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
+    text("\nquando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
     math("c/t ≤ 41,5ε/α", "c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}"),
 ];
 const tableIIICombinedClass3Inline: Inline[] = [
     text("quando "), math("ψ > −1", "\\psi>-1"), text(": "),
     math("c/t ≤ 42ε/(0,67+0,33ψ)", "c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi}"),
-    text("; quando "), math("ψ ≤ −1", "\\psi\\le-1"), text(": "),
+    text("\nquando "), math("ψ ≤ −1", "\\psi\\le-1"), text(": "),
     math("c/t ≤ 62ε(1−ψ)√(−ψ)", "c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}"),
 ];
 const tableIIIClassificationDistribution = "Distribuzione\ndelle tensioni\nnelle parti\n(compressione\npositiva)";
@@ -334,7 +334,7 @@ const tableIII = {
     ],
     columnCount: 7,
     headers: [
-        [{ text: "", colSpan: 7, align: "center", ...tableImage("iiiSections") }],
+        [{ text: "", colSpan: 7, align: "center", header: false, ...tableImage("iiiSections") }],
         [{ text: "Parti interne compresse", colSpan: 7, align: "center", strong: true }],
         [
             { text: "Classe", align: "center" },
@@ -354,13 +354,13 @@ const tableIII = {
             { text: "1", align: "center" },
             { text: "c/t ≤ 72ε", latex: "c/t\\le72\\varepsilon", colSpan: 2, align: "center" },
             { text: "c/t ≤ 33ε", latex: "c/t\\le33\\varepsilon", colSpan: 2, align: "center" },
-            { text: "quando α > 0,5: c/t ≤ 396ε/(13α−1); quando α ≤ 0,5: c/t ≤ 36ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}", inline: tableIIICombinedClass1Inline, colSpan: 2, align: "center" },
+            { text: "quando α > 0,5: c/t ≤ 396ε/(13α−1)\nquando α ≤ 0,5: c/t ≤ 36ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}", inline: tableIIICombinedClass1Inline, colSpan: 2, align: "center" },
         ],
         [
             { text: "2", align: "center" },
             { text: "c/t ≤ 83ε", latex: "c/t\\le83\\varepsilon", colSpan: 2, align: "center" },
             { text: "c/t ≤ 38ε", latex: "c/t\\le38\\varepsilon", colSpan: 2, align: "center" },
-            { text: "quando α > 0,5: c/t ≤ 456ε/(13α−1); quando α ≤ 0,5: c/t ≤ 41,5ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}", inline: tableIIICombinedClass2Inline, colSpan: 2, align: "center" },
+            { text: "quando α > 0,5: c/t ≤ 456ε/(13α−1)\nquando α ≤ 0,5: c/t ≤ 41,5ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}", inline: tableIIICombinedClass2Inline, colSpan: 2, align: "center" },
         ],
         [
             { text: tableIIIClassificationDistribution, align: "center", strong: true },
@@ -372,10 +372,14 @@ const tableIII = {
             { text: "3", align: "center" },
             { text: "c/t ≤ 124ε", latex: "c/t\\le124\\varepsilon", colSpan: 2, align: "center" },
             { text: "c/t ≤ 42ε", latex: "c/t\\le42\\varepsilon", colSpan: 2, align: "center" },
-            { text: "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ); quando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)", latex: "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}", inline: tableIIICombinedClass3Inline, colSpan: 2, align: "center" },
+            { text: "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ)\nquando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)", latex: "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}", inline: tableIIICombinedClass3Inline, colSpan: 2, align: "center" },
         ],
+    ],
+    footerColumnCount: 7,
+    footerColumnWidths: [16, 14, 14, 14, 14, 14, 14],
+    footerRows: [
         [
-            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}", rowSpan: 2, align: "center" },
+            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{\\frac{235}{f_{yk}}}", rowSpan: 2, align: "center" },
             { text: "fyk", latex: "f_{yk}", align: "center" },
             { text: "235", align: "center" },
             { text: "275", align: "center" },
@@ -415,8 +419,8 @@ const tableIV = {
     columnCount: 7,
     headers: [
         [{ text: "Piattabande esterne", colSpan: 7, align: "center", strong: true }],
-        [{ text: "", colSpan: 7, align: "center", ...tableImage("ivSections") }],
-        [{ text: "Profilati laminati a caldo", colSpan: 3, align: "center", strong: true }, { text: "Sezioni saldate", colSpan: 4, align: "center", strong: true }],
+        [{ text: "", colSpan: 7, align: "center", header: false, ...tableImage("ivSections") }],
+        [{ text: "Profilati laminati a caldo e sezioni saldate", colSpan: 7, align: "center", strong: true }],
         [
             { text: "Classe", align: "center" },
             { text: "Piattabande esterne soggette a compressione", colSpan: 2, align: "left" },
@@ -488,7 +492,7 @@ const tableV = {
     columnCount: 7,
     headers: [
         [{ text: "Angolari", colSpan: 7, align: "center", strong: true }],
-        [{ text: "", colSpan: 7, align: "center", ...tableImage("vAngle") }],
+        [{ text: "", colSpan: 7, align: "center", header: false, ...tableImage("vAngle") }],
         [{ text: "Riferirsi anche alle piattabande esterne (v. Tab. 4.2.IV).\nNon si applica agli angoli in contatto continuo con altri componenti.", colSpan: 7, align: "left", header: false }],
         [{ text: "Classe", colSpan: 1, align: "center" }, { text: "Sezione in compressione", colSpan: 6, align: "center" }],
     ],
@@ -498,9 +502,9 @@ const tableV = {
             { text: "", colSpan: 6, align: "center", ...tableImage("vAngleStress") },
         ],
         [{ text: "3", colSpan: 1, align: "center" }, { text: "h/t ≤ 15ε; (b+h)/(2t) ≤ 11,5ε", latex: "h/t\\le15\\varepsilon;\\quad\\frac{b+h}{2t}\\le11{,}5\\varepsilon", inline: [math("h/t ≤ 15ε", "h/t\\le15\\varepsilon"), text("; "), math("(b+h)/(2t) ≤ 11,5ε", "\\frac{b+h}{2t}\\le11{,}5\\varepsilon")], colSpan: 6, align: "center" }],
-        [{ text: "Sezioni Tubolari", colSpan: 7, align: "center", strong: true }],
+        [{ text: "Sezioni Tubolari", colSpan: 7, align: "center", strong: true, header: true }],
         [{ text: "", colSpan: 7, align: "center", ...tableImage("vTube") }],
-        [{ text: "Classe", colSpan: 1, align: "center", strong: true }, { text: "Sezione inflessa e/o compressa", colSpan: 6, align: "center", strong: true }],
+        [{ text: "Classe", colSpan: 1, align: "center", strong: true, header: true }, { text: "Sezione inflessa e/o compressa", colSpan: 6, align: "center", strong: true, header: true }],
         [{ text: "1", colSpan: 1, align: "center" }, { text: "d/t ≤ 50ε²", latex: "d/t\\le50\\varepsilon^2", colSpan: 6, align: "center" }],
         [{ text: "2", colSpan: 1, align: "center" }, { text: "d/t ≤ 70ε²", latex: "d/t\\le70\\varepsilon^2", colSpan: 6, align: "center" }],
         [{ text: "3", colSpan: 1, align: "center" }, { text: "d/t ≤ 90ε² (Per d/t > 90ε² vedere EN 1993-1-6)", latex: "d/t\\le90\\varepsilon^2\\quad(\\text{Per }d/t>90\\varepsilon^2\\text{ vedere EN 1993-1-6})", inline: [math("d/t ≤ 90ε²", "d/t\\le90\\varepsilon^2"), text(" (Per "), math("d/t > 90ε²", "d/t>90\\varepsilon^2"), text(" vedere EN 1993-1-6)")], colSpan: 6, align: "center" }],

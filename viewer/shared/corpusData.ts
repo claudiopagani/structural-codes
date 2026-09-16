@@ -48,6 +48,8 @@ export interface TableAsset {
   unitId?: string;
   columnCount?: number;
   columnWidths?: number[];
+  footerColumnCount?: number;
+  footerColumnWidths?: number[];
   officialNumber: string | null;
   pdfPage: number;
   caption: string | null;
@@ -55,6 +57,7 @@ export interface TableAsset {
   captionInline?: InlineSegment[];
   headers: TableCell[][];
   rows: TableCell[][];
+  footerRows?: TableCell[][];
   notes: string[];
   notesInline?: InlineSegment[][];
 }
