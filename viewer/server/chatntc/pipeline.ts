@@ -1,8 +1,9 @@
 import "server-only";
 import {
-  CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, citationForEvidence, isChatNTCResponse,
+  CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, canonicalizeChatNTCResponse, citationForEvidence,
+  isChatNTCProviderOutput, isChatNTCResponse,
   retrieveChatNTCEvidence, validateChatNTCResponse, ChatNTCContextError,
-  type ChatNTCEvidencePackage, type ChatNTCProvider,
+  type ChatNTCEvidencePackage, type ChatNTCProvider, type ChatNTCProviderOutput,
   type ChatNTCRepository, type ChatNTCResponse, type ChatNTCRetrievalOptions, type ChatNTCValidationIssue,
 } from "../../shared/chatntc/index.js";
 import { ChatNTCServerError } from "./errors.js";
@@ -10,8 +11,6 @@ import type { ChatRequest, ChatResult } from "../../shared/chatntc-ui/transport.
 
 export type ChatNTCRequest = ChatRequest;
 export type ChatNTCResult = ChatResult;
-const repairableIssues = new Set(["unselected-canonical-reference", "untracked-reference", "uncovered-claim",
-  "uncovered-answer", "used-evidence-mismatch", "duplicate-used-evidence", "partial-needs-evidence", "answered-needs-evidence"]);
 
 /** Detect absence of usable primary content, not semantic sufficiency or human approval. */
 function hasPrimaryContent(evidence: ChatNTCEvidencePackage): boolean {
@@ -69,14 +68,25 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   }
   if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
   // Mandatory for ALL results, including abstentions and alternative/mock providers.
+  let canonical: ChatNTCResponse;
   let validation;
-  try { validation = await validateChatNTCResponse(candidate, evidence, repository); }
-  catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+  let accounting: "normalized" | "expanded-and-regenerated" = "normalized";
+  if (providerId === null) {
+    if (!isChatNTCResponse(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
+    canonical = candidate;
+    try { validation = await validateChatNTCResponse(canonical, evidence, repository); }
+    catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+  } else {
+    if (!isChatNTCProviderOutput(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
+    ({ canonical, validation } = await canonicalizeAndValidate(candidate, evidence));
+  }
   if (!validation.valid) {
-    const canRepair = providerId !== null && validation.issues.length > 0 && validation.issues.every((issue) => repairableIssues.has(issue.code));
-    const expansionReferences = validation.issues.filter((issue) => issue.code === "unselected-canonical-reference")
+    const expansionReferences = validation.issues.filter((issue) => issue.category === "discovery")
       .map((issue) => issue.reference).filter((value): value is string => Boolean(value));
-    if (canRepair && new Set(expansionReferences).size <= 12) {
+    const hasOnlyBookkeeping = validation.issues.length > 0 && validation.issues.every((issue) => issue.category === "bookkeeping");
+    const canRegenerate = providerId !== null && (expansionReferences.length > 0 || hasOnlyBookkeeping)
+      && new Set(expansionReferences).size <= 12;
+    if (canRegenerate) {
       if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
       const references = [...new Set(expansionReferences)];
       if (references.length) {
@@ -95,25 +105,46 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
         if (error instanceof ChatNTCServerError) throw error;
         throw new ChatNTCServerError("PROVIDER_ERROR");
       }
-      try { validation = await validateChatNTCResponse(candidate, evidence, repository); }
-      catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+      if (!isChatNTCProviderOutput(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
+      ({ canonical, validation } = await canonicalizeAndValidate(candidate, evidence));
+      accounting = references.length ? "expanded-and-regenerated" : "normalized";
     }
     if (!validation.valid) throw new ChatNTCServerError(validation.issues.some((issue) => issue.code === "invalid-response-shape")
       ? "INVALID_RESPONSE_SCHEMA" : "CITATION_VALIDATION_FAILED", validation.issues);
   }
-  if (!isChatNTCResponse(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
   return {
-    ok: true, response: candidate,
-    citations: candidate.usedEvidenceIds.map((id) => citationForEvidence(evidence, id)),
+    ok: true, response: canonical,
+    citations: canonical.usedEvidenceIds.map((id) => citationForEvidence(evidence, id)),
     evidence: { packageId: evidence.packageId, structuralCodesVersion: evidence.corpus.version, corpusFingerprint: evidence.corpus.fingerprint,
       artifactFingerprint: evidence.corpus.artifactFingerprint, policyVersion: evidence.policyVersion,
       reduced: evidence.retrieval.reduced, warnings: evidence.warnings },
-    generation: { provider: providerId, model, outcome: (candidate.formatVersion === 2 ? candidate.status === "abstained"
-      : candidate.classification === "no-direct-reference") ? "abstained" : "generated" },
-    validation: { valid: true, scope: "integrity-provenance-claim-coverage" },
+    generation: { provider: providerId, model, outcome: (canonical.formatVersion === 2 ? canonical.status === "abstained"
+      : canonical.classification === "no-direct-reference") ? "abstained" : "generated" },
+    validation: { valid: true, scope: "integrity-provenance-claim-coverage", accounting },
   };
+
+  async function canonicalizeAndValidate(output: ChatNTCProviderOutput, activeEvidence: ChatNTCEvidencePackage) {
+    let normalized;
+    try { normalized = await canonicalizeChatNTCResponse(output, activeEvidence, repository); }
+    catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+    let checked;
+    try { checked = await validateChatNTCResponse(normalized.response, activeEvidence, repository); }
+    catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+    const issues = deduplicateIssues([...normalized.issues, ...checked.issues]);
+    return { canonical: normalized.response, validation: { valid: issues.length === 0, issues } };
+  }
 }
 
 function repairIssue(issue: ChatNTCValidationIssue): Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference"> {
   return { code: issue.code, path: issue.path, message: issue.message, ...(issue.reference ? { reference: issue.reference } : {}) };
+}
+
+function deduplicateIssues(issues: ChatNTCValidationIssue[]): ChatNTCValidationIssue[] {
+  const seen = new Set<string>();
+  return issues.filter((issue) => {
+    const key = `${issue.code}\u0000${issue.path}\u0000${issue.reference ?? ""}\u0000${JSON.stringify(issue.targets ?? [])}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }

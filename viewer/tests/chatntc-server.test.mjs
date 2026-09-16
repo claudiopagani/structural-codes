@@ -13,7 +13,7 @@ import { ChatNTCServerError, publicError } from "../.chatntc-test/server/chatntc
 import { createLocalArtifactRepository } from "../.chatntc-test/server/chatntc/localRepository.js";
 import { runChatNTC } from "../.chatntc-test/server/chatntc/pipeline.js";
 import { createChatNTCHandler } from "../.chatntc-test/server/chatntc/routeHandler.js";
-import { CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, citationForEvidence, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
+import { CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, isChatNTCProviderOutput, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
 
 // Synthetic credential used only with injected fetch. No test calls the real provider.
 const key = "fixture-secret-chatntc-never-a-real-api-key";
@@ -27,12 +27,15 @@ const request = (value = { question }, options = {}) => new Request("http://loca
 const mockEnvelope = (value, options = {}) => Response.json({ choices: [{ index: 0, finish_reason: "stop", message: { role: "assistant", content: JSON.stringify(value) }, ...options }] });
 
 function validResponse(input) {
-  const unit = input.evidence.primaryUnits[0];
-  const citation = citationForEvidence(input.evidence, unit.evidenceId);
-  return { formatVersion: 2, evidencePackageId: input.evidence.packageId,
+  const evidenceId = input.evidence.primaryUnits[0].evidenceId;
+  return { formatVersion: 1, evidencePackageId: input.evidence.packageId,
     answer: "Riferimento individuato nel corpus fornito.", classification: "direct-reference", status: "answered",
-    claims: [{ id: "claim-1", text: "Riferimento individuato nel corpus fornito.", classification: "direct-reference", citations: [citation] }],
-    usedEvidenceIds: [citation.evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false };
+    claims: [{ id: "claim-1", text: "Riferimento individuato nel corpus fornito.", classification: "direct-reference", evidenceIds: [evidenceId] }],
+    warnings: [], needsMoreEvidence: false, externalResearchSuggested: false };
+}
+
+function providerOutput(input, overrides = {}) {
+  return { ...validResponse(input), ...overrides };
 }
 
 async function generationInput() {
@@ -76,13 +79,13 @@ test("DeepSeek: endpoint, auth server-side, messages, direttive e JSON request c
     assert.deepEqual(body.messages.slice(1, -1), input.messages);
     const context = JSON.parse(body.messages.at(-1).content);
     assert.deepEqual(context.evidence, input.evidence);
-    assert.ok(context.allowedCitations.length > 1);
+    assert.ok(context.allowedEvidenceIds.length > 1);
     assert.equal(init.body.includes(key), false);
     return mockEnvelope(validResponse(input));
   });
   const response = await adapter.generate(input);
   assert.equal(calls, 1);
-  assert.ok(isChatNTCResponse(response));
+  assert.ok(isChatNTCProviderOutput(response));
   assert.equal(JSON.stringify(adapter).includes(key), false);
   assert.equal(JSON.stringify(response).includes(key), false);
   assert.deepEqual(adapter.capabilities, { structuredOutput: true, outputMode: "json-object", streaming: false, cancellation: true, toolCalling: false, reasoning: "disabled" });
@@ -93,7 +96,7 @@ test("schema JSON condiviso e guard runtime concordano sul contratto strutturale
   const valid = validResponse(await generationInput());
   for (const value of [valid, null, [], {}, { ...valid, unexpected: true }, { ...valid, warnings: [""] },
     { ...valid, classification: "invented" }, { ...valid, claims: [null] }, { ...valid, needsMoreEvidence: "yes" }]) {
-    assert.equal(Boolean(validate(value)), isChatNTCResponse(value), JSON.stringify(validate.errors));
+    assert.equal(Boolean(validate(value)), isChatNTCProviderOutput(value), JSON.stringify(validate.errors));
   }
 });
 
@@ -211,6 +214,38 @@ for (const [name, query, expected] of [
   for (const numbering of expected) assert.equal(numberings.has(numbering), true, JSON.stringify([...numberings]));
 });
 
+test("field test pareti: bookkeeping canonico associa 7.4.6.2.1, 7.4.2.1 e C7.2.2 senza retry", async () => {
+  let calls = 0;
+  const query = "Nel caso di pareti accoppiate, ai sensi del § 7.4.6.2.1 delle NTC 2018, la verifica di duttilità è richiesta anche per le fasce di piano oppure può essere omessa applicando la combinazione sismica prevista al § 7.4.2.1?";
+  const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls += 1;
+    return providerOutput(input, { answer: "Ai sensi del § 7.4.6.2.1 e del § 7.4.2.1, letti con C7.2.2, la conclusione è interpretativa; il § 7.4.2.1 resta parte del quadro.",
+      classification: "combined-reference", claims: [{ id: "c1", text: "Dalla lettura del § 7.4.6.2.1, del § 7.4.2.1 e di C7.2.2 consegue una conclusione progettuale.", classification: "interpretation", evidenceIds: [] }] });
+  }) });
+  assert.equal(calls, 1);
+  assert.equal(result.response.classification, "interpretation");
+  assert.deepEqual(new Set(result.citations.map((citation) => citation.numbering)), new Set(["7.4.6.2.1", "7.4.2.1", "C7.2.2"]));
+  assert.equal(result.validation.accounting, "normalized");
+});
+
+test("field test q²: discovery 7.3.4 e formula 7.3.8 espandono e rigenerano una sola volta", async () => {
+  let calls = 0;
+  const query = "Al § 7.3.6.1, per la verifica di rigidezza, la norma richiede che q·dr sia inferiore a un limite funzione dell’altezza interpiano. Ma dr, ai sensi del § 7.3.3.3, deriva già dallo spostamento dell’analisi lineare moltiplicato per un fattore di duttilità che può essere pari a q. Quindi lo spostamento ottenuto dal modello deve essere moltiplicato per q²?";
+  const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls += 1;
+    if (calls === 2) {
+      assert.ok(input.repair.issues.some((issue) => issue.code === "unselected-canonical-reference" && issue.reference === "§ 7.3.4"));
+      assert.ok(input.evidence.primaryUnits.some((unit) => unit.numbering === "7.3.4"));
+      assert.ok([...input.evidence.primaryUnits, ...input.evidence.relatedUnits].some((unit) => unit.blocks.some((block) => block.assetId?.endsWith("7.3.3.3-7.3.8"))));
+    }
+    return providerOutput(input, { answer: "Il § 7.3.3.3, la formula [7.3.8] e il § 7.3.4 richiedono una lettura coordinata.",
+      classification: "combined-reference", claims: [{ id: "c1", text: "Il § 7.3.3.3 sostiene una conclusione interpretativa.", classification: "interpretation", evidenceIds: [] }] });
+  }) });
+  assert.equal(calls, 2);
+  assert.equal(result.response.classification, "interpretation");
+  assert.equal(result.validation.accounting, "expanded-and-regenerated");
+});
+
 test("pipeline: un solo retry espande evidence per un riferimento canonico reale", async () => {
   const inputs = [];
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
@@ -259,13 +294,14 @@ test("pipeline: no-direct-reference answered resta una risposta generata", async
 test("pipeline respinge hallucination, output mock malformato e alterazioni del pacchetto", async () => {
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     const response = validResponse(input);
-    response.claims[0].citations[0].numbering = "7.99.4";
+    response.claims[0].evidenceIds = ["urn:structural-codes:it:evidence:invented"];
     return response;
   }) }), "CITATION_VALIDATION_FAILED");
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async () => ({ answer: "incomplete" })) }), "INVALID_RESPONSE_SCHEMA");
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    input.evidence.primaryUnits[0].numbering = "7.99.4";
-    return validResponse(input);
+    const response = validResponse(input);
+    response.evidencePackageId = "sha256:invented";
+    return response;
   }) }), "CITATION_VALIDATION_FAILED");
 });
 
@@ -376,6 +412,8 @@ test("HTTP mappa errori distinti senza restituire output o citazioni non validat
 test("diagnostica validator è disponibile solo quando publicError è in debug", () => {
   const error = new ChatNTCServerError("CITATION_VALIDATION_FAILED", [{ code: "unresolved-reference", path: "response.answer", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
   assert.equal(publicError(error, false).body.error.diagnostics, undefined);
+  assert.equal(publicError(error, false).body.error.accounting, undefined);
+  assert.equal(publicError(error, true).body.error.accounting, "hard-rejected");
   assert.deepEqual(publicError(error, true).body.error.diagnostics, [{ code: "unresolved-reference", path: "response.answer", message: "Riferimento non risolvibile", reference: "§7.99.4" }]);
 });
 
@@ -462,14 +500,14 @@ for (const [id, Adapter] of Object.entries(adapters)) {
       assert.equal(new URL(url).search, "");
       const context = contextFor(id, body);
       assert.equal(context.evidence.question, question);
-      assert.ok(context.allowedCitations.length);
+      assert.ok(context.allowedEvidenceIds.length);
       if (id === "openai") { assert.equal(body.store, false); assert.equal(body.text.format.strict, true); assert.equal(body.text.format.type, "json_schema");
-        const schema = body.text.format.schema; assert.deepEqual(schema.properties.claims.items.properties.citations.items.required,
-          ["evidenceId", "unitId", "document", "numbering", "blockId", "assetId", "assetNumber"]); }
+        const schema = body.text.format.schema; assert.deepEqual(schema.properties.claims.items.required,
+          ["id", "text", "classification", "evidenceIds"]); }
       if (id === "anthropic") { assert.equal(headers.get("anthropic-version"), "2023-06-01"); assert.equal(body.output_config.format.type, "json_schema"); assert.ok(body.system.includes(CHATNTC_DIRECTIVES.rules[0])); }
       if (id === "gemini") { assert.equal(body.generationConfig.responseFormat.text.mimeType, "application/json"); assert.ok(body.systemInstruction.parts[0].text.includes(CHATNTC_DIRECTIVES.rules[0])); }
       const answer = validResponse({ evidence: context.evidence });
-      if (hallucinate) answer.claims[0].citations[0].numbering = "7.99.4";
+      if (hallucinate) answer.claims[0].evidenceIds = ["urn:structural-codes:it:evidence:invented"];
       return Response.json(envelopeFor(id, answer));
     }, selection, apiKey) });
     const headers = { "content-type": "application/json", origin: "http://localhost:3000", "x-chatntc-provider": id,
@@ -521,7 +559,7 @@ for (const [id, Adapter] of Object.entries(adapters)) {
       if (repaired === 2) assert.match(init.body, /precedente tentativo/);
       return Response.json(envelopeFor(id, repaired === 1 ? "{broken" : validResponse(input)));
     });
-    assert.ok(isChatNTCResponse(await repair.generate(input))); assert.equal(repaired, 2);
+    assert.ok(isChatNTCProviderOutput(await repair.generate(input))); assert.equal(repaired, 2);
     assert.equal(modelCapabilities(id, "future-manual-model").structuredOutput, "prompt-json");
     let nativeCalls = 0;
     const malformed = new Adapter({ apiKey: key }, async () => { nativeCalls++; return Response.json(envelopeFor(id, "{broken")); });

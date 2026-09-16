@@ -1,6 +1,6 @@
 import type { CHATNTC_EPISTEMIC_POLICY } from "./policy.js";
 import type { CHATNTC_RESPONSE_JSON_SCHEMA } from "./responseContract.js";
-import type { ChatNTCEvidencePackage, ChatNTCResponse, ChatNTCValidationIssue } from "./types.js";
+import type { ChatNTCEvidencePackage, ChatNTCProviderOutput, ChatNTCValidationIssue } from "./types.js";
 
 /** Transient contextual messages only; no storage or provider-specific roles. */
 export interface ChatNTCMessage { role: "user" | "assistant"; content: string; }
@@ -29,5 +29,5 @@ export interface ChatNTCProvider {
   readonly model?: string;
   readonly capabilities: { structuredOutput: boolean; streaming: boolean;
     outputMode?: "json-schema" | "json-object" | "prompt-json"; cancellation?: boolean; toolCalling?: boolean; reasoning?: string };
-  generate(input: ChatNTCGenerationInput): Promise<ChatNTCResponse>;
+  generate(input: ChatNTCGenerationInput): Promise<ChatNTCProviderOutput>;
 }

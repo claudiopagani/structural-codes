@@ -41,12 +41,12 @@ test("route Vinext local/debug esegue l'intera pipeline con fetch DeepSeek simul
     assert.equal(init.headers.authorization, `Bearer ${key}`);
     assert.equal(init.body.includes(key), false);
     const context = JSON.parse(JSON.parse(init.body).messages.at(-1).content);
-    const citation = context.allowedCitations[0];
+    const evidenceId = context.allowedEvidenceIds[0];
     return Response.json({ choices: [{ finish_reason: "stop", message: { role: "assistant", content: JSON.stringify({
       formatVersion: 1, evidencePackageId: context.evidence.packageId,
-      answer: "Riferimento individuato nel corpus.", classification: "direct-reference",
-      claims: [{ id: "c1", text: "Riferimento individuato nel corpus.", classification: "direct-reference", citations: [citation] }],
-      usedEvidenceIds: [citation.evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
+      answer: "Riferimento individuato nel corpus.", classification: "direct-reference", status: "answered",
+      claims: [{ id: "c1", text: "Riferimento individuato nel corpus.", classification: "direct-reference", evidenceIds: [evidenceId] }],
+      warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
     }) } }] });
   });
   await withEnvironment({ CHATNTC_ENABLED: "true", CHATNTC_DEBUG: "true" }, async () => {
@@ -72,9 +72,9 @@ test("route compilata blocca output inventato e restituisce astensione senza pro
     const context = JSON.parse(JSON.parse(init.body).messages.at(-1).content);
     return Response.json({ choices: [{ finish_reason: "stop", message: { role: "assistant", content: JSON.stringify({
       formatVersion: 1, evidencePackageId: context.evidence.packageId,
-      answer: "NTC 2018 §7.99.4", classification: "direct-reference",
-      claims: [{ id: "c1", text: "Riferimento fixture.", classification: "direct-reference", citations: [{ ...context.allowedCitations[0], numbering: "7.99.4" }] }],
-      usedEvidenceIds: [context.allowedCitations[0].evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
+      answer: "NTC 2018 §7.99.4", classification: "direct-reference", status: "answered",
+      claims: [{ id: "c1", text: "Riferimento fixture.", classification: "direct-reference", evidenceIds: [context.allowedEvidenceIds[0]] }],
+      warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
     }) } }] });
   });
   await withEnvironment({ CHATNTC_ENABLED: "true", CHATNTC_DEBUG: "true" }, async () => {
@@ -82,7 +82,7 @@ test("route compilata blocca output inventato e restituisce astensione senza pro
     assert.equal(invalid.status, 502);
     const body = await invalid.json();
     assert.equal(body.error.code, "CITATION_VALIDATION_FAILED");
-    assert.ok(body.error.diagnostics.some((issue) => issue.code === "citation-identity-mismatch"));
+    assert.ok(body.error.diagnostics.some((issue) => issue.code === "unresolved-reference"));
     assert.ok(body.error.diagnostics.every((issue) => typeof issue.path === "string" && typeof issue.message === "string"));
     assert.equal(body.response, undefined);
     const response = await post({ question: "7.99.4" });

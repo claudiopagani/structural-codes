@@ -43,7 +43,9 @@ test("l'indice derivato risolve target e backlink senza caricare chunk", async (
   assert.equal(index.units.length, 1745);
   assert.ok(index.assets.length > 100);
   assert.ok(index.backlinks.length > 500);
-  assert.ok((await stat(new URL(`../public${manifest.crossReferenceIndexPath}`, import.meta.url))).size < 1_100_000);
+  // Includes every officially numbered asset so exact canonical lookup does
+  // not depend on whether corpus prose happens to create a backlink.
+  assert.ok((await stat(new URL(`../public${manifest.crossReferenceIndexPath}`, import.meta.url))).size < 1_200_000);
   const unit = resolveCrossReference(lookup, { kind: "unit", number: "7.3.3.3", documentHint: null }, "ntc2018");
   assert.equal(unit?.unit.numbering, "7.3.3.3");
   assert.ok([...lookup.backlinksByTarget.keys()].some((key) => key.startsWith("unit:")));

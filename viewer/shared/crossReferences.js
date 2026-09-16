@@ -149,7 +149,13 @@ export function buildCrossReferenceIndexPayload({ units, assetCollections }) {
       }
     }
   }
-  return { formatVersion: 1, units: unitTargets, assets: assets.filter((asset) => referencedAssetIds.has(asset.id)), backlinks };
+  // Exact canonical resolution needs every numbered asset, even without a
+  // backlink. Keep descriptive preview fields only for assets referenced by
+  // corpus prose so the lazy viewer index remains compact.
+  const indexedAssets = assets.map((asset) => referencedAssetIds.has(asset.id) ? asset : ({
+    id: asset.id, kind: asset.kind, unitId: asset.unitId, blockId: asset.blockId, officialNumber: asset.officialNumber,
+  }));
+  return { formatVersion: 1, units: unitTargets, assets: indexedAssets, backlinks };
 }
 
 export function createCrossReferenceLookup(index) {

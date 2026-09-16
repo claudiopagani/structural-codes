@@ -161,6 +161,27 @@ export interface ChatNTCClaim {
   citations: ChatNTCCitation[];
 }
 
+export interface ChatNTCProviderClaim {
+  id: string;
+  text: string;
+  classification: ChatNTCClassification;
+  /** Selected evidence IDs only; canonical citation metadata is server-owned. */
+  evidenceIds: string[];
+}
+
+/** Minimal provider wire output. It is never returned directly to the UI. */
+export interface ChatNTCProviderOutput {
+  formatVersion: 1;
+  evidencePackageId: string;
+  answer: string;
+  classification: ChatNTCClassification;
+  status: ChatNTCAnswerStatus;
+  claims: ChatNTCProviderClaim[];
+  warnings: string[];
+  needsMoreEvidence: boolean;
+  externalResearchSuggested: boolean;
+}
+
 /** Future provider output. No SDK types, URLs supplied by a model, or HTTP envelopes. */
 interface ChatNTCResponseBody {
   evidencePackageId: string;
@@ -181,7 +202,14 @@ export type ChatNTCResponse = ChatNTCResponseBody & (
 
 export interface ChatNTCValidationIssue {
   code: string; path: string; message: string;
+  category: "integrity" | "bookkeeping" | "discovery";
   reference?: string;
   targets?: ChatNTCTarget[];
 }
 export interface ChatNTCValidationResult { valid: boolean; issues: ChatNTCValidationIssue[]; }
+
+export interface ChatNTCCanonicalizationResult {
+  response: ChatNTCResponse;
+  issues: ChatNTCValidationIssue[];
+  normalized: boolean;
+}

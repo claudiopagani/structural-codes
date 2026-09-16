@@ -1,36 +1,26 @@
-import type { ChatNTCCitation, ChatNTCResponse } from "./types.js";
+import type { ChatNTCCitation, ChatNTCProviderOutput, ChatNTCResponse } from "./types.js";
 
 const classifications = ["direct-reference", "combined-reference", "interpretation", "no-direct-reference", "external-source"] as const;
 const nonEmptyString = { type: "string", pattern: "\\S" } as const;
 
-/** Provider-independent wire schema. Citation integrity still requires the repository validator. */
+/** Minimal provider wire schema. Canonical citation metadata is reconstructed server-side. */
 export const CHATNTC_RESPONSE_JSON_SCHEMA = {
   $schema: "http://json-schema.org/draft-07/schema#",
-  title: "ChatNTCResponse v2",
+  title: "ChatNTCProviderOutput v1",
   type: "object", additionalProperties: false,
-  required: ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "usedEvidenceIds", "warnings", "needsMoreEvidence", "externalResearchSuggested"],
+  required: ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "warnings", "needsMoreEvidence", "externalResearchSuggested"],
   properties: {
-    formatVersion: { const: 2 }, evidencePackageId: nonEmptyString, answer: nonEmptyString,
+    formatVersion: { const: 1 }, evidencePackageId: nonEmptyString, answer: nonEmptyString,
     classification: { enum: classifications },
     status: { enum: ["answered", "partial", "abstained"] },
     claims: { type: "array", items: {
       type: "object", additionalProperties: false,
-      required: ["id", "text", "classification", "citations"],
+      required: ["id", "text", "classification", "evidenceIds"],
       properties: {
         id: nonEmptyString, text: nonEmptyString, classification: { enum: classifications },
-        citations: { type: "array", items: {
-          type: "object", additionalProperties: false,
-          required: ["evidenceId", "unitId", "document", "numbering"],
-          properties: {
-            evidenceId: nonEmptyString, unitId: nonEmptyString,
-            document: { enum: ["ntc2018", "circ2019"] }, numbering: nonEmptyString,
-            blockId: nonEmptyString, assetId: nonEmptyString,
-            assetNumber: { anyOf: [nonEmptyString, { type: "null" }] },
-          },
-        } },
+        evidenceIds: { type: "array", items: nonEmptyString },
       },
     } },
-    usedEvidenceIds: { type: "array", items: nonEmptyString },
     warnings: { type: "array", items: nonEmptyString },
     needsMoreEvidence: { type: "boolean" }, externalResearchSuggested: { type: "boolean" },
   },
@@ -41,6 +31,16 @@ const text = (value: unknown): value is string => typeof value === "string" && v
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(text);
 const keys = (value: Record<string, unknown>, allowed: string[]) => Object.keys(value).every((key) => allowed.includes(key));
 const classification = (value: unknown) => typeof value === "string" && (classifications as readonly string[]).includes(value);
+
+export function isChatNTCProviderOutput(value: unknown): value is ChatNTCProviderOutput {
+  return object(value) && keys(value, ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
+    && value.formatVersion === 1 && text(value.evidencePackageId) && text(value.answer)
+    && classification(value.classification) && ["answered", "partial", "abstained"].includes(String(value.status))
+    && strings(value.warnings) && typeof value.needsMoreEvidence === "boolean" && typeof value.externalResearchSuggested === "boolean"
+    && Array.isArray(value.claims) && value.claims.every((claim) => object(claim)
+      && keys(claim, ["id", "text", "classification", "evidenceIds"]) && text(claim.id) && text(claim.text)
+      && classification(claim.classification) && strings(claim.evidenceIds));
+}
 
 function isCitation(value: unknown): value is ChatNTCCitation {
   return object(value) && keys(value, ["evidenceId", "unitId", "document", "numbering", "blockId", "assetId", "assetNumber"])

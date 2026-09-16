@@ -59,8 +59,9 @@ export function publicError(error: unknown, debug = false) {
   const code = error instanceof ChatNTCServerError && Object.hasOwn(CHATNTC_ERRORS, error.code) ? error.code : "INTERNAL_ERROR";
   // Reconstruct from the allowlist even if a thrown error's message was mutated.
   const diagnostics = debug && error instanceof ChatNTCServerError && code === "CITATION_VALIDATION_FAILED" && error.validationIssues
-    ? error.validationIssues.map((issue) => ({ code: safe(issue.code, 80), path: safe(issue.path, 200), message: safe(issue.message, 300),
+    ? error.validationIssues.map((issue) => ({ code: safe(issue.code, 80), ...(issue.category ? { category: issue.category } : {}), path: safe(issue.path, 200), message: safe(issue.message, 300),
       ...(issue.reference ? { reference: safe(issue.reference, 120) } : {}) })) : undefined;
   return { status: CHATNTC_ERRORS[code][0], body: { ok: false as const, error: { code, category: errorCategory(code), message: CHATNTC_ERRORS[code][1],
+    ...(debug && code === "CITATION_VALIDATION_FAILED" ? { accounting: "hard-rejected" as const } : {}),
     ...(diagnostics?.length ? { diagnostics } : {}) } } };
 }

@@ -53,6 +53,16 @@ test("artefatti reali: asset indicizzati e relazioni esplicite, nessuna uguaglia
   assert.ok(links.some((link) => link.kind === "cross-reference"));
 });
 
+test("artefatti reali: formula 7.3.8 è risolvibile anche senza backlink", async () => {
+  const repository = createArtifactRepository(loader);
+  for (const query of ["[7.3.8]", "formula [7.3.8]"]) {
+    const targets = await repository.resolveExact(query);
+    assert.equal(targets.length, 1);
+    assert.equal(targets[0].unitId, "urn:structural-codes:it:unit:ntc2018:7.3.3.3");
+    assert.equal(targets[0].assetId, "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.3-7.3.8");
+  }
+});
+
 test("adapter viewer usa loader/cache esistenti; exact lookup non scarica full-text né chunk", async (t) => {
   const paths = [];
   t.mock.method(globalThis, "fetch", async (url) => {

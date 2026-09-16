@@ -20,7 +20,7 @@ export interface ChatResult {
     policyVersion: string; reduced: boolean; warnings: ChatNTCEvidencePackage["warnings"];
   };
   generation: { provider: string | null; model?: string | null; outcome: "generated" | "abstained" };
-  validation: { valid: true; scope: "integrity-provenance-claim-coverage" };
+  validation: { valid: true; scope: "integrity-provenance-claim-coverage"; accounting?: "normalized" | "expanded-and-regenerated" };
 }
 
 export interface ChatTransport {

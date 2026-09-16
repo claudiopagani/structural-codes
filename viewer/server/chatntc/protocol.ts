@@ -1,5 +1,5 @@
 import "server-only";
-import { citationForEvidence, isChatNTCResponse, type ChatNTCGenerationInput, type ChatNTCProvider, type ChatNTCResponse } from "../../shared/chatntc/index.js";
+import { isChatNTCProviderOutput, type ChatNTCGenerationInput, type ChatNTCProvider, type ChatNTCProviderOutput } from "../../shared/chatntc/index.js";
 import { modelCapabilities, PROVIDERS, validModel, type ProviderId } from "../../app/chatntc/providerRegistry.js";
 import { ChatNTCServerError, type ChatNTCErrorCode } from "./errors.js";
 import { readLimitedText, withDeadline } from "./io.js";
@@ -24,10 +24,10 @@ export function wireSchema(value: unknown, strict = false): unknown {
   return result;
 }
 export function prompt(input: ChatNTCGenerationInput, retry: boolean) {
-  const allowedCitations = [...input.evidence.primaryUnits, ...input.evidence.relatedUnits].flatMap((unit) =>
-    [unit.evidenceId, ...unit.blocks.map((block) => block.evidenceId)].map((id) => citationForEvidence(input.evidence, id)));
-  const example = { formatVersion: 2, evidencePackageId: input.evidence.packageId, answer: "Evidence insufficiente.",
-    classification: "no-direct-reference", status: "abstained", claims: [], usedEvidenceIds: [], warnings: [], needsMoreEvidence: true, externalResearchSuggested: false };
+  const allowedEvidenceIds = [...input.evidence.primaryUnits, ...input.evidence.relatedUnits].flatMap((unit) =>
+    [unit.evidenceId, ...unit.blocks.map((block) => block.evidenceId)]);
+  const example = { formatVersion: 1, evidencePackageId: input.evidence.packageId, answer: "Evidence insufficiente.",
+    classification: "no-direct-reference", status: "abstained", claims: [], warnings: [], needsMoreEvidence: true, externalResearchSuggested: false };
   return {
     system: [`ChatNTC directives ${input.directives.version}`, ...input.directives.rules,
       `Epistemic policy: ${JSON.stringify(input.directives.policy)}`, `Output JSON Schema: ${JSON.stringify(input.outputSchema)}`,
@@ -35,7 +35,7 @@ export function prompt(input: ChatNTCGenerationInput, retry: boolean) {
       ...(retry ? ["Il precedente tentativo non era conforme. Produci un nuovo oggetto JSON completo rispettando esattamente lo schema."] : []),
       ...(input.repair ? [`Correggi esclusivamente questi errori di validazione strutturati: ${JSON.stringify(input.repair.issues)}. Il precedente testo non è una fonte e non viene fornito.`] : [])].join("\n\n"),
     messages: [...input.messages.map(({ role, content }) => ({ role, content })),
-      { role: "user" as const, content: JSON.stringify({ kind: "chatntc-evidence-context", evidence: input.evidence, allowedCitations }) }],
+      { role: "user" as const, content: JSON.stringify({ kind: "chatntc-evidence-context", evidence: input.evidence, allowedEvidenceIds }) }],
   };
 }
 function httpError(status: number, body: string): ChatNTCErrorCode {
@@ -77,7 +77,7 @@ export abstract class JsonProviderAdapter implements ChatNTCProvider {
     if (!/^[\x21-\x7e]{1,512}$/u.test(key) || !validModel(this.model) || !Number.isSafeInteger(timeout) || timeout < 1 || timeout > 120_000) throw new ChatNTCServerError("INVALID_PROVIDER_CONFIG");
     this.#key = key; this.#fetch = fetchImpl; this.#timeout = timeout;
   }
-  async generate(input: ChatNTCGenerationInput): Promise<ChatNTCResponse> {
+  async generate(input: ChatNTCGenerationInput): Promise<ChatNTCProviderOutput> {
     try {
       return await withDeadline(async (signal) => {
         for (let attempt = 0; attempt < (this.mode === "json-schema" ? 1 : 2); attempt++) {
@@ -93,14 +93,7 @@ export abstract class JsonProviderAdapter implements ChatNTCProvider {
             let candidate: unknown;
             try { candidate = JSON.parse(text); } catch { throw new ChatNTCServerError("INVALID_PROVIDER_JSON"); }
             if (JSON.stringify(candidate).includes(this.#key) || JSON.stringify(candidate).includes(JSON.stringify(this.#key).slice(1, -1))) malformed();
-            // Only reverse nullable optional fields introduced by the strict wire schema.
-            if (this.mode === "json-schema" && object(candidate) && Array.isArray(candidate.claims)) for (const claim of candidate.claims) {
-              if (object(claim) && Array.isArray(claim.citations)) for (const citation of claim.citations) if (object(citation)) {
-                for (const key of ["blockId", "assetId"]) if (citation[key] === null) delete citation[key];
-                if (citation.assetNumber === null && citation.assetId === undefined) delete citation.assetNumber;
-              }
-            }
-            if (!isChatNTCResponse(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
+            if (!isChatNTCProviderOutput(candidate)) throw new ChatNTCServerError("INVALID_RESPONSE_SCHEMA");
             return candidate;
           } catch (error) {
             if (attempt === 0 && this.mode !== "json-schema" && error instanceof ChatNTCServerError
