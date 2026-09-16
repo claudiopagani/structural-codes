@@ -55,6 +55,18 @@ test("create, persistent messages/citations/provenance, simulated reload and act
   assert.deepEqual(turnsFromHistory(saved.messages)[0].result, result);
 });
 
+test("history schema v2 ripristina sia answer wire v1 esistenti sia nuove answer wire v2", async (t) => {
+  const { store } = setup(t);
+  const responseV2 = { ...response, formatVersion: 2, status: "answered" };
+  const turnsV2 = [{ ...turns[0], id: "turn-v2", result: { ...result, response: responseV2 } }];
+  const messagesV2 = historyMessages(turnsV2);
+  const created = await store.createConversation({ title: "Wire compatibile", messages: [...messages, ...messagesV2] });
+  const restored = turnsFromHistory(created.messages);
+  assert.equal(restored[0].result.response.formatVersion, 1);
+  assert.equal(restored[1].result.response.formatVersion, 2);
+  assert.equal(restored[1].result.response.status, "answered");
+});
+
 test("two independent conversations, updatedAt ordering and rename without replacing messages", async (t) => {
   const { store } = setup(t);
   const a = await store.createConversation({ title: "A", messages });

@@ -26,13 +26,14 @@ export function wireSchema(value: unknown, strict = false): unknown {
 export function prompt(input: ChatNTCGenerationInput, retry: boolean) {
   const allowedCitations = [...input.evidence.primaryUnits, ...input.evidence.relatedUnits].flatMap((unit) =>
     [unit.evidenceId, ...unit.blocks.map((block) => block.evidenceId)].map((id) => citationForEvidence(input.evidence, id)));
-  const example = { formatVersion: 1, evidencePackageId: input.evidence.packageId, answer: "Evidence insufficiente.",
-    classification: "no-direct-reference", claims: [], usedEvidenceIds: [], warnings: [], needsMoreEvidence: true, externalResearchSuggested: false };
+  const example = { formatVersion: 2, evidencePackageId: input.evidence.packageId, answer: "Evidence insufficiente.",
+    classification: "no-direct-reference", status: "abstained", claims: [], usedEvidenceIds: [], warnings: [], needsMoreEvidence: true, externalResearchSuggested: false };
   return {
     system: [`ChatNTC directives ${input.directives.version}`, ...input.directives.rules,
       `Epistemic policy: ${JSON.stringify(input.directives.policy)}`, `Output JSON Schema: ${JSON.stringify(input.outputSchema)}`,
       `Esempio JSON di astensione: ${JSON.stringify(example)}`, "Restituisci esclusivamente un oggetto JSON conforme, senza Markdown.",
-      ...(retry ? ["Il precedente tentativo non era conforme. Produci un nuovo oggetto JSON completo rispettando esattamente lo schema."] : [])].join("\n\n"),
+      ...(retry ? ["Il precedente tentativo non era conforme. Produci un nuovo oggetto JSON completo rispettando esattamente lo schema."] : []),
+      ...(input.repair ? [`Correggi esclusivamente questi errori di validazione strutturati: ${JSON.stringify(input.repair.issues)}. Il precedente testo non è una fonte e non viene fornito.`] : [])].join("\n\n"),
     messages: [...input.messages.map(({ role, content }) => ({ role, content })),
       { role: "user" as const, content: JSON.stringify({ kind: "chatntc-evidence-context", evidence: input.evidence, allowedCitations }) }],
   };

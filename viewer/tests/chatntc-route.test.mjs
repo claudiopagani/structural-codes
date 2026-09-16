@@ -82,6 +82,8 @@ test("route compilata blocca output inventato e restituisce astensione senza pro
     assert.equal(invalid.status, 502);
     const body = await invalid.json();
     assert.equal(body.error.code, "CITATION_VALIDATION_FAILED");
+    assert.ok(body.error.diagnostics.some((issue) => issue.code === "citation-identity-mismatch"));
+    assert.ok(body.error.diagnostics.every((issue) => typeof issue.path === "string" && typeof issue.message === "string"));
     assert.equal(body.response, undefined);
     const response = await post({ question: "7.99.4" });
     assert.equal(response.status, 200);

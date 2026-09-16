@@ -1,6 +1,6 @@
 import type { CHATNTC_EPISTEMIC_POLICY } from "./policy.js";
 import type { CHATNTC_RESPONSE_JSON_SCHEMA } from "./responseContract.js";
-import type { ChatNTCEvidencePackage, ChatNTCResponse } from "./types.js";
+import type { ChatNTCEvidencePackage, ChatNTCResponse, ChatNTCValidationIssue } from "./types.js";
 
 /** Transient contextual messages only; no storage or provider-specific roles. */
 export interface ChatNTCMessage { role: "user" | "assistant"; content: string; }
@@ -17,6 +17,8 @@ export interface ChatNTCGenerationInput {
   evidence: ChatNTCEvidencePackage;
   directives: ChatNTCDirectives;
   outputSchema: typeof CHATNTC_RESPONSE_JSON_SCHEMA;
+  /** One bounded validation repair. It contains no previous answer text. */
+  repair?: { issues: Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference">[] };
   signal?: AbortSignal;
 }
 

@@ -23,11 +23,12 @@ POST /api/chatntc
   → createLocalArtifactRepository
       → createArtifactRepository dello STEP 1
           → stessi indici, motore di ricerca e rimandi del viewer
-  → retrieveChatNTCEvidence
+  → retrieveChatNTCEvidence (domanda + soli messaggi USER recenti)
   → nessun contenuto primario utilizzabile? astensione deterministica
   → altrimenti ChatNTCProvider.generate
       → DeepSeekAdapter (server-only, fetch HTTP)
   → validateChatNTCResponse (anche per le astensioni)
+  → al massimo un evidence-expansion/repair retry per errori riparabili
   → risposta strutturata e citazioni validate, oppure errore sanitizzato
 ```
 
@@ -195,7 +196,8 @@ la pipeline restituisce un'astensione validata con `no-direct-reference`,
 `needsMoreEvidence: true`, nessuna citazione e `provider: null`. Non configura
 né chiama DeepSeek, quindi questo caso funziona anche senza API key.
 I warning su omissioni, review pendenti e issue rimangono esposti; non vengono
-automaticamente trattati come contenuti approvati o rimossi dal corpus.
+automaticamente trattati come contenuti approvati o rimossi dal corpus e la UI
+li mostra separatamente dalla prosa tecnica.
 
 ### Errori
 
@@ -208,6 +210,11 @@ automaticamente trattati come contenuti approvati o rimossi dal corpus.
   }
 }
 ```
+
+In local/debug, `error.diagnostics` può inoltre contenere soltanto `code`,
+`path`, messaggio sanitizzato e riferimento normativo sicuro. In modalità non
+debug il payload rimane quello minimale mostrato sopra; non vengono mai esposti
+raw upstream, prompt, header, credenziali o stack trace.
 
 | HTTP | Codici principali |
 | --- | --- |

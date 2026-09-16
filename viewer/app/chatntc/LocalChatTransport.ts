@@ -42,7 +42,11 @@ export class LocalChatTransport implements ChatTransport {
       const result: unknown = await response.json();
       if (!response.ok) {
         const code = object(result) && object(result.error) && typeof result.error.code === "string" ? result.error.code : "REQUEST_FAILED";
-        throw new ChatTransportError(code, messages[code] ?? "ChatNTC non ha potuto completare la risposta. Riprova tra poco.");
+        const diagnostics = code === "CITATION_VALIDATION_FAILED" && object(result) && object(result.error) && Array.isArray(result.error.diagnostics)
+          ? result.error.diagnostics.filter((item) => object(item) && typeof item.code === "string" && typeof item.path === "string" && typeof item.message === "string")
+            .slice(0, 20).map((item) => `${String(item.path).slice(0, 200)} · ${String(item.code).slice(0, 80)} · ${String(item.message).slice(0, 300)}`) : [];
+        const base = messages[code] ?? "ChatNTC non ha potuto completare la risposta. Riprova tra poco.";
+        throw new ChatTransportError(code, diagnostics.length ? `${base}\n${diagnostics.join("\n")}` : base);
       }
       // Structural boundary check; canonical verification remains exclusively server-side.
       if (!object(result) || result.ok !== true || !isChatNTCResponse(result.response)

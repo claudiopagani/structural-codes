@@ -59,8 +59,10 @@ export function createChatNTCHandler(dependencies: {
   provider: (environment: ChatNTCEnvironment, selection?: ProviderSelection, apiKey?: string) => ChatNTCProvider;
 }) {
   return async (request: Request): Promise<Response> => {
+    let debug = false;
     try {
       const env = dependencies.environment();
+      debug = env.NODE_ENV === "development" || env.NODE_ENV === "test" || env.CHATNTC_DEBUG === "true";
       if (!chatNTCEnabled(env)) throw new ChatNTCServerError("CHATNTC_DISABLED");
       assertLocalRequest(request);
       const provider = request.headers.get("x-chatntc-provider");
@@ -85,7 +87,7 @@ export function createChatNTCHandler(dependencies: {
       try { repository = dependencies.repository(); } catch { throw new ChatNTCServerError("RETRIEVAL_FAILED"); }
       return json(await runChatNTC(input, { repository, provider: () => dependencies.provider(env, selection, apiKey), signal: request.signal }));
     } catch (error) {
-      const failure = publicError(error);
+      const failure = publicError(error, debug);
       return json(failure.body, failure.status);
     }
   };

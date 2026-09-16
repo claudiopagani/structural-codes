@@ -213,7 +213,7 @@ for (const [name, mutate, code] of [
   ["claim senza citazioni", (r) => { r.claims[0].citations = []; r.usedEvidenceIds = []; }, "uncovered-claim"],
   ["claim duplicato", (r) => { r.claims.push(structuredClone(r.claims[0])); }, "duplicate-claim"],
   ["pacchetto diverso", (r) => { r.evidencePackageId = "wrong"; }, "wrong-package"],
-  ["citazione inventata solo nella prosa", (r) => { r.answer = "NTC 2018 §7.99.4"; }, "untracked-reference"],
+  ["citazione inventata solo nella prosa", (r) => { r.answer = "NTC 2018 §7.99.4"; }, "unresolved-reference"],
   ["interpretazione non dichiarata", (r) => { r.claims[0].classification = "interpretation"; }, "interpretation-not-declared"],
   ["fonte esterna non supportata", (r) => { r.classification = "external-source"; }, "external-source-disabled"],
 ]) test(`validator rifiuta ${name}`, async () => {
@@ -250,7 +250,7 @@ test("astensione senza false citazioni; evidence e ricerca esterna possono esser
   const response = abstention(evidence);
   assert.deepEqual(await validateChatNTCResponse(response, evidence, repository), { valid: true, issues: [] });
   response.answer = "NTC 2018 §7.99.4";
-  has(await validateChatNTCResponse(response, evidence, repository), "untracked-reference");
+  has(await validateChatNTCResponse(response, evidence, repository), "unresolved-reference");
   const valid = await context();
   const falseAbstention = { ...valid.response, classification: "no-direct-reference", needsMoreEvidence: true };
   has(await validateChatNTCResponse(falseAbstention, valid.evidence, valid.repository), "abstention-with-citations");
@@ -269,6 +269,45 @@ test("combined-reference e interpretation sono contratti distinti", async () => 
   assert.equal((await validateChatNTCResponse(response, evidence, repository)).valid, true);
   assert.equal(CHATNTC_EPISTEMIC_POLICY.modelMemoryIsNormativeSource, false);
   assert.equal(CHATNTC_EPISTEMIC_POLICY.interpretationIsPrescription, false);
+});
+
+test("no-direct-reference descrive la natura della conclusione e non forza l'astensione", async () => {
+  const { evidence, repository } = await context();
+  const citation = citationForEvidence(evidence, evidence.primaryUnits[0].evidenceId);
+  const response = {
+    formatVersion: 2, evidencePackageId: evidence.packageId,
+    answer: "La norma non formula direttamente la conclusione; dal quadro disponibile si ricava una lettura progettuale.",
+    classification: "no-direct-reference", status: "answered",
+    claims: [{ id: "claim-1", text: "Conclusione interpretativa basata sul quadro disponibile.", classification: "no-direct-reference", citations: [citation] }],
+    usedEvidenceIds: [citation.evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false,
+  };
+  assert.deepEqual(await validateChatNTCResponse(response, evidence, repository), { valid: true, issues: [] });
+});
+
+test("status abstained resta riservato a evidence insufficiente", async () => {
+  const { repository } = fixture();
+  const evidence = await retrieveChatNTCEvidence(repository, "7.99.4");
+  const response = { formatVersion: 2, evidencePackageId: evidence.packageId, answer: "Evidence insufficiente.",
+    classification: "no-direct-reference", status: "abstained", claims: [], usedEvidenceIds: [], warnings: [],
+    needsMoreEvidence: true, externalResearchSuggested: false };
+  assert.deepEqual(await validateChatNTCResponse(response, evidence, repository), { valid: true, issues: [] });
+});
+
+test("mention canonica fuori evidence e riferimento inesistente hanno issue distinti", async () => {
+  const { evidence, repository, response } = await context();
+  response.answer = "Si coordina con §8.1.1.";
+  let result = await validateChatNTCResponse(response, evidence, repository);
+  has(result, "unselected-canonical-reference");
+  assert.equal(result.issues.find((issue) => issue.code === "unselected-canonical-reference").reference, "§8.1.1");
+  response.answer = "Si coordina con §7.99.4.";
+  result = await validateChatNTCResponse(response, evidence, repository);
+  has(result, "unresolved-reference");
+});
+
+test("tutti i riferimenti espliciti correnti precedono ranking e budget delle unità full-text", async () => {
+  const { repository } = fixture();
+  const evidence = await retrieveChatNTCEvidence(repository, "Confronta §7.3.6.1 e §8.1.1", { ...isolated, maxPrimaryUnits: 1 });
+  assert.deepEqual(new Set(evidence.primaryUnits.map((unit) => unit.unitId)), new Set([NTC, OTHER]));
 });
 
 test("pacchetto alterato viene confrontato con corpus e fingerprint", async () => {

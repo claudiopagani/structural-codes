@@ -143,6 +143,18 @@ test("LocalChatTransport rifiuta output non validato e sanitizza gli errori", as
     await assert.rejects(new LocalChatTransport(async () => Response.json(invalid)).send({ question: "Test" }), { code: "INVALID_RESULT" });
   }
   await assert.rejects(new LocalChatTransport(async () => Response.json({ error: { code: "CITATION_VALIDATION_FAILED", message: "private detail" } }, { status: 502 })).send({ question: "Test" }), (error) => error.code === "CITATION_VALIDATION_FAILED" && !error.message.includes("private detail"));
+  await assert.rejects(new LocalChatTransport(async () => Response.json({ error: { code: "CITATION_VALIDATION_FAILED", diagnostics: [
+    { code: "unresolved-reference", path: "response.answer", message: "Riferimento normativo non risolvibile: §7.99.4" },
+  ] } }, { status: 502 })).send({ question: "Test" }), (error) => error.message.includes("unresolved-reference") && error.message.includes("response.answer") && error.message.includes("§7.99.4"));
+});
+
+test("warning editoriali restano nei metadata UI e non vengono aggiunti alla prosa", async () => {
+  const reply = result();
+  reply.evidence.warnings = [{ code: "unreviewed-evidence", unitId }];
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
+  await submit();
+  assert.equal(rootElement.querySelector(".scv-chat-answer > p").textContent, reply.response.answer);
+  assert.match(rootElement.querySelector(".scv-chat-warnings").textContent, /Fonti non ancora revisionate integralmente/u);
 });
 
 const manifest = JSON.parse(await readFile(new URL("../public/data/codes/manifest.json", import.meta.url), "utf8"));

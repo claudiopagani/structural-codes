@@ -17,7 +17,10 @@ interface Candidate {
 }
 
 function optionsFor(input: ChatNTCRetrievalOptions): ChatNTCEvidencePackage["retrieval"]["options"] {
-  const options = { ...CHATNTC_DEFAULT_RETRIEVAL, ...input };
+  const configured = { ...input };
+  delete configured.queryContext;
+  delete configured.requiredReferences;
+  const options = { ...CHATNTC_DEFAULT_RETRIEVAL, ...configured };
   for (const key of ["maxPrimaryUnits", "maxRelatedUnits", "maxChildrenPerUnit", "maxEvidenceCharacters", "maxUnitCharacters"] as const) {
     const minimum = key === "maxRelatedUnits" || key === "maxChildrenPerUnit" ? 0 : 1;
     const maximum = key.endsWith("Characters") ? 1_000_000 : 50;
@@ -61,12 +64,18 @@ function relationScore(relation: ChatNTCRelation): number {
 
 export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, question: string, input: ChatNTCRetrievalOptions = {}): Promise<ChatNTCEvidencePackage> {
   if (typeof question !== "string" || !question.trim()) throw new Error("ChatNTC: domanda vuota.");
+  if (input.queryContext && (!Array.isArray(input.queryContext) || input.queryContext.some((item) => typeof item !== "string" || !item.trim()))) throw new Error("ChatNTC: contesto query non valido.");
+  if (input.requiredReferences && (!Array.isArray(input.requiredReferences) || input.requiredReferences.length > 12
+    || input.requiredReferences.some((item) => typeof item !== "string" || !item.trim() || item.length > 120))) throw new Error("ChatNTC: riferimenti richiesti non validi.");
   const options = optionsFor(input);
+  const queryContext = [...(input.queryContext ?? [])].slice(-3);
+  const retrievalQuery = [question, ...queryContext].join("\n");
   const corpus = await repository.identity();
   const warnings: ChatNTCWarning[] = [];
   let reduced = false;
   const exact = await repository.resolveExact(question, options.document);
   let hits: ChatNTCHit[] = exact ?? [];
+  const explicitUnitIds = new Set((exact ?? []).map((hit) => hit.unitId));
   if (exact?.length === 0) warnings.push({ code: "unresolved-reference" });
   if (exact === null) {
     const references = findCrossReferences(question);
@@ -74,15 +83,26 @@ export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, que
     for (const reference of references.slice(0, 12)) {
       const resolved = await repository.resolveExact(reference.text, options.document);
       if (resolved?.length === 0) warnings.push({ code: "unresolved-reference" });
+      for (const hit of resolved ?? []) explicitUnitIds.add(hit.unitId);
       hits.push(...(resolved ?? []));
     }
+    for (const contextualReference of findCrossReferences(queryContext.join("\n")).slice(0, 12)) {
+      hits.push(...(await repository.resolveExact(contextualReference.text, options.document) ?? []));
+    }
     // Existing full-text ranking is authoritative for text hits; no new search index.
-    hits.push(...await repository.search(question, Math.min(50, options.maxPrimaryUnits + 1), options.document));
+    hits.push(...await repository.search(retrievalQuery, Math.min(50, options.maxPrimaryUnits + 4), options.document));
+  }
+  for (const reference of input.requiredReferences ?? []) {
+    const resolved = await repository.resolveExact(reference, options.document);
+    if (resolved?.length === 0) warnings.push({ code: "unresolved-reference" });
+    for (const hit of resolved ?? []) explicitUnitIds.add(hit.unitId);
+    hits.push(...(resolved ?? []));
   }
   hits = [...hits].sort((a, b) => b.score - a.score || compare(a.unitId, b.unitId) || compare(a.blockId ?? "", b.blockId ?? ""));
   const primaryCandidates = new Map<string, Candidate>();
   if (options.context) {
     const context = options.context;
+    explicitUnitIds.add(context.unitId);
     const record = await repository.getUnit(context.unitId);
     const block = record?.unit.blocks.find((item) => context.blockId ? item.blockId === context.blockId : context.assetId && item.assetId === context.assetId);
     if (!record || record.unit.document !== context.documentId || record.unit.numbering.official !== context.numbering
@@ -118,7 +138,11 @@ export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, que
     remaining -= JSON.stringify(selected).length;
     output.push(selected);
   }
-  for (const candidate of [...primaryCandidates.values()].slice(0, options.maxPrimaryUnits)) await collect(candidate, primaryUnits);
+  const rankedPrimary = [...primaryCandidates.values()].sort((a, b) =>
+    Number(explicitUnitIds.has(b.unitId)) - Number(explicitUnitIds.has(a.unitId))
+    || b.score - a.score || compare(a.unitId, b.unitId));
+  const explicitCount = rankedPrimary.filter((candidate) => explicitUnitIds.has(candidate.unitId)).length;
+  for (const candidate of rankedPrimary.slice(0, Math.max(options.maxPrimaryUnits, explicitCount))) await collect(candidate, primaryUnits);
 
   const relatedCandidates = new Map<string, Candidate>();
   const primaryIds = new Set(primaryUnits.map((unit) => unit.unitId));
@@ -159,7 +183,7 @@ export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, que
   if (reduced) warnings.push({ code: "evidence-reduced" });
   const value: Omit<ChatNTCEvidencePackage, "packageId"> = {
     formatVersion: 1, policyVersion: CHATNTC_EPISTEMIC_POLICY.version, question, corpus, primaryUnits, relatedUnits,
-    retrieval: { options, evidenceCharacters: options.maxEvidenceCharacters - remaining, reduced },
+    retrieval: { options, query: retrievalQuery, evidenceCharacters: options.maxEvidenceCharacters - remaining, reduced },
     warnings: [...new Map(warnings.map((warning) => [stableJson(warning), warning])).values()],
   };
   // Detach the returned package from cached corpus objects; consumers cannot mutate the corpus through it.

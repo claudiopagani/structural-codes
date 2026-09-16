@@ -6,6 +6,7 @@ import type {
 export type ChatNTCClassification =
   | "direct-reference" | "combined-reference" | "interpretation"
   | "no-direct-reference" | "external-source";
+export type ChatNTCAnswerStatus = "answered" | "partial" | "abstained";
 
 export interface ChatNTCCorpusIdentity {
   sourceOfTruth: "structural-codes";
@@ -114,6 +115,10 @@ export interface ChatNTCRetrievalOptions {
   includeCrossReferences?: boolean;
   includeExplicitRelations?: boolean;
   includeProposedRelations?: boolean;
+  /** Previous USER messages only. They guide ranking but never become normative evidence. */
+  queryContext?: readonly string[];
+  /** Canonical textual references requested by the validator for one bounded expansion. */
+  requiredReferences?: readonly string[];
 }
 
 export interface ChatNTCWarning {
@@ -131,7 +136,10 @@ export interface ChatNTCEvidencePackage {
   primaryUnits: ChatNTCEvidenceUnit[];
   relatedUnits: ChatNTCEvidenceUnit[];
   retrieval: {
-    options: Required<Omit<ChatNTCRetrievalOptions, "document" | "context">> & Pick<ChatNTCRetrievalOptions, "document" | "context">;
+    options: Required<Omit<ChatNTCRetrievalOptions, "document" | "context" | "queryContext" | "requiredReferences">>
+      & Pick<ChatNTCRetrievalOptions, "document" | "context">;
+    /** Deterministic retrieval query. Conversation text here is context, never evidence. */
+    query: string;
     evidenceCharacters: number;
     reduced: boolean;
   };
@@ -154,8 +162,7 @@ export interface ChatNTCClaim {
 }
 
 /** Future provider output. No SDK types, URLs supplied by a model, or HTTP envelopes. */
-export interface ChatNTCResponse {
-  formatVersion: 1;
+interface ChatNTCResponseBody {
   evidencePackageId: string;
   answer: string;
   classification: ChatNTCClassification;
@@ -166,5 +173,15 @@ export interface ChatNTCResponse {
   externalResearchSuggested: boolean;
 }
 
-export interface ChatNTCValidationIssue { code: string; path: string; message: string; }
+/** v1 remains readable for saved history; providers generate the semantically explicit v2. */
+export type ChatNTCResponse = ChatNTCResponseBody & (
+  | { formatVersion: 1; status?: never }
+  | { formatVersion: 2; status: ChatNTCAnswerStatus }
+);
+
+export interface ChatNTCValidationIssue {
+  code: string; path: string; message: string;
+  reference?: string;
+  targets?: ChatNTCTarget[];
+}
 export interface ChatNTCValidationResult { valid: boolean; issues: ChatNTCValidationIssue[]; }

@@ -1,4 +1,5 @@
 import "server-only";
+import type { ChatNTCValidationIssue } from "../../shared/chatntc/index.js";
 
 export const CHATNTC_ERRORS = {
   CHATNTC_DISABLED: [404, "ChatNTC disponibile solo in modalità locale/debug esplicitamente abilitata."],
@@ -44,15 +45,22 @@ export function errorCategory(code: ChatNTCErrorCode): string {
 /** No upstream message, body, URL, headers, credentials or cause are retained. */
 export class ChatNTCServerError extends Error {
   readonly code: ChatNTCErrorCode;
-  constructor(code: ChatNTCErrorCode) {
+  readonly validationIssues?: ChatNTCValidationIssue[];
+  constructor(code: ChatNTCErrorCode, validationIssues?: ChatNTCValidationIssue[]) {
     super(CHATNTC_ERRORS[code][1]);
     this.name = "ChatNTCServerError";
     this.code = code;
+    this.validationIssues = validationIssues;
   }
 }
 
-export function publicError(error: unknown) {
+const safe = (value: string, maximum: number) => value.replace(/[\u0000-\u001f\u007f]/gu, " ").slice(0, maximum);
+export function publicError(error: unknown, debug = false) {
   const code = error instanceof ChatNTCServerError && Object.hasOwn(CHATNTC_ERRORS, error.code) ? error.code : "INTERNAL_ERROR";
   // Reconstruct from the allowlist even if a thrown error's message was mutated.
-  return { status: CHATNTC_ERRORS[code][0], body: { ok: false as const, error: { code, category: errorCategory(code), message: CHATNTC_ERRORS[code][1] } } };
+  const diagnostics = debug && error instanceof ChatNTCServerError && code === "CITATION_VALIDATION_FAILED" && error.validationIssues
+    ? error.validationIssues.map((issue) => ({ code: safe(issue.code, 80), path: safe(issue.path, 200), message: safe(issue.message, 300),
+      ...(issue.reference ? { reference: safe(issue.reference, 120) } : {}) })) : undefined;
+  return { status: CHATNTC_ERRORS[code][0], body: { ok: false as const, error: { code, category: errorCategory(code), message: CHATNTC_ERRORS[code][1],
+    ...(diagnostics?.length ? { diagnostics } : {}) } } };
 }

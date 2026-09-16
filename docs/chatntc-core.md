@@ -159,7 +159,7 @@ di ogni download. Il fingerprint identifica uno snapshot; non è una firma.
 
 ## Contratto della risposta e policy
 
-`ChatNTCResponse` richiede `answer`, `classification`, `claims`, citazioni per
+`ChatNTCResponse` v2 richiede `answer`, `classification`, `status`, `claims`, citazioni per
 claim, `usedEvidenceIds`, `warnings`, `needsMoreEvidence` e
 `externalResearchSuggested`, oltre a versione e ID del pacchetto.
 
@@ -168,10 +168,14 @@ claim, `usedEvidenceIds`, `warnings`, `needsMoreEvidence` e
 | `direct-reference` | Claim con citazioni a evidence selezionata |
 | `combined-reference` | Almeno due evidence distinte utilizzate |
 | `interpretation` | Interpretazione esplicita con evidence; non prescrizione |
-| `no-direct-reference` | Astensione, senza citazioni normative, con richiesta di altra evidence |
+| `no-direct-reference` | La conclusione non è formulata direttamente dalla norma; può comunque essere risposta con evidence correlata |
 | `external-source` | Tipo riservato; validazione rifiutata nello STEP 1 |
 
-Le stesse classificazioni sono disponibili per i claim. Un claim interpretativo
+Lo `status` ortogonale vale `answered`, `partial` o `abstained`. Solo
+`abstained` impone claim/citazioni vuoti e `needsMoreEvidence: true`; una
+risposta `no-direct-reference` può quindi essere utile e citata. Le risposte v1
+salvate nella history restano leggibili. Le stesse classificazioni sono
+disponibili per i claim. Un claim interpretativo
 richiede che la risposta dichiari `interpretation`. La policy immutabile
 `CHATNTC_EPISTEMIC_POLICY` stabilisce: fonte normativa nel corpus, memoria del
 modello esclusa dalle fonti, distinzione NTC/Circolare, distinzione fra
@@ -196,7 +200,9 @@ Controlla:
 - duplicati di evidence, asset, claim e citazioni nello stesso claim;
 - uguaglianza tra `usedEvidenceIds` e insieme delle citazioni dei claim;
 - presenza di citazioni per i claim che le richiedono;
-- rimandi riconosciuti nella prosa di answer/claim associati a citazioni valide.
+- rimandi riconosciuti nella prosa di answer/claim associati a citazioni valide;
+- distinzione fra riferimento inesistente (`unresolved-reference`) e riferimento
+  canonico reale fuori pacchetto (`unselected-canonical-reference`).
 
 `NTC 2018 §7.99.4` senza evidence valida fallisce anche se compare soltanto nella
 prosa. Il controllo lessicale riusa il riconoscitore esistente: non copre tutte

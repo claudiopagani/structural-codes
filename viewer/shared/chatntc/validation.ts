@@ -12,10 +12,10 @@ import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCRepository,
  */
 export async function validateChatNTCResponse(response: unknown, evidence: ChatNTCEvidencePackage, repository: ChatNTCRepository): Promise<ChatNTCValidationResult> {
   const issues: ChatNTCValidationIssue[] = [];
-  const add = (code: string, path: string, message: string) => issues.push({ code, path, message });
+  const add = (code: string, path: string, message: string, details: Pick<ChatNTCValidationIssue, "reference" | "targets"> = {}) => issues.push({ code, path, message, ...details });
   const finish = () => ({ valid: issues.length === 0, issues });
   if (!isChatNTCResponse(response)) {
-    add("invalid-response-shape", "response", "La risposta non rispetta il contratto ChatNTC v1.");
+    add("invalid-response-shape", "response", "La risposta non rispetta il contratto ChatNTC v1/v2.");
     return finish();
   }
   const { packageId, ...packageBody } = evidence;
@@ -33,6 +33,7 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
   const evidenceIds = new Set<string>();
   const assets = new Set<string>();
   const selected = evidenceUnits(evidence);
+  const selectedUnitIds = new Set(selected.map((unit) => unit.unitId));
   for (const [position, unit] of selected.entries()) {
     const path = `evidence.units[${position}]`;
     if (evidenceIds.has(unit.evidenceId)) add("duplicate-evidence", path, "Evidence ID duplicato.");
@@ -77,11 +78,8 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
     if (claimIds.has(claim.id)) add("duplicate-claim", path, "Claim ID duplicato.");
     claimIds.add(claim.id);
     if (claim.classification === "external-source") add("external-source-disabled", path, "Le fonti esterne non sono abilitate in questa fase.");
-    if (claim.classification === "no-direct-reference") {
-      if (claim.citations.length) add("abstention-with-citations", path, "Un claim privo di riferimento diretto non può dichiarare citazioni normative.");
-    } else if (!claim.citations.length) add("uncovered-claim", path, "Il claim richiede almeno una citazione di evidence selezionata.");
+    if (!claim.citations.length) add("uncovered-claim", path, "Il claim richiede almeno una citazione di evidence selezionata.");
     if (claim.classification === "combined-reference" && new Set(claim.citations.map((citation) => citation.evidenceId)).size < 2) add("insufficient-combined-evidence", path, "Un claim combinato richiede almeno due evidence distinte.");
-    if (response.classification === "no-direct-reference" && claim.classification !== "no-direct-reference") add("classification-mismatch", path, "Una risposta di astensione non può contenere claim normativi.");
     if (claim.classification === "interpretation" && response.classification !== "interpretation") add("interpretation-not-declared", path, "La risposta deve dichiarare la presenza di interpretazioni.");
     const claimEvidence = new Set<string>();
     const validForClaim: ChatNTCCitation[] = [];
@@ -113,10 +111,17 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
   if (new Set(response.usedEvidenceIds).size !== response.usedEvidenceIds.length) add("duplicate-used-evidence", "response.usedEvidenceIds", "Evidence ID utilizzati duplicati.");
   if (stableJson([...used].sort()) !== stableJson([...response.usedEvidenceIds].sort())) add("used-evidence-mismatch", "response.usedEvidenceIds", "Gli ID utilizzati devono coincidere con le citazioni dei claim.");
   if (response.classification === "external-source") add("external-source-disabled", "response.classification", "Le fonti esterne non sono abilitate in questa fase.");
-  if (response.classification === "no-direct-reference") {
-    if (used.size) add("abstention-with-citations", "response", "L'astensione non può dichiarare citazioni normative.");
+  const status = response.formatVersion === 2 ? response.status
+    : response.classification === "no-direct-reference" ? "abstained" : response.needsMoreEvidence ? "partial" : "answered";
+  if (status === "abstained") {
+    if (response.classification !== "no-direct-reference") add("abstention-classification", "response.classification", "L'astensione deve usare no-direct-reference.");
+    if (used.size || response.claims.length) add("abstention-with-citations", "response", "L'astensione non può dichiarare claim o citazioni normative.");
     if (!response.needsMoreEvidence) add("abstention-needs-evidence", "response.needsMoreEvidence", "L'astensione deve indicare evidence insufficiente.");
-  } else if (!response.claims.length || !used.size) add("uncovered-answer", "response.claims", "La risposta deve dichiarare claim e citazioni.");
+  } else {
+    if (!response.claims.length || !used.size) add("uncovered-answer", "response.claims", "Una risposta utile deve dichiarare claim e citazioni.");
+    if (status === "partial" && !response.needsMoreEvidence) add("partial-needs-evidence", "response.needsMoreEvidence", "Una risposta parziale deve dichiarare la necessità di altra evidence.");
+    if (status === "answered" && response.needsMoreEvidence) add("answered-needs-evidence", "response.needsMoreEvidence", "Una risposta completa non può dichiarare evidence insufficiente.");
+  }
   if (response.classification === "combined-reference" && used.size < 2) add("insufficient-combined-evidence", "response", "Una risposta combinata richiede almeno due evidence distinte.");
   await checkMentions(response.answer, validCitations, "response.answer");
   return finish();
@@ -125,9 +130,19 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
     // Lexical accounting only. It cannot decide whether these sources prove the sentence.
     for (const reference of findCrossReferences(value)) {
       const targets = await repository.resolveExact(reference.text);
+      if (!targets?.length) {
+        add("unresolved-reference", path, `Riferimento normativo non risolvibile: ${reference.text}`, { reference: reference.text });
+        continue;
+      }
       const covered = targets?.some((target) => citations.some((citation) => citation.unitId === target.unitId
         && (!target.assetId || citation.assetId === target.assetId)));
-      if (!covered) add("untracked-reference", path, `Riferimento testuale senza citazione valida: ${reference.text}`);
+      if (!covered) {
+        const code = targets.some((target) => selectedUnitIds.has(target.unitId)) ? "untracked-reference" : "unselected-canonical-reference";
+        add(code, path, code === "untracked-reference"
+          ? `Riferimento testuale senza citazione associata: ${reference.text}`
+          : `Riferimento canonico reale non incluso nell'evidence: ${reference.text}`,
+        { reference: reference.text, targets: targets.map(({ unitId, blockId, assetId }) => ({ unitId, ...(blockId ? { blockId } : {}), ...(assetId ? { assetId } : {}) })) });
+      }
     }
   }
 }
