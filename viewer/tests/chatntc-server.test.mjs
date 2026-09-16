@@ -428,6 +428,46 @@ test("tutti i riferimenti non verificabili lasciano visibile la parte tecnica ge
   assert.doesNotMatch(result.response.answerMarkdown, /7\.99/u);
 });
 
+test("issue emersa dopo repair e sanitizzazione non sostituisce il contenuto tecnico residuo", async () => {
+  const base = repository();
+  const resolved = await base.resolveExact("§8.1");
+  let referenceCalls = 0;
+  let providerCalls = 0;
+  const changingResolution = { ...base, resolveExact: async (query, document) => {
+    if (query.replace(/\s/gu, "") !== "§8.1") return base.resolveExact(query, document);
+    referenceCalls += 1;
+    return referenceCalls <= 4 ? resolved : [];
+  } };
+  const result = await runChatNTC({ question }, { repository: changingResolution, provider: () => mockedProvider(async (input) => {
+    providerCalls += 1;
+    return providerOutput(input, {
+      answerMarkdown: "Il §7.99.4 imporrebbe un controllo inventato. Il §8.1 completa il quadro. Dal punto di vista tecnico conviene confrontare più scenari di carico.",
+      references: ["§7.99.4", "§8.1"], classification: "combined-reference",
+    });
+  }) });
+  assert.equal(providerCalls, 2);
+  assert.ok(referenceCalls > 4);
+  assert.equal(result.response.answerMarkdown, "Dal punto di vista tecnico conviene confrontare più scenari di carico.");
+  assert.doesNotMatch(result.response.answerMarkdown, /Non è stato possibile verificare/u);
+  assert.deepEqual(result.response.verifiedReferences, []);
+  assert.equal(result.response.referenceWarning, "no-references-verified");
+  assert.equal(result.response.classification, "no-direct-reference");
+  assert.equal(result.response.status, "partial");
+  assert.equal(result.response.needsMoreEvidence, true);
+});
+
+test("risposta composta soltanto da false attribuzioni usa il fallback generico", async () => {
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => providerOutput(input, {
+    answerMarkdown: "Il §7.99.4 prescrive un controllo obbligatorio.", references: ["§7.99.4"], classification: "direct-reference",
+  })) });
+  assert.equal(result.response.answerMarkdown,
+    "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.");
+  assert.deepEqual(result.response.verifiedReferences, []);
+  assert.equal(result.response.referenceWarning, "no-references-verified");
+  assert.equal(result.response.status, "partial");
+  assert.equal(result.response.needsMoreEvidence, true);
+});
+
 test("pipeline respinge output mock malformato e normalizza l'identificativo del pacchetto", async () => {
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async () => ({ answer: "incomplete" })) }), "INVALID_RESPONSE_SCHEMA");
   const normalized = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {

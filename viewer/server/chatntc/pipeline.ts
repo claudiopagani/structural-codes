@@ -68,7 +68,7 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   }
   if (canonical.issues.length) {
     diagnostics.push(...canonical.issues);
-    candidate = safeFallback(candidate, evidence.packageId);
+    candidate = degradeWithoutReferences(candidate, canonical.issues, evidence.packageId);
     canonical = await canonicalize(candidate, evidence);
     stage = "DEGRADED";
     referenceWarning = "no-references-verified";
@@ -131,14 +131,14 @@ function repairIssue(issue: ChatNTCValidationIssue): Pick<ChatNTCValidationIssue
 /** Remove only clauses/lines that contain a reference still unverifiable after the single repair. */
 function sanitizeReferences(output: ChatNTCProviderOutput, issues: ChatNTCValidationIssue[]): { output: ChatNTCProviderOutput } {
   const invalid = [...new Set(issues.map((issue) => issue.reference).filter((value): value is string => Boolean(value)))];
-  if (!invalid.length) return { output: safeFallback(output, output.evidencePackageId) };
+  if (!invalid.length) return { output: { ...output, references: [], status: "partial", needsMoreEvidence: true } };
   const containsInvalid = (value: string) => invalid.some((reference) => value.toLocaleLowerCase("it")
     .includes(reference.toLocaleLowerCase("it")));
   let answerMarkdown = output.answerMarkdown.split(/\n/u).map((line) => line
     .split(/(?<=[.!?])\s+/u).filter((sentence) => !containsInvalid(sentence)).join(" ").trim())
     .filter((line, position, lines) => line || (position > 0 && position < lines.length - 1))
     .join("\n").replace(/\n{3,}/gu, "\n\n").trim();
-  if (!answerMarkdown) answerMarkdown = "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.";
+  if (!answerMarkdown) answerMarkdown = GENERIC_REFERENCE_FALLBACK;
   const references = output.references.filter((value) => !containsInvalid(value)
     && !findCrossReferences(value).some((reference) => containsInvalid(reference.text)));
   return { output: { ...output, answerMarkdown, references,
@@ -149,8 +149,16 @@ function sanitizeReferences(output: ChatNTCProviderOutput, issues: ChatNTCValida
     }) } };
 }
 
-function safeFallback(output: ChatNTCProviderOutput, evidencePackageId: string): ChatNTCProviderOutput {
-  return { ...output, evidencePackageId,
-    answerMarkdown: "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.",
-    references: [], classification: "no-direct-reference", status: "partial", needsMoreEvidence: true };
+const GENERIC_REFERENCE_FALLBACK = "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.";
+
+/** Final reference degradation keeps every reference-free technical sentence already recovered. */
+function degradeWithoutReferences(output: ChatNTCProviderOutput, issues: ChatNTCValidationIssue[],
+  evidencePackageId: string): ChatNTCProviderOutput {
+  const sanitized = sanitizeReferences(output, issues).output;
+  const answerMarkdown = sanitized.answerMarkdown.split(/\n/u).map((line) => line
+    .split(/(?<=[.!?])\s+/u).filter((sentence) => findCrossReferences(sentence).length === 0).join(" ").trim())
+    .filter((line, position, lines) => line || (position > 0 && position < lines.length - 1))
+    .join("\n").replace(/\n{3,}/gu, "\n\n").trim() || GENERIC_REFERENCE_FALLBACK;
+  return { ...sanitized, evidencePackageId, answerMarkdown, references: [],
+    classification: "no-direct-reference", status: "partial", needsMoreEvidence: true };
 }
