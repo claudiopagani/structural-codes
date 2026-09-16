@@ -27,7 +27,7 @@ const expectedFormulas = new Map<string, string>([
     ["4.2.19", "A_v=A-2bt_f+(t_w+r)t_f"],
     ["4.2.20", "A_v=A-\\sum(h_w\\cdot t_w)"],
     ["4.2.21", "A_v=0{,}9(A-bt_f)"],
-    ["4.2.22", "A_v=\\frac{Ah}{b+h}\\quad\\text{quando il carico è parallelo all’altezza del profilo};\\qquad A_v=\\frac{Ab}{b+h}\\quad\\text{quando il carico è parallelo alla base del profilo}"],
+    ["4.2.22", "\\begin{aligned}A_v&=\\frac{Ah}{b+h}\\quad\\text{quando il carico è parallelo all’altezza del profilo},\\\\A_v&=\\frac{Ab}{b+h}\\quad\\text{quando il carico è parallelo alla base del profilo};\\end{aligned}"],
     ["4.2.23", "A_v=\\frac{2A}{\\pi}"],
     ["4.2.24", "V_{c,Rd,red}=V_{c,Rd}\\sqrt{1-\\frac{\\tau_{t,Ed}}{1{,}25\\cdot f_{yk}/(\\sqrt{3}\\cdot\\gamma_{M0})}}"],
     ["4.2.25", "V_{c,Rd,red}=\\left[1-\\frac{\\tau_{t,Ed}}{f_{yk}/(\\sqrt{3}\\cdot\\gamma_{M0})}\\right]V_{c,Rd}"],
@@ -128,9 +128,12 @@ test("NTC pagine 102–111 conserva struttura e matematica delle sette tabelle",
 
     const eighth = tables.find((table: { officialNumber: string }) => table.officialNumber === "4.2.VIII");
     assert.ok(eighth);
-    assert.deepEqual(eighth.rows.slice(0, 4).map((row: Array<{ text: string }>) => row[1]?.text), ["h/b > 1,2; tf ≤ 40 mm", "h/b > 1,2; 40 mm < tf ≤ 100 mm", "h/b ≤ 1,2; tf ≤ 100 mm", "h/b ≤ 1,2; tf > 100 mm"]);
-    assert.ok(eighth.rows.some((row: Array<{ text: string }>) => row[0]?.text === "Sezioni piene, ad U e T"));
-    assert.ok(eighth.rows.some((row: Array<{ latex?: string }>) => row[1]?.latex === "a>0{,}5t_f;\\ b/t_f<30;\\ h/t_w<30"));
+    assert.deepEqual(
+        eighth.rows.flat().filter((cell: { text: string; verticalText?: boolean }) => cell.verticalText && cell.text.startsWith("h/b")).map((cell: { text: string }) => cell.text),
+        ["h/b > 1,2", "h/b ≤ 1,2"],
+    );
+    assert.ok(eighth.rows.flat().some((cell: { text: string }) => cell.text === "Sezioni piene, ad U e T"));
+    assert.ok(eighth.rows.flat().some((cell: { latex?: string }) => cell.latex?.includes("a>0{,}5t_f")));
 
     const tenth = tables.find((table: { officialNumber: string }) => table.officialNumber === "4.2.X");
     assert.ok(tenth);
@@ -142,7 +145,7 @@ test("NTC pagine 102–111 conserva struttura e matematica delle sette tabelle",
     for (const number of ["4.2.XII", "4.2.XIII"]) {
         const table = tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === number);
         assert.ok(table);
-        assert.ok([...table.headers, ...table.rows].flat().some((cell: { latex?: string }) => cell.latex?.startsWith("\\frac")), number);
+        assert.ok([...table.headers, ...table.rows].flat().some((cell: { latex?: string }) => /^\\d?frac/u.test(cell.latex ?? "")), number);
     }
 });
 

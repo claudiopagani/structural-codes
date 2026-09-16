@@ -110,6 +110,30 @@ test("NTC 4.2.I e 4.2.II centrano le colonne 2-5 e lasciano a sinistra la prima 
     }
 });
 
+test("NTC 4.2.VI e 4.2.VII conservano la struttura delle intestazioni della fonte", async () => {
+    const [step3, step4a] = await Promise.all([
+        json("corpus/assets/ntc2018/4.2-step3.json"),
+        json("corpus/assets/ntc2018/4.2-step4a.json"),
+    ]);
+    const tableVI = step3.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "4.2.VI");
+    assert.equal(tableVI.headers[0][1].text, "Metodo di calcolo della capacità\nresistente della sezione");
+    assert.deepEqual(
+        [...tableVI.headers, ...tableVI.rows].flatMap((row: Array<{ align?: string }>) => row.slice(0, 2).map(({ align }) => align)),
+        Array((tableVI.headers.length + tableVI.rows.length) * 2).fill("center"),
+    );
+
+    const tableVII = step4a.tables.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "4.2.VII");
+    assert.deepEqual(tableVII.headers, []);
+});
+
+test("NTC 4.2.22 conserva le due righe della formula ufficiale", async () => {
+    const step4a = await json("corpus/assets/ntc2018/4.2-step4a.json");
+    const formula = step4a.formulas.find(({ officialNumber }: { officialNumber: string }) => officialNumber === "4.2.22");
+    assert.match(formula.latex, /^\\begin\{aligned\}/u);
+    assert.match(formula.latex, /\\\\/u);
+    assert.match(formula.latex, /\\end\{aligned\}$/u);
+});
+
 test("NTC 4.2 pagine 100-107 conserva titoli, definizioni e simboli inline", async () => {
     const [resistance, shear, bending, stability] = await Promise.all([
         json("corpus/units/ntc2018/4.2.4.1.1.json"),
@@ -170,8 +194,8 @@ test("NTC 4.2 pagine 107-112 conserva titoli, definizioni ed elenchi", async () 
     );
     assert.equal(vibration.blocks[0].text.inline.at(-1).kind, "em");
     assert.deepEqual(unions.blocks.filter(({ kind }: { kind: string }) => kind === "list-item").map(({ text }: { text: { normalized: string } }) => text.normalized), [
-        "– le azioni così ripartite fra gli elementi di unione elementari (unioni) del collegamento siano in equilibrio con quelle applicate e soddisfino la condizione di resistenza imposta per ognuno di essi;",
-        "– le deformazioni derivanti da tale distribuzione delle sollecitazioni all’interno degli elementi di unione non superino la loro capacità di deformazione.",
+        "le azioni così ripartite fra gli elementi di unione elementari (unioni) del collegamento siano in equilibrio con quelle applicate e soddisfino la condizione di resistenza imposta per ognuno di essi;",
+        "le deformazioni derivanti da tale distribuzione delle sollecitazioni all’interno degli elementi di unione non superino la loro capacità di deformazione.",
     ]);
 });
 

@@ -76,7 +76,7 @@ const formulas = [
     ["4.2.19", "4.2.4.1.2.4", 103, "A_v=A-2bt_f+(t_w+r)t_f"],
     ["4.2.20", "4.2.4.1.2.4", 103, "A_v=A-\\sum(h_w\\cdot t_w)"],
     ["4.2.21", "4.2.4.1.2.4", 103, "A_v=0{,}9(A-bt_f)"],
-    ["4.2.22", "4.2.4.1.2.4", 103, "A_v=\\frac{Ah}{b+h}\\quad\\text{quando il carico è parallelo all’altezza del profilo};\\qquad A_v=\\frac{Ab}{b+h}\\quad\\text{quando il carico è parallelo alla base del profilo}"],
+    ["4.2.22", "4.2.4.1.2.4", 103, "\\begin{aligned}A_v&=\\frac{Ah}{b+h}\\quad\\text{quando il carico è parallelo all’altezza del profilo},\\\\A_v&=\\frac{Ab}{b+h}\\quad\\text{quando il carico è parallelo alla base del profilo};\\end{aligned}"],
     ["4.2.23", "4.2.4.1.2.4", 103, "A_v=\\frac{2A}{\\pi}"],
     ["4.2.24", "4.2.4.1.2.4", 103, "V_{c,Rd,red}=V_{c,Rd}\\sqrt{1-\\frac{\\tau_{t,Ed}}{1{,}25\\cdot f_{yk}/(\\sqrt{3}\\cdot\\gamma_{M0})}}"],
     ["4.2.25", "4.2.4.1.2.4", 103, "V_{c,Rd,red}=\\left[1-\\frac{\\tau_{t,Ed}}{f_{yk}/(\\sqrt{3}\\cdot\\gamma_{M0})}\\right]V_{c,Rd}"],
@@ -97,7 +97,7 @@ const formulas = [
     ["4.2.40", "4.2.4.1.2.9", 105, "\\rho=\\left[\\frac{2V_{Ed}}{V_{c,Rd}}-1\\right]^2"],
 ] as const;
 const tableVII = tableId("4.2.vii");
-const table = { id: tableVII, unitId: unitId("4.2.4.1.1"), officialNumber: "4.2.VII", pdfPage: 101, caption: "Coefficienti di sicurezza per la resistenza delle membrature e la stabilità", columnCount: 2, headers: [[{ text: "" }, { text: "" }]], rows: [[{ text: "Resistenza delle Sezioni di Classe 1-2-3-4" }, { text: "γM0 = 1,05", latex: "\\gamma_{M0}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature" }, { text: "γM1 = 1,05", latex: "\\gamma_{M1}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature di ponti stradali e ferroviari" }, { text: "γM1 = 1,10", latex: "\\gamma_{M1}=1{,}10" }], [{ text: "Resistenza, nei riguardi della frattura, delle sezioni tese (indebolite dai fori)" }, { text: "γM2 = 1,25", latex: "\\gamma_{M2}=1{,}25" }]], notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."] };
+const table = { id: tableVII, unitId: unitId("4.2.4.1.1"), officialNumber: "4.2.VII", pdfPage: 101, caption: "Coefficienti di sicurezza per la resistenza delle membrature e la stabilità", columnCount: 2, headers: [], rows: [[{ text: "Resistenza delle Sezioni di Classe 1-2-3-4" }, { text: "γM0 = 1,05", latex: "\\gamma_{M0}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature" }, { text: "γM1 = 1,05", latex: "\\gamma_{M1}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature di ponti stradali e ferroviari" }, { text: "γM1 = 1,10", latex: "\\gamma_{M1}=1{,}10" }], [{ text: "Resistenza, nei riguardi della frattura, delle sezioni tese (indebolite dai fori)" }, { text: "γM2 = 1,25", latex: "\\gamma_{M2}=1{,}25" }]], notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."] };
 
 const units = [
     makeUnit("4.2.4", "VERIFICHE", [

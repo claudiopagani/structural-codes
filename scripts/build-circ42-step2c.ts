@@ -134,7 +134,7 @@ const formulaRows: FormulaRow[] = [
 
 const formulaByNumber = new Map(formulaRows.map((row) => [row.number, row]));
 const formula = (number: string) => formulaByNumber.get(number)!;
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, align: "center", ...(latex ? { latex } : {}), ...spans });
 const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
 
 const tableVIIId = tableId("C4.2.VII");
@@ -145,7 +145,11 @@ const tableVII = {
     pdfPage: 113,
     caption: "Coefficienti χ_w per il calcolo della resistenza all’instabilità a taglio del pannello",
     columnCount: 3,
-    headers: [[c("Coefficiente di snellezza"), c("Coefficiente χ_w per montanti d’appoggio rigidi"), c("Coefficiente χ_w per gli altri casi")]],
+    headers: [[
+        { text: "Coefficiente di snellezza", align: "center" },
+        { text: "χ_w\ncoefficiente per\nmontanti d’appoggio rigidi", inline: [math("χ_w", "\\chi_w"), text("\ncoefficiente per\nmontanti d’appoggio rigidi")], align: "center" },
+        { text: "χ_w\ncoefficiente per\ngli altri casi", inline: [math("χ_w", "\\chi_w"), text("\ncoefficiente per\ngli altri casi")], align: "center" },
+    ]],
     rows: [
         [f("λ_w < 0,83/η", "\\lambda_w<0{,}83/\\eta"), f("η", "\\eta"), f("η", "\\eta")],
         [f("(0,83/η) ≤ λ_w < 1,08", "(0{,}83/\\eta)\\le\\lambda_w<1{,}08"), f("0,83/λ_w", "0{,}83/\\lambda_w"), f("0,83/λ_w", "0{,}83/\\lambda_w")],
@@ -156,7 +160,7 @@ const tableVII = {
 
 const figureNumber = "C4.2.12";
 const figureAssetId = figureId(figureNumber);
-const figureRegion = reg(190, 628, 220, 112);
+const figureRegion = reg(190, 622, 220, 88);
 
 const units = [
     makeUnit("C4.2.4.1.3.4", "Stabilità dei pannelli", [
@@ -209,7 +213,7 @@ const units = [
     ], formulaRows.map((row) => row.number), ["C4.2.VII"], [figureNumber]),
 ];
 
-const figureSource = "page-0114-x190-y628-w220-h112@3x.png";
+const figureSource = "page-0114-x190-y622-w220-h88@3x.png";
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
     schemaVersion: "2.0.0-alpha.1",
@@ -229,7 +233,7 @@ const manifest = {
         alt: "Irrigidimenti longitudinali dei pannelli d’anima con le larghezze collaboranti 15εt",
         imagePath: "figures/circ2019/figc4.2.12.png",
         region: figureRegion,
-        sha256: "712d97bbe856575fe05436efffec53f9396bce39ab5ed96409b8261a625ca647",
+        sha256: "8e2ee0810997cffdf44acae1d1f21e254bb61dafb7b209f1024cd4daa5392bbb",
     }],
 };
 

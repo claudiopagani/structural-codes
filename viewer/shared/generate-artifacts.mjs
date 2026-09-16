@@ -136,9 +136,11 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const manifest = { formatVersion: 2, generatedAt: corpusManifest.asOf, structuralCodesVersion: packageManifest.version, schemaVersion: allUnits[0]?.schemaVersion ?? null, assetSchemaVersion: assetManifests[0]?.schemaVersion ?? null, status: corpusManifest.status, disclaimer: corpusManifest.disclaimer, corpusFingerprintSha256, generatedArtifactFingerprintSha256: artifactFingerprintSha256, stats: { units: allUnits.length, blocks: allUnits.reduce((total, unit) => total + unit.blocks.filter((block) => block.text).length, 0), explicitRelations: relations.length, proposedRelations: relations.filter((relation) => relation.review.status === "proposed").length, suggestedRelationDiagnostics: diagnostics.length, reviewedUnits: allUnits.filter((unit) => reviewedStatuses.has(unit.workflow.status)).length, assetUnits: allUnits.filter((unit) => unit.assets.formulaIds.length > 0 || unit.assets.tableIds.length > 0 || unit.assets.figureIds.length > 0).length, formulas: assetCollections.formulas.length, tables: assetCollections.tables.length, figures: assetCollections.figures.length, chunks: chunkInventory.length }, documents: documentIndexes, relationsPath: "/data/codes/relations.json", relationDiagnosticsPath: "/data/codes/relation-diagnostics.json", searchIndexPath: "/data/codes/search-index.json", crossReferenceIndexPath: "/data/codes/cross-reference-index.json", chunks: chunkInventory };
   const manifestWritten = await writeJson(join(outputDirectory, "manifest.json"), manifest);
   let copiedFigureBytes = 0;
-  for (const figure of assetCollections.figures) {
-    const source = join(sourceRoot, "corpus", "assets", figure.imagePath);
-    const destination = join(figureOutput, figure.imagePath);
+  const tableCellImages = assetCollections.tables.flatMap((table) => [...table.headers, ...table.rows].flat().flatMap((cell) => cell.image ? [cell.image] : []));
+  const imagesByPath = new Map([...assetCollections.figures, ...tableCellImages].map((entry) => [entry.imagePath, entry]));
+  for (const image of imagesByPath.values()) {
+    const source = join(sourceRoot, "corpus", "assets", image.imagePath);
+    const destination = join(figureOutput, image.imagePath);
     await mkdir(dirname(destination), { recursive: true });
     await copyFile(source, destination);
     copiedFigureBytes += (await stat(source)).size;

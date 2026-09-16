@@ -17,9 +17,10 @@ const unitNumber = "C4.2.12.1.4";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
+type CaptionInline = { kind: "strong" | "em" | "math"; value: string; latex?: string };
 type FormulaRow = { number: string; page: number; latex: string; raw: string; region: Region };
 type BlockKind = "heading" | "paragraph" | "list-item" | "formula-ref" | "figure-ref";
-type GeneratedBlock = { blockId: string; kind: BlockKind; origin: "official"; text?: { raw: string; normalized: string; normalizationVersion: string; inline: Inline[] }; evidence: { rawSha256: string; normalizedSha256: string; [key: string]: unknown }; assetId?: string };
+type GeneratedBlock = { blockId: string; kind: BlockKind; origin: "official"; listMarker?: "dash"; text?: { raw: string; normalized: string; normalizationVersion: string; inline: Inline[] }; evidence: { rawSha256: string; normalizedSha256: string; [key: string]: unknown }; assetId?: string };
 const uid = (number: string) => `urn:structural-codes:it:unit:circ2019:${number.toLowerCase()}`;
 const formulaId = (number: string) => `urn:structural-codes:it:asset:formula:circ2019:${number.toLowerCase()}`;
 const figureId = (number: string) => `urn:structural-codes:it:asset:figure:circ2019:${number.toLowerCase()}`;
@@ -28,7 +29,7 @@ const text = (value: string): Inline => ({ kind: "text", value });
 const math = (value: string, latex: string): Inline => ({ kind: "math", value, latex });
 const hash = (value: string) => sha256OfText(value);
 function evidence(page: number, raw: string, normalized: string, region: Region, manual = false) { return { sourceId, pdfPage: page, printedPage: String(page - 4), region, extraction: { method: manual ? "manual-transcription" : "pdf-text", tool: manual ? "codex-source-transcription" : "pdfjs-dist", toolVersion: manual ? profile : "4.10.38" }, transformations: [{ operation: "join-line-wrap", ruleVersion: profile, note: "Ricomposte le righe tipografiche appartenenti allo stesso capoverso o voce di elenco; formule e figure restano blocchi distinti." }, ...(raw !== normalized ? [{ operation: "manual-correction", ruleVersion: profile, note: "Ripristinati accenti, apostrofi, simboli e notazione matematica confrontati con i render ufficiali." }] : []), { operation: "unicode-nfc", ruleVersion: profile, note: "Testo normalizzato in Unicode NFC." }], rawSha256: hash(raw), normalizedSha256: hash(normalized) }; }
-function block(suffix: string, kind: Exclude<BlockKind, "formula-ref" | "figure-ref">, page: number, normalized: string, inline: Inline[], region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind, origin: "official", text: { raw: normalized, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, normalized, normalized, region) }; }
+function block(suffix: string, kind: Exclude<BlockKind, "formula-ref" | "figure-ref">, page: number, normalized: string, inline: Inline[], region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind, origin: "official", ...(kind === "list-item" ? { listMarker: "dash" as const } : {}), text: { raw: normalized, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, normalized, normalized, region) }; }
 function formulaBlock(suffix: string, formula: FormulaRow): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "formula-ref", origin: "official", assetId: formulaId(formula.number), evidence: evidence(formula.page, formula.raw, formula.raw, formula.region, true) }; }
 function figureBlock(suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock { return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) }; }
 
@@ -51,11 +52,11 @@ const figure31 = figureId("C4.2.31");
 const figure32 = figureId("C4.2.32");
 const figure26Region = reg(170, 450, 270, 80);
 const figure27Region = reg(70, 570, 455, 170);
-const figure28Region = reg(130, 150, 330, 215);
+const figure28Region = reg(130, 140, 330, 215);
 const figure29Region = reg(180, 480, 260, 95);
 const figure30Region = reg(180, 590, 260, 55);
-const figure31Region = reg(170, 75, 270, 85);
-const figure32Region = reg(170, 175, 270, 90);
+const figure31Region = reg(170, 75, 270, 66);
+const figure32Region = reg(170, 175, 270, 60);
 
 const blocks: GeneratedBlock[] = [
     block("heading", "heading", 136, "C4.2.12.1.4. Classificazione delle sezioni, instabilità locale e distorsione delle sezioni trasversali", [text("C4.2.12.1.4. Classificazione delle sezioni, instabilità locale e distorsione delle sezioni trasversali")], reg(73.9, 410, 450, 30)),
@@ -106,14 +107,26 @@ const formulaRows = [formula104, formula105, formula106, formula107, formula108,
 const figureRows = [
     [figure26, "C4.2.26", "Figura C4.2.26 – Determinazione del punto X per la valutazione della larghezza di elementi piani", "Determinazione del punto X per la valutazione della larghezza di elementi piani", figure26Region, "page-0136-x170-y460-w270-h80@4x.png", "6cd0a782c0334a4c0c678b662efcc5ea91a29c1dfbbbe9929360edb4884b3d89"],
     [figure27, "C4.2.27", "Figura C4.2.27 – Esempi di determinazione della larghezza b_p", "Esempi di determinazione della larghezza b_p", figure27Region, "page-0136-x70-y570-w455-h170@4x.png", "e8212b0a06bcfa3ac5d0c53209b50f503637211a84fb89aa32d1e8695498f23a"],
-    [figure28, "C4.2.28", "Figura C4.2.28 – Modelli statici per diverse tipologie di elementi piani", "Modelli statici per diverse tipologie di elementi piani", figure28Region, "page-0137-x130-y150-w330-h215@4x.png", "f70a6a56d4c9c08d5e783cfbca59f8e895c0558d6e61e78a01e2e61d047d91e7"],
+    [figure28, "C4.2.28", "Figura C4.2.28 – Modelli statici per diverse tipologie di elementi piani", "Modelli statici per diverse tipologie di elementi piani", figure28Region, "page-0137-x130-y140-w330-h215@4x.png", "70671c0444f6b52a1b0540e9b5e5e2f05005a7894cdb912f43c73d055f2119fc"],
     [figure29, "C4.2.29", "Figura C4.2.29 – Elementi piani delimitati da un’anima e da un irrigidimento di bordo", "Elementi piani delimitati da un’anima e da un irrigidimento di bordo", figure29Region, "page-0137-x180-y480-w260-h95@4x.png", "ba87a0abdbff13c051ee9878ef483e6ea25b059bbc71356e0e88a5359ba0c32e"],
     [figure30, "C4.2.30", "Figura C4.2.30 – Elementi piani delimitati da due anime con irrigidimenti intermedi", "Elementi piani delimitati da due anime con irrigidimenti intermedi", figure30Region, "page-0137-x180-y590-w260-h55@4x.png", "bf0aee4b223d6c5170800d173fffd96bea9da305a3dd15cbdc01e3322cd7c42a"],
-    [figure31, "C4.2.31", "Figura C4.2.31 – Schematizzazione degli irrigidimenti", "Schematizzazione degli irrigidimenti", figure31Region, "page-0138-x170-y75-w270-h85@4x.png", "510ea05861bf754d650a873c5377d7b3fc183b74841057da004c9181c6e3ae7c"],
-    [figure32, "C4.2.32", "Figura C4.2.32 – Schemi di calcolo per la determinazione della costante elastica", "Schemi di calcolo per la determinazione della costante elastica", figure32Region, "page-0138-x170-y175-w270-h90@4x.png", "da5bde680342230b7aab9afbd27033b4a031c6c79a19866e4a0020b1dcee69f0"],
+    [figure31, "C4.2.31", "Figura C4.2.31 – Schematizzazione degli irrigidimenti", "Schematizzazione degli irrigidimenti", figure31Region, "page-0138-x170-y75-w270-h66@4x.png", "a7df2fcbb02ea0146cf668edbb339a2573e678733ab59ef267ad331dadacb9ce"],
+    [figure32, "C4.2.32", "Figura C4.2.32 – Schemi di calcolo per la determinazione della costante elastica", "Schemi di calcolo per la determinazione della costante elastica", figure32Region, "page-0138-x170-y175-w270-h60@4x.png", "893a9d7b3dd325283547331e222f1a719ab3985ed1735151e50eec320e3b430e"],
 ] as const;
 const unit = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: uid(unitNumber), workId, expressionId, kind: "subparagraph", numbering: { official: unitNumber, sortKey: unitNumber.replace(/^C/, "").split(".").map((part) => part.padStart(3, "0")).join(".") }, title: "Classificazione delle sezioni, instabilità locale e distorsione delle sezioni trasversali", titleBlockId: `${uid(unitNumber)}#block-heading`, hierarchy: { parentId: uid("C4.2.12.1"), ancestorIds: [uid("C4.2"), uid("C4.2.12"), uid("C4.2.12.1")], position: 4 }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: formulaRows.map((formula) => formulaId(formula.number)), tableIds: [], figureIds: figureRows.map(([id]) => id) }, workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2u", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "circ2019-C4-2-12-1-4-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." }, { issueId: "circ2019-C4-2-12-1-4-assets-review", type: "asset-review", severity: "blocking", note: "Le formule C4.2.104–C4.2.112 e le figure C4.2.26–C4.2.32 richiedono revisione umana indipendente." }] } };
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2u", sourceId, status: "transcribed-unreviewed", formulas: formulaRows.map((formula) => ({ id: formulaId(formula.number), unitId: uid(unitNumber), officialNumber: formula.number, pdfPage: formula.page, latex: formula.latex })), tables: [], figures: figureRows.map(([id, officialNumber, caption, alt, region, imageName, sha256]) => ({ id, unitId: uid(unitNumber), officialNumber, pdfPage: officialNumber === "C4.2.26" || officialNumber === "C4.2.27" ? 136 : officialNumber === "C4.2.28" || officialNumber === "C4.2.29" || officialNumber === "C4.2.30" ? 137 : 138, caption, alt, imagePath: `figures/circ2019/${imageName.replace(/page-[^/]+-/, "figc4.2.").replace(/@4x\\.png$/, ".png")}`, region, sha256 })) };
+const captionInlineFor = (officialNumber: string): CaptionInline[] => {
+    const captions: Record<string, CaptionInline[]> = {
+        "C4.2.26": [{ kind: "strong", value: "Figura C4.2.26" }, { kind: "em", value: " – Determinazione del punto " }, { kind: "math", value: "X", latex: "X" }, { kind: "em", value: " per la valutazione della larghezza di elementi piani" }],
+        "C4.2.27": [{ kind: "strong", value: "Figura C4.2.27" }, { kind: "em", value: " – Esempi di determinazione della larghezza " }, { kind: "math", value: "b_p", latex: "b_p" }],
+        "C4.2.28": [{ kind: "strong", value: "Figura C4.2.28" }, { kind: "em", value: " – Modelli statici per diverse tipologie di elementi piani" }],
+        "C4.2.29": [{ kind: "strong", value: "Figura C4.2.29" }, { kind: "em", value: " – Elementi piani delimitati da un’anima e da un irrigidimento di bordo" }],
+        "C4.2.30": [{ kind: "strong", value: "Figura C4.2.30" }, { kind: "em", value: " – Elementi piani delimitati da due anime con irrigidimenti intermedi" }],
+        "C4.2.31": [{ kind: "strong", value: "Figura C4.2.31" }, { kind: "em", value: " – Schematizzazione degli irrigidimenti" }],
+        "C4.2.32": [{ kind: "strong", value: "Figura C4.2.32" }, { kind: "em", value: " – Schemi di calcolo per la determinazione della costante elastica" }],
+    };
+    return captions[officialNumber] ?? [];
+};
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2u", sourceId, status: "transcribed-unreviewed", formulas: formulaRows.map((formula) => ({ id: formulaId(formula.number), unitId: uid(unitNumber), officialNumber: formula.number, pdfPage: formula.page, latex: formula.latex })), tables: [], figures: figureRows.map(([id, officialNumber, caption, alt, region, imageName, sha256]) => ({ id, unitId: uid(unitNumber), officialNumber, pdfPage: officialNumber === "C4.2.26" || officialNumber === "C4.2.27" ? 136 : officialNumber === "C4.2.28" || officialNumber === "C4.2.29" || officialNumber === "C4.2.30" ? 137 : 138, caption, alt, imagePath: `figures/circ2019/${imageName.replace(/page-[^/]+-/, "figc4.2.").replace(/@4x\\.png$/, ".png")}`, region, sha256, captionInline: captionInlineFor(officialNumber) })) };
 // Keep stable public names for the official figure crops.
 manifest.figures.forEach((figure, index) => { figure.imagePath = `figures/circ2019/figc4.2.${26 + index}.png`; });
 await mkdir(unitDirectory, { recursive: true });

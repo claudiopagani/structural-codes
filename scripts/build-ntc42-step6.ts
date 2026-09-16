@@ -345,6 +345,7 @@ const table = {
   ],
   notes: [],
 };
+for (const row of [...table.headers, ...table.rows]) for (const cell of row as Array<{ align?: "center" }>) cell.align = "center";
 
 const figures = [
   { id: gid("4.2.6"), unitId: uid("4.2.8.2.3"), officialNumber: "4.2.6", pdfPage: 117, caption: "Fig. 4.2.6 -Definizione dell’area di gola per le saldature a cordone d’angolo", alt: "Definizione dell’area di gola per le saldature a cordone d’angolo.", imagePath: "figures/ntc2018/fig4.2.6.png", region: reg(75, 238, 330, 65), sha256: "a5fa5de86131b29078e9e35fc50aa202de1a9f73af95f9949d7fe551ce33a252" },

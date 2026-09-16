@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sha256OfText } from "../src/lib/hash.ts";
@@ -6,6 +6,8 @@ import { sha256OfText } from "../src/lib/hash.ts";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const unitDir = join(root, "corpus", "units", "ntc2018");
 const assetDir = join(root, "corpus", "assets", "ntc2018");
+const figureDir = join(root, "corpus", "assets", "figures", "ntc2018");
+const evidenceRenderDir = join(root, "evidence", "gu-so8-2018-ntc", "renders");
 const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
@@ -14,6 +16,7 @@ const createdAt = "2026-08-09T00:00:00Z";
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Opt = { page: number; printedPage: string; wrap?: boolean; discretionaryHyphen?: boolean; manual?: boolean };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
+type TableCell = { text: string; latex?: string; image?: { imagePath: string; alt: string; sha256: string; region: Region }; colSpan?: number; rowSpan?: number; align?: "left" | "center" | "right"; verticalText?: boolean };
 const uid = (n: string) => "urn:structural-codes:it:unit:ntc2018:" + n;
 const fid = (n: string) => "urn:structural-codes:it:asset:formula:ntc2018:" + n;
 const tid = (n: string) => "urn:structural-codes:it:asset:table:ntc2018:" + n;
@@ -21,6 +24,8 @@ const reg = (x: number, y: number, width: number, height: number): Region => ({ 
 const p = (page: number, printedPage: string, options: Omit<Opt, "page" | "printedPage"> = {}): Opt => ({ page, printedPage, ...options });
 const t = (value: string): Inline => ({ kind: "text", value });
 const m = (value: string, latex: string): Inline => ({ kind: "math", value, latex });
+const c = (text: string, options: Omit<TableCell, "text"> = {}): TableCell => ({ text, ...options });
+const imageCell = (imagePath: string, alt: string, sha256: string, region: Region, options: Omit<TableCell, "text" | "image"> = {}): TableCell => ({ text: "", align: "center", image: { imagePath, alt, sha256, region }, ...options });
 function transforms(o: Opt) {
     const result: Array<{ operation: string; ruleVersion: string; note: string }> = [];
     if (o.wrap) result.push({ operation: "join-line-wrap", ruleVersion: profile, note: "Unite le righe appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati." }, { operation: "normalize-whitespace", ruleVersion: profile, note: "Uniformati gli spazi dopo la ricomposizione delle righe." });
@@ -68,24 +73,138 @@ const f = (n: string) => fid(n);
 const tVIII = tid("4.2.viii");
 const tIXa = tid("4.2.ix-a");
 const tIXb = tid("4.2.ix-b");
-const tableVIII = { id: tVIII, unitId: uid("4.2.4.1.3.1"), officialNumber: "4.2.VIII", pdfPage: 106, caption: "Curve d’instabilità per varie tipologie di sezioni e classi d’acciaio, per elementi compressi", columnCount: 6, headers: [[{ text: "Sezione trasversale" }, { text: "Limiti" }, { text: "Inflessione intorno all’asse" }, { text: "S235, S275, S355, S420" }, { text: "S460" }, { text: "" }]], rows: [
-    [{ text: "Sezioni laminate ad I" }, { text: "h/b > 1,2; tf ≤ 40 mm", latex: "h/b>1{,}2;\\ t_f\\le40\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "a; b" }, { text: "a0; a0", latex: "a_0;\\ a_0" }, { text: "schema sezione I" }],
-    [{ text: "Sezioni laminate ad I" }, { text: "h/b > 1,2; 40 mm < tf ≤ 100 mm", latex: "h/b>1{,}2;\\ 40\\,\\mathrm{mm}<t_f\\le100\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "b; c" }, { text: "a; a" }, { text: "schema sezione I" }],
-    [{ text: "Sezioni laminate ad I" }, { text: "h/b ≤ 1,2; tf ≤ 100 mm", latex: "h/b\\le1{,}2;\\ t_f\\le100\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "b; c" }, { text: "a; a" }, { text: "schema sezione I" }],
-    [{ text: "Sezioni laminate ad I" }, { text: "h/b ≤ 1,2; tf > 100 mm", latex: "h/b\\le1{,}2;\\ t_f>100\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "d; d" }, { text: "c; c" }, { text: "schema sezione I" }],
-    [{ text: "Sezioni ad I saldate" }, { text: "tf ≤ 40 mm", latex: "t_f\\le40\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "b; c" }, { text: "b; c" }, { text: "schema sezione saldata" }],
-    [{ text: "Sezioni ad I saldate" }, { text: "tf > 40 mm", latex: "t_f>40\\,\\mathrm{mm}" }, { text: "y-y; z-z" }, { text: "c; d" }, { text: "c; d" }, { text: "schema sezione saldata" }],
-    [{ text: "Sezioni cave formate a caldo" }, { text: "qualsiasi" }, { text: "qualsiasi" }, { text: "a" }, { text: "a0" }, { text: "schemi circolare e rettangolari" }],
-    [{ text: "Sezioni cave formate a freddo" }, { text: "qualsiasi" }, { text: "qualsiasi" }, { text: "c" }, { text: "c" }, { text: "schemi circolare e rettangolari" }],
-    [{ text: "Sezioni scatolari saldate" }, { text: "in generale" }, { text: "qualsiasi" }, { text: "b" }, { text: "b" }, { text: "schema scatolare" }],
-    [{ text: "Sezioni scatolari saldate" }, { text: "saldature spesse: a > 0,5tf; b/tf < 30; h/tw < 30", latex: "a>0{,}5t_f;\\ b/t_f<30;\\ h/t_w<30" }, { text: "qualsiasi" }, { text: "c" }, { text: "c" }, { text: "schema scatolare" }],
-    [{ text: "Sezioni piene, ad U e T" }, { text: "qualsiasi" }, { text: "qualsiasi" }, { text: "c" }, { text: "c" }, { text: "schemi U, T, rettangolare e circolare" }],
-    [{ text: "Sezioni ad L" }, { text: "qualsiasi" }, { text: "qualsiasi" }, { text: "b" }, { text: "b" }, { text: "schema L" }],
-    [{ text: "Curva di instabilità" }, { text: "a0", latex: "a_0" }, { text: "a" }, { text: "b" }, { text: "c" }, { text: "d" }],
-    [{ text: "Fattore di imperfezione α", latex: "\\alpha" }, { text: "0,13" }, { text: "0,21" }, { text: "0,34" }, { text: "0,49" }, { text: "0,76" }],
-], notes: ["I disegni delle sezioni presenti nella fonte sono rappresentati provvisoriamente come descrizioni testuali; revisione visuale obbligatoria."] };
-const tableIXa = { id: tIXa, unitId: uid("4.2.4.1.3.2"), officialNumber: "4.2.IX (a)", pdfPage: 107, caption: "Valori raccomandati di αLT per le differenti curve di stabilità", columnCount: 5, headers: [[{ text: "Curva di stabilità" }, { text: "a" }, { text: "b" }, { text: "c" }, { text: "d" }]], rows: [[{ text: "Fattore di imperfezione αLT", latex: "\\alpha_{LT}" }, { text: "0,21" }, { text: "0,34" }, { text: "0,49" }, { text: "0,76" }]], notes: [] };
-const tableIXb = { id: tIXb, unitId: uid("4.2.4.1.3.2"), officialNumber: "4.2.IX (b)", pdfPage: 107, caption: "Definizione delle curve di stabilità per le varie tipologie di sezione e per gli elementi inflessi", columnCount: 3, headers: [[{ text: "Sezione trasversale" }, { text: "Limiti" }, { text: "Curva di instabilità da Tab. 4.2.VIII" }]], rows: [[{ text: "Sezione laminata ad I" }, { text: "h/b ≤ 2", latex: "h/b\\le2" }, { text: "b" }], [{ text: "Sezione laminata ad I" }, { text: "h/b > 2", latex: "h/b>2" }, { text: "c" }], [{ text: "Sezione composta saldata" }, { text: "h/b ≤ 2", latex: "h/b\\le2" }, { text: "c" }], [{ text: "Sezione composta saldata" }, { text: "h/b > 2", latex: "h/b>2" }, { text: "d" }], [{ text: "Altre sezioni trasversali" }, { text: "—" }, { text: "d" }]], notes: [] };
+const tableVIII = {
+    id: tVIII,
+    unitId: uid("4.2.4.1.3.1"),
+    officialNumber: "4.2.VIII",
+    pdfPage: 106,
+    caption: "Tab. 4.2.VIII – Curve d’instabilità per varie tipologie di sezioni e classi d’acciaio, per elementi compressi",
+    captionInline: [
+        { kind: "strong", value: "Tab. 4.2.VIII" },
+        { kind: "em", value: " – Curve d’instabilità per varie tipologie di sezioni e classi d’acciaio, per elementi compressi" },
+    ],
+    columnCount: 7,
+    columnWidths: [6, 33, 4, 24, 13, 10, 10],
+    headers: [
+        [
+            c("Sezione trasversale", { colSpan: 2, rowSpan: 2, align: "center" }),
+            c("Limiti", { colSpan: 2, rowSpan: 2, align: "center" }),
+            c("Inflessione\nintorno\nall’asse", { rowSpan: 2, align: "center" }),
+            c("Curva di instabilità", { colSpan: 2, align: "center" }),
+        ],
+        [
+            c("S235,\nS275,\nS355,\nS420", { align: "center" }),
+            c("S460", { align: "center" }),
+        ],
+    ],
+    rows: [
+        [
+            c("Sezioni laminate", { rowSpan: 4, align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-laminated-i.png", "Sezione laminata ad I con assi y-y e z-z", "549c373528b4cd8087472eb2657dfdadf8d4429193fa894e38a62ae15553aa41", reg(108, 160, 86, 82), { rowSpan: 4 }),
+            c("h/b > 1,2", { latex: "h/b>1{,}2", rowSpan: 2, align: "center", verticalText: true }),
+            c("t_f ≤ 40 mm", { latex: "t_f\\le40\\,\\mathrm{mm}", align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("a\nb", { latex: "\\begin{gathered}a\\\\b\\end{gathered}", align: "center" }),
+            c("a_0\na_0", { latex: "\\begin{gathered}a_0\\\\a_0\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("40 mm < t_f ≤ 100 mm", { latex: "40\\,\\mathrm{mm}<t_f\\le100\\,\\mathrm{mm}", align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("b\nc", { latex: "\\begin{gathered}b\\\\c\\end{gathered}", align: "center" }),
+            c("a\na", { latex: "\\begin{gathered}a\\\\a\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("h/b ≤ 1,2", { latex: "h/b\\le1{,}2", rowSpan: 2, align: "center", verticalText: true }),
+            c("t_f ≤ 100 mm", { latex: "t_f\\le100\\,\\mathrm{mm}", align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("b\nc", { latex: "\\begin{gathered}b\\\\c\\end{gathered}", align: "center" }),
+            c("a\na", { latex: "\\begin{gathered}a\\\\a\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("t_f > 100 mm", { latex: "t_f>100\\,\\mathrm{mm}", align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("d\nd", { latex: "\\begin{gathered}d\\\\d\\end{gathered}", align: "center" }),
+            c("c\nc", { latex: "\\begin{gathered}c\\\\c\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("Sezioni ad I saldate", { rowSpan: 2, align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-welded-i.png", "Sezioni ad I saldate con assi y-y e z-z", "6f7b63cb7cfa22ad67a5a8cedca50d2651f7ea598158bbf6d06b12591e581b82", reg(108, 246, 86, 42), { rowSpan: 2 }),
+            c("t_f ≤ 40 mm", { latex: "t_f\\le40\\,\\mathrm{mm}", colSpan: 2, align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("b\nc", { latex: "\\begin{gathered}b\\\\c\\end{gathered}", align: "center" }),
+            c("b\nc", { latex: "\\begin{gathered}b\\\\c\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("t_f > 40 mm", { latex: "t_f>40\\,\\mathrm{mm}", colSpan: 2, align: "center" }),
+            c("y-y\nz-z", { latex: "\\begin{gathered}y-y\\\\z-z\\end{gathered}", align: "center" }),
+            c("c\nd", { latex: "\\begin{gathered}c\\\\d\\end{gathered}", align: "center" }),
+            c("c\nd", { latex: "\\begin{gathered}c\\\\d\\end{gathered}", align: "center" }),
+        ],
+        [
+            c("Sezioni cave", { rowSpan: 2, align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-hollow.png", "Sezioni cave circolare, quadrata e rettangolare", "fad65a63fc485bb1c300f63741bedae6b34551cfa8eb771e8c2465c2c0972429", reg(108, 291, 86, 47), { rowSpan: 2 }),
+            c("Sezione formata “a caldo”", { colSpan: 2, align: "center" }),
+            c("qualunque", { align: "center" }),
+            c("a", { latex: "a", align: "center" }),
+            c("a_0", { latex: "a_0", align: "center" }),
+        ],
+        [
+            c("Sezione formata “a freddo”", { colSpan: 2, align: "center" }),
+            c("qualunque", { align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+        ],
+        [
+            c("Sezioni scatolari saldate", { rowSpan: 2, align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-welded-box.png", "Sezione scatolare saldata con assi y-y e z-z", "42972d51230d37b60bcef48c7bda60505eb09ac0dff636864a0151d1db927ce6", reg(108, 342, 86, 64), { rowSpan: 2 }),
+            c("In generale", { colSpan: 2, align: "center" }),
+            c("qualunque", { align: "center" }),
+            c("b", { latex: "b", align: "center" }),
+            c("b", { latex: "b", align: "center" }),
+        ],
+        [
+            c("saldature “spesse”: a > 0,5t_f; b/t_f < 30; h/t_w < 30", { latex: "\\begin{gathered}\\text{saldature “spesse”: }a>0{,}5t_f;\\\\b/t_f<30;\\ h/t_w<30\\end{gathered}", colSpan: 2, align: "center" }),
+            c("qualunque", { align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+        ],
+        [
+            c("Sezioni piene, ad U e T", { align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-solid-u-t.png", "Sezioni ad U o T e sezioni piene rettangolare e circolare", "e896f55c42c872e3b6f1cae360885cb09c00eac3a70eae3e58d0da7bbda33425", reg(108, 410, 160, 43), { colSpan: 3 }),
+            c("qualunque", { align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+        ],
+        [
+            c("Sezioni ad L", { align: "center", verticalText: true }),
+            imageCell("figures/ntc2018/table4.2.viii-angle.png", "Sezione ad L con assi principali", "78492b2fe126038dcb6108b572b993bd12fe46228f06ed80ad4beba74c7675a1", reg(108, 457, 160, 31), { colSpan: 3 }),
+            c("qualunque", { align: "center" }),
+            c("b", { latex: "b", align: "center" }),
+            c("b", { latex: "b", align: "center" }),
+        ],
+        [
+            c("Curva di instabilità", { colSpan: 2 }),
+            c("a_0", { latex: "a_0", align: "center" }),
+            c("a", { latex: "a", align: "center" }),
+            c("b", { latex: "b", align: "center" }),
+            c("c", { latex: "c", align: "center" }),
+            c("d", { latex: "d", align: "center" }),
+        ],
+        [
+            c("Fattore di imperfezione α", { latex: "\\text{Fattore di imperfezione }\\alpha", colSpan: 2 }),
+            c("0,13", { align: "center" }),
+            c("0,21", { align: "center" }),
+            c("0,34", { align: "center" }),
+            c("0,49", { align: "center" }),
+            c("0,76", { align: "center" }),
+        ],
+    ],
+    notes: [],
+};
+const tableIXaCaption = "Tab. 4.2.IX (a) – Valori raccomandati di αLT per le differenti curve di stabilità";
+const tableIXa = { id: tIXa, unitId: uid("4.2.4.1.3.2"), officialNumber: "4.2.IX (a)", pdfPage: 107, caption: tableIXaCaption, captionInline: [{ kind: "strong", value: "Tab. 4.2.IX (a)" }, { kind: "em", value: " – Valori raccomandati di " }, { kind: "math", value: "αLT", latex: "\\alpha_{LT}" }, { kind: "em", value: " per le differenti curve di stabilità" }], columnCount: 5, headers: [[{ text: "Curva di stabilità", align: "center" }, { text: "a", align: "center" }, { text: "b", align: "center" }, { text: "c", align: "center" }, { text: "d", align: "center" }]], rows: [[{ text: "Fattore di imperfezione αLT", latex: "\\alpha_{LT}", align: "center" }, { text: "0,21", align: "center" }, { text: "0,34", align: "center" }, { text: "0,49", align: "center" }, { text: "0,76", align: "center" }]], notes: [] };
+const tableIXbCaption = "Tab. 4.2.IX (b) – Definizione delle curve di stabilità per le varie tipologie di sezione e per gli elementi inflessi";
+const tableIXb = { id: tIXb, unitId: uid("4.2.4.1.3.2"), officialNumber: "4.2.IX (b)", pdfPage: 107, caption: tableIXbCaption, captionInline: [{ kind: "strong", value: "Tab. 4.2.IX (b)" }, { kind: "em", value: " – Definizione delle curve di stabilità per le varie tipologie di sezione e per gli elementi inflessi" }], columnCount: 3, headers: [[{ text: "Sezione trasversale", align: "center" }, { text: "Limiti", align: "center" }, { text: "Curva di instabilità da Tab. 4.2.VIII", align: "center" }]], rows: [[{ text: "Sezione laminata ad I", rowSpan: 2, align: "center" }, { text: "h/b ≤ 2", latex: "h/b\\le2", align: "center" }, { text: "b", align: "center" }], [{ text: "h/b > 2", latex: "h/b>2", align: "center" }, { text: "c", align: "center" }], [{ text: "Sezione composta saldata", rowSpan: 2, align: "center" }, { text: "h/b ≤ 2", latex: "h/b\\le2", align: "center" }, { text: "c", align: "center" }], [{ text: "h/b > 2", latex: "h/b>2", align: "center" }, { text: "d", align: "center" }], [{ text: "Altre sezioni trasversali", align: "center" }, { text: "—", align: "center" }, { text: "d", align: "center" }]], notes: [] };
 
 const units = [
     unit("4.2.4.1.3", "Stabilità delle membrature", [block("4.2.4.1.3", "heading", "heading", p(105, "101", { manual: true }), reg(82.954, 650, 180, 7.476), "4.2.4.1.3 Stabilità delle membrature", "4.2.4.1.3 Stabilità delle membrature")]),
@@ -94,8 +213,8 @@ const units = [
         block("4.2.4.1.3.1", "p1", "paragraph", p(105, "101", { wrap: true }), reg(82.954, 684, 428.6, 17.6), "La verifica di stabilità di un’asta si effettua nell’ipotesi che la sezione trasversale sia uniformemente compressa. Deve essere", "La verifica di stabilità di un’asta si effettua nell’ipotesi che la sezione trasversale sia uniformemente compressa. Deve essere"),
         formula("4.2.4.1.3.1", "4.2.41", p(105, "101"), reg(180, 708, 220, 25)),
         block("4.2.4.1.3.1", "p2", "paragraph", p(105, "101"), reg(82.954, 742, 80, 7.482), "dove", "dove"),
-        block("4.2.4.1.3.1", "p3", "paragraph", p(105, "101"), reg(82.954, 754, 428.6, 7.482), "NEd è l’azione di compressione di progetto,", "NEd è l’azione di compressione di progetto,", [m("NEd", "N_{Ed}"), t(" è l’azione di compressione di progetto,")]),
-        block("4.2.4.1.3.1", "p4", "paragraph", p(105, "101"), reg(82.954, 766, 428.6, 7.482), "Nb,Rd è la resistenza di progetto all’instabilità nell’asta compressa, data da", "Nb,Rd è la resistenza di progetto all’instabilità nell’asta compressa, data da", [m("Nb,Rd", "N_{b,Rd}"), t(" è la resistenza di progetto all’instabilità nell’asta compressa, data da")]),
+        { ...block("4.2.4.1.3.1", "p3", "paragraph", p(105, "101"), reg(82.954, 754, 428.6, 7.482), "NEd è l’azione di compressione di progetto,", "NEd è l’azione di compressione di progetto,", [m("NEd", "N_{Ed}"), t(" è l’azione di compressione di progetto,")]), kind: "list-item", listMarker: "none", indentLevel: 1 },
+        { ...block("4.2.4.1.3.1", "p4", "paragraph", p(105, "101"), reg(82.954, 766, 428.6, 7.482), "Nb,Rd è la resistenza di progetto all’instabilità nell’asta compressa, data da", "Nb,Rd è la resistenza di progetto all’instabilità nell’asta compressa, data da", [m("Nb,Rd", "N_{b,Rd}"), t(" è la resistenza di progetto all’instabilità nell’asta compressa, data da")]), kind: "list-item", listMarker: "none", indentLevel: 1 },
         formula("4.2.4.1.3.1", "4.2.42", p(105, "101"), reg(150, 780, 300, 30)),
         block("4.2.4.1.3.1", "p5", "paragraph", p(105, "101"), reg(82.954, 815, 80, 7.482), "e da", "e da"),
         formula("4.2.4.1.3.1", "4.2.43", p(105, "101"), reg(150, 829, 300, 30)),
@@ -112,7 +231,8 @@ const units = [
         block("4.2.4.1.3.1", "p11", "paragraph", p(106, "102"), reg(82.954, 630, 390, 7.482), "Si definisce snellezza di un’asta nel piano di verifica considerato il rapporto", "Si definisce snellezza di un’asta nel piano di verifica considerato il rapporto"),
         formula("4.2.4.1.3.1", "4.2.47", p(106, "102"), reg(180, 644, 220, 25)),
         block("4.2.4.1.3.1", "p12", "paragraph", p(106, "102"), reg(82.954, 678, 80, 7.482), "dove", "dove"),
-        block("4.2.4.1.3.1", "p13", "paragraph", p(106, "102", { wrap: true }), reg(82.954, 690, 428.6, 17.6), "l0 è la lunghezza d’inflessione nel piano considerato,\\ni è il raggio d’inerzia relativo.", "l0 è la lunghezza d’inflessione nel piano considerato, i è il raggio d’inerzia relativo.", [m("l0", "l_0"), t(" è la lunghezza d’inflessione nel piano considerato, "), m("i", "i"), t(" è il raggio d’inerzia relativo.")]),
+        { ...block("4.2.4.1.3.1", "p13a", "paragraph", p(106, "102"), reg(82.954, 690, 428.6, 7.6), "l0 è la lunghezza d’inflessione nel piano considerato,", "l0 è la lunghezza d’inflessione nel piano considerato,", [m("l0", "l_0"), t(" è la lunghezza d’inflessione nel piano considerato,")]), kind: "list-item", listMarker: "none", indentLevel: 1 },
+        { ...block("4.2.4.1.3.1", "p13b", "paragraph", p(106, "102"), reg(82.954, 700, 428.6, 7.6), "i è il raggio d’inerzia relativo.", "i è il raggio d’inerzia relativo.", [m("i", "i"), t(" è il raggio d’inerzia relativo.")]), kind: "list-item", listMarker: "none", indentLevel: 1 },
         block("4.2.4.1.3.1", "p14", "paragraph", p(106, "102", { wrap: true }), reg(82.954, 722, 428.6, 17.6), "È opportuno limitare la snellezza λ al valore di 200 per le membrature principali ed a 250 per le membrature secondarie.", "È opportuno limitare la snellezza λ al valore di 200 per le membrature principali ed a 250 per le membrature secondarie.", [t("È opportuno limitare la snellezza "), m("λ", "\\lambda"), t(" al valore di 200 per le membrature principali ed a 250 per le membrature secondarie.")]),
     ], ["4.2.41", "4.2.42", "4.2.43", "4.2.44", "4.2.45", "4.2.46", "4.2.47"], ["4.2.viii"]),
     unit("4.2.4.1.3.2", "Travi inflesse", [
@@ -154,9 +274,20 @@ const units = [
         tableBlock("4.2.4.1.4", "4.2.x", p(108, "104"), reg(82.954, 410, 330, 185)),
     ], ["4.2.53"], ["4.2.x"]),
 ];
+const targetUnits = units.filter((record) => record.numbering.official === "4.2.4.1.3.1");
 
 const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "4.2-step4b", sourceId, status: "transcribed-unreviewed", formulas: formulaRows.map(([n, u, page, latex]) => ({ id: f(n), unitId: uid(u), officialNumber: n, pdfPage: page, latex })), tables: [tableVIII, tableIXa, tableIXb], figures: [] };
 await mkdir(unitDir, { recursive: true });
 await mkdir(assetDir, { recursive: true });
-await Promise.all([...units.map((u) => writeFile(join(unitDir, u.numbering.official + ".json"), JSON.stringify(u, null, 2) + "\n", "utf8")), writeFile(join(assetDir, "4.2-step4b.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8")]);
-console.log("NTC 4.2 step4b: generate " + units.length + " unità, " + formulaRows.length + " formule e 4 tabelle.");
+await mkdir(figureDir, { recursive: true });
+await Promise.all([
+    ...targetUnits.map((u) => writeFile(join(unitDir, u.numbering.official + ".json"), JSON.stringify(u, null, 2) + "\n", "utf8")),
+    writeFile(join(assetDir, "4.2-step4b.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8"),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y160-w86-h82@4x.png"), join(figureDir, "table4.2.viii-laminated-i.png")),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y246-w86-h42@4x.png"), join(figureDir, "table4.2.viii-welded-i.png")),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y291-w86-h47@4x.png"), join(figureDir, "table4.2.viii-hollow.png")),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y342-w86-h64@4x.png"), join(figureDir, "table4.2.viii-welded-box.png")),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y410-w160-h43@4x.png"), join(figureDir, "table4.2.viii-solid-u-t.png")),
+    copyFile(join(evidenceRenderDir, "page-0106-x108-y457-w160-h31@4x.png"), join(figureDir, "table4.2.viii-angle.png")),
+]);
+console.log("NTC 4.2 step4b: aggiornata " + targetUnits.length + " unità, " + formulaRows.length + " formule e 3 tabelle.");

@@ -126,7 +126,7 @@ const formulaRows: FormulaRow[] = [
 
 const formulaByNumber = new Map(formulaRows.map((row) => [row.number, row]));
 const formula = (number: string) => formulaByNumber.get(number)!;
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, align: "center", ...(latex ? { latex } : {}), ...spans });
 const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
 
 const unitNumber = "C4.2.4.1.3.4.5";
@@ -138,12 +138,12 @@ const tableXI = {
     pdfPage: 120,
     caption: "Calcolo della larghezza di lamiera collaborante in riferimento alla Figura C4.2.16",
     columnCount: 4,
-    headers: [[c(""), c("larghezza collaborante per il calcolo dell’area lorda"), c("larghezza collaborante per il calcolo dell’area efficace (Tabella C4.2.VIII)"), f("ψ_i", "\\psi_i")]],
+    headers: [[c(""), c("larghezza collaborante\nper il calcolo dell’area\nlorda"), c("larghezza collaborante\nper il calcolo dell’area efficace\n(Tabella C4.2.VIII)"), f("ψ_i", "\\psi_i")]],
     rows: [
-        [f("b_1,inf", "b_{1,\\mathrm{inf}}"), f("(3 − ψ_1)/(5 − ψ_1) · b_1", "\\frac{3-\\psi_1}{5-\\psi_1}\\,b_1"), f("(3 − ψ_1)/(5 − ψ_1) · b_1,eff", "\\frac{3-\\psi_1}{5-\\psi_1}\\,b_{1,\\mathrm{eff}}"), f("ψ_1 = σ_cr,sl,1/σ_cr,p > 0", "\\psi_1=\\frac{\\sigma_{\\mathrm{cr,sl,1}}}{\\sigma_{\\mathrm{cr,p}}}>0")],
-        [f("b_2,sup", "b_{2,\\mathrm{sup}}"), f("2/(5 − ψ_2) · b_2", "\\frac{2}{5-\\psi_2}\\,b_2"), f("2/(5 − ψ_2) · b_2,eff", "\\frac{2}{5-\\psi_2}\\,b_{2,\\mathrm{eff}}"), f("ψ_2 = σ_2/σ_cr,sl,1 > 0", "\\psi_2=\\frac{\\sigma_2}{\\sigma_{\\mathrm{cr,sl,1}}}>0")],
-        [f("b_2,inf", "b_{2,\\mathrm{inf}}"), f("(3 − ψ_2)/(5 − ψ_2) · b_2", "\\frac{3-\\psi_2}{5-\\psi_2}\\,b_2"), f("(3 − ψ_2)/(5 − ψ_2) · b_2,eff", "\\frac{3-\\psi_2}{5-\\psi_2}\\,b_{2,\\mathrm{eff}}"), f("ψ_2 = σ_2/σ_cr,sl,1 > 0", "\\psi_2=\\frac{\\sigma_2}{\\sigma_{\\mathrm{cr,sl,1}}}>0")],
-        [f("b_3,sup", "b_{3,\\mathrm{sup}}"), f("0,4 · b_3c", "0{,}4\\,b_{3c}"), f("0,4 · b_3c,eff", "0{,}4\\,b_{3c,\\mathrm{eff}}"), f("ψ_3 = σ_3/σ_2 < 0", "\\psi_3=\\frac{\\sigma_3}{\\sigma_2}<0")],
+        [f("b_1,inf", "b_{1,\\mathrm{inf}}"), f("(3 − ψ_1)/(5 − ψ_1) · b_1", "\\dfrac{3-\\psi_1}{5-\\psi_1}\\,b_1"), f("(3 − ψ_1)/(5 − ψ_1) · b_1,eff", "\\dfrac{3-\\psi_1}{5-\\psi_1}\\,b_{1,\\mathrm{eff}}"), f("ψ_1 = σ_cr,sl,1/σ_cr,p > 0", "\\psi_1=\\dfrac{\\sigma_{\\mathrm{cr,sl,1}}}{\\sigma_{\\mathrm{cr,p}}}>0")],
+        [f("b_2,sup", "b_{2,\\mathrm{sup}}"), f("2/(5 − ψ_2) · b_2", "\\dfrac{2}{5-\\psi_2}\\,b_2"), f("2/(5 − ψ_2) · b_2,eff", "\\dfrac{2}{5-\\psi_2}\\,b_{2,\\mathrm{eff}}"), f("ψ_2 = σ_2/σ_cr,sl,1 > 0", "\\psi_2=\\dfrac{\\sigma_2}{\\sigma_{\\mathrm{cr,sl,1}}}>0")],
+        [f("b_2,inf", "b_{2,\\mathrm{inf}}"), f("(3 − ψ_2)/(5 − ψ_2) · b_2", "\\dfrac{3-\\psi_2}{5-\\psi_2}\\,b_2"), f("(3 − ψ_2)/(5 − ψ_2) · b_2,eff", "\\dfrac{3-\\psi_2}{5-\\psi_2}\\,b_{2,\\mathrm{eff}}"), f("ψ_2 = σ_2/σ_cr,sl,1 > 0", "\\psi_2=\\dfrac{\\sigma_2}{\\sigma_{\\mathrm{cr,sl,1}}}>0")],
+        [f("b_3,sup", "b_{3,\\mathrm{sup}}"), f("0,4 · b_3c", "0{,}4\\,b_{3c}"), f("0,4 · b_3c,eff", "0{,}4\\,b_{3c,\\mathrm{eff}}"), f("ψ_3 = σ_3/σ_2 < 0", "\\psi_3=\\dfrac{\\sigma_3}{\\sigma_2}<0")],
     ],
     notes: [],
 };

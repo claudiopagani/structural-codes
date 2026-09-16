@@ -173,85 +173,140 @@
       "headers": [
         [
           {
-            "text": "Schema grafico dell’imperfezione locale"
+            "text": "Schema grafico\ndell’imperfezione\nlocale",
+            "align": "center"
           },
           {
-            "text": "Curva d’instabilità (v. Tab. C4.2.VIII NTC)"
+            "text": "Curva d’instabilità\n(v. Tab. C4.2.VIII\nNTC)",
+            "align": "center"
           },
           {
-            "text": "e0/L (analisi globale elastica)",
-            "latex": "e_0/L"
+            "text": "e0/L\n(analisi globale\nelastica)",
+            "inline": [
+              { "kind": "math", "value": "e0/L", "latex": "e_0/L" },
+              { "kind": "text", "value": "\n(analisi globale\nelastica)" }
+            ],
+            "align": "center"
           },
           {
-            "text": "e0/L (analisi globale plastica)",
-            "latex": "e_0/L"
+            "text": "e0/L\n(analisi globale\nplastica)",
+            "inline": [
+              { "kind": "math", "value": "e0/L", "latex": "e_0/L" },
+              { "kind": "text", "value": "\n(analisi globale\nplastica)" }
+            ],
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Schema grafico dell’imperfezione locale e0/L",
-            "rowSpan": 5
+            "text": "",
+            "rowSpan": 5,
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-i-imperfection.png",
+              "alt": "Schema grafico dell’imperfezione locale",
+              "sha256": "39ecbcf1c60f5f3a0075afb1b26c6e3613ab6afc2aac2ed22d82da69a71e6b06",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 75,
+                "y": 245,
+                "width": 170,
+                "height": 55
+              }
+            }
           },
           {
-            "text": "a₀"
+            "text": "a₀",
+            "inline": [{ "kind": "math", "value": "a₀", "latex": "a_0" }],
+            "align": "center"
           },
           {
-            "text": "1/350"
+            "text": "1/350",
+            "align": "center"
           },
           {
-            "text": "1/300"
+            "text": "1/300",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "a"
+            "text": "a",
+            "inline": [{ "kind": "math", "value": "a", "latex": "a" }],
+            "align": "center"
           },
           {
-            "text": "1/300"
+            "text": "1/300",
+            "align": "center"
           },
           {
-            "text": "1/250"
+            "text": "1/250",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "b"
+            "text": "b",
+            "inline": [{ "kind": "math", "value": "b", "latex": "b" }],
+            "align": "center"
           },
           {
-            "text": "1/250"
+            "text": "1/250",
+            "align": "center"
           },
           {
-            "text": "1/200"
+            "text": "1/200",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "c"
+            "text": "c",
+            "inline": [{ "kind": "math", "value": "c", "latex": "c" }],
+            "align": "center"
           },
           {
-            "text": "1/200"
+            "text": "1/200",
+            "align": "center"
           },
           {
-            "text": "1/150"
+            "text": "1/150",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "d"
+            "text": "d",
+            "inline": [{ "kind": "math", "value": "d", "latex": "d" }],
+            "align": "center"
           },
           {
-            "text": "1/150"
+            "text": "1/150",
+            "align": "center"
           },
           {
-            "text": "1/100"
+            "text": "1/100",
+            "align": "center"
           }
         ]
       ],
       "notes": [
         "La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale e0/L; la trascrizione tabellare richiede verifica umana cella per cella.",
         "La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio d’inerzia minimo del singolo profilo costituente l’asta."
+      ],
+      "notesInline": [
+        [
+          { "kind": "text", "value": "La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale " },
+          { "kind": "math", "value": "e0/L", "latex": "e_0/L" },
+          { "kind": "text", "value": "; la trascrizione tabellare richiede verifica umana cella per cella." }
+        ],
+        [
+          { "kind": "text", "value": "La distanza è misurata tra i centri di due collegamenti successivi e " },
+          { "kind": "math", "value": "imin", "latex": "i_{min}" },
+          { "kind": "text", "value": " è il raggio d’inerzia minimo del singolo profilo costituente l’asta." }
+        ]
       ],
       "captionInline": [
         {
@@ -300,11 +355,11 @@
       "region": {
         "coordinateSystem": "pdf-points-top-left",
         "x": 125,
-        "y": 105,
+        "y": 120,
         "width": 350,
-        "height": 105.333
+        "height": 88
       },
-      "sha256": "f8c2dd8e220c0cf308cf7bb986f248e0fbff65f32d5aabc4197866df29ae3fbb",
+      "sha256": "1ac59d593bf26a98f88cff319d73782eeb5550972bf0b3a7906042ff75916d0c",
       "captionInline": [
         {
           "kind": "strong",
@@ -326,12 +381,12 @@
       "imagePath": "figures/circ2019/figc4.2.3.png",
       "region": {
         "coordinateSystem": "pdf-points-top-left",
-        "x": 150,
-        "y": 320,
-        "width": 310,
-        "height": 84.333
+        "x": 165,
+        "y": 290,
+        "width": 290,
+        "height": 110
       },
-      "sha256": "316d1e55e4fc8b2aa6a7f06ef55c95e24a20d864a419ef431ef785e42a205f74",
+      "sha256": "d264c3cb2b9bba0fbf7d727aefd4a0e4e0e3ae7a2dfb858669f790217747d304",
       "captionInline": [
         {
           "kind": "strong",
@@ -380,12 +435,12 @@
       "imagePath": "figures/circ2019/figc4.2.5.png",
       "region": {
         "coordinateSystem": "pdf-points-top-left",
-        "x": 150,
-        "y": 510,
-        "width": 330,
-        "height": 85.667
+        "x": 175,
+        "y": 500,
+        "width": 280,
+        "height": 95
       },
-      "sha256": "6307b2dde2278214bf2ccd945ea19b99a941dfd3704af39edcc316a860aca5d5",
+      "sha256": "9d826af8be3799f23e712fbf2a3fe051da91d074e4dea053e3795e853fa32a98",
       "captionInline": [
         {
           "kind": "strong",

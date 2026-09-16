@@ -61,6 +61,10 @@ function block(number: string, suffix: string, kind: TextKind, page: number, nor
     return { blockId: `${uid(number)}#block-${suffix}`, kind, origin: "official" as const, text: { raw, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, raw, normalized, pageRegion()) };
 }
 
+function listBlock(number: string, suffix: string, page: number, normalized: string, inline: Inline[], raw = normalized) {
+    return { ...block(number, suffix, "paragraph", page, normalized, inline, raw), kind: "list-item" as const, listMarker: "none" as const };
+}
+
 function formulaBlock(number: string, suffix: string, formula: FormulaRow) {
     return { blockId: `${uid(number)}#block-${suffix}`, kind: "formula-ref", origin: "official" as const, assetId: formulaId(formula.number), evidence: evidence(formula.page, formula.raw, formula.raw, formula.region, true) };
 }
@@ -132,8 +136,9 @@ const formulaRows: FormulaRow[] = [
 
 const formulaByNumber = new Map(formulaRows.map((row) => [row.number, row]));
 const formula = (number: string) => formulaByNumber.get(number)!;
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, align: "center", ...(latex ? { latex } : {}), ...spans });
 const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
+const imageCell = (imagePath: string, alt: string, sha256: string, region: Region, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: "", align: "center", image: { imagePath, alt, sha256, region }, ...spans });
 
 const tableIVId = tableId("C4.2.IV");
 const tableVId = tableId("C4.2.V");
@@ -155,6 +160,7 @@ const tableIV = {
         [c("Sezioni cave"), f("αmz(1 + (λ̄y − 0,2)·NEdγM1/(χy·A·fyk)) ≤ αmz(1 + 0,8·NEdγM1/(χy·A·fyk))", "\\alpha_{mz}\\left(1+(\\bar{\\lambda}_y-0{,}2)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+0{,}8\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)")],
     ],
     notes: ["Per pressoflessione retta, My,Ed≠0, kzy = 0 (Mz,Ed=0)."],
+    notesInline: [[text("Per pressoflessione retta, "), math("My,Ed", "M_{y,Ed}"), text("≠0, "), math("kzy", "k_{zy}"), text(" = 0 ("), math("Mz,Ed", "M_{z,Ed}"), text("=0).")]],
 };
 
 const tableV = {
@@ -182,15 +188,15 @@ const tableVI = {
     caption: "Coefficienti correttivi del momento flettente per la verifica di stabilità a presso-flessione deviata",
     columnCount: 5,
     headers: [
-        [c("Diagramma del momento", undefined, { rowSpan: 2 }), c("Intervallo", undefined, { colSpan: 2, rowSpan: 2 }), c("Coefficienti αmy, αmz, αmLT", undefined, { colSpan: 2 })],
+        [c("Diagramma del momento", undefined, { rowSpan: 2 }), c("Intervallo", undefined, { colSpan: 2, rowSpan: 2 }), { text: "Coefficienti αmy, αmz, αmLT", inline: [text("Coefficienti "), math("αmy", "\\alpha_{my}"), text(", "), math("αmz", "\\alpha_{mz}"), text(", "), math("αmLT", "\\alpha_{mLT}")], colSpan: 2, align: "center" }],
         [c("Carico uniforme"), c("Carico concentrato")],
     ],
     rows: [
-        [f("Mh … ψMh", "M_h\\;\\cdots\\;\\psi M_h"), c("—"), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,6 + 0,4ψ ≥ 0,4", "0{,}6+0{,}4\\psi\\ge0{,}4", { colSpan: 2 })],
-        [f("Mh … Ms … ψMh; αs = Ms/Mh", "M_h\\;\\cdots\\;M_s\\;\\cdots\\;\\psi M_h;\\quad\\alpha_s=M_s/M_h", { rowSpan: 3 }), f("0 ≤ αs ≤ 1", "0\\le\\alpha_s\\le1", { rowSpan: 3 }), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,2 + 0,8αs ≥ 0,4", "0{,}2+0{,}8\\alpha_s\\ge0{,}4"), f("0,2 + 0,8αs ≥ 0,4", "0{,}2+0{,}8\\alpha_s\\ge0{,}4")],
+        [imageCell("figures/circ2019/table-c4.2-vi-moment-linear.png", "Diagramma del momento lineare", "38791ea48bd032993edfbb86636ebab72b567d9ea40f51ff733b234eb11103f5", reg(84, 153, 110, 20)), c("—"), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,6 + 0,4ψ ≥ 0,4", "0{,}6+0{,}4\\psi\\ge0{,}4", { colSpan: 2 })],
+        [imageCell("figures/circ2019/table-c4.2-vi-moment-sagging.png", "Diagramma del momento con αs", "5549ff389879506dd20e11ebf3659cf2ab607ec4ff5d44e5b05571698863389d", reg(83, 184, 112, 31), { rowSpan: 3 }), f("0 ≤ αs ≤ 1", "0\\le\\alpha_s\\le1", { rowSpan: 3 }), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,2 + 0,8αs ≥ 0,4", "0{,}2+0{,}8\\alpha_s\\ge0{,}4"), f("0,2 + 0,8αs ≥ 0,4", "0{,}2+0{,}8\\alpha_s\\ge0{,}4")],
         [f("0 ≤ ψ ≤ 1", "0\\le\\psi\\le1"), f("0,1 − 0,8αs ≥ 0,4", "0{,}1-0{,}8\\alpha_s\\ge0{,}4"), f("−0,8αs ≥ 0,4", "-0{,}8\\alpha_s\\ge0{,}4")],
         [f("−1 ≤ ψ ≤ 0", "-1\\le\\psi\\le0"), f("0,1(1 − ψ) − 0,8αs ≥ 0,4", "0{,}1(1-\\psi)-0{,}8\\alpha_s\\ge0{,}4"), f("0,2(−ψ) − 0,8αs ≥ 0,4", "0{,}2(-\\psi)-0{,}8\\alpha_s\\ge0{,}4")],
-        [f("Mh … Ms … ψMh; αh = Mh/Ms", "M_h\\;\\cdots\\;M_s\\;\\cdots\\;\\psi M_h;\\quad\\alpha_h=M_h/M_s", { rowSpan: 3 }), f("0 ≤ αh ≤ 1", "0\\le\\alpha_h\\le1", { rowSpan: 3 }), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,95 + 0,05αh", "0{,}95+0{,}05\\alpha_h"), f("0,90 + 0,10αh", "0{,}90+0{,}10\\alpha_h")],
+        [imageCell("figures/circ2019/table-c4.2-vi-moment-hogging.png", "Diagramma del momento con αh", "3fc0634fec6788d47141cfe1860abe19306f91662c505684900b13f68ecb7954", reg(83, 238, 112, 40), { rowSpan: 3 }), f("0 ≤ αh ≤ 1", "0\\le\\alpha_h\\le1", { rowSpan: 3 }), f("−1 ≤ ψ ≤ 1", "-1\\le\\psi\\le1"), f("0,95 + 0,05αh", "0{,}95+0{,}05\\alpha_h"), f("0,90 + 0,10αh", "0{,}90+0{,}10\\alpha_h")],
         [f("0 ≤ ψ ≤ 1", "0\\le\\psi\\le1"), f("0,95 + 0,05αh", "0{,}95+0{,}05\\alpha_h"), f("0,90 + 0,10αh", "0{,}90+0{,}10\\alpha_h")],
         [f("−1 ≤ ψ ≤ 0", "-1\\le\\psi\\le0"), f("0,95 + 0,05αh(1 + 2ψ)", "0{,}95+0{,}05\\alpha_h(1+2\\psi)"), f("0,90 + 0,10αh(1 + 2ψ)", "0{,}90+0{,}10\\alpha_h(1+2\\psi)")],
     ],
@@ -221,10 +227,10 @@ const units = [
         block("C4.2.4.1.3.3.1", "p1", "paragraph", 109, "Nel caso di aste prismatiche soggette a compressione NEd e a momenti flettenti My,Ed e Mz,Ed agenti nei due piani principali di inerzia, in presenza di vincoli che impediscono gli spostamenti torsionali, si dovrà controllare che risulti:", [text("Nel caso di aste prismatiche soggette a compressione "), math("NEd", "N_{Ed}"), text(" e a momenti flettenti "), math("My,Ed", "M_{y,Ed}"), text(" e "), math("Mz,Ed", "M_{z,Ed}"), text(" agenti nei due piani principali di inerzia, in presenza di vincoli che impediscono gli spostamenti torsionali, si dovrà controllare che risulti:")]),
         formulaBlock("C4.2.4.1.3.3.1", "formula-32", formula("C4.2.32")),
         block("C4.2.4.1.3.3.1", "where", "paragraph", 109, "dove:"),
-        block("C4.2.4.1.3.3.1", "def-chimin", "paragraph", 109, "χmin è il minimo fattore χ relativo all’inflessione intorno agli assi principali di inerzia;", [math("χmin", "\\chi_{min}"), text(" è il minimo fattore χ relativo all’inflessione intorno agli assi principali di inerzia;")]),
-        block("C4.2.4.1.3.3.1", "def-w", "paragraph", 109, "Wy e Wz sono i moduli resistenti elastici per le sezioni di classe 3 e i moduli resistenti plastici per le sezioni di classe 1 e 2,", [math("Wy", "W_y"), text(" e "), math("Wz", "W_z"), text(" sono i moduli resistenti elastici per le sezioni di classe 3 e i moduli resistenti plastici per le sezioni di classe 1 e 2,")]),
-        block("C4.2.4.1.3.3.1", "def-ncr", "paragraph", 109, "Ncr,y e Ncr,z sono i carichi critici euleriani relativi all’inflessione intorno agli assi principali di inerzia;", [math("Ncr,y", "N_{cr,y}"), text(" e "), math("Ncr,z", "N_{cr,z}"), text(" sono i carichi critici euleriani relativi all’inflessione intorno agli assi principali di inerzia;")]),
-        block("C4.2.4.1.3.3.1", "def-meq", "paragraph", 109, "Myeq,Ed e Mzeq,Ed sono i valori equivalenti dei momenti flettenti da considerare nella verifica.", [math("Myeq,Ed", "M_{y,eq,Ed}"), text(" e "), math("Mzeq,Ed", "M_{z,eq,Ed}"), text(" sono i valori equivalenti dei momenti flettenti da considerare nella verifica.")]),
+        listBlock("C4.2.4.1.3.3.1", "def-chimin", 109, "χmin è il minimo fattore χ relativo all’inflessione intorno agli assi principali di inerzia;", [math("χmin", "\\chi_{min}"), text(" è il minimo fattore χ relativo all’inflessione intorno agli assi principali di inerzia;")]),
+        listBlock("C4.2.4.1.3.3.1", "def-w", 109, "Wy e Wz sono i moduli resistenti elastici per le sezioni di classe 3 e i moduli resistenti plastici per le sezioni di classe 1 e 2,", [math("Wy e Wz", "W_y\\text{ e }W_z"), text(" sono i moduli resistenti elastici per le sezioni di classe 3 e i moduli resistenti plastici per le sezioni di classe 1 e 2,")]),
+        listBlock("C4.2.4.1.3.3.1", "def-ncr", 109, "Ncr,y e Ncr,z sono i carichi critici euleriani relativi all’inflessione intorno agli assi principali di inerzia;", [math("Ncr,y e Ncr,z", "N_{cr,y}\\text{ e }N_{cr,z}"), text(" sono i carichi critici euleriani relativi all’inflessione intorno agli assi principali di inerzia;")]),
+        listBlock("C4.2.4.1.3.3.1", "def-meq", 109, "Myeq,Ed e Mzeq,Ed sono i valori equivalenti dei momenti flettenti da considerare nella verifica.", [math("Myeq,Ed e Mzeq,Ed", "M_{y,eq,Ed}\\text{ e }M_{z,eq,Ed}"), text(" sono i valori equivalenti dei momenti flettenti da considerare nella verifica.")]),
         block("C4.2.4.1.3.3.1", "p2", "paragraph", 109, "Se il momento flettente varia lungo l’asta si assume, per ogni asse principale di inerzia,"),
         formulaBlock("C4.2.4.1.3.3.1", "formula-33", formula("C4.2.33")),
         block("C4.2.4.1.3.3.1", "p3", "paragraph", 109, "essendo Mm,Ed il valor medio del momento flettente, con la limitazione", [text("essendo "), math("Mm,Ed", "M_{m,Ed}"), text(" il valor medio del momento flettente, con la limitazione")]),
@@ -298,6 +304,9 @@ await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await mkdir(figureDirectory, { recursive: true });
 await copyFile(join(evidenceRenderDirectory, figureSource), join(figureDirectory, "figc4.2.11.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0112-x84-y153-w110-h20@4x.png"), join(figureDirectory, "table-c4.2-vi-moment-linear.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0112-x83-y184-w112-h31@4x.png"), join(figureDirectory, "table-c4.2-vi-moment-sagging.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0112-x83-y238-w112-h40@4x.png"), join(figureDirectory, "table-c4.2-vi-moment-hogging.png"));
 await Promise.all([
     ...units.map((unit) => writeFile(join(unitDirectory, `${unit.numbering.official.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8")),
     writeFile(join(assetDirectory, "C4.2-step2b.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8"),

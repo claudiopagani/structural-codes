@@ -110,16 +110,20 @@
       "headers": [
         [
           {
-            "text": "k"
+            "text": "k",
+            "align": "center"
           },
           {
-            "text": "Tipi di sezione"
+            "text": "Tipi di sezione",
+            "align": "center"
           },
           {
-            "text": "Sezioni di classe 3 e 4 (proprietà delle sezioni calcolate in campo elastico)"
+            "text": "Sezioni di classe 3 e 4 (proprietà delle sezioni calcolate in campo elastico)",
+            "align": "center"
           },
           {
-            "text": "Sezioni di classe 1 e 2 (proprietà delle sezioni calcolate in campo plastico)"
+            "text": "Sezioni di classe 1 e 2 (proprietà delle sezioni calcolate in campo plastico)",
+            "align": "center"
           }
         ]
       ],
@@ -127,79 +131,97 @@
         [
           {
             "text": "kyy",
+            "align": "center",
             "latex": "k_{yy}"
           },
           {
-            "text": "I, H, Sezioni cave"
+            "text": "I, H, Sezioni cave",
+            "align": "center"
           },
           {
             "text": "αmy(1 + 0,6·λ̄y·NEdγM1/(χy·A·fyk)) ≤ αmy(1 + 0,6·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{my}\\left(1+0{,}6\\,\\bar{\\lambda}_y\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{my}\\left(1+0{,}6\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           },
           {
             "text": "αmy(1 + (λ̄y − 0,2)·NEdγM1/(χy·A·fyk)) ≤ αmy(1 + 0,8·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{my}\\left(1+(\\bar{\\lambda}_y-0{,}2)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{my}\\left(1+0{,}8\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           }
         ],
         [
           {
             "text": "kyz",
+            "align": "center",
             "latex": "k_{yz}"
           },
           {
-            "text": "I, H, Sezioni cave"
+            "text": "I, H, Sezioni cave",
+            "align": "center"
           },
           {
             "text": "kzz",
+            "align": "center",
             "latex": "k_{zz}"
           },
           {
             "text": "0,6·kzz",
+            "align": "center",
             "latex": "0{,}6\\,k_{zz}"
           }
         ],
         [
           {
             "text": "kzy",
+            "align": "center",
             "latex": "k_{zy}"
           },
           {
-            "text": "I, H, Sezioni cave"
+            "text": "I, H, Sezioni cave",
+            "align": "center"
           },
           {
             "text": "0,8·kyy",
+            "align": "center",
             "latex": "0{,}8\\,k_{yy}"
           },
           {
             "text": "0,6·kyy",
+            "align": "center",
             "latex": "0{,}6\\,k_{yy}"
           }
         ],
         [
           {
             "text": "kzz",
+            "align": "center",
             "latex": "k_{zz}",
             "rowSpan": 2
           },
           {
-            "text": "I, H"
+            "text": "I, H",
+            "align": "center"
           },
           {
             "text": "αmz(1 + 0,6·λ̄y·NEdγM1/(χy·A·fyk)) ≤ αmz(1 + 0,6·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{mz}\\left(1+0{,}6\\,\\bar{\\lambda}_y\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+0{,}6\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)",
             "rowSpan": 2
           },
           {
             "text": "αmz(1 + (2λ̄y − 0,6)·NEdγM1/(χy·A·fyk)) ≤ αmz(1 + 1,4·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{mz}\\left(1+(2\\bar{\\lambda}_y-0{,}6)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+1{,}4\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           }
         ],
         [
           {
-            "text": "Sezioni cave"
+            "text": "Sezioni cave",
+            "align": "center"
           },
           {
             "text": "αmz(1 + (λ̄y − 0,2)·NEdγM1/(χy·A·fyk)) ≤ αmz(1 + 0,8·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{mz}\\left(1+(\\bar{\\lambda}_y-0{,}2)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+0{,}8\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           }
         ]
@@ -207,11 +229,40 @@
       "notes": [
         "Per pressoflessione retta, My,Ed≠0, kzy = 0 (Mz,Ed=0)."
       ],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Coefficienti di interazione per la verifica di stabilità a pressoflessione di elementi con modesta deformabilità torsionale"
-        }
+      "notesInline": [
+        [
+          {
+            "kind": "text",
+            "value": "Per pressoflessione retta, "
+          },
+          {
+            "kind": "math",
+            "value": "My,Ed",
+            "latex": "M_{y,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": "≠0, "
+          },
+          {
+            "kind": "math",
+            "value": "kzy",
+            "latex": "k_{zy}"
+          },
+          {
+            "kind": "text",
+            "value": " = 0 ("
+          },
+          {
+            "kind": "math",
+            "value": "Mz,Ed",
+            "latex": "M_{z,Ed}"
+          },
+          {
+            "kind": "text",
+            "value": "=0)."
+          }
+        ]
       ]
     },
     {
@@ -224,13 +275,16 @@
       "headers": [
         [
           {
-            "text": "k"
+            "text": "k",
+            "align": "center"
           },
           {
-            "text": "Sezioni di classe 3 e 4 (proprietà delle sezioni calcolate in campo elastico)"
+            "text": "Sezioni di classe 3 e 4 (proprietà delle sezioni calcolate in campo elastico)",
+            "align": "center"
           },
           {
-            "text": "Sezioni di classe 1 e 2 (proprietà delle sezioni calcolate in campo plastico)"
+            "text": "Sezioni di classe 1 e 2 (proprietà delle sezioni calcolate in campo plastico)",
+            "align": "center"
           }
         ]
       ],
@@ -238,67 +292,73 @@
         [
           {
             "text": "kyy",
+            "align": "center",
             "latex": "k_{yy}"
           },
           {
             "text": "αmy(1 + 0,6·λ̄y·NEdγM1/(χy·A·fyk)) ≤ αmy(1 + 0,6·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{my}\\left(1+0{,}6\\,\\bar{\\lambda}_y\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{my}\\left(1+0{,}6\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           },
           {
             "text": "αmy(1 + (λ̄y − 0,2)·NEdγM1/(χy·A·fyk)) ≤ αmy(1 + 0,8·NEdγM1/(χy·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{my}\\left(1+(\\bar{\\lambda}_y-0{,}2)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)\\le\\alpha_{my}\\left(1+0{,}8\\frac{N_{Ed}\\gamma_{M1}}{\\chi_yAf_{yk}}\\right)"
           }
         ],
         [
           {
             "text": "kyz",
+            "align": "center",
             "latex": "k_{yz}"
           },
           {
             "text": "kzz",
+            "align": "center",
             "latex": "k_{zz}"
           },
           {
             "text": "0,6·kzz",
+            "align": "center",
             "latex": "0{,}6\\,k_{zz}"
           }
         ],
         [
           {
             "text": "kzy",
+            "align": "center",
             "latex": "k_{zy}"
           },
           {
             "text": "(1 − 0,05·λ̄z/(αmLT − 0,25)·NEdγM1/(χz·A·fyk)) ≥ (1 − 0,05/(αmLT − 0,25)·NEdγM1/(χz·A·fyk))",
+            "align": "center",
             "latex": "\\left(1-\\frac{0{,}05\\,\\bar{\\lambda}_z}{\\alpha_{mLT}-0{,}25}\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)\\ge\\left(1-\\frac{0{,}05}{\\alpha_{mLT}-0{,}25}\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)"
           },
           {
             "text": "(1 − 0,1·λ̄z/(αmLT − 0,25)·NEdγM1/(χz·A·fyk)) ≥ (1 − 0,1/(αmLT − 0,25)·NEdγM1/(χz·A·fyk)) per λ̄z ≥ 0,4; kzy = 0,6 + λ̄z ≤ (1 − 0,1·λ̄z/(αmLT − 0,25)·NEdγM1/(χz·A·fyk)) per λ̄z < 0,4",
+            "align": "center",
             "latex": "\\begin{cases}\\left(1-\\frac{0{,}1\\,\\bar{\\lambda}_z}{\\alpha_{mLT}-0{,}25}\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)\\ge\\left(1-\\frac{0{,}1}{\\alpha_{mLT}-0{,}25}\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)&\\text{per }\\bar{\\lambda}_z\\ge0{,}4\\\\k_{zy}=0{,}6+\\bar{\\lambda}_z\\le\\left(1-\\frac{0{,}1\\,\\bar{\\lambda}_z}{\\alpha_{mLT}-0{,}25}\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)&\\text{per }\\bar{\\lambda}_z<0{,}4\\end{cases}"
           }
         ],
         [
           {
             "text": "kzz",
+            "align": "center",
             "latex": "k_{zz}"
           },
           {
             "text": "αmz(1 + 0,6·λ̄z·NEdγM1/(χz·A·fyk)) ≤ αmz(1 + 0,6·NEdγM1/(χz·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{mz}\\left(1+0{,}6\\,\\bar{\\lambda}_z\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+0{,}6\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)"
           },
           {
             "text": "αmz(1 + (2λ̄z − 0,6)·NEdγM1/(χz·A·fyk)) ≤ αmz(1 + 1,4·NEdγM1/(χz·A·fyk))",
+            "align": "center",
             "latex": "\\alpha_{mz}\\left(1+(2\\bar{\\lambda}_z-0{,}6)\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)\\le\\alpha_{mz}\\left(1+1{,}4\\frac{N_{Ed}\\gamma_{M1}}{\\chi_zAf_{yk}}\\right)"
           }
         ]
       ],
-      "notes": [],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Coefficienti d’interazione per la verifica di stabilità a pressoflessione di elementi deformabili torsionalmente"
-        }
-      ]
+      "notes": []
     },
     {
       "id": "urn:structural-codes:it:asset:table:circ2019:c4.2.vi",
@@ -311,158 +371,245 @@
         [
           {
             "text": "Diagramma del momento",
+            "align": "center",
             "rowSpan": 2
           },
           {
             "text": "Intervallo",
+            "align": "center",
             "colSpan": 2,
             "rowSpan": 2
           },
           {
             "text": "Coefficienti αmy, αmz, αmLT",
-            "colSpan": 2
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Coefficienti "
+              },
+              {
+                "kind": "math",
+                "value": "αmy",
+                "latex": "\\alpha_{my}"
+              },
+              {
+                "kind": "text",
+                "value": ", "
+              },
+              {
+                "kind": "math",
+                "value": "αmz",
+                "latex": "\\alpha_{mz}"
+              },
+              {
+                "kind": "text",
+                "value": ", "
+              },
+              {
+                "kind": "math",
+                "value": "αmLT",
+                "latex": "\\alpha_{mLT}"
+              }
+            ],
+            "colSpan": 2,
+            "align": "center"
           }
         ],
         [
           {
-            "text": "Carico uniforme"
+            "text": "Carico uniforme",
+            "align": "center"
           },
           {
-            "text": "Carico concentrato"
+            "text": "Carico concentrato",
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Mh … ψMh",
-            "latex": "M_h\\;\\cdots\\;\\psi M_h"
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-vi-moment-linear.png",
+              "alt": "Diagramma del momento lineare",
+              "sha256": "38791ea48bd032993edfbb86636ebab72b567d9ea40f51ff733b234eb11103f5",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 84,
+                "y": 153,
+                "width": 110,
+                "height": 20
+              }
+            }
           },
           {
-            "text": "—"
+            "text": "—",
+            "align": "center"
           },
           {
             "text": "−1 ≤ ψ ≤ 1",
+            "align": "center",
             "latex": "-1\\le\\psi\\le1"
           },
           {
             "text": "0,6 + 0,4ψ ≥ 0,4",
+            "align": "center",
             "latex": "0{,}6+0{,}4\\psi\\ge0{,}4",
             "colSpan": 2
           }
         ],
         [
           {
-            "text": "Mh … Ms … ψMh; αs = Ms/Mh",
-            "latex": "M_h\\;\\cdots\\;M_s\\;\\cdots\\;\\psi M_h;\\quad\\alpha_s=M_s/M_h",
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-vi-moment-sagging.png",
+              "alt": "Diagramma del momento con αs",
+              "sha256": "5549ff389879506dd20e11ebf3659cf2ab607ec4ff5d44e5b05571698863389d",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 83,
+                "y": 184,
+                "width": 112,
+                "height": 31
+              }
+            },
             "rowSpan": 3
           },
           {
             "text": "0 ≤ αs ≤ 1",
+            "align": "center",
             "latex": "0\\le\\alpha_s\\le1",
             "rowSpan": 3
           },
           {
             "text": "−1 ≤ ψ ≤ 1",
+            "align": "center",
             "latex": "-1\\le\\psi\\le1"
           },
           {
             "text": "0,2 + 0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "0{,}2+0{,}8\\alpha_s\\ge0{,}4"
           },
           {
             "text": "0,2 + 0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "0{,}2+0{,}8\\alpha_s\\ge0{,}4"
           }
         ],
         [
           {
             "text": "0 ≤ ψ ≤ 1",
+            "align": "center",
             "latex": "0\\le\\psi\\le1"
           },
           {
             "text": "0,1 − 0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "0{,}1-0{,}8\\alpha_s\\ge0{,}4"
           },
           {
             "text": "−0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "-0{,}8\\alpha_s\\ge0{,}4"
           }
         ],
         [
           {
             "text": "−1 ≤ ψ ≤ 0",
+            "align": "center",
             "latex": "-1\\le\\psi\\le0"
           },
           {
             "text": "0,1(1 − ψ) − 0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "0{,}1(1-\\psi)-0{,}8\\alpha_s\\ge0{,}4"
           },
           {
             "text": "0,2(−ψ) − 0,8αs ≥ 0,4",
+            "align": "center",
             "latex": "0{,}2(-\\psi)-0{,}8\\alpha_s\\ge0{,}4"
           }
         ],
         [
           {
-            "text": "Mh … Ms … ψMh; αh = Mh/Ms",
-            "latex": "M_h\\;\\cdots\\;M_s\\;\\cdots\\;\\psi M_h;\\quad\\alpha_h=M_h/M_s",
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-vi-moment-hogging.png",
+              "alt": "Diagramma del momento con αh",
+              "sha256": "3fc0634fec6788d47141cfe1860abe19306f91662c505684900b13f68ecb7954",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 83,
+                "y": 238,
+                "width": 112,
+                "height": 40
+              }
+            },
             "rowSpan": 3
           },
           {
             "text": "0 ≤ αh ≤ 1",
+            "align": "center",
             "latex": "0\\le\\alpha_h\\le1",
             "rowSpan": 3
           },
           {
             "text": "−1 ≤ ψ ≤ 1",
+            "align": "center",
             "latex": "-1\\le\\psi\\le1"
           },
           {
             "text": "0,95 + 0,05αh",
+            "align": "center",
             "latex": "0{,}95+0{,}05\\alpha_h"
           },
           {
             "text": "0,90 + 0,10αh",
+            "align": "center",
             "latex": "0{,}90+0{,}10\\alpha_h"
           }
         ],
         [
           {
             "text": "0 ≤ ψ ≤ 1",
+            "align": "center",
             "latex": "0\\le\\psi\\le1"
           },
           {
             "text": "0,95 + 0,05αh",
+            "align": "center",
             "latex": "0{,}95+0{,}05\\alpha_h"
           },
           {
             "text": "0,90 + 0,10αh",
+            "align": "center",
             "latex": "0{,}90+0{,}10\\alpha_h"
           }
         ],
         [
           {
             "text": "−1 ≤ ψ ≤ 0",
+            "align": "center",
             "latex": "-1\\le\\psi\\le0"
           },
           {
             "text": "0,95 + 0,05αh(1 + 2ψ)",
+            "align": "center",
             "latex": "0{,}95+0{,}05\\alpha_h(1+2\\psi)"
           },
           {
             "text": "0,90 + 0,10αh(1 + 2ψ)",
+            "align": "center",
             "latex": "0{,}90+0{,}10\\alpha_h(1+2\\psi)"
           }
         ]
       ],
-      "notes": [],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Coefficienti correttivi del momento flettente per la verifica di stabilità a presso-flessione deviata"
-        }
-      ]
+      "notes": []
     }
   ],
   "figures": [
@@ -479,19 +626,9 @@
         "x": 205,
         "y": 145,
         "width": 205,
-        "height": 34
+        "height": 47
       },
-      "sha256": "df7618b387b999b009841b4b595e4ef547f439579863dee307b486d263461b53",
-      "captionInline": [
-        {
-          "kind": "strong",
-          "value": "Figura C4.2.11"
-        },
-        {
-          "kind": "em",
-          "value": " - Trave soggetta a momenti d’estremità"
-        }
-      ]
+      "sha256": "e270c68cd1a0160f4183624e40c0d4f175197270c137f689aba7fad01967e25f"
     }
   ]
 }

@@ -70,7 +70,7 @@ test("C4.2 pagine 104-113 conserva tutti i punti di moltiplicazione ufficiali", 
                 pdfPage >= 104 && pdfPage <= 113,
         ),
     );
-    assert.equal(formulas.length, 39);
+    assert.equal(formulas.length, 40);
     const expectedProducts = new Map<string, number>([
         ["C4.2.13", 1], ["C4.2.17", 2], ["C4.2.19", 1],
         ["C4.2.20", 5], ["C4.2.22", 4], ["C4.2.23", 1],

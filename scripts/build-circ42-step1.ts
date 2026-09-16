@@ -170,27 +170,31 @@ const tableI = {
     caption: "Valori massimi delle imperfezioni locali",
     columnCount: 4,
     headers: [[
-        { text: "Schema grafico dell’imperfezione locale" },
-        { text: "Curva d’instabilità (v. Tab. C4.2.VIII NTC)" },
-        { text: "e0/L (analisi globale elastica)", latex: "e_0/L" },
-        { text: "e0/L (analisi globale plastica)", latex: "e_0/L" },
+        { text: "Schema grafico\ndell’imperfezione\nlocale", align: "center" },
+        { text: "Curva d’instabilità\n(v. Tab. C4.2.VIII\nNTC)", align: "center" },
+        { text: "e0/L\n(analisi globale\nelastica)", inline: [math("e0/L", "e_0/L"), text("\n(analisi globale\nelastica)")], align: "center" },
+        { text: "e0/L\n(analisi globale\nplastica)", inline: [math("e0/L", "e_0/L"), text("\n(analisi globale\nplastica)")], align: "center" },
     ]],
     rows: [
-        [{ text: "Schema grafico dell’imperfezione locale e0/L", rowSpan: 5 }, { text: "a₀" }, { text: "1/350" }, { text: "1/300" }],
-        [{ text: "a" }, { text: "1/300" }, { text: "1/250" }],
-        [{ text: "b" }, { text: "1/250" }, { text: "1/200" }],
-        [{ text: "c" }, { text: "1/200" }, { text: "1/150" }],
-        [{ text: "d" }, { text: "1/150" }, { text: "1/100" }],
+        [{ text: "", rowSpan: 5, align: "center", image: { imagePath: "figures/circ2019/table-c4.2-i-imperfection.png", alt: "Schema grafico dell’imperfezione locale", sha256: "39ecbcf1c60f5f3a0075afb1b26c6e3613ab6afc2aac2ed22d82da69a71e6b06", region: reg(75, 245, 170, 55) } }, { text: "a₀", inline: [math("a₀", "a_0")], align: "center" }, { text: "1/350", align: "center" }, { text: "1/300", align: "center" }],
+        [{ text: "a", inline: [math("a", "a")], align: "center" }, { text: "1/300", align: "center" }, { text: "1/250", align: "center" }],
+        [{ text: "b", inline: [math("b", "b")], align: "center" }, { text: "1/250", align: "center" }, { text: "1/200", align: "center" }],
+        [{ text: "c", inline: [math("c", "c")], align: "center" }, { text: "1/200", align: "center" }, { text: "1/150", align: "center" }],
+        [{ text: "d", inline: [math("d", "d")], align: "center" }, { text: "1/150", align: "center" }, { text: "1/100", align: "center" }],
     ],
     notes: ["La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale e0/L; la trascrizione tabellare richiede verifica umana cella per cella.", "La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio d’inerzia minimo del singolo profilo costituente l’asta."],
+    notesInline: [
+        [text("La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale "), math("e0/L", "e_0/L"), text("; la trascrizione tabellare richiede verifica umana cella per cella.")],
+        [text("La distanza è misurata tra i centri di due collegamenti successivi e "), math("imin", "i_{min}"), text(" è il raggio d’inerzia minimo del singolo profilo costituente l’asta.")],
+    ],
 };
 
 const figureRows = [
     { number: "C4.2.1", unit: "C4.2.3.4", page: 102, caption: "Configurazione deformata di strutture a telaio sotto azioni orizzontali e verticali", alt: "Configurazione deformata di strutture a telaio sotto azioni orizzontali e verticali, con h, HEd, VEd e δHEd.", region: reg(150, 390, 340, 90), source: "page-0102-x150-y390-w340-h90@3x.png", sha256: "f35664adcde38f7b01b6ff727a717e98a77e5e911a825582ecd563ee96f8884b" },
-    { number: "C4.2.2", unit: "C4.2.3.5", page: 103, caption: "Imperfezioni globali equivalenti", alt: "Imperfezioni globali equivalenti φ in un telaio e in un sistema controventato.", region: reg(125, 105, 350, 125), source: "page-0103-x125-y105-w350-h125@3x.png", sha256: "e51b5fbc860e3168306394ac7fc4b5272bd2bdaa208f136bd60b6fa1cacfb34c" },
-    { number: "C4.2.3", unit: "C4.2.3.5", page: 103, caption: "Effetti delle imperfezioni sugli orizzontamenti", alt: "Effetti delle imperfezioni sugli orizzontamenti, con forze H_i e N_Ed.", region: reg(150, 320, 310, 125), source: "page-0103-x150-y320-w310-h125@3x.png", sha256: "85fe0d55ceff497bf6cec6432bab43551734a857fbb846c996c70b38be54842f" },
+    { number: "C4.2.2", unit: "C4.2.3.5", page: 103, caption: "Imperfezioni globali equivalenti", alt: "Imperfezioni globali equivalenti φ in un telaio e in un sistema controventato.", region: reg(125, 120, 350, 88), source: "page-0103-x125-y120-w350-h88@3x.png", sha256: "1ac59d593bf26a98f88cff319d73782eeb5550972bf0b3a7906042ff75916d0c" },
+    { number: "C4.2.3", unit: "C4.2.3.5", page: 103, caption: "Effetti delle imperfezioni sugli orizzontamenti", alt: "Effetti delle imperfezioni sugli orizzontamenti, con forze H_i e N_Ed.", region: reg(165, 290, 290, 110), source: "page-0103-x165-y290-w290-h110@3x.png", sha256: "d264c3cb2b9bba0fbf7d727aefd4a0e4e0e3ae7a2dfb858669f790217747d304" },
     { number: "C4.2.4", unit: "C4.2.3.5", page: 103, caption: "Sistemi di forze equivalenti alle imperfezioni", alt: "Sistemi di forze equivalenti alle imperfezioni globali e locali.", region: reg(120, 610, 380, 125), source: "page-0103-x120-y610-w380-h125@3x.png", sha256: "7d6f1d3bee2901e9c010e5634e68cf81cfa9d45f91156754d7a858a08129a25c" },
-    { number: "C4.2.5", unit: "C4.2.3.5", page: 104, caption: "Forze equivalenti in sistemi di controvento", alt: "Forze equivalenti in un sistema di controvento, con e0, qd, NEd e L.", region: reg(150, 510, 330, 120), source: "page-0104-x150-y510-w330-h120@3x.png", sha256: "5efd28e9fcb2cbe4a19e299d1eae8b5905eef13c42c2de643c7ac317de281afa" },
+    { number: "C4.2.5", unit: "C4.2.3.5", page: 104, caption: "Forze equivalenti in sistemi di controvento", alt: "Forze equivalenti in un sistema di controvento, con e0, qd, NEd e L.", region: reg(175, 500, 280, 95), source: "page-0104-x175-y500-w280-h95@3x.png", sha256: "9d826af8be3799f23e712fbf2a3fe051da91d074e4dea053e3795e853fa32a98" },
     { number: "C4.2.6", unit: "C4.2.3.5", page: 105, caption: "Forze equivalenti nelle giunzioni di elementi o piattabande compresse", alt: "Forze equivalenti nelle giunzioni di elementi o piattabande compresse, con φNEd e 2φNEd.", region: reg(150, 80, 330, 175), source: "page-0105-x150-y80-w330-h175@3x.png", sha256: "d2c9917b0f0cd5520dec6dc8e0e7503530e681c2e9e4f1b110f7272ca987dcc0" },
 ];
 
@@ -405,6 +409,7 @@ await mkdir(figureDirectory, { recursive: true });
 for (const row of figureRows) {
     await copyFile(join(evidenceRenderDirectory, row.source), join(figureDirectory, `fig${row.number.toLowerCase()}.png`));
 }
+await copyFile(join(evidenceRenderDirectory, "page-0104-x75-y245-w170-h55@4x.png"), join(figureDirectory, "table-c4.2-i-imperfection.png"));
 await Promise.all([
     ...units.map((unit) => writeFile(join(unitDirectory, `${unit.numbering.official.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8")),
     writeFile(join(assetDirectory, "C4.2-step1.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8"),

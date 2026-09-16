@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sha256OfText } from "../src/lib/hash.ts";
@@ -6,6 +6,8 @@ import { sha256OfText } from "../src/lib/hash.ts";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const unitDirectory = join(root, "corpus", "units", "circ2019");
 const assetDirectory = join(root, "corpus", "assets", "circ2019");
+const figureDirectory = join(root, "corpus", "assets", "figures", "circ2019");
+const evidenceRenderDirectory = join(root, "evidence", "circ-7-2019", "renders");
 const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
@@ -117,8 +119,9 @@ const formulaRows: FormulaRow[] = [
 
 const formulaByNumber = new Map(formulaRows.map((row) => [row.number, row]));
 const formula = (number: string) => formulaByNumber.get(number)!;
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, align: "center", ...(latex ? { latex } : {}), ...spans });
 const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
+const imageCell = (imagePath: string, alt: string, sha256: string, region: Region, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: "", align: "center", image: { imagePath, alt, sha256, region }, ...spans });
 
 const tableVIIIId = tableId("C4.2.VIII");
 const tableVIII = {
@@ -128,11 +131,11 @@ const tableVIII = {
     pdfPage: 115,
     caption: "Larghezza efficace di pannelli compressi con entrambi i bordi longitudinali irrigiditi",
     columnCount: 7,
-    headers: [[c("Distribuzione delle tensioni", undefined, { colSpan: 3 }), c("Larghezza efficace del pannello", undefined, { colSpan: 4 })]],
+    headers: [[c("Distribuzione delle tensioni", undefined, { colSpan: 4 }), c("Larghezza efficace del pannello", undefined, { colSpan: 3 })]],
     rows: [
-        [f("Diagramma: σ₁ = σ₂; pannello uniformemente compresso, con b̄, b_e1 e b_e2", "\\text{Diagramma: }\\sigma_1=\\sigma_2;\\quad\\bar b,\\ b_{e1},\\ b_{e2}", { colSpan: 3 }), f("ψ = σ₂/σ₁ = 1; b_eff = ρ·b̄; b_e1 = 0,5·b_eff; b_e2 = 0,5·b_eff", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}=1\\\\b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=0{,}5\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}5\\,b_{\\mathrm{eff}}\\end{gathered}", { colSpan: 4 })],
-        [f("Diagramma: distribuzione lineare decrescente da σ₁ a σ₂, con 1 > ψ = σ₂/σ₁ > 0", "\\text{Diagramma: distribuzione lineare; }1>\\psi=\\frac{\\sigma_2}{\\sigma_1}>0", { colSpan: 3 }), f("b_eff = ρ·b̄; b_e1 = 2/(5−ψ)·b_eff; b_e2 = b_eff − b_e1", "\\begin{gathered}b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=\\frac{2}{5-\\psi}b_{\\mathrm{eff}}\\quad b_{e2}=b_{\\mathrm{eff}}-b_{e1}\\end{gathered}", { colSpan: 4 })],
-        [f("Diagramma: distribuzione lineare da σ₁ compressiva a σ₂ con ψ < 0; b_c e b_t", "\\text{Diagramma: }\\sigma_1\\text{ compressiva, }\\sigma_2\\text{ con }\\psi<0;\\quad b_c,b_t", { colSpan: 3 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b̄/(1−ψ); b_e1 = 0,4·b_eff; b_e2 = 0,6·b_eff", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,\\frac{\\bar b}{1-\\psi}\\\\b_{e1}=0{,}4\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}6\\,b_{\\mathrm{eff}}\\end{gathered}", { colSpan: 4 })],
+        [imageCell("figures/circ2019/table-c4.2-viii-stress-uniform.png", "Distribuzione uniforme delle tensioni", "26af20b47df0f02340d7ced133c7d95d5963495f16c3a82c45ccd1537120e946", reg(95, 445, 150, 50), { colSpan: 4 }), f("ψ = σ₂/σ₁ = 1; b_eff = ρ·b̄; b_e1 = 0,5·b_eff; b_e2 = 0,5·b_eff", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}=1\\\\b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=0{,}5\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}5\\,b_{\\mathrm{eff}}\\end{gathered}", { colSpan: 3 })],
+        [imageCell("figures/circ2019/table-c4.2-viii-stress-positive.png", "Distribuzione lineare decrescente delle tensioni", "b2cb6ada30d245191aa7d49f45f12c29d54e6399a4d10e502b4def5f42afb6bf", reg(95, 500, 150, 52), { colSpan: 4 }), f("b_eff = ρ·b̄; b_e1 = 2/(5−ψ)·b_eff; b_e2 = b_eff − b_e1", "\\begin{gathered}b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=\\frac{2}{5-\\psi}b_{\\mathrm{eff}}\\quad b_{e2}=b_{\\mathrm{eff}}-b_{e1}\\end{gathered}", { colSpan: 3 })],
+        [imageCell("figures/circ2019/table-c4.2-viii-stress-negative.png", "Distribuzione lineare con tensione di trazione", "daf3768949783e5e8ec62b02650aa6b43cd7c3a3e6af780f87acf48a0b1e9805", reg(95, 565, 150, 52), { colSpan: 4 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b̄/(1−ψ); b_e1 = 0,4·b_eff; b_e2 = 0,6·b_eff", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,\\frac{\\bar b}{1-\\psi}\\\\b_{e1}=0{,}4\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}6\\,b_{\\mathrm{eff}}\\end{gathered}", { colSpan: 3 })],
         [f("ψ = σ₂/σ₁", "\\psi=\\sigma_2/\\sigma_1"), f("1,00", "1{,}00"), f("1 > ψ > 0", "1>\\psi>0"), f("0", "0"), f("0 > ψ > −1", "0>\\psi>-1"), f("−1", "-1"), f("−1 > ψ > −3", "-1>\\psi>-3")],
         [f("fattore k_σ", "\\text{fattore }k_\\sigma"), f("4,00", "4{,}00"), f("8,2/(1,05 + ψ)", "\\frac{8{,}2}{1{,}05+\\psi}"), f("7,81", "7{,}81"), f("7,81 − 6,29ψ + 9,78ψ²", "7{,}81-6{,}29\\psi+9{,}78\\psi^2"), f("23,9", "23{,}9"), f("5,98(1 − ψ)²", "5{,}98(1-\\psi)^2")],
     ],
@@ -151,13 +154,13 @@ const tableIX = {
         [c("Distribuzione delle tensioni", undefined, { colSpan: 3 }), c("Larghezza efficace del pannello", undefined, { colSpan: 3 })],
     ],
     rows: [
-        [f("Diagramma: bordo longitudinale irrigidito a sinistra; σ₁, σ₂, c e b_eff", "\\text{Diagramma: bordo irrigidito a sinistra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}", { colSpan: 3 }), f("1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c", "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}", { colSpan: 3 })],
-        [f("Diagramma: bordo longitudinale irrigidito a sinistra; distribuzione con ψ < 0, b_c e b_t", "\\text{Diagramma: bordo irrigidito a sinistra; }\\psi<0,\\quad b_c,b_t", { colSpan: 3 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}", { colSpan: 3 })],
+        [imageCell("figures/circ2019/table-c4.2-ix-stress-left-positive.png", "Distribuzione delle tensioni con irrigidimento a sinistra", "769f4e278a393c9cd92c1c4d2b26ce225939c4502bed95d14787d11e24f51083", reg(95, 130, 150, 45), { colSpan: 3 }), f("1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c", "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}", { colSpan: 3 })],
+        [imageCell("figures/circ2019/table-c4.2-ix-stress-left-negative.png", "Distribuzione delle tensioni con irrigidimento a sinistra", "877aeb525b0080bdb1117e8ac763e8f898ffe0b882b4f31dee6cea8cca0ec4a1", reg(95, 180, 150, 53), { colSpan: 3 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}", { colSpan: 3 })],
         [f("ψ = σ₂/σ₁", "\\psi=\\sigma_2/\\sigma_1"), f("1,00", "1{,}00"), f("1 > ψ > 0", "1>\\psi>0"), f("0", "0"), f("0 > ψ > −1", "0>\\psi>-1"), f("−1", "-1")],
         [f("fattore k_σ", "\\text{fattore }k_\\sigma"), f("0,43", "0{,}43"), f("0,578/(0,34 + ψ)", "\\frac{0{,}578}{0{,}34+\\psi}"), f("1,70", "1{,}70"), f("1,7 − 5ψ + 17,1ψ²", "1{,}7-5\\psi+17{,}1\\psi^2"), f("23,8", "23{,}8")],
-        [c("Distribuzione delle tensioni", undefined, { colSpan: 3 }), c("Larghezza efficace del pannello", undefined, { colSpan: 3 })],
-        [f("Diagramma: bordo longitudinale irrigidito a destra; σ₁, σ₂, c e b_eff", "\\text{Diagramma: bordo irrigidito a destra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}", { colSpan: 3 }), f("1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c", "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}", { colSpan: 3 })],
-        [f("Diagramma: bordo longitudinale irrigidito a destra; distribuzione con ψ < 0, b_c e b_t", "\\text{Diagramma: bordo irrigidito a destra; }\\psi<0,\\quad b_c,b_t", { colSpan: 3 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}", { colSpan: 3 })],
+        [{ text: "Distribuzione delle tensioni", colSpan: 3, align: "center", strong: true }, { text: "Larghezza efficace del pannello", colSpan: 3, align: "center", strong: true }],
+        [imageCell("figures/circ2019/table-c4.2-ix-stress-right-positive.png", "Distribuzione delle tensioni con irrigidimento a destra", "4264c75759ff3f8ff4f0ac3534840a308185ede16bd909733d5aa3c166ffd5fd", reg(95, 280, 150, 53), { colSpan: 3 }), f("1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c", "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}", { colSpan: 3 })],
+        [imageCell("figures/circ2019/table-c4.2-ix-stress-right-negative.png", "Distribuzione delle tensioni con irrigidimento a destra", "748cb3bb8164feed64db1469532d6d8c9bae795fd15bffdb30f02a5593f8f056", reg(95, 335, 150, 61), { colSpan: 3 }), f("ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)", "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}", { colSpan: 3 })],
         [f("ψ = σ₂/σ₁", "\\psi=\\sigma_2/\\sigma_1"), f("1 ≥ ψ ≥ −3", "1\\ge\\psi\\ge-3", { colSpan: 5 })],
         [f("fattore k_σ", "\\text{fattore }k_\\sigma"), f("0,57 − 0,21ψ + 0,07ψ²", "0{,}57-0{,}21\\psi+0{,}07\\psi^2", { colSpan: 5 })],
     ],
@@ -206,6 +209,14 @@ const manifest = {
 
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
+await mkdir(figureDirectory, { recursive: true });
+await copyFile(join(evidenceRenderDirectory, "page-0115-x95-y450-w150-h50@4x.png"), join(figureDirectory, "table-c4.2-viii-stress-uniform.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0115-x95-y505-w150-h52@4x.png"), join(figureDirectory, "table-c4.2-viii-stress-positive.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0115-x95-y565-w150-h52@4x.png"), join(figureDirectory, "table-c4.2-viii-stress-negative.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0116-x95-y130-w150-h45@4x.png"), join(figureDirectory, "table-c4.2-ix-stress-left-positive.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0116-x95-y180-w150-h53@4x.png"), join(figureDirectory, "table-c4.2-ix-stress-left-negative.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0116-x95-y280-w150-h53@4x.png"), join(figureDirectory, "table-c4.2-ix-stress-right-positive.png"));
+await copyFile(join(evidenceRenderDirectory, "page-0116-x95-y335-w150-h61@4x.png"), join(figureDirectory, "table-c4.2-ix-stress-right-negative.png"));
 await Promise.all([
     ...units.map((unit) => writeFile(join(unitDirectory, `${unit.numbering.official.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8")),
     writeFile(join(assetDirectory, "C4.2-step2d.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8"),

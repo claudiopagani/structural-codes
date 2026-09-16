@@ -17,8 +17,8 @@ const createdAt = "2026-08-09T00:00:00Z";
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
 type FormulaRow = { number: string; page: number; latex: string; raw: string; region: Region };
-type BlockKind = "heading" | "paragraph" | "formula-ref" | "figure-ref";
-type GeneratedBlock = { blockId: string; kind: BlockKind; origin: "official"; text?: { raw: string; normalized: string; normalizationVersion: string; inline: Inline[] }; evidence: { rawSha256: string; normalizedSha256: string; [key: string]: unknown }; assetId?: string };
+type BlockKind = "heading" | "paragraph" | "list-item" | "formula-ref" | "figure-ref";
+type GeneratedBlock = { blockId: string; kind: BlockKind; origin: "official"; listMarker?: "none"; text?: { raw: string; normalized: string; normalizationVersion: string; inline: Inline[] }; evidence: { rawSha256: string; normalizedSha256: string; [key: string]: unknown }; assetId?: string };
 
 const uid = (number: string) => "urn:structural-codes:it:unit:circ2019:" + number.toLowerCase();
 const formulaId = (number: string) => "urn:structural-codes:it:asset:formula:circ2019:" + number.toLowerCase();
@@ -46,7 +46,7 @@ function evidence(page: number, raw: string, normalized: string, region: Region,
 }
 
 function block(number: string, suffix: string, kind: Exclude<BlockKind, "formula-ref" | "figure-ref">, page: number, normalized: string, inline: Inline[], region: Region): GeneratedBlock {
-  return { blockId: uid(number) + "#block-" + suffix, kind, origin: "official", text: { raw: normalized, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, normalized, normalized, region) };
+  return { blockId: uid(number) + "#block-" + suffix, kind, origin: "official", ...(kind === "list-item" ? { listMarker: "none" as const } : {}), text: { raw: normalized, normalized, normalizationVersion: profile, inline }, evidence: evidence(page, normalized, normalized, region) };
 }
 
 function formulaBlock(number: string, suffix: string, formula: FormulaRow): GeneratedBlock {
@@ -67,8 +67,8 @@ const formula132: FormulaRow = { number: "C4.2.132", page: 143, latex: "e_1\\ge1
 
 const figure34 = figureId("C4.2.34");
 const figure35 = figureId("C4.2.35");
-const figure34Region = reg(170, 225, 270, 98);
-const figure35Region = reg(170, 315, 270, 195);
+const figure34Region = reg(170, 225, 270, 75);
+const figure35Region = reg(170, 315, 270, 185);
 
 const unit7 = "C4.2.12.1.7";
 const unit71 = "C4.2.12.1.7.1";
@@ -80,16 +80,16 @@ const blocks7: GeneratedBlock[] = [
   block(unit7, "p2", "paragraph", 141, "Poiché nelle unioni che interessano i profilati formati a freddo e le lamiere grecate possono intervenire elementi strutturali aventi spessori inferiori a 4 mm (minimo ammesso nelle NTC per gli elementi delle strutture di acciaio) sono necessari alcuni adattamenti ai piccoli spessori delle indicazioni delle Norme Tecniche anche per l’impiego dei bulloni e delle saldature.", [text("Poiché nelle unioni che interessano i profilati formati a freddo e le lamiere grecate possono intervenire elementi strutturali aventi spessori inferiori a 4 mm (minimo ammesso nelle NTC per gli elementi delle strutture di acciaio) sono necessari alcuni adattamenti ai piccoli spessori delle indicazioni delle Norme Tecniche anche per l’impiego dei bulloni e delle saldature.")], reg(73.9, 620, 450, 40)),
   block(unit7, "p3", "paragraph", 141, "Data la varietà delle soluzioni tecnologiche disponibili per i mezzi di unione quali viti autofilettanti o automaschianti, chiodi sparati, chiodi ciechi, bottoni di saldatura, alcune grandezze della resistenza delle unioni sono basate su attendibili risultati sperimentali, disponibili in letteratura, altre sono invece da determinarsi sperimentalmente (con procedure EOTA) per le applicazioni specifiche.", [text("Data la varietà delle soluzioni tecnologiche disponibili per i mezzi di unione quali viti autofilettanti o automaschianti, chiodi sparati, chiodi ciechi, bottoni di saldatura, alcune grandezze della resistenza delle unioni sono basate su attendibili risultati sperimentali, disponibili in letteratura, altre sono invece da determinarsi sperimentalmente (con procedure EOTA) per le applicazioni specifiche.")], reg(73.9, 665, 450, 45)),
   block(unit7, "symbols-heading", "heading", 141, "Simboli adottati nel seguito", [text("Simboli adottati nel seguito")], reg(73.9, 715, 450, 20)),
-  block(unit7, "symbol-t", "paragraph", 141, "t — spessore minimo delle membrature interessate nel collegamento", [math("t", "t"), text(" — spessore minimo delle membrature interessate nel collegamento")], reg(73.9, 735, 450, 20)),
-  block(unit7, "symbol-t1", "paragraph", 141, "t_1 — spessore massimo delle membrature interessate nel collegamento", [math("t_1", "t_1"), text(" — spessore massimo delle membrature interessate nel collegamento")], reg(73.9, 755, 450, 20)),
-  block(unit7, "symbol-tstar", "paragraph", 142, "t* — spessore del materiale base nel quale sono ancorate le viti autofilettanti oppure i bottoni di saldatura", [math("t*", "t^*"), text(" — spessore del materiale base nel quale sono ancorate le viti autofilettanti oppure i bottoni di saldatura")], reg(73.9, 80, 450, 20)),
-  block(unit7, "symbol-d0", "paragraph", 142, "d_0 — diametro del foro per il mezzo di collegamento (Figura C4.2.34)", [math("d_0", "d_0"), text(" — diametro del foro per il mezzo di collegamento (Figura C4.2.34)")], reg(73.9, 100, 450, 20)),
-  block(unit7, "symbol-d", "paragraph", 142, "d — diametro del mezzo di collegamento (chiodo, vite, ecc.)", [math("d", "d"), text(" — diametro del mezzo di collegamento (chiodo, vite, ecc.)")], reg(73.9, 120, 450, 20)),
-  block(unit7, "symbol-dw", "paragraph", 142, "d_w — diametro della testa della vite di collegamento o diametro della rondella sotto testa o diametro visibile del punto di saldatura (Figura C4.2.35)", [math("d_w", "d_w"), text(" — diametro della testa della vite di collegamento o diametro della rondella sotto testa o diametro visibile del punto di saldatura (Figura C4.2.35)")], reg(73.9, 140, 450, 30)),
-  block(unit7, "symbol-ds", "paragraph", 142, "d_s — diametro efficace del punto o bottone di saldatura,", [math("d_s", "d_s"), text(" — diametro efficace del punto o bottone di saldatura,")], reg(73.9, 170, 450, 20)),
+  block(unit7, "symbol-t", "list-item", 141, "t spessore minimo delle membrature interessate nel collegamento", [math("t", "t"), text(" spessore minimo delle membrature interessate nel collegamento")], reg(73.9, 735, 450, 20)),
+  block(unit7, "symbol-t1", "list-item", 141, "t_1 spessore massimo delle membrature interessate nel collegamento", [math("t_1", "t_1"), text(" spessore massimo delle membrature interessate nel collegamento")], reg(73.9, 755, 450, 20)),
+  block(unit7, "symbol-tstar", "list-item", 142, "t* spessore del materiale base nel quale sono ancorate le viti autofilettanti oppure i bottoni di saldatura", [math("t*", "t^*"), text(" spessore del materiale base nel quale sono ancorate le viti autofilettanti oppure i bottoni di saldatura")], reg(73.9, 80, 450, 20)),
+  block(unit7, "symbol-d0", "list-item", 142, "d_0 diametro del foro per il mezzo di collegamento (Figura C4.2.34)", [math("d_0", "d_0"), text(" diametro del foro per il mezzo di collegamento (Figura C4.2.34)")], reg(73.9, 100, 450, 20)),
+  block(unit7, "symbol-d", "list-item", 142, "d diametro del mezzo di collegamento (chiodo, vite, ecc.)", [math("d", "d"), text(" diametro del mezzo di collegamento (chiodo, vite, ecc.)")], reg(73.9, 120, 450, 20)),
+  block(unit7, "symbol-dw", "list-item", 142, "d_w diametro della testa della vite di collegamento o diametro della rondella sotto testa o diametro visibile del punto di saldatura (Figura C4.2.35)", [math("d_w", "d_w"), text(" diametro della testa della vite di collegamento o diametro della rondella sotto testa o diametro visibile del punto di saldatura (Figura C4.2.35)")], reg(73.9, 140, 450, 30)),
+  block(unit7, "symbol-ds", "list-item", 142, "d_s diametro efficace del punto o bottone di saldatura,", [math("d_s", "d_s"), text(" diametro efficace del punto o bottone di saldatura,")], reg(73.9, 170, 450, 20)),
   formulaBlock(unit7, "formula-126", formula126),
-  block(unit7, "symbol-dp", "paragraph", 142, "d_p — diametro della saldatura del bottone,", [math("d_p", "d_p"), text(" — diametro della saldatura del bottone,")], reg(73.9, 220, 450, 20)),
-  block(unit7, "symbol-s", "paragraph", 142, "s — passo della filettatura delle viti autofilettanti o automaschianti.", [math("s", "s"), text(" — passo della filettatura delle viti autofilettanti o automaschianti.")], reg(73.9, 240, 450, 20)),
+  block(unit7, "symbol-dp", "list-item", 142, "d_p diametro della saldatura del bottone,", [math("d_p", "d_p"), text(" diametro della saldatura del bottone,")], reg(73.9, 220, 450, 20)),
+  block(unit7, "symbol-s", "list-item", 142, "s passo della filettatura delle viti autofilettanti o automaschianti.", [math("s", "s"), text(" passo della filettatura delle viti autofilettanti o automaschianti.")], reg(73.9, 240, 450, 20)),
   figureBlock(unit7, "figure-34", figure34, 142, "Figura C4.2.34 – Parametri significativi per i collegamenti", figure34Region),
   figureBlock(unit7, "figure-35", figure35, 142, "Figura C4.2.35 – Saldature a bottone", figure35Region),
   block(unit7, "p4", "paragraph", 142, "In Figura C4.2.34 sono indicati gli interassi e le varie distanze che interessano il dimensionamento dei collegamenti; in Figura C4.2.35 sono indicati i diametri dei punti e bottoni di saldatura.", [text("In Figura C4.2.34 sono indicati gli interassi e le varie distanze che interessano il dimensionamento dei collegamenti; in Figura C4.2.35 sono indicati i diametri dei punti e bottoni di saldatura.")], reg(73.9, 515, 450, 35)),
@@ -157,12 +157,14 @@ const manifest = {
   formulas: formulaRows.map((formula) => ({ id: formulaId(formula.number), unitId: uid(formula.number === formula126.number ? unit7 : unit711), officialNumber: formula.number, pdfPage: formula.page, latex: formula.latex })),
   tables: [],
   figures: [
-    { id: figure34, unitId: uid(unit7), officialNumber: "C4.2.34", pdfPage: 142, caption: "Figura C4.2.34 – Parametri significativi per i collegamenti", alt: "Parametri significativi per i collegamenti", imagePath: "figures/circ2019/figc4.2.34.png", region: figure34Region, sha256: "c404bd80fa08d341933a1d25438de94881e5dfb9368f8c80d0a0aa600df5ab02" },
-    { id: figure35, unitId: uid(unit7), officialNumber: "C4.2.35", pdfPage: 142, caption: "Figura C4.2.35 – Saldature a bottone", alt: "Saldature a bottone", imagePath: "figures/circ2019/figc4.2.35.png", region: figure35Region, sha256: "ef8bd04b1d722a64c9c58f06dd5a8a3087b22f52ea30feb42ecaed0054438949" },
+    { id: figure34, unitId: uid(unit7), officialNumber: "C4.2.34", pdfPage: 142, caption: "Figura C4.2.34 – Parametri significativi per i collegamenti", alt: "Parametri significativi per i collegamenti", imagePath: "figures/circ2019/figc4.2.34.png", region: figure34Region, sha256: "37d3aed511c5f7b1997c95cfe29dd64c29d2737a638d88dd7a88fc4b2a1857a0" },
+    { id: figure35, unitId: uid(unit7), officialNumber: "C4.2.35", pdfPage: 142, caption: "Figura C4.2.35 – Saldature a bottone", alt: "Saldature a bottone", imagePath: "figures/circ2019/figc4.2.35.png", region: figure35Region, sha256: "7912656ba6d02bcee26b434fa0c837893a4de1f4eea3626bd431b61bfa5a2b87" },
   ],
 };
+(manifest.figures[0] as Record<string, unknown>).captionInline = [{ kind: "strong", value: "Figura C4.2.34" }, { kind: "em", value: " – Parametri significativi per i collegamenti" }];
+(manifest.figures[1] as Record<string, unknown>).captionInline = [{ kind: "strong", value: "Figura C4.2.35" }, { kind: "em", value: " – Saldature a bottone" }];
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await mkdir(figureDirectory, { recursive: true });
-await Promise.all([...records.map((record) => writeFile(join(unitDirectory, record.numbering.official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8")), writeFile(join(assetDirectory, "C4.2-step2y.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8"), copyFile(join(evidenceRenderDirectory, "page-0142-x170-y225-w270-h98@4x.png"), join(figureDirectory, "figc4.2.34.png")), copyFile(join(evidenceRenderDirectory, "page-0142-x170-y315-w270-h195@4x.png"), join(figureDirectory, "figc4.2.35.png"))]);
+await Promise.all([...records.map((record) => writeFile(join(unitDirectory, record.numbering.official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8")), writeFile(join(assetDirectory, "C4.2-step2y.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8"), copyFile(join(evidenceRenderDirectory, "page-0142-x170-y225-w270-h75@4x.png"), join(figureDirectory, "figc4.2.34.png")), copyFile(join(evidenceRenderDirectory, "page-0142-x170-y315-w270-h185@4x.png"), join(figureDirectory, "figc4.2.35.png"))]);
 console.log("Circolare C4.2 step2y: generate 3 unità, 7 formule e 2 figure.");

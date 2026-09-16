@@ -42,7 +42,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
   assert.equal(manifest.stats.reviewedUnits, 104);
   assert.equal(manifest.stats.assetUnits, 436);
-  assert.equal(manifest.stats.formulas, 889);
+  assert.equal(manifest.stats.formulas, 890);
   assert.equal(manifest.stats.tables, 219);
   assert.equal(manifest.stats.figures, 205);
   assert.ok(Buffer.byteLength(JSON.stringify(manifest)) < 75_000);
@@ -118,7 +118,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   }
   assert.deepEqual(
     Object.fromEntries(Object.entries(assets).map(([kind, values]) => [kind, values.size])),
-    { formulas: 889, tables: 219, figures: 205 },
+    { formulas: 890, tables: 219, figures: 205 },
   );
 
   const relations = await dataJson(manifest.relationsPath);

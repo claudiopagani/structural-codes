@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sha256OfText } from "../src/lib/hash.ts";
@@ -6,6 +6,8 @@ import { sha256OfText } from "../src/lib/hash.ts";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const unitDirectory = join(root, "corpus", "units", "circ2019");
 const assetDirectory = join(root, "corpus", "assets", "circ2019");
+const figureDirectory = join(root, "corpus", "assets", "figures", "circ2019");
+const evidenceRenderDirectory = join(root, "evidence", "circ-7-2019", "renders");
 const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
@@ -14,7 +16,7 @@ const createdAt = "2026-08-09T00:00:00Z";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
-type Cell = { text: string; latex?: string; rowSpan?: number; colSpan?: number };
+type Cell = { text: string; latex?: string; image?: { imagePath: string; alt: string; sha256: string; region: Region }; rowSpan?: number; colSpan?: number; align?: "left" | "center" | "right" };
 type BlockKind = "heading" | "paragraph" | "table-ref";
 type GeneratedBlock = { blockId: string; kind: BlockKind; origin: "official"; text?: { raw: string; normalized: string; normalizationVersion: string; inline: Inline[] }; evidence: { rawSha256: string; normalizedSha256: string; [key: string]: unknown }; assetId?: string };
 
@@ -22,7 +24,9 @@ const uid = (number: string) => "urn:structural-codes:it:unit:circ2019:" + numbe
 const tableId = (number: string) => "urn:structural-codes:it:asset:table:circ2019:" + number.toLowerCase();
 const reg = (x: number, y: number, width: number, height: number): Region => ({ coordinateSystem: "pdf-points-top-left", x, y, width, height });
 const text = (value: string): Inline => ({ kind: "text", value });
+const math = (value: string, latex: string): Inline => ({ kind: "math", value, latex });
 const c = (value: string, latex?: string): Cell => ({ text: value, ...(latex ? { latex } : {}) });
+const imageCell = (imagePath: string, alt: string, sha256: string, region: Region): Cell => ({ text: "", align: "center", image: { imagePath, alt, sha256, region } });
 const hash = (value: string) => sha256OfText(value);
 
 function evidence(page: number, raw: string, normalized: string, region: Region, manual = false) {
@@ -58,15 +62,19 @@ const tableXX = {
   pdfPage: 141,
   caption: "Curve di stabilità per profili sottili compressi",
   columnCount: 3,
+  columnWidths: [62, 16, 22],
   headers: [[c("Tipo di sezione"), c("Inflessione intorno all’asse"), c("Curva")]],
   rows: [
-    [c("Disegno di sezione: profilo chiuso con irrigidimenti centrali e assi y-y e z-z."), c("qualsiasi", "qualsiasi"), c("b (se si usa f_yb)\\nc (se si usa f_ya)*", "\\begin{gathered}b\\ (\\text{se si usa }f_{yb})\\\\c\\ (\\text{se si usa }f_{ya})^*\\end{gathered}")],
-    [c("Disegni di sezione: profilo a I e profilo aperto irrigidito."), c("y-y\\nz-z", "\\begin{gathered}y-y\\\\z-z\\end{gathered}"), c("a\\nb", "\\begin{gathered}a\\\\b\\end{gathered}")],
-    [c("Disegni di sezione: due profili aperti a C, uno semplice e uno con irrigidimento."), c("qualsiasi", "qualsiasi"), c("b", "b")],
-    [c("Disegni di sezione: angolari e altri profili aperti; la fonte aggiunge «o altri tipi di sezione»."), c("qualsiasi", "qualsiasi"), c("c", "c")],
+    [imageCell("figures/circ2019/table-c4.2-xx-section-1.png", "Profilo chiuso con irrigidimenti centrali", "2237f1ebfc299b28d33a35896374427439e05b43d88007781d63bf68c87f4ffe", reg(80, 242, 174, 81)), c("qualsiasi", "qualsiasi"), c("b (se si usa f_yb)\\nc (se si usa f_ya)*", "\\begin{gathered}b\\ (\\text{se si usa }f_{yb})\\\\c\\ (\\text{se si usa }f_{ya})^*\\end{gathered}")],
+    [imageCell("figures/circ2019/table-c4.2-xx-section-2.png", "Profilo a I e profilo aperto irrigidito", "47a72b93f593f0dd96b0ce740072afbd63122011bc386b99085c0d0591db2a28", reg(80, 326, 174, 58)), c("y-y\\nz-z", "\\begin{gathered}y-y\\\\z-z\\end{gathered}"), c("a\\nb", "\\begin{gathered}a\\\\b\\end{gathered}")],
+    [imageCell("figures/circ2019/table-c4.2-xx-section-3.png", "Due profili aperti a C", "b7d94cb4aa3c81b0b027a93aae3443d93997c8ab1325526f549348117c490d36", reg(80, 388, 174, 47)), c("qualsiasi", "qualsiasi"), c("b", "b")],
+    [imageCell("figures/circ2019/table-c4.2-xx-section-4.png", "Angolari e altri profili aperti", "81ed0bcd014b1f268f56bc249201f0a6221863ef6c1fd3d202e8d292dec09ad7", reg(80, 439, 174, 95)), c("qualsiasi", "qualsiasi"), c("c", "c")],
   ],
-  notes: ["Le figure interne della colonna «Tipo di sezione» sono rappresentate mediante descrizioni strutturate fedeli ai disegni della fonte.", "* f_ya può essere usato soltanto quando A_eff=A_g."],
+  notes: ["* f_ya può essere usato soltanto quando A_eff=A_g."],
+  notesInline: [[text("* "), math("f_ya", "f_{ya}"), text(" può essere usato soltanto quando "), math("A_eff=A_g", "A_{eff}=A_g"), text(".")]],
+  captionInline: [{ kind: "em", value: "Curve di stabilità per profili sottili compressi" }],
 };
+for (const cell of [...tableXX.headers, ...tableXX.rows].flat()) cell.align = "center";
 
 const unitParent = "C4.2.12.1.6";
 const unit61 = "C4.2.12.1.6.1";
@@ -124,5 +132,13 @@ const records = [
 const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2x", sourceId, status: "transcribed-unreviewed", formulas: [], tables: [tableXX], figures: [] };
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
-await Promise.all([...records.map((record) => writeFile(join(unitDirectory, record.numbering.official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8")), writeFile(join(assetDirectory, "C4.2-step2x.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8")]);
+await mkdir(figureDirectory, { recursive: true });
+await Promise.all([
+  ...records.map((record) => writeFile(join(unitDirectory, record.numbering.official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8")),
+  writeFile(join(assetDirectory, "C4.2-step2x.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8"),
+  copyFile(join(evidenceRenderDirectory, "page-0141-x80-y242-w174-h81@4x.png"), join(figureDirectory, "table-c4.2-xx-section-1.png")),
+  copyFile(join(evidenceRenderDirectory, "page-0141-x80-y326-w174-h58@4x.png"), join(figureDirectory, "table-c4.2-xx-section-2.png")),
+  copyFile(join(evidenceRenderDirectory, "page-0141-x80-y388-w174-h47@4x.png"), join(figureDirectory, "table-c4.2-xx-section-3.png")),
+  copyFile(join(evidenceRenderDirectory, "page-0141-x80-y439-w174-h95@4x.png"), join(figureDirectory, "table-c4.2-xx-section-4.png")),
+]);
 console.log("Circolare C4.2 step2x: generate 4 unità e 1 tabella.");

@@ -222,10 +222,16 @@ function CopyAssetButton({ kind }: { kind: CopyAssetKind }) {
   return <button type="button" className={`scv-copy-asset scv-copy-asset-${status}`} onClick={(event) => void copyAsset(event)} aria-label={label} title={label}>{status === "copied" ? "✓" : status === "error" ? "!" : "⧉"}</button>;
 }
 
-function MathCell({ cell }: { cell: TableCell }) {
-  if (cell.inline) return <>{renderInlineSegments(cell.inline)}</>;
-  if (!cell.latex) return cell.text;
-  return <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />;
+function MathCell({ cell, assetsBaseUrl }: { cell: TableCell; assetsBaseUrl: string }) {
+  const content = cell.inline
+    ? renderInlineSegments(cell.inline)
+    : cell.latex
+      ? <span className="table-math" dangerouslySetInnerHTML={latexMarkup(cell.latex, false)} />
+      : cell.text;
+  if (!cell.image) return <>{content}</>;
+  const width = Math.max(1, Math.round(cell.image.region.width * 3));
+  const height = Math.max(1, Math.round(cell.image.region.height * 3));
+  return <div className="table-cell-content">{content && <div>{content}</div>}<img className="table-cell-image" loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${cell.image.imagePath}`} alt={cell.image.alt} width={width} height={height} /></div>;
 }
 
 function tableCellClass(cell: TableCell) {
@@ -233,6 +239,7 @@ function tableCellClass(cell: TableCell) {
     cell.strong ? "table-cell-strong" : "",
     cell.align ? `table-cell-align-${cell.align}` : "",
     cell.noWrap ? "table-cell-no-wrap" : "",
+    cell.verticalText ? "table-cell-vertical" : "",
     cell.text.includes("\n") ? "table-cell-multiline" : "",
   ].filter(Boolean).join(" ") || undefined;
 }
@@ -274,6 +281,12 @@ export function hasLeadingMath(block: CorpusBlock) {
   return block.kind === "list-item" && block.listMarker === "none" && inline?.[0]?.kind === "math";
 }
 
+export function hasAlignedListContinuation(block: CorpusBlock) {
+  return block.kind === "list-item"
+    && block.listMarker === "none"
+    && /^\s*[–—-]\s+/u.test(block.text?.normalized ?? "");
+}
+
 export function hasLeadingEmphasisLabel(block: CorpusBlock) {
   const inline = block.text?.inline;
   return (
@@ -308,8 +321,8 @@ export function groupAlignedLabelBlocks(blocks: CorpusBlock[]): CorpusBlockGroup
     index += 1;
     while (
       index < blocks.length
-      && leadingLabelKind(blocks[index]) === labelKind
       && (blocks[index].indentLevel ?? 0) === indentLevel
+      && (leadingLabelKind(blocks[index]) === labelKind || (labelKind === "math" && hasAlignedListContinuation(blocks[index])))
     ) {
       labelBlocks.push(blocks[index]);
       index += 1;
@@ -401,9 +414,12 @@ function renderInlineSegments(inline: InlineSegments, context: ReferenceContext 
   return nodes;
 }
 
-function renderLeadingLabelContent(block: CorpusBlock, context: ReferenceContext | null) {
+function renderLeadingLabelContent(block: CorpusBlock, context: ReferenceContext | null, aligned: boolean) {
   const inline = block.text?.inline;
   if (!inline) return null;
+  if (aligned && hasAlignedListContinuation(block)) {
+    return <><span className="leading-label-empty" aria-hidden="true" /><span className="leading-label-description">{renderInlineSegments(inline, context)}</span></>;
+  }
   if (hasLeadingEmphasisLabel(block)) {
     const label = inline[0];
     const description = inline.slice(1).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s*:\s*/u, "") } : segment);
@@ -442,7 +458,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     if (alphabeticListContent) return textBlock(alphabeticListContent);
     if (!block.text.inline) return textBlock(renderReferenceText(block.text.normalized, referenceContext, block.blockId));
     const inline = block.text.inline;
-    const leadingLabelContent = renderLeadingLabelContent(block, referenceContext);
+    const leadingLabelContent = renderLeadingLabelContent(block, referenceContext, aligned);
     if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : textBlock(leadingLabelContent);
     return textBlock(renderInlineSegments(inline, referenceContext));
   }
@@ -462,7 +478,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     return (
       <figure className={`table-asset ${tableAssetClass(table.officialNumber)}`}>
         {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
-        <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table><thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => <th colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></th>)}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} /></td>)}</tr>)}</tbody></table></div>
+        <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table>{table.columnWidths && <colgroup>{table.columnWidths.map((width, index) => <col style={{ width: `${width}%` }} key={`column-${index}`} />)}</colgroup>}<thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => { const CellTag = cell.header === false ? "td" : "th"; return <CellTag colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} assetsBaseUrl={assetsBaseUrl} /></CellTag>; })}</tr>)}</thead><tbody>{table.rows.map((row, rowIndex) => <tr key={`body-${rowIndex}`}>{row.map((cell, cellIndex) => <td colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`body-${rowIndex}-${cellIndex}`}><MathCell cell={cell} assetsBaseUrl={assetsBaseUrl} /></td>)}</tr>)}</tbody></table></div>
         {notes.length > 0 && <div className="table-notes"><span className="scv-note-rule" aria-hidden="true" />{notes.map(({ text, inline }) => <p key={text}>{inline ? renderInlineSegments(inline) : text}</p>)}<span className="scv-note-rule" aria-hidden="true" /></div>}
       </figure>
     );

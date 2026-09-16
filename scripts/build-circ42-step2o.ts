@@ -18,6 +18,7 @@ const unitNumber = "C4.2.4.1.4.3";
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
 type FormulaRow = { number: string; page: number; latex: string; raw: string; region: Region };
+type TableCell = { text: string; latex?: string; inline?: Inline[]; image?: { imagePath: string; alt: string; sha256: string; region: Region }; rowSpan?: number; colSpan?: number; align?: "left" | "center" | "right" };
 type GeneratedBlock = {
     blockId: string;
     kind: string;
@@ -35,8 +36,9 @@ const reg = (x: number, y: number, width: number, height: number): Region => ({ 
 const text = (value: string): Inline => ({ kind: "text", value });
 const math = (value: string, latex: string): Inline => ({ kind: "math", value, latex });
 const hash = (value: string) => sha256OfText(value);
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
-const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}): TableCell => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}): TableCell => c(value, latex, spans);
+const imageCell = (imagePath: string, alt: string, sha256: string, region: Region, spans: { colSpan?: number; rowSpan?: number } = {}): TableCell => ({ text: "", align: "center", image: { imagePath, alt, sha256, region }, ...spans });
 
 function evidence(page: number, raw: string, normalized: string, region: Region, manual = false) {
     return {
@@ -64,7 +66,9 @@ function formulaBlock(suffix: string, formula: FormulaRow): GeneratedBlock {
 }
 
 function figureBlock(suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock {
-    return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: evidence(page, caption, caption, region, true) };
+    const record = evidence(page, caption, caption, region, true);
+    record.transformations.push({ operation: "manual-correction", ruleVersion: "figure-horizontal-center-0.1.0", note: "Crop ufficiale mantenuto con i margini orizzontali verificati." });
+    return { blockId: `${uid(unitNumber)}#block-${suffix}`, kind: "figure-ref", origin: "official", assetId: asset, evidence: record };
 }
 
 function tableBlock(suffix: string, asset: string, page: number, caption: string, region: Region): GeneratedBlock {
@@ -102,9 +106,9 @@ const formula97: FormulaRow = {
 const figure21 = figureId("C4.2.21");
 const figure22 = figureId("C4.2.22");
 const figure23 = figureId("C4.2.23");
-const figure21Region = reg(135, 510, 330, 225);
-const figure22Region = reg(145, 155, 310, 160);
-const figure23Region = reg(170, 470, 300, 205);
+const figure21Region = reg(135, 510, 330, 205.5);
+const figure22Region = reg(145, 155, 310, 141.25);
+const figure23Region = reg(200.5, 470, 188.75, 193.5);
 const tableXIIaId = tableId("C4.2.XII.a");
 const tableXIIaRegion = reg(70, 100, 455, 190);
 
@@ -137,7 +141,6 @@ const tableXIIa = {
         ],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "(1) Classe da adottare per acciai resistenti alla corrosione.",
     ],
 };
@@ -163,7 +166,7 @@ const tableXIIb = {
         c("6) e 7) Prodotti laminati e estrusi (come quelli di tabella C4.2.XVI.a) soggetti a tensioni tangenziali"),
         f("Δτ calcolati con Δτ = ΔV·S(t)/(I·t)", "\\begin{gathered}\\Delta\\tau\\text{ calcolati con}\\\\\\Delta\\tau=\\frac{\\Delta V\\cdot S(t)}{I\\cdot t}\\end{gathered}"),
     ]],
-    notes: ["I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate."],
+    notes: [],
 };
 
 const tableXIIc = {
@@ -180,7 +183,7 @@ const tableXIIc = {
         c("15) Bulloni sollecitati a taglio su uno o due piani non interessanti la parte filettata.\n- Bulloni calibrati\n- Bulloni normali di grado 5.6, 8.8 e 10.9 e assenza di inversioni di carico"),
         f("Δτ calcolati in riferimento all’area del gambo", "\\Delta\\tau\\text{ calcolati in riferimento all’area del gambo}"),
     ]],
-    notes: ["Il disegno interno della colonna «Dettaglio costruttivo» è rappresentato mediante una descrizione strutturata."],
+    notes: [],
 };
 
 const tableXIId = {
@@ -214,8 +217,26 @@ const tableXIId = {
             c("11) Elementi strutturali forati soggetti a forza normale e momento flettente"),
             f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
         ],
+        [
+            c("80"),
+            c("Schema 12: giunto bullonato con coprigiunti singoli e bulloni non precaricati."),
+            c("12) Giunti bullonati con coprigiunti singoli e bulloni calibrati o bulloni non precaricati iniettati"),
+            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+        ],
+        [
+            c("50"),
+            c("Schema 13: giunto bullonato con coprigiunti singoli o doppi e bulloni con precarico."),
+            c("13) Giunti bullonati con coprigiunti singoli o doppi con bulloni con precarico in fori di tolleranza normale. Assenza di inversioni del carico."),
+            f("Δσ riferiti alla sezione netta", "\\Delta\\sigma\\text{ riferiti alla sezione netta}"),
+        ],
+        [
+            c("50"),
+            c("Schema 14: bulloni e barre filettate soggetti a trazione."),
+            f("14) Bulloni e barre filettate soggetti a trazione. Per bulloni di diametro φ>30 mm, si deve adottare una classe ridotta del coefficiente k_s=(30/φ)^0,25", "\\begin{gathered}\\text{14) Bulloni e barre filettate soggetti a trazione. Per bulloni di diametro }\\phi>30\\,\\mathrm{mm},\\\\\\text{si deve adottare una classe ridotta del coefficiente }k_s=(30/\\phi)^{0{,}25}\\end{gathered}"),
+            f("Δσ riferiti alla sezione della parte filettata, considerando gli effetti dovuti all’effetto leva e alla flessione ulteriore. Per bulloni precaricati i Δσ possono essere ridotti.", "\\begin{gathered}\\Delta\\sigma\\text{ riferiti alla sezione della parte filettata, considerando gli effetti dovuti}\\\\\\text{all’effetto leva e alla flessione ulteriore. Per bulloni precaricati i }\\Delta\\sigma\\text{ possono essere ridotti.}\\end{gathered}"),
+        ],
     ],
-    notes: ["I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate."],
+    notes: [],
 };
 
 const tableXIIIId = tableId("C4.2.XIII");
@@ -280,7 +301,6 @@ const tableXIII = {
         ],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "La tabella prosegue a pagina PDF 129 con i dettagli 10) e 11).",
     ],
 };
@@ -353,7 +373,6 @@ const tableXIV = {
         ],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "La tabella prosegue a pagina PDF 130 con i dettagli 12)–17).",
     ],
 };
@@ -379,7 +398,7 @@ const tableXV = {
         [
             c("71"),
             c("Schema 2: attacco saldato longitudinale a piatto o tubo."),
-            c("2) Attacchi saldati longitudinali a piatti o tubi con L>100 m e α<45°"),
+            c("2) Attacchi saldati longitudinali a piatti o tubi con L>100 mm e α<45°"),
             c(""),
         ],
         [
@@ -414,7 +433,6 @@ const tableXV = {
         ],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "La tabella prosegue a pagina PDF 131 con i dettagli 4)–9).",
     ],
 };
@@ -469,7 +487,6 @@ const tableXVIa = {
         ],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "La tabella prosegue a pagina PDF 132 con i dettagli 3)–7).",
     ],
 };
@@ -493,7 +510,7 @@ const tableXVIb = {
             c("8) Δτ deve essere calcolato in riferimento alla sezione di gola del cordone\n9) Δτ deve essere calcolato in riferimento alla sezione di gola del cordone, considerando la lunghezza totale del cordone, che deve terminare a più di 10 mm dal bordo della piastra"),
         ],
     ],
-    notes: ["I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate."],
+    notes: [],
 };
 
 const tableXVIIId = tableId("C4.2.XVII");
@@ -517,10 +534,232 @@ const tableXVII = {
         [c("36*"), c("Schema 7: saldatura a T a cordoni d'angolo tra anima e piattabanda."), c("7) Saldatura a T a cordoni d'angolo tra anima e piattabanda a T"), c("La classe è relativa ai delta di compressione verticali Δσ_vert indotti nella saldatura dai carichi ruota")],
     ],
     notes: [
-        "I disegni interni della colonna «Dettaglio costruttivo» sono rappresentati mediante descrizioni strutturate.",
         "La tabella prosegue a pagina PDF 133 con i dettagli 2)–7).",
     ],
 };
+
+Object.assign(tableXIIa, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per prodotti laminati e estrusi e loro classificazione (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXIIb, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per prodotti laminati e estrusi e loro classificazione (" }, { kind: "math", value: "Δτ", latex: "\\Delta\\tau" }, { kind: "em", value: ")" }] });
+Object.assign(tableXIIc, { captionInline: [{ kind: "em", value: "Bulloni sollecitati a taglio (" }, { kind: "math", value: "Δτ", latex: "\\Delta\\tau" }, { kind: "em", value: ")" }] });
+Object.assign(tableXIId, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per giunti chiodati o bullonati (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXIII, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per sezioni saldate (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXIV, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per saldature a piena penetrazione (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXV, { captionInline: [{ kind: "em", value: "Dettagli costruttivi per attacchi e irrigiditori saldati (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXVIa, { captionInline: [{ kind: "em", value: "Connessioni saldate direttamente sollecitate (" }, { kind: "math", value: "Δσ", latex: "\\Delta\\sigma" }, { kind: "em", value: ")" }] });
+Object.assign(tableXVIb, { captionInline: [{ kind: "em", value: "Connessioni saldate direttamente sollecitate (" }, { kind: "math", value: "Δτ", latex: "\\Delta\\tau" }, { kind: "em", value: ")" }] });
+Object.assign(tableXVII, { captionInline: [{ kind: "em", value: "Dettagli costruttivi e resistenza a fatica per le vie di corsa di carriponte" }] });
+
+const fatigueTables = [tableXIIa, tableXIIb, tableXIIc, tableXIId, tableXIII, tableXIV, tableXV, tableXVIa, tableXVIb, tableXVII];
+for (const table of fatigueTables) Object.assign(table, { columnWidths: [8, 38, 26, 28] });
+
+const inlineMathTokens = [
+    ["k_se = (1 + (6e/t₁)·(t₁^1,5/(t₁^1,5+t₂^1,5)))^-1", "k_{se}=\\left(1+\\frac{6e}{t_1}\\cdot\\frac{t_1^{1{,}5}}{t_1^{1{,}5}+t_2^{1{,}5}}\\right)^{-1}"],
+    ["k_s = (25/t₁)^0,2", "k_s=(25/t_1)^{0{,}2}"],
+    ["k_s = (25/t)^0,2", "k_s=(25/t)^{0{,}2}"],
+    ["t_c≥t e 30<t≤50 mm", "t_c\\ge t\\;\\text{e}\\;30<t\\le50\\,\\mathrm{mm}"],
+    ["t_c≥t e 20<t≤30 mm", "t_c\\ge t\\;\\text{e}\\;20<t\\le30\\,\\mathrm{mm}"],
+    ["t_c<t e 30<t≤50 mm", "t_c<t\\;\\text{e}\\;30<t\\le50\\,\\mathrm{mm}"],
+    ["t_c<t e 20<t≤30 mm", "t_c<t\\;\\text{e}\\;20<t\\le30\\,\\mathrm{mm}"],
+    ["t_c≥t e t≤20 mm", "t_c\\ge t\\;\\text{e}\\;t\\le20\\,\\mathrm{mm}"],
+    ["t_c≤t e t≤20 mm", "t_c\\le t\\;\\text{e}\\;t\\le20\\,\\mathrm{mm}"],
+    ["200< ℓ ≤ 300 mm", "200<\\ell\\le300\\,\\mathrm{mm}"],
+    ["120< ℓ ≤ 200 mm", "120<\\ell\\le200\\,\\mathrm{mm}"],
+    ["100< ℓ ≤ 120 mm", "100<\\ell\\le120\\,\\mathrm{mm}"],
+    ["80< ℓ ≤ 100 mm", "80<\\ell\\le100\\,\\mathrm{mm}"],
+    ["50< ℓ ≤ 80 mm", "50<\\ell\\le80\\,\\mathrm{mm}"],
+    ["50 < L ≤ 80 mm", "50<L\\le80\\,\\mathrm{mm}"],
+    ["80 < L ≤ 100 mm", "80<L\\le100\\,\\mathrm{mm}"],
+    ["30<t ≤ 50 mm", "30<t\\le50\\,\\mathrm{mm}"],
+    ["20<t ≤ 30 mm", "20<t\\le30\\,\\mathrm{mm}"],
+    ["t₁>25 mm", "t_1>25\\,\\mathrm{mm}"],
+    ["t>25 mm", "t>25\\,\\mathrm{mm}"],
+    ["t_c>20 mm", "t_c>20\\,\\mathrm{mm}"],
+    ["t_c≥t e t>50 mm", "t_c\\ge t\\;\\text{e}\\;t>50\\,\\mathrm{mm}"],
+    ["t_c<t e t>50 mm", "t_c<t\\;\\text{e}\\;t>50\\,\\mathrm{mm}"],
+    ["L > 100 mm", "L>100\\,\\mathrm{mm}"],
+    ["L>100 mm", "L>100\\,\\mathrm{mm}"],
+    ["L ≤ 50 mm", "L\\le50\\,\\mathrm{mm}"],
+    ["r ≥ L/3", "r\\ge L/3"],
+    ["L/3 > r ≥ L/6", "L/3>r\\ge L/6"],
+    ["r < L/6", "r<L/6"],
+    ["r >150 mm", "r>150\\,\\mathrm{mm}"],
+    ["r>150 mm", "r>150\\,\\mathrm{mm}"],
+    ["ℓ >300 mm", "\\ell>300\\,\\mathrm{mm}"],
+    ["ℓ >200 mm", "\\ell>200\\,\\mathrm{mm}"],
+    ["ℓ >120 mm", "\\ell>120\\,\\mathrm{mm}"],
+    ["ℓ ≤ 50 mm", "\\ell\\le50\\,\\mathrm{mm}"],
+    ["α<45°", "\\alpha<45^{\\circ}"],
+    ["5 t_c", "5t_c"],
+    ["Δσ_vert", "\\Delta\\sigma_{\\mathrm{vert}}"],
+    ["Δσvert", "\\Delta\\sigma_{\\mathrm{vert}}"],
+    ["Δσ_C", "\\Delta\\sigma_C"],
+    ["Δτ_C", "\\Delta\\tau_C"],
+    ["Δσ", "\\Delta\\sigma"],
+    ["Δτ", "\\Delta\\tau"],
+    ["k_se", "k_{se}"],
+    ["k_s", "k_s"],
+    ["k_f", "k_f"],
+    ["t₁", "t_1"],
+    ["t₂", "t_2"],
+    ["t_c", "t_c"],
+    ["A_eff", "A_{eff}"],
+    ["A_g", "A_g"],
+    ["ℓ", "\\ell"],
+    ["α", "\\alpha"],
+    ["φ", "\\phi"],
+] as const;
+const tokenPattern = new RegExp(inlineMathTokens.map(([value]) => value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")).join("|"), "gu");
+for (const table of fatigueTables) {
+    for (const cell of [...table.headers, ...table.rows].flat()) {
+        if (cell.latex || cell.image || !tokenPattern.test(cell.text)) {
+            tokenPattern.lastIndex = 0;
+            continue;
+        }
+        tokenPattern.lastIndex = 0;
+        const inline: Inline[] = [];
+        let start = 0;
+        for (const match of cell.text.matchAll(tokenPattern)) {
+            if (match.index > start) inline.push(text(cell.text.slice(start, match.index)));
+            const latex = inlineMathTokens.find(([value]) => value === match[0])?.[1];
+            if (latex) inline.push(math(match[0], latex));
+            start = match.index + match[0].length;
+        }
+        if (start < cell.text.length) inline.push(text(cell.text.slice(start)));
+        if (inline.length > 0) cell.inline = inline;
+        tokenPattern.lastIndex = 0;
+    }
+}
+
+const setDiagramCells = (
+    table: { rows: TableCell[][] },
+    diagrams: Array<{ path: string; alt: string; sha256: string; region: Region }>,
+    cellIndexes: number[] = [],
+) => {
+    diagrams.forEach((diagram, index) => {
+        const row = table.rows[index];
+        const cellIndex = cellIndexes[index] ?? 1;
+        if (row) row[cellIndex] = imageCell(diagram.path, diagram.alt, diagram.sha256, diagram.region);
+    });
+};
+const diagram = (path: string, alt: string, sha256: string, region: Region) => ({ path, alt, sha256, region });
+
+setDiagramCells(tableXIIa, [
+    diagram("figures/circ2019/table-c4.2-xii-a-1-3.png", "Schemi 1, 2 e 3", "2c47e997f151f55e21ccefa5bc32468dbb6cfa4e73d62ad31bb25757fb74f2e0", reg(112, 141, 138, 55)),
+    diagram("figures/circ2019/table-c4.2-xii-a-4.png", "Schema 4", "a291c2b1c0e0e6c684f7356b933ad1c0d2cd4a83667310ccaff42a96b2bba594", reg(112, 199, 138, 39)),
+    diagram("figures/circ2019/table-c4.2-xii-a-5.png", "Schema 5", "cad146136742b442ba4c0a7d67ff9879fea259ef5888442ba5ea819914d90c73", reg(112, 241, 138, 36)),
+]);
+setDiagramCells(tableXIIb, [diagram("figures/circ2019/table-c4.2-xii-b-6-7.png", "Schemi 6 e 7", "a1046fef0127d96955573f56d40e3e6dc0b6f572d730d183d21db91e609937db", reg(112, 337, 138, 34))]);
+setDiagramCells(tableXIIc, [diagram("figures/circ2019/table-c4.2-xii-c-15.png", "Schema 15", "2d55c90f93ccf9d748836a0430be69d1066406da3d76f0ca61007a5978f565bd", reg(112, 408, 138, 57))]);
+setDiagramCells(tableXIId, [
+    diagram("figures/circ2019/table-c4.2-xii-d-8.png", "Schema 8", "34426e12180201b040c31c3e1c65097a93d7dd8b6b745aeb45e085364fc6a253", reg(112, 505, 138, 38)),
+    diagram("figures/circ2019/table-c4.2-xii-d-9.png", "Schema 9", "13f8fd113ace36b94493ca20a538ffdf7160ba898adaf9d5f3d9bdafe03f9c03", reg(112, 546, 138, 39)),
+    diagram("figures/circ2019/table-c4.2-xii-d-10.png", "Schema 10", "7eebb95a0a020d332cb5f0e7a2ae5c736fc2d5885a5b27172eee1d0d92ff1872", reg(112, 588, 138, 57)),
+    diagram("figures/circ2019/table-c4.2-xii-d-11.png", "Schema 11", "20dd3d02746a923ee06bd4dbe3e775f568ffc67fd285ddc1fcf46f67e06e2255", reg(112, 648, 138, 50)),
+    diagram("figures/circ2019/table-c4.2-xii-d-12.png", "Schema 12", "8d474a585641183993f30e843de6017a334b364113fdd66c98db76494723508e", reg(112, 117, 138, 52)),
+    diagram("figures/circ2019/table-c4.2-xii-d-13.png", "Schema 13", "2d33e4629ca662ae5e9144db97267dec60825b79adf23ccaf801a3a162facba8", reg(112, 172, 138, 61)),
+    diagram("figures/circ2019/table-c4.2-xii-d-14.png", "Schema 14", "a79599f9cdd03d8b573b19da2a6c83737a458b41203fb69de9007e4a8a874045", reg(112, 236, 138, 67)),
+], [1, 1, 0, 0, 1, 1, 1]);
+setDiagramCells(tableXIII, [
+    diagram("figures/circ2019/table-c4.2-xiii-1-2.png", "Schemi 1 e 2", "7185700835088384ea03a11cf0a7df5a2af9690f1c1d29f1d3039c20bfd8ad5a", reg(112, 342, 138, 60)),
+    diagram("figures/circ2019/table-c4.2-xiii-3-4.png", "Schemi 3 e 4", "e9a16d9c4f52813f8874aef645daf7d34db0087cb5f2c599fcae9d4bc928087c", reg(112, 405, 138, 64)),
+    diagram("figures/circ2019/table-c4.2-xiii-5-6.png", "Schemi 5 e 6", "4885617674cca148f3ad068f97ca7aff817f27e42241eda2f86709ff381bcf4c", reg(112, 472, 138, 42)),
+    diagram("figures/circ2019/table-c4.2-xiii-7.png", "Schema 7", "193c6fc6f229c84503937e501a0fe0a82f436835fc55e5d6e562949727a7856c", reg(112, 518, 138, 49)),
+    diagram("figures/circ2019/table-c4.2-xiii-8.png", "Schema 8", "51e3d1e36fe65b50b45730710d9a9817794717e110b8c25ff77ce4d65c8314bc", reg(112, 570, 138, 59)),
+    diagram("figures/circ2019/table-c4.2-xiii-9.png", "Schema 9", "8f1b0b90c6109e0b910c6dd1208c8c12585b55afb2c6b6ed245cc1e79090f923", reg(112, 633, 138, 54)),
+    diagram("figures/circ2019/table-c4.2-xiii-10.png", "Schema 10", "af03ad44132aa285a11b385d94e8d74eb95e20cab9a6eb6a55cc6f856c0a29ca", reg(112, 117, 138, 43)),
+    diagram("figures/circ2019/table-c4.2-xiii-11.png", "Schema 11", "8f986224bba3e95bc366c2559711057a41d772edeb395801f66d0c62264bc77f", reg(112, 164, 138, 45)),
+]);
+setDiagramCells(tableXIV, [
+    diagram("figures/circ2019/table-c4.2-xiv-1-4.png", "Schemi 1, 2, 3 e 4", "007e6e0ab967886a569904b2adb24179a0343b59d14336de238e5d918345de96", reg(112, 249, 138, 142)),
+    diagram("figures/circ2019/table-c4.2-xiv-5-7.png", "Schemi 5, 6 e 7", "9cdb3de855ceea5d8430e345556520ebb73828583415632065746e8bc948135c", reg(112, 395, 138, 120)),
+    diagram("figures/circ2019/table-c4.2-xiv-8.png", "Schema 8", "58508c12a0fa59b8e8b76d8b345e9ac02a9a3d24c00619deaeb4d5d4ca47ddbb", reg(112, 519, 138, 81)),
+    diagram("figures/circ2019/table-c4.2-xiv-9-11.png", "Schemi 9, 10 e 11", "4ddf95a1c23a2964a9d3816dd1148c5ddec254bc19eec475b67ead4b143ab7a6", reg(112, 604, 138, 94)),
+    diagram("figures/circ2019/table-c4.2-xiv-12.png", "Schema 12", "a6bd1b766bf8a26630e34d917d965b99a22b771b687317b2447e9a41670999f2", reg(112, 117, 138, 62)),
+    diagram("figures/circ2019/table-c4.2-xiv-13.png", "Schema 13", "160348c928da64eda4adcb4a6c858818912bb8f433cda2f7b9e9d84a247a2fce", reg(112, 182, 138, 81)),
+    diagram("figures/circ2019/table-c4.2-xiv-14-15.png", "Schemi 14 e 15", "35467587c9b60f2b8ef3a2ba3dbc3aad302701e0024cb505f800655092040386", reg(112, 267, 138, 85)),
+    diagram("figures/circ2019/table-c4.2-xiv-16.png", "Schema 16", "d8ee5011ada3e4e51dc8510835fd09ecf0f1066ec41c7cc679c40d9968c30f22", reg(112, 356, 138, 73)),
+    diagram("figures/circ2019/table-c4.2-xiv-17.png", "Schema 17", "70cf66ed2204f146282bd941a6822f1e563320b30106e383a0532dc63b98bab0", reg(112, 433, 138, 67)),
+]);
+setDiagramCells(tableXV, [
+    diagram("figures/circ2019/table-c4.2-xv-1.png", "Schema 1", "a5c813dfd5ff5c681e286fb274ef83f8b2e5212871400ae946ca86815ca264d5", reg(112, 540, 138, 67)),
+    diagram("figures/circ2019/table-c4.2-xv-2.png", "Schema 2", "cdbd95e6b2dd5cdd9c670f4b573cffccf14a5b4d2c199c3c47a5bec3a796cd21", reg(112, 611, 138, 38)),
+    diagram("figures/circ2019/table-c4.2-xv-3.png", "Schema 3", "0345520e1d959eff59c775254ea64dd627490e62f5c41db01de082ce730a74c2", reg(112, 654, 138, 65)),
+    diagram("figures/circ2019/table-c4.2-xv-4.png", "Schema 4", "be0209412e07654a5cb876708966045896812a40e66bee0137c601ff1e1a4826", reg(112, 117, 138, 105)),
+    diagram("figures/circ2019/table-c4.2-xv-5.png", "Schema 5", "0d3fe02f0b4c554d62127a0165341dd406843fc25c4ee7a73130e6c5de1ed50b", reg(112, 226, 138, 40)),
+    diagram("figures/circ2019/table-c4.2-xv-6-8.png", "Schemi 6, 7 e 8", "c14dbd73c10c53234e2e159f162b389d951767bbfd55a585f981977d487be825", reg(112, 270, 138, 122)),
+    diagram("figures/circ2019/table-c4.2-xv-9.png", "Schema 9", "814498fe5bcda2c6beeef96075450e9082bf8bf44826475925d1e9c45dfd6e3e", reg(112, 397, 138, 50)),
+]);
+setDiagramCells(tableXVIa, [
+    diagram("figures/circ2019/table-c4.2-xvi-a-1.png", "Schemi 1 e 2", "3f923803c2fe7abb29ac02082df7e5feadcbd57d38f2c0ac5b3e6b314207973d", reg(112, 488, 140, 209)),
+    diagram("figures/circ2019/table-c4.2-xvi-a-3.png", "Schema 3", "2417074c222ae10f970db027cf871836344757922b5478149e1c3d0c1f5a3ea8", reg(112, 117, 140, 78)),
+    diagram("figures/circ2019/table-c4.2-xvi-a-4.png", "Schema 4", "6fe237d947470a92ac634243691e36e2707b8b1d7c774b2210f8be987b2632b8", reg(112, 199, 140, 65)),
+    diagram("figures/circ2019/table-c4.2-xvi-a-5.png", "Schema 5", "88fde635a2f5c0b84f8c7910425d911999fe0f7c38f2c064f9aed79f5ba7ff9c", reg(112, 268, 140, 52)),
+    diagram("figures/circ2019/table-c4.2-xvi-a-6.png", "Schema 6", "68876723e9a990cd95733beec78d6278f37690477974207a06eb542a6e0dace2", reg(112, 324, 140, 113)),
+    diagram("figures/circ2019/table-c4.2-xvi-a-7.png", "Schema 7", "8c48cdfdc77dbd881c87a51b3c0e5116cdb5d31714ed94692a3575e1fd3ec5c2", reg(112, 442, 140, 42)),
+]);
+setDiagramCells(tableXVIb, [diagram("figures/circ2019/table-c4.2-xvi-b-8-9.png", "Schemi 8 e 9", "b6de6a71d5bb407c4610605b8d3048fab85a143e4779c0ec50e383192406f21c", reg(112, 524, 140, 69))]);
+setDiagramCells(tableXVII, [
+    diagram("figures/circ2019/table-c4.2-xvii-1.png", "Schema 1", "931c50926d11d93beb080d492a686684a5a0d33823c78e684cb6c61872656d3c", reg(112, 633, 144, 56)),
+    diagram("figures/circ2019/table-c4.2-xvii-2.png", "Schema 2", "47f01ae6fc900935587ec0b043fdffe92c2a932fee89759d00b6f7db789ab570", reg(112, 117, 144, 48)),
+    diagram("figures/circ2019/table-c4.2-xvii-3.png", "Schema 3", "958bea2edef5a041743e4be859523a3d560fea3897d90bfc8cc7d66580d4d112", reg(112, 168, 144, 45)),
+    diagram("figures/circ2019/table-c4.2-xvii-4.png", "Schema 4", "2063b74cc7b38f775f39a5e57f3c3a74a70804e7ffd404b9f7604b468e5c5977", reg(112, 217, 144, 44)),
+    diagram("figures/circ2019/table-c4.2-xvii-5.png", "Schema 5", "8c12badea5f453e0afc9967c9f8102fef52327d001bee099433d295449d7b890", reg(112, 265, 144, 52)),
+    diagram("figures/circ2019/table-c4.2-xvii-6.png", "Schema 6", "732b9b1c39eed8d728cd254f56d7ad615b0769a1900cb410b018923b7e97f85c", reg(112, 321, 144, 55)),
+    diagram("figures/circ2019/table-c4.2-xvii-7.png", "Schema 7", "6832742c156e8866482f605ad6f61f1941cdd049003547d2510d28c67c5c182f", reg(112, 380, 144, 54)),
+]);
+
+const tableFigureCopies = [
+    ["page-0127-x112-y141-w138-h55@4x.png", "table-c4.2-xii-a-1-3.png"],
+    ["page-0127-x112-y199-w138-h39@4x.png", "table-c4.2-xii-a-4.png"],
+    ["page-0127-x112-y241-w138-h36@4x.png", "table-c4.2-xii-a-5.png"],
+    ["page-0127-x112-y337-w138-h34@4x.png", "table-c4.2-xii-b-6-7.png"],
+    ["page-0127-x112-y408-w138-h57@4x.png", "table-c4.2-xii-c-15.png"],
+    ["page-0127-x112-y505-w138-h38@4x.png", "table-c4.2-xii-d-8.png"],
+    ["page-0127-x112-y546-w138-h39@4x.png", "table-c4.2-xii-d-9.png"],
+    ["page-0127-x112-y588-w138-h57@4x.png", "table-c4.2-xii-d-10.png"],
+    ["page-0127-x112-y648-w138-h50@4x.png", "table-c4.2-xii-d-11.png"],
+    ["page-0128-x112-y117-w138-h52@4x.png", "table-c4.2-xii-d-12.png"],
+    ["page-0128-x112-y172-w138-h61@4x.png", "table-c4.2-xii-d-13.png"],
+    ["page-0128-x112-y236-w138-h67@4x.png", "table-c4.2-xii-d-14.png"],
+    ["page-0128-x112-y342-w138-h60@4x.png", "table-c4.2-xiii-1-2.png"],
+    ["page-0128-x112-y405-w138-h64@4x.png", "table-c4.2-xiii-3-4.png"],
+    ["page-0128-x112-y472-w138-h42@4x.png", "table-c4.2-xiii-5-6.png"],
+    ["page-0128-x112-y518-w138-h49@4x.png", "table-c4.2-xiii-7.png"],
+    ["page-0128-x112-y570-w138-h59@4x.png", "table-c4.2-xiii-8.png"],
+    ["page-0128-x112-y633-w138-h54@4x.png", "table-c4.2-xiii-9.png"],
+    ["page-0129-x112-y117-w138-h43@4x.png", "table-c4.2-xiii-10.png"],
+    ["page-0129-x112-y164-w138-h45@4x.png", "table-c4.2-xiii-11.png"],
+    ["page-0129-x112-y249-w138-h142@4x.png", "table-c4.2-xiv-1-4.png"],
+    ["page-0129-x112-y395-w138-h120@4x.png", "table-c4.2-xiv-5-7.png"],
+    ["page-0129-x112-y519-w138-h81@4x.png", "table-c4.2-xiv-8.png"],
+    ["page-0129-x112-y604-w138-h94@4x.png", "table-c4.2-xiv-9-11.png"],
+    ["page-0130-x112-y117-w138-h62@4x.png", "table-c4.2-xiv-12.png"],
+    ["page-0130-x112-y182-w138-h81@4x.png", "table-c4.2-xiv-13.png"],
+    ["page-0130-x112-y267-w138-h85@4x.png", "table-c4.2-xiv-14-15.png"],
+    ["page-0130-x112-y356-w138-h73@4x.png", "table-c4.2-xiv-16.png"],
+    ["page-0130-x112-y433-w138-h67@4x.png", "table-c4.2-xiv-17.png"],
+    ["page-0130-x112-y540-w138-h67@4x.png", "table-c4.2-xv-1.png"],
+    ["page-0130-x112-y611-w138-h38@4x.png", "table-c4.2-xv-2.png"],
+    ["page-0130-x112-y654-w138-h65@4x.png", "table-c4.2-xv-3.png"],
+    ["page-0131-x112-y117-w138-h105@4x.png", "table-c4.2-xv-4.png"],
+    ["page-0131-x112-y226-w138-h40@4x.png", "table-c4.2-xv-5.png"],
+    ["page-0131-x112-y270-w138-h122@4x.png", "table-c4.2-xv-6-8.png"],
+    ["page-0131-x112-y397-w138-h50@4x.png", "table-c4.2-xv-9.png"],
+    ["page-0131-x112-y488-w140-h209@4x.png", "table-c4.2-xvi-a-1.png"],
+    ["page-0132-x112-y117-w140-h78@4x.png", "table-c4.2-xvi-a-3.png"],
+    ["page-0132-x112-y199-w140-h65@4x.png", "table-c4.2-xvi-a-4.png"],
+    ["page-0132-x112-y268-w140-h52@4x.png", "table-c4.2-xvi-a-5.png"],
+    ["page-0132-x112-y324-w140-h113@4x.png", "table-c4.2-xvi-a-6.png"],
+    ["page-0132-x112-y442-w140-h42@4x.png", "table-c4.2-xvi-a-7.png"],
+    ["page-0132-x112-y524-w140-h69@4x.png", "table-c4.2-xvi-b-8-9.png"],
+    ["page-0132-x112-y633-w144-h56@4x.png", "table-c4.2-xvii-1.png"],
+    ["page-0133-x112-y117-w144-h48@4x.png", "table-c4.2-xvii-2.png"],
+    ["page-0133-x112-y168-w144-h45@4x.png", "table-c4.2-xvii-3.png"],
+    ["page-0133-x112-y217-w144-h44@4x.png", "table-c4.2-xvii-4.png"],
+    ["page-0133-x112-y265-w144-h52@4x.png", "table-c4.2-xvii-5.png"],
+    ["page-0133-x112-y321-w144-h55@4x.png", "table-c4.2-xvii-6.png"],
+    ["page-0133-x112-y380-w144-h54@4x.png", "table-c4.2-xvii-7.png"],
+] as const;
 
 const blocks: GeneratedBlock[] = [
     block("heading", "heading", 125, "C4.2.4.1.4.3. Curve S-N", [text("C4.2.4.1.4.3. Curve S-N")], reg(73.9, 260, 450, 25), true),
@@ -595,9 +834,9 @@ const manifest = {
     formulas: [formula94, formula95, formula96, formula97].map((row) => ({ id: formulaId(row.number), unitId: uid(unitNumber), officialNumber: row.number, pdfPage: row.page, latex: row.latex })),
     tables: [tableXIIa, tableXIIb, tableXIIc, tableXIId, tableXIII, tableXIV, tableXV, tableXVIa, tableXVIb, tableXVII],
     figures: [
-        { id: figure21, unitId: uid(unitNumber), officialNumber: "C4.2.21", pdfPage: 125, caption: "Figura C4.2.21 - Curve S-N per dettagli/elementi soggetti a tensioni normali", alt: "Curve S-N per dettagli ed elementi soggetti a tensioni normali", imagePath: "figures/circ2019/figc4.2.21.png", region: figure21Region, sha256: "38bc3bd9721ad9a5f710058cf50bebe30560d87160901eb6155a4df533a82c3a" },
-        { id: figure22, unitId: uid(unitNumber), officialNumber: "C4.2.22", pdfPage: 126, caption: "Figura C4.2.22 – Classificazione alternativa Δσ_C per dettagli classificati come Δσ_C^*", alt: "Classificazione alternativa della resistenza a fatica per dettagli con asterisco", imagePath: "figures/circ2019/figc4.2.22.png", region: figure22Region, sha256: "64f7b2b7ed43fcebb39fe8bded79cf93210d02ac409911d1a3ade3d6fee7cf8d" },
-        { id: figure23, unitId: uid(unitNumber), officialNumber: "C4.2.23", pdfPage: 126, caption: "Figura C4.2.23 - Curve S-N per dettagli/elementi soggetti a tensioni tangenziali", alt: "Curve S-N per dettagli ed elementi soggetti a tensioni tangenziali", imagePath: "figures/circ2019/figc4.2.23.png", region: figure23Region, sha256: "c6dcc9a54a3c1e6586169bd9bed45a0fdc97af7dfe9a9b8abe7555e545bd6ac4" },
+        { id: figure21, unitId: uid(unitNumber), officialNumber: "C4.2.21", pdfPage: 125, caption: "Figura C4.2.21 - Curve S-N per dettagli/elementi soggetti a tensioni normali", alt: "Curve S-N per dettagli ed elementi soggetti a tensioni normali", imagePath: "figures/circ2019/figc4.2.21.png", region: figure21Region, sha256: "0a48f20786b6074435aaac7c42173e337223425360819526958bc80569bb3f7a", captionInline: [{ kind: "strong", value: "Figura C4.2.21" }, { kind: "em", value: " - Curve S-N per dettagli/elementi soggetti a tensioni normali" }] },
+        { id: figure22, unitId: uid(unitNumber), officialNumber: "C4.2.22", pdfPage: 126, caption: "Figura C4.2.22 – Classificazione alternativa Δσ_C per dettagli classificati come Δσ_C^*", alt: "Classificazione alternativa della resistenza a fatica per dettagli con asterisco", imagePath: "figures/circ2019/figc4.2.22.png", region: figure22Region, sha256: "70e13d7cb13ecd62ef1362604f015e362850b4767f7b7ff787175d6dc09c36ea", captionInline: [{ kind: "strong", value: "Figura C4.2.22" }, { kind: "em", value: " – Classificazione alternativa " }, { kind: "math", value: "Δσ_C", latex: "\\Delta\\sigma_C" }, { kind: "em", value: " per dettagli classificati come " }, { kind: "math", value: "Δσ_C^*", latex: "\\Delta\\sigma_C^{*}" }] },
+        { id: figure23, unitId: uid(unitNumber), officialNumber: "C4.2.23", pdfPage: 126, caption: "Figura C4.2.23 - Curve S-N per dettagli/elementi soggetti a tensioni tangenziali", alt: "Curve S-N per dettagli ed elementi soggetti a tensioni tangenziali", imagePath: "figures/circ2019/figc4.2.23.png", region: figure23Region, sha256: "14b37a298d10610d03970cbdef59d1b9e0b7538351e56ba2ec3e23a89a107ac5", captionInline: [{ kind: "strong", value: "Figura C4.2.23" }, { kind: "em", value: " - Curve S-N per dettagli/elementi soggetti a tensioni tangenziali" }] },
     ],
 };
 
@@ -605,9 +844,7 @@ await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await mkdir(figureDirectory, { recursive: true });
 await Promise.all([
-    copyFile(join(evidenceRenderDirectory, "page-0125-x135-y510-w330-h225@4x.png"), join(figureDirectory, "figc4.2.21.png")),
-    copyFile(join(evidenceRenderDirectory, "page-0126-x145-y155-w310-h160@4x.png"), join(figureDirectory, "figc4.2.22.png")),
-    copyFile(join(evidenceRenderDirectory, "page-0126-x170-y470-w300-h205@4x.png"), join(figureDirectory, "figc4.2.23.png")),
+    ...tableFigureCopies.map(([source, destination]) => copyFile(join(evidenceRenderDirectory, source), join(figureDirectory, destination))),
     writeFile(join(unitDirectory, `${unitNumber.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8"),
     writeFile(join(assetDirectory, "C4.2-step2o.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8"),
 ]);

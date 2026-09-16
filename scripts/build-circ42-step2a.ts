@@ -17,7 +17,7 @@ const createdAt = "2026-08-09T00:00:00Z";
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
 type TextKind = "heading" | "paragraph";
-type FormulaRow = { number: string; unit: string; page: number; latex: string; raw: string; region: Region };
+type FormulaRow = { number: string; officialNumber?: string | null; unit: string; page: number; latex: string; raw: string; region: Region };
 type GeneratedBlock = {
     blockId: string;
     kind: string;
@@ -118,6 +118,7 @@ const formulaRows: FormulaRow[] = [
     { number: "C4.2.21", unit: "C4.2.4.1.3.1", page: 106, latex: "e_0=\\frac{L}{500}", raw: "e₀ = L/500 [C4.2.21]", region: reg(150, 250, 300, 80) },
     { number: "C4.2.22", unit: "C4.2.4.1.3.1.1", page: 106, latex: "N_{C,Ed}=0{,}5\\cdot N_{Ed}+\\frac{M_{Ed}\\cdot h_0\\cdot A_C}{2\\cdot J_{eff}}", raw: "NC,Ed = 0,5 · NEd + MEd · h₀ · AC/(2 · Jeff) [C4.2.22]", region: reg(130, 485, 350, 95) },
     { number: "C4.2.23", unit: "C4.2.4.1.3.1.1", page: 106, latex: "M_{Ed}=\\frac{N_{Ed}\\cdot e_0+M^I_{Ed}}{1-N_{Ed}/N_{cr}-N_{Ed}/S_V}", raw: "MEd = (NEd · e₀ + MᴵEd)/(1 − NEd/Ncr − NEd/SV) [C4.2.23]", region: reg(125, 635, 360, 100) },
+    { number: "C4.2.23-ncr", officialNumber: null, unit: "C4.2.4.1.3.1.1", page: 106, latex: "N_{cr}=\\frac{\\pi^2 E J_{eff}}{L^2}", raw: "Ncr = π² E Jeff/L²", region: reg(75, 675, 55, 28) },
     { number: "C4.2.24", unit: "C4.2.4.1.3.1.2", page: 107, latex: "V_{Ed}=\\pi\\cdot\\frac{M_{Ed}}{L}", raw: "VEd = π · MEd/L [C4.2.24]", region: reg(125, 95, 360, 90) },
     { number: "C4.2.25", unit: "C4.2.4.1.3.1.3", page: 107, latex: "\\frac{N_{c,Ed}}{N_{b,Rd}}\\le1{,}0", raw: "Nc,Ed/Nb,Rd ≤ 1,0 [C4.2.25]", region: reg(125, 215, 360, 90) },
     { number: "C4.2.26", unit: "C4.2.4.1.3.1.3", page: 107, latex: "J_{eff}=0{,}5\\cdot h_0^2\\cdot A_C", raw: "Jeff = 0,5 · h₀² · AC [C4.2.26]", region: reg(125, 345, 360, 90) },
@@ -133,7 +134,7 @@ const tableIIIId = tableId("C4.2.III");
 const figureData = [
     { number: "C4.2.7", unit: "C4.2.4.1.3.1", page: 106, caption: "Aste composte costituite da due correnti uguali", alt: "Schema di due correnti uguali collegati da elementi di parete", source: "page-0106-x150-y310-w300-h145@3x.png", region: reg(150, 310, 300, 145), sha256: "ab2cec690a08509af4e5f0d89d0d209487c9f815d654190531e4a2d9158b9d60" },
     { number: "C4.2.8", unit: "C4.2.4.1.3.1.3", page: 107, caption: "Lunghezza di libera inflessione dei correnti di aste tralicciate", alt: "Schema della lunghezza di libera inflessione dei correnti di aste tralicciate", source: "page-0107-x125-y355-w350-h235@3x.png", region: reg(125, 355, 350, 235), sha256: "4acc970209f0c9e6c7679bca5456f9d83226500dcb2f717c909fb7b4a83976c1" },
-    { number: "C4.2.9", unit: "C4.2.4.1.3.1.4", page: 108, caption: "Schema di calcolo semplificato per un’asta calastrellata", alt: "Schema di calcolo semplificato per un’asta calastrellata", source: "page-0108-x175-y155-w250-h145@3x.png", region: reg(175, 155, 250, 145), sha256: "9bfa7c6fc7fbc8cddd0704185958642e779c699c610052bfe1f724467f786789" },
+    { number: "C4.2.9", unit: "C4.2.4.1.3.1.4", page: 108, caption: "Schema di calcolo semplificato per un’asta calastrellata", alt: "Schema di calcolo semplificato per un’asta calastrellata", source: "page-0108-x165-y130-w270-h155@3x.png", region: reg(165, 130, 270, 155), sha256: "885b4d213102814965d1200488d73d2b3ed84cf45759dae3ca39de8d25a01358" },
     { number: "C4.2.10", unit: "C4.2.4.1.3.1.5", page: 108, caption: "Tipologie di aste composte costituite da elementi ravvicinati", alt: "Tipologie di aste composte costituite da elementi ravvicinati", source: "page-0108-x100-y580-w400-h150@3x.png", region: reg(100, 580, 400, 150), sha256: "28e3eec224d45869e393722ca580ce016fa11e8e5cd52e629270531264a6c29b" },
 ];
 
@@ -145,20 +146,23 @@ const tableII = {
     caption: "Rigidezza a taglio equivalenti di aste tralicciate o calastrellate",
     columnCount: 5,
     headers: [[
-        { text: "Schema dell’asta composta (v. fig. C4.2.7)" },
-        { text: "(1)" },
-        { text: "(2)" },
-        { text: "(3)" },
-        { text: "(4)" },
+        { text: "Schema dell’asta\ncomposta\n(v. fig. C4.2.7)", align: "center" },
+        { text: "(1)", align: "center" },
+        { text: "(2)", align: "center" },
+        { text: "(3)", align: "center" },
+        { text: "(4)", align: "center" },
     ]],
     rows: [[
-        { text: "SV – rigidezza a taglio", latex: "S_V\\text{ – rigidezza a taglio}" },
-        { text: "n · EA · Ad · h₀²/d³", latex: "n\\,E_A\\,A_d\\,h_0^2/d^3" },
-        { text: "n · EA · Ad · h₀²/(2 · d³)", latex: "n\\,E_A\\,A_d\\,h_0^2/(2\\,d^3)" },
-        { text: "n · EA · Ad · h₀²/[d³ · (1 + Ad · h₀³/(AV · d³))]", latex: "\\frac{n\\,E_A\\,A_d\\,h_0^2}{d^3\\left(1+A_d\\,h_0^3/(A_V\\,d^3)\\right)}" },
-        { text: "24 · E · JC/[a² · (1 + 2 · JC · h₀/(n · JV · a))] ≤ 2π² · E · JC/a²", latex: "\\frac{24\\,E\\,J_C}{a^2\\left(1+2\\,J_C\\,h_0/(n\\,J_V\\,a)\\right)}\\le\\frac{2\\pi^2\\,E\\,J_C}{a^2}" },
+        { text: "SV – rigidezza a taglio", latex: "S_V\\text{ – rigidezza a taglio}", align: "center" },
+        { text: "n · EA · Ad · h₀²/d³", latex: "n\\,E_A\\,A_d\\,h_0^2/d^3", align: "center" },
+        { text: "n · EA · Ad · h₀²/(2 · d³)", latex: "n\\,E_A\\,A_d\\,h_0^2/(2\\,d^3)", align: "center" },
+        { text: "n · EA · Ad · h₀²/[d³ · (1 + Ad · h₀³/(AV · d³))]", latex: "\\frac{n\\,E_A\\,A_d\\,h_0^2}{d^3\\left(1+\\frac{A_d\\,h_0^3}{A_V\\,d^3}\\right)}", align: "center" },
+        { text: "24 · E · JC/[a² · (1 + 2 · JC · h₀/(n · JV · a))] ≤ 2π² · E · JC/a²", latex: "\\frac{24\\,E\\,J_C}{a^2\\left(1+\\frac{2\\,J_C\\,h_0}{n\\,J_V\\,a}\\right)}\\le\\frac{2\\pi^2\\,E\\,J_C}{a^2}", align: "center" },
     ]],
     notes: ["Ad area dei diagonali, AV area dei calastrelli, JV momento di inerzia del calastrello, AC area di un corrente, n numero di piani di tralicciatura o calastrellatura."],
+    notesInline: [[
+        math("Ad", "A_d"), text(" area dei diagonali, "), math("AV", "A_V"), text(" area dei calastrelli, "), math("JV", "J_V"), text(" momento di inerzia del calastrello, "), math("AC", "A_C"), text(" area di un corrente, "), math("n", "n"), text(" numero di piani di tralicciatura o calastrellatura."),
+    ]],
 };
 
 const tableIII = {
@@ -169,14 +173,15 @@ const tableIII = {
     caption: "Disposizione delle imbottiture di connessione tra i profili",
     columnCount: 2,
     headers: [[
-        { text: "Tipo di asta composta (Figura C4.2.10)" },
-        { text: "Spaziatura massima tra i collegamenti(*)" },
+        { text: "Tipo di asta composta (Figura C4.2.10)", align: "center" },
+        { text: "Spaziatura massima tra i collegamenti(*)", align: "center" },
     ]],
     rows: [
-        [{ text: "Tipo (1), (2), (3) o (4) collegati con imbottiture bullonate o saldate" }, { text: "15 imin", latex: "15\\,i_{min}" }],
-        [{ text: "Tipi (5) o (6) collegati con coppie di calastrelli" }, { text: "70 imin", latex: "70\\,i_{min}" }],
+        [{ text: "Tipo (1), (2), (3) o (4) collegati con imbottiture bullonate o saldate", align: "center" }, { text: "15 imin", latex: "15\\,i_{min}", align: "center" }],
+        [{ text: "Tipi (5) o (6) collegati con coppie di calastrelli", align: "center" }, { text: "70 imin", latex: "70\\,i_{min}", align: "center" }],
     ],
     notes: ["(*) La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio di inerzia minimo del singolo profilo costituente l’asta."],
+    notesInline: [[text("(*) La distanza è misurata tra i centri di due collegamenti successivi e "), math("imin", "i_{min}"), text(" è il raggio di inerzia minimo del singolo profilo costituente l’asta.")]],
 };
 
 const fig = (number: string) => figureId(number);
@@ -214,9 +219,10 @@ const units = [
         formulaBlock("C4.2.4.1.3.1.1", "formula-23", formula("C4.2.23")),
         block("C4.2.4.1.3.1.1", "where-2", "paragraph", 106, "in cui"),
         block("C4.2.4.1.3.1.1", "def-ncr", "paragraph", 106, "Ncr è il carico critico euleriano dell’asta composta;", [math("Ncr", "N_{cr}"), text(" è il carico critico euleriano dell’asta composta;")]),
+        formulaBlock("C4.2.4.1.3.1.1", "formula-23-ncr", formula("C4.2.23-ncr")),
         block("C4.2.4.1.3.1.1", "def-mied", "paragraph", 106, "MᴵEd è il valore del massimo momento flettente agente in mezzeria dell’asta composta;", [math("MᴵEd", "M^I_{Ed}"), text(" è il valore del massimo momento flettente agente in mezzeria dell’asta composta;")]),
         block("C4.2.4.1.3.1.1", "def-sv", "paragraph", 107, "SV è la rigidezza a taglio equivalente della tralicciatura o della calastrellatura.", [math("SV", "S_V"), text(" è la rigidezza a taglio equivalente della tralicciatura o della calastrellatura.")]),
-    ], ["C4.2.22", "C4.2.23"]),
+    ], ["C4.2.22", "C4.2.23", "C4.2.23-ncr"]),
     makeUnit("C4.2.4.1.3.1.2", "Calcolo della forza di taglio agente negli elementi di collegamento", [
         block("C4.2.4.1.3.1.2", "heading", "heading", 107, "C4.2.4.1.3.1.2. Calcolo della forza di taglio agente negli elementi di collegamento"),
         block("C4.2.4.1.3.1.2", "p1", "paragraph", 107, "La verifica dei calastrelli e degli elementi di parete dei tralicci nei campi estremi può essere eseguita considerando la forza di taglio nell’asta composta", [text("La verifica dei calastrelli e degli elementi di parete dei tralicci nei campi estremi può essere eseguita considerando la forza di taglio nell’asta composta")]),
@@ -265,7 +271,7 @@ const manifest = {
     section: "C4.2-step2a",
     sourceId,
     status: "transcribed-unreviewed",
-    formulas: formulaRows.map((row) => ({ id: formulaId(row.number), unitId: uid(row.unit), officialNumber: row.number, pdfPage: row.page, latex: row.latex })),
+    formulas: formulaRows.map((row) => ({ id: formulaId(row.number), unitId: uid(row.unit), officialNumber: row.officialNumber ?? row.number, pdfPage: row.page, latex: row.latex })),
     tables: [tableII, tableIII],
     figures: figureData.map((row) => ({
         id: fig(row.number),

@@ -117,13 +117,13 @@ function makeUnit(number: string, title: string, blocks: GeneratedBlock[], formu
 const formulaRows: FormulaRow[] = [
     { number: "C4.2.62", unit: "C4.2.4.1.3.4.3", page: 117, latex: "b_{\\mathrm{eff}}=\\beta\\cdot b_0", raw: "b_eff = β · b_0 [C4.2.62]", region: reg(145, 165, 310, 60) },
     { number: "C4.2.63", unit: "C4.2.4.1.3.4.3", page: 117, latex: "\\alpha_0=\\sqrt{1+\\frac{A_{sl}}{b_0t}}", raw: "α_0 = √(1 + A_sl/(b_0 t)) [C4.2.63]", region: reg(145, 405, 310, 75) },
-    { number: "C4.2.64", unit: "C4.2.4.1.3.4.3", page: 118, latex: "\\begin{aligned}&\\text{(a)}\\quad\\beta>0{,}20\\quad\\begin{cases}\\sigma_2=1{,}25(\\beta-0{,}20)\\,\\sigma_1\\\\\\sigma(y)=\\sigma_2+(\\sigma_1-\\sigma_2)\\left(1-\\frac{y}{b_0}\\right)^4\\end{cases}\\ ;\\quad\\text{(b)}\\quad\\beta\\le0{,}20\\quad\\begin{cases}\\sigma_2=0\\\\\\sigma(y)=\\sigma_1\\left(1-\\frac{y}{b_1}\\right)^4\\end{cases}\\end{aligned}", raw: "(a) β > 0,20: σ_2 = 1,25(β − 0,20)σ_1; σ(y) = σ_2 + (σ_1 − σ_2)[1 − y/b_0]^4; (b) β ≤ 0,20: σ_2 = 0; σ(y) = σ_1[1 − y/b_1]^4 [C4.2.64]", region: reg(85, 225, 425, 105) },
+    { number: "C4.2.64", unit: "C4.2.4.1.3.4.3", page: 118, latex: "\\begin{aligned}\\text{(a)}\\quad&\\beta>0{,}20\\quad\\begin{cases}\\sigma_2=1{,}25(\\beta-0{,}20)\\,\\sigma_1\\\\\\sigma(y)=\\sigma_2+(\\sigma_1-\\sigma_2)\\left(1-\\frac{y}{b_0}\\right)^4\\end{cases}\\\\\\text{(b)}\\quad&\\beta\\le0{,}20\\quad\\begin{cases}\\sigma_2=0\\\\\\sigma(y)=\\sigma_1\\left(1-\\frac{y}{b_1}\\right)^4\\end{cases}\\end{aligned}", raw: "(a) β > 0,20: σ_2 = 1,25(β − 0,20)σ_1; σ(y) = σ_2 + (σ_1 − σ_2)[1 − y/b_0]^4; (b) β ≤ 0,20: σ_2 = 0; σ(y) = σ_1[1 − y/b_1]^4 [C4.2.64]", region: reg(85, 225, 425, 105) },
     { number: "C4.2.65", unit: "C4.2.4.1.3.4.3", page: 118, latex: "A_{\\mathrm{eff}}=\\beta^\\kappa\\cdot A_{c,\\mathrm{eff}}\\ge\\beta\\cdot A_{c,\\mathrm{eff}}", raw: "A_eff = β^κ · A_c,eff ≥ β · A_c,eff [C4.2.65]", region: reg(145, 345, 310, 60) },
 ];
 
 const formulaByNumber = new Map(formulaRows.map((row) => [row.number, row]));
 const formula = (number: string) => formulaByNumber.get(number)!;
-const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, ...(latex ? { latex } : {}), ...spans });
+const c = (value: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) => ({ text: value, align: "center", ...(latex ? { latex } : {}), ...spans });
 const f = (value: string, latex: string, spans: { colSpan?: number; rowSpan?: number } = {}) => c(value, latex, spans);
 
 const tableXId = tableId("C4.2.X");

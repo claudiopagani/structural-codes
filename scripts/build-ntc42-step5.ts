@@ -83,6 +83,20 @@ const tables = {
         ], notes: ["La tabella fa riferimento agli schemi di unione della Fig. 4.2.5."],
     },
 };
+function alignTableCells(rows: unknown[][]) {
+    for (const row of rows) for (const cell of row as Array<{ align?: "center" }>) cell.align = "center";
+}
+for (const table of [tables.xvi, tables.xvii, tables.xviii]) {
+    alignTableCells(table.headers as unknown[][]);
+    alignTableCells(table.rows as unknown[][]);
+}
+const sleCell = tables.xiv.rows[6]?.[0];
+if (!sleCell) throw new Error("Cella SLE mancante: 4.2.XIV");
+sleCell.text = "Resistenza a scorrimento: per SLE";
+for (const row of tables.xiv.rows) {
+    const value = row[1] as { align?: "center" } | undefined;
+    if (value) value.align = "center";
+}
 const figure = { id: gid("4.2.5"), unitId: uid("4.2.8.1.1"), officialNumber: "4.2.5", pdfPage: 114, caption: "Fig. 4.2.5 - Disposizione dei fori per la realizzazione di unioni bullonate o chiodate", alt: "Schemi di disposizione dei fori e relative distanze e interassi per unioni bullonate o chiodate.", imagePath: "figures/ntc2018/fig4.2.5.png", region: reg(75, 535, 450, 145), sha256: "ad181b9eae35719a950ed534c6a651efa1beb0c9808c3fcc55ffc9f1ec6409d2" };
 const units = [
     unit("4.2.8.1", "UNIONI CON BULLONI, CHIODI E PERNI SOGGETTI A CARICHI STATICI", [

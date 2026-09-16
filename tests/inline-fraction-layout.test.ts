@@ -84,5 +84,5 @@ test("le frazioni in display e nelle celle impaginate su più righe restano fraz
 
     const stackedTableManifest = await json("corpus/assets/ntc2018/4.2-step4d.json");
     const stackedTable = stackedTableManifest.tables.find((table: any) => table.officialNumber === "4.2.XII");
-    assert.ok(stackedTable.rows.flat().some((cell: any) => typeof cell.latex === "string" && cell.latex.includes("\\frac")));
+    assert.ok(stackedTable.rows.flat().some((cell: any) => typeof cell.latex === "string" && /\\d?frac/u.test(cell.latex)));
 });

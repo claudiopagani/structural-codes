@@ -36,11 +36,18 @@ export interface CorpusBlock {
 }
 
 export interface FormulaAsset { id: string; unitId?: string; officialNumber: string | null; pdfPage: number; latex: string; }
-export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; }
+export interface TableCellImage {
+  imagePath: string;
+  alt: string;
+  sha256: string;
+  region: { x: number; y: number; width: number; height: number };
+}
+export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; image?: TableCellImage; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; header?: boolean; verticalText?: boolean; }
 export interface TableAsset {
   id: string;
   unitId?: string;
   columnCount?: number;
+  columnWidths?: number[];
   officialNumber: string | null;
   pdfPage: number;
   caption: string | null;

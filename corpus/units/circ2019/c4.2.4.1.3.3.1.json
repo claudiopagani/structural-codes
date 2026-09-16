@@ -41,7 +41,7 @@
         "normalizationVersion": "circ42-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "em",
+            "kind": "text",
             "value": "C4.2.4.1.3.3.1. Metodo A"
           }
         ]
@@ -72,11 +72,6 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "circ42-editorial-formatting-0.1.0",
-            "note": "Ripristinato il corsivo del sottotitolo ufficiale."
           }
         ],
         "rawSha256": "801fbfe4942a4f4f123b38b4cd86823cf2dff07a9e180af9e8dfd4d30d47b85a",
@@ -305,17 +300,8 @@
         "inline": [
           {
             "kind": "math",
-            "value": "Wy",
-            "latex": "W_y"
-          },
-          {
-            "kind": "text",
-            "value": " e "
-          },
-          {
-            "kind": "math",
-            "value": "Wz",
-            "latex": "W_z"
+            "value": "Wy e Wz",
+            "latex": "W_y\\text{ e }W_z"
           },
           {
             "kind": "text",
@@ -367,17 +353,8 @@
         "inline": [
           {
             "kind": "math",
-            "value": "Ncr,y",
-            "latex": "N_{cr,y}"
-          },
-          {
-            "kind": "text",
-            "value": " e "
-          },
-          {
-            "kind": "math",
-            "value": "Ncr,z",
-            "latex": "N_{cr,z}"
+            "value": "Ncr,y e Ncr,z",
+            "latex": "N_{cr,y}\\text{ e }N_{cr,z}"
           },
           {
             "kind": "text",
@@ -429,17 +406,8 @@
         "inline": [
           {
             "kind": "math",
-            "value": "Myeq,Ed",
-            "latex": "M_{y,eq,Ed}"
-          },
-          {
-            "kind": "text",
-            "value": " e "
-          },
-          {
-            "kind": "math",
-            "value": "Mzeq,Ed",
-            "latex": "M_{z,eq,Ed}"
+            "value": "Myeq,Ed e Mzeq,Ed",
+            "latex": "M_{y,eq,Ed}\\text{ e }M_{z,eq,Ed}"
           },
           {
             "kind": "text",
@@ -800,7 +768,7 @@
           "x": 205,
           "y": 145,
           "width": 205,
-          "height": 34
+          "height": 47
         },
         "extraction": {
           "method": "manual-transcription",
@@ -817,11 +785,6 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ42-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
-          },
-          {
-            "operation": "manual-correction",
-            "ruleVersion": "figure-caption-crop-0.1.0",
-            "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
           }
         ],
         "rawSha256": "7d995fcf303d04fe8722b7ec809233622e2588e04be0cc846ddbeb82790f953a",

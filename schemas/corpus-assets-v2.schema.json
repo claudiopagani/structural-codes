@@ -315,6 +315,33 @@
             "$ref": "#/$defs/inlineSegment"
           }
         },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "imagePath",
+            "alt",
+            "sha256",
+            "region"
+          ],
+          "properties": {
+            "imagePath": {
+              "type": "string",
+              "pattern": "^figures/(ntc2018|circ2019)/[a-z0-9._-]+\\.png$"
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "region": {
+              "$ref": "#/$defs/region"
+            }
+          }
+        },
         "colSpan": {
           "type": "integer",
           "minimum": 1,
@@ -338,6 +365,14 @@
           ]
         },
         "noWrap": {
+          "type": "boolean",
+          "default": false
+        },
+        "header": {
+          "type": "boolean",
+          "default": true
+        },
+        "verticalText": {
           "type": "boolean",
           "default": false
         }
@@ -406,6 +441,14 @@
             "columnCount": {
               "type": "integer",
               "minimum": 1
+            },
+            "columnWidths": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
             },
             "headers": {
               "type": "array",

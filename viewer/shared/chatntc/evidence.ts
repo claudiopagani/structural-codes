@@ -18,8 +18,8 @@ export async function evidencePackageId(value: Omit<ChatNTCEvidencePackage, "pac
 }
 
 function cell(value: TableCell): TableCell {
-  const { text, latex, inline, colSpan, rowSpan, strong, align, noWrap } = value;
-  return { text, latex, inline, colSpan, rowSpan, strong, align, noWrap };
+  const { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText } = value;
+  return { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText };
 }
 
 /** Project explicitly: never send raw extraction, creation actors or reviewer identities. */
@@ -49,8 +49,8 @@ export function projectEvidenceBlock(block: CorpusBlock, record: ChatNTCUnitReco
       const { id, officialNumber, pdfPage, latex } = formula;
       result.asset = { kind: "formula", data: { id, officialNumber, pdfPage, latex } };
     } else if (table) {
-      const { id, officialNumber, pdfPage, caption, columnCount, captionInline, notes, notesInline } = table;
-      result.asset = { kind: "table", data: { id, officialNumber, pdfPage, caption, columnCount, captionInline,
+      const { id, officialNumber, pdfPage, caption, columnCount, columnWidths, captionInline, notes, notesInline } = table;
+      result.asset = { kind: "table", data: { id, officialNumber, pdfPage, caption, columnCount, columnWidths, captionInline,
         headers: table.headers.map((row) => row.map(cell)), rows: table.rows.map((row) => row.map(cell)), notes, notesInline } };
     } else {
       const { id, officialNumber, pdfPage, caption, captionInline, alt, imagePath, sha256 } = figure;

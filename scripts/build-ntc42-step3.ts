@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sha256OfText } from "../src/lib/hash.ts";
@@ -6,6 +6,8 @@ import { sha256OfText } from "../src/lib/hash.ts";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const unitDirectory = join(repoRoot, "corpus", "units", "ntc2018");
 const assetDirectory = join(repoRoot, "corpus", "assets", "ntc2018");
+const figureDirectory = join(repoRoot, "corpus", "assets", "figures", "ntc2018");
+const evidenceRenderDirectory = join(repoRoot, "evidence", "gu-so8-2018-ntc", "renders");
 const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
@@ -273,65 +275,131 @@ const t4_2_vi = tableId("4.2.vi");
 const math = (value: string, latex: string): Inline => ({ kind: "math", value, latex });
 const text = (value: string): Inline => ({ kind: "text", value });
 
+const tableImageSpecs = {
+    iiiSections: { source: "page-0098-x86-y303-w253-h68@3x.png", target: "table4.2.iii-sections.png", alt: "Parti interne compresse e assi di inflessione", region: region(86, 303, 253, 68), sha256: "52c3c09730be9aaab099435cbd4476d917d101d03f9cae8ce4ca8a777c21d196" },
+    iiiFlexure: { source: "page-0098-x127-y396-w47-h45@3x.png", target: "table4.2.iii-stress-flexure.png", alt: "Distribuzione delle tensioni per parte soggetta a flessione", region: region(127, 396, 47, 45), sha256: "d855d35a0dcbbf391a6a50d5cde08071062999fd20430d3b093bad26ca2cf8f4" },
+    iiiCompression: { source: "page-0098-x182-y396-w51-h45@3x.png", target: "table4.2.iii-stress-compression.png", alt: "Distribuzione delle tensioni per parte soggetta a compressione", region: region(182, 396, 51, 45), sha256: "dfc331ffb39a6a0ee7bc7830e877afc4aa7d93848c5254aa3a11385877d7d8bb" },
+    iiiCombined: { source: "page-0098-x249-y396-w69-h45@3x.png", target: "table4.2.iii-stress-flexure-compression.png", alt: "Distribuzione delle tensioni per parte soggetta a flessione e compressione", region: region(249, 396, 69, 45), sha256: "7b9be73e5e1151b0286f3c0067d4447cf430eed9e59aa6c055f07511f12fd102" },
+    iiiFlexureClass3: { source: "page-0098-x125-y492-w50-h55@3x.png", target: "table4.2.iii-stress-flexure-class3.png", alt: "Distribuzione elastica delle tensioni per flessione, classe 3", region: region(125, 492, 50, 55), sha256: "3cbc15b28d69c062f9de1c48c422e13a98794c1feedee24c33ef23e5d19b882d" },
+    iiiCompressionClass3: { source: "page-0098-x184-y492-w50-h55@3x.png", target: "table4.2.iii-stress-compression-class3.png", alt: "Distribuzione elastica delle tensioni per compressione, classe 3", region: region(184, 492, 50, 55), sha256: "8a33748417038261bd587e6238f21e16d735335c05f94857eb4d6457b1901a48" },
+    iiiCombinedClass3: { source: "page-0098-x248-y492-w70-h55@3x.png", target: "table4.2.iii-stress-flexure-compression-class3.png", alt: "Distribuzione elastica delle tensioni per flessione e compressione, classe 3", region: region(248, 492, 70, 55), sha256: "ad20a8cb36b759081f0a0e438e54d96a4bb6c24af5c6587f92e5e4d948276266" },
+    ivSections: { source: "page-0099-x110-y119-w188-h32@3x.png", target: "table4.2.iv-sections.png", alt: "Piattabande esterne di profilati laminati a caldo e sezioni saldate", region: region(110, 119, 188, 32), sha256: "7199d1987eda0355b9ed12b88cb2bcb3b782f171927461e135e50a631555a019" },
+    ivCompression: { source: "page-0099-x151-y188-w37-h23@3x.png", target: "table4.2.iv-stress-compression.png", alt: "Distribuzione delle tensioni nella piattabanda esterna compressa", region: region(151, 188, 37, 23), sha256: "77e8b5071d68e899716d58ad728eac5861f938d8a92f771ea7f85cc80f5ec0c6" },
+    ivCombinedCompression: { source: "page-0099-x210-y188-w49-h23@3x.png", target: "table4.2.iv-stress-compression-end.png", alt: "Distribuzione delle tensioni con estremità in compressione", region: region(210, 188, 49, 23), sha256: "2a90ec231eaa6b2c0833b57027af45c348311258c812d8bc9949c75f02291b4a" },
+    ivCombinedTension: { source: "page-0099-x275-y188-w39-h23@3x.png", target: "table4.2.iv-stress-tension-end.png", alt: "Distribuzione delle tensioni con estremità in trazione", region: region(275, 188, 39, 23), sha256: "7074595a424e9f22819dcf7cd2850ae9193af784f5b99e16a794fdf6ff5254fa" },
+    ivCompressionClass3: { source: "page-0099-x151-y244-w37-h20@3x.png", target: "table4.2.iv-stress-compression-class3.png", alt: "Distribuzione elastica delle tensioni nella piattabanda esterna compressa, classe 3", region: region(151, 244, 37, 20), sha256: "c4a6a6d8759929eae9c58f21ac09def7cd6f566a661f221ba122780a4e8c9d71" },
+    ivCombinedCompressionClass3: { source: "page-0099-x210-y244-w49-h20@3x.png", target: "table4.2.iv-stress-compression-end-class3.png", alt: "Distribuzione elastica delle tensioni con estremità in compressione, classe 3", region: region(210, 244, 49, 20), sha256: "f4cde4136a61d24f17c8278e86be69dfab16f890102e8e89f4e5df9ee738b848" },
+    ivCombinedTensionClass3: { source: "page-0099-x275-y244-w39-h20@3x.png", target: "table4.2.iv-stress-tension-end-class3.png", alt: "Distribuzione elastica delle tensioni con estremità in trazione, classe 3", region: region(275, 244, 39, 20), sha256: "51f7edac6745fe74f67413e57b10e4f3c13e7a7ab02c001ca3cd52c37d44a1d6" },
+    vAngle: { source: "page-0099-x177-y334-w34-h18@3x.png", target: "table4.2.v-angle.png", alt: "Sezione angolare con dimensioni b, h e t", region: region(177, 334, 34, 18), sha256: "cdc5e8222448c99128592a462c41d01c8b5e4471d6e83c071e77ac741dcddba1" },
+    vAngleStress: { source: "page-0099-x174-y379-w47-h24@3x.png", target: "table4.2.v-angle-stress.png", alt: "Distribuzione delle tensioni sulla sezione angolare", region: region(174, 379, 47, 24), sha256: "ae228e061063bf0cca9a13457ce29f12687109fbe81bef515fbc038acba9fec0" },
+    vTube: { source: "page-0099-x173-y427-w45-h23@3x.png", target: "table4.2.v-tube.png", alt: "Sezione tubolare con diametro d e spessore t", region: region(173, 427, 45, 23), sha256: "1ebf9dbbee24a2c12d4089ed70d94290a9d3f41173c9cb7f0b62f649fdebb215" },
+} as const;
+
+function tableImage(key: keyof typeof tableImageSpecs) {
+    const { target, alt, region: imageRegion, sha256 } = tableImageSpecs[key];
+    return { image: { imagePath: `figures/ntc2018/${target}`, alt, region: imageRegion, sha256 } };
+}
+
+const tableIIICombinedClass1Inline: Inline[] = [
+    text("quando "), math("α > 0,5", "\\alpha>0{,}5"), text(": "),
+    math("c/t ≤ 396ε/(13α−1)", "c/t\\le\\frac{396\\varepsilon}{13\\alpha-1}"),
+    text("; quando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
+    math("c/t ≤ 36ε/α", "c/t\\le\\frac{36\\varepsilon}{\\alpha}"),
+];
+const tableIIICombinedClass2Inline: Inline[] = [
+    text("quando "), math("α > 0,5", "\\alpha>0{,}5"), text(": "),
+    math("c/t ≤ 456ε/(13α−1)", "c/t\\le\\frac{456\\varepsilon}{13\\alpha-1}"),
+    text("; quando "), math("α ≤ 0,5", "\\alpha\\le0{,}5"), text(": "),
+    math("c/t ≤ 41,5ε/α", "c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}"),
+];
+const tableIIICombinedClass3Inline: Inline[] = [
+    text("quando "), math("ψ > −1", "\\psi>-1"), text(": "),
+    math("c/t ≤ 42ε/(0,67+0,33ψ)", "c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi}"),
+    text("; quando "), math("ψ ≤ −1", "\\psi\\le-1"), text(": "),
+    math("c/t ≤ 62ε(1−ψ)√(−ψ)", "c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}"),
+];
+const tableIIIClassificationDistribution = "Distribuzione\ndelle tensioni\nnelle parti\n(compressione\npositiva)";
+const tableIVClassificationDistribution = "Distribuzione delle\ntensioni nelle parti\n(compressione positiva)";
+const tableVClassificationDistribution = "Distribuzione delle\ntensioni sulla sezione\n(compressione positiva)";
+
 const tableIII = {
     id: t4_2_iii,
     unitId: unitId("4.2.3.1"),
     officialNumber: "4.2.III",
     pdfPage: 98,
-    caption: "Massimi rapporti larghezza spessore per parti compresse",
+    caption: "Tab. 4.2.III – Massimi rapporti larghezza spessore per parti compresse",
+    captionInline: [
+        { kind: "strong", value: "Tab. 4.2.III" },
+        { kind: "em", value: " – Massimi rapporti larghezza spessore per parti compresse" },
+    ],
     columnCount: 7,
     headers: [
+        [{ text: "", colSpan: 7, align: "center", ...tableImage("iiiSections") }],
+        [{ text: "Parti interne compresse", colSpan: 7, align: "center", strong: true }],
         [
-            { text: "Classe" },
-            { text: "Parte soggetta a flessione", colSpan: 2 },
-            { text: "Parte soggetta a compressione", colSpan: 2 },
-            { text: "Parte soggetta a flessione e a compressione", colSpan: 2 },
+            { text: "Classe", align: "center" },
+            { text: "Parte soggetta a flessione", colSpan: 2, align: "left" },
+            { text: "Parte soggetta a compressione", colSpan: 2, align: "left" },
+            { text: "Parte soggetta a flessione e a compressione", colSpan: 2, align: "left" },
         ],
     ],
     rows: [
-        [{ text: "Distribuzione delle tensioni nelle parti (compressione positiva)", colSpan: 7 }],
         [
-            { text: "1" },
-            { text: "c/t ≤ 72ε", latex: "c/t\\le72\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 33ε", latex: "c/t\\le33\\varepsilon", colSpan: 2 },
-            { text: "quando α > 0,5: c/t ≤ 396ε/(13α−1); quando α ≤ 0,5: c/t ≤ 36ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}", colSpan: 2 },
+            { text: tableIIIClassificationDistribution, align: "center", strong: true },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiFlexure") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiCompression") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiCombined") },
         ],
         [
-            { text: "2" },
-            { text: "c/t ≤ 83ε", latex: "c/t\\le83\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 38ε", latex: "c/t\\le38\\varepsilon", colSpan: 2 },
-            { text: "quando α > 0,5: c/t ≤ 456ε/(13α−1); quando α ≤ 0,5: c/t ≤ 41,5ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}", colSpan: 2 },
-        ],
-        [{ text: "Distribuzione delle tensioni nelle parti (compressione positiva)", colSpan: 7 }],
-        [
-            { text: "3" },
-            { text: "c/t ≤ 124ε", latex: "c/t\\le124\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 42ε", latex: "c/t\\le42\\varepsilon", colSpan: 2 },
-            { text: "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ); quando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)", latex: "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}", colSpan: 2 },
+            { text: "1", align: "center" },
+            { text: "c/t ≤ 72ε", latex: "c/t\\le72\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 33ε", latex: "c/t\\le33\\varepsilon", colSpan: 2, align: "center" },
+            { text: "quando α > 0,5: c/t ≤ 396ε/(13α−1); quando α ≤ 0,5: c/t ≤ 36ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{396\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{36\\varepsilon}{\\alpha}", inline: tableIIICombinedClass1Inline, colSpan: 2, align: "center" },
         ],
         [
-            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}" },
-            { text: "fyk", latex: "f_{yk}" },
-            { text: "235" },
-            { text: "275" },
-            { text: "355" },
-            { text: "420" },
-            { text: "460" },
+            { text: "2", align: "center" },
+            { text: "c/t ≤ 83ε", latex: "c/t\\le83\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 38ε", latex: "c/t\\le38\\varepsilon", colSpan: 2, align: "center" },
+            { text: "quando α > 0,5: c/t ≤ 456ε/(13α−1); quando α ≤ 0,5: c/t ≤ 41,5ε/α", latex: "\\text{quando }\\alpha>0{,}5:\\ c/t\\le\\frac{456\\varepsilon}{13\\alpha-1};\\quad\\text{quando }\\alpha\\le0{,}5:\\ c/t\\le\\frac{41{,}5\\varepsilon}{\\alpha}", inline: tableIIICombinedClass2Inline, colSpan: 2, align: "center" },
         ],
         [
-            { text: "" },
-            { text: "ε", latex: "\\varepsilon" },
-            { text: "1,00" },
-            { text: "0,92" },
-            { text: "0,81" },
-            { text: "0,75" },
-            { text: "0,71" },
+            { text: tableIIIClassificationDistribution, align: "center", strong: true },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiFlexureClass3") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiCompressionClass3") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("iiiCombinedClass3") },
+        ],
+        [
+            { text: "3", align: "center" },
+            { text: "c/t ≤ 124ε", latex: "c/t\\le124\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 42ε", latex: "c/t\\le42\\varepsilon", colSpan: 2, align: "center" },
+            { text: "quando ψ > −1: c/t ≤ 42ε/(0,67 + 0,33ψ); quando ψ ≤ −1: c/t ≤ 62ε(1−ψ)√(−ψ)", latex: "\\text{quando }\\psi>-1:\\ c/t\\le\\frac{42\\varepsilon}{0{,}67+0{,}33\\psi};\\quad\\text{quando }\\psi\\le-1:\\ c/t\\le62\\varepsilon(1-\\psi)\\sqrt{-\\psi}", inline: tableIIICombinedClass3Inline, colSpan: 2, align: "center" },
+        ],
+        [
+            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}", rowSpan: 2, align: "center" },
+            { text: "fyk", latex: "f_{yk}", align: "center" },
+            { text: "235", align: "center" },
+            { text: "275", align: "center" },
+            { text: "355", align: "center" },
+            { text: "420", align: "center" },
+            { text: "460", align: "center" },
+        ],
+        [
+            { text: "ε", latex: "\\varepsilon", align: "center" },
+            { text: "1,00", align: "center" },
+            { text: "0,92", align: "center" },
+            { text: "0,81", align: "center" },
+            { text: "0,75", align: "center" },
+            { text: "0,71", align: "center" },
         ],
     ],
     notes: [
-        "La fonte contiene schemi grafici delle distribuzioni tensionali e delle sezioni; le celle testuali e matematiche ne conservano le etichette e i limiti numerici, con revisione visuale obbligatoria.",
         "*) ψ ≤ −1 si applica se la tensione di compressione σ ≤ fyk o la deformazione a trazione εy > fyk/E.",
     ],
+    notesInline: [[
+        text("*) "), math("ψ ≤ −1", "\\psi\\le-1"), text(" si applica se la tensione di compressione "),
+        math("σ ≤ fyk", "\\sigma\\le f_{yk}"), text(" o la deformazione a trazione "),
+        math("εy > fyk/E", "\\varepsilon_y>f_{yk}/E"), text("."),
+    ]],
 };
 
 const tableIV = {
@@ -339,56 +407,72 @@ const tableIV = {
     unitId: unitId("4.2.3.1"),
     officialNumber: "4.2.IV",
     pdfPage: 99,
-    caption: "Massimi rapporti larghezza spessore per parti compresse",
+    caption: "Tab. 4.2.IV – Massimi rapporti larghezza spessore per parti compresse",
+    captionInline: [
+        { kind: "strong", value: "Tab. 4.2.IV" },
+        { kind: "em", value: " – Massimi rapporti larghezza spessore per parti compresse" },
+    ],
     columnCount: 7,
     headers: [
+        [{ text: "Piattabande esterne", colSpan: 7, align: "center", strong: true }],
+        [{ text: "", colSpan: 7, align: "center", ...tableImage("ivSections") }],
+        [{ text: "Profilati laminati a caldo", colSpan: 3, align: "center", strong: true }, { text: "Sezioni saldate", colSpan: 4, align: "center", strong: true }],
         [
-            { text: "Classe" },
-            { text: "Piattabande esterne soggette a compressione", colSpan: 2 },
-            { text: "Piattabande esterne soggette a flessione e a compressione", colSpan: 4 },
+            { text: "Classe", align: "center" },
+            { text: "Piattabande esterne soggette a compressione", colSpan: 2, align: "left" },
+            { text: "Piattabande esterne soggette a flessione e a compressione", colSpan: 4, align: "left" },
         ],
-        [{ text: "" }, { text: "", colSpan: 2 }, { text: "Con estremità in compressione", colSpan: 2 }, { text: "Con estremità in trazione", colSpan: 2 }],
+        [{ text: "" }, { text: "", colSpan: 2 }, { text: "Con estremità in compressione", colSpan: 2, align: "left" }, { text: "Con estremità in trazione", colSpan: 2, align: "left" }],
     ],
     rows: [
-        [{ text: "Distribuzione delle tensioni nelle parti (compressione positiva)", colSpan: 7 }],
         [
-            { text: "1" },
-            { text: "c/t ≤ 9ε", latex: "c/t\\le9\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 9ε/α", latex: "c/t\\le\\frac{9\\varepsilon}{\\alpha}", colSpan: 2 },
-            { text: "c/t ≤ 9ε/(α√α)", latex: "c/t\\le\\frac{9\\varepsilon}{\\alpha\\sqrt{\\alpha}}", colSpan: 2 },
+            { text: tableIVClassificationDistribution, align: "center", strong: true },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCompression") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCombinedCompression") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCombinedTension") },
         ],
         [
-            { text: "2" },
-            { text: "c/t ≤ 10ε", latex: "c/t\\le10\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 10ε/α", latex: "c/t\\le\\frac{10\\varepsilon}{\\alpha}", colSpan: 2 },
-            { text: "c/t ≤ 10ε/(α√α)", latex: "c/t\\le\\frac{10\\varepsilon}{\\alpha\\sqrt{\\alpha}}", colSpan: 2 },
-        ],
-        [{ text: "Distribuzione delle tensioni nelle parti (compressione positiva)", colSpan: 7 }],
-        [
-            { text: "3" },
-            { text: "c/t ≤ 14ε", latex: "c/t\\le14\\varepsilon", colSpan: 2 },
-            { text: "c/t ≤ 21ε√ke — Per ke vedere EN 1993-1-5", latex: "c/t\\le21\\varepsilon\\sqrt{k_e}\\quad\\text{Per }k_e\\text{ vedere EN 1993-1-5}", colSpan: 4 },
+            { text: "1", align: "center" },
+            { text: "c/t ≤ 9ε", latex: "c/t\\le9\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 9ε/α", latex: "c/t\\le\\frac{9\\varepsilon}{\\alpha}", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 9ε/(α√α)", latex: "c/t\\le\\frac{9\\varepsilon}{\\alpha\\sqrt{\\alpha}}", colSpan: 2, align: "center" },
         ],
         [
-            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}" },
-            { text: "fyk", latex: "f_{yk}" },
-            { text: "235" },
-            { text: "275" },
-            { text: "355" },
-            { text: "420" },
-            { text: "460" },
+            { text: "2", align: "center" },
+            { text: "c/t ≤ 10ε", latex: "c/t\\le10\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 10ε/α", latex: "c/t\\le\\frac{10\\varepsilon}{\\alpha}", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 10ε/(α√α)", latex: "c/t\\le\\frac{10\\varepsilon}{\\alpha\\sqrt{\\alpha}}", colSpan: 2, align: "center" },
         ],
         [
-            { text: "" },
-            { text: "ε", latex: "\\varepsilon" },
-            { text: "1,00" },
-            { text: "0,92" },
-            { text: "0,81" },
-            { text: "0,75" },
-            { text: "0,71" },
+            { text: tableIVClassificationDistribution, align: "center", strong: true },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCompressionClass3") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCombinedCompressionClass3") },
+            { text: "", colSpan: 2, align: "center", ...tableImage("ivCombinedTensionClass3") },
+        ],
+        [
+            { text: "3", align: "center" },
+            { text: "c/t ≤ 14ε", latex: "c/t\\le14\\varepsilon", colSpan: 2, align: "center" },
+            { text: "c/t ≤ 21ε√ke — Per ke vedere EN 1993-1-5", latex: "c/t\\le21\\varepsilon\\sqrt{k_e}\\quad\\text{Per }k_e\\text{ vedere EN 1993-1-5}", colSpan: 4, align: "center" },
+        ],
+        [
+            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}", rowSpan: 2, align: "center" },
+            { text: "fyk", latex: "f_{yk}", align: "center" },
+            { text: "235", align: "center" },
+            { text: "275", align: "center" },
+            { text: "355", align: "center" },
+            { text: "420", align: "center" },
+            { text: "460", align: "center" },
+        ],
+        [
+            { text: "ε", latex: "\\varepsilon", align: "center" },
+            { text: "1,00", align: "center" },
+            { text: "0,92", align: "center" },
+            { text: "0,81", align: "center" },
+            { text: "0,75", align: "center" },
+            { text: "0,71", align: "center" },
         ],
     ],
-    notes: ["La fonte contiene schemi grafici delle sezioni e delle distribuzioni tensionali; revisione visuale obbligatoria."],
+    notes: [],
 };
 
 const tableV = {
@@ -396,28 +480,39 @@ const tableV = {
     unitId: unitId("4.2.3.1"),
     officialNumber: "4.2.V",
     pdfPage: 99,
-    caption: "Massimi rapporti larghezza spessore per parti compresse",
-    columnCount: 2,
-    headers: [[{ text: "Classe" }, { text: "Sezione in compressione" }]],
-    rows: [
-        [{ text: "Riferirsi anche alle piattabande esterne (v. Tab. 4.2.IV). Non si applica agli angoli in contatto continuo con altri componenti.", colSpan: 2 }],
-        [{ text: "Distribuzione delle tensioni sulla sezione (compressione positiva)", colSpan: 2 }],
-        [{ text: "3" }, { text: "h/t ≤ 15ε; (b+h)/(2t) ≤ 11,5ε", latex: "h/t\\le15\\varepsilon;\\quad\\frac{b+h}{2t}\\le11{,}5\\varepsilon" }],
-        [{ text: "Sezioni Tubolari", colSpan: 2 }],
-        [{ text: "Classe" }, { text: "Sezione inflessa e/o compressa" }],
-        [{ text: "1" }, { text: "d/t ≤ 50ε²", latex: "d/t\\le50\\varepsilon^2" }],
-        [{ text: "2" }, { text: "d/t ≤ 70ε²", latex: "d/t\\le70\\varepsilon^2" }],
-        [{ text: "3" }, { text: "d/t ≤ 90ε² (Per d/t > 90ε² vedere EN 1993-1-6)", latex: "d/t\\le90\\varepsilon^2\\quad(\\text{Per }d/t>90\\varepsilon^2\\text{ vedere EN 1993-1-6})" }],
-        [
-            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}" },
-            { text: "fyk | 235 | 275 | 355 | 420 | 460", latex: "f_{yk}\\quad235\\quad275\\quad355\\quad420\\quad460" },
-        ],
-        [
-            { text: "" },
-            { text: "ε | 1,00 | 0,92 | 0,81 | 0,75 | 0,71; ε² | 1,00 | 0,85 | 0,66 | 0,56 | 0,51", latex: "\\varepsilon\\quad1{,}00\\quad0{,}92\\quad0{,}81\\quad0{,}75\\quad0{,}71;\\quad\\varepsilon^2\\quad1{,}00\\quad0{,}85\\quad0{,}66\\quad0{,}56\\quad0{,}51" },
-        ],
+    caption: "Tab. 4.2.V – Massimi rapporti larghezza spessore per parti compresse",
+    captionInline: [
+        { kind: "strong", value: "Tab. 4.2.V" },
+        { kind: "em", value: " – Massimi rapporti larghezza spessore per parti compresse" },
     ],
-    notes: ["La fonte contiene schemi grafici per angolari e sezioni tubolari; revisione visuale obbligatoria."],
+    columnCount: 7,
+    headers: [
+        [{ text: "Angolari", colSpan: 7, align: "center", strong: true }],
+        [{ text: "", colSpan: 7, align: "center", ...tableImage("vAngle") }],
+        [{ text: "Riferirsi anche alle piattabande esterne (v. Tab. 4.2.IV).\nNon si applica agli angoli in contatto continuo con altri componenti.", colSpan: 7, align: "left", header: false }],
+        [{ text: "Classe", colSpan: 1, align: "center" }, { text: "Sezione in compressione", colSpan: 6, align: "center" }],
+    ],
+    rows: [
+        [
+            { text: tableVClassificationDistribution, colSpan: 1, align: "center", strong: true },
+            { text: "", colSpan: 6, align: "center", ...tableImage("vAngleStress") },
+        ],
+        [{ text: "3", colSpan: 1, align: "center" }, { text: "h/t ≤ 15ε; (b+h)/(2t) ≤ 11,5ε", latex: "h/t\\le15\\varepsilon;\\quad\\frac{b+h}{2t}\\le11{,}5\\varepsilon", inline: [math("h/t ≤ 15ε", "h/t\\le15\\varepsilon"), text("; "), math("(b+h)/(2t) ≤ 11,5ε", "\\frac{b+h}{2t}\\le11{,}5\\varepsilon")], colSpan: 6, align: "center" }],
+        [{ text: "Sezioni Tubolari", colSpan: 7, align: "center", strong: true }],
+        [{ text: "", colSpan: 7, align: "center", ...tableImage("vTube") }],
+        [{ text: "Classe", colSpan: 1, align: "center", strong: true }, { text: "Sezione inflessa e/o compressa", colSpan: 6, align: "center", strong: true }],
+        [{ text: "1", colSpan: 1, align: "center" }, { text: "d/t ≤ 50ε²", latex: "d/t\\le50\\varepsilon^2", colSpan: 6, align: "center" }],
+        [{ text: "2", colSpan: 1, align: "center" }, { text: "d/t ≤ 70ε²", latex: "d/t\\le70\\varepsilon^2", colSpan: 6, align: "center" }],
+        [{ text: "3", colSpan: 1, align: "center" }, { text: "d/t ≤ 90ε² (Per d/t > 90ε² vedere EN 1993-1-6)", latex: "d/t\\le90\\varepsilon^2\\quad(\\text{Per }d/t>90\\varepsilon^2\\text{ vedere EN 1993-1-6})", inline: [math("d/t ≤ 90ε²", "d/t\\le90\\varepsilon^2"), text(" (Per "), math("d/t > 90ε²", "d/t>90\\varepsilon^2"), text(" vedere EN 1993-1-6)")], colSpan: 6, align: "center" }],
+        [
+            { text: "ε = √(235/fyk)", latex: "\\varepsilon=\\sqrt{235/f_{yk}}", rowSpan: 3, align: "center" },
+            { text: "fyk", latex: "f_{yk}", align: "center" },
+            ...["235", "275", "355", "420", "460"].map((value) => ({ text: value, align: "center" as const })),
+        ],
+        [{ text: "ε", latex: "\\varepsilon", align: "center" }, ...["1,00", "0,92", "0,81", "0,75", "0,71"].map((value) => ({ text: value, align: "center" as const }))],
+        [{ text: "ε²", latex: "\\varepsilon^2", align: "center" }, ...["1,00", "0,85", "0,66", "0,56", "0,51"].map((value) => ({ text: value, align: "center" as const }))],
+    ],
+    notes: [],
 };
 
 const tableVI = {
@@ -425,19 +520,23 @@ const tableVI = {
     unitId: unitId("4.2.3.3"),
     officialNumber: "4.2.VI",
     pdfPage: 100,
-    caption: "Metodi di analisi globali e relativi metodi di calcolo delle capacità e classi di sezioni ammesse",
+    caption: "Tab. 4.2.VI – Metodi di analisi globali e relativi metodi di calcolo delle capacità e classi di sezioni ammesse",
+    captionInline: [
+        { kind: "strong", value: "Tab. 4.2.VI" },
+        { kind: "em", value: " – Metodi di analisi globali e relativi metodi di calcolo delle capacità e classi di sezioni ammesse" },
+    ],
     columnCount: 3,
     headers: [[
-        { text: "Metodo di analisi globale" },
-        { text: "Metodo di calcolo della capacità resistente della sezione" },
+        { text: "Metodo di analisi globale", align: "center" },
+        { text: "Metodo di calcolo della capacità\nresistente della sezione", align: "center" },
         { text: "Tipo di sezione" },
     ]],
     rows: [
-        [{ text: "(E)" }, { text: "(E)" }, { text: "tutte (*)" }],
-        [{ text: "(E)" }, { text: "(P)" }, { text: "classi 1 e 2" }],
-        [{ text: "(E)" }, { text: "(EP)" }, { text: "tutte (*)" }],
-        [{ text: "(P)" }, { text: "(P)" }, { text: "classe 1" }],
-        [{ text: "(EP)" }, { text: "(EP)" }, { text: "tutte (*)" }],
+        [{ text: "(E)", align: "center" }, { text: "(E)", align: "center" }, { text: "tutte (*)" }],
+        [{ text: "(E)", align: "center" }, { text: "(P)", align: "center" }, { text: "classi 1 e 2" }],
+        [{ text: "(E)", align: "center" }, { text: "(EP)", align: "center" }, { text: "tutte (*)" }],
+        [{ text: "(P)", align: "center" }, { text: "(P)", align: "center" }, { text: "classe 1" }],
+        [{ text: "(EP)", align: "center" }, { text: "(EP)", align: "center" }, { text: "tutte (*)" }],
     ],
     notes: ["(*) per le sezioni di classe 4 la capacità resistente può essere calcolata con riferimento alla sezione efficace."],
 };
@@ -535,9 +634,11 @@ const manifest = {
 
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
+await mkdir(figureDirectory, { recursive: true });
 await Promise.all([
     ...units.map((unit) => writeFile(join(unitDirectory, `${unit.numbering.official}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8")),
     writeFile(join(assetDirectory, "4.2-step3.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8"),
+    ...Object.values(tableImageSpecs).map(({ source, target }) => copyFile(join(evidenceRenderDirectory, source), join(figureDirectory, target))),
 ]);
 
-console.log(`NTC 4.2 step3: generate ${units.length} unità, 3 formule e 4 tabelle.`);
+console.log(`NTC 4.2 step3: generate ${units.length} unità, 3 formule, 4 tabelle e ${Object.keys(tableImageSpecs).length} immagini di cella.`);

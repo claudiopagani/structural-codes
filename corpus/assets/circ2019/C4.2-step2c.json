@@ -124,13 +124,38 @@
       "headers": [
         [
           {
-            "text": "Coefficiente di snellezza"
+            "text": "Coefficiente di snellezza",
+            "align": "center"
           },
           {
-            "text": "Coefficiente χ_w per montanti d’appoggio rigidi"
+            "text": "χ_w\ncoefficiente per\nmontanti d’appoggio rigidi",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "χ_w",
+                "latex": "\\chi_w"
+              },
+              {
+                "kind": "text",
+                "value": "\ncoefficiente per\nmontanti d’appoggio rigidi"
+              }
+            ],
+            "align": "center"
           },
           {
-            "text": "Coefficiente χ_w per gli altri casi"
+            "text": "χ_w\ncoefficiente per\ngli altri casi",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "χ_w",
+                "latex": "\\chi_w"
+              },
+              {
+                "kind": "text",
+                "value": "\ncoefficiente per\ngli altri casi"
+              }
+            ],
+            "align": "center"
           }
         ]
       ],
@@ -138,53 +163,56 @@
         [
           {
             "text": "λ_w < 0,83/η",
+            "align": "center",
             "latex": "\\lambda_w<0{,}83/\\eta"
           },
           {
             "text": "η",
+            "align": "center",
             "latex": "\\eta"
           },
           {
             "text": "η",
+            "align": "center",
             "latex": "\\eta"
           }
         ],
         [
           {
             "text": "(0,83/η) ≤ λ_w < 1,08",
+            "align": "center",
             "latex": "(0{,}83/\\eta)\\le\\lambda_w<1{,}08"
           },
           {
             "text": "0,83/λ_w",
+            "align": "center",
             "latex": "0{,}83/\\lambda_w"
           },
           {
             "text": "0,83/λ_w",
+            "align": "center",
             "latex": "0{,}83/\\lambda_w"
           }
         ],
         [
           {
             "text": "λ_w ≥ 1,08",
+            "align": "center",
             "latex": "\\lambda_w\\ge1{,}08"
           },
           {
             "text": "1,37/(0,7 + λ̄_w)",
+            "align": "center",
             "latex": "\\frac{1{,}37}{0{,}7+\\bar{\\lambda}_w}"
           },
           {
             "text": "0,83/λ_w",
+            "align": "center",
             "latex": "0{,}83/\\lambda_w"
           }
         ]
       ],
-      "notes": [],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Coefficienti χ_w per il calcolo della resistenza all’instabilità a taglio del pannello"
-        }
-      ]
+      "notes": []
     }
   ],
   "figures": [
@@ -199,21 +227,11 @@
       "region": {
         "coordinateSystem": "pdf-points-top-left",
         "x": 190,
-        "y": 628,
+        "y": 622,
         "width": 220,
-        "height": 83.333
+        "height": 88
       },
-      "sha256": "28b443e4a5804f2487a7d2160aca8adaf68e71932cd8c039b74fea246ef7f1c1",
-      "captionInline": [
-        {
-          "kind": "strong",
-          "value": "Figura C4.2.12"
-        },
-        {
-          "kind": "em",
-          "value": " - Irrigidimenti longitudinali dei pannelli d’anima"
-        }
-      ]
+      "sha256": "8e2ee0810997cffdf44acae1d1f21e254bb61dafb7b209f1024cd4daa5392bbb"
     }
   ]
 }

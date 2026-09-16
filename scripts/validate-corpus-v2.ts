@@ -34,6 +34,10 @@ type TableCell = {
     text: string;
     colSpan?: number;
     rowSpan?: number;
+    image?: {
+        imagePath: string;
+        sha256: string;
+    };
 };
 
 type TableAsset = Asset & {
@@ -241,7 +245,7 @@ function validateTableRows(
 }
 
 const manifestAssetIds = new Set<string>();
-const manifestFigurePaths = new Set<string>();
+const manifestImagePaths = new Set<string>();
 const registeredSourceIds = new Set(
     registry.works.flatMap((work) =>
         work.manifestations.map((manifestation) => manifestation.sourceId),
@@ -274,9 +278,21 @@ for (const record of validAssetRecords) {
     for (const table of record.value.tables) {
         validateTableRows(`${table.id} intestazione`, table.headers, table.columnCount);
         validateTableRows(`${table.id} corpo`, table.rows, table.columnCount);
+        for (const cell of [...table.headers, ...table.rows].flat()) {
+            if (!cell.image) continue;
+            manifestImagePaths.add(cell.image.imagePath);
+            const imageFile = join(repoRoot, "corpus", "assets", cell.image.imagePath);
+            const digest = createHash("sha256")
+                .update(await readFile(imageFile))
+                .digest("hex");
+            if (digest !== cell.image.sha256) {
+                errors += 1;
+                console.error(`  ERRORE ${table.id}: sha256 dell’immagine di cella non corrisponde`);
+            }
+        }
     }
     for (const figure of record.value.figures) {
-        manifestFigurePaths.add(figure.imagePath);
+        manifestImagePaths.add(figure.imagePath);
         const imageFile = join(repoRoot, "corpus", "assets", figure.imagePath);
         const digest = createHash("sha256")
             .update(await readFile(imageFile))
@@ -292,9 +308,9 @@ const figureDirectory = join(repoRoot, "corpus", "assets", "figures");
 for (const file of await walkFiles(figureDirectory, ".png")) {
     const imagePath = relative(join(repoRoot, "corpus", "assets"), file.absolutePath)
         .replaceAll("\\", "/");
-    if (!manifestFigurePaths.has(imagePath)) {
+    if (!manifestImagePaths.has(imagePath)) {
         errors += 1;
-        console.error(`  ERRORE ritaglio figura senza manifest: ${imagePath}`);
+        console.error(`  ERRORE ritaglio immagine senza manifest: ${imagePath}`);
     }
 }
 

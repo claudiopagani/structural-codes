@@ -29,6 +29,13 @@
       "latex": "M_{Ed}=\\frac{N_{Ed}\\cdot e_0+M^I_{Ed}}{1-N_{Ed}/N_{cr}-N_{Ed}/S_V}"
     },
     {
+      "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.23-ncr",
+      "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.1",
+      "officialNumber": null,
+      "pdfPage": 106,
+      "latex": "N_{cr}=\\frac{\\pi^2 E J_{eff}}{L^2}"
+    },
+    {
       "id": "urn:structural-codes:it:asset:formula:circ2019:c4.2.24",
       "unitId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.2",
       "officialNumber": "C4.2.24",
@@ -82,19 +89,24 @@
       "headers": [
         [
           {
-            "text": "Schema dell’asta composta (v. fig. C4.2.7)"
+            "text": "Schema dell’asta\ncomposta\n(v. fig. C4.2.7)",
+            "align": "center"
           },
           {
-            "text": "(1)"
+            "text": "(1)",
+            "align": "center"
           },
           {
-            "text": "(2)"
+            "text": "(2)",
+            "align": "center"
           },
           {
-            "text": "(3)"
+            "text": "(3)",
+            "align": "center"
           },
           {
-            "text": "(4)"
+            "text": "(4)",
+            "align": "center"
           }
         ]
       ],
@@ -102,28 +114,47 @@
         [
           {
             "text": "SV – rigidezza a taglio",
-            "latex": "S_V\\text{ – rigidezza a taglio}"
+            "latex": "S_V\\text{ – rigidezza a taglio}",
+            "align": "center"
           },
           {
             "text": "n · EA · Ad · h₀²/d³",
-            "latex": "n\\,E_A\\,A_d\\,h_0^2/d^3"
+            "latex": "n\\,E_A\\,A_d\\,h_0^2/d^3",
+            "align": "center"
           },
           {
             "text": "n · EA · Ad · h₀²/(2 · d³)",
-            "latex": "n\\,E_A\\,A_d\\,h_0^2/(2\\,d^3)"
+            "latex": "n\\,E_A\\,A_d\\,h_0^2/(2\\,d^3)",
+            "align": "center"
           },
           {
             "text": "n · EA · Ad · h₀²/[d³ · (1 + Ad · h₀³/(AV · d³))]",
-            "latex": "\\frac{n\\,E_A\\,A_d\\,h_0^2}{d^3\\left(1+A_d\\,h_0^3/(A_V\\,d^3)\\right)}"
+            "latex": "\\frac{n\\,E_A\\,A_d\\,h_0^2}{d^3\\left(1+\\frac{A_d\\,h_0^3}{A_V\\,d^3}\\right)}",
+            "align": "center"
           },
           {
             "text": "24 · E · JC/[a² · (1 + 2 · JC · h₀/(n · JV · a))] ≤ 2π² · E · JC/a²",
-            "latex": "\\frac{24\\,E\\,J_C}{a^2\\left(1+2\\,J_C\\,h_0/(n\\,J_V\\,a)\\right)}\\le\\frac{2\\pi^2\\,E\\,J_C}{a^2}"
+            "latex": "\\frac{24\\,E\\,J_C}{a^2\\left(1+\\frac{2\\,J_C\\,h_0}{n\\,J_V\\,a}\\right)}\\le\\frac{2\\pi^2\\,E\\,J_C}{a^2}",
+            "align": "center"
           }
         ]
       ],
       "notes": [
         "Ad area dei diagonali, AV area dei calastrelli, JV momento di inerzia del calastrello, AC area di un corrente, n numero di piani di tralicciatura o calastrellatura."
+      ],
+      "notesInline": [
+        [
+          { "kind": "math", "value": "Ad", "latex": "A_d" },
+          { "kind": "text", "value": " area dei diagonali, " },
+          { "kind": "math", "value": "AV", "latex": "A_V" },
+          { "kind": "text", "value": " area dei calastrelli, " },
+          { "kind": "math", "value": "JV", "latex": "J_V" },
+          { "kind": "text", "value": " momento di inerzia del calastrello, " },
+          { "kind": "math", "value": "AC", "latex": "A_C" },
+          { "kind": "text", "value": " area di un corrente, " },
+          { "kind": "math", "value": "n", "latex": "n" },
+          { "kind": "text", "value": " numero di piani di tralicciatura o calastrellatura." }
+        ]
       ],
       "captionInline": [
         {
@@ -142,35 +173,48 @@
       "headers": [
         [
           {
-            "text": "Tipo di asta composta (Figura C4.2.10)"
+            "text": "Tipo di asta composta (Figura C4.2.10)",
+            "align": "center"
           },
           {
-            "text": "Spaziatura massima tra i collegamenti(*)"
+            "text": "Spaziatura massima tra i collegamenti(*)",
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Tipo (1), (2), (3) o (4) collegati con imbottiture bullonate o saldate"
+            "text": "Tipo (1), (2), (3) o (4) collegati con imbottiture bullonate o saldate",
+            "align": "center"
           },
           {
             "text": "15 imin",
-            "latex": "15\\,i_{min}"
+            "latex": "15\\,i_{min}",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "Tipi (5) o (6) collegati con coppie di calastrelli"
+            "text": "Tipi (5) o (6) collegati con coppie di calastrelli",
+            "align": "center"
           },
           {
             "text": "70 imin",
-            "latex": "70\\,i_{min}"
+            "latex": "70\\,i_{min}",
+            "align": "center"
           }
         ]
       ],
       "notes": [
         "(*) La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio di inerzia minimo del singolo profilo costituente l’asta."
+      ],
+      "notesInline": [
+        [
+          { "kind": "text", "value": "(*) La distanza è misurata tra i centri di due collegamenti successivi e " },
+          { "kind": "math", "value": "imin", "latex": "i_{min}" },
+          { "kind": "text", "value": " è il raggio di inerzia minimo del singolo profilo costituente l’asta." }
+        ]
       ],
       "captionInline": [
         {
@@ -245,12 +289,12 @@
       "imagePath": "figures/circ2019/figc4.2.9.png",
       "region": {
         "coordinateSystem": "pdf-points-top-left",
-        "x": 175,
-        "y": 155,
-        "width": 250,
-        "height": 130
+        "x": 165,
+        "y": 130,
+        "width": 270,
+        "height": 155
       },
-      "sha256": "57d8fa87252cf3db638f99622936d34d3b157a0987e471d0e689e1c951af2635",
+      "sha256": "885b4d213102814965d1200488d73d2b3ed84cf45759dae3ca39de8d25a01358",
       "captionInline": [
         {
           "kind": "strong",

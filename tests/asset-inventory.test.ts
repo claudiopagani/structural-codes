@@ -18,16 +18,25 @@ async function walk(directory: string): Promise<string[]> {
     return nested.flat();
 }
 
-test("ogni PNG canonico è dichiarato da un manifest figura", async () => {
+test("ogni PNG canonico è dichiarato da un manifest figura o da una cella tabellare", async () => {
     const files = await walk(assetRoot);
     const manifestFiles = files.filter((file) => file.endsWith(".json"));
     const manifestPaths = new Set<string>();
 
     for (const file of manifestFiles) {
         const manifest = JSON.parse(await readFile(file, "utf8")) as {
-            figures: Array<{ imagePath: string }>;
+            figures?: Array<{ imagePath: string }>;
+            tables?: Array<{
+                headers: Array<Array<{ image?: { imagePath: string } }>>;
+                rows: Array<Array<{ image?: { imagePath: string } }>>;
+            }>;
         };
-        for (const figure of manifest.figures) manifestPaths.add(figure.imagePath);
+        for (const figure of manifest.figures ?? []) manifestPaths.add(figure.imagePath);
+        for (const table of manifest.tables ?? []) {
+            for (const cell of [...table.headers, ...table.rows].flat()) {
+                if (cell.image) manifestPaths.add(cell.image.imagePath);
+            }
+        }
     }
 
     const imagePaths = files

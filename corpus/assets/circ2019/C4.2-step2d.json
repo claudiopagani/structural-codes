@@ -55,120 +55,169 @@
         [
           {
             "text": "Distribuzione delle tensioni",
-            "colSpan": 3
+            "align": "center",
+            "colSpan": 4
           },
           {
             "text": "Larghezza efficace del pannello",
-            "colSpan": 4
+            "align": "center",
+            "colSpan": 3
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Diagramma: σ₁ = σ₂; pannello uniformemente compresso, con b̄, b_e1 e b_e2",
-            "latex": "\\text{Diagramma: }\\sigma_1=\\sigma_2;\\quad\\bar b,\\ b_{e1},\\ b_{e2}",
-            "colSpan": 3
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-viii-stress-uniform.png",
+              "alt": "Distribuzione uniforme delle tensioni",
+              "sha256": "26af20b47df0f02340d7ced133c7d95d5963495f16c3a82c45ccd1537120e946",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 445,
+                "width": 150,
+                "height": 50
+              }
+            },
+            "colSpan": 4
           },
           {
             "text": "ψ = σ₂/σ₁ = 1; b_eff = ρ·b̄; b_e1 = 0,5·b_eff; b_e2 = 0,5·b_eff",
+            "align": "center",
             "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}=1\\\\b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=0{,}5\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}5\\,b_{\\mathrm{eff}}\\end{gathered}",
-            "colSpan": 4
+            "colSpan": 3
           }
         ],
         [
           {
-            "text": "Diagramma: distribuzione lineare decrescente da σ₁ a σ₂, con 1 > ψ = σ₂/σ₁ > 0",
-            "latex": "\\text{Diagramma: distribuzione lineare; }1>\\psi=\\frac{\\sigma_2}{\\sigma_1}>0",
-            "colSpan": 3
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-viii-stress-positive.png",
+              "alt": "Distribuzione lineare decrescente delle tensioni",
+              "sha256": "b2cb6ada30d245191aa7d49f45f12c29d54e6399a4d10e502b4def5f42afb6bf",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 500,
+                "width": 150,
+                "height": 52
+              }
+            },
+            "colSpan": 4
           },
           {
             "text": "b_eff = ρ·b̄; b_e1 = 2/(5−ψ)·b_eff; b_e2 = b_eff − b_e1",
+            "align": "center",
             "latex": "\\begin{gathered}b_{\\mathrm{eff}}=\\rho\\,\\bar b\\\\b_{e1}=\\frac{2}{5-\\psi}b_{\\mathrm{eff}}\\quad b_{e2}=b_{\\mathrm{eff}}-b_{e1}\\end{gathered}",
-            "colSpan": 4
+            "colSpan": 3
           }
         ],
         [
           {
-            "text": "Diagramma: distribuzione lineare da σ₁ compressiva a σ₂ con ψ < 0; b_c e b_t",
-            "latex": "\\text{Diagramma: }\\sigma_1\\text{ compressiva, }\\sigma_2\\text{ con }\\psi<0;\\quad b_c,b_t",
-            "colSpan": 3
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-viii-stress-negative.png",
+              "alt": "Distribuzione lineare con tensione di trazione",
+              "sha256": "daf3768949783e5e8ec62b02650aa6b43cd7c3a3e6af780f87acf48a0b1e9805",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 565,
+                "width": 150,
+                "height": 52
+              }
+            },
+            "colSpan": 4
           },
           {
             "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b̄/(1−ψ); b_e1 = 0,4·b_eff; b_e2 = 0,6·b_eff",
+            "align": "center",
             "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,\\frac{\\bar b}{1-\\psi}\\\\b_{e1}=0{,}4\\,b_{\\mathrm{eff}}\\quad b_{e2}=0{,}6\\,b_{\\mathrm{eff}}\\end{gathered}",
-            "colSpan": 4
+            "colSpan": 3
           }
         ],
         [
           {
             "text": "ψ = σ₂/σ₁",
+            "align": "center",
             "latex": "\\psi=\\sigma_2/\\sigma_1"
           },
           {
             "text": "1,00",
+            "align": "center",
             "latex": "1{,}00"
           },
           {
             "text": "1 > ψ > 0",
+            "align": "center",
             "latex": "1>\\psi>0"
           },
           {
             "text": "0",
+            "align": "center",
             "latex": "0"
           },
           {
             "text": "0 > ψ > −1",
+            "align": "center",
             "latex": "0>\\psi>-1"
           },
           {
             "text": "−1",
+            "align": "center",
             "latex": "-1"
           },
           {
             "text": "−1 > ψ > −3",
+            "align": "center",
             "latex": "-1>\\psi>-3"
           }
         ],
         [
           {
             "text": "fattore k_σ",
+            "align": "center",
             "latex": "\\text{fattore }k_\\sigma"
           },
           {
             "text": "4,00",
+            "align": "center",
             "latex": "4{,}00"
           },
           {
             "text": "8,2/(1,05 + ψ)",
+            "align": "center",
             "latex": "\\frac{8{,}2}{1{,}05+\\psi}"
           },
           {
             "text": "7,81",
+            "align": "center",
             "latex": "7{,}81"
           },
           {
             "text": "7,81 − 6,29ψ + 9,78ψ²",
+            "align": "center",
             "latex": "7{,}81-6{,}29\\psi+9{,}78\\psi^2"
           },
           {
             "text": "23,9",
+            "align": "center",
             "latex": "23{,}9"
           },
           {
             "text": "5,98(1 − ψ)²",
+            "align": "center",
             "latex": "5{,}98(1-\\psi)^2"
           }
         ]
       ],
       "notes": [
         "I diagrammi delle distribuzioni delle tensioni sono rappresentati come descrizioni strutturate delle figure interne alla tabella."
-      ],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Larghezza efficace di pannelli compressi con entrambi i bordi longitudinali irrigiditi"
-        }
       ]
     },
     {
@@ -178,39 +227,67 @@
       "pdfPage": 116,
       "caption": "Larghezza efficace di pannelli compressi con un solo bordo longitudinale irrigidito",
       "columnCount": 6,
-      "headers": [
-        [
-          {
-            "text": "Distribuzione delle tensioni",
-            "colSpan": 3
-          },
-          {
-            "text": "Larghezza efficace del pannello",
-            "colSpan": 3
-          }
-        ]
-      ],
+    "headers": [
+      [
+        {
+          "text": "Distribuzione delle tensioni",
+          "align": "center",
+          "colSpan": 3
+        },
+        {
+          "text": "Larghezza efficace del pannello",
+          "align": "center",
+          "colSpan": 3
+        }
+      ]
+    ],
       "rows": [
         [
           {
-            "text": "Diagramma: bordo longitudinale irrigidito a sinistra; σ₁, σ₂, c e b_eff",
-            "latex": "\\text{Diagramma: bordo irrigidito a sinistra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}",
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-ix-stress-left-positive.png",
+              "alt": "Distribuzione delle tensioni con irrigidimento a sinistra",
+              "sha256": "769f4e278a393c9cd92c1c4d2b26ce225939c4502bed95d14787d11e24f51083",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 130,
+                "width": 150,
+                "height": 45
+              }
+            },
             "colSpan": 3
           },
           {
             "text": "1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c",
+            "align": "center",
             "latex": "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}",
             "colSpan": 3
           }
         ],
         [
           {
-            "text": "Diagramma: bordo longitudinale irrigidito a sinistra; distribuzione con ψ < 0, b_c e b_t",
-            "latex": "\\text{Diagramma: bordo irrigidito a sinistra; }\\psi<0,\\quad b_c,b_t",
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-ix-stress-left-negative.png",
+              "alt": "Distribuzione delle tensioni con irrigidimento a sinistra",
+              "sha256": "877aeb525b0080bdb1117e8ac763e8f898ffe0b882b4f31dee6cea8cca0ec4a1",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 180,
+                "width": 150,
+                "height": 53
+              }
+            },
             "colSpan": 3
           },
           {
             "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)",
+            "align": "center",
             "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}",
             "colSpan": 3
           }
@@ -218,85 +295,127 @@
         [
           {
             "text": "ψ = σ₂/σ₁",
+            "align": "center",
             "latex": "\\psi=\\sigma_2/\\sigma_1"
           },
           {
             "text": "1,00",
+            "align": "center",
             "latex": "1{,}00"
           },
           {
             "text": "1 > ψ > 0",
+            "align": "center",
             "latex": "1>\\psi>0"
           },
           {
             "text": "0",
+            "align": "center",
             "latex": "0"
           },
           {
             "text": "0 > ψ > −1",
+            "align": "center",
             "latex": "0>\\psi>-1"
           },
           {
             "text": "−1",
+            "align": "center",
             "latex": "-1"
           }
         ],
-        [
-          {
-            "text": "fattore k_σ",
+      [
+        {
+          "text": "fattore k_σ",
+            "align": "center",
             "latex": "\\text{fattore }k_\\sigma"
           },
           {
             "text": "0,43",
+            "align": "center",
             "latex": "0{,}43"
           },
           {
             "text": "0,578/(0,34 + ψ)",
+            "align": "center",
             "latex": "\\frac{0{,}578}{0{,}34+\\psi}"
           },
           {
             "text": "1,70",
+            "align": "center",
             "latex": "1{,}70"
           },
           {
             "text": "1,7 − 5ψ + 17,1ψ²",
+            "align": "center",
             "latex": "1{,}7-5\\psi+17{,}1\\psi^2"
           },
           {
             "text": "23,8",
-            "latex": "23{,}8"
-          }
-        ],
-        [
-          {
-            "text": "Distribuzione delle tensioni",
-            "colSpan": 3
-          },
-          {
-            "text": "Larghezza efficace del pannello",
-            "colSpan": 3
-          }
-        ],
-        [
-          {
-            "text": "Diagramma: bordo longitudinale irrigidito a destra; σ₁, σ₂, c e b_eff",
-            "latex": "\\text{Diagramma: bordo irrigidito a destra; }\\sigma_1,\\sigma_2,c,b_{\\mathrm{eff}}",
+            "align": "center",
+          "latex": "23{,}8"
+        }
+      ],
+      [
+        {
+          "text": "Distribuzione delle tensioni",
+          "align": "center",
+          "colSpan": 3,
+          "strong": true
+        },
+        {
+          "text": "Larghezza efficace del pannello",
+          "align": "center",
+          "colSpan": 3,
+          "strong": true
+        }
+      ],
+      [
+        {
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-ix-stress-right-positive.png",
+              "alt": "Distribuzione delle tensioni con irrigidimento a destra",
+              "sha256": "4264c75759ff3f8ff4f0ac3534840a308185ede16bd909733d5aa3c166ffd5fd",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 280,
+                "width": 150,
+                "height": 53
+              }
+            },
             "colSpan": 3
           },
           {
             "text": "1 > ψ = σ₂/σ₁ ≥ 0; b_eff = ρ·c",
+            "align": "center",
             "latex": "\\begin{gathered}1>\\psi=\\frac{\\sigma_2}{\\sigma_1}\\ge0\\\\b_{\\mathrm{eff}}=\\rho\\,c\\end{gathered}",
             "colSpan": 3
           }
         ],
         [
           {
-            "text": "Diagramma: bordo longitudinale irrigidito a destra; distribuzione con ψ < 0, b_c e b_t",
-            "latex": "\\text{Diagramma: bordo irrigidito a destra; }\\psi<0,\\quad b_c,b_t",
+            "text": "",
+            "align": "center",
+            "image": {
+              "imagePath": "figures/circ2019/table-c4.2-ix-stress-right-negative.png",
+              "alt": "Distribuzione delle tensioni con irrigidimento a destra",
+              "sha256": "748cb3bb8164feed64db1469532d6d8c9bae795fd15bffdb30f02a5593f8f056",
+              "region": {
+                "coordinateSystem": "pdf-points-top-left",
+                "x": 95,
+                "y": 335,
+                "width": 150,
+                "height": 61
+              }
+            },
             "colSpan": 3
           },
           {
             "text": "ψ = σ₂/σ₁ < 0; b_eff = ρ·b_c = ρ·c/(1−ψ)",
+            "align": "center",
             "latex": "\\begin{gathered}\\psi=\\frac{\\sigma_2}{\\sigma_1}<0\\\\b_{\\mathrm{eff}}=\\rho\\,b_c=\\rho\\,\\frac{c}{1-\\psi}\\end{gathered}",
             "colSpan": 3
           }
@@ -304,10 +423,12 @@
         [
           {
             "text": "ψ = σ₂/σ₁",
+            "align": "center",
             "latex": "\\psi=\\sigma_2/\\sigma_1"
           },
           {
             "text": "1 ≥ ψ ≥ −3",
+            "align": "center",
             "latex": "1\\ge\\psi\\ge-3",
             "colSpan": 5
           }
@@ -315,10 +436,12 @@
         [
           {
             "text": "fattore k_σ",
+            "align": "center",
             "latex": "\\text{fattore }k_\\sigma"
           },
           {
             "text": "0,57 − 0,21ψ + 0,07ψ²",
+            "align": "center",
             "latex": "0{,}57-0{,}21\\psi+0{,}07\\psi^2",
             "colSpan": 5
           }
@@ -326,12 +449,6 @@
       ],
       "notes": [
         "I diagrammi delle distribuzioni delle tensioni sono rappresentati come descrizioni strutturate delle figure interne alla tabella."
-      ],
-      "captionInline": [
-        {
-          "kind": "em",
-          "value": "Larghezza efficace di pannelli compressi con un solo bordo longitudinale irrigidito"
-        }
       ]
     }
   ],

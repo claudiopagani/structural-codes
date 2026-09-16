@@ -617,6 +617,43 @@
       "listMarker": "none"
     },
     {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.1#block-formula-23-ncr",
+      "kind": "formula-ref",
+      "origin": "official",
+      "assetId": "urn:structural-codes:it:asset:formula:circ2019:c4.2.23-ncr",
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 106,
+        "printedPage": "102",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 75,
+          "y": 675,
+          "width": 55,
+          "height": 28
+        },
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-source-transcription",
+          "toolVersion": "circ42-editorial-profile-0.1.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Ricomposte le righe tipografiche appartenenti allo stesso capoverso; i capoversi distinti restano blocchi separati."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ42-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "229ff4439902c636c7cd2c5b9998d1d276304d537ca6fd37f8e7aee07ee6d676",
+        "normalizedSha256": "229ff4439902c636c7cd2c5b9998d1d276304d537ca6fd37f8e7aee07ee6d676"
+      }
+    },
+    {
       "blockId": "urn:structural-codes:it:unit:circ2019:c4.2.4.1.3.1.1#block-def-mied",
       "kind": "list-item",
       "origin": "official",
@@ -726,9 +763,10 @@
   "citations": [],
   "relations": [],
   "assets": {
-    "formulaIds": [
-      "urn:structural-codes:it:asset:formula:circ2019:c4.2.22",
-      "urn:structural-codes:it:asset:formula:circ2019:c4.2.23"
+      "formulaIds": [
+        "urn:structural-codes:it:asset:formula:circ2019:c4.2.22",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.23",
+      "urn:structural-codes:it:asset:formula:circ2019:c4.2.23-ncr"
     ],
     "tableIds": [],
     "figureIds": []
