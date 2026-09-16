@@ -40,7 +40,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.stats.blocks, 10982);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 104);
+  assert.equal(manifest.stats.reviewedUnits, 246);
   assert.equal(manifest.stats.assetUnits, 436);
   assert.equal(manifest.stats.formulas, 890);
   assert.equal(manifest.stats.tables, 219);
@@ -103,8 +103,14 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
       "urn:structural-codes:it:unit:ntc2018:2.6.1",
       "urn:structural-codes:it:unit:ntc2018:2.6.2",
       "urn:structural-codes:it:unit:ntc2018:4.1",
-    ].concat(units.filter((unit) => unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3")).map((unit) => unit.id));
-  assert.equal(expectedReviewedUnitIds.length, 104);
+    ].concat(units.filter((unit) =>
+      unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3") ||
+      unit.id === "urn:structural-codes:it:unit:ntc2018:4.2" ||
+      unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:4.2.") ||
+      unit.id === "urn:structural-codes:it:unit:circ2019:c4.2" ||
+      unit.id.startsWith("urn:structural-codes:it:unit:circ2019:c4.2.")
+    ).map((unit) => unit.id));
+  assert.equal(expectedReviewedUnitIds.length, 246);
   assert.deepEqual(
     units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
     expectedReviewedUnitIds.sort(),

@@ -319,9 +319,8 @@ function recordsForPaths(index: DocumentIndex | null, lookup: DocumentLookup | n
 function buildCombinedPlan(primaryIndex: DocumentIndex | null, circIndex: DocumentIndex | null, relations: RelationEdge[]): CombinedPlan {
   const empty: CombinedPlan = { fallbackSummaries: [], circPathsByPrimaryPath: new Map(), primaryAnchorByFallbackId: new Map() };
   if (!primaryIndex || !circIndex) return empty;
-  const primaryNumbers = new Set(primaryIndex.units.map((summary) => baseNumbering(summary.numbering.official)));
   const relatedSourceIds = new Set(relations.map((edge) => edge.sourceUnitId));
-  const fallbackSummaries = circIndex.units.filter((summary) => !primaryNumbers.has(baseNumbering(summary.numbering.official)) && !relatedSourceIds.has(summary.id));
+  const fallbackSummaries = circIndex.units.filter((summary) => !relatedSourceIds.has(summary.id));
   const primary = [...primaryIndex.units].sort(compareBaseNumbering);
   const circPathsByPrimaryPath = new Map<string, Set<string>>();
   const primaryAnchorByFallbackId = new Map<string, UnitSummary>();
@@ -357,12 +356,13 @@ function sameRelatedRecords(left: RelatedRecord[], right: RelatedRecord[]) {
 const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string }) {
   const { unit, chunk } = record;
   const isChapter = depth(unit) === 0;
+  const isCircularFallback = mode === "combined" && unit.document === "circ2019";
   const visibleRelated = mode === "combined" ? relatedRecords.filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit)) : emptyRelatedRecords;
   const keepNtcChapterMarker = mode === "combined" && unit.document === "ntc2018" && isChapter;
   if (mode === "combined" && !hasUnitContent(unit) && visibleRelated.length === 0 && !keepNtcChapterMarker) {
     return <span className="scv-structural-anchor" data-scv-text-unit={unit.id} data-scv-chunk-path={record.summary.chunkPath} aria-hidden="true" />;
   }
-  return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}`} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
+  return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}${isCircularFallback ? " scv-circular-fallback" : ""}`} data-provenance={isCircularFallback ? "Circolare 7/2019" : undefined} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
     {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unit.title}</span></h2>}
     <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} />
     {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} /></section>)}

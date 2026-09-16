@@ -124,7 +124,13 @@ const sourceCheckedUnitIds = new Set([
 ]);
 
 function isSourceChecked(unit: CanonicalUnit) {
-    return sourceCheckedUnitIds.has(unit.id) || unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3");
+    const chapter42Prefixes = [
+        "urn:structural-codes:it:unit:ntc2018:4.2",
+        "urn:structural-codes:it:unit:circ2019:c4.2",
+    ];
+    return sourceCheckedUnitIds.has(unit.id) ||
+        unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3") ||
+        chapter42Prefixes.some((prefix) => unit.id === prefix || unit.id.startsWith(`${prefix}.`));
 }
 
 test("le unità verificate sono source-checked, le altre restano estratte e bloccate dalla review", async () => {

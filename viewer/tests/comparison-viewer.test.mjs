@@ -68,13 +68,14 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
 
-test("combined usa le NTC come base e aggiunge i soli contenuti Circolare mancanti", async () => {
+test("combined usa le NTC come base e conserva tutti i contenuti Circolare", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /loadRelations\(manifest, dataBaseUrl\)/);
   assert.match(source, /loadDocumentIndex\(manifest, "circ2019", dataBaseUrl\)/);
   assert.match(source, /const circRecords = useMemo/);
   assert.match(source, /function baseNumbering\(value: string\)/);
-  assert.match(source, /!primaryNumbers\.has\(baseNumbering\(summary\.numbering\.official\)\)/);
+  assert.match(source, /const fallbackSummaries = circIndex\.units\.filter\(\(summary\) => !relatedSourceIds\.has\(summary\.id\)\)/);
+  assert.doesNotMatch(source, /primaryNumbers/);
   assert.match(source, /sourceUnitId === resultId/);
   assert.match(source, /const relatedByTarget = useMemo/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
@@ -82,7 +83,16 @@ test("combined usa le NTC come base e aggiunge i soli contenuti Circolare mancan
   assert.match(source, /const keepNtcChapterMarker = mode === "combined"[\s\S]*unit\.document === "ntc2018"[\s\S]*isChapter/);
   assert.match(source, /className="scv-structural-anchor"/);
   assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
+  assert.match(source, /isCircularFallback = mode === "combined" && unit\.document === "circ2019"/);
+  assert.match(source, /scv-circular-fallback/);
+  assert.match(source, /data-provenance=\{isCircularFallback \? "Circolare 7\/2019" : undefined\}/);
   assert.doesNotMatch(source, /Collegamento editoriale da revisionare|Provenienza: Circolare 7\/2019|same-numbering/);
+});
+
+test("i fallback Circolare mantengono lo sfondo di provenienza anche senza relazione esplicita", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /\.scv-related-unit, \.scv-circular-fallback \{[^}]*background: var\(--scv-circular\)/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-related-unit, \.scv-root\.scv-dark \.scv-circular-fallback/);
 });
 
 test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () => {

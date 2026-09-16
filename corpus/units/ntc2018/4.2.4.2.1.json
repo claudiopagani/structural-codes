@@ -773,33 +773,26 @@
     ]
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "codex:ntc42-step4d",
       "kind": "automated-agent",
       "toolVersion": "ntc42-editorial-profile-0.1.0"
     },
     "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-4-2-4-2-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-4-2-4-2-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "La tabella è strutturata e richiede verifica umana cella per cella."
-      },
-      {
-        "issueId": "ntc2018-4-2-4-2-1-figures",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Il crop ufficiale è registrato; resta la revisione umana del posizionamento e della didascalia."
+        "reviewId": "ntc2018-4-2-4-2-1-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:user-confirmation",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-09-16T22:44:07Z",
+        "result": "accepted",
+        "note": "Paragrafo 4.2 delle NTC 2018 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia bloccante residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }

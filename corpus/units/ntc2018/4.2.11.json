@@ -159,21 +159,26 @@
     "figureIds": []
   },
   "workflow": {
-    "status": "extracted",
+    "status": "source-checked",
     "createdBy": {
       "actorId": "codex:ntc42-step6",
       "kind": "automated-agent",
       "toolVersion": "ntc42-editorial-profile-0.2.0"
     },
     "createdAt": "2026-08-10T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
+    "reviews": [
       {
-        "issueId": "ntc2018-4-2-11-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
+        "reviewId": "ntc2018-4-2-11-source-review-01",
+        "type": "source",
+        "reviewer": {
+          "actorId": "reviewer:human:user-confirmation",
+          "kind": "human"
+        },
+        "reviewedAt": "2026-09-16T22:44:07Z",
+        "result": "accepted",
+        "note": "Paragrafo 4.2 delle NTC 2018 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia bloccante residua."
       }
-    ]
+    ],
+    "openIssues": []
   }
 }
