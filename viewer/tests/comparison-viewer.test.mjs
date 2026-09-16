@@ -58,12 +58,12 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.match(source, /function ModeSegmentedControl\(/);
   assert.match(source, /className="scv-mode-switch" role="group"/);
   assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{onModeChange\} \/>/);
-  assert.match(source, /Mostra PDF ufficiale/);
+  assert.match(source, /Mostra \{auxiliaryPanelLabel\}/);
   assert.match(source, /const \[darkMode, setDarkMode\] = useState<boolean \| null>\(null\)/);
   assert.match(source, /localStorage\.getItem\("scv-theme"\)/);
   assert.match(source, /className=\{`scv-root \$\{darkMode \? "scv-dark"/);
   assert.match(source, /Modalità scura/);
-  assert.match(source, /const auxiliaryAvailable = hasAuxiliary && mode !== "combined"/);
+  assert.match(source, /auxiliaryPanelModes \? auxiliaryPanelModes.includes\(mode\) : mode !== "combined"/);
   assert.match(source, /disabled={!auxiliaryAvailable}/);
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
@@ -125,8 +125,8 @@ test("il PDF resta locale/debug, viene caricato on demand e segue la pagina evid
   assert.match(wrapper, /source-pdf\?document=/);
   assert.match(wrapper, /scrollIntoView\(\{ block: "start" \}\)/);
   assert.match(wrapper, /data-pdf-page=\{pageNumber\}/);
-  assert.match(shared, /const auxiliaryAvailable = hasAuxiliary && mode !== "combined"/);
-  assert.match(shared, /auxiliaryVisible && auxiliaryAvailable && renderAuxiliary/);
+  assert.match(shared, /auxiliaryPanelModes \? auxiliaryPanelModes.includes\(mode\) : mode !== "combined"/);
+  assert.match(shared, /hidden=\{!auxiliaryVisible\}/);
   assert.match(official, /request\.headers\.get\("range"\)/);
   assert.match(official, /Documento non valido/);
   assert.match(comparison, /process\.env\.NODE_ENV !== "production"/);

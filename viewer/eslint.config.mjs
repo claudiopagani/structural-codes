@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "public/vendor/**",
+    ".chatntc-test/**",
+    ".chatntc-ui-test/**",
     "next-env.d.ts",
   ]),
 ]);

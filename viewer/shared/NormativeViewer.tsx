@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
+import { memo, useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import {
   adjacentChunkPaths,
   createDocumentLookup,
@@ -71,9 +71,19 @@ export interface AuxiliaryPanelContext {
   manifest: CorpusManifest;
   chunk: CorpusChunk | null;
   pageBounds: { from: number; to: number };
+  /** Optional additions preserve consumers that construct the original PDF context. */
+  currentUnit?: { documentId: DocumentId; unitId: string; numbering: string } | null;
+  selectedTarget?: ViewerTarget | null;
+  navigateTo?: (target: ViewerTarget) => Promise<void>;
+  hrefForTarget?: (target: ViewerTarget) => string;
+  close?: () => void;
 }
 
 export type AuxiliaryPanel = ReactNode | ((context: AuxiliaryPanelContext) => ReactNode);
+
+function AuxiliaryContent({ panel, context }: { panel: AuxiliaryPanel; context: AuxiliaryPanelContext }) {
+  return typeof panel === "function" ? panel(context) : panel;
+}
 
 export interface NormativeViewerProps {
   defaultMode?: ViewerMode;
@@ -82,6 +92,10 @@ export interface NormativeViewerProps {
   auxiliaryPanel?: AuxiliaryPanel;
   auxiliaryPanelLabel?: string;
   auxiliaryPanelDefaultVisible?: boolean;
+  /** Defaults to the legacy single-document modes. */
+  auxiliaryPanelModes?: readonly ViewerMode[];
+  /** Opt in to retaining transient tool state while hidden. Default preserves lazy mounting. */
+  auxiliaryPanelKeepMounted?: boolean;
   searchMaxResults?: number;
   className?: string;
 }
@@ -609,7 +623,7 @@ function scheduleIdle(callback: () => void) {
   return () => window.clearTimeout(id);
 }
 
-export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelDefaultVisible = false, searchMaxResults = 12, className }: NormativeViewerProps) {
+export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelDefaultVisible = false, auxiliaryPanelModes, auxiliaryPanelKeepMounted = false, searchMaxResults = 12, className }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
   const [indexes, setIndexes] = useState<Map<DocumentId, DocumentIndex>>(new Map());
   const [loadedChunks, setLoadedChunks] = useState<Map<string, CorpusChunk>>(new Map());
@@ -633,6 +647,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
   const searchRef = useRef<HTMLInputElement>(null);
   const settingsButtonRef = useRef<HTMLButtonElement>(null);
+  const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
+  const auxiliaryPaneRef = useRef<HTMLElement>(null);
+  const auxiliaryId = useId();
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const requestedIdRef = useRef<string | null>(null);
   const requestedTargetRef = useRef<ViewerTarget | null>(null);
@@ -651,7 +668,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const documentId = documentForMode(mode);
   const documentIdRef = useRef(documentId);
   const hasAuxiliary = Boolean(auxiliaryPanel);
-  const auxiliaryAvailable = hasAuxiliary && mode !== "combined";
+  const auxiliaryAvailable = hasAuxiliary && (auxiliaryPanelModes ? auxiliaryPanelModes.includes(mode) : mode !== "combined");
 
   const reportChunkLoadFailure = useCallback((message = "Una parte del documento non è disponibile. Puoi continuare a consultare i contenuti già caricati.") => {
     if (renderedChunkPathsRef.current.size === 0) setLoadError(true);
@@ -695,6 +712,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       const requestedMode = url.searchParams.get("mode");
       if (modeOptions.some((option) => option.id === requestedMode)) setMode(requestedMode as ViewerMode);
       requestedTargetRef.current = targetFromUrl(url);
+      setCitationSelection(requestedTargetRef.current);
       requestedIdRef.current = requestedTargetRef.current?.unitId ?? null;
       setActiveUnitId(requestedIdRef.current);
       setManifest(loaded);
@@ -963,7 +981,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     }
     scrollRequestRef.current = null;
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
-  }, [defaultMode, mode, relatedByTarget, renderRecords]);
+  }, [auxiliaryAvailable, auxiliaryVisible, defaultMode, mode, relatedByTarget, renderRecords]);
 
   const navigationRef = useRef({ entryById, lookup, mode, relations });
   useEffect(() => {
@@ -986,6 +1004,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     if (guard && performance.now() < guard.expires && guard.id !== nextId) return;
     if (guard?.id === nextId || (guard && performance.now() >= guard.expires)) manualTargetRef.current = null;
     if (nextId !== activeIdRef.current) {
+      setCitationSelection(null);
       activeIdRef.current = nextId;
       requestedIdRef.current = nextId;
       requestedTargetRef.current = { kind: "unit", unitId: nextId };
@@ -998,6 +1017,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   useVisibleUnitObserver(textPaneRef, renderRecords, onVisibleUnit);
 
   const selectUnit = useCallback((unit: UnitSummary) => {
+    setCitationSelection(null);
     const generation = ++navigationGenerationRef.current;
     pendingScrollAnchorRef.current = null;
     setContentLoadNotice(null);
@@ -1015,6 +1035,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [defaultMode, primaryRenderedPaths, reportChunkLoadFailure, revealSummary]);
 
   const navigateViewerTarget = useCallback(async (target: ViewerTarget, action: "push" | "replace" | "none" = "push", forcedMode?: ViewerMode) => {
+    setCitationSelection(target);
     const generation = ++navigationGenerationRef.current;
     pendingScrollAnchorRef.current = null;
     setContentLoadNotice(null);
@@ -1257,7 +1278,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "/" && window.document.activeElement?.tagName.toLowerCase() !== "input") { event.preventDefault(); searchRef.current?.focus(); }
+      const editing = (event.target instanceof HTMLElement && event.target.closest("input, textarea, select, [contenteditable='true']"))
+        || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
+      if (event.key === "/" && !editing) { event.preventDefault(); searchRef.current?.focus(); }
       if (event.key === "Escape" && settingsOpen) setSettingsOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
@@ -1292,13 +1315,32 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const hasPrevious = primaryPathPositions.length > 0 && Math.min(...primaryPathPositions) > 0;
   const hasNext = Boolean(lookup && primaryPathPositions.length > 0 && Math.max(...primaryPathPositions) < lookup.chunkPaths.length - 1);
   const documentLoading = !index || documentRecords.length === 0;
-  const renderAuxiliary: ReactNode = !manifest || !auxiliaryAvailable ? null : typeof auxiliaryPanel === "function" ? auxiliaryPanel({ mode, documentId, manifest, chunk, pageBounds }) : auxiliaryPanel;
+  const auxiliaryUnit = (citationSelection ? summaryById.get(citationSelection.unitId) : null) ?? activeSummary;
+  const closeAuxiliary = useCallback(() => {
+    scrollRequestRef.current = requestedTargetRef.current;
+    setAuxiliaryVisible(false); auxiliaryButtonRef.current?.focus();
+  }, []);
+  const renderAuxiliary: ReactNode = !manifest || !auxiliaryAvailable ? null : <AuxiliaryContent panel={auxiliaryPanel} context={{ mode, documentId, manifest, chunk, pageBounds,
+    currentUnit: auxiliaryUnit ? { documentId: auxiliaryUnit.document, unitId: auxiliaryUnit.id, numbering: auxiliaryUnit.numbering.official } : null,
+    selectedTarget: citationSelection?.unitId === auxiliaryUnit?.id ? citationSelection : null,
+    navigateTo: navigateViewerTarget,
+    hrefForTarget: (target) => urlForViewerTarget(window.location.href, mode === "combined" || documentForMode(mode) === documentFromUnitId(target.unitId) ? mode : documentFromUnitId(target.unitId) === "ntc2018" ? "ntc" : "circ", defaultMode, target).href,
+    close: closeAuxiliary,
+  }} />;
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
   return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
     <NavigationPane mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
     <div className="scv-text-pane-shell">
+      {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
+        if (auxiliaryVisible) closeAuxiliary();
+        else {
+          scrollRequestRef.current = requestedTargetRef.current;
+          setAuxiliaryVisible(true);
+          window.requestAnimationFrame(() => { auxiliaryPaneRef.current?.scrollIntoView({ block: "nearest" }); auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus(); });
+        }
+      }}>{auxiliaryVisible ? "Chiudi" : "Apri"} {auxiliaryPanelLabel}</button>}
       {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} onToggleBacklinks={toggleBacklinks} />}
       {backlinksOpen && <BacklinkPanel loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
@@ -1308,8 +1350,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
     </div>
     <ReferencePreview preview={referencePreview} />
-    {auxiliaryVisible && auxiliaryAvailable && renderAuxiliary && <aside className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra PDF ufficiale</label></section></div>}
+    {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
+    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra {auxiliaryPanelLabel}</label></section></div>}
   </div>;
 }
 

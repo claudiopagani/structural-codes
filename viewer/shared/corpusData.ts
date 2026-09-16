@@ -35,10 +35,12 @@ export interface CorpusBlock {
   evidence?: Evidence;
 }
 
-export interface FormulaAsset { id: string; officialNumber: string | null; pdfPage: number; latex: string; }
+export interface FormulaAsset { id: string; unitId?: string; officialNumber: string | null; pdfPage: number; latex: string; }
 export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; }
 export interface TableAsset {
   id: string;
+  unitId?: string;
+  columnCount?: number;
   officialNumber: string | null;
   pdfPage: number;
   caption: string | null;
@@ -51,6 +53,8 @@ export interface TableAsset {
 }
 export interface FigureAsset {
   id: string;
+  unitId?: string;
+  sha256?: string;
   officialNumber: string;
   pdfPage: number;
   caption: string;
@@ -65,7 +69,7 @@ export interface AssetBundle {
   figures: Record<string, FigureAsset>;
 }
 export interface OpenIssue { issueId: string; type: string; severity: "blocking" | "warning" | "info"; note: string; }
-export interface Relation { relationId: string; type: string; targetUnitId: string; basis: string; rationale: string; review: { status: string }; }
+export interface Relation { relationId: string; type: string; targetUnitId: string; basis: string; rationale: string; evidenceBlockIds?: string[]; review: { status: string }; }
 export interface CorpusUnit {
   id: string;
   document: DocumentId;
@@ -77,7 +81,7 @@ export interface CorpusUnit {
   validity: { from: string | null; to: string | null; status: string; asOf: string };
   blocks: CorpusBlock[];
   relations: Relation[];
-  workflow: { status: string; openIssues: OpenIssue[] };
+  workflow: { status: string; openIssues: OpenIssue[]; reviews?: Array<{ reviewId: string; type: string; reviewedAt: string; result: string }> };
 }
 export interface UnitSummary {
   id: string;

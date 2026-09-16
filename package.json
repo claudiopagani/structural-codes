@@ -192,6 +192,7 @@
         "build": "npm run build:package",
         "build:package": "node scripts/build-package.mjs",
         "viewer:install": "node scripts/install-viewer-dependencies.mjs",
+        "dev": "npm --prefix viewer run dev:chatntc",
         "viewer:dev": "npm --prefix viewer run dev",
         "viewer:build": "npm --prefix viewer run build",
         "viewer:start": "npm --prefix viewer run start",

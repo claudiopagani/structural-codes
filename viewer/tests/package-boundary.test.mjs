@@ -26,6 +26,7 @@ test("i tarball rispettano il boundary core/viewer", async () => {
   assert.equal(rootFiles.some((path) => path.startsWith("viewer/")), false);
   assert.equal(viewerFiles.some((path) => path.includes("corpus/units/") || path.includes("corpus/assets/")), false);
   assert.equal(viewerFiles.some((path) => path.includes("pdfjs-dist") || path.startsWith("worker/") || path.startsWith("app/")), false);
+  assert.equal(viewerFiles.some((path) => /server\/|AISettings|LocalAIConfiguration|LocalChatTransport|providerRegistry/u.test(path)), false);
   assert.deepEqual(viewerPackage.peerDependencies, { react: "^19.0.0", "react-dom": "^19.0.0" });
   assert.equal(Object.prototype.hasOwnProperty.call(viewerPackage.dependencies, "pdfjs-dist"), false);
   assert.equal(Object.prototype.hasOwnProperty.call(viewerPackage.dependencies, "next"), false);
@@ -44,5 +45,6 @@ test("il core React-free non è una dipendenza inversa del package viewer", asyn
   assert.equal(rootPackage.dependencies["structural-codes-viewer"], undefined);
   assert.doesNotMatch(generator, /\.\.\/strutture-normative|\.\.\/structural-codes/iu);
   assert.doesNotMatch(viewerSource, /pdfjs-dist|source-pdf|vinext|cloudflare/iu);
+  assert.doesNotMatch(viewerSource, /AISettings|LocalChatTransport|DeepSeekAdapter|OpenAIAdapter|AnthropicAdapter|GeminiAdapter/u);
   assert.match(viewerStyles, /^@import "katex\/dist\/katex\.min\.css";/u);
 });
