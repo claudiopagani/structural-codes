@@ -30,9 +30,9 @@ function result(classification = "direct-reference") {
     evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
     generation: { provider: "mock", model: "mock-model", outcome: citations.length ? "generated" : "abstained" }, validation: { valid: true, scope: "integrity-provenance-claim-coverage" } };
 }
-function resultV3(references = [citation]) {
+function resultV3(references = [citation], answerMarkdown = "No: il punto chiave è distinguere gli spostamenti.") {
   return { ok: true, response: { formatVersion: 3, evidencePackageId: "fixture-package",
-    answerMarkdown: "No: il punto chiave è distinguere gli spostamenti.", classification: references.length > 1 ? "combined-reference" : references.length ? "direct-reference" : "no-direct-reference",
+    answerMarkdown, classification: references.length > 1 ? "combined-reference" : references.length ? "direct-reference" : "no-direct-reference",
     status: "answered", verifiedReferences: references, warnings: [], needsMoreEvidence: false, externalResearchSuggested: false },
     citations: references, evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1",
       corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v2", reduced: false, warnings: [] },
@@ -90,11 +90,98 @@ test("risposta canonica v3 mostra answerMarkdown e riferimenti verificati", asyn
   const reply = resultV3([citation, formula]);
   await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
   await submit();
-  assert.match(rootElement.querySelector(".scv-chat-answer > p").textContent, /^No:/u);
+  assert.match(rootElement.querySelector(".scv-chat-markdown").textContent, /^No:/u);
   assert.equal(rootElement.querySelector(".scv-chat-citations strong").textContent, "Riferimenti verificati");
   assert.deepEqual([...rootElement.querySelectorAll(".scv-chat-citations a")].map((link) => link.textContent),
     ["NTC 2018 §7.3.6.1", "Formula [7.3.8]"]);
   assert.deepEqual(await new LocalChatTransport(async () => Response.json(reply)).send({ question: "Test" }), reply);
+});
+
+test("answerMarkdown rende Markdown ricco e KaTeX senza eseguire HTML", async () => {
+  const markdown = `## Risposta breve
+
+**No:** distingui *spostamento elastico* e \`spostamento di verifica\`.
+
+### Conseguenza progettuale
+
+- usa $d_{Ee}$ dal modello;
+- applica $\\mu_d$ una volta.
+
+1. controlla gli spostamenti;
+2. verifica il limite.
+
+#### Nota operativa
+
+> La formula resta leggibile.
+
+\`\`\`text
+controllo = domanda + modello
+\`\`\`
+
+$$
+\\mu_d = \\begin{cases}
+q & T_1 \\geq T_C \\\\
+1 + (q-1)\\dfrac{T_C}{T_1} & T_1 < T_C
+\\end{cases}
+$$
+
+---
+
+[Approfondimento](https://example.org/) [link non sicuro](javascript:alert(1)) <script>window.injected = true</script>`;
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => resultV3([citation], markdown)) })));
+  await submit();
+  const content = rootElement.querySelector(".scv-chat-markdown");
+  assert.equal(content.querySelector("h2").textContent, "Risposta breve");
+  assert.equal(content.querySelector("h3").textContent, "Conseguenza progettuale");
+  assert.equal(content.querySelector("h4").textContent, "Nota operativa");
+  assert.equal(content.querySelector("strong").textContent, "No:");
+  assert.equal(content.querySelector("em").textContent, "spostamento elastico");
+  assert.equal(content.querySelectorAll("ul li").length, 2);
+  assert.equal(content.querySelectorAll("ol li").length, 2);
+  assert.ok(content.querySelector("blockquote"));
+  assert.ok(content.querySelector("code"));
+  assert.ok(content.querySelector("pre code"));
+  assert.ok(content.querySelector("hr"));
+  assert.equal(content.querySelector("a").getAttribute("href"), "https://example.org/");
+  assert.equal([...content.querySelectorAll("a")].some((link) => link.getAttribute("href")?.startsWith("javascript:")), false);
+  assert.ok(content.querySelectorAll(".katex").length >= 2);
+  assert.ok(content.querySelector(".katex-display"));
+  assert.ok(content.querySelector(".katex-mathml math"), "KaTeX keeps accessible MathML");
+  assert.equal(content.querySelector("script"), null);
+  assert.equal(globalThis.window.injected, undefined);
+  assert.equal(rootElement.querySelector(".scv-chat-markdown").compareDocumentPosition(rootElement.querySelector(".scv-chat-citations"))
+    & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+});
+
+test("skeleton stabile diventa una risposta animata conservando la posizione di lettura", async () => {
+  let finish;
+  const pending = new Promise((resolve) => { finish = resolve; });
+  await mount(h(ChatNTCPanel, props({ transport: transport(() => pending) })));
+  await submit();
+  const loading = rootElement.querySelector(".scv-chat-loading");
+  assert.ok(loading);
+  assert.match(loading.textContent, /Sto consultando la normativa/u);
+  assert.equal(loading.querySelectorAll(".scv-chat-loading-lines i").length, 4);
+  assert.ok(button("Interrompi"));
+  const log = rootElement.querySelector(".scv-chat-messages");
+  log.scrollTop = 43;
+  await act(async () => finish(resultV3()));
+  assert.equal(rootElement.querySelector(".scv-chat-loading"), null);
+  assert.equal(rootElement.querySelector(".scv-chat-answer").dataset.entrance, "new");
+  assert.ok(rootElement.querySelector(".scv-chat-answer-enter"));
+  assert.equal(log.scrollTop, 43, "completion must not jump to the bottom");
+});
+
+test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /\.scv-chat-markdown \.katex-display[^}]*max-width:\s*100%[^}]*overflow-x:\s*auto/su);
+  assert.match(styles, /\.scv-chat-markdown \.katex-display > \.katex[^}]*width:\s*max-content/su);
+  assert.match(styles, /\.scv-chat-markdown pre[^}]*overflow-x:\s*auto/su);
+  assert.match(styles, /\.scv-chat-citations ul[^}]*flex-wrap:\s*wrap/su);
+  assert.match(styles, /\.scv-chat-loading[^}]*min-height:/su);
+  assert.match(styles, /@media \(max-width:\s*700px\)[\s\S]*\.scv-chat-markdown[^}]*width:\s*100%/u);
+  assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-answer-enter\s*\{\s*animation:\s*none/su);
+  assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-loading-lines i\s*\{\s*animation:\s*none/su);
 });
 
 for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABELS)) test(`classificazione ${classification} visibile e discreta`, async () => {
@@ -116,6 +203,7 @@ test("paragrafo corrente: invia solo ID/numbering, inclusa selezione, senza chun
 test("errore leggibile, domanda recuperabile e nessuna risposta scartata", async () => {
   await mount(h(ChatNTCPanel, props({ transport: transport(async () => { throw new ChatTransportError("CITATION_VALIDATION_FAILED", "Citazioni respinte."); }) })));
   await submit("Domanda da riprovare");
+  assert.equal(rootElement.querySelector(".scv-chat-loading"), null);
   assert.equal(rootElement.querySelector('[role="alert"]').textContent, "Citazioni respinte.");
   assert.equal(rootElement.querySelector("textarea").value, "Domanda da riprovare");
   assert.equal(rootElement.querySelector(".scv-chat-answer"), null);
@@ -125,8 +213,9 @@ test("stop e nuova chat annullano richieste e ignorano risposte tardive", async 
   let resolve;
   await mount(h(ChatNTCPanel, props({ transport: transport(() => new Promise((done) => { resolve = done; })) })));
   await submit();
-  assert.match(rootElement.textContent, /preparazione della risposta/);
+  assert.ok(rootElement.querySelector(".scv-chat-loading"));
   await click(button("Interrompi"));
+  assert.equal(rootElement.querySelector(".scv-chat-loading"), null);
   assert.equal(calls[0].options.signal.aborted, true);
   await act(async () => resolve(result()));
   assert.equal(rootElement.querySelector(".scv-chat-answer"), null);
@@ -175,7 +264,7 @@ test("warning editoriali restano nei metadata UI e non vengono aggiunti alla pro
   reply.evidence.warnings = [{ code: "unreviewed-evidence", unitId }];
   await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
   await submit();
-  assert.equal(rootElement.querySelector(".scv-chat-answer > p").textContent, reply.response.answer);
+  assert.equal(rootElement.querySelector(".scv-chat-markdown").textContent, reply.response.answer);
   assert.match(rootElement.querySelector(".scv-chat-warnings").textContent, /Fonti non ancora revisionate integralmente/u);
 });
 
@@ -291,6 +380,7 @@ test("history UI: first question creates local title, reload restores active res
   await toggleHistory(); assert.match(rootElement.textContent, /Nessuna conversazione salvata/);
   await toggleHistory();
   await submit("  Prima domanda locale  "); await settledHistory();
+  assert.equal(rootElement.querySelector(".scv-chat-answer").dataset.entrance, "new");
   assert.match(rootElement.querySelector(".scv-chat-history-title").textContent, /Prima domanda locale/);
   assert.match(rootElement.textContent, /mock-model/);
   assert.equal(rootElement.querySelector(".scv-chat-corpus-warning"), null);
@@ -301,6 +391,8 @@ test("history UI: first question creates local title, reload restores active res
   await mount(h(ChatNTCHistoryPanel, { ...props(), historyStore: reloaded, currentCorpusFingerprint: "changed-corpus" }));
   await readyHistory();
   assert.match(rootElement.textContent, /Risposta simulata/);
+  assert.equal(rootElement.querySelector(".scv-chat-answer").dataset.entrance, "history");
+  assert.equal(rootElement.querySelector(".scv-chat-answer-enter"), null);
   assert.match(rootElement.textContent, /Questa risposta è stata generata con una versione diversa del corpus\./);
   assert.equal(rootElement.querySelector("[data-classification]").textContent, "Riferimento diretto");
   await click(rootElement.querySelector(".scv-chat-citations a"));

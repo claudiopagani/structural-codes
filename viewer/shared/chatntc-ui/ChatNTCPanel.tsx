@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { viewerTargetForCitation } from "../chatntc/evidence.js";
 import type { ChatNTCCitation, ChatNTCClassification, ChatNTCRetrievalContext, ChatNTCWarning } from "../chatntc/types.js";
 import type { ChatNTCMessage } from "../chatntc/provider.js";
 import type { ViewerTarget } from "../permalinks.js";
 import { ChatTransportError, type ChatResult, type ChatTransport } from "./transport.js";
+import { ChatNTCLoadingSkeleton } from "./ChatNTCLoadingSkeleton.js";
+
+const loadChatNTCMarkdown = () => import("./ChatNTCMarkdown.js");
+const LazyChatNTCMarkdown = lazy(() => loadChatNTCMarkdown().then((module) => ({ default: module.ChatNTCMarkdown })));
 
 export const CHATNTC_CLASSIFICATION_LABELS: Record<ChatNTCClassification, string> = {
   "direct-reference": "Riferimento diretto", "combined-reference": "Riferimento combinato",
@@ -78,16 +82,36 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
   const inputId = useId();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
+  const turnRefs = useRef(new Map<string, HTMLDivElement>());
+  const scrollActionRef = useRef<{ kind: "reveal"; id: string } | { kind: "preserve"; top: number } | null>(null);
   const pendingRef = useRef<{ id: string; controller: AbortController } | null>(null);
   const [turns, setTurns] = useState<ChatNTCTurn[]>(initialTurns);
   const turnsRef = useRef(initialTurns);
+  const [freshAnswerIds, setFreshAnswerIds] = useState<ReadonlySet<string>>(() => new Set());
   const [draft, setDraft] = useState("");
   const [useContext, setUseContext] = useState(false);
   const [notice, setNotice] = useState("");
   const busy = turns.some((turn) => turn.status === "pending");
 
   useEffect(() => () => { pendingRef.current?.controller.abort(); pendingRef.current = null; }, []);
-  useEffect(() => { const log = logRef.current; if (log) log.scrollTop = log.scrollHeight; }, [turns]);
+  useLayoutEffect(() => {
+    const action = scrollActionRef.current;
+    const log = logRef.current;
+    if (!action || !log) return;
+    scrollActionRef.current = null;
+    if (action.kind === "preserve") {
+      log.scrollTop = action.top;
+      return;
+    }
+    const question = turnRefs.current.get(action.id)?.querySelector<HTMLElement>(".scv-chat-question");
+    if (!question) return;
+    const logRect = log.getBoundingClientRect();
+    const questionRect = question.getBoundingClientRect();
+    const inset = 8;
+    if (questionRect.top < logRect.top + inset || questionRect.bottom > logRect.bottom - inset) {
+      log.scrollTo({ top: Math.max(0, log.scrollTop + questionRect.top - logRect.top - inset), behavior: "auto" });
+    }
+  }, [turns]);
 
   function updateTurns(update: (current: ChatNTCTurn[]) => ChatNTCTurn[]) {
     const next = update(turnsRef.current);
@@ -99,6 +123,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     if (!pending) return;
     pendingRef.current = null;
     pending.controller.abort();
+    scrollActionRef.current = { kind: "preserve", top: logRef.current?.scrollTop ?? 0 };
     updateTurns((current) => current.map((turn) => turn.id === pending.id ? { ...turn, status: "cancelled" } : turn));
     setNotice("Richiesta interrotta.");
     inputRef.current?.focus();
@@ -107,7 +132,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     if (onNewChat) { stop(); onNewChat(); return; }
     pendingRef.current?.controller.abort();
     pendingRef.current = null;
-    updateTurns(() => []); setDraft(""); setUseContext(false); setNotice("Nuova chat pronta.");
+    updateTurns(() => []); setFreshAnswerIds(new Set()); setDraft(""); setUseContext(false); setNotice("Nuova chat pronta.");
     inputRef.current?.focus();
   }
   async function send() {
@@ -118,16 +143,21 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     pendingRef.current = { id, controller };
     const selected = useContext && context ? { ...context } : undefined;
     const history = recentHistory(turns);
+    void loadChatNTCMarkdown();
+    scrollActionRef.current = { kind: "reveal", id };
     updateTurns((current) => [...current, { id, question, timestamp: new Date().toISOString(), context: selected, status: "pending" }]);
     setDraft(""); setNotice("");
     try {
       const result = await transport.send({ question, history, ...(selected ? { context: selected } : {}) }, { signal: controller.signal });
       if (pendingRef.current?.id !== id) return;
+      scrollActionRef.current = { kind: "preserve", top: logRef.current?.scrollTop ?? 0 };
+      setFreshAnswerIds((current) => new Set(current).add(id));
       updateTurns((current) => current.map((turn) => turn.id === id ? { ...turn, result, answeredAt: new Date().toISOString(), status: "complete" } : turn));
       setNotice("Risposta disponibile.");
     } catch (error) {
       if (pendingRef.current?.id !== id) return;
       const message = error instanceof ChatTransportError ? error.message : "Impossibile completare la richiesta. Puoi riprovare.";
+      scrollActionRef.current = { kind: "preserve", top: logRef.current?.scrollTop ?? 0 };
       updateTurns((current) => current.map((turn) => turn.id === id ? { ...turn, error: message, status: "error" } : turn));
       setDraft((current) => current || question);
     } finally {
@@ -139,14 +169,18 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     <header className="scv-chat-header"><div><h2>ChatNTC</h2><p>Domande sul corpus normativo</p></div><button type="button" disabled={disabled} onClick={newChat}>Nuova chat</button></header>
     <div className="scv-chat-messages" role="log" aria-label="Messaggi ChatNTC" aria-live="polite" aria-relevant="additions text" ref={logRef}>
       {turns.length === 0 && <div className="scv-chat-empty"><strong>Da quale riferimento partiamo?</strong><p>Fai una domanda su NTC e Circolare, oppure usa il paragrafo aperto nel viewer.</p><small>Le risposte distinguono fonti e interpretazioni. {historyEnabled ? "La cronologia è salvata solo in questo browser." : "La chat resta solo in questa pagina."}</small></div>}
-      {turns.map((turn) => <div className="scv-chat-turn" key={turn.id}>
+      {turns.map((turn) => <div className="scv-chat-turn" data-chat-turn-id={turn.id} key={turn.id} ref={(element) => {
+        if (element) turnRefs.current.set(turn.id, element); else turnRefs.current.delete(turn.id);
+      }}>
         <article className="scv-chat-question" aria-label="La tua domanda"><small>Tu{turn.context ? ` · ${contextLabel(turn.context)}` : " · domanda generica"}</small><p>{turn.question}</p></article>
-        {turn.status === "pending" && <p className="scv-chat-pending">Ricerca delle fonti e preparazione della risposta…</p>}
+        {turn.status === "pending" && <ChatNTCLoadingSkeleton />}
         {turn.status === "cancelled" && <p className="scv-chat-meta">Richiesta interrotta.</p>}
         {turn.error && <p className="scv-chat-error" role="alert">{turn.error}</p>}
-        {turn.result && <article className="scv-chat-answer" aria-label="Risposta ChatNTC">
+        {turn.result && <article className={`scv-chat-answer${freshAnswerIds.has(turn.id) ? " scv-chat-answer-enter" : ""}`} data-entrance={freshAnswerIds.has(turn.id) ? "new" : "history"} aria-label="Risposta ChatNTC">
           <span className="scv-chat-classification" data-classification={turn.result.response.classification}>{CHATNTC_CLASSIFICATION_LABELS[turn.result.response.classification]}</span>
-          <p>{answerText(turn.result.response)}</p>
+          <Suspense fallback={<div className="scv-chat-markdown scv-chat-markdown-loader" aria-hidden="true" />}>
+            <LazyChatNTCMarkdown markdown={answerText(turn.result.response)} />
+          </Suspense>
           {currentCorpusFingerprint && turn.result.evidence.corpusFingerprint !== currentCorpusFingerprint && <p className="scv-chat-corpus-warning">Questa risposta è stata generata con una versione diversa del corpus.</p>}
           {historyEnabled && <details className="scv-chat-warnings"><summary>Versione e provenienza della risposta</summary><dl className="scv-chat-provenance">
             <dt>Generata il</dt><dd>{turn.answeredAt ? new Date(turn.answeredAt).toLocaleString("it-IT") : "Data non disponibile"}</dd>
