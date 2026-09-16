@@ -98,6 +98,25 @@ test("risposta canonica v3 mostra answerMarkdown e riferimenti verificati", asyn
   assert.deepEqual(await new LocalChatTransport(async () => Response.json(reply)).send({ question: "Test" }), reply);
 });
 
+test("i riferimenti verificati nel corpo aprono paragrafi, formule e figure canonici", async () => {
+  const formula = { ...verifiedReference, kind: "formula", blockId: "formula-block",
+    assetId: "urn:structural-codes:it:asset:formula:ntc2018:7.3.8", assetNumber: "7.3.8" };
+  const figure = { ...verifiedReference, kind: "figure", blockId: "figure-block",
+    assetId: "urn:structural-codes:it:asset:figure:ntc2018:7.3.1", assetNumber: "7.3.1" };
+  const markdown = "Vedi NTC 2018 §7.3.6.1, formula [7.3.8] e Fig. 7.3.1.";
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => resultV3([verifiedReference, formula, figure], markdown)) })));
+  await submit();
+  const links = [...rootElement.querySelectorAll(".scv-chat-markdown .scv-chat-reference-link")];
+  assert.deepEqual(links.map((link) => link.textContent), ["§7.3.6.1", "formula [7.3.8]", "Fig. 7.3.1"]);
+  assert.deepEqual(links.map((link) => targetFromUrl(new URL(link.href))), [
+    { kind: "unit", unitId },
+    { kind: "asset", unitId, assetId: formula.assetId, assetKind: "formula" },
+    { kind: "asset", unitId, assetId: figure.assetId, assetKind: "figure" },
+  ]);
+  for (const link of links) await click(link);
+  assert.deepEqual(navigate, links.map((link) => targetFromUrl(new URL(link.href))));
+});
+
 test("answerMarkdown rende Markdown ricco e KaTeX senza eseguire HTML", async () => {
   const markdown = `## Risposta breve
 
@@ -175,7 +194,14 @@ test("skeleton stabile diventa una risposta animata conservando la posizione di 
 
 test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", async () => {
   const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /\.scv-chat-markdown\s*\{[^}]*width:\s*100%[^}]*max-width:\s*100%/su);
+  assert.doesNotMatch(styles, /\.scv-chat-markdown\s*\{[^}]*68ch/su);
+  assert.match(styles, /\.scv-chat-markdown p, \.scv-chat-markdown li\s*\{[^}]*text-align:\s*justify[^}]*text-justify:\s*inter-word/su);
+  assert.match(styles, /\.scv-chat-markdown blockquote p, \.scv-chat-markdown blockquote li\s*\{[^}]*text-align:\s*start[^}]*text-justify:\s*auto/su);
+  assert.match(styles, /\.scv-chat-markdown p > strong:first-child[^}]*display:\s*block/su);
+  assert.match(styles, /\.scv-chat-markdown h2,[^}]*display:\s*block[^}]*width:\s*100%/su);
   assert.match(styles, /\.scv-chat-markdown \.katex-display[^}]*max-width:\s*100%[^}]*overflow-x:\s*auto/su);
+  assert.match(styles, /\.scv-chat-markdown \.katex-display[^}]*font-size:\s*1\.18em/su);
   assert.match(styles, /\.scv-chat-markdown \.katex-display > \.katex[^}]*width:\s*max-content/su);
   assert.match(styles, /\.scv-chat-markdown pre[^}]*overflow-x:\s*auto/su);
   assert.match(styles, /\.scv-chat-citations ul[^}]*flex-wrap:\s*wrap/su);

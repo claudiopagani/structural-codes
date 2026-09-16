@@ -430,12 +430,14 @@ body { margin: 0; }
 .scv-chat-answer-enter { animation: scv-chat-answer-enter 380ms cubic-bezier(.2, .72, .24, 1) both; }
 .scv-chat-classification { display: inline-block; padding: 3px 8px; font-size: 11px; border: 1px solid var(--scv-line); border-radius: 20px; color: var(--scv-ink-soft); }
 .scv-chat-classification[data-classification="interpretation"], .scv-chat-classification[data-classification="no-direct-reference"] { color: var(--scv-amber); background: var(--scv-amber-soft); border-color: transparent; }
-.scv-chat-markdown { width: min(100%, 68ch); max-width: 100%; margin-top: 13px; color: var(--scv-ink); font-size: 14px; line-height: 1.68; overflow-wrap: anywhere; }
+.scv-chat-markdown { width: 100%; max-width: 100%; margin-top: 13px; color: var(--scv-ink); font-size: 14px; line-height: 1.68; overflow-wrap: anywhere; }
 .scv-chat-markdown-loader { min-height: 1.68em; }
 .scv-chat-markdown > :first-child { margin-top: 0; }
 .scv-chat-markdown > :last-child { margin-bottom: 0; }
 .scv-chat-markdown p { margin: .72em 0; }
-.scv-chat-markdown h2, .scv-chat-markdown h3, .scv-chat-markdown h4 { margin: 1.35em 0 .45em; color: var(--scv-ink); font-family: inherit; font-weight: 650; line-height: 1.28; letter-spacing: -.015em; }
+.scv-chat-markdown p, .scv-chat-markdown li { text-align: justify; text-justify: inter-word; }
+.scv-chat-markdown p > strong:first-child { display: block; margin-bottom: .2em; text-align: start; text-justify: auto; }
+.scv-chat-markdown h2, .scv-chat-markdown h3, .scv-chat-markdown h4 { display: block; width: 100%; margin: 1.35em 0 .45em; clear: both; color: var(--scv-ink); font-family: inherit; font-weight: 650; line-height: 1.28; letter-spacing: -.015em; text-align: start; text-justify: auto; }
 .scv-chat-markdown h2 { font-size: 1.25em; }
 .scv-chat-markdown h3 { font-size: 1.12em; }
 .scv-chat-markdown h4 { font-size: 1.02em; }
@@ -444,16 +446,17 @@ body { margin: 0; }
 .scv-chat-markdown li { margin: .24em 0; padding-left: .1em; }
 .scv-chat-markdown li::marker { color: var(--scv-primary); }
 .scv-chat-markdown blockquote { margin: .9em 0; padding: .05em 0 .05em .9em; color: var(--scv-ink-soft); border-left: 3px solid var(--scv-line); }
+.scv-chat-markdown blockquote p, .scv-chat-markdown blockquote li { text-align: start; text-justify: auto; }
 .scv-chat-markdown blockquote > :first-child { margin-top: .2em; }
 .scv-chat-markdown blockquote > :last-child { margin-bottom: .2em; }
 .scv-chat-markdown hr { height: 1px; margin: 1.25em 0; background: var(--scv-line); border: 0; }
 .scv-chat-markdown a { color: var(--scv-primary-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .scv-chat-markdown a:hover { text-decoration-thickness: 2px; }
 .scv-chat-markdown code { padding: .12em .34em; color: var(--scv-ink); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .9em; background: color-mix(in srgb, var(--scv-primary-soft) 58%, var(--scv-panel)); border: 1px solid var(--scv-line); border-radius: 4px; }
-.scv-chat-markdown pre { max-width: 100%; margin: .9em 0; padding: 11px 12px; overflow-x: auto; color: var(--scv-ink); background: var(--scv-paper); border: 1px solid var(--scv-line); border-radius: 7px; overscroll-behavior-inline: contain; }
+.scv-chat-markdown pre { max-width: 100%; margin: .9em 0; padding: 11px 12px; overflow-x: auto; color: var(--scv-ink); text-align: start; text-justify: auto; background: var(--scv-paper); border: 1px solid var(--scv-line); border-radius: 7px; overscroll-behavior-inline: contain; }
 .scv-chat-markdown pre code { padding: 0; font-size: 12px; line-height: 1.55; white-space: pre; background: transparent; border: 0; }
-.scv-chat-markdown .katex { font-size: 1.04em; }
-.scv-chat-markdown .katex-display { display: block; width: 100%; max-width: 100%; margin: 1.05em 0; padding: .2em 0 .42em; overflow-x: auto; overflow-y: hidden; text-align: center; scrollbar-width: thin; overscroll-behavior-inline: contain; }
+.scv-chat-markdown .katex { font-size: 1.04em; text-align: initial; text-justify: auto; }
+.scv-chat-markdown .katex-display { display: block; width: 100%; max-width: 100%; margin: 1.05em 0; padding: .5em 0 .68em; overflow-x: auto; overflow-y: hidden; font-size: 1.18em; text-align: center; scrollbar-width: thin; overscroll-behavior-inline: contain; }
 .scv-chat-markdown .katex-display > .katex { display: inline-block; width: max-content; min-width: max-content; text-align: initial; }
 .scv-chat-citations { margin-top: 18px; padding-top: 11px; font-size: 12px; border-top: 1px solid color-mix(in srgb, var(--scv-line) 72%, transparent); }
 .scv-chat-citations strong { color: var(--scv-ink-soft); font-size: 11px; font-weight: 600; letter-spacing: .025em; }

@@ -181,7 +181,9 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
         {turn.result && <article className={`scv-chat-answer${freshAnswerIds.has(turn.id) ? " scv-chat-answer-enter" : ""}`} data-entrance={freshAnswerIds.has(turn.id) ? "new" : "history"} aria-label="Risposta ChatNTC">
           <span className="scv-chat-classification" data-classification={turn.result.response.classification}>{CHATNTC_CLASSIFICATION_LABELS[turn.result.response.classification]}</span>
           <Suspense fallback={<div className="scv-chat-markdown scv-chat-markdown-loader" aria-hidden="true" />}>
-            <LazyChatNTCMarkdown markdown={answerText(turn.result.response)} />
+            <LazyChatNTCMarkdown markdown={answerText(turn.result.response)} references={turn.result.citations}
+              hrefForTarget={hrefForTarget} onNavigate={onNavigate}
+              onNavigationError={() => setNotice("Non è stato possibile aprire il riferimento.")} />
           </Suspense>
           {turn.result.response.formatVersion === 3 && turn.result.response.referenceWarning
             && !dismissedReferenceWarnings.has(turn.id) && <div className="scv-chat-reference-warning" role="status">
