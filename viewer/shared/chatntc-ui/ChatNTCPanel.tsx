@@ -2,7 +2,7 @@
 
 import { lazy, Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { viewerTargetForCitation } from "../chatntc/evidence.js";
-import type { ChatNTCCitation, ChatNTCClassification, ChatNTCRetrievalContext, ChatNTCWarning } from "../chatntc/types.js";
+import type { ChatNTCClassification, ChatNTCReference, ChatNTCRetrievalContext, ChatNTCWarning } from "../chatntc/types.js";
 import type { ChatNTCMessage } from "../chatntc/provider.js";
 import type { ViewerTarget } from "../permalinks.js";
 import { ChatTransportError, type ChatResult, type ChatTransport } from "./transport.js";
@@ -52,7 +52,7 @@ function recentHistory(turns: ChatNTCTurn[]): ChatNTCMessage[] {
 function contextLabel(context: ChatNTCRetrievalContext) {
   return `${context.documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} §${context.numbering}`;
 }
-function citationLabel(citation: ChatNTCCitation) {
+function citationLabel(citation: ChatNTCReference) {
   const label = contextLabel({ ...citation, documentId: citation.document });
   const target = viewerTargetForCitation(citation);
   if (target.kind === "asset") {
@@ -63,6 +63,7 @@ function citationLabel(citation: ChatNTCCitation) {
   }
   return target.kind === "block" ? `${label} · passaggio` : label;
 }
+const citationKey = (citation: ChatNTCReference) => [citation.unitId, citation.blockId ?? "", citation.assetId ?? ""].join("|");
 
 export interface ChatNTCPanelProps {
   transport: ChatTransport;
@@ -88,6 +89,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
   const [turns, setTurns] = useState<ChatNTCTurn[]>(initialTurns);
   const turnsRef = useRef(initialTurns);
   const [freshAnswerIds, setFreshAnswerIds] = useState<ReadonlySet<string>>(() => new Set());
+  const [dismissedReferenceWarnings, setDismissedReferenceWarnings] = useState<ReadonlySet<string>>(() => new Set());
   const [draft, setDraft] = useState("");
   const [useContext, setUseContext] = useState(false);
   const [notice, setNotice] = useState("");
@@ -132,7 +134,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     if (onNewChat) { stop(); onNewChat(); return; }
     pendingRef.current?.controller.abort();
     pendingRef.current = null;
-    updateTurns(() => []); setFreshAnswerIds(new Set()); setDraft(""); setUseContext(false); setNotice("Nuova chat pronta.");
+    updateTurns(() => []); setFreshAnswerIds(new Set()); setDismissedReferenceWarnings(new Set()); setDraft(""); setUseContext(false); setNotice("Nuova chat pronta.");
     inputRef.current?.focus();
   }
   async function send() {
@@ -181,6 +183,15 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
           <Suspense fallback={<div className="scv-chat-markdown scv-chat-markdown-loader" aria-hidden="true" />}>
             <LazyChatNTCMarkdown markdown={answerText(turn.result.response)} />
           </Suspense>
+          {turn.result.response.formatVersion === 3 && turn.result.response.referenceWarning
+            && !dismissedReferenceWarnings.has(turn.id) && <div className="scv-chat-reference-warning" role="status">
+            <span>{turn.result.response.referenceWarning === "some-references-omitted"
+              ? "Risposta disponibile; alcuni riferimenti sono stati omessi perché non verificabili."
+              : "Non sono stati verificati riferimenti normativi specifici."}</span>
+            <button type="button" aria-label="Chiudi avviso sui riferimenti" onClick={() => setDismissedReferenceWarnings((current) => {
+              const next = new Set(current); next.add(turn.id); return next;
+            })}>×</button>
+          </div>}
           {currentCorpusFingerprint && turn.result.evidence.corpusFingerprint !== currentCorpusFingerprint && <p className="scv-chat-corpus-warning">Questa risposta è stata generata con una versione diversa del corpus.</p>}
           {historyEnabled && <details className="scv-chat-warnings"><summary>Versione e provenienza della risposta</summary><dl className="scv-chat-provenance">
             <dt>Generata il</dt><dd>{turn.answeredAt ? new Date(turn.answeredAt).toLocaleString("it-IT") : "Data non disponibile"}</dd>
@@ -190,7 +201,7 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
           </dl></details>}
           {turn.result.citations.length > 0 && <nav className="scv-chat-citations" aria-label="Riferimenti normativi verificati"><strong>Riferimenti verificati</strong><ul>{turn.result.citations.map((citation) => {
             const target = viewerTargetForCitation(citation);
-            return <li key={citation.evidenceId}><a href={hrefForTarget(target)} onClick={(event) => {
+            return <li key={citationKey(citation)}><a href={hrefForTarget(target)} onClick={(event) => {
               if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
               event.preventDefault();
               void Promise.resolve().then(() => onNavigate(target)).catch(() => setNotice("Non è stato possibile aprire il riferimento."));

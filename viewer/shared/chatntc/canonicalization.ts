@@ -1,9 +1,9 @@
 import { findCrossReferences } from "../crossReferences.js";
-import { citationForEvidence, evidenceUnits, stableJson } from "./evidence.js";
+import { stableJson } from "./evidence.js";
 import { chatNTCIssueCategory } from "./issueCategories.js";
 import type {
-  ChatNTCCanonicalizationResult, ChatNTCCitation, ChatNTCClassification, ChatNTCEvidencePackage,
-  ChatNTCProviderOutput, ChatNTCRepository, ChatNTCTarget, ChatNTCValidationIssue,
+  ChatNTCCanonicalizationResult, ChatNTCClassification, ChatNTCEvidencePackage,
+  ChatNTCProviderOutput, ChatNTCRepository, ChatNTCTarget, ChatNTCValidationIssue, ChatNTCVerifiedReference,
 } from "./types.js";
 
 interface TextualReference { text: string; path: string }
@@ -15,27 +15,13 @@ interface TextualReference { text: string; path: string }
 export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput, evidence: ChatNTCEvidencePackage,
   repository: ChatNTCRepository): Promise<ChatNTCCanonicalizationResult> {
   const issueMap = new Map<string, ChatNTCValidationIssue>();
-  const selected = evidenceUnits(evidence);
-  const citations = new Map<string, ChatNTCCitation>();
+  const citations = new Map<string, ChatNTCVerifiedReference>();
   let normalized = false;
 
   function add(code: string, path: string, message: string, details: Pick<ChatNTCValidationIssue, "reference" | "targets"> = {}) {
     const issue = { code, path, message, category: chatNTCIssueCategory(code), ...details };
     const key = `${code}\u0000${path}\u0000${details.reference ?? ""}\u0000${stableJson(details.targets ?? [])}`;
     issueMap.set(key, issue);
-  }
-
-  function selectedIdsForTargets(targets: ChatNTCTarget[]): string[] {
-    const ids = new Set<string>();
-    for (const target of targets) for (const unit of selected) {
-      if (unit.unitId !== target.unitId) continue;
-      if (!target.blockId && !target.assetId) ids.add(unit.evidenceId);
-      for (const block of unit.blocks) {
-        if (target.assetId ? block.assetId === target.assetId && (!target.blockId || block.blockId === target.blockId)
-          : target.blockId && block.blockId === target.blockId) ids.add(block.evidenceId);
-      }
-    }
-    return [...ids];
   }
 
   for (const reference of textualReferences(output)) {
@@ -52,19 +38,12 @@ export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput,
         { reference: reference.text, targets: canonicalTargets });
       continue;
     }
-    const ids = selectedIdsForTargets(canonicalTargets);
-    if (ids.length === 0) {
-      add("unselected-canonical-reference", reference.path,
-        `Riferimento canonico reale non incluso nel contesto iniziale: ${reference.text}`,
+    const citation = await verifiedReferenceForTarget(repository, canonicalTargets[0]);
+    if (!citation) {
+      add("canonical-reference-missing", reference.path, `Target canonico non caricabile: ${reference.text}`,
         { reference: reference.text, targets: canonicalTargets });
       continue;
     }
-    if (ids.length > 1) {
-      add("ambiguous-reference", reference.path, `Riferimento associato a più passaggi canonici: ${reference.text}`,
-        { reference: reference.text, targets: canonicalTargets });
-      continue;
-    }
-    const citation = citationForEvidence(evidence, ids[0]);
     const key = stableJson({ unitId: citation.unitId, blockId: citation.blockId, assetId: citation.assetId });
     if (citations.has(key)) normalized = true;
     else citations.set(key, citation);
@@ -84,6 +63,30 @@ export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput,
     },
     issues: [...issueMap.values()], normalized,
   };
+}
+
+async function verifiedReferenceForTarget(repository: ChatNTCRepository,
+  target: ChatNTCTarget): Promise<ChatNTCVerifiedReference | null> {
+  const record = await repository.getUnit(target.unitId);
+  if (!record) return null;
+  const block = target.blockId
+    ? record.unit.blocks.find((candidate) => candidate.blockId === target.blockId)
+    : target.assetId ? record.unit.blocks.find((candidate) => candidate.assetId === target.assetId) : undefined;
+  if ((target.blockId || target.assetId) && !block) return null;
+  if (target.assetId) {
+    const collections = [
+      ["formula", record.assets.formulas[target.assetId]],
+      ["table", record.assets.tables[target.assetId]],
+      ["figure", record.assets.figures[target.assetId]],
+    ] as const;
+    const found = collections.find(([, asset]) => Boolean(asset));
+    if (!found || block?.assetId !== target.assetId) return null;
+    return { unitId: target.unitId, blockId: block.blockId, assetId: target.assetId,
+      document: record.unit.document, numbering: record.unit.numbering.official,
+      kind: found[0], assetNumber: found[1]!.officialNumber };
+  }
+  return { unitId: target.unitId, ...(block ? { blockId: block.blockId } : {}),
+    document: record.unit.document, numbering: record.unit.numbering.official, kind: block ? "block" : "unit" };
 }
 
 function normalizeVisibleAnswer(value: string): string {

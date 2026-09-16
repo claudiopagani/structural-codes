@@ -294,12 +294,11 @@ test("status abstained resta riservato a evidence insufficiente", async () => {
   assert.deepEqual(await validateChatNTCResponse(response, evidence, repository), { valid: true, issues: [] });
 });
 
-test("mention canonica fuori evidence e riferimento inesistente hanno issue distinti", async () => {
+test("mention canonica fuori evidence legacy non blocca, mentre un riferimento inesistente resta diagnosticato", async () => {
   const { evidence, repository, response } = await context();
   response.answer = "Si coordina con §8.1.1.";
   let result = await validateChatNTCResponse(response, evidence, repository);
-  has(result, "unselected-canonical-reference");
-  assert.equal(result.issues.find((issue) => issue.code === "unselected-canonical-reference").reference, "§8.1.1");
+  assert.equal(result.valid, true, JSON.stringify(result));
   response.answer = "Si coordina con §7.99.4.";
   result = await validateChatNTCResponse(response, evidence, repository);
   has(result, "unresolved-reference");
@@ -324,7 +323,8 @@ test("canonicalizzazione associa riferimenti espliciti già selezionati senza me
   assert.deepEqual(canonical.issues, []);
   assert.equal(canonical.normalized, true);
   assert.equal(canonical.response.classification, "combined-reference");
-  assert.deepEqual(new Set(canonical.response.verifiedReferences.map((reference) => reference.evidenceId)), new Set([NTC, OTHER]));
+  assert.deepEqual(new Set(canonical.response.verifiedReferences.map((reference) => reference.unitId)), new Set([NTC, OTHER]));
+  assert.ok(canonical.response.verifiedReferences.every((reference) => !("evidenceId" in reference)));
   assert.deepEqual(await validateChatNTCResponse(canonical.response, evidence, repository), { valid: true, issues: [] });
 });
 
@@ -334,7 +334,7 @@ test("canonicalizzazione deriva metadata senza claims o usedEvidenceIds", async 
     answerMarkdown: "Dal §7.3.6.1 si propone una lettura progettuale." });
   const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
   assert.equal(canonical.response.classification, "interpretation");
-  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.evidenceId), [NTC]);
+  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.unitId), [NTC]);
   assert.equal((await validateChatNTCResponse(canonical.response, evidence, repository)).valid, true);
 });
 
@@ -355,7 +355,7 @@ test("canonicalizzazione deduplica occorrenze e citation canoniche ripetute", as
     references: ["§7.3.6.1", "§7.3.6.1"] });
   const canonical = await canonicalizeChatNTCResponse(output, evidence, repository);
   assert.deepEqual(canonical.issues, []);
-  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.evidenceId), [NTC]);
+  assert.deepEqual(canonical.response.verifiedReferences.map((reference) => reference.unitId), [NTC]);
 });
 
 test("risposta progettuale generale è valida senza claims né riferimenti normativi", async () => {

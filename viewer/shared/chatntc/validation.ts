@@ -3,7 +3,7 @@ import { citationForEvidence, evidencePackageId, evidenceUnits, projectEvidenceB
 import { CHATNTC_EPISTEMIC_POLICY } from "./policy.js";
 import { chatNTCIssueCategory } from "./issueCategories.js";
 import { isChatNTCResponse } from "./responseContract.js";
-import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCRepository,
+import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCRepository, ChatNTCVerifiedReference,
   ChatNTCUnitRecord, ChatNTCValidationIssue, ChatNTCValidationResult } from "./types.js";
 
 /**
@@ -77,28 +77,36 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
   if (characters !== evidence.retrieval.evidenceCharacters || characters > evidence.retrieval.options.maxEvidenceCharacters) add("evidence-budget", "evidence.retrieval", "Budget evidence incoerente.");
 
   if (response.formatVersion === 3) {
-    const canonicalReferences: ChatNTCCitation[] = [];
+    const canonicalReferences: ChatNTCVerifiedReference[] = [];
+    const canonicalTargets = new Set<string>();
     for (const [position, citation] of response.verifiedReferences.entries()) {
       const path = `response.verifiedReferences[${position}]`;
       const initialIssues = issues.length;
+      const targetKey = stableJson({ unitId: citation.unitId, blockId: citation.blockId, assetId: citation.assetId });
+      if (canonicalTargets.has(targetKey)) add("duplicate-citation", path, "Target canonico ripetuto.");
+      canonicalTargets.add(targetKey);
       const record = await getUnit(citation.unitId);
       if (!record) add("unknown-unit", path, "Unità citata assente dal corpus.");
       else {
         if (citation.document !== record.unit.document || citation.numbering !== record.unit.numbering.official) {
           add("citation-identity-mismatch", path, "Documento o numbering non corrispondono all'ID canonico.");
         }
-        const block = citation.blockId ? record.unit.blocks.find((entry) => entry.blockId === citation.blockId) : undefined;
+        const block = citation.blockId ? record.unit.blocks.find((entry) => entry.blockId === citation.blockId)
+          : citation.assetId ? record.unit.blocks.find((entry) => entry.assetId === citation.assetId) : undefined;
         if (citation.blockId && !block) add("unknown-block", path, "Blocco citato assente dall'unità.");
         if (citation.assetId) {
+          const assetKind = record.assets.formulas[citation.assetId] ? "formula"
+            : record.assets.tables[citation.assetId] ? "table" : record.assets.figures[citation.assetId] ? "figure" : null;
           const asset = record.assets.formulas[citation.assetId] ?? record.assets.tables[citation.assetId] ?? record.assets.figures[citation.assetId];
           if (!asset || !record.unit.blocks.some((entry) => entry.assetId === citation.assetId)) add("unknown-asset", path, "Asset citato assente dall'unità.");
           if (!block || block.assetId !== citation.assetId) add("asset-block-mismatch", path, "Asset e blocco citati non corrispondono.");
           if (asset && citation.assetNumber !== asset.officialNumber) add("asset-number-mismatch", path, "Numero ufficiale dell'asset non corrispondente.");
-        } else if (citation.assetNumber !== undefined) add("asset-number-without-asset", path, "Numero asset privo di assetId.");
-      }
-      if (!evidenceIds.has(citation.evidenceId)) add("evidence-not-selected", path, "Riferimento non incluso nel contesto canonico espanso.");
-      else if (stableJson(citation) !== stableJson(citationForEvidence(evidence, citation.evidenceId))) {
-        add("citation-target-mismatch", path, "Il riferimento non coincide con il target canonico.");
+          if (assetKind && citation.kind !== assetKind) add("reference-kind-mismatch", path, "Tipo del riferimento non corrispondente all'asset canonico.");
+        } else {
+          if (citation.assetNumber !== undefined) add("asset-number-without-asset", path, "Numero asset privo di assetId.");
+          const expectedKind = citation.blockId ? "block" : "unit";
+          if (citation.kind !== expectedKind) add("reference-kind-mismatch", path, "Tipo del riferimento non corrispondente al target canonico.");
+        }
       }
       if (issues.length === initialIssues) canonicalReferences.push(citation);
     }
@@ -203,11 +211,11 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
         const selectedTarget = targets.some((target) => selectedCitations.some((citation) => citation.unitId === target.unitId
           && (!target.blockId || citation.blockId === target.blockId)
           && (!target.assetId || citation.assetId === target.assetId)));
-        const code = selectedTarget ? "untracked-reference" : "unselected-canonical-reference";
-        add(code, path, code === "untracked-reference"
-          ? `Riferimento testuale senza citazione associata: ${reference.text}`
-          : `Riferimento canonico reale non incluso nell'evidence: ${reference.text}`,
-        { reference: reference.text, targets: targetDetails });
+        // Legacy v1/v2 cannot represent post-hoc references without inventing an evidenceId.
+        // Keep enforcing missing bookkeeping only for targets already selected in that old wire format.
+        if (selectedTarget) add("untracked-reference", path,
+          `Riferimento testuale senza citazione associata: ${reference.text}`,
+          { reference: reference.text, targets: targetDetails });
       }
     }
     return matchedIds;

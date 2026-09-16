@@ -1,5 +1,5 @@
 import type { CorpusBlock, TableCell } from "../corpusData.js";
-import type { ChatNTCCitation, ChatNTCEvidenceBlock, ChatNTCEvidencePackage, ChatNTCEvidenceUnit, ChatNTCUnitRecord } from "./types.js";
+import type { ChatNTCCitation, ChatNTCEvidenceBlock, ChatNTCEvidencePackage, ChatNTCEvidenceUnit, ChatNTCReference, ChatNTCUnitRecord } from "./types.js";
 import type { ViewerTarget } from "../permalinks.js";
 
 /** Sorted object keys, preserved array/source order, no clock or randomness. */
@@ -91,7 +91,7 @@ export function citationForEvidence(evidence: ChatNTCEvidencePackage, evidenceId
 }
 
 /** Reuses the viewer's target contract; URL generation remains the consumer's responsibility. */
-export function viewerTargetForCitation(citation: ChatNTCCitation): ViewerTarget {
+export function viewerTargetForCitation(citation: ChatNTCReference): ViewerTarget {
   if (citation.assetId) {
     const assetKind = (["formula", "table", "figure"] as const)
       .find((kind) => citation.assetId?.startsWith(`urn:structural-codes:it:asset:${kind}:`));

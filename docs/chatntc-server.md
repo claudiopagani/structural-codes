@@ -166,8 +166,8 @@ consumare credito DeepSeek. I test del repository usano invece mock.
 ```ts
 {
   ok: true;
-  response: ChatNTCResponse;          // contratto dello STEP 1
-  citations: ChatNTCCitation[];       // ricostruite dall'evidence validata
+  response: ChatNTCResponse;          // answerMarkdown + riferimenti v3
+  citations: ChatNTCVerifiedReference[]; // risolti post-hoc sul repository
   evidence: {
     packageId: string;
     corpusFingerprint: string;
@@ -182,12 +182,14 @@ consumare credito DeepSeek. I test del repository usano invece mock.
   };
   validation: {
     valid: true;
-    scope: "integrity-provenance-claim-coverage";
+    scope: "integrity-provenance-reference-resolution";
+    stage: ChatNTCProcessingStage;
   };
 }
 ```
 
-Entrambi i percorsi, generazione e astensione, passano nel Citation Validator.
+Entrambi i percorsi, generazione e astensione, passano nella validazione di
+integrità e risoluzione canonica.
 Il successo non certifica che le citazioni dimostrino semanticamente ogni frase
 né sostituisce la review umana del corpus.
 
@@ -199,22 +201,14 @@ I warning su omissioni, review pendenti e issue rimangono esposti; non vengono
 automaticamente trattati come contenuti approvati o rimossi dal corpus e la UI
 li mostra separatamente dalla prosa tecnica.
 
-### Errori
+### Degradazione dei riferimenti ed errori
 
-```json
-{
-  "ok": false,
-  "error": {
-    "code": "CITATION_VALIDATION_FAILED",
-    "message": "La risposta è stata respinta dalla validazione delle citazioni."
-  }
-}
-```
-
-In local/debug, `error.diagnostics` può inoltre contenere soltanto `code`,
-`path`, messaggio sanitizzato e riferimento normativo sicuro. In modalità non
-debug il payload rimane quello minimale mostrato sopra; non vengono mai esposti
-raw upstream, prompt, header, credenziali o stack trace.
+Problemi di risoluzione, canonicalizzazione o bookkeeping non producono una
+risposta HTTP di errore. La pipeline risolve i target reali anche fuori dal
+retrieval, tenta un solo repair per riferimenti falsi/ambigui e infine rimuove
+localmente le sole attribuzioni non verificabili. `referenceWarning` segnala
+`some-references-omitted` oppure `no-references-verified`; diagnostica e stage
+restano nei metadati tecnici e non vengono mostrati come errore all'utente.
 
 | HTTP | Codici principali |
 | --- | --- |
@@ -226,7 +220,7 @@ raw upstream, prompt, header, credenziali o stack trace.
 | 415 | `UNSUPPORTED_MEDIA_TYPE` |
 | 503 | `PROVIDER_NOT_CONFIGURED`, `API_KEY_MISSING`, `INVALID_PROVIDER_CONFIG` |
 | 504 | `PROVIDER_TIMEOUT` |
-| 502 | `PROVIDER_ERROR`, `INVALID_PROVIDER_RESPONSE`, `INVALID_PROVIDER_JSON`, `INVALID_RESPONSE_SCHEMA`, `CITATION_VALIDATION_FAILED` |
+| 502 | `PROVIDER_ERROR`, `INVALID_PROVIDER_RESPONSE`, `INVALID_PROVIDER_JSON`, `INVALID_RESPONSE_SCHEMA` |
 | 500 | `RETRIEVAL_FAILED`, `VALIDATION_FAILED`, `INTERNAL_ERROR` |
 
 Gli errori pubblici sono ricostruiti da un elenco fisso: nessun body upstream,
@@ -235,7 +229,8 @@ Non vengono loggati prompt, risposte, storico o credenziali. Le risposte HTTP
 hanno `Cache-Control: no-store`. La chiave è conservata in un campo privato
 dell'adapter, esclusa da system/messages/evidence e dai metadati del risultato.
 Un eventuale riflesso della chiave nel risultato upstream viene respinto.
-Non sono implementati retry o tentativi automatici di riparazione delle risposte.
+È implementato un solo repair mirato dei riferimenti; non sono effettuati retry
+HTTP automatici del provider.
 
 ## Test e gate
 

@@ -7,6 +7,8 @@ import { historyMessages, turnsFromHistory } from "../package-dist/chatntc-ui/hi
 const timestamp = "2026-09-15T10:00:00.000Z";
 const unitId = "urn:structural-codes:it:unit:ntc2018:7.3.6.1";
 const citation = { evidenceId: "e-block", unitId, document: "ntc2018", numbering: "7.3.6.1", blockId: "b-1", assetId: "urn:structural-codes:it:asset:formula:ntc2018:f-1", assetNumber: "7.3.1" };
+const verifiedReference = { unitId, document: "ntc2018", numbering: "7.3.6.1", kind: "formula", blockId: "b-1",
+  assetId: "urn:structural-codes:it:asset:formula:ntc2018:f-1", assetNumber: "7.3.1" };
 const response = { formatVersion: 1, evidencePackageId: "package", answer: "Risposta di fixture.", classification: "direct-reference",
   claims: [{ id: "claim", text: "Test.", classification: "direct-reference", citations: [citation] }], usedEvidenceIds: [citation.evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false };
 const result = { ok: true, response, citations: [citation], evidence: { packageId: "package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "corpus-before", artifactFingerprint: "artifacts-before", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [{ code: "unreviewed-evidence", unitId }] },
@@ -61,7 +63,7 @@ test("history schema v2 ripristina answer wire v1/v2 e risposta canonica v3", as
   const turnsV2 = [{ ...turns[0], id: "turn-v2", result: { ...result, response: responseV2 } }];
   const messagesV2 = historyMessages(turnsV2);
   const responseV3 = { formatVersion: 3, evidencePackageId: "package", answerMarkdown: "Risposta canonica v3.",
-    classification: "direct-reference", status: "answered", verifiedReferences: [citation], warnings: [],
+    classification: "direct-reference", status: "answered", verifiedReferences: [verifiedReference], warnings: [],
     needsMoreEvidence: false, externalResearchSuggested: false };
   const resultV3 = { ...result, response: responseV3, validation: { valid: true,
     scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } };
@@ -73,7 +75,22 @@ test("history schema v2 ripristina answer wire v1/v2 e risposta canonica v3", as
   assert.equal(restored[1].result.response.status, "answered");
   assert.equal(restored[2].result.response.formatVersion, 3);
   assert.equal(restored[2].result.response.answerMarkdown, "Risposta canonica v3.");
-  assert.deepEqual(restored[2].result.response.verifiedReferences, [citation]);
+  assert.deepEqual(restored[2].result.response.verifiedReferences, [verifiedReference]);
+});
+
+test("history v3 iniziale con evidenceId viene adattata al nuovo riferimento indipendente", async (t) => {
+  const { store } = setup(t);
+  const legacyV3 = { ...historyMessages([{ ...turns[0], id: "legacy-v3", result: { ...result,
+    response: { formatVersion: 3, evidencePackageId: "package", answerMarkdown: "Risposta v3 storica.",
+      classification: "direct-reference", status: "answered", verifiedReferences: [verifiedReference], warnings: [],
+      needsMoreEvidence: false, externalResearchSuggested: false },
+    validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } } }])[1] };
+  legacyV3.answer.verifiedReferences = [{ ...citation }];
+  const user = historyMessages([{ ...turns[0], id: "legacy-v3" }])[0];
+  const created = await store.createConversation({ title: "Legacy v3", messages: [user, legacyV3] });
+  const restored = turnsFromHistory(created.messages)[0].result.response;
+  assert.deepEqual(restored.verifiedReferences, [verifiedReference]);
+  assert.equal("evidenceId" in restored.verifiedReferences[0], false);
 });
 
 test("two independent conversations, updatedAt ordering and rename without replacing messages", async (t) => {

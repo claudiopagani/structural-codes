@@ -63,7 +63,7 @@ test("route Vinext local/debug esegue l'intera pipeline con fetch DeepSeek simul
   });
 });
 
-test("route compilata blocca un output non separabile e consente una risposta generale", async (t) => {
+test("route compilata degrada un output non separabile e consente una risposta generale", async (t) => {
   let calls = 0;
   t.mock.method(globalThis, "fetch", async (_url, init) => {
     calls += 1;
@@ -78,12 +78,12 @@ test("route compilata blocca un output non separabile e consente una risposta ge
   });
   await withEnvironment({ CHATNTC_ENABLED: "true", CHATNTC_DEBUG: "true" }, async () => {
     const invalid = await post({ question: "7.3.6.1" });
-    assert.equal(invalid.status, 502);
+    assert.equal(invalid.status, 200);
     const body = await invalid.json();
-    assert.equal(body.error.code, "CITATION_VALIDATION_FAILED");
-    assert.ok(body.error.diagnostics.some((issue) => issue.code === "unresolved-reference"));
-    assert.ok(body.error.diagnostics.every((issue) => typeof issue.path === "string" && typeof issue.message === "string"));
-    assert.equal(body.response, undefined);
+    assert.equal(body.response.referenceWarning, "no-references-verified");
+    assert.equal(body.response.verifiedReferences.length, 0);
+    assert.doesNotMatch(body.response.answerMarkdown, /7\.99\.4/u);
+    assert.equal(body.error, undefined);
     const response = await post({ question: "7.99.4" });
     assert.equal(response.status, 200);
     const abstention = await response.json();

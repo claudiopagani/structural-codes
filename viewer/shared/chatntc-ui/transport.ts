@@ -1,4 +1,4 @@
-import type { ChatNTCCitation, ChatNTCEvidencePackage, ChatNTCProcessingStage, ChatNTCResponse, ChatNTCRetrievalContext } from "../chatntc/types.js";
+import type { ChatNTCEvidencePackage, ChatNTCProcessingStage, ChatNTCReference, ChatNTCResponse, ChatNTCRetrievalContext, ChatNTCValidationIssue } from "../chatntc/types.js";
 import type { ChatNTCMessage } from "../chatntc/provider.js";
 
 /** Transient input. Context contains identifiers only, never a browser-supplied corpus chunk. */
@@ -12,7 +12,7 @@ export interface ChatRequest {
 export interface ChatResult {
   ok: true;
   response: ChatNTCResponse;
-  citations: ChatNTCCitation[];
+  citations: ChatNTCReference[];
   evidence: {
     packageId: string; corpusFingerprint: string; artifactFingerprint: string;
     /** Optional only for transports predating history; persisted as null when unavailable. */
@@ -21,7 +21,7 @@ export interface ChatResult {
   };
   generation: { provider: string | null; model?: string | null; outcome: "generated" | "abstained" };
   validation: { valid: true; scope: "integrity-provenance-claim-coverage" | "integrity-provenance-reference-resolution";
-    stage?: ChatNTCProcessingStage };
+    stage?: ChatNTCProcessingStage; diagnostics?: ChatNTCValidationIssue[] };
 }
 
 export interface ChatTransport {

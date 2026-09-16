@@ -1,4 +1,4 @@
-import type { ChatNTCCitation, ChatNTCProviderOutput, ChatNTCResponse } from "./types.js";
+import type { ChatNTCCitation, ChatNTCProviderOutput, ChatNTCResponse, ChatNTCVerifiedReference } from "./types.js";
 
 const classifications = ["direct-reference", "combined-reference", "interpretation", "no-direct-reference", "external-source"] as const;
 const nonEmptyString = { type: "string", pattern: "\\S" } as const;
@@ -41,13 +41,24 @@ function isCitation(value: unknown): value is ChatNTCCitation {
     && (value.assetNumber === undefined || value.assetNumber === null || text(value.assetNumber));
 }
 
+function isVerifiedReference(value: unknown): value is ChatNTCVerifiedReference {
+  return object(value) && keys(value, ["unitId", "document", "numbering", "kind", "blockId", "assetId", "assetNumber"])
+    && text(value.unitId) && text(value.numbering)
+    && (value.document === "ntc2018" || value.document === "circ2019")
+    && ["unit", "block", "formula", "table", "figure"].includes(String(value.kind))
+    && (value.blockId === undefined || text(value.blockId))
+    && (value.assetId === undefined || text(value.assetId))
+    && (value.assetNumber === undefined || value.assetNumber === null || text(value.assetNumber));
+}
+
 /** Same structural check used in STEP 1, now reusable by adapters without running retrieval. */
 export function isChatNTCResponse(value: unknown): value is ChatNTCResponse {
   if (object(value) && value.formatVersion === 3) {
-    return keys(value, ["formatVersion", "evidencePackageId", "answerMarkdown", "classification", "status", "verifiedReferences", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
+    return keys(value, ["formatVersion", "evidencePackageId", "answerMarkdown", "classification", "status", "verifiedReferences", "referenceWarning", "warnings", "needsMoreEvidence", "externalResearchSuggested"])
       && text(value.evidencePackageId) && text(value.answerMarkdown) && classification(value.classification)
       && ["answered", "partial", "abstained"].includes(String(value.status))
-      && Array.isArray(value.verifiedReferences) && value.verifiedReferences.every(isCitation)
+      && Array.isArray(value.verifiedReferences) && value.verifiedReferences.every(isVerifiedReference)
+      && (value.referenceWarning === undefined || ["some-references-omitted", "no-references-verified"].includes(String(value.referenceWarning)))
       && strings(value.warnings) && typeof value.needsMoreEvidence === "boolean" && typeof value.externalResearchSuggested === "boolean";
   }
   return object(value) && keys(value, ["formatVersion", "evidencePackageId", "answer", "classification", "status", "claims", "usedEvidenceIds", "warnings", "needsMoreEvidence", "externalResearchSuggested"])

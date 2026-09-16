@@ -16,7 +16,6 @@ const messages: Record<string, string> = {
   INVALID_PROVIDER_RESPONSE: "Il provider ha restituito una risposta incompleta o non utilizzabile.",
   INVALID_PROVIDER_CONFIG: "La configurazione del servizio sul server non è valida.",
   PROVIDER_TIMEOUT: "La risposta ha richiesto troppo tempo. Puoi riprovare.",
-  CITATION_VALIDATION_FAILED: "La risposta è stata bloccata perché le citazioni non sono valide. Puoi riformulare la domanda.",
   INVALID_CONTEXT: "Il paragrafo selezionato non è disponibile. Selezionalo di nuovo o invia una domanda generica.",
   INVALID_REQUEST: "Controlla la domanda e riprova.",
   LOCAL_ONLY: "ChatNTC è disponibile soltanto nell'istanza locale.",
@@ -42,11 +41,8 @@ export class LocalChatTransport implements ChatTransport {
       const result: unknown = await response.json();
       if (!response.ok) {
         const code = object(result) && object(result.error) && typeof result.error.code === "string" ? result.error.code : "REQUEST_FAILED";
-        const diagnostics = code === "CITATION_VALIDATION_FAILED" && object(result) && object(result.error) && Array.isArray(result.error.diagnostics)
-          ? result.error.diagnostics.filter((item) => object(item) && typeof item.code === "string" && typeof item.path === "string" && typeof item.message === "string")
-            .slice(0, 20).map((item) => `${String(item.path).slice(0, 200)} · ${String(item.code).slice(0, 80)} · ${String(item.message).slice(0, 300)}`) : [];
         const base = messages[code] ?? "ChatNTC non ha potuto completare la risposta. Riprova tra poco.";
-        throw new ChatTransportError(code, diagnostics.length ? `${base}\n${diagnostics.join("\n")}` : base);
+        throw new ChatTransportError(code, base);
       }
       // Structural boundary check; canonical verification remains exclusively server-side.
       if (!object(result) || result.ok !== true || !isChatNTCResponse(result.response)
@@ -63,11 +59,10 @@ export class LocalChatTransport implements ChatTransport {
       const answer = result.response;
       const references = answer.formatVersion === 3 ? answer.verifiedReferences
         : answer.usedEvidenceIds.map((id) => answer.claims.flatMap((claim) => claim.citations).find((citation) => citation.evidenceId === id)!);
-      const declared = new Map(references.map((citation) => [citation.evidenceId, citation]));
       if (result.citations.length !== references.length || result.citations.some((citation, index) => {
-        if (!object(citation) || citation.evidenceId !== references[index].evidenceId) return true;
-        const source = declared.get(citation.evidenceId as string);
-        return !source || Object.keys(citation).length !== Object.keys(source).length
+        if (!object(citation)) return true;
+        const source = references[index] as unknown as Record<string, unknown>;
+        return Object.keys(citation).length !== Object.keys(source).length
           || Object.entries(source).some(([key, value]) => citation[key] !== value);
       })) throw new ChatTransportError("INVALID_RESULT", "Le citazioni ricevute non corrispondono alla risposta validata.");
       return result as unknown as ChatResult;

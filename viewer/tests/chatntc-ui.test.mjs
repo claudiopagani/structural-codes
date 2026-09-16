@@ -22,6 +22,7 @@ const { ChatNTCPanel, ChatNTCHistoryPanel, IndexedDbChatHistoryStore, ChatHistor
 const unitId = "urn:structural-codes:it:unit:ntc2018:7.3.6.1";
 const context = { documentId: "ntc2018", unitId, numbering: "7.3.6.1" };
 const citation = { evidenceId: unitId, unitId, document: "ntc2018", numbering: "7.3.6.1" };
+const verifiedReference = { unitId, document: "ntc2018", numbering: "7.3.6.1", kind: "unit" };
 function result(classification = "direct-reference") {
   const citations = classification === "no-direct-reference" ? [] : [citation];
   return { ok: true, response: { formatVersion: 1, evidencePackageId: "fixture-package", answer: "Risposta simulata per il test di interazione.", classification,
@@ -30,7 +31,7 @@ function result(classification = "direct-reference") {
     evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
     generation: { provider: "mock", model: "mock-model", outcome: citations.length ? "generated" : "abstained" }, validation: { valid: true, scope: "integrity-provenance-claim-coverage" } };
 }
-function resultV3(references = [citation], answerMarkdown = "No: il punto chiave è distinguere gli spostamenti.") {
+function resultV3(references = [verifiedReference], answerMarkdown = "No: il punto chiave è distinguere gli spostamenti.") {
   return { ok: true, response: { formatVersion: 3, evidencePackageId: "fixture-package",
     answerMarkdown, classification: references.length > 1 ? "combined-reference" : references.length ? "direct-reference" : "no-direct-reference",
     status: "answered", verifiedReferences: references, warnings: [], needsMoreEvidence: false, externalResearchSuggested: false },
@@ -86,8 +87,8 @@ test("invio generico, risposta, classificazione e click citazione usano target/p
 
 test("risposta canonica v3 mostra answerMarkdown e riferimenti verificati", async () => {
   const assetId = "urn:structural-codes:it:asset:formula:ntc2018:7.3.3.3-7.3.8";
-  const formula = { ...citation, evidenceId: "formula-block", blockId: "formula-block", assetId, assetNumber: "7.3.8" };
-  const reply = resultV3([citation, formula]);
+  const formula = { ...verifiedReference, kind: "formula", blockId: "formula-block", assetId, assetNumber: "7.3.8" };
+  const reply = resultV3([verifiedReference, formula]);
   await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
   await submit();
   assert.match(rootElement.querySelector(".scv-chat-markdown").textContent, /^No:/u);
@@ -128,7 +129,7 @@ $$
 ---
 
 [Approfondimento](https://example.org/) [link non sicuro](javascript:alert(1)) <script>window.injected = true</script>`;
-  await mount(h(ChatNTCPanel, props({ transport: transport(async () => resultV3([citation], markdown)) })));
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => resultV3([verifiedReference], markdown)) })));
   await submit();
   const content = rootElement.querySelector(".scv-chat-markdown");
   assert.equal(content.querySelector("h2").textContent, "Risposta breve");
@@ -200,11 +201,11 @@ test("paragrafo corrente: invia solo ID/numbering, inclusa selezione, senza chun
   assert.equal(JSON.stringify(calls[0].request).includes("chunk"), false);
 });
 
-test("errore leggibile, domanda recuperabile e nessuna risposta scartata", async () => {
-  await mount(h(ChatNTCPanel, props({ transport: transport(async () => { throw new ChatTransportError("CITATION_VALIDATION_FAILED", "Citazioni respinte."); }) })));
+test("errore infrastrutturale leggibile e domanda recuperabile", async () => {
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => { throw new ChatTransportError("PROVIDER_UNAVAILABLE", "Provider non disponibile."); }) })));
   await submit("Domanda da riprovare");
   assert.equal(rootElement.querySelector(".scv-chat-loading"), null);
-  assert.equal(rootElement.querySelector('[role="alert"]').textContent, "Citazioni respinte.");
+  assert.equal(rootElement.querySelector('[role="alert"]').textContent, "Provider non disponibile.");
   assert.equal(rootElement.querySelector("textarea").value, "Domanda da riprovare");
   assert.equal(rootElement.querySelector(".scv-chat-answer"), null);
 });
@@ -253,10 +254,20 @@ test("LocalChatTransport rifiuta output non validato e sanitizza gli errori", as
   for (const invalid of [{}, { ...result(), validation: { valid: false } }, { ...result(), citations: [{ ...citation, unitId: "invented" }] }]) {
     await assert.rejects(new LocalChatTransport(async () => Response.json(invalid)).send({ question: "Test" }), { code: "INVALID_RESULT" });
   }
-  await assert.rejects(new LocalChatTransport(async () => Response.json({ error: { code: "CITATION_VALIDATION_FAILED", message: "private detail" } }, { status: 502 })).send({ question: "Test" }), (error) => error.code === "CITATION_VALIDATION_FAILED" && !error.message.includes("private detail"));
-  await assert.rejects(new LocalChatTransport(async () => Response.json({ error: { code: "CITATION_VALIDATION_FAILED", diagnostics: [
-    { code: "unresolved-reference", path: "response.answer", message: "Riferimento normativo non risolvibile: §7.99.4" },
-  ] } }, { status: 502 })).send({ question: "Test" }), (error) => error.message.includes("unresolved-reference") && error.message.includes("response.answer") && error.message.includes("§7.99.4"));
+  await assert.rejects(new LocalChatTransport(async () => Response.json({ error: { code: "PROVIDER_UNAVAILABLE", message: "private detail" } }, { status: 503 })).send({ question: "Test" }),
+    (error) => error.code === "PROVIDER_UNAVAILABLE" && !error.message.includes("private detail"));
+});
+
+test("warning neutro di degradazione è visibile e dismissibile", async () => {
+  const reply = resultV3([], "La risposta tecnica generale resta disponibile.");
+  reply.response.referenceWarning = "no-references-verified";
+  await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
+  await submit();
+  assert.match(rootElement.querySelector(".scv-chat-reference-warning").textContent, /Non sono stati verificati riferimenti normativi specifici/u);
+  assert.equal(rootElement.querySelector(".scv-chat-error"), null);
+  await click(rootElement.querySelector(".scv-chat-reference-warning button"));
+  assert.equal(rootElement.querySelector(".scv-chat-reference-warning"), null);
+  assert.match(rootElement.querySelector(".scv-chat-markdown").textContent, /resta disponibile/u);
 });
 
 test("warning editoriali restano nei metadata UI e non vengono aggiunti alla prosa", async () => {
@@ -574,7 +585,7 @@ test("BYOK transport snapshots settings for in-flight turn and normalizes sensit
   config.configure({ provider: "gemini", model: "gemini-3.8-flash" }, "fixture-key-b");
   const reply = result(); reply.generation.provider = "deepseek"; reply.generation.model = "deepseek-flash";
   finish(Response.json(reply)); assert.equal((await pending).generation.provider, "deepseek");
-  for (const code of ["INVALID_CREDENTIALS", "RATE_LIMIT", "QUOTA_EXCEEDED", "INVALID_MODEL", "CITATION_VALIDATION_FAILED"]) {
+  for (const code of ["INVALID_CREDENTIALS", "RATE_LIMIT", "QUOTA_EXCEEDED", "INVALID_MODEL", "PROVIDER_UNAVAILABLE"]) {
     const failing = new LocalChatTransport(async () => Response.json({ error: { code, message: "fixture-secret-upstream" } }, { status: 401 }), config);
     await assert.rejects(failing.send({ question: "Test" }), (error) => error.code === code && !error.message.includes("fixture-secret-upstream"));
   }

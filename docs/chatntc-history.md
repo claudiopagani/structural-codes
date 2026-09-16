@@ -49,9 +49,10 @@ Ogni messaggio ha `id`, `role`, `content`, `timestamp`.
   `context` con documentId/unitId/numbering/blockId/assetId, errore leggibile.
 - **Assistant**: `turnId` collega la domanda; `answer` conserva il contratto
   strutturato senza duplicare il testo della risposta, già in `content`.
-  Include classification, claim, citazioni validate, usedEvidenceIds e warning.
-  Gli ID di unità/blocco/asset utilizzati restano nelle citazioni dei claim;
-  il catalogo per i link si ricostruisce da queste, senza salvarlo due volte.
+  V1/v2 conservano claim, citazioni e `usedEvidenceIds`; v3 conserva i
+  `verifiedReferences` indipendenti dall'evidence e l'eventuale warning di
+  degradazione. Le prime snapshot v3 che riusavano `evidenceId` vengono adattate
+  in lettura senza perdere target o conversazioni.
 - **Provenance** della risposta: provider, model, structuralCodesVersion,
   corpusFingerprint, artifactFingerprint, policyVersion, outcome, scope ed esito
   della validazione originale. `evidenceWarnings` ed `evidenceReduced` conservano

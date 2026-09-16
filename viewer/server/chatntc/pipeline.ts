@@ -23,60 +23,62 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
   const queryContext = (request.history ?? []).filter((message) => message.role === "user").slice(-3).map((message) => message.content);
   const retrievalInput = { ...dependencies.retrievalOptions, queryContext, ...(request.context ? { context: request.context } : {}) };
-  let evidence = await retrieve(request.question, retrievalInput);
+  const evidence = await retrieve(request.question, retrievalInput);
   if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
 
   const provider = dependencies.provider();
   const messages = [...(request.history ?? []).map(({ role, content }) => ({ role, content })),
     { role: "user" as const, content: request.question }];
   let candidate = await generate(provider, evidence);
-  if (candidate.evidencePackageId !== evidence.packageId) hardReject([{ code: "wrong-package",
-    path: "response.evidencePackageId", message: "Risposta associata a un altro contesto normativo.", category: "integrity" }]);
-  let canonical = await canonicalize(candidate, evidence);
-  let stage: ChatNTCProcessingStage = canonical.normalized ? "NORMALIZED" : "GENERATED";
-  let expanded = false;
-  let repaired = false;
-
-  if (discoveryReferences(canonical.issues).length) {
-    evidence = await expand(canonical.issues);
+  const diagnostics: ChatNTCValidationIssue[] = [];
+  if (candidate.evidencePackageId !== evidence.packageId) {
+    diagnostics.push({ code: "wrong-package", path: "response.evidencePackageId",
+      message: "Identificativo del contesto normalizzato dal server.", category: "bookkeeping" });
     candidate = { ...candidate, evidencePackageId: evidence.packageId };
-    expanded = true;
-    canonical = await canonicalize(candidate, evidence);
-    stage = "EXPANDED";
   }
+  let canonical = await canonicalize(candidate, evidence);
+  let stage: ChatNTCProcessingStage = canonical.response.verifiedReferences.length
+    ? "REFERENCES_RESOLVED" : canonical.normalized ? "NORMALIZED" : "GENERATED";
 
   if (repairableIssues(canonical.issues).length) {
-    repaired = true;
+    diagnostics.push(...canonical.issues);
     candidate = await generate(provider, evidence, {
       issues: repairableIssues(canonical.issues).map(repairIssue), previousOutput: candidate,
     });
-    if (candidate.evidencePackageId !== evidence.packageId) hardReject([{ code: "wrong-package",
-      path: "response.evidencePackageId", message: "Repair associato a un altro contesto normativo.", category: "integrity" }]);
+    if (candidate.evidencePackageId !== evidence.packageId) {
+      diagnostics.push({ code: "wrong-package", path: "response.evidencePackageId",
+        message: "Identificativo del contesto del repair normalizzato dal server.", category: "bookkeeping" });
+      candidate = { ...candidate, evidencePackageId: evidence.packageId };
+    }
     canonical = await canonicalize(candidate, evidence);
     stage = "REPAIRED";
-    if (!expanded && discoveryReferences(canonical.issues).length) {
-      evidence = await expand(canonical.issues);
-      candidate = { ...candidate, evidencePackageId: evidence.packageId };
-      expanded = true;
-      canonical = await canonicalize(candidate, evidence);
-      stage = "EXPANDED";
-    }
   }
 
+  let referenceWarning: "some-references-omitted" | "no-references-verified" | undefined;
   if (canonical.issues.length) {
+    diagnostics.push(...canonical.issues);
     const sanitized = sanitizeReferences(candidate, canonical.issues);
-    if (!sanitized || (repaired && sanitized.answerMarkdown === candidate.answerMarkdown
-      && sanitized.references.length === candidate.references.length)) hardReject(canonical.issues);
-    candidate = sanitized;
+    candidate = sanitized.output;
+    diagnostics.push(...canonical.issues.map((issue) => ({ ...issue, code: "stripped-reference",
+      message: `Riferimento omesso dopo la verifica: ${issue.reference ?? "non disponibile"}` })));
     canonical = await canonicalize(candidate, evidence);
-    stage = "PARTIALLY_SANITIZED";
+    stage = canonical.response.verifiedReferences.length ? "PARTIALLY_SANITIZED" : "DEGRADED";
+    referenceWarning = canonical.response.verifiedReferences.length
+      ? "some-references-omitted" : "no-references-verified";
   }
-  if (canonical.issues.length) hardReject(canonical.issues);
+  if (canonical.issues.length) {
+    diagnostics.push(...canonical.issues);
+    candidate = safeFallback(candidate, evidence.packageId);
+    canonical = await canonicalize(candidate, evidence);
+    stage = "DEGRADED";
+    referenceWarning = "no-references-verified";
+  }
+  if (referenceWarning) canonical.response.referenceWarning = referenceWarning;
 
   let validation;
   try { validation = await validateChatNTCResponse(canonical.response, evidence, repository); }
   catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
-  if (!validation.valid) hardReject(validation.issues);
+  if (!validation.valid) throw new ChatNTCServerError("VALIDATION_FAILED");
 
   return {
     ok: true, response: canonical.response, citations: canonical.response.verifiedReferences,
@@ -85,7 +87,8 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
       policyVersion: evidence.policyVersion, reduced: evidence.retrieval.reduced, warnings: evidence.warnings },
     generation: { provider: provider.id, model: provider.model ?? null,
       outcome: canonical.response.status === "abstained" ? "abstained" : "generated" },
-    validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage },
+    validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage,
+      ...(diagnostics.length ? { diagnostics } : {}) },
   };
 
   async function retrieve(question: string, options: ChatNTCRetrievalOptions) {
@@ -94,13 +97,6 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
       if (error instanceof ChatNTCContextError) throw new ChatNTCServerError("INVALID_CONTEXT");
       throw new ChatNTCServerError("RETRIEVAL_FAILED");
     }
-  }
-
-  async function expand(issues: ChatNTCValidationIssue[]) {
-    const references = discoveryReferences(issues);
-    if (references.length > 12) hardReject(issues);
-    if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
-    return retrieve(request.question, { ...retrievalInput, requiredReferences: references });
   }
 
   async function generate(activeProvider: ChatNTCProvider, activeEvidence: ChatNTCEvidencePackage,
@@ -124,13 +120,8 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   }
 }
 
-function discoveryReferences(issues: ChatNTCValidationIssue[]): string[] {
-  return [...new Set(issues.filter((issue) => issue.category === "discovery")
-    .map((issue) => issue.reference).filter((value): value is string => Boolean(value)))];
-}
-
 function repairableIssues(issues: ChatNTCValidationIssue[]): ChatNTCValidationIssue[] {
-  return issues.filter((issue) => ["unresolved-reference", "ambiguous-reference"].includes(issue.code));
+  return issues.filter((issue) => ["unresolved-reference", "ambiguous-reference", "canonical-reference-missing"].includes(issue.code));
 }
 
 function repairIssue(issue: ChatNTCValidationIssue): Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference"> {
@@ -138,22 +129,28 @@ function repairIssue(issue: ChatNTCValidationIssue): Pick<ChatNTCValidationIssue
 }
 
 /** Remove only clauses/lines that contain a reference still unverifiable after the single repair. */
-function sanitizeReferences(output: ChatNTCProviderOutput, issues: ChatNTCValidationIssue[]): ChatNTCProviderOutput | null {
+function sanitizeReferences(output: ChatNTCProviderOutput, issues: ChatNTCValidationIssue[]): { output: ChatNTCProviderOutput } {
   const invalid = [...new Set(issues.map((issue) => issue.reference).filter((value): value is string => Boolean(value)))];
-  if (!invalid.length) return null;
+  if (!invalid.length) return { output: safeFallback(output, output.evidencePackageId) };
   const containsInvalid = (value: string) => invalid.some((reference) => value.toLocaleLowerCase("it")
     .includes(reference.toLocaleLowerCase("it")));
-  const answerMarkdown = output.answerMarkdown.split(/\n/u).map((line) => line
+  let answerMarkdown = output.answerMarkdown.split(/\n/u).map((line) => line
     .split(/(?<=[.!?])\s+/u).filter((sentence) => !containsInvalid(sentence)).join(" ").trim())
     .filter((line, position, lines) => line || (position > 0 && position < lines.length - 1))
     .join("\n").replace(/\n{3,}/gu, "\n\n").trim();
-  if (!answerMarkdown) return null;
+  if (!answerMarkdown) answerMarkdown = "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.";
   const references = output.references.filter((value) => !containsInvalid(value)
     && !findCrossReferences(value).some((reference) => containsInvalid(reference.text)));
-  return { ...output, answerMarkdown, references };
+  return { output: { ...output, answerMarkdown, references,
+    ...(references.length || findCrossReferences(answerMarkdown).length ? {} : {
+      classification: "no-direct-reference" as const,
+      status: answerMarkdown === output.answerMarkdown ? output.status : "partial" as const,
+      needsMoreEvidence: answerMarkdown === output.answerMarkdown ? output.needsMoreEvidence : true,
+    }) } };
 }
 
-function hardReject(issues: ChatNTCValidationIssue[]): never {
-  throw new ChatNTCServerError(issues.some((issue) => issue.code === "invalid-response-shape")
-    ? "INVALID_RESPONSE_SCHEMA" : "CITATION_VALIDATION_FAILED", issues);
+function safeFallback(output: ChatNTCProviderOutput, evidencePackageId: string): ChatNTCProviderOutput {
+  return { ...output, evidencePackageId,
+    answerMarkdown: "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.",
+    references: [], classification: "no-direct-reference", status: "partial", needsMoreEvidence: true };
 }

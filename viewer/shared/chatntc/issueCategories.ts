@@ -7,7 +7,6 @@ const bookkeeping = new Set([
 ]);
 
 export function chatNTCIssueCategory(code: string): ChatNTCValidationIssue["category"] {
-  if (code === "unselected-canonical-reference") return "discovery";
   if (bookkeeping.has(code)) return "bookkeeping";
   return "integrity";
 }

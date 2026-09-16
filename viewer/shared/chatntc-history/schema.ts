@@ -10,6 +10,7 @@ const optionalText = (value: unknown) => value === undefined || text(value);
 
 /** Closed fields at every boundary prevent accidentally persisting config, keys or whole evidence. */
 export function readConversation(value: unknown): ChatConversation {
+  value = adaptLegacyV3References(value);
   function invalid(): never { throw new ChatHistoryError("INVALID_DATA"); }
   if (!object(value) || !keys(value, ["id", "schemaVersion", "revision", "title", "createdAt", "updatedAt", "messages"])
     || value.schemaVersion !== 2 || !text(value.id) || !text(value.title) || value.title.length > 144
@@ -46,7 +47,7 @@ export function readConversation(value: unknown): ChatConversation {
         || !["generated", "abstained"].includes(String(p.outcome)) || !object(p.validation)
         || !keys(p.validation, ["valid", "scope", "stage"]) || p.validation.valid !== true
         || !["integrity-provenance-claim-coverage", "integrity-provenance-reference-resolution"].includes(String(p.validation.scope))
-        || (p.validation.stage !== undefined && !["GENERATED", "NORMALIZED", "EXPANDED", "REPAIRED", "PARTIALLY_SANITIZED", "HARD_REJECTED"].includes(String(p.validation.stage)))
+        || (p.validation.stage !== undefined && !["GENERATED", "NORMALIZED", "REFERENCES_RESOLVED", "EXPANDED", "REPAIRED", "PARTIALLY_SANITIZED", "DEGRADED", "HARD_REJECTED"].includes(String(p.validation.stage)))
         || typeof message.evidenceReduced !== "boolean" || !Array.isArray(message.evidenceWarnings)
         || !message.evidenceWarnings.every((w) => object(w) && keys(w, ["code", "unitId"]) && text(w.code) && optionalText(w.unitId))) return invalid();
       if (!isChatNTCResponse(hydrated)) return invalid();
@@ -57,6 +58,27 @@ export function readConversation(value: unknown): ChatConversation {
     } else return invalid();
   }
   return structuredClone(value) as unknown as ChatConversation;
+}
+
+/** Read early v3 snapshots whose verified references still reused the retrieval citation shape. */
+function adaptLegacyV3References(value: unknown): unknown {
+  if (!object(value) || !Array.isArray(value.messages)) return value;
+  const clone = structuredClone(value);
+  if (!object(clone) || !Array.isArray(clone.messages)) return value;
+  for (const message of clone.messages) {
+    if (!object(message) || message.role !== "assistant" || !object(message.answer)
+      || message.answer.formatVersion !== 3 || !Array.isArray(message.answer.verifiedReferences)) continue;
+    message.answer.verifiedReferences = message.answer.verifiedReferences.map((reference) => {
+      if (!object(reference) || typeof reference.evidenceId !== "string" || reference.kind !== undefined) return reference;
+      const current = { ...reference };
+      delete current.evidenceId;
+      const assetId = typeof current.assetId === "string" ? current.assetId : "";
+      const kind = assetId.includes(":asset:formula:") ? "formula" : assetId.includes(":asset:table:") ? "table"
+        : assetId.includes(":asset:figure:") ? "figure" : typeof current.blockId === "string" ? "block" : "unit";
+      return { ...current, kind };
+    });
+  }
+  return clone;
 }
 
 /** Fixture/legacy v1 had the same messages and timestamps but no optimistic revision. */

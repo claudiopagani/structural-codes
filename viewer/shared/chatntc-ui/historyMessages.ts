@@ -17,9 +17,10 @@ export function historyMessages(turns: ChatNTCTurn[]): ChatHistoryMessage[] {
     const answer: ChatHistoryAnswer = response.formatVersion === 3
       ? { formatVersion: response.formatVersion, evidencePackageId: response.evidencePackageId,
         classification: response.classification, status: response.status,
-        verifiedReferences: response.verifiedReferences.map((c) => ({ evidenceId: c.evidenceId, document: c.document,
-          unitId: c.unitId, numbering: c.numbering, ...(c.blockId ? { blockId: c.blockId } : {}),
+        verifiedReferences: response.verifiedReferences.map((c) => ({ document: c.document,
+          unitId: c.unitId, numbering: c.numbering, kind: c.kind, ...(c.blockId ? { blockId: c.blockId } : {}),
           ...(c.assetId ? { assetId: c.assetId } : {}), ...(c.assetNumber !== undefined ? { assetNumber: c.assetNumber } : {}) })),
+        ...(response.referenceWarning ? { referenceWarning: response.referenceWarning } : {}),
         warnings: [...response.warnings], needsMoreEvidence: response.needsMoreEvidence,
         externalResearchSuggested: response.externalResearchSuggested }
       : response.formatVersion === 2 ? { formatVersion: 2, evidencePackageId: response.evidencePackageId,
@@ -40,7 +41,8 @@ export function historyMessages(turns: ChatNTCTurn[]): ChatHistoryMessage[] {
       id: `${turn.id}:answer`, turnId: turn.id, role: "assistant", content, timestamp: turn.answeredAt ?? turn.timestamp, answer,
       provenance: { provider: generation.provider, model: generation.model ?? null, structuralCodesVersion: evidence.structuralCodesVersion ?? null,
         corpusFingerprint: evidence.corpusFingerprint, artifactFingerprint: evidence.artifactFingerprint, policyVersion: evidence.policyVersion,
-        outcome: generation.outcome, validation: { valid: turn.result.validation.valid, scope: turn.result.validation.scope } },
+        outcome: generation.outcome, validation: { valid: turn.result.validation.valid, scope: turn.result.validation.scope,
+          ...(turn.result.validation.stage ? { stage: turn.result.validation.stage } : {}) } },
       evidenceReduced: evidence.reduced, evidenceWarnings: evidence.warnings.map((w) => ({ code: w.code, ...(w.unitId ? { unitId: w.unitId } : {}) })),
     }];
   });

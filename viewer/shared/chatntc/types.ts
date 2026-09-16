@@ -154,6 +154,21 @@ export interface ChatNTCCitation extends ChatNTCTarget {
   assetNumber?: string | null;
 }
 
+/**
+ * Canonical post-hoc reference. Unlike a legacy citation, it is independent from the
+ * Evidence Package selected before generation and therefore never invents an evidenceId.
+ */
+export interface ChatNTCVerifiedReference extends ChatNTCTarget {
+  document: DocumentId;
+  /** Official unit numbering; an asset's number is a separate field. */
+  numbering: string;
+  kind: "unit" | "block" | "formula" | "table" | "figure";
+  assetNumber?: string | null;
+}
+
+export type ChatNTCReference = ChatNTCCitation | ChatNTCVerifiedReference;
+export type ChatNTCReferenceWarning = "some-references-omitted" | "no-references-verified";
+
 export interface ChatNTCClaim {
   id: string;
   text: string;
@@ -198,15 +213,16 @@ export interface CanonicalChatNTCResponse {
   answerMarkdown: string;
   classification: ChatNTCClassification;
   status: ChatNTCAnswerStatus;
-  verifiedReferences: ChatNTCCitation[];
+  verifiedReferences: ChatNTCVerifiedReference[];
+  referenceWarning?: ChatNTCReferenceWarning;
   warnings: string[];
   needsMoreEvidence: boolean;
   externalResearchSuggested: boolean;
 }
 
 export type ChatNTCResponse = ChatNTCLegacyResponse | CanonicalChatNTCResponse;
-export type ChatNTCProcessingStage = "GENERATED" | "NORMALIZED" | "EXPANDED" | "REPAIRED"
-  | "PARTIALLY_SANITIZED" | "HARD_REJECTED";
+export type ChatNTCProcessingStage = "GENERATED" | "NORMALIZED" | "REFERENCES_RESOLVED" | "EXPANDED" | "REPAIRED"
+  | "PARTIALLY_SANITIZED" | "DEGRADED" | "HARD_REJECTED";
 
 export interface ChatNTCValidationIssue {
   code: string; path: string; message: string;

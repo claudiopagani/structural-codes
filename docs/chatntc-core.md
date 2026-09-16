@@ -159,9 +159,17 @@ di ogni download. Il fingerprint identifica uno snapshot; non è una firma.
 
 ## Contratto della risposta e policy
 
-`ChatNTCResponse` v2 richiede `answer`, `classification`, `status`, `claims`, citazioni per
-claim, `usedEvidenceIds`, `warnings`, `needsMoreEvidence` e
-`externalResearchSuggested`, oltre a versione e ID del pacchetto.
+Il provider produce il wire format v2 minimale (`answerMarkdown` e riferimenti
+testuali). Il server pubblica `ChatNTCResponse` v3: la risposta tecnica è
+separata dai `verifiedReferences`, che vengono risolti dopo la generazione
+contro l'intero repository. Le risposte v1/v2 restano leggibili solo per la
+history.
+
+`ChatNTCVerifiedReference` contiene `unitId`, documento, numbering, `kind` e gli
+eventuali `blockId`, `assetId` e `assetNumber`. Non contiene `evidenceId`: un
+target canonico verificato non deve essere stato selezionato dall'Evidence
+Package iniziale. Forme testuali equivalenti sono deduplicate sul target
+canonico.
 
 | Classificazione | Regola dichiarativa |
 | --- | --- |
@@ -195,21 +203,20 @@ Controlla:
 - metadati, contenuti selezionati, provenienza e copertura dei blocchi rispetto
   al repository canonico;
 - unità, blocchi e asset esistenti e appartenenti al target dichiarato;
-- evidence effettivamente selezionata, documento/numbering canonici e numero
-  ufficiale dell'asset;
+- per v3, documento/numbering canonici, tipo e numero ufficiale dell'asset,
+  indipendentemente dall'evidence iniziale;
 - duplicati di evidence, asset, claim e citazioni nello stesso claim;
 - uguaglianza tra `usedEvidenceIds` e insieme delle citazioni dei claim;
 - presenza di citazioni per i claim che le richiedono;
 - rimandi riconosciuti nella prosa di answer/claim associati a citazioni valide;
-- distinzione fra riferimento inesistente (`unresolved-reference`) e riferimento
-  canonico reale fuori pacchetto (`unselected-canonical-reference`).
+- risoluzione dei riferimenti v3 contro tutto il repository e corrispondenza
+  fra menzioni residue e target verificati.
 
-`NTC 2018 §7.99.4` senza evidence valida fallisce anche se compare soltanto nella
-prosa. Il controllo lessicale riusa il riconoscitore esistente: non copre tutte
-le possibili forme linguistiche. Un'astensione può dire «Evidence insufficiente»;
-una menzione letterale di un riferimento irrisolto viene comunque rifiutata.
-Gli errori restituiscono codice, percorso e messaggio. Errori di lettura del
-repository fanno fallire la Promise, senza accettare la risposta.
+Un riferimento canonico reale fuori evidence viene verificato direttamente.
+Un riferimento inesistente o ambiguo attiva al massimo un repair del provider;
+se resta non verificabile viene rimossa soltanto la frase che contiene la falsa
+attribuzione. La risposta tecnica residua resta visibile con un warning neutro.
+Solo errori di lettura/integrità del repository fanno fallire la richiesta.
 
 Una validazione positiva **non dimostra** che le fonti sostengano semanticamente
 le frasi o che tutti i contenuti di `answer` siano stati dichiarati come claim.
