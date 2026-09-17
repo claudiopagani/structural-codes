@@ -285,23 +285,31 @@ const tables = [
         pdfPage: 147,
         caption: "Tabella C4.3.I - Classificazione di piattabande compresse in profilati o in sezioni saldate parzialmente rivestiti",
         columnCount: 2,
-        headers: [[
-            { text: "Schema della piattabanda" },
-            { text: "Condizione di classificazione" },
+        columnWidths: [48, 52],
+        headers: [],
+        rows: [[
+            {
+                text: "",
+                align: "center",
+                image: {
+                    imagePath: "figures/circ2019/table-c4.3.i-schemes.png",
+                    alt: "Schemi 1 e 2 della piattabanda parzialmente rivestita, con quote b, b_c, c e t",
+                    sha256: "2881dd5c622bf7a5f6018accbb4e9c732b0f56d16f880c7c1aeef66efe1565be",
+                    region: region(75, 538, 130, 122),
+                },
+            },
+            {
+                text: "Classe 1: c/t ≤ 9 ε\n\nClasse 2: 9 ε < c/t ≤ 14 ε\n\nClasse 3: 14 ε < c/t ≤ 20 ε\n\nClasse 4: c/t > 20 ε",
+                align: "left",
+                inline: [
+                    t("Classe 1: "), m("c/t ≤ 9 ε", "\\frac{c}{t}\\le9\\,\\varepsilon"),
+                    t("\n\nClasse 2: "), m("9 ε < c/t ≤ 14 ε", "9\\,\\varepsilon<\\frac{c}{t}\\le14\\,\\varepsilon"),
+                    t("\n\nClasse 3: "), m("14 ε < c/t ≤ 20 ε", "14\\,\\varepsilon<\\frac{c}{t}\\le20\\,\\varepsilon"),
+                    t("\n\nClasse 4: "), m("c/t > 20 ε", "\\frac{c}{t}>20\\,\\varepsilon"),
+                ],
+            },
         ]],
-        rows: [
-            [
-                { text: "Schemi 1 e 2; 0,8 ≤ b_c/b ≤ 1,0", latex: "0,8\\le\\frac{b_c}{b}\\le1,0" },
-                { text: "Classe 1", latex: "\\frac{c}{t}\\le9\\,\\varepsilon" },
-            ],
-            [{ text: "Schemi 1 e 2" }, { text: "Classe 2: 9 ε < c/t ≤ 14 ε", latex: "9\\,\\varepsilon<\\frac{c}{t}\\le14\\,\\varepsilon" }],
-            [{ text: "Schemi 1 e 2" }, { text: "Classe 3: 14 ε < c/t ≤ 20 ε", latex: "14\\,\\varepsilon<\\frac{c}{t}\\le20\\,\\varepsilon" }],
-            [{ text: "Schemi 1 e 2" }, { text: "Classe 4: c/t > 20 ε", latex: "\\frac{c}{t}>20\\,\\varepsilon" }],
-        ],
-        notes: [
-            "La colonna sinistra della fonte contiene due disegni numerati 1 e 2; il disegno non è rappresentabile nel formato tabellare corrente ed è mantenuto come issue bloccante di revisione asset.",
-            "La relazione comune riportata sotto gli schemi è 0,8 ≤ b_c/b ≤ 1,0.",
-        ],
+        notes: [],
     },
     {
         id: tableId("4.3.ii"),
@@ -413,7 +421,7 @@ const units = [
         b("C4.3.2.1", "002", "paragraph", 147, P.p147.p4321b, "In ogni caso, una piattabanda metallica, efficacemente collegata ad una soletta di calcestruzzo mediante connettori soddisfacenti alle condizioni date nel § 4.3.4.1 delle NTC, può essere classificata in classe 1."),
         b("C4.3.2.1", "003", "paragraph", 147, P.p147.p4321c, "Una piattabanda metallica di una sezione parzialmente rivestita di calcestruzzo può essere classificata in accordo con la Tabella C4.3.I. In una sezione parzialmente rivestita di calcestruzzo, il calcestruzzo che circonda l’anima dovrebbe essere efficacemente collegato alla sezione metallica e dovrebbe impedire l’instabilità dell’anima o della piattabanda compressa verso l’anima."),
         tr("C4.3.2.1", "004", "4.3.i", 147, P.p147.table),
-    ], { formulaIds: [], tableIds: [tableId("4.3.i")], figureIds: [] }, [{ issueId: "circ2019-c4-3-2-1-table-diagrams", type: "asset-review", severity: "blocking", note: "La colonna grafica della Tabella C4.3.I contiene schemi ufficiali non rappresentabili come celle testuali; verificare la resa editoriale prima della pubblicazione." }]),
+    ], { formulaIds: [], tableIds: [tableId("4.3.i")], figureIds: [] }),
     makeUnit("C4.3.4", "TRAVI CON SOLETTA COLLABORANTE", "subparagraph", [h("C4.3.4", "TRAVI CON SOLETTA COLLABORANTE", 148, P.p148.h434)], { formulaIds: [], tableIds: [], figureIds: [] }),
     makeUnit("C4.3.4.2", "RESISTENZA DELLE SEZIONI", "subparagraph", [
         h("C4.3.4.2", "RESISTENZA DELLE SEZIONI", 148, P.p148.h4342),
