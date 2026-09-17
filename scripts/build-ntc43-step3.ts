@@ -111,6 +111,27 @@ const p132 = {
     f333: region(82, 94, 440, 27), f334: region(82, 118, 440, 25), defs: region(82, 140, 430, 25),
 };
 
+const tableCellImages = {
+    a: {
+        imagePath: "figures/ntc2018/tab4.3.iii-a.png",
+        alt: "Schema della sezione composta di tipo (a), con assi y e z.",
+        sha256: await sha256OfFile(join(figureDirectory, "tab4.3.iii-a.png")),
+        region: region(80, 378, 94, 53),
+    },
+    b: {
+        imagePath: "figures/ntc2018/tab4.3.iii-b.png",
+        alt: "Schema della sezione composta di tipo (b), con assi y e z.",
+        sha256: await sha256OfFile(join(figureDirectory, "tab4.3.iii-b.png")),
+        region: region(80, 449, 94, 51),
+    },
+    c: {
+        imagePath: "figures/ntc2018/tab4.3.iii-c.png",
+        alt: "Schema della sezione composta circolare di tipo (c), con assi y e z.",
+        sha256: await sha256OfFile(join(figureDirectory, "tab4.3.iii-c.png")),
+        region: region(80, 513, 94, 68),
+    },
+};
+
 const formulaAssets = [
     { id: formulaId("4.3.15"), unitId: unitId("4.3.5.2"), officialNumber: "4.3.15", pdfPage: 128, latex: "\\delta=\\frac{A_a\\cdot f_{yk}}{\\gamma_A}\\cdot\\frac{1}{N_{pl,Rd}}" },
     { id: formulaId("4.3.16"), unitId: unitId("4.3.5.2"), officialNumber: "4.3.16", pdfPage: 128, latex: "(EJ)_{\\mathrm{eff}}=E_aJ_a+E_sJ_s+k_eE_{c,\\mathrm{eff}}\\cdot J_c" },
@@ -138,24 +159,24 @@ const tableAsset = {
     id: tableId("4.3.iii"), unitId: unitId("4.3.5.4.1"), officialNumber: "4.3.III", pdfPage: 131, caption: "Curve di instabilità e fattori di imperfezione", columnCount: 4,
     headers: [[{ text: "Tipo sezione" }, { text: "Inflessione intorno all’asse" }, { text: "Curva di stabilità" }, { text: "Imperfezione" }]],
     rows: [
-        [{ text: "(a)", rowSpan: 2 }, { text: "y-y", latex: "y-y" }, { text: "b" }, { text: "L/200", latex: "L/200" }],
+        [{ text: "(a)", rowSpan: 2, align: "center", image: tableCellImages.a }, { text: "y-y", latex: "y-y" }, { text: "b" }, { text: "L/200", latex: "L/200" }],
         [{ text: "z-z", latex: "z-z" }, { text: "c" }, { text: "L/150", latex: "L/150" }],
-        [{ text: "(b)", rowSpan: 2 }, { text: "y-y", latex: "y-y" }, { text: "b" }, { text: "L/200", latex: "L/200" }],
+        [{ text: "(b)", rowSpan: 2, align: "center", image: tableCellImages.b }, { text: "y-y", latex: "y-y" }, { text: "b" }, { text: "L/200", latex: "L/200" }],
         [{ text: "z-z", latex: "z-z" }, { text: "c" }, { text: "L/150", latex: "L/150" }],
-        [{ text: "(c)", rowSpan: 3 }, { text: "" }, { text: "a (ρ_s<3%)", latex: "a\\;(\\rho_s<3\\%)" }, { text: "L/300", latex: "L/300" }],
+        [{ text: "(c)", rowSpan: 3, align: "center", image: tableCellImages.c }, { text: "" }, { text: "a (ρ_s<3%)", latex: "a\\;(\\rho_s<3\\%)" }, { text: "L/300", latex: "L/300" }],
         [{ text: "" }, { text: "b (3%<ρ_s<6%)", latex: "b\\;(3\\%<\\rho_s<6\\%)" }, { text: "L/200", latex: "L/200" }],
         [{ text: "" }, { text: "ρ_s=A_s/A_c (A_s area armature, A_c area calcestruzzo)", latex: "\\begin{gathered}\\rho_s=A_s/A_c\\\\\\left(A_s\\;\\text{area armature},\\;A_c\\;\\text{area calcestruzzo}\\right)\\end{gathered}" }, { text: "" }],
         [{ text: "Curva di stabilità" }, { text: "a" }, { text: "b" }, { text: "C" }],
         [{ text: "Fattore di imperfezione α", latex: "\\text{Fattore di imperfezione }\\alpha" }, { text: "0,21" }, { text: "0,34" }, { text: "0,49" }],
     ],
-    notes: ["La prima colonna contiene gli schemi grafici delle sezioni (a), (b) e (c), non rappresentabili come immagini nelle celle con lo schema corrente; le etichette e tutti i valori tabellari sono trascritti, ma la verifica visuale cella per cella resta bloccante."],
+    notes: [],
 };
 
 const figureAssets = [
-    { id: figureId("4.3.5"), unitId: unitId("4.3.4.3.5"), officialNumber: "4.3.5", pdfPage: 127, caption: "Tipiche superfici di collasso a taglio nelle piattabande di calcestruzzo", alt: "Tre schemi delle superfici critiche di collasso a taglio nelle piattabande di calcestruzzo.", filename: "fig4.3.5.png", imagePath: "figures/ntc2018/fig4.3.5.png", region: p127.fig35 },
-    { id: figureId("4.3.6"), unitId: unitId("4.3.5.1"), officialNumber: "4.3.6", pdfPage: 127, caption: "Tipi di sezioni per colonne composte, trattate nel presente paragrafo", alt: "Quattro tipologie di sezioni per colonne composte, indicate con a, b, c e d.", filename: "fig4.3.6.png", imagePath: "figures/ntc2018/fig4.3.6.png", region: p127.fig36 },
-    { id: figureId("4.3.7"), unitId: unitId("4.3.5.3.1"), officialNumber: "4.3.7", pdfPage: 129, caption: "Sezione tipo di colonna composta circolare riempita di calcestruzzo in cui è possibile considerare il confinamento del calcestruzzo", alt: "Sezione circolare cava riempita di calcestruzzo con armatura e confinamento.", filename: "fig4.3.7.png", imagePath: "figures/ntc2018/fig4.3.7.png", region: p129.fig37 },
-    { id: figureId("4.3.8"), unitId: unitId("4.3.5.3.1"), officialNumber: "4.3.8", pdfPage: 130, caption: "Metodo semplificato per la valutazione del dominio di interazione N-M per le colonne composte", alt: "Dominio di interazione N-M con punti A, B, C e D e diagrammi delle sezioni composte.", filename: "fig4.3.8.png", imagePath: "figures/ntc2018/fig4.3.8.png", region: p130.fig38 },
+    { id: figureId("4.3.5"), unitId: unitId("4.3.4.3.5"), officialNumber: "4.3.5", pdfPage: 127, caption: "Fig. 4.3.5 - Tipiche superfici di collasso a taglio nelle piattabande di calcestruzzo", captionInline: [{ kind: "strong", value: "Fig. 4.3.5 - " }, { kind: "em", value: "Tipiche superfici di collasso a taglio nelle piattabande di calcestruzzo" }], alt: "Tre schemi delle superfici critiche di collasso a taglio nelle piattabande di calcestruzzo.", filename: "fig4.3.5.png", imagePath: "figures/ntc2018/fig4.3.5.png", region: p127.fig35 },
+    { id: figureId("4.3.6"), unitId: unitId("4.3.5.1"), officialNumber: "4.3.6", pdfPage: 127, caption: "Fig. 4.3.6 -Tipi di sezioni per colonne composte, trattate nel presente paragrafo .", captionInline: [{ kind: "strong", value: "Fig. 4.3.6 -" }, { kind: "em", value: "Tipi di sezioni per colonne composte, trattate nel presente paragrafo ." }], alt: "Quattro tipologie di sezioni per colonne composte, indicate con a, b, c e d.", filename: "fig4.3.6.png", imagePath: "figures/ntc2018/fig4.3.6.png", region: p127.fig36 },
+    { id: figureId("4.3.7"), unitId: unitId("4.3.5.3.1"), officialNumber: "4.3.7", pdfPage: 129, caption: "Figura 4.3.7 - Sezione tipo di colonna composta circolare riempita di calcestruzzo in cui è possibile considerare il confinamento del calcestruzzo", captionInline: [{ kind: "strong", value: "Figura 4.3.7 - " }, { kind: "em", value: "Sezione tipo di colonna composta circolare riempita di calcestruzzo in cui è possibile considerare il confinamento del calcestruzzo" }], alt: "Sezione circolare cava riempita di calcestruzzo con armatura e confinamento.", filename: "fig4.3.7.png", imagePath: "figures/ntc2018/fig4.3.7.png", region: p129.fig37 },
+    { id: figureId("4.3.8"), unitId: unitId("4.3.5.3.1"), officialNumber: "4.3.8", pdfPage: 130, caption: "Figura 4.3.8 - Metodo semplificato per la valutazione del dominio di interazione N-M per le colonne composte", captionInline: [{ kind: "strong", value: "Figura 4.3.8 - " }, { kind: "em", value: "Metodo semplificato per la valutazione del dominio di interazione " }, { kind: "math", value: "N-M", latex: "N-M" }, { kind: "em", value: " per le colonne composte" }], alt: "Dominio di interazione N-M con punti A, B, C e D e diagrammi delle sezioni composte.", filename: "fig4.3.8.png", imagePath: "figures/ntc2018/fig4.3.8.png", region: p130.fig38 },
 ];
 
 const units = [

@@ -230,26 +230,31 @@ const formulaAssets = [
 
 const tableAsset = {
     id: tableId("4.3.ii"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.II", pdfPage: 126,
-    caption: "Limiti superiori del coefficiente k_t", columnCount: 4,
+    caption: "Limiti superiori del coefficiente k_t",
+    captionInline: [
+        { kind: "em", value: "Limiti superiori del coefficiente " },
+        { kind: "math", value: "k_t", latex: "k_t" },
+    ],
+    columnCount: 4,
     headers: [[
-        { text: "Numero di pioli per greca" },
-        { text: "Spessore della lamiera" },
-        { text: "Connettori con φ≤20mm e saldati attraverso la lamiera", latex: "\\text{Connettori con }\\varphi\\le20\\,\\mathrm{mm}\\text{ e saldati attraverso la lamiera}" },
-        { text: "Lamiera con fori e pioli saldati sul profilo – diametro pioli 19 o 22 mm" },
+        { text: "Numero di pioli per greca", align: "center" },
+        { text: "Spessore della lamiera", align: "center" },
+        { text: "Connettori con φ≤20mm e saldati attraverso la lamiera", latex: "\\text{Connettori con }\\varphi\\le20\\,\\mathrm{mm}\\text{ e saldati attraverso la lamiera}", align: "center" },
+        { text: "Lamiera con fori e pioli saldati sul profilo – diametro pioli 19 o 22 mm", align: "center" },
     ]],
     rows: [
-        [{ text: "Nr=1", latex: "N_r=1", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1{,}0" }, { text: "0,85", latex: "0{,}85" }, { text: "0,75", latex: "0{,}75" }],
-        [{ text: ">1,0", latex: ">1{,}0" }, { text: "1,00", latex: "1{,}00" }, { text: "0,75", latex: "0{,}75" }],
-        [{ text: "Nr=2", latex: "N_r=2", rowSpan: 2 }, { text: "≤1,0", latex: "\\le1{,}0" }, { text: "0,70", latex: "0{,}70" }, { text: "0,60", latex: "0{,}60" }],
-        [{ text: ">1,0", latex: ">1{,}0" }, { text: "0,80", latex: "0{,}80" }, { text: "0,60", latex: "0{,}60" }],
+        [{ text: "Nr=1", latex: "N_r=1", rowSpan: 2, align: "center" }, { text: "≤1,0", latex: "\\le1{,}0", align: "center" }, { text: "0,85", latex: "0{,}85", align: "center" }, { text: "0,75", latex: "0{,}75", align: "center" }],
+        [{ text: ">1,0", latex: ">1{,}0", align: "center" }, { text: "1,00", latex: "1{,}00", align: "center" }, { text: "0,75", latex: "0{,}75", align: "center" }],
+        [{ text: "Nr=2", latex: "N_r=2", rowSpan: 2, align: "center" }, { text: "≤1,0", latex: "\\le1{,}0", align: "center" }, { text: "0,70", latex: "0{,}70", align: "center" }, { text: "0,60", latex: "0{,}60", align: "center" }],
+        [{ text: ">1,0", latex: ">1{,}0", align: "center" }, { text: "0,80", latex: "0{,}80", align: "center" }, { text: "0,60", latex: "0{,}60", align: "center" }],
     ],
     notes: ["Tabella trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
 };
 
 const figureAssets = [
-    { id: figureId("4.3.3"), unitId: unitId("4.3.4.1"), officialNumber: "4.3.3", pdfPage: 124, caption: "Tipologie di sezione composte per travi", alt: "Tipologie grafiche di sezioni composte per travi.", filename: "fig4.3.3.png", imagePath: "figures/ntc2018/fig4.3.3.png", region: p124.fig33 },
-    { id: figureId("4.3.4.a"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.4(a)", pdfPage: 126, caption: "Disposizione della lamiera grecata rispetto al profilo in acciaio", alt: "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione a.", filename: "fig4.3.4a.png", imagePath: "figures/ntc2018/fig4.3.4a.png", region: p126.fig34a },
-    { id: figureId("4.3.4.b"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.4(b)", pdfPage: 126, caption: "Disposizione della lamiera grecata rispetto al profilo in acciaio", alt: "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione b.", filename: "fig4.3.4b.png", imagePath: "figures/ntc2018/fig4.3.4b.png", region: p126.fig34b },
+    { id: figureId("4.3.3"), unitId: unitId("4.3.4.1"), officialNumber: "4.3.3", pdfPage: 124, caption: "Fig. 4.3.3 -Tipologie di sezione composte per travi", captionInline: [{ kind: "strong", value: "Fig. 4.3.3 -" }, { kind: "em", value: "Tipologie di sezione composte per travi" }], alt: "Tipologie grafiche di sezioni composte per travi.", filename: "fig4.3.3.png", imagePath: "figures/ntc2018/fig4.3.3.png", region: p124.fig33 },
+    { id: figureId("4.3.4.a"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.4(a)", pdfPage: 126, caption: "Fig. 4.3.4(a) - Disposizione della lamiera grecata rispetto al profilo in acciaio", captionInline: [{ kind: "strong", value: "Fig. 4.3.4(a) - " }, { kind: "em", value: "Disposizione della lamiera grecata rispetto al profilo in acciaio" }], alt: "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione a.", filename: "fig4.3.4a.png", imagePath: "figures/ntc2018/fig4.3.4a.png", region: p126.fig34a },
+    { id: figureId("4.3.4.b"), unitId: unitId("4.3.4.3.1.2"), officialNumber: "4.3.4(b)", pdfPage: 126, caption: "Fig. 4.3.4(b) - Disposizione della lamiera grecata rispetto al profilo in acciaio", captionInline: [{ kind: "strong", value: "Fig. 4.3.4(b) - " }, { kind: "em", value: "Disposizione della lamiera grecata rispetto al profilo in acciaio" }], alt: "Disposizione della lamiera grecata rispetto al profilo in acciaio, configurazione b.", filename: "fig4.3.4b.png", imagePath: "figures/ntc2018/fig4.3.4b.png", region: p126.fig34b },
 ];
 
 const units = [
