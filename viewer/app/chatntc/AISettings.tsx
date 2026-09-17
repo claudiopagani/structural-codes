@@ -36,9 +36,13 @@ export function AISettings({ configuration }: { configuration: LocalAIConfigurat
         configuration.clearKey(); setKey(""); setProvider(next); setModel(PROVIDERS[next].models[0]); setStatus("Chiave rimossa: configura il provider selezionato.");
       }}>{Object.entries(PROVIDERS).map(([value, info]) => <option key={value} value={value}>{info.label}</option>)}</select>
       <label htmlFor={`${id}-model`}>Modello / model ID</label>
-      <input id={`${id}-model`} list={`${id}-models`} value={model} maxLength={150} required autoComplete="off" onChange={(event) => setModel(event.target.value)} />
+      <input id={`${id}-model`} list={`${id}-models`} value={model} maxLength={150} required autoComplete="off" spellCheck={false} placeholder={provider === "openrouter" ? "vendor/model oppure vendor/model:free" : "Digita un model ID"} onChange={(event) => setModel(event.target.value)} />
       <datalist id={`${id}-models`}>{PROVIDERS[provider].models.map((value) => <option key={value} value={value} />)}</datalist>
-      <small>{modelCapabilities(provider, model).structuredOutput === "prompt-json" ? "Model ID manuale: formato JSON verificato, massimo un retry." : "Modello consigliato con output strutturato."}</small>
+      <small>{modelCapabilities(provider, model).structuredOutput === "prompt-json" ? "Formato JSON da istruzioni, verificato dopo la risposta; massimo un retry." : "Modello consigliato con output strutturato."}</small>
+      {provider === "openrouter" && <small>
+        Puoi sostituire il suggerimento con qualsiasi model ID, anche temporaneo: copia l&apos;ID esatto dal <a href="https://openrouter.ai/models" target="_blank" rel="noopener noreferrer">catalogo OpenRouter</a>.
+        {" "}Non serve aggiornare ChatNTC. Disponibilità e prezzi possono cambiare; openrouter/auto seleziona automaticamente il modello e non garantisce gratuità.
+      </small>}
       <label htmlFor={`${id}-key`}>API key</label>
       <input id={`${id}-key`} type="password" value={key} maxLength={512} autoComplete="off" spellCheck={false} onChange={(event) => setKey(event.target.value)} aria-describedby={`${id}-privacy`} />
       <small id={`${id}-privacy`}>Solo in memoria fino al reload. Lascia vuoto e applica per usare la chiave configurata nell&apos;ambiente locale.</small>

@@ -5,7 +5,7 @@ import { JSDOM } from "jsdom";
 import { IDBFactory } from "fake-indexeddb";
 
 const dom = new JSDOM('<!doctype html><html><body><div id="test"></div></body></html>', { url: "http://localhost:3000/", pretendToBeVisual: true });
-for (const name of ["window", "document", "navigator", "HTMLElement", "HTMLTextAreaElement", "Event", "MouseEvent", "KeyboardEvent", "localStorage"]) Object.defineProperty(globalThis, name, { configurable: true, value: dom.window[name] });
+for (const name of ["window", "document", "navigator", "Element", "HTMLElement", "HTMLTextAreaElement", "Event", "MouseEvent", "KeyboardEvent", "localStorage"]) Object.defineProperty(globalThis, name, { configurable: true, value: dom.window[name] });
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 globalThis.CSS = { escape: (value) => value.replaceAll(":", "\\:") };
 class Observer { observe() {} unobserve() {} disconnect() {} }
@@ -376,6 +376,30 @@ test("viewer: apertura/chiusura, contesto reale, slash nell'input e citation cli
   assert.equal(calls.length, 1);
 });
 
+test("preview: un risultato asincrono tardivo non riapre il tooltip dopo pointerout", async (t) => {
+  let releaseCrossReference;
+  t.mock.method(globalThis, "fetch", (url) => {
+    const path = new URL(String(url), window.location.href).pathname;
+    if (!path.endsWith("/cross-reference-index.json")) return mockCorpusFetch(url);
+    return new Promise((resolve, reject) => {
+      releaseCrossReference = async () => {
+        try { resolve(await mockCorpusFetch(url)); } catch (error) { reject(error); }
+      };
+    });
+  });
+  window.history.replaceState(null, "", `/?unit=${encodeURIComponent(unitId)}`);
+  await mount(h(NormativeViewer, { defaultMode: "combined" }));
+  await waitFor(() => rootElement.querySelector(".scv-cross-reference"));
+  const link = rootElement.querySelector(".scv-cross-reference");
+  await act(async () => { link.dispatchEvent(new window.Event("pointerover", { bubbles: true })); });
+  await waitFor(() => releaseCrossReference);
+  assert.ok(rootElement.querySelector("[data-scv-reference-preview]"));
+  await act(async () => { link.dispatchEvent(new window.Event("pointerout", { bubbles: true })); });
+  assert.equal(rootElement.querySelector("[data-scv-reference-preview]"), null);
+  await act(async () => { await releaseCrossReference(); });
+  assert.equal(rootElement.querySelector("[data-scv-reference-preview]"), null);
+});
+
 test("citazioni granulari Circolare mantengono block/asset nei target senza URL generati dal modello", async () => {
   const circ = "urn:structural-codes:it:unit:circ2019:c7.3.6.1";
   const assetId = "urn:structural-codes:it:asset:formula:circ2019:fixture";
@@ -563,6 +587,41 @@ test("BYOK UI: unified settings, manual model, no AI at configuration, key only 
   await settingsInput("API key", "fixture-second-key"); await click(button("Applica impostazioni"));
   await click(button("Rimuovi chiave")); assert.equal(configuration.hasKey, false);
   localStorage.clear();
+});
+
+test("BYOK UI OpenRouter: exact manual underscore ID survives restore, key does not", async (t) => {
+  localStorage.clear();
+  t.after(() => localStorage.clear());
+  let networkCalls = 0;
+  t.mock.method(globalThis, "fetch", async () => { networkCalls++; assert.fail("Settings and restore never call AI"); });
+  const configuration = new LocalAIConfiguration();
+  await mount(h(AISettings, { configuration }));
+  await settingsInput("Provider", "openrouter");
+  assert.equal(rootElement.querySelector("select").value, "openrouter");
+  assert.equal(rootElement.querySelector("input[list]").value, "openrouter/auto");
+  await settingsInput("Modello / model ID", "stealth/union_alpha");
+  await settingsInput("API key", "fixture-openrouter-ui-memory-key");
+  await click(button("Applica impostazioni"));
+  const selection = { provider: "openrouter", model: "stealth/union_alpha" };
+  assert.deepEqual(configuration.selection, selection);
+  assert.equal(configuration.hasKey, true);
+  assert.equal(rootElement.querySelector("input[list]").value, selection.model);
+  assert.equal(rootElement.querySelector("input[type=password]").value, "");
+  assert.equal(rootElement.querySelector('[role="alert"]'), null);
+  assert.deepEqual(configuration.requestHeaders(), { "x-chatntc-provider": "openrouter", "x-chatntc-model": selection.model,
+    "x-chatntc-api-key": "fixture-openrouter-ui-memory-key" });
+  assert.equal(localStorage.length, 1);
+  assert.deepEqual(JSON.parse(localStorage.getItem(localStorage.key(0))), selection);
+  await act(async () => root.unmount()); root = undefined;
+  const reloaded = new LocalAIConfiguration(); reloaded.restore(localStorage);
+  assert.deepEqual(reloaded.selection, selection);
+  assert.equal(reloaded.hasKey, false);
+  assert.deepEqual(reloaded.requestHeaders(), { "x-chatntc-provider": "openrouter", "x-chatntc-model": selection.model });
+  await mount(h(AISettings, { configuration: reloaded }));
+  assert.equal(rootElement.querySelector("select").value, "openrouter");
+  assert.equal(rootElement.querySelector("input[list]").value, "stealth/union_alpha");
+  assert.equal(rootElement.querySelector("input[type=password]").value, "");
+  assert.equal(networkCalls, 0);
 });
 
 test("BYOK transport + IndexedDB: provider switch preserves conversation, key absent from history and body", async (t) => {

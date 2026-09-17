@@ -13,7 +13,8 @@ Questo comando avvia lo standalone con ChatNTC abilitato, vincolato a
 `http://127.0.0.1:3000` (anche `localhost` è ammesso).
 
 1. Aprire **ChatNTC e strumenti**, poi **Impostazioni AI**.
-2. Scegliere DeepSeek, OpenAI, Anthropic / Claude o Google Gemini.
+2. Scegliere uno dei cinque provider: DeepSeek, OpenAI, Anthropic / Claude,
+   Google Gemini oppure OpenRouter.
 3. Inserire la propria API key.
 4. Scegliere un modello consigliato oppure digitare un model ID.
 5. Premere **Applica impostazioni** e inviare una domanda sulle NTC.
@@ -30,6 +31,36 @@ Il provider potrebbe comunque conteggiare l'elaborazione già iniziata.
 `CHATNTC_ENABLED=true`. In produzione occorre anche `CHATNTC_DEBUG=true`;
 la route e le impostazioni continuano ad accettare solo indirizzi loopback.
 Non esporre questa istanza locale mediante proxy pubblici o tunnel.
+
+## OpenRouter: catalogo, ID manuali e costi
+
+OpenRouter è il quinto provider e usa esclusivamente l'endpoint server fisso
+`https://openrouter.ai/api/v1/chat/completions`. Il registry include soltanto
+`openrouter/auto` come suggerimento e default, non una copia del catalogo remoto.
+Il selettore non è un'allowlist: si può digitare manualmente un ID `vendor/model`, anche
+con underscore, trattini o suffissi come `:free`. Il controllo è sintattico:
+URL, spazi e segmenti slash vuoti o `.`/`..` non sono model ID validi.
+Non viene verificata in anticipo la disponibilità del modello sull'account.
+
+Copiare il **model ID esatto** dal [catalogo OpenRouter](https://openrouter.ai/models),
+non l'URL della pagina. La [pagina ufficiale Union Alpha](https://openrouter.ai/stealth/union-alpha)
+usa `stealth/union-alpha`, con trattino. Se si digita `stealth/union_alpha`,
+ChatNTC conserva l'underscore invariato nella richiesta e nelle preferenze:
+non lo converte in un trattino e non garantisce che OpenRouter riconosca quell'ID.
+Accettazione sintattica e disponibilità reale sono due controlli diversi.
+
+I suggerimenti non garantiscono disponibilità, compatibilità o gratuità; il
+catalogo, i limiti e le tariffe possono cambiare. **Il default `openrouter/auto`
+può selezionare modelli a pagamento e comportare addebiti.** Verificare ID,
+prezzi, limiti e condizioni nel catalogo e nel proprio account prima dell'invio;
+un suggerimento o un suffisso `:free` non è una garanzia di gratuità fornita da ChatNTC.
+
+Tutti i modelli OpenRouter, suggeriti o manuali, usano `prompt-json`: schema e
+istruzioni nel prompt, validazione runtime condivisa e Citation Validator comune.
+Non vengono forzati `thinking`, `reasoning` o `response_format`, né vengono
+abilitati tool o streaming. Un JSON/schema non conforme consente al massimo
+un retry di formato entro lo stesso timeout; non è una promessa di output nativo
+vincolato allo schema o di compatibilità live.
 
 ## Chiavi e preferenze
 
@@ -57,6 +88,7 @@ in `viewer/.env.local` (ignorato da Git). Mai usare prefissi `NEXT_PUBLIC_`/`VIT
 | OpenAI | `CHATNTC_OPENAI_API_KEY` | `gpt-5.6-luna` |
 | Anthropic | `CHATNTC_ANTHROPIC_API_KEY` | `claude-sonnet-5` |
 | Gemini | `CHATNTC_GEMINI_API_KEY` | `gemini-3.8-flash` |
+| OpenRouter | `CHATNTC_OPENROUTER_API_KEY` | `openrouter/auto` (può comportare costi) |
 
 `CHATNTC_PROVIDER` sceglie il provider dell'ambiente. Le variabili corrispondenti
 `CHATNTC_<PROVIDER>_MODEL` ne scelgono il modello. `CHATNTC_TIMEOUT_MS` è il limite
@@ -77,7 +109,8 @@ POST /api/chatntc → retrieval → Evidence Package → ChatNTCProvider
                                                    ├ DeepSeekAdapter
                                                    ├ OpenAIAdapter
                                                    ├ AnthropicAdapter
-                                                   └ GeminiAdapter
+                                                   ├ GeminiAdapter
+                                                   └ OpenRouterAdapter
                  ← risposta + metadati ← Citation Validator comune
 ```
 
@@ -107,6 +140,7 @@ che gli adapter ChatNTC usano, non tutte le capacità commerciali delle API.
 | OpenAI gpt-5.6-luna | Responses, JSON Schema strict, store=false | No | No | Sì | Default provider |
 | Claude sonnet-5 / haiku-4-5-20251001 | Messages, output_config JSON Schema | No | No | Sì | Default provider |
 | Gemini 3.8-flash / 3.1-flash-lite | generateContent, responseFormat JSON Schema | No | No | Sì | Default provider |
+| OpenRouter, tutti gli ID suggeriti e manuali | Chat Completions, prompt-json | No | No | Sì | Default provider |
 | Model ID manuale non nel registry | Stesso protocollo, JSON da istruzioni | No | No | Sì | Default provider |
 
 Minimo comune: una risposta JSON completa, controllata con lo stesso schema runtime
@@ -115,11 +149,15 @@ schema (per OpenAI gli opzionali diventano nullable sul wire, poi vengono rimoss
 Il contratto originale viene sempre ricontrollato. Refusal, tool call inattese,
 output troncato e response envelope incompatibili sono errori, non risposte valide.
 
-DeepSeek JSON mode e i modelli manuali hanno al massimo un retry per JSON/schema
-non conforme, entro lo stesso timeout. Il retry invia una direttiva fissa e la stessa
-evidence, senza reinviare l'output malformato. Nessun retry per credenziali, rate limit,
-errori HTTP o citazioni inventate. Senza evidence il core si astiene prima di creare
-il provider, anche senza API key.
+DeepSeek JSON mode, OpenRouter e i modelli manuali hanno al massimo un retry di
+formato per JSON/schema non conforme, entro lo stesso timeout della generazione.
+Il retry invia una direttiva fissa e la stessa evidence, senza reinviare l'output
+malformato. Nessun retry HTTP per credenziali, rate limit o altri errori HTTP.
+Questo retry dell'adapter è distinto dal singolo repair mirato dei riferimenti
+nella pipeline condivisa: le citazioni non verificabili sono poi omesse senza
+nascondere l'eventuale parte tecnica generale. Anche senza fonti iniziali il
+provider può produrre una risposta generale, sempre sottoposta alla validazione
+comune; questo percorso richiede comunque la configurazione del provider.
 
 ## Documentazione ufficiale verificata il 15 settembre 2026
 
@@ -135,7 +173,24 @@ il provider, anche senza API key.
 
 ## Test, limiti e futuro hosted
 
-Verifica dello STEP 5:
+Le regressioni OpenRouter in `viewer/tests/chatntc-{server,route,ui}.test.mjs`
+coprono ID esatti, selezione delle credenziali, endpoint fisso, retry limitato,
+validazione condivisa e ripristino delle preferenze senza chiave.
+
+Verifica dell'aggiunta OpenRouter:
+- `npm run check`: superato, 459 test.
+- Suite server ChatNTC: 85 test superati, solo HTTP simulato.
+- Typecheck e lint viewer: superati; build libreria e Vinext: riuscita.
+- `npm run viewer:test`: 110/111 test del primo gruppo superati; arresto sul
+  conteggio LaTeX NTC in `ntc-latex-corpus.test.mjs:36` (5839 contro 5833).
+  Il corpus e quel test non sono stati modificati da questa integrazione.
+- `npm run test:chatntc-ui`: 37/37 test superati, inclusa configurazione OpenRouter,
+  ID manuale e ripristino senza chiave. Il blocco sandbox `spawn EPERM` è stato
+  risolto eseguendo lo stesso comando con autorizzazione estesa.
+  Non è stato eseguito un confronto visivo nel browser.
+- Nessuna chiamata AI live né certificazione di disponibilità/gratuità dei modelli.
+
+Verifica storica dello STEP 5 (prima dell'aggiunta OpenRouter):
 
 - `npm run check`: 440 test, registri/corpus/evidence, typecheck e lint superati.
 - `npm run viewer:test`: build libreria e Vinext; 98 test viewer/core/storage,

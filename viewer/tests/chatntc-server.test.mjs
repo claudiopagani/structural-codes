@@ -7,7 +7,8 @@ import { DeepSeekAdapter, DEEPSEEK_CHAT_ENDPOINT } from "../.chatntc-test/server
 import { OpenAIAdapter } from "../.chatntc-test/server/chatntc/openai.js";
 import { AnthropicAdapter } from "../.chatntc-test/server/chatntc/anthropic.js";
 import { GeminiAdapter } from "../.chatntc-test/server/chatntc/gemini.js";
-import { PROVIDERS, modelCapabilities } from "../.chatntc-test/app/chatntc/providerRegistry.js";
+import { OpenRouterAdapter, OPENROUTER_CHAT_ENDPOINT } from "../.chatntc-test/server/chatntc/openrouter.js";
+import { PROVIDERS, modelCapabilities, validModel } from "../.chatntc-test/app/chatntc/providerRegistry.js";
 import { configuredProvider, chatNTCEnabled } from "../.chatntc-test/server/chatntc/config.js";
 import { ChatNTCServerError, publicError } from "../.chatntc-test/server/chatntc/errors.js";
 import { createLocalArtifactRepository } from "../.chatntc-test/server/chatntc/localRepository.js";
@@ -640,20 +641,95 @@ test("HTTP: contesti inesistenti, incoerenti o con testo browser sono respinti p
   }
 });
 
-const adapters = { deepseek: DeepSeekAdapter, openai: OpenAIAdapter, anthropic: AnthropicAdapter, gemini: GeminiAdapter };
+const adapters = { deepseek: DeepSeekAdapter, openai: OpenAIAdapter, anthropic: AnthropicAdapter, gemini: GeminiAdapter, openrouter: OpenRouterAdapter };
 function envelopeFor(id, value) {
   const text = typeof value === "string" ? value : JSON.stringify(value);
-  if (id === "deepseek") return { choices: [{ finish_reason: "stop", message: { role: "assistant", content: text } }] };
+  if (id === "deepseek" || id === "openrouter") return { choices: [{ finish_reason: "stop", message: { role: "assistant", content: text } }] };
   if (id === "openai") return { status: "completed", output: [{ type: "message", role: "assistant", content: [{ type: "output_text", text }] }] };
   if (id === "anthropic") return { type: "message", role: "assistant", stop_reason: "end_turn", content: [{ type: "text", text }] };
   return { candidates: [{ finishReason: "STOP", content: { role: "model", parts: [{ text }] } }] };
 }
 function contextFor(id, body) {
   if (id === "gemini") return JSON.parse(body.contents.at(-1).parts[0].text);
+  if (id === "openrouter") return JSON.parse(body.messages.at(-1).content);
   return JSON.parse((id === "openai" ? body.input : body.messages).at(-1).content);
 }
 const endpoints = { deepseek: "https://api.deepseek.com/chat/completions", openai: "https://api.openai.com/v1/responses",
-  anthropic: "https://api.anthropic.com/v1/messages", gemini: "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent" };
+  anthropic: "https://api.anthropic.com/v1/messages", gemini: "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
+  openrouter: OPENROUTER_CHAT_ENDPOINT };
+
+test("model ID manuali: slash, underscore, trattino e suffisso; niente URL o segmenti vuoti", () => {
+  for (const model of ["stealth/union_alpha", "stealth/union-alpha", "vendor/model:free", "openrouter/auto", "future-manual-model"]) {
+    assert.equal(validModel(model), true, model);
+    assert.equal(modelCapabilities("openrouter", model).structuredOutput, "prompt-json");
+  }
+  for (const model of [null, undefined, 42, "", "https://openrouter.ai/stealth/union-alpha", "http://example.org/model",
+    "//example.org/model", "stealth/union alpha", " stealth/union_alpha", "stealth/union_alpha ", "vendor/model\n",
+    "vendor/\tmodel", "/model", "vendor/", "vendor//model", "vendor/./model", "vendor/../model"]) {
+    assert.equal(validModel(model), false, JSON.stringify(model));
+  }
+});
+
+test("OpenRouter BYOK: ID manuale conservato esattamente, endpoint fisso e prompt-json senza flag forzati", async () => {
+  for (const model of ["stealth/union_alpha", "stealth/union-alpha", "vendor/model:free"]) {
+    let calls = 0;
+    const post = handler({ provider: (env, selection, apiKey) => configuredProvider(env, async (url, init) => {
+      calls++;
+      assert.equal(url, "https://openrouter.ai/api/v1/chat/completions");
+      assert.equal(init.method, "POST");
+      assert.equal(init.redirect, "error");
+      assert.equal(init.cache, "no-store");
+      assert.equal(new Headers(init.headers).get("authorization"), `Bearer ${key}`);
+      const body = JSON.parse(init.body);
+      assert.equal(body.model, model);
+      assert.equal(body.stream, false);
+      for (const field of ["thinking", "reasoning", "response_format", "tools"]) assert.equal(Object.hasOwn(body, field), false, field);
+      assert.ok(body.messages[0].content.includes(JSON.stringify(CHATNTC_RESPONSE_JSON_SCHEMA)));
+      for (const rule of CHATNTC_DIRECTIVES.rules) assert.ok(body.messages[0].content.includes(rule));
+      return mockEnvelope(validResponse(contextFor("openrouter", body)));
+    }, selection, apiKey) });
+    const response = await post(request({ question }, { headers: { "content-type": "application/json", origin: "http://localhost:3000",
+      "x-chatntc-provider": "openrouter", "x-chatntc-model": model, "x-chatntc-api-key": key } }));
+    assert.equal(response.status, 200);
+    const result = await response.json();
+    assert.equal(result.generation.provider, "openrouter");
+    assert.equal(result.generation.model, model);
+    assert.equal(result.validation.valid, true);
+    assert.ok(isChatNTCResponse(result.response));
+    assert.equal(calls, 1);
+  }
+});
+
+test("OpenRouter: chiave ambiente dedicata, override BYOK e nessun fallback tra provider", async () => {
+  const input = await generationInput();
+  const selection = { provider: "openrouter", model: "stealth/union_alpha" };
+  const envKey = "fixture-openrouter-environment-key";
+  const env = { ...enabled, CHATNTC_OPENROUTER_API_KEY: envKey, CHATNTC_OPENROUTER_MODEL: "vendor/model:free" };
+  for (const [environment, selected, apiKey, expectedKey, expectedModel] of [
+    [{ ...env, CHATNTC_PROVIDER: "openrouter" }, undefined, undefined, envKey, "vendor/model:free"],
+    [env, selection, undefined, envKey, selection.model],
+    [env, selection, key, key, selection.model],
+  ]) {
+    let calls = 0;
+    const adapter = configuredProvider(environment, async (url, init) => {
+      calls++;
+      assert.equal(url, OPENROUTER_CHAT_ENDPOINT);
+      assert.equal(new Headers(init.headers).get("authorization"), `Bearer ${expectedKey}`);
+      assert.equal(JSON.parse(init.body).model, expectedModel);
+      return mockEnvelope(validResponse(input));
+    }, selected, apiKey);
+    assert.equal(adapter.id, "openrouter");
+    await adapter.generate(input);
+    assert.equal(calls, 1);
+  }
+  const noFetch = async () => assert.fail("Missing credentials must fail before fetch");
+  for (const id of Object.keys(PROVIDERS).filter((id) => id !== "openrouter")) {
+    assert.throws(() => configuredProvider({ [`CHATNTC_${id.toUpperCase()}_API_KEY`]: key }, noFetch, selection),
+      (error) => error.code === "API_KEY_MISSING", `never reuse ${id} key for OpenRouter`);
+    assert.throws(() => configuredProvider({ CHATNTC_OPENROUTER_API_KEY: envKey }, noFetch, { provider: id, model: PROVIDERS[id].models[0] }),
+      (error) => error.code === "API_KEY_MISSING", `never reuse OpenRouter key for ${id}`);
+  }
+});
 
 for (const [id, Adapter] of Object.entries(adapters)) {
   test(`${id}: protocollo ufficiale, contratto comune e stessa citation validation nella route BYOK`, async () => {
@@ -736,7 +812,7 @@ for (const [id, Adapter] of Object.entries(adapters)) {
     let nativeCalls = 0;
     const malformed = new Adapter({ apiKey: key }, async () => { nativeCalls++; return Response.json(envelopeFor(id, "{broken")); });
     await rejectsCode(malformed.generate(input), "INVALID_PROVIDER_JSON");
-    assert.equal(nativeCalls, id === "deepseek" ? 2 : 1);
+    assert.equal(nativeCalls, id === "deepseek" || id === "openrouter" ? 2 : 1);
   });
 
   test(`${id}: chiave riflessa respinta e risposta generale anche senza fonti iniziali`, async () => {

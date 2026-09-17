@@ -1,7 +1,10 @@
 # ChatNTC — STEP 2: DeepSeek e pipeline locale
 
-Lo [STEP 5](chatntc-byok.md) estende questa pipeline a quattro provider e BYOK
-tramite header locali dedicati. Qui sotto resta documentata la versione originaria.
+Lo [STEP 5 e l'aggiunta OpenRouter](chatntc-byok.md) estendono questa pipeline a
+cinque provider e BYOK tramite header locali dedicati. OpenRouter accetta ID
+manuali senza allowlist, usa prompt-json e la validazione condivisa; il default
+`openrouter/auto` può comportare costi. Qui sotto resta documentata la versione
+originaria, non la configurazione multi-provider corrente.
 
 Lo [STEP 4](chatntc-history.md) aggiunge `generation.model` ed
 `evidence.structuralCodesVersion` ai metadati HTTP per identificare le risposte

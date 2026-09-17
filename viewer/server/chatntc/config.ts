@@ -3,6 +3,7 @@ import { DeepSeekAdapter } from "./deepseek.js";
 import { OpenAIAdapter } from "./openai.js";
 import { AnthropicAdapter } from "./anthropic.js";
 import { GeminiAdapter } from "./gemini.js";
+import { OpenRouterAdapter } from "./openrouter.js";
 import { isProviderId, validModel, type ProviderSelection } from "../../app/chatntc/providerRegistry.js";
 import { ChatNTCServerError } from "./errors.js";
 import type { ChatNTCProvider } from "../../shared/chatntc/index.js";
@@ -21,7 +22,7 @@ export function configuredProvider(env: ChatNTCEnvironment, fetchImpl: typeof fe
   if (selection && !validModel(selection.model)) throw new ChatNTCServerError("INVALID_PROVIDER_CONFIG");
   const prefix = `CHATNTC_${id.toUpperCase()}`;
   const timeout = env.CHATNTC_TIMEOUT_MS ?? env[`${prefix}_TIMEOUT_MS`];
-  const adapters = { deepseek: DeepSeekAdapter, openai: OpenAIAdapter, anthropic: AnthropicAdapter, gemini: GeminiAdapter };
+  const adapters = { deepseek: DeepSeekAdapter, openai: OpenAIAdapter, anthropic: AnthropicAdapter, gemini: GeminiAdapter, openrouter: OpenRouterAdapter };
   return new adapters[id]({ apiKey: apiKey ?? env[`${prefix}_API_KEY`] ?? "",
     model: selection?.model ?? (env[`${prefix}_MODEL`] || undefined), timeoutMs: timeout ? Number(timeout) : undefined }, fetchImpl);
 }

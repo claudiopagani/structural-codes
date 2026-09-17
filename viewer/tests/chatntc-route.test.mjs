@@ -100,7 +100,7 @@ test("bundle browser e libreria shared non contengono adapter o configurazione s
     const files = await readdir(root, { recursive: true });
     for (const file of files.filter((name) => /\.(js|mjs|map|html)$/u.test(name))) {
       const source = await readFile(new URL(file.replaceAll("\\", "/"), root), "utf8");
-      assert.doesNotMatch(source, /api\.deepseek\.com|api\.openai\.com|api\.anthropic\.com|generativelanguage\.googleapis\.com|CHATNTC_(?:DEEPSEEK|OPENAI|ANTHROPIC|GEMINI)_API_KEY|class (?:DeepSeek|OpenAI|Anthropic|Gemini)Adapter/u, file);
+      assert.doesNotMatch(source, /api\.deepseek\.com|api\.openai\.com|api\.anthropic\.com|generativelanguage\.googleapis\.com|openrouter\.ai\/api|CHATNTC_(?:DEEPSEEK|OPENAI|ANTHROPIC|GEMINI|OPENROUTER)_API_KEY|class (?:DeepSeek|OpenAI|Anthropic|Gemini|OpenRouter)Adapter/u, file);
       assert.equal(source.includes(key), false, file);
     }
   }
