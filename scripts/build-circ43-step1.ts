@@ -320,14 +320,31 @@ const tables = [
         columnCount: 5,
         headers: [
             [
-                { text: "Elemento di acciaio", rowSpan: 2 },
-                { text: "Grado nominale dell’acciaio", colSpan: 4 },
+                { text: "Elemento di acciaio", rowSpan: 2, align: "center" },
+                { text: "Grado nominale dell’acciaio", colSpan: 4, align: "center" },
             ],
-            [{ text: "S235" }, { text: "S275" }, { text: "S355" }, { text: "S420 e S460" }],
+            [
+                { text: "S235", align: "center" },
+                { text: "S275", align: "center" },
+                { text: "S355", align: "center" },
+                { text: "S420 e S460", align: "center" },
+            ],
         ],
         rows: [
-            [{ text: "IPE" }, { text: "600" }, { text: "550" }, { text: "400" }, { text: "270" }],
-            [{ text: "HE" }, { text: "800" }, { text: "700" }, { text: "650" }, { text: "500" }],
+            [
+                { text: "IPE", align: "center" },
+                { text: "600", align: "center" },
+                { text: "550", align: "center" },
+                { text: "400", align: "center" },
+                { text: "270", align: "center" },
+            ],
+            [
+                { text: "HE", align: "center" },
+                { text: "800", align: "center" },
+                { text: "700", align: "center" },
+                { text: "650", align: "center" },
+                { text: "500", align: "center" },
+            ],
         ],
         notes: [],
     },

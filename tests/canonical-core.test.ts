@@ -31,6 +31,12 @@ interface CanonicalUnit {
     };
 }
 
+type TableAsset = {
+    officialNumber: string;
+    headers: Array<Array<{ align?: string }>>;
+    rows: Array<Array<{ align?: string }>>;
+};
+
 const corpusDirectory = fileURLToPath(
     new URL("../corpus/units/", import.meta.url),
 );
@@ -42,6 +48,9 @@ const ntc41AssetFile = fileURLToPath(
 );
 const circ2019TablesFile = fileURLToPath(
     new URL("../corpus/assets/circ2019/core-tables.json", import.meta.url),
+);
+const circ2019C43TablesFile = fileURLToPath(
+    new URL("../corpus/assets/circ2019/C4.3-step1.json", import.meta.url),
 );
 
 async function loadUnits(): Promise<CanonicalUnit[]> {
@@ -379,6 +388,22 @@ test("Circolare C2 conserva le formattazioni editoriali richieste", async () => 
     ) as { tables: TableAsset[] };
     const table = tables.tables.find(
         ({ officialNumber }) => officialNumber === "C2.4.I",
+    );
+    assert.ok(table);
+    assert.equal(
+        [...table.headers.flat(), ...table.rows.flat()].every(
+            ({ align }) => align === "center",
+        ),
+        true,
+    );
+});
+
+test("le celle della Tabella C4.3.II sono centrate", async () => {
+    const manifest = JSON.parse(
+        await readFile(circ2019C43TablesFile, "utf8"),
+    ) as { tables: TableAsset[] };
+    const table = manifest.tables.find(
+        ({ officialNumber }) => officialNumber === "C4.3.II",
     );
     assert.ok(table);
     assert.equal(
