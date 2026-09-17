@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { isChunkNearRenderedWindow, navigationChunkPaths, navigationChunkWindow } from "../shared/chunkNavigation.js";
+import { isChunkNearRenderedWindow, navigationChunkPaths, navigationChunkWindow, primarySummaryForVisibleUnit, progressiveChunkTargetsForVisibleUnit } from "../shared/chunkNavigation.js";
 
 const viewerSourceUrl = new URL("../shared/NormativeViewer.tsx", import.meta.url);
 
@@ -16,6 +16,23 @@ test("un salto distante monta una finestra previous + target + next senza uscire
   assert.deepEqual(navigationChunkPaths(lookup, "/c4.json"), ["/c3.json", "/c4.json"]);
   assert.equal(isChunkNearRenderedWindow(lookup, "/c2.json", new Set(["/c1.json"])), true);
   assert.equal(isChunkNearRenderedWindow(lookup, "/c2.json", new Set(["/c0.json", "/c4.json"])), false);
+});
+
+test("una unità Circolare autonoma conserva l'ancoraggio NTC per caricare il chunk successivo", () => {
+  const primary = { id: "ntc:2.6", chunkPath: "/ntc/2.6.json" };
+  const lookup = {
+    chunkPaths: ["/ntc/2.5.json", "/ntc/2.6.json", "/ntc/3.json"],
+    chunkIndexByPath: new Map([["/ntc/2.5.json", 0], ["/ntc/2.6.json", 1], ["/ntc/3.json", 2]]),
+    unitById: new Map([[primary.id, primary]]),
+    unitsByChunkPath: new Map([[primary.chunkPath, [{ id: "ntc:2.6.1" }, primary]]]),
+  };
+  const fallbackAnchors = new Map([["circ:c2.7", primary]]);
+
+  assert.equal(primarySummaryForVisibleUnit(lookup, primary.id, fallbackAnchors), primary);
+  assert.equal(primarySummaryForVisibleUnit(lookup, "circ:c2.7", fallbackAnchors), primary);
+  assert.deepEqual(progressiveChunkTargetsForVisibleUnit(lookup, "circ:c2.7", fallbackAnchors), { previous: "/ntc/2.5.json", next: "/ntc/3.json" });
+  assert.equal(primarySummaryForVisibleUnit(lookup, "circ:missing", fallbackAnchors), null);
+  assert.deepEqual(progressiveChunkTargetsForVisibleUnit(lookup, "circ:missing", fallbackAnchors), { previous: null, next: null });
 });
 
 test("il target viene montato prima dei vicini e prepend/append preservano target e anchor", async () => {
@@ -65,6 +82,17 @@ test("il lazy loading attiva l’ultima unità quando il viewport è vicino al f
   assert.match(observer, /root\.addEventListener\("scroll", onScroll, \{ passive: true \}\)/);
   assert.match(observer, /const lastId = orderedIds\[orderedIds\.length - 1\]/);
   assert.doesNotMatch(observer, /scv-structural-anchor/);
+});
+
+test("il caricamento progressivo risolve le unità Circolare visibili sul relativo anchor NTC", async () => {
+  const source = await readFile(viewerSourceUrl, "utf8");
+  const start = source.indexOf("const navigationRef = useRef");
+  const end = source.indexOf("useVisibleUnitObserver", start);
+  const progressiveLoading = source.slice(start, end);
+
+  assert.match(progressiveLoading, /primaryAnchorByFallbackId: combinedPlan\.primaryAnchorByFallbackId/);
+  assert.match(progressiveLoading, /progressiveChunkTargetsForVisibleUnit\(current\.lookup, unitId, current\.primaryAnchorByFallbackId\)/);
+  assert.match(progressiveLoading, /mountPrimaryChunk\(adjacent\.next, false\)/);
 });
 
 test("indice, ricerca, cross-reference e history convergono sullo stesso caricamento a finestra", async () => {

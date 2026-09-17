@@ -32,7 +32,7 @@ import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
 import { BacklinkPanel, CitationActions, ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { citationForTarget, targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
-import { isChunkNearRenderedWindow, navigationChunkWindow } from "./chunkNavigation.js";
+import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -1057,20 +1057,16 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
   }, [auxiliaryAvailable, auxiliaryVisible, defaultMode, mode, relatedByTarget, renderRecords]);
 
-  const navigationRef = useRef({ entryById, lookup, mode, relations });
+  const navigationRef = useRef({ entryById, lookup, mode, relations, primaryAnchorByFallbackId: combinedPlan.primaryAnchorByFallbackId });
   useEffect(() => {
-    navigationRef.current = { entryById, lookup, mode, relations };
-  }, [entryById, lookup, mode, relations]);
+    navigationRef.current = { entryById, lookup, mode, relations, primaryAnchorByFallbackId: combinedPlan.primaryAnchorByFallbackId };
+  }, [combinedPlan.primaryAnchorByFallbackId, entryById, lookup, mode, relations]);
 
   const loadAdjacentAtUnit = useCallback((unitId: string) => {
     const current = navigationRef.current;
-    const summary = current.lookup?.unitById.get(unitId);
-    if (!summary || !current.lookup) return;
-    const chunkUnits = current.lookup.unitsByChunkPath.get(summary.chunkPath) ?? [];
-    const position = chunkUnits.findIndex((unit) => unit.id === summary.id);
-    const adjacent = adjacentChunkPaths(current.lookup, summary.chunkPath);
-    if (position <= 1 && adjacent.previous) void mountPrimaryChunk(adjacent.previous, false, true).catch(() => reportChunkLoadFailure("Il chunk precedente non è disponibile; il resto del documento rimane consultabile."));
-    if (position >= chunkUnits.length - 2 && adjacent.next) void mountPrimaryChunk(adjacent.next, false).catch(() => reportChunkLoadFailure("Il chunk successivo non è disponibile; il resto del documento rimane consultabile."));
+    const adjacent = progressiveChunkTargetsForVisibleUnit(current.lookup, unitId, current.primaryAnchorByFallbackId);
+    if (adjacent.previous) void mountPrimaryChunk(adjacent.previous, false, true).catch(() => reportChunkLoadFailure("Il chunk precedente non è disponibile; il resto del documento rimane consultabile."));
+    if (adjacent.next) void mountPrimaryChunk(adjacent.next, false).catch(() => reportChunkLoadFailure("Il chunk successivo non è disponibile; il resto del documento rimane consultabile."));
   }, [mountPrimaryChunk, reportChunkLoadFailure]);
 
   const onVisibleUnit = useCallback((nextId: string) => {
