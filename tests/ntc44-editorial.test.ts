@@ -40,3 +40,21 @@ test("Le didascalie NTC 4.4 mantengono corsivo e label della figura", async () =
     assert.equal(figure.captionInline[0].kind, "strong");
     assert.equal(figure.captionInline[1].kind, "em");
 });
+
+test("NTC Tabelle 4.4 applicano allineamenti e larghezze richiesti", async () => {
+    const manifest = await json("corpus/assets/ntc2018/4.4-step1.json");
+    const table = (number: string) => manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === number);
+    const tableI = table("4.4.I");
+    assert.ok(tableI.rows.every((row: Array<{ align?: string }>) => row[1]?.align === "center"));
+    const tableIII = table("4.4.III");
+    assert.deepEqual(tableIII.columnWidths, [72, 14, 14]);
+    for (const row of tableIII.rows.filter((candidate: Array<{ colSpan?: number }>) => candidate.length === 3 && candidate[0]?.colSpan === undefined)) {
+        assert.equal(row[0].noWrap, true);
+        assert.ok(row.slice(1).every((cell: { align?: string; noWrap?: boolean }) => cell.align === "center" && cell.noWrap === true));
+    }
+    const tableIV = table("4.4.IV");
+    assert.equal(tableIV.rows[0][2].align, "center");
+    assert.equal(tableIV.rows[0][7].align, "center");
+    const tableV = table("4.4.V");
+    assert.ok(tableV.rows.every((row: Array<{ align?: string }>) => row.slice(-3).every((cell) => cell.align === "center")));
+});

@@ -38,6 +38,10 @@ test("riconosce riferimenti a unità, formule, tabelle e figure senza sovrapposi
     { text: "C4.2.XII.d", kind: "table", number: "4.2.XII.d", documentHint: "circ2019" },
     { text: "C4.2.XVI.b", kind: "table", number: "4.2.XVI.b", documentHint: "circ2019" },
   ]);
+  assert.deepEqual(findCrossReferences("Le Tab. 4.5.Ia-b riportano due classificazioni.").map(({ text, kind, number }) => ({ text, kind, number })), [
+    { text: "Tab. 4.5.Ia", kind: "table", number: "4.5.Ia" },
+    { text: "b", kind: "table", number: "4.5.Ib" },
+  ]);
 });
 
 test("l'indice derivato risolve target e backlink senza caricare chunk", async () => {

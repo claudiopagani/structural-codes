@@ -18,7 +18,26 @@ type Inline =
     | { kind: "math"; value: string; latex: string };
 type TextBlockDef = { kind: "paragraph" | "list-item" | "heading"; page: number; text: string; inline?: Inline[] };
 type BlockDef = TextBlockDef | { kind: "formula-ref" | "table-ref" | "figure-ref"; page: number; assetId: string };
-type Cell = { text: string; latex?: string; colSpan?: number; rowSpan?: number };
+type Cell = {
+    text: string;
+    latex?: string;
+    colSpan?: number;
+    rowSpan?: number;
+    align?: "left" | "center" | "right";
+    noWrap?: boolean;
+};
+type Table = {
+    id: string;
+    unitId: string;
+    officialNumber: string;
+    pdfPage: number;
+    caption: string;
+    columnCount: number;
+    columnWidths?: number[];
+    headers: Cell[][];
+    rows: Cell[][];
+    notes: string[];
+};
 
 const unitId = (number: string) => `urn:structural-codes:it:unit:ntc2018:${number}`;
 const assetId = (kind: "formula" | "table" | "figure", name: string) =>
@@ -212,7 +231,7 @@ const table4 = assetId("table", "4.4.iv");
 const table5 = assetId("table", "4.4.v");
 const figure1 = assetId("figure", "4.4.1");
 
-const tables = [
+const tables: Table[] = [
     {
         id: table1,
         unitId: unitId("4.4.4"),
@@ -342,6 +361,50 @@ const tables = [
         ],
     },
 ];
+
+function centerColumns(rows: Cell[][], columnCount: number, fromColumn: number) {
+    const occupied = Array<number>(columnCount).fill(0);
+    for (const currentRow of rows) {
+        let column = 0;
+        for (const currentCell of currentRow) {
+            while (column < columnCount && occupied[column]! > 0) column += 1;
+            const colSpan = currentCell.colSpan ?? 1;
+            if (column + colSpan > fromColumn) currentCell.align = "center";
+            const rowSpan = currentCell.rowSpan ?? 1;
+            for (let offset = 0; offset < colSpan; offset += 1) occupied[column + offset] = rowSpan;
+            column += colSpan;
+        }
+        for (let index = 0; index < occupied.length; index += 1) occupied[index] = Math.max(0, occupied[index]! - 1);
+    }
+}
+
+const tableByNumber = new Map(tables.map((table) => [table.officialNumber, table]));
+const tableI = tableByNumber.get("4.4.I")!;
+const tableIII = tableByNumber.get("4.4.III")!;
+const tableIV = tableByNumber.get("4.4.IV")!;
+const tableV = tableByNumber.get("4.4.V")!;
+
+centerColumns(tableI.headers, tableI.columnCount, 1);
+centerColumns(tableI.rows, tableI.columnCount, 1);
+
+tableIII.columnWidths = [72, 14, 14];
+tableIII.headers[0]!.slice(1).forEach((currentCell) => {
+    currentCell.align = "center";
+    currentCell.noWrap = true;
+});
+for (const currentRow of tableIII.rows) {
+    if (currentRow.length !== 3 || currentRow[0]!.colSpan !== undefined) continue;
+    currentRow[0]!.noWrap = true;
+    currentRow.slice(1).forEach((currentCell) => {
+        currentCell.align = "center";
+        currentCell.noWrap = true;
+    });
+}
+
+centerColumns(tableIV.headers, tableIV.columnCount, 3);
+centerColumns(tableIV.rows, tableIV.columnCount, 3);
+centerColumns(tableV.headers, tableV.columnCount, 3);
+centerColumns(tableV.rows, tableV.columnCount, 3);
 
 const blocksByUnit: Record<string, BlockDef[]> = {
     "4.4": [

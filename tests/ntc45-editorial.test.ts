@@ -32,3 +32,22 @@ test("NTC 4.5 conserva i corsivi e le didascalie della fonte", async () => {
     assert.equal(manifest.tables.length, 5);
     assert.ok(manifest.tables.every((table: { caption: string; captionInline?: { kind: string; value: string }[] }) => table.captionInline?.length === 1 && table.captionInline[0]?.kind === "em" && table.captionInline[0]?.value === table.caption));
 });
+
+test("NTC Tabelle 4.5 applicano gli allineamenti richiesti", async () => {
+    const manifest = await json("corpus/assets/ntc2018/4.5.json");
+    const table = (number: string) => manifest.tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === number);
+    for (const number of ["4.5.Ia", "4.5.Ib", "4.5.II"]) {
+        const current = table(number);
+        assert.ok([...current.headers, ...current.rows].every((row: Array<{ align?: string }>) => row.slice(1).every((cell) => cell.align === "center")), number);
+    }
+    for (const number of ["4.5.III", "4.5.IV"]) {
+        const current = table(number);
+        assert.ok([...current.headers, ...current.rows].flat().every((cell: { align?: string }) => cell.align === "center"), number);
+    }
+});
+
+test("NTC 4.5.4 conserva il testo delle voci su segmenti distinti", async () => {
+    const unit = await json("corpus/units/ntc2018/4.5.4.json");
+    const items = unit.blocks.filter((block: { kind: string }) => block.kind === "list-item");
+    assert.ok(items.every((item: { text: { inline: Array<{ kind: string; value: string }> } }) => item.text.inline.at(-1)?.kind === "math"));
+});

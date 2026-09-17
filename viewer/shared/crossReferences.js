@@ -1,7 +1,7 @@
 const unitPattern = /(^|[^\p{L}\p{N}])(§\s*C?\.?\d+(?:\.\d+)+|C\.?\d+(?:\.\d+)+|\d+(?:\.\d+){2,})/giu;
 const assetPatterns = [
-  { kind: "table", pattern: /\b(?:Tab\.\s*|Tab(?:ella|elle)?\s+)((?:C(?:\.)?)?\d+(?:\.\d+)*(?:\.[IVXLCDM]+)?(?:\.[a-z]+)?)/giu },
-  { kind: "table", pattern: /\b((?:C(?:\.)?)?\d+(?:\.\d+)*\.[IVXLCDM]+(?:\.[a-z]+)?)/giu },
+  { kind: "table", pattern: /\b(?:Tab\.\s*|Tab(?:ella|elle)?\s+)((?:C(?:\.)?)?\d+(?:\.\d+)*(?:\.[IVXLCDM]+[a-z]?(?:\.[a-z]+)?)?)/giu },
+  { kind: "table", pattern: /\b((?:C(?:\.)?)?\d+(?:\.\d+)*\.[IVXLCDM]+[a-z]?(?:\.[a-z]+)?)/giu },
   { kind: "figure", pattern: /\b(?:Fig\.\s*|Fig\s+|Figura\s+)((?:C(?:\.)?)?\d+(?:\.\d+)+)/giu },
   { kind: "formula", pattern: /\b(?:formula|equazione|relazione)\s+(?:n\.?\s*)?\[?((?:C(?:\.)?)?\d+(?:\.\d+)+)\]?/giu },
   { kind: "formula", pattern: /\[((?:C(?:\.)?)?\d+(?:\.\d+)+)\]/giu },
@@ -22,6 +22,20 @@ function overlaps(left, right) {
 export function findCrossReferences(value) {
   const source = String(value ?? "");
   const candidates = [];
+  const combinedTablePattern = /\b(?:Tab\.\s*|Tab(?:ella|elle)?\s+)?((?:C(?:\.)?)?\d+(?:\.\d+)*\.[IVXLCDM]+)([a-z])-\s*([a-z])\b/giu;
+  for (const match of source.matchAll(combinedTablePattern)) {
+    const suffix = match[3];
+    const end = match.index + match[0].length;
+    const start = end - suffix.length;
+    candidates.push({
+      start,
+      end,
+      text: suffix,
+      kind: "table",
+      number: `${match[1]}${suffix}`,
+      documentHint: documentHint(match[1]),
+    });
+  }
   for (const { kind, pattern } of assetPatterns) {
     pattern.lastIndex = 0;
     for (const match of source.matchAll(pattern)) {

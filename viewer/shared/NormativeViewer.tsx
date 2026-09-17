@@ -45,8 +45,9 @@ const ModeSegmentedControl = memo(function ModeSegmentedControl({ mode, onChange
   </div>;
 });
 
-function scvBlockClass(block: CorpusUnit["blocks"][number]) {
-  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""}`;
+function scvBlockClass(block: CorpusUnit["blocks"][number], sourceUnitId?: string) {
+  const wideTrailingSymbol = sourceUnitId?.endsWith(":4.5.4") && hasTrailingMath(block);
+  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${wideTrailingSymbol ? "list-item-with-trailing-symbol-wide" : ""}`;
 }
 
 function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {
@@ -60,7 +61,7 @@ function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk
 const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId }) {
   return <div className="scv-unit-blocks">{groupAlignedLabelBlocks(blocks).map((group) => group.kind === "label-list"
     ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} key={group.blocks[0].blockId} />
-    : <div className={scvBlockClass(group.block)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /></div>)}</div>;
+    : <div className={scvBlockClass(group.block, sourceUnitId)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /></div>)}</div>;
 });
 
 export interface AuxiliaryPanelContext {

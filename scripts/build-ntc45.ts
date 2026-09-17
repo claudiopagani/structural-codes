@@ -337,7 +337,15 @@ function formula(
     };
 }
 
-function cell(text: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}) {
+type TableCell = {
+    text: string;
+    latex?: string;
+    colSpan?: number;
+    rowSpan?: number;
+    align?: "left" | "center" | "right";
+};
+
+function cell(text: string, latex?: string, spans: { colSpan?: number; rowSpan?: number } = {}): TableCell {
     return { text: repairMojibake(text), ...(latex === undefined ? {} : { latex }), ...spans };
 }
 
@@ -463,6 +471,36 @@ const tableAssets = [
         notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
     },
 ];
+
+function centerColumns(rows: TableCell[][], columnCount: number, fromColumn: number) {
+    const occupied = Array<number>(columnCount).fill(0);
+    for (const currentRow of rows) {
+        let column = 0;
+        for (const currentCell of currentRow) {
+            while (column < columnCount && occupied[column]! > 0) column += 1;
+            const colSpan = currentCell.colSpan ?? 1;
+            if (column + colSpan > fromColumn) currentCell.align = "center";
+            const rowSpan = currentCell.rowSpan ?? 1;
+            for (let offset = 0; offset < colSpan; offset += 1) occupied[column + offset] = rowSpan;
+            column += colSpan;
+        }
+        for (let index = 0; index < occupied.length; index += 1) occupied[index] = Math.max(0, occupied[index]! - 1);
+    }
+}
+
+function centerAll(table: { headers: TableCell[][]; rows: TableCell[][] }) {
+    for (const row of [...table.headers, ...table.rows]) for (const currentCell of row) currentCell.align = "center";
+}
+
+const tableByNumber = new Map(tableAssets.map((table) => [table.officialNumber, table]));
+centerColumns(tableByNumber.get("4.5.Ia")!.headers, 3, 1);
+centerColumns(tableByNumber.get("4.5.Ia")!.rows, 3, 1);
+centerColumns(tableByNumber.get("4.5.Ib")!.headers, 4, 1);
+centerColumns(tableByNumber.get("4.5.Ib")!.rows, 4, 1);
+centerColumns(tableByNumber.get("4.5.II")!.headers, 3, 1);
+centerColumns(tableByNumber.get("4.5.II")!.rows, 3, 1);
+centerAll(tableByNumber.get("4.5.III")!);
+centerAll(tableByNumber.get("4.5.IV")!);
 
 for (const table of tableAssets) {
     table.caption = repairMojibake(table.caption);
