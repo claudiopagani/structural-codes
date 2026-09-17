@@ -224,7 +224,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-label-list-content > \.leading-label-empty \{ grid-column: 1; \}/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*text-align: left/);
-  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol-wide p \{[^}]*grid-template-columns: 14px max-content max-content/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol-tabbed p \{[^}]*grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);

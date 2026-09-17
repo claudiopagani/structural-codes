@@ -51,3 +51,13 @@ test("NTC 4.5.4 conserva il testo delle voci su segmenti distinti", async () => 
     const items = unit.blocks.filter((block: { kind: string }) => block.kind === "list-item");
     assert.ok(items.every((item: { text: { inline: Array<{ kind: string; value: string }> } }) => item.text.inline.at(-1)?.kind === "math"));
 });
+
+test("NTC 4.5 allinea con tabulazione i valori degli spessori", async () => {
+    const unit = await json("corpus/units/ntc2018/4.5.2.2.1.json");
+    const ids = ["block-editorial-016", "block-editorial-017", "block-editorial-019", "block-editorial-020"];
+    const values = ids.map((id) => {
+        const block = unit.blocks.find((candidate: { blockId: string }) => candidate.blockId.endsWith(`#${id}`));
+        return block?.text?.inline?.find((segment: { kind: string }) => segment.kind === "math")?.value;
+    });
+    assert.deepEqual(values, ["7 mm", "18 mm", "10 mm", "18 mm"]);
+});

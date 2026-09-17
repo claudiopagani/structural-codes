@@ -281,7 +281,7 @@ const tables: Table[] = [
             row(cell("LVL, compensato, pannelli di scaglie orientate"), cell("1,40"), cell("1,30")),
             row(cell("unioni"), cell("1,50"), cell("1,40")),
             row(cell("combinazioni eccezionali"), cell("1,00"), cell("1,00")),
-            [cell(""), cell("Per i materiali non compresi nella Tabella si potrà fare riferimento ai pertinenti valori riportati nei riferimenti tecnici di comprovata validità indicati nel Capitolo 12, nel rispetto dei livelli di sicurezza delle presenti norme.", { colSpan: 2 })],
+            [cell("Per i materiali non compresi nella Tabella si potrà fare riferimento ai pertinenti valori riportati nei riferimenti tecnici di comprovata validità indicati nel Capitolo 12, nel rispetto dei livelli di sicurezza delle presenti norme.", { colSpan: 3 })],
         ],
         notes: [],
     },

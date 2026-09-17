@@ -45,9 +45,17 @@ const ModeSegmentedControl = memo(function ModeSegmentedControl({ mode, onChange
   </div>;
 });
 
+function hasTrailingMathWithPunctuation(block: CorpusUnit["blocks"][number]) {
+  const inline = block.text?.inline;
+  if (block.kind !== "list-item" || !inline || inline.length < 2) return false;
+  const mathIndex = inline.findLastIndex((segment) => segment.kind === "math");
+  if (mathIndex < 0) return false;
+  return inline.slice(mathIndex + 1).every((segment) => segment.kind === "text" && /^[\s,.;:!?»)\]]*$/u.test(segment.value));
+}
+
 function scvBlockClass(block: CorpusUnit["blocks"][number], sourceUnitId?: string) {
-  const wideTrailingSymbol = sourceUnitId?.endsWith(":4.5.4") && hasTrailingMath(block);
-  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${wideTrailingSymbol ? "list-item-with-trailing-symbol-wide" : ""}`;
+  const tabbedTrailingSymbol = (sourceUnitId?.endsWith(":4.5.2.2.1") || sourceUnitId?.endsWith(":4.5.4")) && hasTrailingMathWithPunctuation(block);
+  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${tabbedTrailingSymbol ? "list-item-with-trailing-symbol-tabbed" : ""}`;
 }
 
 function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {

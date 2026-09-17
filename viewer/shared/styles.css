@@ -223,9 +223,10 @@ body { margin: 0; }
 .scv-block-list-item.list-item-with-trailing-siglum p strong { font-weight: 700; white-space: nowrap; }
 .scv-block-list-item.list-item-with-trailing-symbol p { display: grid; grid-template-columns: 14px 18.8em 54px; column-gap: 4px; justify-content: start; }
 .scv-block-list-item.list-item-with-trailing-symbol p .inline-math { white-space: nowrap; }
-.scv-block-list-item.list-item-with-trailing-symbol-wide p { grid-template-columns: 14px max-content max-content; }
-.scv-block-list-item.list-item-with-trailing-symbol-wide p > span:first-of-type { grid-column: 2; white-space: nowrap; }
-.scv-block-list-item.list-item-with-trailing-symbol-wide p > .inline-math { grid-column: 3; }
+.scv-block-list-item.list-item-with-trailing-symbol-tabbed p { display: grid; grid-template-columns: 14px 26em max-content; column-gap: 4px; justify-content: start; padding-left: 0; }
+.scv-block-list-item.list-item-with-trailing-symbol-tabbed p > span:first-of-type { grid-column: 2; white-space: nowrap; }
+.scv-block-list-item.list-item-with-trailing-symbol-tabbed p > .inline-math,
+.scv-block-list-item.list-item-with-trailing-symbol-tabbed p > .inline-keep-punct { grid-column: 3; white-space: nowrap; }
 .scv-root .inline-keep-punct { white-space: nowrap; }
 .scv-related-unit, .scv-circular-fallback { margin: 14px 0 18px; padding: 13px 15px; background: var(--scv-circular); border: 1px solid #cfd7ee; border-left: 3px solid var(--scv-primary); border-radius: 4px; }
 .scv-circular-fallback.scv-unit h2 { color: var(--scv-primary); }

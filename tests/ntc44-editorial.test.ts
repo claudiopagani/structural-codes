@@ -48,6 +48,9 @@ test("NTC Tabelle 4.4 applicano allineamenti e larghezze richiesti", async () =>
     assert.ok(tableI.rows.every((row: Array<{ align?: string }>) => row[1]?.align === "center"));
     const tableIII = table("4.4.III");
     assert.deepEqual(tableIII.columnWidths, [72, 14, 14]);
+    const tableIIINote = tableIII.rows.at(-1);
+    assert.equal(tableIIINote?.length, 1);
+    assert.equal(tableIIINote?.[0]?.colSpan, 3);
     for (const row of tableIII.rows.filter((candidate: Array<{ colSpan?: number }>) => candidate.length === 3 && candidate[0]?.colSpan === undefined)) {
         assert.equal(row[0].noWrap, true);
         assert.ok(row.slice(1).every((cell: { align?: string; noWrap?: boolean }) => cell.align === "center" && cell.noWrap === true));
