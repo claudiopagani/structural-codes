@@ -64,6 +64,10 @@ test("linkificazione, preview e navigazione lazy restano fuori dal documento mem
   assert.match(content, /findCrossReferences\(value\)/);
   assert.match(content, /className="scv-cross-reference"/);
   assert.match(viewer, /onPointerOver=\{handleDocumentPointerOver\}/);
+  assert.match(viewer, /const referencePreviewRequestRef = useRef\(0\)/);
+  assert.match(viewer, /if \(requestId !== referencePreviewRequestRef\.current\) return/);
+  assert.match(viewer, /const clearReferencePreview = useCallback/);
+  assert.match(viewer, /clearReferencePreview\(\)/);
   assert.match(viewer, /<ReferencePreview preview=\{referencePreview\}/);
   assert.match(tools, /data-scv-reference-preview/);
   assert.match(viewer, /scrollViewerTarget\(textPaneRef\.current, target\)/);

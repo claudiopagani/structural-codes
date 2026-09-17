@@ -80,9 +80,10 @@ test("combined usa le NTC come base e conserva tutti i contenuti Circolare", asy
   assert.match(source, /const relatedByTarget = useMemo/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
   assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
-  assert.match(source, /const keepNtcChapterMarker = mode === "combined"[\s\S]*unit\.document === "ntc2018"[\s\S]*isChapter/);
   assert.match(source, /className="scv-structural-anchor"/);
   assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
+  assert.match(source, /if \(mode === "combined" && unit\.document === "circ2019" && !hasUnitContent\(unit\) && visibleRelated\.length === 0\)/);
+  assert.doesNotMatch(source, /if \(mode === "combined" && !hasUnitContent\(unit\)/);
   assert.match(source, /isCircularFallback = mode === "combined" && unit\.document === "circ2019"/);
   assert.match(source, /scv-circular-fallback/);
   assert.match(source, /data-provenance=\{isCircularFallback \? "Circolare 7\/2019" : undefined\}/);
@@ -238,11 +239,13 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.doesNotMatch(styles, /legacy-base-font-size|comparison-shell/);
 });
 
-test("i blocchi Circolare composti solo dal titolo non entrano nel comparato", async () => {
+test("nel comparato i blocchi Circolare composti solo dal titolo non entrano, quelli NTC restano visibili", async () => {
   const unitsDirectory = new URL("../../corpus/units/circ2019/", import.meta.url);
   const [c3, c31] = await Promise.all(["c3.json", "c3.1.json"].map(async (file) => JSON.parse(await readFile(new URL(file, unitsDirectory), "utf8"))));
   assert.ok(c3.blocks.every((block) => block.kind === "heading"));
   assert.ok(c31.blocks.every((block) => block.kind === "heading"));
+  const ntcUnit = JSON.parse(await readFile(new URL("../../corpus/units/ntc2018/4.1.2.json", import.meta.url), "utf8"));
+  assert.ok(ntcUnit.blocks.every((block) => block.kind === "heading"));
 });
 
 test("le unità Circolare C4, C6 e C7 dichiarano il titolo strutturale", async () => {
