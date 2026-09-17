@@ -64,7 +64,7 @@ test("il lazy loading attiva l’ultima unità quando il viewport è vicino al f
   assert.match(observer, /nearEnd\(\) \? positions\[positions\.length - 1\]/);
   assert.match(observer, /root\.addEventListener\("scroll", onScroll, \{ passive: true \}\)/);
   assert.match(observer, /const lastId = orderedIds\[orderedIds\.length - 1\]/);
-  assert.match(observer, /!element\.classList\.contains\("scv-structural-anchor"\)/);
+  assert.doesNotMatch(observer, /scv-structural-anchor/);
 });
 
 test("indice, ricerca, cross-reference e history convergono sullo stesso caricamento a finestra", async () => {

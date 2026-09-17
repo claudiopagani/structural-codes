@@ -346,7 +346,8 @@ function navigationEntry(summary: UnitSummary, source = summary.document, parent
   const rawNumber = summary.numbering.official;
   const displayNumber = source === "circ2019" && !/^C/iu.test(rawNumber) ? `C${rawNumber}` : rawNumber;
   const baseNumber = baseNumbering(displayNumber);
-  return { summary, source, baseNumber, displayNumber, level: depth(summary), parentId, parentBaseNumber: parentNumbering(baseNumber) };
+  const level = Math.max(0, baseNumber.split(".").length - 1);
+  return { summary, source, baseNumber, displayNumber, level, parentId, parentBaseNumber: parentNumbering(baseNumber) };
 }
 
 function sameRelatedRecords(left: RelatedRecord[], right: RelatedRecord[]) {
@@ -358,9 +359,6 @@ const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, 
   const isChapter = depth(unit) === 0;
   const isCircularFallback = mode === "combined" && unit.document === "circ2019";
   const visibleRelated = mode === "combined" ? relatedRecords.filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit)) : emptyRelatedRecords;
-  if (mode === "combined" && unit.document === "circ2019" && !hasUnitContent(unit) && visibleRelated.length === 0) {
-    return <span className="scv-structural-anchor" data-scv-text-unit={unit.id} data-scv-chunk-path={record.summary.chunkPath} aria-hidden="true" />;
-  }
   return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}${isCircularFallback ? " scv-circular-fallback" : ""}`} data-provenance={isCircularFallback ? "Circolare 7/2019" : undefined} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
     {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unit.title}</span></h2>}
     <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} />
@@ -501,7 +499,7 @@ function useVisibleUnitObserver(rootRef: RefObject<HTMLElement | null>, records:
   useEffect(() => {
     const root = rootRef.current;
     if (!root || records.length === 0) return;
-    const elements = [...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")].filter((element) => !element.classList.contains("scv-structural-anchor"));
+    const elements = [...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")];
     if (elements.length === 0) return;
     const orderedIds = elements.flatMap((element) => element.dataset.scvTextUnit ? [element.dataset.scvTextUnit] : []);
     const nearEnd = () => root.scrollTop + root.clientHeight >= root.scrollHeight - Math.max(24, root.clientHeight * 0.5);
@@ -920,9 +918,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const documentRecords = useMemo(() => recordsForPaths(index, lookup, primaryRenderedPaths, loadedChunks), [index, loadedChunks, lookup, primaryRenderedPaths]);
   const fallbackIds = useMemo(() => new Set(combinedPlan.fallbackSummaries.map((summary) => summary.id)), [combinedPlan.fallbackSummaries]);
   const circRecords = useMemo(() => {
-    if (mode !== "combined" || !circIndex || !circLookup) return [];
-    return recordsForPaths(circIndex, circLookup, requiredCombinedCircPaths, loadedChunks).filter(({ unit }) => fallbackIds.has(unit.id) && hasUnitContent(unit));
-  }, [circIndex, circLookup, fallbackIds, loadedChunks, mode, requiredCombinedCircPaths]);
+    if (mode !== "combined" || !index || !circIndex || !circLookup) return [];
+    const primaryBases = new Set(index.units.map((summary) => baseNumbering(summary.numbering.official)));
+    return recordsForPaths(circIndex, circLookup, requiredCombinedCircPaths, loadedChunks).filter(({ unit }) => fallbackIds.has(unit.id) && (hasUnitContent(unit) || !primaryBases.has(baseNumbering(unit.numbering.official))));
+  }, [circIndex, circLookup, fallbackIds, index, loadedChunks, mode, requiredCombinedCircPaths]);
   const relatedByTarget = useMemo(() => {
     const grouped = new Map<string, RelatedRecord[]>();
     if (mode !== "combined") return grouped;

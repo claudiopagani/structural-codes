@@ -80,14 +80,20 @@ test("combined usa le NTC come base e conserva tutti i contenuti Circolare", asy
   assert.match(source, /const relatedByTarget = useMemo/);
   assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
   assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
-  assert.match(source, /className="scv-structural-anchor"/);
   assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
-  assert.match(source, /if \(mode === "combined" && unit\.document === "circ2019" && !hasUnitContent\(unit\) && visibleRelated\.length === 0\)/);
-  assert.doesNotMatch(source, /if \(mode === "combined" && !hasUnitContent\(unit\)/);
+  assert.match(source, /hasUnitContent\(unit\) \|\| !primaryBases\.has\(baseNumbering\(unit\.numbering\.official\)\)/);
   assert.match(source, /isCircularFallback = mode === "combined" && unit\.document === "circ2019"/);
   assert.match(source, /scv-circular-fallback/);
   assert.match(source, /data-provenance=\{isCircularFallback \? "Circolare 7\/2019" : undefined\}/);
   assert.doesNotMatch(source, /Collegamento editoriale da revisionare|Provenienza: Circolare 7\/2019|same-numbering/);
+});
+
+test("il comparato conserva i titoli Circolare senza controparte NTC e li colloca nell'albero numerico", async () => {
+  const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
+  assert.match(source, /const level = Math\.max\(0, baseNumber\.split\("\."\)\.length - 1\)/);
+  assert.match(source, /const primaryBases = new Set\(index\.units\.map\(\(summary\) => baseNumbering\(summary\.numbering\.official\)\)\)/);
+  assert.match(source, /baseNumbering\(unit\.numbering\.official\)\)\)/);
+  assert.doesNotMatch(source, /scv-structural-anchor/);
 });
 
 test("i fallback Circolare mantengono lo sfondo di provenienza anche senza relazione esplicita", async () => {
