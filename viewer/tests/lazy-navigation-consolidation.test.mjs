@@ -49,6 +49,24 @@ test("navigazioni rapide invalidano mount e anchor asincroni precedenti", async 
   assert.doesNotMatch(source, /const generation = replace \? \+\+/);
 });
 
+test("anche su viewport strette il testo resta un contenitore scrollabile per il lazy loading", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  const mobile = styles.slice(styles.indexOf("@media (max-width: 700px)"));
+  assert.match(mobile, /\.scv-text-pane-shell \{ height: 58vh; min-height: 0; \}/);
+  assert.match(mobile, /\.scv-text-pane \{ height: 100%; min-height: 0; \}/);
+});
+
+test("il lazy loading attiva l’ultima unità quando il viewport è vicino al fondo del chunk", async () => {
+  const source = await readFile(viewerSourceUrl, "utf8");
+  const observer = source.slice(source.indexOf("function useVisibleUnitObserver"), source.indexOf("function HighlightedSnippet"));
+  assert.match(observer, /root\.scrollTop \+ root\.clientHeight >= root\.scrollHeight/);
+  assert.match(observer, /Math\.max\(24, root\.clientHeight \* 0\.5\)/);
+  assert.match(observer, /nearEnd\(\) \? positions\[positions\.length - 1\]/);
+  assert.match(observer, /root\.addEventListener\("scroll", onScroll, \{ passive: true \}\)/);
+  assert.match(observer, /const lastId = orderedIds\[orderedIds\.length - 1\]/);
+  assert.match(observer, /!element\.classList\.contains\("scv-structural-anchor"\)/);
+});
+
 test("indice, ricerca, cross-reference e history convergono sullo stesso caricamento a finestra", async () => {
   const source = await readFile(viewerSourceUrl, "utf8");
   assert.match(source, /revealSummary\(unit, !nearMountedWindow, generation\)/);

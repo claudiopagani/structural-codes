@@ -501,9 +501,10 @@ function useVisibleUnitObserver(rootRef: RefObject<HTMLElement | null>, records:
   useEffect(() => {
     const root = rootRef.current;
     if (!root || records.length === 0) return;
-    const elements = [...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")];
+    const elements = [...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")].filter((element) => !element.classList.contains("scv-structural-anchor"));
     if (elements.length === 0) return;
     const orderedIds = elements.flatMap((element) => element.dataset.scvTextUnit ? [element.dataset.scvTextUnit] : []);
+    const nearEnd = () => root.scrollTop + root.clientHeight >= root.scrollHeight - Math.max(24, root.clientHeight * 0.5);
     if (typeof IntersectionObserver === "undefined") {
       const positions = elements.map((element) => ({ id: element.dataset.scvTextUnit ?? "", top: element.offsetTop }));
       let frame: number | null = null;
@@ -517,7 +518,7 @@ function useVisibleUnitObserver(rootRef: RefObject<HTMLElement | null>, records:
           if (positions[middle].top <= marker) low = middle + 1;
           else high = middle;
         }
-        const candidate = positions[Math.max(0, low - 1)];
+        const candidate = nearEnd() ? positions[positions.length - 1] : positions[Math.max(0, low - 1)];
         if (candidate?.id) onVisible(candidate.id);
       };
       const onScroll = () => { if (frame === null) frame = window.requestAnimationFrame(update); };
@@ -545,8 +546,15 @@ function useVisibleUnitObserver(rootRef: RefObject<HTMLElement | null>, records:
       }
       if (frame === null) frame = window.requestAnimationFrame(commit);
     }, { root, rootMargin: "0px 0px -72% 0px", threshold: 0.01 });
+    const onScroll = () => {
+      if (!nearEnd()) return;
+      const lastId = orderedIds[orderedIds.length - 1];
+      if (lastId) onVisible(lastId);
+    };
+    root.addEventListener("scroll", onScroll, { passive: true });
     for (const element of elements) observer.observe(element);
     return () => {
+      root.removeEventListener("scroll", onScroll);
       observer.disconnect();
       if (frame !== null) window.cancelAnimationFrame(frame);
     };
