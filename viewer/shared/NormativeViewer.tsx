@@ -39,8 +39,6 @@ const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "circ", label: "Solo Circolare 7/2019" },
   { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
 ];
-const hierarchyLabels = ["Capitoli", "Paragrafi", "Sottoparagrafi"];
-
 const ModeSegmentedControl = memo(function ModeSegmentedControl({ mode, onChange }: { mode: ViewerMode; onChange: (nextMode: ViewerMode) => void }) {
   return <div className="scv-mode-switch" role="group" aria-label="Modalità documento">
     {modeOptions.map((option) => <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => onChange(option.id)} aria-label={option.label} aria-pressed={mode === option.id} title={option.label}><span>{option.id === "ntc" ? <>NTC<br />2018</> : option.id === "circ" ? <>CIRC.<br />2019</> : <>NTC<br />CIRC.</>}</span></button>)}
@@ -108,6 +106,7 @@ interface NavigationEntry {
   baseNumber: string;
   displayNumber: string;
   level: number;
+  parentId: string | null;
   parentBaseNumber: string | null;
 }
 interface CombinedPlan {
@@ -138,6 +137,7 @@ interface ResolvedCrossReference {
 
 const chunkUnitMaps = new WeakMap<CorpusChunk, Map<string, CorpusUnit>>();
 const emptyRelatedRecords: RelatedRecord[] = [];
+const emptyNavigationEntries: NavigationEntry[] = [];
 
 function unitsForChunk(chunk: CorpusChunk) {
   let map = chunkUnitMaps.get(chunk);
@@ -342,11 +342,11 @@ function buildCombinedPlan(primaryIndex: DocumentIndex | null, circIndex: Docume
   return { fallbackSummaries, circPathsByPrimaryPath, primaryAnchorByFallbackId };
 }
 
-function navigationEntry(summary: UnitSummary, source = summary.document): NavigationEntry {
+function navigationEntry(summary: UnitSummary, source = summary.document, parentId = summary.hierarchy.parentId): NavigationEntry {
   const rawNumber = summary.numbering.official;
   const displayNumber = source === "circ2019" && !/^C/iu.test(rawNumber) ? `C${rawNumber}` : rawNumber;
   const baseNumber = baseNumbering(displayNumber);
-  return { summary, source, baseNumber, displayNumber, level: depth(summary), parentBaseNumber: parentNumbering(baseNumber) };
+  return { summary, source, baseNumber, displayNumber, level: depth(summary), parentId, parentBaseNumber: parentNumbering(baseNumber) };
 }
 
 function sameRelatedRecords(left: RelatedRecord[], right: RelatedRecord[]) {
@@ -588,6 +588,46 @@ const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierar
   settingsButtonRef: RefObject<HTMLButtonElement | null>;
   onOpenSettings: () => void;
 }) {
+  const indexListRef = useRef<HTMLDivElement>(null);
+  const chapters = hierarchy[0] ?? [];
+  const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
+  const subparagraphs = hierarchy[2] ?? emptyNavigationEntries;
+  const activeChapterId = activeLevelIds[0] ?? null;
+  const activeParagraphId = activeLevelIds[1] ?? null;
+  const activeSubparagraphId = activeLevelIds[2] ?? null;
+  const paragraphsByChapter = useMemo(() => {
+    const grouped = new Map<string, NavigationEntry[]>();
+    for (const entry of paragraphs) {
+      const group = grouped.get(entry.parentId ?? "") ?? [];
+      group.push(entry);
+      grouped.set(entry.parentId ?? "", group);
+    }
+    return grouped;
+  }, [paragraphs]);
+  const subparagraphsByParagraph = useMemo(() => {
+    const grouped = new Map<string, NavigationEntry[]>();
+    for (const entry of subparagraphs) {
+      const group = grouped.get(entry.parentId ?? "") ?? [];
+      group.push(entry);
+      grouped.set(entry.parentId ?? "", group);
+    }
+    return grouped;
+  }, [subparagraphs]);
+
+  useEffect(() => {
+    const targetId = activeSubparagraphId ?? activeParagraphId ?? activeChapterId;
+    if (!targetId) return;
+    const timeout = window.setTimeout(() => {
+      const target = indexListRef.current?.querySelector<HTMLElement>(`[data-index-unit="${CSS.escape(targetId)}"]`);
+      if (!target) return;
+      const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({ block: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+    }, 360);
+    return () => window.clearTimeout(timeout);
+  }, [activeChapterId, activeParagraphId, activeSubparagraphId]);
+
+  const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => onSelectUnit(entry.summary)} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
+
   return <aside className="scv-index-pane" aria-label="Indice gerarchico">
     <div className="scv-search-toolbar">
       <div className="scv-search-box">
@@ -878,8 +918,18 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const navigationEntries = useMemo(() => {
     if (!index) return [];
-    const summaries = mode === "combined" ? [...index.units, ...combinedPlan.fallbackSummaries] : index.units;
-    return summaries.map((summary) => navigationEntry(summary)).sort((left, right) => compareBaseNumbering(left.summary, right.summary));
+    const primaryBases = new Set(index.units.map((summary) => baseNumbering(summary.numbering.official)));
+    const summaries = mode === "combined"
+      ? [...index.units, ...combinedPlan.fallbackSummaries].filter((summary) => summary.document !== "circ2019" || !primaryBases.has(baseNumbering(summary.numbering.official)))
+      : index.units;
+    const entries = summaries.map((summary) => navigationEntry(summary));
+    if (mode !== "combined") return entries.sort((left, right) => compareBaseNumbering(left.summary, right.summary));
+    const entryIdByBase = new Map(entries.map((entry) => [entry.baseNumber, entry.summary.id]));
+    return entries.map((entry) => {
+      const parentBase = parentNumbering(entry.baseNumber);
+      const parentId = parentBase ? entryIdByBase.get(parentBase) ?? null : null;
+      return entry.parentId === parentId ? entry : { ...entry, parentId };
+    }).sort((left, right) => compareBaseNumbering(left.summary, right.summary));
   }, [combinedPlan.fallbackSummaries, index, mode]);
   const entryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.summary.id, entry])), [navigationEntries]);
   const recordById = useMemo(() => new Map(renderRecords.map((record) => [record.unit.id, record])), [renderRecords]);
