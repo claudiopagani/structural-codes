@@ -240,6 +240,7 @@ function tableCellClass(cell: TableCell) {
     cell.align ? `table-cell-align-${cell.align}` : "",
     cell.noWrap ? "table-cell-no-wrap" : "",
     cell.verticalText ? "table-cell-vertical" : "",
+    cell.shade ? `table-cell-shade-${cell.shade}` : "",
     cell.text.includes("\n") ? "table-cell-multiline" : "",
   ].filter(Boolean).join(" ") || undefined;
 }

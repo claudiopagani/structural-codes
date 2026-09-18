@@ -18,8 +18,8 @@ export async function evidencePackageId(value: Omit<ChatNTCEvidencePackage, "pac
 }
 
 function cell(value: TableCell): TableCell {
-  const { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText } = value;
-  return { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText };
+  const { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText, shade } = value;
+  return { text, latex, inline, image, colSpan, rowSpan, strong, align, noWrap, verticalText, shade };
 }
 
 /** Project explicitly: never send raw extraction, creation actors or reviewer identities. */

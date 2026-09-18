@@ -29,10 +29,10 @@ async function allUnits() {
     return Promise.all(names.map((name) => json(`corpus/units/ntc2018/${name}`)));
 }
 
-async function stepAssets() {
+async function stepAssets(startPage = 182, endPage = 191) {
     const names = (await readdir(join(root, "corpus/assets/ntc2018"))).filter((name) => name.endsWith(".json"));
     const manifests = await Promise.all(names.map((name) => json(`corpus/assets/ntc2018/${name}`)));
-    const inStep = (asset: { pdfPage: number }) => asset.pdfPage >= 182 && asset.pdfPage <= 191;
+    const inStep = (asset: { pdfPage: number }) => asset.pdfPage >= startPage && asset.pdfPage <= endPage;
     return {
         formulas: manifests.flatMap((manifest) => manifest.formulas ?? []).filter(inStep),
         tables: manifests.flatMap((manifest) => manifest.tables ?? []).filter(inStep),
@@ -111,8 +111,8 @@ test("NTC pagine 182–191 conserva otto tabelle matematiche e il crop ufficiale
     const coefficients = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.V");
     assert.equal(coefficients.rows[8][2].latex, "\\gamma_{Qi}");
     const combinations = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.VI");
-    assert.equal(combinations.headers[0][1].latex, "\\Psi_0");
-    assert.equal(combinations.rows[6][0].latex, "\\text{Azioni del vento }F_{Wk}");
+    assert.equal(combinations.headers[0][2].latex, "\\Psi_0");
+    assert.equal(combinations.rows[6][1].latex, "F_{Wk}");
     const curvature = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.VIII");
     assert.equal(curvature.rows[1][0].latex, "120<V\\le200");
     const soil = tables.find((table: { officialNumber: string }) => table.officialNumber === "6.2.II");
@@ -122,4 +122,24 @@ test("NTC pagine 182–191 conserva otto tabelle matematiche e il crop ufficiale
     assert.equal(figures[0].officialNumber, "5.2.14");
     const bytes = await readFile(join(root, "corpus/assets", figures[0].imagePath));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), figures[0].sha256);
+});
+
+test("NTC Tabelle 5.2.III–VIII conservano celle unite, grigi e note in apice", async () => {
+    const { tables } = await stepAssets(181, 191);
+    const trains = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.III");
+    assert.equal(trains.headers[0][2].colSpan, 2);
+    assert.equal(trains.rows[1][0].rowSpan, 2);
+    const traffic = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.IV");
+    assert.equal(traffic.headers[0][1].colSpan, 2);
+    assert.equal(traffic.rows[0][1].shade, "gray");
+    const partial = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.V");
+    assert.equal(partial.rows[0][0].rowSpan, 2);
+    assert.match(partial.rows[11][1].latex, /\^\{\(5\)\}/u);
+    const combinations = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.VI");
+    assert.equal(combinations.columnCount, 5);
+    assert.equal(combinations.rows[0][0].rowSpan, 2);
+    const further = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.VII");
+    assert.equal(further.rows[0][0].rowSpan, 6);
+    const curvature = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.VIII");
+    assert.equal(curvature.headers[0][2].colSpan, 2);
 });

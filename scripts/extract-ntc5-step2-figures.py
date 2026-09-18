@@ -14,14 +14,14 @@ OUTPUT.mkdir(parents=True, exist_ok=True)
 # Regions are PDF points, top-left origin. They include the complete official
 # drawing and its caption, without the surrounding running text.
 FIGURES = {
-    "fig5.1.4.png": (162, 170, 490, 260, 145),
+    "fig5.1.4.png": (162, 155, 510, 290, 110),
     "fig5.1.5.png": (164, 150, 70, 300, 150),
     "fig5.2.1.png": (168, 125, 575, 350, 105),
     "fig5.2.2.png": (169, 135, 240, 350, 50),
     "fig5.2.3.png": (169, 100, 535, 320, 90),
     "fig5.2.4.png": (170, 80, 75, 430, 125),
-    "fig5.2.5.png": (170, 45, 315, 500, 125),
-    "fig5.2.6.png": (170, 45, 500, 500, 150),
+    "fig5.2.5.png": (170, 235, 305, 150, 110),
+    "fig5.2.6.png": (170, 235, 490, 150, 145),
     "fig5.2.7.png": (171, 70, 315, 460, 145),
 }
 

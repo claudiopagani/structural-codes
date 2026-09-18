@@ -42,7 +42,7 @@ export interface TableCellImage {
   sha256: string;
   region: { x: number; y: number; width: number; height: number };
 }
-export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; image?: TableCellImage; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; header?: boolean; verticalText?: boolean; }
+export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; image?: TableCellImage; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; header?: boolean; verticalText?: boolean; shade?: "gray"; }
 export interface TableAsset {
   id: string;
   unitId?: string;

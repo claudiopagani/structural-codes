@@ -83,8 +83,10 @@ test("NTC pagine 172–181 conserva le formule nelle tre tabelle e il segno più
     assert.deepEqual(tables.map((table: { officialNumber: string }) => table.officialNumber).sort(), ["5.2.II", "5.2.II.b", "5.2.III"].sort());
 
     const characteristic = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.II");
-    assert.equal(characteristic.rows[24][2].latex, "\\begin{gathered}L_\\Phi=kL_m\\quad\\text{dove:}\\\\n=2-3-4-\\ge5\\\\k=1{,}2-1{,}3-1{,}4-1{,}5\\end{gathered}");
-    assert.equal(characteristic.rows[27][2].latex, "\\Phi_2=1{,}20;\\quad\\Phi_3=1{,}35");
+    const continuousSpan = characteristic.rows.find((row: Array<{ text?: string; latex?: string }>) => row.some((cell) => cell.text?.startsWith("5.2 Travi e solette continue")));
+    assert.equal(continuousSpan?.at(-1)?.latex, "\\begin{gathered}L_\\Phi=kL_m\\quad\\text{dove:}\\\\n=2-3-4-\\ge5\\\\k=1{,}2-1{,}3-1{,}4-1{,}5\\end{gathered}");
+    const boxSpan = characteristic.rows.find((row: Array<{ text?: string; latex?: string }>) => row.some((cell) => cell.text?.startsWith("5.4 Solette ed altri elementi")));
+    assert.equal(boxSpan?.at(-1)?.latex, "\\Phi_2=1{,}20;\\quad\\Phi_3=1{,}35");
 
     const centrifugal = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.II.b");
     assert.ok(centrifugal.rows.flat().filter((cell: { latex?: string }) => cell.latex?.includes("LM71")).every((cell: { latex: string }) => cell.latex.includes('\\text{“+”}')));
@@ -100,4 +102,22 @@ test("NTC pagine 172–181 usa sei crop ufficiali con hash verificabile", async 
         const bytes = await readFile(join(root, "corpus/assets", figure.imagePath));
         assert.equal(createHash("sha256").update(bytes).digest("hex"), figure.sha256);
     }
+});
+
+test("NTC 5.2 riproduce le intestazioni e gli elenchi labeled delle pagine 174–179", async () => {
+    const { tables } = await stepAssets();
+    const centrifugal = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.II.b");
+    assert.equal(centrifugal.headers.length, 2);
+    assert.equal(centrifugal.headers[0][2].colSpan, 4);
+    assert.equal(centrifugal.rows[0][0].rowSpan, 2);
+    assert.equal(centrifugal.rows[2][1].rowSpan, 2);
+    assert.match(centrifugal.rows[2][5].text, /\n/u);
+
+    const centrifugalUnit = await json("corpus/units/ntc2018/5.2.2.3.1.json");
+    assert.equal(centrifugalUnit.blocks.filter((block: { listMarker?: string; text?: { normalized?: string } }) => block.listMarker === "none" && block.text?.normalized?.startsWith("Lf =")).length, 1);
+    const aerodynamic = await json("corpus/units/ntc2018/5.2.2.6.5.json");
+    assert.match(aerodynamic.title, / 20 m$/u);
+    assert.equal(aerodynamic.blocks.filter((block: { listMarker?: string; text?: { normalized?: string } }) => block.listMarker === "none" && block.text?.normalized?.startsWith("q2k")).length, 1);
+    const catenary = await json("corpus/units/ntc2018/5.2.2.9.1.json");
+    assert.ok(catenary.blocks.slice(3, 6).every((block: { text: { normalized: string } }) => block.text.normalized.includes("\t")));
 });

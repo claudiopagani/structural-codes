@@ -10,7 +10,7 @@
     "official": "5.2.2.6.5",
     "sortKey": "005.002.002.006.005"
   },
-  "title": "SUPERFICI CHE CIRCONDANO INTEGRALMENTE IL BINARIO PER LUNGHEZZE INFERIORI A 20 M",
+  "title": "SUPERFICI CHE CIRCONDANO INTEGRALMENTE IL BINARIO PER LUNGHEZZE INFERIORI A 20 m",
   "titleBlockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.5#block-heading",
   "hierarchy": {
     "parentId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6",
@@ -35,7 +35,7 @@
       "origin": "official",
       "text": {
         "raw": "5.2.2.6.5. SUPERFICI CHE CIRCONDANO INTEGRALMENTE IL BINARIO PER LUNGHEZZE INFERIORI A 20 M",
-        "normalized": "5.2.2.6.5 SUPERFICI CHE CIRCONDANO INTEGRALMENTE IL BINARIO PER LUNGHEZZE INFERIORI A 20 M",
+        "normalized": "5.2.2.6.5 SUPERFICI CHE CIRCONDANO INTEGRALMENTE IL BINARIO PER LUNGHEZZE INFERIORI A 20 m",
         "normalizationVersion": "ntc5-editorial-profile-0.1.0"
       },
       "evidence": {
@@ -84,10 +84,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step4-editorial-formatting-0.1.0",
+            "note": "Corretta in minuscolo l’unità m (metri) nel titolo, come nella fonte ufficiale."
           }
         ],
         "rawSha256": "42cce1af1152e50547d1e30b2357c9e84e35c18c90607b5169dfeb69a3cf17d9",
-        "normalizedSha256": "aa87c85165be119edc1ace6431142d76a825b9fcd0221eaa9da704c6b74376e4"
+        "normalizedSha256": "0c2d69185328d084dc168ba4662e65c59f4c68df679789dbd48c3fd373d61bf5"
       }
     },
     {
@@ -262,8 +267,8 @@
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "- sulla superficie orizzontale ± k5 · q2k, con:\nq2k determinato in accordo con il punto 5.2.2.6.2;\nk5 = 2,5 se la struttura racchiude un solo binario;\nk5 = 3,5 se la struttura racchiude due binari.",
-        "normalized": "sulla superficie orizzontale ± k5 · q2k, con: q2k determinato in accordo con il punto 5.2.2.6.2; k5 = 2,5 se la struttura racchiude un solo binario; k5 = 3,5 se la struttura racchiude due binari.",
+        "raw": "- sulla superficie orizzontale ± k5 · q2k, con:",
+        "normalized": "sulla superficie orizzontale ± k5 · q2k, con:",
         "normalizationVersion": "ntc5-editorial-profile-0.1.0",
         "inline": [
           {
@@ -277,8 +282,77 @@
           },
           {
             "kind": "text",
-            "value": ", con: "
+            "value": ", con:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 179,
+        "printedPage": "175",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il trattino e il rientro dell’elenco verificati nel render ufficiale."
+          }
+        ],
+        "rawSha256": "8d3b1843b745f47aacc7ea7c79bbca62795e1be7cef81fdd2b69d8e1b9b3e1e9",
+        "normalizedSha256": "0d495ba160054787654e54357b5b2c5d7953c5e7706f16705bc250d913f6514b"
+      },
+      "listMarker": "dash"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.5#block-editorial-007",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "q2k determinato in accordo con il punto 5.2.2.6.2;",
+        "normalized": "q2k determinato in accordo con il punto 5.2.2.6.2;",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "q2k",
@@ -286,8 +360,82 @@
           },
           {
             "kind": "text",
-            "value": " determinato in accordo con il punto 5.2.2.6.2; "
+            "value": " determinato in accordo con il punto 5.2.2.6.2;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 179,
+        "printedPage": "175",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il trattino e il rientro dell’elenco verificati nel render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step4-editorial-formatting-0.1.0",
+            "note": "Separati i valori labeled dopo il secondo punto dell’elenco e allineate le descrizioni sulla colonna della label."
+          }
+        ],
+        "rawSha256": "b783fb99250ad47ed4b9bc638640b2aaef40c3bb1b6d0533bf3648e296379fe2",
+        "normalizedSha256": "b783fb99250ad47ed4b9bc638640b2aaef40c3bb1b6d0533bf3648e296379fe2"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.5#block-editorial-008",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "k5 = 2,5 se la struttura racchiude un solo binario;",
+        "normalized": "k5 = 2,5 se la struttura racchiude un solo binario;",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k5 = 2,5",
@@ -295,8 +443,82 @@
           },
           {
             "kind": "text",
-            "value": " se la struttura racchiude un solo binario; "
+            "value": " se la struttura racchiude un solo binario;"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 179,
+        "printedPage": "175",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 73,
+          "y": 75,
+          "width": 455,
+          "height": 680
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimossi caratteri di controllo privi di resa visuale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Unite le parole divise esclusivamente dall’andata a capo tipografica."
+          },
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Rimosse le andate a capo di impaginazione, conservando capoversi ed elenchi."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Ripristinati i glifi matematici e i caratteri riconoscibili nel render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione delle righe."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc5-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step3-editorial-formatting-0.1.0",
+            "note": "Ripristinato il trattino e il rientro dell’elenco verificati nel render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step4-editorial-formatting-0.1.0",
+            "note": "Separati i valori labeled dopo il secondo punto dell’elenco e allineate le descrizioni sulla colonna della label."
+          }
+        ],
+        "rawSha256": "34139c7293d2b5a3f55e0c4b85055f2308cb741444b54d0bda2f6f3ec09a7009",
+        "normalizedSha256": "34139c7293d2b5a3f55e0c4b85055f2308cb741444b54d0bda2f6f3ec09a7009"
+      },
+      "listMarker": "none"
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:5.2.2.6.5#block-editorial-009",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "k5 = 3,5 se la struttura racchiude due binari.",
+        "normalized": "k5 = 3,5 se la struttura racchiude due binari.",
+        "normalizationVersion": "ntc5-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "k5 = 3,5",
@@ -359,12 +581,17 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc5-step3-editorial-formatting-0.1.0",
             "note": "Ripristinato il trattino e il rientro dell’elenco verificati nel render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc5-step4-editorial-formatting-0.1.0",
+            "note": "Separati i valori labeled dopo il secondo punto dell’elenco e allineate le descrizioni sulla colonna della label."
           }
         ],
-        "rawSha256": "fa36a9a40cf7d9b8e510352aa388d5fb629f2008f99420a933f7a0cebed07d70",
-        "normalizedSha256": "c8c98e8cfd389eea3988284b255a487585bb5827242cbef806a91869da0991e9"
+        "rawSha256": "17389a8667902c58130d1671bece738709afc9eb3c02dcc537207963efd3b44e",
+        "normalizedSha256": "17389a8667902c58130d1671bece738709afc9eb3c02dcc537207963efd3b44e"
       },
-      "listMarker": "dash"
+      "listMarker": "none"
     }
   ],
   "citations": [],
