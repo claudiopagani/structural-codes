@@ -97,11 +97,18 @@ test("NTC pagine 152–161 conserva le sei tabelle e la loro matematica", async 
 
     const partial = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.V");
     assert.equal(partial.headers[0][3].latex, "\\mathrm{EQU}^{(1)}");
+    assert.equal(partial.headers[0][4].latex, "A_{1}");
+    assert.equal(partial.headers[0][5].latex, "A_{2}");
     assert.equal(partial.rows[0][2].latex, "\\gamma_{G1}\\text{ e }\\gamma_{G3}");
     assert.equal(partial.rows[8][2].latex, "\\gamma_{\\varepsilon1}");
 
+    const combinationsTable = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.IV");
+    assert.equal(combinationsTable.rows[4][1].shade, undefined);
+
     const combinations = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.VI");
-    assert.deepEqual(combinations.headers[0].slice(2).map((cell: { latex: string }) => cell.latex), ["\\begin{gathered}\\text{Coefficiente }\\psi_0\\\\\\text{di combinazione}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente }\\psi_1\\\\\\text{(valori frequenti)}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente }\\psi_2\\\\\\text{(valori quasi}\\\\\\text{permanenti)}\\end{gathered}"]);
+    assert.deepEqual(combinations.columnWidths, [14, 28, 19, 19, 20]);
+    assert.equal(combinations.rows[0][0].text, "Azioni da\ntraffico\n(Tab. 5.1.IV)");
+    assert.deepEqual(combinations.headers[0].slice(2).map((cell: { latex: string }) => cell.latex), ["\\begin{gathered}\\text{Coefficiente}\\\\\\psi_0\\text{ di combi-}\\\\\\text{nazione}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente}\\\\\\psi_1\\text{ (valori}\\\\\\text{frequenti)}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente}\\\\\\psi_2\\text{ (valori quasi}\\\\\\text{permanenti)}\\end{gathered}"]);
 });
 
 test("NTC pagine 152–161 usa i quattro crop ufficiali con hash verificabile", async () => {

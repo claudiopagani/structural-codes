@@ -284,8 +284,11 @@ async function main() {
         { kind: "text", value: "Schema di carico 5 con valore\ncaratteristico " },
         { kind: "math", value: "5,0 kN/m²", latex: "5{,}0\\,\\mathrm{kN/m^2}" },
     ]);
-    for (const [row, column] of [[0, 1], [1, 4], [2, 5], [3, 6], [4, 1], [4, 3], [4, 6], [5, 1], [5, 2]] as const) tIV.rows[row][column].shade = "gray";
+    delete tIV.rows[4][1].shade;
+    for (const [row, column] of [[0, 1], [1, 4], [2, 5], [3, 6], [4, 3], [4, 6], [5, 1], [5, 2]] as const) tIV.rows[row][column].shade = "gray";
     const tV = step1.tables.find((item: any) => item.officialNumber === "5.1.V");
+    tV.headers[0][4] = cell("A_1", { latex: "A_{1}", align: "center" });
+    tV.headers[0][5] = cell("A_2", { latex: "A_{2}", align: "center" });
     if (!tV.rows[0][0].rowSpan) {
         for (let index = 0; index < tV.rows.length; index += 2) {
             tV.rows[index][0].rowSpan = 2;
@@ -295,11 +298,12 @@ async function main() {
         }
     }
     const tVI = step1.tables.find((item: any) => item.officialNumber === "5.1.VI");
-    tVI.columnWidths = [17, 38, 15, 15, 15];
+    tVI.columnWidths = [14, 28, 19, 19, 20];
     tVI.headers[0][1] = cell("Gruppo di azioni\n(Tab. 5.1.IV)", { latex: "\\begin{gathered}\\text{Gruppo di azioni}\\\\\\text{(Tab. 5.1.IV)}\\end{gathered}", align: "center" });
-    tVI.headers[0][2] = cell("Coefficiente Ψ0\ndi combinazione", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_0\\\\\\text{di combinazione}\\end{gathered}", align: "center" });
-    tVI.headers[0][3] = cell("Coefficiente Ψ1\n(valori frequenti)", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_1\\\\\\text{(valori frequenti)}\\end{gathered}", align: "center" });
-    tVI.headers[0][4] = cell("Coefficiente Ψ2\n(valori quasi\npermanenti)", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_2\\\\\\text{(valori quasi}\\\\\\text{permanenti)}\\end{gathered}", align: "center" });
+    tVI.headers[0][2] = cell("Coefficiente\nΨ0 di combi-\nnazione", { latex: "\\begin{gathered}\\text{Coefficiente}\\\\\\psi_0\\text{ di combi-}\\\\\\text{nazione}\\end{gathered}", align: "center" });
+    tVI.headers[0][3] = cell("Coefficiente\nΨ1 (valori\nfrequenti)", { latex: "\\begin{gathered}\\text{Coefficiente}\\\\\\psi_1\\text{ (valori}\\\\\\text{frequenti)}\\end{gathered}", align: "center" });
+    tVI.headers[0][4] = cell("Coefficiente\nΨ2 (valori quasi\npermanenti)", { latex: "\\begin{gathered}\\text{Coefficiente}\\\\\\psi_2\\text{ (valori quasi}\\\\\\text{permanenti)}\\end{gathered}", align: "center" });
+    tVI.rows[0][0].text = "Azioni da\ntraffico\n(Tab. 5.1.IV)";
     if (!tVI.rows[0][0].rowSpan) {
         for (const [start, length] of [[0, 8], [8, 3], [11, 2]] as const) {
             tVI.rows[start][0].rowSpan = length;
@@ -326,6 +330,9 @@ async function main() {
     tVIII.rows.forEach((row: any[], index: number) => {
         const [x, y, width, height] = viii[index]!;
         Object.assign(row[0], tableImage(`tab5.1.viii-vehicle-${index + 1}.png`, `Sagoma del veicolo equivalente ${index + 1}`, x, y, width, height));
+        const tyreCell = row[1];
+        const tyreLines = String(tyreCell.text ?? "").split("\n");
+        if (tyreLines.length > 1) tyreCell.latex = `\\begin{gathered}${tyreLines.map((line: string) => `\\text{${line}}`).join("\\\\")}\\end{gathered}`;
     });
     const tIX = step2.tables.find((item: any) => item.officialNumber === "5.1.IX");
     const ix = [[155, 128, 210, 78], [155, 208, 210, 85], [155, 298, 210, 75]] as const;
@@ -360,7 +367,7 @@ async function main() {
     if (t52IIb.headers.length === 1) {
         t52IIb.headers = [
             [
-                cell("Valore di α", { latex: "\\text{Valore di }\\alpha", rowSpan: 2, align: "center" }),
+                cell("Valore\ndi\nα", { latex: "\\begin{gathered}\\text{Valore}\\\\\\text{di}\\\\\\alpha\\end{gathered}", rowSpan: 2, align: "center" }),
                 cell("Massima velo-\ncità della linea\n[km/h]", { rowSpan: 2, align: "center" }),
                 cell("Azione centrifuga basata su", { colSpan: 4, align: "center" }),
                 cell("carico verticale\nassociato", { rowSpan: 2, align: "center" }),
@@ -373,6 +380,7 @@ async function main() {
             ],
         ];
     }
+    t52IIb.headers[0][0] = cell("Valore\ndi\nα", { latex: "\\begin{gathered}\\text{Valore}\\\\\\text{di}\\\\\\alpha\\end{gathered}", rowSpan: 2, align: "center" });
     if (!t52IIb.rows[0][0].rowSpan) {
         t52IIb.rows[0][0].rowSpan = 2;
         t52IIb.rows[0][6].rowSpan = 2;
@@ -414,6 +422,7 @@ async function main() {
         t52III.rows[4].splice(0, 1);
         t52III.rows[5].splice(0, 1);
     }
+    t52III.columnWidths = [12, 12, 30, 30, 16];
     center(t52III);
     superscriptNotes(t52III);
     inlineMathNotes(t52III);
@@ -520,9 +529,15 @@ async function main() {
     fixCatenarySpacing(catenaryUnit);
     await writeJson(join(unitRoot, "5.2.2.9.1.json"), catenaryUnit);
 
-    for (const figure of step1.figures) if (figure.officialNumber === "5.1.3.b") {
-        figure.region = { coordinateSystem: "pdf-points-top-left", x: 335, y: 455, width: 125, height: 80 };
-        figure.sha256 = sha256(await readFile(join(figureRoot, "fig5.1.3.b.png")));
+    for (const figure of step1.figures) {
+        const regions: Record<string, [number, number, number, number]> = {
+            "5.1.3.a": [149.114, 455, 185.886, 109.852],
+            "5.1.3.b": [335, 455, 125, 80],
+        };
+        const region = regions[figure.officialNumber];
+        if (!region) continue;
+        figure.region = { coordinateSystem: "pdf-points-top-left", x: region[0], y: region[1], width: region[2], height: region[3] };
+        figure.sha256 = sha256(await readFile(join(figureRoot, figure.imagePath.split("/").at(-1))));
     }
     for (const figure of step2.figures) {
         const regions: Record<string, [number, number, number, number]> = { "5.1.4": [155, 510, 290, 110], "5.2.5": [235, 305, 150, 110], "5.2.6": [235, 480, 150, 145] };

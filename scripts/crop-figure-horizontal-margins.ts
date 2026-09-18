@@ -23,6 +23,9 @@ const MANUAL_CROP_BOUNDS = new Map<string, { left?: number; right?: number; top?
     // The source crop contains the preceding prose line at x=0. These limits
     // retain the complete C4.2.4 drawing and exclude that non-figure text.
     ["urn:structural-codes:it:asset:figure:circ2019:c4.2.4", { left: 300, right: 766 }],
+    // The source crop includes the empty left side of the adjacent figure;
+    // retain the complete 5.1.3.a drawing, including the top dimension b.
+    ["urn:structural-codes:it:asset:figure:ntc2018:5.1.3.a", { left: 309 }],
     // The source crop begins inside the preceding prose column; the drawing
     // starts after this verified left boundary.
     ["urn:structural-codes:it:asset:figure:ntc2018:5.1.3.b", { left: 105 }],
@@ -347,8 +350,12 @@ async function main(): Promise<void> {
         throw new Error(`documento non valido: ${String(document)}`);
     }
     const pages = parsePages(typeof args.get("--pages") === "string" ? args.get("--pages") as string : undefined);
+    const figureId = args.get("--figure-id");
     const records = (await loadFigureRecords(document as Document | undefined))
-        .filter((record) => TARGET_FIGURE_IDS.has(record.figure.id) && inScope(record.figure, pages));
+        .filter((record) => TARGET_FIGURE_IDS.has(record.figure.id)
+            && (figureId === undefined || record.figure.id === figureId)
+            && inScope(record.figure, pages));
+    if (figureId !== undefined && records.length === 0) throw new Error(`figura non trovata: ${figureId}`);
     const foundIds = new Set(records.map((record) => record.figure.id));
     const missingIds = [...TARGET_FIGURE_IDS].filter((id) => !foundIds.has(id) && pages === undefined);
     if (missingIds.length > 0) throw new Error(`asset candidati mancanti nei manifest: ${missingIds.join(", ")}`);

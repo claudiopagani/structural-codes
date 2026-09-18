@@ -93,6 +93,19 @@ test("NTC pagine 162–171 conserva cinque tabelle con matematica strutturata", 
     const traffic = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.X");
     assert.deepEqual(traffic.rows.map((row: Array<{ latex: string }>) => row.at(1)?.latex), ["2{,}0\\times 10^6", "0{,}5\\times 10^6", "0{,}125\\times 10^6", "0{,}05\\times 10^6"]);
 
+    const equivalentVehicles = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.VIII");
+    assert.equal(equivalentVehicles.rows[1][1].latex, "\\begin{gathered}\\text{A}\\\\\\text{B}\\\\\\text{B}\\end{gathered}");
+    assert.equal(equivalentVehicles.rows[4][1].latex, "\\begin{gathered}\\text{A}\\\\\\text{B}\\\\\\text{C}\\\\\\text{C}\\\\\\text{C}\\end{gathered}");
+
+    const centrifugal = await json("corpus/assets/ntc2018/5.1-step3.json");
+    const centrifugalTable = centrifugal.tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.II.b");
+    assert.equal(centrifugalTable.headers[0][0].text, "Valore\ndi\nα");
+    assert.equal(centrifugalTable.headers[0][0].latex, "\\begin{gathered}\\text{Valore}\\\\\\text{di}\\\\\\alpha\\end{gathered}");
+    assert.deepEqual(centrifugalTable.columnWidths, [7, 9, 8, 8, 8, 32, 28]);
+
+    const trains = centrifugal.tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.III");
+    assert.deepEqual(trains.columnWidths, [12, 12, 30, 30, 16]);
+
     const sw = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.2.I");
     assert.deepEqual(sw.headers[0].slice(1).map((cell: { latex: string }) => cell.latex), ["q_{vk}\\;[\\mathrm{kN/m}]", "a\\;[\\mathrm{m}]", "c\\;[\\mathrm{m}]"]);
     assert.deepEqual(sw.rows.map((row: Array<{ latex?: string }>) => row.slice(1).map((cell) => cell.latex)), [["133", "15{,}0", "5{,}3"], ["150", "25{,}0", "7{,}0"]]);

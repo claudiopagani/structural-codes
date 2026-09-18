@@ -69,7 +69,14 @@ test("Circolare C5 rende q_1 e q_8 in KaTeX nei titoli e non etichetta la tabell
     assert.deepEqual(await titleMath("C5.1.3.10"), { kind: "math", value: "q_8", latex: "q_{8}" });
 
     const manifest = await json("corpus/assets/circ2019/C5-step2.json") as {
-        tables: Array<{ id: string; caption: string | null; hideLabel?: boolean; columnWidths?: number[]; notes: string[] }>;
+        tables: Array<{
+            id: string;
+            caption: string | null;
+            hideLabel?: boolean;
+            columnWidths?: number[];
+            notes: string[];
+            rows?: Array<Array<{ text: string; inline?: Array<{ kind: string; value: string; latex?: string }> }>>;
+        }>;
     };
     const thermalTable = manifest.tables.find(({ id }) => id.endsWith(":c5.delta-t0"));
     assert.ok(thermalTable);
@@ -77,4 +84,11 @@ test("Circolare C5 rende q_1 e q_8 in KaTeX nei titoli e non etichetta la tabell
     assert.equal(thermalTable.hideLabel, true);
     assert.deepEqual(thermalTable.columnWidths, [60, 40]);
     assert.deepEqual(thermalTable.notes, []);
+    assert.equal(thermalTable.rows?.[0]?.[0]?.inline?.[1]?.value, " per strutture di c.a., c.a.p. e acciaio/cls");
+    assert.equal(thermalTable.rows?.[1]?.[0]?.inline?.[1]?.value, " per strutture di acciaio");
+    for (const row of thermalTable.rows ?? []) {
+        const firstCell = row[0];
+        if (!firstCell) continue;
+        assert.equal(firstCell.inline?.map((segment) => segment.value).join(""), firstCell.text);
+    }
 });

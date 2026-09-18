@@ -412,15 +412,23 @@ const figureMeta = async (number: string, unitNumber: string, pdfPage: number, c
 });
 
 const formulaMeta = (number: string, unitNumber: string, pdfPage: number, latex: string): any => ({ id: asset("formula", number), unitId: uid(unitNumber), officialNumber: `C5.${number}`, pdfPage, latex });
+const thermalFirstColumnCell = (temperature: string, structure: string) => ({
+    text: `ΔT_0 = ${temperature} °C ${structure}`,
+    inline: [
+        { kind: "math", value: `ΔT_0 = ${temperature} °C`, latex: `\\Delta T_0=${temperature}\\,^{\\circ}\\mathrm{C}` },
+        { kind: "text", value: ` ${structure}` },
+    ],
+});
+
 const tableAsset = {
     id: asset("table", "delta-t0"), unitId: uid("C5.1.4.5"), officialNumber: null, pdfPage: 172, caption: null, hideLabel: true, columnCount: 2, columnWidths: [60, 40], headers: [],
     rows: [
-        [{ text: "ΔT_0 = 5 °C per strutture di c.a., c.a.p. e acciaio/cls", latex: "\\Delta T_0=5\\,^{\\circ}\\mathrm{C}" }, { text: "Installazione con la misurazione accurata della temperatura della struttura e con preregolazione per effetti termici a fine costruzione.", rowSpan: 2 }],
-        [{ text: "ΔT_0 = 5 °C per strutture di acciaio", latex: "\\Delta T_0=5\\,^{\\circ}\\mathrm{C}" }],
-        [{ text: "ΔT_0 = 10 °C per strutture di c.a., c.a.p. e acciaio/cls", latex: "\\Delta T_0=10\\,^{\\circ}\\mathrm{C}" }, { text: "Installazione con la stima della temperatura della struttura e con preregolazione per effetti termici a fine costruzione. Per stima della temperatura della struttura si intende la valutazione secondo quanto indicato nel Capitolo 6 delle UNI EN 1991-1-5 con una accurata misura della temperatura dell’aria esterna.", rowSpan: 2 }],
-        [{ text: "ΔT_0 = 15 °C per strutture di acciaio", latex: "\\Delta T_0=15\\,^{\\circ}\\mathrm{C}" }],
-        [{ text: "ΔT_0 = 20 °C per strutture di c.a., c.a.p. e acciaio/cls", latex: "\\Delta T_0=20\\,^{\\circ}\\mathrm{C}" }, { text: "Installazione senza alcuna preregolazione per effetti termici." , rowSpan: 2 }],
-        [{ text: "ΔT_0 = 30 °C per strutture di acciaio", latex: "\\Delta T_0=30\\,^{\\circ}\\mathrm{C}" }],
+        [thermalFirstColumnCell("5", "per strutture di c.a., c.a.p. e acciaio/cls"), { text: "Installazione con la misurazione accurata della temperatura della struttura e con preregolazione per effetti termici a fine costruzione.", rowSpan: 2 }],
+        [thermalFirstColumnCell("5", "per strutture di acciaio")],
+        [thermalFirstColumnCell("10", "per strutture di c.a., c.a.p. e acciaio/cls"), { text: "Installazione con la stima della temperatura della struttura e con preregolazione per effetti termici a fine costruzione. Per stima della temperatura della struttura si intende la valutazione secondo quanto indicato nel Capitolo 6 delle UNI EN 1991-1-5 con una accurata misura della temperatura dell’aria esterna.", rowSpan: 2 }],
+        [thermalFirstColumnCell("15", "per strutture di acciaio")],
+        [thermalFirstColumnCell("20", "per strutture di c.a., c.a.p. e acciaio/cls"), { text: "Installazione senza alcuna preregolazione per effetti termici." , rowSpan: 2 }],
+        [thermalFirstColumnCell("30", "per strutture di acciaio")],
     ],
     notes: [],
 };
