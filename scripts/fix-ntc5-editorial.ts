@@ -12,6 +12,11 @@ const sha256 = (value: string | Buffer) => createHash("sha256").update(value).di
 const readJson = async (path: string) => JSON.parse(await readFile(path, "utf8"));
 const writeJson = async (path: string, value: unknown) => writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
+const setInline = (item: any, inline: any[]) => {
+    item.text = inline.map((segment) => segment.value).join("");
+    item.inline = inline;
+    delete item.latex;
+};
 
 function center(table: any) {
     for (const row of [...table.headers, ...table.rows, ...(table.footerRows ?? [])]) for (const item of row) item.align = "center";
@@ -200,13 +205,48 @@ function fixCatenarySpacing(record: any) {
 
 function superscriptNotes(table: any) {
     for (const row of [...table.headers, ...table.rows, ...(table.footerRows ?? [])]) for (const item of row) {
-        const single = item.text.match(/^(\d+[,.]\d+) \((\d+)\)$/u);
-        const double = item.text.match(/^\((\d+)\) \((\d+)\)$/u);
-        const note = item.text.match(/^\((\d+)\)$/u);
+        const text = item.text ?? "";
+        const single = text.match(/^(\d+[,.]\d+) \((\d+)\)$/u);
+        const double = text.match(/^\((\d+)\) \((\d+)\)$/u);
+        const note = text.match(/^\((\d+)\)$/u);
         if (single) item.latex = `${single[1].replace(",", "{,}")}^{(${single[2]})}`;
         else if (double) item.latex = `{}^{(${double[1]})}\\,{}^{(${double[2]})}`;
         else if (note) item.latex = `{}^{(${note[1]})}`;
+        else if (/\(\d+\)/u.test(text)) {
+            const inline: any[] = [];
+            let cursor = 0;
+            for (const match of text.matchAll(/\(\d+\)/gu)) {
+                const start = match.index ?? 0;
+                if (start > cursor) inline.push({ kind: "text", value: text.slice(cursor, start) });
+                inline.push({ kind: "math", value: match[0], latex: `^{${match[0]}}` });
+                cursor = start + match[0].length;
+            }
+            if (cursor < text.length) inline.push({ kind: "text", value: text.slice(cursor) });
+            setInline(item, inline);
+        }
     }
+}
+
+function inlineMathNotes(table: any) {
+    table.notesInline = (table.notes ?? []).map((text: string) => {
+        const inline: any[] = [];
+        const label = text.match(/^\((\d+)\)\s*/u);
+        let cursor = 0;
+        if (label) {
+            inline.push({ kind: "math", value: label[0].trim(), latex: `^{(${label[1]})}` });
+            if (label[0].length > label[0].trim().length) inline.push({ kind: "text", value: " " });
+            cursor = label[0].length;
+        }
+        for (const match of text.matchAll(/Ψ([0-2])?/gu)) {
+            const start = match.index ?? 0;
+            if (start > cursor) inline.push({ kind: "text", value: text.slice(cursor, start) });
+            const subscript = match[1] ? `_${match[1]}` : "";
+            inline.push({ kind: "math", value: match[0], latex: `\\psi${subscript}` });
+            cursor = start + match[0].length;
+        }
+        if (cursor < text.length) inline.push({ kind: "text", value: text.slice(cursor) });
+        return inline.length ? inline : [{ kind: "text", value: text }];
+    });
 }
 
 async function main() {
@@ -223,12 +263,28 @@ async function main() {
         cell("Larghezza della zona\nrimanente [m]", { latex: "\\begin{gathered}\\text{Larghezza della zona}\\\\\\text{rimanente }[\\mathrm{m}]\\end{gathered}", align: "center" }),
     ];
     const tIV = step1.tables.find((item: any) => item.officialNumber === "5.1.IV");
+    tIV.columnWidths = [11, 15, 11, 14, 13, 13, 23];
     tIV.headers = [
         [cell("", { rowSpan: 2, header: false, align: "center" }), cell("Carichi sulla superficie carrabile", { colSpan: 5, align: "center" }), cell("Carichi su marciapiedi e piste ciclabili non\nsormontabili", { align: "center" })],
         [cell("Carichi verticali", { colSpan: 3, align: "center" }), cell("Carichi orizzontali", { colSpan: 2, align: "center" }), cell("Carichi verticali", { align: "center" })],
         [cell("Gruppo di azioni", { align: "center" }), cell("Modello principale (schemi di carico 1, 2, 3, 4 e 6)", { align: "center" }), cell("Veicoli speciali", { align: "center" }), cell("Folla (Schema di carico 5)", { align: "center" }), cell("Frenatura", { align: "center" }), cell("Forza centrifuga", { align: "center" }), cell("Carico uniformemente distribuito", { align: "center" })],
     ];
-    for (const [row, column] of [[1, 4], [2, 5], [3, 6], [4, 3], [4, 6]] as const) tIV.rows[row][column].shade = "gray";
+    tIV.rows[0][1].text = "Valore\ncaratteristico";
+    tIV.rows[1][1].text = "Valore\nfrequente";
+    tIV.rows[2][1].text = "Valore\nfrequente";
+    tIV.rows[1][4].text = "Valore\ncaratteristico";
+    tIV.rows[2][5].text = "Valore\ncaratteristico";
+    tIV.rows[5][1].text = "Da definirsi\nper il singolo\nprogetto";
+    tIV.rows[5][2].text = "Valore caratteristico\no nominale";
+    setInline(tIV.rows[0][6], [
+        { kind: "text", value: "Schema di carico 5 con valore di\ncombinazione " },
+        { kind: "math", value: "2,5 kN/m²", latex: "2{,}5\\,\\mathrm{kN/m^2}" },
+    ]);
+    for (const cellRef of [tIV.rows[3][6], tIV.rows[4][3], tIV.rows[4][6]]) setInline(cellRef, [
+        { kind: "text", value: "Schema di carico 5 con valore\ncaratteristico " },
+        { kind: "math", value: "5,0 kN/m²", latex: "5{,}0\\,\\mathrm{kN/m^2}" },
+    ]);
+    for (const [row, column] of [[0, 1], [1, 4], [2, 5], [3, 6], [4, 1], [4, 3], [4, 6], [5, 1], [5, 2]] as const) tIV.rows[row][column].shade = "gray";
     const tV = step1.tables.find((item: any) => item.officialNumber === "5.1.V");
     if (!tV.rows[0][0].rowSpan) {
         for (let index = 0; index < tV.rows.length; index += 2) {
@@ -239,6 +295,11 @@ async function main() {
         }
     }
     const tVI = step1.tables.find((item: any) => item.officialNumber === "5.1.VI");
+    tVI.columnWidths = [17, 38, 15, 15, 15];
+    tVI.headers[0][1] = cell("Gruppo di azioni\n(Tab. 5.1.IV)", { latex: "\\begin{gathered}\\text{Gruppo di azioni}\\\\\\text{(Tab. 5.1.IV)}\\end{gathered}", align: "center" });
+    tVI.headers[0][2] = cell("Coefficiente Ψ0\ndi combinazione", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_0\\\\\\text{di combinazione}\\end{gathered}", align: "center" });
+    tVI.headers[0][3] = cell("Coefficiente Ψ1\n(valori frequenti)", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_1\\\\\\text{(valori frequenti)}\\end{gathered}", align: "center" });
+    tVI.headers[0][4] = cell("Coefficiente Ψ2\n(valori quasi\npermanenti)", { latex: "\\begin{gathered}\\text{Coefficiente }\\psi_2\\\\\\text{(valori quasi}\\\\\\text{permanenti)}\\end{gathered}", align: "center" });
     if (!tVI.rows[0][0].rowSpan) {
         for (const [start, length] of [[0, 8], [8, 3], [11, 2]] as const) {
             tVI.rows[start][0].rowSpan = length;
@@ -247,8 +308,9 @@ async function main() {
     }
 
     const tVII = step2.tables.find((item: any) => item.officialNumber === "5.1.VII");
-    tVII.headers[0][1].text = "Distanza tra\ngli assi (m)";
-    tVII.headers[0][2].text = "Carico frequente\nper asse (kN)";
+    tVII.columnWidths = [26, 24, 30, 20];
+    tVII.headers[0][1] = cell("Distanza tra\ngli assi (m)", { latex: "\\begin{gathered}\\text{Distanza tra}\\\\\\text{gli assi }(\\mathrm{m})\\end{gathered}", align: "center" });
+    tVII.headers[0][2] = cell("Carico frequente\nper asse (kN)", { latex: "\\begin{gathered}\\text{Carico frequente}\\\\\\text{per asse }(\\mathrm{kN})\\end{gathered}", align: "center" });
     tVII.headers[0][3].text = "Tipo di ruota\n(Tab. 5.1.IX)";
     const vii = [[100, 135, 80, 32], [100, 177, 85, 37], [86, 220, 100, 42], [86, 270, 100, 38], [78, 312, 115, 42]] as const;
     tVII.rows.forEach((row: any[], index: number) => {
@@ -260,7 +322,7 @@ async function main() {
         [cell("", { colSpan: 4 }), cell("COMPOSIZIONE DEL TRAFFICO", { colSpan: 3 })],
         [cell("Sagoma del veicolo"), cell("Tipo di\npneumatico\n(Tab. 5.1.IX)", { verticalText: true }), cell("Interassi [m]", { verticalText: true }), cell("Valori equi-\nvalenti dei ca-\nrichi per asse\n[kN]", { verticalText: true }), cell("Lunga\npercorrenza", { verticalText: true }), cell("Media\npercorrenza", { verticalText: true }), cell("Traffico\nlocale", { verticalText: true })],
     ];
-    const viii = [[98, 285, 60, 32], [95, 333, 70, 35], [88, 385, 80, 45], [86, 445, 80, 40], [80, 505, 90, 45]] as const;
+    const viii = [[90, 289, 85, 38], [95, 333, 70, 35], [88, 385, 80, 45], [86, 445, 80, 40], [80, 505, 90, 45]] as const;
     tVIII.rows.forEach((row: any[], index: number) => {
         const [x, y, width, height] = viii[index]!;
         Object.assign(row[0], tableImage(`tab5.1.viii-vehicle-${index + 1}.png`, `Sagoma del veicolo equivalente ${index + 1}`, x, y, width, height));
@@ -275,7 +337,9 @@ async function main() {
     tVII.notes = [];
     tVIII.notes = [];
     const tX = step2.tables.find((item: any) => item.officialNumber === "5.1.X");
+    tX.columnWidths = [57, 43];
     tX.headers[0][1].text = "Flusso annuo di veicoli di\npeso superiore a 100 kN\nsulla corsia di marcia lenta";
+    tX.headers[0][1].latex = "\\begin{gathered}\\text{Flusso annuo di veicoli di}\\\\\\text{peso superiore a }100\\,\\mathrm{kN}\\\\\\text{sulla corsia di marcia lenta}\\end{gathered}";
     tX.rows[0][0].text = "1 - Strade ed autostrade con 2 o più corsie per senso di marcia,\ncaratterizzate da intenso traffico pesante";
     tX.rows[1][0].text = "2 - Strade ed autostrade caratterizzate da traffico pesante di\nmedia intensità";
     tX.rows[2][0].text = "3 - Strade principali caratterizzate da traffico pesante di mo-\ndesta intensità";
@@ -292,6 +356,7 @@ async function main() {
     }
 
     const t52IIb = step3.tables.find((item: any) => item.officialNumber === "5.2.II.b");
+    t52IIb.columnWidths = [7, 9, 8, 8, 8, 32, 28];
     if (t52IIb.headers.length === 1) {
         t52IIb.headers = [
             [
@@ -350,6 +415,8 @@ async function main() {
         t52III.rows[5].splice(0, 1);
     }
     center(t52III);
+    superscriptNotes(t52III);
+    inlineMathNotes(t52III);
 
     const step4 = await readJson(join(assetRoot, "5.1-step4.json"));
     const t52IV = step4.tables.find((item: any) => item.officialNumber === "5.2.IV");
@@ -371,6 +438,8 @@ async function main() {
     ];
     for (const [row, column] of [[0, 1], [1, 2], [2, 3]] as const) t52IV.rows[row][column].shade = "gray";
     center(t52IV);
+    superscriptNotes(t52IV);
+    inlineMathNotes(t52IV);
 
     const t52V = step4.tables.find((item: any) => item.officialNumber === "5.2.V");
     t52V.headers = [[cell("", { header: false, align: "center" }), cell("Coefficiente", { colSpan: 2, align: "center" }), cell("EQU(1)", { align: "center" }), cell("A1", { align: "center" }), cell("A2", { align: "center" })]];
@@ -384,6 +453,7 @@ async function main() {
     }
     center(t52V);
     superscriptNotes(t52V);
+    inlineMathNotes(t52V);
 
     const t52VI = step4.tables.find((item: any) => item.officialNumber === "5.2.VI");
     if (t52VI.columnCount === 4) {
@@ -399,6 +469,8 @@ async function main() {
     }
     center(t52VI);
     superscriptNotes(t52VI);
+    t52VI.columnWidths = [18, 42, 13, 13, 14];
+    inlineMathNotes(t52VI);
 
     const t52VII = step4.tables.find((item: any) => item.officialNumber === "5.2.VII");
     if (t52VII.columnCount === 4) {
@@ -410,12 +482,15 @@ async function main() {
     if (t52VII.rows[0][0].rowSpan && t52VII.rows[1]?.length === 5) for (let index = 1; index < t52VII.rows.length; index += 1) t52VII.rows[index].splice(0, 1);
     center(t52VII);
     superscriptNotes(t52VII);
+    t52VII.columnWidths = [18, 47, 12, 12, 11];
+    inlineMathNotes(t52VII);
 
     const t52VIII = step4.tables.find((item: any) => item.officialNumber === "5.2.VIII");
     t52VIII.headers = [
         [cell("Velocità\n[km/h]", { rowSpan: 2, align: "center" }), cell("Variazione\nangolare massima", { rowSpan: 2, align: "center" }), cell("Raggio minimo di curvatura", { colSpan: 2, align: "center" })],
         [cell("Singola campata", { align: "center" }), cell("Più campate", { align: "center" })],
     ];
+    t52VIII.columnWidths = [15, 25, 30, 30];
     center(t52VIII);
 
     for (const number of ["5.1.3.3", "5.1.3.4", "5.1.3.5", "5.1.3.6", "5.1.3.7", "5.1.3.8", "5.1.3.9", "5.1.3.10", "5.1.3.11"]) {
@@ -446,11 +521,11 @@ async function main() {
     await writeJson(join(unitRoot, "5.2.2.9.1.json"), catenaryUnit);
 
     for (const figure of step1.figures) if (figure.officialNumber === "5.1.3.b") {
-        figure.region = { coordinateSystem: "pdf-points-top-left", x: 325, y: 455, width: 130, height: 80 };
+        figure.region = { coordinateSystem: "pdf-points-top-left", x: 335, y: 455, width: 125, height: 80 };
         figure.sha256 = sha256(await readFile(join(figureRoot, "fig5.1.3.b.png")));
     }
     for (const figure of step2.figures) {
-        const regions: Record<string, [number, number, number, number]> = { "5.1.4": [155, 510, 290, 110], "5.2.5": [235, 305, 150, 110], "5.2.6": [235, 490, 150, 145] };
+        const regions: Record<string, [number, number, number, number]> = { "5.1.4": [155, 510, 290, 110], "5.2.5": [235, 305, 150, 110], "5.2.6": [235, 480, 150, 145] };
         const region = regions[figure.officialNumber];
         if (!region) continue;
         figure.region = { coordinateSystem: "pdf-points-top-left", x: region[0], y: region[1], width: region[2], height: region[3] };

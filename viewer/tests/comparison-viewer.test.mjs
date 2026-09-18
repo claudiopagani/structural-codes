@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdir, readFile } from "node:fs/promises";
+import { groupAlignedLabelBlocks, hasLeadingEmphasisLabel } from "../package-dist/CorpusContent.js";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
 async function render(pathname) {
@@ -9,6 +10,81 @@ async function render(pathname) {
   const { default: handler } = await import(serverUrl.href);
   return handler(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }));
 }
+
+function schemaLoadBlock(number) {
+  return {
+    blockId: `schema-${number}`,
+    kind: "list-item",
+    listMarker: "none",
+    text: {
+      normalized: `Schema di Carico ${number}: descrizione`,
+      inline: [
+        { kind: "em", value: `Schema di Carico ${number}:` },
+        { kind: "text", value: " descrizione" },
+      ],
+    },
+  };
+}
+
+test("allinea le descrizioni degli schemi di carico dopo l'etichetta", () => {
+  const blocks = [1, 2, 3, 4, 5, 6].map(schemaLoadBlock);
+  assert.equal(hasLeadingEmphasisLabel(blocks[0]), true);
+  const [group] = groupAlignedLabelBlocks(blocks);
+  assert.equal(group.kind, "label-list");
+  assert.equal(group.blocks.length, 6);
+});
+
+test("mantiene upright l'unità m nella didascalia della Fig. 5.1.2", async () => {
+  const manifest = JSON.parse(await readFile(new URL("../../corpus/assets/ntc2018/5.1-step1.json", import.meta.url), "utf8"));
+  const figure = manifest.figures.find(({ officialNumber }) => officialNumber === "5.1.2");
+  assert.deepEqual(figure?.captionInline, [
+    { kind: "text", value: "Fig. 5.1.2 - " },
+    { kind: "em", value: "Schemi di carico 1 – 5 (dimensioni in " },
+    { kind: "math", value: "m", latex: "\\mathrm{m}" },
+    { kind: "em", value: ")" },
+  ]);
+});
+
+test("rende in KaTeX i simboli q dei titoli 5.1.3.3–5.1.3.11", async () => {
+  for (let index = 1; index <= 9; index += 1) {
+    const number = `5.1.3.${index + 2}`;
+    const unit = JSON.parse(await readFile(new URL(`../../corpus/units/ntc2018/${number}.json`, import.meta.url), "utf8"));
+    const math = unit.blocks[0]?.text?.inline?.at(-1);
+    assert.deepEqual(math, { kind: "math", value: `q${index}`, latex: `q_{${index}}` });
+  }
+});
+
+test("mantiene i crop corretti delle figure e il layout editoriale delle tabelle NTC 5.1", async () => {
+  const [step1, step2] = await Promise.all([
+    readFile(new URL("../../corpus/assets/ntc2018/5.1-step1.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../corpus/assets/ntc2018/5.1-step2.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+  const figure = step1.figures.find(({ officialNumber }) => officialNumber === "5.1.3.b");
+  assert.deepEqual(figure?.region, { coordinateSystem: "pdf-points-top-left", x: 335, y: 455, width: 125, height: 80 });
+  const table = step1.tables.find(({ officialNumber }) => officialNumber === "5.1.IV");
+  assert.deepEqual(table?.columnWidths, [11, 15, 11, 14, 13, 13, 23]);
+  assert.equal(table?.rows[0][1].shade, "gray");
+  assert.equal(table?.rows[5][2].shade, "gray");
+  const tableVII = step2.tables.find(({ officialNumber }) => officialNumber === "5.1.VII");
+  assert.deepEqual(tableVII?.columnWidths, [26, 24, 30, 20]);
+});
+
+test("rende apici e simboli Ψ nelle note delle tabelle NTC 5.2", async () => {
+  const [step3, step4] = await Promise.all([
+    readFile(new URL("../../corpus/assets/ntc2018/5.1-step3.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../corpus/assets/ntc2018/5.1-step4.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+  const tableIII = step3.tables.find(({ officialNumber }) => officialNumber === "5.2.III");
+  const tableIV = step4.tables.find(({ officialNumber }) => officialNumber === "5.2.IV");
+  const tableV = step4.tables.find(({ officialNumber }) => officialNumber === "5.2.V");
+  const tableVI = step4.tables.find(({ officialNumber }) => officialNumber === "5.2.VI");
+  const tableVII = step4.tables.find(({ officialNumber }) => officialNumber === "5.2.VII");
+  assert.equal(tableIII?.notesInline[0][0].latex, "^{(1)}");
+  assert.equal(tableIV?.notesInline[0][0].latex, "^{(1)}");
+  assert.equal(tableV?.notesInline[0][0].latex, "^{(1)}");
+  assert.equal(tableVI?.notesInline[1].some(({ latex }) => latex === "\\psi_0"), true);
+  assert.equal(tableVII?.notesInline[2].some(({ latex }) => latex === "\\psi_0"), true);
+});
 
 test("la route principale espone solo il viewer comparato", async () => {
   const response = await render("/");

@@ -687,6 +687,15 @@
           "kind": "em",
           "value": "Parametri per determinazione della forza centrifuga"
         }
+      ],
+      "columnWidths": [
+        7,
+        9,
+        8,
+        8,
+        8,
+        32,
+        28
       ]
     },
     {
@@ -716,17 +725,50 @@
           {
             "text": "Traffico pesante(2)",
             "rowSpan": 2,
-            "align": "center"
+            "align": "center",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Traffico pesante"
+              },
+              {
+                "kind": "math",
+                "value": "(2)",
+                "latex": "^{(2)}"
+              }
+            ]
           }
         ],
         [
           {
             "text": "caso a(1)",
-            "align": "center"
+            "align": "center",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "caso a"
+              },
+              {
+                "kind": "math",
+                "value": "(1)",
+                "latex": "^{(1)}"
+              }
+            ]
           },
           {
             "text": "caso b(1)",
-            "align": "center"
+            "align": "center",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "caso b"
+              },
+              {
+                "kind": "math",
+                "value": "(1)",
+                "latex": "^{(1)}"
+              }
+            ]
           }
         ]
       ],
@@ -881,6 +923,38 @@
           "kind": "em",
           "value": "Carichi mobili in funzione del numero di binari presenti sul ponte"
         }
+      ],
+      "notesInline": [
+        [
+          {
+            "kind": "math",
+            "value": "(1)",
+            "latex": "^{(1)}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "text",
+            "value": "LM71 “+” SW/0 significa considerare il più sfavorevole fra i treni LM 71, SW/0."
+          }
+        ],
+        [
+          {
+            "kind": "math",
+            "value": "(2)",
+            "latex": "^{(2)}"
+          },
+          {
+            "kind": "text",
+            "value": " "
+          },
+          {
+            "kind": "text",
+            "value": "Salvo i casi in cui sia esplicitamente escluso."
+          }
+        ]
       ]
     }
   ],

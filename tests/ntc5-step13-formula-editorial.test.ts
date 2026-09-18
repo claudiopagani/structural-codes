@@ -101,7 +101,7 @@ test("NTC pagine 152–161 conserva le sei tabelle e la loro matematica", async 
     assert.equal(partial.rows[8][2].latex, "\\gamma_{\\varepsilon1}");
 
     const combinations = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.VI");
-    assert.deepEqual(combinations.headers[0].slice(2).map((cell: { latex: string }) => cell.latex), ["\\text{Coefficiente }\\psi_0\\text{ di combinazione}", "\\text{Coefficiente }\\psi_1\\text{ (valori frequenti)}", "\\text{Coefficiente }\\psi_2\\text{ (valori quasi permanenti)}"]);
+    assert.deepEqual(combinations.headers[0].slice(2).map((cell: { latex: string }) => cell.latex), ["\\begin{gathered}\\text{Coefficiente }\\psi_0\\\\\\text{di combinazione}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente }\\psi_1\\\\\\text{(valori frequenti)}\\end{gathered}", "\\begin{gathered}\\text{Coefficiente }\\psi_2\\\\\\text{(valori quasi}\\\\\\text{permanenti)}\\end{gathered}"]);
 });
 
 test("NTC pagine 152–161 usa i quattro crop ufficiali con hash verificabile", async () => {

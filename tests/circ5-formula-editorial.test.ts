@@ -57,3 +57,24 @@ test("Circolare C5 non trasforma in matematica le preposizioni d’arte e d’us
         }
     }
 });
+
+test("Circolare C5 rende q_1 e q_8 in KaTeX nei titoli e non etichetta la tabella ΔT_0", async () => {
+    const titleMath = async (unitNumber: string) => {
+        const unit = await json(`corpus/units/circ2019/${unitNumber.toLowerCase()}.json`) as {
+            blocks: Array<{ text?: { inline?: Array<{ kind: string; value?: string; latex?: string }> } }>;
+        };
+        return unit.blocks[0]?.text?.inline?.find((segment) => segment.kind === "math");
+    };
+    assert.deepEqual(await titleMath("C5.1.3.3"), { kind: "math", value: "q_1", latex: "q_{1}" });
+    assert.deepEqual(await titleMath("C5.1.3.10"), { kind: "math", value: "q_8", latex: "q_{8}" });
+
+    const manifest = await json("corpus/assets/circ2019/C5-step2.json") as {
+        tables: Array<{ id: string; caption: string | null; hideLabel?: boolean; columnWidths?: number[]; notes: string[] }>;
+    };
+    const thermalTable = manifest.tables.find(({ id }) => id.endsWith(":c5.delta-t0"));
+    assert.ok(thermalTable);
+    assert.equal(thermalTable.caption, null);
+    assert.equal(thermalTable.hideLabel, true);
+    assert.deepEqual(thermalTable.columnWidths, [60, 40]);
+    assert.deepEqual(thermalTable.notes, []);
+});

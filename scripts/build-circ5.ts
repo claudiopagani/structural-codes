@@ -50,7 +50,7 @@ const mathTerms: Array<[string, string]> = [
     ["ΔT_exp,k", "\\Delta T_{exp,k}"], ["ΔT_con,k", "\\Delta T_{con,k}"], ["T_e,max", "T_{e,max}"], ["T_e,min", "T_{e,min}"],
     ["Q_{sv1}", "Q_{sv1}"], ["Q_{sv2}", "Q_{sv2}"], ["Q_{1k}", "Q_{1k}"], ["γ_Q", "\\gamma_Q"], ["T_r", "T_r"],
     ["1/T_r", "1/T_r"], ["ΔT_0", "\\Delta T_0"], ["ΔT_exp", "\\Delta T_{exp}"], ["ΔT_con", "\\Delta T_{con}"],
-    ["σ_max", "\\sigma_{\\max}"], ["σ_min", "\\sigma_{\\min}"], ["Δσ", "\\Delta\\sigma"], ["q_8", "q_8"], ["q_1", "q_1"],
+    ["σ_max", "\\sigma_{\\max}"], ["σ_min", "\\sigma_{\\min}"], ["Δσ", "\\Delta\\sigma"], ["q_8", "q_{8}"], ["q_1", "q_{1}"],
     ["V_N", "V_N"], ["C_U", "C_U"], ["V_R", "V_R"], ["6÷7", "6\\div 7"], ["q_{f,r}", "q_{f,r}"],
     ["Q_sv1", "Q_{sv1}"], ["Q_sv2", "Q_{sv2}"], ["L", "L"], ["q", "q"], ["d", "d"], ["T_0", "T_0"],
 ];
@@ -413,7 +413,7 @@ const figureMeta = async (number: string, unitNumber: string, pdfPage: number, c
 
 const formulaMeta = (number: string, unitNumber: string, pdfPage: number, latex: string): any => ({ id: asset("formula", number), unitId: uid(unitNumber), officialNumber: `C5.${number}`, pdfPage, latex });
 const tableAsset = {
-    id: asset("table", "delta-t0"), unitId: uid("C5.1.4.5"), officialNumber: null, pdfPage: 172, caption: "Tabella non numerata relativa a ΔT_0", columnCount: 2, headers: [],
+    id: asset("table", "delta-t0"), unitId: uid("C5.1.4.5"), officialNumber: null, pdfPage: 172, caption: null, hideLabel: true, columnCount: 2, columnWidths: [60, 40], headers: [],
     rows: [
         [{ text: "ΔT_0 = 5 °C per strutture di c.a., c.a.p. e acciaio/cls", latex: "\\Delta T_0=5\\,^{\\circ}\\mathrm{C}" }, { text: "Installazione con la misurazione accurata della temperatura della struttura e con preregolazione per effetti termici a fine costruzione.", rowSpan: 2 }],
         [{ text: "ΔT_0 = 5 °C per strutture di acciaio", latex: "\\Delta T_0=5\\,^{\\circ}\\mathrm{C}" }],
@@ -422,7 +422,7 @@ const tableAsset = {
         [{ text: "ΔT_0 = 20 °C per strutture di c.a., c.a.p. e acciaio/cls", latex: "\\Delta T_0=20\\,^{\\circ}\\mathrm{C}" }, { text: "Installazione senza alcuna preregolazione per effetti termici." , rowSpan: 2 }],
         [{ text: "ΔT_0 = 30 °C per strutture di acciaio", latex: "\\Delta T_0=30\\,^{\\circ}\\mathrm{C}" }],
     ],
-    notes: ["Tabella non numerata, iniziata a pagina PDF 172 e continuata a pagina PDF 173; confronto cella per cella ancora obbligatorio."],
+    notes: [],
 };
 
 const formulas = [

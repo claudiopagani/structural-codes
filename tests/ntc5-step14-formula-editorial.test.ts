@@ -86,7 +86,7 @@ test("NTC pagine 162–171 conserva cinque tabelle con matematica strutturata", 
     assert.deepEqual(tables.map((table: { officialNumber: string }) => table.officialNumber).sort(), ["5.1.VII", "5.1.VIII", "5.1.IX", "5.1.X", "5.2.I"].sort());
 
     const frequent = tables.find((table: { officialNumber: string }) => table.officialNumber === "5.1.VII");
-    assert.equal(frequent.headers[0][1].latex, "\\text{Distanza tra gli assi }(\\mathrm{m})");
+    assert.equal(frequent.headers[0][1].latex, "\\begin{gathered}\\text{Distanza tra}\\\\\\text{gli assi }(\\mathrm{m})\\end{gathered}");
     assert.equal(frequent.rows[1][1].latex, "\\begin{gathered}4{,}20\\\\1{,}30\\end{gathered}");
     assert.equal(frequent.rows[2][2].latex, "\\begin{gathered}90\\\\180\\\\120\\\\120\\\\120\\end{gathered}");
 
