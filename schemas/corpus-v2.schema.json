@@ -564,6 +564,23 @@
                     ],
                     "properties": {
                         "kind": {
+                            "const": "strong-em"
+                        },
+                        "value": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "kind",
+                        "value"
+                    ],
+                    "properties": {
+                        "kind": {
                             "const": "em"
                         },
                         "value": {

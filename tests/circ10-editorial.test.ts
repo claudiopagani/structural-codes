@@ -60,6 +60,17 @@ test("Circolare C10 conserva testo introduttivo, sottotitoli, elenchi e matemati
             "Relazioni specialistiche",
         ],
     );
+    for (const title of [
+        "Relazione di calcolo strutturale",
+        "Relazione sui materiali",
+        "Elaborati grafici",
+        "Particolari costruttivi",
+        "Piano di manutenzione della parte strutturale dell’opera",
+        "Relazioni specialistiche",
+    ]) {
+        const heading = unit101.blocks.find((block: { kind: string; text: { normalized: string } }) => block.kind === "heading" && block.text.normalized === title);
+        assert.deepEqual(heading?.text.inline, [{ kind: "strong-em", value: title }]);
+    }
     const c101Lists = unit101.blocks.filter((block: { kind: string }) => block.kind === "list-item");
     assert.equal(c101Lists.filter((block: { listMarker?: string }) => block.listMarker === "dash").length, 20);
     assert.equal(c101Lists.filter((block: { listMarker?: string }) => block.listMarker === "none").length, 8);
@@ -68,6 +79,12 @@ test("Circolare C10 conserva testo introduttivo, sottotitoli, elenchi e matemati
     assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "none" && block.listLevel === undefined).length, 2);
     assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "none" && block.listLevel === 1).length, 9);
     assert.equal(c1021Lists.filter((block: { listMarker?: string; listLevel?: number }) => block.listMarker === "dash" && block.listLevel === 2).length, 3);
+    const b2Index = unit1021.blocks.findIndex((block: { text: { normalized: string } }) => block.text.normalized.startsWith("b.2)"));
+    assert.notEqual(b2Index, -1);
+    assert.deepEqual(
+        unit1021.blocks.slice(b2Index, b2Index + 4).map((block: { listMarker?: string; listLevel?: number }) => [block.listMarker, block.listLevel]),
+        [["none", 1], ["dash", 2], ["dash", 2], ["dash", 2]],
+    );
 
     const inline = unit101.blocks[30].text.inline;
     assert.deepEqual(inline, [

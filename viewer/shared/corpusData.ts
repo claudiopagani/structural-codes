@@ -6,6 +6,7 @@ export type InlineSegment =
   | { kind: "underline"; value: string }
   | { kind: "em-underline"; value: string }
   | { kind: "strong"; value: string }
+  | { kind: "strong-em"; value: string }
   | { kind: "math"; value: string; latex: string };
 
 export interface TextParagraph { normalized: string; inline?: InlineSegment[]; }

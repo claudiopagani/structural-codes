@@ -4,7 +4,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-type Inline = { kind: "text" | "em"; value: string } | { kind: "math"; value: string; latex: string };
+type Inline = { kind: "text" | "em" | "strong-em"; value: string } | { kind: "math"; value: string; latex: string };
 type Block = {
     blockId: string;
     kind: string;
@@ -23,6 +23,7 @@ const profile = "ntc10-c10-editorial-formatting-0.1.0";
 const dashNote = "Il trattino tipografico della fonte è rappresentato dal marcatore strutturale; il testo della voce conserva soltanto la descrizione.";
 const labelNote = "La label ufficiale è mantenuta nel testo e resa senza un marcatore aggiuntivo, per allineare la descrizione.";
 const italicNote = "Ripristinato il corsivo verificato nel render della fonte ufficiale.";
+const strongItalicNote = "Ripristinati il grassetto e il corsivo verificati nel render della fonte ufficiale.";
 
 function sha256(value: string): string {
     return createHash("sha256").update(value, "utf8").digest("hex");
@@ -77,6 +78,12 @@ function italicize(block: Block, phrases: string[]): void {
     recordEvidence(block, italicNote);
 }
 
+function strongItalicize(block: Block): void {
+    assert.ok(block.text, `Testo assente: ${block.blockId}`);
+    block.text.inline = [{ kind: "strong-em", value: block.text.normalized }];
+    recordEvidence(block, strongItalicNote);
+}
+
 function listItems(unit: Unit): Block[] {
     return unit.blocks.filter((block) => block.kind === "list-item");
 }
@@ -113,7 +120,7 @@ await updateUnit("circ2019", "c10.1", (unit) => {
         "“assicurare la perfetta stabilità e sicurezza delle strutture e di evitare qualsiasi pericolo per la pubblica incolumità”",
         "“la necessità di variazioni in corso di esecuzione”",
     ]);
-    for (const index of [15, 21, 25, 36, 45, 48]) italicize(unit.blocks[index]!, [unit.blocks[index]!.text!.normalized]);
+    for (const index of [15, 21, 25, 36, 45, 48]) strongItalicize(unit.blocks[index]!);
     italicize(unit.blocks[52]!, ["“pericolosità sismica di base”"]);
 });
 

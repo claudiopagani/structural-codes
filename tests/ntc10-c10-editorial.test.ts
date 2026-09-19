@@ -37,9 +37,10 @@ test("C10 conserva liste labeled, livelli annidati, corsivi e rapporti inline", 
     assert.equal(lists(report).filter((block) => block.listMarker === "none" && block.listLevel === undefined).length, 2);
     assert.equal(lists(report).filter((block) => block.listMarker === "none" && block.listLevel === 1).length, 9);
     assert.equal(lists(report).filter((block) => block.listMarker === "dash" && block.listLevel === 2).length, 3);
-    for (const phrase of ["“assicurare la perfetta stabilità e sicurezza delle strutture e di evitare qualsiasi pericolo per la pubblica incolumità”", "“la necessità di variazioni in corso di esecuzione”", "“pericolosità sismica di base”", "Relazioni specialistiche"]) {
+    for (const phrase of ["“assicurare la perfetta stabilità e sicurezza delle strutture e di evitare qualsiasi pericolo per la pubblica incolumità”", "“la necessità di variazioni in corso di esecuzione”", "“pericolosità sismica di base”"]) {
         assert.ok(characteristics.blocks.some((block) => block.text?.inline?.some((segment) => segment.kind === "em" && segment.value === phrase)), phrase);
     }
+    assert.ok(characteristics.blocks.some((block) => block.text?.inline?.some((segment) => segment.kind === "strong-em" && segment.value === "Relazioni specialistiche")), "Relazioni specialistiche");
     const ratios = characteristics.blocks[30]!.text?.inline?.filter((segment) => segment.kind === "math");
     assert.deepEqual(ratios, [{ kind: "math", value: "1:50", latex: "1{:}50" }, { kind: "math", value: "1:10", latex: "1{:}10" }]);
 });

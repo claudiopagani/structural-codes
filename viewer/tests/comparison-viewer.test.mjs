@@ -312,6 +312,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /block-indent-\$\{indentLevel\}/);
   assert.match(component, /<u key=\{`underline-\$\{index\}`\}>\{renderReferenceText\(segment\.value/);
   assert.match(component, /<em key=\{`em-underline-\$\{index\}`\}><u>\{renderReferenceText\(segment\.value/);
+  assert.match(component, /<strong key=\{`strong-em-\$\{index\}`\}><em>\{renderReferenceText\(segment\.value/);
   assert.match(component, /loading="lazy"/);
   assert.doesNotMatch(component, /variant: "scv" \| "legacy"|UnitBlocks|normative-copy/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);
@@ -324,6 +325,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-label-list\.block-indent-1 \{ margin-left: 2\.5rem; \}/);
   assert.match(styles, /\.scv-label-list-content > \.leading-label-empty \{ grid-column: 1; \}/);
   assert.match(styles, /\.scv-block-list-item\.list-item-without-marker\.list-item-level-1 \{[^}]*padding-left: calc\(2 \* var\(--scv-list-marker-width\)\)/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-simple-dash\.list-item-level-2 \{[^}]*padding-left: calc\(11px \+ var\(--scv-list-marker-width\)\)/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.scv-note-content > p \{[^}]*text-align: justify/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*margin: 0 0 8px[^}]*text-align: justify/);

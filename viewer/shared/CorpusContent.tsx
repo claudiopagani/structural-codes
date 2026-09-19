@@ -403,6 +403,10 @@ export function renderInlineSegments(inline: InlineSegments, context: ReferenceC
       nodes.push(<em key={`em-underline-${index}`}><u>{renderReferenceText(segment.value, context, `em-underline-${index}`)}</u></em>);
       return;
     }
+    if (segment.kind === "strong-em") {
+      nodes.push(<strong key={`strong-em-${index}`}><em>{renderReferenceText(segment.value, context, `strong-em-${index}`)}</em></strong>);
+      return;
+    }
     if (segment.kind === "strong") {
       nodes.push(<strong key={`strong-${index}`}>{renderReferenceText(segment.value, context, `strong-${index}`)}</strong>);
       return;
