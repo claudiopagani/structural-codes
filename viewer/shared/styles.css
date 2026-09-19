@@ -152,7 +152,7 @@ body { margin: 0; }
 .scv-block { display: block; }
 .scv-block p { display: block; margin: 0 0 8px; color: #272c35; font-family: "Tinos", serif; font-size: var(--scv-base-font-size); line-height: 1.48; text-align: justify; }
 .scv-root .scv-note-content { margin: 10px 0 14px; color: #272c35; font-family: "Tinos", serif; }
-.scv-root .scv-note-content > p { margin: 7px 0; color: #272c35; font-size: var(--scv-font-size-11); line-height: 1.4; text-align: left; }
+.scv-root .scv-note-content > p { margin: 7px 0; color: #272c35; font-size: var(--scv-font-size-11); line-height: 1.4; text-align: justify; }
 .scv-root .scv-note-rule { display: block; width: 33.333%; height: 1px; background: #202733; }
 .scv-root .scv-cross-reference { display: inline; margin: 0; padding: 0 .08em; color: var(--scv-primary); font: inherit; font-weight: 700; line-height: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--scv-primary) 48%, transparent); text-decoration-thickness: 1px; text-underline-offset: .12em; background: transparent; border: 0; border-radius: 2px; cursor: pointer; }
 .scv-root .scv-cross-reference:hover, .scv-root .scv-cross-reference:focus-visible { color: #fff; text-decoration: none; background: var(--scv-primary); }
@@ -169,6 +169,7 @@ body { margin: 0; }
 .scv-block-list-item.list-item-with-official-marker p::before { content: none; }
 .scv-block-list-item.list-item-without-marker { padding-left: 0; }
 .scv-block-list-item.list-item-without-marker p::before { content: none; }
+.scv-block-list-item.list-item-without-marker.list-item-level-1 { --scv-list-marker-width: 1.35em; padding-left: calc(2 * var(--scv-list-marker-width)); }
 .scv-block-list-item.list-item-with-simple-dash,
 .scv-block-list-item.list-item-with-alphabetic-marker {
   --scv-list-marker-width: 1.35em;
@@ -363,7 +364,7 @@ body { margin: 0; }
 .scv-root .table-asset-c4-2-xx th, .scv-root .table-asset-c4-2-xx td { text-align: center; }
 .scv-root .table-notes { display: block; margin: 8px 0 0; padding: 0; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; }
 .scv-root .table-notes > .scv-note-rule { margin: 7px 0; }
-.scv-root .table-notes > p { margin: 0 0 4px; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; text-align: left; }
+.scv-root .table-notes > p { margin: 0 0 8px; color: #6d7583; font-family: "Tinos", serif; font-size: var(--scv-font-size-12); line-height: 1.4; text-align: justify; }
 .scv-root .table-notes > p:last-child { margin-bottom: 0; }
 .scv-root .figure-asset img { display: block; width: min(100%, 760px); height: auto; max-width: 100%; max-height: min(600px, 70vh); margin-inline: auto; object-fit: contain; }
 .scv-root .figure-asset-c3-3-28 img { width: min(50%, 380px); }

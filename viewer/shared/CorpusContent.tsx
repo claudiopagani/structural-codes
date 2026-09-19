@@ -459,7 +459,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   const referenceContext = sourceUnitId && sourceDocument ? { sourceUnitId, sourceDocument } : null;
   if (block.text) {
     const textBlock = (content: React.ReactNode) => block.kind === "footnote"
-      ? <div className="scv-note-content"><span className="scv-note-rule" aria-hidden="true" /><p>{content}</p><span className="scv-note-rule" aria-hidden="true" /></div>
+      ? <div className="scv-note-content"><span className="scv-note-rule" aria-hidden="true" />{block.text?.paragraphs ? block.text.paragraphs.map((paragraph, index) => <p key={`${block.blockId}-paragraph-${index}`}>{paragraph.inline ? renderInlineSegments(paragraph.inline, referenceContext) : renderReferenceText(paragraph.normalized, referenceContext, `${block.blockId}-paragraph-${index}`)}</p>) : <p>{content}</p>}<span className="scv-note-rule" aria-hidden="true" /></div>
       : <p>{content}</p>;
     const alphabeticListContent = renderAlphabeticListContent(block, referenceContext);
     if (alphabeticListContent) return textBlock(alphabeticListContent);

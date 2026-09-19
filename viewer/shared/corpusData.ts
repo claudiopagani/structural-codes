@@ -8,6 +8,8 @@ export type InlineSegment =
   | { kind: "strong"; value: string }
   | { kind: "math"; value: string; latex: string };
 
+export interface TextParagraph { normalized: string; inline?: InlineSegment[]; }
+
 export interface Evidence {
   sourceId: string;
   pdfPage: number;
@@ -30,6 +32,7 @@ export interface CorpusBlock {
     normalized: string;
     normalizationVersion: string;
     inline?: InlineSegment[];
+    paragraphs?: TextParagraph[];
   };
   assetId?: string;
   evidence?: Evidence;

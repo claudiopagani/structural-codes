@@ -83,7 +83,7 @@ async function applyTableLayouts(file: string, layouts: Record<string, number[]>
     if (table.officialNumber === "6.2.I" || table.officialNumber === "6.2.III") {
       const firstColumnInline: Record<string, Array<Record<string, string>>> = {
         "Carichi permanenti G₁": [{ kind: "text", value: "Carichi permanenti " }, { kind: "math", value: "G₁", latex: "G_1" }],
-        "Carichi permanenti G₂ (1)": [{ kind: "text", value: "Carichi permanenti " }, { kind: "math", value: "G₂", latex: "G_2" }, { kind: "text", value: " (1)" }],
+        "Carichi permanenti G₂ (1)": [{ kind: "text", value: "Carichi permanenti " }, { kind: "math", value: "G₂", latex: "G_2" }, { kind: "math", value: "(1)", latex: "^{(1)}" }],
         "Azioni variabili Q": [{ kind: "text", value: "Azioni variabili " }, { kind: "math", value: "Q", latex: "Q" }],
       };
       for (const row of table.rows) {
@@ -111,8 +111,8 @@ await applyLevels("ntc2018", "6.4.3.1.json", [[5,0],[6,1],[7,1],[8,1],[9,1],[10,
 for (const [file, start, count] of [["c6.2.1.json",3,6],["c6.2.2.1.json",8,6],["c6.2.2.5.json",3,12],["c6.3.1.json",3,11],["c6.3.2.json",5,5],["c6.3.3.json",2,3],["c6.3.6.json",5,6]] as const) await apply("circ2019", file, dash(count, start));
 await applyLabeledList("circ2019", "c6.2.4.1.json", [[2,"EQU"],[3,"STR"],[4,"GEO"],[5,"UPL"],[6,"HYD"]]);
 await apply("circ2019", "c6.2.4.1.json", [[11,"none"],[12,"none"]]);
-await apply("circ2019", "c6.4.1.json", [[4,"none"],[5,"dash"],[9,"dash"],[10,"none"],[11,"dash"],[12,"dash"],[13,"dash"],[14,"dash"],[15,"none"],[16,"dash"],[17,"dash"],[18,"dash"]]);
-await applyLevels("circ2019", "c6.4.1.json", [[4,0],[5,1],[9,1],[10,0],[11,1],[12,1],[13,1],[14,1],[15,0],[16,1],[17,1],[18,1]]);
+await apply("circ2019", "c6.4.1.json", [[4,"none"],[5,"dash"],[6,"none"],[7,"none"],[8,"none"],[9,"dash"],[10,"none"],[11,"dash"],[12,"dash"],[13,"dash"],[14,"dash"],[15,"none"],[16,"dash"],[17,"dash"],[18,"dash"]]);
+await applyLevels("circ2019", "c6.4.1.json", [[4,0],[5,1],[6,1],[7,1],[8,1],[9,1],[10,0],[11,1],[12,1],[13,1],[14,1],[15,0],[16,1],[17,1],[18,1]]);
 await apply("ntc2018", "6.4.3.2.json", dash(2, 2));
 await apply("ntc2018", "6.4.3.3.json", [[4,"bullet"],[5,"dash"],[6,"dash"],[7,"dash"],[8,"bullet"],[9,"dash"],[10,"dash"]]);
 await applyLevels("ntc2018", "6.4.3.3.json", [[4,0],[5,1],[6,1],[7,1],[8,0],[9,1],[10,1]]);

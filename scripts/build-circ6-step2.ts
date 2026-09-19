@@ -14,7 +14,7 @@ const assetDir = join(root, "corpus", "assets", "circ2019");
 
 type Part = { page: number; from: number; to?: number };
 type BlockKind = "heading" | "paragraph" | "list-item";
-type BlockSpec = { kind: BlockKind; parts: Part[]; text?: string; manual?: boolean };
+type BlockSpec = { kind: BlockKind; parts: Part[]; text?: string; manual?: boolean; listMarker?: "bullet" | "dash" | "none"; listLevel?: number };
 type UnitSpec = { number: string; title: string; blocks: BlockSpec[]; manual: boolean };
 
 const pageLines = new Map<number, string[]>();
@@ -112,7 +112,7 @@ const h = (page: number, from: number, text?: string): BlockSpec => ({ kind: "he
 const p = (page: number, from: number, to: number, text?: string): BlockSpec => ({ kind: "paragraph", parts: [{ page, from, to }], ...(text ? { text: clean(text) } : {}) });
 const li = (page: number, from: number, to: number, text?: string): BlockSpec => ({ kind: "list-item", parts: [{ page, from, to }], ...(text ? { text: clean(text) } : {}) });
 const cross = (kind: BlockKind, parts: Part[], text: string): BlockSpec => ({ kind, parts, text: clean(text) });
-const manual = (kind: BlockKind, page: number, text: string): BlockSpec => ({ kind, parts: [{ page, from: 1 }], text: clean(text), manual: true });
+const manual = (kind: BlockKind, page: number, text: string, listFormatting: Pick<BlockSpec, "listMarker" | "listLevel"> = {}): BlockSpec => ({ kind, parts: [{ page, from: 1 }], text: clean(text), manual: true, ...listFormatting });
 
 const inlineTerms: Array<[string, string]> = [
     ["b÷2b", "b\\div 2b"],
@@ -166,9 +166,9 @@ const units: UnitSpec[] = [
             manual("paragraph", 187, "In relazione alle diverse fasi sopraccitate occorre almeno considerare:"),
             manual("list-item", 187, "a) Terreni di fondazione:"),
             manual("list-item", 187, "Profondità del volume significativo"),
-            manual("paragraph", 187, "Nel caso di fondazioni superficiali la profondità da raggiungere con le indagini può essere dell’ordine di b÷2b, dove b è la lunghezza del lato minore del rettangolo che meglio approssima la forma in pianta del manufatto."),
-            manual("paragraph", 187, "Nel caso di fondazioni su pali, la profondità, considerata dall’estremità inferiore dei pali, può essere dell’ordine di 0.5b÷b."),
-            manual("paragraph", 187, "Profondità maggiori dovranno essere indagate in presenza di terreni molto compressibili o di cavità o per costruzioni molto sensibili ai cedimenti assoluti e differenziali."),
+            manual("list-item", 187, "Nel caso di fondazioni superficiali la profondità da raggiungere con le indagini può essere dell’ordine di b÷2b, dove b è la lunghezza del lato minore del rettangolo che meglio approssima la forma in pianta del manufatto.", { listMarker: "none", listLevel: 1 }),
+            manual("list-item", 187, "Nel caso di fondazioni su pali, la profondità, considerata dall’estremità inferiore dei pali, può essere dell’ordine di 0.5b÷b.", { listMarker: "none", listLevel: 1 }),
+            manual("list-item", 187, "Profondità maggiori dovranno essere indagate in presenza di terreni molto compressibili o di cavità o per costruzioni molto sensibili ai cedimenti assoluti e differenziali.", { listMarker: "none", listLevel: 1 }),
             manual("list-item", 187, "Stratigrafia, regime delle pressioni interstiziali e grandezze fisiche e meccaniche e idrauliche dei terreni nel volume significativo."),
             manual("list-item", 187, "b) Opere in progetto:"),
             manual("list-item", 187, "dimensioni dell’opera;"),
@@ -357,7 +357,15 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
     const text: any = { raw: source, normalized, normalizationVersion: profile };
     const segments = inline(normalized);
     if (segments) text.inline = segments;
-    return { blockId, kind: block.kind, origin: "official", text, evidence: evidence(block.parts, normalized, Boolean(block.manual)) };
+    return {
+        blockId,
+        kind: block.kind,
+        origin: "official",
+        ...(block.listMarker ? { listMarker: block.listMarker } : {}),
+        ...(block.listLevel !== undefined ? { listLevel: block.listLevel } : {}),
+        text,
+        evidence: evidence(block.parts, normalized, Boolean(block.manual)),
+    };
 }
 
 await mkdir(unitDir, { recursive: true });

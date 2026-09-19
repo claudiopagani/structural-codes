@@ -69,3 +69,13 @@ test("le note restano dati strutturati e sono presenti in entrambi i documenti",
     assert.equal(footnoteCount, 23);
     assert.ok(tableNoteCount > 0);
 });
+
+test("la nota iniziale di C6 conserva i capoversi reali", async () => {
+    const unit = await json("corpus/units/circ2019/c6.json");
+    const note = unit.blocks.find((block: any) => block.kind === "footnote");
+    assert.equal(note?.text?.paragraphs?.length, 3);
+    assert.equal(note.text.paragraphs.map((paragraph: any) => paragraph.normalized).join(" "), note.text.normalized);
+    assert.match(note.text.paragraphs[0].normalized, /^Il primo passo/u);
+    assert.match(note.text.paragraphs[1].normalized, /^In definitiva/u);
+    assert.match(note.text.paragraphs[2].normalized, /^Pur concorrendo/u);
+});

@@ -301,6 +301,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /<div className="table-notes">/);
   assert.match(component, /className="scv-note-content"/);
   assert.match(component, /className="scv-note-rule"/);
+  assert.match(component, /block\.text\?\.paragraphs/);
   assert.doesNotMatch(component, /<ul className="table-notes">/);
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /\[a-z0-9\]\+\[\.\)\]\)\\s\+/u);
@@ -322,8 +323,10 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.doesNotMatch(styles, /\.scv-root \.table-asset-c4-1-vi tbody tr:first-child td/);
   assert.match(styles, /\.scv-label-list\.block-indent-1 \{ margin-left: 2\.5rem; \}/);
   assert.match(styles, /\.scv-label-list-content > \.leading-label-empty \{ grid-column: 1; \}/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-without-marker\.list-item-level-1 \{[^}]*padding-left: calc\(2 \* var\(--scv-list-marker-width\)\)/);
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
-  assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*text-align: left/);
+  assert.match(styles, /\.scv-root \.scv-note-content > p \{[^}]*text-align: justify/);
+  assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*margin: 0 0 8px[^}]*text-align: justify/);
   assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol-tabbed p \{[^}]*grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);

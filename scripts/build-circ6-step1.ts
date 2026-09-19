@@ -18,6 +18,7 @@ type BlockSpec = {
     kind: BlockKind;
     parts: Part[];
     text?: string;
+    paragraphs?: string[];
     manual?: boolean;
     asset?: string;
 };
@@ -61,7 +62,7 @@ function transformations(source: string, normalized: string): any[] {
     return result;
 }
 
-function evidence(parts: Part[], normalized: string, manual: boolean, asset = false): any {
+function evidence(parts: Part[], normalized: string, manual: boolean, asset = false, editorialTransformations: any[] = []): any {
     const source = manual ? normalized : raw(parts);
     const page = parts[0]?.page ?? 178;
     return {
@@ -74,7 +75,7 @@ function evidence(parts: Part[], normalized: string, manual: boolean, asset = fa
             tool: manual || asset ? "codex-render-transcription" : "pdfjs-dist",
             toolVersion: manual || asset ? profile : "4.10.38",
         },
-        transformations: manual || asset ? [] : transformations(source, normalized),
+        transformations: [...(manual || asset ? [] : transformations(source, normalized)), ...editorialTransformations],
         rawSha256: sha256(source),
         normalizedSha256: sha256(normalized),
     };
@@ -99,6 +100,13 @@ const inlineTerms: Array<[string, string]> = [
     ["A1+M1+R1", "A1+M1+R1"],
     ["γ_R", "\\gamma_R"],
 ];
+
+const c6FootnoteParagraphs = [
+    clean("Il primo passo della progettazione geotecnica riguarda le scelte tipologiche (ad esempio il sistema di fondazione) e la pianificazione delle indagini e delle prove per la caratterizzazione meccanica di terreni o rocce compresi nel volume significativo, definito nel § 6.2.2 delle NTC; indagini geotecniche, stati limite e metodi di analisi sono intrinsecamente connessi. La caratterizzazione meccanica dei terreni deve infatti tenere conto del loro carattere tipicamente non lineare, anche a piccole deformazioni, del possibile comportamento fragile, della dipendenza dai percorsi tensionali, degli effetti di scala così come delle fasi costruttive e delle modalità esecutive. È dunque compito e responsabilità del progettista definire il piano delle indagini geotecniche e, sulla base dei risultati ottenuti, individuare i modelli geotecnici di sottosuolo più appropriati alla tipologia di opera e/o intervento, tenendo conto delle tecnologie e delle modalità costruttive previste."),
+    clean("In definitiva, alla luce degli studi geologici, il progettista definisce le scelte tipologiche dell’opera, i materiali da costruzione, le modalità e le fasi esecutive, programma le indagini geotecniche per stabilire i modelli geotecnici di sottosuolo ed effettua le verifiche agli stati limite; se ritenuti necessari a questi fini può richiedere approfondimenti dello studio geologico con ulteriori indagini e accertamenti che concorrano a una migliore definizione del modello geologico."),
+    clean("Pur concorrendo entrambe alla progettazione di un’opera, le indagini per la definizione del modello geologico e le indagini geotecniche sono concettualmente diverse tra loro sia perché interessano generalmente aree e volumi diversi sia perché hanno finalità diverse. Le prime, infatti, riguardano aree e volumi di sottosuolo più ampi e sono finalizzate alla definizione del modello geologico. Le seconde interessano generalmente aree e volumi più ridotti (i volumi significativi) e sono finalizzate alla definizione dei modelli geotecnici di sottosuolo specifici per la singola opera e/o per parti di essa, che comprendono l’identificazione e la valutazione quantitativa dei parametri geotecnici necessari alle relative verifiche agli stati limite ultimi e di esercizio. Definito il quadro geologico di riferimento, le indagini geotecniche, logicamente consequenziali, sono programmate dal progettista sulla base della conoscenza dell’opera e dei suoi possibili stati limite."),
+];
+const c6FootnoteText = c6FootnoteParagraphs.join(" ");
 
 function inline(text: string): any[] | undefined {
     const terms = inlineTerms.filter(([value]) => text.includes(value)).sort((a, b) => b[0].length - a[0].length);
@@ -135,7 +143,8 @@ const units: UnitSpec[] = [
             p(178, 1, 1, "Le indicazioni e le prescrizioni riportate in questo Capitolo devono intendersi come integrative delle analoghe indicazioni e prescrizioni che si riferiscono alla progettazione geotecnica in condizioni sismiche di cui ai §§ 3.2 e 7.11.", true),
             {
                 kind: "footnote", parts: [], manual: true,
-                text: clean("Il primo passo della progettazione geotecnica riguarda le scelte tipologiche (ad esempio il sistema di fondazione) e la pianificazione delle indagini e delle prove per la caratterizzazione meccanica di terreni o rocce compresi nel volume significativo, definito nel § 6.2.2 delle NTC; indagini geotecniche, stati limite e metodi di analisi sono intrinsecamente connessi. La caratterizzazione meccanica dei terreni deve infatti tenere conto del loro carattere tipicamente non lineare, anche a piccole deformazioni, del possibile comportamento fragile, della dipendenza dai percorsi tensionali, degli effetti di scala così come delle fasi costruttive e delle modalità esecutive. È dunque compito e responsabilità del progettista definire il piano delle indagini geotecniche e, sulla base dei risultati ottenuti, individuare i modelli geotecnici di sottosuolo più appropriati alla tipologia di opera e/o intervento, tenendo conto delle tecnologie e delle modalità costruttive previste. In definitiva, alla luce degli studi geologici, il progettista definisce le scelte tipologiche dell’opera, i materiali da costruzione, le modalità e le fasi esecutive, programma le indagini geotecniche per stabilire i modelli geotecnici di sottosuolo ed effettua le verifiche agli stati limite; se ritenuti necessari a questi fini può richiedere approfondimenti dello studio geologico con ulteriori indagini e accertamenti che concorrano a una migliore definizione del modello geologico. Pur concorrendo entrambe alla progettazione di un’opera, le indagini per la definizione del modello geologico e le indagini geotecniche sono concettualmente diverse tra loro sia perché interessano generalmente aree e volumi diversi sia perché hanno finalità diverse. Le prime, infatti, riguardano aree e volumi di sottosuolo più ampi e sono finalizzate alla definizione del modello geologico. Le seconde interessano generalmente aree e volumi più ridotti (i volumi significativi) e sono finalizzate alla definizione dei modelli geotecnici di sottosuolo specifici per la singola opera e/o per parti di essa, che comprendono l’identificazione e la valutazione quantitativa dei parametri geotecnici necessari alle relative verifiche agli stati limite ultimi e di esercizio. Definito il quadro geologico di riferimento, le indagini geotecniche, logicamente consequenziali, sono programmate dal progettista sulla base della conoscenza dell’opera e dei suoi possibili stati limite."),
+                text: c6FootnoteText,
+                paragraphs: c6FootnoteParagraphs,
             },
         ],
     },
@@ -418,9 +427,16 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
     const normalized = block.text ?? "";
     const source = block.manual ? normalized : raw(block.parts);
     const text: any = { raw: source, normalized, normalizationVersion: profile };
+    if (block.paragraphs) text.paragraphs = block.paragraphs.map((paragraph) => ({ normalized: paragraph }));
     const segments = inline(normalized);
     if (segments) text.inline = segments;
-    return { blockId, kind: block.kind, origin: "official", text, evidence: evidence(block.parts, normalized, Boolean(block.manual)) };
+    return {
+        blockId,
+        kind: block.kind,
+        origin: "official",
+        text,
+        evidence: evidence(block.parts, normalized, Boolean(block.manual), false, block.paragraphs ? [{ operation: "manual-correction", ruleVersion: "circ6-note-paragraphs-0.1.0", note: "Conservati i tre capoversi della nota verificati nel render ufficiale." }] : []),
+    };
 }
 
 await mkdir(unitDir, { recursive: true });

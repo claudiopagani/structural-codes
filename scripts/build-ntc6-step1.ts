@@ -294,7 +294,7 @@ const cell = (text: string, latex?: string, extra: Record<string, any> = {}): an
 });
 
 const labelWithMath = (text: string, label: string, latex: string, extra: Record<string, any> = {}): any => cell(text, undefined, {
-    inline: [{ kind: "text", value: text.slice(0, text.indexOf(label)) }, { kind: "math", value: label, latex }, ...(text.endsWith(" (1)") ? [{ kind: "text", value: " (1)" }] : [])],
+    inline: [{ kind: "text", value: text.slice(0, text.indexOf(label)) }, { kind: "math", value: label, latex }, ...(text.endsWith(" (1)") ? [{ kind: "math", value: "(1)", latex: "^{(1)}" }] : [])],
     ...extra,
 });
 

@@ -94,6 +94,9 @@ test("Circolare C6.2.4.1 allinea le etichette in grassetto e C6.4.1 conserva i r
     ]), [
         ["a) Terreni di fondazione:", "none", 0],
         ["Profondità del volume significativo", "dash", 1],
+        ["Nel caso di fondazioni superficiali la profondità da raggiungere con le indagini può essere dell’ordine di b÷2b, dove b è la lunghezza del lato minore del rettangolo che meglio approssima la forma in pianta del manufatto.", "none", 1],
+        ["Nel caso di fondazioni su pali, la profondità, considerata dall’estremità inferiore dei pali, può essere dell’ordine di 0.5b÷b.", "none", 1],
+        ["Profondità maggiori dovranno essere indagate in presenza di terreni molto compressibili o di cavità o per costruzioni molto sensibili ai cedimenti assoluti e differenziali.", "none", 1],
         ["Stratigrafia, regime delle pressioni interstiziali e grandezze fisiche e meccaniche e idrauliche dei terreni nel volume significativo.", "dash", 1],
         ["b) Opere in progetto:", "none", 0],
         ["dimensioni dell’opera;", "dash", 1],

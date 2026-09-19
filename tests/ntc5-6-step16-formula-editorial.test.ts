@@ -117,6 +117,12 @@ test("NTC pagine 182–191 conserva otto tabelle matematiche e il crop ufficiale
     assert.equal(curvature.rows[1][0].latex, "120<V\\le200");
     const soil = tables.find((table: { officialNumber: string }) => table.officialNumber === "6.2.II");
     assert.equal(soil.rows[0][1].latex, "\\tan\\varphi'_k");
+    for (const number of ["6.2.I", "6.2.III"]) {
+        const table = tables.find((candidate: { officialNumber: string }) => candidate.officialNumber === number);
+        const markedCell = table.rows[2][0];
+        assert.equal(markedCell.inline.at(-1).kind, "math");
+        assert.equal(markedCell.inline.at(-1).latex, "^{(1)}");
+    }
 
     assert.equal(figures.length, 1);
     assert.equal(figures[0].officialNumber, "5.2.14");
