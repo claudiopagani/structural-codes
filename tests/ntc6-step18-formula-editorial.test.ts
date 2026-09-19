@@ -68,6 +68,12 @@ test("NTC pagine 202–211 segmenta quantità e combinazioni senza acronimi disc
     assert.ok((await math("6.7.5")).some((segment: any) => segment.value === "A2+M2+R2" && segment.latex === "\\mathrm{A2+M2+R2}"));
     assert.ok((await math("6.7.5")).some((segment: any) => segment.value === "R2" && segment.latex === "\\mathrm{R2}"));
     assert.ok((await math("6.8.2")).some((segment: any) => segment.value === "A2+M2+R2" && segment.latex === "\\mathrm{A2+M2+R2}"));
+
+    const unit675 = await json("corpus/units/ntc2018/6.7.5.json");
+    assert.deepEqual(unit675.blocks.filter((block: any) => block.kind === "list-item").map((block: any) => [block.text.normalized, block.listMarker, block.listLevel]), [
+        ["Combinazione 1: (A1+M1+R1)", "dash", 0],
+        ["Combinazione 2: (A2+M2+R2)", "dash", 0],
+    ]);
 });
 
 test("NTC pagine 202–211 conserva quattro tabelle matematiche verificate", async () => {
@@ -83,6 +89,9 @@ test("NTC pagine 202–211 conserva quattro tabelle matematiche verificate", asy
     assert.deepEqual(byNumber.get("6.6.III").rows.map((row: any[]) => row[0].latex), ["\\xi_{a3}", "\\xi_{a4}"]);
     assert.equal(byNumber.get("6.8.I").headers[0][1].latex, "\\mathrm{R2}");
     assert.equal(byNumber.get("6.8.I").rows[0][0].latex, "\\gamma_R");
+    for (const row of [...byNumber.get("6.8.I").headers, ...byNumber.get("6.8.I").rows]) {
+        for (const cell of row) assert.equal(cell.align, "center");
+    }
 });
 
 test("NTC pagine 202–211 colloca formule e tabelle una sola volta nel flusso", async () => {

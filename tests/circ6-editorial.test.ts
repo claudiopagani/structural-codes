@@ -69,6 +69,44 @@ test("Circolare capitolo 6: capoversi, elenchi e matematica inline", async () =>
     assert.equal(c641.workflow.openIssues.some((issue: any) => issue.type === "missing-region"), true);
 });
 
+test("Circolare C6.2.4.1 allinea le etichette in grassetto e C6.4.1 conserva i rientri annidati", async () => {
+    const c6241 = JSON.parse(await readFile(join(unitDir, "c6.2.4.1.json"), "utf8"));
+    const c641 = JSON.parse(await readFile(join(unitDir, "c6.4.1.json"), "utf8"));
+
+    assert.deepEqual(c6241.blocks.slice(2, 7).map((block: any) => [
+        block.kind,
+        block.listMarker,
+        block.listLevel,
+        block.text.inline?.[0]?.kind,
+        block.text.inline?.[0]?.value,
+    ]), [
+        ["list-item", "none", 0, "strong", "EQU"],
+        ["list-item", "none", 0, "strong", "STR"],
+        ["list-item", "none", 0, "strong", "GEO"],
+        ["list-item", "none", 0, "strong", "UPL"],
+        ["list-item", "none", 0, "strong", "HYD"],
+    ]);
+
+    assert.deepEqual(c641.blocks.filter((block: any) => block.kind === "list-item").map((block: any) => [
+        block.text.normalized,
+        block.listMarker,
+        block.listLevel,
+    ]), [
+        ["a) Terreni di fondazione:", "none", 0],
+        ["Profondità del volume significativo", "dash", 1],
+        ["Stratigrafia, regime delle pressioni interstiziali e grandezze fisiche e meccaniche e idrauliche dei terreni nel volume significativo.", "dash", 1],
+        ["b) Opere in progetto:", "none", 0],
+        ["dimensioni dell’opera;", "dash", 1],
+        ["caratteristiche della struttura in elevazione, con particolare riferimento ai possibili cedimenti differenziali;", "dash", 1],
+        ["sequenza cronologica con la quale vengono costruite le varie parti dell’opera (fasi costruttive);", "dash", 1],
+        ["distribuzione, intensità o variazione nel tempo dei carichi trasmessi in fondazione, distinguendo i carichi permanenti dai sovraccarichi, e questi, a loro volta, in statici e dinamici.", "dash", 1],
+        ["c) Fattori ambientali:", "none", 0],
+        ["caratteri morfologici del sito;", "dash", 1],
+        ["deflusso delle acque superficiali;", "dash", 1],
+        ["presenza o caratteristiche di altri manufatti (edifici, canali, acquedotti, strade, muri di sostegno, gallerie, ponti, ecc.) esistenti nelle vicinanze o dei quali è prevista la costruzione.", "dash", 1],
+    ]);
+});
+
 test("Circolare capitolo 6: lo step 2 non introduce asset display", async () => {
     const manifest = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "C6-step2.json"), "utf8"));
     assert.deepEqual(manifest.formulas, []);

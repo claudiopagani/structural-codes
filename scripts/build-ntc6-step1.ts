@@ -255,6 +255,8 @@ type BlockSpec = {
     to?: number;
     norm?: string;
     asset?: string;
+    listMarker?: "bullet" | "dash" | "none";
+    listLevel?: number;
 };
 type UnitSpec = {
     number: string;
@@ -285,9 +287,14 @@ const formulas = [
     { suffix: "6.4.5", unit: "6.4.3.1.1", number: "6.4.5", page: 196, latex: "R_{c,k}=\\operatorname{Min}\\left\\{\\frac{(R_{c,m})_{\\mathrm{media}}}{\\xi_5};\\frac{(R_{c,m})_{\\mathrm{min}}}{\\xi_6}\\right\\}" },
 ];
 
-const cell = (text: string, latex?: string, extra: Record<string, number> = {}): any => ({
+const cell = (text: string, latex?: string, extra: Record<string, any> = {}): any => ({
     text,
     ...(latex ? { latex } : {}),
+    ...extra,
+});
+
+const labelWithMath = (text: string, label: string, latex: string, extra: Record<string, any> = {}): any => cell(text, undefined, {
+    inline: [{ kind: "text", value: text.slice(0, text.indexOf(label)) }, { kind: "math", value: label, latex }, ...(text.endsWith(" (1)") ? [{ kind: "text", value: " (1)" }] : [])],
     ...extra,
 });
 
@@ -296,25 +303,27 @@ const tables = [
         id: t("6.2.i"), unit: "6.2.4.1.1", number: "6.2.I", page: 190,
         caption: "Coefficienti parziali per le azioni o per l’effetto delle azioni",
         columnCount: 6,
+        columnWidths: [27, 15, 20, 13, 13, 12],
         headers: [
-            [cell(""), cell("Effetto"), cell("Coefficiente Parziale"), cell("EQU"), cell("(A1)"), cell("(A2)")],
-            [cell(""), cell(""), cell("γF (o γE)", "\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"), cell(""), cell(""), cell("")],
+            [cell(""), cell("Effetto"), cell("Coefficiente Parziale\\nγF (o γE)", "\\begin{gathered}\\text{Coefficiente Parziale}\\\\\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)\\end{gathered}"), cell("EQU"), cell("(A1)"), cell("(A2)")],
         ],
         rows: [
-            [cell("Carichi permanenti G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9"), cell("1,0"), cell("1,0")],
+            [labelWithMath("Carichi permanenti G₁", "G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9"), cell("1,0"), cell("1,0")],
             [cell("Sfavorevole"), cell("1,1"), cell("1,3"), cell("1,0")],
-            [cell("Carichi permanenti G₂ (1)", "G_2", { rowSpan: 2 }), cell("Favorevole"), cell("γG2", "\\gamma_{G2}", { rowSpan: 2 }), cell("0,8"), cell("0,8"), cell("0,8")],
+            [labelWithMath("Carichi permanenti G₂ (1)", "G₂", "G_2", { rowSpan: 2 }), cell("Favorevole"), cell("γG2", "\\gamma_{G2}", { rowSpan: 2 }), cell("0,8"), cell("0,8"), cell("0,8")],
             [cell("Sfavorevole"), cell("1,5"), cell("1,5"), cell("1,3")],
-            [cell("Azioni variabili Q", "Q", { rowSpan: 2 }), cell("Favorevole"), cell("γQi", "\\gamma_{Qi}", { rowSpan: 2 }), cell("0,0"), cell("0,0"), cell("0,0")],
+            [labelWithMath("Azioni variabili Q", "Q", "Q", { rowSpan: 2 }), cell("Favorevole"), cell("γQi", "\\gamma_{Qi}", { rowSpan: 2 }), cell("0,0"), cell("0,0"), cell("0,0")],
             [cell("Sfavorevole"), cell("1,5"), cell("1,5"), cell("1,3")],
         ],
         notes: ["(1) Per i carichi permanenti G₂ si applica quanto indicato alla Tabella 2.6.I. Per la spinta delle terre si fa riferimento ai coefficienti γG1.", "Trascrizione verificata sul render della pagina PDF 190; review umana cella per cella ancora obbligatoria."],
+        notesInline: [[{ kind: "text", value: "(1) Per i carichi permanenti G₂ si applica quanto indicato alla Tabella 2.6.I. Per la spinta delle terre si fa riferimento ai coefficienti " }, { kind: "math", value: "γG1", latex: "\\gamma_{G1}" }, { kind: "text", value: "." }]],
     },
     {
         id: t("6.2.ii"), unit: "6.2.4.1.2", number: "6.2.II", page: 190,
         caption: "Coefficienti parziali per i parametri geotecnici del terreno",
         columnCount: 5,
-        headers: [[cell("Parametro"), cell("Grandezza alla quale applicare il coefficiente parziale"), cell("Coefficiente parziale γM", "\\gamma_M"), cell("(M1)"), cell("(M2)")]],
+        columnWidths: [30, 30, 18, 11, 11],
+        headers: [[cell("Parametro"), cell("Grandezza alla quale\\napplicare il coefficiente parziale", "\\begin{gathered}\\text{Grandezza alla quale}\\\\\\text{applicare il coefficiente parziale}\\end{gathered}"), cell("Coefficiente parziale γM", "\\gamma_M"), cell("(M1)"), cell("(M2)")]],
         rows: [
             [cell("Tangente dell’angolo di resistenza al taglio"), cell("tan φ′k", "\\tan\\varphi'_k"), cell("γφ′", "\\gamma_{\\varphi'}"), cell("1,0"), cell("1,25")],
             [cell("Coesione efficace"), cell("c′k", "c'_k"), cell("γc′", "\\gamma_{c'}"), cell("1,0"), cell("1,25")],
@@ -327,21 +336,24 @@ const tables = [
         id: t("6.2.iii"), unit: "6.2.4.2", number: "6.2.III", page: 191,
         caption: "Coefficienti parziali sulle azioni per le verifiche nei confronti di stati limite di sollevamento",
         columnCount: 4,
-        headers: [[cell(""), cell("Effetto"), cell("Coefficiente Parziale γF (o γE)", "\\text{Coefficiente Parziale }\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)"), cell("Sollevamento (UPL)")]],
+        columnWidths: [27, 16, 33, 24],
+        headers: [[cell(""), cell("Effetto"), cell("Coefficiente Parziale\\nγF (o γE)", "\\begin{gathered}\\text{Coefficiente Parziale}\\\\\\gamma_F\\;(\\mathrm{o}\\;\\gamma_E)\\end{gathered}"), cell("Sollevamento (UPL)")]],
         rows: [
-            [cell("Carichi permanenti G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9")],
+            [labelWithMath("Carichi permanenti G₁", "G₁", "G_1", { rowSpan: 2 }), cell("Favorevole"), cell("γG1", "\\gamma_{G1}", { rowSpan: 2 }), cell("0,9")],
             [cell("Sfavorevole"), cell("1,1")],
-            [cell("Carichi permanenti G₂ (1)", "G_2", { rowSpan: 2 }), cell("Favorevole"), cell("γG2", "\\gamma_{G2}", { rowSpan: 2 }), cell("0,8")],
+            [labelWithMath("Carichi permanenti G₂ (1)", "G₂", "G_2", { rowSpan: 2 }), cell("Favorevole"), cell("γG2", "\\gamma_{G2}", { rowSpan: 2 }), cell("0,8")],
             [cell("Sfavorevole"), cell("1,5")],
-            [cell("Azioni variabili Q", "Q", { rowSpan: 2 }), cell("Favorevole"), cell("γQi", "\\gamma_{Qi}", { rowSpan: 2 }), cell("0,0")],
+            [labelWithMath("Azioni variabili Q", "Q", "Q", { rowSpan: 2 }), cell("Favorevole"), cell("γQi", "\\gamma_{Qi}", { rowSpan: 2 }), cell("0,0")],
             [cell("Sfavorevole"), cell("1,5")],
         ],
         notes: ["(1) Per i carichi permanenti G₂ si applica quanto indicato alla Tabella 2.6.I. Per la spinta delle terre si fa riferimento ai coefficienti γG1.", "Trascrizione verificata sul render della pagina PDF 191; review umana cella per cella ancora obbligatoria."],
+        notesInline: [[{ kind: "text", value: "(1) Per i carichi permanenti G₂ si applica quanto indicato alla Tabella 2.6.I. Per la spinta delle terre si fa riferimento ai coefficienti " }, { kind: "math", value: "γG1", latex: "\\gamma_{G1}" }, { kind: "text", value: "." }]],
     },
     {
         id: t("6.4.i"), unit: "6.4.2.1", number: "6.4.I", page: 194,
         caption: "Coefficienti parziali γR per le verifiche agli stati limite ultimi di fondazioni superficiali",
         columnCount: 2,
+        columnWidths: [50, 50],
         headers: [[cell("Verifica"), cell("Coefficiente parziale")], [cell(""), cell("(R3)", "(\\mathrm{R3})")]],
         rows: [[cell("Carico limite"), cell("γR = 2,3", "\\gamma_R=2{,}3")], [cell("Scorrimento"), cell("γR = 1,1", "\\gamma_R=1{,}1")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 194; review umana cella per cella ancora obbligatoria."],
@@ -350,6 +362,7 @@ const tables = [
         id: t("6.4.ii"), unit: "6.4.3.1.1", number: "6.4.II", page: 195,
         caption: "Coefficienti parziali γR da applicare alle resistenze caratteristiche a carico verticale dei pali",
         columnCount: 5,
+        columnWidths: [30, 13, 19, 19, 19],
         headers: [[cell("Resistenza"), cell("Simbolo"), cell("Pali infissi"), cell("Pali trivellati"), cell("Pali ad elica continua")], [cell(""), cell("γR", "\\gamma_R"), cell("(R3)", "(\\mathrm{R3})"), cell("(R3)", "(\\mathrm{R3})"), cell("(R3)", "(\\mathrm{R3})")]],
         rows: [
             [cell("Base"), cell("γb", "\\gamma_b"), cell("1,15"), cell("1,35"), cell("1,3")],
@@ -363,6 +376,7 @@ const tables = [
         id: t("6.4.iii"), unit: "6.4.3.1.1", number: "6.4.III", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica a partire dai risultati di prove di carico statico su pali pilota",
         columnCount: 6,
+        columnWidths: [38, 12, 12, 12, 12, 14],
         headers: [[cell("Numero di prove di carico"), cell("1"), cell("2"), cell("3"), cell("4"), cell("≥ 5", "\\ge5")]],
         rows: [[cell("ξ1", "\\xi_1"), cell("1,40"), cell("1,30"), cell("1,20"), cell("1,10"), cell("1,0")], [cell("ξ2", "\\xi_2"), cell("1,40"), cell("1,20"), cell("1,05"), cell("1,00"), cell("1,0")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
@@ -371,6 +385,7 @@ const tables = [
         id: t("6.4.iv"), unit: "6.4.3.1.1", number: "6.4.IV", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica in funzione del numero di verticali indagate",
         columnCount: 8,
+        columnWidths: [34, 9, 9, 9, 9, 9, 9, 12],
         headers: [[cell("Numero di verticali indagate"), cell("1"), cell("2"), cell("3"), cell("4"), cell("5"), cell("7"), cell("≥ 10", "\\ge10")]],
         rows: [[cell("ξ3", "\\xi_3"), cell("1,70"), cell("1,65"), cell("1,60"), cell("1,55"), cell("1,50"), cell("1,45"), cell("1,40")], [cell("ξ4", "\\xi_4"), cell("1,70"), cell("1,55"), cell("1,48"), cell("1,42"), cell("1,34"), cell("1,28"), cell("1,21")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
@@ -379,11 +394,20 @@ const tables = [
         id: t("6.4.v"), unit: "6.4.3.1.1", number: "6.4.V", page: 196,
         caption: "Fattori di correlazione ξ per la determinazione della resistenza caratteristica a partire dai risultati di prove dinamiche su pali pilota",
         columnCount: 6,
+        columnWidths: [38, 12, 12, 12, 12, 14],
         headers: [[cell("Numero di prove di carico"), cell("≥ 2", "\\ge2"), cell("≥ 5", "\\ge5"), cell("≥ 10", "\\ge10"), cell("≥ 15", "\\ge15"), cell("≥ 20", "\\ge20")]],
         rows: [[cell("ξ5", "\\xi_5"), cell("1,60"), cell("1,50"), cell("1,45"), cell("1,42"), cell("1,40")], [cell("ξ6", "\\xi_6"), cell("1,50"), cell("1,35"), cell("1,30"), cell("1,25"), cell("1,25")]],
         notes: ["Trascrizione verificata sul render della pagina PDF 196; review umana cella per cella ancora obbligatoria."],
     },
 ];
+
+for (const table of tables as any[]) {
+    for (const row of [...table.headers, ...table.rows]) for (const tableCell of row) tableCell.align = "center";
+    if (table.number.startsWith("6.2.")) {
+        table.headers[0][0].align = "left";
+        for (const [rowIndex, row] of table.rows.entries()) if (table.number === "6.2.II" || rowIndex % 2 === 0) row[0].align = "left";
+    }
+}
 
 const units: UnitSpec[] = [
     { number: "6", title: "PROGETTAZIONE GEOTECNICA", heading: { page: 187, from: 3, to: 4, norm: "6 PROGETTAZIONE GEOTECNICA" } },
@@ -590,6 +614,8 @@ function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
         blockId,
         kind: block.kind,
         origin: "official",
+        ...(block.listMarker ? { listMarker: block.listMarker } : {}),
+        ...(block.listLevel !== undefined ? { listLevel: block.listLevel } : {}),
         text: { raw: source, normalized, normalizationVersion: profile, ...(segments ? { inline: segments } : {}) },
         evidence: evidence(block.page, source, normalized),
     };
@@ -654,7 +680,7 @@ const manifest = {
     sourceId,
     status: "transcribed-unreviewed",
     formulas: formulas.map(({ suffix, unit, number, page, latex }) => ({ id: f(suffix), unitId: uid(unit), officialNumber: number, pdfPage: page, latex })),
-    tables: tables.map(({ id, unit, number, page, caption, columnCount, headers, rows, notes }) => ({ id, unitId: uid(unit), officialNumber: number, pdfPage: page, caption, columnCount, headers, rows, notes })),
+    tables: tables.map(({ id, unit, number, page, caption, columnCount, columnWidths, headers, rows, notes, notesInline }) => ({ id, unitId: uid(unit), officialNumber: number, pdfPage: page, caption, columnCount, columnWidths, headers, rows, notes, ...(notesInline ? { notesInline } : {}) })),
     figures: [],
 };
 await writeFile(join(assetDir, "6-step1.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");

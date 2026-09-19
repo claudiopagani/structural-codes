@@ -531,7 +531,7 @@ async function main() {
 
     for (const figure of step1.figures) {
         const regions: Record<string, [number, number, number, number]> = {
-            "5.1.3.a": [149.114, 455, 185.886, 109.852],
+            "5.1.3.a": [149.114, 455, 185.886, 82.509],
             "5.1.3.b": [335, 455, 125, 80],
         };
         const region = regions[figure.officialNumber];

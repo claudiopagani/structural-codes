@@ -26,12 +26,36 @@ function schemaLoadBlock(number) {
   };
 }
 
+function strongLabelBlock(label) {
+  return {
+    blockId: `strong-${label}`,
+    kind: "list-item",
+    listMarker: "none",
+    listLevel: 0,
+    text: {
+      normalized: `${label} descrizione`,
+      inline: [
+        { kind: "strong", value: label },
+        { kind: "text", value: " descrizione" },
+      ],
+    },
+  };
+}
+
 test("allinea le descrizioni degli schemi di carico dopo l'etichetta", () => {
   const blocks = [1, 2, 3, 4, 5, 6].map(schemaLoadBlock);
   assert.equal(hasLeadingEmphasisLabel(blocks[0]), true);
   const [group] = groupAlignedLabelBlocks(blocks);
   assert.equal(group.kind, "label-list");
   assert.equal(group.blocks.length, 6);
+});
+
+test("allinea le descrizioni delle liste con etichetta in grassetto", () => {
+  const blocks = ["EQU", "STR", "GEO"].map(strongLabelBlock);
+  assert.equal(hasLeadingEmphasisLabel(blocks[0]), true);
+  const [group] = groupAlignedLabelBlocks(blocks);
+  assert.equal(group.kind, "label-list");
+  assert.equal(group.blocks.length, 3);
 });
 
 test("mantiene upright l'unità m nella didascalia della Fig. 5.1.2", async () => {
