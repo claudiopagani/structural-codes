@@ -74,5 +74,6 @@ test("Circolare C11 conserva apici, livelli, ordine delle figure e tabelle", asy
     assert.equal(cropped.region.height, 60);
     const c1134112 = table(manifest, "C11.3.4.11.2.I");
     assert.deepEqual(c1134112.columnWidths, [31, 15, 24, 15, 15]);
-    assert.ok(c1134112.rows.flat().filter((cell: any) => cell.align).every((cell: any) => cell.align === "center"));
+    assert.ok(c1134112.rows.flat().filter((cell: any) => cell.align === "center").every((cell: any) => cell.align === "center"));
+    assert.equal(c1134112.rows[0][2].align, "left");
 });
