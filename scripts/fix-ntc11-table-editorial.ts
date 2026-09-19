@@ -30,6 +30,8 @@ function centerExceptFirst(tableAsset: Table): void {
 
 function spacer(): Cell { return { text: "", spacer: true, header: false };
 }
+function mathCell(text: string, latex: string): Cell { return { text, latex };
+}
 
 const step1 = await readManifest("11-step1.json");
 for (const number of ["11.2.I", "11.2.II", "11.2.III"]) center(table(step1, number));
@@ -57,11 +59,43 @@ for (const number of ["11.2.Va", "11.2.Vb", "11.2.VI", "11.2.VII"]) center(table
 const t117 = table(step2, "11.7.I");
 t117.columnCount = 8;
 t117.columnWidths = [19, 11, 3, 22, 11, 3, 21, 10];
-t117.headers = [t117.headers[0]!.flatMap((cell) => [cell, spacer(),]).slice(0, 5)];
-for (const row of t117.rows) {
-    const original = [...row];
-    row.splice(0, row.length, original[0]!, original[1]!, spacer(), original[2]!, original[3]!, spacer(), original[4]!, original[5]!);
-}
+t117.headers = [[
+    { text: "Resistenze caratteristiche", colSpan: 2 },
+    spacer(),
+    { text: "Moduli elastici", colSpan: 2 },
+    spacer(),
+    { text: "Massa volumica", colSpan: 2 },
+]];
+t117.rows = [
+    [
+        { text: "Flessione" }, mathCell("fm,k", "f_{m,k}"), spacer(),
+        { text: "Modulo elastico parallelo medio **" }, mathCell("E0,mean", "E_{0,\\mathrm{mean}}"), spacer(),
+        { text: "Massa volumica caratteristica" }, mathCell("ρk", "\\rho_k"),
+    ],
+    [
+        { text: "Trazione parallela" }, mathCell("ft,0,k", "f_{t,0,k}"), spacer(),
+        { text: "Modulo elastico parallelo caratteristico" }, mathCell("E0,05", "E_{0,05}"), spacer(),
+        { text: "Massa volumica media *,**" }, mathCell("ρmean", "\\rho_{\\mathrm{mean}}"),
+    ],
+    [
+        { text: "Trazione perpendicolare" }, mathCell("ft,90,k", "f_{t,90,k}"), spacer(),
+        { text: "Modulo elastico perpendicolare medio **" }, mathCell("E90,mean", "E_{90,\\mathrm{mean}}"), spacer(),
+        { text: "" }, { text: "" },
+    ],
+    [
+        { text: "Compressione parallela" }, mathCell("fc,0,k", "f_{c,0,k}"), spacer(),
+        { text: "Modulo elastico tangenziale medio **" }, mathCell("Gmean", "G_{\\mathrm{mean}}"), spacer(),
+        { text: "" }, { text: "" },
+    ],
+    [
+        { text: "Compressione perpendicolare" }, mathCell("fc,90,k", "f_{c,90,k}"), spacer(),
+        { text: "" }, { text: "" }, spacer(), { text: "" }, { text: "" },
+    ],
+    [
+        { text: "Taglio" }, mathCell("fv,k", "f_{v,k}"), spacer(),
+        { text: "" }, { text: "" }, spacer(), { text: "" }, { text: "" },
+    ],
+];
 t117.notesInline = t117.notes.map((note, index) => index === 1
     ? [
         { kind: "text", value: "** Il pedice " },
@@ -78,6 +112,8 @@ const t1101 = table(step2, "11.10.I");
 t1101.columnWidths = [45, 17, 38];
 t1101.headers[0]![0]!.text = "Specifica Tecnica Europea\ndi riferimento";
 t1101.rows[0]![0]!.text = "Specifica per elementi per muratura - Elementi per muratura di laterizio,\nsilicato di calcio, in calcestruzzo vibrocompresso (aggregati pesanti e leggeri),\ncalcestruzzo aerato autoclavato, pietra agglomerata, pietra naturale\nUNI EN 771-1, 771-2, 771-3, 771-4, 771-5, 771-6";
+t1101.rows[1]![0]!.align = "center";
+t1101.rows[1]![0]!.noWrap = true;
 
 const t1102 = table(step2, "11.10.II");
 centerExceptFirst(t1102);

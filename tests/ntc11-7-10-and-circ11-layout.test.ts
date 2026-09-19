@@ -28,6 +28,10 @@ test("NTC 11.7, 11.9 e 11.10 conserva colonne, allineamenti e formule delle note
     }
     assert.equal(table(manifest, "11.10.I").columnWidths[0], 45);
     assert.ok(table(manifest, "11.10.I").rows[0][0].text.includes("\n"));
+    assert.equal(table(manifest, "11.10.I").rows[1][0].text, "Categoria II");
+    assert.doesNotMatch(table(manifest, "11.10.I").rows[1][0].text, /\r|\n/u);
+    assert.equal(table(manifest, "11.10.I").rows[1][0].align, "center");
+    assert.equal(table(manifest, "11.10.I").rows[1][0].noWrap, true);
     assert.ok(table(manifest, "11.10.II").notesInline[0].some((segment: any) => segment.kind === "math" && segment.latex === "d"));
     assert.equal(table(manifest, "11.10.VIII").columnWidths[2], 16);
     assert.equal(table(manifest, "11.10.VIII").headers[1][1].text.split("\n").length, 3);

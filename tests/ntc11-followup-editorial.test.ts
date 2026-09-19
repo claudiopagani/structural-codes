@@ -34,9 +34,18 @@ test("NTC 11.3 mantiene celle e annidamenti richiesti", async () => {
     assert.equal(ib.rows[2][0].rowSpan, 2);
     assert.equal(ib.rows[3].length, 1);
     assert.equal(ib.rows[3][0].latex, "<1{,}35");
+    assert.equal(ib.rows[4][0].text, "");
+    assert.equal(ib.rows[4][1].align, "right");
+    assert.equal(ib.rows[8][0].colSpan, 2);
+    assert.equal(ib.rows[9][0].colSpan, 2);
+    const via = table(manifest, "11.3.VI a");
+    assert.match(via.rows.at(-1)[1].latex, /\\begin\{aligned\}/u);
+    assert.match(via.rows.at(-1)[1].latex, /&\\ge0\.035/u);
     const x = table(manifest, "11.3.X");
     assert.ok([...x.headers, ...x.rows].flat().every((cell: any) => cell.align === "center"));
     const xii = table(manifest, "11.3.XII");
+    assert.deepEqual(xii.columnWidths, [25, 17, 18, 18, 22]);
+    assert.equal(xii.rows[0][0].text, "Materiale Base:\nSpessore minimo delle membrature");
     assert.ok(xii.rows[1][0].text.includes("\n"));
 
     const unit = await json("corpus/units/ntc2018/11.3.3.2.json");
@@ -67,4 +76,9 @@ test("Circolare C11 spezza le norme di riferimento e allinea a sinistra la quali
         const qualityCell = rowIndex % 4 === 0 ? asset.rows[rowIndex][2] : asset.rows[rowIndex][0];
         assert.equal(qualityCell.align, "left", `riga ${rowIndex + 1}`);
     }
+});
+
+test("il CSS mantiene continua la separazione di 11.3.Ib sulle celle unite", async () => {
+    const styles = await readFile(join(root, "viewer/shared/styles.css"), "utf8");
+    assert.match(styles, /table-asset-11-3-ib tbody td:nth-child\(1\):not\(\[colspan\]\)/u);
 });

@@ -46,6 +46,10 @@ function math(text: string, latex: string, extra: AnyRecord = {}): AnyRecord {
     return { text, latex, ...extra };
 }
 
+function cell(text: string, extra: AnyRecord = {}): AnyRecord {
+    return { text, ...extra };
+}
+
 function center(table: AnyRecord): void {
     for (const row of [...table.headers, ...table.rows]) {
         for (const currentCell of row) currentCell.align = "center";
@@ -125,10 +129,35 @@ async function updateTables(): Promise<void> {
         math("10.0", "10.0", { rowSpan: 2, align: "center" }),
     ];
     tableIb.rows[3] = [math("< 1,35", "<1{,}35", { align: "center" })];
+    tableIb.rows[4] = [
+        cell("", { align: "left" }),
+        math("(fy/fynom)k", "(f_y/f_{y\\,\\mathrm{nom}})_k", { align: "right" }),
+        math("≤ 1,25", "\\le1{,}25", { align: "center" }),
+        math("10.0", "10.0", { align: "center" }),
+    ];
+    tableIb.rows[8] = [
+        math("per 16 < Ø ≤ 25 mm", "\\text{per }16<\\varnothing\\le25\\;\\mathrm{mm}", { colSpan: 2, align: "right" }),
+        math("8 Ø", "8\\varnothing", { align: "center" }),
+        cell("", { align: "center" }),
+    ];
+    tableIb.rows[9] = [
+        math("per 25 < Ø ≤ 40 mm", "\\text{per }25<\\varnothing\\le40\\;\\mathrm{mm}", { colSpan: 2, align: "right" }),
+        math("10 Ø", "10\\varnothing", { align: "center" }),
+        cell("", { align: "center" }),
+    ];
+
+    const tableVIa = table("11.3.VI a");
+    tableVIa.rows.at(-1)![1] = math(
+        "per 5 mm ≤ Ø ≤ 6 mm ≥ 0.035\\nper 6 mm ≤ Ø ≤ 12 mm ≥ 0.040\\nper Ø ≥ 12 mm ≥ 0.056",
+        "\\begin{aligned}\\text{per }5\\;\\mathrm{mm}\\le\\varnothing\\le6\\;\\mathrm{mm}&\\ge0.035\\\\\\text{per }6\\;\\mathrm{mm}\\le\\varnothing\\le12\\;\\mathrm{mm}&\\ge0.040\\\\\\text{per }\\varnothing\\ge12\\;\\mathrm{mm}&\\ge0.056\\end{aligned}",
+        { align: "left" },
+    );
 
     center(table("11.3.X"));
 
     const tableXII = table("11.3.XII");
+    tableXII.columnWidths = [25, 17, 18, 18, 22];
+    tableXII.rows[0][0] = cell("Materiale Base:\nSpessore minimo delle membrature", { rowSpan: 5, align: "left" });
     tableXII.rows[1][0] = math("S275,\ns ≤ 30 mm", "\\begin{gathered}\\mathrm{S275},\\\\s\\le30\\;\\mathrm{mm}\\end{gathered}", { align: "left" });
 
     await writeJson(assetPath, manifest);

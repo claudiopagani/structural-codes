@@ -296,7 +296,7 @@ body { margin: 0; }
 .scv-root .table-asset .table-independent-footer { margin-top: -1px; table-layout: fixed; }
 .scv-root .table-asset .table-cell-image { display: block; width: auto; max-width: 100%; height: auto; margin: 0 auto; }
 .scv-root .table-asset-11-3-ib table, .scv-root .table-asset-11-3-ic table { min-width: 0; table-layout: fixed; }
-.scv-root .table-asset-11-3-ib tbody td:nth-child(1), .scv-root .table-asset-11-3-ic tbody td:nth-child(1) { border-right: 0; }
+.scv-root .table-asset-11-3-ib tbody td:nth-child(1):not([colspan]), .scv-root .table-asset-11-3-ic tbody td:nth-child(1):not([colspan]) { border-right: 0; }
 .scv-root .table-asset-11-3-ib tbody td:nth-child(2), .scv-root .table-asset-11-3-ic tbody td:nth-child(2) { border-left: 0; }
 .scv-root .table-asset-11-3-viii table { min-width: 0; table-layout: fixed; }
 .scv-root .table-asset-11-3-viii tbody td:nth-child(1) { border-right: 0; }

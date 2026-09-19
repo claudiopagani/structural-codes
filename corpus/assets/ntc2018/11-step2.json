@@ -1024,13 +1024,13 @@
         ],
         [
           {
+            "text": "",
+            "align": "left"
+          },
+          {
             "text": "(fy/fynom)k",
             "latex": "(f_y/f_{y\\,\\mathrm{nom}})_k",
             "align": "right"
-          },
-          {
-            "text": "",
-            "align": "left"
           },
           {
             "text": "≤ 1,25",
@@ -1106,12 +1106,9 @@
         ],
         [
           {
-            "text": "",
-            "align": "left"
-          },
-          {
             "text": "per 16 < Ø ≤ 25 mm",
             "latex": "\\text{per }16<\\varnothing\\le25\\;\\mathrm{mm}",
+            "colSpan": 2,
             "align": "right"
           },
           {
@@ -1126,12 +1123,9 @@
         ],
         [
           {
-            "text": "",
-            "align": "left"
-          },
-          {
             "text": "per 25 < Ø ≤ 40 mm",
             "latex": "\\text{per }25<\\varnothing\\le40\\;\\mathrm{mm}",
+            "colSpan": 2,
             "align": "right"
           },
           {
@@ -2486,8 +2480,9 @@
             "latex": "f_r/f_p"
           },
           {
-            "text": "per 5 mm ≤ Ø ≤ 6 mm ≥ 0.035; per 6 mm ≤ Ø ≤ 12 mm ≥ 0.040; per Ø ≥ 12 mm ≥ 0.056",
-            "latex": "\\begin{gathered}\\text{per }5\\;\\mathrm{mm}\\le\\varnothing\\le6\\;\\mathrm{mm}\\quad\\ge0.035\\\\\\text{per }6\\;\\mathrm{mm}\\le\\varnothing\\le12\\;\\mathrm{mm}\\quad\\ge0.040\\\\\\text{per }\\varnothing\\ge12\\;\\mathrm{mm}\\quad\\ge0.056\\end{gathered}"
+            "text": "per 5 mm ≤ Ø ≤ 6 mm ≥ 0.035\\nper 6 mm ≤ Ø ≤ 12 mm ≥ 0.040\\nper Ø ≥ 12 mm ≥ 0.056",
+            "latex": "\\begin{aligned}\\text{per }5\\;\\mathrm{mm}\\le\\varnothing\\le6\\;\\mathrm{mm}&\\ge0.035\\\\\\text{per }6\\;\\mathrm{mm}\\le\\varnothing\\le12\\;\\mathrm{mm}&\\ge0.040\\\\\\text{per }\\varnothing\\ge12\\;\\mathrm{mm}&\\ge0.056\\end{aligned}",
+            "align": "left"
           },
           {
             "text": "per acciai B450A e B450C provenienti da rotolo"
@@ -3397,8 +3392,7 @@
       "rows": [
         [
           {
-            "text": "Materiale Base: Spessore minimo delle membrature",
-            "latex": "\\begin{gathered}\\text{Materiale Base:}\\\\\\text{Spessore minimo delle membrature}\\end{gathered}",
+            "text": "Materiale Base:\nSpessore minimo delle membrature",
             "rowSpan": 5,
             "align": "left"
           },
@@ -3567,6 +3561,13 @@
       "notes": [
         "Nota 1) Vale anche per strutture non soggette a fatica in modo significativo.",
         "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria."
+      ],
+      "columnWidths": [
+        25,
+        17,
+        18,
+        18,
+        22
       ]
     },
     {
@@ -4674,7 +4675,9 @@
         ],
         [
           {
-            "text": "Categoria II"
+            "text": "Categoria II",
+            "align": "center",
+            "noWrap": true
           },
           {
             "text": "4",

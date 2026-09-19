@@ -12,6 +12,7 @@ type Cell = {
     align?: "left" | "center" | "right";
     colSpan?: number;
     rowSpan?: number;
+    noWrap?: boolean;
 };
 type Inline = { kind: string; value: string; latex?: string };
 type Table = {
@@ -56,12 +57,12 @@ tableIb.rows = [
     [cell("Tensione caratteristica a carico massimo", { align: "left" }), math("ftk", "f_{tk}", { align: "right" }), math("≥ ft nom", "\\ge f_{t\\,\\mathrm{nom}}", { align: "center" }), math("5.0", "5.0", { align: "center" })],
     [cell("", { align: "left" }), math("(ft/fy)k", "(f_t/f_y)_k", { rowSpan: 2, align: "right" }), math("≥ 1,15", "\\ge1{,}15", { align: "center" }), math("10.0", "10.0", { rowSpan: 2, align: "center" })],
     [cell("", { align: "left" }), math("< 1,35", "<1{,}35", { align: "center" })],
-    [math("(fy/fynom)k", "(f_y/f_{y\\,\\mathrm{nom}})_k", { align: "right" }), cell("", { align: "left" }), math("≤ 1,25", "\\le1{,}25", { align: "center" }), math("10.0", "10.0", { align: "center" })],
+    [cell("", { align: "left" }), math("(fy/fynom)k", "(f_y/f_{y\\,\\mathrm{nom}})_k", { align: "right" }), math("≤ 1,25", "\\le1{,}25", { align: "center" }), math("10.0", "10.0", { align: "center" })],
     [cell("Allungamento", { align: "left" }), math("(Agt)k", "(A_{gt})_k", { align: "right" }), math("≥ 7,5%", "\\ge7{,}5\\%", { align: "center" }), math("10.0", "10.0", { align: "center" })],
     [cell("Diametro del mandrino per prove di piegamento a 90° e successivo raddrizzamento senza cricche:", { align: "left" }), math("Ø < 12 mm", "\\varnothing<12\\;\\mathrm{mm}", { align: "right" }), math("4 Ø", "4\\varnothing", { align: "center" }), cell("", { align: "center" })],
     [cell("", { align: "left" }), math("12 ≤ Ø ≤ 16 mm", "12\\le\\varnothing\\le16\\;\\mathrm{mm}", { align: "right" }), math("5 Ø", "5\\varnothing", { align: "center" }), cell("", { align: "center" })],
-    [cell("", { align: "left" }), math("per 16 < Ø ≤ 25 mm", "\\text{per }16<\\varnothing\\le25\\;\\mathrm{mm}", { align: "right" }), math("8 Ø", "8\\varnothing", { align: "center" }), cell("", { align: "center" })],
-    [cell("", { align: "left" }), math("per 25 < Ø ≤ 40 mm", "\\text{per }25<\\varnothing\\le40\\;\\mathrm{mm}", { align: "right" }), math("10 Ø", "10\\varnothing", { align: "center" }), cell("", { align: "center" })],
+    [math("per 16 < Ø ≤ 25 mm", "\\text{per }16<\\varnothing\\le25\\;\\mathrm{mm}", { colSpan: 2, align: "right" }), math("8 Ø", "8\\varnothing", { align: "center" }), cell("", { align: "center" })],
+    [math("per 25 < Ø ≤ 40 mm", "\\text{per }25<\\varnothing\\le40\\;\\mathrm{mm}", { colSpan: 2, align: "right" }), math("10 Ø", "10\\varnothing", { align: "center" }), cell("", { align: "center" })],
 ];
 
 const tableIc = table("11.3.Ic");
@@ -86,6 +87,12 @@ centerExceptFirst(table("11.3.III"));
 center(table("11.3.IV"));
 center(table("11.3.V"));
 for (const number of ["11.3.VII a", "11.3.VII b"]) center(table(number));
+const tableVIa = table("11.3.VI a");
+tableVIa.rows.at(-1)![1] = math(
+    "per 5 mm ≤ Ø ≤ 6 mm ≥ 0.035\\nper 6 mm ≤ Ø ≤ 12 mm ≥ 0.040\\nper Ø ≥ 12 mm ≥ 0.056",
+    "\\begin{aligned}\\text{per }5\\;\\mathrm{mm}\\le\\varnothing\\le6\\;\\mathrm{mm}&\\ge0.035\\\\\\text{per }6\\;\\mathrm{mm}\\le\\varnothing\\le12\\;\\mathrm{mm}&\\ge0.040\\\\\\text{per }\\varnothing\\ge12\\;\\mathrm{mm}&\\ge0.056\\end{aligned}",
+    { align: "left" },
+);
 const tableVIb = table("11.3.VI b");
 for (const row of [...tableVIb.headers, ...tableVIb.rows]) if (row[1]) row[1].align = "right";
 
@@ -143,8 +150,9 @@ table("11.3.XI").captionInline = [
 ];
 
 const tableXII = table("11.3.XII");
+tableXII.columnWidths = [25, 17, 18, 18, 22];
 tableXII.rows = [
-    [math("Materiale Base: Spessore minimo delle membrature", "\\begin{gathered}\\text{Materiale Base:}\\\\\\text{Spessore minimo delle membrature}\\end{gathered}", { rowSpan: 5, align: "left" }), math("S235, s ≤ 30 mm", "\\mathrm{S235},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), math("S355, s ≤ 30 mm", "\\mathrm{S355},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), math("S235", "\\mathrm{S235}", { align: "left" }), cell("S235", { align: "left" })],
+    [cell("Materiale Base:\nSpessore minimo delle membrature", { rowSpan: 5, align: "left" }), math("S235, s ≤ 30 mm", "\\mathrm{S235},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), math("S355, s ≤ 30 mm", "\\mathrm{S355},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), math("S235", "\\mathrm{S235}", { align: "left" }), cell("S235", { align: "left" })],
     [math("S275, s ≤ 30 mm", "\\mathrm{S275},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), math("S235", "\\mathrm{S235}", { align: "left" }), math("S275", "\\mathrm{S275}", { align: "left" }), cell("S275", { align: "left" })],
     [cell("", { align: "left" }), math("S275", "\\mathrm{S275}", { align: "left" }), math("S355", "\\mathrm{S355}", { align: "left" }), cell("S355", { align: "left" })],
     [cell("", { align: "left" }), cell("", { align: "left" }), math("S460, s ≤ 30 mm", "\\mathrm{S460},\\ s\\le30\\;\\mathrm{mm}", { align: "left" }), cell("S460 (Nota 1)", { align: "left" })],
