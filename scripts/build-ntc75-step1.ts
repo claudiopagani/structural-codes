@@ -156,6 +156,8 @@ function inlineSegments(text: string, terms: MathTerm[]): any[] | undefined {
 
 type TextSpec = {
     kind: "heading" | "paragraph" | "list-item";
+    listMarker?: "bullet" | "dash" | "none";
+    listLevel?: number;
     page: number;
     from: number;
     to?: number;
@@ -206,6 +208,8 @@ function textBlock(unitId: string, blockId: string, spec: TextSpec): any {
         blockId: `${unitId}#${blockId}`,
         kind: spec.kind,
         origin: "official",
+        ...(spec.kind === "list-item" && spec.listMarker ? { listMarker: spec.listMarker } : {}),
+        ...(spec.kind === "list-item" && spec.listLevel !== undefined ? { listLevel: spec.listLevel } : {}),
         text: {
             raw: source,
             normalized,
@@ -353,11 +357,11 @@ const units: UnitSpec[] = [
         blocks: [
             { kind: "paragraph", page: 245, from: 15, normalized: "Per ciascuna tipologia strutturale il valore massimo per q_0 è indicato in Tab. 7.3.II.", math: [math.q0] },
             { kind: "paragraph", page: 245, from: 16, normalized: "Per le strutture regolari in pianta possono essere adottati i seguenti valori di α_u/α_1:", math: [math.alphaRatio] },
-            { kind: "list-item", page: 245, from: 17, normalized: "edifici a un piano α_u/α_1 = 1,1", math: [m("α_u/α_1 = 1,1", "\\alpha_u/\\alpha_1=1{,}1")] },
-            { kind: "list-item", page: 245, from: 18, normalized: "edifici a telaio a più piani, con una sola campata α_u/α_1 = 1,2", math: [m("α_u/α_1 = 1,2", "\\alpha_u/\\alpha_1=1{,}2")] },
-            { kind: "list-item", page: 245, from: 19, normalized: "edifici a telaio con più piani e più campate α_u/α_1 = 1,3", math: [m("α_u/α_1 = 1,3", "\\alpha_u/\\alpha_1=1{,}3")] },
-            { kind: "list-item", page: 245, from: 20, normalized: "edifici con controventi eccentrici a più piani α_u/α_1 = 1,2", math: [m("α_u/α_1 = 1,2", "\\alpha_u/\\alpha_1=1{,}2")] },
-            { kind: "list-item", page: 245, from: 21, normalized: "edifici con strutture a mensola o a pendolo inverso α_u/α_1 = 1,0", math: [m("α_u/α_1 = 1,0", "\\alpha_u/\\alpha_1=1{,}0")] },
+            { kind: "list-item", listMarker: "dash", listLevel: 1, page: 245, from: 17, normalized: "- edifici a un piano α_u/α_1 = 1,1", math: [m("α_u/α_1 = 1,1", "\\alpha_u/\\alpha_1=1{,}1")] },
+            { kind: "list-item", listMarker: "dash", listLevel: 1, page: 245, from: 18, normalized: "- edifici a telaio a più piani, con una sola campata α_u/α_1 = 1,2", math: [m("α_u/α_1 = 1,2", "\\alpha_u/\\alpha_1=1{,}2")] },
+            { kind: "list-item", listMarker: "dash", listLevel: 1, page: 245, from: 19, normalized: "- edifici a telaio con più piani e più campate α_u/α_1 = 1,3", math: [m("α_u/α_1 = 1,3", "\\alpha_u/\\alpha_1=1{,}3")] },
+            { kind: "list-item", listMarker: "dash", listLevel: 1, page: 245, from: 20, normalized: "- edifici con controventi eccentrici a più piani α_u/α_1 = 1,2", math: [m("α_u/α_1 = 1,2", "\\alpha_u/\\alpha_1=1{,}2")] },
+            { kind: "list-item", listMarker: "dash", listLevel: 1, page: 245, from: 21, normalized: "- edifici con strutture a mensola o a pendolo inverso α_u/α_1 = 1,0", math: [m("α_u/α_1 = 1,0", "\\alpha_u/\\alpha_1=1{,}0")] },
             { kind: "paragraph", page: 245, from: 22, to: 24, normalized: "Tali valori di q_0 sono da intendersi validi a patto che vengano rispettate le regole di progettazione e di dettaglio fornite nei paragrafi dal § 7.5.3 al § 7.5.6.", math: [math.q0] },
         ],
     },
@@ -400,6 +404,7 @@ const units: UnitSpec[] = [
             { kind: "list-item", page: 246, from: 33 },
             { kind: "list-item", page: 246, from: 34 },
             { kind: "list-item", page: 246, from: 35, to: 36 },
+            { kind: "paragraph", page: 246, from: 37, normalized: "La duttilità locale è definita come segue:" },
             { kind: "formula-ref", page: 246, from: 37, to: 38, assetId: assetId("formula", "7.5.3.2:mu-local") },
             { kind: "paragraph", page: 246, from: 39, to: 41, normalized: "La domanda in duttilità locale è definita dal rapporto tra il valore di deformazione θ_u misurato mediante analisi non lineare e il valore di deformazione θ_y al limite elastico. Nel caso di analisi strutturale lineare con fattore di comportamento, la domanda di deformazione può essere dedotta dal campo di spostamenti ultimi ottenuti come in § 7.3.3.3.", math: [math.thetaU, math.thetaY] },
             { kind: "paragraph", page: 246, from: 42, to: 44, normalized: "La capacità in duttilità locale è data dal rapporto tra la misura di deformazione al collasso θ_u, valutata in corrispondenza della riduzione del 15% della massima resistenza dell’elemento, e la deformazione θ_y corrispondente al raggiungimento della prima plasticizzazione.", math: [math.thetaU, math.thetaY, m("15%", "15\\%")] },
@@ -467,10 +472,11 @@ const units: UnitSpec[] = [
             { kind: "paragraph", page: 248, from: 6, to: 7 },
             formula("7.5.11", "7.5.4.2", 248, 8, 9, "\\sum M_{C,pl,Rd}\\ge\\gamma_{Rd}\\cdot\\sum M_{b,pl,Rd}"),
             {
-                kind: "paragraph", page: 248, from: 10, to: 15,
-                normalized: "dove γ_{Rd} è dato in Tab. 7.2.I, M_{C,pl,Rd} è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale valutata nelle combinazioni sismiche delle azioni ed M_{b,pl,Rd} è la capacità delle travi che convergono nel nodo trave-colonna. Nella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i momenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta la maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi.",
+                kind: "paragraph", page: 248, from: 10, to: 13,
+                normalized: "dove γ_{Rd} è dato in Tab. 7.2.I, M_{C,pl,Rd} è la capacità a flessione della colonna calcolata per i livelli di domanda a sforzo normale valutata nelle combinazioni sismiche delle azioni ed M_{b,pl,Rd} è la capacità delle travi che convergono nel nodo trave-colonna.",
                 math: [m("γ_{Rd}", "\\gamma_{Rd}"), m("M_{C,pl,Rd}", "M_{C,pl,Rd}"), m("M_{b,pl,Rd}", "M_{b,pl,Rd}")],
             },
+            { kind: "paragraph", page: 248, from: 14, to: 15, normalized: "Nella [7.5.11] si assume il nodo in equilibrio ed i momenti, sia nelle colonne sia nelle travi, tra loro concordi. Nel caso in cui i momenti nella colonna al di sopra e al di sotto del nodo siano tra loro discordi, al primo membro della formula [7.5.11] va posta la maggiore tra le capacità a flessione delle colonne, mentre la minore va sommata alle capacità a flessione delle travi." },
         ],
     },
     {
@@ -723,13 +729,13 @@ const manifest = {
             caption: "Classe della sezione trasversale di elementi dissipativi in funzione della classe di duttilità e di q_0",
             columnCount: 3,
             headers: [[
-                { text: "Classe di duttilità" },
-                { text: "Valore di base q_0 del fattore di comportamento", latex: "\\text{Valore di base }q_0\\text{ del fattore di comportamento}" },
-                { text: "Classe di sezione trasversale richiesta" },
+                { text: "Classe di duttilità", align: "center" },
+                { text: "Valore di base q_0 del fattore di comportamento", latex: "\\text{Valore di base }q_0\\text{ del fattore di comportamento}", align: "center" },
+                { text: "Classe di sezione trasversale richiesta", align: "center" },
             ]],
             rows: [
-                [{ text: "CD “B”" }, { text: "2 < q_0 ≤ 4", latex: "2<q_0\\le4" }, { text: "Classe 1 o 2" }],
-                [{ text: "CD “A”" }, { text: "q_0 > 4", latex: "q_0>4" }, { text: "Classe 1" }],
+                [{ text: "CD “B”", align: "center" }, { text: "2 < q_0 ≤ 4", latex: "2<q_0\\le4", align: "center" }, { text: "Classe 1 o 2", align: "center" }],
+                [{ text: "CD “A”", align: "center" }, { text: "q_0 > 4", latex: "q_0>4", align: "center" }, { text: "Classe 1", align: "center" }],
             ],
             notes: ["Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
         },

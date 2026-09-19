@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 import katex from "katex";
-import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableAsset, TableCell, CorpusUnit } from "./corpusData";
+import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableAsset, TableCell, TextParagraph, CorpusUnit } from "./corpusData";
 import { findCrossReferences } from "./crossReferences.js";
 import { visibleTableCaption, visibleTableCaptionInline, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
@@ -244,12 +244,50 @@ function tableCellClass(cell: TableCell) {
     cell.verticalText ? "table-cell-vertical" : "",
     cell.shade ? `table-cell-shade-${cell.shade}` : "",
     cell.spacer ? "table-cell-spacer" : "",
+    cell.subrowIndent ? "table-cell-subrow-indent" : "",
+    cell.subrowLabel ? "table-cell-subrow-label" : "",
     cell.text.includes("\n") ? "table-cell-multiline" : "",
   ].filter(Boolean).join(" ") || undefined;
 }
 
+export function leadingMathLabelEnd(inline: InlineSegment[]): number {
+  if (inline[0]?.kind !== "math") return 0;
+  let end = 1;
+  for (let index = 1; index < inline.length; index += 1) {
+    const segment = inline[index]!;
+    if (segment.kind === "math") {
+      end = index + 1;
+      continue;
+    }
+    if (segment.kind === "text" && /^(?:[\s,]+|[\s,]*(?:e|ed)[\s,]*)$/u.test(segment.value)) {
+      end = index + 1;
+      continue;
+    }
+    if (segment.kind === "text" && /^\s*(?:sono|è)\b/u.test(segment.value)) break;
+    break;
+  }
+  return end;
+}
+
 export function hasOfficialListMarker(block: CorpusBlock) {
   return block.kind === "list-item" && /^\s*(?:[–—-]|\(?[a-z0-9]+[.)])\s+/iu.test(block.text?.normalized ?? "");
+}
+
+const alphaRatioListUnitSuffixes = [":7.4.3.2", ":7.5.2.2", ":7.8.1.3"] as const;
+
+export function hasAlphaRatioListLayout(block: CorpusBlock, sourceUnitId?: string) {
+  if (!sourceUnitId || !alphaRatioListUnitSuffixes.some((suffix) => sourceUnitId.endsWith(suffix))) return false;
+  return block.kind === "list-item" && Boolean(block.text?.inline?.some((segment) => segment.kind === "math" && /\\alpha_u\s*\/\s*\\alpha_1/u.test(segment.latex ?? "")));
+}
+
+export function hasInferredAlphaRatioListMarker(block: CorpusBlock, sourceUnitId?: string) {
+  return hasAlphaRatioListLayout(block, sourceUnitId) && !hasOfficialListMarker(block);
+}
+
+function alphaRatioInlineWithMarker(block: CorpusBlock, sourceUnitId?: string) {
+  const inline = block.text?.inline;
+  if (!inline || !hasInferredAlphaRatioListMarker(block, sourceUnitId)) return inline;
+  return [{ kind: "text" as const, value: "- " }, ...inline];
 }
 
 export function hasAlphabeticListMarker(block: CorpusBlock) {
@@ -425,6 +463,33 @@ export function renderInlineSegments(inline: InlineSegments, context: ReferenceC
   return nodes;
 }
 
+function splitInlinePrefix(inline: InlineSegments, prefix: string) {
+  let remaining = prefix;
+  const marker: InlineSegments = [];
+  const description: InlineSegments = [];
+  for (const segment of inline) {
+    if (!remaining) {
+      description.push(segment);
+      continue;
+    }
+    if (segment.kind === "math") return null;
+    let consumed = 0;
+    while (consumed < segment.value.length && consumed < remaining.length && segment.value[consumed] === remaining[consumed]) consumed += 1;
+    if (consumed === 0) return null;
+    if (consumed < segment.value.length) {
+      if (consumed !== remaining.length) return null;
+      marker.push({ ...segment, value: segment.value.slice(0, consumed) });
+      const rest = segment.value.slice(consumed);
+      if (rest) description.push({ ...segment, value: rest });
+      remaining = "";
+      continue;
+    }
+    marker.push(segment);
+    remaining = remaining.slice(consumed);
+  }
+  return remaining ? null : { marker, description };
+}
+
 function renderLeadingLabelContent(block: CorpusBlock, context: ReferenceContext | null, aligned: boolean) {
   const inline = block.text?.inline;
   if (!inline) return null;
@@ -438,8 +503,10 @@ function renderLeadingLabelContent(block: CorpusBlock, context: ReferenceContext
     return <><span className="leading-label">{label.kind === "strong" ? <strong>{label.value}</strong> : label.kind === "em" ? <><em>{label.value}</em>{labelHasColon ? null : ":"}</> : label.kind === "underline" ? <><u>{label.value}</u>{labelHasColon ? null : ":"}</> : label.value}</span><span className="leading-label-description">{renderInlineSegments(description, context)}</span></>;
   }
   if (hasLeadingMath(block)) {
-    const [label, ...description] = inline;
-    return <><span className="leading-math-label">{renderInlineSegments([label], context)}</span><span className="leading-math-description">{renderInlineSegments(description, context)}</span></>;
+    const labelEnd = leadingMathLabelEnd(inline);
+    const label = inline.slice(0, labelEnd);
+    const description = inline.slice(labelEnd).map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(/^\s+/u, "") } : segment);
+    return <><span className="leading-math-label">{renderInlineSegments(label, context)}</span><span className="leading-math-description">{renderInlineSegments(description, context)}</span></>;
   }
   return null;
 }
@@ -448,28 +515,53 @@ function renderAlphabeticListContent(block: CorpusBlock, context: ReferenceConte
   if (!hasAlphabeticListMarker(block)) return null;
   const inline = block.text?.inline;
   const normalized = block.text?.normalized;
-  const first = inline?.[0];
-  const source = first?.kind === "text" ? first.value : normalized;
+  const source = normalized;
   if (!source) return null;
   const match = source.match(/^(\s*(?:[a-z]+\.\d+\)|\(?[a-z]+[.)]|\d+[.)])\s+)/iu);
   if (!match) return null;
-  if (!inline || first?.kind !== "text") {
-    return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized?.slice(match[0].length)}</span></>;
+  if (!inline) {
+    return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{normalized.slice(match[0].length)}</span></>;
   }
-  const description = [{ ...first, value: first.value.slice(match[0].length) }, ...inline.slice(1)];
-  return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(description, context)}</span></>;
+  const split = splitInlinePrefix(inline, match[1]);
+  if (!split) return <><span className="list-marker-label">{match[1]}</span><span className="list-description">{renderInlineSegments(inline, context)}</span></>;
+  return <><span className="list-marker-label">{renderInlineSegments(split.marker, context)}</span><span className="list-description">{renderInlineSegments(split.description, context)}</span></>;
 }
 
 export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned = false, sourceUnitId, sourceDocument }: BlockContentProps) {
   const referenceContext = sourceUnitId && sourceDocument ? { sourceUnitId, sourceDocument } : null;
   if (block.text) {
+    const numberedNoteCounters = new Map<number, number>();
+    const renderNoteParagraph = (paragraph: TextParagraph, index: number) => {
+      const content = paragraph.inline
+        ? renderInlineSegments(paragraph.inline, referenceContext)
+        : renderReferenceText(paragraph.normalized, referenceContext, `${block.blockId}-paragraph-${index}`);
+      if (!paragraph.listMarker) {
+        numberedNoteCounters.clear();
+        return <p key={`${block.blockId}-paragraph-${index}`}>{content}</p>;
+      }
+      const match = paragraph.normalized.match(/^\s*(\d+[.)])\s+/u);
+      let marker = "–";
+      if (paragraph.listMarker === "numbered") {
+        const level = paragraph.listLevel ?? 0;
+        const nextNumber = (numberedNoteCounters.get(level) ?? 0) + 1;
+        numberedNoteCounters.set(level, nextNumber);
+        marker = match?.[1] ?? `${nextNumber}.`;
+      } else if (paragraph.listMarker === "bullet") {
+        numberedNoteCounters.clear();
+        marker = "•";
+      } else {
+        numberedNoteCounters.clear();
+      }
+      const description = match && !paragraph.inline ? renderReferenceText(paragraph.normalized.slice(match[0].length), referenceContext, `${block.blockId}-paragraph-${index}-description`) : content;
+      return <div className="scv-note-list-item" data-list-level={paragraph.listLevel ?? 0} key={`${block.blockId}-paragraph-${index}`}><span className="scv-note-list-marker" aria-hidden="true">{marker}</span><span className="scv-note-list-description">{description}</span></div>;
+    };
     const textBlock = (content: React.ReactNode) => block.kind === "footnote"
-      ? <div className="scv-note-content"><span className="scv-note-rule" aria-hidden="true" />{block.text?.paragraphs ? block.text.paragraphs.map((paragraph, index) => <p key={`${block.blockId}-paragraph-${index}`}>{paragraph.inline ? renderInlineSegments(paragraph.inline, referenceContext) : renderReferenceText(paragraph.normalized, referenceContext, `${block.blockId}-paragraph-${index}`)}</p>) : <p>{content}</p>}<span className="scv-note-rule" aria-hidden="true" /></div>
+      ? <div className="scv-note-content"><span className="scv-note-rule" aria-hidden="true" />{block.text?.paragraphs ? block.text.paragraphs.map(renderNoteParagraph) : <p>{content}</p>}<span className="scv-note-rule" aria-hidden="true" /></div>
       : <p>{content}</p>;
     const alphabeticListContent = renderAlphabeticListContent(block, referenceContext);
     if (alphabeticListContent) return textBlock(alphabeticListContent);
     if (!block.text.inline) return textBlock(renderReferenceText(block.text.normalized, referenceContext, block.blockId));
-    const inline = block.text.inline;
+    const inline = alphaRatioInlineWithMarker(block, sourceUnitId) ?? block.text.inline;
     const leadingLabelContent = renderLeadingLabelContent(block, referenceContext, aligned);
     if (leadingLabelContent) return aligned ? <>{leadingLabelContent}</> : textBlock(leadingLabelContent);
     return textBlock(renderInlineSegments(inline, referenceContext));
@@ -500,7 +592,9 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   if (figure) {
     const width = Math.max(1, Math.round(figure.region?.width ?? 800));
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
-    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} />{figure.caption && <figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption>}<CopyAssetButton kind="figure" /></figure>;
+    const displayScale = figure.displayScale ?? 1;
+    const imageStyle = displayScale === 1 ? undefined : { width: `${displayScale * 100}%`, maxWidth: "none" };
+    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} />{figure.caption && <figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption>}<CopyAssetButton kind="figure" /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }

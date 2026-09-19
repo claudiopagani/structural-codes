@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,8 +11,10 @@ type Block = {
     blockId: string;
     kind: string;
     listMarker?: "bullet" | "dash" | "none";
+    listLevel?: number;
+    indentLevel?: number;
     text?: TextValue;
-    evidence?: { pdfPage?: number };
+    evidence?: { pdfPage?: number; rawSha256?: string; normalizedSha256?: string; transformations?: Array<Record<string, string>>; [key: string]: unknown };
 };
 type Unit = { blocks: Block[] };
 
@@ -20,6 +23,10 @@ const unitDir = join(root, "corpus", "units", "ntc2018");
 
 function assert(condition: unknown, message: string): asserts condition {
     if (!condition) throw new Error(message);
+}
+
+function sha256(value: string) {
+    return createHash("sha256").update(value, "utf8").digest("hex");
 }
 
 async function loadUnit(number: string) {
@@ -77,6 +84,59 @@ function style(block: ReturnType<typeof blockStartingWith>, kind: "em" | "strong
     replacePlain(block, value, { kind, value }, count);
 }
 
+function alignedLabel(block: ReturnType<typeof blockStartingWith>, label: string) {
+    assert(block.text.inline?.[0]?.kind === "math", `Etichetta matematica mancante: ${block.blockId}`);
+    assert(block.text.inline[0].value === label, `Etichetta inattesa: ${block.blockId}`);
+    block.kind = "list-item";
+    block.listMarker = "none";
+}
+
+function sliceInline(inline: InlineSegment[], start: number, end: number) {
+    const result: InlineSegment[] = [];
+    let offset = 0;
+    for (const segment of inline) {
+        const segmentEnd = offset + segment.value.length;
+        const from = Math.max(start, offset) - offset;
+        const to = Math.min(end, segmentEnd) - offset;
+        if (to > from) result.push({ ...segment, value: segment.value.slice(from, to) });
+        offset = segmentEnd;
+    }
+    return result;
+}
+
+function splitWhere(unit: Unit) {
+    const block = unit.blocks.find((candidate) => candidate.text?.normalized.startsWith("dove: P è"));
+    if (!block?.text) return;
+    const prefix = "dove:";
+    const separatorLength = prefix.length + 1;
+    const originalRaw = block.text.raw ?? block.text.normalized;
+    const originalInline = currentInline(block as Block & { text: TextValue });
+    const prefixBlock: Block = {
+        ...block,
+        blockId: `${block.blockId}-where`,
+        kind: "paragraph",
+        listMarker: undefined,
+        listLevel: undefined,
+        indentLevel: undefined,
+        text: { ...block.text, raw: prefix, normalized: prefix, inline: sliceInline(originalInline, 0, prefix.length) },
+        evidence: block.evidence ? {
+            ...block.evidence,
+            rawSha256: sha256(prefix),
+            normalizedSha256: sha256(prefix),
+            transformations: [...(block.evidence.transformations ?? []), { operation: "manual-correction", ruleVersion: "ntc7-format-audit-step2-0.1.0", note: "Separato il capoverso introduttivo ‘dove:’ dalla lista delle definizioni." }],
+        } : undefined,
+    };
+    const remainderRaw = originalRaw.slice(separatorLength);
+    block.text = { ...block.text, raw: remainderRaw, normalized: block.text.normalized.slice(separatorLength), inline: sliceInline(originalInline, separatorLength, block.text.normalized.length) };
+    if (block.evidence) {
+        block.evidence.rawSha256 = sha256(remainderRaw);
+        block.evidence.normalizedSha256 = sha256(block.text.normalized);
+        block.evidence.transformations = [...(block.evidence.transformations ?? []), { operation: "manual-correction", ruleVersion: "ntc7-format-audit-step2-0.1.0", note: "Separato il capoverso introduttivo ‘dove:’ dalla lista delle definizioni." }];
+    }
+    const index = unit.blocks.indexOf(block);
+    unit.blocks.splice(index, 0, prefixBlock);
+}
+
 function classifyMarkers(unit: Unit) {
     for (const block of unit.blocks) {
         if (block.kind !== "list-item" || !block.text) continue;
@@ -107,11 +167,18 @@ await updateUnit("7.3.1", (unit) => {
     style(demands, "em", "SLV", 3);
     style(demands, "em", "SLD", 3);
     style(blockStartingWith(unit, "Il valore di q utilizzato"), "em", "SLV", 1);
+    for (const [prefix, label] of [["q_0 è", "q_0"], ["K_R è", "K_R"]] as const) alignedLabel(blockStartingWith(unit, prefix), label);
+    splitWhere(unit);
+    for (const [prefix, label] of [["P è", "P"], ["d_{Er} è", "d_{Er}"], ["V è", "V"], ["h è", "h"]] as const) alignedLabel(blockStartingWith(unit, prefix), label);
 });
 
 await updateUnit("7.3.2", (unit) => {
     style(blockStartingWith(unit, "a) dinamicamente"), "em", "a)");
     style(blockStartingWith(unit, "b) staticamente"), "em", "b)");
+});
+
+await updateUnit("7.3.3.2", (unit) => {
+    for (const [prefix, label] of [["F_h =", "F_h = S_d(T_1) W λ/g"], ["F_i è", "F_i"], ["W_i e", "W_i"], ["z_i e", "z_i"], ["S_d(T_1) è", "S_d(T_1)"], ["W è", "W"], ["λ è", "λ"], ["g è", "g"]] as const) alignedLabel(blockStartingWith(unit, prefix), label);
 });
 
 for (const number of ["7.3.3.1", "7.3.4", "7.3.5", "7.3.6"]) {
@@ -132,6 +199,7 @@ await updateUnit("7.3.4.2", (unit) => {
     style(blockStartingWith(unit, "Gruppo 1"), "em", "Gruppo 1 - Distribuzioni principali:");
     style(blockStartingWith(unit, "Gruppo 2"), "em", "Gruppo 2 - Distribuzioni secondarie:");
     for (const marker of ["a)", "b)", "c)"]) style(blockStartingWith(unit, `${marker} distribuzione`), "em", marker);
+    for (const prefix of ["distribuzione proporzionale", "distribuzione corrispondente a un andamento"]) blockStartingWith(unit, prefix).listLevel = 1;
 });
 
 await updateUnit("7.3.6.1", (unit) => {
@@ -141,6 +209,8 @@ await updateUnit("7.3.6.1", (unit) => {
     style(blockStartingWith(unit, "Si deve verificare che i singoli elementi strutturali e la struttura nel suo insieme possiedano una capacità in resistenza"), "em", "SLV");
     style(blockStartingWith(unit, "- a 1,2 volte"), "strong", "SLV");
     style(blockStartingWith(unit, "- alla domanda"), "strong", "SLC");
+    alignedLabel(blockStartingWith(unit, "d_r è"), "d_r");
+    alignedLabel(blockStartingWith(unit, "h è"), "h");
 });
 
 for (const number of ["7.3.6.2", "7.3.6.3", "7.4.2.1", "7.4.2.2"]) {
@@ -167,12 +237,22 @@ await updateUnit("7.4.3.1", (unit) => {
     style(mixed, "strong", "strutture miste equivalenti a telai");
     style(mixed, "strong", "strutture miste equivalenti a pareti");
     style(blockStartingWith(unit, "Una struttura a pareti"), "strong", "struttura a pareti estese debolmente armate");
+    for (const prefix of ["r² =", "lₛ² ="]) {
+        const definition = blockStartingWith(unit, prefix);
+        definition.kind = "list-item";
+        definition.listMarker = "none";
+        definition.listLevel = 1;
+        definition.indentLevel = 1;
+    }
 });
 
 await updateUnit("7.4.3.2", (unit) => {
     style(blockStartingWith(unit, "Ai fini della determinazione"), "em", "a pareti accoppiate");
     style(blockStartingWith(unit, "a) Strutture"), "em", "a)");
     style(blockStartingWith(unit, "b) Strutture"), "em", "b)");
+    for (const prefix of ["- strutture a telaio di un piano", "- strutture a telaio con più piani ed una sola campata", "- strutture a telaio con più piani e più campate", "- strutture con solo due pareti", "- altre strutture a pareti", "- strutture a pareti accoppiate"]) {
+        blockStartingWith(unit, prefix).listLevel = 1;
+    }
 });
 
 await updateUnit("7.4.4.1.1", (unit) => {
@@ -186,6 +266,16 @@ async function updateCaptions() {
         const manifest = JSON.parse(await readFile(path, "utf8"));
         const table = manifest.tables.find((value: any) => value.officialNumber === "7.3.II");
         assert(table, "Tabella 7.3.II mancante");
+        for (const cell of table.headers[0]) if (cell.colSpan === 2) cell.align = "center";
+        for (const cell of table.headers[1].slice(1)) cell.align = "center";
+        for (const row of table.rows) {
+            if (row.length === 1 && row[0].colSpan === 3) {
+                row[0].shade = "gray";
+                row[0].align = "center";
+                continue;
+            }
+            for (const cell of row.slice(1)) cell.align = "center";
+        }
         table.captionInline = [
             { kind: "em", value: "Valori massimi del valore di base " },
             { kind: "math", value: "q_0", latex: "q_0" },
@@ -199,7 +289,21 @@ async function updateCaptions() {
         const manifest = JSON.parse(await readFile(path, "utf8"));
         const table = manifest.tables.find((value: any) => value.officialNumber === "7.3.III");
         assert(table, "Tabella 7.3.III mancante");
+        for (const cell of [...table.headers.flat(), ...table.rows.flat()]) cell.align = "center";
         table.captionInline = [{ kind: "em", value: table.caption }];
+        await writeFile(path, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+    }
+    {
+        const path = join(root, "corpus", "assets", "ntc2018", "7-step3.json");
+        const manifest = JSON.parse(await readFile(path, "utf8"));
+        const labels = new Map([
+            ["7.3.6.1-7.3.11a", "per tamponature fragili"],
+            ["7.3.6.1-7.3.11b", "per tamponature duttili"],
+        ]);
+        for (const formula of manifest.formulas ?? []) {
+            const label = labels.get(formula.id.split(":").at(-1) ?? "");
+            if (label && !formula.latex.includes(label)) formula.latex += `\\quad\\text{${label}}`;
+        }
         await writeFile(path, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
     }
     {

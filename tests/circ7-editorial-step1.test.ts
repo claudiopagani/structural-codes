@@ -28,7 +28,7 @@ test("C7 pp. 197-204 conserva marker, enfasi e matematica inline verificati", as
 
     const secondary = await unit("c7.2.3");
     assert.ok(secondary.blocks.filter((candidate) => candidate.kind === "list-item" && (candidate.evidence?.pdfPage ?? 0) <= 204).every(({ listMarker }) => listMarker === "none"));
-    assert.ok(block(secondary, "Spettri di risposta di piano").text.inline?.every((segment) => segment.kind === "em"));
+    assert.ok(block(secondary, "Spettri di risposta di piano").text.inline?.every((segment) => segment.kind === "strong-em"));
     assert.ok(block(secondary, "S_i(T_i) è").text.inline?.some((segment) => segment.kind === "math" && segment.value === "q" && segment.latex === "q"));
 });
 
@@ -57,7 +57,7 @@ test("C7 pp. 205-214 distingue glossari, elenchi e didascalie", async () => {
         const expected = page === 210 ? "bullet" : "dash";
         assert.ok(nonlinear.blocks.filter((candidate) => candidate.kind === "list-item" && candidate.evidence?.pdfPage === page).every(({ listMarker }) => listMarker === expected));
     }
-    assert.ok(block(nonlinear, "Metodo A, basato").text.inline?.some((segment) => segment.kind === "em" && segment.value === "Metodo A"));
+    assert.ok(block(nonlinear, "Metodo A, basato").text.inline?.some((segment) => segment.kind === "strong" && segment.value === "Metodo A"));
 
     const manifest = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "7.2.json"), "utf8")) as { figures: Array<{ officialNumber: string; caption: string; captionInline?: Inline[] }> };
     const figure = manifest.figures.find((candidate) => candidate.officialNumber === "C7.2.4");
@@ -109,7 +109,7 @@ test("C7 pp. 235-244 conserva etichette e didascalie di ponti e isolamento", asy
     assert.ok(scope.blocks.filter((candidate) => candidate.kind === "list-item").every(({ listMarker }) => listMarker === "none"));
     assert.ok(block(scope, "Per realizzare l’isolamento").text.inline?.some((segment) => segment.kind === "strong" && segment.value === "sovrastruttura"));
     const analysis = await unit("c7.10.5.3.2");
-    assert.ok(analysis.blocks.filter((candidate) => candidate.kind === "list-item").every(({ listMarker }) => listMarker === "none"));
+    assert.ok(analysis.blocks.filter((candidate) => candidate.kind === "list-item").every(({ listMarker }) => listMarker === "dash"));
     assert.ok(block(analysis, "ξ = valore").text.inline?.some((segment) => segment.kind === "math" && segment.latex === "\\xi"));
     const manifest = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "7.10.json"), "utf8")) as { figures: Array<{ officialNumber: string; pdfPage: number; caption: string; captionInline?: Inline[] }> };
     assert.ok(manifest.figures.filter((figure) => figure.pdfPage >= 236 && figure.pdfPage <= 239).every((figure) => figure.captionInline?.[0]?.kind === "strong" && figure.captionInline?.map(({ value }) => value).join("") === figure.caption));

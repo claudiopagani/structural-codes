@@ -499,6 +499,17 @@
                     "items": {
                         "$ref": "#/$defs/inlineSegment"
                     }
+                },
+                "listMarker": {
+                    "enum": [
+                        "numbered",
+                        "bullet",
+                        "dash"
+                    ]
+                },
+                "listLevel": {
+                    "type": "integer",
+                    "minimum": 0
                 }
             }
         },

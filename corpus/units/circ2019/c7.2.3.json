@@ -399,7 +399,7 @@
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
-            "kind": "em",
+            "kind": "strong-em",
             "value": "Spettri di risposta di piano"
           }
         ]
@@ -420,7 +420,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.3 internal heading rendered bold italic",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "cc33294832cb9a6f429377171b168830de7c63548ace1e25e3d2bf8ec017ad5a",
         "normalizedSha256": "cc33294832cb9a6f429377171b168830de7c63548ace1e25e3d2bf8ec017ad5a"
       }
@@ -1165,7 +1171,7 @@
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
-            "kind": "em",
+            "kind": "strong-em",
             "value": "Formulazione semplificata, a diverse quote, per elementi non strutturali, impianti, eventuali meccanismi locali"
           }
         ]
@@ -1186,7 +1192,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.3 internal heading rendered bold italic",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "82b97fdd212b6b19d85dfbf5ec071505f6c596a0d427847248cb1286f7613552",
         "normalizedSha256": "82b97fdd212b6b19d85dfbf5ec071505f6c596a0d427847248cb1286f7613552"
       }
@@ -1376,7 +1388,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.2.3#block-editorial-038",
-      "kind": "heading",
+      "kind": "paragraph",
       "origin": "official",
       "text": {
         "raw": "dove:",
@@ -1399,7 +1411,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.3 dove after [C7.2.7] is ordinary text, not a bold heading",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
         "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
@@ -1525,13 +1543,18 @@
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
+            "kind": "math",
+            "value": "a e b",
+            "latex": "a\\;\\mathrm{e}\\;b"
+          },
+          {
             "kind": "text",
-            "value": "a e b sono coefficienti che definiscono l’intervallo di amplificazione massima dello spettro di piano, che possono essere assunti pari a "
+            "value": " sono coefficienti che definiscono l’intervallo di amplificazione massima dello spettro di piano, che possono essere assunti pari a "
           },
           {
             "kind": "math",
             "value": "0,8",
-            "latex": "0{,}8"
+            "latex": "0,8"
           },
           {
             "kind": "text",
@@ -1540,7 +1563,7 @@
           {
             "kind": "math",
             "value": "1,1",
-            "latex": "1{,}1"
+            "latex": "1,1"
           },
           {
             "kind": "text",
@@ -1564,7 +1587,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.3 grouped labels a e b aligned with the following descriptions",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "5671b127de9b0b9b7fdc83bdd60be721b3f6214234f9fc92911de6c80b256d23",
         "normalizedSha256": "5671b127de9b0b9b7fdc83bdd60be721b3f6214234f9fc92911de6c80b256d23"
       },
@@ -2108,7 +2137,22 @@
       "text": {
         "raw": "dove n è il numero di piani.",
         "normalized": "dove n è il numero di piani.",
-        "normalizationVersion": "circ7-manual-render-transcription-0.2.0"
+        "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "dove "
+          },
+          {
+            "kind": "math",
+            "value": "n",
+            "latex": "n"
+          },
+          {
+            "kind": "text",
+            "value": " è il numero di piani."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -2126,7 +2170,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.10 n rendered as inline mathematics",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "8f4e6d7fa2de73ecbde2c3d9bc50369b67bd93705c387bd461bf13fce85cd9ae",
         "normalizedSha256": "8f4e6d7fa2de73ecbde2c3d9bc50369b67bd93705c387bd461bf13fce85cd9ae"
       }
@@ -2195,7 +2245,7 @@
         "normalizationVersion": "circ7-manual-render-transcription-0.2.0",
         "inline": [
           {
-            "kind": "em",
+            "kind": "strong-em",
             "value": "Formulazione semplificata per costruzioni con struttura a telai"
           }
         ]
@@ -2216,7 +2266,13 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ7-manual-render-transcription-0.2.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.2.3 internal heading rendered bold italic",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "4f45df534d7dfb431a3c2a867624b0b7775198804016f0743214fc14caca526c",
         "normalizedSha256": "4f45df534d7dfb431a3c2a867624b0b7775198804016f0743214fc14caca526c"
       }

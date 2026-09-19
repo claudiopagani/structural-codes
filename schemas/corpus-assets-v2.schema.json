@@ -402,6 +402,14 @@
         "spacer": {
           "type": "boolean",
           "default": false
+        },
+        "subrowIndent": {
+          "type": "boolean",
+          "default": false
+        },
+        "subrowLabel": {
+          "type": "boolean",
+          "default": false
         }
       }
     },
@@ -589,6 +597,10 @@
             },
             "region": {
               "$ref": "#/$defs/region"
+            },
+            "displayScale": {
+              "type": "number",
+              "exclusiveMinimum": 0
             },
             "sha256": {
               "type": "string",

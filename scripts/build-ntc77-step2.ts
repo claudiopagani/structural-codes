@@ -288,7 +288,12 @@ add("7.8.1.5.2", "Analisi lineare statica", title("7.8.1.5.2", 263, 6, "7.8.1.5.
     p("7.8.1.5.2", "p7", 263, 30, 32, "Nel caso di solai deformabili la ridistribuzione può essere eseguita solamente tra pannelli complanari collegati da cordoli o incatenamenti oppure appartenenti alla stessa parete. In tal caso, nel calcolo dei limiti per la ridistribuzione, V_piano è da intendersi come la somma dei tagli nei pannelli complanari oppure appartenenti alla stessa parete.", [quantity("V_piano", "V_{piano}")]),
     p("7.8.1.5.2", "p8", 263, 33, 42, "Le verifiche fuori piano possono essere eseguite separatamente, e possono essere adottate le forze equivalenti indicate al § 7.2.3 per gli elementi non strutturali, assumendo q_a = 3. Più precisamente l’azione sismica ortogonale alla parete può essere rappresentata da una forza orizzontale distribuita, pari a (S_a/q_a) volte il peso della parete nonché da forze orizzontali concentrate pari a (S_a/q_a) volte il peso trasmesso dagli orizzontamenti che si appoggiano sulla parete, qualora queste forze non siano efficacemente trasmesse a muri trasversali disposti parallelamente alla direzione del sisma. Per le pareti resistenti al sisma, che rispettano i limiti di Tab. 7.8.II, si può assumere per S_a la seguente espressione:", [quantity("q_a = 3", "q_a=3"), quantity("(S_a/q_a)", "(S_a/q_a)"), sa]),
     formulaBlock("7.8.1.5.2", fSa, 263, null),
-    p("7.8.1.5.2", "p9", 263, 45, 52, "dove: α è il rapporto tra accelerazione massima del terreno a_g su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità g; S è il coefficiente che tiene conto della categoria di sottosuolo e delle condizioni topografiche secondo quanto riportato nel § 3.2.3.2.1; Z è la quota del baricentro dell’elemento non strutturale misurata a partire dal piano di fondazione (vedi § 3.2.2); H è l’altezza della costruzione misurata a partire dal piano di fondazione; Per le strutture con isolamento sismico si assume sempre Z=0.", [quantity("α", "\\alpha"), quantity("a_g", "a_g"), variable("g"), variable("S"), variable("Z"), variable("H"), quantity("Z=0", "Z=0")]),
+    p("7.8.1.5.2", "p9", 263, 45, 45, "dove:"),
+    li("7.8.1.5.2", "p9-alpha", 263, 46, 47, "α è il rapporto tra accelerazione massima del terreno a_g su sottosuolo tipo A per lo stato limite in esame (vedi § 3.2.1) e l’accelerazione di gravità g;", [quantity("α", "\\alpha"), quantity("a_g", "a_g"), variable("g")]),
+    li("7.8.1.5.2", "p9-s", 263, 48, 49, "S è il coefficiente che tiene conto della categoria di sottosuolo e delle condizioni topografiche secondo quanto riportato nel § 3.2.3.2.1;", [variable("S")]),
+    li("7.8.1.5.2", "p9-z", 263, 50, 50, "Z è la quota del baricentro dell’elemento non strutturale misurata a partire dal piano di fondazione (vedi § 3.2.2);", [variable("Z")]),
+    li("7.8.1.5.2", "p9-h", 263, 51, 51, "H è l’altezza della costruzione misurata a partire dal piano di fondazione;", [variable("H")]),
+    p("7.8.1.5.2", "p9-tail", 263, 52, 52, "Per le strutture con isolamento sismico si assume sempre Z=0.", [quantity("Z=0", "Z=0")]),
     p("7.8.1.5.2", "p10", 263, 53, 54),
 ], [f780, fSa]);
 add("7.8.1.5.3", "Analisi dinamica modale", title("7.8.1.5.3", 263, 55, "7.8.1.5.3 Analisi dinamica modale"), [p("7.8.1.5.3", "p1", 263, 56, 57)]);
@@ -1362,6 +1367,7 @@ const tables = [
             [cell("4", "4"), ...["4,0%", "4,5%", "4,5%", "5,0%", "5,5%", "5,5%", "5,5%", "6,0%", "6,5%", "6,5%"].map(percentCell)],
         ],
         notes: ["(1) S_T si applica solo nel caso di strutture di Classe d’uso III e IV (v. § 2.4.2)"],
+        columnWidths: [10, 6, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4],
     },
 ];
 

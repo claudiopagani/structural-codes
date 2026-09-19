@@ -27,7 +27,7 @@ import {
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
-import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
 import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
 import { BacklinkPanel, CitationActions, ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
@@ -54,9 +54,13 @@ function hasTrailingMathWithPunctuation(block: CorpusUnit["blocks"][number]) {
 }
 
 function scvBlockClass(block: CorpusUnit["blocks"][number], sourceUnitId?: string) {
-  const tabbedTrailingSymbol = (sourceUnitId?.endsWith(":4.5.2.2.1") || sourceUnitId?.endsWith(":4.5.4")) && hasTrailingMathWithPunctuation(block);
+  const tabbedTrailingSymbol = (sourceUnitId?.endsWith(":4.5.2.2.1") || sourceUnitId?.endsWith(":4.5.4") || sourceUnitId?.endsWith(":c7.6.8")) && hasTrailingMathWithPunctuation(block);
   const catenaryLabel = sourceUnitId?.endsWith(":5.2.2.9.1") && block.kind === "list-item" && block.listMarker === "none";
-  return `scv-block scv-block-${block.kind} ${hasOfficialListMarker(block) ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${listLevelClass(block)} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${tabbedTrailingSymbol ? "list-item-with-trailing-symbol-tabbed" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""}`;
+  const alphaRatioLayout = hasAlphaRatioListLayout(block, sourceUnitId);
+  const inferredAlphaRatioMarker = hasInferredAlphaRatioListMarker(block, sourceUnitId);
+  const officialMarker = hasOfficialListMarker(block) || inferredAlphaRatioMarker;
+  const levelClass = listLevelClass(block) || (alphaRatioLayout ? "list-item-level-1" : "");
+  return `scv-block scv-block-${block.kind} ${officialMarker ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) && !inferredAlphaRatioMarker ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${levelClass} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${tabbedTrailingSymbol ? "list-item-with-trailing-symbol-tabbed" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""} ${alphaRatioLayout ? "list-item-with-alpha-ratio" : ""}`;
 }
 
 function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {

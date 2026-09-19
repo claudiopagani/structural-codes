@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 type InlineKind = "text" | "em" | "strong" | "math";
 type Inline = { kind: InlineKind; value: string; latex?: string };
-type Block = { blockId: string; kind: string; listMarker?: "bullet" | "dash" | "none"; text?: { raw?: string; normalized: string; inline?: Inline[] }; evidence?: { pdfPage?: number } };
+type Block = { blockId: string; kind: string; listMarker?: "bullet" | "dash" | "none"; listLevel?: number; indentLevel?: number; text?: { raw?: string; normalized: string; inline?: Inline[] }; evidence?: { pdfPage?: number; transformations?: Array<{ operation: string; ruleVersion: string; note: string }> } };
 type Unit = { blocks: Block[] };
 const root = fileURLToPath(new URL("../", import.meta.url));
 const unitDir = join(root, "corpus", "units", "ntc2018");
@@ -33,6 +33,45 @@ const math = (b: ReturnType<typeof find>, value: string, latex: string, count = 
 function markers(unit: Unit) { for (const b of unit.blocks) { if (b.kind !== "list-item" || !b.text || (b.evidence?.pdfPage ?? 0) < 230 || (b.evidence?.pdfPage ?? 0) > 239) continue; const raw = (b.text.raw ?? "").trimStart(); const norm = b.text.normalized.trimStart(); b.listMarker = /^x\s/u.test(raw) ? "bullet" : (/^(?:-|ȭ)\s/u.test(raw) || /^-\s/u.test(norm) ? "dash" : "none"); } }
 async function edit(number: string, callback: (unit: Unit) => void = () => undefined) { const path = join(unitDir, `${number}.json`); const unit = JSON.parse(await readFile(path, "utf8")) as Unit; markers(unit); callback(unit); await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8"); }
 
+await edit("7.4.3.1", (u) => {
+    style(find(u, "strutture a telaio"), "strong", "strutture a telaio");
+    style(find(u, "strutture a pareti"), "strong", "strutture a pareti");
+    const mixed = find(u, "strutture miste telaio-pareti");
+    for (const label of ["strutture miste telaio-pareti", "strutture miste equivalenti a telai", "strutture miste equivalenti a pareti"]) style(mixed, "strong", label);
+    style(find(u, "strutture a pendolo inverso"), "strong", "strutture a pendolo inverso");
+    style(find(u, "strutture a pendolo inverso intelaiate monopiano"), "strong", "strutture a pendolo inverso intelaiate monopiano");
+    style(find(u, "strutture deformabili torsionalmente"), "strong", "strutture deformabili torsionalmente");
+    style(find(u, "Una struttura a pareti"), "strong", "struttura a pareti estese debolmente armate");
+    for (const b of u.blocks.filter((x) => x.kind === "list-item" && (x.evidence?.pdfPage ?? 0) >= 228 && (x.evidence?.pdfPage ?? 0) <= 229)) b.listMarker = "dash";
+    for (const b of u.blocks.filter((x) => x.text?.normalized.startsWith("r² =") || x.text?.normalized.startsWith("lₛ² ="))) {
+        b.kind = "list-item";
+        b.listMarker = "none";
+        b.listLevel = 1;
+        b.indentLevel = 1;
+    }
+    const torsional = find(u, "strutture deformabili torsionalmente");
+    const ratio = inline(torsional).find((x) => x.kind === "math" && x.value === "r²/lₛ² ≥ 1");
+    if (ratio) ratio.latex = "r^2/l_s^2\\ge 1";
+    for (const b of u.blocks.filter((x) => x.text?.normalized.startsWith("r² =") || x.text?.normalized.startsWith("lₛ² ="))) {
+        b.evidence ??= {};
+        b.evidence.transformations ??= [];
+        if (!b.evidence.transformations.some((x) => x.ruleVersion === "inline-fraction-layout-0.1.0")) {
+            b.evidence.transformations.push({ operation: "manual-correction", ruleVersion: "inline-fraction-layout-0.1.0", note: "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria." });
+        }
+    }
+});
+await edit("7.4.3.2", (u) => {
+    style(find(u, "Ai fini della determinazione"), "em", "a pareti accoppiate");
+    for (const marker of ["a)", "b)"]) {
+        const b = find(u, `${marker} Strutture`);
+        style(b, "em", marker);
+        b.listMarker = "none";
+    }
+    for (const b of u.blocks.filter((x) => x.kind === "list-item" && x.text?.normalized.trimStart().startsWith("- "))) {
+        b.listMarker = "dash";
+        b.listLevel = 1;
+    }
+});
 await edit("7.4.4.1.1");
 await edit("7.4.4.1.2", (u) => style(find(u, "La domanda in duttilità"), "em", "SLC"));
 await edit("7.4.4.2.1", (u) => {
@@ -59,6 +98,12 @@ await edit("7.4.5.1");
 await edit("7.4.5.2", (u) => { for (const marker of ["a)", "b)", "c)"]) style(find(u, `${marker} collegamenti`), "em", marker); });
 await edit("7.4.5.2.1", (u) => { for (const label of ["Collegamenti lontani dalle zone dissipative o di tipo a)", "Collegamenti sovradimensionati o di tipo b)", "Collegamenti che dissipano energia o di tipo c)"]) style(find(u, label), "em", label); });
 await edit("7.4.6");
+for (const n of ["7.4.6.2.1", "7.4.6.2.2"]) await edit(n, (u) => {
+    for (const b of u.blocks) if (b.kind === "paragraph" && b.text?.inline?.[0]?.kind === "math") {
+        b.kind = "list-item";
+        b.listMarker = "none";
+    }
+});
 await edit("7.4.6.1.1", (u) => replace(find(u, "La larghezza"), "≥ ", { kind: "math", value: "≥ ", latex: "\\ge " }));
 
 for (const manifestName of ["7.4-step1.json", "7.4-step2.json"]) {

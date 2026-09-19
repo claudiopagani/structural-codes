@@ -55,9 +55,28 @@ test("NTC 7 PDF 211-219 conserva quantità e caption in LaTeX", async () => {
     assert.deepEqual(table72.captionInline.map((value: any) => value.kind), ["em", "math", "em"]);
     const table73 = assets.tables.find((value: any) => value.officialNumber === "7.3.I");
     assert.deepEqual(table73.captionInline.map((value: any) => value.kind), ["em", "math", "em"]);
+    assert.equal([...table73.headers.flat(), ...table73.rows.flat()].every((value: any) => value.align === "center"), true);
 });
 
 test("NTC 7.3 non introduce la virgola duplicata", async () => {
     const unit = await json("corpus/units/ntc2018/7.3.json");
     assert.equal(block(unit, "- per l’analisi non lineare").text.normalized.includes(",,"), false);
+});
+
+test("NTC 7.2 allinea Tab. 7.2.I e conserva gli elenchi a etichette", async () => {
+    const assets = await json("corpus/assets/ntc2018/7-step1.json");
+    const table = assets.tables.find((value: any) => value.officialNumber === "7.2.I");
+    assert.deepEqual(table.columnWidths, [20, 24, 23, 16.5, 16.5]);
+    assert.equal([...table.headers.flat(), ...table.rows.flat()].every((value: any) => value.align === "center"), true);
+    assert.equal(table.rows[0][1].text, "Travi\n(§ 7.4.4.1.1)");
+    assert.equal(table.rows[1][1].text, "Pressoflessione\n[7.4.4]");
+
+    const unit = await json("corpus/units/ntc2018/7.2.3.json");
+    const labels = unit.blocks.slice(-4);
+    assert.deepEqual(labels.map((value: any) => value.kind), ["list-item", "list-item", "list-item", "list-item"]);
+    assert.deepEqual(labels.map((value: any) => value.listMarker), ["none", "none", "none", "none"]);
+    assert.deepEqual(labels.map((value: any) => value.text.inline[0].value), ["F_a", "S_a", "W_a", "q_a"]);
+
+    const profiles = assets.formulas.filter((value: any) => value.id.includes("7.2.5-axial-"));
+    assert.deepEqual(profiles.map((value: any) => value.latex.match(/tipo [A-D]/u)?.[0]), ["tipo A", "tipo B", "tipo C", "tipo D"]);
 });

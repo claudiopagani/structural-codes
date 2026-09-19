@@ -482,7 +482,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p6",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "q \n0 è il valore base del fattore di comportamento allo SLV, i cui massimi valori sono riportati in tabella 7.3.II in dipendenza della\nClasse di Duttilità, della tipologia strutturale, del coefficiente Ώ di cui al § 7.9.2.1 e del rapporto ΅u/΅1 tra il valore dell’azione\nsismica per il quale si verifica la plasticizzazione in un numero di zone dissipative tale da rendere la struttura un meccanismo\ne quello per il quale il primo elemento strutturale raggiunge la plasticizzazione a flessione; la scelta di q0 deve essere\nesplicitamente giustificata;",
@@ -575,11 +575,12 @@
         ],
         "rawSha256": "4706258e2dae08dee685728e56747c38d2c012114233a29533202376e22b2cfe",
         "normalizedSha256": "e01ecfb3bdf1417de236bc528daa0a70602e5170f0e51ad8973c207f0a0fdc7d"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p7",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "K \nR è un fattore che dipende dalle caratteristiche di regolarità in altezza della costruzione, con valore pari ad 1 per costruzioni\nregolari in altezza e pari a 0,8 per costruzioni non regolari in altezza.",
@@ -637,7 +638,8 @@
         ],
         "rawSha256": "2ecfb90c8437393d9885296fe9aaac9ff47aa2c1a0ed1aa7bc9efb03b5fe7e9c",
         "normalizedSha256": "378e133409143c3889f0bc4058d2052ebf33e42d46056ab4298dd4c86ee735e6"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-table-7-3-ii",
@@ -1240,7 +1242,7 @@
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
-            "kind": "em",
+            "kind": "strong-em",
             "value": "Effetti delle non linearità geometriche"
           }
         ]
@@ -1380,18 +1382,76 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p15",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p15-where",
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove:\nP è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;",
-        "normalized": "dove: P è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;",
+        "raw": "dove:",
+        "normalized": "dove:",
         "normalizationVersion": "ntc7-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: "
+            "value": "dove:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 221,
+        "printedPage": "217",
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 82.954,
+          "y": 934.4,
+          "width": 428.6,
+          "height": 20.7
+        },
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Ripristinati numerazione, glifi, simboli e matematica confrontati con il render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc7-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-format-audit-step2-0.1.0",
+            "note": "Separato il capoverso introduttivo ‘dove:’ dalla lista delle definizioni."
+          }
+        ],
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p15",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "P è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;",
+        "normalized": "P è il carico verticale totale dovuto all’orizzontamento in esame e alla struttura ad esso sovrastante;",
+        "normalizationVersion": "ntc7-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "math",
             "value": "P",
@@ -1439,15 +1499,21 @@
             "operation": "unicode-nfc",
             "ruleVersion": "ntc7-editorial-profile-0.1.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc7-format-audit-step2-0.1.0",
+            "note": "Separato il capoverso introduttivo ‘dove:’ dalla lista delle definizioni."
           }
         ],
-        "rawSha256": "502597bda219b28e84d9206564b64250d4b3a5ef3456608561f1e42c30905319",
-        "normalizedSha256": "d74f85e2dbdf46c3d134e4677c06151f0f57d75382a357358199937f7d5693c8"
-      }
+        "rawSha256": "9dd43aa8a86bd5b0b8b262ef0d24232b26ac07cd29cb860ac1238717a9e6d15b",
+        "normalizedSha256": "9dd43aa8a86bd5b0b8b262ef0d24232b26ac07cd29cb860ac1238717a9e6d15b"
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p16",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "d \nER è lo spostamento orizzontale medio d’interpiano allo SLV, ottenuto come differenza tra lo spostamento orizzontale\ndell’orizzontamento considerato e lo spostamento orizzontale dell’orizzontamento immediatamente sottostante, entrambi\nvalutati come indicato al § 7.3.3.3;",
@@ -1513,11 +1579,12 @@
         ],
         "rawSha256": "f2a8fb756247ed87997b95fa43c3ac335b53afe591df6ed732a40fb720aab9c2",
         "normalizedSha256": "538e23e8ca267652852a25be4cef86501c4d5df668373b3b16062794227e1ad2"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p17",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "V è la forza orizzontale totale in corrispondenza dell’orizzontamento in esame, derivante dall’analisi lineare con fattore di\ncomportamento q;",
@@ -1584,11 +1651,12 @@
         ],
         "rawSha256": "f3defbe0cddc63aee2421627329d86843997a95199ad101f10697da0a7068d24",
         "normalizedSha256": "7b2e0cd9b15d91a7a01c60ffd10dbff2b26091c9e6e96b6af5f6e28f369ff1b1"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p18",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "h è la distanza tra l’orizzontamento in esame e quello immediatamente sottostante.",
@@ -1625,7 +1693,8 @@
         "transformations": [],
         "rawSha256": "a1a991b086568e4cf442b18eb623cceac53f179ab6303f07620c0a533dfa2d1c",
         "normalizedSha256": "a1a991b086568e4cf442b18eb623cceac53f179ab6303f07620c0a533dfa2d1c"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.3.1#block-p19",

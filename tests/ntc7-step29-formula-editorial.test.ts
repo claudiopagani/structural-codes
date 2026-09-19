@@ -140,8 +140,8 @@ test("NTC tabella 7.11.I conserva intestazioni e valori ufficiali", async () => 
     assert.equal(table.columnCount, 3);
     assert.equal(table.headers.length, 3);
     assert.deepEqual(table.headers[0], [
-        { text: "", rowSpan: 3 },
-        { text: "Categoria di sottosuolo", colSpan: 2 },
+        { text: "", rowSpan: 3, align: "center" },
+        { text: "Categoria di sottosuolo", colSpan: 2, align: "center" },
     ]);
     assert.deepEqual(table.headers[1].map((cell: any) => cell.text), ["A", "B, C, D, E"]);
     assert.deepEqual(table.headers[2].map((cell: any) => cell.latex), ["\\beta_s", "\\beta_s"]);

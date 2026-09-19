@@ -103,6 +103,13 @@ function math(block: ReturnType<typeof blockStartingWith>, value: string, latex:
     replacePlain(block, value, { kind: "math", value, latex }, count);
 }
 
+function alignedLabel(block: ReturnType<typeof blockStartingWith>, label: string) {
+    assert(block.text.inline?.[0]?.kind === "math", `Etichetta matematica mancante: ${block.blockId}`);
+    assert(block.text.inline[0].value === label, `Etichetta inattesa: ${block.blockId}`);
+    block.kind = "list-item";
+    block.listMarker = "none";
+}
+
 function classifyMarkers(unit: Unit) {
     for (const block of unit.blocks) {
         if (block.kind !== "list-item" || !block.text) continue;
@@ -178,6 +185,10 @@ async function updateUnits() {
         math(blockStartingWith(unit, "In nessun caso la scelta"), "15%", "15\\%" );
         math(blockStartingWith(unit, "Se la distribuzione degli elementi non strutturali è fortemente irregolare in pianta"), "2", "2");
         math(blockStartingWith(unit, "Se la distribuzione degli elementi non strutturali è fortemente irregolare in altezza"), "1,4", "1{,}4");
+        alignedLabel(blockStartingWith(unit, "F_a è la forza sismica"), "F_a");
+        alignedLabel(blockStartingWith(unit, "S_a è l’accelerazione"), "S_a");
+        alignedLabel(blockStartingWith(unit, "W_a è il peso"), "W_a");
+        alignedLabel(blockStartingWith(unit, "q_a è il fattore"), "q_a");
         await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
     }
 
@@ -231,8 +242,62 @@ async function updateUnits() {
 async function updateCaptions() {
     const path = join(root, "corpus", "assets", "ntc2018", "7-step1.json");
     const manifest = JSON.parse(await readFile(path, "utf8")) as {
-        tables: Array<{ officialNumber: string; caption: string; captionInline?: InlineSegment[] }>;
+        formulas: Array<{ id: string; latex: string }>;
+        tables: Array<{
+            officialNumber: string;
+            caption: string;
+            captionInline?: InlineSegment[];
+            columnWidths?: number[];
+            headers: Array<Array<{ text: string; align?: "left" | "center" | "right" }>>;
+            rows: Array<Array<{ text: string; align?: "left" | "center" | "right" }>>;
+        }>;
     };
+    const table72 = manifest.tables.find(({ officialNumber }) => officialNumber === "7.2.I");
+    assert(table72, "Tabella mancante: 7.2.I");
+    table72.columnWidths = [20, 24, 23, 16.5, 16.5];
+    for (const tableCell of [...table72.headers.flat(), ...table72.rows.flat()]) {
+        tableCell.align = "center";
+    }
+    const lineBreaks = new Map([
+        ["Travi (§ 7.4.4.1.1)", "Travi\n(§ 7.4.4.1.1)"],
+        ["Pilastri (§ 7.4.4.2.1)", "Pilastri\n(§ 7.4.4.2.1)"],
+        ["Pressoflessione [7.4.4]", "Pressoflessione\n[7.4.4]"],
+        ["Taglio [7.4.5]", "Taglio\n[7.4.5]"],
+        ["Nodi trave-pilastro (§ 7.4.4.3.1)", "Nodi trave-pilastro\n(§ 7.4.4.3.1)"],
+        ["Taglio [7.4.6-7, 7.4.11-12]", "Taglio\n[7.4.6-7, 7.4.11-12]"],
+        ["Pareti (§ 7.4.4.5.1)", "Pareti\n(§ 7.4.4.5.1)"],
+        ["Taglio [7.4.13-14]", "Taglio\n[7.4.13-14]"],
+        ["Collegamenti di tipo a) (§ 7.4.5.2.1)", "Collegamenti di tipo a)\n(§ 7.4.5.2.1)"],
+        ["Collegamenti di tipo b) (§ 7.4.5.2.1)", "Collegamenti di tipo b)\n(§ 7.4.5.2.1)"],
+        ["Collegamenti di tipo fisso (§ 7.4.5.2.1)", "Collegamenti di tipo fisso\n(§ 7.4.5.2.1)"],
+        ["Colonne (§ 7.5.4.2)", "Colonne\n(§ 7.5.4.2)"],
+        ["Pressoflessione [7.5.10]", "Pressoflessione\n[7.5.10]"],
+        ["Colonne (§ 7.6.6.2)", "Colonne\n(§ 7.6.6.2)"],
+        ["Pressoflessione [7.6.7]", "Pressoflessione\n[7.6.7]"],
+        ["Pannelli murari (§ 7.8.1.7)", "Pannelli murari\n(§ 7.8.1.7)"],
+    ]);
+    for (const tableCell of table72.rows.flat()) {
+        const replacement = lineBreaks.get(tableCell.text);
+        if (replacement) tableCell.text = replacement;
+    }
+    const table73 = manifest.tables.find(({ officialNumber }) => officialNumber === "7.3.I");
+    assert(table73, "Tabella mancante: 7.3.I");
+    for (const tableCell of [...table73.headers.flat(), ...table73.rows.flat()]) {
+        tableCell.align = "center";
+    }
+    const profiles = new Map([
+        ["7.2.5-axial-a", "A"],
+        ["7.2.5-axial-b", "B"],
+        ["7.2.5-axial-c", "C"],
+        ["7.2.5-axial-d", "D"],
+    ]);
+    for (const formula of manifest.formulas) {
+        const suffix = formula.id.split(":").at(-1) ?? "";
+        const profile = profiles.get(suffix);
+        if (profile && !formula.latex.includes("profilo stratigrafico")) {
+            formula.latex += `\\quad\\text{per il profilo stratigrafico di tipo ${profile}}`;
+        }
+    }
     const captions = new Map<string, InlineSegment[]>([
         ["7.2.I", [
             { kind: "em", value: "Fattori di sovraresistenza " },

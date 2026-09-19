@@ -9,7 +9,12 @@ export type InlineSegment =
   | { kind: "strong-em"; value: string }
   | { kind: "math"; value: string; latex: string };
 
-export interface TextParagraph { normalized: string; inline?: InlineSegment[]; }
+export interface TextParagraph {
+  normalized: string;
+  inline?: InlineSegment[];
+  listMarker?: "numbered" | "bullet" | "dash";
+  listLevel?: number;
+}
 
 export interface Evidence {
   sourceId: string;
@@ -46,7 +51,7 @@ export interface TableCellImage {
   sha256: string;
   region: { x: number; y: number; width: number; height: number };
 }
-export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; image?: TableCellImage; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; header?: boolean; verticalText?: boolean; shade?: "gray"; spacer?: boolean; }
+export interface TableCell { text: string; latex?: string; inline?: InlineSegment[]; image?: TableCellImage; colSpan?: number; rowSpan?: number; strong?: boolean; align?: "left" | "center" | "right"; noWrap?: boolean; header?: boolean; verticalText?: boolean; shade?: "gray"; spacer?: boolean; subrowIndent?: boolean; subrowLabel?: boolean; }
 export interface TableAsset {
   id: string;
   unitId?: string;
@@ -76,6 +81,7 @@ export interface FigureAsset {
   alt: string;
   imagePath: string;
   region?: { width: number; height: number };
+  displayScale?: number;
 }
 export interface AssetBundle {
   formulas: Record<string, FormulaAsset>;

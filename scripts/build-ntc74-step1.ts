@@ -173,6 +173,7 @@ function evidence(
 
 type BlockSpec = {
     kind: "heading" | "paragraph" | "list-item";
+    listMarker?: "bullet" | "dash" | "none";
     page: number;
     from: number;
     to?: number;
@@ -677,7 +678,8 @@ const units: UnitSpec[] = [
                 math: [m("γ_Rd", "\\gamma_{Rd}")],
             },
             {
-                kind: "paragraph",
+                kind: "list-item",
+                listMarker: "none",
                 page: 230,
                 from: 88,
                 to: 89,
@@ -686,7 +688,8 @@ const units: UnitSpec[] = [
                 math: [m("M_c,Rd", "M_{c,Rd}")],
             },
             {
-                kind: "paragraph",
+                kind: "list-item",
+                listMarker: "none",
                 page: 230,
                 from: 90,
                 normalized:
@@ -773,6 +776,16 @@ const units: UnitSpec[] = [
             {
                 kind: "paragraph",
                 page: 231,
+                from: 33,
+                to: 35,
+                normalized:
+                    "M_i,d è il momento nella sezione di estremità (superiore o inferiore) in corrispondenza della formazione delle cerniere nelle travi, dove i valori in sommatoria sono quelli impiegati nella [7.4.4];",
+                math: [m("M_i,d", "M_{i,d}")],
+            },
+            {
+                kind: "list-item",
+                listMarker: "none",
+                page: 231,
                 from: 36,
                 to: 37,
                 normalized:
@@ -780,7 +793,8 @@ const units: UnitSpec[] = [
                 math: [m("M_c,Rd", "M_{c,Rd}")],
             },
             {
-                kind: "paragraph",
+                kind: "list-item",
+                listMarker: "none",
                 page: 231,
                 from: 38,
                 normalized: "l_p è la lunghezza del pilastro.",
@@ -1137,6 +1151,7 @@ function makeTextBlock(
         blockId: `${unitId}#${blockId}`,
         kind: spec.kind,
         origin: "official",
+        ...(spec.listMarker ? { listMarker: spec.listMarker } : {}),
         text: {
             raw: source,
             normalized,

@@ -8,6 +8,8 @@ type Block = {
     blockId: string;
     kind: string;
     listMarker?: "bullet" | "dash" | "none";
+    listLevel?: number;
+    indentLevel?: number;
     text?: { raw?: string; normalized: string; inline?: Inline[] };
     evidence?: { pdfPage?: number; normalizedSha256?: string; transformations?: Array<Record<string, unknown>> };
 };
@@ -52,8 +54,15 @@ function recordNormalizedChange(block: Block, profile: string, note: string): vo
 }
 
 function formatBlock(block: Block, fileName: string, profile: string): boolean {
-    if (!block.text) return false;
     const before = JSON.stringify(block);
+    if (!block.text) {
+        if (fileName === "7.9.6.1.1.json") {
+            const id = block.blockId.split("#")[1] ?? "";
+            const nestedFormula = ["block-formula-7-9-6-1-1-7-9-18", "block-formula-7-9-6-1-1-7-9-19"].includes(id);
+            if (nestedFormula) block.indentLevel = 1;
+        }
+        return before !== JSON.stringify(block);
+    }
     const raw = (block.text.raw ?? "").trimStart();
     const label = raw.match(/^([a-z]\)|\d+\.)\s/u)?.[1];
 
@@ -73,6 +82,36 @@ function formatBlock(block: Block, fileName: string, profile: string): boolean {
     }
 
     if (block.kind !== "heading") block.text.inline = splitText(block.text.inline ?? [{ kind: "text", value: block.text.normalized }], acronym, "em");
+
+    if (/^7\.8\./u.test(fileName) && block.kind === "paragraph" && block.text.inline?.[0]?.kind === "math") {
+        block.kind = "list-item";
+        block.listMarker = "none";
+    }
+    if (fileName === "7.8.1.5.2.json" && block.blockId.includes("#block-p9-")) {
+        if (block.kind === "list-item") block.listMarker = "none";
+        else delete block.listMarker;
+    }
+
+    if (fileName === "7.8.6.3.json" && /^block-d-[a-d]$/u.test(block.blockId.split("#")[1] ?? "")) {
+        block.listLevel = 1;
+    }
+    if (fileName === "7.9.5.1.1.json" && ["block-p5", "block-p6"].includes(block.blockId.split("#")[1] ?? "")) {
+        block.kind = "list-item";
+        block.listMarker = "none";
+    }
+    if (fileName === "7.9.6.1.1.json") {
+        const id = block.blockId.split("#")[1] ?? "";
+        if (["block-subheading-rectangular", "block-subheading-circular"].includes(id)) {
+            block.kind = "list-item";
+            block.listMarker = "bullet";
+        }
+        const rectangular = ["block-formula-7-9-6-1-1-7-9-18", "block-p7", "block-def-asw", "block-def-s", "block-def-b"].includes(id);
+        const circular = ["block-formula-7-9-6-1-1-7-9-19", "block-p9", "block-def-asp", "block-def-s2"].includes(id);
+        if (rectangular || circular) {
+            block.indentLevel = 1;
+            if (block.kind === "list-item") block.listLevel = 1;
+        }
+    }
     assert((block.text.inline ?? []).map((part) => part.value).join("") === block.text.normalized, `Inline incoerente: ${block.blockId}`);
     return before !== JSON.stringify(block);
 }

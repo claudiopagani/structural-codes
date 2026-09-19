@@ -122,6 +122,8 @@ test("NTC pagine 182–191 conserva otto tabelle matematiche e il crop ufficiale
         const markedCell = table.rows[2][0];
         assert.equal(markedCell.inline.at(-1).kind, "math");
         assert.equal(markedCell.inline.at(-1).latex, "^{(1)}");
+        assert.equal(table.notesInline[0][0].kind, "math");
+        assert.equal(table.notesInline[0][0].latex, "^{(1)}");
     }
 
     assert.equal(figures.length, 1);

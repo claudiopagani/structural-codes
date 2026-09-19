@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdir, readFile } from "node:fs/promises";
-import { groupAlignedLabelBlocks, hasLeadingEmphasisLabel } from "../package-dist/CorpusContent.js";
+import { groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
 async function render(pathname) {
@@ -41,6 +41,33 @@ function strongLabelBlock(label) {
     },
   };
 }
+
+test("multi-symbol math labels keep the complete label aligned", () => {
+  const inline = [
+    { kind: "math", value: "M_{Ed}", latex: "M_{Ed}" },
+    { kind: "text", value: ", " },
+    { kind: "math", value: "N_{Ed}", latex: "N_{Ed}" },
+    { kind: "text", value: " e " },
+    { kind: "math", value: "V_{Ed}", latex: "V_{Ed}" },
+    { kind: "text", value: " sono i valori della domanda;" },
+  ];
+  assert.equal(leadingMathLabelEnd(inline), 5);
+});
+
+test("le voci αu/α1 mantengono il marker ufficiale anche con chunk legacy", () => {
+  const block = {
+    kind: "list-item",
+    text: {
+      normalized: "edifici a un piano α_u/α_1 = 1,1",
+      inline: [
+        { kind: "text", value: "edifici a un piano " },
+        { kind: "math", value: "α_u/α_1 = 1,1", latex: "\\alpha_u/\\alpha_1=1{,}1" },
+      ],
+    },
+  };
+  assert.equal(hasAlphaRatioListLayout(block, "urn:structural-codes:it:unit:ntc2018:7.5.2.2"), true);
+  assert.equal(hasInferredAlphaRatioListMarker(block, "urn:structural-codes:it:unit:ntc2018:7.5.2.2"), true);
+});
 
 test("allinea le descrizioni degli schemi di carico dopo l'etichetta", () => {
   const blocks = [1, 2, 3, 4, 5, 6].map(schemaLoadBlock);
@@ -305,6 +332,9 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.doesNotMatch(component, /<ul className="table-notes">/);
   assert.match(component, /hasAlphabeticListMarker/);
   assert.match(component, /\[a-z0-9\]\+\[\.\)\]\)\\s\+/u);
+  assert.match(component, /function splitInlinePrefix\(/);
+  assert.match(component, /const split = splitInlinePrefix\(inline, match\[1\]\)/);
+  assert.match(component, /renderInlineSegments\(split\.description, context\)/);
   assert.match(component, /groupAlignedLabelBlocks/);
   assert.match(component, /function hasAlignedListContinuation\(/);
   assert.match(component, /hasAlignedListContinuation\(blocks\[index\]\)/);
@@ -321,6 +351,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.table-asset th \.katex \{ color: #fff; \}/);
   assert.match(styles, /\.scv-root \.table-asset-c4-1-iv thead tr:nth-child\(2\) th:nth-child\(n \+ 4\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
+  assert.match(styles, /\.scv-root \.table-asset-7-8-ii thead tr:first-child th:nth-child\(n \+ 2\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
+  assert.match(styles, /\.scv-root \.table-asset-7-5-i th, \.scv-root \.table-asset-7-5-i td \{ text-align: center; \}/);
   assert.doesNotMatch(styles, /\.scv-root \.table-asset-c4-1-vi tbody tr:first-child td/);
   assert.match(styles, /\.scv-label-list\.block-indent-1 \{ margin-left: 2\.5rem; \}/);
   assert.match(styles, /\.scv-label-list-content > \.leading-label-empty \{ grid-column: 1; \}/);

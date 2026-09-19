@@ -337,8 +337,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-008",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "Mc,Rd è la capacità a flessione del pilastro convergente nel nodo, calcolata per i livelli di sollecitazione assiale presenti nelle\ncombinazioni sismiche delle azioni;",
         "normalized": "M_c,Rd è la capacità a flessione del pilastro convergente nel nodo, calcolata per i livelli di sollecitazione assiale presenti nelle combinazioni sismiche delle azioni;",
@@ -393,8 +394,9 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-009",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "Mb,Rd è la capacità a flessione della trave convergente nel nodo.",
         "normalized": "M_b,Rd è la capacità a flessione della trave convergente nel nodo.",
@@ -949,6 +951,63 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
+        "raw": "¦ è il momento nella sezione di estremità (superiore o inferiore) in corrispondenza della\nformazione delle cerniere nelle travi, dove i valori in sommatoria sono quelli impiegati nella\n[7.4.4];",
+        "normalized": "M_i,d è il momento nella sezione di estremità (superiore o inferiore) in corrispondenza della formazione delle cerniere nelle travi, dove i valori in sommatoria sono quelli impiegati nella [7.4.4];",
+        "normalizationVersion": "ntc74-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "M_i,d",
+            "latex": "M_{i,d}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento nella sezione di estremità (superiore o inferiore) in corrispondenza della formazione delle cerniere nelle travi, dove i valori in sommatoria sono quelli impiegati nella [7.4.4];"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 231,
+        "printedPage": "227",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo esclusivamente tipografici verificati sul render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Ripristinati manualmente glifi, simboli matematici e spaziatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "normalize-whitespace",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Uniformati gli spazi dopo la ricomposizione editoriale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "ntc74-editorial-profile-0.1.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          }
+        ],
+        "rawSha256": "788142c239136e0fac6bd37ed68b7f37f7e48dc689f01ff9da921d36f55ce4a6",
+        "normalizedSha256": "53cafe34f8049f2d3d94ca5110715f9eb3e8d387571f24f2d308ebb2571d1442"
+      }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-022",
+      "kind": "list-item",
+      "origin": "official",
+      "listMarker": "none",
+      "text": {
         "raw": "c,Rd\nM è la capacità a flessione nella sezione di estremità (superiore o inferiore);",
         "normalized": "M_c,Rd è la capacità a flessione nella sezione di estremità (superiore o inferiore);",
         "normalizationVersion": "ntc74-editorial-profile-0.1.0",
@@ -1001,9 +1060,10 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-022",
-      "kind": "paragraph",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-023",
+      "kind": "list-item",
       "origin": "official",
+      "listMarker": "none",
       "text": {
         "raw": "lp è la lunghezza del pilastro.",
         "normalized": "l_p è la lunghezza del pilastro.",
@@ -1047,7 +1107,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-023",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-024",
       "kind": "paragraph",
       "origin": "official",
       "text": {
@@ -1107,7 +1167,7 @@
       }
     },
     {
-      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-024",
+      "blockId": "urn:structural-codes:it:unit:ntc2018:7.4.4.2.1#block-editorial-025",
       "kind": "paragraph",
       "origin": "official",
       "text": {

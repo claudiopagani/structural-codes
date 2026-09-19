@@ -174,7 +174,7 @@ test("NTC pagine 262–266 struttura integralmente le tabelle 7.8.I e 7.8.II", a
     assert.equal(areas.headers[0][0].colSpan, 2);
     assert.equal(
         areas.headers[0][0].latex,
-        "\\text{Accelerazione di picco del terreno }a_g S^{(1)}",
+        "\\begin{gathered}\\text{Accelerazione di picco}\\\\\\text{del terreno }a_g S^{(1)}\\end{gathered}",
     );
     assert.deepEqual(
         areas.headers[0].slice(1).map((entry: any) => entry.latex),

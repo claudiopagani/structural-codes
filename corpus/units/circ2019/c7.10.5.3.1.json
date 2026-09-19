@@ -123,12 +123,23 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.10.5.3.1#block-editorial-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "M è la massa totale della sovrastruttura;",
         "normalized": "M è la massa totale della sovrastruttura;",
-        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0"
+        "normalizationVersion": "circ710-step1-manual-render-transcription-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "M",
+            "latex": "M"
+          },
+          {
+            "kind": "text",
+            "value": " è la massa totale della sovrastruttura;"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -140,14 +151,21 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.10.5.3.1 M rendered as aligned labeled-list label",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "f997210c72b807462cfcd7306ccf2576a21049cfb5bc5fac49d852eca51aa4ce",
         "normalizedSha256": "f997210c72b807462cfcd7306ccf2576a21049cfb5bc5fac49d852eca51aa4ce"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.10.5.3.1#block-editorial-005",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "K_esi è la rigidezza equivalente orizzontale del sistema d’isolamento, ottenuta trascurando eventuali effetti torsionali a livello di isolamento.",
@@ -175,10 +193,17 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "manual-correction",
+            "note": "C7.10.5.3.1 K_esi rendered as aligned labeled-list label",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
+          }
+        ],
         "rawSha256": "7d3fc58bea746b45581ba77e44c209fed97628ae3e2ba290b71f6a64e497c274",
         "normalizedSha256": "7d3fc58bea746b45581ba77e44c209fed97628ae3e2ba290b71f6a64e497c274"
-      }
+      },
+      "listMarker": "none"
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c7.10.5.3.1#block-editorial-006",

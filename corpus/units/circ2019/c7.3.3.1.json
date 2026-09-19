@@ -140,6 +140,26 @@
             "kind": "text",
             "value": " da quello degli altri modi, le differenze tra le due regole diventano trascurabili."
           }
+        ],
+        "paragraphs": [
+          {
+            "normalized": "L’analisi lineare dinamica, così come presentata nelle NTC, avviene in tre passi fondamentali:"
+          },
+          {
+            "normalized": "determinazione dei modi di vibrare “naturali” della struttura (analisi modale);",
+            "listMarker": "numbered"
+          },
+          {
+            "normalized": "calcolo degli effetti dell’azione sismica, rappresentati dallo spettro di risposta di progetto, per ciascuno dei modi di vibrare individuati;",
+            "listMarker": "numbered"
+          },
+          {
+            "normalized": "combinazione degli effetti relativi a ciascun modo di vibrare per valutare la risposta complessiva.",
+            "listMarker": "numbered"
+          },
+          {
+            "normalized": "L’analisi modale consiste nella soluzione delle equazioni del moto della struttura, considerata elastica, in condizioni di oscillazioni libere (assenza di forzante esterna) e nella individuazione di particolari configurazioni deformate che costituiscono i modi naturali di vibrare di una costruzione. Questi modi di vibrare sono una caratteristica propria della struttura, in quanto sono individuati in assenza di forzante, e sono caratterizzati da un periodo proprio di oscillazione T e da un fattore di smorzamento convenzionale ξ, nonché da una forma. Tranne che per casi particolari, quali ad esempio quelli di costruzioni dotate di sistemi di isolamento e di dissipazione, si assume che i modi di vibrare abbiano tutti lo stesso valore del fattore di smorzamento convenzionale ossia ξ = 5%. Qualunque configurazione deformata di una struttura (e lo stato di sollecitazione a tale deformata connesso), può essere ottenuta come combinazione di deformate elementari, ciascuna con la forma di un modo di vibrare. Ovviamente, in funzione dell’azione che agisce sulla costruzione, alcuni modi di vibrare avranno parte più significativa di altri nella descrizione della configurazione deformata. La massa partecipante di un modo di vibrare esprime la quota parte delle forze sismiche di trascinamento ad esso associate, da cui dipendono, unitamente alla corrispondente amplificazione, gli effetti che il singolo modo è in grado di descrivere. Per poter cogliere con sufficiente approssimazione gli effetti dell’azione sismica sulla costruzione, è opportuno considerare tutti i modi con massa partecipante superiore al 5% e comunque un numero di modi la cui massa partecipante totale sia superiore all’85%, trascurando solo i modi di vibrare meno significativi in termini di massa partecipante. L’utilizzo dello spettro di risposta consente di calcolare gli effetti massimi del terremoto sulla costruzione associati a ciascun modo di vibrare. Tuttavia, poiché durante il terremoto gli effetti massimi associati ad un modo di vibrare non si verificano generalmente nello stesso istante in cui sono massimi quelli associati ad un altro modo di vibrare, tali effetti non possono essere combinati tra di loro mediante una semplice somma ma con specifiche regole di combinazione, di natura probabilistica, che tengono conto di questo sfasamento temporale. La regola di combinazione imposta dalla norma è la regola di combinazione quadratica completa CQC (Complete Quadratic Combination): tale regola porta in conto anche l’eventuale correlazione tra i modi, attraverso il fattore ρ_ij. Essa degenera nella più semplice regola SRSS (Square Root of Sum of Squares), valida nell’ipotesi in cui i contributi massimi dei singoli modi non siano correlati e non si verifichino contemporaneamente. La SRSS può essere utilizzata, ove ritenuto necessario, come riferimento per il controllo dei risultati, tenendo presente che, in assenza di correlazione, la CQC degenera nella SRSS e che, in generale, quando il periodo di vibrazione di ciascun modo differisce di più del 10% da quello degli altri modi, le differenze tra le due regole diventano trascurabili."
+          }
         ]
       },
       "evidence": {
@@ -163,6 +183,11 @@
             "operation": "manual-correction",
             "ruleVersion": "continuous-note-flow-0.1.0",
             "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          },
+          {
+            "operation": "manual-correction",
+            "note": "C7.3.3.1 footnote numbered list reconstructed",
+            "ruleVersion": "circ7-latest-editorial-0.1.0"
           }
         ],
         "rawSha256": "fa38dd8170bb292d784d50eeae8a1b22407e720d8973fff40b6fb8123476b57c",
