@@ -212,14 +212,14 @@ const figureSpecs = [
         suffix: "c11.3.2.10.4.a", unit: "C11.3.2.10.4", officialNumber: "C11.3.2.10.4-a", page: 329, printedPage: "325",
         source: "page-0329-x190-y270-w240-h95@3x.png", target: "c11.3.2.10.4-a.png", cropSha: "9ed52eec5dc26756d579711dfa6ae9710e15500da56320e3f721c3a844bf6d05",
         region: { coordinateSystem: "pdf-points-top-left", x: 190, y: 270, width: 240, height: 95 }, label: "figure-a",
-        caption: "Schema non numerato della barra di acciaio nervato e della sezione effettiva circolare.",
+        caption: null,
         alt: "Schema ufficiale della barra di acciaio nervato con sezione effettiva circolare e dettaglio A-B.",
     },
     {
         suffix: "c11.3.2.10.4.b", unit: "C11.3.2.10.4", officialNumber: "C11.3.2.10.4-b", page: 329, printedPage: "325",
-        source: "page-0329-x190-y410-w220-h90@3x.png", target: "c11.3.2.10.4-b.png", cropSha: "8452e2de1bab95be5a5aa3497247460d3799c415b633276c20c8b767195e8a5a",
-        region: { coordinateSystem: "pdf-points-top-left", x: 190, y: 410, width: 220, height: 90 }, label: "figure-b",
-        caption: "Schema non numerato della barra di acciaio dentellato e della sezione effettiva approssimativamente triangolare.",
+        source: "page-0329-x221-y410-w189-h60@3x.png", target: "c11.3.2.10.4-b.png", cropSha: "c3958234c4546a2ba2a7794dd0b40a922b463bb5fb0a519043bd764f06e12bfa",
+        region: { coordinateSystem: "pdf-points-top-left", x: 221, y: 410, width: 189, height: 60 }, label: "figure-b",
+        caption: null,
         alt: "Schema ufficiale della barra di acciaio dentellato con sezione effettiva approssimativamente triangolare.",
     },
 ];

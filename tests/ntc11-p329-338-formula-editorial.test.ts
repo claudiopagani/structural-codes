@@ -43,7 +43,7 @@ test("NTC pagine 329–338 struttura integralmente le sette tabelle", async () =
             [table.officialNumber, table.columnCount, table.headers.length, table.rows.length]),
         [
             ["11.3.VI b", 4, 1, 3], ["11.3.VII a", 3, 1, 7], ["11.3.VII b", 3, 1, 7],
-            ["11.3.VIII", 5, 1, 5], ["11.3.IX", 2, 1, 2], ["11.3.X", 5, 1, 5],
+            ["11.3.VIII", 6, 1, 5], ["11.3.IX", 2, 1, 2], ["11.3.X", 5, 1, 5],
             ["11.3.XI", 3, 0, 4],
         ],
     );
@@ -56,7 +56,7 @@ test("NTC pagine 329–338 struttura integralmente le sette tabelle", async () =
     };
     assert.deepEqual(getTable("11.3.VI b").rows.at(-1)?.map((cell) => cell.text), ["per Ø > 12 mm", "fr oppure fp ≥", "0.056", "0.059"]);
     assert.equal(getTable("11.3.VII b").rows.at(-1)?.[1]?.latex?.includes("\\varnothing"), true);
-    assert.deepEqual(getTable("11.3.VIII").rows[0]?.slice(1).map((cell) => cell.text), ["≥ 1000", "≥ 1570", "≥ 1860", "≥ 1820"]);
+    assert.deepEqual(getTable("11.3.VIII").rows[0]?.slice(2).map((cell) => cell.text), ["≥ 1000", "≥ 1570", "≥ 1860", "≥ 1820"]);
     assert.equal(getTable("11.3.X").rows[0]?.[0]?.rowSpan, 3);
     assert.equal(getTable("11.3.XI").rows[0]?.[1]?.colSpan, 2);
     assert.doesNotMatch(JSON.stringify(tables), /TABELLA_DA_VERIFICARE|(?:ǈ|Κ|ǂ|ǃ|΅|҆|Θ)/u);

@@ -45,7 +45,7 @@ test("NTC pagine 319–328 struttura integralmente le otto tabelle", async () =>
         tables.map((table: { officialNumber: string; columnCount: number; headers: unknown[]; rows: unknown[] }) =>
             [table.officialNumber, table.columnCount, table.headers.length, table.rows.length]),
         [
-            ["11.3.Ia", 2, 0, 2], ["11.3.Ib", 3, 1, 10], ["11.3.Ic", 3, 1, 6],
+            ["11.3.Ia", 2, 0, 2], ["11.3.Ib", 4, 1, 10], ["11.3.Ic", 4, 1, 6],
             ["11.3.II", 4, 1, 6], ["11.3.III", 3, 1, 1], ["11.3.IV", 4, 1, 16],
             ["11.3.V", 4, 1, 16], ["11.3.VI a", 3, 1, 8],
         ],

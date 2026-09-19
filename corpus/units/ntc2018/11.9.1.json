@@ -83,7 +83,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-002",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "DISPOSITIVI DI VINCOLO TEMPORANEO: questi dispositivi sono utilizzati per obbligare i movimenti in uno o più direzioni secondo\nmodalità differenziate a seconda del tipo e dell’entità dell’azione. Si distinguono in :",
@@ -121,15 +121,22 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "e85d7d54e097af73b23fa48062cbcf3001785ca16039bffb7bee9222019e70b1",
         "normalizedSha256": "e6c707ca8e3505540c67631921362d8549ad8d9cc90bc7b5b41d72603d9683a0"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-003",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Dispositivi di vincolo del tipo “a fusibile”: caratterizzati dall’impedire i movimenti relativi fra le parti collegate sino al raggiungi-\nmento di una soglia di forza oltre la quale, al superamento della stessa, consentono tutti i movimenti. Abitualmente sono uti-\nlizzati per escludere il sistema di protezione sismica nelle condizioni di servizio, consentendone il libero funzionamento du-\nrante il terremoto di progetto, senza modificarne il comportamento.",
@@ -176,15 +183,22 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "3541f0e843274b267c7a54ea587bfd253af2a64e4b8308472d279890e26f1d60",
         "normalizedSha256": "6db3ef6003c43ef9a5b2090a551b9a3f7cba0f777ec7fd9f06972332e7cb8ded"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-004",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Dispositivi (dinamici) di vincolo provvisorio: caratterizzati dalla capacità di solidarizzare gli elementi che collegano, in presenza\ndi movimenti relativi rapidi, quali quelli sismici, e di lasciarli liberi, o quasi, in presenza di movimenti relativi lenti imposti o\ndovuti ad effetti termici.",
@@ -226,25 +240,91 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "8bc5cc2a4705b7c18dbd7ea453d47a38346a735d800ff1e50cecf8b07b013938",
         "normalizedSha256": "a18d4bba1b05ba6815955ac54496b6eda15b290c9e7a33a174b73a784810277d"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-005",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "D ISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO , a loro volta suddivisi in:\nDispositivi a comportamento lineare o “Lineari”: caratterizzati da un legame forza-spostamento sostanzialmente lineare, fino ad\nun dato livello di spostamento, con comportamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dal-\nla velocità; nella fase di scarico non devono mostrare spostamenti residui significativi.",
-        "normalized": "DISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO, a loro volta suddivisi in: Dispositivi a comportamento lineare o “Lineari”: caratterizzati da un legame forza-spostamento sostanzialmente lineare, fino ad un dato livello di spostamento, con comportamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dalla velocità; nella fase di scarico non devono mostrare spostamenti residui significativi.",
+        "raw": "D ISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO , a loro volta suddivisi in:",
+        "normalized": "DISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO, a loro volta suddivisi in:",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "DISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO, a loro volta suddivisi in: "
+            "value": "DISPOSITIVI DIPENDENTI DALLO SPOSTAMENTO, a loro volta suddivisi in:"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 359,
+        "printedPage": "355",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposte le parole sillabate a fine riga dopo controllo visivo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
+          }
+        ],
+        "rawSha256": "8a3d5900516076930f018261a09c903aa475a17a1b7ec59c28dfec273ec50f52",
+        "normalizedSha256": "b3ce0ebf8829317808c608328bd3cc48027d24442110623f2a2d5953ca0bb24f"
+      },
+      "listMarker": "bullet",
+      "listLevel": 0
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-005-lineare",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "Dispositivi a comportamento lineare o “Lineari”: caratterizzati da un legame forza-spostamento sostanzialmente lineare, fino ad\nun dato livello di spostamento, con comportamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dal-\nla velocità; nella fase di scarico non devono mostrare spostamenti residui significativi.",
+        "normalized": "Dispositivi a comportamento lineare o “Lineari”: caratterizzati da un legame forza-spostamento sostanzialmente lineare, fino ad un dato livello di spostamento, con comportamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dalla velocità; nella fase di scarico non devono mostrare spostamenti residui significativi.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "em",
             "value": "Dispositivi a comportamento lineare o “Lineari”"
@@ -290,15 +370,27 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
           }
         ],
-        "rawSha256": "fe15955038287491159a11ac4c855e0d79c1d13d9f53d4e67fc9bccc9f396a5d",
-        "normalizedSha256": "b6ec228bf6adc963d261132228daf6c99ca7a9d484693b3eac29a63bf61a9818"
-      }
+        "rawSha256": "db271fba1dc2ac62586309114e52f0fc0480f7a560bf4e662a3bb768b3e647a4",
+        "normalizedSha256": "ccbc700f2f2c1898407e885683174b4976a265d9a7e46f94b5949dd2016699a3"
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-006",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Dispositivi a comportamento non lineare o “Non Lineari”: caratterizzati da un legame forza-spostamento non lineare, con compor-\ntamento stabile per il numero di cicli richiesti e sostanzialmente indipendente dalla velocità.",
@@ -345,25 +437,81 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "0d65a911510ee7665bf58c014275b08eb6fc2f1d89060f7e11ce0b2e73c4865a",
         "normalizedSha256": "cdd0bef6ffbb57394dd98979f8c00300823cb6d0876eb18302a0180e878bb86d"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-007",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche Dispositivi a comportamento viscoso o “Viscosi”: caratterizzati dalla dipendenza\ndella forza soltanto dalla velocità o da velocità e spostamento contemporaneamente; il loro funzionamento è basato sulle forze di\nreazione causate dal flusso di un fluido viscoso attraverso orifizi o sistemi di valvole.",
-        "normalized": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche Dispositivi a comportamento viscoso o “Viscosi”: caratterizzati dalla dipendenza della forza soltanto dalla velocità o da velocità e spostamento contemporaneamente; il loro funzionamento è basato sulle forze di reazione causate dal flusso di un fluido viscoso attraverso orifizi o sistemi di valvole.",
+        "raw": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche",
+        "normalized": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche",
         "normalizationVersion": "ntc11-editorial-profile-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche "
+            "value": "DISPOSITIVI DIPENDENTI DALLA VELOCITÀ detti anche"
+          }
+        ]
+      },
+      "evidence": {
+        "sourceId": "gu-so8-2018-ntc",
+        "pdfPage": 359,
+        "printedPage": "355",
+        "region": null,
+        "extraction": {
+          "method": "pdf-text",
+          "tool": "pdfjs-dist",
+          "toolVersion": "4.10.38"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ricomposti i ritorni a capo tipografici verificati sul render ufficiale."
           },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-profile-0.1.0",
+            "note": "Ripristinati simboli, accenti, spaziatura e notazione matematica dal render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
+            "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
+          }
+        ],
+        "rawSha256": "775a6d7ae5657be72587d23aede62d61288793af77bc3520ff08926eff2f5c44",
+        "normalizedSha256": "775a6d7ae5657be72587d23aede62d61288793af77bc3520ff08926eff2f5c44"
+      },
+      "listMarker": "bullet",
+      "listLevel": 0
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-007-viscoso",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "Dispositivi a comportamento viscoso o “Viscosi”: caratterizzati dalla dipendenza\ndella forza soltanto dalla velocità o da velocità e spostamento contemporaneamente; il loro funzionamento è basato sulle forze di\nreazione causate dal flusso di un fluido viscoso attraverso orifizi o sistemi di valvole.",
+        "normalized": "Dispositivi a comportamento viscoso o “Viscosi”: caratterizzati dalla dipendenza della forza soltanto dalla velocità o da velocità e spostamento contemporaneamente; il loro funzionamento è basato sulle forze di reazione causate dal flusso di un fluido viscoso attraverso orifizi o sistemi di valvole.",
+        "normalizationVersion": "ntc11-editorial-profile-0.1.0",
+        "inline": [
           {
             "kind": "em",
             "value": "Dispositivi a comportamento viscoso o “Viscosi”"
@@ -399,15 +547,27 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Separata la categoria principale dalla voce innestata dell’elenco."
           }
         ],
-        "rawSha256": "4684df86a4170e60e05761e0abf86e093c0927b7d0d5310fd4503e67a08ae16b",
-        "normalizedSha256": "016195581e72e1c831bc8311a07688b59640245866b712e07171a3f80edb5580"
-      }
+        "rawSha256": "49a64e6fbb0f98f9697f7681c512d5be17154dd56d17579ee5ebd664142cf426",
+        "normalizedSha256": "9cc9abca4e6e3afb4fd4b2ed577967db86b65c9fc41c04684284105269a4b6ce"
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-008",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "DISPOSITIVI DI ISOLAMENTO o “Isolatori”: svolgono fondamentalmente la funzione di sostegno dei carichi verticali, con elevata rigi-\ndezza in direzione verticale e bassa rigidezza o resistenza in direzione orizzontale, permettendo notevoli spostamenti orizzontali.\nA tale funzione possono essere associate o no quelle di dissipazione di energia, di ricentraggio del sistema, di vincolo laterale sot-\nto carichi orizzontali di servizio (non sismici). Essendo fondamentalmente degli apparecchi di appoggio, essi debbono rispettare\nle relative norme per garantire la loro piena funzionalità rispetto alle azioni di servizio.",
@@ -458,11 +618,18 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "0dde83257223e470821e8e05bbbecabb3a703ebb6c3f55b788544f20ece60b47",
         "normalizedSha256": "ba2dae4c488b6e344962bec2163473da80643772ae0ac44e6e30099bf40566e4"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-009",
@@ -490,7 +657,7 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-010",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Isolatori elastomerici: costituiti da strati alternati di materiale elastomerico (gomma naturale o materiali artificiali idonei) e di\nacciaio, quest’ultimo con funzione di confinamento dell’elastomero, risultano fortemente deformabili per carichi paralleli alla\ngiacitura degli strati (carichi orizzontali).",
@@ -532,15 +699,22 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "1788e8efa785474814fb42dd061de5a3817129e578aa44f0c68f63f207a07564",
         "normalizedSha256": "f9829982158add27b48dd1a1c793659ff7247a73cf047121a0c9c10747fe2e0a"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-011",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Isolatori a scorrimento: costituiti da appoggi a scorrimento, con superficie piana o curva, caratterizzati da bassi valori delle resi-\nstenze per attrito.",
@@ -587,15 +761,22 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-8-9-c11-8-9-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo della denominazione tecnica, verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "aaf8bb88309aacfe33e0b20d5ef21869b7e26a36d06d3173677d286577ddd200",
         "normalizedSha256": "7b856cce2258b320134d0efe4b44883a1d617e6b13ed2ad887cf6b7305bc6018"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:ntc2018:11.9.1#block-012",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "DISPOSITIVI costituti da una COMBINAZIONE DELLE PRECEDENTI CATEGORIE.",
@@ -623,11 +804,18 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-editorial-profile-0.1.0",
             "note": "Glifi, indici e formula inline ricostruiti dal render ufficiale ad alta scala."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "ntc11-editorial-formatting-0.2.0",
+            "note": "Ricostruito l’elenco puntato con il livello di annidamento verificato nel render ufficiale."
           }
         ],
         "rawSha256": "bab6cfc3e7d2c249f77614cdbc839ce88a1a0772420d77e1df21a921c5bdcd4b",
         "normalizedSha256": "fe5f31a134851cafad51c6a2e7c6cead2038ce8eb4bccb3f1fc81c9fe8bb6b4f"
-      }
+      },
+      "listMarker": "bullet",
+      "listLevel": 0
     }
   ],
   "citations": [],

@@ -38,14 +38,14 @@ test("NTC tabella 11.7.I conserva le tre coppie di colonne", async () => {
     const manifest = await json("corpus/assets/ntc2018/11-step2.json");
     const table = manifest.tables.find((asset: { officialNumber: string }) => asset.officialNumber === "11.7.I");
     assert.ok(table);
-    assert.deepEqual([table.columnCount, table.headers.length, table.rows.length], [6, 1, 6]);
+    assert.deepEqual([table.columnCount, table.headers.length, table.rows.length], [8, 1, 6]);
     assert.deepEqual(table.headers[0].map((cell: { text: string; colSpan?: number }) => [cell.text, cell.colSpan]), [
-        ["Resistenze caratteristiche", 2], ["Moduli elastici", 2], ["Massa volumica", 2],
+        ["Resistenze caratteristiche", 2], ["", undefined], ["Moduli elastici", 2], ["", undefined], ["Massa volumica", 2],
     ]);
     assert.deepEqual(table.rows[0].map((cell: { text: string }) => cell.text), [
-        "Flessione", "fm,k", "Modulo elastico parallelo medio **", "E0,mean", "Massa volumica caratteristica", "ρk",
+        "Flessione", "fm,k", "", "Modulo elastico parallelo medio **", "E0,mean", "", "Massa volumica caratteristica", "ρk",
     ]);
-    assert.equal(table.rows[1][5].latex, "\\rho_{\\mathrm{mean}}");
+    assert.equal(table.rows[1][7].latex, "\\rho_{\\mathrm{mean}}");
     assert.equal(table.notes.filter((note: string) => note.startsWith("*")).length, 2);
     assert.doesNotMatch(JSON.stringify(table), /TABELLA_DA_VERIFICARE|\b(?:Uk|Umean)\b/u);
 });

@@ -1399,8 +1399,13 @@
             "value": "NANDO - New Approach Notified and Designated Organisations"
           },
           {
+            "kind": "math",
+            "value": "1",
+            "latex": "^{1}"
+          },
+          {
             "kind": "text",
-            "value": "1), è possibile verificare:"
+            "value": "), è possibile verificare:"
           }
         ]
       },
@@ -1429,6 +1434,11 @@
             "operation": "manual-correction",
             "ruleVersion": "ntc11-1-c11-1-editorial-formatting-0.1.0",
             "note": "Ripristinato il corsivo verificato nel render della fonte ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-formatting-0.2.0",
+            "note": "Reso apice il richiamo alla nota (1), mantenendo invariato il testo normalizzato."
           }
         ],
         "rawSha256": "3bceeed368f2cdd5c22a4feea2ce4ad1ad77ae44b2e8975319b5538162309ea6",
@@ -1442,7 +1452,18 @@
       "text": {
         "raw": "1 http://ec.europa.eu/growth/tools-databases/nando/index.cfm?fuseaction=directive.notifiedbody&dir_id=33",
         "normalized": "1 http://ec.europa.eu/growth/tools-databases/nando/index.cfm?fuseaction=directive.notifiedbody&dir_id=33",
-        "normalizationVersion": "circ11-editorial-profile-0.1.0"
+        "normalizationVersion": "circ11-editorial-profile-0.1.0",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "1",
+            "latex": "^{1}"
+          },
+          {
+            "kind": "text",
+            "value": " http://ec.europa.eu/growth/tools-databases/nando/index.cfm?fuseaction=directive.notifiedbody&dir_id=33"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -1474,6 +1495,11 @@
             "operation": "manual-correction",
             "ruleVersion": "continuous-note-flow-0.1.0",
             "note": "Collocata la nota subito dopo il richiamo per la resa in scorrimento continuo; il testo normativo resta invariato."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ11-editorial-formatting-0.2.0",
+            "note": "Reso apice il numero della nota (1), mantenendo invariato il testo normalizzato."
           }
         ],
         "rawSha256": "e2c23ca713aa1d239f924aa74c681f77a7336c983efa7c20608866afd1e56de8",

@@ -33,7 +33,7 @@ test("NTC pagina 342 struttura integralmente le quattro tabelle", async () => {
         tables.map((table: { officialNumber: string; columnCount: number; headers: unknown[]; rows: unknown[] }) =>
             [table.officialNumber, table.columnCount, table.headers.length, table.rows.length]),
         [
-            ["11.3.XII", 5, 2, 3], ["11.3.XIII.a", 4, 2, 7],
+            ["11.3.XII", 5, 2, 8], ["11.3.XIII.a", 4, 2, 7],
             ["11.3.XIII.b", 8, 1, 2], ["11.3.XIV", 7, 2, 3],
         ],
     );

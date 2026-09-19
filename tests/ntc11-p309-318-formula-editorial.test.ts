@@ -67,6 +67,26 @@ test("NTC pagine 309–318 struttura integralmente le otto tabelle", async () =>
     assert.doesNotMatch(JSON.stringify(tables), /TABELLA_DA_VERIFICARE|[ǈΚǂǃ]/u);
 });
 
+test("NTC Tabelle 11.2 applica l’allineamento e la matematica inline richiesti", async () => {
+    const step1 = await json("corpus/assets/ntc2018/11-step1.json");
+    const step2 = await json("corpus/assets/ntc2018/11-step2.json");
+    const tables = [...step1.tables, ...step2.tables] as Array<{
+        officialNumber: string;
+        headers: Array<Array<{ align?: string }>>;
+        rows: Array<Array<{ align?: string; inline?: Array<{ kind: string; latex?: string }> }>>;
+        notesInline?: Array<Array<{ kind: string; value: string; latex?: string }>>;
+    }>;
+    for (const number of ["11.2.I", "11.2.II", "11.2.III", "11.2.Va", "11.2.Vb", "11.2.VI", "11.2.VII"]) {
+        const table = tables.find((candidate) => candidate.officialNumber === number);
+        assert.ok(table, number);
+        assert.ok([...table.headers, ...table.rows].flat().every((cell) => cell.align === "center"), number);
+    }
+    const tableI = tables.find((candidate) => candidate.officialNumber === "11.2.I")!;
+    assert.deepEqual(tableI.notesInline?.[0]?.filter((segment) => segment.kind === "math").map((segment) => segment.latex), ["R_{cm28}", "R_{c,\\min}", "s"]);
+    const tableIV = tables.find((candidate) => candidate.officialNumber === "11.2.IV")!;
+    assert.ok(tableIV.rows.flat().some((cell) => cell.inline?.some((segment) => segment.kind === "math" && segment.latex === "R_{ck}")));
+});
+
 test("NTC pagine 309–318 conserva gli inline completi e rimuove i residui OCR", async () => {
     const units = await Promise.all(numbers.map((number) => json(`corpus/units/ntc2018/${number}.json`)));
     const scopedBlocks = units.flatMap((unit) => unit.blocks.filter(

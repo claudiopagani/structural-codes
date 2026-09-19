@@ -68,10 +68,12 @@
       "headers": [
         [
           {
-            "text": "Controllo di tipo A"
+            "text": "Controllo di tipo A",
+            "align": "center"
           },
           {
-            "text": "Controllo di tipo B"
+            "text": "Controllo di tipo B",
+            "align": "center"
           }
         ]
       ],
@@ -80,31 +82,71 @@
           {
             "text": "Rc,min ≥ Rck − 3,5",
             "latex": "R_{c,\\min}\\ge R_{ck}-3{,}5",
-            "colSpan": 2
+            "colSpan": 2,
+            "align": "center"
           }
         ],
         [
           {
             "text": "Rcm28 ≥ Rck + 3,5",
-            "latex": "R_{cm28}\\ge R_{ck}+3{,}5"
+            "latex": "R_{cm28}\\ge R_{ck}+3{,}5",
+            "align": "center"
           },
           {
             "text": "Rcm28 ≥ Rck + 1,48 s",
-            "latex": "R_{cm28}\\ge R_{ck}+1{,}48s"
+            "latex": "R_{cm28}\\ge R_{ck}+1{,}48s",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "(N° prelievi: 3)"
+            "text": "(N° prelievi: 3)",
+            "align": "center"
           },
           {
-            "text": "(N° prelievi ≥ 15)"
+            "text": "(N° prelievi ≥ 15)",
+            "align": "center"
           }
         ]
       ],
       "notes": [
         "Ove: Rcm28 = resistenza media dei prelievi (N/mm²); Rc,min = minore valore di resistenza dei prelievi (N/mm²); s = scarto quadratico medio.",
         "Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."
+      ],
+      "notesInline": [
+        [
+          {
+            "kind": "text",
+            "value": "Ove: "
+          },
+          {
+            "kind": "math",
+            "value": "Rcm28",
+            "latex": "R_{cm28}"
+          },
+          {
+            "kind": "text",
+            "value": " = resistenza media dei prelievi (N/mm²); "
+          },
+          {
+            "kind": "math",
+            "value": "Rc,min",
+            "latex": "R_{c,\\min}"
+          },
+          {
+            "kind": "text",
+            "value": " = minore valore di resistenza dei prelievi (N/mm²); "
+          },
+          {
+            "kind": "math",
+            "value": "s",
+            "latex": "s"
+          },
+          {
+            "kind": "text",
+            "value": " = scarto quadratico medio."
+          }
+        ]
       ]
     },
     {
@@ -117,27 +159,33 @@
       "headers": [
         [
           {
-            "text": "Specifica Tecnica Europea armonizzata di riferimento"
+            "text": "Specifica Tecnica Europea armonizzata di riferimento",
+            "align": "center"
           },
           {
-            "text": "Uso Previsto"
+            "text": "Uso Previsto",
+            "align": "center"
           },
           {
-            "text": "Sistema di Valutazione e Verifica della Costanza della Prestazione"
+            "text": "Sistema di Valutazione e Verifica della Costanza della Prestazione",
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "Aggregati per calcestruzzo UNI EN 12620 e UNI EN 13055-1"
+            "text": "Aggregati per calcestruzzo UNI EN 12620 e UNI EN 13055-1",
+            "align": "center"
           },
           {
-            "text": "Calcestruzzo strutturale"
+            "text": "Calcestruzzo strutturale",
+            "align": "center"
           },
           {
             "text": "2 +",
-            "latex": "2+"
+            "latex": "2+",
+            "align": "center"
           }
         ]
       ],
@@ -155,80 +203,98 @@
       "headers": [
         [
           {
-            "text": "Origine del materiale da riciclo"
+            "text": "Origine del materiale da riciclo",
+            "align": "center"
           },
           {
-            "text": "Classe del calcestruzzo"
+            "text": "Classe del calcestruzzo",
+            "align": "center"
           },
           {
-            "text": "percentuale di impiego"
+            "text": "percentuale di impiego",
+            "align": "center"
           }
         ]
       ],
       "rows": [
         [
           {
-            "text": "demolizioni di edifici (macerie)"
+            "text": "demolizioni di edifici (macerie)",
+            "align": "center"
           },
           {
             "text": "= C 8/10",
-            "latex": "=\\mathrm{C8/10}"
+            "latex": "=\\mathrm{C8/10}",
+            "align": "center"
           },
           {
-            "text": "fino al 100%"
+            "text": "fino al 100%",
+            "align": "center"
           }
         ],
         [
           {
             "text": "demolizioni di solo calcestruzzo e c.a. (frammenti di calcestruzzo ≥ 90%, UNI EN 933-11:2009)",
-            "rowSpan": 3
+            "rowSpan": 3,
+            "align": "center"
           },
           {
             "text": "≤ C20/25",
-            "latex": "\\le\\mathrm{C20/25}"
+            "latex": "\\le\\mathrm{C20/25}",
+            "align": "center"
           },
           {
-            "text": "fino al 60%"
+            "text": "fino al 60%",
+            "align": "center"
           }
         ],
         [
           {
             "text": "≤ C30/37",
-            "latex": "\\le\\mathrm{C30/37}"
+            "latex": "\\le\\mathrm{C30/37}",
+            "align": "center"
           },
           {
             "text": "≤ 30%",
-            "latex": "\\le30\\%"
+            "latex": "\\le30\\%",
+            "align": "center"
           }
         ],
         [
           {
             "text": "≤ C45/55",
-            "latex": "\\le\\mathrm{C45/55}"
+            "latex": "\\le\\mathrm{C45/55}",
+            "align": "center"
           },
           {
             "text": "≤ 20%",
-            "latex": "\\le20\\%"
+            "latex": "\\le20\\%",
+            "align": "center"
           }
         ],
         [
           {
             "text": "Riutilizzo di calcestruzzo interno negli stabilimenti di prefabbricazione qualificati - da qualsiasi classe",
-            "rowSpan": 2
+            "rowSpan": 2,
+            "align": "center"
           },
           {
-            "text": "Classe minore del calcestruzzo di origine"
+            "text": "Classe minore del calcestruzzo di origine",
+            "align": "center"
           },
           {
-            "text": "fino al 15%"
+            "text": "fino al 15%",
+            "align": "center"
           }
         ],
         [
           {
-            "text": "Stessa classe del calcestruzzo di origine"
+            "text": "Stessa classe del calcestruzzo di origine",
+            "align": "center"
           },
           {
-            "text": "fino al 10%"
+            "text": "fino al 10%",
+            "align": "center"
           }
         ]
       ],
@@ -278,7 +344,22 @@
         ],
         [
           {
-            "text": "Resistenza alla frammentazione/frantumazione (per calcestruzzo Rck ≥ C50/60 e aggregato proveniente da riciclo)"
+            "text": "Resistenza alla frammentazione/frantumazione (per calcestruzzo Rck ≥ C50/60 e aggregato proveniente da riciclo)",
+            "inline": [
+              {
+                "kind": "text",
+                "value": "Resistenza alla frammentazione/frantumazione (per calcestruzzo "
+              },
+              {
+                "kind": "math",
+                "value": "Rck",
+                "latex": "R_{ck}"
+              },
+              {
+                "kind": "text",
+                "value": " ≥ C50/60 e aggregato proveniente da riciclo)"
+              }
+            ]
           }
         ]
       ],

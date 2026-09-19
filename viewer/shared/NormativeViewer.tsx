@@ -374,7 +374,7 @@ function unitTitleContent(unit: CorpusUnit) {
   if (!inline) return unit.title;
   const officialNumber = unit.numbering.official;
   const prefix = new RegExp(`^${escapeRegExp(officialNumber)}\\s*`, "u");
-  const titleInline = inline.map((segment, index) => index === 0 && segment.kind === "text" ? { ...segment, value: segment.value.replace(prefix, "") } : segment);
+  const titleInline = inline.map((segment, index) => index === 0 && typeof segment.value === "string" ? { ...segment, value: segment.value.replace(prefix, "") } : segment);
   return renderInlineSegments(titleInline);
 }
 

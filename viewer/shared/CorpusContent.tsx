@@ -243,6 +243,7 @@ function tableCellClass(cell: TableCell) {
     cell.noWrap ? "table-cell-no-wrap" : "",
     cell.verticalText ? "table-cell-vertical" : "",
     cell.shade ? `table-cell-shade-${cell.shade}` : "",
+    cell.spacer ? "table-cell-spacer" : "",
     cell.text.includes("\n") ? "table-cell-multiline" : "",
   ].filter(Boolean).join(" ") || undefined;
 }
@@ -499,7 +500,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   if (figure) {
     const width = Math.max(1, Math.round(figure.region?.width ?? 800));
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
-    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} /><figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption><CopyAssetButton kind="figure" /></figure>;
+    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} />{figure.caption && <figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption>}<CopyAssetButton kind="figure" /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }

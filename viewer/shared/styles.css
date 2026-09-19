@@ -290,9 +290,20 @@ body { margin: 0; }
 .scv-root .table-asset .table-cell-no-wrap { white-space: nowrap; }
 .scv-root .table-asset .table-cell-vertical { width: 1.8em; min-width: 1.8em; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); }
 .scv-root .table-asset .table-cell-multiline { white-space: pre-line; }
+.scv-root .table-asset .table-cell-spacer { padding-inline: 0; background: transparent !important; border-color: transparent !important; }
+.scv-root .table-asset-11-7-i table { min-width: 0; table-layout: fixed; }
 .scv-root .table-asset .table-cell-content { display: flex; min-width: 0; flex-direction: column; align-items: inherit; gap: 4px; }
 .scv-root .table-asset .table-independent-footer { margin-top: -1px; table-layout: fixed; }
 .scv-root .table-asset .table-cell-image { display: block; width: auto; max-width: 100%; height: auto; margin: 0 auto; }
+.scv-root .table-asset-11-3-ib table, .scv-root .table-asset-11-3-ic table { min-width: 0; table-layout: fixed; }
+.scv-root .table-asset-11-3-ib tbody td:nth-child(1), .scv-root .table-asset-11-3-ic tbody td:nth-child(1) { border-right: 0; }
+.scv-root .table-asset-11-3-ib tbody td:nth-child(2), .scv-root .table-asset-11-3-ic tbody td:nth-child(2) { border-left: 0; }
+.scv-root .table-asset-11-3-viii table { min-width: 0; table-layout: fixed; }
+.scv-root .table-asset-11-3-viii tbody td:nth-child(1) { border-right: 0; }
+.scv-root .table-asset-11-3-viii tbody td:nth-child(2) { border-left: 0; }
+.scv-root .table-asset-11-3-xii table { min-width: 0; table-layout: fixed; }
+.scv-root .table-asset-11-3-xii tbody tr:nth-child(-n+4) td, .scv-root .table-asset-11-3-xii tbody tr:nth-child(6) td { border-bottom: 0; }
+.scv-root .table-asset-11-3-xii tbody tr:nth-child(n+2):nth-child(-n+5) td, .scv-root .table-asset-11-3-xii tbody tr:nth-child(7) td { border-top: 0; }
 .scv-root .table-asset-4-3-iii tbody td:first-child .table-cell-content { flex-direction: column-reverse; }
 .scv-root .table-asset-3-5-iv table { table-layout: fixed; }
 .scv-root .table-asset-3-5-iv th:first-child, .scv-root .table-asset-3-5-iv td:first-child { width: 6.25em; min-width: 6.25em; white-space: nowrap; }
