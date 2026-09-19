@@ -120,7 +120,7 @@
       "text": {
         "raw": "\u0003 q = 2,0 \u0005 \nu\u0005+ \n1 per edifici regolari in elevazione, nel caso di muratura in pietra e/o mattoni pieni;",
         "normalized": "q = 2,0 α_u/α_1 per edifici regolari in elevazione, nel caso di muratura in pietra e/o mattoni pieni;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c85-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -163,11 +163,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c85-step2-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "fbde133a1caefa37f1fe53e8ab9321e025de044b4f28957dd021fae57e16994b",
         "normalizedSha256": "11116ebf7e3c559f2cfca0778e20984144474a68bd3b937a6536c644ed7b0368"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.5.5.1#block-003",
@@ -176,7 +183,7 @@
       "text": {
         "raw": "\u0003 q \b\u001f Y\u001a\bu\u0005+ \n1\n\u0010\u000f\b\u0015+\u0010\b ",
         "normalized": "q = 1,75 α_u/α_1 per edifici regolari in elevazione, nel caso di muratura in blocchi artificiali con percentuale di foratura >15% (elementi semipieni, forati…).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c85-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -228,11 +235,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c85-step2-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "e69ca2fa7a644617761cb7f80ee55695efddfa81fbf172fa781f84fa13faa985",
         "normalizedSha256": "de283b9e7034c53b9488f3c59865f118dde89ce5b47fd16da38a44daf42772eb"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.5.5.1#block-004",
@@ -241,7 +255,7 @@
       "text": {
         "raw": "u e 1 sono definiti al § 7.8.1.3 delle NTC. \u000f\b \u000e\u000e\u0006\u000f\u0017 \b \u0010\b\u0002\u0010«\b\u0002\u0003\u0006\u0015\u0010\u000e\u0006\b\u0011 +\u0007 \u0017\u0010\u0004\u000f\u0010 \b\u000f\u0004\u000f\b\u0002+\b\u0006\u000e\u000e\u0006\u0003\u0006\b \u000e\u000e+\u000f\u0007\u0004\b+\u000f\b\u0003 \u0002\u0002\u0004\u0003\u0007\u0004\bu\u0005+1\nsuperiore a 1,5.",
         "normalized": "in cui α_u e α_1 sono definiti al § 7.8.1.3 delle NTC. In assenza di più precise valutazioni, non può essere assunto un rapporto α_u/α_1 superiore a 1,5.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c85-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -263,15 +277,19 @@
           },
           {
             "kind": "text",
-            "value": " sono definiti al § 7.8.1.3 delle NTC. In assenza di più precise valutazioni, non può essere assunto un rapporto "
+            "value": " sono definiti al § 7.8.1.3 delle NTC. "
+          },
+          {
+            "kind": "underline",
+            "value": "In assenza di più precise valutazioni, non può essere assunto un rapporto "
           },
           {
             "kind": "math",
             "value": "α_u/α_1",
-            "latex": "\\alpha_u/\\alpha_1"
+            "latex": "\\underline{\\alpha_u/\\alpha_1}"
           },
           {
-            "kind": "text",
+            "kind": "underline",
             "value": " superiore a 1,5."
           }
         ]
@@ -306,6 +324,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c85-step2-editorial-0.1.0",
+            "note": "Sottolineata la limitazione sul rapporto α_u/α_1 verificata sul render ufficiale."
           }
         ],
         "rawSha256": "4c12f1ed17dcfcdaa2a6eca26efbae6dce9c9f960450ec59a6975f7a1a88c5db",

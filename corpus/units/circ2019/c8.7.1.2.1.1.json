@@ -37,7 +37,17 @@
       "text": {
         "raw": "C8.7.1.2.1.1 Analisi con approccio cinematico lineare",
         "normalized": "C8.7.1.2.1.1 Analisi con approccio cinematico lineare",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "C8.7.1.2.1.1 "
+          },
+          {
+            "kind": "strong-em",
+            "value": "Analisi con approccio cinematico lineare"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -54,6 +64,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Applicata la resa in grassetto corsivo del titolo interno verificata sul render ufficiale."
           }
         ],
         "rawSha256": "6de1f8d907565a4526568451f8b2e3b859bfb1d4c1ceac46aa4a54d9c363c752",
@@ -67,7 +82,7 @@
       "text": {
         "raw": "L‘ analisi con approccio cinematico lineare (o cinematica lineare) richiede il calcolo del solo moltiplicatore di attivazione del\nmeccanismo \n\u000f9 e può essere utilizzata per eseguire sia la verifica allo Stato Limite di Danno (attivazione del meccanismo locale)\nsia quella allo SLV, in quest’ultimo caso attraverso il metodo semplificato del fattore di comportamento q, 6",
         "normalized": "L’analisi con approccio cinematico lineare (o cinematica lineare) richiede il calcolo del solo moltiplicatore di attivazione del meccanismo α_0 e può essere utilizzata per eseguire sia la verifica allo Stato Limite di Danno (attivazione del meccanismo locale) sia quella allo SLV, in quest’ultimo caso attraverso il metodo semplificato del fattore di comportamento q.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -89,7 +104,16 @@
           },
           {
             "kind": "text",
-            "value": ", in quest’ultimo caso attraverso il metodo semplificato del fattore di comportamento q."
+            "value": ", in quest’ultimo caso attraverso il metodo semplificato del fattore di comportamento "
+          },
+          {
+            "kind": "math",
+            "value": "q",
+            "latex": "q"
+          },
+          {
+            "kind": "text",
+            "value": "."
           }
         ]
       },
@@ -123,6 +147,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Reso in matematica inline il fattore q del primo paragrafo."
           }
         ],
         "rawSha256": "350cc72e817836b697dbad770464c5ed826294603d09225157233c38f72d7969",
@@ -195,8 +224,23 @@
       "origin": "official",
       "text": {
         "raw": "Applicando il teorema dei lavori virtuali è possibile calcolare il moltiplicatore \n\u000f9 che attiva il cinematismo, attraverso la seguente\nespressione: ",
-        "normalized": "Applicando il teorema dei lavori virtuali è possibile calcolare il moltiplicatore 9 che attiva il cinematismo, attraverso la seguente espressione:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "Applicando il teorema dei lavori virtuali è possibile calcolare il moltiplicatore α_0 che attiva il cinematismo, attraverso la seguente espressione:",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Applicando il teorema dei lavori virtuali è possibile calcolare il moltiplicatore "
+          },
+          {
+            "kind": "math",
+            "value": "α_0",
+            "latex": "\\alpha_0"
+          },
+          {
+            "kind": "text",
+            "value": " che attiva il cinematismo, attraverso la seguente espressione:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -228,10 +272,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Corretto il glifo estratto come moltiplicatore α_0 sulla base del PDF ufficiale."
           }
         ],
         "rawSha256": "c4b9f54d56ee0968441c2a95b258d1cd1427f9388aa59c2e1569833cc1a737a1",
-        "normalizedSha256": "1d01020848af48a1c468f8ba5d847a0b1c1abc120c8bd12b760d932f1b9bf7c8"
+        "normalizedSha256": "1e367a88cbdfa6f044b7226aedea875b8144aa0a299822ab285a005bc592a021"
       }
     },
     {
@@ -307,12 +356,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-006",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "N è il numero dei blocchi di cui è costituita la catena cinematica;",
         "normalized": "N è il numero dei blocchi di cui è costituita la catena cinematica;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -340,20 +389,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "6da7e8bc48a123e2a248e4d7e964eba2e8d1c157c73c992f6180650ec702a484",
         "normalizedSha256": "6da7e8bc48a123e2a248e4d7e964eba2e8d1c157c73c992f6180650ec702a484"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-007",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "m è il numero di forze esterne, assunte indipendenti dall’azione sismica, applicate ai diversi blocchi;",
         "normalized": "m è il numero di forze esterne, assunte indipendenti dall’azione sismica, applicate ai diversi blocchi;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -381,20 +437,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "ddad1854cbf84660702a566563770ed09ea9f3f16da96635bedb1b62e749eb51",
         "normalizedSha256": "ddad1854cbf84660702a566563770ed09ea9f3f16da96635bedb1b62e749eb51"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-008",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "P k è la risultante delle forze peso applicate al k-esimo blocco (peso proprio del blocco, applicato nel suo baricentro,\nsommato agli altri pesi portati);",
         "normalized": "P_k è la risultante delle forze peso applicate al k-esimo blocco (peso proprio del blocco, applicato nel suo baricentro, sommato agli altri pesi portati);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -437,20 +500,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "61f7095d950ea5b0edd4b99f9aaa62da5ffceaed1e1309fc4e98af1c33a88aba",
         "normalizedSha256": "c222e1fc75f60e312e0eeb246cb11611e120ac4ed57792357674a5b4a265ce22"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-009",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "Qk è la risultante delle forze peso non gravanti sul k-esimo blocco ma la cui massa genera su di esso una forza sismica\norizzontale, in quanto non efficacemente trasmessa ad altre parti dell'edificio;",
         "normalized": "Q_k è la risultante delle forze peso non gravanti sul k-esimo blocco ma la cui massa genera su di esso una forza sismica orizzontale, in quanto non efficacemente trasmessa ad altre parti dell’edificio;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -493,20 +563,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "504d09c54b66da2c88f9492dc84792654ceca2802b2150b26c8ec4e94f7f8750",
         "normalizedSha256": "1b4b51930e5ce727c4c98d123498b51b764a495064b5cbbcc07f7c82168628af"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-010",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "F k è la generica forza esterna applicata ad uno dei blocchi; tali forze possono favorire l’attivazione del meccanismo (ad es.\nspinte di volte) o ostacolarlo (ad es. archi di contrasto, ovvero forze attritive che si sviluppano in presenza di parti\ndella costruzione non coinvolte nel meccanismo);",
         "normalized": "F_k è la generica forza esterna applicata ad uno dei blocchi; tali forze possono favorire l’attivazione del meccanismo (ad es. spinte di volte) o ostacolarlo (ad es. archi di contrasto, ovvero forze attritive che si sviluppano in presenza di parti della costruzione non coinvolte nel meccanismo);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -549,20 +626,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "e6513e22841a2094f78576a3cd4ba3acc6de0584852b2df18a40c6bc1b3afdca",
         "normalizedSha256": "4e9e061f7bff1441a82c19c02f8affdfbabcfff6e1f502e16aad36ff5edc6db3"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-011",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "/Py\n:H\u0005 è lo spostamento virtuale verticale del baricentro delle forze peso proprie e portate P k, agenti sul k-esimo blocco,\nassunto positivo se verso l’alto;",
         "normalized": "δ_{P_y,k} è lo spostamento virtuale verticale del baricentro delle forze peso proprie e portate P_k, agenti sul k-esimo blocco, assunto positivo se verso l’alto;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -614,20 +698,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "f5ceef8e184dc2883cb5b8ff3b834bfa0500cf8c7ef02fc09d188a0a56ec1087",
         "normalizedSha256": "08e1da82f4e51053340c35fd29139b9ab327c62ace7966374b27c10fe7fd32ab"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-012",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "/F,\nH\u0005 è lo spostamento virtuale del punto d’applicazione della forza esterna F k, proiettato nella direzione della stessa (di\nsegno positivo o negativo a seconda che questa favorisca o contrasti il meccanismo);",
         "normalized": "δ_{F,k} è lo spostamento virtuale del punto d’applicazione della forza esterna F_k, proiettato nella direzione della stessa (di segno positivo o negativo a seconda che questa favorisca o contrasti il meccanismo);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -679,20 +770,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "c9966ffafa53c50d8f9e00991c1cc01b5365ed378630b92ca8c92a17133def42",
         "normalizedSha256": "aba1ffb8e9321f56d09b74c949b0ada03cecb2dc87356733d4194ea81a9697b6"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-013",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "/PQx,\nH\u0005 è lo spostamento virtuale orizzontale del baricentro delle forze orizzontali \n\u000f\u0005(P k+Qk) agenti sul k-esimo blocco,\nassumendo come verso positivo quello dell’azione sismica che attiva il meccanismo;",
         "normalized": "δ_{PQ_x,k} è lo spostamento virtuale orizzontale del baricentro delle forze orizzontali α(P_k+Q_k) agenti sul k-esimo blocco, assumendo come verso positivo quello dell’azione sismica che attiva il meccanismo;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -762,20 +860,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "3dab90c5f8104cd7da90cf6e99b55f1bcc24434e1e249ffba3e900097dc19312",
         "normalizedSha256": "0c4f422ff473cdad084b816d07852069cc0657e27d423a6619286feadabd36b7"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-014",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "L i è il lavoro totale di eventuali forze interne (allungamento di una catena; scorrimento con attrito in presenza di\nammorsamento tra i blocchi del meccanismo, dovuto a moti relativi traslazionali o torsionali; deformazione nel piano\ndi solai o coperture collegate ma non rigide).",
         "normalized": "L_i è il lavoro totale di eventuali forze interne (allungamento di una catena; scorrimento con attrito in presenza di ammorsamento tra i blocchi del meccanismo, dovuto a moti relativi traslazionali o torsionali; deformazione nel piano di solai o coperture collegate ma non rigide).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -818,11 +923,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "794bea825c2fe000fbffdf345487cc63b078df19f49d7ea5bc52f67ce77c73bc",
         "normalizedSha256": "a00f0b2064adf9d5693469922fbb5e5dda49d28d481fed6d7007b8239c4a30ac"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-015",
@@ -830,8 +942,32 @@
       "origin": "official",
       "text": {
         "raw": "Il moltiplicatore \n\u000f9\u0005che si ottiene dall’equazione [C8.7.1.1] rappresenta una stima per eccesso dell’effettivo moltiplicatore statico\ndi collasso (corrispondente all’attivazione del meccanismo in ambito dinamico).\nQuest’ultimo può essere stimato come il più basso dei moltiplicatori \n\u000f9\u0005ottenuti per i meccanismi selezionati come possibili tra\nquelli ricorrenti per configurazioni analoghe, in quanto caratterizzati da condizioni statiche e cinematiche realistiche; in tal senso,\nla forma geometrica delle porzioni di muratura coinvolte nella catena cinematica (e la posizione delle cerniere) dovrebbe\nderivare, nell’ambito di ciascuna classe di meccanismo, da un processo di minimizzazione, facendo riferimento anche a modelli\nattritivi a blocchi rigidi (identificazione del meccanismo corretto).",
-        "normalized": "Il moltiplicatore 9che si ottiene dall’equazione [C8.7.1.1] rappresenta una stima per eccesso dell’effettivo moltiplicatore statico di collasso (corrispondente all’attivazione del meccanismo in ambito dinamico). Quest’ultimo può essere stimato come il più basso dei moltiplicatori 9ottenuti per i meccanismi selezionati come possibili tra quelli ricorrenti per configurazioni analoghe, in quanto caratterizzati da condizioni statiche e cinematiche realistiche; in tal senso, la forma geometrica delle porzioni di muratura coinvolte nella catena cinematica (e la posizione delle cerniere) dovrebbe derivare, nell’ambito di ciascuna classe di meccanismo, da un processo di minimizzazione, facendo riferimento anche a modelli attritivi a blocchi rigidi (identificazione del meccanismo corretto).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "Il moltiplicatore α_0 che si ottiene dall’equazione [C8.7.1.1] rappresenta una stima per eccesso dell’effettivo moltiplicatore statico di collasso (corrispondente all’attivazione del meccanismo in ambito dinamico). Quest’ultimo può essere stimato come il più basso dei moltiplicatori α_0 ottenuti per i meccanismi selezionati come possibili tra quelli ricorrenti per configurazioni analoghe, in quanto caratterizzati da condizioni statiche e cinematiche realistiche; in tal senso, la forma geometrica delle porzioni di muratura coinvolte nella catena cinematica (e la posizione delle cerniere) dovrebbe derivare, nell’ambito di ciascuna classe di meccanismo, da un processo di minimizzazione, facendo riferimento anche a modelli attritivi a blocchi rigidi (identificazione del meccanismo corretto).",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Il moltiplicatore "
+          },
+          {
+            "kind": "math",
+            "value": "α_0",
+            "latex": "\\alpha_0"
+          },
+          {
+            "kind": "text",
+            "value": " che si ottiene dall’equazione [C8.7.1.1] rappresenta una stima per eccesso dell’effettivo moltiplicatore statico di collasso (corrispondente all’attivazione del meccanismo in ambito dinamico). Quest’ultimo può essere stimato come il più basso dei moltiplicatori "
+          },
+          {
+            "kind": "math",
+            "value": "α_0",
+            "latex": "\\alpha_0"
+          },
+          {
+            "kind": "text",
+            "value": " ottenuti per i meccanismi selezionati come possibili tra quelli ricorrenti per configurazioni analoghe, in quanto caratterizzati da condizioni statiche e cinematiche realistiche; in tal senso, la forma geometrica delle porzioni di muratura coinvolte nella catena cinematica (e la posizione delle cerniere) dovrebbe derivare, nell’ambito di ciascuna classe di meccanismo, da un processo di minimizzazione, facendo riferimento anche a modelli attritivi a blocchi rigidi (identificazione del meccanismo corretto)."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -863,10 +999,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Corretto il glifo estratto come moltiplicatore α_0 sulla base del PDF ufficiale."
           }
         ],
         "rawSha256": "6def82e45d7d9c1bb643d34bf4f47b6dcf6254d857644b8dc36af3e5a5783191",
-        "normalizedSha256": "a37413e2fc5e4ba7a513d80fbcacd720fc3d19a260b2d11e71758d1f9fc41281"
+        "normalizedSha256": "fe6b5bf32afc4d0763c645608eeeb75c7dc0f62becb8d44e4b7c2f24ed732e3f"
       }
     },
     {
@@ -1002,12 +1143,12 @@
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-019",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "n è il numero dei filari interessati dalla lesione verticale (n=h/h b, dove h b è l’altezza media degli elementi costituenti la\nmuratura);",
         "normalized": "n è il numero dei filari interessati dalla lesione verticale (n=h/h_b, dove h_b è l’altezza media degli elementi costituenti la muratura);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1068,20 +1209,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "67ed326911dd0f9ae95e38f899d80232dc5fad667d89c154b4cd38b1772b207c",
         "normalizedSha256": "691211418e71440365b3f87a280a3fa6e4138723626667fc931aac29258e0f31"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-020",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "l è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;",
         "normalized": "l è la lunghezza del singolo giunto attritivo, sovrapposizione tra i blocchi di due corsi successivi;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1109,25 +1257,32 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "b4e2686229bdb8cd32057ca0cace7a1d6646f8ada5ff0ef3a24367c68027cf47",
         "normalizedSha256": "b4e2686229bdb8cd32057ca0cace7a1d6646f8ada5ff0ef3a24367c68027cf47"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-021",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "4 è il coefficiente di ammorsamento, così definito \n4\u0005= h b/l; tale parametro è analogamente definito per il criterio di\nresistenza a taglio per fessurazione diagonale, con rottura “a scaletta” nei giunti di malta, nell’equazione [C8.7.1.17];",
         "normalized": "φ è il coefficiente di ammorsamento, così definito φ=h_b/l; tale parametro è analogamente definito per il criterio di resistenza a taglio per fessurazione diagonale, con rottura “a scaletta” nei giunti di malta, nell’equazione [C8.7.1.17];",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
             "value": "φ",
-            "latex": "\\varphi"
+            "latex": "\\phi"
           },
           {
             "kind": "text",
@@ -1136,7 +1291,7 @@
           {
             "kind": "math",
             "value": "φ=h_b/l",
-            "latex": "\\varphi=h_b/l"
+            "latex": "\\phi=h_b/l"
           },
           {
             "kind": "text",
@@ -1174,20 +1329,32 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Uniformata la resa LaTeX del simbolo φ verificata sul PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "83d4bbbf849da62d0ded946dbd1f7d034b4c7b255451a9990cba3de925247ead",
         "normalizedSha256": "4249b1437ca99c0f01778b9517888656dba3c92ab2e17ed086ae0b23568a92d7"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-022",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "- è il coefficiente d’attrito; un valore di riferimento è 0,577, identico a quello indicato per l’equazione [C8.7.1.17];",
         "normalized": "μ è il coefficiente d’attrito; un valore di riferimento è 0,577, identico a quello indicato per l’equazione [C8.7.1.17];",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1229,20 +1396,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "581679c59e71129c075d45e6f8a7f028c598bbac7ae9f3be8852b6b82ecca912",
         "normalizedSha256": "6ea2d8fe3a180446619a01db1fac1e5bc9555b12921291fc123910b907998348"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-023",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "t S è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);",
         "normalized": "t_s è lo spessore della parete trasversale (opportunamente ridotto nel caso di muratura a tre paramenti);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1275,20 +1449,27 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "97c6c168802d15098e09555d3f371713e3d930ce86d6c9a2c99fe807e6ec086c",
         "normalizedSha256": "838b13cd1ff8ce5f215cbd4e44ad327063fcad05fb47ed9c20c01f83d82a0939"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-024",
-      "kind": "paragraph",
+      "kind": "list-item",
       "origin": "official",
       "text": {
         "raw": "w è il peso specifico della muratura (valori sono suggeriti nella Tabella C8.5.I).",
         "normalized": "w è il peso specifico della muratura (valori sono suggeriti nella Tabella C8.5.I).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
@@ -1316,11 +1497,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa come elenco labeled con descrizione allineata al label matematico."
           }
         ],
         "rawSha256": "fcbb09d8850c0f83f420146c22c745cc4b9293beba74db069eac56e660dc20b0",
         "normalizedSha256": "fcbb09d8850c0f83f420146c22c745cc4b9293beba74db069eac56e660dc20b0"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.1#block-025",
@@ -1328,30 +1516,21 @@
       "origin": "official",
       "text": {
         "raw": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della\ncerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore \n\u000f9.",
-        "normalized": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore 9.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore α_0.",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Il punto di applicazione di questa resistenza può essere assunto a quota "
+            "value": "Il punto di applicazione di questa resistenza può essere assunto a quota 1/3h; si ricorda che l’altezza h (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore "
           },
           {
             "kind": "math",
-            "value": "1/3h",
-            "latex": "1/3h"
+            "value": "α_0",
+            "latex": "\\alpha_0"
           },
           {
             "kind": "text",
-            "value": "; si ricorda che l’altezza "
-          },
-          {
-            "kind": "math",
-            "value": "h",
-            "latex": "h"
-          },
-          {
-            "kind": "text",
-            "value": " (ovvero la estensione della cerniera) dovrebbe essere identificata attraverso un processo di minimizzazione del moltiplicatore 9."
+            "value": "."
           }
         ]
       },
@@ -1390,10 +1569,15 @@
             "operation": "manual-correction",
             "ruleVersion": "inline-fraction-layout-0.1.0",
             "note": "Convertite con barra obliqua le frazioni nella matematica inline, come nella composizione tipografica della fonte; le formule in display restano in forma frazionaria."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Corretto il glifo estratto come moltiplicatore α_0 sulla base del PDF ufficiale."
           }
         ],
         "rawSha256": "cd1faae3c64981011f63af059a40e581de469155ae811bca07a32cef2fc5592a",
-        "normalizedSha256": "5dc0530307da13772cf894ca50a29a2476982fd626cec77ada04f7ad3a867d44"
+        "normalizedSha256": "616c903e67627bc536819e1d16739916be22e7c5173fcfcf21b7731af3033d09"
       }
     },
     {

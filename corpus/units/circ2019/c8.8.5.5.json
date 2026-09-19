@@ -94,8 +94,8 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 quello fornito dall’analisi, se a entrambe le estremità dell’elemento la distorsione non supera il valore di snervamento\n(l’elemento è elastico);",
-        "normalized": "- quello fornito dall’analisi, se a entrambe le estremità dell’elemento la distorsione non supera il valore di snervamento (l’elemento è elastico);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "quello fornito dall’analisi, se a entrambe le estremità dell’elemento la distorsione non supera il valore di snervamento (l’elemento è elastico);",
+        "normalizationVersion": "circ8-c88-step1-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -127,20 +127,42 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco puntato dei valori della domanda verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "714ff859a8aa7a6e0ecad30dee79337be4b87f21db4bb324722882c1354a1321",
-        "normalizedSha256": "8facdee94c0fe56904456e7f8d8a82192a5bb6a260e5ebb0947b53c22dd7a3f7"
-      }
+        "normalizedSha256": "6624ec7782e46fe24f15557f75c7a2e9475800cddfc0320a1ef56a6648e602aa"
+      },
+      "listMarker": "dash",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.5#block-003",
       "kind": "list-item",
       "origin": "official",
       "text": {
-        "raw": "\u0003 quello equilibrato dai momenti di estremità, limitati al loro valore di snervamento quando risulta per una o\nentrambe le estremità.",
-        "normalized": "- quello equilibrato dai momenti di estremità, limitati al loro valore di snervamento quando risulta per una o entrambe le estremità.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "raw": "\u0003 quello equilibrato dai momenti di estremità, limitati al loro valore di snervamento quando risulta θ > θ_y per una o\nentrambe le estremità.",
+        "normalized": "quello equilibrato dai momenti di estremità, limitati al loro valore di snervamento quando risulta θ > θ_y per una o entrambe le estremità.",
+        "normalizationVersion": "circ8-c88-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "quello equilibrato dai momenti di estremità, limitati al loro valore di snervamento quando risulta "
+          },
+          {
+            "kind": "math",
+            "value": "θ > θ_y",
+            "latex": "\\theta>\\theta_y"
+          },
+          {
+            "kind": "text",
+            "value": " per una o entrambe le estremità."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -172,11 +194,28 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco puntato dei valori della domanda verificato sul PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
+            "note": "Reintegrata la condizione θ > θ_y verificata sul PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
+            "note": "Resa in matematica inline la condizione θ > θ_y verificata sul PDF ufficiale."
           }
         ],
-        "rawSha256": "b26107bdddb9e1e4f0c86686a42e54ad0dde3c0ab0649e0966b859bf1cce1144",
-        "normalizedSha256": "21e05ae2c102d99d9f260db3a6972f1325c2a8def781dedf1bccce5c94aa2ea6"
-      }
+        "rawSha256": "c128f4793a170d1555e3dbb49359f9f1b123ddc81c50494b1b85ccc281ff5db6",
+        "normalizedSha256": "1c6237d407bbaa2ad5b9486ac8ca5346f10c4651f13e62fd2eb696b7730f1c53"
+      },
+      "listMarker": "dash",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.8.5.5#block-004",

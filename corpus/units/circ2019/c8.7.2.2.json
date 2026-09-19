@@ -109,8 +109,8 @@
       "origin": "official",
       "text": {
         "raw": "I fattori di confidenza indicati nella Tabella C8.5.III servono a un duplice scopo:\na. per definire le resistenze dei materiali da utilizzare nelle formule di capacità degli elementi duttili e fragili; le resistenze\nmedie, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono divise per i fattori di confidenza;\nb. per determinare le sollecitazioni trasmesse dagli elementi/meccanismi duttili a quelli fragili; le resistenze medie degli\nelementi duttili, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono moltiplicate per i fattori di confidenza.",
-        "normalized": "I fattori di confidenza indicati nella Tabella C8.5.III servono a un duplice scopo: a. per definire le resistenze dei materiali da utilizzare nelle formule di capacità degli elementi duttili e fragili; le resistenze medie, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono divise per i fattori di confidenza; b. per determinare le sollecitazioni trasmesse dagli elementi/meccanismi duttili a quelli fragili; le resistenze medie degli elementi duttili, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono moltiplicate per i fattori di confidenza.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "I fattori di confidenza indicati nella Tabella C8.5.III servono a un duplice scopo:",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -142,11 +142,130 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco a/b verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "f6b4984becad9a1562eab18b6a217e96e2f9b29d633dafe3b629171333248b75",
-        "normalizedSha256": "9e8a2f774d375da8c97bfcf0f11a40d2a59282178eb61725ba95a0208c5ba8e3"
+        "normalizedSha256": "8540556de30ebf17ea7d30efb9d2ed6fd9264dc37e86c7087e2f1888d62f0871"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2#block-002-a",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "normalized": "a. per definire le resistenze dei materiali da utilizzare nelle formule di capacità degli elementi duttili e fragili; le resistenze medie, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono divise per i fattori di confidenza;",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
+        "raw": "a. per definire le resistenze dei materiali da utilizzare nelle formule di capacità degli elementi duttili e fragili; le resistenze medie, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono divise per i fattori di confidenza;"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco a/b verificato sul PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Esplicitata la voce a. dell’elenco con descrizione allineata."
+          }
+        ],
+        "rawSha256": "eaab46f674cea31423ca7dc078e5f4c571275cf1d8ad5b377583e180c3f54ec2",
+        "normalizedSha256": "eaab46f674cea31423ca7dc078e5f4c571275cf1d8ad5b377583e180c3f54ec2"
+      },
+      "listMarker": "none",
+      "listLevel": 0
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2#block-002-b",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "normalized": "b. per determinare le sollecitazioni trasmesse dagli elementi/meccanismi duttili a quelli fragili; le resistenze medie degli elementi duttili, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono moltiplicate per i fattori di confidenza.",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
+        "raw": "b. per determinare le sollecitazioni trasmesse dagli elementi/meccanismi duttili a quelli fragili; le resistenze medie degli elementi duttili, ottenute dalle prove in situ e dalle informazioni aggiuntive, sono moltiplicate per i fattori di confidenza."
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 283,
+        "printedPage": "279",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco a/b verificato sul PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Esplicitata la voce b. dell’elenco con descrizione allineata."
+          }
+        ],
+        "rawSha256": "130aa565da02db2195fc25214aaceee15d0ce42b0f814d0220cecfe43f487ae5",
+        "normalizedSha256": "130aa565da02db2195fc25214aaceee15d0ce42b0f814d0220cecfe43f487ae5"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2#block-003",

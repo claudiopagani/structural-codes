@@ -613,8 +613,23 @@
       "origin": "official",
       "text": {
         "raw": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e\nrealizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica\nantecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere \u0002E=0,80.",
-        "normalized": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere E=0,80.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere ζ_ζ_E=0,80.",
+        "normalizationVersion": "circ8-c88-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere ζ_"
+          },
+          {
+            "kind": "math",
+            "value": "ζ_E=0,80",
+            "latex": "\\zeta_E=0{,}80"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -646,10 +661,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
+            "note": "Ripristinato il parametro ζ_E in matematica inline secondo il PDF ufficiale."
           }
         ],
         "rawSha256": "b9c066d4b0c5f6ceedce94b4c34a4bfb0d2badba13f09e3c5564bdfdd581dfff",
-        "normalizedSha256": "e17031bfd2c0d3f17c1dc9f93823f15f8c75a7c53bd50185a0138d1afa4efe04"
+        "normalizedSha256": "3f446547ec4c9ae69eb5e9c8ab411f9f2fa164106f19c47692d55d9579f50c1f"
       }
     }
   ],

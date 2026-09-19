@@ -112,9 +112,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "L’analisi statica non lineare può essere eseguita se è disponibile un modello in grado di simulare, per gli elementi strutturali\nrealizzati con i diversi materiali utilizzati, il loro comportamento non lineare sino alla capacità ultima in termini di deformazione.",
-        "normalized": "L’analisi statica non lineare può essere eseguita se è disponibile un modello in grado di simulare, per gli elementi strutturali realizzati con i diversi materiali utilizzati, il loro comportamento non lineare sino alla capacità ultima in termini di deformazione.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "raw": "L’analisi statica non lineare può essere eseguita se è disponibile un modello in grado di simulare, per gli elementi strutturali\nrealizzati con i diversi materiali utilizzati, il loro comportamento non lineare sino alla capacità ultima in termini di deformazione. La verifica deve condursi tenendo conto dei meccanismi locali e globali a seconda della tipologia di elementi strutturali che si sta\nanalizzando e del loro materiale costituente. Attenzione deve poi essere rivolta alla verifica delle connessioni tra elementi di\ndiverso materiale, valutando l’entità della domanda per la quale è stimato il raggiungimento dello stato limite di interesse.",
+        "normalized": "L’analisi statica non lineare può essere eseguita se è disponibile un modello in grado di simulare, per gli elementi strutturali realizzati con i diversi materiali utilizzati, il loro comportamento non lineare sino alla capacità ultima in termini di deformazione. La verifica deve condursi tenendo conto dei meccanismi locali e globali a seconda della tipologia di elementi strutturali che si sta analizzando e del loro materiale costituente. Attenzione deve poi essere rivolta alla verifica delle connessioni tra elementi di diverso materiale, valutando l’entità della domanda per la quale è stimato il raggiungimento dello stato limite di interesse.",
+        "normalizationVersion": "circ8-c87-step3-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -146,55 +146,15 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
-          }
-        ],
-        "rawSha256": "a45e706ef92ef04087deca4f0199ba0ef82d9fe92e946436ec4a06afb98132f2",
-        "normalizedSha256": "09565bb7e08ab27ec706b6e75267c7747c9298fd1be4f89468b079595d0c04bf"
-      }
-    },
-    {
-      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.3#block-003",
-      "kind": "paragraph",
-      "origin": "official",
-      "text": {
-        "raw": "La verifica deve condursi tenendo conto dei meccanismi locali e globali a seconda della tipologia di elementi strutturali che si sta\nanalizzando e del loro materiale costituente. Attenzione deve poi essere rivolta alla verifica delle connessioni tra elementi di\ndiverso materiale, valutando l’entità della domanda per la quale è stimato il raggiungimento dello stato limite di interesse.",
-        "normalized": "La verifica deve condursi tenendo conto dei meccanismi locali e globali a seconda della tipologia di elementi strutturali che si sta analizzando e del loro materiale costituente. Attenzione deve poi essere rivolta alla verifica delle connessioni tra elementi di diverso materiale, valutando l’entità della domanda per la quale è stimato il raggiungimento dello stato limite di interesse.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
-      },
-      "evidence": {
-        "sourceId": "circ-7-2019",
-        "pdfPage": 289,
-        "printedPage": "285",
-        "region": null,
-        "extraction": {
-          "method": "manual-transcription",
-          "tool": "codex-render-transcription",
-          "toolVersion": "circ8-editorial-profile-0.2.0"
-        },
-        "transformations": [
-          {
-            "operation": "join-line-wrap",
-            "ruleVersion": "circ8-editorial-profile-0.2.0",
-            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
-          },
-          {
-            "operation": "remove-control-character",
-            "ruleVersion": "circ8-editorial-profile-0.2.0",
-            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
           },
           {
             "operation": "manual-correction",
-            "ruleVersion": "circ8-editorial-profile-0.2.0",
-            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
-          },
-          {
-            "operation": "unicode-nfc",
-            "ruleVersion": "circ8-editorial-profile-0.2.0",
-            "note": "Testo normalizzato in Unicode NFC."
+            "ruleVersion": "circ8-c87-step3-editorial-0.1.0",
+            "note": "Ricostruito il capoverso continuo verificato sul PDF ufficiale."
           }
         ],
-        "rawSha256": "b9c802dab89c5d047bd50c22f7374a8e97c0cd8aef28634173101c92f3b097a8",
-        "normalizedSha256": "0de099e1eed4722df4aa65afabac3476b508bf413fe891fe1c4ad66f6aa67e34"
+        "rawSha256": "855ab091337bee80ee2202d4969befdf6a20db9982fc50ae63218320127427b3",
+        "normalizedSha256": "1dd692a63a9246d3277525c47537a00b11a933af0dd2a87a131a47b38844e9c2"
       }
     }
   ],

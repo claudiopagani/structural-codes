@@ -91,7 +91,7 @@
       "text": {
         "raw": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla\ncurva di capacità attraverso opportune soglie dello spostamento spettrale d.\nSLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
         "normalized": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d. SLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -118,11 +118,15 @@
           {
             "kind": "math",
             "value": "SLV",
-            "latex": "\\mathrm{SLV}"
+            "latex": "\\mathbf{SLV}"
+          },
+          {
+            "kind": "strong-em",
+            "value": ":"
           },
           {
             "kind": "text",
-            "value": ": lo spostamento d "
+            "value": " lo spostamento d "
           },
           {
             "kind": "math",
@@ -165,6 +169,16 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLV: dell’elenco."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa in grassetto l’etichetta SLV: mantenendo il testo completo della voce."
           }
         ],
         "rawSha256": "3ca995ed4fce67fceca3a14a58b05d9a575acf6f0fcb4574430a4b45c73d80d4",
@@ -177,12 +191,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 il 40% dello spostamento d 0 per cui si annulla l’accelerazione spettrale ᡓ\u0005valutata su una curva di capacità in cui si\nconsiderino solamente le azioni di cui è verificata la presenza fino al collasso;",
-        "normalized": "- il 40% dello spostamento d_0 per cui si annulla l’accelerazione spettrale a valutata su una curva di capacità in cui si considerino solamente le azioni di cui è verificata la presenza fino al collasso;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "il 40% dello spostamento d_0 per cui si annulla l’accelerazione spettrale a valutata su una curva di capacità in cui si considerino solamente le azioni di cui è verificata la presenza fino al collasso;",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- il "
+            "value": "il "
           },
           {
             "kind": "math",
@@ -243,11 +257,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "c315c858fa5c2944393e5590c63268c34d56bcedbd1ef70957828388bb47ab46",
-        "normalizedSha256": "a2368a886a9d63f7da8761dfffbd94451cdaa9b5721fcd34e7dfe1045d917fcb"
-      }
+        "normalizedSha256": "a67f968ae486edd83e8333f6a62c9f2d204ac82d116c53e7e56c243341f4cd85"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-003",
@@ -255,12 +276,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 lo spostamento corrispondente a situazioni nelle quali si verifichino rotture di elementi, quali catene o altri collegamenti,\nche, pur non comportando problemi di equilibrio, producano una riduzione della capacità, in termini di accelerazione,\nsuperiore al 50% del valore massimo; ovviamente non devono verificarsi le condizioni di seguito indicate per lo SLC (ad\nesempio sfilamento di travi, collasso di volte).",
-        "normalized": "- lo spostamento corrispondente a situazioni nelle quali si verifichino rotture di elementi, quali catene o altri collegamenti, che, pur non comportando problemi di equilibrio, producano una riduzione della capacità, in termini di accelerazione, superiore al 50% del valore massimo; ovviamente non devono verificarsi le condizioni di seguito indicate per lo SLC (ad esempio sfilamento di travi, collasso di volte).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "lo spostamento corrispondente a situazioni nelle quali si verifichino rotture di elementi, quali catene o altri collegamenti, che, pur non comportando problemi di equilibrio, producano una riduzione della capacità, in termini di accelerazione, superiore al 50% del valore massimo; ovviamente non devono verificarsi le condizioni di seguito indicate per lo SLC (ad esempio sfilamento di travi, collasso di volte).",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- lo spostamento corrispondente a situazioni nelle quali si verifichino rotture di elementi, quali catene o altri collegamenti, che, pur non comportando problemi di equilibrio, producano una riduzione della capacità, in termini di accelerazione, superiore al "
+            "value": "lo spostamento corrispondente a situazioni nelle quali si verifichino rotture di elementi, quali catene o altri collegamenti, che, pur non comportando problemi di equilibrio, producano una riduzione della capacità, in termini di accelerazione, superiore al "
           },
           {
             "kind": "math",
@@ -312,11 +333,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "9d0db0c719343d9a225958562af1932d24cc014349ad9e4ca5443f104ff42414",
-        "normalizedSha256": "baef4501a457d7651bc5ec6d735f2ae49ccefbbc337ab5125801ed4a78df4e21"
-      }
+        "normalizedSha256": "729d7e7af1f9e17c7b53a2576fe705e0083927184a13035448f09a83a986dbec"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-004",
@@ -325,16 +353,20 @@
       "text": {
         "raw": "SLC: lo spostamento d SLC corrisponde al minore tra gli spostamenti così definiti:",
         "normalized": "SLC: lo spostamento d SLC corrisponde al minore tra gli spostamenti così definiti:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "math",
             "value": "SLC",
-            "latex": "\\mathrm{SLC}"
+            "latex": "\\mathbf{SLC}"
+          },
+          {
+            "kind": "strong-em",
+            "value": ":"
           },
           {
             "kind": "text",
-            "value": ": lo spostamento d "
+            "value": " lo spostamento d "
           },
           {
             "kind": "math",
@@ -362,6 +394,16 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLC: dell’elenco."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa in grassetto l’etichetta SLC: mantenendo il testo completo della voce."
           }
         ],
         "rawSha256": "7fc04c3d81a1bafe8120d103b9bfa0224d8e9b06e9501247bcff07debd55eb26",
@@ -374,12 +416,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 il 60% dello spostamento d 0 per cui si annulla l’accelerazione spettrale ᡓ valutata su una curva di capacità in cui si\nconsiderino solamente le azioni di cui è verificata la presenza fino al collasso;",
-        "normalized": "- il 60% dello spostamento d_0 per cui si annulla l’accelerazione spettrale a valutata su una curva di capacità in cui si considerino solamente le azioni di cui è verificata la presenza fino al collasso;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "il 60% dello spostamento d_0 per cui si annulla l’accelerazione spettrale a valutata su una curva di capacità in cui si considerino solamente le azioni di cui è verificata la presenza fino al collasso;",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- il "
+            "value": "il "
           },
           {
             "kind": "math",
@@ -440,11 +482,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "32da348c0c18b2783552418987d68305c37018e638a841610438c108522bb3b5",
-        "normalizedSha256": "c9bb2c6ab33bc98a07e859c04f1ad190eb9dd253905c4794abe571f422f73eb8"
-      }
+        "normalizedSha256": "fd7fe38f7641cb00cf0fe9a2c95cb81986810233ac2b39814bfac8d3c145f038"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-006",
@@ -452,8 +501,8 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 lo spostamento corrispondente a situazioni localmente incompatibili con la stabilità degli elementi della costruzione (ad\nesempio sfilamento di travi, collasso di volte), nei casi in cui questo sia valutabile.",
-        "normalized": "- lo spostamento corrispondente a situazioni localmente incompatibili con la stabilità degli elementi della costruzione (ad esempio sfilamento di travi, collasso di volte), nei casi in cui questo sia valutabile.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "lo spostamento corrispondente a situazioni localmente incompatibili con la stabilità degli elementi della costruzione (ad esempio sfilamento di travi, collasso di volte), nei casi in cui questo sia valutabile.",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -485,11 +534,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "5e8b5f9c556aae2aed11ad11a47542e6c8bef49bcd91c522f9e441ab3e2c8645",
-        "normalizedSha256": "9f341101ea45e92cfd1689095ef474fdeceef082e6e66376761fe5a30b743589"
-      }
+        "normalizedSha256": "de193eec83525d8d23c5bdf8eec04aec50446adc90eb7549863f6cb7c46dbe11"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-007",

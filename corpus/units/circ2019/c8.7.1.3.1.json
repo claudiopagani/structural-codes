@@ -665,12 +665,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 quello corrispondente ad un taglio di base residuo pari all’80% del massimo;",
-        "normalized": "- quello corrispondente ad un taglio di base residuo pari all’80% del massimo;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "quello corrispondente ad un taglio di base residuo pari all’80% del massimo;",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- quello corrispondente ad un taglio di base residuo pari all’"
+            "value": "quello corrispondente ad un taglio di base residuo pari all’"
           },
           {
             "kind": "math",
@@ -708,11 +708,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "532219c92a9688ba95711e4971c65768350da9046e1cac3a27b7e6d7112044df",
-        "normalizedSha256": "54ef9adbe730aef746f4ba6565b4cb22d50a49fd88c902f0d316a36cb0b2cf15"
-      }
+        "normalizedSha256": "40c5fa03f83e62028d836aa529e84fd71136b599265a8e994ce40e9a154c4dc5"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-015",
@@ -720,8 +727,8 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 quello corrispondente al raggiungimento della soglia limite della deformazione angolare a SLC in tutti i maschi murari\nverticali di un qualunque livello in una qualunque parete ritenuta significativa ai fini della sicurezza (questo controllo\npuò essere omesso nelle analisi quando i diaframmi siano infinitamente rigidi o quando sia eseguita l’analisi di una\nsingola parete).",
-        "normalized": "- quello corrispondente al raggiungimento della soglia limite della deformazione angolare a SLC in tutti i maschi murari verticali di un qualunque livello in una qualunque parete ritenuta significativa ai fini della sicurezza (questo controllo può essere omesso nelle analisi quando i diaframmi siano infinitamente rigidi o quando sia eseguita l’analisi di una singola parete).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "quello corrispondente al raggiungimento della soglia limite della deformazione angolare a SLC in tutti i maschi murari verticali di un qualunque livello in una qualunque parete ritenuta significativa ai fini della sicurezza (questo controllo può essere omesso nelle analisi quando i diaframmi siano infinitamente rigidi o quando sia eseguita l’analisi di una singola parete).",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -753,11 +760,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "0067935d58a9d937fc0c3f7711b880c54ff0165f5ef2abdd214c4e666e537515",
-        "normalizedSha256": "d2a8112f97fc134949fd8baef0ace7430cfc320dffcf3cee533eeb6d44e8fe2c"
-      }
+        "normalizedSha256": "3299569f733adf43edf47ab26d2a251bdbc7c8d7bf6a33f0e174f2ea7d74652e"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-016",
@@ -766,20 +780,15 @@
       "text": {
         "raw": "SLV: lo spostamento ultimo a SLV, sulla bilineare equivalente sopra definita, è pari a ¾ dello spostamento a SLC",
         "normalized": "SLV: lo spostamento ultimo a SLV, sulla bilineare equivalente sopra definita, è pari a 3/4 dello spostamento a SLC",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "SLV: lo spostamento ultimo a SLV, sulla bilineare equivalente sopra definita, è pari a "
-          },
-          {
-            "kind": "math",
-            "value": "3/4",
-            "latex": "3/4"
+            "kind": "strong-em",
+            "value": "SLV:"
           },
           {
             "kind": "text",
-            "value": " dello spostamento a SLC"
+            "value": " lo spostamento ultimo a SLV, sulla bilineare equivalente sopra definita, è pari a 3/4 dello spostamento a SLC"
           }
         ]
       },
@@ -803,6 +812,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLV: dell’elenco."
           }
         ],
         "rawSha256": "61f1fb24824bbef1796097c0109bc5da5a7d663f7e075d53324a630e6f635374",
@@ -816,7 +830,17 @@
       "text": {
         "raw": "SLD: lo spostamento corrispondente è il minore tra gli spostamenti ottenuti dalle seguenti due condizioni:",
         "normalized": "SLD: lo spostamento corrispondente è il minore tra gli spostamenti ottenuti dalle seguenti due condizioni:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "strong-em",
+            "value": "SLD:"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento corrispondente è il minore tra gli spostamenti ottenuti dalle seguenti due condizioni:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -833,6 +857,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLD: dell’elenco."
           }
         ],
         "rawSha256": "26c8a407f4699d59849fb37a2f1193df53e7d1f5c795d6f92ff9089d38863f31",
@@ -845,8 +874,8 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 quello corrispondente al limite elastico della bilineare equivalente, definita a partire dallo spostamento ultimo a SLC;",
-        "normalized": "- quello corrispondente al limite elastico della bilineare equivalente, definita a partire dallo spostamento ultimo a SLC;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "quello corrispondente al limite elastico della bilineare equivalente, definita a partire dallo spostamento ultimo a SLC;",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -873,11 +902,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "7eb4bcfdef33a300ee51689bca1311922f55cadf6cdef2bf37ab0139ab8e284e",
-        "normalizedSha256": "6bbf5c8d8b23618b6e45dc42186d990667aa9bd559fe2633d3a8b072ab99bcaa"
-      }
+        "normalizedSha256": "a1f6e647a5162922e87d1f883f12b9733a9e6d764819505811e50b2f56dba30b"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-019",
@@ -885,12 +921,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 quello corrispondente al raggiungimento della resistenza massima a taglio in tutti i maschi murari verticali in un\nqualunque livello di una qualunque parete ritenuta significativa ai fini dell’uso della costruzione (e comunque non\nprima dello spostamento per il quale si raggiunge un taglio di base pari a 3/4 del taglio di base massimo).",
-        "normalized": "- quello corrispondente al raggiungimento della resistenza massima a taglio in tutti i maschi murari verticali in un qualunque livello in una qualunque parete ritenuta significativa ai fini dell’uso della costruzione (e comunque non prima dello spostamento per il quale si raggiunge un taglio di base pari a 3/4 del taglio di base massimo).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "quello corrispondente al raggiungimento della resistenza massima a taglio in tutti i maschi murari verticali in un qualunque livello in una qualunque parete ritenuta significativa ai fini dell’uso della costruzione (e comunque non prima dello spostamento per il quale si raggiunge un taglio di base pari a 3/4 del taglio di base massimo).",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- quello corrispondente al raggiungimento della resistenza massima a taglio in tutti i maschi murari verticali in un qualunque livello in una qualunque parete ritenuta significativa ai fini dell’uso della costruzione (e comunque non prima dello spostamento per il quale si raggiunge un taglio di base pari a "
+            "value": "quello corrispondente al raggiungimento della resistenza massima a taglio in tutti i maschi murari verticali in un qualunque livello in una qualunque parete ritenuta significativa ai fini dell’uso della costruzione (e comunque non prima dello spostamento per il quale si raggiunge un taglio di base pari a "
           },
           {
             "kind": "math",
@@ -933,11 +969,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separato il marcatore dash dal testo della voce dell’elenco annidato."
           }
         ],
         "rawSha256": "2698e77702a81943a163385fddd7889ccfcf0e9cfc490b0f0f0c228491cfbf00",
-        "normalizedSha256": "e186e7dc4071d770bd47a03dde2e0e0b15c36f3bdc252275b09db92f4f78ab6a"
-      }
+        "normalizedSha256": "2418eea6ea044d32b9ec83d0338ad758db181e3fb85b7e8a333a0a760a9c8bec"
+      },
+      "listMarker": "dash",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-020",
@@ -946,20 +989,15 @@
       "text": {
         "raw": "SLO: lo spostamento corrispondente è pari a 2/3 di quello allo SLD.",
         "normalized": "SLO: lo spostamento corrispondente è pari a 2/3 di quello allo SLD.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
-            "kind": "text",
-            "value": "SLO: lo spostamento corrispondente è pari a "
-          },
-          {
-            "kind": "math",
-            "value": "2/3",
-            "latex": "2/3"
+            "kind": "strong-em",
+            "value": "SLO:"
           },
           {
             "kind": "text",
-            "value": " di quello allo SLD."
+            "value": " lo spostamento corrispondente è pari a 2/3 di quello allo SLD."
           }
         ]
       },
@@ -978,6 +1016,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLO: dell’elenco."
           }
         ],
         "rawSha256": "4c536343413ed49d6488d8d6c2d7363520b5bd7976005b9d7d041b737da8917a",

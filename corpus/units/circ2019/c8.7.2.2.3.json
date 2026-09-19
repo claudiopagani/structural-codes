@@ -185,12 +185,12 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 nel caso di elementi duttili la domanda in termini di deformazione si calcola in corrispondenza di d max per ciascuno stato\nlimite;",
-        "normalized": "- nel caso di elementi duttili la domanda in termini di deformazione si calcola in corrispondenza di d_{max} per ciascuno stato limite;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalized": "nel caso di elementi duttili la domanda in termini di deformazione si calcola in corrispondenza di d_{max} per ciascuno stato limite;",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "- nel caso di elementi duttili la domanda in termini di deformazione si calcola in corrispondenza di "
+            "value": "nel caso di elementi duttili la domanda in termini di deformazione si calcola in corrispondenza di "
           },
           {
             "kind": "math",
@@ -233,11 +233,23 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la voce principale dell’elenco con il rientro della fonte."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separato il marcatore dell’elenco dal testo della voce."
           }
         ],
         "rawSha256": "317ada602e0de4165331128a9aaa8f32421d3f21f853026939fddd5ae5898e86",
-        "normalizedSha256": "e2c565fa618eefb079288cdcd8e41119b3d793901598cfb33e0bbb4cc2840f5a"
-      }
+        "normalizedSha256": "dcb3ac7a7e514d640776595cbca40df14eddcce7d809c9825b47ca65ed540db5"
+      },
+      "listMarker": "dash",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.3#block-005",
@@ -245,8 +257,8 @@
       "origin": "official",
       "text": {
         "raw": "\u0003 nel caso di elementi fragili la domanda in termini di sollecitazione di taglio si può calcolare utilizzando la seguente\nprocedura:",
-        "normalized": "- nel caso di elementi fragili la domanda in termini di sollecitazione di taglio si può calcolare utilizzando la seguente procedura:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "nel caso di elementi fragili la domanda in termini di sollecitazione di taglio si può calcolare utilizzando la seguente procedura:",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -278,11 +290,23 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la voce principale dell’elenco con il rientro della fonte."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separato il marcatore dell’elenco dal testo della voce."
           }
         ],
         "rawSha256": "511a5174afd6b4d165e7132490ea5357bda6f024f6ba1d34f4d88293090580b8",
-        "normalizedSha256": "ca4af9fdbc89bd042d295a37e794142cc4ee1cb9e64e32992d40515a9607a1d6"
-      }
+        "normalizedSha256": "573ddc42b331c9baea1b82f3f4e203d9bbbbfca2f458023035fcdd58df0aacc8"
+      },
+      "listMarker": "dash",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.3#block-006",
@@ -291,7 +315,7 @@
       "text": {
         "raw": "a. si valuta il taglio massimo alla base Vbu sulla base dei risultati dell’analisi statica non lineare",
         "normalized": "a. si valuta il taglio massimo alla base V_{bu} sulla base dei risultati dell’analisi statica non lineare",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -328,11 +352,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco alfabetico annidato sotto la voce principale."
           }
         ],
         "rawSha256": "709dfa08c16f6a689f0085e6373f9d9a8ae40ad4c2c415ad4d5a7306eebd30d5",
         "normalizedSha256": "f8801df703a407dc12549fd40269dcd81208b2ffd80976020a02a893e2c6e37f"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.3#block-007",
@@ -341,7 +372,7 @@
       "text": {
         "raw": "b. si individua lo spostamento dcu corrispondente al raggiungimento di tale sollecitazione di taglio",
         "normalized": "b. si individua lo spostamento d_{cu} corrispondente al raggiungimento di tale sollecitazione di taglio",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -378,11 +409,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco alfabetico annidato sotto la voce principale."
           }
         ],
         "rawSha256": "8f5fa0e389fe8810934c72752905a738040e046ad16aef10e499bbfa1ff4e2cd",
         "normalizedSha256": "ed1e1dbdaa93d401d89108cb8b2594b3dea9825731dd4c909dfd8584ad4ce3f4"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.3#block-008",
@@ -391,7 +429,7 @@
       "text": {
         "raw": "c. se lo spostamento d max relativo allo stato limite considerato è minore di dcu, la domanda in termini di sollecitazione di\ntaglio si calcola in corrispondenza di d max",
         "normalized": "c. se lo spostamento d_{max} relativo allo stato limite considerato è minore di d_{cu}, la domanda in termini di sollecitazione di taglio si calcola in corrispondenza di d_{max}.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -456,11 +494,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco alfabetico annidato sotto la voce principale."
           }
         ],
         "rawSha256": "fbee06c89a1659704bb8a5cbb649a9c70a808dc6a3c4019b384935d5e02dc23f",
         "normalizedSha256": "4905fc116ff9e9800fc5d8282b410cf64b5efcd8b2a66be58c7e2241554825e4"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 1
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.2.3#block-009",
@@ -469,7 +514,7 @@
       "text": {
         "raw": "d. se d max>d cu, la domanda in termini di sollecitazione di taglio si calcola in corrispondenza di dcu.",
         "normalized": "d. se d_{max}>d_{cu}, la domanda in termini di sollecitazione di taglio si calcola in corrispondenza di d_{cu}.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -524,11 +569,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Reso esplicito l’elenco alfabetico annidato sotto la voce principale."
           }
         ],
         "rawSha256": "c33832b7f9bf23c795274fd375e0cd0430187a3a8265d9f0a40748e67ba94870",
         "normalizedSha256": "67c91ef059f80653acdd341d78d04a2c55ec74ee9e3dc8edc98f7fada9b8ddf7"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 1
     }
   ],
   "citations": [],

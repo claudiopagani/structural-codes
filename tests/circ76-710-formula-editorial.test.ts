@@ -239,7 +239,8 @@ test("C8 pagine 277-286 conserva esponenti, glifi e matematica inline della font
     assert.equal(allSegments.some(({ latex }) => latex === "V_{bu}"), true);
     assert.equal(allSegments.some(({ latex }) => latex === "d_{cu}"), true);
     assert.equal(allSegments.some(({ value }) => value === "s"), false);
-    assert.equal(checks.some((unit) => unit.blocks.some((block) => block.kind === "heading" && block.text?.inline)), false);
+    const staticLinearHeading = checks[1]?.blocks.find((block) => block.kind === "heading" && block.text?.normalized?.startsWith("Analisi statica lineare con fattore di comportamento"));
+    assert.equal(staticLinearHeading?.text?.inline?.some(({ kind, latex }) => kind === "math" && latex === "q"), true);
     assert.equal(checks.some((unit) => unit.blocks.some((block) => (block.text?.normalized ?? "").includes("‥〶"))), false);
 });
 

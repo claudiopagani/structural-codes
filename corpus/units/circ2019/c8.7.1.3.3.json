@@ -66,7 +66,31 @@
       "text": {
         "raw": "Sulle costruzioni esistenti è possibile eseguire interventi che consentano di assimilare la costruzione ad un edificio semplice. In\ntali casi l’intervento è volto a soddisfare le regole di cui al § 7.8.1.9 delle NTC; facendo riferimento al posto della resistenza\ncaratteristica a compressione fk, al valore medio fm, diviso per il fattore di confidenza. Oltre alle condizioni sopra indicate è\nnecessario che, dopo l’eventuale intervento, risulti verificato anche quanto segue:",
         "normalized": "Sulle costruzioni esistenti è possibile eseguire interventi che consentano di assimilare la costruzione ad un edificio semplice. In tali casi l’intervento è volto a soddisfare le regole di cui al § 7.8.1.9 delle NTC; facendo riferimento al posto della resistenza caratteristica a compressione fk, al valore medio fm, diviso per il fattore di confidenza. Oltre alle condizioni sopra indicate è necessario che, dopo l’eventuale intervento, risulti verificato anche quanto segue:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
+        "inline": [
+          {
+            "kind": "text",
+            "value": "Sulle costruzioni esistenti è possibile eseguire interventi che consentano di assimilare la costruzione ad un edificio semplice. In tali casi l’intervento è volto a soddisfare le regole di cui al § 7.8.1.9 delle NTC; facendo riferimento al posto della resistenza caratteristica a compressione "
+          },
+          {
+            "kind": "math",
+            "value": "fk",
+            "latex": "f_k"
+          },
+          {
+            "kind": "text",
+            "value": ", al valore medio "
+          },
+          {
+            "kind": "math",
+            "value": "fm",
+            "latex": "f_m"
+          },
+          {
+            "kind": "text",
+            "value": ", diviso per il fattore di confidenza. Oltre alle condizioni sopra indicate è necessario che, dopo l’eventuale intervento, risulti verificato anche quanto segue:"
+          }
+        ]
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -98,6 +122,11 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resi in matematica inline i simboli f_k e f_m del testo introduttivo."
           }
         ],
         "rawSha256": "9b5af3036d90c3c14ed9ea4fc12ae606c5f0ab927d7d5e220e534c4050e238b5",
@@ -111,7 +140,7 @@
       "text": {
         "raw": "a. i solai siano in grado di svolgere la funzione di diaframma di piano, siano ben collegati alle pareti e siano in grado di\nevitare il ribaltamento delle pareti fuori dal loro piano;",
         "normalized": "a. i solai siano in grado di svolgere la funzione di diaframma di piano, siano ben collegati alle pareti e siano in grado di evitare il ribaltamento delle pareti fuori dal loro piano;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -143,11 +172,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "94ed7d52c8548dcf7d670451047ad86d2cb70029e9852dd79a4bc8bf58379cb5",
         "normalizedSha256": "6e63973d3f953472950e6caba8d6b9f8cbfab0da18827d7825dc9213626f3493"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-003",
@@ -156,7 +192,7 @@
       "text": {
         "raw": "b. tutte le aperture abbiano architravi dotati di adeguata resistenza flessionale;",
         "normalized": "b. tutte le aperture abbiano architravi dotati di adeguata resistenza flessionale;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -173,11 +209,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "2cb2c16e206e27cc5d6ea4371f34bf12d7d927782a5037f247d08f8d9af33461",
         "normalizedSha256": "2cb2c16e206e27cc5d6ea4371f34bf12d7d927782a5037f247d08f8d9af33461"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-004",
@@ -186,7 +229,7 @@
       "text": {
         "raw": "c. tutti gli elementi spingenti, comprese le coperture a falda, eventualmente presenti siano dotati di accorgimenti atti ad\neliminare o equilibrare le spinte orizzontali e a inibire lo scivolamento dei vari elementi (es. presenza di connessioni quali\nchiodi, viti o staffe tra tutti gli elementi delle coperture a falda con struttura lignea);",
         "normalized": "c. tutti gli elementi spingenti, comprese le coperture a falda, eventualmente presenti siano dotati di accorgimenti atti ad eliminare o equilibrare le spinte orizzontali e a inibire lo scivolamento dei vari elementi (es. presenza di connessioni quali chiodi, viti o staffe tra tutti gli elementi delle coperture a falda con struttura lignea);",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -218,11 +261,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "77186d077fc236039d3308ab8774772a38ea6c5bc613f9d0086212249785be30",
         "normalizedSha256": "93c4fb18c5ecf0841895cf18d4bde3e9cf537e01a83f00738628abc43f3862af"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-005",
@@ -230,8 +280,8 @@
       "origin": "official",
       "text": {
         "raw": "d. tutti gli elementi ad elevata vulnerabilità, anche non strutturali, siano stati eliminati o resi sicuri (ad esempio comignoli,",
-        "normalized": "d. tutti gli elementi ad elevata vulnerabilità, anche non strutturali, siano stati eliminati o resi sicuri (ad esempio comignoli,",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "d. tutti gli elementi ad elevata vulnerabilità, anche non strutturali, siano stati eliminati o resi sicuri (ad esempio comignoli, cornicioni ecc.);",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -248,11 +298,23 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Ricostruita la continuità tipografica del punto d. attraverso il cambio pagina."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "44520aa71f314010c9499487e1fed57b78721991d2630ca307f42eec359218ec",
-        "normalizedSha256": "44520aa71f314010c9499487e1fed57b78721991d2630ca307f42eec359218ec"
-      }
+        "normalizedSha256": "2e2f22b38630ed6c5b8a94fa4a763a0f18eed9aa2e1b255ebcfe4be4b29ea506"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-006",
@@ -260,8 +322,8 @@
       "origin": "official",
       "text": {
         "raw": "cornicioni ecc.);\ne. le pareti ortogonali siano tra loro ben collegate;",
-        "normalized": "cornicioni ecc.); e. le pareti ortogonali siano tra loro ben collegate;",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalized": "e. le pareti ortogonali siano tra loro ben collegate;",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -293,11 +355,23 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata la voce e. dalla continuazione del punto d. secondo il PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "c456de76fb51be675e5a0e694ed8a594d24f1f26eaa2ffbadec4daa7c46cd994",
-        "normalizedSha256": "7d1b9cf5b36b60ed5914d26f5f0aae65e261c1984de48e83f9051b7b642b5cb9"
-      }
+        "normalizedSha256": "4ab26645346cfc7ab478fc1a6145f256d8fb5b1ea82708d2ef41c3637d24779f"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-007",
@@ -306,7 +380,7 @@
       "text": {
         "raw": "f. le murature non siano a sacco o a doppio paramento o, in generale, di cattiva qualità e scarsa resistenza (es. muratura in\n“forati”, muratura con pietre tondeggianti di fiume o pareti di spessore chiaramente insufficiente).",
         "normalized": "f. le murature non siano a sacco o a doppio paramento o, in generale, di cattiva qualità e scarsa resistenza (es. muratura in “forati”, muratura con pietre tondeggianti di fiume o pareti di spessore chiaramente insufficiente).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -338,11 +412,18 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Resa esplicita la sequenza alfabetica dell’elenco verificato sul PDF ufficiale."
           }
         ],
         "rawSha256": "bee14a4754e4ccfff2edad741b5c71b4198a541018f1bfe7a4ee523cc1a3e6c5",
         "normalizedSha256": "fe5c6532fef6311fcedfdf540b5709d4d74973c26313e92bb9ac516aa4b54888"
-      }
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.3#block-008",
