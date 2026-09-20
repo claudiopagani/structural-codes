@@ -4,6 +4,7 @@ import { chatNTCEnabled, type ChatNTCEnvironment } from "./config.js";
 import { ChatNTCServerError, publicError } from "./errors.js";
 import { readLimitedText, withDeadline } from "./io.js";
 import { runChatNTC, type ChatNTCRequest } from "./pipeline.js";
+import type { ChatNTCSemanticRetrievalConfiguration } from "./retrievalCoordinator.js";
 import { isProviderId, validModel, type ProviderSelection } from "../../app/chatntc/providerRegistry.js";
 
 export const CHATNTC_HTTP_LIMITS = Object.freeze({ requestBytes: 65_536, questionCharacters: 4000,
@@ -57,6 +58,7 @@ export function createChatNTCHandler(dependencies: {
   environment: () => ChatNTCEnvironment;
   repository: () => ChatNTCRepository;
   provider: (environment: ChatNTCEnvironment, selection?: ProviderSelection, apiKey?: string) => ChatNTCProvider;
+  semanticRetrieval?: ChatNTCSemanticRetrievalConfiguration;
 }) {
   return async (request: Request): Promise<Response> => {
     let debug = false;
@@ -85,7 +87,8 @@ export function createChatNTCHandler(dependencies: {
       const input = parseRequest(value);
       let repository: ChatNTCRepository;
       try { repository = dependencies.repository(); } catch { throw new ChatNTCServerError("RETRIEVAL_FAILED"); }
-      return json(await runChatNTC(input, { repository, provider: () => dependencies.provider(env, selection, apiKey), signal: request.signal }));
+      return json(await runChatNTC(input, { repository, provider: () => dependencies.provider(env, selection, apiKey),
+        semanticRetrieval: dependencies.semanticRetrieval, signal: request.signal }));
     } catch (error) {
       const failure = publicError(error, debug);
       return json(failure.body, failure.status);

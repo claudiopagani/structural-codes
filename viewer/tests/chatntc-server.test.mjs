@@ -183,6 +183,65 @@ test("pipeline end-to-end: retrieval reale, mock DeepSeek, risposta e citazioni 
   assert.equal(JSON.stringify(result).includes(key), false);
 });
 
+test("retrieval locale/default e off sono identici al percorso legacy", async () => {
+  async function evidenceFromPipeline(activeQuestion, semanticRetrieval) {
+    let received;
+    await runChatNTC({ question: activeQuestion }, { repository: repository(),
+      provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }),
+      ...(semanticRetrieval ? { semanticRetrieval } : {}),
+    });
+    return received;
+  }
+  for (const activeQuestion of [question, "azione sismica"]) {
+    const legacy = await retrieveChatNTCEvidence(repository(), activeQuestion);
+    assert.deepEqual(await evidenceFromPipeline(activeQuestion), legacy);
+    assert.deepEqual(await evidenceFromPipeline(activeQuestion, { mode: "off", retriever: {
+      retrieve: async () => assert.fail("off non deve invocare il semantic retriever"),
+    } }), legacy);
+  }
+});
+
+test("shadow/on senza semantic retriever mantengono il retrieval legacy", async () => {
+  const legacy = await retrieveChatNTCEvidence(repository(), question);
+  for (const mode of ["shadow", "on"]) {
+    let received;
+    await runChatNTC({ question }, { repository: repository(), semanticRetrieval: { mode },
+      provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+    assert.deepEqual(received, legacy, mode);
+  }
+});
+
+test("shadow osserva la capability senza modificare l'Evidence Package legacy", async () => {
+  const semanticQuestion = "azione sismica";
+  const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
+  let calls = 0;
+  let received;
+  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "shadow", retriever: {
+    async retrieve({ lexicalHits }) {
+      calls += 1;
+      assert.ok(lexicalHits.length > 0);
+      return [];
+    },
+  } }, provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  assert.equal(calls, 1);
+  assert.deepEqual(received, legacy);
+});
+
+test("on delega soltanto alla capability server-side esplicitamente iniettata", async () => {
+  const semanticQuestion = "azione sismica";
+  let calls = 0;
+  let received;
+  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "on", retriever: {
+    async retrieve({ lexicalHits }) {
+      calls += 1;
+      assert.ok(lexicalHits.length > 0);
+      return [];
+    },
+  } }, provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  assert.equal(calls, 1);
+  assert.deepEqual(received.primaryUnits, []);
+});
+
 test("field test A: la domanda generale recupera il quadro combinato 7.2.2 e 7.3.6.1", async () => {
   const evidence = await retrieveChatNTCEvidence(repository(), "Mi spieghi cosa intende la normativa in merito alle verifiche delle strutture in campo sostanzialmente elastico per strutture con comportamento non dissipativo?");
   const numberings = new Set(evidence.primaryUnits.map((unit) => unit.numbering));

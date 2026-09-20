@@ -1,13 +1,14 @@
 import "server-only";
 import {
   CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, canonicalizeChatNTCResponse,
-  isChatNTCProviderOutput, retrieveChatNTCEvidence, validateChatNTCResponse, ChatNTCContextError,
+  isChatNTCProviderOutput, validateChatNTCResponse, ChatNTCContextError,
   type ChatNTCEvidencePackage, type ChatNTCProcessingStage,
   type ChatNTCProvider, type ChatNTCProviderOutput, type ChatNTCRepository, type ChatNTCRetrievalOptions,
   type ChatNTCValidationIssue,
 } from "../../shared/chatntc/index.js";
 import { findCrossReferences } from "../../shared/crossReferences.js";
 import { ChatNTCServerError } from "./errors.js";
+import { retrieveChatNTCEvidenceForMode, type ChatNTCSemanticRetrievalConfiguration } from "./retrievalCoordinator.js";
 import type { ChatRequest, ChatResult } from "../../shared/chatntc-ui/transport.js";
 
 export type ChatNTCRequest = ChatRequest;
@@ -17,6 +18,7 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   repository: ChatNTCRepository;
   provider: () => ChatNTCProvider;
   retrievalOptions?: ChatNTCRetrievalOptions;
+  semanticRetrieval?: ChatNTCSemanticRetrievalConfiguration;
   signal?: AbortSignal;
 }): Promise<ChatNTCResult> {
   const { repository, signal } = dependencies;
@@ -92,7 +94,7 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   };
 
   async function retrieve(question: string, options: ChatNTCRetrievalOptions) {
-    try { return await retrieveChatNTCEvidence(repository, question, options); }
+    try { return await retrieveChatNTCEvidenceForMode(repository, question, options, dependencies.semanticRetrieval, signal); }
     catch (error) {
       if (error instanceof ChatNTCContextError) throw new ChatNTCServerError("INVALID_CONTEXT");
       throw new ChatNTCServerError("RETRIEVAL_FAILED");

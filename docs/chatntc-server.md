@@ -27,7 +27,8 @@ POST /api/chatntc
   → createLocalArtifactRepository
       → createArtifactRepository dello STEP 1
           → stessi indici, motore di ricerca e rimandi del viewer
-  → retrieveChatNTCEvidence (domanda + soli messaggi USER recenti)
+  → retrievalCoordinator (default: off)
+      → retrieveChatNTCEvidence (domanda + soli messaggi USER recenti)
   → nessun contenuto primario utilizzabile? astensione deterministica
   → altrimenti ChatNTCProvider.generate
       → DeepSeekAdapter (server-only, fetch HTTP)
@@ -51,6 +52,9 @@ POST /api/chatntc
 - `pipeline.ts`: orchestrazione generica; riceve una factory provider e un
   repository. Conserva il pacchetto originale dell'applicazione e ne passa una
   copia al provider. Nessuna dipendenza diretta dall'adapter DeepSeek.
+- `retrievalCoordinator.ts`: unico seam server-side per una futura capability
+  semantica opzionale. Non modifica `retrieval.ts`, `ChatNTCRepository`, gli
+  indici o l'Evidence Package.
 - `localRepository.ts`: lettura degli artefatti da filesystem, con cache per
   richiesta e controllo dei percorsi. Riusa l'adapter dello STEP 1; non ricrea
   search index o relazioni. Non usa l'origin HTTP per caricare il corpus.
@@ -62,6 +66,34 @@ bundle browser. La sola dipendenza aggiunta è il marker `server-only`; non sono
 installati SDK AI. Per aggiungere un altro provider sarà sufficiente un adapter
 server che implementi il contratto e una nuova scelta in `configuredProvider`:
 retrieval, evidence e Citation Validator rimarranno indipendenti.
+
+## Separazione retrieval locale e produzione futura
+
+Il percorso locale/dev rimane quello originario: modalità `off`, exact-reference,
+ricerca lessicale tramite l'indice del viewer, espansione strutturale e costruzione
+deterministica dell'Evidence Package. La route locale non configura alcuna
+capability semantica e non tenta di leggere file o indici aggiuntivi.
+
+La pipeline accetta in dependency injection una configurazione opzionale
+`semanticRetrieval`, composta da una modalità e da un'interfaccia minima
+`ChatNTCSemanticRetriever`. La capability riceve query, limite, filtro documento,
+segnale di cancellazione e i candidati lessicali legacy; restituisce la lista di
+candidati già fusa. Exact-reference, caricamento delle unità, espansione
+strutturale ed Evidence Package restano nel percorso deterministico esistente.
+In questo modo un host di produzione futuro potrà implementare semantic
+retrieval e rank fusion all'esterno del core, senza legarlo a Ollama, ONNX,
+HuggingFace, a un modello o a un vector database specifico.
+
+| Modalità | Comportamento in questo step |
+| --- | --- |
+| `off` | Usa direttamente e soltanto il retrieval legacy. Una capability eventualmente fornita non viene chiamata. |
+| `shadow` | Se presente, esegue la capability ma restituisce sempre l'Evidence Package legacy; errori della capability non alterano la risposta. Senza capability equivale a `off`. |
+| `on` | Delega alla capability solo quando è stata esplicitamente iniettata; senza capability equivale a `off`. |
+
+L'interfaccia è un punto di composizione, non un'implementazione semantica.
+Questo step non aggiunge embeddings, vector search, rank fusion, modelli AI,
+artifact semantici o nuove dipendenze. `semanticEntailmentVerified` resta
+`false`; semantica e scope del Citation Validator restano invariati.
 
 ## Documentazione DeepSeek verificata
 
