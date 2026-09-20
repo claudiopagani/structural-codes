@@ -66,7 +66,7 @@ test("le note restano dati strutturati e sono presenti in entrambi i documenti",
         const manifest = await json(`corpus/assets/${document}/${document === "ntc2018" ? "5.1-step3" : "core-tables"}.json`);
         tableNoteCount += manifest.tables.filter((table: any) => (table.notes ?? []).length > 0).length;
     }
-    assert.equal(footnoteCount, 24);
+    assert.equal(footnoteCount, 22);
     assert.ok(tableNoteCount > 0);
 });
 

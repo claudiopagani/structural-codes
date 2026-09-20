@@ -4,6 +4,7 @@ import { join } from "node:path";
 
 const root = process.cwd();
 const unitsDir = join(root, "corpus", "units", "circ2019");
+const assetsPath = join(root, "corpus", "assets", "circ2019", "C8.7-step2b.json");
 const profile = "circ8-c87-step2-editorial-0.1.0";
 
 type InlineKind = "text" | "math" | "em" | "underline" | "em-underline" | "strong" | "strong-em" | "strong-underline";
@@ -26,6 +27,8 @@ type Block = {
     indentLevel?: number;
 };
 type Unit = { blocks: Block[] };
+type FormulaAsset = { officialNumber: string | null; latex: string };
+type AssetManifest = { formulas: FormulaAsset[] };
 
 async function readJson<T>(path: string): Promise<T> {
     return JSON.parse(await readFile(path, "utf8")) as T;
@@ -232,6 +235,7 @@ const files = [
     "c8.7.2.2.3.json",
     "c8.7.2.3.2.json",
     "c8.7.2.3.5.json",
+    "c8.7.2.4.4.json",
 ];
 const units = new Map<string, Unit>();
 for (const file of files) units.set(file, await readJson<Unit>(join(unitsDir, file)));
@@ -255,6 +259,16 @@ for (const block of c871311.blocks) {
     if (block.kind === "list-item") {
         setList(block, "dash", 0, "Resa esplicita la voce dell’elenco puntato con il rientro della fonte.");
         removeLeadingDash(block);
+    }
+}
+const formula16Index = c871311.blocks.findIndex((block) => block.assetId?.endsWith(":c8.7.1.16"));
+if (formula16Index >= 0) {
+    for (let index = formula16Index + 2; index < c871311.blocks.length; index += 1) {
+        const block = c871311.blocks[index]!;
+        if (block.text?.normalized.startsWith("Nel caso dei maschi")) break;
+        if (block.text?.normalized.startsWith("l è la lunghezza") || block.text?.normalized.startsWith("t è lo spessore") || block.text?.normalized.startsWith("σ_0 è") || block.text?.normalized.startsWith("f_{td} e") || block.text?.normalized.startsWith("b è")) {
+            setList(block, "none", 0, "Reso esplicito l’elenco labeled delle definizioni dopo la formula [C8.7.1.16].");
+        }
     }
 }
 
@@ -330,6 +344,53 @@ const c87235 = units.get("c8.7.2.3.5.json")!;
 for (const index of [6, 7, 8, 9, 10, 11, 12, 13]) {
     setList(c87235.blocks[index]!, "none", 0, "Reso esplicito l’elenco labeled delle definizioni della formula [C8.7.2.8].");
 }
+
+const c87244 = units.get("c8.7.2.4.4.json")!;
+const c87244FormulaIndex = c87244.blocks.findIndex((block) => block.assetId?.endsWith(":c8.7.2.13"));
+const c87244Definitions = c87244FormulaIndex >= 0 ? c87244.blocks[c87244FormulaIndex + 1] : undefined;
+if (c87244Definitions?.text && c87244Definitions.text.normalized.startsWith("dove:") && !c87244.blocks.some((block) => block.blockId.endsWith("-item-1"))) {
+    const labels: Array<{ value: string; latex: string; description: string }> = [
+        { value: "M_{e,Rd}", latex: "M_{e,Rd}", description: " è il momento di prima plasticizzazione di calcolo;" },
+        { value: "L_V", latex: "L_V", description: " è la luce di taglio;" },
+        { value: "I", latex: "I", description: " è il momento di inerzia della sezione nella direzione considerata." },
+    ];
+    const base = c87244Definitions;
+    if (!base.text) throw new Error("C8.7.2.4.4: blocco introduttivo privo di testo");
+    base.text.raw = "dove:";
+    base.text.normalized = "dove:";
+    base.text.inline = [{ kind: "text", value: "dove:" }];
+    base.text.normalizationVersion = profile;
+    updateRawHash(base);
+    updateNormalizedHash(base);
+    addTransformation(base, "Separata l’introduzione dall’elenco labeled dopo la formula [C8.7.2.13].");
+    const clones = labels.map((label, index) => {
+        const clone = JSON.parse(JSON.stringify(base)) as Block;
+        clone.blockId = `${base.blockId}-item-${index + 1}`;
+        clone.kind = "list-item";
+        clone.listMarker = "none";
+        clone.listLevel = 0;
+        clone.text = {
+            raw: `${label.value}${label.description}`,
+            normalized: `${label.value}${label.description}`,
+            inline: [{ kind: "math", value: label.value, latex: label.latex }, { kind: "text", value: label.description }],
+            normalizationVersion: profile,
+        };
+        updateRawHash(clone);
+        updateNormalizedHash(clone);
+        addTransformation(clone, "Esplicitata la voce labeled con descrizione allineata dopo la formula [C8.7.2.13].");
+        return clone;
+    });
+    c87244.blocks.splice(c87244FormulaIndex + 1, 1, base, ...clones);
+}
+
+const assets = await readJson<AssetManifest>(assetsPath);
+for (const officialNumber of ["C8.7.2.11", "C8.7.2.12"]) {
+    const formula = assets.formulas.find((item) => item.officialNumber === officialNumber);
+    if (!formula) throw new Error(`Formula ${officialNumber} non trovata`);
+    formula.latex = formula.latex.replace(/\\sqrt\{f_c\}\(/gu, "\\sqrt{f_c}\\,(").replace(/f_c\(/gu, "f_c\\,(");
+    formula.latex = formula.latex.replace(/\\,\(f_c/gu, "\\,\\left(f_c");
+    if (formula.latex.endsWith("MPa)")) formula.latex = formula.latex.slice(0, -4) + "MPa\\right)";
+}
 setList(c87235.blocks[14]!, "none", 0, "Reso esplicita la voce introduttiva che contiene l’elenco annidato delle formule di V_W.");
 for (const index of [15, 18]) {
     const block = c87235.blocks[index]!;
@@ -348,4 +409,5 @@ for (const unit of units.values()) {
     for (const block of unit.blocks) updateNormalizedHash(block);
 }
 for (const [file, unit] of units) await writeJson(join(unitsDir, file), unit);
+await writeJson(assetsPath, assets);
 console.log("fix-circ8-c87-step2-editorial: C8.7.1.3.1.1–C8.7.2.3.5 aggiornati");

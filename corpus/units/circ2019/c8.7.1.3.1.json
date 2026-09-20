@@ -619,9 +619,9 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "Nel caso dell’analisi statica non lineare la capacità in spostamento relativa ai diversi stati limite è valutata, sulla curva taglio di\nbase-spostamento, nei modi appresso indicati:\nSLC: per la definizione della bilineare equivalente, identificata seguendo i criteri indicati al § C.7.3.4.2, lo spostamento ultimo a\nSLC è dato dal minore tra quelli forniti dalle seguenti due condizioni:",
-        "normalized": "Nel caso dell’analisi statica non lineare la capacità in spostamento relativa ai diversi stati limite è valutata, sulla curva taglio di base-spostamento, nei modi appresso indicati: SLC: per la definizione della bilineare equivalente, identificata seguendo i criteri indicati al § C.7.3.4.2, lo spostamento ultimo a SLC è dato dal minore tra quelli forniti dalle seguenti due condizioni:",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0"
+        "raw": "Nel caso dell’analisi statica non lineare la capacità in spostamento relativa ai diversi stati limite è valutata, sulla curva taglio di base-spostamento, nei modi appresso indicati:",
+        "normalized": "Nel caso dell’analisi statica non lineare la capacità in spostamento relativa ai diversi stati limite è valutata, sulla curva taglio di base-spostamento, nei modi appresso indicati:",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -653,11 +653,83 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separata su nuova riga la voce SLC dell’elenco secondo il PDF ufficiale."
           }
         ],
-        "rawSha256": "4cbb4339bf102beacff3f68881dfda22550cddd02d46f201159dff0e56263602",
-        "normalizedSha256": "624e8932bc488d2069f4546c22bef110c799dd8fd558c58042a836a6307f82bb"
+        "rawSha256": "87516c9d07ef7a7392b87924a82737aac19c1add0cfc262c1ba8c54303da217a",
+        "normalizedSha256": "87516c9d07ef7a7392b87924a82737aac19c1add0cfc262c1ba8c54303da217a"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-013-slc-",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "SLC: per la definizione della bilineare equivalente, identificata seguendo i criteri indicati al § C.7.3.4.2, lo spostamento ultimo a SLC è dato dal minore tra quelli forniti dalle seguenti due condizioni:",
+        "normalized": "SLC: per la definizione della bilineare equivalente, identificata seguendo i criteri indicati al § C.7.3.4.2, lo spostamento ultimo a SLC è dato dal minore tra quelli forniti dalle seguenti due condizioni:",
+        "inline": [
+          {
+            "kind": "strong-em",
+            "value": "SLC:"
+          },
+          {
+            "kind": "text",
+            "value": " per la definizione della bilineare equivalente, identificata seguendo i criteri indicati al § C.7.3.4.2, lo spostamento ultimo a SLC è dato dal minore tra quelli forniti dalle seguenti due condizioni:"
+          }
+        ],
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 278,
+        "printedPage": "274",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separata su nuova riga la voce SLC dell’elenco secondo il PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLC: dell’elenco."
+          }
+        ],
+        "rawSha256": "eaa06309b28e8c1bcc58b334371b6c690542f463003c0bbcfda679a585ed601e",
+        "normalizedSha256": "eaa06309b28e8c1bcc58b334371b6c690542f463003c0bbcfda679a585ed601e"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.3.1#block-014",

@@ -8,9 +8,10 @@ const profile = "circ8-c87-step1-editorial-0.1.0";
 
 type InlineKind = "text" | "math" | "em" | "underline" | "strong-em" | "strong";
 type Inline = { kind: InlineKind; value: string; latex?: string };
-type Evidence = { transformations?: Array<{ operation: string; ruleVersion: string; note: string }>; normalizedSha256?: string };
-type Text = { normalized: string; inline?: Inline[]; normalizationVersion?: string };
+type Evidence = { transformations?: Array<{ operation: string; ruleVersion: string; note: string }>; rawSha256?: string; normalizedSha256?: string };
+type Text = { raw?: string; normalized: string; inline?: Inline[]; normalizationVersion?: string };
 type Block = {
+    blockId?: string;
     kind: string;
     text?: Text;
     evidence?: Evidence;
@@ -38,6 +39,29 @@ function addTransformation(block: Block, note: string): void {
 function updateNormalizedHash(block: Block): void {
     if (!block.text || !block.evidence) return;
     block.evidence.normalizedSha256 = createHash("sha256").update(block.text.normalized, "utf8").digest("hex");
+}
+
+function updateRawHash(block: Block): void {
+    if (!block.text?.raw || !block.evidence) return;
+    block.evidence.rawSha256 = createHash("sha256").update(block.text.raw, "utf8").digest("hex");
+}
+
+function repairRawHashes(unit: Unit): void {
+    for (const block of unit.blocks) updateRawHash(block);
+}
+
+function repairInlineTrailingWhitespace(unit: Unit): void {
+    for (const block of unit.blocks) {
+        const inline = block.text?.inline;
+        if (!inline) continue;
+        const joined = inline.map((segment) => segment.value).join("");
+        if (joined === block.text!.normalized || joined.trimEnd() !== block.text!.normalized) continue;
+        const last = inline.at(-1);
+        if (last?.kind !== "text") continue;
+        last.value = last.value.trimEnd();
+        block.text!.normalizationVersion = profile;
+        updateNormalizedHash(block);
+    }
 }
 
 function setHeadingTitleEmphasis(block: Block): void {
@@ -150,6 +174,99 @@ function fixQInInline(block: Block): void {
     addTransformation(block, "Reso in matematica inline il fattore q del primo paragrafo.");
 }
 
+function styleApproachPhrase(block: Block, phrase: string): void {
+    if (!block.text) throw new Error(`Titolo interno non trovato: ${phrase}`);
+    const source = block.text.inline ?? [{ kind: "text" as const, value: block.text.normalized }];
+    const result: Inline[] = [];
+    let changed = false;
+    for (const segment of source) {
+        if (segment.kind === "strong-em" && segment.value === `L’${phrase}`) {
+            result.push({ kind: "text", value: "L’" }, { kind: "strong-em", value: phrase });
+            changed = true;
+            continue;
+        }
+        if (!segment.value.includes(phrase)) {
+            result.push(segment);
+            continue;
+        }
+        let cursor = 0;
+        while (true) {
+            const at = segment.value.indexOf(phrase, cursor);
+            if (at < 0) break;
+            if (at > cursor) result.push({ ...segment, kind: segment.kind === "strong-em" ? "text" : segment.kind, value: segment.value.slice(cursor, at) });
+            result.push({ kind: "strong-em", value: phrase });
+            cursor = at + phrase.length;
+            changed = true;
+        }
+        if (cursor < segment.value.length) result.push({ ...segment, kind: segment.kind === "strong-em" ? "text" : segment.kind, value: segment.value.slice(cursor) });
+    }
+    if (!changed) return;
+    block.text.inline = result;
+    block.text.normalizationVersion = profile;
+    updateNormalizedHash(block);
+    addTransformation(block, `Applicata la resa in grassetto corsivo della sola espressione ${phrase}, lasciando l’articolo precedente in tondo.`);
+}
+
+function sliceInline(source: Inline[] | undefined, start: number, end: number, fallback: string): Inline[] | undefined {
+    if (!source) return undefined;
+    const result: Inline[] = [];
+    let offset = 0;
+    for (const segment of source) {
+        const segmentStart = offset;
+        const segmentEnd = offset + segment.value.length;
+        const overlapStart = Math.max(start, segmentStart);
+        const overlapEnd = Math.min(end, segmentEnd);
+        if (overlapStart < overlapEnd) {
+            result.push({ ...segment, value: segment.value.slice(overlapStart - segmentStart, overlapEnd - segmentStart) });
+        }
+        offset = segmentEnd;
+    }
+    return result.length > 0 ? result : [{ kind: "text", value: fallback }];
+}
+
+function splitAtLabel(unit: Unit, marker: string, note: string): void {
+    const index = unit.blocks.findIndex((block) => {
+        const text = block.text?.normalized ?? "";
+        return text.includes(marker) && !text.startsWith(marker);
+    });
+    if (index < 0) return;
+    const original = unit.blocks[index]!;
+    if (!original.text) throw new Error(`Voce da separare priva di testo: ${marker}`);
+    const at = original.text.normalized.indexOf(marker);
+    const intro = original.text.normalized.slice(0, at).trimEnd();
+    const item = original.text.normalized.slice(at).trim();
+    const clone = JSON.parse(JSON.stringify(original)) as Block;
+    clone.blockId = `${original.blockId ?? `split-${index}`}-${marker.replace(/[^A-Za-z0-9]+/gu, "-").toLowerCase()}`;
+    clone.kind = "list-item";
+    clone.listMarker = "none";
+    clone.listLevel = 0;
+    clone.text = {
+        raw: item,
+        normalized: item,
+        inline: sliceInline(original.text.inline, at, original.text.normalized.length, item),
+        normalizationVersion: profile,
+    };
+    original.text.raw = intro;
+    original.text.normalized = intro;
+    const originalInline = sliceInline(original.text.inline, 0, at, intro);
+    if (originalInline) {
+        const last = originalInline.at(-1);
+        if (last?.kind === "text") {
+            last.value = last.value.trimEnd();
+            if (!last.value) originalInline.pop();
+        }
+    }
+    original.text.inline = originalInline;
+    original.text.normalizationVersion = profile;
+    updateRawHash(original);
+    updateNormalizedHash(original);
+    updateRawHash(clone);
+    updateNormalizedHash(clone);
+    addTransformation(original, note);
+    addTransformation(clone, note);
+    unit.blocks.splice(index, 1, original, clone);
+}
+
 const files = [
     "c8.7.1.2.1.json",
     "c8.7.1.2.1.1.json",
@@ -162,22 +279,10 @@ const units = new Map<string, Unit>();
 for (const file of files) units.set(file, await readJson<Unit>(join(unitsDir, file)));
 
 const c87121 = units.get("c8.7.1.2.1.json")!;
-for (const prefix of ["L’approccio cinematico lineare", "L’approccio cinematico non lineare"]) {
-    const block = c87121.blocks.find((item) => item.text?.normalized.startsWith(prefix));
-    if (!block) throw new Error(`Titolo interno non trovato: ${prefix}`);
-    const source = block.text!.inline ?? [{ kind: "text" as const, value: block.text!.normalized }];
-    const plain = source.map((segment) => segment.value).join("");
-    const at = plain.indexOf(prefix);
-    if (at < 0) throw new Error(`Titolo interno non trovato nell’inline: ${prefix}`);
-    const before = plain.slice(0, at);
-    const after = plain.slice(at + prefix.length);
-    block.text!.inline = [
-        ...(before ? [{ kind: "text" as const, value: before }] : []),
-        { kind: "strong-em", value: prefix },
-        ...(after ? [{ kind: "text" as const, value: after }] : []),
-    ];
-    block.text!.normalizationVersion = profile;
-    addTransformation(block, `Applicata la resa in grassetto corsivo del titolo ${prefix}.`);
+for (const phrase of ["approccio cinematico lineare", "approccio cinematico non lineare"]) {
+    const block = c87121.blocks.find((item) => item.text?.normalized.includes(phrase));
+    if (!block) throw new Error(`Titolo interno non trovato: ${phrase}`);
+    styleApproachPhrase(block, phrase);
 }
 
 const c871212 = units.get("c8.7.1.2.1.1.json")!;
@@ -221,31 +326,37 @@ for (const state of ["SLV", "SLC"]) {
     const candidates = c871216.blocks.filter((block) => block.text?.inline?.some((segment, index, all) => segment.kind === "math" && segment.value === state && all[index + 1]?.value.startsWith(":")));
     for (const block of candidates) styleStateLabel(block, state);
 }
-c871216.blocks[1]!.text!.inline = [
-    { kind: "text", value: "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (" },
-    { kind: "math", value: "SLV", latex: "\\mathrm{SLV}" },
-    { kind: "text", value: " o " },
-    { kind: "math", value: "SLC", latex: "\\mathrm{SLC}" },
-    { kind: "text", value: ") individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d. " },
-    { kind: "math", value: "SLV", latex: "\\mathbf{SLV}" },
-    { kind: "strong-em", value: ":" },
-    { kind: "text", value: " lo spostamento d " },
-    { kind: "math", value: "SLV", latex: "\\mathrm{SLV}" },
-    { kind: "text", value: " corrisponde al minore tra gli spostamenti così definiti:" },
-];
-c871216.blocks[4]!.text!.inline = [
+const slvIntro = c871216.blocks.find((block) => block.text?.normalized.startsWith("La verifica a stato limite ultimo"));
+const slcLabel = c871216.blocks.find((block) => block.text?.normalized.startsWith("SLC:"));
+if (!slvIntro || !slcLabel) throw new Error("C8.7.1.2.1.6: voci SLV/SLC non trovate");
+if (slvIntro.text!.normalized.includes(" SLV:")) {
+    slvIntro.text!.inline = [
+        { kind: "text", value: "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (" },
+        { kind: "math", value: "SLV", latex: "\\mathrm{SLV}" },
+        { kind: "text", value: " o " },
+        { kind: "math", value: "SLC", latex: "\\mathrm{SLC}" },
+        { kind: "text", value: ") individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d. " },
+        { kind: "math", value: "SLV", latex: "\\mathbf{SLV}" },
+        { kind: "strong-em", value: ":" },
+        { kind: "text", value: " lo spostamento d " },
+        { kind: "math", value: "SLV", latex: "\\mathrm{SLV}" },
+        { kind: "text", value: " corrisponde al minore tra gli spostamenti così definiti:" },
+    ];
+    slvIntro.text!.normalizationVersion = profile;
+    updateNormalizedHash(slvIntro);
+    addTransformation(slvIntro, "Separata su nuova riga la voce SLV dell’elenco secondo il PDF ufficiale.");
+}
+slcLabel.text!.inline = [
     { kind: "math", value: "SLC", latex: "\\mathbf{SLC}" },
     { kind: "strong-em", value: ":" },
     { kind: "text", value: " lo spostamento d " },
     { kind: "math", value: "SLC", latex: "\\mathrm{SLC}" },
     { kind: "text", value: " corrisponde al minore tra gli spostamenti così definiti:" },
 ];
-c871216.blocks[1]!.text!.normalizationVersion = profile;
-c871216.blocks[4]!.text!.normalizationVersion = profile;
-addTransformation(c871216.blocks[1]!, "Resa in grassetto l’etichetta SLV: mantenendo il testo completo della voce.");
-addTransformation(c871216.blocks[4]!, "Resa in grassetto l’etichetta SLC: mantenendo il testo completo della voce.");
-for (const index of [2, 3, 5, 6]) {
-    const block = c871216.blocks[index]!;
+slcLabel.text!.normalizationVersion = profile;
+updateNormalizedHash(slcLabel);
+addTransformation(slcLabel, "Resa in grassetto l’etichetta SLC: mantenendo il testo completo della voce.");
+for (const block of c871216.blocks.filter((candidate) => /^(?:il 40%|il 60%|lo spostamento corrispondente)/u.test(candidate.text?.normalized ?? ""))) {
     block.listMarker = "dash";
     block.listLevel = 1;
     removeLeadingDash(block);
@@ -264,12 +375,20 @@ for (const state of ["SLC", "SLV", "SLD", "SLO"]) {
         }
     }
 }
-for (const index of [14, 15, 18, 19]) {
-    const block = c87131.blocks[index]!;
+for (const block of c87131.blocks.filter((candidate) => candidate.text?.normalized.startsWith("quello corrispondente"))) {
     block.listMarker = "dash";
     block.listLevel = 1;
     removeLeadingDash(block);
 }
+
+splitAtLabel(c871216, "SLV:", "Separata su nuova riga la voce SLV dell’elenco secondo il PDF ufficiale.");
+splitAtLabel(c87131, "SLC:", "Separata su nuova riga la voce SLC dell’elenco secondo il PDF ufficiale.");
+repairRawHashes(c871216);
+repairRawHashes(c87131);
+repairInlineTrailingWhitespace(c871216);
+repairInlineTrailingWhitespace(c87131);
+const c87131Slc = c87131.blocks.find((block) => block.text?.normalized.startsWith("SLC:"));
+if (c87131Slc) styleStateLabel(c87131Slc, "SLC");
 
 for (const unit of units.values()) {
     for (const block of unit.blocks) updateNormalizedHash(block);

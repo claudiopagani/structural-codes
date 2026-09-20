@@ -6,8 +6,8 @@ import test from "node:test";
 type Inline = { kind: string; value: string; latex?: string };
 type Block = { blockId: string; kind: string; listMarker?: string; listLevel?: number; indentLevel?: number; text?: { normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string }> }; evidence?: { pdfPage?: number } };
 type Unit = { blocks: Block[] };
-type Cell = { text: string; align?: string; verticalText?: boolean; rowSpan?: number; colSpan?: number; latex?: string; inline?: Inline[]; strong?: boolean; shade?: string };
-type Table = { officialNumber: string; headers: Cell[][]; rows: Cell[][]; notesInline?: Inline[][]; columnWidths?: number[] };
+type Cell = { text: string; align?: string; verticalText?: boolean; rowSpan?: number; colSpan?: number; latex?: string; inline?: Inline[]; strong?: boolean; shade?: string; noWrap?: boolean };
+type Table = { officialNumber: string; headers: Cell[][]; rows: Cell[][]; notes?: string[]; notesInline?: Inline[][]; columnWidths?: number[] };
 type AssetManifest = { tables: Table[] };
 
 const root = process.cwd();
@@ -40,12 +40,22 @@ test("C8.2 e C8.5 conservano capoversi, enfasi e struttura delle tabelle", async
     }
     const c8522 = await unit("c8.5.2.2");
     const underlined = c8522.blocks.find((block) => block.text?.inline?.some((segment) => segment.kind === "underline"));
-    assert.equal(underlined?.text?.inline?.filter(({ kind }) => kind === "underline").length, 3);
+    assert.equal(underlined?.text?.inline?.filter(({ kind }) => kind === "underline").length, 4);
+    assert.equal(underlined?.text?.inline?.some(({ kind, value }) => kind === "underline" && value === "Per gli elementi aventi funzione strutturale la geometria esterna deve essere"), true);
+    const informationLead = c8522.blocks.find((block) => block.text?.normalized.includes("il rilievo dei dettagli costruttivi è finalizzato a conseguire le seguenti informazioni"));
+    assert.equal(informationLead?.text?.inline?.some(({ kind, value }) => kind === "underline" && value === "il rilievo dei dettagli costruttivi è finalizzato a conseguire le seguenti informazioni:"), true);
 
     const c8531 = await unit("c8.5.3.1");
     const prove = c8531.blocks.filter((block) => /^Prove (limitate|estese|esaustive):/u.test(block.text?.normalized ?? ""));
     assert.equal(prove.length, 3);
     assert.equal(prove.every((block) => block.text?.inline?.[0]?.kind === "strong-em"), true);
+    const consolidationTitles = [
+        "Consolidamento con iniezioni di miscele leganti",
+        "Consolidamento con intonaco armato",
+        "Consolidamento con diatoni artificiali o tirantini antiespulsivi",
+        "Consolidamento con ristilatura armata e connessione dei paramenti",
+    ];
+    assert.equal(consolidationTitles.every((title) => c8531.blocks.find((block) => block.kind === "heading" && block.text?.normalized === title)?.text?.inline?.[0]?.kind === "strong-em"), true);
 
     const assets = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "C8.5-step1.json"), "utf8")) as AssetManifest;
     const tableI = assets.tables.find((table) => table.officialNumber === "C8.5.I");
@@ -53,8 +63,24 @@ test("C8.2 e C8.5 conservano capoversi, enfasi e struttura delle tabelle", async
     assert.equal(tableI?.headers.length, 3);
     assert.equal(tableI?.headers[0]?.[0]?.rowSpan, 3);
     assert.equal(tableI?.headers.flat().every((cell) => cell.align === "center" || cell === tableI.headers[0]?.[0]), true);
+    assert.deepEqual(tableI?.columnWidths, [23, 13, 13, 13, 13, 13, 12]);
+    assert.equal(tableI?.headers[1]?.length, 6);
+    assert.equal(tableI?.headers[1]?.[2]?.latex, "\\left(\\mathrm{N/mm^2}\\right)");
+    assert.equal(tableI?.headers[1]?.[5]?.latex, "\\left(\\mathrm{kN/m^3}\\right)");
+    assert.equal(tableI?.headers[0]?.[3]?.rowSpan, undefined);
+    assert.equal(tableI?.headers[0]?.[6]?.rowSpan, undefined);
+    assert.equal(tableI?.rows.every((row) => row.slice(1).every((cell) => cell.noWrap === true)), true);
     assert.equal(tableI?.notesInline?.[1]?.some(({ kind, value }) => kind === "math" && value === "f"), true);
     assert.equal(tableII?.headers[1]?.every((cell) => cell.verticalText && cell.align === "center"), true);
+    assert.deepEqual(tableII?.headers[1]?.map((cell) => cell.text), [
+        "Malta buona",
+        "Ricorsi o\nlistature",
+        "Connessione\ntrasversale",
+        "Iniezione di\nmiscele leganti (*)",
+        "Intonaco armato (**)",
+        "Ristilatura armata\ncon connessione\ndei paramenti (**)",
+        "Massimo\ncoefficiente\ncomplessivo",
+    ]);
     assert.equal(tableII?.rows.every((row) => row.slice(1).every((cell) => cell.align === "center")), true);
     assert.equal(tableII?.notesInline?.[2]?.some(({ kind, value }) => kind === "math" && value === "f_m^{0,35}"), true);
 });
@@ -66,6 +92,13 @@ test("C8.5.3.2–C8.5.5.1 conservano enfasi, elenchi annidati e note di tabella"
         assert.equal(labels.length, number === "c8.5.3.2" ? 6 : 3);
         assert.equal(labels.every((block) => block.text?.inline?.[0]?.kind === "strong-em"), true);
     }
+    for (const number of ["c8.5.4", "c8.5.4.2"]) {
+        const current = await unit(number);
+        const phrases = number === "c8.5.4"
+            ? ["indagini limitate", "prove limitate", "indagini estese", "prove estese", "indagini esaustive", "prove esaustive"]
+            : ["indagini limitate", "prove limitate", "indagine estesa", "prove estese", "indagine esaustiva", "prove esaustive"];
+        assert.equal(phrases.every((phrase) => current.blocks.some((block) => block.text?.inline?.some(({ kind, value }) => kind === "strong-em" && value === phrase))), true);
+    }
 
     const c8541 = await unit("c8.5.4.1");
     const lcLabels = c8541.blocks.filter((block) => /^LC[123]:/u.test(block.text?.normalized ?? ""));
@@ -74,6 +107,14 @@ test("C8.5.3.2–C8.5.5.1 conservano enfasi, elenchi annidati e note di tabella"
     const nested = c8541.blocks.filter((block) => block.listMarker === "dash");
     assert.equal(nested.length, 2);
     assert.equal(nested.every((block) => block.listLevel === 1 && !block.text?.normalized.startsWith("-")), true);
+    const lc3Nested = c8541.blocks.find((block) => block.blockId.endsWith("#block-006-nested"));
+    assert.equal(lc3Nested?.kind, "list-item");
+    assert.equal(lc3Nested?.listMarker, "none");
+    assert.equal(lc3Nested?.listLevel, 1);
+    assert.equal(lc3Nested?.indentLevel, 1);
+    assert.equal(c8541.blocks.filter((block) => block.kind === "formula-ref" && block.indentLevel === 1).every((block) => block.listLevel === undefined), true);
+    assert.equal(c8541.blocks.some((block) => block.text?.normalized.startsWith("(*)")), false);
+    assert.equal(c8541.blocks.some((block) => block.text?.normalized.startsWith("(**)")), false);
 
     const c8551 = await unit("c8.5.5.1");
     const labeled = c8551.blocks.filter((block) => block.kind === "list-item");
@@ -87,7 +128,11 @@ test("C8.5.3.2–C8.5.5.1 conservano enfasi, elenchi annidati e note di tabella"
     const tableIV = assets.tables.find((table) => table.officialNumber === "C8.5.IV");
     const tableV = assets.tables.find((table) => table.officialNumber === "C8.5.V");
     const tableVI = assets.tables.find((table) => table.officialNumber === "C8.5.VI");
-    assert.equal(tableIII?.rows.every((row) => row.slice(1).every((cell) => cell.align === "center")), true);
+    assert.equal(tableIII?.notes?.length, 2);
+    assert.equal(tableIII?.notesInline?.[0]?.[0]?.latex, "^{(*)}");
+    assert.equal(tableIII?.notesInline?.[1]?.[0]?.latex, "^{(**)}");
+    assert.equal(tableIII?.rows.every((row) => row.length === 3 ? row[0]?.align === "left" && row.slice(1).every((cell) => cell.align === "center") : row.every((cell) => cell.align === "center")), true);
+    assert.equal(tableIII?.rows.flat().some((cell) => cell.text === "f (*)" && cell.inline?.some(({ kind, value }) => kind === "math" && value === "(*)")), true);
     assert.equal(tableIV?.headers[0]?.[0]?.text, "Livello di\nconoscenza");
     assert.equal(tableIV?.headers[0]?.[1]?.text, "Geometrie\n(carpenterie)");
     assert.equal(tableIV?.headers.flat().every((cell) => cell.align === "center"), true);
@@ -106,13 +151,24 @@ test("C8.7.1 conserva i label matematici e gli elenchi annidati", async () => {
     assert.equal(c871211.blocks.filter((block) => block.listMarker === "none").length, 15);
 
     const c871216 = await unit("c8.7.1.2.1.6");
-    assert.equal(c871216.blocks[1]?.text?.inline?.some(({ latex }) => latex === "\\mathbf{SLV}"), true);
-    assert.equal(c871216.blocks[4]?.text?.inline?.some(({ latex }) => latex === "\\mathbf{SLC}"), true);
+    const slv = c871216.blocks.find((block) => block.text?.normalized.startsWith("SLV:"));
+    assert.equal(slv?.kind, "list-item");
+    assert.equal(slv?.listMarker, "none");
+    assert.equal(slv?.listLevel, 0);
+    assert.equal(c871216.blocks.some((block) => block.text?.normalized.startsWith("SLC:") && block.text?.inline?.some(({ latex }) => latex === "\\mathbf{SLC}")), true);
     assert.equal(c871216.blocks.filter((block) => block.listMarker === "dash").every((block) => block.listLevel === 1), true);
 
     const c87131 = await unit("c8.7.1.3.1");
+    const slc = c87131.blocks.find((block) => block.text?.normalized.startsWith("SLC:"));
+    assert.equal(slc?.kind, "list-item");
+    assert.equal(slc?.listMarker, "none");
+    assert.equal(slc?.listLevel, 0);
     assert.equal(c87131.blocks.filter((block) => ["SLC:", "SLV:", "SLD:", "SLO:"].some((label) => block.text?.normalized.startsWith(label))).every((block) => block.text?.inline?.[0]?.kind === "strong-em"), true);
     assert.equal(c87131.blocks.filter((block) => block.listMarker === "dash").every((block) => block.listLevel === 1), true);
+
+    const c87121 = await unit("c8.7.1.2.1");
+    const approach = c87121.blocks.find((block) => block.text?.normalized.startsWith("Nel caso di analisi statica"));
+    assert.deepEqual(approach?.text?.inline?.filter(({ kind }) => kind === "strong-em").map(({ value }) => value), ["approccio cinematico lineare", "approccio cinematico non lineare"]);
 });
 
 test("C8.7.2.4.2–C8.7.6.3 conservano matematica, capoversi, elenchi e tabelle", async () => {
@@ -149,17 +205,17 @@ test("C8.7.2.4.2–C8.7.6.3 conservano matematica, capoversi, elenchi e tabelle"
     assert.equal(c87422.blocks.find((block) => block.text?.normalized.startsWith("per la resistenza del calcestruzzo confinato"))?.kind, "paragraph");
     const deformation = c87422.blocks.find((block) => block.text?.normalized.startsWith("per la deformazione ultima"));
     assert.equal(deformation?.listMarker, "dash");
-    assert.equal(deformation?.text?.inline?.[0]?.kind, "strong-em");
+    assert.equal(deformation?.text?.inline?.[0]?.kind, "strong");
     assert.equal(c87422.blocks.filter((block) => /^(?:a|b)\)/u.test(block.text?.normalized ?? "")).length, 2);
 
     const assets = JSON.parse(await readFile(join(root, "corpus", "assets", "circ2019", "C8.7-step3b.json"), "utf8")) as AssetManifest;
     const tableI = assets.tables.find((table) => table.officialNumber === "C8.7.6.3.I");
     const tableII = assets.tables.find((table) => table.officialNumber === "C8.7.6.3.II");
     assert.equal(tableI?.headers.length, 1);
-    assert.equal(tableI?.headers.flat().every((cell) => cell.align === "center" && cell.shade === "gray" && cell.strong === true), true);
+    assert.equal(tableI?.headers.flat().every((cell) => cell.align === "center" && cell.shade === undefined && cell.strong === true), true);
     assert.equal(tableI?.rows.filter((row) => row[0]?.colSpan === 12).every((row) => row[0]?.shade === "gray" && row[0]?.strong === true), true);
     assert.equal(tableI?.notesInline?.[3]?.some(({ kind, latex }) => kind === "math" && latex === "\\frac{h_c}{x_{\\min}}"), true);
-    assert.equal(tableII?.headers.flat().every((cell) => cell.align === "center" && cell.shade === "gray"), true);
+    assert.equal(tableII?.headers.flat().every((cell) => cell.align === "center" && cell.shade === undefined && cell.strong === true), true);
     assert.equal(tableII?.rows.flat().every((cell) => cell.align === "center"), true);
 });
 

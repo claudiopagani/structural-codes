@@ -501,7 +501,7 @@
       "text": {
         "raw": "Nel caso di analisi statica, l’azione sismica è espressa da forze orizzontali di massa la cui intensità è rappresentata dal\nmoltiplicatore\u0005\u000f, pari al rapporto tra le forze orizzontali e i corrispondenti pesi delle masse presenti. La verifica può essere\neseguita in termini di accelerazione (approccio cinematico lineare) o di spostamento (approccio cinematico non lineare).",
         "normalized": "Nel caso di analisi statica, l’azione sismica è espressa da forze orizzontali di massa la cui intensità è rappresentata dal moltiplicatore α, pari al rapporto tra le forze orizzontali e i corrispondenti pesi delle masse presenti. La verifica può essere eseguita in termini di accelerazione (approccio cinematico lineare) o di spostamento (approccio cinematico non lineare).",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
@@ -514,7 +514,23 @@
           },
           {
             "kind": "text",
-            "value": ", pari al rapporto tra le forze orizzontali e i corrispondenti pesi delle masse presenti. La verifica può essere eseguita in termini di accelerazione (approccio cinematico lineare) o di spostamento (approccio cinematico non lineare)."
+            "value": ", pari al rapporto tra le forze orizzontali e i corrispondenti pesi delle masse presenti. La verifica può essere eseguita in termini di accelerazione ("
+          },
+          {
+            "kind": "strong-em",
+            "value": "approccio cinematico lineare"
+          },
+          {
+            "kind": "text",
+            "value": ") o di spostamento ("
+          },
+          {
+            "kind": "strong-em",
+            "value": "approccio cinematico non lineare"
+          },
+          {
+            "kind": "text",
+            "value": ")."
           }
         ]
       },
@@ -548,6 +564,16 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Applicata la resa in grassetto corsivo della sola espressione approccio cinematico lineare, lasciando l’articolo precedente in tondo."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Applicata la resa in grassetto corsivo della sola espressione approccio cinematico non lineare, lasciando l’articolo precedente in tondo."
           }
         ],
         "rawSha256": "19ef4e5c3b781bdfd4ee6cdf5813ed7992ec6bcb4cba5bfcd80570463f78502f",

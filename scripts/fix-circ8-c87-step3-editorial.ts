@@ -158,6 +158,21 @@ function styleOccurrences(block: Block, tokens: string[], kind: "em" | "strong-e
     addTransformation(block, `Applicata la resa in ${kind === "em" ? "corsivo" : "grassetto corsivo"} dei titoli verificata sul PDF ufficiale.`);
 }
 
+function demoteExactStrongEm(block: Block, token: string, keep = 0): void {
+    if (!block.text?.inline) return;
+    let seen = 0;
+    let changed = false;
+    block.text.inline = block.text.inline.map((segment) => {
+        if (segment.kind !== "strong-em" || segment.value !== token) return segment;
+        if (seen++ < keep) return segment;
+        changed = true;
+        return { kind: "text", value: segment.value };
+    });
+    if (!changed) return;
+    block.text.normalizationVersion = profile;
+    addTransformation(block, `Rimosso il grassetto corsivo dalla ricorrenza non evidenziata di «${token}», secondo il PDF ufficiale.`);
+}
+
 function rebuildMath(block: Block, replacements: Array<{ plain: string; value: string; latex: string }>, note: string): void {
     if (!block.text) throw new Error("Blocco senza testo per la matematica");
     const source = block.text.normalized;
@@ -316,6 +331,21 @@ for (const index of [24, 25, 26, 27]) {
     if (!block?.text) throw new Error(`Voce dei cordoli non trovata alla posizione ${index}`);
     styleOccurrences(block, [block.text.normalized], "strong-em");
 }
+const diaphragmsIntro = c8741.blocks.find((block) => block.text?.normalized.startsWith("Per quanto riguarda le coperture"));
+if (diaphragmsIntro) styleOccurrences(diaphragmsIntro, ["coperture"], "strong-em");
+const wallConnections = c8741.blocks.find((block) => block.text?.normalized.startsWith("Qualora i collegamenti tra le pareti"));
+if (wallConnections) styleOccurrences(wallConnections, ["idonea ammorsatura", "Cuciture armate"], "strong-em");
+const tieParagraph = c8741.blocks.find((block) => block.text?.normalized.startsWith("Particolarmente efficaci sono gli elementi di collegamento"));
+if (tieParagraph) styleOccurrences(tieParagraph, ["catene"], "strong-em");
+const cordoliIntro = c8741.blocks.find((block) => block.text?.normalized === "I cordoli in sommità possono essere realizzati nei seguenti modi.");
+if (cordoliIntro) demoteExactStrongEm(cordoliIntro, "cordoli in sommità");
+const sectionFive = c8741.blocks.find((block) => block.text?.normalized.startsWith("L’assorbimento delle spinte di strutture voltate"));
+if (sectionFive) {
+    demoteExactStrongEm(sectionFive, "tiranti", 1);
+    demoteExactStrongEm(sectionFive, "catene");
+}
+const columnsIntervention = c8741.blocks.find((block) => block.text?.normalized.startsWith("migliorare la resistenza a sforzo normale"));
+if (columnsIntervention) demoteExactStrongEm(columnsIntervention, "cerchiature");
 const foundationFixes: Array<[string, string]> = [
     ["Allargamento della fondazione mediante cordoli o platee in c.a.", "L’intervento va realizzato in modo tale da far collaborare "],
     ["Consolidamento dei terreni di fondazione.", "Gli interventi di consolidamento dei terreni possono essere effettuati mediante "],
@@ -374,9 +404,10 @@ for (const block of c87422.blocks) {
         removeLeadingDash(block);
     }
     if (block.text?.normalized.startsWith("per la deformazione ultima del calcestruzzo confinato:")) {
-        setList(block, "dash", 0, "Resa esplicita e in grassetto corsivo la voce dell’elenco puntato.");
-        block.text.inline = [{ kind: "strong-em", value: block.text.normalized }];
+        setList(block, "dash", 0, "Resa esplicita la voce dell’elenco puntato, mantenendo il testo in grassetto tondo.");
+        block.text.inline = [{ kind: "strong", value: block.text.normalized }];
         block.text.normalizationVersion = profile;
+        addTransformation(block, "Rimosso il corsivo dalla voce dell’elenco puntato, mantenendo il grassetto verificato sul PDF ufficiale.");
     }
     if (/^(?:a|b)\)/u.test(block.text?.normalized ?? "")) setList(block, "none", 0, "Resa esplicita la lista alfabetica dei materiali dopo la formula C8.7.4.8.");
 }
@@ -403,7 +434,8 @@ if (!table1 || !table2) throw new Error("Tabelle C8.7.6.3 non trovate");
 table1.columnWidths = [23, 12, 9, 15, 5, 5, 5, 5, 5, 5, 5, 5];
 const firstHeader = table1.headers[0] ?? [];
 table1.headers = [firstHeader.map((cell) => {
-    const next = { ...cell, align: "center" as const, shade: "gray" as const, strong: true };
+    const next = { ...cell, align: "center" as const, strong: true };
+    delete next.shade;
     delete next.rowSpan;
     return next;
 })];
@@ -432,7 +464,11 @@ table1.notesInline = [
     ],
 ];
 table2.columnWidths = [14, 14.5, 14.5, 14.5, 14.5, 14, 14];
-table2.headers = table2.headers.map((row) => row.map((cell) => ({ ...cell, align: "center" as const, shade: "gray" as const, strong: true })));
+table2.headers = table2.headers.map((row) => row.map((cell) => {
+    const next = { ...cell, align: "center" as const, strong: true };
+    delete next.shade;
+    return next;
+}));
 table2.rows = table2.rows.map((row) => row.map((cell) => ({ ...cell, align: "center" as const })));
 await writeJson(assetPath, assets);
 

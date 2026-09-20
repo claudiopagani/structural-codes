@@ -89,8 +89,8 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla\ncurva di capacità attraverso opportune soglie dello spostamento spettrale d.\nSLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
-        "normalized": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d. SLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
+        "raw": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d.",
+        "normalized": "La verifica a stato limite ultimo può essere eseguita con riferimento ad uno dei due stati limite (SLV o SLC) individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d.",
         "normalizationVersion": "circ8-c87-step1-editorial-0.1.0",
         "inline": [
           {
@@ -113,29 +113,7 @@
           },
           {
             "kind": "text",
-            "value": ") individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d. "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathbf{SLV}"
-          },
-          {
-            "kind": "strong-em",
-            "value": ":"
-          },
-          {
-            "kind": "text",
-            "value": " lo spostamento d "
-          },
-          {
-            "kind": "math",
-            "value": "SLV",
-            "latex": "\\mathrm{SLV}"
-          },
-          {
-            "kind": "text",
-            "value": " corrisponde al minore tra gli spostamenti così definiti:"
+            "value": ") individuati sulla curva di capacità attraverso opportune soglie dello spostamento spettrale d."
           }
         ]
       },
@@ -179,11 +157,102 @@
             "operation": "manual-correction",
             "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
             "note": "Resa in grassetto l’etichetta SLV: mantenendo il testo completo della voce."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separata su nuova riga la voce SLV dell’elenco secondo il PDF ufficiale."
           }
         ],
-        "rawSha256": "3ca995ed4fce67fceca3a14a58b05d9a575acf6f0fcb4574430a4b45c73d80d4",
-        "normalizedSha256": "81acad281a08f2c9174b19f1dde07b6cb5df050111ae002df672d0bbc1f50f81"
+        "rawSha256": "9e9857bde4cfb9884e4f5735b63c16312ab6ae2a3d23bdefffb73487b2a80625",
+        "normalizedSha256": "9e9857bde4cfb9884e4f5735b63c16312ab6ae2a3d23bdefffb73487b2a80625"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-001-slv-",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "SLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
+        "normalized": "SLV: lo spostamento d SLV corrisponde al minore tra gli spostamenti così definiti:",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "SLV",
+            "latex": "\\mathbf{SLV}"
+          },
+          {
+            "kind": "strong-em",
+            "value": ":"
+          },
+          {
+            "kind": "text",
+            "value": " lo spostamento d "
+          },
+          {
+            "kind": "math",
+            "value": "SLV",
+            "latex": "\\mathrm{SLV}"
+          },
+          {
+            "kind": "text",
+            "value": " corrisponde al minore tra gli spostamenti così definiti:"
+          }
+        ],
+        "normalizationVersion": "circ8-c87-step1-editorial-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 275,
+        "printedPage": "271",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Evidenziata in grassetto l’etichetta SLV: dell’elenco."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Resa in grassetto l’etichetta SLV: mantenendo il testo completo della voce."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step1-editorial-0.1.0",
+            "note": "Separata su nuova riga la voce SLV dell’elenco secondo il PDF ufficiale."
+          }
+        ],
+        "rawSha256": "612e3f407d3b89947f81bba2cc8c1e1f0eca43a3e85a3cd17e2ccec4e9b16b81",
+        "normalizedSha256": "612e3f407d3b89947f81bba2cc8c1e1f0eca43a3e85a3cd17e2ccec4e9b16b81"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     },
     {
       "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.1.2.1.6#block-002",

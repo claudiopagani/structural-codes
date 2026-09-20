@@ -150,40 +150,13 @@
       "kind": "paragraph",
       "origin": "official",
       "text": {
-        "raw": "dove:\nMe,Rd è il momento di prima plasticizzazione di calcolo;\nLV è la luce di taglio;\nI è il momento di inerzia della sezione nella direzione considerata.",
-        "normalized": "dove: M_{e,Rd} è il momento di prima plasticizzazione di calcolo; L_V è la luce di taglio; I è il momento di inerzia della sezione nella direzione considerata.",
-        "normalizationVersion": "circ8-editorial-profile-0.2.0",
+        "raw": "dove:",
+        "normalized": "dove:",
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "dove: "
-          },
-          {
-            "kind": "math",
-            "value": "M_{e,Rd}",
-            "latex": "M_{e,Rd}"
-          },
-          {
-            "kind": "text",
-            "value": " è il momento di prima plasticizzazione di calcolo; "
-          },
-          {
-            "kind": "math",
-            "value": "L_V",
-            "latex": "L_V"
-          },
-          {
-            "kind": "text",
-            "value": " è la luce di taglio; "
-          },
-          {
-            "kind": "math",
-            "value": "I",
-            "latex": "I"
-          },
-          {
-            "kind": "text",
-            "value": " è il momento di inerzia della sezione nella direzione considerata."
+            "value": "dove:"
           }
         ]
       },
@@ -217,11 +190,220 @@
             "operation": "unicode-nfc",
             "ruleVersion": "circ8-editorial-profile-0.2.0",
             "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco labeled dopo la formula [C8.7.2.13]."
           }
         ],
-        "rawSha256": "334d7dbe004d6f44ee4acdd7cec2b744403cca48130fe05a8c0c5012b340caa4",
-        "normalizedSha256": "be410eeba7e4f3ce063e9d415359d79dfde5f982c83f5e49a59cc30b5a762a4a"
+        "rawSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110",
+        "normalizedSha256": "e28f32b1f6ecf128a3b2931e313c41ac79bac184e007787d69ddd8d321e3a110"
       }
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.4.4#block-003-item-1",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "M_{e,Rd} è il momento di prima plasticizzazione di calcolo;",
+        "normalized": "M_{e,Rd} è il momento di prima plasticizzazione di calcolo;",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "M_{e,Rd}",
+            "latex": "M_{e,Rd}"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento di prima plasticizzazione di calcolo;"
+          }
+        ],
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 289,
+        "printedPage": "285",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco labeled dopo la formula [C8.7.2.13]."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Esplicitata la voce labeled con descrizione allineata dopo la formula [C8.7.2.13]."
+          }
+        ],
+        "rawSha256": "a37f0401ef770c175dc5e8d1e42a47835a54e6d509508ff02a8b330e4788ad93",
+        "normalizedSha256": "a37f0401ef770c175dc5e8d1e42a47835a54e6d509508ff02a8b330e4788ad93"
+      },
+      "listMarker": "none",
+      "listLevel": 0
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.4.4#block-003-item-2",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "L_V è la luce di taglio;",
+        "normalized": "L_V è la luce di taglio;",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "L_V",
+            "latex": "L_V"
+          },
+          {
+            "kind": "text",
+            "value": " è la luce di taglio;"
+          }
+        ],
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 289,
+        "printedPage": "285",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco labeled dopo la formula [C8.7.2.13]."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Esplicitata la voce labeled con descrizione allineata dopo la formula [C8.7.2.13]."
+          }
+        ],
+        "rawSha256": "ed1c01e37dcaae9220c6be07adb97b7137740c5ace8ee4386a0c042ed7742a96",
+        "normalizedSha256": "ed1c01e37dcaae9220c6be07adb97b7137740c5ace8ee4386a0c042ed7742a96"
+      },
+      "listMarker": "none",
+      "listLevel": 0
+    },
+    {
+      "blockId": "urn:structural-codes:it:unit:circ2019:c8.7.2.4.4#block-003-item-3",
+      "kind": "list-item",
+      "origin": "official",
+      "text": {
+        "raw": "I è il momento di inerzia della sezione nella direzione considerata.",
+        "normalized": "I è il momento di inerzia della sezione nella direzione considerata.",
+        "inline": [
+          {
+            "kind": "math",
+            "value": "I",
+            "latex": "I"
+          },
+          {
+            "kind": "text",
+            "value": " è il momento di inerzia della sezione nella direzione considerata."
+          }
+        ],
+        "normalizationVersion": "circ8-c87-step2-editorial-0.1.0"
+      },
+      "evidence": {
+        "sourceId": "circ-7-2019",
+        "pdfPage": 289,
+        "printedPage": "285",
+        "region": null,
+        "extraction": {
+          "method": "manual-transcription",
+          "tool": "codex-render-transcription",
+          "toolVersion": "circ8-editorial-profile-0.2.0"
+        },
+        "transformations": [
+          {
+            "operation": "join-line-wrap",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi gli a capo introdotti dall’impaginazione, conservando il capoverso."
+          },
+          {
+            "operation": "remove-control-character",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Rimossi i caratteri di controllo introdotti dall’estrazione del PDF."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Ripristinati accenti, apostrofi, numerazione, glifi matematici e punteggiatura verificati sul render ufficiale."
+          },
+          {
+            "operation": "unicode-nfc",
+            "ruleVersion": "circ8-editorial-profile-0.2.0",
+            "note": "Testo normalizzato in Unicode NFC."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Separata l’introduzione dall’elenco labeled dopo la formula [C8.7.2.13]."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c87-step2-editorial-0.1.0",
+            "note": "Esplicitata la voce labeled con descrizione allineata dopo la formula [C8.7.2.13]."
+          }
+        ],
+        "rawSha256": "357bd9dda1ed823388cce210c5c00f0f6943e68403ca1f3d94c72771d381f7da",
+        "normalizedSha256": "357bd9dda1ed823388cce210c5c00f0f6943e68403ca1f3d94c72771d381f7da"
+      },
+      "listMarker": "none",
+      "listLevel": 0
     }
   ],
   "citations": [],

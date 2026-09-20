@@ -75,7 +75,7 @@
           {
             "text": "f",
             "latex": "f",
-            "align": "left"
+            "align": "center"
           },
           {
             "text": "1",
@@ -102,7 +102,19 @@
           {
             "text": "f (*)",
             "latex": "f",
-            "align": "left"
+            "align": "center",
+            "inline": [
+              {
+                "kind": "math",
+                "value": "f",
+                "latex": "f"
+              },
+              {
+                "kind": "math",
+                "value": "(*)",
+                "latex": "^{(*)}"
+              }
+            ]
           },
           {
             "text": "2 (*)",
@@ -129,7 +141,7 @@
           {
             "text": "τ₀ - fᵥ₀",
             "latex": "\\tau_0-f_{v0}",
-            "align": "left"
+            "align": "center"
           },
           {
             "text": "1",
@@ -156,7 +168,7 @@
           {
             "text": "τ₀",
             "latex": "\\tau_0",
-            "align": "left"
+            "align": "center"
           },
           {
             "text": "1",
@@ -194,11 +206,119 @@
           }
         ]
       ],
-      "notes": [],
+      "notes": [
+        "(*) La prova con il martinetto piatto doppio consente di ottenere una misura del modulo elastico E della muratura, molto più raramente di misurarne direttamente la resistenza a compressione. Il coefficiente in tabella è quello suggerito quando nella prova viene misurata direttamente la resistenza a compressione. Ricordando che esiste una correlazione empirica approssimata di proporzionalità tra modulo E e la resistenza media a compressione della muratura (desumibile dagli intervalli di variazione dei due parametri nella tabella C8.5.I) il modulo E ottenuto dalla prova con martinetto piatto può fornire una stima indiretta di f utilizzabile nell’equazione [C8.5.4.3] purché si adotti un valore di κ almeno pari a 3.",
+        "(**) Nel caso di muratura in blocchi di pietra squadrati o artificiali pieni o semipieni si ipotizza che, con prove a compressione diretta sugli elementi e sulla malta (i costituenti), si possa stimare la resistenza caratteristica a compressione della muratura f_k tramite i metodi descritti al § 11.10.3.1.2 delle Norme. Nota: f_k, la resistenza a compressione media f della muratura potrà essere quindi stimata come f = 1,25 f_k."
+      ],
       "columnWidths": [
         62,
         19,
         19
+      ],
+      "notesInline": [
+        [
+          {
+            "kind": "math",
+            "value": "(*)",
+            "latex": "^{(*)}"
+          },
+          {
+            "kind": "text",
+            "value": " La prova con il martinetto piatto doppio consente di ottenere una misura del modulo elastico "
+          },
+          {
+            "kind": "math",
+            "value": "E",
+            "latex": "E"
+          },
+          {
+            "kind": "text",
+            "value": " della muratura, molto più raramente di misurarne direttamente la resistenza a compressione. Il coefficiente in tabella è quello suggerito quando nella prova viene misurata direttamente la resistenza a compressione. Ricordando che esiste una correlazione empirica approssimata di proporzionalità tra modulo "
+          },
+          {
+            "kind": "math",
+            "value": "E",
+            "latex": "E"
+          },
+          {
+            "kind": "text",
+            "value": " e la resistenza media a compressione della muratura (desumibile dagli intervalli di variazione dei due parametri nella tabella C8.5.I) il modulo "
+          },
+          {
+            "kind": "math",
+            "value": "E",
+            "latex": "E"
+          },
+          {
+            "kind": "text",
+            "value": " ottenuto dalla prova con martinetto piatto può fornire una stima indiretta di "
+          },
+          {
+            "kind": "math",
+            "value": "f",
+            "latex": "f"
+          },
+          {
+            "kind": "text",
+            "value": " utilizzabile nell’equazione [C8.5.4.3] purché si adotti un valore di "
+          },
+          {
+            "kind": "math",
+            "value": "κ",
+            "latex": "\\kappa"
+          },
+          {
+            "kind": "text",
+            "value": " almeno pari a 3."
+          }
+        ],
+        [
+          {
+            "kind": "math",
+            "value": "(**)",
+            "latex": "^{(**)}"
+          },
+          {
+            "kind": "text",
+            "value": " Nel caso di muratura in blocchi di pietra squadrati o artificiali pieni o semipieni si ipotizza che, con prove a compressione diretta sugli elementi e sulla malta (i costituenti), si possa stimare la resistenza caratteristica a compressione della muratura "
+          },
+          {
+            "kind": "math",
+            "value": "f_k",
+            "latex": "f_k"
+          },
+          {
+            "kind": "text",
+            "value": " tramite i metodi descritti al § 11.10.3.1.2 delle Norme. Nota: "
+          },
+          {
+            "kind": "math",
+            "value": "f_k",
+            "latex": "f_k"
+          },
+          {
+            "kind": "text",
+            "value": ", la resistenza a compressione media "
+          },
+          {
+            "kind": "math",
+            "value": "f",
+            "latex": "f"
+          },
+          {
+            "kind": "text",
+            "value": " della muratura potrà essere quindi stimata come "
+          },
+          {
+            "kind": "math",
+            "value": "f = 1,25 f_k",
+            "latex": "f=1{,}25f_k"
+          },
+          {
+            "kind": "text",
+            "value": "."
+          }
+        ]
       ]
     },
     {

@@ -12,7 +12,7 @@ type Evidence = { transformations?: Array<{ operation: string; ruleVersion: stri
 type Text = { normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string; inline?: Inline[]; listMarker?: string; listLevel?: number }>; normalizationVersion?: string };
 type Block = { kind: string; text?: Text; evidence?: Evidence };
 type Unit = { blocks: Block[] };
-type Cell = { text: string; latex?: string; rowSpan?: number; colSpan?: number; align?: "left" | "center" | "right"; strong?: boolean; verticalText?: boolean };
+type Cell = { text: string; latex?: string; rowSpan?: number; colSpan?: number; align?: "left" | "center" | "right"; strong?: boolean; noWrap?: boolean; verticalText?: boolean };
 type Table = { officialNumber: string; columnCount: number; columnWidths?: number[]; headers: Cell[][]; rows: Cell[][]; notes: string[]; notesInline?: Inline[][] };
 type AssetManifest = { tables: Table[] };
 
@@ -119,9 +119,15 @@ const c8522 = await readJson<Unit>(join(unitsDir, "c8.5.2.2.json"));
 const firstC8522 = c8522.blocks.find((block) => block.text?.normalized.startsWith("Il rilievo è finalizzato"));
 if (!firstC8522) throw new Error("C8.5.2.2: primo paragrafo non trovato");
 stylePhrases(firstC8522, [
+    { value: "Per gli elementi aventi funzione strutturale la geometria esterna deve essere", kind: "underline" },
     { value: "sempre descritta in maniera la più completa possibile", kind: "underline" },
     { value: "mentre i dettagli,", kind: "underline" },
     { value: "possono essere rilevati a campione", kind: "underline" },
+]);
+const informationLead = c8522.blocks.find((block) => block.text?.normalized.includes("il rilievo dei dettagli costruttivi è finalizzato a conseguire le seguenti informazioni"));
+if (!informationLead) throw new Error("C8.5.2.2: introduzione all’elenco delle informazioni non trovata");
+stylePhrases(informationLead, [
+    { value: "il rilievo dei dettagli costruttivi è finalizzato a conseguire le seguenti informazioni:", kind: "underline" },
 ]);
 for (const prefix of ["Indagini limitate:", "Indagini estese:", "Indagini esaustive:"]) {
     const block = c8522.blocks.find((item) => item.text?.normalized.startsWith(prefix));
@@ -158,9 +164,9 @@ for (const title of [
 ]) {
     const block = c8531.blocks.find((item) => item.kind === "heading" && item.text?.normalized === title);
     if (!block?.text) throw new Error(`C8.5.3.1: sottotitolo non trovato: ${title}`);
-    block.text.inline = [{ kind: "em", value: title }];
+    block.text.inline = [{ kind: "strong-em", value: title }];
     block.text.normalizationVersion = profile;
-    addTransformation(block, `Reso in corsivo il sottotitolo verificato: ${title}`);
+    addTransformation(block, `Reso in grassetto corsivo il sottotitolo verificato: ${title}`);
 }
 await writeJson(join(unitsDir, "c8.5.3.1.json"), c8531);
 
@@ -169,22 +175,24 @@ const tableI = assets.tables.find((table) => table.officialNumber === "C8.5.I");
 const tableII = assets.tables.find((table) => table.officialNumber === "C8.5.II");
 if (!tableI || !tableII) throw new Error("Tabelle C8.5.I–II non trovate");
 
-tableI.columnWidths = [35, 10, 11, 10, 12, 12, 10];
+tableI.columnWidths = [23, 13, 13, 13, 13, 13, 12];
 tableI.headers = [
     [
         cell("Tipologia di muratura", { rowSpan: 3, align: "left", strong: true }),
         cell("f", { latex: "f", align: "center", strong: true }),
         cell("τ₀", { latex: "\\tau_0", align: "center", strong: true }),
-        cell("fᵥ₀", { latex: "f_{v0}", rowSpan: 2, align: "center", strong: true }),
+        cell("fᵥ₀", { latex: "f_{v0}", align: "center", strong: true }),
         cell("E", { latex: "E", align: "center", strong: true }),
         cell("G", { latex: "G", align: "center", strong: true }),
-        cell("w", { latex: "w", rowSpan: 2, align: "center", strong: true }),
+        cell("w", { latex: "w", align: "center", strong: true }),
     ],
     [
         cell("(N/mm²)", { latex: "\\left(\\mathrm{N/mm^2}\\right)", align: "center", strong: true }),
         cell("(N/mm²)", { latex: "\\left(\\mathrm{N/mm^2}\\right)", align: "center", strong: true }),
         cell("(N/mm²)", { latex: "\\left(\\mathrm{N/mm^2}\\right)", align: "center", strong: true }),
         cell("(N/mm²)", { latex: "\\left(\\mathrm{N/mm^2}\\right)", align: "center", strong: true }),
+        cell("(N/mm²)", { latex: "\\left(\\mathrm{N/mm^2}\\right)", align: "center", strong: true }),
+        cell("(kN/m³)", { latex: "\\left(\\mathrm{kN/m^3}\\right)", align: "center", strong: true }),
     ],
     [
         cell("min-max", { align: "center", strong: true }),
@@ -198,6 +206,9 @@ tableI.headers = [
 tableI.headers.flat().forEach((header) => { header.align = "center"; });
 tableI.headers[0]![0]!.align = "left";
 setBodyAlignments(tableI);
+for (const row of tableI.rows) {
+    row.slice(1).forEach((bodyCell) => { bodyCell.noWrap = true; });
+}
 tableI.notesInline = [
     [{ kind: "text", value: tableI.notes[0] ?? "" }],
     [
@@ -217,6 +228,12 @@ tableII.headers[0] = [
     { ...tableIIHeader0[2]!, align: "center", strong: true },
 ];
 tableII.headers[1] = (tableII.headers[1] ?? []).map((header) => ({ ...header, align: "center", strong: true, verticalText: true }));
+const tableIIHeader1 = tableII.headers[1]!;
+tableIIHeader1[1]!.text = "Ricorsi o\nlistature";
+tableIIHeader1[2]!.text = "Connessione\ntrasversale";
+tableIIHeader1[3]!.text = "Iniezione di\nmiscele leganti (*)";
+tableIIHeader1[5]!.text = "Ristilatura armata\ncon connessione\ndei paramenti (**)";
+tableIIHeader1[6]!.text = "Massimo\ncoefficiente\ncomplessivo";
 setBodyAlignments(tableII);
 tableII.notesInline = [
     [{ kind: "text", value: tableII.notes[0] ?? "" }],
