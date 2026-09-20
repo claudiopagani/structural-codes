@@ -10,7 +10,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.4";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -57,7 +57,7 @@ const blocks: GeneratedBlock[] = [
 const parent = uid("C4.2.4.1");
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(unitNumber),
     workId,
@@ -72,25 +72,17 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: [], tableIds: [], figureIds: [] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ42-step2l", kind: "automated-agent", toolVersion: profile },
-        createdAt,
-        reviews: [],
-        openIssues: [
-            { issueId: "circ2019-C4-2-4-1-4-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step2l",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [],
     tables: [],
     figures: [],

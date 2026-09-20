@@ -12,7 +12,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = {
     coordinateSystem: "pdf-points-top-left";
@@ -200,7 +200,7 @@ function makeUnit(
 ) {
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId(number),
         workId,
@@ -227,34 +227,7 @@ function makeUnit(
         citations: [],
         relations: [],
         assets: { formulaIds: formulas, tableIds: tables, figureIds: [] },
-        workflow: {
-            status: "extracted",
-            createdBy: {
-                actorId: "codex:ntc42-step3",
-                kind: "automated-agent",
-                toolVersion: profile,
-            },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte.",
-                },
-                ...(tables.length > 0
-                    ? [
-                          {
-                              issueId: `ntc2018-${number.replaceAll(".", "-")}-assets`,
-                              type: "asset-review",
-                              severity: "blocking",
-                              note: "Le tabelle sono strutturate e collocate nel punto originario; resta obbligatorio il confronto umano cella per cella e schema per schema con la fonte ufficiale.",
-                          },
-                      ]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -621,12 +594,12 @@ const units = [
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "4.2-step3",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [
         { id: f420, unitId: unitId("4.2.3.1"), officialNumber: "4.2.0", pdfPage: 97, latex: "C_{\\vartheta}=\\vartheta_r/\\vartheta_y-1" },
         { id: f421, unitId: unitId("4.2.3.4"), officialNumber: "4.2.1", pdfPage: 100, latex: "\\begin{aligned}\\alpha_{cr}&=\\frac{F_{cr}}{F_{Ed}}\\ge10&&\\text{per l’analisi elastica}\\\\\\alpha_{cr}&=\\frac{F_{cr}}{F_{Ed}}\\ge15&&\\text{per l’analisi plastica}\\end{aligned}" },

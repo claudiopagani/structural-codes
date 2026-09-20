@@ -9,7 +9,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ43-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const pages = [147, 148, 149, 150, 151, 152, 153, 154];
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
@@ -192,11 +192,10 @@ function makeUnit(
     kind: "section" | "subparagraph",
     blocks: any[],
     assets: { formulaIds: string[]; tableIds: string[]; figureIds: string[] },
-    extraIssues: any[] = [],
 ): any {
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId(number),
         workId,
@@ -223,33 +222,7 @@ function makeUnit(
         citations: [],
         relations: [],
         assets,
-        workflow: {
-            status: "extracted",
-            createdBy: {
-                actorId: "codex:circ43-step1",
-                kind: "automated-agent",
-                toolVersion: profile,
-            },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `circ2019-${number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione.",
-                },
-                ...(assets.formulaIds.length + assets.tableIds.length + assets.figureIds.length > 0
-                    ? [{
-                          issueId: `circ2019-${number.replaceAll(".", "-")}-asset-review`,
-                          type: "asset-review",
-                          severity: "blocking",
-                          note: "Formule, tabelle e figure sono state separate e collocate; resta obbligatoria la revisione umana puntuale sulla fonte ufficiale.",
-                      }]
-                    : []),
-                ...extraIssues,
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -566,12 +539,12 @@ for (const unit of units) {
 }
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.3-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas,
     tables,
     figures,

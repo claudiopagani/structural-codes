@@ -93,7 +93,7 @@ export interface ChatNTCEvidenceUnit {
   document: DocumentId;
   numbering: string;
   title: string;
-  editorial: CorpusUnit["workflow"];
+  editorial: CorpusUnit["review"];
   validity: CorpusUnit["validity"];
   provenance: ChatNTCUnitRecord["provenance"];
   reasons: Array<{ kind: "exact-reference" | "full-text" | "viewer-context"; score: number } | ChatNTCRelation>;
@@ -122,8 +122,7 @@ export interface ChatNTCRetrievalOptions {
 }
 
 export interface ChatNTCWarning {
-  code: "no-evidence" | "evidence-reduced" | "unreviewed-evidence" | "blocking-issues"
-    | "proposed-relation" | "figure-metadata-only" | "unresolved-reference";
+  code: "no-evidence" | "evidence-reduced" | "figure-metadata-only" | "unresolved-reference";
   unitId?: string;
 }
 

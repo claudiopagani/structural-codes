@@ -385,12 +385,12 @@ async function writeManifest(
 ): Promise<void> {
     const manifest = {
         $schema: "urn:structural-codes:schema:asset-manifest:v2",
-        schemaVersion: "2.0.0-alpha.1",
+        schemaVersion: "2.0.0-alpha.2",
         recordType: "asset-manifest",
         document,
         section: "core-editorial",
         sourceId,
-        status: "transcribed-unreviewed",
+        status: "draft",
         formulas: seeds.map(({ number, officialNumber, unit, page, latex }) => ({
             id: `urn:structural-codes:it:asset:formula:${document}:${number.toLowerCase()}`,
             unitId: `urn:structural-codes:it:unit:${document}:${unit}`,

@@ -6,7 +6,7 @@ import { join } from "node:path";
 
 type Inline = { kind: string; value: string; latex?: string };
 type Block = { kind: string; listMarker?: string; text?: { inline?: Inline[] } };
-type Unit = { blocks: Block[]; workflow?: { openIssues?: Array<{ issueId: string }> } };
+type Unit = { blocks: Block[] };
 type Asset = { officialNumber: string; caption: string; captionInline?: Inline[] };
 type TableCell = {
     text: string;
@@ -88,6 +88,5 @@ test("Tabella C4.3.I riproduce il crop ufficiale e le quattro classi", async () 
     ]);
     for (const label of ["Classe 1:", "Classe 2:", "Classe 3:", "Classe 4:"]) assert.match(classes.text, new RegExp(label));
 
-    const classification = await unit("c4.3.2.1");
-    assert.equal(classification.workflow?.openIssues?.some(({ issueId }) => issueId === "circ2019-c4-3-2-1-table-diagrams"), false);
+    await unit("c4.3.2.1");
 });

@@ -130,7 +130,7 @@ const renderedBlocks = blocks.map((block, index) => {
 
 const record = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id,
     workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -145,20 +145,7 @@ const record = {
     citations: [],
     relations: [],
     assets: { formulaIds: [], tableIds: [], figureIds: [] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "generator:ntc12:root", kind: "script", toolVersion: profile },
-        createdAt: "2026-08-23T00:00:00Z",
-        reviews: [],
-        openIssues: [
-            {
-                issueId: "ntc2018-12-source-review",
-                type: "normalization-review",
-                severity: "blocking",
-                note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-            },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const output = join(root, "corpus", "units", "ntc2018", "12.json");

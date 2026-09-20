@@ -18,6 +18,5 @@ test("NTC 4.3.5.5.1 conserva il refuso ufficiale e la didascalia confermata", as
     const unit = await read("corpus/units/ntc2018/4.3.5.5.1.json");
     const reference = unit.blocks.find((block: { text?: { normalized?: string } }) => block.text?.normalized?.includes("vedi Fig. 4.3.-9"));
     assert.ok(reference);
-    assert.ok(unit.workflow.openIssues.some((issue: { issueId: string; severity: string }) => issue.issueId.endsWith("-source-typo") && issue.severity === "warning"));
-    assert.ok(unit.workflow.reviews.some((review: { reviewId: string; result: string }) => review.reviewId.endsWith("-figure-typo-confirmation-01") && review.result === "accepted"));
+    assert.equal(unit.review.status, "verified");
 });

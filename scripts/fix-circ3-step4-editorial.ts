@@ -13,14 +13,6 @@ type TextBlock = {
 };
 type Unit = {
     blocks: TextBlock[];
-    workflow?: {
-        openIssues: Array<{
-            issueId: string;
-            type: string;
-            severity: string;
-            note: string;
-        }>;
-    };
 };
 type Asset = { officialNumber: string; caption: string; captionInline?: InlineSegment[] };
 
@@ -167,10 +159,6 @@ async function updateEmphasis() {
         emphasize(load, "il carico d’incendio");
         emphasize(load, "carico d’incendio specifico");
         underline(load, "lorda");
-        assert(unit.workflow, "Workflow mancante: c3.6.1.1");
-        unit.workflow.openIssues = unit.workflow.openIssues.filter(
-            ({ issueId }) => issueId !== "circ2019-c3-6-1-1-underline",
-        );
         await writeFile(path, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
     }
     {

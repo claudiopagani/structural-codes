@@ -10,7 +10,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 const scopedPages274To276 = process.argv.includes("--pages-274-276");
 const scopedPages277To279 = process.argv.includes("--pages-277-279");
@@ -173,21 +173,14 @@ function makeUnit(official: string, title: string, parent: string, ancestors: st
   const headingBlockId = addText(blocks, headingRanges[official]!, official + " " + title, "heading");
   build(blocks);
   const record = {
-    $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit",
+    $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit",
     id: currentUnit, workId: WORK_ID, expressionId: EXPRESSION_ID, kind: "paragraph",
     numbering: { official, sortKey: official.slice(1).split(".").map((x) => x.padStart(3, "0")).join(".") },
     title, titleBlockId: headingBlockId,
     hierarchy: { parentId: unitId(parent), ancestorIds: ancestors.map(unitId), position },
     validity: { from: null, to: null, status: "unknown", asOf: TODAY }, blocks, citations: [],
     relations: relation(official, headingBlockId), assets: { formulaIds, tableIds: [], figureIds: [] },
-    workflow: {
-      status: "extracted", createdBy: { actorId: "generator:circ87:step1b", kind: "script", toolVersion: VERSION }, createdAt: CREATED_AT, reviews: [],
-      openIssues: [
-        { issueId: "circ2019-" + official.toLowerCase() + "-source-review", type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente." },
-        { issueId: "circ2019-" + official.toLowerCase() + "-relation", type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." },
-        ...(formulaIds.length > 0 ? [{ issueId: "circ2019-" + official.toLowerCase() + "-formula-review", type: "asset-review", severity: "blocking", note: "Le formule devono essere sottoposte a verifica umana, glifo per glifo, sul render ufficiale." }] : []),
-      ],
-    },
+    review: { status: "draft" },
   };
   writeFileSync(join(UNITS, official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8");
 }
@@ -370,7 +363,7 @@ const formulas = [
 ];
 mkdirSync(UNITS, { recursive: true }); mkdirSync(ASSETS, { recursive: true });
 writeFileSync(join(ASSETS, "C8.7-step1b.json"), JSON.stringify({
-  $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest",
-  document: "circ2019", section: "C8.7-step1b", sourceId: SOURCE_ID, status: "transcribed-unreviewed",
+  $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest",
+  document: "circ2019", section: "C8.7-step1b", sourceId: SOURCE_ID, status: "draft",
   formulas, tables: [], figures: [],
 }, null, 2) + "\n", "utf8");

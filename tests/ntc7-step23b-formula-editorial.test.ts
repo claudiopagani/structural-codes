@@ -93,7 +93,7 @@ test("NTC pagine 258–261 corregge glifi, indici e barra della resistenza ortog
     assert.equal(qBlocks.length, 2);
     assert.notEqual(qUnit.blocks.at(-1).text.normalized, ".");
     assert.ok(!qBlocks.some((block: any) => block.text.normalized.includes("q 0")));
-    assert.equal(qUnit.workflow.openIssues.some((issue: any) => issue.issueId === "ntc2018-7-7-3-source-anomaly-standalone-period"), false);
+    assert.equal(qUnit.review.status, "verified");
 
     const floor = await json("corpus/units/ntc2018/7.7.7.2.json");
     assert.deepEqual(

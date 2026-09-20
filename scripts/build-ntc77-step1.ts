@@ -7,8 +7,8 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc77-editorial-profile-0.1.0";
-const actor = { actorId: "generator:ntc77:step1", kind: "script", toolVersion: profile };
-const createdAt = "2026-08-09T00:00:00Z";
+
+
 
 const evidenceFile = join(repoRoot, "evidence", sourceId, "pages", "page-0258.raw.txt");
 const pageLines = (await readFile(evidenceFile, "utf8")).replace(/\r\n/gu, "\n").split("\n");
@@ -186,7 +186,7 @@ for (const spec of units) {
     parentParts.pop();
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId,
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -201,28 +201,19 @@ for (const spec of units) {
         citations: [],
         relations: [],
         assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: {
-            status: "extracted",
-            createdBy: actor,
-            createdAt,
-            reviews: [],
-            openIssues: [
-                { issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente." },
-                ...(spec.extraIssues ?? []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(outputDirectory, `${spec.number}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7.7-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [],
     tables: [],
     figures: [],

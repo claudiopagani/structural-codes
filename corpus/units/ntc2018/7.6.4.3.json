@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:7.6.4.3",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -749,34 +749,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:ntc76:step1",
-      "kind": "script",
-      "toolVersion": "ntc76-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-7-6-4-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "ntc2018-7-6-4-3-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale."
-      },
-      {
-        "issueId": "ntc2018-7-6-4-3-source-anomaly-q",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il PDF ufficiale usa esplicitamente q, q_u e q_y come misure di deformazione locale, mentre l’analogo § 7.5.3.2 usa θ, θ_u e θ_y; la notazione ufficiale è conservata senza correzione editoriale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

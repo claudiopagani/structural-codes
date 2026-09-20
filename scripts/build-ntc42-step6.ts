@@ -10,7 +10,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc42-editorial-profile-0.2.0";
-const createdAt = "2026-08-10T00:00:00Z";
+
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Opt = { page: number; printedPage: string; wrap?: boolean; discretionaryHyphen?: boolean; manual?: boolean; pageBreak?: boolean };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -72,7 +72,7 @@ function formulaBlock(n: string, number: string, o: Opt, region: Region) {
 }
 
 function assetBlock(n: string, suffix: string, kind: "table-ref" | "figure-ref", assetId: string, o: Opt, region: Region) {
-  const note = kind === "table-ref" ? "Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria." : "Crop raster ufficiale verificato sul render; revisione umana del posizionamento ancora obbligatoria.";
+  const note = kind === "table-ref" ? "Tabella strutturata dal render ufficiale." : "Crop raster ufficiale verificato sul render.";
   return {
     blockId: uid(n) + "#block-" + suffix,
     kind,
@@ -98,7 +98,7 @@ function ancestors(n: string) {
 function unit(n: string, title: string, blocks: unknown[], formulas: string[] = [], tables: string[] = [], figures: string[] = []) {
   return {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(n),
     workId,
@@ -113,17 +113,7 @@ function unit(n: string, title: string, blocks: unknown[], formulas: string[] = 
     citations: [],
     relations: [],
     assets: { formulaIds: formulas.map(fid), tableIds: tables.map(tid), figureIds: figures.map(gid) },
-    workflow: {
-      status: "extracted",
-      createdBy: { actorId: "codex:ntc42-step6", kind: "automated-agent", toolVersion: profile },
-      createdAt,
-      reviews: [],
-      openIssues: [
-        { issueId: "ntc2018-" + n.replaceAll(".", "-") + "-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-        ...tables.map(() => ({ issueId: "ntc2018-" + n.replaceAll(".", "-") + "-assets", type: "asset-review", severity: "blocking", note: "La tabella è strutturata e richiede verifica umana cella per cella." })),
-        ...figures.map(() => ({ issueId: "ntc2018-" + n.replaceAll(".", "-") + "-figures", type: "asset-review", severity: "blocking", note: "Il crop ufficiale è registrato; resta la revisione umana del posizionamento." })),
-      ],
-    },
+    review: { status: "draft" },
   };
 }
 
@@ -361,12 +351,12 @@ existing.assets.formulaIds = [...new Set([...existing.assets.formulaIds, ...form
 
 const manifest = {
   $schema: "urn:structural-codes:schema:asset-manifest:v2",
-  schemaVersion: "2.0.0-alpha.1",
+  schemaVersion: "2.0.0-alpha.2",
   recordType: "asset-manifest",
   document: "ntc2018",
   section: "4.2-step6",
   sourceId,
-  status: "transcribed-unreviewed",
+  status: "draft",
   formulas: formulaRows.map(([number, unitId, pdfPage, latex]) => ({ id: fid(number), unitId: uid(unitId), officialNumber: number, pdfPage, latex })),
   tables: [table],
   figures,

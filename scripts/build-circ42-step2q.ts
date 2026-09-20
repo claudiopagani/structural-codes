@@ -10,7 +10,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.4.5";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -43,8 +43,8 @@ const blocks: GeneratedBlock[] = [
 ];
 
 const parent = uid("C4.2.4.1.4");
-const unit = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: uid(unitNumber), workId, expressionId, kind: "subparagraph", numbering: { official: unitNumber, sortKey: unitNumber.replace(/^C/, "").split(".").map((part) => part.padStart(3, "0")).join(".") }, title: "Metodi di verifica", titleBlockId: `${uid(unitNumber)}#block-heading`, hierarchy: { parentId: parent, ancestorIds: [uid("C4.2"), uid("C4.2.4"), uid("C4.2.4.1"), parent], position: 5 }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: [formulaId(formula99.number)], tableIds: [], figureIds: [] }, workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2q", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "circ2019-C4-2-4-1-4-5-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." }, { issueId: "circ2019-C4-2-4-1-4-5-assets-review", type: "asset-review", severity: "blocking", note: "La formula C4.2.99 richiede revisione umana indipendente." }] } };
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2q", sourceId, status: "transcribed-unreviewed", formulas: [{ id: formulaId(formula99.number), unitId: uid(unitNumber), officialNumber: formula99.number, pdfPage: formula99.page, latex: formula99.latex }], tables: [], figures: [] };
+const unit = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: uid(unitNumber), workId, expressionId, kind: "subparagraph", numbering: { official: unitNumber, sortKey: unitNumber.replace(/^C/, "").split(".").map((part) => part.padStart(3, "0")).join(".") }, title: "Metodi di verifica", titleBlockId: `${uid(unitNumber)}#block-heading`, hierarchy: { parentId: parent, ancestorIds: [uid("C4.2"), uid("C4.2.4"), uid("C4.2.4.1"), parent], position: 5 }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: [formulaId(formula99.number)], tableIds: [], figureIds: [] }, review: { status: "draft" } };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2q", sourceId, status: "draft", formulas: [{ id: formulaId(formula99.number), unitId: uid(unitNumber), officialNumber: formula99.number, pdfPage: formula99.page, latex: formula99.latex }], tables: [], figures: [] };
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await Promise.all([writeFile(join(unitDirectory, `${unitNumber.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8"), writeFile(join(assetDirectory, "C4.2-step2q.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8")]);

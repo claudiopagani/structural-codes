@@ -5,11 +5,7 @@ import { join } from "node:path";
 
 type UnitRecord = {
     numbering: { official: string };
-    workflow: {
-        status: string;
-        reviews: Array<{ type: string; result: string; reviewer: { kind: string } }>;
-        openIssues: Array<{ severity: string }>;
-    };
+    review: { status: string };
 };
 
 async function chapterUnits(document: string, prefix: string): Promise<UnitRecord[]> {
@@ -27,9 +23,7 @@ test("NTC 4.2 e Circolare C4.2 registrano la validazione umana completa", async 
     for (const scope of scopes) {
         assert.equal(scope.units.length, scope.expected);
         for (const unit of scope.units) {
-            assert.equal(unit.workflow.status, "source-checked", unit.numbering.official);
-            assert.ok(unit.workflow.reviews.some((review) => review.type === "source" && review.result === "accepted" && review.reviewer.kind === "human"), unit.numbering.official);
-            assert.equal(unit.workflow.openIssues.some((issue) => issue.severity === "blocking"), false, unit.numbering.official);
+            assert.equal(unit.review.status, "verified", unit.numbering.official);
         }
     }
 });

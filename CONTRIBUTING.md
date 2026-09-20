@@ -93,17 +93,17 @@ Per proporre o correggere una relazione:
 Non promuovere un suggerimento numerico a relazione esplicita senza controllo
 semantico sulla fonte.
 
-## Accettazione e avanzamento del workflow
+## Accettazione e stato di verifica
 
 I maintainer controllano perimetro, fonte, diff, test e coerenza di evidence.
-Una correzione può essere accettata lasciando l'unità `extracted` e issue
-aperte: ciò rende esplicito il lavoro residuo.
+Una nuova unità resta `review.status: "draft"` finché il confronto umano con la
+fonte ufficiale non è concluso; dopo il confronto diventa `verified`.
 
-- `extracted → source-checked` richiede il controllo umano di fonte previsto;
-- `source-checked → double-reviewed` richiede una seconda review indipendente;
-- `double-reviewed → published` richiede l'inclusione nel perimetro editoriale
-  dichiarato;
-- `superseded` conserva la tracciabilità di una versione sostituita.
+- `review.status` non registra la pubblicazione del package;
+- `validity.status: "superseded"` conserva la tracciabilità di una versione
+  normativa sostituita;
+- `openIssues`, quando presente, descrive soltanto un difetto reale ancora
+  presente nel contenuto canonico.
 
 Non registrare nei file pubblici nomi reali, qualifiche o contatti dei
 revisori. Usa l'`actorId` pseudonimo previsto e conserva l'identità privata

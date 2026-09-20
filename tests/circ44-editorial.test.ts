@@ -86,8 +86,7 @@ test("C4.4.15 conserva raw corrotto e ricostruzione visiva confermata", async ()
     assert.ok(block);
     assert.match(block.text.raw, /[\u0000-\u001f]/u);
     assert.match(block.text.normalized, /d ≤ 6 mm.*d>6 mm/u);
-    assert.equal(unit.workflow.openIssues.some((issue: { issueId: string }) => issue.issueId.endsWith("-raw-glyph-corruption")), false);
-    assert.ok(unit.workflow.reviews.some((review: { reviewId: string; result: string }) => review.reviewId.endsWith("-glyph-confirmation-01") && review.result === "accepted"));
+    assert.equal(unit.review.status, "verified");
 });
 
 test("C4.4 conserva marker coerenti per elenchi descrittivi e alfabetici", async () => {

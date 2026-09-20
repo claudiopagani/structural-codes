@@ -11,8 +11,8 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc43-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
-const actorId = "codex:ntc43-step3";
+
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -82,13 +82,10 @@ function ancestors(number: string): string[] { const parts = number.split("."); 
 
 function makeUnit(number: string, title: string, kind: "section" | "subparagraph", blocks: unknown[], assets: { formulaIds: string[]; tableIds: string[]; figureIds: string[] }) {
     return {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(number), workId, expressionId, kind,
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: unitId(number), workId, expressionId, kind,
         numbering: { official: number, sortKey: number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title, titleBlockId: `${unitId(number)}#block-heading`, hierarchy: { parentId: parent(number), ancestorIds: ancestors(number), position: Number(number.split(".").at(-1)) },
         validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets,
-        workflow: { status: "extracted", createdBy: { actorId, kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [
-            { issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-            ...(assets.formulaIds.length + assets.tableIds.length + assets.figureIds.length > 0 ? [{ issueId: `ntc2018-${number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono state separate e collocate; resta obbligatoria la revisione umana puntuale sulla fonte ufficiale." }] : []),
-        ] },
+        review: { status: "draft" },
     };
 }
 
@@ -281,7 +278,7 @@ const units = [
 ];
 
 const manifest = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "4.3-step3", sourceId, status: "transcribed-unreviewed", formulas: formulaAssets, tables: [tableAsset],
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "4.3-step3", sourceId, status: "draft", formulas: formulaAssets, tables: [tableAsset],
     figures: await Promise.all(figureAssets.map(async (asset) => { const { filename, ...manifestAsset } = asset; return { ...manifestAsset, sha256: await sha256OfFile(join(figureDirectory, filename)) }; })),
 };
 

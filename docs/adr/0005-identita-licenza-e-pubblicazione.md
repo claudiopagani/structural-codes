@@ -26,6 +26,6 @@ Il repository pubblico è
 
 ## Conseguenze
 
-Il repository può restare pubblico in stato di lavoro purché disclaimer e gate
-macchina restino visibili. Le unità canoniche possono essere marcate
-`published` soltanto dopo evidence, review e integrità.
+Il repository può restare pubblico in stato alpha purché disclaimer, provenance
+e gate macchina restino visibili. La pubblicazione è una proprietà della
+release/package; non è uno stato delle unità canoniche.

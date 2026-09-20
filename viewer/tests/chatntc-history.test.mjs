@@ -11,7 +11,7 @@ const verifiedReference = { unitId, document: "ntc2018", numbering: "7.3.6.1", k
   assetId: "urn:structural-codes:it:asset:formula:ntc2018:f-1", assetNumber: "7.3.1" };
 const response = { formatVersion: 1, evidencePackageId: "package", answer: "Risposta di fixture.", classification: "direct-reference",
   claims: [{ id: "claim", text: "Test.", classification: "direct-reference", citations: [citation] }], usedEvidenceIds: [citation.evidenceId], warnings: [], needsMoreEvidence: false, externalResearchSuggested: false };
-const result = { ok: true, response, citations: [citation], evidence: { packageId: "package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "corpus-before", artifactFingerprint: "artifacts-before", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [{ code: "unreviewed-evidence", unitId }] },
+const result = { ok: true, response, citations: [citation], evidence: { packageId: "package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "corpus-before", artifactFingerprint: "artifacts-before", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
   generation: { provider: "mock", model: "mock-model", outcome: "generated" }, validation: { valid: true, scope: "integrity-provenance-claim-coverage" } };
 const turns = [{ id: "turn-1", question: "Prima domanda", timestamp, answeredAt: timestamp, status: "complete", result }];
 const messages = historyMessages(turns);

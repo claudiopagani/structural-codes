@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -103,7 +103,7 @@ const blocks63: GeneratedBlock[] = [
 function makeUnit(number: string, title: string, parentId: string | null, ancestors: string[], position: number, blocks: GeneratedBlock[], tableIds: string[]) {
   return {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(number),
     workId,
@@ -118,7 +118,7 @@ function makeUnit(number: string, title: string, parentId: string | null, ancest
     citations: [],
     relations: [],
     assets: { formulaIds: [], tableIds, figureIds: [] },
-    workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2x", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "circ2019-" + number.replaceAll(".", "-") + "-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." }, ...(tableIds.length ? [{ issueId: "circ2019-" + number.replaceAll(".", "-") + "-assets-review", type: "asset-review", severity: "blocking", note: "La tabella strutturata richiede revisione umana indipendente rispetto alla fonte." }] : [])] },
+    review: { status: "draft" },
   };
 }
 
@@ -129,7 +129,7 @@ const records = [
   makeUnit(unit63, "Verifiche di stabilità di aste presso-inflesse", uid(unitParent), [uid("C4.2"), uid("C4.2.12"), uid("C4.2.12.1"), uid(unitParent)], 3, blocks63, []),
 ];
 
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2x", sourceId, status: "transcribed-unreviewed", formulas: [], tables: [tableXX], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2x", sourceId, status: "draft", formulas: [], tables: [tableXX], figures: [] };
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await mkdir(figureDirectory, { recursive: true });

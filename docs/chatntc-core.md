@@ -136,7 +136,7 @@ warning e può richiedere più evidence o astenersi.
 - Versione e fingerprint del corpus e degli artefatti; disclaimer, stato,
   fonte ufficiale, URL di pubblicazione e hash PDF per ciascun documento.
 - Unità primarie/correlate: ID, documento, numbering ufficiale, titolo,
-  validità, workflow, risultati delle review disponibili e issue aperte.
+  validità, stato di verifica e provenance disponibile.
 - Blocchi: ID, tipo e origine; testo normalizzato con segmenti inline;
   asset strutturati; pagina PDF, regione e hash normalized quando disponibili.
 - Formule complete in LaTeX; tabelle con celle unite, matematica e note;

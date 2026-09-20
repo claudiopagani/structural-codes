@@ -10,7 +10,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 const scopedPages265To266 = process.argv.includes("--pages-265-266");
 const scopedPages267To269 = process.argv.includes("--pages-267-269");
@@ -224,15 +224,10 @@ function makeUnit(official: string, title: string, parentOfficial: string, ances
   const blocks: Block[] = [];
   const headingBlockId = addText(blocks, headingRanges[official]!, official + " " + title, "heading");
   build(blocks);
-  const assetIssues = formulaIds.length + tableIds.length > 0 ? [{
-    issueId: "circ2019-" + official.toLowerCase() + "-asset-review",
-    type: "asset-review",
-    severity: "blocking",
-    note: "Formule e tabelle devono essere sottoposte a verifica umana nel loro punto del flusso editoriale; le tabelle vanno controllate cella per cella.",
-  }] : [];
+
   const record = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: currentUnitId,
     workId: WORK_ID,
@@ -251,27 +246,7 @@ function makeUnit(official: string, title: string, parentOfficial: string, ances
     citations: [],
     relations: relation(official, headingBlockId),
     assets: { formulaIds, tableIds, figureIds: [] },
-    workflow: {
-      status: "extracted",
-      createdBy: { actorId: "generator:circ85:step2", kind: "script", toolVersion: VERSION },
-      createdAt: CREATED_AT,
-      reviews: [],
-      openIssues: [
-        {
-          issueId: "circ2019-" + official.toLowerCase() + "-source-review",
-          type: "normalization-review",
-          severity: "blocking",
-          note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-        },
-        {
-          issueId: "circ2019-" + official.toLowerCase() + "-relation",
-          type: "relation-review",
-          severity: "blocking",
-          note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
-        },
-        ...assetIssues,
-      ],
-    },
+    review: { status: "draft" },
   };
   writeFileSync(join(UNITS, official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8");
 }
@@ -491,12 +466,12 @@ makeUnit("C8.5.5.2", "COSTRUZIONI DI CALCESTRUZZO ARMATO O ACCIAIO", "C8.5.5", [
 
 const manifest = {
   $schema: "urn:structural-codes:schema:asset-manifest:v2",
-  schemaVersion: "2.0.0-alpha.1",
+  schemaVersion: "2.0.0-alpha.2",
   recordType: "asset-manifest",
   document: "circ2019",
   section: "C8.5-step2",
   sourceId: SOURCE_ID,
-  status: "transcribed-unreviewed",
+  status: "draft",
   formulas,
   tables: [table3, table4, table5, table6],
   figures: [],

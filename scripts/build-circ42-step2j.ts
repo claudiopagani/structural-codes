@@ -10,7 +10,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.3.4.8";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -98,7 +98,7 @@ const blocks: GeneratedBlock[] = [
 const parent = uid("C4.2.4.1.3.4");
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(unitNumber),
     workId,
@@ -113,33 +113,17 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: formulaRows.map((row) => formulaId(row.number)), tableIds: [], figureIds: [] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ42-step2j", kind: "automated-agent", toolVersion: profile },
-        createdAt,
-        reviews: [{
-            reviewId: "circ2019-c4-2-4-1-3-4-8-formula-confirmation-01",
-            type: "technical",
-            reviewer: { actorId: "reviewer:human:user-confirmation", kind: "human" },
-            reviewedAt: "2026-09-08T00:00:00Z",
-            result: "accepted",
-            note: "Confermate da revisore umano le formule C4.2.85–C4.2.92. Il testo ufficiale «i cui I_T» è conservato come refuso della fonte.",
-        }],
-        openIssues: [
-            { issueId: "circ2019-C4-2-4-1-3-4-8-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-            { issueId: "circ2019-C4-2-4-1-3-4-8-source-typo", type: "other", severity: "warning", note: "La Circolare stampa «i cui I_T»; il testo è conservato fedelmente. Il refuso è stato confermato nella revisione umana delle formule C4.2.85–C4.2.92." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step2j",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaRows.map((row) => ({ id: formulaId(row.number), unitId: uid(unitNumber), officialNumber: row.number, pdfPage: row.page, latex: row.latex })),
     tables: [],
     figures: [],

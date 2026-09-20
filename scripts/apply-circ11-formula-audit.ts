@@ -81,15 +81,6 @@ function installDisplayGroup(unit: any, prefixes: string[], id: string, note: st
         },
     });
     unit.assets.formulaIds = [...new Set([...unit.assets.formulaIds, id])];
-    const issueId = `${unit.numbering.official.toLowerCase().replaceAll(".", "-")}-formula-audit-review`;
-    if (!unit.workflow.openIssues.some((issue: any) => issue.issueId === issueId)) {
-        unit.workflow.openIssues.push({
-            issueId,
-            type: "asset-review",
-            severity: "blocking",
-            note: "Gruppo di disuguaglianze trascritto dal PDF ufficiale; resta richiesta la revisione umana indipendente.",
-        });
-    }
 }
 
 function installFormulaGroup(unit: any, firstPrefix: string, secondPrefix: string, id: string): void {

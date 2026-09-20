@@ -7,8 +7,8 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc77-78-editorial-profile-0.1.0";
-const actor = { actorId: "generator:ntc77-78:step2", kind: "script", toolVersion: profile };
-const createdAt = "2026-08-10T00:00:00Z";
+
+
 const unitDir = join(repoRoot, "corpus", "units", "ntc2018");
 const assetDir = join(repoRoot, "corpus", "assets", "ntc2018");
 
@@ -139,17 +139,14 @@ function accelerationLimitCell(text: string): any { return cell(text, text.repla
 function makeUnit(number: string, title: string, blocks: any[], formulas: string[] = [], tables: string[] = []): any {
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: uid(number), workId: "it-mit:dm:2018-01-17:ntc2018", expressionId: "it-mit:dm:2018-01-17:ntc2018:original-it",
         kind: kind(number), numbering: { official: number, sortKey: number.split(".").map((part) => part.padStart(3, "0")).join(".") },
         title, titleBlockId: `${uid(number)}#block-heading`, hierarchy: { parentId: parent(number), ancestorIds: ancestors(number), position: Number(number.split(".").at(-1)) },
         validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-10" },
         blocks, citations: [], relations: [], assets: { formulaIds: formulas.map(fid), tableIds: tables.map(tid), figureIds: [] },
-        workflow: { status: "extracted", createdBy: actor, createdAt, reviews: [], openIssues: [
-            { issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente." },
-            ...tables.map((table) => ({ issueId: `ntc2018-${table}-review`, type: "asset-review", severity: "blocking", note: "Tabella strutturata dal render ufficiale e da verificare umanamente cella per cella." })),
-        ] },
+        review: { status: "draft" },
     };
 }
 
@@ -194,12 +191,6 @@ add("7.7.3", "TIPOLOGIE STRUTTURALI E FATTORI DI COMPORTAMENTO", title("7.7.3", 
     p("7.7.3", "p3", 259, 25, 29, "Nella Tab. 7.3.II sono riportati, per ciascuna classe di duttilità, alcuni esempi di strutture con i valori massimi del fattore di comportamento q_0. Nel caso in cui il controventamento della struttura sia affidato a materiali diversi (calcestruzzo armato, acciaio), si deve fare riferimento ai pertinenti paragrafi della presente norma.", [q0]),
     p("7.7.3", "p4", 259, 30, 30, "."),
 ]);
-units.at(-1).workflow.openIssues.push({
-    issueId: "ntc2018-7-7-3-source-anomaly-standalone-period",
-    type: "normalization-review",
-    severity: "warning",
-    note: "La fonte ufficiale stampa un punto isolato tra l’ultimo capoverso del § 7.7.3 e il § 7.7.3.1; il segno è conservato in un blocco distinto e richiede conferma editoriale umana.",
-});
 add("7.7.3.1", "PRECISAZIONI", title("7.7.3.1", 259, 31, "7.7.3.1 PRECISAZIONI"), [
     p("7.7.3.1", "p1", 259, 32, 34, undefined, [quantity("4", "4"), quantity("6", "6"), quantity("20%", "20\\%")]),
     p("7.7.3.1", "p2", 259, 35, 36),
@@ -871,26 +862,6 @@ add("7.10.5.3.1", "Analisi lineare statica", title("7.10.5.3.1", 279, 50, "7.10.
     p("7.10.5.3.1", "p11a", 280, 82, 85, "K_xi, K_xi sono le rigidezze equivalenti del dispositivo i-esimo rispettivamente nelle direzioni x e y.", [quantity("K_xi", "K_{xi}"), variable("x"), variable("y")]),
     p("7.10.5.3.1", "p11b", 280, 86, 86),
 ], [f7101, f7102, f7103, f7104, f7105]);
-units.at(-1)!.workflow.openIssues.push(
-    {
-        issueId: "ntc2018-7-10-5-3-1-source-anomaly-k-esi-min",
-        type: "other",
-        severity: "warning",
-        note: "La fonte ufficiale stampa K_esi,min seguito da un ulteriore ‘,min’ nella definizione dopo la formula [7.10.1]; il possibile refuso è conservato nel testo normalizzato e richiede decisione editoriale umana.",
-    },
-    {
-        issueId: "ntc2018-7-10-5-3-1-source-anomaly-d-de",
-        type: "other",
-        severity: "warning",
-        note: "La frase introduttiva della formula [7.10.2] usa d_dc, mentre la formula ufficiale stampa chiaramente d_de; entrambe le grafie sono conservate e l’incoerenza richiede decisione editoriale umana.",
-    },
-    {
-        issueId: "ntc2018-7-10-5-3-1-source-anomaly-duplicated-x",
-        type: "other",
-        severity: "warning",
-        note: "Le definizioni sotto [7.10.4]–[7.10.5] stampano (x_i, x_i) e K_xi, K_xi, mentre le formule usano anche y_i e K_yi; le duplicazioni sono conservate come possibili refusi della fonte e richiedono decisione editoriale umana.",
-    },
-);
 add("7.10.5.3.2", "Analisi lineare dinamica", title("7.10.5.3.2", 280, 87, "7.10.5.3.2 Analisi lineare dinamica"), [
     mp("7.10.5.3.2", "p1", [part(280, 88, 89), part(281, 3, 8)], "Per le costruzioni con isolamento alla base l’analisi dinamica lineare è ammessa quando risulta possibile modellare elasticamente il comportamento del sistema di isolamento, nel rispetto delle condizioni di cui al § 7.10.5.2. Per il sistema complessivo, formato dalla sottostruttura, dal sistema d’isolamento e dalla sovrastruttura, si assume un comportamento elastico lineare. Qualora il sistema di isolamento non sia immediatamente al di sopra delle fondazioni, il modello deve comprendere sia la sovrastruttura sia la sottostruttura, a meno che la sottostruttura non sia assimilabile ad una struttura scatolare rigida come definita al § 7.2.1. L’analisi può essere svolta mediante analisi modale con spettro di risposta o mediante integrazione al passo delle equazioni del moto, eventualmente previo disaccoppiamento modale, considerando un numero di modi tale da portare in conto anche un’aliquota significativa della massa della sottostruttura, se inclusa nel modello."),
     p("7.10.5.3.2", "p2a", 281, 9, 15, "Nel caso si adotti l’analisi modale con spettro di risposta, questa deve essere svolta secondo quanto specificato in § 7.3.3.1, salvo diverse indicazioni fornite nel presente paragrafo. Le due componenti orizzontali dell’azione sismica si considerano in generale agenti simultaneamente, adottando, ai fini della combinazione degli effetti, le regole riportate in § 7.3.3.1. La componente verticale deve essere messa in conto nei casi previsti in § 7.2.2 e, in ogni caso, quando il rapporto tra la rigidezza verticale del sistema di isolamento K_V e la rigidezza equivalente orizzontale K_esi risulti inferiore a 800. In tali casi si avrà cura che la massa eccitata dai modi in direzione verticale considerati nell’analisi sia significativa.", [quantity("K_V", "K_V"), quantity("K_esi", "K_{esi}"), quantity("800", "800")]),
@@ -1376,8 +1347,8 @@ for (const unit of units) await writeFile(join(unitDir, `${unit.numbering.offici
 await mkdir(assetDir, { recursive: true });
 for (const formula of formulas) formula.latex = formula.latex.replaceAll("\r", "\\r");
 const manifest = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "7.7-78-step2", sourceId,
-    status: "transcribed-unreviewed", formulas, tables, figures: [{
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "7.7-78-step2", sourceId,
+    status: "draft", formulas, tables, figures: [{
         id: figid(fig791), unitId: uid("7.9.3"), officialNumber: "7.9.1", pdfPage: 270,
         caption: "Fig. 7.9.1 – Ponte obliquo", alt: "Schema di ponte obliquo con lunghezza L, larghezza B e angolo φ.",
         imagePath: "figures/ntc2018/fig7.9.1.png",

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "circ-7-2019";
 const profile = "circ44-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
 const assetDir = join(root, "corpus", "assets", "circ2019");
@@ -98,8 +98,8 @@ function blockEvidence(parts: Part[], normalized: string, manual: boolean, asset
             operation: "manual-correction",
             ruleVersion: profile,
             note: asset
-                ? "Asset in display verificato sul render ufficiale; revisione umana indipendente ancora obbligatoria."
-                : "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria.",
+                ? "Asset in display verificato sul render ufficiale."
+                : "Testo confrontato con il render ufficiale.",
         }] : transformations(source, normalized),
         rawSha256: sha256(source),
         normalizedSha256: sha256(normalized),
@@ -614,32 +614,9 @@ for (const unit of units) {
     const blocks = unit.blocks.map((block, index) => blockRecord(unit, block, index));
     const formulaIds = blocks.filter((block: any) => block.kind === "formula-ref").map((block: any) => block.assetId);
     const figureIds = blocks.filter((block: any) => block.kind === "figure-ref").map((block: any) => block.assetId);
-    const issuePrefix = "circ2019-" + unit.number.toLowerCase().replaceAll(".", "-");
-    const openIssues: any[] = [{
-        issueId: issuePrefix + "-source-review",
-        type: "normalization-review",
-        severity: "blocking",
-        note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione.",
-    }];
-    if (formulaIds.length || figureIds.length) {
-        openIssues.push({
-            issueId: issuePrefix + "-assets",
-            type: "asset-review",
-            severity: "blocking",
-            note: "Formule e figura sono state collocate nel flusso originario e trascritte dal render ufficiale; resta obbligatoria la verifica umana degli asset.",
-        });
-    }
-    const reviews = unit.number === "C4.4.15" ? [{
-        reviewId: "circ2019-c4-4-15-glyph-confirmation-01",
-        type: "editorial",
-        reviewer: { actorId: "reviewer:human:user-confirmation", kind: "human" },
-        reviewedAt: "2026-09-08T00:00:00Z",
-        result: "accepted",
-        note: "Confermata da revisore umano la ricostruzione visiva del passaggio sulle viti a pagina PDF 162: «d ≤ 6 mm» e «d>6 mm». Il raw con glifi di controllo resta conservato.",
-    }] : [];
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId: "it-mit:circ:2019-01-21:7-csllpp",
@@ -658,25 +635,19 @@ for (const unit of units) {
         citations: [],
         relations: [],
         assets: { formulaIds, tableIds: [], figureIds },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "codex:circ44-step1", kind: "automated-agent", toolVersion: profile },
-            createdAt,
-        reviews,
-            openIssues,
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(unitDir, unit.number.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.4-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas,
     tables: [],
     figures: [figureAsset],

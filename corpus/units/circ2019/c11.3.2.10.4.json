@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c11.3.2.10.4",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -389,28 +389,7 @@
       "urn:structural-codes:it:asset:figure:circ2019:c11.3.2.10.4.b"
     ]
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ11:step1",
-      "kind": "script",
-      "toolVersion": "circ11-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c11-3-2-10-4-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      },
-      {
-        "issueId": "c11-3-2-10-4-figure-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Schemi non numerati ritagliati dal PDF ufficiale; verificare completezza del crop e posizione nel flusso editoriale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

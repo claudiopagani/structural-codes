@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "circ-7-2019";
 const profile = "circ5-manual-render-transcription-0.1.0";
-const createdAt = "2026-08-09T12:00:00Z";
+
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
 const assetDir = join(root, "corpus", "assets", "circ2019");
@@ -385,22 +385,18 @@ function unitRecord(unit: UnitSpec): any {
     const formulaIds = blocks.filter((block: any) => block.kind === "formula-ref").map((block: any) => block.assetId);
     const tableIds = blocks.filter((block: any) => block.kind === "table-ref").map((block: any) => block.assetId);
     const figureIds = blocks.filter((block: any) => block.kind === "figure-ref").map((block: any) => block.assetId);
-    const suffix = unit.number.toLowerCase().replaceAll(".", "-");
+
     const ntcTarget = join(root, "corpus", "units", "ntc2018", `${unit.number.slice(1)}.json`);
     const relations = existsSync(ntcTarget) ? [{ relationId: `${id}#relation-001`, type: "clarifies", targetUnitId: `urn:structural-codes:it:unit:ntc2018:${unit.number.slice(1)}`, basis: "editorial", evidenceBlockIds: [`${id}#block-heading`], rationale: "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.", review: { status: "proposed", reviewedBy: null, reviewedAt: null } }] : [];
     return {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id,
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id,
         workId: "it-mit:circ:2019-01-21:7-csllpp", expressionId: "it-mit:circ:2019-01-21:7-csllpp:original-it", kind: kind(unit.number),
         numbering: { official: unit.number, sortKey: parts.map((part) => part.padStart(3, "0")).join(".") }, title: unit.title,
         titleBlockId: `${id}#block-heading`, hierarchy: { parentId: ancestors.at(-1) ?? null, ancestorIds: ancestors, position: Number(parts.at(-1)) },
         validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks, citations: [],
         relations,
         assets: { formulaIds, tableIds, figureIds },
-        workflow: { status: "extracted", createdBy: { actorId: "generator:circ5", kind: "script", toolVersion: profile }, createdAt, reviews: [], openIssues: [
-            { issueId: `circ2019-${suffix}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione." },
-            ...(relations.length ? [{ issueId: `circ2019-${suffix}-relation`, type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." }] : []),
-            ...(formulaIds.length || tableIds.length || figureIds.length ? [{ issueId: `circ2019-${suffix}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabella e figure sono state collocate nel flusso originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." }] : []),
-        ] },
+        review: { status: "draft" },
     };
 }
 
@@ -461,6 +457,6 @@ const manifests = [
     { section: "C5-step2", filename: "C5-step2.json", formulas, tables: [tableAsset], figures: figures.slice(0, 2) },
     { section: "C5-step3", filename: "C5-step3.json", formulas: [], tables: [], figures: figures.slice(2) },
 ];
-for (const manifest of manifests) await writeFile(join(assetDir, manifest.filename), `${JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: manifest.section, sourceId, status: "transcribed-unreviewed", formulas: manifest.formulas, tables: manifest.tables, figures: manifest.figures }, null, 2)}\n`, "utf8");
+for (const manifest of manifests) await writeFile(join(assetDir, manifest.filename), `${JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: manifest.section, sourceId, status: "draft", formulas: manifest.formulas, tables: manifest.tables, figures: manifest.figures }, null, 2)}\n`, "utf8");
 
 console.log(`circ5: generated ${units.length} units, ${formulas.length} formulas, 1 table and ${figures.length} figures`);

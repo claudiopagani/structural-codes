@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:4.5.3",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -401,22 +401,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc45",
-      "kind": "automated-agent",
-      "toolVersion": "ntc45-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-4-5-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

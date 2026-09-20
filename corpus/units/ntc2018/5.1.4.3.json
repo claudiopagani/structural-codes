@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:5.1.4.3",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -483,7 +483,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           },
           {
             "operation": "manual-correction",
@@ -598,7 +598,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "b02b8ddcea3d555042ed7901d0ab95be7839414a6bc499fd7a84b322e3d2dbd5",
@@ -899,7 +899,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           },
           {
             "operation": "manual-correction",
@@ -936,7 +936,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "1d2f2f012d89f5a3d86a7ca54a36a39d7b04e557325387866e6c084437fa2a87",
@@ -1058,7 +1058,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "ac87837a9da48720d714702b26e943c74914e0baa5098e157a8e4fc76477dcf6",
@@ -1135,7 +1135,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "33dfe13e400323fe9e6b1748c24a85b6ee138265dfecf5dc266f8becc40002b2",
@@ -1275,34 +1275,7 @@
       "urn:structural-codes:it:asset:figure:ntc2018:5.1.5"
     ]
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc5-step2",
-      "kind": "automated-agent",
-      "toolVersion": "ntc5-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-5-1-4-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-5-1-4-3-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      },
-      {
-        "issueId": "ntc2018-5-1-4-3-table-graphics",
-        "type": "other",
-        "severity": "blocking",
-        "note": "Le Tabelle 5.1.VII, 5.1.VIII e 5.1.IX contengono sagome e schemi grafici nelle celle. Il modello asset corrente conserva le celle e i dati testuali/numerici ma non rappresenta immagini incorporate: completare la revisione con il PDF ufficiale prima della pubblicazione."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

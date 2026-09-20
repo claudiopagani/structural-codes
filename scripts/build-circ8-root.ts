@@ -62,7 +62,7 @@ const introductoryParagraphs = [
 
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id,
     workId,
@@ -77,15 +77,7 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: [], tableIds: [], figureIds: [] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ8:root", kind: "automated-agent", toolVersion: profile },
-        createdAt: "2026-08-10T00:00:00Z",
-        reviews: [],
-        openIssues: [
-            { issueId: "circ2019-c8-source-review", type: "normalization-review", severity: "blocking", note: "Titolo e introduzione confrontati con il render ufficiale; la revisione umana indipendente resta obbligatoria prima della pubblicazione." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 await mkdir(unitDirectory, { recursive: true });

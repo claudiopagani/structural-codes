@@ -10,7 +10,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ7-manual-render-transcription-0.2.0";
-const createdAt = "2026-08-23T00:00:00Z";
+
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type TextKind = "heading" | "paragraph" | "list-item" | "footnote";
 type TextSpec = { kind: TextKind; page: number; text: string };
@@ -99,9 +99,9 @@ function makeRecord(number: string, title: string, specs: readonly Spec[]) {
     const id = uid(number);
     const blocks = specs.map((spec, index) => index === 0 && spec.kind === "heading" ? { ...block(id, spec, index), blockId: `${id}#block-heading` } : block(id, spec, index));
     const parts = number.slice(1).split(".").map(Number);
-    const lower = number.toLowerCase();
+
     return {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id, workId, expressionId,
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id, workId, expressionId,
         kind: parts.length === 1 ? "section" : parts.length === 2 ? "paragraph" : "subparagraph",
         numbering: { official: number, sortKey: parts.map((part) => String(part).padStart(3, "0")).join(".") }, title, titleBlockId: `${id}#block-heading`,
         hierarchy: { parentId: parent(number), ancestorIds: ancestors(number), position: parts.at(-1) }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-23" }, blocks, citations: [], relations: [],
@@ -110,10 +110,7 @@ function makeRecord(number: string, title: string, specs: readonly Spec[]) {
             tableIds: blocks.filter(({ kind }) => kind === "table-ref").map(({ assetId }: any) => assetId),
             figureIds: blocks.filter(({ kind }) => kind === "figure-ref").map(({ assetId }: any) => assetId),
         },
-        workflow: { status: "extracted", createdBy: { actorId: "generator:circ7:step2", kind: "script", toolVersion: profile }, createdAt, reviews: [], openIssues: [
-            { issueId: `circ2019-${lower.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente." },
-            { issueId: `circ2019-${lower.replaceAll(".", "-")}-missing-text-layer`, type: "missing-region", severity: "blocking", note: "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF." },
-        ] },
+        review: { status: "draft" },
     };
 }
 
@@ -310,8 +307,8 @@ const units = [
 await appendC726();
 for (const [number, title, specs] of units) await writeFile(join(unitsPath, `${number.toLowerCase()}.json`), `${JSON.stringify(makeRecord(number, title, specs), null, 2)}\n`, "utf8");
 const manifest = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C7.3", sourceId,
-    status: "transcribed-unreviewed",
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C7.3", sourceId,
+    status: "draft",
     formulas: formulas.map(([number, unit, page, latex]) => ({ id: aid("formula", number), unitId: uid(unit), officialNumber: number, pdfPage: page, latex })),
     tables: [c736Table],
     figures: figures.map(([number, unit, page, caption, box]) => ({ id: aid("figure", number), unitId: uid(unit), officialNumber: number, pdfPage: page, caption, alt: caption, imagePath: `figures/circ2019/fig${number.toLowerCase()}.png`, region: reg(box[0], box[1], box[2] - box[0], box[3] - box[1]), sha256: "0".repeat(64) })),

@@ -101,20 +101,7 @@ test("NTC 2.2.4 usa la À maiuscola e 2.4.1 rende P_N in LaTeX", async () => {
 
 test("NTC 4.1 risulta verificato da umano", async () => {
     const unit = await json<{
-        workflow: {
-            status: string;
-            reviews: Array<{ reviewer?: { kind?: string }; result?: string }>;
-            openIssues: unknown[];
-        };
+        review: { status: string };
     }>("corpus/units/ntc2018/4.1.json");
-    assert.equal(unit.workflow.status, "source-checked");
-    assert.equal(
-        unit.workflow.reviews.some(
-            (review) =>
-                review.reviewer?.kind === "human" &&
-                review.result === "accepted",
-        ),
-        true,
-    );
-    assert.deepEqual(unit.workflow.openIssues, []);
+    assert.equal(unit.review.status, "verified");
 });

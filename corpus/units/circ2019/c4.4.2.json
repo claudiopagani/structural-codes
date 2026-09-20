@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c4.4.2",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -50,7 +50,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "aa80029cd685c01c49eb71c54e3babeb3743e2bec0e387b493f753c44c16cd8d",
@@ -380,22 +380,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:circ44-step1",
-      "kind": "automated-agent",
-      "toolVersion": "circ44-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c4-4-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

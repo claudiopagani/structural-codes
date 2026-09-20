@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -121,7 +121,7 @@ const blocks711: GeneratedBlock[] = [
 function makeUnit(number: string, title: string, parentId: string | null, ancestors: string[], position: number, blocks: GeneratedBlock[], formulaIds: string[], figureIds: string[]) {
   return {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(number),
     workId,
@@ -136,7 +136,7 @@ function makeUnit(number: string, title: string, parentId: string | null, ancest
     citations: [],
     relations: [],
     assets: { formulaIds, tableIds: [], figureIds },
-    workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2y", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "circ2019-" + number.replaceAll(".", "-") + "-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." }, ...((formulaIds.length || figureIds.length) ? [{ issueId: "circ2019-" + number.replaceAll(".", "-") + "-assets-review", type: "asset-review", severity: "blocking", note: "Formule e figure del blocco richiedono revisione umana indipendente." }] : [])] },
+    review: { status: "draft" },
   };
 }
 
@@ -148,12 +148,12 @@ const records = [
 ];
 const manifest = {
   $schema: "urn:structural-codes:schema:asset-manifest:v2",
-  schemaVersion: "2.0.0-alpha.1",
+  schemaVersion: "2.0.0-alpha.2",
   recordType: "asset-manifest",
   document: "circ2019",
   section: "C4.2-step2y",
   sourceId,
-  status: "transcribed-unreviewed",
+  status: "draft",
   formulas: formulaRows.map((formula) => ({ id: formulaId(formula.number), unitId: uid(formula.number === formula126.number ? unit7 : unit711), officialNumber: formula.number, pdfPage: formula.page, latex: formula.latex })),
   tables: [],
   figures: [

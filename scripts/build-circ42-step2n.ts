@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.4.2";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -101,7 +101,7 @@ const blocks: GeneratedBlock[] = [
 const parent = uid("C4.2.4.1.4");
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(unitNumber),
     workId,
@@ -116,26 +116,17 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: [formulaId(formula93.number)], tableIds: [], figureIds: [figure19, figure20] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ42-step2n", kind: "automated-agent", toolVersion: profile },
-        createdAt,
-        reviews: [],
-        openIssues: [
-            { issueId: "circ2019-C4-2-4-1-4-2-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." },
-            { issueId: "circ2019-C4-2-4-1-4-2-assets-review", type: "asset-review", severity: "blocking", note: "Le figure C4.2.19–C4.2.20 e la formula C4.2.93 sono ritagli/trascrizioni dalla fonte e richiedono revisione umana indipendente." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step2n",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [{ id: formulaId(formula93.number), unitId: uid(unitNumber), officialNumber: formula93.number, pdfPage: formula93.page, latex: formula93.latex }],
     tables: [],
     figures: [

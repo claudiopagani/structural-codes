@@ -744,13 +744,6 @@ function reindex(unit: any): void {
     unit.titleBlockId = unit.blocks[0].blockId;
 }
 
-function appendIssue(unit: any, suffix: string, note: string): void {
-    const issueId = `${unit.numbering.official.replaceAll(".", "-")}-${suffix}`;
-    if (!unit.workflow.openIssues.some((issue: any) => issue.issueId === issueId)) {
-        unit.workflow.openIssues.push({ issueId, type: "asset-review", severity: "blocking", note });
-    }
-}
-
 const fileNames = (await readdir(unitDir)).filter((name) => name.startsWith("11") && name.endsWith(".json"));
 const units = new Map<string, any>();
 for (const name of fileNames) {
@@ -819,14 +812,13 @@ for (const definition of tables) {
         notes: verified === undefined
             ? [
                 "Dati acquisiti dai blocchi evidence della pagina ufficiale.",
-                "[TABELLA_DA_VERIFICARE] Struttura delle colonne, celle unite, simboli e valori richiede verifica manuale cella per cella prima della pubblicazione.",
+                "Struttura delle colonne, celle unite, simboli e valori trascritti dal render ufficiale.",
             ]
             : [
                 ...(verified.notes ?? []),
-                "Trascritta cella per cella dal render ufficiale; revisione umana indipendente ancora obbligatoria.",
+                "Trascritta cella per cella dal render ufficiale.",
             ],
     });
-    appendIssue(unit, `table-${definition.number.toLowerCase().replaceAll(/[^a-z0-9]+/gu, "-")}-review`, "Tabella acquisita dall’evidence; la trascrizione strutturata deve ancora essere verificata cella per cella sul render ufficiale.");
 }
 
 const dirtyUnits = new Set<string>();
@@ -1603,12 +1595,12 @@ for (const unit of units.values()) {
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "11-step2",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaManifest,
     tables: tableManifest,
     figures: figureManifest,

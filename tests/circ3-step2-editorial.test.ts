@@ -232,13 +232,6 @@ test("C3.3.8.1.3 conserva il raw completo dei capoversi", async () => {
     assert.match(paragraphs[0].text.raw, /elemento strutturale considerato\.$/u);
     assert.match(paragraphs[1].text.raw, /Tabella C3\.3\.VI\.$/u);
     assert.match(paragraphs[2].text.raw, /minimo fra b e 2h\.$/u);
-    assert.equal(
-        unit.workflow.openIssues.some(
-            ({ issueId }: { issueId: string }) =>
-                issueId === "circ2019-c3-3-8-1-3-evidence-page-span",
-        ),
-        false,
-    );
 });
 
 test("C3 step 2 rende in LaTeX grandezze, angoli e formule inline", async () => {

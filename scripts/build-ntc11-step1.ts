@@ -414,7 +414,7 @@ const tableSeeds: any[] = [
             [tableCell("(N° prelievi: 3)"), tableCell("(N° prelievi ≥ 15)")],
         ], notes: [
             "Ove: Rcm28 = resistenza media dei prelievi (N/mm²); Rc,min = minore valore di resistenza dei prelievi (N/mm²); s = scarto quadratico medio.",
-            "Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria.",
+            "Trascritta dal render della pagina ufficiale.",
         ],
     },
     {
@@ -423,7 +423,7 @@ const tableSeeds: any[] = [
         caption: "Tab. 11.2.II", columnCount: 3,
         headers: [[tableCell("Specifica Tecnica Europea armonizzata di riferimento"), tableCell("Uso Previsto"), tableCell("Sistema di Valutazione e Verifica della Costanza della Prestazione")]],
         rows: [[tableCell("Aggregati per calcestruzzo UNI EN 12620 e UNI EN 13055-1"), tableCell("Calcestruzzo strutturale"), tableCell("2 +", { latex: "2+" })]],
-        notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
+        notes: ["Trascritta dal render della pagina ufficiale."],
     },
     {
         id: "urn:structural-codes:it:asset:table:ntc2018:11.2.iii",
@@ -437,7 +437,7 @@ const tableSeeds: any[] = [
             [tableCell("≤ C45/55", { latex: "\\le\\mathrm{C45/55}" }), tableCell("≤ 20%", { latex: "\\le20\\%" })],
             [tableCell("Riutilizzo di calcestruzzo interno negli stabilimenti di prefabbricazione qualificati - da qualsiasi classe", { rowSpan: 2 }), tableCell("Classe minore del calcestruzzo di origine"), tableCell("fino al 15%")],
             [tableCell("Stessa classe del calcestruzzo di origine"), tableCell("fino al 10%")],
-        ], notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
+        ], notes: ["Trascritta dal render della pagina ufficiale."],
     },
     {
         id: "urn:structural-codes:it:asset:table:ntc2018:11.2.iv",
@@ -451,7 +451,7 @@ const tableSeeds: any[] = [
             [tableCell("Tenore di solfati e zolfo")],
             [tableCell("Dimensione per il filler")],
             [tableCell("Resistenza alla frammentazione/frantumazione (per calcestruzzo Rck ≥ C50/60 e aggregato proveniente da riciclo)")],
-        ], notes: ["Trascritta dal render della pagina ufficiale; revisione umana ancora obbligatoria."],
+        ], notes: ["Trascritta dal render della pagina ufficiale."],
     },
 ];
 
@@ -634,7 +634,7 @@ for (let index = 0; index < starts.length; index += 1) {
         : numberParts.slice(0, -1).map((_, ancestorIndex) => idFor(numberParts.slice(0, ancestorIndex + 1).join(".")));
     generatedUnits.push({
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: idFor(current.spec.number),
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -653,13 +653,7 @@ for (let index = 0; index < starts.length; index += 1) {
             tableIds: built.assetIds.filter((id) => id.includes(":table:")),
             figureIds: [],
         },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:ntc11:step1", kind: "script", toolVersion: profile },
-            createdAt: "2026-08-09T00:00:00Z",
-            reviews: [],
-            openIssues: [{ issueId: `ntc2018-11-${current.spec.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione." }],
-        },
+        review: { status: "draft" },
     });
 }
 
@@ -788,12 +782,12 @@ for (const unit of generatedUnits) {
 }
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "11-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaSeeds,
     tables: tableSeeds,
     figures: [],

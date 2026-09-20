@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.4.4";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -86,7 +86,7 @@ const blocks: GeneratedBlock[] = [
 const parent = uid("C4.2.4.1.4");
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(unitNumber),
     workId,
@@ -101,26 +101,17 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: [formulaId(formula98.number)], tableIds: [], figureIds: [figure24] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ42-step2p", kind: "automated-agent", toolVersion: profile },
-        createdAt,
-        reviews: [],
-        openIssues: [
-            { issueId: "circ2019-C4-2-4-1-4-4-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render della pagina fonte." },
-            { issueId: "circ2019-C4-2-4-1-4-4-assets-review", type: "asset-review", severity: "blocking", note: "La formula C4.2.98 e la Figura C4.2.24 richiedono revisione umana indipendente." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step2p",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [{ id: formulaId(formula98.number), unitId: uid(unitNumber), officialNumber: formula98.number, pdfPage: formula98.page, latex: formula98.latex }],
     tables: [],
     figures: [{ id: figure24, unitId: uid(unitNumber), officialNumber: "C4.2.24", pdfPage: 133, caption: "Figura C4.2.24 – Curva S-N per connettori a piolo", alt: "Curva S-N per connettori a piolo", imagePath: "figures/circ2019/figc4.2.24.png", region: figure24Region, sha256: "16b5f5fc35e165711ce0de9b6de624dbe6a3c700095371d26005c1b99c07bb70" }],

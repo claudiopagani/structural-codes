@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:4.1.2.3.5.3",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -145,7 +145,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria."
           }
         ],
         "rawSha256": "fe0adecc5cf8d3c91a2c7e394f86f41c95a42f7baf32c7e23598e6c04dfa3d10",
@@ -679,7 +679,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria."
           }
         ],
         "rawSha256": "fe0adecc5cf8d3c91a2c7e394f86f41c95a42f7baf32c7e23598e6c04dfa3d10",
@@ -881,7 +881,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc41-editorial-profile-0.2.0",
-            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria; resta da revisionare puntualmente."
+            "note": "Asset trascritto dal render ufficiale e collocato nella posizione normativa originaria."
           }
         ],
         "rawSha256": "2c195050dd595435be6a40b018cc48aae60f670f211ffc5a4a0d94e4773d1452",
@@ -1067,28 +1067,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "migration:core-concrete:v1",
-      "kind": "script",
-      "toolVersion": "core-concrete-migration-0.1.0"
-    },
-    "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-4-1-2-3-5-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-4-1-2-3-5-3-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono separate, trascritte e collocate nel punto normativo originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

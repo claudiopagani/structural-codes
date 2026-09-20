@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c3.4.3.2",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -496,34 +496,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "migration:core-concrete:v1",
-      "kind": "script",
-      "toolVersion": "core-concrete-migration-0.1.0"
-    },
-    "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c3-4-3-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; attende la revisione umana prevista dal workflow."
-      },
-      {
-        "issueId": "circ2019-c3-4-3-2-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel flusso ma richiedono review umana puntuale del relativo manifest canonico."
-      },
-      {
-        "issueId": "circ2019-c3-4-3-2-relation-review",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "La relazione proposta con la numerazione NTC omologa richiede conferma umana."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

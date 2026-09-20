@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c4.4.15",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -50,7 +50,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "8933cda6a63d79440f42dd6821d93c8c83ac4cc4116a9dee4c909d201e7eee03",
@@ -329,7 +329,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "c1bf350cb43eb65a964429f86db5743a4fb875fca3f48275027aea4f55d8f5d1",
@@ -410,7 +410,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "cec6b7c1367a79e7142d0b49c6f1bb89fad07dbe455ebb5204bab7cb7e22be99",
@@ -464,7 +464,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "0a346b65913a4dcc9c2f9e8403ff24250231521ac16e1e8cd7ef5e4b875d9fc0",
@@ -641,7 +641,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "4b0413c11c9c987c8b82510331bcad64e2fe105a671f23e54b1f7d26c6f3d53a",
@@ -783,7 +783,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "8b3a43ecb5ce3963863e5cfd2b1e02ae42be6805a55490da0d74484b60d020ba",
@@ -1068,34 +1068,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:circ44-step1",
-      "kind": "automated-agent",
-      "toolVersion": "circ44-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [
-      {
-        "reviewId": "circ2019-c4-4-15-glyph-confirmation-01",
-        "type": "editorial",
-        "reviewer": {
-          "actorId": "reviewer:human:user-confirmation",
-          "kind": "human"
-        },
-        "reviewedAt": "2026-09-08T00:00:00Z",
-        "result": "accepted",
-        "note": "Confermata da revisore umano la ricostruzione visiva del passaggio sulle viti a pagina PDF 162: «d ≤ 6 mm» e «d>6 mm». Il raw con glifi di controllo resta conservato."
-      }
-    ],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c4-4-15-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

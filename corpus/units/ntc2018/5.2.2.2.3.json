@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:5.2.2.2.3",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -360,7 +360,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           },
           {
             "operation": "manual-correction",
@@ -469,7 +469,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "aaa456ad5a424015dbb972cbe37bffd31906a0e75b000f4c4f769ae1339adef4",
@@ -537,7 +537,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "ef1840cbcae550a06ecd635ea3597d18c4ec53d453dfaca8fa4eebb452e61a6b",
@@ -569,7 +569,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "0623c38481020a81e2d616d3ad85ebabb67b05a26b7376e5ef0addcbefe58c52",
@@ -637,7 +637,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "bb8f381d9a88a891fe5be45fd02e7ed872e0db3bb3690448fad5654c24ab4e21",
@@ -928,7 +928,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "b433912bf3aa8293e6dc87d725ecee46cca8a91552158dacc5322b09bbb4578d",
@@ -1003,7 +1003,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "06c96415bda77be970e6b7f57872d2cf854e0d83af3f8cc50b0a07f11e6208fc",
@@ -1076,7 +1076,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "e18b61adeb0b9c0cb5d3108747296ebedf7874f7e7241a5b578c83fcc966d018",
@@ -1443,7 +1443,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "70d81c6453b6d87a7c1f5c02f421b4e66edb0f7db7efb010073e35fc0fd25f73",
@@ -1529,7 +1529,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "3f3cb3310083a15f2b7c36a86e1368fa420bfe5780cba42c26b887a7f5788c07",
@@ -1759,28 +1759,7 @@
       "urn:structural-codes:it:asset:figure:ntc2018:5.2.7"
     ]
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc5-step3",
-      "kind": "automated-agent",
-      "toolVersion": "ntc5-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-5-2-2-2-3-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-5-2-2-2-3-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

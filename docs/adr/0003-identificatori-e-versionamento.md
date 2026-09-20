@@ -48,7 +48,8 @@ La validità del contenuto è distinta dalla versione dello schema:
 - `validity.from` e `validity.to` descrivono l'intervallo giuridico;
 - `validity.asOf` dichiara la data fino alla quale la valutazione è stata
   effettuata;
-- `workflow.status` descrive la maturità editoriale;
+- `review.status` descrive soltanto la verifica del contenuto (`draft` o
+  `verified`);
 - `schemaVersion` descrive il contratto dati.
 
 Un cambio di testo o validità crea una nuova espressione o un nuovo record

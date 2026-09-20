@@ -11,7 +11,7 @@ const sourcePages = { from: 314, to: 341 };
 const evidenceDir = join(repoRoot, "evidence", sourceId, "pages");
 const unitDir = join(repoRoot, "corpus", "units", "circ2019");
 const assetDir = join(repoRoot, "corpus", "assets", "circ2019");
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Line = {
     page: number;
@@ -334,12 +334,12 @@ for (let i = 0; i < starts.length; i += 1) {
     const blocks = [heading, ...blocksFor(startIndex, endIndex, current.number).map((block, index) => ({ ...block, blockId: `${idFor(current.number)}#block-${String(index + 1).padStart(3, "0")}` }))];
     const parentNumber = numberParts.length === 1 ? null : `C${numberParts.slice(0, -1).join(".")}`;
     generated.push({
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: idFor(current.number),
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: idFor(current.number),
         workId: "it-mit:circ:2019-01-21:7-csllpp", expressionId: "it-mit:circ:2019-01-21:7-csllpp:original-it", kind: numberParts.length === 1 ? "chapter" : numberParts.length === 2 ? "section" : "subparagraph",
         numbering: { official: current.number, sortKey: sortKey(current.number) }, title, titleBlockId: heading.blockId,
         hierarchy: { parentId: parentNumber ? idFor(parentNumber) : null, ancestorIds: numberParts.length === 1 ? [] : numberParts.slice(0, -1).map((_, index) => idFor(`C${numberParts.slice(0, index + 1).join(".")}`)), position: 1 },
         validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: { status: "extracted", createdBy: { actorId: "generator:circ11:step1", kind: "script", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: `circ2019-${current.number.toLowerCase().replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione." }] },
+        review: { status: "draft" },
     });
 }
 
@@ -350,6 +350,6 @@ await mkdir(unitDir, { recursive: true });
 await mkdir(assetDir, { recursive: true });
 for (const unit of generated) await writeFile(join(unitDir, `${unit.numbering.official.toLowerCase()}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8");
 
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C11-step1", sourceId, status: "transcribed-unreviewed", formulas: [], tables: [], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C11-step1", sourceId, status: "draft", formulas: [], tables: [], figures: [] };
 await writeFile(join(assetDir, "C11-step1.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`circ11-step1: generated ${generated.length} units`);

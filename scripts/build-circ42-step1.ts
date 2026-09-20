@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -103,7 +103,7 @@ function makeUnit(number: string, title: string, blocks: GeneratedBlock[], formu
     const kind = number === "C4.2" ? "section" : "subparagraph";
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: uid(number),
         workId,
@@ -118,16 +118,7 @@ function makeUnit(number: string, title: string, blocks: GeneratedBlock[], formu
         citations: [],
         relations: relationless.has(number) ? [] : relation(number),
         assets: { formulaIds: formulas.map(formulaId), tableIds: tables.map(tableId), figureIds: figures.map(figureId) },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "codex:circ42-step1", kind: "automated-agent", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                { issueId: `circ2019-${number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-                ...(tables.length || figures.length ? [{ issueId: `circ2019-${number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Tabelle e figure sono strutturate o ritagliate dalla fonte; resta obbligatoria la revisione umana indipendente." }] : []),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -182,9 +173,9 @@ const tableI = {
         [{ text: "c", inline: [math("c", "c")], align: "center" }, { text: "1/200", align: "center" }, { text: "1/150", align: "center" }],
         [{ text: "d", inline: [math("d", "d")], align: "center" }, { text: "1/150", align: "center" }, { text: "1/100", align: "center" }],
     ],
-    notes: ["La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale e0/L; la trascrizione tabellare richiede verifica umana cella per cella.", "La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio d’inerzia minimo del singolo profilo costituente l’asta."],
+    notes: ["La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale e0/L.", "La distanza è misurata tra i centri di due collegamenti successivi e imin è il raggio d’inerzia minimo del singolo profilo costituente l’asta."],
     notesInline: [
-        [text("La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale "), math("e0/L", "e_0/L"), text("; la trascrizione tabellare richiede verifica umana cella per cella.")],
+        [text("La prima colonna contiene lo schema grafico ufficiale dell’imperfezione locale "), math("e0/L", "e_0/L"), text(".")],
         [text("La distanza è misurata tra i centri di due collegamenti successivi e "), math("imin", "i_{min}"), text(" è il raggio d’inerzia minimo del singolo profilo costituente l’asta.")],
     ],
 };
@@ -392,12 +383,12 @@ const figureManifest = figureRows.map((row) => ({
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaRows.map((row) => ({ id: formulaId(row.number), unitId: uid(row.unit), officialNumber: row.number.startsWith("C4.2.") && !row.number.includes("-") ? row.number : null, pdfPage: row.page, latex: row.latex })),
     tables: [tableI],
     figures: figureManifest,

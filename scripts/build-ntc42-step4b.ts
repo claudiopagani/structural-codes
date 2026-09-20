@@ -12,7 +12,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Opt = { page: number; printedPage: string; wrap?: boolean; discretionaryHyphen?: boolean; manual?: boolean };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -44,13 +44,13 @@ function formula(n: string, number: string, o: Opt, region: Region) {
     return { blockId: uid(n) + "#block-formula-" + number.replaceAll(".", "-"), kind: "formula-ref", origin: "official", assetId: fid(number), evidence: { ...evidence({ ...o, manual: true }, region, "[" + number + "]", "[" + number + "]"), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: profile } } };
 }
 function tableBlock(n: string, number: string, o: Opt, region: Region) {
-    const note = "Tabella strutturata dal render ufficiale; revisione umana cella per cella e schema per schema ancora obbligatoria.";
+    const note = "Tabella strutturata dal render ufficiale.";
     return { blockId: uid(n) + "#block-table-" + number.replaceAll(".", "-"), kind: "table-ref", origin: "official", assetId: tid(number), evidence: { ...evidence({ ...o, manual: true }, region, note, note), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: profile } } };
 }
 function parent(n: string) { const a = n.split("."); return a.length === 1 ? null : uid(a.slice(0, -1).join(".")); }
 function ancestors(n: string) { const a = n.split("."); return a.slice(1).map((_, i) => uid(a.slice(0, i + 1).join("."))); }
 function unit(n: string, title: string, blocks: unknown[], formulas: string[] = [], tables: string[] = []) {
-    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: uid(n), workId, expressionId, kind: "subparagraph", numbering: { official: n, sortKey: n.split(".").map((x) => x.padStart(3, "0")).join(".") }, title, titleBlockId: uid(n) + "#block-heading", hierarchy: { parentId: parent(n), ancestorIds: ancestors(n), position: Number(n.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: formulas.map(fid), tableIds: tables.map(tid), figureIds: [] }, workflow: { status: "extracted", createdBy: { actorId: "codex:ntc42-step4b", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "ntc2018-" + n.replaceAll(".", "-") + "-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }, ...tables.map(() => ({ issueId: "ntc2018-" + n.replaceAll(".", "-") + "-assets", type: "asset-review", severity: "blocking", note: "La tabella contiene schemi grafici descritti testualmente e richiede revisione visuale puntuale." }))] } };
+    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: uid(n), workId, expressionId, kind: "subparagraph", numbering: { official: n, sortKey: n.split(".").map((x) => x.padStart(3, "0")).join(".") }, title, titleBlockId: uid(n) + "#block-heading", hierarchy: { parentId: parent(n), ancestorIds: ancestors(n), position: Number(n.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: formulas.map(fid), tableIds: tables.map(tid), figureIds: [] }, review: { status: "draft" } };
 }
 
 const formulaRows = [
@@ -280,7 +280,7 @@ const units = [
 ];
 const targetUnits = units.filter((record) => record.numbering.official === "4.2.4.1.3.1");
 
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "4.2-step4b", sourceId, status: "transcribed-unreviewed", formulas: formulaRows.map(([n, u, page, latex]) => ({ id: f(n), unitId: uid(u), officialNumber: n, pdfPage: page, latex })), tables: [tableVIII, tableIXa, tableIXb], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "4.2-step4b", sourceId, status: "draft", formulas: formulaRows.map(([n, u, page, latex]) => ({ id: f(n), unitId: uid(u), officialNumber: n, pdfPage: page, latex })), tables: [tableVIII, tableIXa, tableIXb], figures: [] };
 await mkdir(unitDir, { recursive: true });
 await mkdir(assetDir, { recursive: true });
 await mkdir(figureDir, { recursive: true });

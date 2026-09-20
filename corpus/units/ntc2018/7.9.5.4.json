@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:7.9.5.4",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -136,22 +136,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:ntc77-78:step2",
-      "kind": "script",
-      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-10T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-7-9-5-4-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

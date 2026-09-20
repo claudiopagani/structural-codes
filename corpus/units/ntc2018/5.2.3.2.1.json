@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.1",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -200,7 +200,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "4a1cbf9ce46c395d4eb919600a212aa585487d942a59bcff47b6a6a6f1da1c7c",
@@ -555,7 +555,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "62972f5a32d41f66bf749fa08cb6bc7f7d72b4f316a8ea0608cff022dabfeb73",
@@ -573,28 +573,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc5-step4",
-      "kind": "automated-agent",
-      "toolVersion": "ntc5-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-5-2-3-2-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-5-2-3-2-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

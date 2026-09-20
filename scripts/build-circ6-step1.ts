@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "circ-7-2019";
 const profile = "circ6-manual-render-transcription-0.1.0";
-const createdAt = "2026-08-09T12:00:00Z";
+
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
 const assetDir = join(root, "corpus", "assets", "circ2019");
@@ -414,7 +414,7 @@ const table = {
         [cell("Senza esecuzioni di fori, con strumentazione in profondità"), cell("Penetrometro sismico\nDilatometro sismico")],
         [cell("Con strumentazione in superficie"), cell("Prove SASW o MASW\nProve di rifrazione sismica\nProve di riflessione sismica")],
     ],
-    notes: ["Trascrizione strutturata verificata sul render delle pagine PDF 179–180; revisione umana cella per cella ancora obbligatoria."],
+    notes: ["Trascrizione strutturata verificata sul render delle pagine PDF 179–180."],
 };
 
 function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
@@ -450,7 +450,7 @@ for (const unit of units) {
     const hasNtcEquivalent = !/^C6\.2\.2\.[1-5]$/u.test(unit.number);
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId: "it-mit:circ:2019-01-21:7-csllpp",
@@ -477,30 +477,19 @@ for (const unit of units) {
             review: { status: "proposed", reviewedBy: null, reviewedAt: null },
         }] : [],
         assets: { formulaIds: [], tableIds: assetIds, figureIds: [] },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:circ6:step1", kind: "script", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                { issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione." },
-                { issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-relation`, type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." },
-                ...(unit.manual ? [{ issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-missing-text-layer`, type: "missing-region", severity: "blocking", note: "Il layer testuale ufficiale delle pagine PDF 177–178 non è sufficiente; il contenuto è stato trascritto manualmente dal render ufficiale." }] : []),
-                ...(assetIds.length ? [{ issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "La tabella è stata strutturata e collocata nel flusso originario; resta obbligatorio il confronto umano cella per cella con la fonte ufficiale." }] : []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(unitDir, `${unit.number.toLowerCase()}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C6-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [],
     tables: [{ id: table.id, unitId: uid(table.unit), officialNumber: table.number, pdfPage: table.page, caption: table.caption, columnCount: table.columnCount, headers: table.headers, rows: table.rows, notes: table.notes }],
     figures: [],

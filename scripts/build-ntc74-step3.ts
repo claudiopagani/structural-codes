@@ -716,7 +716,7 @@ for (const unit of units) {
     const parts = unit.number.split(".");
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -756,34 +756,7 @@ for (const unit of units) {
             tableIds: [],
             figureIds: [],
         },
-        workflow: {
-            status: "extracted",
-            createdBy: {
-                actorId: "generator:ntc74:step3",
-                kind: "script",
-                toolVersion: profile,
-            },
-            createdAt: "2026-07-28T14:00:00Z",
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `ntc2018-${unit.number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-                },
-                ...(unit.number === "7.4.6.2.2"
-                    ? [
-                          {
-                              issueId: "ntc2018-7-4-6-2-2-source-anomaly-001",
-                              type: "other",
-                              severity: "warning",
-                              note: "La fonte ufficiale stampa letteralmente «5 6 e 8 volte» nell’ultima voce di pagina PDF 241; la sequenza è leggibile nel crop a scala 8 ed è conservata senza correzione come possibile refuso della fonte.",
-                          },
-                      ]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(
         join(output, `${unit.number}.json`),
@@ -794,12 +767,12 @@ for (const unit of units) {
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7.4-step3",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: Object.entries(formulas).map(
         ([key, [unit, officialNumber, pdfPage, latex]]) => ({
             id: f(key),

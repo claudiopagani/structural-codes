@@ -15,9 +15,9 @@ Ogni blocco con `origin: official` deve indicare:
 - trasformazioni applicate;
 - SHA-256 del payload raw e normalizzato.
 
-La regione può essere `null` durante l'acquisizione, ma è bloccante dal
-livello `source-checked`. L'assenza di evidence rende il record non conforme
-anche nello stato `draft`.
+La regione è opzionale: quando presente migliora la localizzazione visiva, ma
+la sua assenza non degrada la verifica umana del contenuto. L'assenza
+dell'intero blocco evidence rende invece il record non conforme.
 
 Per il testo, gli hash sono calcolati sui byte UTF-8 esatti di `raw` e
 `normalized`. Formule, tabelle e figure sono descritte dai manifest conformi a
@@ -47,19 +47,13 @@ anche nel registro delle fonti, al livello work.
 
 ## Stati e review
 
-La progressione è:
+La verifica del contenuto usa soltanto:
 
-`draft → extracted → source-checked → double-reviewed → published`
+`review.status: draft | verified`
 
-`superseded` è uno stato terminale pubblicato, non una cancellazione.
-
-Da `source-checked` ogni blocco ufficiale deve avere una regione. Da
-`double-reviewed` sono richieste almeno:
-
-- una review umana della fonte;
-- una review umana tecnica o normativa;
-- due atti di review distinti, entrambi firmati da una persona diversa
-  dall'autore del record.
+`published` appartiene alla release del package e non alle unità. `superseded`
+appartiene a `validity.status` quando serve rappresentare la validità
+normativa. Non esiste un requisito strutturale di seconda review indipendente.
 
 Per la prima release i due atti possono essere firmati dalla stessa persona
 qualificata. Questa è una scelta di governance esplicita del proprietario,
@@ -67,9 +61,10 @@ adottata il 26 luglio 2026. Il repository conserva soltanto un `actorId`
 pseudonimo; la corrispondenza con identità e qualifica è mantenuta nel registro
 di audit interno, fuori da Git.
 
-Una review automatica può integrare i controlli, ma non sostituisce le review
-umane. `published` e `superseded` richiedono zero issue bloccanti e un hash
-di integrità canonico.
+Una review automatica può integrare i controlli, ma non sostituisce la verifica
+umana. `openIssues`, quando presente, è riservato a difetti reali ancora
+presenti nel contenuto canonico; non rappresenta relazioni proposte, regioni
+mancanti o attività storiche già concluse.
 
 ## Canonicalizzazione
 

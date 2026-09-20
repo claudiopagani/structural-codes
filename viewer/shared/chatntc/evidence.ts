@@ -66,11 +66,7 @@ export function projectEvidenceUnit(record: ChatNTCUnitRecord): Omit<ChatNTCEvid
   return {
     evidenceId: unit.id, unitId: unit.id, document: unit.document, numbering: unit.numbering.official,
     title: unit.title, validity: { ...unit.validity }, provenance: { ...record.provenance },
-    editorial: {
-      status: unit.workflow.status,
-      ...(unit.workflow.reviews ? { reviews: unit.workflow.reviews.map(({ reviewId, type, reviewedAt, result }) => ({ reviewId, type, reviewedAt, result })) } : {}),
-      openIssues: unit.workflow.openIssues.map(({ issueId, type, severity, note }) => ({ issueId, type, severity, note })),
-    },
+    editorial: { status: unit.review.status },
   };
 }
 

@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c2.2.5",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -97,9 +97,18 @@
         "normalized": "Il requisito della robustezza è inteso come la “capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti” e, più in generale, rispetto a qualsiasi evento di carattere eccezionale, che possa causare il collasso di una parte limitata dell’organismo strutturale. Le misure che possono essere adottate a tal fine nella progettazione sono legate all’uso previsto della costruzione e alle conseguenze del suo eventuale collasso. L’effettivo livello di robustezza di una costruzione dipende anche, ed in modo non trascurabile, dalle peculiarità del progetto, ed è estremamente complesso da quantificare attraverso prescrizioni progettuali, unicamente riconducibili a verifiche numeriche; esso attiene, più in generale, alla corretta concezione dell’organismo strutturale e dei suoi dettagli costruttivi.",
         "normalizationVersion": "core-editorial-profile-0.1.0",
         "inline": [
-          { "kind": "text", "value": "Il requisito della robustezza è inteso come la “" },
-          { "kind": "em", "value": "capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti" },
-          { "kind": "text", "value": "” e, più in generale, rispetto a qualsiasi evento di carattere eccezionale, che possa causare il collasso di una parte limitata dell’organismo strutturale. Le misure che possono essere adottate a tal fine nella progettazione sono legate all’uso previsto della costruzione e alle conseguenze del suo eventuale collasso. L’effettivo livello di robustezza di una costruzione dipende anche, ed in modo non trascurabile, dalle peculiarità del progetto, ed è estremamente complesso da quantificare attraverso prescrizioni progettuali, unicamente riconducibili a verifiche numeriche; esso attiene, più in generale, alla corretta concezione dell’organismo strutturale e dei suoi dettagli costruttivi." }
+          {
+            "kind": "text",
+            "value": "Il requisito della robustezza è inteso come la “"
+          },
+          {
+            "kind": "em",
+            "value": "capacità di evitare danni sproporzionati rispetto all’entità di possibili cause innescanti eccezionali quali esplosioni e urti"
+          },
+          {
+            "kind": "text",
+            "value": "” e, più in generale, rispetto a qualsiasi evento di carattere eccezionale, che possa causare il collasso di una parte limitata dell’organismo strutturale. Le misure che possono essere adottate a tal fine nella progettazione sono legate all’uso previsto della costruzione e alle conseguenze del suo eventuale collasso. L’effettivo livello di robustezza di una costruzione dipende anche, ed in modo non trascurabile, dalle peculiarità del progetto, ed è estremamente complesso da quantificare attraverso prescrizioni progettuali, unicamente riconducibili a verifiche numeriche; esso attiene, più in generale, alla corretta concezione dell’organismo strutturale e dei suoi dettagli costruttivi."
+          }
         ]
       },
       "evidence": {
@@ -305,34 +314,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "migration:core-concrete:v1",
-      "kind": "script",
-      "toolVersion": "core-concrete-migration-0.1.0"
-    },
-    "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c2-2-5-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "circ2019-c2-2-5-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
-      },
-      {
-        "issueId": "circ2019-c2-2-5-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

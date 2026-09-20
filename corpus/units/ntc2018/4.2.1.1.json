@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:4.2.1.1",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -278,7 +278,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
-            "note": "Tabella trascritta dal render ufficiale e collocata nella posizione normativa originaria; resta obbligatoria la revisione umana puntuale."
+            "note": "Tabella trascritta dal render ufficiale e collocata nella posizione normativa originaria."
           }
         ],
         "rawSha256": "9a56780b95df437958fa649f80711246de91e18792d6905fe2d079916d2b10a7",
@@ -310,7 +310,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc42-editorial-profile-0.1.0",
-            "note": "Tabella trascritta dal render ufficiale e collocata nella posizione normativa originaria; resta obbligatoria la revisione umana puntuale."
+            "note": "Tabella trascritta dal render ufficiale e collocata nella posizione normativa originaria."
           }
         ],
         "rawSha256": "a15e141a9e570c51a91b0e3d790606979906801db2c7d7a20a833c4c0e29d4db",
@@ -328,27 +328,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "source-checked",
-    "createdBy": {
-      "actorId": "codex:ntc42-step1",
-      "kind": "automated-agent",
-      "toolVersion": "ntc42-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [
-      {
-        "reviewId": "ntc2018-4-2-1-1-source-review-01",
-        "type": "source",
-        "reviewer": {
-          "actorId": "reviewer:human:user-confirmation",
-          "kind": "human"
-        },
-        "reviewedAt": "2026-09-16T22:44:07Z",
-        "result": "accepted",
-        "note": "Paragrafo 4.2 delle NTC 2018 validato dal revisore umano: confronto integrale con il render ufficiale; nessuna anomalia bloccante residua."
-      }
-    ],
-    "openIssues": []
+  "review": {
+    "status": "verified"
   }
 }

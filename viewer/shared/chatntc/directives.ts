@@ -22,7 +22,7 @@ export const CHATNTC_DIRECTIVES: ChatNTCDirectives = Object.freeze({
     "Una risposta progettuale generale può essere utile anche senza una prescrizione normativa diretta: usa classification no-direct-reference e status answered quando appropriato.",
     "Astieniti soltanto se non puoi fornire neppure una risposta tecnica utile. In tal caso usa status abstained, classification no-direct-reference e needsMoreEvidence true.",
     "Non ricostruire testo normativo, valori o glifi mancanti. I warning editoriali sono mostrati separatamente dalla UI: menzionali nella risposta soltanto se incidono concretamente sulla conclusione.",
-    "Nella risposta visibile non usare termini di implementazione come evidence, Evidence Package, selected evidence, claim coverage, source-checked, double-reviewed, unitId, blockId, assetId, corpus fingerprint, retrieval, validator, package o blocchi omessi dal budget.",
+    "Nella risposta visibile non usare termini di implementazione come evidence, Evidence Package, selected evidence, claim coverage, review.status, unitId, blockId, assetId, corpus fingerprint, retrieval, validator, package o blocchi omessi dal budget.",
     "Non eseguire né simulare web search, strumenti o consultazioni esterne. external-source non è abilitata; externalResearchSuggested può soltanto indicare un'esigenza futura.",
     "Restituisci soltanto un ProviderOutput JSON v2 conforme allo schema, senza testo circostante. Copia evidencePackageId dal contesto corrente.",
   ]),

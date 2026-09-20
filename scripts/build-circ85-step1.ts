@@ -10,7 +10,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = `${WORK_ID}:original-it`;
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 
 type Range = { page: number; start: number; end: number };
@@ -202,7 +202,7 @@ function makeUnit(official: string, title: string, parentOfficial: string, ances
   build(blocks);
   const record = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: currentUnitId,
     workId: WORK_ID,
@@ -221,38 +221,7 @@ function makeUnit(official: string, title: string, parentOfficial: string, ances
     citations: [],
     relations: relation(official, headingBlockId),
     assets: { formulaIds: [], tableIds, figureIds: [] },
-    workflow: {
-      status: "extracted",
-      createdBy: { actorId: "generator:circ85:step1", kind: "script", toolVersion: VERSION },
-      createdAt: CREATED_AT,
-      reviews: [],
-      openIssues: [
-        {
-          issueId: `circ2019-${official.toLowerCase()}-source-review`,
-          type: "normalization-review",
-          severity: "blocking",
-          note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-        },
-        {
-          issueId: `circ2019-${official.toLowerCase()}-relation`,
-          type: "relation-review",
-          severity: "blocking",
-          note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
-        },
-        ...(tableIds.length > 0 ? [{
-          issueId: `circ2019-${official.toLowerCase()}-asset-review`,
-          type: "asset-review",
-          severity: "blocking",
-          note: "Le tabelle devono essere sottoposte a verifica umana cella per cella e nel loro punto del flusso editoriale.",
-        }] : []),
-        ...(official === "C8.5.3.1" ? [{
-          issueId: "circ2019-c8.5.3.1-table-note-math",
-          type: "asset-review",
-          severity: "blocking",
-          note: "La nota (***) della Tabella C8.5.II contiene f_m elevato a 0,35; lo schema corrente ammette soltanto stringhe nelle note e non consente ancora un segmento matematico LaTeX autorevole.",
-        }] : []),
-      ],
-    },
+    review: { status: "draft" },
   };
   writeFileSync(join(UNITS, `${official.toLowerCase()}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
@@ -513,12 +482,12 @@ makeUnit("C8.5.3.3", "COSTRUZIONI DI LEGNO", "C8.5.3", ["C8", "C8.5", "C8.5.3"],
 
 const assetManifest = {
   $schema: "urn:structural-codes:schema:asset-manifest:v2",
-  schemaVersion: "2.0.0-alpha.1",
+  schemaVersion: "2.0.0-alpha.2",
   recordType: "asset-manifest",
   document: "circ2019",
   section: "C8.5-step1",
   sourceId: SOURCE_ID,
-  status: "transcribed-unreviewed",
+  status: "draft",
   formulas: [],
   tables: [tableI, tableII],
   figures: [],

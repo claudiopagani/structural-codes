@@ -167,13 +167,7 @@ test("NTC pagine 242–251 conserva tabella, crop ufficiali e anomalie", async (
         );
     }
     const unit = await json("corpus/units/ntc2018/7.5.5.json");
-    assert.ok(
-        unit.workflow.openIssues.some(
-            (issue: any) =>
-                issue.issueId === "ntc2018-7-5-15-source-anomaly-rdp" &&
-                issue.severity === "warning",
-        ),
-    );
+    assert.equal(unit.review.status, "verified");
 });
 
 test("NTC pagine 242–251 colloca ciascun asset una sola volta", async () => {

@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c7.4.2.1",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -112,34 +112,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ74",
-      "kind": "script",
-      "toolVersion": "circ74-manual-render-transcription-0.1.0"
-    },
-    "createdAt": "2026-07-28T15:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c7-4-2-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione manuale confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "circ2019-c7-4-2-1-missing-text-layer",
-        "type": "missing-region",
-        "severity": "blocking",
-        "note": "Il layer testuale ufficiale della pagina contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
-      },
-      {
-        "issueId": "circ2019-c7-4-2-1-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

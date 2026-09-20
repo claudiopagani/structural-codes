@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.4.1.4.3";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -799,7 +799,7 @@ const blocks: GeneratedBlock[] = [
 const parent = uid("C4.2.4.1.4");
 const unit = {
     $schema: "urn:structural-codes:schema:canonical-unit:v2",
-    schemaVersion: "2.0.0-alpha.2",
+    schemaVersion: "2.0.0-alpha.3",
     recordType: "canonical-unit",
     id: uid(unitNumber),
     workId,
@@ -814,26 +814,17 @@ const unit = {
     citations: [],
     relations: [],
     assets: { formulaIds: [formula94, formula95, formula96, formula97].map((row) => formulaId(row.number)), tableIds: [tableXIIaId, tableXIIbId, tableXIIcId, tableXIIdId, tableXIIIId, tableXIVId, tableXVId, tableXVIaId, tableXVIbId, tableXVIIId], figureIds: [figure21, figure22, figure23] },
-    workflow: {
-        status: "extracted",
-        createdBy: { actorId: "codex:circ42-step2o", kind: "automated-agent", toolVersion: profile },
-        createdAt,
-        reviews: [],
-        openIssues: [
-            { issueId: "circ2019-C4-2-4-1-4-3-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." },
-            { issueId: "circ2019-C4-2-4-1-4-3-assets-review", type: "asset-review", severity: "blocking", note: "Le Tabelle C4.2.XII.a–d e C4.2.XIII–XVII, le figure C4.2.21–C4.2.23 e i gruppi di formule C4.2.94–C4.2.97 richiedono revisione umana indipendente." },
-        ],
-    },
+    review: { status: "draft" },
 };
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C4.2-step2o",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [formula94, formula95, formula96, formula97].map((row) => ({ id: formulaId(row.number), unitId: uid(unitNumber), officialNumber: row.number, pdfPage: row.page, latex: row.latex })),
     tables: [tableXIIa, tableXIIb, tableXIIc, tableXIId, tableXIII, tableXIV, tableXV, tableXVIa, tableXVIb, tableXVII],
     figures: [

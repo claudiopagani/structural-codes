@@ -167,13 +167,7 @@ test("NTC pagine 252–257 colloca ogni asset una volta e registra la q ufficial
     }
 
     const unit = await json("corpus/units/ntc2018/7.6.4.3.json");
-    assert.ok(
-        unit.workflow.openIssues.some(
-            (issue: any) =>
-                issue.issueId === "ntc2018-7-6-4-3-source-anomaly-q" &&
-                issue.severity === "warning",
-        ),
-    );
+    assert.equal(unit.review.status, "verified");
     const qBlock = unit.blocks.find(
         (block: any) =>
             block.text?.normalized ===

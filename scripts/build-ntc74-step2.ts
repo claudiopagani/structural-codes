@@ -588,7 +588,7 @@ for (const unit of units) {
     const parts = unit.number.split(".");
     const ancestors = parts.slice(1).map((_, i) => unitId(parts.slice(0, i + 1).join(".")));
     const record = {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit",
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit",
         id, workId: "it-mit:dm:2018-01-17:ntc2018", expressionId: "it-mit:dm:2018-01-17:ntc2018:original-it",
         kind: parts.length === 2 ? "section" : parts.length === 3 ? "paragraph" : "subparagraph",
         numbering: { official: unit.number, sortKey: parts.map((x) => x.padStart(3, "0")).join(".") },
@@ -601,15 +601,7 @@ for (const unit of units) {
             tableIds: [],
             figureIds: all.filter((b) => b.kind === "figure-ref").map((b: any) => b.assetId),
         },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:ntc74:step2", kind: "script", toolVersion: profile },
-            createdAt: "2026-07-28T13:00:00Z", reviews: [],
-            openIssues: [
-                { issueId: `ntc2018-${unit.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente." },
-                ...(unit.crossPage ? [{ issueId: "ntc2018-7-4-4-5-multipage-evidence", type: "missing-region", severity: "blocking", note: "Il primo capoverso continua dalla pagina PDF 232 alla 233; il testo è unito correttamente, ma lo schema evidence corrente registra una sola pagina per blocco." }] : []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(out, `${unit.number}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
@@ -627,8 +619,8 @@ const figureHashes: Record<string, string> = {
     "7.4.6": "104e3fe2d1088e57c0646f794151f9c00e1c01434cb4b7395e82a86188f3a67a",
 };
 const manifest = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest",
-    document: "ntc2018", section: "7.4-step2", sourceId, status: "transcribed-unreviewed",
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest",
+    document: "ntc2018", section: "7.4-step2", sourceId, status: "draft",
     formulas: Object.entries(formulae).map(([key, [unit, number, page, latex]]) => ({ id: aid("formula", key), unitId: unitId(unit), officialNumber: number, pdfPage: page, latex })),
     tables: [],
     figures: figures.map(([number, unit, page, caption, box]) => ({

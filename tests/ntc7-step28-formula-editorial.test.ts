@@ -124,13 +124,7 @@ test("NTC pagina 280 conserva capoversi, elenchi e possibili refusi della fonte"
     assert.match(bySuffix("p7").text.normalized, /d_dc/u);
     assert.equal(bySuffix("p10b").text.normalized.startsWith("(x_i, x_i)"), true);
     assert.equal(bySuffix("p11a").text.normalized.startsWith("K_xi, K_xi"), true);
-    for (const issueId of [
-        "ntc2018-7-10-5-3-1-source-anomaly-k-esi-min",
-        "ntc2018-7-10-5-3-1-source-anomaly-d-de",
-        "ntc2018-7-10-5-3-1-source-anomaly-duplicated-x",
-    ]) {
-        assert.ok(unit.workflow.openIssues.some((issue: any) => issue.issueId === issueId), issueId);
-    }
+    assert.equal(unit.review.status, "verified");
 });
 
 test("NTC pagine 277–281 colloca ogni formula una sola volta", async () => {

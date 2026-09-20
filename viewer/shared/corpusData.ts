@@ -21,7 +21,7 @@ export interface Evidence {
   sourceId: string;
   pdfPage: number;
   printedPage: string | null;
-  region: { x: number; y: number; width: number; height: number };
+  region?: { x: number; y: number; width: number; height: number } | null;
   transformations?: Array<{ operation: string; note: string }>;
   rawSha256: string;
   normalizedSha256: string;
@@ -89,7 +89,6 @@ export interface AssetBundle {
   tables: Record<string, TableAsset>;
   figures: Record<string, FigureAsset>;
 }
-export interface OpenIssue { issueId: string; type: string; severity: "blocking" | "warning" | "info"; note: string; }
 export interface Relation { relationId: string; type: string; targetUnitId: string; basis: string; rationale: string; evidenceBlockIds?: string[]; review: { status: string }; }
 export interface CorpusUnit {
   id: string;
@@ -102,7 +101,7 @@ export interface CorpusUnit {
   validity: { from: string | null; to: string | null; status: string; asOf: string };
   blocks: CorpusBlock[];
   relations: Relation[];
-  workflow: { status: string; openIssues: OpenIssue[]; reviews?: Array<{ reviewId: string; type: string; reviewedAt: string; result: string }> };
+  review: { status: "draft" | "verified" };
 }
 export interface UnitSummary {
   id: string;
@@ -112,9 +111,7 @@ export interface UnitSummary {
   title: string;
   hierarchy: CorpusUnit["hierarchy"];
   validity: CorpusUnit["validity"];
-  workflowStatus: string;
-  openIssueCount: number;
-  blockingIssueCount: number;
+  reviewStatus: "draft" | "verified";
   chunkPath: string;
 }
 export interface DocumentMetadata {
@@ -146,7 +143,6 @@ export interface CorpusManifest {
     explicitRelations: number;
     proposedRelations: number;
     suggestedRelationDiagnostics: number;
-    reviewedUnits: number;
     assetUnits: number;
     formulas: number;
     tables: number;

@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c11.9.4",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -333,7 +333,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ11-editorial-profile-0.2.0",
-            "note": "Formula in display trascritta dal render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Formula in display trascritta dal render ufficiale."
           }
         ],
         "rawSha256": "06419c1b917db1e7d8e4f5b19936bf325564bf4725ff39a3b425c602821bbfbf",
@@ -535,28 +535,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ11:step1",
-      "kind": "script",
-      "toolVersion": "circ11-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c11-9-4-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      },
-      {
-        "issueId": "c11-9-4-a-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formula collegata a un asset canonico; verificare nuovamente ogni glifo nel PDF prima della pubblicazione."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

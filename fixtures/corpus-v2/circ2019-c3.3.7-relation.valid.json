@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c3.3.7",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -87,28 +87,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "draft",
-    "createdBy": {
-      "actorId": "codex",
-      "kind": "automated-agent",
-      "toolVersion": "gpt-5"
-    },
-    "createdAt": "2026-07-26T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c3.3.7-fixture-partial",
-        "type": "other",
-        "severity": "blocking",
-        "note": "Fixture contrattuale parziale: non contiene l'intero paragrafo."
-      },
-      {
-        "issueId": "circ2019-c3.3.7-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento alla NTC resta proposto finché non è revisionato da una persona."
-      }
-    ]
+  "review": {
+    "status": "draft"
   }
 }

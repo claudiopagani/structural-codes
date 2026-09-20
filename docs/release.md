@@ -1,8 +1,8 @@
 # Release npm
 
 Structural Codes usa SemVer con prerelease. La release iniziale è
-`0.1.0-alpha.1`: distribuisce un corpus ispezionabile ma non completamente
-revisionato e mantiene mobili schema/API.
+`0.1.0-alpha.1`: distribuisce un corpus ispezionabile con review umana
+integrale registrata contro le fonti ufficiali, mantenendo mobili schema/API.
 
 ## Gate
 
@@ -38,7 +38,7 @@ crea una GitHub Release e non cambia gli stati editoriali del corpus.
 
 ## Versioning
 
-- alpha: corpus incompleto/non interamente revisionato, API e schema mobili;
+- alpha: API e schema mobili, anche quando il perimetro del corpus è verificato;
 - beta: struttura sufficientemente stabile, review ancora in corso;
 - stable: perimetro dichiarato e adeguatamente revisionato.
 

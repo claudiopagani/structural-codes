@@ -433,25 +433,11 @@ for (const unit of unitsToWrite) {
         rationale: "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.",
         review: { status: "proposed", reviewedBy: null, reviewedAt: null },
     }] : [];
-    const sourceIssue = {
-        issueId: `circ2019-${lower.replaceAll(".", "-")}-source-review`,
-        type: "normalization-review", severity: "blocking",
-        note: "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-    };
-    const missingLayerIssue = {
-        issueId: `circ2019-${lower.replaceAll(".", "-")}-missing-text-layer`,
-        type: "missing-region", severity: "blocking",
-        note: "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF.",
-    };
-    const issues = [sourceIssue, missingLayerIssue, ...(unit.number === "C7.11.2" ? [{
-        issueId: "circ2019-c7-11-2-truncated-source-paragraph", type: "normalization-review", severity: "blocking",
-        note: "Il capoverso della fonte termina visibilmente con «per tenere» prima del cambio di pagina; non è stato completato per plausibilità.",
-    }] : []), ...(includeRelations ? [{
-        issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`, type: "relation-review", severity: "blocking",
-        note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
-    }] : [])];
+
+
+
     const record = {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit",
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit",
         id, workId: "it-mit:circ:2019-01-21:7-csllpp", expressionId: "it-mit:circ:2019-01-21:7-csllpp:original-it",
         kind: numberParts.length === 2 ? "section" : numberParts.length === 3 ? "paragraph" : "subparagraph",
         numbering: { official: unit.number, sortKey: numberParts.map((part) => String(part).padStart(3, "0")).join(".") },
@@ -459,7 +445,7 @@ for (const unit of unitsToWrite) {
         hierarchy: { parentId: unitId(parentParts.join(".")), ancestorIds, position: numberParts.at(-1) },
         validity: { from: null, to: null, status: "unknown", asOf }, blocks, citations: [], relations: relation,
         assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: { status: "extracted", createdBy: { actorId: "generator:circ711-step1", kind: "script", toolVersion: profile }, createdAt: "2026-08-09T12:00:00Z", reviews: [], openIssues: issues },
+        review: { status: "draft" },
     };
     await writeFile(join(outputDirectory, `${lower}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }

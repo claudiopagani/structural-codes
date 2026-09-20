@@ -10,7 +10,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc45-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Part = string | { value: string; latex: string };
 type Region = {
@@ -264,7 +264,7 @@ function makeUnit(
 ) {
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId(number),
         workId,
@@ -291,34 +291,7 @@ function makeUnit(
         citations: [],
         relations: [],
         assets,
-        workflow: {
-            status: "extracted",
-            createdBy: {
-                actorId: "codex:ntc45",
-                kind: "automated-agent",
-                toolVersion: profile,
-            },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte.",
-                },
-                ...(assets.formulaIds.length + assets.tableIds.length > 0
-                    ? [
-                          {
-                              issueId: `ntc2018-${number.replaceAll(".", "-")}-assets`,
-                              type: "asset-review",
-                              severity: "blocking",
-                              note: "Formule e tabelle sono separate, trascritte e collocate nel punto normativo originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale.",
-                          },
-                      ]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -393,7 +366,7 @@ const tableAssets = [
             [cell("Semipieni"), cell("15% < φ≤45%", "15\\%<\\varphi\\le45\\%"), cell("f≤12 cm²", "f\\le12\\,\\mathrm{cm}^2")],
             [cell("Forati"), cell("45% < φ≤55%", "45\\%<\\varphi\\le55\\%"), cell("f≤15 cm²", "f\\le15\\,\\mathrm{cm}^2")],
         ],
-        notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Trascritta dal render ufficiale."],
     },
     {
         id: tableIb,
@@ -415,7 +388,7 @@ const tableAssets = [
             [cell("Semipieni"), cell("15% < φ≤45%", "15\\%<\\varphi\\le45\\%"), cell("f≤0,10 A", "f\\le0{,}10A"), cell("f≤0,15 A", "f\\le0{,}15A")],
             [cell("Forati"), cell("45% < φ≤55%", "45\\%<\\varphi\\le55\\%"), cell("f≤0,10 A", "f\\le0{,}10A"), cell("f≤0,15 A", "f\\le0{,}15A")],
         ],
-        notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Trascritta dal render ufficiale."],
     },
     {
         id: tableII,
@@ -433,7 +406,7 @@ const tableAssets = [
             [cell("Muratura con elementi resistenti di categoria I, malta a composizione prescritta"), cell("2,2", "2{,}2"), cell("2,7", "2{,}7")],
             [cell("Muratura con elementi resistenti di categoria II, ogni tipo di malta"), cell("2,5", "2{,}5"), cell("3,0", "3{,}0")],
         ],
-        notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Trascritta dal render ufficiale."],
     },
     {
         id: tableIII,
@@ -453,7 +426,7 @@ const tableAssets = [
             [cell("15"), cell("0,69", "0{,}69"), cell("0,48", "0{,}48"), cell("0,32", "0{,}32"), cell("0,17", "0{,}17"), cell("")],
             [cell("20"), cell("0,53", "0{,}53"), cell("0,36", "0{,}36"), cell("0,23", "0{,}23"), cell(""), cell("")],
         ],
-        notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Trascritta dal render ufficiale."],
     },
     {
         id: tableIV,
@@ -468,7 +441,7 @@ const tableAssets = [
             [cell("0,5 < h/a≤1,0", "0{,}5<h/a\\le1{,}0"), cell("3/2 − h/a", "3/2-h/a")],
             [cell("1,0 < h/a", "1{,}0<h/a"), cell("1/[1+(h/a)²]", "1/[1+(h/a)^2]")],
         ],
-        notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Trascritta dal render ufficiale."],
     },
 ];
 
@@ -739,12 +712,12 @@ const units = [
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "4.5",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaAssets,
     tables: tableAssets,
     figures: [],

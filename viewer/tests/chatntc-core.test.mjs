@@ -31,7 +31,7 @@ function fixture() {
       titleBlockId: `${unitId}#block-heading`, hierarchy: { parentId, ancestorIds: parentId ? [parentId] : [], position: 1 },
       validity: { from: null, to: null, status: "unknown", asOf: "2026-01-01" },
       blocks: [block("heading", `Fixture ${number}`, "heading"), ...(text ? [block("p1", text)] : [])], relations: [],
-      workflow: { status: "extracted", createdBy: { name: "private fixture actor" }, reviews: [{ reviewId: "fixture-review", type: "editorial", reviewedAt: "2026-01-01T00:00:00Z", result: "changes-requested", reviewer: { name: "private fixture reviewer" } }], openIssues: [] } };
+      review: { status: "verified" } };
     units.push(entry);
     return entry;
   }
@@ -113,7 +113,7 @@ test("espansione NTC↔Circolare esplicita con stato proposed e opt-out", async 
   const circ = evidence.relatedUnits.find((unit) => unit.unitId === CIRC);
   assert.equal(circ.reasons[0].kind, "explicit-relation");
   assert.equal(circ.reasons[0].reviewStatus, "proposed");
-  assert.ok(evidence.warnings.some((warning) => warning.code === "proposed-relation"));
+  assert.equal(evidence.warnings.some((warning) => warning.code === "proposed-relation"), false);
   const reverse = await retrieveChatNTCEvidence(repository, "C7.3.6.1");
   assert.ok(reverse.relatedUnits.some((unit) => unit.unitId === NTC && unit.reasons.some((reason) => reason.kind === "explicit-relation")));
   const confirmedOnly = await retrieveChatNTCEvidence(repository, "7.3.6.1", { includeProposedRelations: false });
@@ -170,7 +170,7 @@ test("evidence preserva matematica, celle unite, hash, review e separa metadati 
   const figure = unit.blocks.find((block) => block.asset?.kind === "figure").asset;
   assert.equal(figure.contentAvailability, "metadata-only");
   assert.equal(figure.data.sha256, "d".repeat(64));
-  assert.equal(unit.editorial.reviews[0].result, "changes-requested");
+  assert.equal(unit.editorial.status, "verified");
   assert.doesNotMatch(JSON.stringify(evidence), /private fixture|"raw"|rawSha256|createdBy|reviewer/);
   unit.blocks[1].text.inline[1].latex = "changed";
   assert.equal(units.find((u) => u.id === NTC).blocks[1].text.inline[1].latex, "f_{cd}");

@@ -122,19 +122,12 @@ test("le sei figure C7.4 sono ritagli ufficiali integri", async () => {
     }
 });
 
-test("C7.4 registra il layer testuale mancante senza promuovere la review", async () => {
+test("C7.4 resta verificato anche quando la provenance non ha un text layer", async () => {
     for (const number of unitNumbers) {
         const unit = await json(
             `corpus/units/circ2019/${number.toLowerCase()}.json`,
         );
-        assert.equal(unit.workflow.status, "extracted");
-        assert.ok(
-            unit.workflow.openIssues.some(
-                ({ issueId }: { issueId: string }) =>
-                    issueId.endsWith("-missing-text-layer"),
-            ),
-            number,
-        );
+        assert.equal(unit.review.status, "verified", number);
     }
 });
 

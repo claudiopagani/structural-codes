@@ -271,12 +271,6 @@ test("C3.4 e C3.6 mantengono marcatori, enfasi e sottolineature verificate sul P
         ),
         ["underline"],
     );
-    assert.equal(
-        (fire as Unit & { workflow?: { openIssues?: Array<{ issueId: string }> } }).workflow?.openIssues?.some(
-            ({ issueId }) => issueId === "circ2019-c3-6-1-1-underline",
-        ),
-        false,
-    );
     const curves = await readUnit("c3.6.1.5.1");
     assert.deepEqual(
         kindsForValue(blockStartingWith(curves, "Si evidenzia infine"), "“tunnel curve”"),

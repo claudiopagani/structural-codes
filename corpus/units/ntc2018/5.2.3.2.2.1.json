@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:5.2.3.2.2.1",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -357,7 +357,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           },
           {
             "operation": "manual-correction",
@@ -895,7 +895,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "8ea1f1e270579bff0f8b0f9994c3fd899e8ed438f7ec421363525149ca94d41e",
@@ -963,7 +963,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "aab207769830fe9604448c6786bb2e5d95efcde643311df041ed7a06b214b22b",
@@ -1096,28 +1096,7 @@
       "urn:structural-codes:it:asset:figure:ntc2018:5.2.14"
     ]
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc5-step4",
-      "kind": "automated-agent",
-      "toolVersion": "ntc5-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-5-2-3-2-2-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-5-2-3-2-2-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

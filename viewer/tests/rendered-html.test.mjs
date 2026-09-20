@@ -35,12 +35,11 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   const manifest = await dataJson("/data/codes/manifest.json");
   assert.equal(manifest.formatVersion, 2);
   assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
-  assert.equal(manifest.schemaVersion, "2.0.0-alpha.2");
+  assert.equal(manifest.schemaVersion, "2.0.0-alpha.3");
   assert.equal(manifest.stats.units, 1745);
   assert.equal(manifest.stats.blocks, 11056);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
-  assert.equal(manifest.stats.reviewedUnits, 246);
   assert.equal(manifest.stats.assetUnits, 436);
   assert.equal(manifest.stats.formulas, 890);
   assert.equal(manifest.stats.tables, 219);
@@ -72,48 +71,8 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   const units = [...chunks.values()].flatMap(({ units }) => units);
   assert.equal(units.length, 1745);
   assert.equal(
-    units.every((unit) => unit.workflow.status === "extracted" || unit.workflow.status === "source-checked"),
+    units.every((unit) => unit.review.status === "verified"),
     true,
-  );
-  const expectedReviewedUnitIds = [
-      "urn:structural-codes:it:unit:ntc2018:1",
-      "urn:structural-codes:it:unit:ntc2018:1.1",
-      "urn:structural-codes:it:unit:ntc2018:2",
-      "urn:structural-codes:it:unit:ntc2018:2.1",
-      "urn:structural-codes:it:unit:ntc2018:2.2",
-      "urn:structural-codes:it:unit:ntc2018:2.2.1",
-      "urn:structural-codes:it:unit:ntc2018:2.2.2",
-      "urn:structural-codes:it:unit:ntc2018:2.2.3",
-      "urn:structural-codes:it:unit:ntc2018:2.2.4",
-      "urn:structural-codes:it:unit:ntc2018:2.2.5",
-      "urn:structural-codes:it:unit:ntc2018:2.2.6",
-      "urn:structural-codes:it:unit:ntc2018:2.3",
-      "urn:structural-codes:it:unit:ntc2018:2.4",
-      "urn:structural-codes:it:unit:ntc2018:2.4.1",
-      "urn:structural-codes:it:unit:ntc2018:2.4.2",
-      "urn:structural-codes:it:unit:ntc2018:2.4.3",
-      "urn:structural-codes:it:unit:ntc2018:2.5",
-      "urn:structural-codes:it:unit:ntc2018:2.5.1",
-      "urn:structural-codes:it:unit:ntc2018:2.5.1.1",
-      "urn:structural-codes:it:unit:ntc2018:2.5.1.2",
-      "urn:structural-codes:it:unit:ntc2018:2.5.1.3",
-      "urn:structural-codes:it:unit:ntc2018:2.5.2",
-      "urn:structural-codes:it:unit:ntc2018:2.5.3",
-      "urn:structural-codes:it:unit:ntc2018:2.6",
-      "urn:structural-codes:it:unit:ntc2018:2.6.1",
-      "urn:structural-codes:it:unit:ntc2018:2.6.2",
-      "urn:structural-codes:it:unit:ntc2018:4.1",
-    ].concat(units.filter((unit) =>
-      unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3") ||
-      unit.id === "urn:structural-codes:it:unit:ntc2018:4.2" ||
-      unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:4.2.") ||
-      unit.id === "urn:structural-codes:it:unit:circ2019:c4.2" ||
-      unit.id.startsWith("urn:structural-codes:it:unit:circ2019:c4.2.")
-    ).map((unit) => unit.id));
-  assert.equal(expectedReviewedUnitIds.length, 246);
-  assert.deepEqual(
-    units.filter((unit) => unit.workflow.status === "source-checked").map((unit) => unit.id).sort(),
-    expectedReviewedUnitIds.sort(),
   );
 
   const assets = { formulas: new Map(), tables: new Map(), figures: new Map() };

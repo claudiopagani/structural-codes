@@ -21,7 +21,7 @@
         "citations",
         "relations",
         "assets",
-        "workflow"
+        "review"
     ],
     "properties": {
         "$schema": {
@@ -30,7 +30,7 @@
         },
         "schemaVersion": {
             "type": "string",
-            "const": "2.0.0-alpha.2"
+            "const": "2.0.0-alpha.3"
         },
         "recordType": {
             "type": "string",
@@ -199,8 +199,14 @@
                 }
             }
         },
-        "workflow": {
-            "$ref": "#/$defs/workflow"
+        "review": {
+            "$ref": "#/$defs/reviewStatus"
+        },
+        "openIssues": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/contentIssue"
+            }
         },
         "integrity": {
             "type": "object",
@@ -220,39 +226,6 @@
             }
         }
     },
-    "allOf": [
-        {
-            "if": {
-                "type": "object",
-                "properties": {
-                    "workflow": {
-                        "type": "object",
-                        "properties": {
-                            "status": {
-                                "type": "string",
-                                "enum": [
-                                    "published",
-                                    "superseded"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "status"
-                        ]
-                    }
-                }
-            },
-            "then": {
-                "type": "object",
-                "required": [
-                    "integrity"
-                ],
-                "properties": {
-                    "integrity": {}
-                }
-            }
-        }
-    ],
     "$defs": {
         "date": {
             "type": "string",
@@ -399,7 +372,6 @@
                 "sourceId",
                 "pdfPage",
                 "printedPage",
-                "region",
                 "extraction",
                 "transformations",
                 "rawSha256",
@@ -1041,52 +1013,21 @@
                 }
             }
         },
-        "review": {
+        "reviewStatus": {
             "type": "object",
             "additionalProperties": false,
-            "required": [
-                "reviewId",
-                "type",
-                "reviewer",
-                "reviewedAt",
-                "result",
-                "note"
-            ],
+            "required": ["status"],
             "properties": {
-                "reviewId": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "type": {
+                "status": {
                     "type": "string",
                     "enum": [
-                        "source",
-                        "technical",
-                        "normative",
-                        "editorial"
+                        "draft",
+                        "verified"
                     ]
-                },
-                "reviewer": {
-                    "$ref": "#/$defs/actor"
-                },
-                "reviewedAt": {
-                    "$ref": "#/$defs/dateTime"
-                },
-                "result": {
-                    "type": "string",
-                    "enum": [
-                        "accepted",
-                        "changes-requested",
-                        "rejected"
-                    ]
-                },
-                "note": {
-                    "type": "string",
-                    "minLength": 1
                 }
             }
         },
-        "issue": {
+        "contentIssue": {
             "type": "object",
             "additionalProperties": false,
             "required": [
@@ -1101,15 +1042,7 @@
                     "minLength": 1
                 },
                 "type": {
-                    "type": "string",
-                    "enum": [
-                        "missing-region",
-                        "ambiguous-source",
-                        "normalization-review",
-                        "asset-review",
-                        "relation-review",
-                        "other"
-                    ]
+                    "const": "content-defect"
                 },
                 "severity": {
                     "type": "string",
@@ -1121,48 +1054,6 @@
                 "note": {
                     "type": "string",
                     "minLength": 1
-                }
-            }
-        },
-        "workflow": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-                "status",
-                "createdBy",
-                "createdAt",
-                "reviews",
-                "openIssues"
-            ],
-            "properties": {
-                "status": {
-                    "type": "string",
-                    "enum": [
-                        "draft",
-                        "extracted",
-                        "source-checked",
-                        "double-reviewed",
-                        "published",
-                        "superseded"
-                    ]
-                },
-                "createdBy": {
-                    "$ref": "#/$defs/actor"
-                },
-                "createdAt": {
-                    "$ref": "#/$defs/dateTime"
-                },
-                "reviews": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/review"
-                    }
-                },
-                "openIssues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/issue"
-                    }
                 }
             }
         }

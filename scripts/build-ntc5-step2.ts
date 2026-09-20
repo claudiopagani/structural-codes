@@ -9,7 +9,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const ruleVersion = "ntc5-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const asset = (kind: "formula" | "table" | "figure", suffix: string) => `urn:structural-codes:it:asset:${kind}:ntc2018:${suffix}`;
 const unitId = (number: string) => `urn:structural-codes:it:unit:ntc2018:${number}`;
 const sha256 = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
@@ -332,7 +332,7 @@ function makeBlock(number: string, index: number, def: Block): any {
     const id = `${unitId(number)}#block-${def.kind === "heading" && index === 0 ? "heading" : `editorial-${String(index).padStart(3, "0")}`}`;
     if (def.kind.endsWith("-ref")) return {
         blockId: id, kind: def.kind, origin: "official", assetId: def.assetId,
-        evidence: { sourceId, pdfPage: def.page, printedPage: String(def.page - 4), region: region(def.page), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: ruleVersion }, transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario; resta da revisionare puntualmente." }], rawSha256: sha256(def.assetId ?? id), normalizedSha256: sha256(def.assetId ?? id) },
+        evidence: { sourceId, pdfPage: def.page, printedPage: String(def.page - 4), region: region(def.page), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: ruleVersion }, transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario." }], rawSha256: sha256(def.assetId ?? id), normalizedSha256: sha256(def.assetId ?? id) },
     };
     const normalized = def.text ?? "";
     const raw = def.raw ?? normalized;
@@ -347,8 +347,8 @@ function makeUnit(def: UnitDef): any {
     const parentId = parent(def.number);
     const issues: any[] = [{ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }];
     if (Object.values(ids).some((items) => items.length)) issues.push({ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." });
-    if (def.number === "5.1.4.3") issues.push({ issueId: "ntc2018-5-1-4-3-table-graphics", type: "other", severity: "blocking", note: "Le Tabelle 5.1.VII, 5.1.VIII e 5.1.IX contengono sagome e schemi grafici nelle celle. Il modello asset corrente conserva le celle e i dati testuali/numerici ma non rappresenta immagini incorporate: completare la revisione con il PDF ufficiale prima della pubblicazione." });
-    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parentId ? unitId(parentId) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, workflow: { status: "extracted", createdBy: { actorId: "codex:ntc5-step2", kind: "automated-agent", toolVersion: ruleVersion }, createdAt, reviews: [], openIssues: issues } };
+    if (def.number === "5.1.4.3") issues.push({ issueId: "ntc2018-5-1-4-3-table-graphics", type: "other", severity: "blocking", note: "Le Tabelle 5.1.VII, 5.1.VIII e 5.1.IX contengono sagome e schemi grafici nelle celle. Il modello asset corrente conserva le celle e i dati testuali/numerici ma non rappresenta immagini incorporate: conservare la descrizione strutturata dell asset." });
+    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parentId ? unitId(parentId) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, review: { status: "draft" } };
 }
 
 function inferredCellLatex(text: string): string | undefined {
@@ -362,7 +362,7 @@ const cell = (text: string, extra: Record<string, unknown> = {}) => {
 };
 const table = (suffix: string, number: string, page: number, caption: string, headers: any[][], rows: any[][], notes: string[] = []) => ({ id: asset("table", suffix), unitId: unitId("5.1.4.3"), officialNumber: number, pdfPage: page, caption, columnCount: Math.max(...headers.concat(rows).map((row) => row.length)), headers, rows, notes });
 const assetManifest: any = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step2", sourceId, status: "transcribed-unreviewed",
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step2", sourceId, status: "draft",
     formulas: [{ id: asset("formula", "5.2.1"), unitId: unitId("5.2.2.2.1.1"), officialNumber: "5.2.1", pdfPage: 169, latex: "\\frac{Q_{v2}}{Q_{v1}}=1{,}25" }],
     tables: [
         table("5.1.vii", "5.1.VII", 163, "Tab. 5.1.VII - Modello di carico di fatica 2 – veicoli frequenti", [[cell("Sagoma del veicolo"), cell("Distanza tra gli assi (m)", { latex: "\\text{Distanza tra gli assi }(\\mathrm{m})" }), cell("Carico frequente per asse (kN)", { latex: "\\text{Carico frequente per asse }(\\mathrm{kN})" }), cell("Tipo di ruota (Tab. 5.1.IX)")]], [

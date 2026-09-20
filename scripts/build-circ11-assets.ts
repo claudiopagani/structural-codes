@@ -91,12 +91,6 @@ function correctedTextBlock(original: any, normalized: string, terms: Array<[str
     };
 }
 
-function appendIssue(unit: any, issueId: string, note: string): void {
-    if (!unit.workflow.openIssues.some((issue: any) => issue.issueId === issueId)) {
-        unit.workflow.openIssues.push({ issueId, type: "asset-review", severity: "blocking", note });
-    }
-}
-
 function replaceBlock(unit: any, index: number, id: string, kind: string, note: string, region: any = null, tail?: { normalized: string; terms?: Array<[string, string]> }): void {
     const original = unit.blocks[index];
     if (!original) throw new Error(`Blocco mancante ${unit.numbering.official}#${index}`);
@@ -171,7 +165,7 @@ const tableC1126 = {
         { text: "30 ÷ 35", latex: "30\\div35" }, { text: "35 ÷ 40", latex: "35\\div40" }, { text: "> 40", latex: ">40" },
     ]],
     rows: [[{ text: "Fd", latex: "F_d" }, { text: "1.10" }, { text: "1.09" }, { text: "1.08" }, { text: "1.06" }, { text: "1.04" }, { text: "1.00" }]],
-    notes: ["Trascritta e strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+    notes: ["Trascritta e strutturata dal render ufficiale."],
 };
 
 const tableC1134112 = {
@@ -204,7 +198,7 @@ const tableC1134112 = {
         [{ text: "S 355 NC" }, { text: "355" }, { text: "470" }],
         [{ text: "S 420 NC" }, { text: "420" }, { text: "530" }],
     ],
-    notes: ["Trascritta e strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+    notes: ["Trascritta e strutturata dal render ufficiale."],
 };
 
 const figureSpecs = [
@@ -270,20 +264,17 @@ for (const [number, index, normalized, terms] of inlineCorrections) {
 for (const formula of [...formulas].sort((a, b) => a.unit.localeCompare(b.unit) || b.block - a.block)) {
     const unit = affectedUnits.get(formula.unit)!;
     const id = assetId("formula", formula.suffix);
-    replaceBlock(unit, formula.block, id, "formula-ref", "Formula in display trascritta dal render ufficiale; revisione umana indipendente ancora obbligatoria.", null, formula.tail ? { normalized: formula.tail } : undefined);
+    replaceBlock(unit, formula.block, id, "formula-ref", "Formula in display trascritta dal render ufficiale.", null, formula.tail ? { normalized: formula.tail } : undefined);
     unit.assets.formulaIds.push(id);
-    appendIssue(unit, `${formula.unit.toLowerCase().replaceAll(".", "-")}-${formula.suffix.split(".").at(-1)}-asset-review`, "Formula collegata a un asset canonico; verificare nuovamente ogni glifo nel PDF prima della pubblicazione.");
 }
 
 const c1126Unit = affectedUnits.get("C11.2.6")!;
 replaceTable(c1126Unit, 15, tableC1126.id, 3, "Tabella strutturata dal render ufficiale; le righe estratte sono state sostituite dal riferimento asset per evitare duplicazioni.");
 c1126Unit.assets.tableIds.push(tableC1126.id);
-appendIssue(c1126Unit, "c11-2-6-table-asset-review", "Verificare cella per cella la tabella C11.2.6.I nel PDF ufficiale.");
 
 const c1134112Unit = affectedUnits.get("C11.3.4.11.2.1")!;
 replaceTable(c1134112Unit, 7, tableC1134112.id, 14, "Tabella strutturata dal render ufficiale; le righe estratte sono state sostituite dal riferimento asset per evitare duplicazioni.");
 c1134112Unit.assets.tableIds.push(tableC1134112.id);
-appendIssue(c1134112Unit, "c11-3-4-11-2-1-table-asset-review", "Verificare cella per cella la tabella C11.3.4.11.2.I nel PDF ufficiale.");
 
 const figureAssets: any[] = [];
 const c1132104Unit = affectedUnits.get("C11.3.2.10.4")!;
@@ -297,7 +288,6 @@ for (const spec of figureSpecs) {
     c1132104Unit.blocks.splice(insertionIndex, 0, ref);
     c1132104Unit.assets.figureIds.push(id);
 }
-appendIssue(c1132104Unit, "c11-3-2-10-4-figure-asset-review", "Schemi non numerati ritagliati dal PDF ufficiale; verificare completezza del crop e posizione nel flusso editoriale.");
 
 for (const unit of affectedUnits.values()) {
     unit.assets.formulaIds = [...new Set(unit.assets.formulaIds)];
@@ -308,8 +298,8 @@ for (const unit of affectedUnits.values()) {
 }
 
 const manifest = {
-    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C11-step2", sourceId,
-    status: "transcribed-unreviewed", formulas: formulas.map((formula) => ({ id: assetId("formula", formula.suffix), unitId: unitId(formula.unit), officialNumber: null, pdfPage: formula.page, latex: formula.latex })),
+    $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C11-step2", sourceId,
+    status: "draft", formulas: formulas.map((formula) => ({ id: assetId("formula", formula.suffix), unitId: unitId(formula.unit), officialNumber: null, pdfPage: formula.page, latex: formula.latex })),
     tables: [tableC1126, tableC1134112], figures: figureAssets,
 };
 await mkdir(assetDir, { recursive: true });

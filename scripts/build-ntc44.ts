@@ -11,7 +11,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc44-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Inline =
     | { kind: "text"; value: string }
@@ -138,7 +138,7 @@ function makeUnit(number: string, title: string, blocks: BlockDef[]) {
     const figures = materialized.filter((block) => block.kind === "figure-ref").map((block) => block.assetId);
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId(number),
         workId,
@@ -160,30 +160,7 @@ function makeUnit(number: string, title: string, blocks: BlockDef[]) {
         citations: [],
         relations: [],
         assets: { formulaIds: formulas, tableIds: tables, figureIds: figures },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "codex:ntc44-step1", kind: "automated-agent", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte.",
-                },
-                ...(formulas.length + tables.length + figures.length > 0
-                    ? [
-                          {
-                              issueId: `ntc2018-${number.replaceAll(".", "-")}-assets`,
-                              type: "asset-review",
-                              severity: "blocking",
-                              note: "Formule, tabelle e figure sono separate e collocate nel flusso originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale.",
-                          },
-                      ]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -743,12 +720,12 @@ async function main() {
     }
     const manifest = {
         $schema: "urn:structural-codes:schema:asset-manifest:v2",
-        schemaVersion: "2.0.0-alpha.1",
+        schemaVersion: "2.0.0-alpha.2",
         recordType: "asset-manifest",
         document: "ntc2018",
         section: "4.4-step1",
         sourceId,
-        status: "transcribed-unreviewed",
+        status: "draft",
         formulas: formulaDefs.map(formulaAsset),
         tables,
         figures: [figure],

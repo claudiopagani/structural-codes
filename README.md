@@ -2,24 +2,29 @@
 
 Corpus open source, machine-readable e verificabile della normativa strutturale
 italiana. Il perimetro iniziale comprende NTC 2018, Circolare 7/2019, unità
-canoniche, formule, tabelle, figure, relazioni, provenance, workflow editoriale
+canoniche, formule, tabelle, figure, relazioni, provenance, stato di verifica
 e strumenti di validazione.
 
 > [!WARNING]
-> Structural Codes non è una fonte normativa ufficiale e il corpus non è
-> completamente validato. La pubblicazione del package su npm significa che un
+> Structural Codes non è una fonte normativa ufficiale e il corpus non è una
+> pubblicazione normativa. La pubblicazione del package su npm significa che un
 > artefatto versionato è disponibile alla community; non significa che ogni
-> trascrizione o relazione sia stata approvata. Per usi professionali o
-> giuridicamente rilevanti verificare sempre gli atti indicati nel
-> [source registry](sources/registry/sources.v2.json).
+> trascrizione o relazione sia stata pubblicata o approvata. Per usi
+> professionali o giuridicamente rilevanti verificare sempre gli atti indicati
+> nel [source registry](sources/registry/sources.v2.json).
 
 ## Stato della prerelease
 
-La prima versione pubblica è `0.1.0-alpha.1`. Tutte le 1.745 unità canoniche
-sono attualmente nello stato `extracted`; nessuna viene promossa dalla release.
+La prima versione pubblica è `0.1.0-alpha.1`. La review umana integrale del
+testo delle NTC 2018 e della Circolare 7/2019 contro le rispettive fonti
+ufficiali è registrata al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690
+unità della Circolare, tutte con `review.status: "verified"`. Questa verifica
+non costituisce una seconda review indipendente e non equivale alla pubblicazione
+di una fonte normativa ufficiale.
 I 302 collegamenti Circolare → NTC presenti nel corpus sono relazioni esplicite
-ma ancora `proposed`. Le possibili corrispondenze ricavate dalla sola
-numerazione restano diagnostica separata e non sono usate come fonte canonica.
+ma ancora `proposed` e non sono stati promossi da questa review. Le possibili
+corrispondenze ricavate dalla sola numerazione restano diagnostica separata e
+non sono usate come fonte canonica.
 
 Una prerelease alpha consente di ispezionare, integrare e correggere il corpus
 mentre schema e API possono ancora cambiare. Non va interpretata come
@@ -95,24 +100,19 @@ trasformazioni. Formule, tabelle e figure sono asset canonici richiamati da ID.
 Il source registry identifica il PDF editoriale autorevole; i PDF originali
 non sono redistribuiti.
 
-## Workflow machine-readable
+## Verifica machine-readable
 
-Lo stato è registrato per unità in `workflow.status`:
+Lo stato editoriale minimo è registrato per unità in `review.status`:
 
-- `draft`: record di lavoro non ancora acquisito come estrazione canonica;
-- `extracted`: struttura ed evidence presenti, ma confronto umano integrale non
-  completato;
-- `source-checked`: confronto richiesto con la fonte ufficiale completato e
-  registrato; non implica la seconda review;
-- `double-reviewed`: secondo controllo indipendente previsto dal workflow
-  completato;
-- `published`: unità inclusa nel perimetro editoriale dichiarato del corpus;
-- `superseded`: unità conservata per tracciabilità ma sostituita da una versione
-  successiva.
+- `draft`: contenuto nuovo non ancora verificato contro la fonte ufficiale;
+- `verified`: contenuto verificato umanamente contro la fonte ufficiale.
 
-`extracted` non significa validato. `source-checked` non significa
-`double-reviewed`. Il package npm può essere pubblicato mentre le unità restano
-in review.
+La provenance tecnica resta nei blocchi evidence: source ID, pagine, hash,
+trasformazioni e regioni quando disponibili. La regione non è un requisito
+dello stato `verified`. Lo stato della release appartiene al package e al
+manifest, non alle unità. La validità normativa, incluso `superseded`, resta
+separata in `validity.status`. Le relazioni Circolare → NTC mantengono il loro
+stato indipendente e non determinano la verifica del testo.
 
 ## Provenance ed evidence
 
@@ -132,7 +132,8 @@ npm run review:diff -- --unit corpus/units/ntc2018/4.1.json
 ## Viewer per la community review
 
 Il viewer comparato offre tre modalità: NTC 2018, Circolare 7/2019 e NTC 2018 + Circolare. La vista combinata usa soltanto le relazioni esplicite del corpus,
-supporta 0..n unità della Circolare e marca i collegamenti non revisionati.
+supporta 0..n unità della Circolare e distingue i collegamenti `proposed` da
+quelli eventualmente confermati.
 
 Gli artefatti web sono statici e rigenerabili: un manifest iniziale piccolo,
 indici per documento, 153 chunk per sezione significativa, relazioni esplicite
@@ -153,7 +154,7 @@ Le correzioni si fanno nel corpus o nei generatori, mai sotto
 ## Structural Codes, Structural Checks e OCFEM
 
 - `structural-codes` contiene normativa strutturata, riferimenti, provenance,
-  relazioni e workflow di review;
+  relazioni e stato di verifica;
 - `structural-checks-ts` contiene algoritmi, calcoli e verifiche strutturali;
 - OCFEM può consumare versioni pubblicate dei due progetti, ma non è la source
   of truth e nessuno dei due package dipende dal prodotto OCFEM.
@@ -194,7 +195,7 @@ La procedura completa è documentata in [docs/release.md](docs/release.md).
 
 La strategia SemVer è:
 
-- `alpha`: corpus incompleto o non interamente revisionato; schema/API mobili;
+- `alpha`: schema/API mobili e release non stabile;
 - `beta`: struttura e API sufficientemente stabili, review ancora in corso;
 - stable: perimetro dichiarato e adeguatamente revisionato.
 

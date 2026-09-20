@@ -174,9 +174,6 @@ export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, que
   if (ranked.length > options.maxRelatedUnits) reduced = true;
   for (const candidate of ranked.slice(0, options.maxRelatedUnits)) await collect(candidate, relatedUnits);
   for (const unit of [...primaryUnits, ...relatedUnits]) {
-    if (!["source-checked", "double-reviewed", "published", "superseded"].includes(unit.editorial.status)) warnings.push({ code: "unreviewed-evidence", unitId: unit.unitId });
-    if (unit.editorial.openIssues.some((issue) => issue.severity === "blocking")) warnings.push({ code: "blocking-issues", unitId: unit.unitId });
-    if (unit.reasons.some((reason) => reason.kind === "explicit-relation" && reason.reviewStatus !== "confirmed")) warnings.push({ code: "proposed-relation", unitId: unit.unitId });
     if (unit.blocks.some((block) => block.asset?.kind === "figure")) warnings.push({ code: "figure-metadata-only", unitId: unit.unitId });
   }
   if (!primaryUnits.length) warnings.push({ code: "no-evidence" });

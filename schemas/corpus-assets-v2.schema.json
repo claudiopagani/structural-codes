@@ -23,7 +23,7 @@
     },
     "schemaVersion": {
       "type": "string",
-      "const": "2.0.0-alpha.1"
+      "const": "2.0.0-alpha.2"
     },
     "recordType": {
       "type": "string",
@@ -47,8 +47,8 @@
     "status": {
       "type": "string",
       "enum": [
-        "transcribed-unreviewed",
-        "source-checked"
+        "draft",
+        "verified"
       ]
     },
     "formulas": {

@@ -10,7 +10,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 const scopedFormulaAudit = process.argv.includes("--formulas-301-302");
 const scopedFormulaUnits = new Set(["C8.8.5.3", "C8.8.5.4", "C8.8.5.5"]);
@@ -69,11 +69,7 @@ function makeUnit(official: string, title: string, parent: string, ancestors: st
   const blocks: Block[] = [];
   const headingBlockId = addText(blocks, [{ page: location[0], start: location[1], end: location[1] }], official + " " + title, "heading");
   build(blocks);
-  const record = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: currentUnit, workId: WORK_ID, expressionId: EXPRESSION_ID, kind: "paragraph", numbering: { official, sortKey: official.slice(1).split(".").map((part) => part.padStart(3, "0")).join(".") }, title, titleBlockId: headingBlockId, hierarchy: { parentId: unitId(parent), ancestorIds: ancestors.map(unitId), position }, validity: { from: null, to: null, status: "unknown", asOf: TODAY }, blocks, citations: [], relations: relation(official, headingBlockId), assets: { formulaIds: formulas.map(formulaId), tableIds: [], figureIds: [] }, workflow: { status: "extracted", createdBy: { actorId: "generator:circ87:step3c", kind: "script", toolVersion: VERSION }, createdAt: CREATED_AT, reviews: [], openIssues: [
-    { issueId: `circ2019-${official.toLowerCase()}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente." },
-    { issueId: `circ2019-${official.toLowerCase()}-relation`, type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." },
-    ...(formulas.length ? [{ issueId: `circ2019-${official.toLowerCase()}-formula-review`, type: "asset-review", severity: "blocking", note: "Le formule devono essere sottoposte a verifica umana, glifo per glifo, sul render ufficiale." }] : []),
-  ] } };
+  const record = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: currentUnit, workId: WORK_ID, expressionId: EXPRESSION_ID, kind: "paragraph", numbering: { official, sortKey: official.slice(1).split(".").map((part) => part.padStart(3, "0")).join(".") }, title, titleBlockId: headingBlockId, hierarchy: { parentId: unitId(parent), ancestorIds: ancestors.map(unitId), position }, validity: { from: null, to: null, status: "unknown", asOf: TODAY }, blocks, citations: [], relations: relation(official, headingBlockId), assets: { formulaIds: formulas.map(formulaId), tableIds: [], figureIds: [] }, review: { status: "draft" } };
   writeFileSync(join(UNITS, `${official.toLowerCase()}.json`), JSON.stringify(record, null, 2) + "\n", "utf8");
 }
 const r = (page: number, start: number, end = start): Range[] => [{ page, start, end }];
@@ -87,7 +83,7 @@ const formulas = [
   f("C8.8.5.5", "C8.8.5.5", 302, "V_u=V_c+V_N+V_s\\quad V_c=0.8A_ck\\sqrt{f_c}\\quad V_N=N\\dfrac{h-x}{2L_s}\\quad V_s=\\dfrac{A_{sw}}{s}f_yz"),
 ];
 mkdirSync(ASSETS, { recursive: true });
-writeFileSync(join(ASSETS, "C8.8-step1.json"), JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C8.8-step1", sourceId: SOURCE_ID, status: "transcribed-unreviewed", formulas, tables: [], figures: [] }, null, 2) + "\n", "utf8");
+writeFileSync(join(ASSETS, "C8.8-step1.json"), JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C8.8-step1", sourceId: SOURCE_ID, status: "draft", formulas, tables: [], figures: [] }, null, 2) + "\n", "utf8");
 
 makeUnit("C8.8.5.3", "ANALISI NON LINEARE STATICA", "C8.8.5", ["C8", "C8.8", "C8.8.5"], 3, [300, 56], (blocks) => {
   addProse(blocks, r(300, 57, 61)); addFormulaRef(blocks, r(301, 3), "C8.8.5.1"); addText(blocks, r(301, 4), "dove:");

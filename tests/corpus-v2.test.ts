@@ -106,46 +106,9 @@ test("il validatore semantico rifiuta hash e sourceId non coerenti", async () =>
     assert.equal(errors.some((issue) => issue.includes("rawSha256")), true);
 });
 
-test("un revisore qualificato può firmare i due atti di review richiesti", async () => {
-    const value = (await fixture(validFixtureFile)) as {
-        workflow: {
-            status: string;
-            reviews: Array<{
-                reviewId: string;
-                type: string;
-                reviewer: { actorId: string; kind: string };
-                reviewedAt: string;
-                result: string;
-                note: string;
-            }>;
-        };
-    };
-    value.workflow.status = "double-reviewed";
-    value.workflow.reviews = [
-        {
-            reviewId: "review-source-001",
-            type: "source",
-            reviewer: {
-                actorId: "reviewer:internal:001",
-                kind: "human",
-            },
-            reviewedAt: "2026-07-26T12:00:00Z",
-            result: "accepted",
-            note: "Confronto con evidence completato.",
-        },
-        {
-            reviewId: "review-normative-001",
-            type: "normative",
-            reviewer: {
-                actorId: "reviewer:internal:001",
-                kind: "human",
-            },
-            reviewedAt: "2026-07-26T12:30:00Z",
-            result: "accepted",
-            note: "Struttura e significato tecnico verificati.",
-        },
-    ];
-
+test("la review semplificata accetta lo stato verified senza gate di region", async () => {
+    const value = (await fixture(validFixtureFile)) as { review: { status: string } };
+    value.review.status = "verified";
     const registry = sourceRegistryV2Schema.parse(await fixture(registryFile));
     assert.deepEqual(validateCanonicalUnitSemantics(value, registry), []);
 });

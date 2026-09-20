@@ -8,7 +8,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ45-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const evidenceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
 
@@ -114,7 +114,7 @@ function makeUnit(number: string, title: string, specs: BlockSpec[]): Record<str
     const blocks = specs.map((spec, index) => block(number, index, spec));
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: uid(number),
         workId,
@@ -146,26 +146,7 @@ function makeUnit(number: string, title: string, specs: BlockSpec[]): Record<str
             },
         ],
         assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "codex:circ45-step1", kind: "automated-agent", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `circ2019-${number.toLowerCase().replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte.",
-                },
-                {
-                    issueId: `circ2019-${number.toLowerCase().replaceAll(".", "-")}-relation-review`,
-                    type: "relation-review",
-                    severity: "blocking",
-                    note: "Il collegamento proposto con l’unità omologa NTC 2018 richiede conferma umana sul contenuto completo.",
-                },
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 

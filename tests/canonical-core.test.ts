@@ -13,22 +13,18 @@ interface CanonicalUnit {
         kind: string;
         assetId?: string;
         text?: { raw: string; normalized: string };
-        evidence?: { transformations?: Array<{ operation: string }> };
+        evidence?: {
+            region?: unknown;
+            transformations?: Array<{ operation: string }>;
+        };
     }>;
     assets: {
         formulaIds: string[];
         tableIds: string[];
         figureIds: string[];
     };
-    workflow: {
-        status: string;
-        reviews: Array<{
-            type: string;
-            result: string;
-            reviewer: { kind: string };
-        }>;
-        openIssues: Array<{ severity: string; type: string }>;
-    };
+    relations: Array<{ review: { status: string } }>;
+    review: { status: "draft" | "verified" };
 }
 
 type TableAsset = {
@@ -80,16 +76,26 @@ async function loadUnits(): Promise<CanonicalUnit[]> {
 
 test("il manifest descrive l'intero corpus canonico", async () => {
     const manifest = JSON.parse(await readFile(manifestFile, "utf8")) as {
+        asOf: string;
         status: string;
+        review: { status: string; scope: string; against: string; asOf: string; documents: Record<string, string> };
         documents: Record<string, unknown>;
     };
     const units = await loadUnits();
 
-    assert.equal(manifest.status, "canonical-partially-source-checked");
+    assert.equal(manifest.status, "verified");
+    assert.equal(manifest.asOf, "2026-09-20");
     assert.deepEqual(Object.keys(manifest.documents).sort(), [
         "circ2019",
         "ntc2018",
     ]);
+    assert.deepEqual(manifest.review, {
+        status: "complete",
+        scope: "integral-text",
+        against: "official-source",
+        asOf: "2026-09-20",
+        documents: { ntc2018: "verified", circ2019: "verified" },
+    });
     assert.equal(units.length, 1745);
     assert.equal(
         units.reduce(
@@ -102,84 +108,23 @@ test("il manifest descrive l'intero corpus canonico", async () => {
     );
 });
 
-const sourceCheckedUnitIds = new Set([
-    "urn:structural-codes:it:unit:ntc2018:1",
-    "urn:structural-codes:it:unit:ntc2018:1.1",
-    "urn:structural-codes:it:unit:ntc2018:2",
-    "urn:structural-codes:it:unit:ntc2018:2.1",
-    "urn:structural-codes:it:unit:ntc2018:2.2",
-    "urn:structural-codes:it:unit:ntc2018:2.2.1",
-    "urn:structural-codes:it:unit:ntc2018:2.2.2",
-    "urn:structural-codes:it:unit:ntc2018:2.2.3",
-    "urn:structural-codes:it:unit:ntc2018:2.2.4",
-    "urn:structural-codes:it:unit:ntc2018:2.2.5",
-    "urn:structural-codes:it:unit:ntc2018:2.2.6",
-    "urn:structural-codes:it:unit:ntc2018:2.3",
-    "urn:structural-codes:it:unit:ntc2018:2.4",
-    "urn:structural-codes:it:unit:ntc2018:2.4.1",
-    "urn:structural-codes:it:unit:ntc2018:2.4.2",
-    "urn:structural-codes:it:unit:ntc2018:2.4.3",
-    "urn:structural-codes:it:unit:ntc2018:2.5",
-    "urn:structural-codes:it:unit:ntc2018:2.5.1",
-    "urn:structural-codes:it:unit:ntc2018:2.5.1.1",
-    "urn:structural-codes:it:unit:ntc2018:2.5.1.2",
-    "urn:structural-codes:it:unit:ntc2018:2.5.1.3",
-    "urn:structural-codes:it:unit:ntc2018:2.5.2",
-    "urn:structural-codes:it:unit:ntc2018:2.5.3",
-    "urn:structural-codes:it:unit:ntc2018:2.6",
-    "urn:structural-codes:it:unit:ntc2018:2.6.1",
-    "urn:structural-codes:it:unit:ntc2018:2.6.2",
-    "urn:structural-codes:it:unit:ntc2018:4.1",
-]);
-
-function isSourceChecked(unit: CanonicalUnit) {
-    const chapter42Prefixes = [
-        "urn:structural-codes:it:unit:ntc2018:4.2",
-        "urn:structural-codes:it:unit:circ2019:c4.2",
-    ];
-    return sourceCheckedUnitIds.has(unit.id) ||
-        unit.id.startsWith("urn:structural-codes:it:unit:ntc2018:3") ||
-        chapter42Prefixes.some((prefix) => unit.id === prefix || unit.id.startsWith(`${prefix}.`));
-}
-
-test("le unità verificate sono source-checked, le altre restano estratte e bloccate dalla review", async () => {
+test("la baseline registra la review integrale senza workflow storico", async () => {
     const units = await loadUnits();
-
     for (const unit of units) {
-        if (isSourceChecked(unit)) {
-            assert.equal(unit.workflow.status, "source-checked", unit.id);
-            assert.equal(
-                unit.workflow.openIssues.some(
-                    (issue) =>
-                        issue.severity === "blocking" &&
-                        issue.type === "normalization-review",
-                ),
-                false,
-                unit.id,
-            );
-            assert.equal(
-                unit.workflow.reviews.some(
-                    (review) =>
-                        review.type === "source" &&
-                        review.result === "accepted" &&
-                        review.reviewer.kind === "human",
-                ),
-                true,
-                unit.id,
-            );
-        } else {
-            assert.equal(unit.workflow.status, "extracted", unit.id);
-            assert.equal(
-                unit.workflow.openIssues.some(
-                    (issue) =>
-                        issue.severity === "blocking" &&
-                        issue.type === "normalization-review",
-                ),
-                true,
-                unit.id,
-            );
-        }
+        assert.equal(unit.review.status, "verified", unit.id);
+        assert.equal("workflow" in unit, false, unit.id);
+        assert.equal("openIssues" in unit, false, unit.id);
     }
+});
+
+test("la source review non promuove le relazioni Circolare-NTC", async () => {
+    const units = await loadUnits();
+    assert.equal(
+        units.flatMap((unit) => unit.relations).every((relation) =>
+            relation.review.status === "proposed",
+        ),
+        true,
+    );
 });
 
 test("il corpus canonico non contiene placeholder editoriali", async () => {

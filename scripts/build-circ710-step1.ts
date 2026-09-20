@@ -474,7 +474,7 @@ for (const unit of unitsToWrite) {
         : [];
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId: "it-mit:circ:2019-01-21:7-csllpp",
@@ -497,54 +497,19 @@ for (const unit of unitsToWrite) {
             tableIds: [],
             figureIds: blocks.filter(({ kind }) => kind === "figure-ref").map(({ assetId }: any) => assetId),
         },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:circ710-step1", kind: "script", toolVersion: profile },
-            createdAt: "2026-08-09T12:00:00Z",
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `circ2019-${lower.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-                },
-                {
-                    issueId: `circ2019-${lower.replaceAll(".", "-")}-missing-text-layer`,
-                    type: "missing-region",
-                    severity: "blocking",
-                    note: "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF.",
-                },
-                ...(unit.number === "C7.10.1" || unit.number === "C7.10.4.1"
-                    ? [{
-                          issueId: `circ2019-${lower.replaceAll(".", "-")}-duplicate-figure-number`,
-                          type: "normalization-review",
-                          severity: "blocking",
-                          note: "La fonte ufficiale usa il numero Figura C7.10.2 per due figure graficamente distinte; gli asset sono mantenuti separati senza correggere la numerazione della fonte.",
-                      }]
-                    : []),
-                ...(includeRelations
-                    ? [{
-                          issueId: `circ2019-${lower.replaceAll(".", "-")}-relation`,
-                          type: "relation-review",
-                          severity: "blocking",
-                          note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
-                      }]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(outputDirectory, `${lower}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C7.10",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulas.map(([number, unit, page, latex]) => ({
         id: assetId("formula", number),
         unitId: unitId(unit),

@@ -32,7 +32,7 @@ type Block = {
     text?: { raw: string; normalized: string; normalizationVersion: string; inline?: Inline[] };
     [key: string]: unknown;
 };
-type Unit = { blocks: Block[]; workflow?: { openIssues?: Array<{ issueId?: string; [key: string]: unknown }> } };
+type Unit = { blocks: Block[] };
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const profile = "ntc7-user-latest-step13-0.1.0";
@@ -169,7 +169,6 @@ await writeJson("corpus/assets/ntc2018/7.6-step1.json", step6);
 
 const wood = await readJson<Unit>("corpus/units/ntc2018/7.7.3.json");
 wood.blocks = wood.blocks.filter((block) => block.text?.normalized !== ".");
-if (wood.workflow?.openIssues) wood.workflow.openIssues = wood.workflow.openIssues.filter((issue) => issue.issueId !== "ntc2018-7-7-3-source-anomaly-standalone-period");
 await writeJson("corpus/units/ntc2018/7.7.3.json", wood);
 
 const step78 = await readJson<Manifest>("corpus/assets/ntc2018/7.7-78-step2.json");

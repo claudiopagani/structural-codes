@@ -12,7 +12,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitNumber = "C4.2.12.1.5.4.1";
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
@@ -92,7 +92,7 @@ const blocks: GeneratedBlock[] = [
 const formulaRows = [formula121, formula122, formula123, formula124, formula125];
 const unit = {
   $schema: "urn:structural-codes:schema:canonical-unit:v2",
-  schemaVersion: "2.0.0-alpha.2",
+  schemaVersion: "2.0.0-alpha.3",
   recordType: "canonical-unit",
   id: uid(unitNumber),
   workId,
@@ -107,17 +107,17 @@ const unit = {
   citations: [],
   relations: [],
   assets: { formulaIds: formulaRows.map((formula) => formulaId(formula.number)), tableIds: [], figureIds: [figure33] },
-  workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2w", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: "circ2019-C4-2-12-1-5-4-1-source-review", type: "normalization-review", severity: "blocking", note: "Record trascritto dal render dell’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con la pagina fonte." }, { issueId: "circ2019-C4-2-12-1-5-4-1-assets-review", type: "asset-review", severity: "blocking", note: "Le formule C4.2.121–C4.2.125 e la Figura C4.2.33 richiedono revisione umana indipendente." }] },
+  review: { status: "draft" },
 };
 
 const manifest = {
   $schema: "urn:structural-codes:schema:asset-manifest:v2",
-  schemaVersion: "2.0.0-alpha.1",
+  schemaVersion: "2.0.0-alpha.2",
   recordType: "asset-manifest",
   document: "circ2019",
   section: "C4.2-step2w",
   sourceId,
-  status: "transcribed-unreviewed",
+  status: "draft",
   formulas: formulaRows.map((formula) => ({ id: formulaId(formula.number), unitId: uid(unitNumber), officialNumber: formula.number, pdfPage: formula.page, latex: formula.latex })),
   tables: [],
   figures: [{ id: figure33, unitId: uid(unitNumber), officialNumber: "C4.2.33", pdfPage: 140, caption: "Figura C4.2.33 – Anime di profili sottili", alt: "Anime di profili sottili", imagePath: "figures/circ2019/figc4.2.33.png", region: figure33Region, sha256: "193451a389da73fb503ad5d27e61e95184010935550279e3ca3f77d78bf4310a" }],

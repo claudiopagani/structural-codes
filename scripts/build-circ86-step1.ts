@@ -9,7 +9,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 
 type Range = { page: number; start: number; end: number };
@@ -90,7 +90,7 @@ textBlock(blocks, { page: 269, start: 49, end: 51 }, "Per quanto riguarda gli in
 
 const record = {
   $schema: "urn:structural-codes:schema:canonical-unit:v2",
-  schemaVersion: "2.0.0-alpha.2",
+  schemaVersion: "2.0.0-alpha.3",
   recordType: "canonical-unit",
   id: unitId("C8.6"),
   workId: WORK_ID,
@@ -109,26 +109,7 @@ const record = {
   citations: [],
   relations: relation(headingBlockId),
   assets: { formulaIds: [], tableIds: [], figureIds: [] },
-  workflow: {
-    status: "extracted",
-    createdBy: { actorId: "generator:circ86:step1", kind: "script", toolVersion: VERSION },
-    createdAt: CREATED_AT,
-    reviews: [],
-    openIssues: [
-      {
-        issueId: "circ2019-c8.6-source-review",
-        type: "normalization-review",
-        severity: "blocking",
-        note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente.",
-      },
-      {
-        issueId: "circ2019-c8.6-relation",
-        type: "relation-review",
-        severity: "blocking",
-        note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana.",
-      },
-    ],
-  },
+  review: { status: "draft" },
 };
 
 writeFileSync(OUT, JSON.stringify(record, null, 2) + "\n", "utf8");

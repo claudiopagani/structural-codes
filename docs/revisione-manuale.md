@@ -35,8 +35,9 @@ rigenerabili. La fonte editoriale resta sempre il record in `corpus/units/`.
 6. Tracciare ogni differenza non banale in
    `blocks[].evidence.transformations` e rigenerare `rawSha256` e
    `normalizedSha256` pertinenti con gli strumenti del repository.
-7. Aggiornare lo stato e le issue di workflow solo quando il controllo richiesto
-   è realmente concluso.
+7. Aggiornare `review.status` a `verified` soltanto quando il controllo umano
+   contro la fonte ufficiale è realmente concluso; lasciare le issue soltanto
+   se descrivono un difetto reale ancora presente nel contenuto.
 
 ## Verifica
 

@@ -10,7 +10,7 @@ const SOURCE_ID = "circ-7-2019";
 const WORK_ID = "it-mit:circ:2019-01-21:7-csllpp";
 const EXPRESSION_ID = WORK_ID + ":original-it";
 const TODAY = "2026-08-09";
-const CREATED_AT = "2026-08-09T12:00:00Z";
+
 const VERSION = "circ8-editorial-profile-0.2.0";
 const scopedPages279To284 = process.argv.includes("--pages-279-284");
 const scopedUnits279To284 = new Set([
@@ -152,7 +152,7 @@ function makeUnit(official: string, title: string, parent: string, ancestors: st
   const heading = official + " " + title;
   const headingBlockId = manualHeadings.has(official) ? addManual(blocks, 281, heading, "heading") : addText(blocks, headingRanges[official]!, heading, "heading");
   build(blocks);
-  const record = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: currentUnit, workId: WORK_ID, expressionId: EXPRESSION_ID, kind: "paragraph", numbering: { official, sortKey: official.slice(1).split(".").map((x) => x.padStart(3, "0")).join(".") }, title, titleBlockId: headingBlockId, hierarchy: { parentId: unitId(parent), ancestorIds: ancestors.map(unitId), position }, validity: { from: null, to: null, status: "unknown", asOf: TODAY }, blocks, citations: [], relations: relation(official, headingBlockId), assets: { formulaIds: assets, tableIds: [], figureIds: [] }, workflow: { status: "extracted", createdBy: { actorId: "generator:circ87:step2a", kind: "script", toolVersion: VERSION }, createdAt: CREATED_AT, reviews: [], openIssues: [{ issueId: "circ2019-" + official.toLowerCase() + "-source-review", type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente." }, { issueId: "circ2019-" + official.toLowerCase() + "-relation", type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." }, ...(assets.length ? [{ issueId: "circ2019-" + official.toLowerCase() + "-formula-review", type: "asset-review", severity: "blocking", note: "Le formule devono essere sottoposte a verifica umana, glifo per glifo, sul render ufficiale." }] : [])] } };
+  const record = { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: currentUnit, workId: WORK_ID, expressionId: EXPRESSION_ID, kind: "paragraph", numbering: { official, sortKey: official.slice(1).split(".").map((x) => x.padStart(3, "0")).join(".") }, title, titleBlockId: headingBlockId, hierarchy: { parentId: unitId(parent), ancestorIds: ancestors.map(unitId), position }, validity: { from: null, to: null, status: "unknown", asOf: TODAY }, blocks, citations: [], relations: relation(official, headingBlockId), assets: { formulaIds: assets, tableIds: [], figureIds: [] }, review: { status: "draft" } };
   writeFileSync(join(UNITS, official.toLowerCase() + ".json"), JSON.stringify(record, null, 2) + "\n", "utf8");
 }
 
@@ -242,4 +242,4 @@ const formulas = [
   { id: F18, unitId: unitId("C8.7.1.3.1.1"), officialNumber: "C8.7.1.18", pdfPage: 281, latex: "V_{t,lim}=\\frac{ltf_{btd}}{2.3b}\\sqrt{1+\\frac{\\sigma_0}{f_{btd}}}" },
 ];
 mkdirSync(UNITS, { recursive: true }); mkdirSync(ASSETS, { recursive: true });
-writeFileSync(join(ASSETS, "C8.7-step2a.json"), JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C8.7-step2a", sourceId: SOURCE_ID, status: "transcribed-unreviewed", formulas, tables: [], figures: [] }, null, 2) + "\n", "utf8");
+writeFileSync(join(ASSETS, "C8.7-step2a.json"), JSON.stringify({ $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C8.7-step2a", sourceId: SOURCE_ID, status: "draft", formulas, tables: [], figures: [] }, null, 2) + "\n", "utf8");

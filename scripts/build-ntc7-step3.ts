@@ -8,7 +8,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc7-editorial-profile-0.1.0";
-const createdAt = "2026-08-10T00:00:00Z";
+
 const unitDir = join(root, "corpus", "units", "ntc2018");
 const assetDir = join(root, "corpus", "assets", "ntc2018");
 
@@ -237,10 +237,10 @@ function ancestors(number: string): string[] {
 }
 
 function makeUnit(number: string, title: string, blocks: unknown[], formulas: string[] = [], tables: string[] = []) {
-    const issuePrefix = `ntc2018-${number.replaceAll(".", "-")}`;
+
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: uid(number),
         workId,
@@ -266,26 +266,7 @@ function makeUnit(number: string, title: string, blocks: unknown[], formulas: st
             tableIds: tables.map(tid),
             figureIds: [],
         },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:ntc7:step3", kind: "script", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `${issuePrefix}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte.",
-                },
-                ...tables.map((table) => ({
-                    issueId: `${issuePrefix}-${table}-review`,
-                    type: "asset-review",
-                    severity: "blocking",
-                    note: "La tabella è strutturata dal render ufficiale e richiede verifica umana cella per cella.",
-                })),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -442,12 +423,12 @@ const formulaRows = [
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7-step3",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulaRows.map(([id, unit, officialNumber, latex]) => ({
         id: fid(id),
         unitId: uid(unit),

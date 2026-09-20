@@ -7,12 +7,8 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc76-editorial-profile-0.1.0";
-const actor = {
-    actorId: "generator:ntc76:step1",
-    kind: "script",
-    toolVersion: profile,
-};
-const createdAt = "2026-08-09T00:00:00Z";
+
+
 
 const pageLines = new Map<number, string[]>();
 for (let page = 251; page <= 258; page += 1) {
@@ -651,7 +647,7 @@ const tables = [
             "ε = (235/f_yk)^0,5",
             "c/t_f: il rapporto tra la larghezza e lo spessore della parte in aggetto dell’ala definita nella Fig. 7.6.1",
             "d/t ed h/t: i rapporti tra massima dimensione esterna e spessore.",
-            "Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria.",
+            "Tabella strutturata dal render ufficiale.",
         ],
     },
     {
@@ -671,7 +667,7 @@ const tables = [
             [cell("275"), cell("0,32"), cell("0,24")],
             [cell("355"), cell("0,27"), cell("0,20")],
         ],
-        notes: ["Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Tabella strutturata dal render ufficiale."],
     },
     {
         id: tableIII,
@@ -698,7 +694,7 @@ const tables = [
                 cell("Per M^-: 0; Per M^+: 0,025 L", "\\text{Per }M^-:0;\\quad\\text{Per }M^+:0{,}025L"),
             ],
         ],
-        notes: ["Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Tabella strutturata dal render ufficiale."],
     },
     {
         id: tableIV,
@@ -722,7 +718,7 @@ const tables = [
             [cell("Positivo, M^+", "\\text{Positivo, }M^+"), cell("Colonna esterna"), cell("Trave trasversale assente o priva di connettori; Soletta disposta in modo da raggiungere o superare il filo esterno della colonna disposta in asse forte"), cell("bmagg/2 + 0,7 hc/2", "b_{magg}/2+0{,}7h_c/2")],
             [cell("Positivo, M^+", "\\text{Positivo, }M^+"), cell("Colonna esterna"), cell("Disposizioni differenti"), cell("bmagg/2 ≤ 0,05 L", "b_{magg}/2\\le0{,}05L")],
         ],
-        notes: ["Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+        notes: ["Tabella strutturata dal render ufficiale."],
     },
 ];
 
@@ -770,21 +766,10 @@ for (const spec of units) {
     const figureIds = blocks.filter(({ kind }) => kind === "figure-ref").map(({ assetId }) => assetId);
     const parentParts = spec.number.split(".");
     parentParts.pop();
-    const issues = [
-        {
-            issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-source-review`,
-            type: "normalization-review",
-            severity: "blocking",
-            note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente.",
-        },
-        ...((formulaIds.length || tableIds.length || figureIds.length)
-            ? [{ issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale." }]
-            : []),
-        ...(spec.extraIssues ?? []),
-    ];
+
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId,
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -803,25 +788,19 @@ for (const spec of units) {
         citations: [],
         relations: [],
         assets: { formulaIds, tableIds, figureIds },
-        workflow: {
-            status: "extracted",
-            createdBy: actor,
-            createdAt,
-            reviews: [],
-            openIssues: issues,
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(outputDirectory, `${spec.number}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7.6-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: Object.entries(formulaLatex).map(([suffix, value]) => ({
         id: assetId("formula", suffix),
         unitId: idFor(value.unit),

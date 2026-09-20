@@ -85,5 +85,5 @@ test("NTC 7 user latest: Tab. 7.6.II e III e Tab. 7.8.II", async () => {
 test("NTC 7 user latest: rimuove il punto isolato prima di 7.7.3.1", async () => {
     const unit = await json("corpus/units/ntc2018/7.7.3.json");
     assert.equal(unit.blocks.some((value: any) => value.text?.normalized === "."), false);
-    assert.equal(unit.workflow.openIssues.some((value: any) => value.issueId === "ntc2018-7-7-3-source-anomaly-standalone-period"), false);
+    assert.equal(unit.review.status, "verified");
 });

@@ -7,12 +7,8 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc75-editorial-profile-0.1.0";
-const actor = {
-    actorId: "generator:ntc75:step1",
-    kind: "script",
-    toolVersion: profile,
-};
-const createdAt = "2026-08-09T00:00:00Z";
+
+
 
 const pageLines = new Map<number, string[]>();
 for (let page = 243; page <= 251; page += 1) {
@@ -325,7 +321,7 @@ const units: UnitSpec[] = [
                 issueId: "ntc2018-7-5-2-1-multipage-figure",
                 type: "missing-region",
                 severity: "blocking",
-                note: "La Fig. 7.5.1 è spezzata fra le pagine PDF 244 e 245; lo schema asset corrente conserva i due ritagli ufficiali consecutivi ma non esprime un unico asset multipagina. Verificare la resa editoriale prima della pubblicazione.",
+                note: "La Fig. 7.5.1 è spezzata fra le pagine PDF 244 e 245; lo schema asset corrente conserva i due ritagli ufficiali consecutivi ma non esprime un unico asset multipagina.",
             },
         ],
         blocks: [
@@ -658,21 +654,10 @@ for (const spec of units) {
     const figureIds = blocks.filter(({ kind }) => kind === "figure-ref").map(({ assetId }) => assetId);
     const parentParts = spec.number.split(".");
     parentParts.pop();
-    const issues = [
-        {
-            issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-source-review`,
-            type: "normalization-review",
-            severity: "blocking",
-            note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente.",
-        },
-        ...((formulaIds.length || tableIds.length || figureIds.length)
-            ? [{ issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabella e ritagli di figura sono stati separati e collocati nel flusso originario; resta obbligatoria la verifica umana puntuale." }]
-            : []),
-        ...(spec.extraIssues ?? []),
-    ];
+
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId,
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -691,13 +676,7 @@ for (const spec of units) {
         citations: [],
         relations: [],
         assets: { formulaIds, tableIds, figureIds },
-        workflow: {
-            status: "extracted",
-            createdBy: actor,
-            createdAt,
-            reviews: [],
-            openIssues: issues,
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(outputDirectory, `${spec.number}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
@@ -707,12 +686,12 @@ const figureSha = async (filename: string): Promise<string> =>
     createHash("sha256").update(await readFile(join(figuresDirectory, filename))).digest("hex");
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7.5-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: Object.entries(formulaLatex).map(([suffix, value]) => ({
         id: assetId("formula", suffix),
         unitId: idFor(value.unit),
@@ -737,7 +716,7 @@ const manifest = {
                 [{ text: "CD “B”", align: "center" }, { text: "2 < q_0 ≤ 4", latex: "2<q_0\\le4", align: "center" }, { text: "Classe 1 o 2", align: "center" }],
                 [{ text: "CD “A”", align: "center" }, { text: "q_0 > 4", latex: "q_0>4", align: "center" }, { text: "Classe 1", align: "center" }],
             ],
-            notes: ["Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria."],
+            notes: ["Tabella strutturata dal render ufficiale."],
         },
     ],
     figures: [

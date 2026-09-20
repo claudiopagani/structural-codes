@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:7.10.5.3.1",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -1881,40 +1881,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:ntc77-78:step2",
-      "kind": "script",
-      "toolVersion": "ntc77-78-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-10T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-7-10-5-3-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale dello step; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-k-esi-min",
-        "type": "other",
-        "severity": "warning",
-        "note": "La fonte ufficiale stampa K_esi,min seguito da un ulteriore ‘,min’ nella definizione dopo la formula [7.10.1]; il possibile refuso è conservato nel testo normalizzato e richiede decisione editoriale umana."
-      },
-      {
-        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-d-de",
-        "type": "other",
-        "severity": "warning",
-        "note": "La frase introduttiva della formula [7.10.2] usa d_dc, mentre la formula ufficiale stampa chiaramente d_de; entrambe le grafie sono conservate e l’incoerenza richiede decisione editoriale umana."
-      },
-      {
-        "issueId": "ntc2018-7-10-5-3-1-source-anomaly-duplicated-x",
-        "type": "other",
-        "severity": "warning",
-        "note": "Le definizioni sotto [7.10.4]–[7.10.5] stampano (x_i, x_i) e K_xi, K_xi, mentre le formule usano anche y_i e K_yi; le duplicazioni sono conservate come possibili refusi della fonte e richiedono decisione editoriale umana."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

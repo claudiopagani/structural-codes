@@ -20,7 +20,6 @@ const editorialTableNotePatterns = [
   /\bschema corrente\b/iu,
   /\bdescrizion[ei] (?:testuali|strutturat[ae])\b/iu,
   /\bissue bloccante\b/iu,
-  /\bprima della pubblicazione\b/iu,
 ];
 
 function visibleTableNotes(table: TableAsset) {

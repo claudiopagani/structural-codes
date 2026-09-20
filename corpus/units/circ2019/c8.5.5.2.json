@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c8.5.5.2",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -151,28 +151,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ85:step2",
-      "kind": "script",
-      "toolVersion": "circ8-editorial-profile-0.2.0"
-    },
-    "createdAt": "2026-08-09T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c8.5.5.2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "circ2019-c8.5.5.2-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

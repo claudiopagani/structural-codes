@@ -296,13 +296,13 @@ test("warning neutro di degradazione è visibile e dismissibile", async () => {
   assert.match(rootElement.querySelector(".scv-chat-markdown").textContent, /resta disponibile/u);
 });
 
-test("warning editoriali restano nei metadata UI e non vengono aggiunti alla prosa", async () => {
+test("warning operativi restano nei metadata UI e non vengono aggiunti alla prosa", async () => {
   const reply = result();
-  reply.evidence.warnings = [{ code: "unreviewed-evidence", unitId }];
+  reply.evidence.warnings = [{ code: "unresolved-reference", unitId }];
   await mount(h(ChatNTCPanel, props({ transport: transport(async () => reply) })));
   await submit();
   assert.equal(rootElement.querySelector(".scv-chat-markdown").textContent, reply.response.answer);
-  assert.match(rootElement.querySelector(".scv-chat-warnings").textContent, /Fonti non ancora revisionate integralmente/u);
+  assert.match(rootElement.querySelector(".scv-chat-warnings").textContent, /riferimento.*risolto/u);
 });
 
 const manifest = JSON.parse(await readFile(new URL("../public/data/codes/manifest.json", import.meta.url), "utf8"));

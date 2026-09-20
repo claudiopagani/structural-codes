@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "circ-7-2019";
 const profile = "circ6-manual-render-transcription-0.1.0";
-const createdAt = "2026-08-09T12:00:00Z";
+
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "circ2019");
 const assetDir = join(root, "corpus", "assets", "circ2019");
@@ -347,7 +347,7 @@ const units: UnitSpec[] = [
 ];
 
 const ntcFiles = new Set(await readdir(join(root, "corpus", "units", "ntc2018")));
-const mathUnits = new Set(["C6.4.1", "C6.4.2.1", "C6.4.3.1", "C6.5.3.1.2", "C6.6.1", "C6.6.2", "C6.8.1.1", "C6.8.6.2"]);
+
 
 function blockRecord(unit: UnitSpec, block: BlockSpec, index: number): any {
     const id = uid(unit.number);
@@ -379,7 +379,7 @@ for (const unit of units) {
     const hasNtcEquivalent = ntcFiles.has(relationTarget);
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId: "it-mit:circ:2019-01-21:7-csllpp",
@@ -394,30 +394,19 @@ for (const unit of units) {
         citations: [],
         relations: hasNtcEquivalent ? [{ relationId: `${id}#relation-001`, type: "clarifies", targetUnitId: `urn:structural-codes:it:unit:ntc2018:${unit.number.slice(1)}`, basis: "editorial", evidenceBlockIds: [`${id}#block-heading`], rationale: "Corrispondenza proposta tra numerazione omologa della Circolare e delle NTC; richiede conferma umana sul contenuto completo.", review: { status: "proposed", reviewedBy: null, reviewedAt: null } }] : [],
         assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:circ6:step2", kind: "script", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                { issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione." },
-                ...(hasNtcEquivalent ? [{ issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-relation`, type: "relation-review", severity: "blocking", note: "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana." }] : []),
-                ...(unit.manual ? [{ issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-missing-text-layer`, type: "missing-region", severity: "blocking", note: "Il layer testuale ufficiale della pagina PDF 187 non è sufficiente; il contenuto è stato trascritto manualmente dal render ufficiale." }] : []),
-                ...(mathUnits.has(unit.number) ? [{ issueId: `circ2019-${unit.number.toLowerCase().replaceAll(".", "-")}-inline-math`, type: "asset-review", severity: "blocking", note: "Le grandezze matematiche inline sono state segmentate in LaTeX; resta obbligatoria la verifica umana dei glifi e degli indici." }] : []),
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(join(unitDir, `${unit.number.toLowerCase()}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C6-step2",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [],
     tables: [],
     figures: [],

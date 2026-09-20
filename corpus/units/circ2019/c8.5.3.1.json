@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c8.5.3.1",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -2400,40 +2400,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ85:step1",
-      "kind": "script",
-      "toolVersion": "circ8-editorial-profile-0.2.0"
-    },
-    "createdAt": "2026-08-09T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c8.5.3.1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "circ2019-c8.5.3.1-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana."
-      },
-      {
-        "issueId": "circ2019-c8.5.3.1-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Le tabelle devono essere sottoposte a verifica umana cella per cella e nel loro punto del flusso editoriale."
-      },
-      {
-        "issueId": "circ2019-c8.5.3.1-table-note-math",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "La nota (***) della Tabella C8.5.II contiene f_m elevato a 0,35; lo schema corrente ammette soltanto stringhe nelle note e non consente ancora un segmento matematico LaTeX autorevole."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

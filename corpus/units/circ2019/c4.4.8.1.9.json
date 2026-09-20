@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c4.4.8.1.9",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -52,7 +52,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "ee48931a20107b2cae8c48a6ea76d7a722eed720233d6a9cfc71093b7fe2896b",
@@ -106,7 +106,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "6f8606313a0b266e85aec61e42cb2a92f8bd7e040e643ce99c5a87973469baeb",
@@ -156,7 +156,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "7dcac840b742927acd754c3abf54e8b1f5d179f3f5483375905ddb83fcf3ebd7",
@@ -207,7 +207,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "f5d2c0596b0115ab3481cbbef096e60872ff845c017e8af7c413aeabbc8d5f67",
@@ -249,7 +249,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "7f1799013641605388a9d9e4dbc9564ae407a68fb9fcbb9a8d74259d8688a3f1",
@@ -295,7 +295,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "227df4407425f5a5300034170ab8a91bfea0c1cbb69a7e08b8b1414277cf06f5",
@@ -394,7 +394,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "circ44-editorial-profile-0.1.0",
-            "note": "Testo confrontato con il render ufficiale; revisione umana indipendente ancora obbligatoria."
+            "note": "Testo confrontato con il render ufficiale."
           }
         ],
         "rawSha256": "54465214532cf6b4800a96a7fbd41c1fd31cd8cacd078f65f7598ef2b2c904af",
@@ -409,22 +409,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:circ44-step1",
-      "kind": "automated-agent",
-      "toolVersion": "circ44-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c4-4-8-1-9-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

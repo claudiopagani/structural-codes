@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c11.2.6",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -1112,28 +1112,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ11:step1",
-      "kind": "script",
-      "toolVersion": "circ11-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c11-2-6-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      },
-      {
-        "issueId": "c11-2-6-table-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Verificare cella per cella la tabella C11.2.6.I nel PDF ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

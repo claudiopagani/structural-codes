@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c3.3.1",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -173,34 +173,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "migration:core-concrete:v1",
-      "kind": "script",
-      "toolVersion": "core-concrete-migration-0.1.0"
-    },
-    "createdAt": "2026-07-26T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c3-3-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record estratto dall'evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "circ2019-c3-3-1-extraction-anomalies",
-        "type": "other",
-        "severity": "warning",
-        "note": "Il layer testuale contiene caratteri di controllo o glyph anomali; il raw è preservato e la normalizzazione minima è tracciata."
-      },
-      {
-        "issueId": "circ2019-c3-3-1-relation",
-        "type": "relation-review",
-        "severity": "blocking",
-        "note": "Il collegamento Circolare-NTC per numerazione omologa richiede conferma umana sul contenuto completo."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

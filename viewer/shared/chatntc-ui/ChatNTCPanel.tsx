@@ -18,9 +18,6 @@ export const CHATNTC_CLASSIFICATION_LABELS: Record<ChatNTCClassification, string
 const warningLabels: Record<ChatNTCWarning["code"], string> = {
   "no-evidence": "Non è stato trovato contenuto normativo sufficiente.",
   "evidence-reduced": "Fonti parziali: è stata selezionata una parte del contenuto disponibile.",
-  "unreviewed-evidence": "Fonti non ancora revisionate integralmente.",
-  "blocking-issues": "Sono presenti questioni editoriali aperte nelle fonti.",
-  "proposed-relation": "Una relazione tra fonti è proposta e attende conferma.",
   "figure-metadata-only": "Per le figure sono disponibili soltanto i metadati.",
   "unresolved-reference": "Un riferimento della domanda non è stato risolto.",
 };

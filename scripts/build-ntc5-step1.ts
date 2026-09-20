@@ -9,7 +9,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const ruleVersion = "ntc5-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Inline =
     | { kind: "text"; value: string }
@@ -529,7 +529,7 @@ function makeBlock(unitNumber: string, index: number, def: BlockDef): any {
             printedPage: String(def.page - 4),
             region: pageRegion(def.page),
             extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: ruleVersion },
-            transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario; resta da revisionare puntualmente." }],
+            transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario." }],
             rawSha256: sha256(def.assetId ?? blockId),
             normalizedSha256: sha256(def.assetId ?? blockId),
         };
@@ -605,7 +605,7 @@ function makeUnit(def: UnitDef): any {
     const parent = parentNumber(def.number);
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId,
@@ -624,18 +624,7 @@ function makeUnit(def: UnitDef): any {
         citations: [],
         relations: [],
         assets: ids,
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "codex:ntc5-step1", kind: "automated-agent", toolVersion: ruleVersion },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                { issueId: `ntc2018-${def.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." },
-                ...(Object.values(ids).some((items) => items.length > 0)
-                    ? [{ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." }]
-                    : []),
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -663,12 +652,12 @@ const cell = (text: string, extra: Record<string, unknown> = {}) => {
 
 const assetManifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "5.1-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: [
         { id: asset("formula", "5.1.1"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.1", pdfPage: 157, latex: "q_{L,a}=128{,}95\\left(\\frac{1}{L}\\right)^{0{,}25}\\;[\\mathrm{KN/m}]" },
         { id: asset("formula", "5.1.2"), unitId: "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", officialNumber: "5.1.2", pdfPage: 157, latex: "q_{L,b}=88{,}71\\left(\\frac{1}{L}\\right)^{0{,}38}\\;[\\mathrm{KN/m}]" },

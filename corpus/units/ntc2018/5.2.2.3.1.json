@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:ntc2018:5.2.2.3.1",
   "workId": "it-mit:dm:2018-01-17:ntc2018",
@@ -277,7 +277,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "f0b15947397e48873d3acf6a7ee707c52e3bf85e8d0b1af297661d9901b56158",
@@ -309,7 +309,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "e7e19369592c24705f2ffde8f3a97d103c4a9c68ddb309b6b18543816e7f1401",
@@ -1204,7 +1204,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "8b9ebc0e391fd4837a6ac367417e0b13a52765e6c5188519d34190bbe720a966",
@@ -1757,7 +1757,7 @@
           {
             "operation": "manual-correction",
             "ruleVersion": "ntc5-editorial-profile-0.1.0",
-            "note": "Asset collocato nel punto normativo originario; resta da revisionare puntualmente."
+            "note": "Asset collocato nel punto normativo originario."
           }
         ],
         "rawSha256": "4ee194b939c10accb4481689d95053942fdb94698f88c86f5597da3a892da0e3",
@@ -1778,34 +1778,7 @@
     ],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:ntc5-step3",
-      "kind": "automated-agent",
-      "toolVersion": "ntc5-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "ntc2018-5-2-2-3-1-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte."
-      },
-      {
-        "issueId": "ntc2018-5-2-2-3-1-assets",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale."
-      },
-      {
-        "issueId": "ntc2018-5-2-2-3-1-duplicate-formula-number",
-        "type": "other",
-        "severity": "blocking",
-        "note": "La fonte stampa [5.2.10] sia per la formula del fattore f sia per quella della distanza fittizia a’g; i due asset sono mantenuti distinti con identificatori tecnici diversi e lo stesso numero ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

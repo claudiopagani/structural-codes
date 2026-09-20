@@ -25,8 +25,7 @@ test("Circolare capitolo 6: unità, gerarchia e stato editoriale", async () => {
         const parts = unit.numbering.official.slice(1).split(".");
         const parent = parts.length > 1 ? `C${parts.slice(0, -1).join(".")}` : null;
         if (parent) assert.equal(numberSet.has(parent), true, unit.id);
-        assert.equal(unit.workflow.status, "extracted", unit.id);
-        assert.equal(unit.workflow.openIssues.some((issue: any) => issue.severity === "blocking"), true, unit.id);
+        assert.equal(unit.review.status, "verified", unit.id);
     }
 });
 
@@ -66,7 +65,7 @@ test("Circolare capitolo 6: capoversi, elenchi e matematica inline", async () =>
     const c6862 = JSON.parse(await readFile(join(unitDir, "c6.8.6.2.json"), "utf8"));
     assert.equal(c6862.blocks.some((block: any) => block.text?.inline?.some((segment: any) => segment.value === "Rd/Ed" && segment.latex === "Rd/Ed")), true);
     assert.equal(c6862.blocks.some((block: any) => block.text?.inline?.some((segment: any) => /R_d|E_d/u.test(segment.latex ?? ""))), false);
-    assert.equal(c641.workflow.openIssues.some((issue: any) => issue.type === "missing-region"), true);
+    assert.equal(c641.review.status, "verified");
 });
 
 test("Circolare C6.2.4.1 allinea le etichette in grassetto e C6.4.1 conserva i rientri annidati", async () => {

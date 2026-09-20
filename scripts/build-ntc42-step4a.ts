@@ -10,7 +10,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const profile = "ntc42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type TextOptions = { page: number; printedPage: string; wrap?: boolean; discretionaryHyphen?: boolean; manual?: boolean };
@@ -41,17 +41,17 @@ function formulaBlock(number: string, suffix: string, asset: string, options: Te
     return { blockId: `${unitId(number)}#block-${suffix}`, kind: "formula-ref", origin: "official", assetId: asset, evidence: { ...ev({ ...options, manual: true }, region, raw, raw), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: profile } } };
 }
 function tableBlock(number: string, suffix: string, asset: string, options: TextOptions, region: Region) {
-    const note = "Tabella strutturata dal render ufficiale; revisione umana cella per cella ancora obbligatoria.";
+    const note = "Tabella strutturata dal render ufficiale.";
     return { blockId: `${unitId(number)}#block-${suffix}`, kind: "table-ref", origin: "official", assetId: asset, evidence: { ...ev({ ...options, manual: true }, region, note, note), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: profile } } };
 }
 function parent(n: string) { const parts = n.split("."); return parts.length === 1 ? null : unitId(parts.slice(0, -1).join(".")); }
 function ancestors(n: string) { const parts = n.split("."); return parts.slice(1).map((_, i) => unitId(parts.slice(0, i + 1).join("."))); }
 function makeUnit(number: string, title: string, blocks: unknown[], formulas: string[] = [], tables: string[] = []) {
     return {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(number), workId, expressionId,
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: unitId(number), workId, expressionId,
         kind: number === "4.2.4" ? "section" : "subparagraph", numbering: { official: number, sortKey: number.split(".").map((x) => x.padStart(3, "0")).join(".") }, title, titleBlockId: `${unitId(number)}#block-heading`,
         hierarchy: { parentId: parent(number), ancestorIds: ancestors(number), position: Number(number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: formulas, tableIds: tables, figureIds: [] },
-        workflow: { status: "extracted", createdBy: { actorId: "codex:ntc42-step4a", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: `ntc2018-${number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }, ...(tables.length ? [{ issueId: `ntc2018-${number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "La tabella è strutturata e collocata nel punto originario; resta obbligatorio il confronto umano cella per cella con la fonte ufficiale." }] : [])] },
+        review: { status: "draft" },
     };
 }
 
@@ -97,7 +97,7 @@ const formulas = [
     ["4.2.40", "4.2.4.1.2.9", 105, "\\rho=\\left[\\frac{2V_{Ed}}{V_{c,Rd}}-1\\right]^2"],
 ] as const;
 const tableVII = tableId("4.2.vii");
-const table = { id: tableVII, unitId: unitId("4.2.4.1.1"), officialNumber: "4.2.VII", pdfPage: 101, caption: "Coefficienti di sicurezza per la resistenza delle membrature e la stabilità", columnCount: 2, headers: [], rows: [[{ text: "Resistenza delle Sezioni di Classe 1-2-3-4" }, { text: "γM0 = 1,05", latex: "\\gamma_{M0}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature" }, { text: "γM1 = 1,05", latex: "\\gamma_{M1}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature di ponti stradali e ferroviari" }, { text: "γM1 = 1,10", latex: "\\gamma_{M1}=1{,}10" }], [{ text: "Resistenza, nei riguardi della frattura, delle sezioni tese (indebolite dai fori)" }, { text: "γM2 = 1,25", latex: "\\gamma_{M2}=1{,}25" }]], notes: ["Trascritta dal render ufficiale; revisione umana cella per cella ancora obbligatoria."] };
+const table = { id: tableVII, unitId: unitId("4.2.4.1.1"), officialNumber: "4.2.VII", pdfPage: 101, caption: "Coefficienti di sicurezza per la resistenza delle membrature e la stabilità", columnCount: 2, headers: [], rows: [[{ text: "Resistenza delle Sezioni di Classe 1-2-3-4" }, { text: "γM0 = 1,05", latex: "\\gamma_{M0}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature" }, { text: "γM1 = 1,05", latex: "\\gamma_{M1}=1{,}05" }], [{ text: "Resistenza all’instabilità delle membrature di ponti stradali e ferroviari" }, { text: "γM1 = 1,10", latex: "\\gamma_{M1}=1{,}10" }], [{ text: "Resistenza, nei riguardi della frattura, delle sezioni tese (indebolite dai fori)" }, { text: "γM2 = 1,25", latex: "\\gamma_{M2}=1{,}25" }]], notes: ["Trascritta dal render ufficiale."] };
 
 const units = [
     makeUnit("4.2.4", "VERIFICHE", [
@@ -258,6 +258,6 @@ units.push(
 
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "4.2-step4a", sourceId, status: "transcribed-unreviewed", formulas: formulas.map(([n, unit, page, latex]) => ({ id: f(n), unitId: unitId(unit), officialNumber: n, pdfPage: page, latex })), tables: [table], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "4.2-step4a", sourceId, status: "draft", formulas: formulas.map(([n, unit, page, latex]) => ({ id: f(n), unitId: unitId(unit), officialNumber: n, pdfPage: page, latex })), tables: [table], figures: [] };
 await Promise.all([...units.map((unit) => writeFile(join(unitDirectory, `${unit.numbering.official}.json`), `${JSON.stringify(unit, null, 2)}\n`, "utf8")), writeFile(join(assetDirectory, "4.2-step4a.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8")]);
 console.log(`NTC 4.2 step4a: generate ${units.length} unità, ${formulas.length} formule e 1 tabella.`);

@@ -9,7 +9,7 @@ const sourceId = "gu-so8-2018-ntc";
 const workId = "it-mit:dm:2018-01-17:ntc2018";
 const expressionId = "it-mit:dm:2018-01-17:ntc2018:original-it";
 const ruleVersion = "ntc5-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 const unitId = (n: string) => `urn:structural-codes:it:unit:ntc2018:${n}`;
 const asset = (kind: "formula" | "table" | "figure", suffix: string) => `urn:structural-codes:it:asset:${kind}:ntc2018:${suffix}`;
 const sha256 = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
@@ -326,7 +326,7 @@ function transformations(raw: string, normalized: string): any[] {
 }
 function makeBlock(number: string, index: number, def: Block): any {
     const blockId = `${unitId(number)}#block-${def.kind === "heading" && index === 0 ? "heading" : `editorial-${String(index).padStart(3, "0")}`}`;
-    if (def.kind.endsWith("-ref")) return { blockId, kind: def.kind, origin: "official", assetId: def.assetId, evidence: { sourceId, pdfPage: def.page, printedPage: String(def.page - 4), region: pageRegion(def.page), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: ruleVersion }, transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario; resta da revisionare puntualmente." }], rawSha256: sha256(def.assetId ?? blockId), normalizedSha256: sha256(def.assetId ?? blockId) } };
+    if (def.kind.endsWith("-ref")) return { blockId, kind: def.kind, origin: "official", assetId: def.assetId, evidence: { sourceId, pdfPage: def.page, printedPage: String(def.page - 4), region: pageRegion(def.page), extraction: { method: "manual-transcription", tool: "codex-source-transcription", toolVersion: ruleVersion }, transformations: [{ operation: "manual-correction", ruleVersion, note: "Asset collocato nel punto normativo originario." }], rawSha256: sha256(def.assetId ?? blockId), normalizedSha256: sha256(def.assetId ?? blockId) } };
     const normalized = def.text ?? "";
     const raw = def.raw ?? normalized;
     return { blockId, kind: def.kind, origin: "official", text: { raw, normalized, normalizationVersion: ruleVersion, inline: def.inline }, evidence: { sourceId, pdfPage: def.page, printedPage: String(def.page - 4), region: pageRegion(def.page), extraction: { method: "pdf-text", tool: "pdfjs-dist", toolVersion: "4.10.38" }, transformations: transformations(raw, normalized), rawSha256: sha256(raw), normalizedSha256: sha256(normalized) } };
@@ -346,7 +346,7 @@ function makeUnit(def: UnitDef): any {
     const issues: any[] = [{ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con il render della fonte." }];
     if (Object.values(ids).some((items) => items.length)) issues.push({ issueId: `ntc2018-${def.number.replaceAll(".", "-")}-assets`, type: "asset-review", severity: "blocking", note: "Formule, tabelle e figure sono collocate nel punto originario; resta obbligatorio il confronto umano puntuale con la fonte ufficiale." });
     if (def.number === "5.2.2.3.1") issues.push({ issueId: "ntc2018-5-2-2-3-1-duplicate-formula-number", type: "other", severity: "blocking", note: "La fonte stampa [5.2.10] sia per la formula del fattore f sia per quella della distanza fittizia a’g; i due asset sono mantenuti distinti con identificatori tecnici diversi e lo stesso numero ufficiale." });
-    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parent(def.number) ? unitId(parent(def.number) as string) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, workflow: { status: "extracted", createdBy: { actorId: "codex:ntc5-step3", kind: "automated-agent", toolVersion: ruleVersion }, createdAt, reviews: [], openIssues: issues } };
+    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: unitId(def.number), workId, expressionId, kind: kind(def.number), numbering: { official: def.number, sortKey: def.number.split(".").map((part) => part.padStart(3, "0")).join(".") }, title: def.title, titleBlockId: `${unitId(def.number)}#block-heading`, hierarchy: { parentId: parent(def.number) ? unitId(parent(def.number) as string) : null, ancestorIds: ancestors(def.number), position: Number(def.number.split(".").at(-1)) }, validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: ids, review: { status: "draft" } };
 }
 const cell = (text: string, extra: Record<string, unknown> = {}) => ({ text, ...extra });
 const tables: any[] = [
@@ -391,7 +391,7 @@ const tables: any[] = [
         [cell("LM71 e SW/0"), cell("> 120", { latex: ">120" }), cell("V", { latex: "V" }), cell("1", { latex: "1" }), cell("f", { latex: "f" }), cell("1 × f × (LM71 “+” SW/0)", { latex: "1\\times f\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × 1 × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times1\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
         [cell("LM71 e SW/0"), cell("> 120", { latex: ">120" }), cell("120", { latex: "120" }), cell("α", { latex: "\\alpha" }), cell("1", { latex: "1" }), cell("α × 1 × (LM71 “+” SW/0)", { latex: "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × α × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
         [cell("LM71 e SW/0"), cell("≤ 120", { latex: "\\le120" }), cell("V", { latex: "V" }), cell("α", { latex: "\\alpha" }), cell("1", { latex: "1" }), cell("α × 1 × (LM71 “+” SW/0)", { latex: "\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("Φ × α × 1 × (LM71 “+” SW/0)", { latex: "\\Phi\\times\\alpha\\times1\\times(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" })],
-    ], notes: ["La composizione grafica delle intestazioni e delle celle è stata resa in celle strutturate; mantenere issue di revisione umana sul PDF."] },
+    ], notes: ["La composizione grafica delle intestazioni e delle celle è stata resa in celle strutturate."] },
     { id: asset("table", "5.2.iii"), unitId: unitId("5.2.3.1.2"), officialNumber: "5.2.III", pdfPage: 181, caption: "Tab. 5.2.III - Carichi mobili in funzione del numero di binari presenti sul ponte", columnCount: 5, headers: [[cell("Numero di binari"), cell("Binari / Carichi"), cell("Traffico normale: caso a(1)"), cell("Traffico normale: caso b(1)"), cell("Traffico pesante(2)")]], rows: [
         [cell("1"), cell("Primo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-"), cell("1,0 SW/2", { latex: "1{,}0\\,\\mathrm{SW/2}" })],
         [cell("2"), cell("Primo"), cell("1,0 (LM71 “+” SW/0)", { latex: "1{,}0\\,(\\mathrm{LM71}\\mathbin{\\text{“+”}}\\mathrm{SW/0})" }), cell("-"), cell("1,0 SW/2", { latex: "1{,}0\\,\\mathrm{SW/2}" })],
@@ -432,7 +432,7 @@ for (const [id, u, page, latex] of [
     ["5.2.2.6.3-k3", "5.2.2.6.3", 177, "\\begin{aligned}k_3&=\\frac{7{,}5-h_g}{3{,}7}\\quad\\text{per }3{,}8\\,\\mathrm{m}<h_g<7{,}5\\,\\mathrm{m};\\\\k_3&=0\\quad\\text{per }h_g\\ge7{,}5\\,\\mathrm{m}\\end{aligned}"],
 ] as Array<[string, string, number, string]>) formulas.push({ id: asset("formula", id), unitId: unitId(u), officialNumber: null, pdfPage: page, latex });
 
-const assetManifest: any = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step3", sourceId, status: "transcribed-unreviewed", formulas, tables, figures };
+const assetManifest: any = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "5.1-step3", sourceId, status: "draft", formulas, tables, figures };
 const unitOutput = join(root, "corpus", "units", "ntc2018");
 const assetOutput = join(root, "corpus", "assets", "ntc2018", "5.1-step3.json");
 await mkdir(unitOutput, { recursive: true });

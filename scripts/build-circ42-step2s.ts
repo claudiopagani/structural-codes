@@ -10,7 +10,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ42-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T00:00:00Z";
+
 
 type Region = { coordinateSystem: "pdf-points-top-left"; x: number; y: number; width: number; height: number };
 type Inline = { kind: "text" | "math"; value: string; latex?: string };
@@ -107,10 +107,10 @@ const units = [
 
 function makeUnit(item: typeof units[number]) {
     const formulaIds = item.number === unit21211 ? [formulaId(formula101.number)] : [];
-    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id: uid(item.number), workId, expressionId, kind: "subparagraph", numbering: { official: item.number, sortKey: item.number.replace(/^C/, "").split(".").map((part) => part.padStart(3, "0")).join(".") }, title: item.title, titleBlockId: `${uid(item.number)}#block-heading`, hierarchy: { parentId: item.parent, ancestorIds: item.ancestors, position: item.position }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks: item.blocks, citations: [], relations: [], assets: { formulaIds, tableIds: [], figureIds: [] }, workflow: { status: "extracted", createdBy: { actorId: "codex:circ42-step2s", kind: "automated-agent", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: `circ2019-${item.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Record trascritto dall’evidence ufficiale ma non ancora confrontato integralmente da un revisore umano con i render delle pagine fonte." }, ...(formulaIds.length ? [{ issueId: `circ2019-${item.number.replaceAll(".", "-")}-assets-review`, type: "asset-review", severity: "blocking", note: "La formula C4.2.101 richiede revisione umana indipendente." }] : [])] } };
+    return { $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id: uid(item.number), workId, expressionId, kind: "subparagraph", numbering: { official: item.number, sortKey: item.number.replace(/^C/, "").split(".").map((part) => part.padStart(3, "0")).join(".") }, title: item.title, titleBlockId: `${uid(item.number)}#block-heading`, hierarchy: { parentId: item.parent, ancestorIds: item.ancestors, position: item.position }, validity: { from: null, to: null, status: "unknown", asOf: "2026-08-09" }, blocks: item.blocks, citations: [], relations: [], assets: { formulaIds, tableIds: [], figureIds: [] }, review: { status: "draft" } };
 }
 
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2s", sourceId, status: "transcribed-unreviewed", formulas: [{ id: formulaId(formula101.number), unitId: uid(unit21211), officialNumber: formula101.number, pdfPage: formula101.page, latex: formula101.latex }], tables: [], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "circ2019", section: "C4.2-step2s", sourceId, status: "draft", formulas: [{ id: formulaId(formula101.number), unitId: uid(unit21211), officialNumber: formula101.number, pdfPage: formula101.page, latex: formula101.latex }], tables: [], figures: [] };
 await mkdir(unitDirectory, { recursive: true });
 await mkdir(assetDirectory, { recursive: true });
 await Promise.all([...units.map((item) => writeFile(join(unitDirectory, `${item.number.toLowerCase()}.json`), `${JSON.stringify(makeUnit(item), null, 2)}\n`, "utf8")), writeFile(join(assetDirectory, "C4.2-step2s.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8")]);

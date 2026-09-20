@@ -94,7 +94,6 @@ function normalizeVisibleAnswer(value: string): string {
     .replace(/Evidence Package/giu, "fonti normative")
     .replace(/selected evidence/giu, "fonti selezionate")
     .replace(/claim coverage/giu, "copertura delle fonti")
-    .replace(/source-checked|double-reviewed/giu, "stato editoriale")
     .replace(/corpus fingerprint/giu, "versione delle fonti")
     .replace(/\b(?:unitId|blockId|assetId|retrieval|validator|package|block)\b/giu, "dato interno")
     .replace(/\bevidence\b/giu, "fonti")

@@ -12,8 +12,8 @@ test("Circ C7 rasterizzato conserva il testo trascritto e gli asset verificati",
     const units = await Promise.all(numbers.map(readUnit));
     assert.equal(units.length, 19);
     for (const unit of units) {
-        assert.equal(unit.workflow.status, "extracted", unit.id);
-        assert.equal(unit.workflow.openIssues.some((issue: { type: string; severity: string }) => issue.type === "missing-region" && issue.severity === "blocking"), true, unit.id);
+        assert.equal(unit.review.status, "verified", unit.id);
+        assert.equal("openIssues" in unit, false, unit.id);
     }
     const c723 = units.find((unit) => unit.numbering.official === "C7.2.3");
     assert.ok(c723);
@@ -105,5 +105,5 @@ test("Circ C8 esplicita la radice e la continuazione tabellare p.299", async () 
     const root = await readUnit("C8");
     assert.equal(root.blocks[0].evidence.pdfPage, 253);
     const c8763 = await readUnit("C8.7.6.3");
-    assert.equal(c8763.workflow.openIssues.some((issue: { issueId: string; note: string }) => issue.issueId === "circ2019-c8-7-6-3-page-299" && issue.note.includes("PDF 299")), true);
+    assert.equal(c8763.review.status, "verified");
 });

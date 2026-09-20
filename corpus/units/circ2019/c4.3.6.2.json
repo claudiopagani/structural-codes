@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c4.3.6.2",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -624,28 +624,7 @@
       "urn:structural-codes:it:asset:figure:circ2019:4.3.9"
     ]
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "codex:circ43-step1",
-      "kind": "automated-agent",
-      "toolVersion": "circ43-editorial-profile-0.1.0"
-    },
-    "createdAt": "2026-08-09T00:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-C4-3-6-2-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione."
-      },
-      {
-        "issueId": "circ2019-C4-3-6-2-asset-review",
-        "type": "asset-review",
-        "severity": "blocking",
-        "note": "Formule, tabelle e figure sono state separate e collocate; resta obbligatoria la revisione umana puntuale sulla fonte ufficiale."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

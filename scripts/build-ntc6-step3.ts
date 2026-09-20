@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc6-editorial-profile-0.1.0";
-const createdAt = "2026-08-09T12:00:00Z";
+
 const sourceDir = join(root, "evidence", sourceId, "pages");
 const unitDir = join(root, "corpus", "units", "ntc2018");
 const pageLines = new Map<number, string[]>();
@@ -94,7 +94,6 @@ const uid = (number: string): string => `urn:structural-codes:it:unit:ntc2018:${
 const existing = JSON.parse(await readFile(join(unitDir, "6.8.6.2.json"), "utf8"));
 const nextIndex = existing.blocks.length;
 for (const [index, block] of [p(207, 3, 4), p(207, 5, 7)].entries()) existing.blocks.push(blockRecord({ number: "6.8.6.2", title: existing.title, heading: existing.blocks[0] }, block, nextIndex + index));
-existing.workflow.createdBy = { actorId: "generator:ntc6:step3", kind: "script", toolVersion: profile };
 await writeFile(join(unitDir, "6.8.6.2.json"), `${JSON.stringify(existing, null, 2)}\n`, "utf8");
 
 for (const unit of units) {
@@ -103,17 +102,17 @@ for (const unit of units) {
     const blocks = [unit.heading, ...(unit.blocks ?? [])].map((block, index) => blockRecord(unit, block, index));
     const ancestorParts = parts.slice(0, -1);
     const record = {
-        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.2", recordType: "canonical-unit", id,
+        $schema: "urn:structural-codes:schema:canonical-unit:v2", schemaVersion: "2.0.0-alpha.3", recordType: "canonical-unit", id,
         workId: "it-mit:dm:2018-01-17:ntc2018", expressionId: "it-mit:dm:2018-01-17:ntc2018:original-it",
         kind: parts.length === 1 ? "chapter" : parts.length === 2 ? "section" : parts.length === 3 ? "paragraph" : "subparagraph",
         numbering: { official: unit.number, sortKey: parts.map((part) => part.padStart(3, "0")).join(".") }, title: unit.title, titleBlockId: `${id}#block-heading`,
         hierarchy: { parentId: ancestorParts.length ? uid(ancestorParts.join(".")) : null, ancestorIds: ancestorParts.map((_, index) => uid(parts.slice(0, index + 1).join("."))), position: Number(parts[parts.length - 1]) },
         validity: { from: "2018-03-22", to: null, status: "in-force", asOf: "2026-08-09" }, blocks, citations: [], relations: [], assets: { formulaIds: [], tableIds: [], figureIds: [] },
-        workflow: { status: "extracted", createdBy: { actorId: "generator:ntc6:step3", kind: "script", toolVersion: profile }, createdAt, reviews: [], openIssues: [{ issueId: `ntc2018-${unit.number.replaceAll(".", "-")}-source-review`, type: "normalization-review", severity: "blocking", note: "Trascrizione confrontata con il render ufficiale nello step; resta obbligatoria la revisione umana indipendente prima della pubblicazione." }] },
+        review: { status: "draft" },
     };
     await writeFile(join(unitDir, `${unit.number}.json`), `${JSON.stringify(record, null, 2)}\n`, "utf8");
 }
 
-const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.1", recordType: "asset-manifest", document: "ntc2018", section: "6-step3", sourceId, status: "transcribed-unreviewed", formulas: [], tables: [], figures: [] };
+const manifest = { $schema: "urn:structural-codes:schema:asset-manifest:v2", schemaVersion: "2.0.0-alpha.2", recordType: "asset-manifest", document: "ntc2018", section: "6-step3", sourceId, status: "draft", formulas: [], tables: [], figures: [] };
 await writeFile(join(root, "corpus", "assets", "ntc2018", "6-step3.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`ntc6-step3: generated ${units.length} units and updated 6.8.6.2`);

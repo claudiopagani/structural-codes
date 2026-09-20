@@ -3,14 +3,14 @@ export const CANONICAL_UNIT_SCHEMA_ID =
     "urn:structural-codes:schema:canonical-unit:v2" as const;
 
 /** Versione dello schema delle unità inclusa in questa prerelease. */
-export const CANONICAL_UNIT_SCHEMA_VERSION = "2.0.0-alpha.2" as const;
+export const CANONICAL_UNIT_SCHEMA_VERSION = "2.0.0-alpha.3" as const;
 
 /** Identificatore dello schema JSON dei manifest degli asset canonici. */
 export const ASSET_MANIFEST_SCHEMA_ID =
     "urn:structural-codes:schema:asset-manifest:v2" as const;
 
 /** Versione dello schema degli asset inclusa in questa prerelease. */
-export const ASSET_MANIFEST_SCHEMA_VERSION = "2.0.0-alpha.1" as const;
+export const ASSET_MANIFEST_SCHEMA_VERSION = "2.0.0-alpha.2" as const;
 
 export type StructuralCodesDocumentId = "ntc2018" | "circ2019";
 export type RelationReviewStatus = "proposed" | "confirmed" | "rejected";

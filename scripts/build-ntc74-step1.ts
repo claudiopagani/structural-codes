@@ -7,11 +7,7 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 const sourceId = "gu-so8-2018-ntc";
 const profile = "ntc74-editorial-profile-0.1.0";
-const actor = {
-    actorId: "generator:ntc74:step1",
-    kind: "script",
-    toolVersion: profile,
-};
+
 
 const pageLines = new Map<number, string[]>();
 for (let page = 227; page <= 232; page += 1) {
@@ -1227,7 +1223,7 @@ for (const spec of units) {
     parentParts.pop();
     const record = {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id: unitId,
         workId: "it-mit:dm:2018-01-17:ntc2018",
@@ -1258,20 +1254,7 @@ for (const spec of units) {
             tableIds: [],
             figureIds,
         },
-        workflow: {
-            status: "extracted",
-            createdBy: actor,
-            createdAt: "2026-07-28T12:00:00Z",
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `ntc2018-${spec.number.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Trascrizione confrontata dal modello con il render ufficiale; resta obbligatoria la revisione umana indipendente prima della pubblicazione.",
-                },
-            ],
-        },
+        review: { status: "draft" },
     };
     await writeFile(
         join(outputDirectory, `${spec.number}.json`),
@@ -1289,12 +1272,12 @@ const figure742Sha256 = await fileSha256(
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "ntc2018",
     section: "7.4-step1",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: Object.entries(formulaLatex).map(([key, formula]) => ({
         id: `urn:structural-codes:it:asset:formula:ntc2018:${key}`,
         unitId: idFor(formula.unit),

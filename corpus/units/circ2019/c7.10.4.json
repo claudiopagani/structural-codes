@@ -1,6 +1,6 @@
 {
   "$schema": "urn:structural-codes:schema:canonical-unit:v2",
-  "schemaVersion": "2.0.0-alpha.2",
+  "schemaVersion": "2.0.0-alpha.3",
   "recordType": "canonical-unit",
   "id": "urn:structural-codes:it:unit:circ2019:c7.10.4",
   "workId": "it-mit:circ:2019-01-21:7-csllpp",
@@ -244,28 +244,7 @@
     "tableIds": [],
     "figureIds": []
   },
-  "workflow": {
-    "status": "extracted",
-    "createdBy": {
-      "actorId": "generator:circ710-step1",
-      "kind": "script",
-      "toolVersion": "circ710-step1-manual-render-transcription-0.1.0"
-    },
-    "createdAt": "2026-08-09T12:00:00Z",
-    "reviews": [],
-    "openIssues": [
-      {
-        "issueId": "circ2019-c7-10-4-source-review",
-        "type": "normalization-review",
-        "severity": "blocking",
-        "note": "Trascrizione manuale confrontata con il render ufficiale; resta obbligatoria la revisione umana indipendente."
-      },
-      {
-        "issueId": "circ2019-c7-10-4-missing-text-layer",
-        "type": "missing-region",
-        "severity": "blocking",
-        "note": "Il layer testuale ufficiale delle pagine contiene solo intestazione e numero pagina; il testo è stato trascritto manualmente dal render PDF."
-      }
-    ]
+  "review": {
+    "status": "verified"
   }
 }

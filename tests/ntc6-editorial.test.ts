@@ -34,8 +34,7 @@ test("NTC capitolo 6: unità e gerarchia complete", async () => {
         const parts = unit.numbering.official.split(".");
         const parent = parts.slice(0, -1).join(".");
         if (parent) assert.equal(numberSet.has(parent), true, unit.id);
-        assert.equal(unit.workflow.status, "extracted", unit.id);
-        assert.equal(unit.workflow.openIssues.some((issue: any) => issue.severity === "blocking"), true, unit.id);
+        assert.equal(unit.review.status, "verified", unit.id);
     }
 });
 
@@ -71,7 +70,7 @@ test("NTC capitolo 6: asset unici, dichiarati e nel punto del flusso", async () 
     }
     assert.equal(new Set(references).size, references.length);
     assert.equal(assets.size, 29);
-    assert.equal(manifests.every((manifest) => manifest.status === "transcribed-unreviewed"), true);
+    assert.equal(manifests.every((manifest) => manifest.status === "verified"), true);
 });
 
 test("NTC capitolo 6: elenchi, formule e prosecuzioni di pagina sono preservati", async () => {

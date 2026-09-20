@@ -78,10 +78,5 @@ for (const block of unit.blocks) {
         .digest("hex");
 }
 
-unit.workflow.openIssues = unit.workflow.openIssues.filter(
-    ({ issueId }: { issueId: string }) =>
-        issueId !== "circ2019-c3-3-8-1-3-evidence-page-span",
-);
-
 await writeFile(unitPath, `${JSON.stringify(unit, null, 2)}\n`, "utf8");
-console.log("fix-circ3-evidence-spans: corretti 3 raw e rimossa 1 issue");
+console.log("fix-circ3-evidence-spans: corretti 3 raw");

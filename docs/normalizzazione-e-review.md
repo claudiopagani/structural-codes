@@ -41,15 +41,13 @@ npm run review:diff -- --unit fixtures/corpus-v2/circ2019-c3.3.7-relation.valid.
 Il report mostra evidence, hash, trasformazioni e diff raw → normalized. I
 caratteri di controllo sono resi come `\uNNNN`.
 
-## Gate di stato
+## Stato di verifica
 
-```bash
-npm run workflow:check -- --unit <record.json> --to source-checked
-```
-
-Il comando è di sola lettura. Verifica la transizione immediatamente
-successiva e i vincoli del record candidato. Non crea review e non attribuisce
-identità umane.
+Il record usa `review.status: "draft"` finché il contenuto non è stato
+confrontato manualmente con la fonte ufficiale. Dopo il confronto si registra
+`review.status: "verified"`. I validator continuano a controllare schema,
+provenance, hash e coerenza strutturale, ma non impongono una macchina di
+transizioni editoriali.
 
 ## Checklist del revisore
 

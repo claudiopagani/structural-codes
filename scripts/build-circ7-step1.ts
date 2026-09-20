@@ -11,7 +11,7 @@ const sourceId = "circ-7-2019";
 const workId = "it-mit:circ:2019-01-21:7-csllpp";
 const expressionId = "it-mit:circ:2019-01-21:7-csllpp:original-it";
 const profile = "circ7-manual-render-transcription-0.2.0";
-const createdAt = "2026-08-23T00:00:00Z";
+
 
 type Region = {
     coordinateSystem: "pdf-points-top-left";
@@ -464,10 +464,10 @@ function record(number: string, title: string, specs: readonly Block[]) {
         };
     });
     const numberParts = number.slice(1).split(".").map(Number);
-    const lower = number.toLowerCase();
+
     return {
         $schema: "urn:structural-codes:schema:canonical-unit:v2",
-        schemaVersion: "2.0.0-alpha.2",
+        schemaVersion: "2.0.0-alpha.3",
         recordType: "canonical-unit",
         id,
         workId,
@@ -493,26 +493,7 @@ function record(number: string, title: string, specs: readonly Block[]) {
             tableIds: blocks.filter(({ kind }) => kind === "table-ref").map(({ assetId }: any) => assetId),
             figureIds: blocks.filter(({ kind }) => kind === "figure-ref").map(({ assetId }: any) => assetId),
         },
-        workflow: {
-            status: "extracted",
-            createdBy: { actorId: "generator:circ7:step1", kind: "script", toolVersion: profile },
-            createdAt,
-            reviews: [],
-            openIssues: [
-                {
-                    issueId: `circ2019-${lower.replaceAll(".", "-")}-source-review`,
-                    type: "normalization-review",
-                    severity: "blocking",
-                    note: "Trascrizione confrontata con i render delle pagine ufficiali; resta obbligatoria la revisione umana indipendente.",
-                },
-                {
-                    issueId: `circ2019-${lower.replaceAll(".", "-")}-missing-text-layer`,
-                    type: "missing-region",
-                    severity: "blocking",
-                    note: "Le pagine ufficiali sono scansioni con un layer testuale limitato a intestazione e numero pagina; i blocchi sono stati trascritti dal render PDF.",
-                },
-            ],
-        },
+        review: { status: "draft" },
     };
 }
 
@@ -524,12 +505,12 @@ for (const [number, title, blocks] of units) {
 
 const manifest = {
     $schema: "urn:structural-codes:schema:asset-manifest:v2",
-    schemaVersion: "2.0.0-alpha.1",
+    schemaVersion: "2.0.0-alpha.2",
     recordType: "asset-manifest",
     document: "circ2019",
     section: "C7.2",
     sourceId,
-    status: "transcribed-unreviewed",
+    status: "draft",
     formulas: formulas.map(([number, unit, page, latex]) => ({
         id: assetId("formula", number),
         unitId: unitId(unit),

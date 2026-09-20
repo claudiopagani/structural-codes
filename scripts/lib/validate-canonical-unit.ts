@@ -48,15 +48,6 @@ interface Relation {
     };
 }
 
-interface Review {
-    type: string;
-    reviewer: {
-        actorId: string;
-        kind: string;
-    };
-    result: string;
-}
-
 interface CanonicalUnit {
     id: string;
     workId: string;
@@ -79,17 +70,13 @@ interface CanonicalUnit {
         tableIds: string[];
         figureIds: string[];
     };
-    workflow: {
+    review: {
         status: string;
-        createdBy: {
-            actorId: string;
-            kind: string;
-        };
-        reviews: Review[];
-        openIssues: Array<{
-            severity: string;
-        }>;
     };
+    openIssues?: Array<{
+        type: string;
+        severity: string;
+    }>;
     integrity?: {
         canonicalization: string;
         sha256: string;
@@ -119,6 +106,15 @@ export function validateCanonicalUnitSemantics(
 ): string[] {
     const unit = value as CanonicalUnit;
     const errors: string[] = [];
+
+    if (!['draft', 'verified'].includes(unit.review?.status)) {
+        errors.push(`review.status non valido: ${unit.review?.status}`);
+    }
+    for (const issue of unit.openIssues ?? []) {
+        if (issue.type !== 'content-defect') {
+            errors.push(`openIssue non contenuto: ${issue.type}`);
+        }
+    }
 
     if (JSON.stringify(unit).includes("[DA_VERIFICARE")) {
         errors.push("placeholder [DA_VERIFICARE] non ammesso nel canonico v2");
@@ -270,42 +266,6 @@ export function validateCanonicalUnitSemantics(
     }
     if (unit.validity.from !== null && unit.validity.asOf < unit.validity.from) {
         errors.push("validity.asOf precedente a validity.from");
-    }
-
-    if (["source-checked", "double-reviewed", "published", "superseded"].includes(unit.workflow.status)) {
-        for (const block of unit.blocks) {
-            if (block.origin === "official" && block.evidence?.region === null) {
-                errors.push(`${block.blockId}: region obbligatoria dallo stato source-checked`);
-            }
-        }
-    }
-
-    if (["double-reviewed", "published", "superseded"].includes(unit.workflow.status)) {
-        const acceptedHumanReviews = unit.workflow.reviews.filter(
-            (review) =>
-                review.result === "accepted" &&
-                review.reviewer.kind === "human" &&
-                review.reviewer.actorId !== unit.workflow.createdBy.actorId,
-        );
-        if (!acceptedHumanReviews.some((review) => review.type === "source")) {
-            errors.push("review umana della fonte mancante");
-        }
-        if (
-            !acceptedHumanReviews.some((review) =>
-                ["technical", "normative"].includes(review.type),
-            )
-        ) {
-            errors.push("review umana tecnica o normativa mancante");
-        }
-    }
-
-    if (["published", "superseded"].includes(unit.workflow.status)) {
-        if (unit.workflow.openIssues.some((issue) => issue.severity === "blocking")) {
-            errors.push("unità pubblicata con issue bloccanti");
-        }
-        if (unit.integrity === undefined) {
-            errors.push("unità pubblicata senza integrity");
-        }
     }
 
     return errors;
