@@ -87,8 +87,8 @@ Il comando non copia il corpus completo nel package viewer: usa il package
 Il tooling sperimentale può generare un embedding per unità normativa in
 `viewer/.local/chatntc-semantic/`, directory ignorata da Git. Produce metadata
 JSON e una matrice binaria Float32, legati al fingerprint del corpus. Il
-retriever server-side può ora calcolare un top-K semantico in modalità shadow,
-ma non cambia il ranking ChatNTC; il runtime normale non carica l'indice e non
+retriever server-side calcola un top-K semantico e il coordinator può applicare
+RRF in modalità `on`; il runtime locale normale non carica l'indice e non
 richiede un modello.
 
 ```bash
@@ -101,9 +101,10 @@ dimensioni e normalizzazione. Ogni modifica del corpus richiede di rigenerare
 l'indice. Formato, validazioni, opzioni Ollama e limiti dello step sono descritti
 in [ChatNTC semantic index](../docs/chatntc-semantic-index.md).
 
-Separazione corrente: `LOCAL` usa solo il retrieval lessicale;
-`PRODUCTION SHADOW` aggiunge semantic retrieval osservato e diagnostica
-server-side; `PRODUCTION HYBRID` e la rank fusion non sono ancora implementati.
+Separazione corrente: `LOCAL/off` usa solo il retrieval lessicale;
+`PRODUCTION SHADOW` calcola semantic retrieval e RRF ma conserva l'output
+legacy; `PRODUCTION HYBRID/on` usa i primary candidates fusi con RRF. Exact
+references e structural expansion restano nel percorso canonico esistente.
 
 ## Viewer standalone
 

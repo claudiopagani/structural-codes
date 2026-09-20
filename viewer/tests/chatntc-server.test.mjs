@@ -15,6 +15,7 @@ import { createLocalArtifactRepository } from "../.chatntc-test/server/chatntc/l
 import { runChatNTC } from "../.chatntc-test/server/chatntc/pipeline.js";
 import { createChatNTCHandler } from "../.chatntc-test/server/chatntc/routeHandler.js";
 import { ChatNTCSemanticRetrievalError } from "../.chatntc-test/server/chatntc/semanticRetriever.js";
+import { retrieveChatNTCEvidenceForMode } from "../.chatntc-test/server/chatntc/retrievalCoordinator.js";
 import { CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, isChatNTCProviderOutput, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
 
 // Synthetic credential used only with injected fetch. No test calls the real provider.
@@ -216,6 +217,7 @@ test("shadow osserva la capability senza modificare l'Evidence Package legacy", 
   const semanticQuestion = "azione sismica";
   const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
   const lexicalTop = await repository().search(semanticQuestion, 10);
+  const semanticOnly = (await repository().resolveExact("4.1.1", "ntc2018"))[0];
   let calls = 0;
   let received;
   let diagnostics;
@@ -223,8 +225,10 @@ test("shadow osserva la capability senza modificare l'Evidence Package legacy", 
     async retrieve({ query: receivedQuery }) {
       calls += 1;
       assert.match(receivedQuery, /azione sismica/u);
-      return { hits: [{ unitId: lexicalTop[0].unitId, document: "ntc2018",
-        numbering: "fixture", semanticRank: 1, similarity: 0.91 }] };
+      return { hits: [
+        { unitId: lexicalTop[0].unitId, document: "ntc2018", numbering: "fixture", semanticRank: 1, similarity: 0.91 },
+        { unitId: semanticOnly.unitId, document: "ntc2018", numbering: "4.1.1", semanticRank: 2, similarity: 0.89 },
+      ] };
     },
   }, onDiagnostics(value) { diagnostics = value; } },
   provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
@@ -234,38 +238,144 @@ test("shadow osserva la capability senza modificare l'Evidence Package legacy", 
   assert.ok(diagnostics.lexicalHits.length > 0);
   assert.equal(diagnostics.semanticHits[0].similarity, 0.91);
   assert.equal(diagnostics.overlapCount, 1);
-  assert.equal(diagnostics.overlapRatio, 1);
+  assert.equal(diagnostics.overlapRatio, 0.5);
   assert.deepEqual(diagnostics.commonHits, [{ unitId: lexicalTop[0].unitId,
     lexicalRank: 1, semanticRank: 1, rankDelta: 0 }]);
+  assert.ok(diagnostics.fusedHits.length > 0);
+  assert.equal(diagnostics.rrfK, 60);
+  assert.equal(diagnostics.rankingApplied, "lexical");
+  assert.equal(diagnostics.usedLexicalFallback, false);
+  assert.ok(diagnostics.hybridOnlyUnitIds.includes(semanticOnly.unitId));
 });
 
-test("on resta osservazionale fino allo STEP 4 e non sostituisce i candidati legacy", async () => {
+test("on con semantic list vuota conserva esattamente i candidati legacy", async () => {
   const semanticQuestion = "azione sismica";
   const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
   let calls = 0;
   let received;
+  let diagnostics;
   await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "on", retriever: {
     async retrieve() {
       calls += 1;
       return { hits: [] };
     },
-  } }, provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
-  assert.equal(calls, 1);
-  assert.deepEqual(received, legacy);
-});
-
-test("shadow degrada su legacy e diagnostica failure semantic senza alterare Evidence Package", async () => {
-  const semanticQuestion = "azione sismica";
-  const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
-  let received;
-  let diagnostics;
-  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "shadow", retriever: {
-    async retrieve() { throw new ChatNTCSemanticRetrievalError("configuration", "SEMANTIC_INDEX_UNAVAILABLE"); },
   }, onDiagnostics(value) { diagnostics = value; } },
   provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  assert.equal(calls, 1);
   assert.deepEqual(received, legacy);
-  assert.deepEqual(diagnostics.failure, { kind: "configuration", code: "SEMANTIC_INDEX_UNAVAILABLE" });
-  assert.equal(diagnostics.semanticStatus, "error");
+  assert.equal(diagnostics.usedLexicalFallback, true);
+  assert.equal(diagnostics.fallbackReason, "semantic-empty");
+});
+
+test("on applica RRF e include un primary candidate semantic-only", async () => {
+  const activeRepository = repository();
+  const semanticQuestion = "azione sismica";
+  const semanticTarget = (await activeRepository.resolveExact("4.1.1", "ntc2018"))[0];
+  const legacy = await retrieveChatNTCEvidence(activeRepository, semanticQuestion);
+  let diagnostics;
+  const hybrid = await retrieveChatNTCEvidenceForMode(activeRepository, semanticQuestion, {}, { mode: "on", retriever: {
+    async retrieve() { return { hits: [{ unitId: semanticTarget.unitId, document: "ntc2018",
+      numbering: "4.1.1", semanticRank: 1, similarity: 0.99 }] }; },
+  }, onDiagnostics(value) { diagnostics = value; } });
+  assert.equal(legacy.primaryUnits.some((unit) => unit.unitId === semanticTarget.unitId), false);
+  assert.equal(hybrid.primaryUnits.some((unit) => unit.unitId === semanticTarget.unitId), true);
+  assert.equal(diagnostics.rankingApplied, "hybrid");
+  assert.equal(diagnostics.usedLexicalFallback, false);
+  assert.ok(diagnostics.hybridOnlyUnitIds.includes(semanticTarget.unitId));
+  assert.equal(diagnostics.fusedHits.find((hit) => hit.unitId === semanticTarget.unitId).semanticScore, 0.99);
+});
+
+test("failure semantic in shadow/on degrada su Evidence Package legacy con diagnostica", async () => {
+  const semanticQuestion = "azione sismica";
+  const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
+  for (const mode of ["shadow", "on"]) {
+    let received;
+    let diagnostics;
+    await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode, retriever: {
+      async retrieve() { throw new ChatNTCSemanticRetrievalError("runtime", "QUERY_EMBEDDING_FAILED"); },
+    }, onDiagnostics(value) { diagnostics = value; } },
+    provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+    assert.deepEqual(received, legacy, mode);
+    assert.deepEqual(diagnostics.failure, { kind: "runtime", code: "QUERY_EMBEDDING_FAILED" });
+    assert.equal(diagnostics.semanticStatus, "error");
+    assert.equal(diagnostics.usedLexicalFallback, true);
+    assert.equal(diagnostics.fallbackReason, "semantic-error");
+  }
+});
+
+test("failure di configurazione resta distinta e visibile nella diagnostica controllata", async () => {
+  let diagnostics;
+  const legacy = await retrieveChatNTCEvidence(repository(), "azione sismica");
+  const result = await retrieveChatNTCEvidenceForMode(repository(), "azione sismica", {}, { mode: "on", retriever: {
+    async retrieve() { throw new ChatNTCSemanticRetrievalError("integrity", "SEMANTIC_INDEX_INVALID"); },
+  }, onDiagnostics(value) { diagnostics = value; } });
+  assert.deepEqual(result, legacy);
+  assert.deepEqual(diagnostics.failure, { kind: "integrity", code: "SEMANTIC_INDEX_INVALID" });
+  assert.equal(diagnostics.usedLexicalFallback, true);
+});
+
+test("exact-reference resta fuori dalla RRF e invariata anche in on", async () => {
+  for (const exactQuestion of ["§7.3.6.1", "C7.3.6.1", "Tab. 7.3.I", "formula [7.3.1]"]) {
+    const legacy = await retrieveChatNTCEvidence(repository(), exactQuestion);
+    let calls = 0;
+    const hybrid = await retrieveChatNTCEvidenceForMode(repository(), exactQuestion, {}, { mode: "on", retriever: {
+      async retrieve() { calls += 1; return { hits: [] }; },
+    } });
+    assert.equal(calls, 0, exactQuestion);
+    assert.deepEqual(hybrid, legacy, exactQuestion);
+  }
+});
+
+test("title/phrase e filtro NTC/Circolare restano legacy quando semantic è vuoto", async () => {
+  for (const [query, options] of [["costruzioni esistenti", {}], ["azione sismica", { document: "ntc2018" }],
+    ["azione sismica", { document: "circ2019" }]]) {
+    const legacy = await retrieveChatNTCEvidence(repository(), query, options);
+    const hybrid = await retrieveChatNTCEvidenceForMode(repository(), query, options, { mode: "on", retriever: {
+      async retrieve() { return { hits: [] }; },
+    } });
+    assert.deepEqual(hybrid, legacy, `${query}:${options.document ?? "combined"}`);
+  }
+});
+
+test("riferimenti espliciti misti restano primary durante la fusion hybrid", async () => {
+  const activeRepository = repository();
+  const semanticTarget = (await activeRepository.resolveExact("4.1.1", "ntc2018"))[0];
+  const evidence = await retrieveChatNTCEvidenceForMode(activeRepository,
+    "Consulta §7.3.6.1 e C7.3.6.1 per il confronto", {}, { mode: "on", retriever: {
+      async retrieve() { return { hits: [{ unitId: semanticTarget.unitId, document: "ntc2018",
+        numbering: "4.1.1", semanticRank: 1, similarity: 1 }] }; },
+    } });
+  const numberings = new Set(evidence.primaryUnits.map((unit) => unit.numbering));
+  assert.equal(numberings.has("7.3.6.1"), true);
+  assert.equal(numberings.has("C7.3.6.1"), true);
+});
+
+test("semantic-only diventa primary e riceve structural expansion soltanto dopo la fusion", async () => {
+  const activeRepository = repository();
+  const target = (await activeRepository.resolveExact("7.3.6.1", "ntc2018"))[0];
+  const structuralTargets = new Set((await activeRepository.related(target.unitId)).map((relation) => relation.unitId));
+  const noLexicalRepository = { ...activeRepository, search: async () => [] };
+  const evidence = await retrieveChatNTCEvidenceForMode(noLexicalRepository, "fixture semantic only",
+    { maxPrimaryUnits: 1, maxRelatedUnits: 3 }, { mode: "on", retriever: {
+      async retrieve() { return { hits: [{ unitId: target.unitId, document: "ntc2018",
+        numbering: "7.3.6.1", semanticRank: 1, similarity: 1 }] }; },
+    } });
+  assert.deepEqual(evidence.primaryUnits.map((unit) => unit.unitId), [target.unitId]);
+  assert.ok(evidence.relatedUnits.length > 0);
+  assert.equal(evidence.relatedUnits.every((unit) => structuralTargets.has(unit.unitId)), true);
+});
+
+test("cancellation semantic continua fino alla pipeline e impedisce il provider", async () => {
+  const controller = new AbortController();
+  let providerCalls = 0;
+  await assert.rejects(runChatNTC({ question: "azione sismica" }, { repository: repository(), signal: controller.signal,
+    semanticRetrieval: { mode: "on", retriever: { async retrieve({ signal }) {
+      assert.equal(signal, controller.signal);
+      controller.abort();
+      throw new ChatNTCSemanticRetrievalError("cancelled", "QUERY_CANCELLED");
+    } } }, provider: () => { providerCalls += 1; return mockedProvider(); } }),
+  (error) => error.code === "REQUEST_ABORTED");
+  assert.equal(providerCalls, 0);
 });
 
 test("field test A: la domanda generale recupera il quadro combinato 7.2.2 e 7.3.6.1", async () => {

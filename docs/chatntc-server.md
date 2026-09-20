@@ -60,6 +60,9 @@ POST /api/chatntc
   `ChatNTCEmbeddingProvider`, caricamento validato e cached dell'indice STEP 2,
   cosine similarity lineare e top-K semantico. Non contiene adapter o
   dipendenze da uno specifico modello.
+- `rankFusion.ts`: Reciprocal Rank Fusion deterministica, deduplica per
+  `unitId` e diagnostica dei contributi lexical/semantic. Non confronta raw
+  lexical score e cosine similarity.
 - `localRepository.ts`: lettura degli artefatti da filesystem, con cache per
   richiesta e controllo dei percorsi. Riusa l'adapter dello STEP 1; non ricrea
   search index o relazioni. Non usa l'origin HTTP per caricare il corpus.
@@ -81,12 +84,11 @@ capability semantica e non tenta di leggere file o indici aggiuntivi.
 
 La pipeline accetta in dependency injection una configurazione opzionale
 `semanticRetrieval`, composta da una modalità, da `ChatNTCSemanticRetriever` e
-da un observer diagnostico facoltativo. Lo STEP 3 ha ristretto il contratto
-interno server-side: il retriever restituisce `ChatNTCSemanticHit`, non
-`ChatNTCHit` già fusi. Questo impedisce di anticipare accidentalmente la rank
-fusion dello STEP 4. Exact-reference, candidati lessicali, caricamento delle
-unità, espansione strutturale ed Evidence Package restano nel percorso
-deterministico esistente.
+da un observer diagnostico facoltativo. Il retriever restituisce
+`ChatNTCSemanticHit` separati; nello STEP 4 il coordinator fonde questi hit con
+i candidati lessicali soltanto quando la modalità è `on`. Exact-reference,
+caricamento delle unità, espansione strutturale ed Evidence Package restano nel
+percorso deterministico esistente.
 
 ```text
 query
@@ -95,7 +97,9 @@ query
   → semantic index validato
   → cosine similarity lineare
   → top-K ChatNTCSemanticHit
-  → diagnostica shadow, non risposta utente
+  → RRF con il ranking lessicale
+  → primary candidates
+  → structural expansion esistente
 ```
 
 Il provider della query deve coincidere con i metadata dell'indice per identità
@@ -108,28 +112,57 @@ o una nuova expectation producono un loader e una cache key diversi.
 | Modalità | Comportamento in questo step |
 | --- | --- |
 | `off` | Usa direttamente e soltanto il retrieval legacy. Una capability eventualmente fornita non viene chiamata. |
-| `shadow` | Esegue retrieval lessicale e semantico, produce diagnostica comparativa, ma candidati ed Evidence Package restano legacy. Errori semantic non bloccano la risposta. |
-| `on` | Nello STEP 3 esegue la stessa osservazione di `shadow`, ma mantiene ancora il ranking finale legacy. Non è il production hybrid definitivo. |
+| `shadow` | Esegue retrieval lessicale, semantico e RRF, ma restituisce al core i candidati lexical legacy. Evidence Package e risposta restano legacy. |
+| `on` | Esegue retrieval lessicale e semantico, applica RRF e consegna i candidati hybrid al core. Se semantic è vuoto o fallisce, usa i candidati lexical originali. |
 
 La distinzione operativa è quindi:
 
 ```text
 LOCAL               lexical retrieval only
-PRODUCTION SHADOW   lexical retrieval + semantic retrieval osservato ma non usato
-PRODUCTION HYBRID   non ancora implementato
+PRODUCTION SHADOW   lexical + semantic + RRF osservazionale; output legacy
+PRODUCTION HYBRID   lexical + semantic + RRF; primary candidates hybrid
 ```
 
-La diagnostica contiene top-K lessicale e semantico, score semantici, overlap,
-ratio e posizioni reciproche degli hit comuni; gli errori espongono soltanto
-categoria e codice tecnico controllati. Non contiene la query e non viene
-aggiunta alla risposta utente. Errori di indice/configurazione e failure
-transitorie del provider sono distinti. In `shadow` e nell'attuale `on` entrambi
-degradano sul percorso legacy; `AbortSignal` viene propagato fino al provider.
+### Reciprocal Rank Fusion
 
-Questo step non aggiunge rank fusion, vector database, modelli o nuove
-dipendenze. Il modello e i file dell'indice non sono dipendenze del runtime
-locale. `semanticEntailmentVerified` resta `false`; semantica e scope del
-Citation Validator restano invariati.
+La fusion lavora esclusivamente sulle posizioni:
+
+```text
+RRF(unit) = 1 / (60 + lexicalRank) + 1 / (60 + semanticRank)
+```
+
+Un termine manca quando l'unità non appartiene a quella lista. `k = 60` è
+centralizzato insieme ai cap di candidati (`lexical = 50`, `semantic = 50`,
+`fused = 50`); il limite richiesto dal core continua a limitare input lessicale
+e output finale. Non ci sono pesi o tuning. Raw lexical score e cosine
+similarity hanno scale diverse: restano nella diagnostica, ma non partecipano
+mai al confronto RRF.
+
+La deduplica è per `unitId`. A parità di score RRF prevalgono, nell'ordine:
+presenza lexical, lexical rank, semantic rank e infine `unitId`. Una correzione
+alla scala della precisione macchina codifica soltanto il tie-break nel campo
+`ChatNTCHit.score`, così il sorter legacy conserva lo stesso ordine; il
+`fusedScore` diagnostico resta la formula RRF esatta.
+
+Le exact-reference non entrano in RRF: continuano a essere risolte e promosse
+dal percorso canonico esistente. La fusion riguarda soltanto i primary
+candidates di ricerca; parent, child, cross-reference e relazioni esplicite
+vengono espansi dopo la fusion senza essere fusi semanticamente.
+L'Evidence Package mantiene il formato esistente e non espone la provenienza
+semantic: tale distinzione resta nella diagnostica server-side della fusion.
+
+La diagnostica contiene top-K lessicale, semantico e fused, score RRF, rank e
+raw score delle due sorgenti, membership, overlap, unità/rank cambiati,
+`rankingApplied`, fallback e failure code. Non contiene la query e non viene
+aggiunta alla risposta utente. Errori di indice/configurazione e failure
+transitorie del provider restano distinti. In `shadow` e `on` una failure
+semantic degrada sul percorso lexical; `AbortSignal` viene propagato fino al
+provider e la pipeline conserva la cancellazione della richiesta.
+
+Questo step non aggiunge weighted fusion, reranker, vector database, modelli o
+nuove dipendenze. Il modello e i file dell'indice non sono dipendenze del
+runtime locale. `semanticEntailmentVerified` resta `false`; semantica e scope
+del Citation Validator restano invariati.
 
 ## Documentazione DeepSeek verificata
 

@@ -1,11 +1,11 @@
-# ChatNTC — semantic index e retrieval server-side (STEP 2–3)
+# ChatNTC — semantic index e hybrid retrieval server-side (STEP 2–4)
 
 Lo STEP 2 introduce il tooling per produrre, validare e leggere un indice
 semantico server-side. Lo STEP 3 usa lo stesso reader per osservare un ranking
-semantico in isolamento, senza usarlo nel ranking canonico ChatNTC. Il percorso
-locale normale continua a usare exact-reference, ricerca lessicale, espansione
-strutturale ed Evidence Package senza richiedere questi file o un modello
-embedding.
+semantico in isolamento. Lo STEP 4 fonde ranking lessicale e semantico con RRF
+quando la modalità server-side è `on`. Il percorso locale normale continua a
+usare exact-reference, ricerca lessicale, espansione strutturale ed Evidence
+Package senza richiedere questi file o un modello embedding.
 
 ## Input deterministico
 
@@ -96,7 +96,7 @@ vecchio indice viene comunque respinto perché il `corpusFingerprint` e/o
 `inputFingerprint` non corrisponde più. Anche un cambio di modello, digest,
 dimensioni o parametri richiede una rigenerazione completa.
 
-## Retrieval osservazionale dello STEP 3
+## Semantic retrieval dello STEP 3
 
 Il modulo server `semanticRetriever.ts` esegue:
 
@@ -112,14 +112,26 @@ validata e può essere invalidato esplicitamente; non usa database vettoriali o
 ANN.
 
 Gli hit semantici (`unitId`, documento, numbering, rank e similarity) restano
-server-side. In modalità `shadow` vengono confrontati con il top-K lessicale,
-ma non sostituiscono `primaryCandidates`, non entrano nell'Evidence Package e
-non cambiano la risposta. Anche `on`, fino allo STEP 4, conserva il ranking
-legacy e non simula una fusion provvisoria.
+server-side.
 
-## Fuori perimetro fino allo STEP 4
+## Hybrid retrieval dello STEP 4
 
-- rank fusion lessicale/semantica e normalizzazione degli score;
-- uso degli hit semantici nel ranking o nell'Evidence Package;
+In `shadow` il coordinator calcola RRF e diagnostica il risultato, ma restituisce
+gli hit lessicali legacy. In `on`, quando semantic restituisce hit, l'unione
+deduplicata viene ordinata con:
+
+```text
+score(unit) = 1 / (60 + lexicalRank) + 1 / (60 + semanticRank)
+```
+
+I termini mancanti valgono zero. I raw score non vengono normalizzati né
+confrontati. Exact-reference resta esterna alla fusion; structural expansion ed
+Evidence Package vengono applicati dopo la selezione dei primary candidates.
+Una lista semantic vuota o una failure produce fallback lexical.
+
+## Fuori perimetro fino allo STEP 5
+
+- benchmark e tuning di `k` o dei candidate count;
+- weighted/dynamic fusion, reranker o query expansion;
 - configurazione/deployment production e Docker;
-- ANN, vector database, reranker o semantic entailment validation.
+- ANN, vector database, PII sanitizer o semantic entailment validation.

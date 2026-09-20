@@ -9,6 +9,12 @@ import {
   type ChatNTCSemanticHit,
   type ChatNTCSemanticRetrievalResult,
 } from "./semanticRetriever.js";
+import {
+  CHATNTC_HYBRID_RETRIEVAL_DEFAULTS,
+  fuseChatNTCRankings,
+  type ChatNTCFusedRankingHit,
+  type ChatNTCRankFusionResult,
+} from "./rankFusion.js";
 
 export type ChatNTCSemanticRetrievalMode = "off" | "shadow" | "on";
 
@@ -42,6 +48,14 @@ export interface ChatNTCShadowDiagnostics {
   /** Common hits divided by the smaller non-empty result set. */
   overlapRatio: number;
   commonHits: readonly ChatNTCShadowCommonHit[];
+  fusedHits: readonly ChatNTCFusedRankingHit[];
+  legacyOnlyUnitIds: readonly string[];
+  hybridOnlyUnitIds: readonly string[];
+  rankChanges: ReadonlyArray<{ unitId: string; lexicalRank: number; fusedRank: number }>;
+  rrfK: number;
+  rankingApplied: "lexical" | "hybrid";
+  usedLexicalFallback: boolean;
+  fallbackReason?: "semantic-empty" | "semantic-error";
   semanticStatus: "ok" | "error";
   failure?: { kind: ChatNTCSemanticFailureKind; code: string };
 }
@@ -62,8 +76,9 @@ function lexicalDiagnostics(hits: readonly ChatNTCHit[]) {
   });
 }
 
-function successfulDiagnostics(mode: "shadow" | "on", lexicalHits: readonly ChatNTCHit[], semanticHits: readonly ChatNTCSemanticHit[]): ChatNTCShadowDiagnostics {
-  const lexical = lexicalDiagnostics(lexicalHits);
+function successfulDiagnosticsWithFusion(mode: "shadow" | "on",
+  lexical: ReturnType<typeof lexicalDiagnostics>, semanticHits: readonly ChatNTCSemanticHit[],
+  fusion: ChatNTCRankFusionResult): ChatNTCShadowDiagnostics {
   const semanticRanks = new Map(semanticHits.map((hit) => [hit.unitId, hit.semanticRank]));
   const commonHits = lexical.flatMap((hit) => {
     const semanticRank = semanticRanks.get(hit.unitId);
@@ -71,8 +86,23 @@ function successfulDiagnostics(mode: "shadow" | "on", lexicalHits: readonly Chat
       semanticRank, rankDelta: semanticRank - hit.lexicalRank }];
   });
   const denominator = Math.min(lexical.length, semanticHits.length);
+  const legacyRanks = new Map(lexical.map((hit) => [hit.unitId, hit.lexicalRank]));
+  const fusedRanks = new Map(fusion.ranking.map((hit) => [hit.unitId, hit.fusedRank]));
+  const semanticEmpty = semanticHits.length === 0;
   return { mode, lexicalHits: lexical, semanticHits, overlapCount: commonHits.length,
-    overlapRatio: denominator ? commonHits.length / denominator : 0, commonHits, semanticStatus: "ok" };
+    overlapRatio: denominator ? commonHits.length / denominator : 0, commonHits, fusedHits: fusion.ranking,
+    legacyOnlyUnitIds: lexical.filter((hit) => !fusedRanks.has(hit.unitId)).map((hit) => hit.unitId),
+    hybridOnlyUnitIds: fusion.ranking.filter((hit) => !legacyRanks.has(hit.unitId)).map((hit) => hit.unitId),
+    rankChanges: fusion.ranking.flatMap((hit) => {
+      const rank = legacyRanks.get(hit.unitId);
+      return rank !== undefined && rank !== hit.fusedRank
+        ? [{ unitId: hit.unitId, lexicalRank: rank, fusedRank: hit.fusedRank }] : [];
+    }),
+    rrfK: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.rrfK,
+    rankingApplied: mode === "on" && !semanticEmpty ? "hybrid" : "lexical",
+    usedLexicalFallback: semanticEmpty,
+    ...(semanticEmpty ? { fallbackReason: "semantic-empty" as const } : {}),
+    semanticStatus: "ok" };
 }
 
 function failedDiagnostics(mode: "shadow" | "on", lexicalHits: readonly ChatNTCHit[], error: unknown): ChatNTCShadowDiagnostics {
@@ -81,8 +111,13 @@ function failedDiagnostics(mode: "shadow" | "on", lexicalHits: readonly ChatNTCH
     : error instanceof DOMException && error.name === "AbortError"
       ? { kind: "cancelled" as const, code: "QUERY_CANCELLED" }
       : { kind: "runtime" as const, code: "SEMANTIC_RETRIEVAL_FAILED" };
-  return { mode, lexicalHits: lexicalDiagnostics(lexicalHits), semanticHits: [], overlapCount: 0,
-    overlapRatio: 0, commonHits: [], semanticStatus: "error", failure };
+  const lexical = lexicalDiagnostics(lexicalHits);
+  const fusion = fuseChatNTCRankings({ lexicalHits, semanticHits: [], limit: lexical.length,
+    k: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.rrfK });
+  return { mode, lexicalHits: lexical, semanticHits: [], overlapCount: 0,
+    overlapRatio: 0, commonHits: [], fusedHits: fusion.ranking, legacyOnlyUnitIds: [], hybridOnlyUnitIds: [],
+    rankChanges: [], rrfK: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.rrfK, rankingApplied: "lexical",
+    usedLexicalFallback: true, fallbackReason: "semantic-error", semanticStatus: "error", failure };
 }
 
 async function report(configuration: ChatNTCSemanticRetrievalConfiguration, diagnostics: ChatNTCShadowDiagnostics) {
@@ -107,16 +142,23 @@ export async function retrieveChatNTCEvidenceForMode(
     getUnit: (unitId) => repository.getUnit(unitId),
     related: (unitId) => repository.related(unitId),
     async search(query, limit, document) {
-      const lexicalHits = await repository.search(query, limit, document);
-      const semanticInput: ChatNTCSemanticRetrievalInput = { query, limit,
+      const lexicalLimit = Math.min(limit, CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.lexicalCandidateCount);
+      const fusedLimit = Math.min(limit, CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.fusedCandidateCount);
+      const lexicalHits = await repository.search(query, lexicalLimit, document);
+      const semanticInput: ChatNTCSemanticRetrievalInput = { query,
+        limit: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.semanticCandidateCount,
         ...(document ? { document } : {}), ...(signal ? { signal } : {}) };
       try {
         const semantic = await Promise.resolve().then(() => retriever.retrieve(semanticInput));
-        await report(configuration, successfulDiagnostics(activeMode, lexicalHits, semantic.hits));
+        const fusion = fuseChatNTCRankings({ lexicalHits, semanticHits: semantic.hits, limit: fusedLimit,
+          k: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.rrfK });
+        await report(configuration, successfulDiagnosticsWithFusion(activeMode,
+          lexicalDiagnostics(lexicalHits), semantic.hits, fusion));
+        if (activeMode === "on" && semantic.hits.length) return [...fusion.hits];
       } catch (error) {
         await report(configuration, failedDiagnostics(activeMode, lexicalHits, error));
       }
-      // STEP 3 is observational: shadow and on both keep the canonical lexical ranking.
+      // Shadow is observational; on degrades to the unchanged lexical ranking when semantic is unavailable/empty.
       return lexicalHits;
     },
   };
