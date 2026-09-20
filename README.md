@@ -147,7 +147,8 @@ npm run viewer:install
 npm run viewer:dev
 ```
 
-Le correzioni si fanno nel corpus o nei generatori, mai sotto
+Il corpus canonico e i suoi asset sono la source of truth editoriale. Le
+correzioni si applicano direttamente ai record e agli asset canonici, mai sotto
 `viewer/public/`, che contiene esclusivamente derivati ignorati da Git.
 
 ## Ecosistema e integrazioni
@@ -178,11 +179,15 @@ npm run viewer:check
 npm run release:verify
 ```
 
-`release:verify` esegue validazioni di fonti, schema, corpus, evidence e
-integrazione, typecheck, lint, test, audit runtime, test viewer, dry-run del
-pack, ispezione del tarball reale, installazione in un consumer temporaneo e
-import runtime/TypeScript delle API pubbliche. Nessun comando pubblica
-automaticamente.
+`release:verify` esegue `npm run check`, verifica l'evidence locale per la
+release, gli audit root e viewer, `npm run viewer:check`, la build del package,
+il dry-run e il pack reale, l'ispezione del contenuto pubblicato,
+l'installazione in un consumer temporaneo e i controlli runtime/TypeScript
+delle API pubbliche. Nessun comando pubblica automaticamente.
+
+> **TODO:** la documentazione di ChatNTC è in fase di aggiornamento mentre
+> l'architettura del servizio viene consolidata. La documentazione definitiva
+> sarà pubblicata al termine di questo lavoro.
 
 La procedura completa è documentata in [docs/release.md](docs/release.md).
 

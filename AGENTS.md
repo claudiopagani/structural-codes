@@ -142,22 +142,23 @@ un'interfaccia editoriale nel browser.
 - Ogni differenza non banale tra `raw` e `normalized` deve avere una voce in
   `evidence.transformations`, con operazione, versione della regola e nota.
 - Aggiornare `rawSha256` e `normalizedSha256` quando cambia il testo relativo.
-- In caso di dubbio usare l'issue o il marcatore previsto dallo schema e
-  mantenere lo stato `transcribed-unreviewed`; l'incertezza non si risolve con
-  il consenso fra modelli.
+- In caso di dubbio non promuovere `review.status` a `verified`: mantenere lo
+  stato `draft` e registrare un `openIssues` soltanto se esiste un vero difetto
+  di contenuto; l'incertezza non si risolve con il consenso fra modelli.
 
-## Procedura di lavoro per un capitolo
+## Procedura di lavoro per una revisione editoriale
 
-1. Limitare la passata a un capitolo o a uno step con pagine contigue e
-   dichiarare il perimetro.
+1. Limitare la passata a un documento, capitolo o sottocapitolo con un
+   intervallo di pagine PDF contigue e dichiarare il perimetro.
 2. Controllare registro, hash e pagine della fonte.
 3. Renderizzare le pagine interessate e ispezionarle visivamente; per formule,
    tabelle e figure usare una scala sufficiente a leggere ogni glifo.
 4. Inventariare unità, capoversi, elenchi, sottotitoli e asset nell'ordine della
    fonte.
-5. Correggere i record canonici e, per asset rigenerabili, gli script specifici
-   del capitolo. Una correzione ripetibile di formule, tabelle o figure va nel
-   relativo generatore, non soltanto nell'output.
+5. Correggere direttamente i record canonici e i manifest/asset pertinenti. Per
+   formule, tabelle e figure modificare il PNG canonico soltanto quando è
+   realmente necessario e verificato; non creare né rieseguire script one-shot.
+   Proteggere le correzioni ripetibili con un test di regressione.
 6. Controllare il diff: nessuna unità fuori perimetro deve cambiare.
 7. Eseguire test editoriali mirati e poi i gate generali.
 8. Avviare il viewer, aprire tutte le unità modificate e confrontare
@@ -180,7 +181,7 @@ Prima di modificare file, dichiarare:
 - intervallo di pagine PDF contigue;
 - unità JSON coinvolte;
 - formule, tabelle e figure attese;
-- file canonici e generatori che potranno cambiare.
+- file canonici, asset e provenance che potranno cambiare.
 
 Una passata deve coprire al massimo 10 pagine PDF contigue. Se contiene molte
 formule, tabelle, figure o anomalie di estrazione, ridurla ulteriormente. Una
@@ -219,9 +220,10 @@ Prima di creare nuovi blocchi, consultare:
 - i manifest sotto `corpus/assets/` richiamati dagli `assetId`.
 
 Questi file sono esempi del formato e dell'ordinamento, non autorità sul
-contenuto. Possono essere ancora `extracted`, avere issue aperte o attendere
-review umana. Non copiarne testo, LaTeX, coordinate o decisioni editoriali in
-un'altra unità: verificare sempre il PDF dello step.
+contenuto. Possono contenere issue aperte o attendere review umana: verificare
+sempre il loro stato prima di riutilizzarne la struttura. Non copiarne testo,
+LaTeX, coordinate o decisioni editoriali in un'altra unità: verificare sempre
+il PDF dello step.
 
 ### 4. Sequenza eseguibile
 
@@ -234,7 +236,8 @@ Per ogni step:
    `npm run render:evidence -- --source <sourceId> --page <n> --scale 2`;
 4. per glifi, formule, tabelle e figure ambigui produrre anche un ritaglio a
    scala maggiore con `--region x,y,w,h --scale 3`;
-5. modificare soltanto i record e i generatori dichiarati nel contratto;
+5. modificare soltanto i record, gli asset e la provenance dichiarati nel
+   contratto;
 6. aggiornare evidence, trasformazioni e hash insieme al contenuto;
 7. generare, quando utile, il diff editoriale con
    `npm run review:diff -- --unit <record.json>`;
@@ -252,13 +255,14 @@ serve a verificare capoversi, ordine, omissioni e continuità fra cambi pagina.
 
 - Non eseguire sostituzioni globali sull'intero corpus per correggere newline,
   trattini, simboli o matematica.
-- Non rigenerare capitoli estranei allo step.
+- Non rigenerare o riscrivere contenuti canonici fuori dall'intervallo
+  dichiarato.
 - Non modificare unità fuori dall'elenco dichiarato senza interrompere il
   lavoro e ampliare esplicitamente il perimetro.
 - Una regex può individuare candidati, ma non può decidere da sola una
   correzione editoriale.
-- Non promuovere lo stato di workflow e non chiudere issue bloccanti in base
-  alla sola revisione del modello.
+- Non promuovere `review.status` a `verified` e non chiudere `openIssues` in
+  base alla sola revisione del modello.
 - Non usare il superamento dello schema, di KaTeX o dei test come prova di
   fedeltà normativa.
 
@@ -324,7 +328,7 @@ anche unicità, posizione e hash quando appropriato.
 - [ ] Le tabelle sono strutturate e verificate cella per cella.
 - [ ] Le figure sono crop ufficiali oppure segnaposto dichiarati.
 - [ ] Ogni asset è nel punto esatto e compare una sola volta.
-- [ ] Evidence, trasformazioni, hash e stato di workflow sono coerenti.
+- [ ] Evidence, trasformazioni, hash e `review.status` sono coerenti.
 - [ ] Test generali e viewer sono verdi.
 
 ## Igiene del repository pubblico

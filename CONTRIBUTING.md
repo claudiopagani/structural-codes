@@ -44,10 +44,12 @@ sillabazioni, elenchi, LaTeX, asset, evidence, test e confronto visuale.
 
 1. Apri `corpus/units/<documento>/<numero>.json` e identifica source ID, pagine
    e regioni in `blocks[].evidence`.
-2. Renderizza tutte le pagine dello step, non soltanto il ritaglio sospetto.
+2. Renderizza tutte le pagine dell'intervallo dichiarato, non soltanto il
+   ritaglio sospetto.
 3. Confronta PDF → `text.raw` selezionato → `text.normalized` → viewer.
-4. Per formule, tabelle e figure controlla anche il manifest richiamato
-   dall'`assetId` e il generatore di capitolo.
+4. Per formule, tabelle e figure controlla il manifest canonico richiamato
+   dall'`assetId`, l'evidence, la fonte PDF ufficiale e il PNG canonico quando
+   pertinente.
 5. Controlla issue, trasformazioni e hash: uno schema valido non prova la
    fedeltà alla fonte.
 
@@ -61,7 +63,8 @@ Una PR che cambia il corpus deve:
 
 1. dichiarare documento, massimo 10 pagine PDF contigue, unità e asset;
 2. spiegare la differenza rispetto alla fonte senza interpretare la norma;
-3. modificare soltanto record e generatori nel perimetro dichiarato;
+3. modificare soltanto i record, gli asset e la provenance canonici nel
+   perimetro dichiarato;
 4. conservare provenienza e significato canonico;
 5. aggiornare trasformazioni e hash per ogni differenza non banale;
 6. aggiungere una regressione su contenuto, unicità e posizione degli asset;
@@ -117,8 +120,11 @@ Prima di una release eseguire:
 npm run release:verify
 ```
 
-Il comando non pubblica: valida corpus/evidence/integrazioni, viewer, audit,
-tarball e consumer pulito. Non usare `npm publish` per aggirare un gate rosso.
+Il comando non pubblica: esegue il gate generale (`npm run check`), la verifica
+release dell'evidence locale, gli audit root e viewer, i controlli del viewer,
+la build e l'ispezione del package, quindi verifica tarball, installazione,
+runtime e import TypeScript in un consumer temporaneo. Non usare `npm publish`
+per aggirare un gate rosso.
 
 ## Sicurezza e licenza
 
