@@ -1,11 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
-import { fileURLToPath } from "node:url";
 import type { CorpusChunk, CorpusManifest, CorpusUnit, DocumentId, DocumentIndex } from "../shared/corpusData.js";
 import { OllamaEmbeddingProvider } from "../server/chatntc/ollamaEmbedding.js";
 import { generateSemanticIndex, readSemanticIndex, semanticInputFingerprint } from "../server/chatntc/semanticIndex.js";
 
-const viewerRoot = resolve(fileURLToPath(new URL("../", import.meta.url)));
+const viewerRoot = resolve(process.cwd());
 const defaultData = join(viewerRoot, "public", "data", "codes");
 const defaultOutput = join(viewerRoot, ".local", "chatntc-semantic");
 const args = process.argv.slice(2);

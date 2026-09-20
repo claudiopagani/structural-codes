@@ -1,14 +1,17 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 import { OllamaEmbeddingProvider } from "../.local/chatntc-semantic-tool/server/chatntc/ollamaEmbedding.js";
 import {
   generateSemanticIndex, readSemanticIndex, semanticInputFingerprint, semanticTextForUnit, validateSemanticIndex,
 } from "../.local/chatntc-semantic-tool/server/chatntc/semanticIndex.js";
 
+const viewerRoot = fileURLToPath(new URL("../", import.meta.url));
 const corpusFingerprint = "a".repeat(64);
 const unit = (number, text, document = "ntc2018") => {
   const id = `urn:structural-codes:it:unit:${document}:${number.toLowerCase()}`;
@@ -110,4 +113,18 @@ test("adapter Ollama usa tags per il digest e /api/embed senza troncamento", asy
   assert.equal(requests[0].url, "http://127.0.0.1:11434/api/tags");
   assert.equal(requests[1].url, "http://127.0.0.1:11434/api/embed");
   assert.deepEqual(JSON.parse(requests[1].init.body), { model: "fixture:1", input: ["fixture text"], truncate: false, dimensions: 3 });
+});
+
+test("il generatore compilato risolve viewerRoot dal working directory del package", async (t) => {
+  const outputDirectory = await mkdtemp(join(viewerRoot, ".local", "chatntc-root-test-"));
+  t.after(() => rm(outputDirectory, { recursive: true, force: true }));
+  const generator = join(viewerRoot, ".local", "chatntc-semantic-tool", "scripts", "generate-chatntc-semantic-index.js");
+  const result = spawnSync(process.execPath, [generator, "--validate-only", "--output", outputDirectory], {
+    cwd: viewerRoot,
+    encoding: "utf8",
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /ChatNTC semantic index: index\.json non leggibile/u);
+  assert.doesNotMatch(result.stderr, /chatntc-semantic-tool[\\/]public[\\/]data[\\/]codes[\\/]manifest\.json/u);
 });
