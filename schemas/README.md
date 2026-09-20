@@ -1,9 +1,10 @@
 # Schemi canonici
 
 `corpus-v2.schema.json` è il contratto JSON Schema Draft 2020-12 per una
-unità normativa canonica. La versione corrente è `2.0.0-alpha.2`: il corpus è
-pubblico come lavoro editoriale, ma non è ancora una release normativa
-approvata.
+unità normativa canonica. La versione corrente delle unità è `2.0.0-alpha.3`;
+il manifest degli asset (`corpus-assets-v2.schema.json`) usa la versione
+`2.0.0-alpha.2`. Il corpus è pubblico come lavoro editoriale, ma non è ancora
+una release normativa approvata.
 
 La validazione ha due livelli:
 

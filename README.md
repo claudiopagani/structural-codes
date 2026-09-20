@@ -89,7 +89,7 @@ corpus/assets/             manifest di formule, tabelle e figure
 corpus/assets/figures/     crop raster verificabili delle fonti
 schemas/                   JSON Schema di unità e asset
 sources/registry/          fonti istituzionali, byte, pagine e SHA-256
-scripts/                   acquisizione, evidence, builder e validazione
+scripts/                   acquisizione, evidence, validazione, build e release
 viewer/                    consumer web separato e in sola lettura
 ```
 

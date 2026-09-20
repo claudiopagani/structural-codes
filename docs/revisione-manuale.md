@@ -4,10 +4,15 @@ Il visualizzatore è esclusivamente in sola lettura. La redazione normativa si
 fa direttamente nei file JSON di `corpus/units/`, confrontandoli con il PDF
 ufficiale aperto separatamente.
 
-## Primo perimetro: § 4.1
+## Perimetro della revisione
 
-- NTC 2018: `corpus/units/ntc2018/4.1*.json`;
-- Circolare 7/2019: `corpus/units/circ2019/c4.1*.json`.
+La procedura vale per qualsiasi unità canonica dei due documenti:
+
+- NTC 2018: `corpus/units/ntc2018/<unità>.json`;
+- Circolare 7/2019: `corpus/units/circ2019/<unità>.json`.
+
+Selezionare un'unità e il relativo intervallo di pagine dal PDF registrato;
+non esiste un perimetro editoriale fisso o un ordine obbligatorio di capitoli.
 
 Le fonti PDF locali sono:
 
