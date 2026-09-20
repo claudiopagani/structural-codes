@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "declaration": false,
+    "sourceMap": false,
+    "rootDir": ".",
+    "outDir": ".local/chatntc-semantic-tool"
+  },
+  "include": [
+    "scripts/generate-chatntc-semantic-index.ts",
+    "server/chatntc/semanticIndex.ts",
+    "server/chatntc/ollamaEmbedding.ts",
+    "shared/corpusData.ts"
+  ],
+  "exclude": ["node_modules", ".local"]
+}
