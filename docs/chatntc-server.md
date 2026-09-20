@@ -52,9 +52,14 @@ POST /api/chatntc
 - `pipeline.ts`: orchestrazione generica; riceve una factory provider e un
   repository. Conserva il pacchetto originale dell'applicazione e ne passa una
   copia al provider. Nessuna dipendenza diretta dall'adapter DeepSeek.
-- `retrievalCoordinator.ts`: unico seam server-side per una futura capability
-  semantica opzionale. Non modifica `retrieval.ts`, `ChatNTCRepository`, gli
-  indici o l'Evidence Package.
+- `retrievalCoordinator.ts`: seam server-side per la capability semantica
+  opzionale e per la diagnostica shadow. Mantiene separati ranking lessicale e
+  semantico e non modifica `retrieval.ts`, `ChatNTCRepository` o l'Evidence
+  Package.
+- `semanticRetriever.ts`: embedding della query tramite
+  `ChatNTCEmbeddingProvider`, caricamento validato e cached dell'indice STEP 2,
+  cosine similarity lineare e top-K semantico. Non contiene adapter o
+  dipendenze da uno specifico modello.
 - `localRepository.ts`: lettura degli artefatti da filesystem, con cache per
   richiesta e controllo dei percorsi. Riusa l'adapter dello STEP 1; non ricrea
   search index o relazioni. Non usa l'origin HTTP per caricare il corpus.
@@ -75,25 +80,56 @@ deterministica dell'Evidence Package. La route locale non configura alcuna
 capability semantica e non tenta di leggere file o indici aggiuntivi.
 
 La pipeline accetta in dependency injection una configurazione opzionale
-`semanticRetrieval`, composta da una modalità e da un'interfaccia minima
-`ChatNTCSemanticRetriever`. La capability riceve query, limite, filtro documento,
-segnale di cancellazione e i candidati lessicali legacy; restituisce la lista di
-candidati già fusa. Exact-reference, caricamento delle unità, espansione
-strutturale ed Evidence Package restano nel percorso deterministico esistente.
-In questo modo un host di produzione futuro potrà implementare semantic
-retrieval e rank fusion all'esterno del core, senza legarlo a Ollama, ONNX,
-HuggingFace, a un modello o a un vector database specifico.
+`semanticRetrieval`, composta da una modalità, da `ChatNTCSemanticRetriever` e
+da un observer diagnostico facoltativo. Lo STEP 3 ha ristretto il contratto
+interno server-side: il retriever restituisce `ChatNTCSemanticHit`, non
+`ChatNTCHit` già fusi. Questo impedisce di anticipare accidentalmente la rank
+fusion dello STEP 4. Exact-reference, candidati lessicali, caricamento delle
+unità, espansione strutturale ed Evidence Package restano nel percorso
+deterministico esistente.
+
+```text
+query
+  → ChatNTCEmbeddingProvider
+  → query embedding L2
+  → semantic index validato
+  → cosine similarity lineare
+  → top-K ChatNTCSemanticHit
+  → diagnostica shadow, non risposta utente
+```
+
+Il provider della query deve coincidere con i metadata dell'indice per identità
+provider/modello, versione e digest dichiarati, dimensioni e parametri. Il
+reader STEP 2 verifica inoltre fingerprint del corpus/input, inventario unità,
+hash e forma del binario. Ogni loader conserva in memoria una sola snapshot
+validata; `invalidate()` forza deterministicamente la rilettura. Un nuovo path
+o una nuova expectation producono un loader e una cache key diversi.
 
 | Modalità | Comportamento in questo step |
 | --- | --- |
 | `off` | Usa direttamente e soltanto il retrieval legacy. Una capability eventualmente fornita non viene chiamata. |
-| `shadow` | Se presente, esegue la capability ma restituisce sempre l'Evidence Package legacy; errori della capability non alterano la risposta. Senza capability equivale a `off`. |
-| `on` | Delega alla capability solo quando è stata esplicitamente iniettata; senza capability equivale a `off`. |
+| `shadow` | Esegue retrieval lessicale e semantico, produce diagnostica comparativa, ma candidati ed Evidence Package restano legacy. Errori semantic non bloccano la risposta. |
+| `on` | Nello STEP 3 esegue la stessa osservazione di `shadow`, ma mantiene ancora il ranking finale legacy. Non è il production hybrid definitivo. |
 
-L'interfaccia è un punto di composizione, non un'implementazione semantica.
-Questo step non aggiunge embeddings, vector search, rank fusion, modelli AI,
-artifact semantici o nuove dipendenze. `semanticEntailmentVerified` resta
-`false`; semantica e scope del Citation Validator restano invariati.
+La distinzione operativa è quindi:
+
+```text
+LOCAL               lexical retrieval only
+PRODUCTION SHADOW   lexical retrieval + semantic retrieval osservato ma non usato
+PRODUCTION HYBRID   non ancora implementato
+```
+
+La diagnostica contiene top-K lessicale e semantico, score semantici, overlap,
+ratio e posizioni reciproche degli hit comuni; gli errori espongono soltanto
+categoria e codice tecnico controllati. Non contiene la query e non viene
+aggiunta alla risposta utente. Errori di indice/configurazione e failure
+transitorie del provider sono distinti. In `shadow` e nell'attuale `on` entrambi
+degradano sul percorso legacy; `AbortSignal` viene propagato fino al provider.
+
+Questo step non aggiunge rank fusion, vector database, modelli o nuove
+dipendenze. Il modello e i file dell'indice non sono dipendenze del runtime
+locale. `semanticEntailmentVerified` resta `false`; semantica e scope del
+Citation Validator restano invariati.
 
 ## Documentazione DeepSeek verificata
 

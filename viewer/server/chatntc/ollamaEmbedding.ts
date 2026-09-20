@@ -1,4 +1,4 @@
-import type { ChatNTCEmbeddingDescription, ChatNTCEmbeddingProvider } from "./semanticIndex.js";
+import type { ChatNTCEmbeddingDescription, ChatNTCEmbeddingProvider, ChatNTCEmbeddingRequestOptions } from "./semanticIndex.js";
 
 const object = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === "object" && !Array.isArray(value);
 
@@ -17,7 +17,7 @@ export class OllamaEmbeddingProvider implements ChatNTCEmbeddingProvider {
   readonly #dimensions?: number;
   readonly #timeoutMs: number;
   readonly #fetch: typeof fetch;
-  #description?: Promise<ChatNTCEmbeddingDescription>;
+  #description?: ChatNTCEmbeddingDescription;
 
   constructor(options: OllamaEmbeddingOptions) {
     if (!options.model?.trim() || options.model.length > 200) throw new Error("Modello Ollama non valido.");
@@ -34,8 +34,9 @@ export class OllamaEmbeddingProvider implements ChatNTCEmbeddingProvider {
     this.#timeoutMs = timeoutMs; this.#fetch = options.fetchImpl ?? fetch;
   }
 
-  async #json(path: string, init?: RequestInit): Promise<unknown> {
-    const signal = AbortSignal.timeout(this.#timeoutMs);
+  async #json(path: string, init?: RequestInit, parentSignal?: AbortSignal): Promise<unknown> {
+    const timeoutSignal = AbortSignal.timeout(this.#timeoutMs);
+    const signal = parentSignal ? AbortSignal.any([parentSignal, timeoutSignal]) : timeoutSignal;
     const response = await this.#fetch(new URL(path, this.#baseUrl), { ...init, signal, redirect: "error", cache: "no-store" });
     const text = await response.text();
     if (!response.ok) throw new Error(`Ollama non disponibile (HTTP ${response.status}).`);
@@ -43,23 +44,24 @@ export class OllamaEmbeddingProvider implements ChatNTCEmbeddingProvider {
     try { return JSON.parse(text); } catch { throw new Error("Risposta Ollama non valida."); }
   }
 
-  describe(): Promise<ChatNTCEmbeddingDescription> {
-    return this.#description ??= this.#json("/api/tags").then((value) => {
-      if (!object(value) || !Array.isArray(value.models)) throw new Error("Catalogo modelli Ollama non valido.");
-      const model = value.models.find((item) => object(item) && (item.name === this.#model || item.model === this.#model));
-      if (!object(model)) throw new Error(`Modello Ollama non installato: ${this.#model}`);
-      const digest = typeof model.digest === "string" && model.digest.trim() ? model.digest.trim() : null;
-      return { embeddingProvider: "ollama", embeddingModel: this.#model, modelVersion: null, modelDigest: digest,
-        ...(this.#dimensions ? { dimensions: this.#dimensions } : {}),
-        parameters: { truncate: false, requestedDimensions: this.#dimensions ?? null } };
-    });
+  async describe(options: ChatNTCEmbeddingRequestOptions = {}): Promise<ChatNTCEmbeddingDescription> {
+    if (options.signal?.aborted) throw options.signal.reason;
+    if (this.#description) return this.#description;
+    const value = await this.#json("/api/tags", undefined, options.signal);
+    if (!object(value) || !Array.isArray(value.models)) throw new Error("Catalogo modelli Ollama non valido.");
+    const model = value.models.find((item) => object(item) && (item.name === this.#model || item.model === this.#model));
+    if (!object(model)) throw new Error(`Modello Ollama non installato: ${this.#model}`);
+    const digest = typeof model.digest === "string" && model.digest.trim() ? model.digest.trim() : null;
+    return this.#description = { embeddingProvider: "ollama", embeddingModel: this.#model, modelVersion: null, modelDigest: digest,
+      ...(this.#dimensions ? { dimensions: this.#dimensions } : {}),
+      parameters: { truncate: false, requestedDimensions: this.#dimensions ?? null } };
   }
 
-  async embed(texts: readonly string[]): Promise<readonly (readonly number[])[]> {
+  async embed(texts: readonly string[], options: ChatNTCEmbeddingRequestOptions = {}): Promise<readonly (readonly number[])[]> {
     if (!texts.length || texts.some((text) => typeof text !== "string" || !text)) throw new Error("Input embedding Ollama non valido.");
     const value = await this.#json("/api/embed", { method: "POST", headers: { "content-type": "application/json" },
       body: JSON.stringify({ model: this.#model, input: texts, truncate: false,
-        ...(this.#dimensions ? { dimensions: this.#dimensions } : {}) }) });
+        ...(this.#dimensions ? { dimensions: this.#dimensions } : {}) }) }, options.signal);
     if (!object(value) || !Array.isArray(value.embeddings)
       || value.embeddings.some((vector) => !Array.isArray(vector) || vector.some((item) => typeof item !== "number"))) {
       throw new Error("Embedding Ollama non validi.");

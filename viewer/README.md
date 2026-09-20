@@ -86,18 +86,24 @@ Il comando non copia il corpus completo nel package viewer: usa il package
 
 Il tooling sperimentale può generare un embedding per unità normativa in
 `viewer/.local/chatntc-semantic/`, directory ignorata da Git. Produce metadata
-JSON e una matrice binaria Float32, legati al fingerprint del corpus; non cambia
-il ranking ChatNTC e il runtime normale non richiede né indice né modello.
+JSON e una matrice binaria Float32, legati al fingerprint del corpus. Il
+retriever server-side può ora calcolare un top-K semantico in modalità shadow,
+ma non cambia il ranking ChatNTC; il runtime normale non carica l'indice e non
+richiede un modello.
 
 ```bash
 npm --prefix viewer run chatntc:semantic:index -- --model <modello-embedding>
 npm --prefix viewer run chatntc:semantic:validate
 ```
 
-Corpus e query dovranno usare esattamente lo stesso modello, digest/versione,
+Corpus e query devono usare esattamente lo stesso modello, digest/versione,
 dimensioni e normalizzazione. Ogni modifica del corpus richiede di rigenerare
 l'indice. Formato, validazioni, opzioni Ollama e limiti dello step sono descritti
 in [ChatNTC semantic index](../docs/chatntc-semantic-index.md).
+
+Separazione corrente: `LOCAL` usa solo il retrieval lessicale;
+`PRODUCTION SHADOW` aggiunge semantic retrieval osservato e diagnostica
+server-side; `PRODUCTION HYBRID` e la rank fusion non sono ancora implementati.
 
 ## Viewer standalone
 

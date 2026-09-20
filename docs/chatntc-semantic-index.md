@@ -1,10 +1,11 @@
-# ChatNTC — semantic index offline (STEP 2)
+# ChatNTC — semantic index e retrieval server-side (STEP 2–3)
 
-Questo step introduce esclusivamente il tooling per produrre, validare e
-leggere un indice semantico server-side. L'indice non è ancora usato dal
-retrieval o dal ranking ChatNTC. Il percorso locale normale continua a usare
-exact-reference, ricerca lessicale, espansione strutturale ed Evidence Package
-senza richiedere questi file o un modello embedding.
+Lo STEP 2 introduce il tooling per produrre, validare e leggere un indice
+semantico server-side. Lo STEP 3 usa lo stesso reader per osservare un ranking
+semantico in isolamento, senza usarlo nel ranking canonico ChatNTC. Il percorso
+locale normale continua a usare exact-reference, ricerca lessicale, espansione
+strutturale ed Evidence Package senza richiedere questi file o un modello
+embedding.
 
 ## Input deterministico
 
@@ -95,10 +96,30 @@ vecchio indice viene comunque respinto perché il `corpusFingerprint` e/o
 `inputFingerprint` non corrisponde più. Anche un cambio di modello, digest,
 dimensioni o parametri richiede una rigenerazione completa.
 
-## Fuori perimetro fino allo STEP 3
+## Retrieval osservazionale dello STEP 3
 
-- embedding delle query;
-- similarity search e top-k;
-- rank fusion lessicale/semantica;
-- collegamento a `ChatNTCSemanticRetriever` e alla pipeline ChatNTC;
-- configurazione o deployment production dell'indice.
+Il modulo server `semanticRetriever.ts` esegue:
+
+```text
+query → ChatNTCEmbeddingProvider → embedding L2 → indice validato
+      → dot product/cosine lineare → top-K semantico
+```
+
+Poiché sia matrice sia query sono normalizzate L2, il dot product è equivalente
+alla cosine similarity. A parità di score prevale l'ordine canonico delle righe
+dell'indice, poi `unitId`. Il loader mantiene in memoria la snapshot già
+validata e può essere invalidato esplicitamente; non usa database vettoriali o
+ANN.
+
+Gli hit semantici (`unitId`, documento, numbering, rank e similarity) restano
+server-side. In modalità `shadow` vengono confrontati con il top-K lessicale,
+ma non sostituiscono `primaryCandidates`, non entrano nell'Evidence Package e
+non cambiano la risposta. Anche `on`, fino allo STEP 4, conserva il ranking
+legacy e non simula una fusion provvisoria.
+
+## Fuori perimetro fino allo STEP 4
+
+- rank fusion lessicale/semantica e normalizzazione degli score;
+- uso degli hit semantici nel ranking o nell'Evidence Package;
+- configurazione/deployment production e Docker;
+- ANN, vector database, reranker o semantic entailment validation.

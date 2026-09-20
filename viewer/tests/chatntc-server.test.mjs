@@ -14,6 +14,7 @@ import { ChatNTCServerError, publicError } from "../.chatntc-test/server/chatntc
 import { createLocalArtifactRepository } from "../.chatntc-test/server/chatntc/localRepository.js";
 import { runChatNTC } from "../.chatntc-test/server/chatntc/pipeline.js";
 import { createChatNTCHandler } from "../.chatntc-test/server/chatntc/routeHandler.js";
+import { ChatNTCSemanticRetrievalError } from "../.chatntc-test/server/chatntc/semanticRetriever.js";
 import { CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, isChatNTCProviderOutput, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
 
 // Synthetic credential used only with injected fetch. No test calls the real provider.
@@ -214,32 +215,57 @@ test("shadow/on senza semantic retriever mantengono il retrieval legacy", async 
 test("shadow osserva la capability senza modificare l'Evidence Package legacy", async () => {
   const semanticQuestion = "azione sismica";
   const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
+  const lexicalTop = await repository().search(semanticQuestion, 10);
   let calls = 0;
   let received;
+  let diagnostics;
   await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "shadow", retriever: {
-    async retrieve({ lexicalHits }) {
+    async retrieve({ query: receivedQuery }) {
       calls += 1;
-      assert.ok(lexicalHits.length > 0);
-      return [];
+      assert.match(receivedQuery, /azione sismica/u);
+      return { hits: [{ unitId: lexicalTop[0].unitId, document: "ntc2018",
+        numbering: "fixture", semanticRank: 1, similarity: 0.91 }] };
+    },
+  }, onDiagnostics(value) { diagnostics = value; } },
+  provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  assert.equal(calls, 1);
+  assert.deepEqual(received, legacy);
+  assert.equal(diagnostics.semanticStatus, "ok");
+  assert.ok(diagnostics.lexicalHits.length > 0);
+  assert.equal(diagnostics.semanticHits[0].similarity, 0.91);
+  assert.equal(diagnostics.overlapCount, 1);
+  assert.equal(diagnostics.overlapRatio, 1);
+  assert.deepEqual(diagnostics.commonHits, [{ unitId: lexicalTop[0].unitId,
+    lexicalRank: 1, semanticRank: 1, rankDelta: 0 }]);
+});
+
+test("on resta osservazionale fino allo STEP 4 e non sostituisce i candidati legacy", async () => {
+  const semanticQuestion = "azione sismica";
+  const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
+  let calls = 0;
+  let received;
+  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "on", retriever: {
+    async retrieve() {
+      calls += 1;
+      return { hits: [] };
     },
   } }, provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
   assert.equal(calls, 1);
   assert.deepEqual(received, legacy);
 });
 
-test("on delega soltanto alla capability server-side esplicitamente iniettata", async () => {
+test("shadow degrada su legacy e diagnostica failure semantic senza alterare Evidence Package", async () => {
   const semanticQuestion = "azione sismica";
-  let calls = 0;
+  const legacy = await retrieveChatNTCEvidence(repository(), semanticQuestion);
   let received;
-  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "on", retriever: {
-    async retrieve({ lexicalHits }) {
-      calls += 1;
-      assert.ok(lexicalHits.length > 0);
-      return [];
-    },
-  } }, provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
-  assert.equal(calls, 1);
-  assert.deepEqual(received.primaryUnits, []);
+  let diagnostics;
+  await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode: "shadow", retriever: {
+    async retrieve() { throw new ChatNTCSemanticRetrievalError("configuration", "SEMANTIC_INDEX_UNAVAILABLE"); },
+  }, onDiagnostics(value) { diagnostics = value; } },
+  provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  assert.deepEqual(received, legacy);
+  assert.deepEqual(diagnostics.failure, { kind: "configuration", code: "SEMANTIC_INDEX_UNAVAILABLE" });
+  assert.equal(diagnostics.semanticStatus, "error");
 });
 
 test("field test A: la domanda generale recupera il quadro combinato 7.2.2 e 7.3.6.1", async () => {

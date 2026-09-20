@@ -19,10 +19,14 @@ export interface ChatNTCEmbeddingDescription {
   parameters: Readonly<Record<string, EmbeddingParameter>>;
 }
 
-/** Provider-neutral boundary used only by the offline index generator. */
+export interface ChatNTCEmbeddingRequestOptions {
+  signal?: AbortSignal;
+}
+
+/** Provider-neutral boundary shared by offline indexing and server-side query embedding. */
 export interface ChatNTCEmbeddingProvider {
-  describe(): Promise<ChatNTCEmbeddingDescription>;
-  embed(texts: readonly string[]): Promise<readonly (readonly number[])[]>;
+  describe(options?: ChatNTCEmbeddingRequestOptions): Promise<ChatNTCEmbeddingDescription>;
+  embed(texts: readonly string[], options?: ChatNTCEmbeddingRequestOptions): Promise<readonly (readonly number[])[]>;
 }
 
 export interface ChatNTCSemanticIndexMetadata {
