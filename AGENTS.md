@@ -101,8 +101,7 @@ un'interfaccia editoriale nel browser.
 
 - Le tabelle devono essere dati strutturati, non immagini e non testo
   allineato con spazi.
-- Usare i generatori `scripts/build-*-tables.ts` o aggiungerne uno specifico
-  per il capitolo. Rappresentare intestazioni, righe, celle, note,
+- Rappresentare intestazioni, righe, celle, note,
   `rowSpan`/`colSpan` e matematica nelle celle.
 - Confrontare ogni valore, simbolo e cella unita con il PDF. L'estrazione
   geometrica è solo una base di lavoro, mai una validazione.
