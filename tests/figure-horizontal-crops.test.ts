@@ -7,10 +7,56 @@ import test from "node:test";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createCanvas, loadImage } from "@napi-rs/canvas";
-import {
-    PROFILE,
-    TARGET_FIGURE_IDS,
-} from "../scripts/crop-figure-horizontal-margins.ts";
+const PROFILE = "figure-horizontal-center-0.1.0";
+const TARGET_FIGURE_IDS = new Set([
+    "urn:structural-codes:it:asset:figure:ntc2018:3.3.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.3.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.3.3",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.4.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.4.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.4.3",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.5.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:3.5.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.1.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.1.3",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.1.4",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.2.5",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.3",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.4.a",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.4.b",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.5",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.6",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.3.11",
+    "urn:structural-codes:it:asset:figure:ntc2018:4.4.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.1.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.1.3.a",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.1.3.b",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.2.3",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.2.12",
+    "urn:structural-codes:it:asset:figure:ntc2018:5.2.13",
+    "urn:structural-codes:it:asset:figure:ntc2018:7.4.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:7.6.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:7.6.2",
+    "urn:structural-codes:it:asset:figure:ntc2018:7.9.3-fig7.9.1",
+    "urn:structural-codes:it:asset:figure:ntc2018:11.9.2",
+    "urn:structural-codes:it:asset:figure:circ2019:c3.3.10",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.1",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.4",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.6",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.16",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.19",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.23",
+    "urn:structural-codes:it:asset:figure:circ2019:c4.2.36",
+    "urn:structural-codes:it:asset:figure:circ2019:4.3.4",
+    "urn:structural-codes:it:asset:figure:circ2019:4.3.6",
+    "urn:structural-codes:it:asset:figure:circ2019:c7.3.4",
+    "urn:structural-codes:it:asset:figure:circ2019:c7.6.2",
+    "urn:structural-codes:it:asset:figure:circ2019:c7.6.3",
+    "urn:structural-codes:it:asset:figure:circ2019:c7.10.2a",
+    "urn:structural-codes:it:asset:figure:circ2019:c11.3.2.10.4.b",
+]);
 
 const repoRoot = fileURLToPath(new URL("../", import.meta.url));
 
