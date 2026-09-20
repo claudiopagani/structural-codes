@@ -48,5 +48,6 @@ nuova versione:
 - minor: campo o vocabolario aggiunto in modo compatibile;
 - major: modifica incompatibile o mutamento semantico.
 
-La promozione da `alpha` richiede schema consolidato e review del perimetro
-destinato alla prima release.
+La promozione da `alpha` richiede schema/API consolidati e compatibilità del
+package. La review normativa è una proprietà separata dei metadata del corpus
+e non definisce la maturità SemVer.

@@ -6,10 +6,8 @@ Questa directory è l'unica fonte editoriale del progetto.
 - `units/` contiene un record JSON per unità normativa;
 - `assets/` contiene manifest, formule, tabelle e ritagli ufficiali.
 
-Il perimetro corrente copre:
-
-- NTC 2018: capitoli 1, 2, 3 e § 4.1;
-- Circolare 7/2019: C1, C2, C3 e C4.1.
+Il perimetro corrente comprende l'intera NTC 2018 e l'intera Circolare
+21 gennaio 2019 n. 7.
 
 La review umana integrale del testo delle NTC 2018 e della Circolare 7/2019 è
 stata completata contro le rispettive fonti ufficiali. Tutte le unità canoniche

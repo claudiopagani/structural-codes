@@ -38,9 +38,10 @@ crea una GitHub Release e non cambia gli stati editoriali del corpus.
 
 ## Versioning
 
-- alpha: API e schema mobili, anche quando il perimetro del corpus è verificato;
-- beta: struttura sufficientemente stabile, review ancora in corso;
-- stable: perimetro dichiarato e adeguatamente revisionato.
+- alpha: schema/API ancora soggetti a cambiamenti, anche breaking;
+- beta: schema/API sostanzialmente stabilizzati e fase di consolidamento;
+- stable: API, schema e formato del package considerati stabili secondo SemVer.
 
-La stabilità SemVer descrive il package. Non costituisce certificazione legale
-o dichiarazione automatica di conformità normativa.
+La stabilità SemVer descrive esclusivamente il software e il package. Una
+release stable non costituisce certificazione, approvazione ufficiale o fonte
+normativa ufficiale.

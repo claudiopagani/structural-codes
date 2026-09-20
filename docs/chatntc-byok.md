@@ -213,7 +213,7 @@ Verifica storica dello STEP 5 (prima dell'aggiunta OpenRouter):
 
 Il worktree contiene anche i file non ancora committati degli step precedenti:
 non vanno interpretati tutti come cambi introdotti dallo STEP 5. Nessuna unità,
-asset canonico o file OCFEM è stato modificato in questo step.
+asset canonico è stato modificato in questo step.
 
 I test usano esclusivamente HTTP simulato. Nessuna compatibilità live con account
 o modelli a pagamento è stata certificata. La disponibilità dei modelli dipende
@@ -229,8 +229,8 @@ Non ci sono streaming, tool calling, web search o impostazioni di reasoning.
 Le direttive ChatNTC sono indipendenti dai provider; il validator prova integrità
 e provenienza, non che una frase sia semanticamente dimostrata dalla citazione.
 
-Per OCFEM serviranno un `HostedChatTransport` conforme a `ChatTransport`,
+Per un deployment hosted serviranno un `HostedChatTransport` conforme a `ChatTransport`,
 autenticazione/autorizzazione, gestione credenziali server-side, quote, policy dei
 dati e un repository normativo sul backend. La composizione hosted ometterà del
 tutto `AISettings` e `LocalAIConfiguration`. Non occorre cambiare ChatNTCPanel o
-introdurre branch provider nel core. Nessuna integrazione OCFEM è implementata.
+introdurre branch provider nel core. Nessuna integrazione hosted è implementata.

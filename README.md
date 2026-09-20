@@ -139,8 +139,8 @@ Gli artefatti web sono statici e rigenerabili: un manifest iniziale piccolo,
 indici per documento, 153 chunk per sezione significativa, relazioni esplicite
 e un indice di ricerca caricato soltanto quando serve. Sul web mostra indice e
 testo; in locale/debug può aggiungere il PDF ufficiale sincronizzato, caricato
-solo su richiesta. Un'app OCFEM che non entra nel viewer non deve scaricare alcun
-corpus normativo.
+solo su richiesta. Un'applicazione downstream che non entra nel viewer non deve
+scaricare alcun corpus normativo.
 
 ```bash
 npm ci
@@ -151,18 +151,18 @@ npm run viewer:dev
 Le correzioni si fanno nel corpus o nei generatori, mai sotto
 `viewer/public/`, che contiene esclusivamente derivati ignorati da Git.
 
-## Structural Codes, Structural Checks e OCFEM
+## Ecosistema e integrazioni
 
 - `structural-codes` contiene normativa strutturata, riferimenti, provenance,
   relazioni e stato di verifica;
 - `structural-checks-ts` contiene algoritmi, calcoli e verifiche strutturali;
-- OCFEM può consumare versioni pubblicate dei due progetti, ma non è la source
-  of truth e nessuno dei due package dipende dal prodotto OCFEM.
+- un consumer esterno può usare versioni pubblicate dei progetti secondo i
+  rispettivi contratti, senza sostituire le relative fonti canoniche.
 
 Il manifest d'integrazione registra nome e versione del provider, commit,
-export e hash. Una futura build OCFEM può quindi registrare versione del
-package, versione schema, fingerprint del corpus e fingerprint degli artefatti
-generati senza copiare manualmente i dati.
+export e hash. Una build downstream può quindi registrare versione del package,
+versione schema, fingerprint del corpus e fingerprint degli artefatti generati
+senza copiare manualmente i dati.
 
 ## Contribuire
 
@@ -196,11 +196,12 @@ La procedura completa è documentata in [docs/release.md](docs/release.md).
 La strategia SemVer è:
 
 - `alpha`: schema/API mobili e release non stabile;
-- `beta`: struttura e API sufficientemente stabili, review ancora in corso;
-- stable: perimetro dichiarato e adeguatamente revisionato.
+- `beta`: schema/API sostanzialmente stabilizzati e fase di consolidamento;
+- `stable`: API, schema e formato del package considerati stabili secondo SemVer.
 
-Una stable npm resta una dichiarazione di stabilità del package, non una
-certificazione legale automatica.
+Una release stable resta una dichiarazione di stabilità software del package,
+non una certificazione, un'approvazione ufficiale o una fonte normativa
+ufficiale.
 
 ## Licenza e fonti ufficiali
 

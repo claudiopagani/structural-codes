@@ -15,7 +15,8 @@ facoltativo alla richiesta. Il contratto e le limitazioni qui sotto documentano
 la pipeline server originaria; nessuna persistenza viene aggiunta dallo STEP 3.
 
 Lo STEP 2 aggiunge un provider AI e una route server-side senza UI ChatNTC,
-persistenza delle conversazioni, altri provider, web search o integrazioni OCFEM.
+persistenza delle conversazioni, altri provider, web search o integrazioni
+esterne specifiche.
 Il corpus e i generatori editoriali rimangono invariati.
 
 ## Architettura
@@ -262,6 +263,7 @@ marker `server-only` senza disattivarlo per la UI.
 La route è pronta per un futuro consumer UI che invii domanda e contesto minimo,
 mostri citazioni validate, warning e astensioni, e gestisca gli errori distinti.
 La UI principale rimane invariata. Non sono stati avviati UI chat, cronologia,
-BYOK, streaming, altri provider, web search o OCFEM. Non è stata eseguita una
+BYOK, streaming, altri provider, web search o integrazioni esterne specifiche.
+Non è stata eseguita una
 prova reale con credenziali DeepSeek; il trasporto è verificato tramite mock
 sul contratto documentato.

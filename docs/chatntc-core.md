@@ -7,12 +7,12 @@ sono documentati in [ChatNTC server](chatntc-server.md).
 Core normativo provider-agnostic, senza React, trasporto HTTP, cronologia o
 chiamate AI. `structural-codes` rimane la source of truth; il PDF ufficiale
 registrato rimane l'autorità editoriale. Questo step non modifica contenuti
-canonici, stati di review, generatori editoriali o OCFEM.
+canonici, stati di review o generatori editoriali.
 
 ## Architettura e file
 
 ```text
-Consumer futuro (standalone viewer / OCFEM / test)
+Consumer futuro (standalone viewer / consumer esterno / test)
   ├─ retrieveChatNTCEvidence(repository, question, options)
   │    └─ ChatNTCRepository
   ├─ ChatNTCEvidencePackage → futuro produttore di ChatNTCResponse
@@ -35,8 +35,9 @@ distribuiti nel package viewer. Gli entry point sono separati dalla UI:
   con loader iniettabili oppure i loader/cache già presenti in `corpusData`.
 
 Non serve un nuovo workspace. Il package viewer mantiene le sue peer
-dependencies React; il core esportato non le importa. Un backend OCFEM potrà
-implementare `ChatNTCRepository` senza importare l'adapter degli artefatti.
+dependencies React; il core esportato non le importa. Un'applicazione
+downstream potrà implementare `ChatNTCRepository` senza importare l'adapter
+degli artefatti.
 
 | File | Responsabilità |
 | --- | --- |
@@ -240,7 +241,6 @@ gli artefatti con la pipeline ordinaria e non li modifica manualmente.
 ## Debiti intenzionali e preparazione dello STEP 2
 
 - Nessun provider, SDK, chiamata LLM, API key, UI, cronologia o ricerca esterna.
-- Nessuna modifica a OCFEM: è pronta l'interfaccia repository da implementare.
 - Nessun embedding, reranker semantico o conteggio token specifico di un modello.
 - Retrieval a un solo livello, selezione lessicale entro budget e warning
   espliciti; nessuna garanzia automatica di sufficienza semantica.

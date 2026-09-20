@@ -162,7 +162,7 @@ visive usano il build standalone, con provider deliberatamente non configurato.
 Nessuna prova chiama realmente DeepSeek.
 
 Restano fuori da questo step persistenza, IndexedDB, BYOK, altri provider,
-streaming, web search e OCFEM. Per lo STEP 4 il pannello conserva confini chiari
+streaming e web search. Per lo STEP 4 il pannello conserva confini chiari
 tra turni transitori, trasporto e navigazione; eventuale persistenza richiederà
 un progetto esplicito di schema/versionamento e gestione della cancellazione.
 La qualità semantica delle risposte richiede valutazione separata: la validazione
