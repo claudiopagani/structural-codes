@@ -1,7 +1,7 @@
 {
     "name": "structural-codes",
     "version": "0.1.0-alpha.1",
-    "description": "Corpus strutturato, versionato e verificabile delle NTC 2018 e della Circolare 7/2019, predisposto per collegamenti a structural-checks-ts.",
+    "description": "Corpus strutturato, versionato e verificabile delle NTC 2018 e della Circolare 7/2019, predisposto per l'uso da applicazioni downstream.",
     "license": "LGPL-2.1-or-later",
     "homepage": "https://github.com/claudiopagani/structural-codes#readme",
     "repository": {
@@ -49,7 +49,6 @@
         "./corpus/assets/*": "./corpus/assets/*",
         "./schemas/*": "./schemas/*",
         "./sources/registry": "./sources/registry/sources.v2.json",
-        "./integration/structural-checks-ts": "./integration/structural-checks-ts/manifest.json",
         "./package.json": "./package.json"
     },
     "files": [
@@ -57,7 +56,6 @@
         "schemas",
         "corpus",
         "sources/registry",
-        "integration",
         "README.md",
         "LICENSE",
         "NOTICE"
@@ -75,11 +73,9 @@
         "validate:sources": "node --experimental-strip-types scripts/verify-source-registry-v2.ts",
         "validate:sources:registry": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --registry-only",
         "validate:corpus": "node --experimental-strip-types scripts/validate-corpus-v2.ts",
-        "validate:integration": "node --experimental-strip-types scripts/validate-integration-manifest.ts",
-        "verify:integration:local": "node --experimental-strip-types scripts/validate-integration-manifest.ts --provider ../structural-checks-ts",
         "verify:sources:online": "node --experimental-strip-types scripts/verify-source-registry-v2.ts --online",
-        "validate": "npm run validate:sources && npm run validate:corpus && npm run validate:integration",
-        "validate:ci": "npm run validate:sources:registry && npm run validate:corpus && npm run validate:integration",
+        "validate": "npm run validate:sources && npm run validate:corpus",
+        "validate:ci": "npm run validate:sources:registry && npm run validate:corpus",
         "acquire:source": "node --experimental-strip-types scripts/acquire-source-v2.ts",
         "extract:evidence": "node --experimental-strip-types scripts/extract-evidence.ts",
         "render:evidence": "node --experimental-strip-types scripts/render-evidence.ts",

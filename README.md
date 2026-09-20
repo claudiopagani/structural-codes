@@ -74,8 +74,8 @@ Sono export pubblici intenzionali:
 - `structural-codes/corpus` — helper e tipi del corpus;
 - `structural-codes/schema` — contratti Zod riusabili;
 - `structural-codes/lib` — canonicalizzazione e hash Node-only;
-- `structural-codes/corpus/**`, `schemas/**`, `sources/registry` e
-  `integration/structural-checks-ts` — dati machine-readable documentati.
+- `structural-codes/corpus/**`, `schemas/**` e `sources/registry` — dati
+  machine-readable documentati.
 
 Il viewer, gli script editoriali, i test, i PDF e l'evidence locale non fanno
 parte del package runtime.
@@ -87,9 +87,8 @@ corpus/manifest.json       perimetro e stato complessivo
 corpus/units/              record JSON canonici NTC e Circolare
 corpus/assets/             manifest di formule, tabelle e figure
 corpus/assets/figures/     crop raster verificabili delle fonti
-schemas/                   JSON Schema di unità, asset e integrazioni
+schemas/                   JSON Schema di unità e asset
 sources/registry/          fonti istituzionali, byte, pagine e SHA-256
-integration/               metadati verso implementazioni software
 scripts/                   acquisizione, evidence, builder e validazione
 viewer/                    consumer web separato e in sola lettura
 ```
@@ -155,14 +154,8 @@ Le correzioni si fanno nel corpus o nei generatori, mai sotto
 
 - `structural-codes` contiene normativa strutturata, riferimenti, provenance,
   relazioni e stato di verifica;
-- `structural-checks-ts` contiene algoritmi, calcoli e verifiche strutturali;
-- un consumer esterno può usare versioni pubblicate dei progetti secondo i
-  rispettivi contratti, senza sostituire le relative fonti canoniche.
-
-Il manifest d'integrazione registra nome e versione del provider, commit,
-export e hash. Una build downstream può quindi registrare versione del package,
-versione schema, fingerprint del corpus e fingerprint degli artefatti generati
-senza copiare manualmente i dati.
+- un consumer esterno può usare il package secondo i contratti documentati,
+  senza sostituire la fonte canonica del corpus.
 
 ## Contribuire
 

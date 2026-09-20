@@ -7,8 +7,8 @@
 ## Decisioni
 
 - Il nome definitivo del repository è `structural-codes`.
-- Il progetto è autonomo e collegato a `structural-checks-ts`, libreria distinta
-  per algoritmi, calcoli e verifiche strutturali.
+- Il progetto è autonomo e può essere utilizzato da consumer esterni tramite
+  interfacce e dati documentati.
 - Il repository è open source e deve essere pubblico anche durante lo
   sviluppo.
 - Software, schemi, indici e apparato editoriale sono distribuiti con licenza

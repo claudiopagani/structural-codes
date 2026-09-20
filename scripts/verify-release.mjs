@@ -83,7 +83,6 @@ const requiredFiles = [
   "corpus/units/ntc2018/4.1.json",
   "corpus/units/circ2019/c4.1.json",
   "sources/registry/sources.v2.json",
-  "integration/structural-checks-ts/manifest.json",
 ];
 
 function verifyInventory(record, label) {
@@ -180,7 +179,6 @@ import corpusManifest from "structural-codes/corpus/manifest.json" with { type: 
 import ntcUnit from "structural-codes/corpus/units/ntc2018/4.1.json" with { type: "json" };
 import circUnit from "structural-codes/corpus/units/circ2019/c4.1.json" with { type: "json" };
 import registry from "structural-codes/sources/registry" with { type: "json" };
-import integration from "structural-codes/integration/structural-checks-ts" with { type: "json" };
 
 assert.equal(CANONICAL_UNIT_SCHEMA_VERSION, "2.0.0-alpha.2");
 assert.equal(corpusManifest.status, ${JSON.stringify(sourceCorpusManifestStatus)});
@@ -189,7 +187,6 @@ assert.equal(createUnitIndex([ntcUnit, circUnit]).size, 2);
 assert.equal(compareCanonicalUnits(ntcUnit, ntcUnit), 0);
 assert.equal(findIncomingRelations([ntcUnit, circUnit], ntcUnit.id).length, 1);
 assert.equal(sourceRegistryV2Schema.parse(registry).registryVersion, 2);
-assert.equal(integration.provider.currentName, "structural-checks-ts");
 assert.equal(sha256OfText("structural-codes").length, 64);
 `;
   await writeFile(join(consumerRoot, "consumer.mjs"), runtimeConsumer, "utf8");

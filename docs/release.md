@@ -19,7 +19,7 @@ npm pack
 `release:verify` non pubblica. Il tarball deve contenere soltanto:
 
 - `dist/` con JavaScript ESM e dichiarazioni;
-- `schemas/`, `corpus/`, `sources/registry/` e `integration/`;
+- `schemas/`, `corpus/` e `sources/registry/`;
 - `README.md`, `LICENSE`, `NOTICE` e `package.json`.
 
 Viewer, sorgenti TypeScript, script, test, PDF, evidence, audit privato,
