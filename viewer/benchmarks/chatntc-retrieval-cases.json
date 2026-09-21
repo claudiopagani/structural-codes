@@ -1,0 +1,501 @@
+{
+  "formatVersion": 1,
+  "name": "ChatNTC retrieval baseline",
+  "description": "Domande tecniche storiche anonimizzate per confrontare lexical, semantic e hybrid RRF senza generazione LLM.",
+  "cases": [
+    {
+      "id": "deformability-001",
+      "query": "Cosa suggeriscono le NTC 2018 per le verifiche di deformabilità?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:4.1.2.2.2",
+          "urn:structural-codes:it:unit:circ2019:c4.1.2.2.2"
+        ],
+        "acceptableUnitIds": [],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "La NTC fissa il criterio prestazionale; la Circolare fornisce metodo di calcolo e limiti indicativi."
+    },
+    {
+      "id": "deformability-002",
+      "query": "Per calcolare la freccia occorre integrare due volte le curvature M/EI?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c4.1.2.2.2"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.2.2.2"],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "C4.1.2.2.2 prescrive in generale il calcolo mediante integrazione delle curvature, includendo fessurazione, viscosità e ritiro."
+    },
+    {
+      "id": "deformability-003",
+      "query": "Cosa è m nel metodo di Branson?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "no-direct-reference"],
+      "expected": {
+        "requiredUnitIds": [],
+        "acceptableUnitIds": [],
+        "document": null,
+        "noDirectNormativeTarget": true
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Nel corpus NTC/Circolare non ricorrono il metodo di Branson né un suo parametro m. C4.1.2.2.2 tratta un diverso procedimento normativo per la deformabilità, ma non consente di rispondere direttamente alla domanda e non è quindi premiato come target."
+    },
+    {
+      "id": "deformability-004",
+      "query": "Per le NTC 2018 il limite di deformabilità L/250 può essere raddoppiato per le mensole e diventare L/125?",
+      "origin": "historical",
+      "categories": ["lexical-direct", "interpretative", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c4.1.2.2.2"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.2.2.2"],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "C4.1.2.2.2 contiene il limite 1/250 e la tabella dei coefficienti per schema strutturale; il quesito richiede distinguere i due criteri."
+    },
+    {
+      "id": "mn-domain-001",
+      "query": "Nel dominio M-N secondo le NTC 2018 è vero che la compressione massima è 0,8 Ac fcd + As fyd?",
+      "origin": "historical",
+      "categories": ["lexical-direct", "interpretative"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c4.1.2.3.4.2"],
+        "acceptableUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2",
+          "urn:structural-codes:it:unit:ntc2018:4.1.2.1.2.1"
+        ],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "La formula N_Rd = 0,8 A_c f_cd + A_s,tot f_yd è esplicita in C4.1.2.3.4.2, ma come valutazione per pilastri in c.a. soggetti a sola compressione assiale che soddisfa implicitamente l'eccentricità minima. La NTC 4.1.2.3.4.2 disciplina la verifica M-N e rinvia ai modelli tensione-deformazione di 4.1.2.1.2; la formula non è una prescrizione generale della NTC per qualunque punto del dominio M-N."
+    },
+    {
+      "id": "minimum-reinforcement-001",
+      "query": "Quali sono i criteri delle NTC 2018 per l'armatura minima delle travi in cemento armato?",
+      "origin": "historical",
+      "categories": ["lexical-direct"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.6.1.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.2.3.5.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "4.1.6.1.1 raccoglie armature longitudinali e trasversali minime delle travi."
+    },
+    {
+      "id": "minimum-reinforcement-002",
+      "query": "Quali prescrizioni di armatura minima valgono per le travi di fondazione in cemento armato?",
+      "origin": "historical",
+      "categories": ["lexical-direct"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.2.5"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.6.1.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.2.5 contiene la prescrizione specifica dello 0,2% superiore e inferiore per l'intera lunghezza."
+    },
+    {
+      "id": "minimum-reinforcement-003",
+      "query": "Come cambiano le armature minime delle travi in zona sismica?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "lexical-direct"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.6.2.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:4.1.6.1.1", "urn:structural-codes:it:unit:ntc2018:7.4.6.1.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.6.2.1 aggiunge le regole di armatura per travi dissipative alle regole ordinarie del Capitolo 4."
+    },
+    {
+      "id": "non-dissipative-001",
+      "query": "Nel comportamento non dissipativo secondo le NTC 2018, per la verifica a flessione devo usare il momento al limite elastico o il normale MRd della sezione?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.1",
+          "urn:structural-codes:it:unit:ntc2018:4.1.2.3.4.2"
+        ],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.3.6.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.1 rinvia al momento resistente massimo in campo sostanzialmente elastico, definito in 4.1.2.3.4.2."
+    },
+    {
+      "id": "non-dissipative-002",
+      "query": "Nel comportamento non dissipativo perché per la verifica a taglio posso utilizzare il modello a traliccio di Mörsch?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.1",
+          "urn:structural-codes:it:unit:ntc2018:4.1.2.3.5.2"
+        ],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.3.6.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.1 rinvia alle regole del Capitolo 4; 4.1.2.3.5.2 definisce la schematizzazione a traliccio per il taglio."
+    },
+    {
+      "id": "non-dissipative-003",
+      "query": "Cosa prevedono le NTC 2018 §7.4.1 per le strutture in cemento armato a comportamento non dissipativo?",
+      "origin": "historical",
+      "categories": ["lexical-direct"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.3.6.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Il riferimento esplicito identifica direttamente 7.4.1."
+    },
+    {
+      "id": "walls-001",
+      "query": "Quali criteri prevedono le NTC 2018 per la modellazione e verifica delle pareti estese debolmente armate?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.3.1",
+          "urn:structural-codes:it:unit:ntc2018:7.4.4.5.1"
+        ],
+        "acceptableUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.3.2",
+          "urn:structural-codes:it:unit:ntc2018:7.4.6.1.4",
+          "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4",
+          "urn:structural-codes:it:unit:ntc2018:7.2.6",
+          "urn:structural-codes:it:unit:circ2019:c7.4.4.5.1"
+        ],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.3.1 definisce la tipologia mediante estensione perimetrale, continuità scatolare e limite sul periodo; 7.4.4.5.1 contiene le verifiche specifiche, inclusi compressione, domanda assiale dinamica e amplificazione del taglio. Classe di duttilità, geometria, armature e modellazione generale sono complementari. La Circolare chiarisce la ridistribuzione fra pareti, ma non introduce criteri specifici ulteriori per questa tipologia."
+    },
+    {
+      "id": "walls-002",
+      "query": "Come devono essere verificate a taglio le pareti in cemento armato in zona sismica?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "lexical-direct"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.4.5.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.6.2.4"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.4.5.1 contiene domanda amplificata e verifiche a taglio-compressione, taglio-trazione e scorrimento."
+    },
+    {
+      "id": "walls-003",
+      "query": "Se una struttura a pareti con travi di collegamento ai piani viene progettata a comportamento dissipativo, quali verifiche e dettagli aggiuntivi sono necessari?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.4.5.1",
+          "urn:structural-codes:it:unit:ntc2018:7.4.4.6",
+          "urn:structural-codes:it:unit:ntc2018:7.4.6.2.5"
+        ],
+        "acceptableUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.4.1.1",
+          "urn:structural-codes:it:unit:ntc2018:7.4.4.5.2",
+          "urn:structural-codes:it:unit:ntc2018:7.4.6.1.4",
+          "urn:structural-codes:it:unit:ntc2018:7.4.6.2.4",
+          "urn:structural-codes:it:unit:circ2019:c7.4.4"
+        ],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Per una risposta completa servono le verifiche delle pareti in 7.4.4.5.1, la classificazione e le verifiche condizionali delle travi di accoppiamento in 7.4.4.6 e i dettagli specifici dell'armatura diagonale in 7.4.6.2.5. Le regole ordinarie per le travi, la duttilità e i dettagli delle pareti restano complementari; C7.4.4 chiarisce progettazione in capacità e verifiche cicliche."
+    },
+    {
+      "id": "walls-004",
+      "query": "Se le travi tra le pareti non sono travi di accoppiamento ai sensi del §7.4.4.6, la presenza dei solai cambia le prescrizioni?",
+      "origin": "historical",
+      "categories": ["interpretative"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.4.6"],
+        "acceptableUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:7.4.3.1",
+          "urn:structural-codes:it:unit:ntc2018:7.4.3.2",
+          "urn:structural-codes:it:unit:ntc2018:7.2.6"
+        ],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "provisional",
+      "notes": "7.4.4.6 stabilisce espressamente che le travi alte quanto lo spessore del solaio non sono efficaci ai fini dell'accoppiamento. 7.4.3.1 e 7.4.3.2 definiscono la classificazione del sistema; 7.2.6 disciplina separatamente l'ipotesi di diaframma rigido. Rimane interpretativa la conclusione generale sugli effetti della presenza dei solai quando l'elemento non è una trave di accoppiamento."
+    },
+    {
+      "id": "walls-005",
+      "query": "Quali verifiche devono essere eseguite sui diaframmi di piano nelle strutture sismiche e quando si applica l'amplificazione del 30% delle forze?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.4.4.1"],
+        "acceptableUnitIds": [
+          "urn:structural-codes:it:unit:circ2019:c7.4.4.4.1",
+          "urn:structural-codes:it:unit:ntc2018:7.2.6",
+          "urn:structural-codes:it:unit:ntc2018:7.4.5.3"
+        ],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "7.4.4.4.1 prescrive che gli orizzontamenti trasmettano le forze dell'analisi aumentate del 30%. C7.4.4.4.1 chiarisce che deformazioni sensibili nel piano impediscono di assumere il diaframma rigido; 7.2.6 disciplina l'ipotesi di rigidezza nel modello. Il fattore 1,30 di 7.4.5.3 è una prescrizione distinta, limitata alle connessioni piastra-piastra o piastra-trave delle strutture prefabbricate dissipative."
+    },
+    {
+      "id": "road-bridges-001",
+      "query": "Nelle NTC §5.1.3.3 lo Schema di Carico 1 prevede 600 kN su quattro impronte quadrate di lato 40 cm e un carico uniforme di 9 kN/m²: come deve essere interpretato questo schema?",
+      "origin": "historical",
+      "categories": ["lexical-direct", "interpretative"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:5.1.3.3.3"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:5.1.3.3.2", "urn:structural-codes:it:unit:ntc2018:5.1.3.3"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "5.1.3.3.3 definisce lo schema; 5.1.3.3.2 chiarisce corsie, disposizione e ricerca dell'effetto più sfavorevole."
+    },
+    {
+      "id": "road-bridges-002",
+      "query": "Come posso trasformare gli schemi di carico delle NTC per ponti stradali in un limite al peso dei veicoli ammessi su un ponte esistente?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "no-direct-reference"],
+      "expected": {
+        "requiredUnitIds": [],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:5.1.3.3.3", "urn:structural-codes:it:unit:circ2019:c8.8.2"],
+        "document": null,
+        "noDirectNormativeTarget": true
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "5.1.3.3.3 definisce modelli convenzionali di carico e C8.8.2 richiede che le verifiche orientino i provvedimenti d'uso, ma il corpus non fornisce una trasformazione diretta dagli schemi a un limite di peso dei veicoli. Il passaggio richiede una valutazione specifica del ponte esistente."
+    },
+    {
+      "id": "road-bridges-003",
+      "query": "Per un ponte ad arco in muratura con una sola corsia, come devono essere applicati gli schemi di carico stradale previsti dalle NTC?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:5.1.3.3.2",
+          "urn:structural-codes:it:unit:ntc2018:5.1.3.3.3"
+        ],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:5.1.3.3.1"],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "5.1.3.3.2 definisce numero, disposizione e numerazione delle corsie convenzionali e impone la configurazione più sfavorevole; 5.1.3.3.3 definisce gli schemi e la loro applicazione. Il materiale muratura non modifica queste regole di carico e C8.8.2 è troppo generale per essere target della domanda."
+    },
+    {
+      "id": "topography-001",
+      "query": "Qual è il criterio delle NTC 2018 per la classificazione della categoria topografica ai fini dell'azione sismica?",
+      "origin": "historical",
+      "categories": ["lexical-direct", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.2.2"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.2.3.2.1", "urn:structural-codes:it:unit:circ2019:c3.2.2"],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "3.2.2 definisce le categorie topografiche e il limite di altezza; 3.2.3.2.1 ne applica il coefficiente."
+    },
+    {
+      "id": "topography-002",
+      "query": "Per determinare la categoria topografica con un metodo basato sul TPI, su quale area o raggio deve essere calcolato il TPI?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "no-direct-reference"],
+      "expected": {
+        "requiredUnitIds": [],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.2.2", "urn:structural-codes:it:unit:circ2019:c3.2.2"],
+        "document": null,
+        "noDirectNormativeTarget": true
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "3.2.2 classifica le configurazioni topografiche mediante geometria e altezza del rilievo e C3.2.2 tratta gli effetti di risposta locale. Nel corpus non ricorrono il TPI né un'area o un raggio per calcolarlo: la metodologia è esterna alla prescrizione normativa."
+    },
+    {
+      "id": "temperature-001",
+      "query": "Quali variazioni termiche devono essere considerate secondo le NTC 2018 per gli elementi strutturali?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "lexical-direct"],
+      "expected": {
+        "requiredUnitIds": [
+          "urn:structural-codes:it:unit:ntc2018:3.5.2",
+          "urn:structural-codes:it:unit:ntc2018:3.5.4",
+          "urn:structural-codes:it:unit:ntc2018:3.5.5"
+        ],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.5.1"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "La domanda richiede temperatura esterna, distribuzione nella sezione e azione termica sugli edifici."
+    },
+    {
+      "id": "temperature-002",
+      "query": "Quale azione termica deve essere considerata per una struttura o pensilina direttamente esposta alle variazioni di temperatura?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.5.5"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:3.5.2", "urn:structural-codes:it:unit:ntc2018:3.5.4"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "3.5.5 stabilisce quando è ammessa la sola componente uniforme e quando serve una valutazione termica più approfondita."
+    },
+    {
+      "id": "winkler-001",
+      "query": "Le NTC 2018 prescrivono un metodo per determinare il coefficiente di Winkler di una fondazione?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "no-direct-reference"],
+      "expected": {
+        "requiredUnitIds": [],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:6.2.2", "urn:structural-codes:it:unit:ntc2018:6.4.2.2"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": true
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "6.2.2 richiede caratterizzazione e modellazione geotecnica basate su indagini; 6.4.2.2 richiede le verifiche di spostamenti e distorsioni. Nessuna unità prescrive un metodo per ricavare il coefficiente di Winkler di una fondazione; l'unica occorrenza del termine Winkler riguarda un irrigidimento di acciaio ed è estranea alla domanda."
+    },
+    {
+      "id": "winkler-002",
+      "query": "È corretto stimare il coefficiente di Winkler con una relazione del tipo Eed / B / (1 - ν²)?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "no-direct-reference"],
+      "expected": {
+        "requiredUnitIds": [],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:6.2.2", "urn:structural-codes:it:unit:ntc2018:6.4.2.2"],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": true
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "La relazione E_ed / B / (1 - ν²) non è presente nel corpus NTC/Circolare. 6.2.2 e 6.4.2.2 forniscono soltanto il quadro per modello geotecnico e verifiche prestazionali: la validazione della formula proposta resta una questione di modellazione geotecnica esterna alla prescrizione diretta."
+    },
+    {
+      "id": "masonry-001",
+      "query": "Quali parametri meccanici della muratura esistente devono essere utilizzati secondo la Circolare 2019?",
+      "origin": "historical",
+      "categories": ["lexical-direct", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c8.5.3.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:8.5.3"],
+        "document": "circ2019",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "C8.5.3.1 contiene valori, criteri conoscitivi e tabelle dei parametri meccanici delle murature esistenti."
+    },
+    {
+      "id": "masonry-002",
+      "query": "Come si applicano i coefficienti correttivi ai parametri meccanici delle murature esistenti?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c8.5.3.1"],
+        "acceptableUnitIds": [],
+        "document": "circ2019",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "C8.5.3.1 disciplina i coefficienti migliorativi e riduttivi e la loro applicazione a resistenze e moduli."
+    },
+    {
+      "id": "masonry-003",
+      "query": "Quali verifiche richiedono le NTC 2018 quando si realizza una nuova apertura con cerchiatura in una parete muraria esistente?",
+      "origin": "historical",
+      "categories": ["semantic-paraphrase", "interpretative", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c8.7.4.1"],
+        "acceptableUnitIds": ["urn:structural-codes:it:unit:ntc2018:8.7.4"],
+        "document": null,
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "C8.7.4.1 tratta esplicitamente le nuove aperture e il ripristino, per quanto possibile, della condizione precedente della parete."
+    },
+    {
+      "id": "exact-reference-001",
+      "query": "7.3.6.1",
+      "origin": "historical",
+      "categories": ["exact-reference"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.3.6.1"],
+        "acceptableUnitIds": [],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Riferimento NTC esatto."
+    },
+    {
+      "id": "exact-reference-002",
+      "query": "NTC 2018 §7.4.1",
+      "origin": "historical",
+      "categories": ["exact-reference"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:7.4.1"],
+        "acceptableUnitIds": [],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Riferimento NTC esatto con indicazione del documento."
+    },
+    {
+      "id": "exact-reference-003",
+      "query": "§5.1.3.3",
+      "origin": "historical",
+      "categories": ["exact-reference"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:ntc2018:5.1.3.3"],
+        "acceptableUnitIds": [],
+        "document": "ntc2018",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Riferimento NTC esatto al contenitore della sezione."
+    },
+    {
+      "id": "exact-reference-004",
+      "query": "C8.7.4.1",
+      "origin": "historical",
+      "categories": ["exact-reference", "ntc-circolare"],
+      "expected": {
+        "requiredUnitIds": ["urn:structural-codes:it:unit:circ2019:c8.7.4.1"],
+        "acceptableUnitIds": [],
+        "document": "circ2019",
+        "noDirectNormativeTarget": false
+      },
+      "groundTruthStatus": "reviewed",
+      "notes": "Riferimento Circolare esatto."
+    }
+  ]
+}

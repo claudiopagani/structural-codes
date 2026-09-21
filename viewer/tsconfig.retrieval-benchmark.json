@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "declaration": false,
+    "sourceMap": false,
+    "rootDir": ".",
+    "outDir": ".local/chatntc-retrieval-benchmark-tool"
+  },
+  "include": [
+    "scripts/benchmark-chatntc-retrieval.ts",
+    "scripts/load-chatntc-corpus.ts",
+    "server/chatntc/localRepository.ts",
+    "server/chatntc/ollamaEmbedding.ts",
+    "server/chatntc/rankFusion.ts",
+    "server/chatntc/retrievalBenchmark.ts",
+    "server/chatntc/semanticIndex.ts",
+    "server/chatntc/semanticRetriever.ts",
+    "shared/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".local"]
+}
