@@ -6,9 +6,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { OllamaEmbeddingProvider } from "../.local/chatntc-semantic-tool/server/chatntc/ollamaEmbedding.js";
+import { DEFAULT_OLLAMA_NUM_CTX, OllamaEmbeddingProvider } from "../.local/chatntc-semantic-tool/server/chatntc/ollamaEmbedding.js";
 import {
-  generateSemanticIndex, readSemanticIndex, semanticInputFingerprint, semanticTextForUnit, validateSemanticIndex,
+  CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, CHATNTC_SEMANTIC_TOKENIZER_MODEL, CHATNTC_SEMANTIC_TOKENIZER_REVISION,
+  chunkSemanticUnits, generateSemanticIndex, readSemanticIndex, semanticInputFingerprint, semanticTextForChunk, semanticTextForUnit, validateSemanticIndex,
 } from "../.local/chatntc-semantic-tool/server/chatntc/semanticIndex.js";
 
 const viewerRoot = fileURLToPath(new URL("../", import.meta.url));
@@ -25,7 +26,17 @@ const unit = (number, text, document = "ntc2018") => {
     ] };
 };
 const units = [unit("1.1", "Testo normalizzato utile."), unit("C1.2", "Secondo capoverso.", "circ2019")];
-const expected = { corpusFingerprint, unitIds: units.map((entry) => entry.id), inputFingerprint: semanticInputFingerprint(units) };
+const fixtureTokenizer = {
+  encode(text, options = {}) {
+    const ids = Array.from(text, (character) => character.codePointAt(0));
+    return { ids: options.add_special_tokens === false ? ids : [0, ...ids, 2] };
+  },
+  decode(ids) { return String.fromCodePoint(...ids); },
+};
+const chunks = chunkSemanticUnits(units, fixtureTokenizer, CHATNTC_SEMANTIC_CHUNKING_DEFAULTS);
+const expected = { corpusFingerprint, unitIds: units.map((entry) => entry.id),
+  inputFingerprint: semanticInputFingerprint(chunks, { policy: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS,
+    tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL, tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION }) };
 
 async function fixtureIndex() {
   const directory = await mkdtemp(join(tmpdir(), "chatntc-semantic-"));
@@ -34,7 +45,9 @@ async function fixtureIndex() {
       modelDigest: null, dimensions: 3, parameters: { fixture: true } }; },
     async embed(texts) { return texts.map((_, index) => index % 2 ? [0, 3, 4] : [1, 2, 2]); },
   };
-  const metadata = await generateSemanticIndex({ units, corpusFingerprint, provider, outputDirectory: directory, batchSize: 1 });
+  const metadata = await generateSemanticIndex({ chunks, unitIds: units.map((entry) => entry.id), corpusFingerprint,
+    chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL,
+    tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION, provider, outputDirectory: directory, batchSize: 1 });
   return { directory, metadata };
 }
 
@@ -49,15 +62,16 @@ test("testo embedding per unità è deterministico e usa solo campi canonici dic
 test("genera, valida e legge metadata JSON più matrice Float32 compatta", async (t) => {
   const { directory, metadata } = await fixtureIndex();
   t.after(() => rm(directory, { recursive: true, force: true }));
-  assert.equal(metadata.formatVersion, 1);
+  assert.equal(metadata.formatVersion, 2);
   assert.equal(metadata.dimensions, 3);
   assert.equal(metadata.unitCount, 2);
+  assert.equal(metadata.chunkCount, 2);
   assert.equal(metadata.normalization, "l2");
   assert.equal(metadata.vectors.byteLength, 2 * 3 * Float32Array.BYTES_PER_ELEMENT);
   const loaded = await readSemanticIndex(directory, expected);
-  assert.deepEqual([...loaded.vectorFor(units[0].id)], [1 / 3, 2 / 3, 2 / 3].map(Math.fround));
-  assert.equal(loaded.vectorFor("missing"), null);
-  assert.ok(Math.abs(Math.hypot(...loaded.vectorFor(units[1].id)) - 1) < 1e-6);
+  assert.deepEqual([...loaded.vectorForChunk(chunks[0].chunkId)], [1 / 3, 2 / 3, 2 / 3].map(Math.fround));
+  assert.equal(loaded.vectorForChunk("missing"), null);
+  assert.ok(Math.abs(Math.hypot(...loaded.vectorForChunk(chunks[1].chunkId)) - 1) < 1e-6);
 });
 
 test("validazione rifiuta fingerprint, duplicati, unità ignote, indice incompleto e dimensioni incoerenti", async (t) => {
@@ -66,11 +80,12 @@ test("validazione rifiuta fingerprint, duplicati, unità ignote, indice incomple
   const bytes = await readFile(join(directory, "vectors.f32"));
   assert.throws(() => validateSemanticIndex(metadata, bytes, { ...expected, corpusFingerprint: "b".repeat(64) }), /corpus fingerprint/u);
   assert.throws(() => validateSemanticIndex({ ...metadata, unitIds: [units[0].id, units[0].id] }, bytes, expected), /duplicato/u);
-  assert.throws(() => validateSemanticIndex({ ...metadata, unitIds: [units[0].id, "unknown"] }, bytes, expected), /inesistente/u);
-  assert.throws(() => validateSemanticIndex({ ...metadata, unitCount: 1, unitIds: [units[0].id] }, bytes, expected), /incompleto/u);
+  assert.throws(() => validateSemanticIndex({ ...metadata, chunks: metadata.chunks.map((chunk, index) => index ? { ...chunk, unitId: "unknown" } : chunk) }, bytes, expected), /coerente|incompleto/u);
+  assert.throws(() => validateSemanticIndex({ ...metadata, unitCount: 1, unitIds: [units[0].id] }, bytes, expected), /incompleto|unitCount/u);
   assert.throws(() => validateSemanticIndex({ ...metadata, dimensions: 4 }, bytes, expected), /dimensione binaria/u);
   assert.throws(() => validateSemanticIndex({ ...metadata, embeddingModel: "" }, bytes, expected), /modello embedding/u);
   assert.throws(() => validateSemanticIndex({ ...metadata, parameters: undefined }, bytes, expected), /parametri embedding/u);
+  assert.throws(() => validateSemanticIndex({ ...metadata, formatVersion: 1 }, bytes, expected), /formatVersion non supportata/u);
 });
 
 test("validazione rifiuta hash alterato, NaN e vettori non normalizzati", async (t) => {
@@ -94,10 +109,11 @@ test("generatore rifiuta batch e dimensioni incoerenti dal provider", async (t) 
   t.after(() => rm(directory, { recursive: true, force: true }));
   const description = async () => ({ embeddingProvider: "fixture", embeddingModel: "fixture", modelVersion: null,
     modelDigest: null, dimensions: 3, parameters: {} });
-  await assert.rejects(generateSemanticIndex({ units, corpusFingerprint, outputDirectory: directory,
-    provider: { describe: description, embed: async () => [[1, 2]] } }), /numero di embedding|dimensione vettore/u);
-  await assert.rejects(generateSemanticIndex({ units, corpusFingerprint, outputDirectory: directory,
-    provider: { describe: description, embed: async (texts) => texts.map(() => [1, 2]) } }), /dimensione vettore/u);
+  const input = { chunks, unitIds: units.map((entry) => entry.id), corpusFingerprint, outputDirectory: directory,
+    chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL,
+    tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION };
+  await assert.rejects(generateSemanticIndex({ ...input, provider: { describe: description, embed: async () => [[1, 2]] } }), /numero di embedding|dimensione vettore/u);
+  await assert.rejects(generateSemanticIndex({ ...input, provider: { describe: description, embed: async (texts) => texts.map(() => [1, 2]) } }), /dimensione vettore/u);
 });
 
 test("adapter Ollama usa tags per il digest e /api/embed senza troncamento", async () => {
@@ -109,10 +125,74 @@ test("adapter Ollama usa tags per il digest e /api/embed senza troncamento", asy
   } });
   const description = await adapter.describe();
   assert.equal(description.modelDigest, "d".repeat(64));
+  assert.deepEqual(description.parameters, { numCtx: DEFAULT_OLLAMA_NUM_CTX, truncate: false, requestedDimensions: 3 });
   assert.deepEqual(await adapter.embed(["fixture text"]), [[1, 2, 3]]);
   assert.equal(requests[0].url, "http://127.0.0.1:11434/api/tags");
   assert.equal(requests[1].url, "http://127.0.0.1:11434/api/embed");
-  assert.deepEqual(JSON.parse(requests[1].init.body), { model: "fixture:1", input: ["fixture text"], truncate: false, dimensions: 3 });
+  assert.deepEqual(JSON.parse(requests[1].init.body), { model: "fixture:1", input: ["fixture text"], truncate: false,
+    options: { num_ctx: DEFAULT_OLLAMA_NUM_CTX }, dimensions: 3 });
+});
+
+test("adapter Ollama propaga numCtx esplicito e rifiuta valori non validi", async () => {
+  const requests = [];
+  const adapter = new OllamaEmbeddingProvider({ model: "fixture:1", numCtx: 4096, fetchImpl: async (url, init = {}) => {
+    requests.push({ url: String(url), init });
+    if (String(url).endsWith("/api/tags")) return Response.json({ models: [{ name: "fixture:1" }] });
+    return Response.json({ embeddings: [[1, 2, 3]] });
+  } });
+  const description = await adapter.describe();
+  assert.equal(description.parameters.numCtx, 4096);
+  await adapter.embed(["fixture text"]);
+  assert.equal(JSON.parse(requests[1].init.body).options.num_ctx, 4096);
+  for (const value of [0, -1, 1.5, 131_073]) {
+    assert.throws(() => new OllamaEmbeddingProvider({ model: "fixture:1", numCtx: value }), /numCtx Ollama non valido/u);
+  }
+});
+
+test("adapter Ollama conserva status e dettaglio error JSON con limite e senza body", async () => {
+  const detail = "input length exceeds context length";
+  const adapter = new OllamaEmbeddingProvider({ model: "fixture:1", fetchImpl: async () =>
+    Response.json({ error: detail }, { status: 400 }) });
+  await assert.rejects(adapter.embed(["testo breve"]), (error) => {
+    assert.equal(error.message, `Ollama non disponibile (HTTP 400): ${detail}`);
+    assert.doesNotMatch(error.message, /testo breve/u);
+    return true;
+  });
+
+  const oversized = "secret-request-content-" + "x".repeat(10_000);
+  const bounded = new OllamaEmbeddingProvider({ model: "fixture:1", fetchImpl: async () =>
+    Response.json({ error: oversized }, { status: 400 }) });
+  await assert.rejects(bounded.embed(["contenuto non diagnostico"]), (error) => {
+    assert.ok(error.message.length < 500);
+    assert.doesNotMatch(error.message, /contenuto non diagnostico/u);
+    assert.match(error.message, /secret-request-content/u);
+    return true;
+  });
+
+  const nonJson = new OllamaEmbeddingProvider({ model: "fixture:1", fetchImpl: async () =>
+    new Response("bad request", { status: 400, headers: { "content-type": "text/plain" } }) });
+  await assert.rejects(nonJson.embed(["testo breve"]), (error) => {
+    assert.equal(error.message, "Ollama non disponibile (HTTP 400).");
+    return true;
+  });
+});
+
+test("fallimento embedding include il contesto controllato del batch senza il testo", async (t) => {
+  const expectedTextLength = semanticTextForChunk(chunks[0]).length;
+  const outputDirectory = await mkdtemp(join(tmpdir(), "chatntc-semantic-failed-"));
+  t.after(() => rm(outputDirectory, { recursive: true, force: true }));
+  const provider = {
+    async describe() { return { embeddingProvider: "fixture", embeddingModel: "fixture-embedding", modelVersion: null, modelDigest: null, dimensions: 3, parameters: {} }; },
+    async embed() { throw new Error("Ollama non disponibile (HTTP 400): input length exceeds context length"); },
+  };
+  await assert.rejects(generateSemanticIndex({ chunks, unitIds: units.map((entry) => entry.id), corpusFingerprint, provider, outputDirectory,
+    chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL,
+    tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION, batchSize: 1 }), (error) => {
+    assert.match(error.message, new RegExp(`Embedding batch fallito .*offset=0.*size=1.*${units[0].id}.*document=ntc2018.*numbering=1\\.1.*characters=${expectedTextLength}`));
+    assert.match(error.message, /input length exceeds context length/u);
+    assert.doesNotMatch(error.message, /Testo normalizzato utile/u);
+    return true;
+  });
 });
 
 test("il generatore compilato risolve viewerRoot dal working directory del package", async (t) => {

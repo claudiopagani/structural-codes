@@ -30,6 +30,8 @@ export interface ChatNTCSemanticHit {
   numbering: string;
   semanticRank: number;
   similarity: number;
+  winningChunkId: string;
+  winningChunkIndex: number;
 }
 
 export interface ChatNTCSemanticRetrievalResult {
@@ -156,10 +158,11 @@ export function createChatNTCSemanticRetriever(input: {
       aborted(request.signal);
       if (embedded.length !== 1) throw new ChatNTCSemanticRetrievalError("runtime", "QUERY_EMBEDDING_INVALID");
       const query = normalizeQuery(embedded[0], index.metadata.dimensions);
-      const candidates: Array<{ row: number; unit: ChatNTCSemanticUnitSummary; similarity: number }> = [];
-      for (let row = 0; row < index.metadata.unitCount; row++) {
+      const candidates = new Map<string, { row: number; unit: ChatNTCSemanticUnitSummary; similarity: number; chunkId: string; chunkIndex: number }>();
+      for (let row = 0; row < index.metadata.chunkCount; row++) {
         if ((row & 127) === 0) aborted(request.signal);
-        const unit = summaries.get(index.metadata.unitIds[row]);
+        const chunk = index.metadata.chunks[row];
+        const unit = summaries.get(chunk.unitId);
         if (!unit) throw new ChatNTCSemanticRetrievalError("configuration", "UNIT_CATALOG_MISMATCH");
         if (request.document && unit.document !== request.document) continue;
         let similarity = 0;
@@ -169,12 +172,16 @@ export function createChatNTCSemanticRetriever(input: {
           similarity += query[column] * index.vectors[offset + column];
         }
         similarity = Math.max(-1, Math.min(1, similarity));
-        candidates.push({ row, unit, similarity });
+        const previous = candidates.get(unit.unitId);
+        if (!previous || similarity > previous.similarity || similarity === previous.similarity && row < previous.row) {
+          candidates.set(unit.unitId, { row, unit, similarity, chunkId: chunk.chunkId, chunkIndex: chunk.chunkIndex });
+        }
       }
-      candidates.sort((left, right) => right.similarity - left.similarity || left.row - right.row
+      const ranked = [...candidates.values()];
+      ranked.sort((left, right) => right.similarity - left.similarity || left.row - right.row
         || left.unit.unitId.localeCompare(right.unit.unitId, "en"));
-      return { hits: candidates.slice(0, request.limit).map(({ unit, similarity }, position) => ({
-        ...unit, semanticRank: position + 1, similarity,
+      return { hits: ranked.slice(0, request.limit).map(({ unit, similarity, chunkId, chunkIndex }, position) => ({
+        ...unit, semanticRank: position + 1, similarity, winningChunkId: chunkId, winningChunkIndex: chunkIndex,
       })) };
     },
   };

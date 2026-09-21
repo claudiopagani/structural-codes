@@ -9,7 +9,13 @@
     "outDir": ".local/chatntc-semantic-tool"
   },
   "include": [
+    "scripts/audit-chatntc-semantic-lengths.ts",
+    "scripts/audit-chatntc-semantic-chunks.ts",
+    "scripts/bge-m3-tokenizer.ts",
     "scripts/generate-chatntc-semantic-index.ts",
+    "scripts/load-chatntc-corpus.ts",
+    "scripts/semantic-length-audit.ts",
+    "scripts/setup-bge-m3-tokenizer.ts",
     "server/chatntc/semanticIndex.ts",
     "server/chatntc/ollamaEmbedding.ts",
     "shared/corpusData.ts"

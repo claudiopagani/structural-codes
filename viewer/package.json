@@ -70,6 +70,9 @@
     "build:chatntc-test": "tsc -p tsconfig.chatntc-test.json",
     "test:chatntc-server": "npm run sync:corpus && npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-server.test.mjs tests/chatntc-semantic-retrieval.test.mjs tests/chatntc-rank-fusion.test.mjs",
     "build:chatntc-semantic-tool": "tsc -p tsconfig.semantic-tool.json",
+    "chatntc:semantic:tokenizer:setup": "npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/setup-bge-m3-tokenizer.js",
+    "chatntc:semantic:audit-lengths": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/audit-chatntc-semantic-lengths.js",
+    "chatntc:semantic:audit-chunks": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/audit-chatntc-semantic-chunks.js",
     "chatntc:semantic:index": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js",
     "chatntc:semantic:validate": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js --validate-only",
     "test:chatntc-semantic": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node --test tests/chatntc-semantic.test.mjs",
@@ -92,6 +95,7 @@
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@huggingface/tokenizers": "^0.2.0",
     "structural-codes": "file:..",
     "next": "16.3.2",
     "pdfjs-dist": "6.2.108",

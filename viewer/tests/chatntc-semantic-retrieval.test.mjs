@@ -3,7 +3,10 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { generateSemanticIndex, semanticInputFingerprint } from "../.chatntc-test/server/chatntc/semanticIndex.js";
+import {
+  CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, CHATNTC_SEMANTIC_TOKENIZER_MODEL, CHATNTC_SEMANTIC_TOKENIZER_REVISION,
+  chunkSemanticUnits, generateSemanticIndex, semanticInputFingerprint,
+} from "../.chatntc-test/server/chatntc/semanticIndex.js";
 import {
   ChatNTCSemanticRetrievalError, createChatNTCSemanticIndexLoader, createChatNTCSemanticRetriever,
 } from "../.chatntc-test/server/chatntc/semanticRetriever.js";
@@ -26,14 +29,26 @@ const unit = (number, document = "ntc2018") => {
 };
 const units = [unit("1.1"), unit("1.2", "circ2019"), unit("1.3")];
 const vectors = [[1, 0, 0], [0, 1, 0], [1, 0, 0]];
+const fixtureTokenizer = {
+  encode(text, options = {}) {
+    const ids = Array.from(text, (character) => character.codePointAt(0));
+    return { ids: options.add_special_tokens === false ? ids : [0, ...ids, 2] };
+  },
+  decode(ids) { return String.fromCodePoint(...ids); },
+};
+const chunks = chunkSemanticUnits(units, fixtureTokenizer, CHATNTC_SEMANTIC_CHUNKING_DEFAULTS);
 const summaries = units.map((entry) => ({ unitId: entry.id, document: entry.document, numbering: entry.numbering.official }));
-const expected = { corpusFingerprint, unitIds: units.map((entry) => entry.id), inputFingerprint: semanticInputFingerprint(units) };
+const expected = { corpusFingerprint, unitIds: units.map((entry) => entry.id),
+  inputFingerprint: semanticInputFingerprint(chunks, { policy: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS,
+    tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL, tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION }) };
 
 async function fixture(t) {
   const directory = await mkdtemp(join(tmpdir(), "chatntc-semantic-retrieval-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
   let offset = 0;
-  await generateSemanticIndex({ units, corpusFingerprint, outputDirectory: directory, batchSize: 2, provider: {
+  await generateSemanticIndex({ chunks, unitIds: units.map((entry) => entry.id), corpusFingerprint, outputDirectory: directory,
+    chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL,
+    tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION, batchSize: 2, provider: {
     async describe() { return description; },
     async embed(texts) { return texts.map(() => vectors[offset++]); },
   } });
@@ -66,6 +81,36 @@ test("cosine lineare, top-K, filtro documento e tie-break canonico sono determin
   assert.ok(Math.abs(result.hits[2].similarity) < 1e-6);
   const filtered = await retriever.retrieve({ query: "azione", limit: 3, document: "circ2019" });
   assert.deepEqual(filtered.hits.map((hit) => [hit.document, hit.numbering]), [["circ2019", "1.2"]]);
+});
+
+test("semantic retrieval aggrega i chunk per unitId e conserva il chunk vincente", async (t) => {
+  const longUnit = unit("long");
+  longUnit.blocks[1].text.raw = "x".repeat(3000);
+  longUnit.blocks[1].text.normalized = "x".repeat(3000);
+  const retrievalUnits = [longUnit, unit("other")];
+  const retrievalChunks = chunkSemanticUnits(retrievalUnits, fixtureTokenizer, CHATNTC_SEMANTIC_CHUNKING_DEFAULTS);
+  assert.ok(retrievalChunks.filter((chunk) => chunk.unitId === longUnit.id).length > 1);
+  const directory = await mkdtemp(join(tmpdir(), "chatntc-semantic-chunk-retrieval-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  let offset = 0;
+  const vectorsForChunks = retrievalChunks.map((chunk) => {
+    const vector = chunk.unitId === longUnit.id && chunk.chunkIndex === 1 ? [1, 0, 0] : [0, 1, 0];
+    return vector;
+  });
+  await generateSemanticIndex({ chunks: retrievalChunks, unitIds: retrievalUnits.map((entry) => entry.id), corpusFingerprint,
+    outputDirectory: directory, batchSize: 1, chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS,
+    tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL, tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION,
+    provider: { async describe() { return description; }, async embed() { return [vectorsForChunks[offset++]]; } } });
+  const loader = createChatNTCSemanticIndexLoader({ directory, expected: { corpusFingerprint,
+    unitIds: retrievalUnits.map((entry) => entry.id), inputFingerprint: semanticInputFingerprint(retrievalChunks, {
+      policy: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL,
+      tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION }) } });
+  const summariesForRetrieval = retrievalUnits.map((entry) => ({ unitId: entry.id, document: entry.document, numbering: entry.numbering.official }));
+  const retriever = createChatNTCSemanticRetriever({ provider: provider([1, 0, 0]), indexLoader: loader, units: summariesForRetrieval });
+  const result = await retriever.retrieve({ query: "azione", limit: 2 });
+  assert.deepEqual(result.hits.map((hit) => hit.unitId), [longUnit.id, retrievalUnits[1].id]);
+  assert.equal(result.hits[0].winningChunkIndex, 1);
+  assert.equal(new Set(result.hits.map((hit) => hit.unitId)).size, result.hits.length);
 });
 
 test("query embedding con dimensioni errate è rifiutato", async (t) => {
