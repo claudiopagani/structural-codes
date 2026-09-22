@@ -82,18 +82,52 @@ npx structural-codes-viewer --source structural-codes \
 Il comando non copia il corpus completo nel package viewer: usa il package
 `structural-codes` installato dal consumer come sorgente.
 
-### Semantic index ChatNTC locale
+### Semantic retrieval ChatNTC
 
-Il tooling sperimentale può generare un embedding per unità normativa in
-`viewer/.local/chatntc-semantic/`, directory ignorata da Git. Produce metadata
-JSON e una matrice binaria Float32, legati al fingerprint del corpus. Il
-retriever server-side calcola un top-K semantico e il coordinator può applicare
-RRF in modalità `on`; il runtime locale normale non carica l'indice e non
-richiede un modello.
+Il runtime usa la pipeline ChatNTC e il `retrievalCoordinator` esistenti. Senza
+configurazione semantic il default è `off`: sviluppo e viewer locali restano
+lexical + structural, non leggono un indice, non costruiscono un provider e non
+richiedono Docker o GPU.
+
+- `off`: percorso legacy lexical + structural, senza inizializzazione semantic;
+- `shadow`: esegue anche semantic retrieval e RRF, registra i diagnostics
+  server-side ma conserva l'Evidence Package lexical;
+- `on`: usa lexical + semantic + RRF prima della structural expansion.
+
+Configurazione server-side:
+
+```text
+CHATNTC_SEMANTIC_MODE=off|shadow|on
+CHATNTC_EMBEDDING_PROVIDER=flagembedding-http|ollama
+CHATNTC_EMBEDDING_URL=http://127.0.0.1:8091
+CHATNTC_SEMANTIC_INDEX_PATH=<path assoluto o relativo al working directory server>
+CHATNTC_EMBEDDING_TIMEOUT_MS=120000
+CHATNTC_EMBEDDING_BATCH_SIZE=32
+```
+
+In `shadow/on`, `flagembedding-http` è il provider predefinito. L'indice e il
+servizio devono essere disponibili al server e superare il preflight di
+fingerprint, provider, modello, dimensioni, normalizzazione e parametri. Per lo
+sviluppo semantic locale si avvia il servizio Docker BGE-M3 e si può indicare
+`CHATNTC_SEMANTIC_INDEX_PATH=.local/chatntc-semantic-flagembedding` eseguendo il
+server dalla directory `viewer`. In production si usano un path e un servizio
+server-side espliciti; `.local` non è un default production.
+
+Ollama resta una scelta esplicita per sviluppo/tooling con
+`CHATNTC_EMBEDDING_PROVIDER=ollama` e `CHATNTC_EMBEDDING_MODEL=<modello>`;
+non è un fallback di FlagEmbedding. Sono disponibili anche gli override
+Ollama `CHATNTC_EMBEDDING_DIMENSIONS` e `CHATNTC_EMBEDDING_NUM_CTX` quando
+coerenti con i metadata dell'indice.
+
+Provider, query embedding, indice vettoriale e diagnostics restano nei moduli
+server: browser e bundle frontend non ricevono modello, vettori o file indice.
+
+Il tooling può generare indici separati sotto `viewer/.local/`, directory
+ignorata da Git:
 
 ```bash
-npm --prefix viewer run chatntc:semantic:index -- --model <modello-embedding>
-npm --prefix viewer run chatntc:semantic:validate
+npm --prefix viewer run chatntc:semantic:index -- --provider flagembedding-http --embedding-url http://127.0.0.1:8091 --output .local/chatntc-semantic-flagembedding
+npm --prefix viewer run chatntc:semantic:validate -- --provider flagembedding-http --embedding-url http://127.0.0.1:8091 --output .local/chatntc-semantic-flagembedding
 ```
 
 Corpus e query devono usare esattamente lo stesso modello, digest/versione,
@@ -101,10 +135,13 @@ dimensioni e normalizzazione. Ogni modifica del corpus richiede di rigenerare
 l'indice. Formato, validazioni, opzioni Ollama e limiti dello step sono descritti
 in [ChatNTC semantic index](../docs/chatntc-semantic-index.md).
 
-Separazione corrente: `LOCAL/off` usa solo il retrieval lessicale;
-`PRODUCTION SHADOW` calcola semantic retrieval e RRF ma conserva l'output
-legacy; `PRODUCTION HYBRID/on` usa i primary candidates fusi con RRF. Exact
-references e structural expansion restano nel percorso canonico esistente.
+Exact references, candidate policy, RRF e structural expansion restano nel
+percorso canonico esistente.
+
+Il packaging Docker production-like (server ChatNTC + BGE-M3 su rete privata,
+indice e cache modello esterni) è documentato in
+[`deploy/chatntc`](../deploy/chatntc/README.md). Non è richiesto dallo sviluppo
+normale e non costituisce un deployment cloud.
 
 ## Viewer standalone
 

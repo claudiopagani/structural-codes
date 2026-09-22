@@ -19,6 +19,7 @@ export const CHATNTC_ERRORS = {
   PROVIDER_UNAVAILABLE: [503, "Provider temporaneamente non disponibile."],
   PROVIDER_TIMEOUT: [504, "Il provider non ha risposto entro il limite configurato."],
   PROVIDER_ERROR: [502, "La chiamata al provider non è riuscita."],
+  SEMANTIC_CONFIGURATION_INVALID: [503, "Configurazione semantic ChatNTC non valida o non disponibile."],
   INVALID_PROVIDER_RESPONSE: [502, "Il provider ha restituito una risposta vuota, incompleta o non supportata."],
   INVALID_PROVIDER_JSON: [502, "Il provider ha restituito JSON non parseabile."],
   INVALID_RESPONSE_SCHEMA: [502, "La risposta non rispetta il contratto strutturato ChatNTC."],

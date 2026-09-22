@@ -58,7 +58,8 @@ export function createChatNTCHandler(dependencies: {
   environment: () => ChatNTCEnvironment;
   repository: () => ChatNTCRepository;
   provider: (environment: ChatNTCEnvironment, selection?: ProviderSelection, apiKey?: string) => ChatNTCProvider;
-  semanticRetrieval?: ChatNTCSemanticRetrievalConfiguration;
+  semanticRetrieval?: ChatNTCSemanticRetrievalConfiguration
+    | (() => ChatNTCSemanticRetrievalConfiguration | Promise<ChatNTCSemanticRetrievalConfiguration>);
 }) {
   return async (request: Request): Promise<Response> => {
     let debug = false;
@@ -87,8 +88,14 @@ export function createChatNTCHandler(dependencies: {
       const input = parseRequest(value);
       let repository: ChatNTCRepository;
       try { repository = dependencies.repository(); } catch { throw new ChatNTCServerError("RETRIEVAL_FAILED"); }
+      let semanticRetrieval: ChatNTCSemanticRetrievalConfiguration | undefined;
+      try {
+        semanticRetrieval = typeof dependencies.semanticRetrieval === "function"
+          ? await dependencies.semanticRetrieval()
+          : dependencies.semanticRetrieval;
+      } catch { throw new ChatNTCServerError("SEMANTIC_CONFIGURATION_INVALID"); }
       return json(await runChatNTC(input, { repository, provider: () => dependencies.provider(env, selection, apiKey),
-        semanticRetrieval: dependencies.semanticRetrieval, signal: request.signal }));
+        semanticRetrieval, signal: request.signal }));
     } catch (error) {
       const failure = publicError(error, debug);
       return json(failure.body, failure.status);

@@ -83,6 +83,19 @@ test("cosine lineare, top-K, filtro documento e tie-break canonico sono determin
   assert.deepEqual(filtered.hits.map((hit) => [hit.document, hit.numbering]), [["circ2019", "1.2"]]);
 });
 
+test("semantic retrieval codifica la richiesta esplicitamente come query", async (t) => {
+  const { loader } = await fixture(t);
+  let received;
+  const retriever = createChatNTCSemanticRetriever({ provider: provider([1, 0, 0], {
+    embed: async (options) => {
+      received = options;
+      return [[1, 0, 0]];
+    },
+  }), indexLoader: loader, units: summaries });
+  await retriever.retrieve({ query: "azione", limit: 1 });
+  assert.equal(received.inputType, "query");
+});
+
 test("semantic retrieval aggrega i chunk per unitId e conserva il chunk vincente", async (t) => {
   const longUnit = unit("long");
   longUnit.blocks[1].text.raw = "x".repeat(3000);
@@ -122,6 +135,7 @@ test("query embedding con dimensioni errate è rifiutato", async (t) => {
 test("model identity, digest/version e parametri devono coincidere con l'indice", async (t) => {
   const { loader } = await fixture(t);
   for (const [changed, code] of [
+    [{ embeddingProvider: "altro-provider" }, "MODEL_IDENTITY_MISMATCH"],
     [{ embeddingModel: "altro" }, "MODEL_IDENTITY_MISMATCH"],
     [{ modelVersion: "2.0.0" }, "MODEL_VERSION_MISMATCH"],
     [{ modelDigest: "e".repeat(64) }, "MODEL_DIGEST_MISMATCH"],

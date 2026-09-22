@@ -166,6 +166,17 @@ test("configurazione: provider, chiave, modello e timeout sono solo server-side"
   assert.equal(chatNTCEnabled({ NODE_ENV: "development" }), false);
 });
 
+test("la route espone un errore controllato se il preflight semantic fallisce", async () => {
+  let providerCalls = 0;
+  const response = await handler({
+    semanticRetrieval: async () => { throw new Error("indice incompatibile"); },
+    provider: () => { providerCalls += 1; return mockedProvider(); },
+  })(request());
+  assert.equal(response.status, 503);
+  assert.equal((await response.json()).error.code, "SEMANTIC_CONFIGURATION_INVALID");
+  assert.equal(providerCalls, 0);
+});
+
 test("pipeline end-to-end: retrieval reale, mock DeepSeek, risposta e citazioni validate", async () => {
   let calls = 0;
   const adapter = new DeepSeekAdapter({ apiKey: key }, async (_url, init) => {

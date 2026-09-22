@@ -150,7 +150,7 @@ export function createChatNTCSemanticRetriever(input: {
       aborted(request.signal);
       compatible(description, index);
       let embedded: readonly (readonly number[])[];
-      try { embedded = await input.provider.embed([request.query], { signal: request.signal }); }
+      try { embedded = await input.provider.embed([request.query], { signal: request.signal, inputType: "query" }); }
       catch (error) {
         aborted(request.signal);
         throw classify(error, "runtime", "QUERY_EMBEDDING_FAILED");

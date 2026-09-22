@@ -6,6 +6,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import {
+  assertChatNTCEmbeddingCompatibility, createChatNTCEmbeddingProvider, parseChatNTCEmbeddingProvider,
+} from "../.local/chatntc-semantic-tool/server/chatntc/embeddingProviderFactory.js";
 import { DEFAULT_OLLAMA_NUM_CTX, OllamaEmbeddingProvider } from "../.local/chatntc-semantic-tool/server/chatntc/ollamaEmbedding.js";
 import {
   CHATNTC_SEMANTIC_CHUNKING_DEFAULTS, CHATNTC_SEMANTIC_TOKENIZER_MODEL, CHATNTC_SEMANTIC_TOKENIZER_REVISION,
@@ -114,6 +117,46 @@ test("generatore rifiuta batch e dimensioni incoerenti dal provider", async (t) 
     tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION };
   await assert.rejects(generateSemanticIndex({ ...input, provider: { describe: description, embed: async () => [[1, 2]] } }), /numero di embedding|dimensione vettore/u);
   await assert.rejects(generateSemanticIndex({ ...input, provider: { describe: description, embed: async (texts) => texts.map(() => [1, 2]) } }), /dimensione vettore/u);
+});
+
+test("generatore invia tutti i chunk al provider come document", async (t) => {
+  const outputDirectory = await mkdtemp(join(tmpdir(), "chatntc-semantic-document-mode-"));
+  t.after(() => rm(outputDirectory, { recursive: true, force: true }));
+  const inputTypes = [];
+  await generateSemanticIndex({ chunks, unitIds: units.map((entry) => entry.id), corpusFingerprint,
+    outputDirectory, chunking: CHATNTC_SEMANTIC_CHUNKING_DEFAULTS,
+    tokenizerModel: CHATNTC_SEMANTIC_TOKENIZER_MODEL, tokenizerRevision: CHATNTC_SEMANTIC_TOKENIZER_REVISION,
+    batchSize: 1, provider: {
+      async describe() { return { embeddingProvider: "flagembedding-http", embeddingModel: "BAAI/bge-m3",
+        modelVersion: null, modelDigest: null, dimensions: 3, parameters: { mocked: true } }; },
+      async embed(texts, options) {
+        inputTypes.push(options?.inputType);
+        return texts.map(() => [1, 0, 0]);
+      },
+    } });
+  assert.deepEqual(inputTypes, Array(chunks.length).fill("document"));
+});
+
+test("factory tooling seleziona Ollama o FlagEmbedding e verifica i metadata", async () => {
+  assert.equal(parseChatNTCEmbeddingProvider(undefined, "ollama"), "ollama");
+  assert.throws(() => parseChatNTCEmbeddingProvider("sconosciuto", "ollama"), /non supportato/u);
+
+  const ollama = createChatNTCEmbeddingProvider({ provider: "ollama", model: "fixture:1", fetchImpl: async () =>
+    Response.json({ models: [{ name: "fixture:1", digest: "d".repeat(64) }] }) });
+  const ollamaDescription = await ollama.describe();
+  assert.equal(ollamaDescription.embeddingProvider, "ollama");
+
+  const flag = createChatNTCEmbeddingProvider({ provider: "flagembedding-http", fetchImpl: async () => Response.json({
+    status: "ok", ready: true, provider: "FlagEmbedding", model: "BAAI/bge-m3", dimensions: 1024,
+    maxLength: 1024, fp16: true, normalized: true, runtime: { flagEmbedding: "1.4.2" },
+  }) });
+  const flagDescription = await flag.describe();
+  assert.equal(flagDescription.embeddingProvider, "flagembedding-http");
+  const identity = { embeddingProvider: "flagembedding-http", embeddingModel: "BAAI/bge-m3",
+    modelVersion: null, modelDigest: null, dimensions: 1024, normalization: "l2",
+    parameters: flagDescription.parameters };
+  assert.doesNotThrow(() => assertChatNTCEmbeddingCompatibility(flagDescription, identity));
+  assert.throws(() => assertChatNTCEmbeddingCompatibility(ollamaDescription, identity), /non compatibile/u);
 });
 
 test("adapter Ollama usa tags per il digest e /api/embed senza troncamento", async () => {

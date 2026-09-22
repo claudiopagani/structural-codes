@@ -29,6 +29,7 @@ export interface ChatNTCEmbeddingDescription {
 
 export interface ChatNTCEmbeddingRequestOptions {
   signal?: AbortSignal;
+  inputType?: "query" | "document";
 }
 
 export interface ChatNTCSemanticTokenizer {
@@ -454,7 +455,7 @@ export async function generateSemanticIndex(input: {
     const batch = texts.slice(offset, offset + batchSize);
     let embedded: readonly (readonly number[])[];
     try {
-      embedded = await provider.embed(batch);
+      embedded = await provider.embed(batch, { inputType: "document" });
     } catch (error) {
       const context = chunks.slice(offset, offset + batch.length).map((chunk, index) =>
         `${chunk.unitId} [document=${chunk.document}, numbering=${chunk.numbering}, characters=${Array.from(batch[index]).length}]`).join("; ");

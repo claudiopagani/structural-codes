@@ -6,7 +6,9 @@ import { loadChatNTCCorpus } from "./load-chatntc-corpus.js";
 import { findCrossReferences } from "../shared/crossReferences.js";
 import type { ChatNTCHit } from "../shared/chatntc/index.js";
 import { createLocalArtifactRepository } from "../server/chatntc/localRepository.js";
-import { OllamaEmbeddingProvider } from "../server/chatntc/ollamaEmbedding.js";
+import {
+  assertChatNTCEmbeddingCompatibility, createChatNTCEmbeddingProvider, parseChatNTCEmbeddingProvider,
+} from "../server/chatntc/embeddingProviderFactory.js";
 import { CHATNTC_HYBRID_RETRIEVAL_DEFAULTS, fuseChatNTCRankings } from "../server/chatntc/rankFusion.js";
 import { createChatNTCSemanticIndexLoader, createChatNTCSemanticRetriever } from "../server/chatntc/semanticRetriever.js";
 import type { ChatNTCEmbeddingProvider } from "../server/chatntc/semanticIndex.js";
@@ -26,8 +28,15 @@ const option = (name: string) => {
   if (!value || value.startsWith("--")) throw new Error(`--${name} richiede un valore.`);
   return value;
 };
+const numberOption = (name: string) => {
+  const value = option(name);
+  if (value === undefined) return undefined;
+  const number = Number(value);
+  if (!Number.isSafeInteger(number) || number < 1) throw new Error(`--${name} non valido.`);
+  return number;
+};
 if (args.includes("--help")) {
-  console.log("Uso: npm --prefix viewer run chatntc:retrieval:benchmark -- [--index DIR] [--output DIR] [--ollama-url URL]");
+  console.log("Uso: npm --prefix viewer run chatntc:retrieval:benchmark -- [--index DIR] [--output DIR] [--provider <ollama|flagembedding-http>] [--embedding-url URL] [--timeout-ms N] [--batch-size N] [--ollama-url URL]");
   process.exit(0);
 }
 
@@ -64,15 +73,19 @@ try {
     + "Generarlo o ripristinarlo prima della run; non è stato eseguito alcun fallback lexical-only.", { cause: error });
 }
 const indexMetadata = JSON.parse(rawMetadata) as Record<string, unknown>;
-if (typeof indexMetadata.embeddingModel !== "string" || typeof indexMetadata.dimensions !== "number"
+if (typeof indexMetadata.embeddingProvider !== "string" || typeof indexMetadata.embeddingModel !== "string" || typeof indexMetadata.dimensions !== "number"
   || !indexMetadata.parameters || typeof indexMetadata.parameters !== "object") {
   throw new Error("Benchmark ChatNTC interrotto: metadata dell'indice semantic non validi.");
 }
 const parameters = indexMetadata.parameters as Record<string, unknown>;
 const numCtx = typeof parameters.numCtx === "number" ? parameters.numCtx : undefined;
 const requestedDimensions = typeof parameters.requestedDimensions === "number" ? parameters.requestedDimensions : undefined;
-const provider = new OllamaEmbeddingProvider({ model: indexMetadata.embeddingModel,
-  baseUrl: option("ollama-url"), dimensions: requestedDimensions, numCtx });
+const indexProvider = parseChatNTCEmbeddingProvider(indexMetadata.embeddingProvider, "ollama");
+const providerName = parseChatNTCEmbeddingProvider(option("provider"), indexProvider);
+const provider = createChatNTCEmbeddingProvider({ provider: providerName, model: indexMetadata.embeddingModel,
+  baseUrl: providerName === "ollama" ? option("ollama-url") : option("embedding-url"),
+  timeoutMs: numberOption("timeout-ms"), batchSize: numberOption("batch-size"),
+  dimensions: requestedDimensions, numCtx });
 let lastEmbeddingMs = 0;
 const timedProvider: ChatNTCEmbeddingProvider = {
   describe: (options) => provider.describe(options),
@@ -88,10 +101,12 @@ const loader = createChatNTCSemanticIndexLoader({ directory: indexDirectory,
   expected: { corpusFingerprint: manifest.corpusFingerprintSha256, unitIds: units.map((unit) => unit.id) } });
 let loadedIndex;
 try {
-  [loadedIndex] = await Promise.all([loader.load(), provider.describe()]);
+  const liveDescription = await provider.describe();
+  loadedIndex = await loader.load();
+  assertChatNTCEmbeddingCompatibility(liveDescription, loadedIndex.metadata);
 } catch (error) {
   const detail = error instanceof Error ? error.message : String(error);
-  throw new Error(`Benchmark ChatNTC interrotto durante il preflight semantic/Ollama: ${detail}. `
+  throw new Error(`Benchmark ChatNTC interrotto durante il preflight semantic/${providerName}: ${detail}. `
     + "Non è stato eseguito alcun fallback lexical-only.", { cause: error });
 }
 const retriever = createChatNTCSemanticRetriever({ provider: timedProvider, indexLoader: loader, units: summaries });
@@ -219,7 +234,7 @@ const benchmark: RetrievalBenchmarkResults = {
       lexicalCandidateCount: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.lexicalCandidateCount,
       semanticCandidateCount: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.semanticCandidateCount,
       fusedCandidateCount: CHATNTC_HYBRID_RETRIEVAL_DEFAULTS.fusedCandidateCount },
-    queryEmbeddingLatencyMeasurement: "OllamaEmbeddingProvider.embed wall time",
+    queryEmbeddingLatencyMeasurement: `${providerName} provider.embed wall time`,
     semanticVectorSearchLatencyMeasurement: "semantic retrieve wall time minus query embedding wall time",
     warmup: "local repository indexes and semantic index/provider metadata preloaded before measurements",
     generativeLlmCalls: 0,
