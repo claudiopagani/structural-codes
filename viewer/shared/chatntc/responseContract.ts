@@ -3,16 +3,24 @@ import type { ChatNTCCitation, ChatNTCProviderOutput, ChatNTCResponse, ChatNTCVe
 const classifications = ["direct-reference", "combined-reference", "interpretation", "no-direct-reference", "external-source"] as const;
 const nonEmptyString = { type: "string", pattern: "\\S" } as const;
 
-/** Minimal provider wire schema. Canonical citation metadata is reconstructed server-side. */
+/**
+ * Minimal provider wire schema. Canonical citation metadata is reconstructed server-side.
+ * The global classification plus explicit prose distinctions are intentional: another provider
+ * assertion would not give the server deterministic semantic-entailment verification.
+ */
 export const CHATNTC_RESPONSE_JSON_SCHEMA = {
   $schema: "http://json-schema.org/draft-07/schema#",
   title: "ChatNTCProviderOutput v2",
   type: "object", additionalProperties: false,
   required: ["formatVersion", "evidencePackageId", "answerMarkdown", "references", "classification", "status", "needsMoreEvidence", "externalResearchSuggested"],
   properties: {
-    formatVersion: { const: 2 }, evidencePackageId: nonEmptyString, answerMarkdown: nonEmptyString,
-    references: { type: "array", maxItems: 24, items: nonEmptyString },
-    classification: { enum: classifications },
+    formatVersion: { const: 2 }, evidencePackageId: nonEmptyString,
+    answerMarkdown: { ...nonEmptyString,
+      description: "Risposta utile e naturale: distingue prescrizioni sostenute dal testo disponibile, letture coordinate e ragionamento ingegneristico generale senza etichettare ogni frase." },
+    references: { type: "array", maxItems: 24, items: nonEmptyString,
+      description: "Riferimenti testuali da risolvere canonicamente. Un riferimento reale o pertinente non prova da solo che sostenga semanticamente la conclusione." },
+    classification: { enum: classifications,
+      description: "Base epistemica conservativa della conclusione centrale: direct-reference solo per una conclusione normativa esplicitamente sostenuta e nel medesimo scope; combined-reference per più proposizioni direttamente sostenute da più riferimenti senza nuova inferenza; interpretation per coordinamento o inferenza tra disposizioni; no-direct-reference per una conclusione tecnica non formulata direttamente dalla norma, compatibile con status answered; external-source non è abilitata." },
     status: { enum: ["answered", "partial", "abstained"] },
     needsMoreEvidence: { type: "boolean" }, externalResearchSuggested: { type: "boolean" },
   },

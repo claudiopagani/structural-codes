@@ -200,7 +200,7 @@ test("budget conta anche metadati e asset, omette blocchi interi e dichiara ridu
   assert.equal(reduced.retrieval.reduced, true);
   assert.ok(reduced.primaryUnits[0].blocks.some((block) => block.assetId === aid("table")));
   const selectionCharacters = [...reduced.primaryUnits, ...reduced.relatedUnits]
-    .reduce((sum, unit) => { const { hierarchy: _hierarchy, ...budgeted } = unit; return sum + JSON.stringify(budgeted).length; }, 0);
+    .reduce((sum, unit) => { const budgeted = { ...unit }; Reflect.deleteProperty(budgeted, "hierarchy"); return sum + JSON.stringify(budgeted).length; }, 0);
   assert.equal(reduced.retrieval.evidenceCharacters, selectionCharacters);
   for (const block of reduced.primaryUnits[0].blocks) assert.deepEqual(block, evidence.primaryUnits[0].blocks.find((full) => full.blockId === block.blockId));
   assert.equal((await validateChatNTCResponse(responseFor(reduced), reduced, repository)).valid, true);

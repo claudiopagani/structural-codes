@@ -188,6 +188,12 @@ export interface ChatNTCProviderOutput {
   evidencePackageId: string;
   answerMarkdown: string;
   references: string[];
+  /**
+   * Conservative, response-level description of the epistemic basis of the central conclusion.
+   * It is not proof that references semantically entail the answer; the provider must express
+   * mixed normative, interpretative and engineering content clearly in answerMarkdown.
+   * A claim array is intentionally not part of the current provider contract.
+   */
   classification: ChatNTCClassification;
   status: ChatNTCAnswerStatus;
   needsMoreEvidence: boolean;

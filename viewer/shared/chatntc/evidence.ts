@@ -20,7 +20,8 @@ export async function evidencePackageId(value: Omit<ChatNTCEvidencePackage, "pac
 
 /** Additive hierarchical scope must not displace blocks selected under the established evidence budget. */
 export function evidenceUnitSelectionLength(unit: ChatNTCEvidenceUnit): number {
-  const { hierarchy: _hierarchy, ...budgetedUnit } = unit;
+  const budgetedUnit: Partial<ChatNTCEvidenceUnit> = { ...unit };
+  Reflect.deleteProperty(budgetedUnit, "hierarchy");
   return JSON.stringify(budgetedUnit).length;
 }
 

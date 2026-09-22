@@ -16,7 +16,7 @@ import { runChatNTC } from "../.chatntc-test/server/chatntc/pipeline.js";
 import { createChatNTCHandler } from "../.chatntc-test/server/chatntc/routeHandler.js";
 import { ChatNTCSemanticRetrievalError } from "../.chatntc-test/server/chatntc/semanticRetriever.js";
 import { retrieveChatNTCEvidenceForMode } from "../.chatntc-test/server/chatntc/retrievalCoordinator.js";
-import { CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, isChatNTCProviderOutput, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
+import { CHATNTC_DIRECTIVES, CHATNTC_EPISTEMIC_POLICY, CHATNTC_RESPONSE_JSON_SCHEMA, isChatNTCProviderOutput, isChatNTCResponse, retrieveChatNTCEvidence } from "../.chatntc-test/shared/chatntc/index.js";
 
 // Synthetic credential used only with injected fetch. No test calls the real provider.
 const key = "fixture-secret-chatntc-never-a-real-api-key";
@@ -101,6 +101,29 @@ test("schema JSON condiviso e guard runtime concordano sul contratto strutturale
     { ...valid, classification: "invented" }, { ...valid, answerMarkdown: "" }, { ...valid, needsMoreEvidence: "yes" }]) {
     assert.equal(Boolean(validate(value)), isChatNTCProviderOutput(value), JSON.stringify(validate.errors));
   }
+});
+
+test("contratto epistemico: una citazione reale non equivale a supporto semantico", () => {
+  const rules = CHATNTC_DIRECTIVES.rules.join("\n");
+  const classification = CHATNTC_RESPONSE_JSON_SCHEMA.properties.classification.description;
+  assert.equal(CHATNTC_DIRECTIVES.version, "chatntc-directives-v6");
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.normativeAttributionBasis, "available-normative-content");
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.canonicalReferenceImpliesSemanticSupport, false);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.semanticEntailmentVerified, false);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.validationScope, "integrity-provenance-reference-resolution");
+  assert.match(rules, /contenuto normativo effettivamente disponibile/u);
+  assert.match(rules, /risoluzione canonica.+non dimostrano/u);
+  assert.match(rules, /materiali, sistemi strutturali/u);
+  assert.match(rules, /dissipativo o non dissipativo/u);
+  assert.match(rules, /nuove costruzioni o costruzioni esistenti/u);
+  assert.match(rules, /stati limite, tipi di analisi/u);
+  assert.match(rules, /elementi strutturali, secondari o non strutturali/u);
+  assert.match(rules, /lettura coordinata.+interpretazione/u);
+  assert.match(rules, /non trasformare.+spiegazione tecnica autonoma e utile in un'astensione/u);
+  assert.match(classification, /direct-reference solo.+medesimo scope/u);
+  assert.match(classification, /interpretation per coordinamento o inferenza/u);
+  assert.match(classification, /no-direct-reference.+status answered/u);
+  assert.equal(Object.hasOwn(CHATNTC_RESPONSE_JSON_SCHEMA.properties, "claims"), false);
 });
 
 for (const [name, fetchImpl, code] of [
@@ -479,6 +502,37 @@ test("field test non dissipativo: §4.1.2.3.4.2 viene risolto post-hoc senza blo
   assert.equal(calls, 1);
   assert.ok(result.citations.some((citation) => citation.numbering === "4.1.2.3.4.2"));
   assert.notEqual(result.validation.stage, "REPAIRED");
+});
+
+test("grounding scope: una disposizione specialistica resta limitata al proprio contesto", async () => {
+  const result = await runChatNTC({
+    question: "La regola del §7.4.6.2.1 sulle fasce di piano vale in generale per ogni sistema in calcestruzzo armato?",
+  }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    assert.match(input.directives.rules.join("\n"), /Non estendere automaticamente una regola/u);
+    return providerOutput(input, {
+      answerMarkdown: "No. Il §7.4.6.2.1 va letto nello scope delle pareti accoppiate. Applicare lo stesso criterio ad altri sistemi può essere una valutazione progettuale, non una prescrizione generale espressa da quel paragrafo.",
+      references: ["NTC 2018 §7.4.6.2.1"], classification: "interpretation",
+    });
+  }) });
+  assert.equal(result.response.classification, "interpretation");
+  assert.match(result.response.answerMarkdown, /scope delle pareti accoppiate/u);
+  assert.match(result.response.answerMarkdown, /non una prescrizione generale/u);
+  assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.4.6.2.1"]);
+});
+
+test("grounding attribuzione: un riferimento reale non promuove il ragionamento generale a prescrizione", async () => {
+  const result = await runChatNTC({
+    question: "È sempre obbligatorio svolgere due analisi con rigidezze diverse ai sensi del §7.3.6.1?",
+  }, { repository: repository(), provider: () => mockedProvider(async (input) => providerOutput(input, {
+    answerMarkdown: "Il §7.3.6.1 è pertinente alle verifiche considerate, ma il testo disponibile non stabilisce la regola generale formulata nella domanda. Dal punto di vista progettuale, confrontare ipotesi ragionevoli di rigidezza resta un utile controllo di sensibilità.",
+    references: ["NTC 2018 §7.3.6.1"], classification: "no-direct-reference",
+  })) });
+  assert.equal(result.response.classification, "no-direct-reference");
+  assert.equal(result.response.status, "answered");
+  assert.equal(result.response.needsMoreEvidence, false);
+  assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.3.6.1"]);
+  assert.match(result.response.answerMarkdown, /utile controllo di sensibilità/u);
+  assert.equal(result.validation.scope, "integrity-provenance-reference-resolution");
 });
 
 test("formula inesistente non diventa un riferimento verificato e non elimina la parte generale", async () => {
