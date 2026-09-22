@@ -8,12 +8,18 @@ import type {
 
 interface TextualReference { text: string; path: string }
 
+/** Internal observation used by the server pipeline; it is not part of the public response. */
+export interface ChatNTCResolvedTextualReference extends TextualReference {
+  target: ChatNTCVerifiedReference;
+}
+
 /**
  * Converts a small provider response into the rich public response. Explicit references in
  * prose and in references[] are resolved against the repository; provider metadata is never trusted.
  */
 export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput, evidence: ChatNTCEvidencePackage,
-  repository: ChatNTCRepository): Promise<ChatNTCCanonicalizationResult> {
+  repository: ChatNTCRepository,
+  observeResolvedReference?: (reference: ChatNTCResolvedTextualReference) => void): Promise<ChatNTCCanonicalizationResult> {
   const issueMap = new Map<string, ChatNTCValidationIssue>();
   const citations = new Map<string, ChatNTCVerifiedReference>();
   let normalized = false;
@@ -44,6 +50,7 @@ export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput,
         { reference: reference.text, targets: canonicalTargets });
       continue;
     }
+    observeResolvedReference?.({ ...reference, target: citation });
     const key = stableJson({ unitId: citation.unitId, blockId: citation.blockId, assetId: citation.assetId });
     if (citations.has(key)) normalized = true;
     else citations.set(key, citation);
@@ -95,7 +102,7 @@ function normalizeVisibleAnswer(value: string): string {
     .replace(/selected evidence/giu, "fonti selezionate")
     .replace(/claim coverage/giu, "copertura delle fonti")
     .replace(/corpus fingerprint/giu, "versione delle fonti")
-    .replace(/\b(?:unitId|blockId|assetId|retrieval|validator|package|block)\b/giu, "dato interno")
+    .replace(/(?<![\p{L}\p{N}_-])(?:unitId|blockId|assetId|retrieval|validator|package|block)(?![\p{L}\p{N}_-])/giu, "dato interno")
     .replace(/\bevidence\b/giu, "fonti")
     .replace(/blocchi omessi dal budget/giu, "contenuto non incluso")
     .replace(/[ \t]{2,}/gu, " ")

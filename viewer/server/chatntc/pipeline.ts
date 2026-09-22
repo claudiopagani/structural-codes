@@ -1,11 +1,12 @@
 import "server-only";
 import {
   CHATNTC_DIRECTIVES, CHATNTC_RESPONSE_JSON_SCHEMA, canonicalizeChatNTCResponse,
-  isChatNTCProviderOutput, validateChatNTCResponse, ChatNTCContextError,
-  type ChatNTCEvidencePackage, type ChatNTCProcessingStage,
+  isChatNTCProviderOutput, retrieveChatNTCEvidence, validateChatNTCResponse, ChatNTCContextError,
+  type ChatNTCCanonicalizationResult, type ChatNTCEvidencePackage, type ChatNTCProcessingStage,
   type ChatNTCProvider, type ChatNTCProviderOutput, type ChatNTCRepository, type ChatNTCRetrievalOptions,
-  type ChatNTCValidationIssue,
+  type ChatNTCValidationIssue, type ChatNTCVerifiedReference,
 } from "../../shared/chatntc/index.js";
+import type { ChatNTCResolvedTextualReference } from "../../shared/chatntc/canonicalization.js";
 import { findCrossReferences } from "../../shared/crossReferences.js";
 import { ChatNTCServerError } from "./errors.js";
 import { retrieveChatNTCEvidenceForMode, type ChatNTCSemanticRetrievalConfiguration } from "./retrievalCoordinator.js";
@@ -13,6 +14,17 @@ import type { ChatRequest, ChatResult } from "../../shared/chatntc-ui/transport.
 
 export type ChatNTCRequest = ChatRequest;
 export type ChatNTCResult = ChatResult;
+
+const REFERENCE_EXPANSION_LIMITS = Object.freeze({
+  maxReferences: 12,
+  additionalPrimaryUnits: 12,
+  additionalEvidenceCharacters: 12_000,
+});
+
+interface CanonicalizedOutput {
+  result: ChatNTCCanonicalizationResult;
+  references: ChatNTCResolvedTextualReference[];
+}
 
 export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   repository: ChatNTCRepository;
@@ -25,68 +37,88 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
   if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
   const queryContext = (request.history ?? []).filter((message) => message.role === "user").slice(-3).map((message) => message.content);
   const retrievalInput = { ...dependencies.retrievalOptions, queryContext, ...(request.context ? { context: request.context } : {}) };
-  const evidence = await retrieve(request.question, retrievalInput);
+  const initialEvidence = await retrieve(request.question, retrievalInput);
+  let activeEvidence = initialEvidence;
   if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
 
   const provider = dependencies.provider();
   const messages = [...(request.history ?? []).map(({ role, content }) => ({ role, content })),
     { role: "user" as const, content: request.question }];
-  let candidate = await generate(provider, evidence);
+  let candidate = await generate(provider, activeEvidence);
   const diagnostics: ChatNTCValidationIssue[] = [];
-  if (candidate.evidencePackageId !== evidence.packageId) {
-    diagnostics.push({ code: "wrong-package", path: "response.evidencePackageId",
-      message: "Identificativo del contesto normalizzato dal server.", category: "bookkeeping" });
-    candidate = { ...candidate, evidencePackageId: evidence.packageId };
-  }
-  let canonical = await canonicalize(candidate, evidence);
+  candidate = normalizePackage(candidate, activeEvidence, "Identificativo del contesto normalizzato dal server.");
+  let canonicalized = await canonicalize(candidate, activeEvidence);
+  let canonical = canonicalized.result;
   let stage: ChatNTCProcessingStage = canonical.response.verifiedReferences.length
     ? "REFERENCES_RESOLVED" : canonical.normalized ? "NORMALIZED" : "GENERATED";
+  let secondGenerationUsed = false;
 
-  if (repairableIssues(canonical.issues).length) {
-    diagnostics.push(...canonical.issues);
-    candidate = await generate(provider, evidence, {
-      issues: repairableIssues(canonical.issues).map(repairIssue), previousOutput: candidate,
-    });
-    if (candidate.evidencePackageId !== evidence.packageId) {
-      diagnostics.push({ code: "wrong-package", path: "response.evidencePackageId",
-        message: "Identificativo del contesto del repair normalizzato dal server.", category: "bookkeeping" });
-      candidate = { ...candidate, evidencePackageId: evidence.packageId };
+  const initialExternalReferences = referencesOutsideEvidence(canonicalized.references, activeEvidence);
+  if (initialExternalReferences.length) {
+    diagnostics.push(...discoveryDiagnostics(initialExternalReferences));
+    const requested = uniqueTargets(initialExternalReferences).slice(0, REFERENCE_EXPANSION_LIMITS.maxReferences);
+    const expanded = await expandEvidence(requested.map((reference) => reference.text));
+    if (expanded && requested.some((reference) => referenceIsInEvidence(reference.target, expanded))) {
+      activeEvidence = expanded;
+      candidate = await generate(provider, activeEvidence);
+      secondGenerationUsed = true;
+      candidate = normalizePackage(candidate, activeEvidence,
+        "Identificativo del contesto ampliato normalizzato dal server.");
+      canonicalized = await canonicalize(candidate, activeEvidence);
+      canonical = canonicalized.result;
+      stage = "EXPANDED";
     }
-    canonical = await canonicalize(candidate, evidence);
+  }
+
+  let activeIssues = allReferenceIssues(canonicalized, activeEvidence);
+  if (!secondGenerationUsed && repairableIssues(activeIssues).length) {
+    diagnostics.push(...activeIssues);
+    candidate = await generate(provider, activeEvidence, {
+      issues: repairableIssues(activeIssues).map(repairIssue), previousOutput: candidate,
+    });
+    secondGenerationUsed = true;
+    candidate = normalizePackage(candidate, activeEvidence,
+      "Identificativo del contesto del repair normalizzato dal server.");
+    canonicalized = await canonicalize(candidate, activeEvidence);
+    canonical = canonicalized.result;
+    activeIssues = allReferenceIssues(canonicalized, activeEvidence);
     stage = "REPAIRED";
   }
 
   let referenceWarning: "some-references-omitted" | "no-references-verified" | undefined;
-  if (canonical.issues.length) {
-    diagnostics.push(...canonical.issues);
-    const sanitized = sanitizeReferences(candidate, canonical.issues);
+  if (activeIssues.length) {
+    diagnostics.push(...activeIssues);
+    const sanitized = sanitizeReferences(candidate, activeIssues);
     candidate = sanitized.output;
-    diagnostics.push(...canonical.issues.map((issue) => ({ ...issue, code: "stripped-reference",
+    diagnostics.push(...activeIssues.map((issue) => ({ ...issue, code: "stripped-reference",
       message: `Riferimento omesso dopo la verifica: ${issue.reference ?? "non disponibile"}` })));
-    canonical = await canonicalize(candidate, evidence);
+    canonicalized = await canonicalize(candidate, activeEvidence);
+    canonical = canonicalized.result;
+    activeIssues = allReferenceIssues(canonicalized, activeEvidence);
     stage = canonical.response.verifiedReferences.length ? "PARTIALLY_SANITIZED" : "DEGRADED";
     referenceWarning = canonical.response.verifiedReferences.length
       ? "some-references-omitted" : "no-references-verified";
   }
-  if (canonical.issues.length) {
-    diagnostics.push(...canonical.issues);
-    candidate = degradeWithoutReferences(candidate, canonical.issues, evidence.packageId);
-    canonical = await canonicalize(candidate, evidence);
+  if (activeIssues.length) {
+    diagnostics.push(...activeIssues);
+    candidate = degradeWithoutReferences(candidate, activeIssues, activeEvidence.packageId);
+    canonicalized = await canonicalize(candidate, activeEvidence);
+    canonical = canonicalized.result;
     stage = "DEGRADED";
     referenceWarning = "no-references-verified";
   }
   if (referenceWarning) canonical.response.referenceWarning = referenceWarning;
 
   let validation;
-  try { validation = await validateChatNTCResponse(canonical.response, evidence, repository); }
+  try { validation = await validateChatNTCResponse(canonical.response, activeEvidence, repository); }
   catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
   if (!validation.valid) throw new ChatNTCServerError("VALIDATION_FAILED");
 
   return {
     ok: true, response: canonical.response, citations: canonical.response.verifiedReferences,
-    evidence: { packageId: evidence.packageId, structuralCodesVersion: evidence.corpus.version,
-      corpusFingerprint: evidence.corpus.fingerprint, artifactFingerprint: evidence.corpus.artifactFingerprint,
-      policyVersion: evidence.policyVersion, reduced: evidence.retrieval.reduced, warnings: evidence.warnings },
+    evidence: { packageId: activeEvidence.packageId, structuralCodesVersion: activeEvidence.corpus.version,
+      corpusFingerprint: activeEvidence.corpus.fingerprint, artifactFingerprint: activeEvidence.corpus.artifactFingerprint,
+      policyVersion: activeEvidence.policyVersion, reduced: activeEvidence.retrieval.reduced, warnings: activeEvidence.warnings },
     generation: { provider: provider.id, model: provider.model ?? null,
       outcome: canonical.response.status === "abstained" ? "abstained" : "generated" },
     validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage,
@@ -98,6 +130,24 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
     catch (error) {
       if (error instanceof ChatNTCContextError) throw new ChatNTCServerError("INVALID_CONTEXT");
       throw new ChatNTCServerError("RETRIEVAL_FAILED");
+    }
+  }
+
+  async function expandEvidence(requiredReferences: readonly string[]): Promise<ChatNTCEvidencePackage | null> {
+    const options = initialEvidence.retrieval.options;
+    try {
+      return await retrieveChatNTCEvidence(repository, request.question, {
+        ...retrievalInput,
+        requiredReferences,
+        maxPrimaryUnits: Math.min(50, options.maxPrimaryUnits + REFERENCE_EXPANSION_LIMITS.additionalPrimaryUnits),
+        maxEvidenceCharacters: Math.min(1_000_000,
+          options.maxEvidenceCharacters + REFERENCE_EXPANSION_LIMITS.additionalEvidenceCharacters),
+      });
+    } catch {
+      if (signal?.aborted) throw new ChatNTCServerError("REQUEST_ABORTED");
+      diagnostics.push({ code: "evidence-expansion-failed", path: "response.references",
+        message: "Espansione canonica limitata non completata; applicato il fallback conservativo.", category: "discovery" });
+      return null;
     }
   }
 
@@ -116,14 +166,82 @@ export async function runChatNTC(request: ChatNTCRequest, dependencies: {
     }
   }
 
-  async function canonicalize(output: ChatNTCProviderOutput, activeEvidence: ChatNTCEvidencePackage) {
-    try { return await canonicalizeChatNTCResponse(output, activeEvidence, repository); }
+  async function canonicalize(output: ChatNTCProviderOutput, evidenceForGeneration: ChatNTCEvidencePackage) {
+    const references: ChatNTCResolvedTextualReference[] = [];
+    try {
+      const result = await canonicalizeChatNTCResponse(output, evidenceForGeneration, repository,
+        (reference) => references.push(reference));
+      return { result, references };
+    }
     catch { throw new ChatNTCServerError("VALIDATION_FAILED"); }
+  }
+
+  function normalizePackage(output: ChatNTCProviderOutput, evidenceForGeneration: ChatNTCEvidencePackage,
+    message: string): ChatNTCProviderOutput {
+    if (output.evidencePackageId === evidenceForGeneration.packageId) return output;
+    diagnostics.push({ code: "wrong-package", path: "response.evidencePackageId", message, category: "bookkeeping" });
+    return { ...output, evidencePackageId: evidenceForGeneration.packageId };
   }
 }
 
+function targetKey(reference: ChatNTCVerifiedReference): string {
+  return `${reference.unitId}\u0000${reference.blockId ?? ""}\u0000${reference.assetId ?? ""}`;
+}
+
+function uniqueTargets(references: readonly ChatNTCResolvedTextualReference[]): ChatNTCResolvedTextualReference[] {
+  const seen = new Set<string>();
+  return references.filter((reference) => {
+    const key = targetKey(reference.target);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function referenceIsInEvidence(reference: ChatNTCVerifiedReference, evidence: ChatNTCEvidencePackage): boolean {
+  const unit = [...evidence.primaryUnits, ...evidence.relatedUnits]
+    .find((candidate) => candidate.unitId === reference.unitId);
+  if (!unit) return false;
+  if (reference.assetId) return unit.blocks.some((block) => block.assetId === reference.assetId
+    && (!reference.blockId || block.blockId === reference.blockId));
+  if (reference.blockId) return unit.blocks.some((block) => block.blockId === reference.blockId);
+  return true;
+}
+
+function referencesOutsideEvidence(references: readonly ChatNTCResolvedTextualReference[],
+  evidence: ChatNTCEvidencePackage): ChatNTCResolvedTextualReference[] {
+  return references.filter((reference) => !referenceIsInEvidence(reference.target, evidence));
+}
+
+function discoveryDiagnostics(references: readonly ChatNTCResolvedTextualReference[]): ChatNTCValidationIssue[] {
+  return uniqueTargets(references).map((reference) => ({
+    code: "post-hoc-reference-discovered", path: reference.path,
+    message: "Riferimento canonico rilevato fuori dal contesto della prima generazione.",
+    category: "discovery", reference: reference.text,
+    targets: [{ unitId: reference.target.unitId, ...(reference.target.blockId ? { blockId: reference.target.blockId } : {}),
+      ...(reference.target.assetId ? { assetId: reference.target.assetId } : {}) }],
+  }));
+}
+
+function outsideEvidenceIssues(references: readonly ChatNTCResolvedTextualReference[],
+  evidence: ChatNTCEvidencePackage): ChatNTCValidationIssue[] {
+  return referencesOutsideEvidence(references, evidence).map((reference) => ({
+    code: "reference-outside-generation-evidence", path: reference.path,
+    message: `Riferimento risolto canonicamente ma non presente nel contesto letto dal provider: ${reference.text}`,
+    category: "integrity", reference: reference.text,
+    targets: [{ unitId: reference.target.unitId, ...(reference.target.blockId ? { blockId: reference.target.blockId } : {}),
+      ...(reference.target.assetId ? { assetId: reference.target.assetId } : {}) }],
+  }));
+}
+
+function allReferenceIssues(canonicalized: CanonicalizedOutput,
+  evidence: ChatNTCEvidencePackage): ChatNTCValidationIssue[] {
+  return [...canonicalized.result.issues, ...outsideEvidenceIssues(canonicalized.references, evidence)];
+}
+
 function repairableIssues(issues: ChatNTCValidationIssue[]): ChatNTCValidationIssue[] {
-  return issues.filter((issue) => ["unresolved-reference", "ambiguous-reference", "canonical-reference-missing"].includes(issue.code));
+  return issues.filter((issue) => ["unresolved-reference", "ambiguous-reference", "canonical-reference-missing",
+    "reference-outside-generation-evidence"].includes(issue.code));
 }
 
 function repairIssue(issue: ChatNTCValidationIssue): Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference"> {

@@ -39,6 +39,11 @@ function providerOutput(input, overrides = {}) {
   return { ...validResponse(input), ...overrides };
 }
 
+function generalResponse(input) {
+  return providerOutput(input, { answerMarkdown: "Valutazione tecnica generale.", references: [],
+    classification: "no-direct-reference" });
+}
+
 async function generationInput() {
   return { messages: [{ role: "user", content: "Contesto precedente." }, { role: "assistant", content: "Risposta precedente non autorevole." }, { role: "user", content: question }],
     evidence: await retrieveChatNTCEvidence(repository(), question, { maxRelatedUnits: 0 }),
@@ -106,9 +111,13 @@ test("schema JSON condiviso e guard runtime concordano sul contratto strutturale
 test("contratto epistemico: una citazione reale non equivale a supporto semantico", () => {
   const rules = CHATNTC_DIRECTIVES.rules.join("\n");
   const classification = CHATNTC_RESPONSE_JSON_SCHEMA.properties.classification.description;
-  assert.equal(CHATNTC_DIRECTIVES.version, "chatntc-directives-v6");
+  assert.equal(CHATNTC_DIRECTIVES.version, "chatntc-directives-v7");
   assert.equal(CHATNTC_EPISTEMIC_POLICY.normativeAttributionBasis, "available-normative-content");
   assert.equal(CHATNTC_EPISTEMIC_POLICY.canonicalReferenceImpliesSemanticSupport, false);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.postHocReferenceCountsAsAvailableEvidence, false);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.directNormativeConditionsTakePriority, true);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.absenceInAvailableEvidenceProvesNormativeAbsence, false);
+  assert.equal(CHATNTC_EPISTEMIC_POLICY.caseSpecificInterventionWithoutEssentialDataIsRequired, false);
   assert.equal(CHATNTC_EPISTEMIC_POLICY.semanticEntailmentVerified, false);
   assert.equal(CHATNTC_EPISTEMIC_POLICY.validationScope, "integrity-provenance-reference-resolution");
   assert.match(rules, /contenuto normativo effettivamente disponibile/u);
@@ -120,6 +129,11 @@ test("contratto epistemico: una citazione reale non equivale a supporto semantic
   assert.match(rules, /elementi strutturali, secondari o non strutturali/u);
   assert.match(rules, /lettura coordinata.+interpretazione/u);
   assert.match(rules, /non trasformare.+spiegazione tecnica autonoma e utile in un'astensione/u);
+  assert.match(rules, /condizione esplicita, una soglia quantitativa, un limite, un'eccezione/u);
+  assert.match(rules, /non sostituirla con un'euristica più generale/u);
+  assert.match(rules, /Non inferire.+negazioni normative assolute/u);
+  assert.match(rules, /nei riferimenti normativi disponibili non emerge una prescrizione esplicita/u);
+  assert.match(rules, /ripristini, demolizioni, cuciture, rinforzi, giunti di ripresa/u);
   assert.match(classification, /direct-reference solo.+medesimo scope/u);
   assert.match(classification, /interpretation per coordinamento o inferenza/u);
   assert.match(classification, /no-direct-reference.+status answered/u);
@@ -225,7 +239,7 @@ test("retrieval locale/default e off sono identici al percorso legacy", async ()
   async function evidenceFromPipeline(activeQuestion, semanticRetrieval) {
     let received;
     await runChatNTC({ question: activeQuestion }, { repository: repository(),
-      provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }),
+      provider: () => mockedProvider(async (input) => { received = input.evidence; return generalResponse(input); }),
       ...(semanticRetrieval ? { semanticRetrieval } : {}),
     });
     return received;
@@ -267,7 +281,7 @@ test("shadow osserva la capability senza modificare l'Evidence Package legacy", 
       ] };
     },
   }, onDiagnostics(value) { diagnostics = value; } },
-  provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  provider: () => mockedProvider(async (input) => { received = input.evidence; return generalResponse(input); }) });
   assert.equal(calls, 1);
   assert.deepEqual(received, legacy);
   assert.equal(diagnostics.semanticStatus, "ok");
@@ -296,7 +310,7 @@ test("on con semantic list vuota conserva esattamente i candidati legacy", async
       return { hits: [] };
     },
   }, onDiagnostics(value) { diagnostics = value; } },
-  provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+  provider: () => mockedProvider(async (input) => { received = input.evidence; return generalResponse(input); }) });
   assert.equal(calls, 1);
   assert.deepEqual(received, legacy);
   assert.equal(diagnostics.usedLexicalFallback, true);
@@ -330,7 +344,7 @@ test("failure semantic in shadow/on degrada su Evidence Package legacy con diagn
     await runChatNTC({ question: semanticQuestion }, { repository: repository(), semanticRetrieval: { mode, retriever: {
       async retrieve() { throw new ChatNTCSemanticRetrievalError("runtime", "QUERY_EMBEDDING_FAILED"); },
     }, onDiagnostics(value) { diagnostics = value; } },
-    provider: () => mockedProvider(async (input) => { received = input.evidence; return validResponse(input); }) });
+    provider: () => mockedProvider(async (input) => { received = input.evidence; return generalResponse(input); }) });
     assert.deepEqual(received, legacy, mode);
     assert.deepEqual(diagnostics.failure, { kind: "runtime", code: "QUERY_EMBEDDING_FAILED" });
     assert.equal(diagnostics.semanticStatus, "error");
@@ -458,7 +472,7 @@ test("field test pareti: bookkeeping canonico associa 7.4.6.2.1, 7.4.2.1 e C7.2.
   assert.notEqual(result.validation.stage, "REPAIRED");
 });
 
-test("field test q²: 7.3.4 e formula 7.3.8 sono risolti post-hoc senza rigenerare", async () => {
+test("field test q²: riferimenti post-hoc sono letti dopo una sola espansione", async () => {
   let calls = 0;
   const query = "Al § 7.3.6.1, per la verifica di rigidezza, la norma richiede che q·dr sia inferiore a un limite funzione dell’altezza interpiano. Ma dr, ai sensi del § 7.3.3.3, deriva già dallo spostamento dell’analisi lineare moltiplicato per un fattore di duttilità che può essere pari a q. Quindi lo spostamento ottenuto dal modello deve essere moltiplicato per q²?";
   const result = await runChatNTC({ question: query }, { repository: repository(), provider: () => mockedProvider(async (input) => {
@@ -466,9 +480,9 @@ test("field test q²: 7.3.4 e formula 7.3.8 sono risolti post-hoc senza rigenera
     return providerOutput(input, { answerMarkdown: "No: non devi moltiplicare automaticamente lo spostamento del modello per q². Il § 7.3.3.3 e le formule [7.3.8] e [7.3.9] definiscono il passaggio dallo spostamento elastico. La verifica del § 7.3.6.1 non introduce automaticamente un secondo fattore q; il § 7.3.4 completa il quadro.",
       references: ["NTC 2018 §7.3.3.3", "NTC 2018 §7.3.6.1", "formula [7.3.8]", "formula [7.3.9]", "NTC 2018 §7.3.4"], classification: "interpretation" });
   }) });
-  assert.equal(calls, 1);
+  assert.equal(calls, 2);
   assert.equal(result.response.classification, "interpretation");
-  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
+  assert.equal(result.validation.stage, "EXPANDED");
   assert.ok(result.citations.some((citation) => citation.assetId?.endsWith("7.3.3.3-7.3.8")));
   assert.ok(result.citations.some((citation) => citation.assetId?.endsWith("7.3.3.3-7.3.9")));
   assert.match(result.response.answerMarkdown, /^No:/u);
@@ -484,13 +498,13 @@ test("field test sistema a pareti: riferimenti post-hoc reali e tabella arrivano
       references: ["NTC 2018 §7.2.3", "NTC 2018 §7.2.5", "NTC 2018 §7.3.6.1", "NTC 2018 §7.4.4.1.2", "Tab.7.2.I"],
       classification: "combined-reference" });
   }) });
-  assert.equal(calls, 1);
-  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
+  assert.equal(calls, 2);
+  assert.equal(result.validation.stage, "EXPANDED");
   assert.deepEqual(new Set(result.citations.map((citation) => citation.assetNumber ?? citation.numbering)),
     new Set(["7.2.3", "7.2.5", "7.3.6.1", "7.4.4.1.2", "7.2.I"]));
 });
 
-test("field test non dissipativo: §4.1.2.3.4.2 viene risolto post-hoc senza bloccare", async () => {
+test("field test non dissipativo: §4.1.2.3.4.2 viene aggiunto all'evidenza prima dell'attribuzione", async () => {
   let calls = 0;
   const result = await runChatNTC({ question: "Quali regole restano applicabili al comportamento non dissipativo?" }, {
     repository: repository(), provider: () => mockedProvider(async (input) => {
@@ -499,9 +513,9 @@ test("field test non dissipativo: §4.1.2.3.4.2 viene risolto post-hoc senza blo
         references: ["NTC 2018 §4.1.2.3.4.2"], classification: "interpretation" });
     }),
   });
-  assert.equal(calls, 1);
+  assert.equal(calls, 2);
   assert.ok(result.citations.some((citation) => citation.numbering === "4.1.2.3.4.2"));
-  assert.notEqual(result.validation.stage, "REPAIRED");
+  assert.equal(result.validation.stage, "EXPANDED");
 });
 
 test("grounding scope: una disposizione specialistica resta limitata al proprio contesto", async () => {
@@ -518,6 +532,25 @@ test("grounding scope: una disposizione specialistica resta limitata al proprio 
   assert.match(result.response.answerMarkdown, /scope delle pareti accoppiate/u);
   assert.match(result.response.answerMarkdown, /non una prescrizione generale/u);
   assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.4.6.2.1"]);
+});
+
+test("grounding diretto: le condizioni quantitative di §7.2.3 hanno priorità sulle euristiche", async () => {
+  const result = await runChatNTC({ question: "NTC 2018 §7.2.3" }, {
+    repository: repository(), provider: () => mockedProvider(async (input) => {
+      const normativeText = input.evidence.primaryUnits.flatMap((unit) => unit.blocks)
+        .map((block) => block.text?.normalized ?? "").join("\n");
+      const rules = input.directives.rules.join("\n");
+      assert.match(normativeText, /15%/u);
+      assert.match(normativeText, /allo SLC/u);
+      assert.match(normativeText, /struttura “irregolare” a struttura “regolare”/u);
+      assert.match(rules, /riportala fedelmente prima dell'eventuale spiegazione progettuale/u);
+      assert.match(rules, /non sostituirla con un'euristica più generale/u);
+      return providerOutput(input, { answerMarkdown: "Il §7.2.3 contiene condizioni esplicite per gli elementi secondari.",
+        references: ["NTC 2018 §7.2.3"] });
+    }),
+  });
+  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
+  assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.2.3"]);
 });
 
 test("grounding attribuzione: un riferimento reale non promuove il ragionamento generale a prescrizione", async () => {
@@ -539,6 +572,7 @@ test("formula inesistente non diventa un riferimento verificato e non elimina la
   let calls = 0;
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     calls += 1;
+    if (calls === 2) assert.ok(input.repair, "un riferimento inesistente usa il solo retry di repair");
     return { ...validResponse(input), answerMarkdown: "La formula [7.99.99] imporrebbe il controllo. Dal punto di vista progettuale resta utile una verifica di sensibilità.",
       references: ["formula [7.99.99]"] };
   }) });
@@ -546,6 +580,7 @@ test("formula inesistente non diventa un riferimento verificato e non elimina la
   assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.99/u);
   assert.match(result.response.answerMarkdown, /verifica di sensibilità/u);
   assert.equal(result.citations.some((citation) => citation.assetNumber === "7.99.99"), false);
+  assert.equal(result.validation.diagnostics.some((issue) => issue.code === "post-hoc-reference-discovered"), false);
 });
 
 test("classification mismatch e lessico backend sono normalizzati senza repair", async () => {
@@ -561,16 +596,54 @@ test("classification mismatch e lessico backend sono normalizzati senza repair",
   assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
 });
 
-test("pipeline: risolve deterministicamente un riferimento canonico reale fuori retrieval senza retry", async () => {
+test("normalizzazione visibile preserva stress-block e sanitizza block soltanto come termine autonomo", async () => {
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) =>
+    providerOutput(input, { answerMarkdown: "Lo stress-block descrive il diagramma convenzionale; il block interno non va mostrato.",
+      references: [], classification: "no-direct-reference" })) });
+  assert.match(result.response.answerMarkdown, /stress-block/u);
+  assert.doesNotMatch(result.response.answerMarkdown, /stress-dato interno/u);
+  assert.doesNotMatch(result.response.answerMarkdown, /il block interno/u);
+  assert.match(result.response.answerMarkdown, /dato interno/u);
+});
+
+test("pipeline: espande una volta il contesto per un riferimento canonico reale fuori retrieval", async () => {
   const inputs = [];
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     inputs.push(structuredClone(input));
     return { ...validResponse(input), answerMarkdown: "La lettura va coordinata con §4.1.", references: ["NTC 2018 §4.1"] };
   }) });
-  assert.equal(inputs.length, 1);
+  assert.equal(inputs.length, 2);
+  assert.equal(inputs[1].repair, undefined);
+  assert.equal(inputs[0].evidence.primaryUnits.some((unit) => unit.numbering === "4.1"), false);
+  assert.equal(inputs[1].evidence.primaryUnits.some((unit) => unit.numbering === "4.1"), true);
+  assert.notEqual(inputs[1].evidence.packageId, inputs[0].evidence.packageId);
+  assert.equal(result.evidence.packageId, inputs[1].evidence.packageId);
   assert.equal(result.validation.valid, true);
-  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
+  assert.equal(result.validation.stage, "EXPANDED");
   assert.ok(result.citations.some((citation) => citation.numbering === "4.1"));
+  assert.ok(result.validation.diagnostics.some((issue) => issue.code === "post-hoc-reference-discovered"));
+});
+
+test("pipeline: un nuovo riferimento post-hoc dopo l'espansione non provoca una terza generazione", async () => {
+  const base = repository();
+  const noInitialHits = { ...base, search: async () => [] };
+  let calls = 0;
+  const result = await runChatNTC({ question: "zzzzxy contesto volutamente vuoto" }, {
+    repository: noInitialHits, retrievalOptions: { maxRelatedUnits: 0 },
+    provider: () => mockedProvider(async (input) => {
+      calls += 1;
+      if (calls === 2) assert.equal(input.evidence.primaryUnits.some((unit) => unit.numbering === "4.1"), true);
+      return calls === 1
+        ? providerOutput(input, { answerMarkdown: "Il §4.1 contiene la prescrizione.", references: ["§4.1"] })
+        : providerOutput(input, { answerMarkdown: "Il §5.1 imporrebbe la soluzione. Resta utile verificare gli scenari di carico.",
+          references: ["§5.1"] });
+    }),
+  });
+  assert.equal(calls, 2);
+  assert.doesNotMatch(result.response.answerMarkdown, /5\.1/u);
+  assert.match(result.response.answerMarkdown, /verificare gli scenari di carico/u);
+  assert.deepEqual(result.citations, []);
+  assert.equal(result.response.referenceWarning, "no-references-verified");
 });
 
 test("pipeline: un solo repair e sanitizzazione conservativa preservano il contenuto generale", async () => {
@@ -623,30 +696,35 @@ test("regressione ponte in muratura: la risposta resta visibile e i riferimenti 
     return providerOutput(input, { answerMarkdown: "Per l'analisi conviene distinguere geometria del ponte, schema di traffico e verifiche sull'esistente.",
       references, classification: "combined-reference" });
   }) });
-  assert.equal(calls, 1);
+  assert.equal(calls, 2);
   assert.match(result.response.answerMarkdown, /analisi/u);
   assert.equal(result.citations.length, 12);
   assert.equal(new Set(result.citations.map((reference) => `${reference.unitId}|${reference.blockId ?? ""}|${reference.assetId ?? ""}`)).size, 12);
   assert.equal(result.response.referenceWarning, undefined);
-  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
+  assert.equal(result.validation.stage, "EXPANDED");
 });
 
-test("venti riferimenti reali fuori dal retrieval iniziale sono tutti verificati senza limite post-hoc", async () => {
+test("l'espansione post-hoc è limitata a dodici riferimenti e non crea loop", async () => {
   const references = ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "3.1", "3.2", "3.2.1", "3.2.2",
     "4.1", "4.1.1", "4.1.2", "5.1", "5.1.1", "5.1.2", "7.1", "7.2", "8.1", "8.2"].map((number) => `§${number}`);
   const base = repository();
   const noInitialHits = { ...base, search: async () => [] };
-  let selected = [];
+  const selected = [];
+  let calls = 0;
   const result = await runChatNTC({ question: "zzzzxy nessuna corrispondenza lessicale" }, {
     repository: noInitialHits, retrievalOptions: { maxRelatedUnits: 0 }, provider: () => mockedProvider(async (input) => {
-      selected = input.evidence.primaryUnits.map((unit) => unit.unitId);
+      calls += 1;
+      selected.push(input.evidence.primaryUnits.map((unit) => unit.unitId));
       return providerOutput(input, { answerMarkdown: "Panoramica tecnica generale disponibile.", references, classification: "combined-reference" });
     }),
   });
-  assert.deepEqual(selected, []);
-  assert.equal(result.citations.length, 20);
+  assert.equal(calls, 2);
+  assert.deepEqual(selected[0], []);
+  assert.equal(selected[1].length, 12);
+  assert.equal(result.citations.length, 12);
   assert.ok(result.citations.every((reference) => !("evidenceId" in reference)));
-  assert.equal(result.response.referenceWarning, undefined);
+  assert.equal(result.response.referenceWarning, "some-references-omitted");
+  assert.equal(result.validation.stage, "PARTIALLY_SANITIZED");
 });
 
 test("dieci riferimenti reali e uno inesistente conservano risposta e riferimenti validi", async () => {
