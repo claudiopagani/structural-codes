@@ -21,6 +21,8 @@ function fixture() {
   const units = [];
   function unit(number, text, parentId = null, document = "ntc2018") {
     const unitId = id(number, document);
+    const parent = parentId ? units.find((candidate) => candidate.id === parentId) : null;
+    const ancestorIds = parent ? [...parent.hierarchy.ancestorIds, parentId] : parentId ? [parentId] : [];
     const block = (suffix, value, kind = "paragraph") => ({
       blockId: `${unitId}#block-${suffix}`, kind, origin: "official",
       text: { raw: `RAW ${value}`, normalized: value, normalizationVersion: "fixture-v1" },
@@ -28,7 +30,7 @@ function fixture() {
     });
     const entry = { id: unitId, document, kind: "paragraph", title: `Fixture ${number}`,
       numbering: { official: number, sortKey: number.replace(/^C/, "").split(".").map((n) => n.padStart(3, "0")).join(".") },
-      titleBlockId: `${unitId}#block-heading`, hierarchy: { parentId, ancestorIds: parentId ? [parentId] : [], position: 1 },
+      titleBlockId: `${unitId}#block-heading`, hierarchy: { parentId, ancestorIds, position: 1 },
       validity: { from: null, to: null, status: "unknown", asOf: "2026-01-01" },
       blocks: [block("heading", `Fixture ${number}`, "heading"), ...(text ? [block("p1", text)] : [])], relations: [],
       review: { status: "verified" } };
@@ -133,6 +135,20 @@ test("espansione parent, children e rimandi conserva la provenienza senza cicli"
   assert.equal(new Set([...evidence.primaryUnits, ...evidence.relatedUnits].map((unit) => unit.unitId)).size, 5);
 });
 
+test("breadcrumb canonico è presente per primary e related fino al parent immediato", async () => {
+  const { repository } = fixture();
+  const evidence = await retrieveChatNTCEvidence(repository, "7.3.6.1");
+  assert.deepEqual(evidence.primaryUnits[0].hierarchy,
+    [{ numbering: "7.3.6", title: "Fixture 7.3.6" }]);
+  const child = evidence.relatedUnits.find((unit) => unit.unitId === CHILD);
+  assert.deepEqual(child.hierarchy, [
+    { numbering: "7.3.6", title: "Fixture 7.3.6" },
+    { numbering: "7.3.6.1", title: "Fixture 7.3.6.1" },
+  ]);
+  assert.ok([...evidence.primaryUnits, ...evidence.relatedUnits]
+    .every((unit) => Array.isArray(unit.hierarchy)));
+});
+
 test("il filtro documento si applica prima del limite alle unità correlate", async () => {
   const { repository } = fixture();
   const evidence = await retrieveChatNTCEvidence(repository, "7.3.6.1", { document: "ntc2018", maxRelatedUnits: 1 });
@@ -183,6 +199,9 @@ test("budget conta anche metadati e asset, omette blocchi interi e dichiara ridu
   assert.ok(reduced.retrieval.evidenceCharacters <= limit);
   assert.equal(reduced.retrieval.reduced, true);
   assert.ok(reduced.primaryUnits[0].blocks.some((block) => block.assetId === aid("table")));
+  const selectionCharacters = [...reduced.primaryUnits, ...reduced.relatedUnits]
+    .reduce((sum, unit) => { const { hierarchy: _hierarchy, ...budgeted } = unit; return sum + JSON.stringify(budgeted).length; }, 0);
+  assert.equal(reduced.retrieval.evidenceCharacters, selectionCharacters);
   for (const block of reduced.primaryUnits[0].blocks) assert.deepEqual(block, evidence.primaryUnits[0].blocks.find((full) => full.blockId === block.blockId));
   assert.equal((await validateChatNTCResponse(responseFor(reduced), reduced, repository)).valid, true);
   const empty = await retrieveChatNTCEvidence(repository, "7.3.6.1", { maxEvidenceCharacters: 1 });
@@ -377,6 +396,12 @@ test("pacchetto alterato viene confrontato con corpus e fingerprint", async () =
   evidence.packageId = await evidencePackageId(body);
   response.evidencePackageId = evidence.packageId;
   has(await validateChatNTCResponse(response, evidence, repository), "evidence-content-mismatch");
+  evidence.primaryUnits[0].hierarchy[0].title = "Scope alterato";
+  const hierarchyBody = { ...evidence };
+  delete hierarchyBody.packageId;
+  evidence.packageId = await evidencePackageId(hierarchyBody);
+  response.evidencePackageId = evidence.packageId;
+  has(await validateChatNTCResponse(response, evidence, repository), "evidence-metadata-mismatch");
   const wrongSnapshot = { ...repository, identity: async () => ({ ...await repository.identity(), fingerprint: "wrong" }) };
   has(await validateChatNTCResponse(response, evidence, wrongSnapshot), "corpus-mismatch");
 });

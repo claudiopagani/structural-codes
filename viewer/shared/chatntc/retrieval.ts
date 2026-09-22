@@ -1,9 +1,9 @@
 import { findCrossReferences } from "../crossReferences.js";
 import { tokenizeSearchText } from "../searchEngine.js";
 import { CHATNTC_DEFAULT_RETRIEVAL, CHATNTC_EPISTEMIC_POLICY } from "./policy.js";
-import { evidencePackageId, projectEvidenceBlock, projectEvidenceUnit, stableJson } from "./evidence.js";
+import { evidencePackageId, evidenceUnitSelectionLength, projectEvidenceBlock, projectEvidenceHierarchy, projectEvidenceUnit, stableJson } from "./evidence.js";
 import type { ChatNTCEvidencePackage, ChatNTCEvidenceUnit, ChatNTCHit, ChatNTCRelation,
-  ChatNTCRepository, ChatNTCRetrievalOptions, ChatNTCUnitRecord, ChatNTCWarning } from "./types.js";
+  ChatNTCEvidenceHierarchyEntry, ChatNTCRepository, ChatNTCRetrievalOptions, ChatNTCUnitRecord, ChatNTCWarning } from "./types.js";
 
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 export class ChatNTCContextError extends Error {
@@ -33,14 +33,15 @@ function optionsFor(input: ChatNTCRetrievalOptions): ChatNTCEvidencePackage["ret
   return options;
 }
 
-function selectUnit(record: ChatNTCUnitRecord, candidate: Candidate, question: string, budget: number): ChatNTCEvidenceUnit | null {
+function selectUnit(record: ChatNTCUnitRecord, hierarchy: readonly ChatNTCEvidenceHierarchyEntry[],
+  candidate: Candidate, question: string, budget: number): ChatNTCEvidenceUnit | null {
   const projected = record.unit.blocks.map((block) => projectEvidenceBlock(block, record));
-  const base = { ...projectEvidenceUnit(record), reasons: candidate.reasons };
+  const base = { ...projectEvidenceUnit(record, hierarchy), reasons: candidate.reasons };
   const build = (positions: number[]): ChatNTCEvidenceUnit => ({ ...base,
     blocks: [...positions].sort((a, b) => a - b).map((position) => projected[position]),
     selection: { complete: positions.length === projected.length, omittedBlocks: projected.length - positions.length } });
   const full = build(projected.map((_, position) => position));
-  if (JSON.stringify(full).length <= budget) return full;
+  if (evidenceUnitSelectionLength(full) <= budget) return full;
   const terms = new Set<string>(tokenizeSearchText(question));
   const priority = projected.map((block, position) => {
     const tokens = tokenizeSearchText(block.text?.normalized ?? "");
@@ -51,7 +52,7 @@ function selectUnit(record: ChatNTCUnitRecord, candidate: Candidate, question: s
   const positions: number[] = [];
   for (const { position } of priority) {
     // Whole blocks/assets only. A large table is omitted, never cut into misleading cells.
-    if (JSON.stringify(build([...positions, position])).length <= budget) positions.push(position);
+    if (evidenceUnitSelectionLength(build([...positions, position])) <= budget) positions.push(position);
   }
   return positions.length ? build(positions) : null;
 }
@@ -132,10 +133,11 @@ export async function retrieveChatNTCEvidence(repository: ChatNTCRepository, que
       const block = record.unit.blocks.find((entry) => entry.blockId === blockId);
       if (!block || (assetId && block.assetId !== assetId)) throw new Error(`ChatNTC: target del rimando incoerente con il corpus: ${blockId}`);
     }
-    const selected = selectUnit(record, candidate, question, Math.min(remaining, options.maxUnitCharacters));
+    const hierarchy = await projectEvidenceHierarchy(record, (unitId) => repository.getUnit(unitId));
+    const selected = selectUnit(record, hierarchy, candidate, question, Math.min(remaining, options.maxUnitCharacters));
     if (!selected) { reduced = true; return; }
     if (!selected.selection.complete) reduced = true;
-    remaining -= JSON.stringify(selected).length;
+    remaining -= evidenceUnitSelectionLength(selected);
     output.push(selected);
   }
   const rankedPrimary = [...primaryCandidates.values()].sort((a, b) =>

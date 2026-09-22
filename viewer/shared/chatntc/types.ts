@@ -86,6 +86,11 @@ export interface ChatNTCEvidenceBlock {
     "sourceId" | "pdfPage" | "printedPage" | "region" | "normalizedSha256">;
 }
 
+export interface ChatNTCEvidenceHierarchyEntry {
+  numbering: string;
+  title: string;
+}
+
 export interface ChatNTCEvidenceUnit {
   /** Unit citations refer only to the selected blocks, never omitted content. */
   evidenceId: string;
@@ -93,6 +98,8 @@ export interface ChatNTCEvidenceUnit {
   document: DocumentId;
   numbering: string;
   title: string;
+  /** Canonical ancestors from the document root through the immediate parent. */
+  hierarchy: ChatNTCEvidenceHierarchyEntry[];
   editorial: CorpusUnit["review"];
   validity: CorpusUnit["validity"];
   provenance: ChatNTCUnitRecord["provenance"];
@@ -108,7 +115,7 @@ export interface ChatNTCRetrievalOptions {
   maxPrimaryUnits?: number;
   maxRelatedUnits?: number;
   maxChildrenPerUnit?: number;
-  /** UTF-16 length of serialized evidence units, including metadata and assets. Not tokens. */
+  /** UTF-16 selection length, including established unit metadata and assets but excluding additive hierarchy scope. Not tokens. */
   maxEvidenceCharacters?: number;
   maxUnitCharacters?: number;
   includeParents?: boolean;

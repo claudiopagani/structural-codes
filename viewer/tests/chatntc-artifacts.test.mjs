@@ -32,6 +32,28 @@ test("artefatti reali: exact NTC/Circolare, full-text e provenienza del pacchett
   assert.ok(fullText.primaryUnits.some((unit) => unit.reasons.some((reason) => reason.kind === "full-text")));
 });
 
+test("artefatti reali: breadcrumb espone lo scope specialistico e una gerarchia ordinaria", async () => {
+  const repository = createArtifactRepository(loader);
+  const specialist = await retrieveChatNTCEvidence(repository, "C4.1.12.1.2.1");
+  const deformability = specialist.primaryUnits.find((unit) => unit.numbering === "C4.1.12.1.2.1");
+  assert.ok(deformability);
+  assert.ok(deformability.hierarchy.some((entry) => entry.numbering === "C4.1.12"
+    && entry.title === "CALCESTRUZZO DI AGGREGATI LEGGERI (LC)"));
+  const elasticModulus = specialist.relatedUnits.find((unit) => unit.numbering === "C4.1.12.1.1.2");
+  assert.ok(elasticModulus);
+  assert.ok(elasticModulus.hierarchy.some((entry) => entry.numbering === "C4.1.12"
+    && entry.title === "CALCESTRUZZO DI AGGREGATI LEGGERI (LC)"));
+  assert.ok([...specialist.primaryUnits, ...specialist.relatedUnits]
+    .every((unit) => Array.isArray(unit.hierarchy)));
+
+  const ordinary = await retrieveChatNTCEvidence(repository, "§7.3.6.1", { maxRelatedUnits: 0 });
+  assert.deepEqual(ordinary.primaryUnits[0].hierarchy, [
+    { numbering: "7", title: "PROGETTAZIONE PER AZIONI SISMICHE" },
+    { numbering: "7.3", title: "METODI DI ANALISI E CRITERI DI VERIFICA" },
+    { numbering: "7.3.6", title: "RISPETTO DEI REQUISITI NEI CONFRONTI DEGLI STATI LIMITE" },
+  ]);
+});
+
 test("artefatti reali: asset indicizzati e relazioni esplicite, nessuna uguaglianza numerica inferita", async () => {
   const repository = createArtifactRepository(loader);
   const manifest = await loader.manifest();

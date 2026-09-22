@@ -1,5 +1,6 @@
 import { findCrossReferences } from "../crossReferences.js";
-import { citationForEvidence, evidencePackageId, evidenceUnits, projectEvidenceBlock, projectEvidenceUnit, stableJson } from "./evidence.js";
+import { citationForEvidence, evidencePackageId, evidenceUnits, evidenceUnitSelectionLength, projectEvidenceBlock, projectEvidenceHierarchy,
+  projectEvidenceUnit, stableJson } from "./evidence.js";
 import { CHATNTC_EPISTEMIC_POLICY } from "./policy.js";
 import { chatNTCIssueCategory } from "./issueCategories.js";
 import { isChatNTCResponse } from "./responseContract.js";
@@ -50,7 +51,8 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
     delete metadata.reasons;
     delete metadata.blocks;
     delete metadata.selection;
-    if (stableJson(metadata) !== stableJson(projectEvidenceUnit(record))) add("evidence-metadata-mismatch", path, "Identità, stato editoriale o provenienza non corrispondono al corpus.");
+    const hierarchy = await projectEvidenceHierarchy(record, getUnit);
+    if (stableJson(metadata) !== stableJson(projectEvidenceUnit(record, hierarchy))) add("evidence-metadata-mismatch", path, "Identità, gerarchia, stato editoriale o provenienza non corrispondono al corpus.");
     if (!record.unit.id.startsWith(`urn:structural-codes:it:unit:${record.unit.document}:`)) add("canonical-document-mismatch", path, "Il documento non corrisponde all'ID canonico.");
     if (!unit.blocks.length) add("empty-evidence", path, "Una unità senza blocchi selezionati non è evidence.");
     let previousPosition = -1;
@@ -73,7 +75,7 @@ export async function validateChatNTCResponse(response: unknown, evidence: ChatN
     if (unit.selection.omittedBlocks !== record.unit.blocks.length - unit.blocks.length
       || unit.selection.complete !== (unit.selection.omittedBlocks === 0)) add("selection-mismatch", path, "Copertura dei blocchi dichiarata non corretta.");
   }
-  const characters = selected.reduce((sum, unit) => sum + JSON.stringify(unit).length, 0);
+  const characters = selected.reduce((sum, unit) => sum + evidenceUnitSelectionLength(unit), 0);
   if (characters !== evidence.retrieval.evidenceCharacters || characters > evidence.retrieval.options.maxEvidenceCharacters) add("evidence-budget", "evidence.retrieval", "Budget evidence incoerente.");
 
   if (response.formatVersion === 3) {

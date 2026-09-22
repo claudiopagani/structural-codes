@@ -81,6 +81,8 @@ test("DeepSeek: endpoint, auth server-side, messages, direttive e JSON request c
     const context = JSON.parse(body.messages.at(-1).content);
     assert.deepEqual(context.evidence, input.evidence);
     assert.equal(context.kind, "chatntc-normative-context");
+    assert.ok(Array.isArray(context.evidence.primaryUnits[0].hierarchy));
+    assert.ok(body.messages.at(-1).content.includes('"hierarchy"'));
     assert.equal(init.body.includes(key), false);
     return mockEnvelope(validResponse(input));
   });

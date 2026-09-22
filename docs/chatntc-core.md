@@ -117,8 +117,10 @@ I permalink riusano `viewerTargetForCitation` e il contratto `ViewerTarget` di
 
 Limiti predefiniti: 3 unità primarie, 5 correlate, 2 children per unità;
 48.000 caratteri totali e 16.000 per unità. Il conteggio è la lunghezza UTF-16
-delle unità evidence serializzate, inclusi metadati, LaTeX e tabelle. Non è un
-conteggio di token e non include domanda, manifest sintetico o envelope.
+delle unità evidence serializzate, inclusi i metadati preesistenti, LaTeX e
+tabelle; il breadcrumb gerarchico additivo è escluso dalla quota affinché non
+sposti i blocchi selezionati. Non è un conteggio di token e non include domanda,
+manifest sintetico o envelope.
 I limiti sono configurabili e validati; `maxRelatedUnits: 0` disabilita
 l'espansione. I filtri non promuovono lo stato editoriale.
 
@@ -137,7 +139,8 @@ warning e può richiedere più evidence o astenersi.
 - Versione e fingerprint del corpus e degli artefatti; disclaimer, stato,
   fonte ufficiale, URL di pubblicazione e hash PDF per ciascun documento.
 - Unità primarie/correlate: ID, documento, numbering ufficiale, titolo,
-  validità, stato di verifica e provenance disponibile.
+  breadcrumb gerarchico canonico fino al parent immediato, validità, stato di
+  verifica e provenance disponibile.
 - Blocchi: ID, tipo e origine; testo normalizzato con segmenti inline;
   asset strutturati; pagina PDF, regione e hash normalized quando disponibili.
 - Formule complete in LaTeX; tabelle con celle unite, matematica e note;

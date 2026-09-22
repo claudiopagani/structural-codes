@@ -1,5 +1,6 @@
 import type { CorpusBlock, TableCell } from "../corpusData.js";
-import type { ChatNTCCitation, ChatNTCEvidenceBlock, ChatNTCEvidencePackage, ChatNTCEvidenceUnit, ChatNTCReference, ChatNTCUnitRecord } from "./types.js";
+import type { ChatNTCCitation, ChatNTCEvidenceBlock, ChatNTCEvidenceHierarchyEntry, ChatNTCEvidencePackage, ChatNTCEvidenceUnit,
+  ChatNTCReference, ChatNTCUnitRecord } from "./types.js";
 import type { ViewerTarget } from "../permalinks.js";
 
 /** Sorted object keys, preserved array/source order, no clock or randomness. */
@@ -15,6 +16,12 @@ export function stableJson(value: unknown): string {
 export async function evidencePackageId(value: Omit<ChatNTCEvidencePackage, "packageId">): Promise<string> {
   const digest = await globalThis.crypto.subtle.digest("SHA-256", new TextEncoder().encode(stableJson(value)));
   return `chatntc:v1:${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("")}`;
+}
+
+/** Additive hierarchical scope must not displace blocks selected under the established evidence budget. */
+export function evidenceUnitSelectionLength(unit: ChatNTCEvidenceUnit): number {
+  const { hierarchy: _hierarchy, ...budgetedUnit } = unit;
+  return JSON.stringify(budgetedUnit).length;
 }
 
 function cell(value: TableCell): TableCell {
@@ -61,11 +68,35 @@ export function projectEvidenceBlock(block: CorpusBlock, record: ChatNTCUnitReco
   return result;
 }
 
-export function projectEvidenceUnit(record: ChatNTCUnitRecord): Omit<ChatNTCEvidenceUnit, "reasons" | "blocks" | "selection"> {
+export async function projectEvidenceHierarchy(record: ChatNTCUnitRecord,
+  getUnit: (unitId: string) => Promise<ChatNTCUnitRecord | null>): Promise<ChatNTCEvidenceHierarchyEntry[]> {
+  const { unit } = record;
+  const ancestorIds = unit.hierarchy.ancestorIds;
+  if (new Set(ancestorIds).size !== ancestorIds.length || ancestorIds.includes(unit.id)
+    || (unit.hierarchy.parentId === null ? ancestorIds.length !== 0 : ancestorIds.at(-1) !== unit.hierarchy.parentId)) {
+    throw new Error(`ChatNTC: gerarchia canonica incoerente per ${unit.id}`);
+  }
+  const hierarchy: ChatNTCEvidenceHierarchyEntry[] = [];
+  let expectedParentId: string | null = null;
+  for (const ancestorId of ancestorIds) {
+    const ancestor = await getUnit(ancestorId);
+    if (!ancestor || ancestor.unit.document !== unit.document
+      || ancestor.unit.hierarchy.parentId !== expectedParentId) {
+      throw new Error(`ChatNTC: antenato canonico assente o incoerente: ${ancestorId}`);
+    }
+    hierarchy.push({ numbering: ancestor.unit.numbering.official, title: ancestor.unit.title });
+    expectedParentId = ancestorId;
+  }
+  return hierarchy;
+}
+
+export function projectEvidenceUnit(record: ChatNTCUnitRecord,
+  hierarchy: readonly ChatNTCEvidenceHierarchyEntry[]): Omit<ChatNTCEvidenceUnit, "reasons" | "blocks" | "selection"> {
   const { unit } = record;
   return {
     evidenceId: unit.id, unitId: unit.id, document: unit.document, numbering: unit.numbering.official,
-    title: unit.title, validity: { ...unit.validity }, provenance: { ...record.provenance },
+    title: unit.title, hierarchy: hierarchy.map((entry) => ({ ...entry })),
+    validity: { ...unit.validity }, provenance: { ...record.provenance },
     editorial: { status: unit.review.status },
   };
 }
