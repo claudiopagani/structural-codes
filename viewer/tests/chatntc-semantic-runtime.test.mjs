@@ -78,13 +78,14 @@ async function fixture(t) {
   return { root, dataDirectory, indexDirectory };
 }
 
-test("default e off non inizializzano provider, indice o servizio HTTP", () => {
+test("default e off non inizializzano provider, indice o servizio HTTP", async () => {
   let providerCalls = 0;
   const providerFactory = () => { providerCalls += 1; throw new Error("non deve essere chiamato"); };
   const defaults = configuredChatNTCSemanticRuntime({}, { providerFactory });
   assert.equal(defaults.mode, "off");
   assert.equal(defaults.provider, null);
   assert.deepEqual(defaults.configuration, { mode: "off" });
+  assert.deepEqual(await defaults.initialize(), { mode: "off" });
   const explicit = configuredChatNTCSemanticRuntime({
     CHATNTC_SEMANTIC_MODE: "off",
     CHATNTC_EMBEDDING_PROVIDER: "sconosciuto",
@@ -92,6 +93,7 @@ test("default e off non inizializzano provider, indice o servizio HTTP", () => {
     CHATNTC_SEMANTIC_INDEX_PATH: "Z:/indice/inesistente",
   }, { providerFactory });
   assert.equal(explicit.mode, "off");
+  assert.deepEqual(await explicit.initialize(), { mode: "off" });
   assert.equal(providerCalls, 0);
 });
 

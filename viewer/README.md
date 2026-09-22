@@ -85,14 +85,20 @@ Il comando non copia il corpus completo nel package viewer: usa il package
 ### Semantic retrieval ChatNTC
 
 Il runtime usa la pipeline ChatNTC e il `retrievalCoordinator` esistenti. Senza
-configurazione semantic il default è `off`: sviluppo e viewer locali restano
-lexical + structural, non leggono un indice, non costruiscono un provider e non
-richiedono Docker o GPU.
+configurazione semantic il default production è `off`: la pipeline è ricerca
+lessicale → espansione strutturale → Evidence Package con hierarchy → LLM →
+Citation Validator. Non legge un indice, non costruisce un provider e non
+richiede BGE-M3, Docker o GPU.
 
 - `off`: percorso legacy lexical + structural, senza inizializzazione semantic;
 - `shadow`: esegue anche semantic retrieval e RRF, registra i diagnostics
   server-side ma conserva l'Evidence Package lexical;
 - `on`: usa lexical + semantic + RRF prima della structural expansion.
+
+`shadow` e `on` restano capacità sperimentali abilitate soltanto tramite
+configurazione esplicita. I test end-to-end non hanno mostrato un miglioramento
+qualitativo sufficientemente consistente da giustificare BGE-M3/RRF come
+dipendenza production predefinita.
 
 Configurazione server-side:
 
@@ -138,8 +144,8 @@ in [ChatNTC semantic index](../docs/chatntc-semantic-index.md).
 Exact references, candidate policy, RRF e structural expansion restano nel
 percorso canonico esistente.
 
-Il packaging Docker production-like (server ChatNTC + BGE-M3 su rete privata,
-indice e cache modello esterni) è documentato in
+Il packaging Docker production-like (ChatNTC lexical di default; BGE-M3
+opzionale su rete privata, indice e cache modello esterni) è documentato in
 [`deploy/chatntc`](../deploy/chatntc/README.md). Non è richiesto dallo sviluppo
 normale e non costituisce un deployment cloud.
 

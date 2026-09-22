@@ -1,5 +1,12 @@
 # ChatNTC — semantic index e hybrid retrieval server-side (STEP 2–4)
 
+> **Stato production:** il default è `CHATNTC_SEMANTIC_MODE=off`. La pipeline
+> standard usa retrieval lessicale, espansione strutturale ed Evidence Package;
+> BGE-M3, indice semantic e RRF restano disponibili soltanto come capacità
+> sperimentale esplicitamente attivata con `shadow` o `on`. I test end-to-end
+> non hanno mostrato un beneficio qualitativo abbastanza consistente da
+> giustificarli come dipendenza production predefinita.
+
 Lo STEP 2 introduce il tooling per produrre, validare e leggere un indice
 semantico server-side. Lo STEP 3 usa lo stesso reader per osservare un ranking
 semantico in isolamento. Lo STEP 4 fonde ranking lessicale e semantico con RRF

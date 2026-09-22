@@ -2,6 +2,8 @@ name: structural-codes-chatntc
 
 services:
   bge-m3-embedding:
+    profiles:
+      - semantic
     build:
       context: ../../services/bge-m3-embedding
       dockerfile: Dockerfile
@@ -22,9 +24,7 @@ services:
       DO_NOT_TRACK: "1"
       TOKENIZERS_PARALLELISM: "false"
     volumes:
-      - type: bind
-        source: ${BGE_MODEL_CACHE:?Set BGE_MODEL_CACHE in .env.production}
-        target: /models/huggingface
+      - ${BGE_MODEL_CACHE:-bge-model-cache}:/models/huggingface
     expose:
       - "8000"
     healthcheck:
@@ -55,6 +55,7 @@ services:
       bge-m3-embedding:
         condition: service_healthy
         restart: true
+        required: false
     environment:
       NODE_ENV: production
       HOST: 0.0.0.0
@@ -67,17 +68,14 @@ services:
       CHATNTC_DEEPSEEK_API_KEY: ${CHATNTC_DEEPSEEK_API_KEY:-}
       CHATNTC_DEEPSEEK_MODEL: ${CHATNTC_DEEPSEEK_MODEL:-deepseek-flash}
       CHATNTC_TIMEOUT_MS: ${CHATNTC_TIMEOUT_MS:-120000}
-      CHATNTC_SEMANTIC_MODE: "on"
-      CHATNTC_EMBEDDING_PROVIDER: flagembedding-http
-      CHATNTC_EMBEDDING_URL: http://bge-m3-embedding:8000
-      CHATNTC_SEMANTIC_INDEX_PATH: /app/data/chatntc-semantic
-      CHATNTC_EMBEDDING_TIMEOUT_MS: "120000"
-      CHATNTC_EMBEDDING_BATCH_SIZE: "32"
+      CHATNTC_SEMANTIC_MODE: ${CHATNTC_SEMANTIC_MODE:-off}
+      CHATNTC_EMBEDDING_PROVIDER: ${CHATNTC_EMBEDDING_PROVIDER:-flagembedding-http}
+      CHATNTC_EMBEDDING_URL: ${CHATNTC_EMBEDDING_URL:-http://bge-m3-embedding:8000}
+      CHATNTC_SEMANTIC_INDEX_PATH: ${CHATNTC_SEMANTIC_INDEX_PATH:-/app/data/chatntc-semantic}
+      CHATNTC_EMBEDDING_TIMEOUT_MS: ${CHATNTC_EMBEDDING_TIMEOUT_MS:-120000}
+      CHATNTC_EMBEDDING_BATCH_SIZE: ${CHATNTC_EMBEDDING_BATCH_SIZE:-32}
     volumes:
-      - type: bind
-        source: ${CHATNTC_SEMANTIC_INDEX_HOST_PATH:?Set CHATNTC_SEMANTIC_INDEX_HOST_PATH in .env.production}
-        target: /app/data/chatntc-semantic
-        read_only: true
+      - ${CHATNTC_SEMANTIC_INDEX_HOST_PATH:-chatntc-semantic-index}:/app/data/chatntc-semantic:ro
     ports:
       - "127.0.0.1:${CHATNTC_HOST_PORT:-3000}:3000"
     healthcheck:
@@ -101,3 +99,7 @@ services:
 networks:
   backend:
     driver: bridge
+
+volumes:
+  bge-model-cache:
+  chatntc-semantic-index:
