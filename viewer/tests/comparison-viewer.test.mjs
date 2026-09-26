@@ -268,8 +268,12 @@ test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () =
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-list \{[^}]*--scv-index-chapter-bg: #3f56a6[^}]*--scv-index-paragraph-bg: #7585bf[^}]*--scv-index-subparagraph-bg: #aeb8da/);
   assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: var\(--scv-index-chapter-bg\)/);
-  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-index-paragraph-bg\)/);
+  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-index-paragraph-bg\)[^}]*--scv-index-active-ink: #101624/);
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: var\(--scv-index-subparagraph-bg\)/);
+  assert.match(styles, /\.scv-index-list button\.active strong, \.scv-index-list button\.active span \{[^}]*color: var\(--scv-index-active-ink\)/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-0 \{[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-1 \{[^}]*--scv-index-active-ink: #101624/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-2 \{[^}]*--scv-index-active-ink: #101624/);
   assert.match(styles, /\.scv-index-list button \{[^}]*width: calc\(100% - 4px\)[^}]*margin: 2px 2px 2px 0/);
   assert.match(styles, /\.scv-index-list button\.active \{[^}]*background: var\(--scv-index-active-bg\)/);
   assert.match(styles, /\.scv-index-children \{[^}]*grid-template-rows: 0fr[^}]*transition:/);
@@ -376,7 +380,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.scv-settings-button \{[^}]*font-size: 16px/);
   assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset/);
   assert.match(styles, /\.scv-root\.scv-dark/);
-  assert.match(styles, /\.scv-root \.inline-math \{[^}]*font-size: 1\.04em/);
+  assert.match(styles, /\.scv-root \.inline-math \{[^}]*display: inline-block[^}]*font-size: 1\.04em[^}]*vertical-align: baseline/);
+  assert.doesNotMatch(styles, /\.scv-root \.inline-math \{[^}]*(?:overflow|vertical-align: middle)/);
   assert.match(styles, /\.scv-root \.inline-math \.katex \{[^}]*font-size: 1em/);
   assert.match(styles, /\.scv-root \.figure-asset img \{[^}]*width: min\(100%, 760px\)[^}]*height: auto[^}]*max-height: min\(600px, 70vh\)/);
   assert.match(styles, /\.scv-root \.figure-asset-c3-3-28 img \{[^}]*width: min\(50%, 380px\)/);

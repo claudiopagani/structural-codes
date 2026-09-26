@@ -66,6 +66,38 @@ function unitSummary(document, unit, chunkPath) {
   return { id: unit.id, document, kind: unit.kind, numbering: unit.numbering, title: unit.title, hierarchy: unit.hierarchy, validity: unit.validity, reviewStatus: unit.review.status, chunkPath };
 }
 
+function compactSearchText(parts) {
+  const seen = new Set();
+  return parts.flatMap((part) => {
+    const text = String(part ?? "").replace(/\s+/gu, " ").trim();
+    const key = text.normalize("NFKC").toLocaleLowerCase("it");
+    if (!text || seen.has(key)) return [];
+    seen.add(key);
+    return [text];
+  }).join(" ");
+}
+
+function searchableAssetText(kind, asset) {
+  const label = kind === "formula" ? "Formula" : kind === "table" ? "Tabella" : "Figura";
+  const identity = asset.officialNumber ? `${label} ${asset.officialNumber}` : label;
+  if (kind === "formula") return identity;
+  if (kind === "figure") return compactSearchText([identity, asset.caption, asset.alt]);
+  const cells = [...asset.headers, ...asset.rows, ...(asset.footerRows ?? [])].flat().map((cell) => cell.text);
+  return compactSearchText([identity, asset.caption, ...cells, ...asset.notes]);
+}
+
+function searchSegments(unit, assetById) {
+  return unit.blocks.flatMap((block) => {
+    const segments = [];
+    if (block.text?.normalized && block.blockId !== unit.titleBlockId) segments.push({ blockId: block.blockId, text: block.text.normalized });
+    if (block.assetId) {
+      const found = assetById.get(block.assetId);
+      if (found) segments.push({ blockId: block.blockId, assetId: block.assetId, assetKind: found.kind, officialNumber: found.asset.officialNumber, text: searchableAssetText(found.kind, found.asset) });
+    }
+    return segments;
+  });
+}
+
 export async function generateArtifacts({ sourcePackage = "structural-codes", outputDirectory = join(process.cwd(), "public", "data", "codes"), assetOutputDirectory = join(process.cwd(), "public", "assets") } = {}) {
   const sourceRoot = await sourceRootFor(sourcePackage);
   assertOutputDirectory(outputDirectory, sourceRoot);
@@ -81,6 +113,7 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const assetManifests = await Promise.all(assetManifestFiles.map((file) => json(join(assetManifestDirectory, file))));
   const assetCollections = { formulas: assetManifests.flatMap(({ formulas }) => formulas), tables: assetManifests.flatMap(({ tables }) => tables), figures: assetManifests.flatMap(({ figures }) => figures) };
   const assetsById = Object.fromEntries(Object.entries(assetCollections).map(([kind, assets]) => [kind, new Map(assets.map((asset) => [asset.id, asset]))]));
+  const searchableAssetById = new Map(Object.entries(assetCollections).flatMap(([collection, assets]) => assets.map((asset) => [asset.id, { kind: collection === "formulas" ? "formula" : collection === "tables" ? "table" : "figure", asset }])));
   const unitsByDocument = Object.fromEntries(await Promise.all(documentOrder.map(async (document) => [document, await loadUnits(corpusRoot, document)])));
   const allUnits = documentOrder.flatMap((document) => unitsByDocument[document].map((unit) => publicUnit(document, unit)));
   await Promise.all([rm(outputDirectory, { recursive: true, force: true }), rm(figureOutput, { recursive: true, force: true })]);
@@ -120,7 +153,7 @@ export async function generateArtifacts({ sourcePackage = "structural-codes", ou
   const ntcByNumber = new Map(unitsByDocument.ntc2018.map((unit) => [unit.numbering.official, unit]));
   const diagnostics = unitsByDocument.circ2019.flatMap((unit) => { const candidate = ntcByNumber.get(unit.numbering.official.replace(/^C/iu, "")); if (!candidate || unit.relations.some((relation) => relation.targetUnitId === candidate.id)) return []; return [{ kind: "suggested-relation", status: "diagnostic-only-not-canonical", reason: "same-numbering", sourceUnitId: unit.id, targetUnitId: candidate.id, sourceChunkPath: chunkPathByUnit.get(unit.id), targetChunkPath: chunkPathByUnit.get(candidate.id) }]; });
   const diagnosticsWritten = await writeJson(join(outputDirectory, "relation-diagnostics.json"), { formatVersion: 2, warning: "Suggerimenti diagnostici non confermati: non sono usati dalla vista combinata.", suggestions: diagnostics });
-  const searchWritten = await writeJson(join(outputDirectory, "search-index.json"), buildSearchIndexPayload(allUnits.map((unit) => ({ id: unit.id, document: unit.document, numbering: unit.numbering.official, title: unit.title, chunkPath: chunkPathByUnit.get(unit.id), text: unit.blocks.flatMap((block) => block.text?.normalized ? [block.text.normalized] : []).join(" ") }))));
+  const searchWritten = await writeJson(join(outputDirectory, "search-index.json"), buildSearchIndexPayload(allUnits.map((unit) => ({ id: unit.id, document: unit.document, numbering: unit.numbering.official, title: unit.title, titleBlockId: unit.titleBlockId, chunkPath: chunkPathByUnit.get(unit.id), segments: searchSegments(unit, searchableAssetById) }))));
   const crossReferenceWritten = await writeJson(join(outputDirectory, "cross-reference-index.json"), buildCrossReferenceIndexPayload({ units: allUnits, assetCollections }));
   const manifestationBySourceId = new Map(sourceRegistry.works.flatMap((work) => work.manifestations.map((manifestation) => [manifestation.sourceId, { manifestation, work }])));
   for (const document of documentOrder) {

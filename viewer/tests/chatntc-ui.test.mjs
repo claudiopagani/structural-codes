@@ -204,9 +204,11 @@ test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", 
   assert.match(styles, /\.scv-chat-markdown \.katex-display[^}]*font-size:\s*1\.18em/su);
   assert.match(styles, /\.scv-chat-markdown \.katex-display > \.katex[^}]*width:\s*max-content/su);
   assert.match(styles, /\.scv-chat-markdown pre[^}]*overflow-x:\s*auto/su);
+  assert.match(styles, /\.scv-chat-markdown table[^}]*overflow-x:\s*auto/su);
   assert.match(styles, /\.scv-chat-citations ul[^}]*flex-wrap:\s*wrap/su);
   assert.match(styles, /\.scv-chat-loading[^}]*min-height:/su);
   assert.match(styles, /@media \(max-width:\s*700px\)[\s\S]*\.scv-chat-markdown[^}]*width:\s*100%/u);
+  assert.match(styles, /@media \(max-width:\s*820px\)[\s\S]*\.scv-auxiliary-pane[^}]*position:\s*fixed/u);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-answer-enter\s*\{\s*animation:\s*none/su);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-loading-lines i\s*\{\s*animation:\s*none/su);
 });
@@ -374,6 +376,30 @@ test("viewer: apertura/chiusura, contesto reale, slash nell'input e citation cli
   await click(button("Apri Strumenti"));
   assert.match(rootElement.querySelector('.scv-chat-answer').textContent, /Risposta simulata/);
   assert.equal(calls.length, 1);
+});
+
+test("viewer: non ruba il focus al mount e ricerca/drawer hanno tastiera e stato accessibile", async (t) => {
+  t.mock.method(globalThis, "fetch", mockCorpusFetch);
+  await mount(h(NormativeViewer, { defaultMode: "combined" }));
+  await waitFor(() => rootElement.querySelector(".scv-unit"));
+  const settings = rootElement.querySelector('[aria-label="Impostazioni consultazione"]');
+  assert.notEqual(document.activeElement, settings);
+  const search = rootElement.querySelector('[aria-label="Cerca nella normativa"]');
+  assert.equal(search.getAttribute("role"), "combobox");
+  await act(async () => {
+    Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set.call(search, "7.3.6.1");
+    search.dispatchEvent(new window.Event("input", { bubbles: true }));
+  });
+  await waitFor(() => rootElement.querySelector(".scv-search-result"));
+  await act(async () => search.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true, cancelable: true })));
+  assert.ok(document.activeElement.classList.contains("scv-search-result"));
+  await act(async () => document.activeElement.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true })));
+  assert.equal(document.activeElement, search);
+  assert.equal(search.value, "");
+  await click(button("Indice"));
+  assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"));
+  await click(rootElement.querySelector('[aria-label="Chiudi indice"]'));
+  assert.equal(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"), false);
 });
 
 test("preview: un risultato asincrono tardivo non riapre il tooltip dopo pointerout", async (t) => {

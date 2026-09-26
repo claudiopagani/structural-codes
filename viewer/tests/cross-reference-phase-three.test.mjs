@@ -74,6 +74,9 @@ test("linkificazione, preview e navigazione lazy restano fuori dal documento mem
   assert.match(viewer, /clearReferencePreview\(\)/);
   assert.match(viewer, /<ReferencePreview preview=\{referencePreview\}/);
   assert.match(tools, /data-scv-reference-preview/);
+  assert.match(tools, /preview\.interactive \? "dialog" : "tooltip"/);
+  assert.match(viewer, /lastPointerTypeRef\.current === "touch"/);
+  assert.match(viewer, /showReferencePreview\(element, true\)/);
   assert.match(viewer, /scrollViewerTarget\(textPaneRef\.current, target\)/);
   assert.match(viewer, /await revealSummary\(summary/);
   assert.match(viewer, /loadDocumentIndex\(manifest, targetDocument, dataBaseUrl\)/);

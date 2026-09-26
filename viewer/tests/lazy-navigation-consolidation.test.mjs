@@ -68,9 +68,11 @@ test("navigazioni rapide invalidano mount e anchor asincroni precedenti", async 
 
 test("anche su viewport strette il testo resta un contenitore scrollabile per il lazy loading", async () => {
   const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
-  const mobile = styles.slice(styles.indexOf("@media (max-width: 700px)"));
-  assert.match(mobile, /\.scv-text-pane-shell \{ height: 58vh; min-height: 0; \}/);
+  const mobile = styles.slice(styles.indexOf("@media (max-width: 820px)"));
+  assert.match(mobile, /\.scv-text-pane-shell,[^}]*height: 100dvh; min-height: 0;/);
   assert.match(mobile, /\.scv-text-pane \{ height: 100%; min-height: 0; \}/);
+  assert.match(mobile, /\.scv-auxiliary-pane \{[^}]*position: fixed;[^}]*height: 100dvh/);
+  assert.match(mobile, /\.scv-index-pane \{[^}]*position: fixed;[^}]*transform: translateX\(-102%\)/);
 });
 
 test("il lazy loading attiva l’ultima unità quando il viewport è vicino al fondo del chunk", async () => {

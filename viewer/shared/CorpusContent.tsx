@@ -220,7 +220,8 @@ function CopyAssetButton({ kind }: { kind: CopyAssetKind }) {
   }
 
   const label = kind === "figure" ? "Copia immagine" : "Copia formula come immagine";
-  return <button type="button" className={`scv-copy-asset scv-copy-asset-${status}`} onClick={(event) => void copyAsset(event)} aria-label={label} title={label}>{status === "copied" ? "✓" : status === "error" ? "!" : "⧉"}</button>;
+  const feedback = status === "copied" ? `${kind === "figure" ? "Immagine" : "Formula"} copiata negli appunti` : status === "error" ? "Copia non disponibile" : label;
+  return <button type="button" className={`scv-copy-asset scv-copy-asset-${status}`} onClick={(event) => void copyAsset(event)} aria-label={feedback} title={feedback}>{status === "copied" ? "✓" : status === "error" ? "!" : "⧉"}</button>;
 }
 
 function MathCell({ cell, assetsBaseUrl }: { cell: TableCell; assetsBaseUrl: string }) {

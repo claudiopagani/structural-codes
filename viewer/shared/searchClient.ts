@@ -36,7 +36,7 @@ function resultForSummary(summary: UnitSummary): SearchResult {
     chunkPath: summary.chunkPath,
     snippet: `${prefix} — ${summary.title}`,
     highlights: [[0, prefix.length]],
-    score: 4_000_000,
+    score: 9_000_000,
     matchKind: "number-exact",
   };
 }

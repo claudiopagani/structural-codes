@@ -182,22 +182,33 @@ export interface RelationEdge extends Relation {
   targetChunkPath: string | null;
 }
 export interface RelationsIndex { formatVersion: 2; sourceOfTruth: "explicit-corpus-relations"; inferredRelationsIncluded: false; relations: RelationEdge[]; }
-export type SearchMatchKind = "number-exact" | "title" | "phrase" | "text";
+export type SearchMatchKind = "number-exact" | "asset-exact" | "title" | "number-keyword" | "phrase" | "proximity" | "text" | "partial";
+export type SearchAssetKind = "formula" | "table" | "figure";
+export interface SearchSegment {
+  blockId: string;
+  assetId?: string;
+  assetKind?: SearchAssetKind;
+  officialNumber?: string;
+  text: string;
+}
 export interface SearchUnit {
   id: string;
   document: DocumentId;
   numbering: string;
   title: string;
   titleNormalized: string;
+  titleBlockId?: string;
   chunkPath: string;
-  text: string;
+  segments: SearchSegment[];
   textLength: number;
+  assetTextLength: number;
 }
 export interface SearchIndex {
-  formatVersion: 3;
+  formatVersion: 4;
   normalization: string;
   units: SearchUnit[];
   references: Record<string, [number, number]>;
+  assetReferences: Record<string, Array<[number, number]>>;
   postings: Record<string, string>;
 }
 export interface SearchResult {
@@ -210,6 +221,9 @@ export interface SearchResult {
   highlights: Array<[number, number]>;
   score: number;
   matchKind: SearchMatchKind;
+  blockId?: string;
+  assetId?: string;
+  assetKind?: SearchAssetKind;
 }
 export interface NormativeReference {
   numbering: string;

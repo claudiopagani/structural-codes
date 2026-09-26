@@ -20,7 +20,7 @@ function legacySearch(query, mode, limit) {
   const normalizedQuery = query.normalize("NFKC").trim().toLocaleLowerCase("it");
   return index.units.filter((unit) => {
     if (!modeAllows(unit.document, mode)) return false;
-    return `${unit.numbering} ${unit.title} ${unit.text}`.normalize("NFKC").toLocaleLowerCase("it").includes(normalizedQuery);
+    return `${unit.numbering} ${unit.title} ${unit.segments.map((segment) => segment.text).join(" ")}`.normalize("NFKC").toLocaleLowerCase("it").includes(normalizedQuery);
   }).slice(0, limit);
 }
 
@@ -46,9 +46,13 @@ function measure(action) {
 }
 
 const scenarios = [
-  { name: "exact-reference", query: "7.3.3.3", mode: "combined", limit: 12 },
+  { name: "exact-reference", query: "7.3.6.1", mode: "combined", limit: 12 },
   { name: "ranked-phrase", query: "azione sismica", mode: "combined", limit: 12 },
   { name: "common-term", query: "struttura", mode: "combined", limit: 12 },
+  { name: "mixed-reference", query: "7.3.6 rigidezza", mode: "combined", limit: 12 },
+  { name: "exact-formula", query: "formula 7.3.8", mode: "combined", limit: 12 },
+  { name: "exact-table", query: "Tab. 2.4.II", mode: "combined", limit: 12 },
+  { name: "proximity", query: "deformazione ultima calcestruzzo", mode: "combined", limit: 12 },
 ].map((scenario) => {
   const freshEngine = createSearchEngine(index);
   const firstLegacyMs = time(() => legacySearch(scenario.query, scenario.mode, scenario.limit));
@@ -59,13 +63,13 @@ const scenarios = [
   return {
     ...scenario,
     legacyMainThreadScan: { firstRunMs: Number(firstLegacyMs.toFixed(3)), ...legacy },
-    phaseTwoEngine: { firstRunMs: Number(firstPhaseTwoMs.toFixed(3)), ...phaseTwo, execution: scenario.name === "exact-reference" ? "main-thread O(1) document lookup in the viewer" : "dedicated Web Worker" },
+    pointFourEngine: { firstRunMs: Number(firstPhaseTwoMs.toFixed(3)), ...phaseTwo, execution: scenario.name === "exact-reference" ? "main-thread O(1) document lookup in the viewer" : "dedicated Web Worker" },
     medianSpeedup: Number((legacy.medianMs / Math.max(0.001, phaseTwo.medianMs)).toFixed(2)),
   };
 });
 
 const report = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   generatedAt: new Date().toISOString(),
   environment: {
     os: `${platform()} ${release()}`,
@@ -76,7 +80,7 @@ const report = {
   methodology: {
     iterations,
     legacy: "full array filter with NFKC/lowercase normalization of every unit on every query",
-    phaseTwo: "build-time normalized inverted index; persistent engine caches; result limit 12",
+    pointFour: "build-time normalized inverted index; block/asset targets; deterministic field and proximity ranking; persistent engine caches; result limit 12",
     note: "Engine timings exclude worker transport and lazy network download; full-text work executes outside the browser main thread.",
   },
   searchIndex: { bytes: indexBytes.length, units: index.units.length, terms: Object.keys(index.postings).length },

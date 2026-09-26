@@ -197,7 +197,10 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
 
 function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
   const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
-  root.scrollTo({ top: Math.max(0, top - 14), behavior: "auto" });
+  const overlay = root.parentElement?.querySelector<HTMLElement>(".scv-citation-actions");
+  const overlayBottom = overlay?.getBoundingClientRect().bottom ?? root.getBoundingClientRect().top;
+  const safeInset = Math.max(18, overlayBottom - root.getBoundingClientRect().top + 10);
+  root.scrollTo({ top: Math.max(0, top - safeInset), behavior: "auto" });
 }
 
 function scrollTextUnit(root: HTMLElement | null, unitId: string) {
@@ -257,6 +260,19 @@ function citationSelectionFromElement(element: HTMLElement): CitationSelection |
 function viewerTargetForReference(reference: ResolvedCrossReference): ViewerTarget {
   if (!reference.asset) return { kind: "unit", unitId: reference.unit.id };
   return { kind: "asset", unitId: reference.unit.id, assetId: reference.asset.id, assetKind: reference.asset.kind };
+}
+
+function viewerTargetForSearchResult(result: SearchResult): ViewerTarget {
+  if (result.assetId) return { kind: "asset", unitId: result.id, assetId: result.assetId, assetKind: result.assetKind };
+  if (result.blockId) return { kind: "block", unitId: result.id, blockId: result.blockId };
+  return { kind: "unit", unitId: result.id };
+}
+
+function sameViewerTarget(left: ViewerTarget | null, right: ViewerTarget) {
+  if (!left || left.kind !== right.kind || left.unitId !== right.unitId) return false;
+  if (left.kind === "block" && right.kind === "block") return left.blockId === right.blockId;
+  if (left.kind === "asset" && right.kind === "asset") return left.assetId === right.assetId;
+  return left.kind === "unit" && right.kind === "unit";
 }
 
 function referenceLabel(reference: ResolvedCrossReference) {
@@ -601,7 +617,8 @@ function HighlightedSnippet({ result }: { result: SearchResult }) {
   return <>{parts}</>;
 }
 
-const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, searchRef, settingsButtonRef, onOpenSettings }: {
+const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, settingsButtonRef, onOpenSettings }: {
+  id: string;
   mode: ViewerMode;
   onModeChange: (mode: ViewerMode) => void;
   hierarchy: NavigationEntry[][];
@@ -617,11 +634,14 @@ const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierar
   onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onSearchResult: (result: SearchResult) => void;
   onSelectUnit: (unit: UnitSummary) => void;
+  onRequestClose: () => void;
   searchRef: RefObject<HTMLInputElement | null>;
   settingsButtonRef: RefObject<HTMLButtonElement | null>;
   onOpenSettings: () => void;
 }) {
   const indexListRef = useRef<HTMLDivElement>(null);
+  const searchResultsRef = useRef<HTMLDivElement>(null);
+  const searchResultsId = useId();
   const chapters = hierarchy[0] ?? [];
   const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
   const subparagraphs = hierarchy[2] ?? emptyNavigationEntries;
@@ -659,23 +679,43 @@ const NavigationPane = memo(function NavigationPane({ mode, onModeChange, hierar
     return () => window.clearTimeout(timeout);
   }, [activeChapterId, activeParagraphId, activeSubparagraphId]);
 
-  const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => onSelectUnit(entry.summary)} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
+  const focusSearchResult = (position: number) => {
+    const results = [...(searchResultsRef.current?.querySelectorAll<HTMLButtonElement>(".scv-search-result") ?? [])];
+    if (results.length === 0) return;
+    results[(position + results.length) % results.length]?.focus();
+  };
+  const searchResultKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, position: number) => {
+    if (event.key === "ArrowDown") { event.preventDefault(); focusSearchResult(position + 1); }
+    else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (position === 0) searchRef.current?.focus();
+      else focusSearchResult(position - 1);
+    }
+    else if (event.key === "Home") { event.preventDefault(); focusSearchResult(0); }
+    else if (event.key === "End") { event.preventDefault(); focusSearchResult(searchResults.length - 1); }
+    else if (event.key === "Escape") { event.preventDefault(); onQueryChange(""); searchRef.current?.focus(); }
+  };
+  const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => { onSelectUnit(entry.summary); onRequestClose(); }} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
 
-  return <aside className="scv-index-pane" aria-label="Indice gerarchico">
+  return <aside id={id} className="scv-index-pane" aria-label="Indice gerarchico">
     <div className="scv-search-toolbar">
       <div className="scv-search-box">
         <form className="scv-search-form" role="search" onSubmit={onSearchSubmit}>
           <span aria-hidden="true">⌕</span>
-          <input ref={searchRef} type="search" value={query} onChange={(event) => onQueryChange(event.target.value)} placeholder="Cerca nella normativa…" aria-label="Cerca nella normativa" />
+          <input ref={searchRef} type="search" role="combobox" aria-autocomplete="list" value={query} onChange={(event) => onQueryChange(event.target.value)} onKeyDown={(event) => {
+            if (event.key === "Escape" && query) { event.preventDefault(); onQueryChange(""); }
+            else if (event.key === "ArrowDown" && searchResults.length > 0) { event.preventDefault(); focusSearchResult(0); }
+          }} placeholder="Cerca nella normativa…" aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchReady} />
           {query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca">×</button>}
           <kbd>/</kbd>
         </form>
-        {searchReady && <div className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
-          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={result.id} onClick={() => onSearchResult(result)}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
+        {searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
+          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
         </div>}
       </div>
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
       <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={onOpenSettings} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
+      <button type="button" className="scv-mobile-index-close" onClick={onRequestClose} aria-label="Chiudi indice">×</button>
     </div>
     <div className="scv-index-grid">
       <section className="scv-index-cell"><header><span>Indice</span><b>{chapters.length}</b></header><div className="scv-index-list" ref={indexListRef}>{!indexReady ? <LoadingRows /> : chapters.length === 0 ? <p className="scv-index-empty">L’indice non è disponibile.</p> : <ul className="scv-index-tree">
@@ -733,14 +773,20 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [loadError, setLoadError] = useState(false);
   const [contentLoadNotice, setContentLoadNotice] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [mobileIndexOpen, setMobileIndexOpen] = useState(false);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
   const searchRef = useRef<HTMLInputElement>(null);
+  const mobileIndexButtonRef = useRef<HTMLButtonElement>(null);
   const settingsButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryPaneRef = useRef<HTMLElement>(null);
   const auxiliaryId = useId();
+  const navigationId = useId();
+  const backlinksId = useId();
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const settingsPreviouslyOpenRef = useRef(false);
   const requestedIdRef = useRef<string | null>(null);
   const requestedTargetRef = useRef<ViewerTarget | null>(null);
   const scrollRequestRef = useRef<ViewerTarget | null>(null);
@@ -754,12 +800,34 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const crossReferencePromiseRef = useRef<Promise<CrossReferenceIndex> | null>(null);
   const relationsPromiseRef = useRef<Promise<RelationEdge[]> | null>(null);
   const clipboardTimerRef = useRef<number | null>(null);
+  const searchHighlightTimerRef = useRef<number | null>(null);
+  const pendingSearchHighlightRef = useRef<ViewerTarget | null>(null);
   const referencePreviewRequestRef = useRef(0);
+  const touchReferenceRef = useRef<HTMLElement | null>(null);
+  const lastPointerTypeRef = useRef("");
   const textPaneRef = useRef<HTMLElement>(null);
   const documentId = documentForMode(mode);
   const documentIdRef = useRef(documentId);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && (auxiliaryPanelModes ? auxiliaryPanelModes.includes(mode) : mode !== "combined");
+
+  const flashSearchTarget = useCallback((target: ViewerTarget) => {
+    const root = textPaneRef.current;
+    const element = findViewerTarget(root, target);
+    if (!element) return false;
+    root?.querySelector<HTMLElement>(".scv-search-target")?.classList.remove("scv-search-target");
+    element.classList.add("scv-search-target");
+    if (searchHighlightTimerRef.current !== null) window.clearTimeout(searchHighlightTimerRef.current);
+    searchHighlightTimerRef.current = window.setTimeout(() => {
+      element.classList.remove("scv-search-target");
+      searchHighlightTimerRef.current = null;
+    }, 2200);
+    return true;
+  }, []);
+
+  useEffect(() => () => {
+    if (searchHighlightTimerRef.current !== null) window.clearTimeout(searchHighlightTimerRef.current);
+  }, []);
 
   const reportChunkLoadFailure = useCallback((message = "Una parte del documento non è disponibile. Puoi continuare a consultare i contenuti già caricati.") => {
     if (renderedChunkPathsRef.current.size === 0) setLoadError(true);
@@ -803,6 +871,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       const requestedMode = url.searchParams.get("mode");
       if (modeOptions.some((option) => option.id === requestedMode)) setMode(requestedMode as ViewerMode);
       requestedTargetRef.current = targetFromUrl(url);
+      pendingSearchHighlightRef.current = requestedTargetRef.current;
       setCitationSelection(requestedTargetRef.current);
       requestedIdRef.current = requestedTargetRef.current?.unitId ?? null;
       setActiveUnitId(requestedIdRef.current);
@@ -1082,8 +1151,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       return;
     }
     scrollRequestRef.current = null;
+    if (sameViewerTarget(pendingSearchHighlightRef.current, target) && flashSearchTarget(target)) pendingSearchHighlightRef.current = null;
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
-  }, [auxiliaryAvailable, auxiliaryVisible, defaultMode, mode, relatedByTarget, renderRecords]);
+  }, [auxiliaryAvailable, auxiliaryVisible, defaultMode, flashSearchTarget, mode, relatedByTarget, renderRecords]);
 
   const navigationRef = useRef({ entryById, lookup, mode, relations, primaryAnchorByFallbackId: combinedPlan.primaryAnchorByFallbackId });
   useEffect(() => {
@@ -1115,25 +1185,30 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   useVisibleUnitObserver(textPaneRef, renderRecords, onVisibleUnit);
 
   const selectUnit = useCallback((unit: UnitSummary) => {
+    const target = { kind: "unit" as const, unitId: unit.id };
     setCitationSelection(null);
+    setMobileIndexOpen(false);
     const generation = ++navigationGenerationRef.current;
     pendingScrollAnchorRef.current = null;
     setContentLoadNotice(null);
     requestedIdRef.current = unit.id;
-    requestedTargetRef.current = { kind: "unit", unitId: unit.id };
+    requestedTargetRef.current = target;
+    pendingSearchHighlightRef.current = target;
     manualTargetRef.current = { id: unit.id, expires: performance.now() + 500 };
     const present = scrollTextUnit(textPaneRef.current, unit.id);
     activeIdRef.current = unit.id;
     setActiveUnitId(unit.id);
     updateDeepLink(navigationRef.current.mode, requestedTargetRef.current, defaultMode);
-    if (present) return;
+    if (present) { if (flashSearchTarget(target)) pendingSearchHighlightRef.current = null; return; }
     const currentLookup = navigationRef.current.lookup;
     const nearMountedWindow = currentLookup ? isChunkNearRenderedWindow(currentLookup, unit.chunkPath, primaryRenderedPaths) : false;
     void revealSummary(unit, !nearMountedWindow, generation).catch(() => reportChunkLoadFailure());
-  }, [defaultMode, primaryRenderedPaths, reportChunkLoadFailure, revealSummary]);
+  }, [defaultMode, flashSearchTarget, primaryRenderedPaths, reportChunkLoadFailure, revealSummary]);
 
   const navigateViewerTarget = useCallback(async (target: ViewerTarget, action: "push" | "replace" | "none" = "push", forcedMode?: ViewerMode) => {
     setCitationSelection(target);
+    setMobileIndexOpen(false);
+    pendingSearchHighlightRef.current = target;
     const generation = ++navigationGenerationRef.current;
     pendingScrollAnchorRef.current = null;
     setContentLoadNotice(null);
@@ -1156,7 +1231,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       activeIdRef.current = target.unitId;
       setActiveUnitId(target.unitId);
     }
-    if (scrollViewerTarget(textPaneRef.current, target)) return;
+    if (scrollViewerTarget(textPaneRef.current, target)) {
+      if (sameViewerTarget(pendingSearchHighlightRef.current, target) && flashSearchTarget(target)) pendingSearchHighlightRef.current = null;
+      return;
+    }
     if (!manifest) return;
     let targetIndex = indexes.get(targetDocument);
     if (!targetIndex) {
@@ -1182,7 +1260,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const nearMountedWindow = summary.document === documentIdRef.current && currentLookup ? isChunkNearRenderedWindow(currentLookup, summary.chunkPath, primaryRenderedPaths) : false;
     if (generation !== navigationGenerationRef.current) return;
     await revealSummary(summary, summary.document === documentIdRef.current && !nearMountedWindow, generation);
-  }, [dataBaseUrl, defaultMode, indexes, manifest, mode, primaryRenderedPaths, relations, revealSummary]);
+  }, [dataBaseUrl, defaultMode, flashSearchTarget, indexes, manifest, mode, primaryRenderedPaths, relations, revealSummary]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -1209,23 +1287,26 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const clearReferencePreview = useCallback(() => {
     referencePreviewRequestRef.current += 1;
     setReferencePreview(null);
+    touchReferenceRef.current = null;
   }, []);
 
-  const showReferencePreview = useCallback((element: HTMLElement) => {
+  const showReferencePreview = useCallback((element: HTMLElement, interactive = false) => {
     const requestId = ++referencePreviewRequestRef.current;
     const bounds = element.getBoundingClientRect();
     const left = Math.max(12, Math.min(window.innerWidth - 332, bounds.left));
-    const top = Math.min(window.innerHeight - 150, bounds.bottom + 7);
-    setReferencePreview({ label: element.textContent ?? "Riferimento", title: "", snippet: "", left, top, loading: true });
+    const previewHeight = 190;
+    const below = bounds.bottom + 7;
+    const top = Math.max(12, below + previewHeight <= window.innerHeight - 12 ? below : bounds.top - previewHeight - 7);
+    setReferencePreview({ label: element.textContent ?? "Riferimento", title: "", snippet: "", left, top, loading: true, interactive });
     void resolveReferenceElement(element).then((reference) => {
       if (requestId !== referencePreviewRequestRef.current) return;
       if (!reference) {
         element.dataset.scvReferenceResolved = "false";
-        setReferencePreview({ label: element.textContent ?? "Riferimento", title: "Target non disponibile", snippet: "Il riferimento non è stato reso cliccabile perché non è risolto dall’indice derivato.", left, top });
+        setReferencePreview({ label: element.textContent ?? "Riferimento", title: "Target non disponibile", snippet: "Il riferimento non è stato reso cliccabile perché non è risolto dall’indice derivato.", left, top, interactive, available: false });
         return;
       }
       element.dataset.scvReferenceResolved = "true";
-      setReferencePreview({ label: referenceLabel(reference), title: reference.asset?.title || reference.unit.title, snippet: reference.asset?.snippet || reference.unit.snippet, left, top });
+      setReferencePreview({ label: referenceLabel(reference), title: reference.asset?.title || reference.unit.title, snippet: reference.asset?.snippet || reference.unit.snippet, left, top, interactive, available: true });
     }).catch(() => {
       if (requestId === referencePreviewRequestRef.current) setReferencePreview(null);
     });
@@ -1242,22 +1323,34 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const handleDocumentClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
     const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
     if (element) {
+      if (lastPointerTypeRef.current === "touch" && touchReferenceRef.current !== element) {
+        event.preventDefault();
+        touchReferenceRef.current = element;
+        showReferencePreview(element, true);
+        return;
+      }
       activateReference(element);
       return;
     }
     const citationElement = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-scv-citation-target]") : null;
     if (citationElement) setCitationSelection(citationSelectionFromElement(citationElement));
-  }, [activateReference]);
+  }, [activateReference, showReferencePreview]);
+
+  const handleDocumentPointerDown = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    lastPointerTypeRef.current = event.pointerType;
+  }, []);
 
   const handleDocumentPointerOver = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType === "touch") return;
     const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
     if (element && !element.contains(event.relatedTarget as Node | null)) showReferencePreview(element);
   }, [showReferencePreview]);
 
   const handleDocumentPointerOut = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType === "touch" || referencePreview?.interactive) return;
     const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
     if (element && !element.contains(event.relatedTarget as Node | null) && document.activeElement !== element) clearReferencePreview();
-  }, [clearReferencePreview]);
+  }, [clearReferencePreview, referencePreview?.interactive]);
 
   const handleDocumentFocus = useCallback((event: React.FocusEvent<HTMLElement>) => {
     const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
@@ -1265,8 +1358,13 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [showReferencePreview]);
 
   const handleDocumentBlur = useCallback((event: React.FocusEvent<HTMLElement>) => {
-    if (event.target instanceof Element && event.target.matches(".scv-cross-reference")) clearReferencePreview();
-  }, [clearReferencePreview]);
+    if (event.target instanceof Element && event.target.matches(".scv-cross-reference") && !referencePreview?.interactive) clearReferencePreview();
+  }, [clearReferencePreview, referencePreview?.interactive]);
+
+  const openPreviewReference = useCallback(() => {
+    const element = touchReferenceRef.current;
+    if (element) activateReference(element);
+  }, [activateReference]);
 
   const selectScrollMarker = useCallback((unitId: string) => {
     const entry = navigationRef.current.entryById.get(unitId);
@@ -1354,6 +1452,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const selectTextualBacklink = useCallback((backlink: TextualBacklink) => {
     setBacklinksOpen(false);
+    setMobileIndexOpen(false);
     void navigateViewerTarget({ kind: "block", unitId: backlink.sourceUnitId, blockId: backlink.sourceBlockId }, "push").catch(() => reportChunkLoadFailure());
   }, [navigateViewerTarget, reportChunkLoadFailure]);
 
@@ -1381,35 +1480,48 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     setSettingsOpen(false);
   }, [activeSummary, clearReferencePreview, mode]);
 
+  const closeMobileIndex = useCallback(() => {
+    setMobileIndexOpen(false);
+    if (window.matchMedia("(max-width: 820px)").matches) window.requestAnimationFrame(() => mobileIndexButtonRef.current?.focus());
+  }, []);
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       const editing = (event.target instanceof HTMLElement && event.target.closest("input, textarea, select, [contenteditable='true']"))
         || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
       if (event.key === "/" && !editing) { event.preventDefault(); searchRef.current?.focus(); }
-      if (event.key === "Escape" && settingsOpen) setSettingsOpen(false);
+      if (event.key === "Escape") {
+        if (settingsOpen) setSettingsOpen(false);
+        else if (referencePreview?.interactive) clearReferencePreview();
+        else if (backlinksOpen) setBacklinksOpen(false);
+        else if (mobileIndexOpen) closeMobileIndex();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [settingsOpen]);
+  }, [backlinksOpen, clearReferencePreview, closeMobileIndex, mobileIndexOpen, referencePreview?.interactive, settingsOpen]);
 
   useEffect(() => {
     if (settingsOpen) dialogCloseRef.current?.focus();
-    else settingsButtonRef.current?.focus();
+    else if (settingsPreviouslyOpenRef.current) settingsButtonRef.current?.focus();
+    settingsPreviouslyOpenRef.current = settingsOpen;
   }, [settingsOpen]);
+
+  const trapSettingsFocus = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab") return;
+    const controls = [...(dialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex="-1"])') ?? [])];
+    if (controls.length === 0) return;
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }, []);
 
   const selectSearchResult = useCallback((result: SearchResult) => {
     setQuery("");
-    const entry = navigationRef.current.entryById.get(result.id);
-    if (entry) { selectUnit(entry.summary); return; }
-    const primarySummary = navigationRef.current.lookup?.unitById.get(result.id);
-    if (primarySummary) { selectUnit(primarySummary); return; }
-    if (navigationRef.current.mode === "combined") {
-      const explicit = relationTargets(result.id, navigationRef.current.relations)[0];
-      const target = explicit ? navigationRef.current.lookup?.unitById.get(explicit.targetUnitId) : null;
-      if (target) { selectUnit(target); return; }
-    }
-    changeMode("circ", result.id);
-  }, [changeMode, selectUnit]);
+    const target = viewerTargetForSearchResult(result);
+    void navigateViewerTarget(target, "push").catch(() => reportChunkLoadFailure());
+  }, [navigateViewerTarget, reportChunkLoadFailure]);
 
   const submitSearch = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -1435,28 +1547,35 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
-    <NavigationPane mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
+    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
     <div className="scv-text-pane-shell">
+      <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
+        setMobileIndexOpen(true);
+        window.requestAnimationFrame(() => searchRef.current?.focus());
+      }}>Indice</button>
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();
         else {
           scrollRequestRef.current = requestedTargetRef.current;
           setAuxiliaryVisible(true);
-          window.requestAnimationFrame(() => { auxiliaryPaneRef.current?.scrollIntoView({ block: "nearest" }); auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus(); });
+          window.requestAnimationFrame(() => {
+            if (!window.matchMedia("(max-width: 820px)").matches) auxiliaryPaneRef.current?.scrollIntoView({ block: "nearest" });
+            auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+          });
         }
       }}>{auxiliaryVisible ? "Chiudi" : "Apri"} {auxiliaryPanelLabel}</button>}
-      {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} onToggleBacklinks={toggleBacklinks} />}
-      {backlinksOpen && <BacklinkPanel loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
+      {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} backlinksId={backlinksId} onToggleBacklinks={toggleBacklinks} />}
+      {backlinksOpen && <BacklinkPanel id={backlinksId} loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
-      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
+      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerDown={handleDocumentPointerDown} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
       </article>
       <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
     </div>
-    <ReferencePreview preview={referencePreview} />
+    <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
     {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title"><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra {auxiliaryPanelLabel}</label></section></div>}
+    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section ref={dialogRef} className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title" onKeyDown={trapSettingsFocus}><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra {auxiliaryPanelLabel}</label></section></div>}
   </div>;
 }
 
