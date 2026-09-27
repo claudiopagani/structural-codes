@@ -33,6 +33,7 @@ import { createCrossReferenceLookup, resolveCrossReference } from "./crossRefere
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
+import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberEntryAtRatio, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -431,111 +432,140 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
   </div>;
 });
 
-interface ScrollMarker { id: string; label: string; level: "chapter" | "paragraph"; }
-interface PositionedScrollMarker extends ScrollMarker { top: number; }
-interface ScrollGeometry { scrollHeight: number; clientHeight: number; markers: PositionedScrollMarker[]; }
+interface GlobalScrollEntry {
+  id: string;
+  label: string;
+  title: string;
+  index: number;
+  ratio: number;
+  level: number;
+  baseNumber: string;
+}
 
-const DocumentScrollbar = memo(function DocumentScrollbar({ rootRef, markers, activeId, onSelect }: {
+const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, entries, activeId, onSelect }: {
   rootRef: RefObject<HTMLElement | null>;
-  markers: ScrollMarker[];
+  entries: GlobalScrollEntry[];
   activeId: string | null;
   onSelect: (id: string) => void;
 }) {
-  const [geometry, setGeometry] = useState<ScrollGeometry>({ scrollHeight: 1, clientHeight: 1, markers: [] });
-  const geometryRef = useRef(geometry);
-  const thumbRef = useRef<HTMLSpanElement>(null);
-  const dragRef = useRef<{ pointerId: number; startY: number; startTop: number; trackHeight: number } | null>(null);
-  const updateThumb = useCallback(() => {
-    const root = rootRef.current;
-    const thumb = thumbRef.current;
-    if (!root || !thumb) return;
-    const current = geometryRef.current;
-    const scrollRange = Math.max(1, current.scrollHeight - current.clientHeight);
-    const thumbHeight = Math.max(9, Math.min(100, (current.clientHeight / current.scrollHeight) * 100));
-    const thumbTop = Math.min(100 - thumbHeight, (root.scrollTop / scrollRange) * (100 - thumbHeight));
-    thumb.style.height = `${thumbHeight}%`;
-    thumb.style.top = `${thumbTop}%`;
-  }, [rootRef]);
+  const [interaction, setInteraction] = useState<"idle" | "scrolling" | "hover" | "focus" | "pressing" | "dragging">("idle");
+  const [previewEntry, setPreviewEntry] = useState<GlobalScrollEntry | null>(null);
+  const hideTimerRef = useRef<number | null>(null);
+  const pointerFrameRef = useRef<number | null>(null);
+  const pendingPointerYRef = useRef<number | null>(null);
+  const dragRef = useRef<{ pointerId: number; trackTop: number; trackHeight: number; session: ReturnType<typeof createGlobalScrubberDragSession> } | null>(null);
+  const activeEntry = entries.find((entry) => entry.id === activeId) ?? null;
+  const activeIndex = activeEntry?.index ?? 0;
+  const ratio = interaction === "dragging" && previewEntry ? previewEntry.ratio : globalScrubberRatioForId(entries, activeId, activeEntry?.ratio ?? 0);
+  const visible = interaction !== "idle";
 
-  useLayoutEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    let frame: number | null = null;
-    const measureGeometry = () => {
-      frame = null;
-      const elements = new Map([...root.querySelectorAll<HTMLElement>("[data-scv-text-unit]")].map((element) => [element.dataset.scvTextUnit, element]));
-      const next: ScrollGeometry = {
-        scrollHeight: Math.max(1, root.scrollHeight),
-        clientHeight: Math.max(1, root.clientHeight),
-        markers: markers.flatMap((marker) => {
-          const element = elements.get(marker.id);
-          return element ? [{ ...marker, top: Math.max(0, element.offsetTop) }] : [];
-        }),
-      };
-      geometryRef.current = next;
-      setGeometry(next);
-      updateThumb();
-    };
-    const scheduleGeometry = () => { if (frame === null) frame = window.requestAnimationFrame(measureGeometry); };
-    measureGeometry();
-    window.addEventListener("resize", scheduleGeometry);
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(scheduleGeometry);
-    observer?.observe(root);
-    const flow = root.querySelector<HTMLElement>(".scv-text-flow");
-    if (flow) observer?.observe(flow);
-    return () => {
-      window.removeEventListener("resize", scheduleGeometry);
-      observer?.disconnect();
-      if (frame !== null) window.cancelAnimationFrame(frame);
-    };
-  }, [markers, rootRef, updateThumb]);
+  const clearHideTimer = useCallback(() => {
+    if (hideTimerRef.current !== null) window.clearTimeout(hideTimerRef.current);
+    hideTimerRef.current = null;
+  }, []);
+  const hideLater = useCallback(() => {
+    clearHideTimer();
+    hideTimerRef.current = window.setTimeout(() => setInteraction((current) => current === "scrolling" || current === "pressing" ? "idle" : current), 1000);
+  }, [clearHideTimer]);
+  const showTransient = useCallback(() => {
+    setInteraction((current) => current === "dragging" || current === "hover" || current === "focus" ? current : "scrolling");
+    hideLater();
+  }, [hideLater]);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    let frame: number | null = null;
-    const onScroll = () => {
-      if (frame !== null) return;
-      frame = window.requestAnimationFrame(() => { frame = null; updateThumb(); });
-    };
+    const onScroll = () => showTransient();
     root.addEventListener("scroll", onScroll, { passive: true });
-    updateThumb();
-    return () => {
-      root.removeEventListener("scroll", onScroll);
-      if (frame !== null) window.cancelAnimationFrame(frame);
-    };
-  }, [rootRef, updateThumb]);
+    return () => root.removeEventListener("scroll", onScroll);
+  }, [rootRef, showTransient]);
 
-  if (markers.length === 0 || geometry.scrollHeight <= geometry.clientHeight) return null;
-  const scrollRange = Math.max(1, geometry.scrollHeight - geometry.clientHeight);
-  const thumbHeight = Math.max(9, Math.min(100, (geometry.clientHeight / geometry.scrollHeight) * 100));
-  const jumpTo = (event: React.MouseEvent<HTMLDivElement>) => {
-    const root = rootRef.current;
-    if (!root) return;
-    const trackRect = event.currentTarget.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (event.clientY - trackRect.top) / trackRect.height));
-    root.scrollTop = ratio * scrollRange;
+  useEffect(() => () => {
+    clearHideTimer();
+    if (pointerFrameRef.current !== null) window.cancelAnimationFrame(pointerFrameRef.current);
+  }, [clearHideTimer]);
+
+  if (entries.length < 2 || !activeEntry) return null;
+  const entryFromPointer = (clientY: number, top: number, height: number) => globalScrubberEntryAtRatio(entries, (clientY - top) / Math.max(1, height)) as GlobalScrollEntry | null;
+  const previewPointer = (clientY: number) => {
+    const drag = dragRef.current;
+    if (!drag) return null;
+    const entry = drag.session.preview((clientY - drag.trackTop) / Math.max(1, drag.trackHeight)) as GlobalScrollEntry | null;
+    if (entry) setPreviewEntry(entry);
+    return entry;
   };
-  const startDrag = (event: React.PointerEvent<HTMLSpanElement>) => {
-    const root = rootRef.current;
-    if (!root) return;
+  const jumpTo = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.defaultPrevented) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const entry = entryFromPointer(event.clientY, rect.top, rect.height);
+    if (entry) onSelect(entry.id);
+  };
+  const previewTrackPress = (event: React.PointerEvent<HTMLDivElement>) => {
+    if ((event.target as Element).closest(".scv-scroll-thumb")) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    setPreviewEntry(entryFromPointer(event.clientY, rect.top, rect.height));
+    setInteraction("pressing");
+    clearHideTimer();
+  };
+  const startDrag = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const track = event.currentTarget.parentElement;
+    if (!track) return;
+    const rect = track.getBoundingClientRect();
     event.currentTarget.setPointerCapture(event.pointerId);
-    dragRef.current = { pointerId: event.pointerId, startY: event.clientY, startTop: root.scrollTop, trackHeight: event.currentTarget.parentElement?.getBoundingClientRect().height ?? 1 };
+    dragRef.current = { pointerId: event.pointerId, trackTop: rect.top, trackHeight: rect.height, session: createGlobalScrubberDragSession(entries, (entry: GlobalScrollEntry) => onSelect(entry.id)) };
+    previewPointer(event.clientY);
+    setInteraction("dragging");
+    clearHideTimer();
     event.preventDefault();
   };
-  const moveDrag = (event: React.PointerEvent<HTMLSpanElement>) => {
-    const root = rootRef.current;
+  const moveDrag = (event: React.PointerEvent<HTMLButtonElement>) => {
     const drag = dragRef.current;
-    if (!root || !drag || drag.pointerId !== event.pointerId) return;
-    const thumbHeightPx = drag.trackHeight * (thumbHeight / 100);
-    root.scrollTop = Math.max(0, Math.min(scrollRange, drag.startTop + ((event.clientY - drag.startY) * scrollRange) / Math.max(1, drag.trackHeight - thumbHeightPx)));
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    pendingPointerYRef.current = event.clientY;
+    if (pointerFrameRef.current !== null) return;
+    pointerFrameRef.current = window.requestAnimationFrame(() => {
+      pointerFrameRef.current = null;
+      if (pendingPointerYRef.current !== null) previewPointer(pendingPointerYRef.current);
+    });
   };
-  const stopDrag = (event: React.PointerEvent<HTMLSpanElement>) => { if (dragRef.current?.pointerId === event.pointerId) dragRef.current = null; };
-  return <div className="scv-scroll-rail" aria-label="Navigazione documento">
-    <div className="scv-scroll-track" role="presentation" onClick={jumpTo}>
-      <span ref={thumbRef} className="scv-scroll-thumb" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag} onClick={(event) => event.stopPropagation()} />
+  const stopDrag = (event: React.PointerEvent<HTMLButtonElement>, commit: boolean) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    if (pointerFrameRef.current !== null) {
+      window.cancelAnimationFrame(pointerFrameRef.current);
+      pointerFrameRef.current = null;
+    }
+    previewPointer(event.clientY);
+    if (commit) drag.session.commit();
+    else drag.session.cancel();
+    dragRef.current = null;
+    pendingPointerYRef.current = null;
+    setInteraction("scrolling");
+    hideLater();
+  };
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (!["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const target = entries[globalScrubberKeyboardIndex(activeIndex < 0 ? 0 : activeIndex, event.key, entries.length)];
+    if (target) {
+      setPreviewEntry(target);
+      onSelect(target.id);
+    }
+  };
+  const overlayEntry = previewEntry ?? activeEntry;
+  const displayedEntry = interaction === "dragging" && previewEntry ? previewEntry : activeEntry;
+  const valueText = displayedEntry ? `§ ${displayedEntry.label} — ${displayedEntry.title}` : "Posizione nel documento";
+  return <div className={`scv-scroll-rail ${visible ? "is-visible" : "is-idle"} is-${interaction}`} aria-label="Navigazione globale del documento" style={{ "--scv-scrubber-ratio": ratio } as React.CSSProperties}
+    onMouseEnter={() => { clearHideTimer(); setInteraction((current) => current === "dragging" ? current : "hover"); }}
+    onMouseLeave={() => { if (interaction !== "dragging" && interaction !== "focus") { setInteraction("scrolling"); hideLater(); } }}
+    onFocusCapture={() => { clearHideTimer(); setInteraction("focus"); }}
+    onBlurCapture={() => { setInteraction("scrolling"); hideLater(); }}>
+    <div className="scv-scroll-track" role="presentation" onPointerDown={previewTrackPress} onPointerUp={() => { setInteraction("scrolling"); hideLater(); }} onPointerCancel={() => { setInteraction("scrolling"); hideLater(); }} onClick={jumpTo}>
+      {entries.filter((entry) => entry.level === 0).map((entry) => <span key={entry.id} className="scv-scroll-marker chapter" style={{ top: `${entry.ratio * 100}%` }} aria-hidden="true" />)}
+      <button type="button" className="scv-scroll-thumb" role="slider" aria-label="Posizione nel documento" aria-valuemin={1} aria-valuemax={entries.length} aria-valuenow={(displayedEntry?.index ?? 0) + 1} aria-valuetext={valueText}
+        onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={(event) => stopDrag(event, true)} onPointerCancel={(event) => stopDrag(event, false)} onKeyDown={onKeyDown} onClick={(event) => event.stopPropagation()} />
     </div>
-    {geometry.markers.map((marker) => <button type="button" key={marker.id} className={`scv-scroll-marker ${marker.level} ${marker.id === activeId ? "active" : ""}`} style={{ top: `${Math.min(100, (marker.top / geometry.scrollHeight) * 100)}%` }} onClick={() => onSelect(marker.id)} aria-label={`Vai a ${marker.label}`} title={marker.label}><span className="scv-scroll-marker-label">{marker.label}</span></button>)}
+    {(interaction === "dragging" || interaction === "pressing") && overlayEntry && <output className="scv-scroll-overlay" aria-live="off"><strong>§ {overlayEntry.label}</strong><span>{overlayEntry.title}</span></output>}
   </div>;
 });
 
@@ -1429,7 +1459,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       return levelEntries.find((entry) => entry.baseNumber === baseNumber)?.summary.id ?? null;
     });
   }, [activeSummary, chapters, paragraphs, subparagraphs]);
-  const scrollbarMarkers = useMemo(() => navigationEntries.flatMap(({ summary, displayNumber, level }) => level > 1 ? [] : [{ id: summary.id, label: displayNumber, level: level === 0 ? "chapter" as const : "paragraph" as const }]), [navigationEntries]);
+  const scrubberEntries = useMemo(() => buildGlobalScrubberEntries(navigationEntries.map(({ summary, displayNumber, baseNumber, level }) => ({ id: summary.id, label: displayNumber, title: summary.title, baseNumber, level }))) as GlobalScrollEntry[], [navigationEntries]);
+  const scrubberActiveId = resolveGlobalScrubberActiveId(scrubberEntries, activeUnitId, activeSummary ? baseNumbering(activeSummary.numbering.official) : null);
 
   const activeRecord = recordById.get(activeUnitId ?? "") ?? null;
   const chunk = activeRecord?.chunk ?? null;
@@ -1522,7 +1553,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerDown={handleDocumentPointerDown} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
       </article>
-      <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
+      <GlobalDocumentScrubber rootRef={textPaneRef} entries={scrubberEntries} activeId={scrubberActiveId} onSelect={selectScrollMarker} />
     </div>
     <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
     {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}

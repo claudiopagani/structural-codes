@@ -73,7 +73,7 @@ test("lo startup non costruisce né scarica la lista completa dei chunk", async 
 test("il documento memoizzato è indipendente dall'unità attiva e lo scroll usa observer", async () => {
   const source = await readFile(viewerSourceUrl, "utf8");
   const documentStart = source.indexOf("const DocumentContent = memo");
-  const documentEnd = source.indexOf("interface ScrollMarker", documentStart);
+  const documentEnd = source.indexOf("interface GlobalScrollEntry", documentStart);
   const documentComponent = source.slice(documentStart, documentEnd);
   assert.doesNotMatch(documentComponent, /activeUnitId|activeId/);
   assert.match(source, /const MemoizedUnit = memo/);
@@ -82,13 +82,15 @@ test("il documento memoizzato è indipendente dall'unità attiva e lo scroll usa
   assert.match(source, /while \(low < high\)/);
 });
 
-test("la scrollbar separa geometria marker e aggiornamento dinamico del thumb", async () => {
+test("lo scrubber globale non misura la geometria del documento montato", async () => {
   const source = await readFile(viewerSourceUrl, "utf8");
-  assert.match(source, /const measureGeometry = \(\) =>/);
-  assert.match(source, /const updateThumb = useCallback/);
-  assert.match(source, /thumb\.style\.top/);
-  const scrollHandler = source.slice(source.indexOf("const onScroll = () =>", source.indexOf("const DocumentScrollbar")), source.indexOf("if \(markers.length", source.indexOf("const DocumentScrollbar")));
-  assert.doesNotMatch(scrollHandler, /setGeometry|getBoundingClientRect|querySelectorAll/);
+  const start = source.indexOf("const GlobalDocumentScrubber = memo");
+  const end = source.indexOf("function useVisibleUnitObserver", start);
+  const scrubber = source.slice(start, end);
+  assert.match(scrubber, /globalScrubberRatioForId\(entries, activeId, activeEntry\?\.ratio \?\? 0\)/);
+  assert.match(scrubber, /requestAnimationFrame/);
+  assert.doesNotMatch(scrubber, /scrollHeight|clientHeight|querySelectorAll|ResizeObserver/);
+  assert.doesNotMatch(scrubber, /loadChunk|mountPrimaryWindow|revealSummary/);
 });
 
 test("NTC, Circolare e combinata mantengono navigazione e caricamento circoscritto", async () => {

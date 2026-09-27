@@ -231,7 +231,7 @@ test("i fallback Circolare mantengono lo sfondo di provenienza anche senza relaz
   assert.match(styles, /\.scv-root\.scv-dark \.scv-related-unit, \.scv-root\.scv-dark \.scv-circular-fallback/);
 });
 
-test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () => {
+test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", async () => {
   const [source, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
@@ -257,10 +257,10 @@ test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () =
   assert.match(source, /className="scv-index-children-list scv-index-paragraph-list"/);
   assert.match(source, /className="scv-index-children-list scv-index-subparagraph-list"/);
   assert.match(source, /target\.scrollIntoView\(\{ block: "nearest", behavior: reducedMotion \? "auto" : "smooth" \}\)/);
-  assert.match(source, /const DocumentScrollbar = memo/);
-  assert.match(source, /const scrollbarMarkers = useMemo/);
-  assert.match(source, /className=\{`scv-scroll-marker/);
-  assert.match(source, /<DocumentScrollbar rootRef=\{textPaneRef\}/);
+  assert.match(source, /const GlobalDocumentScrubber = memo/);
+  assert.match(source, /const scrubberEntries = useMemo/);
+  assert.match(source, /className="scv-scroll-marker chapter"/);
+  assert.match(source, /<GlobalDocumentScrubber rootRef=\{textPaneRef\}/);
   assert.match(source, /className="scv-text-pane-shell"/);
   assert.match(source, /const navigationEntries = useMemo/);
   assert.match(styles, /\.scv-index-grid \{[^}]*display: block/);
@@ -285,7 +285,7 @@ test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () =
   assert.match(styles, /\.scv-index-subparagraph-list \.scv-index-entry \{[^}]*--scv-index-indent: 0px/);
   assert.doesNotMatch(styles, /\.scv-index-subparagraph-list::before/);
   assert.match(styles, /\.scv-scroll-rail/);
-  assert.match(styles, /\.scv-scroll-marker\.paragraph/);
+  assert.match(styles, /\.scv-scroll-overlay/);
   assert.match(styles, /\.scv-chapter-heading/);
   assert.match(styles, /\.scv-block p \{[^}]*text-align: justify/);
   assert.match(source, /Fine del documento/);

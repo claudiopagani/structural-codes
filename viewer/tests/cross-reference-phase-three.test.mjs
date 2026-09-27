@@ -80,7 +80,7 @@ test("linkificazione, preview e navigazione lazy restano fuori dal documento mem
   assert.match(viewer, /scrollViewerTarget\(textPaneRef\.current, target\)/);
   assert.match(viewer, /await revealSummary\(summary/);
   assert.match(viewer, /loadDocumentIndex\(manifest, targetDocument, dataBaseUrl\)/);
-  const documentComponent = viewer.slice(viewer.indexOf("const DocumentContent = memo"), viewer.indexOf("interface ScrollMarker"));
+  const documentComponent = viewer.slice(viewer.indexOf("const DocumentContent = memo"), viewer.indexOf("interface GlobalScrollEntry"));
   assert.doesNotMatch(documentComponent, /activeUnitId|citationSelection|referencePreview/);
 });
 

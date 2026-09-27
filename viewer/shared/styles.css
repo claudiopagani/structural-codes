@@ -471,17 +471,19 @@ body { margin: 0; }
 .scv-pdf-error strong { font-family: "Tinos", serif; font-size: var(--scv-font-size-15); }
 .scv-pdf-error span { color: #c6cbd7; font-size: var(--scv-font-size-10); }
 
-.scv-scroll-rail { position: absolute; z-index: 6; top: 10px; right: 5px; bottom: 10px; width: 44px; pointer-events: none; }
-.scv-scroll-track { position: absolute; top: 0; right: 3px; bottom: 0; width: 6px; background: #e1e5ef; border-radius: 999px; cursor: pointer; pointer-events: auto; }
-.scv-scroll-thumb { position: absolute; right: 0; left: 0; display: block; min-height: 48px; background: linear-gradient(180deg, #7e8bb1, #5c6b9c); border-radius: 999px; box-shadow: 0 1px 5px rgb(52 66 110 / 28%); cursor: grab; pointer-events: auto; touch-action: none; }
+.scv-scroll-rail { --scv-scrubber-ratio: 0; position: absolute; z-index: 8; top: 10px; right: 0; bottom: 10px; width: 44px; pointer-events: auto; }
+.scv-scroll-track { position: absolute; inset: 0; cursor: pointer; touch-action: pan-y; }
+.scv-scroll-track::before { position: absolute; top: 0; right: 7px; bottom: 0; width: 3px; content: ""; background: #aeb7ca; border-radius: 999px; opacity: .36; transition: opacity .18s ease; }
+.scv-scroll-thumb { position: absolute; top: calc(var(--scv-scrubber-ratio) * (100% - 48px)); right: 0; display: block; width: 44px; height: 48px; padding: 0; background: transparent; border: 0; border-radius: 12px; cursor: grab; pointer-events: auto; touch-action: none; }
+.scv-scroll-thumb::before { position: absolute; top: 4px; right: 5px; bottom: 4px; width: 7px; content: ""; background: var(--scv-primary); border-radius: 999px; box-shadow: 0 1px 5px rgb(52 66 110 / 30%); opacity: .9; transition: width .16s ease, opacity .18s ease, transform .16s ease; }
+.scv-scroll-thumb:hover::before, .scv-scroll-thumb:focus-visible::before, .scv-scroll-rail.is-dragging .scv-scroll-thumb::before { width: 9px; opacity: 1; transform: translateX(-1px); }
+.scv-scroll-thumb:focus-visible { outline: 2px solid var(--scv-primary); outline-offset: -3px; }
 .scv-scroll-thumb:active { cursor: grabbing; }
-.scv-scroll-marker { position: absolute; right: 11px; display: grid; width: 31px; min-height: 20px; place-items: center; padding: 2px 3px; color: #4c5870; font-size: var(--scv-font-size-8); font-weight: 800; line-height: 1; background: #eef1f8; border: 1px solid #d5dbea; border-radius: 5px; cursor: pointer; opacity: .88; pointer-events: auto; transform: translateY(-50%); transition: color .16s ease, background-color .16s ease, border-color .16s ease, opacity .16s ease, transform .16s ease; }
-.scv-scroll-marker.paragraph { right: 12px; width: 8px; min-height: 4px; padding: 0; background: #aab4c9; border: 0; border-radius: 999px; }
-.scv-scroll-marker-label { position: absolute; right: calc(100% + 5px); padding: 4px 6px; color: #eff2fb; font-size: var(--scv-font-size-8); font-weight: 800; line-height: 1; white-space: nowrap; background: #2e3b69; border-radius: 4px; box-shadow: 0 3px 10px rgb(29 40 78 / 22%); opacity: 0; pointer-events: none; transform: translateX(3px); transition: opacity .14s ease, transform .14s ease; }
-.scv-scroll-marker.chapter .scv-scroll-marker-label { opacity: 1; transform: none; }
-.scv-scroll-marker.paragraph:hover, .scv-scroll-marker.paragraph:focus-visible, .scv-scroll-marker.paragraph.active { width: 22px; background: var(--scv-primary); opacity: 1; }
-.scv-scroll-marker.paragraph:hover .scv-scroll-marker-label, .scv-scroll-marker.paragraph:focus-visible .scv-scroll-marker-label, .scv-scroll-marker.paragraph.active .scv-scroll-marker-label { opacity: 1; transform: none; }
-.scv-scroll-marker.chapter:hover, .scv-scroll-marker.chapter:focus-visible, .scv-scroll-marker.chapter.active { color: #fff; background: var(--scv-primary); border-color: var(--scv-primary); opacity: 1; transform: translateY(-50%) scale(1.04); }
+.scv-scroll-marker { position: absolute; right: 6px; width: 6px; height: 1px; background: var(--scv-ink-soft); border-radius: 999px; opacity: .45; pointer-events: none; transform: translateY(-50%); transition: opacity .18s ease; }
+.scv-scroll-overlay { position: absolute; top: clamp(36px, calc(var(--scv-scrubber-ratio) * 100%), calc(100% - 36px)); right: 50px; display: grid; width: max-content; max-width: min(280px, calc(100vw - 82px)); gap: 2px; padding: 10px 12px; color: #fff; text-align: right; background: rgb(36 47 78 / 96%); border: 1px solid rgb(255 255 255 / 16%); border-radius: 8px; box-shadow: 0 8px 24px rgb(26 36 67 / 28%); pointer-events: none; transform: translateY(-50%); }
+.scv-scroll-overlay strong { font-size: var(--scv-font-size-15); line-height: 1.1; white-space: nowrap; }
+.scv-scroll-overlay span { overflow: hidden; font-family: "Tinos", serif; font-size: var(--scv-font-size-10); line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.scv-scroll-rail.is-idle .scv-scroll-track::before, .scv-scroll-rail.is-idle .scv-scroll-thumb::before, .scv-scroll-rail.is-idle .scv-scroll-marker { opacity: 0; }
 
 .scv-root.scv-dark {
   color-scheme: dark;
@@ -549,10 +551,9 @@ body { margin: 0; }
 .scv-root.scv-dark .scv-citation-actions { background: rgb(27 33 48 / 94%); box-shadow: 0 3px 14px rgb(0 0 0 / 38%); }
 .scv-root.scv-dark .scv-backlink-panel, .scv-root.scv-dark .scv-reference-preview { box-shadow: 0 14px 36px rgb(0 0 0 / 48%); }
 .scv-root.scv-dark .scv-content-notice { color: #fde68a; background: #3a311d; border-color: #725f27; }
-.scv-root.scv-dark .scv-scroll-track { background: #2a3347; }
-.scv-root.scv-dark .scv-scroll-thumb { background: linear-gradient(180deg, #94aaff, #6478bd); }
-.scv-root.scv-dark .scv-scroll-marker { color: #d7def3; background: #27324b; border-color: #465577; }
-.scv-root.scv-dark .scv-scroll-marker.paragraph { background: #657492; border: 0; }
+.scv-root.scv-dark .scv-scroll-track::before { background: #596684; }
+.scv-root.scv-dark .scv-scroll-marker { background: #aeb8ca; }
+.scv-root.scv-dark .scv-scroll-overlay { color: #f5f7ff; background: rgb(24 31 48 / 97%); border-color: #465577; box-shadow: 0 8px 24px rgb(0 0 0 / 42%); }
 .scv-root.scv-dark .scv-pdf-panel { background: #202633; }
 
 @keyframes scv-spin { to { transform: rotate(360deg); } }
@@ -718,6 +719,9 @@ body { margin: 0; }
   .scv-auxiliary-pane:has(.scv-tools-dock) { height: 100dvh; }
   .scv-tools-toggle { position: absolute; z-index: 9; right: 50px; bottom: max(12px, env(safe-area-inset-bottom)); min-height: 44px; max-width: calc(100% - 108px); }
   .scv-scroll-rail { top: 62px; bottom: 62px; }
+  .scv-scroll-overlay { right: 48px; max-width: calc(100vw - 76px); padding: 10px 12px; }
+  .scv-scroll-overlay strong { font-size: var(--scv-font-size-17); }
+  .scv-scroll-overlay span { display: none; }
   .scv-root .scv-copy-asset { width: 36px; height: 36px; opacity: 1; transform: none; }
   .scv-root .figure-asset.scv-copyable-asset { padding-top: 46px; }
   .scv-block-list-item.list-item-with-trailing-symbol p { grid-template-columns: 14px minmax(0, 1fr) max-content; }
