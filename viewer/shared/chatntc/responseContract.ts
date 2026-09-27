@@ -59,7 +59,7 @@ function isVerifiedReference(value: unknown): value is ChatNTCVerifiedReference 
     && (value.assetNumber === undefined || value.assetNumber === null || text(value.assetNumber));
 }
 
-/** Same structural check used in STEP 1, now reusable by adapters without running retrieval. */
+/** Reusable structural check for adapters that do not run retrieval. */
 export function isChatNTCResponse(value: unknown): value is ChatNTCResponse {
   if (object(value) && value.formatVersion === 3) {
     return keys(value, ["formatVersion", "evidencePackageId", "answerMarkdown", "classification", "status", "verifiedReferences", "referenceWarning", "warnings", "needsMoreEvidence", "externalResearchSuggested"])

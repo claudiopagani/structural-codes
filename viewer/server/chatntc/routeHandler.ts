@@ -62,10 +62,8 @@ export function createChatNTCHandler(dependencies: {
     | (() => ChatNTCSemanticRetrievalConfiguration | Promise<ChatNTCSemanticRetrievalConfiguration>);
 }) {
   return async (request: Request): Promise<Response> => {
-    let debug = false;
     try {
       const env = dependencies.environment();
-      debug = env.NODE_ENV === "development" || env.NODE_ENV === "test" || env.CHATNTC_DEBUG === "true";
       if (!chatNTCEnabled(env)) throw new ChatNTCServerError("CHATNTC_DISABLED");
       assertLocalRequest(request);
       const provider = request.headers.get("x-chatntc-provider");
@@ -97,7 +95,7 @@ export function createChatNTCHandler(dependencies: {
       return json(await runChatNTC(input, { repository, provider: () => dependencies.provider(env, selection, apiKey),
         semanticRetrieval, signal: request.signal }));
     } catch (error) {
-      const failure = publicError(error, debug);
+      const failure = publicError(error);
       return json(failure.body, failure.status);
     }
   };

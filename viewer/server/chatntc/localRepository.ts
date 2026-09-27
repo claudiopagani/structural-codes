@@ -4,7 +4,7 @@ import { isAbsolute, relative, resolve, sep } from "node:path";
 import { createArtifactRepository } from "../../shared/chatntc/viewerArtifacts.js";
 import type { CorpusChunk, CorpusManifest, CrossReferenceIndex, DocumentIndex, RelationsIndex, SearchIndex } from "../../shared/corpusData.js";
 
-/** Per-request file snapshot/cache; all indexing and resolution stay in the STEP 1 adapter. */
+/** Per-request file snapshot/cache; all indexing and resolution stay in the artifact adapter. */
 export function createLocalArtifactRepository(directory = resolve(process.cwd(), "public/data/codes")) {
   const root = resolve(directory);
   const cache = new Map<string, Promise<unknown>>();

@@ -11,8 +11,7 @@ import type { ChatNTCProvider } from "../../shared/chatntc/index.js";
 export type ChatNTCEnvironment = Readonly<Record<string, string | undefined>>;
 
 export function chatNTCEnabled(env: ChatNTCEnvironment): boolean {
-  return env.CHATNTC_ENABLED === "true"
-    && (env.NODE_ENV === "development" || env.NODE_ENV === "test" || env.CHATNTC_DEBUG === "true");
+  return env.CHATNTC_ENABLED === "true";
 }
 
 /** The only environment-to-provider boundary. Nothing here is imported by the core. */

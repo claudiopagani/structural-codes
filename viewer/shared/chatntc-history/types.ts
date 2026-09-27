@@ -42,16 +42,6 @@ export interface ChatHistoryStore {
   setActiveConversationId(id: string | null): Promise<void>;
 }
 
-/** Reserved portable format. Import requires an explicit policy for untrusted historical provenance. */
-export interface ChatHistoryArchive {
-  format: "chatntc-history"; formatVersion: 1; exportedAt: string; conversations: ChatConversation[];
-}
-export interface ChatHistoryTransfer {
-  exportHistory(): Promise<ChatHistoryArchive>;
-  importHistory(archive: ChatHistoryArchive, options: { collision: "reject" }): Promise<void>;
-}
-// TODO: implement transfer separately with UI preview, size limits and provenance labels for imports.
-
 export class ChatHistoryError extends Error {
   constructor(readonly code: "UNAVAILABLE" | "BLOCKED" | "UPGRADE_FAILED" | "CORRUPT" | "WRITE_FAILED" | "CONFLICT" | "INVALID_DATA") {
     const messages = {

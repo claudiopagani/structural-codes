@@ -1,46 +1,59 @@
 # Structural Codes
 
 Corpus open source, machine-readable e verificabile della normativa strutturale
-italiana. Il perimetro iniziale comprende NTC 2018, Circolare 7/2019, unità
-canoniche, formule, tabelle, figure, relazioni, provenance, stato di verifica
-e strumenti di validazione.
+italiana, con package JavaScript, viewer React e ChatNTC opzionale self-hosted.
+Il perimetro iniziale comprende NTC 2018 e Circolare 7/2019: unità canoniche,
+formule, tabelle, figure, relazioni, provenance, stato di verifica e tooling
+editoriale.
 
 > [!WARNING]
 > Structural Codes non è una fonte normativa ufficiale e il corpus non è una
-> pubblicazione normativa. La pubblicazione del package su npm significa che un
-> artefatto versionato è disponibile alla community; non significa che ogni
-> trascrizione o relazione sia stata pubblicata o approvata. Per usi
-> professionali o giuridicamente rilevanti verificare sempre gli atti indicati
-> nel [source registry](sources/registry/sources.v2.json).
+> pubblicazione normativa. Per usi professionali o giuridicamente rilevanti
+> verificare sempre gli atti indicati nel
+> [source registry](sources/registry/sources.v2.json).
 
 ## Stato della prerelease
 
-La prima versione pubblica è `0.1.0-alpha.1`. La review umana integrale del
-testo delle NTC 2018 e della Circolare 7/2019 contro le rispettive fonti
-ufficiali è registrata al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690
-unità della Circolare, tutte con `review.status: "verified"`. Questa verifica
-non costituisce una seconda review indipendente e non equivale alla pubblicazione
-di una fonte normativa ufficiale.
-I 302 collegamenti Circolare → NTC presenti nel corpus sono relazioni esplicite
-ma ancora `proposed` e non sono stati promossi da questa review. Le possibili
-corrispondenze ricavate dalla sola numerazione restano diagnostica separata e
-non sono usate come fonte canonica.
+La versione corrente è `0.1.0-alpha.1`. La review umana integrale del testo
+delle NTC 2018 e della Circolare 7/2019 contro le fonti ufficiali è registrata
+al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690 unità della Circolare,
+tutte con `review.status: "verified"`. Questa verifica non costituisce una
+seconda review indipendente né un'approvazione ufficiale.
 
-Una prerelease alpha consente di ispezionare, integrare e correggere il corpus
-mentre schema e API possono ancora cambiare. Non va interpretata come
-dichiarazione di conformità normativa.
+I 302 collegamenti Circolare → NTC sono relazioni esplicite ancora `proposed`.
+Le corrispondenze ricavate dalla sola numerazione restano diagnostiche e non
+sono usate come fonte canonica.
 
-## Installazione
+`alpha` indica che schema e API pubbliche possono ancora cambiare. I criteri
+per la promozione a `beta` sono descritti in [docs/release.md](docs/release.md)
+e riguardano esclusivamente la stabilità di questo progetto pubblico.
+
+## Cosa contiene
+
+- `structural-codes`: corpus, schema, provenance, helper e API non React;
+- `structural-codes-viewer`: viewer React, client degli artefatti e componenti
+  ChatNTC riusabili;
+- viewer standalone in sola lettura, utilizzabile senza ChatNTC;
+- ChatNTC self-hosted con retrieval lessicale, espansione strutturale, Evidence
+  Package, provider LLM e Citation Validator;
+- provider DeepSeek, OpenAI, Anthropic, Gemini e OpenRouter;
+- configurazione tramite environment locale oppure BYOK dalla UI;
+- history browser in IndexedDB;
+- semantic retrieval BGE-M3 sperimentale e opzionale;
+- tooling, benchmark, test e verifiche di release.
+
+Il corpus canonico resta la source of truth. `viewer/public/` contiene solo
+derivati rigenerabili e non va modificato direttamente.
+
+## Package `structural-codes`
 
 ```bash
 npm install structural-codes@alpha
 ```
 
-Il runtime richiede Node.js `^22.13.0 || >=24.0.0`. L'entry point principale è
-ESM e non ha effetti collaterali. Gli helper puri funzionano anche nel browser;
-le utility che usano `node:crypto` sono isolate in `structural-codes/lib`.
-
-## API pubblica minima
+Il runtime richiede Node.js `^22.13.0 || >=24.0.0`. L'entry point è ESM e non
+ha effetti collaterali. Gli helper puri funzionano anche nel browser; le
+utility basate su `node:crypto` sono isolate in `structural-codes/lib`.
 
 ```ts
 import {
@@ -51,160 +64,158 @@ import {
   sourceRegistryV2Schema,
 } from "structural-codes";
 
-import { sha256OfFile, sha256OfText } from "structural-codes/lib";
-import { sourceRegistryV2Schema as registrySchema } from "structural-codes/schema";
-```
-
-Il corpus JSON resta importabile senza attraversare `src/` o altri percorsi
-interni:
-
-```ts
+import { sha256OfText } from "structural-codes/lib";
 import corpusManifest from "structural-codes/corpus/manifest.json" with {
   type: "json",
 };
-import ntc41 from "structural-codes/corpus/units/ntc2018/4.1.json" with {
-  type: "json",
-};
-import registry from "structural-codes/sources/registry" with { type: "json" };
 ```
 
-Sono export pubblici intenzionali:
+Export intenzionali:
 
-- `structural-codes` — tipi, schema registry e helper puri per unità/relazioni;
-- `structural-codes/corpus` — helper e tipi del corpus;
-- `structural-codes/schema` — contratti Zod riusabili;
-- `structural-codes/lib` — canonicalizzazione e hash Node-only;
-- `structural-codes/corpus/**`, `schemas/**` e `sources/registry` — dati
-  machine-readable documentati.
+- `structural-codes`, `/corpus`, `/schema`, `/lib`;
+- `structural-codes/corpus/**` e `structural-codes/schemas/**`;
+- `structural-codes/sources/registry`.
 
-Il viewer, gli script editoriali, i test, i PDF e l'evidence locale non fanno
-parte del package runtime.
+Viewer, script editoriali, test, PDF ed evidence locale non entrano nel
+package runtime.
 
-## Struttura del corpus
+## Viewer e package `structural-codes-viewer`
 
-```text
-corpus/manifest.json       perimetro e stato complessivo
-corpus/units/              record JSON canonici NTC e Circolare
-corpus/assets/             manifest di formule, tabelle e figure
-corpus/assets/figures/     crop raster verificabili delle fonti
-schemas/                   JSON Schema di unità e asset
-sources/registry/          fonti istituzionali, byte, pagine e SHA-256
-scripts/                   acquisizione, evidence, validazione, build e release
-viewer/                    consumer web separato e in sola lettura
+Il viewer offre modalità NTC, Circolare e combinata, ricerca lazy, navigazione
+per riferimenti e resa di formule, tabelle e figure. Può funzionare come
+applicazione standalone oppure come componente React installabile.
+
+```tsx
+import { NormativeViewer } from "structural-codes-viewer";
+import "structural-codes-viewer/styles.css";
+
+export function Normativa() {
+  return <NormativeViewer defaultMode="combined" dataBaseUrl="/data/codes" />;
+}
 ```
 
-L'ordine di `blocks` riproduce il flusso della fonte. Ogni blocco testuale
-conserva testo raw selezionato, testo normalizzato, pagina/regione, hash e
-trasformazioni. Formule, tabelle e figure sono asset canonici richiamati da ID.
-Il source registry identifica il PDF editoriale autorevole; i PDF originali
-non sono redistribuiti.
+Gli export ChatNTC condivisi sono:
 
-## Verifica machine-readable
+- `structural-codes-viewer/chatntc`;
+- `structural-codes-viewer/chatntc/viewer-artifacts`;
+- `structural-codes-viewer/chatntc-ui`;
+- `structural-codes-viewer/chatntc-history`.
 
-Lo stato editoriale minimo è registrato per unità in `review.status`:
+Route standalone, adapter dei provider, configurazioni e secret non fanno
+parte del package. Dettagli e comandi sono in [viewer/README.md](viewer/README.md).
 
-- `draft`: contenuto nuovo non ancora verificato contro la fonte ufficiale;
-- `verified`: contenuto verificato umanamente contro la fonte ufficiale.
+## ChatNTC self-hosted
 
-La provenance tecnica resta nei blocchi evidence: source ID, pagine, hash,
-trasformazioni e regioni quando disponibili. La regione non è un requisito
-dello stato `verified`. Lo stato della release appartiene al package e al
-manifest, non alle unità. La validità normativa, incluso `superseded`, resta
-separata in `validity.status`. Le relazioni Circolare → NTC mantengono il loro
-stato indipendente e non determinano la verifica del testo.
-
-## Provenance ed evidence
-
-Il registro contiene URL istituzionale, dimensione, numero di pagine e hash del
-PDF. I record canonici collegano ogni contenuto a source ID, pagina, regione,
-metodo di estrazione, trasformazioni e hash raw/normalized. `raw-sources/` ed
-`evidence/` sono materiali locali ignorati da Git: devono essere acquisiti e
-verificati prima della review, non allegati a issue o pull request.
-
-```bash
-npm run acquire:source -- --source gu-so8-2018-ntc --download
-npm run extract:evidence -- --source gu-so8-2018-ntc --pages 74-75
-npm run render:evidence -- --source gu-so8-2018-ntc --page 74 --scale 2
-npm run review:diff -- --unit corpus/units/ntc2018/4.1.json
-```
-
-## Viewer per la community review
-
-Il viewer comparato offre tre modalità: NTC 2018, Circolare 7/2019 e NTC 2018 + Circolare. La vista combinata usa soltanto le relazioni esplicite del corpus,
-supporta 0..n unità della Circolare e distingue i collegamenti `proposed` da
-quelli eventualmente confermati.
-
-Gli artefatti web sono statici e rigenerabili: un manifest iniziale piccolo,
-indici per documento, 153 chunk per sezione significativa, relazioni esplicite
-e un indice di ricerca caricato soltanto quando serve. Sul web mostra indice e
-testo; in locale/debug può aggiungere il PDF ufficiale sincronizzato, caricato
-solo su richiesta. Un'applicazione downstream che non entra nel viewer non deve
-scaricare alcun corpus normativo.
+ChatNTC è opzionale. L'utente può usare il viewer senza abilitarlo, oppure
+eseguirlo nella propria installazione:
 
 ```bash
 npm ci
 npm run viewer:install
-npm run viewer:dev
+npm run dev
 ```
 
-Il corpus canonico e i suoi asset sono la source of truth editoriale. Le
-correzioni si applicano direttamente ai record e agli asset canonici, mai sotto
-`viewer/public/`, che contiene esclusivamente derivati ignorati da Git.
+Il launcher ascolta sul loopback e abilita ChatNTC esplicitamente. La pipeline
+standard è:
 
-## Ecosistema e integrazioni
+```text
+query
+  → lexical retrieval
+  → structural expansion
+  → Evidence Package
+  → LLM configurato dall'utente o dal server
+  → Citation Validator
+  → risposta e riferimenti verificati
+```
 
-- `structural-codes` contiene normativa strutturata, riferimenti, provenance,
-  relazioni e stato di verifica;
-- un consumer esterno può usare il package secondo i contratti documentati,
-  senza sostituire la fonte canonica del corpus.
+La configurazione può provenire dall'environment locale oppure dalla UI BYOK.
+La chiave inserita nella UI vive soltanto in memoria, viene inviata alla route
+self-hosted in un header dedicato e non entra in `localStorage`, IndexedDB,
+history, body della chat, errori o log. Provider e model possono essere salvati
+come preferenza locale.
 
-## Contribuire
+La history implementa `ChatHistoryStore` tramite
+`IndexedDbChatHistoryStore`, con schema chiuso, provenance, revision/CAS e
+protezione dai conflitti fra schede.
 
-Per segnalare una differenza normativa usa il template dedicato indicando
-documento, unità, pagina e passaggi di verifica. Per una relazione Circolare ↔
-NTC errata o mancante usa il template relazione. Una pull request editoriale
-deve essere circoscritta, confrontata con il PDF registrato, mantenere
-provenance e hash, aggiungere una regressione e lasciare esplicite le
-ambiguità.
+Il boundary di sicurezza pubblico è:
 
-Leggi [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md), la
-[pipeline evidence](docs/evidence-pipeline.md) e le regole di
+```text
+browser
+  → route ChatNTC self-hosted su loopback e stessa origine
+  → retrieval locale/server-side
+  → provider esterno configurato dall'utente o dal server
+```
+
+La route applica limiti di dimensione e history, timeout, validazione degli
+input, origin checks ed errori da allowlist. Non implementa autenticazione,
+billing o quote per un servizio SaaS.
+
+La documentazione completa parte da [docs/chatntc-core.md](docs/chatntc-core.md).
+Lo stack Docker di esempio è in [deploy/chatntc/](deploy/chatntc/README.md).
+
+## Semantic retrieval sperimentale
+
+`CHATNTC_SEMANTIC_MODE` accetta `off`, `shadow` e `on`; il default è `off`.
+Con `off` non vengono caricati indice, provider embedding, modello o GPU.
+BGE-M3, il benchmark e gli adapter semantic restano strumenti sperimentali
+opt-in e non sono necessari per il normale funzionamento di ChatNTC.
+
+Vedere [docs/chatntc-semantic-index.md](docs/chatntc-semantic-index.md).
+
+## Struttura e provenance del corpus
+
+```text
+corpus/manifest.json       perimetro e stato complessivo
+corpus/units/              record JSON canonici NTC e Circolare
+corpus/assets/             formule, tabelle, figure e relativi manifest
+schemas/                   JSON Schema di unità e asset
+sources/registry/          fonti istituzionali, byte, pagine e SHA-256
+scripts/                   acquisizione, evidence, validazione e release
+viewer/                    consumer web e package React separato
+```
+
+L'ordine di `blocks` riproduce la fonte. Il source registry identifica il PDF
+autorevole; i PDF originali non sono redistribuiti. `raw-sources/` ed
+`evidence/` sono materiali locali ignorati da Git e verificati tramite hash.
+
+```bash
+npm run validate:sources
+npm run validate:corpus
+npm run review:diff -- --unit corpus/units/ntc2018/4.1.json
+```
+
+Le regole editoriali sono in [AGENTS.md](AGENTS.md), nella
+[pipeline evidence](docs/evidence-pipeline.md) e nella guida di
 [normalizzazione e review](docs/normalizzazione-e-review.md).
 
 ## Verifica e release
 
 ```bash
+npm ci
 npm run check
 npm run viewer:check
 npm run release:verify
+npm --prefix viewer run pack:verify
+npm --prefix viewer run test:consumer
 ```
 
-`release:verify` esegue `npm run check`, verifica l'evidence locale per la
-release, gli audit root e viewer, `npm run viewer:check`, la build del package,
-il dry-run e il pack reale, l'ispezione del contenuto pubblicato,
-l'installazione in un consumer temporaneo e i controlli runtime/TypeScript
-delle API pubbliche. Nessun comando pubblica automaticamente.
+`release:verify` valida corpus ed evidence locale, esegue typecheck, lint,
+test e audit, costruisce il package core, ispeziona dry-run e tarball reale e
+prova runtime e tipi in un consumer temporaneo. I comandi viewer verificano il
+secondo tarball e un'applicazione consumer pulita, inclusi gli export ChatNTC.
+Nessun comando pubblica automaticamente.
 
-> **TODO:** la documentazione di ChatNTC è in fase di aggiornamento mentre
-> l'architettura del servizio viene consolidata. La documentazione definitiva
-> sarà pubblicata al termine di questo lavoro.
+## Contribuire
 
-La procedura completa è documentata in [docs/release.md](docs/release.md).
+Le correzioni normative richiedono confronto con il PDF registrato,
+provenance, hash, test di regressione e perimetro editoriale ristretto. Le PR
+software o documentali devono confermare che nessuna unità canonica è cambiata.
+Vedere [CONTRIBUTING.md](CONTRIBUTING.md).
 
-La strategia SemVer è:
-
-- `alpha`: schema/API mobili e release non stabile;
-- `beta`: schema/API sostanzialmente stabilizzati e fase di consolidamento;
-- `stable`: API, schema e formato del package considerati stabili secondo SemVer.
-
-Una release stable resta una dichiarazione di stabilità software del package,
-non una certificazione, un'approvazione ufficiale o una fonte normativa
-ufficiale.
-
-## Licenza e fonti ufficiali
+## Licenza
 
 Software, schemi, indici e apparati editoriali sono distribuiti con licenza
 LGPL-2.1-or-later. I testi normativi riprodotti sono atti ufficiali dello Stato
 italiano e mantengono l'indicazione della fonte. Vedere [LICENSE](LICENSE),
-[NOTICE](NOTICE), [source registry](sources/registry/sources.v2.json) e il
-[perimetro normativo](docs/perimetro-normativo.md).
+[NOTICE](NOTICE) e il [perimetro normativo](docs/perimetro-normativo.md).

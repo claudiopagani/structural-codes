@@ -1,4 +1,4 @@
-# BGE-M3 dense embedding service (STEP B1)
+# BGE-M3 dense embedding service (experimental)
 
 Microservizio HTTP locale e autonomo per dense embeddings con
 `BAAI/bge-m3`, `FlagEmbedding` e GPU CUDA. Non è collegato a ChatNTC e non

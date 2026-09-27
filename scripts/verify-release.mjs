@@ -3,6 +3,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
+import { CANONICAL_UNIT_SCHEMA_VERSION as sourceCanonicalUnitSchemaVersion } from "../dist/index.js";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 const packageManifest = JSON.parse(
@@ -180,7 +181,10 @@ import ntcUnit from "structural-codes/corpus/units/ntc2018/4.1.json" with { type
 import circUnit from "structural-codes/corpus/units/circ2019/c4.1.json" with { type: "json" };
 import registry from "structural-codes/sources/registry" with { type: "json" };
 
-assert.equal(CANONICAL_UNIT_SCHEMA_VERSION, "2.0.0-alpha.2");
+assert.equal(
+  CANONICAL_UNIT_SCHEMA_VERSION,
+  ${JSON.stringify(sourceCanonicalUnitSchemaVersion)},
+);
 assert.equal(corpusManifest.status, ${JSON.stringify(sourceCorpusManifestStatus)});
 assert.equal(documentIdFromUnitId(ntcUnit.id), "ntc2018");
 assert.equal(createUnitIndex([ntcUnit, circUnit]).size, 2);

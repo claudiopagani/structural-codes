@@ -1,16 +1,21 @@
 # structural-codes-viewer
 
-`structural-codes-viewer` è la UI React per consultare il corpus
-`structural-codes`. Il progetto espone un solo viewer comparato.
+`structural-codes-viewer` è il package React per consultare il corpus
+`structural-codes`. La stessa directory contiene l'applicazione standalone e
+la route ChatNTC self-hosted, che restano fuori dal tarball del package.
 
-- `structural-codes` contiene corpus, schema, provenance e relazioni canoniche;
-- `structural-codes-viewer` contiene UI React, client lazy degli artefatti e
-  generatore deterministico;
-- il viewer standalone usa Vinext/Vite e può aggiungere il PDF ufficiale solo
-  in locale o in debug tramite `OfficialPdfPanel`;
-- il build web di produzione espone soltanto indice e testo.
+## Boundary
 
-## Uso React
+- `structural-codes`: corpus, schema, provenance e helper non React;
+- `structural-codes-viewer`: componenti React, client lazy, generatore
+  artefatti e API ChatNTC condivise;
+- `viewer/app/` e `viewer/server/`: composizione standalone, route e adapter
+  provider non pubblicati nel package.
+
+React e ReactDOM sono peer dependency. Il package non dipende a runtime da
+Next/Vinext, `pdfjs-dist`, BGE-M3, adapter provider o file `.local`.
+
+## Viewer React
 
 ```tsx
 import { NormativeViewer } from "structural-codes-viewer";
@@ -21,209 +26,133 @@ export function Normativa() {
 }
 ```
 
-La modalità predefinita è `combined`: la NTC resta la struttura principale e
-la Circolare viene inserita soltanto tramite relazioni esplicite del corpus.
-Le relazioni `proposed` restano tracciate nei dati senza aggiungere etichette
-testuali alla lettura. Il client verifica `formatVersion`, schema e manifest; non usa
-la uguaglianza delle versioni SemVer per interpretare i dati.
-
-API intenzionale:
+Props principali:
 
 - `defaultMode`: `combined`, `ntc` o `circ`;
-- `dataBaseUrl`: directory degli artefatti lazy, default `/data/codes`;
-- `assetsBaseUrl`: directory delle figure, default `/assets`;
-- `auxiliaryPanel`: pannello opzionale o render prop locale;
-- `auxiliaryPanelDefaultVisible`: visibilità iniziale del pannello opzionale.
+- `dataBaseUrl`: artefatti lazy, default `/data/codes`;
+- `assetsBaseUrl`: figure, default `/assets`;
+- `auxiliaryPanel`: pannello opzionale o render prop;
+- `auxiliaryPanelDefaultVisible`, `auxiliaryPanelKeepMounted` e modalità
+  consentite del pannello.
 
-La ricerca è sempre visibile ma carica `search-index.json` soltanto con almeno
-due caratteri. Manifest, indice documento, chunk e relazioni restano separati.
-All'apertura il client carica manifest e indice, monta per primo il chunk
-dell'unità iniziale e completa senza bloccare il salto una finestra massima
-`precedente + target + successivo`. Il prefetch idle resta centrato sul chunk
-attivo e lo scroll estende progressivamente la finestra senza scaricare il
-resto del documento.
-La cache JSON di sessione deduplica richieste e parsing per URL.
-Le figure sono lazy e il package shared non importa `pdfjs-dist`, non conosce
-`/api/source-pdf` e non dipende da servizi di hosting. React e ReactDOM sono
-peer dependencies React 19. Nell’indice della consultazione comparata le tre
-righe seguono la selezione corrente: capitolo → paragrafi → sottoparagrafi. Il
-documento attivo conserva un unico flusso continuo, popolato progressivamente
-per chunk; lo scroll aggiorna i tre livelli evidenziati e i click nell’indice
-portano al relativo riferimento. In modalità combinata, i chunk della Circolare
-sono caricati solo per le relazioni e i supplementi appartenenti alla finestra
-NTC effettivamente resa.
+La vista combinata mantiene le NTC come struttura principale e inserisce la
+Circolare solo tramite relazioni esplicite. Ricerca, chunk, relazioni, figure e
+prefetch sono lazy; il package shared non importa PDF o route standalone.
 
 ## Artefatti
 
-`npm run sync:corpus` mantiene il consumer locale aggiornato sotto
-`public/data/codes/`:
-
-```text
-manifest.json
-relations.json
-relation-diagnostics.json
-search-index.json
-cross-reference-index.json
-ntc2018/index.json
-ntc2018/chunks/*.json
-circ2019/index.json
-circ2019/chunks/*.json
+```bash
+npm --prefix viewer run sync:corpus
 ```
 
-Il generatore condiviso legge soltanto i file pubblici del package
-`structural-codes`, è deterministico e non richiede un checkout sibling. La
-CLI inclusa nel package può materializzare gli stessi artefatti in un consumer:
+Il comando genera sotto `viewer/public/data/codes/` manifest, indici documento,
+chunk, relazioni, riferimenti e indice di ricerca. `viewer/public/` è ignorato
+da Git e rigenerabile dal corpus canonico.
+
+Un consumer può usare la CLI inclusa:
 
 ```bash
 npx structural-codes-viewer --source structural-codes \
   --output public/data/codes --assets public/assets
 ```
 
-Il comando non copia il corpus completo nel package viewer: usa il package
-`structural-codes` installato dal consumer come sorgente.
+Il package viewer non include il corpus completo: il generatore legge il
+package `structural-codes` installato nel consumer.
 
-### Semantic retrieval ChatNTC
+## Export ChatNTC
 
-Il runtime usa la pipeline ChatNTC e il `retrievalCoordinator` esistenti. Senza
-configurazione semantic il default production è `off`: la pipeline è ricerca
-lessicale → espansione strutturale → Evidence Package con hierarchy → LLM →
-Citation Validator. Non legge un indice, non costruisce un provider e non
-richiede BGE-M3, Docker o GPU.
-
-- `off`: percorso legacy lexical + structural, senza inizializzazione semantic;
-- `shadow`: esegue anche semantic retrieval e RRF, registra i diagnostics
-  server-side ma conserva l'Evidence Package lexical;
-- `on`: usa lexical + semantic + RRF prima della structural expansion.
-
-`shadow` e `on` restano capacità sperimentali abilitate soltanto tramite
-configurazione esplicita. I test end-to-end non hanno mostrato un miglioramento
-qualitativo sufficientemente consistente da giustificare BGE-M3/RRF come
-dipendenza production predefinita.
-
-Configurazione server-side:
-
-```text
-CHATNTC_SEMANTIC_MODE=off|shadow|on
-CHATNTC_EMBEDDING_PROVIDER=flagembedding-http|ollama
-CHATNTC_EMBEDDING_URL=http://127.0.0.1:8091
-CHATNTC_SEMANTIC_INDEX_PATH=<path assoluto o relativo al working directory server>
-CHATNTC_EMBEDDING_TIMEOUT_MS=120000
-CHATNTC_EMBEDDING_BATCH_SIZE=32
+```ts
+import {
+  CHATNTC_DEFAULT_RETRIEVAL,
+  retrieveChatNTCEvidence,
+  validateChatNTCResponse,
+} from "structural-codes-viewer/chatntc";
+import { createViewerArtifactRepository } from
+  "structural-codes-viewer/chatntc/viewer-artifacts";
+import { ChatNTCPanel, type ChatTransport } from
+  "structural-codes-viewer/chatntc-ui";
+import { IndexedDbChatHistoryStore, type ChatHistoryStore } from
+  "structural-codes-viewer/chatntc-history";
 ```
 
-In `shadow/on`, `flagembedding-http` è il provider predefinito. L'indice e il
-servizio devono essere disponibili al server e superare il preflight di
-fingerprint, provider, modello, dimensioni, normalizzazione e parametri. Per lo
-sviluppo semantic locale si avvia il servizio Docker BGE-M3 e si può indicare
-`CHATNTC_SEMANTIC_INDEX_PATH=.local/chatntc-semantic-flagembedding` eseguendo il
-server dalla directory `viewer`. In production si usano un path e un servizio
-server-side espliciti; `.local` non è un default production.
+Questi export sono shared/browser-safe. Route HTTP, provider secrets,
+`LocalChatTransport`, `LocalAIConfiguration` e impostazioni standalone non
+sono API del package.
 
-Ollama resta una scelta esplicita per sviluppo/tooling con
-`CHATNTC_EMBEDDING_PROVIDER=ollama` e `CHATNTC_EMBEDDING_MODEL=<modello>`;
-non è un fallback di FlagEmbedding. Sono disponibili anche gli override
-Ollama `CHATNTC_EMBEDDING_DIMENSIONS` e `CHATNTC_EMBEDDING_NUM_CTX` quando
-coerenti con i metadata dell'indice.
-
-Provider, query embedding, indice vettoriale e diagnostics restano nei moduli
-server: browser e bundle frontend non ricevono modello, vettori o file indice.
-
-Il tooling può generare indici separati sotto `viewer/.local/`, directory
-ignorata da Git:
+## Standalone senza ChatNTC
 
 ```bash
-npm --prefix viewer run chatntc:semantic:index -- --provider flagembedding-http --embedding-url http://127.0.0.1:8091 --output .local/chatntc-semantic-flagembedding
-npm --prefix viewer run chatntc:semantic:validate -- --provider flagembedding-http --embedding-url http://127.0.0.1:8091 --output .local/chatntc-semantic-flagembedding
+npm ci
+npm run sync:corpus
+npm run dev
 ```
 
-Corpus e query devono usare esattamente lo stesso modello, digest/versione,
-dimensioni e normalizzazione. Ogni modifica del corpus richiede di rigenerare
-l'indice. Formato, validazioni, opzioni Ollama e limiti dello step sono descritti
-in [ChatNTC semantic index](../docs/chatntc-semantic-index.md).
+Il viewer funziona senza provider e senza ChatNTC. Il PDF ufficiale è un
+ausilio locale/debug e non entra nel build pubblico o nel package.
 
-Exact references, candidate policy, RRF e structural expansion restano nel
-percorso canonico esistente.
+## ChatNTC self-hosted
 
-Il packaging Docker production-like (ChatNTC lexical di default; BGE-M3
-opzionale su rete privata, indice e cache modello esterni) è documentato in
-[`deploy/chatntc`](../deploy/chatntc/README.md). Non è richiesto dallo sviluppo
-normale e non costituisce un deployment cloud.
-
-## Viewer standalone
+Dal root della repository:
 
 ```bash
 npm run dev
-npm run build
+```
+
+Il launcher abilita ChatNTC e vincola il server a `127.0.0.1`. In alternativa,
+copiando `viewer/.env.example` in `viewer/.env.local`, impostare:
+
+```dotenv
+CHATNTC_ENABLED=true
+CHATNTC_PROVIDER=deepseek
+CHATNTC_DEEPSEEK_API_KEY=
+CHATNTC_SEMANTIC_MODE=off
+```
+
+La chiave può restare vuota se l'utente usa la UI BYOK. Le chiavi environment
+rimangono server-side; quelle UI rimangono in memoria e viaggiano in un header
+stessa origine, mai nel body o nella history.
+
+Pipeline standard:
+
+```text
+query → lexical retrieval → structural expansion → Evidence Package
+      → LLM → Citation Validator → risposta verificata
+```
+
+Dettagli: [overview](../docs/chatntc-core.md),
+[self-hosting](../docs/chatntc-server.md),
+[BYOK](../docs/chatntc-byok.md) e
+[history](../docs/chatntc-history.md).
+
+## Semantic retrieval sperimentale
+
+`CHATNTC_SEMANTIC_MODE=off|shadow|on`; il default è `off`.
+
+- `off`: percorso lessicale standard, nessun indice o embedding;
+- `shadow`: calcolo semantic osservazionale, output lessicale invariato;
+- `on`: ranking fuso RRF con fallback lessicale.
+
+Gli adapter BGE-M3 HTTP e Ollama, i generatori indice e i benchmark sono
+strumenti opt-in. BGE-M3 non è una dipendenza obbligatoria del viewer o di
+ChatNTC. Vedere la
+[documentazione semantic](../docs/chatntc-semantic-index.md).
+
+## Sviluppo e verifica
+
+```bash
+npm ci
+npm run lint
 npm test
+npm run check
+npm run pack:verify
+npm run test:consumer
 ```
 
-La route `/` usa il viewer comparato. In locale o debug il pannello PDF è
-opzionale e sincronizzato alla prima pagina evidence
-dell’unità attiva; PDF.js e il file PDF vengono caricati solo dopo l’azione
-esplicita “Apri PDF ufficiale”. Nel build web di produzione il pannello non è
-presente.
+`check` costruisce app e libreria ed esegue test viewer, ChatNTC, history,
+semantic e boundary. `pack:verify` mostra il contenuto effettivo del tarball.
+`test:consumer` crea tarball reali di entrambi i package, li installa in una
+nuova app Next e verifica viewer, export ChatNTC runtime e tipi pubblici.
 
-### Baseline prestazionale
-
-La baseline browser ripetibile usa il build production e Chrome DevTools
-Protocol senza dipendenze aggiuntive. Ogni modalità viene aperta in un contesto
-isolato con cache HTTP disabilitata e rete Fast 4G simulata (150 ms, 1,6 Mbps in
-download, 750 Kbps in upload):
-
-```bash
-npm run performance:baseline
-```
-
-Il risultato machine-readable viene scritto in
-`reports/performance-baseline.json`. È possibile scegliere browser, URL di un
-server già avviato o destinazione con `SCV_CHROMIUM_PATH`, `SCV_BASE_URL` e
-`SCV_BASELINE_OUTPUT`.
-
-La ricerca testuale usa un Web Worker dedicato e scarica il relativo indice
-invertito soltanto dopo una query non numerica di almeno due caratteri. I
-riferimenti esatti (`7.3.3.3`, `§7.3.3.3`, `C7.3.3.2`) usano invece le mappe
-dei document index già caricati e non richiedono l’indice full-text. Il numero
-massimo di risultati si configura con la prop `searchMaxResults`.
-
-Il confronto ripetibile tra la precedente scansione lineare e il nuovo engine
-si esegue con:
-
-```bash
-npm run performance:search
-```
-
-Il report viene scritto in `reports/search-phase-two.json`; il numero di
-iterazioni può essere impostato con `SCV_SEARCH_BENCHMARK_RUNS`.
-
-### Riferimenti, permalink e citazioni
-
-I riferimenti normativi affidabili nel testo sono pulsanti accessibili. Hover
-o focus caricano una sola volta il compatto `cross-reference-index.json` per
-mostrare titolo e snippet, senza scaricare il chunk del target. Il click usa lo
-stesso caricamento progressivo del viewer: se il target è già montato lo scroll
-è immediato; altrimenti viene richiesto prima il suo chunk e subito dopo la
-finestra adiacente necessaria alla continuità di lettura. L'indice dei
-backlink e le relazioni editoriali sono caricati soltanto quando si apre il
-pannello “Richiami” e sono presentati in sezioni distinte.
-
-I permalink conservano `unit` e, quando presenti, `block`, `asset` e
-`assetKind` (`formula`, `table` o `figure`). La navigazione fra riferimenti usa
-la history del browser, quindi avanti e indietro ripristinano anche modalità e
-target. La barra contestuale permette di copiare testo, link e citazione; per
-una formula già caricata espone anche il LaTeX. Nessuno di questi strumenti
-carica l'indice full-text della ricerca.
-
-## Package
-
-La prerelease non viene pubblicata da questo repository. Per una futura
-pubblicazione, dopo review:
-
-```bash
-npm run build:library
-npm pack
-npm publish --access public
-```
-
-Il tarball contiene soltanto `package-dist/`, CSS, README e metadati del
-package; non contiene app standalone, route locale, test, cache, corpus
-completo o `pdfjs-dist`.
+Il tarball deve contenere soltanto `package-dist/`, README, licenza, notice e
+manifest. Sono vietati `app/`, `server/`, test, PDF, corpus completo, `.env`,
+cache, indici semantic e output standalone.

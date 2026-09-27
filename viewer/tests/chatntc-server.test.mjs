@@ -200,8 +200,8 @@ test("configurazione: provider, chiave, modello e timeout sono solo server-side"
     [{ ...enabled, CHATNTC_DEEPSEEK_TIMEOUT_MS: "NaN" }, "INVALID_PROVIDER_CONFIG"]]) {
     assert.throws(() => configuredProvider(env), (error) => error.code === code);
   }
-  assert.equal(chatNTCEnabled({ ...enabled, NODE_ENV: "production" }), false);
-  assert.equal(chatNTCEnabled({ ...enabled, NODE_ENV: "production", CHATNTC_DEBUG: "true" }), true);
+  assert.equal(chatNTCEnabled({ ...enabled, NODE_ENV: "production" }), true);
+  assert.equal(chatNTCEnabled({ CHATNTC_ENABLED: "false", NODE_ENV: "production" }), false);
   assert.equal(chatNTCEnabled({ NODE_ENV: "development" }), false);
 });
 
@@ -873,8 +873,8 @@ for (const [name, value] of [
   assert.equal(JSON.parse(text).error.code, "INVALID_REQUEST");
 });
 
-test("HTTP disabilitata fuori dalla modalità consentita, prima di leggere body o configurazione", async () => {
-  for (const env of [{ NODE_ENV: "production" }, { ...enabled, NODE_ENV: "production" }, { NODE_ENV: "development", CHATNTC_ENABLED: "false" }]) {
+test("HTTP disabilitata senza opt-in, prima di leggere body o configurazione", async () => {
+  for (const env of [{ NODE_ENV: "production" }, { NODE_ENV: "production", CHATNTC_ENABLED: "false" }, { NODE_ENV: "development", CHATNTC_ENABLED: "false" }]) {
     const post = handler({ environment: () => env, repository: () => { throw new Error("must not retrieve"); }, provider: () => { throw new Error("must not configure"); } });
     const response = await post(request(null, { body: "not json" }));
     assert.equal(response.status, 404);
@@ -925,8 +925,7 @@ test("HTTP mappa errori distinti senza restituire output o citazioni non validat
 
 test("gli errori pubblici non espongono diagnostica di reference processing", () => {
   const error = new ChatNTCServerError("VALIDATION_FAILED");
-  assert.equal(publicError(error, false).body.error.diagnostics, undefined);
-  assert.equal(publicError(error, true).body.error.diagnostics, undefined);
+  assert.equal(publicError(error).body.error.diagnostics, undefined);
 });
 
 test("server-only impedisce l'import dell'adapter in condizioni client/Node ordinarie", () => {
@@ -1177,7 +1176,7 @@ test("BYOK: origine obbligatoria, provider abbinato alla chiave, URL remoto viet
   assert.equal((await unpaired.json()).error.code, "INVALID_PROVIDER_CONFIG");
   const remote = await post(new Request("https://example.org/api/chatntc", { method: "POST", headers: base, body: JSON.stringify({ question }) }));
   assert.equal((await remote.json()).error.code, "LOCAL_ONLY");
-  const disabled = await handler({ environment: () => ({ ...enabled, NODE_ENV: "production" }) })(request({ question }, { headers: base }));
+  const disabled = await handler({ environment: () => ({ ...enabled, CHATNTC_ENABLED: "false", NODE_ENV: "production" }) })(request({ question }, { headers: base }));
   assert.equal(disabled.status, 404);
   assert.throws(() => configuredProvider(enabled, fetch, { provider: "openai", model: "manual" }), (error) => error.code === "API_KEY_MISSING", "never reuse another provider's environment key");
 });

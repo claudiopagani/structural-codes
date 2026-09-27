@@ -97,7 +97,7 @@
         "check": "npm run validate && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
         "check:ci": "npm run validate:ci && npm run verify:evidence && npm run typecheck && npm run lint && npm test",
         "release:verify:package": "npm run build:package && node scripts/verify-release.mjs",
-        "release:verify": "npm run check && npm run verify:evidence:release && npm run audit:production && npm run viewer:check && npm run viewer:audit:production && npm run release:verify:package",
+        "release:verify": "npm run check && npm run verify:evidence:release && npm run audit:production && npm run viewer:check && npm run viewer:audit:production && npm run release:verify:package && npm --prefix viewer run pack:verify && npm --prefix viewer run test:consumer",
         "prepack": "npm run build:package"
     },
     "dependencies": {

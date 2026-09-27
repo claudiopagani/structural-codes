@@ -36,5 +36,6 @@ Thumbs.db
 *.log
 *.tgz
 
-# Production-like ChatNTC deployment configuration (example stays versioned).
-/deploy/chatntc/.env.production
+# Local ChatNTC deployment configuration (examples stay versioned).
+/deploy/chatntc/.env.*
+!/deploy/chatntc/.env.self-hosted.example

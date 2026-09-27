@@ -96,7 +96,7 @@ function classify(error: unknown, fallbackKind: ChatNTCSemanticFailureKind, fall
 }
 
 /**
- * The reader from STEP 2 remains authoritative. This closure caches one fully
+ * The validated index reader remains authoritative. This closure caches one fully
  * validated snapshot; a changed path/config creates a new key, while callers
  * can explicitly invalidate the current snapshot.
  */

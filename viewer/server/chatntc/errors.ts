@@ -1,6 +1,6 @@
 import "server-only";
 export const CHATNTC_ERRORS = {
-  CHATNTC_DISABLED: [404, "ChatNTC disponibile solo in modalità locale/debug esplicitamente abilitata."],
+  CHATNTC_DISABLED: [404, "ChatNTC non è abilitato in questa installazione."],
   LOCAL_ONLY: [403, "ChatNTC è disponibile solo tramite un indirizzo locale."],
   ORIGIN_NOT_ALLOWED: [403, "Origine della richiesta non consentita."],
   INVALID_REQUEST: [400, "Domanda o storico non conformi al contratto HTTP ChatNTC."],
@@ -50,8 +50,7 @@ export class ChatNTCServerError extends Error {
   }
 }
 
-export function publicError(error: unknown, debug = false) {
-  void debug; // Reserved for infrastructure diagnostics; reference diagnostics are returned only on successful debug results.
+export function publicError(error: unknown) {
   const code = error instanceof ChatNTCServerError && Object.hasOwn(CHATNTC_ERRORS, error.code) ? error.code : "INTERNAL_ERROR";
   // Reconstruct from the allowlist even if a thrown error's message was mutated.
   return { status: CHATNTC_ERRORS[code][0], body: { ok: false as const, error: { code, category: errorCategory(code), message: CHATNTC_ERRORS[code][1],
