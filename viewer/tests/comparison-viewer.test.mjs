@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdir, readFile } from "node:fs/promises";
-import { groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
+import { groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasTrailingMath, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
 async function render(pathname) {
@@ -52,6 +52,29 @@ test("multi-symbol math labels keep the complete label aligned", () => {
     { kind: "text", value: " sono i valori della domanda;" },
   ];
   assert.equal(leadingMathLabelEnd(inline), 5);
+});
+
+test("le formule terminali degli elenchi usano un layout strutturale", async () => {
+  const unit = JSON.parse(await readFile(new URL("../../corpus/units/circ2019/c7.6.8.json", import.meta.url), "utf8"));
+  const items = unit.blocks.filter((block) => block.kind === "list-item");
+  assert.equal(items.length, 2);
+  assert.equal(items.every(hasTrailingMath), true);
+  assert.equal(hasTrailingMath({
+    kind: "list-item",
+    text: { normalized: "testo x;", inline: [
+      { kind: "text", value: "testo " },
+      { kind: "math", value: "x", latex: "x" },
+      { kind: "text", value: ";" },
+    ] },
+  }), true);
+  assert.equal(hasTrailingMath({
+    kind: "list-item",
+    text: { normalized: "testo x seguito", inline: [
+      { kind: "text", value: "testo " },
+      { kind: "math", value: "x", latex: "x" },
+      { kind: "text", value: " seguito" },
+    ] },
+  }), false);
 });
 
 test("le voci αu/α1 mantengono il marker ufficiale anche con chunk legacy", () => {
@@ -369,7 +392,10 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.scv-note-content > p \{[^}]*text-align: justify/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*margin: 0 0 8px[^}]*text-align: justify/);
-  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol-tabbed p \{[^}]*grid-template-columns: 14px 26em max-content/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol p \{[^}]*grid-template-columns: 14px minmax\(0, 1fr\) max-content/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol p > \.inline-keep-punct \{[^}]*align-self: end/);
+  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol\.list-item-without-marker p \{[^}]*grid-template-columns: minmax\(0, 1fr\) max-content/);
+  assert.doesNotMatch(styles, /list-item-with-trailing-symbol-tabbed|grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);

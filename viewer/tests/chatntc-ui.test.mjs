@@ -49,12 +49,13 @@ const props = (custom = {}) => ({ transport: transport(), context, onNavigate: (
 async function mount(element) { root = createRoot(rootElement); await act(async () => { root.render(element); }); }
 async function click(element) { assert.ok(element, "missing click target"); await act(async () => { element.click(); }); }
 function button(text) { return [...rootElement.querySelectorAll("button")].find((item) => item.textContent === text); }
+function action(label) { return rootElement.querySelector(`button[aria-label="${label}"]`); }
 async function input(value) { await act(async () => {
   const element = rootElement.querySelector("textarea");
   Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set.call(element, value);
   element.dispatchEvent(new window.Event("input", { bubbles: true }));
 }); }
-async function submit(question = "Domanda di test") { await input(question); await click(button("Invia")); }
+async function submit(question = "Domanda di test") { await input(question); await click(action("Invia domanda")); }
 afterEach(async () => {
   if (root) await act(async () => root.unmount());
   root = undefined; calls.length = 0; navigate.length = 0;
@@ -62,13 +63,10 @@ afterEach(async () => {
   window.history.replaceState(null, "", "/");
 });
 
-test("pannello: import, mount, composizione e suggerimento non chiamano AI", async () => {
+test("pannello: import, mount e composizione non chiamano AI", async () => {
   await mount(h(ChatNTCPanel, props()));
-  assert.match(rootElement.textContent, /Da quale riferimento/);
+  assert.match(rootElement.textContent, /Fai una domanda sulle NTC 2018 o sulla Circolare 7\/2019\./);
   await input("Testo senza invio");
-  await click(button("Spiegami questo paragrafo"));
-  assert.equal(rootElement.querySelector("textarea").value, "Spiegami questo paragrafo");
-  assert.equal(document.activeElement, rootElement.querySelector("textarea"));
   assert.equal(calls.length, 0);
 });
 
@@ -183,7 +181,7 @@ test("skeleton stabile diventa una risposta animata conservando la posizione di 
   assert.ok(loading);
   assert.match(loading.textContent, /Sto consultando la normativa/u);
   assert.equal(loading.querySelectorAll(".scv-chat-loading-lines i").length, 4);
-  assert.ok(button("Interrompi"));
+  assert.ok(action("Interrompi risposta"));
   const log = rootElement.querySelector(".scv-chat-messages");
   log.scrollTop = 43;
   await act(async () => finish(resultV3()));
@@ -212,6 +210,11 @@ test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", 
   assert.match(styles, /@media \(max-width:\s*820px\)[\s\S]*\.scv-auxiliary-pane[^}]*position:\s*fixed/u);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-answer-enter\s*\{\s*animation:\s*none/su);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-loading-lines i\s*\{\s*animation:\s*none/su);
+  assert.match(styles, /\.scv-chat textarea\s*\{[^}]*max-height:\s*min\(33dvh,\s*240px\)[^}]*transition:\s*height 150ms ease/su);
+  assert.match(styles, /\.scv-chat-history-accordion\s*\{[^}]*grid-template-rows:\s*0fr[^}]*transition:/su);
+  assert.match(styles, /\.scv-tools-header \[aria-selected="true"\]\s*\{[^}]*background:\s*var\(--scv-primary\)/su);
+  assert.match(styles, /\.scv-chat-history-actions button\[aria-expanded="true"\]\s*\{[^}]*background:\s*var\(--scv-primary\)/su);
+  assert.match(styles, /\.scv-tools-header button\s*\{[^}]*height:\s*42px/su);
 });
 
 for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABELS)) test(`classificazione ${classification} visibile e discreta`, async () => {
@@ -221,13 +224,12 @@ for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABE
   if (classification === "no-direct-reference") assert.equal(rootElement.querySelectorAll(".scv-chat-citations a").length, 0);
 });
 
-test("paragrafo corrente: invia solo ID/numbering, inclusa selezione, senza chunk", async () => {
+test("il contesto corrente non compare nella UI e non viene allegato implicitamente", async () => {
   await mount(h(ChatNTCPanel, props({ context: { ...context, blockId: "fixture-block" } })));
-  await click(button("Spiegami questo paragrafo"));
-  await click(button("Invia"));
-  assert.deepEqual(calls[0].request.context, { ...context, blockId: "fixture-block" });
-  assert.equal(calls[0].request.question, "Spiegami questo paragrafo");
-  assert.equal(JSON.stringify(calls[0].request).includes("chunk"), false);
+  assert.equal(rootElement.querySelector(".scv-chat-context"), null);
+  assert.equal(button("Spiegami questo paragrafo"), undefined);
+  await submit();
+  assert.equal(calls[0].request.context, undefined);
 });
 
 test("errore infrastrutturale leggibile e domanda recuperabile", async () => {
@@ -244,7 +246,7 @@ test("stop e nuova chat annullano richieste e ignorano risposte tardive", async 
   await mount(h(ChatNTCPanel, props({ transport: transport(() => new Promise((done) => { resolve = done; })) })));
   await submit();
   assert.ok(rootElement.querySelector(".scv-chat-loading"));
-  await click(button("Interrompi"));
+  await click(action("Interrompi risposta"));
   assert.equal(rootElement.querySelector(".scv-chat-loading"), null);
   assert.equal(calls[0].options.signal.aborted, true);
   await act(async () => resolve(result()));
@@ -256,15 +258,76 @@ test("stop e nuova chat annullano richieste e ignorano risposte tardive", async 
   assert.equal(rootElement.querySelectorAll(".scv-chat-turn").length, 0);
 });
 
-test("tastiera multilinea e storico minimo in memoria; nuova chat azzera il contesto conversazionale", async () => {
+test("Enter invia, Shift+Enter non invia e IME composition non invia accidentalmente", async () => {
   await mount(h(ChatNTCPanel, props()));
-  await input("Prima domanda\ncon seconda riga");
-  await act(async () => rootElement.querySelector("textarea").dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", ctrlKey: true, bubbles: true })));
+  const textarea = rootElement.querySelector("textarea");
+  await input("Prima domanda");
+  await act(async () => textarea.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", shiftKey: true, bubbles: true, cancelable: true })));
+  assert.equal(calls.length, 0);
+  await act(async () => textarea.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", isComposing: true, bubbles: true, cancelable: true })));
+  assert.equal(calls.length, 0);
+  await act(async () => textarea.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true })));
+  assert.equal(calls.length, 1);
   await submit("Seconda domanda");
   assert.equal(calls[1].request.history.length, 2);
   await click(button("Nuova chat"));
   await submit("Ripartenza");
   assert.deepEqual(calls[2].request.history, []);
+});
+
+test("composer auto-growing: una riga, crescita, limite, overflow e ritorno compatto", async () => {
+  await mount(h(ChatNTCPanel, props()));
+  const textarea = rootElement.querySelector("textarea");
+  let scrollHeight = 44;
+  Object.defineProperty(textarea, "scrollHeight", { configurable: true, get: () => scrollHeight });
+  await input("Una riga");
+  assert.equal(textarea.rows, 1);
+  assert.equal(textarea.style.height, "44px");
+  assert.equal(textarea.style.overflowY, "hidden");
+  scrollHeight = 110;
+  await input("Prima riga\nSeconda riga\nTerza riga");
+  assert.equal(textarea.style.height, "110px");
+  assert.equal(textarea.style.overflowY, "hidden");
+  scrollHeight = 500;
+  await input("Testo molto lungo\n".repeat(30));
+  assert.equal(textarea.style.height, "240px");
+  assert.equal(textarea.style.overflowY, "auto");
+  scrollHeight = 44;
+  await input("");
+  assert.equal(textarea.style.height, "44px");
+  assert.equal(textarea.style.overflowY, "hidden");
+});
+
+test("composer usa un solo controllo iconico send/stop e mostra il disclaimer esatto", async () => {
+  let finish;
+  await mount(h(ChatNTCPanel, props({ transport: transport(() => new Promise((resolve) => { finish = resolve; })) })));
+  assert.ok(action("Invia domanda"));
+  assert.equal(action("Invia domanda").disabled, true);
+  await input("Domanda");
+  assert.equal(action("Invia domanda").disabled, false);
+  await click(action("Invia domanda"));
+  assert.equal(action("Invia domanda"), null);
+  assert.ok(action("Interrompi risposta"));
+  assert.equal(rootElement.querySelectorAll(".scv-chat-action-button").length, 1);
+  assert.equal(rootElement.querySelector(".scv-chat-disclaimer").textContent,
+    "ChatNTC è un sistema di IA e può commettere errori. Verifica sempre le fonti normative. Non sostituisce il giudizio professionale.");
+  await act(async () => finish(result()));
+});
+
+test("la variante con cronologia assegna lo spazio elastico ai messaggi e il composer all'ultima riga", async () => {
+  await mount(h(ChatNTCPanel, props({ showNewChatAction: false })));
+  assert.equal(rootElement.querySelector(".scv-chat").classList.contains("scv-chat-has-actions"), false);
+  assert.equal(rootElement.querySelector(".scv-chat").children[0].className, "scv-chat-messages");
+  assert.equal(rootElement.querySelector(".scv-chat").lastElementChild.className, "scv-chat-composer");
+});
+
+test("la UI rimossa non è presente", async () => {
+  await mount(h(ChatNTCPanel, props()));
+  for (const removed of ["La tua domanda", "Spiegami questo paragrafo", "Usa il paragrafo corrente", "Ctrl/⌘ + Invio per inviare"]) {
+    assert.equal(rootElement.textContent.includes(removed), false);
+  }
+  assert.equal(button("Invia"), undefined);
+  assert.equal(rootElement.querySelector(".scv-chat-header"), null);
 });
 
 test("LocalChatTransport: nessuna chiamata nel costruttore, request e cancellazione corrette", async () => {
@@ -357,17 +420,17 @@ test("viewer: apertura/chiusura, contesto reale, slash nell'input e citation cli
   });
   await mount(h(NormativeViewer, { defaultMode: "combined", auxiliaryPanelLabel: "Strumenti", auxiliaryPanelKeepMounted: true, auxiliaryPanelModes: ["ntc", "circ", "combined"],
     auxiliaryPanel: (ctx) => h(ViewerToolsDock, { context: ctx, chatTransport: mock, pdfEnabled: true }) }));
-  await waitFor(() => rootElement.querySelector(".scv-chat-context")?.textContent.includes("7.3.6.1"));
+  await waitFor(() => rootElement.querySelector(".scv-chat textarea"));
   assert.equal(rootElement.querySelector(".scv-auxiliary-pane").hidden, true);
   await click(button("Apri Strumenti"));
   assert.equal(rootElement.querySelector(".scv-auxiliary-pane").hidden, false);
-  await click(button("Spiegami questo paragrafo"));
   const textarea = rootElement.querySelector("textarea");
   const slash = new KeyboardEvent("keydown", { key: "/", bubbles: true, cancelable: true });
   await act(async () => textarea.dispatchEvent(slash));
   assert.equal(slash.defaultPrevented, false);
-  await click(button("Invia"));
-  assert.deepEqual(calls[0].request.context, context);
+  await input("Domanda dal viewer");
+  await click(action("Invia domanda"));
+  assert.equal(calls[0].request.context, undefined);
   await click(rootElement.querySelector('.scv-chat-citations a'));
   await waitFor(() => rootElement.querySelector(`[data-scv-text-unit="${destination}"]`));
   assert.equal(targetFromUrl(new URL(window.location.href)).unitId, destination);
@@ -466,15 +529,40 @@ function historyStore(t) {
   return { store, options };
 }
 async function readyHistory() { await waitFor(() => button("Nuova chat") && !button("Nuova chat").disabled); }
-async function settledHistory() { await waitFor(() => rootElement.querySelector(".scv-chat-history-toolbar [role=status]")?.textContent === "Solo in questo browser"); }
-async function toggleHistory() { await click([...rootElement.querySelectorAll("button")].find((b) => b.textContent.startsWith("Conversazioni ("))); }
+async function settledHistory() { await waitFor(() => rootElement.querySelector(".scv-chat-history-shell")?.dataset.historyState === "idle"); }
+async function toggleHistory() { await click(button("Cronologia chat")); }
+
+test("fascia ChatNTC: icone, accordion alternativi e nessuna etichetta browser", async (t) => {
+  const { store } = historyStore(t);
+  const configuration = new LocalAIConfiguration();
+  await mount(h(ChatNTCHistoryPanel, { ...props(), historyStore: store, settings: h(AISettings, { configuration, embedded: true }) }));
+  await readyHistory();
+  const actions = rootElement.querySelector(".scv-chat-history-actions");
+  assert.deepEqual([...actions.querySelectorAll("button")].map((item) => item.textContent), ["Nuova chat", "Cronologia chat", "Impostazioni AI"]);
+  assert.equal(actions.querySelectorAll(".scv-chat-control-icon").length, 3);
+  assert.equal(rootElement.textContent.includes("Solo in questo browser"), false);
+  await click(button("Cronologia chat"));
+  assert.equal(button("Cronologia chat").getAttribute("aria-expanded"), "true");
+  assert.equal(button("Impostazioni AI").getAttribute("aria-expanded"), "false");
+  await click(button("Impostazioni AI"));
+  assert.equal(button("Cronologia chat").getAttribute("aria-expanded"), "false");
+  assert.equal(rootElement.querySelector(".scv-chat-history-accordion").dataset.expanded, "false");
+  assert.equal(button("Impostazioni AI").getAttribute("aria-expanded"), "true");
+  assert.equal(rootElement.querySelector(".scv-chat-settings-accordion").dataset.expanded, "true");
+  await act(async () => rootElement.querySelector(".scv-ai-form select").dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })));
+  assert.equal(button("Impostazioni AI").getAttribute("aria-expanded"), "false");
+  await act(async () => new Promise((resolve) => window.requestAnimationFrame(resolve)));
+  assert.equal(document.activeElement?.textContent, "Impostazioni AI");
+});
 
 test("history UI: first question creates local title, reload restores active response/citations without AI", async (t) => {
   const { store, options } = historyStore(t);
   await mount(h(ChatNTCHistoryPanel, { ...props(), historyStore: store, currentCorpusFingerprint: "fixture-corpus" }));
   await readyHistory();
   assert.equal(calls.length, 0);
+  assert.equal(rootElement.querySelector(".scv-chat-history-accordion").dataset.expanded, "false");
   await toggleHistory(); assert.match(rootElement.textContent, /Nessuna conversazione salvata/);
+  assert.equal(rootElement.querySelector(".scv-chat-history-accordion").dataset.expanded, "true");
   await toggleHistory();
   await submit("  Prima domanda locale  "); await settledHistory();
   assert.equal(rootElement.querySelector(".scv-chat-answer").dataset.entrance, "new");
@@ -507,15 +595,26 @@ test("history UI: two independent chats, selection, rename, deletion and confirm
   await toggleHistory();
   await click([...rootElement.querySelectorAll(".scv-chat-history-list li button")].find((b) => b.textContent.startsWith("Prima conversazione")));
   await readyHistory();
+  assert.equal(rootElement.querySelector(".scv-chat-history-accordion").dataset.expanded, "false");
   assert.equal(rootElement.querySelectorAll(".scv-chat-turn").length, 1);
   assert.match(rootElement.querySelector(".scv-chat-question").textContent, /Prima conversazione/);
-  await click(button("Rinomina"));
+  await click(action("Rinomina conversazione"));
+  await act(async () => {
+    const element = rootElement.querySelector('[aria-label="Titolo conversazione"]');
+    Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set.call(element, "Titolo annullato");
+    element.dispatchEvent(new Event("input", { bubbles: true }));
+    element.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true, cancelable: true }));
+  });
+  assert.equal(rootElement.querySelector('[aria-label="Titolo conversazione"]'), null);
+  assert.equal((await store.getConversation(await store.getActiveConversationId())).title, "Prima conversazione");
+  await click(action("Rinomina conversazione"));
   await act(async () => {
     const element = rootElement.querySelector('[aria-label="Titolo conversazione"]');
     Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set.call(element, "Titolo manuale");
     element.dispatchEvent(new Event("input", { bubbles: true }));
   });
-  await click(button("Salva titolo")); await readyHistory();
+  await act(async () => rootElement.querySelector('[aria-label="Titolo conversazione"]').dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true })));
+  await readyHistory();
   assert.equal((await store.listConversations())[0].title, "Titolo manuale");
   await submit("Seguito"); await settledHistory();
   assert.equal(calls[2].request.history[0].content, "Prima conversazione");
@@ -736,9 +835,11 @@ test("standalone local BYOK: settings and PDF coexist without automatic AI calls
   assert.equal(rootElement.querySelector('input[type=password]').value, "");
   const toggle = rootElement.querySelector(".scv-tools-toggle");
   if (toggle.getAttribute("aria-expanded") === "false") await click(toggle);
-  await click(rootElement.querySelector(".scv-ai-settings summary"));
-  assert.equal(rootElement.querySelector(".scv-ai-settings").open, true);
+  assert.equal(rootElement.querySelector(".scv-tools-header .scv-ai-settings"), null);
+  assert.ok(rootElement.querySelector(".scv-tools-close .scv-tools-close-icon"));
+  await click(button("Impostazioni AI"));
+  assert.equal(button("Impostazioni AI").getAttribute("aria-expanded"), "true");
   await act(async () => rootElement.querySelector('input[type=password]').dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })));
-  assert.equal(rootElement.querySelector(".scv-ai-settings").open, false);
+  assert.equal(button("Impostazioni AI").getAttribute("aria-expanded"), "false");
   assert.equal(calls.length, 0);
 });

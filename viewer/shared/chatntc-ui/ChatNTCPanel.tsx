@@ -1,12 +1,13 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { viewerTargetForCitation } from "../chatntc/evidence.js";
 import type { ChatNTCClassification, ChatNTCReference, ChatNTCRetrievalContext, ChatNTCWarning } from "../chatntc/types.js";
 import type { ChatNTCMessage } from "../chatntc/provider.js";
 import type { ViewerTarget } from "../permalinks.js";
 import { ChatTransportError, type ChatResult, type ChatTransport } from "./transport.js";
 import { ChatNTCLoadingSkeleton } from "./ChatNTCLoadingSkeleton.js";
+import { NewChatIcon } from "./ChatNTCIcons.js";
 
 const loadChatNTCMarkdown = () => import("./ChatNTCMarkdown.js");
 const LazyChatNTCMarkdown = lazy(() => loadChatNTCMarkdown().then((module) => ({ default: module.ChatNTCMarkdown })));
@@ -72,11 +73,18 @@ export interface ChatNTCPanelProps {
   onTurnsChange?: (turns: ChatNTCTurn[]) => void;
   onNewChat?: () => void;
   historyEnabled?: boolean;
+  showNewChatAction?: boolean;
   disabled?: boolean;
   currentCorpusFingerprint?: string;
 }
 
-export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, initialTurns = [], onTurnsChange, onNewChat, historyEnabled = false, disabled = false, currentCorpusFingerprint }: ChatNTCPanelProps) {
+const chatDisclaimer = "ChatNTC è un sistema di IA e può commettere errori. Verifica sempre le fonti normative. Non sostituisce il giudizio professionale.";
+
+function SendIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>;
+}
+
+export function ChatNTCPanel({ transport, onNavigate, hrefForTarget, initialTurns = [], onTurnsChange, onNewChat, historyEnabled = false, showNewChatAction = true, disabled = false, currentCorpusFingerprint }: ChatNTCPanelProps) {
   const inputId = useId();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
@@ -88,11 +96,37 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
   const [freshAnswerIds, setFreshAnswerIds] = useState<ReadonlySet<string>>(() => new Set());
   const [dismissedReferenceWarnings, setDismissedReferenceWarnings] = useState<ReadonlySet<string>>(() => new Set());
   const [draft, setDraft] = useState("");
-  const [useContext, setUseContext] = useState(false);
   const [notice, setNotice] = useState("");
   const busy = turns.some((turn) => turn.status === "pending");
 
+  const resizeInput = useCallback(() => {
+    const input = inputRef.current;
+    if (!input) return;
+    const styles = window.getComputedStyle(input);
+    const minimum = Number.parseFloat(styles.minHeight) || 44;
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+    const maximum = Math.max(minimum, Math.min(viewportHeight * .33, 240));
+    const previous = input.getBoundingClientRect().height;
+    input.style.height = "auto";
+    const desired = Math.min(Math.max(input.scrollHeight, minimum), maximum);
+    input.style.overflowY = input.scrollHeight > maximum ? "auto" : "hidden";
+    if (previous > 0 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      input.style.height = `${previous}px`;
+      void input.offsetHeight;
+    }
+    input.style.height = `${desired}px`;
+  }, []);
+
   useEffect(() => () => { pendingRef.current?.controller.abort(); pendingRef.current = null; }, []);
+  useEffect(() => {
+    window.addEventListener("resize", resizeInput);
+    window.visualViewport?.addEventListener("resize", resizeInput);
+    return () => {
+      window.removeEventListener("resize", resizeInput);
+      window.visualViewport?.removeEventListener("resize", resizeInput);
+    };
+  }, [resizeInput]);
+  useLayoutEffect(resizeInput, [draft, resizeInput]);
   useLayoutEffect(() => {
     const action = scrollActionRef.current;
     const log = logRef.current;
@@ -131,23 +165,22 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     if (onNewChat) { stop(); onNewChat(); return; }
     pendingRef.current?.controller.abort();
     pendingRef.current = null;
-    updateTurns(() => []); setFreshAnswerIds(new Set()); setDismissedReferenceWarnings(new Set()); setDraft(""); setUseContext(false); setNotice("Nuova chat pronta.");
+    updateTurns(() => []); setFreshAnswerIds(new Set()); setDismissedReferenceWarnings(new Set()); setDraft(""); setNotice("Nuova chat pronta.");
     inputRef.current?.focus();
   }
   async function send() {
     const question = draft.trim();
-    if (disabled || !question || pendingRef.current || (useContext && !context)) return;
+    if (disabled || !question || pendingRef.current) return;
     const id = crypto.randomUUID();
     const controller = new AbortController();
     pendingRef.current = { id, controller };
-    const selected = useContext && context ? { ...context } : undefined;
     const history = recentHistory(turns);
     void loadChatNTCMarkdown();
     scrollActionRef.current = { kind: "reveal", id };
-    updateTurns((current) => [...current, { id, question, timestamp: new Date().toISOString(), context: selected, status: "pending" }]);
+    updateTurns((current) => [...current, { id, question, timestamp: new Date().toISOString(), status: "pending" }]);
     setDraft(""); setNotice("");
     try {
-      const result = await transport.send({ question, history, ...(selected ? { context: selected } : {}) }, { signal: controller.signal });
+      const result = await transport.send({ question, history }, { signal: controller.signal });
       if (pendingRef.current?.id !== id) return;
       scrollActionRef.current = { kind: "preserve", top: logRef.current?.scrollTop ?? 0 };
       setFreshAnswerIds((current) => new Set(current).add(id));
@@ -164,14 +197,14 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
     }
   }
 
-  return <section className="scv-chat" aria-label="ChatNTC">
-    <header className="scv-chat-header"><div><h2>ChatNTC</h2><p>Domande sul corpus normativo</p></div><button type="button" disabled={disabled} onClick={newChat}>Nuova chat</button></header>
+  return <section className={`scv-chat${showNewChatAction ? " scv-chat-has-actions" : ""}`} aria-label="ChatNTC">
+    {showNewChatAction && <div className="scv-chat-actions"><button type="button" disabled={disabled} onClick={newChat}><NewChatIcon />Nuova chat</button></div>}
     <div className="scv-chat-messages" role="log" aria-label="Messaggi ChatNTC" aria-live="polite" aria-relevant="additions text" ref={logRef}>
-      {turns.length === 0 && <div className="scv-chat-empty"><strong>Da quale riferimento partiamo?</strong><p>Fai una domanda su NTC e Circolare, oppure usa il paragrafo aperto nel viewer.</p><small>Le risposte distinguono fonti e interpretazioni. {historyEnabled ? "La cronologia è salvata solo in questo browser." : "La chat resta solo in questa pagina."}</small></div>}
+      {turns.length === 0 && <p className="scv-chat-empty">Fai una domanda sulle NTC 2018 o sulla Circolare 7/2019.</p>}
       {turns.map((turn) => <div className="scv-chat-turn" data-chat-turn-id={turn.id} key={turn.id} ref={(element) => {
         if (element) turnRefs.current.set(turn.id, element); else turnRefs.current.delete(turn.id);
       }}>
-        <article className="scv-chat-question" aria-label="La tua domanda"><small>Tu{turn.context ? ` · ${contextLabel(turn.context)}` : " · domanda generica"}</small><p>{turn.question}</p></article>
+        <article className="scv-chat-question" aria-label="Domanda utente">{turn.context && <small>{contextLabel(turn.context)}</small>}<p>{turn.question}</p></article>
         {turn.status === "pending" && <ChatNTCLoadingSkeleton />}
         {turn.status === "cancelled" && <p className="scv-chat-meta">Richiesta interrotta.</p>}
         {turn.error && <p className="scv-chat-error" role="alert">{turn.error}</p>}
@@ -213,13 +246,14 @@ export function ChatNTCPanel({ transport, context, onNavigate, hrefForTarget, in
       </div>)}
     </div>
     <form className="scv-chat-composer" onSubmit={(event) => { event.preventDefault(); void send(); }}>
-      <div className="scv-chat-context"><label><input type="checkbox" checked={useContext} disabled={!context || busy} onChange={(event) => setUseContext(event.target.checked)} />Usa il paragrafo corrente</label><span>{context ? contextLabel(context) : "Seleziona un paragrafo nel viewer"}{context?.assetId ? " · asset selezionato" : context?.blockId ? " · passaggio selezionato" : ""}</span></div>
-      <button type="button" className="scv-chat-suggestion" disabled={!context || busy} onClick={() => { setUseContext(true); setDraft("Spiegami questo paragrafo"); inputRef.current?.focus(); }}>Spiegami questo paragrafo</button>
-      <label htmlFor={inputId}>La tua domanda</label>
-      <textarea id={inputId} ref={inputRef} rows={3} maxLength={4000} value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Scrivi una domanda o un riferimento…" onKeyDown={(event) => {
-        if ((event.ctrlKey || event.metaKey) && event.key === "Enter" && !event.nativeEvent.isComposing) { event.preventDefault(); void send(); }
-      }} aria-describedby={`${inputId}-hint`} />
-      <div className="scv-chat-send"><small id={`${inputId}-hint`}>Ctrl/⌘ + Invio per inviare</small>{busy && transport.capabilities.cancellation ? <button type="button" onClick={stop}>Interrompi</button> : <button type="submit" disabled={disabled || busy || !draft.trim() || (useContext && !context)}>{busy ? "In attesa…" : "Invia"}</button>}</div>
+      <div className="scv-chat-composer-bar">
+        <textarea id={inputId} ref={inputRef} rows={1} maxLength={4000} value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Scrivi una domanda…" onKeyDown={(event) => {
+          if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing && event.keyCode !== 229) { event.preventDefault(); void send(); }
+        }} aria-label="Scrivi una domanda" />
+        {busy ? <button className="scv-chat-action-button" type="button" aria-label="Interrompi risposta" disabled={!transport.capabilities.cancellation} onClick={stop}><span className="scv-chat-stop-icon" aria-hidden="true" /></button>
+          : <button className="scv-chat-action-button" type="submit" aria-label="Invia domanda" disabled={disabled || !draft.trim()}><SendIcon /></button>}
+      </div>
+      <p className="scv-chat-disclaimer">{chatDisclaimer}</p>
       <span className="scv-chat-live" role="status">{notice}</span>
     </form>
   </section>;

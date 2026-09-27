@@ -4,7 +4,7 @@ import { LocalAIConfiguration } from "./LocalAIConfiguration";
 import { PROVIDERS, isProviderId, modelCapabilities, type ProviderId } from "./providerRegistry";
 
 /** Standalone composition only; never exported by structural-codes-viewer. */
-export function AISettings({ configuration }: { configuration: LocalAIConfiguration }) {
+export function AISettings({ configuration, embedded = false }: { configuration: LocalAIConfiguration; embedded?: boolean }) {
   const id = useId();
   const details = useRef<HTMLDetailsElement>(null);
   const initial = configuration.selection;
@@ -23,11 +23,7 @@ export function AISettings({ configuration }: { configuration: LocalAIConfigurat
       setKey(""); setError(""); setStatus(configuration.hasKey ? "Configurazione applicata. Chiave solo in memoria." : "Configurazione applicata. Verrà usata la chiave dell'ambiente locale.");
     } catch { setError("Controlla il model ID e la chiave API."); }
   }
-  return <details ref={details} className="scv-ai-settings" onKeyDown={(event) => {
-    if (event.key === "Escape" && details.current) { details.current.open = false; details.current.querySelector("summary")?.focus(); }
-  }}>
-    <summary>Impostazioni AI</summary>
-    <form className="scv-ai-form" onSubmit={apply} aria-label="Impostazioni AI">
+  const form = <form className="scv-ai-form" onSubmit={apply} aria-label="Impostazioni AI">
       <small>{configuration.selection ? `Attivo: ${PROVIDERS[configuration.selection.provider].label} · ${configuration.selection.model}` : "Attiva la configurazione dell'ambiente locale fino ad Applica impostazioni."}</small>
       <label htmlFor={`${id}-provider`}>Provider</label>
       <select id={`${id}-provider`} value={provider} onChange={(event) => {
@@ -49,6 +45,12 @@ export function AISettings({ configuration }: { configuration: LocalAIConfigurat
       <p>Domanda, storico recente ed evidence vengono inviati al provider scelto. Le chiamate possono comportare costi sul tuo account. Nessuna ricerca web.</p>
       <div className="scv-ai-actions"><button type="submit">Applica impostazioni</button><button type="button" onClick={() => { configuration.clearKey(); setKey(""); setStatus("Chiave rimossa dalla memoria."); }}>Rimuovi chiave</button></div>
       {status && <small role="status">{status}</small>}{error && <small role="alert">{error}</small>}
-    </form>
+    </form>;
+  if (embedded) return <div className="scv-ai-settings scv-ai-settings-embedded">{form}</div>;
+  return <details ref={details} className="scv-ai-settings" onKeyDown={(event) => {
+    if (event.key === "Escape" && details.current) { details.current.open = false; details.current.querySelector("summary")?.focus(); }
+  }}>
+    <summary>Impostazioni AI</summary>
+    {form}
   </details>;
 }

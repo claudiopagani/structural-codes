@@ -28,7 +28,7 @@ export function ComparisonViewer({ chatEnabled = false }: { chatEnabled?: boolea
   const hasTools = enabled || localPdfEnabled;
   return <NormativeViewer
     defaultMode="combined"
-    auxiliaryPanel={hasTools ? ((context: AuxiliaryPanelContext) => <ViewerToolsDock context={context} chatTransport={transport} chatHistoryStore={historyStore} chatSettings={<AISettings configuration={configuration} />} pdfEnabled={localPdfEnabled} />) : undefined}
+    auxiliaryPanel={hasTools ? ((context: AuxiliaryPanelContext) => <ViewerToolsDock context={context} chatTransport={transport} chatHistoryStore={historyStore} chatSettings={<AISettings configuration={configuration} embedded />} pdfEnabled={localPdfEnabled} />) : undefined}
     auxiliaryPanelLabel={enabled ? "ChatNTC e strumenti" : "PDF ufficiale"}
     auxiliaryPanelModes={enabled ? ["ntc", "circ", "combined"] : undefined}
     auxiliaryPanelKeepMounted={enabled}

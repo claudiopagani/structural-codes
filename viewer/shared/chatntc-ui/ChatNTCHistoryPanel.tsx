@@ -1,24 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { ChatHistoryError, titleFromQuestion, type ChatConversation, type ChatConversationSummary, type ChatHistoryStore } from "../chatntc-history/types.js";
 import { ChatNTCPanel, type ChatNTCPanelProps, type ChatNTCTurn } from "./ChatNTCPanel.js";
 import { historyMessages, turnsFromHistory } from "./historyMessages.js";
+import { HistoryIcon, NewChatIcon, SettingsIcon } from "./ChatNTCIcons.js";
 
 export interface ChatNTCHistoryPanelProps extends Omit<ChatNTCPanelProps, "initialTurns" | "onTurnsChange" | "onNewChat" | "historyEnabled" | "disabled"> {
   historyStore: ChatHistoryStore;
+  settings?: ReactNode;
 }
 const errorMessage = (error: unknown) => error instanceof ChatHistoryError ? error.message : "La cronologia non è disponibile. I dati non sono stati cancellati.";
 
 /** This component knows only ChatHistoryStore. No IndexedDB, provider, HTTP or key configuration. */
-export function ChatNTCHistoryPanel({ historyStore: store, ...panelProps }: ChatNTCHistoryPanelProps) {
+export function ChatNTCHistoryPanel({ historyStore: store, settings, ...panelProps }: ChatNTCHistoryPanelProps) {
   const [rows, setRows] = useState<ChatConversationSummary[]>([]);
   const [session, setSession] = useState<{ key: number; conversation: ChatConversation | null } | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [generating, setGenerating] = useState(false);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<"history" | "settings" | null>(null);
   const [rename, setRename] = useState<string | null>(null);
   const [confirmAll, setConfirmAll] = useState(false);
   const [activeTitle, setActiveTitle] = useState("Nuova chat");
@@ -26,6 +28,8 @@ export function ChatNTCHistoryPanel({ historyStore: store, ...panelProps }: Chat
   const [saveFailed, setSaveFailed] = useState(false);
   const [hasSnapshot, setHasSnapshot] = useState(false);
   const [conflict, setConflict] = useState(false);
+  const historyId = useId();
+  const settingsId = useId();
   const current = useRef<ChatConversation | null>(null);
   const latest = useRef<ChatNTCTurn[] | null>(null);
   const queue = useRef(Promise.resolve());
@@ -33,6 +37,11 @@ export function ChatNTCHistoryPanel({ historyStore: store, ...panelProps }: Chat
   const writes = useRef(0);
   const mounted = useRef(false);
   const sequence = useRef(0);
+  const historyButton = useRef<HTMLButtonElement>(null);
+  const settingsButton = useRef<HTMLButtonElement>(null);
+  const renameButton = useRef<HTMLButtonElement>(null);
+  const renaming = useRef(false);
+  const renameCancelled = useRef(false);
 
   useEffect(() => {
     mounted.current = true;
@@ -94,20 +103,54 @@ export function ChatNTCHistoryPanel({ historyStore: store, ...panelProps }: Chat
     current.current = conversation; latest.current = null;
     setActiveId(conversation?.id ?? null); setHasSnapshot(false);
     setSession({ key: ++sequence.current, conversation }); setActiveTitle(conversation?.title ?? "Nuova chat");
-    setGenerating(false); setExpanded(false); setRename(null); setError("");
+    setGenerating(false); setExpanded(null); setRename(null); setError("");
+  }
+  function closeAccordion(kind: "history" | "settings") {
+    setExpanded(null);
+    window.requestAnimationFrame(() => (kind === "history" ? historyButton : settingsButton).current?.focus());
+  }
+  function cancelRename() {
+    renameCancelled.current = true;
+    setRename(null);
+    window.requestAnimationFrame(() => renameButton.current?.focus());
+  }
+  async function commitRename() {
+    if (renameCancelled.current) { renameCancelled.current = false; return; }
+    if (renaming.current) return;
+    const title = rename?.trim() ?? "";
+    const previous = current.current;
+    if (!previous || !title) { cancelRename(); return; }
+    if (title === activeTitle) { cancelRename(); return; }
+    renaming.current = true;
+    await act(async () => {
+      const updated = await store.updateConversation(previous.id, { title }, previous.revision);
+      current.current = updated; setActiveTitle(updated.title); setRows(await store.listConversations()); setRename(null);
+    });
+    renaming.current = false;
+    window.requestAnimationFrame(() => renameButton.current?.focus());
   }
   const locked = loading || saving || saveFailed;
-  return <div className="scv-chat-history-shell">
-    <div className="scv-chat-history-toolbar">
-      <button type="button" aria-expanded={expanded} onClick={() => { setExpanded(!expanded); if (!expanded) void store.listConversations().then(setRows).catch((reason) => setError(errorMessage(reason))); }}>Conversazioni ({rows.length})</button>
-      <span role="status">{loading ? "Apertura…" : saving ? "Salvataggio…" : error ? "Cronologia da verificare" : "Solo in questo browser"}</span>
+  const historyOpen = expanded === "history";
+  const settingsOpen = expanded === "settings";
+  const visibleStatus = loading ? "Apertura…" : saving ? "Salvataggio…" : error ? "Cronologia da verificare" : "";
+  return <div className="scv-chat-history-shell" data-history-state={loading ? "loading" : saving ? "saving" : error ? "error" : "idle"}>
+    <div className="scv-chat-history-actions">
+      <button className="scv-chat-strip-button" type="button" disabled={locked || generating} onClick={() => void act(async () => { await store.setActiveConversationId(null); select(null); })}><NewChatIcon />Nuova chat</button>
+      <button ref={historyButton} className="scv-chat-strip-button" type="button" aria-controls={historyId} aria-expanded={historyOpen} onClick={() => {
+        setExpanded(historyOpen ? null : "history");
+        if (!historyOpen) void store.listConversations().then(setRows).catch((reason) => setError(errorMessage(reason)));
+      }}><HistoryIcon />Cronologia chat</button>
+      {settings && <button ref={settingsButton} className="scv-chat-strip-button" type="button" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={() => setExpanded(settingsOpen ? null : "settings")}><SettingsIcon />Impostazioni AI</button>}
+      {visibleStatus && <span role="status">{visibleStatus}</span>}
     </div>
     {error && <div className="scv-chat-history-error" role="alert"><p>{error}</p>
       {hasSnapshot && saveFailed && <><p>Le modifiche restano visibili in questa pagina. Non chiuderla finché non sono salvate.</p><button type="button" disabled={saving} onClick={() => { failed.current = false; setSaveFailed(false); setError(""); save(latest.current!); }}>Riprova salvataggio</button>
         {conflict && <button type="button" disabled={saving || generating} onClick={() => { current.current = null; failed.current = false; setSaveFailed(false); setConflict(false); setError(""); save(latest.current!); }}>Salva come nuova conversazione</button>}</>}
       {!session && <button type="button" onClick={() => window.location.reload()}>Riprova apertura</button>}
     </div>}
-    {expanded && <section className="scv-chat-history-list" aria-label="Cronologia conversazioni">
+    <div id={historyId} className="scv-chat-history-accordion" data-expanded={historyOpen} aria-hidden={!historyOpen} inert={!historyOpen} onKeyDown={(event) => {
+      if (event.key === "Escape") { event.preventDefault(); closeAccordion("history"); }
+    }}><section className="scv-chat-history-list" aria-label="Cronologia conversazioni">
       {rows.length === 0 ? <p>Nessuna conversazione salvata.</p> : <ul>{rows.map((row) => <li key={row.id}>
         <button type="button" disabled={locked || generating} aria-current={activeId === row.id ? "true" : undefined} onClick={() => void act(async () => {
           const conversation = await store.getConversation(row.id);
@@ -128,19 +171,20 @@ export function ChatNTCHistoryPanel({ historyStore: store, ...panelProps }: Chat
           select(null); setRows([]); setConfirmAll(false);
         })}>Conferma eliminazione</button>
       </div>}
-    </section>}
+    </section></div>
+    {settings && <div id={settingsId} className="scv-chat-settings-accordion" data-expanded={settingsOpen} aria-hidden={!settingsOpen} inert={!settingsOpen} onKeyDown={(event) => {
+      if (event.key === "Escape") { event.preventDefault(); closeAccordion("settings"); }
+    }}><section className="scv-chat-settings-content" aria-label="Impostazioni AI">{settings}</section></div>}
     {session && <>
       <div className="scv-chat-history-title">
-        {rename !== null ? <form onSubmit={(event) => { event.preventDefault(); void act(async () => {
-          const previous = current.current;
-          if (!previous || !rename.trim()) return;
-          const updated = await store.updateConversation(previous.id, { title: rename.trim() }, previous.revision);
-          current.current = updated; setActiveTitle(updated.title); setRows(await store.listConversations()); setRename(null);
-        }); }}><input aria-label="Titolo conversazione" maxLength={144} value={rename} onChange={(event) => setRename(event.target.value)} autoFocus /><button disabled={locked || !rename.trim()}>Salva titolo</button><button type="button" onClick={() => setRename(null)}>Annulla</button></form>
-          : <><strong>{activeTitle}</strong><button type="button" disabled={locked || generating || !activeId} onClick={() => setRename(activeTitle)}>Rinomina</button></>}
+        {rename !== null ? <form onSubmit={(event) => { event.preventDefault(); void commitRename(); }}><input aria-label="Titolo conversazione" maxLength={144} value={rename} onChange={(event) => setRename(event.target.value)} onBlur={() => void commitRename()} onKeyDown={(event) => {
+          if (event.key === "Enter") { event.preventDefault(); void commitRename(); }
+          else if (event.key === "Escape") { event.preventDefault(); cancelRename(); }
+        }} autoFocus /></form>
+          : <><strong>{activeTitle}</strong><button ref={renameButton} className="scv-chat-rename-button" type="button" aria-label="Rinomina conversazione" title="Rinomina conversazione" disabled={locked || generating || !activeId} onClick={() => { renameCancelled.current = false; setRename(activeTitle); }}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 16-.8 4 4-.8L18.4 8 16 5.6 4 16Z"/><path d="m14.8 6.8 2.4 2.4"/></svg></button></>}
       </div>
       <div className="scv-chat-history-content"><ChatNTCPanel key={session.key} {...panelProps} initialTurns={turnsFromHistory(session.conversation?.messages ?? [])}
-        historyEnabled disabled={locked} onTurnsChange={save} onNewChat={() => void act(async () => { await store.setActiveConversationId(null); select(null); })} /></div>
+        historyEnabled showNewChatAction={false} disabled={locked} onTurnsChange={save} onNewChat={() => void act(async () => { await store.setActiveConversationId(null); select(null); })} /></div>
     </>}
   </div>;
 }

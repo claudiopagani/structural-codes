@@ -272,7 +272,8 @@ export function hasTrailingStrong(block: CorpusBlock) {
 
 export function hasTrailingMath(block: CorpusBlock) {
   const inline = block.text?.inline;
-  return block.kind === "list-item" && inline !== undefined && inline.length === 2 && inline.at(-1)?.kind === "math";
+  if (block.kind !== "list-item" || !inline || inline.length < 2 || inline[0]?.kind === "math" || inline[1]?.kind !== "math") return false;
+  return inline.slice(2).every((segment) => segment.kind === "text" && /^[\s,.;:!?»)\]]*$/u.test(segment.value));
 }
 
 export interface BlockContentProps {

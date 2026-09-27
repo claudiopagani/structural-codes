@@ -53,22 +53,13 @@ const ModeSegmentedControl = memo(function ModeSegmentedControl({ mode, onChange
   </div>;
 });
 
-function hasTrailingMathWithPunctuation(block: CorpusUnit["blocks"][number]) {
-  const inline = block.text?.inline;
-  if (block.kind !== "list-item" || !inline || inline.length < 2) return false;
-  const mathIndex = inline.findLastIndex((segment) => segment.kind === "math");
-  if (mathIndex < 0) return false;
-  return inline.slice(mathIndex + 1).every((segment) => segment.kind === "text" && /^[\s,.;:!?»)\]]*$/u.test(segment.value));
-}
-
 function scvBlockClass(block: CorpusUnit["blocks"][number], sourceUnitId?: string) {
-  const tabbedTrailingSymbol = (sourceUnitId?.endsWith(":4.5.2.2.1") || sourceUnitId?.endsWith(":4.5.4") || sourceUnitId?.endsWith(":c7.6.8")) && hasTrailingMathWithPunctuation(block);
   const catenaryLabel = sourceUnitId?.endsWith(":5.2.2.9.1") && block.kind === "list-item" && block.listMarker === "none";
   const alphaRatioLayout = hasAlphaRatioListLayout(block, sourceUnitId);
   const inferredAlphaRatioMarker = hasInferredAlphaRatioListMarker(block, sourceUnitId);
   const officialMarker = hasOfficialListMarker(block) || inferredAlphaRatioMarker;
   const levelClass = listLevelClass(block) || (alphaRatioLayout ? "list-item-level-1" : "");
-  return `scv-block scv-block-${block.kind} ${officialMarker ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) && !inferredAlphaRatioMarker ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${levelClass} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${tabbedTrailingSymbol ? "list-item-with-trailing-symbol-tabbed" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""} ${alphaRatioLayout ? "list-item-with-alpha-ratio" : ""}`;
+  return `scv-block scv-block-${block.kind} ${officialMarker ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) && !inferredAlphaRatioMarker ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${levelClass} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""} ${alphaRatioLayout ? "list-item-with-alpha-ratio" : ""}`;
 }
 
 function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {
