@@ -3,9 +3,10 @@ function clampRatio(value) {
   return Math.max(0, Math.min(1, value));
 }
 
-export function buildGlobalScrubberEntries(entries) {
-  const lastIndex = Math.max(0, entries.length - 1);
-  return entries.map((entry, index) => ({
+export function buildGlobalScrubberEntries(entries, maximumLevel = Number.POSITIVE_INFINITY) {
+  const visibleEntries = Number.isFinite(maximumLevel) ? entries.filter((entry) => entry.level <= maximumLevel) : entries;
+  const lastIndex = Math.max(0, visibleEntries.length - 1);
+  return visibleEntries.map((entry, index) => ({
     ...entry,
     index,
     ratio: lastIndex === 0 ? 0 : index / lastIndex,
@@ -27,7 +28,14 @@ export function globalScrubberRatioForId(entries, id, fallbackRatio = 0) {
 export function resolveGlobalScrubberActiveId(entries, activeId, activeBaseNumber) {
   if (activeId && entries.some((entry) => entry.id === activeId)) return activeId;
   if (!activeBaseNumber) return null;
-  return entries.find((entry) => entry.baseNumber === activeBaseNumber)?.id ?? null;
+  const exactEntry = entries.find((entry) => entry.baseNumber === activeBaseNumber);
+  if (exactEntry) return exactEntry.id;
+  let closestAncestor = null;
+  for (const entry of entries) {
+    if (!activeBaseNumber.startsWith(`${entry.baseNumber}.`)) continue;
+    if (!closestAncestor || entry.baseNumber.length > closestAncestor.baseNumber.length) closestAncestor = entry;
+  }
+  return closestAncestor?.id ?? null;
 }
 
 export function globalScrubberKeyboardIndex(currentIndex, key, entryCount) {

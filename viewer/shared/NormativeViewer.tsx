@@ -33,7 +33,7 @@ import { createCrossReferenceLookup, resolveCrossReference } from "./crossRefere
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
-import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberEntryAtRatio, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
+import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -448,7 +448,7 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
   activeId: string | null;
   onSelect: (id: string) => void;
 }) {
-  const [interaction, setInteraction] = useState<"idle" | "scrolling" | "hover" | "focus" | "pressing" | "dragging">("idle");
+  const [interaction, setInteraction] = useState<"idle" | "scrolling" | "hover" | "focus" | "dragging">("idle");
   const [previewEntry, setPreviewEntry] = useState<GlobalScrollEntry | null>(null);
   const hideTimerRef = useRef<number | null>(null);
   const pointerFrameRef = useRef<number | null>(null);
@@ -465,7 +465,7 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
   }, []);
   const hideLater = useCallback(() => {
     clearHideTimer();
-    hideTimerRef.current = window.setTimeout(() => setInteraction((current) => current === "scrolling" || current === "pressing" ? "idle" : current), 1000);
+    hideTimerRef.current = window.setTimeout(() => setInteraction((current) => current === "scrolling" ? "idle" : current), 1000);
   }, [clearHideTimer]);
   const showTransient = useCallback(() => {
     setInteraction((current) => current === "dragging" || current === "hover" || current === "focus" ? current : "scrolling");
@@ -486,7 +486,6 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
   }, [clearHideTimer]);
 
   if (entries.length < 2 || !activeEntry) return null;
-  const entryFromPointer = (clientY: number, top: number, height: number) => globalScrubberEntryAtRatio(entries, (clientY - top) / Math.max(1, height)) as GlobalScrollEntry | null;
   const previewPointer = (clientY: number) => {
     const drag = dragRef.current;
     if (!drag) return null;
@@ -494,23 +493,9 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
     if (entry) setPreviewEntry(entry);
     return entry;
   };
-  const jumpTo = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.defaultPrevented) return;
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!event.isPrimary || event.button !== 0) return;
     const rect = event.currentTarget.getBoundingClientRect();
-    const entry = entryFromPointer(event.clientY, rect.top, rect.height);
-    if (entry) onSelect(entry.id);
-  };
-  const previewTrackPress = (event: React.PointerEvent<HTMLDivElement>) => {
-    if ((event.target as Element).closest(".scv-scroll-thumb")) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPreviewEntry(entryFromPointer(event.clientY, rect.top, rect.height));
-    setInteraction("pressing");
-    clearHideTimer();
-  };
-  const startDrag = (event: React.PointerEvent<HTMLButtonElement>) => {
-    const track = event.currentTarget.parentElement;
-    if (!track) return;
-    const rect = track.getBoundingClientRect();
     event.currentTarget.setPointerCapture(event.pointerId);
     dragRef.current = { pointerId: event.pointerId, trackTop: rect.top, trackHeight: rect.height, session: createGlobalScrubberDragSession(entries, (entry: GlobalScrollEntry) => onSelect(entry.id)) };
     previewPointer(event.clientY);
@@ -518,7 +503,7 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
     clearHideTimer();
     event.preventDefault();
   };
-  const moveDrag = (event: React.PointerEvent<HTMLButtonElement>) => {
+  const moveDrag = (event: React.PointerEvent<HTMLDivElement>) => {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
     pendingPointerYRef.current = event.clientY;
@@ -528,7 +513,7 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
       if (pendingPointerYRef.current !== null) previewPointer(pendingPointerYRef.current);
     });
   };
-  const stopDrag = (event: React.PointerEvent<HTMLButtonElement>, commit: boolean) => {
+  const stopDrag = (event: React.PointerEvent<HTMLDivElement>, commit: boolean) => {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
     if (pointerFrameRef.current !== null) {
@@ -560,12 +545,11 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
     onMouseLeave={() => { if (interaction !== "dragging" && interaction !== "focus") { setInteraction("scrolling"); hideLater(); } }}
     onFocusCapture={() => { clearHideTimer(); setInteraction("focus"); }}
     onBlurCapture={() => { setInteraction("scrolling"); hideLater(); }}>
-    <div className="scv-scroll-track" role="presentation" onPointerDown={previewTrackPress} onPointerUp={() => { setInteraction("scrolling"); hideLater(); }} onPointerCancel={() => { setInteraction("scrolling"); hideLater(); }} onClick={jumpTo}>
-      {entries.filter((entry) => entry.level === 0).map((entry) => <span key={entry.id} className="scv-scroll-marker chapter" style={{ top: `${entry.ratio * 100}%` }} aria-hidden="true" />)}
+    <div className="scv-scroll-track" role="presentation" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={(event) => stopDrag(event, true)} onPointerCancel={(event) => stopDrag(event, false)}>
       <button type="button" className="scv-scroll-thumb" role="slider" aria-label="Posizione nel documento" aria-valuemin={1} aria-valuemax={entries.length} aria-valuenow={(displayedEntry?.index ?? 0) + 1} aria-valuetext={valueText}
-        onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={(event) => stopDrag(event, true)} onPointerCancel={(event) => stopDrag(event, false)} onKeyDown={onKeyDown} onClick={(event) => event.stopPropagation()} />
+        onKeyDown={onKeyDown} />
     </div>
-    {(interaction === "dragging" || interaction === "pressing") && overlayEntry && <output className="scv-scroll-overlay" aria-live="off"><strong>§ {overlayEntry.label}</strong><span>{overlayEntry.title}</span></output>}
+    {interaction === "dragging" && overlayEntry && <output className="scv-scroll-overlay" aria-live="off"><strong>§ {overlayEntry.label}</strong><span>{overlayEntry.title}</span></output>}
   </div>;
 });
 
@@ -1459,7 +1443,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       return levelEntries.find((entry) => entry.baseNumber === baseNumber)?.summary.id ?? null;
     });
   }, [activeSummary, chapters, paragraphs, subparagraphs]);
-  const scrubberEntries = useMemo(() => buildGlobalScrubberEntries(navigationEntries.map(({ summary, displayNumber, baseNumber, level }) => ({ id: summary.id, label: displayNumber, title: summary.title, baseNumber, level }))) as GlobalScrollEntry[], [navigationEntries]);
+  const scrubberEntries = useMemo(() => buildGlobalScrubberEntries(navigationEntries.map(({ summary, displayNumber, baseNumber, level }) => ({ id: summary.id, label: displayNumber, title: summary.title, baseNumber, level })), 2) as GlobalScrollEntry[], [navigationEntries]);
   const scrubberActiveId = resolveGlobalScrubberActiveId(scrubberEntries, activeUnitId, activeSummary ? baseNumbering(activeSummary.numbering.official) : null);
 
   const activeRecord = recordById.get(activeUnitId ?? "") ?? null;

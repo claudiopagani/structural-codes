@@ -472,18 +472,20 @@ body { margin: 0; }
 .scv-pdf-error span { color: #c6cbd7; font-size: var(--scv-font-size-10); }
 
 .scv-scroll-rail { --scv-scrubber-ratio: 0; position: absolute; z-index: 8; top: 10px; right: 0; bottom: 10px; width: 44px; pointer-events: auto; }
-.scv-scroll-track { position: absolute; inset: 0; cursor: pointer; touch-action: pan-y; }
-.scv-scroll-track::before { position: absolute; top: 0; right: 7px; bottom: 0; width: 3px; content: ""; background: #aeb7ca; border-radius: 999px; opacity: .36; transition: opacity .18s ease; }
-.scv-scroll-thumb { position: absolute; top: calc(var(--scv-scrubber-ratio) * (100% - 48px)); right: 0; display: block; width: 44px; height: 48px; padding: 0; background: transparent; border: 0; border-radius: 12px; cursor: grab; pointer-events: auto; touch-action: none; }
-.scv-scroll-thumb::before { position: absolute; top: 4px; right: 5px; bottom: 4px; width: 7px; content: ""; background: var(--scv-primary); border-radius: 999px; box-shadow: 0 1px 5px rgb(52 66 110 / 30%); opacity: .9; transition: width .16s ease, opacity .18s ease, transform .16s ease; }
-.scv-scroll-thumb:hover::before, .scv-scroll-thumb:focus-visible::before, .scv-scroll-rail.is-dragging .scv-scroll-thumb::before { width: 9px; opacity: 1; transform: translateX(-1px); }
-.scv-scroll-thumb:focus-visible { outline: 2px solid var(--scv-primary); outline-offset: -3px; }
+.scv-scroll-track { position: absolute; isolation: isolate; inset: 0; cursor: pointer; touch-action: none; }
+.scv-scroll-track::before { position: absolute; z-index: 0; top: 0; right: 6px; bottom: 0; width: 12px; content: ""; background: #edf0f5; border: 1px solid #dce1ea; border-radius: 999px; box-shadow: inset 0 1px 2px rgb(49 59 81 / 7%); opacity: .96; transition: opacity .18s ease; }
+.scv-scroll-track::after { position: absolute; z-index: 0; top: 4px; right: 6px; bottom: 4px; width: 12px; content: ""; background-image: radial-gradient(circle at center, #858b95 0 1.25px, transparent 2px); background-position: center 0; background-repeat: repeat-y; background-size: 12px 24px; border-radius: 999px; opacity: .82; pointer-events: none; transition: opacity .18s ease; }
+.scv-scroll-thumb { position: absolute; z-index: 2; top: calc(var(--scv-scrubber-ratio) * (100% - 48px)); right: 0; display: block; width: 44px; height: 48px; padding: 0; background: transparent; border: 0; border-radius: 999px; cursor: grab; pointer-events: none; }
+.scv-scroll-thumb::before { position: absolute; top: 7px; right: 7px; width: 10px; height: 34px; content: ""; background: var(--scv-primary); border-radius: 5px; box-shadow: 0 2px 7px rgb(52 66 110 / 30%); opacity: 1; transition: opacity .18s ease, transform .16s ease, box-shadow .16s ease; }
+.scv-scroll-thumb:hover::before, .scv-scroll-thumb:focus-visible::before, .scv-scroll-rail.is-dragging .scv-scroll-thumb::before { box-shadow: 0 3px 10px rgb(52 66 110 / 38%); opacity: 1; transform: scaleX(1.12); }
+.scv-scroll-thumb:focus-visible { outline: none; }
+.scv-scroll-thumb:focus-visible::before { box-shadow: 0 0 0 3px color-mix(in srgb, var(--scv-primary) 52%, transparent), 0 3px 10px rgb(52 66 110 / 38%); }
 .scv-scroll-thumb:active { cursor: grabbing; }
-.scv-scroll-marker { position: absolute; right: 6px; width: 6px; height: 1px; background: var(--scv-ink-soft); border-radius: 999px; opacity: .45; pointer-events: none; transform: translateY(-50%); transition: opacity .18s ease; }
-.scv-scroll-overlay { position: absolute; top: clamp(36px, calc(var(--scv-scrubber-ratio) * 100%), calc(100% - 36px)); right: 50px; display: grid; width: max-content; max-width: min(280px, calc(100vw - 82px)); gap: 2px; padding: 10px 12px; color: #fff; text-align: right; background: rgb(36 47 78 / 96%); border: 1px solid rgb(255 255 255 / 16%); border-radius: 8px; box-shadow: 0 8px 24px rgb(26 36 67 / 28%); pointer-events: none; transform: translateY(-50%); }
+.scv-scroll-rail.is-dragging .scv-scroll-track { cursor: grabbing; }
+.scv-scroll-overlay { position: absolute; top: clamp(36px, calc(var(--scv-scrubber-ratio) * 100%), calc(100% - 36px)); right: 48px; display: grid; width: max-content; max-width: min(280px, calc(100vw - 80px)); gap: 2px; padding: 10px 12px; color: #fff; text-align: right; background: rgb(36 47 78 / 96%); border: 1px solid rgb(255 255 255 / 16%); border-radius: 8px; box-shadow: 0 8px 24px rgb(26 36 67 / 28%); pointer-events: none; transform: translateY(-50%); }
 .scv-scroll-overlay strong { font-size: var(--scv-font-size-15); line-height: 1.1; white-space: nowrap; }
 .scv-scroll-overlay span { overflow: hidden; font-family: "Tinos", serif; font-size: var(--scv-font-size-10); line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
-.scv-scroll-rail.is-idle .scv-scroll-track::before, .scv-scroll-rail.is-idle .scv-scroll-thumb::before, .scv-scroll-rail.is-idle .scv-scroll-marker { opacity: 0; }
+.scv-scroll-rail.is-idle .scv-scroll-track::before, .scv-scroll-rail.is-idle .scv-scroll-track::after, .scv-scroll-rail.is-idle .scv-scroll-thumb::before { opacity: 0; }
 
 .scv-root.scv-dark {
   color-scheme: dark;
@@ -551,8 +553,8 @@ body { margin: 0; }
 .scv-root.scv-dark .scv-citation-actions { background: rgb(27 33 48 / 94%); box-shadow: 0 3px 14px rgb(0 0 0 / 38%); }
 .scv-root.scv-dark .scv-backlink-panel, .scv-root.scv-dark .scv-reference-preview { box-shadow: 0 14px 36px rgb(0 0 0 / 48%); }
 .scv-root.scv-dark .scv-content-notice { color: #fde68a; background: #3a311d; border-color: #725f27; }
-.scv-root.scv-dark .scv-scroll-track::before { background: #596684; }
-.scv-root.scv-dark .scv-scroll-marker { background: #aeb8ca; }
+.scv-root.scv-dark .scv-scroll-track::before { background: #252d3d; border-color: #39445a; box-shadow: inset 0 1px 2px rgb(0 0 0 / 24%); }
+.scv-root.scv-dark .scv-scroll-track::after { background-image: radial-gradient(circle at center, #8993a5 0 1.25px, transparent 2px); }
 .scv-root.scv-dark .scv-scroll-overlay { color: #f5f7ff; background: rgb(24 31 48 / 97%); border-color: #465577; box-shadow: 0 8px 24px rgb(0 0 0 / 42%); }
 .scv-root.scv-dark .scv-pdf-panel { background: #202633; }
 

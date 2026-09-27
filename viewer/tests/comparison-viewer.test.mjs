@@ -259,7 +259,8 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(source, /target\.scrollIntoView\(\{ block: "nearest", behavior: reducedMotion \? "auto" : "smooth" \}\)/);
   assert.match(source, /const GlobalDocumentScrubber = memo/);
   assert.match(source, /const scrubberEntries = useMemo/);
-  assert.match(source, /className="scv-scroll-marker chapter"/);
+  assert.doesNotMatch(source, /scv-scroll-marker/);
+  assert.match(styles, /\.scv-scroll-track::after[^}]+background-repeat: repeat-y[^}]+background-size: 12px 24px/);
   assert.match(source, /<GlobalDocumentScrubber rootRef=\{textPaneRef\}/);
   assert.match(source, /className="scv-text-pane-shell"/);
   assert.match(source, /const navigationEntries = useMemo/);

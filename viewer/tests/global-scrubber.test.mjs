@@ -36,6 +36,18 @@ test("il mapping ratio seleziona quartili ed estremi dell'indice", () => {
   assert.equal(globalScrubberEntryAtRatio(globalEntries, 1)?.id, "ntc:101");
 });
 
+test("lo scrubber espone soltanto capitoli, paragrafi e sottoparagrafi", () => {
+  const globalEntries = buildGlobalScrubberEntries([
+    { id: "level:0", label: "7", title: "Capitolo", baseNumber: "7", level: 0 },
+    { id: "level:1", label: "7.3", title: "Paragrafo", baseNumber: "7.3", level: 1 },
+    { id: "level:2", label: "7.3.6", title: "Sottoparagrafo", baseNumber: "7.3.6", level: 2 },
+    { id: "level:3", label: "7.3.6.1", title: "Livello profondo", baseNumber: "7.3.6.1", level: 3 },
+  ], 2);
+  assert.deepEqual(globalEntries.map((entry) => entry.id), ["level:0", "level:1", "level:2"]);
+  assert.deepEqual(globalEntries.map((entry) => entry.ratio), [0, 0.5, 1]);
+  assert.equal(resolveGlobalScrubberActiveId(globalEntries, "level:3", "7.3.6.1"), "level:2");
+});
+
 test("un ID Circolare correlato usa la posizione primaria e un ID ignoto non azzera il ratio", () => {
   const globalEntries = buildGlobalScrubberEntries([
     { id: "ntc:8.7", label: "8.7", title: "Unità 8.7", baseNumber: "8.7", level: 1 },
@@ -104,6 +116,14 @@ test("il componente resta sopra il caricamento lazy e supporta reduced motion", 
   assert.match(source, /activeId=\{scrubberActiveId\}/);
   assert.match(source, /resolveGlobalScrubberActiveId\(scrubberEntries, activeUnitId/);
   assert.match(source, /buildGlobalScrubberEntries\(navigationEntries\.map/);
+  assert.match(source, /baseNumber, level \}\)\), 2\)/);
+  assert.match(scrubber, /scv-scroll-track[^>]+onPointerDown=\{startDrag\}[^>]+onPointerMove=\{moveDrag\}[^>]+onPointerUp=\{\(event\) => stopDrag\(event, true\)\}/);
+  assert.doesNotMatch(scrubber, /previewTrackPress|onClick=\{jumpTo\}|scv-scroll-marker/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(styles, /transition-duration: \.01ms !important/);
+  assert.match(styles, /\.scv-scroll-rail[^}]+width: 44px/);
+  assert.match(styles, /\.scv-scroll-track::before[^}]+width: 12px/);
+  assert.match(styles, /\.scv-scroll-track::after[^}]+radial-gradient\(circle at center, #858b95 0 1\.25px, transparent 2px\)[^}]+background-size: 12px 24px/);
+  assert.match(styles, /\.scv-scroll-thumb::before[^}]+width: 10px[^}]+height: 34px[^}]+background: var\(--scv-primary\)/);
+  assert.doesNotMatch(styles, /\.scv-scroll-marker/);
 });
