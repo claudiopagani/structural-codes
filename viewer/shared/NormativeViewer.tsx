@@ -30,8 +30,8 @@ import {
 import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
 import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
-import { BacklinkPanel, CitationActions, ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
-import { citationForTarget, targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
+import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
+import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
@@ -40,8 +40,15 @@ const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "combined", label: "NTC 2018 + Circolare 7/2019" },
 ];
 const ModeSegmentedControl = memo(function ModeSegmentedControl({ mode, onChange }: { mode: ViewerMode; onChange: (nextMode: ViewerMode) => void }) {
+  const tooltipBaseId = useId();
   return <div className="scv-mode-switch" role="group" aria-label="Modalità documento">
-    {modeOptions.map((option) => <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => onChange(option.id)} aria-label={option.label} aria-pressed={mode === option.id} title={option.label}><span>{option.id === "ntc" ? <>NTC<br />2018</> : option.id === "circ" ? <>CIRC.<br />2019</> : <>NTC<br />CIRC.</>}</span></button>)}
+    {modeOptions.map((option) => {
+      const tooltipId = `${tooltipBaseId}-${option.id}`;
+      return <button type="button" key={option.id} className={`scv-mode-button ${mode === option.id ? "active" : ""}`} onClick={() => onChange(option.id)} aria-label={option.label} aria-describedby={tooltipId} aria-pressed={mode === option.id}>
+        <span className="scv-mode-label">{option.id === "ntc" ? <>NTC<br />2018</> : option.id === "circ" ? <>CIRC.<br />2019</> : <>NTC<br />CIRC.</>}</span>
+        <span id={tooltipId} className="scv-control-tooltip scv-mode-tooltip" role="tooltip">{option.label}</span>
+      </button>;
+    })}
   </div>;
 });
 
@@ -148,6 +155,13 @@ interface ResolvedCrossReference {
   unit: CrossReferenceUnit;
   asset?: CrossReferenceAsset;
 }
+interface PermalinkNotice {
+  message: string;
+  left: number;
+  top: number;
+  placement: "above" | "below";
+  status: "success" | "error";
+}
 
 const chunkUnitMaps = new WeakMap<CorpusChunk, Map<string, CorpusUnit>>();
 const emptyRelatedRecords: RelatedRecord[] = [];
@@ -197,10 +211,7 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
 
 function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
   const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
-  const overlay = root.parentElement?.querySelector<HTMLElement>(".scv-citation-actions");
-  const overlayBottom = overlay?.getBoundingClientRect().bottom ?? root.getBoundingClientRect().top;
-  const safeInset = Math.max(18, overlayBottom - root.getBoundingClientRect().top + 10);
-  root.scrollTo({ top: Math.max(0, top - safeInset), behavior: "auto" });
+  root.scrollTo({ top: Math.max(0, top - 18), behavior: "auto" });
 }
 
 function scrollTextUnit(root: HTMLElement | null, unitId: string) {
@@ -223,6 +234,23 @@ function scrollViewerTarget(root: HTMLElement | null, target: ViewerTarget) {
   if (!root || !element) return false;
   scrollElementIntoPane(root, element);
   return true;
+}
+
+async function writeTextClipboard(value: string) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const input = document.createElement("textarea");
+  input.value = value;
+  input.style.cssText = "position:fixed;left:-10000px;top:-10000px";
+  document.body.append(input);
+  try {
+    input.select();
+    if (!document.execCommand("copy")) throw new Error("Copia non consentita.");
+  } finally {
+    input.remove();
+  }
 }
 
 function updateDeepLink(mode: ViewerMode, target: ViewerTarget, defaultMode: ViewerMode, action: "push" | "replace" = "replace") {
@@ -280,34 +308,6 @@ function referenceLabel(reference: ResolvedCrossReference) {
   if (!reference.asset) return `${document} · § ${reference.unit.numbering}`;
   const prefix = reference.asset.kind === "formula" ? "Formula" : reference.asset.kind === "table" ? "Tab." : "Fig.";
   return `${document} · ${prefix} ${reference.asset.officialNumber}`;
-}
-
-async function writeTextClipboard(value: string) {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(value);
-    return;
-  }
-  const input = document.createElement("textarea");
-  input.value = value;
-  input.style.cssText = "position:fixed;left:-10000px;top:-10000px";
-  document.body.append(input);
-  try {
-    input.select();
-    if (!document.execCommand("copy")) throw new Error("Copia non consentita.");
-  } finally {
-    input.remove();
-  }
-}
-
-function copyableText(element: HTMLElement | null) {
-  if (!element) return "";
-  const clone = element.cloneNode(true) as HTMLElement;
-  clone.querySelectorAll("button").forEach((button) => button.replaceWith(button.textContent ?? ""));
-  return (clone.innerText || clone.textContent || "").replace(/\s+/gu, " ").trim();
-}
-
-function displayUnitNumber(unit: UnitSummary | CrossReferenceUnit) {
-  return typeof unit.numbering === "string" ? unit.numbering : unit.numbering.official;
 }
 
 function evidencePages(unit: CorpusUnit, chunk: CorpusChunk) {
@@ -404,9 +404,9 @@ const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, 
   const isCircularFallback = mode === "combined" && unit.document === "circ2019";
   const visibleRelated = mode === "combined" ? relatedRecords.filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit)) : emptyRelatedRecords;
   return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}${isCircularFallback ? " scv-circular-fallback" : ""}`} data-provenance={isCircularFallback ? "Circolare 7/2019" : undefined} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
-    {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title">{unit.title}</span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title">{unitTitleContent(unit)}</span></h2>}
+    {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al capitolo ${unit.numbering.official}`}>{unit.title}</button></span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al paragrafo ${unit.numbering.official}`}>{unitTitleContent(unit)}</button></span></h2>}
     <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} />
-    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title">{relatedUnit.title}</span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} /></section>)}
+    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al paragrafo ${relatedUnit.numbering.official}`}>{relatedUnit.title}</button></span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} /></section>)}
   </section>;
 }, (previous, next) => previous.record.unit === next.record.unit && previous.record.chunk === next.record.chunk && previous.mode === next.mode && previous.assetsBaseUrl === next.assetsBaseUrl && sameRelatedRecords(previous.relatedRecords, next.relatedRecords));
 
@@ -617,7 +617,7 @@ function HighlightedSnippet({ result }: { result: SearchResult }) {
   return <>{parts}</>;
 }
 
-const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, settingsButtonRef, onOpenSettings }: {
+const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, darkMode, onToggleTheme }: {
   id: string;
   mode: ViewerMode;
   onModeChange: (mode: ViewerMode) => void;
@@ -636,12 +636,14 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   onSelectUnit: (unit: UnitSummary) => void;
   onRequestClose: () => void;
   searchRef: RefObject<HTMLInputElement | null>;
-  settingsButtonRef: RefObject<HTMLButtonElement | null>;
-  onOpenSettings: () => void;
+  darkMode: boolean;
+  onToggleTheme: () => void;
 }) {
   const indexListRef = useRef<HTMLDivElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
+  const [searchEditing, setSearchEditing] = useState(false);
   const searchResultsId = useId();
+  const themeTooltipId = useId();
   const chapters = hierarchy[0] ?? [];
   const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
   const subparagraphs = hierarchy[2] ?? emptyNavigationEntries;
@@ -699,26 +701,39 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
 
   return <aside id={id} className="scv-index-pane" aria-label="Indice gerarchico">
     <div className="scv-search-toolbar">
-      <div className="scv-search-box">
-        <form className="scv-search-form" role="search" onSubmit={onSearchSubmit}>
-          <span aria-hidden="true">⌕</span>
+      <div className={`scv-search-box ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
+      }}>
+        <form className="scv-search-form" role="search" onMouseDown={(event) => {
+          if (!(event.target as HTMLElement).closest("button")) searchRef.current?.focus();
+        }} onSubmit={(event) => {
+          onSearchSubmit(event);
+          if (searchResults.length > 0) setSearchEditing(false);
+        }}>
+          <span className="scv-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.75" cy="10.75" r="6.75" /><path d="m15.75 15.75 4.25 4.25" /></svg></span>
           <input ref={searchRef} type="search" role="combobox" aria-autocomplete="list" value={query} onChange={(event) => onQueryChange(event.target.value)} onKeyDown={(event) => {
             if (event.key === "Escape" && query) { event.preventDefault(); onQueryChange(""); }
             else if (event.key === "ArrowDown" && searchResults.length > 0) { event.preventDefault(); focusSearchResult(0); }
-          }} placeholder="Cerca nella normativa…" aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchReady} />
-          {query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca">×</button>}
-          <kbd>/</kbd>
+          }} onFocus={() => setSearchEditing(true)} placeholder={searchEditing ? "" : "Cerca nella normativa…"} aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchEditing && searchReady} />
+          {searchEditing && query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11" /></svg></button>}
+          {!searchEditing && !query && <kbd>/</kbd>}
         </form>
-        {searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
-          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
+        {searchEditing && searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
+          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { setSearchEditing(false); onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
         </div>}
       </div>
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
-      <button ref={settingsButtonRef} type="button" className="scv-settings-button" onClick={onOpenSettings} aria-label="Impostazioni consultazione" aria-haspopup="dialog"><span aria-hidden="true">⚙</span></button>
+      <button type="button" className="scv-theme-button" onClick={onToggleTheme} aria-label={darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"} aria-describedby={themeTooltipId} aria-pressed={darkMode}>
+        <span className="scv-theme-icon" aria-hidden="true">{darkMode
+          ? <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.75" /><path d="M12 2.25v2.1M12 19.65v2.1M21.75 12h-2.1M4.35 12h-2.1M18.9 5.1l-1.48 1.48M6.58 17.42 5.1 18.9M18.9 18.9l-1.48-1.48M6.58 6.58 5.1 5.1" /></svg>
+          : <svg viewBox="0 0 24 24" fill="none"><path d="M20.2 15.15A8.35 8.35 0 0 1 8.85 3.8 8.36 8.36 0 1 0 20.2 15.15Z" /></svg>}
+        </span>
+        <span id={themeTooltipId} className="scv-control-tooltip" role="tooltip">{darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"}</span>
+      </button>
       <button type="button" className="scv-mobile-index-close" onClick={onRequestClose} aria-label="Chiudi indice">×</button>
     </div>
     <div className="scv-index-grid">
-      <section className="scv-index-cell"><header><span>Indice</span><b>{chapters.length}</b></header><div className="scv-index-list" ref={indexListRef}>{!indexReady ? <LoadingRows /> : chapters.length === 0 ? <p className="scv-index-empty">L’indice non è disponibile.</p> : <ul className="scv-index-tree">
+      <section className="scv-index-cell"><header><span>Indice</span></header><div className="scv-index-list" ref={indexListRef}>{!indexReady ? <LoadingRows /> : chapters.length === 0 ? <p className="scv-index-empty">L’indice non è disponibile.</p> : <ul className="scv-index-tree">
         {chapters.map((chapter) => {
           const chapterParagraphs = paragraphsByChapter.get(chapter.summary.id) ?? [];
           const chapterOpen = activeChapterId === chapter.summary.id;
@@ -767,26 +782,19 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [crossReferenceIndex, setCrossReferenceIndex] = useState<CrossReferenceIndex | null>(null);
   const [referencePreview, setReferencePreview] = useState<ReferencePreviewData | null>(null);
   const [citationSelection, setCitationSelection] = useState<CitationSelection | null>(null);
-  const [clipboardStatus, setClipboardStatus] = useState<string | null>(null);
-  const [backlinksOpen, setBacklinksOpen] = useState(false);
+  const [permalinkNotice, setPermalinkNotice] = useState<PermalinkNotice | null>(null);
   const [query, setQuery] = useState("");
   const [loadError, setLoadError] = useState(false);
   const [contentLoadNotice, setContentLoadNotice] = useState<string | null>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [mobileIndexOpen, setMobileIndexOpen] = useState(false);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
   const searchRef = useRef<HTMLInputElement>(null);
   const mobileIndexButtonRef = useRef<HTMLButtonElement>(null);
-  const settingsButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryPaneRef = useRef<HTMLElement>(null);
   const auxiliaryId = useId();
   const navigationId = useId();
-  const backlinksId = useId();
-  const dialogCloseRef = useRef<HTMLButtonElement>(null);
-  const dialogRef = useRef<HTMLElement>(null);
-  const settingsPreviouslyOpenRef = useRef(false);
   const requestedIdRef = useRef<string | null>(null);
   const requestedTargetRef = useRef<ViewerTarget | null>(null);
   const scrollRequestRef = useRef<ViewerTarget | null>(null);
@@ -799,7 +807,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const historyNavigationRef = useRef(false);
   const crossReferencePromiseRef = useRef<Promise<CrossReferenceIndex> | null>(null);
   const relationsPromiseRef = useRef<Promise<RelationEdge[]> | null>(null);
-  const clipboardTimerRef = useRef<number | null>(null);
+  const permalinkNoticeTimerRef = useRef<number | null>(null);
   const searchHighlightTimerRef = useRef<number | null>(null);
   const pendingSearchHighlightRef = useRef<ViewerTarget | null>(null);
   const referencePreviewRequestRef = useRef(0);
@@ -827,6 +835,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   useEffect(() => () => {
     if (searchHighlightTimerRef.current !== null) window.clearTimeout(searchHighlightTimerRef.current);
+    if (permalinkNoticeTimerRef.current !== null) window.clearTimeout(permalinkNoticeTimerRef.current);
   }, []);
 
   const reportChunkLoadFailure = useCallback((message = "Una parte del documento non è disponibile. Puoi continuare a consultare i contenuti già caricati.") => {
@@ -1320,7 +1329,43 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     }).catch(() => {});
   }, [clearReferencePreview, navigateViewerTarget, resolveReferenceElement]);
 
+  const showPermalinkNotice = useCallback((element: HTMLElement, message: string, status: PermalinkNotice["status"]) => {
+    const bounds = element.getBoundingClientRect();
+    const placement = bounds.top >= 54 ? "above" : "below";
+    setPermalinkNotice({
+      message,
+      left: Math.max(116, Math.min(window.innerWidth - 116, bounds.left + bounds.width / 2)),
+      top: placement === "above" ? bounds.top : bounds.bottom,
+      placement,
+      status,
+    });
+    if (permalinkNoticeTimerRef.current !== null) window.clearTimeout(permalinkNoticeTimerRef.current);
+    permalinkNoticeTimerRef.current = window.setTimeout(() => {
+      setPermalinkNotice(null);
+      permalinkNoticeTimerRef.current = null;
+    }, status === "success" ? 1800 : 2400);
+  }, []);
+
+  const copyElementPermalink = useCallback((element: HTMLElement) => {
+    const citationElement = element.closest<HTMLElement>("[data-scv-citation-target]");
+    const target = citationElement ? citationSelectionFromElement(citationElement) : null;
+    if (!target) return;
+    const targetDocument = documentFromUnitId(target.unitId);
+    const linkMode = mode === "combined" || documentForMode(mode) === targetDocument ? mode : targetDocument === "ntc2018" ? "ntc" : "circ";
+    const permalink = urlForViewerTarget(window.location.href, linkMode, defaultMode, target).href;
+    setCitationSelection(target);
+    void writeTextClipboard(permalink)
+      .then(() => showPermalinkNotice(element, "Link copiato negli appunti", "success"))
+      .catch(() => showPermalinkNotice(element, "Copia del link non disponibile", "error"));
+  }, [defaultMode, mode, showPermalinkNotice]);
+
   const handleDocumentClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    const permalinkElement = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-scv-copy-link]") : null;
+    if (permalinkElement) {
+      event.preventDefault();
+      copyElementPermalink(permalinkElement);
+      return;
+    }
     const element = event.target instanceof Element ? event.target.closest<HTMLElement>(".scv-cross-reference") : null;
     if (element) {
       if (lastPointerTypeRef.current === "touch" && touchReferenceRef.current !== element) {
@@ -1334,7 +1379,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     }
     const citationElement = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-scv-citation-target]") : null;
     if (citationElement) setCitationSelection(citationSelectionFromElement(citationElement));
-  }, [activateReference, showReferencePreview]);
+  }, [activateReference, copyElementPermalink, showReferencePreview]);
 
   const handleDocumentPointerDown = useCallback((event: React.PointerEvent<HTMLElement>) => {
     lastPointerTypeRef.current = event.pointerType;
@@ -1391,77 +1436,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
   const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
   const summaryById = useMemo(() => new Map([...indexes.values()].flatMap((documentIndex) => documentIndex.units).map((summary) => [summary.id, summary])), [indexes]);
-  const citationTarget = useMemo<ViewerTarget | null>(() => citationSelection ?? (activeUnitId ? { kind: "unit", unitId: activeUnitId } : null), [activeUnitId, citationSelection]);
-  const loadedCitationAsset = useMemo(() => {
-    if (citationTarget?.kind !== "asset") return null;
-    for (const loaded of loadedChunks.values()) {
-      const asset = loaded.assets.formulas[citationTarget.assetId] ?? loaded.assets.tables[citationTarget.assetId] ?? loaded.assets.figures[citationTarget.assetId];
-      if (asset) return asset;
-    }
-    return null;
-  }, [citationTarget, loadedChunks]);
-  const citationUnit = citationTarget ? summaryById.get(citationTarget.unitId) ?? crossReferenceLookup?.unitById.get(citationTarget.unitId) ?? null : null;
-  const citationAsset = citationTarget?.kind === "asset" ? crossReferenceLookup?.assetById.get(citationTarget.assetId) ?? null : null;
-  const loadedCitationAssetNumber = loadedCitationAsset && "officialNumber" in loadedCitationAsset ? loadedCitationAsset.officialNumber : null;
-  const citationAssetLabel = citationTarget?.kind === "asset"
-    ? `${citationTarget.assetKind === "formula" ? "Formula" : citationTarget.assetKind === "table" ? "Tab." : "Fig."} ${citationAsset?.officialNumber ?? loadedCitationAssetNumber ?? citationTarget.assetId}`
-    : citationTarget?.kind === "block" ? `blocco ${citationTarget.blockId}` : null;
-  const citationContextLabel = citationUnit ? `${citationUnit.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · ${citationAssetLabel ?? `§ ${displayUnitNumber(citationUnit)}`}` : "Contenuto corrente";
-  const citationLatex = citationTarget?.kind === "asset" && citationTarget.assetKind === "formula" && loadedCitationAsset && "latex" in loadedCitationAsset ? loadedCitationAsset.latex : null;
-  const textualBacklinkRecords = activeUnitId && crossReferenceLookup ? crossReferenceLookup.backlinksByTarget.get(`unit:${activeUnitId}`) ?? [] : [];
-  const textualBacklinks = textualBacklinkRecords.flatMap((backlink) => {
-    const source = summaryById.get(backlink.sourceUnitId) ?? crossReferenceLookup?.unitById.get(backlink.sourceUnitId);
-    return source ? [{ backlink, document: source.document, numbering: displayUnitNumber(source), title: source.title }] : [];
-  });
-  const editorialBacklinkRecords = activeUnitId ? relations.filter((edge) => edge.sourceUnitId === activeUnitId || edge.targetUnitId === activeUnitId) : [];
-  const editorialBacklinks = editorialBacklinkRecords.flatMap((edge) => {
-    const otherId = edge.sourceUnitId === activeUnitId ? edge.targetUnitId : edge.sourceUnitId;
-    const other = summaryById.get(otherId) ?? crossReferenceLookup?.unitById.get(otherId);
-    return other ? [{ edge, label: `${other.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} ${displayUnitNumber(other)}`, title: other.title }] : [];
-  });
-
-  const reportClipboardStatus = useCallback((message: string) => {
-    setClipboardStatus(message);
-    if (clipboardTimerRef.current !== null) window.clearTimeout(clipboardTimerRef.current);
-    clipboardTimerRef.current = window.setTimeout(() => setClipboardStatus(null), 1700);
-  }, []);
-
-  useEffect(() => () => {
-    if (clipboardTimerRef.current !== null) window.clearTimeout(clipboardTimerRef.current);
-  }, []);
-
-  const copyCitationValue = useCallback((kind: "text" | "link" | "citation" | "latex") => {
-    if (!citationTarget || !citationUnit) return;
-    const permalink = urlForViewerTarget(window.location.href, mode, defaultMode, citationTarget).href;
-    const documentLabel = citationUnit.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019";
-    const unitNumber = displayUnitNumber(citationUnit);
-    const element = findViewerTarget(textPaneRef.current, citationTarget);
-    const value = kind === "text" ? copyableText(element)
-      : kind === "link" ? permalink
-      : kind === "latex" ? citationLatex ?? ""
-      : citationForTarget({ documentLabel, unitNumber, targetLabel: citationAssetLabel, permalink });
-    if (!value) return;
-    void writeTextClipboard(value).then(() => reportClipboardStatus("Copiato negli appunti")).catch(() => reportClipboardStatus("Copia non disponibile"));
-  }, [citationAssetLabel, citationLatex, citationTarget, citationUnit, defaultMode, mode, reportClipboardStatus]);
-
-  const toggleBacklinks = useCallback(() => {
-    const opening = !backlinksOpen;
-    setBacklinksOpen(opening);
-    if (opening) void Promise.all([ensureCrossReferenceIndex(), ensureRelations()]).catch(() => setBacklinksOpen(false));
-  }, [backlinksOpen, ensureCrossReferenceIndex, ensureRelations]);
-
-  const selectTextualBacklink = useCallback((backlink: TextualBacklink) => {
-    setBacklinksOpen(false);
-    setMobileIndexOpen(false);
-    void navigateViewerTarget({ kind: "block", unitId: backlink.sourceUnitId, blockId: backlink.sourceBlockId }, "push").catch(() => reportChunkLoadFailure());
-  }, [navigateViewerTarget, reportChunkLoadFailure]);
-
-  const selectEditorialBacklink = useCallback((edge: RelationEdge) => {
-    if (!activeUnitId) return;
-    setBacklinksOpen(false);
-    const unitId = edge.sourceUnitId === activeUnitId ? edge.targetUnitId : edge.sourceUnitId;
-    void navigateViewerTarget({ kind: "unit", unitId }, "push").catch(() => reportChunkLoadFailure());
-  }, [activeUnitId, navigateViewerTarget, reportChunkLoadFailure]);
   const changeMode = useCallback((nextMode: ViewerMode, preferredUnitId: string | null = null) => {
     if (nextMode === mode) return;
     navigationGenerationRef.current += 1;
@@ -1473,11 +1447,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     initializedContextRef.current = "";
     setRequestedCircPaths(new Set());
     setCitationSelection(null);
-    setBacklinksOpen(false);
     clearReferencePreview();
     setModeRevision((revision) => revision + 1);
     setMode(nextMode);
-    setSettingsOpen(false);
   }, [activeSummary, clearReferencePreview, mode]);
 
   const closeMobileIndex = useCallback(() => {
@@ -1491,34 +1463,15 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
         || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
       if (event.key === "/" && !editing) { event.preventDefault(); searchRef.current?.focus(); }
       if (event.key === "Escape") {
-        if (settingsOpen) setSettingsOpen(false);
-        else if (referencePreview?.interactive) clearReferencePreview();
-        else if (backlinksOpen) setBacklinksOpen(false);
+        if (referencePreview?.interactive) clearReferencePreview();
         else if (mobileIndexOpen) closeMobileIndex();
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [backlinksOpen, clearReferencePreview, closeMobileIndex, mobileIndexOpen, referencePreview?.interactive, settingsOpen]);
-
-  useEffect(() => {
-    if (settingsOpen) dialogCloseRef.current?.focus();
-    else if (settingsPreviouslyOpenRef.current) settingsButtonRef.current?.focus();
-    settingsPreviouslyOpenRef.current = settingsOpen;
-  }, [settingsOpen]);
-
-  const trapSettingsFocus = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key !== "Tab") return;
-    const controls = [...(dialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex="-1"])') ?? [])];
-    if (controls.length === 0) return;
-    const first = controls[0];
-    const last = controls[controls.length - 1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-  }, []);
+  }, [clearReferencePreview, closeMobileIndex, mobileIndexOpen, referencePreview?.interactive]);
 
   const selectSearchResult = useCallback((result: SearchResult) => {
-    setQuery("");
     const target = viewerTargetForSearchResult(result);
     void navigateViewerTarget(target, "push").catch(() => reportChunkLoadFailure());
   }, [navigateViewerTarget, reportChunkLoadFailure]);
@@ -1548,7 +1501,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
   return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
-    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} settingsButtonRef={settingsButtonRef} onOpenSettings={() => setSettingsOpen(true)} />
+    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
         setMobileIndexOpen(true);
@@ -1565,8 +1518,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
           });
         }
       }}>{auxiliaryVisible ? "Chiudi" : "Apri"} {auxiliaryPanelLabel}</button>}
-      {citationTarget && <CitationActions contextLabel={citationContextLabel} formula={Boolean(citationLatex)} status={clipboardStatus} onCopyText={() => copyCitationValue("text")} onCopyLink={() => copyCitationValue("link")} onCopyCitation={() => copyCitationValue("citation")} onCopyLatex={() => copyCitationValue("latex")} backlinksOpen={backlinksOpen} backlinkCount={crossReferenceLookup ? textualBacklinks.length + editorialBacklinks.length : null} backlinksId={backlinksId} onToggleBacklinks={toggleBacklinks} />}
-      {backlinksOpen && <BacklinkPanel id={backlinksId} loading={!crossReferenceLookup || !relationsLoaded} textual={textualBacklinks} editorial={editorialBacklinks} onNavigateTextual={selectTextualBacklink} onNavigateEditorial={selectEditorialBacklink} onClose={() => setBacklinksOpen(false)} />}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerDown={handleDocumentPointerDown} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
@@ -1574,8 +1525,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       <DocumentScrollbar rootRef={textPaneRef} markers={scrollbarMarkers} activeId={activeUnitId} onSelect={selectScrollMarker} />
     </div>
     <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
+    {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}
     {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
-    {settingsOpen && <div className="scv-dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false); }}><section ref={dialogRef} className="scv-dialog" role="dialog" aria-modal="true" aria-labelledby="scv-settings-title" onKeyDown={trapSettingsFocus}><header><h2 id="scv-settings-title">Impostazioni consultazione</h2><button ref={dialogCloseRef} type="button" onClick={() => setSettingsOpen(false)} aria-label="Chiudi impostazioni">×</button></header><label className="scv-theme-toggle"><input type="checkbox" checked={Boolean(darkMode)} onChange={(event) => setDarkMode(event.target.checked)} />Modalità scura</label><label className="scv-auxiliary-toggle"><input type="checkbox" checked={auxiliaryVisible && auxiliaryAvailable} disabled={!auxiliaryAvailable} onChange={(event) => setAuxiliaryVisible(event.target.checked)} />Mostra {auxiliaryPanelLabel}</label></section></div>}
   </div>;
 }
 

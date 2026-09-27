@@ -84,15 +84,12 @@ test("linkificazione, preview e navigazione lazy restano fuori dal documento mem
   assert.doesNotMatch(documentComponent, /activeUnitId|citationSelection|referencePreview/);
 });
 
-test("backlink testuali e relazioni editoriali sono caricati e mostrati separatamente", async () => {
-  const [viewer, tools] = await Promise.all([
-    readFile(viewerSourceUrl, "utf8"),
-    readFile(new URL("../shared/ReferenceTools.tsx", import.meta.url), "utf8"),
-  ]);
-  assert.match(viewer, /Promise\.all\(\[ensureCrossReferenceIndex\(\), ensureRelations\(\)\]\)/);
-  assert.match(viewer, /backlinksByTarget\.get\(`unit:\$\{activeUnitId\}`\)/);
-  assert.match(tools, /Riferimenti testuali/);
-  assert.match(tools, /Relazioni editoriali NTC ↔ Circolare/);
+test("la barra azioni e il pannello backlink non sono montati nel viewer", async () => {
+  const viewer = await readFile(viewerSourceUrl, "utf8");
+  assert.doesNotMatch(viewer, /<CitationActions|<BacklinkPanel|toggleBacklinks/);
+  assert.doesNotMatch(viewer, /backlinksByTarget\.get\(`unit:\$\{activeUnitId\}`\)/);
+  assert.match(viewer, /data-scv-copy-link/);
+  assert.match(viewer, /Link copiato negli appunti/);
 });
 
 test("permalink granulari e citazioni sono stabili", async () => {
@@ -111,13 +108,14 @@ test("permalink granulari e citazioni sono stabili", async () => {
   assert.match(citationForTarget({ documentLabel: "NTC 2018", unitNumber: "7.3.3.3", targetLabel: "Formula 7.3.1", permalink: formulaUrl.href }), /NTC 2018, § 7\.3\.3\.3, Formula 7\.3\.1 — https:/u);
 });
 
-test("history, clipboard e modalità usano il percorso di navigazione condiviso", async () => {
-  const [viewer, tools] = await Promise.all([readFile(viewerSourceUrl, "utf8"), readFile(toolsSourceUrl, "utf8")]);
+test("history, permalink copiabili e modalità usano il percorso di navigazione condiviso", async () => {
+  const viewer = await readFile(viewerSourceUrl, "utf8");
   assert.match(viewer, /window\.history\[`\$\{action\}State`\]/);
   assert.match(viewer, /window\.addEventListener\("popstate", onPopState\)/);
   assert.match(viewer, /navigateViewerTarget\(viewerTargetForReference\(reference\), "push"\)/);
   assert.match(viewer, /navigator\.clipboard\?\.writeText/);
-  assert.match(tools, /Copia LaTeX/);
+  assert.match(viewer, /urlForViewerTarget\(window\.location\.href, linkMode, defaultMode, target\)\.href/);
+  assert.match(viewer, /Link copiato negli appunti/);
   assert.match(viewer, /mode === "combined" \|\| documentForMode\(mode\) === targetDocument/);
   assert.match(viewer, /targetDocument === "ntc2018" \? "ntc" : "circ"/);
 });
@@ -128,6 +126,6 @@ test("l'indice cross-reference resta lazy e indipendente dal worker di ricerca",
   assert.doesNotMatch(startup, /loadCrossReferenceIndex/);
   assert.match(viewer, /const ensureCrossReferenceIndex = useCallback/);
   assert.match(viewer, /resolveReferenceElement/);
-  assert.match(viewer, /toggleBacklinks/);
+  assert.match(viewer, /showReferencePreview/);
   assert.match(await readFile(new URL("../shared/searchWorker.js", import.meta.url), "utf8"), /createSearchEngine/);
 });

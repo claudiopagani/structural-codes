@@ -55,7 +55,6 @@ function latexMarkup(latex: string, displayMode: boolean) {
   return markup;
 }
 
-type CopyAssetKind = "formula" | "figure";
 type CopyStatus = "idle" | "copied" | "error";
 
 function copyableImageClipboard() {
@@ -80,135 +79,25 @@ async function figureImageBlob(image: HTMLImageElement) {
   return blob;
 }
 
-function stylesheetText() {
-  return [...document.styleSheets].flatMap((sheet) => {
-    try {
-      return [...sheet.cssRules].map((rule) => rule.cssText);
-    } catch {
-      return [];
-    }
-  }).join("\n");
+function CopyFigureIcon({ status }: { status: CopyStatus }) {
+  if (status === "copied") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 12.5 3.4 3.4 7.6-8" /></svg>;
+  if (status === "error") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.5v6" /><path d="M12 17.2v.3" /><circle cx="12" cy="12" r="9" /></svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6V5.5A2.5 2.5 0 0 1 10 3h7.5A2.5 2.5 0 0 1 20 5.5V13a2.5 2.5 0 0 1-2.5 2.5H17" /><rect x="4" y="7" width="13" height="13" rx="2.5" /><circle cx="13" cy="11" r="1.25" /><path d="m6.5 17 3.25-3.5 2.4 2.45 1.55-1.55 1.8 2.1" /></svg>;
 }
 
-function escapeXml(value: string) {
-  return value.replace(/&/gu, "&amp;").replace(/"/gu, "&quot;").replace(/</gu, "&lt;").replace(/>/gu, "&gt;");
-}
-
-function formulaSvg(element: HTMLElement) {
-  const bounds = element.getBoundingClientRect();
-  const width = Math.max(1, Math.ceil(element.scrollWidth || bounds.width));
-  const height = Math.max(1, Math.ceil(element.scrollHeight || bounds.height));
-  const computed = getComputedStyle(element);
-  const color = escapeXml(computed.color || "#202733");
-  const fontSize = escapeXml(computed.fontSize || "15px");
-  // CSS lives inside XML text in the foreignObject. Escaping it is essential:
-  // a media query or generated rule containing '<' otherwise makes the SVG
-  // invalid and the browser reports the copy operation as a generic error.
-  const rules = stylesheetText().replace(/&/gu, "&amp;").replace(/</gu, "&lt;").replace(/>/gu, "&gt;");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" class="scv-root scv-copy-formula" style="display:flex;align-items:center;justify-content:center;width:${width}px;height:${height}px;overflow:visible;color:${color};font-size:${fontSize};background:#fff;"><style>${rules}</style><div class="formula-scroll">${element.innerHTML}</div></div></foreignObject></svg>`;
-}
-
-async function formulaImageBlob(element: HTMLElement) {
-  const svg = formulaSvg(element);
-  const source = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
-  try {
-    const image = new Image();
-    image.decoding = "async";
-    await new Promise<void>((resolve, reject) => {
-      image.onload = () => resolve();
-      image.onerror = () => reject(new Error("Impossibile rasterizzare la formula."));
-      image.src = source;
-    });
-    const scale = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
-    const width = Math.max(1, Math.ceil(element.scrollWidth || element.getBoundingClientRect().width));
-    const height = Math.max(1, Math.ceil(element.scrollHeight || element.getBoundingClientRect().height));
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.ceil(width * scale);
-    canvas.height = Math.ceil(height * scale);
-    const context = canvas.getContext("2d");
-    if (!context) throw new Error("Canvas non disponibile.");
-    context.fillStyle = "#fff";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    return await new Promise<Blob>((resolve, reject) => {
-      canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("Impossibile creare l'immagine della formula.")), "image/png");
-    });
-  } finally {
-    URL.revokeObjectURL(source);
-  }
-}
-
-async function writeFormulaToClipboard(element: HTMLElement) {
-  const svg = formulaSvg(element);
-  if (!copyableImageClipboard()) throw new Error("Il browser non supporta la copia di immagini negli appunti.");
-  try {
-    // SVG is already an image and avoids the foreignObject -> canvas step in browsers
-    // that deliberately block rasterization of HTML embedded in SVG.
-    await navigator.clipboard.write([new ClipboardItem({
-      "image/svg+xml": new Blob([svg], { type: "image/svg+xml" }),
-    })]);
-    return;
-  } catch {
-    // Fall through to PNG for clipboard consumers that do not accept SVG.
-  }
-  // Keep the promise inside ClipboardItem: Chromium can reject a write if the
-  // rasterization is awaited before Clipboard.write consumes the click gesture.
-  await writeImageToClipboard(formulaImageBlob(element));
-}
-
-async function copyFormulaMarkupAsImage(svg: string) {
-  const container = document.createElement("div");
-  const image = document.createElement("img");
-  const selection = window.getSelection();
-  const previousRange = selection?.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
-  container.contentEditable = "true";
-  container.style.cssText = "position:fixed;left:-10000px;top:-10000px;width:max-content;height:max-content;opacity:0.01;";
-  image.alt = "Formula";
-  image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-  container.append(image);
-  document.body.append(container);
-  try {
-    await new Promise<void>((resolve, reject) => {
-      if (image.complete) {
-        resolve();
-        return;
-      }
-      image.onload = () => resolve();
-      image.onerror = () => reject(new Error("Impossibile preparare la formula per la copia."));
-    });
-    container.focus();
-    const range = document.createRange();
-    range.selectNode(image);
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-    const copied = document.execCommand("copy");
-    if (!copied) throw new Error("Il browser non ha consentito la copia alternativa della formula.");
-  } finally {
-    selection?.removeAllRanges();
-    if (previousRange) selection?.addRange(previousRange);
-    container.remove();
-  }
-}
-
-function CopyAssetButton({ kind }: { kind: CopyAssetKind }) {
+function CopyFigureButton() {
   const [status, setStatus] = useState<CopyStatus>("idle");
   const resetTimer = useRef<number | null>(null);
   useEffect(() => () => {
     if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
   }, []);
 
-  async function copyAsset(event: React.MouseEvent<HTMLButtonElement>) {
+  async function copyFigure(event: React.MouseEvent<HTMLButtonElement>) {
     const asset = event.currentTarget.closest<HTMLElement>(".scv-copyable-asset");
-    const target = kind === "figure" ? asset?.querySelector<HTMLImageElement>("img") : asset?.querySelector<HTMLElement>(".formula-scroll");
+    const target = asset?.querySelector<HTMLImageElement>("img");
     if (!target) return;
     try {
-      try {
-        if (kind === "figure") await writeImageToClipboard(figureImageBlob(target as HTMLImageElement));
-        else await writeFormulaToClipboard(target);
-      } catch (error) {
-        if (kind !== "formula") throw error;
-        await copyFormulaMarkupAsImage(formulaSvg(target));
-      }
+      await writeImageToClipboard(figureImageBlob(target));
       setStatus("copied");
       if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
       resetTimer.current = window.setTimeout(() => setStatus("idle"), 1700);
@@ -219,9 +108,8 @@ function CopyAssetButton({ kind }: { kind: CopyAssetKind }) {
     }
   }
 
-  const label = kind === "figure" ? "Copia immagine" : "Copia formula come immagine";
-  const feedback = status === "copied" ? `${kind === "figure" ? "Immagine" : "Formula"} copiata negli appunti` : status === "error" ? "Copia non disponibile" : label;
-  return <button type="button" className={`scv-copy-asset scv-copy-asset-${status}`} onClick={(event) => void copyAsset(event)} aria-label={feedback} title={feedback}>{status === "copied" ? "✓" : status === "error" ? "!" : "⧉"}</button>;
+  const feedback = status === "copied" ? "Immagine copiata negli appunti" : status === "error" ? "Copia non disponibile" : "Copia immagine";
+  return <button type="button" className={`scv-copy-asset scv-copy-asset-${status}`} onClick={(event) => void copyFigure(event)} aria-label={feedback} title={feedback}><CopyFigureIcon status={status} /></button>;
 }
 
 function MathCell({ cell, assetsBaseUrl }: { cell: TableCell; assetsBaseUrl: string }) {
@@ -573,7 +461,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   if (!block.assetId || !assets) return <p className="asset-missing">Asset non disponibile.</p>;
   const formula = assets.formulas[block.assetId];
   if (formula) return (
-    <figure className="formula-asset scv-copyable-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number">[{formula.officialNumber}]</span>}</div><CopyAssetButton kind="formula" /></figure>
+    <figure className="formula-asset"><div className="formula-row"><div className="formula-scroll" dangerouslySetInnerHTML={latexMarkup(formula.latex, true)} />{formula.officialNumber && <span className="formula-number"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link alla formula ${formula.officialNumber}`}>[{formula.officialNumber}]</button></span>}</div></figure>
   );
   const table = assets.tables[block.assetId];
   if (table) {
@@ -586,7 +474,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     const renderRows = (rows: TableCell[][], keyPrefix: string) => rows.map((row, rowIndex) => <tr key={`${keyPrefix}-${rowIndex}`}>{row.map((cell, cellIndex) => { const CellTag = cell.header === true ? "th" : "td"; return <CellTag colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`${keyPrefix}-${rowIndex}-${cellIndex}`}><MathCell cell={cell} assetsBaseUrl={assetsBaseUrl} /></CellTag>; })}</tr>);
     return (
       <figure className={`table-asset ${tableAssetClass(table.officialNumber, table.id)}`}>
-        {(label || caption) && <figcaption>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</figcaption>}
+        {(label || caption) && <figcaption><button type="button" className="scv-permalink-trigger scv-caption-permalink" data-scv-copy-link aria-label={`Copia link alla tabella${table.officialNumber ? ` ${table.officialNumber}` : ""}`}>{label && <strong>{label}</strong>}{caption && <span>{label ? " — " : ""}{captionInline ? renderInlineSegments(captionInline) : caption}</span>}</button></figcaption>}
         <div className={`table-scroll ${compactTable ? "table-scroll-compact" : ""}`}><table>{table.columnWidths && <colgroup>{table.columnWidths.map((width, index) => <col style={{ width: `${width}%` }} key={`column-${index}`} />)}</colgroup>}<thead>{table.headers.map((row, rowIndex) => <tr key={`head-${rowIndex}`}>{row.map((cell, cellIndex) => { const CellTag = cell.header === false ? "td" : "th"; return <CellTag colSpan={cell.colSpan} rowSpan={cell.rowSpan} className={tableCellClass(cell)} key={`head-${rowIndex}-${cellIndex}`}><MathCell cell={cell} assetsBaseUrl={assetsBaseUrl} /></CellTag>; })}</tr>)}</thead><tbody>{renderRows(table.rows, "body")}</tbody></table>{table.footerRows && <table className="table-independent-footer">{table.footerColumnWidths && <colgroup>{table.footerColumnWidths.map((width, index) => <col style={{ width: `${width}%` }} key={`footer-column-${index}`} />)}</colgroup>}<tbody>{renderRows(table.footerRows, "footer")}</tbody></table>}</div>
         {notes.length > 0 && <div className="table-notes"><span className="scv-note-rule" aria-hidden="true" />{notes.map(({ text, inline }) => <p key={text}>{inline ? renderInlineSegments(inline) : text}</p>)}<span className="scv-note-rule" aria-hidden="true" /></div>}
       </figure>
@@ -598,7 +486,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
     const displayScale = figure.displayScale ?? 1;
     const imageStyle = displayScale === 1 ? undefined : { width: `${displayScale * 100}%`, maxWidth: "none" };
-    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} />{figure.caption && <figcaption><span>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</span></figcaption>}<CopyAssetButton kind="figure" /></figure>;
+    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} />{figure.caption && <figcaption><button type="button" className="scv-permalink-trigger scv-caption-permalink" data-scv-copy-link aria-label={`Copia link alla figura${figure.officialNumber ? ` ${figure.officialNumber}` : ""}`}>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</button></figcaption>}<CopyFigureButton /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }

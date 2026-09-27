@@ -58,6 +58,7 @@ async function submit(question = "Domanda di test") { await input(question); awa
 afterEach(async () => {
   if (root) await act(async () => root.unmount());
   root = undefined; calls.length = 0; navigate.length = 0;
+  localStorage.clear();
   window.history.replaceState(null, "", "/");
 });
 
@@ -382,10 +383,19 @@ test("viewer: non ruba il focus al mount e ricerca/drawer hanno tastiera e stato
   t.mock.method(globalThis, "fetch", mockCorpusFetch);
   await mount(h(NormativeViewer, { defaultMode: "combined" }));
   await waitFor(() => rootElement.querySelector(".scv-unit"));
-  const settings = rootElement.querySelector('[aria-label="Impostazioni consultazione"]');
-  assert.notEqual(document.activeElement, settings);
+  const theme = rootElement.querySelector('[aria-label="Attiva modalità notte"]');
+  assert.notEqual(document.activeElement, theme);
+  assert.equal(theme.getAttribute("aria-pressed"), "false");
+  assert.match(theme.querySelector('[role="tooltip"]').textContent, /Attiva modalità notte/);
+  await click(theme);
+  assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-dark"));
+  assert.equal(theme.getAttribute("aria-label"), "Attiva modalità giorno");
+  assert.equal(theme.getAttribute("aria-pressed"), "true");
+  assert.equal(localStorage.getItem("scv-theme"), "dark");
   const search = rootElement.querySelector('[aria-label="Cerca nella normativa"]');
   assert.equal(search.getAttribute("role"), "combobox");
+  await act(async () => search.focus());
+  assert.equal(document.activeElement, search);
   await act(async () => {
     Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set.call(search, "7.3.6.1");
     search.dispatchEvent(new window.Event("input", { bubbles: true }));

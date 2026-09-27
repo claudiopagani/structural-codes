@@ -144,7 +144,7 @@ test("la route principale espone solo il viewer comparato", async () => {
   assert.match(html, /scv-root/);
   assert.match(html, /scv-index-grid/);
   assert.match(html, /Cerca nella normativa…/);
-  assert.match(html, /Impostazioni consultazione/);
+  assert.match(html, /Attiva modalità notte/);
   assert.match(html, /scv-mode-button/);
   assert.doesNotMatch(html, /CorpusViewer|Piano di chiusura|Lettura comparata|comparison-shell/);
 });
@@ -171,7 +171,7 @@ test("la selezione dall'indice usa il pannello testo e preserva il deep-link", a
   assert.doesNotMatch(source, /window\.document\.querySelector/);
 });
 
-test("il comparato espone le tre modalità nel toolbar e non nel pannello impostazioni", async () => {
+test("il comparato espone le tre modalità e il tema direttamente nel toolbar", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /defaultMode = "combined"/);
   assert.match(source, /className=\{`scv-mode-button/);
@@ -185,13 +185,15 @@ test("il comparato espone le tre modalità nel toolbar e non nel pannello impost
   assert.match(source, /function ModeSegmentedControl\(/);
   assert.match(source, /className="scv-mode-switch" role="group"/);
   assert.match(source, /<ModeSegmentedControl mode=\{mode\} onChange=\{onModeChange\} \/>/);
-  assert.match(source, /Mostra \{auxiliaryPanelLabel\}/);
   assert.match(source, /const \[darkMode, setDarkMode\] = useState<boolean \| null>\(null\)/);
   assert.match(source, /localStorage\.getItem\("scv-theme"\)/);
   assert.match(source, /className=\{`scv-root \$\{darkMode \? "scv-dark"/);
-  assert.match(source, /Modalità scura/);
+  assert.match(source, /className="scv-theme-button"/);
+  assert.match(source, /darkMode \? "Attiva modalità giorno" : "Attiva modalità notte"/);
+  assert.match(source, /aria-pressed=\{darkMode\}/);
+  assert.match(source, /className="scv-control-tooltip" role="tooltip"/);
+  assert.doesNotMatch(source, /⚙|Impostazioni consultazione|scv-settings-button/);
   assert.match(source, /auxiliaryPanelModes \? auxiliaryPanelModes.includes\(mode\) : mode !== "combined"/);
-  assert.match(source, /disabled={!auxiliaryAvailable}/);
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
 
@@ -205,7 +207,7 @@ test("combined usa le NTC come base e conserva tutti i contenuti Circolare", asy
   assert.doesNotMatch(source, /primaryNumbers/);
   assert.match(source, /sourceUnitId === resultId/);
   assert.match(source, /const relatedByTarget = useMemo/);
-  assert.match(source, /<h3><span className="scv-related-number">\{relatedUnit\.numbering\.official\}<\/span><span className="scv-related-title">\{relatedUnit\.title\}<\/span><\/h3>/);
+  assert.match(source, /<span className="scv-related-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link[^>]*>\{relatedUnit\.title\}<\/button><\/span>/);
   assert.match(source, /function hasUnitContent\(unit: CorpusUnit\)/);
   assert.match(source, /filter\(\(\{ unit: relatedUnit \}\) => hasUnitContent\(relatedUnit\)\)/);
   assert.match(source, /hasUnitContent\(unit\) \|\| !primaryBases\.has\(baseNumbering\(unit\.numbering\.official\)\)/);
@@ -266,7 +268,7 @@ test("l'indice e la scrollbar seguono lo scroll del flusso continuo", async () =
   assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-indent: 0px/);
-  assert.match(styles, /\.scv-index-list \{[^}]*--scv-index-chapter-bg: #3f56a6[^}]*--scv-index-paragraph-bg: #7585bf[^}]*--scv-index-subparagraph-bg: #aeb8da/);
+  assert.match(styles, /\.scv-index-list \{[^}]*--scv-index-chapter-bg: #3f56a6[^}]*--scv-index-paragraph-bg: #a8bfea[^}]*--scv-index-subparagraph-bg: #c6d3ee/);
   assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: var\(--scv-index-chapter-bg\)/);
   assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-index-paragraph-bg\)[^}]*--scv-index-active-ink: #101624/);
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: var\(--scv-index-subparagraph-bg\)/);
@@ -318,12 +320,13 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
   assert.match(component, /className="formula-scroll"/);
-  assert.match(component, /function CopyAssetButton\(/);
+  assert.match(component, /function CopyFigureButton\(/);
+  assert.match(component, /function CopyFigureIcon\(/);
   assert.match(component, /new ClipboardItem/);
-  assert.match(component, /formulaImageBlob/);
-  assert.match(component, /copyFormulaMarkupAsImage/);
+  assert.doesNotMatch(component, /formulaImageBlob|copyFormulaMarkupAsImage|writeFormulaToClipboard/);
   assert.match(component, /clipboard\.write/);
-  assert.match(component, /className="formula-asset scv-copyable-asset"/);
+  assert.match(component, /className="formula-asset"/);
+  assert.doesNotMatch(component, /className="formula-asset scv-copyable-asset"/);
   assert.match(component, /className=\{`figure-asset \$\{figureAssetClass\(figure\.officialNumber\)\} scv-copyable-asset`\}/);
   assert.match(component, /visibleTableCaption\(table\.officialNumber, table\.caption\)/);
   assert.match(component, /visibleTableNumberSuffix\(table\.officialNumber, table\.caption\)/);
@@ -374,10 +377,12 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) minmax\(320px, \.8fr\)/);
   assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
-  assert.match(styles, /\.scv-root \.scv-settings-button, \.scv-root \.scv-mode-button \{[^}]*font-weight: 900[^}]*background: var\(--scv-primary-soft\)/);
+  assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: var\(--scv-primary-soft\)/);
   assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: "Segoe UI"[^}]*font-size: 8px[^}]*font-weight: 700/);
-  assert.match(styles, /\.scv-root \.scv-mode-button span \{[^}]*transform: scaleY\(1\.35\)/);
-  assert.match(styles, /\.scv-root \.scv-settings-button \{[^}]*font-size: 16px/);
+  assert.match(styles, /\.scv-root \.scv-mode-button \.scv-mode-label \{[^}]*transform: scaleY\(1\.35\)/);
+  assert.match(styles, /\.scv-search-box \{[^}]*height: var\(--scv-toolbar-button-size\)/);
+  assert.match(styles, /\.scv-theme-button:hover \.scv-theme-icon[^}]*transform: rotate\(-12deg\) scale\(1\.08\)/);
+  assert.match(styles, /\.scv-theme-button:hover \.scv-control-tooltip[^}]*opacity: 1/);
   assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset/);
   assert.match(styles, /\.scv-root\.scv-dark/);
   assert.match(styles, /\.scv-root \.inline-math \{[^}]*display: inline-block[^}]*font-size: 1\.04em[^}]*vertical-align: baseline/);
