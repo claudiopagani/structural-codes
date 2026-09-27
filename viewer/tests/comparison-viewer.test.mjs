@@ -397,6 +397,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol\.list-item-without-marker p \{[^}]*grid-template-columns: minmax\(0, 1fr\) max-content/);
   assert.doesNotMatch(styles, /list-item-with-trailing-symbol-tabbed|grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: #e0e6f2/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /--scv-index-width: clamp\(360px, 37vw, 480px\)/);

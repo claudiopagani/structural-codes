@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { ChatHistoryError, titleFromQuestion, type ChatConversation, type ChatConversationSummary, type ChatHistoryStore } from "../chatntc-history/types.js";
 import { ChatNTCPanel, type ChatNTCPanelProps, type ChatNTCTurn } from "./ChatNTCPanel.js";
 import { historyMessages, turnsFromHistory } from "./historyMessages.js";
-import { HistoryIcon, NewChatIcon, SettingsIcon } from "./ChatNTCIcons.js";
+import { HistoryIcon, NewChatIcon, SettingsIcon, TrashIcon } from "./ChatNTCIcons.js";
 
 export interface ChatNTCHistoryPanelProps extends Omit<ChatNTCPanelProps, "initialTurns" | "onTurnsChange" | "onNewChat" | "historyEnabled" | "disabled"> {
   historyStore: ChatHistoryStore;
@@ -22,7 +22,6 @@ export function ChatNTCHistoryPanel({ historyStore: store, settings, ...panelPro
   const [generating, setGenerating] = useState(false);
   const [expanded, setExpanded] = useState<"history" | "settings" | null>(null);
   const [rename, setRename] = useState<string | null>(null);
-  const [confirmAll, setConfirmAll] = useState(false);
   const [activeTitle, setActiveTitle] = useState("Nuova chat");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
@@ -157,20 +156,12 @@ export function ChatNTCHistoryPanel({ historyStore: store, settings, ...panelPro
           if (!conversation) throw new ChatHistoryError("CONFLICT");
           await store.setActiveConversationId(row.id); select(conversation);
         })}><span>{row.title}</span><time dateTime={row.updatedAt}>{new Date(row.updatedAt).toLocaleDateString("it-IT")}</time></button>
-        <button type="button" aria-label={`Elimina ${row.title}`} disabled={locked || generating} onClick={() => void act(async () => {
+        <button className="scv-chat-history-delete" type="button" aria-label={`Elimina ${row.title}`} title={`Elimina ${row.title}`} disabled={locked || generating} onClick={() => void act(async () => {
           await store.deleteConversation(row.id, row.revision);
           if (current.current?.id === row.id) select(null);
           setRows(await store.listConversations());
-        })}>×</button>
+        })}><TrashIcon /></button>
       </li>)}</ul>}
-      {rows.length > 0 && <button type="button" disabled={locked || generating} onClick={() => setConfirmAll(true)}>Elimina tutte</button>}
-      {confirmAll && <div className="scv-chat-history-confirm" role="group" aria-label="Conferma eliminazione cronologia"><p>Eliminare tutte le conversazioni locali? L’operazione non è reversibile.</p>
-        <button type="button" autoFocus onClick={() => setConfirmAll(false)}>Annulla</button>
-        <button type="button" disabled={locked || generating} onClick={() => void act(async () => {
-          await store.deleteAllConversations(rows.map(({ id, revision }) => ({ id, revision })));
-          select(null); setRows([]); setConfirmAll(false);
-        })}>Conferma eliminazione</button>
-      </div>}
     </section></div>
     {settings && <div id={settingsId} className="scv-chat-settings-accordion" data-expanded={settingsOpen} aria-hidden={!settingsOpen} inert={!settingsOpen} onKeyDown={(event) => {
       if (event.key === "Escape") { event.preventDefault(); closeAccordion("settings"); }

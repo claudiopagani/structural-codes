@@ -215,6 +215,13 @@ test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", 
   assert.match(styles, /\.scv-tools-header \[aria-selected="true"\]\s*\{[^}]*background:\s*var\(--scv-primary\)/su);
   assert.match(styles, /\.scv-chat-history-actions button\[aria-expanded="true"\]\s*\{[^}]*background:\s*var\(--scv-primary\)/su);
   assert.match(styles, /\.scv-tools-header button\s*\{[^}]*height:\s*42px/su);
+  assert.match(styles, /\.scv-chat-history-list li:hover\s*\{[^}]*background:\s*var\(--scv-chat-row-hover\)/su);
+  assert.match(styles, /\.scv-chat-history-list li:hover > button:first-child\s*\{[^}]*background:\s*transparent[^}]*border-color:\s*transparent/su);
+  assert.match(styles, /\.scv-chat-history-delete:hover:not\(:disabled\)\s*\{[^}]*color:\s*var\(--scv-danger\)[^}]*background:\s*transparent/su);
+  assert.match(styles, /\.scv-chat-composer-bar\s*\{[^}]*background:\s*var\(--scv-chat-input\)/su);
+  assert.match(styles, /\.scv-root\.scv-dark\s*\{[^}]*--scv-chat-surface:\s*#[0-9a-f]+[^}]*--scv-chat-input:\s*#[0-9a-f]+/su);
+  assert.match(styles, /\.scv-ai-selection-badge\s*\{[^}]*background:\s*color-mix\([^}]*border-radius:\s*999px/su);
+  assert.match(styles, /\.scv-ai-field\s*\{[^}]*grid-template-columns:\s*max-content minmax\(0,\s*1fr\)[^}]*align-items:\s*center/su);
 });
 
 for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABELS)) test(`classificazione ${classification} visibile e discreta`, async () => {
@@ -585,7 +592,7 @@ test("history UI: first question creates local title, reload restores active res
   assert.equal(calls.length, 1, "reload and citation navigation never regenerate");
 });
 
-test("history UI: two independent chats, selection, rename, deletion and confirmed deleteAll", async (t) => {
+test("history UI: two independent chats, selection, rename and individual deletion", async (t) => {
   const { store } = historyStore(t);
   await mount(h(ChatNTCHistoryPanel, { ...props(), historyStore: store })); await readyHistory();
   await submit("Prima conversazione"); await settledHistory();
@@ -620,16 +627,10 @@ test("history UI: two independent chats, selection, rename, deletion and confirm
   assert.equal(calls[2].request.history[0].content, "Prima conversazione");
   assert.equal((await store.listConversations())[0].title, "Titolo manuale");
   await toggleHistory();
+  assert.equal(button("Elimina tutte"), undefined);
+  assert.ok(action("Elimina Seconda conversazione").querySelector(".scv-chat-delete-icon"));
   await click(rootElement.querySelector('[aria-label="Elimina Seconda conversazione"]')); await settledHistory();
   assert.equal((await store.listConversations()).length, 1);
-  await click(button("Elimina tutte"));
-  assert.equal((await store.listConversations()).length, 1, "confirmation is required");
-  await click(button("Annulla"));
-  assert.equal((await store.listConversations()).length, 1);
-  await click(button("Elimina tutte")); await click(button("Conferma eliminazione")); await settledHistory();
-  assert.deepEqual(await store.listConversations(), []);
-  assert.equal(await store.getActiveConversationId(), null);
-  assert.equal(rootElement.querySelectorAll(".scv-chat-turn").length, 0);
 });
 
 test("history UI: failed writes retain visible answer and retry saves it", async (t) => {
@@ -702,11 +703,19 @@ test("BYOK UI: unified settings, manual model, no AI at configuration, key only 
   localStorage.clear();
   const configuration = new LocalAIConfiguration();
   await mount(h(AISettings, { configuration }));
+  assert.equal(rootElement.querySelector(".scv-ai-selection-badge").dataset.configured, "false");
+  assert.match(rootElement.querySelector(".scv-ai-selection-badge").textContent, /Attiva la configurazione/u);
+  assert.equal(rootElement.querySelectorAll(".scv-ai-field").length, 3);
+  assert.doesNotMatch(rootElement.textContent, /Modello consigliato con output strutturato|Solo in memoria fino al reload|Domanda, storico recente ed evidence/u);
+  assert.ok(button("Applica impostazioni").querySelector(".scv-ai-action-icon"));
+  assert.ok(button("Rimuovi API key").querySelector(".scv-ai-action-icon"));
   assert.equal(rootElement.querySelector('input[type=password]').autocomplete, "off");
   await settingsInput("API key", "fixture-ui-secret-not-real");
-  await settingsInput("Modello / model ID", "future-model");
+  await settingsInput("Modello", "future-model");
   await click(button("Applica impostazioni"));
   assert.equal(configuration.hasKey, true);
+  assert.equal(rootElement.querySelector(".scv-ai-selection-badge").dataset.configured, "true");
+  assert.equal(rootElement.querySelector(".scv-ai-selection-badge").textContent, "Attivo: DeepSeek · future-model");
   assert.equal(rootElement.querySelector('input[type=password]').value, "");
   assert.equal(JSON.stringify(configuration).includes("fixture-ui-secret"), false);
   assert.equal(localStorage.length, 1);
@@ -720,7 +729,7 @@ test("BYOK UI: unified settings, manual model, no AI at configuration, key only 
   assert.equal(configuration.selection.provider, "openai");
   assert.equal(calls.length, 0);
   await settingsInput("API key", "fixture-second-key"); await click(button("Applica impostazioni"));
-  await click(button("Rimuovi chiave")); assert.equal(configuration.hasKey, false);
+  await click(button("Rimuovi API key")); assert.equal(configuration.hasKey, false);
   localStorage.clear();
 });
 
@@ -734,7 +743,7 @@ test("BYOK UI OpenRouter: exact manual underscore ID survives restore, key does 
   await settingsInput("Provider", "openrouter");
   assert.equal(rootElement.querySelector("select").value, "openrouter");
   assert.equal(rootElement.querySelector("input[list]").value, "openrouter/auto");
-  await settingsInput("Modello / model ID", "stealth/union_alpha");
+  await settingsInput("Modello", "stealth/union_alpha");
   await settingsInput("API key", "fixture-openrouter-ui-memory-key");
   await click(button("Applica impostazioni"));
   const selection = { provider: "openrouter", model: "stealth/union_alpha" };
