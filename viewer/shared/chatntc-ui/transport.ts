@@ -19,7 +19,9 @@ export interface ChatResult {
     structuralCodesVersion?: string;
     policyVersion: string; reduced: boolean; warnings: ChatNTCEvidencePackage["warnings"];
   };
-  generation: { provider: string | null; model?: string | null; outcome: "generated" | "abstained" };
+  generation: { provider: string | null; model?: string | null; outcome: "generated" | "abstained";
+    /** True for responses authored by the configured provider; absent in saved older results. */
+    aiGenerated?: true };
   validation: { valid: true; scope: "integrity-provenance-claim-coverage" | "integrity-provenance-reference-resolution";
     stage?: ChatNTCProcessingStage; diagnostics?: ChatNTCValidationIssue[] };
 }

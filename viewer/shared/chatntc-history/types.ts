@@ -16,6 +16,7 @@ export interface ChatHistoryAssistantMessage {
     provider: string | null; model: string | null;
     structuralCodesVersion: string | null; corpusFingerprint: string; artifactFingerprint: string;
     policyVersion: string; outcome: ChatResult["generation"]["outcome"];
+    aiGenerated?: true;
     validation: ChatResult["validation"];
   };
   evidenceWarnings: ChatResult["evidence"]["warnings"];

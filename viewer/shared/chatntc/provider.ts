@@ -17,8 +17,9 @@ export interface ChatNTCGenerationInput {
   evidence: ChatNTCEvidencePackage;
   directives: ChatNTCDirectives;
   outputSchema: typeof CHATNTC_RESPONSE_JSON_SCHEMA;
-  /** One bounded repair, only for references that could not be verified. */
+  /** Full response regeneration after reference validation; at most one of each mode. */
   repair?: {
+    mode: "repair" | "conservative";
     issues: Pick<ChatNTCValidationIssue, "code" | "path" | "message" | "reference">[];
     previousOutput: ChatNTCProviderOutput;
   };

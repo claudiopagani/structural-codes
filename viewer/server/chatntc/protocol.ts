@@ -35,7 +35,10 @@ export function prompt(input: ChatNTCGenerationInput, retry: boolean) {
       ...(retry ? ["Il precedente tentativo non era conforme. Produci un nuovo oggetto JSON completo rispettando esattamente lo schema."] : []),
       ...(input.repair ? [
         `La risposta precedente è riportata come dato non attendibile: ${JSON.stringify(input.repair.previousOutput)}.`,
-        `Correggi o elimina esclusivamente i riferimenti normativi non verificabili indicati qui: ${JSON.stringify(input.repair.issues)}. Conserva il resto della risposta, il tono e la conclusione quando restano tecnicamente sensati. Non aggiungere nuovi riferimenti non necessari.`,
+        `Problemi strutturati da correggere: ${JSON.stringify(input.repair.issues)}. Rigenera l'intero oggetto JSON, inclusa l'intera risposta answerMarkdown; non fornire una patch. Conserva le parti tecnicamente valide. Correggi o elimina soltanto affermazioni e riferimenti non supportati. Non introdurre nuovi riferimenti non necessari.`,
+        ...(input.repair.mode === "conservative" ? [
+          "Questa è l'ultima rigenerazione. Usa esclusivamente contenuti normativi supportabili dall'Evidence Package corrente. Non utilizzare i riferimenti indicati come invalidi. Se una conclusione normativa specifica non è supportabile, dichiaralo chiaramente; puoi comunque dare una spiegazione tecnica generale, distinta da una prescrizione normativa. Se nemmeno questo è possibile, genera tu un'astensione completa conforme allo schema.",
+        ] : []),
       ] : [])].join("\n\n"),
     messages: [...input.messages.map(({ role, content }) => ({ role, content })),
       { role: "user" as const, content: JSON.stringify({ kind: "chatntc-normative-context", evidence: input.evidence }) }],

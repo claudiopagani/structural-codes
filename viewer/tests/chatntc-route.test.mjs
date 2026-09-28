@@ -63,7 +63,7 @@ test("route Vinext self-hosted esegue l'intera pipeline con fetch DeepSeek simul
   });
 });
 
-test("route compilata degrada un output non separabile e consente una risposta generale", async (t) => {
+test("route compilata respinge un output non verificabile e consente una risposta generale", async (t) => {
   let calls = 0;
   t.mock.method(globalThis, "fetch", async (_url, init) => {
     calls += 1;
@@ -78,19 +78,17 @@ test("route compilata degrada un output non separabile e consente una risposta g
   });
   await withEnvironment({ CHATNTC_ENABLED: "true" }, async () => {
     const invalid = await post({ question: "7.3.6.1" });
-    assert.equal(invalid.status, 200);
+    assert.equal(invalid.status, 502);
     const body = await invalid.json();
-    assert.equal(body.response.referenceWarning, "no-references-verified");
-    assert.equal(body.response.verifiedReferences.length, 0);
-    assert.doesNotMatch(body.response.answerMarkdown, /7\.99\.4/u);
-    assert.equal(body.error, undefined);
+    assert.equal(body.error.code, "UNVERIFIABLE_RESPONSE");
+    assert.equal("response" in body, false);
     const response = await post({ question: "7.99.4" });
     assert.equal(response.status, 200);
     const abstention = await response.json();
     assert.equal(abstention.response.classification, "no-direct-reference");
     assert.equal(abstention.validation.valid, true);
     assert.equal(abstention.generation.provider, "deepseek");
-    assert.equal(calls, 3);
+    assert.equal(calls, 4);
   });
 });
 

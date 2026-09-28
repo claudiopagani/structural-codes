@@ -234,7 +234,7 @@ export interface CanonicalChatNTCResponse {
 
 export type ChatNTCResponse = ChatNTCLegacyResponse | CanonicalChatNTCResponse;
 export type ChatNTCProcessingStage = "GENERATED" | "NORMALIZED" | "REFERENCES_RESOLVED" | "EXPANDED" | "REPAIRED"
-  | "PARTIALLY_SANITIZED" | "DEGRADED" | "HARD_REJECTED";
+  | "CONSERVATIVE_REGENERATED" | "PARTIALLY_SANITIZED" | "DEGRADED" | "HARD_REJECTED";
 
 export interface ChatNTCValidationIssue {
   code: string; path: string; message: string;

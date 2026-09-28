@@ -41,7 +41,8 @@ export function historyMessages(turns: ChatNTCTurn[]): ChatHistoryMessage[] {
       id: `${turn.id}:answer`, turnId: turn.id, role: "assistant", content, timestamp: turn.answeredAt ?? turn.timestamp, answer,
       provenance: { provider: generation.provider, model: generation.model ?? null, structuralCodesVersion: evidence.structuralCodesVersion ?? null,
         corpusFingerprint: evidence.corpusFingerprint, artifactFingerprint: evidence.artifactFingerprint, policyVersion: evidence.policyVersion,
-        outcome: generation.outcome, validation: { valid: turn.result.validation.valid, scope: turn.result.validation.scope,
+        outcome: generation.outcome, ...(generation.aiGenerated ? { aiGenerated: true as const } : {}),
+        validation: { valid: turn.result.validation.valid, scope: turn.result.validation.scope,
           ...(turn.result.validation.stage ? { stage: turn.result.validation.stage } : {}) } },
       evidenceReduced: evidence.reduced, evidenceWarnings: evidence.warnings.map((w) => ({ code: w.code, ...(w.unitId ? { unitId: w.unitId } : {}) })),
     }];
@@ -67,7 +68,8 @@ export function turnsFromHistory(messages: ChatHistoryMessage[]): ChatNTCTurn[] 
         citations,
         evidence: { packageId: assistant.answer.evidencePackageId, corpusFingerprint: p.corpusFingerprint, artifactFingerprint: p.artifactFingerprint,
           ...(p.structuralCodesVersion ? { structuralCodesVersion: p.structuralCodesVersion } : {}), policyVersion: p.policyVersion, reduced: assistant.evidenceReduced, warnings: assistant.evidenceWarnings },
-        generation: { provider: p.provider, model: p.model, outcome: p.outcome }, validation: p.validation };
+        generation: { provider: p.provider, model: p.model, outcome: p.outcome,
+          ...(p.aiGenerated ? { aiGenerated: true as const } : {}) }, validation: p.validation };
     }
     return [turn];
   });

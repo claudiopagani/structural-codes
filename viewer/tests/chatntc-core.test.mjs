@@ -342,6 +342,7 @@ test("canonicalizzazione associa riferimenti espliciti già selezionati senza me
   assert.deepEqual(canonical.issues, []);
   assert.equal(canonical.normalized, true);
   assert.equal(canonical.response.classification, "combined-reference");
+  assert.equal(canonical.response.answerMarkdown, output.answerMarkdown);
   assert.deepEqual(new Set(canonical.response.verifiedReferences.map((reference) => reference.unitId)), new Set([NTC, OTHER]));
   assert.ok(canonical.response.verifiedReferences.every((reference) => !("evidenceId" in reference)));
   assert.deepEqual(await validateChatNTCResponse(canonical.response, evidence, repository), { valid: true, issues: [] });

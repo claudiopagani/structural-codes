@@ -25,6 +25,7 @@ export const CHATNTC_ERRORS = {
   INVALID_RESPONSE_SCHEMA: [502, "La risposta non rispetta il contratto strutturato ChatNTC."],
   RETRIEVAL_FAILED: [500, "Impossibile costruire l'evidence dal corpus locale."],
   VALIDATION_FAILED: [500, "Impossibile completare la validazione contro il corpus locale."],
+  UNVERIFIABLE_RESPONSE: [502, "Il provider non ha prodotto una risposta verificabile con le fonti disponibili. Riprova più tardi o riformula la domanda."],
   INTERNAL_ERROR: [500, "Impossibile completare la richiesta ChatNTC."],
 } as const;
 

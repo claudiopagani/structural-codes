@@ -65,8 +65,9 @@ test("history schema v2 ripristina answer wire v1/v2 e risposta canonica v3", as
   const responseV3 = { formatVersion: 3, evidencePackageId: "package", answerMarkdown: "Risposta canonica v3.",
     classification: "direct-reference", status: "answered", verifiedReferences: [verifiedReference], warnings: [],
     needsMoreEvidence: false, externalResearchSuggested: false };
-  const resultV3 = { ...result, response: responseV3, validation: { valid: true,
-    scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } };
+  const resultV3 = { ...result, response: responseV3,
+    generation: { ...result.generation, aiGenerated: true }, validation: { valid: true,
+      scope: "integrity-provenance-reference-resolution", stage: "CONSERVATIVE_REGENERATED" } };
   const messagesV3 = historyMessages([{ ...turns[0], id: "turn-v3", result: resultV3 }]);
   const created = await store.createConversation({ title: "Wire compatibile", messages: [...messages, ...messagesV2, ...messagesV3] });
   const restored = turnsFromHistory(created.messages);
@@ -75,6 +76,8 @@ test("history schema v2 ripristina answer wire v1/v2 e risposta canonica v3", as
   assert.equal(restored[1].result.response.status, "answered");
   assert.equal(restored[2].result.response.formatVersion, 3);
   assert.equal(restored[2].result.response.answerMarkdown, "Risposta canonica v3.");
+  assert.equal(restored[2].result.generation.aiGenerated, true);
+  assert.equal(restored[2].result.validation.stage, "CONSERVATIVE_REGENERATED");
   assert.deepEqual(restored[2].result.response.verifiedReferences, [verifiedReference]);
 });
 

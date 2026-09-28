@@ -59,12 +59,10 @@ export async function canonicalizeChatNTCResponse(output: ChatNTCProviderOutput,
   const verifiedReferences = [...citations.values()];
   const classification = canonicalClassification(output.status, output.classification, verifiedReferences.length);
   const needsMoreEvidence = output.status !== "answered";
-  const answerMarkdown = normalizeVisibleAnswer(output.answerMarkdown);
-  if (classification !== output.classification || needsMoreEvidence !== output.needsMoreEvidence
-    || answerMarkdown !== output.answerMarkdown) normalized = true;
+  if (classification !== output.classification || needsMoreEvidence !== output.needsMoreEvidence) normalized = true;
   return {
     response: {
-      formatVersion: 3, evidencePackageId: output.evidencePackageId, answerMarkdown,
+      formatVersion: 3, evidencePackageId: output.evidencePackageId, answerMarkdown: output.answerMarkdown,
       classification, status: output.status, verifiedReferences, warnings: [], needsMoreEvidence,
       externalResearchSuggested: output.externalResearchSuggested,
     },
@@ -94,19 +92,6 @@ async function verifiedReferenceForTarget(repository: ChatNTCRepository,
   }
   return { unitId: target.unitId, ...(block ? { blockId: block.blockId } : {}),
     document: record.unit.document, numbering: record.unit.numbering.official, kind: block ? "block" : "unit" };
-}
-
-function normalizeVisibleAnswer(value: string): string {
-  return value
-    .replace(/Evidence Package/giu, "fonti normative")
-    .replace(/selected evidence/giu, "fonti selezionate")
-    .replace(/claim coverage/giu, "copertura delle fonti")
-    .replace(/corpus fingerprint/giu, "versione delle fonti")
-    .replace(/(?<![\p{L}\p{N}_-])(?:unitId|blockId|assetId|retrieval|validator|package|block)(?![\p{L}\p{N}_-])/giu, "dato interno")
-    .replace(/\bevidence\b/giu, "fonti")
-    .replace(/blocchi omessi dal budget/giu, "contenuto non incluso")
-    .replace(/[ \t]{2,}/gu, " ")
-    .trim();
 }
 
 function textualReferences(output: ChatNTCProviderOutput): TextualReference[] {

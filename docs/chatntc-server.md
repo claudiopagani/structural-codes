@@ -11,6 +11,17 @@ browser
   → provider esterno configurato dall'utente o dal server
 ```
 
+La pipeline può effettuare al massimo quattro generazioni logiche: risposta
+iniziale, eventuale rigenerazione dopo espansione dell'evidence, repair e
+rigenerazione conservativa finale. Ogni fase produce un JSON completo. Il server
+verifica e canonicalizza i metadati, ma conserva `answerMarkdown` esattamente
+come restituito dall'ultima generazione accettata. Se i riferimenti restano
+invalidi dopo l'ultima generazione, la route restituisce un errore pubblico
+controllato senza costruire una risposta AI locale.
+Gli adapter in modalità JSON manuale mantengono un solo retry per JSON o schema
+malformati in ciascuna generazione: nel caso estremo sono quindi possibili fino
+a otto richieste HTTP al provider, senza ulteriori cicli di repair.
+
 ## Avvio locale
 
 ```bash

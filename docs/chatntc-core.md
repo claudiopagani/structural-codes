@@ -85,11 +85,22 @@ Evidence Package. La risposta non viene esposta direttamente:
 1. il contratto strutturale viene verificato;
 2. i riferimenti testuali vengono risolti contro repository ed evidence;
 3. quando serve, una sola espansione controllata può recuperare unità citate;
-4. un solo tentativo di repair può correggere riferimenti non verificabili;
-5. i riferimenti ancora invalidi vengono rimossi e la risposta degrada in modo
-   conservativo;
+4. un solo repair del provider rigenera l'intero JSON se restano problemi
+   referenziali o di validazione della risposta;
+5. se il repair non basta, una sola rigenerazione finale conservativa chiede al
+   provider una risposta completa basata sulle fonti disponibili;
 6. il Citation Validator ricalcola integrità, provenance e risoluzione prima
-   di restituire `valid: true`.
+   di restituire `valid: true`. Se anche l'ultima risposta non è verificabile,
+   la richiesta termina con un errore pubblico controllato.
+
+Il provider configurato è l'unico autore di `answerMarkdown`. Dopo l'ultima
+generazione accettata ChatNTC non trasforma linguisticamente il testo: la
+stringa finale coincide esattamente con quella del JSON decodificato del
+provider. Il server può canonicalizzare riferimenti e metadati, compresa la
+provenance `generation.aiGenerated: true`. Ogni correzione testuale richiede una
+nuova generazione completa. Questa separazione preserva anche eventuali segnali
+di provenance o marcatura del contenuto applicati dal provider; ChatNTC non ne
+verifica la presenza.
 
 Il validatore dimostra coerenza con il corpus disponibile; non certifica la
 correttezza tecnica generale della risposta e non sostituisce la fonte

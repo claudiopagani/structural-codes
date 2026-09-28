@@ -61,6 +61,100 @@ const rejectsCode = (promise, code) => assert.rejects(promise, (error) => {
   return true;
 });
 
+test("final answerMarkdown conserva esattamente testo, termini interni e whitespace del provider", async () => {
+  const original = "  Evidence Package  e unitId: selected evidence.  \n\n**Conclusione**  \n  Spazi intenzionali.  ";
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls++;
+    assert.match(input.directives.rules.join("\n"), /Nella risposta visibile non usare termini di implementazione/u);
+    return providerOutput(input, { answerMarkdown: original, references: [], classification: "no-direct-reference" });
+  }) });
+  assert.equal(calls, 1);
+  assert.equal(result.response.answerMarkdown, original);
+  assert.equal(result.generation.aiGenerated, true);
+});
+
+test("repair rigenera l'intero JSON e il testo finale coincide con il secondo output", async () => {
+  const repaired = "**Verifica generale**\n\n  Il controllo di sensibilità resta utile.  ";
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls++;
+    if (calls === 1) return providerOutput(input, { answerMarkdown: "Il §7.99.4 impone il controllo.", references: ["§7.99.4"] });
+    assert.equal(input.repair?.mode, "repair");
+    assert.equal(input.repair.previousOutput.answerMarkdown, "Il §7.99.4 impone il controllo.");
+    assert.ok(input.repair.issues.some((issue) => issue.code === "unresolved-reference"));
+    return providerOutput(input, { answerMarkdown: repaired, references: [], classification: "no-direct-reference" });
+  }) });
+  assert.equal(calls, 2);
+  assert.equal(result.response.answerMarkdown, repaired);
+  assert.equal(result.validation.stage, "REPAIRED");
+});
+
+test("un riferimento ambiguo richiede repair senza tagliare la prima risposta", async () => {
+  const base = repository();
+  const [left, right] = await Promise.all([base.resolveExact("§8.1"), base.resolveExact("§8.2")]);
+  const ambiguous = { ...base, resolveExact: async (query, document) => query.replace(/\s/gu, "") === "§6.6.6"
+    ? [left[0], right[0]] : base.resolveExact(query, document) };
+  const corrected = "Confrontare scenari di carico è un controllo tecnico utile.";
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: ambiguous, provider: () => mockedProvider(async (input) => {
+    calls++;
+    if (calls === 1) return providerOutput(input, { answerMarkdown: "Il §6.6.6 imporrebbe il controllo.", references: ["§6.6.6"] });
+    assert.equal(input.repair?.previousOutput.answerMarkdown, "Il §6.6.6 imporrebbe il controllo.");
+    assert.ok(input.repair.issues.some((issue) => issue.code === "ambiguous-reference"));
+    return providerOutput(input, { answerMarkdown: corrected, references: [], classification: "no-direct-reference" });
+  }) });
+  assert.equal(calls, 2);
+  assert.equal(result.response.answerMarkdown, corrected);
+});
+
+test("rigenerazione conservativa è l'ultima chiamata e preserva il suo testo", async () => {
+  const final = "  Non posso attribuire una prescrizione specifica.\n\nDal punto di vista tecnico, confronto gli scenari.  ";
+  let calls = 0;
+  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls++;
+    if (calls < 3) return providerOutput(input, { answerMarkdown: `Il §7.99.${calls} impone la verifica.`, references: [`§7.99.${calls}`] });
+    assert.equal(input.repair?.mode, "conservative");
+    assert.ok(input.repair.issues.some((issue) => issue.code === "unresolved-reference"));
+    return providerOutput(input, { answerMarkdown: final, references: [], classification: "no-direct-reference" });
+  }) });
+  assert.equal(calls, 3);
+  assert.equal(result.response.answerMarkdown, final);
+  assert.equal(result.validation.stage, "CONSERVATIVE_REGENERATED");
+});
+
+test("tre generazioni referenzialmente invalide producono solo un errore pubblico safe", async () => {
+  let calls = 0;
+  await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
+    calls++;
+    return providerOutput(input, { answerMarkdown: "Il §7.99.4 impone il controllo.", references: ["§7.99.4"] });
+  }) }), "UNVERIFIABLE_RESPONSE");
+  assert.equal(calls, 3);
+  const safe = publicError(new ChatNTCServerError("UNVERIFIABLE_RESPONSE"));
+  assert.equal(safe.status, 502);
+  assert.equal("response" in safe.body, false);
+  assert.equal(JSON.stringify(safe).includes("Non è stato possibile verificare l'attribuzione normativa specifica"), false);
+});
+
+test("espansione, repair e rigenerazione finale restano limitati a quattro chiamate", async () => {
+  const base = repository();
+  const noInitialHits = { ...base, search: async () => [] };
+  const stages = [];
+  const final = "Valutazione tecnica generale dopo verifica del contesto.";
+  const result = await runChatNTC({ question: "zzzzxy contesto volutamente vuoto" }, {
+    repository: noInitialHits, retrievalOptions: { maxRelatedUnits: 0 },
+    provider: () => mockedProvider(async (input) => {
+      stages.push(input.repair?.mode ?? "generation");
+      if (stages.length === 1) return providerOutput(input, { answerMarkdown: "Il §4.1 è pertinente.", references: ["§4.1"] });
+      if (stages.length < 4) return providerOutput(input, { answerMarkdown: `Il §7.99.${stages.length} impone la scelta.`,
+        references: [`§7.99.${stages.length}`] });
+      return providerOutput(input, { answerMarkdown: final, references: [], classification: "no-direct-reference" });
+    }),
+  });
+  assert.deepEqual(stages, ["generation", "generation", "repair", "conservative"]);
+  assert.equal(result.response.answerMarkdown, final);
+});
+
 test("DeepSeek: endpoint, auth server-side, messages, direttive e JSON request corretti", async () => {
   const input = await generationInput();
   let calls = 0;
@@ -568,49 +662,19 @@ test("grounding attribuzione: un riferimento reale non promuove il ragionamento 
   assert.equal(result.validation.scope, "integrity-provenance-reference-resolution");
 });
 
-test("formula inesistente non diventa un riferimento verificato e non elimina la parte generale", async () => {
-  let calls = 0;
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    calls += 1;
-    if (calls === 2) assert.ok(input.repair, "un riferimento inesistente usa il solo retry di repair");
-    return { ...validResponse(input), answerMarkdown: "La formula [7.99.99] imporrebbe il controllo. Dal punto di vista progettuale resta utile una verifica di sensibilità.",
-      references: ["formula [7.99.99]"] };
-  }) });
-  assert.equal(calls, 2);
-  assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.99/u);
-  assert.match(result.response.answerMarkdown, /verifica di sensibilità/u);
-  assert.equal(result.citations.some((citation) => citation.assetNumber === "7.99.99"), false);
-  assert.equal(result.validation.diagnostics.some((issue) => issue.code === "post-hoc-reference-discovered"), false);
-});
 
-test("classification mismatch e lessico backend sono normalizzati senza repair", async () => {
-  let calls = 0;
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    calls += 1;
-    return { ...validResponse(input), classification: "combined-reference",
-      answerMarkdown: "L'Evidence Package e il retrieval indicano il §7.3.6.1." };
-  }) });
-  assert.equal(calls, 1);
-  assert.equal(result.response.classification, "direct-reference");
-  assert.doesNotMatch(result.response.answerMarkdown, /evidence|package|retrieval/iu);
-  assert.equal(result.validation.stage, "REFERENCES_RESOLVED");
-});
 
-test("normalizzazione visibile preserva stress-block e sanitizza block soltanto come termine autonomo", async () => {
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) =>
-    providerOutput(input, { answerMarkdown: "Lo stress-block descrive il diagramma convenzionale; il block interno non va mostrato.",
-      references: [], classification: "no-direct-reference" })) });
-  assert.match(result.response.answerMarkdown, /stress-block/u);
-  assert.doesNotMatch(result.response.answerMarkdown, /stress-dato interno/u);
-  assert.doesNotMatch(result.response.answerMarkdown, /il block interno/u);
-  assert.match(result.response.answerMarkdown, /dato interno/u);
-});
+
+
+
 
 test("pipeline: espande una volta il contesto per un riferimento canonico reale fuori retrieval", async () => {
   const inputs = [];
+  const regenerated = "  La lettura va coordinata con §4.1.\n\n**Nota tecnica**  ";
   const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
     inputs.push(structuredClone(input));
-    return { ...validResponse(input), answerMarkdown: "La lettura va coordinata con §4.1.", references: ["NTC 2018 §4.1"] };
+    return { ...validResponse(input), answerMarkdown: inputs.length === 1 ? "Primo testo: §4.1." : regenerated,
+      references: ["NTC 2018 §4.1"] };
   }) });
   assert.equal(inputs.length, 2);
   assert.equal(inputs[1].repair, undefined);
@@ -620,45 +684,14 @@ test("pipeline: espande una volta il contesto per un riferimento canonico reale 
   assert.equal(result.evidence.packageId, inputs[1].evidence.packageId);
   assert.equal(result.validation.valid, true);
   assert.equal(result.validation.stage, "EXPANDED");
+  assert.equal(result.response.answerMarkdown, regenerated);
   assert.ok(result.citations.some((citation) => citation.numbering === "4.1"));
   assert.ok(result.validation.diagnostics.some((issue) => issue.code === "post-hoc-reference-discovered"));
 });
 
-test("pipeline: un nuovo riferimento post-hoc dopo l'espansione non provoca una terza generazione", async () => {
-  const base = repository();
-  const noInitialHits = { ...base, search: async () => [] };
-  let calls = 0;
-  const result = await runChatNTC({ question: "zzzzxy contesto volutamente vuoto" }, {
-    repository: noInitialHits, retrievalOptions: { maxRelatedUnits: 0 },
-    provider: () => mockedProvider(async (input) => {
-      calls += 1;
-      if (calls === 2) assert.equal(input.evidence.primaryUnits.some((unit) => unit.numbering === "4.1"), true);
-      return calls === 1
-        ? providerOutput(input, { answerMarkdown: "Il §4.1 contiene la prescrizione.", references: ["§4.1"] })
-        : providerOutput(input, { answerMarkdown: "Il §5.1 imporrebbe la soluzione. Resta utile verificare gli scenari di carico.",
-          references: ["§5.1"] });
-    }),
-  });
-  assert.equal(calls, 2);
-  assert.doesNotMatch(result.response.answerMarkdown, /5\.1/u);
-  assert.match(result.response.answerMarkdown, /verificare gli scenari di carico/u);
-  assert.deepEqual(result.citations, []);
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-});
 
-test("pipeline: un solo repair e sanitizzazione conservativa preservano il contenuto generale", async () => {
-  let calls = 0;
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    calls += 1;
-    if (calls === 2) assert.ok(input.repair?.previousOutput.answerMarkdown.includes("§7.99.4"));
-    return { ...validResponse(input), answerMarkdown: "Come prescritto dal §7.99.4, il modello va modificato. Il controllo di sensibilità resta comunque utile.", references: ["§7.99.4"] };
-  }) });
-  assert.equal(calls, 2);
-  assert.equal(result.validation.stage, "DEGRADED");
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-  assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.4/u);
-  assert.match(result.response.answerMarkdown, /controllo di sensibilità/u);
-});
+
+
 
 test("pipeline: un riferimento inventato attiva un solo repair mirato", async () => {
   let calls = 0;
@@ -669,6 +702,7 @@ test("pipeline: un riferimento inventato attiva un solo repair mirato", async ()
   }) });
   assert.equal(calls, 2);
   assert.equal(result.validation.stage, "REPAIRED");
+  assert.equal(result.response.answerMarkdown, "Il §7.3.6.1 è il riferimento verificabile.");
   assert.deepEqual(result.citations.map((citation) => citation.numbering), ["7.3.6.1"]);
 });
 
@@ -704,110 +738,17 @@ test("regressione ponte in muratura: la risposta resta visibile e i riferimenti 
   assert.equal(result.validation.stage, "EXPANDED");
 });
 
-test("l'espansione post-hoc è limitata a dodici riferimenti e non crea loop", async () => {
-  const references = ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "3.1", "3.2", "3.2.1", "3.2.2",
-    "4.1", "4.1.1", "4.1.2", "5.1", "5.1.1", "5.1.2", "7.1", "7.2", "8.1", "8.2"].map((number) => `§${number}`);
-  const base = repository();
-  const noInitialHits = { ...base, search: async () => [] };
-  const selected = [];
-  let calls = 0;
-  const result = await runChatNTC({ question: "zzzzxy nessuna corrispondenza lessicale" }, {
-    repository: noInitialHits, retrievalOptions: { maxRelatedUnits: 0 }, provider: () => mockedProvider(async (input) => {
-      calls += 1;
-      selected.push(input.evidence.primaryUnits.map((unit) => unit.unitId));
-      return providerOutput(input, { answerMarkdown: "Panoramica tecnica generale disponibile.", references, classification: "combined-reference" });
-    }),
-  });
-  assert.equal(calls, 2);
-  assert.deepEqual(selected[0], []);
-  assert.equal(selected[1].length, 12);
-  assert.equal(result.citations.length, 12);
-  assert.ok(result.citations.every((reference) => !("evidenceId" in reference)));
-  assert.equal(result.response.referenceWarning, "some-references-omitted");
-  assert.equal(result.validation.stage, "PARTIALLY_SANITIZED");
-});
 
-test("dieci riferimenti reali e uno inesistente conservano risposta e riferimenti validi", async () => {
-  const valid = ["§2.1", "§2.2", "§2.3", "§2.4", "§2.5", "§2.6", "§3.1", "§3.2", "§4.1", "§5.1"];
-  let calls = 0;
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => {
-    calls += 1;
-    return providerOutput(input, { answerMarkdown: "Il §7.99.4 imporrebbe un controllo inventato. Resta utile organizzare le verifiche per famiglie di azioni.",
-      references: [...valid, "§7.99.4"], classification: "combined-reference" });
-  }) });
-  assert.equal(calls, 2);
-  assert.equal(result.citations.length, 10);
-  assert.match(result.response.answerMarkdown, /famiglie di azioni/u);
-  assert.doesNotMatch(result.response.answerMarkdown, /7\.99\.4/u);
-  assert.equal(result.response.referenceWarning, "some-references-omitted");
-});
 
-test("riferimento ambiguo viene omesso senza nascondere la risposta", async () => {
-  const base = repository();
-  const [left, right] = await Promise.all([base.resolveExact("§8.1"), base.resolveExact("§8.2")]);
-  const ambiguous = { ...base, resolveExact: async (query, document) => query.replace(/\s/gu, "") === "§6.6.6"
-    ? [left[0], right[0]] : base.resolveExact(query, document) };
-  const result = await runChatNTC({ question }, { repository: ambiguous, provider: () => mockedProvider(async (input) => providerOutput(input, {
-    answerMarkdown: "Il §6.6.6 imporrebbe un controllo. È comunque utile confrontare scenari di carico alternativi.",
-    references: ["§6.6.6"], classification: "direct-reference",
-  })) });
-  assert.match(result.response.answerMarkdown, /scenari di carico/u);
-  assert.doesNotMatch(result.response.answerMarkdown, /6\.6\.6/u);
-  assert.deepEqual(result.citations, []);
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-});
 
-test("tutti i riferimenti non verificabili lasciano visibile la parte tecnica generale", async () => {
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => providerOutput(input, {
-    answerMarkdown: "Il §7.99.4 prescrive un valore. La formula [7.99.99] impone un limite. Dal punto di vista progettuale conviene confrontare più scenari di carico.",
-    references: ["§7.99.4", "formula [7.99.99]"], classification: "combined-reference",
-  })) });
-  assert.equal(result.citations.length, 0);
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-  assert.equal(result.validation.stage, "DEGRADED");
-  assert.match(result.response.answerMarkdown, /confrontare più scenari/u);
-  assert.doesNotMatch(result.response.answerMarkdown, /7\.99/u);
-});
 
-test("issue emersa dopo repair e sanitizzazione non sostituisce il contenuto tecnico residuo", async () => {
-  const base = repository();
-  const resolved = await base.resolveExact("§8.1");
-  let referenceCalls = 0;
-  let providerCalls = 0;
-  const changingResolution = { ...base, resolveExact: async (query, document) => {
-    if (query.replace(/\s/gu, "") !== "§8.1") return base.resolveExact(query, document);
-    referenceCalls += 1;
-    return referenceCalls <= 4 ? resolved : [];
-  } };
-  const result = await runChatNTC({ question }, { repository: changingResolution, provider: () => mockedProvider(async (input) => {
-    providerCalls += 1;
-    return providerOutput(input, {
-      answerMarkdown: "Il §7.99.4 imporrebbe un controllo inventato. Il §8.1 completa il quadro. Dal punto di vista tecnico conviene confrontare più scenari di carico.",
-      references: ["§7.99.4", "§8.1"], classification: "combined-reference",
-    });
-  }) });
-  assert.equal(providerCalls, 2);
-  assert.ok(referenceCalls > 4);
-  assert.equal(result.response.answerMarkdown, "Dal punto di vista tecnico conviene confrontare più scenari di carico.");
-  assert.doesNotMatch(result.response.answerMarkdown, /Non è stato possibile verificare/u);
-  assert.deepEqual(result.response.verifiedReferences, []);
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-  assert.equal(result.response.classification, "no-direct-reference");
-  assert.equal(result.response.status, "partial");
-  assert.equal(result.response.needsMoreEvidence, true);
-});
 
-test("risposta composta soltanto da false attribuzioni usa il fallback generico", async () => {
-  const result = await runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async (input) => providerOutput(input, {
-    answerMarkdown: "Il §7.99.4 prescrive un controllo obbligatorio.", references: ["§7.99.4"], classification: "direct-reference",
-  })) });
-  assert.equal(result.response.answerMarkdown,
-    "Non è stato possibile verificare l'attribuzione normativa specifica contenuta nella risposta generata.");
-  assert.deepEqual(result.response.verifiedReferences, []);
-  assert.equal(result.response.referenceWarning, "no-references-verified");
-  assert.equal(result.response.status, "partial");
-  assert.equal(result.response.needsMoreEvidence, true);
-});
+
+
+
+
+
+
 
 test("pipeline respinge output mock malformato e normalizza l'identificativo del pacchetto", async () => {
   await rejectsCode(runChatNTC({ question }, { repository: repository(), provider: () => mockedProvider(async () => ({ answer: "incomplete" })) }), "INVALID_RESPONSE_SCHEMA");
@@ -1105,12 +1046,11 @@ for (const [id, Adapter] of Object.entries(adapters)) {
     assert.equal(JSON.stringify(result).includes(key), false);
     hallucinate = true;
     const invalid = await post(request({ question }, { headers }));
-    assert.equal(invalid.status, 200);
-    const degraded = await invalid.json();
-    assert.equal(degraded.response.referenceWarning, "no-references-verified");
-    assert.equal(degraded.response.verifiedReferences.length, 0);
-    assert.doesNotMatch(degraded.response.answerMarkdown, /7\.99\.4/u);
-    assert.equal(calls, 3, "one normal call plus one bounded repair for the invalid response");
+    assert.equal(invalid.status, 502);
+    const rejected = await invalid.json();
+    assert.equal(rejected.error.code, "UNVERIFIABLE_RESPONSE");
+    assert.equal("response" in rejected, false);
+    assert.equal(calls, 4, "one valid call, then generation, repair and conservative regeneration");
   });
 
   test(`${id}: errori normalizzati, mai dettagli upstream e mai retry HTTP`, async () => {

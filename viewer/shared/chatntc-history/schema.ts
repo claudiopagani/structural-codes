@@ -41,13 +41,13 @@ export function readConversation(value: unknown): ChatConversation {
         || !hydrated || !isChatNTCResponse(hydrated)) return invalid();
       // The core response guard rejects unknown fields in claims and citations as well.
       const p = message.provenance;
-      if (!object(p) || !keys(p, ["provider", "model", "structuralCodesVersion", "corpusFingerprint", "artifactFingerprint", "policyVersion", "outcome", "validation"])
+      if (!object(p) || !keys(p, ["provider", "model", "structuralCodesVersion", "corpusFingerprint", "artifactFingerprint", "policyVersion", "outcome", "aiGenerated", "validation"])
         || !nullableText(p.provider) || !nullableText(p.model) || !nullableText(p.structuralCodesVersion)
         || !text(p.corpusFingerprint) || !text(p.artifactFingerprint) || !text(p.policyVersion)
-        || !["generated", "abstained"].includes(String(p.outcome)) || !object(p.validation)
+        || !["generated", "abstained"].includes(String(p.outcome)) || (p.aiGenerated !== undefined && p.aiGenerated !== true) || !object(p.validation)
         || !keys(p.validation, ["valid", "scope", "stage"]) || p.validation.valid !== true
         || !["integrity-provenance-claim-coverage", "integrity-provenance-reference-resolution"].includes(String(p.validation.scope))
-        || (p.validation.stage !== undefined && !["GENERATED", "NORMALIZED", "REFERENCES_RESOLVED", "EXPANDED", "REPAIRED", "PARTIALLY_SANITIZED", "DEGRADED", "HARD_REJECTED"].includes(String(p.validation.stage)))
+        || (p.validation.stage !== undefined && !["GENERATED", "NORMALIZED", "REFERENCES_RESOLVED", "EXPANDED", "REPAIRED", "CONSERVATIVE_REGENERATED", "PARTIALLY_SANITIZED", "DEGRADED", "HARD_REJECTED"].includes(String(p.validation.stage)))
         || typeof message.evidenceReduced !== "boolean" || !Array.isArray(message.evidenceWarnings)
         || !message.evidenceWarnings.every((w) => object(w) && keys(w, ["code", "unitId"]) && text(w.code) && optionalText(w.unitId))) return invalid();
       if (!isChatNTCResponse(hydrated)) return invalid();
