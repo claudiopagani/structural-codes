@@ -148,9 +148,10 @@ test("context menu is keyboard usable and closes with Escape or outside pointer"
 });
 
 test("viewer wires right click, Escape/outside close, annotation navigation and does not load chunks for marker derivation", async () => {
-  const [viewer, ui] = await Promise.all([
+  const [viewer, ui, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/annotations/AnnotationUi.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
   ]);
   assert.match(viewer, /onContextMenu=\{handleDocumentContextMenu\}/);
   assert.match(viewer, /createLongPressSession/);
@@ -158,6 +159,10 @@ test("viewer wires right click, Escape/outside close, annotation navigation and 
   assert.match(ui, /document\.addEventListener\("pointerdown", pointer, true\)/);
   assert.match(ui, /event\.key === "Escape"/);
   assert.match(viewer, /navigateViewerTarget\(annotation\.target, "push"\)/);
+  assert.match(styles, /\.scv-auxiliary-pane \{[^}]+border-left: 1px solid var\(--scv-line\)/);
+  assert.match(styles, /\.scv-annotation-scrubber-marker:not\(\.is-cluster\) > span \{[^}]+width: 17px[^}]+height: 17px[^}]+border-width: 0 5px 5px 0/);
+  assert.match(styles, /\.scv-annotation-scrubber-marker\.is-bookmark > span \{ transform: rotate\(135deg\); \}/);
+  assert.match(styles, /\.scv-annotation-scrubber-marker\.is-note > span \{ transform: rotate\(-45deg\); \}/);
   const markerDerivation = viewer.slice(viewer.indexOf("const annotationMarkers"), viewer.indexOf("const selectAnnotationMarker"));
   assert.doesNotMatch(markerDerivation, /loadChunk|rememberChunk|mountPrimary/);
 });

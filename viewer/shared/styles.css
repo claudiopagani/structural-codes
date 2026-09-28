@@ -75,8 +75,8 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root summary:focus-visible { outline: 2px solid var(--scv-primary); outline-offset: 2px; }
 
 .scv-index-pane,
-.scv-text-pane,
-.scv-auxiliary-pane { min-width: 0; height: 100%; border-right: 1px solid var(--scv-line); }
+.scv-text-pane { min-width: 0; height: 100%; border-right: 1px solid var(--scv-line); }
+.scv-auxiliary-pane { min-width: 0; height: 100%; border-left: 1px solid var(--scv-line); }
 
 .scv-text-pane-shell { position: relative; min-width: 0; height: 100%; overflow: hidden; }
 .scv-index-pane { position: absolute; z-index: 30; inset: 0; display: grid; width: 100%; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; background: #eef0f6; transform: translateX(-100%); }
@@ -500,10 +500,15 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-scroll-overlay span { overflow: hidden; font-family: "Tinos", serif; font-size: var(--scv-font-size-10); line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
 .scv-scroll-rail.is-idle .scv-scroll-track::before, .scv-scroll-rail.is-idle .scv-scroll-track::after, .scv-scroll-rail.is-idle .scv-scroll-thumb::before { opacity: 0; }
 
-.scv-annotation-scrubber-group { position: absolute; z-index: 4; top: calc(var(--scv-annotation-ratio) * (100% - 28px)); right: 0; width: 44px; height: 28px; pointer-events: none; }
-.scv-annotation-scrubber-marker { position: absolute; right: 0; display: grid; width: 32px; height: 28px; place-items: center; padding: 0; color: #fff; font-size: 22px; font-weight: 900; line-height: 1; background: transparent; border: 0; cursor: pointer; pointer-events: auto; filter: drop-shadow(0 1px 2px rgb(0 0 0 / 25%)); }
-.scv-annotation-scrubber-marker.is-bookmark { right: 13px; color: var(--scv-bookmark); }
-.scv-annotation-scrubber-marker.is-note { right: -3px; color: var(--scv-note); }
+.scv-annotation-scrubber-group { position: absolute; z-index: 4; top: calc(var(--scv-annotation-ratio) * (100% - 36px)); right: 0; width: 44px; height: 36px; pointer-events: none; }
+.scv-annotation-scrubber-marker { position: absolute; right: 0; display: grid; width: 36px; height: 36px; place-items: center; padding: 0; color: #fff; line-height: 1; background: transparent; border: 0; cursor: pointer; pointer-events: auto; filter: drop-shadow(0 1px 2px rgb(0 0 0 / 35%)); }
+.scv-annotation-scrubber-marker:not(.is-cluster) > span { width: 17px; height: 17px; border: solid currentcolor; border-width: 0 5px 5px 0; }
+.scv-annotation-scrubber-marker.is-bookmark { right: 12px; color: var(--scv-bookmark); }
+.scv-annotation-scrubber-marker.is-bookmark > span { transform: rotate(135deg); }
+.scv-annotation-scrubber-marker.is-note { right: -2px; color: var(--scv-note); }
+.scv-annotation-scrubber-marker.is-note > span { transform: rotate(-45deg); }
+.scv-annotation-scrubber-marker:hover > span, .scv-annotation-scrubber-marker:focus-visible > span { filter: brightness(.82); transform-origin: center; }
+.scv-annotation-scrubber-marker:focus-visible { border-radius: 6px; outline: 2px solid var(--scv-primary); outline-offset: -3px; }
 .scv-annotation-scrubber-marker.is-cluster { right: 2px; width: 32px; height: 24px; color: #fff; font-size: 10px; background: var(--scv-primary-dark); border: 2px solid var(--scv-panel); border-radius: 999px; }
 .scv-annotation-cluster-popover { position: absolute; z-index: 8; top: 50%; right: 44px; display: grid; width: min(240px, calc(100vw - 64px)); max-height: 220px; overflow: auto; padding: 5px; background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 8px; box-shadow: 0 9px 28px rgb(0 0 0 / 22%); pointer-events: auto; transform: translateY(-50%); }
 .scv-annotation-cluster-popover button { display: grid; grid-template-columns: 20px minmax(0, 1fr); min-height: 38px; align-items: center; gap: 5px; padding: 6px 8px; color: var(--scv-ink); text-align: left; background: transparent; border: 0; border-radius: 5px; cursor: pointer; }
@@ -894,6 +899,7 @@ body:has(> .scv-root) { overflow: hidden; }
   .scv-root.scv-has-auxiliary .scv-index-pane { transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s; }
   .scv-root.scv-has-auxiliary .scv-text-pane-shell { transform: none; }
   .scv-auxiliary-pane { width: var(--scv-auxiliary-width); }
+  .scv-root.scv-has-auxiliary .scv-scroll-rail { right: var(--scv-auxiliary-width); }
   .scv-root.scv-auxiliary-available .scv-text-flow { width: min(860px, calc(100% - var(--scv-auxiliary-width))); transition: transform .5s cubic-bezier(.22, .8, .25, 1); }
   .scv-root.scv-auxiliary-available.scv-has-auxiliary .scv-text-flow { transform: translateX(calc(-.5 * var(--scv-auxiliary-width))); }
 }

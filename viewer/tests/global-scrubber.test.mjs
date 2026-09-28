@@ -125,5 +125,7 @@ test("il componente resta sopra il caricamento lazy e supporta reduced motion", 
   assert.match(styles, /\.scv-scroll-track::before[^}]+width: 12px/);
   assert.match(styles, /\.scv-scroll-track::after[^}]+radial-gradient\(circle at center, #858b95 0 1\.25px, transparent 2px\)[^}]+background-size: 12px 24px/);
   assert.match(styles, /\.scv-scroll-thumb::before[^}]+width: 10px[^}]+height: 34px[^}]+background: var\(--scv-primary\)/);
+  assert.match(styles, /\.scv-scroll-rail\.is-idle[^}]+opacity: 0/);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-scroll-rail \{ right: var\(--scv-auxiliary-width\); \}/);
   assert.doesNotMatch(styles, /\.scv-scroll-marker/);
 });
