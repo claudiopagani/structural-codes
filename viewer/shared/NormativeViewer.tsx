@@ -162,6 +162,18 @@ interface PermalinkNotice {
   placement: "above" | "below";
   status: "success" | "error";
 }
+interface ViewerHistoryEntry { session: string; index: number; scrollTop: number; }
+
+function viewerHistoryEntry(state: unknown): ViewerHistoryEntry | null {
+  if (!state || typeof state !== "object" || !("scvNavigation" in state)) return null;
+  const entry = state.scvNavigation;
+  return entry && typeof entry === "object" && "session" in entry && "index" in entry && "scrollTop" in entry
+    && typeof entry.session === "string" && typeof entry.index === "number" && typeof entry.scrollTop === "number" ? entry as ViewerHistoryEntry : null;
+}
+
+function withViewerHistoryEntry(state: unknown, entry: ViewerHistoryEntry) {
+  return { ...(state && typeof state === "object" ? state : {}), scvNavigation: entry };
+}
 
 const chunkUnitMaps = new WeakMap<CorpusChunk, Map<string, CorpusUnit>>();
 const emptyRelatedRecords: RelatedRecord[] = [];
@@ -211,7 +223,10 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
 
 function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
   const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
-  root.scrollTo({ top: Math.max(0, top - 18), behavior: "auto" });
+  const contextBar = root.parentElement?.querySelector<HTMLElement>(".scv-mobile-context");
+  const offset = contextBar && window.getComputedStyle(contextBar).display !== "none"
+    ? Math.max(18, contextBar.getBoundingClientRect().bottom - root.getBoundingClientRect().top + 10) : 18;
+  root.scrollTo({ top: Math.max(0, top - offset), behavior: "auto" });
 }
 
 function scrollTextUnit(root: HTMLElement | null, unitId: string) {
@@ -253,9 +268,9 @@ async function writeTextClipboard(value: string) {
   }
 }
 
-function updateDeepLink(mode: ViewerMode, target: ViewerTarget, defaultMode: ViewerMode, action: "push" | "replace" = "replace") {
+function updateDeepLink(mode: ViewerMode, target: ViewerTarget, defaultMode: ViewerMode, action: "push" | "replace" = "replace", state = window.history.state) {
   const url = urlForViewerTarget(window.location.href, mode, defaultMode, target);
-  window.history[`${action}State`](null, "", url);
+  window.history[`${action}State`](state, "", url);
 }
 
 function documentFromUnitId(unitId: string): DocumentId {
@@ -647,7 +662,7 @@ function HighlightedSnippet({ result }: { result: SearchResult }) {
   return <>{parts}</>;
 }
 
-const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, sidebarMode, sidebarSession, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, darkMode, onToggleTheme }: {
+const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, sidebarMode, sidebarSession, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, onHistoryBack, onHistoryForward, canHistoryBack, canHistoryForward, searchRef, darkMode, onToggleTheme }: {
   id: string;
   mode: ViewerMode;
   onModeChange: (mode: ViewerMode) => void;
@@ -667,6 +682,10 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   onSearchResult: (result: SearchResult) => void;
   onSelectUnit: (unit: UnitSummary) => void;
   onRequestClose: () => void;
+  onHistoryBack: () => void;
+  onHistoryForward: () => void;
+  canHistoryBack: boolean;
+  canHistoryForward: boolean;
   searchRef: RefObject<HTMLInputElement | null>;
   darkMode: boolean;
   onToggleTheme: () => void;
@@ -752,6 +771,10 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
     if (!(event.target as HTMLElement).closest("[data-index-unit]")) lastSidebarEntryRef.current = null;
   }}>
     <div className="scv-search-toolbar">
+      <div className="scv-history-controls" role="group" aria-label="Cronologia di navigazione">
+        <button type="button" aria-label="Indietro" disabled={!canHistoryBack} onClick={onHistoryBack}>←</button>
+        <button type="button" aria-label="Avanti" disabled={!canHistoryForward} onClick={onHistoryForward}>→</button>
+      </div>
       <div className={`scv-search-box ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
       }}>
@@ -833,6 +856,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [mode, setMode] = useState<ViewerMode>(defaultMode);
   const [modeRevision, setModeRevision] = useState(0);
   const [activeUnitId, setActiveUnitId] = useState<string | null>(null);
+  const [historyPosition, setHistoryPosition] = useState({ index: 0, max: 0 });
   const [relations, setRelations] = useState<RelationEdge[]>([]);
   const [relationsLoaded, setRelationsLoaded] = useState(false);
   const [crossReferenceIndex, setCrossReferenceIndex] = useState<CrossReferenceIndex | null>(null);
@@ -867,7 +891,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const renderedChunkPathsRef = useRef<Set<string>>(new Set());
   const pendingScrollAnchorRef = useRef<{ id: string; top: number; generation: number } | null>(null);
   const initializedContextRef = useRef("");
+  const initializedOnceRef = useRef(false);
   const historyNavigationRef = useRef(false);
+  const historySessionRef = useRef(crypto.randomUUID());
+  const historyPositionRef = useRef({ index: 0, max: 0 });
+  const pendingHistoryScrollRef = useRef<number | null>(null);
   const crossReferencePromiseRef = useRef<Promise<CrossReferenceIndex> | null>(null);
   const relationsPromiseRef = useRef<Promise<RelationEdge[]> | null>(null);
   const permalinkNoticeTimerRef = useRef<number | null>(null);
@@ -883,6 +911,27 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const documentIdRef = useRef(documentId);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && (auxiliaryPanelModes ? auxiliaryPanelModes.includes(mode) : mode !== "combined");
+
+  useEffect(() => {
+    window.history.replaceState(withViewerHistoryEntry(window.history.state, { session: historySessionRef.current, index: 0, scrollTop: textPaneRef.current?.scrollTop ?? 0 }), "", window.location.href);
+  }, []);
+
+  const saveHistoryScroll = useCallback(() => {
+    const entry = viewerHistoryEntry(window.history.state);
+    if (entry?.session !== historySessionRef.current) return;
+    window.history.replaceState(withViewerHistoryEntry(window.history.state, { ...entry, scrollTop: textPaneRef.current?.scrollTop ?? 0 }), "", window.location.href);
+  }, []);
+
+  const pushViewerHistory = useCallback((nextMode: ViewerMode, target: ViewerTarget) => {
+    const url = urlForViewerTarget(window.location.href, nextMode, defaultMode, target);
+    if (url.href === window.location.href) return;
+    saveHistoryScroll();
+    const index = historyPositionRef.current.index + 1;
+    const position = { index, max: index };
+    historyPositionRef.current = position;
+    setHistoryPosition(position);
+    updateDeepLink(nextMode, target, defaultMode, "push", withViewerHistoryEntry(window.history.state, { session: historySessionRef.current, index, scrollTop: 0 }));
+  }, [defaultMode, saveHistoryScroll]);
 
   useEffect(() => {
     const tablet = window.matchMedia("(min-width: 992px)");
@@ -1231,12 +1280,16 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     activeIdRef.current = initial.id;
     setActiveUnitId(initial.id);
     const requestedTarget = requestedTargetRef.current?.unitId === revealInitial.id ? requestedTargetRef.current : { kind: "unit" as const, unitId: initial.id };
-    if (!historyNavigationRef.current) updateDeepLink(mode, requestedTarget, defaultMode);
+    if (!historyNavigationRef.current) {
+      if (initializedOnceRef.current) pushViewerHistory(mode, requestedTarget);
+      else updateDeepLink(mode, requestedTarget, defaultMode);
+    }
+    initializedOnceRef.current = true;
     historyNavigationRef.current = false;
     const generation = ++navigationGenerationRef.current;
     pendingScrollAnchorRef.current = null;
     void revealSummary(revealInitial, primaryRenderedPaths.size === 0 || revealInitial.document !== documentId, generation).catch(() => reportChunkLoadFailure());
-  }, [circLookup, defaultMode, documentId, index, lookup, mode, modeRevision, primaryRenderedPaths.size, relations, relationsLoaded, reportChunkLoadFailure, revealSummary]);
+  }, [circLookup, defaultMode, documentId, index, lookup, mode, modeRevision, primaryRenderedPaths.size, pushViewerHistory, relations, relationsLoaded, reportChunkLoadFailure, revealSummary]);
 
   useEffect(() => {
     if (!lookup || !activeUnitId) return;
@@ -1274,6 +1327,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       return;
     }
     scrollRequestRef.current = null;
+    if (pendingHistoryScrollRef.current !== null && root) {
+      root.scrollTop = pendingHistoryScrollRef.current;
+      pendingHistoryScrollRef.current = null;
+    }
     if (sameViewerTarget(pendingSearchHighlightRef.current, target) && flashSearchTarget(target)) pendingSearchHighlightRef.current = null;
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 500 };
   }, [auxiliaryAvailable, auxiliaryVisible, defaultMode, flashSearchTarget, mode, relatedByTarget, renderRecords]);
@@ -1318,15 +1375,15 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     requestedTargetRef.current = target;
     pendingSearchHighlightRef.current = target;
     manualTargetRef.current = { id: unit.id, expires: performance.now() + 500 };
+    pushViewerHistory(navigationRef.current.mode, target);
     const present = scrollTextUnit(textPaneRef.current, unit.id);
     activeIdRef.current = unit.id;
     setActiveUnitId(unit.id);
-    updateDeepLink(navigationRef.current.mode, requestedTargetRef.current, defaultMode);
     if (present) { if (flashSearchTarget(target)) pendingSearchHighlightRef.current = null; return; }
     const currentLookup = navigationRef.current.lookup;
     const nearMountedWindow = currentLookup ? isChunkNearRenderedWindow(currentLookup, unit.chunkPath, primaryRenderedPaths) : false;
     void revealSummary(unit, !nearMountedWindow, generation).catch(() => reportChunkLoadFailure());
-  }, [defaultMode, flashSearchTarget, primaryRenderedPaths, reportChunkLoadFailure, revealSummary]);
+  }, [flashSearchTarget, primaryRenderedPaths, pushViewerHistory, reportChunkLoadFailure, revealSummary]);
 
   const navigateViewerTarget = useCallback(async (target: ViewerTarget, action: "push" | "replace" | "none" = "push", forcedMode?: ViewerMode) => {
     setCitationSelection(target);
@@ -1341,7 +1398,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     requestedTargetRef.current = target;
     scrollRequestRef.current = target;
     manualTargetRef.current = { id: target.unitId, expires: performance.now() + 700 };
-    if (action !== "none") updateDeepLink(nextMode, target, defaultMode, action);
+    if (action === "push") pushViewerHistory(nextMode, target);
+    else if (action === "replace") updateDeepLink(nextMode, target, defaultMode);
     if (nextMode !== mode) {
       historyNavigationRef.current = true;
       initializedContextRef.current = "";
@@ -1355,6 +1413,10 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       setActiveUnitId(target.unitId);
     }
     if (scrollViewerTarget(textPaneRef.current, target)) {
+      if (pendingHistoryScrollRef.current !== null && textPaneRef.current) {
+        textPaneRef.current.scrollTop = pendingHistoryScrollRef.current;
+        pendingHistoryScrollRef.current = null;
+      }
       if (sameViewerTarget(pendingSearchHighlightRef.current, target) && flashSearchTarget(target)) pendingSearchHighlightRef.current = null;
       return;
     }
@@ -1383,16 +1445,26 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const nearMountedWindow = summary.document === documentIdRef.current && currentLookup ? isChunkNearRenderedWindow(currentLookup, summary.chunkPath, primaryRenderedPaths) : false;
     if (generation !== navigationGenerationRef.current) return;
     await revealSummary(summary, summary.document === documentIdRef.current && !nearMountedWindow, generation);
-  }, [dataBaseUrl, defaultMode, flashSearchTarget, indexes, manifest, mode, primaryRenderedPaths, relations, revealSummary]);
+  }, [dataBaseUrl, defaultMode, flashSearchTarget, indexes, manifest, mode, primaryRenderedPaths, pushViewerHistory, relations, revealSummary]);
 
   useEffect(() => {
-    const onPopState = () => {
+    const onPopState = (event: PopStateEvent) => {
       const url = new URL(window.location.href);
       const target = targetFromUrl(url);
       if (!target) return;
+      const entry = viewerHistoryEntry(event.state);
+      if (entry?.session === historySessionRef.current) {
+        const position = { index: entry.index, max: historyPositionRef.current.max };
+        historyPositionRef.current = position;
+        setHistoryPosition(position);
+        pendingHistoryScrollRef.current = entry.scrollTop;
+      } else {
+        pendingHistoryScrollRef.current = null;
+        historyPositionRef.current = { index: 0, max: 0 };
+        setHistoryPosition({ index: 0, max: 0 });
+      }
       const requestedMode = url.searchParams.get("mode");
       const nextMode = modeOptions.some((option) => option.id === requestedMode) ? requestedMode as ViewerMode : defaultMode;
-      historyNavigationRef.current = true;
       void navigateViewerTarget(target, "none", nextMode).catch(() => reportChunkLoadFailure());
     };
     window.addEventListener("popstate", onPopState);
@@ -1592,6 +1664,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [selectUnit]);
 
   const activeSummary = lookup?.unitById.get(activeUnitId ?? "") ?? circLookup?.unitById.get(activeUnitId ?? "") ?? entryById.get(activeUnitId ?? "")?.summary ?? null;
+  const contextSummary = activeSummary && baseNumbering(activeSummary.numbering.official).split(".").length > 3
+    ? activeSummary.hierarchy.ancestorIds.map((id) => summaryById.get(id)).find((summary) => summary && baseNumbering(summary.numbering.official).split(".").length === 3) ?? null
+    : activeSummary;
   const chapters = useMemo(() => navigationEntries.filter(({ level }) => level === 0), [navigationEntries]);
   const paragraphs = useMemo(() => navigationEntries.filter(({ level }) => level === 1), [navigationEntries]);
   const subparagraphs = useMemo(() => navigationEntries.filter(({ level }) => level === 2), [navigationEntries]);
@@ -1732,13 +1807,14 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
   return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
-    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
+    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} onHistoryBack={() => { saveHistoryScroll(); window.history.back(); }} onHistoryForward={() => { saveHistoryScroll(); window.history.forward(); }} canHistoryBack={historyPosition.index > 0} canHistoryForward={historyPosition.index < historyPosition.max} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
         setMobileIndexSession((session) => session + 1);
         setMobileIndexOpen(true);
         window.requestAnimationFrame(() => searchRef.current?.focus());
       }}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg><span className="scv-visually-hidden">Apri indice</span></button>
+      {contextSummary && <div className="scv-mobile-context" title={`${contextSummary.numbering.official} ${contextSummary.title}`} aria-label={`Unità attiva: ${contextSummary.numbering.official} ${contextSummary.title}`}><strong>{contextSummary.numbering.official}</strong><span>{contextSummary.title}</span></div>}
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();
         else {

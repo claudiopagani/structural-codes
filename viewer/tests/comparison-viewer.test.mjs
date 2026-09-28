@@ -400,7 +400,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: #e0e6f2/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
-  assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
+  assert.match(styles, /grid-template-columns: auto minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /--scv-index-width: clamp\(380px, 28vw, 480px\)/);
   assert.match(styles, /height: 100dvh;\s*overflow: clip;/);
   assert.match(styles, /\.scv-text-pane-shell \{[^}]*overflow: hidden; \}/);

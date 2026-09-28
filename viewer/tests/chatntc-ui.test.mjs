@@ -527,6 +527,50 @@ test("viewer: nell'indice fisso il primo clic naviga direttamente", async (t) =>
   assert.deepEqual(targetFromUrl(new URL(window.location.href)), { kind: "unit", unitId: chapter.dataset.indexUnit });
 });
 
+test("viewer: cronologia interna ripristina posizione e target tramite popstate", async (t) => {
+  t.mock.method(globalThis, "fetch", mockCorpusFetch);
+  window.history.replaceState(null, "", `/?unit=${encodeURIComponent(unitId)}`);
+  await mount(h(NormativeViewer, { defaultMode: "ntc" }));
+  await waitFor(() => indexEntry("2", 0));
+  await waitFor(() => rootElement.querySelector(".scv-mobile-context strong")?.textContent === "7.3.6");
+  assert.equal(rootElement.querySelector(".scv-mobile-context span").textContent, indexEntry("7.3.6", 2).querySelector("span").textContent);
+  const pane = rootElement.querySelector(".scv-text-pane");
+  pane.scrollTop = 37;
+  const destination = indexEntry("2", 0).dataset.indexUnit;
+  assert.equal(action("Indietro").disabled, true);
+  await click(indexEntry("2", 0));
+  assert.equal(action("Indietro").disabled, false);
+  assert.equal(action("Avanti").disabled, true);
+  pane.scrollTop = 81;
+  await click(action("Indietro"));
+  await waitFor(() => targetFromUrl(new URL(window.location.href))?.unitId === unitId);
+  await waitFor(() => pane.scrollTop === 37);
+  assert.equal(action("Indietro").disabled, true);
+  assert.equal(action("Avanti").disabled, false);
+  await click(action("Avanti"));
+  await waitFor(() => targetFromUrl(new URL(window.location.href))?.unitId === destination);
+  await waitFor(() => pane.scrollTop === 81);
+  assert.equal(action("Avanti").disabled, true);
+  assert.match(rootElement.querySelector(".scv-mobile-context").textContent, /^2/u);
+});
+
+test("viewer: il target mobile resta sotto l'indicatore contestuale", async (t) => {
+  t.mock.method(globalThis, "fetch", mockCorpusFetch);
+  await mount(h(NormativeViewer, { defaultMode: "ntc" }));
+  await waitFor(() => indexEntry("2", 0));
+  await click(indexEntry("2", 0));
+  await waitFor(() => rootElement.querySelector(`[data-scv-text-unit="${indexEntry("2", 0).dataset.indexUnit}"]`));
+  const pane = rootElement.querySelector(".scv-text-pane");
+  const target = rootElement.querySelector(`[data-scv-text-unit="${indexEntry("2", 0).dataset.indexUnit}"]`);
+  const contextBar = rootElement.querySelector(".scv-mobile-context");
+  contextBar.style.display = "grid";
+  t.mock.method(contextBar, "getBoundingClientRect", () => ({ bottom: 52 }));
+  t.mock.method(pane, "getBoundingClientRect", () => ({ top: 0 }));
+  t.mock.method(target, "getBoundingClientRect", () => ({ top: 200 }));
+  await click(indexEntry("2", 0));
+  assert.equal(pane.scrollTop, 138);
+});
+
 test("preview: un risultato asincrono tardivo non riapre il tooltip dopo pointerout", async (t) => {
   let releaseCrossReference;
   t.mock.method(globalThis, "fetch", (url) => {
