@@ -71,8 +71,10 @@ test("anche su viewport strette il testo resta un contenitore scrollabile per il
   const mobile = styles.slice(styles.indexOf("/* Mobile first"), styles.indexOf("@media (min-width: 992px)"));
   assert.match(styles, /\.scv-text-pane-shell \{[^}]*height: 100%; overflow: hidden;/);
   assert.match(mobile, /\.scv-text-pane \{ height: 100%; min-height: 0; \}/);
-  assert.match(styles, /\.scv-root\.scv-mobile-index-open \{ grid-template-columns: minmax\(0, 1fr\) minmax\(0, 0fr\) minmax\(0, 0fr\)/);
-  assert.match(styles, /\.scv-root\.scv-has-auxiliary \{ grid-template-columns: minmax\(0, 0fr\) minmax\(0, 0fr\) minmax\(0, 1fr\)/);
+  assert.match(styles, /\.scv-root \{[^}]*grid-template-columns: minmax\(0, 1fr\)/);
+  assert.match(styles, /\.scv-index-pane \{ position: absolute;[^}]*transform: translateX\(-100%\)/);
+  assert.match(styles, /\.scv-auxiliary-pane \{ position: absolute;[^}]*transform: translateX\(100%\)/);
+  assert.doesNotMatch(styles, /transition: grid-template-columns/);
   assert.doesNotMatch(mobile, /\.scv-(?:index|auxiliary)-pane \{ position: fixed/);
 });
 

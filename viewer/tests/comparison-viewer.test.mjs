@@ -337,9 +337,10 @@ test("il PDF resta locale/debug, viene caricato on demand e segue la pagina evid
 });
 
 test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati", async () => {
-  const [component, styles] = await Promise.all([
+  const [component, styles, viewer] = await Promise.all([
     readFile(new URL("../shared/CorpusContent.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
   ]);
   assert.match(component, /className="formula-row"/);
   assert.match(component, /className="formula-number"/);
@@ -401,8 +402,17 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /--scv-index-width: clamp\(380px, 28vw, 480px\)/);
-  assert.match(styles, /@media \(min-width: 992px\) \{[^]*\.scv-root\.scv-has-auxiliary \{ grid-template-columns: minmax\(0, 0fr\) minmax\(0, 1fr\) minmax\(340px, 38vw\)/);
-  assert.match(styles, /@media \(min-width: 1400px\) \{[^]*\.scv-root\.scv-has-auxiliary \{ grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) clamp\(340px, 28vw, 480px\)/);
+  assert.match(styles, /height: 100dvh;\s*overflow: clip;/);
+  assert.match(styles, /\.scv-text-pane-shell \{[^}]*overflow: hidden; \}/);
+  assert.match(styles, /@media \(min-width: 992px\) \{\s*\.scv-root \{ grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\)/);
+  assert.match(styles, /@media \(min-width: 992px\) \{[^]*\.scv-text-pane-shell \{ transition: transform \.5s/);
+  assert.match(viewer, /auxiliaryPaneRef\.current\?\.querySelector<HTMLButtonElement>\("button"\)\?\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-text-pane-shell \{ transform: translateX\(calc\(-1 \* var\(--scv-index-width\)\)\)/);
+  assert.match(styles, /@media \(min-width: 1400px\) \{[^]*\.scv-root\.scv-has-auxiliary \.scv-text-pane-shell \{ transform: none/);
+  assert.match(viewer, /auxiliaryAvailable \? "scv-auxiliary-available" : ""/);
+  assert.match(styles, /\.scv-root\.scv-auxiliary-available \.scv-text-flow \{ width: min\(860px, calc\(100% - var\(--scv-auxiliary-width\)\)\); transition: transform/);
+  assert.match(styles, /\.scv-root\.scv-auxiliary-available\.scv-has-auxiliary \.scv-text-flow \{ transform: translateX\(calc\(-\.5 \* var\(--scv-auxiliary-width\)\)\)/);
+  assert.doesNotMatch(styles, /\.scv-root\.scv-has-auxiliary \{ grid-template-columns:/);
   assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
   assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: var\(--scv-primary-soft\)/);
@@ -428,6 +438,15 @@ test("nel comparato i blocchi Circolare composti solo dal titolo non entrano, qu
   assert.ok(c31.blocks.every((block) => block.kind === "heading"));
   const ntcUnit = JSON.parse(await readFile(new URL("../../corpus/units/ntc2018/4.1.2.json", import.meta.url), "utf8"));
   assert.ok(ntcUnit.blocks.every((block) => block.kind === "heading"));
+});
+
+test("il corpo del testo torna giustificato dal breakpoint md", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  const md = styles.indexOf("@media (min-width: 768px)");
+  const lg = styles.indexOf("@media (min-width: 992px)", md);
+  assert.ok(md > styles.indexOf(".scv-block p, .scv-root .scv-note-content > p"));
+  assert.ok(lg > md);
+  assert.match(styles.slice(md, lg), /\.scv-block p, [^{]+\{ text-align: justify; \}/);
 });
 
 test("le unità Circolare C4, C6 e C7 dichiarano il titolo strutturale", async () => {

@@ -16,9 +16,8 @@ export function HistoryIcon({ className = "scv-chat-control-icon" }: IconProps) 
 
 export function SettingsIcon({ className = "scv-chat-control-icon" }: IconProps) {
   return <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
-    <circle cx="12" cy="12" r="5.4" />
-    <circle cx="12" cy="12" r="2.1" />
-    <path d="M12 6.6V3M12 21v-3.6M7.3 9.3 4.2 7.5m15.6 9-3.1-1.8M7.3 14.7l-3.1 1.8m15.6-9-3.1 1.8" />
+    <path d="M10 2h4l.6 2.6c.6.2 1.2.5 1.7 1l2.5-.8 2 3.4-1.9 1.8c.1.7.1 1.3 0 2l1.9 1.8-2 3.4-2.5-.8c-.5.4-1.1.8-1.7 1L14 21h-4l-.6-2.6c-.6-.2-1.2-.6-1.7-1l-2.5.8-2-3.4L5.1 13c-.1-.7-.1-1.3 0-2L3.2 9.2l2-3.4 2.5.8c.5-.5 1.1-.8 1.7-1L10 2Z" />
+    <circle cx="12" cy="11.5" r="2.7" />
   </svg>;
 }
 

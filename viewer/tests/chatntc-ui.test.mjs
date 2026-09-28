@@ -50,6 +50,7 @@ async function mount(element) { root = createRoot(rootElement); await act(async 
 async function click(element) { assert.ok(element, "missing click target"); await act(async () => { element.click(); }); }
 function button(text) { return [...rootElement.querySelectorAll("button")].find((item) => item.textContent === text); }
 function action(label) { return rootElement.querySelector(`button[aria-label="${label}"]`); }
+function indexEntry(number, level) { return [...rootElement.querySelectorAll(`.scv-index-level-${level}`)].find((item) => item.querySelector("strong")?.textContent === number); }
 async function input(value) { await act(async () => {
   const element = rootElement.querySelector("textarea");
   Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set.call(element, value);
@@ -207,7 +208,8 @@ test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", 
   assert.match(styles, /\.scv-chat-citations ul[^}]*flex-wrap:\s*wrap/su);
   assert.match(styles, /\.scv-chat-loading[^}]*min-height:/su);
   assert.match(styles, /\/\* Mobile first:[\s\S]*\.scv-chat-markdown[^}]*width:\s*100%/u);
-  assert.match(styles, /\.scv-root\.scv-has-auxiliary \{ grid-template-columns: minmax\(0, 0fr\) minmax\(0, 0fr\) minmax\(0, 1fr\)/u);
+  assert.match(styles, /\.scv-auxiliary-pane \{ position: absolute;[^}]*transform: translateX\(100%\)/u);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-auxiliary-pane \{[^}]*transform: none/u);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-answer-enter\s*\{\s*animation:\s*none/su);
   assert.match(styles, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.scv-chat-loading-lines i\s*\{\s*animation:\s*none/su);
   assert.match(styles, /\.scv-chat textarea\s*\{[^}]*max-height:\s*min\(33dvh,\s*240px\)[^}]*transition:\s*height 150ms ease/su);
@@ -221,7 +223,9 @@ test("CSS confina formule larghe e supporta mobile, skeleton e reduced motion", 
   assert.match(styles, /\.scv-chat-composer-bar\s*\{[^}]*background:\s*var\(--scv-chat-input\)/su);
   assert.match(styles, /\.scv-root\.scv-dark\s*\{[^}]*--scv-chat-surface:\s*#[0-9a-f]+[^}]*--scv-chat-input:\s*#[0-9a-f]+/su);
   assert.match(styles, /\.scv-ai-selection-badge\s*\{[^}]*background:\s*color-mix\([^}]*border-radius:\s*999px/su);
-  assert.match(styles, /\.scv-ai-field\s*\{[^}]*grid-template-columns:\s*max-content minmax\(0,\s*1fr\)[^}]*align-items:\s*center/su);
+  assert.match(styles, /\.scv-ai-field\s*\{[^}]*grid-template-columns:\s*58px minmax\(0,\s*1fr\)[^}]*align-items:\s*center/su);
+  assert.match(styles, /\.scv-ai-form input, \.scv-ai-form select\s*\{[^}]*text-align:\s*left/su);
+  assert.match(styles, /\.scv-chat-question\s*\{[^}]*border:\s*1px solid color-mix\(in srgb, var\(--scv-primary\) 45%, var\(--scv-line\)\)/su);
 });
 
 for (const [classification, label] of Object.entries(CHATNTC_CLASSIFICATION_LABELS)) test(`classificazione ${classification} visibile e discreta`, async () => {
@@ -480,6 +484,47 @@ test("viewer: non ruba il focus al mount e ricerca/drawer hanno tastiera e stato
   assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"));
   await click(rootElement.querySelector('[aria-label="Chiudi indice"]'));
   assert.equal(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"), false);
+});
+
+test("viewer: nella sidebar capitoli e paragrafi aprono i figli al primo clic e navigano al secondo clic consecutivo", async (t) => {
+  t.mock.method(globalThis, "fetch", mockCorpusFetch);
+  await mount(h(NormativeViewer, { defaultMode: "ntc" }));
+  await waitFor(() => indexEntry("2", 0) && indexEntry("2.2", 1));
+  await click(button("Apri indice"));
+  assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"));
+  const chapter = indexEntry("2", 0);
+  const paragraph = indexEntry("2.2", 1);
+  assert.equal(chapter.getAttribute("aria-expanded"), "false");
+  await click(chapter);
+  assert.equal(chapter.getAttribute("aria-expanded"), "true");
+  assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"));
+  await click(paragraph);
+  assert.equal(paragraph.getAttribute("aria-expanded"), "true");
+  assert.ok(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"));
+  await click(paragraph);
+  assert.deepEqual(targetFromUrl(new URL(window.location.href)), { kind: "unit", unitId: paragraph.dataset.indexUnit });
+  assert.equal(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"), false);
+  await waitFor(() => rootElement.querySelector(`[data-scv-text-unit="${paragraph.dataset.indexUnit}"]`));
+
+  await click(button("Apri indice"));
+  assert.equal(chapter.getAttribute("aria-expanded"), "false");
+  await click(chapter);
+  await click(indexEntry("1", 0));
+  await click(chapter);
+  assert.equal(chapter.getAttribute("aria-expanded"), "true");
+  assert.equal(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"), true);
+  await click(chapter);
+  assert.deepEqual(targetFromUrl(new URL(window.location.href)), { kind: "unit", unitId: chapter.dataset.indexUnit });
+  assert.equal(rootElement.querySelector(".scv-root").classList.contains("scv-mobile-index-open"), false);
+});
+
+test("viewer: nell'indice fisso il primo clic naviga direttamente", async (t) => {
+  t.mock.method(globalThis, "fetch", mockCorpusFetch);
+  await mount(h(NormativeViewer, { defaultMode: "ntc" }));
+  await waitFor(() => indexEntry("2", 0));
+  const chapter = indexEntry("2", 0);
+  await click(chapter);
+  assert.deepEqual(targetFromUrl(new URL(window.location.href)), { kind: "unit", unitId: chapter.dataset.indexUnit });
 });
 
 test("preview: un risultato asincrono tardivo non riapre il tooltip dopo pointerout", async (t) => {

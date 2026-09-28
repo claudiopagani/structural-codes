@@ -624,12 +624,14 @@ function HighlightedSnippet({ result }: { result: SearchResult }) {
   return <>{parts}</>;
 }
 
-const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, darkMode, onToggleTheme }: {
+const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, sidebarMode, sidebarSession, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, searchRef, darkMode, onToggleTheme }: {
   id: string;
   mode: ViewerMode;
   onModeChange: (mode: ViewerMode) => void;
   hierarchy: NavigationEntry[][];
   activeLevelIds: Array<string | null>;
+  sidebarMode: boolean;
+  sidebarSession: number;
   indexReady: boolean;
   query: string;
   onQueryChange: (query: string) => void;
@@ -650,6 +652,8 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   const searchResultsRef = useRef<HTMLDivElement>(null);
   const [searchEditing, setSearchEditing] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [sidebarExpanded, setSidebarExpanded] = useState<{ session: number; chapterId: string | null; paragraphId: string | null }>({ session: -1, chapterId: null, paragraphId: null });
+  const lastSidebarEntryRef = useRef<{ session: number; id: string } | null>(null);
   const searchResultsId = useId();
   const settingsId = useId();
   const themeTooltipId = useId();
@@ -706,9 +710,24 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
     else if (event.key === "End") { event.preventDefault(); focusSearchResult(searchResults.length - 1); }
     else if (event.key === "Escape") { event.preventDefault(); onQueryChange(""); searchRef.current?.focus(); }
   };
-  const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => { onSelectUnit(entry.summary); onRequestClose(); }} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
+  const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => {
+    if (sidebarMode && expanded !== undefined) {
+      if (lastSidebarEntryRef.current?.session !== sidebarSession || lastSidebarEntryRef.current.id !== entry.summary.id) {
+        lastSidebarEntryRef.current = { session: sidebarSession, id: entry.summary.id };
+        setSidebarExpanded((current) => level === 0
+          ? { session: sidebarSession, chapterId: entry.summary.id, paragraphId: null }
+          : { session: sidebarSession, chapterId: entry.parentId ?? current.chapterId, paragraphId: entry.summary.id });
+        return;
+      }
+    }
+    lastSidebarEntryRef.current = null;
+    onSelectUnit(entry.summary);
+    onRequestClose();
+  }} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
 
-  return <aside id={id} className="scv-index-pane" aria-label="Indice gerarchico">
+  return <aside id={id} className="scv-index-pane" aria-label="Indice gerarchico" onClickCapture={(event) => {
+    if (!(event.target as HTMLElement).closest("[data-index-unit]")) lastSidebarEntryRef.current = null;
+  }}>
     <div className="scv-search-toolbar">
       <div className={`scv-search-box ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
@@ -748,15 +767,17 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
       <section className="scv-index-cell"><header><span>Indice</span></header><div className="scv-index-list" ref={indexListRef}>{!indexReady ? <LoadingRows /> : chapters.length === 0 ? <p className="scv-index-empty">L’indice non è disponibile.</p> : <ul className="scv-index-tree">
         {chapters.map((chapter) => {
           const chapterParagraphs = paragraphsByChapter.get(chapter.summary.id) ?? [];
-          const chapterOpen = activeChapterId === chapter.summary.id;
+          const chapterActive = activeChapterId === chapter.summary.id;
+          const chapterOpen = sidebarMode ? sidebarExpanded.session === sidebarSession && sidebarExpanded.chapterId === chapter.summary.id : chapterActive;
           return <li className={`scv-index-tree-item scv-index-tree-item-level-0 ${chapterOpen ? "is-open" : ""}`} key={chapter.summary.id}>
-            {renderEntryButton(chapter, 0, chapterOpen, 0, chapterParagraphs.length > 0 ? chapterOpen : undefined)}
+            {renderEntryButton(chapter, 0, chapterActive, 0, chapterParagraphs.length > 0 ? chapterOpen : undefined)}
             {chapterParagraphs.length > 0 && <div className={`scv-index-children ${chapterOpen ? "is-open" : ""}`} aria-hidden={!chapterOpen}><div className="scv-index-children-inner"><ul className="scv-index-children-list scv-index-paragraph-list">
               {chapterParagraphs.map((paragraph) => {
                 const paragraphSubparagraphs = subparagraphsByParagraph.get(paragraph.summary.id) ?? [];
-                const paragraphOpen = chapterOpen && activeParagraphId === paragraph.summary.id;
+                const paragraphActive = activeParagraphId === paragraph.summary.id;
+                const paragraphOpen = chapterOpen && (sidebarMode ? sidebarExpanded.session === sidebarSession && sidebarExpanded.paragraphId === paragraph.summary.id : paragraphActive);
                 return <li className={`scv-index-tree-item scv-index-tree-item-level-1 ${paragraphOpen ? "is-open" : ""}`} key={paragraph.summary.id}>
-                  {renderEntryButton(paragraph, 1, paragraphOpen, chapterOpen ? 0 : -1, paragraphSubparagraphs.length > 0 ? paragraphOpen : undefined)}
+                  {renderEntryButton(paragraph, 1, paragraphActive, chapterOpen ? 0 : -1, paragraphSubparagraphs.length > 0 ? paragraphOpen : undefined)}
                   {paragraphSubparagraphs.length > 0 && <div className={`scv-index-children ${paragraphOpen ? "is-open" : ""}`} aria-hidden={!paragraphOpen}><div className="scv-index-children-inner"><ul className="scv-index-children-list scv-index-subparagraph-list">
                     {paragraphSubparagraphs.map((subparagraph) => <li className="scv-index-tree-item scv-index-tree-item-level-2" key={subparagraph.summary.id}>{renderEntryButton(subparagraph, 2, activeSubparagraphId === subparagraph.summary.id, paragraphOpen ? 0 : -1)}</li>)}
                   </ul></div></div>}
@@ -799,6 +820,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [loadError, setLoadError] = useState(false);
   const [contentLoadNotice, setContentLoadNotice] = useState<string | null>(null);
   const [mobileIndexOpen, setMobileIndexOpen] = useState(false);
+  const [mobileIndexSession, setMobileIndexSession] = useState(0);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -1493,7 +1515,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       if (event.key === "/" && !editing) {
         event.preventDefault();
         if (window.matchMedia("(max-width: 1399.98px)").matches) setAuxiliaryVisible(false);
-        if (window.matchMedia("(max-width: 991.98px)").matches) setMobileIndexOpen(true);
+        if (window.matchMedia("(max-width: 991.98px)").matches) { setMobileIndexSession((session) => session + 1); setMobileIndexOpen(true); }
         window.requestAnimationFrame(() => searchRef.current?.focus());
       }
       if (event.key === "Escape") {
@@ -1534,10 +1556,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
-    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
+    <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
+        setMobileIndexSession((session) => session + 1);
         setMobileIndexOpen(true);
         window.requestAnimationFrame(() => searchRef.current?.focus());
       }}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg><span className="scv-visually-hidden">Apri indice</span></button>
@@ -1548,7 +1571,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
           setMobileIndexOpen(false);
           setAuxiliaryVisible(true);
           window.requestAnimationFrame(() => {
-            auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+            auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
           });
         }
       }} aria-label={`Apri ${auxiliaryPanelLabel}`}>{auxiliaryPanelButtonText}</button>}
