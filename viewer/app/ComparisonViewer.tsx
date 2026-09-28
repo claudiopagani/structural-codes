@@ -7,6 +7,7 @@ import { LocalChatTransport } from "./chatntc/LocalChatTransport";
 import { IndexedDbChatHistoryStore } from "../shared/chatntc-history/indexedDb";
 import { LocalAIConfiguration, isLoopback } from "./chatntc/LocalAIConfiguration";
 import { AISettings } from "./chatntc/AISettings";
+import { IndexedDbAnnotationStore } from "../shared/annotations/indexedDb";
 
 const localPdfEnabled =
   process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_VIEWER_DEBUG_PDF === "true";
@@ -25,15 +26,17 @@ export function ComparisonViewer({ chatEnabled = false }: { chatEnabled?: boolea
   const enabled = chatEnabled && local;
   const transport = useMemo(() => enabled ? new LocalChatTransport(fetch, configuration) : undefined, [enabled, configuration]);
   const historyStore = useMemo(() => chatEnabled ? new IndexedDbChatHistoryStore() : undefined, [chatEnabled]);
-  const hasTools = enabled || localPdfEnabled;
+  const annotationStore = useMemo(() => new IndexedDbAnnotationStore(), []);
+  const hasTools = true;
   return <NormativeViewer
     defaultMode="combined"
     auxiliaryPanel={hasTools ? ((context: AuxiliaryPanelContext) => <ViewerToolsDock context={context} chatTransport={transport} chatHistoryStore={historyStore} chatSettings={<AISettings configuration={configuration} embedded />} pdfEnabled={localPdfEnabled} />) : undefined}
-    auxiliaryPanelLabel={enabled ? "ChatNTC e strumenti" : "PDF ufficiale"}
-    auxiliaryPanelButtonText={enabled ? "AI" : "PDF"}
-    auxiliaryPanelModes={enabled ? ["ntc", "circ", "combined"] : undefined}
+    auxiliaryPanelLabel={enabled ? "ChatNTC e strumenti" : "Note e strumenti"}
+    auxiliaryPanelButtonText={enabled ? "AI" : "Note"}
+    auxiliaryPanelModes={["ntc", "circ", "combined"]}
     auxiliaryPanelKeepMounted={enabled}
-    auxiliaryPanelDefaultVisible={localPdfEnabled}
+    auxiliaryPanelDefaultVisible={false}
     auxiliaryPanelDesktopDefaultVisible={enabled}
+    annotationStore={annotationStore}
   />;
 }

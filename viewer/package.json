@@ -48,6 +48,11 @@
       "types": "./package-dist/chatntc-history/index.d.ts",
       "import": "./package-dist/chatntc-history/index.js",
       "default": "./package-dist/chatntc-history/index.js"
+    },
+    "./annotations": {
+      "types": "./package-dist/annotations/index.d.ts",
+      "import": "./package-dist/annotations/index.js",
+      "default": "./package-dist/annotations/index.js"
     }
   },
   "publishConfig": {"access": "public"},
@@ -79,11 +84,12 @@
     "chatntc:semantic:index": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js",
     "chatntc:semantic:validate": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js --validate-only",
     "test:chatntc-semantic": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node --test tests/chatntc-semantic.test.mjs tests/chatntc-bge-m3-http-embedding.test.mjs",
-    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/performance-phase-one.test.mjs tests/global-scrubber.test.mjs tests/search-phase-two.test.mjs tests/cross-reference-phase-three.test.mjs tests/lazy-navigation-consolidation.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs tests/chatntc-core.test.mjs tests/chatntc-artifacts.test.mjs tests/chatntc-route.test.mjs tests/chatntc-history.test.mjs && npm run test:chatntc-semantic && npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-server.test.mjs tests/chatntc-semantic-retrieval.test.mjs tests/chatntc-semantic-runtime.test.mjs tests/chatntc-rank-fusion.test.mjs tests/chatntc-retrieval-benchmark.test.mjs && npm run test:chatntc-ui",
+    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/performance-phase-one.test.mjs tests/global-scrubber.test.mjs tests/search-phase-two.test.mjs tests/cross-reference-phase-three.test.mjs tests/lazy-navigation-consolidation.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs tests/chatntc-core.test.mjs tests/chatntc-artifacts.test.mjs tests/chatntc-route.test.mjs tests/chatntc-history.test.mjs tests/annotations.test.mjs && npm run test:chatntc-semantic && npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-server.test.mjs tests/chatntc-semantic-retrieval.test.mjs tests/chatntc-semantic-runtime.test.mjs tests/chatntc-rank-fusion.test.mjs tests/chatntc-retrieval-benchmark.test.mjs && npm run test:chatntc-ui",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern package-dist --ignore-pattern .next --max-warnings 0",
     "check": "npm run lint && npm test",
     "test:chatntc-ui": "npm run sync:corpus && node scripts/build-chatntc-ui-test.mjs && node --test tests/chatntc-ui.test.mjs",
-    "test:chatntc-history": "npm run build:library && node --test tests/chatntc-history.test.mjs"
+    "test:chatntc-history": "npm run build:library && node --test tests/chatntc-history.test.mjs",
+    "test:annotations": "npm run build:library && node --test tests/annotations.test.mjs"
   },
   "peerDependencies": {
     "react": "^19.0.0",

@@ -40,6 +40,8 @@ body:has(> .scv-root) { overflow: hidden; }
   --scv-circular: #f0f3fb;
   --scv-amber: #9a671e;
   --scv-amber-soft: #fff3d8;
+  --scv-bookmark: #c7353f;
+  --scv-note: #d39a16;
   --scv-index-width: clamp(380px, 28vw, 480px);
   position: relative;
   display: grid;
@@ -498,6 +500,64 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-scroll-overlay span { overflow: hidden; font-family: "Tinos", serif; font-size: var(--scv-font-size-10); line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
 .scv-scroll-rail.is-idle .scv-scroll-track::before, .scv-scroll-rail.is-idle .scv-scroll-track::after, .scv-scroll-rail.is-idle .scv-scroll-thumb::before { opacity: 0; }
 
+.scv-annotation-scrubber-group { position: absolute; z-index: 4; top: calc(var(--scv-annotation-ratio) * (100% - 28px)); right: 0; width: 44px; height: 28px; pointer-events: none; }
+.scv-annotation-scrubber-marker { position: absolute; right: 0; display: grid; width: 32px; height: 28px; place-items: center; padding: 0; color: #fff; font-size: 22px; font-weight: 900; line-height: 1; background: transparent; border: 0; cursor: pointer; pointer-events: auto; filter: drop-shadow(0 1px 2px rgb(0 0 0 / 25%)); }
+.scv-annotation-scrubber-marker.is-bookmark { right: 13px; color: var(--scv-bookmark); }
+.scv-annotation-scrubber-marker.is-note { right: -3px; color: var(--scv-note); }
+.scv-annotation-scrubber-marker.is-cluster { right: 2px; width: 32px; height: 24px; color: #fff; font-size: 10px; background: var(--scv-primary-dark); border: 2px solid var(--scv-panel); border-radius: 999px; }
+.scv-annotation-cluster-popover { position: absolute; z-index: 8; top: 50%; right: 44px; display: grid; width: min(240px, calc(100vw - 64px)); max-height: 220px; overflow: auto; padding: 5px; background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 8px; box-shadow: 0 9px 28px rgb(0 0 0 / 22%); pointer-events: auto; transform: translateY(-50%); }
+.scv-annotation-cluster-popover button { display: grid; grid-template-columns: 20px minmax(0, 1fr); min-height: 38px; align-items: center; gap: 5px; padding: 6px 8px; color: var(--scv-ink); text-align: left; background: transparent; border: 0; border-radius: 5px; cursor: pointer; }
+.scv-annotation-cluster-popover button:hover { background: var(--scv-primary-soft); }
+.scv-annotation-cluster-popover b { color: var(--scv-note); font-size: 20px; }
+
+[data-scv-citation-target]:focus-visible { outline: 2px solid var(--scv-primary); outline-offset: 3px; }
+.scv-unit, .scv-related-unit, .scv-block, .scv-label-list-row { position: relative; }
+.scv-note-margin-marker { position: absolute; z-index: 3; top: 0; right: -34px; display: grid; width: 28px; height: 28px; place-items: center; padding: 0; color: #6c4b00; background: #ffd65c; border: 1px solid #cf9b16; border-radius: 4px 4px 4px 1px; box-shadow: 0 2px 5px rgb(70 50 0 / 18%); cursor: pointer; }
+.scv-note-margin-marker > span { width: 13px; height: 14px; border: 1.5px solid currentcolor; border-radius: 1px; }
+.scv-note-margin-marker > span::after { display: block; width: 6px; height: 4px; margin: 7px 0 0 5px; content: ""; border-top: 1.5px solid currentcolor; transform: rotate(-45deg); }
+.scv-note-margin-marker b { position: absolute; top: -7px; right: -5px; min-width: 16px; height: 16px; padding: 0 3px; color: #fff; font-size: 9px; line-height: 16px; background: var(--scv-primary-dark); border-radius: 999px; }
+
+.scv-annotation-menu { position: fixed; z-index: 90; display: grid; min-width: 210px; padding: 5px; color: var(--scv-ink); background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 8px; box-shadow: 0 12px 34px rgb(0 0 0 / 24%); }
+.scv-annotation-menu button { min-height: 42px; padding: 8px 11px; color: inherit; text-align: left; background: transparent; border: 0; border-radius: 5px; cursor: pointer; }
+.scv-annotation-menu button:hover, .scv-annotation-menu button:focus-visible { background: var(--scv-primary-soft); }
+.scv-annotation-editor { position: fixed; z-index: 91; top: clamp(12px, var(--scv-annotation-editor-y), calc(100dvh - 330px)); left: clamp(12px, var(--scv-annotation-editor-x), calc(100vw - 380px)); width: min(360px, calc(100vw - 24px)); color: var(--scv-ink); background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 10px; box-shadow: 0 16px 42px rgb(0 0 0 / 28%); }
+.scv-annotation-editor form { display: grid; gap: 9px; padding: 12px; }
+.scv-annotation-editor header { display: flex; align-items: start; justify-content: space-between; gap: 8px; }
+.scv-annotation-editor header > div { display: grid; min-width: 0; gap: 2px; }
+.scv-annotation-editor header span { overflow: hidden; color: var(--scv-ink-soft); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.scv-annotation-editor label { color: var(--scv-ink-soft); font-size: 12px; font-weight: 700; }
+.scv-annotation-editor input, .scv-annotation-editor textarea { width: 100%; padding: 9px 10px; resize: vertical; color: var(--scv-ink); background: var(--scv-paper); border: 1px solid var(--scv-line); border-radius: 6px; }
+.scv-annotation-editor footer { display: flex; align-items: center; gap: 6px; }
+.scv-annotation-editor footer span { flex: 1; }
+.scv-annotation-editor button, .scv-annotations-panel button, .scv-annotations-panel select { min-height: 38px; padding: 7px 10px; color: var(--scv-primary-dark); background: var(--scv-panel); border: 1px solid var(--scv-line); border-radius: 6px; cursor: pointer; }
+.scv-annotation-editor button.is-primary { color: #fff; background: var(--scv-primary); border-color: var(--scv-primary); }
+.scv-annotation-editor button.is-danger { color: var(--scv-danger); }
+.scv-annotation-editor button:disabled { opacity: .55; cursor: default; }
+.scv-annotation-editor button.scv-annotation-close { width: 36px; min-width: 36px; min-height: 36px; padding: 0; font-size: 22px; line-height: 1; }
+.scv-annotation-error { margin: 0; color: var(--scv-danger); font-size: 12px; line-height: 1.4; }
+
+.scv-annotations-panel { display: grid; grid-template-rows: auto auto auto minmax(0, 1fr); height: 100%; min-height: 0; color: var(--scv-ink); background: var(--scv-panel); }
+.scv-annotations-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 10px 10px 0; }
+.scv-annotations-tabs button[aria-selected="true"] { color: #fff; background: var(--scv-primary); border-color: var(--scv-primary); }
+.scv-annotations-controls { display: grid; gap: 8px; padding: 10px; border-bottom: 1px solid var(--scv-line); }
+.scv-annotations-controls label { display: flex; min-height: 38px; align-items: center; justify-content: space-between; gap: 8px; color: var(--scv-ink-soft); font-size: 12px; }
+.scv-annotations-controls select { color: var(--scv-ink); background: var(--scv-paper); }
+.scv-annotations-controls .scv-annotations-filter { justify-content: start; }
+.scv-annotations-controls .scv-annotations-filter input { width: 18px; height: 18px; }
+.scv-annotations-controls > div { display: flex; gap: 6px; }
+.scv-annotation-notice { margin: 8px 10px 0; padding: 7px 9px; color: var(--scv-primary-dark); font-size: 12px; background: var(--scv-primary-soft); border-radius: 5px; }
+.scv-annotations-list { min-height: 0; overflow: auto; padding: 10px; }
+.scv-annotations-list > p { color: var(--scv-ink-soft); font-size: 13px; }
+.scv-annotations-list ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.scv-annotations-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; padding: 6px; background: var(--scv-paper); border: 1px solid var(--scv-line); border-radius: 8px; }
+.scv-annotations-panel button.scv-annotation-main { display: grid; min-width: 0; gap: 2px; padding: 5px; color: var(--scv-ink); text-align: left; background: transparent; border: 0; }
+.scv-annotation-main span, .scv-annotation-main small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scv-annotation-main span { color: var(--scv-ink-soft); font-family: "Tinos", serif; }
+.scv-annotation-main small { color: var(--scv-ink); }
+.scv-annotation-main time { color: var(--scv-ink-soft); font-size: 10px; }
+.scv-annotations-list li > div { display: grid; align-content: start; gap: 4px; }
+.scv-annotations-list li > div button { min-height: 32px; padding: 4px 7px; font-size: 11px; }
+
 .scv-root.scv-dark {
   color-scheme: dark;
   --scv-primary: #8ea7ff;
@@ -515,6 +575,8 @@ body:has(> .scv-root) { overflow: hidden; }
   --scv-circular: #20283b;
   --scv-amber: #f0c976;
   --scv-amber-soft: #49371f;
+  --scv-bookmark: #ff6973;
+  --scv-note: #ffd15c;
 }
 .scv-root ::selection { color: var(--scv-panel); background: var(--scv-primary); }
 .scv-root.scv-dark .scv-index-pane { background: #151a25; }
@@ -573,6 +635,8 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root.scv-dark .scv-scroll-track::before { background: #252d3d; border-color: #39445a; box-shadow: inset 0 1px 2px rgb(0 0 0 / 24%); }
 .scv-root.scv-dark .scv-scroll-track::after { background-image: radial-gradient(circle at center, #8993a5 0 1.25px, transparent 2px); }
 .scv-root.scv-dark .scv-scroll-overlay { color: #f5f7ff; background: rgb(24 31 48 / 97%); border-color: #465577; box-shadow: 0 8px 24px rgb(0 0 0 / 42%); }
+.scv-root.scv-dark .scv-annotation-menu, .scv-root.scv-dark .scv-annotation-editor, .scv-root.scv-dark .scv-annotation-cluster-popover { box-shadow: 0 14px 40px rgb(0 0 0 / 52%); }
+.scv-root.scv-dark .scv-note-margin-marker { color: #231a00; background: #e5b83c; border-color: #ffd86c; }
 .scv-root.scv-dark .scv-pdf-panel { background: #202633; }
 
 @keyframes scv-spin { to { transform: rotate(360deg); } }
@@ -786,6 +850,17 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-chat-markdown .katex-display { margin: .9em 0; }
 .scv-chat-composer { padding: 10px 12px 12px; }
 .scv-chat-loading { min-height: 146px; }
+
+@media (max-width: 767.98px) {
+  .scv-annotation-menu { top: auto !important; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); left: 8px !important; min-width: 0; padding: 8px; border-radius: 12px; }
+  .scv-annotation-menu button { min-height: 48px; }
+  .scv-annotation-editor { top: auto; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); left: 8px; width: auto; max-height: min(78dvh, 620px); overflow: auto; border-radius: 14px; }
+  .scv-annotation-editor button, .scv-annotations-panel button, .scv-annotations-panel select { min-height: 44px; }
+  .scv-annotation-editor button.scv-annotation-close { width: 44px; min-width: 44px; min-height: 44px; }
+  .scv-annotation-scrubber-group { top: calc(var(--scv-annotation-ratio) * (100% - 44px)); height: 44px; }
+  .scv-annotation-scrubber-marker { width: 44px; height: 44px; }
+  .scv-annotations-list li > div button { min-height: 44px; }
+}
 
 @media (min-width: 768px) {
   .scv-block p, .scv-root .scv-note-content > p, .scv-root .scv-note-list-item, .scv-root .table-notes > p, .scv-label-list-content > .leading-label-description, .scv-label-list-content > .leading-math-description { text-align: justify; }

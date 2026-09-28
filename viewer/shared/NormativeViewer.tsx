@@ -34,6 +34,10 @@ import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
 import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
+import { AnnotationContextMenu, AnnotationEditor, AnnotationMarginMarker, type AnnotationEditorState, type AnnotationMenuState, type AnnotationPanelController, type AnnotationTargetMetadata } from "./annotations/AnnotationUi";
+import { annotationPositionRanks, annotationsForTarget, annotationTargetFromElement, automaticAnnotationLabel, clusterAnnotationMarkers, createLongPressSession, type AnnotationMarker } from "./annotations/annotationTargets";
+import { annotationTargetKey } from "./annotations/schema";
+import type { AnnotationStore, UserAnnotation } from "./annotations/types";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -70,10 +74,10 @@ function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk
   return undefined;
 }
 
-const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId }) {
+const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument, notesByTarget, onOpenAnnotation }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation) => void }) {
   return <div className="scv-unit-blocks">{groupAlignedLabelBlocks(blocks).map((group) => group.kind === "label-list"
-    ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} key={group.blocks[0].blockId} />
-    : <div className={scvBlockClass(group.block, sourceUnitId)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /></div>)}</div>;
+    ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} renderAccessory={(block) => <AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey({ kind: "block", unitId: sourceUnitId, blockId: block.blockId })) ?? []} onOpen={onOpenAnnotation} />} key={group.blocks[0].blockId} />
+    : <div tabIndex={0} className={scvBlockClass(group.block, sourceUnitId)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /><AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey(group.block.assetId ? { kind: "asset", unitId: sourceUnitId, assetId: group.block.assetId, assetKind: blockAssetKind(group.block, assets) } : { kind: "block", unitId: sourceUnitId, blockId: group.block.blockId })) ?? []} onOpen={onOpenAnnotation} /></div>)}</div>;
 });
 
 export interface AuxiliaryPanelContext {
@@ -88,6 +92,7 @@ export interface AuxiliaryPanelContext {
   navigateTo?: (target: ViewerTarget) => Promise<void>;
   hrefForTarget?: (target: ViewerTarget) => string;
   close?: () => void;
+  annotations?: AnnotationPanelController;
 }
 
 export type AuxiliaryPanel = ReactNode | ((context: AuxiliaryPanelContext) => ReactNode);
@@ -111,6 +116,7 @@ export interface NormativeViewerProps {
   auxiliaryPanelKeepMounted?: boolean;
   searchMaxResults?: number;
   className?: string;
+  annotationStore?: AnnotationStore;
 }
 
 interface RelatedRecord { edge: RelationEdge; unit: CorpusUnit; chunk: CorpusChunk; }
@@ -392,19 +398,20 @@ function unitTitleContent(unit: CorpusUnit) {
   return renderInlineSegments(titleInline);
 }
 
-const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string }) {
+const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl, notesByTarget, onOpenAnnotation }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation) => void }) {
   const { unit, chunk } = record;
   const isChapter = depth(unit) === 0;
   const isCircularFallback = mode === "combined" && unit.document === "circ2019";
   const visibleRelated = mode === "combined" ? relatedRecords.filter(({ unit: relatedUnit }) => hasUnitContent(relatedUnit)) : emptyRelatedRecords;
-  return <section className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}${isCircularFallback ? " scv-circular-fallback" : ""}`} data-provenance={isCircularFallback ? "Circolare 7/2019" : undefined} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
+  return <section tabIndex={0} className={`scv-unit scv-unit-depth-${Math.min(depth(unit), 4)}${isCircularFallback ? " scv-circular-fallback" : ""}`} data-provenance={isCircularFallback ? "Circolare 7/2019" : undefined} data-scv-text-unit={unit.id} data-scv-citation-target="unit" data-scv-source-unit-id={unit.id} data-scv-chunk-path={record.summary.chunkPath}>
     {isChapter ? <h2 className="scv-chapter-heading"><span className="scv-chapter-badge"><span className="scv-chapter-badge-label">Capitolo</span><strong>{unit.numbering.official}.</strong></span><span className="scv-chapter-rule" aria-hidden="true" /><span className="scv-chapter-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al capitolo ${unit.numbering.official}`}>{unit.title}</button></span></h2> : <h2><span className="scv-unit-number">{unit.numbering.official}</span><span className="scv-unit-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al paragrafo ${unit.numbering.official}`}>{unitTitleContent(unit)}</button></span></h2>}
-    <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} />
-    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al paragrafo ${relatedUnit.numbering.official}`}>{relatedUnit.title}</button></span></h3></header><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} /></section>)}
+    <AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey({ kind: "unit", unitId: unit.id })) ?? []} onOpen={onOpenAnnotation} />
+    <ScvBlockFlow blocks={unit.blocks.filter((block) => !isRepeatedUnitTitle(unit, block))} assets={chunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={unit.id} sourceDocument={unit.document} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} />
+    {visibleRelated.map(({ edge, unit: relatedUnit, chunk: relatedChunk }) => <section tabIndex={0} className="scv-related-unit" data-provenance="Circolare 7/2019" data-scv-related-unit={relatedUnit.id} data-scv-citation-target="unit" data-scv-source-unit-id={relatedUnit.id} key={edge.relationId}><header><h3><span className="scv-related-number">{relatedUnit.numbering.official}</span><span className="scv-related-title"><button type="button" className="scv-permalink-trigger" data-scv-copy-link aria-label={`Copia link al paragrafo ${relatedUnit.numbering.official}`}>{relatedUnit.title}</button></span></h3></header><AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey({ kind: "unit", unitId: relatedUnit.id })) ?? []} onOpen={onOpenAnnotation} /><ScvBlockFlow blocks={relatedUnit.blocks.filter((block) => !isRepeatedUnitTitle(relatedUnit, block))} assets={relatedChunk.assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={relatedUnit.id} sourceDocument={relatedUnit.document} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} /></section>)}
   </section>;
-}, (previous, next) => previous.record.unit === next.record.unit && previous.record.chunk === next.record.chunk && previous.mode === next.mode && previous.assetsBaseUrl === next.assetsBaseUrl && sameRelatedRecords(previous.relatedRecords, next.relatedRecords));
+}, (previous, next) => previous.record.unit === next.record.unit && previous.record.chunk === next.record.chunk && previous.mode === next.mode && previous.assetsBaseUrl === next.assetsBaseUrl && previous.notesByTarget === next.notesByTarget && previous.onOpenAnnotation === next.onOpenAnnotation && sameRelatedRecords(previous.relatedRecords, next.relatedRecords));
 
-const DocumentContent = memo(function DocumentContent({ records, relatedByTarget, mode, assetsBaseUrl, documentLabel, documentUnits, documentChunks, hasPrevious, hasNext }: {
+const DocumentContent = memo(function DocumentContent({ records, relatedByTarget, mode, assetsBaseUrl, documentLabel, documentUnits, documentChunks, hasPrevious, hasNext, notesByTarget, onOpenAnnotation }: {
   records: UnitRecord[];
   relatedByTarget: Map<string, RelatedRecord[]>;
   mode: ViewerMode;
@@ -414,13 +421,15 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
   documentChunks: number;
   hasPrevious: boolean;
   hasNext: boolean;
+  notesByTarget: Map<string, UserAnnotation[]>;
+  onOpenAnnotation: (annotation: UserAnnotation) => void;
 }) {
   if (records.length === 0) return <LoadingPanel label="Caricamento dei contenuti…" />;
   const version = records[0].chunk.structuralCodesVersion;
   return <div className="scv-text-flow">
     {hasPrevious && <div className="scv-progressive-edge" aria-hidden="true" />}
     <p className="scv-chunk-note">Documento continuo · {documentLabel} · {documentUnits} unità · {documentChunks} chunk · structural-codes {version}</p>
-    {records.map((record) => <MemoizedUnit record={record} mode={mode} relatedRecords={relatedByTarget.get(record.unit.id) ?? emptyRelatedRecords} assetsBaseUrl={assetsBaseUrl} key={record.unit.id} />)}
+    {records.map((record) => <MemoizedUnit record={record} mode={mode} relatedRecords={relatedByTarget.get(record.unit.id) ?? emptyRelatedRecords} assetsBaseUrl={assetsBaseUrl} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} key={record.unit.id} />)}
     {hasNext ? <div className="scv-progressive-edge" aria-hidden="true" /> : <div className="scv-end-note">Fine del documento.</div>}
   </div>;
 });
@@ -435,14 +444,17 @@ interface GlobalScrollEntry {
   baseNumber: string;
 }
 
-const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, entries, activeId, onSelect }: {
+const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, entries, activeId, onSelect, annotationMarkers, onAnnotationSelect }: {
   rootRef: RefObject<HTMLElement | null>;
   entries: GlobalScrollEntry[];
   activeId: string | null;
   onSelect: (id: string) => void;
+  annotationMarkers: AnnotationMarker[];
+  onAnnotationSelect: (annotation: UserAnnotation) => void;
 }) {
   const [interaction, setInteraction] = useState<"idle" | "scrolling" | "hover" | "focus" | "dragging">("idle");
   const [previewEntry, setPreviewEntry] = useState<GlobalScrollEntry | null>(null);
+  const [openCluster, setOpenCluster] = useState<string | null>(null);
   const hideTimerRef = useRef<number | null>(null);
   const pointerFrameRef = useRef<number | null>(null);
   const pendingPointerYRef = useRef<number | null>(null);
@@ -451,6 +463,7 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
   const activeIndex = activeEntry?.index ?? 0;
   const ratio = interaction === "dragging" && previewEntry ? previewEntry.ratio : globalScrubberRatioForId(entries, activeId, activeEntry?.ratio ?? 0);
   const visible = interaction !== "idle";
+  const annotationClusters = useMemo(() => clusterAnnotationMarkers(annotationMarkers), [annotationMarkers]);
 
   const clearHideTimer = useCallback(() => {
     if (hideTimerRef.current !== null) window.clearTimeout(hideTimerRef.current);
@@ -539,6 +552,16 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
     onFocusCapture={() => { clearHideTimer(); setInteraction("focus"); }}
     onBlurCapture={() => { setInteraction("scrolling"); hideLater(); }}>
     <div className="scv-scroll-track" role="presentation" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={(event) => stopDrag(event, true)} onPointerCancel={(event) => stopDrag(event, false)}>
+      {annotationClusters.map((cluster) => {
+        const id = cluster.markers.map(({ annotation }) => annotation.id).join(":");
+        const single = cluster.markers.length === 1 ? cluster.markers[0].annotation : null;
+        const type = single?.type ?? "cluster";
+        const label = single ? `${single.type === "bookmark" ? "Segnalibro" : "Nota"}: § ${single.numbering} — ${single.title}` : `${cluster.markers.length} annotazioni vicine`;
+        return <span className="scv-annotation-scrubber-group" style={{ "--scv-annotation-ratio": cluster.ratio } as React.CSSProperties} key={id}>
+          <button type="button" className={`scv-annotation-scrubber-marker is-${type}`} aria-label={label} title={label} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); if (single) onAnnotationSelect(single); else setOpenCluster((current) => current === id ? null : id); }}><span aria-hidden="true">{type === "bookmark" ? "‹" : type === "note" ? "›" : cluster.markers.length}</span></button>
+          {!single && openCluster === id && <div className="scv-annotation-cluster-popover" role="menu" aria-label="Annotazioni vicine">{cluster.markers.map(({ annotation }) => <button type="button" role="menuitem" key={annotation.id} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); setOpenCluster(null); onAnnotationSelect(annotation); }}><b aria-hidden="true">{annotation.type === "bookmark" ? "‹" : "›"}</b><span>{annotation.type === "bookmark" ? "Segnalibro" : "Nota"} · § {annotation.numbering}</span></button>)}</div>}
+        </span>;
+      })}
       <button type="button" className="scv-scroll-thumb" role="slider" aria-label="Posizione nel documento" aria-valuemin={1} aria-valuemax={entries.length} aria-valuenow={(displayedEntry?.index ?? 0) + 1} aria-valuetext={valueText}
         onKeyDown={onKeyDown} />
     </div>
@@ -801,7 +824,7 @@ function scheduleIdle(callback: () => void) {
   return () => window.clearTimeout(id);
 }
 
-export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelButtonText = "Apri", auxiliaryPanelDefaultVisible = false, auxiliaryPanelDesktopDefaultVisible = false, auxiliaryPanelModes, auxiliaryPanelKeepMounted = false, searchMaxResults = 12, className }: NormativeViewerProps) {
+export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelButtonText = "Apri", auxiliaryPanelDefaultVisible = false, auxiliaryPanelDesktopDefaultVisible = false, auxiliaryPanelModes, auxiliaryPanelKeepMounted = false, searchMaxResults = 12, className, annotationStore }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
   const [indexes, setIndexes] = useState<Map<DocumentId, DocumentIndex>>(new Map());
   const [loadedChunks, setLoadedChunks] = useState<Map<string, CorpusChunk>>(new Map());
@@ -823,6 +846,12 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [mobileIndexSession, setMobileIndexSession] = useState(0);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(false);
+  const [annotations, setAnnotations] = useState<UserAnnotation[]>([]);
+  const [annotationsLoading, setAnnotationsLoading] = useState(Boolean(annotationStore));
+  const [annotationError, setAnnotationError] = useState<string | null>(null);
+  const [annotationMenu, setAnnotationMenu] = useState<AnnotationMenuState | null>(null);
+  const [annotationEditor, setAnnotationEditor] = useState<AnnotationEditorState | null>(null);
+  const [annotationBusy, setAnnotationBusy] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const mobileIndexButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
@@ -847,6 +876,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const referencePreviewRequestRef = useRef(0);
   const touchReferenceRef = useRef<HTMLElement | null>(null);
   const lastPointerTypeRef = useRef("");
+  const suppressAnnotationClickRef = useRef(false);
+  const longPressRef = useRef<{ pointerId: number; session: ReturnType<typeof createLongPressSession> } | null>(null);
   const textPaneRef = useRef<HTMLElement>(null);
   const documentId = documentForMode(mode);
   const documentIdRef = useRef(documentId);
@@ -896,6 +927,37 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   useEffect(() => {
     documentIdRef.current = documentId;
   }, [documentId]);
+
+  useEffect(() => {
+    if (!annotationStore) return;
+    let cancelled = false;
+    annotationStore.listAnnotations().then((items) => {
+      if (!cancelled) { setAnnotations(items); setAnnotationError(null); }
+    }).catch((error: unknown) => {
+      if (!cancelled) setAnnotationError(error instanceof Error ? error.message : "Annotazioni locali non disponibili.");
+    }).finally(() => { if (!cancelled) setAnnotationsLoading(false); });
+    return () => { cancelled = true; };
+  }, [annotationStore]);
+
+  const notesByTarget = useMemo(() => {
+    const grouped = new Map<string, UserAnnotation[]>();
+    for (const annotation of annotations) {
+      if (annotation.type !== "note") continue;
+      const key = annotationTargetKey(annotation.target);
+      const group = grouped.get(key) ?? [];
+      group.push(annotation); grouped.set(key, group);
+    }
+    return grouped;
+  }, [annotations]);
+
+  const openAnnotation = useCallback((annotation: UserAnnotation) => {
+    setAnnotationMenu(null);
+    setAnnotationError(null);
+    setAnnotationEditor({ type: annotation.type, target: annotation.target, annotation, metadata: {
+      documentId: annotation.documentId, numbering: annotation.numbering, title: annotation.title,
+      automaticLabel: annotation.label ?? automaticAnnotationLabel(annotation.target, annotation.numbering, annotation.title),
+    } });
+  }, []);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -1113,6 +1175,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [combinedPlan.fallbackSummaries, index, mode]);
   const entryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.summary.id, entry])), [navigationEntries]);
   const recordById = useMemo(() => new Map(renderRecords.map((record) => [record.unit.id, record])), [renderRecords]);
+  const summaryById = useMemo(() => new Map([...indexes.values()].flatMap((documentIndex) => documentIndex.units).map((summary) => [summary.id, summary])), [indexes]);
+  const annotationRanks = useMemo(() => annotationPositionRanks(indexes.values()), [indexes]);
 
   const revealSummary = useCallback(async (summary: UnitSummary, replace = false, generation = navigationGenerationRef.current) => {
     if (generation !== navigationGenerationRef.current) return;
@@ -1409,7 +1473,44 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       .catch(() => showPermalinkNotice(element, "Copia del link non disponibile", "error"));
   }, [defaultMode, mode, showPermalinkNotice]);
 
+  const metadataForAnnotationTarget = useCallback((target: ViewerTarget): AnnotationTargetMetadata | null => {
+    const summary = summaryById.get(target.unitId);
+    if (!summary) return null;
+    let officialAssetNumber: string | null | undefined;
+    if (target.kind === "asset") {
+      for (const loaded of loadedChunks.values()) {
+        const asset = loaded.assets.formulas[target.assetId] ?? loaded.assets.tables[target.assetId] ?? loaded.assets.figures[target.assetId];
+        if (asset) { officialAssetNumber = asset.officialNumber; break; }
+      }
+    }
+    return { documentId: summary.document, numbering: summary.numbering.official, title: summary.title,
+      automaticLabel: automaticAnnotationLabel(target, summary.numbering.official, summary.title, officialAssetNumber) };
+  }, [loadedChunks, summaryById]);
+
+  const showAnnotationMenu = useCallback((target: ViewerTarget, point: { x: number; y: number }) => {
+    const metadata = metadataForAnnotationTarget(target);
+    if (!metadata || !annotationStore) return false;
+    setCitationSelection(target);
+    setAnnotationEditor(null);
+    setAnnotationMenu({ target, metadata, x: point.x, y: point.y, bookmark: annotationsForTarget(annotations, target, "bookmark")[0] });
+    return true;
+  }, [annotationStore, annotations, metadataForAnnotationTarget]);
+
+  const handleDocumentContextMenu = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    const target = annotationTargetFromElement(event.target instanceof Element ? event.target : null);
+    if (target && showAnnotationMenu(target, { x: event.clientX, y: event.clientY })) event.preventDefault();
+  }, [showAnnotationMenu]);
+
+  const handleDocumentKeyDown = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key !== "ContextMenu" && !(event.shiftKey && event.key === "F10")) return;
+    const element = event.target instanceof Element ? event.target : null;
+    const target = annotationTargetFromElement(element);
+    const anchor = element?.closest<HTMLElement>("[data-scv-citation-target]")?.getBoundingClientRect();
+    if (target && anchor && showAnnotationMenu(target, { x: anchor.left + Math.min(32, anchor.width / 2), y: anchor.top + Math.min(32, anchor.height / 2) })) event.preventDefault();
+  }, [showAnnotationMenu]);
+
   const handleDocumentClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    if (suppressAnnotationClickRef.current) { suppressAnnotationClickRef.current = false; event.preventDefault(); event.stopPropagation(); return; }
     const permalinkElement = event.target instanceof Element ? event.target.closest<HTMLElement>("[data-scv-copy-link]") : null;
     if (permalinkElement) {
       event.preventDefault();
@@ -1433,6 +1534,30 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const handleDocumentPointerDown = useCallback((event: React.PointerEvent<HTMLElement>) => {
     lastPointerTypeRef.current = event.pointerType;
+    longPressRef.current?.session.cancel();
+    longPressRef.current = null;
+    if (event.pointerType !== "touch" || !event.isPrimary || event.button !== 0 || !annotationStore) return;
+    const element = event.target instanceof Element ? event.target : null;
+    if (element?.closest(".scv-cross-reference, button, a, input, textarea, select")) return;
+    const target = annotationTargetFromElement(element);
+    if (!target) return;
+    const session = createLongPressSession((point) => {
+      if (showAnnotationMenu(target, point)) suppressAnnotationClickRef.current = true;
+      longPressRef.current = null;
+    });
+    longPressRef.current = { pointerId: event.pointerId, session };
+    session.start({ x: event.clientX, y: event.clientY });
+  }, [annotationStore, showAnnotationMenu]);
+
+  const handleDocumentPointerMove = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const active = longPressRef.current;
+    if (active?.pointerId === event.pointerId) active.session.move({ x: event.clientX, y: event.clientY });
+  }, []);
+
+  const cancelDocumentLongPress = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const active = longPressRef.current;
+    if (active?.pointerId !== event.pointerId) return;
+    active.session.cancel(); longPressRef.current = null;
   }, []);
 
   const handleDocumentPointerOver = useCallback((event: React.PointerEvent<HTMLElement>) => {
@@ -1481,12 +1606,29 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [activeSummary, chapters, paragraphs, subparagraphs]);
   const scrubberEntries = useMemo(() => buildGlobalScrubberEntries(navigationEntries.map(({ summary, displayNumber, baseNumber, level }) => ({ id: summary.id, label: displayNumber, title: summary.title, baseNumber, level })), 2) as GlobalScrollEntry[], [navigationEntries]);
   const scrubberActiveId = resolveGlobalScrubberActiveId(scrubberEntries, activeUnitId, activeSummary ? baseNumbering(activeSummary.numbering.official) : null);
+  const annotationMarkers = useMemo(() => {
+    const scrubberById = new Map(scrubberEntries.map((entry) => [entry.id, entry]));
+    return annotations.flatMap((annotation): AnnotationMarker[] => {
+      if (mode !== "combined" && annotation.documentId !== documentId) return [];
+      let entry = scrubberById.get(annotation.target.unitId);
+      const summary = summaryById.get(annotation.target.unitId);
+      if (!entry && mode === "combined" && summary?.document === "circ2019") {
+        const relatedId = relationTargets(summary.id, relations)[0]?.targetUnitId;
+        entry = relatedId ? scrubberById.get(relatedId) : undefined;
+        if (!entry) entry = scrubberEntries.find((candidate) => candidate.baseNumber === baseNumbering(summary.numbering.official));
+      }
+      return entry ? [{ annotation, ratio: entry.ratio }] : [];
+    });
+  }, [annotations, documentId, mode, relations, scrubberEntries, summaryById]);
+
+  const selectAnnotationMarker = useCallback((annotation: UserAnnotation) => {
+    void navigateViewerTarget(annotation.target, "push").then(() => { if (annotation.type === "note") openAnnotation(annotation); }).catch(() => reportChunkLoadFailure());
+  }, [navigateViewerTarget, openAnnotation, reportChunkLoadFailure]);
 
   const activeRecord = recordById.get(activeUnitId ?? "") ?? null;
   const chunk = activeRecord?.chunk ?? null;
   const activePages = activeRecord ? evidencePages(activeRecord.unit, activeRecord.chunk) : [];
   const pageBounds = activePages.length > 0 ? { from: Math.min(...activePages), to: Math.max(...activePages) } : { from: 1, to: 1 };
-  const summaryById = useMemo(() => new Map([...indexes.values()].flatMap((documentIndex) => documentIndex.units).map((summary) => [summary.id, summary])), [indexes]);
   const changeMode = useCallback((nextMode: ViewerMode, preferredUnitId: string | null = null) => {
     if (nextMode === mode) return;
     navigationGenerationRef.current += 1;
@@ -1546,12 +1688,45 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     scrollRequestRef.current = requestedTargetRef.current;
     setAuxiliaryVisible(false); auxiliaryButtonRef.current?.focus();
   }, []);
+  const saveAnnotationEditor = useCallback(async (value: string) => {
+    if (!annotationStore || !annotationEditor) return;
+    setAnnotationBusy(true); setAnnotationError(null);
+    try {
+      const trimmed = value.trim();
+      const saved = annotationEditor.annotation
+        ? await annotationStore.updateAnnotation(annotationEditor.annotation.id, annotationEditor.type === "bookmark" ? { label: trimmed || annotationEditor.metadata.automaticLabel } : { text: trimmed })
+        : await annotationStore.createAnnotation({ type: annotationEditor.type, target: annotationEditor.target, documentId: annotationEditor.metadata.documentId,
+          numbering: annotationEditor.metadata.numbering, title: annotationEditor.metadata.title,
+          ...(annotationEditor.type === "bookmark" ? { label: trimmed || annotationEditor.metadata.automaticLabel } : { text: trimmed }) });
+      setAnnotations((current) => [...current.filter((annotation) => annotation.id !== saved.id && !(saved.type === "bookmark" && annotation.type === "bookmark" && annotationTargetKey(annotation.target) === annotationTargetKey(saved.target))), saved]);
+      setAnnotationEditor(null);
+    } catch (error) { setAnnotationError(error instanceof Error ? error.message : "Salvataggio non riuscito."); }
+    finally { setAnnotationBusy(false); }
+  }, [annotationEditor, annotationStore]);
+
+  const removeAnnotation = useCallback(async (annotation: UserAnnotation) => {
+    if (!annotationStore) return;
+    setAnnotationBusy(true); setAnnotationError(null);
+    try { await annotationStore.deleteAnnotation(annotation.id); setAnnotations((current) => current.filter((item) => item.id !== annotation.id)); setAnnotationEditor((current) => current?.annotation?.id === annotation.id ? null : current); }
+    catch (error) { setAnnotationError(error instanceof Error ? error.message : "Eliminazione non riuscita."); }
+    finally { setAnnotationBusy(false); }
+  }, [annotationStore]);
+
+  const annotationController = useMemo<AnnotationPanelController | undefined>(() => annotationStore ? {
+    items: annotations, loading: annotationsLoading, error: annotationError, currentDocumentId: documentId, positionRanks: annotationRanks,
+    navigate: (annotation) => { void navigateViewerTarget(annotation.target, "push").catch(() => reportChunkLoadFailure()); },
+    edit: openAnnotation,
+    remove: removeAnnotation,
+    exportAnnotations: () => annotationStore.exportAnnotations(),
+    importAnnotations: async (value) => { const result = await annotationStore.importAnnotations(value); setAnnotations(await annotationStore.listAnnotations()); setAnnotationError(null); return result; },
+  } : undefined, [annotationError, annotationRanks, annotationStore, annotations, annotationsLoading, documentId, navigateViewerTarget, openAnnotation, removeAnnotation, reportChunkLoadFailure]);
   const renderAuxiliary: ReactNode = !manifest || !auxiliaryAvailable ? null : <AuxiliaryContent panel={auxiliaryPanel} context={{ mode, documentId, manifest, chunk, pageBounds,
     currentUnit: auxiliaryUnit ? { documentId: auxiliaryUnit.document, unitId: auxiliaryUnit.id, numbering: auxiliaryUnit.numbering.official } : null,
     selectedTarget: citationSelection?.unitId === auxiliaryUnit?.id ? citationSelection : null,
     navigateTo: navigateViewerTarget,
     hrefForTarget: (target) => urlForViewerTarget(window.location.href, mode === "combined" || documentForMode(mode) === documentFromUnitId(target.unitId) ? mode : documentFromUnitId(target.unitId) === "ntc2018" ? "ntc" : "circ", defaultMode, target).href,
     close: closeAuxiliary,
+    annotations: annotationController,
   }} />;
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
@@ -1576,13 +1751,15 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
         }
       }} aria-label={`Apri ${auxiliaryPanelLabel}`}>{auxiliaryPanelButtonText}</button>}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
-      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerDown={handleDocumentPointerDown} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
-        {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
+      <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onContextMenu={handleDocumentContextMenu} onKeyDown={handleDocumentKeyDown} onPointerDown={handleDocumentPointerDown} onPointerMove={handleDocumentPointerMove} onPointerUp={cancelDocumentLongPress} onPointerCancel={cancelDocumentLongPress} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
+        {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}
       </article>
-      <GlobalDocumentScrubber rootRef={textPaneRef} entries={scrubberEntries} activeId={scrubberActiveId} onSelect={selectScrollMarker} />
+      <GlobalDocumentScrubber rootRef={textPaneRef} entries={scrubberEntries} activeId={scrubberActiveId} onSelect={selectScrollMarker} annotationMarkers={annotationMarkers} onAnnotationSelect={selectAnnotationMarker} />
     </div>
     <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
     {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}
+    {annotationMenu && <AnnotationContextMenu state={annotationMenu} onClose={() => setAnnotationMenu(null)} onBookmark={() => { setAnnotationEditor({ type: "bookmark", target: annotationMenu.target, metadata: annotationMenu.metadata, annotation: annotationMenu.bookmark, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} onNote={() => { setAnnotationEditor({ type: "note", target: annotationMenu.target, metadata: annotationMenu.metadata, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} />}
+    {annotationEditor && <AnnotationEditor state={annotationEditor} busy={annotationBusy} error={annotationError} onSave={(value) => void saveAnnotationEditor(value)} onDelete={annotationEditor.annotation ? () => void removeAnnotation(annotationEditor.annotation!) : null} onClose={() => { setAnnotationEditor(null); setAnnotationError(null); }} />}
     {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
   </div>;
 }

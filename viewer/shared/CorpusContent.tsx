@@ -492,14 +492,15 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
 
-export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets", sourceUnitId, sourceDocument }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string; sourceUnitId?: string; sourceDocument?: DocumentId }) {
+export function AlignedLabelList({ blocks, assets, assetsBaseUrl = "/assets", sourceUnitId, sourceDocument, renderAccessory }: { blocks: CorpusBlock[]; assets: AssetBundle | null; assetsBaseUrl?: string; sourceUnitId?: string; sourceDocument?: DocumentId; renderAccessory?: (block: CorpusBlock) => React.ReactNode }) {
   const rootClass = "scv-label-list";
   const indentLevel = blocks[0]?.indentLevel ?? 0;
   return <div className={`${rootClass} ${indentLevel > 0 ? `block-indent-${indentLevel}` : ""}`}>
-    {blocks.map((block) => <div className={`${rootClass}-row`} data-scv-citation-target="block" data-scv-source-unit-id={sourceUnitId} data-scv-block-id={block.blockId} key={block.blockId}>
+    {blocks.map((block) => <div tabIndex={0} className={`${rootClass}-row`} data-scv-citation-target="block" data-scv-source-unit-id={sourceUnitId} data-scv-block-id={block.blockId} key={block.blockId}>
       <div className={`${rootClass}-content`}>
         <BlockContent block={block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} aligned />
       </div>
+      {renderAccessory?.(block)}
     </div>)}
   </div>;
 }

@@ -8,14 +8,15 @@ import { CloseIcon } from "../shared/chatntc-ui/ChatNTCIcons";
 import type { ChatHistoryStore } from "../shared/chatntc-history/types";
 import type { ChatTransport } from "../shared/chatntc-ui/transport";
 import { OfficialPdfPanel } from "./OfficialPdfPanel";
+import { AnnotationsPanel } from "../shared/annotations/AnnotationUi";
 
 export function ViewerToolsDock({ context, chatTransport, chatHistoryStore, pdfEnabled, chatSettings }: {
   context: AuxiliaryPanelContext; chatTransport?: ChatTransport; chatHistoryStore?: ChatHistoryStore; pdfEnabled: boolean;
   chatSettings?: ReactNode;
 }) {
   const id = useId();
-  const tabs = [...(chatTransport ? [{ id: "chat", label: "ChatNTC" }] : []), ...(pdfEnabled ? [{ id: "pdf", label: "PDF ufficiale" }] : [])];
-  const [selected, setSelected] = useState(chatTransport ? "chat" : "pdf");
+  const tabs = [...(chatTransport ? [{ id: "chat", label: "ChatNTC" }] : []), ...(context.annotations ? [{ id: "annotations", label: "Note" }] : []), ...(pdfEnabled ? [{ id: "pdf", label: "PDF ufficiale" }] : [])];
+  const [selected, setSelected] = useState(chatTransport ? "chat" : context.annotations ? "annotations" : "pdf");
   const active = tabs.some((tab) => tab.id === selected) ? selected : tabs[0]?.id;
   function tabKey(event: KeyboardEvent<HTMLButtonElement>, position: number) {
     let next = position;
@@ -39,6 +40,7 @@ export function ViewerToolsDock({ context, chatTransport, chatHistoryStore, pdfE
     {chatPanelProps && <div id={`${id}-chat-panel`} role="tabpanel" aria-labelledby={`${id}-chat-tab`} hidden={active !== "chat"} className="scv-tool-content">{chatHistoryStore
       ? <ChatNTCHistoryPanel {...chatPanelProps} historyStore={chatHistoryStore} settings={chatSettings} />
       : <ChatNTCPanel {...chatPanelProps} />}</div>}
+    {context.annotations && <div id={`${id}-annotations-panel`} role="tabpanel" aria-labelledby={`${id}-annotations-tab`} hidden={active !== "annotations"} className="scv-tool-content"><AnnotationsPanel controller={context.annotations} /></div>}
     {pdfEnabled && <div id={`${id}-pdf-panel`} role="tabpanel" aria-labelledby={`${id}-pdf-tab`} hidden={active !== "pdf"} className="scv-tool-content"><OfficialPdfPanel key={context.documentId} context={context} /></div>}
   </div>;
 }

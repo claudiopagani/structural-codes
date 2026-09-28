@@ -565,12 +565,12 @@ test("citazioni granulari Circolare mantengono block/asset nei target senza URL 
   assert.deepEqual(targetFromUrl(new URL(links[1].href)), navigate[1]);
 });
 
-test("standalone senza flag: nessuna ChatNTC e nessuna chiamata AI", async (t) => {
+test("standalone senza flag: Note disponibile, nessuna ChatNTC e nessuna chiamata AI", async (t) => {
   t.mock.method(globalThis, "fetch", mockCorpusFetch);
   await mount(h(ComparisonViewer));
   await waitFor(() => rootElement.querySelector(".scv-unit"));
   assert.equal(rootElement.querySelector('[aria-label="ChatNTC"]'), null);
-  assert.equal(rootElement.querySelector(".scv-tools-toggle"), null);
+  assert.equal(rootElement.querySelector(".scv-tools-toggle")?.textContent, "Note");
   assert.equal(calls.length, 0);
 });
 
