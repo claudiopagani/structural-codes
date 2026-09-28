@@ -121,9 +121,17 @@ export function ChatNTCPanel({ transport, onNavigate, hrefForTarget, initialTurn
   useEffect(() => {
     window.addEventListener("resize", resizeInput);
     window.visualViewport?.addEventListener("resize", resizeInput);
+    const composer = inputRef.current?.parentElement;
+    let previousWidth = composer?.getBoundingClientRect().width;
+    const observer = composer && typeof ResizeObserver !== "undefined" ? new ResizeObserver(([entry]) => {
+      const width = entry.contentRect.width;
+      if (width !== previousWidth) { previousWidth = width; resizeInput(); }
+    }) : null;
+    if (composer) observer?.observe(composer);
     return () => {
       window.removeEventListener("resize", resizeInput);
       window.visualViewport?.removeEventListener("resize", resizeInput);
+      observer?.disconnect();
     };
   }, [resizeInput]);
   useLayoutEffect(resizeInput, [draft, resizeInput]);

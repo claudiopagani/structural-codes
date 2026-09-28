@@ -30,8 +30,10 @@ export function ComparisonViewer({ chatEnabled = false }: { chatEnabled?: boolea
     defaultMode="combined"
     auxiliaryPanel={hasTools ? ((context: AuxiliaryPanelContext) => <ViewerToolsDock context={context} chatTransport={transport} chatHistoryStore={historyStore} chatSettings={<AISettings configuration={configuration} embedded />} pdfEnabled={localPdfEnabled} />) : undefined}
     auxiliaryPanelLabel={enabled ? "ChatNTC e strumenti" : "PDF ufficiale"}
+    auxiliaryPanelButtonText={enabled ? "AI" : "PDF"}
     auxiliaryPanelModes={enabled ? ["ntc", "circ", "combined"] : undefined}
     auxiliaryPanelKeepMounted={enabled}
     auxiliaryPanelDefaultVisible={localPdfEnabled}
+    auxiliaryPanelDesktopDefaultVisible={enabled}
   />;
 }

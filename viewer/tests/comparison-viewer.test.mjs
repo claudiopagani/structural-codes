@@ -400,9 +400,9 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: #e0e6f2/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
-  assert.match(styles, /--scv-index-width: clamp\(360px, 37vw, 480px\)/);
-  assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\)/);
-  assert.match(styles, /grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) minmax\(320px, \.8fr\)/);
+  assert.match(styles, /--scv-index-width: clamp\(380px, 28vw, 480px\)/);
+  assert.match(styles, /@media \(min-width: 992px\) \{[^]*\.scv-root\.scv-has-auxiliary \{ grid-template-columns: minmax\(0, 0fr\) minmax\(0, 1fr\) minmax\(340px, 38vw\)/);
+  assert.match(styles, /@media \(min-width: 1400px\) \{[^]*\.scv-root\.scv-has-auxiliary \{ grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\) clamp\(340px, 28vw, 480px\)/);
   assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
   assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: var\(--scv-primary-soft\)/);

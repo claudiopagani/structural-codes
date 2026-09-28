@@ -102,7 +102,9 @@ export interface NormativeViewerProps {
   assetsBaseUrl?: string;
   auxiliaryPanel?: AuxiliaryPanel;
   auxiliaryPanelLabel?: string;
+  auxiliaryPanelButtonText?: string;
   auxiliaryPanelDefaultVisible?: boolean;
+  auxiliaryPanelDesktopDefaultVisible?: boolean;
   /** Defaults to the legacy single-document modes. */
   auxiliaryPanelModes?: readonly ViewerMode[];
   /** Opt in to retaining transient tool state while hidden. Default preserves lazy mounting. */
@@ -647,7 +649,9 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   const indexListRef = useRef<HTMLDivElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
   const [searchEditing, setSearchEditing] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const searchResultsId = useId();
+  const settingsId = useId();
   const themeTooltipId = useId();
   const chapters = hierarchy[0] ?? [];
   const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
@@ -727,6 +731,8 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
           {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { setSearchEditing(false); onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
         </div>}
       </div>
+      <button type="button" className="scv-index-settings-toggle" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={() => setSettingsOpen((current) => !current)} aria-label="Impostazioni indice"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /><circle cx="9" cy="7" r="2" /><circle cx="15" cy="12" r="2" /><circle cx="10" cy="17" r="2" /></svg></button>
+      <div id={settingsId} className={`scv-index-settings ${settingsOpen ? "is-open" : ""}`}><div className="scv-index-settings-inner">
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
       <button type="button" className="scv-theme-button" onClick={onToggleTheme} aria-label={darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"} aria-describedby={themeTooltipId} aria-pressed={darkMode}>
         <span className="scv-theme-icon" aria-hidden="true">{darkMode
@@ -735,6 +741,7 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
         </span>
         <span id={themeTooltipId} className="scv-control-tooltip" role="tooltip">{darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"}</span>
       </button>
+      </div></div>
       <button type="button" className="scv-mobile-index-close" onClick={onRequestClose} aria-label="Chiudi indice">×</button>
     </div>
     <div className="scv-index-grid">
@@ -773,7 +780,7 @@ function scheduleIdle(callback: () => void) {
   return () => window.clearTimeout(id);
 }
 
-export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelDefaultVisible = false, auxiliaryPanelModes, auxiliaryPanelKeepMounted = false, searchMaxResults = 12, className }: NormativeViewerProps) {
+export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data/codes", assetsBaseUrl = "/assets", auxiliaryPanel, auxiliaryPanelLabel = "PDF ufficiale", auxiliaryPanelButtonText = "Apri", auxiliaryPanelDefaultVisible = false, auxiliaryPanelDesktopDefaultVisible = false, auxiliaryPanelModes, auxiliaryPanelKeepMounted = false, searchMaxResults = 12, className }: NormativeViewerProps) {
   const [manifest, setManifest] = useState<CorpusManifest | null>(null);
   const [indexes, setIndexes] = useState<Map<DocumentId, DocumentIndex>>(new Map());
   const [loadedChunks, setLoadedChunks] = useState<Map<string, CorpusChunk>>(new Map());
@@ -793,7 +800,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [contentLoadNotice, setContentLoadNotice] = useState<string | null>(null);
   const [mobileIndexOpen, setMobileIndexOpen] = useState(false);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
-  const [auxiliaryVisible, setAuxiliaryVisible] = useState(Boolean(auxiliaryPanel && auxiliaryPanelDefaultVisible));
+  const [auxiliaryVisible, setAuxiliaryVisible] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const mobileIndexButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
@@ -823,6 +830,22 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const documentIdRef = useRef(documentId);
   const hasAuxiliary = Boolean(auxiliaryPanel);
   const auxiliaryAvailable = hasAuxiliary && (auxiliaryPanelModes ? auxiliaryPanelModes.includes(mode) : mode !== "combined");
+
+  useEffect(() => {
+    const tablet = window.matchMedia("(min-width: 992px)");
+    const desktop = window.matchMedia("(min-width: 1400px)");
+    const syncLayout = () => {
+      setAuxiliaryVisible(Boolean(hasAuxiliary && (desktop.matches ? auxiliaryPanelDesktopDefaultVisible || auxiliaryPanelDefaultVisible : false)));
+      setMobileIndexOpen(false);
+    };
+    syncLayout();
+    tablet.addEventListener("change", syncLayout);
+    desktop.addEventListener("change", syncLayout);
+    return () => {
+      tablet.removeEventListener("change", syncLayout);
+      desktop.removeEventListener("change", syncLayout);
+    };
+  }, [hasAuxiliary, auxiliaryPanelDefaultVisible, auxiliaryPanelDesktopDefaultVisible]);
 
   const flashSearchTarget = useCallback((target: ViewerTarget) => {
     const root = textPaneRef.current;
@@ -1460,14 +1483,19 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const closeMobileIndex = useCallback(() => {
     setMobileIndexOpen(false);
-    if (window.matchMedia("(max-width: 820px)").matches) window.requestAnimationFrame(() => mobileIndexButtonRef.current?.focus());
+    if (window.matchMedia("(max-width: 991.98px)").matches) window.requestAnimationFrame(() => mobileIndexButtonRef.current?.focus());
   }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       const editing = (event.target instanceof HTMLElement && event.target.closest("input, textarea, select, [contenteditable='true']"))
         || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
-      if (event.key === "/" && !editing) { event.preventDefault(); searchRef.current?.focus(); }
+      if (event.key === "/" && !editing) {
+        event.preventDefault();
+        if (window.matchMedia("(max-width: 1399.98px)").matches) setAuxiliaryVisible(false);
+        if (window.matchMedia("(max-width: 991.98px)").matches) setMobileIndexOpen(true);
+        window.requestAnimationFrame(() => searchRef.current?.focus());
+      }
       if (event.key === "Escape") {
         if (referencePreview?.interactive) clearReferencePreview();
         else if (mobileIndexOpen) closeMobileIndex();
@@ -1512,18 +1540,18 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
         setMobileIndexOpen(true);
         window.requestAnimationFrame(() => searchRef.current?.focus());
-      }}>Indice</button>
+      }}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg><span className="scv-visually-hidden">Apri indice</span></button>
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();
         else {
           scrollRequestRef.current = requestedTargetRef.current;
+          setMobileIndexOpen(false);
           setAuxiliaryVisible(true);
           window.requestAnimationFrame(() => {
-            if (!window.matchMedia("(max-width: 820px)").matches) auxiliaryPaneRef.current?.scrollIntoView({ block: "nearest" });
             auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
           });
         }
-      }}>{auxiliaryVisible ? "Chiudi" : "Apri"} {auxiliaryPanelLabel}</button>}
+      }} aria-label={`Apri ${auxiliaryPanelLabel}`}>{auxiliaryPanelButtonText}</button>}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onPointerDown={handleDocumentPointerDown} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} />}
@@ -1532,7 +1560,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     </div>
     <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
     {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}
-    {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
+    {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
   </div>;
 }
 
