@@ -34,7 +34,7 @@ test("renderizza il viewer comparato come unica superficie applicativa", async (
 test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", async () => {
   const manifest = await dataJson("/data/codes/manifest.json");
   assert.equal(manifest.formatVersion, 2);
-  assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.1");
+  assert.equal(manifest.structuralCodesVersion, "0.1.0-alpha.2");
   assert.equal(manifest.schemaVersion, "2.0.0-alpha.3");
   assert.equal(manifest.stats.units, 1745);
   assert.equal(manifest.stats.blocks, 11056);

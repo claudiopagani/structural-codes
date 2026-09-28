@@ -14,7 +14,7 @@ editoriale.
 
 ## Stato della prerelease
 
-La versione corrente è `0.1.0-alpha.1`. La review umana integrale del testo
+La versione corrente è `0.1.0-alpha.2`. La review umana integrale del testo
 delle NTC 2018 e della Circolare 7/2019 contro le fonti ufficiali è registrata
 al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690 unità della Circolare,
 tutte con `review.status: "verified"`. Questa verifica non costituisce una

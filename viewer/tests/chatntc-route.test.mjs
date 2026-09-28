@@ -58,7 +58,7 @@ test("route Vinext self-hosted esegue l'intera pipeline con fetch DeepSeek simul
     assert.equal(result.citations[0].numbering, "7.3.6.1");
     assert.equal(result.generation.provider, "deepseek");
     assert.equal(result.generation.model, "deepseek-flash");
-    assert.equal(result.evidence.structuralCodesVersion, "0.1.0-alpha.1");
+    assert.equal(result.evidence.structuralCodesVersion, "0.1.0-alpha.2");
     assert.equal(response.headers.get("cache-control"), "no-store");
   });
 });

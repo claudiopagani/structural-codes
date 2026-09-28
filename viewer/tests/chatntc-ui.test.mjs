@@ -28,14 +28,14 @@ function result(classification = "direct-reference") {
   return { ok: true, response: { formatVersion: 1, evidencePackageId: "fixture-package", answer: "Risposta simulata per il test di interazione.", classification,
     claims: citations.length ? [{ id: "claim", text: "Test.", classification, citations }] : [], usedEvidenceIds: citations.map((item) => item.evidenceId),
     warnings: [], needsMoreEvidence: !citations.length, externalResearchSuggested: false }, citations,
-    evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1", corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
+    evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.2", corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v1", reduced: false, warnings: [] },
     generation: { provider: "mock", model: "mock-model", outcome: citations.length ? "generated" : "abstained" }, validation: { valid: true, scope: "integrity-provenance-claim-coverage" } };
 }
 function resultV3(references = [verifiedReference], answerMarkdown = "No: il punto chiave è distinguere gli spostamenti.") {
   return { ok: true, response: { formatVersion: 3, evidencePackageId: "fixture-package",
     answerMarkdown, classification: references.length > 1 ? "combined-reference" : references.length ? "direct-reference" : "no-direct-reference",
     status: "answered", verifiedReferences: references, warnings: [], needsMoreEvidence: false, externalResearchSuggested: false },
-    citations: references, evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.1",
+    citations: references, evidence: { packageId: "fixture-package", structuralCodesVersion: "0.1.0-alpha.2",
       corpusFingerprint: "fixture-corpus", artifactFingerprint: "fixture-artifacts", policyVersion: "chatntc-epistemic-v2", reduced: false, warnings: [] },
     generation: { provider: "mock", model: "mock-model", outcome: "generated" },
     validation: { valid: true, scope: "integrity-provenance-reference-resolution", stage: "NORMALIZED" } };
