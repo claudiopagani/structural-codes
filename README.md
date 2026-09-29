@@ -100,6 +100,18 @@ npm run viewer:install
 npm run dev
 ```
 
+Comandi principali dalla radice:
+
+| Comando | Scopo |
+| --- | --- |
+| `npm run dev` | Viewer standalone in sviluppo |
+| `npm run build` | Build del package `structural-codes` |
+| `npm run test` | Test del package principale |
+| `npm run check` | Verifica completa del repository |
+
+Per verificare separatamente il viewer: `npm run viewer:build`,
+`npm run viewer:test` e `npm run viewer:check`.
+
 ## Struttura e provenance del corpus
 
 ```text
@@ -131,7 +143,6 @@ Le regole editoriali sono in [AGENTS.md](AGENTS.md), nella
 ```bash
 npm ci
 npm run check
-npm run viewer:check
 npm run release:verify
 npm --prefix viewer run pack:verify
 npm --prefix viewer run test:consumer

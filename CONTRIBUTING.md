@@ -25,7 +25,6 @@ un glifo o a determinare un confine editoriale, dichiaralo come ambiguità.
 npm ci
 npm run viewer:install
 npm run check
-npm run viewer:test
 ```
 
 I PDF ufficiali non sono versionati. Acquisisci soltanto la manifestazione

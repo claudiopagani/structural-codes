@@ -57,8 +57,7 @@ npm run viewer:test
 Per aggiornare il visualizzatore durante la redazione:
 
 ```bash
-npm --prefix viewer run sync:corpus
-npm run viewer:dev
+npm run dev
 ```
 
 Se si modifica un record mentre il server è già aperto, rieseguire

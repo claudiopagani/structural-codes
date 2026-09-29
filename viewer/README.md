@@ -62,8 +62,11 @@ package `structural-codes` installato nel consumer.
 
 ## Standalone
 
+Avviare dalla radice del repository:
+
 ```bash
 npm ci
+npm run viewer:install
 npm run dev
 ```
 
@@ -72,16 +75,17 @@ nel package.
 
 ## Sviluppo e verifica
 
+I comandi di verifica del viewer si eseguono dalla radice:
+
 ```bash
-npm run typecheck
-npm run lint
-npm test
-npm run check
-npm run pack:verify
-npm run test:consumer
+npm run viewer:build
+npm run viewer:test
+npm run viewer:check
+npm --prefix viewer run pack:verify
+npm --prefix viewer run test:consumer
 ```
 
-`check` costruisce app e libreria ed esegue i test del viewer e del boundary.
+`viewer:check` costruisce app e libreria ed esegue i test del viewer e del boundary.
 `pack:verify` mostra il contenuto del tarball. `test:consumer` crea tarball
 reali dei due package, li installa in una nuova app Next e verifica l'API
 pubblica del viewer, inclusa l'integrazione tramite `auxiliaryPanel`.

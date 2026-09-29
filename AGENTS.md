@@ -243,7 +243,7 @@ Per ogni step:
    `npm run review:diff -- --unit <record.json>`;
 8. eseguire il test mirato, quindi `npm run check` e
    `npm run viewer:test`;
-9. avviare `npm run viewer:dev` e confrontare tutte le unità modificate con
+9. avviare `npm run dev` e confrontare tutte le unità modificate con
    tutte le pagine del relativo step;
 10. controllare nuovamente `git diff --name-only` e
     `git diff --check`.
@@ -304,12 +304,12 @@ npm run lint
 npm test
 npm run check
 npm run viewer:test
-npm run viewer:dev
+npm run dev
 ```
 
 Durante lo sviluppo è ammesso eseguire prima il test mirato. Prima della
 consegna devono passare `npm run check` e `npm run viewer:test`.
-`viewer:dev` rigenera automaticamente il payload pubblico dal corpus.
+`dev` rigenera automaticamente il payload pubblico dal corpus.
 
 Quando si aggiunge una regola editoriale o si corregge una classe di errori,
 aggiungere un test di regressione che controlli il contenuto e, per gli asset,

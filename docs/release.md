@@ -11,7 +11,6 @@ Da un clone pulito con evidence locale disponibile e verificata:
 ```bash
 npm ci
 npm run check
-npm run viewer:check
 npm run release:verify
 npm --prefix viewer run pack:verify
 npm --prefix viewer run test:consumer
