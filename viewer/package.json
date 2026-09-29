@@ -1,6 +1,6 @@
 {
   "name": "structural-codes-viewer",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Reference React UI and deterministic artifact client for the structural-codes corpus.",
   "license": "LGPL-2.1-or-later",
   "homepage": "https://github.com/claudiopagani/structural-codes#readme",
@@ -28,27 +28,7 @@
       "import": "./package-dist/corpusData.js",
       "default": "./package-dist/corpusData.js"
     },
-    "./chatntc": {
-      "types": "./package-dist/chatntc/index.d.ts",
-      "import": "./package-dist/chatntc/index.js",
-      "default": "./package-dist/chatntc/index.js"
-    },
-    "./chatntc/viewer-artifacts": {
-      "types": "./package-dist/chatntc/viewerArtifacts.d.ts",
-      "import": "./package-dist/chatntc/viewerArtifacts.js",
-      "default": "./package-dist/chatntc/viewerArtifacts.js"
-    },
     "./package.json": "./package.json",
-    "./chatntc-ui": {
-      "types": "./package-dist/chatntc-ui/index.d.ts",
-      "import": "./package-dist/chatntc-ui/index.js",
-      "default": "./package-dist/chatntc-ui/index.js"
-    },
-    "./chatntc-history": {
-      "types": "./package-dist/chatntc-history/index.d.ts",
-      "import": "./package-dist/chatntc-history/index.js",
-      "default": "./package-dist/chatntc-history/index.js"
-    },
     "./annotations": {
       "types": "./package-dist/annotations/index.d.ts",
       "import": "./package-dist/annotations/index.js",
@@ -66,29 +46,13 @@
     "test:consumer": "node scripts/test-consumer.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "dev": "npm run sync:corpus && vinext dev",
-    "dev:chatntc": "npm run sync:corpus && node scripts/dev-chatntc.mjs",
     "build": "npm run sync:corpus && vinext build",
     "start": "vinext start",
     "performance:baseline": "npm run build && node scripts/performance-baseline.mjs",
     "performance:search": "npm run sync:corpus && node scripts/search-performance.mjs",
-    "test:chatntc": "npm run build:library && npm run sync:corpus && node --test tests/chatntc-core.test.mjs tests/chatntc-artifacts.test.mjs",
-    "build:chatntc-test": "tsc -p tsconfig.chatntc-test.json",
-    "test:chatntc-server": "npm run sync:corpus && npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-server.test.mjs tests/chatntc-semantic-retrieval.test.mjs tests/chatntc-semantic-runtime.test.mjs tests/chatntc-rank-fusion.test.mjs",
-    "build:chatntc-retrieval-benchmark": "tsc -p tsconfig.retrieval-benchmark.json",
-    "chatntc:retrieval:benchmark": "npm run sync:corpus && npm run build:chatntc-retrieval-benchmark && node --conditions=react-server .local/chatntc-retrieval-benchmark-tool/scripts/benchmark-chatntc-retrieval.js",
-    "test:chatntc-retrieval-benchmark": "npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-retrieval-benchmark.test.mjs",
-    "build:chatntc-semantic-tool": "tsc -p tsconfig.semantic-tool.json",
-    "chatntc:semantic:tokenizer:setup": "npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/setup-bge-m3-tokenizer.js",
-    "chatntc:semantic:audit-lengths": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/audit-chatntc-semantic-lengths.js",
-    "chatntc:semantic:audit-chunks": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/audit-chatntc-semantic-chunks.js",
-    "chatntc:semantic:index": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js",
-    "chatntc:semantic:validate": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node .local/chatntc-semantic-tool/scripts/generate-chatntc-semantic-index.js --validate-only",
-    "test:chatntc-semantic": "npm run sync:corpus && npm run build:chatntc-semantic-tool && node --test tests/chatntc-semantic.test.mjs tests/chatntc-bge-m3-http-embedding.test.mjs",
-    "test": "npm run build:library && npm run build && node --test tests/rendered-html.test.mjs tests/comparison-viewer.test.mjs tests/performance-phase-one.test.mjs tests/global-scrubber.test.mjs tests/search-phase-two.test.mjs tests/cross-reference-phase-three.test.mjs tests/lazy-navigation-consolidation.test.mjs tests/package-boundary.test.mjs tests/ntc-latex-corpus.test.mjs tests/chatntc-core.test.mjs tests/chatntc-artifacts.test.mjs tests/chatntc-route.test.mjs tests/chatntc-history.test.mjs tests/annotations.test.mjs && npm run test:chatntc-semantic && npm run build:chatntc-test && node --conditions=react-server --test tests/chatntc-server.test.mjs tests/chatntc-semantic-retrieval.test.mjs tests/chatntc-semantic-runtime.test.mjs tests/chatntc-rank-fusion.test.mjs tests/chatntc-retrieval-benchmark.test.mjs && npm run test:chatntc-ui",
+    "test": "npm run build:library && npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern package-dist --ignore-pattern .next --max-warnings 0",
-    "check": "npm run lint && npm test",
-    "test:chatntc-ui": "npm run sync:corpus && node scripts/build-chatntc-ui-test.mjs && node --test tests/chatntc-ui.test.mjs",
-    "test:chatntc-history": "npm run build:library && node --test tests/chatntc-history.test.mjs",
+    "check": "npm run typecheck && npm run lint && npm test",
     "test:annotations": "npm run build:library && node --test tests/annotations.test.mjs"
   },
   "peerDependencies": {
@@ -97,14 +61,9 @@
   },
   "dependencies": {
     "@fontsource/tinos": "^5.3.0",
-    "katex": "^0.16.22",
-    "react-markdown": "^10.1.0",
-    "rehype-katex": "^7.0.1",
-    "remark-gfm": "^4.0.1",
-    "remark-math": "^6.0.0"
+    "katex": "^0.16.22"
   },
   "devDependencies": {
-    "@huggingface/tokenizers": "^0.2.0",
     "structural-codes": "file:..",
     "next": "16.3.6",
     "pdfjs-dist": "6.2.108",
@@ -120,7 +79,6 @@
     "fake-indexeddb": "6.2.5",
     "jsdom": "26.1.0",
     "react-server-dom-webpack": "19.2.8",
-    "server-only": "0.0.1",
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.8",
     "vite": "8.1.5"

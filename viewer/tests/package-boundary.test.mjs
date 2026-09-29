@@ -29,17 +29,18 @@ test("i tarball rispettano il boundary core/viewer", async () => {
   const viewerFiles = packPreview(viewerRoot);
   const requiredViewerFiles = [
     "LICENSE", "NOTICE",
-    "package-dist/chatntc/index.js", "package-dist/chatntc/index.d.ts",
-    "package-dist/chatntc/viewerArtifacts.js", "package-dist/chatntc/viewerArtifacts.d.ts",
-    "package-dist/chatntc-ui/index.js", "package-dist/chatntc-ui/index.d.ts",
-    "package-dist/chatntc-history/index.js", "package-dist/chatntc-history/index.d.ts",
+    "package-dist/NormativeViewer.js", "package-dist/NormativeViewer.d.ts",
+    "package-dist/annotations/index.js", "package-dist/annotations/index.d.ts",
+    "package-dist/corpusData.js", "package-dist/corpusData.d.ts",
+    "package-dist/styles.css", "package-dist/generate-artifacts.mjs",
   ];
 
   assert.equal(rootFiles.some((path) => path.startsWith("viewer/")), false);
   for (const path of requiredViewerFiles) assert.equal(viewerFiles.includes(path), true, `file pubblico assente: ${path}`);
   assert.equal(viewerFiles.some((path) => path.includes("corpus/units/") || path.includes("corpus/assets/")), false);
   assert.equal(viewerFiles.some((path) => path.includes("pdfjs-dist") || path.startsWith("worker/") || path.startsWith("app/")), false);
-  assert.equal(viewerFiles.some((path) => /server\/|AISettings|LocalAIConfiguration|LocalChatTransport|providerRegistry/u.test(path)), false);
+  assert.equal(viewerFiles.some((path) => /server\/|chatntc|embedding|semantic|AISettings|LocalAIConfiguration|LocalChatTransport|providerRegistry/iu.test(path)), false);
+  assert.equal(Object.keys(viewerPackage.exports).some((path) => /chatntc|ai|semantic/iu.test(path)), false);
   assert.deepEqual(viewerPackage.peerDependencies, { react: "^19.0.0", "react-dom": "^19.0.0" });
   assert.equal(Object.prototype.hasOwnProperty.call(viewerPackage.dependencies, "pdfjs-dist"), false);
   assert.equal(Object.prototype.hasOwnProperty.call(viewerPackage.dependencies, "next"), false);
@@ -58,6 +59,9 @@ test("il core React-free non è una dipendenza inversa del package viewer", asyn
   assert.equal(rootPackage.dependencies["structural-codes-viewer"], undefined);
   assert.doesNotMatch(generator, /\.\.\/strutture-normative|\.\.\/structural-codes/iu);
   assert.doesNotMatch(viewerSource, /pdfjs-dist|source-pdf|vinext|cloudflare/iu);
-  assert.doesNotMatch(viewerSource, /AISettings|LocalChatTransport|DeepSeekAdapter|OpenAIAdapter|AnthropicAdapter|GeminiAdapter/u);
+  assert.match(viewerSource, /export interface AuxiliaryPanelContext/);
+  assert.match(viewerSource, /auxiliaryPanel\?: AuxiliaryPanel/);
+  assert.match(viewerSource, /annotationStore\?: AnnotationStore/);
+  assert.doesNotMatch(viewerSource, /ChatNTC|AISettings|LocalChatTransport|DeepSeekAdapter|OpenAIAdapter|AnthropicAdapter|GeminiAdapter/u);
   assert.match(viewerStyles, /^@import "katex\/dist\/katex\.min\.css";/u);
 });

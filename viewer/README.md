@@ -1,48 +1,49 @@
 # structural-codes-viewer
 
 `structural-codes-viewer` è il package React per consultare il corpus
-`structural-codes`. La stessa directory contiene l'applicazione standalone e
-la route ChatNTC self-hosted, che restano fuori dal tarball del package.
+`structural-codes`. La stessa directory contiene l'applicazione standalone.
 
 ## Boundary
 
 - `structural-codes`: corpus, schema, provenance e helper non React;
-- `structural-codes-viewer`: componenti React, client lazy, generatore
-  artefatti e API ChatNTC condivise;
-- `viewer/app/` e `viewer/server/`: composizione standalone, route e adapter
-  provider non pubblicati nel package.
+- `structural-codes-viewer`: viewer React, ricerca, navigazione, annotazioni,
+  client lazy e generatore di artefatti;
+- `viewer/app/`: composizione standalone non pubblicata nel package.
 
 React e ReactDOM sono peer dependency. Il package non dipende a runtime da
-Next/Vinext, `pdfjs-dist`, BGE-M3, adapter provider o file `.local`.
+Next/Vinext o `pdfjs-dist`.
 
 ## Viewer React
 
 ```tsx
-import { NormativeViewer } from "structural-codes-viewer";
+import { NormativeViewer, type AuxiliaryPanelContext } from "structural-codes-viewer";
 import "structural-codes-viewer/styles.css";
 
+function Panel({ context }: { context: AuxiliaryPanelContext }) {
+  return <aside><button onClick={context.close}>Chiudi</button></aside>;
+}
+
 export function Normativa() {
-  return <NormativeViewer defaultMode="combined" dataBaseUrl="/data/codes" />;
+  return <NormativeViewer
+    defaultMode="combined"
+    dataBaseUrl="/data/codes"
+    auxiliaryPanel={(context) => <Panel context={context} />}
+    auxiliaryPanelModes={["ntc", "circ", "combined"]}
+  />;
 }
 ```
 
-Props principali:
-
-- `defaultMode`: `combined`, `ntc` o `circ`;
-- `dataBaseUrl`: artefatti lazy, default `/data/codes`;
-- `assetsBaseUrl`: figure, default `/assets`;
-- `auxiliaryPanel`: pannello opzionale o render prop;
-- `auxiliaryPanelDefaultVisible`, `auxiliaryPanelKeepMounted` e modalità
-  consentite del pannello.
-
-La vista combinata mantiene le NTC come struttura principale e inserisce la
-Circolare solo tramite relazioni esplicite. Ricerca, chunk, relazioni, figure e
-prefetch sono lazy; il package shared non importa PDF o route standalone.
+`NormativeViewer` espone `dataBaseUrl`, `assetsBaseUrl`, `auxiliaryPanel`,
+`AuxiliaryPanelContext`, controlli di visibilità del pannello e `annotationStore`.
+Il pannello generico consente ai consumer di montare i propri componenti.
+Navigazione, ricerca, annotazioni, note e segnalibri sono indipendenti dalla
+composizione standalone. Sono pubblici anche `./annotations`, `./corpus-data`,
+`./generate-artifacts` e `./styles.css`.
 
 ## Artefatti
 
 ```bash
-npm --prefix viewer run sync:corpus
+npm run sync:corpus
 ```
 
 Il comando genera sotto `viewer/public/data/codes/` manifest, indici documento,
@@ -59,88 +60,20 @@ npx structural-codes-viewer --source structural-codes \
 Il package viewer non include il corpus completo: il generatore legge il
 package `structural-codes` installato nel consumer.
 
-## Export ChatNTC
-
-```ts
-import {
-  CHATNTC_DEFAULT_RETRIEVAL,
-  retrieveChatNTCEvidence,
-  validateChatNTCResponse,
-} from "structural-codes-viewer/chatntc";
-import { createViewerArtifactRepository } from
-  "structural-codes-viewer/chatntc/viewer-artifacts";
-import { ChatNTCPanel, type ChatTransport } from
-  "structural-codes-viewer/chatntc-ui";
-import { IndexedDbChatHistoryStore, type ChatHistoryStore } from
-  "structural-codes-viewer/chatntc-history";
-```
-
-Questi export sono shared/browser-safe. Route HTTP, provider secrets,
-`LocalChatTransport`, `LocalAIConfiguration` e impostazioni standalone non
-sono API del package.
-
-## Standalone senza ChatNTC
+## Standalone
 
 ```bash
 npm ci
-npm run sync:corpus
 npm run dev
 ```
 
-Il viewer funziona senza provider e senza ChatNTC. Il PDF ufficiale è un
-ausilio locale/debug e non entra nel build pubblico o nel package.
-
-## ChatNTC self-hosted
-
-Dal root della repository:
-
-```bash
-npm run dev
-```
-
-Il launcher abilita ChatNTC e vincola il server a `127.0.0.1`. In alternativa,
-copiando `viewer/.env.example` in `viewer/.env.local`, impostare:
-
-```dotenv
-CHATNTC_ENABLED=true
-CHATNTC_PROVIDER=deepseek
-CHATNTC_DEEPSEEK_API_KEY=
-CHATNTC_SEMANTIC_MODE=off
-```
-
-La chiave può restare vuota se l'utente usa la UI BYOK. Le chiavi environment
-rimangono server-side; quelle UI rimangono in memoria e viaggiano in un header
-stessa origine, mai nel body o nella history.
-
-Pipeline standard:
-
-```text
-query → lexical retrieval → structural expansion → Evidence Package
-      → LLM → Citation Validator → risposta verificata
-```
-
-Dettagli: [overview](../docs/chatntc-core.md),
-[self-hosting](../docs/chatntc-server.md),
-[BYOK](../docs/chatntc-byok.md) e
-[history](../docs/chatntc-history.md).
-
-## Semantic retrieval sperimentale
-
-`CHATNTC_SEMANTIC_MODE=off|shadow|on`; il default è `off`.
-
-- `off`: percorso lessicale standard, nessun indice o embedding;
-- `shadow`: calcolo semantic osservazionale, output lessicale invariato;
-- `on`: ranking fuso RRF con fallback lessicale.
-
-Gli adapter BGE-M3 HTTP e Ollama, i generatori indice e i benchmark sono
-strumenti opt-in. BGE-M3 non è una dipendenza obbligatoria del viewer o di
-ChatNTC. Vedere la
-[documentazione semantic](../docs/chatntc-semantic-index.md).
+Il PDF ufficiale è un ausilio locale di debug e non entra nel build pubblico o
+nel package.
 
 ## Sviluppo e verifica
 
 ```bash
-npm ci
+npm run typecheck
 npm run lint
 npm test
 npm run check
@@ -148,11 +81,11 @@ npm run pack:verify
 npm run test:consumer
 ```
 
-`check` costruisce app e libreria ed esegue test viewer, ChatNTC, history,
-semantic e boundary. `pack:verify` mostra il contenuto effettivo del tarball.
-`test:consumer` crea tarball reali di entrambi i package, li installa in una
-nuova app Next e verifica viewer, export ChatNTC runtime e tipi pubblici.
+`check` costruisce app e libreria ed esegue i test del viewer e del boundary.
+`pack:verify` mostra il contenuto del tarball. `test:consumer` crea tarball
+reali dei due package, li installa in una nuova app Next e verifica l'API
+pubblica del viewer, inclusa l'integrazione tramite `auxiliaryPanel`.
 
-Il tarball deve contenere soltanto `package-dist/`, README, licenza, notice e
-manifest. Sono vietati `app/`, `server/`, test, PDF, corpus completo, `.env`,
-cache, indici semantic e output standalone.
+Il tarball contiene soltanto `package-dist/`, README, licenza, notice e
+manifest. Restano fuori `app/`, test, PDF, corpus completo, `.env` e output
+standalone.

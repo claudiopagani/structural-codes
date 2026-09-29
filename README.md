@@ -1,7 +1,7 @@
 # Structural Codes
 
 Corpus open source, machine-readable e verificabile della normativa strutturale
-italiana, con package JavaScript, viewer React e ChatNTC opzionale self-hosted.
+italiana, con package JavaScript e viewer React.
 Il perimetro iniziale comprende NTC 2018 e Circolare 7/2019: unità canoniche,
 formule, tabelle, figure, relazioni, provenance, stato di verifica e tooling
 editoriale.
@@ -14,7 +14,7 @@ editoriale.
 
 ## Stato della prerelease
 
-La versione corrente è `0.1.0-alpha.2`. La review umana integrale del testo
+La versione corrente è `0.1.0-alpha.3`. La review umana integrale del testo
 delle NTC 2018 e della Circolare 7/2019 contro le fonti ufficiali è registrata
 al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690 unità della Circolare,
 tutte con `review.status: "verified"`. Questa verifica non costituisce una
@@ -31,16 +31,9 @@ e riguardano esclusivamente la stabilità di questo progetto pubblico.
 ## Cosa contiene
 
 - `structural-codes`: corpus, schema, provenance, helper e API non React;
-- `structural-codes-viewer`: viewer React, client degli artefatti e componenti
-  ChatNTC riusabili;
-- viewer standalone in sola lettura, utilizzabile senza ChatNTC;
-- ChatNTC self-hosted con retrieval lessicale, espansione strutturale, Evidence
-  Package, provider LLM e Citation Validator;
-- provider DeepSeek, OpenAI, Anthropic, Gemini e OpenRouter;
-- configurazione tramite environment locale oppure BYOK dalla UI;
-- history browser in IndexedDB;
-- semantic retrieval BGE-M3 sperimentale e opzionale;
-- tooling, benchmark, test e verifiche di release.
+- `structural-codes-viewer`: viewer React e client degli artefatti;
+- viewer standalone con ricerca, navigazione, annotazioni, note e segnalibri;
+- tooling editoriale, test e verifiche di release.
 
 Il corpus canonico resta la source of truth. `viewer/public/` contiene solo
 derivati rigenerabili e non va modificato direttamente.
@@ -94,74 +87,18 @@ export function Normativa() {
 }
 ```
 
-Gli export ChatNTC condivisi sono:
+Il pannello destro accetta componenti esterni tramite `auxiliaryPanel` e
+`AuxiliaryPanelContext`. Gli export pubblici includono inoltre stili,
+generatore di artefatti, dati del corpus e API per le annotazioni. Dettagli e
+comandi sono in [viewer/README.md](viewer/README.md).
 
-- `structural-codes-viewer/chatntc`;
-- `structural-codes-viewer/chatntc/viewer-artifacts`;
-- `structural-codes-viewer/chatntc-ui`;
-- `structural-codes-viewer/chatntc-history`.
-
-Route standalone, adapter dei provider, configurazioni e secret non fanno
-parte del package. Dettagli e comandi sono in [viewer/README.md](viewer/README.md).
-
-## ChatNTC self-hosted
-
-ChatNTC è opzionale. L'utente può usare il viewer senza abilitarlo, oppure
-eseguirlo nella propria installazione:
+Per avviare il viewer standalone:
 
 ```bash
 npm ci
 npm run viewer:install
 npm run dev
 ```
-
-Il launcher ascolta sul loopback e abilita ChatNTC esplicitamente. La pipeline
-standard è:
-
-```text
-query
-  → lexical retrieval
-  → structural expansion
-  → Evidence Package
-  → LLM configurato dall'utente o dal server
-  → Citation Validator
-  → risposta e riferimenti verificati
-```
-
-La configurazione può provenire dall'environment locale oppure dalla UI BYOK.
-La chiave inserita nella UI vive soltanto in memoria, viene inviata alla route
-self-hosted in un header dedicato e non entra in `localStorage`, IndexedDB,
-history, body della chat, errori o log. Provider e model possono essere salvati
-come preferenza locale.
-
-La history implementa `ChatHistoryStore` tramite
-`IndexedDbChatHistoryStore`, con schema chiuso, provenance, revision/CAS e
-protezione dai conflitti fra schede.
-
-Il boundary di sicurezza pubblico è:
-
-```text
-browser
-  → route ChatNTC self-hosted su loopback e stessa origine
-  → retrieval locale/server-side
-  → provider esterno configurato dall'utente o dal server
-```
-
-La route applica limiti di dimensione e history, timeout, validazione degli
-input, origin checks ed errori da allowlist. Non implementa autenticazione,
-billing o quote per un servizio SaaS.
-
-La documentazione completa parte da [docs/chatntc-core.md](docs/chatntc-core.md).
-Lo stack Docker di esempio è in [deploy/chatntc/](deploy/chatntc/README.md).
-
-## Semantic retrieval sperimentale
-
-`CHATNTC_SEMANTIC_MODE` accetta `off`, `shadow` e `on`; il default è `off`.
-Con `off` non vengono caricati indice, provider embedding, modello o GPU.
-BGE-M3, il benchmark e gli adapter semantic restano strumenti sperimentali
-opt-in e non sono necessari per il normale funzionamento di ChatNTC.
-
-Vedere [docs/chatntc-semantic-index.md](docs/chatntc-semantic-index.md).
 
 ## Struttura e provenance del corpus
 
@@ -203,7 +140,7 @@ npm --prefix viewer run test:consumer
 `release:verify` valida corpus ed evidence locale, esegue typecheck, lint,
 test e audit, costruisce il package core, ispeziona dry-run e tarball reale e
 prova runtime e tipi in un consumer temporaneo. I comandi viewer verificano il
-secondo tarball e un'applicazione consumer pulita, inclusi gli export ChatNTC.
+secondo tarball e un'applicazione consumer pulita con l'API generica del viewer.
 Nessun comando pubblica automaticamente.
 
 ## Contribuire

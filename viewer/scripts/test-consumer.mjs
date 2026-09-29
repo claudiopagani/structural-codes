@@ -43,17 +43,15 @@ try {
     devDependencies: { typescript: "5.9.3", "@types/node": "22.19.19", "@types/react": "19.2.14", "@types/react-dom": "19.2.3" },
   }, null, 2));
   await writeFile(join(consumer, "app", "layout.tsx"), `import "structural-codes-viewer/styles.css";\nexport default function RootLayout({ children }: { children: React.ReactNode }) { return <html lang="it"><body>{children}</body></html>; }\n`);
-  await writeFile(join(consumer, "app", "chat-client.tsx"), `"use client";
-import { ChatNTCPanel, ChatTransportError, type ChatResult, type ChatTransport } from "structural-codes-viewer/chatntc-ui";
-import { IndexedDbChatHistoryStore, type ChatHistoryStore } from "structural-codes-viewer/chatntc-history";
-const transport = { capabilities: { cancellation: true, streaming: false }, async send(): Promise<ChatResult> { throw new ChatTransportError("NOT_CONFIGURED", "Consumer fixture"); } } satisfies ChatTransport;
-export function PublicChatApiSmoke() { const store: ChatHistoryStore = new IndexedDbChatHistoryStore({ name: "consumer-smoke" }); void store; return <ChatNTCPanel transport={transport} onNavigate={() => {}} hrefForTarget={() => "#"} />; }
+  await writeFile(join(consumer, "app", "viewer-client.tsx"), `"use client";
+import { NormativeViewer, type AuxiliaryPanelContext } from "structural-codes-viewer";
+import { IndexedDbAnnotationStore, type AnnotationStore } from "structural-codes-viewer/annotations";
+const annotationStore: AnnotationStore = new IndexedDbAnnotationStore({ name: "consumer-smoke" });
+function Tools({ context }: { context: AuxiliaryPanelContext }) { return <aside><button onClick={context.close}>Chiudi</button><span>{context.currentUnit?.numbering}</span></aside>; }
+export function PublicViewerApiSmoke() { return <NormativeViewer defaultMode="combined" dataBaseUrl="/data/codes" annotationStore={annotationStore} auxiliaryPanel={(context) => <Tools context={context} />} auxiliaryPanelModes={["ntc", "circ", "combined"]} />; }
 `);
-  await writeFile(join(consumer, "app", "page.tsx"), `import { NormativeViewer } from "structural-codes-viewer";
-import { CHATNTC_DEFAULT_RETRIEVAL } from "structural-codes-viewer/chatntc";
-import { createViewerArtifactRepository } from "structural-codes-viewer/chatntc/viewer-artifacts";
-import { PublicChatApiSmoke } from "./chat-client";
-export default function Page() { void CHATNTC_DEFAULT_RETRIEVAL; void createViewerArtifactRepository; return <><NormativeViewer defaultMode="combined" dataBaseUrl="/data/codes" /><PublicChatApiSmoke /></>; }
+  await writeFile(join(consumer, "app", "page.tsx"), `import { PublicViewerApiSmoke } from "./viewer-client";
+export default function Page() { return <PublicViewerApiSmoke />; }
 `);
   await writeFile(join(consumer, "tsconfig.json"), JSON.stringify({ compilerOptions: { strict: true, jsx: "preserve", module: "esnext", moduleResolution: "bundler", noEmit: true, allowJs: false }, include: ["**/*.ts", "**/*.tsx"] }, null, 2));
   await writeFile(join(consumer, "next.config.mjs"), "export default {};\n");
@@ -61,14 +59,10 @@ export default function Page() { void CHATNTC_DEFAULT_RETRIEVAL; void createView
   npm(["run", "build"], consumer);
   await writeFile(join(consumer, "consumer.mjs"), `
 import assert from "node:assert/strict";
-import { CHATNTC_DEFAULT_RETRIEVAL } from "structural-codes-viewer/chatntc";
-import { createViewerArtifactRepository } from "structural-codes-viewer/chatntc/viewer-artifacts";
-import { ChatTransportError } from "structural-codes-viewer/chatntc-ui";
-import { IndexedDbChatHistoryStore } from "structural-codes-viewer/chatntc-history";
-assert.equal(typeof CHATNTC_DEFAULT_RETRIEVAL.maxPrimaryUnits, "number");
-assert.equal(typeof createViewerArtifactRepository, "function");
-assert.equal(new ChatTransportError("fixture", "fixture").code, "fixture");
-assert.equal(typeof new IndexedDbChatHistoryStore().listConversations, "function");
+import { IndexedDbAnnotationStore } from "structural-codes-viewer/annotations";
+import { resolveDataPath } from "structural-codes-viewer/corpus-data";
+assert.equal(typeof new IndexedDbAnnotationStore().listAnnotations, "function");
+assert.equal(typeof resolveDataPath, "function");
 `);
   const runtime = spawnSync(process.execPath, ["consumer.mjs"], { cwd: consumer, encoding: "utf8", stdio: "inherit" });
   if (runtime.error) throw runtime.error;

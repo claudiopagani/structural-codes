@@ -1,6 +1,6 @@
 {
     "name": "structural-codes",
-    "version": "0.1.0-alpha.2",
+    "version": "0.1.0-alpha.3",
     "description": "Corpus strutturato, versionato e verificabile delle NTC 2018 e della Circolare 7/2019, predisposto per l'uso da applicazioni downstream.",
     "license": "LGPL-2.1-or-later",
     "homepage": "https://github.com/claudiopagani/structural-codes#readme",
@@ -86,7 +86,7 @@
         "build": "npm run build:package",
         "build:package": "node scripts/build-package.mjs",
         "viewer:install": "node scripts/install-viewer-dependencies.mjs",
-        "dev": "npm --prefix viewer run dev:chatntc",
+        "dev": "npm --prefix viewer run dev",
         "viewer:dev": "npm --prefix viewer run dev",
         "viewer:build": "npm --prefix viewer run build",
         "viewer:start": "npm --prefix viewer run start",
