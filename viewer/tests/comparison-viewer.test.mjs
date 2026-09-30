@@ -361,9 +361,8 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\]:hover \{ background: var\(--scv-panel\); \}/);
   assert.match(styles, /\.scv-index-children \{[^}]*grid-template-rows: 0fr[^}]*transition:/);
   assert.match(styles, /\.scv-index-children\.is-open \{[^}]*grid-template-rows: 1fr/);
-  assert.match(styles, /\.scv-index-children-list \{[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
-  assert.match(styles, /\.scv-index-paragraph-list \{[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
-  assert.match(styles, /\.scv-index-subparagraph-list \{[^}]*margin-left: 8px[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
+  assert.match(styles, /\.scv-index-children-list \{[^}]*margin-left: 6px; padding-left: 6px; border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
+  assert.match(styles, /\.scv-index-list button > span \{[^}]*transform: translateY\(1px\)/);
   assert.match(styles, /\.scv-index-subparagraph-list \.scv-index-entry \{[^}]*--scv-index-indent: 0px/);
   assert.doesNotMatch(styles, /\.scv-index-subparagraph-list::before/);
   assert.match(styles, /\.scv-scroll-rail/);

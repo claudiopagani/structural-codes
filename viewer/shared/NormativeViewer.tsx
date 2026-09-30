@@ -33,6 +33,7 @@ import { createCrossReferenceLookup, resolveCrossReference } from "./crossRefere
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
+import { mobileIndexExpansion } from "./indexExpansion.js";
 import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberAnnotationRatios, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
 import { AnnotationContextMenu, AnnotationEditor, AnnotationMarginMarker, type AnnotationEditorState, type AnnotationMenuState, type AnnotationPanelController, type AnnotationPosition, type AnnotationTargetMetadata } from "./annotations/AnnotationUi";
 import { annotationPositionRanks, annotationsForTarget, annotationTargetFromElement, automaticAnnotationLabel, clusterAnnotationMarkers, createLongPressSession, type AnnotationMarker } from "./annotations/annotationTargets";
@@ -778,9 +779,11 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   const chapters = hierarchy[0] ?? [];
   const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
   const subparagraphs = hierarchy[2] ?? emptyNavigationEntries;
+  const numberCharsByLevel = hierarchy.map((entries) => entries.reduce((longest, entry) => Math.max(longest, [...entry.displayNumber].length), 1));
   const activeChapterId = activeLevelIds[0] ?? null;
   const activeParagraphId = activeLevelIds[1] ?? null;
   const activeSubparagraphId = activeLevelIds[2] ?? null;
+  const mobileExpansion = mobileIndexExpansion(activeLevelIds, sidebarExpanded, sidebarSession);
   const paragraphsByChapter = useMemo(() => {
     const grouped = new Map<string, NavigationEntry[]>();
     for (const entry of paragraphs) {
@@ -825,7 +828,7 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
     lastSidebarEntryRef.current = null;
     onSelectUnit(entry.summary);
     onRequestClose();
-  }} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
+  }} title={`${entry.displayNumber} ${entry.summary.title}`} aria-current={active ? "page" : undefined} aria-expanded={expanded} tabIndex={tabIndex}><strong style={{ width: `calc(${numberCharsByLevel[level]}ch + 12px)` }}>{entry.displayNumber}</strong><span>{entry.summary.title}</span></button>;
 
   return <aside id={id} className="scv-index-pane" aria-label="Indice gerarchico" onClickCapture={(event) => {
     if (!(event.target as HTMLElement).closest("[data-index-unit]")) lastSidebarEntryRef.current = null;
@@ -853,14 +856,14 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
         {chapters.map((chapter) => {
           const chapterParagraphs = paragraphsByChapter.get(chapter.summary.id) ?? [];
           const chapterActive = activeChapterId === chapter.summary.id;
-          const chapterOpen = sidebarMode ? sidebarExpanded.session === sidebarSession && sidebarExpanded.chapterId === chapter.summary.id : chapterActive;
+          const chapterOpen = sidebarMode ? mobileExpansion.chapterId === chapter.summary.id : chapterActive;
           return <li className={`scv-index-tree-item scv-index-tree-item-level-0 ${chapterOpen ? "is-open" : ""}`} key={chapter.summary.id}>
             {renderEntryButton(chapter, 0, chapterActive, 0, chapterParagraphs.length > 0 ? chapterOpen : undefined)}
             {chapterParagraphs.length > 0 && <div className={`scv-index-children ${chapterOpen ? "is-open" : ""}`} aria-hidden={!chapterOpen}><div className="scv-index-children-inner"><ul className="scv-index-children-list scv-index-paragraph-list">
               {chapterParagraphs.map((paragraph) => {
                 const paragraphSubparagraphs = subparagraphsByParagraph.get(paragraph.summary.id) ?? [];
                 const paragraphActive = activeParagraphId === paragraph.summary.id;
-                const paragraphOpen = chapterOpen && (sidebarMode ? sidebarExpanded.session === sidebarSession && sidebarExpanded.paragraphId === paragraph.summary.id : paragraphActive);
+                const paragraphOpen = chapterOpen && (sidebarMode ? mobileExpansion.paragraphId === paragraph.summary.id : paragraphActive);
                 return <li className={`scv-index-tree-item scv-index-tree-item-level-1 ${paragraphOpen ? "is-open" : ""}`} key={paragraph.summary.id}>
                   {renderEntryButton(paragraph, 1, paragraphActive, chapterOpen ? 0 : -1, paragraphSubparagraphs.length > 0 ? paragraphOpen : undefined)}
                   {paragraphSubparagraphs.length > 0 && <div className={`scv-index-children ${paragraphOpen ? "is-open" : ""}`} aria-hidden={!paragraphOpen}><div className="scv-index-children-inner"><ul className="scv-index-children-list scv-index-subparagraph-list">
