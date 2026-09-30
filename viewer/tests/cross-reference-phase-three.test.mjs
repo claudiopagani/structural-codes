@@ -64,7 +64,7 @@ test("l'indice derivato risolve target e backlink senza caricare chunk", async (
 });
 
 test("linkificazione, preview e navigazione lazy restano fuori dal documento memoizzato", async () => {
-  const [viewer, content, tools] = await Promise.all([readFile(viewerSourceUrl, "utf8"), readFile(contentSourceUrl, "utf8"), readFile(toolsSourceUrl, "utf8")]);
+  const [viewer, content, tools, styles] = await Promise.all([readFile(viewerSourceUrl, "utf8"), readFile(contentSourceUrl, "utf8"), readFile(toolsSourceUrl, "utf8"), readFile(new URL("../shared/styles.css", import.meta.url), "utf8")]);
   assert.match(content, /findCrossReferences\(value\)/);
   assert.match(content, /className="scv-cross-reference"/);
   assert.match(viewer, /onPointerOver=\{handleDocumentPointerOver\}/);
@@ -77,6 +77,13 @@ test("linkificazione, preview e navigazione lazy restano fuori dal documento mem
   assert.match(tools, /preview\.interactive \? "dialog" : "tooltip"/);
   assert.match(viewer, /lastPointerTypeRef\.current === "touch"/);
   assert.match(viewer, /showReferencePreview\(element, true\)/);
+  assert.match(viewer, /const spaceBelow = Math\.max\(0, window\.innerHeight - bounds\.bottom - 19\)/);
+  assert.match(viewer, /const placement(?:\s*:\s*"above" \| "below")? = spaceBelow >= spaceAbove \? "below" : "above"/);
+  assert.match(viewer, /const top = placement === "below" \? bounds\.bottom \+ 7 : bounds\.top - 7/);
+  assert.match(tools, /preview\.placement === "above" \? "is-above"/);
+  assert.match(styles, /\.scv-reference-preview \{ position: fixed;/);
+  assert.match(styles, /\.scv-reference-preview\.is-above \{ transform: translateY\(-100%\); \}/);
+  assert.doesNotMatch(styles, /\.scv-reference-preview \{ top: auto !important/);
   assert.match(viewer, /scrollViewerTarget\(textPaneRef\.current, target\)/);
   assert.match(viewer, /await revealSummary\(summary/);
   assert.match(viewer, /loadDocumentIndex\(manifest, targetDocument, dataBaseUrl\)/);

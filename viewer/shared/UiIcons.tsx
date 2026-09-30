@@ -8,9 +8,9 @@ type IconName =
   | "scarica" | "carica" | "matita" | "cestino" | "documento-codice"
   | "chiudi" | "ingranaggio" | "menu" | "dischetto-salvataggio"
   | "importa-cerchio" | "esporta-cerchio"
-  | "stella-annotazioni" | "cruscotto-laterale";
+  | "stella-annotazioni" | "cruscotto-laterale" | "collegamento-catena";
 
-interface IconProps { className?: string; variant?: "default" | "light" | "danger" }
+interface IconProps { className?: string; variant?: "default" | "light" | "danger" | "dark" }
 type IconDrawing = (id: string) => ReactNode;
 
 function IconFrame({ name, className, variant = "default", drawing }: IconProps & { name: IconName; drawing: IconDrawing }) {
@@ -55,6 +55,10 @@ export function StickyNoteIcon(props: IconProps) {
 
 export function BookmarkIcon(props: IconProps) {
   return <IconFrame name="segnalibro" {...props} drawing={(id) => <path id={id + "-nastro-segnalibro"} fill="#8fbffa" d="M4 0c-0.39782 0 -0.77936 0.158035 -1.06066 0.43934C2.65804 0.720644 2.5 1.10218 2.5 1.5v12c0 0.2022 0.12182 0.3845 0.30866 0.4619 0.18684 0.0774 0.40189 0.0347 0.54489 -0.1083L7 10.2071l3.6464 3.6465c0.143 0.143 0.3581 0.1857 0.5449 0.1083 0.1869 -0.0774 0.3087 -0.2597 0.3087 -0.4619v-12c0 -0.39783 -0.158 -0.779356 -0.4393 -1.06066C10.7794 0.158035 10.3978 0 10 0H4Z" strokeWidth="1" />} />;
+}
+
+export function LinkChainIcon({ variant = "default", ...props }: IconProps) {
+  return <IconFrame name="collegamento-catena" {...props} variant={variant} drawing={(id) => <path id={id + "-anelli-collegamento"} fill={variant === "dark" ? "#8fbffa" : "#2859c5"} fillRule="evenodd" d="m7.671 2.743 -0.964 0.964a1 1 0 0 1 -1.414 -1.414l0.964 -0.965a4.536 4.536 0 0 1 6.415 6.415l-0.965 0.964a1 1 0 1 1 -1.414 -1.414l0.964 -0.965a2.536 2.536 0 0 0 -3.585 -3.585Zm-3.964 2.55a1 1 0 0 1 0 1.414l-0.964 0.965a2.536 2.536 0 0 0 3.585 3.585l0.965 -0.964a1 1 0 0 1 1.414 1.414l-0.964 0.964a4.536 4.536 0 0 1 -6.415 -6.414l0.965 -0.964a1 1 0 0 1 1.414 0Zm5.5 0.914a1 1 0 0 0 -1.414 -1.414l-3 3a1 1 0 0 0 1.414 1.414l3 -3Z" clipRule="evenodd" strokeWidth="1" />} />;
 }
 
 export function DownloadIcon(props: IconProps) {

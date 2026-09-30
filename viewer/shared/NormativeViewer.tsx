@@ -33,12 +33,12 @@ import { createCrossReferenceLookup, resolveCrossReference } from "./crossRefere
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
 import { targetFromUrl, urlForViewerTarget, type ViewerTarget } from "./permalinks";
 import { isChunkNearRenderedWindow, navigationChunkWindow, progressiveChunkTargetsForVisibleUnit } from "./chunkNavigation.js";
-import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
-import { AnnotationContextMenu, AnnotationEditor, AnnotationMarginMarker, type AnnotationEditorState, type AnnotationMenuState, type AnnotationPanelController, type AnnotationTargetMetadata } from "./annotations/AnnotationUi";
+import { buildGlobalScrubberEntries, createGlobalScrubberDragSession, globalScrubberAnnotationRatios, globalScrubberKeyboardIndex, globalScrubberRatioForId, resolveGlobalScrubberActiveId } from "./globalScrubber.js";
+import { AnnotationContextMenu, AnnotationEditor, AnnotationMarginMarker, type AnnotationEditorState, type AnnotationMenuState, type AnnotationPanelController, type AnnotationPosition, type AnnotationTargetMetadata } from "./annotations/AnnotationUi";
 import { annotationPositionRanks, annotationsForTarget, annotationTargetFromElement, automaticAnnotationLabel, clusterAnnotationMarkers, createLongPressSession, type AnnotationMarker } from "./annotations/annotationTargets";
 import { annotationTargetKey } from "./annotations/schema";
 import type { AnnotationStore, UserAnnotation } from "./annotations/types";
-import { BookmarkIcon, CloseIcon, DashboardIcon, HamburgerIcon, HistoryBackIcon, HistoryForwardIcon, MoonIcon, SearchIcon, SettingsIcon, StickyNoteIcon, SunIcon } from "./UiIcons.js";
+import { BookmarkIcon, CloseIcon, DashboardIcon, HamburgerIcon, HistoryBackIcon, HistoryForwardIcon, MoonIcon, SearchIcon, StickyNoteIcon, SunIcon } from "./UiIcons.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -75,7 +75,7 @@ function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk
   return undefined;
 }
 
-const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument, notesByTarget, onOpenAnnotation }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation) => void }) {
+const ScvBlockFlow = memo(function ScvBlockFlow({ blocks, assets, assetsBaseUrl, sourceUnitId, sourceDocument, notesByTarget, onOpenAnnotation }: { blocks: CorpusUnit["blocks"]; assets: CorpusChunk["assets"]; assetsBaseUrl: string; sourceUnitId: string; sourceDocument: DocumentId; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation, position?: AnnotationPosition) => void }) {
   return <div className="scv-unit-blocks">{groupAlignedLabelBlocks(blocks).map((group) => group.kind === "label-list"
     ? <AlignedLabelList blocks={group.blocks} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} renderAccessory={(block) => <AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey({ kind: "block", unitId: sourceUnitId, blockId: block.blockId })) ?? []} onOpen={onOpenAnnotation} />} key={group.blocks[0].blockId} />
     : <div tabIndex={0} className={scvBlockClass(group.block, sourceUnitId)} data-scv-citation-target={group.block.assetId ? "asset" : "block"} data-scv-source-unit-id={sourceUnitId} data-scv-block-id={group.block.blockId} data-scv-asset-id={group.block.assetId} data-scv-asset-kind={blockAssetKind(group.block, assets)} key={group.block.blockId}><BlockContent block={group.block} assets={assets} assetsBaseUrl={assetsBaseUrl} sourceUnitId={sourceUnitId} sourceDocument={sourceDocument} /><AnnotationMarginMarker notes={notesByTarget.get(annotationTargetKey(group.block.assetId ? { kind: "asset", unitId: sourceUnitId, assetId: group.block.assetId, assetKind: blockAssetKind(group.block, assets) } : { kind: "block", unitId: sourceUnitId, blockId: group.block.blockId })) ?? []} onOpen={onOpenAnnotation} /></div>)}</div>;
@@ -224,9 +224,13 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
 
 function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
   const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
-  const contextBar = root.parentElement?.querySelector<HTMLElement>(".scv-mobile-context");
-  const offset = contextBar && window.getComputedStyle(contextBar).display !== "none"
-    ? Math.max(18, contextBar.getBoundingClientRect().bottom - root.getBoundingClientRect().top + 10) : 18;
+  const rootTop = root.getBoundingClientRect().top;
+  const overlays = Array.from(root.parentElement?.querySelectorAll<HTMLElement>(".scv-mobile-search, .scv-mobile-context") ?? [])
+    .filter((element) => {
+      const style = window.getComputedStyle(element);
+      return style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0;
+    });
+  const offset = Math.max(18, ...overlays.map((element) => element.getBoundingClientRect().bottom - rootTop + 10));
   root.scrollTo({ top: Math.max(0, top - offset), behavior: "auto" });
 }
 
@@ -414,7 +418,7 @@ function unitTitleContent(unit: CorpusUnit) {
   return renderInlineSegments(titleInline);
 }
 
-const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl, notesByTarget, onOpenAnnotation }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation) => void }) {
+const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl, notesByTarget, onOpenAnnotation }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation, position?: AnnotationPosition) => void }) {
   const { unit, chunk } = record;
   const isChapter = depth(unit) === 0;
   const isCircularFallback = mode === "combined" && unit.document === "circ2019";
@@ -438,7 +442,7 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
   hasPrevious: boolean;
   hasNext: boolean;
   notesByTarget: Map<string, UserAnnotation[]>;
-  onOpenAnnotation: (annotation: UserAnnotation) => void;
+  onOpenAnnotation: (annotation: UserAnnotation, position?: AnnotationPosition) => void;
 }) {
   if (records.length === 0) return <LoadingPanel label="Caricamento dei contenuti…" />;
   const version = records[0].chunk.structuralCodesVersion;
@@ -466,11 +470,13 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
   activeId: string | null;
   onSelect: (id: string) => void;
   annotationMarkers: AnnotationMarker[];
-  onAnnotationSelect: (annotation: UserAnnotation) => void;
+  onAnnotationSelect: (annotation: UserAnnotation, position?: AnnotationPosition) => void;
 }) {
   const [interaction, setInteraction] = useState<"idle" | "scrolling" | "hover" | "focus" | "dragging">("idle");
   const [previewEntry, setPreviewEntry] = useState<GlobalScrollEntry | null>(null);
   const [openCluster, setOpenCluster] = useState<string | null>(null);
+  const openClusterTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const openClusterMenuRef = useRef<HTMLDivElement | null>(null);
   const hideTimerRef = useRef<number | null>(null);
   const pointerFrameRef = useRef<number | null>(null);
   const pendingPointerYRef = useRef<number | null>(null);
@@ -506,6 +512,17 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
     clearHideTimer();
     if (pointerFrameRef.current !== null) window.cancelAnimationFrame(pointerFrameRef.current);
   }, [clearHideTimer]);
+
+  useEffect(() => {
+    if (!openCluster) return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (openClusterTriggerRef.current?.contains(target) || openClusterMenuRef.current?.contains(target)) return;
+      setOpenCluster(null);
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePointer, true);
+    return () => document.removeEventListener("pointerdown", closeOnOutsidePointer, true);
+  }, [openCluster]);
 
   if (entries.length < 2 || !activeEntry) return null;
   const previewPointer = (clientY: number) => {
@@ -572,10 +589,16 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
         const id = cluster.markers.map(({ annotation }) => annotation.id).join(":");
         const single = cluster.markers.length === 1 ? cluster.markers[0].annotation : null;
         const type = single?.type ?? "cluster";
-        const label = single ? `${single.type === "bookmark" ? "Segnalibro" : "Nota"}: § ${single.numbering} — ${single.title}` : `${cluster.markers.length} annotazioni vicine`;
+        const typeCounts = cluster.markers.reduce((counts, { annotation }) => {
+          counts[annotation.type] += 1;
+          return counts;
+        }, { bookmark: 0, note: 0 });
+        const clusterTypes = (Object.keys(typeCounts) as Array<keyof typeof typeCounts>).filter((annotationType) => typeCounts[annotationType] > 0);
+        const clusterSummary = [typeCounts.bookmark ? `${typeCounts.bookmark} segnalibri` : "", typeCounts.note ? `${typeCounts.note} note` : ""].filter(Boolean).join(" e ");
+        const label = single ? `${single.type === "bookmark" ? "Segnalibro" : "Nota"}: § ${single.numbering} — ${single.title}` : `${cluster.markers.length} annotazioni vicine: ${clusterSummary}`;
         return <span className="scv-annotation-scrubber-group" style={{ "--scv-annotation-ratio": cluster.ratio } as React.CSSProperties} key={id}>
-          <button type="button" className={`scv-annotation-scrubber-marker is-${type}`} aria-label={label} title={label} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); if (single) onAnnotationSelect(single); else setOpenCluster((current) => current === id ? null : id); }}><span aria-hidden="true">{type === "bookmark" ? <BookmarkIcon className="scv-annotation-scrubber-icon" /> : type === "note" ? <StickyNoteIcon className="scv-annotation-scrubber-icon" /> : cluster.markers.length}</span></button>
-          {!single && openCluster === id && <div className="scv-annotation-cluster-popover" role="menu" aria-label="Annotazioni vicine">{cluster.markers.map(({ annotation }) => <button type="button" role="menuitem" key={annotation.id} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); setOpenCluster(null); onAnnotationSelect(annotation); }}><b aria-hidden="true">{annotation.type === "bookmark" ? <BookmarkIcon className="scv-annotation-cluster-icon" /> : <StickyNoteIcon className="scv-annotation-cluster-icon" />}</b><span>{annotation.type === "bookmark" ? "Segnalibro" : "Nota"} · § {annotation.numbering}</span></button>)}</div>}
+          <button ref={!single && openCluster === id ? openClusterTriggerRef : null} type="button" className={`scv-annotation-scrubber-marker is-${type}`} aria-label={label} title={label} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); if (single) { const bounds = event.currentTarget.getBoundingClientRect(); onAnnotationSelect(single, { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 }); } else setOpenCluster((current) => current === id ? null : id); }}><span aria-hidden="true">{single ? type === "bookmark" ? <BookmarkIcon className="scv-annotation-scrubber-icon" /> : type === "note" ? <StickyNoteIcon className="scv-annotation-scrubber-icon" /> : null : <><span className="scv-annotation-scrubber-types">{clusterTypes.map((annotationType) => annotationType === "bookmark" ? <BookmarkIcon key={annotationType} className="scv-annotation-scrubber-icon" /> : <StickyNoteIcon key={annotationType} className="scv-annotation-scrubber-icon" />)}</span><span className="scv-annotation-scrubber-count">{cluster.markers.length}</span></>}</span></button>
+          {!single && openCluster === id && <div ref={openClusterMenuRef} className="scv-annotation-cluster-popover" role="menu" aria-label="Annotazioni vicine">{cluster.markers.map(({ annotation }) => <button type="button" role="menuitem" key={annotation.id} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); const bounds = event.currentTarget.getBoundingClientRect(); setOpenCluster(null); onAnnotationSelect(annotation, { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 }); }}><b aria-hidden="true">{annotation.type === "bookmark" ? <BookmarkIcon className="scv-annotation-cluster-icon" /> : <StickyNoteIcon className="scv-annotation-cluster-icon" />}</b><span>{annotation.type === "bookmark" ? "Segnalibro" : "Nota"} · § {annotation.numbering}</span></button>)}</div>}
         </span>;
       })}
       <button type="button" className="scv-scroll-thumb" role="slider" aria-label="Posizione nel documento" aria-valuemin={1} aria-valuemax={entries.length} aria-valuenow={(displayedEntry?.index ?? 0) + 1} aria-valuetext={valueText}
@@ -663,6 +686,63 @@ function HighlightedSnippet({ result }: { result: SearchResult }) {
   return <>{parts}</>;
 }
 
+const SearchBox = memo(function SearchBox({ className = "", query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onRequestClose, searchRef }: {
+  className?: string;
+  query: string;
+  onQueryChange: (query: string) => void;
+  searchReady: boolean;
+  searchStatus: "idle" | "loading" | "ready" | "error";
+  searchSource: "exact" | "worker";
+  searchDurationMs: number | null;
+  searchResults: SearchResult[];
+  onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onSearchResult: (result: SearchResult) => void;
+  onRequestClose: () => void;
+  searchRef: RefObject<HTMLInputElement | null>;
+}) {
+  const searchResultsRef = useRef<HTMLDivElement>(null);
+  const [searchEditing, setSearchEditing] = useState(false);
+  const searchResultsId = useId();
+  const focusSearchResult = (position: number) => {
+    const results = [...(searchResultsRef.current?.querySelectorAll<HTMLButtonElement>(".scv-search-result") ?? [])];
+    if (results.length === 0) return;
+    results[(position + results.length) % results.length]?.focus();
+  };
+  const searchResultKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, position: number) => {
+    if (event.key === "ArrowDown") { event.preventDefault(); focusSearchResult(position + 1); }
+    else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (position === 0) searchRef.current?.focus();
+      else focusSearchResult(position - 1);
+    }
+    else if (event.key === "Home") { event.preventDefault(); focusSearchResult(0); }
+    else if (event.key === "End") { event.preventDefault(); focusSearchResult(searchResults.length - 1); }
+    else if (event.key === "Escape") { event.preventDefault(); onQueryChange(""); searchRef.current?.focus(); }
+  };
+
+  return <div className={`scv-search-box ${className} ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
+  }}>
+    <form className="scv-search-form" role="search" onMouseDown={(event) => {
+      if (!(event.target as HTMLElement).closest("button")) searchRef.current?.focus();
+    }} onSubmit={(event) => {
+      onSearchSubmit(event);
+      if (searchResults.length > 0) setSearchEditing(false);
+    }}>
+      <span className="scv-search-icon"><SearchIcon /></span>
+      <input ref={searchRef} type="search" role="combobox" aria-autocomplete="list" value={query} onChange={(event) => onQueryChange(event.target.value)} onKeyDown={(event) => {
+        if (event.key === "Escape" && query) { event.preventDefault(); onQueryChange(""); }
+        else if (event.key === "ArrowDown" && searchResults.length > 0) { event.preventDefault(); focusSearchResult(0); }
+      }} onFocus={() => setSearchEditing(true)} placeholder={searchEditing ? "" : "Cerca nella normativa…"} aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchEditing && searchReady} />
+      {searchEditing && query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca"><CloseIcon /></button>}
+      {!searchEditing && !query && <kbd>/</kbd>}
+    </form>
+    {searchEditing && searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
+      {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { setSearchEditing(false); onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
+    </div>}
+  </div>;
+});
+
 const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hierarchy, activeLevelIds, sidebarMode, sidebarSession, indexReady, query, onQueryChange, searchReady, searchStatus, searchSource, searchDurationMs, searchResults, onSearchSubmit, onSearchResult, onSelectUnit, onRequestClose, onHistoryBack, onHistoryForward, canHistoryBack, canHistoryForward, searchRef, darkMode, onToggleTheme }: {
   id: string;
   mode: ViewerMode;
@@ -692,13 +772,8 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   onToggleTheme: () => void;
 }) {
   const indexListRef = useRef<HTMLDivElement>(null);
-  const searchResultsRef = useRef<HTMLDivElement>(null);
-  const [searchEditing, setSearchEditing] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState<{ session: number; chapterId: string | null; paragraphId: string | null }>({ session: -1, chapterId: null, paragraphId: null });
   const lastSidebarEntryRef = useRef<{ session: number; id: string } | null>(null);
-  const searchResultsId = useId();
-  const settingsId = useId();
   const themeTooltipId = useId();
   const chapters = hierarchy[0] ?? [];
   const paragraphs = hierarchy[1] ?? emptyNavigationEntries;
@@ -737,22 +812,6 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
     return () => window.clearTimeout(timeout);
   }, [activeChapterId, activeParagraphId, activeSubparagraphId]);
 
-  const focusSearchResult = (position: number) => {
-    const results = [...(searchResultsRef.current?.querySelectorAll<HTMLButtonElement>(".scv-search-result") ?? [])];
-    if (results.length === 0) return;
-    results[(position + results.length) % results.length]?.focus();
-  };
-  const searchResultKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, position: number) => {
-    if (event.key === "ArrowDown") { event.preventDefault(); focusSearchResult(position + 1); }
-    else if (event.key === "ArrowUp") {
-      event.preventDefault();
-      if (position === 0) searchRef.current?.focus();
-      else focusSearchResult(position - 1);
-    }
-    else if (event.key === "Home") { event.preventDefault(); focusSearchResult(0); }
-    else if (event.key === "End") { event.preventDefault(); focusSearchResult(searchResults.length - 1); }
-    else if (event.key === "Escape") { event.preventDefault(); onQueryChange(""); searchRef.current?.focus(); }
-  };
   const renderEntryButton = (entry: NavigationEntry, level: number, active: boolean, tabIndex: number, expanded?: boolean) => <button type="button" data-index-unit={entry.summary.id} className={`scv-index-entry scv-index-level-${level} ${active ? "active" : ""}`} onClick={() => {
     if (sidebarMode && expanded !== undefined) {
       if (lastSidebarEntryRef.current?.session !== sidebarSession || lastSidebarEntryRef.current.id !== entry.summary.id) {
@@ -776,29 +835,8 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
         <button type="button" aria-label="Indietro" disabled={!canHistoryBack} onClick={onHistoryBack}><HistoryBackIcon className="scv-history-icon" /></button>
         <button type="button" aria-label="Avanti" disabled={!canHistoryForward} onClick={onHistoryForward}><HistoryForwardIcon className="scv-history-icon" /></button>
       </div>
-      <div className={`scv-search-box ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
-      }}>
-        <form className="scv-search-form" role="search" onMouseDown={(event) => {
-          if (!(event.target as HTMLElement).closest("button")) searchRef.current?.focus();
-        }} onSubmit={(event) => {
-          onSearchSubmit(event);
-          if (searchResults.length > 0) setSearchEditing(false);
-        }}>
-          <span className="scv-search-icon"><SearchIcon /></span>
-          <input ref={searchRef} type="search" role="combobox" aria-autocomplete="list" value={query} onChange={(event) => onQueryChange(event.target.value)} onKeyDown={(event) => {
-            if (event.key === "Escape" && query) { event.preventDefault(); onQueryChange(""); }
-            else if (event.key === "ArrowDown" && searchResults.length > 0) { event.preventDefault(); focusSearchResult(0); }
-          }} onFocus={() => setSearchEditing(true)} placeholder={searchEditing ? "" : "Cerca nella normativa…"} aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchEditing && searchReady} />
-          {searchEditing && query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca"><CloseIcon /></button>}
-          {!searchEditing && !query && <kbd>/</kbd>}
-        </form>
-        {searchEditing && searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
-          {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { setSearchEditing(false); onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
-        </div>}
-      </div>
-      <button type="button" className="scv-index-settings-toggle" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={() => setSettingsOpen((current) => !current)} aria-label="Impostazioni indice"><SettingsIcon /></button>
-      <div id={settingsId} className={`scv-index-settings ${settingsOpen ? "is-open" : ""}`}><div className="scv-index-settings-inner">
+      <SearchBox query={query} onQueryChange={onQueryChange} searchReady={searchReady} searchStatus={searchStatus} searchSource={searchSource} searchDurationMs={searchDurationMs} searchResults={searchResults} onSearchSubmit={onSearchSubmit} onSearchResult={onSearchResult} onRequestClose={onRequestClose} searchRef={searchRef} />
+      <div className="scv-index-controls"><div className="scv-index-controls-inner">
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
       <button type="button" className="scv-theme-button" onClick={onToggleTheme} aria-label={darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"} aria-describedby={themeTooltipId} aria-pressed={darkMode}>
         <span className="scv-theme-icon" aria-hidden="true">{darkMode
@@ -871,6 +909,8 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [mobileIndexSession, setMobileIndexSession] = useState(0);
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(false);
+  const [auxiliaryMounted, setAuxiliaryMounted] = useState(auxiliaryPanelKeepMounted);
+  const [auxiliaryEntered, setAuxiliaryEntered] = useState(false);
   const [annotations, setAnnotations] = useState<UserAnnotation[]>([]);
   const [annotationsLoading, setAnnotationsLoading] = useState(Boolean(annotationStore));
   const [annotationError, setAnnotationError] = useState<string | null>(null);
@@ -878,6 +918,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [annotationEditor, setAnnotationEditor] = useState<AnnotationEditorState | null>(null);
   const [annotationBusy, setAnnotationBusy] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
+  const mobileSearchRef = useRef<HTMLInputElement>(null);
   const mobileIndexButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryButtonRef = useRef<HTMLButtonElement>(null);
   const auxiliaryPaneRef = useRef<HTMLElement>(null);
@@ -950,6 +991,34 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     };
   }, [hasAuxiliary, auxiliaryPanelDefaultVisible, auxiliaryPanelDesktopDefaultVisible]);
 
+  useEffect(() => {
+    let mountFrame: number | null = null;
+    let enterFrame: number | null = null;
+    let unmountTimer: number | null = null;
+    const canRenderPanel = Boolean(manifest && auxiliaryAvailable);
+
+    if (canRenderPanel && (auxiliaryVisible || auxiliaryPanelKeepMounted)) {
+      if (!auxiliaryMounted) {
+        mountFrame = window.requestAnimationFrame(() => {
+          setAuxiliaryMounted(true);
+          if (auxiliaryVisible) enterFrame = window.requestAnimationFrame(() => setAuxiliaryEntered(true));
+        });
+      } else enterFrame = window.requestAnimationFrame(() => setAuxiliaryEntered(auxiliaryVisible));
+    } else {
+      mountFrame = window.requestAnimationFrame(() => {
+        setAuxiliaryEntered(false);
+        if (!canRenderPanel && auxiliaryMounted) setAuxiliaryMounted(false);
+      });
+      if (canRenderPanel && auxiliaryMounted && !auxiliaryPanelKeepMounted) unmountTimer = window.setTimeout(() => setAuxiliaryMounted(false), 520);
+    }
+
+    return () => {
+      if (mountFrame !== null) window.cancelAnimationFrame(mountFrame);
+      if (enterFrame !== null) window.cancelAnimationFrame(enterFrame);
+      if (unmountTimer !== null) window.clearTimeout(unmountTimer);
+    };
+  }, [auxiliaryAvailable, auxiliaryMounted, auxiliaryPanelKeepMounted, auxiliaryVisible, manifest]);
+
   const flashSearchTarget = useCallback((target: ViewerTarget) => {
     const root = textPaneRef.current;
     const element = findViewerTarget(root, target);
@@ -1000,13 +1069,13 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     return grouped;
   }, [annotations]);
 
-  const openAnnotation = useCallback((annotation: UserAnnotation) => {
+  const openAnnotation = useCallback((annotation: UserAnnotation, position?: AnnotationPosition) => {
     setAnnotationMenu(null);
     setAnnotationError(null);
     setAnnotationEditor({ type: annotation.type, target: annotation.target, annotation, metadata: {
       documentId: annotation.documentId, numbering: annotation.numbering, title: annotation.title,
       automaticLabel: annotation.label ?? automaticAnnotationLabel(annotation.target, annotation.numbering, annotation.title),
-    } });
+    }, x: position?.x, y: position?.y });
   }, []);
 
   useEffect(() => {
@@ -1490,19 +1559,22 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     const requestId = ++referencePreviewRequestRef.current;
     const bounds = element.getBoundingClientRect();
     const left = Math.max(12, Math.min(window.innerWidth - 332, bounds.left));
-    const previewHeight = 190;
-    const below = bounds.bottom + 7;
-    const top = Math.max(12, below + previewHeight <= window.innerHeight - 12 ? below : bounds.top - previewHeight - 7);
-    setReferencePreview({ label: element.textContent ?? "Riferimento", title: "", snippet: "", left, top, loading: true, interactive });
+    const spaceBelow = Math.max(0, window.innerHeight - bounds.bottom - 19);
+    const spaceAbove = Math.max(0, bounds.top - 19);
+    const placement: "above" | "below" = spaceBelow >= spaceAbove ? "below" : "above";
+    const maxHeight = Math.min(280, Math.max(48, placement === "below" ? spaceBelow : spaceAbove));
+    const top = placement === "below" ? bounds.bottom + 7 : bounds.top - 7;
+    const position = { left, top, placement, maxHeight };
+    setReferencePreview({ label: element.textContent ?? "Riferimento", title: "", snippet: "", ...position, loading: true, interactive });
     void resolveReferenceElement(element).then((reference) => {
       if (requestId !== referencePreviewRequestRef.current) return;
       if (!reference) {
         element.dataset.scvReferenceResolved = "false";
-        setReferencePreview({ label: element.textContent ?? "Riferimento", title: "Target non disponibile", snippet: "Il riferimento non è stato reso cliccabile perché non è risolto dall’indice derivato.", left, top, interactive, available: false });
+        setReferencePreview({ label: element.textContent ?? "Riferimento", title: "Target non disponibile", snippet: "Il riferimento non è stato reso cliccabile perché non è risolto dall’indice derivato.", ...position, interactive, available: false });
         return;
       }
       element.dataset.scvReferenceResolved = "true";
-      setReferencePreview({ label: referenceLabel(reference), title: reference.asset?.title || reference.unit.title, snippet: reference.asset?.snippet || reference.unit.snippet, left, top, interactive, available: true });
+      setReferencePreview({ label: referenceLabel(reference), title: reference.asset?.title || reference.unit.title, snippet: reference.asset?.snippet || reference.unit.snippet, ...position, interactive, available: true });
     }).catch(() => {
       if (requestId === referencePreviewRequestRef.current) setReferencePreview(null);
     });
@@ -1533,18 +1605,21 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     }, status === "success" ? 1800 : 2400);
   }, []);
 
-  const copyElementPermalink = useCallback((element: HTMLElement) => {
-    const citationElement = element.closest<HTMLElement>("[data-scv-citation-target]");
-    const target = citationElement ? citationSelectionFromElement(citationElement) : null;
-    if (!target) return;
+  const copyTargetPermalink = useCallback((target: ViewerTarget, element: HTMLElement | null) => {
     const targetDocument = documentFromUnitId(target.unitId);
     const linkMode = mode === "combined" || documentForMode(mode) === targetDocument ? mode : targetDocument === "ntc2018" ? "ntc" : "circ";
     const permalink = urlForViewerTarget(window.location.href, linkMode, defaultMode, target).href;
     setCitationSelection(target);
     void writeTextClipboard(permalink)
-      .then(() => showPermalinkNotice(element, "Link copiato negli appunti", "success"))
-      .catch(() => showPermalinkNotice(element, "Copia del link non disponibile", "error"));
+      .then(() => { if (element) showPermalinkNotice(element, "Link copiato negli appunti", "success"); })
+      .catch(() => { if (element) showPermalinkNotice(element, "Copia del link non disponibile", "error"); });
   }, [defaultMode, mode, showPermalinkNotice]);
+
+  const copyElementPermalink = useCallback((element: HTMLElement) => {
+    const citationElement = element.closest<HTMLElement>("[data-scv-citation-target]");
+    const target = citationElement ? citationSelectionFromElement(citationElement) : null;
+    if (target) copyTargetPermalink(target, element);
+  }, [copyTargetPermalink]);
 
   const metadataForAnnotationTarget = useCallback((target: ViewerTarget): AnnotationTargetMetadata | null => {
     const summary = summaryById.get(target.unitId);
@@ -1682,24 +1757,39 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [activeSummary, chapters, paragraphs, subparagraphs]);
   const scrubberEntries = useMemo(() => buildGlobalScrubberEntries(navigationEntries.map(({ summary, displayNumber, baseNumber, level }) => ({ id: summary.id, label: displayNumber, title: summary.title, baseNumber, level })), 2) as GlobalScrollEntry[], [navigationEntries]);
   const scrubberActiveId = resolveGlobalScrubberActiveId(scrubberEntries, activeUnitId, activeSummary ? baseNumbering(activeSummary.numbering.official) : null);
+  const annotationRatios = useMemo(() => globalScrubberAnnotationRatios(navigationEntries.map(({ summary }) => ({ id: summary.id })), scrubberEntries) as Map<string, number>, [navigationEntries, scrubberEntries]);
   const annotationMarkers = useMemo(() => {
     const scrubberById = new Map(scrubberEntries.map((entry) => [entry.id, entry]));
+    const ratioByBase = new Map(navigationEntries.map((entry) => [entry.baseNumber, annotationRatios.get(entry.summary.id)]));
     return annotations.flatMap((annotation): AnnotationMarker[] => {
       if (mode !== "combined" && annotation.documentId !== documentId) return [];
-      let entry = scrubberById.get(annotation.target.unitId);
+      let ratio = annotationRatios.get(annotation.target.unitId);
       const summary = summaryById.get(annotation.target.unitId);
-      if (!entry && mode === "combined" && summary?.document === "circ2019") {
+      if (ratio === undefined && mode === "combined" && summary?.document === "circ2019") {
         const relatedId = relationTargets(summary.id, relations)[0]?.targetUnitId;
-        entry = relatedId ? scrubberById.get(relatedId) : undefined;
-        if (!entry) entry = scrubberEntries.find((candidate) => candidate.baseNumber === baseNumbering(summary.numbering.official));
+        ratio = relatedId ? annotationRatios.get(relatedId) : undefined;
       }
-      return entry ? [{ annotation, ratio: entry.ratio }] : [];
+      const baseNumber = baseNumbering(summary?.numbering.official ?? annotation.numbering);
+      if (ratio === undefined && mode === "combined" && annotation.documentId === "circ2019") ratio = ratioByBase.get(baseNumber);
+      if (ratio === undefined && summary) {
+        const ancestorId = resolveGlobalScrubberActiveId(scrubberEntries, summary.id, baseNumber);
+        ratio = ancestorId ? scrubberById.get(ancestorId)?.ratio : undefined;
+      }
+      return ratio === undefined ? [] : [{ annotation, ratio }];
     });
-  }, [annotations, documentId, mode, relations, scrubberEntries, summaryById]);
+  }, [annotationRatios, annotations, documentId, mode, navigationEntries, relations, scrubberEntries, summaryById]);
 
-  const selectAnnotationMarker = useCallback((annotation: UserAnnotation) => {
-    void navigateViewerTarget(annotation.target, "push").then(() => { if (annotation.type === "note") openAnnotation(annotation); }).catch(() => reportChunkLoadFailure());
-  }, [navigateViewerTarget, openAnnotation, reportChunkLoadFailure]);
+  const closeAuxiliary = useCallback(() => {
+    scrollRequestRef.current = requestedTargetRef.current;
+    setAuxiliaryVisible(false); auxiliaryButtonRef.current?.focus();
+  }, []);
+  const navigateFromAnnotation = useCallback((annotation: UserAnnotation) => {
+    if (auxiliaryVisible && window.matchMedia("(max-width: 991.98px)").matches) closeAuxiliary();
+    return navigateViewerTarget(annotation.target, "push");
+  }, [auxiliaryVisible, closeAuxiliary, navigateViewerTarget]);
+  const selectAnnotationMarker = useCallback((annotation: UserAnnotation, position?: AnnotationPosition) => {
+    void navigateFromAnnotation(annotation).then(() => { if (annotation.type === "note") openAnnotation(annotation, position); }).catch(() => reportChunkLoadFailure());
+  }, [navigateFromAnnotation, openAnnotation, reportChunkLoadFailure]);
 
   const activeRecord = recordById.get(activeUnitId ?? "") ?? null;
   const chunk = activeRecord?.chunk ?? null;
@@ -1733,8 +1823,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       if (event.key === "/" && !editing) {
         event.preventDefault();
         if (window.matchMedia("(max-width: 1399.98px)").matches) setAuxiliaryVisible(false);
-        if (window.matchMedia("(max-width: 991.98px)").matches) { setMobileIndexSession((session) => session + 1); setMobileIndexOpen(true); }
-        window.requestAnimationFrame(() => searchRef.current?.focus());
+        const mobile = window.matchMedia("(max-width: 991.98px)").matches;
+        if (mobile && mobileIndexOpen) closeMobileIndex();
+        window.requestAnimationFrame(() => (mobile ? mobileSearchRef.current : searchRef.current)?.focus());
       }
       if (event.key === "Escape") {
         if (referencePreview?.interactive) clearReferencePreview();
@@ -1760,10 +1851,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const hasNext = Boolean(lookup && primaryPathPositions.length > 0 && Math.max(...primaryPathPositions) < lookup.chunkPaths.length - 1);
   const documentLoading = !index || documentRecords.length === 0;
   const auxiliaryUnit = (citationSelection ? summaryById.get(citationSelection.unitId) : null) ?? activeSummary;
-  const closeAuxiliary = useCallback(() => {
-    scrollRequestRef.current = requestedTargetRef.current;
-    setAuxiliaryVisible(false); auxiliaryButtonRef.current?.focus();
-  }, []);
   const saveAnnotationEditor = useCallback(async (value: string) => {
     if (!annotationStore || !annotationEditor) return;
     setAnnotationBusy(true); setAnnotationError(null);
@@ -1790,12 +1877,12 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const annotationController = useMemo<AnnotationPanelController | undefined>(() => annotationStore ? {
     items: annotations, loading: annotationsLoading, error: annotationError, currentDocumentId: documentId, positionRanks: annotationRanks,
-    navigate: (annotation) => { void navigateViewerTarget(annotation.target, "push").catch(() => reportChunkLoadFailure()); },
+    navigate: (annotation) => { void navigateFromAnnotation(annotation).catch(() => reportChunkLoadFailure()); },
     edit: openAnnotation,
     remove: removeAnnotation,
     exportAnnotations: () => annotationStore.exportAnnotations(),
     importAnnotations: async (value) => { const result = await annotationStore.importAnnotations(value); setAnnotations(await annotationStore.listAnnotations()); setAnnotationError(null); return result; },
-  } : undefined, [annotationError, annotationRanks, annotationStore, annotations, annotationsLoading, documentId, navigateViewerTarget, openAnnotation, removeAnnotation, reportChunkLoadFailure]);
+  } : undefined, [annotationError, annotationRanks, annotationStore, annotations, annotationsLoading, documentId, navigateFromAnnotation, openAnnotation, removeAnnotation, reportChunkLoadFailure]);
   const renderAuxiliary: ReactNode = !manifest || !auxiliaryAvailable ? null : <AuxiliaryContent panel={auxiliaryPanel} context={{ mode, documentId, manifest, chunk, pageBounds,
     currentUnit: auxiliaryUnit ? { documentId: auxiliaryUnit.document, unitId: auxiliaryUnit.id, numbering: auxiliaryUnit.numbering.official } : null,
     selectedTarget: citationSelection?.unitId === auxiliaryUnit?.id ? citationSelection : null,
@@ -1807,15 +1894,16 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${auxiliaryEntered && auxiliaryAvailable ? "scv-auxiliary-entered" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
     <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} onHistoryBack={() => { saveHistoryScroll(); window.history.back(); }} onHistoryForward={() => { saveHistoryScroll(); window.history.forward(); }} canHistoryBack={historyPosition.index > 0} canHistoryForward={historyPosition.index < historyPosition.max} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
         setMobileIndexSession((session) => session + 1);
         setMobileIndexOpen(true);
-        window.requestAnimationFrame(() => searchRef.current?.focus());
+        window.requestAnimationFrame(() => document.getElementById(navigationId)?.querySelector<HTMLButtonElement>(".scv-mode-button[aria-pressed='true']")?.focus({ preventScroll: true }));
       }}><HamburgerIcon /><span className="scv-visually-hidden">Apri indice</span></button>
       {contextSummary && <div className="scv-mobile-context" title={`${contextSummary.numbering.official} ${contextSummary.title}`} aria-label={`Unità attiva: ${contextSummary.numbering.official} ${contextSummary.title}`}><strong>{contextSummary.numbering.official}</strong><span>{contextSummary.title}</span></div>}
+      <SearchBox className="scv-mobile-search" query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onRequestClose={closeMobileIndex} searchRef={mobileSearchRef} />
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();
         else {
@@ -1835,9 +1923,9 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     </div>
     <ReferencePreview preview={referencePreview} onOpen={openPreviewReference} onClose={clearReferencePreview} />
     {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}
-    {annotationMenu && <AnnotationContextMenu state={annotationMenu} onClose={() => setAnnotationMenu(null)} onBookmark={() => { setAnnotationEditor({ type: "bookmark", target: annotationMenu.target, metadata: annotationMenu.metadata, annotation: annotationMenu.bookmark, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} onNote={() => { setAnnotationEditor({ type: "note", target: annotationMenu.target, metadata: annotationMenu.metadata, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} />}
+    {annotationMenu && <AnnotationContextMenu state={annotationMenu} darkMode={Boolean(darkMode)} onCopyLink={(target) => copyTargetPermalink(target, findViewerTarget(textPaneRef.current, target))} onClose={() => setAnnotationMenu(null)} onBookmark={() => { setAnnotationEditor({ type: "bookmark", target: annotationMenu.target, metadata: annotationMenu.metadata, annotation: annotationMenu.bookmark, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} onNote={() => { setAnnotationEditor({ type: "note", target: annotationMenu.target, metadata: annotationMenu.metadata, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} />}
     {annotationEditor && <AnnotationEditor state={annotationEditor} busy={annotationBusy} error={annotationError} onSave={(value) => void saveAnnotationEditor(value)} onDelete={annotationEditor.annotation ? () => void removeAnnotation(annotationEditor.annotation!) : null} onClose={() => { setAnnotationEditor(null); setAnnotationError(null); }} />}
-    {(auxiliaryVisible || auxiliaryPanelKeepMounted) && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
+    {auxiliaryMounted && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
   </div>;
 }
 

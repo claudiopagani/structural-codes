@@ -132,7 +132,7 @@ test("context menu is keyboard usable and closes with Escape or outside pointer"
   const menuState = { target: unitTarget, metadata: { ...base, automaticLabel: "§ 7.3.6.1 — Elementi strutturali" }, x: 10, y: 10 };
   function Harness() {
     const [open, setOpen] = React.useState(true);
-    return open ? React.createElement(AnnotationContextMenu, { state: menuState, onBookmark() {}, onNote() {}, onClose: () => setOpen(false) }) : null;
+    return open ? React.createElement(AnnotationContextMenu, { state: menuState, darkMode: true, onCopyLink(target) { assert.deepEqual(target, unitTarget); }, onBookmark() {}, onNote() {}, onClose: () => setOpen(false) }) : null;
   }
   try {
     await act(() => root.render(React.createElement(Harness, { key: "escape" })));
@@ -141,6 +141,12 @@ test("context menu is keyboard usable and closes with Escape or outside pointer"
     assert.equal(dom.window.document.querySelectorAll("[role='menu']").length, 0);
     await act(() => root.render(React.createElement(Harness, { key: "outside" })));
     await act(() => dom.window.document.querySelector("#outside").dispatchEvent(new dom.window.MouseEvent("pointerdown", { bubbles: true })));
+    assert.equal(dom.window.document.querySelectorAll("[role='menu']").length, 0);
+    await act(() => root.render(React.createElement(Harness, { key: "copy" })));
+    const copyLink = dom.window.document.querySelector("[role='menu'] button");
+    assert.equal(copyLink.textContent, "Copia link");
+    assert.equal(copyLink.querySelector("svg").getAttribute("data-variant"), "dark");
+    await act(() => copyLink.click());
     assert.equal(dom.window.document.querySelectorAll("[role='menu']").length, 0);
   } finally {
     await act(() => root.unmount()); dom.window.close(); Object.assign(globalThis, previous);
@@ -153,17 +159,41 @@ test("viewer wires right click, Escape/outside close, annotation navigation and 
     readFile(new URL("../shared/annotations/AnnotationUi.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
   ]);
+  const icons = await readFile(new URL("../shared/UiIcons.tsx", import.meta.url), "utf8");
   assert.match(viewer, /onContextMenu=\{handleDocumentContextMenu\}/);
   assert.match(viewer, /createLongPressSession/);
   assert.match(viewer, /onPointerMove=\{handleDocumentPointerMove\}/);
   assert.match(ui, /document\.addEventListener\("pointerdown", pointer, true\)/);
   assert.match(ui, /event\.key === "Escape"/);
   assert.match(viewer, /navigateViewerTarget\(annotation\.target, "push"\)/);
+  assert.match(viewer, /if \(auxiliaryVisible && window\.matchMedia\("\(max-width: 991\.98px\)"\)\.matches\) closeAuxiliary\(\)/);
+  assert.match(viewer, /navigate: \(annotation\) => \{ void navigateFromAnnotation\(annotation\)\.catch\(\(\) => reportChunkLoadFailure\(\)\); \}/);
+  assert.match(viewer, /clusterTypes\.map\(\(annotationType\).*StickyNoteIcon/s);
+  assert.match(viewer, /setOpenCluster\(\(current\) => current === id \? null : id\)/);
+  assert.match(viewer, /role="menuitem" key=\{annotation\.id\}[^]*onAnnotationSelect\(annotation, \{ x: bounds\.left \+ bounds\.width \/ 2, y: bounds\.top \+ bounds\.height \/ 2 \}\)/);
   assert.match(styles, /\.scv-auxiliary-pane \{[^}]+border-left: 1px solid var\(--scv-line\)/);
   assert.match(viewer, /type === "bookmark" \? <BookmarkIcon className="scv-annotation-scrubber-icon" \/> : type === "note" \? <StickyNoteIcon className="scv-annotation-scrubber-icon" \/>/);
-  assert.match(ui, /notes\[0\]\.type === "bookmark" \? <BookmarkIcon className="scv-note-margin-icon" \/> : <StickyNoteIcon className="scv-note-margin-icon" \/>/);
+  assert.match(ui, /<LinkChainIcon variant=\{darkMode \? "dark" : "default"\} \/>Copia link/);
+  assert.match(icons, /name="collegamento-catena"/);
+  assert.match(icons, /id=\{id \+ "-anelli-collegamento"\}/);
+  assert.match(viewer, /onCopyLink=\{\(target\) => copyTargetPermalink\(target, findViewerTarget\(textPaneRef\.current, target\)\)\}/);
+  assert.match(ui, /notes\[0\]\.type === "bookmark" \? <BookmarkIcon className="scv-note-margin-icon is-bookmark" \/> : <StickyNoteIcon className="scv-note-margin-icon is-note" \/>/);
+  assert.match(ui, /onPointerDown=\{\(event\) => event\.stopPropagation\(\)\} onClick=\{\(event\) => \{ event\.stopPropagation\(\); const bounds = event\.currentTarget\.getBoundingClientRect\(\); onOpen\(notes\[0\], \{ x: bounds\.left \+ bounds\.width \/ 2, y: bounds\.top \+ bounds\.height \/ 2 \}\); \}\}/);
+  assert.match(ui, /const auxiliaryVisible = window\.matchMedia\("\(min-width: 992px\)"\)\.matches[\s\S]*getBoundingClientRect\(\)\.left - 12/);
+  assert.match(ui, /anchorX - bounds\.width \/ 2/);
+  assert.match(viewer, /openAnnotation\(annotation, position\)/);
+  assert.match(styles, /\.scv-annotation-editor \{ position: fixed; z-index: 91; top: var\(--scv-annotation-editor-y, 12px\); left: var\(--scv-annotation-editor-x, 12px\);[^}]+max-height: calc\(100dvh - 24px\)/);
   assert.match(styles, /\.scv-annotation-scrubber-marker:not\(\.is-cluster\) > span \{[^}]+display: grid[^}]+width: 18px[^}]+height: 18px[^}]+place-items: center/);
   assert.match(styles, /\.scv-annotation-scrubber-icon \{ width: 16px; height: 16px; \}/);
+  assert.match(styles, /\.scv-scroll-rail:not\(\.is-idle\) \.scv-annotation-scrubber-group \{[^}]*opacity: 1; visibility: visible/);
+  assert.match(styles, /\.scv-annotation-scrubber-marker\.is-cluster \.scv-annotation-scrubber-icon \{ width: 11px; height: 11px; \}/);
+  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-annotation-scrubber-marker\):not\(\.scv-note-margin-marker\)/);
+  assert.match(styles, /\.scv-root \.scv-note-margin-icon\.is-bookmark \[fill="#8fbffa"\],[^]*fill: var\(--scv-bookmark\);/);
+  assert.match(styles, /\.scv-root \.scv-annotation-scrubber-marker\.is-note \.scv-annotation-scrubber-icon \[fill="#8fbffa"\],[^]*fill: var\(--scv-note\);/);
+  assert.match(styles, /\.scv-root button\.scv-annotation-scrubber-marker\.is-bookmark:is\(:hover, :focus-visible, :active\) \.scv-annotation-scrubber-icon \[fill="#8fbffa"\],[^]*fill: var\(--scv-bookmark-hover\);/);
+  assert.match(styles, /\.scv-root button\.scv-note-margin-marker:is\(:hover, :focus-visible, :active\) \.scv-note-margin-icon\.is-note \[fill="#8fbffa"\],[^]*fill: var\(--scv-note-hover\);/);
+  assert.match(styles, /@media \(max-width: 991\.98px\) \{[^]*\.scv-root \.scv-note-margin-marker \{ z-index: 9; right: -30px; background: transparent; border: 0; box-shadow: none; \}/);
+  assert.match(styles, /@media \(max-width: 767\.98px\) \{[^]*\.scv-root \.scv-note-margin-marker \{ right: -26px; \}/);
   const markerDerivation = viewer.slice(viewer.indexOf("const annotationMarkers"), viewer.indexOf("const selectAnnotationMarker"));
   assert.doesNotMatch(markerDerivation, /loadChunk|rememberChunk|mountPrimary/);
 });

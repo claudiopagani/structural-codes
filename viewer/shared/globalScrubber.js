@@ -13,6 +13,22 @@ export function buildGlobalScrubberEntries(entries, maximumLevel = Number.POSITI
   }));
 }
 
+export function globalScrubberAnnotationRatios(allEntries, scrubberEntries) {
+  const visibleRatios = new Map(scrubberEntries.map((entry) => [entry.id, entry.ratio]));
+  const visiblePositions = allEntries.flatMap((entry, index) => visibleRatios.has(entry.id) ? [{ index, ratio: visibleRatios.get(entry.id) }] : []);
+  const ratios = new Map();
+  let nextVisible = 0;
+  for (const [index, entry] of allEntries.entries()) {
+    while (nextVisible < visiblePositions.length && visiblePositions[nextVisible].index < index) nextVisible += 1;
+    const previous = visiblePositions[nextVisible - 1] ?? visiblePositions[0];
+    const next = visiblePositions[nextVisible] ?? visiblePositions.at(-1);
+    if (!previous || !next) continue;
+    const span = next.index - previous.index;
+    ratios.set(entry.id, span === 0 ? previous.ratio : previous.ratio + (next.ratio - previous.ratio) * (index - previous.index) / span);
+  }
+  return ratios;
+}
+
 export function globalScrubberEntryAtRatio(entries, ratio) {
   if (entries.length === 0) return null;
   const index = Math.round(clampRatio(ratio) * (entries.length - 1));

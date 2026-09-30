@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   buildGlobalScrubberEntries,
   createGlobalScrubberDragSession,
+  globalScrubberAnnotationRatios,
   globalScrubberEntryAtRatio,
   globalScrubberKeyboardIndex,
   globalScrubberRatioForId,
@@ -46,6 +47,24 @@ test("lo scrubber espone soltanto capitoli, paragrafi e sottoparagrafi", () => {
   assert.deepEqual(globalEntries.map((entry) => entry.id), ["level:0", "level:1", "level:2"]);
   assert.deepEqual(globalEntries.map((entry) => entry.ratio), [0, 0.5, 1]);
   assert.equal(resolveGlobalScrubberActiveId(globalEntries, "level:3", "7.3.6.1"), "level:2");
+});
+
+test("le note su unità più profonde restano sulla scala tra i sottoparagrafi", () => {
+  const allEntries = [
+    { id: "7", baseNumber: "7", level: 0 },
+    { id: "7.4", baseNumber: "7.4", level: 1 },
+    { id: "7.4.1", baseNumber: "7.4.1", level: 2 },
+    { id: "7.4.1.1", baseNumber: "7.4.1.1", level: 3 },
+    { id: "7.4.1.2", baseNumber: "7.4.1.2", level: 3 },
+    { id: "7.4.2", baseNumber: "7.4.2", level: 2 },
+    { id: "7.5", baseNumber: "7.5", level: 1 },
+  ];
+  const scrubberEntries = buildGlobalScrubberEntries(allEntries, 2);
+  const ratios = globalScrubberAnnotationRatios(allEntries, scrubberEntries);
+  assert.equal(ratios.size, allEntries.length);
+  assert.ok(ratios.get("7.4.1") < ratios.get("7.4.1.1"));
+  assert.ok(ratios.get("7.4.1.1") < ratios.get("7.4.1.2"));
+  assert.ok(ratios.get("7.4.1.2") < ratios.get("7.4.2"));
 });
 
 test("un ID Circolare correlato usa la posizione primaria e un ID ignoto non azzera il ratio", () => {

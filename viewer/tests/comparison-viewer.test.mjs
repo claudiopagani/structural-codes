@@ -220,6 +220,36 @@ test("il comparato espone le tre modalità e il tema direttamente nel toolbar", 
   assert.doesNotMatch(source, /type="radio"|analyticalHref|Apri viewer analitico/);
 });
 
+test("su mobile ricerca e comandi occupano la testata corretta, su desktop la barra resta invariata", async () => {
+  const [source, styles] = await Promise.all([
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(source, /const mobileSearchRef = useRef<HTMLInputElement>\(null\)/);
+  assert.match(source, /<SearchBox className="scv-mobile-search"[^]*onSearchResult=\{selectSearchResult\}/);
+  assert.ok(source.indexOf('className="scv-mobile-index-toggle"') < source.indexOf('className="scv-mobile-search"'));
+  assert.ok(source.indexOf('className="scv-mobile-search"') < source.indexOf('className="scv-tools-toggle"'));
+  assert.match(source, /className="scv-index-controls"/);
+  assert.doesNotMatch(source, /scv-index-settings-toggle|SettingsIcon/);
+  assert.match(source, /querySelectorAll<HTMLElement>\("\.scv-mobile-search, \.scv-mobile-context"\)/);
+  assert.match(source, /getBoundingClientRect\(\)\.bottom - rootTop \+ 10/);
+  assert.match(styles, /\.scv-search-toolbar \{[^}]*align-items: center/);
+  assert.match(styles, /\.scv-history-controls \{[^}]*align-items: center/);
+  assert.match(styles, /\.scv-history-controls button \{[^}]*display: grid[^}]*place-items: center/);
+  const mobileStyles = styles.slice(styles.indexOf("/* Mobile first:"), styles.indexOf("@media (max-width: 767.98px)"));
+  assert.match(mobileStyles, /\.scv-search-toolbar > \.scv-search-box:not\(\.scv-mobile-search\) \{ display: none; \}/);
+  assert.match(mobileStyles, /\.scv-mode-switch \{ grid-column: 2; grid-row: 1; width: 100%; min-width: 0; justify-content: center; \}/);
+  assert.match(mobileStyles, /\.scv-root \.scv-theme-button \{ grid-column: 3; grid-row: 1; \}/);
+  assert.match(mobileStyles, /\.scv-root \.scv-mobile-index-close \{ grid-column: 4; grid-row: 1/);
+  assert.match(mobileStyles, /\.scv-mobile-search \{[^}]*right: 8px; left: 60px; display: block/);
+  const desktopStart = styles.indexOf("@media (min-width: 992px)");
+  const desktopStyles = styles.slice(desktopStart, styles.indexOf("@media (min-width: 1400px)", desktopStart));
+  assert.match(desktopStyles, /\.scv-search-box \{ grid-column: auto; grid-row: auto; \}/);
+  assert.match(desktopStyles, /\.scv-search-toolbar > \.scv-search-box:not\(\.scv-mobile-search\) \{ display: block; \}/);
+  assert.match(desktopStyles, /\.scv-mobile-search \{ display: none; \}/);
+  assert.match(desktopStyles, /\.scv-index-controls, \.scv-index-controls-inner \{ display: contents/);
+});
+
 test("combined usa le NTC come base e conserva tutti i contenuti Circolare", async () => {
   const source = await readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8");
   assert.match(source, /loadRelations\(manifest, dataBaseUrl\)/);
@@ -267,6 +297,19 @@ test("le schede principali della sidebar si allineano come linguette sulla riga 
   assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\] \{[^}]*background: var\(--scv-panel\)[^}]*border-bottom-color: var\(--scv-panel\)/);
 });
 
+test("la sidebar destra scorre anche in chiusura e la scrollbar lascia libero il pulsante dashboard", async () => {
+  const [source, styles] = await Promise.all([
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(source, /const \[auxiliaryMounted, setAuxiliaryMounted\]/);
+  assert.match(source, /requestAnimationFrame\(\(\) => setAuxiliaryEntered\(true\)\)/);
+  assert.match(source, /setTimeout\(\(\) => setAuxiliaryMounted\(false\), 520\)/);
+  assert.match(source, /auxiliaryMounted && auxiliaryAvailable && renderAuxiliary/);
+  assert.match(styles, /\.scv-root\.scv-auxiliary-entered \.scv-auxiliary-pane/);
+  assert.match(styles, /\.scv-root\.scv-auxiliary-available:not\(\.scv-has-auxiliary\) \.scv-scroll-rail \{ top: 62px; \}/);
+});
+
 test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", async () => {
   const [source, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
@@ -312,7 +355,7 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-index-list button \{[^}]*width: calc\(100% - 4px\)[^}]*margin: 2px 2px 2px 0/);
   assert.match(styles, /\.scv-index-list button\.active \{[^}]*background: var\(--scv-index-active-bg\)/);
   assert.match(styles, /--scv-button-emphasis-bg: #4f74bf/);
-  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-tools-tab\)[^]*color: #fff;[^]*background: var\(--scv-button-emphasis-bg\);[^]*border-color: transparent/);
+  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-annotation-scrubber-marker\):not\(\.scv-note-margin-marker\):not\(\.scv-tools-tab\)[^]*color: #fff;[^]*background: var\(--scv-button-emphasis-bg\);[^]*border-color: transparent/);
   assert.doesNotMatch(styles, /--scv-button-emphasis-border|border: 1px solid var\(--scv-button-emphasis-border\)/);
   assert.match(styles, /\.scv-search-result:is\(:hover, :focus-visible\) small \{ color: #fff; \}/);
   assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\]:hover \{ background: var\(--scv-panel\); \}/);
@@ -400,8 +443,10 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.table-asset th \{[^}]*background: var\(--scv-button-emphasis-bg\)/);
   assert.match(styles, /\.scv-root \.table-asset td \{ background: #fbfcff; \}/);
   assert.match(styles, /\.scv-root \.table-asset tbody tr:nth-child\(even\) td \{ background: #f1f3f9; \}/);
-  assert.match(styles, /\.scv-root\.scv-dark \.table-asset td \{ background: #202738; \}/);
-  assert.match(styles, /\.scv-root\.scv-dark \.table-asset tbody tr:nth-child\(even\) td \{ background: #293146; \}/);
+  assert.match(styles, /--scv-night-surface: #1e2c40;/);
+  assert.match(styles, /--scv-night-raised: #25364d;/);
+  assert.match(styles, /\.scv-root\.scv-dark \.table-asset td \{ background: var\(--scv-night-surface\); \}/);
+  assert.match(styles, /\.scv-root\.scv-dark \.table-asset tbody tr:nth-child\(even\) td \{ background: var\(--scv-night-raised\); \}/);
   assert.match(styles, /\.scv-root \.table-asset table \{[^}]*color: #2a3039/);
   assert.match(styles, /\.scv-root \.table-asset-c4-1-iv thead tr:nth-child\(2\) th:nth-child\(n \+ 4\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
   assert.match(styles, /\.scv-root \.table-asset-7-8-ii thead tr:first-child th:nth-child\(n \+ 2\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
@@ -419,7 +464,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol\.list-item-without-marker p \{[^}]*grid-template-columns: minmax\(0, 1fr\) max-content/);
   assert.doesNotMatch(styles, /list-item-with-trailing-symbol-tabbed|grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
-  assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: #e0e6f2/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: var\(--scv-night-ink\)/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
   assert.match(styles, /grid-template-columns: auto minmax\(0, 1fr\) auto var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /--scv-index-width: clamp\(380px, 28vw, 480px\)/);

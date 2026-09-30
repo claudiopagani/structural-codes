@@ -20,6 +20,8 @@ export interface ReferencePreviewData {
   snippet: string;
   left: number;
   top: number;
+  placement?: "above" | "below";
+  maxHeight?: number;
   loading?: boolean;
   interactive?: boolean;
   available?: boolean;
@@ -31,7 +33,7 @@ export const ReferencePreview = memo(function ReferencePreview({ preview, onOpen
   onClose?: () => void;
 }) {
   if (!preview) return null;
-  return <aside className={`scv-reference-preview ${preview.interactive ? "is-interactive" : ""}`} role={preview.interactive ? "dialog" : "tooltip"} aria-label={preview.interactive ? "Anteprima riferimento normativo" : undefined} style={{ left: preview.left, top: preview.top }} data-scv-reference-preview>
+  return <aside className={`scv-reference-preview ${preview.placement === "above" ? "is-above" : ""} ${preview.interactive ? "is-interactive" : ""}`} role={preview.interactive ? "dialog" : "tooltip"} aria-label={preview.interactive ? "Anteprima riferimento normativo" : undefined} style={{ left: preview.left, top: preview.top, "--scv-reference-preview-max-height": `${preview.maxHeight ?? 280}px` } as React.CSSProperties} data-scv-reference-preview>
     <span>{preview.label}</span>
     <strong>{preview.title}</strong>
     <small>{preview.loading ? "Caricamento anteprima…" : preview.snippet}</small>

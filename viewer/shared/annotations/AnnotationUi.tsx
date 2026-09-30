@@ -5,7 +5,7 @@ import type { DocumentId } from "../corpusData.js";
 import type { ViewerTarget } from "../permalinks.js";
 import { sortAnnotations } from "./annotationTargets.js";
 import type { AnnotationExport, AnnotationImportResult, AnnotationType, UserAnnotation } from "./types.js";
-import { BookmarkIcon, CloseIcon, DownloadCircleIcon, FloppyDiskIcon, PencilIcon, RecycleBinIcon, StickyNoteIcon, UploadCircleIcon } from "../UiIcons.js";
+import { BookmarkIcon, CloseIcon, DownloadCircleIcon, FloppyDiskIcon, LinkChainIcon, PencilIcon, RecycleBinIcon, StickyNoteIcon, UploadCircleIcon } from "../UiIcons.js";
 
 export interface AnnotationTargetMetadata {
   documentId: DocumentId;
@@ -31,8 +31,15 @@ export interface AnnotationEditorState {
   y?: number;
 }
 
-export function AnnotationContextMenu({ state, onBookmark, onNote, onClose }: {
+export interface AnnotationPosition {
+  x: number;
+  y: number;
+}
+
+export function AnnotationContextMenu({ state, darkMode, onCopyLink, onBookmark, onNote, onClose }: {
   state: AnnotationMenuState;
+  darkMode: boolean;
+  onCopyLink: (target: ViewerTarget) => void;
   onBookmark: () => void;
   onNote: () => void;
   onClose: () => void;
@@ -61,6 +68,7 @@ export function AnnotationContextMenu({ state, onBookmark, onNote, onClose }: {
     return () => { document.removeEventListener("pointerdown", pointer, true); document.removeEventListener("keydown", key); };
   }, [onClose]);
   return <div ref={ref} className="scv-annotation-menu" role="menu" aria-label="Azioni annotazione" style={{ left: position.left, top: position.top }}>
+    <button type="button" role="menuitem" onClick={() => { onCopyLink(state.target); onClose(); }}><LinkChainIcon variant={darkMode ? "dark" : "default"} />Copia link</button>
     <button type="button" role="menuitem" onClick={onBookmark}><BookmarkIcon />{state.bookmark ? "Modifica segnalibro" : "Aggiungi segnalibro"}</button>
     <button type="button" role="menuitem" onClick={onNote}><StickyNoteIcon />Aggiungi nota</button>
   </div>;
@@ -76,8 +84,33 @@ export function AnnotationEditor({ state, busy, error, onSave, onDelete, onClose
 }) {
   const titleId = useId();
   const fieldId = useId();
+  const editorRef = useRef<HTMLDivElement>(null);
   const fieldRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const [position, setPosition] = useState({ left: 12, top: 12 });
   const [value, setValue] = useState(state.type === "bookmark" ? state.annotation?.label ?? state.metadata.automaticLabel : state.annotation?.text ?? "");
+  useLayoutEffect(() => {
+    const element = editorRef.current;
+    if (!element) return;
+    const placeEditor = () => {
+      const bounds = element.getBoundingClientRect();
+      const root = element.closest<HTMLElement>(".scv-root");
+      const auxiliary = root?.querySelector<HTMLElement>(".scv-auxiliary-pane");
+      const auxiliaryVisible = window.matchMedia("(min-width: 992px)").matches
+        && auxiliary
+        && auxiliary.getAttribute("aria-hidden") !== "true"
+        && window.getComputedStyle(auxiliary).visibility !== "hidden";
+      const rightEdge = auxiliaryVisible ? Math.min(window.innerWidth - 12, auxiliary!.getBoundingClientRect().left - 12) : window.innerWidth - 12;
+      const maxLeft = Math.max(12, rightEdge - bounds.width);
+      const anchorX = state.x ?? (12 + rightEdge) / 2;
+      const anchorY = state.y ?? window.innerHeight / 2;
+      const left = Math.max(12, Math.min(anchorX - bounds.width / 2, maxLeft));
+      const top = Math.max(12, Math.min(anchorY - bounds.height / 2, window.innerHeight - bounds.height - 12));
+      setPosition((current) => current.left === left && current.top === top ? current : { left, top });
+    };
+    placeEditor();
+    window.addEventListener("resize", placeEditor);
+    return () => window.removeEventListener("resize", placeEditor);
+  }, [state]);
   useEffect(() => { fieldRef.current?.focus({ preventScroll: true }); }, []);
   useEffect(() => {
     const key = (event: KeyboardEvent) => { if (event.key === "Escape") { event.preventDefault(); onClose(); } };
@@ -85,8 +118,8 @@ export function AnnotationEditor({ state, busy, error, onSave, onDelete, onClose
     return () => document.removeEventListener("keydown", key);
   }, [onClose]);
   const submit = (event: FormEvent) => { event.preventDefault(); onSave(value); };
-  const style = { "--scv-annotation-editor-x": `${state.x ?? window.innerWidth - 32}px`, "--scv-annotation-editor-y": `${state.y ?? 112}px` } as CSSProperties;
-  return <div className="scv-annotation-editor" role="dialog" aria-modal="true" aria-labelledby={titleId} style={style}>
+  const style = { "--scv-annotation-editor-x": `${position.left}px`, "--scv-annotation-editor-y": `${position.top}px` } as CSSProperties;
+  return <div ref={editorRef} className="scv-annotation-editor" role="dialog" aria-modal="true" aria-labelledby={titleId} style={style}>
     <form onSubmit={submit}>
       <header><div><strong id={titleId}>{state.type === "bookmark" ? (state.annotation ? "Modifica segnalibro" : "Nuovo segnalibro") : (state.annotation ? "Modifica nota" : "Nuova nota")}</strong><span>§ {state.metadata.numbering} — {state.metadata.title}</span></div><button type="button" className="scv-annotation-close" aria-label="Chiudi editor" onClick={onClose}><CloseIcon /></button></header>
       <label htmlFor={fieldId}>{state.type === "bookmark" ? "Descrizione" : "Nota"}</label>
@@ -99,9 +132,9 @@ export function AnnotationEditor({ state, busy, error, onSave, onDelete, onClose
   </div>;
 }
 
-export function AnnotationMarginMarker({ notes, onOpen }: { notes: UserAnnotation[]; onOpen: (annotation: UserAnnotation) => void }) {
+export function AnnotationMarginMarker({ notes, onOpen }: { notes: UserAnnotation[]; onOpen: (annotation: UserAnnotation, position?: AnnotationPosition) => void }) {
   if (notes.length === 0) return null;
-  return <button type="button" className="scv-note-margin-marker" aria-label={notes.length === 1 ? (notes[0].type === "bookmark" ? "Apri segnalibro" : "Apri nota") : `Apri ${notes.length} annotazioni`} title={notes.length === 1 ? (notes[0].type === "bookmark" ? "Segnalibro" : "Nota") : `${notes.length} annotazioni`} onClick={(event) => { event.stopPropagation(); onOpen(notes[0]); }}><span aria-hidden="true">{notes[0].type === "bookmark" ? <BookmarkIcon className="scv-note-margin-icon" /> : <StickyNoteIcon className="scv-note-margin-icon" />}</span>{notes.length > 1 && <b>{notes.length}</b>}</button>;
+  return <button type="button" className="scv-note-margin-marker" aria-label={notes.length === 1 ? (notes[0].type === "bookmark" ? "Apri segnalibro" : "Apri nota") : `Apri ${notes.length} annotazioni`} title={notes.length === 1 ? (notes[0].type === "bookmark" ? "Segnalibro" : "Nota") : `${notes.length} annotazioni`} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); const bounds = event.currentTarget.getBoundingClientRect(); onOpen(notes[0], { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 }); }}><span aria-hidden="true">{notes[0].type === "bookmark" ? <BookmarkIcon className="scv-note-margin-icon is-bookmark" /> : <StickyNoteIcon className="scv-note-margin-icon is-note" />}</span>{notes.length > 1 && <b>{notes.length}</b>}</button>;
 }
 
 export interface AnnotationPanelController {
