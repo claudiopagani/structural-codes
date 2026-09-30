@@ -21,7 +21,7 @@ test("renderizza il viewer comparato come unica superficie applicativa", async (
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/iu);
   const html = await response.text();
-  assert.match(html, /<title>Structural Codes — Corpus normativo verificabile<\/title>/iu);
+  assert.match(html, /<title>structural-code<\/title>/iu);
   assert.match(html, /NTC 2018 \+ Circolare/);
   assert.match(html, /Circolare 7\/2019/);
   assert.match(html, /Solo NTC 2018/);
