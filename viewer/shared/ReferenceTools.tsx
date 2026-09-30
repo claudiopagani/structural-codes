@@ -1,5 +1,6 @@
 import { memo } from "react";
 import type { DocumentId, RelationEdge, TextualBacklink } from "./corpusData";
+import { CloseIcon } from "./UiIcons.js";
 
 export interface TextualBacklinkView {
   backlink: TextualBacklink;
@@ -74,7 +75,7 @@ export const BacklinkPanel = memo(function BacklinkPanel({ id, loading, textual,
   onClose: () => void;
 }) {
   return <aside id={id} className="scv-backlink-panel" aria-label="Riferimenti in entrata" data-scv-backlink-panel>
-    <header><strong>Richiami al contenuto corrente</strong><button type="button" onClick={onClose} aria-label="Chiudi richiami">×</button></header>
+    <header><strong>Richiami al contenuto corrente</strong><button type="button" onClick={onClose} aria-label="Chiudi richiami"><CloseIcon /></button></header>
     {loading ? <p>Caricamento riferimenti…</p> : <>
       <section><h3>Riferimenti testuali</h3>{textual.length === 0 ? <p>Nessun richiamo testuale indicizzato.</p> : <ul>{textual.map(({ backlink, document, numbering, title }) => <li key={`${backlink.sourceUnitId}:${backlink.sourceBlockId}`}><button type="button" onClick={() => onNavigateTextual(backlink)}><span>{document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {numbering}</span><strong>{title}</strong></button></li>)}</ul>}</section>
       <section><h3>Relazioni editoriali NTC ↔ Circolare</h3>{editorial.length === 0 ? <p>Nessuna relazione editoriale per questa unità.</p> : <ul>{editorial.map(({ edge, label, title }) => <li key={edge.relationId}><button type="button" onClick={() => onNavigateEditorial(edge)}><span>{edge.type} · {label}</span><strong>{title}</strong></button></li>)}</ul>}</section>

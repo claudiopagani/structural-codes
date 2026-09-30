@@ -254,6 +254,19 @@ test("i fallback Circolare mantengono lo sfondo di provenienza anche senza relaz
   assert.match(styles, /\.scv-root\.scv-dark \.scv-related-unit, \.scv-root\.scv-dark \.scv-circular-fallback/);
 });
 
+test("le schede principali della sidebar si allineano come linguette sulla riga del pannello", async () => {
+  const [source, styles] = await Promise.all([
+    readFile(new URL("../app/ViewerToolsDock.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(source, /className="scv-tools-tabs" role="tablist"/);
+  assert.match(source, /className="scv-tools-tab"[^>]*role="tab"/);
+  assert.match(source, /tab\.id === "annotations" \? <StarIcon \/> : <ScriptIcon \/>/);
+  assert.match(styles, /\.scv-tools-tabs \{[^}]*align-items: flex-end/);
+  assert.match(styles, /\.scv-tools-header \.scv-tools-tab \{[^}]*align-items: center[^}]*gap: 8px[^}]*font-size: 15px/);
+  assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\] \{[^}]*background: var\(--scv-panel\)[^}]*border-bottom-color: var\(--scv-panel\)/);
+});
+
 test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", async () => {
   const [source, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
@@ -292,20 +305,22 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-indent: 0px/);
-  assert.match(styles, /\.scv-index-list \{[^}]*--scv-index-chapter-bg: #3f56a6[^}]*--scv-index-paragraph-bg: #a8bfea[^}]*--scv-index-subparagraph-bg: #c6d3ee/);
-  assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: var\(--scv-index-chapter-bg\)/);
-  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-index-paragraph-bg\)[^}]*--scv-index-active-ink: #101624/);
-  assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: var\(--scv-index-subparagraph-bg\)/);
+  assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
   assert.match(styles, /\.scv-index-list button\.active strong, \.scv-index-list button\.active span \{[^}]*color: var\(--scv-index-active-ink\)/);
-  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-0 \{[^}]*--scv-index-active-ink: #fff/);
-  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-1 \{[^}]*--scv-index-active-ink: #101624/);
-  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-level-2 \{[^}]*--scv-index-active-ink: #101624/);
   assert.match(styles, /\.scv-index-list button \{[^}]*width: calc\(100% - 4px\)[^}]*margin: 2px 2px 2px 0/);
   assert.match(styles, /\.scv-index-list button\.active \{[^}]*background: var\(--scv-index-active-bg\)/);
+  assert.match(styles, /--scv-button-emphasis-bg: #4f74bf/);
+  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-tools-tab\)[^]*color: #fff;[^]*background: var\(--scv-button-emphasis-bg\);[^]*border-color: transparent/);
+  assert.doesNotMatch(styles, /--scv-button-emphasis-border|border: 1px solid var\(--scv-button-emphasis-border\)/);
+  assert.match(styles, /\.scv-search-result:is\(:hover, :focus-visible\) small \{ color: #fff; \}/);
+  assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\]:hover \{ background: var\(--scv-panel\); \}/);
   assert.match(styles, /\.scv-index-children \{[^}]*grid-template-rows: 0fr[^}]*transition:/);
   assert.match(styles, /\.scv-index-children\.is-open \{[^}]*grid-template-rows: 1fr/);
-  assert.match(styles, /\.scv-index-paragraph-list \{[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-index-chapter-bg\)/);
-  assert.match(styles, /\.scv-index-subparagraph-list \{[^}]*margin-left: 8px[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-index-paragraph-bg\)/);
+  assert.match(styles, /\.scv-index-children-list \{[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
+  assert.match(styles, /\.scv-index-paragraph-list \{[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
+  assert.match(styles, /\.scv-index-subparagraph-list \{[^}]*margin-left: 8px[^}]*padding-left: 4px[^}]*border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
   assert.match(styles, /\.scv-index-subparagraph-list \.scv-index-entry \{[^}]*--scv-index-indent: 0px/);
   assert.doesNotMatch(styles, /\.scv-index-subparagraph-list::before/);
   assert.match(styles, /\.scv-scroll-rail/);
@@ -382,6 +397,12 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.formula-number/);
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.table-asset th \.katex \{ color: #fff; \}/);
+  assert.match(styles, /\.scv-root \.table-asset th \{[^}]*background: var\(--scv-button-emphasis-bg\)/);
+  assert.match(styles, /\.scv-root \.table-asset td \{ background: #fbfcff; \}/);
+  assert.match(styles, /\.scv-root \.table-asset tbody tr:nth-child\(even\) td \{ background: #f1f3f9; \}/);
+  assert.match(styles, /\.scv-root\.scv-dark \.table-asset td \{ background: #202738; \}/);
+  assert.match(styles, /\.scv-root\.scv-dark \.table-asset tbody tr:nth-child\(even\) td \{ background: #293146; \}/);
+  assert.match(styles, /\.scv-root \.table-asset table \{[^}]*color: #2a3039/);
   assert.match(styles, /\.scv-root \.table-asset-c4-1-iv thead tr:nth-child\(2\) th:nth-child\(n \+ 4\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
   assert.match(styles, /\.scv-root \.table-asset-7-8-ii thead tr:first-child th:nth-child\(n \+ 2\) \{ font-size: var\(--scv-font-size-12-5\); \}/);
   assert.match(styles, /\.scv-root \.table-asset-7-5-i th, \.scv-root \.table-asset-7-5-i td \{ text-align: center; \}/);
@@ -415,7 +436,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.doesNotMatch(styles, /\.scv-root\.scv-has-auxiliary \{ grid-template-columns:/);
   assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
-  assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: var\(--scv-primary-soft\)/);
+  assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: #fafafa/);
   assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: "Segoe UI"[^}]*font-size: 8px[^}]*font-weight: 700/);
   assert.match(styles, /\.scv-root \.scv-mode-button \.scv-mode-label \{[^}]*transform: scaleY\(1\.35\)/);
   assert.match(styles, /\.scv-search-box \{[^}]*height: var\(--scv-toolbar-button-size\)/);

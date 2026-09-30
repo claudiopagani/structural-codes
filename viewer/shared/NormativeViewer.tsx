@@ -38,6 +38,7 @@ import { AnnotationContextMenu, AnnotationEditor, AnnotationMarginMarker, type A
 import { annotationPositionRanks, annotationsForTarget, annotationTargetFromElement, automaticAnnotationLabel, clusterAnnotationMarkers, createLongPressSession, type AnnotationMarker } from "./annotations/annotationTargets";
 import { annotationTargetKey } from "./annotations/schema";
 import type { AnnotationStore, UserAnnotation } from "./annotations/types";
+import { BookmarkIcon, CloseIcon, DashboardIcon, HamburgerIcon, HistoryBackIcon, HistoryForwardIcon, MoonIcon, SearchIcon, SettingsIcon, StickyNoteIcon, SunIcon } from "./UiIcons.js";
 
 const modeOptions: Array<{ id: ViewerMode; label: string }> = [
   { id: "ntc", label: "Solo NTC 2018" },
@@ -573,8 +574,8 @@ const GlobalDocumentScrubber = memo(function GlobalDocumentScrubber({ rootRef, e
         const type = single?.type ?? "cluster";
         const label = single ? `${single.type === "bookmark" ? "Segnalibro" : "Nota"}: § ${single.numbering} — ${single.title}` : `${cluster.markers.length} annotazioni vicine`;
         return <span className="scv-annotation-scrubber-group" style={{ "--scv-annotation-ratio": cluster.ratio } as React.CSSProperties} key={id}>
-          <button type="button" className={`scv-annotation-scrubber-marker is-${type}`} aria-label={label} title={label} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); if (single) onAnnotationSelect(single); else setOpenCluster((current) => current === id ? null : id); }}><span aria-hidden="true">{type === "bookmark" ? "‹" : type === "note" ? "›" : cluster.markers.length}</span></button>
-          {!single && openCluster === id && <div className="scv-annotation-cluster-popover" role="menu" aria-label="Annotazioni vicine">{cluster.markers.map(({ annotation }) => <button type="button" role="menuitem" key={annotation.id} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); setOpenCluster(null); onAnnotationSelect(annotation); }}><b aria-hidden="true">{annotation.type === "bookmark" ? "‹" : "›"}</b><span>{annotation.type === "bookmark" ? "Segnalibro" : "Nota"} · § {annotation.numbering}</span></button>)}</div>}
+          <button type="button" className={`scv-annotation-scrubber-marker is-${type}`} aria-label={label} title={label} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); if (single) onAnnotationSelect(single); else setOpenCluster((current) => current === id ? null : id); }}><span aria-hidden="true">{type === "bookmark" ? <BookmarkIcon className="scv-annotation-scrubber-icon" /> : type === "note" ? <StickyNoteIcon className="scv-annotation-scrubber-icon" /> : cluster.markers.length}</span></button>
+          {!single && openCluster === id && <div className="scv-annotation-cluster-popover" role="menu" aria-label="Annotazioni vicine">{cluster.markers.map(({ annotation }) => <button type="button" role="menuitem" key={annotation.id} onPointerDown={(event) => event.stopPropagation()} onClick={(event) => { event.stopPropagation(); setOpenCluster(null); onAnnotationSelect(annotation); }}><b aria-hidden="true">{annotation.type === "bookmark" ? <BookmarkIcon className="scv-annotation-cluster-icon" /> : <StickyNoteIcon className="scv-annotation-cluster-icon" />}</b><span>{annotation.type === "bookmark" ? "Segnalibro" : "Nota"} · § {annotation.numbering}</span></button>)}</div>}
         </span>;
       })}
       <button type="button" className="scv-scroll-thumb" role="slider" aria-label="Posizione nel documento" aria-valuemin={1} aria-valuemax={entries.length} aria-valuenow={(displayedEntry?.index ?? 0) + 1} aria-valuetext={valueText}
@@ -772,8 +773,8 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
   }}>
     <div className="scv-search-toolbar">
       <div className="scv-history-controls" role="group" aria-label="Cronologia di navigazione">
-        <button type="button" aria-label="Indietro" disabled={!canHistoryBack} onClick={onHistoryBack}>←</button>
-        <button type="button" aria-label="Avanti" disabled={!canHistoryForward} onClick={onHistoryForward}>→</button>
+        <button type="button" aria-label="Indietro" disabled={!canHistoryBack} onClick={onHistoryBack}><HistoryBackIcon className="scv-history-icon" /></button>
+        <button type="button" aria-label="Avanti" disabled={!canHistoryForward} onClick={onHistoryForward}><HistoryForwardIcon className="scv-history-icon" /></button>
       </div>
       <div className={`scv-search-box ${searchEditing ? "is-editing" : ""}`} onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setSearchEditing(false);
@@ -784,30 +785,30 @@ const NavigationPane = memo(function NavigationPane({ id, mode, onModeChange, hi
           onSearchSubmit(event);
           if (searchResults.length > 0) setSearchEditing(false);
         }}>
-          <span className="scv-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.75" cy="10.75" r="6.75" /><path d="m15.75 15.75 4.25 4.25" /></svg></span>
+          <span className="scv-search-icon"><SearchIcon /></span>
           <input ref={searchRef} type="search" role="combobox" aria-autocomplete="list" value={query} onChange={(event) => onQueryChange(event.target.value)} onKeyDown={(event) => {
             if (event.key === "Escape" && query) { event.preventDefault(); onQueryChange(""); }
             else if (event.key === "ArrowDown" && searchResults.length > 0) { event.preventDefault(); focusSearchResult(0); }
           }} onFocus={() => setSearchEditing(true)} placeholder={searchEditing ? "" : "Cerca nella normativa…"} aria-label="Cerca nella normativa" aria-controls={searchResultsId} aria-expanded={searchEditing && searchReady} />
-          {searchEditing && query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11" /></svg></button>}
+          {searchEditing && query && <button type="button" className="scv-clear-search" onClick={() => onQueryChange("")} aria-label="Cancella ricerca"><CloseIcon /></button>}
           {!searchEditing && !query && <kbd>/</kbd>}
         </form>
         {searchEditing && searchReady && <div id={searchResultsId} ref={searchResultsRef} className="scv-search-results" role="listbox" aria-label="Risultati ricerca" aria-busy={searchStatus === "loading"} data-scv-search-source={searchSource} data-scv-search-duration-ms={searchDurationMs ?? undefined}>
           {searchStatus === "loading" ? <p className="scv-search-status">Ricerca in corso…</p> : searchStatus === "error" ? <p className="scv-search-status">Ricerca non disponibile.</p> : searchResults.length === 0 ? <p className="scv-search-status">Nessun risultato nella modalità corrente.</p> : searchResults.map((result, index) => <button type="button" role="option" aria-selected={false} className="scv-search-result" data-search-match={result.matchKind} key={`${result.id}:${result.blockId ?? ""}:${result.assetId ?? ""}`} onKeyDown={(event) => searchResultKeyDown(event, index)} onClick={() => { setSearchEditing(false); onSearchResult(result); onRequestClose(); }}><span>{result.document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} · {result.numbering}{result.assetKind ? ` · ${result.assetKind === "formula" ? "Formula" : result.assetKind === "table" ? "Tabella" : "Figura"}` : ""}</span><strong>{result.title}</strong><small><HighlightedSnippet result={result} /></small></button>)}
         </div>}
       </div>
-      <button type="button" className="scv-index-settings-toggle" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={() => setSettingsOpen((current) => !current)} aria-label="Impostazioni indice"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /><circle cx="9" cy="7" r="2" /><circle cx="15" cy="12" r="2" /><circle cx="10" cy="17" r="2" /></svg></button>
+      <button type="button" className="scv-index-settings-toggle" aria-controls={settingsId} aria-expanded={settingsOpen} onClick={() => setSettingsOpen((current) => !current)} aria-label="Impostazioni indice"><SettingsIcon /></button>
       <div id={settingsId} className={`scv-index-settings ${settingsOpen ? "is-open" : ""}`}><div className="scv-index-settings-inner">
       <ModeSegmentedControl mode={mode} onChange={onModeChange} />
       <button type="button" className="scv-theme-button" onClick={onToggleTheme} aria-label={darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"} aria-describedby={themeTooltipId} aria-pressed={darkMode}>
         <span className="scv-theme-icon" aria-hidden="true">{darkMode
-          ? <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.75" /><path d="M12 2.25v2.1M12 19.65v2.1M21.75 12h-2.1M4.35 12h-2.1M18.9 5.1l-1.48 1.48M6.58 17.42 5.1 18.9M18.9 18.9l-1.48-1.48M6.58 6.58 5.1 5.1" /></svg>
-          : <svg viewBox="0 0 24 24" fill="none"><path d="M20.2 15.15A8.35 8.35 0 0 1 8.85 3.8 8.36 8.36 0 1 0 20.2 15.15Z" /></svg>}
+          ? <SunIcon />
+          : <MoonIcon />}
         </span>
         <span id={themeTooltipId} className="scv-control-tooltip" role="tooltip">{darkMode ? "Attiva modalità giorno" : "Attiva modalità notte"}</span>
       </button>
       </div></div>
-      <button type="button" className="scv-mobile-index-close" onClick={onRequestClose} aria-label="Chiudi indice">×</button>
+      <button type="button" className="scv-mobile-index-close" onClick={onRequestClose} aria-label="Chiudi indice"><CloseIcon /></button>
     </div>
     <div className="scv-index-grid">
       <section className="scv-index-cell"><header><span>Indice</span></header><div className="scv-index-list" ref={indexListRef}>{!indexReady ? <LoadingRows /> : chapters.length === 0 ? <p className="scv-index-empty">L’indice non è disponibile.</p> : <ul className="scv-index-tree">
@@ -1813,7 +1814,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
         setMobileIndexSession((session) => session + 1);
         setMobileIndexOpen(true);
         window.requestAnimationFrame(() => searchRef.current?.focus());
-      }}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg><span className="scv-visually-hidden">Apri indice</span></button>
+      }}><HamburgerIcon /><span className="scv-visually-hidden">Apri indice</span></button>
       {contextSummary && <div className="scv-mobile-context" title={`${contextSummary.numbering.official} ${contextSummary.title}`} aria-label={`Unità attiva: ${contextSummary.numbering.official} ${contextSummary.title}`}><strong>{contextSummary.numbering.official}</strong><span>{contextSummary.title}</span></div>}
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();
@@ -1825,7 +1826,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
             auxiliaryPaneRef.current?.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
           });
         }
-      }} aria-label={`Apri ${auxiliaryPanelLabel}`}>{auxiliaryPanelButtonText}</button>}
+      }} aria-label={`Apri ${auxiliaryPanelLabel}`}><DashboardIcon /><span className="scv-visually-hidden">{auxiliaryPanelButtonText}</span></button>}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onContextMenu={handleDocumentContextMenu} onKeyDown={handleDocumentKeyDown} onPointerDown={handleDocumentPointerDown} onPointerMove={handleDocumentPointerMove} onPointerUp={cancelDocumentLongPress} onPointerCancel={cancelDocumentLongPress} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
         {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}

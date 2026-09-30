@@ -13,8 +13,8 @@ export function ComparisonViewer() {
   return <NormativeViewer
     defaultMode="combined"
     auxiliaryPanel={(context: AuxiliaryPanelContext) => <ViewerToolsDock context={context} pdfEnabled={localPdfEnabled} />}
-    auxiliaryPanelLabel="Note e strumenti"
-    auxiliaryPanelButtonText="Note"
+    auxiliaryPanelLabel="Annotazioni e strumenti"
+    auxiliaryPanelButtonText="Annotazioni"
     auxiliaryPanelModes={["ntc", "circ", "combined"]}
     auxiliaryPanelDefaultVisible={false}
     auxiliaryPanelDesktopDefaultVisible={false}

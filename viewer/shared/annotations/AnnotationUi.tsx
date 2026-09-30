@@ -5,6 +5,7 @@ import type { DocumentId } from "../corpusData.js";
 import type { ViewerTarget } from "../permalinks.js";
 import { sortAnnotations } from "./annotationTargets.js";
 import type { AnnotationExport, AnnotationImportResult, AnnotationType, UserAnnotation } from "./types.js";
+import { BookmarkIcon, CloseIcon, DownloadCircleIcon, FloppyDiskIcon, PencilIcon, RecycleBinIcon, StickyNoteIcon, UploadCircleIcon } from "../UiIcons.js";
 
 export interface AnnotationTargetMetadata {
   documentId: DocumentId;
@@ -60,8 +61,8 @@ export function AnnotationContextMenu({ state, onBookmark, onNote, onClose }: {
     return () => { document.removeEventListener("pointerdown", pointer, true); document.removeEventListener("keydown", key); };
   }, [onClose]);
   return <div ref={ref} className="scv-annotation-menu" role="menu" aria-label="Azioni annotazione" style={{ left: position.left, top: position.top }}>
-    <button type="button" role="menuitem" onClick={onBookmark}>{state.bookmark ? "Modifica segnalibro" : "Aggiungi segnalibro"}</button>
-    <button type="button" role="menuitem" onClick={onNote}>Aggiungi nota</button>
+    <button type="button" role="menuitem" onClick={onBookmark}><BookmarkIcon />{state.bookmark ? "Modifica segnalibro" : "Aggiungi segnalibro"}</button>
+    <button type="button" role="menuitem" onClick={onNote}><StickyNoteIcon />Aggiungi nota</button>
   </div>;
 }
 
@@ -87,20 +88,20 @@ export function AnnotationEditor({ state, busy, error, onSave, onDelete, onClose
   const style = { "--scv-annotation-editor-x": `${state.x ?? window.innerWidth - 32}px`, "--scv-annotation-editor-y": `${state.y ?? 112}px` } as CSSProperties;
   return <div className="scv-annotation-editor" role="dialog" aria-modal="true" aria-labelledby={titleId} style={style}>
     <form onSubmit={submit}>
-      <header><div><strong id={titleId}>{state.type === "bookmark" ? (state.annotation ? "Modifica segnalibro" : "Nuovo segnalibro") : (state.annotation ? "Modifica nota" : "Nuova nota")}</strong><span>§ {state.metadata.numbering} — {state.metadata.title}</span></div><button type="button" className="scv-annotation-close" aria-label="Chiudi editor" onClick={onClose}>×</button></header>
+      <header><div><strong id={titleId}>{state.type === "bookmark" ? (state.annotation ? "Modifica segnalibro" : "Nuovo segnalibro") : (state.annotation ? "Modifica nota" : "Nuova nota")}</strong><span>§ {state.metadata.numbering} — {state.metadata.title}</span></div><button type="button" className="scv-annotation-close" aria-label="Chiudi editor" onClick={onClose}><CloseIcon /></button></header>
       <label htmlFor={fieldId}>{state.type === "bookmark" ? "Descrizione" : "Nota"}</label>
       {state.type === "bookmark"
         ? <input ref={fieldRef as React.RefObject<HTMLInputElement>} id={fieldId} value={value} maxLength={500} placeholder={state.metadata.automaticLabel} onChange={(event) => setValue(event.target.value)} />
         : <textarea ref={fieldRef as React.RefObject<HTMLTextAreaElement>} id={fieldId} value={value} maxLength={100000} rows={6} onChange={(event) => setValue(event.target.value)} />}
       {error && <p className="scv-annotation-error" role="alert">{error}</p>}
-      <footer>{onDelete && <button type="button" className="is-danger" disabled={busy} onClick={onDelete}>Elimina</button>}<span /><button type="button" disabled={busy} onClick={onClose}>Chiudi</button><button type="submit" className="is-primary" disabled={busy || (state.type === "note" && !value.trim())}>Salva</button></footer>
+      <footer>{onDelete && <button type="button" className="is-danger scv-icon-action" disabled={busy} onClick={onDelete}><RecycleBinIcon variant="danger" />Elimina</button>}<span /><button type="button" disabled={busy} onClick={onClose}>Chiudi</button><button type="submit" className="is-primary scv-icon-action" disabled={busy || (state.type === "note" && !value.trim())}><FloppyDiskIcon variant="light" />Salva</button></footer>
     </form>
   </div>;
 }
 
 export function AnnotationMarginMarker({ notes, onOpen }: { notes: UserAnnotation[]; onOpen: (annotation: UserAnnotation) => void }) {
   if (notes.length === 0) return null;
-  return <button type="button" className="scv-note-margin-marker" aria-label={notes.length === 1 ? "Apri nota" : `Apri ${notes.length} note`} title={notes.length === 1 ? "Nota" : `${notes.length} note`} onClick={(event) => { event.stopPropagation(); onOpen(notes[0]); }}><span aria-hidden="true" />{notes.length > 1 && <b>{notes.length}</b>}</button>;
+  return <button type="button" className="scv-note-margin-marker" aria-label={notes.length === 1 ? (notes[0].type === "bookmark" ? "Apri segnalibro" : "Apri nota") : `Apri ${notes.length} annotazioni`} title={notes.length === 1 ? (notes[0].type === "bookmark" ? "Segnalibro" : "Nota") : `${notes.length} annotazioni`} onClick={(event) => { event.stopPropagation(); onOpen(notes[0]); }}><span aria-hidden="true">{notes[0].type === "bookmark" ? <BookmarkIcon className="scv-note-margin-icon" /> : <StickyNoteIcon className="scv-note-margin-icon" />}</span>{notes.length > 1 && <b>{notes.length}</b>}</button>;
 }
 
 export interface AnnotationPanelController {
@@ -147,22 +148,26 @@ export function AnnotationsPanel({ controller }: { controller: AnnotationPanelCo
     } catch (error) { setNotice(error instanceof Error ? error.message : "File di importazione non valido."); }
     finally { if (fileRef.current) fileRef.current.value = ""; }
   };
-  return <section className="scv-annotations-panel" aria-label="Note e segnalibri">
+  return <section className="scv-annotations-panel" aria-label="Annotazioni e segnalibri">
     <div className="scv-annotations-tabs" role="tablist" aria-label="Tipo annotazione">
-      {(["note", "bookmark"] as const).map((type) => <button type="button" role="tab" id={`${id}-${type}-tab`} aria-controls={`${id}-list`} aria-selected={tab === type} tabIndex={tab === type ? 0 : -1} key={type} onClick={() => setTab(type)}>{type === "note" ? "Note" : "Segnalibri"}</button>)}
+      {(["note", "bookmark"] as const).map((type) => <button type="button" role="tab" id={id + "-" + type + "-tab"} aria-controls={id + "-list"} aria-selected={tab === type} tabIndex={tab === type ? 0 : -1} key={type} onClick={() => setTab(type)}>{type === "note" ? <StickyNoteIcon variant={tab === type ? "light" : "default"} /> : <BookmarkIcon variant={tab === type ? "light" : "default"} />}{type === "note" ? "Note" : "Segnalibri"}</button>)}
     </div>
     <div className="scv-annotations-controls">
-      <label>Ordina per:<select value={order} onChange={(event) => setOrder(event.target.value as typeof order)}><option value="position">Posizione</option><option value="recent">Più recenti</option><option value="oldest">Meno recenti</option></select></label>
+      <label className="scv-annotations-sort"><span>Ordina per:</span><select value={order} onChange={(event) => setOrder(event.target.value as typeof order)}><option value="position">Posizione</option><option value="recent">Più recenti</option><option value="oldest">Meno recenti</option></select></label>
       <label className="scv-annotations-filter"><input type="checkbox" checked={currentOnly} onChange={(event) => setCurrentOnly(event.target.checked)} /> Documento corrente</label>
-      <div><button type="button" onClick={() => void exportFile()}>Esporta</button><button type="button" onClick={() => fileRef.current?.click()}>Importa</button><input ref={fileRef} className="scv-visually-hidden" type="file" accept="application/json,.json" onChange={(event) => void importFile(event.target.files?.[0])} /></div>
     </div>
     {notice && <p className="scv-annotation-notice" role="status">{notice}</p>}
     {controller.error && <p className="scv-annotation-error" role="alert">{controller.error}</p>}
     <div id={`${id}-list`} role="tabpanel" aria-labelledby={`${id}-${tab}-tab`} className="scv-annotations-list">
       {controller.loading ? <p>Caricamento annotazioni…</p> : items.length === 0 ? <p>Nessuna {tab === "note" ? "nota" : "segnalibro"}.</p> : <ul>{items.map((annotation) => <li key={annotation.id}>
         <button type="button" className="scv-annotation-main" onClick={() => controller.navigate(annotation)}><strong>{annotationHeading(annotation)}</strong><span>{annotation.title}</span>{annotation.type === "note" && <small>{annotation.text}</small>}{annotation.type === "bookmark" && annotation.label && <small>{annotation.label}</small>}<time dateTime={annotation.updatedAt}>{new Intl.DateTimeFormat("it-IT", { dateStyle: "medium" }).format(new Date(annotation.updatedAt))}</time></button>
-        <div><button type="button" aria-label={`Modifica ${annotation.type === "note" ? "nota" : "segnalibro"}`} onClick={() => controller.edit(annotation)}>Modifica</button><button type="button" aria-label={`Elimina ${annotation.type === "note" ? "nota" : "segnalibro"}`} onClick={() => { if (window.confirm("Eliminare questa annotazione?")) void controller.remove(annotation); }}>Elimina</button></div>
+        <div><button type="button" className="scv-icon-action" aria-label={`Modifica ${annotation.type === "note" ? "nota" : "segnalibro"}`} onClick={() => controller.edit(annotation)}><PencilIcon />Modifica</button><button type="button" className="scv-icon-action is-danger" aria-label={`Elimina ${annotation.type === "note" ? "nota" : "segnalibro"}`} onClick={() => { if (window.confirm("Eliminare questa annotazione?")) void controller.remove(annotation); }}><RecycleBinIcon variant="danger" />Elimina</button></div>
       </li>)}</ul>}
     </div>
+    <footer className="scv-annotations-actions" aria-label="Importa ed esporta annotazioni">
+      <button type="button" className="scv-icon-action" onClick={() => fileRef.current?.click()}><UploadCircleIcon />Importa</button>
+      <button type="button" className="scv-icon-action" onClick={() => void exportFile()}><DownloadCircleIcon />Esporta</button>
+      <input ref={fileRef} className="scv-visually-hidden" type="file" accept="application/json,.json" onChange={(event) => void importFile(event.target.files?.[0])} />
+    </footer>
   </section>;
 }

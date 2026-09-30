@@ -160,9 +160,43 @@ test("viewer wires right click, Escape/outside close, annotation navigation and 
   assert.match(ui, /event\.key === "Escape"/);
   assert.match(viewer, /navigateViewerTarget\(annotation\.target, "push"\)/);
   assert.match(styles, /\.scv-auxiliary-pane \{[^}]+border-left: 1px solid var\(--scv-line\)/);
-  assert.match(styles, /\.scv-annotation-scrubber-marker:not\(\.is-cluster\) > span \{[^}]+width: 17px[^}]+height: 17px[^}]+border-width: 0 5px 5px 0/);
-  assert.match(styles, /\.scv-annotation-scrubber-marker\.is-bookmark > span \{ transform: rotate\(135deg\); \}/);
-  assert.match(styles, /\.scv-annotation-scrubber-marker\.is-note > span \{ transform: rotate\(-45deg\); \}/);
+  assert.match(viewer, /type === "bookmark" \? <BookmarkIcon className="scv-annotation-scrubber-icon" \/> : type === "note" \? <StickyNoteIcon className="scv-annotation-scrubber-icon" \/>/);
+  assert.match(ui, /notes\[0\]\.type === "bookmark" \? <BookmarkIcon className="scv-note-margin-icon" \/> : <StickyNoteIcon className="scv-note-margin-icon" \/>/);
+  assert.match(styles, /\.scv-annotation-scrubber-marker:not\(\.is-cluster\) > span \{[^}]+display: grid[^}]+width: 18px[^}]+height: 18px[^}]+place-items: center/);
+  assert.match(styles, /\.scv-annotation-scrubber-icon \{ width: 16px; height: 16px; \}/);
   const markerDerivation = viewer.slice(viewer.indexOf("const annotationMarkers"), viewer.indexOf("const selectAnnotationMarker"));
   assert.doesNotMatch(markerDerivation, /loadChunk|rememberChunk|mountPrimary/);
+});
+
+test("le azioni Importa/Esporta chiudono il pannello e i comandi delle card sono centrati", async () => {
+  const [ui, styles] = await Promise.all([
+    readFile(new URL("../shared/annotations/AnnotationUi.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(ui, /className="scv-annotations-sort"><span>Ordina per:<\/span><select/);
+  assert.match(ui, /className="scv-annotations-filter"><input type="checkbox"/);
+  const actionsStart = ui.indexOf('<footer className="scv-annotations-actions"');
+  const actions = ui.slice(actionsStart, ui.indexOf("</footer>", actionsStart));
+  assert.ok(actions.indexOf(">Importa</button>") < actions.indexOf(">Esporta</button>"));
+  assert.match(styles, /\.scv-annotations-panel \{ display: flex; flex-direction: column/);
+  assert.match(styles, /\.scv-annotations-controls \{ display: flex;[^}]*flex-wrap: wrap/);
+  assert.match(styles, /\.scv-annotations-actions \{[^}]*border-top: 1px solid var\(--scv-line\)/);
+  assert.match(styles, /\.scv-annotations-list li > div \{[^}]*align-self: center/);
+  assert.match(styles, /\.scv-annotations-panel button\.is-danger \{ background: #fafafa; \}/);
+});
+
+test("le icone circolari di importazione ed esportazione usano ID italiani e colori chiari sui fondi scuri", async () => {
+  const [icons, ui, styles] = await Promise.all([
+    readFile(new URL("../shared/UiIcons.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/annotations/AnnotationUi.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(ui, /<UploadCircleIcon \/>Importa/);
+  assert.match(ui, /<DownloadCircleIcon \/>Esporta/);
+  assert.match(icons, /name="importa-cerchio"/);
+  assert.match(icons, /name="esporta-cerchio"/);
+  assert.match(icons, /-freccia-importazione/);
+  assert.match(icons, /-freccia-esportazione/);
+  assert.match(styles, /\.scv-icon\[data-variant="light"\] \[fill="#8fbffa"\] \{ fill: #f9fbff; \}/);
+  assert.match(styles, /\.scv-icon\[data-variant="light"\] \[fill="#2859c5"\] \{ fill: #ccdcf5; \}/);
 });

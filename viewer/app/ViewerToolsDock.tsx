@@ -4,6 +4,7 @@ import { useId, useState, type KeyboardEvent } from "react";
 import type { AuxiliaryPanelContext } from "../shared/NormativeViewer";
 import { OfficialPdfPanel } from "./OfficialPdfPanel";
 import { AnnotationsPanel } from "../shared/annotations/AnnotationUi";
+import { CloseIcon, ScriptIcon, StarIcon } from "../shared/UiIcons";
 
 export function ViewerToolsDock({ context, pdfEnabled }: {
   context: AuxiliaryPanelContext;
@@ -11,7 +12,7 @@ export function ViewerToolsDock({ context, pdfEnabled }: {
 }) {
   const id = useId();
   const tabs = [
-    ...(context.annotations ? [{ id: "annotations", label: "Note" }] : []),
+    ...(context.annotations ? [{ id: "annotations", label: "Annotazioni" }] : []),
     ...(pdfEnabled ? [{ id: "pdf", label: "PDF ufficiale" }] : []),
   ];
   const [selected, setSelected] = useState("annotations");
@@ -29,7 +30,7 @@ export function ViewerToolsDock({ context, pdfEnabled }: {
   }
   if (!tabs.length) return null;
   return <div className="scv-tools-dock">
-    <header className="scv-tools-header"><div role="tablist" aria-label="Strumenti normativi">{tabs.map((tab, index) => <button type="button" key={tab.id} id={`${id}-${tab.id}-tab`} role="tab" aria-controls={`${id}-${tab.id}-panel`} aria-selected={active === tab.id} tabIndex={active === tab.id ? 0 : -1} onClick={() => setSelected(tab.id)} onKeyDown={(event) => tabKey(event, index)}>{tab.label}</button>)}</div><button className="scv-tools-close" type="button" aria-label="Chiudi strumenti" onClick={context.close}><svg className="scv-tools-close-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19" /></svg></button></header>
+    <header className="scv-tools-header"><div className="scv-tools-tabs" role="tablist" aria-label="Strumenti normativi">{tabs.map((tab, index) => <button className="scv-tools-tab" type="button" key={tab.id} id={`${id}-${tab.id}-tab`} role="tab" aria-controls={`${id}-${tab.id}-panel`} aria-selected={active === tab.id} tabIndex={active === tab.id ? 0 : -1} onClick={() => setSelected(tab.id)} onKeyDown={(event) => tabKey(event, index)}>{tab.id === "annotations" ? <StarIcon /> : <ScriptIcon />}{tab.label}</button>)}</div><button className="scv-tools-close" type="button" aria-label="Chiudi strumenti" onClick={context.close}><CloseIcon className="scv-tools-close-icon" /></button></header>
     {context.annotations && <div id={`${id}-annotations-panel`} role="tabpanel" aria-labelledby={`${id}-annotations-tab`} hidden={active !== "annotations"} className="scv-tool-content"><AnnotationsPanel controller={context.annotations} /></div>}
     {pdfEnabled && <div id={`${id}-pdf-panel`} role="tabpanel" aria-labelledby={`${id}-pdf-tab`} hidden={active !== "pdf"} className="scv-tool-content"><OfficialPdfPanel key={context.documentId} context={context} /></div>}
   </div>;
