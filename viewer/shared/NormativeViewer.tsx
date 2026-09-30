@@ -11,6 +11,7 @@ import {
   loadDocumentIndex,
   loadManifest,
   loadRelations,
+  viewerDocumentSummary,
   type CorpusChunk,
   type CorpusManifest,
   type CorpusUnit,
@@ -449,7 +450,7 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
   const version = records[0].chunk.structuralCodesVersion;
   return <div className="scv-text-flow">
     {hasPrevious && <div className="scv-progressive-edge" aria-hidden="true" />}
-    <p className="scv-chunk-note">Documento continuo · {documentLabel} · {documentUnits} unità · {documentChunks} chunk · structural-codes {version}</p>
+    <p className="scv-chunk-note">{documentLabel} · {documentUnits} unità · {documentChunks} chunk · structural-codes {version}</p>
     {records.map((record) => <MemoizedUnit record={record} mode={mode} relatedRecords={relatedByTarget.get(record.unit.id) ?? emptyRelatedRecords} assetsBaseUrl={assetsBaseUrl} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} key={record.unit.id} />)}
     {hasNext ? <div className="scv-progressive-edge" aria-hidden="true" /> : <div className="scv-end-note">Fine del documento.</div>}
   </div>;
@@ -1179,6 +1180,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   const index = indexes.get(documentId) ?? null;
   const circIndex = indexes.get("circ2019") ?? null;
+  const readingSummary = useMemo(() => manifest ? viewerDocumentSummary(manifest, mode) : null, [manifest, mode]);
   const lookup = useMemo(() => index ? createDocumentLookup(index) : null, [index]);
   const circLookup = useMemo(() => circIndex ? createDocumentLookup(circIndex) : null, [circIndex]);
   const crossReferenceLookup = useMemo(() => crossReferenceIndex ? createCrossReferenceLookup(crossReferenceIndex) as CrossReferenceLookup : null, [crossReferenceIndex]);
@@ -1920,7 +1922,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       }} aria-label={`Apri ${auxiliaryPanelLabel}`}><DashboardIcon /><span className="scv-visually-hidden">{auxiliaryPanelButtonText}</span></button>}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onContextMenu={handleDocumentContextMenu} onKeyDown={handleDocumentKeyDown} onPointerDown={handleDocumentPointerDown} onPointerMove={handleDocumentPointerMove} onPointerUp={cancelDocumentLongPress} onPointerCancel={cancelDocumentLongPress} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
-        {documentLoading || !index || !lookup ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={documentId === "ntc2018" ? "NTC 2018" : "Circolare 7/2019"} documentUnits={index.units.length} documentChunks={lookup.chunkPaths.length} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}
+        {documentLoading || !index || !lookup || !readingSummary ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={readingSummary.label} documentUnits={readingSummary.units} documentChunks={readingSummary.chunks} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}
       </article>
       <GlobalDocumentScrubber rootRef={textPaneRef} entries={scrubberEntries} activeId={scrubberActiveId} onSelect={selectScrollMarker} annotationMarkers={annotationMarkers} onAnnotationSelect={selectAnnotationMarker} />
     </div>

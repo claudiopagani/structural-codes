@@ -344,6 +344,17 @@ export function cachedJsonPaths() {
 export function documentForMode(mode: ViewerMode): DocumentId {
   return mode === "circ" ? "circ2019" : "ntc2018";
 }
+export function viewerDocumentSummary(manifest: CorpusManifest, mode: ViewerMode) {
+  if (mode === "combined") {
+    return { label: "NTC 2018 + Circolare 7/2019", units: manifest.stats.units, chunks: manifest.stats.chunks };
+  }
+  const document = documentForMode(mode);
+  return {
+    label: document === "ntc2018" ? "NTC 2018" : "Circolare 7/2019",
+    units: manifest.documents[document].units,
+    chunks: manifest.chunks.filter((chunk) => chunk.document === document).length,
+  };
+}
 export function loadManifest(dataBaseUrl = "/data/codes") {
   return fetchJson<CorpusManifest>(resolveDataPath("/data/codes/manifest.json", dataBaseUrl));
 }

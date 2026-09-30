@@ -16,7 +16,7 @@ export function visibleTableCaption(officialNumber, caption) {
 
 export function visibleTableCaptionInline(officialNumber, caption, inline) {
   if (!inline || !caption || !officialNumber) return inline;
-  const prefix = caption.match(tableCaptionPrefix(officialNumber))?.[0] ?? "";
+  const prefix = inline.map((segment) => segment.value).join("").match(tableCaptionPrefix(officialNumber))?.[0] ?? "";
   let remaining = prefix.length;
   return inline.flatMap((segment) => {
     if (remaining === 0) return [segment];
