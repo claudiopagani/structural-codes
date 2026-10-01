@@ -492,7 +492,8 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /loading="lazy"/);
   assert.doesNotMatch(component, /variant: "scv" \| "legacy"|UnitBlocks|normative-copy/);
   assert.match(styles, /--scv-primary:\s*#3c52a3/iu);
-  assert.match(styles, /font-family:\s*"Tinos"/);
+  assert.match(styles, /--scv-font-normative: "Tinos", serif;/);
+  assert.match(styles, /--scv-font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;/);
   assert.match(styles, /\.scv-root \.formula-number/);
   assert.match(styles, /\.scv-root \.table-asset table/);
   assert.match(styles, /\.scv-root \.table-asset th \.katex \{ color: #fff; \}/);
@@ -534,7 +535,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-text-flow \{ width: min\(100%, 860px\);[^}]*padding: 23px 58px 55vh/);
   assert.match(styles, /aspect-ratio: 1/);
   assert.match(styles, /\.scv-root \.scv-theme-button, \.scv-root \.scv-mode-button \{[^}]*height: var\(--scv-toolbar-button-size\)[^}]*background: #fafafa/);
-  assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: "Segoe UI"[^}]*font-size: 8px[^}]*font-weight: 700/);
+  assert.match(styles, /\.scv-root \.scv-mode-switch \.scv-mode-button \{[^}]*font-family: var\(--scv-font-ui\)[^}]*font-size: 8px[^}]*font-weight: 700/);
   assert.match(styles, /\.scv-root \.scv-mode-button \.scv-mode-label \{[^}]*transform: scaleY\(1\.35\)/);
   assert.match(styles, /\.scv-search-box \{[^}]*height: var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /\.scv-theme-button:hover \.scv-theme-icon[^}]*transform: rotate\(-12deg\) scale\(1\.08\)/);
@@ -583,4 +584,29 @@ test("le didascalie mantengono la numerazione ufficiale senza duplicarla", () =>
   assert.equal(visibleTableCaption("C2.4.I", "Tabella C2.4.I – Intervalli di valori attribuiti a VR"), "Intervalli di valori attribuiti a VR");
   assert.equal(visibleTableNumberSuffix("11.3.VI b", "Tab. 11.3.VI b)"), ")");
   assert.equal(visibleTableNumberSuffix("C11.3.4.11.2.I", "Tabella C11.3.4.11.2.I"), "");
+});
+
+test("il viewer usa solo le famiglie normativa e UI, lasciando a KaTeX i propri font", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  const families = [...new Set([...styles.matchAll(/font-family:\s*([^;]+);/gu)].map((match) => match[1].replace(/\s*!important$/u, "").trim()))].sort();
+  assert.deepEqual(families, ["var(--scv-font-normative)", "var(--scv-font-ui)"]);
+  assert.match(styles, /^@import "katex\/dist\/katex\.min\.css";/u);
+  assert.match(styles, /--scv-font-normative: "Tinos", serif;/u);
+  assert.match(styles, /--scv-font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;/u);
+
+  const familyFor = (selector) => {
+    const marker = `${selector} {`;
+    let start = -1;
+    while ((start = styles.indexOf(marker, start + 1)) !== -1) {
+      const family = styles.slice(start + marker.length, styles.indexOf("}", start)).match(/font-family:\s*([^;]+);/u)?.[1];
+      if (family) return family;
+    }
+    assert.fail(`Nessuna famiglia dichiarata per ${selector}`);
+  };
+  for (const selector of [".scv-block p", ".scv-root .table-asset table", ".scv-root .table-notes", ".scv-root .figure-asset figcaption"]) {
+    assert.equal(familyFor(selector), "var(--scv-font-normative)", selector);
+  }
+  for (const selector of [".scv-root", ".scv-search-result strong", ".scv-index-list button > strong", ".scv-annotation-main span", ".scv-loading, .scv-fatal"]) {
+    assert.equal(familyFor(selector), "var(--scv-font-ui)", selector);
+  }
 });
