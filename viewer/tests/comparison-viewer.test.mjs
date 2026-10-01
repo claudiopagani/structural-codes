@@ -106,7 +106,7 @@ test("un’intera voce in grassetto non viene scambiata per una sigla finale", a
   assert.equal(siglaUnit.blocks.filter(hasTrailingStrong).length, 3);
 });
 
-test("la copia figura usa l’SVG richiesto con ID italiani unici e hover sull’immagine", async () => {
+test("la copia figura usa l’SVG richiesto con ID italiani unici e hover sull’intero riquadro", async () => {
   const manifest = JSON.parse(await readFile(new URL("../../corpus/assets/ntc2018/4.1.json", import.meta.url), "utf8"));
   const figure = manifest.figures[0];
   const assets = { figures: { [figure.id]: figure }, formulas: {}, tables: {} };
@@ -126,8 +126,8 @@ test("la copia figura usa l’SVG richiesto con ID italiani unici e hover sull�
   ]);
   const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
   assert.match(styles, /\.scv-copy-asset \{[^}]*opacity: 0; pointer-events: none;/);
-  assert.match(styles, /:has\(> img:hover\) \.scv-copy-asset[^}]*opacity: 1; pointer-events: auto;/);
-  assert.doesNotMatch(styles, /\.scv-copyable-asset:(?:hover|focus-within)/);
+  assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset[^}]*opacity: 1; pointer-events: auto;/);
+  assert.doesNotMatch(styles, /:has\(> img:hover\)/);
   assert.doesNotMatch(styles, /\.scv-copy-asset \{[^}]*opacity: 1/);
   assert.match(styles, /\.scv-copy-asset:hover[^}]*box-shadow:/);
   assert.match(styles, /\.scv-root\.scv-dark \.scv-copy-asset \{[^}]*background:/);
@@ -539,7 +539,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-search-box \{[^}]*height: var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /\.scv-theme-button:hover \.scv-theme-icon[^}]*transform: rotate\(-12deg\) scale\(1\.08\)/);
   assert.match(styles, /\.scv-theme-button:hover \.scv-control-tooltip[^}]*opacity: 1/);
-  assert.match(styles, /\.scv-copyable-asset:has\(> img:hover\) \.scv-copy-asset/);
+  assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset/);
   assert.match(styles, /\.scv-root\.scv-dark/);
   assert.match(styles, /\.scv-root \.inline-math \{[^}]*display: inline-block[^}]*font-size: 1\.04em[^}]*vertical-align: baseline/);
   assert.doesNotMatch(styles, /\.scv-root \.inline-math \{[^}]*(?:overflow|vertical-align: middle)/);

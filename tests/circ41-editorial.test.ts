@@ -330,6 +330,22 @@ test("Le didascalie e le intestazioni finali C4.1 mantengono gerarchia e matemat
     );
 });
 
+test("C4.1.6.1.3 rende in KaTeX entrambe le occorrenze di Cmin", async () => {
+    const unit = await json("corpus/units/circ2019/c4.1.6.1.3.json");
+    const paragraphs = unit.blocks.filter(
+        ({ kind, text }: { kind: string; text?: { normalized: string } }) =>
+            kind === "paragraph" && text?.normalized.includes("Cmin"),
+    );
+    assert.equal(paragraphs.length, 2);
+    for (const paragraph of paragraphs) {
+        assert.equal(paragraph.text.inline.map(({ value }: { value: string }) => value).join(""), paragraph.text.normalized);
+        assert.deepEqual(
+            paragraph.text.inline.filter(({ kind }: { kind: string }) => kind === "math").map(({ latex }: { latex: string }) => latex),
+            ["C_{min}"],
+        );
+    }
+});
+
 test("ogni asset C4.1 compare una sola volta nel flusso editoriale", async () => {
     const directory = join(repoRoot, "corpus", "units", "circ2019");
     const files = (await readdir(directory)).filter(

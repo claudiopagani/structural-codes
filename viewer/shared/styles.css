@@ -334,7 +334,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root .scv-copy-asset { position: absolute; z-index: 2; top: 7px; right: 7px; display: grid; width: 30px; height: 30px; place-items: center; padding: 0; color: var(--scv-primary-dark); background: rgb(255 255 255 / 94%); border: 1px solid #cbd5e6; border-radius: 8px; box-shadow: 0 4px 12px rgb(31 43 76 / 14%); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(-3px); transition: color .18s ease, opacity .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease; }
 .scv-root .scv-copy-asset svg { width: 18px; height: 18px; overflow: visible; fill: none; stroke: currentcolor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .scv-root .scv-copy-asset svg.scv-icon { stroke: none; }
-.scv-root .scv-copyable-asset:has(> img:hover) .scv-copy-asset, .scv-root .scv-copy-asset:is(:hover, :focus-visible) { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.scv-root .scv-copyable-asset:hover .scv-copy-asset, .scv-root .scv-copy-asset:is(:hover, :focus-visible) { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .scv-root .scv-copy-asset:hover, .scv-root .scv-copy-asset:focus-visible { color: #fff; background: var(--scv-button-emphasis-bg); box-shadow: 0 4px 12px rgb(31 54 116 / 15%); transform: translateY(-1px); }
 .scv-root .scv-copy-asset-copied { color: #fff !important; background: #3e8d68 !important; }
 .scv-root .scv-copy-asset-error { color: #fff !important; background: #a64b43 !important; }
@@ -386,6 +386,9 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root .table-asset tbody tr:nth-child(even) td { background: #f1f3f9; }
 .scv-root .table-asset .table-cell-shade-gray { background: #d9d9d9 !important; }
 .scv-root .table-asset-c4-1-iv thead tr:nth-child(2) th:nth-child(n + 4) { font-size: var(--scv-font-size-12-5); }
+.scv-root .table-asset-c4-1-iv thead tr:nth-child(2) th:nth-child(n + 4) .katex { font-size: .94em; }
+.scv-root .table-asset-c4-1-iv table { min-width: 1080px; table-layout: fixed; }
+.scv-root .table-asset-c4-1-iv tbody td:nth-child(-n + 3) { overflow-wrap: normal; white-space: nowrap; text-align: center; }
 .scv-root .table-asset-7-8-ii thead tr:first-child th:nth-child(n + 2) { font-size: var(--scv-font-size-12-5); }
 .scv-root .table-asset-7-5-i th, .scv-root .table-asset-7-5-i td { text-align: center; }
 .scv-root .table-asset-c4-2-x th, .scv-root .table-asset-c4-2-x td,

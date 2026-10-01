@@ -120,9 +120,9 @@ test("NTC pagine 114–121 usa i quattro crop ufficiali con hash verificabile", 
     const { figures } = await stepAssets();
     const expected = new Map([
         ["4.2.5", "ee4fc988303f267a4fb2bbe21d4bb8a954936ae2968e547848bce97767773d68"],
-        ["4.2.6", "98945fd5029ab66de03768940c6d3c4ae808dea757cdcd0f8bcc5b9ce9d4b55f"],
+        ["4.2.6", "1033c9c03b64a17f327f8db8a2ac4397c1232d32a87926b73ac409c6ae038335"],
         ["4.2.7", "b7973db1ca9eb6e796638fe9c2b46272db9e82b54db5bd44b1d2318c1040b968"],
-        ["4.3.1", "08dad8547650dd6d5228124f7f065d040f62fd676387c2dc87a4791faa505895"],
+        ["4.3.1", "4c5a245e6f29b7193ed5c32c0a100f2997e8fa2fb3bab548e052cd464d095403"],
     ]);
     assert.deepEqual(figures.map((figure: { officialNumber: string }) => figure.officialNumber).sort(), [...expected.keys()].sort());
     for (const figure of figures as Array<{ officialNumber: string; imagePath: string; sha256: string }>) {

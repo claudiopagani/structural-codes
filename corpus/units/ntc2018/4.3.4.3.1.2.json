@@ -937,10 +937,10 @@
         "printedPage": "122",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 82,
-          "y": 135,
-          "width": 283.667,
-          "height": 56
+          "x": 78,
+          "y": 126.5,
+          "width": 288,
+          "height": 64.5
         },
         "extraction": {
           "method": "manual-transcription",
@@ -967,6 +967,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-horizontal-center-0.1.0",
             "note": "Margini bianchi asimmetrici ridotti; il crop è centrato sul contenuto verificato nel render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-balanced-crop-0.1.0",
+            "note": "Ritaglio centrato sul PDF ufficiale; esclusi 2 pixel di prosa adiacente dal margine superiore, senza rimuovere tratti della figura. Didascalia fuori dal PNG."
           }
         ],
         "rawSha256": "48835289e64b0812a46737ff912239018dffb4c1ca0f51bb6078500acc7f642f",

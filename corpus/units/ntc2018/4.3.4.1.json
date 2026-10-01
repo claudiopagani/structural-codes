@@ -200,10 +200,10 @@
         "printedPage": "120",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 88.333,
-          "y": 80,
+          "x": 88,
+          "y": 97,
           "width": 261,
-          "height": 70.667
+          "height": 55.5
         },
         "extraction": {
           "method": "manual-transcription",
@@ -230,6 +230,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-horizontal-center-0.1.0",
             "note": "Margini bianchi asimmetrici ridotti; il crop è centrato sul contenuto verificato nel render ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-balanced-crop-0.1.0",
+            "note": "Ritaglio centrato sul PDF ufficiale con margini bilanciati; regione e SHA-256 aggiornati nel manifest, didascalia fuori dal PNG."
           }
         ],
         "rawSha256": "001a9fd521396146373f3471bb90b8063ac89ab1c3512ac97f6b74445339880d",

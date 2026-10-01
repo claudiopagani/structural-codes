@@ -551,7 +551,13 @@
         "sourceId": "circ-7-2019",
         "pdfPage": 175,
         "printedPage": "171",
-        "region": null,
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 161,
+          "y": 92,
+          "width": 272.5,
+          "height": 157
+        },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
@@ -562,6 +568,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-caption-crop-0.1.0",
             "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-balanced-crop-0.1.0",
+            "note": "Ritaglio centrato sul PDF ufficiale con margini bilanciati; regione e SHA-256 aggiornati nel manifest, didascalia fuori dal PNG."
           }
         ],
         "rawSha256": "89c0c868051ee04c83cf8673c229cb1f9150c3b9e7b4c5d6f3df790822efbab8",
@@ -577,7 +588,13 @@
         "sourceId": "circ-7-2019",
         "pdfPage": 175,
         "printedPage": "171",
-        "region": null,
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 178,
+          "y": 265,
+          "width": 231,
+          "height": 189
+        },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
@@ -588,6 +605,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-caption-crop-0.1.0",
             "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-zoom-normalization-0.1.0",
+            "note": "Ritagliati i margini laterali vuoti della Figura C5.2.2 dal PDF ufficiale; scala del viewer allineata alle figure C5.2.1 e C5.2.3."
           }
         ],
         "rawSha256": "499bcb58ebacb685ea492e7a21da2c8c6e0217b775a8cd1e5931a86cd850d24f",
@@ -603,7 +625,13 @@
         "sourceId": "circ-7-2019",
         "pdfPage": 175,
         "printedPage": "171",
-        "region": null,
+        "region": {
+          "coordinateSystem": "pdf-points-top-left",
+          "x": 173,
+          "y": 470,
+          "width": 249,
+          "height": 203
+        },
         "extraction": {
           "method": "manual-transcription",
           "tool": "codex-render-transcription",
@@ -614,6 +642,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-caption-crop-0.1.0",
             "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-zoom-normalization-0.1.0",
+            "note": "Ritagliati i margini laterali vuoti della Figura C5.2.3 dal PDF ufficiale; scala del viewer allineata alle figure C5.2.1 e C5.2.2."
           }
         ],
         "rawSha256": "1cf6604632fda2771d4534063d942e0c00ceaa3fd4a11ea34f12fc6c2b147d0e",

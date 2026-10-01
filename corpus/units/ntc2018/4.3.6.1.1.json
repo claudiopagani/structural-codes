@@ -345,10 +345,10 @@
         "printedPage": "130",
         "region": {
           "coordinateSystem": "pdf-points-top-left",
-          "x": 82,
-          "y": 500,
-          "width": 440,
-          "height": 89.333
+          "x": 234,
+          "y": 489.5,
+          "width": 131.5,
+          "height": 99.5
         },
         "extraction": {
           "method": "manual-transcription",
@@ -370,6 +370,11 @@
             "operation": "manual-correction",
             "ruleVersion": "figure-caption-crop-0.1.0",
             "note": "Didascalia esclusa dal crop raster; resta nel testo strutturato della figura."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "figure-balanced-crop-0.1.0",
+            "note": "Ritaglio centrato sul PDF ufficiale con margini bilanciati; regione e SHA-256 aggiornati nel manifest, didascalia fuori dal PNG."
           }
         ],
         "rawSha256": "f33e2f228d76337a75371cbe29763d5c8bd883d786aae400fb3fb8135df792c9",

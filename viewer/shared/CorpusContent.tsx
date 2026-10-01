@@ -492,7 +492,9 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     const width = Math.max(1, Math.round(figure.region?.width ?? 800));
     const height = Math.max(1, Math.round(figure.region?.height ?? 600));
     const displayScale = figure.displayScale ?? 1;
-    const imageStyle = displayScale === 1 ? undefined : { width: `${displayScale * 100}%`, maxWidth: "none" };
+    const imageStyle = displayScale === 1 ? undefined : displayScale < 1
+      ? { width: `${displayScale * 100}%`, maxWidth: `${displayScale * 760}px` }
+      : { width: `${displayScale * 100}%`, maxWidth: "none" };
     return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} />{figure.caption && <figcaption><button type="button" className="scv-permalink-trigger scv-caption-permalink" data-scv-copy-link aria-label={`Copia link alla figura${figure.officialNumber ? ` ${figure.officialNumber}` : ""}`}>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</button></figcaption>}<CopyFigureButton /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
