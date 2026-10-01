@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import katex from "katex";
 import type { AssetBundle, CorpusBlock, DocumentId, InlineSegment, TableAsset, TableCell, TextParagraph, CorpusUnit } from "./corpusData";
 import { findCrossReferences } from "./crossReferences.js";
+import { CopyImageIcon } from "./UiIcons.js";
 import { visibleTableCaption, visibleTableCaptionInline, visibleTableNumberSuffix } from "./tableCaptions.mjs";
 
 const editorialTableNotePatterns = [
@@ -82,7 +83,7 @@ async function figureImageBlob(image: HTMLImageElement) {
 function CopyFigureIcon({ status }: { status: CopyStatus }) {
   if (status === "copied") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 12.5 3.4 3.4 7.6-8" /></svg>;
   if (status === "error") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.5v6" /><path d="M12 17.2v.3" /><circle cx="12" cy="12" r="9" /></svg>;
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6V5.5A2.5 2.5 0 0 1 10 3h7.5A2.5 2.5 0 0 1 20 5.5V13a2.5 2.5 0 0 1-2.5 2.5H17" /><rect x="4" y="7" width="13" height="13" rx="2.5" /><circle cx="13" cy="11" r="1.25" /><path d="m6.5 17 3.25-3.5 2.4 2.45 1.55-1.55 1.8 2.1" /></svg>;
+  return <CopyImageIcon />;
 }
 
 function CopyFigureButton() {
@@ -186,7 +187,6 @@ export function hasSimpleDashMarker(block: CorpusBlock) {
   if (block.kind !== "list-item" || block.listMarker === "none" || block.listMarker === "bullet") return false;
   return Boolean(block.text?.normalized?.trim())
     && !hasTrailingStrong(block)
-    && !hasTrailingMath(block)
     && (block.listMarker === "dash" || !hasOfficialListMarker(block));
 }
 
@@ -267,13 +267,7 @@ export function groupAlignedLabelBlocks(blocks: CorpusBlock[]): CorpusBlockGroup
 
 export function hasTrailingStrong(block: CorpusBlock) {
   const inline = block.text?.inline;
-  return block.kind === "list-item" && inline !== undefined && inline.length > 0 && inline.at(-1)?.kind === "strong";
-}
-
-export function hasTrailingMath(block: CorpusBlock) {
-  const inline = block.text?.inline;
-  if (block.kind !== "list-item" || !inline || inline.length < 2 || inline[0]?.kind === "math" || inline[1]?.kind !== "math") return false;
-  return inline.slice(2).every((segment) => segment.kind === "text" && /^[\s,.;:!?»)\]]*$/u.test(segment.value));
+  return block.kind === "list-item" && inline !== undefined && inline.length > 1 && inline.at(-1)?.kind === "strong";
 }
 
 export interface BlockContentProps {
@@ -316,7 +310,19 @@ export function renderInlineSegments(inline: InlineSegments, context: ReferenceC
   const nodes: Array<React.ReactNode> = [];
   inline.forEach((segment, index) => {
     if (segment.kind === "math") {
-      nodes.push(<span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />);
+      const math = <span className="inline-math" title={segment.value} key={`${segment.value}-${index}`} dangerouslySetInnerHTML={latexMarkup(segment.latex, false)} />;
+      const references = context ? findCrossReferences(segment.value) : [];
+      const reference = references.length === 1 && references[0].text === segment.value.trim() ? references[0] : null;
+      nodes.push(reference && context ? <button
+        type="button"
+        className="scv-cross-reference"
+        data-scv-reference-kind={reference.kind}
+        data-scv-reference-number={reference.number}
+        data-scv-reference-document={reference.documentHint ?? ""}
+        data-scv-source-unit-id={context.sourceUnitId}
+        data-scv-source-document={context.sourceDocument}
+        key={`math-reference-${index}`}
+      >{math}</button> : math);
       return;
     }
     if (segment.kind === "em") {

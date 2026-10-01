@@ -152,8 +152,8 @@
       "origin": "official",
       "text": {
         "raw": "Nelle verifiche agli stati limite ultimi nei confronti della rottura strutturale dei pali, con le limitazioni alle condizioni previste dalle NTC circa le caratteristiche del sottosuolo in cui sono ammor­sati i pali, si deve tenere conto anche degli effetti flessionali prodotti dall’interazione cinematica palo-terreno, tenendo conto dei livelli di deformazione nel sottosuolo prodotti dal passaggio delle onde sismiche.",
-        "normalized": "Nelle verifiche agli stati limite ultimi nei confronti della rottura strutturale dei pali, con le limitazioni alle condizioni previste dalle NTC circa le caratteristiche del sottosuolo in cui sono ammor­sati i pali, si deve tenere conto anche degli effetti flessionali prodotti dall’interazione cinematica palo-terreno, tenendo conto dei livelli di deformazione nel sottosuolo prodotti dal passaggio delle onde sismiche.",
-        "normalizationVersion": "circ711-step1-manual-render-transcription-0.1.0"
+        "normalized": "Nelle verifiche agli stati limite ultimi nei confronti della rottura strutturale dei pali, con le limitazioni alle condizioni previste dalle NTC circa le caratteristiche del sottosuolo in cui sono ammorsati i pali, si deve tenere conto anche degli effetti flessionali prodotti dall’interazione cinematica palo-terreno, tenendo conto dei livelli di deformazione nel sottosuolo prodotti dal passaggio delle onde sismiche.",
+        "normalizationVersion": "circ711-discretionary-hyphen-0.1.0"
       },
       "evidence": {
         "sourceId": "circ-7-2019",
@@ -165,9 +165,15 @@
           "tool": "codex-render-transcription",
           "toolVersion": "circ711-step1-manual-render-transcription-0.1.0"
         },
-        "transformations": [],
+        "transformations": [
+          {
+            "operation": "remove-discretionary-hyphen",
+            "ruleVersion": "circ711-discretionary-hyphen-0.1.0",
+            "note": "Rimosso U+00AD interno ad ammorsati; parola continua senza trattino nel render del PDF ufficiale circ-7-2019, pagina 250 (stampata 246). Testo raw conservato."
+          }
+        ],
         "rawSha256": "93b1f22447e7fe0753dc4a3db6d4bbc30b7d2e3ac09ad3b711e7c1ddb3ed2f72",
-        "normalizedSha256": "93b1f22447e7fe0753dc4a3db6d4bbc30b7d2e3ac09ad3b711e7c1ddb3ed2f72"
+        "normalizedSha256": "2d8628b0f244b1d77d4dad15f5888efdfd1c585573b8843eb82b7637522498f3"
       }
     },
     {

@@ -29,7 +29,7 @@ export function ViewerToolsDock({ context, pdfEnabled }: {
     event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
   }
   if (!tabs.length) return null;
-  return <div className="scv-tools-dock">
+  return <div className="scv-tools-dock" data-active-tool={active}>
     <header className="scv-tools-header"><div className="scv-tools-tabs" role="tablist" aria-label="Strumenti normativi">{tabs.map((tab, index) => <button className="scv-tools-tab" type="button" key={tab.id} id={`${id}-${tab.id}-tab`} role="tab" aria-controls={`${id}-${tab.id}-panel`} aria-selected={active === tab.id} tabIndex={active === tab.id ? 0 : -1} onClick={() => setSelected(tab.id)} onKeyDown={(event) => tabKey(event, index)}>{tab.id === "annotations" ? <StarIcon /> : <ScriptIcon />}{tab.label}</button>)}</div><button className="scv-tools-close" type="button" aria-label="Chiudi strumenti" onClick={context.close}><CloseIcon className="scv-tools-close-icon" /></button></header>
     {context.annotations && <div id={`${id}-annotations-panel`} role="tabpanel" aria-labelledby={`${id}-annotations-tab`} hidden={active !== "annotations"} className="scv-tool-content"><AnnotationsPanel controller={context.annotations} /></div>}
     {pdfEnabled && <div id={`${id}-pdf-panel`} role="tabpanel" aria-labelledby={`${id}-pdf-tab`} hidden={active !== "pdf"} className="scv-tool-content"><OfficialPdfPanel key={context.documentId} context={context} /></div>}

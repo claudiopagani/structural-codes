@@ -28,7 +28,7 @@ import {
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
-import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingMath, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
 import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
@@ -66,7 +66,7 @@ function scvBlockClass(block: CorpusUnit["blocks"][number], sourceUnitId?: strin
   const inferredAlphaRatioMarker = hasInferredAlphaRatioListMarker(block, sourceUnitId);
   const officialMarker = hasOfficialListMarker(block) || inferredAlphaRatioMarker;
   const levelClass = listLevelClass(block) || (alphaRatioLayout ? "list-item-level-1" : "");
-  return `scv-block scv-block-${block.kind} ${officialMarker ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) && !inferredAlphaRatioMarker ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${levelClass} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${hasTrailingMath(block) ? "list-item-with-trailing-symbol" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""} ${alphaRatioLayout ? "list-item-with-alpha-ratio" : ""}`;
+  return `scv-block scv-block-${block.kind} ${officialMarker ? "list-item-with-official-marker" : ""} ${hasAlphabeticListMarker(block) ? "list-item-with-alphabetic-marker" : ""} ${hasSimpleDashMarker(block) && !inferredAlphaRatioMarker ? "list-item-with-simple-dash" : ""} ${hasNoListMarker(block) ? "list-item-without-marker" : ""} ${listMarkerClass(block)} ${levelClass} ${indentLevelClass(block)} ${hasLeadingMath(block) ? "list-item-with-leading-symbol" : ""} ${hasLeadingEmphasisLabel(block) ? "block-with-leading-label" : ""} ${hasTrailingStrong(block) ? "list-item-with-trailing-siglum" : ""} ${catenaryLabel ? "list-item-with-catenary-label" : ""} ${alphaRatioLayout ? "list-item-with-alpha-ratio" : ""}`;
 }
 
 function blockAssetKind(block: CorpusUnit["blocks"][number], assets: CorpusChunk["assets"]) {
@@ -982,14 +982,17 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   useEffect(() => {
     const tablet = window.matchMedia("(min-width: 992px)");
     const desktop = window.matchMedia("(min-width: 1400px)");
-    const syncLayout = () => {
+    const initializeFrame = window.requestAnimationFrame(() => {
       setAuxiliaryVisible(Boolean(hasAuxiliary && (desktop.matches ? auxiliaryPanelDesktopDefaultVisible || auxiliaryPanelDefaultVisible : false)));
       setMobileIndexOpen(false);
+    });
+    const syncLayout = () => {
+      setMobileIndexOpen(false);
     };
-    syncLayout();
     tablet.addEventListener("change", syncLayout);
     desktop.addEventListener("change", syncLayout);
     return () => {
+      window.cancelAnimationFrame(initializeFrame);
       tablet.removeEventListener("change", syncLayout);
       desktop.removeEventListener("change", syncLayout);
     };
@@ -1789,7 +1792,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     setAuxiliaryVisible(false); auxiliaryButtonRef.current?.focus();
   }, []);
   const navigateFromAnnotation = useCallback((annotation: UserAnnotation) => {
-    if (auxiliaryVisible && window.matchMedia("(max-width: 991.98px)").matches) closeAuxiliary();
+    if (auxiliaryVisible && (window.matchMedia("(max-width: 991.98px)").matches || (textPaneRef.current && window.getComputedStyle(textPaneRef.current).visibility === "hidden"))) closeAuxiliary();
     return navigateViewerTarget(annotation.target, "push");
   }, [auxiliaryVisible, closeAuxiliary, navigateViewerTarget]);
   const selectAnnotationMarker = useCallback((annotation: UserAnnotation, position?: AnnotationPosition) => {
@@ -1827,7 +1830,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
         || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
       if (event.key === "/" && !editing) {
         event.preventDefault();
-        if (window.matchMedia("(max-width: 1399.98px)").matches) setAuxiliaryVisible(false);
+        if (window.matchMedia("(max-width: 1399.98px)").matches || (searchRef.current && window.getComputedStyle(searchRef.current).visibility === "hidden")) setAuxiliaryVisible(false);
         const mobile = window.matchMedia("(max-width: 991.98px)").matches;
         if (mobile && mobileIndexOpen) closeMobileIndex();
         window.requestAnimationFrame(() => (mobile ? mobileSearchRef.current : searchRef.current)?.focus());

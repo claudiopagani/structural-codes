@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { JSDOM } from "jsdom";
+import { BlockContent, renderInlineSegments } from "../package-dist/CorpusContent.js";
 import { createCrossReferenceLookup, findCrossReferences, resolveCrossReference } from "../shared/crossReferences.js";
 
 const viewerSourceUrl = new URL("../shared/NormativeViewer.tsx", import.meta.url);
@@ -10,6 +14,44 @@ const toolsSourceUrl = new URL("../shared/ReferenceTools.tsx", import.meta.url);
 async function dataJson(path) {
   return JSON.parse(await readFile(new URL(`../public${path}`, import.meta.url), "utf8"));
 }
+
+test("C7.3.4.1 collega tutti i riferimenti LaTeX preservando la notazione", async () => {
+  const unit = JSON.parse(await readFile(new URL("../../corpus/units/circ2019/c7.3.4.1.json", import.meta.url), "utf8"));
+  const markup = unit.blocks.filter((block) => block.blockId !== unit.titleBlockId).map((block) => renderToStaticMarkup(React.createElement(BlockContent, {
+    block, assets: null, sourceUnitId: unit.id, sourceDocument: "circ2019",
+  }))).join("");
+  const document = new JSDOM(markup).window.document;
+  const buttons = [...document.querySelectorAll("button.scv-cross-reference")];
+  assert.deepEqual(buttons.map((button) => [button.dataset.scvReferenceNumber, button.dataset.scvReferenceDocument]), [
+    ["3.2.3.6", ""], ["3.2.3.6", "circ2019"], ["3.2.3.6", "circ2019"], ["7.2.6", ""],
+  ]);
+  assert.deepEqual(buttons.map((button) => button.querySelector(".inline-math")?.title), [
+    "§ 3.2.3.6", "§ C3.2.3.6", "§ C3.2.3.6", "§ 7.2.6",
+  ]);
+  assert.equal(document.querySelectorAll(".inline-math .katex").length, 4);
+  const manifest = await dataJson("/data/codes/manifest.json");
+  const lookup = createCrossReferenceLookup(await dataJson(manifest.crossReferenceIndexPath));
+  assert.deepEqual(buttons.map((button) => resolveCrossReference(lookup, {
+    kind: button.dataset.scvReferenceKind, number: button.dataset.scvReferenceNumber,
+    documentHint: button.dataset.scvReferenceDocument || null,
+  }, "circ2019")?.unit.id), [
+    "urn:structural-codes:it:unit:ntc2018:3.2.3.6", "urn:structural-codes:it:unit:circ2019:c3.2.3.6",
+    "urn:structural-codes:it:unit:circ2019:c3.2.3.6", "urn:structural-codes:it:unit:ntc2018:7.2.6",
+  ]);
+});
+
+test("le espressioni matematiche con riferimenti parziali non diventano link", () => {
+  const segments = [
+    { kind: "math", value: "q", latex: "q" },
+    { kind: "math", value: "fcd", latex: "f_{cd}" },
+    { kind: "math", value: "x = 7.2.6", latex: "x=7.2.6" },
+  ];
+  const context = { sourceUnitId: "test", sourceDocument: "circ2019" };
+  const markup = renderToStaticMarkup(React.createElement("p", null, renderInlineSegments(segments, context)));
+  assert.doesNotMatch(markup, /scv-cross-reference/);
+  const withoutContext = renderToStaticMarkup(React.createElement("p", null, renderInlineSegments([{ kind: "math", value: "§ 7.2.6", latex: "\\S 7.2.6" }])));
+  assert.doesNotMatch(withoutContext, /scv-cross-reference/);
+});
 
 test("riconosce riferimenti a unità, formule, tabelle e figure senza sovrapposizioni", () => {
   const references = findCrossReferences("Vedere §7.3.3.3, C7.3.3.2, Tab. 7.3.III, Fig. 7.3.1 e formula [7.3.4].");

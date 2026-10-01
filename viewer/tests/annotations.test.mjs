@@ -166,7 +166,7 @@ test("viewer wires right click, Escape/outside close, annotation navigation and 
   assert.match(ui, /document\.addEventListener\("pointerdown", pointer, true\)/);
   assert.match(ui, /event\.key === "Escape"/);
   assert.match(viewer, /navigateViewerTarget\(annotation\.target, "push"\)/);
-  assert.match(viewer, /if \(auxiliaryVisible && window\.matchMedia\("\(max-width: 991\.98px\)"\)\.matches\) closeAuxiliary\(\)/);
+  assert.match(viewer, /if \(auxiliaryVisible && \(window\.matchMedia\("\(max-width: 991\.98px\)"\)\.matches \|\| \(textPaneRef\.current && window\.getComputedStyle\(textPaneRef\.current\)\.visibility === "hidden"\)\)\) closeAuxiliary\(\)/);
   assert.match(viewer, /navigate: \(annotation\) => \{ void navigateFromAnnotation\(annotation\)\.catch\(\(\) => reportChunkLoadFailure\(\)\); \}/);
   assert.match(viewer, /clusterTypes\.map\(\(annotationType\).*StickyNoteIcon/s);
   assert.match(viewer, /setOpenCluster\(\(current\) => current === id \? null : id\)/);

@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdir, readFile } from "node:fs/promises";
-import { groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasTrailingMath, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
+import React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { JSDOM } from "jsdom";
+import { BlockContent, groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasSimpleDashMarker, hasTrailingStrong, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
 async function render(pathname) {
@@ -54,28 +57,82 @@ test("multi-symbol math labels keep the complete label aligned", () => {
   assert.equal(leadingMathLabelEnd(inline), 5);
 });
 
-test("le formule terminali degli elenchi usano un layout strutturale", async () => {
-  const unit = JSON.parse(await readFile(new URL("../../corpus/units/circ2019/c7.6.8.json", import.meta.url), "utf8"));
-  const items = unit.blocks.filter((block) => block.kind === "list-item");
-  assert.equal(items.length, 2);
-  assert.equal(items.every(hasTrailingMath), true);
-  assert.equal(hasTrailingMath({
-    kind: "list-item",
-    text: { normalized: "testo x;", inline: [
-      { kind: "text", value: "testo " },
-      { kind: "math", value: "x", latex: "x" },
-      { kind: "text", value: ";" },
-    ] },
-  }), true);
-  assert.equal(hasTrailingMath({
-    kind: "list-item",
-    text: { normalized: "testo x seguito", inline: [
-      { kind: "text", value: "testo " },
-      { kind: "math", value: "x", latex: "x" },
-      { kind: "text", value: " seguito" },
-    ] },
-  }), false);
+test("la matematica finale resta nel flusso della voce in tutto il corpus", async () => {
+  const counts = [];
+  const checkedIds = new Set();
+  for (const document of ["ntc2018", "circ2019"]) {
+    const directory = new URL(`../../corpus/units/${document}/`, import.meta.url);
+    let count = 0;
+    for (const file of await readdir(directory)) {
+      const unit = JSON.parse(await readFile(new URL(file, directory), "utf8"));
+      for (const block of unit.blocks) {
+        const inline = block.text?.inline;
+        if (block.kind !== "list-item" || !inline || inline.length < 2 || inline[0].kind === "math" || inline[1].kind !== "math"
+          || !inline.slice(2).every((segment) => segment.kind === "text" && /^[\s,.;:!?»)\]]*$/u.test(segment.value))) continue;
+        count += 1;
+        checkedIds.add(block.blockId);
+        const html = renderToStaticMarkup(React.createElement(BlockContent, { block, assets: null }));
+        const paragraph = new JSDOM(html).window.document.querySelector("p");
+        assert.ok(paragraph, block.blockId);
+        assert.equal(paragraph.querySelectorAll("br").length, 0, block.blockId);
+        const math = paragraph.querySelector(".inline-math");
+        assert.equal(math?.title, inline[1].value, block.blockId);
+        math.textContent = math.title;
+        assert.equal(paragraph.textContent.replace(/\s+/gu, " ").trim(), block.text.normalized.replace(/\s+/gu, " ").trim(), block.blockId);
+        if (block.listMarker === "dash") assert.equal(hasSimpleDashMarker(block), true, block.blockId);
+      }
+    }
+    counts.push(count);
+  }
+  assert.deepEqual(counts, [88, 25]);
+  for (const id of [
+    "ntc2018:6.7.5#block-editorial-005", "ntc2018:6.7.5#block-editorial-006",
+    "ntc2018:7.2.5#block-li-prescrizione-2", "ntc2018:7.3.4#block-li3",
+  ]) assert.ok(checkedIds.has(`urn:structural-codes:it:unit:${id}`), id);
+  const [styles, viewer] = await Promise.all([
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+  ]);
+  assert.doesNotMatch(styles + viewer, /list-item-with-trailing-symbol/);
+  assert.match(styles, /\.scv-block p \{ display: block;/);
 });
+
+test("un’intera voce in grassetto non viene scambiata per una sigla finale", async () => {
+  const unit = JSON.parse(await readFile(new URL("../../corpus/units/circ2019/c8.7.4.2.2.json", import.meta.url), "utf8"));
+  const block = unit.blocks.find(({ blockId }) => blockId.endsWith("#block-015"));
+  assert.equal(hasTrailingStrong(block), false);
+  assert.equal(hasSimpleDashMarker(block), true);
+  const siglaUnit = JSON.parse(await readFile(new URL("../../corpus/units/ntc2018/2.6.1.json", import.meta.url), "utf8"));
+  assert.equal(siglaUnit.blocks.filter(hasTrailingStrong).length, 3);
+});
+
+test("la copia figura usa l’SVG richiesto con ID italiani unici e hover sull’immagine", async () => {
+  const manifest = JSON.parse(await readFile(new URL("../../corpus/assets/ntc2018/4.1.json", import.meta.url), "utf8"));
+  const figure = manifest.figures[0];
+  const assets = { figures: { [figure.id]: figure }, formulas: {}, tables: {} };
+  const block = { kind: "figure-ref", assetId: figure.id };
+  const html = renderToStaticMarkup(React.createElement("div", null,
+    React.createElement(BlockContent, { block, assets }), React.createElement(BlockContent, { block, assets })));
+  const document = new JSDOM(html).window.document;
+  const icons = [...document.querySelectorAll(".scv-copy-asset svg")];
+  assert.equal(icons.length, 2);
+  const ids = [...document.querySelectorAll(".scv-copy-asset [id]")].map((element) => element.id);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.ok(ids.every((id) => id.startsWith("icona-copia-immagine-")));
+  assert.equal(icons[0].getAttribute("viewBox"), "0 0 14 14");
+  assert.deepEqual([...icons[0].querySelectorAll("path")].map((path) => path.getAttribute("d")), [
+    "M12.5 4h-7A1.5 1.5 0 0 0 4 5.5v7A1.5 1.5 0 0 0 5.5 14h7a1.5 1.5 0 0 0 1.5 -1.5v-7A1.5 1.5 0 0 0 12.5 4Z",
+    "M1.5 0h7A1.5 1.5 0 0 1 10 1.5v1.25H5.5A2.75 2.75 0 0 0 2.75 5.5V10H1.5A1.5 1.5 0 0 1 0 8.5v-7A1.5 1.5 0 0 1 1.5 0Z",
+  ]);
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /\.scv-copy-asset \{[^}]*opacity: 0; pointer-events: none;/);
+  assert.match(styles, /:has\(> img:hover\) \.scv-copy-asset[^}]*opacity: 1; pointer-events: auto;/);
+  assert.doesNotMatch(styles, /\.scv-copyable-asset:(?:hover|focus-within)/);
+  assert.doesNotMatch(styles, /\.scv-copy-asset \{[^}]*opacity: 1/);
+  assert.match(styles, /\.scv-copy-asset:hover[^}]*box-shadow:/);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-copy-asset \{[^}]*background:/);
+});
+
 
 test("le voci αu/α1 mantengono il marker ufficiale anche con chunk legacy", () => {
   const block = {
@@ -243,7 +300,7 @@ test("su mobile ricerca e comandi occupano la testata corretta, su desktop la ba
   assert.match(mobileStyles, /\.scv-root \.scv-mobile-index-close \{ grid-column: 4; grid-row: 1/);
   assert.match(mobileStyles, /\.scv-mobile-search \{[^}]*right: 8px; left: 60px; display: block/);
   const desktopStart = styles.indexOf("@media (min-width: 992px)");
-  const desktopStyles = styles.slice(desktopStart, styles.indexOf("@media (min-width: 1400px)", desktopStart));
+  const desktopStyles = styles.slice(desktopStart, styles.indexOf("@media (min-width: 1686px)", desktopStart));
   assert.match(desktopStyles, /\.scv-search-box \{ grid-column: auto; grid-row: auto; \}/);
   assert.match(desktopStyles, /\.scv-search-toolbar > \.scv-search-box:not\(\.scv-mobile-search\) \{ display: block; \}/);
   assert.match(desktopStyles, /\.scv-mobile-search \{ display: none; \}/);
@@ -458,10 +515,6 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-root \.table-notes \{[^}]*padding: 0/);
   assert.match(styles, /\.scv-root \.scv-note-content > p \{[^}]*text-align: justify/);
   assert.match(styles, /\.scv-root \.table-notes > p \{[^}]*margin: 0 0 8px[^}]*text-align: justify/);
-  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol p \{[^}]*grid-template-columns: 14px minmax\(0, 1fr\) max-content/);
-  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol p > \.inline-keep-punct \{[^}]*align-self: end/);
-  assert.match(styles, /\.scv-block-list-item\.list-item-with-trailing-symbol\.list-item-without-marker p \{[^}]*grid-template-columns: minmax\(0, 1fr\) max-content/);
-  assert.doesNotMatch(styles, /list-item-with-trailing-symbol-tabbed|grid-template-columns: 14px 26em max-content/);
   assert.match(styles, /\.scv-root \.scv-note-rule \{[^}]*width: 33\.333%[^}]*background: #202733/);
   assert.match(styles, /\.scv-root\.scv-dark \.scv-note-content, \.scv-root\.scv-dark \.scv-note-content > p,\s*\.scv-root\.scv-dark \.scv-note-list-item, \.scv-root\.scv-dark \.scv-note-list-marker,\s*\.scv-root\.scv-dark \.scv-note-list-description \{[^}]*color: var\(--scv-night-ink\)/);
   assert.match(styles, /\.scv-root \.figure-asset figcaption/);
@@ -470,10 +523,10 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /height: 100dvh;\s*overflow: clip;/);
   assert.match(styles, /\.scv-text-pane-shell \{[^}]*overflow: hidden; \}/);
   assert.match(styles, /@media \(min-width: 992px\) \{\s*\.scv-root \{ grid-template-columns: var\(--scv-index-width\) minmax\(0, 1fr\)/);
-  assert.match(styles, /@media \(min-width: 992px\) \{[^]*\.scv-text-pane-shell \{ transition: transform \.5s/);
+  assert.match(styles, /@media \(min-width: 992px\) \{[^]*\.scv-text-pane-shell \{[^}]*transition: transform \.5s/);
   assert.match(viewer, /auxiliaryPaneRef\.current\?\.querySelector<HTMLButtonElement>\("button"\)\?\.focus\(\{ preventScroll: true \}\)/);
   assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-text-pane-shell \{ transform: translateX\(calc\(-1 \* var\(--scv-index-width\)\)\)/);
-  assert.match(styles, /@media \(min-width: 1400px\) \{[^]*\.scv-root\.scv-has-auxiliary \.scv-text-pane-shell \{ transform: none/);
+  assert.match(styles, /@media \(min-width: 1686px\) \{[^]*\.scv-root\.scv-has-auxiliary \.scv-text-pane-shell \{ transform: none/);
   assert.match(viewer, /auxiliaryAvailable \? "scv-auxiliary-available" : ""/);
   assert.match(styles, /\.scv-root\.scv-auxiliary-available \.scv-text-flow \{ width: min\(860px, calc\(100% - var\(--scv-auxiliary-width\)\)\); transition: transform/);
   assert.match(styles, /\.scv-root\.scv-auxiliary-available\.scv-has-auxiliary \.scv-text-flow \{ transform: translateX\(calc\(-\.5 \* var\(--scv-auxiliary-width\)\)\)/);
@@ -486,7 +539,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(styles, /\.scv-search-box \{[^}]*height: var\(--scv-toolbar-button-size\)/);
   assert.match(styles, /\.scv-theme-button:hover \.scv-theme-icon[^}]*transform: rotate\(-12deg\) scale\(1\.08\)/);
   assert.match(styles, /\.scv-theme-button:hover \.scv-control-tooltip[^}]*opacity: 1/);
-  assert.match(styles, /\.scv-copyable-asset:hover \.scv-copy-asset/);
+  assert.match(styles, /\.scv-copyable-asset:has\(> img:hover\) \.scv-copy-asset/);
   assert.match(styles, /\.scv-root\.scv-dark/);
   assert.match(styles, /\.scv-root \.inline-math \{[^}]*display: inline-block[^}]*font-size: 1\.04em[^}]*vertical-align: baseline/);
   assert.doesNotMatch(styles, /\.scv-root \.inline-math \{[^}]*(?:overflow|vertical-align: middle)/);

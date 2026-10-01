@@ -7,7 +7,7 @@ type IconName =
   | "luna-calante" | "luminosita-solare" | "nota-adesiva" | "segnalibro"
   | "scarica" | "carica" | "matita" | "cestino" | "documento-codice"
   | "chiudi" | "ingranaggio" | "menu" | "dischetto-salvataggio"
-  | "importa-cerchio" | "esporta-cerchio"
+  | "importa-cerchio" | "esporta-cerchio" | "copia-immagine"
   | "stella-annotazioni" | "cruscotto-laterale" | "collegamento-catena";
 
 interface IconProps { className?: string; variant?: "default" | "light" | "danger" | "dark" }
@@ -24,6 +24,13 @@ function IconFrame({ name, className, variant = "default", drawing }: IconProps 
 export function SearchIcon(props: IconProps) {
   return <IconFrame name="lente-ricerca" {...props} drawing={(id) => <>
     <path id={id + "-manico-lente"} fill="#2859c5" fillRule="evenodd" d="M2 6c0 -2.20914 1.79086 -4 4 -4s4 1.79086 4 4 -1.79086 4 -4 4 -4 -1.79086 -4 -4Zm4 -6C2.68629 0 0 2.68629 0 6s2.68629 6 6 6c1.29578 0 2.49562 -0.4108 3.47642 -1.1092l2.81648 2.8165c0.3905 0.3905 1.0237 0.3905 1.4142 0 0.3905 -0.3905 0.3905 -1.0237 0 -1.4142l-2.8164 -2.81645C11.5892 8.49581 12 7.29588 12 6c0 -3.31371 -2.68629 -6 -6 -6Z" clipRule="evenodd" strokeWidth="1" />
+  </>} />;
+}
+
+export function CopyImageIcon(props: IconProps) {
+  return <IconFrame name="copia-immagine" {...props} drawing={(id) => <>
+    <path id={id + "-riquadro-anteriore"} fill="#8fbffa" d="M12.5 4h-7A1.5 1.5 0 0 0 4 5.5v7A1.5 1.5 0 0 0 5.5 14h7a1.5 1.5 0 0 0 1.5 -1.5v-7A1.5 1.5 0 0 0 12.5 4Z" strokeWidth="1" />
+    <path id={id + "-riquadro-posteriore"} fill="#2859c5" fillRule="evenodd" d="M1.5 0h7A1.5 1.5 0 0 1 10 1.5v1.25H5.5A2.75 2.75 0 0 0 2.75 5.5V10H1.5A1.5 1.5 0 0 1 0 8.5v-7A1.5 1.5 0 0 1 1.5 0Z" clipRule="evenodd" strokeWidth="1" />
   </>} />;
 }
 
