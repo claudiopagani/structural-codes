@@ -288,7 +288,9 @@ test("su mobile ricerca e comandi occupano la testata corretta, su desktop la ba
   assert.ok(source.indexOf('className="scv-mobile-search"') < source.indexOf('className="scv-tools-toggle"'));
   assert.match(source, /className="scv-index-controls"/);
   assert.doesNotMatch(source, /scv-index-settings-toggle|SettingsIcon/);
-  assert.match(source, /querySelectorAll<HTMLElement>\("\.scv-mobile-search, \.scv-mobile-context"\)/);
+  assert.match(source, /querySelectorAll<HTMLElement>\("\.scv-mobile-search"\)/);
+  assert.doesNotMatch(source + styles, /scv-mobile-context|contextSummary/);
+  assert.match(source, /if \(auxiliaryVisible\) \{\s*scrollRequestRef\.current = requestedTargetRef\.current;\s*setAuxiliaryVisible\(false\);/);
   assert.match(source, /getBoundingClientRect\(\)\.bottom - rootTop \+ 10/);
   assert.match(styles, /\.scv-search-toolbar \{[^}]*align-items: center/);
   assert.match(styles, /\.scv-history-controls \{[^}]*align-items: center/);
@@ -305,6 +307,11 @@ test("su mobile ricerca e comandi occupano la testata corretta, su desktop la ba
   assert.match(desktopStyles, /\.scv-search-toolbar > \.scv-search-box:not\(\.scv-mobile-search\) \{ display: block; \}/);
   assert.match(desktopStyles, /\.scv-mobile-search \{ display: none; \}/);
   assert.match(desktopStyles, /\.scv-index-controls, \.scv-index-controls-inner \{ display: contents/);
+  const tabletStyles = styles.slice(styles.indexOf("@media (min-width: 1094px)"), styles.indexOf("/* Keep at least 600px"));
+  assert.match(tabletStyles, /\.scv-root\.scv-has-auxiliary \.scv-mobile-index-toggle \{ display: grid; \}/);
+  assert.match(tabletStyles, /\.scv-root\.scv-has-auxiliary \.scv-mobile-search \{ display: block; \}/);
+  assert.match(tabletStyles, /\.scv-root\.scv-has-auxiliary \.scv-text-flow \{ padding-top: 68px; \}/);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary:has\(\.scv-tools-dock\[data-active-tool="pdf"\]\) \.scv-mobile-search \{ display: block; \}/);
 });
 
 test("combined usa le NTC come base e conserva tutti i contenuti Circolare", async () => {
@@ -364,7 +371,8 @@ test("la sidebar destra scorre anche in chiusura e la scrollbar lascia libero il
   assert.match(source, /setTimeout\(\(\) => setAuxiliaryMounted\(false\), 520\)/);
   assert.match(source, /auxiliaryMounted && auxiliaryAvailable && renderAuxiliary/);
   assert.match(styles, /\.scv-root\.scv-auxiliary-entered \.scv-auxiliary-pane/);
-  assert.match(styles, /\.scv-root\.scv-auxiliary-available:not\(\.scv-has-auxiliary\) \.scv-scroll-rail \{ top: 62px; \}/);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-scroll-rail \{ top: 62px; \}/);
+  assert.doesNotMatch(styles, /\.scv-root\.scv-auxiliary-available:not\(\.scv-has-auxiliary\) \.scv-scroll-rail/);
 });
 
 test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", async () => {
@@ -419,7 +427,11 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-index-children \{[^}]*grid-template-rows: 0fr[^}]*transition:/);
   assert.match(styles, /\.scv-index-children\.is-open \{[^}]*grid-template-rows: 1fr/);
   assert.match(styles, /\.scv-index-children-list \{[^}]*margin-left: 6px; padding-left: 6px; border-left: 2px solid var\(--scv-button-emphasis-bg\)/);
-  assert.match(styles, /\.scv-index-list button > span \{[^}]*transform: translateY\(1px\)/);
+  assert.match(styles, /\.scv-index-cell \{[^}]*grid-template-rows: 36px/);
+  assert.match(styles, /\.scv-index-cell > header \{[^}]*align-items: center[^}]*font-size: var\(--scv-font-size-12\)[^}]*line-height: 1/);
+  assert.match(styles, /\.scv-index-list button \{[^}]*align-items: center/);
+  assert.match(styles, /\.scv-index-list button > strong \{[^}]*align-items: center/);
+  assert.doesNotMatch(styles, /\.scv-index-list button > span \{[^}]*transform:/);
   assert.match(styles, /\.scv-index-subparagraph-list \.scv-index-entry \{[^}]*--scv-index-indent: 0px/);
   assert.doesNotMatch(styles, /\.scv-index-subparagraph-list::before/);
   assert.match(styles, /\.scv-scroll-rail/);

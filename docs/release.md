@@ -1,8 +1,9 @@
 # Release npm
 
 Structural Codes usa SemVer con prerelease. La versione corrente è
-`0.1.0-alpha.3`: corpus e software sono pubblicamente ispezionabili, mentre
+`0.1.0-beta.2`: corpus e software sono pubblicamente ispezionabili, mentre
 schema e API possono ancora ricevere cambi breaking dichiarati.
+Le versioni degli schemi canonici restano indipendenti dalla versione npm.
 
 ## Gate completo
 
@@ -76,8 +77,8 @@ costituisce certificazione, approvazione ufficiale o fonte normativa.
 Dopo login npm, verifica del nome package e autorizzazione esplicita:
 
 ```bash
-npm publish ./structural-codes-0.1.0-alpha.3.tgz --tag alpha --access public
-npm publish ./structural-codes-viewer-0.1.0-alpha.3.tgz --tag alpha --access public
+npm publish ./structural-codes-0.1.0-beta.2.tgz --tag beta --access public
+npm publish ./structural-codes-viewer-0.1.0-beta.2.tgz --tag beta --access public
 ```
 
 La pubblicazione non è automatica, non crea una GitHub Release e non modifica

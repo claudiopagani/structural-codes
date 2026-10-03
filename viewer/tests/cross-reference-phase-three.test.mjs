@@ -86,6 +86,25 @@ test("riconosce riferimenti a unità, formule, tabelle e figure senza sovrapposi
   ]);
 });
 
+test("i rimandi plurali di NTC 4.5.1 collegano anche 11.1", async () => {
+  const unit = JSON.parse(await readFile(new URL("../../corpus/units/ntc2018/4.5.1.json", import.meta.url), "utf8"));
+  const paragraph = unit.blocks.find((block) => block.text?.normalized?.includes("§§ 4.6 o 11.1"));
+  assert.ok(paragraph);
+  assert.deepEqual(findCrossReferences(paragraph.text.normalized).map(({ number }) => number), ["4.6", "11.1"]);
+  assert.deepEqual(findCrossReferences("Vedere §§ 4.6 e 11.1, ma il valore 2.5 resta un numero.").map(({ number }) => number), ["4.6", "11.1"]);
+  const markup = renderToStaticMarkup(React.createElement(BlockContent, {
+    block: paragraph, assets: null, sourceUnitId: unit.id, sourceDocument: "ntc2018",
+  }));
+  const buttons = [...new JSDOM(markup).window.document.querySelectorAll("button.scv-cross-reference")];
+  assert.deepEqual(buttons.map((button) => button.dataset.scvReferenceNumber), ["4.6", "11.1"]);
+  const manifest = await dataJson("/data/codes/manifest.json");
+  const lookup = createCrossReferenceLookup(await dataJson(manifest.crossReferenceIndexPath));
+  assert.deepEqual(buttons.map((button) => resolveCrossReference(lookup, {
+    kind: button.dataset.scvReferenceKind, number: button.dataset.scvReferenceNumber,
+    documentHint: button.dataset.scvReferenceDocument || null,
+  }, "ntc2018")?.unit.numbering), ["4.6", "11.1"]);
+});
+
 test("l'indice derivato risolve target e backlink senza caricare chunk", async () => {
   const manifest = await dataJson("/data/codes/manifest.json");
   const index = await dataJson(manifest.crossReferenceIndexPath);

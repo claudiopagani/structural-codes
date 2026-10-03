@@ -1,4 +1,5 @@
 const unitPattern = /(^|[^\p{L}\p{N}])(§\s*C?\.?\d+(?:\.\d+)+|C\.?\d+(?:\.\d+)+|\d+(?:\.\d+){2,})/giu;
+const pluralUnitPattern = /§§\s*((?:C?\.?\d+(?:\.\d+)+)(?:\s*(?:,|e|ed|o)\s*C?\.?\d+(?:\.\d+)+)+)/giu;
 const assetPatterns = [
   { kind: "table", pattern: /\b(?:Tab\.\s*|Tab(?:ella|elle)?\s+)((?:C(?:\.)?)?\d+(?:\.\d+)*(?:\.[IVXLCDM]+[a-z]?(?:\.[a-z]+)?)?)/giu },
   { kind: "table", pattern: /\b((?:C(?:\.)?)?\d+(?:\.\d+)*\.[IVXLCDM]+[a-z]?(?:\.[a-z]+)?)/giu },
@@ -61,6 +62,19 @@ export function findCrossReferences(value) {
       number: normalizedNumber(raw.replace(/^§\s*/iu, "")),
       documentHint: documentHint(raw),
     });
+  }
+  for (const match of source.matchAll(pluralUnitPattern)) {
+    const listStart = match.index + match[0].length - match[1].length;
+    for (const item of match[1].matchAll(/C?\.?\d+(?:\.\d+)+/giu)) {
+      candidates.push({
+        start: listStart + item.index,
+        end: listStart + item.index + item[0].length,
+        text: item[0],
+        kind: "unit",
+        number: normalizedNumber(item[0]),
+        documentHint: documentHint(item[0]),
+      });
+    }
   }
   const accepted = [];
   for (const candidate of candidates.sort((left, right) => left.start - right.start || (left.kind === "unit" ? 1 : -1) || right.end - left.end)) {

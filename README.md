@@ -14,7 +14,7 @@ editoriale.
 
 ## Stato della prerelease
 
-La versione corrente è `0.1.0-alpha.3`. La review umana integrale del testo
+La versione corrente dei package è `0.1.0-beta.2`. La review umana integrale del testo
 delle NTC 2018 e della Circolare 7/2019 contro le fonti ufficiali è registrata
 al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690 unità della Circolare,
 tutte con `review.status: "verified"`. Questa verifica non costituisce una
@@ -24,9 +24,11 @@ I 302 collegamenti Circolare → NTC sono relazioni esplicite ancora `proposed`.
 Le corrispondenze ricavate dalla sola numerazione restano diagnostiche e non
 sono usate come fonte canonica.
 
-`alpha` indica che schema e API pubbliche possono ancora cambiare. I criteri
-per la promozione a `beta` sono descritti in [docs/release.md](docs/release.md)
-e riguardano esclusivamente la stabilità di questo progetto pubblico.
+`beta` indica una prerelease del software: schema e API pubbliche possono ancora
+ricevere modifiche breaking dichiarate. Le versioni dello schema canonico sono
+indipendenti da quelle dei package. I criteri di promozione sono descritti in
+[docs/release.md](docs/release.md) e riguardano esclusivamente la stabilità di
+questo progetto pubblico.
 
 ## Cosa contiene
 
@@ -41,7 +43,7 @@ derivati rigenerabili e non va modificato direttamente.
 ## Package `structural-codes`
 
 ```bash
-npm install structural-codes@alpha
+npm install structural-codes@beta
 ```
 
 Il runtime richiede Node.js `^22.13.0 || >=24.0.0`. L'entry point è ESM e non

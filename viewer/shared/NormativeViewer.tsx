@@ -227,7 +227,7 @@ function findTextUnit(root: HTMLElement | null, unitId: string) {
 function scrollElementIntoPane(root: HTMLElement, target: HTMLElement) {
   const top = root.scrollTop + target.getBoundingClientRect().top - root.getBoundingClientRect().top;
   const rootTop = root.getBoundingClientRect().top;
-  const overlays = Array.from(root.parentElement?.querySelectorAll<HTMLElement>(".scv-mobile-search, .scv-mobile-context") ?? [])
+  const overlays = Array.from(root.parentElement?.querySelectorAll<HTMLElement>(".scv-mobile-search") ?? [])
     .filter((element) => {
       const style = window.getComputedStyle(element);
       return style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0;
@@ -1748,9 +1748,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   }, [selectUnit]);
 
   const activeSummary = lookup?.unitById.get(activeUnitId ?? "") ?? circLookup?.unitById.get(activeUnitId ?? "") ?? entryById.get(activeUnitId ?? "")?.summary ?? null;
-  const contextSummary = activeSummary && baseNumbering(activeSummary.numbering.official).split(".").length > 3
-    ? activeSummary.hierarchy.ancestorIds.map((id) => summaryById.get(id)).find((summary) => summary && baseNumbering(summary.numbering.official).split(".").length === 3) ?? null
-    : activeSummary;
   const chapters = useMemo(() => navigationEntries.filter(({ level }) => level === 0), [navigationEntries]);
   const paragraphs = useMemo(() => navigationEntries.filter(({ level }) => level === 1), [navigationEntries]);
   const subparagraphs = useMemo(() => navigationEntries.filter(({ level }) => level === 2), [navigationEntries]);
@@ -1830,10 +1827,11 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
         || window.document.activeElement?.closest("input, textarea, select, [contenteditable='true']");
       if (event.key === "/" && !editing) {
         event.preventDefault();
-        if (window.matchMedia("(max-width: 1399.98px)").matches || (searchRef.current && window.getComputedStyle(searchRef.current).visibility === "hidden")) setAuxiliaryVisible(false);
         const mobile = window.matchMedia("(max-width: 991.98px)").matches;
+        const corpusSearchVisible = Boolean(mobileSearchRef.current && window.getComputedStyle(mobileSearchRef.current).display !== "none");
+        if (auxiliaryVisible && (mobile || !corpusSearchVisible && (window.matchMedia("(max-width: 1399.98px)").matches || (searchRef.current && window.getComputedStyle(searchRef.current).visibility === "hidden")))) setAuxiliaryVisible(false);
         if (mobile && mobileIndexOpen) closeMobileIndex();
-        window.requestAnimationFrame(() => (mobile ? mobileSearchRef.current : searchRef.current)?.focus());
+        window.requestAnimationFrame(() => (mobile || corpusSearchVisible ? mobileSearchRef.current : searchRef.current)?.focus());
       }
       if (event.key === "Escape") {
         if (referencePreview?.interactive) clearReferencePreview();
@@ -1842,7 +1840,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [clearReferencePreview, closeMobileIndex, mobileIndexOpen, referencePreview?.interactive]);
+  }, [auxiliaryVisible, clearReferencePreview, closeMobileIndex, mobileIndexOpen, referencePreview?.interactive]);
 
   const selectSearchResult = useCallback((result: SearchResult) => {
     const target = viewerTargetForSearchResult(result);
@@ -1906,11 +1904,16 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} onHistoryBack={() => { saveHistoryScroll(); window.history.back(); }} onHistoryForward={() => { saveHistoryScroll(); window.history.forward(); }} canHistoryBack={historyPosition.index > 0} canHistoryForward={historyPosition.index < historyPosition.max} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
-        setMobileIndexSession((session) => session + 1);
-        setMobileIndexOpen(true);
+        if (auxiliaryVisible) {
+          scrollRequestRef.current = requestedTargetRef.current;
+          setAuxiliaryVisible(false);
+        }
+        if (window.matchMedia("(max-width: 991.98px)").matches) {
+          setMobileIndexSession((session) => session + 1);
+          setMobileIndexOpen(true);
+        }
         window.requestAnimationFrame(() => document.getElementById(navigationId)?.querySelector<HTMLButtonElement>(".scv-mode-button[aria-pressed='true']")?.focus({ preventScroll: true }));
       }}><HamburgerIcon /><span className="scv-visually-hidden">Apri indice</span></button>
-      {contextSummary && <div className="scv-mobile-context" title={`${contextSummary.numbering.official} ${contextSummary.title}`} aria-label={`Unità attiva: ${contextSummary.numbering.official} ${contextSummary.title}`}><strong>{contextSummary.numbering.official}</strong><span>{contextSummary.title}</span></div>}
       <SearchBox className="scv-mobile-search" query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onRequestClose={closeMobileIndex} searchRef={mobileSearchRef} />
       {auxiliaryAvailable && <button type="button" className="scv-tools-toggle" ref={auxiliaryButtonRef} disabled={!manifest} aria-controls={auxiliaryId} aria-expanded={auxiliaryVisible} onClick={() => {
         if (auxiliaryVisible) closeAuxiliary();

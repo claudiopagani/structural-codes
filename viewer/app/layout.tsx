@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../shared/styles.css";
 
-const title = "structural-code";
+const title = "structural-codes";
 const description =
   "Esplora NTC 2018 e Circolare 7/2019 con testo, provenance e relazioni tracciate.";
 
