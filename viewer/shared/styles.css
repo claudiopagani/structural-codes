@@ -30,7 +30,7 @@ body:has(> .scv-root) { overflow: hidden; }
   --scv-font-size-18: calc(var(--scv-base-font-size) * 1.3846);
   --scv-font-size-19: calc(var(--scv-base-font-size) * 1.4615);
   --scv-font-size-24: calc(var(--scv-base-font-size) * 1.8462);
-  --scv-primary: #3c52a3;
+  --scv-primary: var(--scv-button-emphasis-bg);
   --scv-primary-dark: #293b82;
   --scv-primary-soft: #e8ecfb;
   --scv-button-emphasis-bg: #4f74bf;
@@ -91,7 +91,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-index-pane { position: absolute; z-index: 30; inset: 0; display: grid; width: 100%; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; background: #eef0f6; transform: translateX(-100%); }
 .scv-auxiliary-pane { position: absolute; z-index: 40; inset: 0; width: 100%; overflow: hidden; transform: translateX(100%); }
 .scv-index-pane, .scv-auxiliary-pane { visibility: hidden; pointer-events: none; transition: transform .5s cubic-bezier(.22, .8, .25, 1), visibility 0s linear .5s; }
-.scv-root.scv-mobile-index-open .scv-index-pane, .scv-root.scv-auxiliary-entered .scv-auxiliary-pane { visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+.scv-root.scv-mobile-index-open .scv-index-pane, .scv-root.scv-has-auxiliary .scv-auxiliary-pane { visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
 .scv-root.scv-mobile-index-open .scv-text-pane-shell, .scv-root.scv-has-auxiliary .scv-text-pane-shell { pointer-events: none; }
 
 .scv-search-toolbar { --scv-toolbar-button-size: 42px; position: relative; z-index: 5; display: grid; grid-template-columns: auto minmax(0, 1fr) auto var(--scv-toolbar-button-size); align-items: center; gap: 6px; padding: 7px; background: var(--scv-panel); border-bottom: 1px solid var(--scv-line); }
@@ -351,7 +351,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root .formula-number { flex: 0 0 auto; margin-left: auto; color: var(--scv-primary-dark); font-family: var(--scv-font-normative); font-size: var(--scv-font-size-12); font-variant-numeric: lining-nums; white-space: nowrap; }
 .scv-root .formula-asset figcaption, .scv-root .table-asset figcaption, .scv-root .figure-asset figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 5px; color: #687284; font-size: var(--scv-font-size-8); }
 .scv-root .table-asset figcaption { display: block; margin-bottom: 7px; }
-.scv-root .table-asset table { width: 100%; min-width: 520px; border-collapse: collapse; color: #2a3039; font-family: var(--scv-font-normative); font-size: var(--scv-base-font-size); line-height: 1.35; }
+.scv-root .table-asset table { width: max(100%, 744px); min-width: 520px; border-collapse: collapse; color: #2a3039; font-family: var(--scv-font-normative); font-size: var(--scv-base-font-size); line-height: 1.35; }
 .scv-root .table-asset table .table-math .katex { font-size: 1em; }
 .scv-root .table-asset figcaption { font-family: var(--scv-font-normative); font-size: var(--scv-font-size-12); line-height: 1.35; }
 .scv-root .figure-asset figcaption { font-family: var(--scv-font-normative); font-size: var(--scv-font-size-12); line-height: 1.35; }
@@ -462,6 +462,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-root .table-asset-c7-3-i .table-scroll { overflow-x: auto; }
 .scv-root .table-asset-c7-3-i table { min-width: 1180px; table-layout: fixed; }
 .scv-root .table-notes > p:last-child { margin-bottom: 0; }
+.scv-root .figure-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; }
 .scv-root .figure-asset img { display: block; width: min(100%, 760px); height: auto; max-width: 100%; max-height: min(600px, 70vh); margin-inline: auto; object-fit: contain; }
 .scv-root .figure-asset-c7-2-4 { overflow: visible; }
 .scv-root .figure-asset-c3-3-28 img { width: min(50%, 380px); }
@@ -752,6 +753,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-block p, .scv-root .scv-note-content > p, .scv-root .scv-note-list-item, .scv-root .table-notes > p, .scv-label-list-content > .leading-label-description, .scv-label-list-content > .leading-math-description { text-align: left; }
 
 @media (max-width: 767.98px) {
+  .scv-root .figure-asset img { width: max(100%, min(760px, calc(480px * var(--scv-figure-scale)))) !important; max-width: none !important; max-height: none; }
   .scv-annotation-menu { top: auto !important; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); left: 8px !important; min-width: 0; padding: 8px; border-radius: 12px; }
   .scv-annotation-menu button { min-height: 48px; }
   .scv-annotation-editor { top: auto; right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); left: 8px; width: auto; max-height: min(78dvh, 620px); overflow: auto; border-radius: 14px; }
@@ -791,6 +793,7 @@ body:has(> .scv-root) { overflow: hidden; }
   .scv-citation-context { max-width: none; }
   .scv-backlink-panel { position: absolute; }
   .scv-scroll-rail { top: 0; bottom: 0; }
+  .scv-root.scv-auxiliary-available:not(.scv-has-auxiliary) .scv-scroll-rail { top: 62px; }
   .scv-scroll-overlay span { display: inline; }
 }
 
@@ -823,13 +826,13 @@ body:has(> .scv-root) { overflow: hidden; }
 }
 
 @media (min-width: 992px) and (max-width: 1093.98px) {
-  .scv-root.scv-has-auxiliary .scv-auxiliary-pane { width: 100%; }
-  .scv-root.scv-has-auxiliary .scv-text-pane-shell { visibility: hidden; pointer-events: none; }
+  .scv-auxiliary-pane { width: 100%; }
+  .scv-root.scv-has-auxiliary .scv-text-pane-shell { pointer-events: none; }
 }
 
 @media (min-width: 992px) and (max-width: 1223.98px) {
-  .scv-root.scv-has-auxiliary:has(.scv-tools-dock[data-active-tool="pdf"]) .scv-auxiliary-pane { width: 100%; }
-  .scv-root.scv-has-auxiliary:has(.scv-tools-dock[data-active-tool="pdf"]) .scv-text-pane-shell { visibility: hidden; pointer-events: none; }
+  .scv-root:has(.scv-tools-dock[data-active-tool="pdf"]) .scv-auxiliary-pane { width: 100%; }
+  .scv-root.scv-has-auxiliary:has(.scv-tools-dock[data-active-tool="pdf"]) .scv-text-pane-shell { pointer-events: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -848,6 +851,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-note-margin-icon { width: 16px; height: 16px; }
 .scv-icon[data-variant="light"] [fill="#8fbffa"] { fill: #f9fbff; }
 .scv-icon[data-variant="light"] [fill="#2859c5"] { fill: #ccdcf5; }
+.scv-root:not(.scv-dark) :is(.scv-mobile-index-toggle, .scv-tools-toggle, .scv-theme-button) .scv-icon[data-variant="default"] [fill="#8fbffa"] { fill: var(--scv-primary); }
 .scv-icon[data-variant="danger"] [fill="#8fbffa"] { fill: #f2b9be; }
 .scv-icon[data-variant="danger"] [fill="#2859c5"] { fill: #bc626c; }
 .scv-annotation-editor button.is-danger:hover:not(:disabled) .scv-icon[data-variant="danger"] [fill="#8fbffa"], .scv-annotations-panel button.is-danger:hover .scv-icon[data-variant="danger"] [fill="#8fbffa"] { fill: var(--scv-icon-danger-hover-light); }

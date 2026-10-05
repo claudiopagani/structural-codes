@@ -28,7 +28,7 @@ import {
   type UnitSummary,
   type ViewerMode,
 } from "./corpusData";
-import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, renderInlineSegments } from "./CorpusContent";
+import { AlignedLabelList, BlockContent, groupAlignedLabelBlocks, hasAlphabeticListMarker, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasLeadingMath, hasNoListMarker, hasOfficialListMarker, hasSimpleDashMarker, hasTrailingStrong, indentLevelClass, isRepeatedUnitTitle, listLevelClass, listMarkerClass, unitTitleContent } from "./CorpusContent";
 import { useViewerSearch } from "./searchClient";
 import { createCrossReferenceLookup, resolveCrossReference } from "./crossReferences.js";
 import { ReferencePreview, type ReferencePreviewData } from "./ReferenceTools";
@@ -406,20 +406,6 @@ function sameRelatedRecords(left: RelatedRecord[], right: RelatedRecord[]) {
   return left.length === right.length && left.every((record, index) => record.edge.relationId === right[index]?.edge.relationId && record.unit === right[index]?.unit);
 }
 
-function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
-}
-
-function unitTitleContent(unit: CorpusUnit) {
-  const titleBlock = unit.blocks.find((block) => block.blockId === unit.titleBlockId);
-  const inline = titleBlock?.text?.inline;
-  if (!inline) return unit.title;
-  const officialNumber = unit.numbering.official;
-  const prefix = new RegExp(`^${escapeRegExp(officialNumber)}\\s*`, "u");
-  const titleInline = inline.map((segment, index) => index === 0 && typeof segment.value === "string" ? { ...segment, value: segment.value.replace(prefix, "") } : segment);
-  return renderInlineSegments(titleInline);
-}
-
 const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, assetsBaseUrl, notesByTarget, onOpenAnnotation }: { record: UnitRecord; mode: ViewerMode; relatedRecords: RelatedRecord[]; assetsBaseUrl: string; notesByTarget: Map<string, UserAnnotation[]>; onOpenAnnotation: (annotation: UserAnnotation, position?: AnnotationPosition) => void }) {
   const { unit, chunk } = record;
   const isChapter = depth(unit) === 0;
@@ -433,14 +419,12 @@ const MemoizedUnit = memo(function MemoizedUnit({ record, mode, relatedRecords, 
   </section>;
 }, (previous, next) => previous.record.unit === next.record.unit && previous.record.chunk === next.record.chunk && previous.mode === next.mode && previous.assetsBaseUrl === next.assetsBaseUrl && previous.notesByTarget === next.notesByTarget && previous.onOpenAnnotation === next.onOpenAnnotation && sameRelatedRecords(previous.relatedRecords, next.relatedRecords));
 
-const DocumentContent = memo(function DocumentContent({ records, relatedByTarget, mode, assetsBaseUrl, documentLabel, documentUnits, documentChunks, hasPrevious, hasNext, notesByTarget, onOpenAnnotation }: {
+const DocumentContent = memo(function DocumentContent({ records, relatedByTarget, mode, assetsBaseUrl, documentLabel, hasPrevious, hasNext, notesByTarget, onOpenAnnotation }: {
   records: UnitRecord[];
   relatedByTarget: Map<string, RelatedRecord[]>;
   mode: ViewerMode;
   assetsBaseUrl: string;
   documentLabel: string;
-  documentUnits: number;
-  documentChunks: number;
   hasPrevious: boolean;
   hasNext: boolean;
   notesByTarget: Map<string, UserAnnotation[]>;
@@ -450,7 +434,7 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
   const version = records[0].chunk.structuralCodesVersion;
   return <div className="scv-text-flow">
     {hasPrevious && <div className="scv-progressive-edge" aria-hidden="true" />}
-    <p className="scv-chunk-note">{documentLabel} · {documentUnits} unità · {documentChunks} chunk · structural-codes {version}</p>
+    <p className="scv-chunk-note">{documentLabel} · structural-codes {version}</p>
     {records.map((record) => <MemoizedUnit record={record} mode={mode} relatedRecords={relatedByTarget.get(record.unit.id) ?? emptyRelatedRecords} assetsBaseUrl={assetsBaseUrl} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} key={record.unit.id} />)}
     {hasNext ? <div className="scv-progressive-edge" aria-hidden="true" /> : <div className="scv-end-note">Fine del documento.</div>}
   </div>;
@@ -914,7 +898,6 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [auxiliaryVisible, setAuxiliaryVisible] = useState(false);
   const [auxiliaryMounted, setAuxiliaryMounted] = useState(auxiliaryPanelKeepMounted);
-  const [auxiliaryEntered, setAuxiliaryEntered] = useState(false);
   const [annotations, setAnnotations] = useState<UserAnnotation[]>([]);
   const [annotationsLoading, setAnnotationsLoading] = useState(Boolean(annotationStore));
   const [annotationError, setAnnotationError] = useState<string | null>(null);
@@ -1000,28 +983,18 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   useEffect(() => {
     let mountFrame: number | null = null;
-    let enterFrame: number | null = null;
     let unmountTimer: number | null = null;
     const canRenderPanel = Boolean(manifest && auxiliaryAvailable);
 
     if (canRenderPanel && (auxiliaryVisible || auxiliaryPanelKeepMounted)) {
-      if (!auxiliaryMounted) {
-        mountFrame = window.requestAnimationFrame(() => {
-          setAuxiliaryMounted(true);
-          if (auxiliaryVisible) enterFrame = window.requestAnimationFrame(() => setAuxiliaryEntered(true));
-        });
-      } else enterFrame = window.requestAnimationFrame(() => setAuxiliaryEntered(auxiliaryVisible));
+      if (!auxiliaryMounted) mountFrame = window.requestAnimationFrame(() => setAuxiliaryMounted(true));
     } else {
-      mountFrame = window.requestAnimationFrame(() => {
-        setAuxiliaryEntered(false);
-        if (!canRenderPanel && auxiliaryMounted) setAuxiliaryMounted(false);
-      });
+      if (!canRenderPanel && auxiliaryMounted) mountFrame = window.requestAnimationFrame(() => setAuxiliaryMounted(false));
       if (canRenderPanel && auxiliaryMounted && !auxiliaryPanelKeepMounted) unmountTimer = window.setTimeout(() => setAuxiliaryMounted(false), 520);
     }
 
     return () => {
       if (mountFrame !== null) window.cancelAnimationFrame(mountFrame);
-      if (enterFrame !== null) window.cancelAnimationFrame(enterFrame);
       if (unmountTimer !== null) window.clearTimeout(unmountTimer);
     };
   }, [auxiliaryAvailable, auxiliaryMounted, auxiliaryPanelKeepMounted, auxiliaryVisible, manifest]);
@@ -1900,7 +1873,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
 
   if (loadError) return <main className="scv-fatal"><strong>Il corpus non è disponibile.</strong><span>Rigenera gli artefatti del viewer e ricarica la pagina.</span></main>;
 
-  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${auxiliaryEntered && auxiliaryAvailable ? "scv-auxiliary-entered" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
+  return <div className={`scv-root ${darkMode ? "scv-dark" : ""} ${auxiliaryAvailable ? "scv-auxiliary-available" : ""} ${auxiliaryVisible && auxiliaryAvailable ? "scv-has-auxiliary" : ""} ${mobileIndexOpen ? "scv-mobile-index-open" : ""} ${className ?? ""}`} data-scv-mounted-chunks={primaryRenderedPaths.size} data-scv-loaded-related-chunks={mode === "combined" ? requiredCombinedCircPaths.size : 0} data-scv-search-index-requested={search.indexRequested} data-scv-cross-reference-index-requested={Boolean(crossReferenceIndex)} data-scv-search-error={search.errorMessage}>
     <NavigationPane id={navigationId} mode={mode} onModeChange={changeMode} hierarchy={hierarchy} activeLevelIds={activeLevelIds} sidebarMode={mobileIndexOpen} sidebarSession={mobileIndexSession} indexReady={Boolean(index)} query={query} onQueryChange={setQuery} searchReady={search.queryReady} searchStatus={search.status} searchSource={search.source} searchDurationMs={search.durationMs} searchResults={search.results} onSearchSubmit={submitSearch} onSearchResult={selectSearchResult} onSelectUnit={selectUnit} onRequestClose={closeMobileIndex} onHistoryBack={() => { saveHistoryScroll(); window.history.back(); }} onHistoryForward={() => { saveHistoryScroll(); window.history.forward(); }} canHistoryBack={historyPosition.index > 0} canHistoryForward={historyPosition.index < historyPosition.max} searchRef={searchRef} darkMode={Boolean(darkMode)} onToggleTheme={() => setDarkMode((current) => !current)} />
     <div className="scv-text-pane-shell">
       <button ref={mobileIndexButtonRef} type="button" className="scv-mobile-index-toggle" aria-controls={navigationId} aria-expanded={mobileIndexOpen} onClick={() => {
@@ -1928,7 +1901,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
       }} aria-label={`Apri ${auxiliaryPanelLabel}`}><DashboardIcon /><span className="scv-visually-hidden">{auxiliaryPanelButtonText}</span></button>}
       {contentLoadNotice && <p className="scv-content-notice" role="status">{contentLoadNotice}</p>}
       <article ref={textPaneRef} className="scv-text-pane" aria-label="Corpus JSON" onClick={handleDocumentClick} onContextMenu={handleDocumentContextMenu} onKeyDown={handleDocumentKeyDown} onPointerDown={handleDocumentPointerDown} onPointerMove={handleDocumentPointerMove} onPointerUp={cancelDocumentLongPress} onPointerCancel={cancelDocumentLongPress} onPointerOver={handleDocumentPointerOver} onPointerOut={handleDocumentPointerOut} onFocus={handleDocumentFocus} onBlur={handleDocumentBlur}>
-        {documentLoading || !index || !lookup || !readingSummary ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={readingSummary.label} documentUnits={readingSummary.units} documentChunks={readingSummary.chunks} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}
+        {documentLoading || !index || !lookup || !readingSummary ? <LoadingPanel label="Caricamento del documento…" /> : <DocumentContent records={renderRecords} relatedByTarget={relatedByTarget} mode={mode} assetsBaseUrl={assetsBaseUrl} documentLabel={readingSummary.label} hasPrevious={hasPrevious} hasNext={hasNext} notesByTarget={notesByTarget} onOpenAnnotation={openAnnotation} />}
       </article>
       <GlobalDocumentScrubber rootRef={textPaneRef} entries={scrubberEntries} activeId={scrubberActiveId} onSelect={selectScrollMarker} annotationMarkers={annotationMarkers} onAnnotationSelect={selectAnnotationMarker} />
     </div>
@@ -1936,7 +1909,7 @@ export function NormativeViewer({ defaultMode = "combined", dataBaseUrl = "/data
     {permalinkNotice && <span className={`scv-permalink-notice is-${permalinkNotice.placement} is-${permalinkNotice.status}`} style={{ left: permalinkNotice.left, top: permalinkNotice.top }} role="status">{permalinkNotice.message}</span>}
     {annotationMenu && <AnnotationContextMenu state={annotationMenu} darkMode={Boolean(darkMode)} onCopyLink={(target) => copyTargetPermalink(target, findViewerTarget(textPaneRef.current, target))} onClose={() => setAnnotationMenu(null)} onBookmark={() => { setAnnotationEditor({ type: "bookmark", target: annotationMenu.target, metadata: annotationMenu.metadata, annotation: annotationMenu.bookmark, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} onNote={() => { setAnnotationEditor({ type: "note", target: annotationMenu.target, metadata: annotationMenu.metadata, x: annotationMenu.x, y: annotationMenu.y }); setAnnotationMenu(null); }} />}
     {annotationEditor && <AnnotationEditor state={annotationEditor} busy={annotationBusy} error={annotationError} onSave={(value) => void saveAnnotationEditor(value)} onDelete={annotationEditor.annotation ? () => void removeAnnotation(annotationEditor.annotation!) : null} onClose={() => { setAnnotationEditor(null); setAnnotationError(null); }} />}
-    {auxiliaryMounted && auxiliaryAvailable && renderAuxiliary && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{renderAuxiliary}</aside>}
+    {manifest && auxiliaryAvailable && <aside ref={auxiliaryPaneRef} id={auxiliaryId} inert={!auxiliaryVisible ? true : undefined} aria-hidden={!auxiliaryVisible} className="scv-auxiliary-pane" aria-label={auxiliaryPanelLabel}>{auxiliaryMounted && renderAuxiliary}</aside>}
   </div>;
 }
 

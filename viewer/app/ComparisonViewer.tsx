@@ -18,6 +18,7 @@ export function ComparisonViewer() {
     auxiliaryPanelModes={["ntc", "circ", "combined"]}
     auxiliaryPanelDefaultVisible={false}
     auxiliaryPanelDesktopDefaultVisible={false}
+    auxiliaryPanelKeepMounted
     annotationStore={annotationStore}
   />;
 }

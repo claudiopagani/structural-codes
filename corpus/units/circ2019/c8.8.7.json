@@ -613,12 +613,12 @@
       "origin": "official",
       "text": {
         "raw": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e\nrealizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica\nantecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere \u0002E=0,80.",
-        "normalized": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere ζ_ζ_E=0,80.",
+        "normalized": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere ζ_E=0,80.",
         "normalizationVersion": "circ8-c88-step1-editorial-0.1.0",
         "inline": [
           {
             "kind": "text",
-            "value": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere ζ_"
+            "value": "Ove non ricorrano condizioni diverse, gli interventi inerenti l’adeguamento sismico di infrastrutture esistenti progettate e realizzate antecedentemente alla classificazione sismica dell’area su cui insistono o nel rispetto di una normativa tecnica antecedenti delle Norme Tecniche possono inquadrarsi nella lettera c) del § 8.4.3, per essi, pertanto, si può assumere "
           },
           {
             "kind": "math",
@@ -666,10 +666,15 @@
             "operation": "manual-correction",
             "ruleVersion": "circ8-c88-step1-editorial-0.1.0",
             "note": "Ripristinato il parametro ζ_E in matematica inline secondo il PDF ufficiale."
+          },
+          {
+            "operation": "manual-correction",
+            "ruleVersion": "circ8-c887-inline-zeta-0.1.0",
+            "note": "Rimossa la duplicazione di ζ_ nel testo normalizzato; il segmento matematico ζ_E coincide con il PDF ufficiale."
           }
         ],
         "rawSha256": "b9c066d4b0c5f6ceedce94b4c34a4bfb0d2badba13f09e3c5564bdfdd581dfff",
-        "normalizedSha256": "3f446547ec4c9ae69eb5e9c8ab411f9f2fa164106f19c47692d55d9579f50c1f"
+        "normalizedSha256": "207e7d81a657f261445d6b2bbd314ce00a47f360d5fc0e525e2f6eb75af96f18"
       }
     }
   ],

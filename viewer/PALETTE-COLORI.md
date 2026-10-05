@@ -10,7 +10,7 @@ aggiornare anche questa lista.
 | Colore | Token | Uso |
 | --- | --- | --- |
 | `#4F74BF` | `--scv-button-emphasis-bg` | Fondo dei pulsanti selezionati, in hover, focus o pressione; linee verticali dell’indice; sfondo dei titoli/intestazioni delle tabelle normative. |
-| `#3C52A3` | `--scv-primary` | Blu primario per indicatori di focus, collegamenti e selezioni di testo. |
+| `#4F74BF` | `--scv-primary` | Blu primario condiviso con i pulsanti selezionati; usato per indicatori di focus, collegamenti, selezioni di testo e icone principali nel tema chiaro. |
 | `#293B82` | `--scv-primary-dark` | Blu più scuro per testi e controlli che richiedono maggiore enfasi. |
 | `#E8ECFB` | `--scv-primary-soft` | Fondo blu tenue per superfici secondarie e azioni contestuali. |
 | `#20242C` | `--scv-ink` | Testo principale nel tema chiaro. |

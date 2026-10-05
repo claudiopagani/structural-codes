@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import test from "node:test";
 
 type Inline = { kind: string; value: string; latex?: string };
-type Block = { blockId: string; kind: string; listMarker?: string; listLevel?: number; indentLevel?: number; text?: { normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string }> }; evidence?: { pdfPage?: number } };
+type Block = { blockId: string; kind: string; listMarker?: string; listLevel?: number; indentLevel?: number; text?: { normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string }> }; evidence?: { pdfPage?: number; normalizedSha256?: string } };
 type Unit = { blocks: Block[] };
 type Cell = { text: string; align?: string; verticalText?: boolean; rowSpan?: number; colSpan?: number; latex?: string; inline?: Inline[]; strong?: boolean; shade?: string; noWrap?: boolean };
 type Table = { officialNumber: string; headers: Cell[][]; rows: Cell[][]; notes?: string[]; notesInline?: Inline[][]; columnWidths?: number[] };
@@ -233,6 +234,9 @@ test("C8.8 conserva capoversi, titoli corsivi e matematica inline", async () => 
     const c887 = await unit("c8.8.7");
     const final = c887.blocks.find((block) => block.text?.normalized.includes("ζ_E=0,80"));
     assert.equal(final?.text?.inline?.some(({ kind, latex }) => kind === "math" && latex === "\\zeta_E=0{,}80"), true);
+    assert.equal(final?.text?.normalized.endsWith("si può assumere ζ_E=0,80."), true);
+    assert.equal(final?.text?.inline?.map(({ value }) => value).join(""), final?.text?.normalized);
+    assert.equal(createHash("sha256").update(final?.text?.normalized ?? "").digest("hex"), final?.evidence?.normalizedSha256);
     const c8855 = await unit("c8.8.5.5");
     assert.equal(c8855.blocks.slice(2, 4).every((block) => block.kind === "list-item" && block.listMarker === "dash"), true);
     assert.ok(c8855.blocks[3]?.text?.inline?.some((segment) => segment.kind === "math" && segment.latex === "\\theta>\\theta_y"));

@@ -4,7 +4,7 @@ import { readdir, readFile } from "node:fs/promises";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { JSDOM } from "jsdom";
-import { BlockContent, groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasSimpleDashMarker, hasTrailingStrong, leadingMathLabelEnd } from "../package-dist/CorpusContent.js";
+import { BlockContent, groupAlignedLabelBlocks, hasAlphaRatioListLayout, hasInferredAlphaRatioListMarker, hasLeadingEmphasisLabel, hasSimpleDashMarker, hasTrailingStrong, leadingMathLabelEnd, unitTitleContent } from "../package-dist/CorpusContent.js";
 import { visibleTableCaption, visibleTableNumberSuffix } from "../shared/tableCaptions.mjs";
 
 async function render(pathname) {
@@ -55,6 +55,30 @@ test("multi-symbol math labels keep the complete label aligned", () => {
     { kind: "text", value: " sono i valori della domanda;" },
   ];
   assert.equal(leadingMathLabelEnd(inline), 5);
+});
+
+test("i titoli del corpus non mostrano il punto separatore dopo la numerazione", async () => {
+  const container = new JSDOM("<span></span>").window.document.querySelector("span");
+  let rendered = 0;
+  let withFinalNumberDot = 0;
+  for (const document of ["ntc2018", "circ2019"]) {
+    const directory = new URL(`../../corpus/units/${document}/`, import.meta.url);
+    for (const file of await readdir(directory)) {
+      const unit = JSON.parse(await readFile(new URL(file, directory), "utf8"));
+      assert.doesNotMatch(unit.title, /^\s*[.·•:;,]/u, unit.id);
+      const heading = unit.blocks.find((block) => block.blockId === unit.titleBlockId);
+      if (!heading?.text?.inline) continue;
+      const hasFinalNumberDot = heading.text.inline[0]?.value?.startsWith(`${unit.numbering.official}. `);
+      if (hasFinalNumberDot) withFinalNumberDot += 1;
+      container.innerHTML = renderToStaticMarkup(React.createElement("span", null, unitTitleContent(unit)));
+      const visible = (container.textContent ?? "").replace(/[\u200b\u2060]/gu, "").replace(/\s+/gu, " ").trim();
+      assert.doesNotMatch(visible, /^[.·•:;,]/u, unit.id);
+      if (hasFinalNumberDot) assert.equal(visible.toLocaleLowerCase("it"), unit.title.replace(/\s+/gu, " ").trim().toLocaleLowerCase("it"), unit.id);
+      rendered += 1;
+    }
+  }
+  assert.ok(rendered > 500);
+  assert.ok(withFinalNumberDot >= 60);
 });
 
 test("la matematica finale resta nel flusso della voce in tutto il corpus", async () => {
@@ -361,18 +385,35 @@ test("le schede principali della sidebar si allineano come linguette sulla riga 
   assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\] \{[^}]*background: var\(--scv-panel\)[^}]*border-bottom-color: var\(--scv-panel\)/);
 });
 
-test("la sidebar destra scorre anche in chiusura e la scrollbar lascia libero il pulsante dashboard", async () => {
+test("le sidebar scorrono in entrambi i versi e la scrollbar lascia libero il pulsante dashboard", async () => {
+  const [source, app, styles] = await Promise.all([
+    readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/ComparisonViewer.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(source, /const \[auxiliaryMounted, setAuxiliaryMounted\]/);
+  assert.match(source, /setTimeout\(\(\) => setAuxiliaryMounted\(false\), 520\)/);
+  assert.match(source, /manifest && auxiliaryAvailable && <aside[^>]+className="scv-auxiliary-pane"[^>]*>\{auxiliaryMounted && renderAuxiliary\}<\/aside>/);
+  assert.match(app, /auxiliaryPanelKeepMounted/);
+  assert.match(styles, /\.scv-index-pane, \.scv-auxiliary-pane \{[^}]*transition: transform \.5s/);
+  assert.match(styles, /\.scv-root\.scv-mobile-index-open \.scv-index-pane, \.scv-root\.scv-has-auxiliary \.scv-auxiliary-pane \{ visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; \}/);
+  assert.match(styles, /@media \(min-width: 992px\) and \(max-width: 1093\.98px\) \{\s*\.scv-auxiliary-pane \{ width: 100%; \}/);
+  assert.match(styles, /@media \(min-width: 992px\) and \(max-width: 1223\.98px\) \{\s*\.scv-root:has\(\.scv-tools-dock\[data-active-tool="pdf"\]\) \.scv-auxiliary-pane \{ width: 100%; \}/);
+  assert.doesNotMatch(styles, /\.scv-root\.scv-has-auxiliary[^\n{]*\.scv-text-pane-shell \{ visibility: hidden;/);
+  assert.doesNotMatch(source, /scv-auxiliary-entered/);
+  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-scroll-rail \{ top: 62px; \}/);
+  assert.match(styles, /\.scv-root\.scv-auxiliary-available:not\(\.scv-has-auxiliary\) \.scv-scroll-rail \{ top: 62px; \}/);
+});
+
+test("il riepilogo mostra solo documento e versione e le tre icone giorno usano il blu principale", async () => {
   const [source, styles] = await Promise.all([
     readFile(new URL("../shared/NormativeViewer.tsx", import.meta.url), "utf8"),
     readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
   ]);
-  assert.match(source, /const \[auxiliaryMounted, setAuxiliaryMounted\]/);
-  assert.match(source, /requestAnimationFrame\(\(\) => setAuxiliaryEntered\(true\)\)/);
-  assert.match(source, /setTimeout\(\(\) => setAuxiliaryMounted\(false\), 520\)/);
-  assert.match(source, /auxiliaryMounted && auxiliaryAvailable && renderAuxiliary/);
-  assert.match(styles, /\.scv-root\.scv-auxiliary-entered \.scv-auxiliary-pane/);
-  assert.match(styles, /\.scv-root\.scv-has-auxiliary \.scv-scroll-rail \{ top: 62px; \}/);
-  assert.doesNotMatch(styles, /\.scv-root\.scv-auxiliary-available:not\(\.scv-has-auxiliary\) \.scv-scroll-rail/);
+  assert.match(source, /<p className="scv-chunk-note">\{documentLabel\} · structural-codes \{version\}<\/p>/);
+  assert.doesNotMatch(source, /documentUnits|documentChunks/);
+  assert.match(styles, /\.scv-root:not\(\.scv-dark\) :is\(\.scv-mobile-index-toggle, \.scv-tools-toggle, \.scv-theme-button\) \.scv-icon\[data-variant="default"\] \[fill="#8fbffa"\] \{ fill: var\(--scv-primary\); \}/);
+  assert.match(styles, /--scv-primary:\s*var\(--scv-button-emphasis-bg\)/u);
 });
 
 test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", async () => {
@@ -503,7 +544,7 @@ test("il renderer unico conserva formule, tabelle, figure ed elenchi strutturati
   assert.match(component, /<strong key=\{`strong-em-\$\{index\}`\}><em>\{renderReferenceText\(segment\.value/);
   assert.match(component, /loading="lazy"/);
   assert.doesNotMatch(component, /variant: "scv" \| "legacy"|UnitBlocks|normative-copy/);
-  assert.match(styles, /--scv-primary:\s*#3c52a3/iu);
+  assert.match(styles, /--scv-button-emphasis-bg:\s*#4f74bf/iu);
   assert.match(styles, /--scv-font-normative: "Tinos", serif;/);
   assert.match(styles, /--scv-font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;/);
   assert.match(styles, /\.scv-root \.formula-number/);

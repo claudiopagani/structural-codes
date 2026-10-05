@@ -362,6 +362,16 @@ export function renderInlineSegments(inline: InlineSegments, context: ReferenceC
   return nodes;
 }
 
+export function unitTitleContent(unit: CorpusUnit) {
+  const titleBlock = unit.blocks.find((block) => block.blockId === unit.titleBlockId);
+  const inline = titleBlock?.text?.inline;
+  if (!inline) return unit.title;
+  const officialNumber = unit.numbering.official.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+  const prefix = new RegExp(`^${officialNumber}(?:\\.)?(?=\\s|$)\\s*`, "u");
+  const titleInline = inline.map((segment, index) => index === 0 && typeof segment.value === "string" ? { ...segment, value: segment.value.replace(prefix, "") } : segment);
+  return renderInlineSegments(titleInline);
+}
+
 function splitInlinePrefix(inline: InlineSegments, prefix: string) {
   let remaining = prefix;
   const marker: InlineSegments = [];
@@ -495,7 +505,7 @@ export function BlockContent({ block, assets, assetsBaseUrl = "/assets", aligned
     const imageStyle = displayScale === 1 ? undefined : displayScale < 1
       ? { width: `${displayScale * 100}%`, maxWidth: `${displayScale * 760}px` }
       : { width: `${displayScale * 100}%`, maxWidth: "none" };
-    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`}><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} />{figure.caption && <figcaption><button type="button" className="scv-permalink-trigger scv-caption-permalink" data-scv-copy-link aria-label={`Copia link alla figura${figure.officialNumber ? ` ${figure.officialNumber}` : ""}`}>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</button></figcaption>}<CopyFigureButton /></figure>;
+    return <figure className={`figure-asset ${figureAssetClass(figure.officialNumber)} scv-copyable-asset`} style={{ "--scv-figure-scale": displayScale } as React.CSSProperties}><div className="figure-scroll"><img loading="lazy" src={`${assetsBaseUrl.replace(/\/+$/u, "")}/${figure.imagePath}`} alt={figure.alt} width={width} height={height} style={imageStyle} /></div>{figure.caption && <figcaption><button type="button" className="scv-permalink-trigger scv-caption-permalink" data-scv-copy-link aria-label={`Copia link alla figura${figure.officialNumber ? ` ${figure.officialNumber}` : ""}`}>{figure.captionInline ? renderInlineSegments(figure.captionInline) : figure.caption}</button></figcaption>}<CopyFigureButton /></figure>;
   }
   return <p className="asset-missing">Asset non risolto: {block.assetId}</p>;
 }
