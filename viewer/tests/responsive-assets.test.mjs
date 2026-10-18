@@ -12,5 +12,7 @@ test("figure e tabelle conservano una larghezza leggibile nel pannello stretto",
   assert.match(component, /"--scv-figure-scale": displayScale/);
   assert.match(styles, /\.scv-root \.figure-scroll \{[^}]*overflow-x: auto/);
   assert.match(styles, /\.scv-root \.table-asset table \{ width: max\(100%, 744px\)/);
+  assert.match(component, /compactTable \? "table-scroll-compact" : ""/);
+  assert.match(styles, /\.scv-root \.table-scroll-compact table \{ width: 100%; min-width: 0; \}/);
   assert.match(styles, /@media \(max-width: 767\.98px\) \{[^]*?\.scv-root \.figure-asset img \{ width: max\(100%, min\(760px, calc\(480px \* var\(--scv-figure-scale\)\)\)\)/);
 });
