@@ -14,11 +14,11 @@ editoriale.
 
 ## Stato della prerelease
 
-La versione corrente dei package è `0.1.0-beta.3`. La review umana integrale del testo
-delle NTC 2018 e della Circolare 7/2019 contro le fonti ufficiali è registrata
-al 2026-09-20. Il corpus contiene 1.055 unità NTC e 690 unità della Circolare,
-tutte con `review.status: "verified"`. Questa verifica non costituisce una
-seconda review indipendente né un'approvazione ufficiale.
+La versione in preparazione dei package è `0.1.0-beta.4`. Il corpus contiene
+1.055 unità NTC e 690 unità della Circolare. La nuova introduzione di C8.7.4.2
+è in attesa di verifica umana: l'unità e la review della Circolare sono `draft`.
+Le altre unità conservano lo stato `verified`. Questa verifica non costituisce
+una seconda review indipendente né un'approvazione ufficiale.
 
 I 302 collegamenti Circolare → NTC sono relazioni esplicite ancora `proposed`.
 Le corrispondenze ricavate dalla sola numerazione restano diagnostiche e non
