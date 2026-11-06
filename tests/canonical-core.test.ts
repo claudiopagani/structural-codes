@@ -83,18 +83,18 @@ test("il manifest descrive l'intero corpus canonico", async () => {
     };
     const units = await loadUnits();
 
-    assert.equal(manifest.status, "verified");
-    assert.equal(manifest.asOf, "2026-09-20");
+    assert.equal(manifest.status, "draft");
+    assert.equal(manifest.asOf, "2026-11-06");
     assert.deepEqual(Object.keys(manifest.documents).sort(), [
         "circ2019",
         "ntc2018",
     ]);
     assert.deepEqual(manifest.review, {
-        status: "complete",
+        status: "partial",
         scope: "integral-text",
         against: "official-source",
-        asOf: "2026-09-20",
-        documents: { ntc2018: "verified", circ2019: "verified" },
+        asOf: "2026-11-06",
+        documents: { ntc2018: "verified", circ2019: "draft" },
     });
     assert.equal(units.length, 1745);
     assert.equal(
@@ -104,14 +104,14 @@ test("il manifest descrive l'intero corpus canonico", async () => {
                 unit.blocks.filter((block) => block.text !== undefined).length,
             0,
         ),
-        11056,
+        11057,
     );
 });
 
 test("la baseline registra la review integrale senza workflow storico", async () => {
     const units = await loadUnits();
     for (const unit of units) {
-        assert.equal(unit.review.status, "verified", unit.id);
+        assert.equal(unit.review.status, unit.id === "urn:structural-codes:it:unit:circ2019:c8.7.4.2" ? "draft" : "verified", unit.id);
         assert.equal("workflow" in unit, false, unit.id);
         assert.equal("openIssues" in unit, false, unit.id);
     }

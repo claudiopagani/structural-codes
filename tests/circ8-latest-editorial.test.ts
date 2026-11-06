@@ -5,8 +5,8 @@ import { join } from "node:path";
 import test from "node:test";
 
 type Inline = { kind: string; value: string; latex?: string };
-type Block = { blockId: string; kind: string; listMarker?: string; listLevel?: number; indentLevel?: number; text?: { normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string }> }; evidence?: { pdfPage?: number; normalizedSha256?: string } };
-type Unit = { blocks: Block[] };
+type Block = { blockId: string; kind: string; listMarker?: string; listLevel?: number; indentLevel?: number; text?: { raw?: string; normalized: string; inline?: Inline[]; paragraphs?: Array<{ normalized: string }> }; evidence?: { pdfPage?: number; rawSha256?: string; normalizedSha256?: string } };
+type Unit = { title: string; titleBlockId: string; blocks: Block[]; review: { status: string } };
 type Cell = { text: string; align?: string; verticalText?: boolean; rowSpan?: number; colSpan?: number; latex?: string; inline?: Inline[]; strong?: boolean; shade?: string; noWrap?: boolean };
 type Table = { officialNumber: string; headers: Cell[][]; rows: Cell[][]; notes?: string[]; notesInline?: Inline[][]; columnWidths?: number[] };
 type AssetManifest = { tables: Table[] };
@@ -195,6 +195,17 @@ test("C8.7.2.4.2–C8.7.6.3 conservano matematica, capoversi, elenchi e tabelle"
     assert.equal(c8741.blocks.find((block) => block.text?.normalized.includes("adeguatamente le fondazioni"))?.text?.normalized.startsWith("L’intervento va realizzato"), true);
     assert.equal(c8741.blocks.find((block) => block.text?.normalized.includes("iniezioni di miscele cementizie"))?.text?.normalized.startsWith("Gli interventi di consolidamento"), true);
     assert.equal(c8741.blocks.find((block) => block.text?.normalized.includes("fabbricato, è consigliabile"))?.text?.normalized.startsWith("Nel caso di cedimenti"), true);
+
+    const c8742 = await unit("c8.7.4.2");
+    assert.equal(c8742.title, "CRITERI PER GLI INTERVENTI DI CONSOLIDAMENTO DEGLI EDIFICI IN CALCESTRUZZO");
+    assert.deepEqual(c8742.blocks.map((block) => block.kind), ["heading", "paragraph"]);
+    assert.equal(c8742.blocks[0]?.blockId, c8742.titleBlockId);
+    const introduction = c8742.blocks[1];
+    assert.equal(introduction?.text?.normalized, "Nel presente Capitolo si forniscono criteri generali per gli interventi di consolidamento degli edifici in calcestruzzo armato, insieme ai relativi modelli di capacità, con riferimento ad alcune tecniche usualmente utilizzate. I criteri e le tecniche di seguito riportati sono indicativi e non esaustivi; non si esclude pertanto l’impiego di tecniche di intervento non citate, metodologie innovative o soluzioni particolari che il progettista individui come adeguate al caso specifico.");
+    assert.equal(introduction?.evidence?.pdfPage, 293);
+    assert.equal(createHash("sha256").update(introduction?.text?.raw ?? "").digest("hex"), introduction?.evidence?.rawSha256);
+    assert.equal(createHash("sha256").update(introduction?.text?.normalized ?? "").digest("hex"), introduction?.evidence?.normalizedSha256);
+    assert.equal(c8742.review.status, "draft");
 
     const c87421 = await unit("c8.7.4.2.1");
     assert.equal(c87421.blocks.filter((block) => block.text?.normalized.includes("elemento incamiciato") || block.text?.normalized.includes("carico assiale") || block.text?.normalized.includes("proprietà meccaniche del calcestruzzo")).every((block) => block.kind === "list-item" && block.listMarker === "dash"), true);

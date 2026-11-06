@@ -37,7 +37,7 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
   assert.equal(manifest.structuralCodesVersion, "0.1.0-beta.3");
   assert.equal(manifest.schemaVersion, "2.0.0-alpha.3");
   assert.equal(manifest.stats.units, 1745);
-  assert.equal(manifest.stats.blocks, 11056);
+  assert.equal(manifest.stats.blocks, 11057);
   assert.equal(manifest.stats.explicitRelations, 302);
   assert.equal(manifest.stats.suggestedRelationDiagnostics, 233);
   assert.equal(manifest.stats.assetUnits, 436);
@@ -68,10 +68,15 @@ test("gli artefatti lazy coincidono con corpus, asset e relazioni canonici", asy
     const chunk = chunks.get(summary.chunkPath);
     assert.ok(chunk?.units.some((unit) => unit.id === summary.id));
   }
+  const c8742Summary = summaries.find((summary) => summary.id === "urn:structural-codes:it:unit:circ2019:c8.7.4.2");
+  assert.ok(c8742Summary);
+  const c8742 = chunks.get(c8742Summary?.chunkPath)?.units.find((unit) => unit.id === c8742Summary.id);
+  assert.equal(c8742?.title, "CRITERI PER GLI INTERVENTI DI CONSOLIDAMENTO DEGLI EDIFICI IN CALCESTRUZZO");
+  assert.deepEqual(c8742?.blocks.map((block) => block.kind), ["heading", "paragraph"]);
   const units = [...chunks.values()].flatMap(({ units }) => units);
   assert.equal(units.length, 1745);
   assert.equal(
-    units.every((unit) => unit.review.status === "verified"),
+    units.every((unit) => unit.review.status === (unit.id === "urn:structural-codes:it:unit:circ2019:c8.7.4.2" ? "draft" : "verified")),
     true,
   );
 
