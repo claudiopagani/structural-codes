@@ -9,7 +9,7 @@ aggiornare anche questa lista.
 
 | Colore | Token | Uso |
 | --- | --- | --- |
-| `#4F74BF` | `--scv-button-emphasis-bg` | Fondo dei pulsanti selezionati, in hover, focus o pressione; linee verticali dell’indice; sfondo dei titoli/intestazioni delle tabelle normative. |
+| `#4F74BF` | `--scv-button-emphasis-bg` | Fondo dei pulsanti generali selezionati, in hover, focus o pressione; linee verticali dell’indice; sfondo dei titoli/intestazioni delle tabelle normative. Le voci dell’indice hanno colori dedicati. |
 | `#4F74BF` | `--scv-primary` | Blu primario condiviso con i pulsanti selezionati; usato per indicatori di focus, collegamenti, selezioni di testo e icone principali nel tema chiaro. |
 | `#293B82` | `--scv-primary-dark` | Blu più scuro per testi e controlli che richiedono maggiore enfasi. |
 | `#E8ECFB` | `--scv-primary-soft` | Fondo blu tenue per superfici secondarie e azioni contestuali. |
@@ -58,6 +58,9 @@ aggiornare anche questa lista.
 | `#FFF0A8` / `#FFF4BD` | Evidenziazione della ricerca e del contenuto raggiunto nel tema chiaro. |
 | `#766224` / `#514821` | Fondi delle evidenziazioni di ricerca nel tema scuro. |
 | `#FAFAFA` | Fondo neutro dei pulsanti e dei controlli chiari. |
+| `#C7E6FA` / `#91C5E5` | Hover e focus delle voci dell’indice nei temi chiaro e scuro, con testo blu scuro. |
+| `#365F9F` / `#4A72AD` / `#57799E` | Selezione di capitoli, paragrafi e sottoparagrafi nel tema chiaro. |
+| `#345D93` / `#456F9F` / `#54769D` | Selezione di capitoli, paragrafi e sottoparagrafi nel tema scuro. |
 
 Ombre e sovrapposizioni usano anche colori neri o bianchi con opacità: sono
 effetti di profondità e non colori di superficie della palette.

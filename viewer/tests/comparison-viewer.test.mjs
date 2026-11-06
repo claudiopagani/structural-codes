@@ -454,14 +454,14 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-indent: 0px/);
   assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-indent: 0px/);
-  assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
-  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
-  assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: var\(--scv-button-emphasis-bg\)[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-index-level-0 \{[^}]*--scv-index-active-bg: #365f9f[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-index-level-1 \{[^}]*--scv-index-active-bg: #4a72ad[^}]*--scv-index-active-ink: #fff/);
+  assert.match(styles, /\.scv-index-level-2 \{[^}]*--scv-index-active-bg: #57799e[^}]*--scv-index-active-ink: #fff/);
   assert.match(styles, /\.scv-index-list button\.active strong, \.scv-index-list button\.active span \{[^}]*color: var\(--scv-index-active-ink\)/);
   assert.match(styles, /\.scv-index-list button \{[^}]*width: calc\(100% - 4px\)[^}]*margin: 2px 2px 2px 0/);
   assert.match(styles, /\.scv-index-list button\.active \{[^}]*background: var\(--scv-index-active-bg\)/);
   assert.match(styles, /--scv-button-emphasis-bg: #4f74bf/);
-  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-annotation-scrubber-marker\):not\(\.scv-note-margin-marker\):not\(\.scv-tools-tab\)[^]*color: #fff;[^]*background: var\(--scv-button-emphasis-bg\);[^]*border-color: transparent/);
+  assert.match(styles, /button:not\(\.is-danger\):not\(\.scv-index-entry\):not\(\.scv-annotation-scrubber-marker\):not\(\.scv-note-margin-marker\):not\(\.scv-tools-tab\)[^]*color: #fff;[^]*background: var\(--scv-button-emphasis-bg\);[^]*border-color: transparent/);
   assert.doesNotMatch(styles, /--scv-button-emphasis-border|border: 1px solid var\(--scv-button-emphasis-border\)/);
   assert.match(styles, /\.scv-search-result:is\(:hover, :focus-visible\) small \{ color: #fff; \}/);
   assert.match(styles, /\.scv-tools-header \.scv-tools-tab\[aria-selected="true"\]:hover \{ background: var\(--scv-panel\); \}/);
@@ -480,6 +480,35 @@ test("l'indice e lo scrubber globale seguono lo scroll del flusso continuo", asy
   assert.match(styles, /\.scv-chapter-heading/);
   assert.match(styles, /\.scv-block p \{[^}]*text-align: justify/);
   assert.match(source, /Fine del documento/);
+});
+
+test("l'indice distingue i tre livelli e mantiene leggibili hover e selezione nei due temi", async () => {
+  const styles = await readFile(new URL("../shared/styles.css", import.meta.url), "utf8");
+  const activeColors = (prefix) => [0, 1, 2].map((level) => {
+    const match = styles.match(new RegExp(`${prefix}\\.scv-index-level-${level} \\{[^}]*--scv-index-active-bg: (#[0-9a-f]{6})`, "u"));
+    assert.ok(match, `manca il colore del livello ${level}`);
+    return match[1];
+  });
+  const luminance = (hex) => {
+    const channels = hex.slice(1).match(/.{2}/gu).map((part) => parseInt(part, 16) / 255);
+    const [red, green, blue] = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+    return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+  };
+  const contrast = (first, second) => {
+    const values = [luminance(first), luminance(second)].sort((left, right) => right - left);
+    return (values[0] + 0.05) / (values[1] + 0.05);
+  };
+  const light = activeColors("");
+  const dark = activeColors("\\.scv-root\\.scv-dark ");
+  for (const colors of [light, dark]) {
+    assert.equal(new Set(colors).size, 3);
+    for (const color of colors) assert.ok(contrast(color, "#ffffff") >= 4.5, `${color} non contrasta con il testo`);
+  }
+  assert.ok(contrast("#c7e6fa", "#183b5a") >= 4.5);
+  assert.ok(contrast("#91c5e5", "#142d47") >= 4.5);
+  assert.match(styles, /\.scv-index-list button:is\(:hover, :focus-visible\) \{ color: var\(--scv-index-hover-ink\); background: var\(--scv-index-hover-bg\); \}/u);
+  assert.match(styles, /\.scv-root\.scv-dark \.scv-index-list button:is\(:hover, :focus-visible\) \{ color: var\(--scv-index-hover-ink\); background: var\(--scv-index-hover-bg\); \}/u);
+  assert.match(styles, /\.scv-root button:not\(\.is-danger\):not\(\.scv-index-entry\)/u);
 });
 
 test("il PDF resta locale/debug, viene caricato on demand e segue la pagina evidence", async () => {
