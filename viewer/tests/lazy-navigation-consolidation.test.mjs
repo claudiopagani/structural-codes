@@ -78,6 +78,15 @@ test("anche su viewport strette il testo resta un contenitore scrollabile per il
   assert.doesNotMatch(mobile, /\.scv-(?:index|auxiliary)-pane \{ position: fixed/);
 });
 
+test("un capitolo breve alla fine della finestra montata può raggiungere l'inizio del pannello", async () => {
+  const [source, styles] = await Promise.all([
+    readFile(viewerSourceUrl, "utf8"),
+    readFile(new URL("../shared/styles.css", import.meta.url), "utf8"),
+  ]);
+  assert.match(source, /className=\{`scv-text-flow\$\{hasNext \? " scv-text-flow-has-next" : ""\}`\}/);
+  assert.match(styles, /\.scv-text-flow\.scv-text-flow-has-next \{ padding-bottom: 100vh; \}/);
+});
+
 test("il lazy loading attiva l’ultima unità quando il viewport è vicino al fondo del chunk", async () => {
   const source = await readFile(viewerSourceUrl, "utf8");
   const observer = source.slice(source.indexOf("function useVisibleUnitObserver"), source.indexOf("function HighlightedSnippet"));

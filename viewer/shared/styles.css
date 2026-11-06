@@ -182,6 +182,7 @@ body:has(> .scv-root) { overflow: hidden; }
 .scv-text-pane { position: relative; overflow: auto; background: #fff; scrollbar-color: #b1b8c7 transparent; scrollbar-width: none; scroll-behavior: auto; }
 .scv-text-pane::-webkit-scrollbar { width: 0; height: 0; }
 .scv-text-flow { width: min(100%, 860px); min-height: 100%; margin: 0 auto; padding: 23px 58px 55vh; }
+.scv-text-flow.scv-text-flow-has-next { padding-bottom: 100vh; }
 .scv-chunk-note { margin: 0 0 14px; padding-bottom: 9px; color: #8991a0; font-size: var(--scv-font-size-8); border-bottom: 1px solid #e2e5ed; }
 .scv-unit, .scv-block, .formula-asset, .table-asset, .figure-asset { scroll-margin-top: 64px; }
 .scv-unit h2 { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 7px; align-items: start; min-width: 0; margin: 5px 0 4px; color: var(--scv-ink); font-family: var(--scv-font-normative); font-size: var(--scv-font-size-16); font-weight: 700; line-height: 1.2; font-variant-numeric: lining-nums; }

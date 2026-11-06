@@ -432,7 +432,7 @@ const DocumentContent = memo(function DocumentContent({ records, relatedByTarget
 }) {
   if (records.length === 0) return <LoadingPanel label="Caricamento dei contenuti…" />;
   const version = records[0].chunk.structuralCodesVersion;
-  return <div className="scv-text-flow">
+  return <div className={`scv-text-flow${hasNext ? " scv-text-flow-has-next" : ""}`}>
     {hasPrevious && <div className="scv-progressive-edge" aria-hidden="true" />}
     <p className="scv-chunk-note">{documentLabel} · structural-codes {version}</p>
     {records.map((record) => <MemoizedUnit record={record} mode={mode} relatedRecords={relatedByTarget.get(record.unit.id) ?? emptyRelatedRecords} assetsBaseUrl={assetsBaseUrl} notesByTarget={notesByTarget} onOpenAnnotation={onOpenAnnotation} key={record.unit.id} />)}
