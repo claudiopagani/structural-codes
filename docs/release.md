@@ -1,7 +1,7 @@
 # Release npm
 
-Structural Codes usa SemVer con prerelease. La versione corrente è
-`0.1.0-beta.4` (in preparazione): corpus e software sono pubblicamente ispezionabili, mentre
+Structural Codes usa SemVer con prerelease. La versione corrente pubblicata su npm è
+`0.1.0-beta.4`: corpus e software sono pubblicamente ispezionabili, mentre
 schema e API possono ancora ricevere cambi breaking dichiarati.
 Le versioni degli schemi canonici restano indipendenti dalla versione npm.
 
@@ -74,7 +74,8 @@ costituisce certificazione, approvazione ufficiale o fonte normativa.
 
 ## Pubblicazione manuale
 
-Dopo login npm, verifica del nome package e autorizzazione esplicita:
+La beta.4 è stata pubblicata il 7 novembre 2026 dopo il gate completo, il login
+npm, la verifica dei nomi e l'autorizzazione esplicita. I comandi usati sono:
 
 ```bash
 npm publish ./structural-codes-0.1.0-beta.4.tgz --tag beta --access public

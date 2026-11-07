@@ -14,7 +14,7 @@ editoriale.
 
 ## Stato della prerelease
 
-La versione in preparazione dei package è `0.1.0-beta.4`. Il corpus contiene
+La versione pubblicata su npm dei package è `0.1.0-beta.4`. Il corpus contiene
 1.055 unità NTC e 690 unità della Circolare. La nuova introduzione di C8.7.4.2
 è in attesa di verifica umana: l'unità e la review della Circolare sono `draft`.
 Le altre unità conservano lo stato `verified`. Questa verifica non costituisce
